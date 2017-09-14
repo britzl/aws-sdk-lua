@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/britzl/aws-sdk-lua.svg?branch=master)](https://travis-ci.org/britzl/aws-sdk-lua)
+
 # AWS SDK for Lua (beta)
 Unofficial AWS SDK for Lua, available for LuaJIT and Lua 5.1 and later.
 
