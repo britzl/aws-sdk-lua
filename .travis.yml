@@ -3,5 +3,9 @@ language: java
 jdk:
   - oraclejdk8
 
+compiler:
+  gcc:
+    - 5.0
+
 script:
   - "./.test/run.sh"
