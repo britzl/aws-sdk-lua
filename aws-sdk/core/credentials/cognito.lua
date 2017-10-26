@@ -61,11 +61,8 @@ function M.from_cognito_identity_pool(identity_pool_id)
 	end
 
 	function provider.refresh(cb)
-		print("from_cognito_identity_pool", identity_pool_id)
 		local get_id_input = cognito.GetIdInput({ IdentityPoolId = identity_pool_id })
 		cognito.GetIdAsync(get_id_input, function(response, error_message)
-			print("GetIdAsync")
-			pprint(response)
 			if error_message then
 				if cb then cb(nil, error_message) end
 				return
@@ -75,7 +72,6 @@ function M.from_cognito_identity_pool(identity_pool_id)
 					access_key_id = response.Credentials.AccessKeyId
 					secret_access_key = response.Credentials.SecretKey
 					session_token = response.Credentials.SessionToken
-					print("refreshed", access_key_id, secret_access_key, session_token)
 					if cb then cb(access_key_id, secret_access_key, session_token) end
 				else
 					if cb then cb(nil, nil) end
