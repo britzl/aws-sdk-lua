@@ -48,11 +48,6 @@ return function()
 			credentials.get.replace(function()
 				return "AKIDEXAMPLE", "wJalrXUtnFEMI/K7MDENG+bPxRfiCYEXAMPLEKEY"
 			end)
-			
-			local settings = {
-				region = "us-east-1",
-				service = "service"
-			}
 
 			local lines = {}
 			if request:sub(-1) ~= "\n" then request = request .. "\n" end
@@ -80,7 +75,7 @@ return function()
 			end
 			local post_data = table.concat(lines, "\n")
 				
-			local authorization = request_signer.sign_request_v4(method, uri, post_data, headers, settings)
+			local authorization = request_signer.sign_request_v4(method, uri, post_data, headers, "service", "us-east-1")
 			return authorization == expected_authorization,
 				("%s:\nExpected %s\nActual:     %s"):format(name, expected_authorization, authorization)
 		end
