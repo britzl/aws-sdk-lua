@@ -3343,7 +3343,7 @@ end
 --
 --- Call ListBuilds asynchronously, invoking a callback when done
 -- @param ListBuildsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListBuildsAsync(ListBuildsInput, cb)
 	assert(ListBuildsInput, "You must provide a ListBuildsInput")
 	local headers = {
@@ -3366,19 +3366,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListBuildsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListBuildsSync(ListBuildsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListBuildsAsync(ListBuildsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListBuildsAsync(ListBuildsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateWebhook asynchronously, invoking a callback when done
 -- @param UpdateWebhookInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateWebhookAsync(UpdateWebhookInput, cb)
 	assert(UpdateWebhookInput, "You must provide a UpdateWebhookInput")
 	local headers = {
@@ -3401,19 +3402,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateWebhookInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateWebhookSync(UpdateWebhookInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateWebhookAsync(UpdateWebhookInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateWebhookAsync(UpdateWebhookInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StopBuild asynchronously, invoking a callback when done
 -- @param StopBuildInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StopBuildAsync(StopBuildInput, cb)
 	assert(StopBuildInput, "You must provide a StopBuildInput")
 	local headers = {
@@ -3436,19 +3438,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StopBuildInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StopBuildSync(StopBuildInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopBuildAsync(StopBuildInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StopBuildAsync(StopBuildInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListBuildsForProject asynchronously, invoking a callback when done
 -- @param ListBuildsForProjectInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListBuildsForProjectAsync(ListBuildsForProjectInput, cb)
 	assert(ListBuildsForProjectInput, "You must provide a ListBuildsForProjectInput")
 	local headers = {
@@ -3471,19 +3474,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListBuildsForProjectInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListBuildsForProjectSync(ListBuildsForProjectInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListBuildsForProjectAsync(ListBuildsForProjectInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListBuildsForProjectAsync(ListBuildsForProjectInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call BatchGetBuilds asynchronously, invoking a callback when done
 -- @param BatchGetBuildsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.BatchGetBuildsAsync(BatchGetBuildsInput, cb)
 	assert(BatchGetBuildsInput, "You must provide a BatchGetBuildsInput")
 	local headers = {
@@ -3506,19 +3510,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param BatchGetBuildsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.BatchGetBuildsSync(BatchGetBuildsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchGetBuildsAsync(BatchGetBuildsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.BatchGetBuildsAsync(BatchGetBuildsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListProjects asynchronously, invoking a callback when done
 -- @param ListProjectsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListProjectsAsync(ListProjectsInput, cb)
 	assert(ListProjectsInput, "You must provide a ListProjectsInput")
 	local headers = {
@@ -3541,19 +3546,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListProjectsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListProjectsSync(ListProjectsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListProjectsAsync(ListProjectsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListProjectsAsync(ListProjectsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateProject asynchronously, invoking a callback when done
 -- @param CreateProjectInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateProjectAsync(CreateProjectInput, cb)
 	assert(CreateProjectInput, "You must provide a CreateProjectInput")
 	local headers = {
@@ -3576,19 +3582,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateProjectInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateProjectSync(CreateProjectInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateProjectAsync(CreateProjectInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateProjectAsync(CreateProjectInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListCuratedEnvironmentImages asynchronously, invoking a callback when done
 -- @param ListCuratedEnvironmentImagesInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListCuratedEnvironmentImagesAsync(ListCuratedEnvironmentImagesInput, cb)
 	assert(ListCuratedEnvironmentImagesInput, "You must provide a ListCuratedEnvironmentImagesInput")
 	local headers = {
@@ -3611,19 +3618,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListCuratedEnvironmentImagesInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListCuratedEnvironmentImagesSync(ListCuratedEnvironmentImagesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListCuratedEnvironmentImagesAsync(ListCuratedEnvironmentImagesInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListCuratedEnvironmentImagesAsync(ListCuratedEnvironmentImagesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateWebhook asynchronously, invoking a callback when done
 -- @param CreateWebhookInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateWebhookAsync(CreateWebhookInput, cb)
 	assert(CreateWebhookInput, "You must provide a CreateWebhookInput")
 	local headers = {
@@ -3646,19 +3654,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateWebhookInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateWebhookSync(CreateWebhookInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateWebhookAsync(CreateWebhookInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateWebhookAsync(CreateWebhookInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call InvalidateProjectCache asynchronously, invoking a callback when done
 -- @param InvalidateProjectCacheInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.InvalidateProjectCacheAsync(InvalidateProjectCacheInput, cb)
 	assert(InvalidateProjectCacheInput, "You must provide a InvalidateProjectCacheInput")
 	local headers = {
@@ -3681,19 +3690,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param InvalidateProjectCacheInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.InvalidateProjectCacheSync(InvalidateProjectCacheInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.InvalidateProjectCacheAsync(InvalidateProjectCacheInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.InvalidateProjectCacheAsync(InvalidateProjectCacheInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StartBuild asynchronously, invoking a callback when done
 -- @param StartBuildInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StartBuildAsync(StartBuildInput, cb)
 	assert(StartBuildInput, "You must provide a StartBuildInput")
 	local headers = {
@@ -3716,19 +3726,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StartBuildInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StartBuildSync(StartBuildInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartBuildAsync(StartBuildInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StartBuildAsync(StartBuildInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteProject asynchronously, invoking a callback when done
 -- @param DeleteProjectInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteProjectAsync(DeleteProjectInput, cb)
 	assert(DeleteProjectInput, "You must provide a DeleteProjectInput")
 	local headers = {
@@ -3751,19 +3762,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteProjectInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteProjectSync(DeleteProjectInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteProjectAsync(DeleteProjectInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteProjectAsync(DeleteProjectInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateProject asynchronously, invoking a callback when done
 -- @param UpdateProjectInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateProjectAsync(UpdateProjectInput, cb)
 	assert(UpdateProjectInput, "You must provide a UpdateProjectInput")
 	local headers = {
@@ -3786,19 +3798,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateProjectInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateProjectSync(UpdateProjectInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateProjectAsync(UpdateProjectInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateProjectAsync(UpdateProjectInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteWebhook asynchronously, invoking a callback when done
 -- @param DeleteWebhookInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteWebhookAsync(DeleteWebhookInput, cb)
 	assert(DeleteWebhookInput, "You must provide a DeleteWebhookInput")
 	local headers = {
@@ -3821,19 +3834,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteWebhookInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteWebhookSync(DeleteWebhookInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteWebhookAsync(DeleteWebhookInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteWebhookAsync(DeleteWebhookInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call BatchGetProjects asynchronously, invoking a callback when done
 -- @param BatchGetProjectsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.BatchGetProjectsAsync(BatchGetProjectsInput, cb)
 	assert(BatchGetProjectsInput, "You must provide a BatchGetProjectsInput")
 	local headers = {
@@ -3856,19 +3870,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param BatchGetProjectsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.BatchGetProjectsSync(BatchGetProjectsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchGetProjectsAsync(BatchGetProjectsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.BatchGetProjectsAsync(BatchGetProjectsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call BatchDeleteBuilds asynchronously, invoking a callback when done
 -- @param BatchDeleteBuildsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.BatchDeleteBuildsAsync(BatchDeleteBuildsInput, cb)
 	assert(BatchDeleteBuildsInput, "You must provide a BatchDeleteBuildsInput")
 	local headers = {
@@ -3891,12 +3906,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param BatchDeleteBuildsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.BatchDeleteBuildsSync(BatchDeleteBuildsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchDeleteBuildsAsync(BatchDeleteBuildsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.BatchDeleteBuildsAsync(BatchDeleteBuildsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

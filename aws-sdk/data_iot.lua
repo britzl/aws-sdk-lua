@@ -799,7 +799,7 @@ end
 --
 --- Call UpdateThingShadow asynchronously, invoking a callback when done
 -- @param UpdateThingShadowRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateThingShadowAsync(UpdateThingShadowRequest, cb)
 	assert(UpdateThingShadowRequest, "You must provide a UpdateThingShadowRequest")
 	local headers = {
@@ -822,19 +822,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateThingShadowRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateThingShadowSync(UpdateThingShadowRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateThingShadowAsync(UpdateThingShadowRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateThingShadowAsync(UpdateThingShadowRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetThingShadow asynchronously, invoking a callback when done
 -- @param GetThingShadowRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetThingShadowAsync(GetThingShadowRequest, cb)
 	assert(GetThingShadowRequest, "You must provide a GetThingShadowRequest")
 	local headers = {
@@ -857,19 +858,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetThingShadowRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetThingShadowSync(GetThingShadowRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetThingShadowAsync(GetThingShadowRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetThingShadowAsync(GetThingShadowRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call Publish asynchronously, invoking a callback when done
 -- @param PublishRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PublishAsync(PublishRequest, cb)
 	assert(PublishRequest, "You must provide a PublishRequest")
 	local headers = {
@@ -892,19 +894,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PublishRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PublishSync(PublishRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PublishAsync(PublishRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PublishAsync(PublishRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteThingShadow asynchronously, invoking a callback when done
 -- @param DeleteThingShadowRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteThingShadowAsync(DeleteThingShadowRequest, cb)
 	assert(DeleteThingShadowRequest, "You must provide a DeleteThingShadowRequest")
 	local headers = {
@@ -927,12 +930,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteThingShadowRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteThingShadowSync(DeleteThingShadowRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteThingShadowAsync(DeleteThingShadowRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteThingShadowAsync(DeleteThingShadowRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

@@ -1897,7 +1897,7 @@ end
 --
 --- Call CreateHsm asynchronously, invoking a callback when done
 -- @param CreateHsmRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateHsmAsync(CreateHsmRequest, cb)
 	assert(CreateHsmRequest, "You must provide a CreateHsmRequest")
 	local headers = {
@@ -1920,19 +1920,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateHsmRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateHsmSync(CreateHsmRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateHsmAsync(CreateHsmRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateHsmAsync(CreateHsmRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListTags asynchronously, invoking a callback when done
 -- @param ListTagsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListTagsAsync(ListTagsRequest, cb)
 	assert(ListTagsRequest, "You must provide a ListTagsRequest")
 	local headers = {
@@ -1955,19 +1956,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListTagsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListTagsSync(ListTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsAsync(ListTagsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListTagsAsync(ListTagsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UntagResource asynchronously, invoking a callback when done
 -- @param UntagResourceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UntagResourceAsync(UntagResourceRequest, cb)
 	assert(UntagResourceRequest, "You must provide a UntagResourceRequest")
 	local headers = {
@@ -1990,19 +1992,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UntagResourceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UntagResourceSync(UntagResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UntagResourceAsync(UntagResourceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UntagResourceAsync(UntagResourceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateCluster asynchronously, invoking a callback when done
 -- @param CreateClusterRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateClusterAsync(CreateClusterRequest, cb)
 	assert(CreateClusterRequest, "You must provide a CreateClusterRequest")
 	local headers = {
@@ -2025,19 +2028,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateClusterRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateClusterSync(CreateClusterRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateClusterAsync(CreateClusterRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateClusterAsync(CreateClusterRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteHsm asynchronously, invoking a callback when done
 -- @param DeleteHsmRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteHsmAsync(DeleteHsmRequest, cb)
 	assert(DeleteHsmRequest, "You must provide a DeleteHsmRequest")
 	local headers = {
@@ -2060,19 +2064,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteHsmRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteHsmSync(DeleteHsmRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteHsmAsync(DeleteHsmRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteHsmAsync(DeleteHsmRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeBackups asynchronously, invoking a callback when done
 -- @param DescribeBackupsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeBackupsAsync(DescribeBackupsRequest, cb)
 	assert(DescribeBackupsRequest, "You must provide a DescribeBackupsRequest")
 	local headers = {
@@ -2095,19 +2100,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeBackupsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeBackupsSync(DescribeBackupsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeBackupsAsync(DescribeBackupsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeBackupsAsync(DescribeBackupsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteBackup asynchronously, invoking a callback when done
 -- @param DeleteBackupRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteBackupAsync(DeleteBackupRequest, cb)
 	assert(DeleteBackupRequest, "You must provide a DeleteBackupRequest")
 	local headers = {
@@ -2130,19 +2136,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteBackupRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteBackupSync(DeleteBackupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBackupAsync(DeleteBackupRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteBackupAsync(DeleteBackupRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call RestoreBackup asynchronously, invoking a callback when done
 -- @param RestoreBackupRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.RestoreBackupAsync(RestoreBackupRequest, cb)
 	assert(RestoreBackupRequest, "You must provide a RestoreBackupRequest")
 	local headers = {
@@ -2165,19 +2172,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param RestoreBackupRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.RestoreBackupSync(RestoreBackupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RestoreBackupAsync(RestoreBackupRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.RestoreBackupAsync(RestoreBackupRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call InitializeCluster asynchronously, invoking a callback when done
 -- @param InitializeClusterRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.InitializeClusterAsync(InitializeClusterRequest, cb)
 	assert(InitializeClusterRequest, "You must provide a InitializeClusterRequest")
 	local headers = {
@@ -2200,19 +2208,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param InitializeClusterRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.InitializeClusterSync(InitializeClusterRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.InitializeClusterAsync(InitializeClusterRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.InitializeClusterAsync(InitializeClusterRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call TagResource asynchronously, invoking a callback when done
 -- @param TagResourceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.TagResourceAsync(TagResourceRequest, cb)
 	assert(TagResourceRequest, "You must provide a TagResourceRequest")
 	local headers = {
@@ -2235,19 +2244,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param TagResourceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.TagResourceSync(TagResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TagResourceAsync(TagResourceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.TagResourceAsync(TagResourceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CopyBackupToRegion asynchronously, invoking a callback when done
 -- @param CopyBackupToRegionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CopyBackupToRegionAsync(CopyBackupToRegionRequest, cb)
 	assert(CopyBackupToRegionRequest, "You must provide a CopyBackupToRegionRequest")
 	local headers = {
@@ -2270,19 +2280,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CopyBackupToRegionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CopyBackupToRegionSync(CopyBackupToRegionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CopyBackupToRegionAsync(CopyBackupToRegionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CopyBackupToRegionAsync(CopyBackupToRegionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeClusters asynchronously, invoking a callback when done
 -- @param DescribeClustersRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeClustersAsync(DescribeClustersRequest, cb)
 	assert(DescribeClustersRequest, "You must provide a DescribeClustersRequest")
 	local headers = {
@@ -2305,19 +2316,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeClustersRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeClustersSync(DescribeClustersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeClustersAsync(DescribeClustersRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeClustersAsync(DescribeClustersRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteCluster asynchronously, invoking a callback when done
 -- @param DeleteClusterRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteClusterAsync(DeleteClusterRequest, cb)
 	assert(DeleteClusterRequest, "You must provide a DeleteClusterRequest")
 	local headers = {
@@ -2340,12 +2352,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteClusterRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteClusterSync(DeleteClusterRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteClusterAsync(DeleteClusterRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteClusterAsync(DeleteClusterRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

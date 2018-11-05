@@ -4853,7 +4853,7 @@ end
 --
 --- Call DeleteTags asynchronously, invoking a callback when done
 -- @param DeleteTagsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteTagsAsync(DeleteTagsInput, cb)
 	assert(DeleteTagsInput, "You must provide a DeleteTagsInput")
 	local headers = {
@@ -4876,19 +4876,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteTagsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteTagsSync(DeleteTagsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTagsAsync(DeleteTagsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteTagsAsync(DeleteTagsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateBatchPrediction asynchronously, invoking a callback when done
 -- @param UpdateBatchPredictionInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateBatchPredictionAsync(UpdateBatchPredictionInput, cb)
 	assert(UpdateBatchPredictionInput, "You must provide a UpdateBatchPredictionInput")
 	local headers = {
@@ -4911,19 +4912,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateBatchPredictionInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateBatchPredictionSync(UpdateBatchPredictionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateBatchPredictionAsync(UpdateBatchPredictionInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateBatchPredictionAsync(UpdateBatchPredictionInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetEvaluation asynchronously, invoking a callback when done
 -- @param GetEvaluationInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetEvaluationAsync(GetEvaluationInput, cb)
 	assert(GetEvaluationInput, "You must provide a GetEvaluationInput")
 	local headers = {
@@ -4946,19 +4948,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetEvaluationInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetEvaluationSync(GetEvaluationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetEvaluationAsync(GetEvaluationInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetEvaluationAsync(GetEvaluationInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeBatchPredictions asynchronously, invoking a callback when done
 -- @param DescribeBatchPredictionsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeBatchPredictionsAsync(DescribeBatchPredictionsInput, cb)
 	assert(DescribeBatchPredictionsInput, "You must provide a DescribeBatchPredictionsInput")
 	local headers = {
@@ -4981,19 +4984,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeBatchPredictionsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeBatchPredictionsSync(DescribeBatchPredictionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeBatchPredictionsAsync(DescribeBatchPredictionsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeBatchPredictionsAsync(DescribeBatchPredictionsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateEvaluation asynchronously, invoking a callback when done
 -- @param CreateEvaluationInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateEvaluationAsync(CreateEvaluationInput, cb)
 	assert(CreateEvaluationInput, "You must provide a CreateEvaluationInput")
 	local headers = {
@@ -5016,19 +5020,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateEvaluationInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateEvaluationSync(CreateEvaluationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateEvaluationAsync(CreateEvaluationInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateEvaluationAsync(CreateEvaluationInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeMLModels asynchronously, invoking a callback when done
 -- @param DescribeMLModelsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeMLModelsAsync(DescribeMLModelsInput, cb)
 	assert(DescribeMLModelsInput, "You must provide a DescribeMLModelsInput")
 	local headers = {
@@ -5051,19 +5056,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeMLModelsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeMLModelsSync(DescribeMLModelsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeMLModelsAsync(DescribeMLModelsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeMLModelsAsync(DescribeMLModelsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteMLModel asynchronously, invoking a callback when done
 -- @param DeleteMLModelInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteMLModelAsync(DeleteMLModelInput, cb)
 	assert(DeleteMLModelInput, "You must provide a DeleteMLModelInput")
 	local headers = {
@@ -5086,19 +5092,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteMLModelInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteMLModelSync(DeleteMLModelInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteMLModelAsync(DeleteMLModelInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteMLModelAsync(DeleteMLModelInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateDataSourceFromS3 asynchronously, invoking a callback when done
 -- @param CreateDataSourceFromS3Input
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateDataSourceFromS3Async(CreateDataSourceFromS3Input, cb)
 	assert(CreateDataSourceFromS3Input, "You must provide a CreateDataSourceFromS3Input")
 	local headers = {
@@ -5121,19 +5128,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateDataSourceFromS3Input
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateDataSourceFromS3Sync(CreateDataSourceFromS3Input, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDataSourceFromS3Async(CreateDataSourceFromS3Input, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateDataSourceFromS3Async(CreateDataSourceFromS3Input, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateDataSource asynchronously, invoking a callback when done
 -- @param UpdateDataSourceInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateDataSourceAsync(UpdateDataSourceInput, cb)
 	assert(UpdateDataSourceInput, "You must provide a UpdateDataSourceInput")
 	local headers = {
@@ -5156,19 +5164,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateDataSourceInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateDataSourceSync(UpdateDataSourceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateDataSourceAsync(UpdateDataSourceInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateDataSourceAsync(UpdateDataSourceInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeEvaluations asynchronously, invoking a callback when done
 -- @param DescribeEvaluationsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeEvaluationsAsync(DescribeEvaluationsInput, cb)
 	assert(DescribeEvaluationsInput, "You must provide a DescribeEvaluationsInput")
 	local headers = {
@@ -5191,19 +5200,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeEvaluationsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeEvaluationsSync(DescribeEvaluationsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEvaluationsAsync(DescribeEvaluationsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeEvaluationsAsync(DescribeEvaluationsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateDataSourceFromRedshift asynchronously, invoking a callback when done
 -- @param CreateDataSourceFromRedshiftInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateDataSourceFromRedshiftAsync(CreateDataSourceFromRedshiftInput, cb)
 	assert(CreateDataSourceFromRedshiftInput, "You must provide a CreateDataSourceFromRedshiftInput")
 	local headers = {
@@ -5226,19 +5236,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateDataSourceFromRedshiftInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateDataSourceFromRedshiftSync(CreateDataSourceFromRedshiftInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDataSourceFromRedshiftAsync(CreateDataSourceFromRedshiftInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateDataSourceFromRedshiftAsync(CreateDataSourceFromRedshiftInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeDataSources asynchronously, invoking a callback when done
 -- @param DescribeDataSourcesInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeDataSourcesAsync(DescribeDataSourcesInput, cb)
 	assert(DescribeDataSourcesInput, "You must provide a DescribeDataSourcesInput")
 	local headers = {
@@ -5261,19 +5272,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeDataSourcesInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeDataSourcesSync(DescribeDataSourcesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDataSourcesAsync(DescribeDataSourcesInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeDataSourcesAsync(DescribeDataSourcesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetDataSource asynchronously, invoking a callback when done
 -- @param GetDataSourceInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetDataSourceAsync(GetDataSourceInput, cb)
 	assert(GetDataSourceInput, "You must provide a GetDataSourceInput")
 	local headers = {
@@ -5296,19 +5308,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetDataSourceInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetDataSourceSync(GetDataSourceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDataSourceAsync(GetDataSourceInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetDataSourceAsync(GetDataSourceInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateRealtimeEndpoint asynchronously, invoking a callback when done
 -- @param CreateRealtimeEndpointInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateRealtimeEndpointAsync(CreateRealtimeEndpointInput, cb)
 	assert(CreateRealtimeEndpointInput, "You must provide a CreateRealtimeEndpointInput")
 	local headers = {
@@ -5331,19 +5344,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateRealtimeEndpointInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateRealtimeEndpointSync(CreateRealtimeEndpointInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateRealtimeEndpointAsync(CreateRealtimeEndpointInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateRealtimeEndpointAsync(CreateRealtimeEndpointInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateMLModel asynchronously, invoking a callback when done
 -- @param UpdateMLModelInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateMLModelAsync(UpdateMLModelInput, cb)
 	assert(UpdateMLModelInput, "You must provide a UpdateMLModelInput")
 	local headers = {
@@ -5366,19 +5380,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateMLModelInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateMLModelSync(UpdateMLModelInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateMLModelAsync(UpdateMLModelInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateMLModelAsync(UpdateMLModelInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteRealtimeEndpoint asynchronously, invoking a callback when done
 -- @param DeleteRealtimeEndpointInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteRealtimeEndpointAsync(DeleteRealtimeEndpointInput, cb)
 	assert(DeleteRealtimeEndpointInput, "You must provide a DeleteRealtimeEndpointInput")
 	local headers = {
@@ -5401,19 +5416,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteRealtimeEndpointInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteRealtimeEndpointSync(DeleteRealtimeEndpointInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteRealtimeEndpointAsync(DeleteRealtimeEndpointInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteRealtimeEndpointAsync(DeleteRealtimeEndpointInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeTags asynchronously, invoking a callback when done
 -- @param DescribeTagsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeTagsAsync(DescribeTagsInput, cb)
 	assert(DescribeTagsInput, "You must provide a DescribeTagsInput")
 	local headers = {
@@ -5436,19 +5452,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeTagsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeTagsSync(DescribeTagsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTagsAsync(DescribeTagsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeTagsAsync(DescribeTagsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteDataSource asynchronously, invoking a callback when done
 -- @param DeleteDataSourceInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteDataSourceAsync(DeleteDataSourceInput, cb)
 	assert(DeleteDataSourceInput, "You must provide a DeleteDataSourceInput")
 	local headers = {
@@ -5471,19 +5488,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteDataSourceInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteDataSourceSync(DeleteDataSourceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDataSourceAsync(DeleteDataSourceInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteDataSourceAsync(DeleteDataSourceInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateDataSourceFromRDS asynchronously, invoking a callback when done
 -- @param CreateDataSourceFromRDSInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateDataSourceFromRDSAsync(CreateDataSourceFromRDSInput, cb)
 	assert(CreateDataSourceFromRDSInput, "You must provide a CreateDataSourceFromRDSInput")
 	local headers = {
@@ -5506,19 +5524,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateDataSourceFromRDSInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateDataSourceFromRDSSync(CreateDataSourceFromRDSInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDataSourceFromRDSAsync(CreateDataSourceFromRDSInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateDataSourceFromRDSAsync(CreateDataSourceFromRDSInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateEvaluation asynchronously, invoking a callback when done
 -- @param UpdateEvaluationInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateEvaluationAsync(UpdateEvaluationInput, cb)
 	assert(UpdateEvaluationInput, "You must provide a UpdateEvaluationInput")
 	local headers = {
@@ -5541,19 +5560,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateEvaluationInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateEvaluationSync(UpdateEvaluationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateEvaluationAsync(UpdateEvaluationInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateEvaluationAsync(UpdateEvaluationInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AddTags asynchronously, invoking a callback when done
 -- @param AddTagsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AddTagsAsync(AddTagsInput, cb)
 	assert(AddTagsInput, "You must provide a AddTagsInput")
 	local headers = {
@@ -5576,19 +5596,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AddTagsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AddTagsSync(AddTagsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddTagsAsync(AddTagsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AddTagsAsync(AddTagsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call Predict asynchronously, invoking a callback when done
 -- @param PredictInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PredictAsync(PredictInput, cb)
 	assert(PredictInput, "You must provide a PredictInput")
 	local headers = {
@@ -5611,19 +5632,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PredictInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PredictSync(PredictInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PredictAsync(PredictInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PredictAsync(PredictInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetBatchPrediction asynchronously, invoking a callback when done
 -- @param GetBatchPredictionInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetBatchPredictionAsync(GetBatchPredictionInput, cb)
 	assert(GetBatchPredictionInput, "You must provide a GetBatchPredictionInput")
 	local headers = {
@@ -5646,19 +5668,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetBatchPredictionInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetBatchPredictionSync(GetBatchPredictionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBatchPredictionAsync(GetBatchPredictionInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetBatchPredictionAsync(GetBatchPredictionInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteEvaluation asynchronously, invoking a callback when done
 -- @param DeleteEvaluationInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteEvaluationAsync(DeleteEvaluationInput, cb)
 	assert(DeleteEvaluationInput, "You must provide a DeleteEvaluationInput")
 	local headers = {
@@ -5681,19 +5704,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteEvaluationInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteEvaluationSync(DeleteEvaluationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteEvaluationAsync(DeleteEvaluationInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteEvaluationAsync(DeleteEvaluationInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteBatchPrediction asynchronously, invoking a callback when done
 -- @param DeleteBatchPredictionInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteBatchPredictionAsync(DeleteBatchPredictionInput, cb)
 	assert(DeleteBatchPredictionInput, "You must provide a DeleteBatchPredictionInput")
 	local headers = {
@@ -5716,19 +5740,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteBatchPredictionInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteBatchPredictionSync(DeleteBatchPredictionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBatchPredictionAsync(DeleteBatchPredictionInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteBatchPredictionAsync(DeleteBatchPredictionInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateMLModel asynchronously, invoking a callback when done
 -- @param CreateMLModelInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateMLModelAsync(CreateMLModelInput, cb)
 	assert(CreateMLModelInput, "You must provide a CreateMLModelInput")
 	local headers = {
@@ -5751,19 +5776,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateMLModelInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateMLModelSync(CreateMLModelInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateMLModelAsync(CreateMLModelInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateMLModelAsync(CreateMLModelInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateBatchPrediction asynchronously, invoking a callback when done
 -- @param CreateBatchPredictionInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateBatchPredictionAsync(CreateBatchPredictionInput, cb)
 	assert(CreateBatchPredictionInput, "You must provide a CreateBatchPredictionInput")
 	local headers = {
@@ -5786,19 +5812,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateBatchPredictionInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateBatchPredictionSync(CreateBatchPredictionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateBatchPredictionAsync(CreateBatchPredictionInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateBatchPredictionAsync(CreateBatchPredictionInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetMLModel asynchronously, invoking a callback when done
 -- @param GetMLModelInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetMLModelAsync(GetMLModelInput, cb)
 	assert(GetMLModelInput, "You must provide a GetMLModelInput")
 	local headers = {
@@ -5821,12 +5848,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetMLModelInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetMLModelSync(GetMLModelInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetMLModelAsync(GetMLModelInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetMLModelAsync(GetMLModelInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

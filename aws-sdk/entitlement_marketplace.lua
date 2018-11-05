@@ -514,7 +514,7 @@ end
 --
 --- Call GetEntitlements asynchronously, invoking a callback when done
 -- @param GetEntitlementsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetEntitlementsAsync(GetEntitlementsRequest, cb)
 	assert(GetEntitlementsRequest, "You must provide a GetEntitlementsRequest")
 	local headers = {
@@ -537,12 +537,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetEntitlementsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetEntitlementsSync(GetEntitlementsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetEntitlementsAsync(GetEntitlementsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetEntitlementsAsync(GetEntitlementsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

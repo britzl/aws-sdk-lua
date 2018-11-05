@@ -2653,7 +2653,7 @@ end
 --
 --- Call RestoreCertificateAuthority asynchronously, invoking a callback when done
 -- @param RestoreCertificateAuthorityRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.RestoreCertificateAuthorityAsync(RestoreCertificateAuthorityRequest, cb)
 	assert(RestoreCertificateAuthorityRequest, "You must provide a RestoreCertificateAuthorityRequest")
 	local headers = {
@@ -2676,19 +2676,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param RestoreCertificateAuthorityRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.RestoreCertificateAuthoritySync(RestoreCertificateAuthorityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RestoreCertificateAuthorityAsync(RestoreCertificateAuthorityRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.RestoreCertificateAuthorityAsync(RestoreCertificateAuthorityRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListCertificateAuthorities asynchronously, invoking a callback when done
 -- @param ListCertificateAuthoritiesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListCertificateAuthoritiesAsync(ListCertificateAuthoritiesRequest, cb)
 	assert(ListCertificateAuthoritiesRequest, "You must provide a ListCertificateAuthoritiesRequest")
 	local headers = {
@@ -2711,19 +2712,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListCertificateAuthoritiesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListCertificateAuthoritiesSync(ListCertificateAuthoritiesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListCertificateAuthoritiesAsync(ListCertificateAuthoritiesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListCertificateAuthoritiesAsync(ListCertificateAuthoritiesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListTags asynchronously, invoking a callback when done
 -- @param ListTagsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListTagsAsync(ListTagsRequest, cb)
 	assert(ListTagsRequest, "You must provide a ListTagsRequest")
 	local headers = {
@@ -2746,19 +2748,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListTagsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListTagsSync(ListTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsAsync(ListTagsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListTagsAsync(ListTagsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UntagCertificateAuthority asynchronously, invoking a callback when done
 -- @param UntagCertificateAuthorityRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UntagCertificateAuthorityAsync(UntagCertificateAuthorityRequest, cb)
 	assert(UntagCertificateAuthorityRequest, "You must provide a UntagCertificateAuthorityRequest")
 	local headers = {
@@ -2781,19 +2784,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UntagCertificateAuthorityRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UntagCertificateAuthoritySync(UntagCertificateAuthorityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UntagCertificateAuthorityAsync(UntagCertificateAuthorityRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UntagCertificateAuthorityAsync(UntagCertificateAuthorityRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateCertificateAuthority asynchronously, invoking a callback when done
 -- @param UpdateCertificateAuthorityRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateCertificateAuthorityAsync(UpdateCertificateAuthorityRequest, cb)
 	assert(UpdateCertificateAuthorityRequest, "You must provide a UpdateCertificateAuthorityRequest")
 	local headers = {
@@ -2816,19 +2820,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateCertificateAuthorityRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateCertificateAuthoritySync(UpdateCertificateAuthorityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateCertificateAuthorityAsync(UpdateCertificateAuthorityRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateCertificateAuthorityAsync(UpdateCertificateAuthorityRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetCertificateAuthorityCertificate asynchronously, invoking a callback when done
 -- @param GetCertificateAuthorityCertificateRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetCertificateAuthorityCertificateAsync(GetCertificateAuthorityCertificateRequest, cb)
 	assert(GetCertificateAuthorityCertificateRequest, "You must provide a GetCertificateAuthorityCertificateRequest")
 	local headers = {
@@ -2851,19 +2856,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetCertificateAuthorityCertificateRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetCertificateAuthorityCertificateSync(GetCertificateAuthorityCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCertificateAuthorityCertificateAsync(GetCertificateAuthorityCertificateRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetCertificateAuthorityCertificateAsync(GetCertificateAuthorityCertificateRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ImportCertificateAuthorityCertificate asynchronously, invoking a callback when done
 -- @param ImportCertificateAuthorityCertificateRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ImportCertificateAuthorityCertificateAsync(ImportCertificateAuthorityCertificateRequest, cb)
 	assert(ImportCertificateAuthorityCertificateRequest, "You must provide a ImportCertificateAuthorityCertificateRequest")
 	local headers = {
@@ -2886,19 +2892,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ImportCertificateAuthorityCertificateRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ImportCertificateAuthorityCertificateSync(ImportCertificateAuthorityCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ImportCertificateAuthorityCertificateAsync(ImportCertificateAuthorityCertificateRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ImportCertificateAuthorityCertificateAsync(ImportCertificateAuthorityCertificateRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call IssueCertificate asynchronously, invoking a callback when done
 -- @param IssueCertificateRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.IssueCertificateAsync(IssueCertificateRequest, cb)
 	assert(IssueCertificateRequest, "You must provide a IssueCertificateRequest")
 	local headers = {
@@ -2921,19 +2928,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param IssueCertificateRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.IssueCertificateSync(IssueCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.IssueCertificateAsync(IssueCertificateRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.IssueCertificateAsync(IssueCertificateRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetCertificate asynchronously, invoking a callback when done
 -- @param GetCertificateRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetCertificateAsync(GetCertificateRequest, cb)
 	assert(GetCertificateRequest, "You must provide a GetCertificateRequest")
 	local headers = {
@@ -2956,19 +2964,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetCertificateRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetCertificateSync(GetCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCertificateAsync(GetCertificateRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetCertificateAsync(GetCertificateRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call TagCertificateAuthority asynchronously, invoking a callback when done
 -- @param TagCertificateAuthorityRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.TagCertificateAuthorityAsync(TagCertificateAuthorityRequest, cb)
 	assert(TagCertificateAuthorityRequest, "You must provide a TagCertificateAuthorityRequest")
 	local headers = {
@@ -2991,19 +3000,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param TagCertificateAuthorityRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.TagCertificateAuthoritySync(TagCertificateAuthorityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TagCertificateAuthorityAsync(TagCertificateAuthorityRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.TagCertificateAuthorityAsync(TagCertificateAuthorityRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeCertificateAuthorityAuditReport asynchronously, invoking a callback when done
 -- @param DescribeCertificateAuthorityAuditReportRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeCertificateAuthorityAuditReportAsync(DescribeCertificateAuthorityAuditReportRequest, cb)
 	assert(DescribeCertificateAuthorityAuditReportRequest, "You must provide a DescribeCertificateAuthorityAuditReportRequest")
 	local headers = {
@@ -3026,19 +3036,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeCertificateAuthorityAuditReportRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeCertificateAuthorityAuditReportSync(DescribeCertificateAuthorityAuditReportRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeCertificateAuthorityAuditReportAsync(DescribeCertificateAuthorityAuditReportRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeCertificateAuthorityAuditReportAsync(DescribeCertificateAuthorityAuditReportRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeCertificateAuthority asynchronously, invoking a callback when done
 -- @param DescribeCertificateAuthorityRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeCertificateAuthorityAsync(DescribeCertificateAuthorityRequest, cb)
 	assert(DescribeCertificateAuthorityRequest, "You must provide a DescribeCertificateAuthorityRequest")
 	local headers = {
@@ -3061,19 +3072,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeCertificateAuthorityRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeCertificateAuthoritySync(DescribeCertificateAuthorityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeCertificateAuthorityAsync(DescribeCertificateAuthorityRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeCertificateAuthorityAsync(DescribeCertificateAuthorityRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetCertificateAuthorityCsr asynchronously, invoking a callback when done
 -- @param GetCertificateAuthorityCsrRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetCertificateAuthorityCsrAsync(GetCertificateAuthorityCsrRequest, cb)
 	assert(GetCertificateAuthorityCsrRequest, "You must provide a GetCertificateAuthorityCsrRequest")
 	local headers = {
@@ -3096,19 +3108,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetCertificateAuthorityCsrRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetCertificateAuthorityCsrSync(GetCertificateAuthorityCsrRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCertificateAuthorityCsrAsync(GetCertificateAuthorityCsrRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetCertificateAuthorityCsrAsync(GetCertificateAuthorityCsrRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateCertificateAuthority asynchronously, invoking a callback when done
 -- @param CreateCertificateAuthorityRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateCertificateAuthorityAsync(CreateCertificateAuthorityRequest, cb)
 	assert(CreateCertificateAuthorityRequest, "You must provide a CreateCertificateAuthorityRequest")
 	local headers = {
@@ -3131,19 +3144,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateCertificateAuthorityRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateCertificateAuthoritySync(CreateCertificateAuthorityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateCertificateAuthorityAsync(CreateCertificateAuthorityRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateCertificateAuthorityAsync(CreateCertificateAuthorityRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteCertificateAuthority asynchronously, invoking a callback when done
 -- @param DeleteCertificateAuthorityRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteCertificateAuthorityAsync(DeleteCertificateAuthorityRequest, cb)
 	assert(DeleteCertificateAuthorityRequest, "You must provide a DeleteCertificateAuthorityRequest")
 	local headers = {
@@ -3166,19 +3180,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteCertificateAuthorityRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteCertificateAuthoritySync(DeleteCertificateAuthorityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteCertificateAuthorityAsync(DeleteCertificateAuthorityRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteCertificateAuthorityAsync(DeleteCertificateAuthorityRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call RevokeCertificate asynchronously, invoking a callback when done
 -- @param RevokeCertificateRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.RevokeCertificateAsync(RevokeCertificateRequest, cb)
 	assert(RevokeCertificateRequest, "You must provide a RevokeCertificateRequest")
 	local headers = {
@@ -3201,19 +3216,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param RevokeCertificateRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.RevokeCertificateSync(RevokeCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RevokeCertificateAsync(RevokeCertificateRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.RevokeCertificateAsync(RevokeCertificateRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateCertificateAuthorityAuditReport asynchronously, invoking a callback when done
 -- @param CreateCertificateAuthorityAuditReportRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateCertificateAuthorityAuditReportAsync(CreateCertificateAuthorityAuditReportRequest, cb)
 	assert(CreateCertificateAuthorityAuditReportRequest, "You must provide a CreateCertificateAuthorityAuditReportRequest")
 	local headers = {
@@ -3236,12 +3252,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateCertificateAuthorityAuditReportRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateCertificateAuthorityAuditReportSync(CreateCertificateAuthorityAuditReportRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateCertificateAuthorityAuditReportAsync(CreateCertificateAuthorityAuditReportRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateCertificateAuthorityAuditReportAsync(CreateCertificateAuthorityAuditReportRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

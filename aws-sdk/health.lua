@@ -1896,7 +1896,7 @@ end
 --
 --- Call DescribeAffectedEntities asynchronously, invoking a callback when done
 -- @param DescribeAffectedEntitiesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeAffectedEntitiesAsync(DescribeAffectedEntitiesRequest, cb)
 	assert(DescribeAffectedEntitiesRequest, "You must provide a DescribeAffectedEntitiesRequest")
 	local headers = {
@@ -1919,19 +1919,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeAffectedEntitiesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeAffectedEntitiesSync(DescribeAffectedEntitiesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAffectedEntitiesAsync(DescribeAffectedEntitiesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeAffectedEntitiesAsync(DescribeAffectedEntitiesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeEventDetails asynchronously, invoking a callback when done
 -- @param DescribeEventDetailsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeEventDetailsAsync(DescribeEventDetailsRequest, cb)
 	assert(DescribeEventDetailsRequest, "You must provide a DescribeEventDetailsRequest")
 	local headers = {
@@ -1954,19 +1955,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeEventDetailsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeEventDetailsSync(DescribeEventDetailsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEventDetailsAsync(DescribeEventDetailsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeEventDetailsAsync(DescribeEventDetailsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeEventTypes asynchronously, invoking a callback when done
 -- @param DescribeEventTypesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeEventTypesAsync(DescribeEventTypesRequest, cb)
 	assert(DescribeEventTypesRequest, "You must provide a DescribeEventTypesRequest")
 	local headers = {
@@ -1989,19 +1991,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeEventTypesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeEventTypesSync(DescribeEventTypesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEventTypesAsync(DescribeEventTypesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeEventTypesAsync(DescribeEventTypesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeEvents asynchronously, invoking a callback when done
 -- @param DescribeEventsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeEventsAsync(DescribeEventsRequest, cb)
 	assert(DescribeEventsRequest, "You must provide a DescribeEventsRequest")
 	local headers = {
@@ -2024,19 +2027,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeEventsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeEventsSync(DescribeEventsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEventsAsync(DescribeEventsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeEventsAsync(DescribeEventsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeEntityAggregates asynchronously, invoking a callback when done
 -- @param DescribeEntityAggregatesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeEntityAggregatesAsync(DescribeEntityAggregatesRequest, cb)
 	assert(DescribeEntityAggregatesRequest, "You must provide a DescribeEntityAggregatesRequest")
 	local headers = {
@@ -2059,19 +2063,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeEntityAggregatesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeEntityAggregatesSync(DescribeEntityAggregatesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEntityAggregatesAsync(DescribeEntityAggregatesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeEntityAggregatesAsync(DescribeEntityAggregatesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeEventAggregates asynchronously, invoking a callback when done
 -- @param DescribeEventAggregatesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeEventAggregatesAsync(DescribeEventAggregatesRequest, cb)
 	assert(DescribeEventAggregatesRequest, "You must provide a DescribeEventAggregatesRequest")
 	local headers = {
@@ -2094,12 +2099,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeEventAggregatesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeEventAggregatesSync(DescribeEventAggregatesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEventAggregatesAsync(DescribeEventAggregatesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeEventAggregatesAsync(DescribeEventAggregatesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

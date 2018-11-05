@@ -1685,7 +1685,7 @@ end
 --
 --- Call GetTags asynchronously, invoking a callback when done
 -- @param GetTagsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetTagsAsync(GetTagsInput, cb)
 	assert(GetTagsInput, "You must provide a GetTagsInput")
 	local headers = {
@@ -1708,19 +1708,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetTagsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetTagsSync(GetTagsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTagsAsync(GetTagsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetTagsAsync(GetTagsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListGroups asynchronously, invoking a callback when done
 -- @param ListGroupsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListGroupsAsync(ListGroupsInput, cb)
 	assert(ListGroupsInput, "You must provide a ListGroupsInput")
 	local headers = {
@@ -1743,19 +1744,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListGroupsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListGroupsSync(ListGroupsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListGroupsAsync(ListGroupsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListGroupsAsync(ListGroupsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateGroupQuery asynchronously, invoking a callback when done
 -- @param UpdateGroupQueryInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateGroupQueryAsync(UpdateGroupQueryInput, cb)
 	assert(UpdateGroupQueryInput, "You must provide a UpdateGroupQueryInput")
 	local headers = {
@@ -1778,19 +1780,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateGroupQueryInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateGroupQuerySync(UpdateGroupQueryInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateGroupQueryAsync(UpdateGroupQueryInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateGroupQueryAsync(UpdateGroupQueryInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListGroupResources asynchronously, invoking a callback when done
 -- @param ListGroupResourcesInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListGroupResourcesAsync(ListGroupResourcesInput, cb)
 	assert(ListGroupResourcesInput, "You must provide a ListGroupResourcesInput")
 	local headers = {
@@ -1813,19 +1816,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListGroupResourcesInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListGroupResourcesSync(ListGroupResourcesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListGroupResourcesAsync(ListGroupResourcesInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListGroupResourcesAsync(ListGroupResourcesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateGroup asynchronously, invoking a callback when done
 -- @param UpdateGroupInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateGroupAsync(UpdateGroupInput, cb)
 	assert(UpdateGroupInput, "You must provide a UpdateGroupInput")
 	local headers = {
@@ -1848,19 +1852,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateGroupInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateGroupSync(UpdateGroupInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateGroupAsync(UpdateGroupInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateGroupAsync(UpdateGroupInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteGroup asynchronously, invoking a callback when done
 -- @param DeleteGroupInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteGroupAsync(DeleteGroupInput, cb)
 	assert(DeleteGroupInput, "You must provide a DeleteGroupInput")
 	local headers = {
@@ -1883,19 +1888,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteGroupInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteGroupSync(DeleteGroupInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteGroupAsync(DeleteGroupInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteGroupAsync(DeleteGroupInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call Tag asynchronously, invoking a callback when done
 -- @param TagInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.TagAsync(TagInput, cb)
 	assert(TagInput, "You must provide a TagInput")
 	local headers = {
@@ -1918,19 +1924,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param TagInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.TagSync(TagInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TagAsync(TagInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.TagAsync(TagInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateGroup asynchronously, invoking a callback when done
 -- @param CreateGroupInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateGroupAsync(CreateGroupInput, cb)
 	assert(CreateGroupInput, "You must provide a CreateGroupInput")
 	local headers = {
@@ -1953,19 +1960,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateGroupInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateGroupSync(CreateGroupInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateGroupAsync(CreateGroupInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateGroupAsync(CreateGroupInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetGroupQuery asynchronously, invoking a callback when done
 -- @param GetGroupQueryInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetGroupQueryAsync(GetGroupQueryInput, cb)
 	assert(GetGroupQueryInput, "You must provide a GetGroupQueryInput")
 	local headers = {
@@ -1988,19 +1996,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetGroupQueryInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetGroupQuerySync(GetGroupQueryInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetGroupQueryAsync(GetGroupQueryInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetGroupQueryAsync(GetGroupQueryInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call SearchResources asynchronously, invoking a callback when done
 -- @param SearchResourcesInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.SearchResourcesAsync(SearchResourcesInput, cb)
 	assert(SearchResourcesInput, "You must provide a SearchResourcesInput")
 	local headers = {
@@ -2023,19 +2032,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param SearchResourcesInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.SearchResourcesSync(SearchResourcesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SearchResourcesAsync(SearchResourcesInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.SearchResourcesAsync(SearchResourcesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetGroup asynchronously, invoking a callback when done
 -- @param GetGroupInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetGroupAsync(GetGroupInput, cb)
 	assert(GetGroupInput, "You must provide a GetGroupInput")
 	local headers = {
@@ -2058,19 +2068,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetGroupInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetGroupSync(GetGroupInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetGroupAsync(GetGroupInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetGroupAsync(GetGroupInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call Untag asynchronously, invoking a callback when done
 -- @param UntagInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UntagAsync(UntagInput, cb)
 	assert(UntagInput, "You must provide a UntagInput")
 	local headers = {
@@ -2093,12 +2104,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UntagInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UntagSync(UntagInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UntagAsync(UntagInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UntagAsync(UntagInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

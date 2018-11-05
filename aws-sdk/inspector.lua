@@ -5871,7 +5871,7 @@ end
 --
 --- Call DeleteAssessmentTarget asynchronously, invoking a callback when done
 -- @param DeleteAssessmentTargetRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteAssessmentTargetAsync(DeleteAssessmentTargetRequest, cb)
 	assert(DeleteAssessmentTargetRequest, "You must provide a DeleteAssessmentTargetRequest")
 	local headers = {
@@ -5894,19 +5894,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteAssessmentTargetRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteAssessmentTargetSync(DeleteAssessmentTargetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteAssessmentTargetAsync(DeleteAssessmentTargetRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteAssessmentTargetAsync(DeleteAssessmentTargetRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateAssessmentTarget asynchronously, invoking a callback when done
 -- @param UpdateAssessmentTargetRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateAssessmentTargetAsync(UpdateAssessmentTargetRequest, cb)
 	assert(UpdateAssessmentTargetRequest, "You must provide a UpdateAssessmentTargetRequest")
 	local headers = {
@@ -5929,19 +5930,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateAssessmentTargetRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateAssessmentTargetSync(UpdateAssessmentTargetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateAssessmentTargetAsync(UpdateAssessmentTargetRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateAssessmentTargetAsync(UpdateAssessmentTargetRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call RemoveAttributesFromFindings asynchronously, invoking a callback when done
 -- @param RemoveAttributesFromFindingsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.RemoveAttributesFromFindingsAsync(RemoveAttributesFromFindingsRequest, cb)
 	assert(RemoveAttributesFromFindingsRequest, "You must provide a RemoveAttributesFromFindingsRequest")
 	local headers = {
@@ -5964,19 +5966,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param RemoveAttributesFromFindingsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.RemoveAttributesFromFindingsSync(RemoveAttributesFromFindingsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveAttributesFromFindingsAsync(RemoveAttributesFromFindingsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.RemoveAttributesFromFindingsAsync(RemoveAttributesFromFindingsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetTelemetryMetadata asynchronously, invoking a callback when done
 -- @param GetTelemetryMetadataRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetTelemetryMetadataAsync(GetTelemetryMetadataRequest, cb)
 	assert(GetTelemetryMetadataRequest, "You must provide a GetTelemetryMetadataRequest")
 	local headers = {
@@ -5999,19 +6002,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetTelemetryMetadataRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetTelemetryMetadataSync(GetTelemetryMetadataRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTelemetryMetadataAsync(GetTelemetryMetadataRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetTelemetryMetadataAsync(GetTelemetryMetadataRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeAssessmentRuns asynchronously, invoking a callback when done
 -- @param DescribeAssessmentRunsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeAssessmentRunsAsync(DescribeAssessmentRunsRequest, cb)
 	assert(DescribeAssessmentRunsRequest, "You must provide a DescribeAssessmentRunsRequest")
 	local headers = {
@@ -6034,19 +6038,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeAssessmentRunsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeAssessmentRunsSync(DescribeAssessmentRunsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAssessmentRunsAsync(DescribeAssessmentRunsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeAssessmentRunsAsync(DescribeAssessmentRunsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StartAssessmentRun asynchronously, invoking a callback when done
 -- @param StartAssessmentRunRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StartAssessmentRunAsync(StartAssessmentRunRequest, cb)
 	assert(StartAssessmentRunRequest, "You must provide a StartAssessmentRunRequest")
 	local headers = {
@@ -6069,18 +6074,19 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StartAssessmentRunRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StartAssessmentRunSync(StartAssessmentRunRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartAssessmentRunAsync(StartAssessmentRunRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StartAssessmentRunAsync(StartAssessmentRunRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeCrossAccountAccessRole asynchronously, invoking a callback when done
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeCrossAccountAccessRoleAsync(cb)
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
@@ -6099,19 +6105,20 @@ end
 --- Call DescribeCrossAccountAccessRole synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeCrossAccountAccessRoleSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeCrossAccountAccessRoleAsync(function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeCrossAccountAccessRoleAsync(function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeAssessmentTargets asynchronously, invoking a callback when done
 -- @param DescribeAssessmentTargetsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeAssessmentTargetsAsync(DescribeAssessmentTargetsRequest, cb)
 	assert(DescribeAssessmentTargetsRequest, "You must provide a DescribeAssessmentTargetsRequest")
 	local headers = {
@@ -6134,19 +6141,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeAssessmentTargetsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeAssessmentTargetsSync(DescribeAssessmentTargetsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAssessmentTargetsAsync(DescribeAssessmentTargetsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeAssessmentTargetsAsync(DescribeAssessmentTargetsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListRulesPackages asynchronously, invoking a callback when done
 -- @param ListRulesPackagesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListRulesPackagesAsync(ListRulesPackagesRequest, cb)
 	assert(ListRulesPackagesRequest, "You must provide a ListRulesPackagesRequest")
 	local headers = {
@@ -6169,19 +6177,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListRulesPackagesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListRulesPackagesSync(ListRulesPackagesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListRulesPackagesAsync(ListRulesPackagesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListRulesPackagesAsync(ListRulesPackagesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StopAssessmentRun asynchronously, invoking a callback when done
 -- @param StopAssessmentRunRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StopAssessmentRunAsync(StopAssessmentRunRequest, cb)
 	assert(StopAssessmentRunRequest, "You must provide a StopAssessmentRunRequest")
 	local headers = {
@@ -6204,19 +6213,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StopAssessmentRunRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StopAssessmentRunSync(StopAssessmentRunRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopAssessmentRunAsync(StopAssessmentRunRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StopAssessmentRunAsync(StopAssessmentRunRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListAssessmentTemplates asynchronously, invoking a callback when done
 -- @param ListAssessmentTemplatesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListAssessmentTemplatesAsync(ListAssessmentTemplatesRequest, cb)
 	assert(ListAssessmentTemplatesRequest, "You must provide a ListAssessmentTemplatesRequest")
 	local headers = {
@@ -6239,19 +6249,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListAssessmentTemplatesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListAssessmentTemplatesSync(ListAssessmentTemplatesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAssessmentTemplatesAsync(ListAssessmentTemplatesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListAssessmentTemplatesAsync(ListAssessmentTemplatesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeFindings asynchronously, invoking a callback when done
 -- @param DescribeFindingsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeFindingsAsync(DescribeFindingsRequest, cb)
 	assert(DescribeFindingsRequest, "You must provide a DescribeFindingsRequest")
 	local headers = {
@@ -6274,19 +6285,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeFindingsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeFindingsSync(DescribeFindingsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeFindingsAsync(DescribeFindingsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeFindingsAsync(DescribeFindingsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteAssessmentTemplate asynchronously, invoking a callback when done
 -- @param DeleteAssessmentTemplateRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteAssessmentTemplateAsync(DeleteAssessmentTemplateRequest, cb)
 	assert(DeleteAssessmentTemplateRequest, "You must provide a DeleteAssessmentTemplateRequest")
 	local headers = {
@@ -6309,19 +6321,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteAssessmentTemplateRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteAssessmentTemplateSync(DeleteAssessmentTemplateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteAssessmentTemplateAsync(DeleteAssessmentTemplateRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteAssessmentTemplateAsync(DeleteAssessmentTemplateRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeResourceGroups asynchronously, invoking a callback when done
 -- @param DescribeResourceGroupsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeResourceGroupsAsync(DescribeResourceGroupsRequest, cb)
 	assert(DescribeResourceGroupsRequest, "You must provide a DescribeResourceGroupsRequest")
 	local headers = {
@@ -6344,19 +6357,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeResourceGroupsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeResourceGroupsSync(DescribeResourceGroupsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeResourceGroupsAsync(DescribeResourceGroupsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeResourceGroupsAsync(DescribeResourceGroupsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListFindings asynchronously, invoking a callback when done
 -- @param ListFindingsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListFindingsAsync(ListFindingsRequest, cb)
 	assert(ListFindingsRequest, "You must provide a ListFindingsRequest")
 	local headers = {
@@ -6379,19 +6393,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListFindingsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListFindingsSync(ListFindingsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListFindingsAsync(ListFindingsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListFindingsAsync(ListFindingsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListEventSubscriptions asynchronously, invoking a callback when done
 -- @param ListEventSubscriptionsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListEventSubscriptionsAsync(ListEventSubscriptionsRequest, cb)
 	assert(ListEventSubscriptionsRequest, "You must provide a ListEventSubscriptionsRequest")
 	local headers = {
@@ -6414,19 +6429,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListEventSubscriptionsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListEventSubscriptionsSync(ListEventSubscriptionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListEventSubscriptionsAsync(ListEventSubscriptionsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListEventSubscriptionsAsync(ListEventSubscriptionsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListAssessmentTargets asynchronously, invoking a callback when done
 -- @param ListAssessmentTargetsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListAssessmentTargetsAsync(ListAssessmentTargetsRequest, cb)
 	assert(ListAssessmentTargetsRequest, "You must provide a ListAssessmentTargetsRequest")
 	local headers = {
@@ -6449,19 +6465,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListAssessmentTargetsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListAssessmentTargetsSync(ListAssessmentTargetsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAssessmentTargetsAsync(ListAssessmentTargetsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListAssessmentTargetsAsync(ListAssessmentTargetsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeExclusions asynchronously, invoking a callback when done
 -- @param DescribeExclusionsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeExclusionsAsync(DescribeExclusionsRequest, cb)
 	assert(DescribeExclusionsRequest, "You must provide a DescribeExclusionsRequest")
 	local headers = {
@@ -6484,19 +6501,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeExclusionsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeExclusionsSync(DescribeExclusionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeExclusionsAsync(DescribeExclusionsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeExclusionsAsync(DescribeExclusionsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListExclusions asynchronously, invoking a callback when done
 -- @param ListExclusionsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListExclusionsAsync(ListExclusionsRequest, cb)
 	assert(ListExclusionsRequest, "You must provide a ListExclusionsRequest")
 	local headers = {
@@ -6519,19 +6537,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListExclusionsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListExclusionsSync(ListExclusionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListExclusionsAsync(ListExclusionsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListExclusionsAsync(ListExclusionsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetExclusionsPreview asynchronously, invoking a callback when done
 -- @param GetExclusionsPreviewRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetExclusionsPreviewAsync(GetExclusionsPreviewRequest, cb)
 	assert(GetExclusionsPreviewRequest, "You must provide a GetExclusionsPreviewRequest")
 	local headers = {
@@ -6554,19 +6573,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetExclusionsPreviewRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetExclusionsPreviewSync(GetExclusionsPreviewRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetExclusionsPreviewAsync(GetExclusionsPreviewRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetExclusionsPreviewAsync(GetExclusionsPreviewRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call SetTagsForResource asynchronously, invoking a callback when done
 -- @param SetTagsForResourceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.SetTagsForResourceAsync(SetTagsForResourceRequest, cb)
 	assert(SetTagsForResourceRequest, "You must provide a SetTagsForResourceRequest")
 	local headers = {
@@ -6589,19 +6609,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param SetTagsForResourceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.SetTagsForResourceSync(SetTagsForResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetTagsForResourceAsync(SetTagsForResourceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.SetTagsForResourceAsync(SetTagsForResourceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteAssessmentRun asynchronously, invoking a callback when done
 -- @param DeleteAssessmentRunRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteAssessmentRunAsync(DeleteAssessmentRunRequest, cb)
 	assert(DeleteAssessmentRunRequest, "You must provide a DeleteAssessmentRunRequest")
 	local headers = {
@@ -6624,19 +6645,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteAssessmentRunRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteAssessmentRunSync(DeleteAssessmentRunRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteAssessmentRunAsync(DeleteAssessmentRunRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteAssessmentRunAsync(DeleteAssessmentRunRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateAssessmentTarget asynchronously, invoking a callback when done
 -- @param CreateAssessmentTargetRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateAssessmentTargetAsync(CreateAssessmentTargetRequest, cb)
 	assert(CreateAssessmentTargetRequest, "You must provide a CreateAssessmentTargetRequest")
 	local headers = {
@@ -6659,19 +6681,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateAssessmentTargetRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateAssessmentTargetSync(CreateAssessmentTargetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateAssessmentTargetAsync(CreateAssessmentTargetRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateAssessmentTargetAsync(CreateAssessmentTargetRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UnsubscribeFromEvent asynchronously, invoking a callback when done
 -- @param UnsubscribeFromEventRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UnsubscribeFromEventAsync(UnsubscribeFromEventRequest, cb)
 	assert(UnsubscribeFromEventRequest, "You must provide a UnsubscribeFromEventRequest")
 	local headers = {
@@ -6694,19 +6717,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UnsubscribeFromEventRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UnsubscribeFromEventSync(UnsubscribeFromEventRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UnsubscribeFromEventAsync(UnsubscribeFromEventRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UnsubscribeFromEventAsync(UnsubscribeFromEventRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListAssessmentRuns asynchronously, invoking a callback when done
 -- @param ListAssessmentRunsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListAssessmentRunsAsync(ListAssessmentRunsRequest, cb)
 	assert(ListAssessmentRunsRequest, "You must provide a ListAssessmentRunsRequest")
 	local headers = {
@@ -6729,19 +6753,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListAssessmentRunsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListAssessmentRunsSync(ListAssessmentRunsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAssessmentRunsAsync(ListAssessmentRunsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListAssessmentRunsAsync(ListAssessmentRunsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateExclusionsPreview asynchronously, invoking a callback when done
 -- @param CreateExclusionsPreviewRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateExclusionsPreviewAsync(CreateExclusionsPreviewRequest, cb)
 	assert(CreateExclusionsPreviewRequest, "You must provide a CreateExclusionsPreviewRequest")
 	local headers = {
@@ -6764,19 +6789,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateExclusionsPreviewRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateExclusionsPreviewSync(CreateExclusionsPreviewRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateExclusionsPreviewAsync(CreateExclusionsPreviewRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateExclusionsPreviewAsync(CreateExclusionsPreviewRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call RegisterCrossAccountAccessRole asynchronously, invoking a callback when done
 -- @param RegisterCrossAccountAccessRoleRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.RegisterCrossAccountAccessRoleAsync(RegisterCrossAccountAccessRoleRequest, cb)
 	assert(RegisterCrossAccountAccessRoleRequest, "You must provide a RegisterCrossAccountAccessRoleRequest")
 	local headers = {
@@ -6799,19 +6825,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param RegisterCrossAccountAccessRoleRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.RegisterCrossAccountAccessRoleSync(RegisterCrossAccountAccessRoleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RegisterCrossAccountAccessRoleAsync(RegisterCrossAccountAccessRoleRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.RegisterCrossAccountAccessRoleAsync(RegisterCrossAccountAccessRoleRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AddAttributesToFindings asynchronously, invoking a callback when done
 -- @param AddAttributesToFindingsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AddAttributesToFindingsAsync(AddAttributesToFindingsRequest, cb)
 	assert(AddAttributesToFindingsRequest, "You must provide a AddAttributesToFindingsRequest")
 	local headers = {
@@ -6834,19 +6861,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AddAttributesToFindingsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AddAttributesToFindingsSync(AddAttributesToFindingsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddAttributesToFindingsAsync(AddAttributesToFindingsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AddAttributesToFindingsAsync(AddAttributesToFindingsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateResourceGroup asynchronously, invoking a callback when done
 -- @param CreateResourceGroupRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateResourceGroupAsync(CreateResourceGroupRequest, cb)
 	assert(CreateResourceGroupRequest, "You must provide a CreateResourceGroupRequest")
 	local headers = {
@@ -6869,19 +6897,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateResourceGroupRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateResourceGroupSync(CreateResourceGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateResourceGroupAsync(CreateResourceGroupRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateResourceGroupAsync(CreateResourceGroupRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeAssessmentTemplates asynchronously, invoking a callback when done
 -- @param DescribeAssessmentTemplatesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeAssessmentTemplatesAsync(DescribeAssessmentTemplatesRequest, cb)
 	assert(DescribeAssessmentTemplatesRequest, "You must provide a DescribeAssessmentTemplatesRequest")
 	local headers = {
@@ -6904,19 +6933,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeAssessmentTemplatesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeAssessmentTemplatesSync(DescribeAssessmentTemplatesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAssessmentTemplatesAsync(DescribeAssessmentTemplatesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeAssessmentTemplatesAsync(DescribeAssessmentTemplatesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PreviewAgents asynchronously, invoking a callback when done
 -- @param PreviewAgentsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PreviewAgentsAsync(PreviewAgentsRequest, cb)
 	assert(PreviewAgentsRequest, "You must provide a PreviewAgentsRequest")
 	local headers = {
@@ -6939,19 +6969,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PreviewAgentsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PreviewAgentsSync(PreviewAgentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PreviewAgentsAsync(PreviewAgentsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PreviewAgentsAsync(PreviewAgentsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateAssessmentTemplate asynchronously, invoking a callback when done
 -- @param CreateAssessmentTemplateRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateAssessmentTemplateAsync(CreateAssessmentTemplateRequest, cb)
 	assert(CreateAssessmentTemplateRequest, "You must provide a CreateAssessmentTemplateRequest")
 	local headers = {
@@ -6974,19 +7005,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateAssessmentTemplateRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateAssessmentTemplateSync(CreateAssessmentTemplateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateAssessmentTemplateAsync(CreateAssessmentTemplateRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateAssessmentTemplateAsync(CreateAssessmentTemplateRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call SubscribeToEvent asynchronously, invoking a callback when done
 -- @param SubscribeToEventRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.SubscribeToEventAsync(SubscribeToEventRequest, cb)
 	assert(SubscribeToEventRequest, "You must provide a SubscribeToEventRequest")
 	local headers = {
@@ -7009,19 +7041,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param SubscribeToEventRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.SubscribeToEventSync(SubscribeToEventRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SubscribeToEventAsync(SubscribeToEventRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.SubscribeToEventAsync(SubscribeToEventRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeRulesPackages asynchronously, invoking a callback when done
 -- @param DescribeRulesPackagesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeRulesPackagesAsync(DescribeRulesPackagesRequest, cb)
 	assert(DescribeRulesPackagesRequest, "You must provide a DescribeRulesPackagesRequest")
 	local headers = {
@@ -7044,19 +7077,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeRulesPackagesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeRulesPackagesSync(DescribeRulesPackagesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeRulesPackagesAsync(DescribeRulesPackagesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeRulesPackagesAsync(DescribeRulesPackagesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListTagsForResource asynchronously, invoking a callback when done
 -- @param ListTagsForResourceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 	assert(ListTagsForResourceRequest, "You must provide a ListTagsForResourceRequest")
 	local headers = {
@@ -7079,19 +7113,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListTagsForResourceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListTagsForResourceSync(ListTagsForResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsForResourceAsync(ListTagsForResourceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListTagsForResourceAsync(ListTagsForResourceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListAssessmentRunAgents asynchronously, invoking a callback when done
 -- @param ListAssessmentRunAgentsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListAssessmentRunAgentsAsync(ListAssessmentRunAgentsRequest, cb)
 	assert(ListAssessmentRunAgentsRequest, "You must provide a ListAssessmentRunAgentsRequest")
 	local headers = {
@@ -7114,19 +7149,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListAssessmentRunAgentsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListAssessmentRunAgentsSync(ListAssessmentRunAgentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAssessmentRunAgentsAsync(ListAssessmentRunAgentsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListAssessmentRunAgentsAsync(ListAssessmentRunAgentsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetAssessmentReport asynchronously, invoking a callback when done
 -- @param GetAssessmentReportRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetAssessmentReportAsync(GetAssessmentReportRequest, cb)
 	assert(GetAssessmentReportRequest, "You must provide a GetAssessmentReportRequest")
 	local headers = {
@@ -7149,12 +7185,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetAssessmentReportRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetAssessmentReportSync(GetAssessmentReportRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetAssessmentReportAsync(GetAssessmentReportRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetAssessmentReportAsync(GetAssessmentReportRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

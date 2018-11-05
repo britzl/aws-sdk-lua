@@ -2242,7 +2242,7 @@ end
 --
 --- Call UpdateApplication asynchronously, invoking a callback when done
 -- @param UpdateApplicationRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateApplicationAsync(UpdateApplicationRequest, cb)
 	assert(UpdateApplicationRequest, "You must provide a UpdateApplicationRequest")
 	local headers = {
@@ -2265,19 +2265,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateApplicationRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateApplicationSync(UpdateApplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateApplicationAsync(UpdateApplicationRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateApplicationAsync(UpdateApplicationRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListApplications asynchronously, invoking a callback when done
 -- @param ListApplicationsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListApplicationsAsync(ListApplicationsRequest, cb)
 	assert(ListApplicationsRequest, "You must provide a ListApplicationsRequest")
 	local headers = {
@@ -2300,19 +2301,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListApplicationsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListApplicationsSync(ListApplicationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListApplicationsAsync(ListApplicationsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListApplicationsAsync(ListApplicationsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PutApplicationPolicy asynchronously, invoking a callback when done
 -- @param PutApplicationPolicyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PutApplicationPolicyAsync(PutApplicationPolicyRequest, cb)
 	assert(PutApplicationPolicyRequest, "You must provide a PutApplicationPolicyRequest")
 	local headers = {
@@ -2335,19 +2337,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PutApplicationPolicyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PutApplicationPolicySync(PutApplicationPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutApplicationPolicyAsync(PutApplicationPolicyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PutApplicationPolicyAsync(PutApplicationPolicyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetApplication asynchronously, invoking a callback when done
 -- @param GetApplicationRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetApplicationAsync(GetApplicationRequest, cb)
 	assert(GetApplicationRequest, "You must provide a GetApplicationRequest")
 	local headers = {
@@ -2370,19 +2373,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetApplicationRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetApplicationSync(GetApplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetApplicationAsync(GetApplicationRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetApplicationAsync(GetApplicationRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateCloudFormationChangeSet asynchronously, invoking a callback when done
 -- @param CreateCloudFormationChangeSetRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateCloudFormationChangeSetAsync(CreateCloudFormationChangeSetRequest, cb)
 	assert(CreateCloudFormationChangeSetRequest, "You must provide a CreateCloudFormationChangeSetRequest")
 	local headers = {
@@ -2405,19 +2409,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateCloudFormationChangeSetRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateCloudFormationChangeSetSync(CreateCloudFormationChangeSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateCloudFormationChangeSetAsync(CreateCloudFormationChangeSetRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateCloudFormationChangeSetAsync(CreateCloudFormationChangeSetRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetApplicationPolicy asynchronously, invoking a callback when done
 -- @param GetApplicationPolicyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetApplicationPolicyAsync(GetApplicationPolicyRequest, cb)
 	assert(GetApplicationPolicyRequest, "You must provide a GetApplicationPolicyRequest")
 	local headers = {
@@ -2440,19 +2445,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetApplicationPolicyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetApplicationPolicySync(GetApplicationPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetApplicationPolicyAsync(GetApplicationPolicyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetApplicationPolicyAsync(GetApplicationPolicyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteApplication asynchronously, invoking a callback when done
 -- @param DeleteApplicationRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteApplicationAsync(DeleteApplicationRequest, cb)
 	assert(DeleteApplicationRequest, "You must provide a DeleteApplicationRequest")
 	local headers = {
@@ -2475,19 +2481,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteApplicationRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteApplicationSync(DeleteApplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteApplicationAsync(DeleteApplicationRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteApplicationAsync(DeleteApplicationRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateApplicationVersion asynchronously, invoking a callback when done
 -- @param CreateApplicationVersionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateApplicationVersionAsync(CreateApplicationVersionRequest, cb)
 	assert(CreateApplicationVersionRequest, "You must provide a CreateApplicationVersionRequest")
 	local headers = {
@@ -2510,19 +2517,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateApplicationVersionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateApplicationVersionSync(CreateApplicationVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateApplicationVersionAsync(CreateApplicationVersionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateApplicationVersionAsync(CreateApplicationVersionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListApplicationVersions asynchronously, invoking a callback when done
 -- @param ListApplicationVersionsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListApplicationVersionsAsync(ListApplicationVersionsRequest, cb)
 	assert(ListApplicationVersionsRequest, "You must provide a ListApplicationVersionsRequest")
 	local headers = {
@@ -2545,19 +2553,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListApplicationVersionsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListApplicationVersionsSync(ListApplicationVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListApplicationVersionsAsync(ListApplicationVersionsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListApplicationVersionsAsync(ListApplicationVersionsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateApplication asynchronously, invoking a callback when done
 -- @param CreateApplicationRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateApplicationAsync(CreateApplicationRequest, cb)
 	assert(CreateApplicationRequest, "You must provide a CreateApplicationRequest")
 	local headers = {
@@ -2580,12 +2589,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateApplicationRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateApplicationSync(CreateApplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateApplicationAsync(CreateApplicationRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateApplicationAsync(CreateApplicationRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

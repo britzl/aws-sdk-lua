@@ -4398,7 +4398,7 @@ end
 --
 --- Call DescribeElasticsearchInstanceTypeLimits asynchronously, invoking a callback when done
 -- @param DescribeElasticsearchInstanceTypeLimitsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeElasticsearchInstanceTypeLimitsAsync(DescribeElasticsearchInstanceTypeLimitsRequest, cb)
 	assert(DescribeElasticsearchInstanceTypeLimitsRequest, "You must provide a DescribeElasticsearchInstanceTypeLimitsRequest")
 	local headers = {
@@ -4421,19 +4421,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeElasticsearchInstanceTypeLimitsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeElasticsearchInstanceTypeLimitsSync(DescribeElasticsearchInstanceTypeLimitsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeElasticsearchInstanceTypeLimitsAsync(DescribeElasticsearchInstanceTypeLimitsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeElasticsearchInstanceTypeLimitsAsync(DescribeElasticsearchInstanceTypeLimitsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PurchaseReservedElasticsearchInstanceOffering asynchronously, invoking a callback when done
 -- @param PurchaseReservedElasticsearchInstanceOfferingRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PurchaseReservedElasticsearchInstanceOfferingAsync(PurchaseReservedElasticsearchInstanceOfferingRequest, cb)
 	assert(PurchaseReservedElasticsearchInstanceOfferingRequest, "You must provide a PurchaseReservedElasticsearchInstanceOfferingRequest")
 	local headers = {
@@ -4456,19 +4457,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PurchaseReservedElasticsearchInstanceOfferingRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PurchaseReservedElasticsearchInstanceOfferingSync(PurchaseReservedElasticsearchInstanceOfferingRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PurchaseReservedElasticsearchInstanceOfferingAsync(PurchaseReservedElasticsearchInstanceOfferingRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PurchaseReservedElasticsearchInstanceOfferingAsync(PurchaseReservedElasticsearchInstanceOfferingRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeElasticsearchDomainConfig asynchronously, invoking a callback when done
 -- @param DescribeElasticsearchDomainConfigRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeElasticsearchDomainConfigAsync(DescribeElasticsearchDomainConfigRequest, cb)
 	assert(DescribeElasticsearchDomainConfigRequest, "You must provide a DescribeElasticsearchDomainConfigRequest")
 	local headers = {
@@ -4491,19 +4493,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeElasticsearchDomainConfigRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeElasticsearchDomainConfigSync(DescribeElasticsearchDomainConfigRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeElasticsearchDomainConfigAsync(DescribeElasticsearchDomainConfigRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeElasticsearchDomainConfigAsync(DescribeElasticsearchDomainConfigRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateElasticsearchDomain asynchronously, invoking a callback when done
 -- @param CreateElasticsearchDomainRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateElasticsearchDomainAsync(CreateElasticsearchDomainRequest, cb)
 	assert(CreateElasticsearchDomainRequest, "You must provide a CreateElasticsearchDomainRequest")
 	local headers = {
@@ -4526,19 +4529,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateElasticsearchDomainRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateElasticsearchDomainSync(CreateElasticsearchDomainRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateElasticsearchDomainAsync(CreateElasticsearchDomainRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateElasticsearchDomainAsync(CreateElasticsearchDomainRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListElasticsearchInstanceTypes asynchronously, invoking a callback when done
 -- @param ListElasticsearchInstanceTypesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListElasticsearchInstanceTypesAsync(ListElasticsearchInstanceTypesRequest, cb)
 	assert(ListElasticsearchInstanceTypesRequest, "You must provide a ListElasticsearchInstanceTypesRequest")
 	local headers = {
@@ -4561,19 +4565,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListElasticsearchInstanceTypesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListElasticsearchInstanceTypesSync(ListElasticsearchInstanceTypesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListElasticsearchInstanceTypesAsync(ListElasticsearchInstanceTypesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListElasticsearchInstanceTypesAsync(ListElasticsearchInstanceTypesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetUpgradeStatus asynchronously, invoking a callback when done
 -- @param GetUpgradeStatusRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetUpgradeStatusAsync(GetUpgradeStatusRequest, cb)
 	assert(GetUpgradeStatusRequest, "You must provide a GetUpgradeStatusRequest")
 	local headers = {
@@ -4596,18 +4601,19 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetUpgradeStatusRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetUpgradeStatusSync(GetUpgradeStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetUpgradeStatusAsync(GetUpgradeStatusRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetUpgradeStatusAsync(GetUpgradeStatusRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListDomainNames asynchronously, invoking a callback when done
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListDomainNamesAsync(cb)
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
@@ -4626,19 +4632,20 @@ end
 --- Call ListDomainNames synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListDomainNamesSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDomainNamesAsync(function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListDomainNamesAsync(function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StartElasticsearchServiceSoftwareUpdate asynchronously, invoking a callback when done
 -- @param StartElasticsearchServiceSoftwareUpdateRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StartElasticsearchServiceSoftwareUpdateAsync(StartElasticsearchServiceSoftwareUpdateRequest, cb)
 	assert(StartElasticsearchServiceSoftwareUpdateRequest, "You must provide a StartElasticsearchServiceSoftwareUpdateRequest")
 	local headers = {
@@ -4661,18 +4668,19 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StartElasticsearchServiceSoftwareUpdateRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StartElasticsearchServiceSoftwareUpdateSync(StartElasticsearchServiceSoftwareUpdateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartElasticsearchServiceSoftwareUpdateAsync(StartElasticsearchServiceSoftwareUpdateRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StartElasticsearchServiceSoftwareUpdateAsync(StartElasticsearchServiceSoftwareUpdateRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteElasticsearchServiceRole asynchronously, invoking a callback when done
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteElasticsearchServiceRoleAsync(cb)
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
@@ -4691,19 +4699,20 @@ end
 --- Call DeleteElasticsearchServiceRole synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteElasticsearchServiceRoleSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteElasticsearchServiceRoleAsync(function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteElasticsearchServiceRoleAsync(function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeElasticsearchDomains asynchronously, invoking a callback when done
 -- @param DescribeElasticsearchDomainsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeElasticsearchDomainsAsync(DescribeElasticsearchDomainsRequest, cb)
 	assert(DescribeElasticsearchDomainsRequest, "You must provide a DescribeElasticsearchDomainsRequest")
 	local headers = {
@@ -4726,19 +4735,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeElasticsearchDomainsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeElasticsearchDomainsSync(DescribeElasticsearchDomainsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeElasticsearchDomainsAsync(DescribeElasticsearchDomainsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeElasticsearchDomainsAsync(DescribeElasticsearchDomainsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateElasticsearchDomainConfig asynchronously, invoking a callback when done
 -- @param UpdateElasticsearchDomainConfigRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateElasticsearchDomainConfigAsync(UpdateElasticsearchDomainConfigRequest, cb)
 	assert(UpdateElasticsearchDomainConfigRequest, "You must provide a UpdateElasticsearchDomainConfigRequest")
 	local headers = {
@@ -4761,19 +4771,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateElasticsearchDomainConfigRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateElasticsearchDomainConfigSync(UpdateElasticsearchDomainConfigRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateElasticsearchDomainConfigAsync(UpdateElasticsearchDomainConfigRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateElasticsearchDomainConfigAsync(UpdateElasticsearchDomainConfigRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call RemoveTags asynchronously, invoking a callback when done
 -- @param RemoveTagsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.RemoveTagsAsync(RemoveTagsRequest, cb)
 	assert(RemoveTagsRequest, "You must provide a RemoveTagsRequest")
 	local headers = {
@@ -4796,19 +4807,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param RemoveTagsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.RemoveTagsSync(RemoveTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveTagsAsync(RemoveTagsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.RemoveTagsAsync(RemoveTagsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListTags asynchronously, invoking a callback when done
 -- @param ListTagsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListTagsAsync(ListTagsRequest, cb)
 	assert(ListTagsRequest, "You must provide a ListTagsRequest")
 	local headers = {
@@ -4831,19 +4843,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListTagsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListTagsSync(ListTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsAsync(ListTagsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListTagsAsync(ListTagsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CancelElasticsearchServiceSoftwareUpdate asynchronously, invoking a callback when done
 -- @param CancelElasticsearchServiceSoftwareUpdateRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CancelElasticsearchServiceSoftwareUpdateAsync(CancelElasticsearchServiceSoftwareUpdateRequest, cb)
 	assert(CancelElasticsearchServiceSoftwareUpdateRequest, "You must provide a CancelElasticsearchServiceSoftwareUpdateRequest")
 	local headers = {
@@ -4866,19 +4879,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CancelElasticsearchServiceSoftwareUpdateRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CancelElasticsearchServiceSoftwareUpdateSync(CancelElasticsearchServiceSoftwareUpdateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CancelElasticsearchServiceSoftwareUpdateAsync(CancelElasticsearchServiceSoftwareUpdateRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CancelElasticsearchServiceSoftwareUpdateAsync(CancelElasticsearchServiceSoftwareUpdateRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListElasticsearchVersions asynchronously, invoking a callback when done
 -- @param ListElasticsearchVersionsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListElasticsearchVersionsAsync(ListElasticsearchVersionsRequest, cb)
 	assert(ListElasticsearchVersionsRequest, "You must provide a ListElasticsearchVersionsRequest")
 	local headers = {
@@ -4901,19 +4915,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListElasticsearchVersionsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListElasticsearchVersionsSync(ListElasticsearchVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListElasticsearchVersionsAsync(ListElasticsearchVersionsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListElasticsearchVersionsAsync(ListElasticsearchVersionsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpgradeElasticsearchDomain asynchronously, invoking a callback when done
 -- @param UpgradeElasticsearchDomainRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpgradeElasticsearchDomainAsync(UpgradeElasticsearchDomainRequest, cb)
 	assert(UpgradeElasticsearchDomainRequest, "You must provide a UpgradeElasticsearchDomainRequest")
 	local headers = {
@@ -4936,19 +4951,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpgradeElasticsearchDomainRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpgradeElasticsearchDomainSync(UpgradeElasticsearchDomainRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpgradeElasticsearchDomainAsync(UpgradeElasticsearchDomainRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpgradeElasticsearchDomainAsync(UpgradeElasticsearchDomainRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteElasticsearchDomain asynchronously, invoking a callback when done
 -- @param DeleteElasticsearchDomainRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteElasticsearchDomainAsync(DeleteElasticsearchDomainRequest, cb)
 	assert(DeleteElasticsearchDomainRequest, "You must provide a DeleteElasticsearchDomainRequest")
 	local headers = {
@@ -4971,19 +4987,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteElasticsearchDomainRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteElasticsearchDomainSync(DeleteElasticsearchDomainRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteElasticsearchDomainAsync(DeleteElasticsearchDomainRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteElasticsearchDomainAsync(DeleteElasticsearchDomainRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AddTags asynchronously, invoking a callback when done
 -- @param AddTagsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AddTagsAsync(AddTagsRequest, cb)
 	assert(AddTagsRequest, "You must provide a AddTagsRequest")
 	local headers = {
@@ -5006,19 +5023,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AddTagsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AddTagsSync(AddTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddTagsAsync(AddTagsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AddTagsAsync(AddTagsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetCompatibleElasticsearchVersions asynchronously, invoking a callback when done
 -- @param GetCompatibleElasticsearchVersionsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetCompatibleElasticsearchVersionsAsync(GetCompatibleElasticsearchVersionsRequest, cb)
 	assert(GetCompatibleElasticsearchVersionsRequest, "You must provide a GetCompatibleElasticsearchVersionsRequest")
 	local headers = {
@@ -5041,19 +5059,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetCompatibleElasticsearchVersionsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetCompatibleElasticsearchVersionsSync(GetCompatibleElasticsearchVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCompatibleElasticsearchVersionsAsync(GetCompatibleElasticsearchVersionsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetCompatibleElasticsearchVersionsAsync(GetCompatibleElasticsearchVersionsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeElasticsearchDomain asynchronously, invoking a callback when done
 -- @param DescribeElasticsearchDomainRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeElasticsearchDomainAsync(DescribeElasticsearchDomainRequest, cb)
 	assert(DescribeElasticsearchDomainRequest, "You must provide a DescribeElasticsearchDomainRequest")
 	local headers = {
@@ -5076,19 +5095,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeElasticsearchDomainRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeElasticsearchDomainSync(DescribeElasticsearchDomainRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeElasticsearchDomainAsync(DescribeElasticsearchDomainRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeElasticsearchDomainAsync(DescribeElasticsearchDomainRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeReservedElasticsearchInstanceOfferings asynchronously, invoking a callback when done
 -- @param DescribeReservedElasticsearchInstanceOfferingsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeReservedElasticsearchInstanceOfferingsAsync(DescribeReservedElasticsearchInstanceOfferingsRequest, cb)
 	assert(DescribeReservedElasticsearchInstanceOfferingsRequest, "You must provide a DescribeReservedElasticsearchInstanceOfferingsRequest")
 	local headers = {
@@ -5111,19 +5131,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeReservedElasticsearchInstanceOfferingsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeReservedElasticsearchInstanceOfferingsSync(DescribeReservedElasticsearchInstanceOfferingsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeReservedElasticsearchInstanceOfferingsAsync(DescribeReservedElasticsearchInstanceOfferingsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeReservedElasticsearchInstanceOfferingsAsync(DescribeReservedElasticsearchInstanceOfferingsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetUpgradeHistory asynchronously, invoking a callback when done
 -- @param GetUpgradeHistoryRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetUpgradeHistoryAsync(GetUpgradeHistoryRequest, cb)
 	assert(GetUpgradeHistoryRequest, "You must provide a GetUpgradeHistoryRequest")
 	local headers = {
@@ -5146,19 +5167,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetUpgradeHistoryRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetUpgradeHistorySync(GetUpgradeHistoryRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetUpgradeHistoryAsync(GetUpgradeHistoryRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetUpgradeHistoryAsync(GetUpgradeHistoryRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeReservedElasticsearchInstances asynchronously, invoking a callback when done
 -- @param DescribeReservedElasticsearchInstancesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeReservedElasticsearchInstancesAsync(DescribeReservedElasticsearchInstancesRequest, cb)
 	assert(DescribeReservedElasticsearchInstancesRequest, "You must provide a DescribeReservedElasticsearchInstancesRequest")
 	local headers = {
@@ -5181,12 +5203,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeReservedElasticsearchInstancesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeReservedElasticsearchInstancesSync(DescribeReservedElasticsearchInstancesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeReservedElasticsearchInstancesAsync(DescribeReservedElasticsearchInstancesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeReservedElasticsearchInstancesAsync(DescribeReservedElasticsearchInstancesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

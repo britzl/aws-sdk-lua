@@ -1214,7 +1214,7 @@ end
 --
 --- Call ListS3Resources asynchronously, invoking a callback when done
 -- @param ListS3ResourcesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListS3ResourcesAsync(ListS3ResourcesRequest, cb)
 	assert(ListS3ResourcesRequest, "You must provide a ListS3ResourcesRequest")
 	local headers = {
@@ -1237,19 +1237,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListS3ResourcesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListS3ResourcesSync(ListS3ResourcesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListS3ResourcesAsync(ListS3ResourcesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListS3ResourcesAsync(ListS3ResourcesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DisassociateMemberAccount asynchronously, invoking a callback when done
 -- @param DisassociateMemberAccountRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DisassociateMemberAccountAsync(DisassociateMemberAccountRequest, cb)
 	assert(DisassociateMemberAccountRequest, "You must provide a DisassociateMemberAccountRequest")
 	local headers = {
@@ -1272,19 +1273,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DisassociateMemberAccountRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DisassociateMemberAccountSync(DisassociateMemberAccountRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisassociateMemberAccountAsync(DisassociateMemberAccountRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DisassociateMemberAccountAsync(DisassociateMemberAccountRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AssociateMemberAccount asynchronously, invoking a callback when done
 -- @param AssociateMemberAccountRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AssociateMemberAccountAsync(AssociateMemberAccountRequest, cb)
 	assert(AssociateMemberAccountRequest, "You must provide a AssociateMemberAccountRequest")
 	local headers = {
@@ -1307,19 +1309,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AssociateMemberAccountRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AssociateMemberAccountSync(AssociateMemberAccountRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateMemberAccountAsync(AssociateMemberAccountRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AssociateMemberAccountAsync(AssociateMemberAccountRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DisassociateS3Resources asynchronously, invoking a callback when done
 -- @param DisassociateS3ResourcesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DisassociateS3ResourcesAsync(DisassociateS3ResourcesRequest, cb)
 	assert(DisassociateS3ResourcesRequest, "You must provide a DisassociateS3ResourcesRequest")
 	local headers = {
@@ -1342,19 +1345,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DisassociateS3ResourcesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DisassociateS3ResourcesSync(DisassociateS3ResourcesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisassociateS3ResourcesAsync(DisassociateS3ResourcesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DisassociateS3ResourcesAsync(DisassociateS3ResourcesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateS3Resources asynchronously, invoking a callback when done
 -- @param UpdateS3ResourcesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateS3ResourcesAsync(UpdateS3ResourcesRequest, cb)
 	assert(UpdateS3ResourcesRequest, "You must provide a UpdateS3ResourcesRequest")
 	local headers = {
@@ -1377,19 +1381,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateS3ResourcesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateS3ResourcesSync(UpdateS3ResourcesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateS3ResourcesAsync(UpdateS3ResourcesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateS3ResourcesAsync(UpdateS3ResourcesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListMemberAccounts asynchronously, invoking a callback when done
 -- @param ListMemberAccountsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListMemberAccountsAsync(ListMemberAccountsRequest, cb)
 	assert(ListMemberAccountsRequest, "You must provide a ListMemberAccountsRequest")
 	local headers = {
@@ -1412,19 +1417,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListMemberAccountsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListMemberAccountsSync(ListMemberAccountsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListMemberAccountsAsync(ListMemberAccountsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListMemberAccountsAsync(ListMemberAccountsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AssociateS3Resources asynchronously, invoking a callback when done
 -- @param AssociateS3ResourcesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AssociateS3ResourcesAsync(AssociateS3ResourcesRequest, cb)
 	assert(AssociateS3ResourcesRequest, "You must provide a AssociateS3ResourcesRequest")
 	local headers = {
@@ -1447,12 +1453,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AssociateS3ResourcesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AssociateS3ResourcesSync(AssociateS3ResourcesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateS3ResourcesAsync(AssociateS3ResourcesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AssociateS3ResourcesAsync(AssociateS3ResourcesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

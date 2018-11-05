@@ -1980,7 +1980,7 @@ end
 --
 --- Call ListSigningJobs asynchronously, invoking a callback when done
 -- @param ListSigningJobsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListSigningJobsAsync(ListSigningJobsRequest, cb)
 	assert(ListSigningJobsRequest, "You must provide a ListSigningJobsRequest")
 	local headers = {
@@ -2003,19 +2003,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListSigningJobsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListSigningJobsSync(ListSigningJobsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListSigningJobsAsync(ListSigningJobsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListSigningJobsAsync(ListSigningJobsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeSigningJob asynchronously, invoking a callback when done
 -- @param DescribeSigningJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeSigningJobAsync(DescribeSigningJobRequest, cb)
 	assert(DescribeSigningJobRequest, "You must provide a DescribeSigningJobRequest")
 	local headers = {
@@ -2038,19 +2039,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeSigningJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeSigningJobSync(DescribeSigningJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeSigningJobAsync(DescribeSigningJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeSigningJobAsync(DescribeSigningJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetSigningProfile asynchronously, invoking a callback when done
 -- @param GetSigningProfileRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetSigningProfileAsync(GetSigningProfileRequest, cb)
 	assert(GetSigningProfileRequest, "You must provide a GetSigningProfileRequest")
 	local headers = {
@@ -2073,19 +2075,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetSigningProfileRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetSigningProfileSync(GetSigningProfileRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSigningProfileAsync(GetSigningProfileRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetSigningProfileAsync(GetSigningProfileRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListSigningProfiles asynchronously, invoking a callback when done
 -- @param ListSigningProfilesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListSigningProfilesAsync(ListSigningProfilesRequest, cb)
 	assert(ListSigningProfilesRequest, "You must provide a ListSigningProfilesRequest")
 	local headers = {
@@ -2108,19 +2111,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListSigningProfilesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListSigningProfilesSync(ListSigningProfilesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListSigningProfilesAsync(ListSigningProfilesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListSigningProfilesAsync(ListSigningProfilesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CancelSigningProfile asynchronously, invoking a callback when done
 -- @param CancelSigningProfileRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CancelSigningProfileAsync(CancelSigningProfileRequest, cb)
 	assert(CancelSigningProfileRequest, "You must provide a CancelSigningProfileRequest")
 	local headers = {
@@ -2143,19 +2147,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CancelSigningProfileRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CancelSigningProfileSync(CancelSigningProfileRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CancelSigningProfileAsync(CancelSigningProfileRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CancelSigningProfileAsync(CancelSigningProfileRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListSigningPlatforms asynchronously, invoking a callback when done
 -- @param ListSigningPlatformsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListSigningPlatformsAsync(ListSigningPlatformsRequest, cb)
 	assert(ListSigningPlatformsRequest, "You must provide a ListSigningPlatformsRequest")
 	local headers = {
@@ -2178,19 +2183,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListSigningPlatformsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListSigningPlatformsSync(ListSigningPlatformsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListSigningPlatformsAsync(ListSigningPlatformsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListSigningPlatformsAsync(ListSigningPlatformsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StartSigningJob asynchronously, invoking a callback when done
 -- @param StartSigningJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StartSigningJobAsync(StartSigningJobRequest, cb)
 	assert(StartSigningJobRequest, "You must provide a StartSigningJobRequest")
 	local headers = {
@@ -2213,19 +2219,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StartSigningJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StartSigningJobSync(StartSigningJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartSigningJobAsync(StartSigningJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StartSigningJobAsync(StartSigningJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetSigningPlatform asynchronously, invoking a callback when done
 -- @param GetSigningPlatformRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetSigningPlatformAsync(GetSigningPlatformRequest, cb)
 	assert(GetSigningPlatformRequest, "You must provide a GetSigningPlatformRequest")
 	local headers = {
@@ -2248,19 +2255,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetSigningPlatformRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetSigningPlatformSync(GetSigningPlatformRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSigningPlatformAsync(GetSigningPlatformRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetSigningPlatformAsync(GetSigningPlatformRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PutSigningProfile asynchronously, invoking a callback when done
 -- @param PutSigningProfileRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PutSigningProfileAsync(PutSigningProfileRequest, cb)
 	assert(PutSigningProfileRequest, "You must provide a PutSigningProfileRequest")
 	local headers = {
@@ -2283,12 +2291,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PutSigningProfileRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PutSigningProfileSync(PutSigningProfileRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutSigningProfileAsync(PutSigningProfileRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PutSigningProfileAsync(PutSigningProfileRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

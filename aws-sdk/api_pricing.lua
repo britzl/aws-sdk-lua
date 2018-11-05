@@ -780,7 +780,7 @@ end
 --
 --- Call GetProducts asynchronously, invoking a callback when done
 -- @param GetProductsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetProductsAsync(GetProductsRequest, cb)
 	assert(GetProductsRequest, "You must provide a GetProductsRequest")
 	local headers = {
@@ -803,19 +803,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetProductsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetProductsSync(GetProductsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetProductsAsync(GetProductsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetProductsAsync(GetProductsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeServices asynchronously, invoking a callback when done
 -- @param DescribeServicesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeServicesAsync(DescribeServicesRequest, cb)
 	assert(DescribeServicesRequest, "You must provide a DescribeServicesRequest")
 	local headers = {
@@ -838,19 +839,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeServicesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeServicesSync(DescribeServicesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeServicesAsync(DescribeServicesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeServicesAsync(DescribeServicesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetAttributeValues asynchronously, invoking a callback when done
 -- @param GetAttributeValuesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetAttributeValuesAsync(GetAttributeValuesRequest, cb)
 	assert(GetAttributeValuesRequest, "You must provide a GetAttributeValuesRequest")
 	local headers = {
@@ -873,12 +875,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetAttributeValuesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetAttributeValuesSync(GetAttributeValuesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetAttributeValuesAsync(GetAttributeValuesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetAttributeValuesAsync(GetAttributeValuesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

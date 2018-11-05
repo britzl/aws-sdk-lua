@@ -1089,7 +1089,7 @@ end
 --
 --- Call GetTagKeys asynchronously, invoking a callback when done
 -- @param GetTagKeysInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetTagKeysAsync(GetTagKeysInput, cb)
 	assert(GetTagKeysInput, "You must provide a GetTagKeysInput")
 	local headers = {
@@ -1112,19 +1112,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetTagKeysInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetTagKeysSync(GetTagKeysInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTagKeysAsync(GetTagKeysInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetTagKeysAsync(GetTagKeysInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call TagResources asynchronously, invoking a callback when done
 -- @param TagResourcesInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.TagResourcesAsync(TagResourcesInput, cb)
 	assert(TagResourcesInput, "You must provide a TagResourcesInput")
 	local headers = {
@@ -1147,19 +1148,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param TagResourcesInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.TagResourcesSync(TagResourcesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TagResourcesAsync(TagResourcesInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.TagResourcesAsync(TagResourcesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UntagResources asynchronously, invoking a callback when done
 -- @param UntagResourcesInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UntagResourcesAsync(UntagResourcesInput, cb)
 	assert(UntagResourcesInput, "You must provide a UntagResourcesInput")
 	local headers = {
@@ -1182,19 +1184,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UntagResourcesInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UntagResourcesSync(UntagResourcesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UntagResourcesAsync(UntagResourcesInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UntagResourcesAsync(UntagResourcesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetTagValues asynchronously, invoking a callback when done
 -- @param GetTagValuesInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetTagValuesAsync(GetTagValuesInput, cb)
 	assert(GetTagValuesInput, "You must provide a GetTagValuesInput")
 	local headers = {
@@ -1217,19 +1220,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetTagValuesInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetTagValuesSync(GetTagValuesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTagValuesAsync(GetTagValuesInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetTagValuesAsync(GetTagValuesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetResources asynchronously, invoking a callback when done
 -- @param GetResourcesInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetResourcesAsync(GetResourcesInput, cb)
 	assert(GetResourcesInput, "You must provide a GetResourcesInput")
 	local headers = {
@@ -1252,12 +1256,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetResourcesInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetResourcesSync(GetResourcesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetResourcesAsync(GetResourcesInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetResourcesAsync(GetResourcesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

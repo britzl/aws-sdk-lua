@@ -221,7 +221,7 @@ end
 --
 --- Call InvokeEndpoint asynchronously, invoking a callback when done
 -- @param InvokeEndpointInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.InvokeEndpointAsync(InvokeEndpointInput, cb)
 	assert(InvokeEndpointInput, "You must provide a InvokeEndpointInput")
 	local headers = {
@@ -244,12 +244,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param InvokeEndpointInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.InvokeEndpointSync(InvokeEndpointInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.InvokeEndpointAsync(InvokeEndpointInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.InvokeEndpointAsync(InvokeEndpointInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

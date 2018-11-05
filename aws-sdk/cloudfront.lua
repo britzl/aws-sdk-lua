@@ -7996,7 +7996,7 @@ end
 --
 --- Call UpdateStreamingDistribution2018_06_18 asynchronously, invoking a callback when done
 -- @param UpdateStreamingDistributionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateStreamingDistribution2018_06_18Async(UpdateStreamingDistributionRequest, cb)
 	assert(UpdateStreamingDistributionRequest, "You must provide a UpdateStreamingDistributionRequest")
 	local headers = {
@@ -8019,19 +8019,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateStreamingDistributionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateStreamingDistribution2018_06_18Sync(UpdateStreamingDistributionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateStreamingDistribution2018_06_18Async(UpdateStreamingDistributionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateStreamingDistribution2018_06_18Async(UpdateStreamingDistributionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteFieldLevelEncryptionConfig2018_06_18 asynchronously, invoking a callback when done
 -- @param DeleteFieldLevelEncryptionConfigRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteFieldLevelEncryptionConfig2018_06_18Async(DeleteFieldLevelEncryptionConfigRequest, cb)
 	assert(DeleteFieldLevelEncryptionConfigRequest, "You must provide a DeleteFieldLevelEncryptionConfigRequest")
 	local headers = {
@@ -8054,19 +8055,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteFieldLevelEncryptionConfigRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteFieldLevelEncryptionConfig2018_06_18Sync(DeleteFieldLevelEncryptionConfigRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteFieldLevelEncryptionConfig2018_06_18Async(DeleteFieldLevelEncryptionConfigRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteFieldLevelEncryptionConfig2018_06_18Async(DeleteFieldLevelEncryptionConfigRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListDistributions2018_06_18 asynchronously, invoking a callback when done
 -- @param ListDistributionsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListDistributions2018_06_18Async(ListDistributionsRequest, cb)
 	assert(ListDistributionsRequest, "You must provide a ListDistributionsRequest")
 	local headers = {
@@ -8089,19 +8091,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListDistributionsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListDistributions2018_06_18Sync(ListDistributionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDistributions2018_06_18Async(ListDistributionsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListDistributions2018_06_18Async(ListDistributionsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetStreamingDistribution2018_06_18 asynchronously, invoking a callback when done
 -- @param GetStreamingDistributionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetStreamingDistribution2018_06_18Async(GetStreamingDistributionRequest, cb)
 	assert(GetStreamingDistributionRequest, "You must provide a GetStreamingDistributionRequest")
 	local headers = {
@@ -8124,19 +8127,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetStreamingDistributionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetStreamingDistribution2018_06_18Sync(GetStreamingDistributionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetStreamingDistribution2018_06_18Async(GetStreamingDistributionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetStreamingDistribution2018_06_18Async(GetStreamingDistributionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetPublicKey2018_06_18 asynchronously, invoking a callback when done
 -- @param GetPublicKeyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetPublicKey2018_06_18Async(GetPublicKeyRequest, cb)
 	assert(GetPublicKeyRequest, "You must provide a GetPublicKeyRequest")
 	local headers = {
@@ -8159,19 +8163,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetPublicKeyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetPublicKey2018_06_18Sync(GetPublicKeyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetPublicKey2018_06_18Async(GetPublicKeyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetPublicKey2018_06_18Async(GetPublicKeyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateStreamingDistributionWithTags2018_06_18 asynchronously, invoking a callback when done
 -- @param CreateStreamingDistributionWithTagsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateStreamingDistributionWithTags2018_06_18Async(CreateStreamingDistributionWithTagsRequest, cb)
 	assert(CreateStreamingDistributionWithTagsRequest, "You must provide a CreateStreamingDistributionWithTagsRequest")
 	local headers = {
@@ -8194,19 +8199,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateStreamingDistributionWithTagsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateStreamingDistributionWithTags2018_06_18Sync(CreateStreamingDistributionWithTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateStreamingDistributionWithTags2018_06_18Async(CreateStreamingDistributionWithTagsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateStreamingDistributionWithTags2018_06_18Async(CreateStreamingDistributionWithTagsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdatePublicKey2018_06_18 asynchronously, invoking a callback when done
 -- @param UpdatePublicKeyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdatePublicKey2018_06_18Async(UpdatePublicKeyRequest, cb)
 	assert(UpdatePublicKeyRequest, "You must provide a UpdatePublicKeyRequest")
 	local headers = {
@@ -8229,19 +8235,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdatePublicKeyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdatePublicKey2018_06_18Sync(UpdatePublicKeyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdatePublicKey2018_06_18Async(UpdatePublicKeyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdatePublicKey2018_06_18Async(UpdatePublicKeyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteFieldLevelEncryptionProfile2018_06_18 asynchronously, invoking a callback when done
 -- @param DeleteFieldLevelEncryptionProfileRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteFieldLevelEncryptionProfile2018_06_18Async(DeleteFieldLevelEncryptionProfileRequest, cb)
 	assert(DeleteFieldLevelEncryptionProfileRequest, "You must provide a DeleteFieldLevelEncryptionProfileRequest")
 	local headers = {
@@ -8264,19 +8271,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteFieldLevelEncryptionProfileRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteFieldLevelEncryptionProfile2018_06_18Sync(DeleteFieldLevelEncryptionProfileRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteFieldLevelEncryptionProfile2018_06_18Async(DeleteFieldLevelEncryptionProfileRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteFieldLevelEncryptionProfile2018_06_18Async(DeleteFieldLevelEncryptionProfileRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateDistribution2018_06_18 asynchronously, invoking a callback when done
 -- @param CreateDistributionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateDistribution2018_06_18Async(CreateDistributionRequest, cb)
 	assert(CreateDistributionRequest, "You must provide a CreateDistributionRequest")
 	local headers = {
@@ -8299,19 +8307,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateDistributionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateDistribution2018_06_18Sync(CreateDistributionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDistribution2018_06_18Async(CreateDistributionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateDistribution2018_06_18Async(CreateDistributionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateFieldLevelEncryptionProfile2018_06_18 asynchronously, invoking a callback when done
 -- @param CreateFieldLevelEncryptionProfileRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateFieldLevelEncryptionProfile2018_06_18Async(CreateFieldLevelEncryptionProfileRequest, cb)
 	assert(CreateFieldLevelEncryptionProfileRequest, "You must provide a CreateFieldLevelEncryptionProfileRequest")
 	local headers = {
@@ -8334,19 +8343,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateFieldLevelEncryptionProfileRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateFieldLevelEncryptionProfile2018_06_18Sync(CreateFieldLevelEncryptionProfileRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateFieldLevelEncryptionProfile2018_06_18Async(CreateFieldLevelEncryptionProfileRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateFieldLevelEncryptionProfile2018_06_18Async(CreateFieldLevelEncryptionProfileRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListInvalidations2018_06_18 asynchronously, invoking a callback when done
 -- @param ListInvalidationsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListInvalidations2018_06_18Async(ListInvalidationsRequest, cb)
 	assert(ListInvalidationsRequest, "You must provide a ListInvalidationsRequest")
 	local headers = {
@@ -8369,19 +8379,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListInvalidationsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListInvalidations2018_06_18Sync(ListInvalidationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListInvalidations2018_06_18Async(ListInvalidationsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListInvalidations2018_06_18Async(ListInvalidationsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListStreamingDistributions2018_06_18 asynchronously, invoking a callback when done
 -- @param ListStreamingDistributionsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListStreamingDistributions2018_06_18Async(ListStreamingDistributionsRequest, cb)
 	assert(ListStreamingDistributionsRequest, "You must provide a ListStreamingDistributionsRequest")
 	local headers = {
@@ -8404,19 +8415,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListStreamingDistributionsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListStreamingDistributions2018_06_18Sync(ListStreamingDistributionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListStreamingDistributions2018_06_18Async(ListStreamingDistributionsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListStreamingDistributions2018_06_18Async(ListStreamingDistributionsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateDistribution2018_06_18 asynchronously, invoking a callback when done
 -- @param UpdateDistributionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateDistribution2018_06_18Async(UpdateDistributionRequest, cb)
 	assert(UpdateDistributionRequest, "You must provide a UpdateDistributionRequest")
 	local headers = {
@@ -8439,19 +8451,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateDistributionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateDistribution2018_06_18Sync(UpdateDistributionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateDistribution2018_06_18Async(UpdateDistributionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateDistribution2018_06_18Async(UpdateDistributionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateStreamingDistribution2018_06_18 asynchronously, invoking a callback when done
 -- @param CreateStreamingDistributionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateStreamingDistribution2018_06_18Async(CreateStreamingDistributionRequest, cb)
 	assert(CreateStreamingDistributionRequest, "You must provide a CreateStreamingDistributionRequest")
 	local headers = {
@@ -8474,19 +8487,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateStreamingDistributionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateStreamingDistribution2018_06_18Sync(CreateStreamingDistributionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateStreamingDistribution2018_06_18Async(CreateStreamingDistributionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateStreamingDistribution2018_06_18Async(CreateStreamingDistributionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetPublicKeyConfig2018_06_18 asynchronously, invoking a callback when done
 -- @param GetPublicKeyConfigRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetPublicKeyConfig2018_06_18Async(GetPublicKeyConfigRequest, cb)
 	assert(GetPublicKeyConfigRequest, "You must provide a GetPublicKeyConfigRequest")
 	local headers = {
@@ -8509,19 +8523,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetPublicKeyConfigRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetPublicKeyConfig2018_06_18Sync(GetPublicKeyConfigRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetPublicKeyConfig2018_06_18Async(GetPublicKeyConfigRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetPublicKeyConfig2018_06_18Async(GetPublicKeyConfigRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteDistribution2018_06_18 asynchronously, invoking a callback when done
 -- @param DeleteDistributionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteDistribution2018_06_18Async(DeleteDistributionRequest, cb)
 	assert(DeleteDistributionRequest, "You must provide a DeleteDistributionRequest")
 	local headers = {
@@ -8544,19 +8559,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteDistributionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteDistribution2018_06_18Sync(DeleteDistributionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDistribution2018_06_18Async(DeleteDistributionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteDistribution2018_06_18Async(DeleteDistributionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call TagResource2018_06_18 asynchronously, invoking a callback when done
 -- @param TagResourceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.TagResource2018_06_18Async(TagResourceRequest, cb)
 	assert(TagResourceRequest, "You must provide a TagResourceRequest")
 	local headers = {
@@ -8579,19 +8595,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param TagResourceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.TagResource2018_06_18Sync(TagResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TagResource2018_06_18Async(TagResourceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.TagResource2018_06_18Async(TagResourceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreatePublicKey2018_06_18 asynchronously, invoking a callback when done
 -- @param CreatePublicKeyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreatePublicKey2018_06_18Async(CreatePublicKeyRequest, cb)
 	assert(CreatePublicKeyRequest, "You must provide a CreatePublicKeyRequest")
 	local headers = {
@@ -8614,19 +8631,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreatePublicKeyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreatePublicKey2018_06_18Sync(CreatePublicKeyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreatePublicKey2018_06_18Async(CreatePublicKeyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreatePublicKey2018_06_18Async(CreatePublicKeyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeletePublicKey2018_06_18 asynchronously, invoking a callback when done
 -- @param DeletePublicKeyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeletePublicKey2018_06_18Async(DeletePublicKeyRequest, cb)
 	assert(DeletePublicKeyRequest, "You must provide a DeletePublicKeyRequest")
 	local headers = {
@@ -8649,19 +8667,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeletePublicKeyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeletePublicKey2018_06_18Sync(DeletePublicKeyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeletePublicKey2018_06_18Async(DeletePublicKeyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeletePublicKey2018_06_18Async(DeletePublicKeyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetInvalidation2018_06_18 asynchronously, invoking a callback when done
 -- @param GetInvalidationRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetInvalidation2018_06_18Async(GetInvalidationRequest, cb)
 	assert(GetInvalidationRequest, "You must provide a GetInvalidationRequest")
 	local headers = {
@@ -8684,19 +8703,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetInvalidationRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetInvalidation2018_06_18Sync(GetInvalidationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetInvalidation2018_06_18Async(GetInvalidationRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetInvalidation2018_06_18Async(GetInvalidationRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteCloudFrontOriginAccessIdentity2018_06_18 asynchronously, invoking a callback when done
 -- @param DeleteCloudFrontOriginAccessIdentityRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteCloudFrontOriginAccessIdentity2018_06_18Async(DeleteCloudFrontOriginAccessIdentityRequest, cb)
 	assert(DeleteCloudFrontOriginAccessIdentityRequest, "You must provide a DeleteCloudFrontOriginAccessIdentityRequest")
 	local headers = {
@@ -8719,19 +8739,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteCloudFrontOriginAccessIdentityRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteCloudFrontOriginAccessIdentity2018_06_18Sync(DeleteCloudFrontOriginAccessIdentityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteCloudFrontOriginAccessIdentity2018_06_18Async(DeleteCloudFrontOriginAccessIdentityRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteCloudFrontOriginAccessIdentity2018_06_18Async(DeleteCloudFrontOriginAccessIdentityRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateFieldLevelEncryptionProfile2018_06_18 asynchronously, invoking a callback when done
 -- @param UpdateFieldLevelEncryptionProfileRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateFieldLevelEncryptionProfile2018_06_18Async(UpdateFieldLevelEncryptionProfileRequest, cb)
 	assert(UpdateFieldLevelEncryptionProfileRequest, "You must provide a UpdateFieldLevelEncryptionProfileRequest")
 	local headers = {
@@ -8754,19 +8775,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateFieldLevelEncryptionProfileRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateFieldLevelEncryptionProfile2018_06_18Sync(UpdateFieldLevelEncryptionProfileRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateFieldLevelEncryptionProfile2018_06_18Async(UpdateFieldLevelEncryptionProfileRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateFieldLevelEncryptionProfile2018_06_18Async(UpdateFieldLevelEncryptionProfileRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListCloudFrontOriginAccessIdentities2018_06_18 asynchronously, invoking a callback when done
 -- @param ListCloudFrontOriginAccessIdentitiesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListCloudFrontOriginAccessIdentities2018_06_18Async(ListCloudFrontOriginAccessIdentitiesRequest, cb)
 	assert(ListCloudFrontOriginAccessIdentitiesRequest, "You must provide a ListCloudFrontOriginAccessIdentitiesRequest")
 	local headers = {
@@ -8789,19 +8811,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListCloudFrontOriginAccessIdentitiesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListCloudFrontOriginAccessIdentities2018_06_18Sync(ListCloudFrontOriginAccessIdentitiesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListCloudFrontOriginAccessIdentities2018_06_18Async(ListCloudFrontOriginAccessIdentitiesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListCloudFrontOriginAccessIdentities2018_06_18Async(ListCloudFrontOriginAccessIdentitiesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateFieldLevelEncryptionConfig2018_06_18 asynchronously, invoking a callback when done
 -- @param CreateFieldLevelEncryptionConfigRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateFieldLevelEncryptionConfig2018_06_18Async(CreateFieldLevelEncryptionConfigRequest, cb)
 	assert(CreateFieldLevelEncryptionConfigRequest, "You must provide a CreateFieldLevelEncryptionConfigRequest")
 	local headers = {
@@ -8824,19 +8847,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateFieldLevelEncryptionConfigRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateFieldLevelEncryptionConfig2018_06_18Sync(CreateFieldLevelEncryptionConfigRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateFieldLevelEncryptionConfig2018_06_18Async(CreateFieldLevelEncryptionConfigRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateFieldLevelEncryptionConfig2018_06_18Async(CreateFieldLevelEncryptionConfigRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListPublicKeys2018_06_18 asynchronously, invoking a callback when done
 -- @param ListPublicKeysRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListPublicKeys2018_06_18Async(ListPublicKeysRequest, cb)
 	assert(ListPublicKeysRequest, "You must provide a ListPublicKeysRequest")
 	local headers = {
@@ -8859,19 +8883,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListPublicKeysRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListPublicKeys2018_06_18Sync(ListPublicKeysRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPublicKeys2018_06_18Async(ListPublicKeysRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListPublicKeys2018_06_18Async(ListPublicKeysRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetStreamingDistributionConfig2018_06_18 asynchronously, invoking a callback when done
 -- @param GetStreamingDistributionConfigRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetStreamingDistributionConfig2018_06_18Async(GetStreamingDistributionConfigRequest, cb)
 	assert(GetStreamingDistributionConfigRequest, "You must provide a GetStreamingDistributionConfigRequest")
 	local headers = {
@@ -8894,19 +8919,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetStreamingDistributionConfigRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetStreamingDistributionConfig2018_06_18Sync(GetStreamingDistributionConfigRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetStreamingDistributionConfig2018_06_18Async(GetStreamingDistributionConfigRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetStreamingDistributionConfig2018_06_18Async(GetStreamingDistributionConfigRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetFieldLevelEncryptionProfileConfig2018_06_18 asynchronously, invoking a callback when done
 -- @param GetFieldLevelEncryptionProfileConfigRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetFieldLevelEncryptionProfileConfig2018_06_18Async(GetFieldLevelEncryptionProfileConfigRequest, cb)
 	assert(GetFieldLevelEncryptionProfileConfigRequest, "You must provide a GetFieldLevelEncryptionProfileConfigRequest")
 	local headers = {
@@ -8929,19 +8955,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetFieldLevelEncryptionProfileConfigRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetFieldLevelEncryptionProfileConfig2018_06_18Sync(GetFieldLevelEncryptionProfileConfigRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetFieldLevelEncryptionProfileConfig2018_06_18Async(GetFieldLevelEncryptionProfileConfigRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetFieldLevelEncryptionProfileConfig2018_06_18Async(GetFieldLevelEncryptionProfileConfigRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetCloudFrontOriginAccessIdentity2018_06_18 asynchronously, invoking a callback when done
 -- @param GetCloudFrontOriginAccessIdentityRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetCloudFrontOriginAccessIdentity2018_06_18Async(GetCloudFrontOriginAccessIdentityRequest, cb)
 	assert(GetCloudFrontOriginAccessIdentityRequest, "You must provide a GetCloudFrontOriginAccessIdentityRequest")
 	local headers = {
@@ -8964,19 +8991,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetCloudFrontOriginAccessIdentityRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetCloudFrontOriginAccessIdentity2018_06_18Sync(GetCloudFrontOriginAccessIdentityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCloudFrontOriginAccessIdentity2018_06_18Async(GetCloudFrontOriginAccessIdentityRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetCloudFrontOriginAccessIdentity2018_06_18Async(GetCloudFrontOriginAccessIdentityRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetDistribution2018_06_18 asynchronously, invoking a callback when done
 -- @param GetDistributionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetDistribution2018_06_18Async(GetDistributionRequest, cb)
 	assert(GetDistributionRequest, "You must provide a GetDistributionRequest")
 	local headers = {
@@ -8999,19 +9027,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetDistributionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetDistribution2018_06_18Sync(GetDistributionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDistribution2018_06_18Async(GetDistributionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetDistribution2018_06_18Async(GetDistributionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetCloudFrontOriginAccessIdentityConfig2018_06_18 asynchronously, invoking a callback when done
 -- @param GetCloudFrontOriginAccessIdentityConfigRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetCloudFrontOriginAccessIdentityConfig2018_06_18Async(GetCloudFrontOriginAccessIdentityConfigRequest, cb)
 	assert(GetCloudFrontOriginAccessIdentityConfigRequest, "You must provide a GetCloudFrontOriginAccessIdentityConfigRequest")
 	local headers = {
@@ -9034,19 +9063,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetCloudFrontOriginAccessIdentityConfigRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetCloudFrontOriginAccessIdentityConfig2018_06_18Sync(GetCloudFrontOriginAccessIdentityConfigRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCloudFrontOriginAccessIdentityConfig2018_06_18Async(GetCloudFrontOriginAccessIdentityConfigRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetCloudFrontOriginAccessIdentityConfig2018_06_18Async(GetCloudFrontOriginAccessIdentityConfigRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListFieldLevelEncryptionProfiles2018_06_18 asynchronously, invoking a callback when done
 -- @param ListFieldLevelEncryptionProfilesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListFieldLevelEncryptionProfiles2018_06_18Async(ListFieldLevelEncryptionProfilesRequest, cb)
 	assert(ListFieldLevelEncryptionProfilesRequest, "You must provide a ListFieldLevelEncryptionProfilesRequest")
 	local headers = {
@@ -9069,19 +9099,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListFieldLevelEncryptionProfilesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListFieldLevelEncryptionProfiles2018_06_18Sync(ListFieldLevelEncryptionProfilesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListFieldLevelEncryptionProfiles2018_06_18Async(ListFieldLevelEncryptionProfilesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListFieldLevelEncryptionProfiles2018_06_18Async(ListFieldLevelEncryptionProfilesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetDistributionConfig2018_06_18 asynchronously, invoking a callback when done
 -- @param GetDistributionConfigRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetDistributionConfig2018_06_18Async(GetDistributionConfigRequest, cb)
 	assert(GetDistributionConfigRequest, "You must provide a GetDistributionConfigRequest")
 	local headers = {
@@ -9104,19 +9135,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetDistributionConfigRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetDistributionConfig2018_06_18Sync(GetDistributionConfigRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDistributionConfig2018_06_18Async(GetDistributionConfigRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetDistributionConfig2018_06_18Async(GetDistributionConfigRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateCloudFrontOriginAccessIdentity2018_06_18 asynchronously, invoking a callback when done
 -- @param CreateCloudFrontOriginAccessIdentityRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateCloudFrontOriginAccessIdentity2018_06_18Async(CreateCloudFrontOriginAccessIdentityRequest, cb)
 	assert(CreateCloudFrontOriginAccessIdentityRequest, "You must provide a CreateCloudFrontOriginAccessIdentityRequest")
 	local headers = {
@@ -9139,19 +9171,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateCloudFrontOriginAccessIdentityRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateCloudFrontOriginAccessIdentity2018_06_18Sync(CreateCloudFrontOriginAccessIdentityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateCloudFrontOriginAccessIdentity2018_06_18Async(CreateCloudFrontOriginAccessIdentityRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateCloudFrontOriginAccessIdentity2018_06_18Async(CreateCloudFrontOriginAccessIdentityRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateFieldLevelEncryptionConfig2018_06_18 asynchronously, invoking a callback when done
 -- @param UpdateFieldLevelEncryptionConfigRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateFieldLevelEncryptionConfig2018_06_18Async(UpdateFieldLevelEncryptionConfigRequest, cb)
 	assert(UpdateFieldLevelEncryptionConfigRequest, "You must provide a UpdateFieldLevelEncryptionConfigRequest")
 	local headers = {
@@ -9174,19 +9207,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateFieldLevelEncryptionConfigRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateFieldLevelEncryptionConfig2018_06_18Sync(UpdateFieldLevelEncryptionConfigRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateFieldLevelEncryptionConfig2018_06_18Async(UpdateFieldLevelEncryptionConfigRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateFieldLevelEncryptionConfig2018_06_18Async(UpdateFieldLevelEncryptionConfigRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteStreamingDistribution2018_06_18 asynchronously, invoking a callback when done
 -- @param DeleteStreamingDistributionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteStreamingDistribution2018_06_18Async(DeleteStreamingDistributionRequest, cb)
 	assert(DeleteStreamingDistributionRequest, "You must provide a DeleteStreamingDistributionRequest")
 	local headers = {
@@ -9209,19 +9243,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteStreamingDistributionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteStreamingDistribution2018_06_18Sync(DeleteStreamingDistributionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteStreamingDistribution2018_06_18Async(DeleteStreamingDistributionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteStreamingDistribution2018_06_18Async(DeleteStreamingDistributionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateDistributionWithTags2018_06_18 asynchronously, invoking a callback when done
 -- @param CreateDistributionWithTagsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateDistributionWithTags2018_06_18Async(CreateDistributionWithTagsRequest, cb)
 	assert(CreateDistributionWithTagsRequest, "You must provide a CreateDistributionWithTagsRequest")
 	local headers = {
@@ -9244,19 +9279,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateDistributionWithTagsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateDistributionWithTags2018_06_18Sync(CreateDistributionWithTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDistributionWithTags2018_06_18Async(CreateDistributionWithTagsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateDistributionWithTags2018_06_18Async(CreateDistributionWithTagsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateCloudFrontOriginAccessIdentity2018_06_18 asynchronously, invoking a callback when done
 -- @param UpdateCloudFrontOriginAccessIdentityRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateCloudFrontOriginAccessIdentity2018_06_18Async(UpdateCloudFrontOriginAccessIdentityRequest, cb)
 	assert(UpdateCloudFrontOriginAccessIdentityRequest, "You must provide a UpdateCloudFrontOriginAccessIdentityRequest")
 	local headers = {
@@ -9279,19 +9315,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateCloudFrontOriginAccessIdentityRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateCloudFrontOriginAccessIdentity2018_06_18Sync(UpdateCloudFrontOriginAccessIdentityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateCloudFrontOriginAccessIdentity2018_06_18Async(UpdateCloudFrontOriginAccessIdentityRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateCloudFrontOriginAccessIdentity2018_06_18Async(UpdateCloudFrontOriginAccessIdentityRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UntagResource2018_06_18 asynchronously, invoking a callback when done
 -- @param UntagResourceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UntagResource2018_06_18Async(UntagResourceRequest, cb)
 	assert(UntagResourceRequest, "You must provide a UntagResourceRequest")
 	local headers = {
@@ -9314,19 +9351,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UntagResourceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UntagResource2018_06_18Sync(UntagResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UntagResource2018_06_18Async(UntagResourceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UntagResource2018_06_18Async(UntagResourceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListFieldLevelEncryptionConfigs2018_06_18 asynchronously, invoking a callback when done
 -- @param ListFieldLevelEncryptionConfigsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListFieldLevelEncryptionConfigs2018_06_18Async(ListFieldLevelEncryptionConfigsRequest, cb)
 	assert(ListFieldLevelEncryptionConfigsRequest, "You must provide a ListFieldLevelEncryptionConfigsRequest")
 	local headers = {
@@ -9349,19 +9387,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListFieldLevelEncryptionConfigsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListFieldLevelEncryptionConfigs2018_06_18Sync(ListFieldLevelEncryptionConfigsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListFieldLevelEncryptionConfigs2018_06_18Async(ListFieldLevelEncryptionConfigsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListFieldLevelEncryptionConfigs2018_06_18Async(ListFieldLevelEncryptionConfigsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetFieldLevelEncryptionProfile2018_06_18 asynchronously, invoking a callback when done
 -- @param GetFieldLevelEncryptionProfileRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetFieldLevelEncryptionProfile2018_06_18Async(GetFieldLevelEncryptionProfileRequest, cb)
 	assert(GetFieldLevelEncryptionProfileRequest, "You must provide a GetFieldLevelEncryptionProfileRequest")
 	local headers = {
@@ -9384,19 +9423,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetFieldLevelEncryptionProfileRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetFieldLevelEncryptionProfile2018_06_18Sync(GetFieldLevelEncryptionProfileRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetFieldLevelEncryptionProfile2018_06_18Async(GetFieldLevelEncryptionProfileRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetFieldLevelEncryptionProfile2018_06_18Async(GetFieldLevelEncryptionProfileRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetFieldLevelEncryption2018_06_18 asynchronously, invoking a callback when done
 -- @param GetFieldLevelEncryptionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetFieldLevelEncryption2018_06_18Async(GetFieldLevelEncryptionRequest, cb)
 	assert(GetFieldLevelEncryptionRequest, "You must provide a GetFieldLevelEncryptionRequest")
 	local headers = {
@@ -9419,19 +9459,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetFieldLevelEncryptionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetFieldLevelEncryption2018_06_18Sync(GetFieldLevelEncryptionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetFieldLevelEncryption2018_06_18Async(GetFieldLevelEncryptionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetFieldLevelEncryption2018_06_18Async(GetFieldLevelEncryptionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateInvalidation2018_06_18 asynchronously, invoking a callback when done
 -- @param CreateInvalidationRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateInvalidation2018_06_18Async(CreateInvalidationRequest, cb)
 	assert(CreateInvalidationRequest, "You must provide a CreateInvalidationRequest")
 	local headers = {
@@ -9454,19 +9495,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateInvalidationRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateInvalidation2018_06_18Sync(CreateInvalidationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateInvalidation2018_06_18Async(CreateInvalidationRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateInvalidation2018_06_18Async(CreateInvalidationRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListDistributionsByWebACLId2018_06_18 asynchronously, invoking a callback when done
 -- @param ListDistributionsByWebACLIdRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListDistributionsByWebACLId2018_06_18Async(ListDistributionsByWebACLIdRequest, cb)
 	assert(ListDistributionsByWebACLIdRequest, "You must provide a ListDistributionsByWebACLIdRequest")
 	local headers = {
@@ -9489,19 +9531,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListDistributionsByWebACLIdRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListDistributionsByWebACLId2018_06_18Sync(ListDistributionsByWebACLIdRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDistributionsByWebACLId2018_06_18Async(ListDistributionsByWebACLIdRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListDistributionsByWebACLId2018_06_18Async(ListDistributionsByWebACLIdRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListTagsForResource2018_06_18 asynchronously, invoking a callback when done
 -- @param ListTagsForResourceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListTagsForResource2018_06_18Async(ListTagsForResourceRequest, cb)
 	assert(ListTagsForResourceRequest, "You must provide a ListTagsForResourceRequest")
 	local headers = {
@@ -9524,19 +9567,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListTagsForResourceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListTagsForResource2018_06_18Sync(ListTagsForResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsForResource2018_06_18Async(ListTagsForResourceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListTagsForResource2018_06_18Async(ListTagsForResourceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetFieldLevelEncryptionConfig2018_06_18 asynchronously, invoking a callback when done
 -- @param GetFieldLevelEncryptionConfigRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetFieldLevelEncryptionConfig2018_06_18Async(GetFieldLevelEncryptionConfigRequest, cb)
 	assert(GetFieldLevelEncryptionConfigRequest, "You must provide a GetFieldLevelEncryptionConfigRequest")
 	local headers = {
@@ -9559,12 +9603,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetFieldLevelEncryptionConfigRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetFieldLevelEncryptionConfig2018_06_18Sync(GetFieldLevelEncryptionConfigRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetFieldLevelEncryptionConfig2018_06_18Async(GetFieldLevelEncryptionConfigRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetFieldLevelEncryptionConfig2018_06_18Async(GetFieldLevelEncryptionConfigRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

@@ -2375,7 +2375,7 @@ end
 --
 --- Call CreateHsm asynchronously, invoking a callback when done
 -- @param CreateHsmRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateHsmAsync(CreateHsmRequest, cb)
 	assert(CreateHsmRequest, "You must provide a CreateHsmRequest")
 	local headers = {
@@ -2398,19 +2398,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateHsmRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateHsmSync(CreateHsmRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateHsmAsync(CreateHsmRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateHsmAsync(CreateHsmRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListHapgs asynchronously, invoking a callback when done
 -- @param ListHapgsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListHapgsAsync(ListHapgsRequest, cb)
 	assert(ListHapgsRequest, "You must provide a ListHapgsRequest")
 	local headers = {
@@ -2433,19 +2434,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListHapgsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListHapgsSync(ListHapgsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListHapgsAsync(ListHapgsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListHapgsAsync(ListHapgsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ModifyHapg asynchronously, invoking a callback when done
 -- @param ModifyHapgRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ModifyHapgAsync(ModifyHapgRequest, cb)
 	assert(ModifyHapgRequest, "You must provide a ModifyHapgRequest")
 	local headers = {
@@ -2468,19 +2470,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ModifyHapgRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ModifyHapgSync(ModifyHapgRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyHapgAsync(ModifyHapgRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ModifyHapgAsync(ModifyHapgRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeHapg asynchronously, invoking a callback when done
 -- @param DescribeHapgRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeHapgAsync(DescribeHapgRequest, cb)
 	assert(DescribeHapgRequest, "You must provide a DescribeHapgRequest")
 	local headers = {
@@ -2503,19 +2506,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeHapgRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeHapgSync(DescribeHapgRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeHapgAsync(DescribeHapgRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeHapgAsync(DescribeHapgRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteHsm asynchronously, invoking a callback when done
 -- @param DeleteHsmRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteHsmAsync(DeleteHsmRequest, cb)
 	assert(DeleteHsmRequest, "You must provide a DeleteHsmRequest")
 	local headers = {
@@ -2538,19 +2542,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteHsmRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteHsmSync(DeleteHsmRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteHsmAsync(DeleteHsmRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteHsmAsync(DeleteHsmRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListHsms asynchronously, invoking a callback when done
 -- @param ListHsmsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListHsmsAsync(ListHsmsRequest, cb)
 	assert(ListHsmsRequest, "You must provide a ListHsmsRequest")
 	local headers = {
@@ -2573,19 +2578,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListHsmsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListHsmsSync(ListHsmsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListHsmsAsync(ListHsmsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListHsmsAsync(ListHsmsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AddTagsToResource asynchronously, invoking a callback when done
 -- @param AddTagsToResourceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AddTagsToResourceAsync(AddTagsToResourceRequest, cb)
 	assert(AddTagsToResourceRequest, "You must provide a AddTagsToResourceRequest")
 	local headers = {
@@ -2608,19 +2614,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AddTagsToResourceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AddTagsToResourceSync(AddTagsToResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddTagsToResourceAsync(AddTagsToResourceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AddTagsToResourceAsync(AddTagsToResourceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteLunaClient asynchronously, invoking a callback when done
 -- @param DeleteLunaClientRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteLunaClientAsync(DeleteLunaClientRequest, cb)
 	assert(DeleteLunaClientRequest, "You must provide a DeleteLunaClientRequest")
 	local headers = {
@@ -2643,19 +2650,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteLunaClientRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteLunaClientSync(DeleteLunaClientRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteLunaClientAsync(DeleteLunaClientRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteLunaClientAsync(DeleteLunaClientRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateLunaClient asynchronously, invoking a callback when done
 -- @param CreateLunaClientRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateLunaClientAsync(CreateLunaClientRequest, cb)
 	assert(CreateLunaClientRequest, "You must provide a CreateLunaClientRequest")
 	local headers = {
@@ -2678,19 +2686,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateLunaClientRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateLunaClientSync(CreateLunaClientRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateLunaClientAsync(CreateLunaClientRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateLunaClientAsync(CreateLunaClientRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateHapg asynchronously, invoking a callback when done
 -- @param CreateHapgRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateHapgAsync(CreateHapgRequest, cb)
 	assert(CreateHapgRequest, "You must provide a CreateHapgRequest")
 	local headers = {
@@ -2713,19 +2722,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateHapgRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateHapgSync(CreateHapgRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateHapgAsync(CreateHapgRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateHapgAsync(CreateHapgRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call RemoveTagsFromResource asynchronously, invoking a callback when done
 -- @param RemoveTagsFromResourceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, cb)
 	assert(RemoveTagsFromResourceRequest, "You must provide a RemoveTagsFromResourceRequest")
 	local headers = {
@@ -2748,19 +2758,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param RemoveTagsFromResourceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.RemoveTagsFromResourceSync(RemoveTagsFromResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteHapg asynchronously, invoking a callback when done
 -- @param DeleteHapgRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteHapgAsync(DeleteHapgRequest, cb)
 	assert(DeleteHapgRequest, "You must provide a DeleteHapgRequest")
 	local headers = {
@@ -2783,19 +2794,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteHapgRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteHapgSync(DeleteHapgRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteHapgAsync(DeleteHapgRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteHapgAsync(DeleteHapgRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeHsm asynchronously, invoking a callback when done
 -- @param DescribeHsmRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeHsmAsync(DescribeHsmRequest, cb)
 	assert(DescribeHsmRequest, "You must provide a DescribeHsmRequest")
 	local headers = {
@@ -2818,19 +2830,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeHsmRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeHsmSync(DescribeHsmRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeHsmAsync(DescribeHsmRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeHsmAsync(DescribeHsmRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetConfig asynchronously, invoking a callback when done
 -- @param GetConfigRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetConfigAsync(GetConfigRequest, cb)
 	assert(GetConfigRequest, "You must provide a GetConfigRequest")
 	local headers = {
@@ -2853,19 +2866,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetConfigRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetConfigSync(GetConfigRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetConfigAsync(GetConfigRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetConfigAsync(GetConfigRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListAvailableZones asynchronously, invoking a callback when done
 -- @param ListAvailableZonesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListAvailableZonesAsync(ListAvailableZonesRequest, cb)
 	assert(ListAvailableZonesRequest, "You must provide a ListAvailableZonesRequest")
 	local headers = {
@@ -2888,19 +2902,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListAvailableZonesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListAvailableZonesSync(ListAvailableZonesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAvailableZonesAsync(ListAvailableZonesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListAvailableZonesAsync(ListAvailableZonesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ModifyHsm asynchronously, invoking a callback when done
 -- @param ModifyHsmRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ModifyHsmAsync(ModifyHsmRequest, cb)
 	assert(ModifyHsmRequest, "You must provide a ModifyHsmRequest")
 	local headers = {
@@ -2923,19 +2938,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ModifyHsmRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ModifyHsmSync(ModifyHsmRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyHsmAsync(ModifyHsmRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ModifyHsmAsync(ModifyHsmRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListTagsForResource asynchronously, invoking a callback when done
 -- @param ListTagsForResourceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 	assert(ListTagsForResourceRequest, "You must provide a ListTagsForResourceRequest")
 	local headers = {
@@ -2958,19 +2974,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListTagsForResourceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListTagsForResourceSync(ListTagsForResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsForResourceAsync(ListTagsForResourceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListTagsForResourceAsync(ListTagsForResourceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ModifyLunaClient asynchronously, invoking a callback when done
 -- @param ModifyLunaClientRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ModifyLunaClientAsync(ModifyLunaClientRequest, cb)
 	assert(ModifyLunaClientRequest, "You must provide a ModifyLunaClientRequest")
 	local headers = {
@@ -2993,19 +3010,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ModifyLunaClientRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ModifyLunaClientSync(ModifyLunaClientRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyLunaClientAsync(ModifyLunaClientRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ModifyLunaClientAsync(ModifyLunaClientRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeLunaClient asynchronously, invoking a callback when done
 -- @param DescribeLunaClientRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeLunaClientAsync(DescribeLunaClientRequest, cb)
 	assert(DescribeLunaClientRequest, "You must provide a DescribeLunaClientRequest")
 	local headers = {
@@ -3028,19 +3046,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeLunaClientRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeLunaClientSync(DescribeLunaClientRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLunaClientAsync(DescribeLunaClientRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeLunaClientAsync(DescribeLunaClientRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListLunaClients asynchronously, invoking a callback when done
 -- @param ListLunaClientsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListLunaClientsAsync(ListLunaClientsRequest, cb)
 	assert(ListLunaClientsRequest, "You must provide a ListLunaClientsRequest")
 	local headers = {
@@ -3063,12 +3082,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListLunaClientsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListLunaClientsSync(ListLunaClientsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListLunaClientsAsync(ListLunaClientsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListLunaClientsAsync(ListLunaClientsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

@@ -2247,7 +2247,7 @@ end
 --
 --- Call DeleteTags asynchronously, invoking a callback when done
 -- @param DeleteTagsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteTagsAsync(DeleteTagsRequest, cb)
 	assert(DeleteTagsRequest, "You must provide a DeleteTagsRequest")
 	local headers = {
@@ -2270,19 +2270,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteTagsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteTagsSync(DeleteTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTagsAsync(DeleteTagsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteTagsAsync(DeleteTagsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeMountTargetSecurityGroups asynchronously, invoking a callback when done
 -- @param DescribeMountTargetSecurityGroupsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeMountTargetSecurityGroupsAsync(DescribeMountTargetSecurityGroupsRequest, cb)
 	assert(DescribeMountTargetSecurityGroupsRequest, "You must provide a DescribeMountTargetSecurityGroupsRequest")
 	local headers = {
@@ -2305,19 +2306,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeMountTargetSecurityGroupsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeMountTargetSecurityGroupsSync(DescribeMountTargetSecurityGroupsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeMountTargetSecurityGroupsAsync(DescribeMountTargetSecurityGroupsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeMountTargetSecurityGroupsAsync(DescribeMountTargetSecurityGroupsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteFileSystem asynchronously, invoking a callback when done
 -- @param DeleteFileSystemRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteFileSystemAsync(DeleteFileSystemRequest, cb)
 	assert(DeleteFileSystemRequest, "You must provide a DeleteFileSystemRequest")
 	local headers = {
@@ -2340,19 +2342,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteFileSystemRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteFileSystemSync(DeleteFileSystemRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteFileSystemAsync(DeleteFileSystemRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteFileSystemAsync(DeleteFileSystemRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateTags asynchronously, invoking a callback when done
 -- @param CreateTagsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateTagsAsync(CreateTagsRequest, cb)
 	assert(CreateTagsRequest, "You must provide a CreateTagsRequest")
 	local headers = {
@@ -2375,19 +2378,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateTagsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateTagsSync(CreateTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTagsAsync(CreateTagsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateTagsAsync(CreateTagsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateMountTarget asynchronously, invoking a callback when done
 -- @param CreateMountTargetRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateMountTargetAsync(CreateMountTargetRequest, cb)
 	assert(CreateMountTargetRequest, "You must provide a CreateMountTargetRequest")
 	local headers = {
@@ -2410,19 +2414,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateMountTargetRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateMountTargetSync(CreateMountTargetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateMountTargetAsync(CreateMountTargetRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateMountTargetAsync(CreateMountTargetRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeFileSystems asynchronously, invoking a callback when done
 -- @param DescribeFileSystemsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeFileSystemsAsync(DescribeFileSystemsRequest, cb)
 	assert(DescribeFileSystemsRequest, "You must provide a DescribeFileSystemsRequest")
 	local headers = {
@@ -2445,19 +2450,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeFileSystemsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeFileSystemsSync(DescribeFileSystemsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeFileSystemsAsync(DescribeFileSystemsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeFileSystemsAsync(DescribeFileSystemsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeTags asynchronously, invoking a callback when done
 -- @param DescribeTagsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeTagsAsync(DescribeTagsRequest, cb)
 	assert(DescribeTagsRequest, "You must provide a DescribeTagsRequest")
 	local headers = {
@@ -2480,19 +2486,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeTagsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeTagsSync(DescribeTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTagsAsync(DescribeTagsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeTagsAsync(DescribeTagsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateFileSystem asynchronously, invoking a callback when done
 -- @param UpdateFileSystemRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateFileSystemAsync(UpdateFileSystemRequest, cb)
 	assert(UpdateFileSystemRequest, "You must provide a UpdateFileSystemRequest")
 	local headers = {
@@ -2515,19 +2522,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateFileSystemRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateFileSystemSync(UpdateFileSystemRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateFileSystemAsync(UpdateFileSystemRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateFileSystemAsync(UpdateFileSystemRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ModifyMountTargetSecurityGroups asynchronously, invoking a callback when done
 -- @param ModifyMountTargetSecurityGroupsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ModifyMountTargetSecurityGroupsAsync(ModifyMountTargetSecurityGroupsRequest, cb)
 	assert(ModifyMountTargetSecurityGroupsRequest, "You must provide a ModifyMountTargetSecurityGroupsRequest")
 	local headers = {
@@ -2550,19 +2558,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ModifyMountTargetSecurityGroupsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ModifyMountTargetSecurityGroupsSync(ModifyMountTargetSecurityGroupsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyMountTargetSecurityGroupsAsync(ModifyMountTargetSecurityGroupsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ModifyMountTargetSecurityGroupsAsync(ModifyMountTargetSecurityGroupsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeMountTargets asynchronously, invoking a callback when done
 -- @param DescribeMountTargetsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeMountTargetsAsync(DescribeMountTargetsRequest, cb)
 	assert(DescribeMountTargetsRequest, "You must provide a DescribeMountTargetsRequest")
 	local headers = {
@@ -2585,19 +2594,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeMountTargetsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeMountTargetsSync(DescribeMountTargetsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeMountTargetsAsync(DescribeMountTargetsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeMountTargetsAsync(DescribeMountTargetsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateFileSystem asynchronously, invoking a callback when done
 -- @param CreateFileSystemRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateFileSystemAsync(CreateFileSystemRequest, cb)
 	assert(CreateFileSystemRequest, "You must provide a CreateFileSystemRequest")
 	local headers = {
@@ -2620,19 +2630,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateFileSystemRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateFileSystemSync(CreateFileSystemRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateFileSystemAsync(CreateFileSystemRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateFileSystemAsync(CreateFileSystemRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteMountTarget asynchronously, invoking a callback when done
 -- @param DeleteMountTargetRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteMountTargetAsync(DeleteMountTargetRequest, cb)
 	assert(DeleteMountTargetRequest, "You must provide a DeleteMountTargetRequest")
 	local headers = {
@@ -2655,12 +2666,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteMountTargetRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteMountTargetSync(DeleteMountTargetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteMountTargetAsync(DeleteMountTargetRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteMountTargetAsync(DeleteMountTargetRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

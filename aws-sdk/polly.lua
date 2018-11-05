@@ -1540,7 +1540,7 @@ end
 --
 --- Call DescribeVoices asynchronously, invoking a callback when done
 -- @param DescribeVoicesInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeVoicesAsync(DescribeVoicesInput, cb)
 	assert(DescribeVoicesInput, "You must provide a DescribeVoicesInput")
 	local headers = {
@@ -1563,19 +1563,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeVoicesInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeVoicesSync(DescribeVoicesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeVoicesAsync(DescribeVoicesInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeVoicesAsync(DescribeVoicesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListSpeechSynthesisTasks asynchronously, invoking a callback when done
 -- @param ListSpeechSynthesisTasksInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListSpeechSynthesisTasksAsync(ListSpeechSynthesisTasksInput, cb)
 	assert(ListSpeechSynthesisTasksInput, "You must provide a ListSpeechSynthesisTasksInput")
 	local headers = {
@@ -1598,19 +1599,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListSpeechSynthesisTasksInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListSpeechSynthesisTasksSync(ListSpeechSynthesisTasksInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListSpeechSynthesisTasksAsync(ListSpeechSynthesisTasksInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListSpeechSynthesisTasksAsync(ListSpeechSynthesisTasksInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetLexicon asynchronously, invoking a callback when done
 -- @param GetLexiconInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetLexiconAsync(GetLexiconInput, cb)
 	assert(GetLexiconInput, "You must provide a GetLexiconInput")
 	local headers = {
@@ -1633,19 +1635,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetLexiconInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetLexiconSync(GetLexiconInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetLexiconAsync(GetLexiconInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetLexiconAsync(GetLexiconInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StartSpeechSynthesisTask asynchronously, invoking a callback when done
 -- @param StartSpeechSynthesisTaskInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StartSpeechSynthesisTaskAsync(StartSpeechSynthesisTaskInput, cb)
 	assert(StartSpeechSynthesisTaskInput, "You must provide a StartSpeechSynthesisTaskInput")
 	local headers = {
@@ -1668,19 +1671,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StartSpeechSynthesisTaskInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StartSpeechSynthesisTaskSync(StartSpeechSynthesisTaskInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartSpeechSynthesisTaskAsync(StartSpeechSynthesisTaskInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StartSpeechSynthesisTaskAsync(StartSpeechSynthesisTaskInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetSpeechSynthesisTask asynchronously, invoking a callback when done
 -- @param GetSpeechSynthesisTaskInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetSpeechSynthesisTaskAsync(GetSpeechSynthesisTaskInput, cb)
 	assert(GetSpeechSynthesisTaskInput, "You must provide a GetSpeechSynthesisTaskInput")
 	local headers = {
@@ -1703,19 +1707,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetSpeechSynthesisTaskInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetSpeechSynthesisTaskSync(GetSpeechSynthesisTaskInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSpeechSynthesisTaskAsync(GetSpeechSynthesisTaskInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetSpeechSynthesisTaskAsync(GetSpeechSynthesisTaskInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PutLexicon asynchronously, invoking a callback when done
 -- @param PutLexiconInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PutLexiconAsync(PutLexiconInput, cb)
 	assert(PutLexiconInput, "You must provide a PutLexiconInput")
 	local headers = {
@@ -1738,19 +1743,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PutLexiconInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PutLexiconSync(PutLexiconInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutLexiconAsync(PutLexiconInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PutLexiconAsync(PutLexiconInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListLexicons asynchronously, invoking a callback when done
 -- @param ListLexiconsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListLexiconsAsync(ListLexiconsInput, cb)
 	assert(ListLexiconsInput, "You must provide a ListLexiconsInput")
 	local headers = {
@@ -1773,19 +1779,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListLexiconsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListLexiconsSync(ListLexiconsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListLexiconsAsync(ListLexiconsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListLexiconsAsync(ListLexiconsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call SynthesizeSpeech asynchronously, invoking a callback when done
 -- @param SynthesizeSpeechInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.SynthesizeSpeechAsync(SynthesizeSpeechInput, cb)
 	assert(SynthesizeSpeechInput, "You must provide a SynthesizeSpeechInput")
 	local headers = {
@@ -1808,19 +1815,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param SynthesizeSpeechInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.SynthesizeSpeechSync(SynthesizeSpeechInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SynthesizeSpeechAsync(SynthesizeSpeechInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.SynthesizeSpeechAsync(SynthesizeSpeechInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteLexicon asynchronously, invoking a callback when done
 -- @param DeleteLexiconInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteLexiconAsync(DeleteLexiconInput, cb)
 	assert(DeleteLexiconInput, "You must provide a DeleteLexiconInput")
 	local headers = {
@@ -1843,12 +1851,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteLexiconInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteLexiconSync(DeleteLexiconInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteLexiconAsync(DeleteLexiconInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteLexiconAsync(DeleteLexiconInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
