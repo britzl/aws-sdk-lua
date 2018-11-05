@@ -2652,7 +2652,7 @@ end
 --
 --- Call MergeDeveloperIdentities asynchronously, invoking a callback when done
 -- @param MergeDeveloperIdentitiesInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.MergeDeveloperIdentitiesAsync(MergeDeveloperIdentitiesInput, cb)
 	assert(MergeDeveloperIdentitiesInput, "You must provide a MergeDeveloperIdentitiesInput")
 	local headers = {
@@ -2675,19 +2675,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param MergeDeveloperIdentitiesInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.MergeDeveloperIdentitiesSync(MergeDeveloperIdentitiesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.MergeDeveloperIdentitiesAsync(MergeDeveloperIdentitiesInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.MergeDeveloperIdentitiesAsync(MergeDeveloperIdentitiesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetIdentityPoolRoles asynchronously, invoking a callback when done
 -- @param GetIdentityPoolRolesInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetIdentityPoolRolesAsync(GetIdentityPoolRolesInput, cb)
 	assert(GetIdentityPoolRolesInput, "You must provide a GetIdentityPoolRolesInput")
 	local headers = {
@@ -2710,19 +2711,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetIdentityPoolRolesInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetIdentityPoolRolesSync(GetIdentityPoolRolesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetIdentityPoolRolesAsync(GetIdentityPoolRolesInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetIdentityPoolRolesAsync(GetIdentityPoolRolesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteIdentities asynchronously, invoking a callback when done
 -- @param DeleteIdentitiesInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteIdentitiesAsync(DeleteIdentitiesInput, cb)
 	assert(DeleteIdentitiesInput, "You must provide a DeleteIdentitiesInput")
 	local headers = {
@@ -2745,19 +2747,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteIdentitiesInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteIdentitiesSync(DeleteIdentitiesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteIdentitiesAsync(DeleteIdentitiesInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteIdentitiesAsync(DeleteIdentitiesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetOpenIdTokenForDeveloperIdentity asynchronously, invoking a callback when done
 -- @param GetOpenIdTokenForDeveloperIdentityInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetOpenIdTokenForDeveloperIdentityAsync(GetOpenIdTokenForDeveloperIdentityInput, cb)
 	assert(GetOpenIdTokenForDeveloperIdentityInput, "You must provide a GetOpenIdTokenForDeveloperIdentityInput")
 	local headers = {
@@ -2780,19 +2783,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetOpenIdTokenForDeveloperIdentityInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetOpenIdTokenForDeveloperIdentitySync(GetOpenIdTokenForDeveloperIdentityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetOpenIdTokenForDeveloperIdentityAsync(GetOpenIdTokenForDeveloperIdentityInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetOpenIdTokenForDeveloperIdentityAsync(GetOpenIdTokenForDeveloperIdentityInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call LookupDeveloperIdentity asynchronously, invoking a callback when done
 -- @param LookupDeveloperIdentityInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.LookupDeveloperIdentityAsync(LookupDeveloperIdentityInput, cb)
 	assert(LookupDeveloperIdentityInput, "You must provide a LookupDeveloperIdentityInput")
 	local headers = {
@@ -2815,19 +2819,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param LookupDeveloperIdentityInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.LookupDeveloperIdentitySync(LookupDeveloperIdentityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.LookupDeveloperIdentityAsync(LookupDeveloperIdentityInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.LookupDeveloperIdentityAsync(LookupDeveloperIdentityInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListIdentityPools asynchronously, invoking a callback when done
 -- @param ListIdentityPoolsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListIdentityPoolsAsync(ListIdentityPoolsInput, cb)
 	assert(ListIdentityPoolsInput, "You must provide a ListIdentityPoolsInput")
 	local headers = {
@@ -2850,19 +2855,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListIdentityPoolsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListIdentityPoolsSync(ListIdentityPoolsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListIdentityPoolsAsync(ListIdentityPoolsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListIdentityPoolsAsync(ListIdentityPoolsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeIdentity asynchronously, invoking a callback when done
 -- @param DescribeIdentityInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeIdentityAsync(DescribeIdentityInput, cb)
 	assert(DescribeIdentityInput, "You must provide a DescribeIdentityInput")
 	local headers = {
@@ -2885,19 +2891,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeIdentityInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeIdentitySync(DescribeIdentityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeIdentityAsync(DescribeIdentityInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeIdentityAsync(DescribeIdentityInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetId asynchronously, invoking a callback when done
 -- @param GetIdInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetIdAsync(GetIdInput, cb)
 	assert(GetIdInput, "You must provide a GetIdInput")
 	local headers = {
@@ -2920,19 +2927,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetIdInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetIdSync(GetIdInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetIdAsync(GetIdInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetIdAsync(GetIdInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UnlinkIdentity asynchronously, invoking a callback when done
 -- @param UnlinkIdentityInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UnlinkIdentityAsync(UnlinkIdentityInput, cb)
 	assert(UnlinkIdentityInput, "You must provide a UnlinkIdentityInput")
 	local headers = {
@@ -2955,19 +2963,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UnlinkIdentityInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UnlinkIdentitySync(UnlinkIdentityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UnlinkIdentityAsync(UnlinkIdentityInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UnlinkIdentityAsync(UnlinkIdentityInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListIdentities asynchronously, invoking a callback when done
 -- @param ListIdentitiesInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListIdentitiesAsync(ListIdentitiesInput, cb)
 	assert(ListIdentitiesInput, "You must provide a ListIdentitiesInput")
 	local headers = {
@@ -2990,19 +2999,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListIdentitiesInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListIdentitiesSync(ListIdentitiesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListIdentitiesAsync(ListIdentitiesInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListIdentitiesAsync(ListIdentitiesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteIdentityPool asynchronously, invoking a callback when done
 -- @param DeleteIdentityPoolInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteIdentityPoolAsync(DeleteIdentityPoolInput, cb)
 	assert(DeleteIdentityPoolInput, "You must provide a DeleteIdentityPoolInput")
 	local headers = {
@@ -3025,19 +3035,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteIdentityPoolInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteIdentityPoolSync(DeleteIdentityPoolInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteIdentityPoolAsync(DeleteIdentityPoolInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteIdentityPoolAsync(DeleteIdentityPoolInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetCredentialsForIdentity asynchronously, invoking a callback when done
 -- @param GetCredentialsForIdentityInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetCredentialsForIdentityAsync(GetCredentialsForIdentityInput, cb)
 	assert(GetCredentialsForIdentityInput, "You must provide a GetCredentialsForIdentityInput")
 	local headers = {
@@ -3060,19 +3071,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetCredentialsForIdentityInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetCredentialsForIdentitySync(GetCredentialsForIdentityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCredentialsForIdentityAsync(GetCredentialsForIdentityInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetCredentialsForIdentityAsync(GetCredentialsForIdentityInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateIdentityPool asynchronously, invoking a callback when done
 -- @param IdentityPool
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateIdentityPoolAsync(IdentityPool, cb)
 	assert(IdentityPool, "You must provide a IdentityPool")
 	local headers = {
@@ -3095,19 +3107,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param IdentityPool
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateIdentityPoolSync(IdentityPool, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateIdentityPoolAsync(IdentityPool, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateIdentityPoolAsync(IdentityPool, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call SetIdentityPoolRoles asynchronously, invoking a callback when done
 -- @param SetIdentityPoolRolesInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.SetIdentityPoolRolesAsync(SetIdentityPoolRolesInput, cb)
 	assert(SetIdentityPoolRolesInput, "You must provide a SetIdentityPoolRolesInput")
 	local headers = {
@@ -3130,19 +3143,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param SetIdentityPoolRolesInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.SetIdentityPoolRolesSync(SetIdentityPoolRolesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetIdentityPoolRolesAsync(SetIdentityPoolRolesInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.SetIdentityPoolRolesAsync(SetIdentityPoolRolesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UnlinkDeveloperIdentity asynchronously, invoking a callback when done
 -- @param UnlinkDeveloperIdentityInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UnlinkDeveloperIdentityAsync(UnlinkDeveloperIdentityInput, cb)
 	assert(UnlinkDeveloperIdentityInput, "You must provide a UnlinkDeveloperIdentityInput")
 	local headers = {
@@ -3165,19 +3179,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UnlinkDeveloperIdentityInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UnlinkDeveloperIdentitySync(UnlinkDeveloperIdentityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UnlinkDeveloperIdentityAsync(UnlinkDeveloperIdentityInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UnlinkDeveloperIdentityAsync(UnlinkDeveloperIdentityInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeIdentityPool asynchronously, invoking a callback when done
 -- @param DescribeIdentityPoolInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeIdentityPoolAsync(DescribeIdentityPoolInput, cb)
 	assert(DescribeIdentityPoolInput, "You must provide a DescribeIdentityPoolInput")
 	local headers = {
@@ -3200,19 +3215,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeIdentityPoolInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeIdentityPoolSync(DescribeIdentityPoolInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeIdentityPoolAsync(DescribeIdentityPoolInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeIdentityPoolAsync(DescribeIdentityPoolInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetOpenIdToken asynchronously, invoking a callback when done
 -- @param GetOpenIdTokenInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetOpenIdTokenAsync(GetOpenIdTokenInput, cb)
 	assert(GetOpenIdTokenInput, "You must provide a GetOpenIdTokenInput")
 	local headers = {
@@ -3235,19 +3251,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetOpenIdTokenInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetOpenIdTokenSync(GetOpenIdTokenInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetOpenIdTokenAsync(GetOpenIdTokenInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetOpenIdTokenAsync(GetOpenIdTokenInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateIdentityPool asynchronously, invoking a callback when done
 -- @param CreateIdentityPoolInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateIdentityPoolAsync(CreateIdentityPoolInput, cb)
 	assert(CreateIdentityPoolInput, "You must provide a CreateIdentityPoolInput")
 	local headers = {
@@ -3270,12 +3287,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateIdentityPoolInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateIdentityPoolSync(CreateIdentityPoolInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateIdentityPoolAsync(CreateIdentityPoolInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateIdentityPoolAsync(CreateIdentityPoolInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

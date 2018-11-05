@@ -1477,7 +1477,7 @@ end
 --
 --- Call UpdateEnvironment asynchronously, invoking a callback when done
 -- @param UpdateEnvironmentRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateEnvironmentAsync(UpdateEnvironmentRequest, cb)
 	assert(UpdateEnvironmentRequest, "You must provide a UpdateEnvironmentRequest")
 	local headers = {
@@ -1500,19 +1500,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateEnvironmentRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateEnvironmentSync(UpdateEnvironmentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateEnvironmentAsync(UpdateEnvironmentRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateEnvironmentAsync(UpdateEnvironmentRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateEnvironmentMembership asynchronously, invoking a callback when done
 -- @param CreateEnvironmentMembershipRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateEnvironmentMembershipAsync(CreateEnvironmentMembershipRequest, cb)
 	assert(CreateEnvironmentMembershipRequest, "You must provide a CreateEnvironmentMembershipRequest")
 	local headers = {
@@ -1535,19 +1536,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateEnvironmentMembershipRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateEnvironmentMembershipSync(CreateEnvironmentMembershipRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateEnvironmentMembershipAsync(CreateEnvironmentMembershipRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateEnvironmentMembershipAsync(CreateEnvironmentMembershipRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeEnvironments asynchronously, invoking a callback when done
 -- @param DescribeEnvironmentsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeEnvironmentsAsync(DescribeEnvironmentsRequest, cb)
 	assert(DescribeEnvironmentsRequest, "You must provide a DescribeEnvironmentsRequest")
 	local headers = {
@@ -1570,19 +1572,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeEnvironmentsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeEnvironmentsSync(DescribeEnvironmentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEnvironmentsAsync(DescribeEnvironmentsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeEnvironmentsAsync(DescribeEnvironmentsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteEnvironmentMembership asynchronously, invoking a callback when done
 -- @param DeleteEnvironmentMembershipRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteEnvironmentMembershipAsync(DeleteEnvironmentMembershipRequest, cb)
 	assert(DeleteEnvironmentMembershipRequest, "You must provide a DeleteEnvironmentMembershipRequest")
 	local headers = {
@@ -1605,19 +1608,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteEnvironmentMembershipRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteEnvironmentMembershipSync(DeleteEnvironmentMembershipRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteEnvironmentMembershipAsync(DeleteEnvironmentMembershipRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteEnvironmentMembershipAsync(DeleteEnvironmentMembershipRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateEnvironmentMembership asynchronously, invoking a callback when done
 -- @param UpdateEnvironmentMembershipRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateEnvironmentMembershipAsync(UpdateEnvironmentMembershipRequest, cb)
 	assert(UpdateEnvironmentMembershipRequest, "You must provide a UpdateEnvironmentMembershipRequest")
 	local headers = {
@@ -1640,19 +1644,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateEnvironmentMembershipRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateEnvironmentMembershipSync(UpdateEnvironmentMembershipRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateEnvironmentMembershipAsync(UpdateEnvironmentMembershipRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateEnvironmentMembershipAsync(UpdateEnvironmentMembershipRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeEnvironmentStatus asynchronously, invoking a callback when done
 -- @param DescribeEnvironmentStatusRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeEnvironmentStatusAsync(DescribeEnvironmentStatusRequest, cb)
 	assert(DescribeEnvironmentStatusRequest, "You must provide a DescribeEnvironmentStatusRequest")
 	local headers = {
@@ -1675,19 +1680,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeEnvironmentStatusRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeEnvironmentStatusSync(DescribeEnvironmentStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEnvironmentStatusAsync(DescribeEnvironmentStatusRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeEnvironmentStatusAsync(DescribeEnvironmentStatusRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListEnvironments asynchronously, invoking a callback when done
 -- @param ListEnvironmentsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListEnvironmentsAsync(ListEnvironmentsRequest, cb)
 	assert(ListEnvironmentsRequest, "You must provide a ListEnvironmentsRequest")
 	local headers = {
@@ -1710,19 +1716,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListEnvironmentsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListEnvironmentsSync(ListEnvironmentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListEnvironmentsAsync(ListEnvironmentsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListEnvironmentsAsync(ListEnvironmentsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeEnvironmentMemberships asynchronously, invoking a callback when done
 -- @param DescribeEnvironmentMembershipsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeEnvironmentMembershipsAsync(DescribeEnvironmentMembershipsRequest, cb)
 	assert(DescribeEnvironmentMembershipsRequest, "You must provide a DescribeEnvironmentMembershipsRequest")
 	local headers = {
@@ -1745,19 +1752,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeEnvironmentMembershipsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeEnvironmentMembershipsSync(DescribeEnvironmentMembershipsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEnvironmentMembershipsAsync(DescribeEnvironmentMembershipsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeEnvironmentMembershipsAsync(DescribeEnvironmentMembershipsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteEnvironment asynchronously, invoking a callback when done
 -- @param DeleteEnvironmentRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteEnvironmentAsync(DeleteEnvironmentRequest, cb)
 	assert(DeleteEnvironmentRequest, "You must provide a DeleteEnvironmentRequest")
 	local headers = {
@@ -1780,19 +1788,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteEnvironmentRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteEnvironmentSync(DeleteEnvironmentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteEnvironmentAsync(DeleteEnvironmentRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteEnvironmentAsync(DeleteEnvironmentRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateEnvironmentEC2 asynchronously, invoking a callback when done
 -- @param CreateEnvironmentEC2Request
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateEnvironmentEC2Async(CreateEnvironmentEC2Request, cb)
 	assert(CreateEnvironmentEC2Request, "You must provide a CreateEnvironmentEC2Request")
 	local headers = {
@@ -1815,12 +1824,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateEnvironmentEC2Request
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateEnvironmentEC2Sync(CreateEnvironmentEC2Request, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateEnvironmentEC2Async(CreateEnvironmentEC2Request, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateEnvironmentEC2Async(CreateEnvironmentEC2Request, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

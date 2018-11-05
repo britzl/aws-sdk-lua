@@ -4444,7 +4444,7 @@ end
 --
 --- Call CreateDeliveryStream asynchronously, invoking a callback when done
 -- @param CreateDeliveryStreamInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateDeliveryStreamAsync(CreateDeliveryStreamInput, cb)
 	assert(CreateDeliveryStreamInput, "You must provide a CreateDeliveryStreamInput")
 	local headers = {
@@ -4467,19 +4467,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateDeliveryStreamInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateDeliveryStreamSync(CreateDeliveryStreamInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDeliveryStreamAsync(CreateDeliveryStreamInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateDeliveryStreamAsync(CreateDeliveryStreamInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeDeliveryStream asynchronously, invoking a callback when done
 -- @param DescribeDeliveryStreamInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeDeliveryStreamAsync(DescribeDeliveryStreamInput, cb)
 	assert(DescribeDeliveryStreamInput, "You must provide a DescribeDeliveryStreamInput")
 	local headers = {
@@ -4502,19 +4503,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeDeliveryStreamInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeDeliveryStreamSync(DescribeDeliveryStreamInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDeliveryStreamAsync(DescribeDeliveryStreamInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeDeliveryStreamAsync(DescribeDeliveryStreamInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateDestination asynchronously, invoking a callback when done
 -- @param UpdateDestinationInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateDestinationAsync(UpdateDestinationInput, cb)
 	assert(UpdateDestinationInput, "You must provide a UpdateDestinationInput")
 	local headers = {
@@ -4537,19 +4539,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateDestinationInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateDestinationSync(UpdateDestinationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateDestinationAsync(UpdateDestinationInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateDestinationAsync(UpdateDestinationInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call TagDeliveryStream asynchronously, invoking a callback when done
 -- @param TagDeliveryStreamInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.TagDeliveryStreamAsync(TagDeliveryStreamInput, cb)
 	assert(TagDeliveryStreamInput, "You must provide a TagDeliveryStreamInput")
 	local headers = {
@@ -4572,19 +4575,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param TagDeliveryStreamInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.TagDeliveryStreamSync(TagDeliveryStreamInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TagDeliveryStreamAsync(TagDeliveryStreamInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.TagDeliveryStreamAsync(TagDeliveryStreamInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteDeliveryStream asynchronously, invoking a callback when done
 -- @param DeleteDeliveryStreamInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteDeliveryStreamAsync(DeleteDeliveryStreamInput, cb)
 	assert(DeleteDeliveryStreamInput, "You must provide a DeleteDeliveryStreamInput")
 	local headers = {
@@ -4607,19 +4611,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteDeliveryStreamInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteDeliveryStreamSync(DeleteDeliveryStreamInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDeliveryStreamAsync(DeleteDeliveryStreamInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteDeliveryStreamAsync(DeleteDeliveryStreamInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListDeliveryStreams asynchronously, invoking a callback when done
 -- @param ListDeliveryStreamsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListDeliveryStreamsAsync(ListDeliveryStreamsInput, cb)
 	assert(ListDeliveryStreamsInput, "You must provide a ListDeliveryStreamsInput")
 	local headers = {
@@ -4642,19 +4647,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListDeliveryStreamsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListDeliveryStreamsSync(ListDeliveryStreamsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDeliveryStreamsAsync(ListDeliveryStreamsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListDeliveryStreamsAsync(ListDeliveryStreamsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PutRecordBatch asynchronously, invoking a callback when done
 -- @param PutRecordBatchInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PutRecordBatchAsync(PutRecordBatchInput, cb)
 	assert(PutRecordBatchInput, "You must provide a PutRecordBatchInput")
 	local headers = {
@@ -4677,19 +4683,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PutRecordBatchInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PutRecordBatchSync(PutRecordBatchInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutRecordBatchAsync(PutRecordBatchInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PutRecordBatchAsync(PutRecordBatchInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UntagDeliveryStream asynchronously, invoking a callback when done
 -- @param UntagDeliveryStreamInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UntagDeliveryStreamAsync(UntagDeliveryStreamInput, cb)
 	assert(UntagDeliveryStreamInput, "You must provide a UntagDeliveryStreamInput")
 	local headers = {
@@ -4712,19 +4719,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UntagDeliveryStreamInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UntagDeliveryStreamSync(UntagDeliveryStreamInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UntagDeliveryStreamAsync(UntagDeliveryStreamInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UntagDeliveryStreamAsync(UntagDeliveryStreamInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PutRecord asynchronously, invoking a callback when done
 -- @param PutRecordInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PutRecordAsync(PutRecordInput, cb)
 	assert(PutRecordInput, "You must provide a PutRecordInput")
 	local headers = {
@@ -4747,19 +4755,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PutRecordInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PutRecordSync(PutRecordInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutRecordAsync(PutRecordInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PutRecordAsync(PutRecordInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListTagsForDeliveryStream asynchronously, invoking a callback when done
 -- @param ListTagsForDeliveryStreamInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListTagsForDeliveryStreamAsync(ListTagsForDeliveryStreamInput, cb)
 	assert(ListTagsForDeliveryStreamInput, "You must provide a ListTagsForDeliveryStreamInput")
 	local headers = {
@@ -4782,12 +4791,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListTagsForDeliveryStreamInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListTagsForDeliveryStreamSync(ListTagsForDeliveryStreamInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsForDeliveryStreamAsync(ListTagsForDeliveryStreamInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListTagsForDeliveryStreamAsync(ListTagsForDeliveryStreamInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

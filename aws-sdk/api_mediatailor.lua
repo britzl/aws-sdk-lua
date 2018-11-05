@@ -668,7 +668,7 @@ end
 --
 --- Call GetPlaybackConfiguration asynchronously, invoking a callback when done
 -- @param GetPlaybackConfigurationRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetPlaybackConfigurationAsync(GetPlaybackConfigurationRequest, cb)
 	assert(GetPlaybackConfigurationRequest, "You must provide a GetPlaybackConfigurationRequest")
 	local headers = {
@@ -691,19 +691,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetPlaybackConfigurationRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetPlaybackConfigurationSync(GetPlaybackConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetPlaybackConfigurationAsync(GetPlaybackConfigurationRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetPlaybackConfigurationAsync(GetPlaybackConfigurationRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListPlaybackConfigurations asynchronously, invoking a callback when done
 -- @param ListPlaybackConfigurationsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListPlaybackConfigurationsAsync(ListPlaybackConfigurationsRequest, cb)
 	assert(ListPlaybackConfigurationsRequest, "You must provide a ListPlaybackConfigurationsRequest")
 	local headers = {
@@ -726,19 +727,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListPlaybackConfigurationsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListPlaybackConfigurationsSync(ListPlaybackConfigurationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPlaybackConfigurationsAsync(ListPlaybackConfigurationsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListPlaybackConfigurationsAsync(ListPlaybackConfigurationsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PutPlaybackConfiguration asynchronously, invoking a callback when done
 -- @param PutPlaybackConfigurationRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PutPlaybackConfigurationAsync(PutPlaybackConfigurationRequest, cb)
 	assert(PutPlaybackConfigurationRequest, "You must provide a PutPlaybackConfigurationRequest")
 	local headers = {
@@ -761,19 +763,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PutPlaybackConfigurationRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PutPlaybackConfigurationSync(PutPlaybackConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutPlaybackConfigurationAsync(PutPlaybackConfigurationRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PutPlaybackConfigurationAsync(PutPlaybackConfigurationRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeletePlaybackConfiguration asynchronously, invoking a callback when done
 -- @param DeletePlaybackConfigurationRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeletePlaybackConfigurationAsync(DeletePlaybackConfigurationRequest, cb)
 	assert(DeletePlaybackConfigurationRequest, "You must provide a DeletePlaybackConfigurationRequest")
 	local headers = {
@@ -796,12 +799,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeletePlaybackConfigurationRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeletePlaybackConfigurationSync(DeletePlaybackConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeletePlaybackConfigurationAsync(DeletePlaybackConfigurationRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeletePlaybackConfigurationAsync(DeletePlaybackConfigurationRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

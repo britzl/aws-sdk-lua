@@ -1314,7 +1314,7 @@ end
 --
 --- Call ListTranscriptionJobs asynchronously, invoking a callback when done
 -- @param ListTranscriptionJobsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListTranscriptionJobsAsync(ListTranscriptionJobsRequest, cb)
 	assert(ListTranscriptionJobsRequest, "You must provide a ListTranscriptionJobsRequest")
 	local headers = {
@@ -1337,19 +1337,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListTranscriptionJobsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListTranscriptionJobsSync(ListTranscriptionJobsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTranscriptionJobsAsync(ListTranscriptionJobsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListTranscriptionJobsAsync(ListTranscriptionJobsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteTranscriptionJob asynchronously, invoking a callback when done
 -- @param DeleteTranscriptionJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteTranscriptionJobAsync(DeleteTranscriptionJobRequest, cb)
 	assert(DeleteTranscriptionJobRequest, "You must provide a DeleteTranscriptionJobRequest")
 	local headers = {
@@ -1372,19 +1373,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteTranscriptionJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteTranscriptionJobSync(DeleteTranscriptionJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTranscriptionJobAsync(DeleteTranscriptionJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteTranscriptionJobAsync(DeleteTranscriptionJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateVocabulary asynchronously, invoking a callback when done
 -- @param UpdateVocabularyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateVocabularyAsync(UpdateVocabularyRequest, cb)
 	assert(UpdateVocabularyRequest, "You must provide a UpdateVocabularyRequest")
 	local headers = {
@@ -1407,19 +1409,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateVocabularyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateVocabularySync(UpdateVocabularyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateVocabularyAsync(UpdateVocabularyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateVocabularyAsync(UpdateVocabularyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateVocabulary asynchronously, invoking a callback when done
 -- @param CreateVocabularyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateVocabularyAsync(CreateVocabularyRequest, cb)
 	assert(CreateVocabularyRequest, "You must provide a CreateVocabularyRequest")
 	local headers = {
@@ -1442,19 +1445,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateVocabularyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateVocabularySync(CreateVocabularyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateVocabularyAsync(CreateVocabularyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateVocabularyAsync(CreateVocabularyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListVocabularies asynchronously, invoking a callback when done
 -- @param ListVocabulariesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListVocabulariesAsync(ListVocabulariesRequest, cb)
 	assert(ListVocabulariesRequest, "You must provide a ListVocabulariesRequest")
 	local headers = {
@@ -1477,19 +1481,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListVocabulariesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListVocabulariesSync(ListVocabulariesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListVocabulariesAsync(ListVocabulariesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListVocabulariesAsync(ListVocabulariesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StartTranscriptionJob asynchronously, invoking a callback when done
 -- @param StartTranscriptionJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StartTranscriptionJobAsync(StartTranscriptionJobRequest, cb)
 	assert(StartTranscriptionJobRequest, "You must provide a StartTranscriptionJobRequest")
 	local headers = {
@@ -1512,19 +1517,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StartTranscriptionJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StartTranscriptionJobSync(StartTranscriptionJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartTranscriptionJobAsync(StartTranscriptionJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StartTranscriptionJobAsync(StartTranscriptionJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetVocabulary asynchronously, invoking a callback when done
 -- @param GetVocabularyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetVocabularyAsync(GetVocabularyRequest, cb)
 	assert(GetVocabularyRequest, "You must provide a GetVocabularyRequest")
 	local headers = {
@@ -1547,19 +1553,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetVocabularyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetVocabularySync(GetVocabularyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetVocabularyAsync(GetVocabularyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetVocabularyAsync(GetVocabularyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteVocabulary asynchronously, invoking a callback when done
 -- @param DeleteVocabularyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteVocabularyAsync(DeleteVocabularyRequest, cb)
 	assert(DeleteVocabularyRequest, "You must provide a DeleteVocabularyRequest")
 	local headers = {
@@ -1582,19 +1589,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteVocabularyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteVocabularySync(DeleteVocabularyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteVocabularyAsync(DeleteVocabularyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteVocabularyAsync(DeleteVocabularyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetTranscriptionJob asynchronously, invoking a callback when done
 -- @param GetTranscriptionJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetTranscriptionJobAsync(GetTranscriptionJobRequest, cb)
 	assert(GetTranscriptionJobRequest, "You must provide a GetTranscriptionJobRequest")
 	local headers = {
@@ -1617,12 +1625,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetTranscriptionJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetTranscriptionJobSync(GetTranscriptionJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTranscriptionJobAsync(GetTranscriptionJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetTranscriptionJobAsync(GetTranscriptionJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

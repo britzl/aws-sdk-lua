@@ -1711,7 +1711,7 @@ end
 --
 --- Call DescribeScalingPlanResources asynchronously, invoking a callback when done
 -- @param DescribeScalingPlanResourcesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeScalingPlanResourcesAsync(DescribeScalingPlanResourcesRequest, cb)
 	assert(DescribeScalingPlanResourcesRequest, "You must provide a DescribeScalingPlanResourcesRequest")
 	local headers = {
@@ -1734,19 +1734,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeScalingPlanResourcesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeScalingPlanResourcesSync(DescribeScalingPlanResourcesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeScalingPlanResourcesAsync(DescribeScalingPlanResourcesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeScalingPlanResourcesAsync(DescribeScalingPlanResourcesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateScalingPlan asynchronously, invoking a callback when done
 -- @param CreateScalingPlanRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateScalingPlanAsync(CreateScalingPlanRequest, cb)
 	assert(CreateScalingPlanRequest, "You must provide a CreateScalingPlanRequest")
 	local headers = {
@@ -1769,19 +1770,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateScalingPlanRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateScalingPlanSync(CreateScalingPlanRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateScalingPlanAsync(CreateScalingPlanRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateScalingPlanAsync(CreateScalingPlanRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteScalingPlan asynchronously, invoking a callback when done
 -- @param DeleteScalingPlanRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteScalingPlanAsync(DeleteScalingPlanRequest, cb)
 	assert(DeleteScalingPlanRequest, "You must provide a DeleteScalingPlanRequest")
 	local headers = {
@@ -1804,19 +1806,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteScalingPlanRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteScalingPlanSync(DeleteScalingPlanRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteScalingPlanAsync(DeleteScalingPlanRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteScalingPlanAsync(DeleteScalingPlanRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeScalingPlans asynchronously, invoking a callback when done
 -- @param DescribeScalingPlansRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeScalingPlansAsync(DescribeScalingPlansRequest, cb)
 	assert(DescribeScalingPlansRequest, "You must provide a DescribeScalingPlansRequest")
 	local headers = {
@@ -1839,19 +1842,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeScalingPlansRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeScalingPlansSync(DescribeScalingPlansRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeScalingPlansAsync(DescribeScalingPlansRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeScalingPlansAsync(DescribeScalingPlansRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateScalingPlan asynchronously, invoking a callback when done
 -- @param UpdateScalingPlanRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateScalingPlanAsync(UpdateScalingPlanRequest, cb)
 	assert(UpdateScalingPlanRequest, "You must provide a UpdateScalingPlanRequest")
 	local headers = {
@@ -1874,12 +1878,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateScalingPlanRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateScalingPlanSync(UpdateScalingPlanRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateScalingPlanAsync(UpdateScalingPlanRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateScalingPlanAsync(UpdateScalingPlanRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

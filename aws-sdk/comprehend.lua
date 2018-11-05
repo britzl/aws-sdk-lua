@@ -4108,7 +4108,7 @@ end
 --
 --- Call StopEntitiesDetectionJob asynchronously, invoking a callback when done
 -- @param StopEntitiesDetectionJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StopEntitiesDetectionJobAsync(StopEntitiesDetectionJobRequest, cb)
 	assert(StopEntitiesDetectionJobRequest, "You must provide a StopEntitiesDetectionJobRequest")
 	local headers = {
@@ -4131,19 +4131,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StopEntitiesDetectionJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StopEntitiesDetectionJobSync(StopEntitiesDetectionJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopEntitiesDetectionJobAsync(StopEntitiesDetectionJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StopEntitiesDetectionJobAsync(StopEntitiesDetectionJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DetectSyntax asynchronously, invoking a callback when done
 -- @param DetectSyntaxRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DetectSyntaxAsync(DetectSyntaxRequest, cb)
 	assert(DetectSyntaxRequest, "You must provide a DetectSyntaxRequest")
 	local headers = {
@@ -4166,19 +4167,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DetectSyntaxRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DetectSyntaxSync(DetectSyntaxRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DetectSyntaxAsync(DetectSyntaxRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DetectSyntaxAsync(DetectSyntaxRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StartDominantLanguageDetectionJob asynchronously, invoking a callback when done
 -- @param StartDominantLanguageDetectionJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StartDominantLanguageDetectionJobAsync(StartDominantLanguageDetectionJobRequest, cb)
 	assert(StartDominantLanguageDetectionJobRequest, "You must provide a StartDominantLanguageDetectionJobRequest")
 	local headers = {
@@ -4201,19 +4203,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StartDominantLanguageDetectionJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StartDominantLanguageDetectionJobSync(StartDominantLanguageDetectionJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartDominantLanguageDetectionJobAsync(StartDominantLanguageDetectionJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StartDominantLanguageDetectionJobAsync(StartDominantLanguageDetectionJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListKeyPhrasesDetectionJobs asynchronously, invoking a callback when done
 -- @param ListKeyPhrasesDetectionJobsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListKeyPhrasesDetectionJobsAsync(ListKeyPhrasesDetectionJobsRequest, cb)
 	assert(ListKeyPhrasesDetectionJobsRequest, "You must provide a ListKeyPhrasesDetectionJobsRequest")
 	local headers = {
@@ -4236,19 +4239,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListKeyPhrasesDetectionJobsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListKeyPhrasesDetectionJobsSync(ListKeyPhrasesDetectionJobsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListKeyPhrasesDetectionJobsAsync(ListKeyPhrasesDetectionJobsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListKeyPhrasesDetectionJobsAsync(ListKeyPhrasesDetectionJobsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call BatchDetectDominantLanguage asynchronously, invoking a callback when done
 -- @param BatchDetectDominantLanguageRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.BatchDetectDominantLanguageAsync(BatchDetectDominantLanguageRequest, cb)
 	assert(BatchDetectDominantLanguageRequest, "You must provide a BatchDetectDominantLanguageRequest")
 	local headers = {
@@ -4271,19 +4275,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param BatchDetectDominantLanguageRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.BatchDetectDominantLanguageSync(BatchDetectDominantLanguageRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchDetectDominantLanguageAsync(BatchDetectDominantLanguageRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.BatchDetectDominantLanguageAsync(BatchDetectDominantLanguageRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeEntitiesDetectionJob asynchronously, invoking a callback when done
 -- @param DescribeEntitiesDetectionJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeEntitiesDetectionJobAsync(DescribeEntitiesDetectionJobRequest, cb)
 	assert(DescribeEntitiesDetectionJobRequest, "You must provide a DescribeEntitiesDetectionJobRequest")
 	local headers = {
@@ -4306,19 +4311,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeEntitiesDetectionJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeEntitiesDetectionJobSync(DescribeEntitiesDetectionJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEntitiesDetectionJobAsync(DescribeEntitiesDetectionJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeEntitiesDetectionJobAsync(DescribeEntitiesDetectionJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call BatchDetectSentiment asynchronously, invoking a callback when done
 -- @param BatchDetectSentimentRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.BatchDetectSentimentAsync(BatchDetectSentimentRequest, cb)
 	assert(BatchDetectSentimentRequest, "You must provide a BatchDetectSentimentRequest")
 	local headers = {
@@ -4341,19 +4347,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param BatchDetectSentimentRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.BatchDetectSentimentSync(BatchDetectSentimentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchDetectSentimentAsync(BatchDetectSentimentRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.BatchDetectSentimentAsync(BatchDetectSentimentRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StopKeyPhrasesDetectionJob asynchronously, invoking a callback when done
 -- @param StopKeyPhrasesDetectionJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StopKeyPhrasesDetectionJobAsync(StopKeyPhrasesDetectionJobRequest, cb)
 	assert(StopKeyPhrasesDetectionJobRequest, "You must provide a StopKeyPhrasesDetectionJobRequest")
 	local headers = {
@@ -4376,19 +4383,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StopKeyPhrasesDetectionJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StopKeyPhrasesDetectionJobSync(StopKeyPhrasesDetectionJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopKeyPhrasesDetectionJobAsync(StopKeyPhrasesDetectionJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StopKeyPhrasesDetectionJobAsync(StopKeyPhrasesDetectionJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StopDominantLanguageDetectionJob asynchronously, invoking a callback when done
 -- @param StopDominantLanguageDetectionJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StopDominantLanguageDetectionJobAsync(StopDominantLanguageDetectionJobRequest, cb)
 	assert(StopDominantLanguageDetectionJobRequest, "You must provide a StopDominantLanguageDetectionJobRequest")
 	local headers = {
@@ -4411,19 +4419,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StopDominantLanguageDetectionJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StopDominantLanguageDetectionJobSync(StopDominantLanguageDetectionJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopDominantLanguageDetectionJobAsync(StopDominantLanguageDetectionJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StopDominantLanguageDetectionJobAsync(StopDominantLanguageDetectionJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DetectEntities asynchronously, invoking a callback when done
 -- @param DetectEntitiesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DetectEntitiesAsync(DetectEntitiesRequest, cb)
 	assert(DetectEntitiesRequest, "You must provide a DetectEntitiesRequest")
 	local headers = {
@@ -4446,19 +4455,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DetectEntitiesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DetectEntitiesSync(DetectEntitiesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DetectEntitiesAsync(DetectEntitiesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DetectEntitiesAsync(DetectEntitiesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeTopicsDetectionJob asynchronously, invoking a callback when done
 -- @param DescribeTopicsDetectionJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeTopicsDetectionJobAsync(DescribeTopicsDetectionJobRequest, cb)
 	assert(DescribeTopicsDetectionJobRequest, "You must provide a DescribeTopicsDetectionJobRequest")
 	local headers = {
@@ -4481,19 +4491,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeTopicsDetectionJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeTopicsDetectionJobSync(DescribeTopicsDetectionJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTopicsDetectionJobAsync(DescribeTopicsDetectionJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeTopicsDetectionJobAsync(DescribeTopicsDetectionJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListEntitiesDetectionJobs asynchronously, invoking a callback when done
 -- @param ListEntitiesDetectionJobsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListEntitiesDetectionJobsAsync(ListEntitiesDetectionJobsRequest, cb)
 	assert(ListEntitiesDetectionJobsRequest, "You must provide a ListEntitiesDetectionJobsRequest")
 	local headers = {
@@ -4516,19 +4527,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListEntitiesDetectionJobsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListEntitiesDetectionJobsSync(ListEntitiesDetectionJobsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListEntitiesDetectionJobsAsync(ListEntitiesDetectionJobsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListEntitiesDetectionJobsAsync(ListEntitiesDetectionJobsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StartEntitiesDetectionJob asynchronously, invoking a callback when done
 -- @param StartEntitiesDetectionJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StartEntitiesDetectionJobAsync(StartEntitiesDetectionJobRequest, cb)
 	assert(StartEntitiesDetectionJobRequest, "You must provide a StartEntitiesDetectionJobRequest")
 	local headers = {
@@ -4551,19 +4563,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StartEntitiesDetectionJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StartEntitiesDetectionJobSync(StartEntitiesDetectionJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartEntitiesDetectionJobAsync(StartEntitiesDetectionJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StartEntitiesDetectionJobAsync(StartEntitiesDetectionJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DetectSentiment asynchronously, invoking a callback when done
 -- @param DetectSentimentRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DetectSentimentAsync(DetectSentimentRequest, cb)
 	assert(DetectSentimentRequest, "You must provide a DetectSentimentRequest")
 	local headers = {
@@ -4586,19 +4599,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DetectSentimentRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DetectSentimentSync(DetectSentimentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DetectSentimentAsync(DetectSentimentRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DetectSentimentAsync(DetectSentimentRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeSentimentDetectionJob asynchronously, invoking a callback when done
 -- @param DescribeSentimentDetectionJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeSentimentDetectionJobAsync(DescribeSentimentDetectionJobRequest, cb)
 	assert(DescribeSentimentDetectionJobRequest, "You must provide a DescribeSentimentDetectionJobRequest")
 	local headers = {
@@ -4621,19 +4635,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeSentimentDetectionJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeSentimentDetectionJobSync(DescribeSentimentDetectionJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeSentimentDetectionJobAsync(DescribeSentimentDetectionJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeSentimentDetectionJobAsync(DescribeSentimentDetectionJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StartTopicsDetectionJob asynchronously, invoking a callback when done
 -- @param StartTopicsDetectionJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StartTopicsDetectionJobAsync(StartTopicsDetectionJobRequest, cb)
 	assert(StartTopicsDetectionJobRequest, "You must provide a StartTopicsDetectionJobRequest")
 	local headers = {
@@ -4656,19 +4671,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StartTopicsDetectionJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StartTopicsDetectionJobSync(StartTopicsDetectionJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartTopicsDetectionJobAsync(StartTopicsDetectionJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StartTopicsDetectionJobAsync(StartTopicsDetectionJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListTopicsDetectionJobs asynchronously, invoking a callback when done
 -- @param ListTopicsDetectionJobsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListTopicsDetectionJobsAsync(ListTopicsDetectionJobsRequest, cb)
 	assert(ListTopicsDetectionJobsRequest, "You must provide a ListTopicsDetectionJobsRequest")
 	local headers = {
@@ -4691,19 +4707,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListTopicsDetectionJobsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListTopicsDetectionJobsSync(ListTopicsDetectionJobsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTopicsDetectionJobsAsync(ListTopicsDetectionJobsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListTopicsDetectionJobsAsync(ListTopicsDetectionJobsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DetectKeyPhrases asynchronously, invoking a callback when done
 -- @param DetectKeyPhrasesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DetectKeyPhrasesAsync(DetectKeyPhrasesRequest, cb)
 	assert(DetectKeyPhrasesRequest, "You must provide a DetectKeyPhrasesRequest")
 	local headers = {
@@ -4726,19 +4743,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DetectKeyPhrasesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DetectKeyPhrasesSync(DetectKeyPhrasesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DetectKeyPhrasesAsync(DetectKeyPhrasesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DetectKeyPhrasesAsync(DetectKeyPhrasesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListSentimentDetectionJobs asynchronously, invoking a callback when done
 -- @param ListSentimentDetectionJobsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListSentimentDetectionJobsAsync(ListSentimentDetectionJobsRequest, cb)
 	assert(ListSentimentDetectionJobsRequest, "You must provide a ListSentimentDetectionJobsRequest")
 	local headers = {
@@ -4761,19 +4779,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListSentimentDetectionJobsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListSentimentDetectionJobsSync(ListSentimentDetectionJobsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListSentimentDetectionJobsAsync(ListSentimentDetectionJobsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListSentimentDetectionJobsAsync(ListSentimentDetectionJobsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StartSentimentDetectionJob asynchronously, invoking a callback when done
 -- @param StartSentimentDetectionJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StartSentimentDetectionJobAsync(StartSentimentDetectionJobRequest, cb)
 	assert(StartSentimentDetectionJobRequest, "You must provide a StartSentimentDetectionJobRequest")
 	local headers = {
@@ -4796,19 +4815,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StartSentimentDetectionJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StartSentimentDetectionJobSync(StartSentimentDetectionJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartSentimentDetectionJobAsync(StartSentimentDetectionJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StartSentimentDetectionJobAsync(StartSentimentDetectionJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeKeyPhrasesDetectionJob asynchronously, invoking a callback when done
 -- @param DescribeKeyPhrasesDetectionJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeKeyPhrasesDetectionJobAsync(DescribeKeyPhrasesDetectionJobRequest, cb)
 	assert(DescribeKeyPhrasesDetectionJobRequest, "You must provide a DescribeKeyPhrasesDetectionJobRequest")
 	local headers = {
@@ -4831,19 +4851,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeKeyPhrasesDetectionJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeKeyPhrasesDetectionJobSync(DescribeKeyPhrasesDetectionJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeKeyPhrasesDetectionJobAsync(DescribeKeyPhrasesDetectionJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeKeyPhrasesDetectionJobAsync(DescribeKeyPhrasesDetectionJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DetectDominantLanguage asynchronously, invoking a callback when done
 -- @param DetectDominantLanguageRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DetectDominantLanguageAsync(DetectDominantLanguageRequest, cb)
 	assert(DetectDominantLanguageRequest, "You must provide a DetectDominantLanguageRequest")
 	local headers = {
@@ -4866,19 +4887,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DetectDominantLanguageRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DetectDominantLanguageSync(DetectDominantLanguageRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DetectDominantLanguageAsync(DetectDominantLanguageRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DetectDominantLanguageAsync(DetectDominantLanguageRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StartKeyPhrasesDetectionJob asynchronously, invoking a callback when done
 -- @param StartKeyPhrasesDetectionJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StartKeyPhrasesDetectionJobAsync(StartKeyPhrasesDetectionJobRequest, cb)
 	assert(StartKeyPhrasesDetectionJobRequest, "You must provide a StartKeyPhrasesDetectionJobRequest")
 	local headers = {
@@ -4901,19 +4923,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StartKeyPhrasesDetectionJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StartKeyPhrasesDetectionJobSync(StartKeyPhrasesDetectionJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartKeyPhrasesDetectionJobAsync(StartKeyPhrasesDetectionJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StartKeyPhrasesDetectionJobAsync(StartKeyPhrasesDetectionJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call BatchDetectSyntax asynchronously, invoking a callback when done
 -- @param BatchDetectSyntaxRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.BatchDetectSyntaxAsync(BatchDetectSyntaxRequest, cb)
 	assert(BatchDetectSyntaxRequest, "You must provide a BatchDetectSyntaxRequest")
 	local headers = {
@@ -4936,19 +4959,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param BatchDetectSyntaxRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.BatchDetectSyntaxSync(BatchDetectSyntaxRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchDetectSyntaxAsync(BatchDetectSyntaxRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.BatchDetectSyntaxAsync(BatchDetectSyntaxRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeDominantLanguageDetectionJob asynchronously, invoking a callback when done
 -- @param DescribeDominantLanguageDetectionJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeDominantLanguageDetectionJobAsync(DescribeDominantLanguageDetectionJobRequest, cb)
 	assert(DescribeDominantLanguageDetectionJobRequest, "You must provide a DescribeDominantLanguageDetectionJobRequest")
 	local headers = {
@@ -4971,19 +4995,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeDominantLanguageDetectionJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeDominantLanguageDetectionJobSync(DescribeDominantLanguageDetectionJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDominantLanguageDetectionJobAsync(DescribeDominantLanguageDetectionJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeDominantLanguageDetectionJobAsync(DescribeDominantLanguageDetectionJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StopSentimentDetectionJob asynchronously, invoking a callback when done
 -- @param StopSentimentDetectionJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StopSentimentDetectionJobAsync(StopSentimentDetectionJobRequest, cb)
 	assert(StopSentimentDetectionJobRequest, "You must provide a StopSentimentDetectionJobRequest")
 	local headers = {
@@ -5006,19 +5031,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StopSentimentDetectionJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StopSentimentDetectionJobSync(StopSentimentDetectionJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopSentimentDetectionJobAsync(StopSentimentDetectionJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StopSentimentDetectionJobAsync(StopSentimentDetectionJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call BatchDetectKeyPhrases asynchronously, invoking a callback when done
 -- @param BatchDetectKeyPhrasesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.BatchDetectKeyPhrasesAsync(BatchDetectKeyPhrasesRequest, cb)
 	assert(BatchDetectKeyPhrasesRequest, "You must provide a BatchDetectKeyPhrasesRequest")
 	local headers = {
@@ -5041,19 +5067,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param BatchDetectKeyPhrasesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.BatchDetectKeyPhrasesSync(BatchDetectKeyPhrasesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchDetectKeyPhrasesAsync(BatchDetectKeyPhrasesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.BatchDetectKeyPhrasesAsync(BatchDetectKeyPhrasesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListDominantLanguageDetectionJobs asynchronously, invoking a callback when done
 -- @param ListDominantLanguageDetectionJobsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListDominantLanguageDetectionJobsAsync(ListDominantLanguageDetectionJobsRequest, cb)
 	assert(ListDominantLanguageDetectionJobsRequest, "You must provide a ListDominantLanguageDetectionJobsRequest")
 	local headers = {
@@ -5076,19 +5103,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListDominantLanguageDetectionJobsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListDominantLanguageDetectionJobsSync(ListDominantLanguageDetectionJobsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDominantLanguageDetectionJobsAsync(ListDominantLanguageDetectionJobsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListDominantLanguageDetectionJobsAsync(ListDominantLanguageDetectionJobsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call BatchDetectEntities asynchronously, invoking a callback when done
 -- @param BatchDetectEntitiesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.BatchDetectEntitiesAsync(BatchDetectEntitiesRequest, cb)
 	assert(BatchDetectEntitiesRequest, "You must provide a BatchDetectEntitiesRequest")
 	local headers = {
@@ -5111,12 +5139,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param BatchDetectEntitiesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.BatchDetectEntitiesSync(BatchDetectEntitiesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchDetectEntitiesAsync(BatchDetectEntitiesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.BatchDetectEntitiesAsync(BatchDetectEntitiesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

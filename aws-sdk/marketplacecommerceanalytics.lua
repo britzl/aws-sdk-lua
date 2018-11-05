@@ -462,7 +462,7 @@ end
 --
 --- Call GenerateDataSet asynchronously, invoking a callback when done
 -- @param GenerateDataSetRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GenerateDataSetAsync(GenerateDataSetRequest, cb)
 	assert(GenerateDataSetRequest, "You must provide a GenerateDataSetRequest")
 	local headers = {
@@ -485,19 +485,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GenerateDataSetRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GenerateDataSetSync(GenerateDataSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GenerateDataSetAsync(GenerateDataSetRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GenerateDataSetAsync(GenerateDataSetRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StartSupportDataExport asynchronously, invoking a callback when done
 -- @param StartSupportDataExportRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StartSupportDataExportAsync(StartSupportDataExportRequest, cb)
 	assert(StartSupportDataExportRequest, "You must provide a StartSupportDataExportRequest")
 	local headers = {
@@ -520,12 +521,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StartSupportDataExportRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StartSupportDataExportSync(StartSupportDataExportRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartSupportDataExportAsync(StartSupportDataExportRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StartSupportDataExportAsync(StartSupportDataExportRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

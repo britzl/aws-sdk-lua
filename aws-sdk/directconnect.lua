@@ -4797,7 +4797,7 @@ end
 -- OPERATIONS
 --
 --- Call DescribeVirtualGateways asynchronously, invoking a callback when done
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeVirtualGatewaysAsync(cb)
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
@@ -4816,19 +4816,20 @@ end
 --- Call DescribeVirtualGateways synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeVirtualGatewaysSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeVirtualGatewaysAsync(function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeVirtualGatewaysAsync(function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeDirectConnectGatewayAssociations asynchronously, invoking a callback when done
 -- @param DescribeDirectConnectGatewayAssociationsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeDirectConnectGatewayAssociationsAsync(DescribeDirectConnectGatewayAssociationsRequest, cb)
 	assert(DescribeDirectConnectGatewayAssociationsRequest, "You must provide a DescribeDirectConnectGatewayAssociationsRequest")
 	local headers = {
@@ -4851,19 +4852,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeDirectConnectGatewayAssociationsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeDirectConnectGatewayAssociationsSync(DescribeDirectConnectGatewayAssociationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDirectConnectGatewayAssociationsAsync(DescribeDirectConnectGatewayAssociationsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeDirectConnectGatewayAssociationsAsync(DescribeDirectConnectGatewayAssociationsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateBGPPeer asynchronously, invoking a callback when done
 -- @param CreateBGPPeerRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateBGPPeerAsync(CreateBGPPeerRequest, cb)
 	assert(CreateBGPPeerRequest, "You must provide a CreateBGPPeerRequest")
 	local headers = {
@@ -4886,19 +4888,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateBGPPeerRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateBGPPeerSync(CreateBGPPeerRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateBGPPeerAsync(CreateBGPPeerRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateBGPPeerAsync(CreateBGPPeerRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AllocateHostedConnection asynchronously, invoking a callback when done
 -- @param AllocateHostedConnectionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AllocateHostedConnectionAsync(AllocateHostedConnectionRequest, cb)
 	assert(AllocateHostedConnectionRequest, "You must provide a AllocateHostedConnectionRequest")
 	local headers = {
@@ -4921,19 +4924,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AllocateHostedConnectionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AllocateHostedConnectionSync(AllocateHostedConnectionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AllocateHostedConnectionAsync(AllocateHostedConnectionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AllocateHostedConnectionAsync(AllocateHostedConnectionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AssociateHostedConnection asynchronously, invoking a callback when done
 -- @param AssociateHostedConnectionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AssociateHostedConnectionAsync(AssociateHostedConnectionRequest, cb)
 	assert(AssociateHostedConnectionRequest, "You must provide a AssociateHostedConnectionRequest")
 	local headers = {
@@ -4956,19 +4960,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AssociateHostedConnectionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AssociateHostedConnectionSync(AssociateHostedConnectionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateHostedConnectionAsync(AssociateHostedConnectionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AssociateHostedConnectionAsync(AssociateHostedConnectionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AllocatePublicVirtualInterface asynchronously, invoking a callback when done
 -- @param AllocatePublicVirtualInterfaceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AllocatePublicVirtualInterfaceAsync(AllocatePublicVirtualInterfaceRequest, cb)
 	assert(AllocatePublicVirtualInterfaceRequest, "You must provide a AllocatePublicVirtualInterfaceRequest")
 	local headers = {
@@ -4991,19 +4996,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AllocatePublicVirtualInterfaceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AllocatePublicVirtualInterfaceSync(AllocatePublicVirtualInterfaceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AllocatePublicVirtualInterfaceAsync(AllocatePublicVirtualInterfaceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AllocatePublicVirtualInterfaceAsync(AllocatePublicVirtualInterfaceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteVirtualInterface asynchronously, invoking a callback when done
 -- @param DeleteVirtualInterfaceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteVirtualInterfaceAsync(DeleteVirtualInterfaceRequest, cb)
 	assert(DeleteVirtualInterfaceRequest, "You must provide a DeleteVirtualInterfaceRequest")
 	local headers = {
@@ -5026,19 +5032,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteVirtualInterfaceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteVirtualInterfaceSync(DeleteVirtualInterfaceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteVirtualInterfaceAsync(DeleteVirtualInterfaceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteVirtualInterfaceAsync(DeleteVirtualInterfaceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateInterconnect asynchronously, invoking a callback when done
 -- @param CreateInterconnectRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateInterconnectAsync(CreateInterconnectRequest, cb)
 	assert(CreateInterconnectRequest, "You must provide a CreateInterconnectRequest")
 	local headers = {
@@ -5061,19 +5068,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateInterconnectRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateInterconnectSync(CreateInterconnectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateInterconnectAsync(CreateInterconnectRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateInterconnectAsync(CreateInterconnectRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeLags asynchronously, invoking a callback when done
 -- @param DescribeLagsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeLagsAsync(DescribeLagsRequest, cb)
 	assert(DescribeLagsRequest, "You must provide a DescribeLagsRequest")
 	local headers = {
@@ -5096,19 +5104,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeLagsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeLagsSync(DescribeLagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLagsAsync(DescribeLagsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeLagsAsync(DescribeLagsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteInterconnect asynchronously, invoking a callback when done
 -- @param DeleteInterconnectRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteInterconnectAsync(DeleteInterconnectRequest, cb)
 	assert(DeleteInterconnectRequest, "You must provide a DeleteInterconnectRequest")
 	local headers = {
@@ -5131,19 +5140,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteInterconnectRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteInterconnectSync(DeleteInterconnectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteInterconnectAsync(DeleteInterconnectRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteInterconnectAsync(DeleteInterconnectRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteBGPPeer asynchronously, invoking a callback when done
 -- @param DeleteBGPPeerRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteBGPPeerAsync(DeleteBGPPeerRequest, cb)
 	assert(DeleteBGPPeerRequest, "You must provide a DeleteBGPPeerRequest")
 	local headers = {
@@ -5166,19 +5176,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteBGPPeerRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteBGPPeerSync(DeleteBGPPeerRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBGPPeerAsync(DeleteBGPPeerRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteBGPPeerAsync(DeleteBGPPeerRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteDirectConnectGatewayAssociation asynchronously, invoking a callback when done
 -- @param DeleteDirectConnectGatewayAssociationRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteDirectConnectGatewayAssociationAsync(DeleteDirectConnectGatewayAssociationRequest, cb)
 	assert(DeleteDirectConnectGatewayAssociationRequest, "You must provide a DeleteDirectConnectGatewayAssociationRequest")
 	local headers = {
@@ -5201,19 +5212,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteDirectConnectGatewayAssociationRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteDirectConnectGatewayAssociationSync(DeleteDirectConnectGatewayAssociationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDirectConnectGatewayAssociationAsync(DeleteDirectConnectGatewayAssociationRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteDirectConnectGatewayAssociationAsync(DeleteDirectConnectGatewayAssociationRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeDirectConnectGatewayAttachments asynchronously, invoking a callback when done
 -- @param DescribeDirectConnectGatewayAttachmentsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeDirectConnectGatewayAttachmentsAsync(DescribeDirectConnectGatewayAttachmentsRequest, cb)
 	assert(DescribeDirectConnectGatewayAttachmentsRequest, "You must provide a DescribeDirectConnectGatewayAttachmentsRequest")
 	local headers = {
@@ -5236,19 +5248,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeDirectConnectGatewayAttachmentsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeDirectConnectGatewayAttachmentsSync(DescribeDirectConnectGatewayAttachmentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDirectConnectGatewayAttachmentsAsync(DescribeDirectConnectGatewayAttachmentsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeDirectConnectGatewayAttachmentsAsync(DescribeDirectConnectGatewayAttachmentsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AllocatePrivateVirtualInterface asynchronously, invoking a callback when done
 -- @param AllocatePrivateVirtualInterfaceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AllocatePrivateVirtualInterfaceAsync(AllocatePrivateVirtualInterfaceRequest, cb)
 	assert(AllocatePrivateVirtualInterfaceRequest, "You must provide a AllocatePrivateVirtualInterfaceRequest")
 	local headers = {
@@ -5271,19 +5284,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AllocatePrivateVirtualInterfaceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AllocatePrivateVirtualInterfaceSync(AllocatePrivateVirtualInterfaceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AllocatePrivateVirtualInterfaceAsync(AllocatePrivateVirtualInterfaceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AllocatePrivateVirtualInterfaceAsync(AllocatePrivateVirtualInterfaceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AssociateConnectionWithLag asynchronously, invoking a callback when done
 -- @param AssociateConnectionWithLagRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AssociateConnectionWithLagAsync(AssociateConnectionWithLagRequest, cb)
 	assert(AssociateConnectionWithLagRequest, "You must provide a AssociateConnectionWithLagRequest")
 	local headers = {
@@ -5306,19 +5320,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AssociateConnectionWithLagRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AssociateConnectionWithLagSync(AssociateConnectionWithLagRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateConnectionWithLagAsync(AssociateConnectionWithLagRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AssociateConnectionWithLagAsync(AssociateConnectionWithLagRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateLag asynchronously, invoking a callback when done
 -- @param CreateLagRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateLagAsync(CreateLagRequest, cb)
 	assert(CreateLagRequest, "You must provide a CreateLagRequest")
 	local headers = {
@@ -5341,19 +5356,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateLagRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateLagSync(CreateLagRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateLagAsync(CreateLagRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateLagAsync(CreateLagRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ConfirmPublicVirtualInterface asynchronously, invoking a callback when done
 -- @param ConfirmPublicVirtualInterfaceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ConfirmPublicVirtualInterfaceAsync(ConfirmPublicVirtualInterfaceRequest, cb)
 	assert(ConfirmPublicVirtualInterfaceRequest, "You must provide a ConfirmPublicVirtualInterfaceRequest")
 	local headers = {
@@ -5376,19 +5392,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ConfirmPublicVirtualInterfaceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ConfirmPublicVirtualInterfaceSync(ConfirmPublicVirtualInterfaceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ConfirmPublicVirtualInterfaceAsync(ConfirmPublicVirtualInterfaceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ConfirmPublicVirtualInterfaceAsync(ConfirmPublicVirtualInterfaceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeLoa asynchronously, invoking a callback when done
 -- @param DescribeLoaRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeLoaAsync(DescribeLoaRequest, cb)
 	assert(DescribeLoaRequest, "You must provide a DescribeLoaRequest")
 	local headers = {
@@ -5411,19 +5428,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeLoaRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeLoaSync(DescribeLoaRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLoaAsync(DescribeLoaRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeLoaAsync(DescribeLoaRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeHostedConnections asynchronously, invoking a callback when done
 -- @param DescribeHostedConnectionsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeHostedConnectionsAsync(DescribeHostedConnectionsRequest, cb)
 	assert(DescribeHostedConnectionsRequest, "You must provide a DescribeHostedConnectionsRequest")
 	local headers = {
@@ -5446,19 +5464,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeHostedConnectionsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeHostedConnectionsSync(DescribeHostedConnectionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeHostedConnectionsAsync(DescribeHostedConnectionsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeHostedConnectionsAsync(DescribeHostedConnectionsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AssociateVirtualInterface asynchronously, invoking a callback when done
 -- @param AssociateVirtualInterfaceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AssociateVirtualInterfaceAsync(AssociateVirtualInterfaceRequest, cb)
 	assert(AssociateVirtualInterfaceRequest, "You must provide a AssociateVirtualInterfaceRequest")
 	local headers = {
@@ -5481,19 +5500,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AssociateVirtualInterfaceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AssociateVirtualInterfaceSync(AssociateVirtualInterfaceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateVirtualInterfaceAsync(AssociateVirtualInterfaceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AssociateVirtualInterfaceAsync(AssociateVirtualInterfaceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeVirtualInterfaces asynchronously, invoking a callback when done
 -- @param DescribeVirtualInterfacesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeVirtualInterfacesAsync(DescribeVirtualInterfacesRequest, cb)
 	assert(DescribeVirtualInterfacesRequest, "You must provide a DescribeVirtualInterfacesRequest")
 	local headers = {
@@ -5516,19 +5536,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeVirtualInterfacesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeVirtualInterfacesSync(DescribeVirtualInterfacesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeVirtualInterfacesAsync(DescribeVirtualInterfacesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeVirtualInterfacesAsync(DescribeVirtualInterfacesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateDirectConnectGateway asynchronously, invoking a callback when done
 -- @param CreateDirectConnectGatewayRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateDirectConnectGatewayAsync(CreateDirectConnectGatewayRequest, cb)
 	assert(CreateDirectConnectGatewayRequest, "You must provide a CreateDirectConnectGatewayRequest")
 	local headers = {
@@ -5551,19 +5572,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateDirectConnectGatewayRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateDirectConnectGatewaySync(CreateDirectConnectGatewayRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDirectConnectGatewayAsync(CreateDirectConnectGatewayRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateDirectConnectGatewayAsync(CreateDirectConnectGatewayRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ConfirmPrivateVirtualInterface asynchronously, invoking a callback when done
 -- @param ConfirmPrivateVirtualInterfaceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ConfirmPrivateVirtualInterfaceAsync(ConfirmPrivateVirtualInterfaceRequest, cb)
 	assert(ConfirmPrivateVirtualInterfaceRequest, "You must provide a ConfirmPrivateVirtualInterfaceRequest")
 	local headers = {
@@ -5586,19 +5608,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ConfirmPrivateVirtualInterfaceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ConfirmPrivateVirtualInterfaceSync(ConfirmPrivateVirtualInterfaceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ConfirmPrivateVirtualInterfaceAsync(ConfirmPrivateVirtualInterfaceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ConfirmPrivateVirtualInterfaceAsync(ConfirmPrivateVirtualInterfaceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DisassociateConnectionFromLag asynchronously, invoking a callback when done
 -- @param DisassociateConnectionFromLagRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DisassociateConnectionFromLagAsync(DisassociateConnectionFromLagRequest, cb)
 	assert(DisassociateConnectionFromLagRequest, "You must provide a DisassociateConnectionFromLagRequest")
 	local headers = {
@@ -5621,19 +5644,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DisassociateConnectionFromLagRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DisassociateConnectionFromLagSync(DisassociateConnectionFromLagRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisassociateConnectionFromLagAsync(DisassociateConnectionFromLagRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DisassociateConnectionFromLagAsync(DisassociateConnectionFromLagRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteDirectConnectGateway asynchronously, invoking a callback when done
 -- @param DeleteDirectConnectGatewayRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteDirectConnectGatewayAsync(DeleteDirectConnectGatewayRequest, cb)
 	assert(DeleteDirectConnectGatewayRequest, "You must provide a DeleteDirectConnectGatewayRequest")
 	local headers = {
@@ -5656,19 +5680,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteDirectConnectGatewayRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteDirectConnectGatewaySync(DeleteDirectConnectGatewayRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDirectConnectGatewayAsync(DeleteDirectConnectGatewayRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteDirectConnectGatewayAsync(DeleteDirectConnectGatewayRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ConfirmConnection asynchronously, invoking a callback when done
 -- @param ConfirmConnectionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ConfirmConnectionAsync(ConfirmConnectionRequest, cb)
 	assert(ConfirmConnectionRequest, "You must provide a ConfirmConnectionRequest")
 	local headers = {
@@ -5691,19 +5716,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ConfirmConnectionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ConfirmConnectionSync(ConfirmConnectionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ConfirmConnectionAsync(ConfirmConnectionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ConfirmConnectionAsync(ConfirmConnectionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeInterconnects asynchronously, invoking a callback when done
 -- @param DescribeInterconnectsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeInterconnectsAsync(DescribeInterconnectsRequest, cb)
 	assert(DescribeInterconnectsRequest, "You must provide a DescribeInterconnectsRequest")
 	local headers = {
@@ -5726,19 +5752,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeInterconnectsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeInterconnectsSync(DescribeInterconnectsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeInterconnectsAsync(DescribeInterconnectsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeInterconnectsAsync(DescribeInterconnectsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeTags asynchronously, invoking a callback when done
 -- @param DescribeTagsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeTagsAsync(DescribeTagsRequest, cb)
 	assert(DescribeTagsRequest, "You must provide a DescribeTagsRequest")
 	local headers = {
@@ -5761,19 +5788,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeTagsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeTagsSync(DescribeTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTagsAsync(DescribeTagsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeTagsAsync(DescribeTagsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeConnections asynchronously, invoking a callback when done
 -- @param DescribeConnectionsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeConnectionsAsync(DescribeConnectionsRequest, cb)
 	assert(DescribeConnectionsRequest, "You must provide a DescribeConnectionsRequest")
 	local headers = {
@@ -5796,19 +5824,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeConnectionsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeConnectionsSync(DescribeConnectionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeConnectionsAsync(DescribeConnectionsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeConnectionsAsync(DescribeConnectionsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreatePublicVirtualInterface asynchronously, invoking a callback when done
 -- @param CreatePublicVirtualInterfaceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreatePublicVirtualInterfaceAsync(CreatePublicVirtualInterfaceRequest, cb)
 	assert(CreatePublicVirtualInterfaceRequest, "You must provide a CreatePublicVirtualInterfaceRequest")
 	local headers = {
@@ -5831,19 +5860,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreatePublicVirtualInterfaceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreatePublicVirtualInterfaceSync(CreatePublicVirtualInterfaceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreatePublicVirtualInterfaceAsync(CreatePublicVirtualInterfaceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreatePublicVirtualInterfaceAsync(CreatePublicVirtualInterfaceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateConnection asynchronously, invoking a callback when done
 -- @param CreateConnectionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateConnectionAsync(CreateConnectionRequest, cb)
 	assert(CreateConnectionRequest, "You must provide a CreateConnectionRequest")
 	local headers = {
@@ -5866,19 +5896,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateConnectionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateConnectionSync(CreateConnectionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateConnectionAsync(CreateConnectionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateConnectionAsync(CreateConnectionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call TagResource asynchronously, invoking a callback when done
 -- @param TagResourceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.TagResourceAsync(TagResourceRequest, cb)
 	assert(TagResourceRequest, "You must provide a TagResourceRequest")
 	local headers = {
@@ -5901,18 +5932,19 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param TagResourceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.TagResourceSync(TagResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TagResourceAsync(TagResourceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.TagResourceAsync(TagResourceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeLocations asynchronously, invoking a callback when done
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeLocationsAsync(cb)
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
@@ -5931,19 +5963,20 @@ end
 --- Call DescribeLocations synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeLocationsSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLocationsAsync(function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeLocationsAsync(function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UntagResource asynchronously, invoking a callback when done
 -- @param UntagResourceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UntagResourceAsync(UntagResourceRequest, cb)
 	assert(UntagResourceRequest, "You must provide a UntagResourceRequest")
 	local headers = {
@@ -5966,19 +5999,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UntagResourceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UntagResourceSync(UntagResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UntagResourceAsync(UntagResourceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UntagResourceAsync(UntagResourceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreatePrivateVirtualInterface asynchronously, invoking a callback when done
 -- @param CreatePrivateVirtualInterfaceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreatePrivateVirtualInterfaceAsync(CreatePrivateVirtualInterfaceRequest, cb)
 	assert(CreatePrivateVirtualInterfaceRequest, "You must provide a CreatePrivateVirtualInterfaceRequest")
 	local headers = {
@@ -6001,19 +6035,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreatePrivateVirtualInterfaceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreatePrivateVirtualInterfaceSync(CreatePrivateVirtualInterfaceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreatePrivateVirtualInterfaceAsync(CreatePrivateVirtualInterfaceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreatePrivateVirtualInterfaceAsync(CreatePrivateVirtualInterfaceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteConnection asynchronously, invoking a callback when done
 -- @param DeleteConnectionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteConnectionAsync(DeleteConnectionRequest, cb)
 	assert(DeleteConnectionRequest, "You must provide a DeleteConnectionRequest")
 	local headers = {
@@ -6036,19 +6071,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteConnectionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteConnectionSync(DeleteConnectionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteConnectionAsync(DeleteConnectionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteConnectionAsync(DeleteConnectionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeDirectConnectGateways asynchronously, invoking a callback when done
 -- @param DescribeDirectConnectGatewaysRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeDirectConnectGatewaysAsync(DescribeDirectConnectGatewaysRequest, cb)
 	assert(DescribeDirectConnectGatewaysRequest, "You must provide a DescribeDirectConnectGatewaysRequest")
 	local headers = {
@@ -6071,19 +6107,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeDirectConnectGatewaysRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeDirectConnectGatewaysSync(DescribeDirectConnectGatewaysRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDirectConnectGatewaysAsync(DescribeDirectConnectGatewaysRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeDirectConnectGatewaysAsync(DescribeDirectConnectGatewaysRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteLag asynchronously, invoking a callback when done
 -- @param DeleteLagRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteLagAsync(DeleteLagRequest, cb)
 	assert(DeleteLagRequest, "You must provide a DeleteLagRequest")
 	local headers = {
@@ -6106,19 +6143,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteLagRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteLagSync(DeleteLagRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteLagAsync(DeleteLagRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteLagAsync(DeleteLagRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateDirectConnectGatewayAssociation asynchronously, invoking a callback when done
 -- @param CreateDirectConnectGatewayAssociationRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateDirectConnectGatewayAssociationAsync(CreateDirectConnectGatewayAssociationRequest, cb)
 	assert(CreateDirectConnectGatewayAssociationRequest, "You must provide a CreateDirectConnectGatewayAssociationRequest")
 	local headers = {
@@ -6141,19 +6179,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateDirectConnectGatewayAssociationRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateDirectConnectGatewayAssociationSync(CreateDirectConnectGatewayAssociationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDirectConnectGatewayAssociationAsync(CreateDirectConnectGatewayAssociationRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateDirectConnectGatewayAssociationAsync(CreateDirectConnectGatewayAssociationRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateVirtualInterfaceAttributes asynchronously, invoking a callback when done
 -- @param UpdateVirtualInterfaceAttributesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateVirtualInterfaceAttributesAsync(UpdateVirtualInterfaceAttributesRequest, cb)
 	assert(UpdateVirtualInterfaceAttributesRequest, "You must provide a UpdateVirtualInterfaceAttributesRequest")
 	local headers = {
@@ -6176,19 +6215,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateVirtualInterfaceAttributesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateVirtualInterfaceAttributesSync(UpdateVirtualInterfaceAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateVirtualInterfaceAttributesAsync(UpdateVirtualInterfaceAttributesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateVirtualInterfaceAttributesAsync(UpdateVirtualInterfaceAttributesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateLag asynchronously, invoking a callback when done
 -- @param UpdateLagRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateLagAsync(UpdateLagRequest, cb)
 	assert(UpdateLagRequest, "You must provide a UpdateLagRequest")
 	local headers = {
@@ -6211,12 +6251,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateLagRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateLagSync(UpdateLagRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateLagAsync(UpdateLagRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateLagAsync(UpdateLagRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

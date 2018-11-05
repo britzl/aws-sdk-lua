@@ -1590,7 +1590,7 @@ end
 --
 --- Call GetFederationToken asynchronously, invoking a callback when done
 -- @param GetFederationTokenRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetFederationTokenAsync(GetFederationTokenRequest, cb)
 	assert(GetFederationTokenRequest, "You must provide a GetFederationTokenRequest")
 	local headers = {
@@ -1613,19 +1613,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetFederationTokenRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetFederationTokenSync(GetFederationTokenRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetFederationTokenAsync(GetFederationTokenRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetFederationTokenAsync(GetFederationTokenRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AssumeRole asynchronously, invoking a callback when done
 -- @param AssumeRoleRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AssumeRoleAsync(AssumeRoleRequest, cb)
 	assert(AssumeRoleRequest, "You must provide a AssumeRoleRequest")
 	local headers = {
@@ -1648,19 +1649,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AssumeRoleRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AssumeRoleSync(AssumeRoleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssumeRoleAsync(AssumeRoleRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AssumeRoleAsync(AssumeRoleRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DecodeAuthorizationMessage asynchronously, invoking a callback when done
 -- @param DecodeAuthorizationMessageRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DecodeAuthorizationMessageAsync(DecodeAuthorizationMessageRequest, cb)
 	assert(DecodeAuthorizationMessageRequest, "You must provide a DecodeAuthorizationMessageRequest")
 	local headers = {
@@ -1683,19 +1685,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DecodeAuthorizationMessageRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DecodeAuthorizationMessageSync(DecodeAuthorizationMessageRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DecodeAuthorizationMessageAsync(DecodeAuthorizationMessageRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DecodeAuthorizationMessageAsync(DecodeAuthorizationMessageRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AssumeRoleWithWebIdentity asynchronously, invoking a callback when done
 -- @param AssumeRoleWithWebIdentityRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AssumeRoleWithWebIdentityAsync(AssumeRoleWithWebIdentityRequest, cb)
 	assert(AssumeRoleWithWebIdentityRequest, "You must provide a AssumeRoleWithWebIdentityRequest")
 	local headers = {
@@ -1718,19 +1721,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AssumeRoleWithWebIdentityRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AssumeRoleWithWebIdentitySync(AssumeRoleWithWebIdentityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssumeRoleWithWebIdentityAsync(AssumeRoleWithWebIdentityRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AssumeRoleWithWebIdentityAsync(AssumeRoleWithWebIdentityRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetSessionToken asynchronously, invoking a callback when done
 -- @param GetSessionTokenRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetSessionTokenAsync(GetSessionTokenRequest, cb)
 	assert(GetSessionTokenRequest, "You must provide a GetSessionTokenRequest")
 	local headers = {
@@ -1753,19 +1757,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetSessionTokenRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetSessionTokenSync(GetSessionTokenRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSessionTokenAsync(GetSessionTokenRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetSessionTokenAsync(GetSessionTokenRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetCallerIdentity asynchronously, invoking a callback when done
 -- @param GetCallerIdentityRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetCallerIdentityAsync(GetCallerIdentityRequest, cb)
 	assert(GetCallerIdentityRequest, "You must provide a GetCallerIdentityRequest")
 	local headers = {
@@ -1788,19 +1793,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetCallerIdentityRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetCallerIdentitySync(GetCallerIdentityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCallerIdentityAsync(GetCallerIdentityRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetCallerIdentityAsync(GetCallerIdentityRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AssumeRoleWithSAML asynchronously, invoking a callback when done
 -- @param AssumeRoleWithSAMLRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AssumeRoleWithSAMLAsync(AssumeRoleWithSAMLRequest, cb)
 	assert(AssumeRoleWithSAMLRequest, "You must provide a AssumeRoleWithSAMLRequest")
 	local headers = {
@@ -1823,12 +1829,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AssumeRoleWithSAMLRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AssumeRoleWithSAMLSync(AssumeRoleWithSAMLRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssumeRoleWithSAMLAsync(AssumeRoleWithSAMLRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AssumeRoleWithSAMLAsync(AssumeRoleWithSAMLRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

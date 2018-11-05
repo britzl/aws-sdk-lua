@@ -1957,7 +1957,7 @@ end
 --
 --- Call DisassociateDeviceFromPlacement asynchronously, invoking a callback when done
 -- @param DisassociateDeviceFromPlacementRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DisassociateDeviceFromPlacementAsync(DisassociateDeviceFromPlacementRequest, cb)
 	assert(DisassociateDeviceFromPlacementRequest, "You must provide a DisassociateDeviceFromPlacementRequest")
 	local headers = {
@@ -1980,19 +1980,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DisassociateDeviceFromPlacementRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DisassociateDeviceFromPlacementSync(DisassociateDeviceFromPlacementRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisassociateDeviceFromPlacementAsync(DisassociateDeviceFromPlacementRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DisassociateDeviceFromPlacementAsync(DisassociateDeviceFromPlacementRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdatePlacement asynchronously, invoking a callback when done
 -- @param UpdatePlacementRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdatePlacementAsync(UpdatePlacementRequest, cb)
 	assert(UpdatePlacementRequest, "You must provide a UpdatePlacementRequest")
 	local headers = {
@@ -2015,19 +2016,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdatePlacementRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdatePlacementSync(UpdatePlacementRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdatePlacementAsync(UpdatePlacementRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdatePlacementAsync(UpdatePlacementRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeletePlacement asynchronously, invoking a callback when done
 -- @param DeletePlacementRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeletePlacementAsync(DeletePlacementRequest, cb)
 	assert(DeletePlacementRequest, "You must provide a DeletePlacementRequest")
 	local headers = {
@@ -2050,19 +2052,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeletePlacementRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeletePlacementSync(DeletePlacementRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeletePlacementAsync(DeletePlacementRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeletePlacementAsync(DeletePlacementRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListPlacements asynchronously, invoking a callback when done
 -- @param ListPlacementsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListPlacementsAsync(ListPlacementsRequest, cb)
 	assert(ListPlacementsRequest, "You must provide a ListPlacementsRequest")
 	local headers = {
@@ -2085,19 +2088,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListPlacementsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListPlacementsSync(ListPlacementsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPlacementsAsync(ListPlacementsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListPlacementsAsync(ListPlacementsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateProject asynchronously, invoking a callback when done
 -- @param CreateProjectRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateProjectAsync(CreateProjectRequest, cb)
 	assert(CreateProjectRequest, "You must provide a CreateProjectRequest")
 	local headers = {
@@ -2120,19 +2124,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateProjectRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateProjectSync(CreateProjectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateProjectAsync(CreateProjectRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateProjectAsync(CreateProjectRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListProjects asynchronously, invoking a callback when done
 -- @param ListProjectsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListProjectsAsync(ListProjectsRequest, cb)
 	assert(ListProjectsRequest, "You must provide a ListProjectsRequest")
 	local headers = {
@@ -2155,19 +2160,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListProjectsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListProjectsSync(ListProjectsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListProjectsAsync(ListProjectsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListProjectsAsync(ListProjectsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateProject asynchronously, invoking a callback when done
 -- @param UpdateProjectRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateProjectAsync(UpdateProjectRequest, cb)
 	assert(UpdateProjectRequest, "You must provide a UpdateProjectRequest")
 	local headers = {
@@ -2190,19 +2196,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateProjectRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateProjectSync(UpdateProjectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateProjectAsync(UpdateProjectRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateProjectAsync(UpdateProjectRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetDevicesInPlacement asynchronously, invoking a callback when done
 -- @param GetDevicesInPlacementRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetDevicesInPlacementAsync(GetDevicesInPlacementRequest, cb)
 	assert(GetDevicesInPlacementRequest, "You must provide a GetDevicesInPlacementRequest")
 	local headers = {
@@ -2225,19 +2232,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetDevicesInPlacementRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetDevicesInPlacementSync(GetDevicesInPlacementRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDevicesInPlacementAsync(GetDevicesInPlacementRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetDevicesInPlacementAsync(GetDevicesInPlacementRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribePlacement asynchronously, invoking a callback when done
 -- @param DescribePlacementRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribePlacementAsync(DescribePlacementRequest, cb)
 	assert(DescribePlacementRequest, "You must provide a DescribePlacementRequest")
 	local headers = {
@@ -2260,19 +2268,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribePlacementRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribePlacementSync(DescribePlacementRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribePlacementAsync(DescribePlacementRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribePlacementAsync(DescribePlacementRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeProject asynchronously, invoking a callback when done
 -- @param DescribeProjectRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeProjectAsync(DescribeProjectRequest, cb)
 	assert(DescribeProjectRequest, "You must provide a DescribeProjectRequest")
 	local headers = {
@@ -2295,19 +2304,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeProjectRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeProjectSync(DescribeProjectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeProjectAsync(DescribeProjectRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeProjectAsync(DescribeProjectRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AssociateDeviceWithPlacement asynchronously, invoking a callback when done
 -- @param AssociateDeviceWithPlacementRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AssociateDeviceWithPlacementAsync(AssociateDeviceWithPlacementRequest, cb)
 	assert(AssociateDeviceWithPlacementRequest, "You must provide a AssociateDeviceWithPlacementRequest")
 	local headers = {
@@ -2330,19 +2340,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AssociateDeviceWithPlacementRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AssociateDeviceWithPlacementSync(AssociateDeviceWithPlacementRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateDeviceWithPlacementAsync(AssociateDeviceWithPlacementRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AssociateDeviceWithPlacementAsync(AssociateDeviceWithPlacementRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreatePlacement asynchronously, invoking a callback when done
 -- @param CreatePlacementRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreatePlacementAsync(CreatePlacementRequest, cb)
 	assert(CreatePlacementRequest, "You must provide a CreatePlacementRequest")
 	local headers = {
@@ -2365,19 +2376,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreatePlacementRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreatePlacementSync(CreatePlacementRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreatePlacementAsync(CreatePlacementRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreatePlacementAsync(CreatePlacementRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteProject asynchronously, invoking a callback when done
 -- @param DeleteProjectRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteProjectAsync(DeleteProjectRequest, cb)
 	assert(DeleteProjectRequest, "You must provide a DeleteProjectRequest")
 	local headers = {
@@ -2400,12 +2412,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteProjectRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteProjectSync(DeleteProjectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteProjectAsync(DeleteProjectRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteProjectAsync(DeleteProjectRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

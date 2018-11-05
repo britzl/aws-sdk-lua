@@ -1137,7 +1137,7 @@ end
 --
 --- Call PostContent asynchronously, invoking a callback when done
 -- @param PostContentRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PostContentAsync(PostContentRequest, cb)
 	assert(PostContentRequest, "You must provide a PostContentRequest")
 	local headers = {
@@ -1160,19 +1160,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PostContentRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PostContentSync(PostContentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PostContentAsync(PostContentRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PostContentAsync(PostContentRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PostText asynchronously, invoking a callback when done
 -- @param PostTextRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PostTextAsync(PostTextRequest, cb)
 	assert(PostTextRequest, "You must provide a PostTextRequest")
 	local headers = {
@@ -1195,12 +1196,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PostTextRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PostTextSync(PostTextRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PostTextAsync(PostTextRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PostTextAsync(PostTextRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

@@ -2900,7 +2900,7 @@ end
 --
 --- Call GetTags asynchronously, invoking a callback when done
 -- @param GetTagsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetTagsAsync(GetTagsRequest, cb)
 	assert(GetTagsRequest, "You must provide a GetTagsRequest")
 	local headers = {
@@ -2923,19 +2923,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetTagsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetTagsSync(GetTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTagsAsync(GetTagsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetTagsAsync(GetTagsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetReservationPurchaseRecommendation asynchronously, invoking a callback when done
 -- @param GetReservationPurchaseRecommendationRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetReservationPurchaseRecommendationAsync(GetReservationPurchaseRecommendationRequest, cb)
 	assert(GetReservationPurchaseRecommendationRequest, "You must provide a GetReservationPurchaseRecommendationRequest")
 	local headers = {
@@ -2958,19 +2959,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetReservationPurchaseRecommendationRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetReservationPurchaseRecommendationSync(GetReservationPurchaseRecommendationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetReservationPurchaseRecommendationAsync(GetReservationPurchaseRecommendationRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetReservationPurchaseRecommendationAsync(GetReservationPurchaseRecommendationRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetReservationUtilization asynchronously, invoking a callback when done
 -- @param GetReservationUtilizationRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetReservationUtilizationAsync(GetReservationUtilizationRequest, cb)
 	assert(GetReservationUtilizationRequest, "You must provide a GetReservationUtilizationRequest")
 	local headers = {
@@ -2993,19 +2995,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetReservationUtilizationRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetReservationUtilizationSync(GetReservationUtilizationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetReservationUtilizationAsync(GetReservationUtilizationRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetReservationUtilizationAsync(GetReservationUtilizationRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetDimensionValues asynchronously, invoking a callback when done
 -- @param GetDimensionValuesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetDimensionValuesAsync(GetDimensionValuesRequest, cb)
 	assert(GetDimensionValuesRequest, "You must provide a GetDimensionValuesRequest")
 	local headers = {
@@ -3028,19 +3031,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetDimensionValuesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetDimensionValuesSync(GetDimensionValuesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDimensionValuesAsync(GetDimensionValuesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetDimensionValuesAsync(GetDimensionValuesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetCostAndUsage asynchronously, invoking a callback when done
 -- @param GetCostAndUsageRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetCostAndUsageAsync(GetCostAndUsageRequest, cb)
 	assert(GetCostAndUsageRequest, "You must provide a GetCostAndUsageRequest")
 	local headers = {
@@ -3063,19 +3067,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetCostAndUsageRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetCostAndUsageSync(GetCostAndUsageRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCostAndUsageAsync(GetCostAndUsageRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetCostAndUsageAsync(GetCostAndUsageRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetReservationCoverage asynchronously, invoking a callback when done
 -- @param GetReservationCoverageRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetReservationCoverageAsync(GetReservationCoverageRequest, cb)
 	assert(GetReservationCoverageRequest, "You must provide a GetReservationCoverageRequest")
 	local headers = {
@@ -3098,12 +3103,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetReservationCoverageRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetReservationCoverageSync(GetReservationCoverageRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetReservationCoverageAsync(GetReservationCoverageRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetReservationCoverageAsync(GetReservationCoverageRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

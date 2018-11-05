@@ -1287,7 +1287,7 @@ end
 --
 --- Call Suggest asynchronously, invoking a callback when done
 -- @param SuggestRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.SuggestAsync(SuggestRequest, cb)
 	assert(SuggestRequest, "You must provide a SuggestRequest")
 	local headers = {
@@ -1310,19 +1310,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param SuggestRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.SuggestSync(SuggestRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SuggestAsync(SuggestRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.SuggestAsync(SuggestRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call Search asynchronously, invoking a callback when done
 -- @param SearchRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.SearchAsync(SearchRequest, cb)
 	assert(SearchRequest, "You must provide a SearchRequest")
 	local headers = {
@@ -1345,19 +1346,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param SearchRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.SearchSync(SearchRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SearchAsync(SearchRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.SearchAsync(SearchRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UploadDocuments asynchronously, invoking a callback when done
 -- @param UploadDocumentsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UploadDocumentsAsync(UploadDocumentsRequest, cb)
 	assert(UploadDocumentsRequest, "You must provide a UploadDocumentsRequest")
 	local headers = {
@@ -1380,12 +1382,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UploadDocumentsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UploadDocumentsSync(UploadDocumentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UploadDocumentsAsync(UploadDocumentsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UploadDocumentsAsync(UploadDocumentsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

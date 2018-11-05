@@ -1797,7 +1797,7 @@ end
 --
 --- Call DeleteAttributes asynchronously, invoking a callback when done
 -- @param DeleteAttributesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteAttributesAsync(DeleteAttributesRequest, cb)
 	assert(DeleteAttributesRequest, "You must provide a DeleteAttributesRequest")
 	local headers = {
@@ -1820,19 +1820,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteAttributesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteAttributesSync(DeleteAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteAttributesAsync(DeleteAttributesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteAttributesAsync(DeleteAttributesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call BatchPutAttributes asynchronously, invoking a callback when done
 -- @param BatchPutAttributesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.BatchPutAttributesAsync(BatchPutAttributesRequest, cb)
 	assert(BatchPutAttributesRequest, "You must provide a BatchPutAttributesRequest")
 	local headers = {
@@ -1855,19 +1856,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param BatchPutAttributesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.BatchPutAttributesSync(BatchPutAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchPutAttributesAsync(BatchPutAttributesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.BatchPutAttributesAsync(BatchPutAttributesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PutAttributes asynchronously, invoking a callback when done
 -- @param PutAttributesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PutAttributesAsync(PutAttributesRequest, cb)
 	assert(PutAttributesRequest, "You must provide a PutAttributesRequest")
 	local headers = {
@@ -1890,19 +1892,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PutAttributesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PutAttributesSync(PutAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutAttributesAsync(PutAttributesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PutAttributesAsync(PutAttributesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListDomains asynchronously, invoking a callback when done
 -- @param ListDomainsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListDomainsAsync(ListDomainsRequest, cb)
 	assert(ListDomainsRequest, "You must provide a ListDomainsRequest")
 	local headers = {
@@ -1925,19 +1928,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListDomainsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListDomainsSync(ListDomainsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDomainsAsync(ListDomainsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListDomainsAsync(ListDomainsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DomainMetadata asynchronously, invoking a callback when done
 -- @param DomainMetadataRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DomainMetadataAsync(DomainMetadataRequest, cb)
 	assert(DomainMetadataRequest, "You must provide a DomainMetadataRequest")
 	local headers = {
@@ -1960,19 +1964,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DomainMetadataRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DomainMetadataSync(DomainMetadataRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DomainMetadataAsync(DomainMetadataRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DomainMetadataAsync(DomainMetadataRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call BatchDeleteAttributes asynchronously, invoking a callback when done
 -- @param BatchDeleteAttributesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.BatchDeleteAttributesAsync(BatchDeleteAttributesRequest, cb)
 	assert(BatchDeleteAttributesRequest, "You must provide a BatchDeleteAttributesRequest")
 	local headers = {
@@ -1995,19 +2000,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param BatchDeleteAttributesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.BatchDeleteAttributesSync(BatchDeleteAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchDeleteAttributesAsync(BatchDeleteAttributesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.BatchDeleteAttributesAsync(BatchDeleteAttributesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetAttributes asynchronously, invoking a callback when done
 -- @param GetAttributesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetAttributesAsync(GetAttributesRequest, cb)
 	assert(GetAttributesRequest, "You must provide a GetAttributesRequest")
 	local headers = {
@@ -2030,19 +2036,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetAttributesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetAttributesSync(GetAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetAttributesAsync(GetAttributesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetAttributesAsync(GetAttributesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteDomain asynchronously, invoking a callback when done
 -- @param DeleteDomainRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteDomainAsync(DeleteDomainRequest, cb)
 	assert(DeleteDomainRequest, "You must provide a DeleteDomainRequest")
 	local headers = {
@@ -2065,19 +2072,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteDomainRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteDomainSync(DeleteDomainRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDomainAsync(DeleteDomainRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteDomainAsync(DeleteDomainRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateDomain asynchronously, invoking a callback when done
 -- @param CreateDomainRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateDomainAsync(CreateDomainRequest, cb)
 	assert(CreateDomainRequest, "You must provide a CreateDomainRequest")
 	local headers = {
@@ -2100,19 +2108,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateDomainRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateDomainSync(CreateDomainRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDomainAsync(CreateDomainRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateDomainAsync(CreateDomainRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call Select asynchronously, invoking a callback when done
 -- @param SelectRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.SelectAsync(SelectRequest, cb)
 	assert(SelectRequest, "You must provide a SelectRequest")
 	local headers = {
@@ -2135,12 +2144,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param SelectRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.SelectSync(SelectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SelectAsync(SelectRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.SelectAsync(SelectRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

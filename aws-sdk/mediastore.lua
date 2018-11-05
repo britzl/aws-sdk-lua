@@ -1406,7 +1406,7 @@ end
 --
 --- Call PutContainerPolicy asynchronously, invoking a callback when done
 -- @param PutContainerPolicyInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PutContainerPolicyAsync(PutContainerPolicyInput, cb)
 	assert(PutContainerPolicyInput, "You must provide a PutContainerPolicyInput")
 	local headers = {
@@ -1429,19 +1429,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PutContainerPolicyInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PutContainerPolicySync(PutContainerPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutContainerPolicyAsync(PutContainerPolicyInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PutContainerPolicyAsync(PutContainerPolicyInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteCorsPolicy asynchronously, invoking a callback when done
 -- @param DeleteCorsPolicyInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteCorsPolicyAsync(DeleteCorsPolicyInput, cb)
 	assert(DeleteCorsPolicyInput, "You must provide a DeleteCorsPolicyInput")
 	local headers = {
@@ -1464,19 +1465,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteCorsPolicyInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteCorsPolicySync(DeleteCorsPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteCorsPolicyAsync(DeleteCorsPolicyInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteCorsPolicyAsync(DeleteCorsPolicyInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteContainerPolicy asynchronously, invoking a callback when done
 -- @param DeleteContainerPolicyInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteContainerPolicyAsync(DeleteContainerPolicyInput, cb)
 	assert(DeleteContainerPolicyInput, "You must provide a DeleteContainerPolicyInput")
 	local headers = {
@@ -1499,19 +1501,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteContainerPolicyInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteContainerPolicySync(DeleteContainerPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteContainerPolicyAsync(DeleteContainerPolicyInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteContainerPolicyAsync(DeleteContainerPolicyInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetCorsPolicy asynchronously, invoking a callback when done
 -- @param GetCorsPolicyInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetCorsPolicyAsync(GetCorsPolicyInput, cb)
 	assert(GetCorsPolicyInput, "You must provide a GetCorsPolicyInput")
 	local headers = {
@@ -1534,19 +1537,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetCorsPolicyInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetCorsPolicySync(GetCorsPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCorsPolicyAsync(GetCorsPolicyInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetCorsPolicyAsync(GetCorsPolicyInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListContainers asynchronously, invoking a callback when done
 -- @param ListContainersInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListContainersAsync(ListContainersInput, cb)
 	assert(ListContainersInput, "You must provide a ListContainersInput")
 	local headers = {
@@ -1569,19 +1573,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListContainersInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListContainersSync(ListContainersInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListContainersAsync(ListContainersInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListContainersAsync(ListContainersInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeContainer asynchronously, invoking a callback when done
 -- @param DescribeContainerInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeContainerAsync(DescribeContainerInput, cb)
 	assert(DescribeContainerInput, "You must provide a DescribeContainerInput")
 	local headers = {
@@ -1604,19 +1609,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeContainerInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeContainerSync(DescribeContainerInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeContainerAsync(DescribeContainerInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeContainerAsync(DescribeContainerInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateContainer asynchronously, invoking a callback when done
 -- @param CreateContainerInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateContainerAsync(CreateContainerInput, cb)
 	assert(CreateContainerInput, "You must provide a CreateContainerInput")
 	local headers = {
@@ -1639,19 +1645,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateContainerInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateContainerSync(CreateContainerInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateContainerAsync(CreateContainerInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateContainerAsync(CreateContainerInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PutCorsPolicy asynchronously, invoking a callback when done
 -- @param PutCorsPolicyInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PutCorsPolicyAsync(PutCorsPolicyInput, cb)
 	assert(PutCorsPolicyInput, "You must provide a PutCorsPolicyInput")
 	local headers = {
@@ -1674,19 +1681,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PutCorsPolicyInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PutCorsPolicySync(PutCorsPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutCorsPolicyAsync(PutCorsPolicyInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PutCorsPolicyAsync(PutCorsPolicyInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteContainer asynchronously, invoking a callback when done
 -- @param DeleteContainerInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteContainerAsync(DeleteContainerInput, cb)
 	assert(DeleteContainerInput, "You must provide a DeleteContainerInput")
 	local headers = {
@@ -1709,19 +1717,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteContainerInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteContainerSync(DeleteContainerInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteContainerAsync(DeleteContainerInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteContainerAsync(DeleteContainerInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetContainerPolicy asynchronously, invoking a callback when done
 -- @param GetContainerPolicyInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetContainerPolicyAsync(GetContainerPolicyInput, cb)
 	assert(GetContainerPolicyInput, "You must provide a GetContainerPolicyInput")
 	local headers = {
@@ -1744,12 +1753,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetContainerPolicyInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetContainerPolicySync(GetContainerPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetContainerPolicyAsync(GetContainerPolicyInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetContainerPolicyAsync(GetContainerPolicyInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

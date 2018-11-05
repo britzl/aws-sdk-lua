@@ -2952,7 +2952,7 @@ end
 --
 --- Call CreateCase asynchronously, invoking a callback when done
 -- @param CreateCaseRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateCaseAsync(CreateCaseRequest, cb)
 	assert(CreateCaseRequest, "You must provide a CreateCaseRequest")
 	local headers = {
@@ -2975,19 +2975,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateCaseRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateCaseSync(CreateCaseRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateCaseAsync(CreateCaseRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateCaseAsync(CreateCaseRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AddAttachmentsToSet asynchronously, invoking a callback when done
 -- @param AddAttachmentsToSetRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AddAttachmentsToSetAsync(AddAttachmentsToSetRequest, cb)
 	assert(AddAttachmentsToSetRequest, "You must provide a AddAttachmentsToSetRequest")
 	local headers = {
@@ -3010,19 +3011,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AddAttachmentsToSetRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AddAttachmentsToSetSync(AddAttachmentsToSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddAttachmentsToSetAsync(AddAttachmentsToSetRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AddAttachmentsToSetAsync(AddAttachmentsToSetRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AddCommunicationToCase asynchronously, invoking a callback when done
 -- @param AddCommunicationToCaseRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AddCommunicationToCaseAsync(AddCommunicationToCaseRequest, cb)
 	assert(AddCommunicationToCaseRequest, "You must provide a AddCommunicationToCaseRequest")
 	local headers = {
@@ -3045,19 +3047,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AddCommunicationToCaseRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AddCommunicationToCaseSync(AddCommunicationToCaseRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddCommunicationToCaseAsync(AddCommunicationToCaseRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AddCommunicationToCaseAsync(AddCommunicationToCaseRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeTrustedAdvisorCheckRefreshStatuses asynchronously, invoking a callback when done
 -- @param DescribeTrustedAdvisorCheckRefreshStatusesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeTrustedAdvisorCheckRefreshStatusesAsync(DescribeTrustedAdvisorCheckRefreshStatusesRequest, cb)
 	assert(DescribeTrustedAdvisorCheckRefreshStatusesRequest, "You must provide a DescribeTrustedAdvisorCheckRefreshStatusesRequest")
 	local headers = {
@@ -3080,19 +3083,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeTrustedAdvisorCheckRefreshStatusesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeTrustedAdvisorCheckRefreshStatusesSync(DescribeTrustedAdvisorCheckRefreshStatusesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTrustedAdvisorCheckRefreshStatusesAsync(DescribeTrustedAdvisorCheckRefreshStatusesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeTrustedAdvisorCheckRefreshStatusesAsync(DescribeTrustedAdvisorCheckRefreshStatusesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeTrustedAdvisorCheckResult asynchronously, invoking a callback when done
 -- @param DescribeTrustedAdvisorCheckResultRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeTrustedAdvisorCheckResultAsync(DescribeTrustedAdvisorCheckResultRequest, cb)
 	assert(DescribeTrustedAdvisorCheckResultRequest, "You must provide a DescribeTrustedAdvisorCheckResultRequest")
 	local headers = {
@@ -3115,19 +3119,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeTrustedAdvisorCheckResultRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeTrustedAdvisorCheckResultSync(DescribeTrustedAdvisorCheckResultRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTrustedAdvisorCheckResultAsync(DescribeTrustedAdvisorCheckResultRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeTrustedAdvisorCheckResultAsync(DescribeTrustedAdvisorCheckResultRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ResolveCase asynchronously, invoking a callback when done
 -- @param ResolveCaseRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ResolveCaseAsync(ResolveCaseRequest, cb)
 	assert(ResolveCaseRequest, "You must provide a ResolveCaseRequest")
 	local headers = {
@@ -3150,19 +3155,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ResolveCaseRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ResolveCaseSync(ResolveCaseRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ResolveCaseAsync(ResolveCaseRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ResolveCaseAsync(ResolveCaseRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeSeverityLevels asynchronously, invoking a callback when done
 -- @param DescribeSeverityLevelsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeSeverityLevelsAsync(DescribeSeverityLevelsRequest, cb)
 	assert(DescribeSeverityLevelsRequest, "You must provide a DescribeSeverityLevelsRequest")
 	local headers = {
@@ -3185,19 +3191,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeSeverityLevelsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeSeverityLevelsSync(DescribeSeverityLevelsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeSeverityLevelsAsync(DescribeSeverityLevelsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeSeverityLevelsAsync(DescribeSeverityLevelsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeCases asynchronously, invoking a callback when done
 -- @param DescribeCasesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeCasesAsync(DescribeCasesRequest, cb)
 	assert(DescribeCasesRequest, "You must provide a DescribeCasesRequest")
 	local headers = {
@@ -3220,19 +3227,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeCasesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeCasesSync(DescribeCasesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeCasesAsync(DescribeCasesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeCasesAsync(DescribeCasesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call RefreshTrustedAdvisorCheck asynchronously, invoking a callback when done
 -- @param RefreshTrustedAdvisorCheckRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.RefreshTrustedAdvisorCheckAsync(RefreshTrustedAdvisorCheckRequest, cb)
 	assert(RefreshTrustedAdvisorCheckRequest, "You must provide a RefreshTrustedAdvisorCheckRequest")
 	local headers = {
@@ -3255,19 +3263,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param RefreshTrustedAdvisorCheckRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.RefreshTrustedAdvisorCheckSync(RefreshTrustedAdvisorCheckRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RefreshTrustedAdvisorCheckAsync(RefreshTrustedAdvisorCheckRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.RefreshTrustedAdvisorCheckAsync(RefreshTrustedAdvisorCheckRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeAttachment asynchronously, invoking a callback when done
 -- @param DescribeAttachmentRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeAttachmentAsync(DescribeAttachmentRequest, cb)
 	assert(DescribeAttachmentRequest, "You must provide a DescribeAttachmentRequest")
 	local headers = {
@@ -3290,19 +3299,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeAttachmentRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeAttachmentSync(DescribeAttachmentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAttachmentAsync(DescribeAttachmentRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeAttachmentAsync(DescribeAttachmentRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeTrustedAdvisorChecks asynchronously, invoking a callback when done
 -- @param DescribeTrustedAdvisorChecksRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeTrustedAdvisorChecksAsync(DescribeTrustedAdvisorChecksRequest, cb)
 	assert(DescribeTrustedAdvisorChecksRequest, "You must provide a DescribeTrustedAdvisorChecksRequest")
 	local headers = {
@@ -3325,19 +3335,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeTrustedAdvisorChecksRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeTrustedAdvisorChecksSync(DescribeTrustedAdvisorChecksRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTrustedAdvisorChecksAsync(DescribeTrustedAdvisorChecksRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeTrustedAdvisorChecksAsync(DescribeTrustedAdvisorChecksRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeTrustedAdvisorCheckSummaries asynchronously, invoking a callback when done
 -- @param DescribeTrustedAdvisorCheckSummariesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeTrustedAdvisorCheckSummariesAsync(DescribeTrustedAdvisorCheckSummariesRequest, cb)
 	assert(DescribeTrustedAdvisorCheckSummariesRequest, "You must provide a DescribeTrustedAdvisorCheckSummariesRequest")
 	local headers = {
@@ -3360,19 +3371,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeTrustedAdvisorCheckSummariesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeTrustedAdvisorCheckSummariesSync(DescribeTrustedAdvisorCheckSummariesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTrustedAdvisorCheckSummariesAsync(DescribeTrustedAdvisorCheckSummariesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeTrustedAdvisorCheckSummariesAsync(DescribeTrustedAdvisorCheckSummariesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeCommunications asynchronously, invoking a callback when done
 -- @param DescribeCommunicationsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeCommunicationsAsync(DescribeCommunicationsRequest, cb)
 	assert(DescribeCommunicationsRequest, "You must provide a DescribeCommunicationsRequest")
 	local headers = {
@@ -3395,19 +3407,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeCommunicationsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeCommunicationsSync(DescribeCommunicationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeCommunicationsAsync(DescribeCommunicationsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeCommunicationsAsync(DescribeCommunicationsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeServices asynchronously, invoking a callback when done
 -- @param DescribeServicesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeServicesAsync(DescribeServicesRequest, cb)
 	assert(DescribeServicesRequest, "You must provide a DescribeServicesRequest")
 	local headers = {
@@ -3430,12 +3443,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeServicesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeServicesSync(DescribeServicesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeServicesAsync(DescribeServicesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeServicesAsync(DescribeServicesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

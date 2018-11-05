@@ -814,7 +814,7 @@ end
 --
 --- Call GetPendingJobExecutions asynchronously, invoking a callback when done
 -- @param GetPendingJobExecutionsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetPendingJobExecutionsAsync(GetPendingJobExecutionsRequest, cb)
 	assert(GetPendingJobExecutionsRequest, "You must provide a GetPendingJobExecutionsRequest")
 	local headers = {
@@ -837,19 +837,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetPendingJobExecutionsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetPendingJobExecutionsSync(GetPendingJobExecutionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetPendingJobExecutionsAsync(GetPendingJobExecutionsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetPendingJobExecutionsAsync(GetPendingJobExecutionsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StartNextPendingJobExecution asynchronously, invoking a callback when done
 -- @param StartNextPendingJobExecutionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StartNextPendingJobExecutionAsync(StartNextPendingJobExecutionRequest, cb)
 	assert(StartNextPendingJobExecutionRequest, "You must provide a StartNextPendingJobExecutionRequest")
 	local headers = {
@@ -872,19 +873,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StartNextPendingJobExecutionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StartNextPendingJobExecutionSync(StartNextPendingJobExecutionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartNextPendingJobExecutionAsync(StartNextPendingJobExecutionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StartNextPendingJobExecutionAsync(StartNextPendingJobExecutionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateJobExecution asynchronously, invoking a callback when done
 -- @param UpdateJobExecutionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateJobExecutionAsync(UpdateJobExecutionRequest, cb)
 	assert(UpdateJobExecutionRequest, "You must provide a UpdateJobExecutionRequest")
 	local headers = {
@@ -907,19 +909,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateJobExecutionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateJobExecutionSync(UpdateJobExecutionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateJobExecutionAsync(UpdateJobExecutionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateJobExecutionAsync(UpdateJobExecutionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeJobExecution asynchronously, invoking a callback when done
 -- @param DescribeJobExecutionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeJobExecutionAsync(DescribeJobExecutionRequest, cb)
 	assert(DescribeJobExecutionRequest, "You must provide a DescribeJobExecutionRequest")
 	local headers = {
@@ -942,12 +945,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeJobExecutionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeJobExecutionSync(DescribeJobExecutionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeJobExecutionAsync(DescribeJobExecutionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeJobExecutionAsync(DescribeJobExecutionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

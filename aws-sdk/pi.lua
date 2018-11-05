@@ -935,7 +935,7 @@ end
 --
 --- Call DescribeDimensionKeys asynchronously, invoking a callback when done
 -- @param DescribeDimensionKeysRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeDimensionKeysAsync(DescribeDimensionKeysRequest, cb)
 	assert(DescribeDimensionKeysRequest, "You must provide a DescribeDimensionKeysRequest")
 	local headers = {
@@ -958,19 +958,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeDimensionKeysRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeDimensionKeysSync(DescribeDimensionKeysRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDimensionKeysAsync(DescribeDimensionKeysRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeDimensionKeysAsync(DescribeDimensionKeysRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetResourceMetrics asynchronously, invoking a callback when done
 -- @param GetResourceMetricsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetResourceMetricsAsync(GetResourceMetricsRequest, cb)
 	assert(GetResourceMetricsRequest, "You must provide a GetResourceMetricsRequest")
 	local headers = {
@@ -993,12 +994,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetResourceMetricsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetResourceMetricsSync(GetResourceMetricsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetResourceMetricsAsync(GetResourceMetricsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetResourceMetricsAsync(GetResourceMetricsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

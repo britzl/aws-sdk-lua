@@ -7617,7 +7617,7 @@ end
 --
 --- Call DeleteTags asynchronously, invoking a callback when done
 -- @param DeleteTagsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteTagsAsync(DeleteTagsInput, cb)
 	assert(DeleteTagsInput, "You must provide a DeleteTagsInput")
 	local headers = {
@@ -7640,19 +7640,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteTagsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteTagsSync(DeleteTagsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTagsAsync(DeleteTagsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteTagsAsync(DeleteTagsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListTransformJobs asynchronously, invoking a callback when done
 -- @param ListTransformJobsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListTransformJobsAsync(ListTransformJobsRequest, cb)
 	assert(ListTransformJobsRequest, "You must provide a ListTransformJobsRequest")
 	local headers = {
@@ -7675,19 +7676,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListTransformJobsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListTransformJobsSync(ListTransformJobsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTransformJobsAsync(ListTransformJobsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListTransformJobsAsync(ListTransformJobsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeModel asynchronously, invoking a callback when done
 -- @param DescribeModelInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeModelAsync(DescribeModelInput, cb)
 	assert(DescribeModelInput, "You must provide a DescribeModelInput")
 	local headers = {
@@ -7710,19 +7712,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeModelInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeModelSync(DescribeModelInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeModelAsync(DescribeModelInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeModelAsync(DescribeModelInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateNotebookInstance asynchronously, invoking a callback when done
 -- @param UpdateNotebookInstanceInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateNotebookInstanceAsync(UpdateNotebookInstanceInput, cb)
 	assert(UpdateNotebookInstanceInput, "You must provide a UpdateNotebookInstanceInput")
 	local headers = {
@@ -7745,19 +7748,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateNotebookInstanceInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateNotebookInstanceSync(UpdateNotebookInstanceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateNotebookInstanceAsync(UpdateNotebookInstanceInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateNotebookInstanceAsync(UpdateNotebookInstanceInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteEndpointConfig asynchronously, invoking a callback when done
 -- @param DeleteEndpointConfigInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteEndpointConfigAsync(DeleteEndpointConfigInput, cb)
 	assert(DeleteEndpointConfigInput, "You must provide a DeleteEndpointConfigInput")
 	local headers = {
@@ -7780,19 +7784,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteEndpointConfigInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteEndpointConfigSync(DeleteEndpointConfigInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteEndpointConfigAsync(DeleteEndpointConfigInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteEndpointConfigAsync(DeleteEndpointConfigInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListHyperParameterTuningJobs asynchronously, invoking a callback when done
 -- @param ListHyperParameterTuningJobsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListHyperParameterTuningJobsAsync(ListHyperParameterTuningJobsRequest, cb)
 	assert(ListHyperParameterTuningJobsRequest, "You must provide a ListHyperParameterTuningJobsRequest")
 	local headers = {
@@ -7815,19 +7820,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListHyperParameterTuningJobsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListHyperParameterTuningJobsSync(ListHyperParameterTuningJobsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListHyperParameterTuningJobsAsync(ListHyperParameterTuningJobsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListHyperParameterTuningJobsAsync(ListHyperParameterTuningJobsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateTransformJob asynchronously, invoking a callback when done
 -- @param CreateTransformJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateTransformJobAsync(CreateTransformJobRequest, cb)
 	assert(CreateTransformJobRequest, "You must provide a CreateTransformJobRequest")
 	local headers = {
@@ -7850,19 +7856,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateTransformJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateTransformJobSync(CreateTransformJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTransformJobAsync(CreateTransformJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateTransformJobAsync(CreateTransformJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteNotebookInstanceLifecycleConfig asynchronously, invoking a callback when done
 -- @param DeleteNotebookInstanceLifecycleConfigInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteNotebookInstanceLifecycleConfigAsync(DeleteNotebookInstanceLifecycleConfigInput, cb)
 	assert(DeleteNotebookInstanceLifecycleConfigInput, "You must provide a DeleteNotebookInstanceLifecycleConfigInput")
 	local headers = {
@@ -7885,19 +7892,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteNotebookInstanceLifecycleConfigInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteNotebookInstanceLifecycleConfigSync(DeleteNotebookInstanceLifecycleConfigInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteNotebookInstanceLifecycleConfigAsync(DeleteNotebookInstanceLifecycleConfigInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteNotebookInstanceLifecycleConfigAsync(DeleteNotebookInstanceLifecycleConfigInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateEndpointConfig asynchronously, invoking a callback when done
 -- @param CreateEndpointConfigInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateEndpointConfigAsync(CreateEndpointConfigInput, cb)
 	assert(CreateEndpointConfigInput, "You must provide a CreateEndpointConfigInput")
 	local headers = {
@@ -7920,19 +7928,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateEndpointConfigInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateEndpointConfigSync(CreateEndpointConfigInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateEndpointConfigAsync(CreateEndpointConfigInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateEndpointConfigAsync(CreateEndpointConfigInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListTrainingJobs asynchronously, invoking a callback when done
 -- @param ListTrainingJobsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListTrainingJobsAsync(ListTrainingJobsRequest, cb)
 	assert(ListTrainingJobsRequest, "You must provide a ListTrainingJobsRequest")
 	local headers = {
@@ -7955,19 +7964,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListTrainingJobsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListTrainingJobsSync(ListTrainingJobsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTrainingJobsAsync(ListTrainingJobsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListTrainingJobsAsync(ListTrainingJobsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StartNotebookInstance asynchronously, invoking a callback when done
 -- @param StartNotebookInstanceInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StartNotebookInstanceAsync(StartNotebookInstanceInput, cb)
 	assert(StartNotebookInstanceInput, "You must provide a StartNotebookInstanceInput")
 	local headers = {
@@ -7990,19 +8000,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StartNotebookInstanceInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StartNotebookInstanceSync(StartNotebookInstanceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartNotebookInstanceAsync(StartNotebookInstanceInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StartNotebookInstanceAsync(StartNotebookInstanceInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteNotebookInstance asynchronously, invoking a callback when done
 -- @param DeleteNotebookInstanceInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteNotebookInstanceAsync(DeleteNotebookInstanceInput, cb)
 	assert(DeleteNotebookInstanceInput, "You must provide a DeleteNotebookInstanceInput")
 	local headers = {
@@ -8025,19 +8036,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteNotebookInstanceInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteNotebookInstanceSync(DeleteNotebookInstanceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteNotebookInstanceAsync(DeleteNotebookInstanceInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteNotebookInstanceAsync(DeleteNotebookInstanceInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateNotebookInstanceLifecycleConfig asynchronously, invoking a callback when done
 -- @param CreateNotebookInstanceLifecycleConfigInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateNotebookInstanceLifecycleConfigAsync(CreateNotebookInstanceLifecycleConfigInput, cb)
 	assert(CreateNotebookInstanceLifecycleConfigInput, "You must provide a CreateNotebookInstanceLifecycleConfigInput")
 	local headers = {
@@ -8060,19 +8072,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateNotebookInstanceLifecycleConfigInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateNotebookInstanceLifecycleConfigSync(CreateNotebookInstanceLifecycleConfigInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateNotebookInstanceLifecycleConfigAsync(CreateNotebookInstanceLifecycleConfigInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateNotebookInstanceLifecycleConfigAsync(CreateNotebookInstanceLifecycleConfigInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListTrainingJobsForHyperParameterTuningJob asynchronously, invoking a callback when done
 -- @param ListTrainingJobsForHyperParameterTuningJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListTrainingJobsForHyperParameterTuningJobAsync(ListTrainingJobsForHyperParameterTuningJobRequest, cb)
 	assert(ListTrainingJobsForHyperParameterTuningJobRequest, "You must provide a ListTrainingJobsForHyperParameterTuningJobRequest")
 	local headers = {
@@ -8095,19 +8108,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListTrainingJobsForHyperParameterTuningJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListTrainingJobsForHyperParameterTuningJobSync(ListTrainingJobsForHyperParameterTuningJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTrainingJobsForHyperParameterTuningJobAsync(ListTrainingJobsForHyperParameterTuningJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListTrainingJobsForHyperParameterTuningJobAsync(ListTrainingJobsForHyperParameterTuningJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateNotebookInstanceLifecycleConfig asynchronously, invoking a callback when done
 -- @param UpdateNotebookInstanceLifecycleConfigInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateNotebookInstanceLifecycleConfigAsync(UpdateNotebookInstanceLifecycleConfigInput, cb)
 	assert(UpdateNotebookInstanceLifecycleConfigInput, "You must provide a UpdateNotebookInstanceLifecycleConfigInput")
 	local headers = {
@@ -8130,19 +8144,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateNotebookInstanceLifecycleConfigInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateNotebookInstanceLifecycleConfigSync(UpdateNotebookInstanceLifecycleConfigInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateNotebookInstanceLifecycleConfigAsync(UpdateNotebookInstanceLifecycleConfigInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateNotebookInstanceLifecycleConfigAsync(UpdateNotebookInstanceLifecycleConfigInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreatePresignedNotebookInstanceUrl asynchronously, invoking a callback when done
 -- @param CreatePresignedNotebookInstanceUrlInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreatePresignedNotebookInstanceUrlAsync(CreatePresignedNotebookInstanceUrlInput, cb)
 	assert(CreatePresignedNotebookInstanceUrlInput, "You must provide a CreatePresignedNotebookInstanceUrlInput")
 	local headers = {
@@ -8165,19 +8180,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreatePresignedNotebookInstanceUrlInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreatePresignedNotebookInstanceUrlSync(CreatePresignedNotebookInstanceUrlInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreatePresignedNotebookInstanceUrlAsync(CreatePresignedNotebookInstanceUrlInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreatePresignedNotebookInstanceUrlAsync(CreatePresignedNotebookInstanceUrlInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListNotebookInstances asynchronously, invoking a callback when done
 -- @param ListNotebookInstancesInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListNotebookInstancesAsync(ListNotebookInstancesInput, cb)
 	assert(ListNotebookInstancesInput, "You must provide a ListNotebookInstancesInput")
 	local headers = {
@@ -8200,19 +8216,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListNotebookInstancesInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListNotebookInstancesSync(ListNotebookInstancesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListNotebookInstancesAsync(ListNotebookInstancesInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListNotebookInstancesAsync(ListNotebookInstancesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateEndpoint asynchronously, invoking a callback when done
 -- @param CreateEndpointInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateEndpointAsync(CreateEndpointInput, cb)
 	assert(CreateEndpointInput, "You must provide a CreateEndpointInput")
 	local headers = {
@@ -8235,19 +8252,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateEndpointInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateEndpointSync(CreateEndpointInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateEndpointAsync(CreateEndpointInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateEndpointAsync(CreateEndpointInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeEndpoint asynchronously, invoking a callback when done
 -- @param DescribeEndpointInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeEndpointAsync(DescribeEndpointInput, cb)
 	assert(DescribeEndpointInput, "You must provide a DescribeEndpointInput")
 	local headers = {
@@ -8270,19 +8288,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeEndpointInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeEndpointSync(DescribeEndpointInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEndpointAsync(DescribeEndpointInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeEndpointAsync(DescribeEndpointInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListNotebookInstanceLifecycleConfigs asynchronously, invoking a callback when done
 -- @param ListNotebookInstanceLifecycleConfigsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListNotebookInstanceLifecycleConfigsAsync(ListNotebookInstanceLifecycleConfigsInput, cb)
 	assert(ListNotebookInstanceLifecycleConfigsInput, "You must provide a ListNotebookInstanceLifecycleConfigsInput")
 	local headers = {
@@ -8305,19 +8324,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListNotebookInstanceLifecycleConfigsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListNotebookInstanceLifecycleConfigsSync(ListNotebookInstanceLifecycleConfigsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListNotebookInstanceLifecycleConfigsAsync(ListNotebookInstanceLifecycleConfigsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListNotebookInstanceLifecycleConfigsAsync(ListNotebookInstanceLifecycleConfigsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeTrainingJob asynchronously, invoking a callback when done
 -- @param DescribeTrainingJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeTrainingJobAsync(DescribeTrainingJobRequest, cb)
 	assert(DescribeTrainingJobRequest, "You must provide a DescribeTrainingJobRequest")
 	local headers = {
@@ -8340,19 +8360,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeTrainingJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeTrainingJobSync(DescribeTrainingJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTrainingJobAsync(DescribeTrainingJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeTrainingJobAsync(DescribeTrainingJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StopNotebookInstance asynchronously, invoking a callback when done
 -- @param StopNotebookInstanceInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StopNotebookInstanceAsync(StopNotebookInstanceInput, cb)
 	assert(StopNotebookInstanceInput, "You must provide a StopNotebookInstanceInput")
 	local headers = {
@@ -8375,19 +8396,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StopNotebookInstanceInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StopNotebookInstanceSync(StopNotebookInstanceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopNotebookInstanceAsync(StopNotebookInstanceInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StopNotebookInstanceAsync(StopNotebookInstanceInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeHyperParameterTuningJob asynchronously, invoking a callback when done
 -- @param DescribeHyperParameterTuningJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeHyperParameterTuningJobAsync(DescribeHyperParameterTuningJobRequest, cb)
 	assert(DescribeHyperParameterTuningJobRequest, "You must provide a DescribeHyperParameterTuningJobRequest")
 	local headers = {
@@ -8410,19 +8432,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeHyperParameterTuningJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeHyperParameterTuningJobSync(DescribeHyperParameterTuningJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeHyperParameterTuningJobAsync(DescribeHyperParameterTuningJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeHyperParameterTuningJobAsync(DescribeHyperParameterTuningJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeTransformJob asynchronously, invoking a callback when done
 -- @param DescribeTransformJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeTransformJobAsync(DescribeTransformJobRequest, cb)
 	assert(DescribeTransformJobRequest, "You must provide a DescribeTransformJobRequest")
 	local headers = {
@@ -8445,19 +8468,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeTransformJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeTransformJobSync(DescribeTransformJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTransformJobAsync(DescribeTransformJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeTransformJobAsync(DescribeTransformJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListModels asynchronously, invoking a callback when done
 -- @param ListModelsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListModelsAsync(ListModelsInput, cb)
 	assert(ListModelsInput, "You must provide a ListModelsInput")
 	local headers = {
@@ -8480,19 +8504,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListModelsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListModelsSync(ListModelsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListModelsAsync(ListModelsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListModelsAsync(ListModelsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateNotebookInstance asynchronously, invoking a callback when done
 -- @param CreateNotebookInstanceInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateNotebookInstanceAsync(CreateNotebookInstanceInput, cb)
 	assert(CreateNotebookInstanceInput, "You must provide a CreateNotebookInstanceInput")
 	local headers = {
@@ -8515,19 +8540,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateNotebookInstanceInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateNotebookInstanceSync(CreateNotebookInstanceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateNotebookInstanceAsync(CreateNotebookInstanceInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateNotebookInstanceAsync(CreateNotebookInstanceInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteEndpoint asynchronously, invoking a callback when done
 -- @param DeleteEndpointInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteEndpointAsync(DeleteEndpointInput, cb)
 	assert(DeleteEndpointInput, "You must provide a DeleteEndpointInput")
 	local headers = {
@@ -8550,19 +8576,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteEndpointInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteEndpointSync(DeleteEndpointInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteEndpointAsync(DeleteEndpointInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteEndpointAsync(DeleteEndpointInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListTags asynchronously, invoking a callback when done
 -- @param ListTagsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListTagsAsync(ListTagsInput, cb)
 	assert(ListTagsInput, "You must provide a ListTagsInput")
 	local headers = {
@@ -8585,19 +8612,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListTagsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListTagsSync(ListTagsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsAsync(ListTagsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListTagsAsync(ListTagsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeEndpointConfig asynchronously, invoking a callback when done
 -- @param DescribeEndpointConfigInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeEndpointConfigAsync(DescribeEndpointConfigInput, cb)
 	assert(DescribeEndpointConfigInput, "You must provide a DescribeEndpointConfigInput")
 	local headers = {
@@ -8620,19 +8648,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeEndpointConfigInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeEndpointConfigSync(DescribeEndpointConfigInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEndpointConfigAsync(DescribeEndpointConfigInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeEndpointConfigAsync(DescribeEndpointConfigInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateModel asynchronously, invoking a callback when done
 -- @param CreateModelInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateModelAsync(CreateModelInput, cb)
 	assert(CreateModelInput, "You must provide a CreateModelInput")
 	local headers = {
@@ -8655,19 +8684,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateModelInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateModelSync(CreateModelInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateModelAsync(CreateModelInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateModelAsync(CreateModelInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateHyperParameterTuningJob asynchronously, invoking a callback when done
 -- @param CreateHyperParameterTuningJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateHyperParameterTuningJobAsync(CreateHyperParameterTuningJobRequest, cb)
 	assert(CreateHyperParameterTuningJobRequest, "You must provide a CreateHyperParameterTuningJobRequest")
 	local headers = {
@@ -8690,19 +8720,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateHyperParameterTuningJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateHyperParameterTuningJobSync(CreateHyperParameterTuningJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateHyperParameterTuningJobAsync(CreateHyperParameterTuningJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateHyperParameterTuningJobAsync(CreateHyperParameterTuningJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AddTags asynchronously, invoking a callback when done
 -- @param AddTagsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AddTagsAsync(AddTagsInput, cb)
 	assert(AddTagsInput, "You must provide a AddTagsInput")
 	local headers = {
@@ -8725,19 +8756,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AddTagsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AddTagsSync(AddTagsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddTagsAsync(AddTagsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AddTagsAsync(AddTagsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeNotebookInstanceLifecycleConfig asynchronously, invoking a callback when done
 -- @param DescribeNotebookInstanceLifecycleConfigInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeNotebookInstanceLifecycleConfigAsync(DescribeNotebookInstanceLifecycleConfigInput, cb)
 	assert(DescribeNotebookInstanceLifecycleConfigInput, "You must provide a DescribeNotebookInstanceLifecycleConfigInput")
 	local headers = {
@@ -8760,19 +8792,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeNotebookInstanceLifecycleConfigInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeNotebookInstanceLifecycleConfigSync(DescribeNotebookInstanceLifecycleConfigInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeNotebookInstanceLifecycleConfigAsync(DescribeNotebookInstanceLifecycleConfigInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeNotebookInstanceLifecycleConfigAsync(DescribeNotebookInstanceLifecycleConfigInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListEndpoints asynchronously, invoking a callback when done
 -- @param ListEndpointsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListEndpointsAsync(ListEndpointsInput, cb)
 	assert(ListEndpointsInput, "You must provide a ListEndpointsInput")
 	local headers = {
@@ -8795,19 +8828,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListEndpointsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListEndpointsSync(ListEndpointsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListEndpointsAsync(ListEndpointsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListEndpointsAsync(ListEndpointsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListEndpointConfigs asynchronously, invoking a callback when done
 -- @param ListEndpointConfigsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListEndpointConfigsAsync(ListEndpointConfigsInput, cb)
 	assert(ListEndpointConfigsInput, "You must provide a ListEndpointConfigsInput")
 	local headers = {
@@ -8830,19 +8864,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListEndpointConfigsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListEndpointConfigsSync(ListEndpointConfigsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListEndpointConfigsAsync(ListEndpointConfigsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListEndpointConfigsAsync(ListEndpointConfigsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeNotebookInstance asynchronously, invoking a callback when done
 -- @param DescribeNotebookInstanceInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeNotebookInstanceAsync(DescribeNotebookInstanceInput, cb)
 	assert(DescribeNotebookInstanceInput, "You must provide a DescribeNotebookInstanceInput")
 	local headers = {
@@ -8865,19 +8900,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeNotebookInstanceInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeNotebookInstanceSync(DescribeNotebookInstanceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeNotebookInstanceAsync(DescribeNotebookInstanceInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeNotebookInstanceAsync(DescribeNotebookInstanceInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StopHyperParameterTuningJob asynchronously, invoking a callback when done
 -- @param StopHyperParameterTuningJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StopHyperParameterTuningJobAsync(StopHyperParameterTuningJobRequest, cb)
 	assert(StopHyperParameterTuningJobRequest, "You must provide a StopHyperParameterTuningJobRequest")
 	local headers = {
@@ -8900,19 +8936,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StopHyperParameterTuningJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StopHyperParameterTuningJobSync(StopHyperParameterTuningJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopHyperParameterTuningJobAsync(StopHyperParameterTuningJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StopHyperParameterTuningJobAsync(StopHyperParameterTuningJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateEndpoint asynchronously, invoking a callback when done
 -- @param UpdateEndpointInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateEndpointAsync(UpdateEndpointInput, cb)
 	assert(UpdateEndpointInput, "You must provide a UpdateEndpointInput")
 	local headers = {
@@ -8935,19 +8972,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateEndpointInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateEndpointSync(UpdateEndpointInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateEndpointAsync(UpdateEndpointInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateEndpointAsync(UpdateEndpointInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteModel asynchronously, invoking a callback when done
 -- @param DeleteModelInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteModelAsync(DeleteModelInput, cb)
 	assert(DeleteModelInput, "You must provide a DeleteModelInput")
 	local headers = {
@@ -8970,19 +9008,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteModelInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteModelSync(DeleteModelInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteModelAsync(DeleteModelInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteModelAsync(DeleteModelInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateTrainingJob asynchronously, invoking a callback when done
 -- @param CreateTrainingJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateTrainingJobAsync(CreateTrainingJobRequest, cb)
 	assert(CreateTrainingJobRequest, "You must provide a CreateTrainingJobRequest")
 	local headers = {
@@ -9005,19 +9044,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateTrainingJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateTrainingJobSync(CreateTrainingJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTrainingJobAsync(CreateTrainingJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateTrainingJobAsync(CreateTrainingJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateEndpointWeightsAndCapacities asynchronously, invoking a callback when done
 -- @param UpdateEndpointWeightsAndCapacitiesInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateEndpointWeightsAndCapacitiesAsync(UpdateEndpointWeightsAndCapacitiesInput, cb)
 	assert(UpdateEndpointWeightsAndCapacitiesInput, "You must provide a UpdateEndpointWeightsAndCapacitiesInput")
 	local headers = {
@@ -9040,19 +9080,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateEndpointWeightsAndCapacitiesInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateEndpointWeightsAndCapacitiesSync(UpdateEndpointWeightsAndCapacitiesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateEndpointWeightsAndCapacitiesAsync(UpdateEndpointWeightsAndCapacitiesInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateEndpointWeightsAndCapacitiesAsync(UpdateEndpointWeightsAndCapacitiesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StopTrainingJob asynchronously, invoking a callback when done
 -- @param StopTrainingJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StopTrainingJobAsync(StopTrainingJobRequest, cb)
 	assert(StopTrainingJobRequest, "You must provide a StopTrainingJobRequest")
 	local headers = {
@@ -9075,19 +9116,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StopTrainingJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StopTrainingJobSync(StopTrainingJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopTrainingJobAsync(StopTrainingJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StopTrainingJobAsync(StopTrainingJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StopTransformJob asynchronously, invoking a callback when done
 -- @param StopTransformJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StopTransformJobAsync(StopTransformJobRequest, cb)
 	assert(StopTransformJobRequest, "You must provide a StopTransformJobRequest")
 	local headers = {
@@ -9110,12 +9152,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StopTransformJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StopTransformJobSync(StopTransformJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopTransformJobAsync(StopTransformJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StopTransformJobAsync(StopTransformJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

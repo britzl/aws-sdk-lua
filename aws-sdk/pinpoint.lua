@@ -12440,7 +12440,7 @@ end
 --
 --- Call UpdateSegment asynchronously, invoking a callback when done
 -- @param UpdateSegmentRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateSegmentAsync(UpdateSegmentRequest, cb)
 	assert(UpdateSegmentRequest, "You must provide a UpdateSegmentRequest")
 	local headers = {
@@ -12463,19 +12463,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateSegmentRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateSegmentSync(UpdateSegmentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateSegmentAsync(UpdateSegmentRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateSegmentAsync(UpdateSegmentRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateSegment asynchronously, invoking a callback when done
 -- @param CreateSegmentRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateSegmentAsync(CreateSegmentRequest, cb)
 	assert(CreateSegmentRequest, "You must provide a CreateSegmentRequest")
 	local headers = {
@@ -12498,19 +12499,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateSegmentRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateSegmentSync(CreateSegmentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateSegmentAsync(CreateSegmentRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateSegmentAsync(CreateSegmentRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetExportJob asynchronously, invoking a callback when done
 -- @param GetExportJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetExportJobAsync(GetExportJobRequest, cb)
 	assert(GetExportJobRequest, "You must provide a GetExportJobRequest")
 	local headers = {
@@ -12533,19 +12535,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetExportJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetExportJobSync(GetExportJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetExportJobAsync(GetExportJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetExportJobAsync(GetExportJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateApnsVoipSandboxChannel asynchronously, invoking a callback when done
 -- @param UpdateApnsVoipSandboxChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateApnsVoipSandboxChannelAsync(UpdateApnsVoipSandboxChannelRequest, cb)
 	assert(UpdateApnsVoipSandboxChannelRequest, "You must provide a UpdateApnsVoipSandboxChannelRequest")
 	local headers = {
@@ -12568,19 +12571,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateApnsVoipSandboxChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateApnsVoipSandboxChannelSync(UpdateApnsVoipSandboxChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateApnsVoipSandboxChannelAsync(UpdateApnsVoipSandboxChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateApnsVoipSandboxChannelAsync(UpdateApnsVoipSandboxChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateCampaign asynchronously, invoking a callback when done
 -- @param UpdateCampaignRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateCampaignAsync(UpdateCampaignRequest, cb)
 	assert(UpdateCampaignRequest, "You must provide a UpdateCampaignRequest")
 	local headers = {
@@ -12603,19 +12607,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateCampaignRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateCampaignSync(UpdateCampaignRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateCampaignAsync(UpdateCampaignRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateCampaignAsync(UpdateCampaignRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetImportJobs asynchronously, invoking a callback when done
 -- @param GetImportJobsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetImportJobsAsync(GetImportJobsRequest, cb)
 	assert(GetImportJobsRequest, "You must provide a GetImportJobsRequest")
 	local headers = {
@@ -12638,19 +12643,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetImportJobsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetImportJobsSync(GetImportJobsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetImportJobsAsync(GetImportJobsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetImportJobsAsync(GetImportJobsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetApps asynchronously, invoking a callback when done
 -- @param GetAppsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetAppsAsync(GetAppsRequest, cb)
 	assert(GetAppsRequest, "You must provide a GetAppsRequest")
 	local headers = {
@@ -12673,19 +12679,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetAppsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetAppsSync(GetAppsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetAppsAsync(GetAppsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetAppsAsync(GetAppsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetSegmentVersion asynchronously, invoking a callback when done
 -- @param GetSegmentVersionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetSegmentVersionAsync(GetSegmentVersionRequest, cb)
 	assert(GetSegmentVersionRequest, "You must provide a GetSegmentVersionRequest")
 	local headers = {
@@ -12708,19 +12715,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetSegmentVersionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetSegmentVersionSync(GetSegmentVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSegmentVersionAsync(GetSegmentVersionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetSegmentVersionAsync(GetSegmentVersionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteApnsSandboxChannel asynchronously, invoking a callback when done
 -- @param DeleteApnsSandboxChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteApnsSandboxChannelAsync(DeleteApnsSandboxChannelRequest, cb)
 	assert(DeleteApnsSandboxChannelRequest, "You must provide a DeleteApnsSandboxChannelRequest")
 	local headers = {
@@ -12743,19 +12751,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteApnsSandboxChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteApnsSandboxChannelSync(DeleteApnsSandboxChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteApnsSandboxChannelAsync(DeleteApnsSandboxChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteApnsSandboxChannelAsync(DeleteApnsSandboxChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetSmsChannel asynchronously, invoking a callback when done
 -- @param GetSmsChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetSmsChannelAsync(GetSmsChannelRequest, cb)
 	assert(GetSmsChannelRequest, "You must provide a GetSmsChannelRequest")
 	local headers = {
@@ -12778,19 +12787,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetSmsChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetSmsChannelSync(GetSmsChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSmsChannelAsync(GetSmsChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetSmsChannelAsync(GetSmsChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteApnsVoipSandboxChannel asynchronously, invoking a callback when done
 -- @param DeleteApnsVoipSandboxChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteApnsVoipSandboxChannelAsync(DeleteApnsVoipSandboxChannelRequest, cb)
 	assert(DeleteApnsVoipSandboxChannelRequest, "You must provide a DeleteApnsVoipSandboxChannelRequest")
 	local headers = {
@@ -12813,19 +12823,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteApnsVoipSandboxChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteApnsVoipSandboxChannelSync(DeleteApnsVoipSandboxChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteApnsVoipSandboxChannelAsync(DeleteApnsVoipSandboxChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteApnsVoipSandboxChannelAsync(DeleteApnsVoipSandboxChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteGcmChannel asynchronously, invoking a callback when done
 -- @param DeleteGcmChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteGcmChannelAsync(DeleteGcmChannelRequest, cb)
 	assert(DeleteGcmChannelRequest, "You must provide a DeleteGcmChannelRequest")
 	local headers = {
@@ -12848,19 +12859,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteGcmChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteGcmChannelSync(DeleteGcmChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteGcmChannelAsync(DeleteGcmChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteGcmChannelAsync(DeleteGcmChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetApp asynchronously, invoking a callback when done
 -- @param GetAppRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetAppAsync(GetAppRequest, cb)
 	assert(GetAppRequest, "You must provide a GetAppRequest")
 	local headers = {
@@ -12883,19 +12895,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetAppRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetAppSync(GetAppRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetAppAsync(GetAppRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetAppAsync(GetAppRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetChannels asynchronously, invoking a callback when done
 -- @param GetChannelsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetChannelsAsync(GetChannelsRequest, cb)
 	assert(GetChannelsRequest, "You must provide a GetChannelsRequest")
 	local headers = {
@@ -12918,19 +12931,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetChannelsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetChannelsSync(GetChannelsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetChannelsAsync(GetChannelsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetChannelsAsync(GetChannelsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteCampaign asynchronously, invoking a callback when done
 -- @param DeleteCampaignRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteCampaignAsync(DeleteCampaignRequest, cb)
 	assert(DeleteCampaignRequest, "You must provide a DeleteCampaignRequest")
 	local headers = {
@@ -12953,19 +12967,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteCampaignRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteCampaignSync(DeleteCampaignRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteCampaignAsync(DeleteCampaignRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteCampaignAsync(DeleteCampaignRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetImportJob asynchronously, invoking a callback when done
 -- @param GetImportJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetImportJobAsync(GetImportJobRequest, cb)
 	assert(GetImportJobRequest, "You must provide a GetImportJobRequest")
 	local headers = {
@@ -12988,19 +13003,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetImportJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetImportJobSync(GetImportJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetImportJobAsync(GetImportJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetImportJobAsync(GetImportJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateCampaign asynchronously, invoking a callback when done
 -- @param CreateCampaignRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateCampaignAsync(CreateCampaignRequest, cb)
 	assert(CreateCampaignRequest, "You must provide a CreateCampaignRequest")
 	local headers = {
@@ -13023,19 +13039,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateCampaignRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateCampaignSync(CreateCampaignRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateCampaignAsync(CreateCampaignRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateCampaignAsync(CreateCampaignRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteEndpoint asynchronously, invoking a callback when done
 -- @param DeleteEndpointRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteEndpointAsync(DeleteEndpointRequest, cb)
 	assert(DeleteEndpointRequest, "You must provide a DeleteEndpointRequest")
 	local headers = {
@@ -13058,19 +13075,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteEndpointRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteEndpointSync(DeleteEndpointRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteEndpointAsync(DeleteEndpointRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteEndpointAsync(DeleteEndpointRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateImportJob asynchronously, invoking a callback when done
 -- @param CreateImportJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateImportJobAsync(CreateImportJobRequest, cb)
 	assert(CreateImportJobRequest, "You must provide a CreateImportJobRequest")
 	local headers = {
@@ -13093,19 +13111,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateImportJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateImportJobSync(CreateImportJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateImportJobAsync(CreateImportJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateImportJobAsync(CreateImportJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PutEvents asynchronously, invoking a callback when done
 -- @param PutEventsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PutEventsAsync(PutEventsRequest, cb)
 	assert(PutEventsRequest, "You must provide a PutEventsRequest")
 	local headers = {
@@ -13128,19 +13147,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PutEventsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PutEventsSync(PutEventsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutEventsAsync(PutEventsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PutEventsAsync(PutEventsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call RemoveAttributes asynchronously, invoking a callback when done
 -- @param RemoveAttributesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.RemoveAttributesAsync(RemoveAttributesRequest, cb)
 	assert(RemoveAttributesRequest, "You must provide a RemoveAttributesRequest")
 	local headers = {
@@ -13163,19 +13183,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param RemoveAttributesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.RemoveAttributesSync(RemoveAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveAttributesAsync(RemoveAttributesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.RemoveAttributesAsync(RemoveAttributesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetCampaignVersion asynchronously, invoking a callback when done
 -- @param GetCampaignVersionRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetCampaignVersionAsync(GetCampaignVersionRequest, cb)
 	assert(GetCampaignVersionRequest, "You must provide a GetCampaignVersionRequest")
 	local headers = {
@@ -13198,19 +13219,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetCampaignVersionRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetCampaignVersionSync(GetCampaignVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCampaignVersionAsync(GetCampaignVersionRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetCampaignVersionAsync(GetCampaignVersionRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetGcmChannel asynchronously, invoking a callback when done
 -- @param GetGcmChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetGcmChannelAsync(GetGcmChannelRequest, cb)
 	assert(GetGcmChannelRequest, "You must provide a GetGcmChannelRequest")
 	local headers = {
@@ -13233,19 +13255,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetGcmChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetGcmChannelSync(GetGcmChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetGcmChannelAsync(GetGcmChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetGcmChannelAsync(GetGcmChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateApnsChannel asynchronously, invoking a callback when done
 -- @param UpdateApnsChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateApnsChannelAsync(UpdateApnsChannelRequest, cb)
 	assert(UpdateApnsChannelRequest, "You must provide a UpdateApnsChannelRequest")
 	local headers = {
@@ -13268,19 +13291,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateApnsChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateApnsChannelSync(UpdateApnsChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateApnsChannelAsync(UpdateApnsChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateApnsChannelAsync(UpdateApnsChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateGcmChannel asynchronously, invoking a callback when done
 -- @param UpdateGcmChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateGcmChannelAsync(UpdateGcmChannelRequest, cb)
 	assert(UpdateGcmChannelRequest, "You must provide a UpdateGcmChannelRequest")
 	local headers = {
@@ -13303,19 +13327,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateGcmChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateGcmChannelSync(UpdateGcmChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateGcmChannelAsync(UpdateGcmChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateGcmChannelAsync(UpdateGcmChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetSegment asynchronously, invoking a callback when done
 -- @param GetSegmentRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetSegmentAsync(GetSegmentRequest, cb)
 	assert(GetSegmentRequest, "You must provide a GetSegmentRequest")
 	local headers = {
@@ -13338,19 +13363,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetSegmentRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetSegmentSync(GetSegmentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSegmentAsync(GetSegmentRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetSegmentAsync(GetSegmentRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetCampaign asynchronously, invoking a callback when done
 -- @param GetCampaignRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetCampaignAsync(GetCampaignRequest, cb)
 	assert(GetCampaignRequest, "You must provide a GetCampaignRequest")
 	local headers = {
@@ -13373,19 +13399,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetCampaignRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetCampaignSync(GetCampaignRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCampaignAsync(GetCampaignRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetCampaignAsync(GetCampaignRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetEmailChannel asynchronously, invoking a callback when done
 -- @param GetEmailChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetEmailChannelAsync(GetEmailChannelRequest, cb)
 	assert(GetEmailChannelRequest, "You must provide a GetEmailChannelRequest")
 	local headers = {
@@ -13408,19 +13435,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetEmailChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetEmailChannelSync(GetEmailChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetEmailChannelAsync(GetEmailChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetEmailChannelAsync(GetEmailChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteApp asynchronously, invoking a callback when done
 -- @param DeleteAppRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteAppAsync(DeleteAppRequest, cb)
 	assert(DeleteAppRequest, "You must provide a DeleteAppRequest")
 	local headers = {
@@ -13443,19 +13471,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteAppRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteAppSync(DeleteAppRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteAppAsync(DeleteAppRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteAppAsync(DeleteAppRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateApplicationSettings asynchronously, invoking a callback when done
 -- @param UpdateApplicationSettingsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateApplicationSettingsAsync(UpdateApplicationSettingsRequest, cb)
 	assert(UpdateApplicationSettingsRequest, "You must provide a UpdateApplicationSettingsRequest")
 	local headers = {
@@ -13478,19 +13507,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateApplicationSettingsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateApplicationSettingsSync(UpdateApplicationSettingsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateApplicationSettingsAsync(UpdateApplicationSettingsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateApplicationSettingsAsync(UpdateApplicationSettingsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateApnsSandboxChannel asynchronously, invoking a callback when done
 -- @param UpdateApnsSandboxChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateApnsSandboxChannelAsync(UpdateApnsSandboxChannelRequest, cb)
 	assert(UpdateApnsSandboxChannelRequest, "You must provide a UpdateApnsSandboxChannelRequest")
 	local headers = {
@@ -13513,19 +13543,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateApnsSandboxChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateApnsSandboxChannelSync(UpdateApnsSandboxChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateApnsSandboxChannelAsync(UpdateApnsSandboxChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateApnsSandboxChannelAsync(UpdateApnsSandboxChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetSegmentExportJobs asynchronously, invoking a callback when done
 -- @param GetSegmentExportJobsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetSegmentExportJobsAsync(GetSegmentExportJobsRequest, cb)
 	assert(GetSegmentExportJobsRequest, "You must provide a GetSegmentExportJobsRequest")
 	local headers = {
@@ -13548,19 +13579,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetSegmentExportJobsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetSegmentExportJobsSync(GetSegmentExportJobsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSegmentExportJobsAsync(GetSegmentExportJobsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetSegmentExportJobsAsync(GetSegmentExportJobsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PutEventStream asynchronously, invoking a callback when done
 -- @param PutEventStreamRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PutEventStreamAsync(PutEventStreamRequest, cb)
 	assert(PutEventStreamRequest, "You must provide a PutEventStreamRequest")
 	local headers = {
@@ -13583,19 +13615,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PutEventStreamRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PutEventStreamSync(PutEventStreamRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutEventStreamAsync(PutEventStreamRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PutEventStreamAsync(PutEventStreamRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteSegment asynchronously, invoking a callback when done
 -- @param DeleteSegmentRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteSegmentAsync(DeleteSegmentRequest, cb)
 	assert(DeleteSegmentRequest, "You must provide a DeleteSegmentRequest")
 	local headers = {
@@ -13618,19 +13651,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteSegmentRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteSegmentSync(DeleteSegmentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteSegmentAsync(DeleteSegmentRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteSegmentAsync(DeleteSegmentRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetCampaignVersions asynchronously, invoking a callback when done
 -- @param GetCampaignVersionsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetCampaignVersionsAsync(GetCampaignVersionsRequest, cb)
 	assert(GetCampaignVersionsRequest, "You must provide a GetCampaignVersionsRequest")
 	local headers = {
@@ -13653,19 +13687,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetCampaignVersionsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetCampaignVersionsSync(GetCampaignVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCampaignVersionsAsync(GetCampaignVersionsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetCampaignVersionsAsync(GetCampaignVersionsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateApnsVoipChannel asynchronously, invoking a callback when done
 -- @param UpdateApnsVoipChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateApnsVoipChannelAsync(UpdateApnsVoipChannelRequest, cb)
 	assert(UpdateApnsVoipChannelRequest, "You must provide a UpdateApnsVoipChannelRequest")
 	local headers = {
@@ -13688,19 +13723,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateApnsVoipChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateApnsVoipChannelSync(UpdateApnsVoipChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateApnsVoipChannelAsync(UpdateApnsVoipChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateApnsVoipChannelAsync(UpdateApnsVoipChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetApnsVoipSandboxChannel asynchronously, invoking a callback when done
 -- @param GetApnsVoipSandboxChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetApnsVoipSandboxChannelAsync(GetApnsVoipSandboxChannelRequest, cb)
 	assert(GetApnsVoipSandboxChannelRequest, "You must provide a GetApnsVoipSandboxChannelRequest")
 	local headers = {
@@ -13723,19 +13759,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetApnsVoipSandboxChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetApnsVoipSandboxChannelSync(GetApnsVoipSandboxChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetApnsVoipSandboxChannelAsync(GetApnsVoipSandboxChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetApnsVoipSandboxChannelAsync(GetApnsVoipSandboxChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetAdmChannel asynchronously, invoking a callback when done
 -- @param GetAdmChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetAdmChannelAsync(GetAdmChannelRequest, cb)
 	assert(GetAdmChannelRequest, "You must provide a GetAdmChannelRequest")
 	local headers = {
@@ -13758,19 +13795,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetAdmChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetAdmChannelSync(GetAdmChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetAdmChannelAsync(GetAdmChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetAdmChannelAsync(GetAdmChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetApnsSandboxChannel asynchronously, invoking a callback when done
 -- @param GetApnsSandboxChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetApnsSandboxChannelAsync(GetApnsSandboxChannelRequest, cb)
 	assert(GetApnsSandboxChannelRequest, "You must provide a GetApnsSandboxChannelRequest")
 	local headers = {
@@ -13793,19 +13831,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetApnsSandboxChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetApnsSandboxChannelSync(GetApnsSandboxChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetApnsSandboxChannelAsync(GetApnsSandboxChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetApnsSandboxChannelAsync(GetApnsSandboxChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetSegmentImportJobs asynchronously, invoking a callback when done
 -- @param GetSegmentImportJobsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetSegmentImportJobsAsync(GetSegmentImportJobsRequest, cb)
 	assert(GetSegmentImportJobsRequest, "You must provide a GetSegmentImportJobsRequest")
 	local headers = {
@@ -13828,19 +13867,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetSegmentImportJobsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetSegmentImportJobsSync(GetSegmentImportJobsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSegmentImportJobsAsync(GetSegmentImportJobsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetSegmentImportJobsAsync(GetSegmentImportJobsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetCampaigns asynchronously, invoking a callback when done
 -- @param GetCampaignsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetCampaignsAsync(GetCampaignsRequest, cb)
 	assert(GetCampaignsRequest, "You must provide a GetCampaignsRequest")
 	local headers = {
@@ -13863,19 +13903,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetCampaignsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetCampaignsSync(GetCampaignsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCampaignsAsync(GetCampaignsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetCampaignsAsync(GetCampaignsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteEmailChannel asynchronously, invoking a callback when done
 -- @param DeleteEmailChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteEmailChannelAsync(DeleteEmailChannelRequest, cb)
 	assert(DeleteEmailChannelRequest, "You must provide a DeleteEmailChannelRequest")
 	local headers = {
@@ -13898,19 +13939,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteEmailChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteEmailChannelSync(DeleteEmailChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteEmailChannelAsync(DeleteEmailChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteEmailChannelAsync(DeleteEmailChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteApnsVoipChannel asynchronously, invoking a callback when done
 -- @param DeleteApnsVoipChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteApnsVoipChannelAsync(DeleteApnsVoipChannelRequest, cb)
 	assert(DeleteApnsVoipChannelRequest, "You must provide a DeleteApnsVoipChannelRequest")
 	local headers = {
@@ -13933,19 +13975,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteApnsVoipChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteApnsVoipChannelSync(DeleteApnsVoipChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteApnsVoipChannelAsync(DeleteApnsVoipChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteApnsVoipChannelAsync(DeleteApnsVoipChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetCampaignActivities asynchronously, invoking a callback when done
 -- @param GetCampaignActivitiesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetCampaignActivitiesAsync(GetCampaignActivitiesRequest, cb)
 	assert(GetCampaignActivitiesRequest, "You must provide a GetCampaignActivitiesRequest")
 	local headers = {
@@ -13968,19 +14011,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetCampaignActivitiesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetCampaignActivitiesSync(GetCampaignActivitiesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCampaignActivitiesAsync(GetCampaignActivitiesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetCampaignActivitiesAsync(GetCampaignActivitiesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteBaiduChannel asynchronously, invoking a callback when done
 -- @param DeleteBaiduChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteBaiduChannelAsync(DeleteBaiduChannelRequest, cb)
 	assert(DeleteBaiduChannelRequest, "You must provide a DeleteBaiduChannelRequest")
 	local headers = {
@@ -14003,19 +14047,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteBaiduChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteBaiduChannelSync(DeleteBaiduChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBaiduChannelAsync(DeleteBaiduChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteBaiduChannelAsync(DeleteBaiduChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateEndpoint asynchronously, invoking a callback when done
 -- @param UpdateEndpointRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateEndpointAsync(UpdateEndpointRequest, cb)
 	assert(UpdateEndpointRequest, "You must provide a UpdateEndpointRequest")
 	local headers = {
@@ -14038,19 +14083,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateEndpointRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateEndpointSync(UpdateEndpointRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateEndpointAsync(UpdateEndpointRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateEndpointAsync(UpdateEndpointRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call SendUsersMessages asynchronously, invoking a callback when done
 -- @param SendUsersMessagesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.SendUsersMessagesAsync(SendUsersMessagesRequest, cb)
 	assert(SendUsersMessagesRequest, "You must provide a SendUsersMessagesRequest")
 	local headers = {
@@ -14073,19 +14119,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param SendUsersMessagesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.SendUsersMessagesSync(SendUsersMessagesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SendUsersMessagesAsync(SendUsersMessagesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.SendUsersMessagesAsync(SendUsersMessagesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteUserEndpoints asynchronously, invoking a callback when done
 -- @param DeleteUserEndpointsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteUserEndpointsAsync(DeleteUserEndpointsRequest, cb)
 	assert(DeleteUserEndpointsRequest, "You must provide a DeleteUserEndpointsRequest")
 	local headers = {
@@ -14108,19 +14155,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteUserEndpointsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteUserEndpointsSync(DeleteUserEndpointsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteUserEndpointsAsync(DeleteUserEndpointsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteUserEndpointsAsync(DeleteUserEndpointsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetEventStream asynchronously, invoking a callback when done
 -- @param GetEventStreamRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetEventStreamAsync(GetEventStreamRequest, cb)
 	assert(GetEventStreamRequest, "You must provide a GetEventStreamRequest")
 	local headers = {
@@ -14143,19 +14191,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetEventStreamRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetEventStreamSync(GetEventStreamRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetEventStreamAsync(GetEventStreamRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetEventStreamAsync(GetEventStreamRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteSmsChannel asynchronously, invoking a callback when done
 -- @param DeleteSmsChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteSmsChannelAsync(DeleteSmsChannelRequest, cb)
 	assert(DeleteSmsChannelRequest, "You must provide a DeleteSmsChannelRequest")
 	local headers = {
@@ -14178,19 +14227,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteSmsChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteSmsChannelSync(DeleteSmsChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteSmsChannelAsync(DeleteSmsChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteSmsChannelAsync(DeleteSmsChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetEndpoint asynchronously, invoking a callback when done
 -- @param GetEndpointRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetEndpointAsync(GetEndpointRequest, cb)
 	assert(GetEndpointRequest, "You must provide a GetEndpointRequest")
 	local headers = {
@@ -14213,19 +14263,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetEndpointRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetEndpointSync(GetEndpointRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetEndpointAsync(GetEndpointRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetEndpointAsync(GetEndpointRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteAdmChannel asynchronously, invoking a callback when done
 -- @param DeleteAdmChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteAdmChannelAsync(DeleteAdmChannelRequest, cb)
 	assert(DeleteAdmChannelRequest, "You must provide a DeleteAdmChannelRequest")
 	local headers = {
@@ -14248,19 +14299,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteAdmChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteAdmChannelSync(DeleteAdmChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteAdmChannelAsync(DeleteAdmChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteAdmChannelAsync(DeleteAdmChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call SendMessages asynchronously, invoking a callback when done
 -- @param SendMessagesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.SendMessagesAsync(SendMessagesRequest, cb)
 	assert(SendMessagesRequest, "You must provide a SendMessagesRequest")
 	local headers = {
@@ -14283,19 +14335,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param SendMessagesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.SendMessagesSync(SendMessagesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SendMessagesAsync(SendMessagesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.SendMessagesAsync(SendMessagesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateBaiduChannel asynchronously, invoking a callback when done
 -- @param UpdateBaiduChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateBaiduChannelAsync(UpdateBaiduChannelRequest, cb)
 	assert(UpdateBaiduChannelRequest, "You must provide a UpdateBaiduChannelRequest")
 	local headers = {
@@ -14318,19 +14371,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateBaiduChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateBaiduChannelSync(UpdateBaiduChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateBaiduChannelAsync(UpdateBaiduChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateBaiduChannelAsync(UpdateBaiduChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateApp asynchronously, invoking a callback when done
 -- @param CreateAppRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateAppAsync(CreateAppRequest, cb)
 	assert(CreateAppRequest, "You must provide a CreateAppRequest")
 	local headers = {
@@ -14353,19 +14407,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateAppRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateAppSync(CreateAppRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateAppAsync(CreateAppRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateAppAsync(CreateAppRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteApnsChannel asynchronously, invoking a callback when done
 -- @param DeleteApnsChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteApnsChannelAsync(DeleteApnsChannelRequest, cb)
 	assert(DeleteApnsChannelRequest, "You must provide a DeleteApnsChannelRequest")
 	local headers = {
@@ -14388,19 +14443,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteApnsChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteApnsChannelSync(DeleteApnsChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteApnsChannelAsync(DeleteApnsChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteApnsChannelAsync(DeleteApnsChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetUserEndpoints asynchronously, invoking a callback when done
 -- @param GetUserEndpointsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetUserEndpointsAsync(GetUserEndpointsRequest, cb)
 	assert(GetUserEndpointsRequest, "You must provide a GetUserEndpointsRequest")
 	local headers = {
@@ -14423,19 +14479,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetUserEndpointsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetUserEndpointsSync(GetUserEndpointsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetUserEndpointsAsync(GetUserEndpointsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetUserEndpointsAsync(GetUserEndpointsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateExportJob asynchronously, invoking a callback when done
 -- @param CreateExportJobRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateExportJobAsync(CreateExportJobRequest, cb)
 	assert(CreateExportJobRequest, "You must provide a CreateExportJobRequest")
 	local headers = {
@@ -14458,19 +14515,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateExportJobRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateExportJobSync(CreateExportJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateExportJobAsync(CreateExportJobRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateExportJobAsync(CreateExportJobRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteEventStream asynchronously, invoking a callback when done
 -- @param DeleteEventStreamRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteEventStreamAsync(DeleteEventStreamRequest, cb)
 	assert(DeleteEventStreamRequest, "You must provide a DeleteEventStreamRequest")
 	local headers = {
@@ -14493,19 +14551,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteEventStreamRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteEventStreamSync(DeleteEventStreamRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteEventStreamAsync(DeleteEventStreamRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteEventStreamAsync(DeleteEventStreamRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetApplicationSettings asynchronously, invoking a callback when done
 -- @param GetApplicationSettingsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetApplicationSettingsAsync(GetApplicationSettingsRequest, cb)
 	assert(GetApplicationSettingsRequest, "You must provide a GetApplicationSettingsRequest")
 	local headers = {
@@ -14528,19 +14587,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetApplicationSettingsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetApplicationSettingsSync(GetApplicationSettingsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetApplicationSettingsAsync(GetApplicationSettingsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetApplicationSettingsAsync(GetApplicationSettingsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateEmailChannel asynchronously, invoking a callback when done
 -- @param UpdateEmailChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateEmailChannelAsync(UpdateEmailChannelRequest, cb)
 	assert(UpdateEmailChannelRequest, "You must provide a UpdateEmailChannelRequest")
 	local headers = {
@@ -14563,19 +14623,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateEmailChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateEmailChannelSync(UpdateEmailChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateEmailChannelAsync(UpdateEmailChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateEmailChannelAsync(UpdateEmailChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateAdmChannel asynchronously, invoking a callback when done
 -- @param UpdateAdmChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateAdmChannelAsync(UpdateAdmChannelRequest, cb)
 	assert(UpdateAdmChannelRequest, "You must provide a UpdateAdmChannelRequest")
 	local headers = {
@@ -14598,19 +14659,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateAdmChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateAdmChannelSync(UpdateAdmChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateAdmChannelAsync(UpdateAdmChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateAdmChannelAsync(UpdateAdmChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetSegments asynchronously, invoking a callback when done
 -- @param GetSegmentsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetSegmentsAsync(GetSegmentsRequest, cb)
 	assert(GetSegmentsRequest, "You must provide a GetSegmentsRequest")
 	local headers = {
@@ -14633,19 +14695,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetSegmentsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetSegmentsSync(GetSegmentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSegmentsAsync(GetSegmentsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetSegmentsAsync(GetSegmentsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetBaiduChannel asynchronously, invoking a callback when done
 -- @param GetBaiduChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetBaiduChannelAsync(GetBaiduChannelRequest, cb)
 	assert(GetBaiduChannelRequest, "You must provide a GetBaiduChannelRequest")
 	local headers = {
@@ -14668,19 +14731,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetBaiduChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetBaiduChannelSync(GetBaiduChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBaiduChannelAsync(GetBaiduChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetBaiduChannelAsync(GetBaiduChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PhoneNumberValidate asynchronously, invoking a callback when done
 -- @param PhoneNumberValidateRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PhoneNumberValidateAsync(PhoneNumberValidateRequest, cb)
 	assert(PhoneNumberValidateRequest, "You must provide a PhoneNumberValidateRequest")
 	local headers = {
@@ -14703,19 +14767,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PhoneNumberValidateRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PhoneNumberValidateSync(PhoneNumberValidateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PhoneNumberValidateAsync(PhoneNumberValidateRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PhoneNumberValidateAsync(PhoneNumberValidateRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetExportJobs asynchronously, invoking a callback when done
 -- @param GetExportJobsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetExportJobsAsync(GetExportJobsRequest, cb)
 	assert(GetExportJobsRequest, "You must provide a GetExportJobsRequest")
 	local headers = {
@@ -14738,19 +14803,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetExportJobsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetExportJobsSync(GetExportJobsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetExportJobsAsync(GetExportJobsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetExportJobsAsync(GetExportJobsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetSegmentVersions asynchronously, invoking a callback when done
 -- @param GetSegmentVersionsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetSegmentVersionsAsync(GetSegmentVersionsRequest, cb)
 	assert(GetSegmentVersionsRequest, "You must provide a GetSegmentVersionsRequest")
 	local headers = {
@@ -14773,19 +14839,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetSegmentVersionsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetSegmentVersionsSync(GetSegmentVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSegmentVersionsAsync(GetSegmentVersionsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetSegmentVersionsAsync(GetSegmentVersionsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateEndpointsBatch asynchronously, invoking a callback when done
 -- @param UpdateEndpointsBatchRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateEndpointsBatchAsync(UpdateEndpointsBatchRequest, cb)
 	assert(UpdateEndpointsBatchRequest, "You must provide a UpdateEndpointsBatchRequest")
 	local headers = {
@@ -14808,19 +14875,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateEndpointsBatchRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateEndpointsBatchSync(UpdateEndpointsBatchRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateEndpointsBatchAsync(UpdateEndpointsBatchRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateEndpointsBatchAsync(UpdateEndpointsBatchRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateSmsChannel asynchronously, invoking a callback when done
 -- @param UpdateSmsChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateSmsChannelAsync(UpdateSmsChannelRequest, cb)
 	assert(UpdateSmsChannelRequest, "You must provide a UpdateSmsChannelRequest")
 	local headers = {
@@ -14843,19 +14911,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateSmsChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateSmsChannelSync(UpdateSmsChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateSmsChannelAsync(UpdateSmsChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateSmsChannelAsync(UpdateSmsChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetApnsVoipChannel asynchronously, invoking a callback when done
 -- @param GetApnsVoipChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetApnsVoipChannelAsync(GetApnsVoipChannelRequest, cb)
 	assert(GetApnsVoipChannelRequest, "You must provide a GetApnsVoipChannelRequest")
 	local headers = {
@@ -14878,19 +14947,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetApnsVoipChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetApnsVoipChannelSync(GetApnsVoipChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetApnsVoipChannelAsync(GetApnsVoipChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetApnsVoipChannelAsync(GetApnsVoipChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetApnsChannel asynchronously, invoking a callback when done
 -- @param GetApnsChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetApnsChannelAsync(GetApnsChannelRequest, cb)
 	assert(GetApnsChannelRequest, "You must provide a GetApnsChannelRequest")
 	local headers = {
@@ -14913,12 +14983,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetApnsChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetApnsChannelSync(GetApnsChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetApnsChannelAsync(GetApnsChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetApnsChannelAsync(GetApnsChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

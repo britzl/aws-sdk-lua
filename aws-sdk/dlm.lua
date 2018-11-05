@@ -1106,7 +1106,7 @@ end
 --
 --- Call DeleteLifecyclePolicy asynchronously, invoking a callback when done
 -- @param DeleteLifecyclePolicyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteLifecyclePolicyAsync(DeleteLifecyclePolicyRequest, cb)
 	assert(DeleteLifecyclePolicyRequest, "You must provide a DeleteLifecyclePolicyRequest")
 	local headers = {
@@ -1129,19 +1129,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteLifecyclePolicyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteLifecyclePolicySync(DeleteLifecyclePolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteLifecyclePolicyAsync(DeleteLifecyclePolicyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteLifecyclePolicyAsync(DeleteLifecyclePolicyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetLifecyclePolicies asynchronously, invoking a callback when done
 -- @param GetLifecyclePoliciesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetLifecyclePoliciesAsync(GetLifecyclePoliciesRequest, cb)
 	assert(GetLifecyclePoliciesRequest, "You must provide a GetLifecyclePoliciesRequest")
 	local headers = {
@@ -1164,19 +1165,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetLifecyclePoliciesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetLifecyclePoliciesSync(GetLifecyclePoliciesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetLifecyclePoliciesAsync(GetLifecyclePoliciesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetLifecyclePoliciesAsync(GetLifecyclePoliciesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateLifecyclePolicy asynchronously, invoking a callback when done
 -- @param CreateLifecyclePolicyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateLifecyclePolicyAsync(CreateLifecyclePolicyRequest, cb)
 	assert(CreateLifecyclePolicyRequest, "You must provide a CreateLifecyclePolicyRequest")
 	local headers = {
@@ -1199,19 +1201,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateLifecyclePolicyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateLifecyclePolicySync(CreateLifecyclePolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateLifecyclePolicyAsync(CreateLifecyclePolicyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateLifecyclePolicyAsync(CreateLifecyclePolicyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetLifecyclePolicy asynchronously, invoking a callback when done
 -- @param GetLifecyclePolicyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetLifecyclePolicyAsync(GetLifecyclePolicyRequest, cb)
 	assert(GetLifecyclePolicyRequest, "You must provide a GetLifecyclePolicyRequest")
 	local headers = {
@@ -1234,19 +1237,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetLifecyclePolicyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetLifecyclePolicySync(GetLifecyclePolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetLifecyclePolicyAsync(GetLifecyclePolicyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetLifecyclePolicyAsync(GetLifecyclePolicyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateLifecyclePolicy asynchronously, invoking a callback when done
 -- @param UpdateLifecyclePolicyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateLifecyclePolicyAsync(UpdateLifecyclePolicyRequest, cb)
 	assert(UpdateLifecyclePolicyRequest, "You must provide a UpdateLifecyclePolicyRequest")
 	local headers = {
@@ -1269,12 +1273,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateLifecyclePolicyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateLifecyclePolicySync(UpdateLifecyclePolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateLifecyclePolicyAsync(UpdateLifecyclePolicyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateLifecyclePolicyAsync(UpdateLifecyclePolicyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

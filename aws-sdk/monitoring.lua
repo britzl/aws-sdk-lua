@@ -3050,7 +3050,7 @@ end
 --
 --- Call ListDashboards asynchronously, invoking a callback when done
 -- @param ListDashboardsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListDashboardsAsync(ListDashboardsInput, cb)
 	assert(ListDashboardsInput, "You must provide a ListDashboardsInput")
 	local headers = {
@@ -3073,19 +3073,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListDashboardsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListDashboardsSync(ListDashboardsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDashboardsAsync(ListDashboardsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListDashboardsAsync(ListDashboardsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListMetrics asynchronously, invoking a callback when done
 -- @param ListMetricsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListMetricsAsync(ListMetricsInput, cb)
 	assert(ListMetricsInput, "You must provide a ListMetricsInput")
 	local headers = {
@@ -3108,19 +3109,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListMetricsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListMetricsSync(ListMetricsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListMetricsAsync(ListMetricsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListMetricsAsync(ListMetricsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteDashboards asynchronously, invoking a callback when done
 -- @param DeleteDashboardsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteDashboardsAsync(DeleteDashboardsInput, cb)
 	assert(DeleteDashboardsInput, "You must provide a DeleteDashboardsInput")
 	local headers = {
@@ -3143,19 +3145,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteDashboardsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteDashboardsSync(DeleteDashboardsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDashboardsAsync(DeleteDashboardsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteDashboardsAsync(DeleteDashboardsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteAlarms asynchronously, invoking a callback when done
 -- @param DeleteAlarmsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteAlarmsAsync(DeleteAlarmsInput, cb)
 	assert(DeleteAlarmsInput, "You must provide a DeleteAlarmsInput")
 	local headers = {
@@ -3178,19 +3181,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteAlarmsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteAlarmsSync(DeleteAlarmsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteAlarmsAsync(DeleteAlarmsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteAlarmsAsync(DeleteAlarmsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call EnableAlarmActions asynchronously, invoking a callback when done
 -- @param EnableAlarmActionsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.EnableAlarmActionsAsync(EnableAlarmActionsInput, cb)
 	assert(EnableAlarmActionsInput, "You must provide a EnableAlarmActionsInput")
 	local headers = {
@@ -3213,19 +3217,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param EnableAlarmActionsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.EnableAlarmActionsSync(EnableAlarmActionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EnableAlarmActionsAsync(EnableAlarmActionsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.EnableAlarmActionsAsync(EnableAlarmActionsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetMetricData asynchronously, invoking a callback when done
 -- @param GetMetricDataInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetMetricDataAsync(GetMetricDataInput, cb)
 	assert(GetMetricDataInput, "You must provide a GetMetricDataInput")
 	local headers = {
@@ -3248,19 +3253,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetMetricDataInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetMetricDataSync(GetMetricDataInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetMetricDataAsync(GetMetricDataInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetMetricDataAsync(GetMetricDataInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PutMetricAlarm asynchronously, invoking a callback when done
 -- @param PutMetricAlarmInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PutMetricAlarmAsync(PutMetricAlarmInput, cb)
 	assert(PutMetricAlarmInput, "You must provide a PutMetricAlarmInput")
 	local headers = {
@@ -3283,19 +3289,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PutMetricAlarmInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PutMetricAlarmSync(PutMetricAlarmInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutMetricAlarmAsync(PutMetricAlarmInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PutMetricAlarmAsync(PutMetricAlarmInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetMetricStatistics asynchronously, invoking a callback when done
 -- @param GetMetricStatisticsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetMetricStatisticsAsync(GetMetricStatisticsInput, cb)
 	assert(GetMetricStatisticsInput, "You must provide a GetMetricStatisticsInput")
 	local headers = {
@@ -3318,19 +3325,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetMetricStatisticsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetMetricStatisticsSync(GetMetricStatisticsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetMetricStatisticsAsync(GetMetricStatisticsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetMetricStatisticsAsync(GetMetricStatisticsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DisableAlarmActions asynchronously, invoking a callback when done
 -- @param DisableAlarmActionsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DisableAlarmActionsAsync(DisableAlarmActionsInput, cb)
 	assert(DisableAlarmActionsInput, "You must provide a DisableAlarmActionsInput")
 	local headers = {
@@ -3353,19 +3361,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DisableAlarmActionsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DisableAlarmActionsSync(DisableAlarmActionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisableAlarmActionsAsync(DisableAlarmActionsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DisableAlarmActionsAsync(DisableAlarmActionsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call SetAlarmState asynchronously, invoking a callback when done
 -- @param SetAlarmStateInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.SetAlarmStateAsync(SetAlarmStateInput, cb)
 	assert(SetAlarmStateInput, "You must provide a SetAlarmStateInput")
 	local headers = {
@@ -3388,19 +3397,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param SetAlarmStateInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.SetAlarmStateSync(SetAlarmStateInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetAlarmStateAsync(SetAlarmStateInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.SetAlarmStateAsync(SetAlarmStateInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PutDashboard asynchronously, invoking a callback when done
 -- @param PutDashboardInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PutDashboardAsync(PutDashboardInput, cb)
 	assert(PutDashboardInput, "You must provide a PutDashboardInput")
 	local headers = {
@@ -3423,19 +3433,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PutDashboardInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PutDashboardSync(PutDashboardInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutDashboardAsync(PutDashboardInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PutDashboardAsync(PutDashboardInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PutMetricData asynchronously, invoking a callback when done
 -- @param PutMetricDataInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PutMetricDataAsync(PutMetricDataInput, cb)
 	assert(PutMetricDataInput, "You must provide a PutMetricDataInput")
 	local headers = {
@@ -3458,19 +3469,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PutMetricDataInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PutMetricDataSync(PutMetricDataInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutMetricDataAsync(PutMetricDataInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PutMetricDataAsync(PutMetricDataInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeAlarms asynchronously, invoking a callback when done
 -- @param DescribeAlarmsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeAlarmsAsync(DescribeAlarmsInput, cb)
 	assert(DescribeAlarmsInput, "You must provide a DescribeAlarmsInput")
 	local headers = {
@@ -3493,19 +3505,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeAlarmsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeAlarmsSync(DescribeAlarmsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAlarmsAsync(DescribeAlarmsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeAlarmsAsync(DescribeAlarmsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetDashboard asynchronously, invoking a callback when done
 -- @param GetDashboardInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetDashboardAsync(GetDashboardInput, cb)
 	assert(GetDashboardInput, "You must provide a GetDashboardInput")
 	local headers = {
@@ -3528,19 +3541,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetDashboardInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetDashboardSync(GetDashboardInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDashboardAsync(GetDashboardInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetDashboardAsync(GetDashboardInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeAlarmsForMetric asynchronously, invoking a callback when done
 -- @param DescribeAlarmsForMetricInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeAlarmsForMetricAsync(DescribeAlarmsForMetricInput, cb)
 	assert(DescribeAlarmsForMetricInput, "You must provide a DescribeAlarmsForMetricInput")
 	local headers = {
@@ -3563,19 +3577,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeAlarmsForMetricInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeAlarmsForMetricSync(DescribeAlarmsForMetricInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAlarmsForMetricAsync(DescribeAlarmsForMetricInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeAlarmsForMetricAsync(DescribeAlarmsForMetricInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeAlarmHistory asynchronously, invoking a callback when done
 -- @param DescribeAlarmHistoryInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeAlarmHistoryAsync(DescribeAlarmHistoryInput, cb)
 	assert(DescribeAlarmHistoryInput, "You must provide a DescribeAlarmHistoryInput")
 	local headers = {
@@ -3598,19 +3613,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeAlarmHistoryInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeAlarmHistorySync(DescribeAlarmHistoryInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAlarmHistoryAsync(DescribeAlarmHistoryInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeAlarmHistoryAsync(DescribeAlarmHistoryInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetMetricWidgetImage asynchronously, invoking a callback when done
 -- @param GetMetricWidgetImageInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetMetricWidgetImageAsync(GetMetricWidgetImageInput, cb)
 	assert(GetMetricWidgetImageInput, "You must provide a GetMetricWidgetImageInput")
 	local headers = {
@@ -3633,12 +3649,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetMetricWidgetImageInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetMetricWidgetImageSync(GetMetricWidgetImageInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetMetricWidgetImageAsync(GetMetricWidgetImageInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetMetricWidgetImageAsync(GetMetricWidgetImageInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

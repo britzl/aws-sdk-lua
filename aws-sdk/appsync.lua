@@ -3653,7 +3653,7 @@ end
 --
 --- Call UpdateResolver asynchronously, invoking a callback when done
 -- @param UpdateResolverRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateResolverAsync(UpdateResolverRequest, cb)
 	assert(UpdateResolverRequest, "You must provide a UpdateResolverRequest")
 	local headers = {
@@ -3676,19 +3676,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateResolverRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateResolverSync(UpdateResolverRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateResolverAsync(UpdateResolverRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateResolverAsync(UpdateResolverRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetGraphqlApi asynchronously, invoking a callback when done
 -- @param GetGraphqlApiRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetGraphqlApiAsync(GetGraphqlApiRequest, cb)
 	assert(GetGraphqlApiRequest, "You must provide a GetGraphqlApiRequest")
 	local headers = {
@@ -3711,19 +3712,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetGraphqlApiRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetGraphqlApiSync(GetGraphqlApiRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetGraphqlApiAsync(GetGraphqlApiRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetGraphqlApiAsync(GetGraphqlApiRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateResolver asynchronously, invoking a callback when done
 -- @param CreateResolverRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateResolverAsync(CreateResolverRequest, cb)
 	assert(CreateResolverRequest, "You must provide a CreateResolverRequest")
 	local headers = {
@@ -3746,19 +3748,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateResolverRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateResolverSync(CreateResolverRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateResolverAsync(CreateResolverRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateResolverAsync(CreateResolverRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListTypes asynchronously, invoking a callback when done
 -- @param ListTypesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListTypesAsync(ListTypesRequest, cb)
 	assert(ListTypesRequest, "You must provide a ListTypesRequest")
 	local headers = {
@@ -3781,19 +3784,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListTypesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListTypesSync(ListTypesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTypesAsync(ListTypesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListTypesAsync(ListTypesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListApiKeys asynchronously, invoking a callback when done
 -- @param ListApiKeysRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListApiKeysAsync(ListApiKeysRequest, cb)
 	assert(ListApiKeysRequest, "You must provide a ListApiKeysRequest")
 	local headers = {
@@ -3816,19 +3820,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListApiKeysRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListApiKeysSync(ListApiKeysRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListApiKeysAsync(ListApiKeysRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListApiKeysAsync(ListApiKeysRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListGraphqlApis asynchronously, invoking a callback when done
 -- @param ListGraphqlApisRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListGraphqlApisAsync(ListGraphqlApisRequest, cb)
 	assert(ListGraphqlApisRequest, "You must provide a ListGraphqlApisRequest")
 	local headers = {
@@ -3851,19 +3856,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListGraphqlApisRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListGraphqlApisSync(ListGraphqlApisRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListGraphqlApisAsync(ListGraphqlApisRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListGraphqlApisAsync(ListGraphqlApisRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteGraphqlApi asynchronously, invoking a callback when done
 -- @param DeleteGraphqlApiRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteGraphqlApiAsync(DeleteGraphqlApiRequest, cb)
 	assert(DeleteGraphqlApiRequest, "You must provide a DeleteGraphqlApiRequest")
 	local headers = {
@@ -3886,19 +3892,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteGraphqlApiRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteGraphqlApiSync(DeleteGraphqlApiRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteGraphqlApiAsync(DeleteGraphqlApiRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteGraphqlApiAsync(DeleteGraphqlApiRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetIntrospectionSchema asynchronously, invoking a callback when done
 -- @param GetIntrospectionSchemaRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetIntrospectionSchemaAsync(GetIntrospectionSchemaRequest, cb)
 	assert(GetIntrospectionSchemaRequest, "You must provide a GetIntrospectionSchemaRequest")
 	local headers = {
@@ -3921,19 +3928,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetIntrospectionSchemaRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetIntrospectionSchemaSync(GetIntrospectionSchemaRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetIntrospectionSchemaAsync(GetIntrospectionSchemaRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetIntrospectionSchemaAsync(GetIntrospectionSchemaRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListResolvers asynchronously, invoking a callback when done
 -- @param ListResolversRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListResolversAsync(ListResolversRequest, cb)
 	assert(ListResolversRequest, "You must provide a ListResolversRequest")
 	local headers = {
@@ -3956,19 +3964,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListResolversRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListResolversSync(ListResolversRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListResolversAsync(ListResolversRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListResolversAsync(ListResolversRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetResolver asynchronously, invoking a callback when done
 -- @param GetResolverRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetResolverAsync(GetResolverRequest, cb)
 	assert(GetResolverRequest, "You must provide a GetResolverRequest")
 	local headers = {
@@ -3991,19 +4000,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetResolverRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetResolverSync(GetResolverRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetResolverAsync(GetResolverRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetResolverAsync(GetResolverRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateDataSource asynchronously, invoking a callback when done
 -- @param UpdateDataSourceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateDataSourceAsync(UpdateDataSourceRequest, cb)
 	assert(UpdateDataSourceRequest, "You must provide a UpdateDataSourceRequest")
 	local headers = {
@@ -4026,19 +4036,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateDataSourceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateDataSourceSync(UpdateDataSourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateDataSourceAsync(UpdateDataSourceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateDataSourceAsync(UpdateDataSourceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteResolver asynchronously, invoking a callback when done
 -- @param DeleteResolverRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteResolverAsync(DeleteResolverRequest, cb)
 	assert(DeleteResolverRequest, "You must provide a DeleteResolverRequest")
 	local headers = {
@@ -4061,19 +4072,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteResolverRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteResolverSync(DeleteResolverRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteResolverAsync(DeleteResolverRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteResolverAsync(DeleteResolverRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateApiKey asynchronously, invoking a callback when done
 -- @param UpdateApiKeyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateApiKeyAsync(UpdateApiKeyRequest, cb)
 	assert(UpdateApiKeyRequest, "You must provide a UpdateApiKeyRequest")
 	local headers = {
@@ -4096,19 +4108,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateApiKeyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateApiKeySync(UpdateApiKeyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateApiKeyAsync(UpdateApiKeyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateApiKeyAsync(UpdateApiKeyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetSchemaCreationStatus asynchronously, invoking a callback when done
 -- @param GetSchemaCreationStatusRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetSchemaCreationStatusAsync(GetSchemaCreationStatusRequest, cb)
 	assert(GetSchemaCreationStatusRequest, "You must provide a GetSchemaCreationStatusRequest")
 	local headers = {
@@ -4131,19 +4144,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetSchemaCreationStatusRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetSchemaCreationStatusSync(GetSchemaCreationStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSchemaCreationStatusAsync(GetSchemaCreationStatusRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetSchemaCreationStatusAsync(GetSchemaCreationStatusRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateType asynchronously, invoking a callback when done
 -- @param UpdateTypeRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateTypeAsync(UpdateTypeRequest, cb)
 	assert(UpdateTypeRequest, "You must provide a UpdateTypeRequest")
 	local headers = {
@@ -4166,19 +4180,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateTypeRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateTypeSync(UpdateTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateTypeAsync(UpdateTypeRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateTypeAsync(UpdateTypeRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateGraphqlApi asynchronously, invoking a callback when done
 -- @param CreateGraphqlApiRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateGraphqlApiAsync(CreateGraphqlApiRequest, cb)
 	assert(CreateGraphqlApiRequest, "You must provide a CreateGraphqlApiRequest")
 	local headers = {
@@ -4201,19 +4216,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateGraphqlApiRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateGraphqlApiSync(CreateGraphqlApiRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateGraphqlApiAsync(CreateGraphqlApiRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateGraphqlApiAsync(CreateGraphqlApiRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateType asynchronously, invoking a callback when done
 -- @param CreateTypeRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateTypeAsync(CreateTypeRequest, cb)
 	assert(CreateTypeRequest, "You must provide a CreateTypeRequest")
 	local headers = {
@@ -4236,19 +4252,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateTypeRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateTypeSync(CreateTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTypeAsync(CreateTypeRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateTypeAsync(CreateTypeRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteDataSource asynchronously, invoking a callback when done
 -- @param DeleteDataSourceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteDataSourceAsync(DeleteDataSourceRequest, cb)
 	assert(DeleteDataSourceRequest, "You must provide a DeleteDataSourceRequest")
 	local headers = {
@@ -4271,19 +4288,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteDataSourceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteDataSourceSync(DeleteDataSourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDataSourceAsync(DeleteDataSourceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteDataSourceAsync(DeleteDataSourceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateApiKey asynchronously, invoking a callback when done
 -- @param CreateApiKeyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateApiKeyAsync(CreateApiKeyRequest, cb)
 	assert(CreateApiKeyRequest, "You must provide a CreateApiKeyRequest")
 	local headers = {
@@ -4306,19 +4324,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateApiKeyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateApiKeySync(CreateApiKeyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateApiKeyAsync(CreateApiKeyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateApiKeyAsync(CreateApiKeyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListDataSources asynchronously, invoking a callback when done
 -- @param ListDataSourcesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListDataSourcesAsync(ListDataSourcesRequest, cb)
 	assert(ListDataSourcesRequest, "You must provide a ListDataSourcesRequest")
 	local headers = {
@@ -4341,19 +4360,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListDataSourcesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListDataSourcesSync(ListDataSourcesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDataSourcesAsync(ListDataSourcesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListDataSourcesAsync(ListDataSourcesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StartSchemaCreation asynchronously, invoking a callback when done
 -- @param StartSchemaCreationRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StartSchemaCreationAsync(StartSchemaCreationRequest, cb)
 	assert(StartSchemaCreationRequest, "You must provide a StartSchemaCreationRequest")
 	local headers = {
@@ -4376,19 +4396,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StartSchemaCreationRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StartSchemaCreationSync(StartSchemaCreationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartSchemaCreationAsync(StartSchemaCreationRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StartSchemaCreationAsync(StartSchemaCreationRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateDataSource asynchronously, invoking a callback when done
 -- @param CreateDataSourceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateDataSourceAsync(CreateDataSourceRequest, cb)
 	assert(CreateDataSourceRequest, "You must provide a CreateDataSourceRequest")
 	local headers = {
@@ -4411,19 +4432,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateDataSourceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateDataSourceSync(CreateDataSourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDataSourceAsync(CreateDataSourceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateDataSourceAsync(CreateDataSourceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetType asynchronously, invoking a callback when done
 -- @param GetTypeRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetTypeAsync(GetTypeRequest, cb)
 	assert(GetTypeRequest, "You must provide a GetTypeRequest")
 	local headers = {
@@ -4446,19 +4468,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetTypeRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetTypeSync(GetTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTypeAsync(GetTypeRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetTypeAsync(GetTypeRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetDataSource asynchronously, invoking a callback when done
 -- @param GetDataSourceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetDataSourceAsync(GetDataSourceRequest, cb)
 	assert(GetDataSourceRequest, "You must provide a GetDataSourceRequest")
 	local headers = {
@@ -4481,19 +4504,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetDataSourceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetDataSourceSync(GetDataSourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDataSourceAsync(GetDataSourceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetDataSourceAsync(GetDataSourceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteType asynchronously, invoking a callback when done
 -- @param DeleteTypeRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteTypeAsync(DeleteTypeRequest, cb)
 	assert(DeleteTypeRequest, "You must provide a DeleteTypeRequest")
 	local headers = {
@@ -4516,19 +4540,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteTypeRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteTypeSync(DeleteTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTypeAsync(DeleteTypeRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteTypeAsync(DeleteTypeRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteApiKey asynchronously, invoking a callback when done
 -- @param DeleteApiKeyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteApiKeyAsync(DeleteApiKeyRequest, cb)
 	assert(DeleteApiKeyRequest, "You must provide a DeleteApiKeyRequest")
 	local headers = {
@@ -4551,19 +4576,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteApiKeyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteApiKeySync(DeleteApiKeyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteApiKeyAsync(DeleteApiKeyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteApiKeyAsync(DeleteApiKeyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateGraphqlApi asynchronously, invoking a callback when done
 -- @param UpdateGraphqlApiRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateGraphqlApiAsync(UpdateGraphqlApiRequest, cb)
 	assert(UpdateGraphqlApiRequest, "You must provide a UpdateGraphqlApiRequest")
 	local headers = {
@@ -4586,12 +4612,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateGraphqlApiRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateGraphqlApiSync(UpdateGraphqlApiRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateGraphqlApiAsync(UpdateGraphqlApiRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateGraphqlApiAsync(UpdateGraphqlApiRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

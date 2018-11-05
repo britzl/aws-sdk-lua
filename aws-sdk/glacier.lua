@@ -4263,7 +4263,7 @@ end
 --
 --- Call ListTagsForVault asynchronously, invoking a callback when done
 -- @param ListTagsForVaultInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListTagsForVaultAsync(ListTagsForVaultInput, cb)
 	assert(ListTagsForVaultInput, "You must provide a ListTagsForVaultInput")
 	local headers = {
@@ -4286,19 +4286,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListTagsForVaultInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListTagsForVaultSync(ListTagsForVaultInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsForVaultAsync(ListTagsForVaultInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListTagsForVaultAsync(ListTagsForVaultInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListJobs asynchronously, invoking a callback when done
 -- @param ListJobsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListJobsAsync(ListJobsInput, cb)
 	assert(ListJobsInput, "You must provide a ListJobsInput")
 	local headers = {
@@ -4321,19 +4322,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListJobsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListJobsSync(ListJobsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListJobsAsync(ListJobsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListJobsAsync(ListJobsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteVault asynchronously, invoking a callback when done
 -- @param DeleteVaultInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteVaultAsync(DeleteVaultInput, cb)
 	assert(DeleteVaultInput, "You must provide a DeleteVaultInput")
 	local headers = {
@@ -4356,19 +4358,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteVaultInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteVaultSync(DeleteVaultInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteVaultAsync(DeleteVaultInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteVaultAsync(DeleteVaultInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteVaultNotifications asynchronously, invoking a callback when done
 -- @param DeleteVaultNotificationsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteVaultNotificationsAsync(DeleteVaultNotificationsInput, cb)
 	assert(DeleteVaultNotificationsInput, "You must provide a DeleteVaultNotificationsInput")
 	local headers = {
@@ -4391,19 +4394,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteVaultNotificationsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteVaultNotificationsSync(DeleteVaultNotificationsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteVaultNotificationsAsync(DeleteVaultNotificationsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteVaultNotificationsAsync(DeleteVaultNotificationsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListParts asynchronously, invoking a callback when done
 -- @param ListPartsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListPartsAsync(ListPartsInput, cb)
 	assert(ListPartsInput, "You must provide a ListPartsInput")
 	local headers = {
@@ -4426,19 +4430,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListPartsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListPartsSync(ListPartsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPartsAsync(ListPartsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListPartsAsync(ListPartsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListProvisionedCapacity asynchronously, invoking a callback when done
 -- @param ListProvisionedCapacityInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListProvisionedCapacityAsync(ListProvisionedCapacityInput, cb)
 	assert(ListProvisionedCapacityInput, "You must provide a ListProvisionedCapacityInput")
 	local headers = {
@@ -4461,19 +4466,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListProvisionedCapacityInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListProvisionedCapacitySync(ListProvisionedCapacityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListProvisionedCapacityAsync(ListProvisionedCapacityInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListProvisionedCapacityAsync(ListProvisionedCapacityInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteArchive asynchronously, invoking a callback when done
 -- @param DeleteArchiveInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteArchiveAsync(DeleteArchiveInput, cb)
 	assert(DeleteArchiveInput, "You must provide a DeleteArchiveInput")
 	local headers = {
@@ -4496,19 +4502,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteArchiveInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteArchiveSync(DeleteArchiveInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteArchiveAsync(DeleteArchiveInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteArchiveAsync(DeleteArchiveInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PurchaseProvisionedCapacity asynchronously, invoking a callback when done
 -- @param PurchaseProvisionedCapacityInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PurchaseProvisionedCapacityAsync(PurchaseProvisionedCapacityInput, cb)
 	assert(PurchaseProvisionedCapacityInput, "You must provide a PurchaseProvisionedCapacityInput")
 	local headers = {
@@ -4531,19 +4538,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PurchaseProvisionedCapacityInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PurchaseProvisionedCapacitySync(PurchaseProvisionedCapacityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PurchaseProvisionedCapacityAsync(PurchaseProvisionedCapacityInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PurchaseProvisionedCapacityAsync(PurchaseProvisionedCapacityInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetJobOutput asynchronously, invoking a callback when done
 -- @param GetJobOutputInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetJobOutputAsync(GetJobOutputInput, cb)
 	assert(GetJobOutputInput, "You must provide a GetJobOutputInput")
 	local headers = {
@@ -4566,19 +4574,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetJobOutputInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetJobOutputSync(GetJobOutputInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetJobOutputAsync(GetJobOutputInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetJobOutputAsync(GetJobOutputInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AddTagsToVault asynchronously, invoking a callback when done
 -- @param AddTagsToVaultInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AddTagsToVaultAsync(AddTagsToVaultInput, cb)
 	assert(AddTagsToVaultInput, "You must provide a AddTagsToVaultInput")
 	local headers = {
@@ -4601,19 +4610,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AddTagsToVaultInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AddTagsToVaultSync(AddTagsToVaultInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddTagsToVaultAsync(AddTagsToVaultInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AddTagsToVaultAsync(AddTagsToVaultInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call InitiateVaultLock asynchronously, invoking a callback when done
 -- @param InitiateVaultLockInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.InitiateVaultLockAsync(InitiateVaultLockInput, cb)
 	assert(InitiateVaultLockInput, "You must provide a InitiateVaultLockInput")
 	local headers = {
@@ -4636,19 +4646,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param InitiateVaultLockInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.InitiateVaultLockSync(InitiateVaultLockInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.InitiateVaultLockAsync(InitiateVaultLockInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.InitiateVaultLockAsync(InitiateVaultLockInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListVaults asynchronously, invoking a callback when done
 -- @param ListVaultsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListVaultsAsync(ListVaultsInput, cb)
 	assert(ListVaultsInput, "You must provide a ListVaultsInput")
 	local headers = {
@@ -4671,19 +4682,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListVaultsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListVaultsSync(ListVaultsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListVaultsAsync(ListVaultsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListVaultsAsync(ListVaultsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetVaultLock asynchronously, invoking a callback when done
 -- @param GetVaultLockInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetVaultLockAsync(GetVaultLockInput, cb)
 	assert(GetVaultLockInput, "You must provide a GetVaultLockInput")
 	local headers = {
@@ -4706,19 +4718,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetVaultLockInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetVaultLockSync(GetVaultLockInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetVaultLockAsync(GetVaultLockInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetVaultLockAsync(GetVaultLockInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeJob asynchronously, invoking a callback when done
 -- @param DescribeJobInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeJobAsync(DescribeJobInput, cb)
 	assert(DescribeJobInput, "You must provide a DescribeJobInput")
 	local headers = {
@@ -4741,19 +4754,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeJobInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeJobSync(DescribeJobInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeJobAsync(DescribeJobInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeJobAsync(DescribeJobInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetVaultAccessPolicy asynchronously, invoking a callback when done
 -- @param GetVaultAccessPolicyInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetVaultAccessPolicyAsync(GetVaultAccessPolicyInput, cb)
 	assert(GetVaultAccessPolicyInput, "You must provide a GetVaultAccessPolicyInput")
 	local headers = {
@@ -4776,19 +4790,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetVaultAccessPolicyInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetVaultAccessPolicySync(GetVaultAccessPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetVaultAccessPolicyAsync(GetVaultAccessPolicyInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetVaultAccessPolicyAsync(GetVaultAccessPolicyInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CompleteMultipartUpload asynchronously, invoking a callback when done
 -- @param CompleteMultipartUploadInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CompleteMultipartUploadAsync(CompleteMultipartUploadInput, cb)
 	assert(CompleteMultipartUploadInput, "You must provide a CompleteMultipartUploadInput")
 	local headers = {
@@ -4811,19 +4826,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CompleteMultipartUploadInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CompleteMultipartUploadSync(CompleteMultipartUploadInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CompleteMultipartUploadAsync(CompleteMultipartUploadInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CompleteMultipartUploadAsync(CompleteMultipartUploadInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call SetVaultAccessPolicy asynchronously, invoking a callback when done
 -- @param SetVaultAccessPolicyInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.SetVaultAccessPolicyAsync(SetVaultAccessPolicyInput, cb)
 	assert(SetVaultAccessPolicyInput, "You must provide a SetVaultAccessPolicyInput")
 	local headers = {
@@ -4846,19 +4862,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param SetVaultAccessPolicyInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.SetVaultAccessPolicySync(SetVaultAccessPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetVaultAccessPolicyAsync(SetVaultAccessPolicyInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.SetVaultAccessPolicyAsync(SetVaultAccessPolicyInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UploadMultipartPart asynchronously, invoking a callback when done
 -- @param UploadMultipartPartInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UploadMultipartPartAsync(UploadMultipartPartInput, cb)
 	assert(UploadMultipartPartInput, "You must provide a UploadMultipartPartInput")
 	local headers = {
@@ -4881,19 +4898,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UploadMultipartPartInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UploadMultipartPartSync(UploadMultipartPartInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UploadMultipartPartAsync(UploadMultipartPartInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UploadMultipartPartAsync(UploadMultipartPartInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetVaultNotifications asynchronously, invoking a callback when done
 -- @param GetVaultNotificationsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetVaultNotificationsAsync(GetVaultNotificationsInput, cb)
 	assert(GetVaultNotificationsInput, "You must provide a GetVaultNotificationsInput")
 	local headers = {
@@ -4916,19 +4934,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetVaultNotificationsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetVaultNotificationsSync(GetVaultNotificationsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetVaultNotificationsAsync(GetVaultNotificationsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetVaultNotificationsAsync(GetVaultNotificationsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteVaultAccessPolicy asynchronously, invoking a callback when done
 -- @param DeleteVaultAccessPolicyInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteVaultAccessPolicyAsync(DeleteVaultAccessPolicyInput, cb)
 	assert(DeleteVaultAccessPolicyInput, "You must provide a DeleteVaultAccessPolicyInput")
 	local headers = {
@@ -4951,19 +4970,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteVaultAccessPolicyInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteVaultAccessPolicySync(DeleteVaultAccessPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteVaultAccessPolicyAsync(DeleteVaultAccessPolicyInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteVaultAccessPolicyAsync(DeleteVaultAccessPolicyInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeVault asynchronously, invoking a callback when done
 -- @param DescribeVaultInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeVaultAsync(DescribeVaultInput, cb)
 	assert(DescribeVaultInput, "You must provide a DescribeVaultInput")
 	local headers = {
@@ -4986,19 +5006,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeVaultInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeVaultSync(DescribeVaultInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeVaultAsync(DescribeVaultInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeVaultAsync(DescribeVaultInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListMultipartUploads asynchronously, invoking a callback when done
 -- @param ListMultipartUploadsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListMultipartUploadsAsync(ListMultipartUploadsInput, cb)
 	assert(ListMultipartUploadsInput, "You must provide a ListMultipartUploadsInput")
 	local headers = {
@@ -5021,19 +5042,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListMultipartUploadsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListMultipartUploadsSync(ListMultipartUploadsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListMultipartUploadsAsync(ListMultipartUploadsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListMultipartUploadsAsync(ListMultipartUploadsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CompleteVaultLock asynchronously, invoking a callback when done
 -- @param CompleteVaultLockInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CompleteVaultLockAsync(CompleteVaultLockInput, cb)
 	assert(CompleteVaultLockInput, "You must provide a CompleteVaultLockInput")
 	local headers = {
@@ -5056,19 +5078,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CompleteVaultLockInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CompleteVaultLockSync(CompleteVaultLockInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CompleteVaultLockAsync(CompleteVaultLockInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CompleteVaultLockAsync(CompleteVaultLockInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call SetDataRetrievalPolicy asynchronously, invoking a callback when done
 -- @param SetDataRetrievalPolicyInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.SetDataRetrievalPolicyAsync(SetDataRetrievalPolicyInput, cb)
 	assert(SetDataRetrievalPolicyInput, "You must provide a SetDataRetrievalPolicyInput")
 	local headers = {
@@ -5091,19 +5114,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param SetDataRetrievalPolicyInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.SetDataRetrievalPolicySync(SetDataRetrievalPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetDataRetrievalPolicyAsync(SetDataRetrievalPolicyInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.SetDataRetrievalPolicyAsync(SetDataRetrievalPolicyInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AbortVaultLock asynchronously, invoking a callback when done
 -- @param AbortVaultLockInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AbortVaultLockAsync(AbortVaultLockInput, cb)
 	assert(AbortVaultLockInput, "You must provide a AbortVaultLockInput")
 	local headers = {
@@ -5126,19 +5150,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AbortVaultLockInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AbortVaultLockSync(AbortVaultLockInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AbortVaultLockAsync(AbortVaultLockInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AbortVaultLockAsync(AbortVaultLockInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AbortMultipartUpload asynchronously, invoking a callback when done
 -- @param AbortMultipartUploadInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AbortMultipartUploadAsync(AbortMultipartUploadInput, cb)
 	assert(AbortMultipartUploadInput, "You must provide a AbortMultipartUploadInput")
 	local headers = {
@@ -5161,19 +5186,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AbortMultipartUploadInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AbortMultipartUploadSync(AbortMultipartUploadInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AbortMultipartUploadAsync(AbortMultipartUploadInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AbortMultipartUploadAsync(AbortMultipartUploadInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call RemoveTagsFromVault asynchronously, invoking a callback when done
 -- @param RemoveTagsFromVaultInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.RemoveTagsFromVaultAsync(RemoveTagsFromVaultInput, cb)
 	assert(RemoveTagsFromVaultInput, "You must provide a RemoveTagsFromVaultInput")
 	local headers = {
@@ -5196,19 +5222,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param RemoveTagsFromVaultInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.RemoveTagsFromVaultSync(RemoveTagsFromVaultInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveTagsFromVaultAsync(RemoveTagsFromVaultInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.RemoveTagsFromVaultAsync(RemoveTagsFromVaultInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateVault asynchronously, invoking a callback when done
 -- @param CreateVaultInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateVaultAsync(CreateVaultInput, cb)
 	assert(CreateVaultInput, "You must provide a CreateVaultInput")
 	local headers = {
@@ -5231,19 +5258,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateVaultInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateVaultSync(CreateVaultInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateVaultAsync(CreateVaultInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateVaultAsync(CreateVaultInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call InitiateJob asynchronously, invoking a callback when done
 -- @param InitiateJobInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.InitiateJobAsync(InitiateJobInput, cb)
 	assert(InitiateJobInput, "You must provide a InitiateJobInput")
 	local headers = {
@@ -5266,19 +5294,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param InitiateJobInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.InitiateJobSync(InitiateJobInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.InitiateJobAsync(InitiateJobInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.InitiateJobAsync(InitiateJobInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call InitiateMultipartUpload asynchronously, invoking a callback when done
 -- @param InitiateMultipartUploadInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.InitiateMultipartUploadAsync(InitiateMultipartUploadInput, cb)
 	assert(InitiateMultipartUploadInput, "You must provide a InitiateMultipartUploadInput")
 	local headers = {
@@ -5301,19 +5330,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param InitiateMultipartUploadInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.InitiateMultipartUploadSync(InitiateMultipartUploadInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.InitiateMultipartUploadAsync(InitiateMultipartUploadInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.InitiateMultipartUploadAsync(InitiateMultipartUploadInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetDataRetrievalPolicy asynchronously, invoking a callback when done
 -- @param GetDataRetrievalPolicyInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetDataRetrievalPolicyAsync(GetDataRetrievalPolicyInput, cb)
 	assert(GetDataRetrievalPolicyInput, "You must provide a GetDataRetrievalPolicyInput")
 	local headers = {
@@ -5336,19 +5366,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetDataRetrievalPolicyInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetDataRetrievalPolicySync(GetDataRetrievalPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDataRetrievalPolicyAsync(GetDataRetrievalPolicyInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetDataRetrievalPolicyAsync(GetDataRetrievalPolicyInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call SetVaultNotifications asynchronously, invoking a callback when done
 -- @param SetVaultNotificationsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.SetVaultNotificationsAsync(SetVaultNotificationsInput, cb)
 	assert(SetVaultNotificationsInput, "You must provide a SetVaultNotificationsInput")
 	local headers = {
@@ -5371,19 +5402,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param SetVaultNotificationsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.SetVaultNotificationsSync(SetVaultNotificationsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetVaultNotificationsAsync(SetVaultNotificationsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.SetVaultNotificationsAsync(SetVaultNotificationsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UploadArchive asynchronously, invoking a callback when done
 -- @param UploadArchiveInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UploadArchiveAsync(UploadArchiveInput, cb)
 	assert(UploadArchiveInput, "You must provide a UploadArchiveInput")
 	local headers = {
@@ -5406,12 +5438,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UploadArchiveInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UploadArchiveSync(UploadArchiveInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UploadArchiveAsync(UploadArchiveInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UploadArchiveAsync(UploadArchiveInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

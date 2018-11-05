@@ -3703,7 +3703,7 @@ end
 --
 --- Call StartExecution asynchronously, invoking a callback when done
 -- @param StartExecutionInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StartExecutionAsync(StartExecutionInput, cb)
 	assert(StartExecutionInput, "You must provide a StartExecutionInput")
 	local headers = {
@@ -3726,19 +3726,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StartExecutionInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StartExecutionSync(StartExecutionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartExecutionAsync(StartExecutionInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StartExecutionAsync(StartExecutionInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListExecutions asynchronously, invoking a callback when done
 -- @param ListExecutionsInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListExecutionsAsync(ListExecutionsInput, cb)
 	assert(ListExecutionsInput, "You must provide a ListExecutionsInput")
 	local headers = {
@@ -3761,19 +3762,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListExecutionsInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListExecutionsSync(ListExecutionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListExecutionsAsync(ListExecutionsInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListExecutionsAsync(ListExecutionsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeStateMachineForExecution asynchronously, invoking a callback when done
 -- @param DescribeStateMachineForExecutionInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeStateMachineForExecutionAsync(DescribeStateMachineForExecutionInput, cb)
 	assert(DescribeStateMachineForExecutionInput, "You must provide a DescribeStateMachineForExecutionInput")
 	local headers = {
@@ -3796,19 +3798,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeStateMachineForExecutionInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeStateMachineForExecutionSync(DescribeStateMachineForExecutionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeStateMachineForExecutionAsync(DescribeStateMachineForExecutionInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeStateMachineForExecutionAsync(DescribeStateMachineForExecutionInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call StopExecution asynchronously, invoking a callback when done
 -- @param StopExecutionInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.StopExecutionAsync(StopExecutionInput, cb)
 	assert(StopExecutionInput, "You must provide a StopExecutionInput")
 	local headers = {
@@ -3831,19 +3834,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param StopExecutionInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.StopExecutionSync(StopExecutionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopExecutionAsync(StopExecutionInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.StopExecutionAsync(StopExecutionInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteActivity asynchronously, invoking a callback when done
 -- @param DeleteActivityInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteActivityAsync(DeleteActivityInput, cb)
 	assert(DeleteActivityInput, "You must provide a DeleteActivityInput")
 	local headers = {
@@ -3866,19 +3870,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteActivityInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteActivitySync(DeleteActivityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteActivityAsync(DeleteActivityInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteActivityAsync(DeleteActivityInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call SendTaskHeartbeat asynchronously, invoking a callback when done
 -- @param SendTaskHeartbeatInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.SendTaskHeartbeatAsync(SendTaskHeartbeatInput, cb)
 	assert(SendTaskHeartbeatInput, "You must provide a SendTaskHeartbeatInput")
 	local headers = {
@@ -3901,19 +3906,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param SendTaskHeartbeatInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.SendTaskHeartbeatSync(SendTaskHeartbeatInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SendTaskHeartbeatAsync(SendTaskHeartbeatInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.SendTaskHeartbeatAsync(SendTaskHeartbeatInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeExecution asynchronously, invoking a callback when done
 -- @param DescribeExecutionInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeExecutionAsync(DescribeExecutionInput, cb)
 	assert(DescribeExecutionInput, "You must provide a DescribeExecutionInput")
 	local headers = {
@@ -3936,19 +3942,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeExecutionInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeExecutionSync(DescribeExecutionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeExecutionAsync(DescribeExecutionInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeExecutionAsync(DescribeExecutionInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListStateMachines asynchronously, invoking a callback when done
 -- @param ListStateMachinesInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListStateMachinesAsync(ListStateMachinesInput, cb)
 	assert(ListStateMachinesInput, "You must provide a ListStateMachinesInput")
 	local headers = {
@@ -3971,19 +3978,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListStateMachinesInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListStateMachinesSync(ListStateMachinesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListStateMachinesAsync(ListStateMachinesInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListStateMachinesAsync(ListStateMachinesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetExecutionHistory asynchronously, invoking a callback when done
 -- @param GetExecutionHistoryInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetExecutionHistoryAsync(GetExecutionHistoryInput, cb)
 	assert(GetExecutionHistoryInput, "You must provide a GetExecutionHistoryInput")
 	local headers = {
@@ -4006,19 +4014,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetExecutionHistoryInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetExecutionHistorySync(GetExecutionHistoryInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetExecutionHistoryAsync(GetExecutionHistoryInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetExecutionHistoryAsync(GetExecutionHistoryInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetActivityTask asynchronously, invoking a callback when done
 -- @param GetActivityTaskInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetActivityTaskAsync(GetActivityTaskInput, cb)
 	assert(GetActivityTaskInput, "You must provide a GetActivityTaskInput")
 	local headers = {
@@ -4041,19 +4050,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetActivityTaskInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetActivityTaskSync(GetActivityTaskInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetActivityTaskAsync(GetActivityTaskInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetActivityTaskAsync(GetActivityTaskInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListActivities asynchronously, invoking a callback when done
 -- @param ListActivitiesInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListActivitiesAsync(ListActivitiesInput, cb)
 	assert(ListActivitiesInput, "You must provide a ListActivitiesInput")
 	local headers = {
@@ -4076,19 +4086,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListActivitiesInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListActivitiesSync(ListActivitiesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListActivitiesAsync(ListActivitiesInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListActivitiesAsync(ListActivitiesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateStateMachine asynchronously, invoking a callback when done
 -- @param CreateStateMachineInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateStateMachineAsync(CreateStateMachineInput, cb)
 	assert(CreateStateMachineInput, "You must provide a CreateStateMachineInput")
 	local headers = {
@@ -4111,19 +4122,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateStateMachineInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateStateMachineSync(CreateStateMachineInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateStateMachineAsync(CreateStateMachineInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateStateMachineAsync(CreateStateMachineInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeStateMachine asynchronously, invoking a callback when done
 -- @param DescribeStateMachineInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeStateMachineAsync(DescribeStateMachineInput, cb)
 	assert(DescribeStateMachineInput, "You must provide a DescribeStateMachineInput")
 	local headers = {
@@ -4146,19 +4158,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeStateMachineInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeStateMachineSync(DescribeStateMachineInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeStateMachineAsync(DescribeStateMachineInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeStateMachineAsync(DescribeStateMachineInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeActivity asynchronously, invoking a callback when done
 -- @param DescribeActivityInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeActivityAsync(DescribeActivityInput, cb)
 	assert(DescribeActivityInput, "You must provide a DescribeActivityInput")
 	local headers = {
@@ -4181,19 +4194,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeActivityInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeActivitySync(DescribeActivityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeActivityAsync(DescribeActivityInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeActivityAsync(DescribeActivityInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteStateMachine asynchronously, invoking a callback when done
 -- @param DeleteStateMachineInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteStateMachineAsync(DeleteStateMachineInput, cb)
 	assert(DeleteStateMachineInput, "You must provide a DeleteStateMachineInput")
 	local headers = {
@@ -4216,19 +4230,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteStateMachineInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteStateMachineSync(DeleteStateMachineInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteStateMachineAsync(DeleteStateMachineInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteStateMachineAsync(DeleteStateMachineInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateStateMachine asynchronously, invoking a callback when done
 -- @param UpdateStateMachineInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateStateMachineAsync(UpdateStateMachineInput, cb)
 	assert(UpdateStateMachineInput, "You must provide a UpdateStateMachineInput")
 	local headers = {
@@ -4251,19 +4266,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateStateMachineInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateStateMachineSync(UpdateStateMachineInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateStateMachineAsync(UpdateStateMachineInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateStateMachineAsync(UpdateStateMachineInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateActivity asynchronously, invoking a callback when done
 -- @param CreateActivityInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.CreateActivityAsync(CreateActivityInput, cb)
 	assert(CreateActivityInput, "You must provide a CreateActivityInput")
 	local headers = {
@@ -4286,19 +4302,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param CreateActivityInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.CreateActivitySync(CreateActivityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateActivityAsync(CreateActivityInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.CreateActivityAsync(CreateActivityInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call SendTaskFailure asynchronously, invoking a callback when done
 -- @param SendTaskFailureInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.SendTaskFailureAsync(SendTaskFailureInput, cb)
 	assert(SendTaskFailureInput, "You must provide a SendTaskFailureInput")
 	local headers = {
@@ -4321,19 +4338,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param SendTaskFailureInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.SendTaskFailureSync(SendTaskFailureInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SendTaskFailureAsync(SendTaskFailureInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.SendTaskFailureAsync(SendTaskFailureInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call SendTaskSuccess asynchronously, invoking a callback when done
 -- @param SendTaskSuccessInput
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.SendTaskSuccessAsync(SendTaskSuccessInput, cb)
 	assert(SendTaskSuccessInput, "You must provide a SendTaskSuccessInput")
 	local headers = {
@@ -4356,12 +4374,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param SendTaskSuccessInput
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.SendTaskSuccessSync(SendTaskSuccessInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SendTaskSuccessAsync(SendTaskSuccessInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.SendTaskSuccessAsync(SendTaskSuccessInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

@@ -1705,7 +1705,7 @@ end
 --
 --- Call PutPolicy asynchronously, invoking a callback when done
 -- @param PutPolicyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PutPolicyAsync(PutPolicyRequest, cb)
 	assert(PutPolicyRequest, "You must provide a PutPolicyRequest")
 	local headers = {
@@ -1728,19 +1728,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PutPolicyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PutPolicySync(PutPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutPolicyAsync(PutPolicyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PutPolicyAsync(PutPolicyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetComplianceDetail asynchronously, invoking a callback when done
 -- @param GetComplianceDetailRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetComplianceDetailAsync(GetComplianceDetailRequest, cb)
 	assert(GetComplianceDetailRequest, "You must provide a GetComplianceDetailRequest")
 	local headers = {
@@ -1763,19 +1764,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetComplianceDetailRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetComplianceDetailSync(GetComplianceDetailRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetComplianceDetailAsync(GetComplianceDetailRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetComplianceDetailAsync(GetComplianceDetailRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListComplianceStatus asynchronously, invoking a callback when done
 -- @param ListComplianceStatusRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListComplianceStatusAsync(ListComplianceStatusRequest, cb)
 	assert(ListComplianceStatusRequest, "You must provide a ListComplianceStatusRequest")
 	local headers = {
@@ -1798,19 +1800,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListComplianceStatusRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListComplianceStatusSync(ListComplianceStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListComplianceStatusAsync(ListComplianceStatusRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListComplianceStatusAsync(ListComplianceStatusRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteNotificationChannel asynchronously, invoking a callback when done
 -- @param DeleteNotificationChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeleteNotificationChannelAsync(DeleteNotificationChannelRequest, cb)
 	assert(DeleteNotificationChannelRequest, "You must provide a DeleteNotificationChannelRequest")
 	local headers = {
@@ -1833,19 +1836,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeleteNotificationChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeleteNotificationChannelSync(DeleteNotificationChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteNotificationChannelAsync(DeleteNotificationChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeleteNotificationChannelAsync(DeleteNotificationChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetNotificationChannel asynchronously, invoking a callback when done
 -- @param GetNotificationChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetNotificationChannelAsync(GetNotificationChannelRequest, cb)
 	assert(GetNotificationChannelRequest, "You must provide a GetNotificationChannelRequest")
 	local headers = {
@@ -1868,19 +1872,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetNotificationChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetNotificationChannelSync(GetNotificationChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetNotificationChannelAsync(GetNotificationChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetNotificationChannelAsync(GetNotificationChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call PutNotificationChannel asynchronously, invoking a callback when done
 -- @param PutNotificationChannelRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.PutNotificationChannelAsync(PutNotificationChannelRequest, cb)
 	assert(PutNotificationChannelRequest, "You must provide a PutNotificationChannelRequest")
 	local headers = {
@@ -1903,19 +1908,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param PutNotificationChannelRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.PutNotificationChannelSync(PutNotificationChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutNotificationChannelAsync(PutNotificationChannelRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.PutNotificationChannelAsync(PutNotificationChannelRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListPolicies asynchronously, invoking a callback when done
 -- @param ListPoliciesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListPoliciesAsync(ListPoliciesRequest, cb)
 	assert(ListPoliciesRequest, "You must provide a ListPoliciesRequest")
 	local headers = {
@@ -1938,19 +1944,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListPoliciesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListPoliciesSync(ListPoliciesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPoliciesAsync(ListPoliciesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListPoliciesAsync(ListPoliciesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetAdminAccount asynchronously, invoking a callback when done
 -- @param GetAdminAccountRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetAdminAccountAsync(GetAdminAccountRequest, cb)
 	assert(GetAdminAccountRequest, "You must provide a GetAdminAccountRequest")
 	local headers = {
@@ -1973,19 +1980,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetAdminAccountRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetAdminAccountSync(GetAdminAccountRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetAdminAccountAsync(GetAdminAccountRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetAdminAccountAsync(GetAdminAccountRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeletePolicy asynchronously, invoking a callback when done
 -- @param DeletePolicyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DeletePolicyAsync(DeletePolicyRequest, cb)
 	assert(DeletePolicyRequest, "You must provide a DeletePolicyRequest")
 	local headers = {
@@ -2008,19 +2016,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DeletePolicyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DeletePolicySync(DeletePolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeletePolicyAsync(DeletePolicyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DeletePolicyAsync(DeletePolicyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DisassociateAdminAccount asynchronously, invoking a callback when done
 -- @param DisassociateAdminAccountRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DisassociateAdminAccountAsync(DisassociateAdminAccountRequest, cb)
 	assert(DisassociateAdminAccountRequest, "You must provide a DisassociateAdminAccountRequest")
 	local headers = {
@@ -2043,19 +2052,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DisassociateAdminAccountRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DisassociateAdminAccountSync(DisassociateAdminAccountRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisassociateAdminAccountAsync(DisassociateAdminAccountRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DisassociateAdminAccountAsync(DisassociateAdminAccountRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListMemberAccounts asynchronously, invoking a callback when done
 -- @param ListMemberAccountsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListMemberAccountsAsync(ListMemberAccountsRequest, cb)
 	assert(ListMemberAccountsRequest, "You must provide a ListMemberAccountsRequest")
 	local headers = {
@@ -2078,19 +2088,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListMemberAccountsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListMemberAccountsSync(ListMemberAccountsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListMemberAccountsAsync(ListMemberAccountsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListMemberAccountsAsync(ListMemberAccountsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetPolicy asynchronously, invoking a callback when done
 -- @param GetPolicyRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetPolicyAsync(GetPolicyRequest, cb)
 	assert(GetPolicyRequest, "You must provide a GetPolicyRequest")
 	local headers = {
@@ -2113,19 +2124,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetPolicyRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetPolicySync(GetPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetPolicyAsync(GetPolicyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetPolicyAsync(GetPolicyRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call AssociateAdminAccount asynchronously, invoking a callback when done
 -- @param AssociateAdminAccountRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.AssociateAdminAccountAsync(AssociateAdminAccountRequest, cb)
 	assert(AssociateAdminAccountRequest, "You must provide a AssociateAdminAccountRequest")
 	local headers = {
@@ -2148,12 +2160,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param AssociateAdminAccountRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.AssociateAdminAccountSync(AssociateAdminAccountRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateAdminAccountAsync(AssociateAdminAccountRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.AssociateAdminAccountAsync(AssociateAdminAccountRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

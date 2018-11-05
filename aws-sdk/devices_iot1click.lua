@@ -1642,7 +1642,7 @@ end
 --
 --- Call DescribeDevice asynchronously, invoking a callback when done
 -- @param DescribeDeviceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.DescribeDeviceAsync(DescribeDeviceRequest, cb)
 	assert(DescribeDeviceRequest, "You must provide a DescribeDeviceRequest")
 	local headers = {
@@ -1665,19 +1665,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param DescribeDeviceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.DescribeDeviceSync(DescribeDeviceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDeviceAsync(DescribeDeviceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.DescribeDeviceAsync(DescribeDeviceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UpdateDeviceState asynchronously, invoking a callback when done
 -- @param UpdateDeviceStateRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UpdateDeviceStateAsync(UpdateDeviceStateRequest, cb)
 	assert(UpdateDeviceStateRequest, "You must provide a UpdateDeviceStateRequest")
 	local headers = {
@@ -1700,19 +1701,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UpdateDeviceStateRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UpdateDeviceStateSync(UpdateDeviceStateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateDeviceStateAsync(UpdateDeviceStateRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UpdateDeviceStateAsync(UpdateDeviceStateRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call UnclaimDevice asynchronously, invoking a callback when done
 -- @param UnclaimDeviceRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.UnclaimDeviceAsync(UnclaimDeviceRequest, cb)
 	assert(UnclaimDeviceRequest, "You must provide a UnclaimDeviceRequest")
 	local headers = {
@@ -1735,19 +1737,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param UnclaimDeviceRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.UnclaimDeviceSync(UnclaimDeviceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UnclaimDeviceAsync(UnclaimDeviceRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.UnclaimDeviceAsync(UnclaimDeviceRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call GetDeviceMethods asynchronously, invoking a callback when done
 -- @param GetDeviceMethodsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.GetDeviceMethodsAsync(GetDeviceMethodsRequest, cb)
 	assert(GetDeviceMethodsRequest, "You must provide a GetDeviceMethodsRequest")
 	local headers = {
@@ -1770,19 +1773,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param GetDeviceMethodsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.GetDeviceMethodsSync(GetDeviceMethodsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDeviceMethodsAsync(GetDeviceMethodsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.GetDeviceMethodsAsync(GetDeviceMethodsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ClaimDevicesByClaimCode asynchronously, invoking a callback when done
 -- @param ClaimDevicesByClaimCodeRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ClaimDevicesByClaimCodeAsync(ClaimDevicesByClaimCodeRequest, cb)
 	assert(ClaimDevicesByClaimCodeRequest, "You must provide a ClaimDevicesByClaimCodeRequest")
 	local headers = {
@@ -1805,19 +1809,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ClaimDevicesByClaimCodeRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ClaimDevicesByClaimCodeSync(ClaimDevicesByClaimCodeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ClaimDevicesByClaimCodeAsync(ClaimDevicesByClaimCodeRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ClaimDevicesByClaimCodeAsync(ClaimDevicesByClaimCodeRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call InvokeDeviceMethod asynchronously, invoking a callback when done
 -- @param InvokeDeviceMethodRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.InvokeDeviceMethodAsync(InvokeDeviceMethodRequest, cb)
 	assert(InvokeDeviceMethodRequest, "You must provide a InvokeDeviceMethodRequest")
 	local headers = {
@@ -1840,19 +1845,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param InvokeDeviceMethodRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.InvokeDeviceMethodSync(InvokeDeviceMethodRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.InvokeDeviceMethodAsync(InvokeDeviceMethodRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.InvokeDeviceMethodAsync(InvokeDeviceMethodRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call InitiateDeviceClaim asynchronously, invoking a callback when done
 -- @param InitiateDeviceClaimRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.InitiateDeviceClaimAsync(InitiateDeviceClaimRequest, cb)
 	assert(InitiateDeviceClaimRequest, "You must provide a InitiateDeviceClaimRequest")
 	local headers = {
@@ -1875,19 +1881,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param InitiateDeviceClaimRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.InitiateDeviceClaimSync(InitiateDeviceClaimRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.InitiateDeviceClaimAsync(InitiateDeviceClaimRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.InitiateDeviceClaimAsync(InitiateDeviceClaimRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call FinalizeDeviceClaim asynchronously, invoking a callback when done
 -- @param FinalizeDeviceClaimRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.FinalizeDeviceClaimAsync(FinalizeDeviceClaimRequest, cb)
 	assert(FinalizeDeviceClaimRequest, "You must provide a FinalizeDeviceClaimRequest")
 	local headers = {
@@ -1910,19 +1917,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param FinalizeDeviceClaimRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.FinalizeDeviceClaimSync(FinalizeDeviceClaimRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.FinalizeDeviceClaimAsync(FinalizeDeviceClaimRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.FinalizeDeviceClaimAsync(FinalizeDeviceClaimRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListDevices asynchronously, invoking a callback when done
 -- @param ListDevicesRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListDevicesAsync(ListDevicesRequest, cb)
 	assert(ListDevicesRequest, "You must provide a ListDevicesRequest")
 	local headers = {
@@ -1945,19 +1953,20 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListDevicesRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListDevicesSync(ListDevicesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDevicesAsync(ListDevicesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListDevicesAsync(ListDevicesRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call ListDeviceEvents asynchronously, invoking a callback when done
 -- @param ListDeviceEventsRequest
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.ListDeviceEventsAsync(ListDeviceEventsRequest, cb)
 	assert(ListDeviceEventsRequest, "You must provide a ListDeviceEventsRequest")
 	local headers = {
@@ -1980,12 +1989,13 @@ end
 -- This assumes that the function is called from within a coroutine
 -- @param ListDeviceEventsRequest
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.ListDeviceEventsSync(ListDeviceEventsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDeviceEventsAsync(ListDeviceEventsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.ListDeviceEventsAsync(ListDeviceEventsRequest, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
