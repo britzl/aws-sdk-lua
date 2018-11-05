@@ -253,7 +253,7 @@ end
 {{#operations}}
 --- Call {{name}} asynchronously, invoking a callback when done{{#input}}
 -- @param {{shape}}{{/input}}
--- @param cb Callback function accepting two args: response, error_message
+-- @param cb Callback function accepting three args: response, error_type, error_message
 function M.{{name}}Async({{#input}}{{shape}}, {{/input}}cb){{#input}}
 	assert({{shape}}, "You must provide a {{shape}}"){{/input}}
 	local headers = {
@@ -277,12 +277,13 @@ end
 -- This assumes that the function is called from within a coroutine{{#input}}
 -- @param {{shape}}{{/input}}
 -- @return response
+-- @return error_type
 -- @return error_message
 function M.{{name}}Sync({{#input}}{{shape}}, {{/input}}...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.{{name}}Async({{#input}}{{shape}}, {{/input}}function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
+	M.{{name}}Async({{#input}}{{shape}}, {{/input}}function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end

@@ -34,12 +34,11 @@ function M.get(base_uri, request_uri, args, headers, settings, cb)
 	end
 
 	config.http_request(base_uri .. request_uri, "GET", headers, nil, function(response)
+		local data = assert(json.decode(response.response))
 		if response.status >= 200 and response.status < 300 then
-			print(response.response)
-			cb(json.decode(response.response))
+			cb(data)
 		else
-			pprint(response)
-			cb(false, "Error")
+			cb(false, data.__type, data.Message)
 		end
 	end)
 end

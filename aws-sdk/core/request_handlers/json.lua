@@ -36,12 +36,12 @@ function M.post(base_uri, request_uri, args, headers, settings, cb)
 		headers[request_headers.HOST_HEADER] = nil
 	end
 
-	config.http_request(base_uri .. request_uri, "POST", headers, post_data, function(response)
+	config.http_request(base_uri .. request_uri, "POST", headers, post_data, function (response)
+		local data = assert(json.decode(response.response))
 		if response.status >= 200 and response.status < 300 then
-			cb(json.decode(response.response))
+			cb(data)
 		else
-			pprint(response)
-			cb(false, "Error")
+			cb(false, data.__type, data.Message)
 		end
 	end)
 end
