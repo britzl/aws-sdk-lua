@@ -21,6 +21,86 @@ M.metadata = {
 local keys = {}
 local asserts = {}
 
+keys.ReplicaDescription = { ["RegionName"] = true, nil }
+
+function asserts.AssertReplicaDescription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ReplicaDescription to be of type 'table'")
+	if struct["RegionName"] then asserts.AssertRegionName(struct["RegionName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ReplicaDescription[k], "ReplicaDescription contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ReplicaDescription
+-- <p>Contains the details of the replica.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegionName [RegionName] <p>The name of the region.</p>
+-- @return ReplicaDescription structure as a key-value pair table
+function M.ReplicaDescription(args)
+	assert(args, "You must provide an argument table when creating ReplicaDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RegionName"] = args["RegionName"],
+	}
+	asserts.AssertReplicaDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BackupDescription = { ["SourceTableFeatureDetails"] = true, ["BackupDetails"] = true, ["SourceTableDetails"] = true, nil }
+
+function asserts.AssertBackupDescription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BackupDescription to be of type 'table'")
+	if struct["SourceTableFeatureDetails"] then asserts.AssertSourceTableFeatureDetails(struct["SourceTableFeatureDetails"]) end
+	if struct["BackupDetails"] then asserts.AssertBackupDetails(struct["BackupDetails"]) end
+	if struct["SourceTableDetails"] then asserts.AssertSourceTableDetails(struct["SourceTableDetails"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BackupDescription[k], "BackupDescription contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BackupDescription
+-- <p>Contains the description of the backup created for the table.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceTableFeatureDetails [SourceTableFeatureDetails] <p>Contains the details of the features enabled on the table when the backup was created. For example, LSIs, GSIs, streams, TTL.</p>
+-- * BackupDetails [BackupDetails] <p>Contains the details of the backup created for the table. </p>
+-- * SourceTableDetails [SourceTableDetails] <p>Contains the details of the table when the backup was created. </p>
+-- @return BackupDescription structure as a key-value pair table
+function M.BackupDescription(args)
+	assert(args, "You must provide an argument table when creating BackupDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SourceTableFeatureDetails"] = args["SourceTableFeatureDetails"],
+		["BackupDetails"] = args["BackupDetails"],
+		["SourceTableDetails"] = args["SourceTableDetails"],
+	}
+	asserts.AssertBackupDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.PutItemOutput = { ["Attributes"] = true, ["ItemCollectionMetrics"] = true, ["ConsumedCapacity"] = true, nil }
 
 function asserts.AssertPutItemOutput(struct)
@@ -39,7 +119,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Attributes [AttributeMap] <p>The attribute values as they appeared before the <code>PutItem</code> operation, but only if <code>ReturnValues</code> is specified as <code>ALL_OLD</code> in the request. Each element consists of an attribute name and an attribute value.</p>
--- * ItemCollectionMetrics [ItemCollectionMetrics] <p>Information about item collections, if any, that were affected by the <code>PutItem</code> operation. <code>ItemCollectionMetrics</code> is only returned if the <code>ReturnItemCollectionMetrics</code> parameter was specified. If the table does not have any local secondary indexes, this information is not returned in the response.</p> <p>Each <code>ItemCollectionMetrics</code> element consists of:</p> <ul> <li> <p> <code>ItemCollectionKey</code> - The partition key value of the item collection. This is the same as the partition key value of the item itself.</p> </li> <li> <p> <code>SizeEstimateRange</code> - An estimate of item collection size, in gigabytes. This value is a two-element array containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the items in the table, plus the size of all attributes projected into all of the local secondary indexes on that table. Use this estimate to measure whether a local secondary index is approaching its size limit.</p> <p>The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.</p> </li> </ul>
+-- * ItemCollectionMetrics [ItemCollectionMetrics] <p>Information about item collections, if any, that were affected by the <code>PutItem</code> operation. <code>ItemCollectionMetrics</code> is only returned if the <code>ReturnItemCollectionMetrics</code> parameter was specified. If the table does not have any local secondary indexes, this information is not returned in the response.</p> <p>Each <code>ItemCollectionMetrics</code> element consists of:</p> <ul> <li> <p> <code>ItemCollectionKey</code> - The partition key value of the item collection. This is the same as the partition key value of the item itself.</p> </li> <li> <p> <code>SizeEstimateRangeGB</code> - An estimate of item collection size, in gigabytes. This value is a two-element array containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the items in the table, plus the size of all attributes projected into all of the local secondary indexes on that table. Use this estimate to measure whether a local secondary index is approaching its size limit.</p> <p>The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.</p> </li> </ul>
 -- * ConsumedCapacity [ConsumedCapacity] <p>The capacity units consumed by the <code>PutItem</code> operation. The data returned includes the total provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was specified. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 -- @return PutItemOutput structure as a key-value pair table
 function M.PutItemOutput(args)
@@ -56,6 +136,43 @@ function M.PutItemOutput(args)
 		["ConsumedCapacity"] = args["ConsumedCapacity"],
 	}
 	asserts.AssertPutItemOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeContinuousBackupsOutput = { ["ContinuousBackupsDescription"] = true, nil }
+
+function asserts.AssertDescribeContinuousBackupsOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeContinuousBackupsOutput to be of type 'table'")
+	if struct["ContinuousBackupsDescription"] then asserts.AssertContinuousBackupsDescription(struct["ContinuousBackupsDescription"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeContinuousBackupsOutput[k], "DescribeContinuousBackupsOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeContinuousBackupsOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ContinuousBackupsDescription [ContinuousBackupsDescription] <p>Represents the continuous backups and point in time recovery settings on the table.</p>
+-- @return DescribeContinuousBackupsOutput structure as a key-value pair table
+function M.DescribeContinuousBackupsOutput(args)
+	assert(args, "You must provide an argument table when creating DescribeContinuousBackupsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ContinuousBackupsDescription"] = args["ContinuousBackupsDescription"],
+	}
+	asserts.AssertDescribeContinuousBackupsOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -99,7 +216,7 @@ end
 -- * ReturnConsumedCapacity [ReturnConsumedCapacity] 
 -- * Item [PutItemInputAttributeMap] <p>A map of attribute name/value pairs, one for each attribute. Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.</p> <p>You must provide all of the attributes for the primary key. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide both values for both the partition key and the sort key.</p> <p>If you specify any attributes that are part of an index key, then the data types for those attributes must match those of the schema in the table's attribute definition.</p> <p>For more information about primary keys, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey">Primary Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p> <p>Each element in the <code>Item</code> map is an <code>AttributeValue</code> object.</p>
 -- * ExpressionAttributeValues [ExpressionAttributeValueMap] <p>One or more values that can be substituted in an expression.</p> <p>Use the <b>:</b> (colon) character in an expression to dereference an attribute value. For example, suppose that you wanted to check whether the value of the <i>ProductStatus</i> attribute was one of the following: </p> <p> <code>Available | Backordered | Discontinued</code> </p> <p>You would first need to specify <code>ExpressionAttributeValues</code> as follows:</p> <p> <code>{ ":avail":{"S":"Available"}, ":back":{"S":"Backordered"}, ":disc":{"S":"Discontinued"} }</code> </p> <p>You could then use these values in an expression, such as this:</p> <p> <code>ProductStatus IN (:avail, :back, :disc)</code> </p> <p>For more information on expression attribute values, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Specifying Conditions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
--- * Expected [ExpectedAttributeMap] <p>This is a legacy parameter. Use <code>ConditionExpresssion</code> instead. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html">Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+-- * Expected [ExpectedAttributeMap] <p>This is a legacy parameter. Use <code>ConditionExpression</code> instead. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html">Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 -- Required key: TableName
 -- Required key: Item
 -- @return PutItemInput structure as a key-value pair table
@@ -132,29 +249,25 @@ function M.PutItemInput(args)
     }
 end
 
-keys.ListTagsOfResourceInput = { ["ResourceArn"] = true, ["NextToken"] = true, nil }
+keys.CreateGlobalTableOutput = { ["GlobalTableDescription"] = true, nil }
 
-function asserts.AssertListTagsOfResourceInput(struct)
+function asserts.AssertCreateGlobalTableOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ListTagsOfResourceInput to be of type 'table'")
-	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
-	if struct["ResourceArn"] then asserts.AssertResourceArnString(struct["ResourceArn"]) end
-	if struct["NextToken"] then asserts.AssertNextTokenString(struct["NextToken"]) end
+	assert(type(struct) == "table", "Expected CreateGlobalTableOutput to be of type 'table'")
+	if struct["GlobalTableDescription"] then asserts.AssertGlobalTableDescription(struct["GlobalTableDescription"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ListTagsOfResourceInput[k], "ListTagsOfResourceInput contains unknown key " .. tostring(k))
+		assert(keys.CreateGlobalTableOutput[k], "CreateGlobalTableOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ListTagsOfResourceInput
+--- Create a structure of type CreateGlobalTableOutput
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ResourceArn [ResourceArnString] <p>The Amazon DynamoDB resource with tags to be listed. This value is an Amazon Resource Name (ARN).</p>
--- * NextToken [NextTokenString] <p>An optional string that, if supplied, must be copied from the output of a previous call to ListTagOfResource. When provided in this manner, this API fetches the next page of results.</p>
--- Required key: ResourceArn
--- @return ListTagsOfResourceInput structure as a key-value pair table
-function M.ListTagsOfResourceInput(args)
-	assert(args, "You must provide an argument table when creating ListTagsOfResourceInput")
+-- * GlobalTableDescription [GlobalTableDescription] <p>Contains the details of the global table.</p>
+-- @return CreateGlobalTableOutput structure as a key-value pair table
+function M.CreateGlobalTableOutput(args)
+	assert(args, "You must provide an argument table when creating CreateGlobalTableOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -162,10 +275,151 @@ function M.ListTagsOfResourceInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["ResourceArn"] = args["ResourceArn"],
-		["NextToken"] = args["NextToken"],
+		["GlobalTableDescription"] = args["GlobalTableDescription"],
 	}
-	asserts.AssertListTagsOfResourceInput(all_args)
+	asserts.AssertCreateGlobalTableOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SourceTableFeatureDetails = { ["GlobalSecondaryIndexes"] = true, ["SSEDescription"] = true, ["TimeToLiveDescription"] = true, ["LocalSecondaryIndexes"] = true, ["StreamDescription"] = true, nil }
+
+function asserts.AssertSourceTableFeatureDetails(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SourceTableFeatureDetails to be of type 'table'")
+	if struct["GlobalSecondaryIndexes"] then asserts.AssertGlobalSecondaryIndexes(struct["GlobalSecondaryIndexes"]) end
+	if struct["SSEDescription"] then asserts.AssertSSEDescription(struct["SSEDescription"]) end
+	if struct["TimeToLiveDescription"] then asserts.AssertTimeToLiveDescription(struct["TimeToLiveDescription"]) end
+	if struct["LocalSecondaryIndexes"] then asserts.AssertLocalSecondaryIndexes(struct["LocalSecondaryIndexes"]) end
+	if struct["StreamDescription"] then asserts.AssertStreamSpecification(struct["StreamDescription"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SourceTableFeatureDetails[k], "SourceTableFeatureDetails contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SourceTableFeatureDetails
+-- <p>Contains the details of the features enabled on the table when the backup was created. For example, LSIs, GSIs, streams, TTL. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GlobalSecondaryIndexes [GlobalSecondaryIndexes] <p>Represents the GSI properties for the table when the backup was created. It includes the IndexName, KeySchema, Projection and ProvisionedThroughput for the GSIs on the table at the time of backup. </p>
+-- * SSEDescription [SSEDescription] <p>The description of the server-side encryption status on the table when the backup was created.</p>
+-- * TimeToLiveDescription [TimeToLiveDescription] <p>Time to Live settings on the table when the backup was created.</p>
+-- * LocalSecondaryIndexes [LocalSecondaryIndexes] <p>Represents the LSI properties for the table when the backup was created. It includes the IndexName, KeySchema and Projection for the LSIs on the table at the time of backup. </p>
+-- * StreamDescription [StreamSpecification] <p>Stream settings on the table when the backup was created.</p>
+-- @return SourceTableFeatureDetails structure as a key-value pair table
+function M.SourceTableFeatureDetails(args)
+	assert(args, "You must provide an argument table when creating SourceTableFeatureDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GlobalSecondaryIndexes"] = args["GlobalSecondaryIndexes"],
+		["SSEDescription"] = args["SSEDescription"],
+		["TimeToLiveDescription"] = args["TimeToLiveDescription"],
+		["LocalSecondaryIndexes"] = args["LocalSecondaryIndexes"],
+		["StreamDescription"] = args["StreamDescription"],
+	}
+	asserts.AssertSourceTableFeatureDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SSEDescription = { ["Status"] = true, ["KMSMasterKeyArn"] = true, ["SSEType"] = true, nil }
+
+function asserts.AssertSSEDescription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SSEDescription to be of type 'table'")
+	if struct["Status"] then asserts.AssertSSEStatus(struct["Status"]) end
+	if struct["KMSMasterKeyArn"] then asserts.AssertKMSMasterKeyArn(struct["KMSMasterKeyArn"]) end
+	if struct["SSEType"] then asserts.AssertSSEType(struct["SSEType"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SSEDescription[k], "SSEDescription contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SSEDescription
+-- <p>The description of the server-side encryption status on the specified table.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [SSEStatus] <p>The current state of server-side encryption:</p> <ul> <li> <p> <code>ENABLING</code> - Server-side encryption is being enabled.</p> </li> <li> <p> <code>ENABLED</code> - Server-side encryption is enabled.</p> </li> <li> <p> <code>DISABLING</code> - Server-side encryption is being disabled.</p> </li> <li> <p> <code>DISABLED</code> - Server-side encryption is disabled.</p> </li> <li> <p> <code>UPDATING</code> - Server-side encryption is being updated.</p> </li> </ul>
+-- * KMSMasterKeyArn [KMSMasterKeyArn] <p>The KMS master key ARN used for the KMS encryption.</p>
+-- * SSEType [SSEType] <p>Server-side encryption type:</p> <ul> <li> <p> <code>AES256</code> - Server-side encryption which uses the AES256 algorithm.</p> </li> <li> <p> <code>KMS</code> - Server-side encryption which uses AWS Key Management Service.</p> </li> </ul>
+-- @return SSEDescription structure as a key-value pair table
+function M.SSEDescription(args)
+	assert(args, "You must provide an argument table when creating SSEDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Status"] = args["Status"],
+		["KMSMasterKeyArn"] = args["KMSMasterKeyArn"],
+		["SSEType"] = args["SSEType"],
+	}
+	asserts.AssertSSEDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.RestoreTableToPointInTimeInput = { ["RestoreDateTime"] = true, ["SourceTableName"] = true, ["UseLatestRestorableTime"] = true, ["TargetTableName"] = true, nil }
+
+function asserts.AssertRestoreTableToPointInTimeInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RestoreTableToPointInTimeInput to be of type 'table'")
+	assert(struct["SourceTableName"], "Expected key SourceTableName to exist in table")
+	assert(struct["TargetTableName"], "Expected key TargetTableName to exist in table")
+	if struct["RestoreDateTime"] then asserts.AssertDate(struct["RestoreDateTime"]) end
+	if struct["SourceTableName"] then asserts.AssertTableName(struct["SourceTableName"]) end
+	if struct["UseLatestRestorableTime"] then asserts.AssertBooleanObject(struct["UseLatestRestorableTime"]) end
+	if struct["TargetTableName"] then asserts.AssertTableName(struct["TargetTableName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RestoreTableToPointInTimeInput[k], "RestoreTableToPointInTimeInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RestoreTableToPointInTimeInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RestoreDateTime [Date] <p>Time in the past to restore the table to.</p>
+-- * SourceTableName [TableName] <p>Name of the source table that is being restored.</p>
+-- * UseLatestRestorableTime [BooleanObject] <p>Restore the table to the latest possible time. <code>LatestRestorableDateTime</code> is typically 5 minutes before the current time. </p>
+-- * TargetTableName [TableName] <p>The name of the new table to which it must be restored to.</p>
+-- Required key: SourceTableName
+-- Required key: TargetTableName
+-- @return RestoreTableToPointInTimeInput structure as a key-value pair table
+function M.RestoreTableToPointInTimeInput(args)
+	assert(args, "You must provide an argument table when creating RestoreTableToPointInTimeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RestoreDateTime"] = args["RestoreDateTime"],
+		["SourceTableName"] = args["SourceTableName"],
+		["UseLatestRestorableTime"] = args["UseLatestRestorableTime"],
+		["TargetTableName"] = args["TargetTableName"],
+	}
+	asserts.AssertRestoreTableToPointInTimeInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -210,6 +464,143 @@ function M.UntagResourceInput(args)
 		["TagKeys"] = args["TagKeys"],
 	}
 	asserts.AssertUntagResourceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GlobalTableGlobalSecondaryIndexSettingsUpdate = { ["ProvisionedWriteCapacityAutoScalingSettingsUpdate"] = true, ["ProvisionedWriteCapacityUnits"] = true, ["IndexName"] = true, nil }
+
+function asserts.AssertGlobalTableGlobalSecondaryIndexSettingsUpdate(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GlobalTableGlobalSecondaryIndexSettingsUpdate to be of type 'table'")
+	assert(struct["IndexName"], "Expected key IndexName to exist in table")
+	if struct["ProvisionedWriteCapacityAutoScalingSettingsUpdate"] then asserts.AssertAutoScalingSettingsUpdate(struct["ProvisionedWriteCapacityAutoScalingSettingsUpdate"]) end
+	if struct["ProvisionedWriteCapacityUnits"] then asserts.AssertPositiveLongObject(struct["ProvisionedWriteCapacityUnits"]) end
+	if struct["IndexName"] then asserts.AssertIndexName(struct["IndexName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GlobalTableGlobalSecondaryIndexSettingsUpdate[k], "GlobalTableGlobalSecondaryIndexSettingsUpdate contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GlobalTableGlobalSecondaryIndexSettingsUpdate
+-- <p>Represents the settings of a global secondary index for a global table that will be modified.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProvisionedWriteCapacityAutoScalingSettingsUpdate [AutoScalingSettingsUpdate] <p>AutoScaling settings for managing a global secondary index's write capacity units.</p>
+-- * ProvisionedWriteCapacityUnits [PositiveLongObject] <p>The maximum number of writes consumed per second before DynamoDB returns a <code>ThrottlingException.</code> </p>
+-- * IndexName [IndexName] <p>The name of the global secondary index. The name must be unique among all other indexes on this table.</p>
+-- Required key: IndexName
+-- @return GlobalTableGlobalSecondaryIndexSettingsUpdate structure as a key-value pair table
+function M.GlobalTableGlobalSecondaryIndexSettingsUpdate(args)
+	assert(args, "You must provide an argument table when creating GlobalTableGlobalSecondaryIndexSettingsUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ProvisionedWriteCapacityAutoScalingSettingsUpdate"] = args["ProvisionedWriteCapacityAutoScalingSettingsUpdate"],
+		["ProvisionedWriteCapacityUnits"] = args["ProvisionedWriteCapacityUnits"],
+		["IndexName"] = args["IndexName"],
+	}
+	asserts.AssertGlobalTableGlobalSecondaryIndexSettingsUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.RestoreSummary = { ["SourceTableArn"] = true, ["SourceBackupArn"] = true, ["RestoreDateTime"] = true, ["RestoreInProgress"] = true, nil }
+
+function asserts.AssertRestoreSummary(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RestoreSummary to be of type 'table'")
+	assert(struct["RestoreDateTime"], "Expected key RestoreDateTime to exist in table")
+	assert(struct["RestoreInProgress"], "Expected key RestoreInProgress to exist in table")
+	if struct["SourceTableArn"] then asserts.AssertTableArn(struct["SourceTableArn"]) end
+	if struct["SourceBackupArn"] then asserts.AssertBackupArn(struct["SourceBackupArn"]) end
+	if struct["RestoreDateTime"] then asserts.AssertDate(struct["RestoreDateTime"]) end
+	if struct["RestoreInProgress"] then asserts.AssertRestoreInProgress(struct["RestoreInProgress"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RestoreSummary[k], "RestoreSummary contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RestoreSummary
+-- <p>Contains details for the restore.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceTableArn [TableArn] <p>ARN of the source table of the backup that is being restored.</p>
+-- * SourceBackupArn [BackupArn] <p>ARN of the backup from which the table was restored.</p>
+-- * RestoreDateTime [Date] <p>Point in time or source backup time.</p>
+-- * RestoreInProgress [RestoreInProgress] <p>Indicates if a restore is in progress or not.</p>
+-- Required key: RestoreDateTime
+-- Required key: RestoreInProgress
+-- @return RestoreSummary structure as a key-value pair table
+function M.RestoreSummary(args)
+	assert(args, "You must provide an argument table when creating RestoreSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SourceTableArn"] = args["SourceTableArn"],
+		["SourceBackupArn"] = args["SourceBackupArn"],
+		["RestoreDateTime"] = args["RestoreDateTime"],
+		["RestoreInProgress"] = args["RestoreInProgress"],
+	}
+	asserts.AssertRestoreSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.AutoScalingPolicyUpdate = { ["PolicyName"] = true, ["TargetTrackingScalingPolicyConfiguration"] = true, nil }
+
+function asserts.AssertAutoScalingPolicyUpdate(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected AutoScalingPolicyUpdate to be of type 'table'")
+	assert(struct["TargetTrackingScalingPolicyConfiguration"], "Expected key TargetTrackingScalingPolicyConfiguration to exist in table")
+	if struct["PolicyName"] then asserts.AssertAutoScalingPolicyName(struct["PolicyName"]) end
+	if struct["TargetTrackingScalingPolicyConfiguration"] then asserts.AssertAutoScalingTargetTrackingScalingPolicyConfigurationUpdate(struct["TargetTrackingScalingPolicyConfiguration"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.AutoScalingPolicyUpdate[k], "AutoScalingPolicyUpdate contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type AutoScalingPolicyUpdate
+-- <p>Represents the autoscaling policy to be modified.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyName [AutoScalingPolicyName] <p>The name of the scaling policy.</p>
+-- * TargetTrackingScalingPolicyConfiguration [AutoScalingTargetTrackingScalingPolicyConfigurationUpdate] <p>Represents a target tracking scaling policy configuration.</p>
+-- Required key: TargetTrackingScalingPolicyConfiguration
+-- @return AutoScalingPolicyUpdate structure as a key-value pair table
+function M.AutoScalingPolicyUpdate(args)
+	assert(args, "You must provide an argument table when creating AutoScalingPolicyUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["PolicyName"] = args["PolicyName"],
+		["TargetTrackingScalingPolicyConfiguration"] = args["TargetTrackingScalingPolicyConfiguration"],
+	}
+	asserts.AssertAutoScalingPolicyUpdate(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -280,7 +671,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * UnprocessedItems [BatchWriteItemRequestMap] <p>A map of tables and requests against those tables that were not processed. The <code>UnprocessedItems</code> value is in the same form as <code>RequestItems</code>, so you can provide this value directly to a subsequent <code>BatchGetItem</code> operation. For more information, see <code>RequestItems</code> in the Request Parameters section.</p> <p>Each <code>UnprocessedItems</code> entry consists of a table name and, for that table, a list of operations to perform (<code>DeleteRequest</code> or <code>PutRequest</code>).</p> <ul> <li> <p> <code>DeleteRequest</code> - Perform a <code>DeleteItem</code> operation on the specified item. The item to be deleted is identified by a <code>Key</code> subelement:</p> <ul> <li> <p> <code>Key</code> - A map of primary key attribute values that uniquely identify the item. Each entry in this map consists of an attribute name and an attribute value.</p> </li> </ul> </li> <li> <p> <code>PutRequest</code> - Perform a <code>PutItem</code> operation on the specified item. The item to be put is identified by an <code>Item</code> subelement:</p> <ul> <li> <p> <code>Item</code> - A map of attributes and their values. Each entry in this map consists of an attribute name and an attribute value. Attribute values must not be null; string and binary type attributes must have lengths greater than zero; and set type attributes must not be empty. Requests that contain empty values will be rejected with a <code>ValidationException</code> exception.</p> <p>If you specify any attributes that are part of an index key, then the data types for those attributes must match those of the schema in the table's attribute definition.</p> </li> </ul> </li> </ul> <p>If there are no unprocessed items remaining, the response contains an empty <code>UnprocessedItems</code> map.</p>
--- * ItemCollectionMetrics [ItemCollectionMetricsPerTable] <p>A list of tables that were processed by <code>BatchWriteItem</code> and, for each table, information about any item collections that were affected by individual <code>DeleteItem</code> or <code>PutItem</code> operations.</p> <p>Each entry consists of the following subelements:</p> <ul> <li> <p> <code>ItemCollectionKey</code> - The partition key value of the item collection. This is the same as the partition key value of the item.</p> </li> <li> <p> <code>SizeEstimateRange</code> - An estimate of item collection size, expressed in GB. This is a two-element array containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the items in the table, plus the size of all attributes projected into all of the local secondary indexes on the table. Use this estimate to measure whether a local secondary index is approaching its size limit.</p> <p>The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.</p> </li> </ul>
+-- * ItemCollectionMetrics [ItemCollectionMetricsPerTable] <p>A list of tables that were processed by <code>BatchWriteItem</code> and, for each table, information about any item collections that were affected by individual <code>DeleteItem</code> or <code>PutItem</code> operations.</p> <p>Each entry consists of the following subelements:</p> <ul> <li> <p> <code>ItemCollectionKey</code> - The partition key value of the item collection. This is the same as the partition key value of the item.</p> </li> <li> <p> <code>SizeEstimateRangeGB</code> - An estimate of item collection size, expressed in GB. This is a two-element array containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the items in the table, plus the size of all attributes projected into all of the local secondary indexes on the table. Use this estimate to measure whether a local secondary index is approaching its size limit.</p> <p>The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.</p> </li> </ul>
 -- * ConsumedCapacity [ConsumedCapacityMultiple] <p>The capacity units consumed by the entire <code>BatchWriteItem</code> operation.</p> <p>Each element consists of:</p> <ul> <li> <p> <code>TableName</code> - The table that consumed the provisioned throughput.</p> </li> <li> <p> <code>CapacityUnits</code> - The total number of capacity units consumed.</p> </li> </ul>
 -- @return BatchWriteItemOutput structure as a key-value pair table
 function M.BatchWriteItemOutput(args)
@@ -297,6 +688,43 @@ function M.BatchWriteItemOutput(args)
 		["ConsumedCapacity"] = args["ConsumedCapacity"],
 	}
 	asserts.AssertBatchWriteItemOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeGlobalTableOutput = { ["GlobalTableDescription"] = true, nil }
+
+function asserts.AssertDescribeGlobalTableOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeGlobalTableOutput to be of type 'table'")
+	if struct["GlobalTableDescription"] then asserts.AssertGlobalTableDescription(struct["GlobalTableDescription"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeGlobalTableOutput[k], "DescribeGlobalTableOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeGlobalTableOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GlobalTableDescription [GlobalTableDescription] <p>Contains the details of the global table.</p>
+-- @return DescribeGlobalTableOutput structure as a key-value pair table
+function M.DescribeGlobalTableOutput(args)
+	assert(args, "You must provide an argument table when creating DescribeGlobalTableOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GlobalTableDescription"] = args["GlobalTableDescription"],
+	}
+	asserts.AssertDescribeGlobalTableOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -349,6 +777,49 @@ function M.UpdateGlobalSecondaryIndexAction(args)
     }
 end
 
+keys.LocalSecondaryIndexInfo = { ["KeySchema"] = true, ["IndexName"] = true, ["Projection"] = true, nil }
+
+function asserts.AssertLocalSecondaryIndexInfo(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LocalSecondaryIndexInfo to be of type 'table'")
+	if struct["KeySchema"] then asserts.AssertKeySchema(struct["KeySchema"]) end
+	if struct["IndexName"] then asserts.AssertIndexName(struct["IndexName"]) end
+	if struct["Projection"] then asserts.AssertProjection(struct["Projection"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.LocalSecondaryIndexInfo[k], "LocalSecondaryIndexInfo contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LocalSecondaryIndexInfo
+-- <p>Represents the properties of a local secondary index for the table when the backup was created.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * KeySchema [KeySchema] <p>The complete key schema for a local secondary index, which consists of one or more pairs of attribute names and key types:</p> <ul> <li> <p> <code>HASH</code> - partition key</p> </li> <li> <p> <code>RANGE</code> - sort key</p> </li> </ul> <note> <p>The partition key of an item is also known as its <i>hash attribute</i>. The term "hash attribute" derives from DynamoDB' usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values.</p> <p>The sort key of an item is also known as its <i>range attribute</i>. The term "range attribute" derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.</p> </note>
+-- * IndexName [IndexName] <p>Represents the name of the local secondary index.</p>
+-- * Projection [Projection] <p>Represents attributes that are copied (projected) from the table into the global secondary index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. </p>
+-- @return LocalSecondaryIndexInfo structure as a key-value pair table
+function M.LocalSecondaryIndexInfo(args)
+	assert(args, "You must provide an argument table when creating LocalSecondaryIndexInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["KeySchema"] = args["KeySchema"],
+		["IndexName"] = args["IndexName"],
+		["Projection"] = args["Projection"],
+	}
+	asserts.AssertLocalSecondaryIndexInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.BatchGetItemInput = { ["RequestItems"] = true, ["ReturnConsumedCapacity"] = true, nil }
 
 function asserts.AssertBatchGetItemInput(struct)
@@ -383,6 +854,45 @@ function M.BatchGetItemInput(args)
 		["ReturnConsumedCapacity"] = args["ReturnConsumedCapacity"],
 	}
 	asserts.AssertBatchGetItemInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeContinuousBackupsInput = { ["TableName"] = true, nil }
+
+function asserts.AssertDescribeContinuousBackupsInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeContinuousBackupsInput to be of type 'table'")
+	assert(struct["TableName"], "Expected key TableName to exist in table")
+	if struct["TableName"] then asserts.AssertTableName(struct["TableName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeContinuousBackupsInput[k], "DescribeContinuousBackupsInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeContinuousBackupsInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TableName [TableName] <p>Name of the table for which the customer wants to check the continuous backups and point in time recovery settings.</p>
+-- Required key: TableName
+-- @return DescribeContinuousBackupsInput structure as a key-value pair table
+function M.DescribeContinuousBackupsInput(args)
+	assert(args, "You must provide an argument table when creating DescribeContinuousBackupsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["TableName"] = args["TableName"],
+	}
+	asserts.AssertDescribeContinuousBackupsInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -450,25 +960,27 @@ function M.GetItemInput(args)
     }
 end
 
-keys.ProvisionedThroughputExceededException = { ["message"] = true, nil }
+keys.DeleteReplicaAction = { ["RegionName"] = true, nil }
 
-function asserts.AssertProvisionedThroughputExceededException(struct)
+function asserts.AssertDeleteReplicaAction(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ProvisionedThroughputExceededException to be of type 'table'")
-	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected DeleteReplicaAction to be of type 'table'")
+	assert(struct["RegionName"], "Expected key RegionName to exist in table")
+	if struct["RegionName"] then asserts.AssertRegionName(struct["RegionName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ProvisionedThroughputExceededException[k], "ProvisionedThroughputExceededException contains unknown key " .. tostring(k))
+		assert(keys.DeleteReplicaAction[k], "DeleteReplicaAction contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ProvisionedThroughputExceededException
--- <p>Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce the frequency of requests and use exponential backoff. For more information, go to <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff">Error Retries and Exponential Backoff</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+--- Create a structure of type DeleteReplicaAction
+-- <p>Represents a replica to be removed.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [ErrorMessage] <p>You exceeded your maximum allowed provisioned throughput.</p>
--- @return ProvisionedThroughputExceededException structure as a key-value pair table
-function M.ProvisionedThroughputExceededException(args)
-	assert(args, "You must provide an argument table when creating ProvisionedThroughputExceededException")
+-- * RegionName [RegionName] <p>The region of the replica to be removed.</p>
+-- Required key: RegionName
+-- @return DeleteReplicaAction structure as a key-value pair table
+function M.DeleteReplicaAction(args)
+	assert(args, "You must provide an argument table when creating DeleteReplicaAction")
     local query_args = { 
     }
     local uri_args = { 
@@ -476,9 +988,73 @@ function M.ProvisionedThroughputExceededException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["RegionName"] = args["RegionName"],
 	}
-	asserts.AssertProvisionedThroughputExceededException(all_args)
+	asserts.AssertDeleteReplicaAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BackupSummary = { ["TableArn"] = true, ["BackupExpiryDateTime"] = true, ["BackupName"] = true, ["BackupType"] = true, ["BackupStatus"] = true, ["TableName"] = true, ["BackupCreationDateTime"] = true, ["BackupSizeBytes"] = true, ["TableId"] = true, ["BackupArn"] = true, nil }
+
+function asserts.AssertBackupSummary(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BackupSummary to be of type 'table'")
+	if struct["TableArn"] then asserts.AssertTableArn(struct["TableArn"]) end
+	if struct["BackupExpiryDateTime"] then asserts.AssertDate(struct["BackupExpiryDateTime"]) end
+	if struct["BackupName"] then asserts.AssertBackupName(struct["BackupName"]) end
+	if struct["BackupType"] then asserts.AssertBackupType(struct["BackupType"]) end
+	if struct["BackupStatus"] then asserts.AssertBackupStatus(struct["BackupStatus"]) end
+	if struct["TableName"] then asserts.AssertTableName(struct["TableName"]) end
+	if struct["BackupCreationDateTime"] then asserts.AssertBackupCreationDateTime(struct["BackupCreationDateTime"]) end
+	if struct["BackupSizeBytes"] then asserts.AssertBackupSizeBytes(struct["BackupSizeBytes"]) end
+	if struct["TableId"] then asserts.AssertTableId(struct["TableId"]) end
+	if struct["BackupArn"] then asserts.AssertBackupArn(struct["BackupArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BackupSummary[k], "BackupSummary contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BackupSummary
+-- <p>Contains details for the backup.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TableArn [TableArn] <p>ARN associated with the table.</p>
+-- * BackupExpiryDateTime [Date] <p>Time at which the automatic on-demand backup created by DynamoDB will expire. This <code>SYSTEM</code> on-demand backup expires automatically 35 days after its creation.</p>
+-- * BackupName [BackupName] <p>Name of the specified backup.</p>
+-- * BackupType [BackupType] <p>BackupType:</p> <ul> <li> <p> <code>USER</code> - On-demand backup created by you.</p> </li> <li> <p> <code>SYSTEM</code> - On-demand backup automatically created by DynamoDB.</p> </li> </ul>
+-- * BackupStatus [BackupStatus] <p>Backup can be in one of the following states: CREATING, ACTIVE, DELETED.</p>
+-- * TableName [TableName] <p>Name of the table.</p>
+-- * BackupCreationDateTime [BackupCreationDateTime] <p>Time at which the backup was created.</p>
+-- * BackupSizeBytes [BackupSizeBytes] <p>Size of the backup in bytes.</p>
+-- * TableId [TableId] <p>Unique identifier for the table.</p>
+-- * BackupArn [BackupArn] <p>ARN associated with the backup.</p>
+-- @return BackupSummary structure as a key-value pair table
+function M.BackupSummary(args)
+	assert(args, "You must provide an argument table when creating BackupSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["TableArn"] = args["TableArn"],
+		["BackupExpiryDateTime"] = args["BackupExpiryDateTime"],
+		["BackupName"] = args["BackupName"],
+		["BackupType"] = args["BackupType"],
+		["BackupStatus"] = args["BackupStatus"],
+		["TableName"] = args["TableName"],
+		["BackupCreationDateTime"] = args["BackupCreationDateTime"],
+		["BackupSizeBytes"] = args["BackupSizeBytes"],
+		["TableId"] = args["TableId"],
+		["BackupArn"] = args["BackupArn"],
+	}
+	asserts.AssertBackupSummary(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -527,27 +1103,27 @@ function M.ListTablesOutput(args)
     }
 end
 
-keys.GetItemOutput = { ["Item"] = true, ["ConsumedCapacity"] = true, nil }
+keys.CreateReplicaAction = { ["RegionName"] = true, nil }
 
-function asserts.AssertGetItemOutput(struct)
+function asserts.AssertCreateReplicaAction(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected GetItemOutput to be of type 'table'")
-	if struct["Item"] then asserts.AssertAttributeMap(struct["Item"]) end
-	if struct["ConsumedCapacity"] then asserts.AssertConsumedCapacity(struct["ConsumedCapacity"]) end
+	assert(type(struct) == "table", "Expected CreateReplicaAction to be of type 'table'")
+	assert(struct["RegionName"], "Expected key RegionName to exist in table")
+	if struct["RegionName"] then asserts.AssertRegionName(struct["RegionName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.GetItemOutput[k], "GetItemOutput contains unknown key " .. tostring(k))
+		assert(keys.CreateReplicaAction[k], "CreateReplicaAction contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type GetItemOutput
--- <p>Represents the output of a <code>GetItem</code> operation.</p>
+--- Create a structure of type CreateReplicaAction
+-- <p>Represents a replica to be added.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Item [AttributeMap] <p>A map of attribute names to <code>AttributeValue</code> objects, as specified by <code>ProjectionExpression</code>.</p>
--- * ConsumedCapacity [ConsumedCapacity] <p>The capacity units consumed by the <code>GetItem</code> operation. The data returned includes the total provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was specified. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
--- @return GetItemOutput structure as a key-value pair table
-function M.GetItemOutput(args)
-	assert(args, "You must provide an argument table when creating GetItemOutput")
+-- * RegionName [RegionName] <p>The region of the replica to be added.</p>
+-- Required key: RegionName
+-- @return CreateReplicaAction structure as a key-value pair table
+function M.CreateReplicaAction(args)
+	assert(args, "You must provide an argument table when creating CreateReplicaAction")
     local query_args = { 
     }
     local uri_args = { 
@@ -555,10 +1131,97 @@ function M.GetItemOutput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Item"] = args["Item"],
-		["ConsumedCapacity"] = args["ConsumedCapacity"],
+		["RegionName"] = args["RegionName"],
 	}
-	asserts.AssertGetItemOutput(all_args)
+	asserts.AssertCreateReplicaAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.AutoScalingTargetTrackingScalingPolicyConfigurationDescription = { ["ScaleOutCooldown"] = true, ["TargetValue"] = true, ["DisableScaleIn"] = true, ["ScaleInCooldown"] = true, nil }
+
+function asserts.AssertAutoScalingTargetTrackingScalingPolicyConfigurationDescription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected AutoScalingTargetTrackingScalingPolicyConfigurationDescription to be of type 'table'")
+	assert(struct["TargetValue"], "Expected key TargetValue to exist in table")
+	if struct["ScaleOutCooldown"] then asserts.AssertIntegerObject(struct["ScaleOutCooldown"]) end
+	if struct["TargetValue"] then asserts.AssertDouble(struct["TargetValue"]) end
+	if struct["DisableScaleIn"] then asserts.AssertBooleanObject(struct["DisableScaleIn"]) end
+	if struct["ScaleInCooldown"] then asserts.AssertIntegerObject(struct["ScaleInCooldown"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.AutoScalingTargetTrackingScalingPolicyConfigurationDescription[k], "AutoScalingTargetTrackingScalingPolicyConfigurationDescription contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type AutoScalingTargetTrackingScalingPolicyConfigurationDescription
+-- <p>Represents the properties of a target tracking scaling policy.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ScaleOutCooldown [IntegerObject] <p>The amount of time, in seconds, after a scale out activity completes before another scale out activity can start. While the cooldown period is in effect, the capacity that has been added by the previous scale out event that initiated the cooldown is calculated as part of the desired capacity for the next scale out. You should continuously (but not excessively) scale out.</p>
+-- * TargetValue [Double] <p>The target value for the metric. The range is 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2).</p>
+-- * DisableScaleIn [BooleanObject] <p>Indicates whether scale in by the target tracking policy is disabled. If the value is true, scale in is disabled and the target tracking policy won't remove capacity from the scalable resource. Otherwise, scale in is enabled and the target tracking policy can remove capacity from the scalable resource. The default value is false.</p>
+-- * ScaleInCooldown [IntegerObject] <p>The amount of time, in seconds, after a scale in activity completes before another scale in activity can start. The cooldown period is used to block subsequent scale in requests until it has expired. You should scale in conservatively to protect your application's availability. However, if another alarm triggers a scale out policy during the cooldown period after a scale-in, application autoscaling scales out your scalable target immediately. </p>
+-- Required key: TargetValue
+-- @return AutoScalingTargetTrackingScalingPolicyConfigurationDescription structure as a key-value pair table
+function M.AutoScalingTargetTrackingScalingPolicyConfigurationDescription(args)
+	assert(args, "You must provide an argument table when creating AutoScalingTargetTrackingScalingPolicyConfigurationDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ScaleOutCooldown"] = args["ScaleOutCooldown"],
+		["TargetValue"] = args["TargetValue"],
+		["DisableScaleIn"] = args["DisableScaleIn"],
+		["ScaleInCooldown"] = args["ScaleInCooldown"],
+	}
+	asserts.AssertAutoScalingTargetTrackingScalingPolicyConfigurationDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeGlobalTableSettingsOutput = { ["GlobalTableName"] = true, ["ReplicaSettings"] = true, nil }
+
+function asserts.AssertDescribeGlobalTableSettingsOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeGlobalTableSettingsOutput to be of type 'table'")
+	if struct["GlobalTableName"] then asserts.AssertTableName(struct["GlobalTableName"]) end
+	if struct["ReplicaSettings"] then asserts.AssertReplicaSettingsDescriptionList(struct["ReplicaSettings"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeGlobalTableSettingsOutput[k], "DescribeGlobalTableSettingsOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeGlobalTableSettingsOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GlobalTableName [TableName] <p>The name of the global table.</p>
+-- * ReplicaSettings [ReplicaSettingsDescriptionList] <p>The region specific settings for the global table.</p>
+-- @return DescribeGlobalTableSettingsOutput structure as a key-value pair table
+function M.DescribeGlobalTableSettingsOutput(args)
+	assert(args, "You must provide an argument table when creating DescribeGlobalTableSettingsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GlobalTableName"] = args["GlobalTableName"],
+		["ReplicaSettings"] = args["ReplicaSettings"],
+	}
+	asserts.AssertDescribeGlobalTableSettingsOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -618,25 +1281,31 @@ function M.KeysAndAttributes(args)
     }
 end
 
-keys.InternalServerError = { ["message"] = true, nil }
+keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
 
-function asserts.AssertInternalServerError(struct)
+function asserts.AssertTag(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InternalServerError to be of type 'table'")
-	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
+	assert(struct["Key"], "Expected key Key to exist in table")
+	assert(struct["Value"], "Expected key Value to exist in table")
+	if struct["Value"] then asserts.AssertTagValueString(struct["Value"]) end
+	if struct["Key"] then asserts.AssertTagKeyString(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InternalServerError[k], "InternalServerError contains unknown key " .. tostring(k))
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InternalServerError
--- <p>An error occurred on the server side.</p>
+--- Create a structure of type Tag
+-- <p>Describes a tag. A tag is a key-value pair. You can add up to 50 tags to a single DynamoDB table. </p> <p> AWS-assigned tag names and values are automatically assigned the aws: prefix, which the user cannot assign. AWS-assigned tag names do not count towards the tag limit of 50. User-assigned tag names have the prefix user: in the Cost Allocation Report. You cannot backdate the application of a tag. </p> <p>For an overview on tagging DynamoDB resources, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html">Tagging for DynamoDB</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [ErrorMessage] <p>The server encountered an internal error trying to fulfill the request.</p>
--- @return InternalServerError structure as a key-value pair table
-function M.InternalServerError(args)
-	assert(args, "You must provide an argument table when creating InternalServerError")
+-- * Value [TagValueString] <p>The value of the tag. Tag values are case-sensitive and can be null.</p>
+-- * Key [TagKeyString] <p>The key of the tag.Tag keys are case sensitive. Each DynamoDB table can only have up to one tag with the same key. If you try to add an existing tag (same key), the existing tag value will be updated to the new value. </p>
+-- Required key: Key
+-- Required key: Value
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provide an argument table when creating Tag")
     local query_args = { 
     }
     local uri_args = { 
@@ -644,9 +1313,10 @@ function M.InternalServerError(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
-	asserts.AssertInternalServerError(all_args)
+	asserts.AssertTag(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -655,7 +1325,7 @@ function M.InternalServerError(args)
     }
 end
 
-keys.CreateTableInput = { ["GlobalSecondaryIndexes"] = true, ["AttributeDefinitions"] = true, ["LocalSecondaryIndexes"] = true, ["ProvisionedThroughput"] = true, ["TableName"] = true, ["StreamSpecification"] = true, ["KeySchema"] = true, nil }
+keys.CreateTableInput = { ["GlobalSecondaryIndexes"] = true, ["AttributeDefinitions"] = true, ["LocalSecondaryIndexes"] = true, ["ProvisionedThroughput"] = true, ["TableName"] = true, ["StreamSpecification"] = true, ["KeySchema"] = true, ["SSESpecification"] = true, nil }
 
 function asserts.AssertCreateTableInput(struct)
 	assert(struct)
@@ -671,6 +1341,7 @@ function asserts.AssertCreateTableInput(struct)
 	if struct["TableName"] then asserts.AssertTableName(struct["TableName"]) end
 	if struct["StreamSpecification"] then asserts.AssertStreamSpecification(struct["StreamSpecification"]) end
 	if struct["KeySchema"] then asserts.AssertKeySchema(struct["KeySchema"]) end
+	if struct["SSESpecification"] then asserts.AssertSSESpecification(struct["SSESpecification"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateTableInput[k], "CreateTableInput contains unknown key " .. tostring(k))
 	end
@@ -687,6 +1358,7 @@ end
 -- * TableName [TableName] <p>The name of the table to create.</p>
 -- * StreamSpecification [StreamSpecification] <p>The settings for DynamoDB Streams on the table. These settings consist of:</p> <ul> <li> <p> <code>StreamEnabled</code> - Indicates whether Streams is to be enabled (true) or disabled (false).</p> </li> <li> <p> <code>StreamViewType</code> - When an item in the table is modified, <code>StreamViewType</code> determines what information is written to the table's stream. Valid values for <code>StreamViewType</code> are:</p> <ul> <li> <p> <code>KEYS_ONLY</code> - Only the key attributes of the modified item are written to the stream.</p> </li> <li> <p> <code>NEW_IMAGE</code> - The entire item, as it appears after it was modified, is written to the stream.</p> </li> <li> <p> <code>OLD_IMAGE</code> - The entire item, as it appeared before it was modified, is written to the stream.</p> </li> <li> <p> <code>NEW_AND_OLD_IMAGES</code> - Both the new and the old item images of the item are written to the stream.</p> </li> </ul> </li> </ul>
 -- * KeySchema [KeySchema] <p>Specifies the attributes that make up the primary key for a table or an index. The attributes in <code>KeySchema</code> must also be defined in the <code>AttributeDefinitions</code> array. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p> <p>Each <code>KeySchemaElement</code> in the array is composed of:</p> <ul> <li> <p> <code>AttributeName</code> - The name of this key attribute.</p> </li> <li> <p> <code>KeyType</code> - The role that the key attribute will assume:</p> <ul> <li> <p> <code>HASH</code> - partition key</p> </li> <li> <p> <code>RANGE</code> - sort key</p> </li> </ul> </li> </ul> <note> <p>The partition key of an item is also known as its <i>hash attribute</i>. The term "hash attribute" derives from DynamoDB' usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values.</p> <p>The sort key of an item is also known as its <i>range attribute</i>. The term "range attribute" derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.</p> </note> <p>For a simple primary key (partition key), you must provide exactly one element with a <code>KeyType</code> of <code>HASH</code>.</p> <p>For a composite primary key (partition key and sort key), you must provide exactly two elements, in this order: The first element must have a <code>KeyType</code> of <code>HASH</code>, and the second element must have a <code>KeyType</code> of <code>RANGE</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key">Specifying the Primary Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+-- * SSESpecification [SSESpecification] <p>Represents the settings used to enable server-side encryption.</p>
 -- Required key: AttributeDefinitions
 -- Required key: TableName
 -- Required key: KeySchema
@@ -708,8 +1380,52 @@ function M.CreateTableInput(args)
 		["TableName"] = args["TableName"],
 		["StreamSpecification"] = args["StreamSpecification"],
 		["KeySchema"] = args["KeySchema"],
+		["SSESpecification"] = args["SSESpecification"],
 	}
 	asserts.AssertCreateTableInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SSESpecification = { ["SSEType"] = true, ["KMSMasterKeyId"] = true, ["Enabled"] = true, nil }
+
+function asserts.AssertSSESpecification(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SSESpecification to be of type 'table'")
+	if struct["SSEType"] then asserts.AssertSSEType(struct["SSEType"]) end
+	if struct["KMSMasterKeyId"] then asserts.AssertKMSMasterKeyId(struct["KMSMasterKeyId"]) end
+	if struct["Enabled"] then asserts.AssertSSEEnabled(struct["Enabled"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SSESpecification[k], "SSESpecification contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SSESpecification
+-- <p>Represents the settings used to enable server-side encryption.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SSEType [SSEType] <p>Server-side encryption type:</p> <ul> <li> <p> <code>AES256</code> - Server-side encryption which uses the AES256 algorithm.</p> </li> <li> <p> <code>KMS</code> - Server-side encryption which uses AWS Key Management Service. (default)</p> </li> </ul>
+-- * KMSMasterKeyId [KMSMasterKeyId] <p>The KMS Master Key (CMK) which should be used for the KMS encryption. To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. Note that you should only provide this parameter if the key is different from the default DynamoDB KMS Master Key alias/aws/dynamodb.</p>
+-- * Enabled [SSEEnabled] <p>Indicates whether server-side encryption is enabled (true) or disabled (false) on the table.</p>
+-- @return SSESpecification structure as a key-value pair table
+function M.SSESpecification(args)
+	assert(args, "You must provide an argument table when creating SSESpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SSEType"] = args["SSEType"],
+		["KMSMasterKeyId"] = args["KMSMasterKeyId"],
+		["Enabled"] = args["Enabled"],
+	}
+	asserts.AssertSSESpecification(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -750,6 +1466,43 @@ function M.ListTagsOfResourceOutput(args)
 		["Tags"] = args["Tags"],
 	}
 	asserts.AssertListTagsOfResourceOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteBackupOutput = { ["BackupDescription"] = true, nil }
+
+function asserts.AssertDeleteBackupOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteBackupOutput to be of type 'table'")
+	if struct["BackupDescription"] then asserts.AssertBackupDescription(struct["BackupDescription"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteBackupOutput[k], "DeleteBackupOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteBackupOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BackupDescription [BackupDescription] <p>Contains the description of the backup created for the table.</p>
+-- @return DeleteBackupOutput structure as a key-value pair table
+function M.DeleteBackupOutput(args)
+	assert(args, "You must provide an argument table when creating DeleteBackupOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["BackupDescription"] = args["BackupDescription"],
+	}
+	asserts.AssertDeleteBackupOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -861,35 +1614,33 @@ function M.AttributeValue(args)
     }
 end
 
-keys.LocalSecondaryIndex = { ["KeySchema"] = true, ["IndexName"] = true, ["Projection"] = true, nil }
+keys.GlobalTableDescription = { ["GlobalTableStatus"] = true, ["GlobalTableName"] = true, ["ReplicationGroup"] = true, ["CreationDateTime"] = true, ["GlobalTableArn"] = true, nil }
 
-function asserts.AssertLocalSecondaryIndex(struct)
+function asserts.AssertGlobalTableDescription(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected LocalSecondaryIndex to be of type 'table'")
-	assert(struct["IndexName"], "Expected key IndexName to exist in table")
-	assert(struct["KeySchema"], "Expected key KeySchema to exist in table")
-	assert(struct["Projection"], "Expected key Projection to exist in table")
-	if struct["KeySchema"] then asserts.AssertKeySchema(struct["KeySchema"]) end
-	if struct["IndexName"] then asserts.AssertIndexName(struct["IndexName"]) end
-	if struct["Projection"] then asserts.AssertProjection(struct["Projection"]) end
+	assert(type(struct) == "table", "Expected GlobalTableDescription to be of type 'table'")
+	if struct["GlobalTableStatus"] then asserts.AssertGlobalTableStatus(struct["GlobalTableStatus"]) end
+	if struct["GlobalTableName"] then asserts.AssertTableName(struct["GlobalTableName"]) end
+	if struct["ReplicationGroup"] then asserts.AssertReplicaDescriptionList(struct["ReplicationGroup"]) end
+	if struct["CreationDateTime"] then asserts.AssertDate(struct["CreationDateTime"]) end
+	if struct["GlobalTableArn"] then asserts.AssertGlobalTableArnString(struct["GlobalTableArn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.LocalSecondaryIndex[k], "LocalSecondaryIndex contains unknown key " .. tostring(k))
+		assert(keys.GlobalTableDescription[k], "GlobalTableDescription contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type LocalSecondaryIndex
--- <p>Represents the properties of a local secondary index.</p>
+--- Create a structure of type GlobalTableDescription
+-- <p>Contains details about the global table.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * KeySchema [KeySchema] <p>The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and key types:</p> <ul> <li> <p> <code>HASH</code> - partition key</p> </li> <li> <p> <code>RANGE</code> - sort key</p> </li> </ul> <note> <p>The partition key of an item is also known as its <i>hash attribute</i>. The term "hash attribute" derives from DynamoDB' usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values.</p> <p>The sort key of an item is also known as its <i>range attribute</i>. The term "range attribute" derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.</p> </note>
--- * IndexName [IndexName] <p>The name of the local secondary index. The name must be unique among all other indexes on this table.</p>
--- * Projection [Projection] <p>Represents attributes that are copied (projected) from the table into the local secondary index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. </p>
--- Required key: IndexName
--- Required key: KeySchema
--- Required key: Projection
--- @return LocalSecondaryIndex structure as a key-value pair table
-function M.LocalSecondaryIndex(args)
-	assert(args, "You must provide an argument table when creating LocalSecondaryIndex")
+-- * GlobalTableStatus [GlobalTableStatus] <p>The current state of the global table:</p> <ul> <li> <p> <code>CREATING</code> - The global table is being created.</p> </li> <li> <p> <code>UPDATING</code> - The global table is being updated.</p> </li> <li> <p> <code>DELETING</code> - The global table is being deleted.</p> </li> <li> <p> <code>ACTIVE</code> - The global table is ready for use.</p> </li> </ul>
+-- * GlobalTableName [TableName] <p>The global table name.</p>
+-- * ReplicationGroup [ReplicaDescriptionList] <p>The regions where the global table has replicas.</p>
+-- * CreationDateTime [Date] <p>The creation time of the global table.</p>
+-- * GlobalTableArn [GlobalTableArnString] <p>The unique identifier of the global table.</p>
+-- @return GlobalTableDescription structure as a key-value pair table
+function M.GlobalTableDescription(args)
+	assert(args, "You must provide an argument table when creating GlobalTableDescription")
     local query_args = { 
     }
     local uri_args = { 
@@ -897,11 +1648,13 @@ function M.LocalSecondaryIndex(args)
     local header_args = { 
     }
 	local all_args = { 
-		["KeySchema"] = args["KeySchema"],
-		["IndexName"] = args["IndexName"],
-		["Projection"] = args["Projection"],
+		["GlobalTableStatus"] = args["GlobalTableStatus"],
+		["GlobalTableName"] = args["GlobalTableName"],
+		["ReplicationGroup"] = args["ReplicationGroup"],
+		["CreationDateTime"] = args["CreationDateTime"],
+		["GlobalTableArn"] = args["GlobalTableArn"],
 	}
-	asserts.AssertLocalSecondaryIndex(all_args)
+	asserts.AssertGlobalTableDescription(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -910,31 +1663,33 @@ function M.LocalSecondaryIndex(args)
     }
 end
 
-keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
+keys.AutoScalingSettingsUpdate = { ["ScalingPolicyUpdate"] = true, ["AutoScalingDisabled"] = true, ["AutoScalingRoleArn"] = true, ["MinimumUnits"] = true, ["MaximumUnits"] = true, nil }
 
-function asserts.AssertTag(struct)
+function asserts.AssertAutoScalingSettingsUpdate(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
-	assert(struct["Key"], "Expected key Key to exist in table")
-	assert(struct["Value"], "Expected key Value to exist in table")
-	if struct["Value"] then asserts.AssertTagValueString(struct["Value"]) end
-	if struct["Key"] then asserts.AssertTagKeyString(struct["Key"]) end
+	assert(type(struct) == "table", "Expected AutoScalingSettingsUpdate to be of type 'table'")
+	if struct["ScalingPolicyUpdate"] then asserts.AssertAutoScalingPolicyUpdate(struct["ScalingPolicyUpdate"]) end
+	if struct["AutoScalingDisabled"] then asserts.AssertBooleanObject(struct["AutoScalingDisabled"]) end
+	if struct["AutoScalingRoleArn"] then asserts.AssertAutoScalingRoleArn(struct["AutoScalingRoleArn"]) end
+	if struct["MinimumUnits"] then asserts.AssertPositiveLongObject(struct["MinimumUnits"]) end
+	if struct["MaximumUnits"] then asserts.AssertPositiveLongObject(struct["MaximumUnits"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
+		assert(keys.AutoScalingSettingsUpdate[k], "AutoScalingSettingsUpdate contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type Tag
--- <p>Describes a tag. A tag is a key-value pair. You can add up to 50 tags to a single DynamoDB table. </p> <p> AWS-assigned tag names and values are automatically assigned the aws: prefix, which the user cannot assign. AWS-assigned tag names do not count towards the tag limit of 50. User-assigned tag names have the prefix user: in the Cost Allocation Report. You cannot backdate the application of a tag. </p> <p>For an overview on tagging DynamoDB resources, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html">Tagging for DynamoDB</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+--- Create a structure of type AutoScalingSettingsUpdate
+-- <p>Represents the autoscaling settings to be modified for a global table or global secondary index.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Value [TagValueString] <p>The value of the tag. Tag values are case-sensitive and can be null.</p>
--- * Key [TagKeyString] <p>The key of the tag.Tag keys are case sensitive. Each DynamoDB table can only have up to one tag with the same key. If you try to add an existing tag (same key), the existing tag value will be updated to the new value. </p>
--- Required key: Key
--- Required key: Value
--- @return Tag structure as a key-value pair table
-function M.Tag(args)
-	assert(args, "You must provide an argument table when creating Tag")
+-- * ScalingPolicyUpdate [AutoScalingPolicyUpdate] <p>The scaling policy to apply for scaling target global table or global secondary index capacity units.</p>
+-- * AutoScalingDisabled [BooleanObject] <p>Disabled autoscaling for this global table or global secondary index.</p>
+-- * AutoScalingRoleArn [AutoScalingRoleArn] <p>Role ARN used for configuring autoscaling policy.</p>
+-- * MinimumUnits [PositiveLongObject] <p>The minimum capacity units that a global table or global secondary index should be scaled down to.</p>
+-- * MaximumUnits [PositiveLongObject] <p>The maximum capacity units that a global table or global secondary index should be scaled up to.</p>
+-- @return AutoScalingSettingsUpdate structure as a key-value pair table
+function M.AutoScalingSettingsUpdate(args)
+	assert(args, "You must provide an argument table when creating AutoScalingSettingsUpdate")
     local query_args = { 
     }
     local uri_args = { 
@@ -942,10 +1697,187 @@ function M.Tag(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Value"] = args["Value"],
-		["Key"] = args["Key"],
+		["ScalingPolicyUpdate"] = args["ScalingPolicyUpdate"],
+		["AutoScalingDisabled"] = args["AutoScalingDisabled"],
+		["AutoScalingRoleArn"] = args["AutoScalingRoleArn"],
+		["MinimumUnits"] = args["MinimumUnits"],
+		["MaximumUnits"] = args["MaximumUnits"],
 	}
-	asserts.AssertTag(all_args)
+	asserts.AssertAutoScalingSettingsUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListBackupsInput = { ["BackupType"] = true, ["TableName"] = true, ["ExclusiveStartBackupArn"] = true, ["Limit"] = true, ["TimeRangeLowerBound"] = true, ["TimeRangeUpperBound"] = true, nil }
+
+function asserts.AssertListBackupsInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListBackupsInput to be of type 'table'")
+	if struct["BackupType"] then asserts.AssertBackupTypeFilter(struct["BackupType"]) end
+	if struct["TableName"] then asserts.AssertTableName(struct["TableName"]) end
+	if struct["ExclusiveStartBackupArn"] then asserts.AssertBackupArn(struct["ExclusiveStartBackupArn"]) end
+	if struct["Limit"] then asserts.AssertBackupsInputLimit(struct["Limit"]) end
+	if struct["TimeRangeLowerBound"] then asserts.AssertTimeRangeLowerBound(struct["TimeRangeLowerBound"]) end
+	if struct["TimeRangeUpperBound"] then asserts.AssertTimeRangeUpperBound(struct["TimeRangeUpperBound"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListBackupsInput[k], "ListBackupsInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListBackupsInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BackupType [BackupTypeFilter] <p>The backups from the table specified by <code>BackupType</code> are listed.</p> <p>Where <code>BackupType</code> can be:</p> <ul> <li> <p> <code>USER</code> - On-demand backup created by you.</p> </li> <li> <p> <code>SYSTEM</code> - On-demand backup automatically created by DynamoDB.</p> </li> <li> <p> <code>ALL</code> - All types of on-demand backups (USER and SYSTEM).</p> </li> </ul>
+-- * TableName [TableName] <p>The backups from the table specified by <code>TableName</code> are listed. </p>
+-- * ExclusiveStartBackupArn [BackupArn] <p> <code>LastEvaluatedBackupArn</code> is the ARN of the backup last evaluated when the current page of results was returned, inclusive of the current page of results. This value may be specified as the <code>ExclusiveStartBackupArn</code> of a new <code>ListBackups</code> operation in order to fetch the next page of results. </p>
+-- * Limit [BackupsInputLimit] <p>Maximum number of backups to return at once.</p>
+-- * TimeRangeLowerBound [TimeRangeLowerBound] <p>Only backups created after this time are listed. <code>TimeRangeLowerBound</code> is inclusive.</p>
+-- * TimeRangeUpperBound [TimeRangeUpperBound] <p>Only backups created before this time are listed. <code>TimeRangeUpperBound</code> is exclusive. </p>
+-- @return ListBackupsInput structure as a key-value pair table
+function M.ListBackupsInput(args)
+	assert(args, "You must provide an argument table when creating ListBackupsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["BackupType"] = args["BackupType"],
+		["TableName"] = args["TableName"],
+		["ExclusiveStartBackupArn"] = args["ExclusiveStartBackupArn"],
+		["Limit"] = args["Limit"],
+		["TimeRangeLowerBound"] = args["TimeRangeLowerBound"],
+		["TimeRangeUpperBound"] = args["TimeRangeUpperBound"],
+	}
+	asserts.AssertListBackupsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListTagsOfResourceInput = { ["ResourceArn"] = true, ["NextToken"] = true, nil }
+
+function asserts.AssertListTagsOfResourceInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListTagsOfResourceInput to be of type 'table'")
+	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
+	if struct["ResourceArn"] then asserts.AssertResourceArnString(struct["ResourceArn"]) end
+	if struct["NextToken"] then asserts.AssertNextTokenString(struct["NextToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListTagsOfResourceInput[k], "ListTagsOfResourceInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListTagsOfResourceInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [ResourceArnString] <p>The Amazon DynamoDB resource with tags to be listed. This value is an Amazon Resource Name (ARN).</p>
+-- * NextToken [NextTokenString] <p>An optional string that, if supplied, must be copied from the output of a previous call to ListTagOfResource. When provided in this manner, this API fetches the next page of results.</p>
+-- Required key: ResourceArn
+-- @return ListTagsOfResourceInput structure as a key-value pair table
+function M.ListTagsOfResourceInput(args)
+	assert(args, "You must provide an argument table when creating ListTagsOfResourceInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceArn"] = args["ResourceArn"],
+		["NextToken"] = args["NextToken"],
+	}
+	asserts.AssertListTagsOfResourceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListBackupsOutput = { ["LastEvaluatedBackupArn"] = true, ["BackupSummaries"] = true, nil }
+
+function asserts.AssertListBackupsOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListBackupsOutput to be of type 'table'")
+	if struct["LastEvaluatedBackupArn"] then asserts.AssertBackupArn(struct["LastEvaluatedBackupArn"]) end
+	if struct["BackupSummaries"] then asserts.AssertBackupSummaries(struct["BackupSummaries"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListBackupsOutput[k], "ListBackupsOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListBackupsOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LastEvaluatedBackupArn [BackupArn] <p> The ARN of the backup last evaluated when the current page of results was returned, inclusive of the current page of results. This value may be specified as the <code>ExclusiveStartBackupArn</code> of a new <code>ListBackups</code> operation in order to fetch the next page of results. </p> <p> If <code>LastEvaluatedBackupArn</code> is empty, then the last page of results has been processed and there are no more results to be retrieved. </p> <p> If <code>LastEvaluatedBackupArn</code> is not empty, this may or may not indicate there is more data to be returned. All results are guaranteed to have been returned if and only if no value for <code>LastEvaluatedBackupArn</code> is returned. </p>
+-- * BackupSummaries [BackupSummaries] <p>List of <code>BackupSummary</code> objects.</p>
+-- @return ListBackupsOutput structure as a key-value pair table
+function M.ListBackupsOutput(args)
+	assert(args, "You must provide an argument table when creating ListBackupsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["LastEvaluatedBackupArn"] = args["LastEvaluatedBackupArn"],
+		["BackupSummaries"] = args["BackupSummaries"],
+	}
+	asserts.AssertListBackupsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.AutoScalingPolicyDescription = { ["PolicyName"] = true, ["TargetTrackingScalingPolicyConfiguration"] = true, nil }
+
+function asserts.AssertAutoScalingPolicyDescription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected AutoScalingPolicyDescription to be of type 'table'")
+	if struct["PolicyName"] then asserts.AssertAutoScalingPolicyName(struct["PolicyName"]) end
+	if struct["TargetTrackingScalingPolicyConfiguration"] then asserts.AssertAutoScalingTargetTrackingScalingPolicyConfigurationDescription(struct["TargetTrackingScalingPolicyConfiguration"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.AutoScalingPolicyDescription[k], "AutoScalingPolicyDescription contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type AutoScalingPolicyDescription
+-- <p>Represents the properties of the scaling policy.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyName [AutoScalingPolicyName] <p>The name of the scaling policy.</p>
+-- * TargetTrackingScalingPolicyConfiguration [AutoScalingTargetTrackingScalingPolicyConfigurationDescription] <p>Represents a target tracking scaling policy configuration.</p>
+-- @return AutoScalingPolicyDescription structure as a key-value pair table
+function M.AutoScalingPolicyDescription(args)
+	assert(args, "You must provide an argument table when creating AutoScalingPolicyDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["PolicyName"] = args["PolicyName"],
+		["TargetTrackingScalingPolicyConfiguration"] = args["TargetTrackingScalingPolicyConfiguration"],
+	}
+	asserts.AssertAutoScalingPolicyDescription(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1143,25 +2075,39 @@ function M.UpdateTimeToLiveOutput(args)
     }
 end
 
-keys.ResourceNotFoundException = { ["message"] = true, nil }
+keys.ReplicaSettingsDescription = { ["ReplicaProvisionedReadCapacityUnits"] = true, ["ReplicaProvisionedWriteCapacityAutoScalingSettings"] = true, ["ReplicaProvisionedReadCapacityAutoScalingSettings"] = true, ["ReplicaGlobalSecondaryIndexSettings"] = true, ["RegionName"] = true, ["ReplicaProvisionedWriteCapacityUnits"] = true, ["ReplicaStatus"] = true, nil }
 
-function asserts.AssertResourceNotFoundException(struct)
+function asserts.AssertReplicaSettingsDescription(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
-	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected ReplicaSettingsDescription to be of type 'table'")
+	assert(struct["RegionName"], "Expected key RegionName to exist in table")
+	if struct["ReplicaProvisionedReadCapacityUnits"] then asserts.AssertPositiveLongObject(struct["ReplicaProvisionedReadCapacityUnits"]) end
+	if struct["ReplicaProvisionedWriteCapacityAutoScalingSettings"] then asserts.AssertAutoScalingSettingsDescription(struct["ReplicaProvisionedWriteCapacityAutoScalingSettings"]) end
+	if struct["ReplicaProvisionedReadCapacityAutoScalingSettings"] then asserts.AssertAutoScalingSettingsDescription(struct["ReplicaProvisionedReadCapacityAutoScalingSettings"]) end
+	if struct["ReplicaGlobalSecondaryIndexSettings"] then asserts.AssertReplicaGlobalSecondaryIndexSettingsDescriptionList(struct["ReplicaGlobalSecondaryIndexSettings"]) end
+	if struct["RegionName"] then asserts.AssertRegionName(struct["RegionName"]) end
+	if struct["ReplicaProvisionedWriteCapacityUnits"] then asserts.AssertPositiveLongObject(struct["ReplicaProvisionedWriteCapacityUnits"]) end
+	if struct["ReplicaStatus"] then asserts.AssertReplicaStatus(struct["ReplicaStatus"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.ReplicaSettingsDescription[k], "ReplicaSettingsDescription contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ResourceNotFoundException
--- <p>The operation tried to access a nonexistent table or index. The resource might not be specified correctly, or its status might not be <code>ACTIVE</code>.</p>
+--- Create a structure of type ReplicaSettingsDescription
+-- <p>Represents the properties of a replica.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [ErrorMessage] <p>The resource which is being requested does not exist.</p>
--- @return ResourceNotFoundException structure as a key-value pair table
-function M.ResourceNotFoundException(args)
-	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+-- * ReplicaProvisionedReadCapacityUnits [PositiveLongObject] <p>The maximum number of strongly consistent reads consumed per second before DynamoDB returns a <code>ThrottlingException</code>. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput">Specifying Read and Write Requirements</a> in the <i>Amazon DynamoDB Developer Guide</i>. </p>
+-- * ReplicaProvisionedWriteCapacityAutoScalingSettings [AutoScalingSettingsDescription] <p>AutoScaling settings for a global table replica's write capacity units.</p>
+-- * ReplicaProvisionedReadCapacityAutoScalingSettings [AutoScalingSettingsDescription] <p>Autoscaling settings for a global table replica's read capacity units.</p>
+-- * ReplicaGlobalSecondaryIndexSettings [ReplicaGlobalSecondaryIndexSettingsDescriptionList] <p>Replica global secondary index settings for the global table.</p>
+-- * RegionName [RegionName] <p>The region name of the replica.</p>
+-- * ReplicaProvisionedWriteCapacityUnits [PositiveLongObject] <p>The maximum number of writes consumed per second before DynamoDB returns a <code>ThrottlingException</code>. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput">Specifying Read and Write Requirements</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+-- * ReplicaStatus [ReplicaStatus] <p>The current state of the region:</p> <ul> <li> <p> <code>CREATING</code> - The region is being created.</p> </li> <li> <p> <code>UPDATING</code> - The region is being updated.</p> </li> <li> <p> <code>DELETING</code> - The region is being deleted.</p> </li> <li> <p> <code>ACTIVE</code> - The region is ready for use.</p> </li> </ul>
+-- Required key: RegionName
+-- @return ReplicaSettingsDescription structure as a key-value pair table
+function M.ReplicaSettingsDescription(args)
+	assert(args, "You must provide an argument table when creating ReplicaSettingsDescription")
     local query_args = { 
     }
     local uri_args = { 
@@ -1169,9 +2115,292 @@ function M.ResourceNotFoundException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["ReplicaProvisionedReadCapacityUnits"] = args["ReplicaProvisionedReadCapacityUnits"],
+		["ReplicaProvisionedWriteCapacityAutoScalingSettings"] = args["ReplicaProvisionedWriteCapacityAutoScalingSettings"],
+		["ReplicaProvisionedReadCapacityAutoScalingSettings"] = args["ReplicaProvisionedReadCapacityAutoScalingSettings"],
+		["ReplicaGlobalSecondaryIndexSettings"] = args["ReplicaGlobalSecondaryIndexSettings"],
+		["RegionName"] = args["RegionName"],
+		["ReplicaProvisionedWriteCapacityUnits"] = args["ReplicaProvisionedWriteCapacityUnits"],
+		["ReplicaStatus"] = args["ReplicaStatus"],
 	}
-	asserts.AssertResourceNotFoundException(all_args)
+	asserts.AssertReplicaSettingsDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeEndpointsRequest = { nil }
+
+function asserts.AssertDescribeEndpointsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeEndpointsRequest to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeEndpointsRequest[k], "DescribeEndpointsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeEndpointsRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DescribeEndpointsRequest structure as a key-value pair table
+function M.DescribeEndpointsRequest(args)
+	assert(args, "You must provide an argument table when creating DescribeEndpointsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDescribeEndpointsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Replica = { ["RegionName"] = true, nil }
+
+function asserts.AssertReplica(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Replica to be of type 'table'")
+	if struct["RegionName"] then asserts.AssertRegionName(struct["RegionName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Replica[k], "Replica contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Replica
+-- <p>Represents the properties of a replica.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegionName [RegionName] <p>The region where the replica needs to be created.</p>
+-- @return Replica structure as a key-value pair table
+function M.Replica(args)
+	assert(args, "You must provide an argument table when creating Replica")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RegionName"] = args["RegionName"],
+	}
+	asserts.AssertReplica(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteBackupInput = { ["BackupArn"] = true, nil }
+
+function asserts.AssertDeleteBackupInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteBackupInput to be of type 'table'")
+	assert(struct["BackupArn"], "Expected key BackupArn to exist in table")
+	if struct["BackupArn"] then asserts.AssertBackupArn(struct["BackupArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteBackupInput[k], "DeleteBackupInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteBackupInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BackupArn [BackupArn] <p>The ARN associated with the backup.</p>
+-- Required key: BackupArn
+-- @return DeleteBackupInput structure as a key-value pair table
+function M.DeleteBackupInput(args)
+	assert(args, "You must provide an argument table when creating DeleteBackupInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["BackupArn"] = args["BackupArn"],
+	}
+	asserts.AssertDeleteBackupInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateItemInput = { ["AttributeUpdates"] = true, ["ConditionalOperator"] = true, ["ExpressionAttributeNames"] = true, ["ReturnValues"] = true, ["ConditionExpression"] = true, ["TableName"] = true, ["ReturnItemCollectionMetrics"] = true, ["ReturnConsumedCapacity"] = true, ["UpdateExpression"] = true, ["ExpressionAttributeValues"] = true, ["Key"] = true, ["Expected"] = true, nil }
+
+function asserts.AssertUpdateItemInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateItemInput to be of type 'table'")
+	assert(struct["TableName"], "Expected key TableName to exist in table")
+	assert(struct["Key"], "Expected key Key to exist in table")
+	if struct["AttributeUpdates"] then asserts.AssertAttributeUpdates(struct["AttributeUpdates"]) end
+	if struct["ConditionalOperator"] then asserts.AssertConditionalOperator(struct["ConditionalOperator"]) end
+	if struct["ExpressionAttributeNames"] then asserts.AssertExpressionAttributeNameMap(struct["ExpressionAttributeNames"]) end
+	if struct["ReturnValues"] then asserts.AssertReturnValue(struct["ReturnValues"]) end
+	if struct["ConditionExpression"] then asserts.AssertConditionExpression(struct["ConditionExpression"]) end
+	if struct["TableName"] then asserts.AssertTableName(struct["TableName"]) end
+	if struct["ReturnItemCollectionMetrics"] then asserts.AssertReturnItemCollectionMetrics(struct["ReturnItemCollectionMetrics"]) end
+	if struct["ReturnConsumedCapacity"] then asserts.AssertReturnConsumedCapacity(struct["ReturnConsumedCapacity"]) end
+	if struct["UpdateExpression"] then asserts.AssertUpdateExpression(struct["UpdateExpression"]) end
+	if struct["ExpressionAttributeValues"] then asserts.AssertExpressionAttributeValueMap(struct["ExpressionAttributeValues"]) end
+	if struct["Key"] then asserts.AssertKey(struct["Key"]) end
+	if struct["Expected"] then asserts.AssertExpectedAttributeMap(struct["Expected"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateItemInput[k], "UpdateItemInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateItemInput
+-- <p>Represents the input of an <code>UpdateItem</code> operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttributeUpdates [AttributeUpdates] <p>This is a legacy parameter. Use <code>UpdateExpression</code> instead. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributeUpdates.html">AttributeUpdates</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+-- * ConditionalOperator [ConditionalOperator] <p>This is a legacy parameter. Use <code>ConditionExpression</code> instead. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html">ConditionalOperator</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+-- * ExpressionAttributeNames [ExpressionAttributeNameMap] <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p> <ul> <li> <p>To access an attribute whose name conflicts with a DynamoDB reserved word.</p> </li> <li> <p>To create a placeholder for repeating occurrences of an attribute name in an expression.</p> </li> <li> <p>To prevent special characters in an attribute name from being misinterpreted in an expression.</p> </li> </ul> <p>Use the <b>#</b> character in an expression to dereference an attribute name. For example, consider the following attribute name:</p> <ul> <li> <p> <code>Percentile</code> </p> </li> </ul> <p>The name of this attribute conflicts with a reserved word, so it cannot be used directly in an expression. (For the complete list of reserved words, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this, you could specify the following for <code>ExpressionAttributeNames</code>:</p> <ul> <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could then use this substitution in an expression, as in this example:</p> <ul> <li> <p> <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the <b>:</b> character are <i>expression attribute values</i>, which are placeholders for the actual value at runtime.</p> </note> <p>For more information on expression attribute names, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+-- * ReturnValues [ReturnValue] <p>Use <code>ReturnValues</code> if you want to get the item attributes as they appear before or after they are updated. For <code>UpdateItem</code>, the valid values are:</p> <ul> <li> <p> <code>NONE</code> - If <code>ReturnValues</code> is not specified, or if its value is <code>NONE</code>, then nothing is returned. (This setting is the default for <code>ReturnValues</code>.)</p> </li> <li> <p> <code>ALL_OLD</code> - Returns all of the attributes of the item, as they appeared before the UpdateItem operation.</p> </li> <li> <p> <code>UPDATED_OLD</code> - Returns only the updated attributes, as they appeared before the UpdateItem operation.</p> </li> <li> <p> <code>ALL_NEW</code> - Returns all of the attributes of the item, as they appear after the UpdateItem operation.</p> </li> <li> <p> <code>UPDATED_NEW</code> - Returns only the updated attributes, as they appear after the UpdateItem operation.</p> </li> </ul> <p>There is no additional cost associated with requesting a return value aside from the small network and processing overhead of receiving a larger response. No read capacity units are consumed.</p> <p>The values returned are strongly consistent.</p>
+-- * ConditionExpression [ConditionExpression] <p>A condition that must be satisfied in order for a conditional update to succeed.</p> <p>An expression can contain any of the following:</p> <ul> <li> <p>Functions: <code>attribute_exists | attribute_not_exists | attribute_type | contains | begins_with | size</code> </p> <p>These function names are case-sensitive.</p> </li> <li> <p>Comparison operators: <code>= | &lt;&gt; | &lt; | &gt; | &lt;= | &gt;= | BETWEEN | IN </code> </p> </li> <li> <p> Logical operators: <code>AND | OR | NOT</code> </p> </li> </ul> <p>For more information on condition expressions, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Specifying Conditions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+-- * TableName [TableName] <p>The name of the table containing the item to update.</p>
+-- * ReturnItemCollectionMetrics [ReturnItemCollectionMetrics] <p>Determines whether item collection metrics are returned. If set to <code>SIZE</code>, the response includes statistics about item collections, if any, that were modified during the operation are returned in the response. If set to <code>NONE</code> (the default), no statistics are returned.</p>
+-- * ReturnConsumedCapacity [ReturnConsumedCapacity] 
+-- * UpdateExpression [UpdateExpression] <p>An expression that defines one or more attributes to be updated, the action to be performed on them, and new value(s) for them.</p> <p>The following action values are available for <code>UpdateExpression</code>.</p> <ul> <li> <p> <code>SET</code> - Adds one or more attributes and values to an item. If any of these attribute already exist, they are replaced by the new values. You can also use <code>SET</code> to add or subtract from an attribute that is of type Number. For example: <code>SET myNum = myNum + :val</code> </p> <p> <code>SET</code> supports the following functions:</p> <ul> <li> <p> <code>if_not_exists (path, operand)</code> - if the item does not contain an attribute at the specified path, then <code>if_not_exists</code> evaluates to operand; otherwise, it evaluates to path. You can use this function to avoid overwriting an attribute that may already be present in the item.</p> </li> <li> <p> <code>list_append (operand, operand)</code> - evaluates to a list with a new element added to it. You can append the new element to the start or the end of the list by reversing the order of the operands.</p> </li> </ul> <p>These function names are case-sensitive.</p> </li> <li> <p> <code>REMOVE</code> - Removes one or more attributes from an item.</p> </li> <li> <p> <code>ADD</code> - Adds the specified value to the item, if the attribute does not already exist. If the attribute does exist, then the behavior of <code>ADD</code> depends on the data type of the attribute:</p> <ul> <li> <p>If the existing attribute is a number, and if <code>Value</code> is also a number, then <code>Value</code> is mathematically added to the existing attribute. If <code>Value</code> is a negative number, then it is subtracted from the existing attribute.</p> <note> <p>If you use <code>ADD</code> to increment or decrement a number value for an item that doesn't exist before the update, DynamoDB uses <code>0</code> as the initial value.</p> <p>Similarly, if you use <code>ADD</code> for an existing item to increment or decrement an attribute value that doesn't exist before the update, DynamoDB uses <code>0</code> as the initial value. For example, suppose that the item you want to update doesn't have an attribute named <i>itemcount</i>, but you decide to <code>ADD</code> the number <code>3</code> to this attribute anyway. DynamoDB will create the <i>itemcount</i> attribute, set its initial value to <code>0</code>, and finally add <code>3</code> to it. The result will be a new <i>itemcount</i> attribute in the item, with a value of <code>3</code>.</p> </note> </li> <li> <p>If the existing data type is a set and if <code>Value</code> is also a set, then <code>Value</code> is added to the existing set. For example, if the attribute value is the set <code>[1,2]</code>, and the <code>ADD</code> action specified <code>[3]</code>, then the final attribute value is <code>[1,2,3]</code>. An error occurs if an <code>ADD</code> action is specified for a set attribute and the attribute type specified does not match the existing set type. </p> <p>Both sets must have the same primitive data type. For example, if the existing data type is a set of strings, the <code>Value</code> must also be a set of strings.</p> </li> </ul> <important> <p>The <code>ADD</code> action only supports Number and set data types. In addition, <code>ADD</code> can only be used on top-level attributes, not nested attributes.</p> </important> </li> <li> <p> <code>DELETE</code> - Deletes an element from a set.</p> <p>If a set of values is specified, then those values are subtracted from the old set. For example, if the attribute value was the set <code>[a,b,c]</code> and the <code>DELETE</code> action specifies <code>[a,c]</code>, then the final attribute value is <code>[b]</code>. Specifying an empty set is an error.</p> <important> <p>The <code>DELETE</code> action only supports set data types. In addition, <code>DELETE</code> can only be used on top-level attributes, not nested attributes.</p> </important> </li> </ul> <p>You can have many actions in a single expression, such as the following: <code>SET a=:value1, b=:value2 DELETE :value3, :value4, :value5</code> </p> <p>For more information on update expressions, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Modifying.html">Modifying Items and Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+-- * ExpressionAttributeValues [ExpressionAttributeValueMap] <p>One or more values that can be substituted in an expression.</p> <p>Use the <b>:</b> (colon) character in an expression to dereference an attribute value. For example, suppose that you wanted to check whether the value of the <i>ProductStatus</i> attribute was one of the following: </p> <p> <code>Available | Backordered | Discontinued</code> </p> <p>You would first need to specify <code>ExpressionAttributeValues</code> as follows:</p> <p> <code>{ ":avail":{"S":"Available"}, ":back":{"S":"Backordered"}, ":disc":{"S":"Discontinued"} }</code> </p> <p>You could then use these values in an expression, such as this:</p> <p> <code>ProductStatus IN (:avail, :back, :disc)</code> </p> <p>For more information on expression attribute values, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Specifying Conditions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+-- * Key [Key] <p>The primary key of the item to be updated. Each element consists of an attribute name and a value for that attribute.</p> <p>For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for both the partition key and the sort key.</p>
+-- * Expected [ExpectedAttributeMap] <p>This is a legacy parameter. Use <code>ConditionExpression</code> instead. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html">Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+-- Required key: TableName
+-- Required key: Key
+-- @return UpdateItemInput structure as a key-value pair table
+function M.UpdateItemInput(args)
+	assert(args, "You must provide an argument table when creating UpdateItemInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["AttributeUpdates"] = args["AttributeUpdates"],
+		["ConditionalOperator"] = args["ConditionalOperator"],
+		["ExpressionAttributeNames"] = args["ExpressionAttributeNames"],
+		["ReturnValues"] = args["ReturnValues"],
+		["ConditionExpression"] = args["ConditionExpression"],
+		["TableName"] = args["TableName"],
+		["ReturnItemCollectionMetrics"] = args["ReturnItemCollectionMetrics"],
+		["ReturnConsumedCapacity"] = args["ReturnConsumedCapacity"],
+		["UpdateExpression"] = args["UpdateExpression"],
+		["ExpressionAttributeValues"] = args["ExpressionAttributeValues"],
+		["Key"] = args["Key"],
+		["Expected"] = args["Expected"],
+	}
+	asserts.AssertUpdateItemInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ReplicaGlobalSecondaryIndexSettingsUpdate = { ["ProvisionedReadCapacityAutoScalingSettingsUpdate"] = true, ["ProvisionedReadCapacityUnits"] = true, ["IndexName"] = true, nil }
+
+function asserts.AssertReplicaGlobalSecondaryIndexSettingsUpdate(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ReplicaGlobalSecondaryIndexSettingsUpdate to be of type 'table'")
+	assert(struct["IndexName"], "Expected key IndexName to exist in table")
+	if struct["ProvisionedReadCapacityAutoScalingSettingsUpdate"] then asserts.AssertAutoScalingSettingsUpdate(struct["ProvisionedReadCapacityAutoScalingSettingsUpdate"]) end
+	if struct["ProvisionedReadCapacityUnits"] then asserts.AssertPositiveLongObject(struct["ProvisionedReadCapacityUnits"]) end
+	if struct["IndexName"] then asserts.AssertIndexName(struct["IndexName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ReplicaGlobalSecondaryIndexSettingsUpdate[k], "ReplicaGlobalSecondaryIndexSettingsUpdate contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ReplicaGlobalSecondaryIndexSettingsUpdate
+-- <p>Represents the settings of a global secondary index for a global table that will be modified.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProvisionedReadCapacityAutoScalingSettingsUpdate [AutoScalingSettingsUpdate] <p>Autoscaling settings for managing a global secondary index replica's read capacity units.</p>
+-- * ProvisionedReadCapacityUnits [PositiveLongObject] <p>The maximum number of strongly consistent reads consumed per second before DynamoDB returns a <code>ThrottlingException</code>.</p>
+-- * IndexName [IndexName] <p>The name of the global secondary index. The name must be unique among all other indexes on this table.</p>
+-- Required key: IndexName
+-- @return ReplicaGlobalSecondaryIndexSettingsUpdate structure as a key-value pair table
+function M.ReplicaGlobalSecondaryIndexSettingsUpdate(args)
+	assert(args, "You must provide an argument table when creating ReplicaGlobalSecondaryIndexSettingsUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ProvisionedReadCapacityAutoScalingSettingsUpdate"] = args["ProvisionedReadCapacityAutoScalingSettingsUpdate"],
+		["ProvisionedReadCapacityUnits"] = args["ProvisionedReadCapacityUnits"],
+		["IndexName"] = args["IndexName"],
+	}
+	asserts.AssertReplicaGlobalSecondaryIndexSettingsUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.AutoScalingTargetTrackingScalingPolicyConfigurationUpdate = { ["ScaleOutCooldown"] = true, ["TargetValue"] = true, ["DisableScaleIn"] = true, ["ScaleInCooldown"] = true, nil }
+
+function asserts.AssertAutoScalingTargetTrackingScalingPolicyConfigurationUpdate(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected AutoScalingTargetTrackingScalingPolicyConfigurationUpdate to be of type 'table'")
+	assert(struct["TargetValue"], "Expected key TargetValue to exist in table")
+	if struct["ScaleOutCooldown"] then asserts.AssertIntegerObject(struct["ScaleOutCooldown"]) end
+	if struct["TargetValue"] then asserts.AssertDouble(struct["TargetValue"]) end
+	if struct["DisableScaleIn"] then asserts.AssertBooleanObject(struct["DisableScaleIn"]) end
+	if struct["ScaleInCooldown"] then asserts.AssertIntegerObject(struct["ScaleInCooldown"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.AutoScalingTargetTrackingScalingPolicyConfigurationUpdate[k], "AutoScalingTargetTrackingScalingPolicyConfigurationUpdate contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type AutoScalingTargetTrackingScalingPolicyConfigurationUpdate
+-- <p>Represents the settings of a target tracking scaling policy that will be modified.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ScaleOutCooldown [IntegerObject] <p>The amount of time, in seconds, after a scale out activity completes before another scale out activity can start. While the cooldown period is in effect, the capacity that has been added by the previous scale out event that initiated the cooldown is calculated as part of the desired capacity for the next scale out. You should continuously (but not excessively) scale out.</p>
+-- * TargetValue [Double] <p>The target value for the metric. The range is 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2).</p>
+-- * DisableScaleIn [BooleanObject] <p>Indicates whether scale in by the target tracking policy is disabled. If the value is true, scale in is disabled and the target tracking policy won't remove capacity from the scalable resource. Otherwise, scale in is enabled and the target tracking policy can remove capacity from the scalable resource. The default value is false.</p>
+-- * ScaleInCooldown [IntegerObject] <p>The amount of time, in seconds, after a scale in activity completes before another scale in activity can start. The cooldown period is used to block subsequent scale in requests until it has expired. You should scale in conservatively to protect your application's availability. However, if another alarm triggers a scale out policy during the cooldown period after a scale-in, application autoscaling scales out your scalable target immediately. </p>
+-- Required key: TargetValue
+-- @return AutoScalingTargetTrackingScalingPolicyConfigurationUpdate structure as a key-value pair table
+function M.AutoScalingTargetTrackingScalingPolicyConfigurationUpdate(args)
+	assert(args, "You must provide an argument table when creating AutoScalingTargetTrackingScalingPolicyConfigurationUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ScaleOutCooldown"] = args["ScaleOutCooldown"],
+		["TargetValue"] = args["TargetValue"],
+		["DisableScaleIn"] = args["DisableScaleIn"],
+		["ScaleInCooldown"] = args["ScaleInCooldown"],
+	}
+	asserts.AssertAutoScalingTargetTrackingScalingPolicyConfigurationUpdate(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1220,168 +2449,6 @@ function M.StreamSpecification(args)
     }
 end
 
-keys.UpdateItemInput = { ["AttributeUpdates"] = true, ["ConditionalOperator"] = true, ["ExpressionAttributeNames"] = true, ["ReturnValues"] = true, ["ConditionExpression"] = true, ["TableName"] = true, ["ReturnItemCollectionMetrics"] = true, ["ReturnConsumedCapacity"] = true, ["UpdateExpression"] = true, ["ExpressionAttributeValues"] = true, ["Key"] = true, ["Expected"] = true, nil }
-
-function asserts.AssertUpdateItemInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateItemInput to be of type 'table'")
-	assert(struct["TableName"], "Expected key TableName to exist in table")
-	assert(struct["Key"], "Expected key Key to exist in table")
-	if struct["AttributeUpdates"] then asserts.AssertAttributeUpdates(struct["AttributeUpdates"]) end
-	if struct["ConditionalOperator"] then asserts.AssertConditionalOperator(struct["ConditionalOperator"]) end
-	if struct["ExpressionAttributeNames"] then asserts.AssertExpressionAttributeNameMap(struct["ExpressionAttributeNames"]) end
-	if struct["ReturnValues"] then asserts.AssertReturnValue(struct["ReturnValues"]) end
-	if struct["ConditionExpression"] then asserts.AssertConditionExpression(struct["ConditionExpression"]) end
-	if struct["TableName"] then asserts.AssertTableName(struct["TableName"]) end
-	if struct["ReturnItemCollectionMetrics"] then asserts.AssertReturnItemCollectionMetrics(struct["ReturnItemCollectionMetrics"]) end
-	if struct["ReturnConsumedCapacity"] then asserts.AssertReturnConsumedCapacity(struct["ReturnConsumedCapacity"]) end
-	if struct["UpdateExpression"] then asserts.AssertUpdateExpression(struct["UpdateExpression"]) end
-	if struct["ExpressionAttributeValues"] then asserts.AssertExpressionAttributeValueMap(struct["ExpressionAttributeValues"]) end
-	if struct["Key"] then asserts.AssertKey(struct["Key"]) end
-	if struct["Expected"] then asserts.AssertExpectedAttributeMap(struct["Expected"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.UpdateItemInput[k], "UpdateItemInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UpdateItemInput
--- <p>Represents the input of an <code>UpdateItem</code> operation.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * AttributeUpdates [AttributeUpdates] <p>This is a legacy parameter. Use <code>UpdateExpression</code> instead. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributeUpdates.html">AttributeUpdates</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
--- * ConditionalOperator [ConditionalOperator] <p>This is a legacy parameter. Use <code>ConditionExpression</code> instead. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html">ConditionalOperator</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
--- * ExpressionAttributeNames [ExpressionAttributeNameMap] <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p> <ul> <li> <p>To access an attribute whose name conflicts with a DynamoDB reserved word.</p> </li> <li> <p>To create a placeholder for repeating occurrences of an attribute name in an expression.</p> </li> <li> <p>To prevent special characters in an attribute name from being misinterpreted in an expression.</p> </li> </ul> <p>Use the <b>#</b> character in an expression to dereference an attribute name. For example, consider the following attribute name:</p> <ul> <li> <p> <code>Percentile</code> </p> </li> </ul> <p>The name of this attribute conflicts with a reserved word, so it cannot be used directly in an expression. (For the complete list of reserved words, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this, you could specify the following for <code>ExpressionAttributeNames</code>:</p> <ul> <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could then use this substitution in an expression, as in this example:</p> <ul> <li> <p> <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the <b>:</b> character are <i>expression attribute values</i>, which are placeholders for the actual value at runtime.</p> </note> <p>For more information on expression attribute names, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
--- * ReturnValues [ReturnValue] <p>Use <code>ReturnValues</code> if you want to get the item attributes as they appeared either before or after they were updated. For <code>UpdateItem</code>, the valid values are:</p> <ul> <li> <p> <code>NONE</code> - If <code>ReturnValues</code> is not specified, or if its value is <code>NONE</code>, then nothing is returned. (This setting is the default for <code>ReturnValues</code>.)</p> </li> <li> <p> <code>ALL_OLD</code> - Returns all of the attributes of the item, as they appeared before the UpdateItem operation.</p> </li> <li> <p> <code>UPDATED_OLD</code> - Returns only the updated attributes, as they appeared before the UpdateItem operation.</p> </li> <li> <p> <code>ALL_NEW</code> - Returns all of the attributes of the item, as they appear after the UpdateItem operation.</p> </li> <li> <p> <code>UPDATED_NEW</code> - Returns only the updated attributes, as they appear after the UpdateItem operation.</p> </li> </ul> <p>There is no additional cost associated with requesting a return value aside from the small network and processing overhead of receiving a larger response. No Read Capacity Units are consumed.</p> <p>Values returned are strongly consistent</p>
--- * ConditionExpression [ConditionExpression] <p>A condition that must be satisfied in order for a conditional update to succeed.</p> <p>An expression can contain any of the following:</p> <ul> <li> <p>Functions: <code>attribute_exists | attribute_not_exists | attribute_type | contains | begins_with | size</code> </p> <p>These function names are case-sensitive.</p> </li> <li> <p>Comparison operators: <code>= | &lt;&gt; | &lt; | &gt; | &lt;= | &gt;= | BETWEEN | IN </code> </p> </li> <li> <p> Logical operators: <code>AND | OR | NOT</code> </p> </li> </ul> <p>For more information on condition expressions, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Specifying Conditions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
--- * TableName [TableName] <p>The name of the table containing the item to update.</p>
--- * ReturnItemCollectionMetrics [ReturnItemCollectionMetrics] <p>Determines whether item collection metrics are returned. If set to <code>SIZE</code>, the response includes statistics about item collections, if any, that were modified during the operation are returned in the response. If set to <code>NONE</code> (the default), no statistics are returned.</p>
--- * ReturnConsumedCapacity [ReturnConsumedCapacity] 
--- * UpdateExpression [UpdateExpression] <p>An expression that defines one or more attributes to be updated, the action to be performed on them, and new value(s) for them.</p> <p>The following action values are available for <code>UpdateExpression</code>.</p> <ul> <li> <p> <code>SET</code> - Adds one or more attributes and values to an item. If any of these attribute already exist, they are replaced by the new values. You can also use <code>SET</code> to add or subtract from an attribute that is of type Number. For example: <code>SET myNum = myNum + :val</code> </p> <p> <code>SET</code> supports the following functions:</p> <ul> <li> <p> <code>if_not_exists (path, operand)</code> - if the item does not contain an attribute at the specified path, then <code>if_not_exists</code> evaluates to operand; otherwise, it evaluates to path. You can use this function to avoid overwriting an attribute that may already be present in the item.</p> </li> <li> <p> <code>list_append (operand, operand)</code> - evaluates to a list with a new element added to it. You can append the new element to the start or the end of the list by reversing the order of the operands.</p> </li> </ul> <p>These function names are case-sensitive.</p> </li> <li> <p> <code>REMOVE</code> - Removes one or more attributes from an item.</p> </li> <li> <p> <code>ADD</code> - Adds the specified value to the item, if the attribute does not already exist. If the attribute does exist, then the behavior of <code>ADD</code> depends on the data type of the attribute:</p> <ul> <li> <p>If the existing attribute is a number, and if <code>Value</code> is also a number, then <code>Value</code> is mathematically added to the existing attribute. If <code>Value</code> is a negative number, then it is subtracted from the existing attribute.</p> <note> <p>If you use <code>ADD</code> to increment or decrement a number value for an item that doesn't exist before the update, DynamoDB uses <code>0</code> as the initial value.</p> <p>Similarly, if you use <code>ADD</code> for an existing item to increment or decrement an attribute value that doesn't exist before the update, DynamoDB uses <code>0</code> as the initial value. For example, suppose that the item you want to update doesn't have an attribute named <i>itemcount</i>, but you decide to <code>ADD</code> the number <code>3</code> to this attribute anyway. DynamoDB will create the <i>itemcount</i> attribute, set its initial value to <code>0</code>, and finally add <code>3</code> to it. The result will be a new <i>itemcount</i> attribute in the item, with a value of <code>3</code>.</p> </note> </li> <li> <p>If the existing data type is a set and if <code>Value</code> is also a set, then <code>Value</code> is added to the existing set. For example, if the attribute value is the set <code>[1,2]</code>, and the <code>ADD</code> action specified <code>[3]</code>, then the final attribute value is <code>[1,2,3]</code>. An error occurs if an <code>ADD</code> action is specified for a set attribute and the attribute type specified does not match the existing set type. </p> <p>Both sets must have the same primitive data type. For example, if the existing data type is a set of strings, the <code>Value</code> must also be a set of strings.</p> </li> </ul> <important> <p>The <code>ADD</code> action only supports Number and set data types. In addition, <code>ADD</code> can only be used on top-level attributes, not nested attributes.</p> </important> </li> <li> <p> <code>DELETE</code> - Deletes an element from a set.</p> <p>If a set of values is specified, then those values are subtracted from the old set. For example, if the attribute value was the set <code>[a,b,c]</code> and the <code>DELETE</code> action specifies <code>[a,c]</code>, then the final attribute value is <code>[b]</code>. Specifying an empty set is an error.</p> <important> <p>The <code>DELETE</code> action only supports set data types. In addition, <code>DELETE</code> can only be used on top-level attributes, not nested attributes.</p> </important> </li> </ul> <p>You can have many actions in a single expression, such as the following: <code>SET a=:value1, b=:value2 DELETE :value3, :value4, :value5</code> </p> <p>For more information on update expressions, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Modifying.html">Modifying Items and Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
--- * ExpressionAttributeValues [ExpressionAttributeValueMap] <p>One or more values that can be substituted in an expression.</p> <p>Use the <b>:</b> (colon) character in an expression to dereference an attribute value. For example, suppose that you wanted to check whether the value of the <i>ProductStatus</i> attribute was one of the following: </p> <p> <code>Available | Backordered | Discontinued</code> </p> <p>You would first need to specify <code>ExpressionAttributeValues</code> as follows:</p> <p> <code>{ ":avail":{"S":"Available"}, ":back":{"S":"Backordered"}, ":disc":{"S":"Discontinued"} }</code> </p> <p>You could then use these values in an expression, such as this:</p> <p> <code>ProductStatus IN (:avail, :back, :disc)</code> </p> <p>For more information on expression attribute values, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Specifying Conditions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
--- * Key [Key] <p>The primary key of the item to be updated. Each element consists of an attribute name and a value for that attribute.</p> <p>For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for both the partition key and the sort key.</p>
--- * Expected [ExpectedAttributeMap] <p>This is a legacy parameter. Use <code>ConditionExpresssion</code> instead. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html">Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
--- Required key: TableName
--- Required key: Key
--- @return UpdateItemInput structure as a key-value pair table
-function M.UpdateItemInput(args)
-	assert(args, "You must provide an argument table when creating UpdateItemInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["AttributeUpdates"] = args["AttributeUpdates"],
-		["ConditionalOperator"] = args["ConditionalOperator"],
-		["ExpressionAttributeNames"] = args["ExpressionAttributeNames"],
-		["ReturnValues"] = args["ReturnValues"],
-		["ConditionExpression"] = args["ConditionExpression"],
-		["TableName"] = args["TableName"],
-		["ReturnItemCollectionMetrics"] = args["ReturnItemCollectionMetrics"],
-		["ReturnConsumedCapacity"] = args["ReturnConsumedCapacity"],
-		["UpdateExpression"] = args["UpdateExpression"],
-		["ExpressionAttributeValues"] = args["ExpressionAttributeValues"],
-		["Key"] = args["Key"],
-		["Expected"] = args["Expected"],
-	}
-	asserts.AssertUpdateItemInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ConditionalCheckFailedException = { ["message"] = true, nil }
-
-function asserts.AssertConditionalCheckFailedException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ConditionalCheckFailedException to be of type 'table'")
-	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ConditionalCheckFailedException[k], "ConditionalCheckFailedException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ConditionalCheckFailedException
--- <p>A condition specified in the operation could not be evaluated.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [ErrorMessage] <p>The conditional request failed.</p>
--- @return ConditionalCheckFailedException structure as a key-value pair table
-function M.ConditionalCheckFailedException(args)
-	assert(args, "You must provide an argument table when creating ConditionalCheckFailedException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertConditionalCheckFailedException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.UpdateTableInput = { ["GlobalSecondaryIndexUpdates"] = true, ["ProvisionedThroughput"] = true, ["StreamSpecification"] = true, ["TableName"] = true, ["AttributeDefinitions"] = true, nil }
-
-function asserts.AssertUpdateTableInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateTableInput to be of type 'table'")
-	assert(struct["TableName"], "Expected key TableName to exist in table")
-	if struct["GlobalSecondaryIndexUpdates"] then asserts.AssertGlobalSecondaryIndexUpdateList(struct["GlobalSecondaryIndexUpdates"]) end
-	if struct["ProvisionedThroughput"] then asserts.AssertProvisionedThroughput(struct["ProvisionedThroughput"]) end
-	if struct["StreamSpecification"] then asserts.AssertStreamSpecification(struct["StreamSpecification"]) end
-	if struct["TableName"] then asserts.AssertTableName(struct["TableName"]) end
-	if struct["AttributeDefinitions"] then asserts.AssertAttributeDefinitions(struct["AttributeDefinitions"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.UpdateTableInput[k], "UpdateTableInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UpdateTableInput
--- <p>Represents the input of an <code>UpdateTable</code> operation.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * GlobalSecondaryIndexUpdates [GlobalSecondaryIndexUpdateList] <p>An array of one or more global secondary indexes for the table. For each index in the array, you can request one action:</p> <ul> <li> <p> <code>Create</code> - add a new global secondary index to the table.</p> </li> <li> <p> <code>Update</code> - modify the provisioned throughput settings of an existing global secondary index.</p> </li> <li> <p> <code>Delete</code> - remove a global secondary index from the table.</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html">Managing Global Secondary Indexes</a> in the <i>Amazon DynamoDB Developer Guide</i>. </p>
--- * ProvisionedThroughput [ProvisionedThroughput] <p>The new provisioned throughput settings for the specified table or index.</p>
--- * StreamSpecification [StreamSpecification] <p>Represents the DynamoDB Streams configuration for the table.</p> <note> <p>You will receive a <code>ResourceInUseException</code> if you attempt to enable a stream on a table that already has a stream, or if you attempt to disable a stream on a table which does not have a stream.</p> </note>
--- * TableName [TableName] <p>The name of the table to be updated.</p>
--- * AttributeDefinitions [AttributeDefinitions] <p>An array of attributes that describe the key schema for the table and indexes. If you are adding a new global secondary index to the table, <code>AttributeDefinitions</code> must include the key element(s) of the new index.</p>
--- Required key: TableName
--- @return UpdateTableInput structure as a key-value pair table
-function M.UpdateTableInput(args)
-	assert(args, "You must provide an argument table when creating UpdateTableInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["GlobalSecondaryIndexUpdates"] = args["GlobalSecondaryIndexUpdates"],
-		["ProvisionedThroughput"] = args["ProvisionedThroughput"],
-		["StreamSpecification"] = args["StreamSpecification"],
-		["TableName"] = args["TableName"],
-		["AttributeDefinitions"] = args["AttributeDefinitions"],
-	}
-	asserts.AssertUpdateTableInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.DescribeTableInput = { ["TableName"] = true, nil }
 
 function asserts.AssertDescribeTableInput(struct)
@@ -1413,6 +2480,55 @@ function M.DescribeTableInput(args)
 		["TableName"] = args["TableName"],
 	}
 	asserts.AssertDescribeTableInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.AutoScalingSettingsDescription = { ["ScalingPolicies"] = true, ["AutoScalingDisabled"] = true, ["AutoScalingRoleArn"] = true, ["MinimumUnits"] = true, ["MaximumUnits"] = true, nil }
+
+function asserts.AssertAutoScalingSettingsDescription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected AutoScalingSettingsDescription to be of type 'table'")
+	if struct["ScalingPolicies"] then asserts.AssertAutoScalingPolicyDescriptionList(struct["ScalingPolicies"]) end
+	if struct["AutoScalingDisabled"] then asserts.AssertBooleanObject(struct["AutoScalingDisabled"]) end
+	if struct["AutoScalingRoleArn"] then asserts.AssertString(struct["AutoScalingRoleArn"]) end
+	if struct["MinimumUnits"] then asserts.AssertPositiveLongObject(struct["MinimumUnits"]) end
+	if struct["MaximumUnits"] then asserts.AssertPositiveLongObject(struct["MaximumUnits"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.AutoScalingSettingsDescription[k], "AutoScalingSettingsDescription contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type AutoScalingSettingsDescription
+-- <p>Represents the autoscaling settings for a global table or global secondary index.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ScalingPolicies [AutoScalingPolicyDescriptionList] <p>Information about the scaling policies.</p>
+-- * AutoScalingDisabled [BooleanObject] <p>Disabled autoscaling for this global table or global secondary index.</p>
+-- * AutoScalingRoleArn [String] <p>Role ARN used for configuring autoScaling policy.</p>
+-- * MinimumUnits [PositiveLongObject] <p>The minimum capacity units that a global table or global secondary index should be scaled down to.</p>
+-- * MaximumUnits [PositiveLongObject] <p>The maximum capacity units that a global table or global secondary index should be scaled up to.</p>
+-- @return AutoScalingSettingsDescription structure as a key-value pair table
+function M.AutoScalingSettingsDescription(args)
+	assert(args, "You must provide an argument table when creating AutoScalingSettingsDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ScalingPolicies"] = args["ScalingPolicies"],
+		["AutoScalingDisabled"] = args["AutoScalingDisabled"],
+		["AutoScalingRoleArn"] = args["AutoScalingRoleArn"],
+		["MinimumUnits"] = args["MinimumUnits"],
+		["MaximumUnits"] = args["MaximumUnits"],
+	}
+	asserts.AssertAutoScalingSettingsDescription(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1488,7 +2604,7 @@ end
 -- <p>Represents the input of a <code>BatchWriteItem</code> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * RequestItems [BatchWriteItemRequestMap] <p>A map of one or more table names and, for each table, a list of operations to be performed (<code>DeleteRequest</code> or <code>PutRequest</code>). Each element in the map consists of the following:</p> <ul> <li> <p> <code>DeleteRequest</code> - Perform a <code>DeleteItem</code> operation on the specified item. The item to be deleted is identified by a <code>Key</code> subelement:</p> <ul> <li> <p> <code>Key</code> - A map of primary key attribute values that uniquely identify the ! item. Each entry in this map consists of an attribute name and an attribute value. For each primary key, you must provide <i>all</i> of the key attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for <i>both</i> the partition key and the sort key.</p> </li> </ul> </li> <li> <p> <code>PutRequest</code> - Perform a <code>PutItem</code> operation on the specified item. The item to be put is identified by an <code>Item</code> subelement:</p> <ul> <li> <p> <code>Item</code> - A map of attributes and their values. Each entry in this map consists of an attribute name and an attribute value. Attribute values must not be null; string and binary type attributes must have lengths greater than zero; and set type attributes must not be empty. Requests that contain empty values will be rejected with a <code>ValidationException</code> exception.</p> <p>If you specify any attributes that are part of an index key, then the data types for those attributes must match those of the schema in the table's attribute definition.</p> </li> </ul> </li> </ul>
+-- * RequestItems [BatchWriteItemRequestMap] <p>A map of one or more table names and, for each table, a list of operations to be performed (<code>DeleteRequest</code> or <code>PutRequest</code>). Each element in the map consists of the following:</p> <ul> <li> <p> <code>DeleteRequest</code> - Perform a <code>DeleteItem</code> operation on the specified item. The item to be deleted is identified by a <code>Key</code> subelement:</p> <ul> <li> <p> <code>Key</code> - A map of primary key attribute values that uniquely identify the item. Each entry in this map consists of an attribute name and an attribute value. For each primary key, you must provide <i>all</i> of the key attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for <i>both</i> the partition key and the sort key.</p> </li> </ul> </li> <li> <p> <code>PutRequest</code> - Perform a <code>PutItem</code> operation on the specified item. The item to be put is identified by an <code>Item</code> subelement:</p> <ul> <li> <p> <code>Item</code> - A map of attributes and their values. Each entry in this map consists of an attribute name and an attribute value. Attribute values must not be null; string and binary type attributes must have lengths greater than zero; and set type attributes must not be empty. Requests that contain empty values will be rejected with a <code>ValidationException</code> exception.</p> <p>If you specify any attributes that are part of an index key, then the data types for those attributes must match those of the schema in the table's attribute definition.</p> </li> </ul> </li> </ul>
 -- * ReturnConsumedCapacity [ReturnConsumedCapacity] 
 -- * ReturnItemCollectionMetrics [ReturnItemCollectionMetrics] <p>Determines whether item collection metrics are returned. If set to <code>SIZE</code>, the response includes statistics about item collections, if any, that were modified during the operation are returned in the response. If set to <code>NONE</code> (the default), no statistics are returned.</p>
 -- Required key: RequestItems
@@ -1507,6 +2623,60 @@ function M.BatchWriteItemInput(args)
 		["ReturnItemCollectionMetrics"] = args["ReturnItemCollectionMetrics"],
 	}
 	asserts.AssertBatchWriteItemInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateTableInput = { ["GlobalSecondaryIndexUpdates"] = true, ["AttributeDefinitions"] = true, ["ProvisionedThroughput"] = true, ["TableName"] = true, ["StreamSpecification"] = true, ["SSESpecification"] = true, nil }
+
+function asserts.AssertUpdateTableInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateTableInput to be of type 'table'")
+	assert(struct["TableName"], "Expected key TableName to exist in table")
+	if struct["GlobalSecondaryIndexUpdates"] then asserts.AssertGlobalSecondaryIndexUpdateList(struct["GlobalSecondaryIndexUpdates"]) end
+	if struct["AttributeDefinitions"] then asserts.AssertAttributeDefinitions(struct["AttributeDefinitions"]) end
+	if struct["ProvisionedThroughput"] then asserts.AssertProvisionedThroughput(struct["ProvisionedThroughput"]) end
+	if struct["TableName"] then asserts.AssertTableName(struct["TableName"]) end
+	if struct["StreamSpecification"] then asserts.AssertStreamSpecification(struct["StreamSpecification"]) end
+	if struct["SSESpecification"] then asserts.AssertSSESpecification(struct["SSESpecification"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateTableInput[k], "UpdateTableInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateTableInput
+-- <p>Represents the input of an <code>UpdateTable</code> operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GlobalSecondaryIndexUpdates [GlobalSecondaryIndexUpdateList] <p>An array of one or more global secondary indexes for the table. For each index in the array, you can request one action:</p> <ul> <li> <p> <code>Create</code> - add a new global secondary index to the table.</p> </li> <li> <p> <code>Update</code> - modify the provisioned throughput settings of an existing global secondary index.</p> </li> <li> <p> <code>Delete</code> - remove a global secondary index from the table.</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html">Managing Global Secondary Indexes</a> in the <i>Amazon DynamoDB Developer Guide</i>. </p>
+-- * AttributeDefinitions [AttributeDefinitions] <p>An array of attributes that describe the key schema for the table and indexes. If you are adding a new global secondary index to the table, <code>AttributeDefinitions</code> must include the key element(s) of the new index.</p>
+-- * ProvisionedThroughput [ProvisionedThroughput] <p>The new provisioned throughput settings for the specified table or index.</p>
+-- * TableName [TableName] <p>The name of the table to be updated.</p>
+-- * StreamSpecification [StreamSpecification] <p>Represents the DynamoDB Streams configuration for the table.</p> <note> <p>You will receive a <code>ResourceInUseException</code> if you attempt to enable a stream on a table that already has a stream, or if you attempt to disable a stream on a table which does not have a stream.</p> </note>
+-- * SSESpecification [SSESpecification] <p>The new server-side encryption settings for the specified table.</p>
+-- Required key: TableName
+-- @return UpdateTableInput structure as a key-value pair table
+function M.UpdateTableInput(args)
+	assert(args, "You must provide an argument table when creating UpdateTableInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GlobalSecondaryIndexUpdates"] = args["GlobalSecondaryIndexUpdates"],
+		["AttributeDefinitions"] = args["AttributeDefinitions"],
+		["ProvisionedThroughput"] = args["ProvisionedThroughput"],
+		["TableName"] = args["TableName"],
+		["StreamSpecification"] = args["StreamSpecification"],
+		["SSESpecification"] = args["SSESpecification"],
+	}
+	asserts.AssertUpdateTableInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1547,6 +2717,45 @@ function M.ItemCollectionMetrics(args)
 		["SizeEstimateRangeGB"] = args["SizeEstimateRangeGB"],
 	}
 	asserts.AssertItemCollectionMetrics(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeGlobalTableInput = { ["GlobalTableName"] = true, nil }
+
+function asserts.AssertDescribeGlobalTableInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeGlobalTableInput to be of type 'table'")
+	assert(struct["GlobalTableName"], "Expected key GlobalTableName to exist in table")
+	if struct["GlobalTableName"] then asserts.AssertTableName(struct["GlobalTableName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeGlobalTableInput[k], "DescribeGlobalTableInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeGlobalTableInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GlobalTableName [TableName] <p>The name of the global table.</p>
+-- Required key: GlobalTableName
+-- @return DescribeGlobalTableInput structure as a key-value pair table
+function M.DescribeGlobalTableInput(args)
+	assert(args, "You must provide an argument table when creating DescribeGlobalTableInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GlobalTableName"] = args["GlobalTableName"],
+	}
+	asserts.AssertDescribeGlobalTableInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1599,25 +2808,27 @@ function M.AttributeDefinition(args)
     }
 end
 
-keys.DeleteTableOutput = { ["TableDescription"] = true, nil }
+keys.DescribeGlobalTableSettingsInput = { ["GlobalTableName"] = true, nil }
 
-function asserts.AssertDeleteTableOutput(struct)
+function asserts.AssertDescribeGlobalTableSettingsInput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteTableOutput to be of type 'table'")
-	if struct["TableDescription"] then asserts.AssertTableDescription(struct["TableDescription"]) end
+	assert(type(struct) == "table", "Expected DescribeGlobalTableSettingsInput to be of type 'table'")
+	assert(struct["GlobalTableName"], "Expected key GlobalTableName to exist in table")
+	if struct["GlobalTableName"] then asserts.AssertTableName(struct["GlobalTableName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteTableOutput[k], "DeleteTableOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeGlobalTableSettingsInput[k], "DescribeGlobalTableSettingsInput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteTableOutput
--- <p>Represents the output of a <code>DeleteTable</code> operation.</p>
+--- Create a structure of type DescribeGlobalTableSettingsInput
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * TableDescription [TableDescription] <p>Represents the properties of a table.</p>
--- @return DeleteTableOutput structure as a key-value pair table
-function M.DeleteTableOutput(args)
-	assert(args, "You must provide an argument table when creating DeleteTableOutput")
+-- * GlobalTableName [TableName] <p>The name of the global table to describe.</p>
+-- Required key: GlobalTableName
+-- @return DescribeGlobalTableSettingsInput structure as a key-value pair table
+function M.DescribeGlobalTableSettingsInput(args)
+	assert(args, "You must provide an argument table when creating DescribeGlobalTableSettingsInput")
     local query_args = { 
     }
     local uri_args = { 
@@ -1625,9 +2836,9 @@ function M.DeleteTableOutput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["TableDescription"] = args["TableDescription"],
+		["GlobalTableName"] = args["GlobalTableName"],
 	}
-	asserts.AssertDeleteTableOutput(all_args)
+	asserts.AssertDescribeGlobalTableSettingsInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1665,6 +2876,57 @@ function M.Capacity(args)
 		["CapacityUnits"] = args["CapacityUnits"],
 	}
 	asserts.AssertCapacity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateGlobalTableSettingsInput = { ["GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate"] = true, ["GlobalTableName"] = true, ["ReplicaSettingsUpdate"] = true, ["GlobalTableProvisionedWriteCapacityUnits"] = true, ["GlobalTableGlobalSecondaryIndexSettingsUpdate"] = true, nil }
+
+function asserts.AssertUpdateGlobalTableSettingsInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateGlobalTableSettingsInput to be of type 'table'")
+	assert(struct["GlobalTableName"], "Expected key GlobalTableName to exist in table")
+	if struct["GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate"] then asserts.AssertAutoScalingSettingsUpdate(struct["GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate"]) end
+	if struct["GlobalTableName"] then asserts.AssertTableName(struct["GlobalTableName"]) end
+	if struct["ReplicaSettingsUpdate"] then asserts.AssertReplicaSettingsUpdateList(struct["ReplicaSettingsUpdate"]) end
+	if struct["GlobalTableProvisionedWriteCapacityUnits"] then asserts.AssertPositiveLongObject(struct["GlobalTableProvisionedWriteCapacityUnits"]) end
+	if struct["GlobalTableGlobalSecondaryIndexSettingsUpdate"] then asserts.AssertGlobalTableGlobalSecondaryIndexSettingsUpdateList(struct["GlobalTableGlobalSecondaryIndexSettingsUpdate"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateGlobalTableSettingsInput[k], "UpdateGlobalTableSettingsInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateGlobalTableSettingsInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate [AutoScalingSettingsUpdate] <p>AutoScaling settings for managing provisioned write capacity for the global table.</p>
+-- * GlobalTableName [TableName] <p>The name of the global table</p>
+-- * ReplicaSettingsUpdate [ReplicaSettingsUpdateList] <p>Represents the settings for a global table in a region that will be modified.</p>
+-- * GlobalTableProvisionedWriteCapacityUnits [PositiveLongObject] <p>The maximum number of writes consumed per second before DynamoDB returns a <code>ThrottlingException.</code> </p>
+-- * GlobalTableGlobalSecondaryIndexSettingsUpdate [GlobalTableGlobalSecondaryIndexSettingsUpdateList] <p>Represents the settings of a global secondary index for a global table that will be modified.</p>
+-- Required key: GlobalTableName
+-- @return UpdateGlobalTableSettingsInput structure as a key-value pair table
+function M.UpdateGlobalTableSettingsInput(args)
+	assert(args, "You must provide an argument table when creating UpdateGlobalTableSettingsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate"] = args["GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate"],
+		["GlobalTableName"] = args["GlobalTableName"],
+		["ReplicaSettingsUpdate"] = args["ReplicaSettingsUpdate"],
+		["GlobalTableProvisionedWriteCapacityUnits"] = args["GlobalTableProvisionedWriteCapacityUnits"],
+		["GlobalTableGlobalSecondaryIndexSettingsUpdate"] = args["GlobalTableGlobalSecondaryIndexSettingsUpdate"],
+	}
+	asserts.AssertUpdateGlobalTableSettingsInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1762,25 +3024,25 @@ function M.ListTablesInput(args)
     }
 end
 
-keys.LimitExceededException = { ["message"] = true, nil }
+keys.UpdateTableOutput = { ["TableDescription"] = true, nil }
 
-function asserts.AssertLimitExceededException(struct)
+function asserts.AssertUpdateTableOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
-	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected UpdateTableOutput to be of type 'table'")
+	if struct["TableDescription"] then asserts.AssertTableDescription(struct["TableDescription"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.UpdateTableOutput[k], "UpdateTableOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type LimitExceededException
--- <p>The number of concurrent table requests (cumulative number of tables in the <code>CREATING</code>, <code>DELETING</code> or <code>UPDATING</code> state) exceeds the maximum allowed of 10.</p> <p>Also, for tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at any point in time. Do not attempt to create more than one such table simultaneously.</p> <p>The total limit of tables in the <code>ACTIVE</code> state is 250.</p>
+--- Create a structure of type UpdateTableOutput
+-- <p>Represents the output of an <code>UpdateTable</code> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [ErrorMessage] <p>Too many operations for a given subscriber.</p>
--- @return LimitExceededException structure as a key-value pair table
-function M.LimitExceededException(args)
-	assert(args, "You must provide an argument table when creating LimitExceededException")
+-- * TableDescription [TableDescription] <p>Represents the properties of the table.</p>
+-- @return UpdateTableOutput structure as a key-value pair table
+function M.UpdateTableOutput(args)
+	assert(args, "You must provide an argument table when creating UpdateTableOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -1788,9 +3050,48 @@ function M.LimitExceededException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["TableDescription"] = args["TableDescription"],
 	}
-	asserts.AssertLimitExceededException(all_args)
+	asserts.AssertUpdateTableOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeEndpointsResponse = { ["Endpoints"] = true, nil }
+
+function asserts.AssertDescribeEndpointsResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeEndpointsResponse to be of type 'table'")
+	assert(struct["Endpoints"], "Expected key Endpoints to exist in table")
+	if struct["Endpoints"] then asserts.AssertEndpoints(struct["Endpoints"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeEndpointsResponse[k], "DescribeEndpointsResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeEndpointsResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Endpoints [Endpoints] 
+-- Required key: Endpoints
+-- @return DescribeEndpointsResponse structure as a key-value pair table
+function M.DescribeEndpointsResponse(args)
+	assert(args, "You must provide an argument table when creating DescribeEndpointsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Endpoints"] = args["Endpoints"],
+	}
+	asserts.AssertDescribeEndpointsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1842,25 +3143,25 @@ function M.GlobalSecondaryIndexUpdate(args)
     }
 end
 
-keys.ResourceInUseException = { ["message"] = true, nil }
+keys.DescribeBackupOutput = { ["BackupDescription"] = true, nil }
 
-function asserts.AssertResourceInUseException(struct)
+function asserts.AssertDescribeBackupOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceInUseException to be of type 'table'")
-	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected DescribeBackupOutput to be of type 'table'")
+	if struct["BackupDescription"] then asserts.AssertBackupDescription(struct["BackupDescription"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ResourceInUseException[k], "ResourceInUseException contains unknown key " .. tostring(k))
+		assert(keys.DescribeBackupOutput[k], "DescribeBackupOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ResourceInUseException
--- <p>The operation conflicts with the resource's availability. For example, you attempted to recreate an existing table, or tried to delete a table currently in the <code>CREATING</code> state.</p>
+--- Create a structure of type DescribeBackupOutput
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [ErrorMessage] <p>The resource which is being attempted to be changed is in use.</p>
--- @return ResourceInUseException structure as a key-value pair table
-function M.ResourceInUseException(args)
-	assert(args, "You must provide an argument table when creating ResourceInUseException")
+-- * BackupDescription [BackupDescription] <p>Contains the description of the backup created for the table.</p>
+-- @return DescribeBackupOutput structure as a key-value pair table
+function M.DescribeBackupOutput(args)
+	assert(args, "You must provide an argument table when creating DescribeBackupOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -1868,9 +3169,9 @@ function M.ResourceInUseException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["BackupDescription"] = args["BackupDescription"],
 	}
-	asserts.AssertResourceInUseException(all_args)
+	asserts.AssertDescribeBackupOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1925,8 +3226,8 @@ end
 -- * Limit [PositiveIntegerObject] <p>The maximum number of items to evaluate (not necessarily the number of matching items). If DynamoDB processes the number of items up to the limit while processing the results, it stops the operation and returns the matching values up to that point, and a key in <code>LastEvaluatedKey</code> to apply in a subsequent operation, so that you can pick up where you left off. Also, if the processed data set size exceeds 1 MB before DynamoDB reaches this limit, it stops the operation and returns the matching values up to the limit, and a key in <code>LastEvaluatedKey</code> to apply in a subsequent operation to continue the operation. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html">Query and Scan</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 -- * ExpressionAttributeValues [ExpressionAttributeValueMap] <p>One or more values that can be substituted in an expression.</p> <p>Use the <b>:</b> (colon) character in an expression to dereference an attribute value. For example, suppose that you wanted to check whether the value of the <i>ProductStatus</i> attribute was one of the following: </p> <p> <code>Available | Backordered | Discontinued</code> </p> <p>You would first need to specify <code>ExpressionAttributeValues</code> as follows:</p> <p> <code>{ ":avail":{"S":"Available"}, ":back":{"S":"Backordered"}, ":disc":{"S":"Discontinued"} }</code> </p> <p>You could then use these values in an expression, such as this:</p> <p> <code>ProductStatus IN (:avail, :back, :disc)</code> </p> <p>For more information on expression attribute values, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Specifying Conditions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 -- * KeyConditions [KeyConditions] <p>This is a legacy parameter. Use <code>KeyConditionExpression</code> instead. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.KeyConditions.html">KeyConditions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
--- * KeyConditionExpression [KeyExpression] <p>The condition that specifies the key value(s) for items to be retrieved by the <code>Query</code> action.</p> <p>The condition must perform an equality test on a single partition key value. The condition can also perform one of several comparison tests on a single sort key value. <code>Query</code> can use <code>KeyConditionExpression</code> to retrieve one item with a given partition key value and sort key value, or several items that have the same partition key value but different sort key values.</p> <p>The partition key equality test is required, and must be specified in the following format:</p> <p> <code>partitionKeyName</code> <i>=</i> <code>:partitionkeyval</code> </p> <p>If you also want to provide a condition for the sort key, it must be combined using <code>AND</code> with the condition for the sort key. Following is an example, using the <b>=</b> comparison operator for the sort key:</p> <p> <code>partitionKeyName</code> <code>=</code> <code>:partitionkeyval</code> <code>AND</code> <code>sortKeyName</code> <code>=</code> <code>:sortkeyval</code> </p> <p>Valid comparisons for the sort key condition are as follows:</p> <ul> <li> <p> <code>sortKeyName</code> <code>=</code> <code>:sortkeyval</code> - true if the sort key value is equal to <code>:sortkeyval</code>.</p> </li> <li> <p> <code>sortKeyName</code> <code>&lt;</code> <code>:sortkeyval</code> - true if the sort key value is less than <code>:sortkeyval</code>.</p> </li> <li> <p> <code>sortKeyName</code> <code>&lt;=</code> <code>:sortkeyval</code> - true if the sort key value is less than or equal to <code>:sortkeyval</code>.</p> </li> <li> <p> <code>sortKeyName</code> <code>&gt;</code> <code>:sortkeyval</code> - true if the sort key value is greater than <code>:sortkeyval</code>.</p> </li> <li> <p> <code>sortKeyName</code> <code>&gt;= </code> <code>:sortkeyval</code> - true if the sort key value is greater than or equal to <code>:sortkeyval</code>.</p> </li> <li> <p> <code>sortKeyName</code> <code>BETWEEN</code> <code>:sortkeyval1</code> <code>AND</code> <code>:sortkeyval2</code> - true if the sort key value is greater than or equal to <code>:sortkeyval1</code>, and less than or equal to <code>:sortkeyval2</code>.</p> </li> <li> <p> <code>begins_with (</code> <code>sortKeyName</code>, <code>:sortkeyval</code> <code>)</code> - true if the sort key value begins with a particular operand. (You cannot use this function with a sort key that is of type Number.) Note that the function name <code>begins_with</code> is case-sensitive.</p> </li> </ul> <p>Use the <code>ExpressionAttributeValues</code> parameter to replace tokens such as <code>:partitionval</code> and <code>:sortval</code> with actual values at runtime.</p> <p>You can optionally use the <code>ExpressionAttributeNames</code> parameter to replace the names of the partition key and sort key with placeholder tokens. This option might be necessary if an attribute name conflicts with a DynamoDB reserved word. For example, the following <code>KeyConditionExpression</code> parameter causes an error because <i>Size</i> is a reserved word:</p> <ul> <li> <p> <code>Size = :myval</code> </p> </li> </ul> <p>To work around this, define a placeholder (such a <code>#S</code>) to represent the attribute name <i>Size</i>. <code>KeyConditionExpression</code> then is as follows:</p> <ul> <li> <p> <code>#S = :myval</code> </p> </li> </ul> <p>For a list of reserved words, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved Words</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p> <p>For more information on <code>ExpressionAttributeNames</code> and <code>ExpressionAttributeValues</code>, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ExpressionPlaceholders.html">Using Placeholders for Attribute Names and Values</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
--- * ScanIndexForward [BooleanObject] <p>Specifies the order for index traversal: If <code>true</code> (default), the traversal is performed in ascending order; if <code>false</code>, the traversal is performed in descending order. </p> <p>Items with the same partition key value are stored in sorted order by sort key. If the sort key data type is Number, the results are stored in numeric order. For type String, the results are stored in order of ASCII character code values. For type Binary, DynamoDB treats each byte of the binary data as unsigned.</p> <p>If <code>ScanIndexForward</code> is <code>true</code>, DynamoDB returns the results in the order in which they are stored (by sort key value). This is the default behavior. If <code>ScanIndexForward</code> is <code>false</code>, DynamoDB reads the results in reverse order by sort key value, and then returns the results to the client.</p>
+-- * KeyConditionExpression [KeyExpression] <p>The condition that specifies the key value(s) for items to be retrieved by the <code>Query</code> action.</p> <p>The condition must perform an equality test on a single partition key value.</p> <p>The condition can optionally perform one of several comparison tests on a single sort key value. This allows <code>Query</code> to retrieve one item with a given partition key value and sort key value, or several items that have the same partition key value but different sort key values.</p> <p>The partition key equality test is required, and must be specified in the following format:</p> <p> <code>partitionKeyName</code> <i>=</i> <code>:partitionkeyval</code> </p> <p>If you also want to provide a condition for the sort key, it must be combined using <code>AND</code> with the condition for the sort key. Following is an example, using the <b>=</b> comparison operator for the sort key:</p> <p> <code>partitionKeyName</code> <code>=</code> <code>:partitionkeyval</code> <code>AND</code> <code>sortKeyName</code> <code>=</code> <code>:sortkeyval</code> </p> <p>Valid comparisons for the sort key condition are as follows:</p> <ul> <li> <p> <code>sortKeyName</code> <code>=</code> <code>:sortkeyval</code> - true if the sort key value is equal to <code>:sortkeyval</code>.</p> </li> <li> <p> <code>sortKeyName</code> <code>&lt;</code> <code>:sortkeyval</code> - true if the sort key value is less than <code>:sortkeyval</code>.</p> </li> <li> <p> <code>sortKeyName</code> <code>&lt;=</code> <code>:sortkeyval</code> - true if the sort key value is less than or equal to <code>:sortkeyval</code>.</p> </li> <li> <p> <code>sortKeyName</code> <code>&gt;</code> <code>:sortkeyval</code> - true if the sort key value is greater than <code>:sortkeyval</code>.</p> </li> <li> <p> <code>sortKeyName</code> <code>&gt;= </code> <code>:sortkeyval</code> - true if the sort key value is greater than or equal to <code>:sortkeyval</code>.</p> </li> <li> <p> <code>sortKeyName</code> <code>BETWEEN</code> <code>:sortkeyval1</code> <code>AND</code> <code>:sortkeyval2</code> - true if the sort key value is greater than or equal to <code>:sortkeyval1</code>, and less than or equal to <code>:sortkeyval2</code>.</p> </li> <li> <p> <code>begins_with (</code> <code>sortKeyName</code>, <code>:sortkeyval</code> <code>)</code> - true if the sort key value begins with a particular operand. (You cannot use this function with a sort key that is of type Number.) Note that the function name <code>begins_with</code> is case-sensitive.</p> </li> </ul> <p>Use the <code>ExpressionAttributeValues</code> parameter to replace tokens such as <code>:partitionval</code> and <code>:sortval</code> with actual values at runtime.</p> <p>You can optionally use the <code>ExpressionAttributeNames</code> parameter to replace the names of the partition key and sort key with placeholder tokens. This option might be necessary if an attribute name conflicts with a DynamoDB reserved word. For example, the following <code>KeyConditionExpression</code> parameter causes an error because <i>Size</i> is a reserved word:</p> <ul> <li> <p> <code>Size = :myval</code> </p> </li> </ul> <p>To work around this, define a placeholder (such a <code>#S</code>) to represent the attribute name <i>Size</i>. <code>KeyConditionExpression</code> then is as follows:</p> <ul> <li> <p> <code>#S = :myval</code> </p> </li> </ul> <p>For a list of reserved words, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved Words</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p> <p>For more information on <code>ExpressionAttributeNames</code> and <code>ExpressionAttributeValues</code>, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ExpressionPlaceholders.html">Using Placeholders for Attribute Names and Values</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+-- * ScanIndexForward [BooleanObject] <p>Specifies the order for index traversal: If <code>true</code> (default), the traversal is performed in ascending order; if <code>false</code>, the traversal is performed in descending order. </p> <p>Items with the same partition key value are stored in sorted order by sort key. If the sort key data type is Number, the results are stored in numeric order. For type String, the results are stored in order of UTF-8 bytes. For type Binary, DynamoDB treats each byte of the binary data as unsigned.</p> <p>If <code>ScanIndexForward</code> is <code>true</code>, DynamoDB returns the results in the order in which they are stored (by sort key value). This is the default behavior. If <code>ScanIndexForward</code> is <code>false</code>, DynamoDB reads the results in reverse order by sort key value, and then returns the results to the client.</p>
 -- * Select [Select] <p>The attributes to be returned in the result. You can retrieve all item attributes, specific item attributes, the count of matching items, or in the case of an index, some or all of the attributes projected into the index.</p> <ul> <li> <p> <code>ALL_ATTRIBUTES</code> - Returns all of the item attributes from the specified table or index. If you query a local secondary index, then for each matching item in the index DynamoDB will fetch the entire item from the parent table. If the index is configured to project all item attributes, then all of the data can be obtained from the local secondary index, and no fetching is required.</p> </li> <li> <p> <code>ALL_PROJECTED_ATTRIBUTES</code> - Allowed only when querying an index. Retrieves all attributes that have been projected into the index. If the index is configured to project all attributes, this return value is equivalent to specifying <code>ALL_ATTRIBUTES</code>.</p> </li> <li> <p> <code>COUNT</code> - Returns the number of matching items, rather than the matching items themselves.</p> </li> <li> <p> <code>SPECIFIC_ATTRIBUTES</code> - Returns only the attributes listed in <code>AttributesToGet</code>. This return value is equivalent to specifying <code>AttributesToGet</code> without specifying any value for <code>Select</code>.</p> <p>If you query or scan a local secondary index and request only attributes that are projected into that index, the operation will read only the index and not the table. If any of the requested attributes are not projected into the local secondary index, DynamoDB will fetch each of these attributes from the parent table. This extra fetching incurs additional throughput cost and latency.</p> <p>If you query or scan a global secondary index, you can only request attributes that are projected into the index. Global secondary index queries cannot fetch attributes from the parent table.</p> </li> </ul> <p>If neither <code>Select</code> nor <code>AttributesToGet</code> are specified, DynamoDB defaults to <code>ALL_ATTRIBUTES</code> when accessing a table, and <code>ALL_PROJECTED_ATTRIBUTES</code> when accessing an index. You cannot use both <code>Select</code> and <code>AttributesToGet</code> together in a single request, unless the value for <code>Select</code> is <code>SPECIFIC_ATTRIBUTES</code>. (This usage is equivalent to specifying <code>AttributesToGet</code> without any value for <code>Select</code>.)</p> <note> <p>If you use the <code>ProjectionExpression</code> parameter, then the value for <code>Select</code> can only be <code>SPECIFIC_ATTRIBUTES</code>. Any other value for <code>Select</code> will return an error.</p> </note>
 -- Required key: TableName
 -- @return QueryInput structure as a key-value pair table
@@ -1966,6 +3267,71 @@ function M.QueryInput(args)
     }
 end
 
+keys.BackupDetails = { ["BackupCreationDateTime"] = true, ["BackupExpiryDateTime"] = true, ["BackupName"] = true, ["BackupStatus"] = true, ["BackupType"] = true, ["BackupSizeBytes"] = true, ["BackupArn"] = true, nil }
+
+function asserts.AssertBackupDetails(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BackupDetails to be of type 'table'")
+	assert(struct["BackupArn"], "Expected key BackupArn to exist in table")
+	assert(struct["BackupName"], "Expected key BackupName to exist in table")
+	assert(struct["BackupStatus"], "Expected key BackupStatus to exist in table")
+	assert(struct["BackupType"], "Expected key BackupType to exist in table")
+	assert(struct["BackupCreationDateTime"], "Expected key BackupCreationDateTime to exist in table")
+	if struct["BackupCreationDateTime"] then asserts.AssertBackupCreationDateTime(struct["BackupCreationDateTime"]) end
+	if struct["BackupExpiryDateTime"] then asserts.AssertDate(struct["BackupExpiryDateTime"]) end
+	if struct["BackupName"] then asserts.AssertBackupName(struct["BackupName"]) end
+	if struct["BackupStatus"] then asserts.AssertBackupStatus(struct["BackupStatus"]) end
+	if struct["BackupType"] then asserts.AssertBackupType(struct["BackupType"]) end
+	if struct["BackupSizeBytes"] then asserts.AssertBackupSizeBytes(struct["BackupSizeBytes"]) end
+	if struct["BackupArn"] then asserts.AssertBackupArn(struct["BackupArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BackupDetails[k], "BackupDetails contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BackupDetails
+-- <p>Contains the details of the backup created for the table.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BackupCreationDateTime [BackupCreationDateTime] <p>Time at which the backup was created. This is the request time of the backup. </p>
+-- * BackupExpiryDateTime [Date] <p>Time at which the automatic on-demand backup created by DynamoDB will expire. This <code>SYSTEM</code> on-demand backup expires automatically 35 days after its creation.</p>
+-- * BackupName [BackupName] <p>Name of the requested backup.</p>
+-- * BackupStatus [BackupStatus] <p>Backup can be in one of the following states: CREATING, ACTIVE, DELETED. </p>
+-- * BackupType [BackupType] <p>BackupType:</p> <ul> <li> <p> <code>USER</code> - On-demand backup created by you.</p> </li> <li> <p> <code>SYSTEM</code> - On-demand backup automatically created by DynamoDB.</p> </li> </ul>
+-- * BackupSizeBytes [BackupSizeBytes] <p>Size of the backup in bytes.</p>
+-- * BackupArn [BackupArn] <p>ARN associated with the backup.</p>
+-- Required key: BackupArn
+-- Required key: BackupName
+-- Required key: BackupStatus
+-- Required key: BackupType
+-- Required key: BackupCreationDateTime
+-- @return BackupDetails structure as a key-value pair table
+function M.BackupDetails(args)
+	assert(args, "You must provide an argument table when creating BackupDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["BackupCreationDateTime"] = args["BackupCreationDateTime"],
+		["BackupExpiryDateTime"] = args["BackupExpiryDateTime"],
+		["BackupName"] = args["BackupName"],
+		["BackupStatus"] = args["BackupStatus"],
+		["BackupType"] = args["BackupType"],
+		["BackupSizeBytes"] = args["BackupSizeBytes"],
+		["BackupArn"] = args["BackupArn"],
+	}
+	asserts.AssertBackupDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.AttributeValueUpdate = { ["Action"] = true, ["Value"] = true, nil }
 
 function asserts.AssertAttributeValueUpdate(struct)
@@ -1983,7 +3349,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Action [AttributeAction] <p>Specifies how to perform the update. Valid values are <code>PUT</code> (default), <code>DELETE</code>, and <code>ADD</code>. The behavior depends on whether the specified primary key already exists in the table.</p> <p> <b>If an item with the specified <i>Key</i> is found in the table:</b> </p> <ul> <li> <p> <code>PUT</code> - Adds the specified attribute to the item. If the attribute already exists, it is replaced by the new value. </p> </li> <li> <p> <code>DELETE</code> - If no value is specified, the attribute and its value are removed from the item. The data type of the specified value must match the existing value's data type.</p> <p>If a <i>set</i> of values is specified, then those values are subtracted from the old set. For example, if the attribute value was the set <code>[a,b,c]</code> and the <code>DELETE</code> action specified <code>[a,c]</code>, then the final attribute value would be <code>[b]</code>. Specifying an empty set is an error.</p> </li> <li> <p> <code>ADD</code> - If the attribute does not already exist, then the attribute and its values are added to the item. If the attribute does exist, then the behavior of <code>ADD</code> depends on the data type of the attribute:</p> <ul> <li> <p>If the existing attribute is a number, and if <code>Value</code> is also a number, then the <code>Value</code> is mathematically added to the existing attribute. If <code>Value</code> is a negative number, then it is subtracted from the existing attribute.</p> <note> <p> If you use <code>ADD</code> to increment or decrement a number value for an item that doesn't exist before the update, DynamoDB uses 0 as the initial value.</p> <p>In addition, if you use <code>ADD</code> to update an existing item, and intend to increment or decrement an attribute value which does not yet exist, DynamoDB uses <code>0</code> as the initial value. For example, suppose that the item you want to update does not yet have an attribute named <i>itemcount</i>, but you decide to <code>ADD</code> the number <code>3</code> to this attribute anyway, even though it currently does not exist. DynamoDB will create the <i>itemcount</i> attribute, set its initial value to <code>0</code>, and finally add <code>3</code> to it. The result will be a new <i>itemcount</i> attribute in the item, with a value of <code>3</code>.</p> </note> </li> <li> <p>If the existing data type is a set, and if the <code>Value</code> is also a set, then the <code>Value</code> is added to the existing set. (This is a <i>set</i> operation, not mathematical addition.) For example, if the attribute value was the set <code>[1,2]</code>, and the <code>ADD</code> action specified <code>[3]</code>, then the final attribute value would be <code>[1,2,3]</code>. An error occurs if an Add action is specified for a set attribute and the attribute type specified does not match the existing set type. </p> <p>Both sets must have the same primitive data type. For example, if the existing data type is a set of strings, the <code>Value</code> must also be a set of strings. The same holds true for number sets and binary sets.</p> </li> </ul> <p>This action is only valid for an existing attribute whose data type is number or is a set. Do not use <code>ADD</code> for any other data types.</p> </li> </ul> <p> <b>If no item with the specified <i>Key</i> is found:</b> </p> <ul> <li> <p> <code>PUT</code> - DynamoDB creates a new item with the specified primary key, and then adds the attribute. </p> </li> <li> <p> <code>DELETE</code> - Nothing happens; there is no attribute to delete.</p> </li> <li> <p> <code>ADD</code> - DynamoDB creates an item with the supplied primary key and number (or set of numbers) for the attribute value. The only data types allowed are number and number set; no other data types can be specified.</p> </li> </ul>
--- * Value [AttributeValue] <p>Represents the data for an attribute.</p> <p>Each attribute value is described as a name-value pair. The name is the data type, and the value is the data itself.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes">Data TYpes</a> in the <i>Amazon DynamoDB Developer Guide</i>. </p>
+-- * Value [AttributeValue] <p>Represents the data for an attribute.</p> <p>Each attribute value is described as a name-value pair. The name is the data type, and the value is the data itself.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes">Data Types</a> in the <i>Amazon DynamoDB Developer Guide</i>. </p>
 -- @return AttributeValueUpdate structure as a key-value pair table
 function M.AttributeValueUpdate(args)
 	assert(args, "You must provide an argument table when creating AttributeValueUpdate")
@@ -2068,7 +3434,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Attributes [AttributeMap] <p>A map of attribute names to <code>AttributeValue</code> objects, representing the item as it appeared before the <code>DeleteItem</code> operation. This map appears in the response only if <code>ReturnValues</code> was specified as <code>ALL_OLD</code> in the request.</p>
--- * ItemCollectionMetrics [ItemCollectionMetrics] <p>Information about item collections, if any, that were affected by the <code>DeleteItem</code> operation. <code>ItemCollectionMetrics</code> is only returned if the <code>ReturnItemCollectionMetrics</code> parameter was specified. If the table does not have any local secondary indexes, this information is not returned in the response.</p> <p>Each <code>ItemCollectionMetrics</code> element consists of:</p> <ul> <li> <p> <code>ItemCollectionKey</code> - The partition key value of the item collection. This is the same as the partition key value of the item itself.</p> </li> <li> <p> <code>SizeEstimateRange</code> - An estimate of item collection size, in gigabytes. This value is a two-element array containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the items in the table, plus the size of all attributes projected into all of the local secondary indexes on that table. Use this estimate to measure whether a local secondary index is approaching its size limit.</p> <p>The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.</p> </li> </ul>
+-- * ItemCollectionMetrics [ItemCollectionMetrics] <p>Information about item collections, if any, that were affected by the <code>DeleteItem</code> operation. <code>ItemCollectionMetrics</code> is only returned if the <code>ReturnItemCollectionMetrics</code> parameter was specified. If the table does not have any local secondary indexes, this information is not returned in the response.</p> <p>Each <code>ItemCollectionMetrics</code> element consists of:</p> <ul> <li> <p> <code>ItemCollectionKey</code> - The partition key value of the item collection. This is the same as the partition key value of the item itself.</p> </li> <li> <p> <code>SizeEstimateRangeGB</code> - An estimate of item collection size, in gigabytes. This value is a two-element array containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the items in the table, plus the size of all attributes projected into all of the local secondary indexes on that table. Use this estimate to measure whether a local secondary index is approaching its size limit.</p> <p>The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.</p> </li> </ul>
 -- * ConsumedCapacity [ConsumedCapacity] <p>The capacity units consumed by the <code>DeleteItem</code> operation. The data returned includes the total provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was specified. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 -- @return DeleteItemOutput structure as a key-value pair table
 function M.DeleteItemOutput(args)
@@ -2219,6 +3585,245 @@ function M.ScanInput(args)
     }
 end
 
+keys.UpdateGlobalTableSettingsOutput = { ["GlobalTableName"] = true, ["ReplicaSettings"] = true, nil }
+
+function asserts.AssertUpdateGlobalTableSettingsOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateGlobalTableSettingsOutput to be of type 'table'")
+	if struct["GlobalTableName"] then asserts.AssertTableName(struct["GlobalTableName"]) end
+	if struct["ReplicaSettings"] then asserts.AssertReplicaSettingsDescriptionList(struct["ReplicaSettings"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateGlobalTableSettingsOutput[k], "UpdateGlobalTableSettingsOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateGlobalTableSettingsOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GlobalTableName [TableName] <p>The name of the global table.</p>
+-- * ReplicaSettings [ReplicaSettingsDescriptionList] <p>The region specific settings for the global table.</p>
+-- @return UpdateGlobalTableSettingsOutput structure as a key-value pair table
+function M.UpdateGlobalTableSettingsOutput(args)
+	assert(args, "You must provide an argument table when creating UpdateGlobalTableSettingsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GlobalTableName"] = args["GlobalTableName"],
+		["ReplicaSettings"] = args["ReplicaSettings"],
+	}
+	asserts.AssertUpdateGlobalTableSettingsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.RestoreTableToPointInTimeOutput = { ["TableDescription"] = true, nil }
+
+function asserts.AssertRestoreTableToPointInTimeOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RestoreTableToPointInTimeOutput to be of type 'table'")
+	if struct["TableDescription"] then asserts.AssertTableDescription(struct["TableDescription"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RestoreTableToPointInTimeOutput[k], "RestoreTableToPointInTimeOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RestoreTableToPointInTimeOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TableDescription [TableDescription] <p>Represents the properties of a table.</p>
+-- @return RestoreTableToPointInTimeOutput structure as a key-value pair table
+function M.RestoreTableToPointInTimeOutput(args)
+	assert(args, "You must provide an argument table when creating RestoreTableToPointInTimeOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["TableDescription"] = args["TableDescription"],
+	}
+	asserts.AssertRestoreTableToPointInTimeOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ReplicaUpdate = { ["Create"] = true, ["Delete"] = true, nil }
+
+function asserts.AssertReplicaUpdate(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ReplicaUpdate to be of type 'table'")
+	if struct["Create"] then asserts.AssertCreateReplicaAction(struct["Create"]) end
+	if struct["Delete"] then asserts.AssertDeleteReplicaAction(struct["Delete"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ReplicaUpdate[k], "ReplicaUpdate contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ReplicaUpdate
+-- <p>Represents one of the following:</p> <ul> <li> <p>A new replica to be added to an existing global table.</p> </li> <li> <p>New parameters for an existing replica.</p> </li> <li> <p>An existing replica to be removed from an existing global table.</p> </li> </ul>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Create [CreateReplicaAction] <p>The parameters required for creating a replica on an existing global table.</p>
+-- * Delete [DeleteReplicaAction] <p>The name of the existing replica to be removed.</p>
+-- @return ReplicaUpdate structure as a key-value pair table
+function M.ReplicaUpdate(args)
+	assert(args, "You must provide an argument table when creating ReplicaUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Create"] = args["Create"],
+		["Delete"] = args["Delete"],
+	}
+	asserts.AssertReplicaUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ReplicaGlobalSecondaryIndexSettingsDescription = { ["ProvisionedReadCapacityUnits"] = true, ["IndexName"] = true, ["IndexStatus"] = true, ["ProvisionedReadCapacityAutoScalingSettings"] = true, ["ProvisionedWriteCapacityAutoScalingSettings"] = true, ["ProvisionedWriteCapacityUnits"] = true, nil }
+
+function asserts.AssertReplicaGlobalSecondaryIndexSettingsDescription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ReplicaGlobalSecondaryIndexSettingsDescription to be of type 'table'")
+	assert(struct["IndexName"], "Expected key IndexName to exist in table")
+	if struct["ProvisionedReadCapacityUnits"] then asserts.AssertPositiveLongObject(struct["ProvisionedReadCapacityUnits"]) end
+	if struct["IndexName"] then asserts.AssertIndexName(struct["IndexName"]) end
+	if struct["IndexStatus"] then asserts.AssertIndexStatus(struct["IndexStatus"]) end
+	if struct["ProvisionedReadCapacityAutoScalingSettings"] then asserts.AssertAutoScalingSettingsDescription(struct["ProvisionedReadCapacityAutoScalingSettings"]) end
+	if struct["ProvisionedWriteCapacityAutoScalingSettings"] then asserts.AssertAutoScalingSettingsDescription(struct["ProvisionedWriteCapacityAutoScalingSettings"]) end
+	if struct["ProvisionedWriteCapacityUnits"] then asserts.AssertPositiveLongObject(struct["ProvisionedWriteCapacityUnits"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ReplicaGlobalSecondaryIndexSettingsDescription[k], "ReplicaGlobalSecondaryIndexSettingsDescription contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ReplicaGlobalSecondaryIndexSettingsDescription
+-- <p>Represents the properties of a global secondary index.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProvisionedReadCapacityUnits [PositiveLongObject] <p>The maximum number of strongly consistent reads consumed per second before DynamoDB returns a <code>ThrottlingException</code>.</p>
+-- * IndexName [IndexName] <p>The name of the global secondary index. The name must be unique among all other indexes on this table.</p>
+-- * IndexStatus [IndexStatus] <p> The current status of the global secondary index:</p> <ul> <li> <p> <code>CREATING</code> - The global secondary index is being created.</p> </li> <li> <p> <code>UPDATING</code> - The global secondary index is being updated.</p> </li> <li> <p> <code>DELETING</code> - The global secondary index is being deleted.</p> </li> <li> <p> <code>ACTIVE</code> - The global secondary index is ready for use.</p> </li> </ul>
+-- * ProvisionedReadCapacityAutoScalingSettings [AutoScalingSettingsDescription] <p>Autoscaling settings for a global secondary index replica's read capacity units.</p>
+-- * ProvisionedWriteCapacityAutoScalingSettings [AutoScalingSettingsDescription] <p>AutoScaling settings for a global secondary index replica's write capacity units.</p>
+-- * ProvisionedWriteCapacityUnits [PositiveLongObject] <p>The maximum number of writes consumed per second before DynamoDB returns a <code>ThrottlingException</code>.</p>
+-- Required key: IndexName
+-- @return ReplicaGlobalSecondaryIndexSettingsDescription structure as a key-value pair table
+function M.ReplicaGlobalSecondaryIndexSettingsDescription(args)
+	assert(args, "You must provide an argument table when creating ReplicaGlobalSecondaryIndexSettingsDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ProvisionedReadCapacityUnits"] = args["ProvisionedReadCapacityUnits"],
+		["IndexName"] = args["IndexName"],
+		["IndexStatus"] = args["IndexStatus"],
+		["ProvisionedReadCapacityAutoScalingSettings"] = args["ProvisionedReadCapacityAutoScalingSettings"],
+		["ProvisionedWriteCapacityAutoScalingSettings"] = args["ProvisionedWriteCapacityAutoScalingSettings"],
+		["ProvisionedWriteCapacityUnits"] = args["ProvisionedWriteCapacityUnits"],
+	}
+	asserts.AssertReplicaGlobalSecondaryIndexSettingsDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SourceTableDetails = { ["TableArn"] = true, ["ProvisionedThroughput"] = true, ["TableSizeBytes"] = true, ["TableName"] = true, ["TableId"] = true, ["KeySchema"] = true, ["ItemCount"] = true, ["TableCreationDateTime"] = true, nil }
+
+function asserts.AssertSourceTableDetails(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SourceTableDetails to be of type 'table'")
+	assert(struct["TableName"], "Expected key TableName to exist in table")
+	assert(struct["TableId"], "Expected key TableId to exist in table")
+	assert(struct["KeySchema"], "Expected key KeySchema to exist in table")
+	assert(struct["TableCreationDateTime"], "Expected key TableCreationDateTime to exist in table")
+	assert(struct["ProvisionedThroughput"], "Expected key ProvisionedThroughput to exist in table")
+	if struct["TableArn"] then asserts.AssertTableArn(struct["TableArn"]) end
+	if struct["ProvisionedThroughput"] then asserts.AssertProvisionedThroughput(struct["ProvisionedThroughput"]) end
+	if struct["TableSizeBytes"] then asserts.AssertLong(struct["TableSizeBytes"]) end
+	if struct["TableName"] then asserts.AssertTableName(struct["TableName"]) end
+	if struct["TableId"] then asserts.AssertTableId(struct["TableId"]) end
+	if struct["KeySchema"] then asserts.AssertKeySchema(struct["KeySchema"]) end
+	if struct["ItemCount"] then asserts.AssertItemCount(struct["ItemCount"]) end
+	if struct["TableCreationDateTime"] then asserts.AssertTableCreationDateTime(struct["TableCreationDateTime"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SourceTableDetails[k], "SourceTableDetails contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SourceTableDetails
+-- <p>Contains the details of the table when the backup was created. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TableArn [TableArn] <p>ARN of the table for which backup was created. </p>
+-- * ProvisionedThroughput [ProvisionedThroughput] <p>Read IOPs and Write IOPS on the table when the backup was created.</p>
+-- * TableSizeBytes [Long] <p>Size of the table in bytes. Please note this is an approximate value.</p>
+-- * TableName [TableName] <p>The name of the table for which the backup was created. </p>
+-- * TableId [TableId] <p>Unique identifier for the table for which the backup was created. </p>
+-- * KeySchema [KeySchema] <p>Schema of the table. </p>
+-- * ItemCount [ItemCount] <p>Number of items in the table. Please note this is an approximate value. </p>
+-- * TableCreationDateTime [TableCreationDateTime] <p>Time when the source table was created. </p>
+-- Required key: TableName
+-- Required key: TableId
+-- Required key: KeySchema
+-- Required key: TableCreationDateTime
+-- Required key: ProvisionedThroughput
+-- @return SourceTableDetails structure as a key-value pair table
+function M.SourceTableDetails(args)
+	assert(args, "You must provide an argument table when creating SourceTableDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["TableArn"] = args["TableArn"],
+		["ProvisionedThroughput"] = args["ProvisionedThroughput"],
+		["TableSizeBytes"] = args["TableSizeBytes"],
+		["TableName"] = args["TableName"],
+		["TableId"] = args["TableId"],
+		["KeySchema"] = args["KeySchema"],
+		["ItemCount"] = args["ItemCount"],
+		["TableCreationDateTime"] = args["TableCreationDateTime"],
+	}
+	asserts.AssertSourceTableDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.BatchGetItemOutput = { ["UnprocessedKeys"] = true, ["Responses"] = true, ["ConsumedCapacity"] = true, nil }
 
 function asserts.AssertBatchGetItemOutput(struct)
@@ -2254,6 +3859,45 @@ function M.BatchGetItemOutput(args)
 		["ConsumedCapacity"] = args["ConsumedCapacity"],
 	}
 	asserts.AssertBatchGetItemOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.PointInTimeRecoverySpecification = { ["PointInTimeRecoveryEnabled"] = true, nil }
+
+function asserts.AssertPointInTimeRecoverySpecification(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PointInTimeRecoverySpecification to be of type 'table'")
+	assert(struct["PointInTimeRecoveryEnabled"], "Expected key PointInTimeRecoveryEnabled to exist in table")
+	if struct["PointInTimeRecoveryEnabled"] then asserts.AssertBooleanObject(struct["PointInTimeRecoveryEnabled"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PointInTimeRecoverySpecification[k], "PointInTimeRecoverySpecification contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PointInTimeRecoverySpecification
+-- <p>Represents the settings used to enable point in time recovery.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PointInTimeRecoveryEnabled [BooleanObject] <p>Indicates whether point in time recovery is enabled (true) or disabled (false) on the table.</p>
+-- Required key: PointInTimeRecoveryEnabled
+-- @return PointInTimeRecoverySpecification structure as a key-value pair table
+function M.PointInTimeRecoverySpecification(args)
+	assert(args, "You must provide an argument table when creating PointInTimeRecoverySpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["PointInTimeRecoveryEnabled"] = args["PointInTimeRecoveryEnabled"],
+	}
+	asserts.AssertPointInTimeRecoverySpecification(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2339,6 +3983,54 @@ function M.DescribeTableOutput(args)
     }
 end
 
+keys.ReplicaSettingsUpdate = { ["ReplicaProvisionedReadCapacityUnits"] = true, ["ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate"] = true, ["ReplicaGlobalSecondaryIndexSettingsUpdate"] = true, ["RegionName"] = true, nil }
+
+function asserts.AssertReplicaSettingsUpdate(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ReplicaSettingsUpdate to be of type 'table'")
+	assert(struct["RegionName"], "Expected key RegionName to exist in table")
+	if struct["ReplicaProvisionedReadCapacityUnits"] then asserts.AssertPositiveLongObject(struct["ReplicaProvisionedReadCapacityUnits"]) end
+	if struct["ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate"] then asserts.AssertAutoScalingSettingsUpdate(struct["ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate"]) end
+	if struct["ReplicaGlobalSecondaryIndexSettingsUpdate"] then asserts.AssertReplicaGlobalSecondaryIndexSettingsUpdateList(struct["ReplicaGlobalSecondaryIndexSettingsUpdate"]) end
+	if struct["RegionName"] then asserts.AssertRegionName(struct["RegionName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ReplicaSettingsUpdate[k], "ReplicaSettingsUpdate contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ReplicaSettingsUpdate
+-- <p>Represents the settings for a global table in a region that will be modified.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicaProvisionedReadCapacityUnits [PositiveLongObject] <p>The maximum number of strongly consistent reads consumed per second before DynamoDB returns a <code>ThrottlingException</code>. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput">Specifying Read and Write Requirements</a> in the <i>Amazon DynamoDB Developer Guide</i>. </p>
+-- * ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate [AutoScalingSettingsUpdate] <p>Autoscaling settings for managing a global table replica's read capacity units.</p>
+-- * ReplicaGlobalSecondaryIndexSettingsUpdate [ReplicaGlobalSecondaryIndexSettingsUpdateList] <p>Represents the settings of a global secondary index for a global table that will be modified.</p>
+-- * RegionName [RegionName] <p>The region of the replica to be added.</p>
+-- Required key: RegionName
+-- @return ReplicaSettingsUpdate structure as a key-value pair table
+function M.ReplicaSettingsUpdate(args)
+	assert(args, "You must provide an argument table when creating ReplicaSettingsUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ReplicaProvisionedReadCapacityUnits"] = args["ReplicaProvisionedReadCapacityUnits"],
+		["ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate"] = args["ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate"],
+		["ReplicaGlobalSecondaryIndexSettingsUpdate"] = args["ReplicaGlobalSecondaryIndexSettingsUpdate"],
+		["RegionName"] = args["RegionName"],
+	}
+	asserts.AssertReplicaSettingsUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.UpdateTimeToLiveInput = { ["TableName"] = true, ["TimeToLiveSpecification"] = true, nil }
 
 function asserts.AssertUpdateTimeToLiveInput(struct)
@@ -2375,6 +4067,132 @@ function M.UpdateTimeToLiveInput(args)
 		["TimeToLiveSpecification"] = args["TimeToLiveSpecification"],
 	}
 	asserts.AssertUpdateTimeToLiveInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GlobalSecondaryIndexInfo = { ["KeySchema"] = true, ["IndexName"] = true, ["Projection"] = true, ["ProvisionedThroughput"] = true, nil }
+
+function asserts.AssertGlobalSecondaryIndexInfo(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GlobalSecondaryIndexInfo to be of type 'table'")
+	if struct["KeySchema"] then asserts.AssertKeySchema(struct["KeySchema"]) end
+	if struct["IndexName"] then asserts.AssertIndexName(struct["IndexName"]) end
+	if struct["Projection"] then asserts.AssertProjection(struct["Projection"]) end
+	if struct["ProvisionedThroughput"] then asserts.AssertProvisionedThroughput(struct["ProvisionedThroughput"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GlobalSecondaryIndexInfo[k], "GlobalSecondaryIndexInfo contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GlobalSecondaryIndexInfo
+-- <p>Represents the properties of a global secondary index for the table when the backup was created.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * KeySchema [KeySchema] <p>The complete key schema for a global secondary index, which consists of one or more pairs of attribute names and key types:</p> <ul> <li> <p> <code>HASH</code> - partition key</p> </li> <li> <p> <code>RANGE</code> - sort key</p> </li> </ul> <note> <p>The partition key of an item is also known as its <i>hash attribute</i>. The term "hash attribute" derives from DynamoDB' usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values.</p> <p>The sort key of an item is also known as its <i>range attribute</i>. The term "range attribute" derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.</p> </note>
+-- * IndexName [IndexName] <p>The name of the global secondary index.</p>
+-- * Projection [Projection] <p>Represents attributes that are copied (projected) from the table into the global secondary index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. </p>
+-- * ProvisionedThroughput [ProvisionedThroughput] <p>Represents the provisioned throughput settings for the specified global secondary index. </p>
+-- @return GlobalSecondaryIndexInfo structure as a key-value pair table
+function M.GlobalSecondaryIndexInfo(args)
+	assert(args, "You must provide an argument table when creating GlobalSecondaryIndexInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["KeySchema"] = args["KeySchema"],
+		["IndexName"] = args["IndexName"],
+		["Projection"] = args["Projection"],
+		["ProvisionedThroughput"] = args["ProvisionedThroughput"],
+	}
+	asserts.AssertGlobalSecondaryIndexInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.PointInTimeRecoveryDescription = { ["PointInTimeRecoveryStatus"] = true, ["EarliestRestorableDateTime"] = true, ["LatestRestorableDateTime"] = true, nil }
+
+function asserts.AssertPointInTimeRecoveryDescription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PointInTimeRecoveryDescription to be of type 'table'")
+	if struct["PointInTimeRecoveryStatus"] then asserts.AssertPointInTimeRecoveryStatus(struct["PointInTimeRecoveryStatus"]) end
+	if struct["EarliestRestorableDateTime"] then asserts.AssertDate(struct["EarliestRestorableDateTime"]) end
+	if struct["LatestRestorableDateTime"] then asserts.AssertDate(struct["LatestRestorableDateTime"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PointInTimeRecoveryDescription[k], "PointInTimeRecoveryDescription contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PointInTimeRecoveryDescription
+-- <p>The description of the point in time settings applied to the table.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PointInTimeRecoveryStatus [PointInTimeRecoveryStatus] <p>The current state of point in time recovery:</p> <ul> <li> <p> <code>ENABLING</code> - Point in time recovery is being enabled.</p> </li> <li> <p> <code>ENABLED</code> - Point in time recovery is enabled.</p> </li> <li> <p> <code>DISABLED</code> - Point in time recovery is disabled.</p> </li> </ul>
+-- * EarliestRestorableDateTime [Date] <p>Specifies the earliest point in time you can restore your table to. It You can restore your table to any point in time during the last 35 days. </p>
+-- * LatestRestorableDateTime [Date] <p> <code>LatestRestorableDateTime</code> is typically 5 minutes before the current time. </p>
+-- @return PointInTimeRecoveryDescription structure as a key-value pair table
+function M.PointInTimeRecoveryDescription(args)
+	assert(args, "You must provide an argument table when creating PointInTimeRecoveryDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["PointInTimeRecoveryStatus"] = args["PointInTimeRecoveryStatus"],
+		["EarliestRestorableDateTime"] = args["EarliestRestorableDateTime"],
+		["LatestRestorableDateTime"] = args["LatestRestorableDateTime"],
+	}
+	asserts.AssertPointInTimeRecoveryDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateGlobalTableOutput = { ["GlobalTableDescription"] = true, nil }
+
+function asserts.AssertUpdateGlobalTableOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateGlobalTableOutput to be of type 'table'")
+	if struct["GlobalTableDescription"] then asserts.AssertGlobalTableDescription(struct["GlobalTableDescription"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateGlobalTableOutput[k], "UpdateGlobalTableOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateGlobalTableOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GlobalTableDescription [GlobalTableDescription] <p>Contains the details of the global table.</p>
+-- @return UpdateGlobalTableOutput structure as a key-value pair table
+function M.UpdateGlobalTableOutput(args)
+	assert(args, "You must provide an argument table when creating UpdateGlobalTableOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GlobalTableDescription"] = args["GlobalTableDescription"],
+	}
+	asserts.AssertUpdateGlobalTableOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2587,7 +4405,7 @@ end
 -- * ReturnConsumedCapacity [ReturnConsumedCapacity] 
 -- * ExpressionAttributeValues [ExpressionAttributeValueMap] <p>One or more values that can be substituted in an expression.</p> <p>Use the <b>:</b> (colon) character in an expression to dereference an attribute value. For example, suppose that you wanted to check whether the value of the <i>ProductStatus</i> attribute was one of the following: </p> <p> <code>Available | Backordered | Discontinued</code> </p> <p>You would first need to specify <code>ExpressionAttributeValues</code> as follows:</p> <p> <code>{ ":avail":{"S":"Available"}, ":back":{"S":"Backordered"}, ":disc":{"S":"Discontinued"} }</code> </p> <p>You could then use these values in an expression, such as this:</p> <p> <code>ProductStatus IN (:avail, :back, :disc)</code> </p> <p>For more information on expression attribute values, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Specifying Conditions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 -- * Key [Key] <p>A map of attribute names to <code>AttributeValue</code> objects, representing the primary key of the item to delete.</p> <p>For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for both the partition key and the sort key.</p>
--- * Expected [ExpectedAttributeMap] <p>This is a legacy parameter. Use <code>ConditionExpresssion</code> instead. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html">Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+-- * Expected [ExpectedAttributeMap] <p>This is a legacy parameter. Use <code>ConditionExpression</code> instead. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html">Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 -- Required key: TableName
 -- Required key: Key
 -- @return DeleteItemInput structure as a key-value pair table
@@ -2612,6 +4430,46 @@ function M.DeleteItemInput(args)
 		["Expected"] = args["Expected"],
 	}
 	asserts.AssertDeleteItemInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GlobalTable = { ["GlobalTableName"] = true, ["ReplicationGroup"] = true, nil }
+
+function asserts.AssertGlobalTable(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GlobalTable to be of type 'table'")
+	if struct["GlobalTableName"] then asserts.AssertTableName(struct["GlobalTableName"]) end
+	if struct["ReplicationGroup"] then asserts.AssertReplicaList(struct["ReplicationGroup"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GlobalTable[k], "GlobalTable contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GlobalTable
+-- <p>Represents the properties of a global table.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GlobalTableName [TableName] <p>The global table name.</p>
+-- * ReplicationGroup [ReplicaList] <p>The regions where the global table has replicas.</p>
+-- @return GlobalTable structure as a key-value pair table
+function M.GlobalTable(args)
+	assert(args, "You must provide an argument table when creating GlobalTable")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GlobalTableName"] = args["GlobalTableName"],
+		["ReplicationGroup"] = args["ReplicationGroup"],
+	}
+	asserts.AssertGlobalTable(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2723,6 +4581,43 @@ function M.ScanOutput(args)
     }
 end
 
+keys.RestoreTableFromBackupOutput = { ["TableDescription"] = true, nil }
+
+function asserts.AssertRestoreTableFromBackupOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RestoreTableFromBackupOutput to be of type 'table'")
+	if struct["TableDescription"] then asserts.AssertTableDescription(struct["TableDescription"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RestoreTableFromBackupOutput[k], "RestoreTableFromBackupOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RestoreTableFromBackupOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TableDescription [TableDescription] <p>The description of the table created from an existing backup.</p>
+-- @return RestoreTableFromBackupOutput structure as a key-value pair table
+function M.RestoreTableFromBackupOutput(args)
+	assert(args, "You must provide an argument table when creating RestoreTableFromBackupOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["TableDescription"] = args["TableDescription"],
+	}
+	asserts.AssertRestoreTableFromBackupOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DescribeLimitsOutput = { ["TableMaxWriteCapacityUnits"] = true, ["TableMaxReadCapacityUnits"] = true, ["AccountMaxReadCapacityUnits"] = true, ["AccountMaxWriteCapacityUnits"] = true, nil }
 
 function asserts.AssertDescribeLimitsOutput(struct)
@@ -2769,25 +4664,35 @@ function M.DescribeLimitsOutput(args)
     }
 end
 
-keys.UpdateTableOutput = { ["TableDescription"] = true, nil }
+keys.LocalSecondaryIndex = { ["KeySchema"] = true, ["IndexName"] = true, ["Projection"] = true, nil }
 
-function asserts.AssertUpdateTableOutput(struct)
+function asserts.AssertLocalSecondaryIndex(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateTableOutput to be of type 'table'")
-	if struct["TableDescription"] then asserts.AssertTableDescription(struct["TableDescription"]) end
+	assert(type(struct) == "table", "Expected LocalSecondaryIndex to be of type 'table'")
+	assert(struct["IndexName"], "Expected key IndexName to exist in table")
+	assert(struct["KeySchema"], "Expected key KeySchema to exist in table")
+	assert(struct["Projection"], "Expected key Projection to exist in table")
+	if struct["KeySchema"] then asserts.AssertKeySchema(struct["KeySchema"]) end
+	if struct["IndexName"] then asserts.AssertIndexName(struct["IndexName"]) end
+	if struct["Projection"] then asserts.AssertProjection(struct["Projection"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.UpdateTableOutput[k], "UpdateTableOutput contains unknown key " .. tostring(k))
+		assert(keys.LocalSecondaryIndex[k], "LocalSecondaryIndex contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type UpdateTableOutput
--- <p>Represents the output of an <code>UpdateTable</code> operation.</p>
+--- Create a structure of type LocalSecondaryIndex
+-- <p>Represents the properties of a local secondary index.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * TableDescription [TableDescription] <p>Represents the properties of the table.</p>
--- @return UpdateTableOutput structure as a key-value pair table
-function M.UpdateTableOutput(args)
-	assert(args, "You must provide an argument table when creating UpdateTableOutput")
+-- * KeySchema [KeySchema] <p>The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and key types:</p> <ul> <li> <p> <code>HASH</code> - partition key</p> </li> <li> <p> <code>RANGE</code> - sort key</p> </li> </ul> <note> <p>The partition key of an item is also known as its <i>hash attribute</i>. The term "hash attribute" derives from DynamoDB' usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values.</p> <p>The sort key of an item is also known as its <i>range attribute</i>. The term "range attribute" derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.</p> </note>
+-- * IndexName [IndexName] <p>The name of the local secondary index. The name must be unique among all other indexes on this table.</p>
+-- * Projection [Projection] <p>Represents attributes that are copied (projected) from the table into the local secondary index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. </p>
+-- Required key: IndexName
+-- Required key: KeySchema
+-- Required key: Projection
+-- @return LocalSecondaryIndex structure as a key-value pair table
+function M.LocalSecondaryIndex(args)
+	assert(args, "You must provide an argument table when creating LocalSecondaryIndex")
     local query_args = { 
     }
     local uri_args = { 
@@ -2795,9 +4700,11 @@ function M.UpdateTableOutput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["TableDescription"] = args["TableDescription"],
+		["KeySchema"] = args["KeySchema"],
+		["IndexName"] = args["IndexName"],
+		["Projection"] = args["Projection"],
 	}
-	asserts.AssertUpdateTableOutput(all_args)
+	asserts.AssertLocalSecondaryIndex(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2823,8 +4730,8 @@ end
 -- <p>Represents the output of an <code>UpdateItem</code> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Attributes [AttributeMap] <p>A map of attribute values as they appeared before the <code>UpdateItem</code> operation. This map only appears if <code>ReturnValues</code> was specified as something other than <code>NONE</code> in the request. Each element represents one attribute.</p>
--- * ItemCollectionMetrics [ItemCollectionMetrics] <p>Information about item collections, if any, that were affected by the <code>UpdateItem</code> operation. <code>ItemCollectionMetrics</code> is only returned if the <code>ReturnItemCollectionMetrics</code> parameter was specified. If the table does not have any local secondary indexes, this information is not returned in the response.</p> <p>Each <code>ItemCollectionMetrics</code> element consists of:</p> <ul> <li> <p> <code>ItemCollectionKey</code> - The partition key value of the item collection. This is the same as the partition key value of the item itself.</p> </li> <li> <p> <code>SizeEstimateRange</code> - An estimate of item collection size, in gigabytes. This value is a two-element array containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the items in the table, plus the size of all attributes projected into all of the local secondary indexes on that table. Use this estimate to measure whether a local secondary index is approaching its size limit.</p> <p>The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.</p> </li> </ul>
+-- * Attributes [AttributeMap] <p>A map of attribute values as they appear before or after the <code>UpdateItem</code> operation, as determined by the <code>ReturnValues</code> parameter.</p> <p>The <code>Attributes</code> map is only present if <code>ReturnValues</code> was specified as something other than <code>NONE</code> in the request. Each element represents one attribute.</p>
+-- * ItemCollectionMetrics [ItemCollectionMetrics] <p>Information about item collections, if any, that were affected by the <code>UpdateItem</code> operation. <code>ItemCollectionMetrics</code> is only returned if the <code>ReturnItemCollectionMetrics</code> parameter was specified. If the table does not have any local secondary indexes, this information is not returned in the response.</p> <p>Each <code>ItemCollectionMetrics</code> element consists of:</p> <ul> <li> <p> <code>ItemCollectionKey</code> - The partition key value of the item collection. This is the same as the partition key value of the item itself.</p> </li> <li> <p> <code>SizeEstimateRangeGB</code> - An estimate of item collection size, in gigabytes. This value is a two-element array containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the items in the table, plus the size of all attributes projected into all of the local secondary indexes on that table. Use this estimate to measure whether a local secondary index is approaching its size limit.</p> <p>The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.</p> </li> </ul>
 -- * ConsumedCapacity [ConsumedCapacity] <p>The capacity units consumed by the <code>UpdateItem</code> operation. The data returned includes the total provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was specified. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 -- @return UpdateItemOutput structure as a key-value pair table
 function M.UpdateItemOutput(args)
@@ -2841,6 +4748,46 @@ function M.UpdateItemOutput(args)
 		["ConsumedCapacity"] = args["ConsumedCapacity"],
 	}
 	asserts.AssertUpdateItemOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetItemOutput = { ["Item"] = true, ["ConsumedCapacity"] = true, nil }
+
+function asserts.AssertGetItemOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetItemOutput to be of type 'table'")
+	if struct["Item"] then asserts.AssertAttributeMap(struct["Item"]) end
+	if struct["ConsumedCapacity"] then asserts.AssertConsumedCapacity(struct["ConsumedCapacity"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetItemOutput[k], "GetItemOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetItemOutput
+-- <p>Represents the output of a <code>GetItem</code> operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Item [AttributeMap] <p>A map of attribute names to <code>AttributeValue</code> objects, as specified by <code>ProjectionExpression</code>.</p>
+-- * ConsumedCapacity [ConsumedCapacity] <p>The capacity units consumed by the <code>GetItem</code> operation. The data returned includes the total provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was specified. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+-- @return GetItemOutput structure as a key-value pair table
+function M.GetItemOutput(args)
+	assert(args, "You must provide an argument table when creating GetItemOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Item"] = args["Item"],
+		["ConsumedCapacity"] = args["ConsumedCapacity"],
+	}
+	asserts.AssertGetItemOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2901,6 +4848,50 @@ function M.LocalSecondaryIndexDescription(args)
     }
 end
 
+keys.UpdateGlobalTableInput = { ["ReplicaUpdates"] = true, ["GlobalTableName"] = true, nil }
+
+function asserts.AssertUpdateGlobalTableInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateGlobalTableInput to be of type 'table'")
+	assert(struct["GlobalTableName"], "Expected key GlobalTableName to exist in table")
+	assert(struct["ReplicaUpdates"], "Expected key ReplicaUpdates to exist in table")
+	if struct["ReplicaUpdates"] then asserts.AssertReplicaUpdateList(struct["ReplicaUpdates"]) end
+	if struct["GlobalTableName"] then asserts.AssertTableName(struct["GlobalTableName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateGlobalTableInput[k], "UpdateGlobalTableInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateGlobalTableInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicaUpdates [ReplicaUpdateList] <p>A list of regions that should be added or removed from the global table.</p>
+-- * GlobalTableName [TableName] <p>The global table name.</p>
+-- Required key: GlobalTableName
+-- Required key: ReplicaUpdates
+-- @return UpdateGlobalTableInput structure as a key-value pair table
+function M.UpdateGlobalTableInput(args)
+	assert(args, "You must provide an argument table when creating UpdateGlobalTableInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ReplicaUpdates"] = args["ReplicaUpdates"],
+		["GlobalTableName"] = args["GlobalTableName"],
+	}
+	asserts.AssertUpdateGlobalTableInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.PutRequest = { ["Item"] = true, nil }
 
 function asserts.AssertPutRequest(struct)
@@ -2940,6 +4931,45 @@ function M.PutRequest(args)
     }
 end
 
+keys.DeleteGlobalSecondaryIndexAction = { ["IndexName"] = true, nil }
+
+function asserts.AssertDeleteGlobalSecondaryIndexAction(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteGlobalSecondaryIndexAction to be of type 'table'")
+	assert(struct["IndexName"], "Expected key IndexName to exist in table")
+	if struct["IndexName"] then asserts.AssertIndexName(struct["IndexName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteGlobalSecondaryIndexAction[k], "DeleteGlobalSecondaryIndexAction contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteGlobalSecondaryIndexAction
+-- <p>Represents a global secondary index to be deleted from an existing table.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IndexName [IndexName] <p>The name of the global secondary index to be deleted.</p>
+-- Required key: IndexName
+-- @return DeleteGlobalSecondaryIndexAction structure as a key-value pair table
+function M.DeleteGlobalSecondaryIndexAction(args)
+	assert(args, "You must provide an argument table when creating DeleteGlobalSecondaryIndexAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["IndexName"] = args["IndexName"],
+	}
+	asserts.AssertDeleteGlobalSecondaryIndexAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DescribeTimeToLiveOutput = { ["TimeToLiveDescription"] = true, nil }
 
 function asserts.AssertDescribeTimeToLiveOutput(struct)
@@ -2969,6 +4999,212 @@ function M.DescribeTimeToLiveOutput(args)
 		["TimeToLiveDescription"] = args["TimeToLiveDescription"],
 	}
 	asserts.AssertDescribeTimeToLiveOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateBackupInput = { ["TableName"] = true, ["BackupName"] = true, nil }
+
+function asserts.AssertCreateBackupInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateBackupInput to be of type 'table'")
+	assert(struct["TableName"], "Expected key TableName to exist in table")
+	assert(struct["BackupName"], "Expected key BackupName to exist in table")
+	if struct["TableName"] then asserts.AssertTableName(struct["TableName"]) end
+	if struct["BackupName"] then asserts.AssertBackupName(struct["BackupName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateBackupInput[k], "CreateBackupInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateBackupInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TableName [TableName] <p>The name of the table.</p>
+-- * BackupName [BackupName] <p>Specified name for the backup.</p>
+-- Required key: TableName
+-- Required key: BackupName
+-- @return CreateBackupInput structure as a key-value pair table
+function M.CreateBackupInput(args)
+	assert(args, "You must provide an argument table when creating CreateBackupInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["TableName"] = args["TableName"],
+		["BackupName"] = args["BackupName"],
+	}
+	asserts.AssertCreateBackupInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Endpoint = { ["CachePeriodInMinutes"] = true, ["Address"] = true, nil }
+
+function asserts.AssertEndpoint(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Endpoint to be of type 'table'")
+	assert(struct["Address"], "Expected key Address to exist in table")
+	assert(struct["CachePeriodInMinutes"], "Expected key CachePeriodInMinutes to exist in table")
+	if struct["CachePeriodInMinutes"] then asserts.AssertLong(struct["CachePeriodInMinutes"]) end
+	if struct["Address"] then asserts.AssertString(struct["Address"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Endpoint[k], "Endpoint contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Endpoint
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CachePeriodInMinutes [Long] 
+-- * Address [String] 
+-- Required key: Address
+-- Required key: CachePeriodInMinutes
+-- @return Endpoint structure as a key-value pair table
+function M.Endpoint(args)
+	assert(args, "You must provide an argument table when creating Endpoint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["CachePeriodInMinutes"] = args["CachePeriodInMinutes"],
+		["Address"] = args["Address"],
+	}
+	asserts.AssertEndpoint(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateGlobalTableInput = { ["GlobalTableName"] = true, ["ReplicationGroup"] = true, nil }
+
+function asserts.AssertCreateGlobalTableInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateGlobalTableInput to be of type 'table'")
+	assert(struct["GlobalTableName"], "Expected key GlobalTableName to exist in table")
+	assert(struct["ReplicationGroup"], "Expected key ReplicationGroup to exist in table")
+	if struct["GlobalTableName"] then asserts.AssertTableName(struct["GlobalTableName"]) end
+	if struct["ReplicationGroup"] then asserts.AssertReplicaList(struct["ReplicationGroup"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateGlobalTableInput[k], "CreateGlobalTableInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateGlobalTableInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GlobalTableName [TableName] <p>The global table name.</p>
+-- * ReplicationGroup [ReplicaList] <p>The regions where the global table needs to be created.</p>
+-- Required key: GlobalTableName
+-- Required key: ReplicationGroup
+-- @return CreateGlobalTableInput structure as a key-value pair table
+function M.CreateGlobalTableInput(args)
+	assert(args, "You must provide an argument table when creating CreateGlobalTableInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GlobalTableName"] = args["GlobalTableName"],
+		["ReplicationGroup"] = args["ReplicationGroup"],
+	}
+	asserts.AssertCreateGlobalTableInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteTableOutput = { ["TableDescription"] = true, nil }
+
+function asserts.AssertDeleteTableOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteTableOutput to be of type 'table'")
+	if struct["TableDescription"] then asserts.AssertTableDescription(struct["TableDescription"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteTableOutput[k], "DeleteTableOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteTableOutput
+-- <p>Represents the output of a <code>DeleteTable</code> operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TableDescription [TableDescription] <p>Represents the properties of a table.</p>
+-- @return DeleteTableOutput structure as a key-value pair table
+function M.DeleteTableOutput(args)
+	assert(args, "You must provide an argument table when creating DeleteTableOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["TableDescription"] = args["TableDescription"],
+	}
+	asserts.AssertDeleteTableOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateBackupOutput = { ["BackupDetails"] = true, nil }
+
+function asserts.AssertCreateBackupOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateBackupOutput to be of type 'table'")
+	if struct["BackupDetails"] then asserts.AssertBackupDetails(struct["BackupDetails"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateBackupOutput[k], "CreateBackupOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateBackupOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BackupDetails [BackupDetails] <p>Contains the details of the backup created for the table.</p>
+-- @return CreateBackupOutput structure as a key-value pair table
+function M.CreateBackupOutput(args)
+	assert(args, "You must provide an argument table when creating CreateBackupOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["BackupDetails"] = args["BackupDetails"],
+	}
+	asserts.AssertCreateBackupOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3026,25 +5262,31 @@ function M.ConsumedCapacity(args)
     }
 end
 
-keys.ItemCollectionSizeLimitExceededException = { ["message"] = true, nil }
+keys.UpdateContinuousBackupsInput = { ["PointInTimeRecoverySpecification"] = true, ["TableName"] = true, nil }
 
-function asserts.AssertItemCollectionSizeLimitExceededException(struct)
+function asserts.AssertUpdateContinuousBackupsInput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ItemCollectionSizeLimitExceededException to be of type 'table'")
-	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected UpdateContinuousBackupsInput to be of type 'table'")
+	assert(struct["TableName"], "Expected key TableName to exist in table")
+	assert(struct["PointInTimeRecoverySpecification"], "Expected key PointInTimeRecoverySpecification to exist in table")
+	if struct["PointInTimeRecoverySpecification"] then asserts.AssertPointInTimeRecoverySpecification(struct["PointInTimeRecoverySpecification"]) end
+	if struct["TableName"] then asserts.AssertTableName(struct["TableName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ItemCollectionSizeLimitExceededException[k], "ItemCollectionSizeLimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.UpdateContinuousBackupsInput[k], "UpdateContinuousBackupsInput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ItemCollectionSizeLimitExceededException
--- <p>An item collection is too large. This exception is only returned for tables that have one or more local secondary indexes.</p>
+--- Create a structure of type UpdateContinuousBackupsInput
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [ErrorMessage] <p>The total size of an item collection has exceeded the maximum limit of 10 gigabytes.</p>
--- @return ItemCollectionSizeLimitExceededException structure as a key-value pair table
-function M.ItemCollectionSizeLimitExceededException(args)
-	assert(args, "You must provide an argument table when creating ItemCollectionSizeLimitExceededException")
+-- * PointInTimeRecoverySpecification [PointInTimeRecoverySpecification] <p>Represents the settings used to enable point in time recovery.</p>
+-- * TableName [TableName] <p>The name of the table.</p>
+-- Required key: TableName
+-- Required key: PointInTimeRecoverySpecification
+-- @return UpdateContinuousBackupsInput structure as a key-value pair table
+function M.UpdateContinuousBackupsInput(args)
+	assert(args, "You must provide an argument table when creating UpdateContinuousBackupsInput")
     local query_args = { 
     }
     local uri_args = { 
@@ -3052,9 +5294,10 @@ function M.ItemCollectionSizeLimitExceededException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["PointInTimeRecoverySpecification"] = args["PointInTimeRecoverySpecification"],
+		["TableName"] = args["TableName"],
 	}
-	asserts.AssertItemCollectionSizeLimitExceededException(all_args)
+	asserts.AssertUpdateContinuousBackupsInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3146,6 +5389,49 @@ function M.TagResourceInput(args)
     }
 end
 
+keys.ListGlobalTablesInput = { ["RegionName"] = true, ["Limit"] = true, ["ExclusiveStartGlobalTableName"] = true, nil }
+
+function asserts.AssertListGlobalTablesInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListGlobalTablesInput to be of type 'table'")
+	if struct["RegionName"] then asserts.AssertRegionName(struct["RegionName"]) end
+	if struct["Limit"] then asserts.AssertPositiveIntegerObject(struct["Limit"]) end
+	if struct["ExclusiveStartGlobalTableName"] then asserts.AssertTableName(struct["ExclusiveStartGlobalTableName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListGlobalTablesInput[k], "ListGlobalTablesInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListGlobalTablesInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegionName [RegionName] <p>Lists the global tables in a specific region.</p>
+-- * Limit [PositiveIntegerObject] <p>The maximum number of table names to return.</p>
+-- * ExclusiveStartGlobalTableName [TableName] <p>The first global table name that this operation will evaluate.</p>
+-- @return ListGlobalTablesInput structure as a key-value pair table
+function M.ListGlobalTablesInput(args)
+	assert(args, "You must provide an argument table when creating ListGlobalTablesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RegionName"] = args["RegionName"],
+		["Limit"] = args["Limit"],
+		["ExclusiveStartGlobalTableName"] = args["ExclusiveStartGlobalTableName"],
+	}
+	asserts.AssertListGlobalTablesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DescribeLimitsInput = { nil }
 
 function asserts.AssertDescribeLimitsInput(struct)
@@ -3180,27 +5466,27 @@ function M.DescribeLimitsInput(args)
     }
 end
 
-keys.DeleteGlobalSecondaryIndexAction = { ["IndexName"] = true, nil }
+keys.DescribeBackupInput = { ["BackupArn"] = true, nil }
 
-function asserts.AssertDeleteGlobalSecondaryIndexAction(struct)
+function asserts.AssertDescribeBackupInput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteGlobalSecondaryIndexAction to be of type 'table'")
-	assert(struct["IndexName"], "Expected key IndexName to exist in table")
-	if struct["IndexName"] then asserts.AssertIndexName(struct["IndexName"]) end
+	assert(type(struct) == "table", "Expected DescribeBackupInput to be of type 'table'")
+	assert(struct["BackupArn"], "Expected key BackupArn to exist in table")
+	if struct["BackupArn"] then asserts.AssertBackupArn(struct["BackupArn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteGlobalSecondaryIndexAction[k], "DeleteGlobalSecondaryIndexAction contains unknown key " .. tostring(k))
+		assert(keys.DescribeBackupInput[k], "DescribeBackupInput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteGlobalSecondaryIndexAction
--- <p>Represents a global secondary index to be deleted from an existing table.</p>
+--- Create a structure of type DescribeBackupInput
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * IndexName [IndexName] <p>The name of the global secondary index to be deleted.</p>
--- Required key: IndexName
--- @return DeleteGlobalSecondaryIndexAction structure as a key-value pair table
-function M.DeleteGlobalSecondaryIndexAction(args)
-	assert(args, "You must provide an argument table when creating DeleteGlobalSecondaryIndexAction")
+-- * BackupArn [BackupArn] <p>The ARN associated with the backup.</p>
+-- Required key: BackupArn
+-- @return DescribeBackupInput structure as a key-value pair table
+function M.DescribeBackupInput(args)
+	assert(args, "You must provide an argument table when creating DescribeBackupInput")
     local query_args = { 
     }
     local uri_args = { 
@@ -3208,9 +5494,9 @@ function M.DeleteGlobalSecondaryIndexAction(args)
     local header_args = { 
     }
 	local all_args = { 
-		["IndexName"] = args["IndexName"],
+		["BackupArn"] = args["BackupArn"],
 	}
-	asserts.AssertDeleteGlobalSecondaryIndexAction(all_args)
+	asserts.AssertDescribeBackupInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3219,12 +5505,139 @@ function M.DeleteGlobalSecondaryIndexAction(args)
     }
 end
 
-keys.TableDescription = { ["TableArn"] = true, ["LocalSecondaryIndexes"] = true, ["AttributeDefinitions"] = true, ["GlobalSecondaryIndexes"] = true, ["ProvisionedThroughput"] = true, ["TableSizeBytes"] = true, ["TableName"] = true, ["TableStatus"] = true, ["StreamSpecification"] = true, ["LatestStreamLabel"] = true, ["KeySchema"] = true, ["ItemCount"] = true, ["CreationDateTime"] = true, ["LatestStreamArn"] = true, nil }
+keys.RestoreTableFromBackupInput = { ["BackupArn"] = true, ["TargetTableName"] = true, nil }
+
+function asserts.AssertRestoreTableFromBackupInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RestoreTableFromBackupInput to be of type 'table'")
+	assert(struct["TargetTableName"], "Expected key TargetTableName to exist in table")
+	assert(struct["BackupArn"], "Expected key BackupArn to exist in table")
+	if struct["BackupArn"] then asserts.AssertBackupArn(struct["BackupArn"]) end
+	if struct["TargetTableName"] then asserts.AssertTableName(struct["TargetTableName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RestoreTableFromBackupInput[k], "RestoreTableFromBackupInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RestoreTableFromBackupInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BackupArn [BackupArn] <p>The ARN associated with the backup.</p>
+-- * TargetTableName [TableName] <p>The name of the new table to which the backup must be restored.</p>
+-- Required key: TargetTableName
+-- Required key: BackupArn
+-- @return RestoreTableFromBackupInput structure as a key-value pair table
+function M.RestoreTableFromBackupInput(args)
+	assert(args, "You must provide an argument table when creating RestoreTableFromBackupInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["BackupArn"] = args["BackupArn"],
+		["TargetTableName"] = args["TargetTableName"],
+	}
+	asserts.AssertRestoreTableFromBackupInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListGlobalTablesOutput = { ["GlobalTables"] = true, ["LastEvaluatedGlobalTableName"] = true, nil }
+
+function asserts.AssertListGlobalTablesOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListGlobalTablesOutput to be of type 'table'")
+	if struct["GlobalTables"] then asserts.AssertGlobalTableList(struct["GlobalTables"]) end
+	if struct["LastEvaluatedGlobalTableName"] then asserts.AssertTableName(struct["LastEvaluatedGlobalTableName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListGlobalTablesOutput[k], "ListGlobalTablesOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListGlobalTablesOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GlobalTables [GlobalTableList] <p>List of global table names.</p>
+-- * LastEvaluatedGlobalTableName [TableName] <p>Last evaluated global table name.</p>
+-- @return ListGlobalTablesOutput structure as a key-value pair table
+function M.ListGlobalTablesOutput(args)
+	assert(args, "You must provide an argument table when creating ListGlobalTablesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GlobalTables"] = args["GlobalTables"],
+		["LastEvaluatedGlobalTableName"] = args["LastEvaluatedGlobalTableName"],
+	}
+	asserts.AssertListGlobalTablesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ContinuousBackupsDescription = { ["PointInTimeRecoveryDescription"] = true, ["ContinuousBackupsStatus"] = true, nil }
+
+function asserts.AssertContinuousBackupsDescription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ContinuousBackupsDescription to be of type 'table'")
+	assert(struct["ContinuousBackupsStatus"], "Expected key ContinuousBackupsStatus to exist in table")
+	if struct["PointInTimeRecoveryDescription"] then asserts.AssertPointInTimeRecoveryDescription(struct["PointInTimeRecoveryDescription"]) end
+	if struct["ContinuousBackupsStatus"] then asserts.AssertContinuousBackupsStatus(struct["ContinuousBackupsStatus"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ContinuousBackupsDescription[k], "ContinuousBackupsDescription contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ContinuousBackupsDescription
+-- <p>Represents the continuous backups and point in time recovery settings on the table.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PointInTimeRecoveryDescription [PointInTimeRecoveryDescription] <p>The description of the point in time recovery settings applied to the table.</p>
+-- * ContinuousBackupsStatus [ContinuousBackupsStatus] <p> <code>ContinuousBackupsStatus</code> can be one of the following states: ENABLED, DISABLED</p>
+-- Required key: ContinuousBackupsStatus
+-- @return ContinuousBackupsDescription structure as a key-value pair table
+function M.ContinuousBackupsDescription(args)
+	assert(args, "You must provide an argument table when creating ContinuousBackupsDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["PointInTimeRecoveryDescription"] = args["PointInTimeRecoveryDescription"],
+		["ContinuousBackupsStatus"] = args["ContinuousBackupsStatus"],
+	}
+	asserts.AssertContinuousBackupsDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.TableDescription = { ["TableArn"] = true, ["RestoreSummary"] = true, ["LocalSecondaryIndexes"] = true, ["AttributeDefinitions"] = true, ["GlobalSecondaryIndexes"] = true, ["ProvisionedThroughput"] = true, ["TableSizeBytes"] = true, ["TableName"] = true, ["TableStatus"] = true, ["StreamSpecification"] = true, ["TableId"] = true, ["SSEDescription"] = true, ["LatestStreamLabel"] = true, ["KeySchema"] = true, ["ItemCount"] = true, ["CreationDateTime"] = true, ["LatestStreamArn"] = true, nil }
 
 function asserts.AssertTableDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TableDescription to be of type 'table'")
 	if struct["TableArn"] then asserts.AssertString(struct["TableArn"]) end
+	if struct["RestoreSummary"] then asserts.AssertRestoreSummary(struct["RestoreSummary"]) end
 	if struct["LocalSecondaryIndexes"] then asserts.AssertLocalSecondaryIndexDescriptionList(struct["LocalSecondaryIndexes"]) end
 	if struct["AttributeDefinitions"] then asserts.AssertAttributeDefinitions(struct["AttributeDefinitions"]) end
 	if struct["GlobalSecondaryIndexes"] then asserts.AssertGlobalSecondaryIndexDescriptionList(struct["GlobalSecondaryIndexes"]) end
@@ -3233,6 +5646,8 @@ function asserts.AssertTableDescription(struct)
 	if struct["TableName"] then asserts.AssertTableName(struct["TableName"]) end
 	if struct["TableStatus"] then asserts.AssertTableStatus(struct["TableStatus"]) end
 	if struct["StreamSpecification"] then asserts.AssertStreamSpecification(struct["StreamSpecification"]) end
+	if struct["TableId"] then asserts.AssertTableId(struct["TableId"]) end
+	if struct["SSEDescription"] then asserts.AssertSSEDescription(struct["SSEDescription"]) end
 	if struct["LatestStreamLabel"] then asserts.AssertString(struct["LatestStreamLabel"]) end
 	if struct["KeySchema"] then asserts.AssertKeySchema(struct["KeySchema"]) end
 	if struct["ItemCount"] then asserts.AssertLong(struct["ItemCount"]) end
@@ -3248,6 +5663,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * TableArn [String] <p>The Amazon Resource Name (ARN) that uniquely identifies the table.</p>
+-- * RestoreSummary [RestoreSummary] <p>Contains details for the restore.</p>
 -- * LocalSecondaryIndexes [LocalSecondaryIndexDescriptionList] <p>Represents one or more local secondary indexes on the table. Each index is scoped to a given partition key value. Tables with one or more local secondary indexes are subject to an item collection size limit, where the amount of data within a given item collection cannot exceed 10 GB. Each element is composed of:</p> <ul> <li> <p> <code>IndexName</code> - The name of the local secondary index.</p> </li> <li> <p> <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema must be between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.</p> </li> <li> <p> <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. Each attribute specification is composed of:</p> <ul> <li> <p> <code>ProjectionType</code> - One of the following:</p> <ul> <li> <p> <code>KEYS_ONLY</code> - Only the index and primary keys are projected into the index.</p> </li> <li> <p> <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected attributes are in <code>NonKeyAttributes</code>.</p> </li> <li> <p> <code>ALL</code> - All of the table attributes are projected into the index.</p> </li> </ul> </li> <li> <p> <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two distinct attributes when determining the total.</p> </li> </ul> </li> <li> <p> <code>IndexSizeBytes</code> - Represents the total size of the index, in bytes. DynamoDB updates this value approximately every six hours. Recent changes might not be reflected in this value.</p> </li> <li> <p> <code>ItemCount</code> - Represents the number of items in the index. DynamoDB updates this value approximately every six hours. Recent changes might not be reflected in this value.</p> </li> </ul> <p>If the table is in the <code>DELETING</code> state, no information about indexes will be returned.</p>
 -- * AttributeDefinitions [AttributeDefinitions] <p>An array of <code>AttributeDefinition</code> objects. Each of these objects describes one attribute in the table and index key schema.</p> <p>Each <code>AttributeDefinition</code> object in this array is composed of:</p> <ul> <li> <p> <code>AttributeName</code> - The name of the attribute.</p> </li> <li> <p> <code>AttributeType</code> - The data type for the attribute.</p> </li> </ul>
 -- * GlobalSecondaryIndexes [GlobalSecondaryIndexDescriptionList] <p>The global secondary indexes, if any, on the table. Each index is scoped to a given partition key value. Each element is composed of:</p> <ul> <li> <p> <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling occurs only when a new global secondary index is added to the table; it is the process by which DynamoDB populates the new index with data from the table. (This attribute does not appear for indexes that were created during a <code>CreateTable</code> operation.)</p> </li> <li> <p> <code>IndexName</code> - The name of the global secondary index.</p> </li> <li> <p> <code>IndexSizeBytes</code> - The total size of the global secondary index, in bytes. DynamoDB updates this value approximately every six hours. Recent changes might not be reflected in this value. </p> </li> <li> <p> <code>IndexStatus</code> - The current status of the global secondary index:</p> <ul> <li> <p> <code>CREATING</code> - The index is being created.</p> </li> <li> <p> <code>UPDATING</code> - The index is being updated.</p> </li> <li> <p> <code>DELETING</code> - The index is being deleted.</p> </li> <li> <p> <code>ACTIVE</code> - The index is ready for use.</p> </li> </ul> </li> <li> <p> <code>ItemCount</code> - The number of items in the global secondary index. DynamoDB updates this value approximately every six hours. Recent changes might not be reflected in this value. </p> </li> <li> <p> <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema must be between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.</p> </li> <li> <p> <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. Each attribute specification is composed of:</p> <ul> <li> <p> <code>ProjectionType</code> - One of the following:</p> <ul> <li> <p> <code>KEYS_ONLY</code> - Only the index and primary keys are projected into the index.</p> </li> <li> <p> <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected attributes are in <code>NonKeyAttributes</code>.</p> </li> <li> <p> <code>ALL</code> - All of the table attributes are projected into the index.</p> </li> </ul> </li> <li> <p> <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two distinct attributes when determining the total.</p> </li> </ul> </li> <li> <p> <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index, consisting of read and write capacity units, along with data about increases and decreases. </p> </li> </ul> <p>If the table is in the <code>DELETING</code> state, no information about indexes will be returned.</p>
@@ -3256,6 +5672,8 @@ end
 -- * TableName [TableName] <p>The name of the table.</p>
 -- * TableStatus [TableStatus] <p>The current state of the table:</p> <ul> <li> <p> <code>CREATING</code> - The table is being created.</p> </li> <li> <p> <code>UPDATING</code> - The table is being updated.</p> </li> <li> <p> <code>DELETING</code> - The table is being deleted.</p> </li> <li> <p> <code>ACTIVE</code> - The table is ready for use.</p> </li> </ul>
 -- * StreamSpecification [StreamSpecification] <p>The current DynamoDB Streams configuration for the table.</p>
+-- * TableId [TableId] <p>Unique identifier for the table for which the backup was created. </p>
+-- * SSEDescription [SSEDescription] <p>The description of the server-side encryption status on the specified table.</p>
 -- * LatestStreamLabel [String] <p>A timestamp, in ISO 8601 format, for this stream.</p> <p>Note that <code>LatestStreamLabel</code> is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:</p> <ul> <li> <p>the AWS customer ID.</p> </li> <li> <p>the table name.</p> </li> <li> <p>the <code>StreamLabel</code>.</p> </li> </ul>
 -- * KeySchema [KeySchema] <p>The primary key structure for the table. Each <code>KeySchemaElement</code> consists of:</p> <ul> <li> <p> <code>AttributeName</code> - The name of the attribute.</p> </li> <li> <p> <code>KeyType</code> - The role of the attribute:</p> <ul> <li> <p> <code>HASH</code> - partition key</p> </li> <li> <p> <code>RANGE</code> - sort key</p> </li> </ul> <note> <p>The partition key of an item is also known as its <i>hash attribute</i>. The term "hash attribute" derives from DynamoDB' usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values.</p> <p>The sort key of an item is also known as its <i>range attribute</i>. The term "range attribute" derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.</p> </note> </li> </ul> <p>For more information about primary keys, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey">Primary Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 -- * ItemCount [Long] <p>The number of items in the specified table. DynamoDB updates this value approximately every six hours. Recent changes might not be reflected in this value.</p>
@@ -3272,6 +5690,7 @@ function M.TableDescription(args)
     }
 	local all_args = { 
 		["TableArn"] = args["TableArn"],
+		["RestoreSummary"] = args["RestoreSummary"],
 		["LocalSecondaryIndexes"] = args["LocalSecondaryIndexes"],
 		["AttributeDefinitions"] = args["AttributeDefinitions"],
 		["GlobalSecondaryIndexes"] = args["GlobalSecondaryIndexes"],
@@ -3280,6 +5699,8 @@ function M.TableDescription(args)
 		["TableName"] = args["TableName"],
 		["TableStatus"] = args["TableStatus"],
 		["StreamSpecification"] = args["StreamSpecification"],
+		["TableId"] = args["TableId"],
+		["SSEDescription"] = args["SSEDescription"],
 		["LatestStreamLabel"] = args["LatestStreamLabel"],
 		["KeySchema"] = args["KeySchema"],
 		["ItemCount"] = args["ItemCount"],
@@ -3335,25 +5756,62 @@ function M.WriteRequest(args)
     }
 end
 
-function asserts.AssertKeyExpression(str)
+keys.UpdateContinuousBackupsOutput = { ["ContinuousBackupsDescription"] = true, nil }
+
+function asserts.AssertUpdateContinuousBackupsOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateContinuousBackupsOutput to be of type 'table'")
+	if struct["ContinuousBackupsDescription"] then asserts.AssertContinuousBackupsDescription(struct["ContinuousBackupsDescription"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateContinuousBackupsOutput[k], "UpdateContinuousBackupsOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateContinuousBackupsOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ContinuousBackupsDescription [ContinuousBackupsDescription] <p>Represents the continuous backups and point in time recovery settings on the table.</p>
+-- @return UpdateContinuousBackupsOutput structure as a key-value pair table
+function M.UpdateContinuousBackupsOutput(args)
+	assert(args, "You must provide an argument table when creating UpdateContinuousBackupsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ContinuousBackupsDescription"] = args["ContinuousBackupsDescription"],
+	}
+	asserts.AssertUpdateContinuousBackupsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+function asserts.AssertRegionName(str)
 	assert(str)
-	assert(type(str) == "string", "Expected KeyExpression to be of type 'string'")
+	assert(type(str) == "string", "Expected RegionName to be of type 'string'")
 end
 
 --  
-function M.KeyExpression(str)
-	asserts.AssertKeyExpression(str)
+function M.RegionName(str)
+	asserts.AssertRegionName(str)
 	return str
 end
 
-function asserts.AssertReturnValue(str)
+function asserts.AssertSSEStatus(str)
 	assert(str)
-	assert(type(str) == "string", "Expected ReturnValue to be of type 'string'")
+	assert(type(str) == "string", "Expected SSEStatus to be of type 'string'")
 end
 
 --  
-function M.ReturnValue(str)
-	asserts.AssertReturnValue(str)
+function M.SSEStatus(str)
+	asserts.AssertSSEStatus(str)
 	return str
 end
 
@@ -3379,6 +5837,41 @@ function M.ScalarAttributeType(str)
 	return str
 end
 
+function asserts.AssertBackupType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected BackupType to be of type 'string'")
+end
+
+--  
+function M.BackupType(str)
+	asserts.AssertBackupType(str)
+	return str
+end
+
+function asserts.AssertAutoScalingPolicyName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected AutoScalingPolicyName to be of type 'string'")
+	assert(#str <= 256, "Expected string to be max 256 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.AutoScalingPolicyName(str)
+	asserts.AssertAutoScalingPolicyName(str)
+	return str
+end
+
+function asserts.AssertReturnValue(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ReturnValue to be of type 'string'")
+end
+
+--  
+function M.ReturnValue(str)
+	asserts.AssertReturnValue(str)
+	return str
+end
+
 function asserts.AssertAttributeAction(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AttributeAction to be of type 'string'")
@@ -3387,6 +5880,50 @@ end
 --  
 function M.AttributeAction(str)
 	asserts.AssertAttributeAction(str)
+	return str
+end
+
+function asserts.AssertPointInTimeRecoveryStatus(str)
+	assert(str)
+	assert(type(str) == "string", "Expected PointInTimeRecoveryStatus to be of type 'string'")
+end
+
+--  
+function M.PointInTimeRecoveryStatus(str)
+	asserts.AssertPointInTimeRecoveryStatus(str)
+	return str
+end
+
+function asserts.AssertSSEType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected SSEType to be of type 'string'")
+end
+
+--  
+function M.SSEType(str)
+	asserts.AssertSSEType(str)
+	return str
+end
+
+function asserts.AssertTableId(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TableId to be of type 'string'")
+end
+
+--  
+function M.TableId(str)
+	asserts.AssertTableId(str)
+	return str
+end
+
+function asserts.AssertKMSMasterKeyArn(str)
+	assert(str)
+	assert(type(str) == "string", "Expected KMSMasterKeyArn to be of type 'string'")
+end
+
+--  
+function M.KMSMasterKeyArn(str)
+	asserts.AssertKMSMasterKeyArn(str)
 	return str
 end
 
@@ -3412,6 +5949,18 @@ function M.ConditionalOperator(str)
 	return str
 end
 
+function asserts.AssertAttributeName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected AttributeName to be of type 'string'")
+	assert(#str <= 65535, "Expected string to be max 65535 characters")
+end
+
+--  
+function M.AttributeName(str)
+	asserts.AssertAttributeName(str)
+	return str
+end
+
 function asserts.AssertUpdateExpression(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UpdateExpression to be of type 'string'")
@@ -3433,6 +5982,19 @@ end
 --  
 function M.TagKeyString(str)
 	asserts.AssertTagKeyString(str)
+	return str
+end
+
+function asserts.AssertAutoScalingRoleArn(str)
+	assert(str)
+	assert(type(str) == "string", "Expected AutoScalingRoleArn to be of type 'string'")
+	assert(#str <= 1600, "Expected string to be max 1600 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.AutoScalingRoleArn(str)
+	asserts.AssertAutoScalingRoleArn(str)
 	return str
 end
 
@@ -3469,6 +6031,17 @@ function M.String(str)
 	return str
 end
 
+function asserts.AssertTableArn(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TableArn to be of type 'string'")
+end
+
+--  
+function M.TableArn(str)
+	asserts.AssertTableArn(str)
+	return str
+end
+
 function asserts.AssertNumberAttributeValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NumberAttributeValue to be of type 'string'")
@@ -3488,6 +6061,30 @@ end
 --  
 function M.ReturnItemCollectionMetrics(str)
 	asserts.AssertReturnItemCollectionMetrics(str)
+	return str
+end
+
+function asserts.AssertBackupArn(str)
+	assert(str)
+	assert(type(str) == "string", "Expected BackupArn to be of type 'string'")
+	assert(#str <= 1024, "Expected string to be max 1024 characters")
+	assert(#str >= 37, "Expected string to be min 37 characters")
+end
+
+--  
+function M.BackupArn(str)
+	asserts.AssertBackupArn(str)
+	return str
+end
+
+function asserts.AssertReplicaStatus(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ReplicaStatus to be of type 'string'")
+end
+
+--  
+function M.ReplicaStatus(str)
+	asserts.AssertReplicaStatus(str)
 	return str
 end
 
@@ -3527,6 +6124,17 @@ function M.NextTokenString(str)
 	return str
 end
 
+function asserts.AssertBackupTypeFilter(str)
+	assert(str)
+	assert(type(str) == "string", "Expected BackupTypeFilter to be of type 'string'")
+end
+
+--  
+function M.BackupTypeFilter(str)
+	asserts.AssertBackupTypeFilter(str)
+	return str
+end
+
 function asserts.AssertExpressionAttributeNameVariable(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ExpressionAttributeNameVariable to be of type 'string'")
@@ -3549,14 +6157,27 @@ function M.IndexStatus(str)
 	return str
 end
 
-function asserts.AssertErrorMessage(str)
+function asserts.AssertTableName(str)
 	assert(str)
-	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
+	assert(type(str) == "string", "Expected TableName to be of type 'string'")
+	assert(#str <= 255, "Expected string to be max 255 characters")
+	assert(#str >= 3, "Expected string to be min 3 characters")
 end
 
 --  
-function M.ErrorMessage(str)
-	asserts.AssertErrorMessage(str)
+function M.TableName(str)
+	asserts.AssertTableName(str)
+	return str
+end
+
+function asserts.AssertContinuousBackupsStatus(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ContinuousBackupsStatus to be of type 'string'")
+end
+
+--  
+function M.ContinuousBackupsStatus(str)
+	asserts.AssertContinuousBackupsStatus(str)
 	return str
 end
 
@@ -3606,6 +6227,17 @@ function M.ProjectionType(str)
 	return str
 end
 
+function asserts.AssertKeyExpression(str)
+	assert(str)
+	assert(type(str) == "string", "Expected KeyExpression to be of type 'string'")
+end
+
+--  
+function M.KeyExpression(str)
+	asserts.AssertKeyExpression(str)
+	return str
+end
+
 function asserts.AssertReturnConsumedCapacity(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ReturnConsumedCapacity to be of type 'string'")
@@ -3617,15 +6249,27 @@ function M.ReturnConsumedCapacity(str)
 	return str
 end
 
-function asserts.AssertAttributeName(str)
+function asserts.AssertIndexName(str)
 	assert(str)
-	assert(type(str) == "string", "Expected AttributeName to be of type 'string'")
-	assert(#str <= 65535, "Expected string to be max 65535 characters")
+	assert(type(str) == "string", "Expected IndexName to be of type 'string'")
+	assert(#str <= 255, "Expected string to be max 255 characters")
+	assert(#str >= 3, "Expected string to be min 3 characters")
 end
 
 --  
-function M.AttributeName(str)
-	asserts.AssertAttributeName(str)
+function M.IndexName(str)
+	asserts.AssertIndexName(str)
+	return str
+end
+
+function asserts.AssertBackupStatus(str)
+	assert(str)
+	assert(type(str) == "string", "Expected BackupStatus to be of type 'string'")
+end
+
+--  
+function M.BackupStatus(str)
+	asserts.AssertBackupStatus(str)
 	return str
 end
 
@@ -3640,16 +6284,27 @@ function M.ComparisonOperator(str)
 	return str
 end
 
-function asserts.AssertTableName(str)
+function asserts.AssertKMSMasterKeyId(str)
 	assert(str)
-	assert(type(str) == "string", "Expected TableName to be of type 'string'")
+	assert(type(str) == "string", "Expected KMSMasterKeyId to be of type 'string'")
+end
+
+--  
+function M.KMSMasterKeyId(str)
+	asserts.AssertKMSMasterKeyId(str)
+	return str
+end
+
+function asserts.AssertBackupName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected BackupName to be of type 'string'")
 	assert(#str <= 255, "Expected string to be max 255 characters")
 	assert(#str >= 3, "Expected string to be min 3 characters")
 end
 
 --  
-function M.TableName(str)
-	asserts.AssertTableName(str)
+function M.BackupName(str)
+	asserts.AssertBackupName(str)
 	return str
 end
 
@@ -3690,6 +6345,17 @@ function M.StreamArn(str)
 	return str
 end
 
+function asserts.AssertGlobalTableStatus(str)
+	assert(str)
+	assert(type(str) == "string", "Expected GlobalTableStatus to be of type 'string'")
+end
+
+--  
+function M.GlobalTableStatus(str)
+	asserts.AssertGlobalTableStatus(str)
+	return str
+end
+
 function asserts.AssertTableStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TableStatus to be of type 'string'")
@@ -3698,6 +6364,17 @@ end
 --  
 function M.TableStatus(str)
 	asserts.AssertTableStatus(str)
+	return str
+end
+
+function asserts.AssertGlobalTableArnString(str)
+	assert(str)
+	assert(type(str) == "string", "Expected GlobalTableArnString to be of type 'string'")
+end
+
+--  
+function M.GlobalTableArnString(str)
+	asserts.AssertGlobalTableArnString(str)
 	return str
 end
 
@@ -3711,19 +6388,6 @@ end
 --  
 function M.TimeToLiveAttributeName(str)
 	asserts.AssertTimeToLiveAttributeName(str)
-	return str
-end
-
-function asserts.AssertIndexName(str)
-	assert(str)
-	assert(type(str) == "string", "Expected IndexName to be of type 'string'")
-	assert(#str <= 255, "Expected string to be max 255 characters")
-	assert(#str >= 3, "Expected string to be min 3 characters")
-end
-
---  
-function M.IndexName(str)
-	asserts.AssertIndexName(str)
 	return str
 end
 
@@ -3748,6 +6412,16 @@ function M.ConsumedCapacityUnits(double)
 	return double
 end
 
+function asserts.AssertDouble(double)
+	assert(double)
+	assert(type(double) == "number", "Expected Double to be of type 'number'")
+end
+
+function M.Double(double)
+	asserts.AssertDouble(double)
+	return double
+end
+
 function asserts.AssertItemCollectionSizeEstimateBound(double)
 	assert(double)
 	assert(type(double) == "number", "Expected ItemCollectionSizeEstimateBound to be of type 'number'")
@@ -3769,6 +6443,17 @@ function M.PositiveLongObject(long)
 	return long
 end
 
+function asserts.AssertItemCount(long)
+	assert(long)
+	assert(type(long) == "number", "Expected ItemCount to be of type 'number'")
+	assert(long % 1 == 0, "Expected a whole integer number")
+end
+
+function M.ItemCount(long)
+	asserts.AssertItemCount(long)
+	return long
+end
+
 function asserts.AssertLong(long)
 	assert(long)
 	assert(type(long) == "number", "Expected Long to be of type 'number'")
@@ -3778,6 +6463,30 @@ end
 function M.Long(long)
 	asserts.AssertLong(long)
 	return long
+end
+
+function asserts.AssertBackupSizeBytes(long)
+	assert(long)
+	assert(type(long) == "number", "Expected BackupSizeBytes to be of type 'number'")
+	assert(long % 1 == 0, "Expected a whole integer number")
+end
+
+function M.BackupSizeBytes(long)
+	asserts.AssertBackupSizeBytes(long)
+	return long
+end
+
+function asserts.AssertScanTotalSegments(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected ScanTotalSegments to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
+	assert(integer <= 1000000, "Expected integer to be max 1000000")
+	assert(integer >= 1, "Expected integer to be min 1")
+end
+
+function M.ScanTotalSegments(integer)
+	asserts.AssertScanTotalSegments(integer)
+	return integer
 end
 
 function asserts.AssertListTablesInputLimit(integer)
@@ -3793,16 +6502,27 @@ function M.ListTablesInputLimit(integer)
 	return integer
 end
 
-function asserts.AssertScanTotalSegments(integer)
+function asserts.AssertBackupsInputLimit(integer)
 	assert(integer)
-	assert(type(integer) == "number", "Expected ScanTotalSegments to be of type 'number'")
+	assert(type(integer) == "number", "Expected BackupsInputLimit to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
-	assert(integer <= 1000000, "Expected integer to be max 1000000")
+	assert(integer <= 100, "Expected integer to be max 100")
 	assert(integer >= 1, "Expected integer to be min 1")
 end
 
-function M.ScanTotalSegments(integer)
-	asserts.AssertScanTotalSegments(integer)
+function M.BackupsInputLimit(integer)
+	asserts.AssertBackupsInputLimit(integer)
+	return integer
+end
+
+function asserts.AssertIntegerObject(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected IntegerObject to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
+end
+
+function M.IntegerObject(integer)
+	asserts.AssertIntegerObject(integer)
 	return integer
 end
 
@@ -3841,6 +6561,16 @@ function M.PositiveIntegerObject(integer)
 	return integer
 end
 
+function asserts.AssertBackfilling(boolean)
+	assert(boolean)
+	assert(type(boolean) == "boolean", "Expected Backfilling to be of type 'boolean'")
+end
+
+function M.Backfilling(boolean)
+	asserts.AssertBackfilling(boolean)
+	return boolean
+end
+
 function asserts.AssertStreamEnabled(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected StreamEnabled to be of type 'boolean'")
@@ -3848,6 +6578,26 @@ end
 
 function M.StreamEnabled(boolean)
 	asserts.AssertStreamEnabled(boolean)
+	return boolean
+end
+
+function asserts.AssertRestoreInProgress(boolean)
+	assert(boolean)
+	assert(type(boolean) == "boolean", "Expected RestoreInProgress to be of type 'boolean'")
+end
+
+function M.RestoreInProgress(boolean)
+	asserts.AssertRestoreInProgress(boolean)
+	return boolean
+end
+
+function asserts.AssertSSEEnabled(boolean)
+	assert(boolean)
+	assert(type(boolean) == "boolean", "Expected SSEEnabled to be of type 'boolean'")
+end
+
+function M.SSEEnabled(boolean)
+	asserts.AssertSSEEnabled(boolean)
 	return boolean
 end
 
@@ -3871,26 +6621,6 @@ function M.NullAttributeValue(boolean)
 	return boolean
 end
 
-function asserts.AssertBackfilling(boolean)
-	assert(boolean)
-	assert(type(boolean) == "boolean", "Expected Backfilling to be of type 'boolean'")
-end
-
-function M.Backfilling(boolean)
-	asserts.AssertBackfilling(boolean)
-	return boolean
-end
-
-function asserts.AssertBooleanObject(boolean)
-	assert(boolean)
-	assert(type(boolean) == "boolean", "Expected BooleanObject to be of type 'boolean'")
-end
-
-function M.BooleanObject(boolean)
-	asserts.AssertBooleanObject(boolean)
-	return boolean
-end
-
 function asserts.AssertConsistentRead(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected ConsistentRead to be of type 'boolean'")
@@ -3911,18 +6641,14 @@ function M.BooleanAttributeValue(boolean)
 	return boolean
 end
 
-function asserts.AssertItemCollectionKeyAttributeMap(map)
-	assert(map)
-	assert(type(map) == "table", "Expected ItemCollectionKeyAttributeMap to be of type 'table'")
-	for k,v in pairs(map) do
-		asserts.AssertAttributeName(k)
-		asserts.AssertAttributeValue(v)
-	end
+function asserts.AssertBooleanObject(boolean)
+	assert(boolean)
+	assert(type(boolean) == "boolean", "Expected BooleanObject to be of type 'boolean'")
 end
 
-function M.ItemCollectionKeyAttributeMap(map)
-	asserts.AssertItemCollectionKeyAttributeMap(map)
-	return map
+function M.BooleanObject(boolean)
+	asserts.AssertBooleanObject(boolean)
+	return boolean
 end
 
 function asserts.AssertAttributeMap(map)
@@ -4037,6 +6763,20 @@ function M.ExpressionAttributeValueMap(map)
 	return map
 end
 
+function asserts.AssertItemCollectionKeyAttributeMap(map)
+	assert(map)
+	assert(type(map) == "table", "Expected ItemCollectionKeyAttributeMap to be of type 'table'")
+	for k,v in pairs(map) do
+		asserts.AssertAttributeName(k)
+		asserts.AssertAttributeValue(v)
+	end
+end
+
+function M.ItemCollectionKeyAttributeMap(map)
+	asserts.AssertItemCollectionKeyAttributeMap(map)
+	return map
+end
+
 function asserts.AssertBatchWriteItemRequestMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected BatchWriteItemRequestMap to be of type 'table'")
@@ -4135,6 +6875,26 @@ function M.PutItemInputAttributeMap(map)
 	return map
 end
 
+function asserts.AssertTableCreationDateTime(timestamp)
+	assert(timestamp)
+	assert(type(timestamp) == "string", "Expected TableCreationDateTime to be of type 'string'")
+end
+
+function M.TableCreationDateTime(timestamp)
+	asserts.AssertTableCreationDateTime(timestamp)
+	return timestamp
+end
+
+function asserts.AssertTimeRangeLowerBound(timestamp)
+	assert(timestamp)
+	assert(type(timestamp) == "string", "Expected TimeRangeLowerBound to be of type 'string'")
+end
+
+function M.TimeRangeLowerBound(timestamp)
+	asserts.AssertTimeRangeLowerBound(timestamp)
+	return timestamp
+end
+
 function asserts.AssertDate(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected Date to be of type 'string'")
@@ -4142,6 +6902,26 @@ end
 
 function M.Date(timestamp)
 	asserts.AssertDate(timestamp)
+	return timestamp
+end
+
+function asserts.AssertTimeRangeUpperBound(timestamp)
+	assert(timestamp)
+	assert(type(timestamp) == "string", "Expected TimeRangeUpperBound to be of type 'string'")
+end
+
+function M.TimeRangeUpperBound(timestamp)
+	asserts.AssertTimeRangeUpperBound(timestamp)
+	return timestamp
+end
+
+function asserts.AssertBackupCreationDateTime(timestamp)
+	assert(timestamp)
+	assert(type(timestamp) == "string", "Expected BackupCreationDateTime to be of type 'string'")
+end
+
+function M.BackupCreationDateTime(timestamp)
+	asserts.AssertBackupCreationDateTime(timestamp)
 	return timestamp
 end
 
@@ -4153,6 +6933,23 @@ end
 function M.BinaryAttributeValue(blob)
 	asserts.AssertBinaryAttributeValue(blob)
 	return blob
+end
+
+function asserts.AssertReplicaGlobalSecondaryIndexSettingsUpdateList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ReplicaGlobalSecondaryIndexSettingsUpdateList to be of type ''table")
+	assert(#list <= 20, "Expected list to be contain 20 elements")
+	assert(#list >= 1, "Expected list to be contain 1 elements")
+	for _,v in ipairs(list) do
+		asserts.AssertReplicaGlobalSecondaryIndexSettingsUpdate(v)
+	end
+end
+
+--  
+-- List of ReplicaGlobalSecondaryIndexSettingsUpdate objects
+function M.ReplicaGlobalSecondaryIndexSettingsUpdateList(list)
+	asserts.AssertReplicaGlobalSecondaryIndexSettingsUpdateList(list)
+	return list
 end
 
 function asserts.AssertGlobalSecondaryIndexDescriptionList(list)
@@ -4167,6 +6964,83 @@ end
 -- List of GlobalSecondaryIndexDescription objects
 function M.GlobalSecondaryIndexDescriptionList(list)
 	asserts.AssertGlobalSecondaryIndexDescriptionList(list)
+	return list
+end
+
+function asserts.AssertAutoScalingPolicyDescriptionList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected AutoScalingPolicyDescriptionList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertAutoScalingPolicyDescription(v)
+	end
+end
+
+--  
+-- List of AutoScalingPolicyDescription objects
+function M.AutoScalingPolicyDescriptionList(list)
+	asserts.AssertAutoScalingPolicyDescriptionList(list)
+	return list
+end
+
+function asserts.AssertItemList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ItemList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertAttributeMap(v)
+	end
+end
+
+--  
+-- List of AttributeMap objects
+function M.ItemList(list)
+	asserts.AssertItemList(list)
+	return list
+end
+
+function asserts.AssertGlobalTableGlobalSecondaryIndexSettingsUpdateList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected GlobalTableGlobalSecondaryIndexSettingsUpdateList to be of type ''table")
+	assert(#list <= 20, "Expected list to be contain 20 elements")
+	assert(#list >= 1, "Expected list to be contain 1 elements")
+	for _,v in ipairs(list) do
+		asserts.AssertGlobalTableGlobalSecondaryIndexSettingsUpdate(v)
+	end
+end
+
+--  
+-- List of GlobalTableGlobalSecondaryIndexSettingsUpdate objects
+function M.GlobalTableGlobalSecondaryIndexSettingsUpdateList(list)
+	asserts.AssertGlobalTableGlobalSecondaryIndexSettingsUpdateList(list)
+	return list
+end
+
+function asserts.AssertReplicaSettingsDescriptionList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ReplicaSettingsDescriptionList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertReplicaSettingsDescription(v)
+	end
+end
+
+--  
+-- List of ReplicaSettingsDescription objects
+function M.ReplicaSettingsDescriptionList(list)
+	asserts.AssertReplicaSettingsDescriptionList(list)
+	return list
+end
+
+function asserts.AssertEndpoints(list)
+	assert(list)
+	assert(type(list) == "table", "Expected Endpoints to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertEndpoint(v)
+	end
+end
+
+--  
+-- List of Endpoint objects
+function M.Endpoints(list)
+	asserts.AssertEndpoints(list)
 	return list
 end
 
@@ -4217,18 +7091,18 @@ function M.LocalSecondaryIndexDescriptionList(list)
 	return list
 end
 
-function asserts.AssertLocalSecondaryIndexList(list)
+function asserts.AssertBackupSummaries(list)
 	assert(list)
-	assert(type(list) == "table", "Expected LocalSecondaryIndexList to be of type ''table")
+	assert(type(list) == "table", "Expected BackupSummaries to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertLocalSecondaryIndex(v)
+		asserts.AssertBackupSummary(v)
 	end
 end
 
 --  
--- List of LocalSecondaryIndex objects
-function M.LocalSecondaryIndexList(list)
-	asserts.AssertLocalSecondaryIndexList(list)
+-- List of BackupSummary objects
+function M.BackupSummaries(list)
+	asserts.AssertBackupSummaries(list)
 	return list
 end
 
@@ -4262,21 +7136,6 @@ function M.GlobalSecondaryIndexUpdateList(list)
 	return list
 end
 
-function asserts.AssertItemCollectionMetricsMultiple(list)
-	assert(list)
-	assert(type(list) == "table", "Expected ItemCollectionMetricsMultiple to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertItemCollectionMetrics(v)
-	end
-end
-
---  
--- List of ItemCollectionMetrics objects
-function M.ItemCollectionMetricsMultiple(list)
-	asserts.AssertItemCollectionMetricsMultiple(list)
-	return list
-end
-
 function asserts.AssertNonKeyAttributeNameList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected NonKeyAttributeNameList to be of type ''table")
@@ -4291,6 +7150,21 @@ end
 -- List of NonKeyAttributeName objects
 function M.NonKeyAttributeNameList(list)
 	asserts.AssertNonKeyAttributeNameList(list)
+	return list
+end
+
+function asserts.AssertItemCollectionMetricsMultiple(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ItemCollectionMetricsMultiple to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertItemCollectionMetrics(v)
+	end
+end
+
+--  
+-- List of ItemCollectionMetrics objects
+function M.ItemCollectionMetricsMultiple(list)
+	asserts.AssertItemCollectionMetricsMultiple(list)
 	return list
 end
 
@@ -4321,6 +7195,51 @@ end
 -- List of StringAttributeValue objects
 function M.StringSetAttributeValue(list)
 	asserts.AssertStringSetAttributeValue(list)
+	return list
+end
+
+function asserts.AssertReplicaList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ReplicaList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertReplica(v)
+	end
+end
+
+--  
+-- List of Replica objects
+function M.ReplicaList(list)
+	asserts.AssertReplicaList(list)
+	return list
+end
+
+function asserts.AssertReplicaDescriptionList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ReplicaDescriptionList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertReplicaDescription(v)
+	end
+end
+
+--  
+-- List of ReplicaDescription objects
+function M.ReplicaDescriptionList(list)
+	asserts.AssertReplicaDescriptionList(list)
+	return list
+end
+
+function asserts.AssertListAttributeValue(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ListAttributeValue to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertAttributeValue(v)
+	end
+end
+
+--  
+-- List of AttributeValue objects
+function M.ListAttributeValue(list)
+	asserts.AssertListAttributeValue(list)
 	return list
 end
 
@@ -4369,6 +7288,51 @@ function M.TableNameList(list)
 	return list
 end
 
+function asserts.AssertLocalSecondaryIndexes(list)
+	assert(list)
+	assert(type(list) == "table", "Expected LocalSecondaryIndexes to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertLocalSecondaryIndexInfo(v)
+	end
+end
+
+--  
+-- List of LocalSecondaryIndexInfo objects
+function M.LocalSecondaryIndexes(list)
+	asserts.AssertLocalSecondaryIndexes(list)
+	return list
+end
+
+function asserts.AssertGlobalSecondaryIndexes(list)
+	assert(list)
+	assert(type(list) == "table", "Expected GlobalSecondaryIndexes to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertGlobalSecondaryIndexInfo(v)
+	end
+end
+
+--  
+-- List of GlobalSecondaryIndexInfo objects
+function M.GlobalSecondaryIndexes(list)
+	asserts.AssertGlobalSecondaryIndexes(list)
+	return list
+end
+
+function asserts.AssertLocalSecondaryIndexList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected LocalSecondaryIndexList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertLocalSecondaryIndex(v)
+	end
+end
+
+--  
+-- List of LocalSecondaryIndex objects
+function M.LocalSecondaryIndexList(list)
+	asserts.AssertLocalSecondaryIndexList(list)
+	return list
+end
+
 function asserts.AssertAttributeNameList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AttributeNameList to be of type ''table")
@@ -4399,6 +7363,23 @@ end
 -- List of Key objects
 function M.KeyList(list)
 	asserts.AssertKeyList(list)
+	return list
+end
+
+function asserts.AssertReplicaSettingsUpdateList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ReplicaSettingsUpdateList to be of type ''table")
+	assert(#list <= 50, "Expected list to be contain 50 elements")
+	assert(#list >= 1, "Expected list to be contain 1 elements")
+	for _,v in ipairs(list) do
+		asserts.AssertReplicaSettingsUpdate(v)
+	end
+end
+
+--  
+-- List of ReplicaSettingsUpdate objects
+function M.ReplicaSettingsUpdateList(list)
+	asserts.AssertReplicaSettingsUpdateList(list)
 	return list
 end
 
@@ -4434,18 +7415,33 @@ function M.GlobalSecondaryIndexList(list)
 	return list
 end
 
-function asserts.AssertListAttributeValue(list)
+function asserts.AssertReplicaUpdateList(list)
 	assert(list)
-	assert(type(list) == "table", "Expected ListAttributeValue to be of type ''table")
+	assert(type(list) == "table", "Expected ReplicaUpdateList to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertAttributeValue(v)
+		asserts.AssertReplicaUpdate(v)
 	end
 end
 
 --  
--- List of AttributeValue objects
-function M.ListAttributeValue(list)
-	asserts.AssertListAttributeValue(list)
+-- List of ReplicaUpdate objects
+function M.ReplicaUpdateList(list)
+	asserts.AssertReplicaUpdateList(list)
+	return list
+end
+
+function asserts.AssertGlobalTableList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected GlobalTableList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertGlobalTable(v)
+	end
+end
+
+--  
+-- List of GlobalTable objects
+function M.GlobalTableList(list)
+	asserts.AssertGlobalTableList(list)
 	return list
 end
 
@@ -4464,18 +7460,18 @@ function M.ConsumedCapacityMultiple(list)
 	return list
 end
 
-function asserts.AssertItemList(list)
+function asserts.AssertReplicaGlobalSecondaryIndexSettingsDescriptionList(list)
 	assert(list)
-	assert(type(list) == "table", "Expected ItemList to be of type ''table")
+	assert(type(list) == "table", "Expected ReplicaGlobalSecondaryIndexSettingsDescriptionList to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertAttributeMap(v)
+		asserts.AssertReplicaGlobalSecondaryIndexSettingsDescription(v)
 	end
 end
 
 --  
--- List of AttributeMap objects
-function M.ItemList(list)
-	asserts.AssertItemList(list)
+-- List of ReplicaGlobalSecondaryIndexSettingsDescription objects
+function M.ReplicaGlobalSecondaryIndexSettingsDescriptionList(list)
+	asserts.AssertReplicaGlobalSecondaryIndexSettingsDescriptionList(list)
 	return list
 end
 
@@ -4552,6 +7548,286 @@ end
 --
 -- OPERATIONS
 --
+--- Call DescribeContinuousBackups asynchronously, invoking a callback when done
+-- @param DescribeContinuousBackupsInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeContinuousBackupsAsync(DescribeContinuousBackupsInput, cb)
+	assert(DescribeContinuousBackupsInput, "You must provide a DescribeContinuousBackupsInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DescribeContinuousBackups",
+	}
+	for header,value in pairs(DescribeContinuousBackupsInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeContinuousBackupsInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeContinuousBackups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeContinuousBackupsInput
+-- @return response
+-- @return error_message
+function M.DescribeContinuousBackupsSync(DescribeContinuousBackupsInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeContinuousBackupsAsync(DescribeContinuousBackupsInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateContinuousBackups asynchronously, invoking a callback when done
+-- @param UpdateContinuousBackupsInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateContinuousBackupsAsync(UpdateContinuousBackupsInput, cb)
+	assert(UpdateContinuousBackupsInput, "You must provide a UpdateContinuousBackupsInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.UpdateContinuousBackups",
+	}
+	for header,value in pairs(UpdateContinuousBackupsInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateContinuousBackupsInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateContinuousBackups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateContinuousBackupsInput
+-- @return response
+-- @return error_message
+function M.UpdateContinuousBackupsSync(UpdateContinuousBackupsInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateContinuousBackupsAsync(UpdateContinuousBackupsInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeBackup asynchronously, invoking a callback when done
+-- @param DescribeBackupInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeBackupAsync(DescribeBackupInput, cb)
+	assert(DescribeBackupInput, "You must provide a DescribeBackupInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DescribeBackup",
+	}
+	for header,value in pairs(DescribeBackupInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeBackupInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeBackup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeBackupInput
+-- @return response
+-- @return error_message
+function M.DescribeBackupSync(DescribeBackupInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeBackupAsync(DescribeBackupInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeTimeToLive asynchronously, invoking a callback when done
+-- @param DescribeTimeToLiveInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeTimeToLiveAsync(DescribeTimeToLiveInput, cb)
+	assert(DescribeTimeToLiveInput, "You must provide a DescribeTimeToLiveInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DescribeTimeToLive",
+	}
+	for header,value in pairs(DescribeTimeToLiveInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeTimeToLiveInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeTimeToLive synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeTimeToLiveInput
+-- @return response
+-- @return error_message
+function M.DescribeTimeToLiveSync(DescribeTimeToLiveInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeTimeToLiveAsync(DescribeTimeToLiveInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteBackup asynchronously, invoking a callback when done
+-- @param DeleteBackupInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteBackupAsync(DeleteBackupInput, cb)
+	assert(DeleteBackupInput, "You must provide a DeleteBackupInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DeleteBackup",
+	}
+	for header,value in pairs(DeleteBackupInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteBackupInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteBackup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteBackupInput
+-- @return response
+-- @return error_message
+function M.DeleteBackupSync(DeleteBackupInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteBackupAsync(DeleteBackupInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeGlobalTable asynchronously, invoking a callback when done
+-- @param DescribeGlobalTableInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeGlobalTableAsync(DescribeGlobalTableInput, cb)
+	assert(DescribeGlobalTableInput, "You must provide a DescribeGlobalTableInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DescribeGlobalTable",
+	}
+	for header,value in pairs(DescribeGlobalTableInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeGlobalTableInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeGlobalTable synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeGlobalTableInput
+-- @return response
+-- @return error_message
+function M.DescribeGlobalTableSync(DescribeGlobalTableInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeGlobalTableAsync(DescribeGlobalTableInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateTable asynchronously, invoking a callback when done
+-- @param CreateTableInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.CreateTableAsync(CreateTableInput, cb)
+	assert(CreateTableInput, "You must provide a CreateTableInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.CreateTable",
+	}
+	for header,value in pairs(CreateTableInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", CreateTableInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CreateTable synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateTableInput
+-- @return response
+-- @return error_message
+function M.CreateTableSync(CreateTableInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateTableAsync(CreateTableInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RestoreTableFromBackup asynchronously, invoking a callback when done
+-- @param RestoreTableFromBackupInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.RestoreTableFromBackupAsync(RestoreTableFromBackupInput, cb)
+	assert(RestoreTableFromBackupInput, "You must provide a RestoreTableFromBackupInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.RestoreTableFromBackup",
+	}
+	for header,value in pairs(RestoreTableFromBackupInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", RestoreTableFromBackupInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call RestoreTableFromBackup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RestoreTableFromBackupInput
+-- @return response
+-- @return error_message
+function M.RestoreTableFromBackupSync(RestoreTableFromBackupInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RestoreTableFromBackupAsync(RestoreTableFromBackupInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call UpdateTimeToLive asynchronously, invoking a callback when done
 -- @param UpdateTimeToLiveInput
 -- @param cb Callback function accepting two args: response, error_message
@@ -4622,41 +7898,6 @@ function M.UpdateTableSync(UpdateTableInput, ...)
 	return coroutine.yield()
 end
 
---- Call DeleteTable asynchronously, invoking a callback when done
--- @param DeleteTableInput
--- @param cb Callback function accepting two args: response, error_message
-function M.DeleteTableAsync(DeleteTableInput, cb)
-	assert(DeleteTableInput, "You must provide a DeleteTableInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DeleteTable",
-	}
-	for header,value in pairs(DeleteTableInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", DeleteTableInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call DeleteTable synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param DeleteTableInput
--- @return response
--- @return error_message
-function M.DeleteTableSync(DeleteTableInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTableAsync(DeleteTableInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
 --- Call DescribeLimits asynchronously, invoking a callback when done
 -- @param DescribeLimitsInput
 -- @param cb Callback function accepting two args: response, error_message
@@ -4687,6 +7928,531 @@ function M.DescribeLimitsSync(DescribeLimitsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DescribeLimitsAsync(DescribeLimitsInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateBackup asynchronously, invoking a callback when done
+-- @param CreateBackupInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.CreateBackupAsync(CreateBackupInput, cb)
+	assert(CreateBackupInput, "You must provide a CreateBackupInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.CreateBackup",
+	}
+	for header,value in pairs(CreateBackupInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", CreateBackupInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CreateBackup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateBackupInput
+-- @return response
+-- @return error_message
+function M.CreateBackupSync(CreateBackupInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateBackupAsync(CreateBackupInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchWriteItem asynchronously, invoking a callback when done
+-- @param BatchWriteItemInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.BatchWriteItemAsync(BatchWriteItemInput, cb)
+	assert(BatchWriteItemInput, "You must provide a BatchWriteItemInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.BatchWriteItem",
+	}
+	for header,value in pairs(BatchWriteItemInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", BatchWriteItemInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call BatchWriteItem synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchWriteItemInput
+-- @return response
+-- @return error_message
+function M.BatchWriteItemSync(BatchWriteItemInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchWriteItemAsync(BatchWriteItemInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEndpoints asynchronously, invoking a callback when done
+-- @param DescribeEndpointsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeEndpointsAsync(DescribeEndpointsRequest, cb)
+	assert(DescribeEndpointsRequest, "You must provide a DescribeEndpointsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DescribeEndpoints",
+	}
+	for header,value in pairs(DescribeEndpointsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeEndpointsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeEndpoints synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEndpointsRequest
+-- @return response
+-- @return error_message
+function M.DescribeEndpointsSync(DescribeEndpointsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEndpointsAsync(DescribeEndpointsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call TagResource asynchronously, invoking a callback when done
+-- @param TagResourceInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.TagResourceAsync(TagResourceInput, cb)
+	assert(TagResourceInput, "You must provide a TagResourceInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.TagResource",
+	}
+	for header,value in pairs(TagResourceInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", TagResourceInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call TagResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TagResourceInput
+-- @return response
+-- @return error_message
+function M.TagResourceSync(TagResourceInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TagResourceAsync(TagResourceInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RestoreTableToPointInTime asynchronously, invoking a callback when done
+-- @param RestoreTableToPointInTimeInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.RestoreTableToPointInTimeAsync(RestoreTableToPointInTimeInput, cb)
+	assert(RestoreTableToPointInTimeInput, "You must provide a RestoreTableToPointInTimeInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.RestoreTableToPointInTime",
+	}
+	for header,value in pairs(RestoreTableToPointInTimeInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", RestoreTableToPointInTimeInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call RestoreTableToPointInTime synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RestoreTableToPointInTimeInput
+-- @return response
+-- @return error_message
+function M.RestoreTableToPointInTimeSync(RestoreTableToPointInTimeInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RestoreTableToPointInTimeAsync(RestoreTableToPointInTimeInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTagsOfResource asynchronously, invoking a callback when done
+-- @param ListTagsOfResourceInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListTagsOfResourceAsync(ListTagsOfResourceInput, cb)
+	assert(ListTagsOfResourceInput, "You must provide a ListTagsOfResourceInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.ListTagsOfResource",
+	}
+	for header,value in pairs(ListTagsOfResourceInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListTagsOfResourceInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListTagsOfResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTagsOfResourceInput
+-- @return response
+-- @return error_message
+function M.ListTagsOfResourceSync(ListTagsOfResourceInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTagsOfResourceAsync(ListTagsOfResourceInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteItem asynchronously, invoking a callback when done
+-- @param DeleteItemInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteItemAsync(DeleteItemInput, cb)
+	assert(DeleteItemInput, "You must provide a DeleteItemInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DeleteItem",
+	}
+	for header,value in pairs(DeleteItemInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteItemInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteItem synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteItemInput
+-- @return response
+-- @return error_message
+function M.DeleteItemSync(DeleteItemInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteItemAsync(DeleteItemInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListGlobalTables asynchronously, invoking a callback when done
+-- @param ListGlobalTablesInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListGlobalTablesAsync(ListGlobalTablesInput, cb)
+	assert(ListGlobalTablesInput, "You must provide a ListGlobalTablesInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.ListGlobalTables",
+	}
+	for header,value in pairs(ListGlobalTablesInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListGlobalTablesInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListGlobalTables synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListGlobalTablesInput
+-- @return response
+-- @return error_message
+function M.ListGlobalTablesSync(ListGlobalTablesInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListGlobalTablesAsync(ListGlobalTablesInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateItem asynchronously, invoking a callback when done
+-- @param UpdateItemInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateItemAsync(UpdateItemInput, cb)
+	assert(UpdateItemInput, "You must provide a UpdateItemInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.UpdateItem",
+	}
+	for header,value in pairs(UpdateItemInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateItemInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateItem synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateItemInput
+-- @return response
+-- @return error_message
+function M.UpdateItemSync(UpdateItemInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateItemAsync(UpdateItemInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchGetItem asynchronously, invoking a callback when done
+-- @param BatchGetItemInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.BatchGetItemAsync(BatchGetItemInput, cb)
+	assert(BatchGetItemInput, "You must provide a BatchGetItemInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.BatchGetItem",
+	}
+	for header,value in pairs(BatchGetItemInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", BatchGetItemInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call BatchGetItem synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchGetItemInput
+-- @return response
+-- @return error_message
+function M.BatchGetItemSync(BatchGetItemInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchGetItemAsync(BatchGetItemInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeGlobalTableSettings asynchronously, invoking a callback when done
+-- @param DescribeGlobalTableSettingsInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeGlobalTableSettingsAsync(DescribeGlobalTableSettingsInput, cb)
+	assert(DescribeGlobalTableSettingsInput, "You must provide a DescribeGlobalTableSettingsInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DescribeGlobalTableSettings",
+	}
+	for header,value in pairs(DescribeGlobalTableSettingsInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeGlobalTableSettingsInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeGlobalTableSettings synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeGlobalTableSettingsInput
+-- @return response
+-- @return error_message
+function M.DescribeGlobalTableSettingsSync(DescribeGlobalTableSettingsInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeGlobalTableSettingsAsync(DescribeGlobalTableSettingsInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeTable asynchronously, invoking a callback when done
+-- @param DescribeTableInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeTableAsync(DescribeTableInput, cb)
+	assert(DescribeTableInput, "You must provide a DescribeTableInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DescribeTable",
+	}
+	for header,value in pairs(DescribeTableInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeTableInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeTable synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeTableInput
+-- @return response
+-- @return error_message
+function M.DescribeTableSync(DescribeTableInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeTableAsync(DescribeTableInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTables asynchronously, invoking a callback when done
+-- @param ListTablesInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListTablesAsync(ListTablesInput, cb)
+	assert(ListTablesInput, "You must provide a ListTablesInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.ListTables",
+	}
+	for header,value in pairs(ListTablesInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListTablesInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListTables synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTablesInput
+-- @return response
+-- @return error_message
+function M.ListTablesSync(ListTablesInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTablesAsync(ListTablesInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call Query asynchronously, invoking a callback when done
+-- @param QueryInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.QueryAsync(QueryInput, cb)
+	assert(QueryInput, "You must provide a QueryInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.Query",
+	}
+	for header,value in pairs(QueryInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", QueryInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call Query synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param QueryInput
+-- @return response
+-- @return error_message
+function M.QuerySync(QueryInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.QueryAsync(QueryInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteTable asynchronously, invoking a callback when done
+-- @param DeleteTableInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteTableAsync(DeleteTableInput, cb)
+	assert(DeleteTableInput, "You must provide a DeleteTableInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DeleteTable",
+	}
+	for header,value in pairs(DeleteTableInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteTableInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteTable synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteTableInput
+-- @return response
+-- @return error_message
+function M.DeleteTableSync(DeleteTableInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteTableAsync(DeleteTableInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4762,211 +8528,141 @@ function M.ScanSync(ScanInput, ...)
 	return coroutine.yield()
 end
 
---- Call ListTagsOfResource asynchronously, invoking a callback when done
--- @param ListTagsOfResourceInput
+--- Call UpdateGlobalTable asynchronously, invoking a callback when done
+-- @param UpdateGlobalTableInput
 -- @param cb Callback function accepting two args: response, error_message
-function M.ListTagsOfResourceAsync(ListTagsOfResourceInput, cb)
-	assert(ListTagsOfResourceInput, "You must provide a ListTagsOfResourceInput")
+function M.UpdateGlobalTableAsync(UpdateGlobalTableInput, cb)
+	assert(UpdateGlobalTableInput, "You must provide a UpdateGlobalTableInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.ListTagsOfResource",
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.UpdateGlobalTable",
 	}
-	for header,value in pairs(ListTagsOfResourceInput.headers) do
+	for header,value in pairs(UpdateGlobalTableInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", ListTagsOfResourceInput, headers, settings, cb)
+		request_handler(settings.uri, "/", UpdateGlobalTableInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call ListTagsOfResource synchronously, returning when done
+--- Call UpdateGlobalTable synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param ListTagsOfResourceInput
+-- @param UpdateGlobalTableInput
 -- @return response
 -- @return error_message
-function M.ListTagsOfResourceSync(ListTagsOfResourceInput, ...)
+function M.UpdateGlobalTableSync(UpdateGlobalTableInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsOfResourceAsync(ListTagsOfResourceInput, function(response, error_message)
+	M.UpdateGlobalTableAsync(UpdateGlobalTableInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
 end
 
---- Call DescribeTimeToLive asynchronously, invoking a callback when done
--- @param DescribeTimeToLiveInput
+--- Call ListBackups asynchronously, invoking a callback when done
+-- @param ListBackupsInput
 -- @param cb Callback function accepting two args: response, error_message
-function M.DescribeTimeToLiveAsync(DescribeTimeToLiveInput, cb)
-	assert(DescribeTimeToLiveInput, "You must provide a DescribeTimeToLiveInput")
+function M.ListBackupsAsync(ListBackupsInput, cb)
+	assert(ListBackupsInput, "You must provide a ListBackupsInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DescribeTimeToLive",
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.ListBackups",
 	}
-	for header,value in pairs(DescribeTimeToLiveInput.headers) do
+	for header,value in pairs(ListBackupsInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DescribeTimeToLiveInput, headers, settings, cb)
+		request_handler(settings.uri, "/", ListBackupsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DescribeTimeToLive synchronously, returning when done
+--- Call ListBackups synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DescribeTimeToLiveInput
+-- @param ListBackupsInput
 -- @return response
 -- @return error_message
-function M.DescribeTimeToLiveSync(DescribeTimeToLiveInput, ...)
+function M.ListBackupsSync(ListBackupsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTimeToLiveAsync(DescribeTimeToLiveInput, function(response, error_message)
+	M.ListBackupsAsync(ListBackupsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
 end
 
---- Call DescribeTable asynchronously, invoking a callback when done
--- @param DescribeTableInput
+--- Call UpdateGlobalTableSettings asynchronously, invoking a callback when done
+-- @param UpdateGlobalTableSettingsInput
 -- @param cb Callback function accepting two args: response, error_message
-function M.DescribeTableAsync(DescribeTableInput, cb)
-	assert(DescribeTableInput, "You must provide a DescribeTableInput")
+function M.UpdateGlobalTableSettingsAsync(UpdateGlobalTableSettingsInput, cb)
+	assert(UpdateGlobalTableSettingsInput, "You must provide a UpdateGlobalTableSettingsInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DescribeTable",
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.UpdateGlobalTableSettings",
 	}
-	for header,value in pairs(DescribeTableInput.headers) do
+	for header,value in pairs(UpdateGlobalTableSettingsInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DescribeTableInput, headers, settings, cb)
+		request_handler(settings.uri, "/", UpdateGlobalTableSettingsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DescribeTable synchronously, returning when done
+--- Call UpdateGlobalTableSettings synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DescribeTableInput
+-- @param UpdateGlobalTableSettingsInput
 -- @return response
 -- @return error_message
-function M.DescribeTableSync(DescribeTableInput, ...)
+function M.UpdateGlobalTableSettingsSync(UpdateGlobalTableSettingsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTableAsync(DescribeTableInput, function(response, error_message)
+	M.UpdateGlobalTableSettingsAsync(UpdateGlobalTableSettingsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
 end
 
---- Call BatchWriteItem asynchronously, invoking a callback when done
--- @param BatchWriteItemInput
+--- Call CreateGlobalTable asynchronously, invoking a callback when done
+-- @param CreateGlobalTableInput
 -- @param cb Callback function accepting two args: response, error_message
-function M.BatchWriteItemAsync(BatchWriteItemInput, cb)
-	assert(BatchWriteItemInput, "You must provide a BatchWriteItemInput")
+function M.CreateGlobalTableAsync(CreateGlobalTableInput, cb)
+	assert(CreateGlobalTableInput, "You must provide a CreateGlobalTableInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.BatchWriteItem",
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.CreateGlobalTable",
 	}
-	for header,value in pairs(BatchWriteItemInput.headers) do
+	for header,value in pairs(CreateGlobalTableInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", BatchWriteItemInput, headers, settings, cb)
+		request_handler(settings.uri, "/", CreateGlobalTableInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call BatchWriteItem synchronously, returning when done
+--- Call CreateGlobalTable synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param BatchWriteItemInput
+-- @param CreateGlobalTableInput
 -- @return response
 -- @return error_message
-function M.BatchWriteItemSync(BatchWriteItemInput, ...)
+function M.CreateGlobalTableSync(CreateGlobalTableInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchWriteItemAsync(BatchWriteItemInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call CreateTable asynchronously, invoking a callback when done
--- @param CreateTableInput
--- @param cb Callback function accepting two args: response, error_message
-function M.CreateTableAsync(CreateTableInput, cb)
-	assert(CreateTableInput, "You must provide a CreateTableInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.CreateTable",
-	}
-	for header,value in pairs(CreateTableInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", CreateTableInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call CreateTable synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param CreateTableInput
--- @return response
--- @return error_message
-function M.CreateTableSync(CreateTableInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.CreateTableAsync(CreateTableInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call ListTables asynchronously, invoking a callback when done
--- @param ListTablesInput
--- @param cb Callback function accepting two args: response, error_message
-function M.ListTablesAsync(ListTablesInput, cb)
-	assert(ListTablesInput, "You must provide a ListTablesInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.ListTables",
-	}
-	for header,value in pairs(ListTablesInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", ListTablesInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call ListTables synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param ListTablesInput
--- @return response
--- @return error_message
-function M.ListTablesSync(ListTablesInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.ListTablesAsync(ListTablesInput, function(response, error_message)
+	M.CreateGlobalTableAsync(CreateGlobalTableInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5007,41 +8703,6 @@ function M.GetItemSync(GetItemInput, ...)
 	return coroutine.yield()
 end
 
---- Call Query asynchronously, invoking a callback when done
--- @param QueryInput
--- @param cb Callback function accepting two args: response, error_message
-function M.QueryAsync(QueryInput, cb)
-	assert(QueryInput, "You must provide a QueryInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.Query",
-	}
-	for header,value in pairs(QueryInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", QueryInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call Query synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param QueryInput
--- @return response
--- @return error_message
-function M.QuerySync(QueryInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.QueryAsync(QueryInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
 --- Call PutItem asynchronously, invoking a callback when done
 -- @param PutItemInput
 -- @param cb Callback function accepting two args: response, error_message
@@ -5072,146 +8733,6 @@ function M.PutItemSync(PutItemInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.PutItemAsync(PutItemInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call UpdateItem asynchronously, invoking a callback when done
--- @param UpdateItemInput
--- @param cb Callback function accepting two args: response, error_message
-function M.UpdateItemAsync(UpdateItemInput, cb)
-	assert(UpdateItemInput, "You must provide a UpdateItemInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.UpdateItem",
-	}
-	for header,value in pairs(UpdateItemInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", UpdateItemInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call UpdateItem synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param UpdateItemInput
--- @return response
--- @return error_message
-function M.UpdateItemSync(UpdateItemInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.UpdateItemAsync(UpdateItemInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call TagResource asynchronously, invoking a callback when done
--- @param TagResourceInput
--- @param cb Callback function accepting two args: response, error_message
-function M.TagResourceAsync(TagResourceInput, cb)
-	assert(TagResourceInput, "You must provide a TagResourceInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.TagResource",
-	}
-	for header,value in pairs(TagResourceInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", TagResourceInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call TagResource synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param TagResourceInput
--- @return response
--- @return error_message
-function M.TagResourceSync(TagResourceInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.TagResourceAsync(TagResourceInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call DeleteItem asynchronously, invoking a callback when done
--- @param DeleteItemInput
--- @param cb Callback function accepting two args: response, error_message
-function M.DeleteItemAsync(DeleteItemInput, cb)
-	assert(DeleteItemInput, "You must provide a DeleteItemInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DeleteItem",
-	}
-	for header,value in pairs(DeleteItemInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", DeleteItemInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call DeleteItem synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param DeleteItemInput
--- @return response
--- @return error_message
-function M.DeleteItemSync(DeleteItemInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.DeleteItemAsync(DeleteItemInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call BatchGetItem asynchronously, invoking a callback when done
--- @param BatchGetItemInput
--- @param cb Callback function accepting two args: response, error_message
-function M.BatchGetItemAsync(BatchGetItemInput, cb)
-	assert(BatchGetItemInput, "You must provide a BatchGetItemInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.BatchGetItem",
-	}
-	for header,value in pairs(BatchGetItemInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", BatchGetItemInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call BatchGetItem synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param BatchGetItemInput
--- @return response
--- @return error_message
-function M.BatchGetItemSync(BatchGetItemInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.BatchGetItemAsync(BatchGetItemInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

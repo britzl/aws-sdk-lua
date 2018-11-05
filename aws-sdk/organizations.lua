@@ -13,7 +13,7 @@ M.metadata = {
 	service_full_name = "AWS Organizations",
 	signature_version = "v4",
 	target_prefix = "AWSOrganizationsV20161128",
-	timestamp_format = "unixTimestamp",
+	timestamp_format = "",
 	global_endpoint = "",
 	uid = "organizations-2016-11-28",
 }
@@ -21,25 +21,39 @@ M.metadata = {
 local keys = {}
 local asserts = {}
 
-keys.DuplicateOrganizationalUnitException = { ["Message"] = true, nil }
+keys.Handshake = { ["Id"] = true, ["State"] = true, ["Resources"] = true, ["Parties"] = true, ["Action"] = true, ["RequestedTimestamp"] = true, ["ExpirationTimestamp"] = true, ["Arn"] = true, nil }
 
-function asserts.AssertDuplicateOrganizationalUnitException(struct)
+function asserts.AssertHandshake(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DuplicateOrganizationalUnitException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected Handshake to be of type 'table'")
+	if struct["Id"] then asserts.AssertHandshakeId(struct["Id"]) end
+	if struct["State"] then asserts.AssertHandshakeState(struct["State"]) end
+	if struct["Resources"] then asserts.AssertHandshakeResources(struct["Resources"]) end
+	if struct["Parties"] then asserts.AssertHandshakeParties(struct["Parties"]) end
+	if struct["Action"] then asserts.AssertActionType(struct["Action"]) end
+	if struct["RequestedTimestamp"] then asserts.AssertTimestamp(struct["RequestedTimestamp"]) end
+	if struct["ExpirationTimestamp"] then asserts.AssertTimestamp(struct["ExpirationTimestamp"]) end
+	if struct["Arn"] then asserts.AssertHandshakeArn(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DuplicateOrganizationalUnitException[k], "DuplicateOrganizationalUnitException contains unknown key " .. tostring(k))
+		assert(keys.Handshake[k], "Handshake contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DuplicateOrganizationalUnitException
--- <p>An organizational unit (OU) with the same name already exists.</p>
+--- Create a structure of type Handshake
+-- <p>Contains information that must be exchanged to securely establish a relationship between two accounts (an <i>originator</i> and a <i>recipient</i>). For example, when a master account (the originator) invites another account (the recipient) to join its organization, the two accounts exchange information as a series of handshake requests and responses.</p> <p> <b>Note:</b> Handshakes that are CANCELED, ACCEPTED, or DECLINED show up in lists for only 30 days after entering that state After that they are deleted.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return DuplicateOrganizationalUnitException structure as a key-value pair table
-function M.DuplicateOrganizationalUnitException(args)
-	assert(args, "You must provide an argument table when creating DuplicateOrganizationalUnitException")
+-- * Id [HandshakeId] <p>The unique identifier (ID) of a handshake. The originating account creates the ID when it initiates the handshake.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.</p>
+-- * State [HandshakeState] <p>The current state of the handshake. Use the state to trace the flow of the handshake through the process from its creation to its acceptance. The meaning of each of the valid values is as follows:</p> <ul> <li> <p> <b>REQUESTED</b>: This handshake was sent to multiple recipients (applicable to only some handshake types) and not all recipients have responded yet. The request stays in this state until all recipients respond.</p> </li> <li> <p> <b>OPEN</b>: This handshake was sent to multiple recipients (applicable to only some policy types) and all recipients have responded, allowing the originator to complete the handshake action.</p> </li> <li> <p> <b>CANCELED</b>: This handshake is no longer active because it was canceled by the originating account.</p> </li> <li> <p> <b>ACCEPTED</b>: This handshake is complete because it has been accepted by the recipient.</p> </li> <li> <p> <b>DECLINED</b>: This handshake is no longer active because it was declined by the recipient account.</p> </li> <li> <p> <b>EXPIRED</b>: This handshake is no longer active because the originator did not receive a response of any kind from the recipient before the expiration time (15 days).</p> </li> </ul>
+-- * Resources [HandshakeResources] <p>Additional information that is needed to process the handshake.</p>
+-- * Parties [HandshakeParties] <p>Information about the two accounts that are participating in the handshake.</p>
+-- * Action [ActionType] <p>The type of handshake, indicating what action occurs when the recipient accepts the handshake. The following handshake types are supported:</p> <ul> <li> <p> <b>INVITE</b>: This type of handshake represents a request to join an organization. It is always sent from the master account to only non-member accounts.</p> </li> <li> <p> <b>ENABLE_ALL_FEATURES</b>: This type of handshake represents a request to enable all features in an organization. It is always sent from the master account to only <i>invited</i> member accounts. Created accounts do not receive this because those accounts were created by the organization's master account and approval is inferred.</p> </li> <li> <p> <b>APPROVE_ALL_FEATURES</b>: This type of handshake is sent from the Organizations service when all member accounts have approved the <code>ENABLE_ALL_FEATURES</code> invitation. It is sent only to the master account and signals the master that it can finalize the process to enable all features.</p> </li> </ul>
+-- * RequestedTimestamp [Timestamp] <p>The date and time that the handshake request was made.</p>
+-- * ExpirationTimestamp [Timestamp] <p>The date and time that the handshake expires. If the recipient of the handshake request fails to respond before the specified date and time, the handshake becomes inactive and is no longer valid.</p>
+-- * Arn [HandshakeArn] <p>The Amazon Resource Name (ARN) of a handshake.</p> <p>For more information about ARNs in Organizations, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
+-- @return Handshake structure as a key-value pair table
+function M.Handshake(args)
+	assert(args, "You must provide an argument table when creating Handshake")
     local query_args = { 
     }
     local uri_args = { 
@@ -47,9 +61,16 @@ function M.DuplicateOrganizationalUnitException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["Id"] = args["Id"],
+		["State"] = args["State"],
+		["Resources"] = args["Resources"],
+		["Parties"] = args["Parties"],
+		["Action"] = args["Action"],
+		["RequestedTimestamp"] = args["RequestedTimestamp"],
+		["ExpirationTimestamp"] = args["ExpirationTimestamp"],
+		["Arn"] = args["Arn"],
 	}
-	asserts.AssertDuplicateOrganizationalUnitException(all_args)
+	asserts.AssertHandshake(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -129,64 +150,6 @@ function M.ListCreateAccountStatusResponse(args)
 		["CreateAccountStatuses"] = args["CreateAccountStatuses"],
 	}
 	asserts.AssertListCreateAccountStatusResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.Handshake = { ["Id"] = true, ["State"] = true, ["Resources"] = true, ["Parties"] = true, ["Action"] = true, ["RequestedTimestamp"] = true, ["ExpirationTimestamp"] = true, ["Arn"] = true, nil }
-
-function asserts.AssertHandshake(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected Handshake to be of type 'table'")
-	if struct["Id"] then asserts.AssertHandshakeId(struct["Id"]) end
-	if struct["State"] then asserts.AssertHandshakeState(struct["State"]) end
-	if struct["Resources"] then asserts.AssertHandshakeResources(struct["Resources"]) end
-	if struct["Parties"] then asserts.AssertHandshakeParties(struct["Parties"]) end
-	if struct["Action"] then asserts.AssertActionType(struct["Action"]) end
-	if struct["RequestedTimestamp"] then asserts.AssertTimestamp(struct["RequestedTimestamp"]) end
-	if struct["ExpirationTimestamp"] then asserts.AssertTimestamp(struct["ExpirationTimestamp"]) end
-	if struct["Arn"] then asserts.AssertHandshakeArn(struct["Arn"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.Handshake[k], "Handshake contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type Handshake
--- <p>Contains information that must be exchanged to securely establish a relationship between two accounts (an <i>originator</i> and a <i>recipient</i>). For example, when a master account (the originator) invites another account (the recipient) to join its organization, the two accounts exchange information as a series of handshake requests and responses.</p> <p> <b>Note:</b> Handshakes that are CANCELED, ACCEPTED, or DECLINED show up in lists for only 30 days after entering that state After that they are deleted.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Id [HandshakeId] <p>The unique identifier (ID) of a handshake. The originating account creates the ID when it initiates the handshake.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.</p>
--- * State [HandshakeState] <p>The current state of the handshake. Use the state to trace the flow of the handshake through the process from its creation to its acceptance. The meaning of each of the valid values is as follows:</p> <ul> <li> <p> <b>REQUESTED</b>: This handshake was sent to multiple recipients (applicable to only some handshake types) and not all recipients have responded yet. The request stays in this state until all recipients respond.</p> </li> <li> <p> <b>OPEN</b>: This handshake was sent to multiple recipients (applicable to only some policy types) and all recipients have responded, allowing the originator to complete the handshake action.</p> </li> <li> <p> <b>CANCELED</b>: This handshake is no longer active because it was canceled by the originating account.</p> </li> <li> <p> <b>ACCEPTED</b>: This handshake is complete because it has been accepted by the recipient.</p> </li> <li> <p> <b>DECLINED</b>: This handshake is no longer active because it was declined by the recipient account.</p> </li> <li> <p> <b>EXPIRED</b>: This handshake is no longer active because the originator did not receive a response of any kind from the recipient before the expiration time (15 days).</p> </li> </ul>
--- * Resources [HandshakeResources] <p>Additional information that is needed to process the handshake.</p>
--- * Parties [HandshakeParties] <p>Information about the two accounts that are participating in the handshake.</p>
--- * Action [ActionType] <p>The type of handshake, indicating what action occurs when the recipient accepts the handshake.</p>
--- * RequestedTimestamp [Timestamp] <p>The date and time that the handshake request was made.</p>
--- * ExpirationTimestamp [Timestamp] <p>The date and time that the handshake expires. If the recipient of the handshake request fails to respond before the specified date and time, the handshake becomes inactive and is no longer valid.</p>
--- * Arn [HandshakeArn] <p>The Amazon Resource Name (ARN) of a handshake.</p> <p>For more information about ARNs in Organizations, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
--- @return Handshake structure as a key-value pair table
-function M.Handshake(args)
-	assert(args, "You must provide an argument table when creating Handshake")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Id"] = args["Id"],
-		["State"] = args["State"],
-		["Resources"] = args["Resources"],
-		["Parties"] = args["Parties"],
-		["Action"] = args["Action"],
-		["RequestedTimestamp"] = args["RequestedTimestamp"],
-		["ExpirationTimestamp"] = args["ExpirationTimestamp"],
-		["Arn"] = args["Arn"],
-	}
-	asserts.AssertHandshake(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -312,25 +275,27 @@ function M.PolicyTypeSummary(args)
     }
 end
 
-keys.ParentNotFoundException = { ["Message"] = true, nil }
+keys.DescribeCreateAccountStatusRequest = { ["CreateAccountRequestId"] = true, nil }
 
-function asserts.AssertParentNotFoundException(struct)
+function asserts.AssertDescribeCreateAccountStatusRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ParentNotFoundException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected DescribeCreateAccountStatusRequest to be of type 'table'")
+	assert(struct["CreateAccountRequestId"], "Expected key CreateAccountRequestId to exist in table")
+	if struct["CreateAccountRequestId"] then asserts.AssertCreateAccountRequestId(struct["CreateAccountRequestId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ParentNotFoundException[k], "ParentNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.DescribeCreateAccountStatusRequest[k], "DescribeCreateAccountStatusRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ParentNotFoundException
--- <p>We can't find a root or organizational unit (OU) with the ParentId that you specified.</p>
+--- Create a structure of type DescribeCreateAccountStatusRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return ParentNotFoundException structure as a key-value pair table
-function M.ParentNotFoundException(args)
-	assert(args, "You must provide an argument table when creating ParentNotFoundException")
+-- * CreateAccountRequestId [CreateAccountRequestId] <p>Specifies the <code>operationId</code> that uniquely identifies the request. You can get the ID from the response to an earlier <a>CreateAccount</a> request, or from the <a>ListCreateAccountStatus</a> operation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an create account request ID string requires "car-" followed by from 8 to 32 lower-case letters or digits.</p>
+-- Required key: CreateAccountRequestId
+-- @return DescribeCreateAccountStatusRequest structure as a key-value pair table
+function M.DescribeCreateAccountStatusRequest(args)
+	assert(args, "You must provide an argument table when creating DescribeCreateAccountStatusRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -338,46 +303,9 @@ function M.ParentNotFoundException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["CreateAccountRequestId"] = args["CreateAccountRequestId"],
 	}
-	asserts.AssertParentNotFoundException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.AccountNotFoundException = { ["Message"] = true, nil }
-
-function asserts.AssertAccountNotFoundException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected AccountNotFoundException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.AccountNotFoundException[k], "AccountNotFoundException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type AccountNotFoundException
--- <p> We can't find an AWS account with the AccountId that you specified, or the account whose credentials you used to make this request is not a member of an organization.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return AccountNotFoundException structure as a key-value pair table
-function M.AccountNotFoundException(args)
-	assert(args, "You must provide an argument table when creating AccountNotFoundException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertAccountNotFoundException(all_args)
+	asserts.AssertDescribeCreateAccountStatusRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -426,43 +354,6 @@ function M.Parent(args)
     }
 end
 
-keys.PolicyNotFoundException = { ["Message"] = true, nil }
-
-function asserts.AssertPolicyNotFoundException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected PolicyNotFoundException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.PolicyNotFoundException[k], "PolicyNotFoundException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type PolicyNotFoundException
--- <p>We can't find a policy with the PolicyId that you specified.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return PolicyNotFoundException structure as a key-value pair table
-function M.PolicyNotFoundException(args)
-	assert(args, "You must provide an argument table when creating PolicyNotFoundException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertPolicyNotFoundException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.CreateOrganizationResponse = { ["Organization"] = true, nil }
 
 function asserts.AssertCreateOrganizationResponse(struct)
@@ -500,25 +391,27 @@ function M.CreateOrganizationResponse(args)
     }
 end
 
-keys.DestinationParentNotFoundException = { ["Message"] = true, nil }
+keys.ListParentsResponse = { ["NextToken"] = true, ["Parents"] = true, nil }
 
-function asserts.AssertDestinationParentNotFoundException(struct)
+function asserts.AssertListParentsResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DestinationParentNotFoundException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected ListParentsResponse to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["Parents"] then asserts.AssertParents(struct["Parents"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DestinationParentNotFoundException[k], "DestinationParentNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.ListParentsResponse[k], "ListParentsResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DestinationParentNotFoundException
--- <p>We can't find the destination container (a root or OU) with the ParentId that you specified.</p>
+--- Create a structure of type ListParentsResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return DestinationParentNotFoundException structure as a key-value pair table
-function M.DestinationParentNotFoundException(args)
-	assert(args, "You must provide an argument table when creating DestinationParentNotFoundException")
+-- * NextToken [NextToken] <p>If present, this value indicates that there is more output available than is included in the current response. Use this value in the <code>NextToken</code> request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the <code>NextToken</code> response element comes back as <code>null</code>.</p>
+-- * Parents [Parents] <p>A list of parents for the specified child account or OU.</p>
+-- @return ListParentsResponse structure as a key-value pair table
+function M.ListParentsResponse(args)
+	assert(args, "You must provide an argument table when creating ListParentsResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -526,9 +419,10 @@ function M.DestinationParentNotFoundException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["NextToken"] = args["NextToken"],
+		["Parents"] = args["Parents"],
 	}
-	asserts.AssertDestinationParentNotFoundException(all_args)
+	asserts.AssertListParentsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -537,25 +431,27 @@ function M.DestinationParentNotFoundException(args)
     }
 end
 
-keys.SourceParentNotFoundException = { ["Message"] = true, nil }
+keys.HandshakeFilter = { ["ActionType"] = true, ["ParentHandshakeId"] = true, nil }
 
-function asserts.AssertSourceParentNotFoundException(struct)
+function asserts.AssertHandshakeFilter(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SourceParentNotFoundException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected HandshakeFilter to be of type 'table'")
+	if struct["ActionType"] then asserts.AssertActionType(struct["ActionType"]) end
+	if struct["ParentHandshakeId"] then asserts.AssertHandshakeId(struct["ParentHandshakeId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SourceParentNotFoundException[k], "SourceParentNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.HandshakeFilter[k], "HandshakeFilter contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SourceParentNotFoundException
--- <p>We can't find a source root or OU with the ParentId that you specified.</p>
+--- Create a structure of type HandshakeFilter
+-- <p>Specifies the criteria that are used to select the handshakes for the operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return SourceParentNotFoundException structure as a key-value pair table
-function M.SourceParentNotFoundException(args)
-	assert(args, "You must provide an argument table when creating SourceParentNotFoundException")
+-- * ActionType [ActionType] <p>Specifies the type of handshake action.</p> <p>If you specify <code>ActionType</code>, you cannot also specify <code>ParentHandshakeId</code>.</p>
+-- * ParentHandshakeId [HandshakeId] <p>Specifies the parent handshake. Only used for handshake types that are a child of another type.</p> <p>If you specify <code>ParentHandshakeId</code>, you cannot also specify <code>ActionType</code>.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.</p>
+-- @return HandshakeFilter structure as a key-value pair table
+function M.HandshakeFilter(args)
+	assert(args, "You must provide an argument table when creating HandshakeFilter")
     local query_args = { 
     }
     local uri_args = { 
@@ -563,9 +459,10 @@ function M.SourceParentNotFoundException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["ActionType"] = args["ActionType"],
+		["ParentHandshakeId"] = args["ParentHandshakeId"],
 	}
-	asserts.AssertSourceParentNotFoundException(all_args)
+	asserts.AssertHandshakeFilter(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -884,9 +781,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * RoleName [RoleName] <p>(Optional)</p> <p>The name of an IAM role that Organizations automatically preconfigures in the new member account. This role trusts the master account, allowing users in the master account to assume the role, as permitted by the master account administrator. The role has administrator permissions in the new member account.</p> <p>If you do not specify this parameter, the role name defaults to <code>OrganizationAccountAccessRole</code>.</p> <p>For more information about how to use this role to access the member account, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role">Accessing and Administering the Member Accounts in Your Organization</a> in the <i>AWS Organizations User Guide</i>, and steps 2 and 3 in <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">Tutorial: Delegate Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide</i>.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a string of characters that can consist of uppercase letters, lowercase letters, digits with no spaces, and any of the following characters: =,.@-</p>
--- * Email [Email] <p>The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account.</p>
--- * IamUserAccessToBilling [IAMUserAccessToBilling] <p>If set to <code>ALLOW</code>, the new account enables IAM users to access account billing information <i>if</i> they have the required permissions. If set to <code>DENY</code>, then only the root user of the new account can access account billing information. For more information, see <a href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate">Activating Access to the Billing and Cost Management Console</a> in the <i>AWS Billing and Cost Management User Guide</i>.</p> <p>If you do not specify this parameter, the value defaults to ALLOW, and IAM users and roles with the required permissions can access billing information for the new account.</p>
+-- * RoleName [RoleName] <p>(Optional)</p> <p>The name of an IAM role that AWS Organizations automatically preconfigures in the new member account. This role trusts the master account, allowing users in the master account to assume the role, as permitted by the master account administrator. The role has administrator permissions in the new member account.</p> <p>If you don't specify this parameter, the role name defaults to <code>OrganizationAccountAccessRole</code>.</p> <p>For more information about how to use this role to access the member account, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role">Accessing and Administering the Member Accounts in Your Organization</a> in the <i>AWS Organizations User Guide</i>, and steps 2 and 3 in <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">Tutorial: Delegate Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide</i>.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a string of characters that can consist of uppercase letters, lowercase letters, digits with no spaces, and any of the following characters: =,.@-</p>
+-- * Email [Email] <p>The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account. You must use a valid email address to complete account creation. You can't access the root user of the account or remove an account that was created with an invalid email address.</p>
+-- * IamUserAccessToBilling [IAMUserAccessToBilling] <p>If set to <code>ALLOW</code>, the new account enables IAM users to access account billing information <i>if</i> they have the required permissions. If set to <code>DENY</code>, only the root user of the new account can access account billing information. For more information, see <a href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate">Activating Access to the Billing and Cost Management Console</a> in the <i>AWS Billing and Cost Management User Guide</i>.</p> <p>If you don't specify this parameter, the value defaults to <code>ALLOW</code>, and IAM users and roles with the required permissions can access billing information for the new account.</p>
 -- * AccountName [AccountName] <p>The friendly name of the member account.</p>
 -- Required key: Email
 -- Required key: AccountName
@@ -943,43 +840,6 @@ function M.DisablePolicyTypeResponse(args)
 		["Root"] = args["Root"],
 	}
 	asserts.AssertDisablePolicyTypeResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.PolicyTypeNotEnabledException = { ["Message"] = true, nil }
-
-function asserts.AssertPolicyTypeNotEnabledException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected PolicyTypeNotEnabledException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.PolicyTypeNotEnabledException[k], "PolicyTypeNotEnabledException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type PolicyTypeNotEnabledException
--- <p>The specified policy type is not currently enabled in this root. You cannot attach policies of the specified type to entities in a root until you enable that type in the root. For more information, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html">Enabling All Features in Your Organization</a> in the <i>AWS Organizations User Guide</i>.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return PolicyTypeNotEnabledException structure as a key-value pair table
-function M.PolicyTypeNotEnabledException(args)
-	assert(args, "You must provide an argument table when creating PolicyTypeNotEnabledException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertPolicyTypeNotEnabledException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1046,7 +906,7 @@ end
 -- <p>Contains details about an organization. An organization is a collection of accounts that are centrally managed together using consolidated billing, organized hierarchically with organizational units (OUs), and controlled with policies .</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AvailablePolicyTypes [PolicyTypes] <p>A list of policy types that are enabled for this organization. For example, if your organization has all features enabled, then service control policies (SCPs) are included in the list.</p>
+-- * AvailablePolicyTypes [PolicyTypes] <p>A list of policy types that are enabled for this organization. For example, if your organization has all features enabled, then service control policies (SCPs) are included in the list.</p> <note> <p>Even if a policy type is shown as available in the organization, you can separately enable and disable them at the root level by using <a>EnablePolicyType</a> and <a>DisablePolicyType</a>. Use <a>ListRoots</a> to see the status of a policy type in that root.</p> </note>
 -- * MasterAccountId [AccountId] <p>The unique identifier (ID) of the master account of an organization.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an account ID string requires exactly 12 digits.</p>
 -- * MasterAccountArn [AccountArn] <p>The Amazon Resource Name (ARN) of the account that is designated as the master account for the organization.</p> <p>For more information about ARNs in Organizations, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
 -- * FeatureSet [OrganizationFeatureSet] <p>Specifies the functionality that currently is available to the organization. If set to "ALL", then all features are enabled and policies can be applied to accounts in the organization. If set to "CONSOLIDATED_BILLING", then only consolidated billing functionality is available. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_manage_org_support-all-features.html">Enabling All Features in Your Organization</a> in the <i>AWS Organizations User Guide</i>.</p>
@@ -1168,51 +1028,6 @@ function M.MoveAccountRequest(args)
     }
 end
 
-keys.ListPoliciesRequest = { ["Filter"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
-
-function asserts.AssertListPoliciesRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ListPoliciesRequest to be of type 'table'")
-	assert(struct["Filter"], "Expected key Filter to exist in table")
-	if struct["Filter"] then asserts.AssertPolicyType(struct["Filter"]) end
-	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then asserts.AssertMaxResults(struct["MaxResults"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ListPoliciesRequest[k], "ListPoliciesRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ListPoliciesRequest
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Filter [PolicyType] <p>Specifies the type of policy that you want to include in the response.</p>
--- * NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
--- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
--- Required key: Filter
--- @return ListPoliciesRequest structure as a key-value pair table
-function M.ListPoliciesRequest(args)
-	assert(args, "You must provide an argument table when creating ListPoliciesRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Filter"] = args["Filter"],
-		["NextToken"] = args["NextToken"],
-		["MaxResults"] = args["MaxResults"],
-	}
-	asserts.AssertListPoliciesRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.HandshakeResource = { ["Type"] = true, ["Resources"] = true, ["Value"] = true, nil }
 
 function asserts.AssertHandshakeResource(struct)
@@ -1293,51 +1108,13 @@ function M.DescribeHandshakeResponse(args)
     }
 end
 
-keys.InvalidInputException = { ["Message"] = true, ["Reason"] = true, nil }
-
-function asserts.AssertInvalidInputException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidInputException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["Reason"] then asserts.AssertInvalidInputExceptionReason(struct["Reason"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidInputException[k], "InvalidInputException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidInputException
--- <p>The requested operation failed because you provided invalid values for one or more of the request parameters. This exception includes a reason that contains additional information about the violated limit:</p> <ul> <li> <p>INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a party.</p> </li> <li> <p>INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.</p> </li> <li> <p>INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID. </p> </li> <li> <p>INVALID_ENUM: You specified a value that is not valid for that parameter.</p> </li> <li> <p>INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.</p> </li> <li> <p>INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.</p> </li> <li> <p>MAX_LENGTH_EXCEEDED: You provided a string parameter that is longer than allowed.</p> </li> <li> <p>MAX_VALUE_EXCEEDED: You provided a numeric parameter that has a larger value than allowed.</p> </li> <li> <p>MIN_LENGTH_EXCEEDED: You provided a string parameter that is shorter than allowed.</p> </li> <li> <p>MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.</p> </li> <li> <p>IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.</p> </li> <li> <p>INVALID_PATTERN: You provided a value that doesn't match the required pattern.</p> </li> <li> <p>INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.</p> </li> <li> <p>INPUT_REQUIRED: You must include a value for all required parameters.</p> </li> <li> <p>INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call of the operation.</p> </li> <li> <p>MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.</p> </li> <li> <p>MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.</p> </li> </ul>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- * Reason [InvalidInputExceptionReason] 
--- @return InvalidInputException structure as a key-value pair table
-function M.InvalidInputException(args)
-	assert(args, "You must provide an argument table when creating InvalidInputException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-		["Reason"] = args["Reason"],
-	}
-	asserts.AssertInvalidInputException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.HandshakeParty = { ["Type"] = true, ["Id"] = true, nil }
 
 function asserts.AssertHandshakeParty(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected HandshakeParty to be of type 'table'")
+	assert(struct["Id"], "Expected key Id to exist in table")
+	assert(struct["Type"], "Expected key Type to exist in table")
 	if struct["Type"] then asserts.AssertHandshakePartyType(struct["Type"]) end
 	if struct["Id"] then asserts.AssertHandshakePartyId(struct["Id"]) end
 	for k,_ in pairs(struct) do
@@ -1351,6 +1128,8 @@ end
 -- Valid keys:
 -- * Type [HandshakePartyType] <p>The type of party.</p>
 -- * Id [HandshakePartyId] <p>The unique identifier (ID) for the party.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.</p>
+-- Required key: Id
+-- Required key: Type
 -- @return HandshakeParty structure as a key-value pair table
 function M.HandshakeParty(args)
 	assert(args, "You must provide an argument table when creating HandshakeParty")
@@ -1453,25 +1232,27 @@ function M.ListRootsResponse(args)
     }
 end
 
-keys.ConcurrentModificationException = { ["Message"] = true, nil }
+keys.DeclineHandshakeRequest = { ["HandshakeId"] = true, nil }
 
-function asserts.AssertConcurrentModificationException(struct)
+function asserts.AssertDeclineHandshakeRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ConcurrentModificationException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected DeclineHandshakeRequest to be of type 'table'")
+	assert(struct["HandshakeId"], "Expected key HandshakeId to exist in table")
+	if struct["HandshakeId"] then asserts.AssertHandshakeId(struct["HandshakeId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ConcurrentModificationException[k], "ConcurrentModificationException contains unknown key " .. tostring(k))
+		assert(keys.DeclineHandshakeRequest[k], "DeclineHandshakeRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ConcurrentModificationException
--- <p>The target of the operation is currently being modified by a different request. Try again later.</p>
+--- Create a structure of type DeclineHandshakeRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return ConcurrentModificationException structure as a key-value pair table
-function M.ConcurrentModificationException(args)
-	assert(args, "You must provide an argument table when creating ConcurrentModificationException")
+-- * HandshakeId [HandshakeId] <p>The unique identifier (ID) of the handshake that you want to decline. You can get the ID from the <a>ListHandshakesForAccount</a> operation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.</p>
+-- Required key: HandshakeId
+-- @return DeclineHandshakeRequest structure as a key-value pair table
+function M.DeclineHandshakeRequest(args)
+	assert(args, "You must provide an argument table when creating DeclineHandshakeRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1479,9 +1260,9 @@ function M.ConcurrentModificationException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["HandshakeId"] = args["HandshakeId"],
 	}
-	asserts.AssertConcurrentModificationException(all_args)
+	asserts.AssertDeclineHandshakeRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1564,25 +1345,27 @@ function M.DeclineHandshakeResponse(args)
     }
 end
 
-keys.MalformedPolicyDocumentException = { ["Message"] = true, nil }
+keys.ListAWSServiceAccessForOrganizationResponse = { ["EnabledServicePrincipals"] = true, ["NextToken"] = true, nil }
 
-function asserts.AssertMalformedPolicyDocumentException(struct)
+function asserts.AssertListAWSServiceAccessForOrganizationResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected MalformedPolicyDocumentException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected ListAWSServiceAccessForOrganizationResponse to be of type 'table'")
+	if struct["EnabledServicePrincipals"] then asserts.AssertEnabledServicePrincipals(struct["EnabledServicePrincipals"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.MalformedPolicyDocumentException[k], "MalformedPolicyDocumentException contains unknown key " .. tostring(k))
+		assert(keys.ListAWSServiceAccessForOrganizationResponse[k], "ListAWSServiceAccessForOrganizationResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type MalformedPolicyDocumentException
--- <p>The provided policy document does not meet the requirements of the specified policy type. For example, the syntax might be incorrect. For details about service control policy syntax, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html">Service Control Policy Syntax</a> in the <i>AWS Organizations User Guide</i>.</p>
+--- Create a structure of type ListAWSServiceAccessForOrganizationResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return MalformedPolicyDocumentException structure as a key-value pair table
-function M.MalformedPolicyDocumentException(args)
-	assert(args, "You must provide an argument table when creating MalformedPolicyDocumentException")
+-- * EnabledServicePrincipals [EnabledServicePrincipals] <p>A list of the service principals for the services that are enabled to integrate with your organization. Each principal is a structure that includes the name and the date that it was enabled for integration with AWS Organizations.</p>
+-- * NextToken [NextToken] <p>If present, this value indicates that there is more output available than is included in the current response. Use this value in the <code>NextToken</code> request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the <code>NextToken</code> response element comes back as <code>null</code>.</p>
+-- @return ListAWSServiceAccessForOrganizationResponse structure as a key-value pair table
+function M.ListAWSServiceAccessForOrganizationResponse(args)
+	assert(args, "You must provide an argument table when creating ListAWSServiceAccessForOrganizationResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -1590,9 +1373,10 @@ function M.MalformedPolicyDocumentException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["EnabledServicePrincipals"] = args["EnabledServicePrincipals"],
+		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertMalformedPolicyDocumentException(all_args)
+	asserts.AssertListAWSServiceAccessForOrganizationResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1719,25 +1503,27 @@ function M.CreatePolicyResponse(args)
     }
 end
 
-keys.TargetNotFoundException = { ["Message"] = true, nil }
+keys.EnabledServicePrincipal = { ["DateEnabled"] = true, ["ServicePrincipal"] = true, nil }
 
-function asserts.AssertTargetNotFoundException(struct)
+function asserts.AssertEnabledServicePrincipal(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TargetNotFoundException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected EnabledServicePrincipal to be of type 'table'")
+	if struct["DateEnabled"] then asserts.AssertTimestamp(struct["DateEnabled"]) end
+	if struct["ServicePrincipal"] then asserts.AssertServicePrincipal(struct["ServicePrincipal"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TargetNotFoundException[k], "TargetNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.EnabledServicePrincipal[k], "EnabledServicePrincipal contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TargetNotFoundException
--- <p>We can't find a root, OU, or account with the TargetId that you specified.</p>
+--- Create a structure of type EnabledServicePrincipal
+-- <p>A structure that contains details of a service principal that is enabled to integrate with AWS Organizations.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return TargetNotFoundException structure as a key-value pair table
-function M.TargetNotFoundException(args)
-	assert(args, "You must provide an argument table when creating TargetNotFoundException")
+-- * DateEnabled [Timestamp] <p>The date that the service principal was enabled for integration with AWS Organizations.</p>
+-- * ServicePrincipal [ServicePrincipal] <p>The name of the service principal. This is typically in the form of a URL, such as: <code> <i>servicename</i>.amazonaws.com</code>.</p>
+-- @return EnabledServicePrincipal structure as a key-value pair table
+function M.EnabledServicePrincipal(args)
+	assert(args, "You must provide an argument table when creating EnabledServicePrincipal")
     local query_args = { 
     }
     local uri_args = { 
@@ -1745,9 +1531,10 @@ function M.TargetNotFoundException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["DateEnabled"] = args["DateEnabled"],
+		["ServicePrincipal"] = args["ServicePrincipal"],
 	}
-	asserts.AssertTargetNotFoundException(all_args)
+	asserts.AssertEnabledServicePrincipal(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1756,67 +1543,27 @@ function M.TargetNotFoundException(args)
     }
 end
 
-keys.HandshakeConstraintViolationException = { ["Message"] = true, ["Reason"] = true, nil }
+keys.DisableAWSServiceAccessRequest = { ["ServicePrincipal"] = true, nil }
 
-function asserts.AssertHandshakeConstraintViolationException(struct)
+function asserts.AssertDisableAWSServiceAccessRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected HandshakeConstraintViolationException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["Reason"] then asserts.AssertHandshakeConstraintViolationExceptionReason(struct["Reason"]) end
+	assert(type(struct) == "table", "Expected DisableAWSServiceAccessRequest to be of type 'table'")
+	assert(struct["ServicePrincipal"], "Expected key ServicePrincipal to exist in table")
+	if struct["ServicePrincipal"] then asserts.AssertServicePrincipal(struct["ServicePrincipal"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.HandshakeConstraintViolationException[k], "HandshakeConstraintViolationException contains unknown key " .. tostring(k))
+		assert(keys.DisableAWSServiceAccessRequest[k], "DisableAWSServiceAccessRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type HandshakeConstraintViolationException
--- <p>The requested operation would violate the constraint identified in the reason code.</p> <ul> <li> <p>ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an organization. <b>Note</b>: deleted and closed accounts still count toward your limit.</p> </li> <li> <p>HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes you can send in one day.</p> </li> <li> <p>ALREADY_IN_AN_ORGANIZATION: The handshake request is invalid because the invited account is already a member of an organization.</p> </li> <li> <p>ORGANIZATION_ALREADY_HAS_ALL_FEATURES: The handshake request is invalid because the organization has already enabled all features.</p> </li> <li> <p>INVITE_DISABLED_DURING_ENABLE_ALL_FEATURES: You cannot issue new invitations to join an organization while it is in the process of enabling all features. You can resume inviting accounts after you finalize the process when all accounts have agreed to the change.</p> </li> <li> <p>PAYMENT_INSTRUMENT_REQUIRED: You cannot complete the operation with an account that does not have a payment instrument, such as a credit card, associated with it.</p> </li> <li> <p>ORGANIZATION_FROM_DIFFERENT_SELLER_OF_RECORD: The request failed because the account is from a different marketplace than the accounts in the organization. For example, accounts with India addresses must be associated with the AISPL marketplace. All accounts in an organization must be from the same marketplace.</p> </li> <li> <p>ORGANIZATION_MEMBERSHIP_CHANGE_RATE_LIMIT_EXCEEDED: You attempted to change the membership of an account too quickly after its previous change.</p> </li> </ul>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- * Reason [HandshakeConstraintViolationExceptionReason] 
--- @return HandshakeConstraintViolationException structure as a key-value pair table
-function M.HandshakeConstraintViolationException(args)
-	assert(args, "You must provide an argument table when creating HandshakeConstraintViolationException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-		["Reason"] = args["Reason"],
-	}
-	asserts.AssertHandshakeConstraintViolationException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DescribeCreateAccountStatusRequest = { ["CreateAccountRequestId"] = true, nil }
-
-function asserts.AssertDescribeCreateAccountStatusRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeCreateAccountStatusRequest to be of type 'table'")
-	assert(struct["CreateAccountRequestId"], "Expected key CreateAccountRequestId to exist in table")
-	if struct["CreateAccountRequestId"] then asserts.AssertCreateAccountRequestId(struct["CreateAccountRequestId"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DescribeCreateAccountStatusRequest[k], "DescribeCreateAccountStatusRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DescribeCreateAccountStatusRequest
+--- Create a structure of type DisableAWSServiceAccessRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CreateAccountRequestId [CreateAccountRequestId] <p>Specifies the <code>operationId</code> that uniquely identifies the request. You can get the ID from the response to an earlier <a>CreateAccount</a> request, or from the <a>ListCreateAccountStatus</a> operation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an create account request ID string requires "car-" followed by from 8 to 32 lower-case letters or digits.</p>
--- Required key: CreateAccountRequestId
--- @return DescribeCreateAccountStatusRequest structure as a key-value pair table
-function M.DescribeCreateAccountStatusRequest(args)
-	assert(args, "You must provide an argument table when creating DescribeCreateAccountStatusRequest")
+-- * ServicePrincipal [ServicePrincipal] <p>The service principal name of the AWS service for which you want to disable integration with your organization. This is typically in the form of a URL, such as <code> <i>service-abbreviation</i>.amazonaws.com</code>.</p>
+-- Required key: ServicePrincipal
+-- @return DisableAWSServiceAccessRequest structure as a key-value pair table
+function M.DisableAWSServiceAccessRequest(args)
+	assert(args, "You must provide an argument table when creating DisableAWSServiceAccessRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1824,9 +1571,9 @@ function M.DescribeCreateAccountStatusRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["CreateAccountRequestId"] = args["CreateAccountRequestId"],
+		["ServicePrincipal"] = args["ServicePrincipal"],
 	}
-	asserts.AssertDescribeCreateAccountStatusRequest(all_args)
+	asserts.AssertDisableAWSServiceAccessRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1914,46 +1661,6 @@ function M.ListHandshakesForAccountResponse(args)
     }
 end
 
-keys.TooManyRequestsException = { ["Message"] = true, ["Type"] = true, nil }
-
-function asserts.AssertTooManyRequestsException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyRequestsException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["Type"] then asserts.AssertExceptionType(struct["Type"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.TooManyRequestsException[k], "TooManyRequestsException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TooManyRequestsException
--- <p>You've sent too many requests in too short a period of time. The limit helps protect against denial-of-service attacks. Try again later.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- * Type [ExceptionType] 
--- @return TooManyRequestsException structure as a key-value pair table
-function M.TooManyRequestsException(args)
-	assert(args, "You must provide an argument table when creating TooManyRequestsException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-		["Type"] = args["Type"],
-	}
-	asserts.AssertTooManyRequestsException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ListAccountsResponse = { ["NextToken"] = true, ["Accounts"] = true, nil }
 
 function asserts.AssertListAccountsResponse(struct)
@@ -2023,43 +1730,6 @@ function M.InviteAccountToOrganizationResponse(args)
 		["Handshake"] = args["Handshake"],
 	}
 	asserts.AssertInviteAccountToOrganizationResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ServiceException = { ["Message"] = true, nil }
-
-function asserts.AssertServiceException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ServiceException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ServiceException[k], "ServiceException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ServiceException
--- <p>AWS Organizations can't complete your request because of an internal service error. Try again later.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return ServiceException structure as a key-value pair table
-function M.ServiceException(args)
-	assert(args, "You must provide an argument table when creating ServiceException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertServiceException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2159,167 +1829,6 @@ function M.AcceptHandshakeRequest(args)
     }
 end
 
-keys.RootNotFoundException = { ["Message"] = true, nil }
-
-function asserts.AssertRootNotFoundException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected RootNotFoundException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.RootNotFoundException[k], "RootNotFoundException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type RootNotFoundException
--- <p>We can't find a root with the RootId that you specified.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return RootNotFoundException structure as a key-value pair table
-function M.RootNotFoundException(args)
-	assert(args, "You must provide an argument table when creating RootNotFoundException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertRootNotFoundException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DuplicateAccountException = { ["Message"] = true, nil }
-
-function asserts.AssertDuplicateAccountException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DuplicateAccountException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DuplicateAccountException[k], "DuplicateAccountException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DuplicateAccountException
--- <p>That account is already present in the specified destination.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return DuplicateAccountException structure as a key-value pair table
-function M.DuplicateAccountException(args)
-	assert(args, "You must provide an argument table when creating DuplicateAccountException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertDuplicateAccountException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ListChildrenRequest = { ["ChildType"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["ParentId"] = true, nil }
-
-function asserts.AssertListChildrenRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ListChildrenRequest to be of type 'table'")
-	assert(struct["ParentId"], "Expected key ParentId to exist in table")
-	assert(struct["ChildType"], "Expected key ChildType to exist in table")
-	if struct["ChildType"] then asserts.AssertChildType(struct["ChildType"]) end
-	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then asserts.AssertMaxResults(struct["MaxResults"]) end
-	if struct["ParentId"] then asserts.AssertParentId(struct["ParentId"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ListChildrenRequest[k], "ListChildrenRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ListChildrenRequest
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ChildType [ChildType] <p>Filters the output to include only the specified child type.</p>
--- * NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
--- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
--- * ParentId [ParentId] <p>The unique identifier (ID) for the parent root or OU whose children you want to list.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the following:</p> <ul> <li> <p>Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
--- Required key: ParentId
--- Required key: ChildType
--- @return ListChildrenRequest structure as a key-value pair table
-function M.ListChildrenRequest(args)
-	assert(args, "You must provide an argument table when creating ListChildrenRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ChildType"] = args["ChildType"],
-		["NextToken"] = args["NextToken"],
-		["MaxResults"] = args["MaxResults"],
-		["ParentId"] = args["ParentId"],
-	}
-	asserts.AssertListChildrenRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.PolicyTypeNotAvailableForOrganizationException = { ["Message"] = true, nil }
-
-function asserts.AssertPolicyTypeNotAvailableForOrganizationException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected PolicyTypeNotAvailableForOrganizationException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.PolicyTypeNotAvailableForOrganizationException[k], "PolicyTypeNotAvailableForOrganizationException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type PolicyTypeNotAvailableForOrganizationException
--- <p>You can't use the specified policy type with the feature set currently enabled for this organization. For example, you can enable service control policies (SCPs) only after you enable all features in the organization. For more information, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#enable_policies_on_root">Enabling and Disabling a Policy Type on a Root</a> in the <i>AWS Organizations User Guide</i>.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return PolicyTypeNotAvailableForOrganizationException structure as a key-value pair table
-function M.PolicyTypeNotAvailableForOrganizationException(args)
-	assert(args, "You must provide an argument table when creating PolicyTypeNotAvailableForOrganizationException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertPolicyTypeNotAvailableForOrganizationException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ListHandshakesForAccountRequest = { ["Filter"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
 function asserts.AssertListHandshakesForAccountRequest(struct)
@@ -2339,7 +1848,7 @@ end
 -- Valid keys:
 -- * Filter [HandshakeFilter] <p>Filters the handshakes that you want included in the response. The default is all types. Use the <code>ActionType</code> element to limit the output to only a specified type, such as <code>INVITE</code>, <code>ENABLE-FULL-CONTROL</code>, or <code>APPROVE-FULL-CONTROL</code>. Alternatively, for the <code>ENABLE-FULL-CONTROL</code> handshake that generates a separate child handshake for each member account, you can specify <code>ParentHandshakeId</code> to see only the handshakes that were generated by that parent request.</p>
 -- * NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
--- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
+-- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 -- @return ListHandshakesForAccountRequest structure as a key-value pair table
 function M.ListHandshakesForAccountRequest(args)
 	assert(args, "You must provide an argument table when creating ListHandshakesForAccountRequest")
@@ -2386,7 +1895,7 @@ end
 -- * Filter [PolicyType] <p>The type of policy that you want to include in the returned list.</p>
 -- * NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
 -- * TargetId [PolicyTargetId] <p>The unique identifier (ID) of the root, organizational unit, or account whose policies you want to list.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a target ID string requires one of the following:</p> <ul> <li> <p>Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p> </li> <li> <p>Account: a string that consists of exactly 12 digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
--- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
+-- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 -- Required key: TargetId
 -- Required key: Filter
 -- @return ListPoliciesForTargetRequest structure as a key-value pair table
@@ -2413,43 +1922,6 @@ function M.ListPoliciesForTargetRequest(args)
     }
 end
 
-keys.MasterCannotLeaveOrganizationException = { ["Message"] = true, nil }
-
-function asserts.AssertMasterCannotLeaveOrganizationException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected MasterCannotLeaveOrganizationException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.MasterCannotLeaveOrganizationException[k], "MasterCannotLeaveOrganizationException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type MasterCannotLeaveOrganizationException
--- <p>You can't remove a master account from an organization. If you want the master account to become a member account in another organization, you must first delete the current organization of the master account.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return MasterCannotLeaveOrganizationException structure as a key-value pair table
-function M.MasterCannotLeaveOrganizationException(args)
-	assert(args, "You must provide an argument table when creating MasterCannotLeaveOrganizationException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertMasterCannotLeaveOrganizationException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ListRootsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
 
 function asserts.AssertListRootsRequest(struct)
@@ -2467,7 +1939,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
--- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
+-- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 -- @return ListRootsRequest structure as a key-value pair table
 function M.ListRootsRequest(args)
 	assert(args, "You must provide an argument table when creating ListRootsRequest")
@@ -2482,80 +1954,6 @@ function M.ListRootsRequest(args)
 		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListRootsRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.OrganizationalUnitNotEmptyException = { ["Message"] = true, nil }
-
-function asserts.AssertOrganizationalUnitNotEmptyException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected OrganizationalUnitNotEmptyException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.OrganizationalUnitNotEmptyException[k], "OrganizationalUnitNotEmptyException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type OrganizationalUnitNotEmptyException
--- <p>The specified organizational unit (OU) is not empty. Move all accounts to another root or to other OUs, remove all child OUs, and then try the operation again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return OrganizationalUnitNotEmptyException structure as a key-value pair table
-function M.OrganizationalUnitNotEmptyException(args)
-	assert(args, "You must provide an argument table when creating OrganizationalUnitNotEmptyException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertOrganizationalUnitNotEmptyException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.AWSOrganizationsNotInUseException = { ["Message"] = true, nil }
-
-function asserts.AssertAWSOrganizationsNotInUseException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected AWSOrganizationsNotInUseException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.AWSOrganizationsNotInUseException[k], "AWSOrganizationsNotInUseException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type AWSOrganizationsNotInUseException
--- <p>Your account is not a member of an organization. To make this request, you must use the credentials of an account that belongs to an organization.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return AWSOrganizationsNotInUseException structure as a key-value pair table
-function M.AWSOrganizationsNotInUseException(args)
-	assert(args, "You must provide an argument table when creating AWSOrganizationsNotInUseException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertAWSOrganizationsNotInUseException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2626,7 +2024,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Notes [HandshakeNotes] <p>Additional information that you want to include in the generated email to the recipient account owner.</p>
--- * Target [HandshakeParty] <p>The identifier (ID) of the AWS account that you want to invite to join your organization. This is a JSON object that contains the following elements: </p> <p> <code>{ "Type": "ACCOUNT", "Id": "&lt;<i> <b>account id number</b> </i>&gt;" }</code> </p> <p>If you use the AWS CLI, you can submit this as a single string, similar to the following example:</p> <p> <code>--target id=123456789012,type=ACCOUNT</code> </p> <p>If you specify <code>"Type": "ACCOUNT"</code>, then you must provide the AWS account ID number as the <code>Id</code>. If you specify <code>"Type": "EMAIL"</code>, then you must specify the email address that is associated with the account.</p> <p> <code>--target id=bill@example.com,type=EMAIL</code> </p>
+-- * Target [HandshakeParty] <p>The identifier (ID) of the AWS account that you want to invite to join your organization. This is a JSON object that contains the following elements: </p> <p> <code>{ "Type": "ACCOUNT", "Id": "&lt;<i> <b>account id number</b> </i>&gt;" }</code> </p> <p>If you use the AWS CLI, you can submit this as a single string, similar to the following example:</p> <p> <code>--target Id=123456789012,Type=ACCOUNT</code> </p> <p>If you specify <code>"Type": "ACCOUNT"</code>, then you must provide the AWS account ID number as the <code>Id</code>. If you specify <code>"Type": "EMAIL"</code>, then you must specify the email address that is associated with the account.</p> <p> <code>--target Id=diego@example.com,Type=EMAIL</code> </p>
 -- Required key: Target
 -- @return InviteAccountToOrganizationRequest structure as a key-value pair table
 function M.InviteAccountToOrganizationRequest(args)
@@ -2642,46 +2040,6 @@ function M.InviteAccountToOrganizationRequest(args)
 		["Target"] = args["Target"],
 	}
 	asserts.AssertInviteAccountToOrganizationRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ListParentsResponse = { ["NextToken"] = true, ["Parents"] = true, nil }
-
-function asserts.AssertListParentsResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ListParentsResponse to be of type 'table'")
-	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
-	if struct["Parents"] then asserts.AssertParents(struct["Parents"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ListParentsResponse[k], "ListParentsResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ListParentsResponse
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * NextToken [NextToken] <p>If present, this value indicates that there is more output available than is included in the current response. Use this value in the <code>NextToken</code> request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the <code>NextToken</code> response element comes back as <code>null</code>.</p>
--- * Parents [Parents] <p>A list of parents for the specified child account or OU.</p>
--- @return ListParentsResponse structure as a key-value pair table
-function M.ListParentsResponse(args)
-	assert(args, "You must provide an argument table when creating ListParentsResponse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["NextToken"] = args["NextToken"],
-		["Parents"] = args["Parents"],
-	}
-	asserts.AssertListParentsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2708,7 +2066,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * RootId [RootId] <p>The unique identifier (ID) of the root in which you want to disable a policy type. You can get the ID from the <a>ListPolicies</a> operation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string requires "r-" followed by from 4 to 32 lower-case letters or digits.</p>
+-- * RootId [RootId] <p>The unique identifier (ID) of the root in which you want to disable a policy type. You can get the ID from the <a>ListRoots</a> operation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string requires "r-" followed by from 4 to 32 lower-case letters or digits.</p>
 -- * PolicyType [PolicyType] <p>The policy type that you want to disable in this root.</p>
 -- Required key: RootId
 -- Required key: PolicyType
@@ -2810,43 +2168,6 @@ function M.CreateOrganizationRequest(args)
     }
 end
 
-keys.PolicyTypeAlreadyEnabledException = { ["Message"] = true, nil }
-
-function asserts.AssertPolicyTypeAlreadyEnabledException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected PolicyTypeAlreadyEnabledException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.PolicyTypeAlreadyEnabledException[k], "PolicyTypeAlreadyEnabledException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type PolicyTypeAlreadyEnabledException
--- <p>The specified policy type is already enabled in the specified root.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return PolicyTypeAlreadyEnabledException structure as a key-value pair table
-function M.PolicyTypeAlreadyEnabledException(args)
-	assert(args, "You must provide an argument table when creating PolicyTypeAlreadyEnabledException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertPolicyTypeAlreadyEnabledException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ListCreateAccountStatusRequest = { ["States"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
 function asserts.AssertListCreateAccountStatusRequest(struct)
@@ -2866,7 +2187,7 @@ end
 -- Valid keys:
 -- * States [CreateAccountStates] <p>A list of one or more states that you want included in the response. If this parameter is not present, then all requests are included in the response.</p>
 -- * NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
--- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
+-- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 -- @return ListCreateAccountStatusRequest structure as a key-value pair table
 function M.ListCreateAccountStatusRequest(args)
 	assert(args, "You must provide an argument table when creating ListCreateAccountStatusRequest")
@@ -2890,27 +2211,27 @@ function M.ListCreateAccountStatusRequest(args)
     }
 end
 
-keys.ConstraintViolationException = { ["Message"] = true, ["Reason"] = true, nil }
+keys.RemoveAccountFromOrganizationRequest = { ["AccountId"] = true, nil }
 
-function asserts.AssertConstraintViolationException(struct)
+function asserts.AssertRemoveAccountFromOrganizationRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ConstraintViolationException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["Reason"] then asserts.AssertConstraintViolationExceptionReason(struct["Reason"]) end
+	assert(type(struct) == "table", "Expected RemoveAccountFromOrganizationRequest to be of type 'table'")
+	assert(struct["AccountId"], "Expected key AccountId to exist in table")
+	if struct["AccountId"] then asserts.AssertAccountId(struct["AccountId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ConstraintViolationException[k], "ConstraintViolationException contains unknown key " .. tostring(k))
+		assert(keys.RemoveAccountFromOrganizationRequest[k], "RemoveAccountFromOrganizationRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ConstraintViolationException
--- <p>Performing this operation violates a minimum or maximum value limit. For example, attempting to removing the last SCP from an OU or root, inviting or creating too many accounts to the organization, or attaching too many policies to an account, OU, or root. This exception includes a reason that contains additional information about the violated limit:</p> <p/> <ul> <li> <p>ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an organization. If you need more accounts, contact AWS Support to request an increase in your limit. </p> <p>Or, The number of invitations that you tried to send would cause you to exceed the limit of accounts in your organization. Send fewer invitations, or contact AWS Support to request an increase in the number of accounts.</p> <p> <b>Note</b>: deleted and closed accounts still count toward your limit.</p> </li> <li> <p>HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes you can send in one day.</p> </li> <li> <p>OU_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of organizational units you can have in an organization.</p> </li> <li> <p>OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels deep.</p> </li> <li> <p>POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an organization.</p> </li> <li> <p>MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to exceed the number of policies of a certain type that can be attached to an entity at one time.</p> </li> <li> <p>MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would cause the entity to have fewer than the minimum number of policies of a certain type required.</p> </li> <li> <p>ACCOUNT_CANNOT_LEAVE_WITHOUT_EULA: You attempted to remove an account from the organization that does not yet have enough information to exist as a stand-alone account. This account requires you to first agree to the End-User License Agreement (EULA).</p> </li> <li> <p>ACCOUNT_CANNOT_LEAVE_WITHOUT_PHONE_VERIFICATION: You attempted to remove an account from the organization that does not yet have enough information to exist as a stand-alone account. This account requires you to first complete phone verification.</p> </li> <li> <p>MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To create an organization with this account, you first must associate a payment instrument, such as a credit card, with the account.</p> </li> <li> <p>MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To complete this operation with this member account, you first must associate a payment instrument, such as a credit card, with the account.</p> </li> <li> <p>ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of accounts that you can create in one day.</p> </li> <li> <p>MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE: To create an account in this organization, you first must migrate the organization's master account to the marketplace that corresponds to the master account's address. For example, accounts with India addresses must be associated with the AISPL marketplace. All accounts in an organization must be associated with the same marketplace.</p> </li> </ul>
+--- Create a structure of type RemoveAccountFromOrganizationRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- * Reason [ConstraintViolationExceptionReason] 
--- @return ConstraintViolationException structure as a key-value pair table
-function M.ConstraintViolationException(args)
-	assert(args, "You must provide an argument table when creating ConstraintViolationException")
+-- * AccountId [AccountId] <p>The unique identifier (ID) of the member account that you want to remove from the organization.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an account ID string requires exactly 12 digits.</p>
+-- Required key: AccountId
+-- @return RemoveAccountFromOrganizationRequest structure as a key-value pair table
+function M.RemoveAccountFromOrganizationRequest(args)
+	assert(args, "You must provide an argument table when creating RemoveAccountFromOrganizationRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -2918,47 +2239,9 @@ function M.ConstraintViolationException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
-		["Reason"] = args["Reason"],
+		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertConstraintViolationException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.PolicyInUseException = { ["Message"] = true, nil }
-
-function asserts.AssertPolicyInUseException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected PolicyInUseException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.PolicyInUseException[k], "PolicyInUseException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type PolicyInUseException
--- <p>The policy is attached to one or more entities. You must detach it from all roots, organizational units (OUs), and accounts before performing this operation.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return PolicyInUseException structure as a key-value pair table
-function M.PolicyInUseException(args)
-	assert(args, "You must provide an argument table when creating PolicyInUseException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertPolicyInUseException(all_args)
+	asserts.AssertRemoveAccountFromOrganizationRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2999,43 +2282,6 @@ function M.Child(args)
 		["Id"] = args["Id"],
 	}
 	asserts.AssertChild(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidHandshakeTransitionException = { ["Message"] = true, nil }
-
-function asserts.AssertInvalidHandshakeTransitionException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidHandshakeTransitionException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidHandshakeTransitionException[k], "InvalidHandshakeTransitionException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidHandshakeTransitionException
--- <p>You can't perform the operation on the handshake in its current state. For example, you can't cancel a handshake that was already accepted, or accept a handshake that was already declined.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return InvalidHandshakeTransitionException structure as a key-value pair table
-function M.InvalidHandshakeTransitionException(args)
-	assert(args, "You must provide an argument table when creating InvalidHandshakeTransitionException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertInvalidHandshakeTransitionException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3090,25 +2336,29 @@ function M.PolicyTargetSummary(args)
     }
 end
 
-keys.CreateAccountStatusNotFoundException = { ["Message"] = true, nil }
+keys.ListHandshakesForOrganizationRequest = { ["Filter"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function asserts.AssertCreateAccountStatusNotFoundException(struct)
+function asserts.AssertListHandshakesForOrganizationRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected CreateAccountStatusNotFoundException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected ListHandshakesForOrganizationRequest to be of type 'table'")
+	if struct["Filter"] then asserts.AssertHandshakeFilter(struct["Filter"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertMaxResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.CreateAccountStatusNotFoundException[k], "CreateAccountStatusNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.ListHandshakesForOrganizationRequest[k], "ListHandshakesForOrganizationRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type CreateAccountStatusNotFoundException
--- <p>We can't find an create account request with the CreateAccountRequestId that you specified.</p>
+--- Create a structure of type ListHandshakesForOrganizationRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return CreateAccountStatusNotFoundException structure as a key-value pair table
-function M.CreateAccountStatusNotFoundException(args)
-	assert(args, "You must provide an argument table when creating CreateAccountStatusNotFoundException")
+-- * Filter [HandshakeFilter] <p>A filter of the handshakes that you want included in the response. The default is all types. Use the <code>ActionType</code> element to limit the output to only a specified type, such as <code>INVITE</code>, <code>ENABLE-ALL-FEATURES</code>, or <code>APPROVE-ALL-FEATURES</code>. Alternatively, for the <code>ENABLE-ALL-FEATURES</code> handshake that generates a separate child handshake for each member account, you can specify the <code>ParentHandshakeId</code> to see only the handshakes that were generated by that parent request.</p>
+-- * NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
+-- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
+-- @return ListHandshakesForOrganizationRequest structure as a key-value pair table
+function M.ListHandshakesForOrganizationRequest(args)
+	assert(args, "You must provide an argument table when creating ListHandshakesForOrganizationRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -3116,46 +2366,11 @@ function M.CreateAccountStatusNotFoundException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["Filter"] = args["Filter"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertCreateAccountStatusNotFoundException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.OrganizationNotEmptyException = { ["Message"] = true, nil }
-
-function asserts.AssertOrganizationNotEmptyException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected OrganizationNotEmptyException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.OrganizationNotEmptyException[k], "OrganizationNotEmptyException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type OrganizationNotEmptyException
--- <p>The organization isn't empty. To delete an organization, you must first remove all accounts except the master account, delete all organizational units (OUs), and delete all policies.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return OrganizationNotEmptyException structure as a key-value pair table
-function M.OrganizationNotEmptyException(args)
-	assert(args, "You must provide an argument table when creating OrganizationNotEmptyException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertOrganizationNotEmptyException(all_args)
+	asserts.AssertListHandshakesForOrganizationRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3246,117 +2461,6 @@ function M.UpdateOrganizationalUnitRequest(args)
     }
 end
 
-keys.PolicyNotAttachedException = { ["Message"] = true, nil }
-
-function asserts.AssertPolicyNotAttachedException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected PolicyNotAttachedException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.PolicyNotAttachedException[k], "PolicyNotAttachedException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type PolicyNotAttachedException
--- <p>The policy isn't attached to the specified target in the specified root.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return PolicyNotAttachedException structure as a key-value pair table
-function M.PolicyNotAttachedException(args)
-	assert(args, "You must provide an argument table when creating PolicyNotAttachedException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertPolicyNotAttachedException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.HandshakeAlreadyInStateException = { ["Message"] = true, nil }
-
-function asserts.AssertHandshakeAlreadyInStateException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected HandshakeAlreadyInStateException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.HandshakeAlreadyInStateException[k], "HandshakeAlreadyInStateException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type HandshakeAlreadyInStateException
--- <p>The specified handshake is already in the requested state. For example, you can't accept a handshake that was already accepted.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return HandshakeAlreadyInStateException structure as a key-value pair table
-function M.HandshakeAlreadyInStateException(args)
-	assert(args, "You must provide an argument table when creating HandshakeAlreadyInStateException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertHandshakeAlreadyInStateException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DuplicatePolicyException = { ["Message"] = true, nil }
-
-function asserts.AssertDuplicatePolicyException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DuplicatePolicyException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DuplicatePolicyException[k], "DuplicatePolicyException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DuplicatePolicyException
--- <p>A policy with the same name already exists.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return DuplicatePolicyException structure as a key-value pair table
-function M.DuplicatePolicyException(args)
-	assert(args, "You must provide an argument table when creating DuplicatePolicyException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertDuplicatePolicyException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ListOrganizationalUnitsForParentResponse = { ["NextToken"] = true, ["OrganizationalUnits"] = true, nil }
 
 function asserts.AssertListOrganizationalUnitsForParentResponse(struct)
@@ -3389,6 +2493,46 @@ function M.ListOrganizationalUnitsForParentResponse(args)
 		["OrganizationalUnits"] = args["OrganizationalUnits"],
 	}
 	asserts.AssertListOrganizationalUnitsForParentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListAWSServiceAccessForOrganizationRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
+
+function asserts.AssertListAWSServiceAccessForOrganizationRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListAWSServiceAccessForOrganizationRequest to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertMaxResults(struct["MaxResults"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListAWSServiceAccessForOrganizationRequest[k], "ListAWSServiceAccessForOrganizationRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListAWSServiceAccessForOrganizationRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
+-- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
+-- @return ListAWSServiceAccessForOrganizationRequest structure as a key-value pair table
+function M.ListAWSServiceAccessForOrganizationRequest(args)
+	assert(args, "You must provide an argument table when creating ListAWSServiceAccessForOrganizationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+	}
+	asserts.AssertListAWSServiceAccessForOrganizationRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3434,25 +2578,31 @@ function M.UpdatePolicyResponse(args)
     }
 end
 
-keys.DuplicateHandshakeException = { ["Message"] = true, nil }
+keys.ListPoliciesRequest = { ["Filter"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function asserts.AssertDuplicateHandshakeException(struct)
+function asserts.AssertListPoliciesRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DuplicateHandshakeException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected ListPoliciesRequest to be of type 'table'")
+	assert(struct["Filter"], "Expected key Filter to exist in table")
+	if struct["Filter"] then asserts.AssertPolicyType(struct["Filter"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertMaxResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DuplicateHandshakeException[k], "DuplicateHandshakeException contains unknown key " .. tostring(k))
+		assert(keys.ListPoliciesRequest[k], "ListPoliciesRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DuplicateHandshakeException
--- <p>A handshake with the same action and target already exists. For example, if you invited an account to join your organization, the invited account might already have a pending invitation from this organization. If you intend to resend an invitation to an account, ensure that existing handshakes that might be considered duplicates are canceled or declined.</p>
+--- Create a structure of type ListPoliciesRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return DuplicateHandshakeException structure as a key-value pair table
-function M.DuplicateHandshakeException(args)
-	assert(args, "You must provide an argument table when creating DuplicateHandshakeException")
+-- * Filter [PolicyType] <p>Specifies the type of policy that you want to include in the response.</p>
+-- * NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
+-- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
+-- Required key: Filter
+-- @return ListPoliciesRequest structure as a key-value pair table
+function M.ListPoliciesRequest(args)
+	assert(args, "You must provide an argument table when creating ListPoliciesRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -3460,120 +2610,11 @@ function M.DuplicateHandshakeException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["Filter"] = args["Filter"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDuplicateHandshakeException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.FinalizingOrganizationException = { ["Message"] = true, nil }
-
-function asserts.AssertFinalizingOrganizationException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected FinalizingOrganizationException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.FinalizingOrganizationException[k], "FinalizingOrganizationException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type FinalizingOrganizationException
--- <p>AWS Organizations could not finalize the creation of your organization. Try again later. If this persists, contact AWS customer support.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return FinalizingOrganizationException structure as a key-value pair table
-function M.FinalizingOrganizationException(args)
-	assert(args, "You must provide an argument table when creating FinalizingOrganizationException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertFinalizingOrganizationException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.AlreadyInOrganizationException = { ["Message"] = true, nil }
-
-function asserts.AssertAlreadyInOrganizationException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected AlreadyInOrganizationException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.AlreadyInOrganizationException[k], "AlreadyInOrganizationException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type AlreadyInOrganizationException
--- <p>This account is already a member of an organization. An account can belong to only one organization at a time.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return AlreadyInOrganizationException structure as a key-value pair table
-function M.AlreadyInOrganizationException(args)
-	assert(args, "You must provide an argument table when creating AlreadyInOrganizationException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertAlreadyInOrganizationException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.OrganizationalUnitNotFoundException = { ["Message"] = true, nil }
-
-function asserts.AssertOrganizationalUnitNotFoundException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected OrganizationalUnitNotFoundException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.OrganizationalUnitNotFoundException[k], "OrganizationalUnitNotFoundException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type OrganizationalUnitNotFoundException
--- <p>We can't find an organizational unit (OU) with the OrganizationalUnitId that you specified.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return OrganizationalUnitNotFoundException structure as a key-value pair table
-function M.OrganizationalUnitNotFoundException(args)
-	assert(args, "You must provide an argument table when creating OrganizationalUnitNotFoundException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertOrganizationalUnitNotFoundException(all_args)
+	asserts.AssertListPoliciesRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3710,101 +2751,35 @@ function M.CreatePolicyRequest(args)
     }
 end
 
-keys.ChildNotFoundException = { ["Message"] = true, nil }
+keys.ListChildrenRequest = { ["ChildType"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["ParentId"] = true, nil }
 
-function asserts.AssertChildNotFoundException(struct)
+function asserts.AssertListChildrenRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ChildNotFoundException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected ListChildrenRequest to be of type 'table'")
+	assert(struct["ParentId"], "Expected key ParentId to exist in table")
+	assert(struct["ChildType"], "Expected key ChildType to exist in table")
+	if struct["ChildType"] then asserts.AssertChildType(struct["ChildType"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertMaxResults(struct["MaxResults"]) end
+	if struct["ParentId"] then asserts.AssertParentId(struct["ParentId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ChildNotFoundException[k], "ChildNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.ListChildrenRequest[k], "ListChildrenRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ChildNotFoundException
--- <p>We can't find an organizational unit (OU) or AWS account with the ChildId that you specified.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return ChildNotFoundException structure as a key-value pair table
-function M.ChildNotFoundException(args)
-	assert(args, "You must provide an argument table when creating ChildNotFoundException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertChildNotFoundException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DuplicatePolicyAttachmentException = { ["Message"] = true, nil }
-
-function asserts.AssertDuplicatePolicyAttachmentException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DuplicatePolicyAttachmentException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DuplicatePolicyAttachmentException[k], "DuplicatePolicyAttachmentException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DuplicatePolicyAttachmentException
--- <p>The selected policy is already attached to the specified target.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return DuplicatePolicyAttachmentException structure as a key-value pair table
-function M.DuplicatePolicyAttachmentException(args)
-	assert(args, "You must provide an argument table when creating DuplicatePolicyAttachmentException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertDuplicatePolicyAttachmentException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.RemoveAccountFromOrganizationRequest = { ["AccountId"] = true, nil }
-
-function asserts.AssertRemoveAccountFromOrganizationRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected RemoveAccountFromOrganizationRequest to be of type 'table'")
-	assert(struct["AccountId"], "Expected key AccountId to exist in table")
-	if struct["AccountId"] then asserts.AssertAccountId(struct["AccountId"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.RemoveAccountFromOrganizationRequest[k], "RemoveAccountFromOrganizationRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type RemoveAccountFromOrganizationRequest
+--- Create a structure of type ListChildrenRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AccountId [AccountId] <p>The unique identifier (ID) of the member account that you want to remove from the organization.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an account ID string requires exactly 12 digits.</p>
--- Required key: AccountId
--- @return RemoveAccountFromOrganizationRequest structure as a key-value pair table
-function M.RemoveAccountFromOrganizationRequest(args)
-	assert(args, "You must provide an argument table when creating RemoveAccountFromOrganizationRequest")
+-- * ChildType [ChildType] <p>Filters the output to include only the specified child type.</p>
+-- * NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
+-- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
+-- * ParentId [ParentId] <p>The unique identifier (ID) for the parent root or OU whose children you want to list.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the following:</p> <ul> <li> <p>Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
+-- Required key: ParentId
+-- Required key: ChildType
+-- @return ListChildrenRequest structure as a key-value pair table
+function M.ListChildrenRequest(args)
+	assert(args, "You must provide an argument table when creating ListChildrenRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -3812,9 +2787,12 @@ function M.RemoveAccountFromOrganizationRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["AccountId"] = args["AccountId"],
+		["ChildType"] = args["ChildType"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["ParentId"] = args["ParentId"],
 	}
-	asserts.AssertRemoveAccountFromOrganizationRequest(all_args)
+	asserts.AssertListChildrenRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4018,46 +2996,6 @@ function M.DescribeAccountResponse(args)
     }
 end
 
-keys.HandshakeFilter = { ["ActionType"] = true, ["ParentHandshakeId"] = true, nil }
-
-function asserts.AssertHandshakeFilter(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected HandshakeFilter to be of type 'table'")
-	if struct["ActionType"] then asserts.AssertActionType(struct["ActionType"]) end
-	if struct["ParentHandshakeId"] then asserts.AssertHandshakeId(struct["ParentHandshakeId"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.HandshakeFilter[k], "HandshakeFilter contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type HandshakeFilter
--- <p>Specifies the criteria that are used to select the handshakes for the operation.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ActionType [ActionType] <p>Specifies the type of handshake action.</p> <p>If you specify <code>ActionType</code>, you cannot also specify <code>ParentHandshakeId</code>.</p>
--- * ParentHandshakeId [HandshakeId] <p>Specifies the parent handshake. Only used for handshake types that are a child of another type.</p> <p>If you specify <code>ParentHandshakeId</code>, you cannot also specify <code>ActionType</code>.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.</p>
--- @return HandshakeFilter structure as a key-value pair table
-function M.HandshakeFilter(args)
-	assert(args, "You must provide an argument table when creating HandshakeFilter")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ActionType"] = args["ActionType"],
-		["ParentHandshakeId"] = args["ParentHandshakeId"],
-	}
-	asserts.AssertHandshakeFilter(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.CreateAccountResponse = { ["CreateAccountStatus"] = true, nil }
 
 function asserts.AssertCreateAccountResponse(struct)
@@ -4073,7 +3011,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CreateAccountStatus [CreateAccountStatus] <p>A structure that contains details about the request to create an account. This response structure might not be fully populated when you first receive it because account creation is an asynchronous process. You can pass the returned CreateAccountStatus ID as a parameter to <code> <a>DescribeCreateAccountStatus</a> </code> to get status about the progress of the request at later times. </p>
+-- * CreateAccountStatus [CreateAccountStatus] <p>A structure that contains details about the request to create an account. This response structure might not be fully populated when you first receive it because account creation is an asynchronous process. You can pass the returned <code>CreateAccountStatus</code> ID as a parameter to <a>DescribeCreateAccountStatus</a> to get status about the progress of the request at later times. You can also check the AWS CloudTrail log for the <code>CreateAccountResult</code> event. For more information, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html">Monitoring the Activity in Your Organization</a> in the <i>AWS Organizations User Guide</i>.</p>
 -- @return CreateAccountResponse structure as a key-value pair table
 function M.CreateAccountResponse(args)
 	assert(args, "You must provide an argument table when creating CreateAccountResponse")
@@ -4124,49 +3062,6 @@ function M.AcceptHandshakeResponse(args)
 		["Handshake"] = args["Handshake"],
 	}
 	asserts.AssertAcceptHandshakeResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ListHandshakesForOrganizationRequest = { ["Filter"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
-
-function asserts.AssertListHandshakesForOrganizationRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ListHandshakesForOrganizationRequest to be of type 'table'")
-	if struct["Filter"] then asserts.AssertHandshakeFilter(struct["Filter"]) end
-	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then asserts.AssertMaxResults(struct["MaxResults"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ListHandshakesForOrganizationRequest[k], "ListHandshakesForOrganizationRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ListHandshakesForOrganizationRequest
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Filter [HandshakeFilter] <p>A filter of the handshakes that you want included in the response. The default is all types. Use the <code>ActionType</code> element to limit the output to only a specified type, such as <code>INVITE</code>, <code>ENABLE-ALL-FEATURES</code>, or <code>APPROVE-ALL-FEATURES</code>. Alternatively, for the <code>ENABLE-ALL-FEATURES</code> handshake that generates a separate child handshake for each member account, you can specify the <code>ParentHandshakeId</code> to see only the handshakes that were generated by that parent request.</p>
--- * NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
--- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
--- @return ListHandshakesForOrganizationRequest structure as a key-value pair table
-function M.ListHandshakesForOrganizationRequest(args)
-	assert(args, "You must provide an argument table when creating ListHandshakesForOrganizationRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Filter"] = args["Filter"],
-		["NextToken"] = args["NextToken"],
-		["MaxResults"] = args["MaxResults"],
-	}
-	asserts.AssertListHandshakesForOrganizationRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4253,27 +3148,27 @@ function M.DescribePolicyRequest(args)
     }
 end
 
-keys.DeclineHandshakeRequest = { ["HandshakeId"] = true, nil }
+keys.EnableAWSServiceAccessRequest = { ["ServicePrincipal"] = true, nil }
 
-function asserts.AssertDeclineHandshakeRequest(struct)
+function asserts.AssertEnableAWSServiceAccessRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeclineHandshakeRequest to be of type 'table'")
-	assert(struct["HandshakeId"], "Expected key HandshakeId to exist in table")
-	if struct["HandshakeId"] then asserts.AssertHandshakeId(struct["HandshakeId"]) end
+	assert(type(struct) == "table", "Expected EnableAWSServiceAccessRequest to be of type 'table'")
+	assert(struct["ServicePrincipal"], "Expected key ServicePrincipal to exist in table")
+	if struct["ServicePrincipal"] then asserts.AssertServicePrincipal(struct["ServicePrincipal"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeclineHandshakeRequest[k], "DeclineHandshakeRequest contains unknown key " .. tostring(k))
+		assert(keys.EnableAWSServiceAccessRequest[k], "EnableAWSServiceAccessRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeclineHandshakeRequest
+--- Create a structure of type EnableAWSServiceAccessRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * HandshakeId [HandshakeId] <p>The unique identifier (ID) of the handshake that you want to decline. You can get the ID from the <a>ListHandshakesForAccount</a> operation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.</p>
--- Required key: HandshakeId
--- @return DeclineHandshakeRequest structure as a key-value pair table
-function M.DeclineHandshakeRequest(args)
-	assert(args, "You must provide an argument table when creating DeclineHandshakeRequest")
+-- * ServicePrincipal [ServicePrincipal] <p>The service principal name of the AWS service for which you want to enable integration with your organization. This is typically in the form of a URL, such as <code> <i>service-abbreviation</i>.amazonaws.com</code>.</p>
+-- Required key: ServicePrincipal
+-- @return EnableAWSServiceAccessRequest structure as a key-value pair table
+function M.EnableAWSServiceAccessRequest(args)
+	assert(args, "You must provide an argument table when creating EnableAWSServiceAccessRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -4281,9 +3176,9 @@ function M.DeclineHandshakeRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["HandshakeId"] = args["HandshakeId"],
+		["ServicePrincipal"] = args["ServicePrincipal"],
 	}
-	asserts.AssertDeclineHandshakeRequest(all_args)
+	asserts.AssertEnableAWSServiceAccessRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4323,43 +3218,6 @@ function M.DescribeHandshakeRequest(args)
 		["HandshakeId"] = args["HandshakeId"],
 	}
 	asserts.AssertDescribeHandshakeRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.AccessDeniedException = { ["Message"] = true, nil }
-
-function asserts.AssertAccessDeniedException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected AccessDeniedException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.AccessDeniedException[k], "AccessDeniedException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type AccessDeniedException
--- <p>You don't have permissions to perform the requested operation. The user or role that is making the request must have at least one IAM permissions policy attached that grants the required permissions. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html">Access Management</a> in the <i>IAM User Guide</i>.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return AccessDeniedException structure as a key-value pair table
-function M.AccessDeniedException(args)
-	assert(args, "You must provide an argument table when creating AccessDeniedException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertAccessDeniedException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4443,7 +3301,7 @@ end
 -- Valid keys:
 -- * NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
 -- * PolicyId [PolicyId] <p>The unique identifier (ID) of the policy for which you want to know its attachments.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.</p>
--- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
+-- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 -- Required key: PolicyId
 -- @return ListTargetsForPolicyRequest structure as a key-value pair table
 function M.ListTargetsForPolicyRequest(args)
@@ -4486,7 +3344,7 @@ end
 -- <p>Contains details about a root. A root is a top-level parent node in the hierarchy of an organization that can contain organizational units (OUs) and accounts. Every root contains every AWS account in the organization. Each root enables the accounts to be organized in a different way and to have different policy types enabled for use in that root.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * PolicyTypes [PolicyTypes] <p>The types of policies that are currently enabled for the root and therefore can be attached to the root or to its OUs or accounts.</p>
+-- * PolicyTypes [PolicyTypes] <p>The types of policies that are currently enabled for the root and therefore can be attached to the root or to its OUs or accounts.</p> <note> <p>Even if a policy type is shown as available in the organization, you can separately enable and disable them at the root level by using <a>EnablePolicyType</a> and <a>DisablePolicyType</a>. Use <a>DescribeOrganization</a> to see the availability of the policy types in that organization.</p> </note>
 -- * Id [RootId] <p>The unique identifier (ID) for the root.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string requires "r-" followed by from 4 to 32 lower-case letters or digits.</p>
 -- * Arn [RootArn] <p>The Amazon Resource Name (ARN) of the root.</p> <p>For more information about ARNs in Organizations, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
 -- * Name [RootName] <p>The friendly name of the root.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a string of any of the characters in the ASCII character range.</p>
@@ -4533,7 +3391,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
--- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
+-- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 -- * ChildId [ChildId] <p>The unique identifier (ID) of the OU or account whose parent containers you want to list. Do not specify a root.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a child ID string requires one of the following:</p> <ul> <li> <p>Account: a string that consists of exactly 12 digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
 -- Required key: ChildId
 -- @return ListParentsRequest structure as a key-value pair table
@@ -4578,7 +3436,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
--- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
+-- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 -- * ParentId [ParentId] <p>The unique identifier (ID) for the parent root or organization unit (OU) whose accounts you want to list.</p>
 -- Required key: ParentId
 -- @return ListAccountsForParentRequest structure as a key-value pair table
@@ -4596,43 +3454,6 @@ function M.ListAccountsForParentRequest(args)
 		["ParentId"] = args["ParentId"],
 	}
 	asserts.AssertListAccountsForParentRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.HandshakeNotFoundException = { ["Message"] = true, nil }
-
-function asserts.AssertHandshakeNotFoundException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected HandshakeNotFoundException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.HandshakeNotFoundException[k], "HandshakeNotFoundException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type HandshakeNotFoundException
--- <p>We can't find a handshake with the HandshakeId that you specified.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return HandshakeNotFoundException structure as a key-value pair table
-function M.HandshakeNotFoundException(args)
-	assert(args, "You must provide an argument table when creating HandshakeNotFoundException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertHandshakeNotFoundException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4660,7 +3481,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
--- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
+-- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 -- * ParentId [ParentId] <p>The unique identifier (ID) of the root or OU whose child OUs you want to list.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the following:</p> <ul> <li> <p>Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
 -- Required key: ParentId
 -- @return ListOrganizationalUnitsForParentRequest structure as a key-value pair table
@@ -4703,7 +3524,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
--- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
+-- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included per page in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 -- @return ListAccountsRequest structure as a key-value pair table
 function M.ListAccountsRequest(args)
 	assert(args, "You must provide an argument table when creating ListAccountsRequest")
@@ -4839,6 +3660,17 @@ function M.ChildType(str)
 	return str
 end
 
+function asserts.AssertAccountId(str)
+	assert(str)
+	assert(type(str) == "string", "Expected AccountId to be of type 'string'")
+end
+
+--  
+function M.AccountId(str)
+	asserts.AssertAccountId(str)
+	return str
+end
+
 function asserts.AssertPolicyTargetId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PolicyTargetId to be of type 'string'")
@@ -4869,17 +3701,6 @@ end
 --  
 function M.AccountArn(str)
 	asserts.AssertAccountArn(str)
-	return str
-end
-
-function asserts.AssertHandshakeConstraintViolationExceptionReason(str)
-	assert(str)
-	assert(type(str) == "string", "Expected HandshakeConstraintViolationExceptionReason to be of type 'string'")
-end
-
---  
-function M.HandshakeConstraintViolationExceptionReason(str)
-	asserts.AssertHandshakeConstraintViolationExceptionReason(str)
 	return str
 end
 
@@ -5069,30 +3890,6 @@ function M.Email(str)
 	return str
 end
 
-function asserts.AssertRootName(str)
-	assert(str)
-	assert(type(str) == "string", "Expected RootName to be of type 'string'")
-	assert(#str <= 128, "Expected string to be max 128 characters")
-	assert(#str >= 1, "Expected string to be min 1 characters")
-end
-
---  
-function M.RootName(str)
-	asserts.AssertRootName(str)
-	return str
-end
-
-function asserts.AssertExceptionType(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ExceptionType to be of type 'string'")
-end
-
---  
-function M.ExceptionType(str)
-	asserts.AssertExceptionType(str)
-	return str
-end
-
 function asserts.AssertChildId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ChildId to be of type 'string'")
@@ -5148,6 +3945,19 @@ function M.OrganizationalUnitArn(str)
 	return str
 end
 
+function asserts.AssertPolicyContent(str)
+	assert(str)
+	assert(type(str) == "string", "Expected PolicyContent to be of type 'string'")
+	assert(#str <= 1000000, "Expected string to be max 1000000 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.PolicyContent(str)
+	asserts.AssertPolicyContent(str)
+	return str
+end
+
 function asserts.AssertHandshakeResourceValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected HandshakeResourceValue to be of type 'string'")
@@ -5183,25 +3993,40 @@ function M.AccountName(str)
 	return str
 end
 
-function asserts.AssertExceptionMessage(str)
+function asserts.AssertHandshakeArn(str)
 	assert(str)
-	assert(type(str) == "string", "Expected ExceptionMessage to be of type 'string'")
+	assert(type(str) == "string", "Expected HandshakeArn to be of type 'string'")
 end
 
 --  
-function M.ExceptionMessage(str)
-	asserts.AssertExceptionMessage(str)
+function M.HandshakeArn(str)
+	asserts.AssertHandshakeArn(str)
 	return str
 end
 
-function asserts.AssertInvalidInputExceptionReason(str)
+function asserts.AssertServicePrincipal(str)
 	assert(str)
-	assert(type(str) == "string", "Expected InvalidInputExceptionReason to be of type 'string'")
+	assert(type(str) == "string", "Expected ServicePrincipal to be of type 'string'")
+	assert(#str <= 128, "Expected string to be max 128 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
-function M.InvalidInputExceptionReason(str)
-	asserts.AssertInvalidInputExceptionReason(str)
+function M.ServicePrincipal(str)
+	asserts.AssertServicePrincipal(str)
+	return str
+end
+
+function asserts.AssertRootName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected RootName to be of type 'string'")
+	assert(#str <= 128, "Expected string to be max 128 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.RootName(str)
+	asserts.AssertRootName(str)
 	return str
 end
 
@@ -5213,17 +4038,6 @@ end
 --  
 function M.PolicyType(str)
 	asserts.AssertPolicyType(str)
-	return str
-end
-
-function asserts.AssertAccountId(str)
-	assert(str)
-	assert(type(str) == "string", "Expected AccountId to be of type 'string'")
-end
-
---  
-function M.AccountId(str)
-	asserts.AssertAccountId(str)
 	return str
 end
 
@@ -5306,19 +4120,6 @@ function M.IAMUserAccessToBilling(str)
 	return str
 end
 
-function asserts.AssertPolicyContent(str)
-	assert(str)
-	assert(type(str) == "string", "Expected PolicyContent to be of type 'string'")
-	assert(#str <= 1000000, "Expected string to be max 1000000 characters")
-	assert(#str >= 1, "Expected string to be min 1 characters")
-end
-
---  
-function M.PolicyContent(str)
-	asserts.AssertPolicyContent(str)
-	return str
-end
-
 function asserts.AssertCreateAccountFailureReason(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CreateAccountFailureReason to be of type 'string'")
@@ -5327,17 +4128,6 @@ end
 --  
 function M.CreateAccountFailureReason(str)
 	asserts.AssertCreateAccountFailureReason(str)
-	return str
-end
-
-function asserts.AssertOrganizationArn(str)
-	assert(str)
-	assert(type(str) == "string", "Expected OrganizationArn to be of type 'string'")
-end
-
---  
-function M.OrganizationArn(str)
-	asserts.AssertOrganizationArn(str)
 	return str
 end
 
@@ -5363,25 +4153,14 @@ function M.ParentType(str)
 	return str
 end
 
-function asserts.AssertHandshakeArn(str)
+function asserts.AssertOrganizationArn(str)
 	assert(str)
-	assert(type(str) == "string", "Expected HandshakeArn to be of type 'string'")
+	assert(type(str) == "string", "Expected OrganizationArn to be of type 'string'")
 end
 
 --  
-function M.HandshakeArn(str)
-	asserts.AssertHandshakeArn(str)
-	return str
-end
-
-function asserts.AssertConstraintViolationExceptionReason(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ConstraintViolationExceptionReason to be of type 'string'")
-end
-
---  
-function M.ConstraintViolationExceptionReason(str)
-	asserts.AssertConstraintViolationExceptionReason(str)
+function M.OrganizationArn(str)
+	asserts.AssertOrganizationArn(str)
 	return str
 end
 
@@ -5463,21 +4242,6 @@ function M.Accounts(list)
 	return list
 end
 
-function asserts.AssertOrganizationalUnits(list)
-	assert(list)
-	assert(type(list) == "table", "Expected OrganizationalUnits to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertOrganizationalUnit(v)
-	end
-end
-
---  
--- List of OrganizationalUnit objects
-function M.OrganizationalUnits(list)
-	asserts.AssertOrganizationalUnits(list)
-	return list
-end
-
 function asserts.AssertPolicies(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Policies to be of type ''table")
@@ -5505,6 +4269,21 @@ end
 -- List of HandshakeParty objects
 function M.HandshakeParties(list)
 	asserts.AssertHandshakeParties(list)
+	return list
+end
+
+function asserts.AssertEnabledServicePrincipals(list)
+	assert(list)
+	assert(type(list) == "table", "Expected EnabledServicePrincipals to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertEnabledServicePrincipal(v)
+	end
+end
+
+--  
+-- List of EnabledServicePrincipal objects
+function M.EnabledServicePrincipals(list)
+	asserts.AssertEnabledServicePrincipals(list)
 	return list
 end
 
@@ -5595,6 +4374,21 @@ end
 -- List of CreateAccountStatus objects
 function M.CreateAccountStatuses(list)
 	asserts.AssertCreateAccountStatuses(list)
+	return list
+end
+
+function asserts.AssertOrganizationalUnits(list)
+	assert(list)
+	assert(type(list) == "table", "Expected OrganizationalUnits to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertOrganizationalUnit(v)
+	end
+end
+
+--  
+-- List of OrganizationalUnit objects
+function M.OrganizationalUnits(list)
+	asserts.AssertOrganizationalUnits(list)
 	return list
 end
 
@@ -5931,6 +4725,41 @@ function M.DeletePolicySync(DeletePolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DeletePolicyAsync(DeletePolicyRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call EnableAWSServiceAccess asynchronously, invoking a callback when done
+-- @param EnableAWSServiceAccessRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.EnableAWSServiceAccessAsync(EnableAWSServiceAccessRequest, cb)
+	assert(EnableAWSServiceAccessRequest, "You must provide a EnableAWSServiceAccessRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.EnableAWSServiceAccess",
+	}
+	for header,value in pairs(EnableAWSServiceAccessRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", EnableAWSServiceAccessRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call EnableAWSServiceAccess synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param EnableAWSServiceAccessRequest
+-- @return response
+-- @return error_message
+function M.EnableAWSServiceAccessSync(EnableAWSServiceAccessRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.EnableAWSServiceAccessAsync(EnableAWSServiceAccessRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6521,6 +5350,41 @@ function M.UpdatePolicySync(UpdatePolicyRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call DisableAWSServiceAccess asynchronously, invoking a callback when done
+-- @param DisableAWSServiceAccessRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DisableAWSServiceAccessAsync(DisableAWSServiceAccessRequest, cb)
+	assert(DisableAWSServiceAccessRequest, "You must provide a DisableAWSServiceAccessRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DisableAWSServiceAccess",
+	}
+	for header,value in pairs(DisableAWSServiceAccessRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DisableAWSServiceAccessRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DisableAWSServiceAccess synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisableAWSServiceAccessRequest
+-- @return response
+-- @return error_message
+function M.DisableAWSServiceAccessSync(DisableAWSServiceAccessRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisableAWSServiceAccessAsync(DisableAWSServiceAccessRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call LeaveOrganization asynchronously, invoking a callback when done
 -- @param cb Callback function accepting two args: response, error_message
 function M.LeaveOrganizationAsync(cb)
@@ -7001,6 +5865,41 @@ function M.ListRootsSync(ListRootsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.ListRootsAsync(ListRootsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListAWSServiceAccessForOrganization asynchronously, invoking a callback when done
+-- @param ListAWSServiceAccessForOrganizationRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListAWSServiceAccessForOrganizationAsync(ListAWSServiceAccessForOrganizationRequest, cb)
+	assert(ListAWSServiceAccessForOrganizationRequest, "You must provide a ListAWSServiceAccessForOrganizationRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListAWSServiceAccessForOrganization",
+	}
+	for header,value in pairs(ListAWSServiceAccessForOrganizationRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListAWSServiceAccessForOrganizationRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListAWSServiceAccessForOrganization synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListAWSServiceAccessForOrganizationRequest
+-- @return response
+-- @return error_message
+function M.ListAWSServiceAccessForOrganizationSync(ListAWSServiceAccessForOrganizationRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListAWSServiceAccessForOrganizationAsync(ListAWSServiceAccessForOrganizationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

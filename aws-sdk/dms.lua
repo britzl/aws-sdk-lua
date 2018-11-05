@@ -348,44 +348,7 @@ function M.AccountQuota(args)
     }
 end
 
-keys.InvalidCertificateFault = { ["message"] = true, nil }
-
-function asserts.AssertInvalidCertificateFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidCertificateFault to be of type 'table'")
-	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidCertificateFault[k], "InvalidCertificateFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidCertificateFault
--- <p>The certificate was not valid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [ExceptionMessage] 
--- @return InvalidCertificateFault structure as a key-value pair table
-function M.InvalidCertificateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidCertificateFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertInvalidCertificateFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.MongoDbSettings = { ["Username"] = true, ["NestingLevel"] = true, ["AuthType"] = true, ["AuthSource"] = true, ["ServerName"] = true, ["AuthMechanism"] = true, ["DocsToInvestigate"] = true, ["DatabaseName"] = true, ["ExtractDocId"] = true, ["Password"] = true, ["Port"] = true, nil }
+keys.MongoDbSettings = { ["Username"] = true, ["NestingLevel"] = true, ["AuthType"] = true, ["AuthSource"] = true, ["ServerName"] = true, ["AuthMechanism"] = true, ["DocsToInvestigate"] = true, ["KmsKeyId"] = true, ["DatabaseName"] = true, ["ExtractDocId"] = true, ["Password"] = true, ["Port"] = true, nil }
 
 function asserts.AssertMongoDbSettings(struct)
 	assert(struct)
@@ -397,6 +360,7 @@ function asserts.AssertMongoDbSettings(struct)
 	if struct["ServerName"] then asserts.AssertString(struct["ServerName"]) end
 	if struct["AuthMechanism"] then asserts.AssertAuthMechanismValue(struct["AuthMechanism"]) end
 	if struct["DocsToInvestigate"] then asserts.AssertString(struct["DocsToInvestigate"]) end
+	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
 	if struct["DatabaseName"] then asserts.AssertString(struct["DatabaseName"]) end
 	if struct["ExtractDocId"] then asserts.AssertString(struct["ExtractDocId"]) end
 	if struct["Password"] then asserts.AssertSecretString(struct["Password"]) end
@@ -417,6 +381,7 @@ end
 -- * ServerName [String] <p> The name of the server on the MongoDB source endpoint. </p>
 -- * AuthMechanism [AuthMechanismValue] <p> The authentication mechanism you use to access the MongoDB source endpoint.</p> <p>Valid values: DEFAULT, MONGODB_CR, SCRAM_SHA_1 </p> <p>DEFAULT – For MongoDB version 2.x, use MONGODB_CR. For MongoDB version 3.x, use SCRAM_SHA_1. This attribute is not used when authType=No.</p>
 -- * DocsToInvestigate [String] <p> Indicates the number of documents to preview to determine the document organization. Use this attribute when <code>NestingLevel</code> is set to ONE. </p> <p>Must be a positive value greater than 0. Default value is 1000.</p>
+-- * KmsKeyId [String] <p> The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region. </p>
 -- * DatabaseName [String] <p> The database name on the MongoDB source endpoint. </p>
 -- * ExtractDocId [String] <p> Specifies the document ID. Use this attribute when <code>NestingLevel</code> is set to NONE. </p> <p>Default value is false. </p>
 -- * Password [SecretString] <p> The password for the user account you use to access the MongoDB source endpoint. </p>
@@ -438,6 +403,7 @@ function M.MongoDbSettings(args)
 		["ServerName"] = args["ServerName"],
 		["AuthMechanism"] = args["AuthMechanism"],
 		["DocsToInvestigate"] = args["DocsToInvestigate"],
+		["KmsKeyId"] = args["KmsKeyId"],
 		["DatabaseName"] = args["DatabaseName"],
 		["ExtractDocId"] = args["ExtractDocId"],
 		["Password"] = args["Password"],
@@ -617,44 +583,7 @@ function M.DeleteEndpointResponse(args)
     }
 end
 
-keys.AccessDeniedFault = { ["message"] = true, nil }
-
-function asserts.AssertAccessDeniedFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected AccessDeniedFault to be of type 'table'")
-	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.AccessDeniedFault[k], "AccessDeniedFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type AccessDeniedFault
--- <p>AWS DMS was denied access to the endpoint.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [ExceptionMessage] <p/>
--- @return AccessDeniedFault structure as a key-value pair table
-function M.AccessDeniedFault(args)
-	assert(args, "You must provide an argument table when creating AccessDeniedFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertAccessDeniedFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DescribeTableStatisticsMessage = { ["ReplicationTaskArn"] = true, ["Marker"] = true, ["MaxRecords"] = true, nil }
+keys.DescribeTableStatisticsMessage = { ["ReplicationTaskArn"] = true, ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
 
 function asserts.AssertDescribeTableStatisticsMessage(struct)
 	assert(struct)
@@ -663,6 +592,7 @@ function asserts.AssertDescribeTableStatisticsMessage(struct)
 	if struct["ReplicationTaskArn"] then asserts.AssertString(struct["ReplicationTaskArn"]) end
 	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
 	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["Filters"] then asserts.AssertFilterList(struct["Filters"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.DescribeTableStatisticsMessage[k], "DescribeTableStatisticsMessage contains unknown key " .. tostring(k))
 	end
@@ -674,7 +604,8 @@ end
 -- Valid keys:
 -- * ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
 -- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- * MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- * MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 500.</p>
+-- * Filters [FilterList] <p>Filters applied to the describe table statistics action.</p> <p>Valid filter names: schema-name | table-name | table-state</p> <p>A combination of filters creates an AND condition where each record matches all specified filters.</p>
 -- Required key: ReplicationTaskArn
 -- @return DescribeTableStatisticsMessage structure as a key-value pair table
 function M.DescribeTableStatisticsMessage(args)
@@ -689,6 +620,7 @@ function M.DescribeTableStatisticsMessage(args)
 		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeTableStatisticsMessage(all_args)
 	return {
@@ -699,25 +631,41 @@ function M.DescribeTableStatisticsMessage(args)
     }
 end
 
-keys.InsufficientResourceCapacityFault = { ["message"] = true, nil }
+keys.CreateEventSubscriptionMessage = { ["EventCategories"] = true, ["SourceType"] = true, ["Tags"] = true, ["Enabled"] = true, ["SnsTopicArn"] = true, ["SubscriptionName"] = true, ["SourceIds"] = true, nil }
 
-function asserts.AssertInsufficientResourceCapacityFault(struct)
+function asserts.AssertCreateEventSubscriptionMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InsufficientResourceCapacityFault to be of type 'table'")
-	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected CreateEventSubscriptionMessage to be of type 'table'")
+	assert(struct["SubscriptionName"], "Expected key SubscriptionName to exist in table")
+	assert(struct["SnsTopicArn"], "Expected key SnsTopicArn to exist in table")
+	if struct["EventCategories"] then asserts.AssertEventCategoriesList(struct["EventCategories"]) end
+	if struct["SourceType"] then asserts.AssertString(struct["SourceType"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["Enabled"] then asserts.AssertBooleanOptional(struct["Enabled"]) end
+	if struct["SnsTopicArn"] then asserts.AssertString(struct["SnsTopicArn"]) end
+	if struct["SubscriptionName"] then asserts.AssertString(struct["SubscriptionName"]) end
+	if struct["SourceIds"] then asserts.AssertSourceIdsList(struct["SourceIds"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InsufficientResourceCapacityFault[k], "InsufficientResourceCapacityFault contains unknown key " .. tostring(k))
+		assert(keys.CreateEventSubscriptionMessage[k], "CreateEventSubscriptionMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InsufficientResourceCapacityFault
--- <p>There are not enough resources allocated to the database migration.</p>
+--- Create a structure of type CreateEventSubscriptionMessage
+-- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [ExceptionMessage] <p/>
--- @return InsufficientResourceCapacityFault structure as a key-value pair table
-function M.InsufficientResourceCapacityFault(args)
-	assert(args, "You must provide an argument table when creating InsufficientResourceCapacityFault")
+-- * EventCategories [EventCategoriesList] <p> A list of event categories for a source type that you want to subscribe to. You can see a list of the categories for a given source type by calling the <b>DescribeEventCategories</b> action or in the topic <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html"> Working with Events and Notifications</a> in the AWS Database Migration Service User Guide. </p>
+-- * SourceType [String] <p> The type of AWS DMS resource that generates the events. For example, if you want to be notified of events generated by a replication instance, you set this parameter to <code>replication-instance</code>. If this value is not specified, all events are returned. </p> <p>Valid values: replication-instance | migration-task</p>
+-- * Tags [TagList] <p>A tag to be attached to the event subscription.</p>
+-- * Enabled [BooleanOptional] <p> A Boolean value; set to <b>true</b> to activate the subscription, or set to <b>false</b> to create the subscription but not activate it. </p>
+-- * SnsTopicArn [String] <p> The Amazon Resource Name (ARN) of the Amazon SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it. </p>
+-- * SubscriptionName [String] <p>The name of the AWS DMS event notification subscription. </p> <p>Constraints: The name must be less than 255 characters. </p>
+-- * SourceIds [SourceIdsList] <p> The list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens. </p>
+-- Required key: SubscriptionName
+-- Required key: SnsTopicArn
+-- @return CreateEventSubscriptionMessage structure as a key-value pair table
+function M.CreateEventSubscriptionMessage(args)
+	assert(args, "You must provide an argument table when creating CreateEventSubscriptionMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -725,9 +673,15 @@ function M.InsufficientResourceCapacityFault(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["EventCategories"] = args["EventCategories"],
+		["SourceType"] = args["SourceType"],
+		["Tags"] = args["Tags"],
+		["Enabled"] = args["Enabled"],
+		["SnsTopicArn"] = args["SnsTopicArn"],
+		["SubscriptionName"] = args["SubscriptionName"],
+		["SourceIds"] = args["SourceIds"],
 	}
-	asserts.AssertInsufficientResourceCapacityFault(all_args)
+	asserts.AssertCreateEventSubscriptionMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -779,7 +733,7 @@ function M.DescribeReplicationInstancesMessage(args)
     }
 end
 
-keys.CreateReplicationTaskMessage = { ["SourceEndpointArn"] = true, ["ReplicationTaskIdentifier"] = true, ["ReplicationInstanceArn"] = true, ["Tags"] = true, ["TableMappings"] = true, ["MigrationType"] = true, ["TargetEndpointArn"] = true, ["ReplicationTaskSettings"] = true, ["CdcStartTime"] = true, nil }
+keys.CreateReplicationTaskMessage = { ["SourceEndpointArn"] = true, ["ReplicationTaskIdentifier"] = true, ["CdcStopPosition"] = true, ["ReplicationInstanceArn"] = true, ["CdcStartPosition"] = true, ["TableMappings"] = true, ["Tags"] = true, ["MigrationType"] = true, ["TargetEndpointArn"] = true, ["ReplicationTaskSettings"] = true, ["CdcStartTime"] = true, nil }
 
 function asserts.AssertCreateReplicationTaskMessage(struct)
 	assert(struct)
@@ -792,9 +746,11 @@ function asserts.AssertCreateReplicationTaskMessage(struct)
 	assert(struct["TableMappings"], "Expected key TableMappings to exist in table")
 	if struct["SourceEndpointArn"] then asserts.AssertString(struct["SourceEndpointArn"]) end
 	if struct["ReplicationTaskIdentifier"] then asserts.AssertString(struct["ReplicationTaskIdentifier"]) end
+	if struct["CdcStopPosition"] then asserts.AssertString(struct["CdcStopPosition"]) end
 	if struct["ReplicationInstanceArn"] then asserts.AssertString(struct["ReplicationInstanceArn"]) end
-	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["CdcStartPosition"] then asserts.AssertString(struct["CdcStartPosition"]) end
 	if struct["TableMappings"] then asserts.AssertString(struct["TableMappings"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
 	if struct["MigrationType"] then asserts.AssertMigrationTypeValue(struct["MigrationType"]) end
 	if struct["TargetEndpointArn"] then asserts.AssertString(struct["TargetEndpointArn"]) end
 	if struct["ReplicationTaskSettings"] then asserts.AssertString(struct["ReplicationTaskSettings"]) end
@@ -810,13 +766,15 @@ end
 -- Valid keys:
 -- * SourceEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
 -- * ReplicationTaskIdentifier [String] <p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- * CdcStopPosition [String] <p>Indicates when you want a change data capture (CDC) operation to stop. The value can be either server time or commit time.</p> <p>Server time example: --cdc-stop-position “server_time:3018-02-09T12:12:12”</p> <p>Commit time example: --cdc-stop-position “commit_time: 3018-02-09T12:12:12 “</p>
 -- * ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
--- * Tags [TagList] <p>Tags to be added to the replication instance.</p>
+-- * CdcStartPosition [String] <p>Indicates when you want a change data capture (CDC) operation to start. Use either CdcStartPosition or CdcStartTime to specify when you want a CDC operation to start. Specifying both values results in an error.</p> <p> The value can be in date, checkpoint, or LSN/SCN format.</p> <p>Date Example: --cdc-start-position “2018-03-08T12:12:12”</p> <p>Checkpoint Example: --cdc-start-position "checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93"</p> <p>LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”</p>
 -- * TableMappings [String] <p>When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the path with "file://". When working with the DMS API, provide the JSON as the parameter value.</p> <p>For example, --table-mappings file://mappingfile.json</p>
+-- * Tags [TagList] <p>Tags to be added to the replication instance.</p>
 -- * MigrationType [MigrationTypeValue] <p>The migration type.</p>
 -- * TargetEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
 -- * ReplicationTaskSettings [String] <p>Settings for the task, such as target metadata settings. For a complete list of task settings, see <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html">Task Settings for AWS Database Migration Service Tasks</a>.</p>
--- * CdcStartTime [TStamp] <p>The start time for the Change Data Capture (CDC) operation.</p>
+-- * CdcStartTime [TStamp] <p>Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition to specify when you want a CDC operation to start. Specifying both values results in an error.</p> <p>Timestamp Example: --cdc-start-time “2018-03-08T12:12:12”</p>
 -- Required key: ReplicationTaskIdentifier
 -- Required key: SourceEndpointArn
 -- Required key: TargetEndpointArn
@@ -835,52 +793,17 @@ function M.CreateReplicationTaskMessage(args)
 	local all_args = { 
 		["SourceEndpointArn"] = args["SourceEndpointArn"],
 		["ReplicationTaskIdentifier"] = args["ReplicationTaskIdentifier"],
+		["CdcStopPosition"] = args["CdcStopPosition"],
 		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
-		["Tags"] = args["Tags"],
+		["CdcStartPosition"] = args["CdcStartPosition"],
 		["TableMappings"] = args["TableMappings"],
+		["Tags"] = args["Tags"],
 		["MigrationType"] = args["MigrationType"],
 		["TargetEndpointArn"] = args["TargetEndpointArn"],
 		["ReplicationTaskSettings"] = args["ReplicationTaskSettings"],
 		["CdcStartTime"] = args["CdcStartTime"],
 	}
 	asserts.AssertCreateReplicationTaskMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidResourceStateFault = { ["message"] = true, nil }
-
-function asserts.AssertInvalidResourceStateFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidResourceStateFault to be of type 'table'")
-	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidResourceStateFault[k], "InvalidResourceStateFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidResourceStateFault
--- <p>The resource is in a state that prevents it from being used for database migration.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [ExceptionMessage] <p/>
--- @return InvalidResourceStateFault structure as a key-value pair table
-function M.InvalidResourceStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidResourceStateFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertInvalidResourceStateFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1024,25 +947,27 @@ function M.CreateReplicationTaskResponse(args)
     }
 end
 
-keys.StorageQuotaExceededFault = { ["message"] = true, nil }
+keys.StartReplicationTaskAssessmentMessage = { ["ReplicationTaskArn"] = true, nil }
 
-function asserts.AssertStorageQuotaExceededFault(struct)
+function asserts.AssertStartReplicationTaskAssessmentMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected StorageQuotaExceededFault to be of type 'table'")
-	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected StartReplicationTaskAssessmentMessage to be of type 'table'")
+	assert(struct["ReplicationTaskArn"], "Expected key ReplicationTaskArn to exist in table")
+	if struct["ReplicationTaskArn"] then asserts.AssertString(struct["ReplicationTaskArn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.StorageQuotaExceededFault[k], "StorageQuotaExceededFault contains unknown key " .. tostring(k))
+		assert(keys.StartReplicationTaskAssessmentMessage[k], "StartReplicationTaskAssessmentMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type StorageQuotaExceededFault
--- <p>The storage quota has been exceeded.</p>
+--- Create a structure of type StartReplicationTaskAssessmentMessage
+-- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [ExceptionMessage] <p/>
--- @return StorageQuotaExceededFault structure as a key-value pair table
-function M.StorageQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating StorageQuotaExceededFault")
+-- * ReplicationTaskArn [String] <p> The Amazon Resource Name (ARN) of the replication task. </p>
+-- Required key: ReplicationTaskArn
+-- @return StartReplicationTaskAssessmentMessage structure as a key-value pair table
+function M.StartReplicationTaskAssessmentMessage(args)
+	assert(args, "You must provide an argument table when creating StartReplicationTaskAssessmentMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -1050,9 +975,9 @@ function M.StorageQuotaExceededFault(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
 	}
-	asserts.AssertStorageQuotaExceededFault(all_args)
+	asserts.AssertStartReplicationTaskAssessmentMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1233,27 +1158,37 @@ function M.DeleteReplicationSubnetGroupMessage(args)
     }
 end
 
-keys.DescribeRefreshSchemasStatusMessage = { ["EndpointArn"] = true, nil }
+keys.CreateReplicationSubnetGroupMessage = { ["ReplicationSubnetGroupDescription"] = true, ["SubnetIds"] = true, ["Tags"] = true, ["ReplicationSubnetGroupIdentifier"] = true, nil }
 
-function asserts.AssertDescribeRefreshSchemasStatusMessage(struct)
+function asserts.AssertCreateReplicationSubnetGroupMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeRefreshSchemasStatusMessage to be of type 'table'")
-	assert(struct["EndpointArn"], "Expected key EndpointArn to exist in table")
-	if struct["EndpointArn"] then asserts.AssertString(struct["EndpointArn"]) end
+	assert(type(struct) == "table", "Expected CreateReplicationSubnetGroupMessage to be of type 'table'")
+	assert(struct["ReplicationSubnetGroupIdentifier"], "Expected key ReplicationSubnetGroupIdentifier to exist in table")
+	assert(struct["ReplicationSubnetGroupDescription"], "Expected key ReplicationSubnetGroupDescription to exist in table")
+	assert(struct["SubnetIds"], "Expected key SubnetIds to exist in table")
+	if struct["ReplicationSubnetGroupDescription"] then asserts.AssertString(struct["ReplicationSubnetGroupDescription"]) end
+	if struct["SubnetIds"] then asserts.AssertSubnetIdentifierList(struct["SubnetIds"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["ReplicationSubnetGroupIdentifier"] then asserts.AssertString(struct["ReplicationSubnetGroupIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DescribeRefreshSchemasStatusMessage[k], "DescribeRefreshSchemasStatusMessage contains unknown key " .. tostring(k))
+		assert(keys.CreateReplicationSubnetGroupMessage[k], "CreateReplicationSubnetGroupMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DescribeRefreshSchemasStatusMessage
+--- Create a structure of type CreateReplicationSubnetGroupMessage
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- Required key: EndpointArn
--- @return DescribeRefreshSchemasStatusMessage structure as a key-value pair table
-function M.DescribeRefreshSchemasStatusMessage(args)
-	assert(args, "You must provide an argument table when creating DescribeRefreshSchemasStatusMessage")
+-- * ReplicationSubnetGroupDescription [String] <p>The description for the subnet group.</p>
+-- * SubnetIds [SubnetIdentifierList] <p>The EC2 subnet IDs for the subnet group.</p>
+-- * Tags [TagList] <p>The tag to be assigned to the subnet group.</p>
+-- * ReplicationSubnetGroupIdentifier [String] <p>The name for the replication subnet group. This value is stored as a lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be "default".</p> <p>Example: <code>mySubnetgroup</code> </p>
+-- Required key: ReplicationSubnetGroupIdentifier
+-- Required key: ReplicationSubnetGroupDescription
+-- Required key: SubnetIds
+-- @return CreateReplicationSubnetGroupMessage structure as a key-value pair table
+function M.CreateReplicationSubnetGroupMessage(args)
+	assert(args, "You must provide an argument table when creating CreateReplicationSubnetGroupMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -1261,9 +1196,12 @@ function M.DescribeRefreshSchemasStatusMessage(args)
     local header_args = { 
     }
 	local all_args = { 
-		["EndpointArn"] = args["EndpointArn"],
+		["ReplicationSubnetGroupDescription"] = args["ReplicationSubnetGroupDescription"],
+		["SubnetIds"] = args["SubnetIds"],
+		["Tags"] = args["Tags"],
+		["ReplicationSubnetGroupIdentifier"] = args["ReplicationSubnetGroupIdentifier"],
 	}
-	asserts.AssertDescribeRefreshSchemasStatusMessage(all_args)
+	asserts.AssertCreateReplicationSubnetGroupMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1316,43 +1254,6 @@ function M.TestConnectionMessage(args)
     }
 end
 
-keys.InvalidSubnet = { ["message"] = true, nil }
-
-function asserts.AssertInvalidSubnet(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidSubnet to be of type 'table'")
-	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidSubnet[k], "InvalidSubnet contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidSubnet
--- <p>The subnet provided is invalid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [ExceptionMessage] <p/>
--- @return InvalidSubnet structure as a key-value pair table
-function M.InvalidSubnet(args)
-	assert(args, "You must provide an argument table when creating InvalidSubnet")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertInvalidSubnet(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.TableToReload = { ["SchemaName"] = true, ["TableName"] = true, nil }
 
 function asserts.AssertTableToReload(struct)
@@ -1393,7 +1294,7 @@ function M.TableToReload(args)
     }
 end
 
-keys.ReloadTablesMessage = { ["ReplicationTaskArn"] = true, ["TablesToReload"] = true, nil }
+keys.ReloadTablesMessage = { ["ReplicationTaskArn"] = true, ["ReloadOption"] = true, ["TablesToReload"] = true, nil }
 
 function asserts.AssertReloadTablesMessage(struct)
 	assert(struct)
@@ -1401,6 +1302,7 @@ function asserts.AssertReloadTablesMessage(struct)
 	assert(struct["ReplicationTaskArn"], "Expected key ReplicationTaskArn to exist in table")
 	assert(struct["TablesToReload"], "Expected key TablesToReload to exist in table")
 	if struct["ReplicationTaskArn"] then asserts.AssertString(struct["ReplicationTaskArn"]) end
+	if struct["ReloadOption"] then asserts.AssertReloadOptionValue(struct["ReloadOption"]) end
 	if struct["TablesToReload"] then asserts.AssertTableListToReload(struct["TablesToReload"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ReloadTablesMessage[k], "ReloadTablesMessage contains unknown key " .. tostring(k))
@@ -1411,7 +1313,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication instance. </p>
+-- * ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task. </p>
+-- * ReloadOption [ReloadOptionValue] <p>Options for reload. Specify <code>data-reload</code> to reload the data and re-validate it if validation is enabled. Specify <code>validate-only</code> to re-validate the table. This option applies only when validation is enabled for the task. </p> <p>Valid values: data-reload, validate-only</p> <p>Default value is data-reload.</p>
 -- * TablesToReload [TableListToReload] <p>The name and schema of the table to be reloaded. </p>
 -- Required key: ReplicationTaskArn
 -- Required key: TablesToReload
@@ -1426,46 +1329,10 @@ function M.ReloadTablesMessage(args)
     }
 	local all_args = { 
 		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
+		["ReloadOption"] = args["ReloadOption"],
 		["TablesToReload"] = args["TablesToReload"],
 	}
 	asserts.AssertReloadTablesMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ResourceNotFoundFault = { ["message"] = true, nil }
-
-function asserts.AssertResourceNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceNotFoundFault to be of type 'table'")
-	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ResourceNotFoundFault[k], "ResourceNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ResourceNotFoundFault
--- <p>The resource could not be found.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [ExceptionMessage] <p/>
--- @return ResourceNotFoundFault structure as a key-value pair table
-function M.ResourceNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating ResourceNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertResourceNotFoundFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1540,6 +1407,88 @@ function M.DescribeReplicationSubnetGroupsResponse(args)
 		["ReplicationSubnetGroups"] = args["ReplicationSubnetGroups"],
 	}
 	asserts.AssertDescribeReplicationSubnetGroupsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeReplicationInstanceTaskLogsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["ReplicationInstanceArn"] = true, nil }
+
+function asserts.AssertDescribeReplicationInstanceTaskLogsMessage(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeReplicationInstanceTaskLogsMessage to be of type 'table'")
+	assert(struct["ReplicationInstanceArn"], "Expected key ReplicationInstanceArn to exist in table")
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["ReplicationInstanceArn"] then asserts.AssertString(struct["ReplicationInstanceArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeReplicationInstanceTaskLogsMessage[k], "DescribeReplicationInstanceTaskLogsMessage contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeReplicationInstanceTaskLogsMessage
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>.</p>
+-- * MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- * ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- Required key: ReplicationInstanceArn
+-- @return DescribeReplicationInstanceTaskLogsMessage structure as a key-value pair table
+function M.DescribeReplicationInstanceTaskLogsMessage(args)
+	assert(args, "You must provide an argument table when creating DescribeReplicationInstanceTaskLogsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Marker"] = args["Marker"],
+		["MaxRecords"] = args["MaxRecords"],
+		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
+	}
+	asserts.AssertDescribeReplicationInstanceTaskLogsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.StartReplicationTaskAssessmentResponse = { ["ReplicationTask"] = true, nil }
+
+function asserts.AssertStartReplicationTaskAssessmentResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected StartReplicationTaskAssessmentResponse to be of type 'table'")
+	if struct["ReplicationTask"] then asserts.AssertReplicationTask(struct["ReplicationTask"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.StartReplicationTaskAssessmentResponse[k], "StartReplicationTaskAssessmentResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type StartReplicationTaskAssessmentResponse
+-- <p/>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationTask [ReplicationTask] <p> The assessed replication task. </p>
+-- @return StartReplicationTaskAssessmentResponse structure as a key-value pair table
+function M.StartReplicationTaskAssessmentResponse(args)
+	assert(args, "You must provide an argument table when creating StartReplicationTaskAssessmentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ReplicationTask"] = args["ReplicationTask"],
+	}
+	asserts.AssertStartReplicationTaskAssessmentResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1625,13 +1574,15 @@ function M.DescribeOrderableReplicationInstancesResponse(args)
     }
 end
 
-keys.ModifyReplicationTaskMessage = { ["ReplicationTaskIdentifier"] = true, ["ReplicationTaskArn"] = true, ["MigrationType"] = true, ["TableMappings"] = true, ["ReplicationTaskSettings"] = true, ["CdcStartTime"] = true, nil }
+keys.ModifyReplicationTaskMessage = { ["ReplicationTaskIdentifier"] = true, ["CdcStopPosition"] = true, ["CdcStartPosition"] = true, ["ReplicationTaskArn"] = true, ["MigrationType"] = true, ["TableMappings"] = true, ["ReplicationTaskSettings"] = true, ["CdcStartTime"] = true, nil }
 
 function asserts.AssertModifyReplicationTaskMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyReplicationTaskMessage to be of type 'table'")
 	assert(struct["ReplicationTaskArn"], "Expected key ReplicationTaskArn to exist in table")
 	if struct["ReplicationTaskIdentifier"] then asserts.AssertString(struct["ReplicationTaskIdentifier"]) end
+	if struct["CdcStopPosition"] then asserts.AssertString(struct["CdcStopPosition"]) end
+	if struct["CdcStartPosition"] then asserts.AssertString(struct["CdcStartPosition"]) end
 	if struct["ReplicationTaskArn"] then asserts.AssertString(struct["ReplicationTaskArn"]) end
 	if struct["MigrationType"] then asserts.AssertMigrationTypeValue(struct["MigrationType"]) end
 	if struct["TableMappings"] then asserts.AssertString(struct["TableMappings"]) end
@@ -1647,11 +1598,13 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ReplicationTaskIdentifier [String] <p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- * CdcStopPosition [String] <p>Indicates when you want a change data capture (CDC) operation to stop. The value can be either server time or commit time.</p> <p>Server time example: --cdc-stop-position “server_time:3018-02-09T12:12:12”</p> <p>Commit time example: --cdc-stop-position “commit_time: 3018-02-09T12:12:12 “</p>
+-- * CdcStartPosition [String] <p>Indicates when you want a change data capture (CDC) operation to start. Use either CdcStartPosition or CdcStartTime to specify when you want a CDC operation to start. Specifying both values results in an error.</p> <p> The value can be in date, checkpoint, or LSN/SCN format.</p> <p>Date Example: --cdc-start-position “2018-03-08T12:12:12”</p> <p>Checkpoint Example: --cdc-start-position "checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93"</p> <p>LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”</p>
 -- * ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
 -- * MigrationType [MigrationTypeValue] <p>The migration type.</p> <p>Valid values: full-load | cdc | full-load-and-cdc</p>
 -- * TableMappings [String] <p>When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the path with "file://". When working with the DMS API, provide the JSON as the parameter value.</p> <p>For example, --table-mappings file://mappingfile.json</p>
 -- * ReplicationTaskSettings [String] <p>JSON file that contains settings for the task, such as target metadata settings.</p>
--- * CdcStartTime [TStamp] <p>The start time for the Change Data Capture (CDC) operation.</p>
+-- * CdcStartTime [TStamp] <p>Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition to specify when you want a CDC operation to start. Specifying both values results in an error.</p> <p>Timestamp Example: --cdc-start-time “2018-03-08T12:12:12”</p>
 -- Required key: ReplicationTaskArn
 -- @return ModifyReplicationTaskMessage structure as a key-value pair table
 function M.ModifyReplicationTaskMessage(args)
@@ -1664,6 +1617,8 @@ function M.ModifyReplicationTaskMessage(args)
     }
 	local all_args = { 
 		["ReplicationTaskIdentifier"] = args["ReplicationTaskIdentifier"],
+		["CdcStopPosition"] = args["CdcStopPosition"],
+		["CdcStartPosition"] = args["CdcStartPosition"],
 		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
 		["MigrationType"] = args["MigrationType"],
 		["TableMappings"] = args["TableMappings"],
@@ -1868,7 +1823,7 @@ end
 -- * CsvRowDelimiter [String] <p> The delimiter used to separate rows in the source files. The default is a carriage return (\n). </p>
 -- * CsvDelimiter [String] <p> The delimiter used to separate columns in the source files. The default is a comma. </p>
 -- * ServiceAccessRoleArn [String] <p> The Amazon Resource Name (ARN) used by the service access IAM role. </p>
--- * ExternalTableDefinition [String] <p> </p>
+-- * ExternalTableDefinition [String] <p> The external table definition. </p>
 -- * BucketName [String] <p> The name of the S3 bucket. </p>
 -- @return S3Settings structure as a key-value pair table
 function M.S3Settings(args)
@@ -1974,37 +1929,27 @@ function M.CreateEndpointResponse(args)
     }
 end
 
-keys.CreateReplicationSubnetGroupMessage = { ["ReplicationSubnetGroupDescription"] = true, ["SubnetIds"] = true, ["Tags"] = true, ["ReplicationSubnetGroupIdentifier"] = true, nil }
+keys.DescribeRefreshSchemasStatusMessage = { ["EndpointArn"] = true, nil }
 
-function asserts.AssertCreateReplicationSubnetGroupMessage(struct)
+function asserts.AssertDescribeRefreshSchemasStatusMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected CreateReplicationSubnetGroupMessage to be of type 'table'")
-	assert(struct["ReplicationSubnetGroupIdentifier"], "Expected key ReplicationSubnetGroupIdentifier to exist in table")
-	assert(struct["ReplicationSubnetGroupDescription"], "Expected key ReplicationSubnetGroupDescription to exist in table")
-	assert(struct["SubnetIds"], "Expected key SubnetIds to exist in table")
-	if struct["ReplicationSubnetGroupDescription"] then asserts.AssertString(struct["ReplicationSubnetGroupDescription"]) end
-	if struct["SubnetIds"] then asserts.AssertSubnetIdentifierList(struct["SubnetIds"]) end
-	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
-	if struct["ReplicationSubnetGroupIdentifier"] then asserts.AssertString(struct["ReplicationSubnetGroupIdentifier"]) end
+	assert(type(struct) == "table", "Expected DescribeRefreshSchemasStatusMessage to be of type 'table'")
+	assert(struct["EndpointArn"], "Expected key EndpointArn to exist in table")
+	if struct["EndpointArn"] then asserts.AssertString(struct["EndpointArn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.CreateReplicationSubnetGroupMessage[k], "CreateReplicationSubnetGroupMessage contains unknown key " .. tostring(k))
+		assert(keys.DescribeRefreshSchemasStatusMessage[k], "DescribeRefreshSchemasStatusMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type CreateReplicationSubnetGroupMessage
+--- Create a structure of type DescribeRefreshSchemasStatusMessage
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ReplicationSubnetGroupDescription [String] <p>The description for the subnet group.</p>
--- * SubnetIds [SubnetIdentifierList] <p>The EC2 subnet IDs for the subnet group.</p>
--- * Tags [TagList] <p>The tag to be assigned to the subnet group.</p>
--- * ReplicationSubnetGroupIdentifier [String] <p>The name for the replication subnet group. This value is stored as a lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be "default".</p> <p>Example: <code>mySubnetgroup</code> </p>
--- Required key: ReplicationSubnetGroupIdentifier
--- Required key: ReplicationSubnetGroupDescription
--- Required key: SubnetIds
--- @return CreateReplicationSubnetGroupMessage structure as a key-value pair table
-function M.CreateReplicationSubnetGroupMessage(args)
-	assert(args, "You must provide an argument table when creating CreateReplicationSubnetGroupMessage")
+-- * EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- Required key: EndpointArn
+-- @return DescribeRefreshSchemasStatusMessage structure as a key-value pair table
+function M.DescribeRefreshSchemasStatusMessage(args)
+	assert(args, "You must provide an argument table when creating DescribeRefreshSchemasStatusMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -2012,12 +1957,9 @@ function M.CreateReplicationSubnetGroupMessage(args)
     local header_args = { 
     }
 	local all_args = { 
-		["ReplicationSubnetGroupDescription"] = args["ReplicationSubnetGroupDescription"],
-		["SubnetIds"] = args["SubnetIds"],
-		["Tags"] = args["Tags"],
-		["ReplicationSubnetGroupIdentifier"] = args["ReplicationSubnetGroupIdentifier"],
+		["EndpointArn"] = args["EndpointArn"],
 	}
-	asserts.AssertCreateReplicationSubnetGroupMessage(all_args)
+	asserts.AssertDescribeRefreshSchemasStatusMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2232,7 +2174,7 @@ function M.DescribeCertificatesResponse(args)
     }
 end
 
-keys.StartReplicationTaskMessage = { ["ReplicationTaskArn"] = true, ["StartReplicationTaskType"] = true, ["CdcStartTime"] = true, nil }
+keys.StartReplicationTaskMessage = { ["ReplicationTaskArn"] = true, ["CdcStartPosition"] = true, ["CdcStopPosition"] = true, ["StartReplicationTaskType"] = true, ["CdcStartTime"] = true, nil }
 
 function asserts.AssertStartReplicationTaskMessage(struct)
 	assert(struct)
@@ -2240,6 +2182,8 @@ function asserts.AssertStartReplicationTaskMessage(struct)
 	assert(struct["ReplicationTaskArn"], "Expected key ReplicationTaskArn to exist in table")
 	assert(struct["StartReplicationTaskType"], "Expected key StartReplicationTaskType to exist in table")
 	if struct["ReplicationTaskArn"] then asserts.AssertString(struct["ReplicationTaskArn"]) end
+	if struct["CdcStartPosition"] then asserts.AssertString(struct["CdcStartPosition"]) end
+	if struct["CdcStopPosition"] then asserts.AssertString(struct["CdcStopPosition"]) end
 	if struct["StartReplicationTaskType"] then asserts.AssertStartReplicationTaskTypeValue(struct["StartReplicationTaskType"]) end
 	if struct["CdcStartTime"] then asserts.AssertTStamp(struct["CdcStartTime"]) end
 	for k,_ in pairs(struct) do
@@ -2251,9 +2195,11 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ReplicationTaskArn [String] <p>The Amazon Resource Number (ARN) of the replication task to be started.</p>
+-- * ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task to be started.</p>
+-- * CdcStartPosition [String] <p>Indicates when you want a change data capture (CDC) operation to start. Use either CdcStartPosition or CdcStartTime to specify when you want a CDC operation to start. Specifying both values results in an error.</p> <p> The value can be in date, checkpoint, or LSN/SCN format.</p> <p>Date Example: --cdc-start-position “2018-03-08T12:12:12”</p> <p>Checkpoint Example: --cdc-start-position "checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93"</p> <p>LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”</p>
+-- * CdcStopPosition [String] <p>Indicates when you want a change data capture (CDC) operation to stop. The value can be either server time or commit time.</p> <p>Server time example: --cdc-stop-position “server_time:3018-02-09T12:12:12”</p> <p>Commit time example: --cdc-stop-position “commit_time: 3018-02-09T12:12:12 “</p>
 -- * StartReplicationTaskType [StartReplicationTaskTypeValue] <p>The type of replication task.</p>
--- * CdcStartTime [TStamp] <p>The start time for the Change Data Capture (CDC) operation.</p>
+-- * CdcStartTime [TStamp] <p>Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition to specify when you want a CDC operation to start. Specifying both values results in an error.</p> <p>Timestamp Example: --cdc-start-time “2018-03-08T12:12:12”</p>
 -- Required key: ReplicationTaskArn
 -- Required key: StartReplicationTaskType
 -- @return StartReplicationTaskMessage structure as a key-value pair table
@@ -2267,47 +2213,12 @@ function M.StartReplicationTaskMessage(args)
     }
 	local all_args = { 
 		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
+		["CdcStartPosition"] = args["CdcStartPosition"],
+		["CdcStopPosition"] = args["CdcStopPosition"],
 		["StartReplicationTaskType"] = args["StartReplicationTaskType"],
 		["CdcStartTime"] = args["CdcStartTime"],
 	}
 	asserts.AssertStartReplicationTaskMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ResourceQuotaExceededFault = { ["message"] = true, nil }
-
-function asserts.AssertResourceQuotaExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceQuotaExceededFault to be of type 'table'")
-	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ResourceQuotaExceededFault[k], "ResourceQuotaExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ResourceQuotaExceededFault
--- <p>The quota for this resource quota has been exceeded.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [ExceptionMessage] <p/>
--- @return ResourceQuotaExceededFault structure as a key-value pair table
-function M.ResourceQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating ResourceQuotaExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertResourceQuotaExceededFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2437,17 +2348,22 @@ function M.AvailabilityZone(args)
     }
 end
 
-keys.TableStatistics = { ["Inserts"] = true, ["LastUpdateTime"] = true, ["FullLoadErrorRows"] = true, ["FullLoadCondtnlChkFailedRows"] = true, ["Ddls"] = true, ["TableName"] = true, ["Updates"] = true, ["FullLoadRows"] = true, ["TableState"] = true, ["SchemaName"] = true, ["Deletes"] = true, nil }
+keys.TableStatistics = { ["ValidationPendingRecords"] = true, ["Inserts"] = true, ["ValidationState"] = true, ["ValidationSuspendedRecords"] = true, ["LastUpdateTime"] = true, ["FullLoadErrorRows"] = true, ["FullLoadCondtnlChkFailedRows"] = true, ["Ddls"] = true, ["TableName"] = true, ["ValidationFailedRecords"] = true, ["ValidationStateDetails"] = true, ["Updates"] = true, ["FullLoadRows"] = true, ["TableState"] = true, ["SchemaName"] = true, ["Deletes"] = true, nil }
 
 function asserts.AssertTableStatistics(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TableStatistics to be of type 'table'")
+	if struct["ValidationPendingRecords"] then asserts.AssertLong(struct["ValidationPendingRecords"]) end
 	if struct["Inserts"] then asserts.AssertLong(struct["Inserts"]) end
+	if struct["ValidationState"] then asserts.AssertString(struct["ValidationState"]) end
+	if struct["ValidationSuspendedRecords"] then asserts.AssertLong(struct["ValidationSuspendedRecords"]) end
 	if struct["LastUpdateTime"] then asserts.AssertTStamp(struct["LastUpdateTime"]) end
 	if struct["FullLoadErrorRows"] then asserts.AssertLong(struct["FullLoadErrorRows"]) end
 	if struct["FullLoadCondtnlChkFailedRows"] then asserts.AssertLong(struct["FullLoadCondtnlChkFailedRows"]) end
 	if struct["Ddls"] then asserts.AssertLong(struct["Ddls"]) end
 	if struct["TableName"] then asserts.AssertString(struct["TableName"]) end
+	if struct["ValidationFailedRecords"] then asserts.AssertLong(struct["ValidationFailedRecords"]) end
+	if struct["ValidationStateDetails"] then asserts.AssertString(struct["ValidationStateDetails"]) end
 	if struct["Updates"] then asserts.AssertLong(struct["Updates"]) end
 	if struct["FullLoadRows"] then asserts.AssertLong(struct["FullLoadRows"]) end
 	if struct["TableState"] then asserts.AssertString(struct["TableState"]) end
@@ -2462,15 +2378,20 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * ValidationPendingRecords [Long] <p>The number of records that have yet to be validated.</p>
 -- * Inserts [Long] <p>The number of insert actions performed on a table.</p>
+-- * ValidationState [String] <p>The validation state of the table.</p> <p>The parameter can have the following values</p> <ul> <li> <p>Not enabled—Validation is not enabled for the table in the migration task.</p> </li> <li> <p>Pending records—Some records in the table are waiting for validation.</p> </li> <li> <p>Mismatched records—Some records in the table do not match between the source and target.</p> </li> <li> <p>Suspended records—Some records in the table could not be validated.</p> </li> <li> <p>No primary key—The table could not be validated because it had no primary key.</p> </li> <li> <p>Table error—The table was not validated because it was in an error state and some data was not migrated.</p> </li> <li> <p>Validated—All rows in the table were validated. If the table is updated, the status can change from Validated.</p> </li> <li> <p>Error—The table could not be validated because of an unexpected error.</p> </li> </ul>
+-- * ValidationSuspendedRecords [Long] <p>The number of records that could not be validated.</p>
 -- * LastUpdateTime [TStamp] <p>The last time the table was updated.</p>
 -- * FullLoadErrorRows [Long] <p>The number of rows that failed to load during the Full Load operation (valid only for DynamoDB as a target migrations).</p>
 -- * FullLoadCondtnlChkFailedRows [Long] <p>The number of rows that failed conditional checks during the Full Load operation (valid only for DynamoDB as a target migrations).</p>
 -- * Ddls [Long] <p>The Data Definition Language (DDL) used to build and modify the structure of your tables.</p>
 -- * TableName [String] <p>The name of the table.</p>
+-- * ValidationFailedRecords [Long] <p>The number of records that failed validation.</p>
+-- * ValidationStateDetails [String] <p>Additional details about the state of validation.</p>
 -- * Updates [Long] <p>The number of update actions performed on a table.</p>
 -- * FullLoadRows [Long] <p>The number of rows added during the Full Load operation.</p>
--- * TableState [String] <p>The state of the table.</p>
+-- * TableState [String] <p>The state of the tables described.</p> <p>Valid states: Table does not exist | Before load | Full load | Table completed | Table cancelled | Table error | Table all | Table updates | Table is being reloaded</p>
 -- * SchemaName [String] <p>The schema name.</p>
 -- * Deletes [Long] <p>The number of delete actions performed on a table.</p>
 -- @return TableStatistics structure as a key-value pair table
@@ -2483,12 +2404,17 @@ function M.TableStatistics(args)
     local header_args = { 
     }
 	local all_args = { 
+		["ValidationPendingRecords"] = args["ValidationPendingRecords"],
 		["Inserts"] = args["Inserts"],
+		["ValidationState"] = args["ValidationState"],
+		["ValidationSuspendedRecords"] = args["ValidationSuspendedRecords"],
 		["LastUpdateTime"] = args["LastUpdateTime"],
 		["FullLoadErrorRows"] = args["FullLoadErrorRows"],
 		["FullLoadCondtnlChkFailedRows"] = args["FullLoadCondtnlChkFailedRows"],
 		["Ddls"] = args["Ddls"],
 		["TableName"] = args["TableName"],
+		["ValidationFailedRecords"] = args["ValidationFailedRecords"],
+		["ValidationStateDetails"] = args["ValidationStateDetails"],
 		["Updates"] = args["Updates"],
 		["FullLoadRows"] = args["FullLoadRows"],
 		["TableState"] = args["TableState"],
@@ -2682,6 +2608,43 @@ function M.DeleteReplicationTaskResponse(args)
 		["ReplicationTask"] = args["ReplicationTask"],
 	}
 	asserts.AssertDeleteReplicationTaskResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.RebootReplicationInstanceResponse = { ["ReplicationInstance"] = true, nil }
+
+function asserts.AssertRebootReplicationInstanceResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RebootReplicationInstanceResponse to be of type 'table'")
+	if struct["ReplicationInstance"] then asserts.AssertReplicationInstance(struct["ReplicationInstance"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RebootReplicationInstanceResponse[k], "RebootReplicationInstanceResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RebootReplicationInstanceResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationInstance [ReplicationInstance] <p>The replication instance that is being rebooted. </p>
+-- @return RebootReplicationInstanceResponse structure as a key-value pair table
+function M.RebootReplicationInstanceResponse(args)
+	assert(args, "You must provide an argument table when creating RebootReplicationInstanceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ReplicationInstance"] = args["ReplicationInstance"],
+	}
+	asserts.AssertRebootReplicationInstanceResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2998,11 +2961,12 @@ function M.EventCategoryGroup(args)
     }
 end
 
-keys.SupportedEndpointType = { ["EngineName"] = true, ["SupportsCDC"] = true, ["EndpointType"] = true, nil }
+keys.SupportedEndpointType = { ["EngineDisplayName"] = true, ["EngineName"] = true, ["SupportsCDC"] = true, ["EndpointType"] = true, nil }
 
 function asserts.AssertSupportedEndpointType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SupportedEndpointType to be of type 'table'")
+	if struct["EngineDisplayName"] then asserts.AssertString(struct["EngineDisplayName"]) end
 	if struct["EngineName"] then asserts.AssertString(struct["EngineName"]) end
 	if struct["SupportsCDC"] then asserts.AssertBoolean(struct["SupportsCDC"]) end
 	if struct["EndpointType"] then asserts.AssertReplicationEndpointTypeValue(struct["EndpointType"]) end
@@ -3015,7 +2979,8 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * EngineName [String] <p>The database engine name. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.</p>
+-- * EngineDisplayName [String] <p>The expanded name for the engine name. For example, if the <code>EngineName</code> parameter is "aurora," this value would be "Amazon Aurora MySQL."</p>
+-- * EngineName [String] <p>The database engine name. Valid values, depending on the EndPointType, include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and sqlserver.</p>
 -- * SupportsCDC [Boolean] <p>Indicates if Change Data Capture (CDC) is supported.</p>
 -- * EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
 -- @return SupportedEndpointType structure as a key-value pair table
@@ -3028,6 +2993,7 @@ function M.SupportedEndpointType(args)
     local header_args = { 
     }
 	local all_args = { 
+		["EngineDisplayName"] = args["EngineDisplayName"],
 		["EngineName"] = args["EngineName"],
 		["SupportsCDC"] = args["SupportsCDC"],
 		["EndpointType"] = args["EndpointType"],
@@ -3183,6 +3149,49 @@ function M.ListTagsForResourceMessage(args)
 		["ResourceArn"] = args["ResourceArn"],
 	}
 	asserts.AssertListTagsForResourceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeReplicationTaskAssessmentResultsMessage = { ["ReplicationTaskArn"] = true, ["Marker"] = true, ["MaxRecords"] = true, nil }
+
+function asserts.AssertDescribeReplicationTaskAssessmentResultsMessage(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeReplicationTaskAssessmentResultsMessage to be of type 'table'")
+	if struct["ReplicationTaskArn"] then asserts.AssertString(struct["ReplicationTaskArn"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeReplicationTaskAssessmentResultsMessage[k], "DescribeReplicationTaskAssessmentResultsMessage contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeReplicationTaskAssessmentResultsMessage
+-- <p/>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationTaskArn [String] <p>- The Amazon Resource Name (ARN) string that uniquely identifies the task. When this input parameter is specified the API will return only one result and ignore the values of the max-records and marker parameters. </p>
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @return DescribeReplicationTaskAssessmentResultsMessage structure as a key-value pair table
+function M.DescribeReplicationTaskAssessmentResultsMessage(args)
+	assert(args, "You must provide an argument table when creating DescribeReplicationTaskAssessmentResultsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
+		["Marker"] = args["Marker"],
+		["MaxRecords"] = args["MaxRecords"],
+	}
+	asserts.AssertDescribeReplicationTaskAssessmentResultsMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3409,25 +3418,37 @@ function M.DescribeEndpointTypesResponse(args)
     }
 end
 
-keys.UpgradeDependencyFailureFault = { ["message"] = true, nil }
+keys.ReplicationTaskAssessmentResult = { ["ReplicationTaskIdentifier"] = true, ["AssessmentStatus"] = true, ["S3ObjectUrl"] = true, ["AssessmentResultsFile"] = true, ["ReplicationTaskArn"] = true, ["AssessmentResults"] = true, ["ReplicationTaskLastAssessmentDate"] = true, nil }
 
-function asserts.AssertUpgradeDependencyFailureFault(struct)
+function asserts.AssertReplicationTaskAssessmentResult(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected UpgradeDependencyFailureFault to be of type 'table'")
-	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected ReplicationTaskAssessmentResult to be of type 'table'")
+	if struct["ReplicationTaskIdentifier"] then asserts.AssertString(struct["ReplicationTaskIdentifier"]) end
+	if struct["AssessmentStatus"] then asserts.AssertString(struct["AssessmentStatus"]) end
+	if struct["S3ObjectUrl"] then asserts.AssertString(struct["S3ObjectUrl"]) end
+	if struct["AssessmentResultsFile"] then asserts.AssertString(struct["AssessmentResultsFile"]) end
+	if struct["ReplicationTaskArn"] then asserts.AssertString(struct["ReplicationTaskArn"]) end
+	if struct["AssessmentResults"] then asserts.AssertString(struct["AssessmentResults"]) end
+	if struct["ReplicationTaskLastAssessmentDate"] then asserts.AssertTStamp(struct["ReplicationTaskLastAssessmentDate"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.UpgradeDependencyFailureFault[k], "UpgradeDependencyFailureFault contains unknown key " .. tostring(k))
+		assert(keys.ReplicationTaskAssessmentResult[k], "ReplicationTaskAssessmentResult contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type UpgradeDependencyFailureFault
--- <p>An upgrade dependency is preventing the database migration.</p>
+--- Create a structure of type ReplicationTaskAssessmentResult
+-- <p> The task assessment report in JSON format. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [ExceptionMessage] <p/>
--- @return UpgradeDependencyFailureFault structure as a key-value pair table
-function M.UpgradeDependencyFailureFault(args)
-	assert(args, "You must provide an argument table when creating UpgradeDependencyFailureFault")
+-- * ReplicationTaskIdentifier [String] <p> The replication task identifier of the task on which the task assessment was run. </p>
+-- * AssessmentStatus [String] <p> The status of the task assessment. </p>
+-- * S3ObjectUrl [String] <p> The URL of the S3 object containing the task assessment results. </p>
+-- * AssessmentResultsFile [String] <p> The file containing the results of the task assessment. </p>
+-- * ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task. </p>
+-- * AssessmentResults [String] <p> The task assessment results in JSON format. </p>
+-- * ReplicationTaskLastAssessmentDate [TStamp] <p>The date the task assessment was completed. </p>
+-- @return ReplicationTaskAssessmentResult structure as a key-value pair table
+function M.ReplicationTaskAssessmentResult(args)
+	assert(args, "You must provide an argument table when creating ReplicationTaskAssessmentResult")
     local query_args = { 
     }
     local uri_args = { 
@@ -3435,9 +3456,15 @@ function M.UpgradeDependencyFailureFault(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["ReplicationTaskIdentifier"] = args["ReplicationTaskIdentifier"],
+		["AssessmentStatus"] = args["AssessmentStatus"],
+		["S3ObjectUrl"] = args["S3ObjectUrl"],
+		["AssessmentResultsFile"] = args["AssessmentResultsFile"],
+		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
+		["AssessmentResults"] = args["AssessmentResults"],
+		["ReplicationTaskLastAssessmentDate"] = args["ReplicationTaskLastAssessmentDate"],
 	}
-	asserts.AssertUpgradeDependencyFailureFault(all_args)
+	asserts.AssertReplicationTaskAssessmentResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3692,7 +3719,7 @@ function M.ModifyEndpointResponse(args)
     }
 end
 
-keys.ModifyEndpointMessage = { ["Username"] = true, ["CertificateArn"] = true, ["MongoDbSettings"] = true, ["S3Settings"] = true, ["ServerName"] = true, ["EndpointType"] = true, ["EndpointArn"] = true, ["ExtraConnectionAttributes"] = true, ["DatabaseName"] = true, ["DynamoDbSettings"] = true, ["SslMode"] = true, ["EngineName"] = true, ["Password"] = true, ["EndpointIdentifier"] = true, ["Port"] = true, nil }
+keys.ModifyEndpointMessage = { ["Username"] = true, ["CertificateArn"] = true, ["MongoDbSettings"] = true, ["S3Settings"] = true, ["ServerName"] = true, ["EndpointType"] = true, ["ServiceAccessRoleArn"] = true, ["DmsTransferSettings"] = true, ["EndpointArn"] = true, ["ExtraConnectionAttributes"] = true, ["DatabaseName"] = true, ["DynamoDbSettings"] = true, ["SslMode"] = true, ["EngineName"] = true, ["Password"] = true, ["EndpointIdentifier"] = true, ["Port"] = true, ["ExternalTableDefinition"] = true, nil }
 
 function asserts.AssertModifyEndpointMessage(struct)
 	assert(struct)
@@ -3704,6 +3731,8 @@ function asserts.AssertModifyEndpointMessage(struct)
 	if struct["S3Settings"] then asserts.AssertS3Settings(struct["S3Settings"]) end
 	if struct["ServerName"] then asserts.AssertString(struct["ServerName"]) end
 	if struct["EndpointType"] then asserts.AssertReplicationEndpointTypeValue(struct["EndpointType"]) end
+	if struct["ServiceAccessRoleArn"] then asserts.AssertString(struct["ServiceAccessRoleArn"]) end
+	if struct["DmsTransferSettings"] then asserts.AssertDmsTransferSettings(struct["DmsTransferSettings"]) end
 	if struct["EndpointArn"] then asserts.AssertString(struct["EndpointArn"]) end
 	if struct["ExtraConnectionAttributes"] then asserts.AssertString(struct["ExtraConnectionAttributes"]) end
 	if struct["DatabaseName"] then asserts.AssertString(struct["DatabaseName"]) end
@@ -3713,6 +3742,7 @@ function asserts.AssertModifyEndpointMessage(struct)
 	if struct["Password"] then asserts.AssertSecretString(struct["Password"]) end
 	if struct["EndpointIdentifier"] then asserts.AssertString(struct["EndpointIdentifier"]) end
 	if struct["Port"] then asserts.AssertIntegerOptional(struct["Port"]) end
+	if struct["ExternalTableDefinition"] then asserts.AssertString(struct["ExternalTableDefinition"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ModifyEndpointMessage[k], "ModifyEndpointMessage contains unknown key " .. tostring(k))
 	end
@@ -3728,15 +3758,18 @@ end
 -- * S3Settings [S3Settings] <p>Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the <b>Extra Connection Attributes</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
 -- * ServerName [String] <p>The name of the server where the endpoint database resides.</p>
 -- * EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
+-- * ServiceAccessRoleArn [String] <p> The Amazon Resource Name (ARN) for the service access role you want to use to modify the endpoint. </p>
+-- * DmsTransferSettings [DmsTransferSettings] <p> The settings in JSON format for the DMS Transfer type source endpoint. </p> <p>Attributes include:</p> <ul> <li> <p>serviceAccessRoleArn - The IAM role that has permission to access the Amazon S3 bucket.</p> </li> <li> <p>BucketName - The name of the S3 bucket to use.</p> </li> <li> <p>compressionType - An optional parameter to use GZIP to compress the target files. Set to NONE (the default) or do not use to leave the files uncompressed.</p> </li> </ul> <p>Shorthand syntax: ServiceAccessRoleArn=string ,BucketName=string,CompressionType=string</p> <p>JSON syntax:</p> <p> { "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } </p>
 -- * EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- * ExtraConnectionAttributes [String] <p>Additional attributes associated with the connection.</p>
+-- * ExtraConnectionAttributes [String] <p>Additional attributes associated with the connection. To reset this parameter, pass the empty string ("") as an argument.</p>
 -- * DatabaseName [String] <p>The name of the endpoint database.</p>
 -- * DynamoDbSettings [DynamoDbSettings] <p>Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service</a>. </p>
 -- * SslMode [DmsSslModeValue] <p>The SSL mode to be used.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
--- * EngineName [String] <p>The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, DYNAMODB, MONGODB, SYBASE, and SQLSERVER.</p>
+-- * EngineName [String] <p>The type of engine for the endpoint. Valid values, depending on the EndPointType, include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and sqlserver.</p>
 -- * Password [SecretString] <p>The password to be used to login to the endpoint database.</p>
 -- * EndpointIdentifier [String] <p>The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
 -- * Port [IntegerOptional] <p>The port used by the endpoint database.</p>
+-- * ExternalTableDefinition [String] <p>The external table definition.</p>
 -- Required key: EndpointArn
 -- @return ModifyEndpointMessage structure as a key-value pair table
 function M.ModifyEndpointMessage(args)
@@ -3754,6 +3787,8 @@ function M.ModifyEndpointMessage(args)
 		["S3Settings"] = args["S3Settings"],
 		["ServerName"] = args["ServerName"],
 		["EndpointType"] = args["EndpointType"],
+		["ServiceAccessRoleArn"] = args["ServiceAccessRoleArn"],
+		["DmsTransferSettings"] = args["DmsTransferSettings"],
 		["EndpointArn"] = args["EndpointArn"],
 		["ExtraConnectionAttributes"] = args["ExtraConnectionAttributes"],
 		["DatabaseName"] = args["DatabaseName"],
@@ -3763,6 +3798,7 @@ function M.ModifyEndpointMessage(args)
 		["Password"] = args["Password"],
 		["EndpointIdentifier"] = args["EndpointIdentifier"],
 		["Port"] = args["Port"],
+		["ExternalTableDefinition"] = args["ExternalTableDefinition"],
 	}
 	asserts.AssertModifyEndpointMessage(all_args)
 	return {
@@ -3846,43 +3882,6 @@ function M.StopReplicationTaskResponse(args)
 		["ReplicationTask"] = args["ReplicationTask"],
 	}
 	asserts.AssertStopReplicationTaskResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.KMSKeyNotAccessibleFault = { ["message"] = true, nil }
-
-function asserts.AssertKMSKeyNotAccessibleFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected KMSKeyNotAccessibleFault to be of type 'table'")
-	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.KMSKeyNotAccessibleFault[k], "KMSKeyNotAccessibleFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type KMSKeyNotAccessibleFault
--- <p>AWS DMS cannot access the KMS key.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [ExceptionMessage] <p/>
--- @return KMSKeyNotAccessibleFault structure as a key-value pair table
-function M.KMSKeyNotAccessibleFault(args)
-	assert(args, "You must provide an argument table when creating KMSKeyNotAccessibleFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertKMSKeyNotAccessibleFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4010,25 +4009,29 @@ function M.ReloadTablesResponse(args)
     }
 end
 
-keys.SNSNoAuthorizationFault = { ["message"] = true, nil }
+keys.DescribeReplicationInstanceTaskLogsResponse = { ["Marker"] = true, ["ReplicationInstanceTaskLogs"] = true, ["ReplicationInstanceArn"] = true, nil }
 
-function asserts.AssertSNSNoAuthorizationFault(struct)
+function asserts.AssertDescribeReplicationInstanceTaskLogsResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SNSNoAuthorizationFault to be of type 'table'")
-	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected DescribeReplicationInstanceTaskLogsResponse to be of type 'table'")
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["ReplicationInstanceTaskLogs"] then asserts.AssertReplicationInstanceTaskLogsList(struct["ReplicationInstanceTaskLogs"]) end
+	if struct["ReplicationInstanceArn"] then asserts.AssertString(struct["ReplicationInstanceArn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SNSNoAuthorizationFault[k], "SNSNoAuthorizationFault contains unknown key " .. tostring(k))
+		assert(keys.DescribeReplicationInstanceTaskLogsResponse[k], "DescribeReplicationInstanceTaskLogsResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SNSNoAuthorizationFault
--- <p>You are not authorized for the SNS subscription.</p>
+--- Create a structure of type DescribeReplicationInstanceTaskLogsResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [ExceptionMessage] <p/>
--- @return SNSNoAuthorizationFault structure as a key-value pair table
-function M.SNSNoAuthorizationFault(args)
-	assert(args, "You must provide an argument table when creating SNSNoAuthorizationFault")
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>.</p>
+-- * ReplicationInstanceTaskLogs [ReplicationInstanceTaskLogsList] <p>An array of replication task log metadata. Each member of the array contains the replication task name, ARN, and task log size (in bytes). </p>
+-- * ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- @return DescribeReplicationInstanceTaskLogsResponse structure as a key-value pair table
+function M.DescribeReplicationInstanceTaskLogsResponse(args)
+	assert(args, "You must provide an argument table when creating DescribeReplicationInstanceTaskLogsResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -4036,9 +4039,11 @@ function M.SNSNoAuthorizationFault(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["Marker"] = args["Marker"],
+		["ReplicationInstanceTaskLogs"] = args["ReplicationInstanceTaskLogs"],
+		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
 	}
-	asserts.AssertSNSNoAuthorizationFault(all_args)
+	asserts.AssertDescribeReplicationInstanceTaskLogsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4160,25 +4165,27 @@ function M.DeleteEventSubscriptionMessage(args)
     }
 end
 
-keys.SNSInvalidTopicFault = { ["message"] = true, nil }
+keys.DmsTransferSettings = { ["ServiceAccessRoleArn"] = true, ["BucketName"] = true, nil }
 
-function asserts.AssertSNSInvalidTopicFault(struct)
+function asserts.AssertDmsTransferSettings(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SNSInvalidTopicFault to be of type 'table'")
-	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected DmsTransferSettings to be of type 'table'")
+	if struct["ServiceAccessRoleArn"] then asserts.AssertString(struct["ServiceAccessRoleArn"]) end
+	if struct["BucketName"] then asserts.AssertString(struct["BucketName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SNSInvalidTopicFault[k], "SNSInvalidTopicFault contains unknown key " .. tostring(k))
+		assert(keys.DmsTransferSettings[k], "DmsTransferSettings contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SNSInvalidTopicFault
--- <p>The SNS topic is invalid.</p>
+--- Create a structure of type DmsTransferSettings
+-- <p> The settings in JSON format for the DMS Transfer type source endpoint. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [ExceptionMessage] <p/>
--- @return SNSInvalidTopicFault structure as a key-value pair table
-function M.SNSInvalidTopicFault(args)
-	assert(args, "You must provide an argument table when creating SNSInvalidTopicFault")
+-- * ServiceAccessRoleArn [String] <p> The IAM role that has permission to access the Amazon S3 bucket. </p>
+-- * BucketName [String] <p> The name of the S3 bucket to use. </p>
+-- @return DmsTransferSettings structure as a key-value pair table
+function M.DmsTransferSettings(args)
+	assert(args, "You must provide an argument table when creating DmsTransferSettings")
     local query_args = { 
     }
     local uri_args = { 
@@ -4186,9 +4193,10 @@ function M.SNSInvalidTopicFault(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["ServiceAccessRoleArn"] = args["ServiceAccessRoleArn"],
+		["BucketName"] = args["BucketName"],
 	}
-	asserts.AssertSNSInvalidTopicFault(all_args)
+	asserts.AssertDmsTransferSettings(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4197,14 +4205,17 @@ function M.SNSInvalidTopicFault(args)
     }
 end
 
-keys.ReplicationTask = { ["SourceEndpointArn"] = true, ["ReplicationTaskIdentifier"] = true, ["ReplicationInstanceArn"] = true, ["TableMappings"] = true, ["ReplicationTaskStartDate"] = true, ["ReplicationTaskStats"] = true, ["Status"] = true, ["ReplicationTaskArn"] = true, ["LastFailureMessage"] = true, ["StopReason"] = true, ["ReplicationTaskCreationDate"] = true, ["MigrationType"] = true, ["TargetEndpointArn"] = true, ["ReplicationTaskSettings"] = true, nil }
+keys.ReplicationTask = { ["SourceEndpointArn"] = true, ["ReplicationTaskIdentifier"] = true, ["CdcStopPosition"] = true, ["RecoveryCheckpoint"] = true, ["ReplicationInstanceArn"] = true, ["CdcStartPosition"] = true, ["TableMappings"] = true, ["ReplicationTaskStartDate"] = true, ["ReplicationTaskStats"] = true, ["Status"] = true, ["ReplicationTaskArn"] = true, ["LastFailureMessage"] = true, ["StopReason"] = true, ["ReplicationTaskCreationDate"] = true, ["MigrationType"] = true, ["TargetEndpointArn"] = true, ["ReplicationTaskSettings"] = true, nil }
 
 function asserts.AssertReplicationTask(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReplicationTask to be of type 'table'")
 	if struct["SourceEndpointArn"] then asserts.AssertString(struct["SourceEndpointArn"]) end
 	if struct["ReplicationTaskIdentifier"] then asserts.AssertString(struct["ReplicationTaskIdentifier"]) end
+	if struct["CdcStopPosition"] then asserts.AssertString(struct["CdcStopPosition"]) end
+	if struct["RecoveryCheckpoint"] then asserts.AssertString(struct["RecoveryCheckpoint"]) end
 	if struct["ReplicationInstanceArn"] then asserts.AssertString(struct["ReplicationInstanceArn"]) end
+	if struct["CdcStartPosition"] then asserts.AssertString(struct["CdcStartPosition"]) end
 	if struct["TableMappings"] then asserts.AssertString(struct["TableMappings"]) end
 	if struct["ReplicationTaskStartDate"] then asserts.AssertTStamp(struct["ReplicationTaskStartDate"]) end
 	if struct["ReplicationTaskStats"] then asserts.AssertReplicationTaskStats(struct["ReplicationTaskStats"]) end
@@ -4226,8 +4237,11 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * SourceEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- * ReplicationTaskIdentifier [String] <p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- * ReplicationTaskIdentifier [String] <p>The user-assigned replication task identifier or name.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- * CdcStopPosition [String] <p>Indicates when you want a change data capture (CDC) operation to stop. The value can be either server time or commit time.</p> <p>Server time example: --cdc-stop-position “server_time:3018-02-09T12:12:12”</p> <p>Commit time example: --cdc-stop-position “commit_time: 3018-02-09T12:12:12 “</p>
+-- * RecoveryCheckpoint [String] <p>Indicates the last checkpoint that occurred during a change data capture (CDC) operation. You can provide this value to the <code>CdcStartPosition</code> parameter to start a CDC operation that begins at that checkpoint.</p>
 -- * ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- * CdcStartPosition [String] <p>Indicates when you want a change data capture (CDC) operation to start. Use either CdcStartPosition or CdcStartTime to specify when you want a CDC operation to start. Specifying both values results in an error.</p> <p> The value can be in date, checkpoint, or LSN/SCN format.</p> <p>Date Example: --cdc-start-position “2018-03-08T12:12:12”</p> <p>Checkpoint Example: --cdc-start-position "checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93"</p> <p>LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”</p>
 -- * TableMappings [String] <p>Table mappings specified in the task.</p>
 -- * ReplicationTaskStartDate [TStamp] <p>The date the replication task is scheduled to start.</p>
 -- * ReplicationTaskStats [ReplicationTaskStats] <p>The statistics for the task, including elapsed time, tables loaded, and table errors.</p>
@@ -4251,7 +4265,10 @@ function M.ReplicationTask(args)
 	local all_args = { 
 		["SourceEndpointArn"] = args["SourceEndpointArn"],
 		["ReplicationTaskIdentifier"] = args["ReplicationTaskIdentifier"],
+		["CdcStopPosition"] = args["CdcStopPosition"],
+		["RecoveryCheckpoint"] = args["RecoveryCheckpoint"],
 		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
+		["CdcStartPosition"] = args["CdcStartPosition"],
 		["TableMappings"] = args["TableMappings"],
 		["ReplicationTaskStartDate"] = args["ReplicationTaskStartDate"],
 		["ReplicationTaskStats"] = args["ReplicationTaskStats"],
@@ -4273,7 +4290,7 @@ function M.ReplicationTask(args)
     }
 end
 
-keys.Endpoint = { ["Username"] = true, ["Status"] = true, ["MongoDbSettings"] = true, ["S3Settings"] = true, ["EndpointArn"] = true, ["ServerName"] = true, ["CertificateArn"] = true, ["EndpointType"] = true, ["ExternalId"] = true, ["KmsKeyId"] = true, ["ExtraConnectionAttributes"] = true, ["DatabaseName"] = true, ["DynamoDbSettings"] = true, ["SslMode"] = true, ["EngineName"] = true, ["EndpointIdentifier"] = true, ["Port"] = true, nil }
+keys.Endpoint = { ["Username"] = true, ["Status"] = true, ["MongoDbSettings"] = true, ["S3Settings"] = true, ["EndpointArn"] = true, ["ServerName"] = true, ["DmsTransferSettings"] = true, ["CertificateArn"] = true, ["EndpointType"] = true, ["ServiceAccessRoleArn"] = true, ["SslMode"] = true, ["KmsKeyId"] = true, ["ExtraConnectionAttributes"] = true, ["DatabaseName"] = true, ["DynamoDbSettings"] = true, ["EngineDisplayName"] = true, ["EngineName"] = true, ["ExternalId"] = true, ["EndpointIdentifier"] = true, ["Port"] = true, ["ExternalTableDefinition"] = true, nil }
 
 function asserts.AssertEndpoint(struct)
 	assert(struct)
@@ -4284,17 +4301,21 @@ function asserts.AssertEndpoint(struct)
 	if struct["S3Settings"] then asserts.AssertS3Settings(struct["S3Settings"]) end
 	if struct["EndpointArn"] then asserts.AssertString(struct["EndpointArn"]) end
 	if struct["ServerName"] then asserts.AssertString(struct["ServerName"]) end
+	if struct["DmsTransferSettings"] then asserts.AssertDmsTransferSettings(struct["DmsTransferSettings"]) end
 	if struct["CertificateArn"] then asserts.AssertString(struct["CertificateArn"]) end
 	if struct["EndpointType"] then asserts.AssertReplicationEndpointTypeValue(struct["EndpointType"]) end
-	if struct["ExternalId"] then asserts.AssertString(struct["ExternalId"]) end
+	if struct["ServiceAccessRoleArn"] then asserts.AssertString(struct["ServiceAccessRoleArn"]) end
+	if struct["SslMode"] then asserts.AssertDmsSslModeValue(struct["SslMode"]) end
 	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
 	if struct["ExtraConnectionAttributes"] then asserts.AssertString(struct["ExtraConnectionAttributes"]) end
 	if struct["DatabaseName"] then asserts.AssertString(struct["DatabaseName"]) end
 	if struct["DynamoDbSettings"] then asserts.AssertDynamoDbSettings(struct["DynamoDbSettings"]) end
-	if struct["SslMode"] then asserts.AssertDmsSslModeValue(struct["SslMode"]) end
+	if struct["EngineDisplayName"] then asserts.AssertString(struct["EngineDisplayName"]) end
 	if struct["EngineName"] then asserts.AssertString(struct["EngineName"]) end
+	if struct["ExternalId"] then asserts.AssertString(struct["ExternalId"]) end
 	if struct["EndpointIdentifier"] then asserts.AssertString(struct["EndpointIdentifier"]) end
 	if struct["Port"] then asserts.AssertIntegerOptional(struct["Port"]) end
+	if struct["ExternalTableDefinition"] then asserts.AssertString(struct["ExternalTableDefinition"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Endpoint[k], "Endpoint contains unknown key " .. tostring(k))
 	end
@@ -4310,17 +4331,21 @@ end
 -- * S3Settings [S3Settings] <p>The settings for the S3 target endpoint. For more information, see the <code>S3Settings</code> structure.</p>
 -- * EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
 -- * ServerName [String] <p>The name of the server at the endpoint.</p>
+-- * DmsTransferSettings [DmsTransferSettings] <p> The settings in JSON format for the DMS Transfer type source endpoint. </p> <p>Attributes include:</p> <ul> <li> <p>serviceAccessRoleArn - The IAM role that has permission to access the Amazon S3 bucket.</p> </li> <li> <p>bucketName - The name of the S3 bucket to use.</p> </li> <li> <p>compressionType - An optional parameter to use GZIP to compress the target files. Set to NONE (the default) or do not use to leave the files uncompressed.</p> </li> </ul> <p>Shorthand syntax: ServiceAccessRoleArn=string ,BucketName=string,CompressionType=string</p> <p>JSON syntax:</p> <p> { "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } </p>
 -- * CertificateArn [String] <p>The Amazon Resource Name (ARN) used for SSL connection to the endpoint.</p>
 -- * EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
--- * ExternalId [String] <p> Value returned by a call to CreateEndpoint that can be used for cross-account validation. Use it on a subsequent call to CreateEndpoint to create the endpoint with a cross-account. </p>
+-- * ServiceAccessRoleArn [String] <p>The Amazon Resource Name (ARN) used by the service access IAM role.</p>
+-- * SslMode [DmsSslModeValue] <p>The SSL mode used to connect to the endpoint.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
 -- * KmsKeyId [String] <p>The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
 -- * ExtraConnectionAttributes [String] <p>Additional connection attributes used to connect to the endpoint.</p>
 -- * DatabaseName [String] <p>The name of the database at the endpoint.</p>
 -- * DynamoDbSettings [DynamoDbSettings] <p>The settings for the target DynamoDB database. For more information, see the <code>DynamoDBSettings</code> structure.</p>
--- * SslMode [DmsSslModeValue] <p>The SSL mode used to connect to the endpoint.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
--- * EngineName [String] <p>The database engine name. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.</p>
+-- * EngineDisplayName [String] <p>The expanded name for the engine name. For example, if the <code>EngineName</code> parameter is "aurora," this value would be "Amazon Aurora MySQL."</p>
+-- * EngineName [String] <p>The database engine name. Valid values, depending on the EndPointType, include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and sqlserver.</p>
+-- * ExternalId [String] <p> Value returned by a call to CreateEndpoint that can be used for cross-account validation. Use it on a subsequent call to CreateEndpoint to create the endpoint with a cross-account. </p>
 -- * EndpointIdentifier [String] <p>The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
 -- * Port [IntegerOptional] <p>The port value used to access the endpoint.</p>
+-- * ExternalTableDefinition [String] <p>The external table definition.</p>
 -- @return Endpoint structure as a key-value pair table
 function M.Endpoint(args)
 	assert(args, "You must provide an argument table when creating Endpoint")
@@ -4337,17 +4362,21 @@ function M.Endpoint(args)
 		["S3Settings"] = args["S3Settings"],
 		["EndpointArn"] = args["EndpointArn"],
 		["ServerName"] = args["ServerName"],
+		["DmsTransferSettings"] = args["DmsTransferSettings"],
 		["CertificateArn"] = args["CertificateArn"],
 		["EndpointType"] = args["EndpointType"],
-		["ExternalId"] = args["ExternalId"],
+		["ServiceAccessRoleArn"] = args["ServiceAccessRoleArn"],
+		["SslMode"] = args["SslMode"],
 		["KmsKeyId"] = args["KmsKeyId"],
 		["ExtraConnectionAttributes"] = args["ExtraConnectionAttributes"],
 		["DatabaseName"] = args["DatabaseName"],
 		["DynamoDbSettings"] = args["DynamoDbSettings"],
-		["SslMode"] = args["SslMode"],
+		["EngineDisplayName"] = args["EngineDisplayName"],
 		["EngineName"] = args["EngineName"],
+		["ExternalId"] = args["ExternalId"],
 		["EndpointIdentifier"] = args["EndpointIdentifier"],
 		["Port"] = args["Port"],
+		["ExternalTableDefinition"] = args["ExternalTableDefinition"],
 	}
 	asserts.AssertEndpoint(all_args)
 	return {
@@ -4395,7 +4424,7 @@ function M.ImportCertificateResponse(args)
     }
 end
 
-keys.CreateEndpointMessage = { ["Username"] = true, ["CertificateArn"] = true, ["MongoDbSettings"] = true, ["S3Settings"] = true, ["Tags"] = true, ["ServerName"] = true, ["EndpointType"] = true, ["KmsKeyId"] = true, ["ExtraConnectionAttributes"] = true, ["DatabaseName"] = true, ["DynamoDbSettings"] = true, ["SslMode"] = true, ["EngineName"] = true, ["Password"] = true, ["EndpointIdentifier"] = true, ["Port"] = true, nil }
+keys.CreateEndpointMessage = { ["Username"] = true, ["CertificateArn"] = true, ["MongoDbSettings"] = true, ["S3Settings"] = true, ["Tags"] = true, ["ServerName"] = true, ["EndpointType"] = true, ["ServiceAccessRoleArn"] = true, ["DmsTransferSettings"] = true, ["KmsKeyId"] = true, ["ExtraConnectionAttributes"] = true, ["DatabaseName"] = true, ["DynamoDbSettings"] = true, ["SslMode"] = true, ["EngineName"] = true, ["Password"] = true, ["EndpointIdentifier"] = true, ["Port"] = true, ["ExternalTableDefinition"] = true, nil }
 
 function asserts.AssertCreateEndpointMessage(struct)
 	assert(struct)
@@ -4410,6 +4439,8 @@ function asserts.AssertCreateEndpointMessage(struct)
 	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
 	if struct["ServerName"] then asserts.AssertString(struct["ServerName"]) end
 	if struct["EndpointType"] then asserts.AssertReplicationEndpointTypeValue(struct["EndpointType"]) end
+	if struct["ServiceAccessRoleArn"] then asserts.AssertString(struct["ServiceAccessRoleArn"]) end
+	if struct["DmsTransferSettings"] then asserts.AssertDmsTransferSettings(struct["DmsTransferSettings"]) end
 	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
 	if struct["ExtraConnectionAttributes"] then asserts.AssertString(struct["ExtraConnectionAttributes"]) end
 	if struct["DatabaseName"] then asserts.AssertString(struct["DatabaseName"]) end
@@ -4419,6 +4450,7 @@ function asserts.AssertCreateEndpointMessage(struct)
 	if struct["Password"] then asserts.AssertSecretString(struct["Password"]) end
 	if struct["EndpointIdentifier"] then asserts.AssertString(struct["EndpointIdentifier"]) end
 	if struct["Port"] then asserts.AssertIntegerOptional(struct["Port"]) end
+	if struct["ExternalTableDefinition"] then asserts.AssertString(struct["ExternalTableDefinition"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateEndpointMessage[k], "CreateEndpointMessage contains unknown key " .. tostring(k))
 	end
@@ -4429,21 +4461,24 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Username [String] <p>The user name to be used to login to the endpoint database.</p>
--- * CertificateArn [String] <p>The Amazon Resource Number (ARN) for the certificate.</p>
--- * MongoDbSettings [MongoDbSettings] <p>Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
--- * S3Settings [S3Settings] <p>Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the <b>Extra Connection Attributes</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
+-- * CertificateArn [String] <p>The Amazon Resource Name (ARN) for the certificate.</p>
+-- * MongoDbSettings [MongoDbSettings] <p>Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html"> Using MongoDB as a Target for AWS Database Migration Service</a>. </p>
+-- * S3Settings [S3Settings] <p>Settings in JSON format for the target Amazon S3 endpoint. For more information about the available settings, see the <b>Extra Connection Attributes</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
 -- * Tags [TagList] <p>Tags to be added to the endpoint.</p>
 -- * ServerName [String] <p>The name of the server where the endpoint database resides.</p>
 -- * EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
+-- * ServiceAccessRoleArn [String] <p> The Amazon Resource Name (ARN) for the service access role you want to use to create the endpoint. </p>
+-- * DmsTransferSettings [DmsTransferSettings] <p> The settings in JSON format for the DMS Transfer type source endpoint. </p> <p>Attributes include:</p> <ul> <li> <p>serviceAccessRoleArn - The IAM role that has permission to access the Amazon S3 bucket.</p> </li> <li> <p>bucketName - The name of the S3 bucket to use.</p> </li> <li> <p>compressionType - An optional parameter to use GZIP to compress the target files. Set to NONE (the default) or do not use to leave the files uncompressed.</p> </li> </ul> <p>Shorthand syntax: ServiceAccessRoleArn=string ,BucketName=string,CompressionType=string</p> <p>JSON syntax:</p> <p> { "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } </p>
 -- * KmsKeyId [String] <p>The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
 -- * ExtraConnectionAttributes [String] <p>Additional attributes associated with the connection.</p>
 -- * DatabaseName [String] <p>The name of the endpoint database.</p>
 -- * DynamoDbSettings [DynamoDbSettings] <p>Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service</a>. </p>
 -- * SslMode [DmsSslModeValue] <p>The SSL mode to use for the SSL connection.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
--- * EngineName [String] <p>The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.</p>
+-- * EngineName [String] <p>The type of engine for the endpoint. Valid values, depending on the EndPointType, include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.</p>
 -- * Password [SecretString] <p>The password to be used to login to the endpoint database.</p>
 -- * EndpointIdentifier [String] <p>The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
 -- * Port [IntegerOptional] <p>The port used by the endpoint database.</p>
+-- * ExternalTableDefinition [String] <p>The external table definition. </p>
 -- Required key: EndpointIdentifier
 -- Required key: EndpointType
 -- Required key: EngineName
@@ -4464,6 +4499,8 @@ function M.CreateEndpointMessage(args)
 		["Tags"] = args["Tags"],
 		["ServerName"] = args["ServerName"],
 		["EndpointType"] = args["EndpointType"],
+		["ServiceAccessRoleArn"] = args["ServiceAccessRoleArn"],
+		["DmsTransferSettings"] = args["DmsTransferSettings"],
 		["KmsKeyId"] = args["KmsKeyId"],
 		["ExtraConnectionAttributes"] = args["ExtraConnectionAttributes"],
 		["DatabaseName"] = args["DatabaseName"],
@@ -4473,6 +4510,7 @@ function M.CreateEndpointMessage(args)
 		["Password"] = args["Password"],
 		["EndpointIdentifier"] = args["EndpointIdentifier"],
 		["Port"] = args["Port"],
+		["ExternalTableDefinition"] = args["ExternalTableDefinition"],
 	}
 	asserts.AssertCreateEndpointMessage(all_args)
 	return {
@@ -4582,32 +4620,33 @@ function M.OrderableReplicationInstance(args)
     }
 end
 
-keys.ReplicationInstance = { ["MultiAZ"] = true, ["AvailabilityZone"] = true, ["ReplicationInstancePrivateIpAddress"] = true, ["ReplicationInstanceArn"] = true, ["ReplicationInstancePrivateIpAddresses"] = true, ["ReplicationInstanceClass"] = true, ["ReplicationSubnetGroup"] = true, ["AutoMinorVersionUpgrade"] = true, ["ReplicationInstanceStatus"] = true, ["VpcSecurityGroups"] = true, ["KmsKeyId"] = true, ["InstanceCreateTime"] = true, ["ReplicationInstancePublicIpAddress"] = true, ["AllocatedStorage"] = true, ["EngineVersion"] = true, ["ReplicationInstancePublicIpAddresses"] = true, ["SecondaryAvailabilityZone"] = true, ["ReplicationInstanceIdentifier"] = true, ["PubliclyAccessible"] = true, ["PreferredMaintenanceWindow"] = true, ["PendingModifiedValues"] = true, nil }
+keys.ReplicationInstance = { ["ReplicationInstanceArn"] = true, ["ReplicationInstanceStatus"] = true, ["VpcSecurityGroups"] = true, ["InstanceCreateTime"] = true, ["ReplicationInstancePublicIpAddresses"] = true, ["PendingModifiedValues"] = true, ["MultiAZ"] = true, ["PubliclyAccessible"] = true, ["AutoMinorVersionUpgrade"] = true, ["ReplicationInstancePublicIpAddress"] = true, ["SecondaryAvailabilityZone"] = true, ["AllocatedStorage"] = true, ["PreferredMaintenanceWindow"] = true, ["ReplicationSubnetGroup"] = true, ["FreeUntil"] = true, ["EngineVersion"] = true, ["ReplicationInstanceIdentifier"] = true, ["AvailabilityZone"] = true, ["ReplicationInstancePrivateIpAddress"] = true, ["ReplicationInstancePrivateIpAddresses"] = true, ["ReplicationInstanceClass"] = true, ["KmsKeyId"] = true, nil }
 
 function asserts.AssertReplicationInstance(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReplicationInstance to be of type 'table'")
-	if struct["MultiAZ"] then asserts.AssertBoolean(struct["MultiAZ"]) end
-	if struct["AvailabilityZone"] then asserts.AssertString(struct["AvailabilityZone"]) end
-	if struct["ReplicationInstancePrivateIpAddress"] then asserts.AssertString(struct["ReplicationInstancePrivateIpAddress"]) end
 	if struct["ReplicationInstanceArn"] then asserts.AssertString(struct["ReplicationInstanceArn"]) end
-	if struct["ReplicationInstancePrivateIpAddresses"] then asserts.AssertReplicationInstancePrivateIpAddressList(struct["ReplicationInstancePrivateIpAddresses"]) end
-	if struct["ReplicationInstanceClass"] then asserts.AssertString(struct["ReplicationInstanceClass"]) end
-	if struct["ReplicationSubnetGroup"] then asserts.AssertReplicationSubnetGroup(struct["ReplicationSubnetGroup"]) end
-	if struct["AutoMinorVersionUpgrade"] then asserts.AssertBoolean(struct["AutoMinorVersionUpgrade"]) end
 	if struct["ReplicationInstanceStatus"] then asserts.AssertString(struct["ReplicationInstanceStatus"]) end
 	if struct["VpcSecurityGroups"] then asserts.AssertVpcSecurityGroupMembershipList(struct["VpcSecurityGroups"]) end
-	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
 	if struct["InstanceCreateTime"] then asserts.AssertTStamp(struct["InstanceCreateTime"]) end
-	if struct["ReplicationInstancePublicIpAddress"] then asserts.AssertString(struct["ReplicationInstancePublicIpAddress"]) end
-	if struct["AllocatedStorage"] then asserts.AssertInteger(struct["AllocatedStorage"]) end
-	if struct["EngineVersion"] then asserts.AssertString(struct["EngineVersion"]) end
 	if struct["ReplicationInstancePublicIpAddresses"] then asserts.AssertReplicationInstancePublicIpAddressList(struct["ReplicationInstancePublicIpAddresses"]) end
-	if struct["SecondaryAvailabilityZone"] then asserts.AssertString(struct["SecondaryAvailabilityZone"]) end
-	if struct["ReplicationInstanceIdentifier"] then asserts.AssertString(struct["ReplicationInstanceIdentifier"]) end
-	if struct["PubliclyAccessible"] then asserts.AssertBoolean(struct["PubliclyAccessible"]) end
-	if struct["PreferredMaintenanceWindow"] then asserts.AssertString(struct["PreferredMaintenanceWindow"]) end
 	if struct["PendingModifiedValues"] then asserts.AssertReplicationPendingModifiedValues(struct["PendingModifiedValues"]) end
+	if struct["MultiAZ"] then asserts.AssertBoolean(struct["MultiAZ"]) end
+	if struct["PubliclyAccessible"] then asserts.AssertBoolean(struct["PubliclyAccessible"]) end
+	if struct["AutoMinorVersionUpgrade"] then asserts.AssertBoolean(struct["AutoMinorVersionUpgrade"]) end
+	if struct["ReplicationInstancePublicIpAddress"] then asserts.AssertString(struct["ReplicationInstancePublicIpAddress"]) end
+	if struct["SecondaryAvailabilityZone"] then asserts.AssertString(struct["SecondaryAvailabilityZone"]) end
+	if struct["AllocatedStorage"] then asserts.AssertInteger(struct["AllocatedStorage"]) end
+	if struct["PreferredMaintenanceWindow"] then asserts.AssertString(struct["PreferredMaintenanceWindow"]) end
+	if struct["ReplicationSubnetGroup"] then asserts.AssertReplicationSubnetGroup(struct["ReplicationSubnetGroup"]) end
+	if struct["FreeUntil"] then asserts.AssertTStamp(struct["FreeUntil"]) end
+	if struct["EngineVersion"] then asserts.AssertString(struct["EngineVersion"]) end
+	if struct["ReplicationInstanceIdentifier"] then asserts.AssertString(struct["ReplicationInstanceIdentifier"]) end
+	if struct["AvailabilityZone"] then asserts.AssertString(struct["AvailabilityZone"]) end
+	if struct["ReplicationInstancePrivateIpAddress"] then asserts.AssertString(struct["ReplicationInstancePrivateIpAddress"]) end
+	if struct["ReplicationInstancePrivateIpAddresses"] then asserts.AssertReplicationInstancePrivateIpAddressList(struct["ReplicationInstancePrivateIpAddresses"]) end
+	if struct["ReplicationInstanceClass"] then asserts.AssertString(struct["ReplicationInstanceClass"]) end
+	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ReplicationInstance[k], "ReplicationInstance contains unknown key " .. tostring(k))
 	end
@@ -4617,27 +4656,28 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * MultiAZ [Boolean] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
--- * AvailabilityZone [String] <p>The Availability Zone for the instance.</p>
--- * ReplicationInstancePrivateIpAddress [String] <p>The private IP address of the replication instance.</p>
 -- * ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
--- * ReplicationInstancePrivateIpAddresses [ReplicationInstancePrivateIpAddressList] <p>The private IP address of the replication instance.</p>
--- * ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
--- * ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The subnet group for the replication instance.</p>
--- * AutoMinorVersionUpgrade [Boolean] <p>Boolean value indicating if minor version upgrades will be automatically applied to the instance.</p>
 -- * ReplicationInstanceStatus [String] <p>The status of the replication instance.</p>
 -- * VpcSecurityGroups [VpcSecurityGroupMembershipList] <p>The VPC security group for the instance.</p>
--- * KmsKeyId [String] <p>The KMS key identifier that is used to encrypt the content on the replication instance. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
 -- * InstanceCreateTime [TStamp] <p>The time the replication instance was created.</p>
--- * ReplicationInstancePublicIpAddress [String] <p>The public IP address of the replication instance.</p>
--- * AllocatedStorage [Integer] <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
--- * EngineVersion [String] <p>The engine version number of the replication instance.</p>
 -- * ReplicationInstancePublicIpAddresses [ReplicationInstancePublicIpAddressList] <p>The public IP address of the replication instance.</p>
--- * SecondaryAvailabilityZone [String] <p>The availability zone of the standby replication instance in a Multi-AZ deployment.</p>
--- * ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>myrepinstance</code> </p>
--- * PubliclyAccessible [Boolean] <p> Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an instance with a public IP address. A value of <code>false</code> represents an instance with a private IP address. The default value is <code>true</code>. </p>
--- * PreferredMaintenanceWindow [String] <p>The maintenance window times for the replication instance.</p>
 -- * PendingModifiedValues [ReplicationPendingModifiedValues] <p>The pending modification values.</p>
+-- * MultiAZ [Boolean] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
+-- * PubliclyAccessible [Boolean] <p> Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an instance with a public IP address. A value of <code>false</code> represents an instance with a private IP address. The default value is <code>true</code>. </p>
+-- * AutoMinorVersionUpgrade [Boolean] <p>Boolean value indicating if minor version upgrades will be automatically applied to the instance.</p>
+-- * ReplicationInstancePublicIpAddress [String] <p>The public IP address of the replication instance.</p>
+-- * SecondaryAvailabilityZone [String] <p>The availability zone of the standby replication instance in a Multi-AZ deployment.</p>
+-- * AllocatedStorage [Integer] <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
+-- * PreferredMaintenanceWindow [String] <p>The maintenance window times for the replication instance.</p>
+-- * ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The subnet group for the replication instance.</p>
+-- * FreeUntil [TStamp] <p> The expiration date of the free replication instance that is part of the Free DMS program. </p>
+-- * EngineVersion [String] <p>The engine version number of the replication instance.</p>
+-- * ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>myrepinstance</code> </p>
+-- * AvailabilityZone [String] <p>The Availability Zone for the instance.</p>
+-- * ReplicationInstancePrivateIpAddress [String] <p>The private IP address of the replication instance.</p>
+-- * ReplicationInstancePrivateIpAddresses [ReplicationInstancePrivateIpAddressList] <p>The private IP address of the replication instance.</p>
+-- * ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
+-- * KmsKeyId [String] <p>The KMS key identifier that is used to encrypt the content on the replication instance. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
 -- @return ReplicationInstance structure as a key-value pair table
 function M.ReplicationInstance(args)
 	assert(args, "You must provide an argument table when creating ReplicationInstance")
@@ -4648,29 +4688,115 @@ function M.ReplicationInstance(args)
     local header_args = { 
     }
 	local all_args = { 
-		["MultiAZ"] = args["MultiAZ"],
-		["AvailabilityZone"] = args["AvailabilityZone"],
-		["ReplicationInstancePrivateIpAddress"] = args["ReplicationInstancePrivateIpAddress"],
 		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
-		["ReplicationInstancePrivateIpAddresses"] = args["ReplicationInstancePrivateIpAddresses"],
-		["ReplicationInstanceClass"] = args["ReplicationInstanceClass"],
-		["ReplicationSubnetGroup"] = args["ReplicationSubnetGroup"],
-		["AutoMinorVersionUpgrade"] = args["AutoMinorVersionUpgrade"],
 		["ReplicationInstanceStatus"] = args["ReplicationInstanceStatus"],
 		["VpcSecurityGroups"] = args["VpcSecurityGroups"],
-		["KmsKeyId"] = args["KmsKeyId"],
 		["InstanceCreateTime"] = args["InstanceCreateTime"],
-		["ReplicationInstancePublicIpAddress"] = args["ReplicationInstancePublicIpAddress"],
-		["AllocatedStorage"] = args["AllocatedStorage"],
-		["EngineVersion"] = args["EngineVersion"],
 		["ReplicationInstancePublicIpAddresses"] = args["ReplicationInstancePublicIpAddresses"],
-		["SecondaryAvailabilityZone"] = args["SecondaryAvailabilityZone"],
-		["ReplicationInstanceIdentifier"] = args["ReplicationInstanceIdentifier"],
-		["PubliclyAccessible"] = args["PubliclyAccessible"],
-		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
 		["PendingModifiedValues"] = args["PendingModifiedValues"],
+		["MultiAZ"] = args["MultiAZ"],
+		["PubliclyAccessible"] = args["PubliclyAccessible"],
+		["AutoMinorVersionUpgrade"] = args["AutoMinorVersionUpgrade"],
+		["ReplicationInstancePublicIpAddress"] = args["ReplicationInstancePublicIpAddress"],
+		["SecondaryAvailabilityZone"] = args["SecondaryAvailabilityZone"],
+		["AllocatedStorage"] = args["AllocatedStorage"],
+		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
+		["ReplicationSubnetGroup"] = args["ReplicationSubnetGroup"],
+		["FreeUntil"] = args["FreeUntil"],
+		["EngineVersion"] = args["EngineVersion"],
+		["ReplicationInstanceIdentifier"] = args["ReplicationInstanceIdentifier"],
+		["AvailabilityZone"] = args["AvailabilityZone"],
+		["ReplicationInstancePrivateIpAddress"] = args["ReplicationInstancePrivateIpAddress"],
+		["ReplicationInstancePrivateIpAddresses"] = args["ReplicationInstancePrivateIpAddresses"],
+		["ReplicationInstanceClass"] = args["ReplicationInstanceClass"],
+		["KmsKeyId"] = args["KmsKeyId"],
 	}
 	asserts.AssertReplicationInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.RebootReplicationInstanceMessage = { ["ForceFailover"] = true, ["ReplicationInstanceArn"] = true, nil }
+
+function asserts.AssertRebootReplicationInstanceMessage(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RebootReplicationInstanceMessage to be of type 'table'")
+	assert(struct["ReplicationInstanceArn"], "Expected key ReplicationInstanceArn to exist in table")
+	if struct["ForceFailover"] then asserts.AssertBooleanOptional(struct["ForceFailover"]) end
+	if struct["ReplicationInstanceArn"] then asserts.AssertString(struct["ReplicationInstanceArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RebootReplicationInstanceMessage[k], "RebootReplicationInstanceMessage contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RebootReplicationInstanceMessage
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ForceFailover [BooleanOptional] <p>If this parameter is <code>true</code>, the reboot is conducted through a Multi-AZ failover. (If the instance isn't configured for Multi-AZ, then you can't specify <code>true</code>.)</p>
+-- * ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- Required key: ReplicationInstanceArn
+-- @return RebootReplicationInstanceMessage structure as a key-value pair table
+function M.RebootReplicationInstanceMessage(args)
+	assert(args, "You must provide an argument table when creating RebootReplicationInstanceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ForceFailover"] = args["ForceFailover"],
+		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
+	}
+	asserts.AssertRebootReplicationInstanceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ReplicationInstanceTaskLog = { ["ReplicationTaskArn"] = true, ["ReplicationTaskName"] = true, ["ReplicationInstanceTaskLogSize"] = true, nil }
+
+function asserts.AssertReplicationInstanceTaskLog(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ReplicationInstanceTaskLog to be of type 'table'")
+	if struct["ReplicationTaskArn"] then asserts.AssertString(struct["ReplicationTaskArn"]) end
+	if struct["ReplicationTaskName"] then asserts.AssertString(struct["ReplicationTaskName"]) end
+	if struct["ReplicationInstanceTaskLogSize"] then asserts.AssertLong(struct["ReplicationInstanceTaskLogSize"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ReplicationInstanceTaskLog[k], "ReplicationInstanceTaskLog contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ReplicationInstanceTaskLog
+-- <p>Contains metadata for a replication instance task log.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
+-- * ReplicationTaskName [String] <p>The name of the replication task.</p>
+-- * ReplicationInstanceTaskLogSize [Long] <p>The size, in bytes, of the replication task log.</p>
+-- @return ReplicationInstanceTaskLog structure as a key-value pair table
+function M.ReplicationInstanceTaskLog(args)
+	assert(args, "You must provide an argument table when creating ReplicationInstanceTaskLog")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
+		["ReplicationTaskName"] = args["ReplicationTaskName"],
+		["ReplicationInstanceTaskLogSize"] = args["ReplicationInstanceTaskLogSize"],
+	}
+	asserts.AssertReplicationInstanceTaskLog(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4713,25 +4839,29 @@ function M.AddTagsToResourceResponse(args)
     }
 end
 
-keys.ResourceAlreadyExistsFault = { ["message"] = true, nil }
+keys.DescribeReplicationTaskAssessmentResultsResponse = { ["Marker"] = true, ["ReplicationTaskAssessmentResults"] = true, ["BucketName"] = true, nil }
 
-function asserts.AssertResourceAlreadyExistsFault(struct)
+function asserts.AssertDescribeReplicationTaskAssessmentResultsResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceAlreadyExistsFault to be of type 'table'")
-	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected DescribeReplicationTaskAssessmentResultsResponse to be of type 'table'")
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["ReplicationTaskAssessmentResults"] then asserts.AssertReplicationTaskAssessmentResultList(struct["ReplicationTaskAssessmentResults"]) end
+	if struct["BucketName"] then asserts.AssertString(struct["BucketName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ResourceAlreadyExistsFault[k], "ResourceAlreadyExistsFault contains unknown key " .. tostring(k))
+		assert(keys.DescribeReplicationTaskAssessmentResultsResponse[k], "DescribeReplicationTaskAssessmentResultsResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ResourceAlreadyExistsFault
--- <p>The resource you are attempting to create already exists.</p>
+--- Create a structure of type DescribeReplicationTaskAssessmentResultsResponse
+-- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [ExceptionMessage] <p/>
--- @return ResourceAlreadyExistsFault structure as a key-value pair table
-function M.ResourceAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating ResourceAlreadyExistsFault")
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * ReplicationTaskAssessmentResults [ReplicationTaskAssessmentResultList] <p> The task assessment report. </p>
+-- * BucketName [String] <p>- The Amazon S3 bucket where the task assessment report is located. </p>
+-- @return DescribeReplicationTaskAssessmentResultsResponse structure as a key-value pair table
+function M.DescribeReplicationTaskAssessmentResultsResponse(args)
+	assert(args, "You must provide an argument table when creating DescribeReplicationTaskAssessmentResultsResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -4739,46 +4869,11 @@ function M.ResourceAlreadyExistsFault(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["Marker"] = args["Marker"],
+		["ReplicationTaskAssessmentResults"] = args["ReplicationTaskAssessmentResults"],
+		["BucketName"] = args["BucketName"],
 	}
-	asserts.AssertResourceAlreadyExistsFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ReplicationSubnetGroupDoesNotCoverEnoughAZs = { ["message"] = true, nil }
-
-function asserts.AssertReplicationSubnetGroupDoesNotCoverEnoughAZs(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ReplicationSubnetGroupDoesNotCoverEnoughAZs to be of type 'table'")
-	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ReplicationSubnetGroupDoesNotCoverEnoughAZs[k], "ReplicationSubnetGroupDoesNotCoverEnoughAZs contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ReplicationSubnetGroupDoesNotCoverEnoughAZs
--- <p>The replication subnet group does not cover enough Availability Zones (AZs). Edit the replication subnet group and add more AZs.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [ExceptionMessage] <p/>
--- @return ReplicationSubnetGroupDoesNotCoverEnoughAZs structure as a key-value pair table
-function M.ReplicationSubnetGroupDoesNotCoverEnoughAZs(args)
-	assert(args, "You must provide an argument table when creating ReplicationSubnetGroupDoesNotCoverEnoughAZs")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertReplicationSubnetGroupDoesNotCoverEnoughAZs(all_args)
+	asserts.AssertDescribeReplicationTaskAssessmentResultsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5032,65 +5127,6 @@ function M.DescribeEventSubscriptionsResponse(args)
     }
 end
 
-keys.CreateEventSubscriptionMessage = { ["EventCategories"] = true, ["SourceType"] = true, ["Tags"] = true, ["Enabled"] = true, ["SnsTopicArn"] = true, ["SubscriptionName"] = true, ["SourceIds"] = true, nil }
-
-function asserts.AssertCreateEventSubscriptionMessage(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CreateEventSubscriptionMessage to be of type 'table'")
-	assert(struct["SubscriptionName"], "Expected key SubscriptionName to exist in table")
-	assert(struct["SnsTopicArn"], "Expected key SnsTopicArn to exist in table")
-	if struct["EventCategories"] then asserts.AssertEventCategoriesList(struct["EventCategories"]) end
-	if struct["SourceType"] then asserts.AssertString(struct["SourceType"]) end
-	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
-	if struct["Enabled"] then asserts.AssertBooleanOptional(struct["Enabled"]) end
-	if struct["SnsTopicArn"] then asserts.AssertString(struct["SnsTopicArn"]) end
-	if struct["SubscriptionName"] then asserts.AssertString(struct["SubscriptionName"]) end
-	if struct["SourceIds"] then asserts.AssertSourceIdsList(struct["SourceIds"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.CreateEventSubscriptionMessage[k], "CreateEventSubscriptionMessage contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CreateEventSubscriptionMessage
--- <p/>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * EventCategories [EventCategoriesList] <p> A list of event categories for a source type that you want to subscribe to. You can see a list of the categories for a given source type by calling the <b>DescribeEventCategories</b> action or in the topic <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html"> Working with Events and Notifications</a> in the AWS Database Migration Service User Guide. </p>
--- * SourceType [String] <p> The type of AWS DMS resource that generates the events. For example, if you want to be notified of events generated by a replication instance, you set this parameter to <code>replication-instance</code>. If this value is not specified, all events are returned. </p> <p>Valid values: replication-instance | migration-task</p>
--- * Tags [TagList] <p>A tag to be attached to the event subscription.</p>
--- * Enabled [BooleanOptional] <p> A Boolean value; set to <b>true</b> to activate the subscription, or set to <b>false</b> to create the subscription but not activate it. </p>
--- * SnsTopicArn [String] <p> The Amazon Resource Name (ARN) of the Amazon SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it. </p>
--- * SubscriptionName [String] <p>The name of the DMS event notification subscription. </p> <p>Constraints: The name must be less than 255 characters. </p>
--- * SourceIds [SourceIdsList] <p> The list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens. </p>
--- Required key: SubscriptionName
--- Required key: SnsTopicArn
--- @return CreateEventSubscriptionMessage structure as a key-value pair table
-function M.CreateEventSubscriptionMessage(args)
-	assert(args, "You must provide an argument table when creating CreateEventSubscriptionMessage")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["EventCategories"] = args["EventCategories"],
-		["SourceType"] = args["SourceType"],
-		["Tags"] = args["Tags"],
-		["Enabled"] = args["Enabled"],
-		["SnsTopicArn"] = args["SnsTopicArn"],
-		["SubscriptionName"] = args["SubscriptionName"],
-		["SourceIds"] = args["SourceIds"],
-	}
-	asserts.AssertCreateEventSubscriptionMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.DeleteEventSubscriptionResponse = { ["EventSubscription"] = true, nil }
 
 function asserts.AssertDeleteEventSubscriptionResponse(struct)
@@ -5272,43 +5308,6 @@ function M.EventSubscription(args)
     }
 end
 
-keys.SubnetAlreadyInUse = { ["message"] = true, nil }
-
-function asserts.AssertSubnetAlreadyInUse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SubnetAlreadyInUse to be of type 'table'")
-	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.SubnetAlreadyInUse[k], "SubnetAlreadyInUse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SubnetAlreadyInUse
--- <p>The specified subnet is already in use.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [ExceptionMessage] <p/>
--- @return SubnetAlreadyInUse structure as a key-value pair table
-function M.SubnetAlreadyInUse(args)
-	assert(args, "You must provide an argument table when creating SubnetAlreadyInUse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertSubnetAlreadyInUse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.StopReplicationTaskMessage = { ["ReplicationTaskArn"] = true, nil }
 
 function asserts.AssertStopReplicationTaskMessage(struct)
@@ -5325,7 +5324,7 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ReplicationTaskArn [String] <p>The Amazon Resource Number(ARN) of the replication task to be stopped.</p>
+-- * ReplicationTaskArn [String] <p>The Amazon Resource Name(ARN) of the replication task to be stopped.</p>
 -- Required key: ReplicationTaskArn
 -- @return StopReplicationTaskMessage structure as a key-value pair table
 function M.StopReplicationTaskMessage(args)
@@ -5447,14 +5446,14 @@ function M.NestingLevelValue(str)
 	return str
 end
 
-function asserts.AssertExceptionMessage(str)
+function asserts.AssertReloadOptionValue(str)
 	assert(str)
-	assert(type(str) == "string", "Expected ExceptionMessage to be of type 'string'")
+	assert(type(str) == "string", "Expected ReloadOptionValue to be of type 'string'")
 end
 
 --  
-function M.ExceptionMessage(str)
-	asserts.AssertExceptionMessage(str)
+function M.ReloadOptionValue(str)
+	asserts.AssertReloadOptionValue(str)
 	return str
 end
 
@@ -5564,6 +5563,21 @@ function M.CertificateWallet(blob)
 	return blob
 end
 
+function asserts.AssertVpcSecurityGroupIdList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected VpcSecurityGroupIdList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertString(v)
+	end
+end
+
+--  
+-- List of String objects
+function M.VpcSecurityGroupIdList(list)
+	asserts.AssertVpcSecurityGroupIdList(list)
+	return list
+end
+
 function asserts.AssertOrderableReplicationInstanceList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected OrderableReplicationInstanceList to be of type ''table")
@@ -5594,6 +5608,21 @@ function M.SupportedEndpointTypeList(list)
 	return list
 end
 
+function asserts.AssertReplicationInstanceTaskLogsList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ReplicationInstanceTaskLogsList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertReplicationInstanceTaskLog(v)
+	end
+end
+
+--  
+-- List of ReplicationInstanceTaskLog objects
+function M.ReplicationInstanceTaskLogsList(list)
+	asserts.AssertReplicationInstanceTaskLogsList(list)
+	return list
+end
+
 function asserts.AssertEventCategoryGroupList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EventCategoryGroupList to be of type ''table")
@@ -5606,21 +5635,6 @@ end
 -- List of EventCategoryGroup objects
 function M.EventCategoryGroupList(list)
 	asserts.AssertEventCategoryGroupList(list)
-	return list
-end
-
-function asserts.AssertVpcSecurityGroupIdList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected VpcSecurityGroupIdList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertString(v)
-	end
-end
-
---  
--- List of String objects
-function M.VpcSecurityGroupIdList(list)
-	asserts.AssertVpcSecurityGroupIdList(list)
 	return list
 end
 
@@ -5651,21 +5665,6 @@ end
 -- List of String objects
 function M.FilterValueList(list)
 	asserts.AssertFilterValueList(list)
-	return list
-end
-
-function asserts.AssertTagList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected TagList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertTag(v)
-	end
-end
-
---  
--- List of Tag objects
-function M.TagList(list)
-	asserts.AssertTagList(list)
 	return list
 end
 
@@ -5819,6 +5818,21 @@ function M.SchemaList(list)
 	return list
 end
 
+function asserts.AssertReplicationTaskAssessmentResultList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ReplicationTaskAssessmentResultList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertReplicationTaskAssessmentResult(v)
+	end
+end
+
+--  
+-- List of ReplicationTaskAssessmentResult objects
+function M.ReplicationTaskAssessmentResultList(list)
+	asserts.AssertReplicationTaskAssessmentResultList(list)
+	return list
+end
+
 function asserts.AssertAccountQuotaList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AccountQuotaList to be of type ''table")
@@ -5966,6 +5980,21 @@ end
 -- List of Filter objects
 function M.FilterList(list)
 	asserts.AssertFilterList(list)
+	return list
+end
+
+function asserts.AssertTagList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected TagList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertTag(v)
+	end
+end
+
+--  
+-- List of Tag objects
+function M.TagList(list)
+	asserts.AssertTagList(list)
 	return list
 end
 
@@ -6362,6 +6391,41 @@ function M.DescribeTableStatisticsSync(DescribeTableStatisticsMessage, ...)
 	return coroutine.yield()
 end
 
+--- Call RebootReplicationInstance asynchronously, invoking a callback when done
+-- @param RebootReplicationInstanceMessage
+-- @param cb Callback function accepting two args: response, error_message
+function M.RebootReplicationInstanceAsync(RebootReplicationInstanceMessage, cb)
+	assert(RebootReplicationInstanceMessage, "You must provide a RebootReplicationInstanceMessage")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.RebootReplicationInstance",
+	}
+	for header,value in pairs(RebootReplicationInstanceMessage.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", RebootReplicationInstanceMessage, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call RebootReplicationInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RebootReplicationInstanceMessage
+-- @return response
+-- @return error_message
+function M.RebootReplicationInstanceSync(RebootReplicationInstanceMessage, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RebootReplicationInstanceAsync(RebootReplicationInstanceMessage, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call DescribeEventCategories asynchronously, invoking a callback when done
 -- @param DescribeEventCategoriesMessage
 -- @param cb Callback function accepting two args: response, error_message
@@ -6747,6 +6811,41 @@ function M.DeleteReplicationTaskSync(DeleteReplicationTaskMessage, ...)
 	return coroutine.yield()
 end
 
+--- Call DescribeReplicationTaskAssessmentResults asynchronously, invoking a callback when done
+-- @param DescribeReplicationTaskAssessmentResultsMessage
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeReplicationTaskAssessmentResultsAsync(DescribeReplicationTaskAssessmentResultsMessage, cb)
+	assert(DescribeReplicationTaskAssessmentResultsMessage, "You must provide a DescribeReplicationTaskAssessmentResultsMessage")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeReplicationTaskAssessmentResults",
+	}
+	for header,value in pairs(DescribeReplicationTaskAssessmentResultsMessage.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeReplicationTaskAssessmentResultsMessage, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeReplicationTaskAssessmentResults synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeReplicationTaskAssessmentResultsMessage
+-- @return response
+-- @return error_message
+function M.DescribeReplicationTaskAssessmentResultsSync(DescribeReplicationTaskAssessmentResultsMessage, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeReplicationTaskAssessmentResultsAsync(DescribeReplicationTaskAssessmentResultsMessage, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call DescribeRefreshSchemasStatus asynchronously, invoking a callback when done
 -- @param DescribeRefreshSchemasStatusMessage
 -- @param cb Callback function accepting two args: response, error_message
@@ -6957,6 +7056,41 @@ function M.DeleteEventSubscriptionSync(DeleteEventSubscriptionMessage, ...)
 	return coroutine.yield()
 end
 
+--- Call StartReplicationTaskAssessment asynchronously, invoking a callback when done
+-- @param StartReplicationTaskAssessmentMessage
+-- @param cb Callback function accepting two args: response, error_message
+function M.StartReplicationTaskAssessmentAsync(StartReplicationTaskAssessmentMessage, cb)
+	assert(StartReplicationTaskAssessmentMessage, "You must provide a StartReplicationTaskAssessmentMessage")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.StartReplicationTaskAssessment",
+	}
+	for header,value in pairs(StartReplicationTaskAssessmentMessage.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", StartReplicationTaskAssessmentMessage, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call StartReplicationTaskAssessment synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartReplicationTaskAssessmentMessage
+-- @return response
+-- @return error_message
+function M.StartReplicationTaskAssessmentSync(StartReplicationTaskAssessmentMessage, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartReplicationTaskAssessmentAsync(StartReplicationTaskAssessmentMessage, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ModifyEventSubscription asynchronously, invoking a callback when done
 -- @param ModifyEventSubscriptionMessage
 -- @param cb Callback function accepting two args: response, error_message
@@ -7057,6 +7191,41 @@ function M.CreateReplicationInstanceSync(CreateReplicationInstanceMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.CreateReplicationInstanceAsync(CreateReplicationInstanceMessage, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeReplicationInstanceTaskLogs asynchronously, invoking a callback when done
+-- @param DescribeReplicationInstanceTaskLogsMessage
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeReplicationInstanceTaskLogsAsync(DescribeReplicationInstanceTaskLogsMessage, cb)
+	assert(DescribeReplicationInstanceTaskLogsMessage, "You must provide a DescribeReplicationInstanceTaskLogsMessage")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeReplicationInstanceTaskLogs",
+	}
+	for header,value in pairs(DescribeReplicationInstanceTaskLogsMessage.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeReplicationInstanceTaskLogsMessage, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeReplicationInstanceTaskLogs synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeReplicationInstanceTaskLogsMessage
+-- @return response
+-- @return error_message
+function M.DescribeReplicationInstanceTaskLogsSync(DescribeReplicationInstanceTaskLogsMessage, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeReplicationInstanceTaskLogsAsync(DescribeReplicationInstanceTaskLogsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

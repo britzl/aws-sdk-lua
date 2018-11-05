@@ -105,6 +105,55 @@ function M.RepositoryNotEmptyException(args)
     }
 end
 
+keys.LifecyclePolicyPreviewResult = { ["action"] = true, ["imageTags"] = true, ["appliedRulePriority"] = true, ["imageDigest"] = true, ["imagePushedAt"] = true, nil }
+
+function asserts.AssertLifecyclePolicyPreviewResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LifecyclePolicyPreviewResult to be of type 'table'")
+	if struct["action"] then asserts.AssertLifecyclePolicyRuleAction(struct["action"]) end
+	if struct["imageTags"] then asserts.AssertImageTagList(struct["imageTags"]) end
+	if struct["appliedRulePriority"] then asserts.AssertLifecyclePolicyRulePriority(struct["appliedRulePriority"]) end
+	if struct["imageDigest"] then asserts.AssertImageDigest(struct["imageDigest"]) end
+	if struct["imagePushedAt"] then asserts.AssertPushTimestamp(struct["imagePushedAt"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.LifecyclePolicyPreviewResult[k], "LifecyclePolicyPreviewResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LifecyclePolicyPreviewResult
+-- <p>The result of the lifecycle policy preview.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * action [LifecyclePolicyRuleAction] <p>The type of action to be taken.</p>
+-- * imageTags [ImageTagList] <p>The list of tags associated with this image.</p>
+-- * appliedRulePriority [LifecyclePolicyRulePriority] <p>The priority of the applied rule.</p>
+-- * imageDigest [ImageDigest] <p>The <code>sha256</code> digest of the image manifest.</p>
+-- * imagePushedAt [PushTimestamp] <p>The date and time, expressed in standard JavaScript date format, at which the current image was pushed to the repository.</p>
+-- @return LifecyclePolicyPreviewResult structure as a key-value pair table
+function M.LifecyclePolicyPreviewResult(args)
+	assert(args, "You must provide an argument table when creating LifecyclePolicyPreviewResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["action"] = args["action"],
+		["imageTags"] = args["imageTags"],
+		["appliedRulePriority"] = args["appliedRulePriority"],
+		["imageDigest"] = args["imageDigest"],
+		["imagePushedAt"] = args["imagePushedAt"],
+	}
+	asserts.AssertLifecyclePolicyPreviewResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.PutImageRequest = { ["imageManifest"] = true, ["repositoryName"] = true, ["registryId"] = true, ["imageTag"] = true, nil }
 
 function asserts.AssertPutImageRequest(struct)
@@ -177,8 +226,8 @@ end
 -- Valid keys:
 -- * nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListImages</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
 -- * filter [ListImagesFilter] <p>The filter key and value with which to filter your <code>ListImages</code> results.</p>
--- * repositoryName [RepositoryName] <p>The repository whose image IDs are to be listed.</p>
--- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository to list images in. If you do not specify a registry, the default registry is assumed.</p>
+-- * repositoryName [RepositoryName] <p>The repository with image IDs to be listed.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository in which to list images. If you do not specify a registry, the default registry is assumed.</p>
 -- * maxResults [MaxResults] <p>The maximum number of image results returned by <code>ListImages</code> in paginated output. When this parameter is used, <code>ListImages</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListImages</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListImages</code> returns up to 100 results and a <code>nextToken</code> value, if applicable.</p>
 -- Required key: repositoryName
 -- @return ListImagesRequest structure as a key-value pair table
@@ -292,6 +341,136 @@ function M.InvalidLayerPartException(args)
     }
 end
 
+keys.PutLifecyclePolicyRequest = { ["lifecyclePolicyText"] = true, ["repositoryName"] = true, ["registryId"] = true, nil }
+
+function asserts.AssertPutLifecyclePolicyRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PutLifecyclePolicyRequest to be of type 'table'")
+	assert(struct["repositoryName"], "Expected key repositoryName to exist in table")
+	assert(struct["lifecyclePolicyText"], "Expected key lifecyclePolicyText to exist in table")
+	if struct["lifecyclePolicyText"] then asserts.AssertLifecyclePolicyText(struct["lifecyclePolicyText"]) end
+	if struct["repositoryName"] then asserts.AssertRepositoryName(struct["repositoryName"]) end
+	if struct["registryId"] then asserts.AssertRegistryId(struct["registryId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PutLifecyclePolicyRequest[k], "PutLifecyclePolicyRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PutLifecyclePolicyRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lifecyclePolicyText [LifecyclePolicyText] <p>The JSON repository policy text to apply to the repository.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository to receive the policy.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository. If you do&#x2028; not specify a registry, the default registry is assumed.</p>
+-- Required key: repositoryName
+-- Required key: lifecyclePolicyText
+-- @return PutLifecyclePolicyRequest structure as a key-value pair table
+function M.PutLifecyclePolicyRequest(args)
+	assert(args, "You must provide an argument table when creating PutLifecyclePolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["lifecyclePolicyText"] = args["lifecyclePolicyText"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
+	}
+	asserts.AssertPutLifecyclePolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.StartLifecyclePolicyPreviewResponse = { ["status"] = true, ["lifecyclePolicyText"] = true, ["repositoryName"] = true, ["registryId"] = true, nil }
+
+function asserts.AssertStartLifecyclePolicyPreviewResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected StartLifecyclePolicyPreviewResponse to be of type 'table'")
+	if struct["status"] then asserts.AssertLifecyclePolicyPreviewStatus(struct["status"]) end
+	if struct["lifecyclePolicyText"] then asserts.AssertLifecyclePolicyText(struct["lifecyclePolicyText"]) end
+	if struct["repositoryName"] then asserts.AssertRepositoryName(struct["repositoryName"]) end
+	if struct["registryId"] then asserts.AssertRegistryId(struct["registryId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.StartLifecyclePolicyPreviewResponse[k], "StartLifecyclePolicyPreviewResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type StartLifecyclePolicyPreviewResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [LifecyclePolicyPreviewStatus] <p>The status of the lifecycle policy preview request.</p>
+-- * lifecyclePolicyText [LifecyclePolicyText] <p>The JSON repository policy text.</p>
+-- * repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
+-- * registryId [RegistryId] <p>The registry ID associated with the request.</p>
+-- @return StartLifecyclePolicyPreviewResponse structure as a key-value pair table
+function M.StartLifecyclePolicyPreviewResponse(args)
+	assert(args, "You must provide an argument table when creating StartLifecyclePolicyPreviewResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["status"] = args["status"],
+		["lifecyclePolicyText"] = args["lifecyclePolicyText"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
+	}
+	asserts.AssertStartLifecyclePolicyPreviewResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.LifecyclePolicyPreviewNotFoundException = { ["message"] = true, nil }
+
+function asserts.AssertLifecyclePolicyPreviewNotFoundException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LifecyclePolicyPreviewNotFoundException to be of type 'table'")
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.LifecyclePolicyPreviewNotFoundException[k], "LifecyclePolicyPreviewNotFoundException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LifecyclePolicyPreviewNotFoundException
+-- <p>There is no dry run for this repository.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] 
+-- @return LifecyclePolicyPreviewNotFoundException structure as a key-value pair table
+function M.LifecyclePolicyPreviewNotFoundException(args)
+	assert(args, "You must provide an argument table when creating LifecyclePolicyPreviewNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["message"] = args["message"],
+	}
+	asserts.AssertLifecyclePolicyPreviewNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.BatchGetImageResponse = { ["images"] = true, ["failures"] = true, nil }
 
 function asserts.AssertBatchGetImageResponse(struct)
@@ -364,6 +543,103 @@ function M.DescribeRepositoriesResponse(args)
 		["repositories"] = args["repositories"],
 	}
 	asserts.AssertDescribeRepositoriesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.PutLifecyclePolicyResponse = { ["lifecyclePolicyText"] = true, ["repositoryName"] = true, ["registryId"] = true, nil }
+
+function asserts.AssertPutLifecyclePolicyResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PutLifecyclePolicyResponse to be of type 'table'")
+	if struct["lifecyclePolicyText"] then asserts.AssertLifecyclePolicyText(struct["lifecyclePolicyText"]) end
+	if struct["repositoryName"] then asserts.AssertRepositoryName(struct["repositoryName"]) end
+	if struct["registryId"] then asserts.AssertRegistryId(struct["registryId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PutLifecyclePolicyResponse[k], "PutLifecyclePolicyResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PutLifecyclePolicyResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lifecyclePolicyText [LifecyclePolicyText] <p>The JSON repository policy text.</p>
+-- * repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
+-- * registryId [RegistryId] <p>The registry ID associated with the request.</p>
+-- @return PutLifecyclePolicyResponse structure as a key-value pair table
+function M.PutLifecyclePolicyResponse(args)
+	assert(args, "You must provide an argument table when creating PutLifecyclePolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["lifecyclePolicyText"] = args["lifecyclePolicyText"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
+	}
+	asserts.AssertPutLifecyclePolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetLifecyclePolicyPreviewRequest = { ["repositoryName"] = true, ["maxResults"] = true, ["filter"] = true, ["imageIds"] = true, ["registryId"] = true, ["nextToken"] = true, nil }
+
+function asserts.AssertGetLifecyclePolicyPreviewRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetLifecyclePolicyPreviewRequest to be of type 'table'")
+	assert(struct["repositoryName"], "Expected key repositoryName to exist in table")
+	if struct["repositoryName"] then asserts.AssertRepositoryName(struct["repositoryName"]) end
+	if struct["maxResults"] then asserts.AssertMaxResults(struct["maxResults"]) end
+	if struct["filter"] then asserts.AssertLifecyclePolicyPreviewFilter(struct["filter"]) end
+	if struct["imageIds"] then asserts.AssertImageIdentifierList(struct["imageIds"]) end
+	if struct["registryId"] then asserts.AssertRegistryId(struct["registryId"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetLifecyclePolicyPreviewRequest[k], "GetLifecyclePolicyPreviewRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetLifecyclePolicyPreviewRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The name of the repository.</p>
+-- * maxResults [MaxResults] <p>The maximum number of repository results returned by <code>GetLifecyclePolicyPreviewRequest</code> in&#x2028; paginated output. When this parameter is used, <code>GetLifecyclePolicyPreviewRequest</code> only returns&#x2028; <code>maxResults</code> results in a single page along with a <code>nextToken</code>&#x2028; response element. The remaining results of the initial request can be seen by sending&#x2028; another <code>GetLifecyclePolicyPreviewRequest</code> request with the returned <code>nextToken</code>&#x2028; value. This value can be between 1 and 100. If this&#x2028; parameter is not used, then <code>GetLifecyclePolicyPreviewRequest</code> returns up to&#x2028; 100 results and a <code>nextToken</code> value, if&#x2028; applicable. This option cannot be used when you specify images with <code>imageIds</code>.</p>
+-- * filter [LifecyclePolicyPreviewFilter] <p>An optional parameter that filters results based on image tag status and all tags, if tagged.</p>
+-- * imageIds [ImageIdentifierList] <p>The list of imageIDs to be included.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.</p>
+-- * nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated&#x2028; <code>GetLifecyclePolicyPreviewRequest</code> request where <code>maxResults</code> was used and the&#x2028; results exceeded the value of that parameter. Pagination continues from the end of the&#x2028; previous results that returned the <code>nextToken</code> value. This value is&#x2028; <code>null</code> when there are no more results to return. This option cannot be used when you specify images with <code>imageIds</code>.</p>
+-- Required key: repositoryName
+-- @return GetLifecyclePolicyPreviewRequest structure as a key-value pair table
+function M.GetLifecyclePolicyPreviewRequest(args)
+	assert(args, "You must provide an argument table when creating GetLifecyclePolicyPreviewRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["repositoryName"] = args["repositoryName"],
+		["maxResults"] = args["maxResults"],
+		["filter"] = args["filter"],
+		["imageIds"] = args["imageIds"],
+		["registryId"] = args["registryId"],
+		["nextToken"] = args["nextToken"],
+	}
+	asserts.AssertGetLifecyclePolicyPreviewRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -619,6 +895,97 @@ function M.GetDownloadUrlForLayerResponse(args)
     }
 end
 
+keys.GetLifecyclePolicyResponse = { ["lifecyclePolicyText"] = true, ["repositoryName"] = true, ["registryId"] = true, ["lastEvaluatedAt"] = true, nil }
+
+function asserts.AssertGetLifecyclePolicyResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetLifecyclePolicyResponse to be of type 'table'")
+	if struct["lifecyclePolicyText"] then asserts.AssertLifecyclePolicyText(struct["lifecyclePolicyText"]) end
+	if struct["repositoryName"] then asserts.AssertRepositoryName(struct["repositoryName"]) end
+	if struct["registryId"] then asserts.AssertRegistryId(struct["registryId"]) end
+	if struct["lastEvaluatedAt"] then asserts.AssertEvaluationTimestamp(struct["lastEvaluatedAt"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetLifecyclePolicyResponse[k], "GetLifecyclePolicyResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetLifecyclePolicyResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lifecyclePolicyText [LifecyclePolicyText] <p>The JSON lifecycle policy text.</p>
+-- * repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
+-- * registryId [RegistryId] <p>The registry ID associated with the request.</p>
+-- * lastEvaluatedAt [EvaluationTimestamp] <p>The time stamp of the last time that the lifecycle policy was run.</p>
+-- @return GetLifecyclePolicyResponse structure as a key-value pair table
+function M.GetLifecyclePolicyResponse(args)
+	assert(args, "You must provide an argument table when creating GetLifecyclePolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["lifecyclePolicyText"] = args["lifecyclePolicyText"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
+		["lastEvaluatedAt"] = args["lastEvaluatedAt"],
+	}
+	asserts.AssertGetLifecyclePolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.StartLifecyclePolicyPreviewRequest = { ["lifecyclePolicyText"] = true, ["repositoryName"] = true, ["registryId"] = true, nil }
+
+function asserts.AssertStartLifecyclePolicyPreviewRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected StartLifecyclePolicyPreviewRequest to be of type 'table'")
+	assert(struct["repositoryName"], "Expected key repositoryName to exist in table")
+	if struct["lifecyclePolicyText"] then asserts.AssertLifecyclePolicyText(struct["lifecyclePolicyText"]) end
+	if struct["repositoryName"] then asserts.AssertRepositoryName(struct["repositoryName"]) end
+	if struct["registryId"] then asserts.AssertRegistryId(struct["registryId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.StartLifecyclePolicyPreviewRequest[k], "StartLifecyclePolicyPreviewRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type StartLifecyclePolicyPreviewRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lifecyclePolicyText [LifecyclePolicyText] <p>The policy to be evaluated against. If you do not specify a policy, the current policy for the repository is used.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository to be evaluated.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.</p>
+-- Required key: repositoryName
+-- @return StartLifecyclePolicyPreviewRequest structure as a key-value pair table
+function M.StartLifecyclePolicyPreviewRequest(args)
+	assert(args, "You must provide an argument table when creating StartLifecyclePolicyPreviewRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["lifecyclePolicyText"] = args["lifecyclePolicyText"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
+	}
+	asserts.AssertStartLifecyclePolicyPreviewRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DescribeImagesResponse = { ["nextToken"] = true, ["imageDetails"] = true, nil }
 
 function asserts.AssertDescribeImagesResponse(struct)
@@ -671,7 +1038,7 @@ function asserts.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- <p>The operation did not succeed because it would have exceeded a service limit for your account. For more information, see <a href="http://docs.aws.amazon.com/AmazonECR/latest/userguide/service_limits.html">Amazon ECR Default Service Limits</a> in the Amazon EC2 Container Registry User Guide.</p>
+-- <p>The operation did not succeed because it would have exceeded a service limit for your account. For more information, see <a href="http://docs.aws.amazon.com/AmazonECR/latest/userguide/service_limits.html">Amazon ECR Default Service Limits</a> in the Amazon Elastic Container Registry User Guide.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
@@ -896,6 +1263,43 @@ function M.GetAuthorizationTokenRequest(args)
     }
 end
 
+keys.LifecyclePolicyNotFoundException = { ["message"] = true, nil }
+
+function asserts.AssertLifecyclePolicyNotFoundException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LifecyclePolicyNotFoundException to be of type 'table'")
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.LifecyclePolicyNotFoundException[k], "LifecyclePolicyNotFoundException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LifecyclePolicyNotFoundException
+-- <p>The lifecycle policy could not be found, and no policy is set to the repository.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] 
+-- @return LifecyclePolicyNotFoundException structure as a key-value pair table
+function M.LifecyclePolicyNotFoundException(args)
+	assert(args, "You must provide an argument table when creating LifecyclePolicyNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["message"] = args["message"],
+	}
+	asserts.AssertLifecyclePolicyNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListImagesFilter = { ["tagStatus"] = true, nil }
 
 function asserts.AssertListImagesFilter(struct)
@@ -1035,6 +1439,52 @@ function M.ImageDetail(args)
     }
 end
 
+keys.DeleteLifecyclePolicyResponse = { ["lifecyclePolicyText"] = true, ["repositoryName"] = true, ["registryId"] = true, ["lastEvaluatedAt"] = true, nil }
+
+function asserts.AssertDeleteLifecyclePolicyResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteLifecyclePolicyResponse to be of type 'table'")
+	if struct["lifecyclePolicyText"] then asserts.AssertLifecyclePolicyText(struct["lifecyclePolicyText"]) end
+	if struct["repositoryName"] then asserts.AssertRepositoryName(struct["repositoryName"]) end
+	if struct["registryId"] then asserts.AssertRegistryId(struct["registryId"]) end
+	if struct["lastEvaluatedAt"] then asserts.AssertEvaluationTimestamp(struct["lastEvaluatedAt"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteLifecyclePolicyResponse[k], "DeleteLifecyclePolicyResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteLifecyclePolicyResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lifecyclePolicyText [LifecyclePolicyText] <p>The JSON lifecycle policy text.</p>
+-- * repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
+-- * registryId [RegistryId] <p>The registry ID associated with the request.</p>
+-- * lastEvaluatedAt [EvaluationTimestamp] <p>The time stamp of the last time that the lifecycle policy was run.</p>
+-- @return DeleteLifecyclePolicyResponse structure as a key-value pair table
+function M.DeleteLifecyclePolicyResponse(args)
+	assert(args, "You must provide an argument table when creating DeleteLifecyclePolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["lifecyclePolicyText"] = args["lifecyclePolicyText"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
+		["lastEvaluatedAt"] = args["lastEvaluatedAt"],
+	}
+	asserts.AssertDeleteLifecyclePolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.EmptyUploadException = { ["message"] = true, nil }
 
 function asserts.AssertEmptyUploadException(struct)
@@ -1127,10 +1577,10 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeRepositories</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- * nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeRepositories</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return. This option cannot be used when you specify repositories with <code>repositoryNames</code>.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
 -- * repositoryNames [RepositoryNameList] <p>A list of repositories to describe. If this parameter is omitted, then all repositories in a registry are described.</p>
 -- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repositories to be described. If you do not specify a registry, the default registry is assumed.</p>
--- * maxResults [MaxResults] <p>The maximum number of repository results returned by <code>DescribeRepositories</code> in paginated output. When this parameter is used, <code>DescribeRepositories</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeRepositories</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeRepositories</code> returns up to 100 results and a <code>nextToken</code> value, if applicable.</p>
+-- * maxResults [MaxResults] <p>The maximum number of repository results returned by <code>DescribeRepositories</code> in paginated output. When this parameter is used, <code>DescribeRepositories</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeRepositories</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeRepositories</code> returns up to 100 results and a <code>nextToken</code> value, if applicable. This option cannot be used when you specify repositories with <code>repositoryNames</code>.</p>
 -- @return DescribeRepositoriesRequest structure as a key-value pair table
 function M.DescribeRepositoriesRequest(args)
 	assert(args, "You must provide an argument table when creating DescribeRepositoriesRequest")
@@ -1328,6 +1778,85 @@ function M.BatchCheckLayerAvailabilityRequest(args)
     }
 end
 
+keys.GetLifecyclePolicyRequest = { ["repositoryName"] = true, ["registryId"] = true, nil }
+
+function asserts.AssertGetLifecyclePolicyRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetLifecyclePolicyRequest to be of type 'table'")
+	assert(struct["repositoryName"], "Expected key repositoryName to exist in table")
+	if struct["repositoryName"] then asserts.AssertRepositoryName(struct["repositoryName"]) end
+	if struct["registryId"] then asserts.AssertRegistryId(struct["registryId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetLifecyclePolicyRequest[k], "GetLifecyclePolicyRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetLifecyclePolicyRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The name of the repository.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.</p>
+-- Required key: repositoryName
+-- @return GetLifecyclePolicyRequest structure as a key-value pair table
+function M.GetLifecyclePolicyRequest(args)
+	assert(args, "You must provide an argument table when creating GetLifecyclePolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
+	}
+	asserts.AssertGetLifecyclePolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.LifecyclePolicyPreviewSummary = { ["expiringImageTotalCount"] = true, nil }
+
+function asserts.AssertLifecyclePolicyPreviewSummary(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LifecyclePolicyPreviewSummary to be of type 'table'")
+	if struct["expiringImageTotalCount"] then asserts.AssertImageCount(struct["expiringImageTotalCount"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.LifecyclePolicyPreviewSummary[k], "LifecyclePolicyPreviewSummary contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LifecyclePolicyPreviewSummary
+-- <p>The summary of the lifecycle policy preview request.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * expiringImageTotalCount [ImageCount] <p>The number of expiring images.</p>
+-- @return LifecyclePolicyPreviewSummary structure as a key-value pair table
+function M.LifecyclePolicyPreviewSummary(args)
+	assert(args, "You must provide an argument table when creating LifecyclePolicyPreviewSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["expiringImageTotalCount"] = args["expiringImageTotalCount"],
+	}
+	asserts.AssertLifecyclePolicyPreviewSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.InitiateLayerUploadResponse = { ["partSize"] = true, ["uploadId"] = true, nil }
 
 function asserts.AssertInitiateLayerUploadResponse(struct)
@@ -1360,52 +1889,6 @@ function M.InitiateLayerUploadResponse(args)
 		["uploadId"] = args["uploadId"],
 	}
 	asserts.AssertInitiateLayerUploadResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.Image = { ["imageManifest"] = true, ["repositoryName"] = true, ["registryId"] = true, ["imageId"] = true, nil }
-
-function asserts.AssertImage(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected Image to be of type 'table'")
-	if struct["imageManifest"] then asserts.AssertImageManifest(struct["imageManifest"]) end
-	if struct["repositoryName"] then asserts.AssertRepositoryName(struct["repositoryName"]) end
-	if struct["registryId"] then asserts.AssertRegistryId(struct["registryId"]) end
-	if struct["imageId"] then asserts.AssertImageIdentifier(struct["imageId"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.Image[k], "Image contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type Image
--- <p>An object representing an Amazon ECR image.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * imageManifest [ImageManifest] <p>The image manifest associated with the image.</p>
--- * repositoryName [RepositoryName] <p>The name of the repository associated with the image.</p>
--- * registryId [RegistryId] <p>The AWS account ID associated with the registry containing the image.</p>
--- * imageId [ImageIdentifier] <p>An object containing the image tag and image digest associated with an image.</p>
--- @return Image structure as a key-value pair table
-function M.Image(args)
-	assert(args, "You must provide an argument table when creating Image")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["imageManifest"] = args["imageManifest"],
-		["repositoryName"] = args["repositoryName"],
-		["registryId"] = args["registryId"],
-		["imageId"] = args["imageId"],
-	}
-	asserts.AssertImage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1608,8 +2091,8 @@ end
 -- * layerPartBlob [LayerPartBlob] <p>The base64-encoded layer part payload.</p>
 -- * partFirstByte [PartSize] <p>The integer value of the first byte of the layer part.</p>
 -- * uploadId [UploadId] <p>The upload ID from a previous <a>InitiateLayerUpload</a> operation to associate with the layer part upload.</p>
--- * registryId [RegistryId] <p>The AWS account ID associated with the registry that you are uploading layer parts to. If you do not specify a registry, the default registry is assumed.</p>
--- * repositoryName [RepositoryName] <p>The name of the repository that you are uploading layer parts to.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry to which you are uploading layer parts. If you do not specify a registry, the default registry is assumed.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository to which you are uploading layer parts.</p>
 -- * partLastByte [PartSize] <p>The integer value of the last byte of the layer part.</p>
 -- Required key: repositoryName
 -- Required key: uploadId
@@ -1700,9 +2183,9 @@ end
 -- Valid keys:
 -- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository.</p>
 -- * repositoryName [RepositoryName] <p>The name of the repository.</p>
--- * repositoryArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the repository. The ARN contains the <code>arn:aws:ecr</code> namespace, followed by the region of the repository, the AWS account ID of the repository owner, the repository namespace, and then the repository name. For example, <code>arn:aws:ecr:region:012345678910:repository/test</code>.</p>
--- * createdAt [CreationTimestamp] <p>The date and time, in JavaScript date/time format, when the repository was created.</p>
--- * repositoryUri [Url] <p>The URI for the repository. You can use this URI for Docker <code>push</code> and <code>pull</code> operations.</p>
+-- * repositoryArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the repository. The ARN contains the <code>arn:aws:ecr</code> namespace, followed by the region of the repository, AWS account ID of the repository owner, repository namespace, and repository name. For example, <code>arn:aws:ecr:region:012345678910:repository/test</code>.</p>
+-- * createdAt [CreationTimestamp] <p>The date and time, in JavaScript date format, when the repository was created.</p>
+-- * repositoryUri [Url] <p>The URI for the repository. You can use this URI for Docker <code>push</code> or <code>pull</code> operations.</p>
 -- @return Repository structure as a key-value pair table
 function M.Repository(args)
 	assert(args, "You must provide an argument table when creating Repository")
@@ -1720,6 +2203,80 @@ function M.Repository(args)
 		["repositoryUri"] = args["repositoryUri"],
 	}
 	asserts.AssertRepository(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.LifecyclePolicyRuleAction = { ["type"] = true, nil }
+
+function asserts.AssertLifecyclePolicyRuleAction(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LifecyclePolicyRuleAction to be of type 'table'")
+	if struct["type"] then asserts.AssertImageActionType(struct["type"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.LifecyclePolicyRuleAction[k], "LifecyclePolicyRuleAction contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LifecyclePolicyRuleAction
+-- <p>The type of action to be taken.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * type [ImageActionType] <p>The type of action to be taken.</p>
+-- @return LifecyclePolicyRuleAction structure as a key-value pair table
+function M.LifecyclePolicyRuleAction(args)
+	assert(args, "You must provide an argument table when creating LifecyclePolicyRuleAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["type"] = args["type"],
+	}
+	asserts.AssertLifecyclePolicyRuleAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.LifecyclePolicyPreviewInProgressException = { ["message"] = true, nil }
+
+function asserts.AssertLifecyclePolicyPreviewInProgressException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LifecyclePolicyPreviewInProgressException to be of type 'table'")
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.LifecyclePolicyPreviewInProgressException[k], "LifecyclePolicyPreviewInProgressException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LifecyclePolicyPreviewInProgressException
+-- <p>The previous lifecycle policy preview request has not completed. Please try again later.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] 
+-- @return LifecyclePolicyPreviewInProgressException structure as a key-value pair table
+function M.LifecyclePolicyPreviewInProgressException(args)
+	assert(args, "You must provide an argument table when creating LifecyclePolicyPreviewInProgressException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["message"] = args["message"],
+	}
+	asserts.AssertLifecyclePolicyPreviewInProgressException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1782,7 +2339,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * repositoryName [RepositoryName] <p>The name of the repository whose policy you want to retrieve.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository with the policy to retrieve.</p>
 -- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.</p>
 -- Required key: repositoryName
 -- @return GetRepositoryPolicyRequest structure as a key-value pair table
@@ -1819,7 +2376,7 @@ function asserts.AssertImageAlreadyExistsException(struct)
 end
 
 --- Create a structure of type ImageAlreadyExistsException
--- <p>The specified image has already been pushed, and there are no changes to the manifest or image tag since the last push.</p>
+-- <p>The specified image has already been pushed, and there were no changes to the manifest or image tag after the last push.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
@@ -1873,6 +2430,144 @@ function M.ImageNotFoundException(args)
 		["message"] = args["message"],
 	}
 	asserts.AssertImageNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Image = { ["imageManifest"] = true, ["repositoryName"] = true, ["registryId"] = true, ["imageId"] = true, nil }
+
+function asserts.AssertImage(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Image to be of type 'table'")
+	if struct["imageManifest"] then asserts.AssertImageManifest(struct["imageManifest"]) end
+	if struct["repositoryName"] then asserts.AssertRepositoryName(struct["repositoryName"]) end
+	if struct["registryId"] then asserts.AssertRegistryId(struct["registryId"]) end
+	if struct["imageId"] then asserts.AssertImageIdentifier(struct["imageId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Image[k], "Image contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Image
+-- <p>An object representing an Amazon ECR image.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * imageManifest [ImageManifest] <p>The image manifest associated with the image.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository associated with the image.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry containing the image.</p>
+-- * imageId [ImageIdentifier] <p>An object containing the image tag and image digest associated with an image.</p>
+-- @return Image structure as a key-value pair table
+function M.Image(args)
+	assert(args, "You must provide an argument table when creating Image")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["imageManifest"] = args["imageManifest"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
+		["imageId"] = args["imageId"],
+	}
+	asserts.AssertImage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetLifecyclePolicyPreviewResponse = { ["status"] = true, ["nextToken"] = true, ["lifecyclePolicyText"] = true, ["summary"] = true, ["previewResults"] = true, ["registryId"] = true, ["repositoryName"] = true, nil }
+
+function asserts.AssertGetLifecyclePolicyPreviewResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetLifecyclePolicyPreviewResponse to be of type 'table'")
+	if struct["status"] then asserts.AssertLifecyclePolicyPreviewStatus(struct["status"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
+	if struct["lifecyclePolicyText"] then asserts.AssertLifecyclePolicyText(struct["lifecyclePolicyText"]) end
+	if struct["summary"] then asserts.AssertLifecyclePolicyPreviewSummary(struct["summary"]) end
+	if struct["previewResults"] then asserts.AssertLifecyclePolicyPreviewResultList(struct["previewResults"]) end
+	if struct["registryId"] then asserts.AssertRegistryId(struct["registryId"]) end
+	if struct["repositoryName"] then asserts.AssertRepositoryName(struct["repositoryName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetLifecyclePolicyPreviewResponse[k], "GetLifecyclePolicyPreviewResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetLifecyclePolicyPreviewResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [LifecyclePolicyPreviewStatus] <p>The status of the lifecycle policy preview request.</p>
+-- * nextToken [NextToken] <p>The <code>nextToken</code> value to include in a future <code>GetLifecyclePolicyPreview</code> request. When the results of a <code>GetLifecyclePolicyPreview</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- * lifecyclePolicyText [LifecyclePolicyText] <p>The JSON lifecycle policy text.</p>
+-- * summary [LifecyclePolicyPreviewSummary] <p>The list of images that is returned as a result of the action.</p>
+-- * previewResults [LifecyclePolicyPreviewResultList] <p>The results of the lifecycle policy preview request.</p>
+-- * registryId [RegistryId] <p>The registry ID associated with the request.</p>
+-- * repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
+-- @return GetLifecyclePolicyPreviewResponse structure as a key-value pair table
+function M.GetLifecyclePolicyPreviewResponse(args)
+	assert(args, "You must provide an argument table when creating GetLifecyclePolicyPreviewResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["status"] = args["status"],
+		["nextToken"] = args["nextToken"],
+		["lifecyclePolicyText"] = args["lifecyclePolicyText"],
+		["summary"] = args["summary"],
+		["previewResults"] = args["previewResults"],
+		["registryId"] = args["registryId"],
+		["repositoryName"] = args["repositoryName"],
+	}
+	asserts.AssertGetLifecyclePolicyPreviewResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.LifecyclePolicyPreviewFilter = { ["tagStatus"] = true, nil }
+
+function asserts.AssertLifecyclePolicyPreviewFilter(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LifecyclePolicyPreviewFilter to be of type 'table'")
+	if struct["tagStatus"] then asserts.AssertTagStatus(struct["tagStatus"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.LifecyclePolicyPreviewFilter[k], "LifecyclePolicyPreviewFilter contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LifecyclePolicyPreviewFilter
+-- <p>The filter for the lifecycle policy preview.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * tagStatus [TagStatus] <p>The tag status of the image.</p>
+-- @return LifecyclePolicyPreviewFilter structure as a key-value pair table
+function M.LifecyclePolicyPreviewFilter(args)
+	assert(args, "You must provide an argument table when creating LifecyclePolicyPreviewFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["tagStatus"] = args["tagStatus"],
+	}
+	asserts.AssertLifecyclePolicyPreviewFilter(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2099,11 +2794,11 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * repositoryName [RepositoryName] <p>A list of repositories to describe. If this parameter is omitted, then all repositories in a registry are described.</p>
--- * maxResults [MaxResults] <p>The maximum number of repository results returned by <code>DescribeImages</code> in paginated output. When this parameter is used, <code>DescribeImages</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeImages</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeImages</code> returns up to 100 results and a <code>nextToken</code> value, if applicable.</p>
+-- * maxResults [MaxResults] <p>The maximum number of repository results returned by <code>DescribeImages</code> in paginated output. When this parameter is used, <code>DescribeImages</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeImages</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeImages</code> returns up to 100 results and a <code>nextToken</code> value, if applicable. This option cannot be used when you specify images with <code>imageIds</code>.</p>
 -- * filter [DescribeImagesFilter] <p>The filter key and value with which to filter your <code>DescribeImages</code> results.</p>
 -- * imageIds [ImageIdentifierList] <p>The list of image IDs for the requested repository.</p>
 -- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository in which to describe images. If you do not specify a registry, the default registry is assumed.</p>
--- * nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeImages</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p>
+-- * nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeImages</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return. This option cannot be used when you specify images with <code>imageIds</code>.</p>
 -- Required key: repositoryName
 -- @return DescribeImagesRequest structure as a key-value pair table
 function M.DescribeImagesRequest(args)
@@ -2202,6 +2897,48 @@ function M.ServerException(args)
 		["message"] = args["message"],
 	}
 	asserts.AssertServerException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteLifecyclePolicyRequest = { ["repositoryName"] = true, ["registryId"] = true, nil }
+
+function asserts.AssertDeleteLifecyclePolicyRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteLifecyclePolicyRequest to be of type 'table'")
+	assert(struct["repositoryName"], "Expected key repositoryName to exist in table")
+	if struct["repositoryName"] then asserts.AssertRepositoryName(struct["repositoryName"]) end
+	if struct["registryId"] then asserts.AssertRegistryId(struct["registryId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteLifecyclePolicyRequest[k], "DeleteLifecyclePolicyRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteLifecyclePolicyRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The name of the repository.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.</p>
+-- Required key: repositoryName
+-- @return DeleteLifecyclePolicyRequest structure as a key-value pair table
+function M.DeleteLifecyclePolicyRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteLifecyclePolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
+	}
+	asserts.AssertDeleteLifecyclePolicyRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2395,7 +3132,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * force [ForceFlag] <p>Force the deletion of the repository if it contains images.</p>
+-- * force [ForceFlag] <p> If a repository contains images, forces the deletion.</p>
 -- * repositoryName [RepositoryName] <p>The name of the repository to delete.</p>
 -- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository to delete. If you do not specify a registry, the default registry is assumed.</p>
 -- Required key: repositoryName
@@ -2519,8 +3256,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * repositoryName [RepositoryName] <p>The name of the repository that you intend to upload layers to.</p>
--- * registryId [RegistryId] <p>The AWS account ID associated with the registry that you intend to upload layers to. If you do not specify a registry, the default registry is assumed.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository to which you intend to upload layers.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry to which you intend to upload layers. If you do not specify a registry, the default registry is assumed.</p>
 -- Required key: repositoryName
 -- @return InitiateLayerUploadRequest structure as a key-value pair table
 function M.InitiateLayerUploadRequest(args)
@@ -2612,6 +3349,17 @@ function M.LayerAvailability(str)
 	return str
 end
 
+function asserts.AssertLifecyclePolicyPreviewStatus(str)
+	assert(str)
+	assert(type(str) == "string", "Expected LifecyclePolicyPreviewStatus to be of type 'string'")
+end
+
+--  
+function M.LifecyclePolicyPreviewStatus(str)
+	asserts.AssertLifecyclePolicyPreviewStatus(str)
+	return str
+end
+
 function asserts.AssertImageTag(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ImageTag to be of type 'string'")
@@ -2631,6 +3379,19 @@ end
 --  
 function M.TagStatus(str)
 	asserts.AssertTagStatus(str)
+	return str
+end
+
+function asserts.AssertLifecyclePolicyText(str)
+	assert(str)
+	assert(type(str) == "string", "Expected LifecyclePolicyText to be of type 'string'")
+	assert(#str <= 10240, "Expected string to be max 10240 characters")
+	assert(#str >= 100, "Expected string to be min 100 characters")
+end
+
+--  
+function M.LifecyclePolicyText(str)
+	asserts.AssertLifecyclePolicyText(str)
 	return str
 end
 
@@ -2768,6 +3529,17 @@ function M.RegistryId(str)
 	return str
 end
 
+function asserts.AssertImageActionType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ImageActionType to be of type 'string'")
+end
+
+--  
+function M.ImageActionType(str)
+	asserts.AssertImageActionType(str)
+	return str
+end
+
 function asserts.AssertRepositoryName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RepositoryName to be of type 'string'")
@@ -2869,6 +3641,18 @@ function M.LayerSizeInBytes(long)
 	return long
 end
 
+function asserts.AssertLifecyclePolicyRulePriority(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected LifecyclePolicyRulePriority to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
+	assert(integer >= 1, "Expected integer to be min 1")
+end
+
+function M.LifecyclePolicyRulePriority(integer)
+	asserts.AssertLifecyclePolicyRulePriority(integer)
+	return integer
+end
+
 function asserts.AssertMaxResults(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected MaxResults to be of type 'number'")
@@ -2879,6 +3663,17 @@ end
 
 function M.MaxResults(integer)
 	asserts.AssertMaxResults(integer)
+	return integer
+end
+
+function asserts.AssertImageCount(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected ImageCount to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
+end
+
+function M.ImageCount(integer)
+	asserts.AssertImageCount(integer)
 	return integer
 end
 
@@ -2899,6 +3694,16 @@ end
 
 function M.PushTimestamp(timestamp)
 	asserts.AssertPushTimestamp(timestamp)
+	return timestamp
+end
+
+function asserts.AssertEvaluationTimestamp(timestamp)
+	assert(timestamp)
+	assert(type(timestamp) == "string", "Expected EvaluationTimestamp to be of type 'string'")
+end
+
+function M.EvaluationTimestamp(timestamp)
+	asserts.AssertEvaluationTimestamp(timestamp)
 	return timestamp
 end
 
@@ -3042,6 +3847,21 @@ end
 -- List of ImageFailure objects
 function M.ImageFailureList(list)
 	asserts.AssertImageFailureList(list)
+	return list
+end
+
+function asserts.AssertLifecyclePolicyPreviewResultList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected LifecyclePolicyPreviewResultList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertLifecyclePolicyPreviewResult(v)
+	end
+end
+
+--  
+-- List of LifecyclePolicyPreviewResult objects
+function M.LifecyclePolicyPreviewResultList(list)
+	asserts.AssertLifecyclePolicyPreviewResultList(list)
 	return list
 end
 
@@ -3197,41 +4017,6 @@ end
 --
 -- OPERATIONS
 --
---- Call DescribeRepositories asynchronously, invoking a callback when done
--- @param DescribeRepositoriesRequest
--- @param cb Callback function accepting two args: response, error_message
-function M.DescribeRepositoriesAsync(DescribeRepositoriesRequest, cb)
-	assert(DescribeRepositoriesRequest, "You must provide a DescribeRepositoriesRequest")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.DescribeRepositories",
-	}
-	for header,value in pairs(DescribeRepositoriesRequest.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", DescribeRepositoriesRequest, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call DescribeRepositories synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param DescribeRepositoriesRequest
--- @return response
--- @return error_message
-function M.DescribeRepositoriesSync(DescribeRepositoriesRequest, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.DescribeRepositoriesAsync(DescribeRepositoriesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
 --- Call DeleteRepository asynchronously, invoking a callback when done
 -- @param DeleteRepositoryRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -3262,111 +4047,6 @@ function M.DeleteRepositorySync(DeleteRepositoryRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DeleteRepositoryAsync(DeleteRepositoryRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call BatchDeleteImage asynchronously, invoking a callback when done
--- @param BatchDeleteImageRequest
--- @param cb Callback function accepting two args: response, error_message
-function M.BatchDeleteImageAsync(BatchDeleteImageRequest, cb)
-	assert(BatchDeleteImageRequest, "You must provide a BatchDeleteImageRequest")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.BatchDeleteImage",
-	}
-	for header,value in pairs(BatchDeleteImageRequest.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", BatchDeleteImageRequest, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call BatchDeleteImage synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param BatchDeleteImageRequest
--- @return response
--- @return error_message
-function M.BatchDeleteImageSync(BatchDeleteImageRequest, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.BatchDeleteImageAsync(BatchDeleteImageRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call GetDownloadUrlForLayer asynchronously, invoking a callback when done
--- @param GetDownloadUrlForLayerRequest
--- @param cb Callback function accepting two args: response, error_message
-function M.GetDownloadUrlForLayerAsync(GetDownloadUrlForLayerRequest, cb)
-	assert(GetDownloadUrlForLayerRequest, "You must provide a GetDownloadUrlForLayerRequest")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.GetDownloadUrlForLayer",
-	}
-	for header,value in pairs(GetDownloadUrlForLayerRequest.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", GetDownloadUrlForLayerRequest, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call GetDownloadUrlForLayer synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param GetDownloadUrlForLayerRequest
--- @return response
--- @return error_message
-function M.GetDownloadUrlForLayerSync(GetDownloadUrlForLayerRequest, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.GetDownloadUrlForLayerAsync(GetDownloadUrlForLayerRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call PutImage asynchronously, invoking a callback when done
--- @param PutImageRequest
--- @param cb Callback function accepting two args: response, error_message
-function M.PutImageAsync(PutImageRequest, cb)
-	assert(PutImageRequest, "You must provide a PutImageRequest")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.PutImage",
-	}
-	for header,value in pairs(PutImageRequest.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", PutImageRequest, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call PutImage synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param PutImageRequest
--- @return response
--- @return error_message
-function M.PutImageSync(PutImageRequest, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.PutImageAsync(PutImageRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3407,106 +4087,36 @@ function M.GetAuthorizationTokenSync(GetAuthorizationTokenRequest, ...)
 	return coroutine.yield()
 end
 
---- Call ListImages asynchronously, invoking a callback when done
--- @param ListImagesRequest
+--- Call StartLifecyclePolicyPreview asynchronously, invoking a callback when done
+-- @param StartLifecyclePolicyPreviewRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.ListImagesAsync(ListImagesRequest, cb)
-	assert(ListImagesRequest, "You must provide a ListImagesRequest")
+function M.StartLifecyclePolicyPreviewAsync(StartLifecyclePolicyPreviewRequest, cb)
+	assert(StartLifecyclePolicyPreviewRequest, "You must provide a StartLifecyclePolicyPreviewRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.ListImages",
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.StartLifecyclePolicyPreview",
 	}
-	for header,value in pairs(ListImagesRequest.headers) do
+	for header,value in pairs(StartLifecyclePolicyPreviewRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", ListImagesRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", StartLifecyclePolicyPreviewRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call ListImages synchronously, returning when done
+--- Call StartLifecyclePolicyPreview synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param ListImagesRequest
+-- @param StartLifecyclePolicyPreviewRequest
 -- @return response
 -- @return error_message
-function M.ListImagesSync(ListImagesRequest, ...)
+function M.StartLifecyclePolicyPreviewSync(StartLifecyclePolicyPreviewRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListImagesAsync(ListImagesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call GetRepositoryPolicy asynchronously, invoking a callback when done
--- @param GetRepositoryPolicyRequest
--- @param cb Callback function accepting two args: response, error_message
-function M.GetRepositoryPolicyAsync(GetRepositoryPolicyRequest, cb)
-	assert(GetRepositoryPolicyRequest, "You must provide a GetRepositoryPolicyRequest")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.GetRepositoryPolicy",
-	}
-	for header,value in pairs(GetRepositoryPolicyRequest.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", GetRepositoryPolicyRequest, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call GetRepositoryPolicy synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param GetRepositoryPolicyRequest
--- @return response
--- @return error_message
-function M.GetRepositoryPolicySync(GetRepositoryPolicyRequest, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.GetRepositoryPolicyAsync(GetRepositoryPolicyRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call CompleteLayerUpload asynchronously, invoking a callback when done
--- @param CompleteLayerUploadRequest
--- @param cb Callback function accepting two args: response, error_message
-function M.CompleteLayerUploadAsync(CompleteLayerUploadRequest, cb)
-	assert(CompleteLayerUploadRequest, "You must provide a CompleteLayerUploadRequest")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.CompleteLayerUpload",
-	}
-	for header,value in pairs(CompleteLayerUploadRequest.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", CompleteLayerUploadRequest, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call CompleteLayerUpload synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param CompleteLayerUploadRequest
--- @return response
--- @return error_message
-function M.CompleteLayerUploadSync(CompleteLayerUploadRequest, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.CompleteLayerUploadAsync(CompleteLayerUploadRequest, function(response, error_message)
+	M.StartLifecyclePolicyPreviewAsync(StartLifecyclePolicyPreviewRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3547,71 +4157,106 @@ function M.DescribeImagesSync(DescribeImagesRequest, ...)
 	return coroutine.yield()
 end
 
---- Call InitiateLayerUpload asynchronously, invoking a callback when done
--- @param InitiateLayerUploadRequest
+--- Call DeleteLifecyclePolicy asynchronously, invoking a callback when done
+-- @param DeleteLifecyclePolicyRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.InitiateLayerUploadAsync(InitiateLayerUploadRequest, cb)
-	assert(InitiateLayerUploadRequest, "You must provide a InitiateLayerUploadRequest")
+function M.DeleteLifecyclePolicyAsync(DeleteLifecyclePolicyRequest, cb)
+	assert(DeleteLifecyclePolicyRequest, "You must provide a DeleteLifecyclePolicyRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.InitiateLayerUpload",
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.DeleteLifecyclePolicy",
 	}
-	for header,value in pairs(InitiateLayerUploadRequest.headers) do
+	for header,value in pairs(DeleteLifecyclePolicyRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", InitiateLayerUploadRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", DeleteLifecyclePolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call InitiateLayerUpload synchronously, returning when done
+--- Call DeleteLifecyclePolicy synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param InitiateLayerUploadRequest
+-- @param DeleteLifecyclePolicyRequest
 -- @return response
 -- @return error_message
-function M.InitiateLayerUploadSync(InitiateLayerUploadRequest, ...)
+function M.DeleteLifecyclePolicySync(DeleteLifecyclePolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.InitiateLayerUploadAsync(InitiateLayerUploadRequest, function(response, error_message)
+	M.DeleteLifecyclePolicyAsync(DeleteLifecyclePolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
 end
 
---- Call BatchGetImage asynchronously, invoking a callback when done
--- @param BatchGetImageRequest
+--- Call DescribeRepositories asynchronously, invoking a callback when done
+-- @param DescribeRepositoriesRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.BatchGetImageAsync(BatchGetImageRequest, cb)
-	assert(BatchGetImageRequest, "You must provide a BatchGetImageRequest")
+function M.DescribeRepositoriesAsync(DescribeRepositoriesRequest, cb)
+	assert(DescribeRepositoriesRequest, "You must provide a DescribeRepositoriesRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.BatchGetImage",
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.DescribeRepositories",
 	}
-	for header,value in pairs(BatchGetImageRequest.headers) do
+	for header,value in pairs(DescribeRepositoriesRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", BatchGetImageRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", DescribeRepositoriesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call BatchGetImage synchronously, returning when done
+--- Call DescribeRepositories synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param BatchGetImageRequest
+-- @param DescribeRepositoriesRequest
 -- @return response
 -- @return error_message
-function M.BatchGetImageSync(BatchGetImageRequest, ...)
+function M.DescribeRepositoriesSync(DescribeRepositoriesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchGetImageAsync(BatchGetImageRequest, function(response, error_message)
+	M.DescribeRepositoriesAsync(DescribeRepositoriesRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetLifecyclePolicy asynchronously, invoking a callback when done
+-- @param GetLifecyclePolicyRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetLifecyclePolicyAsync(GetLifecyclePolicyRequest, cb)
+	assert(GetLifecyclePolicyRequest, "You must provide a GetLifecyclePolicyRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.GetLifecyclePolicy",
+	}
+	for header,value in pairs(GetLifecyclePolicyRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", GetLifecyclePolicyRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetLifecyclePolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetLifecyclePolicyRequest
+-- @return response
+-- @return error_message
+function M.GetLifecyclePolicySync(GetLifecyclePolicyRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetLifecyclePolicyAsync(GetLifecyclePolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3647,6 +4292,216 @@ function M.SetRepositoryPolicySync(SetRepositoryPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.SetRepositoryPolicyAsync(SetRepositoryPolicyRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutImage asynchronously, invoking a callback when done
+-- @param PutImageRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.PutImageAsync(PutImageRequest, cb)
+	assert(PutImageRequest, "You must provide a PutImageRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.PutImage",
+	}
+	for header,value in pairs(PutImageRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", PutImageRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call PutImage synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutImageRequest
+-- @return response
+-- @return error_message
+function M.PutImageSync(PutImageRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutImageAsync(PutImageRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UploadLayerPart asynchronously, invoking a callback when done
+-- @param UploadLayerPartRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UploadLayerPartAsync(UploadLayerPartRequest, cb)
+	assert(UploadLayerPartRequest, "You must provide a UploadLayerPartRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.UploadLayerPart",
+	}
+	for header,value in pairs(UploadLayerPartRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UploadLayerPartRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UploadLayerPart synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UploadLayerPartRequest
+-- @return response
+-- @return error_message
+function M.UploadLayerPartSync(UploadLayerPartRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UploadLayerPartAsync(UploadLayerPartRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutLifecyclePolicy asynchronously, invoking a callback when done
+-- @param PutLifecyclePolicyRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.PutLifecyclePolicyAsync(PutLifecyclePolicyRequest, cb)
+	assert(PutLifecyclePolicyRequest, "You must provide a PutLifecyclePolicyRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.PutLifecyclePolicy",
+	}
+	for header,value in pairs(PutLifecyclePolicyRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", PutLifecyclePolicyRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call PutLifecyclePolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutLifecyclePolicyRequest
+-- @return response
+-- @return error_message
+function M.PutLifecyclePolicySync(PutLifecyclePolicyRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutLifecyclePolicyAsync(PutLifecyclePolicyRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListImages asynchronously, invoking a callback when done
+-- @param ListImagesRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListImagesAsync(ListImagesRequest, cb)
+	assert(ListImagesRequest, "You must provide a ListImagesRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.ListImages",
+	}
+	for header,value in pairs(ListImagesRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListImagesRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListImages synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListImagesRequest
+-- @return response
+-- @return error_message
+function M.ListImagesSync(ListImagesRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListImagesAsync(ListImagesRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CompleteLayerUpload asynchronously, invoking a callback when done
+-- @param CompleteLayerUploadRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.CompleteLayerUploadAsync(CompleteLayerUploadRequest, cb)
+	assert(CompleteLayerUploadRequest, "You must provide a CompleteLayerUploadRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.CompleteLayerUpload",
+	}
+	for header,value in pairs(CompleteLayerUploadRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", CompleteLayerUploadRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CompleteLayerUpload synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CompleteLayerUploadRequest
+-- @return response
+-- @return error_message
+function M.CompleteLayerUploadSync(CompleteLayerUploadRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CompleteLayerUploadAsync(CompleteLayerUploadRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call InitiateLayerUpload asynchronously, invoking a callback when done
+-- @param InitiateLayerUploadRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.InitiateLayerUploadAsync(InitiateLayerUploadRequest, cb)
+	assert(InitiateLayerUploadRequest, "You must provide a InitiateLayerUploadRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.InitiateLayerUpload",
+	}
+	for header,value in pairs(InitiateLayerUploadRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", InitiateLayerUploadRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call InitiateLayerUpload synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param InitiateLayerUploadRequest
+-- @return response
+-- @return error_message
+function M.InitiateLayerUploadSync(InitiateLayerUploadRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.InitiateLayerUploadAsync(InitiateLayerUploadRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3722,36 +4577,141 @@ function M.BatchCheckLayerAvailabilitySync(BatchCheckLayerAvailabilityRequest, .
 	return coroutine.yield()
 end
 
---- Call UploadLayerPart asynchronously, invoking a callback when done
--- @param UploadLayerPartRequest
+--- Call GetLifecyclePolicyPreview asynchronously, invoking a callback when done
+-- @param GetLifecyclePolicyPreviewRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.UploadLayerPartAsync(UploadLayerPartRequest, cb)
-	assert(UploadLayerPartRequest, "You must provide a UploadLayerPartRequest")
+function M.GetLifecyclePolicyPreviewAsync(GetLifecyclePolicyPreviewRequest, cb)
+	assert(GetLifecyclePolicyPreviewRequest, "You must provide a GetLifecyclePolicyPreviewRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.UploadLayerPart",
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.GetLifecyclePolicyPreview",
 	}
-	for header,value in pairs(UploadLayerPartRequest.headers) do
+	for header,value in pairs(GetLifecyclePolicyPreviewRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", UploadLayerPartRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", GetLifecyclePolicyPreviewRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call UploadLayerPart synchronously, returning when done
+--- Call GetLifecyclePolicyPreview synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param UploadLayerPartRequest
+-- @param GetLifecyclePolicyPreviewRequest
 -- @return response
 -- @return error_message
-function M.UploadLayerPartSync(UploadLayerPartRequest, ...)
+function M.GetLifecyclePolicyPreviewSync(GetLifecyclePolicyPreviewRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UploadLayerPartAsync(UploadLayerPartRequest, function(response, error_message)
+	M.GetLifecyclePolicyPreviewAsync(GetLifecyclePolicyPreviewRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchDeleteImage asynchronously, invoking a callback when done
+-- @param BatchDeleteImageRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.BatchDeleteImageAsync(BatchDeleteImageRequest, cb)
+	assert(BatchDeleteImageRequest, "You must provide a BatchDeleteImageRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.BatchDeleteImage",
+	}
+	for header,value in pairs(BatchDeleteImageRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", BatchDeleteImageRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call BatchDeleteImage synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchDeleteImageRequest
+-- @return response
+-- @return error_message
+function M.BatchDeleteImageSync(BatchDeleteImageRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchDeleteImageAsync(BatchDeleteImageRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetDownloadUrlForLayer asynchronously, invoking a callback when done
+-- @param GetDownloadUrlForLayerRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetDownloadUrlForLayerAsync(GetDownloadUrlForLayerRequest, cb)
+	assert(GetDownloadUrlForLayerRequest, "You must provide a GetDownloadUrlForLayerRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.GetDownloadUrlForLayer",
+	}
+	for header,value in pairs(GetDownloadUrlForLayerRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", GetDownloadUrlForLayerRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetDownloadUrlForLayer synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDownloadUrlForLayerRequest
+-- @return response
+-- @return error_message
+function M.GetDownloadUrlForLayerSync(GetDownloadUrlForLayerRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDownloadUrlForLayerAsync(GetDownloadUrlForLayerRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetRepositoryPolicy asynchronously, invoking a callback when done
+-- @param GetRepositoryPolicyRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetRepositoryPolicyAsync(GetRepositoryPolicyRequest, cb)
+	assert(GetRepositoryPolicyRequest, "You must provide a GetRepositoryPolicyRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.GetRepositoryPolicy",
+	}
+	for header,value in pairs(GetRepositoryPolicyRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", GetRepositoryPolicyRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetRepositoryPolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetRepositoryPolicyRequest
+-- @return response
+-- @return error_message
+function M.GetRepositoryPolicySync(GetRepositoryPolicyRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetRepositoryPolicyAsync(GetRepositoryPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3787,6 +4747,41 @@ function M.DeleteRepositoryPolicySync(DeleteRepositoryPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DeleteRepositoryPolicyAsync(DeleteRepositoryPolicyRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchGetImage asynchronously, invoking a callback when done
+-- @param BatchGetImageRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.BatchGetImageAsync(BatchGetImageRequest, cb)
+	assert(BatchGetImageRequest, "You must provide a BatchGetImageRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.BatchGetImage",
+	}
+	for header,value in pairs(BatchGetImageRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", BatchGetImageRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call BatchGetImage synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchGetImageRequest
+-- @return response
+-- @return error_message
+function M.BatchGetImageSync(BatchGetImageRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchGetImageAsync(BatchGetImageRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

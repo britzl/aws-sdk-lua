@@ -224,7 +224,7 @@ end
 -- Valid keys:
 -- * InstanceCount [Integer] <p>The number of Amazon EC2 instances in the cluster. If the value is 1, the same instance serves as both the master and slave node. If the value is greater than 1, one instance is the master node and all others are slave nodes.</p>
 -- * Placement [PlacementType] <p>The Amazon EC2 Availability Zone for the cluster.</p>
--- * MasterPublicDnsName [XmlString] <p>The DNS name of the master node.</p>
+-- * MasterPublicDnsName [XmlString] <p>The DNS name of the master node. If the cluster is on a private subnet, this is the private DNS name. On a public subnet, this is the public DNS name.</p>
 -- * NormalizedInstanceHours [Integer] <p>An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour that an m1.small runs. Larger instances are weighted more, so an Amazon EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.</p>
 -- * MasterInstanceId [XmlString] <p>The Amazon EC2 instance identifier of the master node.</p>
 -- * InstanceGroups [InstanceGroupDetailList] <p>Details about the instance groups in a cluster.</p>
@@ -311,7 +311,7 @@ end
 -- * InstanceFleets [InstanceFleetConfigList] <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note> <p>Describes the EC2 instances and instance configurations for clusters that use the instance fleet configuration.</p>
 -- * MasterInstanceType [InstanceType] <p>The EC2 instance type of the master node.</p>
 -- * AdditionalSlaveSecurityGroups [SecurityGroupsList] <p>A list of additional Amazon EC2 security group IDs for the slave nodes.</p>
--- * HadoopVersion [XmlStringMaxLen256] <p>The Hadoop version for the cluster. Valid inputs are "0.18" (deprecated), "0.20" (deprecated), "0.20.205" (deprecated), "1.0.3", "2.2.0", or "2.4.0". If you do not set this value, the default of 0.18 is used, unless the AmiVersion parameter is set in the RunJobFlow call, in which case the default version of Hadoop for that AMI version is used.</p>
+-- * HadoopVersion [XmlStringMaxLen256] <p>Applies only to Amazon EMR release versions earlier than 4.0. The Hadoop version for the cluster. Valid inputs are "0.18" (deprecated), "0.20" (deprecated), "0.20.205" (deprecated), "1.0.3", "2.2.0", or "2.4.0". If you do not set this value, the default of 0.18 is used, unless the <code>AmiVersion</code> parameter is set in the RunJobFlow call, in which case the default version of Hadoop for that AMI version is used.</p>
 -- * AdditionalMasterSecurityGroups [SecurityGroupsList] <p>A list of additional Amazon EC2 security group IDs for the master node.</p>
 -- * Ec2SubnetId [XmlStringMaxLen256] <p>Applies to clusters that use the uniform instance group configuration. To launch the cluster in Amazon Virtual Private Cloud (Amazon VPC), set this parameter to the identifier of the Amazon VPC subnet where you want the cluster to launch. If you do not specify this value, the cluster launches in the normal Amazon Web Services cloud, outside of an Amazon VPC, if the account launching the cluster supports EC2 Classic networks in the region where the cluster launches.</p> <p>Amazon VPC currently does not support cluster compute quadruple extra large (cc1.4xlarge) instances. Thus you cannot specify the cc1.4xlarge instance type for clusters launched in an Amazon VPC.</p>
 -- * KeepJobFlowAliveWhenNoSteps [Boolean] <p>Specifies whether the cluster should remain available after completing all steps.</p>
@@ -916,10 +916,10 @@ end
 -- Valid keys:
 -- * ServiceAccessSecurityGroup [String] <p>The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.</p>
 -- * EmrManagedMasterSecurityGroup [String] <p>The identifier of the Amazon EC2 security group for the master node.</p>
--- * RequestedEc2AvailabilityZones [XmlStringMaxLen256List] <p>Applies to clusters configured with the The list of availability zones to choose from. The service will choose the availability zone with the best mix of available capacity and lowest cost to launch the cluster. If you do not specify this value, the cluster is launched in any availability zone that the customer account has access to.</p>
+-- * RequestedEc2AvailabilityZones [XmlStringMaxLen256List] <p>Applies to clusters configured with the instance fleets option. Specifies one or more Availability Zones in which to launch EC2 cluster instances when the EC2-Classic network configuration is supported. Amazon EMR chooses the Availability Zone with the best fit from among the list of <code>RequestedEc2AvailabilityZones</code>, and then launches all cluster instances within that Availability Zone. If you do not specify this value, Amazon EMR chooses the Availability Zone for you. <code>RequestedEc2SubnetIDs</code> and <code>RequestedEc2AvailabilityZones</code> cannot be specified together.</p>
 -- * AdditionalSlaveSecurityGroups [StringList] <p>A list of additional Amazon EC2 security group IDs for the slave nodes.</p>
 -- * AdditionalMasterSecurityGroups [StringList] <p>A list of additional Amazon EC2 security group IDs for the master node.</p>
--- * RequestedEc2SubnetIds [XmlStringMaxLen256List] <p>Applies to clusters configured with the instance fleets option. Specifies the unique identifier of one or more Amazon EC2 subnets in which to launch EC2 cluster instances. Amazon EMR chooses the EC2 subnet with the best performance and cost characteristics from among the list of RequestedEc2SubnetIds and launches all cluster instances within that subnet. If this value is not specified, and the account supports EC2-Classic networks, the cluster launches instances in the EC2-Classic network and uses Requested</p>
+-- * RequestedEc2SubnetIds [XmlStringMaxLen256List] <p>Applies to clusters configured with the instance fleets option. Specifies the unique identifier of one or more Amazon EC2 subnets in which to launch EC2 cluster instances. Subnets must exist within the same VPC. Amazon EMR chooses the EC2 subnet with the best fit from among the list of <code>RequestedEc2SubnetIds</code>, and then launches all cluster instances within that Subnet. If this value is not specified, and the account and region support EC2-Classic networks, the cluster launches instances in the EC2-Classic network and uses <code>RequestedEc2AvailabilityZones</code> instead of this setting. If EC2-Classic is not supported, and no Subnet is specified, Amazon EMR chooses the subnet for you. <code>RequestedEc2SubnetIDs</code> and <code>RequestedEc2AvailabilityZones</code> cannot be specified together.</p>
 -- * Ec2SubnetId [String] <p>To launch the cluster in Amazon VPC, set this parameter to the identifier of the Amazon VPC subnet where you want the cluster to launch. If you do not specify this value, the cluster is launched in the normal AWS cloud, outside of a VPC.</p> <p>Amazon VPC currently does not support cluster compute quadruple extra large (cc1.4xlarge) instances. Thus, you cannot specify the cc1.4xlarge instance type for nodes of a cluster launched in a VPC.</p>
 -- * IamInstanceProfile [String] <p>The IAM role that was specified when the cluster was launched. The EC2 instances of the cluster assume this role.</p>
 -- * Ec2KeyName [String] <p>The name of the Amazon EC2 key pair to use when connecting with SSH into the master node as a user named "hadoop".</p>
@@ -1121,10 +1121,10 @@ end
 -- <p>An instance type configuration for each instance type in an instance fleet, which determines the EC2 instances Amazon EMR attempts to provision to fulfill On-Demand and Spot target capacities. There can be a maximum of 5 instance type configurations in a fleet.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * WeightedCapacity [WholeNumber] <p>The number of units that a provisioned instance of this type provides toward fulfilling the target capacities defined in <a>InstanceFleetConfig</a>. This value is 1 for a master instance fleet, and must be greater than 0 for core and task instance fleets. </p>
+-- * WeightedCapacity [WholeNumber] <p>The number of units that a provisioned instance of this type provides toward fulfilling the target capacities defined in <a>InstanceFleetConfig</a>. This value is 1 for a master instance fleet, and must be 1 or greater for core and task instance fleets. Defaults to 1 if not specified. </p>
 -- * EbsConfiguration [EbsConfiguration] <p>The configuration of Amazon Elastic Block Storage (EBS) attached to each instance as defined by <code>InstanceType</code>. </p>
 -- * BidPrice [XmlStringMaxLen256] <p>The bid price for each EC2 Spot instance type as defined by <code>InstanceType</code>. Expressed in USD. If neither <code>BidPrice</code> nor <code>BidPriceAsPercentageOfOnDemandPrice</code> is provided, <code>BidPriceAsPercentageOfOnDemandPrice</code> defaults to 100%. </p>
--- * BidPriceAsPercentageOfOnDemandPrice [NonNegativeDouble] <p>The bid price, as a percentage of On-Demand price, for each EC2 Spot instance as defined by <code>InstanceType</code>. Expressed as a number between 0 and 1000 (for example, 20 specifies 20%). If neither <code>BidPrice</code> nor <code>BidPriceAsPercentageOfOnDemandPrice</code> is provided, <code>BidPriceAsPercentageOfOnDemandPrice</code> defaults to 100%.</p>
+-- * BidPriceAsPercentageOfOnDemandPrice [NonNegativeDouble] <p>The bid price, as a percentage of On-Demand price, for each EC2 Spot instance as defined by <code>InstanceType</code>. Expressed as a number (for example, 20 specifies 20%). If neither <code>BidPrice</code> nor <code>BidPriceAsPercentageOfOnDemandPrice</code> is provided, <code>BidPriceAsPercentageOfOnDemandPrice</code> defaults to 100%.</p>
 -- * InstanceType [InstanceType] <p>An EC2 instance type, such as <code>m3.xlarge</code>. </p>
 -- * Configurations [ConfigurationList] <p>A configuration classification that applies when provisioning cluster instances, which can include configurations for applications and software that run on the cluster.</p>
 -- Required key: InstanceType
@@ -1402,11 +1402,11 @@ function asserts.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- <p>A key/value pair containing user-defined metadata that you can associate with an Amazon EMR resource. Tags make it easier to associate clusters in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging Amazon EMR Resources</a>. </p>
+-- <p>A key/value pair containing user-defined metadata that you can associate with an Amazon EMR resource. Tags make it easier to associate clusters in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html">Tag Clusters</a>. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Value [String] <p>A user-defined value, which is optional in a tag. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging Amazon EMR Resources</a>. </p>
--- * Key [String] <p>A user-defined key, which is the minimum required information for a valid tag. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging Amazon EMR Resources</a>. </p>
+-- * Value [String] <p>A user-defined value, which is optional in a tag. For more information, see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html">Tag Clusters</a>. </p>
+-- * Key [String] <p>A user-defined key, which is the minimum required information for a valid tag. For more information, see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html">Tag </a>. </p>
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
 	assert(args, "You must provide an argument table when creating Tag")
@@ -1587,7 +1587,7 @@ end
 -- * InstanceRole [InstanceRoleType] <p>The role of the instance group in the cluster.</p>
 -- * AutoScalingPolicy [AutoScalingPolicy] <p>An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. See <a>PutAutoScalingPolicy</a>.</p>
 -- * EbsConfiguration [EbsConfiguration] <p>EBS configurations that will be attached to each EC2 instance in the instance group.</p>
--- * BidPrice [XmlStringMaxLen256] <p>Bid price for each EC2 instance in the instance group when launching nodes as Spot Instances, expressed in USD.</p>
+-- * BidPrice [XmlStringMaxLen256] <p>The maximum Spot price your are willing to pay for EC2 instances.</p> <p>An optional, nullable field that applies if the <code>MarketType</code> for the instance group is specified as <code>SPOT</code>. Specify the maximum spot price in USD. If the value is NULL and <code>SPOT</code> is specified, the maximum Spot price is set equal to the On-Demand price.</p>
 -- * InstanceType [InstanceType] <p>The EC2 instance type for all instances in the instance group.</p>
 -- * Market [MarketType] <p>Market type of the EC2 instances used to create a cluster node.</p>
 -- * Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of configurations supplied for an EMR cluster instance group. You can specify a separate configuration for each instance group (master, core, and task).</p>
@@ -1737,7 +1737,7 @@ function asserts.AssertApplication(struct)
 end
 
 --- Create a structure of type Application
--- <p>An application is any Amazon or third-party software that you can add to the cluster. This structure contains a list of strings that indicates the software to use with the cluster and accepts a user argument list. Amazon EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action argument. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/emr-mapr.html">Using the MapR Distribution for Hadoop</a>. Currently supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the cluster using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the cluster using MapR M5 Edition.</p> </li> <li> <p>"mapr" with the user arguments specifying "--edition,m3" or "--edition,m5" - launch the cluster using MapR M3 or M5 Edition, respectively.</p> </li> </ul> <note> <p>In Amazon EMR releases 4.0 and greater, the only accepted parameter is the application name. To pass arguments to applications, you supply a configuration for each application.</p> </note>
+-- <p>An application is any Amazon or third-party software that you can add to the cluster. This structure contains a list of strings that indicates the software to use with the cluster and accepts a user argument list. Amazon EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action argument. For more information, see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-mapr.html">Using the MapR Distribution for Hadoop</a>. Currently supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the cluster using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the cluster using MapR M5 Edition.</p> </li> <li> <p>"mapr" with the user arguments specifying "--edition,m3" or "--edition,m5" - launch the cluster using MapR M3 or M5 Edition, respectively.</p> </li> </ul> <note> <p>In Amazon EMR releases 4.x and later, the only accepted parameter is the application name. To pass arguments to applications, you supply a configuration for each application.</p> </note>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Args [StringList] <p>Arguments for Amazon EMR to pass to the application.</p>
@@ -1808,30 +1808,34 @@ function M.EbsConfiguration(args)
     }
 end
 
-keys.RunJobFlowInput = { ["AutoScalingRole"] = true, ["AdditionalInfo"] = true, ["SecurityConfiguration"] = true, ["Name"] = true, ["ServiceRole"] = true, ["Applications"] = true, ["ReleaseLabel"] = true, ["Tags"] = true, ["BootstrapActions"] = true, ["Instances"] = true, ["JobFlowRole"] = true, ["Steps"] = true, ["ScaleDownBehavior"] = true, ["Configurations"] = true, ["VisibleToAllUsers"] = true, ["LogUri"] = true, ["AmiVersion"] = true, ["NewSupportedProducts"] = true, ["SupportedProducts"] = true, nil }
+keys.RunJobFlowInput = { ["BootstrapActions"] = true, ["LogUri"] = true, ["AmiVersion"] = true, ["AutoScalingRole"] = true, ["Tags"] = true, ["Applications"] = true, ["JobFlowRole"] = true, ["EbsRootVolumeSize"] = true, ["ScaleDownBehavior"] = true, ["CustomAmiId"] = true, ["AdditionalInfo"] = true, ["Name"] = true, ["ServiceRole"] = true, ["SecurityConfiguration"] = true, ["Steps"] = true, ["RepoUpgradeOnBoot"] = true, ["Configurations"] = true, ["ReleaseLabel"] = true, ["Instances"] = true, ["KerberosAttributes"] = true, ["VisibleToAllUsers"] = true, ["NewSupportedProducts"] = true, ["SupportedProducts"] = true, nil }
 
 function asserts.AssertRunJobFlowInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RunJobFlowInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["Instances"], "Expected key Instances to exist in table")
-	if struct["AutoScalingRole"] then asserts.AssertXmlString(struct["AutoScalingRole"]) end
-	if struct["AdditionalInfo"] then asserts.AssertXmlString(struct["AdditionalInfo"]) end
-	if struct["SecurityConfiguration"] then asserts.AssertXmlString(struct["SecurityConfiguration"]) end
-	if struct["Name"] then asserts.AssertXmlStringMaxLen256(struct["Name"]) end
-	if struct["ServiceRole"] then asserts.AssertXmlString(struct["ServiceRole"]) end
-	if struct["Applications"] then asserts.AssertApplicationList(struct["Applications"]) end
-	if struct["ReleaseLabel"] then asserts.AssertXmlStringMaxLen256(struct["ReleaseLabel"]) end
-	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
 	if struct["BootstrapActions"] then asserts.AssertBootstrapActionConfigList(struct["BootstrapActions"]) end
-	if struct["Instances"] then asserts.AssertJobFlowInstancesConfig(struct["Instances"]) end
-	if struct["JobFlowRole"] then asserts.AssertXmlString(struct["JobFlowRole"]) end
-	if struct["Steps"] then asserts.AssertStepConfigList(struct["Steps"]) end
-	if struct["ScaleDownBehavior"] then asserts.AssertScaleDownBehavior(struct["ScaleDownBehavior"]) end
-	if struct["Configurations"] then asserts.AssertConfigurationList(struct["Configurations"]) end
-	if struct["VisibleToAllUsers"] then asserts.AssertBoolean(struct["VisibleToAllUsers"]) end
 	if struct["LogUri"] then asserts.AssertXmlString(struct["LogUri"]) end
 	if struct["AmiVersion"] then asserts.AssertXmlStringMaxLen256(struct["AmiVersion"]) end
+	if struct["AutoScalingRole"] then asserts.AssertXmlString(struct["AutoScalingRole"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["Applications"] then asserts.AssertApplicationList(struct["Applications"]) end
+	if struct["JobFlowRole"] then asserts.AssertXmlString(struct["JobFlowRole"]) end
+	if struct["EbsRootVolumeSize"] then asserts.AssertInteger(struct["EbsRootVolumeSize"]) end
+	if struct["ScaleDownBehavior"] then asserts.AssertScaleDownBehavior(struct["ScaleDownBehavior"]) end
+	if struct["CustomAmiId"] then asserts.AssertXmlStringMaxLen256(struct["CustomAmiId"]) end
+	if struct["AdditionalInfo"] then asserts.AssertXmlString(struct["AdditionalInfo"]) end
+	if struct["Name"] then asserts.AssertXmlStringMaxLen256(struct["Name"]) end
+	if struct["ServiceRole"] then asserts.AssertXmlString(struct["ServiceRole"]) end
+	if struct["SecurityConfiguration"] then asserts.AssertXmlString(struct["SecurityConfiguration"]) end
+	if struct["Steps"] then asserts.AssertStepConfigList(struct["Steps"]) end
+	if struct["RepoUpgradeOnBoot"] then asserts.AssertRepoUpgradeOnBoot(struct["RepoUpgradeOnBoot"]) end
+	if struct["Configurations"] then asserts.AssertConfigurationList(struct["Configurations"]) end
+	if struct["ReleaseLabel"] then asserts.AssertXmlStringMaxLen256(struct["ReleaseLabel"]) end
+	if struct["Instances"] then asserts.AssertJobFlowInstancesConfig(struct["Instances"]) end
+	if struct["KerberosAttributes"] then asserts.AssertKerberosAttributes(struct["KerberosAttributes"]) end
+	if struct["VisibleToAllUsers"] then asserts.AssertBoolean(struct["VisibleToAllUsers"]) end
 	if struct["NewSupportedProducts"] then asserts.AssertNewSupportedProductsList(struct["NewSupportedProducts"]) end
 	if struct["SupportedProducts"] then asserts.AssertSupportedProductsList(struct["SupportedProducts"]) end
 	for k,_ in pairs(struct) do
@@ -1843,25 +1847,29 @@ end
 -- <p> Input to the <a>RunJobFlow</a> operation. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * BootstrapActions [BootstrapActionConfigList] <p>A list of bootstrap actions to run before Hadoop starts on the cluster nodes.</p>
+-- * LogUri [XmlString] <p>The location in Amazon S3 to write the log files of the job flow. If a value is not provided, logs are not created.</p>
+-- * AmiVersion [XmlStringMaxLen256] <p>Applies only to Amazon EMR AMI versions 3.x and 2.x. For Amazon EMR releases 4.0 and later, <code>ReleaseLabel</code> is used. To specify a custom AMI, use <code>CustomAmiID</code>.</p>
 -- * AutoScalingRole [XmlString] <p>An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an instance group.</p>
+-- * Tags [TagList] <p>A list of tags to associate with a cluster and propagate to Amazon EC2 instances.</p>
+-- * Applications [ApplicationList] <p>For Amazon EMR releases 4.0 and later. A list of applications for the cluster. Valid values are: "Hadoop", "Hive", "Mahout", "Pig", and "Spark." They are case insensitive.</p>
+-- * JobFlowRole [XmlString] <p>Also called instance profile and EC2 role. An IAM role for an EMR cluster. The EC2 instances of the cluster assume this role. The default role is <code>EMR_EC2_DefaultRole</code>. In order to use the default role, you must have already created it using the CLI or console.</p>
+-- * EbsRootVolumeSize [Integer] <p>The size, in GiB, of the EBS root device volume of the Linux AMI that is used for each EC2 instance. Available in Amazon EMR version 4.x and later.</p>
+-- * ScaleDownBehavior [ScaleDownBehavior] <p>Specifies the way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.</p>
+-- * CustomAmiId [XmlStringMaxLen256] <p>Available only in Amazon EMR version 5.7.0 and later. The ID of a custom Amazon EBS-backed Linux AMI. If specified, Amazon EMR uses this AMI when it launches cluster EC2 instances. For more information about custom AMIs in Amazon EMR, see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html">Using a Custom AMI</a> in the <i>Amazon EMR Management Guide</i>. If omitted, the cluster uses the base Linux AMI for the <code>ReleaseLabel</code> specified. For Amazon EMR versions 2.x and 3.x, use <code>AmiVersion</code> instead.</p> <p>For information about creating a custom AMI, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html">Creating an Amazon EBS-Backed Linux AMI</a> in the <i>Amazon Elastic Compute Cloud User Guide for Linux Instances</i>. For information about finding an AMI ID, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding a Linux AMI</a>. </p>
 -- * AdditionalInfo [XmlString] <p>A JSON string for selecting additional features.</p>
--- * SecurityConfiguration [XmlString] <p>The name of a security configuration to apply to the cluster.</p>
 -- * Name [XmlStringMaxLen256] <p>The name of the job flow.</p>
 -- * ServiceRole [XmlString] <p>The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.</p>
--- * Applications [ApplicationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>A list of applications for the cluster. Valid values are: "Hadoop", "Hive", "Mahout", "Pig", and "Spark." They are case insensitive.</p>
--- * ReleaseLabel [XmlStringMaxLen256] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The release label for the Amazon EMR release. For Amazon EMR 3.x and 2.x AMIs, use amiVersion instead instead of ReleaseLabel.</p>
--- * Tags [TagList] <p>A list of tags to associate with a cluster and propagate to Amazon EC2 instances.</p>
--- * BootstrapActions [BootstrapActionConfigList] <p>A list of bootstrap actions to run before Hadoop starts on the cluster nodes.</p>
--- * Instances [JobFlowInstancesConfig] <p>A specification of the number and type of Amazon EC2 instances.</p>
--- * JobFlowRole [XmlString] <p>Also called instance profile and EC2 role. An IAM role for an EMR cluster. The EC2 instances of the cluster assume this role. The default role is <code>EMR_EC2_DefaultRole</code>. In order to use the default role, you must have already created it using the CLI or console.</p>
+-- * SecurityConfiguration [XmlString] <p>The name of a security configuration to apply to the cluster.</p>
 -- * Steps [StepConfigList] <p>A list of steps to run.</p>
--- * ScaleDownBehavior [ScaleDownBehavior] <p>Specifies the way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.</p>
--- * Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of configurations supplied for the EMR cluster you are creating.</p>
+-- * RepoUpgradeOnBoot [RepoUpgradeOnBoot] <p>Applies only when <code>CustomAmiID</code> is used. Specifies which updates from the Amazon Linux AMI package repositories to apply automatically when the instance boots using the AMI. If omitted, the default is <code>SECURITY</code>, which indicates that only security updates are applied. If <code>NONE</code> is specified, no updates are applied, and all updates must be applied manually.</p>
+-- * Configurations [ConfigurationList] <p>For Amazon EMR releases 4.0 and later. The list of configurations supplied for the EMR cluster you are creating.</p>
+-- * ReleaseLabel [XmlStringMaxLen256] <p>The Amazon EMR release label, which determines the version of open-source application packages installed on the cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR release version, for example, <code>emr-5.14.0</code>. For more information about Amazon EMR release versions and included application versions and features, see <a href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/">http://docs.aws.amazon.com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR releases versions 4.x and later. Earlier versions use <code>AmiVersion</code>.</p>
+-- * Instances [JobFlowInstancesConfig] <p>A specification of the number and type of Amazon EC2 instances.</p>
+-- * KerberosAttributes [KerberosAttributes] <p>Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For more information see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use Kerberos Authentication</a> in the <i>EMR Management Guide</i>.</p>
 -- * VisibleToAllUsers [Boolean] <p>Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the cluster can view and manage it.</p>
--- * LogUri [XmlString] <p>The location in Amazon S3 to write the log files of the job flow. If a value is not provided, logs are not created.</p>
--- * AmiVersion [XmlStringMaxLen256] <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use ReleaseLabel.</p> </note> <p>The version of the Amazon Machine Image (AMI) to use when launching Amazon EC2 instances in the job flow. The following values are valid:</p> <ul> <li> <p>The version number of the AMI to use, for example, "2.0."</p> </li> </ul> <p>If the AMI supports multiple versions of Hadoop (for example, AMI 1.0 supports both Hadoop 0.18 and 0.20) you can use the <a>JobFlowInstancesConfig</a> <code>HadoopVersion</code> parameter to modify the version of Hadoop from the defaults shown above.</p> <p>For details about the AMI versions currently supported by Amazon Elastic MapReduce, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported">AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer Guide.</i> </p> <note> <p>Previously, the EMR AMI version API parameter options allowed you to use latest for the latest AMI version rather than specify a numerical value. Some regions no longer support this deprecated option as they only have a newer release label version of EMR, which requires you to specify an EMR release label release (EMR 4.x or later).</p> </note>
--- * NewSupportedProducts [NewSupportedProductsList] <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use Applications.</p> </note> <p>A list of strings that indicates third-party software to use with the job flow that accepts a user argument list. EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action arguments. For more information, see "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a href="http://docs.aws.amazon.com/http:/docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the cluster using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the cluster using MapR M5 Edition.</p> </li> <li> <p>"mapr" with the user arguments specifying "--edition,m3" or "--edition,m5" - launch the job flow using MapR M3 or M5 Edition respectively.</p> </li> <li> <p>"mapr-m7" - launch the cluster using MapR M7 Edition.</p> </li> <li> <p>"hunk" - launch the cluster with the Hunk Big Data Analtics Platform.</p> </li> <li> <p>"hue"- launch the cluster with Hue installed.</p> </li> <li> <p>"spark" - launch the cluster with Apache Spark installed.</p> </li> <li> <p>"ganglia" - launch the cluster with the Ganglia Monitoring System installed.</p> </li> </ul>
--- * SupportedProducts [SupportedProductsList] <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use Applications.</p> </note> <p>A list of strings that indicates third-party software to use. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html">Use Third Party Applications with Amazon EMR</a>. Currently supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the job flow using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the job flow using MapR M5 Edition.</p> </li> </ul>
+-- * NewSupportedProducts [NewSupportedProductsList] <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and later, use Applications.</p> </note> <p>A list of strings that indicates third-party software to use with the job flow that accepts a user argument list. EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action arguments. For more information, see "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the cluster using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the cluster using MapR M5 Edition.</p> </li> <li> <p>"mapr" with the user arguments specifying "--edition,m3" or "--edition,m5" - launch the job flow using MapR M3 or M5 Edition respectively.</p> </li> <li> <p>"mapr-m7" - launch the cluster using MapR M7 Edition.</p> </li> <li> <p>"hunk" - launch the cluster with the Hunk Big Data Analtics Platform.</p> </li> <li> <p>"hue"- launch the cluster with Hue installed.</p> </li> <li> <p>"spark" - launch the cluster with Apache Spark installed.</p> </li> <li> <p>"ganglia" - launch the cluster with the Ganglia Monitoring System installed.</p> </li> </ul>
+-- * SupportedProducts [SupportedProductsList] <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and later, use Applications.</p> </note> <p>A list of strings that indicates third-party software to use. For more information, see the <a href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Currently supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the job flow using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the job flow using MapR M5 Edition.</p> </li> </ul>
 -- Required key: Name
 -- Required key: Instances
 -- @return RunJobFlowInput structure as a key-value pair table
@@ -1874,23 +1882,27 @@ function M.RunJobFlowInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["AutoScalingRole"] = args["AutoScalingRole"],
-		["AdditionalInfo"] = args["AdditionalInfo"],
-		["SecurityConfiguration"] = args["SecurityConfiguration"],
-		["Name"] = args["Name"],
-		["ServiceRole"] = args["ServiceRole"],
-		["Applications"] = args["Applications"],
-		["ReleaseLabel"] = args["ReleaseLabel"],
-		["Tags"] = args["Tags"],
 		["BootstrapActions"] = args["BootstrapActions"],
-		["Instances"] = args["Instances"],
-		["JobFlowRole"] = args["JobFlowRole"],
-		["Steps"] = args["Steps"],
-		["ScaleDownBehavior"] = args["ScaleDownBehavior"],
-		["Configurations"] = args["Configurations"],
-		["VisibleToAllUsers"] = args["VisibleToAllUsers"],
 		["LogUri"] = args["LogUri"],
 		["AmiVersion"] = args["AmiVersion"],
+		["AutoScalingRole"] = args["AutoScalingRole"],
+		["Tags"] = args["Tags"],
+		["Applications"] = args["Applications"],
+		["JobFlowRole"] = args["JobFlowRole"],
+		["EbsRootVolumeSize"] = args["EbsRootVolumeSize"],
+		["ScaleDownBehavior"] = args["ScaleDownBehavior"],
+		["CustomAmiId"] = args["CustomAmiId"],
+		["AdditionalInfo"] = args["AdditionalInfo"],
+		["Name"] = args["Name"],
+		["ServiceRole"] = args["ServiceRole"],
+		["SecurityConfiguration"] = args["SecurityConfiguration"],
+		["Steps"] = args["Steps"],
+		["RepoUpgradeOnBoot"] = args["RepoUpgradeOnBoot"],
+		["Configurations"] = args["Configurations"],
+		["ReleaseLabel"] = args["ReleaseLabel"],
+		["Instances"] = args["Instances"],
+		["KerberosAttributes"] = args["KerberosAttributes"],
+		["VisibleToAllUsers"] = args["VisibleToAllUsers"],
 		["NewSupportedProducts"] = args["NewSupportedProducts"],
 		["SupportedProducts"] = args["SupportedProducts"],
 	}
@@ -2038,32 +2050,36 @@ function M.InstanceGroupTimeline(args)
     }
 end
 
-keys.Cluster = { ["Status"] = true, ["Ec2InstanceAttributes"] = true, ["Name"] = true, ["ServiceRole"] = true, ["Tags"] = true, ["TerminationProtected"] = true, ["RunningAmiVersion"] = true, ["ReleaseLabel"] = true, ["NormalizedInstanceHours"] = true, ["InstanceCollectionType"] = true, ["Applications"] = true, ["MasterPublicDnsName"] = true, ["AutoScalingRole"] = true, ["SecurityConfiguration"] = true, ["VisibleToAllUsers"] = true, ["RequestedAmiVersion"] = true, ["LogUri"] = true, ["AutoTerminate"] = true, ["Id"] = true, ["ScaleDownBehavior"] = true, ["Configurations"] = true, nil }
+keys.Cluster = { ["TerminationProtected"] = true, ["RunningAmiVersion"] = true, ["LogUri"] = true, ["RepoUpgradeOnBoot"] = true, ["AutoScalingRole"] = true, ["Status"] = true, ["Tags"] = true, ["Applications"] = true, ["CustomAmiId"] = true, ["ScaleDownBehavior"] = true, ["EbsRootVolumeSize"] = true, ["Ec2InstanceAttributes"] = true, ["Name"] = true, ["ServiceRole"] = true, ["InstanceCollectionType"] = true, ["SecurityConfiguration"] = true, ["RequestedAmiVersion"] = true, ["AutoTerminate"] = true, ["Configurations"] = true, ["MasterPublicDnsName"] = true, ["ReleaseLabel"] = true, ["NormalizedInstanceHours"] = true, ["KerberosAttributes"] = true, ["VisibleToAllUsers"] = true, ["Id"] = true, nil }
 
 function asserts.AssertCluster(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Cluster to be of type 'table'")
+	if struct["TerminationProtected"] then asserts.AssertBoolean(struct["TerminationProtected"]) end
+	if struct["RunningAmiVersion"] then asserts.AssertString(struct["RunningAmiVersion"]) end
+	if struct["LogUri"] then asserts.AssertString(struct["LogUri"]) end
+	if struct["RepoUpgradeOnBoot"] then asserts.AssertRepoUpgradeOnBoot(struct["RepoUpgradeOnBoot"]) end
+	if struct["AutoScalingRole"] then asserts.AssertXmlString(struct["AutoScalingRole"]) end
 	if struct["Status"] then asserts.AssertClusterStatus(struct["Status"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["Applications"] then asserts.AssertApplicationList(struct["Applications"]) end
+	if struct["CustomAmiId"] then asserts.AssertXmlStringMaxLen256(struct["CustomAmiId"]) end
+	if struct["ScaleDownBehavior"] then asserts.AssertScaleDownBehavior(struct["ScaleDownBehavior"]) end
+	if struct["EbsRootVolumeSize"] then asserts.AssertInteger(struct["EbsRootVolumeSize"]) end
 	if struct["Ec2InstanceAttributes"] then asserts.AssertEc2InstanceAttributes(struct["Ec2InstanceAttributes"]) end
 	if struct["Name"] then asserts.AssertString(struct["Name"]) end
 	if struct["ServiceRole"] then asserts.AssertString(struct["ServiceRole"]) end
-	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
-	if struct["TerminationProtected"] then asserts.AssertBoolean(struct["TerminationProtected"]) end
-	if struct["RunningAmiVersion"] then asserts.AssertString(struct["RunningAmiVersion"]) end
+	if struct["InstanceCollectionType"] then asserts.AssertInstanceCollectionType(struct["InstanceCollectionType"]) end
+	if struct["SecurityConfiguration"] then asserts.AssertXmlString(struct["SecurityConfiguration"]) end
+	if struct["RequestedAmiVersion"] then asserts.AssertString(struct["RequestedAmiVersion"]) end
+	if struct["AutoTerminate"] then asserts.AssertBoolean(struct["AutoTerminate"]) end
+	if struct["Configurations"] then asserts.AssertConfigurationList(struct["Configurations"]) end
+	if struct["MasterPublicDnsName"] then asserts.AssertString(struct["MasterPublicDnsName"]) end
 	if struct["ReleaseLabel"] then asserts.AssertString(struct["ReleaseLabel"]) end
 	if struct["NormalizedInstanceHours"] then asserts.AssertInteger(struct["NormalizedInstanceHours"]) end
-	if struct["InstanceCollectionType"] then asserts.AssertInstanceCollectionType(struct["InstanceCollectionType"]) end
-	if struct["Applications"] then asserts.AssertApplicationList(struct["Applications"]) end
-	if struct["MasterPublicDnsName"] then asserts.AssertString(struct["MasterPublicDnsName"]) end
-	if struct["AutoScalingRole"] then asserts.AssertXmlString(struct["AutoScalingRole"]) end
-	if struct["SecurityConfiguration"] then asserts.AssertXmlString(struct["SecurityConfiguration"]) end
+	if struct["KerberosAttributes"] then asserts.AssertKerberosAttributes(struct["KerberosAttributes"]) end
 	if struct["VisibleToAllUsers"] then asserts.AssertBoolean(struct["VisibleToAllUsers"]) end
-	if struct["RequestedAmiVersion"] then asserts.AssertString(struct["RequestedAmiVersion"]) end
-	if struct["LogUri"] then asserts.AssertString(struct["LogUri"]) end
-	if struct["AutoTerminate"] then asserts.AssertBoolean(struct["AutoTerminate"]) end
 	if struct["Id"] then asserts.AssertClusterId(struct["Id"]) end
-	if struct["ScaleDownBehavior"] then asserts.AssertScaleDownBehavior(struct["ScaleDownBehavior"]) end
-	if struct["Configurations"] then asserts.AssertConfigurationList(struct["Configurations"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Cluster[k], "Cluster contains unknown key " .. tostring(k))
 	end
@@ -2073,27 +2089,31 @@ end
 -- <p>The detailed description of the cluster.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * TerminationProtected [Boolean] <p>Indicates whether Amazon EMR will lock the cluster to prevent the EC2 instances from being terminated by an API call or user intervention, or in the event of a cluster error.</p>
+-- * RunningAmiVersion [String] <p>The AMI version running on this cluster.</p>
+-- * LogUri [String] <p>The path to the Amazon S3 location where logs for this cluster are stored.</p>
+-- * RepoUpgradeOnBoot [RepoUpgradeOnBoot] <p>Applies only when <code>CustomAmiID</code> is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI.</p>
+-- * AutoScalingRole [XmlString] <p>An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an instance group.</p>
 -- * Status [ClusterStatus] <p>The current status details about the cluster.</p>
+-- * Tags [TagList] <p>A list of tags associated with a cluster.</p>
+-- * Applications [ApplicationList] <p>The applications installed on this cluster.</p>
+-- * CustomAmiId [XmlStringMaxLen256] <p>Available only in Amazon EMR version 5.7.0 and later. The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.</p>
+-- * ScaleDownBehavior [ScaleDownBehavior] <p>The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> is available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.</p>
+-- * EbsRootVolumeSize [Integer] <p>The size, in GiB, of the EBS root device volume of the Linux AMI that is used for each EC2 instance. Available in Amazon EMR version 4.x and later.</p>
 -- * Ec2InstanceAttributes [Ec2InstanceAttributes] <p>Provides information about the EC2 instances in a cluster grouped by category. For example, key name, subnet ID, IAM instance profile, and so on.</p>
 -- * Name [String] <p>The name of the cluster.</p>
 -- * ServiceRole [String] <p>The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.</p>
--- * Tags [TagList] <p>A list of tags associated with a cluster.</p>
--- * TerminationProtected [Boolean] <p>Indicates whether Amazon EMR will lock the cluster to prevent the EC2 instances from being terminated by an API call or user intervention, or in the event of a cluster error.</p>
--- * RunningAmiVersion [String] <p>The AMI version running on this cluster.</p>
--- * ReleaseLabel [String] <p>The release label for the Amazon EMR release. For Amazon EMR 3.x and 2.x AMIs, use amiVersion instead instead of ReleaseLabel.</p>
--- * NormalizedInstanceHours [Integer] <p>An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.</p>
 -- * InstanceCollectionType [InstanceCollectionType] <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note> <p>The instance group configuration of the cluster. A value of <code>INSTANCE_GROUP</code> indicates a uniform instance group configuration. A value of <code>INSTANCE_FLEET</code> indicates an instance fleets configuration.</p>
--- * Applications [ApplicationList] <p>The applications installed on this cluster.</p>
--- * MasterPublicDnsName [String] <p>The public DNS name of the master EC2 instance.</p>
--- * AutoScalingRole [XmlString] <p>An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an instance group.</p>
 -- * SecurityConfiguration [XmlString] <p>The name of the security configuration applied to the cluster.</p>
--- * VisibleToAllUsers [Boolean] <p>Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the cluster if they have the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created the cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.</p>
 -- * RequestedAmiVersion [String] <p>The AMI version requested for this cluster.</p>
--- * LogUri [String] <p>The path to the Amazon S3 location where logs for this cluster are stored.</p>
 -- * AutoTerminate [Boolean] <p>Specifies whether the cluster should terminate after completing all steps.</p>
+-- * Configurations [ConfigurationList] <p>Applies only to Amazon EMR releases 4.x and later. The list of Configurations supplied to the EMR cluster.</p>
+-- * MasterPublicDnsName [String] <p>The DNS name of the master node. If the cluster is on a private subnet, this is the private DNS name. On a public subnet, this is the public DNS name.</p>
+-- * ReleaseLabel [String] <p>The Amazon EMR release label, which determines the version of open-source application packages installed on the cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR release version, for example, <code>emr-5.14.0</code>. For more information about Amazon EMR release versions and included application versions and features, see <a href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/">http://docs.aws.amazon.com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR releases versions 4.x and later. Earlier versions use <code>AmiVersion</code>.</p>
+-- * NormalizedInstanceHours [Integer] <p>An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.</p>
+-- * KerberosAttributes [KerberosAttributes] <p>Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For more information see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use Kerberos Authentication</a> in the <i>EMR Management Guide</i>.</p>
+-- * VisibleToAllUsers [Boolean] <p>Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the cluster if they have the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created the cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.</p>
 -- * Id [ClusterId] <p>The unique identifier for the cluster.</p>
--- * ScaleDownBehavior [ScaleDownBehavior] <p>The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> is available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.</p>
--- * Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of Configurations supplied to the EMR cluster.</p>
 -- @return Cluster structure as a key-value pair table
 function M.Cluster(args)
 	assert(args, "You must provide an argument table when creating Cluster")
@@ -2104,27 +2124,31 @@ function M.Cluster(args)
     local header_args = { 
     }
 	local all_args = { 
+		["TerminationProtected"] = args["TerminationProtected"],
+		["RunningAmiVersion"] = args["RunningAmiVersion"],
+		["LogUri"] = args["LogUri"],
+		["RepoUpgradeOnBoot"] = args["RepoUpgradeOnBoot"],
+		["AutoScalingRole"] = args["AutoScalingRole"],
 		["Status"] = args["Status"],
+		["Tags"] = args["Tags"],
+		["Applications"] = args["Applications"],
+		["CustomAmiId"] = args["CustomAmiId"],
+		["ScaleDownBehavior"] = args["ScaleDownBehavior"],
+		["EbsRootVolumeSize"] = args["EbsRootVolumeSize"],
 		["Ec2InstanceAttributes"] = args["Ec2InstanceAttributes"],
 		["Name"] = args["Name"],
 		["ServiceRole"] = args["ServiceRole"],
-		["Tags"] = args["Tags"],
-		["TerminationProtected"] = args["TerminationProtected"],
-		["RunningAmiVersion"] = args["RunningAmiVersion"],
+		["InstanceCollectionType"] = args["InstanceCollectionType"],
+		["SecurityConfiguration"] = args["SecurityConfiguration"],
+		["RequestedAmiVersion"] = args["RequestedAmiVersion"],
+		["AutoTerminate"] = args["AutoTerminate"],
+		["Configurations"] = args["Configurations"],
+		["MasterPublicDnsName"] = args["MasterPublicDnsName"],
 		["ReleaseLabel"] = args["ReleaseLabel"],
 		["NormalizedInstanceHours"] = args["NormalizedInstanceHours"],
-		["InstanceCollectionType"] = args["InstanceCollectionType"],
-		["Applications"] = args["Applications"],
-		["MasterPublicDnsName"] = args["MasterPublicDnsName"],
-		["AutoScalingRole"] = args["AutoScalingRole"],
-		["SecurityConfiguration"] = args["SecurityConfiguration"],
+		["KerberosAttributes"] = args["KerberosAttributes"],
 		["VisibleToAllUsers"] = args["VisibleToAllUsers"],
-		["RequestedAmiVersion"] = args["RequestedAmiVersion"],
-		["LogUri"] = args["LogUri"],
-		["AutoTerminate"] = args["AutoTerminate"],
 		["Id"] = args["Id"],
-		["ScaleDownBehavior"] = args["ScaleDownBehavior"],
-		["Configurations"] = args["Configurations"],
 	}
 	asserts.AssertCluster(all_args)
 	return {
@@ -2179,7 +2203,7 @@ end
 -- * VisibleToAllUsers [Boolean] <p>Specifies whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.</p>
 -- * BootstrapActions [BootstrapActionDetailList] <p>A list of the bootstrap actions run by the job flow.</p>
 -- * LogUri [XmlString] <p>The location in Amazon S3 where log files for the job are stored.</p>
--- * AmiVersion [XmlStringMaxLen256] <p>The version of the AMI used to initialize Amazon EC2 instances in the job flow. For a list of AMI versions currently supported by Amazon EMR, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported">AMI Versions Supported in EMR</a> in the <i>Amazon EMR Developer Guide.</i> </p>
+-- * AmiVersion [XmlStringMaxLen256] <p>Applies only to Amazon EMR AMI versions 3.x and 2.x. For Amazon EMR releases 4.0 and later, <code>ReleaseLabel</code> is used. To specify a custom AMI, use <code>CustomAmiID</code>.</p>
 -- * SupportedProducts [SupportedProductsList] <p>A list of strings set by third party software when the job flow is launched. If you are not using third party software to manage the job flow this value is empty.</p>
 -- Required key: JobFlowId
 -- Required key: Name
@@ -3517,7 +3541,7 @@ end
 -- * EndDateTime [Date] <p>The date/time the instance group was terminated.</p>
 -- * InstanceRequestCount [Integer] <p>Target number of instances to run in the instance group.</p>
 -- * State [InstanceGroupState] <p>State of instance group. The following values are deprecated: STARTING, TERMINATED, and FAILED.</p>
--- * BidPrice [XmlStringMaxLen256] <p>Bid price for EC2 Instances when launching nodes as Spot Instances, expressed in USD.</p>
+-- * BidPrice [XmlStringMaxLen256] <p>The maximum Spot price your are willing to pay for EC2 instances.</p> <p>An optional, nullable field that applies if the <code>MarketType</code> for the instance group is specified as <code>SPOT</code>. Specified in USD. If the value is NULL and <code>SPOT</code> is specified, the maximum Spot price is set equal to the On-Demand price.</p>
 -- * LastStateChangeReason [XmlString] <p>Details regarding the state of the instance group.</p>
 -- * StartDateTime [Date] <p>The date/time the instance group was started.</p>
 -- * InstanceGroupId [XmlStringMaxLen256] <p>Unique identifier for the instance group.</p>
@@ -3707,7 +3731,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Timeline [InstanceFleetTimeline] <p>Provides historical timestamps for the instance fleet, including the time of creation, the time it became ready to run jobs, and the time of termination.</p>
--- * State [InstanceFleetState] <p>A code representing the instance fleet status.</p>
+-- * State [InstanceFleetState] <p>A code representing the instance fleet status.</p> <ul> <li> <p> <code>PROVISIONING</code>—The instance fleet is provisioning EC2 resources and is not yet ready to run jobs.</p> </li> <li> <p> <code>BOOTSTRAPPING</code>—EC2 instances and other resources have been provisioned and the bootstrap actions specified for the instances are underway.</p> </li> <li> <p> <code>RUNNING</code>—EC2 instances and other resources are running. They are either executing jobs or waiting to execute jobs.</p> </li> <li> <p> <code>RESIZING</code>—A resize operation is underway. EC2 instances are either being added or removed.</p> </li> <li> <p> <code>SUSPENDED</code>—A resize operation could not complete. Existing EC2 instances are running, but instances can't be added or removed.</p> </li> <li> <p> <code>TERMINATING</code>—The instance fleet is terminating EC2 instances.</p> </li> <li> <p> <code>TERMINATED</code>—The instance fleet is no longer active, and all EC2 instances have been terminated.</p> </li> </ul>
 -- * StateChangeReason [InstanceFleetStateChangeReason] <p>Provides status change reason details for the instance fleet.</p>
 -- @return InstanceFleetStatus structure as a key-value pair table
 function M.InstanceFleetStatus(args)
@@ -4272,7 +4296,7 @@ end
 -- * ShrinkPolicy [ShrinkPolicy] <p>Policy for customizing shrink operations.</p>
 -- * Id [InstanceGroupId] <p>The identifier of the instance group.</p>
 -- * EbsOptimized [BooleanObject] <p>If the instance group is EBS-optimized. An Amazon EBS-optimized instance uses an optimized configuration stack and provides additional, dedicated capacity for Amazon EBS I/O.</p>
--- * BidPrice [String] <p>The bid price for each EC2 instance in the instance group when launching nodes as Spot Instances, expressed in USD.</p>
+-- * BidPrice [String] <p>The maximum Spot price your are willing to pay for EC2 instances.</p> <p>An optional, nullable field that applies if the <code>MarketType</code> for the instance group is specified as <code>SPOT</code>. Specify the maximum spot price in USD. If the value is NULL and <code>SPOT</code> is specified, the maximum Spot price is set equal to the On-Demand price.</p>
 -- * Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of configurations supplied for an EMR cluster instance group. You can specify a separate configuration for each instance group (master, core, and task).</p>
 -- * InstanceType [InstanceType] <p>The EC2 instance type for all instances in the instance group.</p>
 -- * Market [MarketType] <p>The marketplace to provision instances for this group. Valid values are ON_DEMAND or SPOT.</p>
@@ -4329,7 +4353,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SecurityConfiguration [String] <p>The security configuration details in JSON format.</p>
+-- * SecurityConfiguration [String] <p>The security configuration details in JSON format. For JSON parameters and examples, see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-security-configurations.html">Use Security Configurations to Set Up Cluster Security</a> in the <i>Amazon EMR Management Guide</i>.</p>
 -- * Name [XmlString] <p>The name of the security configuration.</p>
 -- Required key: Name
 -- Required key: SecurityConfiguration
@@ -4412,6 +4436,59 @@ function M.ListInstancesInput(args)
     }
 end
 
+keys.KerberosAttributes = { ["ADDomainJoinPassword"] = true, ["ADDomainJoinUser"] = true, ["Realm"] = true, ["CrossRealmTrustPrincipalPassword"] = true, ["KdcAdminPassword"] = true, nil }
+
+function asserts.AssertKerberosAttributes(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected KerberosAttributes to be of type 'table'")
+	assert(struct["Realm"], "Expected key Realm to exist in table")
+	assert(struct["KdcAdminPassword"], "Expected key KdcAdminPassword to exist in table")
+	if struct["ADDomainJoinPassword"] then asserts.AssertXmlStringMaxLen256(struct["ADDomainJoinPassword"]) end
+	if struct["ADDomainJoinUser"] then asserts.AssertXmlStringMaxLen256(struct["ADDomainJoinUser"]) end
+	if struct["Realm"] then asserts.AssertXmlStringMaxLen256(struct["Realm"]) end
+	if struct["CrossRealmTrustPrincipalPassword"] then asserts.AssertXmlStringMaxLen256(struct["CrossRealmTrustPrincipalPassword"]) end
+	if struct["KdcAdminPassword"] then asserts.AssertXmlStringMaxLen256(struct["KdcAdminPassword"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.KerberosAttributes[k], "KerberosAttributes contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type KerberosAttributes
+-- <p>Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For more information see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use Kerberos Authentication</a> in the <i>EMR Management Guide</i>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ADDomainJoinPassword [XmlStringMaxLen256] <p>The Active Directory password for <code>ADDomainJoinUser</code>.</p>
+-- * ADDomainJoinUser [XmlStringMaxLen256] <p>Required only when establishing a cross-realm trust with an Active Directory domain. A user with sufficient privileges to join resources to the domain.</p>
+-- * Realm [XmlStringMaxLen256] <p>The name of the Kerberos realm to which all nodes in a cluster belong. For example, <code>EC2.INTERNAL</code>. </p>
+-- * CrossRealmTrustPrincipalPassword [XmlStringMaxLen256] <p>Required only when establishing a cross-realm trust with a KDC in a different realm. The cross-realm principal password, which must be identical across realms.</p>
+-- * KdcAdminPassword [XmlStringMaxLen256] <p>The password used within the cluster for the kadmin service on the cluster-dedicated KDC, which maintains Kerberos principals, password policies, and keytabs for the cluster.</p>
+-- Required key: Realm
+-- Required key: KdcAdminPassword
+-- @return KerberosAttributes structure as a key-value pair table
+function M.KerberosAttributes(args)
+	assert(args, "You must provide an argument table when creating KerberosAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ADDomainJoinPassword"] = args["ADDomainJoinPassword"],
+		["ADDomainJoinUser"] = args["ADDomainJoinUser"],
+		["Realm"] = args["Realm"],
+		["CrossRealmTrustPrincipalPassword"] = args["CrossRealmTrustPrincipalPassword"],
+		["KdcAdminPassword"] = args["KdcAdminPassword"],
+	}
+	asserts.AssertKerberosAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.StepStatus = { ["Timeline"] = true, ["State"] = true, ["StateChangeReason"] = true, ["FailureDetails"] = true, nil }
 
 function asserts.AssertStepStatus(struct)
@@ -4479,7 +4556,7 @@ end
 -- Valid keys:
 -- * TimeoutDurationMinutes [WholeNumber] <p>The spot provisioning timeout period in minutes. If Spot instances are not provisioned within this time period, the <code>TimeOutAction</code> is taken. Minimum value is 5 and maximum value is 1440. The timeout applies only during initial provisioning, when the cluster is first created.</p>
 -- * BlockDurationMinutes [WholeNumber] <p>The defined duration for Spot instances (also known as Spot blocks) in minutes. When specified, the Spot instance does not terminate before the defined duration expires, and defined duration pricing for Spot instances applies. Valid values are 60, 120, 180, 240, 300, or 360. The duration period starts as soon as a Spot instance receives its instance ID. At the end of the duration, Amazon EC2 marks the Spot instance for termination and provides a Spot instance termination notice, which gives the instance a two-minute warning before it terminates. </p>
--- * TimeoutAction [SpotProvisioningTimeoutAction] <p>The action to take when <code>TargetSpotCapacity</code> has not been fulfilled when the <code>TimeoutDurationMinutes</code> has expired. Spot instances are not uprovisioned within the Spot provisioining timeout. Valid values are <code>TERMINATE_CLUSTER</code> and <code>SWITCH_TO_ON_DEMAND</code> to fulfill the remaining capacity.</p>
+-- * TimeoutAction [SpotProvisioningTimeoutAction] <p>The action to take when <code>TargetSpotCapacity</code> has not been fulfilled when the <code>TimeoutDurationMinutes</code> has expired. Spot instances are not uprovisioned within the Spot provisioining timeout. Valid values are <code>TERMINATE_CLUSTER</code> and <code>SWITCH_TO_ON_DEMAND</code>. SWITCH_TO_ON_DEMAND specifies that if no Spot instances are available, On-Demand Instances should be provisioned to fulfill any remaining Spot capacity.</p>
 -- Required key: TimeoutDurationMinutes
 -- Required key: TimeoutAction
 -- @return SpotProvisioningSpecification structure as a key-value pair table
@@ -4672,8 +4749,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * CoolDown [Integer] <p>The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start. The default value is 0.</p>
--- * ScalingAdjustment [Integer] <p>The amount by which to scale in or scale out, based on the specified <code>AdjustmentType</code>. A positive value adds to the instance group's EC2 instance count while a negative number removes instances. If <code>AdjustmentType</code> is set to <code>EXACT_CAPACITY</code>, the number should only be a positive integer. If <code>AdjustmentType</code> is set to <code>PERCENT_CHANGE_IN_CAPACITY</code>, the value should express the percentage as a decimal. For example, -0.20 indicates a decrease in 20% increments of cluster capacity.</p>
--- * AdjustmentType [AdjustmentType] <p>The way in which EC2 instances are added (if <code>ScalingAdjustment</code> is a positive number) or terminated (if <code>ScalingAdjustment</code> is a negative number) each time the scaling activity is triggered. <code>CHANGE_IN_CAPACITY</code> is the default. <code>CHANGE_IN_CAPACITY</code> indicates that the EC2 instance count increments or decrements by <code>ScalingAdjustment</code>, which should be expressed as an integer. <code>PERCENT_CHANGE_IN_CAPACITY</code> indicates the instance count increments or decrements by the percentage specified by <code>ScalingAdjustment</code>, which should be expressed as a decimal. For example, 0.20 indicates an increase in 20% increments of cluster capacity. <code>EXACT_CAPACITY</code> indicates the scaling activity results in an instance group with the number of EC2 instances specified by <code>ScalingAdjustment</code>, which should be expressed as a positive integer.</p>
+-- * ScalingAdjustment [Integer] <p>The amount by which to scale in or scale out, based on the specified <code>AdjustmentType</code>. A positive value adds to the instance group's EC2 instance count while a negative number removes instances. If <code>AdjustmentType</code> is set to <code>EXACT_CAPACITY</code>, the number should only be a positive integer. If <code>AdjustmentType</code> is set to <code>PERCENT_CHANGE_IN_CAPACITY</code>, the value should express the percentage as an integer. For example, -20 indicates a decrease in 20% increments of cluster capacity.</p>
+-- * AdjustmentType [AdjustmentType] <p>The way in which EC2 instances are added (if <code>ScalingAdjustment</code> is a positive number) or terminated (if <code>ScalingAdjustment</code> is a negative number) each time the scaling activity is triggered. <code>CHANGE_IN_CAPACITY</code> is the default. <code>CHANGE_IN_CAPACITY</code> indicates that the EC2 instance count increments or decrements by <code>ScalingAdjustment</code>, which should be expressed as an integer. <code>PERCENT_CHANGE_IN_CAPACITY</code> indicates the instance count increments or decrements by the percentage specified by <code>ScalingAdjustment</code>, which should be expressed as an integer. For example, 20 indicates an increase in 20% increments of cluster capacity. <code>EXACT_CAPACITY</code> indicates the scaling activity results in an instance group with the number of EC2 instances specified by <code>ScalingAdjustment</code>, which should be expressed as a positive integer.</p>
 -- Required key: ScalingAdjustment
 -- @return SimpleScalingPolicyConfiguration structure as a key-value pair table
 function M.SimpleScalingPolicyConfiguration(args)
@@ -5893,6 +5970,17 @@ function M.AdjustmentType(str)
 	return str
 end
 
+function asserts.AssertRepoUpgradeOnBoot(str)
+	assert(str)
+	assert(type(str) == "string", "Expected RepoUpgradeOnBoot to be of type 'string'")
+end
+
+--  
+function M.RepoUpgradeOnBoot(str)
+	asserts.AssertRepoUpgradeOnBoot(str)
+	return str
+end
+
 function asserts.AssertClusterStateChangeReasonCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ClusterStateChangeReasonCode to be of type 'string'")
@@ -6459,6 +6547,21 @@ function M.InstanceList(list)
 	return list
 end
 
+function asserts.AssertStringList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected StringList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertString(v)
+	end
+end
+
+--  
+-- List of String objects
+function M.StringList(list)
+	asserts.AssertStringList(list)
+	return list
+end
+
 function asserts.AssertStepConfigList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StepConfigList to be of type ''table")
@@ -6636,21 +6739,6 @@ end
 -- List of XmlString objects
 function M.XmlStringList(list)
 	asserts.AssertXmlStringList(list)
-	return list
-end
-
-function asserts.AssertStringList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected StringList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertString(v)
-	end
-end
-
---  
--- List of String objects
-function M.StringList(list)
-	asserts.AssertStringList(list)
 	return list
 end
 

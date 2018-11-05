@@ -51,7 +51,7 @@ end
 -- * secret [Boolean] <p>Whether the configuration property is secret. Secrets are hidden from all calls except for GetJobDetails, GetThirdPartyJobDetails, PollForJobs, and PollForThirdPartyJobs.</p> <p>When updating a pipeline, passing * * * * * without changing any other values of the action will preserve the prior value of the secret.</p>
 -- * key [Boolean] <p>Whether the configuration property is a key.</p>
 -- * type [ActionConfigurationPropertyType] <p>The type of the configuration property.</p>
--- * queryable [Boolean] <p>Indicates that the proprety will be used in conjunction with PollForJobs. When creating a custom action, an action can have up to one queryable property. If it has one, that property must be both required and not secret.</p> <p>If you create a pipeline with a custom action type, and that custom action contains a queryable property, the value for that configuration property is subject to additional restrictions. The value must be less than or equal to twenty (20) characters. The value can contain only alphanumeric characters, underscores, and hyphens.</p>
+-- * queryable [Boolean] <p>Indicates that the property will be used in conjunction with PollForJobs. When creating a custom action, an action can have up to one queryable property. If it has one, that property must be both required and not secret.</p> <p>If you create a pipeline with a custom action type, and that custom action contains a queryable property, the value for that configuration property is subject to additional restrictions. The value must be less than or equal to twenty (20) characters. The value can contain only alphanumeric characters, underscores, and hyphens.</p>
 -- * name [ActionConfigurationKey] <p>The name of the action configuration property.</p>
 -- Required key: name
 -- Required key: required
@@ -84,51 +84,6 @@ function M.ActionConfigurationProperty(args)
     }
 end
 
-keys.PollForJobsInput = { ["actionTypeId"] = true, ["maxBatchSize"] = true, ["queryParam"] = true, nil }
-
-function asserts.AssertPollForJobsInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected PollForJobsInput to be of type 'table'")
-	assert(struct["actionTypeId"], "Expected key actionTypeId to exist in table")
-	if struct["actionTypeId"] then asserts.AssertActionTypeId(struct["actionTypeId"]) end
-	if struct["maxBatchSize"] then asserts.AssertMaxBatchSize(struct["maxBatchSize"]) end
-	if struct["queryParam"] then asserts.AssertQueryParamMap(struct["queryParam"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.PollForJobsInput[k], "PollForJobsInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type PollForJobsInput
--- <p>Represents the input of a poll for jobs action.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * actionTypeId [ActionTypeId] <p>Represents information about an action type.</p>
--- * maxBatchSize [MaxBatchSize] <p>The maximum number of jobs to return in a poll for jobs call.</p>
--- * queryParam [QueryParamMap] <p>A map of property names and values. For an action type with no queryable properties, this value must be null or an empty map. For an action type with a queryable property, you must supply that property as a key in the map. Only jobs whose action configuration matches the mapped value will be returned.</p>
--- Required key: actionTypeId
--- @return PollForJobsInput structure as a key-value pair table
-function M.PollForJobsInput(args)
-	assert(args, "You must provide an argument table when creating PollForJobsInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["actionTypeId"] = args["actionTypeId"],
-		["maxBatchSize"] = args["maxBatchSize"],
-		["queryParam"] = args["queryParam"],
-	}
-	asserts.AssertPollForJobsInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.CreateCustomActionTypeInput = { ["category"] = true, ["settings"] = true, ["configurationProperties"] = true, ["version"] = true, ["provider"] = true, ["inputArtifactDetails"] = true, ["outputArtifactDetails"] = true, nil }
 
 function asserts.AssertCreateCustomActionTypeInput(struct)
@@ -152,7 +107,7 @@ function asserts.AssertCreateCustomActionTypeInput(struct)
 end
 
 --- Create a structure of type CreateCustomActionTypeInput
--- <p>Represents the input of a create custom action operation.</p>
+-- <p>Represents the input of a CreateCustomActionType operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * category [ActionCategory] <p>The category of the custom action, such as a build action or a test action.</p> <note> <p>Although Source and Approval are listed as valid values, they are not currently functional. These values are reserved for future use.</p> </note>
@@ -240,6 +195,48 @@ function M.StageState(args)
     }
 end
 
+keys.WebhookFilterRule = { ["jsonPath"] = true, ["matchEquals"] = true, nil }
+
+function asserts.AssertWebhookFilterRule(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected WebhookFilterRule to be of type 'table'")
+	assert(struct["jsonPath"], "Expected key jsonPath to exist in table")
+	if struct["jsonPath"] then asserts.AssertJsonPath(struct["jsonPath"]) end
+	if struct["matchEquals"] then asserts.AssertMatchEquals(struct["matchEquals"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.WebhookFilterRule[k], "WebhookFilterRule contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type WebhookFilterRule
+-- <p>The event criteria that specify when a webhook notification is sent to your URL.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jsonPath [JsonPath] <p>A JsonPath expression that will be applied to the body/payload of the webhook. The value selected by JsonPath expression must match the value specified in the matchEquals field, otherwise the request will be ignored. More information on JsonPath expressions can be found here: https://github.com/json-path/JsonPath.</p>
+-- * matchEquals [MatchEquals] <p>The value selected by the JsonPath expression must match what is supplied in the MatchEquals field, otherwise the request will be ignored. Properties from the target action configuration can be included as placeholders in this value by surrounding the action configuration key with curly braces. For example, if the value supplied here is "refs/heads/{Branch}" and the target action has an action configuration property called "Branch" with a value of "master", the MatchEquals value will be evaluated as "refs/heads/master". A list of action configuration properties for built-in action types can be found here: <a href="http://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html#action-requirements">Pipeline Structure Reference Action Requirements</a>.</p>
+-- Required key: jsonPath
+-- @return WebhookFilterRule structure as a key-value pair table
+function M.WebhookFilterRule(args)
+	assert(args, "You must provide an argument table when creating WebhookFilterRule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["jsonPath"] = args["jsonPath"],
+		["matchEquals"] = args["matchEquals"],
+	}
+	asserts.AssertWebhookFilterRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetPipelineStateOutput = { ["stageStates"] = true, ["pipelineVersion"] = true, ["updated"] = true, ["pipelineName"] = true, ["created"] = true, nil }
 
 function asserts.AssertGetPipelineStateOutput(struct)
@@ -256,7 +253,7 @@ function asserts.AssertGetPipelineStateOutput(struct)
 end
 
 --- Create a structure of type GetPipelineStateOutput
--- <p>Represents the output of a get pipeline state action.</p>
+-- <p>Represents the output of a GetPipelineState action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * stageStates [StageStateList] <p>A list of the pipeline stage output information, including stage name, state, most recent run details, whether the stage is disabled, and other data.</p>
@@ -289,6 +286,43 @@ function M.GetPipelineStateOutput(args)
     }
 end
 
+keys.DeregisterWebhookWithThirdPartyInput = { ["webhookName"] = true, nil }
+
+function asserts.AssertDeregisterWebhookWithThirdPartyInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeregisterWebhookWithThirdPartyInput to be of type 'table'")
+	if struct["webhookName"] then asserts.AssertWebhookName(struct["webhookName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeregisterWebhookWithThirdPartyInput[k], "DeregisterWebhookWithThirdPartyInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeregisterWebhookWithThirdPartyInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * webhookName [WebhookName] <p>The name of the webhook you want to deregister.</p>
+-- @return DeregisterWebhookWithThirdPartyInput structure as a key-value pair table
+function M.DeregisterWebhookWithThirdPartyInput(args)
+	assert(args, "You must provide an argument table when creating DeregisterWebhookWithThirdPartyInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["webhookName"] = args["webhookName"],
+	}
+	asserts.AssertDeregisterWebhookWithThirdPartyInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListPipelinesOutput = { ["nextToken"] = true, ["pipelines"] = true, nil }
 
 function asserts.AssertListPipelinesOutput(struct)
@@ -302,7 +336,7 @@ function asserts.AssertListPipelinesOutput(struct)
 end
 
 --- Create a structure of type ListPipelinesOutput
--- <p>Represents the output of a list pipelines action.</p>
+-- <p>Represents the output of a ListPipelines action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * nextToken [NextToken] <p>If the amount of returned information is significantly large, an identifier is also returned which can be used in a subsequent list pipelines call to return the next set of pipelines in the list.</p>
@@ -321,6 +355,40 @@ function M.ListPipelinesOutput(args)
 		["pipelines"] = args["pipelines"],
 	}
 	asserts.AssertListPipelinesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.InvalidWebhookAuthenticationParametersException = { nil }
+
+function asserts.AssertInvalidWebhookAuthenticationParametersException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InvalidWebhookAuthenticationParametersException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.InvalidWebhookAuthenticationParametersException[k], "InvalidWebhookAuthenticationParametersException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InvalidWebhookAuthenticationParametersException
+-- <p>The specified authentication type is in an invalid format.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidWebhookAuthenticationParametersException structure as a key-value pair table
+function M.InvalidWebhookAuthenticationParametersException(args)
+	assert(args, "You must provide an argument table when creating InvalidWebhookAuthenticationParametersException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertInvalidWebhookAuthenticationParametersException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -373,6 +441,40 @@ function M.ArtifactRevision(args)
 		["revisionChangeIdentifier"] = args["revisionChangeIdentifier"],
 	}
 	asserts.AssertArtifactRevision(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeregisterWebhookWithThirdPartyOutput = { nil }
+
+function asserts.AssertDeregisterWebhookWithThirdPartyOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeregisterWebhookWithThirdPartyOutput to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DeregisterWebhookWithThirdPartyOutput[k], "DeregisterWebhookWithThirdPartyOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeregisterWebhookWithThirdPartyOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeregisterWebhookWithThirdPartyOutput structure as a key-value pair table
+function M.DeregisterWebhookWithThirdPartyOutput(args)
+	assert(args, "You must provide an argument table when creating DeregisterWebhookWithThirdPartyOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDeregisterWebhookWithThirdPartyOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -443,7 +545,7 @@ function asserts.AssertPutThirdPartyJobSuccessResultInput(struct)
 end
 
 --- Create a structure of type PutThirdPartyJobSuccessResultInput
--- <p>Represents the input of a put third party job success result action.</p>
+-- <p>Represents the input of a PutThirdPartyJobSuccessResult action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * currentRevision [CurrentRevision] <p>Represents information about a current revision.</p>
@@ -490,7 +592,7 @@ function asserts.AssertAcknowledgeJobOutput(struct)
 end
 
 --- Create a structure of type AcknowledgeJobOutput
--- <p>Represents the output of an acknowledge job action.</p>
+-- <p>Represents the output of an AcknowledgeJob action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * status [JobStatus] <p>Whether the job worker has received the specified job.</p>
@@ -528,7 +630,7 @@ function asserts.AssertUpdatePipelineInput(struct)
 end
 
 --- Create a structure of type UpdatePipelineInput
--- <p>Represents the input of an update pipeline action.</p>
+-- <p>Represents the input of an UpdatePipeline action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * pipeline [PipelineDeclaration] <p>The name of the pipeline to be updated.</p>
@@ -600,27 +702,27 @@ function M.Job(args)
     }
 end
 
-keys.ErrorDetails = { ["message"] = true, ["code"] = true, nil }
+keys.GetPipelineOutput = { ["pipeline"] = true, ["metadata"] = true, nil }
 
-function asserts.AssertErrorDetails(struct)
+function asserts.AssertGetPipelineOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ErrorDetails to be of type 'table'")
-	if struct["message"] then asserts.AssertMessage(struct["message"]) end
-	if struct["code"] then asserts.AssertCode(struct["code"]) end
+	assert(type(struct) == "table", "Expected GetPipelineOutput to be of type 'table'")
+	if struct["pipeline"] then asserts.AssertPipelineDeclaration(struct["pipeline"]) end
+	if struct["metadata"] then asserts.AssertPipelineMetadata(struct["metadata"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ErrorDetails[k], "ErrorDetails contains unknown key " .. tostring(k))
+		assert(keys.GetPipelineOutput[k], "GetPipelineOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ErrorDetails
--- <p>Represents information about an error in AWS CodePipeline.</p>
+--- Create a structure of type GetPipelineOutput
+-- <p>Represents the output of a GetPipeline action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [Message] <p>The text of the error message.</p>
--- * code [Code] <p>The system ID or error number code of the error.</p>
--- @return ErrorDetails structure as a key-value pair table
-function M.ErrorDetails(args)
-	assert(args, "You must provide an argument table when creating ErrorDetails")
+-- * pipeline [PipelineDeclaration] <p>Represents the structure of actions and stages to be performed in the pipeline. </p>
+-- * metadata [PipelineMetadata] <p>Represents the pipeline metadata information returned as part of the output of a GetPipeline action.</p>
+-- @return GetPipelineOutput structure as a key-value pair table
+function M.GetPipelineOutput(args)
+	assert(args, "You must provide an argument table when creating GetPipelineOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -628,10 +730,10 @@ function M.ErrorDetails(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
-		["code"] = args["code"],
+		["pipeline"] = args["pipeline"],
+		["metadata"] = args["metadata"],
 	}
-	asserts.AssertErrorDetails(all_args)
+	asserts.AssertGetPipelineOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -652,7 +754,7 @@ function asserts.AssertUpdatePipelineOutput(struct)
 end
 
 --- Create a structure of type UpdatePipelineOutput
--- <p>Represents the output of an update pipeline action.</p>
+-- <p>Represents the output of an UpdatePipeline action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * pipeline [PipelineDeclaration] <p>The structure of the updated pipeline.</p>
@@ -724,6 +826,40 @@ function M.ActionType(args)
 		["settings"] = args["settings"],
 	}
 	asserts.AssertActionType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteWebhookOutput = { nil }
+
+function asserts.AssertDeleteWebhookOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteWebhookOutput to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteWebhookOutput[k], "DeleteWebhookOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteWebhookOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteWebhookOutput structure as a key-value pair table
+function M.DeleteWebhookOutput(args)
+	assert(args, "You must provide an argument table when creating DeleteWebhookOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDeleteWebhookOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -862,7 +998,7 @@ function asserts.AssertDisableStageTransitionInput(struct)
 end
 
 --- Create a structure of type DisableStageTransitionInput
--- <p>Represents the input of a disable stage transition input action.</p>
+-- <p>Represents the input of a DisableStageTransition action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * reason [DisabledReason] <p>The reason given to the user why a stage is disabled, such as waiting for manual approval or manual tests. This message is displayed in the pipeline console UI.</p>
@@ -912,7 +1048,7 @@ function asserts.AssertAcknowledgeJobInput(struct)
 end
 
 --- Create a structure of type AcknowledgeJobInput
--- <p>Represents the input of an acknowledge job action.</p>
+-- <p>Represents the input of an AcknowledgeJob action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * nonce [Nonce] <p>A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Get this number from the response of the <a>PollForJobs</a> request that returned this job.</p>
@@ -953,7 +1089,7 @@ function asserts.AssertAcknowledgeThirdPartyJobOutput(struct)
 end
 
 --- Create a structure of type AcknowledgeThirdPartyJobOutput
--- <p>Represents the output of an acknowledge third party job action.</p>
+-- <p>Represents the output of an AcknowledgeThirdPartyJob action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * status [JobStatus] <p>The status information for the third party job, if any.</p>
@@ -991,7 +1127,7 @@ function asserts.AssertCreatePipelineInput(struct)
 end
 
 --- Create a structure of type CreatePipelineInput
--- <p>Represents the input of a create pipeline action.</p>
+-- <p>Represents the input of a CreatePipeline action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * pipeline [PipelineDeclaration] <p>Represents the structure of actions and stages to be performed in the pipeline. </p>
@@ -1030,11 +1166,11 @@ function asserts.AssertListPipelineExecutionsOutput(struct)
 end
 
 --- Create a structure of type ListPipelineExecutionsOutput
--- <p>Represents the output of a list pipeline executions action. </p>
+-- <p>Represents the output of a ListPipelineExecutions action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * pipelineExecutionSummaries [PipelineExecutionSummaryList] <p>A list of executions in the history of a pipeline.</p>
--- * nextToken [NextToken] <p>A token that can be used in the next list pipeline executions call to return the next set of pipeline executions. To view all items in the list, continue to call this operation with each subsequent token until no more nextToken values are returned.</p>
+-- * nextToken [NextToken] <p>A token that can be used in the next ListPipelineExecutions call. To view all items in the list, continue to call this operation with each subsequent token until no more nextToken values are returned.</p>
 -- @return ListPipelineExecutionsOutput structure as a key-value pair table
 function M.ListPipelineExecutionsOutput(args)
 	assert(args, "You must provide an argument table when creating ListPipelineExecutionsOutput")
@@ -1115,7 +1251,7 @@ function asserts.AssertPutApprovalResultInput(struct)
 end
 
 --- Create a structure of type PutApprovalResultInput
--- <p>Represents the input of a put approval result action.</p>
+-- <p>Represents the input of a PutApprovalResult action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * actionName [ActionName] <p>The name of the action for which approval is requested.</p>
@@ -1145,6 +1281,51 @@ function M.PutApprovalResultInput(args)
 		["stageName"] = args["stageName"],
 	}
 	asserts.AssertPutApprovalResultInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.PollForJobsInput = { ["actionTypeId"] = true, ["maxBatchSize"] = true, ["queryParam"] = true, nil }
+
+function asserts.AssertPollForJobsInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PollForJobsInput to be of type 'table'")
+	assert(struct["actionTypeId"], "Expected key actionTypeId to exist in table")
+	if struct["actionTypeId"] then asserts.AssertActionTypeId(struct["actionTypeId"]) end
+	if struct["maxBatchSize"] then asserts.AssertMaxBatchSize(struct["maxBatchSize"]) end
+	if struct["queryParam"] then asserts.AssertQueryParamMap(struct["queryParam"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PollForJobsInput[k], "PollForJobsInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PollForJobsInput
+-- <p>Represents the input of a PollForJobs action.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * actionTypeId [ActionTypeId] <p>Represents information about an action type.</p>
+-- * maxBatchSize [MaxBatchSize] <p>The maximum number of jobs to return in a poll for jobs call.</p>
+-- * queryParam [QueryParamMap] <p>A map of property names and values. For an action type with no queryable properties, this value must be null or an empty map. For an action type with a queryable property, you must supply that property as a key in the map. Only jobs whose action configuration matches the mapped value will be returned.</p>
+-- Required key: actionTypeId
+-- @return PollForJobsInput structure as a key-value pair table
+function M.PollForJobsInput(args)
+	assert(args, "You must provide an argument table when creating PollForJobsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["actionTypeId"] = args["actionTypeId"],
+		["maxBatchSize"] = args["maxBatchSize"],
+		["queryParam"] = args["queryParam"],
+	}
+	asserts.AssertPollForJobsInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1200,7 +1381,7 @@ function asserts.AssertPutActionRevisionOutput(struct)
 end
 
 --- Create a structure of type PutActionRevisionOutput
--- <p>Represents the output of a put action revision action.</p>
+-- <p>Represents the output of a PutActionRevision action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * pipelineExecutionId [PipelineExecutionId] <p>The ID of the current workflow state of the pipeline.</p>
@@ -1266,6 +1447,49 @@ function M.InputArtifact(args)
     }
 end
 
+keys.PipelineMetadata = { ["pipelineArn"] = true, ["updated"] = true, ["created"] = true, nil }
+
+function asserts.AssertPipelineMetadata(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PipelineMetadata to be of type 'table'")
+	if struct["pipelineArn"] then asserts.AssertPipelineArn(struct["pipelineArn"]) end
+	if struct["updated"] then asserts.AssertTimestamp(struct["updated"]) end
+	if struct["created"] then asserts.AssertTimestamp(struct["created"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PipelineMetadata[k], "PipelineMetadata contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PipelineMetadata
+-- <p>Information about a pipeline.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineArn [PipelineArn] <p>The Amazon Resource Name (ARN) of the pipeline.</p>
+-- * updated [Timestamp] <p>The date and time the pipeline was last updated, in timestamp format.</p>
+-- * created [Timestamp] <p>The date and time the pipeline was created, in timestamp format.</p>
+-- @return PipelineMetadata structure as a key-value pair table
+function M.PipelineMetadata(args)
+	assert(args, "You must provide an argument table when creating PipelineMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["pipelineArn"] = args["pipelineArn"],
+		["updated"] = args["updated"],
+		["created"] = args["created"],
+	}
+	asserts.AssertPipelineMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetPipelineExecutionOutput = { ["pipelineExecution"] = true, nil }
 
 function asserts.AssertGetPipelineExecutionOutput(struct)
@@ -1278,7 +1502,7 @@ function asserts.AssertGetPipelineExecutionOutput(struct)
 end
 
 --- Create a structure of type GetPipelineExecutionOutput
--- <p>Represents the output of a get pipeline execution action.</p>
+-- <p>Represents the output of a GetPipelineExecution action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * pipelineExecution [PipelineExecution] <p>Represents information about the execution of a pipeline.</p>
@@ -1361,7 +1585,7 @@ end
 -- Valid keys:
 -- * category [ActionCategory] <p>A category defines what kind of action can be taken in the stage, and constrains the provider type for the action. Valid categories are limited to one of the values below.</p>
 -- * owner [ActionOwner] <p>The creator of the action being called.</p>
--- * version [Version] <p>A string that identifies the action type.</p>
+-- * version [Version] <p>A string that describes the action version.</p>
 -- * provider [ActionProvider] <p>The provider of the service being called by the action. Valid providers are determined by the action category. For example, an action in the Deploy category type might have a provider of AWS CodeDeploy, which would be specified as CodeDeploy.</p>
 -- Required key: category
 -- Required key: owner
@@ -1539,7 +1763,7 @@ function asserts.AssertPutActionRevisionInput(struct)
 end
 
 --- Create a structure of type PutActionRevisionInput
--- <p>Represents the input of a put action revision action.</p>
+-- <p>Represents the input of a PutActionRevision action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * actionName [ActionName] <p>The name of the action that will process the revision.</p>
@@ -1588,7 +1812,7 @@ function asserts.AssertGetPipelineInput(struct)
 end
 
 --- Create a structure of type GetPipelineInput
--- <p>Represents the input of a get pipeline action.</p>
+-- <p>Represents the input of a GetPipeline action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * version [PipelineVersion] <p>The version number of the pipeline. If you do not specify a version, defaults to the most current version.</p>
@@ -1641,7 +1865,7 @@ end
 -- Valid keys:
 -- * roleArn [RoleArn] <p>The Amazon Resource Name (ARN) for AWS CodePipeline to use to either perform actions with no actionRoleArn, or to use to assume roles for actions with an actionRoleArn.</p>
 -- * stages [PipelineStageDeclarationList] <p>The stage in which to perform the action.</p>
--- * artifactStore [ArtifactStore] <p>Represents the context of an action within the stage of a pipeline to a job worker. </p>
+-- * artifactStore [ArtifactStore] <p>Represents information about the Amazon S3 bucket where artifacts are stored for the pipeline. </p>
 -- * name [PipelineName] <p>The name of the action to be performed.</p>
 -- * version [PipelineVersion] <p>The version number of the pipeline. A new pipeline always has a version number of 1. This number is automatically incremented when a pipeline is updated.</p>
 -- Required key: name
@@ -1665,6 +1889,93 @@ function M.PipelineDeclaration(args)
 		["version"] = args["version"],
 	}
 	asserts.AssertPipelineDeclaration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteWebhookInput = { ["name"] = true, nil }
+
+function asserts.AssertDeleteWebhookInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteWebhookInput to be of type 'table'")
+	assert(struct["name"], "Expected key name to exist in table")
+	if struct["name"] then asserts.AssertWebhookName(struct["name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteWebhookInput[k], "DeleteWebhookInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteWebhookInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [WebhookName] <p>The name of the webhook you want to delete.</p>
+-- Required key: name
+-- @return DeleteWebhookInput structure as a key-value pair table
+function M.DeleteWebhookInput(args)
+	assert(args, "You must provide an argument table when creating DeleteWebhookInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["name"] = args["name"],
+	}
+	asserts.AssertDeleteWebhookInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SourceRevision = { ["actionName"] = true, ["revisionId"] = true, ["revisionSummary"] = true, ["revisionUrl"] = true, nil }
+
+function asserts.AssertSourceRevision(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SourceRevision to be of type 'table'")
+	assert(struct["actionName"], "Expected key actionName to exist in table")
+	if struct["actionName"] then asserts.AssertActionName(struct["actionName"]) end
+	if struct["revisionId"] then asserts.AssertRevision(struct["revisionId"]) end
+	if struct["revisionSummary"] then asserts.AssertRevisionSummary(struct["revisionSummary"]) end
+	if struct["revisionUrl"] then asserts.AssertUrl(struct["revisionUrl"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SourceRevision[k], "SourceRevision contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SourceRevision
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * actionName [ActionName] 
+-- * revisionId [Revision] 
+-- * revisionSummary [RevisionSummary] 
+-- * revisionUrl [Url] 
+-- Required key: actionName
+-- @return SourceRevision structure as a key-value pair table
+function M.SourceRevision(args)
+	assert(args, "You must provide an argument table when creating SourceRevision")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["actionName"] = args["actionName"],
+		["revisionId"] = args["revisionId"],
+		["revisionSummary"] = args["revisionSummary"],
+		["revisionUrl"] = args["revisionUrl"],
+	}
+	asserts.AssertSourceRevision(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1741,6 +2052,62 @@ function M.PipelineNameInUseException(args)
     }
 end
 
+keys.ListWebhookItem = { ["definition"] = true, ["lastTriggered"] = true, ["url"] = true, ["errorMessage"] = true, ["errorCode"] = true, ["arn"] = true, nil }
+
+function asserts.AssertListWebhookItem(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListWebhookItem to be of type 'table'")
+	assert(struct["definition"], "Expected key definition to exist in table")
+	assert(struct["url"], "Expected key url to exist in table")
+	if struct["definition"] then asserts.AssertWebhookDefinition(struct["definition"]) end
+	if struct["lastTriggered"] then asserts.AssertWebhookLastTriggered(struct["lastTriggered"]) end
+	if struct["url"] then asserts.AssertWebhookUrl(struct["url"]) end
+	if struct["errorMessage"] then asserts.AssertWebhookErrorMessage(struct["errorMessage"]) end
+	if struct["errorCode"] then asserts.AssertWebhookErrorCode(struct["errorCode"]) end
+	if struct["arn"] then asserts.AssertWebhookArn(struct["arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListWebhookItem[k], "ListWebhookItem contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListWebhookItem
+-- <p>The detail returned for each webhook after listing webhooks, such as the webhook URL, the webhook name, and the webhook ARN.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * definition [WebhookDefinition] <p>The detail returned for each webhook, such as the webhook authentication type and filter rules.</p>
+-- * lastTriggered [WebhookLastTriggered] <p>The date and time a webhook was last successfully triggered, in timestamp format.</p>
+-- * url [WebhookUrl] <p>A unique URL generated by CodePipeline. When a POST request is made to this URL, the defined pipeline is started as long as the body of the post request satisfies the defined authentication and filtering conditions. Deleting and re-creating a webhook will make the old URL invalid and generate a new URL.</p>
+-- * errorMessage [WebhookErrorMessage] <p>The text of the error message about the webhook.</p>
+-- * errorCode [WebhookErrorCode] <p>The number code of the error.</p>
+-- * arn [WebhookArn] <p>The Amazon Resource Name (ARN) of the webhook.</p>
+-- Required key: definition
+-- Required key: url
+-- @return ListWebhookItem structure as a key-value pair table
+function M.ListWebhookItem(args)
+	assert(args, "You must provide an argument table when creating ListWebhookItem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["definition"] = args["definition"],
+		["lastTriggered"] = args["lastTriggered"],
+		["url"] = args["url"],
+		["errorMessage"] = args["errorMessage"],
+		["errorCode"] = args["errorCode"],
+		["arn"] = args["arn"],
+	}
+	asserts.AssertListWebhookItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.StartPipelineExecutionInput = { ["name"] = true, nil }
 
 function asserts.AssertStartPipelineExecutionInput(struct)
@@ -1754,7 +2121,7 @@ function asserts.AssertStartPipelineExecutionInput(struct)
 end
 
 --- Create a structure of type StartPipelineExecutionInput
--- <p>Represents the input of a start pipeline execution action.</p>
+-- <p>Represents the input of a StartPipelineExecution action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * name [PipelineName] <p>The name of the pipeline to start.</p>
@@ -1809,6 +2176,46 @@ function M.ActionConfiguration(args)
 		["configuration"] = args["configuration"],
 	}
 	asserts.AssertActionConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListWebhooksInput = { ["NextToken"] = true, ["MaxResults"] = true, nil }
+
+function asserts.AssertListWebhooksInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListWebhooksInput to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertMaxResults(struct["MaxResults"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListWebhooksInput[k], "ListWebhooksInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListWebhooksInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token that was returned from the previous ListWebhooks call, which can be used to return the next set of webhooks in the list.</p>
+-- * MaxResults [MaxResults] <p>The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned nextToken value.</p>
+-- @return ListWebhooksInput structure as a key-value pair table
+function M.ListWebhooksInput(args)
+	assert(args, "You must provide an argument table when creating ListWebhooksInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+	}
+	asserts.AssertListWebhooksInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1877,7 +2284,7 @@ function asserts.AssertDeletePipelineInput(struct)
 end
 
 --- Create a structure of type DeletePipelineInput
--- <p>Represents the input of a delete pipeline action.</p>
+-- <p>Represents the input of a DeletePipeline action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * name [PipelineName] <p>The name of the pipeline to be deleted.</p>
@@ -2066,7 +2473,7 @@ function asserts.AssertStartPipelineExecutionOutput(struct)
 end
 
 --- Create a structure of type StartPipelineExecutionOutput
--- <p>Represents the output of a start pipeline execution action.</p>
+-- <p>Represents the output of a StartPipelineExecution action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * pipelineExecutionId [PipelineExecutionId] <p>The unique system-generated ID of the pipeline execution that was started.</p>
@@ -2103,7 +2510,7 @@ function asserts.AssertCreatePipelineOutput(struct)
 end
 
 --- Create a structure of type CreatePipelineOutput
--- <p>Represents the output of a create pipeline action.</p>
+-- <p>Represents the output of a CreatePipeline action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * pipeline [PipelineDeclaration] <p>Represents the structure of actions and stages to be performed in the pipeline. </p>
@@ -2260,7 +2667,7 @@ function asserts.AssertPutJobFailureResultInput(struct)
 end
 
 --- Create a structure of type PutJobFailureResultInput
--- <p>Represents the input of a put job failure result action.</p>
+-- <p>Represents the input of a PutJobFailureResult action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * failureDetails [FailureDetails] <p>The details about the failure of a job.</p>
@@ -2301,7 +2708,7 @@ function asserts.AssertListPipelinesInput(struct)
 end
 
 --- Create a structure of type ListPipelinesInput
--- <p>Represents the input of a list pipelines action.</p>
+-- <p>Represents the input of a ListPipelines action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * nextToken [NextToken] <p>An identifier that was returned from the previous list pipelines call, which can be used to return the next set of pipelines in the list.</p>
@@ -2343,7 +2750,7 @@ function asserts.AssertDeleteCustomActionTypeInput(struct)
 end
 
 --- Create a structure of type DeleteCustomActionTypeInput
--- <p>Represents the input of a delete custom action operation. The custom action will be marked as deleted.</p>
+-- <p>Represents the input of a DeleteCustomActionType operation. The custom action will be marked as deleted.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * category [ActionCategory] <p>The category of the custom action that you want to delete, such as source or deploy.</p>
@@ -2392,7 +2799,7 @@ function asserts.AssertAcknowledgeThirdPartyJobInput(struct)
 end
 
 --- Create a structure of type AcknowledgeThirdPartyJobInput
--- <p>Represents the input of an acknowledge third party job action.</p>
+-- <p>Represents the input of an AcknowledgeThirdPartyJob action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * nonce [Nonce] <p>A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Get this number from the response to a <a>GetThirdPartyJobDetails</a> request.</p>
@@ -2441,7 +2848,7 @@ function asserts.AssertPutThirdPartyJobFailureResultInput(struct)
 end
 
 --- Create a structure of type PutThirdPartyJobFailureResultInput
--- <p>Represents the input of a third party job failure result action.</p>
+-- <p>Represents the input of a PutThirdPartyJobFailureResult action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * clientToken [ClientToken] <p>The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.</p>
@@ -2600,25 +3007,27 @@ function M.InvalidJobStateException(args)
     }
 end
 
-keys.GetPipelineOutput = { ["pipeline"] = true, nil }
+keys.ErrorDetails = { ["message"] = true, ["code"] = true, nil }
 
-function asserts.AssertGetPipelineOutput(struct)
+function asserts.AssertErrorDetails(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected GetPipelineOutput to be of type 'table'")
-	if struct["pipeline"] then asserts.AssertPipelineDeclaration(struct["pipeline"]) end
+	assert(type(struct) == "table", "Expected ErrorDetails to be of type 'table'")
+	if struct["message"] then asserts.AssertMessage(struct["message"]) end
+	if struct["code"] then asserts.AssertCode(struct["code"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.GetPipelineOutput[k], "GetPipelineOutput contains unknown key " .. tostring(k))
+		assert(keys.ErrorDetails[k], "ErrorDetails contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type GetPipelineOutput
--- <p>Represents the output of a get pipeline action.</p>
+--- Create a structure of type ErrorDetails
+-- <p>Represents information about an error in AWS CodePipeline.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * pipeline [PipelineDeclaration] <p>Represents the structure of actions and stages to be performed in the pipeline. </p>
--- @return GetPipelineOutput structure as a key-value pair table
-function M.GetPipelineOutput(args)
-	assert(args, "You must provide an argument table when creating GetPipelineOutput")
+-- * message [Message] <p>The text of the error message.</p>
+-- * code [Code] <p>The system ID or error number code of the error.</p>
+-- @return ErrorDetails structure as a key-value pair table
+function M.ErrorDetails(args)
+	assert(args, "You must provide an argument table when creating ErrorDetails")
     local query_args = { 
     }
     local uri_args = { 
@@ -2626,9 +3035,10 @@ function M.GetPipelineOutput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["pipeline"] = args["pipeline"],
+		["message"] = args["message"],
+		["code"] = args["code"],
 	}
-	asserts.AssertGetPipelineOutput(all_args)
+	asserts.AssertErrorDetails(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2652,10 +3062,10 @@ function asserts.AssertListPipelineExecutionsInput(struct)
 end
 
 --- Create a structure of type ListPipelineExecutionsInput
--- <p>Represents the input of a list pipeline executions action.</p>
+-- <p>Represents the input of a ListPipelineExecutions action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * nextToken [NextToken] <p>The token that was returned from the previous list pipeline executions call, which can be used to return the next set of pipeline executions in the list.</p>
+-- * nextToken [NextToken] <p>The token that was returned from the previous ListPipelineExecutions call, which can be used to return the next set of pipeline executions in the list.</p>
 -- * pipelineName [PipelineName] <p>The name of the pipeline for which you want to get execution summary information.</p>
 -- * maxResults [MaxResults] <p>The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned nextToken value. The available pipeline execution history is limited to the most recent 12 months, based on pipeline execution start times. Default value is 100.</p>
 -- Required key: pipelineName
@@ -2696,7 +3106,7 @@ function asserts.AssertListActionTypesOutput(struct)
 end
 
 --- Create a structure of type ListActionTypesOutput
--- <p>Represents the output of a list action types action.</p>
+-- <p>Represents the output of a ListActionTypes action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * actionTypes [ActionTypeList] <p>Provides details of the action types.</p>
@@ -2799,6 +3209,45 @@ function M.OutputArtifact(args)
 		["name"] = args["name"],
 	}
 	asserts.AssertOutputArtifact(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.PutWebhookInput = { ["webhook"] = true, nil }
+
+function asserts.AssertPutWebhookInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PutWebhookInput to be of type 'table'")
+	assert(struct["webhook"], "Expected key webhook to exist in table")
+	if struct["webhook"] then asserts.AssertWebhookDefinition(struct["webhook"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PutWebhookInput[k], "PutWebhookInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PutWebhookInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * webhook [WebhookDefinition] <p>The detail provided in an input file to create the webhook, such as the webhook name, the pipeline name, and the action name. Give the webhook a unique name which identifies the webhook being defined. You may choose to name the webhook after the pipeline and action it targets so that you can easily recognize what it's used for later.</p>
+-- Required key: webhook
+-- @return PutWebhookInput structure as a key-value pair table
+function M.PutWebhookInput(args)
+	assert(args, "You must provide an argument table when creating PutWebhookInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["webhook"] = args["webhook"],
+	}
+	asserts.AssertPutWebhookInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2932,7 +3381,7 @@ function asserts.AssertGetJobDetailsInput(struct)
 end
 
 --- Create a structure of type GetJobDetailsInput
--- <p>Represents the input of a get job details action.</p>
+-- <p>Represents the input of a GetJobDetails action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * jobId [JobId] <p>The unique system-generated ID for the job.</p>
@@ -2970,7 +3419,7 @@ function asserts.AssertPollForThirdPartyJobsOutput(struct)
 end
 
 --- Create a structure of type PollForThirdPartyJobsOutput
--- <p>Represents the output of a poll for third party jobs action.</p>
+-- <p>Represents the output of a PollForThirdPartyJobs action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * jobs [ThirdPartyJobList] <p>Information about the jobs to take action on.</p>
@@ -3014,7 +3463,7 @@ function asserts.AssertRetryStageExecutionInput(struct)
 end
 
 --- Create a structure of type RetryStageExecutionInput
--- <p>Represents the input of a retry stage execution action.</p>
+-- <p>Represents the input of a RetryStageExecution action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution in the failed stage to be retried. Use the <a>GetPipelineState</a> action to retrieve the current pipelineExecutionId of the failed stage</p>
@@ -3049,6 +3498,70 @@ function M.RetryStageExecutionInput(args)
     }
 end
 
+keys.WebhookDefinition = { ["authenticationConfiguration"] = true, ["name"] = true, ["authentication"] = true, ["targetPipeline"] = true, ["targetAction"] = true, ["filters"] = true, nil }
+
+function asserts.AssertWebhookDefinition(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected WebhookDefinition to be of type 'table'")
+	assert(struct["name"], "Expected key name to exist in table")
+	assert(struct["targetPipeline"], "Expected key targetPipeline to exist in table")
+	assert(struct["targetAction"], "Expected key targetAction to exist in table")
+	assert(struct["filters"], "Expected key filters to exist in table")
+	assert(struct["authentication"], "Expected key authentication to exist in table")
+	assert(struct["authenticationConfiguration"], "Expected key authenticationConfiguration to exist in table")
+	if struct["authenticationConfiguration"] then asserts.AssertWebhookAuthConfiguration(struct["authenticationConfiguration"]) end
+	if struct["name"] then asserts.AssertWebhookName(struct["name"]) end
+	if struct["authentication"] then asserts.AssertWebhookAuthenticationType(struct["authentication"]) end
+	if struct["targetPipeline"] then asserts.AssertPipelineName(struct["targetPipeline"]) end
+	if struct["targetAction"] then asserts.AssertActionName(struct["targetAction"]) end
+	if struct["filters"] then asserts.AssertWebhookFilters(struct["filters"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.WebhookDefinition[k], "WebhookDefinition contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type WebhookDefinition
+-- <p>Represents information about a webhook and its definition.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * authenticationConfiguration [WebhookAuthConfiguration] <p>Properties that configure the authentication applied to incoming webhook trigger requests. The required properties depend on the authentication type. For GITHUB_HMAC, only the SecretToken property must be set. For IP, only the AllowedIPRange property must be set to a valid CIDR range. For UNAUTHENTICATED, no properties can be set.</p>
+-- * name [WebhookName] <p>The name of the webhook.</p>
+-- * authentication [WebhookAuthenticationType] <p>Supported options are GITHUB_HMAC, IP and UNAUTHENTICATED.</p> <ul> <li> <p> GITHUB_HMAC implements the authentication scheme described here: https://developer.github.com/webhooks/securing/</p> </li> <li> <p> IP will reject webhooks trigger requests unless they originate from an IP within the IP range whitelisted in the authentication configuration.</p> </li> <li> <p> UNAUTHENTICATED will accept all webhook trigger requests regardless of origin.</p> </li> </ul>
+-- * targetPipeline [PipelineName] <p>The name of the pipeline you want to connect to the webhook.</p>
+-- * targetAction [ActionName] <p>The name of the action in a pipeline you want to connect to the webhook. The action must be from the source (first) stage of the pipeline.</p>
+-- * filters [WebhookFilters] <p>A list of rules applied to the body/payload sent in the POST request to a webhook URL. All defined rules must pass for the request to be accepted and the pipeline started.</p>
+-- Required key: name
+-- Required key: targetPipeline
+-- Required key: targetAction
+-- Required key: filters
+-- Required key: authentication
+-- Required key: authenticationConfiguration
+-- @return WebhookDefinition structure as a key-value pair table
+function M.WebhookDefinition(args)
+	assert(args, "You must provide an argument table when creating WebhookDefinition")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["authenticationConfiguration"] = args["authenticationConfiguration"],
+		["name"] = args["name"],
+		["authentication"] = args["authentication"],
+		["targetPipeline"] = args["targetPipeline"],
+		["targetAction"] = args["targetAction"],
+		["filters"] = args["filters"],
+	}
+	asserts.AssertWebhookDefinition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetThirdPartyJobDetailsOutput = { ["jobDetails"] = true, nil }
 
 function asserts.AssertGetThirdPartyJobDetailsOutput(struct)
@@ -3061,7 +3574,7 @@ function asserts.AssertGetThirdPartyJobDetailsOutput(struct)
 end
 
 --- Create a structure of type GetThirdPartyJobDetailsOutput
--- <p>Represents the output of a get third party job details action.</p>
+-- <p>Represents the output of a GetThirdPartyJobDetails action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * jobDetails [ThirdPartyJobDetails] <p>The details of the job, including any protected values defined for the job.</p>
@@ -3360,7 +3873,7 @@ function asserts.AssertGetPipelineExecutionInput(struct)
 end
 
 --- Create a structure of type GetPipelineExecutionInput
--- <p>Represents the input of a get pipeline execution action.</p>
+-- <p>Represents the input of a GetPipelineExecution action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution about which you want to get execution details.</p>
@@ -3436,7 +3949,7 @@ function asserts.AssertCreateCustomActionTypeOutput(struct)
 end
 
 --- Create a structure of type CreateCustomActionTypeOutput
--- <p>Represents the output of a create custom action operation.</p>
+-- <p>Represents the output of a CreateCustomActionType operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * actionType [ActionType] <p>Returns information about the details of an action type.</p>
@@ -3478,7 +3991,7 @@ function asserts.AssertPutJobSuccessResultInput(struct)
 end
 
 --- Create a structure of type PutJobSuccessResultInput
--- <p>Represents the input of a put job success result action.</p>
+-- <p>Represents the input of a PutJobSuccessResult action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * currentRevision [CurrentRevision] <p>The ID of the current revision of the artifact successfully worked upon by the job.</p>
@@ -3522,7 +4035,7 @@ function asserts.AssertPollForJobsOutput(struct)
 end
 
 --- Create a structure of type PollForJobsOutput
--- <p>Represents the output of a poll for jobs action.</p>
+-- <p>Represents the output of a PollForJobs action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * jobs [JobList] <p>Information about the jobs to take action on.</p>
@@ -3547,13 +4060,14 @@ function M.PollForJobsOutput(args)
     }
 end
 
-keys.PipelineExecutionSummary = { ["pipelineExecutionId"] = true, ["status"] = true, ["lastUpdateTime"] = true, ["startTime"] = true, nil }
+keys.PipelineExecutionSummary = { ["pipelineExecutionId"] = true, ["status"] = true, ["sourceRevisions"] = true, ["lastUpdateTime"] = true, ["startTime"] = true, nil }
 
 function asserts.AssertPipelineExecutionSummary(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PipelineExecutionSummary to be of type 'table'")
 	if struct["pipelineExecutionId"] then asserts.AssertPipelineExecutionId(struct["pipelineExecutionId"]) end
 	if struct["status"] then asserts.AssertPipelineExecutionStatus(struct["status"]) end
+	if struct["sourceRevisions"] then asserts.AssertSourceRevisionList(struct["sourceRevisions"]) end
 	if struct["lastUpdateTime"] then asserts.AssertTimestamp(struct["lastUpdateTime"]) end
 	if struct["startTime"] then asserts.AssertTimestamp(struct["startTime"]) end
 	for k,_ in pairs(struct) do
@@ -3566,7 +4080,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution.</p>
--- * status [PipelineExecutionStatus] <p>The status of the pipeline execution.</p> <ul> <li> <p>InProgress: The pipeline execution is currently running.</p> </li> <li> <p>Succeeded: The pipeline execution completed successfully. </p> </li> <li> <p>Superseded: While this pipeline execution was waiting for the next stage to be completed, a newer pipeline execution caught up and continued through the pipeline instead. </p> </li> <li> <p>Failed: The pipeline execution did not complete successfully.</p> </li> </ul>
+-- * status [PipelineExecutionStatus] <p>The status of the pipeline execution.</p> <ul> <li> <p>InProgress: The pipeline execution is currently running.</p> </li> <li> <p>Succeeded: The pipeline execution was completed successfully. </p> </li> <li> <p>Superseded: While this pipeline execution was waiting for the next stage to be completed, a newer pipeline execution advanced and continued through the pipeline instead. </p> </li> <li> <p>Failed: The pipeline execution was not completed successfully.</p> </li> </ul>
+-- * sourceRevisions [SourceRevisionList] 
 -- * lastUpdateTime [Timestamp] <p>The date and time of the last change to the pipeline execution, in timestamp format.</p>
 -- * startTime [Timestamp] <p>The date and time when the pipeline execution began, in timestamp format.</p>
 -- @return PipelineExecutionSummary structure as a key-value pair table
@@ -3581,6 +4096,7 @@ function M.PipelineExecutionSummary(args)
 	local all_args = { 
 		["pipelineExecutionId"] = args["pipelineExecutionId"],
 		["status"] = args["status"],
+		["sourceRevisions"] = args["sourceRevisions"],
 		["lastUpdateTime"] = args["lastUpdateTime"],
 		["startTime"] = args["startTime"],
 	}
@@ -3651,6 +4167,40 @@ function M.JobData(args)
     }
 end
 
+keys.RegisterWebhookWithThirdPartyOutput = { nil }
+
+function asserts.AssertRegisterWebhookWithThirdPartyOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RegisterWebhookWithThirdPartyOutput to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.RegisterWebhookWithThirdPartyOutput[k], "RegisterWebhookWithThirdPartyOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RegisterWebhookWithThirdPartyOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RegisterWebhookWithThirdPartyOutput structure as a key-value pair table
+function M.RegisterWebhookWithThirdPartyOutput(args)
+	assert(args, "You must provide an argument table when creating RegisterWebhookWithThirdPartyOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertRegisterWebhookWithThirdPartyOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.EnableStageTransitionInput = { ["pipelineName"] = true, ["stageName"] = true, ["transitionType"] = true, nil }
 
 function asserts.AssertEnableStageTransitionInput(struct)
@@ -3668,7 +4218,7 @@ function asserts.AssertEnableStageTransitionInput(struct)
 end
 
 --- Create a structure of type EnableStageTransitionInput
--- <p>Represents the input of an enable stage transition action.</p>
+-- <p>Represents the input of an EnableStageTransition action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * pipelineName [PipelineName] <p>The name of the pipeline in which you want to enable the flow of artifacts from one stage to another.</p>
@@ -3781,7 +4331,7 @@ function asserts.AssertGetPipelineStateInput(struct)
 end
 
 --- Create a structure of type GetPipelineStateInput
--- <p>Represents the input of a get pipeline state action.</p>
+-- <p>Represents the input of a GetPipelineState action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * name [PipelineName] <p>The name of the pipeline about which you want to get information.</p>
@@ -3824,7 +4374,7 @@ end
 -- <p>Represents information about a pipeline to a job worker.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * action [ActionContext] <p/>
+-- * action [ActionContext] <p>The context of an action to a job worker within the stage of a pipeline.</p>
 -- * pipelineName [PipelineName] <p>The name of the pipeline. This is a user-specified value. Pipeline names must be unique across all pipeline names under an Amazon Web Services account.</p>
 -- * stage [StageContext] <p>The stage of the pipeline.</p>
 -- @return PipelineContext structure as a key-value pair table
@@ -3862,7 +4412,7 @@ function asserts.AssertGetJobDetailsOutput(struct)
 end
 
 --- Create a structure of type GetJobDetailsOutput
--- <p>Represents the output of a get job details action.</p>
+-- <p>Represents the output of a GetJobDetails action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * jobDetails [JobDetails] <p>The details of the job.</p> <note> <p>If AWSSessionCredentials is used, a long-running job can call GetJobDetails again to obtain new credentials.</p> </note>
@@ -3899,7 +4449,7 @@ function asserts.AssertPutApprovalResultOutput(struct)
 end
 
 --- Create a structure of type PutApprovalResultOutput
--- <p>Represents the output of a put approval result action.</p>
+-- <p>Represents the output of a PutApprovalResult action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * approvedAt [Timestamp] <p>The timestamp showing when the approval or rejection was submitted.</p>
@@ -4057,7 +4607,7 @@ function asserts.AssertGetThirdPartyJobDetailsInput(struct)
 end
 
 --- Create a structure of type GetThirdPartyJobDetailsInput
--- <p>Represents the input of a get third party job details action.</p>
+-- <p>Represents the input of a GetThirdPartyJobDetails action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * clientToken [ClientToken] <p>The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.</p>
@@ -4122,6 +4672,40 @@ function M.StageExecution(args)
 		["status"] = args["status"],
 	}
 	asserts.AssertStageExecution(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.InvalidWebhookFilterPatternException = { nil }
+
+function asserts.AssertInvalidWebhookFilterPatternException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InvalidWebhookFilterPatternException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.InvalidWebhookFilterPatternException[k], "InvalidWebhookFilterPatternException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InvalidWebhookFilterPatternException
+-- <p>The specified event filter rule is in an invalid format.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidWebhookFilterPatternException structure as a key-value pair table
+function M.InvalidWebhookFilterPatternException(args)
+	assert(args, "You must provide an argument table when creating InvalidWebhookFilterPatternException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertInvalidWebhookFilterPatternException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4328,6 +4912,43 @@ function M.StageDeclaration(args)
     }
 end
 
+keys.RegisterWebhookWithThirdPartyInput = { ["webhookName"] = true, nil }
+
+function asserts.AssertRegisterWebhookWithThirdPartyInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RegisterWebhookWithThirdPartyInput to be of type 'table'")
+	if struct["webhookName"] then asserts.AssertWebhookName(struct["webhookName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RegisterWebhookWithThirdPartyInput[k], "RegisterWebhookWithThirdPartyInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RegisterWebhookWithThirdPartyInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * webhookName [WebhookName] <p>The name of an existing webhook created with PutWebhook to register with a supported third party. </p>
+-- @return RegisterWebhookWithThirdPartyInput structure as a key-value pair table
+function M.RegisterWebhookWithThirdPartyInput(args)
+	assert(args, "You must provide an argument table when creating RegisterWebhookWithThirdPartyInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["webhookName"] = args["webhookName"],
+	}
+	asserts.AssertRegisterWebhookWithThirdPartyInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.BlockerDeclaration = { ["type"] = true, ["name"] = true, nil }
 
 function asserts.AssertBlockerDeclaration(struct)
@@ -4418,6 +5039,86 @@ function M.PipelineSummary(args)
     }
 end
 
+keys.WebhookAuthConfiguration = { ["SecretToken"] = true, ["AllowedIPRange"] = true, nil }
+
+function asserts.AssertWebhookAuthConfiguration(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected WebhookAuthConfiguration to be of type 'table'")
+	if struct["SecretToken"] then asserts.AssertWebhookAuthConfigurationSecretToken(struct["SecretToken"]) end
+	if struct["AllowedIPRange"] then asserts.AssertWebhookAuthConfigurationAllowedIPRange(struct["AllowedIPRange"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.WebhookAuthConfiguration[k], "WebhookAuthConfiguration contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type WebhookAuthConfiguration
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SecretToken [WebhookAuthConfigurationSecretToken] 
+-- * AllowedIPRange [WebhookAuthConfigurationAllowedIPRange] 
+-- @return WebhookAuthConfiguration structure as a key-value pair table
+function M.WebhookAuthConfiguration(args)
+	assert(args, "You must provide an argument table when creating WebhookAuthConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SecretToken"] = args["SecretToken"],
+		["AllowedIPRange"] = args["AllowedIPRange"],
+	}
+	asserts.AssertWebhookAuthConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListWebhooksOutput = { ["webhooks"] = true, ["NextToken"] = true, nil }
+
+function asserts.AssertListWebhooksOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListWebhooksOutput to be of type 'table'")
+	if struct["webhooks"] then asserts.AssertWebhookList(struct["webhooks"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListWebhooksOutput[k], "ListWebhooksOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListWebhooksOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * webhooks [WebhookList] <p>The JSON detail returned for each webhook in the list output for the ListWebhooks call.</p>
+-- * NextToken [NextToken] <p>If the amount of returned information is significantly large, an identifier is also returned and can be used in a subsequent ListWebhooks call to return the next set of webhooks in the list. </p>
+-- @return ListWebhooksOutput structure as a key-value pair table
+function M.ListWebhooksOutput(args)
+	assert(args, "You must provide an argument table when creating ListWebhooksOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["webhooks"] = args["webhooks"],
+		["NextToken"] = args["NextToken"],
+	}
+	asserts.AssertListWebhooksOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.RetryStageExecutionOutput = { ["pipelineExecutionId"] = true, nil }
 
 function asserts.AssertRetryStageExecutionOutput(struct)
@@ -4430,7 +5131,7 @@ function asserts.AssertRetryStageExecutionOutput(struct)
 end
 
 --- Create a structure of type RetryStageExecutionOutput
--- <p>Represents the output of a retry stage execution action.</p>
+-- <p>Represents the output of a RetryStageExecution action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * pipelineExecutionId [PipelineExecutionId] <p>The ID of the current workflow execution in the failed stage.</p>
@@ -4545,7 +5246,7 @@ end
 -- * pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution.</p>
 -- * pipelineVersion [PipelineVersion] <p>The version number of the pipeline that was executed.</p>
 -- * pipelineName [PipelineName] <p>The name of the pipeline that was executed.</p>
--- * status [PipelineExecutionStatus] <p>The status of the pipeline execution.</p> <ul> <li> <p>InProgress: The pipeline execution is currently running.</p> </li> <li> <p>Succeeded: The pipeline execution completed successfully. </p> </li> <li> <p>Superseded: While this pipeline execution was waiting for the next stage to be completed, a newer pipeline execution caught up and continued through the pipeline instead. </p> </li> <li> <p>Failed: The pipeline execution did not complete successfully.</p> </li> </ul>
+-- * status [PipelineExecutionStatus] <p>The status of the pipeline execution.</p> <ul> <li> <p>InProgress: The pipeline execution is currently running.</p> </li> <li> <p>Succeeded: The pipeline execution was completed successfully. </p> </li> <li> <p>Superseded: While this pipeline execution was waiting for the next stage to be completed, a newer pipeline execution advanced and continued through the pipeline instead. </p> </li> <li> <p>Failed: The pipeline execution was not completed successfully.</p> </li> </ul>
 -- * artifactRevisions [ArtifactRevisionList] <p>A list of ArtifactRevision objects included in a pipeline execution.</p>
 -- @return PipelineExecution structure as a key-value pair table
 function M.PipelineExecution(args)
@@ -4630,6 +5331,43 @@ function M.ThirdPartyJobData(args)
     }
 end
 
+keys.PutWebhookOutput = { ["webhook"] = true, nil }
+
+function asserts.AssertPutWebhookOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PutWebhookOutput to be of type 'table'")
+	if struct["webhook"] then asserts.AssertListWebhookItem(struct["webhook"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PutWebhookOutput[k], "PutWebhookOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PutWebhookOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * webhook [ListWebhookItem] <p>The detail returned from creating the webhook, such as the webhook name, webhook URL, and webhook ARN.</p>
+-- @return PutWebhookOutput structure as a key-value pair table
+function M.PutWebhookOutput(args)
+	assert(args, "You must provide an argument table when creating PutWebhookOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["webhook"] = args["webhook"],
+	}
+	asserts.AssertPutWebhookOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.PollForThirdPartyJobsInput = { ["actionTypeId"] = true, ["maxBatchSize"] = true, nil }
 
 function asserts.AssertPollForThirdPartyJobsInput(struct)
@@ -4644,7 +5382,7 @@ function asserts.AssertPollForThirdPartyJobsInput(struct)
 end
 
 --- Create a structure of type PollForThirdPartyJobsInput
--- <p>Represents the input of a poll for third party jobs action.</p>
+-- <p>Represents the input of a PollForThirdPartyJobs action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * actionTypeId [ActionTypeId] <p>Represents information about an action type.</p>
@@ -4706,6 +5444,40 @@ function M.PipelineExecutionNotFoundException(args)
     }
 end
 
+keys.WebhookNotFoundException = { nil }
+
+function asserts.AssertWebhookNotFoundException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected WebhookNotFoundException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.WebhookNotFoundException[k], "WebhookNotFoundException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type WebhookNotFoundException
+-- <p>The specified webhook was entered in an invalid format or cannot be found.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return WebhookNotFoundException structure as a key-value pair table
+function M.WebhookNotFoundException(args)
+	assert(args, "You must provide an argument table when creating WebhookNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertWebhookNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListActionTypesInput = { ["nextToken"] = true, ["actionOwnerFilter"] = true, nil }
 
 function asserts.AssertListActionTypesInput(struct)
@@ -4719,7 +5491,7 @@ function asserts.AssertListActionTypesInput(struct)
 end
 
 --- Create a structure of type ListActionTypesInput
--- <p>Represents the input of a list action types action.</p>
+-- <p>Represents the input of a ListActionTypes action.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * nextToken [NextToken] <p>An identifier that was returned from the previous list action types call, which can be used to return the next set of action types in the list.</p>
@@ -4744,6 +5516,17 @@ function M.ListActionTypesInput(args)
         uri = uri_args,
         headers = header_args,
     }
+end
+
+function asserts.AssertPipelineExecutionId(str)
+	assert(str)
+	assert(type(str) == "string", "Expected PipelineExecutionId to be of type 'string'")
+end
+
+--  
+function M.PipelineExecutionId(str)
+	asserts.AssertPipelineExecutionId(str)
+	return str
 end
 
 function asserts.AssertActionName(str)
@@ -4786,22 +5569,13 @@ end
 function asserts.AssertExecutionSummary(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ExecutionSummary to be of type 'string'")
+	assert(#str <= 2048, "Expected string to be max 2048 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
 function M.ExecutionSummary(str)
 	asserts.AssertExecutionSummary(str)
-	return str
-end
-
-function asserts.AssertStageTransitionType(str)
-	assert(str)
-	assert(type(str) == "string", "Expected StageTransitionType to be of type 'string'")
-end
-
---  
-function M.StageTransitionType(str)
-	asserts.AssertStageTransitionType(str)
 	return str
 end
 
@@ -4816,20 +5590,11 @@ function M.JobId(str)
 	return str
 end
 
-function asserts.AssertPipelineExecutionId(str)
-	assert(str)
-	assert(type(str) == "string", "Expected PipelineExecutionId to be of type 'string'")
-end
-
---  
-function M.PipelineExecutionId(str)
-	asserts.AssertPipelineExecutionId(str)
-	return str
-end
-
 function asserts.AssertNonce(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Nonce to be of type 'string'")
+	assert(#str <= 50, "Expected string to be max 50 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
@@ -4886,14 +5651,14 @@ function M.LastUpdatedBy(str)
 	return str
 end
 
-function asserts.AssertArtifactStoreType(str)
+function asserts.AssertWebhookAuthenticationType(str)
 	assert(str)
-	assert(type(str) == "string", "Expected ArtifactStoreType to be of type 'string'")
+	assert(type(str) == "string", "Expected WebhookAuthenticationType to be of type 'string'")
 end
 
 --  
-function M.ArtifactStoreType(str)
-	asserts.AssertArtifactStoreType(str)
+function M.WebhookAuthenticationType(str)
+	asserts.AssertWebhookAuthenticationType(str)
 	return str
 end
 
@@ -4921,6 +5686,19 @@ function M.DisabledReason(str)
 	return str
 end
 
+function asserts.AssertMatchEquals(str)
+	assert(str)
+	assert(type(str) == "string", "Expected MatchEquals to be of type 'string'")
+	assert(#str <= 150, "Expected string to be max 150 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.MatchEquals(str)
+	asserts.AssertMatchEquals(str)
+	return str
+end
+
 function asserts.AssertLastChangedBy(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LastChangedBy to be of type 'string'")
@@ -4940,6 +5718,19 @@ end
 --  
 function M.ActionConfigurationPropertyType(str)
 	asserts.AssertActionConfigurationPropertyType(str)
+	return str
+end
+
+function asserts.AssertPipelineName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected PipelineName to be of type 'string'")
+	assert(#str <= 100, "Expected string to be max 100 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.PipelineName(str)
+	asserts.AssertPipelineName(str)
 	return str
 end
 
@@ -5006,6 +5797,19 @@ function M.ThirdPartyJobId(str)
 	return str
 end
 
+function asserts.AssertWebhookAuthConfigurationSecretToken(str)
+	assert(str)
+	assert(type(str) == "string", "Expected WebhookAuthConfigurationSecretToken to be of type 'string'")
+	assert(#str <= 100, "Expected string to be max 100 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.WebhookAuthConfigurationSecretToken(str)
+	asserts.AssertWebhookAuthConfigurationSecretToken(str)
+	return str
+end
+
 function asserts.AssertFailureType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FailureType to be of type 'string'")
@@ -5033,6 +5837,8 @@ end
 function asserts.AssertNextToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NextToken to be of type 'string'")
+	assert(#str <= 2048, "Expected string to be max 2048 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
@@ -5051,6 +5857,17 @@ end
 --  
 function M.ArtifactName(str)
 	asserts.AssertArtifactName(str)
+	return str
+end
+
+function asserts.AssertStageTransitionType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected StageTransitionType to be of type 'string'")
+end
+
+--  
+function M.StageTransitionType(str)
+	asserts.AssertStageTransitionType(str)
 	return str
 end
 
@@ -5187,6 +6004,8 @@ end
 function asserts.AssertMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Message to be of type 'string'")
+	assert(#str <= 5000, "Expected string to be max 5000 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
@@ -5195,9 +6014,46 @@ function M.Message(str)
 	return str
 end
 
+function asserts.AssertWebhookUrl(str)
+	assert(str)
+	assert(type(str) == "string", "Expected WebhookUrl to be of type 'string'")
+	assert(#str <= 1000, "Expected string to be max 1000 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.WebhookUrl(str)
+	asserts.AssertWebhookUrl(str)
+	return str
+end
+
+function asserts.AssertWebhookErrorCode(str)
+	assert(str)
+	assert(type(str) == "string", "Expected WebhookErrorCode to be of type 'string'")
+end
+
+--  
+function M.WebhookErrorCode(str)
+	asserts.AssertWebhookErrorCode(str)
+	return str
+end
+
+function asserts.AssertWebhookErrorMessage(str)
+	assert(str)
+	assert(type(str) == "string", "Expected WebhookErrorMessage to be of type 'string'")
+end
+
+--  
+function M.WebhookErrorMessage(str)
+	asserts.AssertWebhookErrorMessage(str)
+	return str
+end
+
 function asserts.AssertClientToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ClientToken to be of type 'string'")
+	assert(#str <= 256, "Expected string to be max 256 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
@@ -5215,6 +6071,19 @@ end
 --  
 function M.RoleArn(str)
 	asserts.AssertRoleArn(str)
+	return str
+end
+
+function asserts.AssertVersion(str)
+	assert(str)
+	assert(type(str) == "string", "Expected Version to be of type 'string'")
+	assert(#str <= 9, "Expected string to be max 9 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.Version(str)
+	asserts.AssertVersion(str)
 	return str
 end
 
@@ -5237,6 +6106,17 @@ end
 --  
 function M.SecretAccessKey(str)
 	asserts.AssertSecretAccessKey(str)
+	return str
+end
+
+function asserts.AssertArtifactStoreType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ArtifactStoreType to be of type 'string'")
+end
+
+--  
+function M.ArtifactStoreType(str)
+	asserts.AssertArtifactStoreType(str)
 	return str
 end
 
@@ -5267,6 +6147,8 @@ end
 function asserts.AssertContinuationToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ContinuationToken to be of type 'string'")
+	assert(#str <= 2048, "Expected string to be max 2048 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
@@ -5297,29 +6179,14 @@ function M.Code(str)
 	return str
 end
 
-function asserts.AssertRevision(str)
+function asserts.AssertPipelineArn(str)
 	assert(str)
-	assert(type(str) == "string", "Expected Revision to be of type 'string'")
-	assert(#str <= 1500, "Expected string to be max 1500 characters")
-	assert(#str >= 1, "Expected string to be min 1 characters")
+	assert(type(str) == "string", "Expected PipelineArn to be of type 'string'")
 end
 
 --  
-function M.Revision(str)
-	asserts.AssertRevision(str)
-	return str
-end
-
-function asserts.AssertVersion(str)
-	assert(str)
-	assert(type(str) == "string", "Expected Version to be of type 'string'")
-	assert(#str <= 9, "Expected string to be max 9 characters")
-	assert(#str >= 1, "Expected string to be min 1 characters")
-end
-
---  
-function M.Version(str)
-	asserts.AssertVersion(str)
+function M.PipelineArn(str)
+	asserts.AssertPipelineArn(str)
 	return str
 end
 
@@ -5367,16 +6234,27 @@ function M.PipelineExecutionStatus(str)
 	return str
 end
 
-function asserts.AssertPipelineName(str)
+function asserts.AssertWebhookArn(str)
 	assert(str)
-	assert(type(str) == "string", "Expected PipelineName to be of type 'string'")
-	assert(#str <= 100, "Expected string to be max 100 characters")
+	assert(type(str) == "string", "Expected WebhookArn to be of type 'string'")
+end
+
+--  
+function M.WebhookArn(str)
+	asserts.AssertWebhookArn(str)
+	return str
+end
+
+function asserts.AssertJsonPath(str)
+	assert(str)
+	assert(type(str) == "string", "Expected JsonPath to be of type 'string'")
+	assert(#str <= 150, "Expected string to be max 150 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
-function M.PipelineName(str)
-	asserts.AssertPipelineName(str)
+function M.JsonPath(str)
+	asserts.AssertJsonPath(str)
 	return str
 end
 
@@ -5390,6 +6268,17 @@ end
 --  
 function M.Url(str)
 	asserts.AssertUrl(str)
+	return str
+end
+
+function asserts.AssertS3ObjectKey(str)
+	assert(str)
+	assert(type(str) == "string", "Expected S3ObjectKey to be of type 'string'")
+end
+
+--  
+function M.S3ObjectKey(str)
+	asserts.AssertS3ObjectKey(str)
 	return str
 end
 
@@ -5407,7 +6296,7 @@ end
 function asserts.AssertDescription(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Description to be of type 'string'")
-	assert(#str <= 2048, "Expected string to be max 2048 characters")
+	assert(#str <= 160, "Expected string to be max 160 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
@@ -5417,14 +6306,42 @@ function M.Description(str)
 	return str
 end
 
-function asserts.AssertS3ObjectKey(str)
+function asserts.AssertWebhookAuthConfigurationAllowedIPRange(str)
 	assert(str)
-	assert(type(str) == "string", "Expected S3ObjectKey to be of type 'string'")
+	assert(type(str) == "string", "Expected WebhookAuthConfigurationAllowedIPRange to be of type 'string'")
+	assert(#str <= 100, "Expected string to be max 100 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
-function M.S3ObjectKey(str)
-	asserts.AssertS3ObjectKey(str)
+function M.WebhookAuthConfigurationAllowedIPRange(str)
+	asserts.AssertWebhookAuthConfigurationAllowedIPRange(str)
+	return str
+end
+
+function asserts.AssertWebhookName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected WebhookName to be of type 'string'")
+	assert(#str <= 100, "Expected string to be max 100 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.WebhookName(str)
+	asserts.AssertWebhookName(str)
+	return str
+end
+
+function asserts.AssertRevision(str)
+	assert(str)
+	assert(type(str) == "string", "Expected Revision to be of type 'string'")
+	assert(#str <= 1500, "Expected string to be max 1500 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.Revision(str)
+	asserts.AssertRevision(str)
 	return str
 end
 
@@ -5592,6 +6509,16 @@ function M.LastChangedAt(timestamp)
 	return timestamp
 end
 
+function asserts.AssertWebhookLastTriggered(timestamp)
+	assert(timestamp)
+	assert(type(timestamp) == "string", "Expected WebhookLastTriggered to be of type 'string'")
+end
+
+function M.WebhookLastTriggered(timestamp)
+	asserts.AssertWebhookLastTriggered(timestamp)
+	return timestamp
+end
+
 function asserts.AssertArtifactRevisionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ArtifactRevisionList to be of type ''table")
@@ -5634,6 +6561,21 @@ end
 -- List of PipelineSummary objects
 function M.PipelineList(list)
 	asserts.AssertPipelineList(list)
+	return list
+end
+
+function asserts.AssertStageStateList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected StageStateList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertStageState(v)
+	end
+end
+
+--  
+-- List of StageState objects
+function M.StageStateList(list)
+	asserts.AssertStageStateList(list)
 	return list
 end
 
@@ -5682,6 +6624,21 @@ function M.OutputArtifactList(list)
 	return list
 end
 
+function asserts.AssertWebhookList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected WebhookList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertListWebhookItem(v)
+	end
+end
+
+--  
+-- List of ListWebhookItem objects
+function M.WebhookList(list)
+	asserts.AssertWebhookList(list)
+	return list
+end
+
 function asserts.AssertActionTypeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ActionTypeList to be of type ''table")
@@ -5724,6 +6681,22 @@ end
 -- List of ActionState objects
 function M.ActionStateList(list)
 	asserts.AssertActionStateList(list)
+	return list
+end
+
+function asserts.AssertWebhookFilters(list)
+	assert(list)
+	assert(type(list) == "table", "Expected WebhookFilters to be of type ''table")
+	assert(#list <= 5, "Expected list to be contain 5 elements")
+	for _,v in ipairs(list) do
+		asserts.AssertWebhookFilterRule(v)
+	end
+end
+
+--  
+-- List of WebhookFilterRule objects
+function M.WebhookFilters(list)
+	asserts.AssertWebhookFilters(list)
 	return list
 end
 
@@ -5788,18 +6761,18 @@ function M.ArtifactList(list)
 	return list
 end
 
-function asserts.AssertStageStateList(list)
+function asserts.AssertSourceRevisionList(list)
 	assert(list)
-	assert(type(list) == "table", "Expected StageStateList to be of type ''table")
+	assert(type(list) == "table", "Expected SourceRevisionList to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertStageState(v)
+		asserts.AssertSourceRevision(v)
 	end
 end
 
 --  
--- List of StageState objects
-function M.StageStateList(list)
-	asserts.AssertStageStateList(list)
+-- List of SourceRevision objects
+function M.SourceRevisionList(list)
+	asserts.AssertSourceRevisionList(list)
 	return list
 end
 
@@ -5931,36 +6904,71 @@ function M.RetryStageExecutionSync(RetryStageExecutionInput, ...)
 	return coroutine.yield()
 end
 
---- Call PutJobSuccessResult asynchronously, invoking a callback when done
--- @param PutJobSuccessResultInput
+--- Call DisableStageTransition asynchronously, invoking a callback when done
+-- @param DisableStageTransitionInput
 -- @param cb Callback function accepting two args: response, error_message
-function M.PutJobSuccessResultAsync(PutJobSuccessResultInput, cb)
-	assert(PutJobSuccessResultInput, "You must provide a PutJobSuccessResultInput")
+function M.DisableStageTransitionAsync(DisableStageTransitionInput, cb)
+	assert(DisableStageTransitionInput, "You must provide a DisableStageTransitionInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutJobSuccessResult",
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.DisableStageTransition",
 	}
-	for header,value in pairs(PutJobSuccessResultInput.headers) do
+	for header,value in pairs(DisableStageTransitionInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", PutJobSuccessResultInput, headers, settings, cb)
+		request_handler(settings.uri, "/", DisableStageTransitionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call PutJobSuccessResult synchronously, returning when done
+--- Call DisableStageTransition synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param PutJobSuccessResultInput
+-- @param DisableStageTransitionInput
 -- @return response
 -- @return error_message
-function M.PutJobSuccessResultSync(PutJobSuccessResultInput, ...)
+function M.DisableStageTransitionSync(DisableStageTransitionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutJobSuccessResultAsync(PutJobSuccessResultInput, function(response, error_message)
+	M.DisableStageTransitionAsync(DisableStageTransitionInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListWebhooks asynchronously, invoking a callback when done
+-- @param ListWebhooksInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListWebhooksAsync(ListWebhooksInput, cb)
+	assert(ListWebhooksInput, "You must provide a ListWebhooksInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.ListWebhooks",
+	}
+	for header,value in pairs(ListWebhooksInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListWebhooksInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListWebhooks synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListWebhooksInput
+-- @return response
+-- @return error_message
+function M.ListWebhooksSync(ListWebhooksInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListWebhooksAsync(ListWebhooksInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6106,36 +7114,36 @@ function M.UpdatePipelineSync(UpdatePipelineInput, ...)
 	return coroutine.yield()
 end
 
---- Call AcknowledgeThirdPartyJob asynchronously, invoking a callback when done
--- @param AcknowledgeThirdPartyJobInput
+--- Call PutJobFailureResult asynchronously, invoking a callback when done
+-- @param PutJobFailureResultInput
 -- @param cb Callback function accepting two args: response, error_message
-function M.AcknowledgeThirdPartyJobAsync(AcknowledgeThirdPartyJobInput, cb)
-	assert(AcknowledgeThirdPartyJobInput, "You must provide a AcknowledgeThirdPartyJobInput")
+function M.PutJobFailureResultAsync(PutJobFailureResultInput, cb)
+	assert(PutJobFailureResultInput, "You must provide a PutJobFailureResultInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.AcknowledgeThirdPartyJob",
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutJobFailureResult",
 	}
-	for header,value in pairs(AcknowledgeThirdPartyJobInput.headers) do
+	for header,value in pairs(PutJobFailureResultInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", AcknowledgeThirdPartyJobInput, headers, settings, cb)
+		request_handler(settings.uri, "/", PutJobFailureResultInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call AcknowledgeThirdPartyJob synchronously, returning when done
+--- Call PutJobFailureResult synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param AcknowledgeThirdPartyJobInput
+-- @param PutJobFailureResultInput
 -- @return response
 -- @return error_message
-function M.AcknowledgeThirdPartyJobSync(AcknowledgeThirdPartyJobInput, ...)
+function M.PutJobFailureResultSync(PutJobFailureResultInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AcknowledgeThirdPartyJobAsync(AcknowledgeThirdPartyJobInput, function(response, error_message)
+	M.PutJobFailureResultAsync(PutJobFailureResultInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6176,36 +7184,141 @@ function M.ListActionTypesSync(ListActionTypesInput, ...)
 	return coroutine.yield()
 end
 
---- Call PutJobFailureResult asynchronously, invoking a callback when done
--- @param PutJobFailureResultInput
+--- Call AcknowledgeThirdPartyJob asynchronously, invoking a callback when done
+-- @param AcknowledgeThirdPartyJobInput
 -- @param cb Callback function accepting two args: response, error_message
-function M.PutJobFailureResultAsync(PutJobFailureResultInput, cb)
-	assert(PutJobFailureResultInput, "You must provide a PutJobFailureResultInput")
+function M.AcknowledgeThirdPartyJobAsync(AcknowledgeThirdPartyJobInput, cb)
+	assert(AcknowledgeThirdPartyJobInput, "You must provide a AcknowledgeThirdPartyJobInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutJobFailureResult",
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.AcknowledgeThirdPartyJob",
 	}
-	for header,value in pairs(PutJobFailureResultInput.headers) do
+	for header,value in pairs(AcknowledgeThirdPartyJobInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", PutJobFailureResultInput, headers, settings, cb)
+		request_handler(settings.uri, "/", AcknowledgeThirdPartyJobInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call PutJobFailureResult synchronously, returning when done
+--- Call AcknowledgeThirdPartyJob synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param PutJobFailureResultInput
+-- @param AcknowledgeThirdPartyJobInput
 -- @return response
 -- @return error_message
-function M.PutJobFailureResultSync(PutJobFailureResultInput, ...)
+function M.AcknowledgeThirdPartyJobSync(AcknowledgeThirdPartyJobInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutJobFailureResultAsync(PutJobFailureResultInput, function(response, error_message)
+	M.AcknowledgeThirdPartyJobAsync(AcknowledgeThirdPartyJobInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutWebhook asynchronously, invoking a callback when done
+-- @param PutWebhookInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.PutWebhookAsync(PutWebhookInput, cb)
+	assert(PutWebhookInput, "You must provide a PutWebhookInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutWebhook",
+	}
+	for header,value in pairs(PutWebhookInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", PutWebhookInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call PutWebhook synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutWebhookInput
+-- @return response
+-- @return error_message
+function M.PutWebhookSync(PutWebhookInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutWebhookAsync(PutWebhookInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteWebhook asynchronously, invoking a callback when done
+-- @param DeleteWebhookInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteWebhookAsync(DeleteWebhookInput, cb)
+	assert(DeleteWebhookInput, "You must provide a DeleteWebhookInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.DeleteWebhook",
+	}
+	for header,value in pairs(DeleteWebhookInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteWebhookInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteWebhook synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteWebhookInput
+-- @return response
+-- @return error_message
+function M.DeleteWebhookSync(DeleteWebhookInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteWebhookAsync(DeleteWebhookInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeregisterWebhookWithThirdParty asynchronously, invoking a callback when done
+-- @param DeregisterWebhookWithThirdPartyInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeregisterWebhookWithThirdPartyAsync(DeregisterWebhookWithThirdPartyInput, cb)
+	assert(DeregisterWebhookWithThirdPartyInput, "You must provide a DeregisterWebhookWithThirdPartyInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.DeregisterWebhookWithThirdParty",
+	}
+	for header,value in pairs(DeregisterWebhookWithThirdPartyInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeregisterWebhookWithThirdPartyInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeregisterWebhookWithThirdParty synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeregisterWebhookWithThirdPartyInput
+-- @return response
+-- @return error_message
+function M.DeregisterWebhookWithThirdPartySync(DeregisterWebhookWithThirdPartyInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeregisterWebhookWithThirdPartyAsync(DeregisterWebhookWithThirdPartyInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6631,6 +7744,41 @@ function M.CreatePipelineSync(CreatePipelineInput, ...)
 	return coroutine.yield()
 end
 
+--- Call RegisterWebhookWithThirdParty asynchronously, invoking a callback when done
+-- @param RegisterWebhookWithThirdPartyInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.RegisterWebhookWithThirdPartyAsync(RegisterWebhookWithThirdPartyInput, cb)
+	assert(RegisterWebhookWithThirdPartyInput, "You must provide a RegisterWebhookWithThirdPartyInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.RegisterWebhookWithThirdParty",
+	}
+	for header,value in pairs(RegisterWebhookWithThirdPartyInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", RegisterWebhookWithThirdPartyInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call RegisterWebhookWithThirdParty synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RegisterWebhookWithThirdPartyInput
+-- @return response
+-- @return error_message
+function M.RegisterWebhookWithThirdPartySync(RegisterWebhookWithThirdPartyInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RegisterWebhookWithThirdPartyAsync(RegisterWebhookWithThirdPartyInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call GetJobDetails asynchronously, invoking a callback when done
 -- @param GetJobDetailsInput
 -- @param cb Callback function accepting two args: response, error_message
@@ -6771,36 +7919,36 @@ function M.ListPipelineExecutionsSync(ListPipelineExecutionsInput, ...)
 	return coroutine.yield()
 end
 
---- Call DisableStageTransition asynchronously, invoking a callback when done
--- @param DisableStageTransitionInput
+--- Call PutJobSuccessResult asynchronously, invoking a callback when done
+-- @param PutJobSuccessResultInput
 -- @param cb Callback function accepting two args: response, error_message
-function M.DisableStageTransitionAsync(DisableStageTransitionInput, cb)
-	assert(DisableStageTransitionInput, "You must provide a DisableStageTransitionInput")
+function M.PutJobSuccessResultAsync(PutJobSuccessResultInput, cb)
+	assert(PutJobSuccessResultInput, "You must provide a PutJobSuccessResultInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.DisableStageTransition",
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutJobSuccessResult",
 	}
-	for header,value in pairs(DisableStageTransitionInput.headers) do
+	for header,value in pairs(PutJobSuccessResultInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DisableStageTransitionInput, headers, settings, cb)
+		request_handler(settings.uri, "/", PutJobSuccessResultInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DisableStageTransition synchronously, returning when done
+--- Call PutJobSuccessResult synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DisableStageTransitionInput
+-- @param PutJobSuccessResultInput
 -- @return response
 -- @return error_message
-function M.DisableStageTransitionSync(DisableStageTransitionInput, ...)
+function M.PutJobSuccessResultSync(PutJobSuccessResultInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisableStageTransitionAsync(DisableStageTransitionInput, function(response, error_message)
+	M.PutJobSuccessResultAsync(PutJobSuccessResultInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

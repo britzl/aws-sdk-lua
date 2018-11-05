@@ -21,74 +21,6 @@ M.metadata = {
 local keys = {}
 local asserts = {}
 
-keys.UnsupportedOperation = { nil }
-
-function asserts.AssertUnsupportedOperation(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UnsupportedOperation to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.UnsupportedOperation[k], "UnsupportedOperation contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UnsupportedOperation
--- <p>Error code 400. Unsupported operation.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return UnsupportedOperation structure as a key-value pair table
-function M.UnsupportedOperation(args)
-	assert(args, "You must provide an argument table when creating UnsupportedOperation")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertUnsupportedOperation(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.PurgeQueueInProgress = { nil }
-
-function asserts.AssertPurgeQueueInProgress(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected PurgeQueueInProgress to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.PurgeQueueInProgress[k], "PurgeQueueInProgress contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type PurgeQueueInProgress
--- <p>Indicates that the specified queue previously received a <code>PurgeQueue</code> request within the last 60 seconds (the time it can take to delete the messages in the queue).</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return PurgeQueueInProgress structure as a key-value pair table
-function M.PurgeQueueInProgress(args)
-	assert(args, "You must provide an argument table when creating PurgeQueueInProgress")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertPurgeQueueInProgress(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.MessageAttributeValue = { ["BinaryListValues"] = true, ["StringValue"] = true, ["DataType"] = true, ["BinaryValue"] = true, ["StringListValues"] = true, nil }
 
 function asserts.AssertMessageAttributeValue(struct)
@@ -111,7 +43,7 @@ end
 -- Valid keys:
 -- * BinaryListValues [BinaryList] <p>Not implemented. Reserved for future use.</p>
 -- * StringValue [String] <p>Strings are Unicode with UTF-8 binary encoding. For a list of code values, see <a href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII Printable Characters</a>.</p>
--- * DataType [String] <p>Amazon SQS supports the following logical data types: <code>String</code>, <code>Number</code>, and <code>Binary</code>. For the <code>Number</code> data type, you must use <code>StringValue</code>.</p> <p>You can also append custom labels. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-data-types-validation">Message Attribute Data Types and Validation</a> in the <i>Amazon SQS Developer Guide</i>.</p>
+-- * DataType [String] <p>Amazon SQS supports the following logical data types: <code>String</code>, <code>Number</code>, and <code>Binary</code>. For the <code>Number</code> data type, you must use <code>StringValue</code>.</p> <p>You can also append custom labels. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html">Amazon SQS Message Attributes</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
 -- * BinaryValue [Binary] <p>Binary type attributes can store any binary data, such as compressed data, encrypted data, or images.</p>
 -- * StringListValues [StringList] <p>Not implemented. Reserved for future use.</p>
 -- Required key: DataType
@@ -140,50 +72,6 @@ function M.MessageAttributeValue(args)
     }
 end
 
-keys.SetQueueAttributesRequest = { ["QueueUrl"] = true, ["Attributes"] = true, nil }
-
-function asserts.AssertSetQueueAttributesRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SetQueueAttributesRequest to be of type 'table'")
-	assert(struct["QueueUrl"], "Expected key QueueUrl to exist in table")
-	assert(struct["Attributes"], "Expected key Attributes to exist in table")
-	if struct["QueueUrl"] then asserts.AssertString(struct["QueueUrl"]) end
-	if struct["Attributes"] then asserts.AssertQueueAttributeMap(struct["Attributes"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.SetQueueAttributesRequest[k], "SetQueueAttributesRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SetQueueAttributesRequest
--- <p/>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * QueueUrl [String] <p>The URL of the Amazon SQS queue whose attributes are set.</p> <p>Queue URLs are case-sensitive.</p>
--- * Attributes [QueueAttributeMap] <p>A map of attributes to set.</p> <p>The following lists the names, descriptions, and values of the special request parameters that the <code>SetQueueAttributes</code> action uses:</p> <ul> <li> <p> <code>DelaySeconds</code> - The length of time, in seconds, for which the delivery of all messages in the queue is delayed. Valid values: An integer from 0 to 900 (15 minutes). The default is 0 (zero). </p> </li> <li> <p> <code>MaximumMessageSize</code> - The limit of how many bytes a message can contain before Amazon SQS rejects it. Valid values: An integer from 1,024 bytes (1 KiB) up to 262,144 bytes (256 KiB). The default is 262,144 (256 KiB). </p> </li> <li> <p> <code>MessageRetentionPeriod</code> - The length of time, in seconds, for which Amazon SQS retains a message. Valid values: An integer representing seconds, from 60 (1 minute) to 1,209,600 (14 days). The default is 345,600 (4 days). </p> </li> <li> <p> <code>Policy</code> - The queue's policy. A valid AWS policy. For more information about policy structure, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html">Overview of AWS IAM Policies</a> in the <i>Amazon IAM User Guide</i>. </p> </li> <li> <p> <code>ReceiveMessageWaitTimeSeconds</code> - The length of time, in seconds, for which a <code> <a>ReceiveMessage</a> </code> action waits for a message to arrive. Valid values: an integer from 0 to 20 (seconds). The default is 0. </p> </li> <li> <p> <code>RedrivePolicy</code> - The parameters for the dead letter queue functionality of the source queue. For more information about the redrive policy and dead letter queues, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html">Using Amazon SQS Dead Letter Queues</a> in the <i>Amazon SQS Developer Guide</i>. </p> <note> <p>The dead letter queue of a FIFO queue must also be a FIFO queue. Similarly, the dead letter queue of a standard queue must also be a standard queue.</p> </note> </li> <li> <p> <code>VisibilityTimeout</code> - The visibility timeout for the queue. Valid values: an integer from 0 to 43,200 (12 hours). The default is 30. For more information about the visibility timeout, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html">Visibility Timeout</a> in the <i>Amazon SQS Developer Guide</i>.</p> </li> </ul> <p>The following attributes apply only to <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html">server-side-encryption</a>:</p> <ul> <li> <p> <code>KmsMasterKeyId</code> - The ID of an AWS-managed customer master key (CMK) for Amazon SQS or a custom CMK. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms">Key Terms</a>. While the alias of the AWS-managed CMK for Amazon SQS is always <code>alias/aws/sqs</code>, the alias of a custom CMK can, for example, be <code>alias/aws/sqs</code>. For more examples, see <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters">KeyId</a> in the <i>AWS Key Management Service API Reference</i>. </p> </li> <li> <p> <code>KmsDataKeyReusePeriodSeconds</code> - The length of time, in seconds, for which Amazon SQS can reuse a <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys">data key</a> to encrypt or decrypt messages before calling AWS KMS again. An integer representing seconds, between 60 seconds (1 minute) and 86,400 seconds (24 hours). The default is 300 (5 minutes). A shorter time period provides better security but results in more calls to KMS which incur charges after Free Tier. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work">How Does the Data Key Reuse Period Work?</a>. </p> </li> </ul> <p>The following attribute applies only to <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html">FIFO (first-in-first-out) queues</a>:</p> <ul> <li> <p> <code>ContentBasedDeduplication</code> - Enables content-based deduplication. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing">Exactly-Once Processing</a> in the <i>Amazon SQS Developer Guide</i>. </p> <ul> <li> <p>Every message must have a unique <code>MessageDeduplicationId</code>,</p> <ul> <li> <p>You may provide a <code>MessageDeduplicationId</code> explicitly.</p> </li> <li> <p>If you aren't able to provide a <code>MessageDeduplicationId</code> and you enable <code>ContentBasedDeduplication</code> for your queue, Amazon SQS uses a SHA-256 hash to generate the <code>MessageDeduplicationId</code> using the body of the message (but not the attributes of the message). </p> </li> <li> <p>If you don't provide a <code>MessageDeduplicationId</code> and the queue doesn't have <code>ContentBasedDeduplication</code> set, the action fails with an error.</p> </li> <li> <p>If the queue has <code>ContentBasedDeduplication</code> set, your <code>MessageDeduplicationId</code> overrides the generated one.</p> </li> </ul> </li> <li> <p>When <code>ContentBasedDeduplication</code> is in effect, messages with identical content sent within the deduplication interval are treated as duplicates and only one copy of the message is delivered.</p> </li> <li> <p>If you send one message with <code>ContentBasedDeduplication</code> enabled and then another message with a <code>MessageDeduplicationId</code> that is the same as the one generated for the first <code>MessageDeduplicationId</code>, the two messages are treated as duplicates and only one copy of the message is delivered. </p> </li> </ul> </li> </ul> <p>Any other valid special request parameters (such as the following) are ignored:</p> <ul> <li> <p> <code>ApproximateNumberOfMessages</code> </p> </li> <li> <p> <code>ApproximateNumberOfMessagesDelayed</code> </p> </li> <li> <p> <code>ApproximateNumberOfMessagesNotVisible</code> </p> </li> <li> <p> <code>CreatedTimestamp</code> </p> </li> <li> <p> <code>LastModifiedTimestamp</code> </p> </li> <li> <p> <code>QueueArn</code> </p> </li> </ul>
--- Required key: QueueUrl
--- Required key: Attributes
--- @return SetQueueAttributesRequest structure as a key-value pair table
-function M.SetQueueAttributesRequest(args)
-	assert(args, "You must provide an argument table when creating SetQueueAttributesRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["QueueUrl"] = args["QueueUrl"],
-		["Attributes"] = args["Attributes"],
-	}
-	asserts.AssertSetQueueAttributesRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.GetQueueAttributesRequest = { ["QueueUrl"] = true, ["AttributeNames"] = true, nil }
 
 function asserts.AssertGetQueueAttributesRequest(struct)
@@ -201,8 +89,8 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * QueueUrl [String] <p>The URL of the Amazon SQS queue whose attribute information is retrieved.</p> <p>Queue URLs are case-sensitive.</p>
--- * AttributeNames [AttributeNameList] <p>A list of attributes for which to retrieve information.</p> <note> <p>In the future, new attributes might be added. If you write code that calls this action, we recommend that you structure your code so that it can handle new attributes gracefully.</p> </note> <p>The following attributes are supported:</p> <ul> <li> <p> <code>All</code> - Returns all values. </p> </li> <li> <p> <code>ApproximateNumberOfMessages</code> - Returns the approximate number of visible messages in a queue. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-resources-required-process-messages.html">Resources Required to Process Messages</a> in the <i>Amazon SQS Developer Guide</i>. </p> </li> <li> <p> <code>ApproximateNumberOfMessagesDelayed</code> - Returns the approximate number of messages that are waiting to be added to the queue. </p> </li> <li> <p> <code>ApproximateNumberOfMessagesNotVisible</code> - Returns the approximate number of messages that have not timed-out and aren't deleted. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-resources-required-process-messages.html">Resources Required to Process Messages</a> in the <i>Amazon SQS Developer Guide</i>. </p> </li> <li> <p> <code>CreatedTimestamp</code> - Returns the time when the queue was created in seconds (<a href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a>).</p> </li> <li> <p> <code>DelaySeconds</code> - Returns the default delay on the queue in seconds.</p> </li> <li> <p> <code>LastModifiedTimestamp</code> - Returns the time when the queue was last changed in seconds (<a href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a>).</p> </li> <li> <p> <code>MaximumMessageSize</code> - Returns the limit of how many bytes a message can contain before Amazon SQS rejects it.</p> </li> <li> <p> <code>MessageRetentionPeriod</code> - Returns the length of time, in seconds, for which Amazon SQS retains a message.</p> </li> <li> <p> <code>Policy</code> - Returns the policy of the queue.</p> </li> <li> <p> <code>QueueArn</code> - Returns the Amazon resource name (ARN) of the queue.</p> </li> <li> <p> <code>ReceiveMessageWaitTimeSeconds</code> - Returns the length of time, in seconds, for which the <code>ReceiveMessage</code> action waits for a message to arrive. </p> </li> <li> <p> <code>RedrivePolicy</code> - Returns the parameters for dead letter queue functionality of the source queue. For more information about the redrive policy and dead letter queues, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html">Using Amazon SQS Dead Letter Queues</a> in the <i>Amazon SQS Developer Guide</i>. </p> </li> <li> <p> <code>VisibilityTimeout</code> - Returns the visibility timeout for the queue. For more information about the visibility timeout, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html">Visibility Timeout</a> in the <i>Amazon SQS Developer Guide</i>. </p> </li> </ul> <p>The following attributes apply only to <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html">server-side-encryption</a>:</p> <ul> <li> <p> <code>KmsMasterKeyId</code> - Returns the ID of an AWS-managed customer master key (CMK) for Amazon SQS or a custom CMK. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms">Key Terms</a>. </p> </li> <li> <p> <code>KmsDataKeyReusePeriodSeconds</code> - Returns the length of time, in seconds, for which Amazon SQS can reuse a data key to encrypt or decrypt messages before calling AWS KMS again. </p> </li> </ul> <p>The following attributes apply only to <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html">FIFO (first-in-first-out) queues</a>:</p> <ul> <li> <p> <code>FifoQueue</code> - Returns whether the queue is FIFO. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic">FIFO Queue Logic</a> in the <i>Amazon SQS Developer Guide</i>.</p> <note> <p>To determine whether a queue is <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html">FIFO</a>, you can check whether <code>QueueName</code> ends with the <code>.fifo</code> suffix.</p> </note> </li> <li> <p> <code>ContentBasedDeduplication</code> - Returns whether content-based deduplication is enabled for the queue. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing">Exactly-Once Processing</a> in the <i>Amazon SQS Developer Guide</i>. </p> </li> </ul>
+-- * QueueUrl [String] <p>The URL of the Amazon SQS queue whose attribute information is retrieved.</p> <p>Queue URLs and names are case-sensitive.</p>
+-- * AttributeNames [AttributeNameList] <p>A list of attributes for which to retrieve information.</p> <note> <p>In the future, new attributes might be added. If you write code that calls this action, we recommend that you structure your code so that it can handle new attributes gracefully.</p> </note> <p>The following attributes are supported:</p> <ul> <li> <p> <code>All</code> - Returns all values. </p> </li> <li> <p> <code>ApproximateNumberOfMessages</code> - Returns the approximate number of messages available for retrieval from the queue.</p> </li> <li> <p> <code>ApproximateNumberOfMessagesDelayed</code> - Returns the approximate number of messages in the queue that are delayed and not available for reading immediately. This can happen when the queue is configured as a delay queue or when a message has been sent with a delay parameter.</p> </li> <li> <p> <code>ApproximateNumberOfMessagesNotVisible</code> - Returns the approximate number of messages that are in flight. Messages are considered to be <i>in flight</i> if they have been sent to a client but have not yet been deleted or have not yet reached the end of their visibility window. </p> </li> <li> <p> <code>CreatedTimestamp</code> - Returns the time when the queue was created in seconds (<a href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a>).</p> </li> <li> <p> <code>DelaySeconds</code> - Returns the default delay on the queue in seconds.</p> </li> <li> <p> <code>LastModifiedTimestamp</code> - Returns the time when the queue was last changed in seconds (<a href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a>).</p> </li> <li> <p> <code>MaximumMessageSize</code> - Returns the limit of how many bytes a message can contain before Amazon SQS rejects it.</p> </li> <li> <p> <code>MessageRetentionPeriod</code> - Returns the length of time, in seconds, for which Amazon SQS retains a message.</p> </li> <li> <p> <code>Policy</code> - Returns the policy of the queue.</p> </li> <li> <p> <code>QueueArn</code> - Returns the Amazon resource name (ARN) of the queue.</p> </li> <li> <p> <code>ReceiveMessageWaitTimeSeconds</code> - Returns the length of time, in seconds, for which the <code>ReceiveMessage</code> action waits for a message to arrive. </p> </li> <li> <p> <code>RedrivePolicy</code> - Returns the string that includes the parameters for dead-letter queue functionality of the source queue. For more information about the redrive policy and dead-letter queues, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html">Using Amazon SQS Dead-Letter Queues</a> in the <i>Amazon Simple Queue Service Developer Guide</i>. </p> <ul> <li> <p> <code>deadLetterTargetArn</code> - The Amazon Resource Name (ARN) of the dead-letter queue to which Amazon SQS moves messages after the value of <code>maxReceiveCount</code> is exceeded.</p> </li> <li> <p> <code>maxReceiveCount</code> - The number of times a message is delivered to the source queue before being moved to the dead-letter queue. When the <code>ReceiveCount</code> for a message exceeds the <code>maxReceiveCount</code> for a queue, Amazon SQS moves the message to the dead-letter-queue.</p> </li> </ul> </li> <li> <p> <code>VisibilityTimeout</code> - Returns the visibility timeout for the queue. For more information about the visibility timeout, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html">Visibility Timeout</a> in the <i>Amazon Simple Queue Service Developer Guide</i>. </p> </li> </ul> <p>The following attributes apply only to <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html">server-side-encryption</a>:</p> <ul> <li> <p> <code>KmsMasterKeyId</code> - Returns the ID of an AWS-managed customer master key (CMK) for Amazon SQS or a custom CMK. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms">Key Terms</a>. </p> </li> <li> <p> <code>KmsDataKeyReusePeriodSeconds</code> - Returns the length of time, in seconds, for which Amazon SQS can reuse a data key to encrypt or decrypt messages before calling AWS KMS again. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work">How Does the Data Key Reuse Period Work?</a>. </p> </li> </ul> <p>The following attributes apply only to <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html">FIFO (first-in-first-out) queues</a>:</p> <ul> <li> <p> <code>FifoQueue</code> - Returns whether the queue is FIFO. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic">FIFO Queue Logic</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p> <note> <p>To determine whether a queue is <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html">FIFO</a>, you can check whether <code>QueueName</code> ends with the <code>.fifo</code> suffix.</p> </note> </li> <li> <p> <code>ContentBasedDeduplication</code> - Returns whether content-based deduplication is enabled for the queue. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing">Exactly-Once Processing</a> in the <i>Amazon Simple Queue Service Developer Guide</i>. </p> </li> </ul>
 -- Required key: QueueUrl
 -- @return GetQueueAttributesRequest structure as a key-value pair table
 function M.GetQueueAttributesRequest(args)
@@ -287,8 +175,8 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Attributes [QueueAttributeMap] <p>A map of attributes with their corresponding values.</p> <p>The following lists the names, descriptions, and values of the special request parameters that the <code>CreateQueue</code> action uses:</p> <ul> <li> <p> <code>DelaySeconds</code> - The length of time, in seconds, for which the delivery of all messages in the queue is delayed. Valid values: An integer from 0 to 900 seconds (15 minutes). The default is 0 (zero). </p> </li> <li> <p> <code>MaximumMessageSize</code> - The limit of how many bytes a message can contain before Amazon SQS rejects it. Valid values: An integer from 1,024 bytes (1 KiB) to 262,144 bytes (256 KiB). The default is 262,144 (256 KiB). </p> </li> <li> <p> <code>MessageRetentionPeriod</code> - The length of time, in seconds, for which Amazon SQS retains a message. Valid values: An integer from 60 seconds (1 minute) to 1,209,600 seconds (14 days). The default is 345,600 (4 days). </p> </li> <li> <p> <code>Policy</code> - The queue's policy. A valid AWS policy. For more information about policy structure, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html">Overview of AWS IAM Policies</a> in the <i>Amazon IAM User Guide</i>. </p> </li> <li> <p> <code>ReceiveMessageWaitTimeSeconds</code> - The length of time, in seconds, for which a <code> <a>ReceiveMessage</a> </code> action waits for a message to arrive. Valid values: An integer from 0 to 20 (seconds). The default is 0 (zero). </p> </li> <li> <p> <code>RedrivePolicy</code> - The parameters for the dead letter queue functionality of the source queue. For more information about the redrive policy and dead letter queues, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html">Using Amazon SQS Dead Letter Queues</a> in the <i>Amazon SQS Developer Guide</i>. </p> <note> <p>The dead letter queue of a FIFO queue must also be a FIFO queue. Similarly, the dead letter queue of a standard queue must also be a standard queue.</p> </note> </li> <li> <p> <code>VisibilityTimeout</code> - The visibility timeout for the queue. Valid values: An integer from 0 to 43,200 (12 hours). The default is 30. For more information about the visibility timeout, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html">Visibility Timeout</a> in the <i>Amazon SQS Developer Guide</i>.</p> </li> </ul> <p>The following attributes apply only to <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html">server-side-encryption</a>:</p> <ul> <li> <p> <code>KmsMasterKeyId</code> - The ID of an AWS-managed customer master key (CMK) for Amazon SQS or a custom CMK. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms">Key Terms</a>. While the alias of the AWS-managed CMK for Amazon SQS is always <code>alias/aws/sqs</code>, the alias of a custom CMK can, for example, be <code>alias/aws/sqs</code>. For more examples, see <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters">KeyId</a> in the <i>AWS Key Management Service API Reference</i>. </p> </li> <li> <p> <code>KmsDataKeyReusePeriodSeconds</code> - The length of time, in seconds, for which Amazon SQS can reuse a <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys">data key</a> to encrypt or decrypt messages before calling AWS KMS again. An integer representing seconds, between 60 seconds (1 minute) and 86,400 seconds (24 hours). The default is 300 (5 minutes). A shorter time period provides better security but results in more calls to KMS which incur charges after Free Tier. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work">How Does the Data Key Reuse Period Work?</a>. </p> </li> </ul> <p>The following attributes apply only to <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html">FIFO (first-in-first-out) queues</a>:</p> <ul> <li> <p> <code>FifoQueue</code> - Designates a queue as FIFO. Valid values: <code>true</code>, <code>false</code>. You can provide this attribute only during queue creation. You can't change it for an existing queue. When you set this attribute, you must also provide the <code>MessageGroupId</code> for your messages explicitly.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic">FIFO Queue Logic</a> in the <i>Amazon SQS Developer Guide</i>.</p> </li> <li> <p> <code>ContentBasedDeduplication</code> - Enables content-based deduplication. Valid values: <code>true</code>, <code>false</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing">Exactly-Once Processing</a> in the <i>Amazon SQS Developer Guide</i>. </p> <ul> <li> <p>Every message must have a unique <code>MessageDeduplicationId</code>,</p> <ul> <li> <p>You may provide a <code>MessageDeduplicationId</code> explicitly.</p> </li> <li> <p>If you aren't able to provide a <code>MessageDeduplicationId</code> and you enable <code>ContentBasedDeduplication</code> for your queue, Amazon SQS uses a SHA-256 hash to generate the <code>MessageDeduplicationId</code> using the body of the message (but not the attributes of the message). </p> </li> <li> <p>If you don't provide a <code>MessageDeduplicationId</code> and the queue doesn't have <code>ContentBasedDeduplication</code> set, the action fails with an error.</p> </li> <li> <p>If the queue has <code>ContentBasedDeduplication</code> set, your <code>MessageDeduplicationId</code> overrides the generated one.</p> </li> </ul> </li> <li> <p>When <code>ContentBasedDeduplication</code> is in effect, messages with identical content sent within the deduplication interval are treated as duplicates and only one copy of the message is delivered.</p> </li> <li> <p>If you send one message with <code>ContentBasedDeduplication</code> enabled and then another message with a <code>MessageDeduplicationId</code> that is the same as the one generated for the first <code>MessageDeduplicationId</code>, the two messages are treated as duplicates and only one copy of the message is delivered. </p> </li> </ul> </li> </ul> <p>Any other valid special request parameters (such as the following) are ignored:</p> <ul> <li> <p> <code>ApproximateNumberOfMessages</code> </p> </li> <li> <p> <code>ApproximateNumberOfMessagesDelayed</code> </p> </li> <li> <p> <code>ApproximateNumberOfMessagesNotVisible</code> </p> </li> <li> <p> <code>CreatedTimestamp</code> </p> </li> <li> <p> <code>LastModifiedTimestamp</code> </p> </li> <li> <p> <code>QueueArn</code> </p> </li> </ul>
--- * QueueName [String] <p>The name of the new queue. The following limits apply to this name:</p> <ul> <li> <p>A queue name can have up to 80 characters.</p> </li> <li> <p>Valid values: alphanumeric characters, hyphens (<code>-</code>), and underscores (<code>_</code>).</p> </li> <li> <p>A FIFO queue name must end with the <code>.fifo</code> suffix.</p> </li> </ul> <p>Queue names are case-sensitive.</p>
+-- * Attributes [QueueAttributeMap] <p>A map of attributes with their corresponding values.</p> <p>The following lists the names, descriptions, and values of the special request parameters that the <code>CreateQueue</code> action uses:</p> <ul> <li> <p> <code>DelaySeconds</code> - The length of time, in seconds, for which the delivery of all messages in the queue is delayed. Valid values: An integer from 0 to 900 seconds (15 minutes). Default: 0. </p> </li> <li> <p> <code>MaximumMessageSize</code> - The limit of how many bytes a message can contain before Amazon SQS rejects it. Valid values: An integer from 1,024 bytes (1 KiB) to 262,144 bytes (256 KiB). Default: 262,144 (256 KiB). </p> </li> <li> <p> <code>MessageRetentionPeriod</code> - The length of time, in seconds, for which Amazon SQS retains a message. Valid values: An integer from 60 seconds (1 minute) to 1,209,600 seconds (14 days). Default: 345,600 (4 days). </p> </li> <li> <p> <code>Policy</code> - The queue's policy. A valid AWS policy. For more information about policy structure, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html">Overview of AWS IAM Policies</a> in the <i>Amazon IAM User Guide</i>. </p> </li> <li> <p> <code>ReceiveMessageWaitTimeSeconds</code> - The length of time, in seconds, for which a <code> <a>ReceiveMessage</a> </code> action waits for a message to arrive. Valid values: An integer from 0 to 20 (seconds). Default: 0. </p> </li> <li> <p> <code>RedrivePolicy</code> - The string that includes the parameters for the dead-letter queue functionality of the source queue. For more information about the redrive policy and dead-letter queues, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html">Using Amazon SQS Dead-Letter Queues</a> in the <i>Amazon Simple Queue Service Developer Guide</i>. </p> <ul> <li> <p> <code>deadLetterTargetArn</code> - The Amazon Resource Name (ARN) of the dead-letter queue to which Amazon SQS moves messages after the value of <code>maxReceiveCount</code> is exceeded.</p> </li> <li> <p> <code>maxReceiveCount</code> - The number of times a message is delivered to the source queue before being moved to the dead-letter queue. When the <code>ReceiveCount</code> for a message exceeds the <code>maxReceiveCount</code> for a queue, Amazon SQS moves the message to the dead-letter-queue.</p> </li> </ul> <note> <p>The dead-letter queue of a FIFO queue must also be a FIFO queue. Similarly, the dead-letter queue of a standard queue must also be a standard queue.</p> </note> </li> <li> <p> <code>VisibilityTimeout</code> - The visibility timeout for the queue, in seconds. Valid values: An integer from 0 to 43,200 (12 hours). Default: 30. For more information about the visibility timeout, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html">Visibility Timeout</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p> </li> </ul> <p>The following attributes apply only to <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html">server-side-encryption</a>:</p> <ul> <li> <p> <code>KmsMasterKeyId</code> - The ID of an AWS-managed customer master key (CMK) for Amazon SQS or a custom CMK. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms">Key Terms</a>. While the alias of the AWS-managed CMK for Amazon SQS is always <code>alias/aws/sqs</code>, the alias of a custom CMK can, for example, be <code>alias/<i>MyAlias</i> </code>. For more examples, see <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters">KeyId</a> in the <i>AWS Key Management Service API Reference</i>. </p> </li> <li> <p> <code>KmsDataKeyReusePeriodSeconds</code> - The length of time, in seconds, for which Amazon SQS can reuse a <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys">data key</a> to encrypt or decrypt messages before calling AWS KMS again. An integer representing seconds, between 60 seconds (1 minute) and 86,400 seconds (24 hours). Default: 300 (5 minutes). A shorter time period provides better security but results in more calls to KMS which might incur charges after Free Tier. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work">How Does the Data Key Reuse Period Work?</a>. </p> </li> </ul> <p>The following attributes apply only to <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html">FIFO (first-in-first-out) queues</a>:</p> <ul> <li> <p> <code>FifoQueue</code> - Designates a queue as FIFO. Valid values: <code>true</code>, <code>false</code>. You can provide this attribute only during queue creation. You can't change it for an existing queue. When you set this attribute, you must also provide the <code>MessageGroupId</code> for your messages explicitly.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic">FIFO Queue Logic</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p> </li> <li> <p> <code>ContentBasedDeduplication</code> - Enables content-based deduplication. Valid values: <code>true</code>, <code>false</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing">Exactly-Once Processing</a> in the <i>Amazon Simple Queue Service Developer Guide</i>. </p> <ul> <li> <p>Every message must have a unique <code>MessageDeduplicationId</code>,</p> <ul> <li> <p>You may provide a <code>MessageDeduplicationId</code> explicitly.</p> </li> <li> <p>If you aren't able to provide a <code>MessageDeduplicationId</code> and you enable <code>ContentBasedDeduplication</code> for your queue, Amazon SQS uses a SHA-256 hash to generate the <code>MessageDeduplicationId</code> using the body of the message (but not the attributes of the message). </p> </li> <li> <p>If you don't provide a <code>MessageDeduplicationId</code> and the queue doesn't have <code>ContentBasedDeduplication</code> set, the action fails with an error.</p> </li> <li> <p>If the queue has <code>ContentBasedDeduplication</code> set, your <code>MessageDeduplicationId</code> overrides the generated one.</p> </li> </ul> </li> <li> <p>When <code>ContentBasedDeduplication</code> is in effect, messages with identical content sent within the deduplication interval are treated as duplicates and only one copy of the message is delivered.</p> </li> <li> <p>If you send one message with <code>ContentBasedDeduplication</code> enabled and then another message with a <code>MessageDeduplicationId</code> that is the same as the one generated for the first <code>MessageDeduplicationId</code>, the two messages are treated as duplicates and only one copy of the message is delivered. </p> </li> </ul> </li> </ul>
+-- * QueueName [String] <p>The name of the new queue. The following limits apply to this name:</p> <ul> <li> <p>A queue name can have up to 80 characters.</p> </li> <li> <p>Valid values: alphanumeric characters, hyphens (<code>-</code>), and underscores (<code>_</code>).</p> </li> <li> <p>A FIFO queue name must end with the <code>.fifo</code> suffix.</p> </li> </ul> <p>Queue URLs and names are case-sensitive.</p>
 -- Required key: QueueName
 -- @return CreateQueueRequest structure as a key-value pair table
 function M.CreateQueueRequest(args)
@@ -330,7 +218,7 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * QueueUrl [String] <p>The URL of the Amazon SQS queue from which permissions are removed.</p> <p>Queue URLs are case-sensitive.</p>
+-- * QueueUrl [String] <p>The URL of the Amazon SQS queue from which permissions are removed.</p> <p>Queue URLs and names are case-sensitive.</p>
 -- * Label [String] <p>The identification of the permission to remove. This is the label added using the <code> <a>AddPermission</a> </code> action.</p>
 -- Required key: QueueUrl
 -- Required key: Label
@@ -418,7 +306,7 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * QueueUrl [String] <p>The URL of the Amazon SQS queue to which batched messages are sent.</p> <p>Queue URLs are case-sensitive.</p>
+-- * QueueUrl [String] <p>The URL of the Amazon SQS queue to which batched messages are sent.</p> <p>Queue URLs and names are case-sensitive.</p>
 -- * Entries [SendMessageBatchRequestEntryList] <p>A list of <code> <a>SendMessageBatchRequestEntry</a> </code> items.</p>
 -- Required key: QueueUrl
 -- Required key: Entries
@@ -541,7 +429,7 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * QueueUrl [String] <p>The URL of the queue from which the <code>PurgeQueue</code> action deletes messages.</p> <p>Queue URLs are case-sensitive.</p>
+-- * QueueUrl [String] <p>The URL of the queue from which the <code>PurgeQueue</code> action deletes messages.</p> <p>Queue URLs and names are case-sensitive.</p>
 -- Required key: QueueUrl
 -- @return PurgeQueueRequest structure as a key-value pair table
 function M.PurgeQueueRequest(args)
@@ -564,23 +452,31 @@ function M.PurgeQueueRequest(args)
     }
 end
 
-keys.ReceiptHandleIsInvalid = { nil }
+keys.TagQueueRequest = { ["QueueUrl"] = true, ["Tags"] = true, nil }
 
-function asserts.AssertReceiptHandleIsInvalid(struct)
+function asserts.AssertTagQueueRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ReceiptHandleIsInvalid to be of type 'table'")
+	assert(type(struct) == "table", "Expected TagQueueRequest to be of type 'table'")
+	assert(struct["QueueUrl"], "Expected key QueueUrl to exist in table")
+	assert(struct["Tags"], "Expected key Tags to exist in table")
+	if struct["QueueUrl"] then asserts.AssertString(struct["QueueUrl"]) end
+	if struct["Tags"] then asserts.AssertTagMap(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ReceiptHandleIsInvalid[k], "ReceiptHandleIsInvalid contains unknown key " .. tostring(k))
+		assert(keys.TagQueueRequest[k], "TagQueueRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ReceiptHandleIsInvalid
--- <p>The receipt handle provided isn't valid.</p>
+--- Create a structure of type TagQueueRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return ReceiptHandleIsInvalid structure as a key-value pair table
-function M.ReceiptHandleIsInvalid(args)
-	assert(args, "You must provide an argument table when creating ReceiptHandleIsInvalid")
+-- * QueueUrl [String] <p>The URL of the queue.</p>
+-- * Tags [TagMap] <p>The list of tags to be added to the specified queue.</p>
+-- Required key: QueueUrl
+-- Required key: Tags
+-- @return TagQueueRequest structure as a key-value pair table
+function M.TagQueueRequest(args)
+	assert(args, "You must provide an argument table when creating TagQueueRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -588,42 +484,10 @@ function M.ReceiptHandleIsInvalid(args)
     local header_args = { 
     }
 	local all_args = { 
+		["QueueUrl"] = args["QueueUrl"],
+		["Tags"] = args["Tags"],
 	}
-	asserts.AssertReceiptHandleIsInvalid(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidAttributeName = { nil }
-
-function asserts.AssertInvalidAttributeName(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidAttributeName to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidAttributeName[k], "InvalidAttributeName contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidAttributeName
--- <p>The attribute referred to doesn't exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidAttributeName structure as a key-value pair table
-function M.InvalidAttributeName(args)
-	assert(args, "You must provide an argument table when creating InvalidAttributeName")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidAttributeName(all_args)
+	asserts.AssertTagQueueRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -650,7 +514,7 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * QueueUrl [String] <p>The URL of the Amazon SQS queue whose messages' visibility is changed.</p> <p>Queue URLs are case-sensitive.</p>
+-- * QueueUrl [String] <p>The URL of the Amazon SQS queue whose messages' visibility is changed.</p> <p>Queue URLs and names are case-sensitive.</p>
 -- * Entries [ChangeMessageVisibilityBatchRequestEntryList] <p>A list of receipt handles of the messages for which the visibility timeout must be changed.</p>
 -- Required key: QueueUrl
 -- Required key: Entries
@@ -698,13 +562,13 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * QueueUrl [String] <p>The URL of the Amazon SQS queue from which messages are received.</p> <p>Queue URLs are case-sensitive.</p>
--- * ReceiveRequestAttemptId [String] <p>This parameter applies only to FIFO (first-in-first-out) queues.</p> <p>The token used for deduplication of <code>ReceiveMessage</code> calls. If a networking issue occurs after a <code>ReceiveMessage</code> action, and instead of a response you receive a generic error, you can retry the same action with an identical <code>ReceiveRequestAttemptId</code> to retrieve the same set of messages, even if their visibility timeout has not yet expired.</p> <ul> <li> <p>You can use <code>ReceiveRequestAttemptId</code> only for 5 minutes after a <code>ReceiveMessage</code> action.</p> </li> <li> <p>When you set <code>FifoQueue</code>, a caller of the <code>ReceiveMessage</code> action can provide a <code>ReceiveRequestAttemptId</code> explicitly.</p> </li> <li> <p>If a caller of the <code>ReceiveMessage</code> action doesn't provide a <code>ReceiveRequestAttemptId</code>, Amazon SQS generates a <code>ReceiveRequestAttemptId</code>.</p> </li> <li> <p>You can retry the <code>ReceiveMessage</code> action with the same <code>ReceiveRequestAttemptId</code> if none of the messages have been modified (deleted or had their visibility changes).</p> </li> <li> <p>During a visibility timeout, subsequent calls with the same <code>ReceiveRequestAttemptId</code> return the same messages and receipt handles. If a retry occurs within the deduplication interval, it resets the visibility timeout. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html">Visibility Timeout</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p> <important> <p>If a caller of the <code>ReceiveMessage</code> action is still processing messages when the visibility timeout expires and messages become visible, another worker reading from the same queue can receive the same messages and therefore process duplicates. Also, if a reader whose message processing time is longer than the visibility timeout tries to delete the processed messages, the action fails with an error.</p> <p>To mitigate this effect, ensure that your application observes a safe threshold before the visibility timeout expires and extend the visibility timeout as necessary.</p> </important> </li> <li> <p>While messages with a particular <code>MessageGroupId</code> are invisible, no more messages belonging to the same <code>MessageGroupId</code> are returned until the visibility timeout expires. You can still receive messages with another <code>MessageGroupId</code> as long as it is also visible.</p> </li> <li> <p>If a caller of <code>ReceiveMessage</code> can't track the <code>ReceiveRequestAttemptId</code>, no retries work until the original visibility timeout expires. As a result, delays might occur but the messages in the queue remain in a strict order.</p> </li> </ul> <p>The length of <code>ReceiveRequestAttemptId</code> is 128 characters. <code>ReceiveRequestAttemptId</code> can contain alphanumeric characters (<code>a-z</code>, <code>A-Z</code>, <code>0-9</code>) and punctuation (<code>!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</code>).</p> <p>For best practices of using <code>ReceiveRequestAttemptId</code>, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queue-recommendations.html#using-receiverequestattemptid-request-parameter">Using the ReceiveRequestAttemptId Request Parameter</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
--- * MaxNumberOfMessages [Integer] <p>The maximum number of messages to return. Amazon SQS never returns more messages than this value (however, fewer messages might be returned). Valid values are 1 to 10. Default is 1.</p>
--- * WaitTimeSeconds [Integer] <p>The duration (in seconds) for which the call waits for a message to arrive in the queue before returning. If a message is available, the call returns sooner than <code>WaitTimeSeconds</code>.</p>
+-- * QueueUrl [String] <p>The URL of the Amazon SQS queue from which messages are received.</p> <p>Queue URLs and names are case-sensitive.</p>
+-- * ReceiveRequestAttemptId [String] <p>This parameter applies only to FIFO (first-in-first-out) queues.</p> <p>The token used for deduplication of <code>ReceiveMessage</code> calls. If a networking issue occurs after a <code>ReceiveMessage</code> action, and instead of a response you receive a generic error, you can retry the same action with an identical <code>ReceiveRequestAttemptId</code> to retrieve the same set of messages, even if their visibility timeout has not yet expired.</p> <ul> <li> <p>You can use <code>ReceiveRequestAttemptId</code> only for 5 minutes after a <code>ReceiveMessage</code> action.</p> </li> <li> <p>When you set <code>FifoQueue</code>, a caller of the <code>ReceiveMessage</code> action can provide a <code>ReceiveRequestAttemptId</code> explicitly.</p> </li> <li> <p>If a caller of the <code>ReceiveMessage</code> action doesn't provide a <code>ReceiveRequestAttemptId</code>, Amazon SQS generates a <code>ReceiveRequestAttemptId</code>.</p> </li> <li> <p>You can retry the <code>ReceiveMessage</code> action with the same <code>ReceiveRequestAttemptId</code> if none of the messages have been modified (deleted or had their visibility changes).</p> </li> <li> <p>During a visibility timeout, subsequent calls with the same <code>ReceiveRequestAttemptId</code> return the same messages and receipt handles. If a retry occurs within the deduplication interval, it resets the visibility timeout. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html">Visibility Timeout</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p> <important> <p>If a caller of the <code>ReceiveMessage</code> action still processes messages when the visibility timeout expires and messages become visible, another worker consuming from the same queue can receive the same messages and therefore process duplicates. Also, if a consumer whose message processing time is longer than the visibility timeout tries to delete the processed messages, the action fails with an error.</p> <p>To mitigate this effect, ensure that your application observes a safe threshold before the visibility timeout expires and extend the visibility timeout as necessary.</p> </important> </li> <li> <p>While messages with a particular <code>MessageGroupId</code> are invisible, no more messages belonging to the same <code>MessageGroupId</code> are returned until the visibility timeout expires. You can still receive messages with another <code>MessageGroupId</code> as long as it is also visible.</p> </li> <li> <p>If a caller of <code>ReceiveMessage</code> can't track the <code>ReceiveRequestAttemptId</code>, no retries work until the original visibility timeout expires. As a result, delays might occur but the messages in the queue remain in a strict order.</p> </li> </ul> <p>The length of <code>ReceiveRequestAttemptId</code> is 128 characters. <code>ReceiveRequestAttemptId</code> can contain alphanumeric characters (<code>a-z</code>, <code>A-Z</code>, <code>0-9</code>) and punctuation (<code>!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</code>).</p> <p>For best practices of using <code>ReceiveRequestAttemptId</code>, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html">Using the ReceiveRequestAttemptId Request Parameter</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
+-- * MaxNumberOfMessages [Integer] <p>The maximum number of messages to return. Amazon SQS never returns more messages than this value (however, fewer messages might be returned). Valid values: 1 to 10. Default: 1.</p>
+-- * WaitTimeSeconds [Integer] <p>The duration (in seconds) for which the call waits for a message to arrive in the queue before returning. If a message is available, the call returns sooner than <code>WaitTimeSeconds</code>. If no messages are available and the wait time expires, the call returns successfully with an empty list of messages.</p>
 -- * MessageAttributeNames [MessageAttributeNameList] <p>The name of the message attribute, where <i>N</i> is the index.</p> <ul> <li> <p>The name can contain alphanumeric characters and the underscore (<code>_</code>), hyphen (<code>-</code>), and period (<code>.</code>).</p> </li> <li> <p>The name is case-sensitive and must be unique among all attribute names for the message.</p> </li> <li> <p>The name must not start with AWS-reserved prefixes such as <code>AWS.</code> or <code>Amazon.</code> (or any casing variants).</p> </li> <li> <p>The name must not start or end with a period (<code>.</code>), and it should not have periods in succession (<code>..</code>).</p> </li> <li> <p>The name can be up to 256 characters long.</p> </li> </ul> <p>When using <code>ReceiveMessage</code>, you can send a list of attribute names to receive, or you can return all of the attributes by specifying <code>All</code> or <code>.*</code> in your request. You can also use all message attributes starting with a prefix, for example <code>bar.*</code>.</p>
 -- * VisibilityTimeout [Integer] <p>The duration (in seconds) that the received messages are hidden from subsequent retrieve requests after being retrieved by a <code>ReceiveMessage</code> request.</p>
--- * AttributeNames [AttributeNameList] <p>A list of attributes that need to be returned along with each message. These attributes include:</p> <ul> <li> <p> <code>All</code> - Returns all values.</p> </li> <li> <p> <code>ApproximateFirstReceiveTimestamp</code> - Returns the time the message was first received from the queue (<a href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in milliseconds).</p> </li> <li> <p> <code>ApproximateReceiveCount</code> - Returns the number of times a message has been received from the queue but not deleted.</p> </li> <li> <p> <code>SenderId</code> </p> <ul> <li> <p>For an IAM user, returns the IAM user ID, for example <code>ABCDEFGHI1JKLMNOPQ23R</code>.</p> </li> <li> <p>For an IAM role, returns the IAM role ID, for example <code>ABCDE1F2GH3I4JK5LMNOP:i-a123b456</code>.</p> </li> </ul> </li> <li> <p> <code>SentTimestamp</code> - Returns the time the message was sent to the queue (<a href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in milliseconds).</p> </li> <li> <p> <code>MessageDeduplicationId</code> - Returns the value provided by the sender that calls the <code> <a>SendMessage</a> </code> action.</p> </li> <li> <p> <code>MessageGroupId</code> - Returns the value provided by the sender that calls the <code> <a>SendMessage</a> </code> action. Messages with the same <code>MessageGroupId</code> are returned in sequence.</p> </li> <li> <p> <code>SequenceNumber</code> - Returns the value provided by Amazon SQS.</p> </li> </ul> <p>Any other valid special request parameters (such as the following) are ignored:</p> <ul> <li> <p> <code>ApproximateNumberOfMessages</code> </p> </li> <li> <p> <code>ApproximateNumberOfMessagesDelayed</code> </p> </li> <li> <p> <code>ApproximateNumberOfMessagesNotVisible</code> </p> </li> <li> <p> <code>CreatedTimestamp</code> </p> </li> <li> <p> <code>ContentBasedDeduplication</code> </p> </li> <li> <p> <code>DelaySeconds</code> </p> </li> <li> <p> <code>FifoQueue</code> </p> </li> <li> <p> <code>LastModifiedTimestamp</code> </p> </li> <li> <p> <code>MaximumMessageSize</code> </p> </li> <li> <p> <code>MessageRetentionPeriod</code> </p> </li> <li> <p> <code>Policy</code> </p> </li> <li> <p> <code>QueueArn</code>, </p> </li> <li> <p> <code>ReceiveMessageWaitTimeSeconds</code> </p> </li> <li> <p> <code>RedrivePolicy</code> </p> </li> <li> <p> <code>VisibilityTimeout</code> </p> </li> </ul>
+-- * AttributeNames [AttributeNameList] <p>A list of s that need to be returned along with each message. These attributes include:</p> <ul> <li> <p> <code>All</code> - Returns all values.</p> </li> <li> <p> <code>ApproximateFirstReceiveTimestamp</code> - Returns the time the message was first received from the queue (<a href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in milliseconds).</p> </li> <li> <p> <code>ApproximateReceiveCount</code> - Returns the number of times a message has been received from the queue but not deleted.</p> </li> <li> <p> <code>SenderId</code> </p> <ul> <li> <p>For an IAM user, returns the IAM user ID, for example <code>ABCDEFGHI1JKLMNOPQ23R</code>.</p> </li> <li> <p>For an IAM role, returns the IAM role ID, for example <code>ABCDE1F2GH3I4JK5LMNOP:i-a123b456</code>.</p> </li> </ul> </li> <li> <p> <code>SentTimestamp</code> - Returns the time the message was sent to the queue (<a href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in milliseconds).</p> </li> <li> <p> <code>MessageDeduplicationId</code> - Returns the value provided by the producer that calls the <code> <a>SendMessage</a> </code> action.</p> </li> <li> <p> <code>MessageGroupId</code> - Returns the value provided by the producer that calls the <code> <a>SendMessage</a> </code> action. Messages with the same <code>MessageGroupId</code> are returned in sequence.</p> </li> <li> <p> <code>SequenceNumber</code> - Returns the value provided by Amazon SQS.</p> </li> </ul>
 -- Required key: QueueUrl
 -- @return ReceiveMessageRequest structure as a key-value pair table
 function M.ReceiveMessageRequest(args)
@@ -825,40 +689,6 @@ function M.SendMessageBatchResultEntry(args)
     }
 end
 
-keys.InvalidBatchEntryId = { nil }
-
-function asserts.AssertInvalidBatchEntryId(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidBatchEntryId to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidBatchEntryId[k], "InvalidBatchEntryId contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidBatchEntryId
--- <p>The <code>Id</code> of a batch entry in a batch request doesn't abide by the specification.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidBatchEntryId structure as a key-value pair table
-function M.InvalidBatchEntryId(args)
-	assert(args, "You must provide an argument table when creating InvalidBatchEntryId")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidBatchEntryId(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ChangeMessageVisibilityRequest = { ["QueueUrl"] = true, ["ReceiptHandle"] = true, ["VisibilityTimeout"] = true, nil }
 
 function asserts.AssertChangeMessageVisibilityRequest(struct)
@@ -879,7 +709,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * QueueUrl [String] <p>The URL of the Amazon SQS queue whose message's visibility is changed.</p> <p>Queue URLs are case-sensitive.</p>
+-- * QueueUrl [String] <p>The URL of the Amazon SQS queue whose message's visibility is changed.</p> <p>Queue URLs and names are case-sensitive.</p>
 -- * ReceiptHandle [String] <p>The receipt handle associated with the message whose visibility timeout is changed. This parameter is returned by the <code> <a>ReceiveMessage</a> </code> action.</p>
 -- * VisibilityTimeout [Integer] <p>The new value for the message's visibility timeout (in seconds). Values values: <code>0</code> to <code>43200</code>. Maximum: 12 hours.</p>
 -- Required key: QueueUrl
@@ -926,11 +756,11 @@ function asserts.AssertBatchResultErrorEntry(struct)
 end
 
 --- Create a structure of type BatchResultErrorEntry
--- <p>This is used in the responses of batch API to give a detailed description of the result of an action on each entry in the request.</p>
+-- <p>Gives a detailed description of the result of an action on each entry in the request.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Message [String] <p>A message explaining why the action failed on this entry.</p>
--- * SenderFault [Boolean] <p>Specifies whether the error happened due to the sender's fault.</p>
+-- * SenderFault [Boolean] <p>Specifies whether the error happened due to the producer.</p>
 -- * Code [String] <p>An error code representing why the action failed on this entry.</p>
 -- * Id [String] <p>The <code>Id</code> of an entry in a batch request.</p>
 -- Required key: Id
@@ -981,7 +811,7 @@ end
 -- * MD5OfMessageBody [String] <p>An MD5 digest of the non-URL-encoded message attribute string. You can use this attribute to verify that Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before creating the MD5 digest. For information about MD5, see <a href="https://www.ietf.org/rfc/rfc1321.txt">RFC1321</a>.</p>
 -- * MD5OfMessageAttributes [String] <p>An MD5 digest of the non-URL-encoded message attribute string. You can use this attribute to verify that Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before creating the MD5 digest. For information about MD5, see <a href="https://www.ietf.org/rfc/rfc1321.txt">RFC1321</a>.</p>
 -- * SequenceNumber [String] <p>This parameter applies only to FIFO (first-in-first-out) queues.</p> <p>The large, non-consecutive number that Amazon SQS assigns to each message.</p> <p>The length of <code>SequenceNumber</code> is 128 bits. <code>SequenceNumber</code> continues to increase for a particular <code>MessageGroupId</code>.</p>
--- * MessageId [String] <p>An attribute containing the <code>MessageId</code> of the message sent to the queue. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html">Queue and Message Identifiers</a> in the <i>Amazon SQS Developer Guide</i>. </p>
+-- * MessageId [String] <p>An attribute containing the <code>MessageId</code> of the message sent to the queue. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html">Queue and Message Identifiers</a> in the <i>Amazon Simple Queue Service Developer Guide</i>. </p>
 -- @return SendMessageResult structure as a key-value pair table
 function M.SendMessageResult(args)
 	assert(args, "You must provide an argument table when creating SendMessageResult")
@@ -1024,7 +854,7 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * QueueUrl [String] <p>The URL of the Amazon SQS queue from which messages are deleted.</p> <p>Queue URLs are case-sensitive.</p>
+-- * QueueUrl [String] <p>The URL of the Amazon SQS queue from which messages are deleted.</p> <p>Queue URLs and names are case-sensitive.</p>
 -- * Entries [DeleteMessageBatchRequestEntryList] <p>A list of receipt handles for the messages to be deleted.</p>
 -- Required key: QueueUrl
 -- Required key: Entries
@@ -1042,40 +872,6 @@ function M.DeleteMessageBatchRequest(args)
 		["Entries"] = args["Entries"],
 	}
 	asserts.AssertDeleteMessageBatchRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.QueueDoesNotExist = { nil }
-
-function asserts.AssertQueueDoesNotExist(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected QueueDoesNotExist to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.QueueDoesNotExist[k], "QueueDoesNotExist contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type QueueDoesNotExist
--- <p>The queue referred to doesn't exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return QueueDoesNotExist structure as a key-value pair table
-function M.QueueDoesNotExist(args)
-	assert(args, "You must provide an argument table when creating QueueDoesNotExist")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertQueueDoesNotExist(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1106,12 +902,12 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * QueueUrl [String] <p>The URL of the Amazon SQS queue to which a message is sent.</p> <p>Queue URLs are case-sensitive.</p>
--- * MessageDeduplicationId [String] <p>This parameter applies only to FIFO (first-in-first-out) queues.</p> <p>The token used for deduplication of sent messages. If a message with a particular <code>MessageDeduplicationId</code> is sent successfully, any messages sent with the same <code>MessageDeduplicationId</code> are accepted successfully but aren't delivered during the 5-minute deduplication interval. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing"> Exactly-Once Processing</a> in the <i>Amazon SQS Developer Guide</i>.</p> <ul> <li> <p>Every message must have a unique <code>MessageDeduplicationId</code>,</p> <ul> <li> <p>You may provide a <code>MessageDeduplicationId</code> explicitly.</p> </li> <li> <p>If you aren't able to provide a <code>MessageDeduplicationId</code> and you enable <code>ContentBasedDeduplication</code> for your queue, Amazon SQS uses a SHA-256 hash to generate the <code>MessageDeduplicationId</code> using the body of the message (but not the attributes of the message). </p> </li> <li> <p>If you don't provide a <code>MessageDeduplicationId</code> and the queue doesn't have <code>ContentBasedDeduplication</code> set, the action fails with an error.</p> </li> <li> <p>If the queue has <code>ContentBasedDeduplication</code> set, your <code>MessageDeduplicationId</code> overrides the generated one.</p> </li> </ul> </li> <li> <p>When <code>ContentBasedDeduplication</code> is in effect, messages with identical content sent within the deduplication interval are treated as duplicates and only one copy of the message is delivered.</p> </li> <li> <p>If you send one message with <code>ContentBasedDeduplication</code> enabled and then another message with a <code>MessageDeduplicationId</code> that is the same as the one generated for the first <code>MessageDeduplicationId</code>, the two messages are treated as duplicates and only one copy of the message is delivered. </p> </li> </ul> <note> <p>The <code>MessageDeduplicationId</code> is available to the recipient of the message (this can be useful for troubleshooting delivery issues).</p> <p>If a message is sent successfully but the acknowledgement is lost and the message is resent with the same <code>MessageDeduplicationId</code> after the deduplication interval, Amazon SQS can't detect duplicate messages.</p> </note> <p>The length of <code>MessageDeduplicationId</code> is 128 characters. <code>MessageDeduplicationId</code> can contain alphanumeric characters (<code>a-z</code>, <code>A-Z</code>, <code>0-9</code>) and punctuation (<code>!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</code>).</p> <p>For best practices of using <code>MessageDeduplicationId</code>, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queue-recommendations.html#using-messagededuplicationid-property">Using the MessageDeduplicationId Property</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
+-- * QueueUrl [String] <p>The URL of the Amazon SQS queue to which a message is sent.</p> <p>Queue URLs and names are case-sensitive.</p>
+-- * MessageDeduplicationId [String] <p>This parameter applies only to FIFO (first-in-first-out) queues.</p> <p>The token used for deduplication of sent messages. If a message with a particular <code>MessageDeduplicationId</code> is sent successfully, any messages sent with the same <code>MessageDeduplicationId</code> are accepted successfully but aren't delivered during the 5-minute deduplication interval. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing"> Exactly-Once Processing</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p> <ul> <li> <p>Every message must have a unique <code>MessageDeduplicationId</code>,</p> <ul> <li> <p>You may provide a <code>MessageDeduplicationId</code> explicitly.</p> </li> <li> <p>If you aren't able to provide a <code>MessageDeduplicationId</code> and you enable <code>ContentBasedDeduplication</code> for your queue, Amazon SQS uses a SHA-256 hash to generate the <code>MessageDeduplicationId</code> using the body of the message (but not the attributes of the message). </p> </li> <li> <p>If you don't provide a <code>MessageDeduplicationId</code> and the queue doesn't have <code>ContentBasedDeduplication</code> set, the action fails with an error.</p> </li> <li> <p>If the queue has <code>ContentBasedDeduplication</code> set, your <code>MessageDeduplicationId</code> overrides the generated one.</p> </li> </ul> </li> <li> <p>When <code>ContentBasedDeduplication</code> is in effect, messages with identical content sent within the deduplication interval are treated as duplicates and only one copy of the message is delivered.</p> </li> <li> <p>If you send one message with <code>ContentBasedDeduplication</code> enabled and then another message with a <code>MessageDeduplicationId</code> that is the same as the one generated for the first <code>MessageDeduplicationId</code>, the two messages are treated as duplicates and only one copy of the message is delivered. </p> </li> </ul> <note> <p>The <code>MessageDeduplicationId</code> is available to the consumer of the message (this can be useful for troubleshooting delivery issues).</p> <p>If a message is sent successfully but the acknowledgement is lost and the message is resent with the same <code>MessageDeduplicationId</code> after the deduplication interval, Amazon SQS can't detect duplicate messages.</p> <p>Amazon SQS continues to keep track of the message deduplication ID even after the message is received and deleted.</p> </note> <p>The length of <code>MessageDeduplicationId</code> is 128 characters. <code>MessageDeduplicationId</code> can contain alphanumeric characters (<code>a-z</code>, <code>A-Z</code>, <code>0-9</code>) and punctuation (<code>!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</code>).</p> <p>For best practices of using <code>MessageDeduplicationId</code>, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html">Using the MessageDeduplicationId Property</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
 -- * MessageBody [String] <p>The message to send. The maximum string size is 256 KB.</p> <important> <p>A message can include only XML, JSON, and unformatted text. The following Unicode characters are allowed:</p> <p> <code>#x9</code> | <code>#xA</code> | <code>#xD</code> | <code>#x20</code> to <code>#xD7FF</code> | <code>#xE000</code> to <code>#xFFFD</code> | <code>#x10000</code> to <code>#x10FFFF</code> </p> <p>Any characters not included in this list will be rejected. For more information, see the <a href="http://www.w3.org/TR/REC-xml/#charsets">W3C specification for characters</a>.</p> </important>
 -- * DelaySeconds [Integer] <p> The length of time, in seconds, for which to delay a specific message. Valid values: 0 to 900. Maximum: 15 minutes. Messages with a positive <code>DelaySeconds</code> value become available for processing after the delay period is finished. If you don't specify a value, the default value for the queue applies. </p> <note> <p>When you set <code>FifoQueue</code>, you can't set <code>DelaySeconds</code> per message. You can set this parameter only on a queue level.</p> </note>
--- * MessageAttributes [MessageBodyAttributeMap] <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>, and <code>Value</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation">Message Attribute Items and Validation</a> in the <i>Amazon SQS Developer Guide</i>.</p>
--- * MessageGroupId [String] <p>This parameter applies only to FIFO (first-in-first-out) queues.</p> <p>The tag that specifies that a message belongs to a specific message group. Messages that belong to the same message group are processed in a FIFO manner (however, messages in different message groups might be processed out of order). To interleave multiple ordered streams within a single queue, use <code>MessageGroupId</code> values (for example, session data for multiple users). In this scenario, multiple readers can process the queue, but the session data of each user is processed in a FIFO fashion.</p> <ul> <li> <p>You must associate a non-empty <code>MessageGroupId</code> with a message. If you don't provide a <code>MessageGroupId</code>, the action fails.</p> </li> <li> <p> <code>ReceiveMessage</code> might return messages with multiple <code>MessageGroupId</code> values. For each <code>MessageGroupId</code>, the messages are sorted by time sent. The caller can't specify a <code>MessageGroupId</code>.</p> </li> </ul> <p>The length of <code>MessageGroupId</code> is 128 characters. Valid values are alphanumeric characters and punctuation <code>(!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~)</code>.</p> <p>For best practices of using <code>MessageGroupId</code>, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queue-recommendations.html#using-messagegroupid-property">Using the MessageGroupId Property</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p> <important> <p> <code>MessageGroupId</code> is required for FIFO queues. You can't use it for Standard queues.</p> </important>
+-- * MessageAttributes [MessageBodyAttributeMap] <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>, and <code>Value</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html">Amazon SQS Message Attributes</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
+-- * MessageGroupId [String] <p>This parameter applies only to FIFO (first-in-first-out) queues.</p> <p>The tag that specifies that a message belongs to a specific message group. Messages that belong to the same message group are processed in a FIFO manner (however, messages in different message groups might be processed out of order). To interleave multiple ordered streams within a single queue, use <code>MessageGroupId</code> values (for example, session data for multiple users). In this scenario, multiple consumers can process the queue, but the session data of each user is processed in a FIFO fashion.</p> <ul> <li> <p>You must associate a non-empty <code>MessageGroupId</code> with a message. If you don't provide a <code>MessageGroupId</code>, the action fails.</p> </li> <li> <p> <code>ReceiveMessage</code> might return messages with multiple <code>MessageGroupId</code> values. For each <code>MessageGroupId</code>, the messages are sorted by time sent. The caller can't specify a <code>MessageGroupId</code>.</p> </li> </ul> <p>The length of <code>MessageGroupId</code> is 128 characters. Valid values: alphanumeric characters and punctuation <code>(!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~)</code>.</p> <p>For best practices of using <code>MessageGroupId</code>, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html">Using the MessageGroupId Property</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p> <important> <p> <code>MessageGroupId</code> is required for FIFO queues. You can't use it for Standard queues.</p> </important>
 -- Required key: QueueUrl
 -- Required key: MessageBody
 -- @return SendMessageRequest structure as a key-value pair table
@@ -1140,23 +936,39 @@ function M.SendMessageRequest(args)
     }
 end
 
-keys.MessageNotInflight = { nil }
+keys.SendMessageBatchRequestEntry = { ["MessageDeduplicationId"] = true, ["MessageBody"] = true, ["DelaySeconds"] = true, ["MessageAttributes"] = true, ["Id"] = true, ["MessageGroupId"] = true, nil }
 
-function asserts.AssertMessageNotInflight(struct)
+function asserts.AssertSendMessageBatchRequestEntry(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected MessageNotInflight to be of type 'table'")
+	assert(type(struct) == "table", "Expected SendMessageBatchRequestEntry to be of type 'table'")
+	assert(struct["Id"], "Expected key Id to exist in table")
+	assert(struct["MessageBody"], "Expected key MessageBody to exist in table")
+	if struct["MessageDeduplicationId"] then asserts.AssertString(struct["MessageDeduplicationId"]) end
+	if struct["MessageBody"] then asserts.AssertString(struct["MessageBody"]) end
+	if struct["DelaySeconds"] then asserts.AssertInteger(struct["DelaySeconds"]) end
+	if struct["MessageAttributes"] then asserts.AssertMessageBodyAttributeMap(struct["MessageAttributes"]) end
+	if struct["Id"] then asserts.AssertString(struct["Id"]) end
+	if struct["MessageGroupId"] then asserts.AssertString(struct["MessageGroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.MessageNotInflight[k], "MessageNotInflight contains unknown key " .. tostring(k))
+		assert(keys.SendMessageBatchRequestEntry[k], "SendMessageBatchRequestEntry contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type MessageNotInflight
--- <p>The message referred to isn't in flight.</p>
+--- Create a structure of type SendMessageBatchRequestEntry
+-- <p>Contains the details of a single Amazon SQS message along with an <code>Id</code>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return MessageNotInflight structure as a key-value pair table
-function M.MessageNotInflight(args)
-	assert(args, "You must provide an argument table when creating MessageNotInflight")
+-- * MessageDeduplicationId [String] <p>This parameter applies only to FIFO (first-in-first-out) queues.</p> <p>The token used for deduplication of messages within a 5-minute minimum deduplication interval. If a message with a particular <code>MessageDeduplicationId</code> is sent successfully, subsequent messages with the same <code>MessageDeduplicationId</code> are accepted successfully but aren't delivered. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing"> Exactly-Once Processing</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p> <ul> <li> <p>Every message must have a unique <code>MessageDeduplicationId</code>,</p> <ul> <li> <p>You may provide a <code>MessageDeduplicationId</code> explicitly.</p> </li> <li> <p>If you aren't able to provide a <code>MessageDeduplicationId</code> and you enable <code>ContentBasedDeduplication</code> for your queue, Amazon SQS uses a SHA-256 hash to generate the <code>MessageDeduplicationId</code> using the body of the message (but not the attributes of the message). </p> </li> <li> <p>If you don't provide a <code>MessageDeduplicationId</code> and the queue doesn't have <code>ContentBasedDeduplication</code> set, the action fails with an error.</p> </li> <li> <p>If the queue has <code>ContentBasedDeduplication</code> set, your <code>MessageDeduplicationId</code> overrides the generated one.</p> </li> </ul> </li> <li> <p>When <code>ContentBasedDeduplication</code> is in effect, messages with identical content sent within the deduplication interval are treated as duplicates and only one copy of the message is delivered.</p> </li> <li> <p>If you send one message with <code>ContentBasedDeduplication</code> enabled and then another message with a <code>MessageDeduplicationId</code> that is the same as the one generated for the first <code>MessageDeduplicationId</code>, the two messages are treated as duplicates and only one copy of the message is delivered. </p> </li> </ul> <note> <p>The <code>MessageDeduplicationId</code> is available to the consumer of the message (this can be useful for troubleshooting delivery issues).</p> <p>If a message is sent successfully but the acknowledgement is lost and the message is resent with the same <code>MessageDeduplicationId</code> after the deduplication interval, Amazon SQS can't detect duplicate messages.</p> <p>Amazon SQS continues to keep track of the message deduplication ID even after the message is received and deleted.</p> </note> <p>The length of <code>MessageDeduplicationId</code> is 128 characters. <code>MessageDeduplicationId</code> can contain alphanumeric characters (<code>a-z</code>, <code>A-Z</code>, <code>0-9</code>) and punctuation (<code>!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</code>).</p> <p>For best practices of using <code>MessageDeduplicationId</code>, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html">Using the MessageDeduplicationId Property</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
+-- * MessageBody [String] <p>The body of the message.</p>
+-- * DelaySeconds [Integer] <p>The length of time, in seconds, for which a specific message is delayed. Valid values: 0 to 900. Maximum: 15 minutes. Messages with a positive <code>DelaySeconds</code> value become available for processing after the delay period is finished. If you don't specify a value, the default value for the queue is applied. </p> <note> <p>When you set <code>FifoQueue</code>, you can't set <code>DelaySeconds</code> per message. You can set this parameter only on a queue level.</p> </note>
+-- * MessageAttributes [MessageBodyAttributeMap] <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>, and <code>Value</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html">Amazon SQS Message Attributes</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
+-- * Id [String] <p>An identifier for a message in this batch used to communicate the result.</p> <note> <p>The <code>Id</code>s of a batch request need to be unique within a request</p> <p>This identifier can have up to 80 characters. The following characters are accepted: alphanumeric characters, hyphens(-), and underscores (_).</p> </note>
+-- * MessageGroupId [String] <p>This parameter applies only to FIFO (first-in-first-out) queues.</p> <p>The tag that specifies that a message belongs to a specific message group. Messages that belong to the same message group are processed in a FIFO manner (however, messages in different message groups might be processed out of order). To interleave multiple ordered streams within a single queue, use <code>MessageGroupId</code> values (for example, session data for multiple users). In this scenario, multiple consumers can process the queue, but the session data of each user is processed in a FIFO fashion.</p> <ul> <li> <p>You must associate a non-empty <code>MessageGroupId</code> with a message. If you don't provide a <code>MessageGroupId</code>, the action fails.</p> </li> <li> <p> <code>ReceiveMessage</code> might return messages with multiple <code>MessageGroupId</code> values. For each <code>MessageGroupId</code>, the messages are sorted by time sent. The caller can't specify a <code>MessageGroupId</code>.</p> </li> </ul> <p>The length of <code>MessageGroupId</code> is 128 characters. Valid values: alphanumeric characters and punctuation <code>(!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~)</code>.</p> <p>For best practices of using <code>MessageGroupId</code>, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html">Using the MessageGroupId Property</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p> <important> <p> <code>MessageGroupId</code> is required for FIFO queues. You can't use it for Standard queues.</p> </important>
+-- Required key: Id
+-- Required key: MessageBody
+-- @return SendMessageBatchRequestEntry structure as a key-value pair table
+function M.SendMessageBatchRequestEntry(args)
+	assert(args, "You must provide an argument table when creating SendMessageBatchRequestEntry")
     local query_args = { 
     }
     local uri_args = { 
@@ -1164,8 +976,14 @@ function M.MessageNotInflight(args)
     local header_args = { 
     }
 	local all_args = { 
+		["MessageDeduplicationId"] = args["MessageDeduplicationId"],
+		["MessageBody"] = args["MessageBody"],
+		["DelaySeconds"] = args["DelaySeconds"],
+		["MessageAttributes"] = args["MessageAttributes"],
+		["Id"] = args["Id"],
+		["MessageGroupId"] = args["MessageGroupId"],
 	}
-	asserts.AssertMessageNotInflight(all_args)
+	asserts.AssertSendMessageBatchRequestEntry(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1211,45 +1029,6 @@ function M.GetQueueAttributesResult(args)
     }
 end
 
-keys.ListDeadLetterSourceQueuesRequest = { ["QueueUrl"] = true, nil }
-
-function asserts.AssertListDeadLetterSourceQueuesRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ListDeadLetterSourceQueuesRequest to be of type 'table'")
-	assert(struct["QueueUrl"], "Expected key QueueUrl to exist in table")
-	if struct["QueueUrl"] then asserts.AssertString(struct["QueueUrl"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ListDeadLetterSourceQueuesRequest[k], "ListDeadLetterSourceQueuesRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ListDeadLetterSourceQueuesRequest
--- <p/>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * QueueUrl [String] <p>The URL of a dead letter queue.</p> <p>Queue URLs are case-sensitive.</p>
--- Required key: QueueUrl
--- @return ListDeadLetterSourceQueuesRequest structure as a key-value pair table
-function M.ListDeadLetterSourceQueuesRequest(args)
-	assert(args, "You must provide an argument table when creating ListDeadLetterSourceQueuesRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["QueueUrl"] = args["QueueUrl"],
-	}
-	asserts.AssertListDeadLetterSourceQueuesRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.Message = { ["Body"] = true, ["ReceiptHandle"] = true, ["MD5OfBody"] = true, ["MD5OfMessageAttributes"] = true, ["MessageId"] = true, ["Attributes"] = true, ["MessageAttributes"] = true, nil }
 
 function asserts.AssertMessage(struct)
@@ -1276,8 +1055,8 @@ end
 -- * MD5OfBody [String] <p>An MD5 digest of the non-URL-encoded message body string.</p>
 -- * MD5OfMessageAttributes [String] <p>An MD5 digest of the non-URL-encoded message attribute string. You can use this attribute to verify that Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before creating the MD5 digest. For information about MD5, see <a href="https://www.ietf.org/rfc/rfc1321.txt">RFC1321</a>.</p>
 -- * MessageId [String] <p>A unique identifier for the message. A <code>MessageId</code>is considered unique across all AWS accounts for an extended period of time.</p>
--- * Attributes [MessageSystemAttributeMap] <p> <code>SenderId</code>, <code>SentTimestamp</code>, <code>ApproximateReceiveCount</code>, and/or <code>ApproximateFirstReceiveTimestamp</code>. <code>SentTimestamp</code> and <code>ApproximateFirstReceiveTimestamp</code> are each returned as an integer representing the <a href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in milliseconds.</p>
--- * MessageAttributes [MessageBodyAttributeMap] <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>, and <code>Value</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation">Message Attribute Items and Validation</a> in the <i>Amazon SQS Developer Guide</i>.</p>
+-- * Attributes [MessageSystemAttributeMap] <p>A map of the attributes requested in <code> <a>ReceiveMessage</a> </code> to their respective values. Supported attributes:</p> <ul> <li> <p> <code>ApproximateReceiveCount</code> </p> </li> <li> <p> <code>ApproximateFirstReceiveTimestamp</code> </p> </li> <li> <p> <code>MessageDeduplicationId</code> </p> </li> <li> <p> <code>MessageGroupId</code> </p> </li> <li> <p> <code>SenderId</code> </p> </li> <li> <p> <code>SentTimestamp</code> </p> </li> <li> <p> <code>SequenceNumber</code> </p> </li> </ul> <p> <code>ApproximateFirstReceiveTimestamp</code> and <code>SentTimestamp</code> are each returned as an integer representing the <a href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in milliseconds.</p>
+-- * MessageAttributes [MessageBodyAttributeMap] <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>, and <code>Value</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html">Amazon SQS Message Attributes</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
 -- @return Message structure as a key-value pair table
 function M.Message(args)
 	assert(args, "You must provide an argument table when creating Message")
@@ -1305,40 +1084,6 @@ function M.Message(args)
     }
 end
 
-keys.OverLimit = { nil }
-
-function asserts.AssertOverLimit(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected OverLimit to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.OverLimit[k], "OverLimit contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type OverLimit
--- <p>The action that you requested would violate a limit. For example, <code>ReceiveMessage</code> returns this error if the maximum number of inflight messages is reached. <code> <a>AddPermission</a> </code> returns this error if the maximum number of permissions for the queue is reached.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return OverLimit structure as a key-value pair table
-function M.OverLimit(args)
-	assert(args, "You must provide an argument table when creating OverLimit")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertOverLimit(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.GetQueueUrlRequest = { ["QueueName"] = true, ["QueueOwnerAWSAccountId"] = true, nil }
 
 function asserts.AssertGetQueueUrlRequest(struct)
@@ -1356,7 +1101,7 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * QueueName [String] <p>The name of the queue whose URL must be fetched. Maximum 80 characters. Valid values: alphanumeric characters, hyphens (<code>-</code>), and underscores (<code>_</code>).</p> <p>Queue names are case-sensitive.</p>
+-- * QueueName [String] <p>The name of the queue whose URL must be fetched. Maximum 80 characters. Valid values: alphanumeric characters, hyphens (<code>-</code>), and underscores (<code>_</code>).</p> <p>Queue URLs and names are case-sensitive.</p>
 -- * QueueOwnerAWSAccountId [String] <p>The AWS account ID of the account that created the queue.</p>
 -- Required key: QueueName
 -- @return GetQueueUrlRequest structure as a key-value pair table
@@ -1393,7 +1138,7 @@ function asserts.AssertGetQueueUrlResult(struct)
 end
 
 --- Create a structure of type GetQueueUrlResult
--- <p>For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/UnderstandingResponses.html">Responses</a> in the <i>Amazon SQS Developer Guide</i>.</p>
+-- <p>For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-api-responses.html">Interpreting Responses</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * QueueUrl [String] <p>The URL of the queue.</p>
@@ -1434,7 +1179,7 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * QueueUrl [String] <p>The URL of the Amazon SQS queue to delete.</p> <p>Queue URLs are case-sensitive.</p>
+-- * QueueUrl [String] <p>The URL of the Amazon SQS queue to delete.</p> <p>Queue URLs and names are case-sensitive.</p>
 -- Required key: QueueUrl
 -- @return DeleteQueueRequest structure as a key-value pair table
 function M.DeleteQueueRequest(args)
@@ -1457,93 +1202,31 @@ function M.DeleteQueueRequest(args)
     }
 end
 
-keys.BatchRequestTooLong = { nil }
+keys.SetQueueAttributesRequest = { ["QueueUrl"] = true, ["Attributes"] = true, nil }
 
-function asserts.AssertBatchRequestTooLong(struct)
+function asserts.AssertSetQueueAttributesRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected BatchRequestTooLong to be of type 'table'")
+	assert(type(struct) == "table", "Expected SetQueueAttributesRequest to be of type 'table'")
+	assert(struct["QueueUrl"], "Expected key QueueUrl to exist in table")
+	assert(struct["Attributes"], "Expected key Attributes to exist in table")
+	if struct["QueueUrl"] then asserts.AssertString(struct["QueueUrl"]) end
+	if struct["Attributes"] then asserts.AssertQueueAttributeMap(struct["Attributes"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.BatchRequestTooLong[k], "BatchRequestTooLong contains unknown key " .. tostring(k))
+		assert(keys.SetQueueAttributesRequest[k], "SetQueueAttributesRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type BatchRequestTooLong
--- <p>The length of all the messages put together is more than the limit.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return BatchRequestTooLong structure as a key-value pair table
-function M.BatchRequestTooLong(args)
-	assert(args, "You must provide an argument table when creating BatchRequestTooLong")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertBatchRequestTooLong(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidMessageContents = { nil }
-
-function asserts.AssertInvalidMessageContents(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidMessageContents to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidMessageContents[k], "InvalidMessageContents contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidMessageContents
--- <p>The message contains characters outside the allowed set.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidMessageContents structure as a key-value pair table
-function M.InvalidMessageContents(args)
-	assert(args, "You must provide an argument table when creating InvalidMessageContents")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidMessageContents(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ListQueuesRequest = { ["QueueNamePrefix"] = true, nil }
-
-function asserts.AssertListQueuesRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ListQueuesRequest to be of type 'table'")
-	if struct["QueueNamePrefix"] then asserts.AssertString(struct["QueueNamePrefix"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ListQueuesRequest[k], "ListQueuesRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ListQueuesRequest
+--- Create a structure of type SetQueueAttributesRequest
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * QueueNamePrefix [String] <p>A string to use for filtering the list results. Only those queues whose name begins with the specified string are returned.</p> <p>Queue names are case-sensitive.</p>
--- @return ListQueuesRequest structure as a key-value pair table
-function M.ListQueuesRequest(args)
-	assert(args, "You must provide an argument table when creating ListQueuesRequest")
+-- * QueueUrl [String] <p>The URL of the Amazon SQS queue whose attributes are set.</p> <p>Queue URLs and names are case-sensitive.</p>
+-- * Attributes [QueueAttributeMap] <p>A map of attributes to set.</p> <p>The following lists the names, descriptions, and values of the special request parameters that the <code>SetQueueAttributes</code> action uses:</p> <ul> <li> <p> <code>DelaySeconds</code> - The length of time, in seconds, for which the delivery of all messages in the queue is delayed. Valid values: An integer from 0 to 900 (15 minutes). Default: 0. </p> </li> <li> <p> <code>MaximumMessageSize</code> - The limit of how many bytes a message can contain before Amazon SQS rejects it. Valid values: An integer from 1,024 bytes (1 KiB) up to 262,144 bytes (256 KiB). Default: 262,144 (256 KiB). </p> </li> <li> <p> <code>MessageRetentionPeriod</code> - The length of time, in seconds, for which Amazon SQS retains a message. Valid values: An integer representing seconds, from 60 (1 minute) to 1,209,600 (14 days). Default: 345,600 (4 days). </p> </li> <li> <p> <code>Policy</code> - The queue's policy. A valid AWS policy. For more information about policy structure, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html">Overview of AWS IAM Policies</a> in the <i>Amazon IAM User Guide</i>. </p> </li> <li> <p> <code>ReceiveMessageWaitTimeSeconds</code> - The length of time, in seconds, for which a <code> <a>ReceiveMessage</a> </code> action waits for a message to arrive. Valid values: an integer from 0 to 20 (seconds). Default: 0. </p> </li> <li> <p> <code>RedrivePolicy</code> - The string that includes the parameters for the dead-letter queue functionality of the source queue. For more information about the redrive policy and dead-letter queues, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html">Using Amazon SQS Dead-Letter Queues</a> in the <i>Amazon Simple Queue Service Developer Guide</i>. </p> <ul> <li> <p> <code>deadLetterTargetArn</code> - The Amazon Resource Name (ARN) of the dead-letter queue to which Amazon SQS moves messages after the value of <code>maxReceiveCount</code> is exceeded.</p> </li> <li> <p> <code>maxReceiveCount</code> - The number of times a message is delivered to the source queue before being moved to the dead-letter queue. When the <code>ReceiveCount</code> for a message exceeds the <code>maxReceiveCount</code> for a queue, Amazon SQS moves the message to the dead-letter-queue.</p> </li> </ul> <note> <p>The dead-letter queue of a FIFO queue must also be a FIFO queue. Similarly, the dead-letter queue of a standard queue must also be a standard queue.</p> </note> </li> <li> <p> <code>VisibilityTimeout</code> - The visibility timeout for the queue, in seconds. Valid values: an integer from 0 to 43,200 (12 hours). Default: 30. For more information about the visibility timeout, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html">Visibility Timeout</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p> </li> </ul> <p>The following attributes apply only to <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html">server-side-encryption</a>:</p> <ul> <li> <p> <code>KmsMasterKeyId</code> - The ID of an AWS-managed customer master key (CMK) for Amazon SQS or a custom CMK. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms">Key Terms</a>. While the alias of the AWS-managed CMK for Amazon SQS is always <code>alias/aws/sqs</code>, the alias of a custom CMK can, for example, be <code>alias/<i>MyAlias</i> </code>. For more examples, see <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters">KeyId</a> in the <i>AWS Key Management Service API Reference</i>. </p> </li> <li> <p> <code>KmsDataKeyReusePeriodSeconds</code> - The length of time, in seconds, for which Amazon SQS can reuse a <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys">data key</a> to encrypt or decrypt messages before calling AWS KMS again. An integer representing seconds, between 60 seconds (1 minute) and 86,400 seconds (24 hours). Default: 300 (5 minutes). A shorter time period provides better security but results in more calls to KMS which might incur charges after Free Tier. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work">How Does the Data Key Reuse Period Work?</a>. </p> </li> </ul> <p>The following attribute applies only to <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html">FIFO (first-in-first-out) queues</a>:</p> <ul> <li> <p> <code>ContentBasedDeduplication</code> - Enables content-based deduplication. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing">Exactly-Once Processing</a> in the <i>Amazon Simple Queue Service Developer Guide</i>. </p> <ul> <li> <p>Every message must have a unique <code>MessageDeduplicationId</code>,</p> <ul> <li> <p>You may provide a <code>MessageDeduplicationId</code> explicitly.</p> </li> <li> <p>If you aren't able to provide a <code>MessageDeduplicationId</code> and you enable <code>ContentBasedDeduplication</code> for your queue, Amazon SQS uses a SHA-256 hash to generate the <code>MessageDeduplicationId</code> using the body of the message (but not the attributes of the message). </p> </li> <li> <p>If you don't provide a <code>MessageDeduplicationId</code> and the queue doesn't have <code>ContentBasedDeduplication</code> set, the action fails with an error.</p> </li> <li> <p>If the queue has <code>ContentBasedDeduplication</code> set, your <code>MessageDeduplicationId</code> overrides the generated one.</p> </li> </ul> </li> <li> <p>When <code>ContentBasedDeduplication</code> is in effect, messages with identical content sent within the deduplication interval are treated as duplicates and only one copy of the message is delivered.</p> </li> <li> <p>If you send one message with <code>ContentBasedDeduplication</code> enabled and then another message with a <code>MessageDeduplicationId</code> that is the same as the one generated for the first <code>MessageDeduplicationId</code>, the two messages are treated as duplicates and only one copy of the message is delivered. </p> </li> </ul> </li> </ul>
+-- Required key: QueueUrl
+-- Required key: Attributes
+-- @return SetQueueAttributesRequest structure as a key-value pair table
+function M.SetQueueAttributesRequest(args)
+	assert(args, "You must provide an argument table when creating SetQueueAttributesRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1551,9 +1234,10 @@ function M.ListQueuesRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["QueueNamePrefix"] = args["QueueNamePrefix"],
+		["QueueUrl"] = args["QueueUrl"],
+		["Attributes"] = args["Attributes"],
 	}
-	asserts.AssertListQueuesRequest(all_args)
+	asserts.AssertSetQueueAttributesRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1562,23 +1246,31 @@ function M.ListQueuesRequest(args)
     }
 end
 
-keys.InvalidIdFormat = { nil }
+keys.UntagQueueRequest = { ["QueueUrl"] = true, ["TagKeys"] = true, nil }
 
-function asserts.AssertInvalidIdFormat(struct)
+function asserts.AssertUntagQueueRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidIdFormat to be of type 'table'")
+	assert(type(struct) == "table", "Expected UntagQueueRequest to be of type 'table'")
+	assert(struct["QueueUrl"], "Expected key QueueUrl to exist in table")
+	assert(struct["TagKeys"], "Expected key TagKeys to exist in table")
+	if struct["QueueUrl"] then asserts.AssertString(struct["QueueUrl"]) end
+	if struct["TagKeys"] then asserts.AssertTagKeyList(struct["TagKeys"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidIdFormat[k], "InvalidIdFormat contains unknown key " .. tostring(k))
+		assert(keys.UntagQueueRequest[k], "UntagQueueRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidIdFormat
--- <p>The receipt handle isn't valid for the current version.</p>
+--- Create a structure of type UntagQueueRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidIdFormat structure as a key-value pair table
-function M.InvalidIdFormat(args)
-	assert(args, "You must provide an argument table when creating InvalidIdFormat")
+-- * QueueUrl [String] <p>The URL of the queue.</p>
+-- * TagKeys [TagKeyList] <p>The list of tags to be removed from the specified queue.</p>
+-- Required key: QueueUrl
+-- Required key: TagKeys
+-- @return UntagQueueRequest structure as a key-value pair table
+function M.UntagQueueRequest(args)
+	assert(args, "You must provide an argument table when creating UntagQueueRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1586,8 +1278,10 @@ function M.InvalidIdFormat(args)
     local header_args = { 
     }
 	local all_args = { 
+		["QueueUrl"] = args["QueueUrl"],
+		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertInvalidIdFormat(all_args)
+	asserts.AssertUntagQueueRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1618,9 +1312,9 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * QueueUrl [String] <p>The URL of the Amazon SQS queue to which permissions are added.</p> <p>Queue URLs are case-sensitive.</p>
--- * AWSAccountIds [AWSAccountIdList] <p>The AWS account number of the <a href="http://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P">principal</a> who is given permission. The principal must have an AWS account, but does not need to be signed up for Amazon SQS. For information about locating the AWS account identification, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AWSCredentials.html">Your AWS Identifiers</a> in the <i>Amazon SQS Developer Guide</i>.</p>
--- * Actions [ActionNameList] <p>The action the client wants to allow for the specified principal. The following values are valid:</p> <ul> <li> <p> <code>*</code> </p> </li> <li> <p> <code>ChangeMessageVisibility</code> </p> </li> <li> <p> <code>DeleteMessage</code> </p> </li> <li> <p> <code>GetQueueAttributes</code> </p> </li> <li> <p> <code>GetQueueUrl</code> </p> </li> <li> <p> <code>ReceiveMessage</code> </p> </li> <li> <p> <code>SendMessage</code> </p> </li> </ul> <p>For more information about these actions, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/acp-overview.html#PermissionTypes">Understanding Permissions</a> in the <i>Amazon SQS Developer Guide</i>.</p> <p>Specifying <code>SendMessage</code>, <code>DeleteMessage</code>, or <code>ChangeMessageVisibility</code> for <code>ActionName.n</code> also grants permissions for the corresponding batch versions of those actions: <code>SendMessageBatch</code>, <code>DeleteMessageBatch</code>, and <code>ChangeMessageVisibilityBatch</code>.</p>
+-- * QueueUrl [String] <p>The URL of the Amazon SQS queue to which permissions are added.</p> <p>Queue URLs and names are case-sensitive.</p>
+-- * AWSAccountIds [AWSAccountIdList] <p>The AWS account number of the <a href="http://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P">principal</a> who is given permission. The principal must have an AWS account, but does not need to be signed up for Amazon SQS. For information about locating the AWS account identification, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html#sqs-api-request-authentication">Your AWS Identifiers</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
+-- * Actions [ActionNameList] <p>The action the client wants to allow for the specified principal. Valid values: the name of any action or <code>*</code>.</p> <p>For more information about these actions, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-overview-of-managing-access.html">Overview of Managing Access Permissions to Your Amazon Simple Queue Service Resource</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p> <p>Specifying <code>SendMessage</code>, <code>DeleteMessage</code>, or <code>ChangeMessageVisibility</code> for <code>ActionName.n</code> also grants permissions for the corresponding batch versions of those actions: <code>SendMessageBatch</code>, <code>DeleteMessageBatch</code>, and <code>ChangeMessageVisibilityBatch</code>.</p>
 -- * Label [String] <p>The unique identification of the permission you're setting (for example, <code>AliceSendMessage</code>). Maximum 80 characters. Allowed characters include alphanumeric characters, hyphens (<code>-</code>), and underscores (<code>_</code>).</p>
 -- Required key: QueueUrl
 -- Required key: Label
@@ -1666,7 +1360,7 @@ end
 -- <p>A list of your dead letter source queues.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * queueUrls [QueueUrlList] <p>A list of source queue URLs that have the <code>RedrivePolicy</code> queue attribute configured with a dead letter queue.</p>
+-- * queueUrls [QueueUrlList] <p>A list of source queue URLs that have the <code>RedrivePolicy</code> queue attribute configured with a dead-letter queue.</p>
 -- Required key: queueUrls
 -- @return ListDeadLetterSourceQueuesResult structure as a key-value pair table
 function M.ListDeadLetterSourceQueuesResult(args)
@@ -1689,23 +1383,27 @@ function M.ListDeadLetterSourceQueuesResult(args)
     }
 end
 
-keys.QueueNameExists = { nil }
+keys.ListQueueTagsRequest = { ["QueueUrl"] = true, nil }
 
-function asserts.AssertQueueNameExists(struct)
+function asserts.AssertListQueueTagsRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected QueueNameExists to be of type 'table'")
+	assert(type(struct) == "table", "Expected ListQueueTagsRequest to be of type 'table'")
+	assert(struct["QueueUrl"], "Expected key QueueUrl to exist in table")
+	if struct["QueueUrl"] then asserts.AssertString(struct["QueueUrl"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.QueueNameExists[k], "QueueNameExists contains unknown key " .. tostring(k))
+		assert(keys.ListQueueTagsRequest[k], "ListQueueTagsRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type QueueNameExists
--- <p>A queue already exists with this name. Amazon SQS returns this error only if the request includes attributes whose values differ from those of the existing queue.</p>
+--- Create a structure of type ListQueueTagsRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return QueueNameExists structure as a key-value pair table
-function M.QueueNameExists(args)
-	assert(args, "You must provide an argument table when creating QueueNameExists")
+-- * QueueUrl [String] <p>The URL of the queue.</p>
+-- Required key: QueueUrl
+-- @return ListQueueTagsRequest structure as a key-value pair table
+function M.ListQueueTagsRequest(args)
+	assert(args, "You must provide an argument table when creating ListQueueTagsRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1713,8 +1411,9 @@ function M.QueueNameExists(args)
     local header_args = { 
     }
 	local all_args = { 
+		["QueueUrl"] = args["QueueUrl"],
 	}
-	asserts.AssertQueueNameExists(all_args)
+	asserts.AssertListQueueTagsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1723,23 +1422,25 @@ function M.QueueNameExists(args)
     }
 end
 
-keys.BatchEntryIdsNotDistinct = { nil }
+keys.ListQueuesRequest = { ["QueueNamePrefix"] = true, nil }
 
-function asserts.AssertBatchEntryIdsNotDistinct(struct)
+function asserts.AssertListQueuesRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected BatchEntryIdsNotDistinct to be of type 'table'")
+	assert(type(struct) == "table", "Expected ListQueuesRequest to be of type 'table'")
+	if struct["QueueNamePrefix"] then asserts.AssertString(struct["QueueNamePrefix"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.BatchEntryIdsNotDistinct[k], "BatchEntryIdsNotDistinct contains unknown key " .. tostring(k))
+		assert(keys.ListQueuesRequest[k], "ListQueuesRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type BatchEntryIdsNotDistinct
--- <p>Two or more batch entries in the request have the same <code>Id</code>.</p>
+--- Create a structure of type ListQueuesRequest
+-- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return BatchEntryIdsNotDistinct structure as a key-value pair table
-function M.BatchEntryIdsNotDistinct(args)
-	assert(args, "You must provide an argument table when creating BatchEntryIdsNotDistinct")
+-- * QueueNamePrefix [String] <p>A string to use for filtering the list results. Only those queues whose name begins with the specified string are returned.</p> <p>Queue URLs and names are case-sensitive.</p>
+-- @return ListQueuesRequest structure as a key-value pair table
+function M.ListQueuesRequest(args)
+	assert(args, "You must provide an argument table when creating ListQueuesRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1747,8 +1448,9 @@ function M.BatchEntryIdsNotDistinct(args)
     local header_args = { 
     }
 	local all_args = { 
+		["QueueNamePrefix"] = args["QueueNamePrefix"],
 	}
-	asserts.AssertBatchEntryIdsNotDistinct(all_args)
+	asserts.AssertListQueuesRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1796,23 +1498,27 @@ function M.DeleteMessageBatchResultEntry(args)
     }
 end
 
-keys.EmptyBatchRequest = { nil }
+keys.ListDeadLetterSourceQueuesRequest = { ["QueueUrl"] = true, nil }
 
-function asserts.AssertEmptyBatchRequest(struct)
+function asserts.AssertListDeadLetterSourceQueuesRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected EmptyBatchRequest to be of type 'table'")
+	assert(type(struct) == "table", "Expected ListDeadLetterSourceQueuesRequest to be of type 'table'")
+	assert(struct["QueueUrl"], "Expected key QueueUrl to exist in table")
+	if struct["QueueUrl"] then asserts.AssertString(struct["QueueUrl"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.EmptyBatchRequest[k], "EmptyBatchRequest contains unknown key " .. tostring(k))
+		assert(keys.ListDeadLetterSourceQueuesRequest[k], "ListDeadLetterSourceQueuesRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type EmptyBatchRequest
--- <p>The batch request doesn't contain any entries.</p>
+--- Create a structure of type ListDeadLetterSourceQueuesRequest
+-- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return EmptyBatchRequest structure as a key-value pair table
-function M.EmptyBatchRequest(args)
-	assert(args, "You must provide an argument table when creating EmptyBatchRequest")
+-- * QueueUrl [String] <p>The URL of a dead-letter queue.</p> <p>Queue URLs and names are case-sensitive.</p>
+-- Required key: QueueUrl
+-- @return ListDeadLetterSourceQueuesRequest structure as a key-value pair table
+function M.ListDeadLetterSourceQueuesRequest(args)
+	assert(args, "You must provide an argument table when creating ListDeadLetterSourceQueuesRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1820,8 +1526,9 @@ function M.EmptyBatchRequest(args)
     local header_args = { 
     }
 	local all_args = { 
+		["QueueUrl"] = args["QueueUrl"],
 	}
-	asserts.AssertEmptyBatchRequest(all_args)
+	asserts.AssertListDeadLetterSourceQueuesRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1867,62 +1574,6 @@ function M.ListQueuesResult(args)
     }
 end
 
-keys.SendMessageBatchRequestEntry = { ["MessageDeduplicationId"] = true, ["MessageBody"] = true, ["DelaySeconds"] = true, ["MessageAttributes"] = true, ["Id"] = true, ["MessageGroupId"] = true, nil }
-
-function asserts.AssertSendMessageBatchRequestEntry(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SendMessageBatchRequestEntry to be of type 'table'")
-	assert(struct["Id"], "Expected key Id to exist in table")
-	assert(struct["MessageBody"], "Expected key MessageBody to exist in table")
-	if struct["MessageDeduplicationId"] then asserts.AssertString(struct["MessageDeduplicationId"]) end
-	if struct["MessageBody"] then asserts.AssertString(struct["MessageBody"]) end
-	if struct["DelaySeconds"] then asserts.AssertInteger(struct["DelaySeconds"]) end
-	if struct["MessageAttributes"] then asserts.AssertMessageBodyAttributeMap(struct["MessageAttributes"]) end
-	if struct["Id"] then asserts.AssertString(struct["Id"]) end
-	if struct["MessageGroupId"] then asserts.AssertString(struct["MessageGroupId"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.SendMessageBatchRequestEntry[k], "SendMessageBatchRequestEntry contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SendMessageBatchRequestEntry
--- <p>Contains the details of a single Amazon SQS message along with an <code>Id</code>.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * MessageDeduplicationId [String] <p>This parameter applies only to FIFO (first-in-first-out) queues.</p> <p>The token used for deduplication of messages within a 5-minute minimum deduplication interval. If a message with a particular <code>MessageDeduplicationId</code> is sent successfully, subsequent messages with the same <code>MessageDeduplicationId</code> are accepted successfully but aren't delivered. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing"> Exactly-Once Processing</a> in the <i>Amazon SQS Developer Guide</i>.</p> <ul> <li> <p>Every message must have a unique <code>MessageDeduplicationId</code>,</p> <ul> <li> <p>You may provide a <code>MessageDeduplicationId</code> explicitly.</p> </li> <li> <p>If you aren't able to provide a <code>MessageDeduplicationId</code> and you enable <code>ContentBasedDeduplication</code> for your queue, Amazon SQS uses a SHA-256 hash to generate the <code>MessageDeduplicationId</code> using the body of the message (but not the attributes of the message). </p> </li> <li> <p>If you don't provide a <code>MessageDeduplicationId</code> and the queue doesn't have <code>ContentBasedDeduplication</code> set, the action fails with an error.</p> </li> <li> <p>If the queue has <code>ContentBasedDeduplication</code> set, your <code>MessageDeduplicationId</code> overrides the generated one.</p> </li> </ul> </li> <li> <p>When <code>ContentBasedDeduplication</code> is in effect, messages with identical content sent within the deduplication interval are treated as duplicates and only one copy of the message is delivered.</p> </li> <li> <p>If you send one message with <code>ContentBasedDeduplication</code> enabled and then another message with a <code>MessageDeduplicationId</code> that is the same as the one generated for the first <code>MessageDeduplicationId</code>, the two messages are treated as duplicates and only one copy of the message is delivered. </p> </li> </ul> <note> <p>The <code>MessageDeduplicationId</code> is available to the recipient of the message (this can be useful for troubleshooting delivery issues).</p> <p>If a message is sent successfully but the acknowledgement is lost and the message is resent with the same <code>MessageDeduplicationId</code> after the deduplication interval, Amazon SQS can't detect duplicate messages.</p> </note> <p>The length of <code>MessageDeduplicationId</code> is 128 characters. <code>MessageDeduplicationId</code> can contain alphanumeric characters (<code>a-z</code>, <code>A-Z</code>, <code>0-9</code>) and punctuation (<code>!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</code>).</p> <p>For best practices of using <code>MessageDeduplicationId</code>, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queue-recommendations.html#using-messagededuplicationid-property">Using the MessageDeduplicationId Property</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
--- * MessageBody [String] <p>The body of the message.</p>
--- * DelaySeconds [Integer] <p>The length of time, in seconds, for which a specific message is delayed. Valid values: 0 to 900. Maximum: 15 minutes. Messages with a positive <code>DelaySeconds</code> value become available for processing after the delay period is finished. If you don't specify a value, the default value for the queue is applied. </p> <note> <p>When you set <code>FifoQueue</code>, you can't set <code>DelaySeconds</code> per message. You can set this parameter only on a queue level.</p> </note>
--- * MessageAttributes [MessageBodyAttributeMap] <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>, and <code>Value</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation">Message Attribute Items and Validation</a> in the <i>Amazon SQS Developer Guide</i>.</p>
--- * Id [String] <p>An identifier for a message in this batch used to communicate the result.</p> <note> <p>The <code>Id</code>s of a batch request need to be unique within a request</p> </note>
--- * MessageGroupId [String] <p>This parameter applies only to FIFO (first-in-first-out) queues.</p> <p>The tag that specifies that a message belongs to a specific message group. Messages that belong to the same message group are processed in a FIFO manner (however, messages in different message groups might be processed out of order). To interleave multiple ordered streams within a single queue, use <code>MessageGroupId</code> values (for example, session data for multiple users). In this scenario, multiple readers can process the queue, but the session data of each user is processed in a FIFO fashion.</p> <ul> <li> <p>You must associate a non-empty <code>MessageGroupId</code> with a message. If you don't provide a <code>MessageGroupId</code>, the action fails.</p> </li> <li> <p> <code>ReceiveMessage</code> might return messages with multiple <code>MessageGroupId</code> values. For each <code>MessageGroupId</code>, the messages are sorted by time sent. The caller can't specify a <code>MessageGroupId</code>.</p> </li> </ul> <p>The length of <code>MessageGroupId</code> is 128 characters. Valid values are alphanumeric characters and punctuation <code>(!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~)</code>.</p> <p>For best practices of using <code>MessageGroupId</code>, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queue-recommendations.html#using-messagegroupid-property">Using the MessageGroupId Property</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p> <important> <p> <code>MessageGroupId</code> is required for FIFO queues. You can't use it for Standard queues.</p> </important>
--- Required key: Id
--- Required key: MessageBody
--- @return SendMessageBatchRequestEntry structure as a key-value pair table
-function M.SendMessageBatchRequestEntry(args)
-	assert(args, "You must provide an argument table when creating SendMessageBatchRequestEntry")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["MessageDeduplicationId"] = args["MessageDeduplicationId"],
-		["MessageBody"] = args["MessageBody"],
-		["DelaySeconds"] = args["DelaySeconds"],
-		["MessageAttributes"] = args["MessageAttributes"],
-		["Id"] = args["Id"],
-		["MessageGroupId"] = args["MessageGroupId"],
-	}
-	asserts.AssertSendMessageBatchRequestEntry(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ChangeMessageVisibilityBatchRequestEntry = { ["ReceiptHandle"] = true, ["VisibilityTimeout"] = true, ["Id"] = true, nil }
 
 function asserts.AssertChangeMessageVisibilityBatchRequestEntry(struct)
@@ -1939,7 +1590,7 @@ function asserts.AssertChangeMessageVisibilityBatchRequestEntry(struct)
 end
 
 --- Create a structure of type ChangeMessageVisibilityBatchRequestEntry
--- <p>Encloses a receipt handle and an entry id for each message in <code> <a>ChangeMessageVisibilityBatch</a>.</code> </p> <important> <p>All of the following list parameters must be prefixed with <code>ChangeMessageVisibilityBatchRequestEntry.n</code>, where <code>n</code> is an integer value starting with <code>1</code>. For example, a parameter list for this action might look like this:</p> </important> <p> <code>&amp;amp;ChangeMessageVisibilityBatchRequestEntry.1.Id=change_visibility_msg_2</code> </p> <p> <code>&amp;amp;ChangeMessageVisibilityBatchRequestEntry.1.ReceiptHandle=&lt;replaceable&gt;Your_Receipt_Handle&lt;/replaceable&gt;</code> </p> <p> <code>&amp;amp;ChangeMessageVisibilityBatchRequestEntry.1.VisibilityTimeout=45</code> </p>
+-- <p>Encloses a receipt handle and an entry id for each message in <code> <a>ChangeMessageVisibilityBatch</a>.</code> </p> <important> <p>All of the following list parameters must be prefixed with <code>ChangeMessageVisibilityBatchRequestEntry.n</code>, where <code>n</code> is an integer value starting with <code>1</code>. For example, a parameter list for this action might look like this:</p> </important> <p> <code>&amp;ChangeMessageVisibilityBatchRequestEntry.1.Id=change_visibility_msg_2</code> </p> <p> <code>&amp;ChangeMessageVisibilityBatchRequestEntry.1.ReceiptHandle=your_receipt_handle</code> </p> <p> <code>&amp;ChangeMessageVisibilityBatchRequestEntry.1.VisibilityTimeout=45</code> </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ReceiptHandle [String] <p>A receipt handle.</p>
@@ -1970,23 +1621,25 @@ function M.ChangeMessageVisibilityBatchRequestEntry(args)
     }
 end
 
-keys.TooManyEntriesInBatchRequest = { nil }
+keys.ListQueueTagsResult = { ["Tags"] = true, nil }
 
-function asserts.AssertTooManyEntriesInBatchRequest(struct)
+function asserts.AssertListQueueTagsResult(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyEntriesInBatchRequest to be of type 'table'")
+	assert(type(struct) == "table", "Expected ListQueueTagsResult to be of type 'table'")
+	if struct["Tags"] then asserts.AssertTagMap(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TooManyEntriesInBatchRequest[k], "TooManyEntriesInBatchRequest contains unknown key " .. tostring(k))
+		assert(keys.ListQueueTagsResult[k], "ListQueueTagsResult contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TooManyEntriesInBatchRequest
--- <p>The batch request contains more entries than permissible.</p>
+--- Create a structure of type ListQueueTagsResult
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return TooManyEntriesInBatchRequest structure as a key-value pair table
-function M.TooManyEntriesInBatchRequest(args)
-	assert(args, "You must provide an argument table when creating TooManyEntriesInBatchRequest")
+-- * Tags [TagMap] <p>The list of all tags added to the specified queue.</p>
+-- @return ListQueueTagsResult structure as a key-value pair table
+function M.ListQueueTagsResult(args)
+	assert(args, "You must provide an argument table when creating ListQueueTagsResult")
     local query_args = { 
     }
     local uri_args = { 
@@ -1994,42 +1647,9 @@ function M.TooManyEntriesInBatchRequest(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Tags"] = args["Tags"],
 	}
-	asserts.AssertTooManyEntriesInBatchRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.QueueDeletedRecently = { nil }
-
-function asserts.AssertQueueDeletedRecently(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected QueueDeletedRecently to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.QueueDeletedRecently[k], "QueueDeletedRecently contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type QueueDeletedRecently
--- <p>You must wait 60 seconds after deleting a queue before you can create another one with the same name.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return QueueDeletedRecently structure as a key-value pair table
-function M.QueueDeletedRecently(args)
-	assert(args, "You must provide an argument table when creating QueueDeletedRecently")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertQueueDeletedRecently(all_args)
+	asserts.AssertListQueueTagsResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2139,7 +1759,7 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * QueueUrl [String] <p>The URL of the Amazon SQS queue from which messages are deleted.</p> <p>Queue URLs are case-sensitive.</p>
+-- * QueueUrl [String] <p>The URL of the Amazon SQS queue from which messages are deleted.</p> <p>Queue URLs and names are case-sensitive.</p>
 -- * ReceiptHandle [String] <p>The receipt handle associated with the message to delete.</p>
 -- Required key: QueueUrl
 -- Required key: ReceiptHandle
@@ -2187,6 +1807,17 @@ function M.String(str)
 	return str
 end
 
+function asserts.AssertTagValue(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
+end
+
+--  
+function M.TagValue(str)
+	asserts.AssertTagValue(str)
+	return str
+end
+
 function asserts.AssertMessageAttributeName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected MessageAttributeName to be of type 'string'")
@@ -2195,6 +1826,17 @@ end
 --  
 function M.MessageAttributeName(str)
 	asserts.AssertMessageAttributeName(str)
+	return str
+end
+
+function asserts.AssertTagKey(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TagKey to be of type 'string'")
+end
+
+--  
+function M.TagKey(str)
+	asserts.AssertTagKey(str)
 	return str
 end
 
@@ -2241,6 +1883,20 @@ end
 
 function M.QueueAttributeMap(map)
 	asserts.AssertQueueAttributeMap(map)
+	return map
+end
+
+function asserts.AssertTagMap(map)
+	assert(map)
+	assert(type(map) == "table", "Expected TagMap to be of type 'table'")
+	for k,v in pairs(map) do
+		asserts.AssertTagKey(k)
+		asserts.AssertTagValue(v)
+	end
+end
+
+function M.TagMap(map)
+	asserts.AssertTagMap(map)
 	return map
 end
 
@@ -2387,21 +2043,6 @@ function M.BinaryList(list)
 	return list
 end
 
-function asserts.AssertMessageList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected MessageList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertMessage(v)
-	end
-end
-
---  
--- List of Message objects
-function M.MessageList(list)
-	asserts.AssertMessageList(list)
-	return list
-end
-
 function asserts.AssertSendMessageBatchRequestEntryList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SendMessageBatchRequestEntryList to be of type ''table")
@@ -2429,6 +2070,21 @@ end
 -- List of String objects
 function M.ActionNameList(list)
 	asserts.AssertActionNameList(list)
+	return list
+end
+
+function asserts.AssertMessageList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected MessageList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertMessage(v)
+	end
+end
+
+--  
+-- List of Message objects
+function M.MessageList(list)
+	asserts.AssertMessageList(list)
 	return list
 end
 
@@ -2474,6 +2130,21 @@ end
 -- List of SendMessageBatchResultEntry objects
 function M.SendMessageBatchResultEntryList(list)
 	asserts.AssertSendMessageBatchResultEntryList(list)
+	return list
+end
+
+function asserts.AssertTagKeyList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected TagKeyList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertTagKey(v)
+	end
+end
+
+--  
+-- List of TagKey objects
+function M.TagKeyList(list)
+	asserts.AssertTagKeyList(list)
 	return list
 end
 
@@ -2760,6 +2431,41 @@ function M.SendMessageBatchSync(SendMessageBatchRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call UntagQueue asynchronously, invoking a callback when done
+-- @param UntagQueueRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UntagQueueAsync(UntagQueueRequest, cb)
+	assert(UntagQueueRequest, "You must provide a UntagQueueRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UntagQueue",
+	}
+	for header,value in pairs(UntagQueueRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UntagQueueRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UntagQueue synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UntagQueueRequest
+-- @return response
+-- @return error_message
+function M.UntagQueueSync(UntagQueueRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UntagQueueAsync(UntagQueueRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ListDeadLetterSourceQueues asynchronously, invoking a callback when done
 -- @param ListDeadLetterSourceQueuesRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -2790,6 +2496,41 @@ function M.ListDeadLetterSourceQueuesSync(ListDeadLetterSourceQueuesRequest, ...
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.ListDeadLetterSourceQueuesAsync(ListDeadLetterSourceQueuesRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call TagQueue asynchronously, invoking a callback when done
+-- @param TagQueueRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.TagQueueAsync(TagQueueRequest, cb)
+	assert(TagQueueRequest, "You must provide a TagQueueRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".TagQueue",
+	}
+	for header,value in pairs(TagQueueRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", TagQueueRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call TagQueue synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TagQueueRequest
+-- @return response
+-- @return error_message
+function M.TagQueueSync(TagQueueRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TagQueueAsync(TagQueueRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3005,36 +2746,36 @@ function M.PurgeQueueSync(PurgeQueueRequest, ...)
 	return coroutine.yield()
 end
 
---- Call ReceiveMessage asynchronously, invoking a callback when done
--- @param ReceiveMessageRequest
+--- Call ListQueueTags asynchronously, invoking a callback when done
+-- @param ListQueueTagsRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.ReceiveMessageAsync(ReceiveMessageRequest, cb)
-	assert(ReceiveMessageRequest, "You must provide a ReceiveMessageRequest")
+function M.ListQueueTagsAsync(ListQueueTagsRequest, cb)
+	assert(ListQueueTagsRequest, "You must provide a ListQueueTagsRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".ReceiveMessage",
+		[request_headers.AMZ_TARGET_HEADER] = ".ListQueueTags",
 	}
-	for header,value in pairs(ReceiveMessageRequest.headers) do
+	for header,value in pairs(ListQueueTagsRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", ReceiveMessageRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", ListQueueTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call ReceiveMessage synchronously, returning when done
+--- Call ListQueueTags synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param ReceiveMessageRequest
+-- @param ListQueueTagsRequest
 -- @return response
 -- @return error_message
-function M.ReceiveMessageSync(ReceiveMessageRequest, ...)
+function M.ListQueueTagsSync(ListQueueTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ReceiveMessageAsync(ReceiveMessageRequest, function(response, error_message)
+	M.ListQueueTagsAsync(ListQueueTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3070,6 +2811,41 @@ function M.DeleteMessageSync(DeleteMessageRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DeleteMessageAsync(DeleteMessageRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ReceiveMessage asynchronously, invoking a callback when done
+-- @param ReceiveMessageRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ReceiveMessageAsync(ReceiveMessageRequest, cb)
+	assert(ReceiveMessageRequest, "You must provide a ReceiveMessageRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ReceiveMessage",
+	}
+	for header,value in pairs(ReceiveMessageRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ReceiveMessageRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ReceiveMessage synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ReceiveMessageRequest
+-- @return response
+-- @return error_message
+function M.ReceiveMessageSync(ReceiveMessageRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ReceiveMessageAsync(ReceiveMessageRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

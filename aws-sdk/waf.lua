@@ -21,6 +21,43 @@ M.metadata = {
 local keys = {}
 local asserts = {}
 
+keys.UpdateXssMatchSetResponse = { ["ChangeToken"] = true, nil }
+
+function asserts.AssertUpdateXssMatchSetResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateXssMatchSetResponse to be of type 'table'")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateXssMatchSetResponse[k], "UpdateXssMatchSetResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateXssMatchSetResponse
+-- <p>The response to an <a>UpdateXssMatchSets</a> request.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateXssMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return UpdateXssMatchSetResponse structure as a key-value pair table
+function M.UpdateXssMatchSetResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateXssMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+	}
+	asserts.AssertUpdateXssMatchSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetIPSetRequest = { ["IPSetId"] = true, nil }
 
 function asserts.AssertGetIPSetRequest(struct)
@@ -52,6 +89,49 @@ function M.GetIPSetRequest(args)
 		["IPSetId"] = args["IPSetId"],
 	}
 	asserts.AssertGetIPSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListActivatedRulesInRuleGroupRequest = { ["NextMarker"] = true, ["Limit"] = true, ["RuleGroupId"] = true, nil }
+
+function asserts.AssertListActivatedRulesInRuleGroupRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListActivatedRulesInRuleGroupRequest to be of type 'table'")
+	if struct["NextMarker"] then asserts.AssertNextMarker(struct["NextMarker"]) end
+	if struct["Limit"] then asserts.AssertPaginationLimit(struct["Limit"]) end
+	if struct["RuleGroupId"] then asserts.AssertResourceId(struct["RuleGroupId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListActivatedRulesInRuleGroupRequest[k], "ListActivatedRulesInRuleGroupRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListActivatedRulesInRuleGroupRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>ActivatedRules</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>ActivatedRules</code>. For the second and subsequent <code>ListActivatedRulesInRuleGroup</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>ActivatedRules</code>.</p>
+-- * Limit [PaginationLimit] <p>Specifies the number of <code>ActivatedRules</code> that you want AWS WAF to return for this request. If you have more <code>ActivatedRules</code> than the number that you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>ActivatedRules</code>.</p>
+-- * RuleGroupId [ResourceId] <p>The <code>RuleGroupId</code> of the <a>RuleGroup</a> for which you want to get a list of <a>ActivatedRule</a> objects.</p>
+-- @return ListActivatedRulesInRuleGroupRequest structure as a key-value pair table
+function M.ListActivatedRulesInRuleGroupRequest(args)
+	assert(args, "You must provide an argument table when creating ListActivatedRulesInRuleGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextMarker"] = args["NextMarker"],
+		["Limit"] = args["Limit"],
+		["RuleGroupId"] = args["RuleGroupId"],
+	}
+	asserts.AssertListActivatedRulesInRuleGroupRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -144,31 +224,31 @@ function M.TimeWindow(args)
     }
 end
 
-keys.XssMatchTuple = { ["TextTransformation"] = true, ["FieldToMatch"] = true, nil }
+keys.RegexMatchSetUpdate = { ["Action"] = true, ["RegexMatchTuple"] = true, nil }
 
-function asserts.AssertXssMatchTuple(struct)
+function asserts.AssertRegexMatchSetUpdate(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected XssMatchTuple to be of type 'table'")
-	assert(struct["FieldToMatch"], "Expected key FieldToMatch to exist in table")
-	assert(struct["TextTransformation"], "Expected key TextTransformation to exist in table")
-	if struct["TextTransformation"] then asserts.AssertTextTransformation(struct["TextTransformation"]) end
-	if struct["FieldToMatch"] then asserts.AssertFieldToMatch(struct["FieldToMatch"]) end
+	assert(type(struct) == "table", "Expected RegexMatchSetUpdate to be of type 'table'")
+	assert(struct["Action"], "Expected key Action to exist in table")
+	assert(struct["RegexMatchTuple"], "Expected key RegexMatchTuple to exist in table")
+	if struct["Action"] then asserts.AssertChangeAction(struct["Action"]) end
+	if struct["RegexMatchTuple"] then asserts.AssertRegexMatchTuple(struct["RegexMatchTuple"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.XssMatchTuple[k], "XssMatchTuple contains unknown key " .. tostring(k))
+		assert(keys.RegexMatchSetUpdate[k], "RegexMatchSetUpdate contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type XssMatchTuple
--- <p>Specifies the part of a web request that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header.</p>
+--- Create a structure of type RegexMatchSetUpdate
+-- <p>In an <a>UpdateRegexMatchSet</a> request, <code>RegexMatchSetUpdate</code> specifies whether to insert or delete a <a>RegexMatchTuple</a> and includes the settings for the <code>RegexMatchTuple</code>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>FieldToMatch</code> before inspecting a request for a match.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system commandline command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p>
--- * FieldToMatch [FieldToMatch] <p>Specifies where in a web request to look for cross-site scripting attacks.</p>
--- Required key: FieldToMatch
--- Required key: TextTransformation
--- @return XssMatchTuple structure as a key-value pair table
-function M.XssMatchTuple(args)
-	assert(args, "You must provide an argument table when creating XssMatchTuple")
+-- * Action [ChangeAction] <p>Specifies whether to insert or delete a <a>RegexMatchTuple</a>.</p>
+-- * RegexMatchTuple [RegexMatchTuple] <p>Information about the part of a web request that you want AWS WAF to inspect and the identifier of the regular expression (regex) pattern that you want AWS WAF to search for. If you specify <code>DELETE</code> for the value of <code>Action</code>, the <code>RegexMatchTuple</code> values must exactly match the values in the <code>RegexMatchTuple</code> that you want to delete from the <code>RegexMatchSet</code>.</p>
+-- Required key: Action
+-- Required key: RegexMatchTuple
+-- @return RegexMatchSetUpdate structure as a key-value pair table
+function M.RegexMatchSetUpdate(args)
+	assert(args, "You must provide an argument table when creating RegexMatchSetUpdate")
     local query_args = { 
     }
     local uri_args = { 
@@ -176,10 +256,104 @@ function M.XssMatchTuple(args)
     local header_args = { 
     }
 	local all_args = { 
-		["TextTransformation"] = args["TextTransformation"],
-		["FieldToMatch"] = args["FieldToMatch"],
+		["Action"] = args["Action"],
+		["RegexMatchTuple"] = args["RegexMatchTuple"],
 	}
-	asserts.AssertXssMatchTuple(all_args)
+	asserts.AssertRegexMatchSetUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.RuleGroup = { ["MetricName"] = true, ["Name"] = true, ["RuleGroupId"] = true, nil }
+
+function asserts.AssertRuleGroup(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RuleGroup to be of type 'table'")
+	assert(struct["RuleGroupId"], "Expected key RuleGroupId to exist in table")
+	if struct["MetricName"] then asserts.AssertMetricName(struct["MetricName"]) end
+	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
+	if struct["RuleGroupId"] then asserts.AssertResourceId(struct["RuleGroupId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RuleGroup[k], "RuleGroup contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RuleGroup
+-- <p>A collection of predefined rules that you can add to a web ACL.</p> <p>Rule groups are subject to the following limits:</p> <ul> <li> <p>Three rule groups per account. You can request an increase to this limit by contacting customer support.</p> </li> <li> <p>One rule group per web ACL.</p> </li> <li> <p>Ten rules per rule group.</p> </li> </ul>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MetricName [MetricName] <p>A friendly name or description for the metrics for this <code>RuleGroup</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the <code>RuleGroup</code>.</p>
+-- * Name [ResourceName] <p>The friendly name or description for the <code>RuleGroup</code>. You can't change the name of a <code>RuleGroup</code> after you create it.</p>
+-- * RuleGroupId [ResourceId] <p>A unique identifier for a <code>RuleGroup</code>. You use <code>RuleGroupId</code> to get more information about a <code>RuleGroup</code> (see <a>GetRuleGroup</a>), update a <code>RuleGroup</code> (see <a>UpdateRuleGroup</a>), insert a <code>RuleGroup</code> into a <code>WebACL</code> or delete a one from a <code>WebACL</code> (see <a>UpdateWebACL</a>), or delete a <code>RuleGroup</code> from AWS WAF (see <a>DeleteRuleGroup</a>).</p> <p> <code>RuleGroupId</code> is returned by <a>CreateRuleGroup</a> and by <a>ListRuleGroups</a>.</p>
+-- Required key: RuleGroupId
+-- @return RuleGroup structure as a key-value pair table
+function M.RuleGroup(args)
+	assert(args, "You must provide an argument table when creating RuleGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["MetricName"] = args["MetricName"],
+		["Name"] = args["Name"],
+		["RuleGroupId"] = args["RuleGroupId"],
+	}
+	asserts.AssertRuleGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SubscribedRuleGroupSummary = { ["MetricName"] = true, ["Name"] = true, ["RuleGroupId"] = true, nil }
+
+function asserts.AssertSubscribedRuleGroupSummary(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SubscribedRuleGroupSummary to be of type 'table'")
+	assert(struct["RuleGroupId"], "Expected key RuleGroupId to exist in table")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	assert(struct["MetricName"], "Expected key MetricName to exist in table")
+	if struct["MetricName"] then asserts.AssertMetricName(struct["MetricName"]) end
+	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
+	if struct["RuleGroupId"] then asserts.AssertResourceId(struct["RuleGroupId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SubscribedRuleGroupSummary[k], "SubscribedRuleGroupSummary contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SubscribedRuleGroupSummary
+-- <p>A summary of the rule groups you are subscribed to.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MetricName [MetricName] <p>A friendly name or description for the metrics for this <code>RuleGroup</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the <code>RuleGroup</code>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <code>RuleGroup</code>. You can't change the name of a <code>RuleGroup</code> after you create it.</p>
+-- * RuleGroupId [ResourceId] <p>A unique identifier for a <code>RuleGroup</code>.</p>
+-- Required key: RuleGroupId
+-- Required key: Name
+-- Required key: MetricName
+-- @return SubscribedRuleGroupSummary structure as a key-value pair table
+function M.SubscribedRuleGroupSummary(args)
+	assert(args, "You must provide an argument table when creating SubscribedRuleGroupSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["MetricName"] = args["MetricName"],
+		["Name"] = args["Name"],
+		["RuleGroupId"] = args["RuleGroupId"],
+	}
+	asserts.AssertSubscribedRuleGroupSummary(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -225,27 +399,27 @@ function M.GetChangeTokenStatusResponse(args)
     }
 end
 
-keys.WafAction = { ["Type"] = true, nil }
+keys.ListLoggingConfigurationsResponse = { ["NextMarker"] = true, ["LoggingConfigurations"] = true, nil }
 
-function asserts.AssertWafAction(struct)
+function asserts.AssertListLoggingConfigurationsResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected WafAction to be of type 'table'")
-	assert(struct["Type"], "Expected key Type to exist in table")
-	if struct["Type"] then asserts.AssertWafActionType(struct["Type"]) end
+	assert(type(struct) == "table", "Expected ListLoggingConfigurationsResponse to be of type 'table'")
+	if struct["NextMarker"] then asserts.AssertNextMarker(struct["NextMarker"]) end
+	if struct["LoggingConfigurations"] then asserts.AssertLoggingConfigurations(struct["LoggingConfigurations"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.WafAction[k], "WafAction contains unknown key " .. tostring(k))
+		assert(keys.ListLoggingConfigurationsResponse[k], "ListLoggingConfigurationsResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type WafAction
--- <p>For the action that is associated with a rule in a <code>WebACL</code>, specifies the action that you want AWS WAF to perform when a web request matches all of the conditions in a rule. For the default action in a <code>WebACL</code>, specifies the action that you want AWS WAF to take when a web request doesn't match all of the conditions in any of the rules in a <code>WebACL</code>. </p>
+--- Create a structure of type ListLoggingConfigurationsResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Type [WafActionType] <p>Specifies how you want AWS WAF to respond to requests that match the settings in a <code>Rule</code>. Valid settings include the following:</p> <ul> <li> <p> <code>ALLOW</code>: AWS WAF allows requests</p> </li> <li> <p> <code>BLOCK</code>: AWS WAF blocks requests</p> </li> <li> <p> <code>COUNT</code>: AWS WAF increments a counter of the requests that match all of the conditions in the rule. AWS WAF then continues to inspect the web request based on the remaining rules in the web ACL. You can't specify <code>COUNT</code> for the default action for a <code>WebACL</code>.</p> </li> </ul>
--- Required key: Type
--- @return WafAction structure as a key-value pair table
-function M.WafAction(args)
-	assert(args, "You must provide an argument table when creating WafAction")
+-- * NextMarker [NextMarker] <p>If you have more <code>LoggingConfigurations</code> than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>LoggingConfigurations</code>, submit another <code>ListLoggingConfigurations</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
+-- * LoggingConfigurations [LoggingConfigurations] <p>An array of <a>LoggingConfiguration</a> objects.</p>
+-- @return ListLoggingConfigurationsResponse structure as a key-value pair table
+function M.ListLoggingConfigurationsResponse(args)
+	assert(args, "You must provide an argument table when creating ListLoggingConfigurationsResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -253,9 +427,50 @@ function M.WafAction(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Type"] = args["Type"],
+		["NextMarker"] = args["NextMarker"],
+		["LoggingConfigurations"] = args["LoggingConfigurations"],
 	}
-	asserts.AssertWafAction(all_args)
+	asserts.AssertListLoggingConfigurationsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListRegexPatternSetsRequest = { ["NextMarker"] = true, ["Limit"] = true, nil }
+
+function asserts.AssertListRegexPatternSetsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListRegexPatternSetsRequest to be of type 'table'")
+	if struct["NextMarker"] then asserts.AssertNextMarker(struct["NextMarker"]) end
+	if struct["Limit"] then asserts.AssertPaginationLimit(struct["Limit"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListRegexPatternSetsRequest[k], "ListRegexPatternSetsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListRegexPatternSetsRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>RegexPatternSet</code> objects than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>RegexPatternSet</code> objects. For the second and subsequent <code>ListRegexPatternSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>RegexPatternSet</code> objects.</p>
+-- * Limit [PaginationLimit] <p>Specifies the number of <code>RegexPatternSet</code> objects that you want AWS WAF to return for this request. If you have more <code>RegexPatternSet</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>RegexPatternSet</code> objects.</p>
+-- @return ListRegexPatternSetsRequest structure as a key-value pair table
+function M.ListRegexPatternSetsRequest(args)
+	assert(args, "You must provide an argument table when creating ListRegexPatternSetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextMarker"] = args["NextMarker"],
+		["Limit"] = args["Limit"],
+	}
+	asserts.AssertListRegexPatternSetsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -397,6 +612,83 @@ function M.ListByteMatchSetsResponse(args)
     }
 end
 
+keys.ListSubscribedRuleGroupsRequest = { ["NextMarker"] = true, ["Limit"] = true, nil }
+
+function asserts.AssertListSubscribedRuleGroupsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListSubscribedRuleGroupsRequest to be of type 'table'")
+	if struct["NextMarker"] then asserts.AssertNextMarker(struct["NextMarker"]) end
+	if struct["Limit"] then asserts.AssertPaginationLimit(struct["Limit"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListSubscribedRuleGroupsRequest[k], "ListSubscribedRuleGroupsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListSubscribedRuleGroupsRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>ByteMatchSets</code>subscribed rule groups than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of subscribed rule groups. For the second and subsequent <code>ListSubscribedRuleGroupsRequest</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of subscribed rule groups.</p>
+-- * Limit [PaginationLimit] <p>Specifies the number of subscribed rule groups that you want AWS WAF to return for this request. If you have more objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of objects.</p>
+-- @return ListSubscribedRuleGroupsRequest structure as a key-value pair table
+function M.ListSubscribedRuleGroupsRequest(args)
+	assert(args, "You must provide an argument table when creating ListSubscribedRuleGroupsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextMarker"] = args["NextMarker"],
+		["Limit"] = args["Limit"],
+	}
+	asserts.AssertListSubscribedRuleGroupsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetGeoMatchSetResponse = { ["GeoMatchSet"] = true, nil }
+
+function asserts.AssertGetGeoMatchSetResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetGeoMatchSetResponse to be of type 'table'")
+	if struct["GeoMatchSet"] then asserts.AssertGeoMatchSet(struct["GeoMatchSet"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetGeoMatchSetResponse[k], "GetGeoMatchSetResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetGeoMatchSetResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GeoMatchSet [GeoMatchSet] <p>Information about the <a>GeoMatchSet</a> that you specified in the <code>GetGeoMatchSet</code> request. This includes the <code>Type</code>, which for a <code>GeoMatchContraint</code> is always <code>Country</code>, as well as the <code>Value</code>, which is the identifier for a specific country.</p>
+-- @return GetGeoMatchSetResponse structure as a key-value pair table
+function M.GetGeoMatchSetResponse(args)
+	assert(args, "You must provide an argument table when creating GetGeoMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GeoMatchSet"] = args["GeoMatchSet"],
+	}
+	asserts.AssertGetGeoMatchSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.Predicate = { ["Negated"] = true, ["Type"] = true, ["DataId"] = true, nil }
 
 function asserts.AssertPredicate(struct)
@@ -414,11 +706,11 @@ function asserts.AssertPredicate(struct)
 end
 
 --- Create a structure of type Predicate
--- <p>Specifies the <a>ByteMatchSet</a>, <a>IPSet</a>, <a>SqlInjectionMatchSet</a>, <a>XssMatchSet</a>, and <a>SizeConstraintSet</a> objects that you want to add to a <code>Rule</code> and, for each object, indicates whether you want to negate the settings, for example, requests that do NOT originate from the IP address 192.0.2.44. </p>
+-- <p>Specifies the <a>ByteMatchSet</a>, <a>IPSet</a>, <a>SqlInjectionMatchSet</a>, <a>XssMatchSet</a>, <a>RegexMatchSet</a>, <a>GeoMatchSet</a>, and <a>SizeConstraintSet</a> objects that you want to add to a <code>Rule</code> and, for each object, indicates whether you want to negate the settings, for example, requests that do NOT originate from the IP address 192.0.2.44. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Negated [Negated] <p>Set <code>Negated</code> to <code>False</code> if you want AWS WAF to allow, block, or count requests based on the settings in the specified <a>ByteMatchSet</a>, <a>IPSet</a>, <a>SqlInjectionMatchSet</a>, <a>XssMatchSet</a>, or <a>SizeConstraintSet</a>. For example, if an <code>IPSet</code> includes the IP address <code>192.0.2.44</code>, AWS WAF will allow or block requests based on that IP address.</p> <p>Set <code>Negated</code> to <code>True</code> if you want AWS WAF to allow or block a request based on the negation of the settings in the <a>ByteMatchSet</a>, <a>IPSet</a>, <a>SqlInjectionMatchSet</a>, <a>XssMatchSet</a>, or <a>SizeConstraintSet</a>. For example, if an <code>IPSet</code> includes the IP address <code>192.0.2.44</code>, AWS WAF will allow, block, or count requests based on all IP addresses <i>except</i> <code>192.0.2.44</code>.</p>
--- * Type [PredicateType] <p>The type of predicate in a <code>Rule</code>, such as <code>ByteMatchSet</code> or <code>IPSet</code>.</p>
+-- * Negated [Negated] <p>Set <code>Negated</code> to <code>False</code> if you want AWS WAF to allow, block, or count requests based on the settings in the specified <a>ByteMatchSet</a>, <a>IPSet</a>, <a>SqlInjectionMatchSet</a>, <a>XssMatchSet</a>, <a>RegexMatchSet</a>, <a>GeoMatchSet</a>, or <a>SizeConstraintSet</a>. For example, if an <code>IPSet</code> includes the IP address <code>192.0.2.44</code>, AWS WAF will allow or block requests based on that IP address.</p> <p>Set <code>Negated</code> to <code>True</code> if you want AWS WAF to allow or block a request based on the negation of the settings in the <a>ByteMatchSet</a>, <a>IPSet</a>, <a>SqlInjectionMatchSet</a>, <a>XssMatchSet</a>, <a>RegexMatchSet</a>, <a>GeoMatchSet</a>, or <a>SizeConstraintSet</a>. For example, if an <code>IPSet</code> includes the IP address <code>192.0.2.44</code>, AWS WAF will allow, block, or count requests based on all IP addresses <i>except</i> <code>192.0.2.44</code>.</p>
+-- * Type [PredicateType] <p>The type of predicate in a <code>Rule</code>, such as <code>ByteMatch</code> or <code>IPSet</code>.</p>
 -- * DataId [ResourceId] <p>A unique identifier for a predicate in a <code>Rule</code>, such as <code>ByteMatchSetId</code> or <code>IPSetId</code>. The ID is returned by the corresponding <code>Create</code> or <code>List</code> command.</p>
 -- Required key: Negated
 -- Required key: Type
@@ -468,7 +760,7 @@ end
 -- Valid keys:
 -- * IPSetId [ResourceId] <p>The <code>IPSetId</code> of the <a>IPSet</a> that you want to update. <code>IPSetId</code> is returned by <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
 -- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- * Updates [IPSetUpdates] <p>An array of <code>IPSetUpdate</code> objects that you want to insert into or delete from an <a>IPSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>IPSetUpdate</a>: Contains <code>Action</code> and <code>IPSetDescriptor</code> </p> </li> <li> <p> <a>IPSetDescriptor</a>: Contains <code>Type</code> and <code>Value</code> </p> </li> </ul>
+-- * Updates [IPSetUpdates] <p>An array of <code>IPSetUpdate</code> objects that you want to insert into or delete from an <a>IPSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>IPSetUpdate</a>: Contains <code>Action</code> and <code>IPSetDescriptor</code> </p> </li> <li> <p> <a>IPSetDescriptor</a>: Contains <code>Type</code> and <code>Value</code> </p> </li> </ul> <p>You can insert a maximum of 1000 addresses in a single request.</p>
 -- Required key: IPSetId
 -- Required key: ChangeToken
 -- Required key: Updates
@@ -495,31 +787,31 @@ function M.UpdateIPSetRequest(args)
     }
 end
 
-keys.DeleteByteMatchSetRequest = { ["ByteMatchSetId"] = true, ["ChangeToken"] = true, nil }
+keys.RuleUpdate = { ["Action"] = true, ["Predicate"] = true, nil }
 
-function asserts.AssertDeleteByteMatchSetRequest(struct)
+function asserts.AssertRuleUpdate(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteByteMatchSetRequest to be of type 'table'")
-	assert(struct["ByteMatchSetId"], "Expected key ByteMatchSetId to exist in table")
-	assert(struct["ChangeToken"], "Expected key ChangeToken to exist in table")
-	if struct["ByteMatchSetId"] then asserts.AssertResourceId(struct["ByteMatchSetId"]) end
-	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	assert(type(struct) == "table", "Expected RuleUpdate to be of type 'table'")
+	assert(struct["Action"], "Expected key Action to exist in table")
+	assert(struct["Predicate"], "Expected key Predicate to exist in table")
+	if struct["Action"] then asserts.AssertChangeAction(struct["Action"]) end
+	if struct["Predicate"] then asserts.AssertPredicate(struct["Predicate"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteByteMatchSetRequest[k], "DeleteByteMatchSetRequest contains unknown key " .. tostring(k))
+		assert(keys.RuleUpdate[k], "RuleUpdate contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteByteMatchSetRequest
---  
+--- Create a structure of type RuleUpdate
+-- <p>Specifies a <code>Predicate</code> (such as an <code>IPSet</code>) and indicates whether you want to add it to a <code>Rule</code> or delete it from a <code>Rule</code>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ByteMatchSetId [ResourceId] <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to delete. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and by <a>ListByteMatchSets</a>.</p>
--- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- Required key: ByteMatchSetId
--- Required key: ChangeToken
--- @return DeleteByteMatchSetRequest structure as a key-value pair table
-function M.DeleteByteMatchSetRequest(args)
-	assert(args, "You must provide an argument table when creating DeleteByteMatchSetRequest")
+-- * Action [ChangeAction] <p>Specify <code>INSERT</code> to add a <code>Predicate</code> to a <code>Rule</code>. Use <code>DELETE</code> to remove a <code>Predicate</code> from a <code>Rule</code>.</p>
+-- * Predicate [Predicate] <p>The ID of the <code>Predicate</code> (such as an <code>IPSet</code>) that you want to add to a <code>Rule</code>.</p>
+-- Required key: Action
+-- Required key: Predicate
+-- @return RuleUpdate structure as a key-value pair table
+function M.RuleUpdate(args)
+	assert(args, "You must provide an argument table when creating RuleUpdate")
     local query_args = { 
     }
     local uri_args = { 
@@ -527,10 +819,50 @@ function M.DeleteByteMatchSetRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["ByteMatchSetId"] = args["ByteMatchSetId"],
-		["ChangeToken"] = args["ChangeToken"],
+		["Action"] = args["Action"],
+		["Predicate"] = args["Predicate"],
 	}
-	asserts.AssertDeleteByteMatchSetRequest(all_args)
+	asserts.AssertRuleUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListSubscribedRuleGroupsResponse = { ["RuleGroups"] = true, ["NextMarker"] = true, nil }
+
+function asserts.AssertListSubscribedRuleGroupsResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListSubscribedRuleGroupsResponse to be of type 'table'")
+	if struct["RuleGroups"] then asserts.AssertSubscribedRuleGroupSummaries(struct["RuleGroups"]) end
+	if struct["NextMarker"] then asserts.AssertNextMarker(struct["NextMarker"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListSubscribedRuleGroupsResponse[k], "ListSubscribedRuleGroupsResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListSubscribedRuleGroupsResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RuleGroups [SubscribedRuleGroupSummaries] <p>An array of <a>RuleGroup</a> objects.</p>
+-- * NextMarker [NextMarker] <p>If you have more objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more objects, submit another <code>ListSubscribedRuleGroups</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
+-- @return ListSubscribedRuleGroupsResponse structure as a key-value pair table
+function M.ListSubscribedRuleGroupsResponse(args)
+	assert(args, "You must provide an argument table when creating ListSubscribedRuleGroupsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RuleGroups"] = args["RuleGroups"],
+		["NextMarker"] = args["NextMarker"],
+	}
+	asserts.AssertListSubscribedRuleGroupsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -576,25 +908,65 @@ function M.DeleteSqlInjectionMatchSetResponse(args)
     }
 end
 
-keys.UpdateIPSetResponse = { ["ChangeToken"] = true, nil }
+keys.ListLoggingConfigurationsRequest = { ["NextMarker"] = true, ["Limit"] = true, nil }
 
-function asserts.AssertUpdateIPSetResponse(struct)
+function asserts.AssertListLoggingConfigurationsRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateIPSetResponse to be of type 'table'")
-	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	assert(type(struct) == "table", "Expected ListLoggingConfigurationsRequest to be of type 'table'")
+	if struct["NextMarker"] then asserts.AssertNextMarker(struct["NextMarker"]) end
+	if struct["Limit"] then asserts.AssertPaginationLimit(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.UpdateIPSetResponse[k], "UpdateIPSetResponse contains unknown key " .. tostring(k))
+		assert(keys.ListLoggingConfigurationsRequest[k], "ListLoggingConfigurationsRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type UpdateIPSetResponse
+--- Create a structure of type ListLoggingConfigurationsRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateIPSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
--- @return UpdateIPSetResponse structure as a key-value pair table
-function M.UpdateIPSetResponse(args)
-	assert(args, "You must provide an argument table when creating UpdateIPSetResponse")
+-- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>LoggingConfigurations</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>LoggingConfigurations</code>. For the second and subsequent <code>ListLoggingConfigurations</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>ListLoggingConfigurations</code>.</p>
+-- * Limit [PaginationLimit] <p>Specifies the number of <code>LoggingConfigurations</code> that you want AWS WAF to return for this request. If you have more <code>LoggingConfigurations</code> than the number that you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>LoggingConfigurations</code>.</p>
+-- @return ListLoggingConfigurationsRequest structure as a key-value pair table
+function M.ListLoggingConfigurationsRequest(args)
+	assert(args, "You must provide an argument table when creating ListLoggingConfigurationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextMarker"] = args["NextMarker"],
+		["Limit"] = args["Limit"],
+	}
+	asserts.AssertListLoggingConfigurationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateSizeConstraintSetResponse = { ["ChangeToken"] = true, nil }
+
+function asserts.AssertUpdateSizeConstraintSetResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateSizeConstraintSetResponse to be of type 'table'")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateSizeConstraintSetResponse[k], "UpdateSizeConstraintSetResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateSizeConstraintSetResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateSizeConstraintSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return UpdateSizeConstraintSetResponse structure as a key-value pair table
+function M.UpdateSizeConstraintSetResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateSizeConstraintSetResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -604,7 +976,7 @@ function M.UpdateIPSetResponse(args)
 	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertUpdateIPSetResponse(all_args)
+	asserts.AssertUpdateSizeConstraintSetResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -613,25 +985,27 @@ function M.UpdateIPSetResponse(args)
     }
 end
 
-keys.WAFNonexistentContainerException = { ["message"] = true, nil }
+keys.ListActivatedRulesInRuleGroupResponse = { ["NextMarker"] = true, ["ActivatedRules"] = true, nil }
 
-function asserts.AssertWAFNonexistentContainerException(struct)
+function asserts.AssertListActivatedRulesInRuleGroupResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected WAFNonexistentContainerException to be of type 'table'")
-	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected ListActivatedRulesInRuleGroupResponse to be of type 'table'")
+	if struct["NextMarker"] then asserts.AssertNextMarker(struct["NextMarker"]) end
+	if struct["ActivatedRules"] then asserts.AssertActivatedRules(struct["ActivatedRules"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.WAFNonexistentContainerException[k], "WAFNonexistentContainerException contains unknown key " .. tostring(k))
+		assert(keys.ListActivatedRulesInRuleGroupResponse[k], "ListActivatedRulesInRuleGroupResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type WAFNonexistentContainerException
--- <p>The operation failed because you tried to add an object to or delete an object from another object that doesn't exist. For example:</p> <ul> <li> <p>You tried to add a <code>Rule</code> to or delete a <code>Rule</code> from a <code>WebACL</code> that doesn't exist.</p> </li> <li> <p>You tried to add a <code>ByteMatchSet</code> to or delete a <code>ByteMatchSet</code> from a <code>Rule</code> that doesn't exist.</p> </li> <li> <p>You tried to add an IP address to or delete an IP address from an <code>IPSet</code> that doesn't exist.</p> </li> <li> <p>You tried to add a <code>ByteMatchTuple</code> to or delete a <code>ByteMatchTuple</code> from a <code>ByteMatchSet</code> that doesn't exist.</p> </li> </ul>
+--- Create a structure of type ListActivatedRulesInRuleGroupResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [errorMessage] 
--- @return WAFNonexistentContainerException structure as a key-value pair table
-function M.WAFNonexistentContainerException(args)
-	assert(args, "You must provide an argument table when creating WAFNonexistentContainerException")
+-- * NextMarker [NextMarker] <p>If you have more <code>ActivatedRules</code> than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>ActivatedRules</code>, submit another <code>ListActivatedRulesInRuleGroup</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
+-- * ActivatedRules [ActivatedRules] <p>An array of <code>ActivatedRules</code> objects.</p>
+-- @return ListActivatedRulesInRuleGroupResponse structure as a key-value pair table
+function M.ListActivatedRulesInRuleGroupResponse(args)
+	assert(args, "You must provide an argument table when creating ListActivatedRulesInRuleGroupResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -639,9 +1013,10 @@ function M.WAFNonexistentContainerException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["NextMarker"] = args["NextMarker"],
+		["ActivatedRules"] = args["ActivatedRules"],
 	}
-	asserts.AssertWAFNonexistentContainerException(all_args)
+	asserts.AssertListActivatedRulesInRuleGroupResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -650,23 +1025,27 @@ function M.WAFNonexistentContainerException(args)
     }
 end
 
-keys.WAFInvalidAccountException = { nil }
+keys.ListGeoMatchSetsRequest = { ["NextMarker"] = true, ["Limit"] = true, nil }
 
-function asserts.AssertWAFInvalidAccountException(struct)
+function asserts.AssertListGeoMatchSetsRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected WAFInvalidAccountException to be of type 'table'")
+	assert(type(struct) == "table", "Expected ListGeoMatchSetsRequest to be of type 'table'")
+	if struct["NextMarker"] then asserts.AssertNextMarker(struct["NextMarker"]) end
+	if struct["Limit"] then asserts.AssertPaginationLimit(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.WAFInvalidAccountException[k], "WAFInvalidAccountException contains unknown key " .. tostring(k))
+		assert(keys.ListGeoMatchSetsRequest[k], "ListGeoMatchSetsRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type WAFInvalidAccountException
--- <p>The operation failed because you tried to create, update, or delete an object by using an invalid account identifier.</p>
+--- Create a structure of type ListGeoMatchSetsRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return WAFInvalidAccountException structure as a key-value pair table
-function M.WAFInvalidAccountException(args)
-	assert(args, "You must provide an argument table when creating WAFInvalidAccountException")
+-- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>GeoMatchSet</code>s than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>GeoMatchSet</code> objects. For the second and subsequent <code>ListGeoMatchSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>GeoMatchSet</code> objects.</p>
+-- * Limit [PaginationLimit] <p>Specifies the number of <code>GeoMatchSet</code> objects that you want AWS WAF to return for this request. If you have more <code>GeoMatchSet</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>GeoMatchSet</code> objects.</p>
+-- @return ListGeoMatchSetsRequest structure as a key-value pair table
+function M.ListGeoMatchSetsRequest(args)
+	assert(args, "You must provide an argument table when creating ListGeoMatchSetsRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -674,52 +1053,10 @@ function M.WAFInvalidAccountException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["NextMarker"] = args["NextMarker"],
+		["Limit"] = args["Limit"],
 	}
-	asserts.AssertWAFInvalidAccountException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.WebACLSummary = { ["WebACLId"] = true, ["Name"] = true, nil }
-
-function asserts.AssertWebACLSummary(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected WebACLSummary to be of type 'table'")
-	assert(struct["WebACLId"], "Expected key WebACLId to exist in table")
-	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["WebACLId"] then asserts.AssertResourceId(struct["WebACLId"]) end
-	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.WebACLSummary[k], "WebACLSummary contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type WebACLSummary
--- <p>Contains the identifier and the name or description of the <a>WebACL</a>.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * WebACLId [ResourceId] <p>A unique identifier for a <code>WebACL</code>. You use <code>WebACLId</code> to get information about a <code>WebACL</code> (see <a>GetWebACL</a>), update a <code>WebACL</code> (see <a>UpdateWebACL</a>), and delete a <code>WebACL</code> from AWS WAF (see <a>DeleteWebACL</a>).</p> <p> <code>WebACLId</code> is returned by <a>CreateWebACL</a> and by <a>ListWebACLs</a>.</p>
--- * Name [ResourceName] <p>A friendly name or description of the <a>WebACL</a>. You can't change the name of a <code>WebACL</code> after you create it.</p>
--- Required key: WebACLId
--- Required key: Name
--- @return WebACLSummary structure as a key-value pair table
-function M.WebACLSummary(args)
-	assert(args, "You must provide an argument table when creating WebACLSummary")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["WebACLId"] = args["WebACLId"],
-		["Name"] = args["Name"],
-	}
-	asserts.AssertWebACLSummary(all_args)
+	asserts.AssertListGeoMatchSetsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -759,6 +1096,43 @@ function M.GetByteMatchSetRequest(args)
 		["ByteMatchSetId"] = args["ByteMatchSetId"],
 	}
 	asserts.AssertGetByteMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateRegexMatchSetResponse = { ["ChangeToken"] = true, nil }
+
+function asserts.AssertUpdateRegexMatchSetResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateRegexMatchSetResponse to be of type 'table'")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateRegexMatchSetResponse[k], "UpdateRegexMatchSetResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateRegexMatchSetResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateRegexMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return UpdateRegexMatchSetResponse structure as a key-value pair table
+function M.UpdateRegexMatchSetResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateRegexMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+	}
+	asserts.AssertUpdateRegexMatchSetResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -907,6 +1281,86 @@ function M.DeleteWebACLRequest(args)
     }
 end
 
+keys.CreateRegexPatternSetResponse = { ["RegexPatternSet"] = true, ["ChangeToken"] = true, nil }
+
+function asserts.AssertCreateRegexPatternSetResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateRegexPatternSetResponse to be of type 'table'")
+	if struct["RegexPatternSet"] then asserts.AssertRegexPatternSet(struct["RegexPatternSet"]) end
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateRegexPatternSetResponse[k], "CreateRegexPatternSetResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateRegexPatternSetResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegexPatternSet [RegexPatternSet] <p>A <a>RegexPatternSet</a> that contains no objects.</p>
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateRegexPatternSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return CreateRegexPatternSetResponse structure as a key-value pair table
+function M.CreateRegexPatternSetResponse(args)
+	assert(args, "You must provide an argument table when creating CreateRegexPatternSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RegexPatternSet"] = args["RegexPatternSet"],
+		["ChangeToken"] = args["ChangeToken"],
+	}
+	asserts.AssertCreateRegexPatternSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListRegexMatchSetsResponse = { ["NextMarker"] = true, ["RegexMatchSets"] = true, nil }
+
+function asserts.AssertListRegexMatchSetsResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListRegexMatchSetsResponse to be of type 'table'")
+	if struct["NextMarker"] then asserts.AssertNextMarker(struct["NextMarker"]) end
+	if struct["RegexMatchSets"] then asserts.AssertRegexMatchSetSummaries(struct["RegexMatchSets"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListRegexMatchSetsResponse[k], "ListRegexMatchSetsResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListRegexMatchSetsResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [NextMarker] <p>If you have more <code>RegexMatchSet</code> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>RegexMatchSet</code> objects, submit another <code>ListRegexMatchSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
+-- * RegexMatchSets [RegexMatchSetSummaries] <p>An array of <a>RegexMatchSetSummary</a> objects.</p>
+-- @return ListRegexMatchSetsResponse structure as a key-value pair table
+function M.ListRegexMatchSetsResponse(args)
+	assert(args, "You must provide an argument table when creating ListRegexMatchSetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextMarker"] = args["NextMarker"],
+		["RegexMatchSets"] = args["RegexMatchSets"],
+	}
+	asserts.AssertListRegexMatchSetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListIPSetsResponse = { ["IPSets"] = true, ["NextMarker"] = true, nil }
 
 function asserts.AssertListIPSetsResponse(struct)
@@ -970,7 +1424,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ComparisonOperator [ComparisonOperator] <p>The type of comparison you want AWS WAF to perform. AWS WAF uses this in combination with the provided <code>Size</code> and <code>FieldToMatch</code> to build an expression in the form of "<code>Size</code> <code>ComparisonOperator</code> size in bytes of <code>FieldToMatch</code>". If that expression is true, the <code>SizeConstraint</code> is considered to match.</p> <p> <b>EQ</b>: Used to test if the <code>Size</code> is equal to the size of the <code>FieldToMatch</code> </p> <p> <b>NE</b>: Used to test if the <code>Size</code> is not equal to the size of the <code>FieldToMatch</code> </p> <p> <b>LE</b>: Used to test if the <code>Size</code> is less than or equal to the size of the <code>FieldToMatch</code> </p> <p> <b>LT</b>: Used to test if the <code>Size</code> is strictly less than the size of the <code>FieldToMatch</code> </p> <p> <b>GE</b>: Used to test if the <code>Size</code> is greater than or equal to the size of the <code>FieldToMatch</code> </p> <p> <b>GT</b>: Used to test if the <code>Size</code> is strictly greater than the size of the <code>FieldToMatch</code> </p>
--- * TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>FieldToMatch</code> before inspecting a request for a match.</p> <p>Note that if you choose <code>BODY</code> for the value of <code>Type</code>, you must choose <code>NONE</code> for <code>TextTransformation</code> because CloudFront forwards only the first 8192 bytes for inspection. </p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system command line command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p>
+-- * TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>FieldToMatch</code> before inspecting a request for a match.</p> <p>You can only specify a single type of TextTransformation.</p> <p>Note that if you choose <code>BODY</code> for the value of <code>Type</code>, you must choose <code>NONE</code> for <code>TextTransformation</code> because CloudFront forwards only the first 8192 bytes for inspection. </p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system command line command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p>
 -- * FieldToMatch [FieldToMatch] <p>Specifies where in a web request to look for the size constraint.</p>
 -- * Size [Size] <p>The size in bytes that you want AWS WAF to compare against the size of the specified <code>FieldToMatch</code>. AWS WAF uses this in combination with <code>ComparisonOperator</code> and <code>FieldToMatch</code> to build an expression in the form of "<code>Size</code> <code>ComparisonOperator</code> size in bytes of <code>FieldToMatch</code>". If that expression is true, the <code>SizeConstraint</code> is considered to match.</p> <p>Valid values for size are 0 - 21474836480 bytes (0 - 20 GB).</p> <p>If you specify <code>URI</code> for the value of <code>Type</code>, the / in the URI counts as one character. For example, the URI <code>/logo.jpg</code> is nine characters long.</p>
 -- Required key: FieldToMatch
@@ -1058,8 +1512,8 @@ end
 -- <p>Specifies where in a web request to look for <code>TargetString</code>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Data [MatchFieldData] <p>When the value of <code>Type</code> is <code>HEADER</code>, enter the name of the header that you want AWS WAF to search, for example, <code>User-Agent</code> or <code>Referer</code>. If the value of <code>Type</code> is any other value, omit <code>Data</code>.</p> <p>The name of the header is not case sensitive.</p>
--- * Type [MatchFieldType] <p>The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you can search include the following:</p> <ul> <li> <p> <code>HEADER</code>: A specified request header, for example, the value of the <code>User-Agent</code> or <code>Referer</code> header. If you choose <code>HEADER</code> for the type, specify the name of the header in <code>Data</code>.</p> </li> <li> <p> <code>METHOD</code>: The HTTP method, which indicated the type of operation that the request is asking the origin to perform. Amazon CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.</p> </li> <li> <p> <code>QUERY_STRING</code>: A query string, which is the part of a URL that appears after a <code>?</code> character, if any.</p> </li> <li> <p> <code>URI</code>: The part of a web request that identifies a resource, for example, <code>/images/daily-ad.jpg</code>.</p> </li> <li> <p> <code>BODY</code>: The part of a request that contains any additional data that you want to send to your web server as the HTTP request body, such as data from a form. The request body immediately follows the request headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS WAF for inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For more information, see <a>CreateSizeConstraintSet</a>. </p> </li> </ul>
+-- * Data [MatchFieldData] <p>When the value of <code>Type</code> is <code>HEADER</code>, enter the name of the header that you want AWS WAF to search, for example, <code>User-Agent</code> or <code>Referer</code>. The name of the header is not case sensitive.</p> <p>When the value of <code>Type</code> is <code>SINGLE_QUERY_ARG</code>, enter the name of the parameter that you want AWS WAF to search, for example, <code>UserName</code> or <code>SalesRegion</code>. The parameter name is not case sensitive.</p> <p>If the value of <code>Type</code> is any other value, omit <code>Data</code>.</p>
+-- * Type [MatchFieldType] <p>The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you can search include the following:</p> <ul> <li> <p> <code>HEADER</code>: A specified request header, for example, the value of the <code>User-Agent</code> or <code>Referer</code> header. If you choose <code>HEADER</code> for the type, specify the name of the header in <code>Data</code>.</p> </li> <li> <p> <code>METHOD</code>: The HTTP method, which indicated the type of operation that the request is asking the origin to perform. Amazon CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.</p> </li> <li> <p> <code>QUERY_STRING</code>: A query string, which is the part of a URL that appears after a <code>?</code> character, if any.</p> </li> <li> <p> <code>URI</code>: The part of a web request that identifies a resource, for example, <code>/images/daily-ad.jpg</code>.</p> </li> <li> <p> <code>BODY</code>: The part of a request that contains any additional data that you want to send to your web server as the HTTP request body, such as data from a form. The request body immediately follows the request headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS WAF for inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For more information, see <a>CreateSizeConstraintSet</a>. </p> </li> <li> <p> <code>SINGLE_QUERY_ARG</code>: The parameter in the query string that you will inspect, such as <i>UserName</i> or <i>SalesRegion</i>. The maximum length for <code>SINGLE_QUERY_ARG</code> is 30 characters.</p> </li> <li> <p> <code>ALL_QUERY_ARGS</code>: Similar to <code>SINGLE_QUERY_ARG</code>, but rather than inspecting a single parameter, AWS WAF will inspect all parameters within the query for the value or regex pattern that you specify in <code>TargetString</code>.</p> </li> </ul>
 -- Required key: Type
 -- @return FieldToMatch structure as a key-value pair table
 function M.FieldToMatch(args)
@@ -1075,6 +1529,50 @@ function M.FieldToMatch(args)
 		["Type"] = args["Type"],
 	}
 	asserts.AssertFieldToMatch(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.XssMatchTuple = { ["TextTransformation"] = true, ["FieldToMatch"] = true, nil }
+
+function asserts.AssertXssMatchTuple(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected XssMatchTuple to be of type 'table'")
+	assert(struct["FieldToMatch"], "Expected key FieldToMatch to exist in table")
+	assert(struct["TextTransformation"], "Expected key TextTransformation to exist in table")
+	if struct["TextTransformation"] then asserts.AssertTextTransformation(struct["TextTransformation"]) end
+	if struct["FieldToMatch"] then asserts.AssertFieldToMatch(struct["FieldToMatch"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.XssMatchTuple[k], "XssMatchTuple contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type XssMatchTuple
+-- <p>Specifies the part of a web request that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>FieldToMatch</code> before inspecting a request for a match.</p> <p>You can only specify a single type of TextTransformation.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system command line command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p>
+-- * FieldToMatch [FieldToMatch] <p>Specifies where in a web request to look for cross-site scripting attacks.</p>
+-- Required key: FieldToMatch
+-- Required key: TextTransformation
+-- @return XssMatchTuple structure as a key-value pair table
+function M.XssMatchTuple(args)
+	assert(args, "You must provide an argument table when creating XssMatchTuple")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["TextTransformation"] = args["TextTransformation"],
+		["FieldToMatch"] = args["FieldToMatch"],
+	}
+	asserts.AssertXssMatchTuple(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1188,9 +1686,9 @@ end
 -- <p>The bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * TargetString [ByteMatchTargetString] <p>The value that you want AWS WAF to search for. AWS WAF searches for the specified string in the part of web requests that you specified in <code>FieldToMatch</code>. The maximum length of the value is 50 bytes.</p> <p>Valid values depend on the values that you specified for <code>FieldToMatch</code>:</p> <ul> <li> <p> <code>HEADER</code>: The value that you want AWS WAF to search for in the request header that you specified in <a>FieldToMatch</a>, for example, the value of the <code>User-Agent</code> or <code>Referer</code> header.</p> </li> <li> <p> <code>METHOD</code>: The HTTP method, which indicates the type of operation specified in the request. CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.</p> </li> <li> <p> <code>QUERY_STRING</code>: The value that you want AWS WAF to search for in the query string, which is the part of a URL that appears after a <code>?</code> character.</p> </li> <li> <p> <code>URI</code>: The value that you want AWS WAF to search for in the part of a URL that identifies a resource, for example, <code>/images/daily-ad.jpg</code>.</p> </li> <li> <p> <code>BODY</code>: The part of a request that contains any additional data that you want to send to your web server as the HTTP request body, such as data from a form. The request body immediately follows the request headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS WAF for inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For more information, see <a>CreateSizeConstraintSet</a>. </p> </li> </ul> <p>If <code>TargetString</code> includes alphabetic characters A-Z and a-z, note that the value is case sensitive.</p> <p> <b>If you're using the AWS WAF API</b> </p> <p>Specify a base64-encoded version of the value. The maximum length of the value before you base64-encode it is 50 bytes.</p> <p>For example, suppose the value of <code>Type</code> is <code>HEADER</code> and the value of <code>Data</code> is <code>User-Agent</code>. If you want to search the <code>User-Agent</code> header for the value <code>BadBot</code>, you base64-encode <code>BadBot</code> using MIME base64 encoding and include the resulting value, <code>QmFkQm90</code>, in the value of <code>TargetString</code>.</p> <p> <b>If you're using the AWS CLI or one of the AWS SDKs</b> </p> <p>The value that you want AWS WAF to search for. The SDK automatically base64 encodes the value.</p>
+-- * TargetString [ByteMatchTargetString] <p>The value that you want AWS WAF to search for. AWS WAF searches for the specified string in the part of web requests that you specified in <code>FieldToMatch</code>. The maximum length of the value is 50 bytes.</p> <p>Valid values depend on the values that you specified for <code>FieldToMatch</code>:</p> <ul> <li> <p> <code>HEADER</code>: The value that you want AWS WAF to search for in the request header that you specified in <a>FieldToMatch</a>, for example, the value of the <code>User-Agent</code> or <code>Referer</code> header.</p> </li> <li> <p> <code>METHOD</code>: The HTTP method, which indicates the type of operation specified in the request. CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.</p> </li> <li> <p> <code>QUERY_STRING</code>: The value that you want AWS WAF to search for in the query string, which is the part of a URL that appears after a <code>?</code> character.</p> </li> <li> <p> <code>URI</code>: The value that you want AWS WAF to search for in the part of a URL that identifies a resource, for example, <code>/images/daily-ad.jpg</code>.</p> </li> <li> <p> <code>BODY</code>: The part of a request that contains any additional data that you want to send to your web server as the HTTP request body, such as data from a form. The request body immediately follows the request headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS WAF for inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For more information, see <a>CreateSizeConstraintSet</a>. </p> </li> <li> <p> <code>SINGLE_QUERY_ARG</code>: The parameter in the query string that you will inspect, such as <i>UserName</i> or <i>SalesRegion</i>. The maximum length for <code>SINGLE_QUERY_ARG</code> is 30 characters.</p> </li> <li> <p> <code>ALL_QUERY_ARGS</code>: Similar to <code>SINGLE_QUERY_ARG</code>, but instead of inspecting a single parameter, AWS WAF inspects all parameters within the query string for the value or regex pattern that you specify in <code>TargetString</code>.</p> </li> </ul> <p>If <code>TargetString</code> includes alphabetic characters A-Z and a-z, note that the value is case sensitive.</p> <p> <b>If you're using the AWS WAF API</b> </p> <p>Specify a base64-encoded version of the value. The maximum length of the value before you base64-encode it is 50 bytes.</p> <p>For example, suppose the value of <code>Type</code> is <code>HEADER</code> and the value of <code>Data</code> is <code>User-Agent</code>. If you want to search the <code>User-Agent</code> header for the value <code>BadBot</code>, you base64-encode <code>BadBot</code> using MIME base64 encoding and include the resulting value, <code>QmFkQm90</code>, in the value of <code>TargetString</code>.</p> <p> <b>If you're using the AWS CLI or one of the AWS SDKs</b> </p> <p>The value that you want AWS WAF to search for. The SDK automatically base64 encodes the value.</p>
 -- * PositionalConstraint [PositionalConstraint] <p>Within the portion of a web request that you want to search (for example, in the query string, if any), specify where you want AWS WAF to search. Valid values include the following:</p> <p> <b>CONTAINS</b> </p> <p>The specified part of the web request must include the value of <code>TargetString</code>, but the location doesn't matter.</p> <p> <b>CONTAINS_WORD</b> </p> <p>The specified part of the web request must include the value of <code>TargetString</code>, and <code>TargetString</code> must contain only alphanumeric characters or underscore (A-Z, a-z, 0-9, or _). In addition, <code>TargetString</code> must be a word, which means one of the following:</p> <ul> <li> <p> <code>TargetString</code> exactly matches the value of the specified part of the web request, such as the value of a header.</p> </li> <li> <p> <code>TargetString</code> is at the beginning of the specified part of the web request and is followed by a character other than an alphanumeric character or underscore (_), for example, <code>BadBot;</code>.</p> </li> <li> <p> <code>TargetString</code> is at the end of the specified part of the web request and is preceded by a character other than an alphanumeric character or underscore (_), for example, <code>;BadBot</code>.</p> </li> <li> <p> <code>TargetString</code> is in the middle of the specified part of the web request and is preceded and followed by characters other than alphanumeric characters or underscore (_), for example, <code>-BadBot;</code>.</p> </li> </ul> <p> <b>EXACTLY</b> </p> <p>The value of the specified part of the web request must exactly match the value of <code>TargetString</code>.</p> <p> <b>STARTS_WITH</b> </p> <p>The value of <code>TargetString</code> must appear at the beginning of the specified part of the web request.</p> <p> <b>ENDS_WITH</b> </p> <p>The value of <code>TargetString</code> must appear at the end of the specified part of the web request.</p>
--- * TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>TargetString</code> before inspecting a request for a match.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system commandline command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p>
+-- * TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>TargetString</code> before inspecting a request for a match.</p> <p>You can only specify a single type of TextTransformation.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system command line command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p>
 -- * FieldToMatch [FieldToMatch] <p>The part of a web request that you want AWS WAF to search, such as a specified header or a query string. For more information, see <a>FieldToMatch</a>.</p>
 -- Required key: FieldToMatch
 -- Required key: TargetString
@@ -1212,6 +1710,55 @@ function M.ByteMatchTuple(args)
 		["FieldToMatch"] = args["FieldToMatch"],
 	}
 	asserts.AssertByteMatchTuple(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateRuleGroupRequest = { ["ChangeToken"] = true, ["Name"] = true, ["MetricName"] = true, nil }
+
+function asserts.AssertCreateRuleGroupRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateRuleGroupRequest to be of type 'table'")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	assert(struct["MetricName"], "Expected key MetricName to exist in table")
+	assert(struct["ChangeToken"], "Expected key ChangeToken to exist in table")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
+	if struct["MetricName"] then asserts.AssertMetricName(struct["MetricName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateRuleGroupRequest[k], "CreateRuleGroupRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateRuleGroupRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>RuleGroup</a>. You can't change <code>Name</code> after you create a <code>RuleGroup</code>.</p>
+-- * MetricName [MetricName] <p>A friendly name or description for the metrics for this <code>RuleGroup</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the <code>RuleGroup</code>.</p>
+-- Required key: Name
+-- Required key: MetricName
+-- Required key: ChangeToken
+-- @return CreateRuleGroupRequest structure as a key-value pair table
+function M.CreateRuleGroupRequest(args)
+	assert(args, "You must provide an argument table when creating CreateRuleGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+		["Name"] = args["Name"],
+		["MetricName"] = args["MetricName"],
+	}
+	asserts.AssertCreateRuleGroupRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1255,6 +1802,45 @@ function M.GetSampledRequestsResponse(args)
 		["PopulationSize"] = args["PopulationSize"],
 	}
 	asserts.AssertGetSampledRequestsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetPermissionPolicyRequest = { ["ResourceArn"] = true, nil }
+
+function asserts.AssertGetPermissionPolicyRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetPermissionPolicyRequest to be of type 'table'")
+	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
+	if struct["ResourceArn"] then asserts.AssertResourceArn(struct["ResourceArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetPermissionPolicyRequest[k], "GetPermissionPolicyRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetPermissionPolicyRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the RuleGroup for which you want to get the policy.</p>
+-- Required key: ResourceArn
+-- @return GetPermissionPolicyRequest structure as a key-value pair table
+function M.GetPermissionPolicyRequest(args)
+	assert(args, "You must provide an argument table when creating GetPermissionPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceArn"] = args["ResourceArn"],
+	}
+	asserts.AssertGetPermissionPolicyRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1307,25 +1893,23 @@ function M.IPSetDescriptor(args)
     }
 end
 
-keys.WAFDisallowedNameException = { ["message"] = true, nil }
+keys.DeletePermissionPolicyResponse = { nil }
 
-function asserts.AssertWAFDisallowedNameException(struct)
+function asserts.AssertDeletePermissionPolicyResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected WAFDisallowedNameException to be of type 'table'")
-	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected DeletePermissionPolicyResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.WAFDisallowedNameException[k], "WAFDisallowedNameException contains unknown key " .. tostring(k))
+		assert(keys.DeletePermissionPolicyResponse[k], "DeletePermissionPolicyResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type WAFDisallowedNameException
--- <p>The name specified is invalid.</p>
+--- Create a structure of type DeletePermissionPolicyResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [errorMessage] 
--- @return WAFDisallowedNameException structure as a key-value pair table
-function M.WAFDisallowedNameException(args)
-	assert(args, "You must provide an argument table when creating WAFDisallowedNameException")
+-- @return DeletePermissionPolicyResponse structure as a key-value pair table
+function M.DeletePermissionPolicyResponse(args)
+	assert(args, "You must provide an argument table when creating DeletePermissionPolicyResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -1333,9 +1917,45 @@ function M.WAFDisallowedNameException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
 	}
-	asserts.AssertWAFDisallowedNameException(all_args)
+	asserts.AssertDeletePermissionPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetLoggingConfigurationResponse = { ["LoggingConfiguration"] = true, nil }
+
+function asserts.AssertGetLoggingConfigurationResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetLoggingConfigurationResponse to be of type 'table'")
+	if struct["LoggingConfiguration"] then asserts.AssertLoggingConfiguration(struct["LoggingConfiguration"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetLoggingConfigurationResponse[k], "GetLoggingConfigurationResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetLoggingConfigurationResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoggingConfiguration [LoggingConfiguration] <p>The <a>LoggingConfiguration</a> for the specified web ACL.</p>
+-- @return GetLoggingConfigurationResponse structure as a key-value pair table
+function M.GetLoggingConfigurationResponse(args)
+	assert(args, "You must provide an argument table when creating GetLoggingConfigurationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["LoggingConfiguration"] = args["LoggingConfiguration"],
+	}
+	asserts.AssertGetLoggingConfigurationResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1423,27 +2043,25 @@ function M.CreateXssMatchSetResponse(args)
     }
 end
 
-keys.GetRuleRequest = { ["RuleId"] = true, nil }
+keys.DeleteRegexPatternSetResponse = { ["ChangeToken"] = true, nil }
 
-function asserts.AssertGetRuleRequest(struct)
+function asserts.AssertDeleteRegexPatternSetResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected GetRuleRequest to be of type 'table'")
-	assert(struct["RuleId"], "Expected key RuleId to exist in table")
-	if struct["RuleId"] then asserts.AssertResourceId(struct["RuleId"]) end
+	assert(type(struct) == "table", "Expected DeleteRegexPatternSetResponse to be of type 'table'")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.GetRuleRequest[k], "GetRuleRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteRegexPatternSetResponse[k], "DeleteRegexPatternSetResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type GetRuleRequest
+--- Create a structure of type DeleteRegexPatternSetResponse
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * RuleId [ResourceId] <p>The <code>RuleId</code> of the <a>Rule</a> that you want to get. <code>RuleId</code> is returned by <a>CreateRule</a> and by <a>ListRules</a>.</p>
--- Required key: RuleId
--- @return GetRuleRequest structure as a key-value pair table
-function M.GetRuleRequest(args)
-	assert(args, "You must provide an argument table when creating GetRuleRequest")
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteRegexPatternSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return DeleteRegexPatternSetResponse structure as a key-value pair table
+function M.DeleteRegexPatternSetResponse(args)
+	assert(args, "You must provide an argument table when creating DeleteRegexPatternSetResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -1451,9 +2069,85 @@ function M.GetRuleRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["RuleId"] = args["RuleId"],
+		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertGetRuleRequest(all_args)
+	asserts.AssertDeleteRegexPatternSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteSizeConstraintSetResponse = { ["ChangeToken"] = true, nil }
+
+function asserts.AssertDeleteSizeConstraintSetResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteSizeConstraintSetResponse to be of type 'table'")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteSizeConstraintSetResponse[k], "DeleteSizeConstraintSetResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteSizeConstraintSetResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteSizeConstraintSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return DeleteSizeConstraintSetResponse structure as a key-value pair table
+function M.DeleteSizeConstraintSetResponse(args)
+	assert(args, "You must provide an argument table when creating DeleteSizeConstraintSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+	}
+	asserts.AssertDeleteSizeConstraintSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.WafAction = { ["Type"] = true, nil }
+
+function asserts.AssertWafAction(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected WafAction to be of type 'table'")
+	assert(struct["Type"], "Expected key Type to exist in table")
+	if struct["Type"] then asserts.AssertWafActionType(struct["Type"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.WafAction[k], "WafAction contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type WafAction
+-- <p>For the action that is associated with a rule in a <code>WebACL</code>, specifies the action that you want AWS WAF to perform when a web request matches all of the conditions in a rule. For the default action in a <code>WebACL</code>, specifies the action that you want AWS WAF to take when a web request doesn't match all of the conditions in any of the rules in a <code>WebACL</code>. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [WafActionType] <p>Specifies how you want AWS WAF to respond to requests that match the settings in a <code>Rule</code>. Valid settings include the following:</p> <ul> <li> <p> <code>ALLOW</code>: AWS WAF allows requests</p> </li> <li> <p> <code>BLOCK</code>: AWS WAF blocks requests</p> </li> <li> <p> <code>COUNT</code>: AWS WAF increments a counter of the requests that match all of the conditions in the rule. AWS WAF then continues to inspect the web request based on the remaining rules in the web ACL. You can't specify <code>COUNT</code> for the default action for a <code>WebACL</code>.</p> </li> </ul>
+-- Required key: Type
+-- @return WafAction structure as a key-value pair table
+function M.WafAction(args)
+	assert(args, "You must provide an argument table when creating WafAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Type"] = args["Type"],
+	}
+	asserts.AssertWafAction(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1499,25 +2193,31 @@ function M.GetSqlInjectionMatchSetResponse(args)
     }
 end
 
-keys.UpdateXssMatchSetResponse = { ["ChangeToken"] = true, nil }
+keys.GeoMatchConstraint = { ["Type"] = true, ["Value"] = true, nil }
 
-function asserts.AssertUpdateXssMatchSetResponse(struct)
+function asserts.AssertGeoMatchConstraint(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateXssMatchSetResponse to be of type 'table'")
-	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	assert(type(struct) == "table", "Expected GeoMatchConstraint to be of type 'table'")
+	assert(struct["Type"], "Expected key Type to exist in table")
+	assert(struct["Value"], "Expected key Value to exist in table")
+	if struct["Type"] then asserts.AssertGeoMatchConstraintType(struct["Type"]) end
+	if struct["Value"] then asserts.AssertGeoMatchConstraintValue(struct["Value"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.UpdateXssMatchSetResponse[k], "UpdateXssMatchSetResponse contains unknown key " .. tostring(k))
+		assert(keys.GeoMatchConstraint[k], "GeoMatchConstraint contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type UpdateXssMatchSetResponse
--- <p>The response to an <a>UpdateXssMatchSets</a> request.</p>
+--- Create a structure of type GeoMatchConstraint
+-- <p>The country from which web requests originate that you want AWS WAF to search for.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateXssMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
--- @return UpdateXssMatchSetResponse structure as a key-value pair table
-function M.UpdateXssMatchSetResponse(args)
-	assert(args, "You must provide an argument table when creating UpdateXssMatchSetResponse")
+-- * Type [GeoMatchConstraintType] <p>The type of geographical area you want AWS WAF to search for. Currently <code>Country</code> is the only valid value.</p>
+-- * Value [GeoMatchConstraintValue] <p>The country that you want AWS WAF to search for.</p>
+-- Required key: Type
+-- Required key: Value
+-- @return GeoMatchConstraint structure as a key-value pair table
+function M.GeoMatchConstraint(args)
+	assert(args, "You must provide an argument table when creating GeoMatchConstraint")
     local query_args = { 
     }
     local uri_args = { 
@@ -1525,9 +2225,10 @@ function M.UpdateXssMatchSetResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["ChangeToken"] = args["ChangeToken"],
+		["Type"] = args["Type"],
+		["Value"] = args["Value"],
 	}
-	asserts.AssertUpdateXssMatchSetResponse(all_args)
+	asserts.AssertGeoMatchConstraint(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1706,7 +2407,147 @@ function M.GetRateBasedRuleRequest(args)
     }
 end
 
-keys.SampledHTTPRequest = { ["Action"] = true, ["Timestamp"] = true, ["Request"] = true, ["Weight"] = true, nil }
+keys.SqlInjectionMatchSetUpdate = { ["Action"] = true, ["SqlInjectionMatchTuple"] = true, nil }
+
+function asserts.AssertSqlInjectionMatchSetUpdate(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SqlInjectionMatchSetUpdate to be of type 'table'")
+	assert(struct["Action"], "Expected key Action to exist in table")
+	assert(struct["SqlInjectionMatchTuple"], "Expected key SqlInjectionMatchTuple to exist in table")
+	if struct["Action"] then asserts.AssertChangeAction(struct["Action"]) end
+	if struct["SqlInjectionMatchTuple"] then asserts.AssertSqlInjectionMatchTuple(struct["SqlInjectionMatchTuple"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SqlInjectionMatchSetUpdate[k], "SqlInjectionMatchSetUpdate contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SqlInjectionMatchSetUpdate
+-- <p>Specifies the part of a web request that you want to inspect for snippets of malicious SQL code and indicates whether you want to add the specification to a <a>SqlInjectionMatchSet</a> or delete it from a <code>SqlInjectionMatchSet</code>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Action [ChangeAction] <p>Specify <code>INSERT</code> to add a <a>SqlInjectionMatchSetUpdate</a> to a <a>SqlInjectionMatchSet</a>. Use <code>DELETE</code> to remove a <code>SqlInjectionMatchSetUpdate</code> from a <code>SqlInjectionMatchSet</code>.</p>
+-- * SqlInjectionMatchTuple [SqlInjectionMatchTuple] <p>Specifies the part of a web request that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.</p>
+-- Required key: Action
+-- Required key: SqlInjectionMatchTuple
+-- @return SqlInjectionMatchSetUpdate structure as a key-value pair table
+function M.SqlInjectionMatchSetUpdate(args)
+	assert(args, "You must provide an argument table when creating SqlInjectionMatchSetUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Action"] = args["Action"],
+		["SqlInjectionMatchTuple"] = args["SqlInjectionMatchTuple"],
+	}
+	asserts.AssertSqlInjectionMatchSetUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GeoMatchSet = { ["GeoMatchSetId"] = true, ["Name"] = true, ["GeoMatchConstraints"] = true, nil }
+
+function asserts.AssertGeoMatchSet(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GeoMatchSet to be of type 'table'")
+	assert(struct["GeoMatchSetId"], "Expected key GeoMatchSetId to exist in table")
+	assert(struct["GeoMatchConstraints"], "Expected key GeoMatchConstraints to exist in table")
+	if struct["GeoMatchSetId"] then asserts.AssertResourceId(struct["GeoMatchSetId"]) end
+	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
+	if struct["GeoMatchConstraints"] then asserts.AssertGeoMatchConstraints(struct["GeoMatchConstraints"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GeoMatchSet[k], "GeoMatchSet contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GeoMatchSet
+-- <p>Contains one or more countries that AWS WAF will search for.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GeoMatchSetId [ResourceId] <p>The <code>GeoMatchSetId</code> for an <code>GeoMatchSet</code>. You use <code>GeoMatchSetId</code> to get information about a <code>GeoMatchSet</code> (see <a>GeoMatchSet</a>), update a <code>GeoMatchSet</code> (see <a>UpdateGeoMatchSet</a>), insert a <code>GeoMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>GeoMatchSet</code> from AWS WAF (see <a>DeleteGeoMatchSet</a>).</p> <p> <code>GeoMatchSetId</code> is returned by <a>CreateGeoMatchSet</a> and by <a>ListGeoMatchSets</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change the name of an <code>GeoMatchSet</code> after you create it.</p>
+-- * GeoMatchConstraints [GeoMatchConstraints] <p>An array of <a>GeoMatchConstraint</a> objects, which contain the country that you want AWS WAF to search for.</p>
+-- Required key: GeoMatchSetId
+-- Required key: GeoMatchConstraints
+-- @return GeoMatchSet structure as a key-value pair table
+function M.GeoMatchSet(args)
+	assert(args, "You must provide an argument table when creating GeoMatchSet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GeoMatchSetId"] = args["GeoMatchSetId"],
+		["Name"] = args["Name"],
+		["GeoMatchConstraints"] = args["GeoMatchConstraints"],
+	}
+	asserts.AssertGeoMatchSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.RegexMatchTuple = { ["RegexPatternSetId"] = true, ["TextTransformation"] = true, ["FieldToMatch"] = true, nil }
+
+function asserts.AssertRegexMatchTuple(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RegexMatchTuple to be of type 'table'")
+	assert(struct["FieldToMatch"], "Expected key FieldToMatch to exist in table")
+	assert(struct["TextTransformation"], "Expected key TextTransformation to exist in table")
+	assert(struct["RegexPatternSetId"], "Expected key RegexPatternSetId to exist in table")
+	if struct["RegexPatternSetId"] then asserts.AssertResourceId(struct["RegexPatternSetId"]) end
+	if struct["TextTransformation"] then asserts.AssertTextTransformation(struct["TextTransformation"]) end
+	if struct["FieldToMatch"] then asserts.AssertFieldToMatch(struct["FieldToMatch"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RegexMatchTuple[k], "RegexMatchTuple contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RegexMatchTuple
+-- <p>The regular expression pattern that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings. Each <code>RegexMatchTuple</code> object contains: </p> <ul> <li> <p>The part of a web request that you want AWS WAF to inspect, such as a query string or the value of the <code>User-Agent</code> header. </p> </li> <li> <p>The identifier of the pattern (a regular expression) that you want AWS WAF to look for. For more information, see <a>RegexPatternSet</a>. </p> </li> <li> <p>Whether to perform any conversions on the request, such as converting it to lowercase, before inspecting it for the specified string.</p> </li> </ul>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegexPatternSetId [ResourceId] <p>The <code>RegexPatternSetId</code> for a <code>RegexPatternSet</code>. You use <code>RegexPatternSetId</code> to get information about a <code>RegexPatternSet</code> (see <a>GetRegexPatternSet</a>), update a <code>RegexPatternSet</code> (see <a>UpdateRegexPatternSet</a>), insert a <code>RegexPatternSet</code> into a <code>RegexMatchSet</code> or delete one from a <code>RegexMatchSet</code> (see <a>UpdateRegexMatchSet</a>), and delete an <code>RegexPatternSet</code> from AWS WAF (see <a>DeleteRegexPatternSet</a>).</p> <p> <code>RegexPatternSetId</code> is returned by <a>CreateRegexPatternSet</a> and by <a>ListRegexPatternSets</a>.</p>
+-- * TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>RegexPatternSet</code> before inspecting a request for a match.</p> <p>You can only specify a single type of TextTransformation.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system commandline command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p>
+-- * FieldToMatch [FieldToMatch] <p>Specifies where in a web request to look for the <code>RegexPatternSet</code>.</p>
+-- Required key: FieldToMatch
+-- Required key: TextTransformation
+-- Required key: RegexPatternSetId
+-- @return RegexMatchTuple structure as a key-value pair table
+function M.RegexMatchTuple(args)
+	assert(args, "You must provide an argument table when creating RegexMatchTuple")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RegexPatternSetId"] = args["RegexPatternSetId"],
+		["TextTransformation"] = args["TextTransformation"],
+		["FieldToMatch"] = args["FieldToMatch"],
+	}
+	asserts.AssertRegexMatchTuple(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SampledHTTPRequest = { ["Action"] = true, ["Timestamp"] = true, ["Request"] = true, ["RuleWithinRuleGroup"] = true, ["Weight"] = true, nil }
 
 function asserts.AssertSampledHTTPRequest(struct)
 	assert(struct)
@@ -1716,6 +2557,7 @@ function asserts.AssertSampledHTTPRequest(struct)
 	if struct["Action"] then asserts.AssertAction(struct["Action"]) end
 	if struct["Timestamp"] then asserts.AssertTimestamp(struct["Timestamp"]) end
 	if struct["Request"] then asserts.AssertHTTPRequest(struct["Request"]) end
+	if struct["RuleWithinRuleGroup"] then asserts.AssertResourceId(struct["RuleWithinRuleGroup"]) end
 	if struct["Weight"] then asserts.AssertSampleWeight(struct["Weight"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.SampledHTTPRequest[k], "SampledHTTPRequest contains unknown key " .. tostring(k))
@@ -1729,6 +2571,7 @@ end
 -- * Action [Action] <p>The action for the <code>Rule</code> that the request matched: <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.</p>
 -- * Timestamp [Timestamp] <p>The time at which AWS WAF received the request from your AWS resource, in Unix time format (in seconds).</p>
 -- * Request [HTTPRequest] <p>A complex type that contains detailed information about the request.</p>
+-- * RuleWithinRuleGroup [ResourceId] <p>This value is returned if the <code>GetSampledRequests</code> request specifies the ID of a <code>RuleGroup</code> rather than the ID of an individual rule. <code>RuleWithinRuleGroup</code> is the rule within the specified <code>RuleGroup</code> that matched the request listed in the response.</p>
 -- * Weight [SampleWeight] <p>A value that indicates how one result in the response relates proportionally to other results in the response. A result that has a weight of <code>2</code> represents roughly twice as many CloudFront web requests as a result that has a weight of <code>1</code>.</p>
 -- Required key: Request
 -- Required key: Weight
@@ -1745,6 +2588,7 @@ function M.SampledHTTPRequest(args)
 		["Action"] = args["Action"],
 		["Timestamp"] = args["Timestamp"],
 		["Request"] = args["Request"],
+		["RuleWithinRuleGroup"] = args["RuleWithinRuleGroup"],
 		["Weight"] = args["Weight"],
 	}
 	asserts.AssertSampledHTTPRequest(all_args)
@@ -1756,25 +2600,31 @@ function M.SampledHTTPRequest(args)
     }
 end
 
-keys.WAFInternalErrorException = { ["message"] = true, nil }
+keys.PutPermissionPolicyRequest = { ["Policy"] = true, ["ResourceArn"] = true, nil }
 
-function asserts.AssertWAFInternalErrorException(struct)
+function asserts.AssertPutPermissionPolicyRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected WAFInternalErrorException to be of type 'table'")
-	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected PutPermissionPolicyRequest to be of type 'table'")
+	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
+	assert(struct["Policy"], "Expected key Policy to exist in table")
+	if struct["Policy"] then asserts.AssertPolicyString(struct["Policy"]) end
+	if struct["ResourceArn"] then asserts.AssertResourceArn(struct["ResourceArn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.WAFInternalErrorException[k], "WAFInternalErrorException contains unknown key " .. tostring(k))
+		assert(keys.PutPermissionPolicyRequest[k], "PutPermissionPolicyRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type WAFInternalErrorException
--- <p>The operation failed because of a system problem, even though the request was valid. Retry your request.</p>
+--- Create a structure of type PutPermissionPolicyRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [errorMessage] 
--- @return WAFInternalErrorException structure as a key-value pair table
-function M.WAFInternalErrorException(args)
-	assert(args, "You must provide an argument table when creating WAFInternalErrorException")
+-- * Policy [PolicyString] <p>The policy to attach to the specified RuleGroup.</p>
+-- * ResourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the RuleGroup to which you want to attach the policy.</p>
+-- Required key: ResourceArn
+-- Required key: Policy
+-- @return PutPermissionPolicyRequest structure as a key-value pair table
+function M.PutPermissionPolicyRequest(args)
+	assert(args, "You must provide an argument table when creating PutPermissionPolicyRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1782,9 +2632,87 @@ function M.WAFInternalErrorException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["Policy"] = args["Policy"],
+		["ResourceArn"] = args["ResourceArn"],
 	}
-	asserts.AssertWAFInternalErrorException(all_args)
+	asserts.AssertPutPermissionPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateRegexMatchSetResponse = { ["ChangeToken"] = true, ["RegexMatchSet"] = true, nil }
+
+function asserts.AssertCreateRegexMatchSetResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateRegexMatchSetResponse to be of type 'table'")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	if struct["RegexMatchSet"] then asserts.AssertRegexMatchSet(struct["RegexMatchSet"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateRegexMatchSetResponse[k], "CreateRegexMatchSetResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateRegexMatchSetResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateRegexMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- * RegexMatchSet [RegexMatchSet] <p>A <a>RegexMatchSet</a> that contains no <code>RegexMatchTuple</code> objects.</p>
+-- @return CreateRegexMatchSetResponse structure as a key-value pair table
+function M.CreateRegexMatchSetResponse(args)
+	assert(args, "You must provide an argument table when creating CreateRegexMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+		["RegexMatchSet"] = args["RegexMatchSet"],
+	}
+	asserts.AssertCreateRegexMatchSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateRuleResponse = { ["ChangeToken"] = true, nil }
+
+function asserts.AssertUpdateRuleResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateRuleResponse to be of type 'table'")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateRuleResponse[k], "UpdateRuleResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateRuleResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return UpdateRuleResponse structure as a key-value pair table
+function M.UpdateRuleResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+	}
+	asserts.AssertUpdateRuleResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1811,7 +2739,7 @@ end
 -- <p>Specifies the part of a web request that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>FieldToMatch</code> before inspecting a request for a match.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system commandline command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p>
+-- * TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>FieldToMatch</code> before inspecting a request for a match.</p> <p>You can only specify a single type of TextTransformation.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system command line command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p>
 -- * FieldToMatch [FieldToMatch] <p>Specifies where in a web request to look for snippets of malicious SQL code.</p>
 -- Required key: FieldToMatch
 -- Required key: TextTransformation
@@ -1923,25 +2851,33 @@ function M.UpdateSqlInjectionMatchSetRequest(args)
     }
 end
 
-keys.WAFInvalidOperationException = { ["message"] = true, nil }
+keys.RegexPatternSet = { ["RegexPatternSetId"] = true, ["RegexPatternStrings"] = true, ["Name"] = true, nil }
 
-function asserts.AssertWAFInvalidOperationException(struct)
+function asserts.AssertRegexPatternSet(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected WAFInvalidOperationException to be of type 'table'")
-	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected RegexPatternSet to be of type 'table'")
+	assert(struct["RegexPatternSetId"], "Expected key RegexPatternSetId to exist in table")
+	assert(struct["RegexPatternStrings"], "Expected key RegexPatternStrings to exist in table")
+	if struct["RegexPatternSetId"] then asserts.AssertResourceId(struct["RegexPatternSetId"]) end
+	if struct["RegexPatternStrings"] then asserts.AssertRegexPatternStrings(struct["RegexPatternStrings"]) end
+	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.WAFInvalidOperationException[k], "WAFInvalidOperationException contains unknown key " .. tostring(k))
+		assert(keys.RegexPatternSet[k], "RegexPatternSet contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type WAFInvalidOperationException
--- <p>The operation failed because there was nothing to do. For example:</p> <ul> <li> <p>You tried to remove a <code>Rule</code> from a <code>WebACL</code>, but the <code>Rule</code> isn't in the specified <code>WebACL</code>.</p> </li> <li> <p>You tried to remove an IP address from an <code>IPSet</code>, but the IP address isn't in the specified <code>IPSet</code>.</p> </li> <li> <p>You tried to remove a <code>ByteMatchTuple</code> from a <code>ByteMatchSet</code>, but the <code>ByteMatchTuple</code> isn't in the specified <code>WebACL</code>.</p> </li> <li> <p>You tried to add a <code>Rule</code> to a <code>WebACL</code>, but the <code>Rule</code> already exists in the specified <code>WebACL</code>.</p> </li> <li> <p>You tried to add an IP address to an <code>IPSet</code>, but the IP address already exists in the specified <code>IPSet</code>.</p> </li> <li> <p>You tried to add a <code>ByteMatchTuple</code> to a <code>ByteMatchSet</code>, but the <code>ByteMatchTuple</code> already exists in the specified <code>WebACL</code>.</p> </li> </ul>
+--- Create a structure of type RegexPatternSet
+-- <p>The <code>RegexPatternSet</code> specifies the regular expression (regex) pattern that you want AWS WAF to search for, such as <code>B[a@]dB[o0]t</code>. You can then configure AWS WAF to reject those requests.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [errorMessage] 
--- @return WAFInvalidOperationException structure as a key-value pair table
-function M.WAFInvalidOperationException(args)
-	assert(args, "You must provide an argument table when creating WAFInvalidOperationException")
+-- * RegexPatternSetId [ResourceId] <p>The identifier for the <code>RegexPatternSet</code>. You use <code>RegexPatternSetId</code> to get information about a <code>RegexPatternSet</code>, update a <code>RegexPatternSet</code>, remove a <code>RegexPatternSet</code> from a <code>RegexMatchSet</code>, and delete a <code>RegexPatternSet</code> from AWS WAF.</p> <p> <code>RegexMatchSetId</code> is returned by <a>CreateRegexPatternSet</a> and by <a>ListRegexPatternSets</a>.</p>
+-- * RegexPatternStrings [RegexPatternStrings] <p>Specifies the regular expression (regex) patterns that you want AWS WAF to search for, such as <code>B[a@]dB[o0]t</code>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>RegexPatternSet</a>. You can't change <code>Name</code> after you create a <code>RegexPatternSet</code>.</p>
+-- Required key: RegexPatternSetId
+-- Required key: RegexPatternStrings
+-- @return RegexPatternSet structure as a key-value pair table
+function M.RegexPatternSet(args)
+	assert(args, "You must provide an argument table when creating RegexPatternSet")
     local query_args = { 
     }
     local uri_args = { 
@@ -1949,9 +2885,11 @@ function M.WAFInvalidOperationException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["RegexPatternSetId"] = args["RegexPatternSetId"],
+		["RegexPatternStrings"] = args["RegexPatternStrings"],
+		["Name"] = args["Name"],
 	}
-	asserts.AssertWAFInvalidOperationException(all_args)
+	asserts.AssertRegexPatternSet(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2074,25 +3012,31 @@ function M.GetChangeTokenResponse(args)
     }
 end
 
-keys.WAFReferencedItemException = { ["message"] = true, nil }
+keys.RuleGroupSummary = { ["Name"] = true, ["RuleGroupId"] = true, nil }
 
-function asserts.AssertWAFReferencedItemException(struct)
+function asserts.AssertRuleGroupSummary(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected WAFReferencedItemException to be of type 'table'")
-	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected RuleGroupSummary to be of type 'table'")
+	assert(struct["RuleGroupId"], "Expected key RuleGroupId to exist in table")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
+	if struct["RuleGroupId"] then asserts.AssertResourceId(struct["RuleGroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.WAFReferencedItemException[k], "WAFReferencedItemException contains unknown key " .. tostring(k))
+		assert(keys.RuleGroupSummary[k], "RuleGroupSummary contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type WAFReferencedItemException
--- <p>The operation failed because you tried to delete an object that is still in use. For example:</p> <ul> <li> <p>You tried to delete a <code>ByteMatchSet</code> that is still referenced by a <code>Rule</code>.</p> </li> <li> <p>You tried to delete a <code>Rule</code> that is still referenced by a <code>WebACL</code>.</p> </li> </ul>
+--- Create a structure of type RuleGroupSummary
+-- <p>Contains the identifier and the friendly name or description of the <code>RuleGroup</code>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [errorMessage] 
--- @return WAFReferencedItemException structure as a key-value pair table
-function M.WAFReferencedItemException(args)
-	assert(args, "You must provide an argument table when creating WAFReferencedItemException")
+-- * Name [ResourceName] <p>A friendly name or description of the <a>RuleGroup</a>. You can't change the name of a <code>RuleGroup</code> after you create it.</p>
+-- * RuleGroupId [ResourceId] <p>A unique identifier for a <code>RuleGroup</code>. You use <code>RuleGroupId</code> to get more information about a <code>RuleGroup</code> (see <a>GetRuleGroup</a>), update a <code>RuleGroup</code> (see <a>UpdateRuleGroup</a>), insert a <code>RuleGroup</code> into a <code>WebACL</code> or delete one from a <code>WebACL</code> (see <a>UpdateWebACL</a>), or delete a <code>RuleGroup</code> from AWS WAF (see <a>DeleteRuleGroup</a>).</p> <p> <code>RuleGroupId</code> is returned by <a>CreateRuleGroup</a> and by <a>ListRuleGroups</a>.</p>
+-- Required key: RuleGroupId
+-- Required key: Name
+-- @return RuleGroupSummary structure as a key-value pair table
+function M.RuleGroupSummary(args)
+	assert(args, "You must provide an argument table when creating RuleGroupSummary")
     local query_args = { 
     }
     local uri_args = { 
@@ -2100,9 +3044,89 @@ function M.WAFReferencedItemException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["Name"] = args["Name"],
+		["RuleGroupId"] = args["RuleGroupId"],
 	}
-	asserts.AssertWAFReferencedItemException(all_args)
+	asserts.AssertRuleGroupSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeletePermissionPolicyRequest = { ["ResourceArn"] = true, nil }
+
+function asserts.AssertDeletePermissionPolicyRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeletePermissionPolicyRequest to be of type 'table'")
+	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
+	if struct["ResourceArn"] then asserts.AssertResourceArn(struct["ResourceArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeletePermissionPolicyRequest[k], "DeletePermissionPolicyRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeletePermissionPolicyRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the RuleGroup from which you want to delete the policy.</p> <p>The user making the request must be the owner of the RuleGroup.</p>
+-- Required key: ResourceArn
+-- @return DeletePermissionPolicyRequest structure as a key-value pair table
+function M.DeletePermissionPolicyRequest(args)
+	assert(args, "You must provide an argument table when creating DeletePermissionPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceArn"] = args["ResourceArn"],
+	}
+	asserts.AssertDeletePermissionPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateGeoMatchSetResponse = { ["GeoMatchSet"] = true, ["ChangeToken"] = true, nil }
+
+function asserts.AssertCreateGeoMatchSetResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateGeoMatchSetResponse to be of type 'table'")
+	if struct["GeoMatchSet"] then asserts.AssertGeoMatchSet(struct["GeoMatchSet"]) end
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateGeoMatchSetResponse[k], "CreateGeoMatchSetResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateGeoMatchSetResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GeoMatchSet [GeoMatchSet] <p>The <a>GeoMatchSet</a> returned in the <code>CreateGeoMatchSet</code> response. The <code>GeoMatchSet</code> contains no <code>GeoMatchConstraints</code>.</p>
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateGeoMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return CreateGeoMatchSetResponse structure as a key-value pair table
+function M.CreateGeoMatchSetResponse(args)
+	assert(args, "You must provide an argument table when creating CreateGeoMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GeoMatchSet"] = args["GeoMatchSet"],
+		["ChangeToken"] = args["ChangeToken"],
+	}
+	asserts.AssertCreateGeoMatchSetResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2198,6 +3222,168 @@ function M.ListWebACLsResponse(args)
 		["WebACLs"] = args["WebACLs"],
 	}
 	asserts.AssertListWebACLsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteRuleGroupResponse = { ["ChangeToken"] = true, nil }
+
+function asserts.AssertDeleteRuleGroupResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteRuleGroupResponse to be of type 'table'")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteRuleGroupResponse[k], "DeleteRuleGroupResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteRuleGroupResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteRuleGroup</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return DeleteRuleGroupResponse structure as a key-value pair table
+function M.DeleteRuleGroupResponse(args)
+	assert(args, "You must provide an argument table when creating DeleteRuleGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+	}
+	asserts.AssertDeleteRuleGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.WafOverrideAction = { ["Type"] = true, nil }
+
+function asserts.AssertWafOverrideAction(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected WafOverrideAction to be of type 'table'")
+	assert(struct["Type"], "Expected key Type to exist in table")
+	if struct["Type"] then asserts.AssertWafOverrideActionType(struct["Type"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.WafOverrideAction[k], "WafOverrideAction contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type WafOverrideAction
+-- <p>The action to take if any rule within the <code>RuleGroup</code> matches a request. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [WafOverrideActionType] <p> <code>COUNT</code> overrides the action specified by the individual rule within a <code>RuleGroup</code> . If set to <code>NONE</code>, the rule's action will take place.</p>
+-- Required key: Type
+-- @return WafOverrideAction structure as a key-value pair table
+function M.WafOverrideAction(args)
+	assert(args, "You must provide an argument table when creating WafOverrideAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Type"] = args["Type"],
+	}
+	asserts.AssertWafOverrideAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteLoggingConfigurationRequest = { ["ResourceArn"] = true, nil }
+
+function asserts.AssertDeleteLoggingConfigurationRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteLoggingConfigurationRequest to be of type 'table'")
+	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
+	if struct["ResourceArn"] then asserts.AssertResourceArn(struct["ResourceArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteLoggingConfigurationRequest[k], "DeleteLoggingConfigurationRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteLoggingConfigurationRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the web ACL from which you want to delete the <a>LoggingConfiguration</a>.</p>
+-- Required key: ResourceArn
+-- @return DeleteLoggingConfigurationRequest structure as a key-value pair table
+function M.DeleteLoggingConfigurationRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteLoggingConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceArn"] = args["ResourceArn"],
+	}
+	asserts.AssertDeleteLoggingConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.LoggingConfiguration = { ["ResourceArn"] = true, ["RedactedFields"] = true, ["LogDestinationConfigs"] = true, nil }
+
+function asserts.AssertLoggingConfiguration(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LoggingConfiguration to be of type 'table'")
+	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
+	assert(struct["LogDestinationConfigs"], "Expected key LogDestinationConfigs to exist in table")
+	if struct["ResourceArn"] then asserts.AssertResourceArn(struct["ResourceArn"]) end
+	if struct["RedactedFields"] then asserts.AssertRedactedFields(struct["RedactedFields"]) end
+	if struct["LogDestinationConfigs"] then asserts.AssertLogDestinationConfigs(struct["LogDestinationConfigs"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.LoggingConfiguration[k], "LoggingConfiguration contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LoggingConfiguration
+-- <p>The Amazon Kinesis Data Firehose delivery streams, <code>RedactedFields</code> information, and the web ACL Amazon Resource Name (ARN).</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the web ACL that you want to associate with <code>LogDestinationConfigs</code>.</p>
+-- * RedactedFields [RedactedFields] <p>The parts of the request that you want redacted from the logs. For example, if you redact the cookie field, the cookie field in the delivery stream will be <code>xxx</code>. </p>
+-- * LogDestinationConfigs [LogDestinationConfigs] <p>An array of Amazon Kinesis Data Firehose delivery stream ARNs.</p>
+-- Required key: ResourceArn
+-- Required key: LogDestinationConfigs
+-- @return LoggingConfiguration structure as a key-value pair table
+function M.LoggingConfiguration(args)
+	assert(args, "You must provide an argument table when creating LoggingConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceArn"] = args["ResourceArn"],
+		["RedactedFields"] = args["RedactedFields"],
+		["LogDestinationConfigs"] = args["LogDestinationConfigs"],
+	}
+	asserts.AssertLoggingConfiguration(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2311,7 +3497,7 @@ end
 -- * TimeWindow [TimeWindow] <p>The start date and time and the end date and time of the range for which you want <code>GetSampledRequests</code> to return a sample of requests. Specify the date and time in the following format: <code>"2016-09-27T14:50Z"</code>. You can specify any time range in the previous three hours.</p>
 -- * WebAclId [ResourceId] <p>The <code>WebACLId</code> of the <code>WebACL</code> for which you want <code>GetSampledRequests</code> to return a sample of requests.</p>
 -- * MaxItems [GetSampledRequestsMaxItems] <p>The number of requests that you want AWS WAF to return from among the first 5,000 requests that your AWS resource received during the time range. If your resource received fewer requests than the value of <code>MaxItems</code>, <code>GetSampledRequests</code> returns information about all of them. </p>
--- * RuleId [ResourceId] <p> <code>RuleId</code> is one of two values:</p> <ul> <li> <p>The <code>RuleId</code> of the <code>Rule</code> for which you want <code>GetSampledRequests</code> to return a sample of requests.</p> </li> <li> <p> <code>Default_Action</code>, which causes <code>GetSampledRequests</code> to return a sample of the requests that didn't match any of the rules in the specified <code>WebACL</code>.</p> </li> </ul>
+-- * RuleId [ResourceId] <p> <code>RuleId</code> is one of three values:</p> <ul> <li> <p>The <code>RuleId</code> of the <code>Rule</code> or the <code>RuleGroupId</code> of the <code>RuleGroup</code> for which you want <code>GetSampledRequests</code> to return a sample of requests.</p> </li> <li> <p> <code>Default_Action</code>, which causes <code>GetSampledRequests</code> to return a sample of the requests that didn't match any of the rules in the specified <code>WebACL</code>.</p> </li> </ul>
 -- Required key: WebAclId
 -- Required key: RuleId
 -- Required key: TimeWindow
@@ -2380,25 +3566,27 @@ function M.GetRateBasedRuleManagedKeysResponse(args)
     }
 end
 
-keys.DeleteSizeConstraintSetResponse = { ["ChangeToken"] = true, nil }
+keys.GetRuleRequest = { ["RuleId"] = true, nil }
 
-function asserts.AssertDeleteSizeConstraintSetResponse(struct)
+function asserts.AssertGetRuleRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteSizeConstraintSetResponse to be of type 'table'")
-	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	assert(type(struct) == "table", "Expected GetRuleRequest to be of type 'table'")
+	assert(struct["RuleId"], "Expected key RuleId to exist in table")
+	if struct["RuleId"] then asserts.AssertResourceId(struct["RuleId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteSizeConstraintSetResponse[k], "DeleteSizeConstraintSetResponse contains unknown key " .. tostring(k))
+		assert(keys.GetRuleRequest[k], "GetRuleRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteSizeConstraintSetResponse
+--- Create a structure of type GetRuleRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteSizeConstraintSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
--- @return DeleteSizeConstraintSetResponse structure as a key-value pair table
-function M.DeleteSizeConstraintSetResponse(args)
-	assert(args, "You must provide an argument table when creating DeleteSizeConstraintSetResponse")
+-- * RuleId [ResourceId] <p>The <code>RuleId</code> of the <a>Rule</a> that you want to get. <code>RuleId</code> is returned by <a>CreateRule</a> and by <a>ListRules</a>.</p>
+-- Required key: RuleId
+-- @return GetRuleRequest structure as a key-value pair table
+function M.GetRuleRequest(args)
+	assert(args, "You must provide an argument table when creating GetRuleRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -2406,9 +3594,53 @@ function M.DeleteSizeConstraintSetResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["ChangeToken"] = args["ChangeToken"],
+		["RuleId"] = args["RuleId"],
 	}
-	asserts.AssertDeleteSizeConstraintSetResponse(all_args)
+	asserts.AssertGetRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GeoMatchSetUpdate = { ["Action"] = true, ["GeoMatchConstraint"] = true, nil }
+
+function asserts.AssertGeoMatchSetUpdate(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GeoMatchSetUpdate to be of type 'table'")
+	assert(struct["Action"], "Expected key Action to exist in table")
+	assert(struct["GeoMatchConstraint"], "Expected key GeoMatchConstraint to exist in table")
+	if struct["Action"] then asserts.AssertChangeAction(struct["Action"]) end
+	if struct["GeoMatchConstraint"] then asserts.AssertGeoMatchConstraint(struct["GeoMatchConstraint"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GeoMatchSetUpdate[k], "GeoMatchSetUpdate contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GeoMatchSetUpdate
+-- <p>Specifies the type of update to perform to an <a>GeoMatchSet</a> with <a>UpdateGeoMatchSet</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Action [ChangeAction] <p>Specifies whether to insert or delete a country with <a>UpdateGeoMatchSet</a>.</p>
+-- * GeoMatchConstraint [GeoMatchConstraint] <p>The country from which web requests originate that you want AWS WAF to search for.</p>
+-- Required key: Action
+-- Required key: GeoMatchConstraint
+-- @return GeoMatchSetUpdate structure as a key-value pair table
+function M.GeoMatchSetUpdate(args)
+	assert(args, "You must provide an argument table when creating GeoMatchSetUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Action"] = args["Action"],
+		["GeoMatchConstraint"] = args["GeoMatchConstraint"],
+	}
+	asserts.AssertGeoMatchSetUpdate(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2515,6 +3747,40 @@ function M.UpdateByteMatchSetRequest(args)
     }
 end
 
+keys.DeleteLoggingConfigurationResponse = { nil }
+
+function asserts.AssertDeleteLoggingConfigurationResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteLoggingConfigurationResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteLoggingConfigurationResponse[k], "DeleteLoggingConfigurationResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteLoggingConfigurationResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteLoggingConfigurationResponse structure as a key-value pair table
+function M.DeleteLoggingConfigurationResponse(args)
+	assert(args, "You must provide an argument table when creating DeleteLoggingConfigurationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDeleteLoggingConfigurationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetWebACLRequest = { ["WebACLId"] = true, nil }
 
 function asserts.AssertGetWebACLRequest(struct)
@@ -2546,6 +3812,50 @@ function M.GetWebACLRequest(args)
 		["WebACLId"] = args["WebACLId"],
 	}
 	asserts.AssertGetWebACLRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SizeConstraintSetSummary = { ["SizeConstraintSetId"] = true, ["Name"] = true, nil }
+
+function asserts.AssertSizeConstraintSetSummary(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SizeConstraintSetSummary to be of type 'table'")
+	assert(struct["SizeConstraintSetId"], "Expected key SizeConstraintSetId to exist in table")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	if struct["SizeConstraintSetId"] then asserts.AssertResourceId(struct["SizeConstraintSetId"]) end
+	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SizeConstraintSetSummary[k], "SizeConstraintSetSummary contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SizeConstraintSetSummary
+-- <p>The <code>Id</code> and <code>Name</code> of a <code>SizeConstraintSet</code>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SizeConstraintSetId [ResourceId] <p>A unique identifier for a <code>SizeConstraintSet</code>. You use <code>SizeConstraintSetId</code> to get information about a <code>SizeConstraintSet</code> (see <a>GetSizeConstraintSet</a>), update a <code>SizeConstraintSet</code> (see <a>UpdateSizeConstraintSet</a>), insert a <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>SizeConstraintSet</code> from AWS WAF (see <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
+-- * Name [ResourceName] <p>The name of the <code>SizeConstraintSet</code>, if any.</p>
+-- Required key: SizeConstraintSetId
+-- Required key: Name
+-- @return SizeConstraintSetSummary structure as a key-value pair table
+function M.SizeConstraintSetSummary(args)
+	assert(args, "You must provide an argument table when creating SizeConstraintSetSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SizeConstraintSetId"] = args["SizeConstraintSetId"],
+		["Name"] = args["Name"],
+	}
+	asserts.AssertSizeConstraintSetSummary(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2672,35 +3982,27 @@ function M.GetWebACLResponse(args)
     }
 end
 
-keys.UpdateSizeConstraintSetRequest = { ["SizeConstraintSetId"] = true, ["ChangeToken"] = true, ["Updates"] = true, nil }
+keys.ListSqlInjectionMatchSetsRequest = { ["NextMarker"] = true, ["Limit"] = true, nil }
 
-function asserts.AssertUpdateSizeConstraintSetRequest(struct)
+function asserts.AssertListSqlInjectionMatchSetsRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateSizeConstraintSetRequest to be of type 'table'")
-	assert(struct["SizeConstraintSetId"], "Expected key SizeConstraintSetId to exist in table")
-	assert(struct["ChangeToken"], "Expected key ChangeToken to exist in table")
-	assert(struct["Updates"], "Expected key Updates to exist in table")
-	if struct["SizeConstraintSetId"] then asserts.AssertResourceId(struct["SizeConstraintSetId"]) end
-	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
-	if struct["Updates"] then asserts.AssertSizeConstraintSetUpdates(struct["Updates"]) end
+	assert(type(struct) == "table", "Expected ListSqlInjectionMatchSetsRequest to be of type 'table'")
+	if struct["NextMarker"] then asserts.AssertNextMarker(struct["NextMarker"]) end
+	if struct["Limit"] then asserts.AssertPaginationLimit(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.UpdateSizeConstraintSetRequest[k], "UpdateSizeConstraintSetRequest contains unknown key " .. tostring(k))
+		assert(keys.ListSqlInjectionMatchSetsRequest[k], "ListSqlInjectionMatchSetsRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type UpdateSizeConstraintSetRequest
---  
+--- Create a structure of type ListSqlInjectionMatchSetsRequest
+-- <p>A request to list the <a>SqlInjectionMatchSet</a> objects created by the current AWS account.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SizeConstraintSetId [ResourceId] <p>The <code>SizeConstraintSetId</code> of the <a>SizeConstraintSet</a> that you want to update. <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
--- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- * Updates [SizeConstraintSetUpdates] <p>An array of <code>SizeConstraintSetUpdate</code> objects that you want to insert into or delete from a <a>SizeConstraintSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>SizeConstraintSetUpdate</a>: Contains <code>Action</code> and <code>SizeConstraint</code> </p> </li> <li> <p> <a>SizeConstraint</a>: Contains <code>FieldToMatch</code>, <code>TextTransformation</code>, <code>ComparisonOperator</code>, and <code>Size</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
--- Required key: SizeConstraintSetId
--- Required key: ChangeToken
--- Required key: Updates
--- @return UpdateSizeConstraintSetRequest structure as a key-value pair table
-function M.UpdateSizeConstraintSetRequest(args)
-	assert(args, "You must provide an argument table when creating UpdateSizeConstraintSetRequest")
+-- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <a>SqlInjectionMatchSet</a> objects than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>SqlInjectionMatchSets</code>. For the second and subsequent <code>ListSqlInjectionMatchSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>SqlInjectionMatchSets</code>.</p>
+-- * Limit [PaginationLimit] <p>Specifies the number of <a>SqlInjectionMatchSet</a> objects that you want AWS WAF to return for this request. If you have more <code>SqlInjectionMatchSet</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.</p>
+-- @return ListSqlInjectionMatchSetsRequest structure as a key-value pair table
+function M.ListSqlInjectionMatchSetsRequest(args)
+	assert(args, "You must provide an argument table when creating ListSqlInjectionMatchSetsRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -2708,11 +4010,91 @@ function M.UpdateSizeConstraintSetRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["SizeConstraintSetId"] = args["SizeConstraintSetId"],
-		["ChangeToken"] = args["ChangeToken"],
-		["Updates"] = args["Updates"],
+		["NextMarker"] = args["NextMarker"],
+		["Limit"] = args["Limit"],
 	}
-	asserts.AssertUpdateSizeConstraintSetRequest(all_args)
+	asserts.AssertListSqlInjectionMatchSetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteGeoMatchSetRequest = { ["ChangeToken"] = true, ["GeoMatchSetId"] = true, nil }
+
+function asserts.AssertDeleteGeoMatchSetRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteGeoMatchSetRequest to be of type 'table'")
+	assert(struct["GeoMatchSetId"], "Expected key GeoMatchSetId to exist in table")
+	assert(struct["ChangeToken"], "Expected key ChangeToken to exist in table")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	if struct["GeoMatchSetId"] then asserts.AssertResourceId(struct["GeoMatchSetId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteGeoMatchSetRequest[k], "DeleteGeoMatchSetRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteGeoMatchSetRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * GeoMatchSetId [ResourceId] <p>The <code>GeoMatchSetID</code> of the <a>GeoMatchSet</a> that you want to delete. <code>GeoMatchSetId</code> is returned by <a>CreateGeoMatchSet</a> and by <a>ListGeoMatchSets</a>.</p>
+-- Required key: GeoMatchSetId
+-- Required key: ChangeToken
+-- @return DeleteGeoMatchSetRequest structure as a key-value pair table
+function M.DeleteGeoMatchSetRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteGeoMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+		["GeoMatchSetId"] = args["GeoMatchSetId"],
+	}
+	asserts.AssertDeleteGeoMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateRegexPatternSetResponse = { ["ChangeToken"] = true, nil }
+
+function asserts.AssertUpdateRegexPatternSetResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateRegexPatternSetResponse to be of type 'table'")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateRegexPatternSetResponse[k], "UpdateRegexPatternSetResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateRegexPatternSetResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateRegexPatternSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return UpdateRegexPatternSetResponse structure as a key-value pair table
+function M.UpdateRegexPatternSetResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateRegexPatternSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+	}
+	asserts.AssertUpdateRegexPatternSetResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2802,6 +4184,99 @@ function M.DeleteRateBasedRuleRequest(args)
     }
 end
 
+keys.CreateGeoMatchSetRequest = { ["ChangeToken"] = true, ["Name"] = true, nil }
+
+function asserts.AssertCreateGeoMatchSetRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateGeoMatchSetRequest to be of type 'table'")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	assert(struct["ChangeToken"], "Expected key ChangeToken to exist in table")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateGeoMatchSetRequest[k], "CreateGeoMatchSetRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateGeoMatchSetRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change <code>Name</code> after you create the <code>GeoMatchSet</code>.</p>
+-- Required key: Name
+-- Required key: ChangeToken
+-- @return CreateGeoMatchSetRequest structure as a key-value pair table
+function M.CreateGeoMatchSetRequest(args)
+	assert(args, "You must provide an argument table when creating CreateGeoMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+		["Name"] = args["Name"],
+	}
+	asserts.AssertCreateGeoMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateGeoMatchSetRequest = { ["ChangeToken"] = true, ["GeoMatchSetId"] = true, ["Updates"] = true, nil }
+
+function asserts.AssertUpdateGeoMatchSetRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateGeoMatchSetRequest to be of type 'table'")
+	assert(struct["GeoMatchSetId"], "Expected key GeoMatchSetId to exist in table")
+	assert(struct["ChangeToken"], "Expected key ChangeToken to exist in table")
+	assert(struct["Updates"], "Expected key Updates to exist in table")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	if struct["GeoMatchSetId"] then asserts.AssertResourceId(struct["GeoMatchSetId"]) end
+	if struct["Updates"] then asserts.AssertGeoMatchSetUpdates(struct["Updates"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateGeoMatchSetRequest[k], "UpdateGeoMatchSetRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateGeoMatchSetRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * GeoMatchSetId [ResourceId] <p>The <code>GeoMatchSetId</code> of the <a>GeoMatchSet</a> that you want to update. <code>GeoMatchSetId</code> is returned by <a>CreateGeoMatchSet</a> and by <a>ListGeoMatchSets</a>.</p>
+-- * Updates [GeoMatchSetUpdates] <p>An array of <code>GeoMatchSetUpdate</code> objects that you want to insert into or delete from an <a>GeoMatchSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>GeoMatchSetUpdate</a>: Contains <code>Action</code> and <code>GeoMatchConstraint</code> </p> </li> <li> <p> <a>GeoMatchConstraint</a>: Contains <code>Type</code> and <code>Value</code> </p> <p>You can have only one <code>Type</code> and <code>Value</code> per <code>GeoMatchConstraint</code>. To add multiple countries, include multiple <code>GeoMatchSetUpdate</code> objects in your request.</p> </li> </ul>
+-- Required key: GeoMatchSetId
+-- Required key: ChangeToken
+-- Required key: Updates
+-- @return UpdateGeoMatchSetRequest structure as a key-value pair table
+function M.UpdateGeoMatchSetRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateGeoMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+		["GeoMatchSetId"] = args["GeoMatchSetId"],
+		["Updates"] = args["Updates"],
+	}
+	asserts.AssertUpdateGeoMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DeleteIPSetRequest = { ["IPSetId"] = true, ["ChangeToken"] = true, nil }
 
 function asserts.AssertDeleteIPSetRequest(struct)
@@ -2883,72 +4358,35 @@ function M.UpdateWebACLResponse(args)
     }
 end
 
-keys.XssMatchSet = { ["XssMatchTuples"] = true, ["XssMatchSetId"] = true, ["Name"] = true, nil }
+keys.UpdateSizeConstraintSetRequest = { ["SizeConstraintSetId"] = true, ["ChangeToken"] = true, ["Updates"] = true, nil }
 
-function asserts.AssertXssMatchSet(struct)
+function asserts.AssertUpdateSizeConstraintSetRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected XssMatchSet to be of type 'table'")
-	assert(struct["XssMatchSetId"], "Expected key XssMatchSetId to exist in table")
-	assert(struct["XssMatchTuples"], "Expected key XssMatchTuples to exist in table")
-	if struct["XssMatchTuples"] then asserts.AssertXssMatchTuples(struct["XssMatchTuples"]) end
-	if struct["XssMatchSetId"] then asserts.AssertResourceId(struct["XssMatchSetId"]) end
-	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.XssMatchSet[k], "XssMatchSet contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type XssMatchSet
--- <p>A complex type that contains <code>XssMatchTuple</code> objects, which specify the parts of web requests that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header. If a <code>XssMatchSet</code> contains more than one <code>XssMatchTuple</code> object, a request needs to include cross-site scripting attacks in only one of the specified parts of the request to be considered a match.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * XssMatchTuples [XssMatchTuples] <p>Specifies the parts of web requests that you want to inspect for cross-site scripting attacks.</p>
--- * XssMatchSetId [ResourceId] <p>A unique identifier for an <code>XssMatchSet</code>. You use <code>XssMatchSetId</code> to get information about an <code>XssMatchSet</code> (see <a>GetXssMatchSet</a>), update an <code>XssMatchSet</code> (see <a>UpdateXssMatchSet</a>), insert an <code>XssMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>XssMatchSet</code> from AWS WAF (see <a>DeleteXssMatchSet</a>).</p> <p> <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by <a>ListXssMatchSets</a>.</p>
--- * Name [ResourceName] <p>The name, if any, of the <code>XssMatchSet</code>.</p>
--- Required key: XssMatchSetId
--- Required key: XssMatchTuples
--- @return XssMatchSet structure as a key-value pair table
-function M.XssMatchSet(args)
-	assert(args, "You must provide an argument table when creating XssMatchSet")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["XssMatchTuples"] = args["XssMatchTuples"],
-		["XssMatchSetId"] = args["XssMatchSetId"],
-		["Name"] = args["Name"],
-	}
-	asserts.AssertXssMatchSet(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.UpdateSizeConstraintSetResponse = { ["ChangeToken"] = true, nil }
-
-function asserts.AssertUpdateSizeConstraintSetResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateSizeConstraintSetResponse to be of type 'table'")
+	assert(type(struct) == "table", "Expected UpdateSizeConstraintSetRequest to be of type 'table'")
+	assert(struct["SizeConstraintSetId"], "Expected key SizeConstraintSetId to exist in table")
+	assert(struct["ChangeToken"], "Expected key ChangeToken to exist in table")
+	assert(struct["Updates"], "Expected key Updates to exist in table")
+	if struct["SizeConstraintSetId"] then asserts.AssertResourceId(struct["SizeConstraintSetId"]) end
 	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	if struct["Updates"] then asserts.AssertSizeConstraintSetUpdates(struct["Updates"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.UpdateSizeConstraintSetResponse[k], "UpdateSizeConstraintSetResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateSizeConstraintSetRequest[k], "UpdateSizeConstraintSetRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type UpdateSizeConstraintSetResponse
+--- Create a structure of type UpdateSizeConstraintSetRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateSizeConstraintSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
--- @return UpdateSizeConstraintSetResponse structure as a key-value pair table
-function M.UpdateSizeConstraintSetResponse(args)
-	assert(args, "You must provide an argument table when creating UpdateSizeConstraintSetResponse")
+-- * SizeConstraintSetId [ResourceId] <p>The <code>SizeConstraintSetId</code> of the <a>SizeConstraintSet</a> that you want to update. <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Updates [SizeConstraintSetUpdates] <p>An array of <code>SizeConstraintSetUpdate</code> objects that you want to insert into or delete from a <a>SizeConstraintSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>SizeConstraintSetUpdate</a>: Contains <code>Action</code> and <code>SizeConstraint</code> </p> </li> <li> <p> <a>SizeConstraint</a>: Contains <code>FieldToMatch</code>, <code>TextTransformation</code>, <code>ComparisonOperator</code>, and <code>Size</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
+-- Required key: SizeConstraintSetId
+-- Required key: ChangeToken
+-- Required key: Updates
+-- @return UpdateSizeConstraintSetRequest structure as a key-value pair table
+function M.UpdateSizeConstraintSetRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateSizeConstraintSetRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -2956,9 +4394,11 @@ function M.UpdateSizeConstraintSetResponse(args)
     local header_args = { 
     }
 	local all_args = { 
+		["SizeConstraintSetId"] = args["SizeConstraintSetId"],
 		["ChangeToken"] = args["ChangeToken"],
+		["Updates"] = args["Updates"],
 	}
-	asserts.AssertUpdateSizeConstraintSetResponse(all_args)
+	asserts.AssertUpdateSizeConstraintSetRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2967,31 +4407,25 @@ function M.UpdateSizeConstraintSetResponse(args)
     }
 end
 
-keys.SizeConstraintSetUpdate = { ["Action"] = true, ["SizeConstraint"] = true, nil }
+keys.GetRuleGroupResponse = { ["RuleGroup"] = true, nil }
 
-function asserts.AssertSizeConstraintSetUpdate(struct)
+function asserts.AssertGetRuleGroupResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SizeConstraintSetUpdate to be of type 'table'")
-	assert(struct["Action"], "Expected key Action to exist in table")
-	assert(struct["SizeConstraint"], "Expected key SizeConstraint to exist in table")
-	if struct["Action"] then asserts.AssertChangeAction(struct["Action"]) end
-	if struct["SizeConstraint"] then asserts.AssertSizeConstraint(struct["SizeConstraint"]) end
+	assert(type(struct) == "table", "Expected GetRuleGroupResponse to be of type 'table'")
+	if struct["RuleGroup"] then asserts.AssertRuleGroup(struct["RuleGroup"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SizeConstraintSetUpdate[k], "SizeConstraintSetUpdate contains unknown key " .. tostring(k))
+		assert(keys.GetRuleGroupResponse[k], "GetRuleGroupResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SizeConstraintSetUpdate
--- <p>Specifies the part of a web request that you want to inspect the size of and indicates whether you want to add the specification to a <a>SizeConstraintSet</a> or delete it from a <code>SizeConstraintSet</code>.</p>
+--- Create a structure of type GetRuleGroupResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Action [ChangeAction] <p>Specify <code>INSERT</code> to add a <a>SizeConstraintSetUpdate</a> to a <a>SizeConstraintSet</a>. Use <code>DELETE</code> to remove a <code>SizeConstraintSetUpdate</code> from a <code>SizeConstraintSet</code>.</p>
--- * SizeConstraint [SizeConstraint] <p>Specifies a constraint on the size of a part of the web request. AWS WAF uses the <code>Size</code>, <code>ComparisonOperator</code>, and <code>FieldToMatch</code> to build an expression in the form of "<code>Size</code> <code>ComparisonOperator</code> size in bytes of <code>FieldToMatch</code>". If that expression is true, the <code>SizeConstraint</code> is considered to match.</p>
--- Required key: Action
--- Required key: SizeConstraint
--- @return SizeConstraintSetUpdate structure as a key-value pair table
-function M.SizeConstraintSetUpdate(args)
-	assert(args, "You must provide an argument table when creating SizeConstraintSetUpdate")
+-- * RuleGroup [RuleGroup] <p>Information about the <a>RuleGroup</a> that you specified in the <code>GetRuleGroup</code> request. </p>
+-- @return GetRuleGroupResponse structure as a key-value pair table
+function M.GetRuleGroupResponse(args)
+	assert(args, "You must provide an argument table when creating GetRuleGroupResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -2999,10 +4433,9 @@ function M.SizeConstraintSetUpdate(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Action"] = args["Action"],
-		["SizeConstraint"] = args["SizeConstraint"],
+		["RuleGroup"] = args["RuleGroup"],
 	}
-	asserts.AssertSizeConstraintSetUpdate(all_args)
+	asserts.AssertGetRuleGroupResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3090,6 +4523,43 @@ function M.ListRulesRequest(args)
     }
 end
 
+keys.DeleteGeoMatchSetResponse = { ["ChangeToken"] = true, nil }
+
+function asserts.AssertDeleteGeoMatchSetResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteGeoMatchSetResponse to be of type 'table'")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteGeoMatchSetResponse[k], "DeleteGeoMatchSetResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteGeoMatchSetResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteGeoMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return DeleteGeoMatchSetResponse structure as a key-value pair table
+function M.DeleteGeoMatchSetResponse(args)
+	assert(args, "You must provide an argument table when creating DeleteGeoMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+	}
+	asserts.AssertDeleteGeoMatchSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DeleteWebACLResponse = { ["ChangeToken"] = true, nil }
 
 function asserts.AssertDeleteWebACLResponse(struct)
@@ -3127,35 +4597,27 @@ function M.DeleteWebACLResponse(args)
     }
 end
 
-keys.HTTPRequest = { ["Country"] = true, ["URI"] = true, ["Headers"] = true, ["ClientIP"] = true, ["Method"] = true, ["HTTPVersion"] = true, nil }
+keys.GetRuleGroupRequest = { ["RuleGroupId"] = true, nil }
 
-function asserts.AssertHTTPRequest(struct)
+function asserts.AssertGetRuleGroupRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected HTTPRequest to be of type 'table'")
-	if struct["Country"] then asserts.AssertCountry(struct["Country"]) end
-	if struct["URI"] then asserts.AssertURIString(struct["URI"]) end
-	if struct["Headers"] then asserts.AssertHTTPHeaders(struct["Headers"]) end
-	if struct["ClientIP"] then asserts.AssertIPString(struct["ClientIP"]) end
-	if struct["Method"] then asserts.AssertHTTPMethod(struct["Method"]) end
-	if struct["HTTPVersion"] then asserts.AssertHTTPVersion(struct["HTTPVersion"]) end
+	assert(type(struct) == "table", "Expected GetRuleGroupRequest to be of type 'table'")
+	assert(struct["RuleGroupId"], "Expected key RuleGroupId to exist in table")
+	if struct["RuleGroupId"] then asserts.AssertResourceId(struct["RuleGroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.HTTPRequest[k], "HTTPRequest contains unknown key " .. tostring(k))
+		assert(keys.GetRuleGroupRequest[k], "GetRuleGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type HTTPRequest
--- <p>The response from a <a>GetSampledRequests</a> request includes an <code>HTTPRequest</code> complex type that appears as <code>Request</code> in the response syntax. <code>HTTPRequest</code> contains information about one of the web requests that were returned by <code>GetSampledRequests</code>. </p>
+--- Create a structure of type GetRuleGroupRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Country [Country] <p>The two-letter country code for the country that the request originated from. For a current list of country codes, see the Wikipedia entry <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>.</p>
--- * URI [URIString] <p>The part of a web request that identifies the resource, for example, <code>/images/daily-ad.jpg</code>.</p>
--- * Headers [HTTPHeaders] <p>A complex type that contains two values for each header in the sampled web request: the name of the header and the value of the header.</p>
--- * ClientIP [IPString] <p>The IP address that the request originated from. If the <code>WebACL</code> is associated with a CloudFront distribution, this is the value of one of the following fields in CloudFront access logs:</p> <ul> <li> <p> <code>c-ip</code>, if the viewer did not use an HTTP proxy or a load balancer to send the request</p> </li> <li> <p> <code>x-forwarded-for</code>, if the viewer did use an HTTP proxy or a load balancer to send the request</p> </li> </ul>
--- * Method [HTTPMethod] <p>The HTTP method specified in the sampled web request. CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>. </p>
--- * HTTPVersion [HTTPVersion] <p>The HTTP version specified in the sampled web request, for example, <code>HTTP/1.1</code>.</p>
--- @return HTTPRequest structure as a key-value pair table
-function M.HTTPRequest(args)
-	assert(args, "You must provide an argument table when creating HTTPRequest")
+-- * RuleGroupId [ResourceId] <p>The <code>RuleGroupId</code> of the <a>RuleGroup</a> that you want to get. <code>RuleGroupId</code> is returned by <a>CreateRuleGroup</a> and by <a>ListRuleGroups</a>.</p>
+-- Required key: RuleGroupId
+-- @return GetRuleGroupRequest structure as a key-value pair table
+function M.GetRuleGroupRequest(args)
+	assert(args, "You must provide an argument table when creating GetRuleGroupRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -3163,14 +4625,46 @@ function M.HTTPRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Country"] = args["Country"],
-		["URI"] = args["URI"],
-		["Headers"] = args["Headers"],
-		["ClientIP"] = args["ClientIP"],
-		["Method"] = args["Method"],
-		["HTTPVersion"] = args["HTTPVersion"],
+		["RuleGroupId"] = args["RuleGroupId"],
 	}
-	asserts.AssertHTTPRequest(all_args)
+	asserts.AssertGetRuleGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetRegexMatchSetResponse = { ["RegexMatchSet"] = true, nil }
+
+function asserts.AssertGetRegexMatchSetResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetRegexMatchSetResponse to be of type 'table'")
+	if struct["RegexMatchSet"] then asserts.AssertRegexMatchSet(struct["RegexMatchSet"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetRegexMatchSetResponse[k], "GetRegexMatchSetResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetRegexMatchSetResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegexMatchSet [RegexMatchSet] <p>Information about the <a>RegexMatchSet</a> that you specified in the <code>GetRegexMatchSet</code> request. For more information, see <a>RegexMatchTuple</a>.</p>
+-- @return GetRegexMatchSetResponse structure as a key-value pair table
+function M.GetRegexMatchSetResponse(args)
+	assert(args, "You must provide an argument table when creating GetRegexMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RegexMatchSet"] = args["RegexMatchSet"],
+	}
+	asserts.AssertGetRegexMatchSetResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3215,6 +4709,43 @@ function M.ByteMatchSetUpdate(args)
 		["ByteMatchTuple"] = args["ByteMatchTuple"],
 	}
 	asserts.AssertByteMatchSetUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateGeoMatchSetResponse = { ["ChangeToken"] = true, nil }
+
+function asserts.AssertUpdateGeoMatchSetResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateGeoMatchSetResponse to be of type 'table'")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateGeoMatchSetResponse[k], "UpdateGeoMatchSetResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateGeoMatchSetResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateGeoMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return UpdateGeoMatchSetResponse structure as a key-value pair table
+function M.UpdateGeoMatchSetResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateGeoMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+	}
+	asserts.AssertUpdateGeoMatchSetResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3316,25 +4847,31 @@ function M.DeleteXssMatchSetRequest(args)
     }
 end
 
-keys.WAFLimitsExceededException = { ["message"] = true, nil }
+keys.GeoMatchSetSummary = { ["GeoMatchSetId"] = true, ["Name"] = true, nil }
 
-function asserts.AssertWAFLimitsExceededException(struct)
+function asserts.AssertGeoMatchSetSummary(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected WAFLimitsExceededException to be of type 'table'")
-	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected GeoMatchSetSummary to be of type 'table'")
+	assert(struct["GeoMatchSetId"], "Expected key GeoMatchSetId to exist in table")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	if struct["GeoMatchSetId"] then asserts.AssertResourceId(struct["GeoMatchSetId"]) end
+	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.WAFLimitsExceededException[k], "WAFLimitsExceededException contains unknown key " .. tostring(k))
+		assert(keys.GeoMatchSetSummary[k], "GeoMatchSetSummary contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type WAFLimitsExceededException
--- <p>The operation exceeds a resource limit, for example, the maximum number of <code>WebACL</code> objects that you can create for an AWS account. For more information, see <a href="http://docs.aws.amazon.com/waf/latest/developerguide/limits.html">Limits</a> in the <i>AWS WAF Developer Guide</i>.</p>
+--- Create a structure of type GeoMatchSetSummary
+-- <p>Contains the identifier and the name of the <code>GeoMatchSet</code>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [errorMessage] 
--- @return WAFLimitsExceededException structure as a key-value pair table
-function M.WAFLimitsExceededException(args)
-	assert(args, "You must provide an argument table when creating WAFLimitsExceededException")
+-- * GeoMatchSetId [ResourceId] <p>The <code>GeoMatchSetId</code> for an <a>GeoMatchSet</a>. You can use <code>GeoMatchSetId</code> in a <a>GetGeoMatchSet</a> request to get detailed information about an <a>GeoMatchSet</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change the name of an <code>GeoMatchSet</code> after you create it.</p>
+-- Required key: GeoMatchSetId
+-- Required key: Name
+-- @return GeoMatchSetSummary structure as a key-value pair table
+function M.GeoMatchSetSummary(args)
+	assert(args, "You must provide an argument table when creating GeoMatchSetSummary")
     local query_args = { 
     }
     local uri_args = { 
@@ -3342,9 +4879,59 @@ function M.WAFLimitsExceededException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["GeoMatchSetId"] = args["GeoMatchSetId"],
+		["Name"] = args["Name"],
 	}
-	asserts.AssertWAFLimitsExceededException(all_args)
+	asserts.AssertGeoMatchSetSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateRuleGroupRequest = { ["ChangeToken"] = true, ["Updates"] = true, ["RuleGroupId"] = true, nil }
+
+function asserts.AssertUpdateRuleGroupRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateRuleGroupRequest to be of type 'table'")
+	assert(struct["RuleGroupId"], "Expected key RuleGroupId to exist in table")
+	assert(struct["Updates"], "Expected key Updates to exist in table")
+	assert(struct["ChangeToken"], "Expected key ChangeToken to exist in table")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	if struct["Updates"] then asserts.AssertRuleGroupUpdates(struct["Updates"]) end
+	if struct["RuleGroupId"] then asserts.AssertResourceId(struct["RuleGroupId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateRuleGroupRequest[k], "UpdateRuleGroupRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateRuleGroupRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Updates [RuleGroupUpdates] <p>An array of <code>RuleGroupUpdate</code> objects that you want to insert into or delete from a <a>RuleGroup</a>.</p> <p>You can only insert <code>REGULAR</code> rules into a rule group.</p> <p> <code>ActivatedRule|OverrideAction</code> applies only when updating or adding a <code>RuleGroup</code> to a <code>WebACL</code>. In this case you do not use <code>ActivatedRule|Action</code>. For all other update requests, <code>ActivatedRule|Action</code> is used instead of <code>ActivatedRule|OverrideAction</code>.</p>
+-- * RuleGroupId [ResourceId] <p>The <code>RuleGroupId</code> of the <a>RuleGroup</a> that you want to update. <code>RuleGroupId</code> is returned by <a>CreateRuleGroup</a> and by <a>ListRuleGroups</a>.</p>
+-- Required key: RuleGroupId
+-- Required key: Updates
+-- Required key: ChangeToken
+-- @return UpdateRuleGroupRequest structure as a key-value pair table
+function M.UpdateRuleGroupRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateRuleGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+		["Updates"] = args["Updates"],
+		["RuleGroupId"] = args["RuleGroupId"],
+	}
+	asserts.AssertUpdateRuleGroupRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3434,6 +5021,45 @@ function M.UpdateByteMatchSetResponse(args)
     }
 end
 
+keys.GetLoggingConfigurationRequest = { ["ResourceArn"] = true, nil }
+
+function asserts.AssertGetLoggingConfigurationRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetLoggingConfigurationRequest to be of type 'table'")
+	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
+	if struct["ResourceArn"] then asserts.AssertResourceArn(struct["ResourceArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetLoggingConfigurationRequest[k], "GetLoggingConfigurationRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetLoggingConfigurationRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the web ACL for which you want to get the <a>LoggingConfiguration</a>.</p>
+-- Required key: ResourceArn
+-- @return GetLoggingConfigurationRequest structure as a key-value pair table
+function M.GetLoggingConfigurationRequest(args)
+	assert(args, "You must provide an argument table when creating GetLoggingConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceArn"] = args["ResourceArn"],
+	}
+	asserts.AssertGetLoggingConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DeleteByteMatchSetResponse = { ["ChangeToken"] = true, nil }
 
 function asserts.AssertDeleteByteMatchSetResponse(struct)
@@ -3463,6 +5089,93 @@ function M.DeleteByteMatchSetResponse(args)
 		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertDeleteByteMatchSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.RegexMatchSet = { ["RegexMatchSetId"] = true, ["Name"] = true, ["RegexMatchTuples"] = true, nil }
+
+function asserts.AssertRegexMatchSet(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RegexMatchSet to be of type 'table'")
+	if struct["RegexMatchSetId"] then asserts.AssertResourceId(struct["RegexMatchSetId"]) end
+	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
+	if struct["RegexMatchTuples"] then asserts.AssertRegexMatchTuples(struct["RegexMatchTuples"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RegexMatchSet[k], "RegexMatchSet contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RegexMatchSet
+-- <p>In a <a>GetRegexMatchSet</a> request, <code>RegexMatchSet</code> is a complex type that contains the <code>RegexMatchSetId</code> and <code>Name</code> of a <code>RegexMatchSet</code>, and the values that you specified when you updated the <code>RegexMatchSet</code>.</p> <p> The values are contained in a <code>RegexMatchTuple</code> object, which specify the parts of web requests that you want AWS WAF to inspect and the values that you want AWS WAF to search for. If a <code>RegexMatchSet</code> contains more than one <code>RegexMatchTuple</code> object, a request needs to match the settings in only one <code>ByteMatchTuple</code> to be considered a match.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegexMatchSetId [ResourceId] <p>The <code>RegexMatchSetId</code> for a <code>RegexMatchSet</code>. You use <code>RegexMatchSetId</code> to get information about a <code>RegexMatchSet</code> (see <a>GetRegexMatchSet</a>), update a <code>RegexMatchSet</code> (see <a>UpdateRegexMatchSet</a>), insert a <code>RegexMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>RegexMatchSet</code> from AWS WAF (see <a>DeleteRegexMatchSet</a>).</p> <p> <code>RegexMatchSetId</code> is returned by <a>CreateRegexMatchSet</a> and by <a>ListRegexMatchSets</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>RegexMatchSet</a>. You can't change <code>Name</code> after you create a <code>RegexMatchSet</code>.</p>
+-- * RegexMatchTuples [RegexMatchTuples] <p>Contains an array of <a>RegexMatchTuple</a> objects. Each <code>RegexMatchTuple</code> object contains: </p> <ul> <li> <p>The part of a web request that you want AWS WAF to inspect, such as a query string or the value of the <code>User-Agent</code> header. </p> </li> <li> <p>The identifier of the pattern (a regular expression) that you want AWS WAF to look for. For more information, see <a>RegexPatternSet</a>.</p> </li> <li> <p>Whether to perform any conversions on the request, such as converting it to lowercase, before inspecting it for the specified string.</p> </li> </ul>
+-- @return RegexMatchSet structure as a key-value pair table
+function M.RegexMatchSet(args)
+	assert(args, "You must provide an argument table when creating RegexMatchSet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RegexMatchSetId"] = args["RegexMatchSetId"],
+		["Name"] = args["Name"],
+		["RegexMatchTuples"] = args["RegexMatchTuples"],
+	}
+	asserts.AssertRegexMatchSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.WebACLSummary = { ["WebACLId"] = true, ["Name"] = true, nil }
+
+function asserts.AssertWebACLSummary(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected WebACLSummary to be of type 'table'")
+	assert(struct["WebACLId"], "Expected key WebACLId to exist in table")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	if struct["WebACLId"] then asserts.AssertResourceId(struct["WebACLId"]) end
+	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.WebACLSummary[k], "WebACLSummary contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type WebACLSummary
+-- <p>Contains the identifier and the name or description of the <a>WebACL</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WebACLId [ResourceId] <p>A unique identifier for a <code>WebACL</code>. You use <code>WebACLId</code> to get information about a <code>WebACL</code> (see <a>GetWebACL</a>), update a <code>WebACL</code> (see <a>UpdateWebACL</a>), and delete a <code>WebACL</code> from AWS WAF (see <a>DeleteWebACL</a>).</p> <p> <code>WebACLId</code> is returned by <a>CreateWebACL</a> and by <a>ListWebACLs</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>WebACL</a>. You can't change the name of a <code>WebACL</code> after you create it.</p>
+-- Required key: WebACLId
+-- Required key: Name
+-- @return WebACLSummary structure as a key-value pair table
+function M.WebACLSummary(args)
+	assert(args, "You must provide an argument table when creating WebACLSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["WebACLId"] = args["WebACLId"],
+		["Name"] = args["Name"],
+	}
+	asserts.AssertWebACLSummary(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3661,6 +5374,43 @@ function M.Rule(args)
     }
 end
 
+keys.GetPermissionPolicyResponse = { ["Policy"] = true, nil }
+
+function asserts.AssertGetPermissionPolicyResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetPermissionPolicyResponse to be of type 'table'")
+	if struct["Policy"] then asserts.AssertPolicyString(struct["Policy"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetPermissionPolicyResponse[k], "GetPermissionPolicyResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetPermissionPolicyResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Policy [PolicyString] <p>The IAM policy attached to the specified RuleGroup.</p>
+-- @return GetPermissionPolicyResponse structure as a key-value pair table
+function M.GetPermissionPolicyResponse(args)
+	assert(args, "You must provide an argument table when creating GetPermissionPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Policy"] = args["Policy"],
+	}
+	asserts.AssertGetPermissionPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListIPSetsRequest = { ["NextMarker"] = true, ["Limit"] = true, nil }
 
 function asserts.AssertListIPSetsRequest(struct)
@@ -3677,7 +5427,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>IPSets</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>ByteMatchSets</code>.</p>
+-- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>IPSets</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>IPSets</code>.</p>
 -- * Limit [PaginationLimit] <p>Specifies the number of <code>IPSet</code> objects that you want AWS WAF to return for this request. If you have more <code>IPSet</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>IPSet</code> objects.</p>
 -- @return ListIPSetsRequest structure as a key-value pair table
 function M.ListIPSetsRequest(args)
@@ -3701,17 +5451,17 @@ function M.ListIPSetsRequest(args)
     }
 end
 
-keys.ActivatedRule = { ["Priority"] = true, ["Action"] = true, ["Type"] = true, ["RuleId"] = true, nil }
+keys.ActivatedRule = { ["Priority"] = true, ["Action"] = true, ["Type"] = true, ["OverrideAction"] = true, ["RuleId"] = true, nil }
 
 function asserts.AssertActivatedRule(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ActivatedRule to be of type 'table'")
 	assert(struct["Priority"], "Expected key Priority to exist in table")
 	assert(struct["RuleId"], "Expected key RuleId to exist in table")
-	assert(struct["Action"], "Expected key Action to exist in table")
 	if struct["Priority"] then asserts.AssertRulePriority(struct["Priority"]) end
 	if struct["Action"] then asserts.AssertWafAction(struct["Action"]) end
 	if struct["Type"] then asserts.AssertWafRuleType(struct["Type"]) end
+	if struct["OverrideAction"] then asserts.AssertWafOverrideAction(struct["OverrideAction"]) end
 	if struct["RuleId"] then asserts.AssertResourceId(struct["RuleId"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ActivatedRule[k], "ActivatedRule contains unknown key " .. tostring(k))
@@ -3723,12 +5473,12 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Priority [RulePriority] <p>Specifies the order in which the <code>Rules</code> in a <code>WebACL</code> are evaluated. Rules with a lower value for <code>Priority</code> are evaluated before <code>Rules</code> with a higher value. The value must be a unique integer. If you add multiple <code>Rules</code> to a <code>WebACL</code>, the values don't need to be consecutive.</p>
--- * Action [WafAction] <p>Specifies the action that CloudFront or AWS WAF takes when a web request matches the conditions in the <code>Rule</code>. Valid values for <code>Action</code> include the following:</p> <ul> <li> <p> <code>ALLOW</code>: CloudFront responds with the requested object.</p> </li> <li> <p> <code>BLOCK</code>: CloudFront responds with an HTTP 403 (Forbidden) status code.</p> </li> <li> <p> <code>COUNT</code>: AWS WAF increments a counter of requests that match the conditions in the rule and then continues to inspect the web request based on the remaining rules in the web ACL. </p> </li> </ul>
--- * Type [WafRuleType] <p>The rule type, either <code>REGULAR</code>, as defined by <a>Rule</a>, or <code>RATE_BASED</code>, as defined by <a>RateBasedRule</a>. The default is REGULAR. Although this field is optional, be aware that if you try to add a RATE_BASED rule to a web ACL without setting the type, the <a>UpdateWebACL</a> request will fail because the request tries to add a REGULAR rule with the specified ID, which does not exist. </p>
+-- * Action [WafAction] <p>Specifies the action that CloudFront or AWS WAF takes when a web request matches the conditions in the <code>Rule</code>. Valid values for <code>Action</code> include the following:</p> <ul> <li> <p> <code>ALLOW</code>: CloudFront responds with the requested object.</p> </li> <li> <p> <code>BLOCK</code>: CloudFront responds with an HTTP 403 (Forbidden) status code.</p> </li> <li> <p> <code>COUNT</code>: AWS WAF increments a counter of requests that match the conditions in the rule and then continues to inspect the web request based on the remaining rules in the web ACL. </p> </li> </ul> <p> <code>ActivatedRule|OverrideAction</code> applies only when updating or adding a <code>RuleGroup</code> to a <code>WebACL</code>. In this case you do not use <code>ActivatedRule|Action</code>. For all other update requests, <code>ActivatedRule|Action</code> is used instead of <code>ActivatedRule|OverrideAction</code>.</p>
+-- * Type [WafRuleType] <p>The rule type, either <code>REGULAR</code>, as defined by <a>Rule</a>, <code>RATE_BASED</code>, as defined by <a>RateBasedRule</a>, or <code>GROUP</code>, as defined by <a>RuleGroup</a>. The default is REGULAR. Although this field is optional, be aware that if you try to add a RATE_BASED rule to a web ACL without setting the type, the <a>UpdateWebACL</a> request will fail because the request tries to add a REGULAR rule with the specified ID, which does not exist. </p>
+-- * OverrideAction [WafOverrideAction] <p>Use the <code>OverrideAction</code> to test your <code>RuleGroup</code>.</p> <p>Any rule in a <code>RuleGroup</code> can potentially block a request. If you set the <code>OverrideAction</code> to <code>None</code>, the <code>RuleGroup</code> will block a request if any individual rule in the <code>RuleGroup</code> matches the request and is configured to block that request. However if you first want to test the <code>RuleGroup</code>, set the <code>OverrideAction</code> to <code>Count</code>. The <code>RuleGroup</code> will then override any block action specified by individual rules contained within the group. Instead of blocking matching requests, those requests will be counted. You can view a record of counted requests using <a>GetSampledRequests</a>. </p> <p> <code>ActivatedRule|OverrideAction</code> applies only when updating or adding a <code>RuleGroup</code> to a <code>WebACL</code>. In this case you do not use <code>ActivatedRule|Action</code>. For all other update requests, <code>ActivatedRule|Action</code> is used instead of <code>ActivatedRule|OverrideAction</code>.</p>
 -- * RuleId [ResourceId] <p>The <code>RuleId</code> for a <code>Rule</code>. You use <code>RuleId</code> to get more information about a <code>Rule</code> (see <a>GetRule</a>), update a <code>Rule</code> (see <a>UpdateRule</a>), insert a <code>Rule</code> into a <code>WebACL</code> or delete a one from a <code>WebACL</code> (see <a>UpdateWebACL</a>), or delete a <code>Rule</code> from AWS WAF (see <a>DeleteRule</a>).</p> <p> <code>RuleId</code> is returned by <a>CreateRule</a> and by <a>ListRules</a>.</p>
 -- Required key: Priority
 -- Required key: RuleId
--- Required key: Action
 -- @return ActivatedRule structure as a key-value pair table
 function M.ActivatedRule(args)
 	assert(args, "You must provide an argument table when creating ActivatedRule")
@@ -3742,9 +5492,54 @@ function M.ActivatedRule(args)
 		["Priority"] = args["Priority"],
 		["Action"] = args["Action"],
 		["Type"] = args["Type"],
+		["OverrideAction"] = args["OverrideAction"],
 		["RuleId"] = args["RuleId"],
 	}
 	asserts.AssertActivatedRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.RegexPatternSetUpdate = { ["Action"] = true, ["RegexPatternString"] = true, nil }
+
+function asserts.AssertRegexPatternSetUpdate(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RegexPatternSetUpdate to be of type 'table'")
+	assert(struct["Action"], "Expected key Action to exist in table")
+	assert(struct["RegexPatternString"], "Expected key RegexPatternString to exist in table")
+	if struct["Action"] then asserts.AssertChangeAction(struct["Action"]) end
+	if struct["RegexPatternString"] then asserts.AssertRegexPatternString(struct["RegexPatternString"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RegexPatternSetUpdate[k], "RegexPatternSetUpdate contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RegexPatternSetUpdate
+-- <p>In an <a>UpdateRegexPatternSet</a> request, <code>RegexPatternSetUpdate</code> specifies whether to insert or delete a <code>RegexPatternString</code> and includes the settings for the <code>RegexPatternString</code>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Action [ChangeAction] <p>Specifies whether to insert or delete a <code>RegexPatternString</code>.</p>
+-- * RegexPatternString [RegexPatternString] <p>Specifies the regular expression (regex) pattern that you want AWS WAF to search for, such as <code>B[a@]dB[o0]t</code>.</p>
+-- Required key: Action
+-- Required key: RegexPatternString
+-- @return RegexPatternSetUpdate structure as a key-value pair table
+function M.RegexPatternSetUpdate(args)
+	assert(args, "You must provide an argument table when creating RegexPatternSetUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Action"] = args["Action"],
+		["RegexPatternString"] = args["RegexPatternString"],
+	}
+	asserts.AssertRegexPatternSetUpdate(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3807,25 +5602,75 @@ function M.CreateWebACLRequest(args)
     }
 end
 
-keys.UpdateRuleResponse = { ["ChangeToken"] = true, nil }
+keys.DeleteByteMatchSetRequest = { ["ByteMatchSetId"] = true, ["ChangeToken"] = true, nil }
 
-function asserts.AssertUpdateRuleResponse(struct)
+function asserts.AssertDeleteByteMatchSetRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateRuleResponse to be of type 'table'")
+	assert(type(struct) == "table", "Expected DeleteByteMatchSetRequest to be of type 'table'")
+	assert(struct["ByteMatchSetId"], "Expected key ByteMatchSetId to exist in table")
+	assert(struct["ChangeToken"], "Expected key ChangeToken to exist in table")
+	if struct["ByteMatchSetId"] then asserts.AssertResourceId(struct["ByteMatchSetId"]) end
 	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.UpdateRuleResponse[k], "UpdateRuleResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteByteMatchSetRequest[k], "DeleteByteMatchSetRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type UpdateRuleResponse
+--- Create a structure of type DeleteByteMatchSetRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
--- @return UpdateRuleResponse structure as a key-value pair table
-function M.UpdateRuleResponse(args)
-	assert(args, "You must provide an argument table when creating UpdateRuleResponse")
+-- * ByteMatchSetId [ResourceId] <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to delete. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and by <a>ListByteMatchSets</a>.</p>
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- Required key: ByteMatchSetId
+-- Required key: ChangeToken
+-- @return DeleteByteMatchSetRequest structure as a key-value pair table
+function M.DeleteByteMatchSetRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteByteMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ByteMatchSetId"] = args["ByteMatchSetId"],
+		["ChangeToken"] = args["ChangeToken"],
+	}
+	asserts.AssertDeleteByteMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateRegexMatchSetRequest = { ["ChangeToken"] = true, ["Name"] = true, nil }
+
+function asserts.AssertCreateRegexMatchSetRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateRegexMatchSetRequest to be of type 'table'")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	assert(struct["ChangeToken"], "Expected key ChangeToken to exist in table")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateRegexMatchSetRequest[k], "CreateRegexMatchSetRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateRegexMatchSetRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>RegexMatchSet</a>. You can't change <code>Name</code> after you create a <code>RegexMatchSet</code>.</p>
+-- Required key: Name
+-- Required key: ChangeToken
+-- @return CreateRegexMatchSetRequest structure as a key-value pair table
+function M.CreateRegexMatchSetRequest(args)
+	assert(args, "You must provide an argument table when creating CreateRegexMatchSetRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -3834,8 +5679,9 @@ function M.UpdateRuleResponse(args)
     }
 	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
+		["Name"] = args["Name"],
 	}
-	asserts.AssertUpdateRuleResponse(all_args)
+	asserts.AssertCreateRegexMatchSetRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3884,31 +5730,80 @@ function M.ListSizeConstraintSetsRequest(args)
     }
 end
 
-keys.SqlInjectionMatchSetUpdate = { ["Action"] = true, ["SqlInjectionMatchTuple"] = true, nil }
+keys.UpdateRegexMatchSetRequest = { ["RegexMatchSetId"] = true, ["ChangeToken"] = true, ["Updates"] = true, nil }
 
-function asserts.AssertSqlInjectionMatchSetUpdate(struct)
+function asserts.AssertUpdateRegexMatchSetRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SqlInjectionMatchSetUpdate to be of type 'table'")
-	assert(struct["Action"], "Expected key Action to exist in table")
-	assert(struct["SqlInjectionMatchTuple"], "Expected key SqlInjectionMatchTuple to exist in table")
-	if struct["Action"] then asserts.AssertChangeAction(struct["Action"]) end
-	if struct["SqlInjectionMatchTuple"] then asserts.AssertSqlInjectionMatchTuple(struct["SqlInjectionMatchTuple"]) end
+	assert(type(struct) == "table", "Expected UpdateRegexMatchSetRequest to be of type 'table'")
+	assert(struct["RegexMatchSetId"], "Expected key RegexMatchSetId to exist in table")
+	assert(struct["Updates"], "Expected key Updates to exist in table")
+	assert(struct["ChangeToken"], "Expected key ChangeToken to exist in table")
+	if struct["RegexMatchSetId"] then asserts.AssertResourceId(struct["RegexMatchSetId"]) end
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	if struct["Updates"] then asserts.AssertRegexMatchSetUpdates(struct["Updates"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SqlInjectionMatchSetUpdate[k], "SqlInjectionMatchSetUpdate contains unknown key " .. tostring(k))
+		assert(keys.UpdateRegexMatchSetRequest[k], "UpdateRegexMatchSetRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SqlInjectionMatchSetUpdate
--- <p>Specifies the part of a web request that you want to inspect for snippets of malicious SQL code and indicates whether you want to add the specification to a <a>SqlInjectionMatchSet</a> or delete it from a <code>SqlInjectionMatchSet</code>.</p>
+--- Create a structure of type UpdateRegexMatchSetRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Action [ChangeAction] <p>Specify <code>INSERT</code> to add a <a>SqlInjectionMatchSetUpdate</a> to a <a>SqlInjectionMatchSet</a>. Use <code>DELETE</code> to remove a <code>SqlInjectionMatchSetUpdate</code> from a <code>SqlInjectionMatchSet</code>.</p>
--- * SqlInjectionMatchTuple [SqlInjectionMatchTuple] <p>Specifies the part of a web request that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.</p>
+-- * RegexMatchSetId [ResourceId] <p>The <code>RegexMatchSetId</code> of the <a>RegexMatchSet</a> that you want to update. <code>RegexMatchSetId</code> is returned by <a>CreateRegexMatchSet</a> and by <a>ListRegexMatchSets</a>.</p>
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Updates [RegexMatchSetUpdates] <p>An array of <code>RegexMatchSetUpdate</code> objects that you want to insert into or delete from a <a>RegexMatchSet</a>. For more information, see <a>RegexMatchTuple</a>.</p>
+-- Required key: RegexMatchSetId
+-- Required key: Updates
+-- Required key: ChangeToken
+-- @return UpdateRegexMatchSetRequest structure as a key-value pair table
+function M.UpdateRegexMatchSetRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateRegexMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RegexMatchSetId"] = args["RegexMatchSetId"],
+		["ChangeToken"] = args["ChangeToken"],
+		["Updates"] = args["Updates"],
+	}
+	asserts.AssertUpdateRegexMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.RuleGroupUpdate = { ["Action"] = true, ["ActivatedRule"] = true, nil }
+
+function asserts.AssertRuleGroupUpdate(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RuleGroupUpdate to be of type 'table'")
+	assert(struct["Action"], "Expected key Action to exist in table")
+	assert(struct["ActivatedRule"], "Expected key ActivatedRule to exist in table")
+	if struct["Action"] then asserts.AssertChangeAction(struct["Action"]) end
+	if struct["ActivatedRule"] then asserts.AssertActivatedRule(struct["ActivatedRule"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RuleGroupUpdate[k], "RuleGroupUpdate contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RuleGroupUpdate
+-- <p>Specifies an <code>ActivatedRule</code> and indicates whether you want to add it to a <code>RuleGroup</code> or delete it from a <code>RuleGroup</code>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Action [ChangeAction] <p>Specify <code>INSERT</code> to add an <code>ActivatedRule</code> to a <code>RuleGroup</code>. Use <code>DELETE</code> to remove an <code>ActivatedRule</code> from a <code>RuleGroup</code>.</p>
+-- * ActivatedRule [ActivatedRule] <p>The <code>ActivatedRule</code> object specifies a <code>Rule</code> that you want to insert or delete, the priority of the <code>Rule</code> in the <code>WebACL</code>, and the action that you want AWS WAF to take when a web request matches the <code>Rule</code> (<code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>).</p>
 -- Required key: Action
--- Required key: SqlInjectionMatchTuple
--- @return SqlInjectionMatchSetUpdate structure as a key-value pair table
-function M.SqlInjectionMatchSetUpdate(args)
-	assert(args, "You must provide an argument table when creating SqlInjectionMatchSetUpdate")
+-- Required key: ActivatedRule
+-- @return RuleGroupUpdate structure as a key-value pair table
+function M.RuleGroupUpdate(args)
+	assert(args, "You must provide an argument table when creating RuleGroupUpdate")
     local query_args = { 
     }
     local uri_args = { 
@@ -3917,9 +5812,46 @@ function M.SqlInjectionMatchSetUpdate(args)
     }
 	local all_args = { 
 		["Action"] = args["Action"],
-		["SqlInjectionMatchTuple"] = args["SqlInjectionMatchTuple"],
+		["ActivatedRule"] = args["ActivatedRule"],
 	}
-	asserts.AssertSqlInjectionMatchSetUpdate(all_args)
+	asserts.AssertRuleGroupUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateRuleGroupResponse = { ["ChangeToken"] = true, nil }
+
+function asserts.AssertUpdateRuleGroupResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateRuleGroupResponse to be of type 'table'")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateRuleGroupResponse[k], "UpdateRuleGroupResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateRuleGroupResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateRuleGroup</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return UpdateRuleGroupResponse structure as a key-value pair table
+function M.UpdateRuleGroupResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateRuleGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+	}
+	asserts.AssertUpdateRuleGroupResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3954,6 +5886,50 @@ function M.GetChangeTokenRequest(args)
 	local all_args = { 
 	}
 	asserts.AssertGetChangeTokenRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteRegexMatchSetRequest = { ["RegexMatchSetId"] = true, ["ChangeToken"] = true, nil }
+
+function asserts.AssertDeleteRegexMatchSetRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteRegexMatchSetRequest to be of type 'table'")
+	assert(struct["RegexMatchSetId"], "Expected key RegexMatchSetId to exist in table")
+	assert(struct["ChangeToken"], "Expected key ChangeToken to exist in table")
+	if struct["RegexMatchSetId"] then asserts.AssertResourceId(struct["RegexMatchSetId"]) end
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteRegexMatchSetRequest[k], "DeleteRegexMatchSetRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteRegexMatchSetRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegexMatchSetId [ResourceId] <p>The <code>RegexMatchSetId</code> of the <a>RegexMatchSet</a> that you want to delete. <code>RegexMatchSetId</code> is returned by <a>CreateRegexMatchSet</a> and by <a>ListRegexMatchSets</a>.</p>
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- Required key: RegexMatchSetId
+-- Required key: ChangeToken
+-- @return DeleteRegexMatchSetRequest structure as a key-value pair table
+function M.DeleteRegexMatchSetRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteRegexMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RegexMatchSetId"] = args["RegexMatchSetId"],
+		["ChangeToken"] = args["ChangeToken"],
+	}
+	asserts.AssertDeleteRegexMatchSetRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4006,6 +5982,90 @@ function M.CreateSqlInjectionMatchSetRequest(args)
     }
 end
 
+keys.CreateRuleGroupResponse = { ["RuleGroup"] = true, ["ChangeToken"] = true, nil }
+
+function asserts.AssertCreateRuleGroupResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateRuleGroupResponse to be of type 'table'")
+	if struct["RuleGroup"] then asserts.AssertRuleGroup(struct["RuleGroup"]) end
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateRuleGroupResponse[k], "CreateRuleGroupResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateRuleGroupResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RuleGroup [RuleGroup] <p>An empty <a>RuleGroup</a>.</p>
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateRuleGroup</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return CreateRuleGroupResponse structure as a key-value pair table
+function M.CreateRuleGroupResponse(args)
+	assert(args, "You must provide an argument table when creating CreateRuleGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RuleGroup"] = args["RuleGroup"],
+		["ChangeToken"] = args["ChangeToken"],
+	}
+	asserts.AssertCreateRuleGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SizeConstraintSetUpdate = { ["Action"] = true, ["SizeConstraint"] = true, nil }
+
+function asserts.AssertSizeConstraintSetUpdate(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SizeConstraintSetUpdate to be of type 'table'")
+	assert(struct["Action"], "Expected key Action to exist in table")
+	assert(struct["SizeConstraint"], "Expected key SizeConstraint to exist in table")
+	if struct["Action"] then asserts.AssertChangeAction(struct["Action"]) end
+	if struct["SizeConstraint"] then asserts.AssertSizeConstraint(struct["SizeConstraint"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SizeConstraintSetUpdate[k], "SizeConstraintSetUpdate contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SizeConstraintSetUpdate
+-- <p>Specifies the part of a web request that you want to inspect the size of and indicates whether you want to add the specification to a <a>SizeConstraintSet</a> or delete it from a <code>SizeConstraintSet</code>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Action [ChangeAction] <p>Specify <code>INSERT</code> to add a <a>SizeConstraintSetUpdate</a> to a <a>SizeConstraintSet</a>. Use <code>DELETE</code> to remove a <code>SizeConstraintSetUpdate</code> from a <code>SizeConstraintSet</code>.</p>
+-- * SizeConstraint [SizeConstraint] <p>Specifies a constraint on the size of a part of the web request. AWS WAF uses the <code>Size</code>, <code>ComparisonOperator</code>, and <code>FieldToMatch</code> to build an expression in the form of "<code>Size</code> <code>ComparisonOperator</code> size in bytes of <code>FieldToMatch</code>". If that expression is true, the <code>SizeConstraint</code> is considered to match.</p>
+-- Required key: Action
+-- Required key: SizeConstraint
+-- @return SizeConstraintSetUpdate structure as a key-value pair table
+function M.SizeConstraintSetUpdate(args)
+	assert(args, "You must provide an argument table when creating SizeConstraintSetUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Action"] = args["Action"],
+		["SizeConstraint"] = args["SizeConstraint"],
+	}
+	asserts.AssertSizeConstraintSetUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.CreateSizeConstraintSetRequest = { ["ChangeToken"] = true, ["Name"] = true, nil }
 
 function asserts.AssertCreateSizeConstraintSetRequest(struct)
@@ -4050,31 +6110,23 @@ function M.CreateSizeConstraintSetRequest(args)
     }
 end
 
-keys.SizeConstraintSetSummary = { ["SizeConstraintSetId"] = true, ["Name"] = true, nil }
+keys.PutPermissionPolicyResponse = { nil }
 
-function asserts.AssertSizeConstraintSetSummary(struct)
+function asserts.AssertPutPermissionPolicyResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SizeConstraintSetSummary to be of type 'table'")
-	assert(struct["SizeConstraintSetId"], "Expected key SizeConstraintSetId to exist in table")
-	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["SizeConstraintSetId"] then asserts.AssertResourceId(struct["SizeConstraintSetId"]) end
-	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
+	assert(type(struct) == "table", "Expected PutPermissionPolicyResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.SizeConstraintSetSummary[k], "SizeConstraintSetSummary contains unknown key " .. tostring(k))
+		assert(keys.PutPermissionPolicyResponse[k], "PutPermissionPolicyResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SizeConstraintSetSummary
--- <p>The <code>Id</code> and <code>Name</code> of a <code>SizeConstraintSet</code>.</p>
+--- Create a structure of type PutPermissionPolicyResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SizeConstraintSetId [ResourceId] <p>A unique identifier for a <code>SizeConstraintSet</code>. You use <code>SizeConstraintSetId</code> to get information about a <code>SizeConstraintSet</code> (see <a>GetSizeConstraintSet</a>), update a <code>SizeConstraintSet</code> (see <a>UpdateSizeConstraintSet</a>), insert a <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>SizeConstraintSet</code> from AWS WAF (see <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
--- * Name [ResourceName] <p>The name of the <code>SizeConstraintSet</code>, if any.</p>
--- Required key: SizeConstraintSetId
--- Required key: Name
--- @return SizeConstraintSetSummary structure as a key-value pair table
-function M.SizeConstraintSetSummary(args)
-	assert(args, "You must provide an argument table when creating SizeConstraintSetSummary")
+-- @return PutPermissionPolicyResponse structure as a key-value pair table
+function M.PutPermissionPolicyResponse(args)
+	assert(args, "You must provide an argument table when creating PutPermissionPolicyResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -4082,10 +6134,8 @@ function M.SizeConstraintSetSummary(args)
     local header_args = { 
     }
 	local all_args = { 
-		["SizeConstraintSetId"] = args["SizeConstraintSetId"],
-		["Name"] = args["Name"],
 	}
-	asserts.AssertSizeConstraintSetSummary(all_args)
+	asserts.AssertPutPermissionPolicyResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4134,27 +6184,27 @@ function M.ListSqlInjectionMatchSetsResponse(args)
     }
 end
 
-keys.ListSqlInjectionMatchSetsRequest = { ["NextMarker"] = true, ["Limit"] = true, nil }
+keys.GetGeoMatchSetRequest = { ["GeoMatchSetId"] = true, nil }
 
-function asserts.AssertListSqlInjectionMatchSetsRequest(struct)
+function asserts.AssertGetGeoMatchSetRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ListSqlInjectionMatchSetsRequest to be of type 'table'")
-	if struct["NextMarker"] then asserts.AssertNextMarker(struct["NextMarker"]) end
-	if struct["Limit"] then asserts.AssertPaginationLimit(struct["Limit"]) end
+	assert(type(struct) == "table", "Expected GetGeoMatchSetRequest to be of type 'table'")
+	assert(struct["GeoMatchSetId"], "Expected key GeoMatchSetId to exist in table")
+	if struct["GeoMatchSetId"] then asserts.AssertResourceId(struct["GeoMatchSetId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ListSqlInjectionMatchSetsRequest[k], "ListSqlInjectionMatchSetsRequest contains unknown key " .. tostring(k))
+		assert(keys.GetGeoMatchSetRequest[k], "GetGeoMatchSetRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ListSqlInjectionMatchSetsRequest
--- <p>A request to list the <a>SqlInjectionMatchSet</a> objects created by the current AWS account.</p>
+--- Create a structure of type GetGeoMatchSetRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <a>SqlInjectionMatchSet</a> objects than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>SqlInjectionMatchSets</code>. For the second and subsequent <code>ListSqlInjectionMatchSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>SqlInjectionMatchSets</code>.</p>
--- * Limit [PaginationLimit] <p>Specifies the number of <a>SqlInjectionMatchSet</a> objects that you want AWS WAF to return for this request. If you have more <code>SqlInjectionMatchSet</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.</p>
--- @return ListSqlInjectionMatchSetsRequest structure as a key-value pair table
-function M.ListSqlInjectionMatchSetsRequest(args)
-	assert(args, "You must provide an argument table when creating ListSqlInjectionMatchSetsRequest")
+-- * GeoMatchSetId [ResourceId] <p>The <code>GeoMatchSetId</code> of the <a>GeoMatchSet</a> that you want to get. <code>GeoMatchSetId</code> is returned by <a>CreateGeoMatchSet</a> and by <a>ListGeoMatchSets</a>.</p>
+-- Required key: GeoMatchSetId
+-- @return GetGeoMatchSetRequest structure as a key-value pair table
+function M.GetGeoMatchSetRequest(args)
+	assert(args, "You must provide an argument table when creating GetGeoMatchSetRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -4162,10 +6212,98 @@ function M.ListSqlInjectionMatchSetsRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["NextMarker"] = args["NextMarker"],
-		["Limit"] = args["Limit"],
+		["GeoMatchSetId"] = args["GeoMatchSetId"],
 	}
-	asserts.AssertListSqlInjectionMatchSetsRequest(all_args)
+	asserts.AssertGetGeoMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.HTTPRequest = { ["Country"] = true, ["URI"] = true, ["Headers"] = true, ["ClientIP"] = true, ["Method"] = true, ["HTTPVersion"] = true, nil }
+
+function asserts.AssertHTTPRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected HTTPRequest to be of type 'table'")
+	if struct["Country"] then asserts.AssertCountry(struct["Country"]) end
+	if struct["URI"] then asserts.AssertURIString(struct["URI"]) end
+	if struct["Headers"] then asserts.AssertHTTPHeaders(struct["Headers"]) end
+	if struct["ClientIP"] then asserts.AssertIPString(struct["ClientIP"]) end
+	if struct["Method"] then asserts.AssertHTTPMethod(struct["Method"]) end
+	if struct["HTTPVersion"] then asserts.AssertHTTPVersion(struct["HTTPVersion"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.HTTPRequest[k], "HTTPRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type HTTPRequest
+-- <p>The response from a <a>GetSampledRequests</a> request includes an <code>HTTPRequest</code> complex type that appears as <code>Request</code> in the response syntax. <code>HTTPRequest</code> contains information about one of the web requests that were returned by <code>GetSampledRequests</code>. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Country [Country] <p>The two-letter country code for the country that the request originated from. For a current list of country codes, see the Wikipedia entry <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>.</p>
+-- * URI [URIString] <p>The part of a web request that identifies the resource, for example, <code>/images/daily-ad.jpg</code>.</p>
+-- * Headers [HTTPHeaders] <p>A complex type that contains two values for each header in the sampled web request: the name of the header and the value of the header.</p>
+-- * ClientIP [IPString] <p>The IP address that the request originated from. If the <code>WebACL</code> is associated with a CloudFront distribution, this is the value of one of the following fields in CloudFront access logs:</p> <ul> <li> <p> <code>c-ip</code>, if the viewer did not use an HTTP proxy or a load balancer to send the request</p> </li> <li> <p> <code>x-forwarded-for</code>, if the viewer did use an HTTP proxy or a load balancer to send the request</p> </li> </ul>
+-- * Method [HTTPMethod] <p>The HTTP method specified in the sampled web request. CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>. </p>
+-- * HTTPVersion [HTTPVersion] <p>The HTTP version specified in the sampled web request, for example, <code>HTTP/1.1</code>.</p>
+-- @return HTTPRequest structure as a key-value pair table
+function M.HTTPRequest(args)
+	assert(args, "You must provide an argument table when creating HTTPRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Country"] = args["Country"],
+		["URI"] = args["URI"],
+		["Headers"] = args["Headers"],
+		["ClientIP"] = args["ClientIP"],
+		["Method"] = args["Method"],
+		["HTTPVersion"] = args["HTTPVersion"],
+	}
+	asserts.AssertHTTPRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetRegexPatternSetResponse = { ["RegexPatternSet"] = true, nil }
+
+function asserts.AssertGetRegexPatternSetResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetRegexPatternSetResponse to be of type 'table'")
+	if struct["RegexPatternSet"] then asserts.AssertRegexPatternSet(struct["RegexPatternSet"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetRegexPatternSetResponse[k], "GetRegexPatternSetResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetRegexPatternSetResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegexPatternSet [RegexPatternSet] <p>Information about the <a>RegexPatternSet</a> that you specified in the <code>GetRegexPatternSet</code> request, including the identifier of the pattern set and the regular expression patterns you want AWS WAF to search for. </p>
+-- @return GetRegexPatternSetResponse structure as a key-value pair table
+function M.GetRegexPatternSetResponse(args)
+	assert(args, "You must provide an argument table when creating GetRegexPatternSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RegexPatternSet"] = args["RegexPatternSet"],
+	}
+	asserts.AssertGetRegexPatternSetResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4206,6 +6344,53 @@ function M.ListWebACLsRequest(args)
 		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListWebACLsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.XssMatchSet = { ["XssMatchTuples"] = true, ["XssMatchSetId"] = true, ["Name"] = true, nil }
+
+function asserts.AssertXssMatchSet(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected XssMatchSet to be of type 'table'")
+	assert(struct["XssMatchSetId"], "Expected key XssMatchSetId to exist in table")
+	assert(struct["XssMatchTuples"], "Expected key XssMatchTuples to exist in table")
+	if struct["XssMatchTuples"] then asserts.AssertXssMatchTuples(struct["XssMatchTuples"]) end
+	if struct["XssMatchSetId"] then asserts.AssertResourceId(struct["XssMatchSetId"]) end
+	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.XssMatchSet[k], "XssMatchSet contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type XssMatchSet
+-- <p>A complex type that contains <code>XssMatchTuple</code> objects, which specify the parts of web requests that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header. If a <code>XssMatchSet</code> contains more than one <code>XssMatchTuple</code> object, a request needs to include cross-site scripting attacks in only one of the specified parts of the request to be considered a match.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * XssMatchTuples [XssMatchTuples] <p>Specifies the parts of web requests that you want to inspect for cross-site scripting attacks.</p>
+-- * XssMatchSetId [ResourceId] <p>A unique identifier for an <code>XssMatchSet</code>. You use <code>XssMatchSetId</code> to get information about an <code>XssMatchSet</code> (see <a>GetXssMatchSet</a>), update an <code>XssMatchSet</code> (see <a>UpdateXssMatchSet</a>), insert an <code>XssMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>XssMatchSet</code> from AWS WAF (see <a>DeleteXssMatchSet</a>).</p> <p> <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by <a>ListXssMatchSets</a>.</p>
+-- * Name [ResourceName] <p>The name, if any, of the <code>XssMatchSet</code>.</p>
+-- Required key: XssMatchSetId
+-- Required key: XssMatchTuples
+-- @return XssMatchSet structure as a key-value pair table
+function M.XssMatchSet(args)
+	assert(args, "You must provide an argument table when creating XssMatchSet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["XssMatchTuples"] = args["XssMatchTuples"],
+		["XssMatchSetId"] = args["XssMatchSetId"],
+		["Name"] = args["Name"],
+	}
+	asserts.AssertXssMatchSet(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4409,6 +6594,50 @@ function M.GetSizeConstraintSetResponse(args)
     }
 end
 
+keys.RegexMatchSetSummary = { ["RegexMatchSetId"] = true, ["Name"] = true, nil }
+
+function asserts.AssertRegexMatchSetSummary(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RegexMatchSetSummary to be of type 'table'")
+	assert(struct["RegexMatchSetId"], "Expected key RegexMatchSetId to exist in table")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	if struct["RegexMatchSetId"] then asserts.AssertResourceId(struct["RegexMatchSetId"]) end
+	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RegexMatchSetSummary[k], "RegexMatchSetSummary contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RegexMatchSetSummary
+-- <p>Returned by <a>ListRegexMatchSets</a>. Each <code>RegexMatchSetSummary</code> object includes the <code>Name</code> and <code>RegexMatchSetId</code> for one <a>RegexMatchSet</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegexMatchSetId [ResourceId] <p>The <code>RegexMatchSetId</code> for a <code>RegexMatchSet</code>. You use <code>RegexMatchSetId</code> to get information about a <code>RegexMatchSet</code>, update a <code>RegexMatchSet</code>, remove a <code>RegexMatchSet</code> from a <code>Rule</code>, and delete a <code>RegexMatchSet</code> from AWS WAF.</p> <p> <code>RegexMatchSetId</code> is returned by <a>CreateRegexMatchSet</a> and by <a>ListRegexMatchSets</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>RegexMatchSet</a>. You can't change <code>Name</code> after you create a <code>RegexMatchSet</code>.</p>
+-- Required key: RegexMatchSetId
+-- Required key: Name
+-- @return RegexMatchSetSummary structure as a key-value pair table
+function M.RegexMatchSetSummary(args)
+	assert(args, "You must provide an argument table when creating RegexMatchSetSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RegexMatchSetId"] = args["RegexMatchSetId"],
+		["Name"] = args["Name"],
+	}
+	asserts.AssertRegexMatchSetSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListRulesResponse = { ["Rules"] = true, ["NextMarker"] = true, nil }
 
 function asserts.AssertListRulesResponse(struct)
@@ -4530,6 +6759,93 @@ function M.GetRuleResponse(args)
     }
 end
 
+keys.ListRuleGroupsResponse = { ["RuleGroups"] = true, ["NextMarker"] = true, nil }
+
+function asserts.AssertListRuleGroupsResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListRuleGroupsResponse to be of type 'table'")
+	if struct["RuleGroups"] then asserts.AssertRuleGroupSummaries(struct["RuleGroups"]) end
+	if struct["NextMarker"] then asserts.AssertNextMarker(struct["NextMarker"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListRuleGroupsResponse[k], "ListRuleGroupsResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListRuleGroupsResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RuleGroups [RuleGroupSummaries] <p>An array of <a>RuleGroup</a> objects.</p>
+-- * NextMarker [NextMarker] <p>If you have more <code>RuleGroups</code> than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>RuleGroups</code>, submit another <code>ListRuleGroups</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
+-- @return ListRuleGroupsResponse structure as a key-value pair table
+function M.ListRuleGroupsResponse(args)
+	assert(args, "You must provide an argument table when creating ListRuleGroupsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RuleGroups"] = args["RuleGroups"],
+		["NextMarker"] = args["NextMarker"],
+	}
+	asserts.AssertListRuleGroupsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SizeConstraintSet = { ["SizeConstraints"] = true, ["SizeConstraintSetId"] = true, ["Name"] = true, nil }
+
+function asserts.AssertSizeConstraintSet(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SizeConstraintSet to be of type 'table'")
+	assert(struct["SizeConstraintSetId"], "Expected key SizeConstraintSetId to exist in table")
+	assert(struct["SizeConstraints"], "Expected key SizeConstraints to exist in table")
+	if struct["SizeConstraints"] then asserts.AssertSizeConstraints(struct["SizeConstraints"]) end
+	if struct["SizeConstraintSetId"] then asserts.AssertResourceId(struct["SizeConstraintSetId"]) end
+	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SizeConstraintSet[k], "SizeConstraintSet contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SizeConstraintSet
+-- <p>A complex type that contains <code>SizeConstraint</code> objects, which specify the parts of web requests that you want AWS WAF to inspect the size of. If a <code>SizeConstraintSet</code> contains more than one <code>SizeConstraint</code> object, a request only needs to match one constraint to be considered a match.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SizeConstraints [SizeConstraints] <p>Specifies the parts of web requests that you want to inspect the size of.</p>
+-- * SizeConstraintSetId [ResourceId] <p>A unique identifier for a <code>SizeConstraintSet</code>. You use <code>SizeConstraintSetId</code> to get information about a <code>SizeConstraintSet</code> (see <a>GetSizeConstraintSet</a>), update a <code>SizeConstraintSet</code> (see <a>UpdateSizeConstraintSet</a>), insert a <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>SizeConstraintSet</code> from AWS WAF (see <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
+-- * Name [ResourceName] <p>The name, if any, of the <code>SizeConstraintSet</code>.</p>
+-- Required key: SizeConstraintSetId
+-- Required key: SizeConstraints
+-- @return SizeConstraintSet structure as a key-value pair table
+function M.SizeConstraintSet(args)
+	assert(args, "You must provide an argument table when creating SizeConstraintSet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SizeConstraints"] = args["SizeConstraints"],
+		["SizeConstraintSetId"] = args["SizeConstraintSetId"],
+		["Name"] = args["Name"],
+	}
+	asserts.AssertSizeConstraintSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListByteMatchSetsRequest = { ["NextMarker"] = true, ["Limit"] = true, nil }
 
 function asserts.AssertListByteMatchSetsRequest(struct)
@@ -4570,27 +6886,27 @@ function M.ListByteMatchSetsRequest(args)
     }
 end
 
-keys.CreateRateBasedRuleResponse = { ["ChangeToken"] = true, ["Rule"] = true, nil }
+keys.CreateIPSetResponse = { ["IPSet"] = true, ["ChangeToken"] = true, nil }
 
-function asserts.AssertCreateRateBasedRuleResponse(struct)
+function asserts.AssertCreateIPSetResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected CreateRateBasedRuleResponse to be of type 'table'")
+	assert(type(struct) == "table", "Expected CreateIPSetResponse to be of type 'table'")
+	if struct["IPSet"] then asserts.AssertIPSet(struct["IPSet"]) end
 	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
-	if struct["Rule"] then asserts.AssertRateBasedRule(struct["Rule"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.CreateRateBasedRuleResponse[k], "CreateRateBasedRuleResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateIPSetResponse[k], "CreateIPSetResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type CreateRateBasedRuleResponse
+--- Create a structure of type CreateIPSetResponse
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateRateBasedRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
--- * Rule [RateBasedRule] <p>The <a>RateBasedRule</a> that is returned in the <code>CreateRateBasedRule</code> response.</p>
--- @return CreateRateBasedRuleResponse structure as a key-value pair table
-function M.CreateRateBasedRuleResponse(args)
-	assert(args, "You must provide an argument table when creating CreateRateBasedRuleResponse")
+-- * IPSet [IPSet] <p>The <a>IPSet</a> returned in the <code>CreateIPSet</code> response.</p>
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateIPSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return CreateIPSetResponse structure as a key-value pair table
+function M.CreateIPSetResponse(args)
+	assert(args, "You must provide an argument table when creating CreateIPSetResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -4598,10 +6914,10 @@ function M.CreateRateBasedRuleResponse(args)
     local header_args = { 
     }
 	local all_args = { 
+		["IPSet"] = args["IPSet"],
 		["ChangeToken"] = args["ChangeToken"],
-		["Rule"] = args["Rule"],
 	}
-	asserts.AssertCreateRateBasedRuleResponse(all_args)
+	asserts.AssertCreateIPSetResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4670,7 +6986,7 @@ function asserts.AssertIPSet(struct)
 end
 
 --- Create a structure of type IPSet
--- <p>Contains one or more IP addresses or blocks of IP addresses specified in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports /8, /16, /24, and /32 IP address ranges for IPv4, and /24, /32, /48, /56, /64 and /128 for IPv6.</p> <p>To specify an individual IP address, you specify the four-part IP address followed by a <code>/32</code>, for example, 192.0.2.0/31. To block a range of IP addresses, you can specify a <code>/128</code>, <code>/64</code>, <code>/56</code>, <code>/48</code>, <code>/32</code>, <code>/24</code>, <code>/16</code>, or <code>/8</code> CIDR. For more information about CIDR notation, see the Wikipedia entry <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless Inter-Domain Routing</a>. </p>
+-- <p>Contains one or more IP addresses or blocks of IP addresses specified in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports IPv4 address ranges: /8 and any range between /16 through /32. AWS WAF supports IPv6 address ranges: /16, /24, /32, /48, /56, /64, and /128.</p> <p>To specify an individual IP address, you specify the four-part IP address followed by a <code>/32</code>, for example, 192.0.2.0/31. To block a range of IP addresses, you can specify /8 or any range between /16 through /32 (for IPv4) or /16, /24, /32, /48, /56, /64, or /128 (for IPv6). For more information about CIDR notation, see the Wikipedia entry <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless Inter-Domain Routing</a>. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * IPSetId [ResourceId] <p>The <code>IPSetId</code> for an <code>IPSet</code>. You use <code>IPSetId</code> to get information about an <code>IPSet</code> (see <a>GetIPSet</a>), update an <code>IPSet</code> (see <a>UpdateIPSet</a>), insert an <code>IPSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>IPSet</code> from AWS WAF (see <a>DeleteIPSet</a>).</p> <p> <code>IPSetId</code> is returned by <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
@@ -4693,6 +7009,43 @@ function M.IPSet(args)
 		["IPSetDescriptors"] = args["IPSetDescriptors"],
 	}
 	asserts.AssertIPSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.PutLoggingConfigurationResponse = { ["LoggingConfiguration"] = true, nil }
+
+function asserts.AssertPutLoggingConfigurationResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PutLoggingConfigurationResponse to be of type 'table'")
+	if struct["LoggingConfiguration"] then asserts.AssertLoggingConfiguration(struct["LoggingConfiguration"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PutLoggingConfigurationResponse[k], "PutLoggingConfigurationResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PutLoggingConfigurationResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoggingConfiguration [LoggingConfiguration] <p>The <a>LoggingConfiguration</a> that you submitted in the request.</p>
+-- @return PutLoggingConfigurationResponse structure as a key-value pair table
+function M.PutLoggingConfigurationResponse(args)
+	assert(args, "You must provide an argument table when creating PutLoggingConfigurationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["LoggingConfiguration"] = args["LoggingConfiguration"],
+	}
+	asserts.AssertPutLoggingConfigurationResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4737,49 +7090,6 @@ function M.ByteMatchSetSummary(args)
 		["Name"] = args["Name"],
 	}
 	asserts.AssertByteMatchSetSummary(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.WAFInvalidParameterException = { ["field"] = true, ["reason"] = true, ["parameter"] = true, nil }
-
-function asserts.AssertWAFInvalidParameterException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected WAFInvalidParameterException to be of type 'table'")
-	if struct["field"] then asserts.AssertParameterExceptionField(struct["field"]) end
-	if struct["reason"] then asserts.AssertParameterExceptionReason(struct["reason"]) end
-	if struct["parameter"] then asserts.AssertParameterExceptionParameter(struct["parameter"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.WAFInvalidParameterException[k], "WAFInvalidParameterException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type WAFInvalidParameterException
--- <p>The operation failed because AWS WAF didn't recognize a parameter in the request. For example:</p> <ul> <li> <p>You specified an invalid parameter name.</p> </li> <li> <p>You specified an invalid value.</p> </li> <li> <p>You tried to update an object (<code>ByteMatchSet</code>, <code>IPSet</code>, <code>Rule</code>, or <code>WebACL</code>) using an action other than <code>INSERT</code> or <code>DELETE</code>.</p> </li> <li> <p>You tried to create a <code>WebACL</code> with a <code>DefaultAction</code> <code>Type</code> other than <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.</p> </li> <li> <p>You tried to create a <code>RateBasedRule</code> with a <code>RateKey</code> value other than <code>IP</code>.</p> </li> <li> <p>You tried to update a <code>WebACL</code> with a <code>WafAction</code> <code>Type</code> other than <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.</p> </li> <li> <p>You tried to update a <code>ByteMatchSet</code> with a <code>FieldToMatch</code> <code>Type</code> other than HEADER, QUERY_STRING, or URI.</p> </li> <li> <p>You tried to update a <code>ByteMatchSet</code> with a <code>Field</code> of <code>HEADER</code> but no value for <code>Data</code>.</p> </li> <li> <p>Your request references an ARN that is malformed, or corresponds to a resource with which a web ACL cannot be associated.</p> </li> </ul>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * field [ParameterExceptionField] 
--- * reason [ParameterExceptionReason] 
--- * parameter [ParameterExceptionParameter] 
--- @return WAFInvalidParameterException structure as a key-value pair table
-function M.WAFInvalidParameterException(args)
-	assert(args, "You must provide an argument table when creating WAFInvalidParameterException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["field"] = args["field"],
-		["reason"] = args["reason"],
-		["parameter"] = args["parameter"],
-	}
-	asserts.AssertWAFInvalidParameterException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4908,25 +7218,27 @@ function M.UpdateSqlInjectionMatchSetResponse(args)
     }
 end
 
-keys.WAFNonEmptyEntityException = { ["message"] = true, nil }
+keys.ListGeoMatchSetsResponse = { ["GeoMatchSets"] = true, ["NextMarker"] = true, nil }
 
-function asserts.AssertWAFNonEmptyEntityException(struct)
+function asserts.AssertListGeoMatchSetsResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected WAFNonEmptyEntityException to be of type 'table'")
-	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected ListGeoMatchSetsResponse to be of type 'table'")
+	if struct["GeoMatchSets"] then asserts.AssertGeoMatchSetSummaries(struct["GeoMatchSets"]) end
+	if struct["NextMarker"] then asserts.AssertNextMarker(struct["NextMarker"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.WAFNonEmptyEntityException[k], "WAFNonEmptyEntityException contains unknown key " .. tostring(k))
+		assert(keys.ListGeoMatchSetsResponse[k], "ListGeoMatchSetsResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type WAFNonEmptyEntityException
--- <p>The operation failed because you tried to delete an object that isn't empty. For example:</p> <ul> <li> <p>You tried to delete a <code>WebACL</code> that still contains one or more <code>Rule</code> objects.</p> </li> <li> <p>You tried to delete a <code>Rule</code> that still contains one or more <code>ByteMatchSet</code> objects or other predicates.</p> </li> <li> <p>You tried to delete a <code>ByteMatchSet</code> that contains one or more <code>ByteMatchTuple</code> objects.</p> </li> <li> <p>You tried to delete an <code>IPSet</code> that references one or more IP addresses.</p> </li> </ul>
+--- Create a structure of type ListGeoMatchSetsResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [errorMessage] 
--- @return WAFNonEmptyEntityException structure as a key-value pair table
-function M.WAFNonEmptyEntityException(args)
-	assert(args, "You must provide an argument table when creating WAFNonEmptyEntityException")
+-- * GeoMatchSets [GeoMatchSetSummaries] <p>An array of <a>GeoMatchSetSummary</a> objects.</p>
+-- * NextMarker [NextMarker] <p>If you have more <code>GeoMatchSet</code> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>GeoMatchSet</code> objects, submit another <code>ListGeoMatchSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
+-- @return ListGeoMatchSetsResponse structure as a key-value pair table
+function M.ListGeoMatchSetsResponse(args)
+	assert(args, "You must provide an argument table when creating ListGeoMatchSetsResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -4934,93 +7246,10 @@ function M.WAFNonEmptyEntityException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["GeoMatchSets"] = args["GeoMatchSets"],
+		["NextMarker"] = args["NextMarker"],
 	}
-	asserts.AssertWAFNonEmptyEntityException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.WAFStaleDataException = { ["message"] = true, nil }
-
-function asserts.AssertWAFStaleDataException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected WAFStaleDataException to be of type 'table'")
-	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.WAFStaleDataException[k], "WAFStaleDataException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type WAFStaleDataException
--- <p>The operation failed because you tried to create, update, or delete an object by using a change token that has already been used.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [errorMessage] 
--- @return WAFStaleDataException structure as a key-value pair table
-function M.WAFStaleDataException(args)
-	assert(args, "You must provide an argument table when creating WAFStaleDataException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertWAFStaleDataException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SizeConstraintSet = { ["SizeConstraints"] = true, ["SizeConstraintSetId"] = true, ["Name"] = true, nil }
-
-function asserts.AssertSizeConstraintSet(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SizeConstraintSet to be of type 'table'")
-	assert(struct["SizeConstraintSetId"], "Expected key SizeConstraintSetId to exist in table")
-	assert(struct["SizeConstraints"], "Expected key SizeConstraints to exist in table")
-	if struct["SizeConstraints"] then asserts.AssertSizeConstraints(struct["SizeConstraints"]) end
-	if struct["SizeConstraintSetId"] then asserts.AssertResourceId(struct["SizeConstraintSetId"]) end
-	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.SizeConstraintSet[k], "SizeConstraintSet contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SizeConstraintSet
--- <p>A complex type that contains <code>SizeConstraint</code> objects, which specify the parts of web requests that you want AWS WAF to inspect the size of. If a <code>SizeConstraintSet</code> contains more than one <code>SizeConstraint</code> object, a request only needs to match one constraint to be considered a match.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * SizeConstraints [SizeConstraints] <p>Specifies the parts of web requests that you want to inspect the size of.</p>
--- * SizeConstraintSetId [ResourceId] <p>A unique identifier for a <code>SizeConstraintSet</code>. You use <code>SizeConstraintSetId</code> to get information about a <code>SizeConstraintSet</code> (see <a>GetSizeConstraintSet</a>), update a <code>SizeConstraintSet</code> (see <a>UpdateSizeConstraintSet</a>), insert a <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>SizeConstraintSet</code> from AWS WAF (see <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
--- * Name [ResourceName] <p>The name, if any, of the <code>SizeConstraintSet</code>.</p>
--- Required key: SizeConstraintSetId
--- Required key: SizeConstraints
--- @return SizeConstraintSet structure as a key-value pair table
-function M.SizeConstraintSet(args)
-	assert(args, "You must provide an argument table when creating SizeConstraintSet")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["SizeConstraints"] = args["SizeConstraints"],
-		["SizeConstraintSetId"] = args["SizeConstraintSetId"],
-		["Name"] = args["Name"],
-	}
-	asserts.AssertSizeConstraintSet(all_args)
+	asserts.AssertListGeoMatchSetsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5052,7 +7281,7 @@ end
 -- * DefaultAction [WafAction] <p>A default action for the web ACL, either ALLOW or BLOCK. AWS WAF performs the default action if a request doesn't match the criteria in any of the rules in a web ACL.</p>
 -- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
 -- * WebACLId [ResourceId] <p>The <code>WebACLId</code> of the <a>WebACL</a> that you want to update. <code>WebACLId</code> is returned by <a>CreateWebACL</a> and by <a>ListWebACLs</a>.</p>
--- * Updates [WebACLUpdates] <p>An array of updates to make to the <a>WebACL</a>.</p> <p>An array of <code>WebACLUpdate</code> objects that you want to insert into or delete from a <a>WebACL</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>WebACLUpdate</a>: Contains <code>Action</code> and <code>ActivatedRule</code> </p> </li> <li> <p> <a>ActivatedRule</a>: Contains <code>Action</code>, <code>Priority</code>, <code>RuleId</code>, and <code>Type</code> </p> </li> <li> <p> <a>WafAction</a>: Contains <code>Type</code> </p> </li> </ul>
+-- * Updates [WebACLUpdates] <p>An array of updates to make to the <a>WebACL</a>.</p> <p>An array of <code>WebACLUpdate</code> objects that you want to insert into or delete from a <a>WebACL</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>WebACLUpdate</a>: Contains <code>Action</code> and <code>ActivatedRule</code> </p> </li> <li> <p> <a>ActivatedRule</a>: Contains <code>Action</code>, <code>OverrideAction</code>, <code>Priority</code>, <code>RuleId</code>, and <code>Type</code>. <code>ActivatedRule|OverrideAction</code> applies only when updating or adding a <code>RuleGroup</code> to a <code>WebACL</code>. In this case you do not use <code>ActivatedRule|Action</code>. For all other update requests, <code>ActivatedRule|Action</code> is used instead of <code>ActivatedRule|OverrideAction</code>. </p> </li> <li> <p> <a>WafAction</a>: Contains <code>Type</code> </p> </li> </ul>
 -- Required key: WebACLId
 -- Required key: ChangeToken
 -- @return UpdateWebACLRequest structure as a key-value pair table
@@ -5071,6 +7300,171 @@ function M.UpdateWebACLRequest(args)
 		["Updates"] = args["Updates"],
 	}
 	asserts.AssertUpdateWebACLRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListRegexPatternSetsResponse = { ["NextMarker"] = true, ["RegexPatternSets"] = true, nil }
+
+function asserts.AssertListRegexPatternSetsResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListRegexPatternSetsResponse to be of type 'table'")
+	if struct["NextMarker"] then asserts.AssertNextMarker(struct["NextMarker"]) end
+	if struct["RegexPatternSets"] then asserts.AssertRegexPatternSetSummaries(struct["RegexPatternSets"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListRegexPatternSetsResponse[k], "ListRegexPatternSetsResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListRegexPatternSetsResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [NextMarker] <p>If you have more <code>RegexPatternSet</code> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>RegexPatternSet</code> objects, submit another <code>ListRegexPatternSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
+-- * RegexPatternSets [RegexPatternSetSummaries] <p>An array of <a>RegexPatternSetSummary</a> objects.</p>
+-- @return ListRegexPatternSetsResponse structure as a key-value pair table
+function M.ListRegexPatternSetsResponse(args)
+	assert(args, "You must provide an argument table when creating ListRegexPatternSetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextMarker"] = args["NextMarker"],
+		["RegexPatternSets"] = args["RegexPatternSets"],
+	}
+	asserts.AssertListRegexPatternSetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateRegexPatternSetRequest = { ["RegexPatternSetId"] = true, ["ChangeToken"] = true, ["Updates"] = true, nil }
+
+function asserts.AssertUpdateRegexPatternSetRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateRegexPatternSetRequest to be of type 'table'")
+	assert(struct["RegexPatternSetId"], "Expected key RegexPatternSetId to exist in table")
+	assert(struct["Updates"], "Expected key Updates to exist in table")
+	assert(struct["ChangeToken"], "Expected key ChangeToken to exist in table")
+	if struct["RegexPatternSetId"] then asserts.AssertResourceId(struct["RegexPatternSetId"]) end
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	if struct["Updates"] then asserts.AssertRegexPatternSetUpdates(struct["Updates"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateRegexPatternSetRequest[k], "UpdateRegexPatternSetRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateRegexPatternSetRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegexPatternSetId [ResourceId] <p>The <code>RegexPatternSetId</code> of the <a>RegexPatternSet</a> that you want to update. <code>RegexPatternSetId</code> is returned by <a>CreateRegexPatternSet</a> and by <a>ListRegexPatternSets</a>.</p>
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Updates [RegexPatternSetUpdates] <p>An array of <code>RegexPatternSetUpdate</code> objects that you want to insert into or delete from a <a>RegexPatternSet</a>.</p>
+-- Required key: RegexPatternSetId
+-- Required key: Updates
+-- Required key: ChangeToken
+-- @return UpdateRegexPatternSetRequest structure as a key-value pair table
+function M.UpdateRegexPatternSetRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateRegexPatternSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RegexPatternSetId"] = args["RegexPatternSetId"],
+		["ChangeToken"] = args["ChangeToken"],
+		["Updates"] = args["Updates"],
+	}
+	asserts.AssertUpdateRegexPatternSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateIPSetResponse = { ["ChangeToken"] = true, nil }
+
+function asserts.AssertUpdateIPSetResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateIPSetResponse to be of type 'table'")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateIPSetResponse[k], "UpdateIPSetResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateIPSetResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateIPSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return UpdateIPSetResponse structure as a key-value pair table
+function M.UpdateIPSetResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateIPSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+	}
+	asserts.AssertUpdateIPSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetRegexPatternSetRequest = { ["RegexPatternSetId"] = true, nil }
+
+function asserts.AssertGetRegexPatternSetRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetRegexPatternSetRequest to be of type 'table'")
+	assert(struct["RegexPatternSetId"], "Expected key RegexPatternSetId to exist in table")
+	if struct["RegexPatternSetId"] then asserts.AssertResourceId(struct["RegexPatternSetId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetRegexPatternSetRequest[k], "GetRegexPatternSetRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetRegexPatternSetRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegexPatternSetId [ResourceId] <p>The <code>RegexPatternSetId</code> of the <a>RegexPatternSet</a> that you want to get. <code>RegexPatternSetId</code> is returned by <a>CreateRegexPatternSet</a> and by <a>ListRegexPatternSets</a>.</p>
+-- Required key: RegexPatternSetId
+-- @return GetRegexPatternSetRequest structure as a key-value pair table
+function M.GetRegexPatternSetRequest(args)
+	assert(args, "You must provide an argument table when creating GetRegexPatternSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RegexPatternSetId"] = args["RegexPatternSetId"],
+	}
+	asserts.AssertGetRegexPatternSetRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5123,27 +7517,27 @@ function M.XssMatchSetUpdate(args)
     }
 end
 
-keys.CreateIPSetResponse = { ["IPSet"] = true, ["ChangeToken"] = true, nil }
+keys.CreateRateBasedRuleResponse = { ["ChangeToken"] = true, ["Rule"] = true, nil }
 
-function asserts.AssertCreateIPSetResponse(struct)
+function asserts.AssertCreateRateBasedRuleResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected CreateIPSetResponse to be of type 'table'")
-	if struct["IPSet"] then asserts.AssertIPSet(struct["IPSet"]) end
+	assert(type(struct) == "table", "Expected CreateRateBasedRuleResponse to be of type 'table'")
 	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	if struct["Rule"] then asserts.AssertRateBasedRule(struct["Rule"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.CreateIPSetResponse[k], "CreateIPSetResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateRateBasedRuleResponse[k], "CreateRateBasedRuleResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type CreateIPSetResponse
+--- Create a structure of type CreateRateBasedRuleResponse
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * IPSet [IPSet] <p>The <a>IPSet</a> returned in the <code>CreateIPSet</code> response.</p>
--- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateIPSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
--- @return CreateIPSetResponse structure as a key-value pair table
-function M.CreateIPSetResponse(args)
-	assert(args, "You must provide an argument table when creating CreateIPSetResponse")
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateRateBasedRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- * Rule [RateBasedRule] <p>The <a>RateBasedRule</a> that is returned in the <code>CreateRateBasedRule</code> response.</p>
+-- @return CreateRateBasedRuleResponse structure as a key-value pair table
+function M.CreateRateBasedRuleResponse(args)
+	assert(args, "You must provide an argument table when creating CreateRateBasedRuleResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -5151,10 +7545,10 @@ function M.CreateIPSetResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["IPSet"] = args["IPSet"],
 		["ChangeToken"] = args["ChangeToken"],
+		["Rule"] = args["Rule"],
 	}
-	asserts.AssertCreateIPSetResponse(all_args)
+	asserts.AssertCreateRateBasedRuleResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5331,6 +7725,43 @@ function M.ListRateBasedRulesResponse(args)
     }
 end
 
+keys.DeleteRegexMatchSetResponse = { ["ChangeToken"] = true, nil }
+
+function asserts.AssertDeleteRegexMatchSetResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteRegexMatchSetResponse to be of type 'table'")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteRegexMatchSetResponse[k], "DeleteRegexMatchSetResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteRegexMatchSetResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteRegexMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return DeleteRegexMatchSetResponse structure as a key-value pair table
+function M.DeleteRegexMatchSetResponse(args)
+	assert(args, "You must provide an argument table when creating DeleteRegexMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+	}
+	asserts.AssertDeleteRegexMatchSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListSizeConstraintSetsResponse = { ["NextMarker"] = true, ["SizeConstraintSets"] = true, nil }
 
 function asserts.AssertListSizeConstraintSetsResponse(struct)
@@ -5371,25 +7802,27 @@ function M.ListSizeConstraintSetsResponse(args)
     }
 end
 
-keys.WAFNonexistentItemException = { ["message"] = true, nil }
+keys.ListRegexMatchSetsRequest = { ["NextMarker"] = true, ["Limit"] = true, nil }
 
-function asserts.AssertWAFNonexistentItemException(struct)
+function asserts.AssertListRegexMatchSetsRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected WAFNonexistentItemException to be of type 'table'")
-	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected ListRegexMatchSetsRequest to be of type 'table'")
+	if struct["NextMarker"] then asserts.AssertNextMarker(struct["NextMarker"]) end
+	if struct["Limit"] then asserts.AssertPaginationLimit(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.WAFNonexistentItemException[k], "WAFNonexistentItemException contains unknown key " .. tostring(k))
+		assert(keys.ListRegexMatchSetsRequest[k], "ListRegexMatchSetsRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type WAFNonexistentItemException
--- <p>The operation failed because the referenced object doesn't exist.</p>
+--- Create a structure of type ListRegexMatchSetsRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [errorMessage] 
--- @return WAFNonexistentItemException structure as a key-value pair table
-function M.WAFNonexistentItemException(args)
-	assert(args, "You must provide an argument table when creating WAFNonexistentItemException")
+-- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>RegexMatchSet</code> objects than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>ByteMatchSets</code>. For the second and subsequent <code>ListRegexMatchSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>RegexMatchSet</code> objects.</p>
+-- * Limit [PaginationLimit] <p>Specifies the number of <code>RegexMatchSet</code> objects that you want AWS WAF to return for this request. If you have more <code>RegexMatchSet</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>RegexMatchSet</code> objects.</p>
+-- @return ListRegexMatchSetsRequest structure as a key-value pair table
+function M.ListRegexMatchSetsRequest(args)
+	assert(args, "You must provide an argument table when creating ListRegexMatchSetsRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -5397,9 +7830,10 @@ function M.WAFNonexistentItemException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["NextMarker"] = args["NextMarker"],
+		["Limit"] = args["Limit"],
 	}
-	asserts.AssertWAFNonexistentItemException(all_args)
+	asserts.AssertListRegexMatchSetsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5408,31 +7842,27 @@ function M.WAFNonexistentItemException(args)
     }
 end
 
-keys.RuleUpdate = { ["Action"] = true, ["Predicate"] = true, nil }
+keys.ListRuleGroupsRequest = { ["NextMarker"] = true, ["Limit"] = true, nil }
 
-function asserts.AssertRuleUpdate(struct)
+function asserts.AssertListRuleGroupsRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected RuleUpdate to be of type 'table'")
-	assert(struct["Action"], "Expected key Action to exist in table")
-	assert(struct["Predicate"], "Expected key Predicate to exist in table")
-	if struct["Action"] then asserts.AssertChangeAction(struct["Action"]) end
-	if struct["Predicate"] then asserts.AssertPredicate(struct["Predicate"]) end
+	assert(type(struct) == "table", "Expected ListRuleGroupsRequest to be of type 'table'")
+	if struct["NextMarker"] then asserts.AssertNextMarker(struct["NextMarker"]) end
+	if struct["Limit"] then asserts.AssertPaginationLimit(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.RuleUpdate[k], "RuleUpdate contains unknown key " .. tostring(k))
+		assert(keys.ListRuleGroupsRequest[k], "ListRuleGroupsRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type RuleUpdate
--- <p>Specifies a <code>Predicate</code> (such as an <code>IPSet</code>) and indicates whether you want to add it to a <code>Rule</code> or delete it from a <code>Rule</code>.</p>
+--- Create a structure of type ListRuleGroupsRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Action [ChangeAction] <p>Specify <code>INSERT</code> to add a <code>Predicate</code> to a <code>Rule</code>. Use <code>DELETE</code> to remove a <code>Predicate</code> from a <code>Rule</code>.</p>
--- * Predicate [Predicate] <p>The ID of the <code>Predicate</code> (such as an <code>IPSet</code>) that you want to add to a <code>Rule</code>.</p>
--- Required key: Action
--- Required key: Predicate
--- @return RuleUpdate structure as a key-value pair table
-function M.RuleUpdate(args)
-	assert(args, "You must provide an argument table when creating RuleUpdate")
+-- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>RuleGroups</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>RuleGroups</code>. For the second and subsequent <code>ListRuleGroups</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>RuleGroups</code>.</p>
+-- * Limit [PaginationLimit] <p>Specifies the number of <code>RuleGroups</code> that you want AWS WAF to return for this request. If you have more <code>RuleGroups</code> than the number that you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>RuleGroups</code>.</p>
+-- @return ListRuleGroupsRequest structure as a key-value pair table
+function M.ListRuleGroupsRequest(args)
+	assert(args, "You must provide an argument table when creating ListRuleGroupsRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -5440,10 +7870,98 @@ function M.RuleUpdate(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Action"] = args["Action"],
-		["Predicate"] = args["Predicate"],
+		["NextMarker"] = args["NextMarker"],
+		["Limit"] = args["Limit"],
 	}
-	asserts.AssertRuleUpdate(all_args)
+	asserts.AssertListRuleGroupsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateRegexPatternSetRequest = { ["ChangeToken"] = true, ["Name"] = true, nil }
+
+function asserts.AssertCreateRegexPatternSetRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateRegexPatternSetRequest to be of type 'table'")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	assert(struct["ChangeToken"], "Expected key ChangeToken to exist in table")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateRegexPatternSetRequest[k], "CreateRegexPatternSetRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateRegexPatternSetRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>RegexPatternSet</a>. You can't change <code>Name</code> after you create a <code>RegexPatternSet</code>.</p>
+-- Required key: Name
+-- Required key: ChangeToken
+-- @return CreateRegexPatternSetRequest structure as a key-value pair table
+function M.CreateRegexPatternSetRequest(args)
+	assert(args, "You must provide an argument table when creating CreateRegexPatternSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+		["Name"] = args["Name"],
+	}
+	asserts.AssertCreateRegexPatternSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.RegexPatternSetSummary = { ["RegexPatternSetId"] = true, ["Name"] = true, nil }
+
+function asserts.AssertRegexPatternSetSummary(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RegexPatternSetSummary to be of type 'table'")
+	assert(struct["RegexPatternSetId"], "Expected key RegexPatternSetId to exist in table")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	if struct["RegexPatternSetId"] then asserts.AssertResourceId(struct["RegexPatternSetId"]) end
+	if struct["Name"] then asserts.AssertResourceName(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RegexPatternSetSummary[k], "RegexPatternSetSummary contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RegexPatternSetSummary
+-- <p>Returned by <a>ListRegexPatternSets</a>. Each <code>RegexPatternSetSummary</code> object includes the <code>Name</code> and <code>RegexPatternSetId</code> for one <a>RegexPatternSet</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegexPatternSetId [ResourceId] <p>The <code>RegexPatternSetId</code> for a <code>RegexPatternSet</code>. You use <code>RegexPatternSetId</code> to get information about a <code>RegexPatternSet</code>, update a <code>RegexPatternSet</code>, remove a <code>RegexPatternSet</code> from a <code>RegexMatchSet</code>, and delete a <code>RegexPatternSet</code> from AWS WAF.</p> <p> <code>RegexPatternSetId</code> is returned by <a>CreateRegexPatternSet</a> and by <a>ListRegexPatternSets</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>RegexPatternSet</a>. You can't change <code>Name</code> after you create a <code>RegexPatternSet</code>.</p>
+-- Required key: RegexPatternSetId
+-- Required key: Name
+-- @return RegexPatternSetSummary structure as a key-value pair table
+function M.RegexPatternSetSummary(args)
+	assert(args, "You must provide an argument table when creating RegexPatternSetSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RegexPatternSetId"] = args["RegexPatternSetId"],
+		["Name"] = args["Name"],
+	}
+	asserts.AssertRegexPatternSetSummary(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5504,6 +8022,50 @@ function M.RateBasedRule(args)
 		["MetricName"] = args["MetricName"],
 	}
 	asserts.AssertRateBasedRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteRegexPatternSetRequest = { ["RegexPatternSetId"] = true, ["ChangeToken"] = true, nil }
+
+function asserts.AssertDeleteRegexPatternSetRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteRegexPatternSetRequest to be of type 'table'")
+	assert(struct["RegexPatternSetId"], "Expected key RegexPatternSetId to exist in table")
+	assert(struct["ChangeToken"], "Expected key ChangeToken to exist in table")
+	if struct["RegexPatternSetId"] then asserts.AssertResourceId(struct["RegexPatternSetId"]) end
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteRegexPatternSetRequest[k], "DeleteRegexPatternSetRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteRegexPatternSetRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegexPatternSetId [ResourceId] <p>The <code>RegexPatternSetId</code> of the <a>RegexPatternSet</a> that you want to delete. <code>RegexPatternSetId</code> is returned by <a>CreateRegexPatternSet</a> and by <a>ListRegexPatternSets</a>.</p>
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- Required key: RegexPatternSetId
+-- Required key: ChangeToken
+-- @return DeleteRegexPatternSetRequest structure as a key-value pair table
+function M.DeleteRegexPatternSetRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteRegexPatternSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RegexPatternSetId"] = args["RegexPatternSetId"],
+		["ChangeToken"] = args["ChangeToken"],
+	}
+	asserts.AssertDeleteRegexPatternSetRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5596,6 +8158,50 @@ function M.GetXssMatchSetResponse(args)
     }
 end
 
+keys.DeleteRuleGroupRequest = { ["ChangeToken"] = true, ["RuleGroupId"] = true, nil }
+
+function asserts.AssertDeleteRuleGroupRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteRuleGroupRequest to be of type 'table'")
+	assert(struct["RuleGroupId"], "Expected key RuleGroupId to exist in table")
+	assert(struct["ChangeToken"], "Expected key ChangeToken to exist in table")
+	if struct["ChangeToken"] then asserts.AssertChangeToken(struct["ChangeToken"]) end
+	if struct["RuleGroupId"] then asserts.AssertResourceId(struct["RuleGroupId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteRuleGroupRequest[k], "DeleteRuleGroupRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteRuleGroupRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * RuleGroupId [ResourceId] <p>The <code>RuleGroupId</code> of the <a>RuleGroup</a> that you want to delete. <code>RuleGroupId</code> is returned by <a>CreateRuleGroup</a> and by <a>ListRuleGroups</a>.</p>
+-- Required key: RuleGroupId
+-- Required key: ChangeToken
+-- @return DeleteRuleGroupRequest structure as a key-value pair table
+function M.DeleteRuleGroupRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteRuleGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ChangeToken"] = args["ChangeToken"],
+		["RuleGroupId"] = args["RuleGroupId"],
+	}
+	asserts.AssertDeleteRuleGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DeleteIPSetResponse = { ["ChangeToken"] = true, nil }
 
 function asserts.AssertDeleteIPSetResponse(struct)
@@ -5625,6 +8231,45 @@ function M.DeleteIPSetResponse(args)
 		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertDeleteIPSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetRegexMatchSetRequest = { ["RegexMatchSetId"] = true, nil }
+
+function asserts.AssertGetRegexMatchSetRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetRegexMatchSetRequest to be of type 'table'")
+	assert(struct["RegexMatchSetId"], "Expected key RegexMatchSetId to exist in table")
+	if struct["RegexMatchSetId"] then asserts.AssertResourceId(struct["RegexMatchSetId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetRegexMatchSetRequest[k], "GetRegexMatchSetRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetRegexMatchSetRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegexMatchSetId [ResourceId] <p>The <code>RegexMatchSetId</code> of the <a>RegexMatchSet</a> that you want to get. <code>RegexMatchSetId</code> is returned by <a>CreateRegexMatchSet</a> and by <a>ListRegexMatchSets</a>.</p>
+-- Required key: RegexMatchSetId
+-- @return GetRegexMatchSetRequest structure as a key-value pair table
+function M.GetRegexMatchSetRequest(args)
+	assert(args, "You must provide an argument table when creating GetRegexMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RegexMatchSetId"] = args["RegexMatchSetId"],
+	}
+	asserts.AssertGetRegexMatchSetRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5673,6 +8318,56 @@ function M.HTTPHeader(args)
     }
 end
 
+keys.PutLoggingConfigurationRequest = { ["LoggingConfiguration"] = true, nil }
+
+function asserts.AssertPutLoggingConfigurationRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PutLoggingConfigurationRequest to be of type 'table'")
+	assert(struct["LoggingConfiguration"], "Expected key LoggingConfiguration to exist in table")
+	if struct["LoggingConfiguration"] then asserts.AssertLoggingConfiguration(struct["LoggingConfiguration"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PutLoggingConfigurationRequest[k], "PutLoggingConfigurationRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PutLoggingConfigurationRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoggingConfiguration [LoggingConfiguration] <p>The Amazon Kinesis Data Firehose delivery streams that contains the inspected traffic information, the redacted fields details, and the Amazon Resource Name (ARN) of the web ACL to monitor.</p>
+-- Required key: LoggingConfiguration
+-- @return PutLoggingConfigurationRequest structure as a key-value pair table
+function M.PutLoggingConfigurationRequest(args)
+	assert(args, "You must provide an argument table when creating PutLoggingConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["LoggingConfiguration"] = args["LoggingConfiguration"],
+	}
+	asserts.AssertPutLoggingConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+function asserts.AssertGeoMatchConstraintValue(str)
+	assert(str)
+	assert(type(str) == "string", "Expected GeoMatchConstraintValue to be of type 'string'")
+end
+
+--  
+function M.GeoMatchConstraintValue(str)
+	asserts.AssertGeoMatchConstraintValue(str)
+	return str
+end
+
 function asserts.AssertManagedKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ManagedKey to be of type 'string'")
@@ -5681,17 +8376,6 @@ end
 --  
 function M.ManagedKey(str)
 	asserts.AssertManagedKey(str)
-	return str
-end
-
-function asserts.AsserterrorMessage(str)
-	assert(str)
-	assert(type(str) == "string", "Expected errorMessage to be of type 'string'")
-end
-
---  
-function M.errorMessage(str)
-	asserts.AsserterrorMessage(str)
 	return str
 end
 
@@ -5706,14 +8390,16 @@ function M.PredicateType(str)
 	return str
 end
 
-function asserts.AssertParameterExceptionField(str)
+function asserts.AssertResourceName(str)
 	assert(str)
-	assert(type(str) == "string", "Expected ParameterExceptionField to be of type 'string'")
+	assert(type(str) == "string", "Expected ResourceName to be of type 'string'")
+	assert(#str <= 128, "Expected string to be max 128 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
-function M.ParameterExceptionField(str)
-	asserts.AssertParameterExceptionField(str)
+function M.ResourceName(str)
+	asserts.AssertResourceName(str)
 	return str
 end
 
@@ -5729,17 +8415,6 @@ function M.ChangeToken(str)
 	return str
 end
 
-function asserts.AssertParameterExceptionReason(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ParameterExceptionReason to be of type 'string'")
-end
-
---  
-function M.ParameterExceptionReason(str)
-	asserts.AssertParameterExceptionReason(str)
-	return str
-end
-
 function asserts.AssertPositionalConstraint(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PositionalConstraint to be of type 'string'")
@@ -5748,6 +8423,31 @@ end
 --  
 function M.PositionalConstraint(str)
 	asserts.AssertPositionalConstraint(str)
+	return str
+end
+
+function asserts.AssertPolicyString(str)
+	assert(str)
+	assert(type(str) == "string", "Expected PolicyString to be of type 'string'")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.PolicyString(str)
+	asserts.AssertPolicyString(str)
+	return str
+end
+
+function asserts.AssertResourceArn(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ResourceArn to be of type 'string'")
+	assert(#str <= 1224, "Expected string to be max 1224 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.ResourceArn(str)
+	asserts.AssertResourceArn(str)
 	return str
 end
 
@@ -5773,6 +8473,18 @@ function M.ChangeAction(str)
 	return str
 end
 
+function asserts.AssertRegexPatternString(str)
+	assert(str)
+	assert(type(str) == "string", "Expected RegexPatternString to be of type 'string'")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.RegexPatternString(str)
+	asserts.AssertRegexPatternString(str)
+	return str
+end
+
 function asserts.AssertMatchFieldData(str)
 	assert(str)
 	assert(type(str) == "string", "Expected MatchFieldData to be of type 'string'")
@@ -5781,6 +8493,28 @@ end
 --  
 function M.MatchFieldData(str)
 	asserts.AssertMatchFieldData(str)
+	return str
+end
+
+function asserts.AssertGeoMatchConstraintType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected GeoMatchConstraintType to be of type 'string'")
+end
+
+--  
+function M.GeoMatchConstraintType(str)
+	asserts.AssertGeoMatchConstraintType(str)
+	return str
+end
+
+function asserts.AssertWafRuleType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected WafRuleType to be of type 'string'")
+end
+
+--  
+function M.WafRuleType(str)
+	asserts.AssertWafRuleType(str)
 	return str
 end
 
@@ -5807,29 +8541,6 @@ function M.HTTPMethod(str)
 	return str
 end
 
-function asserts.AssertParameterExceptionParameter(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ParameterExceptionParameter to be of type 'string'")
-	assert(#str >= 1, "Expected string to be min 1 characters")
-end
-
---  
-function M.ParameterExceptionParameter(str)
-	asserts.AssertParameterExceptionParameter(str)
-	return str
-end
-
-function asserts.AssertWafRuleType(str)
-	assert(str)
-	assert(type(str) == "string", "Expected WafRuleType to be of type 'string'")
-end
-
---  
-function M.WafRuleType(str)
-	asserts.AssertWafRuleType(str)
-	return str
-end
-
 function asserts.AssertIPString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IPString to be of type 'string'")
@@ -5838,6 +8549,39 @@ end
 --  
 function M.IPString(str)
 	asserts.AssertIPString(str)
+	return str
+end
+
+function asserts.AssertWafActionType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected WafActionType to be of type 'string'")
+end
+
+--  
+function M.WafActionType(str)
+	asserts.AssertWafActionType(str)
+	return str
+end
+
+function asserts.AssertIPSetDescriptorType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected IPSetDescriptorType to be of type 'string'")
+end
+
+--  
+function M.IPSetDescriptorType(str)
+	asserts.AssertIPSetDescriptorType(str)
+	return str
+end
+
+function asserts.AssertWafOverrideActionType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected WafOverrideActionType to be of type 'string'")
+end
+
+--  
+function M.WafOverrideActionType(str)
+	asserts.AssertWafOverrideActionType(str)
 	return str
 end
 
@@ -5860,17 +8604,6 @@ end
 --  
 function M.TextTransformation(str)
 	asserts.AssertTextTransformation(str)
-	return str
-end
-
-function asserts.AssertWafActionType(str)
-	assert(str)
-	assert(type(str) == "string", "Expected WafActionType to be of type 'string'")
-end
-
---  
-function M.WafActionType(str)
-	asserts.AssertWafActionType(str)
 	return str
 end
 
@@ -5940,14 +8673,14 @@ function M.ChangeTokenStatus(str)
 	return str
 end
 
-function asserts.AssertIPSetDescriptorType(str)
+function asserts.AssertURIString(str)
 	assert(str)
-	assert(type(str) == "string", "Expected IPSetDescriptorType to be of type 'string'")
+	assert(type(str) == "string", "Expected URIString to be of type 'string'")
 end
 
 --  
-function M.IPSetDescriptorType(str)
-	asserts.AssertIPSetDescriptorType(str)
+function M.URIString(str)
+	asserts.AssertURIString(str)
 	return str
 end
 
@@ -5961,19 +8694,6 @@ end
 --  
 function M.ResourceId(str)
 	asserts.AssertResourceId(str)
-	return str
-end
-
-function asserts.AssertResourceName(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ResourceName to be of type 'string'")
-	assert(#str <= 128, "Expected string to be max 128 characters")
-	assert(#str >= 1, "Expected string to be min 1 characters")
-end
-
---  
-function M.ResourceName(str)
-	asserts.AssertResourceName(str)
 	return str
 end
 
@@ -6010,15 +8730,15 @@ function M.Country(str)
 	return str
 end
 
-function asserts.AssertURIString(str)
-	assert(str)
-	assert(type(str) == "string", "Expected URIString to be of type 'string'")
+function asserts.AssertGetSampledRequestsMaxItems(long)
+	assert(long)
+	assert(type(long) == "number", "Expected GetSampledRequestsMaxItems to be of type 'number'")
+	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
---  
-function M.URIString(str)
-	asserts.AssertURIString(str)
-	return str
+function M.GetSampledRequestsMaxItems(long)
+	asserts.AssertGetSampledRequestsMaxItems(long)
+	return long
 end
 
 function asserts.AssertPopulationSize(long)
@@ -6051,17 +8771,6 @@ end
 
 function M.Size(long)
 	asserts.AssertSize(long)
-	return long
-end
-
-function asserts.AssertGetSampledRequestsMaxItems(long)
-	assert(long)
-	assert(type(long) == "number", "Expected GetSampledRequestsMaxItems to be of type 'number'")
-	assert(long % 1 == 0, "Expected a whole integer number")
-end
-
-function M.GetSampledRequestsMaxItems(long)
-	asserts.AssertGetSampledRequestsMaxItems(long)
 	return long
 end
 
@@ -6129,6 +8838,21 @@ function M.ByteMatchTargetString(blob)
 	return blob
 end
 
+function asserts.AssertWebACLSummaries(list)
+	assert(list)
+	assert(type(list) == "table", "Expected WebACLSummaries to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertWebACLSummary(v)
+	end
+end
+
+--  
+-- List of WebACLSummary objects
+function M.WebACLSummaries(list)
+	asserts.AssertWebACLSummaries(list)
+	return list
+end
+
 function asserts.AssertSizeConstraintSetSummaries(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SizeConstraintSetSummaries to be of type ''table")
@@ -6141,6 +8865,21 @@ end
 -- List of SizeConstraintSetSummary objects
 function M.SizeConstraintSetSummaries(list)
 	asserts.AssertSizeConstraintSetSummaries(list)
+	return list
+end
+
+function asserts.AssertRuleGroupSummaries(list)
+	assert(list)
+	assert(type(list) == "table", "Expected RuleGroupSummaries to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertRuleGroupSummary(v)
+	end
+end
+
+--  
+-- List of RuleGroupSummary objects
+function M.RuleGroupSummaries(list)
+	asserts.AssertRuleGroupSummaries(list)
 	return list
 end
 
@@ -6159,6 +8898,36 @@ function M.SqlInjectionMatchSetSummaries(list)
 	return list
 end
 
+function asserts.AssertPredicates(list)
+	assert(list)
+	assert(type(list) == "table", "Expected Predicates to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertPredicate(v)
+	end
+end
+
+--  
+-- List of Predicate objects
+function M.Predicates(list)
+	asserts.AssertPredicates(list)
+	return list
+end
+
+function asserts.AssertSubscribedRuleGroupSummaries(list)
+	assert(list)
+	assert(type(list) == "table", "Expected SubscribedRuleGroupSummaries to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertSubscribedRuleGroupSummary(v)
+	end
+end
+
+--  
+-- List of SubscribedRuleGroupSummary objects
+function M.SubscribedRuleGroupSummaries(list)
+	asserts.AssertSubscribedRuleGroupSummaries(list)
+	return list
+end
+
 function asserts.AssertSqlInjectionMatchTuples(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SqlInjectionMatchTuples to be of type ''table")
@@ -6174,6 +8943,52 @@ function M.SqlInjectionMatchTuples(list)
 	return list
 end
 
+function asserts.AssertRedactedFields(list)
+	assert(list)
+	assert(type(list) == "table", "Expected RedactedFields to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertFieldToMatch(v)
+	end
+end
+
+--  
+-- List of FieldToMatch objects
+function M.RedactedFields(list)
+	asserts.AssertRedactedFields(list)
+	return list
+end
+
+function asserts.AssertRegexPatternSetSummaries(list)
+	assert(list)
+	assert(type(list) == "table", "Expected RegexPatternSetSummaries to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertRegexPatternSetSummary(v)
+	end
+end
+
+--  
+-- List of RegexPatternSetSummary objects
+function M.RegexPatternSetSummaries(list)
+	asserts.AssertRegexPatternSetSummaries(list)
+	return list
+end
+
+function asserts.AssertRegexPatternStrings(list)
+	assert(list)
+	assert(type(list) == "table", "Expected RegexPatternStrings to be of type ''table")
+	assert(#list <= 10, "Expected list to be contain 10 elements")
+	for _,v in ipairs(list) do
+		asserts.AssertRegexPatternString(v)
+	end
+end
+
+--  
+-- List of RegexPatternString objects
+function M.RegexPatternStrings(list)
+	asserts.AssertRegexPatternStrings(list)
+	return list
+end
+
 function asserts.AssertWebACLUpdates(list)
 	assert(list)
 	assert(type(list) == "table", "Expected WebACLUpdates to be of type ''table")
@@ -6186,6 +9001,22 @@ end
 -- List of WebACLUpdate objects
 function M.WebACLUpdates(list)
 	asserts.AssertWebACLUpdates(list)
+	return list
+end
+
+function asserts.AssertGeoMatchSetUpdates(list)
+	assert(list)
+	assert(type(list) == "table", "Expected GeoMatchSetUpdates to be of type ''table")
+	assert(#list >= 1, "Expected list to be contain 1 elements")
+	for _,v in ipairs(list) do
+		asserts.AssertGeoMatchSetUpdate(v)
+	end
+end
+
+--  
+-- List of GeoMatchSetUpdate objects
+function M.GeoMatchSetUpdates(list)
+	asserts.AssertGeoMatchSetUpdates(list)
 	return list
 end
 
@@ -6246,6 +9077,53 @@ end
 -- List of ActivatedRule objects
 function M.ActivatedRules(list)
 	asserts.AssertActivatedRules(list)
+	return list
+end
+
+function asserts.AssertRegexMatchSetUpdates(list)
+	assert(list)
+	assert(type(list) == "table", "Expected RegexMatchSetUpdates to be of type ''table")
+	assert(#list >= 1, "Expected list to be contain 1 elements")
+	for _,v in ipairs(list) do
+		asserts.AssertRegexMatchSetUpdate(v)
+	end
+end
+
+--  
+-- List of RegexMatchSetUpdate objects
+function M.RegexMatchSetUpdates(list)
+	asserts.AssertRegexMatchSetUpdates(list)
+	return list
+end
+
+function asserts.AssertLoggingConfigurations(list)
+	assert(list)
+	assert(type(list) == "table", "Expected LoggingConfigurations to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertLoggingConfiguration(v)
+	end
+end
+
+--  
+-- List of LoggingConfiguration objects
+function M.LoggingConfigurations(list)
+	asserts.AssertLoggingConfigurations(list)
+	return list
+end
+
+function asserts.AssertXssMatchSetUpdates(list)
+	assert(list)
+	assert(type(list) == "table", "Expected XssMatchSetUpdates to be of type ''table")
+	assert(#list >= 1, "Expected list to be contain 1 elements")
+	for _,v in ipairs(list) do
+		asserts.AssertXssMatchSetUpdate(v)
+	end
+end
+
+--  
+-- List of XssMatchSetUpdate objects
+function M.XssMatchSetUpdates(list)
+	asserts.AssertXssMatchSetUpdates(list)
 	return list
 end
 
@@ -6324,39 +9202,72 @@ function M.ByteMatchTuples(list)
 	return list
 end
 
-function asserts.AssertWebACLSummaries(list)
+function asserts.AssertRegexMatchSetSummaries(list)
 	assert(list)
-	assert(type(list) == "table", "Expected WebACLSummaries to be of type ''table")
+	assert(type(list) == "table", "Expected RegexMatchSetSummaries to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertWebACLSummary(v)
+		asserts.AssertRegexMatchSetSummary(v)
 	end
 end
 
 --  
--- List of WebACLSummary objects
-function M.WebACLSummaries(list)
-	asserts.AssertWebACLSummaries(list)
+-- List of RegexMatchSetSummary objects
+function M.RegexMatchSetSummaries(list)
+	asserts.AssertRegexMatchSetSummaries(list)
 	return list
 end
 
-function asserts.AssertPredicates(list)
+function asserts.AssertRuleSummaries(list)
 	assert(list)
-	assert(type(list) == "table", "Expected Predicates to be of type ''table")
+	assert(type(list) == "table", "Expected RuleSummaries to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertPredicate(v)
+		asserts.AssertRuleSummary(v)
 	end
 end
 
 --  
--- List of Predicate objects
-function M.Predicates(list)
-	asserts.AssertPredicates(list)
+-- List of RuleSummary objects
+function M.RuleSummaries(list)
+	asserts.AssertRuleSummaries(list)
+	return list
+end
+
+function asserts.AssertHTTPHeaders(list)
+	assert(list)
+	assert(type(list) == "table", "Expected HTTPHeaders to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertHTTPHeader(v)
+	end
+end
+
+--  
+-- List of HTTPHeader objects
+function M.HTTPHeaders(list)
+	asserts.AssertHTTPHeaders(list)
+	return list
+end
+
+function asserts.AssertLogDestinationConfigs(list)
+	assert(list)
+	assert(type(list) == "table", "Expected LogDestinationConfigs to be of type ''table")
+	assert(#list <= 1, "Expected list to be contain 1 elements")
+	assert(#list >= 1, "Expected list to be contain 1 elements")
+	for _,v in ipairs(list) do
+		asserts.AssertResourceArn(v)
+	end
+end
+
+--  
+-- List of ResourceArn objects
+function M.LogDestinationConfigs(list)
+	asserts.AssertLogDestinationConfigs(list)
 	return list
 end
 
 function asserts.AssertSqlInjectionMatchSetUpdates(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SqlInjectionMatchSetUpdates to be of type ''table")
+	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
 		asserts.AssertSqlInjectionMatchSetUpdate(v)
 	end
@@ -6366,21 +9277,6 @@ end
 -- List of SqlInjectionMatchSetUpdate objects
 function M.SqlInjectionMatchSetUpdates(list)
 	asserts.AssertSqlInjectionMatchSetUpdates(list)
-	return list
-end
-
-function asserts.AssertXssMatchSetUpdates(list)
-	assert(list)
-	assert(type(list) == "table", "Expected XssMatchSetUpdates to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertXssMatchSetUpdate(v)
-	end
-end
-
---  
--- List of XssMatchSetUpdate objects
-function M.XssMatchSetUpdates(list)
-	asserts.AssertXssMatchSetUpdates(list)
 	return list
 end
 
@@ -6402,6 +9298,7 @@ end
 function asserts.AssertIPSetUpdates(list)
 	assert(list)
 	assert(type(list) == "table", "Expected IPSetUpdates to be of type ''table")
+	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
 		asserts.AssertIPSetUpdate(v)
 	end
@@ -6417,6 +9314,7 @@ end
 function asserts.AssertSizeConstraintSetUpdates(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SizeConstraintSetUpdates to be of type ''table")
+	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
 		asserts.AssertSizeConstraintSetUpdate(v)
 	end
@@ -6429,9 +9327,25 @@ function M.SizeConstraintSetUpdates(list)
 	return list
 end
 
+function asserts.AssertRegexMatchTuples(list)
+	assert(list)
+	assert(type(list) == "table", "Expected RegexMatchTuples to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertRegexMatchTuple(v)
+	end
+end
+
+--  
+-- List of RegexMatchTuple objects
+function M.RegexMatchTuples(list)
+	asserts.AssertRegexMatchTuples(list)
+	return list
+end
+
 function asserts.AssertByteMatchSetUpdates(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ByteMatchSetUpdates to be of type ''table")
+	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
 		asserts.AssertByteMatchSetUpdate(v)
 	end
@@ -6459,33 +9373,65 @@ function M.SampledHTTPRequests(list)
 	return list
 end
 
-function asserts.AssertHTTPHeaders(list)
+function asserts.AssertRegexPatternSetUpdates(list)
 	assert(list)
-	assert(type(list) == "table", "Expected HTTPHeaders to be of type ''table")
+	assert(type(list) == "table", "Expected RegexPatternSetUpdates to be of type ''table")
+	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		asserts.AssertHTTPHeader(v)
+		asserts.AssertRegexPatternSetUpdate(v)
 	end
 end
 
 --  
--- List of HTTPHeader objects
-function M.HTTPHeaders(list)
-	asserts.AssertHTTPHeaders(list)
+-- List of RegexPatternSetUpdate objects
+function M.RegexPatternSetUpdates(list)
+	asserts.AssertRegexPatternSetUpdates(list)
 	return list
 end
 
-function asserts.AssertRuleSummaries(list)
+function asserts.AssertGeoMatchConstraints(list)
 	assert(list)
-	assert(type(list) == "table", "Expected RuleSummaries to be of type ''table")
+	assert(type(list) == "table", "Expected GeoMatchConstraints to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertRuleSummary(v)
+		asserts.AssertGeoMatchConstraint(v)
 	end
 end
 
 --  
--- List of RuleSummary objects
-function M.RuleSummaries(list)
-	asserts.AssertRuleSummaries(list)
+-- List of GeoMatchConstraint objects
+function M.GeoMatchConstraints(list)
+	asserts.AssertGeoMatchConstraints(list)
+	return list
+end
+
+function asserts.AssertGeoMatchSetSummaries(list)
+	assert(list)
+	assert(type(list) == "table", "Expected GeoMatchSetSummaries to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertGeoMatchSetSummary(v)
+	end
+end
+
+--  
+-- List of GeoMatchSetSummary objects
+function M.GeoMatchSetSummaries(list)
+	asserts.AssertGeoMatchSetSummaries(list)
+	return list
+end
+
+function asserts.AssertRuleGroupUpdates(list)
+	assert(list)
+	assert(type(list) == "table", "Expected RuleGroupUpdates to be of type ''table")
+	assert(#list >= 1, "Expected list to be contain 1 elements")
+	for _,v in ipairs(list) do
+		asserts.AssertRuleGroupUpdate(v)
+	end
+end
+
+--  
+-- List of RuleGroupUpdate objects
+function M.RuleGroupUpdates(list)
+	asserts.AssertRuleGroupUpdates(list)
 	return list
 end
 
@@ -6567,6 +9513,76 @@ function M.CreateSizeConstraintSetSync(CreateSizeConstraintSetRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call UpdateRegexMatchSet asynchronously, invoking a callback when done
+-- @param UpdateRegexMatchSetRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateRegexMatchSetAsync(UpdateRegexMatchSetRequest, cb)
+	assert(UpdateRegexMatchSetRequest, "You must provide a UpdateRegexMatchSetRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateRegexMatchSet",
+	}
+	for header,value in pairs(UpdateRegexMatchSetRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateRegexMatchSetRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateRegexMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateRegexMatchSetRequest
+-- @return response
+-- @return error_message
+function M.UpdateRegexMatchSetSync(UpdateRegexMatchSetRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateRegexMatchSetAsync(UpdateRegexMatchSetRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetPermissionPolicy asynchronously, invoking a callback when done
+-- @param GetPermissionPolicyRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetPermissionPolicyAsync(GetPermissionPolicyRequest, cb)
+	assert(GetPermissionPolicyRequest, "You must provide a GetPermissionPolicyRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetPermissionPolicy",
+	}
+	for header,value in pairs(GetPermissionPolicyRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", GetPermissionPolicyRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetPermissionPolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetPermissionPolicyRequest
+-- @return response
+-- @return error_message
+function M.GetPermissionPolicySync(GetPermissionPolicyRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetPermissionPolicyAsync(GetPermissionPolicyRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ListIPSets asynchronously, invoking a callback when done
 -- @param ListIPSetsRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -6637,36 +9653,106 @@ function M.DeleteRateBasedRuleSync(DeleteRateBasedRuleRequest, ...)
 	return coroutine.yield()
 end
 
---- Call ListWebACLs asynchronously, invoking a callback when done
--- @param ListWebACLsRequest
+--- Call GetRegexPatternSet asynchronously, invoking a callback when done
+-- @param GetRegexPatternSetRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.ListWebACLsAsync(ListWebACLsRequest, cb)
-	assert(ListWebACLsRequest, "You must provide a ListWebACLsRequest")
+function M.GetRegexPatternSetAsync(GetRegexPatternSetRequest, cb)
+	assert(GetRegexPatternSetRequest, "You must provide a GetRegexPatternSetRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListWebACLs",
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetRegexPatternSet",
 	}
-	for header,value in pairs(ListWebACLsRequest.headers) do
+	for header,value in pairs(GetRegexPatternSetRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", ListWebACLsRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", GetRegexPatternSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call ListWebACLs synchronously, returning when done
+--- Call GetRegexPatternSet synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param ListWebACLsRequest
+-- @param GetRegexPatternSetRequest
 -- @return response
 -- @return error_message
-function M.ListWebACLsSync(ListWebACLsRequest, ...)
+function M.GetRegexPatternSetSync(GetRegexPatternSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListWebACLsAsync(ListWebACLsRequest, function(response, error_message)
+	M.GetRegexPatternSetAsync(GetRegexPatternSetRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutLoggingConfiguration asynchronously, invoking a callback when done
+-- @param PutLoggingConfigurationRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.PutLoggingConfigurationAsync(PutLoggingConfigurationRequest, cb)
+	assert(PutLoggingConfigurationRequest, "You must provide a PutLoggingConfigurationRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.PutLoggingConfiguration",
+	}
+	for header,value in pairs(PutLoggingConfigurationRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", PutLoggingConfigurationRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call PutLoggingConfiguration synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutLoggingConfigurationRequest
+-- @return response
+-- @return error_message
+function M.PutLoggingConfigurationSync(PutLoggingConfigurationRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutLoggingConfigurationAsync(PutLoggingConfigurationRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetRegexMatchSet asynchronously, invoking a callback when done
+-- @param GetRegexMatchSetRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetRegexMatchSetAsync(GetRegexMatchSetRequest, cb)
+	assert(GetRegexMatchSetRequest, "You must provide a GetRegexMatchSetRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetRegexMatchSet",
+	}
+	for header,value in pairs(GetRegexMatchSetRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", GetRegexMatchSetRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetRegexMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetRegexMatchSetRequest
+-- @return response
+-- @return error_message
+function M.GetRegexMatchSetSync(GetRegexMatchSetRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetRegexMatchSetAsync(GetRegexMatchSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6702,6 +9788,41 @@ function M.GetChangeTokenStatusSync(GetChangeTokenStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.GetChangeTokenStatusAsync(GetChangeTokenStatusRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateRegexPatternSet asynchronously, invoking a callback when done
+-- @param UpdateRegexPatternSetRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateRegexPatternSetAsync(UpdateRegexPatternSetRequest, cb)
+	assert(UpdateRegexPatternSetRequest, "You must provide a UpdateRegexPatternSetRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateRegexPatternSet",
+	}
+	for header,value in pairs(UpdateRegexPatternSetRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateRegexPatternSetRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateRegexPatternSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateRegexPatternSetRequest
+-- @return response
+-- @return error_message
+function M.UpdateRegexPatternSetSync(UpdateRegexPatternSetRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateRegexPatternSetAsync(UpdateRegexPatternSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6812,6 +9933,41 @@ function M.CreateRuleSync(CreateRuleRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call UpdateGeoMatchSet asynchronously, invoking a callback when done
+-- @param UpdateGeoMatchSetRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateGeoMatchSetAsync(UpdateGeoMatchSetRequest, cb)
+	assert(UpdateGeoMatchSetRequest, "You must provide a UpdateGeoMatchSetRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateGeoMatchSet",
+	}
+	for header,value in pairs(UpdateGeoMatchSetRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateGeoMatchSetRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateGeoMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateGeoMatchSetRequest
+-- @return response
+-- @return error_message
+function M.UpdateGeoMatchSetSync(UpdateGeoMatchSetRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateGeoMatchSetAsync(UpdateGeoMatchSetRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call GetRateBasedRuleManagedKeys asynchronously, invoking a callback when done
 -- @param GetRateBasedRuleManagedKeysRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -6842,6 +9998,41 @@ function M.GetRateBasedRuleManagedKeysSync(GetRateBasedRuleManagedKeysRequest, .
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.GetRateBasedRuleManagedKeysAsync(GetRateBasedRuleManagedKeysRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListRuleGroups asynchronously, invoking a callback when done
+-- @param ListRuleGroupsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListRuleGroupsAsync(ListRuleGroupsRequest, cb)
+	assert(ListRuleGroupsRequest, "You must provide a ListRuleGroupsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListRuleGroups",
+	}
+	for header,value in pairs(ListRuleGroupsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListRuleGroupsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListRuleGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListRuleGroupsRequest
+-- @return response
+-- @return error_message
+function M.ListRuleGroupsSync(ListRuleGroupsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListRuleGroupsAsync(ListRuleGroupsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6882,6 +10073,41 @@ function M.CreateSqlInjectionMatchSetSync(CreateSqlInjectionMatchSetRequest, ...
 	return coroutine.yield()
 end
 
+--- Call UpdateSqlInjectionMatchSet asynchronously, invoking a callback when done
+-- @param UpdateSqlInjectionMatchSetRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateSqlInjectionMatchSetAsync(UpdateSqlInjectionMatchSetRequest, cb)
+	assert(UpdateSqlInjectionMatchSetRequest, "You must provide a UpdateSqlInjectionMatchSetRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateSqlInjectionMatchSet",
+	}
+	for header,value in pairs(UpdateSqlInjectionMatchSetRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateSqlInjectionMatchSetRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateSqlInjectionMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateSqlInjectionMatchSetRequest
+-- @return response
+-- @return error_message
+function M.UpdateSqlInjectionMatchSetSync(UpdateSqlInjectionMatchSetRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateSqlInjectionMatchSetAsync(UpdateSqlInjectionMatchSetRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ListRateBasedRules asynchronously, invoking a callback when done
 -- @param ListRateBasedRulesRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -6917,6 +10143,76 @@ function M.ListRateBasedRulesSync(ListRateBasedRulesRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call ListRegexMatchSets asynchronously, invoking a callback when done
+-- @param ListRegexMatchSetsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListRegexMatchSetsAsync(ListRegexMatchSetsRequest, cb)
+	assert(ListRegexMatchSetsRequest, "You must provide a ListRegexMatchSetsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListRegexMatchSets",
+	}
+	for header,value in pairs(ListRegexMatchSetsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListRegexMatchSetsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListRegexMatchSets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListRegexMatchSetsRequest
+-- @return response
+-- @return error_message
+function M.ListRegexMatchSetsSync(ListRegexMatchSetsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListRegexMatchSetsAsync(ListRegexMatchSetsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutPermissionPolicy asynchronously, invoking a callback when done
+-- @param PutPermissionPolicyRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.PutPermissionPolicyAsync(PutPermissionPolicyRequest, cb)
+	assert(PutPermissionPolicyRequest, "You must provide a PutPermissionPolicyRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.PutPermissionPolicy",
+	}
+	for header,value in pairs(PutPermissionPolicyRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", PutPermissionPolicyRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call PutPermissionPolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutPermissionPolicyRequest
+-- @return response
+-- @return error_message
+function M.PutPermissionPolicySync(PutPermissionPolicyRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutPermissionPolicyAsync(PutPermissionPolicyRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call DeleteByteMatchSet asynchronously, invoking a callback when done
 -- @param DeleteByteMatchSetRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -6947,6 +10243,76 @@ function M.DeleteByteMatchSetSync(DeleteByteMatchSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DeleteByteMatchSetAsync(DeleteByteMatchSetRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteRegexPatternSet asynchronously, invoking a callback when done
+-- @param DeleteRegexPatternSetRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteRegexPatternSetAsync(DeleteRegexPatternSetRequest, cb)
+	assert(DeleteRegexPatternSetRequest, "You must provide a DeleteRegexPatternSetRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteRegexPatternSet",
+	}
+	for header,value in pairs(DeleteRegexPatternSetRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteRegexPatternSetRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteRegexPatternSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteRegexPatternSetRequest
+-- @return response
+-- @return error_message
+function M.DeleteRegexPatternSetSync(DeleteRegexPatternSetRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteRegexPatternSetAsync(DeleteRegexPatternSetRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateRegexPatternSet asynchronously, invoking a callback when done
+-- @param CreateRegexPatternSetRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.CreateRegexPatternSetAsync(CreateRegexPatternSetRequest, cb)
+	assert(CreateRegexPatternSetRequest, "You must provide a CreateRegexPatternSetRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateRegexPatternSet",
+	}
+	for header,value in pairs(CreateRegexPatternSetRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", CreateRegexPatternSetRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CreateRegexPatternSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateRegexPatternSetRequest
+-- @return response
+-- @return error_message
+function M.CreateRegexPatternSetSync(CreateRegexPatternSetRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateRegexPatternSetAsync(CreateRegexPatternSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7057,6 +10423,41 @@ function M.DeleteRuleSync(DeleteRuleRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call ListSubscribedRuleGroups asynchronously, invoking a callback when done
+-- @param ListSubscribedRuleGroupsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListSubscribedRuleGroupsAsync(ListSubscribedRuleGroupsRequest, cb)
+	assert(ListSubscribedRuleGroupsRequest, "You must provide a ListSubscribedRuleGroupsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListSubscribedRuleGroups",
+	}
+	for header,value in pairs(ListSubscribedRuleGroupsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListSubscribedRuleGroupsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListSubscribedRuleGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListSubscribedRuleGroupsRequest
+-- @return response
+-- @return error_message
+function M.ListSubscribedRuleGroupsSync(ListSubscribedRuleGroupsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListSubscribedRuleGroupsAsync(ListSubscribedRuleGroupsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call DeleteXssMatchSet asynchronously, invoking a callback when done
 -- @param DeleteXssMatchSetRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -7122,6 +10523,76 @@ function M.UpdateIPSetSync(UpdateIPSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.UpdateIPSetAsync(UpdateIPSetRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListWebACLs asynchronously, invoking a callback when done
+-- @param ListWebACLsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListWebACLsAsync(ListWebACLsRequest, cb)
+	assert(ListWebACLsRequest, "You must provide a ListWebACLsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListWebACLs",
+	}
+	for header,value in pairs(ListWebACLsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListWebACLsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListWebACLs synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListWebACLsRequest
+-- @return response
+-- @return error_message
+function M.ListWebACLsSync(ListWebACLsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListWebACLsAsync(ListWebACLsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateRuleGroup asynchronously, invoking a callback when done
+-- @param UpdateRuleGroupRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateRuleGroupAsync(UpdateRuleGroupRequest, cb)
+	assert(UpdateRuleGroupRequest, "You must provide a UpdateRuleGroupRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateRuleGroup",
+	}
+	for header,value in pairs(UpdateRuleGroupRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateRuleGroupRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateRuleGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateRuleGroupRequest
+-- @return response
+-- @return error_message
+function M.UpdateRuleGroupSync(UpdateRuleGroupRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateRuleGroupAsync(UpdateRuleGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7267,36 +10738,71 @@ function M.UpdateRateBasedRuleSync(UpdateRateBasedRuleRequest, ...)
 	return coroutine.yield()
 end
 
---- Call GetChangeToken asynchronously, invoking a callback when done
--- @param GetChangeTokenRequest
+--- Call GetLoggingConfiguration asynchronously, invoking a callback when done
+-- @param GetLoggingConfigurationRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.GetChangeTokenAsync(GetChangeTokenRequest, cb)
-	assert(GetChangeTokenRequest, "You must provide a GetChangeTokenRequest")
+function M.GetLoggingConfigurationAsync(GetLoggingConfigurationRequest, cb)
+	assert(GetLoggingConfigurationRequest, "You must provide a GetLoggingConfigurationRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetChangeToken",
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetLoggingConfiguration",
 	}
-	for header,value in pairs(GetChangeTokenRequest.headers) do
+	for header,value in pairs(GetLoggingConfigurationRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", GetChangeTokenRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", GetLoggingConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call GetChangeToken synchronously, returning when done
+--- Call GetLoggingConfiguration synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param GetChangeTokenRequest
+-- @param GetLoggingConfigurationRequest
 -- @return response
 -- @return error_message
-function M.GetChangeTokenSync(GetChangeTokenRequest, ...)
+function M.GetLoggingConfigurationSync(GetLoggingConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetChangeTokenAsync(GetChangeTokenRequest, function(response, error_message)
+	M.GetLoggingConfigurationAsync(GetLoggingConfigurationRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateByteMatchSet asynchronously, invoking a callback when done
+-- @param CreateByteMatchSetRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.CreateByteMatchSetAsync(CreateByteMatchSetRequest, cb)
+	assert(CreateByteMatchSetRequest, "You must provide a CreateByteMatchSetRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateByteMatchSet",
+	}
+	for header,value in pairs(CreateByteMatchSetRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", CreateByteMatchSetRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CreateByteMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateByteMatchSetRequest
+-- @return response
+-- @return error_message
+function M.CreateByteMatchSetSync(CreateByteMatchSetRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateByteMatchSetAsync(CreateByteMatchSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7372,6 +10878,76 @@ function M.GetSizeConstraintSetSync(GetSizeConstraintSetRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call ListLoggingConfigurations asynchronously, invoking a callback when done
+-- @param ListLoggingConfigurationsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListLoggingConfigurationsAsync(ListLoggingConfigurationsRequest, cb)
+	assert(ListLoggingConfigurationsRequest, "You must provide a ListLoggingConfigurationsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListLoggingConfigurations",
+	}
+	for header,value in pairs(ListLoggingConfigurationsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListLoggingConfigurationsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListLoggingConfigurations synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListLoggingConfigurationsRequest
+-- @return response
+-- @return error_message
+function M.ListLoggingConfigurationsSync(ListLoggingConfigurationsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListLoggingConfigurationsAsync(ListLoggingConfigurationsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetGeoMatchSet asynchronously, invoking a callback when done
+-- @param GetGeoMatchSetRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetGeoMatchSetAsync(GetGeoMatchSetRequest, cb)
+	assert(GetGeoMatchSetRequest, "You must provide a GetGeoMatchSetRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetGeoMatchSet",
+	}
+	for header,value in pairs(GetGeoMatchSetRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", GetGeoMatchSetRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetGeoMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetGeoMatchSetRequest
+-- @return response
+-- @return error_message
+function M.GetGeoMatchSetSync(GetGeoMatchSetRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetGeoMatchSetAsync(GetGeoMatchSetRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call CreateIPSet asynchronously, invoking a callback when done
 -- @param CreateIPSetRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -7402,6 +10978,41 @@ function M.CreateIPSetSync(CreateIPSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.CreateIPSetAsync(CreateIPSetRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteRuleGroup asynchronously, invoking a callback when done
+-- @param DeleteRuleGroupRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteRuleGroupAsync(DeleteRuleGroupRequest, cb)
+	assert(DeleteRuleGroupRequest, "You must provide a DeleteRuleGroupRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteRuleGroup",
+	}
+	for header,value in pairs(DeleteRuleGroupRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteRuleGroupRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteRuleGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteRuleGroupRequest
+-- @return response
+-- @return error_message
+function M.DeleteRuleGroupSync(DeleteRuleGroupRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteRuleGroupAsync(DeleteRuleGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7442,36 +11053,71 @@ function M.GetXssMatchSetSync(GetXssMatchSetRequest, ...)
 	return coroutine.yield()
 end
 
---- Call UpdateXssMatchSet asynchronously, invoking a callback when done
--- @param UpdateXssMatchSetRequest
+--- Call ListGeoMatchSets asynchronously, invoking a callback when done
+-- @param ListGeoMatchSetsRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.UpdateXssMatchSetAsync(UpdateXssMatchSetRequest, cb)
-	assert(UpdateXssMatchSetRequest, "You must provide a UpdateXssMatchSetRequest")
+function M.ListGeoMatchSetsAsync(ListGeoMatchSetsRequest, cb)
+	assert(ListGeoMatchSetsRequest, "You must provide a ListGeoMatchSetsRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateXssMatchSet",
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListGeoMatchSets",
 	}
-	for header,value in pairs(UpdateXssMatchSetRequest.headers) do
+	for header,value in pairs(ListGeoMatchSetsRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", UpdateXssMatchSetRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", ListGeoMatchSetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call UpdateXssMatchSet synchronously, returning when done
+--- Call ListGeoMatchSets synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param UpdateXssMatchSetRequest
+-- @param ListGeoMatchSetsRequest
 -- @return response
 -- @return error_message
-function M.UpdateXssMatchSetSync(UpdateXssMatchSetRequest, ...)
+function M.ListGeoMatchSetsSync(ListGeoMatchSetsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateXssMatchSetAsync(UpdateXssMatchSetRequest, function(response, error_message)
+	M.ListGeoMatchSetsAsync(ListGeoMatchSetsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteLoggingConfiguration asynchronously, invoking a callback when done
+-- @param DeleteLoggingConfigurationRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteLoggingConfigurationAsync(DeleteLoggingConfigurationRequest, cb)
+	assert(DeleteLoggingConfigurationRequest, "You must provide a DeleteLoggingConfigurationRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteLoggingConfiguration",
+	}
+	for header,value in pairs(DeleteLoggingConfigurationRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteLoggingConfigurationRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteLoggingConfiguration synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteLoggingConfigurationRequest
+-- @return response
+-- @return error_message
+function M.DeleteLoggingConfigurationSync(DeleteLoggingConfigurationRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteLoggingConfigurationAsync(DeleteLoggingConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7512,36 +11158,36 @@ function M.GetRateBasedRuleSync(GetRateBasedRuleRequest, ...)
 	return coroutine.yield()
 end
 
---- Call UpdateSizeConstraintSet asynchronously, invoking a callback when done
--- @param UpdateSizeConstraintSetRequest
+--- Call DeleteGeoMatchSet asynchronously, invoking a callback when done
+-- @param DeleteGeoMatchSetRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.UpdateSizeConstraintSetAsync(UpdateSizeConstraintSetRequest, cb)
-	assert(UpdateSizeConstraintSetRequest, "You must provide a UpdateSizeConstraintSetRequest")
+function M.DeleteGeoMatchSetAsync(DeleteGeoMatchSetRequest, cb)
+	assert(DeleteGeoMatchSetRequest, "You must provide a DeleteGeoMatchSetRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateSizeConstraintSet",
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteGeoMatchSet",
 	}
-	for header,value in pairs(UpdateSizeConstraintSetRequest.headers) do
+	for header,value in pairs(DeleteGeoMatchSetRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", UpdateSizeConstraintSetRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", DeleteGeoMatchSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call UpdateSizeConstraintSet synchronously, returning when done
+--- Call DeleteGeoMatchSet synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param UpdateSizeConstraintSetRequest
+-- @param DeleteGeoMatchSetRequest
 -- @return response
 -- @return error_message
-function M.UpdateSizeConstraintSetSync(UpdateSizeConstraintSetRequest, ...)
+function M.DeleteGeoMatchSetSync(DeleteGeoMatchSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateSizeConstraintSetAsync(UpdateSizeConstraintSetRequest, function(response, error_message)
+	M.DeleteGeoMatchSetAsync(DeleteGeoMatchSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7577,6 +11223,41 @@ function M.CreateRateBasedRuleSync(CreateRateBasedRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.CreateRateBasedRuleAsync(CreateRateBasedRuleRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetRuleGroup asynchronously, invoking a callback when done
+-- @param GetRuleGroupRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetRuleGroupAsync(GetRuleGroupRequest, cb)
+	assert(GetRuleGroupRequest, "You must provide a GetRuleGroupRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetRuleGroup",
+	}
+	for header,value in pairs(GetRuleGroupRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", GetRuleGroupRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetRuleGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetRuleGroupRequest
+-- @return response
+-- @return error_message
+function M.GetRuleGroupSync(GetRuleGroupRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetRuleGroupAsync(GetRuleGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7722,6 +11403,41 @@ function M.DeleteWebACLSync(DeleteWebACLRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call CreateRuleGroup asynchronously, invoking a callback when done
+-- @param CreateRuleGroupRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.CreateRuleGroupAsync(CreateRuleGroupRequest, cb)
+	assert(CreateRuleGroupRequest, "You must provide a CreateRuleGroupRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateRuleGroup",
+	}
+	for header,value in pairs(CreateRuleGroupRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", CreateRuleGroupRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CreateRuleGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateRuleGroupRequest
+-- @return response
+-- @return error_message
+function M.CreateRuleGroupSync(CreateRuleGroupRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateRuleGroupAsync(CreateRuleGroupRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call GetRule asynchronously, invoking a callback when done
 -- @param GetRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -7792,36 +11508,71 @@ function M.DeleteSizeConstraintSetSync(DeleteSizeConstraintSetRequest, ...)
 	return coroutine.yield()
 end
 
---- Call UpdateSqlInjectionMatchSet asynchronously, invoking a callback when done
--- @param UpdateSqlInjectionMatchSetRequest
+--- Call UpdateSizeConstraintSet asynchronously, invoking a callback when done
+-- @param UpdateSizeConstraintSetRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.UpdateSqlInjectionMatchSetAsync(UpdateSqlInjectionMatchSetRequest, cb)
-	assert(UpdateSqlInjectionMatchSetRequest, "You must provide a UpdateSqlInjectionMatchSetRequest")
+function M.UpdateSizeConstraintSetAsync(UpdateSizeConstraintSetRequest, cb)
+	assert(UpdateSizeConstraintSetRequest, "You must provide a UpdateSizeConstraintSetRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateSqlInjectionMatchSet",
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateSizeConstraintSet",
 	}
-	for header,value in pairs(UpdateSqlInjectionMatchSetRequest.headers) do
+	for header,value in pairs(UpdateSizeConstraintSetRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", UpdateSqlInjectionMatchSetRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", UpdateSizeConstraintSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call UpdateSqlInjectionMatchSet synchronously, returning when done
+--- Call UpdateSizeConstraintSet synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param UpdateSqlInjectionMatchSetRequest
+-- @param UpdateSizeConstraintSetRequest
 -- @return response
 -- @return error_message
-function M.UpdateSqlInjectionMatchSetSync(UpdateSqlInjectionMatchSetRequest, ...)
+function M.UpdateSizeConstraintSetSync(UpdateSizeConstraintSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateSqlInjectionMatchSetAsync(UpdateSqlInjectionMatchSetRequest, function(response, error_message)
+	M.UpdateSizeConstraintSetAsync(UpdateSizeConstraintSetRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListActivatedRulesInRuleGroup asynchronously, invoking a callback when done
+-- @param ListActivatedRulesInRuleGroupRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListActivatedRulesInRuleGroupAsync(ListActivatedRulesInRuleGroupRequest, cb)
+	assert(ListActivatedRulesInRuleGroupRequest, "You must provide a ListActivatedRulesInRuleGroupRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListActivatedRulesInRuleGroup",
+	}
+	for header,value in pairs(ListActivatedRulesInRuleGroupRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListActivatedRulesInRuleGroupRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListActivatedRulesInRuleGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListActivatedRulesInRuleGroupRequest
+-- @return response
+-- @return error_message
+function M.ListActivatedRulesInRuleGroupSync(ListActivatedRulesInRuleGroupRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListActivatedRulesInRuleGroupAsync(ListActivatedRulesInRuleGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7862,36 +11613,71 @@ function M.UpdateWebACLSync(UpdateWebACLRequest, ...)
 	return coroutine.yield()
 end
 
---- Call CreateByteMatchSet asynchronously, invoking a callback when done
--- @param CreateByteMatchSetRequest
+--- Call GetChangeToken asynchronously, invoking a callback when done
+-- @param GetChangeTokenRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.CreateByteMatchSetAsync(CreateByteMatchSetRequest, cb)
-	assert(CreateByteMatchSetRequest, "You must provide a CreateByteMatchSetRequest")
+function M.GetChangeTokenAsync(GetChangeTokenRequest, cb)
+	assert(GetChangeTokenRequest, "You must provide a GetChangeTokenRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateByteMatchSet",
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetChangeToken",
 	}
-	for header,value in pairs(CreateByteMatchSetRequest.headers) do
+	for header,value in pairs(GetChangeTokenRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", CreateByteMatchSetRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", GetChangeTokenRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call CreateByteMatchSet synchronously, returning when done
+--- Call GetChangeToken synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param CreateByteMatchSetRequest
+-- @param GetChangeTokenRequest
 -- @return response
 -- @return error_message
-function M.CreateByteMatchSetSync(CreateByteMatchSetRequest, ...)
+function M.GetChangeTokenSync(GetChangeTokenRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateByteMatchSetAsync(CreateByteMatchSetRequest, function(response, error_message)
+	M.GetChangeTokenAsync(GetChangeTokenRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteRegexMatchSet asynchronously, invoking a callback when done
+-- @param DeleteRegexMatchSetRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteRegexMatchSetAsync(DeleteRegexMatchSetRequest, cb)
+	assert(DeleteRegexMatchSetRequest, "You must provide a DeleteRegexMatchSetRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteRegexMatchSet",
+	}
+	for header,value in pairs(DeleteRegexMatchSetRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteRegexMatchSetRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteRegexMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteRegexMatchSetRequest
+-- @return response
+-- @return error_message
+function M.DeleteRegexMatchSetSync(DeleteRegexMatchSetRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteRegexMatchSetAsync(DeleteRegexMatchSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7932,6 +11718,41 @@ function M.GetWebACLSync(GetWebACLRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call DeletePermissionPolicy asynchronously, invoking a callback when done
+-- @param DeletePermissionPolicyRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeletePermissionPolicyAsync(DeletePermissionPolicyRequest, cb)
+	assert(DeletePermissionPolicyRequest, "You must provide a DeletePermissionPolicyRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeletePermissionPolicy",
+	}
+	for header,value in pairs(DeletePermissionPolicyRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeletePermissionPolicyRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeletePermissionPolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeletePermissionPolicyRequest
+-- @return response
+-- @return error_message
+function M.DeletePermissionPolicySync(DeletePermissionPolicyRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeletePermissionPolicyAsync(DeletePermissionPolicyRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call UpdateByteMatchSet asynchronously, invoking a callback when done
 -- @param UpdateByteMatchSetRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -7967,6 +11788,76 @@ function M.UpdateByteMatchSetSync(UpdateByteMatchSetRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call UpdateXssMatchSet asynchronously, invoking a callback when done
+-- @param UpdateXssMatchSetRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateXssMatchSetAsync(UpdateXssMatchSetRequest, cb)
+	assert(UpdateXssMatchSetRequest, "You must provide a UpdateXssMatchSetRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateXssMatchSet",
+	}
+	for header,value in pairs(UpdateXssMatchSetRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateXssMatchSetRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateXssMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateXssMatchSetRequest
+-- @return response
+-- @return error_message
+function M.UpdateXssMatchSetSync(UpdateXssMatchSetRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateXssMatchSetAsync(UpdateXssMatchSetRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateRegexMatchSet asynchronously, invoking a callback when done
+-- @param CreateRegexMatchSetRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.CreateRegexMatchSetAsync(CreateRegexMatchSetRequest, cb)
+	assert(CreateRegexMatchSetRequest, "You must provide a CreateRegexMatchSetRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateRegexMatchSet",
+	}
+	for header,value in pairs(CreateRegexMatchSetRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", CreateRegexMatchSetRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CreateRegexMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateRegexMatchSetRequest
+-- @return response
+-- @return error_message
+function M.CreateRegexMatchSetSync(CreateRegexMatchSetRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateRegexMatchSetAsync(CreateRegexMatchSetRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call GetSqlInjectionMatchSet asynchronously, invoking a callback when done
 -- @param GetSqlInjectionMatchSetRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -7997,6 +11888,41 @@ function M.GetSqlInjectionMatchSetSync(GetSqlInjectionMatchSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.GetSqlInjectionMatchSetAsync(GetSqlInjectionMatchSetRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListRegexPatternSets asynchronously, invoking a callback when done
+-- @param ListRegexPatternSetsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListRegexPatternSetsAsync(ListRegexPatternSetsRequest, cb)
+	assert(ListRegexPatternSetsRequest, "You must provide a ListRegexPatternSetsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListRegexPatternSets",
+	}
+	for header,value in pairs(ListRegexPatternSetsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListRegexPatternSetsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListRegexPatternSets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListRegexPatternSetsRequest
+-- @return response
+-- @return error_message
+function M.ListRegexPatternSetsSync(ListRegexPatternSetsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListRegexPatternSetsAsync(ListRegexPatternSetsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8067,6 +11993,41 @@ function M.DeleteIPSetSync(DeleteIPSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DeleteIPSetAsync(DeleteIPSetRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateGeoMatchSet asynchronously, invoking a callback when done
+-- @param CreateGeoMatchSetRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.CreateGeoMatchSetAsync(CreateGeoMatchSetRequest, cb)
+	assert(CreateGeoMatchSetRequest, "You must provide a CreateGeoMatchSetRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateGeoMatchSet",
+	}
+	for header,value in pairs(CreateGeoMatchSetRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", CreateGeoMatchSetRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CreateGeoMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateGeoMatchSetRequest
+-- @return response
+-- @return error_message
+function M.CreateGeoMatchSetSync(CreateGeoMatchSetRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateGeoMatchSetAsync(CreateGeoMatchSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

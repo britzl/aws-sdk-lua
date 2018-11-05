@@ -34,11 +34,11 @@ function asserts.AssertGroupCertificateAuthorityProperties(struct)
 end
 
 --- Create a structure of type GroupCertificateAuthorityProperties
--- Information on group certificate authority properties
+-- Information about a certificate authority for a group.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GroupCertificateAuthorityId [__string] Id of the certificate authority for the group.
--- * GroupCertificateAuthorityArn [__string] Arn of the certificate authority for the group.
+-- * GroupCertificateAuthorityId [__string] The ID of the certificate authority for the group.
+-- * GroupCertificateAuthorityArn [__string] The ARN of the certificate authority for the group.
 -- @return GroupCertificateAuthorityProperties structure as a key-value pair table
 function M.GroupCertificateAuthorityProperties(args)
 	assert(args, "You must provide an argument table when creating GroupCertificateAuthorityProperties")
@@ -77,7 +77,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- * GroupId [__string] The ID of the AWS Greengrass group.
 -- Required key: GroupId
 -- @return GetGroupCertificateConfigurationRequest structure as a key-value pair table
 function M.GetGroupCertificateConfigurationRequest(args)
@@ -119,9 +119,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SubscriptionDefinitionId [__string] subscription definition Id
--- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- * SubscriptionDefinitionId [__string] The ID of the subscription definition.
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * MaxResults [__string] The maximum number of results to be returned per request.
 -- Required key: SubscriptionDefinitionId
 -- @return ListSubscriptionDefinitionVersionsRequest structure as a key-value pair table
 function M.ListSubscriptionDefinitionVersionsRequest(args)
@@ -149,46 +149,6 @@ function M.ListSubscriptionDefinitionVersionsRequest(args)
     }
 end
 
-keys.BadRequestException = { ["ErrorDetails"] = true, ["Message"] = true, nil }
-
-function asserts.AssertBadRequestException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected BadRequestException to be of type 'table'")
-	if struct["ErrorDetails"] then asserts.AssertErrorDetails(struct["ErrorDetails"]) end
-	if struct["Message"] then asserts.Assert__string(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.BadRequestException[k], "BadRequestException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type BadRequestException
--- General Error
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ErrorDetails [ErrorDetails] Error Details
--- * Message [__string] Message
--- @return BadRequestException structure as a key-value pair table
-function M.BadRequestException(args)
-	assert(args, "You must provide an argument table when creating BadRequestException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ErrorDetails"] = args["ErrorDetails"],
-		["Message"] = args["Message"],
-	}
-	asserts.AssertBadRequestException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.AssociateServiceRoleToAccountRequest = { ["RoleArn"] = true, nil }
 
 function asserts.AssertAssociateServiceRoleToAccountRequest(struct)
@@ -204,7 +164,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * RoleArn [__string] Role arn you wish to associate with this account.
+-- * RoleArn [__string] The ARN of the service role you wish to associate with your account.
 -- @return AssociateServiceRoleToAccountRequest structure as a key-value pair table
 function M.AssociateServiceRoleToAccountRequest(args)
 	assert(args, "You must provide an argument table when creating AssociateServiceRoleToAccountRequest")
@@ -242,8 +202,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * MaxResults [__string] The maximum number of results to be returned per request.
 -- @return ListGroupsRequest structure as a key-value pair table
 function M.ListGroupsRequest(args)
 	assert(args, "You must provide an argument table when creating ListGroupsRequest")
@@ -273,7 +233,7 @@ keys.ListCoreDefinitionsResponse = { ["Definitions"] = true, ["NextToken"] = tru
 function asserts.AssertListCoreDefinitionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListCoreDefinitionsResponse to be of type 'table'")
-	if struct["Definitions"] then asserts.AssertListOfDefinitionInformation(struct["Definitions"]) end
+	if struct["Definitions"] then asserts.Assert__listOfDefinitionInformation(struct["Definitions"]) end
 	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListCoreDefinitionsResponse[k], "ListCoreDefinitionsResponse contains unknown key " .. tostring(k))
@@ -284,7 +244,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Definitions [ListOfDefinitionInformation] Definitions
+-- * Definitions [__listOfDefinitionInformation] Information about a definition.
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
 -- @return ListCoreDefinitionsResponse structure as a key-value pair table
 function M.ListCoreDefinitionsResponse(args)
@@ -325,9 +285,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AmznClientToken [__string] The client token used to request idempotent operations.
--- * InitialVersion [DeviceDefinitionVersion] Information on the initial version
--- * Name [__string] name of the device definition
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
+-- * InitialVersion [DeviceDefinitionVersion] Information about the initial version of the device definition.
+-- * Name [__string] The name of the device definition.
 -- @return CreateDeviceDefinitionRequest structure as a key-value pair table
 function M.CreateDeviceDefinitionRequest(args)
 	assert(args, "You must provide an argument table when creating CreateDeviceDefinitionRequest")
@@ -352,27 +312,27 @@ function M.CreateDeviceDefinitionRequest(args)
     }
 end
 
-keys.InternalServerErrorException = { ["ErrorDetails"] = true, ["Message"] = true, nil }
+keys.GroupOwnerSetting = { ["GroupOwner"] = true, ["AutoAddGroupOwner"] = true, nil }
 
-function asserts.AssertInternalServerErrorException(struct)
+function asserts.AssertGroupOwnerSetting(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InternalServerErrorException to be of type 'table'")
-	if struct["ErrorDetails"] then asserts.AssertErrorDetails(struct["ErrorDetails"]) end
-	if struct["Message"] then asserts.Assert__string(struct["Message"]) end
+	assert(type(struct) == "table", "Expected GroupOwnerSetting to be of type 'table'")
+	if struct["GroupOwner"] then asserts.Assert__string(struct["GroupOwner"]) end
+	if struct["AutoAddGroupOwner"] then asserts.Assert__boolean(struct["AutoAddGroupOwner"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InternalServerErrorException[k], "InternalServerErrorException contains unknown key " .. tostring(k))
+		assert(keys.GroupOwnerSetting[k], "GroupOwnerSetting contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InternalServerErrorException
--- General Error
+--- Create a structure of type GroupOwnerSetting
+-- Group owner related settings for local resources.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ErrorDetails [ErrorDetails] Error Details
--- * Message [__string] Message
--- @return InternalServerErrorException structure as a key-value pair table
-function M.InternalServerErrorException(args)
-	assert(args, "You must provide an argument table when creating InternalServerErrorException")
+-- * GroupOwner [__string] The name of the Linux OS group whose privileges will be added to the Lambda process. This field is optional.
+-- * AutoAddGroupOwner [__boolean] If true, GreenGrass automatically adds the specified Linux OS group owner of the resource to the Lambda process privileges. Thus the Lambda process will have the file access permissions of the added Linux group.
+-- @return GroupOwnerSetting structure as a key-value pair table
+function M.GroupOwnerSetting(args)
+	assert(args, "You must provide an argument table when creating GroupOwnerSetting")
     local query_args = { 
     }
     local uri_args = { 
@@ -380,10 +340,10 @@ function M.InternalServerErrorException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["ErrorDetails"] = args["ErrorDetails"],
-		["Message"] = args["Message"],
+		["GroupOwner"] = args["GroupOwner"],
+		["AutoAddGroupOwner"] = args["AutoAddGroupOwner"],
 	}
-	asserts.AssertInternalServerErrorException(all_args)
+	asserts.AssertGroupOwnerSetting(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -444,9 +404,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DeviceDefinitionId [__string] device definition Id
--- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- * DeviceDefinitionId [__string] The ID of the device definition.
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * MaxResults [__string] The maximum number of results to be returned per request.
 -- Required key: DeviceDefinitionId
 -- @return ListDeviceDefinitionVersionsRequest structure as a key-value pair table
 function M.ListDeviceDefinitionVersionsRequest(args)
@@ -491,9 +451,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AmznClientToken [__string] The client token used to request idempotent operations.
--- * InitialVersion [LoggerDefinitionVersion] Information on the initial version
--- * Name [__string] name of the logger definition
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
+-- * InitialVersion [LoggerDefinitionVersion] Information about the initial version of the logger definition.
+-- * Name [__string] The name of the logger definition.
 -- @return CreateLoggerDefinitionRequest structure as a key-value pair table
 function M.CreateLoggerDefinitionRequest(args)
 	assert(args, "You must provide an argument table when creating CreateLoggerDefinitionRequest")
@@ -535,9 +495,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AmznClientToken [__string] The client token used to request idempotent operations.
--- * InitialVersion [SubscriptionDefinitionVersion] Information on the initial version
--- * Name [__string] name of the subscription definition
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
+-- * InitialVersion [SubscriptionDefinitionVersion] Information about the initial version of the subscription definition.
+-- * Name [__string] The name of the subscription definition.
 -- @return CreateSubscriptionDefinitionRequest structure as a key-value pair table
 function M.CreateSubscriptionDefinitionRequest(args)
 	assert(args, "You must provide an argument table when creating CreateSubscriptionDefinitionRequest")
@@ -568,7 +528,7 @@ function asserts.AssertListCoreDefinitionVersionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListCoreDefinitionVersionsResponse to be of type 'table'")
 	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
-	if struct["Versions"] then asserts.AssertListOfVersionInformation(struct["Versions"]) end
+	if struct["Versions"] then asserts.Assert__listOfVersionInformation(struct["Versions"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListCoreDefinitionVersionsResponse[k], "ListCoreDefinitionVersionsResponse contains unknown key " .. tostring(k))
 	end
@@ -579,7 +539,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- * Versions [ListOfVersionInformation] Versions
+-- * Versions [__listOfVersionInformation] Information about a version.
 -- @return ListCoreDefinitionVersionsResponse structure as a key-value pair table
 function M.ListCoreDefinitionVersionsResponse(args)
 	assert(args, "You must provide an argument table when creating ListCoreDefinitionVersionsResponse")
@@ -602,12 +562,55 @@ function M.ListCoreDefinitionVersionsResponse(args)
     }
 end
 
+keys.LocalVolumeResourceData = { ["SourcePath"] = true, ["DestinationPath"] = true, ["GroupOwnerSetting"] = true, nil }
+
+function asserts.AssertLocalVolumeResourceData(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LocalVolumeResourceData to be of type 'table'")
+	if struct["SourcePath"] then asserts.Assert__string(struct["SourcePath"]) end
+	if struct["DestinationPath"] then asserts.Assert__string(struct["DestinationPath"]) end
+	if struct["GroupOwnerSetting"] then asserts.AssertGroupOwnerSetting(struct["GroupOwnerSetting"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.LocalVolumeResourceData[k], "LocalVolumeResourceData contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LocalVolumeResourceData
+-- Attributes that define a local volume resource.
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourcePath [__string] The local absolute path of the volume resource on the host. The source path for a volume resource type cannot start with ''/proc'' or ''/sys''.
+-- * DestinationPath [__string] The absolute local path of the resource inside the lambda environment.
+-- * GroupOwnerSetting [GroupOwnerSetting] Allows you to configure additional group privileges for the Lambda process. This field is optional.
+-- @return LocalVolumeResourceData structure as a key-value pair table
+function M.LocalVolumeResourceData(args)
+	assert(args, "You must provide an argument table when creating LocalVolumeResourceData")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SourcePath"] = args["SourcePath"],
+		["DestinationPath"] = args["DestinationPath"],
+		["GroupOwnerSetting"] = args["GroupOwnerSetting"],
+	}
+	asserts.AssertLocalVolumeResourceData(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListLoggerDefinitionsResponse = { ["Definitions"] = true, ["NextToken"] = true, nil }
 
 function asserts.AssertListLoggerDefinitionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListLoggerDefinitionsResponse to be of type 'table'")
-	if struct["Definitions"] then asserts.AssertListOfDefinitionInformation(struct["Definitions"]) end
+	if struct["Definitions"] then asserts.Assert__listOfDefinitionInformation(struct["Definitions"]) end
 	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListLoggerDefinitionsResponse[k], "ListLoggerDefinitionsResponse contains unknown key " .. tostring(k))
@@ -618,7 +621,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Definitions [ListOfDefinitionInformation] Definitions
+-- * Definitions [__listOfDefinitionInformation] Information about a definition.
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
 -- @return ListLoggerDefinitionsResponse structure as a key-value pair table
 function M.ListLoggerDefinitionsResponse(args)
@@ -663,13 +666,13 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LatestVersionArn [__string] Latest version arn of the definition.
--- * Name [__string] Name of the definition.
--- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- * LatestVersion [__string] Last version of the definition.
--- * CreationTimestamp [__string] Timestamp of when the definition was created.
--- * Id [__string] Id of the definition.
--- * Arn [__string] Arn of the definition.
+-- * LatestVersionArn [__string] The ARN of the latest version of the definition.
+-- * Name [__string] The name of the definition.
+-- * LastUpdatedTimestamp [__string] The time, in milliseconds since the epoch, when the definition was last updated.
+-- * LatestVersion [__string] The latest version of the definition.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the definition was created.
+-- * Id [__string] The ID of the definition.
+-- * Arn [__string] The ARN of the definition.
 -- @return GetLoggerDefinitionResponse structure as a key-value pair table
 function M.GetLoggerDefinitionResponse(args)
 	assert(args, "You must provide an argument table when creating GetLoggerDefinitionResponse")
@@ -697,6 +700,96 @@ function M.GetLoggerDefinitionResponse(args)
     }
 end
 
+keys.UpdateResourceDefinitionRequest = { ["ResourceDefinitionId"] = true, ["Name"] = true, nil }
+
+function asserts.AssertUpdateResourceDefinitionRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateResourceDefinitionRequest to be of type 'table'")
+	assert(struct["ResourceDefinitionId"], "Expected key ResourceDefinitionId to exist in table")
+	if struct["ResourceDefinitionId"] then asserts.Assert__string(struct["ResourceDefinitionId"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateResourceDefinitionRequest[k], "UpdateResourceDefinitionRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateResourceDefinitionRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceDefinitionId [__string] The ID of the resource definition.
+-- * Name [__string] The name of the definition.
+-- Required key: ResourceDefinitionId
+-- @return UpdateResourceDefinitionRequest structure as a key-value pair table
+function M.UpdateResourceDefinitionRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateResourceDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{ResourceDefinitionId}"] = args["ResourceDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceDefinitionId"] = args["ResourceDefinitionId"],
+		["Name"] = args["Name"],
+	}
+	asserts.AssertUpdateResourceDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ResetDeploymentsRequest = { ["Force"] = true, ["AmznClientToken"] = true, ["GroupId"] = true, nil }
+
+function asserts.AssertResetDeploymentsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ResetDeploymentsRequest to be of type 'table'")
+	assert(struct["GroupId"], "Expected key GroupId to exist in table")
+	if struct["Force"] then asserts.Assert__boolean(struct["Force"]) end
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ResetDeploymentsRequest[k], "ResetDeploymentsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ResetDeploymentsRequest
+-- Information needed to reset deployments.
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Force [__boolean] If true, performs a best-effort only core reset.
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
+-- * GroupId [__string] The ID of the AWS Greengrass group.
+-- Required key: GroupId
+-- @return ResetDeploymentsRequest structure as a key-value pair table
+function M.ResetDeploymentsRequest(args)
+	assert(args, "You must provide an argument table when creating ResetDeploymentsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{GroupId}"] = args["GroupId"],
+    }
+    local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
+    }
+	local all_args = { 
+		["Force"] = args["Force"],
+		["AmznClientToken"] = args["AmznClientToken"],
+		["GroupId"] = args["GroupId"],
+	}
+	asserts.AssertResetDeploymentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetGroupVersionResponse = { ["Definition"] = true, ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
 function asserts.AssertGetGroupVersionResponse(struct)
@@ -716,11 +809,11 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Definition [GroupVersion] Information on the definition
--- * Version [__string] Unique Id for a version of the Group.
--- * CreationTimestamp [__string] Timestamp when the group version was created.
--- * Id [__string] Id of the group version.
--- * Arn [__string] Arn of the group version.
+-- * Definition [GroupVersion] Information about the group version definition.
+-- * Version [__string] The unique ID for the version of the group.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the group version was created.
+-- * Id [__string] The ID of the group version.
+-- * Arn [__string] The ARN of the group version.
 -- @return GetGroupVersionResponse structure as a key-value pair table
 function M.GetGroupVersionResponse(args)
 	assert(args, "You must provide an argument table when creating GetGroupVersionResponse")
@@ -763,9 +856,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AmznClientToken [__string] The client token used to request idempotent operations.
--- * InitialVersion [GroupVersion] Information on the initial version
--- * Name [__string] name of the group
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
+-- * InitialVersion [GroupVersion] Information about the initial version of the group.
+-- * Name [__string] The name of the group.
 -- @return CreateGroupRequest structure as a key-value pair table
 function M.CreateGroupRequest(args)
 	assert(args, "You must provide an argument table when creating CreateGroupRequest")
@@ -806,7 +899,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- * GroupId [__string] The ID of the AWS Greengrass group.
 -- Required key: GroupId
 -- @return GetGroupRequest structure as a key-value pair table
 function M.GetGroupRequest(args)
@@ -879,7 +972,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AssociatedAt [__string] Time when the service role was associated to the account.
+-- * AssociatedAt [__string] The time when the service role was associated with the account.
 -- @return AssociateServiceRoleToAccountResponse structure as a key-value pair table
 function M.AssociateServiceRoleToAccountResponse(args)
 	assert(args, "You must provide an argument table when creating AssociateServiceRoleToAccountResponse")
@@ -907,7 +1000,7 @@ function asserts.AssertCreateLoggerDefinitionVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateLoggerDefinitionVersionRequest to be of type 'table'")
 	assert(struct["LoggerDefinitionId"], "Expected key LoggerDefinitionId to exist in table")
-	if struct["Loggers"] then asserts.AssertListOfLogger(struct["Loggers"]) end
+	if struct["Loggers"] then asserts.Assert__listOfLogger(struct["Loggers"]) end
 	if struct["LoggerDefinitionId"] then asserts.Assert__string(struct["LoggerDefinitionId"]) end
 	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
 	for k,_ in pairs(struct) do
@@ -919,9 +1012,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Loggers [ListOfLogger] List of loggers.
--- * LoggerDefinitionId [__string] logger definition Id
--- * AmznClientToken [__string] The client token used to request idempotent operations.
+-- * Loggers [__listOfLogger] A list of loggers.
+-- * LoggerDefinitionId [__string] The ID of the logger definition.
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
 -- Required key: LoggerDefinitionId
 -- @return CreateLoggerDefinitionVersionRequest structure as a key-value pair table
 function M.CreateLoggerDefinitionVersionRequest(args)
@@ -948,6 +1041,48 @@ function M.CreateLoggerDefinitionVersionRequest(args)
     }
 end
 
+keys.ListBulkDeploymentsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
+
+function asserts.AssertListBulkDeploymentsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListBulkDeploymentsRequest to be of type 'table'")
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.Assert__string(struct["MaxResults"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListBulkDeploymentsRequest[k], "ListBulkDeploymentsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListBulkDeploymentsRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * MaxResults [__string] The maximum number of results to be returned per request.
+-- @return ListBulkDeploymentsRequest structure as a key-value pair table
+function M.ListBulkDeploymentsRequest(args)
+	assert(args, "You must provide an argument table when creating ListBulkDeploymentsRequest")
+    local query_args = { 
+        ["NextToken"] = args["NextToken"],
+        ["MaxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+	}
+	asserts.AssertListBulkDeploymentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DeleteLoggerDefinitionRequest = { ["LoggerDefinitionId"] = true, nil }
 
 function asserts.AssertDeleteLoggerDefinitionRequest(struct)
@@ -964,7 +1099,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LoggerDefinitionId [__string] logger definition Id
+-- * LoggerDefinitionId [__string] The ID of the logger definition.
 -- Required key: LoggerDefinitionId
 -- @return DeleteLoggerDefinitionRequest structure as a key-value pair table
 function M.DeleteLoggerDefinitionRequest(args)
@@ -1006,9 +1141,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- * GroupId [__string] The unique Id of the AWS Greengrass Group
--- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * GroupId [__string] The ID of the AWS Greengrass group.
+-- * MaxResults [__string] The maximum number of results to be returned per request.
 -- Required key: GroupId
 -- @return ListGroupVersionsRequest structure as a key-value pair table
 function M.ListGroupVersionsRequest(args)
@@ -1036,6 +1171,49 @@ function M.ListGroupVersionsRequest(args)
     }
 end
 
+keys.UpdateGroupCertificateConfigurationRequest = { ["CertificateExpiryInMilliseconds"] = true, ["GroupId"] = true, nil }
+
+function asserts.AssertUpdateGroupCertificateConfigurationRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateGroupCertificateConfigurationRequest to be of type 'table'")
+	assert(struct["GroupId"], "Expected key GroupId to exist in table")
+	if struct["CertificateExpiryInMilliseconds"] then asserts.Assert__string(struct["CertificateExpiryInMilliseconds"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateGroupCertificateConfigurationRequest[k], "UpdateGroupCertificateConfigurationRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateGroupCertificateConfigurationRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateExpiryInMilliseconds [__string] The amount of time remaining before the certificate expires, in milliseconds.
+-- * GroupId [__string] The ID of the AWS Greengrass group.
+-- Required key: GroupId
+-- @return UpdateGroupCertificateConfigurationRequest structure as a key-value pair table
+function M.UpdateGroupCertificateConfigurationRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateGroupCertificateConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{GroupId}"] = args["GroupId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["CertificateExpiryInMilliseconds"] = args["CertificateExpiryInMilliseconds"],
+		["GroupId"] = args["GroupId"],
+	}
+	asserts.AssertUpdateGroupCertificateConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetGroupCertificateAuthorityResponse = { ["PemEncodedCertificate"] = true, ["GroupCertificateAuthorityId"] = true, ["GroupCertificateAuthorityArn"] = true, nil }
 
 function asserts.AssertGetGroupCertificateAuthorityResponse(struct)
@@ -1053,9 +1231,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * PemEncodedCertificate [__string] PEM encoded certificate for the group.
--- * GroupCertificateAuthorityId [__string] Id of the certificate authority for the group.
--- * GroupCertificateAuthorityArn [__string] Arn of the certificate authority for the group.
+-- * PemEncodedCertificate [__string] The PEM encoded certificate for the group.
+-- * GroupCertificateAuthorityId [__string] The ID of the certificate authority for the group.
+-- * GroupCertificateAuthorityArn [__string] The ARN of the certificate authority for the group.
 -- @return GetGroupCertificateAuthorityResponse structure as a key-value pair table
 function M.GetGroupCertificateAuthorityResponse(args)
 	assert(args, "You must provide an argument table when creating GetGroupCertificateAuthorityResponse")
@@ -1100,13 +1278,13 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LatestVersionArn [__string] Latest version arn of the definition.
--- * Name [__string] Name of the definition.
--- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- * LatestVersion [__string] Last version of the definition.
--- * CreationTimestamp [__string] Timestamp of when the definition was created.
--- * Id [__string] Id of the definition.
--- * Arn [__string] Arn of the definition.
+-- * LatestVersionArn [__string] The ARN of the latest version of the definition.
+-- * Name [__string] The name of the definition.
+-- * LastUpdatedTimestamp [__string] The time, in milliseconds since the epoch, when the definition was last updated.
+-- * LatestVersion [__string] The latest version of the definition.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the definition was created.
+-- * Id [__string] The ID of the definition.
+-- * Arn [__string] The ARN of the definition.
 -- @return CreateDeviceDefinitionResponse structure as a key-value pair table
 function M.CreateDeviceDefinitionResponse(args)
 	assert(args, "You must provide an argument table when creating CreateDeviceDefinitionResponse")
@@ -1168,6 +1346,46 @@ function M.DeleteFunctionDefinitionResponse(args)
     }
 end
 
+keys.S3MachineLearningModelResourceData = { ["DestinationPath"] = true, ["S3Uri"] = true, nil }
+
+function asserts.AssertS3MachineLearningModelResourceData(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected S3MachineLearningModelResourceData to be of type 'table'")
+	if struct["DestinationPath"] then asserts.Assert__string(struct["DestinationPath"]) end
+	if struct["S3Uri"] then asserts.Assert__string(struct["S3Uri"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.S3MachineLearningModelResourceData[k], "S3MachineLearningModelResourceData contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type S3MachineLearningModelResourceData
+-- Attributes that define an S3 machine learning resource.
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DestinationPath [__string] The absolute local path of the resource inside the Lambda environment.
+-- * S3Uri [__string] The URI of the source model in an S3 bucket. The model package must be in tar.gz or .zip format.
+-- @return S3MachineLearningModelResourceData structure as a key-value pair table
+function M.S3MachineLearningModelResourceData(args)
+	assert(args, "You must provide an argument table when creating S3MachineLearningModelResourceData")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["DestinationPath"] = args["DestinationPath"],
+		["S3Uri"] = args["S3Uri"],
+	}
+	asserts.AssertS3MachineLearningModelResourceData(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.CreateCoreDefinitionRequest = { ["AmznClientToken"] = true, ["InitialVersion"] = true, ["Name"] = true, nil }
 
 function asserts.AssertCreateCoreDefinitionRequest(struct)
@@ -1182,12 +1400,12 @@ function asserts.AssertCreateCoreDefinitionRequest(struct)
 end
 
 --- Create a structure of type CreateCoreDefinitionRequest
--- Information on the core definition request
+-- Information needed to create a core definition.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AmznClientToken [__string] The client token used to request idempotent operations.
--- * InitialVersion [CoreDefinitionVersion] Information on the initial version
--- * Name [__string] name of the core definition
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
+-- * InitialVersion [CoreDefinitionVersion] Information about the initial version of the core definition.
+-- * Name [__string] The name of the core definition.
 -- @return CreateCoreDefinitionRequest structure as a key-value pair table
 function M.CreateCoreDefinitionRequest(args)
 	assert(args, "You must provide an argument table when creating CreateCoreDefinitionRequest")
@@ -1227,7 +1445,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DisassociatedAt [__string] Time when the service role was disassociated from the account.
+-- * DisassociatedAt [__string] The time when the service role was disassociated from the account.
 -- @return DisassociateServiceRoleFromAccountResponse structure as a key-value pair table
 function M.DisassociateServiceRoleFromAccountResponse(args)
 	assert(args, "You must provide an argument table when creating DisassociateServiceRoleFromAccountResponse")
@@ -1254,17 +1472,17 @@ keys.DeviceDefinitionVersion = { ["Devices"] = true, nil }
 function asserts.AssertDeviceDefinitionVersion(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeviceDefinitionVersion to be of type 'table'")
-	if struct["Devices"] then asserts.AssertListOfDevice(struct["Devices"]) end
+	if struct["Devices"] then asserts.Assert__listOfDevice(struct["Devices"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.DeviceDefinitionVersion[k], "DeviceDefinitionVersion contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeviceDefinitionVersion
--- Information on device definition version
+-- Information about a device definition version.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Devices [ListOfDevice] Devices in the definition version.
+-- * Devices [__listOfDevice] A list of devices in the definition version.
 -- @return DeviceDefinitionVersion structure as a key-value pair table
 function M.DeviceDefinitionVersion(args)
 	assert(args, "You must provide an argument table when creating DeviceDefinitionVersion")
@@ -1278,6 +1496,43 @@ function M.DeviceDefinitionVersion(args)
 		["Devices"] = args["Devices"],
 	}
 	asserts.AssertDeviceDefinitionVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateGroupCertificateAuthorityResponse = { ["GroupCertificateAuthorityArn"] = true, nil }
+
+function asserts.AssertCreateGroupCertificateAuthorityResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateGroupCertificateAuthorityResponse to be of type 'table'")
+	if struct["GroupCertificateAuthorityArn"] then asserts.Assert__string(struct["GroupCertificateAuthorityArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateGroupCertificateAuthorityResponse[k], "CreateGroupCertificateAuthorityResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateGroupCertificateAuthorityResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupCertificateAuthorityArn [__string] The ARN of the group certificate authority.
+-- @return CreateGroupCertificateAuthorityResponse structure as a key-value pair table
+function M.CreateGroupCertificateAuthorityResponse(args)
+	assert(args, "You must provide an argument table when creating CreateGroupCertificateAuthorityResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GroupCertificateAuthorityArn"] = args["GroupCertificateAuthorityArn"],
+	}
+	asserts.AssertCreateGroupCertificateAuthorityResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1304,9 +1559,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * FunctionDefinitionId [__string] the unique Id of the lambda definition
--- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- * FunctionDefinitionId [__string] The ID of the Lambda function definition.
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * MaxResults [__string] The maximum number of results to be returned per request.
 -- Required key: FunctionDefinitionId
 -- @return ListFunctionDefinitionVersionsRequest structure as a key-value pair table
 function M.ListFunctionDefinitionVersionsRequest(args)
@@ -1349,7 +1604,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DisassociatedAt [__string] Time when the role was disassociated from the group.
+-- * DisassociatedAt [__string] The time, in milliseconds since the epoch, when the role was disassociated from the group.
 -- @return DisassociateRoleFromGroupResponse structure as a key-value pair table
 function M.DisassociateRoleFromGroupResponse(args)
 	assert(args, "You must provide an argument table when creating DisassociateRoleFromGroupResponse")
@@ -1376,17 +1631,17 @@ keys.LoggerDefinitionVersion = { ["Loggers"] = true, nil }
 function asserts.AssertLoggerDefinitionVersion(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LoggerDefinitionVersion to be of type 'table'")
-	if struct["Loggers"] then asserts.AssertListOfLogger(struct["Loggers"]) end
+	if struct["Loggers"] then asserts.Assert__listOfLogger(struct["Loggers"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.LoggerDefinitionVersion[k], "LoggerDefinitionVersion contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LoggerDefinitionVersion
--- Information on logger definition version
+-- Information about a logger definition version.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Loggers [ListOfLogger] List of loggers.
+-- * Loggers [__listOfLogger] A list of loggers.
 -- @return LoggerDefinitionVersion structure as a key-value pair table
 function M.LoggerDefinitionVersion(args)
 	assert(args, "You must provide an argument table when creating LoggerDefinitionVersion")
@@ -1415,7 +1670,7 @@ function asserts.AssertCreateFunctionDefinitionVersionRequest(struct)
 	assert(type(struct) == "table", "Expected CreateFunctionDefinitionVersionRequest to be of type 'table'")
 	assert(struct["FunctionDefinitionId"], "Expected key FunctionDefinitionId to exist in table")
 	if struct["FunctionDefinitionId"] then asserts.Assert__string(struct["FunctionDefinitionId"]) end
-	if struct["Functions"] then asserts.AssertListOfFunction(struct["Functions"]) end
+	if struct["Functions"] then asserts.Assert__listOfFunction(struct["Functions"]) end
 	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateFunctionDefinitionVersionRequest[k], "CreateFunctionDefinitionVersionRequest contains unknown key " .. tostring(k))
@@ -1423,12 +1678,12 @@ function asserts.AssertCreateFunctionDefinitionVersionRequest(struct)
 end
 
 --- Create a structure of type CreateFunctionDefinitionVersionRequest
--- Function definition version
+-- Information needed to create a function definition version.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * FunctionDefinitionId [__string] the unique Id of the lambda definition
--- * Functions [ListOfFunction] Lambda functions in this function definition version.
--- * AmznClientToken [__string] The client token used to request idempotent operations.
+-- * FunctionDefinitionId [__string] The ID of the Lambda function definition.
+-- * Functions [__listOfFunction] A list of Lambda functions in this function definition version.
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
 -- Required key: FunctionDefinitionId
 -- @return CreateFunctionDefinitionVersionRequest structure as a key-value pair table
 function M.CreateFunctionDefinitionVersionRequest(args)
@@ -1507,10 +1762,10 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Version [__string] Unique Id of a version.
--- * CreationTimestamp [__string] Timestamp of when the version was created.
--- * Id [__string] Id of the resource container.
--- * Arn [__string] Arn of the version.
+-- * Version [__string] The unique ID of the version.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the version was created.
+-- * Id [__string] The ID of the version.
+-- * Arn [__string] The ARN of the version.
 -- @return CreateDeviceDefinitionVersionResponse structure as a key-value pair table
 function M.CreateDeviceDefinitionVersionResponse(args)
 	assert(args, "You must provide an argument table when creating CreateDeviceDefinitionVersionResponse")
@@ -1553,9 +1808,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LoggerDefinitionId [__string] logger definition Id
--- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- * LoggerDefinitionId [__string] The ID of the logger definition.
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * MaxResults [__string] The maximum number of results to be returned per request.
 -- Required key: LoggerDefinitionId
 -- @return ListLoggerDefinitionVersionsRequest structure as a key-value pair table
 function M.ListLoggerDefinitionVersionsRequest(args)
@@ -1601,16 +1856,16 @@ function asserts.AssertDefinitionInformation(struct)
 end
 
 --- Create a structure of type DefinitionInformation
--- Information on the Definition
+-- Information about a definition.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LatestVersionArn [__string] Latest version arn of the definition.
--- * Name [__string] Name of the definition.
--- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- * LatestVersion [__string] Last version of the definition.
--- * CreationTimestamp [__string] Timestamp of when the definition was created.
--- * Id [__string] Id of the definition.
--- * Arn [__string] Arn of the definition.
+-- * LatestVersionArn [__string] The ARN of the latest version of the definition.
+-- * Name [__string] The name of the definition.
+-- * LastUpdatedTimestamp [__string] The time, in milliseconds since the epoch, when the definition was last updated.
+-- * LatestVersion [__string] The latest version of the definition.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the definition was created.
+-- * Id [__string] The ID of the definition.
+-- * Arn [__string] The ARN of the definition.
 -- @return DefinitionInformation structure as a key-value pair table
 function M.DefinitionInformation(args)
 	assert(args, "You must provide an argument table when creating DefinitionInformation")
@@ -1630,46 +1885,6 @@ function M.DefinitionInformation(args)
 		["Arn"] = args["Arn"],
 	}
 	asserts.AssertDefinitionInformation(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.GeneralError = { ["ErrorDetails"] = true, ["Message"] = true, nil }
-
-function asserts.AssertGeneralError(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected GeneralError to be of type 'table'")
-	if struct["ErrorDetails"] then asserts.AssertErrorDetails(struct["ErrorDetails"]) end
-	if struct["Message"] then asserts.Assert__string(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.GeneralError[k], "GeneralError contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type GeneralError
--- General Error
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ErrorDetails [ErrorDetails] Error Details
--- * Message [__string] Message
--- @return GeneralError structure as a key-value pair table
-function M.GeneralError(args)
-	assert(args, "You must provide an argument table when creating GeneralError")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ErrorDetails"] = args["ErrorDetails"],
-		["Message"] = args["Message"],
-	}
-	asserts.AssertGeneralError(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1699,13 +1914,13 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LatestVersionArn [__string] Latest version arn of the definition.
--- * Name [__string] Name of the definition.
--- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- * LatestVersion [__string] Last version of the definition.
--- * CreationTimestamp [__string] Timestamp of when the definition was created.
--- * Id [__string] Id of the definition.
--- * Arn [__string] Arn of the definition.
+-- * LatestVersionArn [__string] The ARN of the latest version of the definition.
+-- * Name [__string] The name of the definition.
+-- * LastUpdatedTimestamp [__string] The time, in milliseconds since the epoch, when the definition was last updated.
+-- * LatestVersion [__string] The latest version of the definition.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the definition was created.
+-- * Id [__string] The ID of the definition.
+-- * Arn [__string] The ARN of the definition.
 -- @return GetCoreDefinitionResponse structure as a key-value pair table
 function M.GetCoreDefinitionResponse(args)
 	assert(args, "You must provide an argument table when creating GetCoreDefinitionResponse")
@@ -1733,6 +1948,166 @@ function M.GetCoreDefinitionResponse(args)
     }
 end
 
+keys.Subscription = { ["Source"] = true, ["Target"] = true, ["Id"] = true, ["Subject"] = true, nil }
+
+function asserts.AssertSubscription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Subscription to be of type 'table'")
+	if struct["Source"] then asserts.Assert__string(struct["Source"]) end
+	if struct["Target"] then asserts.Assert__string(struct["Target"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Subject"] then asserts.Assert__string(struct["Subject"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Subscription[k], "Subscription contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Subscription
+-- Information about a subscription.
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Source [__string] The source of the subscription. Can be a thing ARN, a Lambda function ARN, 'cloud' (which represents the IoT cloud), or 'GGShadowService'.
+-- * Target [__string] Where the message is sent to. Can be a thing ARN, a Lambda function ARN, 'cloud' (which represents the IoT cloud), or 'GGShadowService'.
+-- * Id [__string] A descriptive or arbitrary ID for the subscription. This value must be unique within the subscription definition version. Max length is 128 characters with pattern ''[a&#8209;zA&#8209;Z0&#8209;9:_&#8209;]+''.
+-- * Subject [__string] The subject of the message.
+-- @return Subscription structure as a key-value pair table
+function M.Subscription(args)
+	assert(args, "You must provide an argument table when creating Subscription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Source"] = args["Source"],
+		["Target"] = args["Target"],
+		["Id"] = args["Id"],
+		["Subject"] = args["Subject"],
+	}
+	asserts.AssertSubscription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.StopBulkDeploymentRequest = { ["BulkDeploymentId"] = true, nil }
+
+function asserts.AssertStopBulkDeploymentRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected StopBulkDeploymentRequest to be of type 'table'")
+	assert(struct["BulkDeploymentId"], "Expected key BulkDeploymentId to exist in table")
+	if struct["BulkDeploymentId"] then asserts.Assert__string(struct["BulkDeploymentId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.StopBulkDeploymentRequest[k], "StopBulkDeploymentRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type StopBulkDeploymentRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BulkDeploymentId [__string] The ID of the bulk deployment.
+-- Required key: BulkDeploymentId
+-- @return StopBulkDeploymentRequest structure as a key-value pair table
+function M.StopBulkDeploymentRequest(args)
+	assert(args, "You must provide an argument table when creating StopBulkDeploymentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{BulkDeploymentId}"] = args["BulkDeploymentId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["BulkDeploymentId"] = args["BulkDeploymentId"],
+	}
+	asserts.AssertStopBulkDeploymentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateResourceDefinitionResponse = { nil }
+
+function asserts.AssertUpdateResourceDefinitionResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateResourceDefinitionResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateResourceDefinitionResponse[k], "UpdateResourceDefinitionResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateResourceDefinitionResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateResourceDefinitionResponse structure as a key-value pair table
+function M.UpdateResourceDefinitionResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateResourceDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertUpdateResourceDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SageMakerMachineLearningModelResourceData = { ["DestinationPath"] = true, ["SageMakerJobArn"] = true, nil }
+
+function asserts.AssertSageMakerMachineLearningModelResourceData(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SageMakerMachineLearningModelResourceData to be of type 'table'")
+	if struct["DestinationPath"] then asserts.Assert__string(struct["DestinationPath"]) end
+	if struct["SageMakerJobArn"] then asserts.Assert__string(struct["SageMakerJobArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SageMakerMachineLearningModelResourceData[k], "SageMakerMachineLearningModelResourceData contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SageMakerMachineLearningModelResourceData
+-- Attributes that define an SageMaker machine learning resource.
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DestinationPath [__string] The absolute local path of the resource inside the Lambda environment.
+-- * SageMakerJobArn [__string] The ARN of the SageMaker training job that represents the source model.
+-- @return SageMakerMachineLearningModelResourceData structure as a key-value pair table
+function M.SageMakerMachineLearningModelResourceData(args)
+	assert(args, "You must provide an argument table when creating SageMakerMachineLearningModelResourceData")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["DestinationPath"] = args["DestinationPath"],
+		["SageMakerJobArn"] = args["SageMakerJobArn"],
+	}
+	asserts.AssertSageMakerMachineLearningModelResourceData(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetSubscriptionDefinitionRequest = { ["SubscriptionDefinitionId"] = true, nil }
 
 function asserts.AssertGetSubscriptionDefinitionRequest(struct)
@@ -1749,7 +2124,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SubscriptionDefinitionId [__string] subscription definition Id
+-- * SubscriptionDefinitionId [__string] The ID of the subscription definition.
 -- Required key: SubscriptionDefinitionId
 -- @return GetSubscriptionDefinitionRequest structure as a key-value pair table
 function M.GetSubscriptionDefinitionRequest(args)
@@ -1807,6 +2182,61 @@ function M.UpdateFunctionDefinitionResponse(args)
     }
 end
 
+keys.CreateResourceDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
+
+function asserts.AssertCreateResourceDefinitionResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateResourceDefinitionResponse to be of type 'table'")
+	if struct["LatestVersionArn"] then asserts.Assert__string(struct["LatestVersionArn"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	if struct["LastUpdatedTimestamp"] then asserts.Assert__string(struct["LastUpdatedTimestamp"]) end
+	if struct["LatestVersion"] then asserts.Assert__string(struct["LatestVersion"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateResourceDefinitionResponse[k], "CreateResourceDefinitionResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateResourceDefinitionResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LatestVersionArn [__string] The ARN of the latest version of the definition.
+-- * Name [__string] The name of the definition.
+-- * LastUpdatedTimestamp [__string] The time, in milliseconds since the epoch, when the definition was last updated.
+-- * LatestVersion [__string] The latest version of the definition.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the definition was created.
+-- * Id [__string] The ID of the definition.
+-- * Arn [__string] The ARN of the definition.
+-- @return CreateResourceDefinitionResponse structure as a key-value pair table
+function M.CreateResourceDefinitionResponse(args)
+	assert(args, "You must provide an argument table when creating CreateResourceDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["LatestVersionArn"] = args["LatestVersionArn"],
+		["Name"] = args["Name"],
+		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
+		["LatestVersion"] = args["LatestVersion"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
+	}
+	asserts.AssertCreateResourceDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.UpdateSubscriptionDefinitionRequest = { ["SubscriptionDefinitionId"] = true, ["Name"] = true, nil }
 
 function asserts.AssertUpdateSubscriptionDefinitionRequest(struct)
@@ -1824,8 +2254,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SubscriptionDefinitionId [__string] subscription definition Id
--- * Name [__string] name of the definition
+-- * SubscriptionDefinitionId [__string] The ID of the subscription definition.
+-- * Name [__string] The name of the definition.
 -- Required key: SubscriptionDefinitionId
 -- @return UpdateSubscriptionDefinitionRequest structure as a key-value pair table
 function M.UpdateSubscriptionDefinitionRequest(args)
@@ -1870,11 +2300,11 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DeploymentId [__string] Id of the deployment if you wish to redeploy a previous deployment.
--- * DeploymentType [DeploymentType] Type of deployment
--- * AmznClientToken [__string] The client token used to request idempotent operations.
--- * GroupVersionId [__string] Group Version you wish to deploy.
--- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- * DeploymentId [__string] The ID of the deployment if you wish to redeploy a previous deployment.
+-- * DeploymentType [DeploymentType] The type of deployment. When used in ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid.
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
+-- * GroupVersionId [__string] The ID of the group version to be deployed.
+-- * GroupId [__string] The ID of the AWS Greengrass group.
 -- Required key: GroupId
 -- @return CreateDeploymentRequest structure as a key-value pair table
 function M.CreateDeploymentRequest(args)
@@ -1903,12 +2333,61 @@ function M.CreateDeploymentRequest(args)
     }
 end
 
+keys.GetResourceDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
+
+function asserts.AssertGetResourceDefinitionVersionResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetResourceDefinitionVersionResponse to be of type 'table'")
+	if struct["Definition"] then asserts.AssertResourceDefinitionVersion(struct["Definition"]) end
+	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetResourceDefinitionVersionResponse[k], "GetResourceDefinitionVersionResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetResourceDefinitionVersionResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Definition [ResourceDefinitionVersion] Information about the definition.
+-- * Version [__string] The version of the resource definition version.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the resource definition version was created.
+-- * Id [__string] The ID of the resource definition version.
+-- * Arn [__string] Arn of the resource definition version.
+-- @return GetResourceDefinitionVersionResponse structure as a key-value pair table
+function M.GetResourceDefinitionVersionResponse(args)
+	assert(args, "You must provide an argument table when creating GetResourceDefinitionVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Definition"] = args["Definition"],
+		["Version"] = args["Version"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
+	}
+	asserts.AssertGetResourceDefinitionVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetConnectivityInfoResponse = { ["ConnectivityInfo"] = true, ["Message"] = true, nil }
 
 function asserts.AssertGetConnectivityInfoResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetConnectivityInfoResponse to be of type 'table'")
-	if struct["ConnectivityInfo"] then asserts.AssertListOfConnectivityInfo(struct["ConnectivityInfo"]) end
+	if struct["ConnectivityInfo"] then asserts.Assert__listOfConnectivityInfo(struct["ConnectivityInfo"]) end
 	if struct["Message"] then asserts.Assert__string(struct["Message"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.GetConnectivityInfoResponse[k], "GetConnectivityInfoResponse contains unknown key " .. tostring(k))
@@ -1919,8 +2398,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ConnectivityInfo [ListOfConnectivityInfo] Connectivity info array
--- * Message [__string] Response Text
+-- * ConnectivityInfo [__listOfConnectivityInfo] Connectivity info list.
+-- * Message [__string] A message about the connectivity info request.
 -- @return GetConnectivityInfoResponse structure as a key-value pair table
 function M.GetConnectivityInfoResponse(args)
 	assert(args, "You must provide an argument table when creating GetConnectivityInfoResponse")
@@ -1961,9 +2440,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- * CoreDefinitionId [__string] core definition Id
--- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * CoreDefinitionId [__string] The ID of the core definition.
+-- * MaxResults [__string] The maximum number of results to be returned per request.
 -- Required key: CoreDefinitionId
 -- @return ListCoreDefinitionVersionsRequest structure as a key-value pair table
 function M.ListCoreDefinitionVersionsRequest(args)
@@ -2007,7 +2486,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DeviceDefinitionId [__string] device definition Id
+-- * DeviceDefinitionId [__string] The ID of the device definition.
 -- Required key: DeviceDefinitionId
 -- @return DeleteDeviceDefinitionRequest structure as a key-value pair table
 function M.DeleteDeviceDefinitionRequest(args)
@@ -2104,17 +2583,17 @@ keys.FunctionDefinitionVersion = { ["Functions"] = true, nil }
 function asserts.AssertFunctionDefinitionVersion(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FunctionDefinitionVersion to be of type 'table'")
-	if struct["Functions"] then asserts.AssertListOfFunction(struct["Functions"]) end
+	if struct["Functions"] then asserts.Assert__listOfFunction(struct["Functions"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.FunctionDefinitionVersion[k], "FunctionDefinitionVersion contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FunctionDefinitionVersion
--- Information on the function definition version
+-- Information about a function definition version.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Functions [ListOfFunction] Lambda functions in this function definition version.
+-- * Functions [__listOfFunction] A list of Lambda functions in this function definition version.
 -- @return FunctionDefinitionVersion structure as a key-value pair table
 function M.FunctionDefinitionVersion(args)
 	assert(args, "You must provide an argument table when creating FunctionDefinitionVersion")
@@ -2157,13 +2636,13 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LatestVersionArn [__string] Latest version arn of the definition.
--- * Name [__string] Name of the definition.
--- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- * LatestVersion [__string] Last version of the definition.
--- * CreationTimestamp [__string] Timestamp of when the definition was created.
--- * Id [__string] Id of the definition.
--- * Arn [__string] Arn of the definition.
+-- * LatestVersionArn [__string] The ARN of the latest version of the definition.
+-- * Name [__string] The name of the definition.
+-- * LastUpdatedTimestamp [__string] The time, in milliseconds since the epoch, when the definition was last updated.
+-- * LatestVersion [__string] The latest version of the definition.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the definition was created.
+-- * Id [__string] The ID of the definition.
+-- * Arn [__string] The ARN of the definition.
 -- @return CreateSubscriptionDefinitionResponse structure as a key-value pair table
 function M.CreateSubscriptionDefinitionResponse(args)
 	assert(args, "You must provide an argument table when creating CreateSubscriptionDefinitionResponse")
@@ -2207,7 +2686,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DeviceDefinitionId [__string] device definition Id
+-- * DeviceDefinitionId [__string] The ID of the device definition.
 -- Required key: DeviceDefinitionId
 -- @return GetDeviceDefinitionRequest structure as a key-value pair table
 function M.GetDeviceDefinitionRequest(args)
@@ -2236,17 +2715,17 @@ keys.SubscriptionDefinitionVersion = { ["Subscriptions"] = true, nil }
 function asserts.AssertSubscriptionDefinitionVersion(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SubscriptionDefinitionVersion to be of type 'table'")
-	if struct["Subscriptions"] then asserts.AssertListOfSubscription(struct["Subscriptions"]) end
+	if struct["Subscriptions"] then asserts.Assert__listOfSubscription(struct["Subscriptions"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.SubscriptionDefinitionVersion[k], "SubscriptionDefinitionVersion contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SubscriptionDefinitionVersion
--- Information on subscription definition version
+-- Information about a subscription definition version.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Subscriptions [ListOfSubscription] Subscriptions in the version.
+-- * Subscriptions [__listOfSubscription] A list of subscriptions.
 -- @return SubscriptionDefinitionVersion structure as a key-value pair table
 function M.SubscriptionDefinitionVersion(args)
 	assert(args, "You must provide an argument table when creating SubscriptionDefinitionVersion")
@@ -2273,17 +2752,17 @@ keys.CoreDefinitionVersion = { ["Cores"] = true, nil }
 function asserts.AssertCoreDefinitionVersion(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CoreDefinitionVersion to be of type 'table'")
-	if struct["Cores"] then asserts.AssertListOfCore(struct["Cores"]) end
+	if struct["Cores"] then asserts.Assert__listOfCore(struct["Cores"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CoreDefinitionVersion[k], "CoreDefinitionVersion contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CoreDefinitionVersion
--- Information on core definition version
+-- Information about a core definition version.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Cores [ListOfCore] Cores in the definition version.
+-- * Cores [__listOfCore] A list of cores in the core definition version.
 -- @return CoreDefinitionVersion structure as a key-value pair table
 function M.CoreDefinitionVersion(args)
 	assert(args, "You must provide an argument table when creating CoreDefinitionVersion")
@@ -2305,14 +2784,16 @@ function M.CoreDefinitionVersion(args)
     }
 end
 
-keys.GetDeploymentStatusResponse = { ["UpdatedAt"] = true, ["DeploymentStatus"] = true, ["ErrorMessage"] = true, nil }
+keys.GetDeploymentStatusResponse = { ["ErrorDetails"] = true, ["UpdatedAt"] = true, ["DeploymentStatus"] = true, ["ErrorMessage"] = true, ["DeploymentType"] = true, nil }
 
 function asserts.AssertGetDeploymentStatusResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDeploymentStatusResponse to be of type 'table'")
+	if struct["ErrorDetails"] then asserts.AssertErrorDetails(struct["ErrorDetails"]) end
 	if struct["UpdatedAt"] then asserts.Assert__string(struct["UpdatedAt"]) end
 	if struct["DeploymentStatus"] then asserts.Assert__string(struct["DeploymentStatus"]) end
 	if struct["ErrorMessage"] then asserts.Assert__string(struct["ErrorMessage"]) end
+	if struct["DeploymentType"] then asserts.AssertDeploymentType(struct["DeploymentType"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.GetDeploymentStatusResponse[k], "GetDeploymentStatusResponse contains unknown key " .. tostring(k))
 	end
@@ -2322,9 +2803,11 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UpdatedAt [__string] Last time the deployment status was updated.
--- * DeploymentStatus [__string] Status of the deployment.
--- * ErrorMessage [__string] Error Message
+-- * ErrorDetails [ErrorDetails] Error details
+-- * UpdatedAt [__string] The time, in milliseconds since the epoch, when the deployment status was updated.
+-- * DeploymentStatus [__string] The status of the deployment: ''Pending'', ''InProgress'', ''Success'', or ''Failure''.
+-- * ErrorMessage [__string] Error message
+-- * DeploymentType [DeploymentType] The type of the deployment.
 -- @return GetDeploymentStatusResponse structure as a key-value pair table
 function M.GetDeploymentStatusResponse(args)
 	assert(args, "You must provide an argument table when creating GetDeploymentStatusResponse")
@@ -2335,9 +2818,11 @@ function M.GetDeploymentStatusResponse(args)
     local header_args = { 
     }
 	local all_args = { 
+		["ErrorDetails"] = args["ErrorDetails"],
 		["UpdatedAt"] = args["UpdatedAt"],
 		["DeploymentStatus"] = args["DeploymentStatus"],
 		["ErrorMessage"] = args["ErrorMessage"],
+		["DeploymentType"] = args["DeploymentType"],
 	}
 	asserts.AssertGetDeploymentStatusResponse(all_args)
 	return {
@@ -2364,8 +2849,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AssociatedAt [__string] Time when the role was associated for the group.
--- * RoleArn [__string] Arn of the role that is associated with the group.
+-- * AssociatedAt [__string] The time when the role was associated with the group.
+-- * RoleArn [__string] The ARN of the role that is associated with the group.
 -- @return GetAssociatedRoleResponse structure as a key-value pair table
 function M.GetAssociatedRoleResponse(args)
 	assert(args, "You must provide an argument table when creating GetAssociatedRoleResponse")
@@ -2404,7 +2889,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- * GroupId [__string] The ID of the AWS Greengrass group.
 -- Required key: GroupId
 -- @return DeleteGroupRequest structure as a key-value pair table
 function M.DeleteGroupRequest(args)
@@ -2480,9 +2965,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- * GroupId [__string] The unique Id of the AWS Greengrass Group
--- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * GroupId [__string] The ID of the AWS Greengrass group.
+-- * MaxResults [__string] The maximum number of results to be returned per request.
 -- Required key: GroupId
 -- @return ListDeploymentsRequest structure as a key-value pair table
 function M.ListDeploymentsRequest(args)
@@ -2516,7 +3001,7 @@ function asserts.AssertListGroupsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListGroupsResponse to be of type 'table'")
 	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
-	if struct["Groups"] then asserts.AssertListOfGroupInformation(struct["Groups"]) end
+	if struct["Groups"] then asserts.Assert__listOfGroupInformation(struct["Groups"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListGroupsResponse[k], "ListGroupsResponse contains unknown key " .. tostring(k))
 	end
@@ -2527,7 +3012,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- * Groups [ListOfGroupInformation] Groups
+-- * Groups [__listOfGroupInformation] Information about a group.
 -- @return ListGroupsResponse structure as a key-value pair table
 function M.ListGroupsResponse(args)
 	assert(args, "You must provide an argument table when creating ListGroupsResponse")
@@ -2567,8 +3052,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GroupId [__string] The unique Id of the AWS Greengrass Group
--- * Name [__string] name of the definition
+-- * GroupId [__string] The ID of the AWS Greengrass group.
+-- * Name [__string] The name of the definition.
 -- Required key: GroupId
 -- @return UpdateGroupRequest structure as a key-value pair table
 function M.UpdateGroupRequest(args)
@@ -2608,13 +3093,13 @@ function asserts.AssertConnectivityInfo(struct)
 end
 
 --- Create a structure of type ConnectivityInfo
--- Connectivity Info
+-- Information about a Greengrass core's connectivity.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Metadata [__string] Metadata for this endpoint.
--- * PortNumber [__integer] Port of the GGC. Usually 8883.
--- * HostAddress [__string] Endpoint for the GGC. Can be an IP address or DNS.
--- * Id [__string] Element Id for this entry in the list.
+-- * PortNumber [__integer] The port of the Greengrass core. Usually 8883.
+-- * HostAddress [__string] The endpoint for the Greengrass core. Can be an IP address or DNS.
+-- * Id [__string] The ID of the connectivity information.
 -- @return ConnectivityInfo structure as a key-value pair table
 function M.ConnectivityInfo(args)
 	assert(args, "You must provide an argument table when creating ConnectivityInfo")
@@ -2639,6 +3124,46 @@ function M.ConnectivityInfo(args)
     }
 end
 
+keys.GetBulkDeploymentStatusRequest = { ["BulkDeploymentId"] = true, nil }
+
+function asserts.AssertGetBulkDeploymentStatusRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetBulkDeploymentStatusRequest to be of type 'table'")
+	assert(struct["BulkDeploymentId"], "Expected key BulkDeploymentId to exist in table")
+	if struct["BulkDeploymentId"] then asserts.Assert__string(struct["BulkDeploymentId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetBulkDeploymentStatusRequest[k], "GetBulkDeploymentStatusRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetBulkDeploymentStatusRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BulkDeploymentId [__string] The ID of the bulk deployment.
+-- Required key: BulkDeploymentId
+-- @return GetBulkDeploymentStatusRequest structure as a key-value pair table
+function M.GetBulkDeploymentStatusRequest(args)
+	assert(args, "You must provide an argument table when creating GetBulkDeploymentStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{BulkDeploymentId}"] = args["BulkDeploymentId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["BulkDeploymentId"] = args["BulkDeploymentId"],
+	}
+	asserts.AssertGetBulkDeploymentStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ErrorDetail = { ["DetailedErrorCode"] = true, ["DetailedErrorMessage"] = true, nil }
 
 function asserts.AssertErrorDetail(struct)
@@ -2652,11 +3177,11 @@ function asserts.AssertErrorDetail(struct)
 end
 
 --- Create a structure of type ErrorDetail
--- ErrorDetail
+-- Details about the error.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DetailedErrorCode [__string] Detailed Error Code
--- * DetailedErrorMessage [__string] Detailed Error Message
+-- * DetailedErrorCode [__string] A detailed error code.
+-- * DetailedErrorMessage [__string] A detailed error message.
 -- @return ErrorDetail structure as a key-value pair table
 function M.ErrorDetail(args)
 	assert(args, "You must provide an argument table when creating ErrorDetail")
@@ -2695,7 +3220,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CoreDefinitionId [__string] core definition Id
+-- * CoreDefinitionId [__string] The ID of the core definition.
 -- Required key: CoreDefinitionId
 -- @return DeleteCoreDefinitionRequest structure as a key-value pair table
 function M.DeleteCoreDefinitionRequest(args)
@@ -2719,13 +3244,14 @@ function M.DeleteCoreDefinitionRequest(args)
     }
 end
 
-keys.GetDeviceDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
+keys.GetDeviceDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["NextToken"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
 function asserts.AssertGetDeviceDefinitionVersionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDeviceDefinitionVersionResponse to be of type 'table'")
 	if struct["Definition"] then asserts.AssertDeviceDefinitionVersion(struct["Definition"]) end
 	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
 	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
 	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
@@ -2738,11 +3264,12 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Definition [DeviceDefinitionVersion] Device definition version
--- * Version [__string] Version of the device definition version.
--- * CreationTimestamp [__string] Timestamp of when the device definition version was created.
--- * Id [__string] Id of the device definition the version belongs to.
--- * Arn [__string] Arn of the device definition version.
+-- * Definition [DeviceDefinitionVersion] Information about the device definition version.
+-- * Version [__string] The version of the device definition version.
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the device definition version was created.
+-- * Id [__string] The ID of the device definition version.
+-- * Arn [__string] The ARN of the device definition version.
 -- @return GetDeviceDefinitionVersionResponse structure as a key-value pair table
 function M.GetDeviceDefinitionVersionResponse(args)
 	assert(args, "You must provide an argument table when creating GetDeviceDefinitionVersionResponse")
@@ -2755,6 +3282,7 @@ function M.GetDeviceDefinitionVersionResponse(args)
 	local all_args = { 
 		["Definition"] = args["Definition"],
 		["Version"] = args["Version"],
+		["NextToken"] = args["NextToken"],
 		["CreationTimestamp"] = args["CreationTimestamp"],
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
@@ -2786,16 +3314,16 @@ function asserts.AssertGroupInformation(struct)
 end
 
 --- Create a structure of type GroupInformation
--- Information of a group
+-- Information about a group.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LatestVersionArn [__string] Latest version arn of the group.
--- * Name [__string] Name of a group.
--- * LastUpdatedTimestamp [__string] Last updated timestamp of the group.
--- * LatestVersion [__string] Last version of the group.
--- * CreationTimestamp [__string] Timestamp of when the group was created.
--- * Id [__string] Id of a group.
--- * Arn [__string] Arn of a group.
+-- * LatestVersionArn [__string] The ARN of the latest version of the group.
+-- * Name [__string] The name of the group.
+-- * LastUpdatedTimestamp [__string] The time, in milliseconds since the epoch, when the group was last updated.
+-- * LatestVersion [__string] The latest version of the group.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the group was created.
+-- * Id [__string] The ID of the group.
+-- * Arn [__string] The ARN of the group.
 -- @return GroupInformation structure as a key-value pair table
 function M.GroupInformation(args)
 	assert(args, "You must provide an argument table when creating GroupInformation")
@@ -2840,8 +3368,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AmznClientToken [__string] The client token used to request idempotent operations.
--- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
+-- * GroupId [__string] The ID of the AWS Greengrass group.
 -- Required key: GroupId
 -- @return CreateGroupCertificateAuthorityRequest structure as a key-value pair table
 function M.CreateGroupCertificateAuthorityRequest(args)
@@ -2867,31 +3395,23 @@ function M.CreateGroupCertificateAuthorityRequest(args)
     }
 end
 
-keys.Subscription = { ["Source"] = true, ["Target"] = true, ["Id"] = true, ["Subject"] = true, nil }
+keys.DeleteResourceDefinitionResponse = { nil }
 
-function asserts.AssertSubscription(struct)
+function asserts.AssertDeleteResourceDefinitionResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected Subscription to be of type 'table'")
-	if struct["Source"] then asserts.Assert__string(struct["Source"]) end
-	if struct["Target"] then asserts.Assert__string(struct["Target"]) end
-	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
-	if struct["Subject"] then asserts.Assert__string(struct["Subject"]) end
+	assert(type(struct) == "table", "Expected DeleteResourceDefinitionResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.Subscription[k], "Subscription contains unknown key " .. tostring(k))
+		assert(keys.DeleteResourceDefinitionResponse[k], "DeleteResourceDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type Subscription
--- Information on subscription
+--- Create a structure of type DeleteResourceDefinitionResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Source [__string] Source of the subscription. Can be a thing arn, lambda arn or word 'cloud'
--- * Target [__string] Where the message is sent to. Can be a thing arn, lambda arn or word 'cloud'.
--- * Id [__string] Element Id for this entry in the list.
--- * Subject [__string] Subject of the message.
--- @return Subscription structure as a key-value pair table
-function M.Subscription(args)
-	assert(args, "You must provide an argument table when creating Subscription")
+-- @return DeleteResourceDefinitionResponse structure as a key-value pair table
+function M.DeleteResourceDefinitionResponse(args)
+	assert(args, "You must provide an argument table when creating DeleteResourceDefinitionResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -2899,12 +3419,8 @@ function M.Subscription(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Source"] = args["Source"],
-		["Target"] = args["Target"],
-		["Id"] = args["Id"],
-		["Subject"] = args["Subject"],
 	}
-	asserts.AssertSubscription(all_args)
+	asserts.AssertDeleteResourceDefinitionResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2913,13 +3429,14 @@ function M.Subscription(args)
     }
 end
 
-keys.GetSubscriptionDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
+keys.GetSubscriptionDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["NextToken"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
 function asserts.AssertGetSubscriptionDefinitionVersionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetSubscriptionDefinitionVersionResponse to be of type 'table'")
 	if struct["Definition"] then asserts.AssertSubscriptionDefinitionVersion(struct["Definition"]) end
 	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
 	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
 	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
@@ -2932,11 +3449,12 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Definition [SubscriptionDefinitionVersion] Information on the definition
--- * Version [__string] Version of the subscription definition version.
--- * CreationTimestamp [__string] Timestamp of when the subscription definition version was created.
--- * Id [__string] Id of the subscription definition the version belongs to.
--- * Arn [__string] Arn of the subscription definition version.
+-- * Definition [SubscriptionDefinitionVersion] Information about the subscription definition version.
+-- * Version [__string] The version of the subscription definition version.
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the subscription definition version was created.
+-- * Id [__string] The ID of the subscription definition version.
+-- * Arn [__string] The ARN of the subscription definition version.
 -- @return GetSubscriptionDefinitionVersionResponse structure as a key-value pair table
 function M.GetSubscriptionDefinitionVersionResponse(args)
 	assert(args, "You must provide an argument table when creating GetSubscriptionDefinitionVersionResponse")
@@ -2949,6 +3467,7 @@ function M.GetSubscriptionDefinitionVersionResponse(args)
 	local all_args = { 
 		["Definition"] = args["Definition"],
 		["Version"] = args["Version"],
+		["NextToken"] = args["NextToken"],
 		["CreationTimestamp"] = args["CreationTimestamp"],
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
@@ -2980,8 +3499,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CoreDefinitionId [__string] core definition Id
--- * CoreDefinitionVersionId [__string] core definition version Id
+-- * CoreDefinitionId [__string] The ID of the core definition.
+-- * CoreDefinitionVersionId [__string] The ID of the core definition version.
 -- Required key: CoreDefinitionId
 -- Required key: CoreDefinitionVersionId
 -- @return GetCoreDefinitionVersionRequest structure as a key-value pair table
@@ -3008,23 +3527,27 @@ function M.GetCoreDefinitionVersionRequest(args)
     }
 end
 
-keys.DisassociateServiceRoleFromAccountRequest = { nil }
+keys.ListResourceDefinitionsResponse = { ["Definitions"] = true, ["NextToken"] = true, nil }
 
-function asserts.AssertDisassociateServiceRoleFromAccountRequest(struct)
+function asserts.AssertListResourceDefinitionsResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DisassociateServiceRoleFromAccountRequest to be of type 'table'")
+	assert(type(struct) == "table", "Expected ListResourceDefinitionsResponse to be of type 'table'")
+	if struct["Definitions"] then asserts.Assert__listOfDefinitionInformation(struct["Definitions"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DisassociateServiceRoleFromAccountRequest[k], "DisassociateServiceRoleFromAccountRequest contains unknown key " .. tostring(k))
+		assert(keys.ListResourceDefinitionsResponse[k], "ListResourceDefinitionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DisassociateServiceRoleFromAccountRequest
+--- Create a structure of type ListResourceDefinitionsResponse
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return DisassociateServiceRoleFromAccountRequest structure as a key-value pair table
-function M.DisassociateServiceRoleFromAccountRequest(args)
-	assert(args, "You must provide an argument table when creating DisassociateServiceRoleFromAccountRequest")
+-- * Definitions [__listOfDefinitionInformation] Information about a definition.
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- @return ListResourceDefinitionsResponse structure as a key-value pair table
+function M.ListResourceDefinitionsResponse(args)
+	assert(args, "You must provide an argument table when creating ListResourceDefinitionsResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -3032,8 +3555,10 @@ function M.DisassociateServiceRoleFromAccountRequest(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Definitions"] = args["Definitions"],
+		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDisassociateServiceRoleFromAccountRequest(all_args)
+	asserts.AssertListResourceDefinitionsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3042,7 +3567,47 @@ function M.DisassociateServiceRoleFromAccountRequest(args)
     }
 end
 
-keys.GetSubscriptionDefinitionVersionRequest = { ["SubscriptionDefinitionVersionId"] = true, ["SubscriptionDefinitionId"] = true, nil }
+keys.GetFunctionDefinitionRequest = { ["FunctionDefinitionId"] = true, nil }
+
+function asserts.AssertGetFunctionDefinitionRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetFunctionDefinitionRequest to be of type 'table'")
+	assert(struct["FunctionDefinitionId"], "Expected key FunctionDefinitionId to exist in table")
+	if struct["FunctionDefinitionId"] then asserts.Assert__string(struct["FunctionDefinitionId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetFunctionDefinitionRequest[k], "GetFunctionDefinitionRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetFunctionDefinitionRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionDefinitionId [__string] The ID of the Lambda function definition.
+-- Required key: FunctionDefinitionId
+-- @return GetFunctionDefinitionRequest structure as a key-value pair table
+function M.GetFunctionDefinitionRequest(args)
+	assert(args, "You must provide an argument table when creating GetFunctionDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FunctionDefinitionId}"] = args["FunctionDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["FunctionDefinitionId"] = args["FunctionDefinitionId"],
+	}
+	asserts.AssertGetFunctionDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetSubscriptionDefinitionVersionRequest = { ["SubscriptionDefinitionVersionId"] = true, ["SubscriptionDefinitionId"] = true, ["NextToken"] = true, nil }
 
 function asserts.AssertGetSubscriptionDefinitionVersionRequest(struct)
 	assert(struct)
@@ -3051,6 +3616,7 @@ function asserts.AssertGetSubscriptionDefinitionVersionRequest(struct)
 	assert(struct["SubscriptionDefinitionVersionId"], "Expected key SubscriptionDefinitionVersionId to exist in table")
 	if struct["SubscriptionDefinitionVersionId"] then asserts.Assert__string(struct["SubscriptionDefinitionVersionId"]) end
 	if struct["SubscriptionDefinitionId"] then asserts.Assert__string(struct["SubscriptionDefinitionId"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.GetSubscriptionDefinitionVersionRequest[k], "GetSubscriptionDefinitionVersionRequest contains unknown key " .. tostring(k))
 	end
@@ -3060,14 +3626,16 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SubscriptionDefinitionVersionId [__string] subscription definition version Id
--- * SubscriptionDefinitionId [__string] subscription definition Id
+-- * SubscriptionDefinitionVersionId [__string] The ID of the subscription definition version.
+-- * SubscriptionDefinitionId [__string] The ID of the subscription definition.
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
 -- Required key: SubscriptionDefinitionId
 -- Required key: SubscriptionDefinitionVersionId
 -- @return GetSubscriptionDefinitionVersionRequest structure as a key-value pair table
 function M.GetSubscriptionDefinitionVersionRequest(args)
 	assert(args, "You must provide an argument table when creating GetSubscriptionDefinitionVersionRequest")
     local query_args = { 
+        ["NextToken"] = args["NextToken"],
     }
     local uri_args = { 
         ["{SubscriptionDefinitionVersionId}"] = args["SubscriptionDefinitionVersionId"],
@@ -3078,6 +3646,7 @@ function M.GetSubscriptionDefinitionVersionRequest(args)
 	local all_args = { 
 		["SubscriptionDefinitionVersionId"] = args["SubscriptionDefinitionVersionId"],
 		["SubscriptionDefinitionId"] = args["SubscriptionDefinitionId"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertGetSubscriptionDefinitionVersionRequest(all_args)
 	return {
@@ -3094,7 +3663,7 @@ function asserts.AssertListFunctionDefinitionVersionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListFunctionDefinitionVersionsResponse to be of type 'table'")
 	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
-	if struct["Versions"] then asserts.AssertListOfVersionInformation(struct["Versions"]) end
+	if struct["Versions"] then asserts.Assert__listOfVersionInformation(struct["Versions"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListFunctionDefinitionVersionsResponse[k], "ListFunctionDefinitionVersionsResponse contains unknown key " .. tostring(k))
 	end
@@ -3105,7 +3674,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- * Versions [ListOfVersionInformation] Versions
+-- * Versions [__listOfVersionInformation] Information about a version.
 -- @return ListFunctionDefinitionVersionsResponse structure as a key-value pair table
 function M.ListFunctionDefinitionVersionsResponse(args)
 	assert(args, "You must provide an argument table when creating ListFunctionDefinitionVersionsResponse")
@@ -3120,6 +3689,46 @@ function M.ListFunctionDefinitionVersionsResponse(args)
 		["Versions"] = args["Versions"],
 	}
 	asserts.AssertListFunctionDefinitionVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.StartBulkDeploymentResponse = { ["BulkDeploymentId"] = true, ["BulkDeploymentArn"] = true, nil }
+
+function asserts.AssertStartBulkDeploymentResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected StartBulkDeploymentResponse to be of type 'table'")
+	if struct["BulkDeploymentId"] then asserts.Assert__string(struct["BulkDeploymentId"]) end
+	if struct["BulkDeploymentArn"] then asserts.Assert__string(struct["BulkDeploymentArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.StartBulkDeploymentResponse[k], "StartBulkDeploymentResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type StartBulkDeploymentResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BulkDeploymentId [__string] The ID of the bulk deployment.
+-- * BulkDeploymentArn [__string] The ARN of the bulk deployment.
+-- @return StartBulkDeploymentResponse structure as a key-value pair table
+function M.StartBulkDeploymentResponse(args)
+	assert(args, "You must provide an argument table when creating StartBulkDeploymentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["BulkDeploymentId"] = args["BulkDeploymentId"],
+		["BulkDeploymentArn"] = args["BulkDeploymentArn"],
+	}
+	asserts.AssertStartBulkDeploymentResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3144,8 +3753,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DeploymentId [__string] Id of the deployment.
--- * DeploymentArn [__string] Arn of the deployment.
+-- * DeploymentId [__string] The ID of the deployment.
+-- * DeploymentArn [__string] The ARN of the deployment.
 -- @return CreateDeploymentResponse structure as a key-value pair table
 function M.CreateDeploymentResponse(args)
 	assert(args, "You must provide an argument table when creating CreateDeploymentResponse")
@@ -3185,8 +3794,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * FunctionDefinitionId [__string] the unique Id of the lambda definition
--- * Name [__string] name of the definition
+-- * FunctionDefinitionId [__string] The ID of the Lambda function definition.
+-- * Name [__string] The name of the definition.
 -- Required key: FunctionDefinitionId
 -- @return UpdateFunctionDefinitionRequest structure as a key-value pair table
 function M.UpdateFunctionDefinitionRequest(args)
@@ -3203,6 +3812,49 @@ function M.UpdateFunctionDefinitionRequest(args)
 		["Name"] = args["Name"],
 	}
 	asserts.AssertUpdateFunctionDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Resource = { ["ResourceDataContainer"] = true, ["Id"] = true, ["Name"] = true, nil }
+
+function asserts.AssertResource(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Resource to be of type 'table'")
+	if struct["ResourceDataContainer"] then asserts.AssertResourceDataContainer(struct["ResourceDataContainer"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Resource[k], "Resource contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Resource
+-- Information about a resource.
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceDataContainer [ResourceDataContainer] A container of data for all resource types.
+-- * Id [__string] The resource ID, used to refer to a resource in the Lambda function configuration. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
+-- * Name [__string] The descriptive resource name, which is displayed on the Greengrass console. Max length 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
+-- @return Resource structure as a key-value pair table
+function M.Resource(args)
+	assert(args, "You must provide an argument table when creating Resource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceDataContainer"] = args["ResourceDataContainer"],
+		["Id"] = args["Id"],
+		["Name"] = args["Name"],
+	}
+	asserts.AssertResource(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3229,10 +3881,10 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Version [__string] Unique Id of a version.
--- * CreationTimestamp [__string] Timestamp of when the version was created.
--- * Id [__string] Id of the resource container.
--- * Arn [__string] Arn of the version.
+-- * Version [__string] The unique ID of the version.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the version was created.
+-- * Id [__string] The ID of the version.
+-- * Arn [__string] The ARN of the version.
 -- @return CreateLoggerDefinitionVersionResponse structure as a key-value pair table
 function M.CreateLoggerDefinitionVersionResponse(args)
 	assert(args, "You must provide an argument table when creating CreateLoggerDefinitionVersionResponse")
@@ -3249,6 +3901,49 @@ function M.CreateLoggerDefinitionVersionResponse(args)
 		["Arn"] = args["Arn"],
 	}
 	asserts.AssertCreateLoggerDefinitionVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BulkDeployment = { ["BulkDeploymentId"] = true, ["BulkDeploymentArn"] = true, ["CreatedAt"] = true, nil }
+
+function asserts.AssertBulkDeployment(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BulkDeployment to be of type 'table'")
+	if struct["BulkDeploymentId"] then asserts.Assert__string(struct["BulkDeploymentId"]) end
+	if struct["BulkDeploymentArn"] then asserts.Assert__string(struct["BulkDeploymentArn"]) end
+	if struct["CreatedAt"] then asserts.Assert__string(struct["CreatedAt"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BulkDeployment[k], "BulkDeployment contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BulkDeployment
+-- Information about a bulk deployment.
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BulkDeploymentId [__string] The ID of the bulk deployment.
+-- * BulkDeploymentArn [__string] The ARN of the bulk deployment.
+-- * CreatedAt [__string] The time, in ISO format, when the deployment was created.
+-- @return BulkDeployment structure as a key-value pair table
+function M.BulkDeployment(args)
+	assert(args, "You must provide an argument table when creating BulkDeployment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["BulkDeploymentId"] = args["BulkDeploymentId"],
+		["BulkDeploymentArn"] = args["BulkDeploymentArn"],
+		["CreatedAt"] = args["CreatedAt"],
+	}
+	asserts.AssertBulkDeployment(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3291,7 +3986,7 @@ function M.DeleteCoreDefinitionResponse(args)
     }
 end
 
-keys.GetDeviceDefinitionVersionRequest = { ["DeviceDefinitionId"] = true, ["DeviceDefinitionVersionId"] = true, nil }
+keys.GetDeviceDefinitionVersionRequest = { ["DeviceDefinitionId"] = true, ["DeviceDefinitionVersionId"] = true, ["NextToken"] = true, nil }
 
 function asserts.AssertGetDeviceDefinitionVersionRequest(struct)
 	assert(struct)
@@ -3300,6 +3995,7 @@ function asserts.AssertGetDeviceDefinitionVersionRequest(struct)
 	assert(struct["DeviceDefinitionId"], "Expected key DeviceDefinitionId to exist in table")
 	if struct["DeviceDefinitionId"] then asserts.Assert__string(struct["DeviceDefinitionId"]) end
 	if struct["DeviceDefinitionVersionId"] then asserts.Assert__string(struct["DeviceDefinitionVersionId"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.GetDeviceDefinitionVersionRequest[k], "GetDeviceDefinitionVersionRequest contains unknown key " .. tostring(k))
 	end
@@ -3309,14 +4005,16 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DeviceDefinitionId [__string] device definition Id
--- * DeviceDefinitionVersionId [__string] device definition version Id
+-- * DeviceDefinitionId [__string] The ID of the device definition.
+-- * DeviceDefinitionVersionId [__string] The ID of the device definition version.
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
 -- Required key: DeviceDefinitionVersionId
 -- Required key: DeviceDefinitionId
 -- @return GetDeviceDefinitionVersionRequest structure as a key-value pair table
 function M.GetDeviceDefinitionVersionRequest(args)
 	assert(args, "You must provide an argument table when creating GetDeviceDefinitionVersionRequest")
     local query_args = { 
+        ["NextToken"] = args["NextToken"],
     }
     local uri_args = { 
         ["{DeviceDefinitionId}"] = args["DeviceDefinitionId"],
@@ -3327,6 +4025,7 @@ function M.GetDeviceDefinitionVersionRequest(args)
 	local all_args = { 
 		["DeviceDefinitionId"] = args["DeviceDefinitionId"],
 		["DeviceDefinitionVersionId"] = args["DeviceDefinitionVersionId"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertGetDeviceDefinitionVersionRequest(all_args)
 	return {
@@ -3337,27 +4036,27 @@ function M.GetDeviceDefinitionVersionRequest(args)
     }
 end
 
-keys.ListDefinitionsResponse = { ["Definitions"] = true, ["NextToken"] = true, nil }
+keys.ResourceAccessPolicy = { ["ResourceId"] = true, ["Permission"] = true, nil }
 
-function asserts.AssertListDefinitionsResponse(struct)
+function asserts.AssertResourceAccessPolicy(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ListDefinitionsResponse to be of type 'table'")
-	if struct["Definitions"] then asserts.AssertListOfDefinitionInformation(struct["Definitions"]) end
-	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	assert(type(struct) == "table", "Expected ResourceAccessPolicy to be of type 'table'")
+	if struct["ResourceId"] then asserts.Assert__string(struct["ResourceId"]) end
+	if struct["Permission"] then asserts.AssertPermission(struct["Permission"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ListDefinitionsResponse[k], "ListDefinitionsResponse contains unknown key " .. tostring(k))
+		assert(keys.ResourceAccessPolicy[k], "ResourceAccessPolicy contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ListDefinitionsResponse
--- List of definition response
+--- Create a structure of type ResourceAccessPolicy
+-- A policy used by the function to access a resource.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Definitions [ListOfDefinitionInformation] Definitions
--- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @return ListDefinitionsResponse structure as a key-value pair table
-function M.ListDefinitionsResponse(args)
-	assert(args, "You must provide an argument table when creating ListDefinitionsResponse")
+-- * ResourceId [__string] The ID of the resource. (This ID is assigned to the resource when you create the resource definiton.)
+-- * Permission [Permission] The permissions that the Lambda function has to the resource. Can be one of ''rw'' (read/write) or ''ro'' (read-only).
+-- @return ResourceAccessPolicy structure as a key-value pair table
+function M.ResourceAccessPolicy(args)
+	assert(args, "You must provide an argument table when creating ResourceAccessPolicy")
     local query_args = { 
     }
     local uri_args = { 
@@ -3365,10 +4064,102 @@ function M.ListDefinitionsResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Definitions"] = args["Definitions"],
-		["NextToken"] = args["NextToken"],
+		["ResourceId"] = args["ResourceId"],
+		["Permission"] = args["Permission"],
 	}
-	asserts.AssertListDefinitionsResponse(all_args)
+	asserts.AssertResourceAccessPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GroupVersion = { ["ResourceDefinitionVersionArn"] = true, ["FunctionDefinitionVersionArn"] = true, ["DeviceDefinitionVersionArn"] = true, ["CoreDefinitionVersionArn"] = true, ["LoggerDefinitionVersionArn"] = true, ["SubscriptionDefinitionVersionArn"] = true, nil }
+
+function asserts.AssertGroupVersion(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GroupVersion to be of type 'table'")
+	if struct["ResourceDefinitionVersionArn"] then asserts.Assert__string(struct["ResourceDefinitionVersionArn"]) end
+	if struct["FunctionDefinitionVersionArn"] then asserts.Assert__string(struct["FunctionDefinitionVersionArn"]) end
+	if struct["DeviceDefinitionVersionArn"] then asserts.Assert__string(struct["DeviceDefinitionVersionArn"]) end
+	if struct["CoreDefinitionVersionArn"] then asserts.Assert__string(struct["CoreDefinitionVersionArn"]) end
+	if struct["LoggerDefinitionVersionArn"] then asserts.Assert__string(struct["LoggerDefinitionVersionArn"]) end
+	if struct["SubscriptionDefinitionVersionArn"] then asserts.Assert__string(struct["SubscriptionDefinitionVersionArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GroupVersion[k], "GroupVersion contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GroupVersion
+-- Information about a group version.
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceDefinitionVersionArn [__string] The resource definition version ARN for this group.
+-- * FunctionDefinitionVersionArn [__string] The ARN of the function definition version for this group.
+-- * DeviceDefinitionVersionArn [__string] The ARN of the device definition version for this group.
+-- * CoreDefinitionVersionArn [__string] The ARN of the core definition version for this group.
+-- * LoggerDefinitionVersionArn [__string] The ARN of the logger definition version for this group.
+-- * SubscriptionDefinitionVersionArn [__string] The ARN of the subscription definition version for this group.
+-- @return GroupVersion structure as a key-value pair table
+function M.GroupVersion(args)
+	assert(args, "You must provide an argument table when creating GroupVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceDefinitionVersionArn"] = args["ResourceDefinitionVersionArn"],
+		["FunctionDefinitionVersionArn"] = args["FunctionDefinitionVersionArn"],
+		["DeviceDefinitionVersionArn"] = args["DeviceDefinitionVersionArn"],
+		["CoreDefinitionVersionArn"] = args["CoreDefinitionVersionArn"],
+		["LoggerDefinitionVersionArn"] = args["LoggerDefinitionVersionArn"],
+		["SubscriptionDefinitionVersionArn"] = args["SubscriptionDefinitionVersionArn"],
+	}
+	asserts.AssertGroupVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListBulkDeploymentDetailedReportsResponse = { ["NextToken"] = true, ["Deployments"] = true, nil }
+
+function asserts.AssertListBulkDeploymentDetailedReportsResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListBulkDeploymentDetailedReportsResponse to be of type 'table'")
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["Deployments"] then asserts.AssertBulkDeploymentResults(struct["Deployments"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListBulkDeploymentDetailedReportsResponse[k], "ListBulkDeploymentDetailedReportsResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListBulkDeploymentDetailedReportsResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * Deployments [BulkDeploymentResults] A list of the individual group deployments in the bulk deployment operation.
+-- @return ListBulkDeploymentDetailedReportsResponse structure as a key-value pair table
+function M.ListBulkDeploymentDetailedReportsResponse(args)
+	assert(args, "You must provide an argument table when creating ListBulkDeploymentDetailedReportsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["Deployments"] = args["Deployments"],
+	}
+	asserts.AssertListBulkDeploymentDetailedReportsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3398,13 +4189,13 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LatestVersionArn [__string] Latest version arn of the definition.
--- * Name [__string] Name of the definition.
--- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- * LatestVersion [__string] Last version of the definition.
--- * CreationTimestamp [__string] Timestamp of when the definition was created.
--- * Id [__string] Id of the definition.
--- * Arn [__string] Arn of the definition.
+-- * LatestVersionArn [__string] The ARN of the latest version of the definition.
+-- * Name [__string] The name of the definition.
+-- * LastUpdatedTimestamp [__string] The time, in milliseconds since the epoch, when the definition was last updated.
+-- * LatestVersion [__string] The latest version of the definition.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the definition was created.
+-- * Id [__string] The ID of the definition.
+-- * Arn [__string] The ARN of the definition.
 -- @return CreateCoreDefinitionResponse structure as a key-value pair table
 function M.CreateCoreDefinitionResponse(args)
 	assert(args, "You must provide an argument table when creating CreateCoreDefinitionResponse")
@@ -3449,8 +4240,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LoggerDefinitionId [__string] logger definition Id
--- * Name [__string] name of the definition
+-- * LoggerDefinitionId [__string] The ID of the logger definition.
+-- * Name [__string] The name of the definition.
 -- Required key: LoggerDefinitionId
 -- @return UpdateLoggerDefinitionRequest structure as a key-value pair table
 function M.UpdateLoggerDefinitionRequest(args)
@@ -3496,13 +4287,13 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LatestVersionArn [__string] Latest version arn of the definition.
--- * Name [__string] Name of the definition.
--- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- * LatestVersion [__string] Last version of the definition.
--- * CreationTimestamp [__string] Timestamp of when the definition was created.
--- * Id [__string] Id of the definition.
--- * Arn [__string] Arn of the definition.
+-- * LatestVersionArn [__string] The ARN of the latest version of the definition.
+-- * Name [__string] The name of the definition.
+-- * LastUpdatedTimestamp [__string] The time, in milliseconds since the epoch, when the definition was last updated.
+-- * LatestVersion [__string] The latest version of the definition.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the definition was created.
+-- * Id [__string] The ID of the definition.
+-- * Arn [__string] The ARN of the definition.
 -- @return GetDeviceDefinitionResponse structure as a key-value pair table
 function M.GetDeviceDefinitionResponse(args)
 	assert(args, "You must provide an argument table when creating GetDeviceDefinitionResponse")
@@ -3530,7 +4321,54 @@ function M.GetDeviceDefinitionResponse(args)
     }
 end
 
-keys.GetFunctionDefinitionVersionRequest = { ["FunctionDefinitionId"] = true, ["FunctionDefinitionVersionId"] = true, nil }
+keys.CreateResourceDefinitionVersionRequest = { ["ResourceDefinitionId"] = true, ["AmznClientToken"] = true, ["Resources"] = true, nil }
+
+function asserts.AssertCreateResourceDefinitionVersionRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateResourceDefinitionVersionRequest to be of type 'table'")
+	assert(struct["ResourceDefinitionId"], "Expected key ResourceDefinitionId to exist in table")
+	if struct["ResourceDefinitionId"] then asserts.Assert__string(struct["ResourceDefinitionId"]) end
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
+	if struct["Resources"] then asserts.Assert__listOfResource(struct["Resources"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateResourceDefinitionVersionRequest[k], "CreateResourceDefinitionVersionRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateResourceDefinitionVersionRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceDefinitionId [__string] The ID of the resource definition.
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
+-- * Resources [__listOfResource] A list of resources.
+-- Required key: ResourceDefinitionId
+-- @return CreateResourceDefinitionVersionRequest structure as a key-value pair table
+function M.CreateResourceDefinitionVersionRequest(args)
+	assert(args, "You must provide an argument table when creating CreateResourceDefinitionVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{ResourceDefinitionId}"] = args["ResourceDefinitionId"],
+    }
+    local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
+    }
+	local all_args = { 
+		["ResourceDefinitionId"] = args["ResourceDefinitionId"],
+		["AmznClientToken"] = args["AmznClientToken"],
+		["Resources"] = args["Resources"],
+	}
+	asserts.AssertCreateResourceDefinitionVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetFunctionDefinitionVersionRequest = { ["FunctionDefinitionId"] = true, ["FunctionDefinitionVersionId"] = true, ["NextToken"] = true, nil }
 
 function asserts.AssertGetFunctionDefinitionVersionRequest(struct)
 	assert(struct)
@@ -3539,6 +4377,7 @@ function asserts.AssertGetFunctionDefinitionVersionRequest(struct)
 	assert(struct["FunctionDefinitionVersionId"], "Expected key FunctionDefinitionVersionId to exist in table")
 	if struct["FunctionDefinitionId"] then asserts.Assert__string(struct["FunctionDefinitionId"]) end
 	if struct["FunctionDefinitionVersionId"] then asserts.Assert__string(struct["FunctionDefinitionVersionId"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.GetFunctionDefinitionVersionRequest[k], "GetFunctionDefinitionVersionRequest contains unknown key " .. tostring(k))
 	end
@@ -3548,14 +4387,16 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * FunctionDefinitionId [__string] the unique Id of the lambda definition
--- * FunctionDefinitionVersionId [__string] Function definition version Id
+-- * FunctionDefinitionId [__string] The ID of the Lambda function definition.
+-- * FunctionDefinitionVersionId [__string] The ID of the function definition version.
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
 -- Required key: FunctionDefinitionId
 -- Required key: FunctionDefinitionVersionId
 -- @return GetFunctionDefinitionVersionRequest structure as a key-value pair table
 function M.GetFunctionDefinitionVersionRequest(args)
 	assert(args, "You must provide an argument table when creating GetFunctionDefinitionVersionRequest")
     local query_args = { 
+        ["NextToken"] = args["NextToken"],
     }
     local uri_args = { 
         ["{FunctionDefinitionId}"] = args["FunctionDefinitionId"],
@@ -3566,8 +4407,49 @@ function M.GetFunctionDefinitionVersionRequest(args)
 	local all_args = { 
 		["FunctionDefinitionId"] = args["FunctionDefinitionId"],
 		["FunctionDefinitionVersionId"] = args["FunctionDefinitionVersionId"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertGetFunctionDefinitionVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListBulkDeploymentsResponse = { ["NextToken"] = true, ["BulkDeployments"] = true, nil }
+
+function asserts.AssertListBulkDeploymentsResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListBulkDeploymentsResponse to be of type 'table'")
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["BulkDeployments"] then asserts.AssertBulkDeployments(struct["BulkDeployments"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListBulkDeploymentsResponse[k], "ListBulkDeploymentsResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListBulkDeploymentsResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * BulkDeployments [BulkDeployments] A list of bulk deployments.
+-- @return ListBulkDeploymentsResponse structure as a key-value pair table
+function M.ListBulkDeploymentsResponse(args)
+	assert(args, "You must provide an argument table when creating ListBulkDeploymentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["BulkDeployments"] = args["BulkDeployments"],
+	}
+	asserts.AssertListBulkDeploymentsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3581,7 +4463,7 @@ keys.ListSubscriptionDefinitionsResponse = { ["Definitions"] = true, ["NextToken
 function asserts.AssertListSubscriptionDefinitionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListSubscriptionDefinitionsResponse to be of type 'table'")
-	if struct["Definitions"] then asserts.AssertListOfDefinitionInformation(struct["Definitions"]) end
+	if struct["Definitions"] then asserts.Assert__listOfDefinitionInformation(struct["Definitions"]) end
 	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListSubscriptionDefinitionsResponse[k], "ListSubscriptionDefinitionsResponse contains unknown key " .. tostring(k))
@@ -3592,7 +4474,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Definitions [ListOfDefinitionInformation] Definitions
+-- * Definitions [__listOfDefinitionInformation] Information about a definition.
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
 -- @return ListSubscriptionDefinitionsResponse structure as a key-value pair table
 function M.ListSubscriptionDefinitionsResponse(args)
@@ -3608,6 +4490,55 @@ function M.ListSubscriptionDefinitionsResponse(args)
 		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListSubscriptionDefinitionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetBulkDeploymentStatusResponse = { ["ErrorDetails"] = true, ["BulkDeploymentMetrics"] = true, ["BulkDeploymentStatus"] = true, ["CreatedAt"] = true, ["ErrorMessage"] = true, nil }
+
+function asserts.AssertGetBulkDeploymentStatusResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetBulkDeploymentStatusResponse to be of type 'table'")
+	if struct["ErrorDetails"] then asserts.AssertErrorDetails(struct["ErrorDetails"]) end
+	if struct["BulkDeploymentMetrics"] then asserts.AssertBulkDeploymentMetrics(struct["BulkDeploymentMetrics"]) end
+	if struct["BulkDeploymentStatus"] then asserts.AssertBulkDeploymentStatus(struct["BulkDeploymentStatus"]) end
+	if struct["CreatedAt"] then asserts.Assert__string(struct["CreatedAt"]) end
+	if struct["ErrorMessage"] then asserts.Assert__string(struct["ErrorMessage"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetBulkDeploymentStatusResponse[k], "GetBulkDeploymentStatusResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetBulkDeploymentStatusResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorDetails [ErrorDetails] Error details
+-- * BulkDeploymentMetrics [BulkDeploymentMetrics] Relevant metrics on input records processed during bulk deployment.
+-- * BulkDeploymentStatus [BulkDeploymentStatus] The status of the bulk deployment.
+-- * CreatedAt [__string] The time, in ISO format, when the deployment was created.
+-- * ErrorMessage [__string] Error message
+-- @return GetBulkDeploymentStatusResponse structure as a key-value pair table
+function M.GetBulkDeploymentStatusResponse(args)
+	assert(args, "You must provide an argument table when creating GetBulkDeploymentStatusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ErrorDetails"] = args["ErrorDetails"],
+		["BulkDeploymentMetrics"] = args["BulkDeploymentMetrics"],
+		["BulkDeploymentStatus"] = args["BulkDeploymentStatus"],
+		["CreatedAt"] = args["CreatedAt"],
+		["ErrorMessage"] = args["ErrorMessage"],
+	}
+	asserts.AssertGetBulkDeploymentStatusResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3632,7 +4563,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ThingName [__string] Thing Name
+-- * ThingName [__string] The thing name.
 -- Required key: ThingName
 -- @return GetConnectivityInfoRequest structure as a key-value pair table
 function M.GetConnectivityInfoRequest(args)
@@ -3656,7 +4587,7 @@ function M.GetConnectivityInfoRequest(args)
     }
 end
 
-keys.FunctionConfiguration = { ["ExecArgs"] = true, ["Executable"] = true, ["MemorySize"] = true, ["Environment"] = true, ["Pinned"] = true, ["Timeout"] = true, nil }
+keys.FunctionConfiguration = { ["ExecArgs"] = true, ["Executable"] = true, ["MemorySize"] = true, ["Environment"] = true, ["Pinned"] = true, ["Timeout"] = true, ["EncodingType"] = true, nil }
 
 function asserts.AssertFunctionConfiguration(struct)
 	assert(struct)
@@ -3667,21 +4598,23 @@ function asserts.AssertFunctionConfiguration(struct)
 	if struct["Environment"] then asserts.AssertFunctionConfigurationEnvironment(struct["Environment"]) end
 	if struct["Pinned"] then asserts.Assert__boolean(struct["Pinned"]) end
 	if struct["Timeout"] then asserts.Assert__integer(struct["Timeout"]) end
+	if struct["EncodingType"] then asserts.AssertEncodingType(struct["EncodingType"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.FunctionConfiguration[k], "FunctionConfiguration contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FunctionConfiguration
--- Configuration of the function
+-- The configuration of the Lambda function.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ExecArgs [__string] Execution Arguments
--- * Executable [__string] Executable
--- * MemorySize [__integer] The memory size, in KB, you configured for the function.
--- * Environment [FunctionConfigurationEnvironment] Environment of the function configuration
--- * Pinned [__boolean] Whether the function is pinned or not. Pinned means the function is long-lived and starts when the core starts.
--- * Timeout [__integer] The function execution time at which Lambda should terminate the function. This timeout still applies to pinned lambdas for each request.
+-- * ExecArgs [__string] The execution arguments.
+-- * Executable [__string] The name of the function executable.
+-- * MemorySize [__integer] The memory size, in KB, which the function requires.
+-- * Environment [FunctionConfigurationEnvironment] The environment configuration of the function.
+-- * Pinned [__boolean] True if the function is pinned. Pinned means the function is long-lived and starts when the core starts.
+-- * Timeout [__integer] The allowed function execution time, after which Lambda should terminate the function. This timeout still applies to pinned lambdas for each request.
+-- * EncodingType [EncodingType] The expected encoding type of the input payload for the function. The default is ''json''.
 -- @return FunctionConfiguration structure as a key-value pair table
 function M.FunctionConfiguration(args)
 	assert(args, "You must provide an argument table when creating FunctionConfiguration")
@@ -3698,6 +4631,7 @@ function M.FunctionConfiguration(args)
 		["Environment"] = args["Environment"],
 		["Pinned"] = args["Pinned"],
 		["Timeout"] = args["Timeout"],
+		["EncodingType"] = args["EncodingType"],
 	}
 	asserts.AssertFunctionConfiguration(all_args)
 	return {
@@ -3713,7 +4647,7 @@ keys.ListFunctionDefinitionsResponse = { ["Definitions"] = true, ["NextToken"] =
 function asserts.AssertListFunctionDefinitionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListFunctionDefinitionsResponse to be of type 'table'")
-	if struct["Definitions"] then asserts.AssertListOfDefinitionInformation(struct["Definitions"]) end
+	if struct["Definitions"] then asserts.Assert__listOfDefinitionInformation(struct["Definitions"]) end
 	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListFunctionDefinitionsResponse[k], "ListFunctionDefinitionsResponse contains unknown key " .. tostring(k))
@@ -3724,7 +4658,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Definitions [ListOfDefinitionInformation] Definitions
+-- * Definitions [__listOfDefinitionInformation] Information about a definition.
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
 -- @return ListFunctionDefinitionsResponse structure as a key-value pair table
 function M.ListFunctionDefinitionsResponse(args)
@@ -3748,40 +4682,6 @@ function M.ListFunctionDefinitionsResponse(args)
     }
 end
 
-keys.Empty = { nil }
-
-function asserts.AssertEmpty(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected Empty to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.Empty[k], "Empty contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type Empty
--- Empty
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return Empty structure as a key-value pair table
-function M.Empty(args)
-	assert(args, "You must provide an argument table when creating Empty")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertEmpty(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.Core = { ["CertificateArn"] = true, ["ThingArn"] = true, ["SyncShadow"] = true, ["Id"] = true, nil }
 
 function asserts.AssertCore(struct)
@@ -3797,13 +4697,13 @@ function asserts.AssertCore(struct)
 end
 
 --- Create a structure of type Core
--- Information on the core
+-- Information about a core.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CertificateArn [__string] Certificate arn of the core.
--- * ThingArn [__string] Thing arn of the core.
--- * SyncShadow [__boolean] If true, the local shadow value automatically syncs with the cloud's shadow state.
--- * Id [__string] Element Id for this entry in the list.
+-- * CertificateArn [__string] The ARN of the certificate associated with the core.
+-- * ThingArn [__string] The ARN of the thing which is the core.
+-- * SyncShadow [__boolean] If true, the core's local shadow is automatically synced with the cloud.
+-- * Id [__string] A descriptive or arbitrary ID for the core. This value must be unique within the core definition version. Max length is 128 characters with pattern ''[a&#8209;zA&#8209;Z0&#8209;9:_&#8209;]+''.
 -- @return Core structure as a key-value pair table
 function M.Core(args)
 	assert(args, "You must provide an argument table when creating Core")
@@ -3828,38 +4728,32 @@ function M.Core(args)
     }
 end
 
-keys.GetFunctionDefinitionRequest = { ["FunctionDefinitionId"] = true, nil }
+keys.DisassociateServiceRoleFromAccountRequest = { nil }
 
-function asserts.AssertGetFunctionDefinitionRequest(struct)
+function asserts.AssertDisassociateServiceRoleFromAccountRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected GetFunctionDefinitionRequest to be of type 'table'")
-	assert(struct["FunctionDefinitionId"], "Expected key FunctionDefinitionId to exist in table")
-	if struct["FunctionDefinitionId"] then asserts.Assert__string(struct["FunctionDefinitionId"]) end
+	assert(type(struct) == "table", "Expected DisassociateServiceRoleFromAccountRequest to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.GetFunctionDefinitionRequest[k], "GetFunctionDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.DisassociateServiceRoleFromAccountRequest[k], "DisassociateServiceRoleFromAccountRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type GetFunctionDefinitionRequest
+--- Create a structure of type DisassociateServiceRoleFromAccountRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * FunctionDefinitionId [__string] the unique Id of the lambda definition
--- Required key: FunctionDefinitionId
--- @return GetFunctionDefinitionRequest structure as a key-value pair table
-function M.GetFunctionDefinitionRequest(args)
-	assert(args, "You must provide an argument table when creating GetFunctionDefinitionRequest")
+-- @return DisassociateServiceRoleFromAccountRequest structure as a key-value pair table
+function M.DisassociateServiceRoleFromAccountRequest(args)
+	assert(args, "You must provide an argument table when creating DisassociateServiceRoleFromAccountRequest")
     local query_args = { 
     }
     local uri_args = { 
-        ["{FunctionDefinitionId}"] = args["FunctionDefinitionId"],
     }
     local header_args = { 
     }
 	local all_args = { 
-		["FunctionDefinitionId"] = args["FunctionDefinitionId"],
 	}
-	asserts.AssertGetFunctionDefinitionRequest(all_args)
+	asserts.AssertDisassociateServiceRoleFromAccountRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3886,10 +4780,10 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Version [__string] Unique Id of a version.
--- * CreationTimestamp [__string] Timestamp of when the version was created.
--- * Id [__string] Id of the resource container.
--- * Arn [__string] Arn of the version.
+-- * Version [__string] The unique ID of the version.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the version was created.
+-- * Id [__string] The ID of the version.
+-- * Arn [__string] The ARN of the version.
 -- @return CreateCoreDefinitionVersionResponse structure as a key-value pair table
 function M.CreateCoreDefinitionVersionResponse(args)
 	assert(args, "You must provide an argument table when creating CreateCoreDefinitionVersionResponse")
@@ -3931,9 +4825,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
--- * GroupId [__string] Id of the group the certificate configuration belongs to.
--- * CertificateAuthorityExpiryInMilliseconds [__string] Amount of time when the certificate authority expires in milliseconds.
+-- * CertificateExpiryInMilliseconds [__string] The amount of time remaining before the certificate expires, in milliseconds.
+-- * GroupId [__string] The ID of the group certificate configuration.
+-- * CertificateAuthorityExpiryInMilliseconds [__string] The amount of time remaining before the certificate authority expires, in milliseconds.
 -- @return UpdateGroupCertificateConfigurationResponse structure as a key-value pair table
 function M.UpdateGroupCertificateConfigurationResponse(args)
 	assert(args, "You must provide an argument table when creating UpdateGroupCertificateConfigurationResponse")
@@ -3978,13 +4872,13 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LatestVersionArn [__string] Latest version arn of the definition.
--- * Name [__string] Name of the definition.
--- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- * LatestVersion [__string] Last version of the definition.
--- * CreationTimestamp [__string] Timestamp of when the definition was created.
--- * Id [__string] Id of the definition.
--- * Arn [__string] Arn of the definition.
+-- * LatestVersionArn [__string] The ARN of the latest version of the definition.
+-- * Name [__string] The name of the definition.
+-- * LastUpdatedTimestamp [__string] The time, in milliseconds since the epoch, when the definition was last updated.
+-- * LatestVersion [__string] The latest version of the definition.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the definition was created.
+-- * Id [__string] The ID of the definition.
+-- * Arn [__string] The ARN of the definition.
 -- @return GetGroupResponse structure as a key-value pair table
 function M.GetGroupResponse(args)
 	assert(args, "You must provide an argument table when creating GetGroupResponse")
@@ -4012,7 +4906,7 @@ function M.GetGroupResponse(args)
     }
 end
 
-keys.GetLoggerDefinitionVersionRequest = { ["LoggerDefinitionId"] = true, ["LoggerDefinitionVersionId"] = true, nil }
+keys.GetLoggerDefinitionVersionRequest = { ["LoggerDefinitionId"] = true, ["NextToken"] = true, ["LoggerDefinitionVersionId"] = true, nil }
 
 function asserts.AssertGetLoggerDefinitionVersionRequest(struct)
 	assert(struct)
@@ -4020,6 +4914,7 @@ function asserts.AssertGetLoggerDefinitionVersionRequest(struct)
 	assert(struct["LoggerDefinitionVersionId"], "Expected key LoggerDefinitionVersionId to exist in table")
 	assert(struct["LoggerDefinitionId"], "Expected key LoggerDefinitionId to exist in table")
 	if struct["LoggerDefinitionId"] then asserts.Assert__string(struct["LoggerDefinitionId"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	if struct["LoggerDefinitionVersionId"] then asserts.Assert__string(struct["LoggerDefinitionVersionId"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.GetLoggerDefinitionVersionRequest[k], "GetLoggerDefinitionVersionRequest contains unknown key " .. tostring(k))
@@ -4030,14 +4925,16 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LoggerDefinitionId [__string] logger definition Id
--- * LoggerDefinitionVersionId [__string] logger definition version Id
+-- * LoggerDefinitionId [__string] The ID of the logger definition.
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * LoggerDefinitionVersionId [__string] The ID of the logger definition version.
 -- Required key: LoggerDefinitionVersionId
 -- Required key: LoggerDefinitionId
 -- @return GetLoggerDefinitionVersionRequest structure as a key-value pair table
 function M.GetLoggerDefinitionVersionRequest(args)
 	assert(args, "You must provide an argument table when creating GetLoggerDefinitionVersionRequest")
     local query_args = { 
+        ["NextToken"] = args["NextToken"],
     }
     local uri_args = { 
         ["{LoggerDefinitionId}"] = args["LoggerDefinitionId"],
@@ -4047,6 +4944,7 @@ function M.GetLoggerDefinitionVersionRequest(args)
     }
 	local all_args = { 
 		["LoggerDefinitionId"] = args["LoggerDefinitionId"],
+		["NextToken"] = args["NextToken"],
 		["LoggerDefinitionVersionId"] = args["LoggerDefinitionVersionId"],
 	}
 	asserts.AssertGetLoggerDefinitionVersionRequest(all_args)
@@ -4074,8 +4972,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * MaxResults [__string] The maximum number of results to be returned per request.
 -- @return ListLoggerDefinitionsRequest structure as a key-value pair table
 function M.ListLoggerDefinitionsRequest(args)
 	assert(args, "You must provide an argument table when creating ListLoggerDefinitionsRequest")
@@ -4115,13 +5013,13 @@ function asserts.AssertDevice(struct)
 end
 
 --- Create a structure of type Device
--- Information on a Device
+-- Information about a device.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CertificateArn [__string] Certificate arn of the device.
--- * ThingArn [__string] Thing arn of the device.
--- * SyncShadow [__boolean] If true, the local shadow value automatically syncs with the cloud's shadow state.
--- * Id [__string] Element Id for this entry in the list.
+-- * CertificateArn [__string] The ARN of the certificate associated with the device.
+-- * ThingArn [__string] The thing ARN of the device.
+-- * SyncShadow [__boolean] If true, the device's local shadow will be automatically synced with the cloud.
+-- * Id [__string] A descriptive or arbitrary ID for the device. This value must be unique within the device definition version. Max length is 128 characters with pattern ''[a&#8209;zA&#8209;Z0&#8209;9:_&#8209;]+''.
 -- @return Device structure as a key-value pair table
 function M.Device(args)
 	assert(args, "You must provide an argument table when creating Device")
@@ -4167,13 +5065,13 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LatestVersionArn [__string] Latest version arn of the definition.
--- * Name [__string] Name of the definition.
--- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- * LatestVersion [__string] Last version of the definition.
--- * CreationTimestamp [__string] Timestamp of when the definition was created.
--- * Id [__string] Id of the definition.
--- * Arn [__string] Arn of the definition.
+-- * LatestVersionArn [__string] The ARN of the latest version of the definition.
+-- * Name [__string] The name of the definition.
+-- * LastUpdatedTimestamp [__string] The time, in milliseconds since the epoch, when the definition was last updated.
+-- * LatestVersion [__string] The latest version of the definition.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the definition was created.
+-- * Id [__string] The ID of the definition.
+-- * Arn [__string] The ARN of the definition.
 -- @return GetFunctionDefinitionResponse structure as a key-value pair table
 function M.GetFunctionDefinitionResponse(args)
 	assert(args, "You must provide an argument table when creating GetFunctionDefinitionResponse")
@@ -4219,8 +5117,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CertificateAuthorityId [__string] certificate authority Id
--- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- * CertificateAuthorityId [__string] The ID of the certificate authority.
+-- * GroupId [__string] The ID of the AWS Greengrass group.
 -- Required key: CertificateAuthorityId
 -- Required key: GroupId
 -- @return GetGroupCertificateAuthorityRequest structure as a key-value pair table
@@ -4253,7 +5151,7 @@ function asserts.AssertListSubscriptionDefinitionVersionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListSubscriptionDefinitionVersionsResponse to be of type 'table'")
 	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
-	if struct["Versions"] then asserts.AssertListOfVersionInformation(struct["Versions"]) end
+	if struct["Versions"] then asserts.Assert__listOfVersionInformation(struct["Versions"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListSubscriptionDefinitionVersionsResponse[k], "ListSubscriptionDefinitionVersionsResponse contains unknown key " .. tostring(k))
 	end
@@ -4264,7 +5162,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- * Versions [ListOfVersionInformation] Versions
+-- * Versions [__listOfVersionInformation] Information about a version.
 -- @return ListSubscriptionDefinitionVersionsResponse structure as a key-value pair table
 function M.ListSubscriptionDefinitionVersionsResponse(args)
 	assert(args, "You must provide an argument table when creating ListSubscriptionDefinitionVersionsResponse")
@@ -4279,6 +5177,89 @@ function M.ListSubscriptionDefinitionVersionsResponse(args)
 		["Versions"] = args["Versions"],
 	}
 	asserts.AssertListSubscriptionDefinitionVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateResourceDefinitionVersionResponse = { ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
+
+function asserts.AssertCreateResourceDefinitionVersionResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateResourceDefinitionVersionResponse to be of type 'table'")
+	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateResourceDefinitionVersionResponse[k], "CreateResourceDefinitionVersionResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateResourceDefinitionVersionResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Version [__string] The unique ID of the version.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the version was created.
+-- * Id [__string] The ID of the version.
+-- * Arn [__string] The ARN of the version.
+-- @return CreateResourceDefinitionVersionResponse structure as a key-value pair table
+function M.CreateResourceDefinitionVersionResponse(args)
+	assert(args, "You must provide an argument table when creating CreateResourceDefinitionVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Version"] = args["Version"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
+	}
+	asserts.AssertCreateResourceDefinitionVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ResourceDefinitionVersion = { ["Resources"] = true, nil }
+
+function asserts.AssertResourceDefinitionVersion(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ResourceDefinitionVersion to be of type 'table'")
+	if struct["Resources"] then asserts.Assert__listOfResource(struct["Resources"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ResourceDefinitionVersion[k], "ResourceDefinitionVersion contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ResourceDefinitionVersion
+-- Information about a resource definition version.
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Resources [__listOfResource] A list of resources.
+-- @return ResourceDefinitionVersion structure as a key-value pair table
+function M.ResourceDefinitionVersion(args)
+	assert(args, "You must provide an argument table when creating ResourceDefinitionVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Resources"] = args["Resources"],
+	}
+	asserts.AssertResourceDefinitionVersion(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4304,8 +5285,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CoreDefinitionId [__string] core definition Id
--- * Name [__string] name of the definition
+-- * CoreDefinitionId [__string] The ID of the core definition.
+-- * Name [__string] The name of the definition.
 -- Required key: CoreDefinitionId
 -- @return UpdateCoreDefinitionRequest structure as a key-value pair table
 function M.UpdateCoreDefinitionRequest(args)
@@ -4330,13 +5311,54 @@ function M.UpdateCoreDefinitionRequest(args)
     }
 end
 
-keys.GetCoreDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
+keys.GetResourceDefinitionRequest = { ["ResourceDefinitionId"] = true, nil }
+
+function asserts.AssertGetResourceDefinitionRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetResourceDefinitionRequest to be of type 'table'")
+	assert(struct["ResourceDefinitionId"], "Expected key ResourceDefinitionId to exist in table")
+	if struct["ResourceDefinitionId"] then asserts.Assert__string(struct["ResourceDefinitionId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetResourceDefinitionRequest[k], "GetResourceDefinitionRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetResourceDefinitionRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceDefinitionId [__string] The ID of the resource definition.
+-- Required key: ResourceDefinitionId
+-- @return GetResourceDefinitionRequest structure as a key-value pair table
+function M.GetResourceDefinitionRequest(args)
+	assert(args, "You must provide an argument table when creating GetResourceDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{ResourceDefinitionId}"] = args["ResourceDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceDefinitionId"] = args["ResourceDefinitionId"],
+	}
+	asserts.AssertGetResourceDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetCoreDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["NextToken"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
 function asserts.AssertGetCoreDefinitionVersionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetCoreDefinitionVersionResponse to be of type 'table'")
 	if struct["Definition"] then asserts.AssertCoreDefinitionVersion(struct["Definition"]) end
 	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
 	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
 	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
@@ -4349,11 +5371,12 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Definition [CoreDefinitionVersion] Information on definition
--- * Version [__string] Version of the core definition version.
--- * CreationTimestamp [__string] Timestamp of when the core definition version was created.
--- * Id [__string] Id of the core definition the version belongs to.
--- * Arn [__string] Arn of the core definition version.
+-- * Definition [CoreDefinitionVersion] Information about the core definition version.
+-- * Version [__string] The version of the core definition version.
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the core definition version was created.
+-- * Id [__string] The ID of the core definition version.
+-- * Arn [__string] The ARN of the core definition version.
 -- @return GetCoreDefinitionVersionResponse structure as a key-value pair table
 function M.GetCoreDefinitionVersionResponse(args)
 	assert(args, "You must provide an argument table when creating GetCoreDefinitionVersionResponse")
@@ -4366,6 +5389,7 @@ function M.GetCoreDefinitionVersionResponse(args)
 	local all_args = { 
 		["Definition"] = args["Definition"],
 		["Version"] = args["Version"],
+		["NextToken"] = args["NextToken"],
 		["CreationTimestamp"] = args["CreationTimestamp"],
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
@@ -4395,7 +5419,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- * GroupId [__string] The ID of the AWS Greengrass group.
 -- Required key: GroupId
 -- @return DisassociateRoleFromGroupRequest structure as a key-value pair table
 function M.DisassociateRoleFromGroupRequest(args)
@@ -4435,8 +5459,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * MaxResults [__string] The maximum number of results to be returned per request.
 -- @return ListDeviceDefinitionsRequest structure as a key-value pair table
 function M.ListDeviceDefinitionsRequest(args)
 	assert(args, "You must provide an argument table when creating ListDeviceDefinitionsRequest")
@@ -4453,6 +5477,64 @@ function M.ListDeviceDefinitionsRequest(args)
 		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListDeviceDefinitionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BulkDeploymentResult = { ["DeploymentType"] = true, ["ErrorMessage"] = true, ["ErrorDetails"] = true, ["DeploymentStatus"] = true, ["DeploymentId"] = true, ["DeploymentArn"] = true, ["GroupArn"] = true, ["CreatedAt"] = true, nil }
+
+function asserts.AssertBulkDeploymentResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BulkDeploymentResult to be of type 'table'")
+	if struct["DeploymentType"] then asserts.AssertDeploymentType(struct["DeploymentType"]) end
+	if struct["ErrorMessage"] then asserts.Assert__string(struct["ErrorMessage"]) end
+	if struct["ErrorDetails"] then asserts.AssertErrorDetails(struct["ErrorDetails"]) end
+	if struct["DeploymentStatus"] then asserts.Assert__string(struct["DeploymentStatus"]) end
+	if struct["DeploymentId"] then asserts.Assert__string(struct["DeploymentId"]) end
+	if struct["DeploymentArn"] then asserts.Assert__string(struct["DeploymentArn"]) end
+	if struct["GroupArn"] then asserts.Assert__string(struct["GroupArn"]) end
+	if struct["CreatedAt"] then asserts.Assert__string(struct["CreatedAt"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BulkDeploymentResult[k], "BulkDeploymentResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BulkDeploymentResult
+-- Information about an individual group deployment in a bulk deployment operation.
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeploymentType [DeploymentType] The type of the deployment.
+-- * ErrorMessage [__string] The error message for a failed deployment
+-- * ErrorDetails [ErrorDetails] Details about the error.
+-- * DeploymentStatus [__string] The current status of the group deployment: ''Pending'', ''InProgress'', ''Success'', or ''Failure''.
+-- * DeploymentId [__string] The ID of the group deployment.
+-- * DeploymentArn [__string] The ARN of the group deployment.
+-- * GroupArn [__string] The ARN of the Greengrass group.
+-- * CreatedAt [__string] The time, in ISO format, when the deployment was created.
+-- @return BulkDeploymentResult structure as a key-value pair table
+function M.BulkDeploymentResult(args)
+	assert(args, "You must provide an argument table when creating BulkDeploymentResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["DeploymentType"] = args["DeploymentType"],
+		["ErrorMessage"] = args["ErrorMessage"],
+		["ErrorDetails"] = args["ErrorDetails"],
+		["DeploymentStatus"] = args["DeploymentStatus"],
+		["DeploymentId"] = args["DeploymentId"],
+		["DeploymentArn"] = args["DeploymentArn"],
+		["GroupArn"] = args["GroupArn"],
+		["CreatedAt"] = args["CreatedAt"],
+	}
+	asserts.AssertBulkDeploymentResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4479,10 +5561,10 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Version [__string] Unique Id of a version.
--- * CreationTimestamp [__string] Timestamp of when the version was created.
--- * Id [__string] Id of the resource container.
--- * Arn [__string] Arn of the version.
+-- * Version [__string] The unique ID of the version.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the version was created.
+-- * Id [__string] The ID of the version.
+-- * Arn [__string] The ARN of the version.
 -- @return CreateSubscriptionDefinitionVersionResponse structure as a key-value pair table
 function M.CreateSubscriptionDefinitionVersionResponse(args)
 	assert(args, "You must provide an argument table when creating CreateSubscriptionDefinitionVersionResponse")
@@ -4547,7 +5629,7 @@ function asserts.AssertUpdateConnectivityInfoRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateConnectivityInfoRequest to be of type 'table'")
 	assert(struct["ThingName"], "Expected key ThingName to exist in table")
-	if struct["ConnectivityInfo"] then asserts.AssertListOfConnectivityInfo(struct["ConnectivityInfo"]) end
+	if struct["ConnectivityInfo"] then asserts.Assert__listOfConnectivityInfo(struct["ConnectivityInfo"]) end
 	if struct["ThingName"] then asserts.Assert__string(struct["ThingName"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.UpdateConnectivityInfoRequest[k], "UpdateConnectivityInfoRequest contains unknown key " .. tostring(k))
@@ -4555,11 +5637,11 @@ function asserts.AssertUpdateConnectivityInfoRequest(struct)
 end
 
 --- Create a structure of type UpdateConnectivityInfoRequest
--- connectivity info request
+-- Connectivity information.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ConnectivityInfo [ListOfConnectivityInfo] Connectivity info array
--- * ThingName [__string] Thing Name
+-- * ConnectivityInfo [__listOfConnectivityInfo] A list of connectivity info.
+-- * ThingName [__string] The thing name.
 -- Required key: ThingName
 -- @return UpdateConnectivityInfoRequest structure as a key-value pair table
 function M.UpdateConnectivityInfoRequest(args)
@@ -4584,6 +5666,50 @@ function M.UpdateConnectivityInfoRequest(args)
     }
 end
 
+keys.StartBulkDeploymentRequest = { ["InputFileUri"] = true, ["ExecutionRoleArn"] = true, ["AmznClientToken"] = true, nil }
+
+function asserts.AssertStartBulkDeploymentRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected StartBulkDeploymentRequest to be of type 'table'")
+	if struct["InputFileUri"] then asserts.Assert__string(struct["InputFileUri"]) end
+	if struct["ExecutionRoleArn"] then asserts.Assert__string(struct["ExecutionRoleArn"]) end
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.StartBulkDeploymentRequest[k], "StartBulkDeploymentRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type StartBulkDeploymentRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InputFileUri [__string] The URI of the input file contained in the S3 bucket. The execution role must have ''getObject'' permissions on this bucket to access the input file. The input file is a JSON-serialized, line delimited file with UTF-8 encoding that provides a list of group and version IDs and the deployment type. This file must be less than 100MB. Currently, Greengrass; supports only ''NewDeployment'' deployment types.
+-- * ExecutionRoleArn [__string] The ARN of the execution role to associate with the bulk deployment operation. This IAM role must allow the ''greengrass:CreateDeployment'' action for all group versions that are listed in the input file. This IAM role must have access to the S3 bucket containing the input file.
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
+-- @return StartBulkDeploymentRequest structure as a key-value pair table
+function M.StartBulkDeploymentRequest(args)
+	assert(args, "You must provide an argument table when creating StartBulkDeploymentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
+    }
+	local all_args = { 
+		["InputFileUri"] = args["InputFileUri"],
+		["ExecutionRoleArn"] = args["ExecutionRoleArn"],
+		["AmznClientToken"] = args["AmznClientToken"],
+	}
+	asserts.AssertStartBulkDeploymentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DeleteSubscriptionDefinitionRequest = { ["SubscriptionDefinitionId"] = true, nil }
 
 function asserts.AssertDeleteSubscriptionDefinitionRequest(struct)
@@ -4600,7 +5726,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SubscriptionDefinitionId [__string] subscription definition Id
+-- * SubscriptionDefinitionId [__string] The ID of the subscription definition.
 -- Required key: SubscriptionDefinitionId
 -- @return DeleteSubscriptionDefinitionRequest structure as a key-value pair table
 function M.DeleteSubscriptionDefinitionRequest(args)
@@ -4639,13 +5765,13 @@ function asserts.AssertVersionInformation(struct)
 end
 
 --- Create a structure of type VersionInformation
--- Information on the version
+-- Information about a version.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Version [__string] Unique Id of a version.
--- * CreationTimestamp [__string] Timestamp of when the version was created.
--- * Id [__string] Id of the resource container.
--- * Arn [__string] Arn of the version.
+-- * Version [__string] The unique ID of the version.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the version was created.
+-- * Id [__string] The ID of the version.
+-- * Arn [__string] The ARN of the version.
 -- @return VersionInformation structure as a key-value pair table
 function M.VersionInformation(args)
 	assert(args, "You must provide an argument table when creating VersionInformation")
@@ -4670,29 +5796,79 @@ function M.VersionInformation(args)
     }
 end
 
-keys.GroupCertificateConfiguration = { ["CertificateExpiryInMilliseconds"] = true, ["GroupId"] = true, ["CertificateAuthorityExpiryInMilliseconds"] = true, nil }
+keys.ListResourceDefinitionVersionsRequest = { ["NextToken"] = true, ["ResourceDefinitionId"] = true, ["MaxResults"] = true, nil }
 
-function asserts.AssertGroupCertificateConfiguration(struct)
+function asserts.AssertListResourceDefinitionVersionsRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected GroupCertificateConfiguration to be of type 'table'")
-	if struct["CertificateExpiryInMilliseconds"] then asserts.Assert__string(struct["CertificateExpiryInMilliseconds"]) end
-	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
-	if struct["CertificateAuthorityExpiryInMilliseconds"] then asserts.Assert__string(struct["CertificateAuthorityExpiryInMilliseconds"]) end
+	assert(type(struct) == "table", "Expected ListResourceDefinitionVersionsRequest to be of type 'table'")
+	assert(struct["ResourceDefinitionId"], "Expected key ResourceDefinitionId to exist in table")
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["ResourceDefinitionId"] then asserts.Assert__string(struct["ResourceDefinitionId"]) end
+	if struct["MaxResults"] then asserts.Assert__string(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.GroupCertificateConfiguration[k], "GroupCertificateConfiguration contains unknown key " .. tostring(k))
+		assert(keys.ListResourceDefinitionVersionsRequest[k], "ListResourceDefinitionVersionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type GroupCertificateConfiguration
--- Information on the group certificate configuration
+--- Create a structure of type ListResourceDefinitionVersionsRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
--- * GroupId [__string] Id of the group the certificate configuration belongs to.
--- * CertificateAuthorityExpiryInMilliseconds [__string] Amount of time when the certificate authority expires in milliseconds.
--- @return GroupCertificateConfiguration structure as a key-value pair table
-function M.GroupCertificateConfiguration(args)
-	assert(args, "You must provide an argument table when creating GroupCertificateConfiguration")
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * ResourceDefinitionId [__string] The ID of the resource definition.
+-- * MaxResults [__string] The maximum number of results to be returned per request.
+-- Required key: ResourceDefinitionId
+-- @return ListResourceDefinitionVersionsRequest structure as a key-value pair table
+function M.ListResourceDefinitionVersionsRequest(args)
+	assert(args, "You must provide an argument table when creating ListResourceDefinitionVersionsRequest")
+    local query_args = { 
+        ["NextToken"] = args["NextToken"],
+        ["MaxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+        ["{ResourceDefinitionId}"] = args["ResourceDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["ResourceDefinitionId"] = args["ResourceDefinitionId"],
+		["MaxResults"] = args["MaxResults"],
+	}
+	asserts.AssertListResourceDefinitionVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ResourceDataContainer = { ["LocalVolumeResourceData"] = true, ["S3MachineLearningModelResourceData"] = true, ["LocalDeviceResourceData"] = true, ["SageMakerMachineLearningModelResourceData"] = true, nil }
+
+function asserts.AssertResourceDataContainer(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ResourceDataContainer to be of type 'table'")
+	if struct["LocalVolumeResourceData"] then asserts.AssertLocalVolumeResourceData(struct["LocalVolumeResourceData"]) end
+	if struct["S3MachineLearningModelResourceData"] then asserts.AssertS3MachineLearningModelResourceData(struct["S3MachineLearningModelResourceData"]) end
+	if struct["LocalDeviceResourceData"] then asserts.AssertLocalDeviceResourceData(struct["LocalDeviceResourceData"]) end
+	if struct["SageMakerMachineLearningModelResourceData"] then asserts.AssertSageMakerMachineLearningModelResourceData(struct["SageMakerMachineLearningModelResourceData"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ResourceDataContainer[k], "ResourceDataContainer contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ResourceDataContainer
+-- A container for resource data. The container takes only one of the following supported resource data types: ''LocalDeviceResourceData'', ''LocalVolumeResourceData'', ''SageMakerMachineLearningModelResourceData'', ''S3MachineLearningModelResourceData''.
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LocalVolumeResourceData [LocalVolumeResourceData] Attributes that define the local volume resource.
+-- * S3MachineLearningModelResourceData [S3MachineLearningModelResourceData] Attributes that define an S3 machine learning resource.
+-- * LocalDeviceResourceData [LocalDeviceResourceData] Attributes that define the local device resource.
+-- * SageMakerMachineLearningModelResourceData [SageMakerMachineLearningModelResourceData] Attributes that define an SageMaker machine learning resource.
+-- @return ResourceDataContainer structure as a key-value pair table
+function M.ResourceDataContainer(args)
+	assert(args, "You must provide an argument table when creating ResourceDataContainer")
     local query_args = { 
     }
     local uri_args = { 
@@ -4700,11 +5876,52 @@ function M.GroupCertificateConfiguration(args)
     local header_args = { 
     }
 	local all_args = { 
-		["CertificateExpiryInMilliseconds"] = args["CertificateExpiryInMilliseconds"],
-		["GroupId"] = args["GroupId"],
-		["CertificateAuthorityExpiryInMilliseconds"] = args["CertificateAuthorityExpiryInMilliseconds"],
+		["LocalVolumeResourceData"] = args["LocalVolumeResourceData"],
+		["S3MachineLearningModelResourceData"] = args["S3MachineLearningModelResourceData"],
+		["LocalDeviceResourceData"] = args["LocalDeviceResourceData"],
+		["SageMakerMachineLearningModelResourceData"] = args["SageMakerMachineLearningModelResourceData"],
 	}
-	asserts.AssertGroupCertificateConfiguration(all_args)
+	asserts.AssertResourceDataContainer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ResetDeploymentsResponse = { ["DeploymentId"] = true, ["DeploymentArn"] = true, nil }
+
+function asserts.AssertResetDeploymentsResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ResetDeploymentsResponse to be of type 'table'")
+	if struct["DeploymentId"] then asserts.Assert__string(struct["DeploymentId"]) end
+	if struct["DeploymentArn"] then asserts.Assert__string(struct["DeploymentArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ResetDeploymentsResponse[k], "ResetDeploymentsResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ResetDeploymentsResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeploymentId [__string] The ID of the deployment.
+-- * DeploymentArn [__string] The ARN of the deployment.
+-- @return ResetDeploymentsResponse structure as a key-value pair table
+function M.ResetDeploymentsResponse(args)
+	assert(args, "You must provide an argument table when creating ResetDeploymentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["DeploymentId"] = args["DeploymentId"],
+		["DeploymentArn"] = args["DeploymentArn"],
+	}
+	asserts.AssertResetDeploymentsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4729,7 +5946,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- * GroupId [__string] The ID of the AWS Greengrass group.
 -- Required key: GroupId
 -- @return GetAssociatedRoleRequest structure as a key-value pair table
 function M.GetAssociatedRoleRequest(args)
@@ -4769,7 +5986,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CoreDefinitionId [__string] core definition Id
+-- * CoreDefinitionId [__string] The ID of the core definition.
 -- Required key: CoreDefinitionId
 -- @return GetCoreDefinitionRequest structure as a key-value pair table
 function M.GetCoreDefinitionRequest(args)
@@ -4809,8 +6026,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * MaxResults [__string] The maximum number of results to be returned per request.
 -- @return ListSubscriptionDefinitionsRequest structure as a key-value pair table
 function M.ListSubscriptionDefinitionsRequest(args)
 	assert(args, "You must provide an argument table when creating ListSubscriptionDefinitionsRequest")
@@ -4843,7 +6060,7 @@ function asserts.AssertCreateSubscriptionDefinitionVersionRequest(struct)
 	assert(struct["SubscriptionDefinitionId"], "Expected key SubscriptionDefinitionId to exist in table")
 	if struct["SubscriptionDefinitionId"] then asserts.Assert__string(struct["SubscriptionDefinitionId"]) end
 	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
-	if struct["Subscriptions"] then asserts.AssertListOfSubscription(struct["Subscriptions"]) end
+	if struct["Subscriptions"] then asserts.Assert__listOfSubscription(struct["Subscriptions"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateSubscriptionDefinitionVersionRequest[k], "CreateSubscriptionDefinitionVersionRequest contains unknown key " .. tostring(k))
 	end
@@ -4853,9 +6070,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SubscriptionDefinitionId [__string] subscription definition Id
--- * AmznClientToken [__string] The client token used to request idempotent operations.
--- * Subscriptions [ListOfSubscription] Subscriptions in the version.
+-- * SubscriptionDefinitionId [__string] The ID of the subscription definition.
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
+-- * Subscriptions [__listOfSubscription] A list of subscriptions.
 -- Required key: SubscriptionDefinitionId
 -- @return CreateSubscriptionDefinitionVersionRequest structure as a key-value pair table
 function M.CreateSubscriptionDefinitionVersionRequest(args)
@@ -4888,7 +6105,7 @@ function asserts.AssertCreateCoreDefinitionVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateCoreDefinitionVersionRequest to be of type 'table'")
 	assert(struct["CoreDefinitionId"], "Expected key CoreDefinitionId to exist in table")
-	if struct["Cores"] then asserts.AssertListOfCore(struct["Cores"]) end
+	if struct["Cores"] then asserts.Assert__listOfCore(struct["Cores"]) end
 	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
 	if struct["CoreDefinitionId"] then asserts.Assert__string(struct["CoreDefinitionId"]) end
 	for k,_ in pairs(struct) do
@@ -4900,9 +6117,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Cores [ListOfCore] Cores in the definition version.
--- * AmznClientToken [__string] The client token used to request idempotent operations.
--- * CoreDefinitionId [__string] core definition Id
+-- * Cores [__listOfCore] A list of cores in the core definition version.
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
+-- * CoreDefinitionId [__string] The ID of the core definition.
 -- Required key: CoreDefinitionId
 -- @return CreateCoreDefinitionVersionRequest structure as a key-value pair table
 function M.CreateCoreDefinitionVersionRequest(args)
@@ -4946,9 +6163,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AmznClientToken [__string] The client token used to request idempotent operations.
--- * InitialVersion [FunctionDefinitionVersion] Information on the initial version
--- * Name [__string] name of the function definition
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
+-- * InitialVersion [FunctionDefinitionVersion] Information about the initial version of the function definition.
+-- * Name [__string] The name of the function definition.
 -- @return CreateFunctionDefinitionRequest structure as a key-value pair table
 function M.CreateFunctionDefinitionRequest(args)
 	assert(args, "You must provide an argument table when creating CreateFunctionDefinitionRequest")
@@ -4965,6 +6182,46 @@ function M.CreateFunctionDefinitionRequest(args)
 		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateFunctionDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListResourceDefinitionVersionsResponse = { ["NextToken"] = true, ["Versions"] = true, nil }
+
+function asserts.AssertListResourceDefinitionVersionsResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListResourceDefinitionVersionsResponse to be of type 'table'")
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["Versions"] then asserts.Assert__listOfVersionInformation(struct["Versions"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListResourceDefinitionVersionsResponse[k], "ListResourceDefinitionVersionsResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListResourceDefinitionVersionsResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * Versions [__listOfVersionInformation] Information about a version.
+-- @return ListResourceDefinitionVersionsResponse structure as a key-value pair table
+function M.ListResourceDefinitionVersionsResponse(args)
+	assert(args, "You must provide an argument table when creating ListResourceDefinitionVersionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["Versions"] = args["Versions"],
+	}
+	asserts.AssertListResourceDefinitionVersionsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4990,8 +6247,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * RoleArn [__string] Role arn you wish to associate with this group.
--- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- * RoleArn [__string] The ARN of the role you wish to associate with this group.
+-- * GroupId [__string] The ID of the AWS Greengrass group.
 -- Required key: GroupId
 -- @return AssociateRoleToGroupRequest structure as a key-value pair table
 function M.AssociateRoleToGroupRequest(args)
@@ -5037,13 +6294,13 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LatestVersionArn [__string] Latest version arn of the definition.
--- * Name [__string] Name of the definition.
--- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- * LatestVersion [__string] Last version of the definition.
--- * CreationTimestamp [__string] Timestamp of when the definition was created.
--- * Id [__string] Id of the definition.
--- * Arn [__string] Arn of the definition.
+-- * LatestVersionArn [__string] The ARN of the latest version of the definition.
+-- * Name [__string] The name of the definition.
+-- * LastUpdatedTimestamp [__string] The time, in milliseconds since the epoch, when the definition was last updated.
+-- * LatestVersion [__string] The latest version of the definition.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the definition was created.
+-- * Id [__string] The ID of the definition.
+-- * Arn [__string] The ARN of the definition.
 -- @return GetSubscriptionDefinitionResponse structure as a key-value pair table
 function M.GetSubscriptionDefinitionResponse(args)
 	assert(args, "You must provide an argument table when creating GetSubscriptionDefinitionResponse")
@@ -5077,7 +6334,7 @@ function asserts.AssertListGroupVersionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListGroupVersionsResponse to be of type 'table'")
 	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
-	if struct["Versions"] then asserts.AssertListOfVersionInformation(struct["Versions"]) end
+	if struct["Versions"] then asserts.Assert__listOfVersionInformation(struct["Versions"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListGroupVersionsResponse[k], "ListGroupVersionsResponse contains unknown key " .. tostring(k))
 	end
@@ -5088,7 +6345,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- * Versions [ListOfVersionInformation] Versions
+-- * Versions [__listOfVersionInformation] Information about a version.
 -- @return ListGroupVersionsResponse structure as a key-value pair table
 function M.ListGroupVersionsResponse(args)
 	assert(args, "You must provide an argument table when creating ListGroupVersionsResponse")
@@ -5127,8 +6384,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * MaxResults [__string] The maximum number of results to be returned per request.
 -- @return ListCoreDefinitionsRequest structure as a key-value pair table
 function M.ListCoreDefinitionsRequest(args)
 	assert(args, "You must provide an argument table when creating ListCoreDefinitionsRequest")
@@ -5158,7 +6415,7 @@ keys.ListGroupCertificateAuthoritiesResponse = { ["GroupCertificateAuthorities"]
 function asserts.AssertListGroupCertificateAuthoritiesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListGroupCertificateAuthoritiesResponse to be of type 'table'")
-	if struct["GroupCertificateAuthorities"] then asserts.AssertListOfGroupCertificateAuthorityProperties(struct["GroupCertificateAuthorities"]) end
+	if struct["GroupCertificateAuthorities"] then asserts.Assert__listOfGroupCertificateAuthorityProperties(struct["GroupCertificateAuthorities"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListGroupCertificateAuthoritiesResponse[k], "ListGroupCertificateAuthoritiesResponse contains unknown key " .. tostring(k))
 	end
@@ -5168,7 +6425,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GroupCertificateAuthorities [ListOfGroupCertificateAuthorityProperties] List of certificate authorities associated with the group.
+-- * GroupCertificateAuthorities [__listOfGroupCertificateAuthorityProperties] A list of certificate authorities associated with the group.
 -- @return ListGroupCertificateAuthoritiesResponse structure as a key-value pair table
 function M.ListGroupCertificateAuthoritiesResponse(args)
 	assert(args, "You must provide an argument table when creating ListGroupCertificateAuthoritiesResponse")
@@ -5190,47 +6447,54 @@ function M.ListGroupCertificateAuthoritiesResponse(args)
     }
 end
 
-keys.Logger = { ["Type"] = true, ["Space"] = true, ["Component"] = true, ["Id"] = true, ["Level"] = true, nil }
+keys.CreateSoftwareUpdateJobRequest = { ["UpdateAgentLogLevel"] = true, ["AmznClientToken"] = true, ["UpdateTargets"] = true, ["UpdateTargetsArchitecture"] = true, ["S3UrlSignerRole"] = true, ["SoftwareToUpdate"] = true, ["UpdateTargetsOperatingSystem"] = true, nil }
 
-function asserts.AssertLogger(struct)
+function asserts.AssertCreateSoftwareUpdateJobRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected Logger to be of type 'table'")
-	if struct["Type"] then asserts.AssertLoggerType(struct["Type"]) end
-	if struct["Space"] then asserts.Assert__integer(struct["Space"]) end
-	if struct["Component"] then asserts.AssertLoggerComponent(struct["Component"]) end
-	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
-	if struct["Level"] then asserts.AssertLoggerLevel(struct["Level"]) end
+	assert(type(struct) == "table", "Expected CreateSoftwareUpdateJobRequest to be of type 'table'")
+	if struct["UpdateAgentLogLevel"] then asserts.AssertUpdateAgentLogLevel(struct["UpdateAgentLogLevel"]) end
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
+	if struct["UpdateTargets"] then asserts.AssertUpdateTargets(struct["UpdateTargets"]) end
+	if struct["UpdateTargetsArchitecture"] then asserts.AssertUpdateTargetsArchitecture(struct["UpdateTargetsArchitecture"]) end
+	if struct["S3UrlSignerRole"] then asserts.AssertS3UrlSignerRole(struct["S3UrlSignerRole"]) end
+	if struct["SoftwareToUpdate"] then asserts.AssertSoftwareToUpdate(struct["SoftwareToUpdate"]) end
+	if struct["UpdateTargetsOperatingSystem"] then asserts.AssertUpdateTargetsOperatingSystem(struct["UpdateTargetsOperatingSystem"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.Logger[k], "Logger contains unknown key " .. tostring(k))
+		assert(keys.CreateSoftwareUpdateJobRequest[k], "CreateSoftwareUpdateJobRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type Logger
--- Information on the Logger
+--- Create a structure of type CreateSoftwareUpdateJobRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Type [LoggerType] The type which will be use for log output
--- * Space [__integer] Amount of hardware space, in KB, to use if file system is used for logging purposes.
--- * Component [LoggerComponent] The component that will be subject to logs
--- * Id [__string] Element Id for this entry in the list.
--- * Level [LoggerLevel] The level of the logs
--- @return Logger structure as a key-value pair table
-function M.Logger(args)
-	assert(args, "You must provide an argument table when creating Logger")
+-- * UpdateAgentLogLevel [UpdateAgentLogLevel] 
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
+-- * UpdateTargets [UpdateTargets] 
+-- * UpdateTargetsArchitecture [UpdateTargetsArchitecture] 
+-- * S3UrlSignerRole [S3UrlSignerRole] 
+-- * SoftwareToUpdate [SoftwareToUpdate] 
+-- * UpdateTargetsOperatingSystem [UpdateTargetsOperatingSystem] 
+-- @return CreateSoftwareUpdateJobRequest structure as a key-value pair table
+function M.CreateSoftwareUpdateJobRequest(args)
+	assert(args, "You must provide an argument table when creating CreateSoftwareUpdateJobRequest")
     local query_args = { 
     }
     local uri_args = { 
     }
     local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
     }
 	local all_args = { 
-		["Type"] = args["Type"],
-		["Space"] = args["Space"],
-		["Component"] = args["Component"],
-		["Id"] = args["Id"],
-		["Level"] = args["Level"],
+		["UpdateAgentLogLevel"] = args["UpdateAgentLogLevel"],
+		["AmznClientToken"] = args["AmznClientToken"],
+		["UpdateTargets"] = args["UpdateTargets"],
+		["UpdateTargetsArchitecture"] = args["UpdateTargetsArchitecture"],
+		["S3UrlSignerRole"] = args["S3UrlSignerRole"],
+		["SoftwareToUpdate"] = args["SoftwareToUpdate"],
+		["UpdateTargetsOperatingSystem"] = args["UpdateTargetsOperatingSystem"],
 	}
-	asserts.AssertLogger(all_args)
+	asserts.AssertCreateSoftwareUpdateJobRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5239,41 +6503,46 @@ function M.Logger(args)
     }
 end
 
-keys.UpdateGroupCertificateConfigurationRequest = { ["CertificateExpiryInMilliseconds"] = true, ["GroupId"] = true, nil }
+keys.ListBulkDeploymentDetailedReportsRequest = { ["BulkDeploymentId"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function asserts.AssertUpdateGroupCertificateConfigurationRequest(struct)
+function asserts.AssertListBulkDeploymentDetailedReportsRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateGroupCertificateConfigurationRequest to be of type 'table'")
-	assert(struct["GroupId"], "Expected key GroupId to exist in table")
-	if struct["CertificateExpiryInMilliseconds"] then asserts.Assert__string(struct["CertificateExpiryInMilliseconds"]) end
-	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
+	assert(type(struct) == "table", "Expected ListBulkDeploymentDetailedReportsRequest to be of type 'table'")
+	assert(struct["BulkDeploymentId"], "Expected key BulkDeploymentId to exist in table")
+	if struct["BulkDeploymentId"] then asserts.Assert__string(struct["BulkDeploymentId"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.Assert__string(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.UpdateGroupCertificateConfigurationRequest[k], "UpdateGroupCertificateConfigurationRequest contains unknown key " .. tostring(k))
+		assert(keys.ListBulkDeploymentDetailedReportsRequest[k], "ListBulkDeploymentDetailedReportsRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type UpdateGroupCertificateConfigurationRequest
+--- Create a structure of type ListBulkDeploymentDetailedReportsRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
--- * GroupId [__string] The unique Id of the AWS Greengrass Group
--- Required key: GroupId
--- @return UpdateGroupCertificateConfigurationRequest structure as a key-value pair table
-function M.UpdateGroupCertificateConfigurationRequest(args)
-	assert(args, "You must provide an argument table when creating UpdateGroupCertificateConfigurationRequest")
+-- * BulkDeploymentId [__string] The ID of the bulk deployment.
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * MaxResults [__string] The maximum number of results to be returned per request.
+-- Required key: BulkDeploymentId
+-- @return ListBulkDeploymentDetailedReportsRequest structure as a key-value pair table
+function M.ListBulkDeploymentDetailedReportsRequest(args)
+	assert(args, "You must provide an argument table when creating ListBulkDeploymentDetailedReportsRequest")
     local query_args = { 
+        ["NextToken"] = args["NextToken"],
+        ["MaxResults"] = args["MaxResults"],
     }
     local uri_args = { 
-        ["{GroupId}"] = args["GroupId"],
+        ["{BulkDeploymentId}"] = args["BulkDeploymentId"],
     }
     local header_args = { 
     }
 	local all_args = { 
-		["CertificateExpiryInMilliseconds"] = args["CertificateExpiryInMilliseconds"],
-		["GroupId"] = args["GroupId"],
+		["BulkDeploymentId"] = args["BulkDeploymentId"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertUpdateGroupCertificateConfigurationRequest(all_args)
+	asserts.AssertListBulkDeploymentDetailedReportsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5282,33 +6551,29 @@ function M.UpdateGroupCertificateConfigurationRequest(args)
     }
 end
 
-keys.GetFunctionDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
+keys.Function = { ["FunctionConfiguration"] = true, ["Id"] = true, ["FunctionArn"] = true, nil }
 
-function asserts.AssertGetFunctionDefinitionVersionResponse(struct)
+function asserts.AssertFunction(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected GetFunctionDefinitionVersionResponse to be of type 'table'")
-	if struct["Definition"] then asserts.AssertFunctionDefinitionVersion(struct["Definition"]) end
-	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
-	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	assert(type(struct) == "table", "Expected Function to be of type 'table'")
+	if struct["FunctionConfiguration"] then asserts.AssertFunctionConfiguration(struct["FunctionConfiguration"]) end
 	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
-	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
+	if struct["FunctionArn"] then asserts.Assert__string(struct["FunctionArn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.GetFunctionDefinitionVersionResponse[k], "GetFunctionDefinitionVersionResponse contains unknown key " .. tostring(k))
+		assert(keys.Function[k], "Function contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type GetFunctionDefinitionVersionResponse
---  
+--- Create a structure of type Function
+-- Information about a Lambda function.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Definition [FunctionDefinitionVersion] 
--- * Version [__string] Version of the function definition version.
--- * CreationTimestamp [__string] Timestamp when the funtion definition version was created.
--- * Id [__string] Id of the function definition the version belongs to.
--- * Arn [__string] Arn of the function definition version.
--- @return GetFunctionDefinitionVersionResponse structure as a key-value pair table
-function M.GetFunctionDefinitionVersionResponse(args)
-	assert(args, "You must provide an argument table when creating GetFunctionDefinitionVersionResponse")
+-- * FunctionConfiguration [FunctionConfiguration] The configuration of the Lambda function.
+-- * Id [__string] A descriptive or arbitrary ID for the function. This value must be unique within the function definition version. Max length is 128 characters with pattern ''[a&#8209;zA&#8209;Z0&#8209;9:_&#8209;]+''.
+-- * FunctionArn [__string] The ARN of the Lambda function.
+-- @return Function structure as a key-value pair table
+function M.Function(args)
+	assert(args, "You must provide an argument table when creating Function")
     local query_args = { 
     }
     local uri_args = { 
@@ -5316,13 +6581,11 @@ function M.GetFunctionDefinitionVersionResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Definition"] = args["Definition"],
-		["Version"] = args["Version"],
-		["CreationTimestamp"] = args["CreationTimestamp"],
+		["FunctionConfiguration"] = args["FunctionConfiguration"],
 		["Id"] = args["Id"],
-		["Arn"] = args["Arn"],
+		["FunctionArn"] = args["FunctionArn"],
 	}
-	asserts.AssertGetFunctionDefinitionVersionResponse(all_args)
+	asserts.AssertFunction(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5347,7 +6610,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- * GroupId [__string] The ID of the AWS Greengrass group.
 -- Required key: GroupId
 -- @return ListGroupCertificateAuthoritiesRequest structure as a key-value pair table
 function M.ListGroupCertificateAuthoritiesRequest(args)
@@ -5376,7 +6639,7 @@ keys.ListDeviceDefinitionsResponse = { ["Definitions"] = true, ["NextToken"] = t
 function asserts.AssertListDeviceDefinitionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListDeviceDefinitionsResponse to be of type 'table'")
-	if struct["Definitions"] then asserts.AssertListOfDefinitionInformation(struct["Definitions"]) end
+	if struct["Definitions"] then asserts.Assert__listOfDefinitionInformation(struct["Definitions"]) end
 	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListDeviceDefinitionsResponse[k], "ListDeviceDefinitionsResponse contains unknown key " .. tostring(k))
@@ -5387,7 +6650,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Definitions [ListOfDefinitionInformation] Definitions
+-- * Definitions [__listOfDefinitionInformation] Information about a definition.
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
 -- @return ListDeviceDefinitionsResponse structure as a key-value pair table
 function M.ListDeviceDefinitionsResponse(args)
@@ -5403,6 +6666,49 @@ function M.ListDeviceDefinitionsResponse(args)
 		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListDeviceDefinitionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BulkDeploymentMetrics = { ["InvalidInputRecords"] = true, ["RetryAttempts"] = true, ["RecordsProcessed"] = true, nil }
+
+function asserts.AssertBulkDeploymentMetrics(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BulkDeploymentMetrics to be of type 'table'")
+	if struct["InvalidInputRecords"] then asserts.Assert__integer(struct["InvalidInputRecords"]) end
+	if struct["RetryAttempts"] then asserts.Assert__integer(struct["RetryAttempts"]) end
+	if struct["RecordsProcessed"] then asserts.Assert__integer(struct["RecordsProcessed"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BulkDeploymentMetrics[k], "BulkDeploymentMetrics contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BulkDeploymentMetrics
+-- Relevant metrics on input records processed during bulk deployment.
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InvalidInputRecords [__integer] The total number of records that returned a non-retryable error. For example, this can occur if a group record from the input file uses an invalid format or specifies a nonexistent group version, or if the execution role doesn't grant permission to deploy a group or group version.
+-- * RetryAttempts [__integer] The total number of deployment attempts that returned a retryable error. For example, a retry is triggered if the attempt to deploy a group returns a throttling error. ''StartBulkDeployment'' retries a group deployment up to five times.
+-- * RecordsProcessed [__integer] The total number of group records from the input file that have been processed so far, or attempted.
+-- @return BulkDeploymentMetrics structure as a key-value pair table
+function M.BulkDeploymentMetrics(args)
+	assert(args, "You must provide an argument table when creating BulkDeploymentMetrics")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["InvalidInputRecords"] = args["InvalidInputRecords"],
+		["RetryAttempts"] = args["RetryAttempts"],
+		["RecordsProcessed"] = args["RecordsProcessed"],
+	}
+	asserts.AssertBulkDeploymentMetrics(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5429,10 +6735,10 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Version [__string] Unique Id of a version.
--- * CreationTimestamp [__string] Timestamp of when the version was created.
--- * Id [__string] Id of the resource container.
--- * Arn [__string] Arn of the version.
+-- * Version [__string] The unique ID of the version.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the version was created.
+-- * Id [__string] The ID of the version.
+-- * Arn [__string] The ARN of the version.
 -- @return CreateFunctionDefinitionVersionResponse structure as a key-value pair table
 function M.CreateFunctionDefinitionVersionResponse(args)
 	assert(args, "You must provide an argument table when creating CreateFunctionDefinitionVersionResponse")
@@ -5475,10 +6781,10 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Version [__string] Unique Id of a version.
--- * CreationTimestamp [__string] Timestamp of when the version was created.
--- * Id [__string] Id of the resource container.
--- * Arn [__string] Arn of the version.
+-- * Version [__string] The unique ID of the version.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the version was created.
+-- * Id [__string] The ID of the version.
+-- * Arn [__string] The ARN of the version.
 -- @return CreateGroupVersionResponse structure as a key-value pair table
 function M.CreateGroupVersionResponse(args)
 	assert(args, "You must provide an argument table when creating CreateGroupVersionResponse")
@@ -5503,27 +6809,23 @@ function M.CreateGroupVersionResponse(args)
     }
 end
 
-keys.ListVersionsResponse = { ["NextToken"] = true, ["Versions"] = true, nil }
+keys.StopBulkDeploymentResponse = { nil }
 
-function asserts.AssertListVersionsResponse(struct)
+function asserts.AssertStopBulkDeploymentResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ListVersionsResponse to be of type 'table'")
-	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
-	if struct["Versions"] then asserts.AssertListOfVersionInformation(struct["Versions"]) end
+	assert(type(struct) == "table", "Expected StopBulkDeploymentResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.ListVersionsResponse[k], "ListVersionsResponse contains unknown key " .. tostring(k))
+		assert(keys.StopBulkDeploymentResponse[k], "StopBulkDeploymentResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ListVersionsResponse
--- List of versions response
+--- Create a structure of type StopBulkDeploymentResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- * Versions [ListOfVersionInformation] Versions
--- @return ListVersionsResponse structure as a key-value pair table
-function M.ListVersionsResponse(args)
-	assert(args, "You must provide an argument table when creating ListVersionsResponse")
+-- @return StopBulkDeploymentResponse structure as a key-value pair table
+function M.StopBulkDeploymentResponse(args)
+	assert(args, "You must provide an argument table when creating StopBulkDeploymentResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -5531,10 +6833,48 @@ function M.ListVersionsResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["NextToken"] = args["NextToken"],
-		["Versions"] = args["Versions"],
 	}
-	asserts.AssertListVersionsResponse(all_args)
+	asserts.AssertStopBulkDeploymentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateSoftwareUpdateJobResponse = { ["IotJobId"] = true, ["IotJobArn"] = true, nil }
+
+function asserts.AssertCreateSoftwareUpdateJobResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateSoftwareUpdateJobResponse to be of type 'table'")
+	if struct["IotJobId"] then asserts.Assert__string(struct["IotJobId"]) end
+	if struct["IotJobArn"] then asserts.Assert__string(struct["IotJobArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateSoftwareUpdateJobResponse[k], "CreateSoftwareUpdateJobResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateSoftwareUpdateJobResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IotJobId [__string] The IoT Job Id corresponding to this update.
+-- * IotJobArn [__string] The IoT Job ARN corresponding to this update.
+-- @return CreateSoftwareUpdateJobResponse structure as a key-value pair table
+function M.CreateSoftwareUpdateJobResponse(args)
+	assert(args, "You must provide an argument table when creating CreateSoftwareUpdateJobResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["IotJobId"] = args["IotJobId"],
+		["IotJobArn"] = args["IotJobArn"],
+	}
+	asserts.AssertCreateSoftwareUpdateJobResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5560,8 +6900,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DeviceDefinitionId [__string] device definition Id
--- * Name [__string] name of the definition
+-- * DeviceDefinitionId [__string] The ID of the device definition.
+-- * Name [__string] The name of the definition.
 -- Required key: DeviceDefinitionId
 -- @return UpdateDeviceDefinitionRequest structure as a key-value pair table
 function M.UpdateDeviceDefinitionRequest(args)
@@ -5586,33 +6926,37 @@ function M.UpdateDeviceDefinitionRequest(args)
     }
 end
 
-keys.GroupVersion = { ["CoreDefinitionVersionArn"] = true, ["LoggerDefinitionVersionArn"] = true, ["FunctionDefinitionVersionArn"] = true, ["DeviceDefinitionVersionArn"] = true, ["SubscriptionDefinitionVersionArn"] = true, nil }
+keys.GetResourceDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function asserts.AssertGroupVersion(struct)
+function asserts.AssertGetResourceDefinitionResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected GroupVersion to be of type 'table'")
-	if struct["CoreDefinitionVersionArn"] then asserts.Assert__string(struct["CoreDefinitionVersionArn"]) end
-	if struct["LoggerDefinitionVersionArn"] then asserts.Assert__string(struct["LoggerDefinitionVersionArn"]) end
-	if struct["FunctionDefinitionVersionArn"] then asserts.Assert__string(struct["FunctionDefinitionVersionArn"]) end
-	if struct["DeviceDefinitionVersionArn"] then asserts.Assert__string(struct["DeviceDefinitionVersionArn"]) end
-	if struct["SubscriptionDefinitionVersionArn"] then asserts.Assert__string(struct["SubscriptionDefinitionVersionArn"]) end
+	assert(type(struct) == "table", "Expected GetResourceDefinitionResponse to be of type 'table'")
+	if struct["LatestVersionArn"] then asserts.Assert__string(struct["LatestVersionArn"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	if struct["LastUpdatedTimestamp"] then asserts.Assert__string(struct["LastUpdatedTimestamp"]) end
+	if struct["LatestVersion"] then asserts.Assert__string(struct["LatestVersion"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.GroupVersion[k], "GroupVersion contains unknown key " .. tostring(k))
+		assert(keys.GetResourceDefinitionResponse[k], "GetResourceDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type GroupVersion
--- Information on group version
+--- Create a structure of type GetResourceDefinitionResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CoreDefinitionVersionArn [__string] Core definition version arn for this group.
--- * LoggerDefinitionVersionArn [__string] Logger definitionv ersion arn for this group.
--- * FunctionDefinitionVersionArn [__string] Function definition version arn for this group.
--- * DeviceDefinitionVersionArn [__string] Device definition version arn for this group.
--- * SubscriptionDefinitionVersionArn [__string] Subscription definition version arn for this group.
--- @return GroupVersion structure as a key-value pair table
-function M.GroupVersion(args)
-	assert(args, "You must provide an argument table when creating GroupVersion")
+-- * LatestVersionArn [__string] The ARN of the latest version of the definition.
+-- * Name [__string] The name of the definition.
+-- * LastUpdatedTimestamp [__string] The time, in milliseconds since the epoch, when the definition was last updated.
+-- * LatestVersion [__string] The latest version of the definition.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the definition was created.
+-- * Id [__string] The ID of the definition.
+-- * Arn [__string] The ARN of the definition.
+-- @return GetResourceDefinitionResponse structure as a key-value pair table
+function M.GetResourceDefinitionResponse(args)
+	assert(args, "You must provide an argument table when creating GetResourceDefinitionResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -5620,13 +6964,15 @@ function M.GroupVersion(args)
     local header_args = { 
     }
 	local all_args = { 
-		["CoreDefinitionVersionArn"] = args["CoreDefinitionVersionArn"],
-		["LoggerDefinitionVersionArn"] = args["LoggerDefinitionVersionArn"],
-		["FunctionDefinitionVersionArn"] = args["FunctionDefinitionVersionArn"],
-		["DeviceDefinitionVersionArn"] = args["DeviceDefinitionVersionArn"],
-		["SubscriptionDefinitionVersionArn"] = args["SubscriptionDefinitionVersionArn"],
+		["LatestVersionArn"] = args["LatestVersionArn"],
+		["Name"] = args["Name"],
+		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
+		["LatestVersion"] = args["LatestVersion"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
-	asserts.AssertGroupVersion(all_args)
+	asserts.AssertGetResourceDefinitionResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5685,7 +7031,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * FunctionDefinitionId [__string] the unique Id of the lambda definition
+-- * FunctionDefinitionId [__string] The ID of the Lambda function definition.
 -- Required key: FunctionDefinitionId
 -- @return DeleteFunctionDefinitionRequest structure as a key-value pair table
 function M.DeleteFunctionDefinitionRequest(args)
@@ -5709,7 +7055,7 @@ function M.DeleteFunctionDefinitionRequest(args)
     }
 end
 
-keys.Deployment = { ["DeploymentId"] = true, ["DeploymentArn"] = true, ["GroupArn"] = true, ["CreatedAt"] = true, nil }
+keys.Deployment = { ["DeploymentId"] = true, ["DeploymentArn"] = true, ["GroupArn"] = true, ["CreatedAt"] = true, ["DeploymentType"] = true, nil }
 
 function asserts.AssertDeployment(struct)
 	assert(struct)
@@ -5718,19 +7064,21 @@ function asserts.AssertDeployment(struct)
 	if struct["DeploymentArn"] then asserts.Assert__string(struct["DeploymentArn"]) end
 	if struct["GroupArn"] then asserts.Assert__string(struct["GroupArn"]) end
 	if struct["CreatedAt"] then asserts.Assert__string(struct["CreatedAt"]) end
+	if struct["DeploymentType"] then asserts.AssertDeploymentType(struct["DeploymentType"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Deployment[k], "Deployment contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Deployment
--- Information on the deployment
+-- Information about a deployment.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DeploymentId [__string] Id of the deployment.
--- * DeploymentArn [__string] Arn of the deployment.
--- * GroupArn [__string] Arn of the group for this deployment.
--- * CreatedAt [__string] Timestamp when the deployment was created.
+-- * DeploymentId [__string] The ID of the deployment.
+-- * DeploymentArn [__string] The ARN of the deployment.
+-- * GroupArn [__string] The ARN of the group for this deployment.
+-- * CreatedAt [__string] The time, in milliseconds since the epoch, when the deployment was created.
+-- * DeploymentType [DeploymentType] The type of the deployment.
 -- @return Deployment structure as a key-value pair table
 function M.Deployment(args)
 	assert(args, "You must provide an argument table when creating Deployment")
@@ -5745,6 +7093,7 @@ function M.Deployment(args)
 		["DeploymentArn"] = args["DeploymentArn"],
 		["GroupArn"] = args["GroupArn"],
 		["CreatedAt"] = args["CreatedAt"],
+		["DeploymentType"] = args["DeploymentType"],
 	}
 	asserts.AssertDeployment(all_args)
 	return {
@@ -5772,9 +7121,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
--- * GroupId [__string] Id of the group the certificate configuration belongs to.
--- * CertificateAuthorityExpiryInMilliseconds [__string] Amount of time when the certificate authority expires in milliseconds.
+-- * CertificateExpiryInMilliseconds [__string] The amount of time remaining before the certificate expires, in milliseconds.
+-- * GroupId [__string] The ID of the group certificate configuration.
+-- * CertificateAuthorityExpiryInMilliseconds [__string] The amount of time remaining before the certificate authority expires, in milliseconds.
 -- @return GetGroupCertificateConfigurationResponse structure as a key-value pair table
 function M.GetGroupCertificateConfigurationResponse(args)
 	assert(args, "You must provide an argument table when creating GetGroupCertificateConfigurationResponse")
@@ -5790,43 +7139,6 @@ function M.GetGroupCertificateConfigurationResponse(args)
 		["CertificateAuthorityExpiryInMilliseconds"] = args["CertificateAuthorityExpiryInMilliseconds"],
 	}
 	asserts.AssertGetGroupCertificateConfigurationResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CreateGroupCertificateAuthorityResponse = { ["GroupCertificateAuthorityArn"] = true, nil }
-
-function asserts.AssertCreateGroupCertificateAuthorityResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CreateGroupCertificateAuthorityResponse to be of type 'table'")
-	if struct["GroupCertificateAuthorityArn"] then asserts.Assert__string(struct["GroupCertificateAuthorityArn"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.CreateGroupCertificateAuthorityResponse[k], "CreateGroupCertificateAuthorityResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CreateGroupCertificateAuthorityResponse
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * GroupCertificateAuthorityArn [__string] Arn of the group certificate authority.
--- @return CreateGroupCertificateAuthorityResponse structure as a key-value pair table
-function M.CreateGroupCertificateAuthorityResponse(args)
-	assert(args, "You must provide an argument table when creating CreateGroupCertificateAuthorityResponse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["GroupCertificateAuthorityArn"] = args["GroupCertificateAuthorityArn"],
-	}
-	asserts.AssertCreateGroupCertificateAuthorityResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5853,8 +7165,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DeploymentId [__string] the deployment Id
--- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- * DeploymentId [__string] The ID of the deployment.
+-- * GroupId [__string] The ID of the AWS Greengrass group.
 -- Required key: GroupId
 -- Required key: DeploymentId
 -- @return GetDeploymentStatusRequest structure as a key-value pair table
@@ -5881,22 +7193,26 @@ function M.GetDeploymentStatusRequest(args)
     }
 end
 
-keys.FunctionConfigurationEnvironment = { ["Variables"] = true, nil }
+keys.FunctionConfigurationEnvironment = { ["ResourceAccessPolicies"] = true, ["AccessSysfs"] = true, ["Variables"] = true, nil }
 
 function asserts.AssertFunctionConfigurationEnvironment(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FunctionConfigurationEnvironment to be of type 'table'")
-	if struct["Variables"] then asserts.AssertMapOf__string(struct["Variables"]) end
+	if struct["ResourceAccessPolicies"] then asserts.Assert__listOfResourceAccessPolicy(struct["ResourceAccessPolicies"]) end
+	if struct["AccessSysfs"] then asserts.Assert__boolean(struct["AccessSysfs"]) end
+	if struct["Variables"] then asserts.Assert__mapOf__string(struct["Variables"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.FunctionConfigurationEnvironment[k], "FunctionConfigurationEnvironment contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FunctionConfigurationEnvironment
--- Environment of the function configuration
+-- The environment configuration of the function.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Variables [MapOf__string] Environment variables for the lambda function.
+-- * ResourceAccessPolicies [__listOfResourceAccessPolicy] A list of the resources, with their permissions, to which the Lambda function will be granted access. A Lambda function can have at most 10 resources.
+-- * AccessSysfs [__boolean] If true, the Lambda function is allowed to access the host's /sys folder. Use this when the Lambda function needs to read device information from /sys.
+-- * Variables [__mapOf__string] Environment variables for the Lambda function's configuration.
 -- @return FunctionConfigurationEnvironment structure as a key-value pair table
 function M.FunctionConfigurationEnvironment(args)
 	assert(args, "You must provide an argument table when creating FunctionConfigurationEnvironment")
@@ -5907,6 +7223,8 @@ function M.FunctionConfigurationEnvironment(args)
     local header_args = { 
     }
 	local all_args = { 
+		["ResourceAccessPolicies"] = args["ResourceAccessPolicies"],
+		["AccessSysfs"] = args["AccessSysfs"],
 		["Variables"] = args["Variables"],
 	}
 	asserts.AssertFunctionConfigurationEnvironment(all_args)
@@ -5918,29 +7236,33 @@ function M.FunctionConfigurationEnvironment(args)
     }
 end
 
-keys.Function = { ["FunctionConfiguration"] = true, ["Id"] = true, ["FunctionArn"] = true, nil }
+keys.Logger = { ["Type"] = true, ["Space"] = true, ["Component"] = true, ["Id"] = true, ["Level"] = true, nil }
 
-function asserts.AssertFunction(struct)
+function asserts.AssertLogger(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected Function to be of type 'table'")
-	if struct["FunctionConfiguration"] then asserts.AssertFunctionConfiguration(struct["FunctionConfiguration"]) end
+	assert(type(struct) == "table", "Expected Logger to be of type 'table'")
+	if struct["Type"] then asserts.AssertLoggerType(struct["Type"]) end
+	if struct["Space"] then asserts.Assert__integer(struct["Space"]) end
+	if struct["Component"] then asserts.AssertLoggerComponent(struct["Component"]) end
 	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
-	if struct["FunctionArn"] then asserts.Assert__string(struct["FunctionArn"]) end
+	if struct["Level"] then asserts.AssertLoggerLevel(struct["Level"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.Function[k], "Function contains unknown key " .. tostring(k))
+		assert(keys.Logger[k], "Logger contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type Function
--- Information on function
+--- Create a structure of type Logger
+-- Information about a logger
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * FunctionConfiguration [FunctionConfiguration] Configuration of the function
--- * Id [__string] Id of the function in this version.
--- * FunctionArn [__string] Arn of the Lambda function.
--- @return Function structure as a key-value pair table
-function M.Function(args)
-	assert(args, "You must provide an argument table when creating Function")
+-- * Type [LoggerType] The type of log output which will be used.
+-- * Space [__integer] The amount of file space, in KB, to use if the local file system is used for logging purposes.
+-- * Component [LoggerComponent] The component that will be subject to logging.
+-- * Id [__string] A descriptive or arbitrary ID for the logger. This value must be unique within the logger definition version. Max length is 128 characters with pattern ''[a&#8209;zA&#8209;Z0&#8209;9:_&#8209;]+''.
+-- * Level [LoggerLevel] The level of the logs.
+-- @return Logger structure as a key-value pair table
+function M.Logger(args)
+	assert(args, "You must provide an argument table when creating Logger")
     local query_args = { 
     }
     local uri_args = { 
@@ -5948,11 +7270,13 @@ function M.Function(args)
     local header_args = { 
     }
 	local all_args = { 
-		["FunctionConfiguration"] = args["FunctionConfiguration"],
+		["Type"] = args["Type"],
+		["Space"] = args["Space"],
+		["Component"] = args["Component"],
 		["Id"] = args["Id"],
-		["FunctionArn"] = args["FunctionArn"],
+		["Level"] = args["Level"],
 	}
-	asserts.AssertFunction(all_args)
+	asserts.AssertLogger(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5961,13 +7285,66 @@ function M.Function(args)
     }
 end
 
-keys.CreateGroupVersionRequest = { ["AmznClientToken"] = true, ["DeviceDefinitionVersionArn"] = true, ["SubscriptionDefinitionVersionArn"] = true, ["FunctionDefinitionVersionArn"] = true, ["CoreDefinitionVersionArn"] = true, ["LoggerDefinitionVersionArn"] = true, ["GroupId"] = true, nil }
+keys.GetFunctionDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["NextToken"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
+
+function asserts.AssertGetFunctionDefinitionVersionResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetFunctionDefinitionVersionResponse to be of type 'table'")
+	if struct["Definition"] then asserts.AssertFunctionDefinitionVersion(struct["Definition"]) end
+	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetFunctionDefinitionVersionResponse[k], "GetFunctionDefinitionVersionResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetFunctionDefinitionVersionResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Definition [FunctionDefinitionVersion] Information on the definition.
+-- * Version [__string] The version of the function definition version.
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the function definition version was created.
+-- * Id [__string] The ID of the function definition version.
+-- * Arn [__string] The ARN of the function definition version.
+-- @return GetFunctionDefinitionVersionResponse structure as a key-value pair table
+function M.GetFunctionDefinitionVersionResponse(args)
+	assert(args, "You must provide an argument table when creating GetFunctionDefinitionVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Definition"] = args["Definition"],
+		["Version"] = args["Version"],
+		["NextToken"] = args["NextToken"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
+	}
+	asserts.AssertGetFunctionDefinitionVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateGroupVersionRequest = { ["AmznClientToken"] = true, ["ResourceDefinitionVersionArn"] = true, ["DeviceDefinitionVersionArn"] = true, ["SubscriptionDefinitionVersionArn"] = true, ["FunctionDefinitionVersionArn"] = true, ["CoreDefinitionVersionArn"] = true, ["LoggerDefinitionVersionArn"] = true, ["GroupId"] = true, nil }
 
 function asserts.AssertCreateGroupVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateGroupVersionRequest to be of type 'table'")
 	assert(struct["GroupId"], "Expected key GroupId to exist in table")
 	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
+	if struct["ResourceDefinitionVersionArn"] then asserts.Assert__string(struct["ResourceDefinitionVersionArn"]) end
 	if struct["DeviceDefinitionVersionArn"] then asserts.Assert__string(struct["DeviceDefinitionVersionArn"]) end
 	if struct["SubscriptionDefinitionVersionArn"] then asserts.Assert__string(struct["SubscriptionDefinitionVersionArn"]) end
 	if struct["FunctionDefinitionVersionArn"] then asserts.Assert__string(struct["FunctionDefinitionVersionArn"]) end
@@ -5983,13 +7360,14 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AmznClientToken [__string] The client token used to request idempotent operations.
--- * DeviceDefinitionVersionArn [__string] Device definition version arn for this group.
--- * SubscriptionDefinitionVersionArn [__string] Subscription definition version arn for this group.
--- * FunctionDefinitionVersionArn [__string] Function definition version arn for this group.
--- * CoreDefinitionVersionArn [__string] Core definition version arn for this group.
--- * LoggerDefinitionVersionArn [__string] Logger definitionv ersion arn for this group.
--- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
+-- * ResourceDefinitionVersionArn [__string] The resource definition version ARN for this group.
+-- * DeviceDefinitionVersionArn [__string] The ARN of the device definition version for this group.
+-- * SubscriptionDefinitionVersionArn [__string] The ARN of the subscription definition version for this group.
+-- * FunctionDefinitionVersionArn [__string] The ARN of the function definition version for this group.
+-- * CoreDefinitionVersionArn [__string] The ARN of the core definition version for this group.
+-- * LoggerDefinitionVersionArn [__string] The ARN of the logger definition version for this group.
+-- * GroupId [__string] The ID of the AWS Greengrass group.
 -- Required key: GroupId
 -- @return CreateGroupVersionRequest structure as a key-value pair table
 function M.CreateGroupVersionRequest(args)
@@ -6004,6 +7382,7 @@ function M.CreateGroupVersionRequest(args)
     }
 	local all_args = { 
 		["AmznClientToken"] = args["AmznClientToken"],
+		["ResourceDefinitionVersionArn"] = args["ResourceDefinitionVersionArn"],
 		["DeviceDefinitionVersionArn"] = args["DeviceDefinitionVersionArn"],
 		["SubscriptionDefinitionVersionArn"] = args["SubscriptionDefinitionVersionArn"],
 		["FunctionDefinitionVersionArn"] = args["FunctionDefinitionVersionArn"],
@@ -6054,6 +7433,46 @@ function M.DeleteGroupResponse(args)
     }
 end
 
+keys.LocalDeviceResourceData = { ["SourcePath"] = true, ["GroupOwnerSetting"] = true, nil }
+
+function asserts.AssertLocalDeviceResourceData(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LocalDeviceResourceData to be of type 'table'")
+	if struct["SourcePath"] then asserts.Assert__string(struct["SourcePath"]) end
+	if struct["GroupOwnerSetting"] then asserts.AssertGroupOwnerSetting(struct["GroupOwnerSetting"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.LocalDeviceResourceData[k], "LocalDeviceResourceData contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LocalDeviceResourceData
+-- Attributes that define a local device resource.
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourcePath [__string] The local absolute path of the device resource. The source path for a device resource can refer only to a character device or block device under ''/dev''.
+-- * GroupOwnerSetting [GroupOwnerSetting] Group/owner related settings for local resources.
+-- @return LocalDeviceResourceData structure as a key-value pair table
+function M.LocalDeviceResourceData(args)
+	assert(args, "You must provide an argument table when creating LocalDeviceResourceData")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SourcePath"] = args["SourcePath"],
+		["GroupOwnerSetting"] = args["GroupOwnerSetting"],
+	}
+	asserts.AssertLocalDeviceResourceData(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.CreateFunctionDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
 function asserts.AssertCreateFunctionDefinitionResponse(struct)
@@ -6075,13 +7494,13 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LatestVersionArn [__string] Latest version arn of the definition.
--- * Name [__string] Name of the definition.
--- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- * LatestVersion [__string] Last version of the definition.
--- * CreationTimestamp [__string] Timestamp of when the definition was created.
--- * Id [__string] Id of the definition.
--- * Arn [__string] Arn of the definition.
+-- * LatestVersionArn [__string] The ARN of the latest version of the definition.
+-- * Name [__string] The name of the definition.
+-- * LastUpdatedTimestamp [__string] The time, in milliseconds since the epoch, when the definition was last updated.
+-- * LatestVersion [__string] The latest version of the definition.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the definition was created.
+-- * Id [__string] The ID of the definition.
+-- * Arn [__string] The ARN of the definition.
 -- @return CreateFunctionDefinitionResponse structure as a key-value pair table
 function M.CreateFunctionDefinitionResponse(args)
 	assert(args, "You must provide an argument table when creating CreateFunctionDefinitionResponse")
@@ -6109,6 +7528,48 @@ function M.CreateFunctionDefinitionResponse(args)
     }
 end
 
+keys.ListResourceDefinitionsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
+
+function asserts.AssertListResourceDefinitionsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListResourceDefinitionsRequest to be of type 'table'")
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.Assert__string(struct["MaxResults"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListResourceDefinitionsRequest[k], "ListResourceDefinitionsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListResourceDefinitionsRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * MaxResults [__string] The maximum number of results to be returned per request.
+-- @return ListResourceDefinitionsRequest structure as a key-value pair table
+function M.ListResourceDefinitionsRequest(args)
+	assert(args, "You must provide an argument table when creating ListResourceDefinitionsRequest")
+    local query_args = { 
+        ["NextToken"] = args["NextToken"],
+        ["MaxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+	}
+	asserts.AssertListResourceDefinitionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.AssociateRoleToGroupResponse = { ["AssociatedAt"] = true, nil }
 
 function asserts.AssertAssociateRoleToGroupResponse(struct)
@@ -6124,7 +7585,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AssociatedAt [__string] Time the role arn was associated to your group.
+-- * AssociatedAt [__string] The time, in milliseconds since the epoch, when the role ARN was associated with the group.
 -- @return AssociateRoleToGroupResponse structure as a key-value pair table
 function M.AssociateRoleToGroupResponse(args)
 	assert(args, "You must provide an argument table when creating AssociateRoleToGroupResponse")
@@ -6167,13 +7628,13 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LatestVersionArn [__string] Latest version arn of the definition.
--- * Name [__string] Name of the definition.
--- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- * LatestVersion [__string] Last version of the definition.
--- * CreationTimestamp [__string] Timestamp of when the definition was created.
--- * Id [__string] Id of the definition.
--- * Arn [__string] Arn of the definition.
+-- * LatestVersionArn [__string] The ARN of the latest version of the definition.
+-- * Name [__string] The name of the definition.
+-- * LastUpdatedTimestamp [__string] The time, in milliseconds since the epoch, when the definition was last updated.
+-- * LatestVersion [__string] The latest version of the definition.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the definition was created.
+-- * Id [__string] The ID of the definition.
+-- * Arn [__string] The ARN of the definition.
 -- @return CreateLoggerDefinitionResponse structure as a key-value pair table
 function M.CreateLoggerDefinitionResponse(args)
 	assert(args, "You must provide an argument table when creating CreateLoggerDefinitionResponse")
@@ -6201,6 +7662,90 @@ function M.CreateLoggerDefinitionResponse(args)
     }
 end
 
+keys.DeleteResourceDefinitionRequest = { ["ResourceDefinitionId"] = true, nil }
+
+function asserts.AssertDeleteResourceDefinitionRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteResourceDefinitionRequest to be of type 'table'")
+	assert(struct["ResourceDefinitionId"], "Expected key ResourceDefinitionId to exist in table")
+	if struct["ResourceDefinitionId"] then asserts.Assert__string(struct["ResourceDefinitionId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteResourceDefinitionRequest[k], "DeleteResourceDefinitionRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteResourceDefinitionRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceDefinitionId [__string] The ID of the resource definition.
+-- Required key: ResourceDefinitionId
+-- @return DeleteResourceDefinitionRequest structure as a key-value pair table
+function M.DeleteResourceDefinitionRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteResourceDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{ResourceDefinitionId}"] = args["ResourceDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceDefinitionId"] = args["ResourceDefinitionId"],
+	}
+	asserts.AssertDeleteResourceDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateResourceDefinitionRequest = { ["AmznClientToken"] = true, ["InitialVersion"] = true, ["Name"] = true, nil }
+
+function asserts.AssertCreateResourceDefinitionRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateResourceDefinitionRequest to be of type 'table'")
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
+	if struct["InitialVersion"] then asserts.AssertResourceDefinitionVersion(struct["InitialVersion"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateResourceDefinitionRequest[k], "CreateResourceDefinitionRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateResourceDefinitionRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
+-- * InitialVersion [ResourceDefinitionVersion] Information about the initial version of the resource definition.
+-- * Name [__string] The name of the resource definition.
+-- @return CreateResourceDefinitionRequest structure as a key-value pair table
+function M.CreateResourceDefinitionRequest(args)
+	assert(args, "You must provide an argument table when creating CreateResourceDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
+    }
+	local all_args = { 
+		["AmznClientToken"] = args["AmznClientToken"],
+		["InitialVersion"] = args["InitialVersion"],
+		["Name"] = args["Name"],
+	}
+	asserts.AssertCreateResourceDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.UpdateConnectivityInfoResponse = { ["Message"] = true, ["Version"] = true, nil }
 
 function asserts.AssertUpdateConnectivityInfoResponse(struct)
@@ -6217,8 +7762,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [__string] Response Text
--- * Version [__string] New Version
+-- * Message [__string] A message about the connectivity info update request.
+-- * Version [__string] The new version of the connectivity info.
 -- @return UpdateConnectivityInfoResponse structure as a key-value pair table
 function M.UpdateConnectivityInfoResponse(args)
 	assert(args, "You must provide an argument table when creating UpdateConnectivityInfoResponse")
@@ -6249,7 +7794,7 @@ function asserts.AssertCreateDeviceDefinitionVersionRequest(struct)
 	assert(struct["DeviceDefinitionId"], "Expected key DeviceDefinitionId to exist in table")
 	if struct["DeviceDefinitionId"] then asserts.Assert__string(struct["DeviceDefinitionId"]) end
 	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
-	if struct["Devices"] then asserts.AssertListOfDevice(struct["Devices"]) end
+	if struct["Devices"] then asserts.Assert__listOfDevice(struct["Devices"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateDeviceDefinitionVersionRequest[k], "CreateDeviceDefinitionVersionRequest contains unknown key " .. tostring(k))
 	end
@@ -6259,9 +7804,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DeviceDefinitionId [__string] device definition Id
--- * AmznClientToken [__string] The client token used to request idempotent operations.
--- * Devices [ListOfDevice] Devices in the definition version.
+-- * DeviceDefinitionId [__string] The ID of the device definition.
+-- * AmznClientToken [__string] A client token used to correlate requests and responses.
+-- * Devices [__listOfDevice] A list of devices in the definition version.
 -- Required key: DeviceDefinitionId
 -- @return CreateDeviceDefinitionVersionRequest structure as a key-value pair table
 function M.CreateDeviceDefinitionVersionRequest(args)
@@ -6307,11 +7852,11 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Definition [LoggerDefinitionVersion] Information on definition
--- * Version [__string] Version of the logger definition version.
--- * CreationTimestamp [__string] Timestamp of when the logger definition version was created.
--- * Id [__string] Id of the logger definition the version belongs to.
--- * Arn [__string] Arn of the logger definition version.
+-- * Definition [LoggerDefinitionVersion] Information about the logger definition version.
+-- * Version [__string] The version of the logger definition version.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the logger definition version was created.
+-- * Id [__string] The ID of the logger definition version.
+-- * Arn [__string] The ARN of the logger definition version.
 -- @return GetLoggerDefinitionVersionResponse structure as a key-value pair table
 function M.GetLoggerDefinitionVersionResponse(args)
 	assert(args, "You must provide an argument table when creating GetLoggerDefinitionVersionResponse")
@@ -6387,8 +7932,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * MaxResults [__string] The maximum number of results to be returned per request.
 -- @return ListFunctionDefinitionsRequest structure as a key-value pair table
 function M.ListFunctionDefinitionsRequest(args)
 	assert(args, "You must provide an argument table when creating ListFunctionDefinitionsRequest")
@@ -6419,7 +7964,7 @@ function asserts.AssertListLoggerDefinitionVersionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListLoggerDefinitionVersionsResponse to be of type 'table'")
 	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
-	if struct["Versions"] then asserts.AssertListOfVersionInformation(struct["Versions"]) end
+	if struct["Versions"] then asserts.Assert__listOfVersionInformation(struct["Versions"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListLoggerDefinitionVersionsResponse[k], "ListLoggerDefinitionVersionsResponse contains unknown key " .. tostring(k))
 	end
@@ -6430,7 +7975,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- * Versions [ListOfVersionInformation] Versions
+-- * Versions [__listOfVersionInformation] Information about a version.
 -- @return ListLoggerDefinitionVersionsResponse structure as a key-value pair table
 function M.ListLoggerDefinitionVersionsResponse(args)
 	assert(args, "You must provide an argument table when creating ListLoggerDefinitionVersionsResponse")
@@ -6469,8 +8014,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AssociatedAt [__string] Time when the service role was associated to the account.
--- * RoleArn [__string] Role arn which is associated to the account.
+-- * AssociatedAt [__string] The time when the service role was associated with the account.
+-- * RoleArn [__string] The ARN of the role which is associated with the account.
 -- @return GetServiceRoleForAccountResponse structure as a key-value pair table
 function M.GetServiceRoleForAccountResponse(args)
 	assert(args, "You must provide an argument table when creating GetServiceRoleForAccountResponse")
@@ -6485,6 +8030,52 @@ function M.GetServiceRoleForAccountResponse(args)
 		["RoleArn"] = args["RoleArn"],
 	}
 	asserts.AssertGetServiceRoleForAccountResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetResourceDefinitionVersionRequest = { ["ResourceDefinitionId"] = true, ["ResourceDefinitionVersionId"] = true, nil }
+
+function asserts.AssertGetResourceDefinitionVersionRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetResourceDefinitionVersionRequest to be of type 'table'")
+	assert(struct["ResourceDefinitionVersionId"], "Expected key ResourceDefinitionVersionId to exist in table")
+	assert(struct["ResourceDefinitionId"], "Expected key ResourceDefinitionId to exist in table")
+	if struct["ResourceDefinitionId"] then asserts.Assert__string(struct["ResourceDefinitionId"]) end
+	if struct["ResourceDefinitionVersionId"] then asserts.Assert__string(struct["ResourceDefinitionVersionId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetResourceDefinitionVersionRequest[k], "GetResourceDefinitionVersionRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetResourceDefinitionVersionRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceDefinitionId [__string] The ID of the resource definition.
+-- * ResourceDefinitionVersionId [__string] The ID of the resource definition version.
+-- Required key: ResourceDefinitionVersionId
+-- Required key: ResourceDefinitionId
+-- @return GetResourceDefinitionVersionRequest structure as a key-value pair table
+function M.GetResourceDefinitionVersionRequest(args)
+	assert(args, "You must provide an argument table when creating GetResourceDefinitionVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{ResourceDefinitionId}"] = args["ResourceDefinitionId"],
+        ["{ResourceDefinitionVersionId}"] = args["ResourceDefinitionVersionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceDefinitionId"] = args["ResourceDefinitionId"],
+		["ResourceDefinitionVersionId"] = args["ResourceDefinitionVersionId"],
+	}
+	asserts.AssertGetResourceDefinitionVersionRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6509,7 +8100,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LoggerDefinitionId [__string] logger definition Id
+-- * LoggerDefinitionId [__string] The ID of the logger definition.
 -- Required key: LoggerDefinitionId
 -- @return GetLoggerDefinitionRequest structure as a key-value pair table
 function M.GetLoggerDefinitionRequest(args)
@@ -6551,8 +8142,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GroupId [__string] The unique Id of the AWS Greengrass Group
--- * GroupVersionId [__string] Group version Id
+-- * GroupId [__string] The ID of the AWS Greengrass group.
+-- * GroupVersionId [__string] The ID of the group version.
 -- Required key: GroupVersionId
 -- Required key: GroupId
 -- @return GetGroupVersionRequest structure as a key-value pair table
@@ -6596,7 +8187,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- * Deployments [Deployments] Information on deployments
+-- * Deployments [Deployments] A list of deployments for the requested groups.
 -- @return ListDeploymentsResponse structure as a key-value pair table
 function M.ListDeploymentsResponse(args)
 	assert(args, "You must provide an argument table when creating ListDeploymentsResponse")
@@ -6625,7 +8216,7 @@ function asserts.AssertListDeviceDefinitionVersionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListDeviceDefinitionVersionsResponse to be of type 'table'")
 	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
-	if struct["Versions"] then asserts.AssertListOfVersionInformation(struct["Versions"]) end
+	if struct["Versions"] then asserts.Assert__listOfVersionInformation(struct["Versions"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListDeviceDefinitionVersionsResponse[k], "ListDeviceDefinitionVersionsResponse contains unknown key " .. tostring(k))
 	end
@@ -6636,7 +8227,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- * Versions [ListOfVersionInformation] Versions
+-- * Versions [__listOfVersionInformation] Information about a version.
 -- @return ListDeviceDefinitionVersionsResponse structure as a key-value pair table
 function M.ListDeviceDefinitionVersionsResponse(args)
 	assert(args, "You must provide an argument table when creating ListDeviceDefinitionVersionsResponse")
@@ -6680,13 +8271,13 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LatestVersionArn [__string] Latest version arn of the definition.
--- * Name [__string] Name of the definition.
--- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- * LatestVersion [__string] Last version of the definition.
--- * CreationTimestamp [__string] Timestamp of when the definition was created.
--- * Id [__string] Id of the definition.
--- * Arn [__string] Arn of the definition.
+-- * LatestVersionArn [__string] The ARN of the latest version of the definition.
+-- * Name [__string] The name of the definition.
+-- * LastUpdatedTimestamp [__string] The time, in milliseconds since the epoch, when the definition was last updated.
+-- * LatestVersion [__string] The latest version of the definition.
+-- * CreationTimestamp [__string] The time, in milliseconds since the epoch, when the definition was created.
+-- * Id [__string] The ID of the definition.
+-- * Arn [__string] The ARN of the definition.
 -- @return CreateGroupResponse structure as a key-value pair table
 function M.CreateGroupResponse(args)
 	assert(args, "You must provide an argument table when creating CreateGroupResponse")
@@ -6714,6 +8305,61 @@ function M.CreateGroupResponse(args)
     }
 end
 
+function asserts.AssertBulkDeploymentStatus(str)
+	assert(str)
+	assert(type(str) == "string", "Expected BulkDeploymentStatus to be of type 'string'")
+end
+
+-- The current status of the bulk deployment.
+function M.BulkDeploymentStatus(str)
+	asserts.AssertBulkDeploymentStatus(str)
+	return str
+end
+
+function asserts.AssertUpdateTargetsArchitecture(str)
+	assert(str)
+	assert(type(str) == "string", "Expected UpdateTargetsArchitecture to be of type 'string'")
+end
+
+-- The architecture of the cores which are the targets of an update.
+function M.UpdateTargetsArchitecture(str)
+	asserts.AssertUpdateTargetsArchitecture(str)
+	return str
+end
+
+function asserts.AssertUpdateAgentLogLevel(str)
+	assert(str)
+	assert(type(str) == "string", "Expected UpdateAgentLogLevel to be of type 'string'")
+end
+
+-- The minimum level of log statements that should be logged by the OTA Agent during an update.
+function M.UpdateAgentLogLevel(str)
+	asserts.AssertUpdateAgentLogLevel(str)
+	return str
+end
+
+function asserts.AssertUpdateTargetsOperatingSystem(str)
+	assert(str)
+	assert(type(str) == "string", "Expected UpdateTargetsOperatingSystem to be of type 'string'")
+end
+
+-- The operating system of the cores which are the targets of an update.
+function M.UpdateTargetsOperatingSystem(str)
+	asserts.AssertUpdateTargetsOperatingSystem(str)
+	return str
+end
+
+function asserts.AssertPermission(str)
+	assert(str)
+	assert(type(str) == "string", "Expected Permission to be of type 'string'")
+end
+
+-- The type of permission a function has to access a resource.
+function M.Permission(str)
+	asserts.AssertPermission(str)
+	return str
+end
+
 function asserts.AssertLoggerLevel(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LoggerLevel to be of type 'string'")
@@ -6722,6 +8368,17 @@ end
 --  
 function M.LoggerLevel(str)
 	asserts.AssertLoggerLevel(str)
+	return str
+end
+
+function asserts.AssertSoftwareToUpdate(str)
+	assert(str)
+	assert(type(str) == "string", "Expected SoftwareToUpdate to be of type 'string'")
+end
+
+-- The piece of software on the Greengrass core that will be updated.
+function M.SoftwareToUpdate(str)
+	asserts.AssertSoftwareToUpdate(str)
 	return str
 end
 
@@ -6736,14 +8393,36 @@ function M.LoggerComponent(str)
 	return str
 end
 
+function asserts.AssertLoggerType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected LoggerType to be of type 'string'")
+end
+
+--  
+function M.LoggerType(str)
+	asserts.AssertLoggerType(str)
+	return str
+end
+
 function asserts.AssertDeploymentType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DeploymentType to be of type 'string'")
 end
 
---  
+-- The type of deployment.
 function M.DeploymentType(str)
 	asserts.AssertDeploymentType(str)
+	return str
+end
+
+function asserts.AssertS3UrlSignerRole(str)
+	assert(str)
+	assert(type(str) == "string", "Expected S3UrlSignerRole to be of type 'string'")
+end
+
+-- The IAM Role that Greengrass will use to create pre-signed URLs pointing towards the update artifact.
+function M.S3UrlSignerRole(str)
+	asserts.AssertS3UrlSignerRole(str)
 	return str
 end
 
@@ -6758,25 +8437,15 @@ function M.__string(str)
 	return str
 end
 
-function asserts.AssertLoggerType(str)
+function asserts.AssertEncodingType(str)
 	assert(str)
-	assert(type(str) == "string", "Expected LoggerType to be of type 'string'")
+	assert(type(str) == "string", "Expected EncodingType to be of type 'string'")
 end
 
 --  
-function M.LoggerType(str)
-	asserts.AssertLoggerType(str)
+function M.EncodingType(str)
+	asserts.AssertEncodingType(str)
 	return str
-end
-
-function asserts.Assert__double(double)
-	assert(double)
-	assert(type(double) == "number", "Expected __double to be of type 'number'")
-end
-
-function M.__double(double)
-	asserts.Assert__double(double)
-	return double
 end
 
 function asserts.Assert__integer(integer)
@@ -6800,42 +8469,62 @@ function M.__boolean(boolean)
 	return boolean
 end
 
-function asserts.AssertMapOf__string(map)
+function asserts.Assert__mapOf__string(map)
 	assert(map)
-	assert(type(map) == "table", "Expected MapOf__string to be of type 'table'")
+	assert(type(map) == "table", "Expected __mapOf__string to be of type 'table'")
 	for k,v in pairs(map) do
 		asserts.Assert__string(k)
 		asserts.Assert__string(v)
 	end
 end
 
-function M.MapOf__string(map)
-	asserts.AssertMapOf__string(map)
+function M.__mapOf__string(map)
+	asserts.Assert__mapOf__string(map)
 	return map
 end
 
-function asserts.Assert__timestamp(timestamp)
-	assert(timestamp)
-	assert(type(timestamp) == "string", "Expected __timestamp to be of type 'string'")
-end
-
-function M.__timestamp(timestamp)
-	asserts.Assert__timestamp(timestamp)
-	return timestamp
-end
-
-function asserts.AssertListOfLogger(list)
+function asserts.Assert__listOfFunction(list)
 	assert(list)
-	assert(type(list) == "table", "Expected ListOfLogger to be of type ''table")
+	assert(type(list) == "table", "Expected __listOfFunction to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertLogger(v)
+		asserts.AssertFunction(v)
 	end
 end
 
 --  
--- List of Logger objects
-function M.ListOfLogger(list)
-	asserts.AssertListOfLogger(list)
+-- List of Function objects
+function M.__listOfFunction(list)
+	asserts.Assert__listOfFunction(list)
+	return list
+end
+
+function asserts.Assert__listOfDevice(list)
+	assert(list)
+	assert(type(list) == "table", "Expected __listOfDevice to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertDevice(v)
+	end
+end
+
+--  
+-- List of Device objects
+function M.__listOfDevice(list)
+	asserts.Assert__listOfDevice(list)
+	return list
+end
+
+function asserts.Assert__listOfConnectivityInfo(list)
+	assert(list)
+	assert(type(list) == "table", "Expected __listOfConnectivityInfo to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertConnectivityInfo(v)
+	end
+end
+
+--  
+-- List of ConnectivityInfo objects
+function M.__listOfConnectivityInfo(list)
+	asserts.Assert__listOfConnectivityInfo(list)
 	return list
 end
 
@@ -6854,39 +8543,69 @@ function M.Deployments(list)
 	return list
 end
 
-function asserts.AssertListOfCore(list)
+function asserts.Assert__listOfResourceAccessPolicy(list)
 	assert(list)
-	assert(type(list) == "table", "Expected ListOfCore to be of type ''table")
+	assert(type(list) == "table", "Expected __listOfResourceAccessPolicy to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertCore(v)
+		asserts.AssertResourceAccessPolicy(v)
 	end
 end
 
 --  
--- List of Core objects
-function M.ListOfCore(list)
-	asserts.AssertListOfCore(list)
+-- List of ResourceAccessPolicy objects
+function M.__listOfResourceAccessPolicy(list)
+	asserts.Assert__listOfResourceAccessPolicy(list)
 	return list
 end
 
-function asserts.AssertListOfFunction(list)
+function asserts.Assert__listOfLogger(list)
 	assert(list)
-	assert(type(list) == "table", "Expected ListOfFunction to be of type ''table")
+	assert(type(list) == "table", "Expected __listOfLogger to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertFunction(v)
+		asserts.AssertLogger(v)
 	end
 end
 
 --  
--- List of Function objects
-function M.ListOfFunction(list)
-	asserts.AssertListOfFunction(list)
+-- List of Logger objects
+function M.__listOfLogger(list)
+	asserts.Assert__listOfLogger(list)
 	return list
 end
 
-function asserts.AssertListOfGroupInformation(list)
+function asserts.Assert__listOfVersionInformation(list)
 	assert(list)
-	assert(type(list) == "table", "Expected ListOfGroupInformation to be of type ''table")
+	assert(type(list) == "table", "Expected __listOfVersionInformation to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertVersionInformation(v)
+	end
+end
+
+--  
+-- List of VersionInformation objects
+function M.__listOfVersionInformation(list)
+	asserts.Assert__listOfVersionInformation(list)
+	return list
+end
+
+function asserts.Assert__listOfDefinitionInformation(list)
+	assert(list)
+	assert(type(list) == "table", "Expected __listOfDefinitionInformation to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertDefinitionInformation(v)
+	end
+end
+
+--  
+-- List of DefinitionInformation objects
+function M.__listOfDefinitionInformation(list)
+	asserts.Assert__listOfDefinitionInformation(list)
+	return list
+end
+
+function asserts.Assert__listOfGroupInformation(list)
+	assert(list)
+	assert(type(list) == "table", "Expected __listOfGroupInformation to be of type ''table")
 	for _,v in ipairs(list) do
 		asserts.AssertGroupInformation(v)
 	end
@@ -6894,8 +8613,8 @@ end
 
 --  
 -- List of GroupInformation objects
-function M.ListOfGroupInformation(list)
-	asserts.AssertListOfGroupInformation(list)
+function M.__listOfGroupInformation(list)
+	asserts.Assert__listOfGroupInformation(list)
 	return list
 end
 
@@ -6907,61 +8626,31 @@ function asserts.AssertErrorDetails(list)
 	end
 end
 
--- Error Details
+-- A list of error details.
 -- List of ErrorDetail objects
 function M.ErrorDetails(list)
 	asserts.AssertErrorDetails(list)
 	return list
 end
 
-function asserts.AssertListOfDefinitionInformation(list)
+function asserts.AssertBulkDeploymentResults(list)
 	assert(list)
-	assert(type(list) == "table", "Expected ListOfDefinitionInformation to be of type ''table")
+	assert(type(list) == "table", "Expected BulkDeploymentResults to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertDefinitionInformation(v)
+		asserts.AssertBulkDeploymentResult(v)
 	end
 end
 
 --  
--- List of DefinitionInformation objects
-function M.ListOfDefinitionInformation(list)
-	asserts.AssertListOfDefinitionInformation(list)
+-- List of BulkDeploymentResult objects
+function M.BulkDeploymentResults(list)
+	asserts.AssertBulkDeploymentResults(list)
 	return list
 end
 
-function asserts.AssertListOfDevice(list)
+function asserts.Assert__listOfSubscription(list)
 	assert(list)
-	assert(type(list) == "table", "Expected ListOfDevice to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertDevice(v)
-	end
-end
-
---  
--- List of Device objects
-function M.ListOfDevice(list)
-	asserts.AssertListOfDevice(list)
-	return list
-end
-
-function asserts.AssertListOfConnectivityInfo(list)
-	assert(list)
-	assert(type(list) == "table", "Expected ListOfConnectivityInfo to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertConnectivityInfo(v)
-	end
-end
-
---  
--- List of ConnectivityInfo objects
-function M.ListOfConnectivityInfo(list)
-	asserts.AssertListOfConnectivityInfo(list)
-	return list
-end
-
-function asserts.AssertListOfSubscription(list)
-	assert(list)
-	assert(type(list) == "table", "Expected ListOfSubscription to be of type ''table")
+	assert(type(list) == "table", "Expected __listOfSubscription to be of type ''table")
 	for _,v in ipairs(list) do
 		asserts.AssertSubscription(v)
 	end
@@ -6969,29 +8658,74 @@ end
 
 --  
 -- List of Subscription objects
-function M.ListOfSubscription(list)
-	asserts.AssertListOfSubscription(list)
+function M.__listOfSubscription(list)
+	asserts.Assert__listOfSubscription(list)
 	return list
 end
 
-function asserts.AssertListOfVersionInformation(list)
+function asserts.Assert__listOfCore(list)
 	assert(list)
-	assert(type(list) == "table", "Expected ListOfVersionInformation to be of type ''table")
+	assert(type(list) == "table", "Expected __listOfCore to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertVersionInformation(v)
+		asserts.AssertCore(v)
 	end
 end
 
 --  
--- List of VersionInformation objects
-function M.ListOfVersionInformation(list)
-	asserts.AssertListOfVersionInformation(list)
+-- List of Core objects
+function M.__listOfCore(list)
+	asserts.Assert__listOfCore(list)
 	return list
 end
 
-function asserts.AssertListOfGroupCertificateAuthorityProperties(list)
+function asserts.Assert__listOfResource(list)
 	assert(list)
-	assert(type(list) == "table", "Expected ListOfGroupCertificateAuthorityProperties to be of type ''table")
+	assert(type(list) == "table", "Expected __listOfResource to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertResource(v)
+	end
+end
+
+--  
+-- List of Resource objects
+function M.__listOfResource(list)
+	asserts.Assert__listOfResource(list)
+	return list
+end
+
+function asserts.AssertUpdateTargets(list)
+	assert(list)
+	assert(type(list) == "table", "Expected UpdateTargets to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.Assert__string(v)
+	end
+end
+
+-- The ARNs of the targets (IoT things or IoT thing groups) that this update will be applied to.
+-- List of __string objects
+function M.UpdateTargets(list)
+	asserts.AssertUpdateTargets(list)
+	return list
+end
+
+function asserts.AssertBulkDeployments(list)
+	assert(list)
+	assert(type(list) == "table", "Expected BulkDeployments to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertBulkDeployment(v)
+	end
+end
+
+--  
+-- List of BulkDeployment objects
+function M.BulkDeployments(list)
+	asserts.AssertBulkDeployments(list)
+	return list
+end
+
+function asserts.Assert__listOfGroupCertificateAuthorityProperties(list)
+	assert(list)
+	assert(type(list) == "table", "Expected __listOfGroupCertificateAuthorityProperties to be of type ''table")
 	for _,v in ipairs(list) do
 		asserts.AssertGroupCertificateAuthorityProperties(v)
 	end
@@ -6999,8 +8733,8 @@ end
 
 --  
 -- List of GroupCertificateAuthorityProperties objects
-function M.ListOfGroupCertificateAuthorityProperties(list)
-	asserts.AssertListOfGroupCertificateAuthorityProperties(list)
+function M.__listOfGroupCertificateAuthorityProperties(list)
+	asserts.Assert__listOfGroupCertificateAuthorityProperties(list)
 	return list
 end
 
@@ -7117,6 +8851,76 @@ function M.ListDeviceDefinitionVersionsSync(ListDeviceDefinitionVersionsRequest,
 	return coroutine.yield()
 end
 
+--- Call ListBulkDeployments asynchronously, invoking a callback when done
+-- @param ListBulkDeploymentsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListBulkDeploymentsAsync(ListBulkDeploymentsRequest, cb)
+	assert(ListBulkDeploymentsRequest, "You must provide a ListBulkDeploymentsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListBulkDeployments",
+	}
+	for header,value in pairs(ListBulkDeploymentsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	if request_handler then
+		request_handler(settings.uri, "/greengrass/bulk/deployments", ListBulkDeploymentsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListBulkDeployments synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListBulkDeploymentsRequest
+-- @return response
+-- @return error_message
+function M.ListBulkDeploymentsSync(ListBulkDeploymentsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListBulkDeploymentsAsync(ListBulkDeploymentsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateGroup asynchronously, invoking a callback when done
+-- @param UpdateGroupRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateGroupAsync(UpdateGroupRequest, cb)
+	assert(UpdateGroupRequest, "You must provide a UpdateGroupRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateGroup",
+	}
+	for header,value in pairs(UpdateGroupRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	if request_handler then
+		request_handler(settings.uri, "/greengrass/groups/{GroupId}", UpdateGroupRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateGroupRequest
+-- @return response
+-- @return error_message
+function M.UpdateGroupSync(UpdateGroupRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateGroupAsync(UpdateGroupRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call AssociateRoleToGroup asynchronously, invoking a callback when done
 -- @param AssociateRoleToGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -7147,6 +8951,41 @@ function M.AssociateRoleToGroupSync(AssociateRoleToGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.AssociateRoleToGroupAsync(AssociateRoleToGroupRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListBulkDeploymentDetailedReports asynchronously, invoking a callback when done
+-- @param ListBulkDeploymentDetailedReportsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListBulkDeploymentDetailedReportsAsync(ListBulkDeploymentDetailedReportsRequest, cb)
+	assert(ListBulkDeploymentDetailedReportsRequest, "You must provide a ListBulkDeploymentDetailedReportsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListBulkDeploymentDetailedReports",
+	}
+	for header,value in pairs(ListBulkDeploymentDetailedReportsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	if request_handler then
+		request_handler(settings.uri, "/greengrass/bulk/deployments/{BulkDeploymentId}/detailed-reports", ListBulkDeploymentDetailedReportsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListBulkDeploymentDetailedReports synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListBulkDeploymentDetailedReportsRequest
+-- @return response
+-- @return error_message
+function M.ListBulkDeploymentDetailedReportsSync(ListBulkDeploymentDetailedReportsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListBulkDeploymentDetailedReportsAsync(ListBulkDeploymentDetailedReportsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7397,36 +9236,36 @@ function M.GetDeploymentStatusSync(GetDeploymentStatusRequest, ...)
 	return coroutine.yield()
 end
 
---- Call ListDeviceDefinitions asynchronously, invoking a callback when done
--- @param ListDeviceDefinitionsRequest
+--- Call CreateResourceDefinitionVersion asynchronously, invoking a callback when done
+-- @param CreateResourceDefinitionVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.ListDeviceDefinitionsAsync(ListDeviceDefinitionsRequest, cb)
-	assert(ListDeviceDefinitionsRequest, "You must provide a ListDeviceDefinitionsRequest")
+function M.CreateResourceDefinitionVersionAsync(CreateResourceDefinitionVersionRequest, cb)
+	assert(CreateResourceDefinitionVersionRequest, "You must provide a CreateResourceDefinitionVersionRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".ListDeviceDefinitions",
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateResourceDefinitionVersion",
 	}
-	for header,value in pairs(ListDeviceDefinitionsRequest.headers) do
+	for header,value in pairs(CreateResourceDefinitionVersionRequest.headers) do
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/greengrass/definition/devices", ListDeviceDefinitionsRequest, headers, settings, cb)
+		request_handler(settings.uri, "/greengrass/definition/resources/{ResourceDefinitionId}/versions", CreateResourceDefinitionVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call ListDeviceDefinitions synchronously, returning when done
+--- Call CreateResourceDefinitionVersion synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param ListDeviceDefinitionsRequest
+-- @param CreateResourceDefinitionVersionRequest
 -- @return response
 -- @return error_message
-function M.ListDeviceDefinitionsSync(ListDeviceDefinitionsRequest, ...)
+function M.CreateResourceDefinitionVersionSync(CreateResourceDefinitionVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDeviceDefinitionsAsync(ListDeviceDefinitionsRequest, function(response, error_message)
+	M.CreateResourceDefinitionVersionAsync(CreateResourceDefinitionVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7537,6 +9376,41 @@ function M.CreateDeploymentSync(CreateDeploymentRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call CreateResourceDefinition asynchronously, invoking a callback when done
+-- @param CreateResourceDefinitionRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.CreateResourceDefinitionAsync(CreateResourceDefinitionRequest, cb)
+	assert(CreateResourceDefinitionRequest, "You must provide a CreateResourceDefinitionRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateResourceDefinition",
+	}
+	for header,value in pairs(CreateResourceDefinitionRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/greengrass/definition/resources", CreateResourceDefinitionRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CreateResourceDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateResourceDefinitionRequest
+-- @return response
+-- @return error_message
+function M.CreateResourceDefinitionSync(CreateResourceDefinitionRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateResourceDefinitionAsync(CreateResourceDefinitionRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ListSubscriptionDefinitions asynchronously, invoking a callback when done
 -- @param ListSubscriptionDefinitionsRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -7572,6 +9446,41 @@ function M.ListSubscriptionDefinitionsSync(ListSubscriptionDefinitionsRequest, .
 	return coroutine.yield()
 end
 
+--- Call ListFunctionDefinitionVersions asynchronously, invoking a callback when done
+-- @param ListFunctionDefinitionVersionsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListFunctionDefinitionVersionsAsync(ListFunctionDefinitionVersionsRequest, cb)
+	assert(ListFunctionDefinitionVersionsRequest, "You must provide a ListFunctionDefinitionVersionsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListFunctionDefinitionVersions",
+	}
+	for header,value in pairs(ListFunctionDefinitionVersionsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	if request_handler then
+		request_handler(settings.uri, "/greengrass/definition/functions/{FunctionDefinitionId}/versions", ListFunctionDefinitionVersionsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListFunctionDefinitionVersions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListFunctionDefinitionVersionsRequest
+-- @return response
+-- @return error_message
+function M.ListFunctionDefinitionVersionsSync(ListFunctionDefinitionVersionsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListFunctionDefinitionVersionsAsync(ListFunctionDefinitionVersionsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call UpdateDeviceDefinition asynchronously, invoking a callback when done
 -- @param UpdateDeviceDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -7602,6 +9511,41 @@ function M.UpdateDeviceDefinitionSync(UpdateDeviceDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.UpdateDeviceDefinitionAsync(UpdateDeviceDefinitionRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartBulkDeployment asynchronously, invoking a callback when done
+-- @param StartBulkDeploymentRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.StartBulkDeploymentAsync(StartBulkDeploymentRequest, cb)
+	assert(StartBulkDeploymentRequest, "You must provide a StartBulkDeploymentRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".StartBulkDeployment",
+	}
+	for header,value in pairs(StartBulkDeploymentRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/greengrass/bulk/deployments", StartBulkDeploymentRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call StartBulkDeployment synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartBulkDeploymentRequest
+-- @return response
+-- @return error_message
+function M.StartBulkDeploymentSync(StartBulkDeploymentRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartBulkDeploymentAsync(StartBulkDeploymentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7782,6 +9726,41 @@ function M.CreateDeviceDefinitionVersionSync(CreateDeviceDefinitionVersionReques
 	return coroutine.yield()
 end
 
+--- Call ListResourceDefinitions asynchronously, invoking a callback when done
+-- @param ListResourceDefinitionsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListResourceDefinitionsAsync(ListResourceDefinitionsRequest, cb)
+	assert(ListResourceDefinitionsRequest, "You must provide a ListResourceDefinitionsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListResourceDefinitions",
+	}
+	for header,value in pairs(ListResourceDefinitionsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	if request_handler then
+		request_handler(settings.uri, "/greengrass/definition/resources", ListResourceDefinitionsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListResourceDefinitions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListResourceDefinitionsRequest
+-- @return response
+-- @return error_message
+function M.ListResourceDefinitionsSync(ListResourceDefinitionsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListResourceDefinitionsAsync(ListResourceDefinitionsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call GetCoreDefinition asynchronously, invoking a callback when done
 -- @param GetCoreDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -7812,6 +9791,146 @@ function M.GetCoreDefinitionSync(GetCoreDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.GetCoreDefinitionAsync(GetCoreDefinitionRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetBulkDeploymentStatus asynchronously, invoking a callback when done
+-- @param GetBulkDeploymentStatusRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetBulkDeploymentStatusAsync(GetBulkDeploymentStatusRequest, cb)
+	assert(GetBulkDeploymentStatusRequest, "You must provide a GetBulkDeploymentStatusRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBulkDeploymentStatus",
+	}
+	for header,value in pairs(GetBulkDeploymentStatusRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	if request_handler then
+		request_handler(settings.uri, "/greengrass/bulk/deployments/{BulkDeploymentId}/status", GetBulkDeploymentStatusRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetBulkDeploymentStatus synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetBulkDeploymentStatusRequest
+-- @return response
+-- @return error_message
+function M.GetBulkDeploymentStatusSync(GetBulkDeploymentStatusRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetBulkDeploymentStatusAsync(GetBulkDeploymentStatusRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListGroupCertificateAuthorities asynchronously, invoking a callback when done
+-- @param ListGroupCertificateAuthoritiesRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListGroupCertificateAuthoritiesAsync(ListGroupCertificateAuthoritiesRequest, cb)
+	assert(ListGroupCertificateAuthoritiesRequest, "You must provide a ListGroupCertificateAuthoritiesRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListGroupCertificateAuthorities",
+	}
+	for header,value in pairs(ListGroupCertificateAuthoritiesRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	if request_handler then
+		request_handler(settings.uri, "/greengrass/groups/{GroupId}/certificateauthorities", ListGroupCertificateAuthoritiesRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListGroupCertificateAuthorities synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListGroupCertificateAuthoritiesRequest
+-- @return response
+-- @return error_message
+function M.ListGroupCertificateAuthoritiesSync(ListGroupCertificateAuthoritiesRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListGroupCertificateAuthoritiesAsync(ListGroupCertificateAuthoritiesRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteResourceDefinition asynchronously, invoking a callback when done
+-- @param DeleteResourceDefinitionRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteResourceDefinitionAsync(DeleteResourceDefinitionRequest, cb)
+	assert(DeleteResourceDefinitionRequest, "You must provide a DeleteResourceDefinitionRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteResourceDefinition",
+	}
+	for header,value in pairs(DeleteResourceDefinitionRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	if request_handler then
+		request_handler(settings.uri, "/greengrass/definition/resources/{ResourceDefinitionId}", DeleteResourceDefinitionRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteResourceDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteResourceDefinitionRequest
+-- @return response
+-- @return error_message
+function M.DeleteResourceDefinitionSync(DeleteResourceDefinitionRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteResourceDefinitionAsync(DeleteResourceDefinitionRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StopBulkDeployment asynchronously, invoking a callback when done
+-- @param StopBulkDeploymentRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.StopBulkDeploymentAsync(StopBulkDeploymentRequest, cb)
+	assert(StopBulkDeploymentRequest, "You must provide a StopBulkDeploymentRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".StopBulkDeployment",
+	}
+	for header,value in pairs(StopBulkDeploymentRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	if request_handler then
+		request_handler(settings.uri, "/greengrass/bulk/deployments/{BulkDeploymentId}/$stop", StopBulkDeploymentRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call StopBulkDeployment synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StopBulkDeploymentRequest
+-- @return response
+-- @return error_message
+function M.StopBulkDeploymentSync(StopBulkDeploymentRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StopBulkDeploymentAsync(StopBulkDeploymentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7852,41 +9971,6 @@ function M.GetSubscriptionDefinitionVersionSync(GetSubscriptionDefinitionVersion
 	return coroutine.yield()
 end
 
---- Call ListFunctionDefinitionVersions asynchronously, invoking a callback when done
--- @param ListFunctionDefinitionVersionsRequest
--- @param cb Callback function accepting two args: response, error_message
-function M.ListFunctionDefinitionVersionsAsync(ListFunctionDefinitionVersionsRequest, cb)
-	assert(ListFunctionDefinitionVersionsRequest, "You must provide a ListFunctionDefinitionVersionsRequest")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".ListFunctionDefinitionVersions",
-	}
-	for header,value in pairs(ListFunctionDefinitionVersionsRequest.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
-	if request_handler then
-		request_handler(settings.uri, "/greengrass/definition/functions/{FunctionDefinitionId}/versions", ListFunctionDefinitionVersionsRequest, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call ListFunctionDefinitionVersions synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param ListFunctionDefinitionVersionsRequest
--- @return response
--- @return error_message
-function M.ListFunctionDefinitionVersionsSync(ListFunctionDefinitionVersionsRequest, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.ListFunctionDefinitionVersionsAsync(ListFunctionDefinitionVersionsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
 --- Call GetFunctionDefinition asynchronously, invoking a callback when done
 -- @param GetFunctionDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -7917,6 +10001,76 @@ function M.GetFunctionDefinitionSync(GetFunctionDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.GetFunctionDefinitionAsync(GetFunctionDefinitionRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ResetDeployments asynchronously, invoking a callback when done
+-- @param ResetDeploymentsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ResetDeploymentsAsync(ResetDeploymentsRequest, cb)
+	assert(ResetDeploymentsRequest, "You must provide a ResetDeploymentsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ResetDeployments",
+	}
+	for header,value in pairs(ResetDeploymentsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/greengrass/groups/{GroupId}/deployments/$reset", ResetDeploymentsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ResetDeployments synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ResetDeploymentsRequest
+-- @return response
+-- @return error_message
+function M.ResetDeploymentsSync(ResetDeploymentsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ResetDeploymentsAsync(ResetDeploymentsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateResourceDefinition asynchronously, invoking a callback when done
+-- @param UpdateResourceDefinitionRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateResourceDefinitionAsync(UpdateResourceDefinitionRequest, cb)
+	assert(UpdateResourceDefinitionRequest, "You must provide a UpdateResourceDefinitionRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateResourceDefinition",
+	}
+	for header,value in pairs(UpdateResourceDefinitionRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	if request_handler then
+		request_handler(settings.uri, "/greengrass/definition/resources/{ResourceDefinitionId}", UpdateResourceDefinitionRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateResourceDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateResourceDefinitionRequest
+-- @return response
+-- @return error_message
+function M.UpdateResourceDefinitionSync(UpdateResourceDefinitionRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateResourceDefinitionAsync(UpdateResourceDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7957,36 +10111,36 @@ function M.GetGroupSync(GetGroupRequest, ...)
 	return coroutine.yield()
 end
 
---- Call UpdateGroup asynchronously, invoking a callback when done
--- @param UpdateGroupRequest
+--- Call GetResourceDefinition asynchronously, invoking a callback when done
+-- @param GetResourceDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.UpdateGroupAsync(UpdateGroupRequest, cb)
-	assert(UpdateGroupRequest, "You must provide a UpdateGroupRequest")
+function M.GetResourceDefinitionAsync(GetResourceDefinitionRequest, cb)
+	assert(GetResourceDefinitionRequest, "You must provide a GetResourceDefinitionRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".UpdateGroup",
+		[request_headers.AMZ_TARGET_HEADER] = ".GetResourceDefinition",
 	}
-	for header,value in pairs(UpdateGroupRequest.headers) do
+	for header,value in pairs(GetResourceDefinitionRequest.headers) do
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
-		request_handler(settings.uri, "/greengrass/groups/{GroupId}", UpdateGroupRequest, headers, settings, cb)
+		request_handler(settings.uri, "/greengrass/definition/resources/{ResourceDefinitionId}", GetResourceDefinitionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call UpdateGroup synchronously, returning when done
+--- Call GetResourceDefinition synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param UpdateGroupRequest
+-- @param GetResourceDefinitionRequest
 -- @return response
 -- @return error_message
-function M.UpdateGroupSync(UpdateGroupRequest, ...)
+function M.GetResourceDefinitionSync(GetResourceDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateGroupAsync(UpdateGroupRequest, function(response, error_message)
+	M.GetResourceDefinitionAsync(GetResourceDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8132,6 +10286,41 @@ function M.GetDeviceDefinitionSync(GetDeviceDefinitionRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call UpdateSubscriptionDefinition asynchronously, invoking a callback when done
+-- @param UpdateSubscriptionDefinitionRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateSubscriptionDefinitionAsync(UpdateSubscriptionDefinitionRequest, cb)
+	assert(UpdateSubscriptionDefinitionRequest, "You must provide a UpdateSubscriptionDefinitionRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateSubscriptionDefinition",
+	}
+	for header,value in pairs(UpdateSubscriptionDefinitionRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	if request_handler then
+		request_handler(settings.uri, "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}", UpdateSubscriptionDefinitionRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateSubscriptionDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateSubscriptionDefinitionRequest
+-- @return response
+-- @return error_message
+function M.UpdateSubscriptionDefinitionSync(UpdateSubscriptionDefinitionRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateSubscriptionDefinitionAsync(UpdateSubscriptionDefinitionRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call GetFunctionDefinitionVersion asynchronously, invoking a callback when done
 -- @param GetFunctionDefinitionVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -8162,6 +10351,41 @@ function M.GetFunctionDefinitionVersionSync(GetFunctionDefinitionVersionRequest,
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.GetFunctionDefinitionVersionAsync(GetFunctionDefinitionVersionRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListResourceDefinitionVersions asynchronously, invoking a callback when done
+-- @param ListResourceDefinitionVersionsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListResourceDefinitionVersionsAsync(ListResourceDefinitionVersionsRequest, cb)
+	assert(ListResourceDefinitionVersionsRequest, "You must provide a ListResourceDefinitionVersionsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListResourceDefinitionVersions",
+	}
+	for header,value in pairs(ListResourceDefinitionVersionsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	if request_handler then
+		request_handler(settings.uri, "/greengrass/definition/resources/{ResourceDefinitionId}/versions", ListResourceDefinitionVersionsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListResourceDefinitionVersions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListResourceDefinitionVersionsRequest
+-- @return response
+-- @return error_message
+function M.ListResourceDefinitionVersionsSync(ListResourceDefinitionVersionsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListResourceDefinitionVersionsAsync(ListResourceDefinitionVersionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8447,6 +10671,41 @@ function M.DisassociateRoleFromGroupSync(DisassociateRoleFromGroupRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call CreateSoftwareUpdateJob asynchronously, invoking a callback when done
+-- @param CreateSoftwareUpdateJobRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.CreateSoftwareUpdateJobAsync(CreateSoftwareUpdateJobRequest, cb)
+	assert(CreateSoftwareUpdateJobRequest, "You must provide a CreateSoftwareUpdateJobRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateSoftwareUpdateJob",
+	}
+	for header,value in pairs(CreateSoftwareUpdateJobRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/greengrass/updates", CreateSoftwareUpdateJobRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CreateSoftwareUpdateJob synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateSoftwareUpdateJobRequest
+-- @return response
+-- @return error_message
+function M.CreateSoftwareUpdateJobSync(CreateSoftwareUpdateJobRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateSoftwareUpdateJobAsync(CreateSoftwareUpdateJobRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call CreateLoggerDefinition asynchronously, invoking a callback when done
 -- @param CreateLoggerDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -8482,71 +10741,71 @@ function M.CreateLoggerDefinitionSync(CreateLoggerDefinitionRequest, ...)
 	return coroutine.yield()
 end
 
---- Call ListGroupCertificateAuthorities asynchronously, invoking a callback when done
--- @param ListGroupCertificateAuthoritiesRequest
+--- Call ListFunctionDefinitions asynchronously, invoking a callback when done
+-- @param ListFunctionDefinitionsRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.ListGroupCertificateAuthoritiesAsync(ListGroupCertificateAuthoritiesRequest, cb)
-	assert(ListGroupCertificateAuthoritiesRequest, "You must provide a ListGroupCertificateAuthoritiesRequest")
+function M.ListFunctionDefinitionsAsync(ListFunctionDefinitionsRequest, cb)
+	assert(ListFunctionDefinitionsRequest, "You must provide a ListFunctionDefinitionsRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".ListGroupCertificateAuthorities",
+		[request_headers.AMZ_TARGET_HEADER] = ".ListFunctionDefinitions",
 	}
-	for header,value in pairs(ListGroupCertificateAuthoritiesRequest.headers) do
+	for header,value in pairs(ListFunctionDefinitionsRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
-		request_handler(settings.uri, "/greengrass/groups/{GroupId}/certificateauthorities", ListGroupCertificateAuthoritiesRequest, headers, settings, cb)
+		request_handler(settings.uri, "/greengrass/definition/functions", ListFunctionDefinitionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call ListGroupCertificateAuthorities synchronously, returning when done
+--- Call ListFunctionDefinitions synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param ListGroupCertificateAuthoritiesRequest
+-- @param ListFunctionDefinitionsRequest
 -- @return response
 -- @return error_message
-function M.ListGroupCertificateAuthoritiesSync(ListGroupCertificateAuthoritiesRequest, ...)
+function M.ListFunctionDefinitionsSync(ListFunctionDefinitionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListGroupCertificateAuthoritiesAsync(ListGroupCertificateAuthoritiesRequest, function(response, error_message)
+	M.ListFunctionDefinitionsAsync(ListFunctionDefinitionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
 end
 
---- Call UpdateSubscriptionDefinition asynchronously, invoking a callback when done
--- @param UpdateSubscriptionDefinitionRequest
+--- Call GetResourceDefinitionVersion asynchronously, invoking a callback when done
+-- @param GetResourceDefinitionVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.UpdateSubscriptionDefinitionAsync(UpdateSubscriptionDefinitionRequest, cb)
-	assert(UpdateSubscriptionDefinitionRequest, "You must provide a UpdateSubscriptionDefinitionRequest")
+function M.GetResourceDefinitionVersionAsync(GetResourceDefinitionVersionRequest, cb)
+	assert(GetResourceDefinitionVersionRequest, "You must provide a GetResourceDefinitionVersionRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".UpdateSubscriptionDefinition",
+		[request_headers.AMZ_TARGET_HEADER] = ".GetResourceDefinitionVersion",
 	}
-	for header,value in pairs(UpdateSubscriptionDefinitionRequest.headers) do
+	for header,value in pairs(GetResourceDefinitionVersionRequest.headers) do
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
-		request_handler(settings.uri, "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}", UpdateSubscriptionDefinitionRequest, headers, settings, cb)
+		request_handler(settings.uri, "/greengrass/definition/resources/{ResourceDefinitionId}/versions/{ResourceDefinitionVersionId}", GetResourceDefinitionVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call UpdateSubscriptionDefinition synchronously, returning when done
+--- Call GetResourceDefinitionVersion synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param UpdateSubscriptionDefinitionRequest
+-- @param GetResourceDefinitionVersionRequest
 -- @return response
 -- @return error_message
-function M.UpdateSubscriptionDefinitionSync(UpdateSubscriptionDefinitionRequest, ...)
+function M.GetResourceDefinitionVersionSync(GetResourceDefinitionVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateSubscriptionDefinitionAsync(UpdateSubscriptionDefinitionRequest, function(response, error_message)
+	M.GetResourceDefinitionVersionAsync(GetResourceDefinitionVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8762,36 +11021,36 @@ function M.GetCoreDefinitionVersionSync(GetCoreDefinitionVersionRequest, ...)
 	return coroutine.yield()
 end
 
---- Call ListFunctionDefinitions asynchronously, invoking a callback when done
--- @param ListFunctionDefinitionsRequest
+--- Call ListDeviceDefinitions asynchronously, invoking a callback when done
+-- @param ListDeviceDefinitionsRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.ListFunctionDefinitionsAsync(ListFunctionDefinitionsRequest, cb)
-	assert(ListFunctionDefinitionsRequest, "You must provide a ListFunctionDefinitionsRequest")
+function M.ListDeviceDefinitionsAsync(ListDeviceDefinitionsRequest, cb)
+	assert(ListDeviceDefinitionsRequest, "You must provide a ListDeviceDefinitionsRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".ListFunctionDefinitions",
+		[request_headers.AMZ_TARGET_HEADER] = ".ListDeviceDefinitions",
 	}
-	for header,value in pairs(ListFunctionDefinitionsRequest.headers) do
+	for header,value in pairs(ListDeviceDefinitionsRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
-		request_handler(settings.uri, "/greengrass/definition/functions", ListFunctionDefinitionsRequest, headers, settings, cb)
+		request_handler(settings.uri, "/greengrass/definition/devices", ListDeviceDefinitionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call ListFunctionDefinitions synchronously, returning when done
+--- Call ListDeviceDefinitions synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param ListFunctionDefinitionsRequest
+-- @param ListDeviceDefinitionsRequest
 -- @return response
 -- @return error_message
-function M.ListFunctionDefinitionsSync(ListFunctionDefinitionsRequest, ...)
+function M.ListDeviceDefinitionsSync(ListDeviceDefinitionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListFunctionDefinitionsAsync(ListFunctionDefinitionsRequest, function(response, error_message)
+	M.ListDeviceDefinitionsAsync(ListDeviceDefinitionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8832,36 +11091,36 @@ function M.GetGroupCertificateConfigurationSync(GetGroupCertificateConfiguration
 	return coroutine.yield()
 end
 
---- Call DeleteFunctionDefinition asynchronously, invoking a callback when done
--- @param DeleteFunctionDefinitionRequest
+--- Call DeleteDeviceDefinition asynchronously, invoking a callback when done
+-- @param DeleteDeviceDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.DeleteFunctionDefinitionAsync(DeleteFunctionDefinitionRequest, cb)
-	assert(DeleteFunctionDefinitionRequest, "You must provide a DeleteFunctionDefinitionRequest")
+function M.DeleteDeviceDefinitionAsync(DeleteDeviceDefinitionRequest, cb)
+	assert(DeleteDeviceDefinitionRequest, "You must provide a DeleteDeviceDefinitionRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".DeleteFunctionDefinition",
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDeviceDefinition",
 	}
-	for header,value in pairs(DeleteFunctionDefinitionRequest.headers) do
+	for header,value in pairs(DeleteDeviceDefinitionRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
-		request_handler(settings.uri, "/greengrass/definition/functions/{FunctionDefinitionId}", DeleteFunctionDefinitionRequest, headers, settings, cb)
+		request_handler(settings.uri, "/greengrass/definition/devices/{DeviceDefinitionId}", DeleteDeviceDefinitionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DeleteFunctionDefinition synchronously, returning when done
+--- Call DeleteDeviceDefinition synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DeleteFunctionDefinitionRequest
+-- @param DeleteDeviceDefinitionRequest
 -- @return response
 -- @return error_message
-function M.DeleteFunctionDefinitionSync(DeleteFunctionDefinitionRequest, ...)
+function M.DeleteDeviceDefinitionSync(DeleteDeviceDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteFunctionDefinitionAsync(DeleteFunctionDefinitionRequest, function(response, error_message)
+	M.DeleteDeviceDefinitionAsync(DeleteDeviceDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9217,36 +11476,36 @@ function M.DeleteLoggerDefinitionSync(DeleteLoggerDefinitionRequest, ...)
 	return coroutine.yield()
 end
 
---- Call DeleteDeviceDefinition asynchronously, invoking a callback when done
--- @param DeleteDeviceDefinitionRequest
+--- Call DeleteFunctionDefinition asynchronously, invoking a callback when done
+-- @param DeleteFunctionDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.DeleteDeviceDefinitionAsync(DeleteDeviceDefinitionRequest, cb)
-	assert(DeleteDeviceDefinitionRequest, "You must provide a DeleteDeviceDefinitionRequest")
+function M.DeleteFunctionDefinitionAsync(DeleteFunctionDefinitionRequest, cb)
+	assert(DeleteFunctionDefinitionRequest, "You must provide a DeleteFunctionDefinitionRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDeviceDefinition",
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteFunctionDefinition",
 	}
-	for header,value in pairs(DeleteDeviceDefinitionRequest.headers) do
+	for header,value in pairs(DeleteFunctionDefinitionRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
-		request_handler(settings.uri, "/greengrass/definition/devices/{DeviceDefinitionId}", DeleteDeviceDefinitionRequest, headers, settings, cb)
+		request_handler(settings.uri, "/greengrass/definition/functions/{FunctionDefinitionId}", DeleteFunctionDefinitionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DeleteDeviceDefinition synchronously, returning when done
+--- Call DeleteFunctionDefinition synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DeleteDeviceDefinitionRequest
+-- @param DeleteFunctionDefinitionRequest
 -- @return response
 -- @return error_message
-function M.DeleteDeviceDefinitionSync(DeleteDeviceDefinitionRequest, ...)
+function M.DeleteFunctionDefinitionSync(DeleteFunctionDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDeviceDefinitionAsync(DeleteDeviceDefinitionRequest, function(response, error_message)
+	M.DeleteFunctionDefinitionAsync(DeleteFunctionDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

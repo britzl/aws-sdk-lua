@@ -118,54 +118,6 @@ function M.JobOutput(args)
     }
 end
 
-keys.ListJobsByStatusRequest = { ["Status"] = true, ["PageToken"] = true, ["Ascending"] = true, nil }
-
-function asserts.AssertListJobsByStatusRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ListJobsByStatusRequest to be of type 'table'")
-	assert(struct["Status"], "Expected key Status to exist in table")
-	if struct["Status"] then asserts.AssertJobStatus(struct["Status"]) end
-	if struct["PageToken"] then asserts.AssertId(struct["PageToken"]) end
-	if struct["Ascending"] then asserts.AssertAscending(struct["Ascending"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ListJobsByStatusRequest[k], "ListJobsByStatusRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ListJobsByStatusRequest
--- <p>The <code>ListJobsByStatusRequest</code> structure.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Status [JobStatus] <p>To get information about all of the jobs associated with the current AWS account that have a given status, specify the following status: <code>Submitted</code>, <code>Progressing</code>, <code>Complete</code>, <code>Canceled</code>, or <code>Error</code>.</p>
--- * PageToken [Id] <p> When Elastic Transcoder returns more than one page of results, use <code>pageToken</code> in subsequent <code>GET</code> requests to get each successive page of results. </p>
--- * Ascending [Ascending] <p> To list jobs in chronological order by the date and time that they were submitted, enter <code>true</code>. To list jobs in reverse chronological order, enter <code>false</code>. </p>
--- Required key: Status
--- @return ListJobsByStatusRequest structure as a key-value pair table
-function M.ListJobsByStatusRequest(args)
-	assert(args, "You must provide an argument table when creating ListJobsByStatusRequest")
-    local query_args = { 
-        ["PageToken"] = args["PageToken"],
-        ["Ascending"] = args["Ascending"],
-    }
-    local uri_args = { 
-        ["{Status}"] = args["Status"],
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Status"] = args["Status"],
-		["PageToken"] = args["PageToken"],
-		["Ascending"] = args["Ascending"],
-	}
-	asserts.AssertListJobsByStatusRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.TestRoleResponse = { ["Messages"] = true, ["Success"] = true, nil }
 
 function asserts.AssertTestRoleResponse(struct)
@@ -787,7 +739,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * InitializationVector [ZeroTo255String] <p>The series of random bits created by a random bit generator, unique for every encryption operation, that you used to encrypt your input files or that you want Elastic Transcoder to use to encrypt your output files. The initialization vector must be base64-encoded, and it must be exactly 16 bytes long before being base64-encoded.</p>
--- * Mode [EncryptionMode] <p>The specific server-side encryption mode that you want Elastic Transcoder to use when decrypting your input files or encrypting your output files. Elastic Transcoder supports the following options:</p> <ul> <li> <p> <b>S3:</b> Amazon S3 creates and manages the keys used for encrypting your files.</p> </li> <li> <p> <b>S3-AWS-KMS:</b> Amazon S3 calls the Amazon Key Management Service, which creates and manages the keys that are used for encrypting your files. If you specify <code>S3-AWS-KMS</code> and you don't want to use the default key, you must add the AWS-KMS key that you want to use to your pipeline.</p> </li> <li> <p> <b>AES-CBC-PKCS7:</b> A padded cipher-block mode of operation originally used for HLS files.</p> </li> <li> <p> <b>AES-CTR:</b> AES Counter Mode.</p> </li> <li> <p> <b>AES-GCM:</b> AES Galois Counter Mode, a mode of operation that is an authenticated encryption format, meaning that a file, key, or initialization vector that has been tampered with fails the decryption process.</p> </li> </ul> <p>For all three AES options, you must provide the following settings, which must be base64-encoded:</p> <ul> <li> <p> <b>Key</b> </p> </li> <li> <p> <b>Key MD5</b> </p> </li> <li> <p> <b>Initialization Vector</b> </p> </li> </ul> <important> <p>For the AES modes, your private encryption keys and your unencrypted data are never stored by AWS; therefore, it is important that you safely manage your encryption keys. If you lose them, you won't be able to unencrypt your data.</p> </important>
+-- * Mode [EncryptionMode] <p>The specific server-side encryption mode that you want Elastic Transcoder to use when decrypting your input files or encrypting your output files. Elastic Transcoder supports the following options:</p> <ul> <li> <p> <b>s3:</b> Amazon S3 creates and manages the keys used for encrypting your files.</p> </li> <li> <p> <b>s3-aws-kms:</b> Amazon S3 calls the Amazon Key Management Service, which creates and manages the keys that are used for encrypting your files. If you specify <code>s3-aws-kms</code> and you don't want to use the default key, you must add the AWS-KMS key that you want to use to your pipeline.</p> </li> <li> <p> <b>aes-cbc-pkcs7:</b> A padded cipher-block mode of operation originally used for HLS files.</p> </li> <li> <p> <b>aes-ctr:</b> AES Counter Mode.</p> </li> <li> <p> <b>aes-gcm:</b> AES Galois Counter Mode, a mode of operation that is an authenticated encryption format, meaning that a file, key, or initialization vector that has been tampered with fails the decryption process.</p> </li> </ul> <p>For all three AES options, you must provide the following settings, which must be base64-encoded:</p> <ul> <li> <p> <b>Key</b> </p> </li> <li> <p> <b>Key MD5</b> </p> </li> <li> <p> <b>Initialization Vector</b> </p> </li> </ul> <important> <p>For the AES modes, your private encryption keys and your unencrypted data are never stored by AWS; therefore, it is important that you safely manage your encryption keys. If you lose them, you won't be able to unencrypt your data.</p> </important>
 -- * Key [Base64EncodedString] <p>The data encryption key that you want Elastic Transcoder to use to encrypt your output file, or that was used to encrypt your input file. The key must be base64-encoded and it must be one of the following bit lengths before being base64-encoded:</p> <p> <code>128</code>, <code>192</code>, or <code>256</code>. </p> <p>The key must also be encrypted by using the Amazon Key Management Service.</p>
 -- * KeyMd5 [Base64EncodedString] <p>The MD5 digest of the key that you used to encrypt your input file, or that you want Elastic Transcoder to use to encrypt your output file. Elastic Transcoder uses the key digest as a checksum to make sure your key was not corrupted in transit. The key MD5 must be base64-encoded, and it must be exactly 16 bytes long before being base64-encoded.</p>
 -- @return Encryption structure as a key-value pair table
@@ -931,32 +883,38 @@ function M.CreateJobResponse(args)
     }
 end
 
-keys.InternalServiceException = { nil }
+keys.DeletePipelineRequest = { ["Id"] = true, nil }
 
-function asserts.AssertInternalServiceException(struct)
+function asserts.AssertDeletePipelineRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InternalServiceException to be of type 'table'")
+	assert(type(struct) == "table", "Expected DeletePipelineRequest to be of type 'table'")
+	assert(struct["Id"], "Expected key Id to exist in table")
+	if struct["Id"] then asserts.AssertId(struct["Id"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InternalServiceException[k], "InternalServiceException contains unknown key " .. tostring(k))
+		assert(keys.DeletePipelineRequest[k], "DeletePipelineRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InternalServiceException
--- <p>Elastic Transcoder encountered an unexpected exception while trying to fulfill the request.</p>
+--- Create a structure of type DeletePipelineRequest
+-- <p>The <code>DeletePipelineRequest</code> structure.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InternalServiceException structure as a key-value pair table
-function M.InternalServiceException(args)
-	assert(args, "You must provide an argument table when creating InternalServiceException")
+-- * Id [Id] <p>The identifier of the pipeline that you want to delete.</p>
+-- Required key: Id
+-- @return DeletePipelineRequest structure as a key-value pair table
+function M.DeletePipelineRequest(args)
+	assert(args, "You must provide an argument table when creating DeletePipelineRequest")
     local query_args = { 
     }
     local uri_args = { 
+        ["{Id}"] = args["Id"],
     }
     local header_args = { 
     }
 	local all_args = { 
+		["Id"] = args["Id"],
 	}
-	asserts.AssertInternalServiceException(all_args)
+	asserts.AssertDeletePipelineRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1023,50 +981,46 @@ function M.Thumbnails(args)
     }
 end
 
-keys.HlsContentProtection = { ["KeyMd5"] = true, ["KeyStoragePolicy"] = true, ["InitializationVector"] = true, ["LicenseAcquisitionUrl"] = true, ["Key"] = true, ["Method"] = true, nil }
+keys.ListJobsByStatusRequest = { ["Status"] = true, ["PageToken"] = true, ["Ascending"] = true, nil }
 
-function asserts.AssertHlsContentProtection(struct)
+function asserts.AssertListJobsByStatusRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected HlsContentProtection to be of type 'table'")
-	if struct["KeyMd5"] then asserts.AssertBase64EncodedString(struct["KeyMd5"]) end
-	if struct["KeyStoragePolicy"] then asserts.AssertKeyStoragePolicy(struct["KeyStoragePolicy"]) end
-	if struct["InitializationVector"] then asserts.AssertZeroTo255String(struct["InitializationVector"]) end
-	if struct["LicenseAcquisitionUrl"] then asserts.AssertZeroTo512String(struct["LicenseAcquisitionUrl"]) end
-	if struct["Key"] then asserts.AssertBase64EncodedString(struct["Key"]) end
-	if struct["Method"] then asserts.AssertHlsContentProtectionMethod(struct["Method"]) end
+	assert(type(struct) == "table", "Expected ListJobsByStatusRequest to be of type 'table'")
+	assert(struct["Status"], "Expected key Status to exist in table")
+	if struct["Status"] then asserts.AssertJobStatus(struct["Status"]) end
+	if struct["PageToken"] then asserts.AssertId(struct["PageToken"]) end
+	if struct["Ascending"] then asserts.AssertAscending(struct["Ascending"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.HlsContentProtection[k], "HlsContentProtection contains unknown key " .. tostring(k))
+		assert(keys.ListJobsByStatusRequest[k], "ListJobsByStatusRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type HlsContentProtection
--- <p>The HLS content protection settings, if any, that you want Elastic Transcoder to apply to your output files.</p>
+--- Create a structure of type ListJobsByStatusRequest
+-- <p>The <code>ListJobsByStatusRequest</code> structure.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * KeyMd5 [Base64EncodedString] <p>If Elastic Transcoder is generating your key for you, you must leave this field blank.</p> <p>The MD5 digest of the key that you want Elastic Transcoder to use to encrypt your output file, and that you want Elastic Transcoder to use as a checksum to make sure your key was not corrupted in transit. The key MD5 must be base64-encoded, and it must be exactly 16 bytes before being base64- encoded.</p>
--- * KeyStoragePolicy [KeyStoragePolicy] <p>Specify whether you want Elastic Transcoder to write your HLS license key to an Amazon S3 bucket. If you choose <code>WithVariantPlaylists</code>, <code>LicenseAcquisitionUrl</code> must be left blank and Elastic Transcoder writes your data key into the same bucket as the associated playlist.</p>
--- * InitializationVector [ZeroTo255String] <p>If Elastic Transcoder is generating your key for you, you must leave this field blank.</p> <p>The series of random bits created by a random bit generator, unique for every encryption operation, that you want Elastic Transcoder to use to encrypt your output files. The initialization vector must be base64-encoded, and it must be exactly 16 bytes before being base64-encoded.</p>
--- * LicenseAcquisitionUrl [ZeroTo512String] <p>The location of the license key required to decrypt your HLS playlist. The URL must be an absolute path, and is referenced in the URI attribute of the EXT-X-KEY metadata tag in the playlist file.</p>
--- * Key [Base64EncodedString] <p>If you want Elastic Transcoder to generate a key for you, leave this field blank.</p> <p>If you choose to supply your own key, you must encrypt the key by using AWS KMS. The key must be base64-encoded, and it must be one of the following bit lengths before being base64-encoded:</p> <p> <code>128</code>, <code>192</code>, or <code>256</code>. </p>
--- * Method [HlsContentProtectionMethod] <p>The content protection method for your output. The only valid value is: <code>aes-128</code>.</p> <p>This value is written into the method attribute of the <code>EXT-X-KEY</code> metadata tag in the output playlist.</p>
--- @return HlsContentProtection structure as a key-value pair table
-function M.HlsContentProtection(args)
-	assert(args, "You must provide an argument table when creating HlsContentProtection")
+-- * Status [JobStatus] <p>To get information about all of the jobs associated with the current AWS account that have a given status, specify the following status: <code>Submitted</code>, <code>Progressing</code>, <code>Complete</code>, <code>Canceled</code>, or <code>Error</code>.</p>
+-- * PageToken [Id] <p> When Elastic Transcoder returns more than one page of results, use <code>pageToken</code> in subsequent <code>GET</code> requests to get each successive page of results. </p>
+-- * Ascending [Ascending] <p> To list jobs in chronological order by the date and time that they were submitted, enter <code>true</code>. To list jobs in reverse chronological order, enter <code>false</code>. </p>
+-- Required key: Status
+-- @return ListJobsByStatusRequest structure as a key-value pair table
+function M.ListJobsByStatusRequest(args)
+	assert(args, "You must provide an argument table when creating ListJobsByStatusRequest")
     local query_args = { 
+        ["PageToken"] = args["PageToken"],
+        ["Ascending"] = args["Ascending"],
     }
     local uri_args = { 
+        ["{Status}"] = args["Status"],
     }
     local header_args = { 
     }
 	local all_args = { 
-		["KeyMd5"] = args["KeyMd5"],
-		["KeyStoragePolicy"] = args["KeyStoragePolicy"],
-		["InitializationVector"] = args["InitializationVector"],
-		["LicenseAcquisitionUrl"] = args["LicenseAcquisitionUrl"],
-		["Key"] = args["Key"],
-		["Method"] = args["Method"],
+		["Status"] = args["Status"],
+		["PageToken"] = args["PageToken"],
+		["Ascending"] = args["Ascending"],
 	}
-	asserts.AssertHlsContentProtection(all_args)
+	asserts.AssertListJobsByStatusRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1383,7 +1337,7 @@ end
 -- <p>The <code>UpdatePipelineNotificationsRequest</code> structure.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Notifications [Notifications] <p>The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic that you want to notify to report job status.</p> <important> <p>To receive notifications, you must also subscribe to the new topic in the Amazon SNS console.</p> </important> <ul> <li> <p> <b>Progressing</b>: The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic that you want to notify when Elastic Transcoder has started to process jobs that are added to this pipeline. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p> <b>Completed</b>: The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder has finished processing a job. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p> <b>Warning</b>: The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters a warning condition. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p> <b>Error</b>: The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters an error condition. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> </ul>
+-- * Notifications [Notifications] <p>The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic that you want to notify to report job status.</p> <important> <p>To receive notifications, you must also subscribe to the new topic in the Amazon SNS console.</p> </important> <ul> <li> <p> <b>Progressing</b>: The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic that you want to notify when Elastic Transcoder has started to process jobs that are added to this pipeline. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p> <b>Complete</b>: The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder has finished processing a job. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p> <b>Warning</b>: The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters a warning condition. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p> <b>Error</b>: The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters an error condition. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> </ul>
 -- * Id [Id] <p>The identifier of the pipeline for which you want to change notification settings.</p>
 -- Required key: Id
 -- Required key: Notifications
@@ -1594,40 +1548,6 @@ function M.DeletePipelineResponse(args)
     }
 end
 
-keys.LimitExceededException = { nil }
-
-function asserts.AssertLimitExceededException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type LimitExceededException
--- <p>Too many operations for a given AWS account. For example, the number of pipelines exceeds the maximum allowed.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return LimitExceededException structure as a key-value pair table
-function M.LimitExceededException(args)
-	assert(args, "You must provide an argument table when creating LimitExceededException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertLimitExceededException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.VideoParameters = { ["SizingPolicy"] = true, ["MaxWidth"] = true, ["PaddingPolicy"] = true, ["Resolution"] = true, ["MaxFrameRate"] = true, ["FrameRate"] = true, ["MaxHeight"] = true, ["KeyframesMaxDist"] = true, ["FixedGOP"] = true, ["Codec"] = true, ["Watermarks"] = true, ["CodecOptions"] = true, ["AspectRatio"] = true, ["BitRate"] = true, ["DisplayAspectRatio"] = true, nil }
 
 function asserts.AssertVideoParameters(struct)
@@ -1707,74 +1627,6 @@ function M.VideoParameters(args)
     }
 end
 
-keys.ValidationException = { nil }
-
-function asserts.AssertValidationException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ValidationException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ValidationException[k], "ValidationException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ValidationException
--- <p>One or more required parameter values were not provided in the request.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ValidationException structure as a key-value pair table
-function M.ValidationException(args)
-	assert(args, "You must provide an argument table when creating ValidationException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertValidationException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ResourceInUseException = { nil }
-
-function asserts.AssertResourceInUseException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceInUseException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ResourceInUseException[k], "ResourceInUseException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ResourceInUseException
--- <p>The resource you are attempting to change is in use. For example, you are attempting to delete a pipeline that is currently in use.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ResourceInUseException structure as a key-value pair table
-function M.ResourceInUseException(args)
-	assert(args, "You must provide an argument table when creating ResourceInUseException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertResourceInUseException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.CreatePipelineRequest = { ["ContentConfig"] = true, ["ThumbnailConfig"] = true, ["Name"] = true, ["Notifications"] = true, ["AwsKmsKeyArn"] = true, ["InputBucket"] = true, ["OutputBucket"] = true, ["Role"] = true, nil }
 
 function asserts.AssertCreatePipelineRequest(struct)
@@ -1803,8 +1655,8 @@ end
 -- * ContentConfig [PipelineOutputConfig] <p>The optional <code>ContentConfig</code> object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save transcoded files and playlists: which bucket to use, which users you want to have access to the files, the type of access you want users to have, and the storage class that you want to assign to the files.</p> <p>If you specify values for <code>ContentConfig</code>, you must also specify values for <code>ThumbnailConfig</code>.</p> <p>If you specify values for <code>ContentConfig</code> and <code>ThumbnailConfig</code>, omit the <code>OutputBucket</code> object.</p> <ul> <li> <p> <b>Bucket</b>: The Amazon S3 bucket in which you want Elastic Transcoder to save transcoded files and playlists.</p> </li> <li> <p> <b>Permissions</b> (Optional): The Permissions object specifies which users you want to have access to transcoded files and the type of access you want them to have. You can grant permissions to a maximum of 30 users and/or predefined Amazon S3 groups.</p> </li> <li> <p> <b>Grantee Type</b>: Specify the type of value that appears in the <code>Grantee</code> object: </p> <ul> <li> <p> <b>Canonical</b>: The value in the <code>Grantee</code> object is either the canonical user ID for an AWS account or an origin access identity for an Amazon CloudFront distribution. For more information about canonical user IDs, see Access Control List (ACL) Overview in the Amazon Simple Storage Service Developer Guide. For more information about using CloudFront origin access identities to require that users use CloudFront URLs instead of Amazon S3 URLs, see Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content.</p> <important> <p>A canonical user ID is not the same as an AWS account number.</p> </important> </li> <li> <p> <b>Email</b>: The value in the <code>Grantee</code> object is the registered email address of an AWS account.</p> </li> <li> <p> <b>Group</b>: The value in the <code>Grantee</code> object is one of the following predefined Amazon S3 groups: <code>AllUsers</code>, <code>AuthenticatedUsers</code>, or <code>LogDelivery</code>.</p> </li> </ul> </li> <li> <p> <b>Grantee</b>: The AWS user or group that you want to have access to transcoded files and playlists. To identify the user or group, you can specify the canonical user ID for an AWS account, an origin access identity for a CloudFront distribution, the registered email address of an AWS account, or a predefined Amazon S3 group </p> </li> <li> <p> <b>Access</b>: The permission that you want to give to the AWS user that you specified in <code>Grantee</code>. Permissions are granted on the files that Elastic Transcoder adds to the bucket, including playlists and video files. Valid values include: </p> <ul> <li> <p> <code>READ</code>: The grantee can read the objects and metadata for objects that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> <li> <p> <code>READ_ACP</code>: The grantee can read the object ACL for objects that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> <li> <p> <code>WRITE_ACP</code>: The grantee can write the ACL for the objects that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> <li> <p> <code>FULL_CONTROL</code>: The grantee has <code>READ</code>, <code>READ_ACP</code>, and <code>WRITE_ACP</code> permissions for the objects that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> </ul> </li> <li> <p> <b>StorageClass</b>: The Amazon S3 storage class, <code>Standard</code> or <code>ReducedRedundancy</code>, that you want Elastic Transcoder to assign to the video files and playlists that it stores in your Amazon S3 bucket.</p> </li> </ul>
 -- * ThumbnailConfig [PipelineOutputConfig] <p>The <code>ThumbnailConfig</code> object specifies several values, including the Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail files, which users you want to have access to the files, the type of access you want users to have, and the storage class that you want to assign to the files.</p> <p>If you specify values for <code>ContentConfig</code>, you must also specify values for <code>ThumbnailConfig</code> even if you don't want to create thumbnails.</p> <p>If you specify values for <code>ContentConfig</code> and <code>ThumbnailConfig</code>, omit the <code>OutputBucket</code> object.</p> <ul> <li> <p> <b>Bucket</b>: The Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail files.</p> </li> <li> <p> <b>Permissions</b> (Optional): The <code>Permissions</code> object specifies which users and/or predefined Amazon S3 groups you want to have access to thumbnail files, and the type of access you want them to have. You can grant permissions to a maximum of 30 users and/or predefined Amazon S3 groups.</p> </li> <li> <p> <b>GranteeType</b>: Specify the type of value that appears in the Grantee object: </p> <ul> <li> <p> <b>Canonical</b>: The value in the <code>Grantee</code> object is either the canonical user ID for an AWS account or an origin access identity for an Amazon CloudFront distribution.</p> <important> <p>A canonical user ID is not the same as an AWS account number.</p> </important> </li> <li> <p> <b>Email</b>: The value in the <code>Grantee</code> object is the registered email address of an AWS account. </p> </li> <li> <p> <b>Group</b>: The value in the <code>Grantee</code> object is one of the following predefined Amazon S3 groups: <code>AllUsers</code>, <code>AuthenticatedUsers</code>, or <code>LogDelivery</code>.</p> </li> </ul> </li> <li> <p> <b>Grantee</b>: The AWS user or group that you want to have access to thumbnail files. To identify the user or group, you can specify the canonical user ID for an AWS account, an origin access identity for a CloudFront distribution, the registered email address of an AWS account, or a predefined Amazon S3 group. </p> </li> <li> <p> <b>Access</b>: The permission that you want to give to the AWS user that you specified in <code>Grantee</code>. Permissions are granted on the thumbnail files that Elastic Transcoder adds to the bucket. Valid values include: </p> <ul> <li> <p> <code>READ</code>: The grantee can read the thumbnails and metadata for objects that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> <li> <p> <code>READ_ACP</code>: The grantee can read the object ACL for thumbnails that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> <li> <p> <code>WRITE_ACP</code>: The grantee can write the ACL for the thumbnails that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> <li> <p> <code>FULL_CONTROL</code>: The grantee has <code>READ</code>, <code>READ_ACP</code>, and <code>WRITE_ACP</code> permissions for the thumbnails that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> </ul> </li> <li> <p> <b>StorageClass</b>: The Amazon S3 storage class, <code>Standard</code> or <code>ReducedRedundancy</code>, that you want Elastic Transcoder to assign to the thumbnails that it stores in your Amazon S3 bucket.</p> </li> </ul>
 -- * Name [Name] <p>The name of the pipeline. We recommend that the name be unique within the AWS account, but uniqueness is not enforced.</p> <p>Constraints: Maximum 40 characters.</p>
--- * Notifications [Notifications] <p>The Amazon Simple Notification Service (Amazon SNS) topic that you want to notify to report job status.</p> <important> <p>To receive notifications, you must also subscribe to the new topic in the Amazon SNS console.</p> </important> <ul> <li> <p> <b>Progressing</b>: The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic that you want to notify when Elastic Transcoder has started to process a job in this pipeline. This is the ARN that Amazon SNS returned when you created the topic. For more information, see Create a Topic in the Amazon Simple Notification Service Developer Guide.</p> </li> <li> <p> <b>Completed</b>: The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder has finished processing a job in this pipeline. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p> <b>Warning</b>: The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters a warning condition while processing a job in this pipeline. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p> <b>Error</b>: The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters an error condition while processing a job in this pipeline. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> </ul>
--- * AwsKmsKeyArn [KeyArn] <p>The AWS Key Management Service (AWS KMS) key that you want to use with this pipeline.</p> <p>If you use either <code>S3</code> or <code>S3-AWS-KMS</code> as your <code>Encryption:Mode</code>, you don't need to provide a key with your job because a default key, known as an AWS-KMS key, is created for you automatically. You need to provide an AWS-KMS key only if you want to use a non-default AWS-KMS key, or if you are using an <code>Encryption:Mode</code> of <code>AES-PKCS7</code>, <code>AES-CTR</code>, or <code>AES-GCM</code>.</p>
+-- * Notifications [Notifications] <p>The Amazon Simple Notification Service (Amazon SNS) topic that you want to notify to report job status.</p> <important> <p>To receive notifications, you must also subscribe to the new topic in the Amazon SNS console.</p> </important> <ul> <li> <p> <b>Progressing</b>: The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic that you want to notify when Elastic Transcoder has started to process a job in this pipeline. This is the ARN that Amazon SNS returned when you created the topic. For more information, see Create a Topic in the Amazon Simple Notification Service Developer Guide.</p> </li> <li> <p> <b>Complete</b>: The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder has finished processing a job in this pipeline. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p> <b>Warning</b>: The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters a warning condition while processing a job in this pipeline. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p> <b>Error</b>: The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters an error condition while processing a job in this pipeline. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> </ul>
+-- * AwsKmsKeyArn [KeyArn] <p>The AWS Key Management Service (AWS KMS) key that you want to use with this pipeline.</p> <p>If you use either <code>s3</code> or <code>s3-aws-kms</code> as your <code>Encryption:Mode</code>, you don't need to provide a key with your job because a default key, known as an AWS-KMS key, is created for you automatically. You need to provide an AWS-KMS key only if you want to use a non-default AWS-KMS key, or if you are using an <code>Encryption:Mode</code> of <code>aes-cbc-pkcs7</code>, <code>aes-ctr</code>, or <code>aes-gcm</code>.</p>
 -- * InputBucket [BucketName] <p>The Amazon S3 bucket in which you saved the media files that you want to transcode.</p>
 -- * OutputBucket [BucketName] <p>The Amazon S3 bucket in which you want Elastic Transcoder to save the transcoded files. (Use this, or use ContentConfig:Bucket plus ThumbnailConfig:Bucket.)</p> <p>Specify this value when all of the following are true:</p> <ul> <li> <p>You want to save transcoded files, thumbnails (if any), and playlists (if any) together in one bucket.</p> </li> <li> <p>You do not want to specify the users or groups who have access to the transcoded files, thumbnails, and playlists.</p> </li> <li> <p>You do not want to specify the permissions that Elastic Transcoder grants to the files. </p> <important> <p>When Elastic Transcoder saves files in <code>OutputBucket</code>, it grants full control over the files only to the AWS account that owns the role that is specified by <code>Role</code>.</p> </important> </li> <li> <p>You want to associate the transcoded files and thumbnails with the Amazon S3 Standard storage class.</p> </li> </ul> <p>If you want to save transcoded files and playlists in one bucket and thumbnails in another bucket, specify which users can access the transcoded files or the permissions the users have, or change the Amazon S3 storage class, omit <code>OutputBucket</code> and specify values for <code>ContentConfig</code> and <code>ThumbnailConfig</code> instead.</p>
 -- * Role [Role] <p>The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to use to create the pipeline.</p>
@@ -2005,8 +1857,8 @@ end
 -- * ContentConfig [PipelineOutputConfig] <p>The optional <code>ContentConfig</code> object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save transcoded files and playlists: which bucket to use, which users you want to have access to the files, the type of access you want users to have, and the storage class that you want to assign to the files.</p> <p>If you specify values for <code>ContentConfig</code>, you must also specify values for <code>ThumbnailConfig</code>.</p> <p>If you specify values for <code>ContentConfig</code> and <code>ThumbnailConfig</code>, omit the <code>OutputBucket</code> object.</p> <ul> <li> <p> <b>Bucket</b>: The Amazon S3 bucket in which you want Elastic Transcoder to save transcoded files and playlists.</p> </li> <li> <p> <b>Permissions</b> (Optional): The Permissions object specifies which users you want to have access to transcoded files and the type of access you want them to have. You can grant permissions to a maximum of 30 users and/or predefined Amazon S3 groups.</p> </li> <li> <p> <b>Grantee Type</b>: Specify the type of value that appears in the <code>Grantee</code> object:</p> <ul> <li> <p> <b>Canonical</b>: The value in the <code>Grantee</code> object is either the canonical user ID for an AWS account or an origin access identity for an Amazon CloudFront distribution. For more information about canonical user IDs, see Access Control List (ACL) Overview in the Amazon Simple Storage Service Developer Guide. For more information about using CloudFront origin access identities to require that users use CloudFront URLs instead of Amazon S3 URLs, see Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content.</p> <important> <p>A canonical user ID is not the same as an AWS account number.</p> </important> </li> <li> <p> <b>Email</b>: The value in the <code>Grantee</code> object is the registered email address of an AWS account.</p> </li> <li> <p> <b>Group</b>: The value in the <code>Grantee</code> object is one of the following predefined Amazon S3 groups: <code>AllUsers</code>, <code>AuthenticatedUsers</code>, or <code>LogDelivery</code>.</p> </li> </ul> </li> <li> <p> <b>Grantee</b>: The AWS user or group that you want to have access to transcoded files and playlists. To identify the user or group, you can specify the canonical user ID for an AWS account, an origin access identity for a CloudFront distribution, the registered email address of an AWS account, or a predefined Amazon S3 group </p> </li> <li> <p> <b>Access</b>: The permission that you want to give to the AWS user that you specified in <code>Grantee</code>. Permissions are granted on the files that Elastic Transcoder adds to the bucket, including playlists and video files. Valid values include: </p> <ul> <li> <p> <code>READ</code>: The grantee can read the objects and metadata for objects that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> <li> <p> <code>READ_ACP</code>: The grantee can read the object ACL for objects that Elastic Transcoder adds to the Amazon S3 bucket. </p> </li> <li> <p> <code>WRITE_ACP</code>: The grantee can write the ACL for the objects that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> <li> <p> <code>FULL_CONTROL</code>: The grantee has <code>READ</code>, <code>READ_ACP</code>, and <code>WRITE_ACP</code> permissions for the objects that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> </ul> </li> <li> <p> <b>StorageClass</b>: The Amazon S3 storage class, <code>Standard</code> or <code>ReducedRedundancy</code>, that you want Elastic Transcoder to assign to the video files and playlists that it stores in your Amazon S3 bucket.</p> </li> </ul>
 -- * ThumbnailConfig [PipelineOutputConfig] <p>The <code>ThumbnailConfig</code> object specifies several values, including the Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail files, which users you want to have access to the files, the type of access you want users to have, and the storage class that you want to assign to the files.</p> <p>If you specify values for <code>ContentConfig</code>, you must also specify values for <code>ThumbnailConfig</code> even if you don't want to create thumbnails.</p> <p>If you specify values for <code>ContentConfig</code> and <code>ThumbnailConfig</code>, omit the <code>OutputBucket</code> object.</p> <ul> <li> <p> <b>Bucket</b>: The Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail files.</p> </li> <li> <p> <b>Permissions</b> (Optional): The <code>Permissions</code> object specifies which users and/or predefined Amazon S3 groups you want to have access to thumbnail files, and the type of access you want them to have. You can grant permissions to a maximum of 30 users and/or predefined Amazon S3 groups.</p> </li> <li> <p> <b>GranteeType</b>: Specify the type of value that appears in the Grantee object:</p> <ul> <li> <p> <b>Canonical</b>: The value in the <code>Grantee</code> object is either the canonical user ID for an AWS account or an origin access identity for an Amazon CloudFront distribution.</p> <important> <p>A canonical user ID is not the same as an AWS account number.</p> </important> </li> <li> <p> <b>Email</b>: The value in the <code>Grantee</code> object is the registered email address of an AWS account.</p> </li> <li> <p> <b>Group</b>: The value in the <code>Grantee</code> object is one of the following predefined Amazon S3 groups: <code>AllUsers</code>, <code>AuthenticatedUsers</code>, or <code>LogDelivery</code>.</p> </li> </ul> </li> <li> <p> <b>Grantee</b>: The AWS user or group that you want to have access to thumbnail files. To identify the user or group, you can specify the canonical user ID for an AWS account, an origin access identity for a CloudFront distribution, the registered email address of an AWS account, or a predefined Amazon S3 group. </p> </li> <li> <p> <b>Access</b>: The permission that you want to give to the AWS user that you specified in <code>Grantee</code>. Permissions are granted on the thumbnail files that Elastic Transcoder adds to the bucket. Valid values include: </p> <ul> <li> <p> <code>READ</code>: The grantee can read the thumbnails and metadata for objects that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> <li> <p> <code>READ_ACP</code>: The grantee can read the object ACL for thumbnails that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> <li> <p> <code>WRITE_ACP</code>: The grantee can write the ACL for the thumbnails that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> <li> <p> <code>FULL_CONTROL</code>: The grantee has <code>READ</code>, <code>READ_ACP</code>, and <code>WRITE_ACP</code> permissions for the thumbnails that Elastic Transcoder adds to the Amazon S3 bucket. </p> </li> </ul> </li> <li> <p> <b>StorageClass</b>: The Amazon S3 storage class, <code>Standard</code> or <code>ReducedRedundancy</code>, that you want Elastic Transcoder to assign to the thumbnails that it stores in your Amazon S3 bucket.</p> </li> </ul>
 -- * Name [Name] <p>The name of the pipeline. We recommend that the name be unique within the AWS account, but uniqueness is not enforced.</p> <p>Constraints: Maximum 40 characters</p>
--- * Notifications [Notifications] <p>The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic that you want to notify to report job status.</p> <important> <p>To receive notifications, you must also subscribe to the new topic in the Amazon SNS console.</p> </important> <ul> <li> <p> <b>Progressing</b>: The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic that you want to notify when Elastic Transcoder has started to process jobs that are added to this pipeline. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p> <b>Completed</b>: The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder has finished processing a job. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p> <b>Warning</b>: The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters a warning condition. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p> <b>Error</b>: The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters an error condition. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> </ul>
--- * AwsKmsKeyArn [KeyArn] <p>The AWS Key Management Service (AWS KMS) key that you want to use with this pipeline.</p> <p>If you use either <code>S3</code> or <code>S3-AWS-KMS</code> as your <code>Encryption:Mode</code>, you don't need to provide a key with your job because a default key, known as an AWS-KMS key, is created for you automatically. You need to provide an AWS-KMS key only if you want to use a non-default AWS-KMS key, or if you are using an <code>Encryption:Mode</code> of <code>AES-PKCS7</code>, <code>AES-CTR</code>, or <code>AES-GCM</code>.</p>
+-- * Notifications [Notifications] <p>The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic that you want to notify to report job status.</p> <important> <p>To receive notifications, you must also subscribe to the new topic in the Amazon SNS console.</p> </important> <ul> <li> <p> <b>Progressing</b>: The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic that you want to notify when Elastic Transcoder has started to process jobs that are added to this pipeline. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p> <b>Complete</b>: The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder has finished processing a job. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p> <b>Warning</b>: The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters a warning condition. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p> <b>Error</b>: The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters an error condition. This is the ARN that Amazon SNS returned when you created the topic.</p> </li> </ul>
+-- * AwsKmsKeyArn [KeyArn] <p>The AWS Key Management Service (AWS KMS) key that you want to use with this pipeline.</p> <p>If you use either <code>s3</code> or <code>s3-aws-kms</code> as your <code>Encryption:Mode</code>, you don't need to provide a key with your job because a default key, known as an AWS-KMS key, is created for you automatically. You need to provide an AWS-KMS key only if you want to use a non-default AWS-KMS key, or if you are using an <code>Encryption:Mode</code> of <code>aes-cbc-pkcs7</code>, <code>aes-ctr</code>, or <code>aes-gcm</code>.</p>
 -- * InputBucket [BucketName] <p>The Amazon S3 bucket in which you saved the media files that you want to transcode and the graphics that you want to use as watermarks.</p>
 -- * Role [Role] <p>The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to use to transcode jobs for this pipeline.</p>
 -- * Id [Id] <p>The ID of the pipeline that you want to update.</p>
@@ -2161,80 +2013,6 @@ function M.InputCaptions(args)
 		["CaptionSources"] = args["CaptionSources"],
 	}
 	asserts.AssertInputCaptions(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ResourceNotFoundException = { nil }
-
-function asserts.AssertResourceNotFoundException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ResourceNotFoundException
--- <p>The requested resource does not exist or is not available. For example, the pipeline to which you're trying to add a job doesn't exist or is still being created.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ResourceNotFoundException structure as a key-value pair table
-function M.ResourceNotFoundException(args)
-	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertResourceNotFoundException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DeletePipelineRequest = { ["Id"] = true, nil }
-
-function asserts.AssertDeletePipelineRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DeletePipelineRequest to be of type 'table'")
-	assert(struct["Id"], "Expected key Id to exist in table")
-	if struct["Id"] then asserts.AssertId(struct["Id"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DeletePipelineRequest[k], "DeletePipelineRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DeletePipelineRequest
--- <p>The <code>DeletePipelineRequest</code> structure.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Id [Id] <p>The identifier of the pipeline that you want to delete.</p>
--- Required key: Id
--- @return DeletePipelineRequest structure as a key-value pair table
-function M.DeletePipelineRequest(args)
-	assert(args, "You must provide an argument table when creating DeletePipelineRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-        ["{Id}"] = args["Id"],
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Id"] = args["Id"],
-	}
-	asserts.AssertDeletePipelineRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2540,8 +2318,8 @@ end
 -- * ContentConfig [PipelineOutputConfig] <p>Information about the Amazon S3 bucket in which you want Elastic Transcoder to save transcoded files and playlists. Either you specify both <code>ContentConfig</code> and <code>ThumbnailConfig</code>, or you specify <code>OutputBucket</code>.</p> <ul> <li> <p> <b>Bucket</b>: The Amazon S3 bucket in which you want Elastic Transcoder to save transcoded files and playlists.</p> </li> <li> <p> <b>Permissions</b>: A list of the users and/or predefined Amazon S3 groups you want to have access to transcoded files and playlists, and the type of access that you want them to have. </p> <ul> <li> <p>GranteeType: The type of value that appears in the <code>Grantee</code> object: </p> <ul> <li> <p> <code>Canonical</code>: Either the canonical user ID for an AWS account or an origin access identity for an Amazon CloudFront distribution.</p> </li> <li> <p> <code>Email</code>: The registered email address of an AWS account.</p> </li> <li> <p> <code>Group</code>: One of the following predefined Amazon S3 groups: <code>AllUsers</code>, <code>AuthenticatedUsers</code>, or <code>LogDelivery</code>.</p> </li> </ul> </li> <li> <p> <code>Grantee</code>: The AWS user or group that you want to have access to transcoded files and playlists.</p> </li> <li> <p> <code>Access</code>: The permission that you want to give to the AWS user that is listed in <code>Grantee</code>. Valid values include:</p> <ul> <li> <p> <code>READ</code>: The grantee can read the objects and metadata for objects that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> <li> <p> <code>READ_ACP</code>: The grantee can read the object ACL for objects that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> <li> <p> <code>WRITE_ACP</code>: The grantee can write the ACL for the objects that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> <li> <p> <code>FULL_CONTROL</code>: The grantee has <code>READ</code>, <code>READ_ACP</code>, and <code>WRITE_ACP</code> permissions for the objects that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> </ul> </li> </ul> </li> <li> <p> <b>StorageClass</b>: The Amazon S3 storage class, Standard or ReducedRedundancy, that you want Elastic Transcoder to assign to the video files and playlists that it stores in your Amazon S3 bucket. </p> </li> </ul>
 -- * Name [Name] <p>The name of the pipeline. We recommend that the name be unique within the AWS account, but uniqueness is not enforced.</p> <p>Constraints: Maximum 40 characters</p>
 -- * ThumbnailConfig [PipelineOutputConfig] <p>Information about the Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail files. Either you specify both <code>ContentConfig</code> and <code>ThumbnailConfig</code>, or you specify <code>OutputBucket</code>.</p> <ul> <li> <p> <code>Bucket</code>: The Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail files. </p> </li> <li> <p> <code>Permissions</code>: A list of the users and/or predefined Amazon S3 groups you want to have access to thumbnail files, and the type of access that you want them to have. </p> <ul> <li> <p>GranteeType: The type of value that appears in the Grantee object:</p> <ul> <li> <p> <code>Canonical</code>: Either the canonical user ID for an AWS account or an origin access identity for an Amazon CloudFront distribution.</p> <important> <p>A canonical user ID is not the same as an AWS account number.</p> </important> </li> <li> <p> <code>Email</code>: The registered email address of an AWS account.</p> </li> <li> <p> <code>Group</code>: One of the following predefined Amazon S3 groups: <code>AllUsers</code>, <code>AuthenticatedUsers</code>, or <code>LogDelivery</code>.</p> </li> </ul> </li> <li> <p> <code>Grantee</code>: The AWS user or group that you want to have access to thumbnail files.</p> </li> <li> <p>Access: The permission that you want to give to the AWS user that is listed in Grantee. Valid values include: </p> <ul> <li> <p> <code>READ</code>: The grantee can read the thumbnails and metadata for thumbnails that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> <li> <p> <code>READ_ACP</code>: The grantee can read the object ACL for thumbnails that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> <li> <p> <code>WRITE_ACP</code>: The grantee can write the ACL for the thumbnails that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> <li> <p> <code>FULL_CONTROL</code>: The grantee has READ, READ_ACP, and WRITE_ACP permissions for the thumbnails that Elastic Transcoder adds to the Amazon S3 bucket.</p> </li> </ul> </li> </ul> </li> <li> <p> <code>StorageClass</code>: The Amazon S3 storage class, <code>Standard</code> or <code>ReducedRedundancy</code>, that you want Elastic Transcoder to assign to the thumbnails that it stores in your Amazon S3 bucket.</p> </li> </ul>
--- * AwsKmsKeyArn [KeyArn] <p>The AWS Key Management Service (AWS KMS) key that you want to use with this pipeline.</p> <p>If you use either <code>S3</code> or <code>S3-AWS-KMS</code> as your <code>Encryption:Mode</code>, you don't need to provide a key with your job because a default key, known as an AWS-KMS key, is created for you automatically. You need to provide an AWS-KMS key only if you want to use a non-default AWS-KMS key, or if you are using an <code>Encryption:Mode</code> of <code>AES-PKCS7</code>, <code>AES-CTR</code>, or <code>AES-GCM</code>.</p>
--- * Notifications [Notifications] <p>The Amazon Simple Notification Service (Amazon SNS) topic that you want to notify to report job status.</p> <important> <p>To receive notifications, you must also subscribe to the new topic in the Amazon SNS console.</p> </important> <ul> <li> <p> <b>Progressing</b> (optional): The Amazon Simple Notification Service (Amazon SNS) topic that you want to notify when Elastic Transcoder has started to process the job.</p> </li> <li> <p> <b>Completed</b> (optional): The Amazon SNS topic that you want to notify when Elastic Transcoder has finished processing the job.</p> </li> <li> <p> <b>Warning</b> (optional): The Amazon SNS topic that you want to notify when Elastic Transcoder encounters a warning condition.</p> </li> <li> <p> <b>Error</b> (optional): The Amazon SNS topic that you want to notify when Elastic Transcoder encounters an error condition.</p> </li> </ul>
+-- * AwsKmsKeyArn [KeyArn] <p>The AWS Key Management Service (AWS KMS) key that you want to use with this pipeline.</p> <p>If you use either <code>s3</code> or <code>s3-aws-kms</code> as your <code>Encryption:Mode</code>, you don't need to provide a key with your job because a default key, known as an AWS-KMS key, is created for you automatically. You need to provide an AWS-KMS key only if you want to use a non-default AWS-KMS key, or if you are using an <code>Encryption:Mode</code> of <code>aes-cbc-pkcs7</code>, <code>aes-ctr</code>, or <code>aes-gcm</code>.</p>
+-- * Notifications [Notifications] <p>The Amazon Simple Notification Service (Amazon SNS) topic that you want to notify to report job status.</p> <important> <p>To receive notifications, you must also subscribe to the new topic in the Amazon SNS console.</p> </important> <ul> <li> <p> <b>Progressing</b> (optional): The Amazon Simple Notification Service (Amazon SNS) topic that you want to notify when Elastic Transcoder has started to process the job.</p> </li> <li> <p> <b>Complete</b> (optional): The Amazon SNS topic that you want to notify when Elastic Transcoder has finished processing the job.</p> </li> <li> <p> <b>Warning</b> (optional): The Amazon SNS topic that you want to notify when Elastic Transcoder encounters a warning condition.</p> </li> <li> <p> <b>Error</b> (optional): The Amazon SNS topic that you want to notify when Elastic Transcoder encounters an error condition.</p> </li> </ul>
 -- * Role [Role] <p>The IAM Amazon Resource Name (ARN) for the role that Elastic Transcoder uses to transcode jobs for this pipeline.</p>
 -- * InputBucket [BucketName] <p>The Amazon S3 bucket from which Elastic Transcoder gets media files for transcoding and the graphics files, if any, that you want to use for watermarks.</p>
 -- * OutputBucket [BucketName] <p>The Amazon S3 bucket in which you want Elastic Transcoder to save transcoded files, thumbnails, and playlists. Either you specify this value, or you specify both <code>ContentConfig</code> and <code>ThumbnailConfig</code>.</p>
@@ -2595,7 +2373,7 @@ function asserts.AssertPlayReadyDrm(struct)
 end
 
 --- Create a structure of type PlayReadyDrm
--- <p>The PlayReady DRM settings, if any, that you want Elastic Transcoder to apply to the output files associated with this playlist.</p> <p>PlayReady DRM encrypts your media files using <code>AES-CTR</code> encryption.</p> <p>If you use DRM for an <code>HLSv3</code> playlist, your outputs must have a master playlist.</p>
+-- <p>The PlayReady DRM settings, if any, that you want Elastic Transcoder to apply to the output files associated with this playlist.</p> <p>PlayReady DRM encrypts your media files using <code>aes-ctr</code> encryption.</p> <p>If you use DRM for an <code>HLSv3</code> playlist, your outputs must have a master playlist.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * KeyId [KeyIdGuid] <p>The ID for your DRM key, so that your DRM license provider knows which key to provide.</p> <p>The key ID must be provided in big endian, and Elastic Transcoder converts it to little endian before inserting it into the PlayReady DRM headers. If you are unsure whether your license server provides your key ID in big or little endian, check with your DRM provider.</p>
@@ -2774,40 +2552,6 @@ function M.ReadJobResponse(args)
     }
 end
 
-keys.IncompatibleVersionException = { nil }
-
-function asserts.AssertIncompatibleVersionException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected IncompatibleVersionException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.IncompatibleVersionException[k], "IncompatibleVersionException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type IncompatibleVersionException
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return IncompatibleVersionException structure as a key-value pair table
-function M.IncompatibleVersionException(args)
-	assert(args, "You must provide an argument table when creating IncompatibleVersionException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertIncompatibleVersionException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.CaptionFormat = { ["Encryption"] = true, ["Pattern"] = true, ["Format"] = true, nil }
 
 function asserts.AssertCaptionFormat(struct)
@@ -2895,40 +2639,6 @@ function M.AudioParameters(args)
 		["BitRate"] = args["BitRate"],
 	}
 	asserts.AssertAudioParameters(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.AccessDeniedException = { nil }
-
-function asserts.AssertAccessDeniedException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected AccessDeniedException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.AccessDeniedException[k], "AccessDeniedException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type AccessDeniedException
--- <p>General authentication failure. The request was not signed correctly.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return AccessDeniedException structure as a key-value pair table
-function M.AccessDeniedException(args)
-	assert(args, "You must provide an argument table when creating AccessDeniedException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertAccessDeniedException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3192,6 +2902,58 @@ function M.CreateJobPlaylist(args)
 		["Format"] = args["Format"],
 	}
 	asserts.AssertCreateJobPlaylist(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.HlsContentProtection = { ["KeyMd5"] = true, ["KeyStoragePolicy"] = true, ["InitializationVector"] = true, ["LicenseAcquisitionUrl"] = true, ["Key"] = true, ["Method"] = true, nil }
+
+function asserts.AssertHlsContentProtection(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected HlsContentProtection to be of type 'table'")
+	if struct["KeyMd5"] then asserts.AssertBase64EncodedString(struct["KeyMd5"]) end
+	if struct["KeyStoragePolicy"] then asserts.AssertKeyStoragePolicy(struct["KeyStoragePolicy"]) end
+	if struct["InitializationVector"] then asserts.AssertZeroTo255String(struct["InitializationVector"]) end
+	if struct["LicenseAcquisitionUrl"] then asserts.AssertZeroTo512String(struct["LicenseAcquisitionUrl"]) end
+	if struct["Key"] then asserts.AssertBase64EncodedString(struct["Key"]) end
+	if struct["Method"] then asserts.AssertHlsContentProtectionMethod(struct["Method"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.HlsContentProtection[k], "HlsContentProtection contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type HlsContentProtection
+-- <p>The HLS content protection settings, if any, that you want Elastic Transcoder to apply to your output files.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * KeyMd5 [Base64EncodedString] <p>If Elastic Transcoder is generating your key for you, you must leave this field blank.</p> <p>The MD5 digest of the key that you want Elastic Transcoder to use to encrypt your output file, and that you want Elastic Transcoder to use as a checksum to make sure your key was not corrupted in transit. The key MD5 must be base64-encoded, and it must be exactly 16 bytes before being base64- encoded.</p>
+-- * KeyStoragePolicy [KeyStoragePolicy] <p>Specify whether you want Elastic Transcoder to write your HLS license key to an Amazon S3 bucket. If you choose <code>WithVariantPlaylists</code>, <code>LicenseAcquisitionUrl</code> must be left blank and Elastic Transcoder writes your data key into the same bucket as the associated playlist.</p>
+-- * InitializationVector [ZeroTo255String] <p>If Elastic Transcoder is generating your key for you, you must leave this field blank.</p> <p>The series of random bits created by a random bit generator, unique for every encryption operation, that you want Elastic Transcoder to use to encrypt your output files. The initialization vector must be base64-encoded, and it must be exactly 16 bytes before being base64-encoded.</p>
+-- * LicenseAcquisitionUrl [ZeroTo512String] <p>The location of the license key required to decrypt your HLS playlist. The URL must be an absolute path, and is referenced in the URI attribute of the EXT-X-KEY metadata tag in the playlist file.</p>
+-- * Key [Base64EncodedString] <p>If you want Elastic Transcoder to generate a key for you, leave this field blank.</p> <p>If you choose to supply your own key, you must encrypt the key by using AWS KMS. The key must be base64-encoded, and it must be one of the following bit lengths before being base64-encoded:</p> <p> <code>128</code>, <code>192</code>, or <code>256</code>. </p>
+-- * Method [HlsContentProtectionMethod] <p>The content protection method for your output. The only valid value is: <code>aes-128</code>.</p> <p>This value is written into the method attribute of the <code>EXT-X-KEY</code> metadata tag in the output playlist.</p>
+-- @return HlsContentProtection structure as a key-value pair table
+function M.HlsContentProtection(args)
+	assert(args, "You must provide an argument table when creating HlsContentProtection")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["KeyMd5"] = args["KeyMd5"],
+		["KeyStoragePolicy"] = args["KeyStoragePolicy"],
+		["InitializationVector"] = args["InitializationVector"],
+		["LicenseAcquisitionUrl"] = args["LicenseAcquisitionUrl"],
+		["Key"] = args["Key"],
+		["Method"] = args["Method"],
+	}
+	asserts.AssertHlsContentProtection(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3790,6 +3552,17 @@ function M.ThumbnailPattern(str)
 	return str
 end
 
+function asserts.AssertVideoCodec(str)
+	assert(str)
+	assert(type(str) == "string", "Expected VideoCodec to be of type 'string'")
+end
+
+--  
+function M.VideoCodec(str)
+	asserts.AssertVideoCodec(str)
+	return str
+end
+
 function asserts.AssertStorageClass(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StorageClass to be of type 'string'")
@@ -4077,17 +3850,6 @@ function M.MergePolicy(str)
 	return str
 end
 
-function asserts.AssertVideoCodec(str)
-	assert(str)
-	assert(type(str) == "string", "Expected VideoCodec to be of type 'string'")
-end
-
---  
-function M.VideoCodec(str)
-	asserts.AssertVideoCodec(str)
-	return str
-end
-
 function asserts.AssertKeyframesMaxDist(str)
 	assert(str)
 	assert(type(str) == "string", "Expected KeyframesMaxDist to be of type 'string'")
@@ -4336,7 +4098,7 @@ end
 function asserts.AssertJobInputs(list)
 	assert(list)
 	assert(type(list) == "table", "Expected JobInputs to be of type ''table")
-	assert(#list <= 10000, "Expected list to be contain 10000 elements")
+	assert(#list <= 200, "Expected list to be contain 200 elements")
 	for _,v in ipairs(list) do
 		asserts.AssertJobInput(v)
 	end
@@ -4459,6 +4221,21 @@ function M.SnsTopics(list)
 	return list
 end
 
+function asserts.AssertArtworks(list)
+	assert(list)
+	assert(type(list) == "table", "Expected Artworks to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertArtwork(v)
+	end
+end
+
+--  
+-- List of Artwork objects
+function M.Artworks(list)
+	asserts.AssertArtworks(list)
+	return list
+end
+
 function asserts.AssertComposition(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Composition to be of type ''table")
@@ -4516,21 +4293,6 @@ end
 -- List of Pipeline objects
 function M.Pipelines(list)
 	asserts.AssertPipelines(list)
-	return list
-end
-
-function asserts.AssertArtworks(list)
-	assert(list)
-	assert(type(list) == "table", "Expected Artworks to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertArtwork(v)
-	end
-end
-
---  
--- List of Artwork objects
-function M.Artworks(list)
-	asserts.AssertArtworks(list)
 	return list
 end
 

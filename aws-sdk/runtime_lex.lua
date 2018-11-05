@@ -62,44 +62,7 @@ function M.LimitExceededException(args)
     }
 end
 
-keys.BadRequestException = { ["message"] = true, nil }
-
-function asserts.AssertBadRequestException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected BadRequestException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.BadRequestException[k], "BadRequestException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type BadRequestException
--- <p> Request validation failed, there is no usable message in the context, or the bot build failed. </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [String] 
--- @return BadRequestException structure as a key-value pair table
-function M.BadRequestException(args)
-	assert(args, "You must provide an argument table when creating BadRequestException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertBadRequestException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.PostTextRequest = { ["inputText"] = true, ["userId"] = true, ["botName"] = true, ["sessionAttributes"] = true, ["botAlias"] = true, nil }
+keys.PostTextRequest = { ["requestAttributes"] = true, ["userId"] = true, ["botAlias"] = true, ["inputText"] = true, ["botName"] = true, ["sessionAttributes"] = true, nil }
 
 function asserts.AssertPostTextRequest(struct)
 	assert(struct)
@@ -108,11 +71,12 @@ function asserts.AssertPostTextRequest(struct)
 	assert(struct["botAlias"], "Expected key botAlias to exist in table")
 	assert(struct["userId"], "Expected key userId to exist in table")
 	assert(struct["inputText"], "Expected key inputText to exist in table")
-	if struct["inputText"] then asserts.AssertText(struct["inputText"]) end
+	if struct["requestAttributes"] then asserts.AssertStringMap(struct["requestAttributes"]) end
 	if struct["userId"] then asserts.AssertUserId(struct["userId"]) end
+	if struct["botAlias"] then asserts.AssertBotAlias(struct["botAlias"]) end
+	if struct["inputText"] then asserts.AssertText(struct["inputText"]) end
 	if struct["botName"] then asserts.AssertBotName(struct["botName"]) end
 	if struct["sessionAttributes"] then asserts.AssertStringMap(struct["sessionAttributes"]) end
-	if struct["botAlias"] then asserts.AssertBotAlias(struct["botAlias"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.PostTextRequest[k], "PostTextRequest contains unknown key " .. tostring(k))
 	end
@@ -122,11 +86,12 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * inputText [Text] <p>The text that the user entered (Amazon Lex interprets this text).</p>
--- * userId [UserId] <p>The ID of the client application user. The application developer decides the user IDs. At runtime, each request must include the user ID. Typically, each of your application users should have a unique ID. Note the following considerations: </p> <ul> <li> <p> If you want a user to start a conversation on one device and continue the conversation on another device, you might choose a user-specific identifier, such as a login or Amazon Cognito user ID (assuming your application is using Amazon Cognito). </p> </li> <li> <p> If you want the same user to be able to have two independent conversations on two different devices, you might choose a device-specific identifier, such as device ID, or some globally unique identifier. </p> </li> </ul>
--- * botName [BotName] <p>The name of the Amazon Lex bot.</p>
--- * sessionAttributes [StringMap] <p> By using session attributes, a client application can pass contextual information in the request to Amazon Lex For example, </p> <ul> <li> <p>In Getting Started Exercise 1, the example bot uses the <code>price</code> session attribute to maintain the price of the flowers ordered (for example, "Price":25). The code hook (the Lambda function) sets this attribute based on the type of flowers ordered. For more information, see <a href="http://docs.aws.amazon.com/lex/latest/dg/gs-bp-details-after-lambda.html">Review the Details of Information Flow</a>. </p> </li> <li> <p>In the BookTrip bot exercise, the bot uses the <code>currentReservation</code> session attribute to maintain slot data during the in-progress conversation to book a hotel or book a car. For more information, see <a href="http://docs.aws.amazon.com/lex/latest/dg/book-trip-detail-flow.html">Details of Information Flow</a>. </p> </li> <li> <p>You might use the session attributes (key, value pairs) to track the requestID of user requests.</p> </li> </ul> <p> Amazon Lex simply passes these session attributes to the Lambda functions configured for the intent.</p> <p>In your Lambda function, you can also use the session attributes for initialization and customization (prompts and response cards). Some examples are:</p> <ul> <li> <p> Initialization - In a pizza ordering bot, if you can pass the user location as a session attribute (for example, <code>"Location" : "111 Maple street"</code>), then your Lambda function might use this information to determine the closest pizzeria to place the order (perhaps to set the storeAddress slot value). </p> </li> <li> <p> Personalize prompts - For example, you can configure prompts to refer to the user name. (For example, "Hey [FirstName], what toppings would you like?"). You can pass the user name as a session attribute (<code>"FirstName" : "Joe"</code>) so that Amazon Lex can substitute the placeholder to provide a personalize prompt to the user ("Hey Joe, what toppings would you like?"). </p> </li> </ul> <note> <p> Amazon Lex does not persist session attributes. </p> <p> If you configure a code hook for the intent, Amazon Lex passes the incoming session attributes to the Lambda function. If you want Amazon Lex to return these session attributes back to the client, the Lambda function must return them. </p> <p> If there is no code hook configured for the intent, Amazon Lex simply returns the session attributes back to the client application. </p> </note>
+-- * requestAttributes [StringMap] <p>Request-specific information passed between Amazon Lex and a client application.</p> <p>The namespace <code>x-amz-lex:</code> is reserved for special attributes. Don't create any request attributes with the prefix <code>x-amz-lex:</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs">Setting Request Attributes</a>.</p>
+-- * userId [UserId] <p>The ID of the client application user. Amazon Lex uses this to identify a user's conversation with your bot. At runtime, each request must contain the <code>userID</code> field.</p> <p>To decide the user ID to use for your application, consider the following factors.</p> <ul> <li> <p>The <code>userID</code> field must not contain any personally identifiable information of the user, for example, name, personal identification numbers, or other end user personal information.</p> </li> <li> <p>If you want a user to start a conversation on one device and continue on another device, use a user-specific identifier.</p> </li> <li> <p>If you want the same user to be able to have two independent conversations on two different devices, choose a device-specific identifier.</p> </li> <li> <p>A user can't have two independent conversations with two different versions of the same bot. For example, a user can't have a conversation with the PROD and BETA versions of the same bot. If you anticipate that a user will need to have conversation with two different versions, for example, while testing, include the bot alias in the user ID to separate the two conversations.</p> </li> </ul>
 -- * botAlias [BotAlias] <p>The alias of the Amazon Lex bot.</p>
+-- * inputText [Text] <p>The text that the user entered (Amazon Lex interprets this text).</p>
+-- * botName [BotName] <p>The name of the Amazon Lex bot.</p>
+-- * sessionAttributes [StringMap] <p>Application-specific information passed between Amazon Lex and a client application.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs">Setting Session Attributes</a>.</p>
 -- Required key: botName
 -- Required key: botAlias
 -- Required key: userId
@@ -138,17 +103,18 @@ function M.PostTextRequest(args)
     }
     local uri_args = { 
         ["{userId}"] = args["userId"],
-        ["{botName}"] = args["botName"],
         ["{botAlias}"] = args["botAlias"],
+        ["{botName}"] = args["botName"],
     }
     local header_args = { 
     }
 	local all_args = { 
-		["inputText"] = args["inputText"],
+		["requestAttributes"] = args["requestAttributes"],
 		["userId"] = args["userId"],
+		["botAlias"] = args["botAlias"],
+		["inputText"] = args["inputText"],
 		["botName"] = args["botName"],
 		["sessionAttributes"] = args["sessionAttributes"],
-		["botAlias"] = args["botAlias"],
 	}
 	asserts.AssertPostTextRequest(all_args)
 	return {
@@ -171,7 +137,7 @@ function asserts.AssertDependencyFailedException(struct)
 end
 
 --- Create a structure of type DependencyFailedException
--- <p> One of the downstream dependencies, such as AWS Lambda or Amazon Polly, threw an exception. For example, if Amazon Lex does not have sufficient permissions to call a Lambda function, it results in Lambda throwing an exception. </p>
+-- <p> One of the dependencies, such as AWS Lambda or Amazon Polly, threw an exception. For example, </p> <ul> <li> <p>If Amazon Lex does not have sufficient permissions to call a Lambda function.</p> </li> <li> <p>If a Lambda function takes longer than 30 seconds to execute.</p> </li> <li> <p>If a fulfillment Lambda function returns a <code>Delegate</code> dialog action without removing any slot values.</p> </li> </ul>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Message [ErrorMessage] 
@@ -245,7 +211,7 @@ function asserts.AssertLoopDetectedException(struct)
 end
 
 --- Create a structure of type LoopDetectedException
--- <p>Lambda fulfilment function returned <code>DelegateDialogAction</code> to Amazon Lex without changing any slot values. </p>
+-- <p>This exception is not used.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Message [ErrorMessage] 
@@ -270,7 +236,7 @@ function M.LoopDetectedException(args)
     }
 end
 
-keys.PostContentRequest = { ["contentType"] = true, ["userId"] = true, ["botAlias"] = true, ["accept"] = true, ["inputStream"] = true, ["botName"] = true, ["sessionAttributes"] = true, nil }
+keys.PostContentRequest = { ["contentType"] = true, ["requestAttributes"] = true, ["userId"] = true, ["botAlias"] = true, ["accept"] = true, ["inputStream"] = true, ["botName"] = true, ["sessionAttributes"] = true, nil }
 
 function asserts.AssertPostContentRequest(struct)
 	assert(struct)
@@ -281,12 +247,13 @@ function asserts.AssertPostContentRequest(struct)
 	assert(struct["contentType"], "Expected key contentType to exist in table")
 	assert(struct["inputStream"], "Expected key inputStream to exist in table")
 	if struct["contentType"] then asserts.AssertHttpContentType(struct["contentType"]) end
+	if struct["requestAttributes"] then asserts.AssertAttributesString(struct["requestAttributes"]) end
 	if struct["userId"] then asserts.AssertUserId(struct["userId"]) end
 	if struct["botAlias"] then asserts.AssertBotAlias(struct["botAlias"]) end
 	if struct["accept"] then asserts.AssertAccept(struct["accept"]) end
 	if struct["inputStream"] then asserts.AssertBlobStream(struct["inputStream"]) end
 	if struct["botName"] then asserts.AssertBotName(struct["botName"]) end
-	if struct["sessionAttributes"] then asserts.AssertString(struct["sessionAttributes"]) end
+	if struct["sessionAttributes"] then asserts.AssertAttributesString(struct["sessionAttributes"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.PostContentRequest[k], "PostContentRequest contains unknown key " .. tostring(k))
 	end
@@ -296,13 +263,14 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * contentType [HttpContentType] <p> You pass this values as the <code>Content-Type</code> HTTP header. </p> <p> Indicates the audio format or text. The header value must start with one of the following prefixes: </p> <ul> <li> <p>PCM format</p> <ul> <li> <p>audio/l16; rate=16000; channels=1</p> </li> <li> <p>audio/x-l16; sample-rate=16000; channel-count=1</p> </li> </ul> </li> <li> <p>Opus format</p> <ul> <li> <p>audio/x-cbr-opus-with-preamble; preamble-size=0; bit-rate=1; frame-size-milliseconds=1.1</p> </li> </ul> </li> <li> <p>Text format</p> <ul> <li> <p>text/plain; charset=utf-8</p> </li> </ul> </li> </ul>
--- * userId [UserId] <p>ID of the client application user. Typically, each of your application users should have a unique ID. The application developer decides the user IDs. At runtime, each request must include the user ID. Note the following considerations:</p> <ul> <li> <p> If you want a user to start conversation on one device and continue the conversation on another device, you might choose a user-specific identifier, such as the user's login, or Amazon Cognito user ID (assuming your application is using Amazon Cognito). </p> </li> <li> <p> If you want the same user to be able to have two independent conversations on two different devices, you might choose device-specific identifier, such as device ID, or some globally unique identifier. </p> </li> </ul>
+-- * contentType [HttpContentType] <p> You pass this value as the <code>Content-Type</code> HTTP header. </p> <p> Indicates the audio format or text. The header value must start with one of the following prefixes: </p> <ul> <li> <p>PCM format, audio data must be in little-endian byte order.</p> <ul> <li> <p>audio/l16; rate=16000; channels=1</p> </li> <li> <p>audio/x-l16; sample-rate=16000; channel-count=1</p> </li> <li> <p>audio/lpcm; sample-rate=8000; sample-size-bits=16; channel-count=1; is-big-endian=false </p> </li> </ul> </li> <li> <p>Opus format</p> <ul> <li> <p>audio/x-cbr-opus-with-preamble; preamble-size=0; bit-rate=256000; frame-size-milliseconds=4</p> </li> </ul> </li> <li> <p>Text format</p> <ul> <li> <p>text/plain; charset=utf-8</p> </li> </ul> </li> </ul>
+-- * requestAttributes [AttributesString] <p>You pass this value as the <code>x-amz-lex-request-attributes</code> HTTP header.</p> <p>Request-specific information passed between Amazon Lex and a client application. The value must be a JSON serialized and base64 encoded map with string keys and values. The total size of the <code>requestAttributes</code> and <code>sessionAttributes</code> headers is limited to 12 KB.</p> <p>The namespace <code>x-amz-lex:</code> is reserved for special attributes. Don't create any request attributes with the prefix <code>x-amz-lex:</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs">Setting Request Attributes</a>.</p>
+-- * userId [UserId] <p>The ID of the client application user. Amazon Lex uses this to identify a user's conversation with your bot. At runtime, each request must contain the <code>userID</code> field.</p> <p>To decide the user ID to use for your application, consider the following factors.</p> <ul> <li> <p>The <code>userID</code> field must not contain any personally identifiable information of the user, for example, name, personal identification numbers, or other end user personal information.</p> </li> <li> <p>If you want a user to start a conversation on one device and continue on another device, use a user-specific identifier.</p> </li> <li> <p>If you want the same user to be able to have two independent conversations on two different devices, choose a device-specific identifier.</p> </li> <li> <p>A user can't have two independent conversations with two different versions of the same bot. For example, a user can't have a conversation with the PROD and BETA versions of the same bot. If you anticipate that a user will need to have conversation with two different versions, for example, while testing, include the bot alias in the user ID to separate the two conversations.</p> </li> </ul>
 -- * botAlias [BotAlias] <p>Alias of the Amazon Lex bot.</p>
 -- * accept [Accept] <p> You pass this value as the <code>Accept</code> HTTP header. </p> <p> The message Amazon Lex returns in the response can be either text or speech based on the <code>Accept</code> HTTP header value in the request. </p> <ul> <li> <p> If the value is <code>text/plain; charset=utf-8</code>, Amazon Lex returns text in the response. </p> </li> <li> <p> If the value begins with <code>audio/</code>, Amazon Lex returns speech in the response. Amazon Lex uses Amazon Polly to generate the speech (using the configuration you specified in the <code>Accept</code> header). For example, if you specify <code>audio/mpeg</code> as the value, Amazon Lex returns speech in the MPEG format.</p> <p>The following are the accepted values:</p> <ul> <li> <p>audio/mpeg</p> </li> <li> <p>audio/ogg</p> </li> <li> <p>audio/pcm</p> </li> <li> <p>text/plain; charset=utf-8</p> </li> <li> <p>audio/* (defaults to mpeg)</p> </li> </ul> </li> </ul>
--- * inputStream [BlobStream] <p> User input in PCM or Opus audio format or text format as described in the <code>Content-Type</code> HTTP header. </p>
+-- * inputStream [BlobStream] <p> User input in PCM or Opus audio format or text format as described in the <code>Content-Type</code> HTTP header. </p> <p>You can stream audio data to Amazon Lex or you can create a local buffer that captures all of the audio data before sending. In general, you get better performance if you stream audio data rather than buffering the data locally.</p>
 -- * botName [BotName] <p>Name of the Amazon Lex bot.</p>
--- * sessionAttributes [String] <p>You pass this value in the <code>x-amz-lex-session-attributes</code> HTTP header. The value must be map (keys and values must be strings) that is JSON serialized and then base64 encoded.</p> <p> A session represents dialog between a user and Amazon Lex. At runtime, a client application can pass contextual information, in the request to Amazon Lex. For example, </p> <ul> <li> <p>You might use session attributes to track the requestID of user requests.</p> </li> <li> <p>In Getting Started Exercise 1, the example bot uses the price session attribute to maintain the price of flowers ordered (for example, "price":25). The code hook (Lambda function) sets this attribute based on the type of flowers ordered. For more information, see <a href="http://docs.aws.amazon.com/lex/latest/dg/gs-bp-details-after-lambda.html">Review the Details of Information Flow</a>. </p> </li> <li> <p>In the BookTrip bot exercise, the bot uses the <code>currentReservation</code> session attribute to maintains the slot data during the in-progress conversation to book a hotel or book a car. For more information, see <a href="http://docs.aws.amazon.com/lex/latest/dg/book-trip-detail-flow.html">Details of Information Flow</a>. </p> </li> </ul> <p> Amazon Lex passes these session attributes to the Lambda functions configured for the intent In the your Lambda function, you can use the session attributes for initialization and customization (prompts). Some examples are: </p> <ul> <li> <p> Initialization - In a pizza ordering bot, if you pass user location (for example, <code>"Location : 111 Maple Street"</code>), then your Lambda function might use this information to determine the closest pizzeria to place the order (and perhaps set the storeAddress slot value as well). </p> <p> Personalized prompts - For example, you can configure prompts to refer to the user by name (for example, "Hey [firstName], what toppings would you like?"). You can pass the user's name as a session attribute ("firstName": "Joe") so that Amazon Lex can substitute the placeholder to provide a personalized prompt to the user ("Hey Joe, what toppings would you like?"). </p> </li> </ul> <note> <p> Amazon Lex does not persist session attributes. </p> <p> If you configured a code hook for the intent, Amazon Lex passes the incoming session attributes to the Lambda function. The Lambda function must return these session attributes if you want Amazon Lex to return them to the client. </p> <p> If there is no code hook configured for the intent Amazon Lex simply returns the session attributes to the client application. </p> </note>
+-- * sessionAttributes [AttributesString] <p>You pass this value as the <code>x-amz-lex-session-attributes</code> HTTP header.</p> <p>Application-specific information passed between Amazon Lex and a client application. The value must be a JSON serialized and base64 encoded map with string keys and values. The total size of the <code>sessionAttributes</code> and <code>requestAttributes</code> headers is limited to 12 KB.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs">Setting Session Attributes</a>.</p>
 -- Required key: botName
 -- Required key: botAlias
 -- Required key: userId
@@ -320,11 +288,13 @@ function M.PostContentRequest(args)
     }
     local header_args = { 
         ["Content-Type"] = args["contentType"],
+        ["x-amz-lex-request-attributes"] = args["requestAttributes"],
         ["Accept"] = args["accept"],
         ["x-amz-lex-session-attributes"] = args["sessionAttributes"],
     }
 	local all_args = { 
 		["contentType"] = args["contentType"],
+		["requestAttributes"] = args["requestAttributes"],
 		["userId"] = args["userId"],
 		["botAlias"] = args["botAlias"],
 		["accept"] = args["accept"],
@@ -384,25 +354,69 @@ function M.ResponseCard(args)
     }
 end
 
-keys.NotFoundException = { ["message"] = true, nil }
+keys.Button = { ["text"] = true, ["value"] = true, nil }
 
-function asserts.AssertNotFoundException(struct)
+function asserts.AssertButton(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected NotFoundException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
+	assert(type(struct) == "table", "Expected Button to be of type 'table'")
+	assert(struct["text"], "Expected key text to exist in table")
+	assert(struct["value"], "Expected key value to exist in table")
+	if struct["text"] then asserts.AssertButtonTextStringWithLength(struct["text"]) end
+	if struct["value"] then asserts.AssertButtonValueStringWithLength(struct["value"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.NotFoundException[k], "NotFoundException contains unknown key " .. tostring(k))
+		assert(keys.Button[k], "Button contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type NotFoundException
--- <p>The resource (such as the Amazon Lex bot or an alias) that is referred to is not found.</p>
+--- Create a structure of type Button
+-- <p>Represents an option to be shown on the client platform (Facebook, Slack, etc.)</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * text [ButtonTextStringWithLength] <p>Text that is visible to the user on the button.</p>
+-- * value [ButtonValueStringWithLength] <p>The value sent to Amazon Lex when a user chooses the button. For example, consider button text "NYC." When the user chooses the button, the value sent can be "New York City."</p>
+-- Required key: text
+-- Required key: value
+-- @return Button structure as a key-value pair table
+function M.Button(args)
+	assert(args, "You must provide an argument table when creating Button")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["text"] = args["text"],
+		["value"] = args["value"],
+	}
+	asserts.AssertButton(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BadRequestException = { ["message"] = true, nil }
+
+function asserts.AssertBadRequestException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BadRequestException to be of type 'table'")
+	if struct["message"] then asserts.AssertString(struct["message"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BadRequestException[k], "BadRequestException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BadRequestException
+-- <p> Request validation failed, there is no usable message in the context, or the bot build failed, is still in progress, or contains unbuilt changes. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * message [String] 
--- @return NotFoundException structure as a key-value pair table
-function M.NotFoundException(args)
-	assert(args, "You must provide an argument table when creating NotFoundException")
+-- @return BadRequestException structure as a key-value pair table
+function M.BadRequestException(args)
+	assert(args, "You must provide an argument table when creating BadRequestException")
     local query_args = { 
     }
     local uri_args = { 
@@ -412,7 +426,7 @@ function M.NotFoundException(args)
 	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNotFoundException(all_args)
+	asserts.AssertBadRequestException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -450,50 +464,6 @@ function M.InternalFailureException(args)
 		["message"] = args["message"],
 	}
 	asserts.AssertInternalFailureException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.Button = { ["text"] = true, ["value"] = true, nil }
-
-function asserts.AssertButton(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected Button to be of type 'table'")
-	assert(struct["text"], "Expected key text to exist in table")
-	assert(struct["value"], "Expected key value to exist in table")
-	if struct["text"] then asserts.AssertButtonTextStringWithLength(struct["text"]) end
-	if struct["value"] then asserts.AssertButtonValueStringWithLength(struct["value"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.Button[k], "Button contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type Button
--- <p>Represents an option to be shown on the client platform (Facebook, Slack, etc.)</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * text [ButtonTextStringWithLength] <p>Text that is visible to the user on the button.</p>
--- * value [ButtonValueStringWithLength] <p>The value sent to Amazon Lex when a user chooses the button. For example, consider button text "NYC." When the user chooses the button, the value sent can be "New York City."</p>
--- Required key: text
--- Required key: value
--- @return Button structure as a key-value pair table
-function M.Button(args)
-	assert(args, "You must provide an argument table when creating Button")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["text"] = args["text"],
-		["value"] = args["value"],
-	}
-	asserts.AssertButton(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -613,6 +583,43 @@ function M.ConflictException(args)
     }
 end
 
+keys.NotFoundException = { ["message"] = true, nil }
+
+function asserts.AssertNotFoundException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected NotFoundException to be of type 'table'")
+	if struct["message"] then asserts.AssertString(struct["message"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.NotFoundException[k], "NotFoundException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type NotFoundException
+-- <p>The resource (such as the Amazon Lex bot or an alias) that is referred to is not found.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return NotFoundException structure as a key-value pair table
+function M.NotFoundException(args)
+	assert(args, "You must provide an argument table when creating NotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["message"] = args["message"],
+	}
+	asserts.AssertNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GenericAttachment = { ["buttons"] = true, ["imageUrl"] = true, ["attachmentLinkUrl"] = true, ["subTitle"] = true, ["title"] = true, nil }
 
 function asserts.AssertGenericAttachment(struct)
@@ -662,7 +669,7 @@ function M.GenericAttachment(args)
     }
 end
 
-keys.PostContentResponse = { ["contentType"] = true, ["slotToElicit"] = true, ["dialogState"] = true, ["intentName"] = true, ["audioStream"] = true, ["inputTranscript"] = true, ["slots"] = true, ["message"] = true, ["sessionAttributes"] = true, nil }
+keys.PostContentResponse = { ["contentType"] = true, ["slotToElicit"] = true, ["dialogState"] = true, ["intentName"] = true, ["messageFormat"] = true, ["inputTranscript"] = true, ["slots"] = true, ["message"] = true, ["sessionAttributes"] = true, ["audioStream"] = true, nil }
 
 function asserts.AssertPostContentResponse(struct)
 	assert(struct)
@@ -671,11 +678,12 @@ function asserts.AssertPostContentResponse(struct)
 	if struct["slotToElicit"] then asserts.AssertString(struct["slotToElicit"]) end
 	if struct["dialogState"] then asserts.AssertDialogState(struct["dialogState"]) end
 	if struct["intentName"] then asserts.AssertIntentName(struct["intentName"]) end
-	if struct["audioStream"] then asserts.AssertBlobStream(struct["audioStream"]) end
+	if struct["messageFormat"] then asserts.AssertMessageFormatType(struct["messageFormat"]) end
 	if struct["inputTranscript"] then asserts.AssertString(struct["inputTranscript"]) end
 	if struct["slots"] then asserts.AssertString(struct["slots"]) end
 	if struct["message"] then asserts.AssertText(struct["message"]) end
 	if struct["sessionAttributes"] then asserts.AssertString(struct["sessionAttributes"]) end
+	if struct["audioStream"] then asserts.AssertBlobStream(struct["audioStream"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.PostContentResponse[k], "PostContentResponse contains unknown key " .. tostring(k))
 	end
@@ -687,13 +695,14 @@ end
 -- Valid keys:
 -- * contentType [HttpContentType] <p>Content type as specified in the <code>Accept</code> HTTP header in the request.</p>
 -- * slotToElicit [String] <p> If the <code>dialogState</code> value is <code>ElicitSlot</code>, returns the name of the slot for which Amazon Lex is eliciting a value. </p>
--- * dialogState [DialogState] <p>Identifies the current state of the user interaction. Amazon Lex returns one of the following values as <code>dialogState</code>. The client can optionally use this information to customize the user interface. </p> <ul> <li> <p> <code>ElicitIntent</code> – Amazon Lex wants to elicit the user's intent. Consider the following examples: </p> <p> For example, a user might utter an intent ("I want to order a pizza"). If Amazon Lex cannot infer the user intent from this utterance, it will return this dialog state. </p> </li> <li> <p> <code>ConfirmIntent</code> – Amazon Lex is expecting a "yes" or "no" response. </p> <p>For example, Amazon Lex wants user confirmation before fulfilling an intent. Instead of a simple "yes" or "no" response, a user might respond with additional information. For example, "yes, but make it a thick crust pizza" or "no, I want to order a drink." Amazon Lex can process such additional information (in these examples, update the crust type slot or change the intent from OrderPizza to OrderDrink). </p> </li> <li> <p> <code>ElicitSlot</code> – Amazon Lex is expecting the value of a slot for the current intent. </p> <p> For example, suppose that in the response Amazon Lex sends this message: "What size pizza would you like?". A user might reply with the slot value (e.g., "medium"). The user might also provide additional information in the response (e.g., "medium thick crust pizza"). Amazon Lex can process such additional information appropriately. </p> </li> <li> <p> <code>Fulfilled</code> – Conveys that the Lambda function has successfully fulfilled the intent. </p> </li> <li> <p> <code>ReadyForFulfillment</code> – Conveys that the client has to fullfill the request. </p> </li> <li> <p> <code>Failed</code> – Conveys that the conversation with the user failed. </p> <p> This can happen for various reasons, including that the user does not provide an appropriate response to prompts from the service (you can configure how many times Amazon Lex can prompt a user for specific information), or if the Lambda function fails to fulfill the intent. </p> </li> </ul>
+-- * dialogState [DialogState] <p>Identifies the current state of the user interaction. Amazon Lex returns one of the following values as <code>dialogState</code>. The client can optionally use this information to customize the user interface. </p> <ul> <li> <p> <code>ElicitIntent</code> - Amazon Lex wants to elicit the user's intent. Consider the following examples: </p> <p> For example, a user might utter an intent ("I want to order a pizza"). If Amazon Lex cannot infer the user intent from this utterance, it will return this dialog state. </p> </li> <li> <p> <code>ConfirmIntent</code> - Amazon Lex is expecting a "yes" or "no" response. </p> <p>For example, Amazon Lex wants user confirmation before fulfilling an intent. Instead of a simple "yes" or "no" response, a user might respond with additional information. For example, "yes, but make it a thick crust pizza" or "no, I want to order a drink." Amazon Lex can process such additional information (in these examples, update the crust type slot or change the intent from OrderPizza to OrderDrink). </p> </li> <li> <p> <code>ElicitSlot</code> - Amazon Lex is expecting the value of a slot for the current intent. </p> <p> For example, suppose that in the response Amazon Lex sends this message: "What size pizza would you like?". A user might reply with the slot value (e.g., "medium"). The user might also provide additional information in the response (e.g., "medium thick crust pizza"). Amazon Lex can process such additional information appropriately. </p> </li> <li> <p> <code>Fulfilled</code> - Conveys that the Lambda function has successfully fulfilled the intent. </p> </li> <li> <p> <code>ReadyForFulfillment</code> - Conveys that the client has to fulfill the request. </p> </li> <li> <p> <code>Failed</code> - Conveys that the conversation with the user failed. </p> <p> This can happen for various reasons, including that the user does not provide an appropriate response to prompts from the service (you can configure how many times Amazon Lex can prompt a user for specific information), or if the Lambda function fails to fulfill the intent. </p> </li> </ul>
 -- * intentName [IntentName] <p>Current user intent that Amazon Lex is aware of.</p>
--- * audioStream [BlobStream] <p>The prompt (or statement) to convey to the user. This is based on the bot configuration and context. For example, if Amazon Lex did not understand the user intent, it sends the <code>clarificationPrompt</code> configured for the bot. If the intent requires confirmation before taking the fulfillment action, it sends the <code>confirmationPrompt</code>. Another example: Suppose that the Lambda function successfully fulfilled the intent, and sent a message to convey to the user. Then Amazon Lex sends that message in the response. </p>
--- * inputTranscript [String] <p>Transcript of the voice input to the operation.</p>
--- * slots [String] <p>Map of zero or more intent slots (name/value pairs) Amazon Lex detected from the user input during the conversation.</p>
--- * message [Text] <p> Message to convey to the user. It can come from the bot's configuration or a code hook (Lambda function). If the current intent is not configured with a code hook or if the code hook returned <code>Delegate</code> as the <code>dialogAction.type</code> in its response, then Amazon Lex decides the next course of action and selects an appropriate message from the bot configuration based on the current user interaction context. For example, if Amazon Lex is not able to understand the user input, it uses a clarification prompt message (For more information, see the Error Handling section in the Amazon Lex console). Another example: if the intent requires confirmation before fulfillment, then Amazon Lex uses the confirmation prompt message in the intent configuration. If the code hook returns a message, Amazon Lex passes it as-is in its response to the client. </p>
+-- * messageFormat [MessageFormatType] <p>The format of the response message. One of the following values:</p> <ul> <li> <p> <code>PlainText</code> - The message contains plain UTF-8 text.</p> </li> <li> <p> <code>CustomPayload</code> - The message is a custom format for the client.</p> </li> <li> <p> <code>SSML</code> - The message contains text formatted for voice output.</p> </li> <li> <p> <code>Composite</code> - The message contains an escaped JSON object containing one or more messages from the groups that messages were assigned to when the intent was created.</p> </li> </ul>
+-- * inputTranscript [String] <p>The text used to process the request.</p> <p>If the input was an audio stream, the <code>inputTranscript</code> field contains the text extracted from the audio stream. This is the text that is actually processed to recognize intents and slot values. You can use this information to determine if Amazon Lex is correctly processing the audio that you send.</p>
+-- * slots [String] <p>Map of zero or more intent slots (name/value pairs) Amazon Lex detected from the user input during the conversation.</p> <p>Amazon Lex creates a resolution list containing likely values for a slot. The value that it returns is determined by the <code>valueSelectionStrategy</code> selected when the slot type was created or updated. If <code>valueSelectionStrategy</code> is set to <code>ORIGINAL_VALUE</code>, the value provided by the user is returned, if the user value is similar to the slot values. If <code>valueSelectionStrategy</code> is set to <code>TOP_RESOLUTION</code> Amazon Lex returns the first value in the resolution list or, if there is no resolution list, null. If you don't specify a <code>valueSelectionStrategy</code>, the default is <code>ORIGINAL_VALUE</code>.</p>
+-- * message [Text] <p>The message to convey to the user. The message can come from the bot's configuration or from a Lambda function.</p> <p>If the intent is not configured with a Lambda function, or if the Lambda function returned <code>Delegate</code> as the <code>dialogAction.type</code> its response, Amazon Lex decides on the next course of action and selects an appropriate message from the bot's configuration based on the current interaction context. For example, if Amazon Lex isn't able to understand user input, it uses a clarification prompt message.</p> <p>When you create an intent you can assign messages to groups. When messages are assigned to groups Amazon Lex returns one message from each group in the response. The message field is an escaped JSON string containing the messages. For more information about the structure of the JSON string returned, see <a>msg-prompts-formats</a>.</p> <p>If the Lambda function returns a message, Amazon Lex passes it to the client in its response.</p>
 -- * sessionAttributes [String] <p> Map of key/value pairs representing the session-specific context information. </p>
+-- * audioStream [BlobStream] <p>The prompt (or statement) to convey to the user. This is based on the bot configuration and context. For example, if Amazon Lex did not understand the user intent, it sends the <code>clarificationPrompt</code> configured for the bot. If the intent requires confirmation before taking the fulfillment action, it sends the <code>confirmationPrompt</code>. Another example: Suppose that the Lambda function successfully fulfilled the intent, and sent a message to convey to the user. Then Amazon Lex sends that message in the response. </p>
 -- @return PostContentResponse structure as a key-value pair table
 function M.PostContentResponse(args)
 	assert(args, "You must provide an argument table when creating PostContentResponse")
@@ -706,6 +715,7 @@ function M.PostContentResponse(args)
         ["x-amz-lex-slot-to-elicit"] = args["slotToElicit"],
         ["x-amz-lex-dialog-state"] = args["dialogState"],
         ["x-amz-lex-intent-name"] = args["intentName"],
+        ["x-amz-lex-message-format"] = args["messageFormat"],
         ["x-amz-lex-input-transcript"] = args["inputTranscript"],
         ["x-amz-lex-slots"] = args["slots"],
         ["x-amz-lex-message"] = args["message"],
@@ -716,11 +726,12 @@ function M.PostContentResponse(args)
 		["slotToElicit"] = args["slotToElicit"],
 		["dialogState"] = args["dialogState"],
 		["intentName"] = args["intentName"],
-		["audioStream"] = args["audioStream"],
+		["messageFormat"] = args["messageFormat"],
 		["inputTranscript"] = args["inputTranscript"],
 		["slots"] = args["slots"],
 		["message"] = args["message"],
 		["sessionAttributes"] = args["sessionAttributes"],
+		["audioStream"] = args["audioStream"],
 	}
 	asserts.AssertPostContentResponse(all_args)
 	return {
@@ -768,7 +779,7 @@ function M.NotAcceptableException(args)
     }
 end
 
-keys.PostTextResponse = { ["slotToElicit"] = true, ["dialogState"] = true, ["intentName"] = true, ["responseCard"] = true, ["slots"] = true, ["message"] = true, ["sessionAttributes"] = true, nil }
+keys.PostTextResponse = { ["slotToElicit"] = true, ["dialogState"] = true, ["intentName"] = true, ["messageFormat"] = true, ["slots"] = true, ["responseCard"] = true, ["message"] = true, ["sessionAttributes"] = true, nil }
 
 function asserts.AssertPostTextResponse(struct)
 	assert(struct)
@@ -776,8 +787,9 @@ function asserts.AssertPostTextResponse(struct)
 	if struct["slotToElicit"] then asserts.AssertString(struct["slotToElicit"]) end
 	if struct["dialogState"] then asserts.AssertDialogState(struct["dialogState"]) end
 	if struct["intentName"] then asserts.AssertIntentName(struct["intentName"]) end
-	if struct["responseCard"] then asserts.AssertResponseCard(struct["responseCard"]) end
+	if struct["messageFormat"] then asserts.AssertMessageFormatType(struct["messageFormat"]) end
 	if struct["slots"] then asserts.AssertStringMap(struct["slots"]) end
+	if struct["responseCard"] then asserts.AssertResponseCard(struct["responseCard"]) end
 	if struct["message"] then asserts.AssertText(struct["message"]) end
 	if struct["sessionAttributes"] then asserts.AssertStringMap(struct["sessionAttributes"]) end
 	for k,_ in pairs(struct) do
@@ -790,11 +802,12 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * slotToElicit [String] <p>If the <code>dialogState</code> value is <code>ElicitSlot</code>, returns the name of the slot for which Amazon Lex is eliciting a value. </p>
--- * dialogState [DialogState] <p> Identifies the current state of the user interaction. Amazon Lex returns one of the following values as <code>dialogState</code>. The client can optionally use this information to customize the user interface. </p> <ul> <li> <p> <code>ElicitIntent</code> – Amazon Lex wants to elicit user intent. </p> <p>For example, a user might utter an intent ("I want to order a pizza"). If Amazon Lex cannot infer the user intent from this utterance, it will return this dialogState.</p> </li> <li> <p> <code>ConfirmIntent</code> – Amazon Lex is expecting a "yes" or "no" response. </p> <p> For example, Amazon Lex wants user confirmation before fulfilling an intent. </p> <p>Instead of a simple "yes" or "no," a user might respond with additional information. For example, "yes, but make it thick crust pizza" or "no, I want to order a drink". Amazon Lex can process such additional information (in these examples, update the crust type slot value, or change intent from OrderPizza to OrderDrink).</p> </li> <li> <p> <code>ElicitSlot</code> – Amazon Lex is expecting a slot value for the current intent. </p> <p>For example, suppose that in the response Amazon Lex sends this message: "What size pizza would you like?". A user might reply with the slot value (e.g., "medium"). The user might also provide additional information in the response (e.g., "medium thick crust pizza"). Amazon Lex can process such additional information appropriately. </p> </li> <li> <p> <code>Fulfilled</code> – Conveys that the Lambda function configured for the intent has successfully fulfilled the intent. </p> </li> <li> <p> <code>ReadyForFulfillment</code> – Conveys that the client has to fulfill the intent. </p> </li> <li> <p> <code>Failed</code> – Conveys that the conversation with the user failed. </p> <p> This can happen for various reasons including that the user did not provide an appropriate response to prompts from the service (you can configure how many times Amazon Lex can prompt a user for specific information), or the Lambda function failed to fulfill the intent. </p> </li> </ul>
+-- * dialogState [DialogState] <p> Identifies the current state of the user interaction. Amazon Lex returns one of the following values as <code>dialogState</code>. The client can optionally use this information to customize the user interface. </p> <ul> <li> <p> <code>ElicitIntent</code> - Amazon Lex wants to elicit user intent. </p> <p>For example, a user might utter an intent ("I want to order a pizza"). If Amazon Lex cannot infer the user intent from this utterance, it will return this dialogState.</p> </li> <li> <p> <code>ConfirmIntent</code> - Amazon Lex is expecting a "yes" or "no" response. </p> <p> For example, Amazon Lex wants user confirmation before fulfilling an intent. </p> <p>Instead of a simple "yes" or "no," a user might respond with additional information. For example, "yes, but make it thick crust pizza" or "no, I want to order a drink". Amazon Lex can process such additional information (in these examples, update the crust type slot value, or change intent from OrderPizza to OrderDrink).</p> </li> <li> <p> <code>ElicitSlot</code> - Amazon Lex is expecting a slot value for the current intent. </p> <p>For example, suppose that in the response Amazon Lex sends this message: "What size pizza would you like?". A user might reply with the slot value (e.g., "medium"). The user might also provide additional information in the response (e.g., "medium thick crust pizza"). Amazon Lex can process such additional information appropriately. </p> </li> <li> <p> <code>Fulfilled</code> - Conveys that the Lambda function configured for the intent has successfully fulfilled the intent. </p> </li> <li> <p> <code>ReadyForFulfillment</code> - Conveys that the client has to fulfill the intent. </p> </li> <li> <p> <code>Failed</code> - Conveys that the conversation with the user failed. </p> <p> This can happen for various reasons including that the user did not provide an appropriate response to prompts from the service (you can configure how many times Amazon Lex can prompt a user for specific information), or the Lambda function failed to fulfill the intent. </p> </li> </ul>
 -- * intentName [IntentName] <p>The current user intent that Amazon Lex is aware of.</p>
+-- * messageFormat [MessageFormatType] <p>The format of the response message. One of the following values:</p> <ul> <li> <p> <code>PlainText</code> - The message contains plain UTF-8 text.</p> </li> <li> <p> <code>CustomPayload</code> - The message is a custom format defined by the Lambda function.</p> </li> <li> <p> <code>SSML</code> - The message contains text formatted for voice output.</p> </li> <li> <p> <code>Composite</code> - The message contains an escaped JSON object containing one or more messages from the groups that messages were assigned to when the intent was created.</p> </li> </ul>
+-- * slots [StringMap] <p> The intent slots that Amazon Lex detected from the user input in the conversation. </p> <p>Amazon Lex creates a resolution list containing likely values for a slot. The value that it returns is determined by the <code>valueSelectionStrategy</code> selected when the slot type was created or updated. If <code>valueSelectionStrategy</code> is set to <code>ORIGINAL_VALUE</code>, the value provided by the user is returned, if the user value is similar to the slot values. If <code>valueSelectionStrategy</code> is set to <code>TOP_RESOLUTION</code> Amazon Lex returns the first value in the resolution list or, if there is no resolution list, null. If you don't specify a <code>valueSelectionStrategy</code>, the default is <code>ORIGINAL_VALUE</code>.</p>
 -- * responseCard [ResponseCard] <p>Represents the options that the user has to respond to the current prompt. Response Card can come from the bot configuration (in the Amazon Lex console, choose the settings button next to a slot) or from a code hook (Lambda function). </p>
--- * slots [StringMap] <p> The intent slots (name/value pairs) that Amazon Lex detected so far from the user input in the conversation. </p>
--- * message [Text] <p> A message to convey to the user. It can come from the bot's configuration or a code hook (Lambda function). If the current intent is not configured with a code hook or the code hook returned <code>Delegate</code> as the <code>dialogAction.type</code> in its response, then Amazon Lex decides the next course of action and selects an appropriate message from the bot configuration based on the current user interaction context. For example, if Amazon Lex is not able to understand the user input, it uses a clarification prompt message (for more information, see the Error Handling section in the Amazon Lex console). Another example: if the intent requires confirmation before fulfillment, then Amazon Lex uses the confirmation prompt message in the intent configuration. If the code hook returns a message, Amazon Lex passes it as-is in its response to the client. </p>
+-- * message [Text] <p>The message to convey to the user. The message can come from the bot's configuration or from a Lambda function.</p> <p>If the intent is not configured with a Lambda function, or if the Lambda function returned <code>Delegate</code> as the <code>dialogAction.type</code> its response, Amazon Lex decides on the next course of action and selects an appropriate message from the bot's configuration based on the current interaction context. For example, if Amazon Lex isn't able to understand user input, it uses a clarification prompt message.</p> <p>When you create an intent you can assign messages to groups. When messages are assigned to groups Amazon Lex returns one message from each group in the response. The message field is an escaped JSON string containing the messages. For more information about the structure of the JSON string returned, see <a>msg-prompts-formats</a>.</p> <p>If the Lambda function returns a message, Amazon Lex passes it to the client in its response.</p>
 -- * sessionAttributes [StringMap] <p>A map of key-value pairs representing the session-specific context information.</p>
 -- @return PostTextResponse structure as a key-value pair table
 function M.PostTextResponse(args)
@@ -809,8 +822,9 @@ function M.PostTextResponse(args)
 		["slotToElicit"] = args["slotToElicit"],
 		["dialogState"] = args["dialogState"],
 		["intentName"] = args["intentName"],
-		["responseCard"] = args["responseCard"],
+		["messageFormat"] = args["messageFormat"],
 		["slots"] = args["slots"],
+		["responseCard"] = args["responseCard"],
 		["message"] = args["message"],
 		["sessionAttributes"] = args["sessionAttributes"],
 	}
@@ -831,6 +845,17 @@ end
 --  
 function M.HttpContentType(str)
 	asserts.AssertHttpContentType(str)
+	return str
+end
+
+function asserts.AssertAttributesString(str)
+	assert(str)
+	assert(type(str) == "string", "Expected AttributesString to be of type 'string'")
+end
+
+--  
+function M.AttributesString(str)
+	asserts.AssertAttributesString(str)
 	return str
 end
 
@@ -855,6 +880,17 @@ end
 --  
 function M.String(str)
 	asserts.AssertString(str)
+	return str
+end
+
+function asserts.AssertMessageFormatType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected MessageFormatType to be of type 'string'")
+end
+
+--  
+function M.MessageFormatType(str)
+	asserts.AssertMessageFormatType(str)
 	return str
 end
 

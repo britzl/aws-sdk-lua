@@ -46,7 +46,7 @@ end
 -- * Owner [UserMetadata] <p>The owner of the resource.</p>
 -- * VersionId [DocumentVersionIdType] <p>The version ID of the resource. This is an optional field and is filled for action on document version.</p>
 -- * ParentId [ResourceIdType] <p>The parent ID of the resource before a rename operation.</p>
--- * OriginalName [ResourceNameType] <p>The original name of the resource prior to a rename operation.</p>
+-- * OriginalName [ResourceNameType] <p>The original name of the resource before a rename operation.</p>
 -- * Type [ResourceType] <p>The type of resource.</p>
 -- * Id [ResourceIdType] <p>The ID of the resource.</p>
 -- @return ResourceMetadata structure as a key-value pair table
@@ -129,7 +129,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- Required key: AuthenticationToken
 -- @return GetCurrentUserRequest structure as a key-value pair table
 function M.GetCurrentUserRequest(args)
@@ -170,7 +170,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * ResourceId [ResourceIdType] <p>The ID of the resource.</p>
 -- Required key: ResourceId
 -- @return RemoveAllResourcePermissionsRequest structure as a key-value pair table
@@ -197,7 +197,7 @@ function M.RemoveAllResourcePermissionsRequest(args)
     }
 end
 
-keys.DescribeResourcePermissionsRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, ["Marker"] = true, ["Limit"] = true, nil }
+keys.DescribeResourcePermissionsRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, ["Marker"] = true, ["Limit"] = true, ["PrincipalId"] = true, nil }
 
 function asserts.AssertDescribeResourcePermissionsRequest(struct)
 	assert(struct)
@@ -207,6 +207,7 @@ function asserts.AssertDescribeResourcePermissionsRequest(struct)
 	if struct["ResourceId"] then asserts.AssertResourceIdType(struct["ResourceId"]) end
 	if struct["Marker"] then asserts.AssertPageMarkerType(struct["Marker"]) end
 	if struct["Limit"] then asserts.AssertLimitType(struct["Limit"]) end
+	if struct["PrincipalId"] then asserts.AssertIdType(struct["PrincipalId"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.DescribeResourcePermissionsRequest[k], "DescribeResourcePermissionsRequest contains unknown key " .. tostring(k))
 	end
@@ -216,10 +217,11 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * ResourceId [ResourceIdType] <p>The ID of the resource.</p>
 -- * Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call)</p>
 -- * Limit [LimitType] <p>The maximum number of items to return with this call.</p>
+-- * PrincipalId [IdType] <p>The ID of the principal to filter permissions by.</p>
 -- Required key: ResourceId
 -- @return DescribeResourcePermissionsRequest structure as a key-value pair table
 function M.DescribeResourcePermissionsRequest(args)
@@ -227,6 +229,7 @@ function M.DescribeResourcePermissionsRequest(args)
     local query_args = { 
         ["marker"] = args["Marker"],
         ["limit"] = args["Limit"],
+        ["principalId"] = args["PrincipalId"],
     }
     local uri_args = { 
         ["{ResourceId}"] = args["ResourceId"],
@@ -239,6 +242,7 @@ function M.DescribeResourcePermissionsRequest(args)
 		["ResourceId"] = args["ResourceId"],
 		["Marker"] = args["Marker"],
 		["Limit"] = args["Limit"],
+		["PrincipalId"] = args["PrincipalId"],
 	}
 	asserts.AssertDescribeResourcePermissionsRequest(all_args)
 	return {
@@ -426,10 +430,10 @@ end
 -- * ContentType [DocumentContentType] <p>The content type of the document.</p>
 -- * Name [ResourceNameType] <p>The name of the document.</p>
 -- * ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
--- * ContentCreatedTimestamp [TimestampType] <p>The time stamp when the content of the document was originally created.</p>
+-- * ContentCreatedTimestamp [TimestampType] <p>The timestamp when the content of the document was originally created.</p>
 -- * DocumentSizeInBytes [SizeType] <p>The size of the document, in bytes.</p>
--- * ContentModifiedTimestamp [TimestampType] <p>The time stamp when the content of the document was modified.</p>
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * ContentModifiedTimestamp [TimestampType] <p>The timestamp when the content of the document was modified.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * Id [ResourceIdType] <p>The ID of the document.</p>
 -- Required key: ParentFolderId
 -- @return InitiateDocumentVersionUploadRequest structure as a key-value pair table
@@ -523,7 +527,7 @@ end
 -- <p>Describes the metadata of the user.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Username [UsernameType] <p>The username of the user.</p>
+-- * Username [UsernameType] <p>The name of the user.</p>
 -- * EmailAddress [EmailAddressType] <p>The email address of the user.</p>
 -- * GivenName [UserAttributeValueType] <p>The given name of the user before a rename operation.</p>
 -- * Surname [UserAttributeValueType] <p>The surname of the user.</p>
@@ -570,7 +574,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * FolderId [ResourceIdType] <p>The ID of the folder.</p>
 -- Required key: FolderId
 -- @return DeleteFolderContentsRequest structure as a key-value pair table
@@ -740,7 +744,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * ResourceId [ResourceIdType] <p>The ID of the resource, either a document or folder.</p>
 -- * VersionId [DocumentVersionIdType] <p>The ID of the version, if the custom metadata is being deleted from a document version.</p>
 -- * DeleteAll [BooleanType] <p>Flag to indicate removal of all custom metadata properties from the specified resource.</p>
@@ -785,7 +789,7 @@ function asserts.AssertCreateLabelsRequest(struct)
 	assert(struct["Labels"], "Expected key Labels to exist in table")
 	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
 	if struct["ResourceId"] then asserts.AssertResourceIdType(struct["ResourceId"]) end
-	if struct["Labels"] then asserts.AssertLabels(struct["Labels"]) end
+	if struct["Labels"] then asserts.AssertSharedLabels(struct["Labels"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateLabelsRequest[k], "CreateLabelsRequest contains unknown key " .. tostring(k))
 	end
@@ -795,9 +799,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * ResourceId [ResourceIdType] <p>The ID of the resource.</p>
--- * Labels [Labels] <p>List of labels to add to the resource.</p>
+-- * Labels [SharedLabels] <p>List of labels to add to the resource.</p>
 -- Required key: ResourceId
 -- Required key: Labels
 -- @return CreateLabelsRequest structure as a key-value pair table
@@ -896,7 +900,7 @@ end
 -- * OrganizationId [IdType] <p>The ID of the organization.</p>
 -- * SubscriptionType [SubscriptionType] <p>The notification type.</p>
 -- * Endpoint [SubscriptionEndPointType] <p>The endpoint to receive the notifications. If the protocol is HTTPS, the endpoint is a URL that begins with "https://".</p>
--- * Protocol [SubscriptionProtocolType] <p>The protocol to use. The supported value is https, which delivers JSON-encoded messasges using HTTPS POST.</p>
+-- * Protocol [SubscriptionProtocolType] <p>The protocol to use. The supported value is https, which delivers JSON-encoded messages using HTTPS POST.</p>
 -- Required key: OrganizationId
 -- Required key: Endpoint
 -- Required key: Protocol
@@ -956,13 +960,13 @@ end
 -- * Status [DocumentStatusType] <p>The status of the document.</p>
 -- * ContentType [DocumentContentType] <p>The content type of the document.</p>
 -- * Name [ResourceNameType] <p>The name of the version.</p>
--- * ModifiedTimestamp [TimestampType] <p>The time stamp when the document was last uploaded.</p>
+-- * ModifiedTimestamp [TimestampType] <p>The timestamp when the document was last uploaded.</p>
 -- * Thumbnail [DocumentThumbnailUrlMap] <p>The thumbnail of the document.</p>
--- * CreatedTimestamp [TimestampType] <p>The time stamp when the document was first uploaded.</p>
+-- * CreatedTimestamp [TimestampType] <p>The timestamp when the document was first uploaded.</p>
 -- * Source [DocumentSourceUrlMap] <p>The source of the document.</p>
 -- * CreatorId [IdType] <p>The ID of the creator.</p>
--- * ContentCreatedTimestamp [TimestampType] <p>The time stamp when the content of the document was originally created.</p>
--- * ContentModifiedTimestamp [TimestampType] <p>The time stamp when the content of the document was modified.</p>
+-- * ContentCreatedTimestamp [TimestampType] <p>The timestamp when the content of the document was originally created.</p>
+-- * ContentModifiedTimestamp [TimestampType] <p>The timestamp when the content of the document was modified.</p>
 -- * Signature [HashType] <p>The signature of the document.</p>
 -- * Id [DocumentVersionIdType] <p>The ID of the version.</p>
 -- * Size [SizeType] <p>The size of the document, in bytes.</p>
@@ -1056,7 +1060,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * UserId [IdType] <p>The ID of the user.</p>
 -- Required key: UserId
 -- @return DeleteUserRequest structure as a key-value pair table
@@ -1091,7 +1095,7 @@ function asserts.AssertDeleteLabelsRequest(struct)
 	assert(struct["ResourceId"], "Expected key ResourceId to exist in table")
 	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
 	if struct["ResourceId"] then asserts.AssertResourceIdType(struct["ResourceId"]) end
-	if struct["Labels"] then asserts.AssertLabels(struct["Labels"]) end
+	if struct["Labels"] then asserts.AssertSharedLabels(struct["Labels"]) end
 	if struct["DeleteAll"] then asserts.AssertBooleanType(struct["DeleteAll"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.DeleteLabelsRequest[k], "DeleteLabelsRequest contains unknown key " .. tostring(k))
@@ -1102,9 +1106,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * ResourceId [ResourceIdType] <p>The ID of the resource.</p>
--- * Labels [Labels] <p>List of labels to delete from the resource.</p>
+-- * Labels [SharedLabels] <p>List of labels to delete from the resource.</p>
 -- * DeleteAll [BooleanType] <p>Flag to request removal of all labels from the specified resource.</p>
 -- Required key: ResourceId
 -- @return DeleteLabelsRequest structure as a key-value pair table
@@ -1192,7 +1196,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * Fields [FieldNamesType] <p>A comma-separated list of values. Specify <code>NAME</code> to include the names of the parent folders.</p>
 -- * Marker [PageMarkerType] <p>This value is not supported.</p>
 -- * Limit [LimitType] <p>The maximum number of levels in the hierarchy to return.</p>
@@ -1319,7 +1323,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * UserId [IdType] <p>The ID of the user.</p>
 -- Required key: UserId
 -- @return ActivateUserRequest structure as a key-value pair table
@@ -1369,11 +1373,11 @@ end
 -- Valid keys:
 -- * OrganizationId [IdType] <p>The ID of the organization. This is a mandatory parameter when using administrative API (SigV4) requests.</p>
 -- * UserId [IdType] <p>The ID of the user who performed the action. The response includes activities pertaining to this user. This is an optional parameter and is only applicable for administrative API (SigV4) requests.</p>
--- * Marker [MarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- * Marker [MarkerType] <p>The marker for the next set of results.</p>
 -- * Limit [LimitType] <p>The maximum number of items to return.</p>
--- * StartTime [TimestampType] <p>The timestamp that determines the starting time of the activities; the response includes the activities performed after the specified timestamp.</p>
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- * EndTime [TimestampType] <p>The timestamp that determines the end time of the activities; the response includes the activities performed before the specified timestamp.</p>
+-- * StartTime [TimestampType] <p>The timestamp that determines the starting time of the activities. The response includes the activities performed after the specified timestamp.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * EndTime [TimestampType] <p>The timestamp that determines the end time of the activities. The response includes the activities performed before the specified timestamp.</p>
 -- @return DescribeActivitiesRequest structure as a key-value pair table
 function M.DescribeActivitiesRequest(args)
 	assert(args, "You must provide an argument table when creating DescribeActivitiesRequest")
@@ -1479,7 +1483,7 @@ end
 -- * NotifyCollaborators [BooleanType] <p>Set this parameter to TRUE to send an email out to the document collaborators after the comment is created.</p>
 -- * VersionId [DocumentVersionIdType] <p>The ID of the document version.</p>
 -- * ThreadId [CommentIdType] <p>The ID of the root comment in the thread.</p>
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required key: DocumentId
 -- Required key: VersionId
@@ -1533,7 +1537,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * Name [ResourceNameType] <p>The name of the new folder.</p>
 -- * ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
 -- Required key: ParentFolderId
@@ -1638,25 +1642,27 @@ function M.DescribeCommentsResponse(args)
     }
 end
 
-keys.GetFolderPathResponse = { ["Path"] = true, nil }
+keys.DescribeGroupsResponse = { ["Marker"] = true, ["Groups"] = true, nil }
 
-function asserts.AssertGetFolderPathResponse(struct)
+function asserts.AssertDescribeGroupsResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected GetFolderPathResponse to be of type 'table'")
-	if struct["Path"] then asserts.AssertResourcePath(struct["Path"]) end
+	assert(type(struct) == "table", "Expected DescribeGroupsResponse to be of type 'table'")
+	if struct["Marker"] then asserts.AssertMarkerType(struct["Marker"]) end
+	if struct["Groups"] then asserts.AssertGroupMetadataList(struct["Groups"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.GetFolderPathResponse[k], "GetFolderPathResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeGroupsResponse[k], "DescribeGroupsResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type GetFolderPathResponse
+--- Create a structure of type DescribeGroupsResponse
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Path [ResourcePath] <p>The path information.</p>
--- @return GetFolderPathResponse structure as a key-value pair table
-function M.GetFolderPathResponse(args)
-	assert(args, "You must provide an argument table when creating GetFolderPathResponse")
+-- * Marker [MarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- * Groups [GroupMetadataList] <p>The list of groups.</p>
+-- @return DescribeGroupsResponse structure as a key-value pair table
+function M.DescribeGroupsResponse(args)
+	assert(args, "You must provide an argument table when creating DescribeGroupsResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -1664,9 +1670,10 @@ function M.GetFolderPathResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Path"] = args["Path"],
+		["Marker"] = args["Marker"],
+		["Groups"] = args["Groups"],
 	}
-	asserts.AssertGetFolderPathResponse(all_args)
+	asserts.AssertDescribeGroupsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1692,7 +1699,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * FolderId [ResourceIdType] <p>The ID of the folder.</p>
 -- Required key: FolderId
 -- @return DeleteFolderRequest structure as a key-value pair table
@@ -1711,64 +1718,6 @@ function M.DeleteFolderRequest(args)
 		["FolderId"] = args["FolderId"],
 	}
 	asserts.AssertDeleteFolderRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DocumentMetadata = { ["ResourceState"] = true, ["Labels"] = true, ["ModifiedTimestamp"] = true, ["ParentFolderId"] = true, ["CreatedTimestamp"] = true, ["LatestVersionMetadata"] = true, ["CreatorId"] = true, ["Id"] = true, nil }
-
-function asserts.AssertDocumentMetadata(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DocumentMetadata to be of type 'table'")
-	if struct["ResourceState"] then asserts.AssertResourceStateType(struct["ResourceState"]) end
-	if struct["Labels"] then asserts.AssertLabels(struct["Labels"]) end
-	if struct["ModifiedTimestamp"] then asserts.AssertTimestampType(struct["ModifiedTimestamp"]) end
-	if struct["ParentFolderId"] then asserts.AssertResourceIdType(struct["ParentFolderId"]) end
-	if struct["CreatedTimestamp"] then asserts.AssertTimestampType(struct["CreatedTimestamp"]) end
-	if struct["LatestVersionMetadata"] then asserts.AssertDocumentVersionMetadata(struct["LatestVersionMetadata"]) end
-	if struct["CreatorId"] then asserts.AssertIdType(struct["CreatorId"]) end
-	if struct["Id"] then asserts.AssertResourceIdType(struct["Id"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DocumentMetadata[k], "DocumentMetadata contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DocumentMetadata
--- <p>Describes the document.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ResourceState [ResourceStateType] <p>The resource state.</p>
--- * Labels [Labels] <p>List of labels on the document.</p>
--- * ModifiedTimestamp [TimestampType] <p>The time when the document was updated.</p>
--- * ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
--- * CreatedTimestamp [TimestampType] <p>The time when the document was created.</p>
--- * LatestVersionMetadata [DocumentVersionMetadata] <p>The latest version of the document.</p>
--- * CreatorId [IdType] <p>The ID of the creator.</p>
--- * Id [ResourceIdType] <p>The ID of the document.</p>
--- @return DocumentMetadata structure as a key-value pair table
-function M.DocumentMetadata(args)
-	assert(args, "You must provide an argument table when creating DocumentMetadata")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ResourceState"] = args["ResourceState"],
-		["Labels"] = args["Labels"],
-		["ModifiedTimestamp"] = args["ModifiedTimestamp"],
-		["ParentFolderId"] = args["ParentFolderId"],
-		["CreatedTimestamp"] = args["CreatedTimestamp"],
-		["LatestVersionMetadata"] = args["LatestVersionMetadata"],
-		["CreatorId"] = args["CreatorId"],
-		["Id"] = args["Id"],
-	}
-	asserts.AssertDocumentMetadata(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1834,8 +1783,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- * ResourceState [ResourceStateType] <p>The resource state of the document. Note that only ACTIVE and RECYCLED are supported.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * ResourceState [ResourceStateType] <p>The resource state of the document. Only ACTIVE and RECYCLED are supported.</p>
 -- * Name [ResourceNameType] <p>The name of the document.</p>
 -- * DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- * ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
@@ -1928,7 +1877,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * Fields [FieldNamesType] <p>A comma-separated list of values. Specify "SOURCE" to include a URL for the source document.</p>
 -- * VersionId [DocumentVersionIdType] <p>The version ID of the document.</p>
 -- * IncludeCustomMetadata [BooleanType] <p>Set this to TRUE to include custom metadata in the response.</p>
@@ -2108,7 +2057,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * Fields [FieldNamesType] <p>A comma-separated list of values. Specify "NAME" to include the names of the parent folders.</p>
 -- * FolderId [IdType] <p>The ID of the folder.</p>
 -- * Limit [LimitType] <p>The maximum number of levels in the hierarchy to return.</p>
@@ -2301,6 +2250,46 @@ function M.LimitExceededException(args)
     }
 end
 
+keys.NotificationOptions = { ["EmailMessage"] = true, ["SendEmail"] = true, nil }
+
+function asserts.AssertNotificationOptions(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected NotificationOptions to be of type 'table'")
+	if struct["EmailMessage"] then asserts.AssertMessageType(struct["EmailMessage"]) end
+	if struct["SendEmail"] then asserts.AssertBooleanType(struct["SendEmail"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.NotificationOptions[k], "NotificationOptions contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type NotificationOptions
+-- <p>Set of options which defines notification preferences of given action.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EmailMessage [MessageType] <p>Text value to be included in the email body.</p>
+-- * SendEmail [BooleanType] <p>Boolean value to indicate an email notification should be sent to the receipients.</p>
+-- @return NotificationOptions structure as a key-value pair table
+function M.NotificationOptions(args)
+	assert(args, "You must provide an argument table when creating NotificationOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["EmailMessage"] = args["EmailMessage"],
+		["SendEmail"] = args["SendEmail"],
+	}
+	asserts.AssertNotificationOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ResourcePathComponent = { ["Id"] = true, ["Name"] = true, nil }
 
 function asserts.AssertResourcePathComponent(struct)
@@ -2358,7 +2347,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * UserId [IdType] <p>The ID of the user.</p>
 -- Required key: UserId
 -- @return DeactivateUserRequest structure as a key-value pair table
@@ -2486,7 +2475,7 @@ end
 -- * UserIds [UserIdsType] <p>The IDs of the users.</p>
 -- * Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
 -- * Limit [LimitType] <p>The maximum number of items to return.</p>
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * Query [SearchQueryType] <p>A query to filter users by user name.</p>
 -- * Include [UserFilterType] <p>The state of the users. Specify "ALL" to include inactive users.</p>
 -- * Order [OrderType] <p>The order for the results.</p>
@@ -2550,7 +2539,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * ResourceId [ResourceIdType] <p>The ID of the resource.</p>
 -- * PrincipalType [PrincipalType] <p>The principal type of the resource.</p>
 -- * PrincipalId [IdType] <p>The principal ID of the resource.</p>
@@ -2685,7 +2674,7 @@ end
 -- * Include [FieldNamesType] <p>The contents to include. Specify "INITIALIZED" to include initialized documents.</p>
 -- * Marker [PageMarkerType] <p>The marker for the next set of results. This marker was received from a previous call.</p>
 -- * Limit [LimitType] <p>The maximum number of items to return with this call.</p>
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * FolderId [ResourceIdType] <p>The ID of the folder.</p>
 -- * Type [FolderContentType] <p>The type of items.</p>
 -- * Order [OrderType] <p>The order for the contents of the folder.</p>
@@ -2800,7 +2789,7 @@ function M.GetDocumentPathResponse(args)
     }
 end
 
-keys.UpdateUserRequest = { ["TimeZoneId"] = true, ["Surname"] = true, ["Locale"] = true, ["UserId"] = true, ["StorageRule"] = true, ["AuthenticationToken"] = true, ["GivenName"] = true, ["Type"] = true, nil }
+keys.UpdateUserRequest = { ["TimeZoneId"] = true, ["Surname"] = true, ["Locale"] = true, ["GrantPoweruserPrivileges"] = true, ["UserId"] = true, ["StorageRule"] = true, ["AuthenticationToken"] = true, ["GivenName"] = true, ["Type"] = true, nil }
 
 function asserts.AssertUpdateUserRequest(struct)
 	assert(struct)
@@ -2809,6 +2798,7 @@ function asserts.AssertUpdateUserRequest(struct)
 	if struct["TimeZoneId"] then asserts.AssertTimeZoneIdType(struct["TimeZoneId"]) end
 	if struct["Surname"] then asserts.AssertUserAttributeValueType(struct["Surname"]) end
 	if struct["Locale"] then asserts.AssertLocaleType(struct["Locale"]) end
+	if struct["GrantPoweruserPrivileges"] then asserts.AssertBooleanEnumType(struct["GrantPoweruserPrivileges"]) end
 	if struct["UserId"] then asserts.AssertIdType(struct["UserId"]) end
 	if struct["StorageRule"] then asserts.AssertStorageRuleType(struct["StorageRule"]) end
 	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
@@ -2826,9 +2816,10 @@ end
 -- * TimeZoneId [TimeZoneIdType] <p>The time zone ID of the user.</p>
 -- * Surname [UserAttributeValueType] <p>The surname of the user.</p>
 -- * Locale [LocaleType] <p>The locale of the user.</p>
+-- * GrantPoweruserPrivileges [BooleanEnumType] <p>Boolean value to determine whether the user is granted Poweruser privileges.</p>
 -- * UserId [IdType] <p>The ID of the user.</p>
 -- * StorageRule [StorageRuleType] <p>The amount of storage for the user.</p>
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * GivenName [UserAttributeValueType] <p>The given name of the user.</p>
 -- * Type [UserType] <p>The type of the user.</p>
 -- Required key: UserId
@@ -2847,6 +2838,7 @@ function M.UpdateUserRequest(args)
 		["TimeZoneId"] = args["TimeZoneId"],
 		["Surname"] = args["Surname"],
 		["Locale"] = args["Locale"],
+		["GrantPoweruserPrivileges"] = args["GrantPoweruserPrivileges"],
 		["UserId"] = args["UserId"],
 		["StorageRule"] = args["StorageRule"],
 		["AuthenticationToken"] = args["AuthenticationToken"],
@@ -2862,7 +2854,7 @@ function M.UpdateUserRequest(args)
     }
 end
 
-keys.AddResourcePermissionsRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, ["Principals"] = true, nil }
+keys.AddResourcePermissionsRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, ["NotificationOptions"] = true, ["Principals"] = true, nil }
 
 function asserts.AssertAddResourcePermissionsRequest(struct)
 	assert(struct)
@@ -2871,6 +2863,7 @@ function asserts.AssertAddResourcePermissionsRequest(struct)
 	assert(struct["Principals"], "Expected key Principals to exist in table")
 	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
 	if struct["ResourceId"] then asserts.AssertResourceIdType(struct["ResourceId"]) end
+	if struct["NotificationOptions"] then asserts.AssertNotificationOptions(struct["NotificationOptions"]) end
 	if struct["Principals"] then asserts.AssertSharePrincipalList(struct["Principals"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.AddResourcePermissionsRequest[k], "AddResourcePermissionsRequest contains unknown key " .. tostring(k))
@@ -2881,8 +2874,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- * NotificationOptions [NotificationOptions] <p>The notification options.</p>
 -- * Principals [SharePrincipalList] <p>The users, groups, or organization being granted permission.</p>
 -- Required key: ResourceId
 -- Required key: Principals
@@ -2900,6 +2894,7 @@ function M.AddResourcePermissionsRequest(args)
 	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["ResourceId"] = args["ResourceId"],
+		["NotificationOptions"] = args["NotificationOptions"],
 		["Principals"] = args["Principals"],
 	}
 	asserts.AssertAddResourcePermissionsRequest(all_args)
@@ -2924,7 +2919,7 @@ function asserts.AssertParticipants(struct)
 end
 
 --- Create a structure of type Participants
--- <p>Describes the users and/or user groups.</p>
+-- <p>Describes the users or user groups.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Users [UserMetadataList] <p>The list of users.</p>
@@ -3008,7 +3003,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * StorageRule [StorageRuleType] <p>The storage for a user.</p>
--- * StorageUtilizedInBytes [SizeType] <p>The amount of storage utilized, in bytes.</p>
+-- * StorageUtilizedInBytes [SizeType] <p>The amount of storage used, in bytes.</p>
 -- @return UserStorageMetadata structure as a key-value pair table
 function M.UserStorageMetadata(args)
 	assert(args, "You must provide an argument table when creating UserStorageMetadata")
@@ -3038,7 +3033,7 @@ function asserts.AssertFolderMetadata(struct)
 	assert(type(struct) == "table", "Expected FolderMetadata to be of type 'table'")
 	if struct["Name"] then asserts.AssertResourceNameType(struct["Name"]) end
 	if struct["LatestVersionSize"] then asserts.AssertSizeType(struct["LatestVersionSize"]) end
-	if struct["Labels"] then asserts.AssertLabels(struct["Labels"]) end
+	if struct["Labels"] then asserts.AssertSharedLabels(struct["Labels"]) end
 	if struct["ModifiedTimestamp"] then asserts.AssertTimestampType(struct["ModifiedTimestamp"]) end
 	if struct["Id"] then asserts.AssertResourceIdType(struct["Id"]) end
 	if struct["CreatedTimestamp"] then asserts.AssertTimestampType(struct["CreatedTimestamp"]) end
@@ -3058,7 +3053,7 @@ end
 -- Valid keys:
 -- * Name [ResourceNameType] <p>The name of the folder.</p>
 -- * LatestVersionSize [SizeType] <p>The size of the latest version of the folder metadata.</p>
--- * Labels [Labels] <p>List of labels on the folder.</p>
+-- * Labels [SharedLabels] <p>List of labels on the folder.</p>
 -- * ModifiedTimestamp [TimestampType] <p>The time when the folder was updated.</p>
 -- * Id [ResourceIdType] <p>The ID of the folder.</p>
 -- * CreatedTimestamp [TimestampType] <p>The time when the folder was created.</p>
@@ -3386,9 +3381,9 @@ end
 -- Valid keys:
 -- * Contributor [User] <p>The user who made the comment.</p>
 -- * CommentId [CommentIdType] <p>The ID of the comment.</p>
--- * CreatedTimestamp [TimestampType] 
+-- * CreatedTimestamp [TimestampType] <p>The timestamp that the comment was created.</p>
 -- * RecipientId [IdType] <p>The ID of the user being replied to.</p>
--- * CommentStatus [CommentStatusType] 
+-- * CommentStatus [CommentStatusType] <p>The status of the comment.</p>
 -- @return CommentMetadata structure as a key-value pair table
 function M.CommentMetadata(args)
 	assert(args, "You must provide an argument table when creating CommentMetadata")
@@ -3469,7 +3464,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * CommentId [CommentIdType] <p>The ID of the comment.</p>
 -- * VersionId [DocumentVersionIdType] <p>The ID of the document version.</p>
 -- * DocumentId [ResourceIdType] <p>The ID of the document.</p>
@@ -3521,7 +3516,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required key: DocumentId
 -- @return DeleteDocumentRequest structure as a key-value pair table
@@ -3540,6 +3535,43 @@ function M.DeleteDocumentRequest(args)
 		["DocumentId"] = args["DocumentId"],
 	}
 	asserts.AssertDeleteDocumentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.InvalidPasswordException = { ["Message"] = true, nil }
+
+function asserts.AssertInvalidPasswordException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InvalidPasswordException to be of type 'table'")
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.InvalidPasswordException[k], "InvalidPasswordException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InvalidPasswordException
+-- <p>The password is invalid.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return InvalidPasswordException structure as a key-value pair table
+function M.InvalidPasswordException(args)
+	assert(args, "You must provide an argument table when creating InvalidPasswordException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Message"] = args["Message"],
+	}
+	asserts.AssertInvalidPasswordException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3569,7 +3601,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * Marker [MarkerType] <p>The marker for the next set of results. This marker was received from a previous call.</p>
 -- * VersionId [DocumentVersionIdType] <p>The ID of the document version.</p>
 -- * Limit [LimitType] <p>The maximum number of items to return.</p>
@@ -3683,7 +3715,7 @@ end
 -- * OrganizationId [IdType] <p>The ID of the organization.</p>
 -- * EmailAddress [EmailAddressType] <p>The email address of the user.</p>
 -- * StorageRule [StorageRuleType] <p>The amount of storage for the user.</p>
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * GivenName [UserAttributeValueType] <p>The given name of the user.</p>
 -- Required key: Username
 -- Required key: GivenName
@@ -3776,7 +3808,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * ResourceId [ResourceIdType] <p>The ID of the resource.</p>
 -- * VersionId [DocumentVersionIdType] <p>The ID of the version, if the custom metadata is being added to a document version.</p>
 -- * CustomMetadata [CustomMetadataMap] <p>Custom metadata in the form of name-value pairs.</p>
@@ -3827,7 +3859,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * IncludeCustomMetadata [BooleanType] <p>Set to TRUE to include custom metadata in the response.</p>
 -- * FolderId [ResourceIdType] <p>The ID of the folder.</p>
 -- Required key: FolderId
@@ -4036,7 +4068,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * VersionId [DocumentVersionIdType] <p>The version ID of the document.</p>
 -- * DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- * VersionStatus [DocumentVersionStatus] <p>The status of the version.</p>
@@ -4128,7 +4160,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * VersionId [DocumentVersionIdType] <p>The ID of the version.</p>
 -- * DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required key: DocumentId
@@ -4159,38 +4191,54 @@ function M.AbortDocumentVersionUploadRequest(args)
     }
 end
 
-keys.PermissionInfo = { ["Type"] = true, ["Role"] = true, nil }
+keys.DescribeGroupsRequest = { ["AuthenticationToken"] = true, ["OrganizationId"] = true, ["SearchQuery"] = true, ["Limit"] = true, ["Marker"] = true, nil }
 
-function asserts.AssertPermissionInfo(struct)
+function asserts.AssertDescribeGroupsRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected PermissionInfo to be of type 'table'")
-	if struct["Type"] then asserts.AssertRolePermissionType(struct["Type"]) end
-	if struct["Role"] then asserts.AssertRoleType(struct["Role"]) end
+	assert(type(struct) == "table", "Expected DescribeGroupsRequest to be of type 'table'")
+	assert(struct["SearchQuery"], "Expected key SearchQuery to exist in table")
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["OrganizationId"] then asserts.AssertIdType(struct["OrganizationId"]) end
+	if struct["SearchQuery"] then asserts.AssertSearchQueryType(struct["SearchQuery"]) end
+	if struct["Limit"] then asserts.AssertPositiveIntegerType(struct["Limit"]) end
+	if struct["Marker"] then asserts.AssertMarkerType(struct["Marker"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.PermissionInfo[k], "PermissionInfo contains unknown key " .. tostring(k))
+		assert(keys.DescribeGroupsRequest[k], "DescribeGroupsRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type PermissionInfo
--- <p>Describes the permissions.</p>
+--- Create a structure of type DescribeGroupsRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Type [RolePermissionType] <p>The type of permissions.</p>
--- * Role [RoleType] <p>The role of the user.</p>
--- @return PermissionInfo structure as a key-value pair table
-function M.PermissionInfo(args)
-	assert(args, "You must provide an argument table when creating PermissionInfo")
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * OrganizationId [IdType] <p>The ID of the organization.</p>
+-- * SearchQuery [SearchQueryType] <p>A query to describe groups by group name.</p>
+-- * Limit [PositiveIntegerType] <p>The maximum number of items to return with this call.</p>
+-- * Marker [MarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- Required key: SearchQuery
+-- @return DescribeGroupsRequest structure as a key-value pair table
+function M.DescribeGroupsRequest(args)
+	assert(args, "You must provide an argument table when creating DescribeGroupsRequest")
     local query_args = { 
+        ["organizationId"] = args["OrganizationId"],
+        ["searchQuery"] = args["SearchQuery"],
+        ["limit"] = args["Limit"],
+        ["marker"] = args["Marker"],
     }
     local uri_args = { 
     }
     local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
     }
 	local all_args = { 
-		["Type"] = args["Type"],
-		["Role"] = args["Role"],
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["OrganizationId"] = args["OrganizationId"],
+		["SearchQuery"] = args["SearchQuery"],
+		["Limit"] = args["Limit"],
+		["Marker"] = args["Marker"],
 	}
-	asserts.AssertPermissionInfo(all_args)
+	asserts.AssertDescribeGroupsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4219,10 +4267,10 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * FolderId [ResourceIdType] <p>The ID of the folder.</p>
 -- * Name [ResourceNameType] <p>The name of the folder.</p>
--- * ResourceState [ResourceStateType] <p>The resource state of the folder. Note that only ACTIVE and RECYCLED are accepted values from the API.</p>
+-- * ResourceState [ResourceStateType] <p>The resource state of the folder. Only ACTIVE and RECYCLED are accepted values from the API.</p>
 -- * ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
 -- Required key: FolderId
 -- @return UpdateFolderRequest structure as a key-value pair table
@@ -4270,7 +4318,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
 -- * Limit [LimitType] <p>The maximum number of items to return.</p>
 -- Required key: AuthenticationToken
@@ -4318,7 +4366,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * IncludeCustomMetadata [BooleanType] <p>Set this to <code>TRUE</code> to include custom metadata in the response.</p>
 -- * DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required key: DocumentId
@@ -4377,6 +4425,46 @@ function M.DraftUploadOutOfSyncException(args)
 		["Message"] = args["Message"],
 	}
 	asserts.AssertDraftUploadOutOfSyncException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.PermissionInfo = { ["Type"] = true, ["Role"] = true, nil }
+
+function asserts.AssertPermissionInfo(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PermissionInfo to be of type 'table'")
+	if struct["Type"] then asserts.AssertRolePermissionType(struct["Type"]) end
+	if struct["Role"] then asserts.AssertRoleType(struct["Role"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PermissionInfo[k], "PermissionInfo contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PermissionInfo
+-- <p>Describes the permissions.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [RolePermissionType] <p>The type of permissions.</p>
+-- * Role [RoleType] <p>The role of the user.</p>
+-- @return PermissionInfo structure as a key-value pair table
+function M.PermissionInfo(args)
+	assert(args, "You must provide an argument table when creating PermissionInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Type"] = args["Type"],
+		["Role"] = args["Role"],
+	}
+	asserts.AssertPermissionInfo(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4454,6 +4542,43 @@ function M.DescribeDocumentVersionsResponse(args)
 		["Marker"] = args["Marker"],
 	}
 	asserts.AssertDescribeDocumentVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetFolderPathResponse = { ["Path"] = true, nil }
+
+function asserts.AssertGetFolderPathResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetFolderPathResponse to be of type 'table'")
+	if struct["Path"] then asserts.AssertResourcePath(struct["Path"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetFolderPathResponse[k], "GetFolderPathResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetFolderPathResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Path [ResourcePath] <p>The path information.</p>
+-- @return GetFolderPathResponse structure as a key-value pair table
+function M.GetFolderPathResponse(args)
+	assert(args, "You must provide an argument table when creating GetFolderPathResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Path"] = args["Path"],
+	}
+	asserts.AssertGetFolderPathResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4560,6 +4685,64 @@ function M.Activity(args)
     }
 end
 
+keys.DocumentMetadata = { ["ResourceState"] = true, ["Labels"] = true, ["ModifiedTimestamp"] = true, ["ParentFolderId"] = true, ["CreatedTimestamp"] = true, ["LatestVersionMetadata"] = true, ["CreatorId"] = true, ["Id"] = true, nil }
+
+function asserts.AssertDocumentMetadata(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DocumentMetadata to be of type 'table'")
+	if struct["ResourceState"] then asserts.AssertResourceStateType(struct["ResourceState"]) end
+	if struct["Labels"] then asserts.AssertSharedLabels(struct["Labels"]) end
+	if struct["ModifiedTimestamp"] then asserts.AssertTimestampType(struct["ModifiedTimestamp"]) end
+	if struct["ParentFolderId"] then asserts.AssertResourceIdType(struct["ParentFolderId"]) end
+	if struct["CreatedTimestamp"] then asserts.AssertTimestampType(struct["CreatedTimestamp"]) end
+	if struct["LatestVersionMetadata"] then asserts.AssertDocumentVersionMetadata(struct["LatestVersionMetadata"]) end
+	if struct["CreatorId"] then asserts.AssertIdType(struct["CreatorId"]) end
+	if struct["Id"] then asserts.AssertResourceIdType(struct["Id"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DocumentMetadata[k], "DocumentMetadata contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DocumentMetadata
+-- <p>Describes the document.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceState [ResourceStateType] <p>The resource state.</p>
+-- * Labels [SharedLabels] <p>List of labels on the document.</p>
+-- * ModifiedTimestamp [TimestampType] <p>The time when the document was updated.</p>
+-- * ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
+-- * CreatedTimestamp [TimestampType] <p>The time when the document was created.</p>
+-- * LatestVersionMetadata [DocumentVersionMetadata] <p>The latest version of the document.</p>
+-- * CreatorId [IdType] <p>The ID of the creator.</p>
+-- * Id [ResourceIdType] <p>The ID of the document.</p>
+-- @return DocumentMetadata structure as a key-value pair table
+function M.DocumentMetadata(args)
+	assert(args, "You must provide an argument table when creating DocumentMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceState"] = args["ResourceState"],
+		["Labels"] = args["Labels"],
+		["ModifiedTimestamp"] = args["ModifiedTimestamp"],
+		["ParentFolderId"] = args["ParentFolderId"],
+		["CreatedTimestamp"] = args["CreatedTimestamp"],
+		["LatestVersionMetadata"] = args["LatestVersionMetadata"],
+		["CreatorId"] = args["CreatorId"],
+		["Id"] = args["Id"],
+	}
+	asserts.AssertDocumentMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.InvalidArgumentException = { ["Message"] = true, nil }
 
 function asserts.AssertInvalidArgumentException(struct)
@@ -4572,7 +4755,7 @@ function asserts.AssertInvalidArgumentException(struct)
 end
 
 --- Create a structure of type InvalidArgumentException
--- <p>The pagination marker and/or limit fields are not valid.</p>
+-- <p>The pagination marker or limit fields are not valid.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Message [ErrorMessageType] 
@@ -4655,7 +4838,7 @@ end
 -- * Fields [FieldNamesType] <p>Specify "SOURCE" to include initialized versions and a URL for the source document.</p>
 -- * Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
 -- * Limit [LimitType] <p>The maximum number of versions to return with this call.</p>
--- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.</p>
 -- * Include [FieldNamesType] <p>A comma-separated list of values. Specify "INITIALIZED" to include incomplete versions.</p>
 -- * DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required key: DocumentId
@@ -4840,7 +5023,7 @@ function asserts.AssertFailedDependencyException(struct)
 end
 
 --- Create a structure of type FailedDependencyException
--- <p>The AWS Directory Service cannot reach an on-premises instance. Or a dependency under the control of the organization is failing, such as a connected active directory.</p>
+-- <p>The AWS Directory Service cannot reach an on-premises instance. Or a dependency under the control of the organization is failing, such as a connected Active Directory.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Message [ErrorMessageType] 
@@ -4919,6 +5102,17 @@ function M.UserFilterType(str)
 	return str
 end
 
+function asserts.AssertLocaleType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected LocaleType to be of type 'string'")
+end
+
+--  
+function M.LocaleType(str)
+	asserts.AssertLocaleType(str)
+	return str
+end
+
 function asserts.AssertPageMarkerType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PageMarkerType to be of type 'string'")
@@ -4963,6 +5157,19 @@ end
 --  
 function M.MessageType(str)
 	asserts.AssertMessageType(str)
+	return str
+end
+
+function asserts.AssertResourceNameType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ResourceNameType to be of type 'string'")
+	assert(#str <= 255, "Expected string to be max 255 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.ResourceNameType(str)
+	asserts.AssertResourceNameType(str)
 	return str
 end
 
@@ -5092,19 +5299,6 @@ function M.SubscriptionEndPointType(str)
 	return str
 end
 
-function asserts.AssertLabel(str)
-	assert(str)
-	assert(type(str) == "string", "Expected Label to be of type 'string'")
-	assert(#str <= 32, "Expected string to be max 32 characters")
-	assert(#str >= 1, "Expected string to be min 1 characters")
-end
-
---  
-function M.Label(str)
-	asserts.AssertLabel(str)
-	return str
-end
-
 function asserts.AssertPasswordType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PasswordType to be of type 'string'")
@@ -5126,6 +5320,17 @@ end
 --  
 function M.DocumentVersionStatus(str)
 	asserts.AssertDocumentVersionStatus(str)
+	return str
+end
+
+function asserts.AssertBooleanEnumType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected BooleanEnumType to be of type 'string'")
+end
+
+--  
+function M.BooleanEnumType(str)
+	asserts.AssertBooleanEnumType(str)
 	return str
 end
 
@@ -5223,6 +5428,19 @@ function M.UrlType(str)
 	return str
 end
 
+function asserts.AssertSharedLabel(str)
+	assert(str)
+	assert(type(str) == "string", "Expected SharedLabel to be of type 'string'")
+	assert(#str <= 32, "Expected string to be max 32 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.SharedLabel(str)
+	asserts.AssertSharedLabel(str)
+	return str
+end
+
 function asserts.AssertResourceSortType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ResourceSortType to be of type 'string'")
@@ -5242,30 +5460,6 @@ end
 --  
 function M.ShareStatusType(str)
 	asserts.AssertShareStatusType(str)
-	return str
-end
-
-function asserts.AssertOrderType(str)
-	assert(str)
-	assert(type(str) == "string", "Expected OrderType to be of type 'string'")
-end
-
---  
-function M.OrderType(str)
-	asserts.AssertOrderType(str)
-	return str
-end
-
-function asserts.AssertResourceNameType(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ResourceNameType to be of type 'string'")
-	assert(#str <= 255, "Expected string to be max 255 characters")
-	assert(#str >= 1, "Expected string to be min 1 characters")
-end
-
---  
-function M.ResourceNameType(str)
-	asserts.AssertResourceNameType(str)
 	return str
 end
 
@@ -5402,6 +5596,17 @@ function M.UserAttributeValueType(str)
 	return str
 end
 
+function asserts.AssertOrderType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected OrderType to be of type 'string'")
+end
+
+--  
+function M.OrderType(str)
+	asserts.AssertOrderType(str)
+	return str
+end
+
 function asserts.AssertHeaderValueType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected HeaderValueType to be of type 'string'")
@@ -5445,17 +5650,6 @@ end
 --  
 function M.ResourceType(str)
 	asserts.AssertResourceType(str)
-	return str
-end
-
-function asserts.AssertLocaleType(str)
-	assert(str)
-	assert(type(str) == "string", "Expected LocaleType to be of type 'string'")
-end
-
---  
-function M.LocaleType(str)
-	asserts.AssertLocaleType(str)
 	return str
 end
 
@@ -5578,6 +5772,18 @@ function M.LimitType(integer)
 	return integer
 end
 
+function asserts.AssertPositiveIntegerType(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected PositiveIntegerType to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
+	assert(integer >= 1, "Expected integer to be min 1")
+end
+
+function M.PositiveIntegerType(integer)
+	asserts.AssertPositiveIntegerType(integer)
+	return integer
+end
+
 function asserts.AssertBooleanType(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected BooleanType to be of type 'boolean'")
@@ -5684,22 +5890,6 @@ function M.PrincipalList(list)
 	return list
 end
 
-function asserts.AssertLabels(list)
-	assert(list)
-	assert(type(list) == "table", "Expected Labels to be of type ''table")
-	assert(#list <= 20, "Expected list to be contain 20 elements")
-	for _,v in ipairs(list) do
-		asserts.AssertLabel(v)
-	end
-end
-
---  
--- List of Label objects
-function M.Labels(list)
-	asserts.AssertLabels(list)
-	return list
-end
-
 function asserts.AssertGroupMetadataList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected GroupMetadataList to be of type ''table")
@@ -5790,6 +5980,22 @@ function M.EntityIdList(list)
 	return list
 end
 
+function asserts.AssertSharedLabels(list)
+	assert(list)
+	assert(type(list) == "table", "Expected SharedLabels to be of type ''table")
+	assert(#list <= 20, "Expected list to be contain 20 elements")
+	for _,v in ipairs(list) do
+		asserts.AssertSharedLabel(v)
+	end
+end
+
+--  
+-- List of SharedLabel objects
+function M.SharedLabels(list)
+	asserts.AssertSharedLabels(list)
+	return list
+end
+
 function asserts.AssertFolderMetadataList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FolderMetadataList to be of type ''table")
@@ -5850,22 +6056,6 @@ function M.DocumentVersionMetadataList(list)
 	return list
 end
 
-function asserts.AssertCustomMetadataKeyList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected CustomMetadataKeyList to be of type ''table")
-	assert(#list <= 8, "Expected list to be contain 8 elements")
-	for _,v in ipairs(list) do
-		asserts.AssertCustomMetadataKeyType(v)
-	end
-end
-
---  
--- List of CustomMetadataKeyType objects
-function M.CustomMetadataKeyList(list)
-	asserts.AssertCustomMetadataKeyList(list)
-	return list
-end
-
 function asserts.AssertSubscriptionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SubscriptionList to be of type ''table")
@@ -5879,6 +6069,22 @@ end
 -- List of Subscription objects
 function M.SubscriptionList(list)
 	asserts.AssertSubscriptionList(list)
+	return list
+end
+
+function asserts.AssertCustomMetadataKeyList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected CustomMetadataKeyList to be of type ''table")
+	assert(#list <= 8, "Expected list to be contain 8 elements")
+	for _,v in ipairs(list) do
+		asserts.AssertCustomMetadataKeyType(v)
+	end
+end
+
+--  
+-- List of CustomMetadataKeyType objects
+function M.CustomMetadataKeyList(list)
+	asserts.AssertCustomMetadataKeyList(list)
 	return list
 end
 
@@ -6895,6 +7101,41 @@ function M.CreateFolderSync(CreateFolderRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.CreateFolderAsync(CreateFolderRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeGroups asynchronously, invoking a callback when done
+-- @param DescribeGroupsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeGroupsAsync(DescribeGroupsRequest, cb)
+	assert(DescribeGroupsRequest, "You must provide a DescribeGroupsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeGroups",
+	}
+	for header,value in pairs(DescribeGroupsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	if request_handler then
+		request_handler(settings.uri, "/api/v1/groups", DescribeGroupsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeGroupsRequest
+-- @return response
+-- @return error_message
+function M.DescribeGroupsSync(DescribeGroupsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeGroupsAsync(DescribeGroupsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

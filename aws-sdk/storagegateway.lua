@@ -21,46 +21,6 @@ M.metadata = {
 local keys = {}
 local asserts = {}
 
-keys.StorageGatewayError = { ["errorCode"] = true, ["errorDetails"] = true, nil }
-
-function asserts.AssertStorageGatewayError(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected StorageGatewayError to be of type 'table'")
-	if struct["errorCode"] then asserts.AssertErrorCode(struct["errorCode"]) end
-	if struct["errorDetails"] then asserts.AsserterrorDetails(struct["errorDetails"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.StorageGatewayError[k], "StorageGatewayError contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type StorageGatewayError
--- <p>Provides additional information about an error that was returned by the service as an or. See the <code>errorCode</code> and <code>errorDetails</code> members for more information about the error.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * errorCode [ErrorCode] <p>Additional information about the error.</p>
--- * errorDetails [errorDetails] <p>Human-readable text that provides detail about the error that occurred.</p>
--- @return StorageGatewayError structure as a key-value pair table
-function M.StorageGatewayError(args)
-	assert(args, "You must provide an argument table when creating StorageGatewayError")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["errorCode"] = args["errorCode"],
-		["errorDetails"] = args["errorDetails"],
-	}
-	asserts.AssertStorageGatewayError(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ResetCacheInput = { ["GatewayARN"] = true, nil }
 
 function asserts.AssertResetCacheInput(struct)
@@ -92,6 +52,43 @@ function M.ResetCacheInput(args)
 		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertResetCacheInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SetSMBGuestPasswordOutput = { ["GatewayARN"] = true, nil }
+
+function asserts.AssertSetSMBGuestPasswordOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SetSMBGuestPasswordOutput to be of type 'table'")
+	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SetSMBGuestPasswordOutput[k], "SetSMBGuestPasswordOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SetSMBGuestPasswordOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- @return SetSMBGuestPasswordOutput structure as a key-value pair table
+function M.SetSMBGuestPasswordOutput(args)
+	assert(args, "You must provide an argument table when creating SetSMBGuestPasswordOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GatewayARN"] = args["GatewayARN"],
+	}
+	asserts.AssertSetSMBGuestPasswordOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -137,7 +134,7 @@ function M.ShutdownGatewayOutput(args)
     }
 end
 
-keys.StorediSCSIVolume = { ["VolumeSizeInBytes"] = true, ["VolumeProgress"] = true, ["VolumeDiskId"] = true, ["PreservedExistingData"] = true, ["VolumeiSCSIAttributes"] = true, ["VolumeType"] = true, ["VolumeId"] = true, ["SourceSnapshotId"] = true, ["VolumeARN"] = true, ["CreatedDate"] = true, ["VolumeStatus"] = true, nil }
+keys.StorediSCSIVolume = { ["VolumeSizeInBytes"] = true, ["VolumeProgress"] = true, ["VolumeDiskId"] = true, ["PreservedExistingData"] = true, ["VolumeiSCSIAttributes"] = true, ["VolumeType"] = true, ["VolumeId"] = true, ["VolumeUsedInBytes"] = true, ["SourceSnapshotId"] = true, ["KMSKey"] = true, ["VolumeARN"] = true, ["CreatedDate"] = true, ["VolumeStatus"] = true, nil }
 
 function asserts.AssertStorediSCSIVolume(struct)
 	assert(struct)
@@ -149,7 +146,9 @@ function asserts.AssertStorediSCSIVolume(struct)
 	if struct["VolumeiSCSIAttributes"] then asserts.AssertVolumeiSCSIAttributes(struct["VolumeiSCSIAttributes"]) end
 	if struct["VolumeType"] then asserts.AssertVolumeType(struct["VolumeType"]) end
 	if struct["VolumeId"] then asserts.AssertVolumeId(struct["VolumeId"]) end
+	if struct["VolumeUsedInBytes"] then asserts.AssertVolumeUsedInBytes(struct["VolumeUsedInBytes"]) end
 	if struct["SourceSnapshotId"] then asserts.AssertSnapshotId(struct["SourceSnapshotId"]) end
+	if struct["KMSKey"] then asserts.AssertKMSKey(struct["KMSKey"]) end
 	if struct["VolumeARN"] then asserts.AssertVolumeARN(struct["VolumeARN"]) end
 	if struct["CreatedDate"] then asserts.AssertCreatedDate(struct["CreatedDate"]) end
 	if struct["VolumeStatus"] then asserts.AssertVolumeStatus(struct["VolumeStatus"]) end
@@ -169,7 +168,9 @@ end
 -- * VolumeiSCSIAttributes [VolumeiSCSIAttributes] <p>An <a>VolumeiSCSIAttributes</a> object that represents a collection of iSCSI attributes for one stored volume.</p>
 -- * VolumeType [VolumeType] <p>One of the VolumeType enumeration values describing the type of the volume.</p>
 -- * VolumeId [VolumeId] <p>The unique identifier of the volume, e.g. vol-AE4B946D.</p>
+-- * VolumeUsedInBytes [VolumeUsedInBytes] <p>The size of the data stored on the volume in bytes. </p> <note> <p>This value is not available for volumes created prior to May 13, 2015, until you store data on the volume.</p> </note>
 -- * SourceSnapshotId [SnapshotId] <p>If the stored volume was created from a snapshot, this field contains the snapshot ID used, e.g. snap-78e22663. Otherwise, this field is not included.</p>
+-- * KMSKey [KMSKey] 
 -- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the storage volume.</p>
 -- * CreatedDate [CreatedDate] <p>The date the volume was created. Volumes created prior to March 28, 2017 don’t have this time stamp.</p>
 -- * VolumeStatus [VolumeStatus] <p>One of the VolumeStatus values that indicates the state of the storage volume.</p>
@@ -190,7 +191,9 @@ function M.StorediSCSIVolume(args)
 		["VolumeiSCSIAttributes"] = args["VolumeiSCSIAttributes"],
 		["VolumeType"] = args["VolumeType"],
 		["VolumeId"] = args["VolumeId"],
+		["VolumeUsedInBytes"] = args["VolumeUsedInBytes"],
 		["SourceSnapshotId"] = args["SourceSnapshotId"],
+		["KMSKey"] = args["KMSKey"],
 		["VolumeARN"] = args["VolumeARN"],
 		["CreatedDate"] = args["CreatedDate"],
 		["VolumeStatus"] = args["VolumeStatus"],
@@ -285,6 +288,45 @@ function M.DeleteTapeInput(args)
     }
 end
 
+keys.NotifyWhenUploadedInput = { ["FileShareARN"] = true, nil }
+
+function asserts.AssertNotifyWhenUploadedInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected NotifyWhenUploadedInput to be of type 'table'")
+	assert(struct["FileShareARN"], "Expected key FileShareARN to exist in table")
+	if struct["FileShareARN"] then asserts.AssertFileShareARN(struct["FileShareARN"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.NotifyWhenUploadedInput[k], "NotifyWhenUploadedInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type NotifyWhenUploadedInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileShareARN [FileShareARN] 
+-- Required key: FileShareARN
+-- @return NotifyWhenUploadedInput structure as a key-value pair table
+function M.NotifyWhenUploadedInput(args)
+	assert(args, "You must provide an argument table when creating NotifyWhenUploadedInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["FileShareARN"] = args["FileShareARN"],
+	}
+	asserts.AssertNotifyWhenUploadedInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DescribeTapeRecoveryPointsInput = { ["Marker"] = true, ["GatewayARN"] = true, ["Limit"] = true, nil }
 
 function asserts.AssertDescribeTapeRecoveryPointsInput(struct)
@@ -330,7 +372,7 @@ function M.DescribeTapeRecoveryPointsInput(args)
     }
 end
 
-keys.CachediSCSIVolume = { ["VolumeSizeInBytes"] = true, ["VolumeProgress"] = true, ["VolumeiSCSIAttributes"] = true, ["VolumeType"] = true, ["VolumeId"] = true, ["SourceSnapshotId"] = true, ["VolumeARN"] = true, ["CreatedDate"] = true, ["VolumeStatus"] = true, nil }
+keys.CachediSCSIVolume = { ["VolumeSizeInBytes"] = true, ["VolumeProgress"] = true, ["VolumeiSCSIAttributes"] = true, ["VolumeType"] = true, ["VolumeId"] = true, ["VolumeUsedInBytes"] = true, ["SourceSnapshotId"] = true, ["KMSKey"] = true, ["VolumeARN"] = true, ["CreatedDate"] = true, ["VolumeStatus"] = true, nil }
 
 function asserts.AssertCachediSCSIVolume(struct)
 	assert(struct)
@@ -340,7 +382,9 @@ function asserts.AssertCachediSCSIVolume(struct)
 	if struct["VolumeiSCSIAttributes"] then asserts.AssertVolumeiSCSIAttributes(struct["VolumeiSCSIAttributes"]) end
 	if struct["VolumeType"] then asserts.AssertVolumeType(struct["VolumeType"]) end
 	if struct["VolumeId"] then asserts.AssertVolumeId(struct["VolumeId"]) end
+	if struct["VolumeUsedInBytes"] then asserts.AssertVolumeUsedInBytes(struct["VolumeUsedInBytes"]) end
 	if struct["SourceSnapshotId"] then asserts.AssertSnapshotId(struct["SourceSnapshotId"]) end
+	if struct["KMSKey"] then asserts.AssertKMSKey(struct["KMSKey"]) end
 	if struct["VolumeARN"] then asserts.AssertVolumeARN(struct["VolumeARN"]) end
 	if struct["CreatedDate"] then asserts.AssertCreatedDate(struct["CreatedDate"]) end
 	if struct["VolumeStatus"] then asserts.AssertVolumeStatus(struct["VolumeStatus"]) end
@@ -353,12 +397,14 @@ end
 -- <p>Describes an iSCSI cached volume.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * VolumeSizeInBytes [long] <p>The size of the volume in bytes.</p>
+-- * VolumeSizeInBytes [long] <p>The size, in bytes, of the volume capacity.</p>
 -- * VolumeProgress [DoubleObject] <p>Represents the percentage complete if the volume is restoring or bootstrapping that represents the percent of data transferred. This field does not appear in the response if the cached volume is not restoring or bootstrapping.</p>
 -- * VolumeiSCSIAttributes [VolumeiSCSIAttributes] <p>An <a>VolumeiSCSIAttributes</a> object that represents a collection of iSCSI attributes for one stored volume.</p>
 -- * VolumeType [VolumeType] <p>One of the VolumeType enumeration values that describes the type of the volume.</p>
 -- * VolumeId [VolumeId] <p>The unique identifier of the volume, e.g. vol-AE4B946D.</p>
+-- * VolumeUsedInBytes [VolumeUsedInBytes] <p>The size of the data stored on the volume in bytes.</p> <note> <p>This value is not available for volumes created prior to May 13, 2015, until you store data on the volume.</p> </note>
 -- * SourceSnapshotId [SnapshotId] <p>If the cached volume was created from a snapshot, this field contains the snapshot ID used, e.g. snap-78e22663. Otherwise, this field is not included.</p>
+-- * KMSKey [KMSKey] 
 -- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the storage volume.</p>
 -- * CreatedDate [CreatedDate] <p>The date the volume was created. Volumes created prior to March 28, 2017 don’t have this time stamp.</p>
 -- * VolumeStatus [VolumeStatus] <p>One of the VolumeStatus values that indicates the state of the storage volume.</p>
@@ -377,7 +423,9 @@ function M.CachediSCSIVolume(args)
 		["VolumeiSCSIAttributes"] = args["VolumeiSCSIAttributes"],
 		["VolumeType"] = args["VolumeType"],
 		["VolumeId"] = args["VolumeId"],
+		["VolumeUsedInBytes"] = args["VolumeUsedInBytes"],
 		["SourceSnapshotId"] = args["SourceSnapshotId"],
+		["KMSKey"] = args["KMSKey"],
 		["VolumeARN"] = args["VolumeARN"],
 		["CreatedDate"] = args["CreatedDate"],
 		["VolumeStatus"] = args["VolumeStatus"],
@@ -435,7 +483,7 @@ function M.DeleteBandwidthRateLimitInput(args)
     }
 end
 
-keys.CreateTapesInput = { ["GatewayARN"] = true, ["TapeBarcodePrefix"] = true, ["TapeSizeInBytes"] = true, ["NumTapesToCreate"] = true, ["ClientToken"] = true, nil }
+keys.CreateTapesInput = { ["TapeBarcodePrefix"] = true, ["NumTapesToCreate"] = true, ["KMSKey"] = true, ["TapeSizeInBytes"] = true, ["ClientToken"] = true, ["GatewayARN"] = true, ["KMSEncrypted"] = true, nil }
 
 function asserts.AssertCreateTapesInput(struct)
 	assert(struct)
@@ -445,11 +493,13 @@ function asserts.AssertCreateTapesInput(struct)
 	assert(struct["ClientToken"], "Expected key ClientToken to exist in table")
 	assert(struct["NumTapesToCreate"], "Expected key NumTapesToCreate to exist in table")
 	assert(struct["TapeBarcodePrefix"], "Expected key TapeBarcodePrefix to exist in table")
-	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
 	if struct["TapeBarcodePrefix"] then asserts.AssertTapeBarcodePrefix(struct["TapeBarcodePrefix"]) end
-	if struct["TapeSizeInBytes"] then asserts.AssertTapeSize(struct["TapeSizeInBytes"]) end
 	if struct["NumTapesToCreate"] then asserts.AssertNumTapesToCreate(struct["NumTapesToCreate"]) end
+	if struct["KMSKey"] then asserts.AssertKMSKey(struct["KMSKey"]) end
+	if struct["TapeSizeInBytes"] then asserts.AssertTapeSize(struct["TapeSizeInBytes"]) end
 	if struct["ClientToken"] then asserts.AssertClientToken(struct["ClientToken"]) end
+	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
+	if struct["KMSEncrypted"] then asserts.AssertBoolean(struct["KMSEncrypted"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateTapesInput[k], "CreateTapesInput contains unknown key " .. tostring(k))
 	end
@@ -459,11 +509,13 @@ end
 -- <p>CreateTapesInput</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GatewayARN [GatewayARN] <p>The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tapes with. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
 -- * TapeBarcodePrefix [TapeBarcodePrefix] <p>A prefix that you append to the barcode of the virtual tape you are creating. This prefix makes the barcode unique.</p> <note> <p>The prefix must be 1 to 4 characters in length and must be one of the uppercase letters from A to Z.</p> </note>
--- * TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the virtual tapes that you want to create.</p> <note> <p>The size must be aligned by gigabyte (1024*1024*1024 byte).</p> </note>
 -- * NumTapesToCreate [NumTapesToCreate] <p>The number of virtual tapes that you want to create.</p>
+-- * KMSKey [KMSKey] <p>The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. This value can only be set when KMSEncrypted is true. Optional.</p>
+-- * TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the virtual tapes that you want to create.</p> <note> <p>The size must be aligned by gigabyte (1024*1024*1024 byte).</p> </note>
 -- * ClientToken [ClientToken] <p>A unique identifier that you use to retry a request. If you retry a request, use the same <code>ClientToken</code> you specified in the initial request.</p> <note> <p>Using the same <code>ClientToken</code> prevents creating the tape multiple times.</p> </note>
+-- * GatewayARN [GatewayARN] <p>The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tapes with. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
+-- * KMSEncrypted [Boolean] <p>True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.</p>
 -- Required key: GatewayARN
 -- Required key: TapeSizeInBytes
 -- Required key: ClientToken
@@ -479,13 +531,99 @@ function M.CreateTapesInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["GatewayARN"] = args["GatewayARN"],
 		["TapeBarcodePrefix"] = args["TapeBarcodePrefix"],
-		["TapeSizeInBytes"] = args["TapeSizeInBytes"],
 		["NumTapesToCreate"] = args["NumTapesToCreate"],
+		["KMSKey"] = args["KMSKey"],
+		["TapeSizeInBytes"] = args["TapeSizeInBytes"],
 		["ClientToken"] = args["ClientToken"],
+		["GatewayARN"] = args["GatewayARN"],
+		["KMSEncrypted"] = args["KMSEncrypted"],
 	}
 	asserts.AssertCreateTapesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateSMBFileShareInput = { ["Authentication"] = true, ["ValidUserList"] = true, ["DefaultStorageClass"] = true, ["ReadOnly"] = true, ["GuessMIMETypeEnabled"] = true, ["InvalidUserList"] = true, ["KMSKey"] = true, ["Role"] = true, ["LocationARN"] = true, ["ObjectACL"] = true, ["ClientToken"] = true, ["GatewayARN"] = true, ["KMSEncrypted"] = true, ["RequesterPays"] = true, nil }
+
+function asserts.AssertCreateSMBFileShareInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateSMBFileShareInput to be of type 'table'")
+	assert(struct["ClientToken"], "Expected key ClientToken to exist in table")
+	assert(struct["GatewayARN"], "Expected key GatewayARN to exist in table")
+	assert(struct["Role"], "Expected key Role to exist in table")
+	assert(struct["LocationARN"], "Expected key LocationARN to exist in table")
+	if struct["Authentication"] then asserts.AssertAuthentication(struct["Authentication"]) end
+	if struct["ValidUserList"] then asserts.AssertFileShareUserList(struct["ValidUserList"]) end
+	if struct["DefaultStorageClass"] then asserts.AssertStorageClass(struct["DefaultStorageClass"]) end
+	if struct["ReadOnly"] then asserts.AssertBoolean(struct["ReadOnly"]) end
+	if struct["GuessMIMETypeEnabled"] then asserts.AssertBoolean(struct["GuessMIMETypeEnabled"]) end
+	if struct["InvalidUserList"] then asserts.AssertFileShareUserList(struct["InvalidUserList"]) end
+	if struct["KMSKey"] then asserts.AssertKMSKey(struct["KMSKey"]) end
+	if struct["Role"] then asserts.AssertRole(struct["Role"]) end
+	if struct["LocationARN"] then asserts.AssertLocationARN(struct["LocationARN"]) end
+	if struct["ObjectACL"] then asserts.AssertObjectACL(struct["ObjectACL"]) end
+	if struct["ClientToken"] then asserts.AssertClientToken(struct["ClientToken"]) end
+	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
+	if struct["KMSEncrypted"] then asserts.AssertBoolean(struct["KMSEncrypted"]) end
+	if struct["RequesterPays"] then asserts.AssertBoolean(struct["RequesterPays"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateSMBFileShareInput[k], "CreateSMBFileShareInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateSMBFileShareInput
+-- <p>CreateSMBFileShareInput</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Authentication [Authentication] <p>The authentication method that users use to access the file share.</p> <p>Valid values are <code>ActiveDirectory</code> or <code>GuestAccess</code>. The default is <code>ActiveDirectory</code>.</p>
+-- * ValidUserList [FileShareUserList] <p>A list of users or groups in the Active Directory that are allowed to access the file share. A group must be prefixed with the @ character. For example <code>@group1</code>. Can only be set if Authentication is set to <code>ActiveDirectory</code>.</p>
+-- * DefaultStorageClass [StorageClass] <p>The default storage class for objects put into an Amazon S3 bucket by the file gateway. Possible values are <code>S3_STANDARD</code>, <code>S3_STANDARD_IA</code>, or <code>S3_ONEZONE_IA</code>. If this field is not populated, the default value <code>S3_STANDARD</code> is used. Optional.</p>
+-- * ReadOnly [Boolean] <p>A value that sets the write status of a file share. This value is true if the write status is read-only, and otherwise false.</p>
+-- * GuessMIMETypeEnabled [Boolean] <p>A value that enables guessing of the MIME type for uploaded objects based on file extensions. Set this value to true to enable MIME type guessing, and otherwise to false. The default value is true.</p>
+-- * InvalidUserList [FileShareUserList] <p>A list of users or groups in the Active Directory that are not allowed to access the file share. A group must be prefixed with the @ character. For example <code>@group1</code>. Can only be set if Authentication is set to <code>ActiveDirectory</code>.</p>
+-- * KMSKey [KMSKey] <p>The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. This value can only be set when KMSEncrypted is true. Optional.</p>
+-- * Role [Role] <p>The ARN of the AWS Identity and Access Management (IAM) role that a file gateway assumes when it accesses the underlying storage. </p>
+-- * LocationARN [LocationARN] <p>The ARN of the backed storage used for storing file data. </p>
+-- * ObjectACL [ObjectACL] <p>A value that sets the access control list permission for objects in the S3 bucket that a file gateway puts objects into. The default value is "private".</p>
+-- * ClientToken [ClientToken] <p>A unique string value that you supply that is used by file gateway to ensure idempotent file share creation.</p>
+-- * GatewayARN [GatewayARN] <p>The Amazon Resource Name (ARN) of the file gateway on which you want to create a file share.</p>
+-- * KMSEncrypted [Boolean] <p>True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.</p>
+-- * RequesterPays [Boolean] <p>A value that sets the access control list permission for objects in the Amazon S3 bucket that a file gateway puts objects into. The default value is <code>private</code>.</p>
+-- Required key: ClientToken
+-- Required key: GatewayARN
+-- Required key: Role
+-- Required key: LocationARN
+-- @return CreateSMBFileShareInput structure as a key-value pair table
+function M.CreateSMBFileShareInput(args)
+	assert(args, "You must provide an argument table when creating CreateSMBFileShareInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Authentication"] = args["Authentication"],
+		["ValidUserList"] = args["ValidUserList"],
+		["DefaultStorageClass"] = args["DefaultStorageClass"],
+		["ReadOnly"] = args["ReadOnly"],
+		["GuessMIMETypeEnabled"] = args["GuessMIMETypeEnabled"],
+		["InvalidUserList"] = args["InvalidUserList"],
+		["KMSKey"] = args["KMSKey"],
+		["Role"] = args["Role"],
+		["LocationARN"] = args["LocationARN"],
+		["ObjectACL"] = args["ObjectACL"],
+		["ClientToken"] = args["ClientToken"],
+		["GatewayARN"] = args["GatewayARN"],
+		["KMSEncrypted"] = args["KMSEncrypted"],
+		["RequesterPays"] = args["RequesterPays"],
+	}
+	asserts.AssertCreateSMBFileShareInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -538,13 +676,14 @@ function M.RemoveTagsFromResourceInput(args)
     }
 end
 
-keys.DeleteFileShareInput = { ["FileShareARN"] = true, nil }
+keys.DeleteFileShareInput = { ["FileShareARN"] = true, ["ForceDelete"] = true, nil }
 
 function asserts.AssertDeleteFileShareInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteFileShareInput to be of type 'table'")
 	assert(struct["FileShareARN"], "Expected key FileShareARN to exist in table")
 	if struct["FileShareARN"] then asserts.AssertFileShareARN(struct["FileShareARN"]) end
+	if struct["ForceDelete"] then asserts.Assertboolean(struct["ForceDelete"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.DeleteFileShareInput[k], "DeleteFileShareInput contains unknown key " .. tostring(k))
 	end
@@ -555,6 +694,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the file share to be deleted. </p>
+-- * ForceDelete [boolean] <p>If this value is set to true, the operation deletes a file share immediately and aborts all data uploads to AWS. Otherwise, the file share is not deleted until all data is uploaded to AWS. This process aborts the data upload process, and the file share enters the FORCE_DELETING status.</p>
 -- Required key: FileShareARN
 -- @return DeleteFileShareInput structure as a key-value pair table
 function M.DeleteFileShareInput(args)
@@ -567,6 +707,7 @@ function M.DeleteFileShareInput(args)
     }
 	local all_args = { 
 		["FileShareARN"] = args["FileShareARN"],
+		["ForceDelete"] = args["ForceDelete"],
 	}
 	asserts.AssertDeleteFileShareInput(all_args)
 	return {
@@ -710,25 +851,25 @@ function M.ChapInfo(args)
     }
 end
 
-keys.SetLocalConsolePasswordOutput = { ["GatewayARN"] = true, nil }
+keys.JoinDomainOutput = { ["GatewayARN"] = true, nil }
 
-function asserts.AssertSetLocalConsolePasswordOutput(struct)
+function asserts.AssertJoinDomainOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SetLocalConsolePasswordOutput to be of type 'table'")
+	assert(type(struct) == "table", "Expected JoinDomainOutput to be of type 'table'")
 	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SetLocalConsolePasswordOutput[k], "SetLocalConsolePasswordOutput contains unknown key " .. tostring(k))
+		assert(keys.JoinDomainOutput[k], "JoinDomainOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SetLocalConsolePasswordOutput
---  
+--- Create a structure of type JoinDomainOutput
+-- <p>JoinDomainOutput</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GatewayARN [GatewayARN] 
--- @return SetLocalConsolePasswordOutput structure as a key-value pair table
-function M.SetLocalConsolePasswordOutput(args)
-	assert(args, "You must provide an argument table when creating SetLocalConsolePasswordOutput")
+-- * GatewayARN [GatewayARN] <p>The unique Amazon Resource Name (ARN) of the gateway that joined the domain.</p>
+-- @return JoinDomainOutput structure as a key-value pair table
+function M.JoinDomainOutput(args)
+	assert(args, "You must provide an argument table when creating JoinDomainOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -738,7 +879,51 @@ function M.SetLocalConsolePasswordOutput(args)
 	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertSetLocalConsolePasswordOutput(all_args)
+	asserts.AssertJoinDomainOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateVTLDeviceTypeInput = { ["DeviceType"] = true, ["VTLDeviceARN"] = true, nil }
+
+function asserts.AssertUpdateVTLDeviceTypeInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateVTLDeviceTypeInput to be of type 'table'")
+	assert(struct["VTLDeviceARN"], "Expected key VTLDeviceARN to exist in table")
+	assert(struct["DeviceType"], "Expected key DeviceType to exist in table")
+	if struct["DeviceType"] then asserts.AssertDeviceType(struct["DeviceType"]) end
+	if struct["VTLDeviceARN"] then asserts.AssertVTLDeviceARN(struct["VTLDeviceARN"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateVTLDeviceTypeInput[k], "UpdateVTLDeviceTypeInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateVTLDeviceTypeInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeviceType [DeviceType] <p>The type of medium changer you want to select.</p> <p> Valid Values: "STK-L700", "AWS-Gateway-VTL"</p>
+-- * VTLDeviceARN [VTLDeviceARN] <p>The Amazon Resource Name (ARN) of the medium changer you want to select.</p>
+-- Required key: VTLDeviceARN
+-- Required key: DeviceType
+-- @return UpdateVTLDeviceTypeInput structure as a key-value pair table
+function M.UpdateVTLDeviceTypeInput(args)
+	assert(args, "You must provide an argument table when creating UpdateVTLDeviceTypeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["DeviceType"] = args["DeviceType"],
+		["VTLDeviceARN"] = args["VTLDeviceARN"],
+	}
+	asserts.AssertUpdateVTLDeviceTypeInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -834,6 +1019,60 @@ function M.DescribeTapesInput(args)
     }
 end
 
+keys.JoinDomainInput = { ["UserName"] = true, ["GatewayARN"] = true, ["Password"] = true, ["DomainName"] = true, nil }
+
+function asserts.AssertJoinDomainInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected JoinDomainInput to be of type 'table'")
+	assert(struct["GatewayARN"], "Expected key GatewayARN to exist in table")
+	assert(struct["DomainName"], "Expected key DomainName to exist in table")
+	assert(struct["UserName"], "Expected key UserName to exist in table")
+	assert(struct["Password"], "Expected key Password to exist in table")
+	if struct["UserName"] then asserts.AssertDomainUserName(struct["UserName"]) end
+	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
+	if struct["Password"] then asserts.AssertDomainUserPassword(struct["Password"]) end
+	if struct["DomainName"] then asserts.AssertDomainName(struct["DomainName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.JoinDomainInput[k], "JoinDomainInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type JoinDomainInput
+-- <p>JoinDomainInput</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [DomainUserName] <p>Sets the user name of user who has permission to add the gateway to the Active Directory domain.</p>
+-- * GatewayARN [GatewayARN] <p>The unique Amazon Resource Name (ARN) of the file gateway you want to add to the Active Directory domain. </p>
+-- * Password [DomainUserPassword] <p>Sets the password of the user who has permission to add the gateway to the Active Directory domain.</p>
+-- * DomainName [DomainName] <p>The name of the domain that you want the gateway to join.</p>
+-- Required key: GatewayARN
+-- Required key: DomainName
+-- Required key: UserName
+-- Required key: Password
+-- @return JoinDomainInput structure as a key-value pair table
+function M.JoinDomainInput(args)
+	assert(args, "You must provide an argument table when creating JoinDomainInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["UserName"] = args["UserName"],
+		["GatewayARN"] = args["GatewayARN"],
+		["Password"] = args["Password"],
+		["DomainName"] = args["DomainName"],
+	}
+	asserts.AssertJoinDomainInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.UpdateBandwidthRateLimitInput = { ["GatewayARN"] = true, ["AverageUploadRateLimitInBitsPerSec"] = true, ["AverageDownloadRateLimitInBitsPerSec"] = true, nil }
 
 function asserts.AssertUpdateBandwidthRateLimitInput(struct)
@@ -900,7 +1139,7 @@ end
 -- * TapeStatus [TapeRecoveryPointStatus] 
 -- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape.</p>
 -- * TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the virtual tapes to recover.</p>
--- * TapeRecoveryPointTime [Time] <p>The time when the point-in-time view of the virtual tape was replicated for later recovery.</p> <p>The string format of the tape recovery point time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.</p>
+-- * TapeRecoveryPointTime [Time] <p>The time when the point-in-time view of the virtual tape was replicated for later recovery.</p> <p>The default time stamp format of the tape recovery point time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.</p>
 -- @return TapeRecoveryPointInfo structure as a key-value pair table
 function M.TapeRecoveryPointInfo(args)
 	assert(args, "You must provide an argument table when creating TapeRecoveryPointInfo")
@@ -993,46 +1232,6 @@ function M.DescribeCachediSCSIVolumesOutput(args)
 		["CachediSCSIVolumes"] = args["CachediSCSIVolumes"],
 	}
 	asserts.AssertDescribeCachediSCSIVolumesOutput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InternalServerError = { ["message"] = true, ["error"] = true, nil }
-
-function asserts.AssertInternalServerError(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InternalServerError to be of type 'table'")
-	if struct["message"] then asserts.Assertstring(struct["message"]) end
-	if struct["error"] then asserts.AssertStorageGatewayError(struct["error"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InternalServerError[k], "InternalServerError contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InternalServerError
--- <p>An internal server error has occurred during the request. For more information, see the error and message fields.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [string] <p>A human-readable message describing the error that occurred.</p>
--- * error [StorageGatewayError] <p>A <a>StorageGatewayError</a> that provides more information about the cause of the error.</p>
--- @return InternalServerError structure as a key-value pair table
-function M.InternalServerError(args)
-	assert(args, "You must provide an argument table when creating InternalServerError")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-		["error"] = args["error"],
-	}
-	asserts.AssertInternalServerError(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1251,7 +1450,7 @@ function M.ListVolumeInitiatorsInput(args)
     }
 end
 
-keys.CreateNFSFileShareInput = { ["DefaultStorageClass"] = true, ["ClientList"] = true, ["Squash"] = true, ["NFSFileShareDefaults"] = true, ["KMSKey"] = true, ["Role"] = true, ["LocationARN"] = true, ["ClientToken"] = true, ["GatewayARN"] = true, ["ReadOnly"] = true, ["KMSEncrypted"] = true, nil }
+keys.CreateNFSFileShareInput = { ["DefaultStorageClass"] = true, ["ClientList"] = true, ["Squash"] = true, ["GuessMIMETypeEnabled"] = true, ["NFSFileShareDefaults"] = true, ["KMSKey"] = true, ["Role"] = true, ["LocationARN"] = true, ["ObjectACL"] = true, ["ClientToken"] = true, ["GatewayARN"] = true, ["ReadOnly"] = true, ["KMSEncrypted"] = true, ["RequesterPays"] = true, nil }
 
 function asserts.AssertCreateNFSFileShareInput(struct)
 	assert(struct)
@@ -1263,14 +1462,17 @@ function asserts.AssertCreateNFSFileShareInput(struct)
 	if struct["DefaultStorageClass"] then asserts.AssertStorageClass(struct["DefaultStorageClass"]) end
 	if struct["ClientList"] then asserts.AssertFileShareClientList(struct["ClientList"]) end
 	if struct["Squash"] then asserts.AssertSquash(struct["Squash"]) end
+	if struct["GuessMIMETypeEnabled"] then asserts.AssertBoolean(struct["GuessMIMETypeEnabled"]) end
 	if struct["NFSFileShareDefaults"] then asserts.AssertNFSFileShareDefaults(struct["NFSFileShareDefaults"]) end
 	if struct["KMSKey"] then asserts.AssertKMSKey(struct["KMSKey"]) end
 	if struct["Role"] then asserts.AssertRole(struct["Role"]) end
 	if struct["LocationARN"] then asserts.AssertLocationARN(struct["LocationARN"]) end
+	if struct["ObjectACL"] then asserts.AssertObjectACL(struct["ObjectACL"]) end
 	if struct["ClientToken"] then asserts.AssertClientToken(struct["ClientToken"]) end
 	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
 	if struct["ReadOnly"] then asserts.AssertBoolean(struct["ReadOnly"]) end
 	if struct["KMSEncrypted"] then asserts.AssertBoolean(struct["KMSEncrypted"]) end
+	if struct["RequesterPays"] then asserts.AssertBoolean(struct["RequesterPays"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateNFSFileShareInput[k], "CreateNFSFileShareInput contains unknown key " .. tostring(k))
 	end
@@ -1280,17 +1482,20 @@ end
 -- <p>CreateNFSFileShareInput</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DefaultStorageClass [StorageClass] <p>The default storage class for objects put into an Amazon S3 bucket by file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.</p>
+-- * DefaultStorageClass [StorageClass] <p>The default storage class for objects put into an Amazon S3 bucket by the file gateway. Possible values are <code>S3_STANDARD</code>, <code>S3_STANDARD_IA</code>, or <code>S3_ONEZONE_IA</code>. If this field is not populated, the default value <code>S3_STANDARD</code> is used. Optional.</p>
 -- * ClientList [FileShareClientList] <p>The list of clients that are allowed to access the file gateway. The list must contain either valid IP addresses or valid CIDR blocks. </p>
--- * Squash [Squash] <p>Maps a user to anonymous user. Valid options are the following: </p> <ul> <li> <p>"RootSquash" - Only root is mapped to anonymous user.</p> </li> <li> <p>"NoSquash" - No one is mapped to anonymous user.</p> </li> <li> <p>"AllSquash" - Everyone is mapped to anonymous user.</p> </li> </ul>
+-- * Squash [Squash] <p>Maps a user to anonymous user. Valid options are the following: </p> <ul> <li> <p> <code>RootSquash</code> - Only root is mapped to anonymous user.</p> </li> <li> <p> <code>NoSquash</code> - No one is mapped to anonymous user</p> </li> <li> <p> <code>AllSquash</code> - Everyone is mapped to anonymous user.</p> </li> </ul>
+-- * GuessMIMETypeEnabled [Boolean] <p>A value that enables guessing of the MIME type for uploaded objects based on file extensions. Set this value to true to enable MIME type guessing, and otherwise to false. The default value is true.</p>
 -- * NFSFileShareDefaults [NFSFileShareDefaults] <p>File share default values. Optional.</p>
--- * KMSKey [KMSKey] <p>The KMS key used for Amazon S3 server side encryption. This value can only be set when KmsEncrypted is true. Optional.</p>
+-- * KMSKey [KMSKey] <p>The Amazon Resource Name (ARN) AWS KMS key used for Amazon S3 server side encryption. This value can only be set when KMSEncrypted is true. Optional.</p>
 -- * Role [Role] <p>The ARN of the AWS Identity and Access Management (IAM) role that a file gateway assumes when it accesses the underlying storage. </p>
 -- * LocationARN [LocationARN] <p>The ARN of the backed storage used for storing file data. </p>
+-- * ObjectACL [ObjectACL] <p>A value that sets the access control list permission for objects in the S3 bucket that a file gateway puts objects into. The default value is "private".</p>
 -- * ClientToken [ClientToken] <p>A unique string value that you supply that is used by file gateway to ensure idempotent file share creation.</p>
 -- * GatewayARN [GatewayARN] <p>The Amazon Resource Name (ARN) of the file gateway on which you want to create a file share.</p>
--- * ReadOnly [Boolean] <p>Sets the write status of a file share: "true" if the write status is read-only, and otherwise "false".</p>
+-- * ReadOnly [Boolean] <p>A value that sets the write status of a file share. This value is true if the write status is read-only, and otherwise false.</p>
 -- * KMSEncrypted [Boolean] <p>True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.</p>
+-- * RequesterPays [Boolean] <p>A value that sets the access control list permission for objects in the Amazon S3 bucket that a file gateway puts objects into. The default value is <code>private</code>.</p>
 -- Required key: ClientToken
 -- Required key: GatewayARN
 -- Required key: Role
@@ -1308,14 +1513,17 @@ function M.CreateNFSFileShareInput(args)
 		["DefaultStorageClass"] = args["DefaultStorageClass"],
 		["ClientList"] = args["ClientList"],
 		["Squash"] = args["Squash"],
+		["GuessMIMETypeEnabled"] = args["GuessMIMETypeEnabled"],
 		["NFSFileShareDefaults"] = args["NFSFileShareDefaults"],
 		["KMSKey"] = args["KMSKey"],
 		["Role"] = args["Role"],
 		["LocationARN"] = args["LocationARN"],
+		["ObjectACL"] = args["ObjectACL"],
 		["ClientToken"] = args["ClientToken"],
 		["GatewayARN"] = args["GatewayARN"],
 		["ReadOnly"] = args["ReadOnly"],
 		["KMSEncrypted"] = args["KMSEncrypted"],
+		["RequesterPays"] = args["RequesterPays"],
 	}
 	asserts.AssertCreateNFSFileShareInput(all_args)
 	return {
@@ -1341,7 +1549,7 @@ end
 -- <p>DisableGatewayOutput</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GatewayARN [GatewayARN] <p>The unique Amazon Resource Name of the disabled gateway.</p>
+-- * GatewayARN [GatewayARN] <p>The unique Amazon Resource Name (ARN) of the disabled gateway.</p>
 -- @return DisableGatewayOutput structure as a key-value pair table
 function M.DisableGatewayOutput(args)
 	assert(args, "You must provide an argument table when creating DisableGatewayOutput")
@@ -1433,6 +1641,43 @@ function M.DeleteSnapshotScheduleInput(args)
 		["VolumeARN"] = args["VolumeARN"],
 	}
 	asserts.AssertDeleteSnapshotScheduleInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateSMBFileShareOutput = { ["FileShareARN"] = true, nil }
+
+function asserts.AssertUpdateSMBFileShareOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateSMBFileShareOutput to be of type 'table'")
+	if struct["FileShareARN"] then asserts.AssertFileShareARN(struct["FileShareARN"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateSMBFileShareOutput[k], "UpdateSMBFileShareOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateSMBFileShareOutput
+-- <p>UpdateSMBFileShareOutput</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the updated SMB file share. </p>
+-- @return UpdateSMBFileShareOutput structure as a key-value pair table
+function M.UpdateSMBFileShareOutput(args)
+	assert(args, "You must provide an argument table when creating UpdateSMBFileShareOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["FileShareARN"] = args["FileShareARN"],
+	}
+	asserts.AssertUpdateSMBFileShareOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1881,6 +2126,55 @@ function M.ResetCacheOutput(args)
     }
 end
 
+keys.VTLDevice = { ["VTLDeviceType"] = true, ["VTLDeviceProductIdentifier"] = true, ["DeviceiSCSIAttributes"] = true, ["VTLDeviceARN"] = true, ["VTLDeviceVendor"] = true, nil }
+
+function asserts.AssertVTLDevice(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected VTLDevice to be of type 'table'")
+	if struct["VTLDeviceType"] then asserts.AssertVTLDeviceType(struct["VTLDeviceType"]) end
+	if struct["VTLDeviceProductIdentifier"] then asserts.AssertVTLDeviceProductIdentifier(struct["VTLDeviceProductIdentifier"]) end
+	if struct["DeviceiSCSIAttributes"] then asserts.AssertDeviceiSCSIAttributes(struct["DeviceiSCSIAttributes"]) end
+	if struct["VTLDeviceARN"] then asserts.AssertVTLDeviceARN(struct["VTLDeviceARN"]) end
+	if struct["VTLDeviceVendor"] then asserts.AssertVTLDeviceVendor(struct["VTLDeviceVendor"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.VTLDevice[k], "VTLDevice contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type VTLDevice
+-- <p>Represents a device object associated with a tape gateway.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VTLDeviceType [VTLDeviceType] 
+-- * VTLDeviceProductIdentifier [VTLDeviceProductIdentifier] 
+-- * DeviceiSCSIAttributes [DeviceiSCSIAttributes] <p>A list of iSCSI information about a VTL device.</p>
+-- * VTLDeviceARN [VTLDeviceARN] <p>Specifies the unique Amazon Resource Name (ARN) of the device (tape drive or media changer).</p>
+-- * VTLDeviceVendor [VTLDeviceVendor] 
+-- @return VTLDevice structure as a key-value pair table
+function M.VTLDevice(args)
+	assert(args, "You must provide an argument table when creating VTLDevice")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["VTLDeviceType"] = args["VTLDeviceType"],
+		["VTLDeviceProductIdentifier"] = args["VTLDeviceProductIdentifier"],
+		["DeviceiSCSIAttributes"] = args["DeviceiSCSIAttributes"],
+		["VTLDeviceARN"] = args["VTLDeviceARN"],
+		["VTLDeviceVendor"] = args["VTLDeviceVendor"],
+	}
+	asserts.AssertVTLDevice(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListTapesInput = { ["Marker"] = true, ["Limit"] = true, ["TapeARNs"] = true, nil }
 
 function asserts.AssertListTapesInput(struct)
@@ -1924,7 +2218,7 @@ function M.ListTapesInput(args)
     }
 end
 
-keys.Tape = { ["TapeCreatedDate"] = true, ["TapeUsedInBytes"] = true, ["TapeARN"] = true, ["VTLDevice"] = true, ["TapeSizeInBytes"] = true, ["TapeBarcode"] = true, ["Progress"] = true, ["TapeStatus"] = true, nil }
+keys.Tape = { ["TapeCreatedDate"] = true, ["TapeUsedInBytes"] = true, ["TapeARN"] = true, ["VTLDevice"] = true, ["KMSKey"] = true, ["TapeSizeInBytes"] = true, ["TapeBarcode"] = true, ["Progress"] = true, ["TapeStatus"] = true, nil }
 
 function asserts.AssertTape(struct)
 	assert(struct)
@@ -1933,6 +2227,7 @@ function asserts.AssertTape(struct)
 	if struct["TapeUsedInBytes"] then asserts.AssertTapeUsage(struct["TapeUsedInBytes"]) end
 	if struct["TapeARN"] then asserts.AssertTapeARN(struct["TapeARN"]) end
 	if struct["VTLDevice"] then asserts.AssertVTLDeviceARN(struct["VTLDevice"]) end
+	if struct["KMSKey"] then asserts.AssertKMSKey(struct["KMSKey"]) end
 	if struct["TapeSizeInBytes"] then asserts.AssertTapeSize(struct["TapeSizeInBytes"]) end
 	if struct["TapeBarcode"] then asserts.AssertTapeBarcode(struct["TapeBarcode"]) end
 	if struct["Progress"] then asserts.AssertDoubleObject(struct["Progress"]) end
@@ -1947,9 +2242,10 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * TapeCreatedDate [Time] <p>The date the virtual tape was created.</p>
--- * TapeUsedInBytes [TapeUsage] <p>The size, in bytes, of data written to the virtual tape.</p> <note> <p>This value is not available for tapes created prior to May,13 2015.</p> </note>
+-- * TapeUsedInBytes [TapeUsage] <p>The size, in bytes, of data stored on the virtual tape.</p> <note> <p>This value is not available for tapes created prior to May 13, 2015.</p> </note>
 -- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape.</p>
 -- * VTLDevice [VTLDeviceARN] <p>The virtual tape library (VTL) device that the virtual tape is associated with.</p>
+-- * KMSKey [KMSKey] 
 -- * TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the virtual tape capacity.</p>
 -- * TapeBarcode [TapeBarcode] <p>The barcode that identifies a specific virtual tape.</p>
 -- * Progress [DoubleObject] <p>For archiving virtual tapes, indicates how much data remains to be uploaded before archiving is complete.</p> <p>Range: 0 (not started) to 100 (complete).</p>
@@ -1968,6 +2264,7 @@ function M.Tape(args)
 		["TapeUsedInBytes"] = args["TapeUsedInBytes"],
 		["TapeARN"] = args["TapeARN"],
 		["VTLDevice"] = args["VTLDevice"],
+		["KMSKey"] = args["KMSKey"],
 		["TapeSizeInBytes"] = args["TapeSizeInBytes"],
 		["TapeBarcode"] = args["TapeBarcode"],
 		["Progress"] = args["Progress"],
@@ -1995,7 +2292,7 @@ function asserts.AssertDescribeGatewayInformationInput(struct)
 end
 
 --- Create a structure of type DescribeGatewayInformationInput
--- <p>A JSON object containing the id of the gateway.</p>
+-- <p>A JSON object containing the ID of the gateway.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * GatewayARN [GatewayARN] 
@@ -2146,29 +2443,57 @@ function M.DescribeBandwidthRateLimitOutput(args)
     }
 end
 
-keys.ListVolumesInput = { ["Marker"] = true, ["GatewayARN"] = true, ["Limit"] = true, nil }
+keys.SMBFileShareInfo = { ["FileShareARN"] = true, ["FileShareStatus"] = true, ["FileShareId"] = true, ["ValidUserList"] = true, ["DefaultStorageClass"] = true, ["ReadOnly"] = true, ["GuessMIMETypeEnabled"] = true, ["InvalidUserList"] = true, ["Authentication"] = true, ["KMSKey"] = true, ["Role"] = true, ["LocationARN"] = true, ["ObjectACL"] = true, ["Path"] = true, ["GatewayARN"] = true, ["KMSEncrypted"] = true, ["RequesterPays"] = true, nil }
 
-function asserts.AssertListVolumesInput(struct)
+function asserts.AssertSMBFileShareInfo(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ListVolumesInput to be of type 'table'")
-	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	assert(type(struct) == "table", "Expected SMBFileShareInfo to be of type 'table'")
+	if struct["FileShareARN"] then asserts.AssertFileShareARN(struct["FileShareARN"]) end
+	if struct["FileShareStatus"] then asserts.AssertFileShareStatus(struct["FileShareStatus"]) end
+	if struct["FileShareId"] then asserts.AssertFileShareId(struct["FileShareId"]) end
+	if struct["ValidUserList"] then asserts.AssertFileShareUserList(struct["ValidUserList"]) end
+	if struct["DefaultStorageClass"] then asserts.AssertStorageClass(struct["DefaultStorageClass"]) end
+	if struct["ReadOnly"] then asserts.AssertBoolean(struct["ReadOnly"]) end
+	if struct["GuessMIMETypeEnabled"] then asserts.AssertBoolean(struct["GuessMIMETypeEnabled"]) end
+	if struct["InvalidUserList"] then asserts.AssertFileShareUserList(struct["InvalidUserList"]) end
+	if struct["Authentication"] then asserts.AssertAuthentication(struct["Authentication"]) end
+	if struct["KMSKey"] then asserts.AssertKMSKey(struct["KMSKey"]) end
+	if struct["Role"] then asserts.AssertRole(struct["Role"]) end
+	if struct["LocationARN"] then asserts.AssertLocationARN(struct["LocationARN"]) end
+	if struct["ObjectACL"] then asserts.AssertObjectACL(struct["ObjectACL"]) end
+	if struct["Path"] then asserts.AssertPath(struct["Path"]) end
 	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
-	if struct["Limit"] then asserts.AssertPositiveIntObject(struct["Limit"]) end
+	if struct["KMSEncrypted"] then asserts.Assertboolean(struct["KMSEncrypted"]) end
+	if struct["RequesterPays"] then asserts.AssertBoolean(struct["RequesterPays"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ListVolumesInput[k], "ListVolumesInput contains unknown key " .. tostring(k))
+		assert(keys.SMBFileShareInfo[k], "SMBFileShareInfo contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ListVolumesInput
--- <p>A JSON object that contains one or more of the following fields:</p> <ul> <li> <p> <a>ListVolumesInput$Limit</a> </p> </li> <li> <p> <a>ListVolumesInput$Marker</a> </p> </li> </ul>
+--- Create a structure of type SMBFileShareInfo
+-- <p>The Windows file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported for file gateways.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Marker [Marker] <p>A string that indicates the position at which to begin the returned list of volumes. Obtain the marker from the response of a previous List iSCSI Volumes request.</p>
+-- * FileShareARN [FileShareARN] 
+-- * FileShareStatus [FileShareStatus] 
+-- * FileShareId [FileShareId] 
+-- * ValidUserList [FileShareUserList] <p>A list of users or groups in the Active Directory that are allowed to access the file share. A group must be prefixed with the @ character. For example <code>@group1</code>. Can only be set if Authentication is set to <code>ActiveDirectory</code>.</p>
+-- * DefaultStorageClass [StorageClass] <p>The default storage class for objects put into an Amazon S3 bucket by the file gateway. Possible values are <code>S3_STANDARD</code>, <code>S3_STANDARD_IA</code>, or <code>S3_ONEZONE_IA</code>. If this field is not populated, the default value <code>S3_STANDARD</code> is used. Optional.</p>
+-- * ReadOnly [Boolean] <p>A value that sets the write status of a file share. This value is true if the write status is read-only, and otherwise false.</p>
+-- * GuessMIMETypeEnabled [Boolean] <p>A value that enables guessing of the MIME type for uploaded objects based on file extensions. Set this value to true to enable MIME type guessing, and otherwise to false. The default value is true.</p>
+-- * InvalidUserList [FileShareUserList] <p>A list of users or groups in the Active Directory that are not allowed to access the file share. A group must be prefixed with the @ character. For example <code>@group1</code>. Can only be set if Authentication is set to <code>ActiveDirectory</code>.</p>
+-- * Authentication [Authentication] 
+-- * KMSKey [KMSKey] 
+-- * Role [Role] 
+-- * LocationARN [LocationARN] 
+-- * ObjectACL [ObjectACL] 
+-- * Path [Path] <p>The file share path used by the SMB client to identify the mount point.</p>
 -- * GatewayARN [GatewayARN] 
--- * Limit [PositiveIntObject] <p>Specifies that the list of volumes returned be limited to the specified number of items.</p>
--- @return ListVolumesInput structure as a key-value pair table
-function M.ListVolumesInput(args)
-	assert(args, "You must provide an argument table when creating ListVolumesInput")
+-- * KMSEncrypted [boolean] <p>True to use Amazon S3 server-side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional. </p>
+-- * RequesterPays [Boolean] <p>A value that sets the access control list permission for objects in the Amazon S3 bucket that a file gateway puts objects into. The default value is <code>private</code>.</p>
+-- @return SMBFileShareInfo structure as a key-value pair table
+function M.SMBFileShareInfo(args)
+	assert(args, "You must provide an argument table when creating SMBFileShareInfo")
     local query_args = { 
     }
     local uri_args = { 
@@ -2176,11 +2501,62 @@ function M.ListVolumesInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Marker"] = args["Marker"],
+		["FileShareARN"] = args["FileShareARN"],
+		["FileShareStatus"] = args["FileShareStatus"],
+		["FileShareId"] = args["FileShareId"],
+		["ValidUserList"] = args["ValidUserList"],
+		["DefaultStorageClass"] = args["DefaultStorageClass"],
+		["ReadOnly"] = args["ReadOnly"],
+		["GuessMIMETypeEnabled"] = args["GuessMIMETypeEnabled"],
+		["InvalidUserList"] = args["InvalidUserList"],
+		["Authentication"] = args["Authentication"],
+		["KMSKey"] = args["KMSKey"],
+		["Role"] = args["Role"],
+		["LocationARN"] = args["LocationARN"],
+		["ObjectACL"] = args["ObjectACL"],
+		["Path"] = args["Path"],
 		["GatewayARN"] = args["GatewayARN"],
-		["Limit"] = args["Limit"],
+		["KMSEncrypted"] = args["KMSEncrypted"],
+		["RequesterPays"] = args["RequesterPays"],
 	}
-	asserts.AssertListVolumesInput(all_args)
+	asserts.AssertSMBFileShareInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateSMBFileShareOutput = { ["FileShareARN"] = true, nil }
+
+function asserts.AssertCreateSMBFileShareOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateSMBFileShareOutput to be of type 'table'")
+	if struct["FileShareARN"] then asserts.AssertFileShareARN(struct["FileShareARN"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateSMBFileShareOutput[k], "CreateSMBFileShareOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateSMBFileShareOutput
+-- <p>CreateSMBFileShareOutput</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the newly created file share. </p>
+-- @return CreateSMBFileShareOutput structure as a key-value pair table
+function M.CreateSMBFileShareOutput(args)
+	assert(args, "You must provide an argument table when creating CreateSMBFileShareOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["FileShareARN"] = args["FileShareARN"],
+	}
+	asserts.AssertCreateSMBFileShareOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2475,7 +2851,7 @@ function M.UpdateBandwidthRateLimitOutput(args)
     }
 end
 
-keys.NFSFileShareInfo = { ["FileShareARN"] = true, ["FileShareStatus"] = true, ["FileShareId"] = true, ["DefaultStorageClass"] = true, ["ClientList"] = true, ["Squash"] = true, ["NFSFileShareDefaults"] = true, ["KMSKey"] = true, ["Role"] = true, ["LocationARN"] = true, ["Path"] = true, ["GatewayARN"] = true, ["ReadOnly"] = true, ["KMSEncrypted"] = true, nil }
+keys.NFSFileShareInfo = { ["FileShareARN"] = true, ["FileShareStatus"] = true, ["FileShareId"] = true, ["DefaultStorageClass"] = true, ["ClientList"] = true, ["Squash"] = true, ["GuessMIMETypeEnabled"] = true, ["NFSFileShareDefaults"] = true, ["KMSKey"] = true, ["Role"] = true, ["LocationARN"] = true, ["ObjectACL"] = true, ["Path"] = true, ["GatewayARN"] = true, ["ReadOnly"] = true, ["KMSEncrypted"] = true, ["RequesterPays"] = true, nil }
 
 function asserts.AssertNFSFileShareInfo(struct)
 	assert(struct)
@@ -2486,14 +2862,17 @@ function asserts.AssertNFSFileShareInfo(struct)
 	if struct["DefaultStorageClass"] then asserts.AssertStorageClass(struct["DefaultStorageClass"]) end
 	if struct["ClientList"] then asserts.AssertFileShareClientList(struct["ClientList"]) end
 	if struct["Squash"] then asserts.AssertSquash(struct["Squash"]) end
+	if struct["GuessMIMETypeEnabled"] then asserts.AssertBoolean(struct["GuessMIMETypeEnabled"]) end
 	if struct["NFSFileShareDefaults"] then asserts.AssertNFSFileShareDefaults(struct["NFSFileShareDefaults"]) end
 	if struct["KMSKey"] then asserts.AssertKMSKey(struct["KMSKey"]) end
 	if struct["Role"] then asserts.AssertRole(struct["Role"]) end
 	if struct["LocationARN"] then asserts.AssertLocationARN(struct["LocationARN"]) end
+	if struct["ObjectACL"] then asserts.AssertObjectACL(struct["ObjectACL"]) end
 	if struct["Path"] then asserts.AssertPath(struct["Path"]) end
 	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
 	if struct["ReadOnly"] then asserts.AssertBoolean(struct["ReadOnly"]) end
 	if struct["KMSEncrypted"] then asserts.Assertboolean(struct["KMSEncrypted"]) end
+	if struct["RequesterPays"] then asserts.AssertBoolean(struct["RequesterPays"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.NFSFileShareInfo[k], "NFSFileShareInfo contains unknown key " .. tostring(k))
 	end
@@ -2506,17 +2885,20 @@ end
 -- * FileShareARN [FileShareARN] 
 -- * FileShareStatus [FileShareStatus] 
 -- * FileShareId [FileShareId] 
--- * DefaultStorageClass [StorageClass] <p>The default storage class for objects put into an Amazon S3 bucket by file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.</p>
+-- * DefaultStorageClass [StorageClass] <p>The default storage class for objects put into an Amazon S3 bucket by the file gateway. Possible values are <code>S3_STANDARD</code>, <code>S3_STANDARD_IA</code>, or <code>S3_ONEZONE_IA</code>. If this field is not populated, the default value <code>S3_STANDARD</code> is used. Optional.</p>
 -- * ClientList [FileShareClientList] 
 -- * Squash [Squash] 
+-- * GuessMIMETypeEnabled [Boolean] <p>A value that enables guessing of the MIME type for uploaded objects based on file extensions. Set this value to true to enable MIME type guessing, and otherwise to false. The default value is true.</p>
 -- * NFSFileShareDefaults [NFSFileShareDefaults] 
 -- * KMSKey [KMSKey] 
 -- * Role [Role] 
 -- * LocationARN [LocationARN] 
+-- * ObjectACL [ObjectACL] 
 -- * Path [Path] 
 -- * GatewayARN [GatewayARN] 
--- * ReadOnly [Boolean] 
--- * KMSEncrypted [boolean] <p>True to use Amazon S3 server side encryption with your own KMS key, or false to use a key managed by Amazon S3. Optional. </p>
+-- * ReadOnly [Boolean] <p>A value that sets the write status of a file share. This value is true if the write status is read-only, and otherwise false.</p>
+-- * KMSEncrypted [boolean] <p>True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional. </p>
+-- * RequesterPays [Boolean] <p>A value that sets the access control list permission for objects in the Amazon S3 bucket that a file gateway puts objects into. The default value is <code>private</code>.</p>
 -- @return NFSFileShareInfo structure as a key-value pair table
 function M.NFSFileShareInfo(args)
 	assert(args, "You must provide an argument table when creating NFSFileShareInfo")
@@ -2533,16 +2915,99 @@ function M.NFSFileShareInfo(args)
 		["DefaultStorageClass"] = args["DefaultStorageClass"],
 		["ClientList"] = args["ClientList"],
 		["Squash"] = args["Squash"],
+		["GuessMIMETypeEnabled"] = args["GuessMIMETypeEnabled"],
 		["NFSFileShareDefaults"] = args["NFSFileShareDefaults"],
 		["KMSKey"] = args["KMSKey"],
 		["Role"] = args["Role"],
 		["LocationARN"] = args["LocationARN"],
+		["ObjectACL"] = args["ObjectACL"],
 		["Path"] = args["Path"],
 		["GatewayARN"] = args["GatewayARN"],
 		["ReadOnly"] = args["ReadOnly"],
 		["KMSEncrypted"] = args["KMSEncrypted"],
+		["RequesterPays"] = args["RequesterPays"],
 	}
 	asserts.AssertNFSFileShareInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeSMBSettingsOutput = { ["SMBGuestPasswordSet"] = true, ["GatewayARN"] = true, ["DomainName"] = true, nil }
+
+function asserts.AssertDescribeSMBSettingsOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeSMBSettingsOutput to be of type 'table'")
+	if struct["SMBGuestPasswordSet"] then asserts.AssertBoolean(struct["SMBGuestPasswordSet"]) end
+	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
+	if struct["DomainName"] then asserts.AssertDomainName(struct["DomainName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeSMBSettingsOutput[k], "DescribeSMBSettingsOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeSMBSettingsOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SMBGuestPasswordSet [Boolean] <p>This value is true if a password for the guest user “smbguest” is set, and otherwise false.</p>
+-- * GatewayARN [GatewayARN] 
+-- * DomainName [DomainName] <p>The name of the domain that the gateway is joined to.</p>
+-- @return DescribeSMBSettingsOutput structure as a key-value pair table
+function M.DescribeSMBSettingsOutput(args)
+	assert(args, "You must provide an argument table when creating DescribeSMBSettingsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SMBGuestPasswordSet"] = args["SMBGuestPasswordSet"],
+		["GatewayARN"] = args["GatewayARN"],
+		["DomainName"] = args["DomainName"],
+	}
+	asserts.AssertDescribeSMBSettingsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeSMBFileSharesOutput = { ["SMBFileShareInfoList"] = true, nil }
+
+function asserts.AssertDescribeSMBFileSharesOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeSMBFileSharesOutput to be of type 'table'")
+	if struct["SMBFileShareInfoList"] then asserts.AssertSMBFileShareInfoList(struct["SMBFileShareInfoList"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeSMBFileSharesOutput[k], "DescribeSMBFileSharesOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeSMBFileSharesOutput
+-- <p>DescribeSMBFileSharesOutput</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SMBFileShareInfoList [SMBFileShareInfoList] <p>An array containing a description for each requested file share. </p>
+-- @return DescribeSMBFileSharesOutput structure as a key-value pair table
+function M.DescribeSMBFileSharesOutput(args)
+	assert(args, "You must provide an argument table when creating DescribeSMBFileSharesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SMBFileShareInfoList"] = args["SMBFileShareInfoList"],
+	}
+	asserts.AssertDescribeSMBFileSharesOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2567,8 +3032,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * TargetARN [TargetARN] 
--- * VolumeARN [VolumeARN] 
+-- * TargetARN [TargetARN] <p>he Amazon Resource Name (ARN) of the volume target that includes the iSCSI name that initiators can use to connect to the target.</p>
+-- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the configured volume.</p>
 -- @return CreateCachediSCSIVolumeOutput structure as a key-value pair table
 function M.CreateCachediSCSIVolumeOutput(args)
 	assert(args, "You must provide an argument table when creating CreateCachediSCSIVolumeOutput")
@@ -2847,22 +3312,24 @@ function M.AddTagsToResourceInput(args)
     }
 end
 
-keys.RefreshCacheOutput = { ["FileShareARN"] = true, nil }
+keys.RefreshCacheOutput = { ["FileShareARN"] = true, ["NotificationId"] = true, nil }
 
 function asserts.AssertRefreshCacheOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RefreshCacheOutput to be of type 'table'")
 	if struct["FileShareARN"] then asserts.AssertFileShareARN(struct["FileShareARN"]) end
+	if struct["NotificationId"] then asserts.AssertNotificationId(struct["NotificationId"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.RefreshCacheOutput[k], "RefreshCacheOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RefreshCacheOutput
---  
+-- <p>RefreshCacheOutput</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * FileShareARN [FileShareARN] 
+-- * NotificationId [NotificationId] 
 -- @return RefreshCacheOutput structure as a key-value pair table
 function M.RefreshCacheOutput(args)
 	assert(args, "You must provide an argument table when creating RefreshCacheOutput")
@@ -2874,6 +3341,7 @@ function M.RefreshCacheOutput(args)
     }
 	local all_args = { 
 		["FileShareARN"] = args["FileShareARN"],
+		["NotificationId"] = args["NotificationId"],
 	}
 	asserts.AssertRefreshCacheOutput(all_args)
 	return {
@@ -3111,7 +3579,7 @@ end
 -- * VolumeSizeInBytes [long] <p>The size of the volume in bytes.</p> <p>Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
 -- * VolumeType [VolumeType] 
 -- * VolumeId [VolumeId] <p>The unique identifier assigned to the volume. This ID becomes part of the volume Amazon Resource Name (ARN), which you use as input for other operations.</p> <p> Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
--- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) for the storage volume. For example, the following is a valid ARN:</p> <p> <code>arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB</code> </p> <p> Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
+-- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) for the storage volume. For example, the following is a valid ARN:</p> <p> <code>arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB</code> </p> <p> Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
 -- * GatewayId [GatewayId] <p>The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations.</p> <p> Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
 -- * GatewayARN [GatewayARN] 
 -- @return VolumeInfo structure as a key-value pair table
@@ -3270,7 +3738,7 @@ function asserts.AssertActivateGatewayOutput(struct)
 end
 
 --- Create a structure of type ActivateGatewayOutput
--- <p>AWS Storage Gateway returns the Amazon Resource Name (ARN) of the activated gateway. It is a string made of information such as your account, gateway name, and region. This ARN is used to reference the gateway in other API operations as well as resource-based authorization.</p> <note> <p>For gateways activated prior to September 02, 2015 the gateway ARN contains the gateway name rather than the gateway id. Changing the name of the gateway has no effect on the gateway ARN.</p> </note>
+-- <p>AWS Storage Gateway returns the Amazon Resource Name (ARN) of the activated gateway. It is a string made of information such as your account, gateway name, and region. This ARN is used to reference the gateway in other API operations as well as resource-based authorization.</p> <note> <p>For gateways activated prior to September 02, 2015, the gateway ARN contains the gateway name rather than the gateway ID. Changing the name of the gateway has no effect on the gateway ARN.</p> </note>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * GatewayARN [GatewayARN] 
@@ -3429,7 +3897,7 @@ function asserts.AssertDeleteGatewayInput(struct)
 end
 
 --- Create a structure of type DeleteGatewayInput
--- <p>A JSON object containing the id of the gateway to delete.</p>
+-- <p>A JSON object containing the ID of the gateway to delete.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * GatewayARN [GatewayARN] 
@@ -3635,15 +4103,16 @@ function M.GatewayInfo(args)
     }
 end
 
-keys.FileShareInfo = { ["FileShareARN"] = true, ["GatewayARN"] = true, ["FileShareStatus"] = true, ["FileShareId"] = true, nil }
+keys.FileShareInfo = { ["FileShareARN"] = true, ["GatewayARN"] = true, ["FileShareType"] = true, ["FileShareId"] = true, ["FileShareStatus"] = true, nil }
 
 function asserts.AssertFileShareInfo(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FileShareInfo to be of type 'table'")
 	if struct["FileShareARN"] then asserts.AssertFileShareARN(struct["FileShareARN"]) end
 	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
-	if struct["FileShareStatus"] then asserts.AssertFileShareStatus(struct["FileShareStatus"]) end
+	if struct["FileShareType"] then asserts.AssertFileShareType(struct["FileShareType"]) end
 	if struct["FileShareId"] then asserts.AssertFileShareId(struct["FileShareId"]) end
+	if struct["FileShareStatus"] then asserts.AssertFileShareStatus(struct["FileShareStatus"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.FileShareInfo[k], "FileShareInfo contains unknown key " .. tostring(k))
 	end
@@ -3655,8 +4124,9 @@ end
 -- Valid keys:
 -- * FileShareARN [FileShareARN] 
 -- * GatewayARN [GatewayARN] 
--- * FileShareStatus [FileShareStatus] 
+-- * FileShareType [FileShareType] 
 -- * FileShareId [FileShareId] 
+-- * FileShareStatus [FileShareStatus] 
 -- @return FileShareInfo structure as a key-value pair table
 function M.FileShareInfo(args)
 	assert(args, "You must provide an argument table when creating FileShareInfo")
@@ -3669,10 +4139,92 @@ function M.FileShareInfo(args)
 	local all_args = { 
 		["FileShareARN"] = args["FileShareARN"],
 		["GatewayARN"] = args["GatewayARN"],
-		["FileShareStatus"] = args["FileShareStatus"],
+		["FileShareType"] = args["FileShareType"],
 		["FileShareId"] = args["FileShareId"],
+		["FileShareStatus"] = args["FileShareStatus"],
 	}
 	asserts.AssertFileShareInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SetSMBGuestPasswordInput = { ["GatewayARN"] = true, ["Password"] = true, nil }
+
+function asserts.AssertSetSMBGuestPasswordInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SetSMBGuestPasswordInput to be of type 'table'")
+	assert(struct["GatewayARN"], "Expected key GatewayARN to exist in table")
+	assert(struct["Password"], "Expected key Password to exist in table")
+	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
+	if struct["Password"] then asserts.AssertSMBGuestPassword(struct["Password"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SetSMBGuestPasswordInput[k], "SetSMBGuestPasswordInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SetSMBGuestPasswordInput
+-- <p>SetSMBGuestPasswordInput</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] <p>The Amazon Resource Name (ARN) of the file gateway the SMB file share is associated with.</p>
+-- * Password [SMBGuestPassword] <p>The password that you want to set for your SMB Server.</p>
+-- Required key: GatewayARN
+-- Required key: Password
+-- @return SetSMBGuestPasswordInput structure as a key-value pair table
+function M.SetSMBGuestPasswordInput(args)
+	assert(args, "You must provide an argument table when creating SetSMBGuestPasswordInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GatewayARN"] = args["GatewayARN"],
+		["Password"] = args["Password"],
+	}
+	asserts.AssertSetSMBGuestPasswordInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SetLocalConsolePasswordOutput = { ["GatewayARN"] = true, nil }
+
+function asserts.AssertSetLocalConsolePasswordOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SetLocalConsolePasswordOutput to be of type 'table'")
+	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SetLocalConsolePasswordOutput[k], "SetLocalConsolePasswordOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SetLocalConsolePasswordOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- @return SetLocalConsolePasswordOutput structure as a key-value pair table
+function M.SetLocalConsolePasswordOutput(args)
+	assert(args, "You must provide an argument table when creating SetLocalConsolePasswordOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GatewayARN"] = args["GatewayARN"],
+	}
+	asserts.AssertSetLocalConsolePasswordOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3881,13 +4433,15 @@ function M.DeleteChapCredentialsOutput(args)
     }
 end
 
-keys.RefreshCacheInput = { ["FileShareARN"] = true, nil }
+keys.RefreshCacheInput = { ["FileShareARN"] = true, ["Recursive"] = true, ["FolderList"] = true, nil }
 
 function asserts.AssertRefreshCacheInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RefreshCacheInput to be of type 'table'")
 	assert(struct["FileShareARN"], "Expected key FileShareARN to exist in table")
 	if struct["FileShareARN"] then asserts.AssertFileShareARN(struct["FileShareARN"]) end
+	if struct["Recursive"] then asserts.AssertBoolean(struct["Recursive"]) end
+	if struct["FolderList"] then asserts.AssertFolderList(struct["FolderList"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.RefreshCacheInput[k], "RefreshCacheInput contains unknown key " .. tostring(k))
 	end
@@ -3898,6 +4452,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * FileShareARN [FileShareARN] 
+-- * Recursive [Boolean] <p>A value that specifies whether to recursively refresh folders in the cache. The refresh includes folders that were in the cache the last time the gateway listed the folder's contents. If this value set to "true", each folder that is listed in <code>FolderList</code> is recursively updated. Otherwise, subfolders listed in <code>FolderList</code> are not refreshed. Only objects that are in folders listed directly under <code>FolderList</code> are found and used for the update. The default is "true".</p>
+-- * FolderList [FolderList] 
 -- Required key: FileShareARN
 -- @return RefreshCacheInput structure as a key-value pair table
 function M.RefreshCacheInput(args)
@@ -3910,6 +4466,8 @@ function M.RefreshCacheInput(args)
     }
 	local all_args = { 
 		["FileShareARN"] = args["FileShareARN"],
+		["Recursive"] = args["Recursive"],
+		["FolderList"] = args["FolderList"],
 	}
 	asserts.AssertRefreshCacheInput(all_args)
 	return {
@@ -3946,12 +4504,12 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * GatewayName [GatewayName] <p>The name you configured for your gateway.</p>
--- * GatewayType [GatewayType] <p>A value that defines the type of gateway to activate. The type specified is critical to all later functions of the gateway and cannot be changed after activation. The default value is <code>STORED</code>. </p> <p> Valid Values: "STORED", "CACHED", "VTL", "FILE_S3"</p>
+-- * GatewayType [GatewayType] <p>A value that defines the type of gateway to activate. The type specified is critical to all later functions of the gateway and cannot be changed after activation. The default value is <code>CACHED</code>. </p> <p> Valid Values: "STORED", "CACHED", "VTL", "FILE_S3"</p>
 -- * TapeDriveType [TapeDriveType] <p>The value that indicates the type of tape drive to use for tape gateway. This field is optional.</p> <p> Valid Values: "IBM-ULT3580-TD5" </p>
 -- * MediumChangerType [MediumChangerType] <p>The value that indicates the type of medium changer to use for tape gateway. This field is optional.</p> <p> Valid Values: "STK-L700", "AWS-Gateway-VTL"</p>
 -- * GatewayTimezone [GatewayTimezone] <p>A value that indicates the time zone you want to set for the gateway. The time zone is of the format "GMT-hr:mm" or "GMT+hr:mm". For example, GMT-4:00 indicates the time is 4 hours behind GMT. GMT+2:00 indicates the time is 2 hours ahead of GMT. The time zone is used, for example, for scheduling snapshots and your gateway's maintenance schedule.</p>
--- * GatewayRegion [RegionId] <p>A value that indicates the region where you want to store your data. The gateway region specified must be the same region as the region in your <code>Host</code> header in the request. For more information about available regions and endpoints for AWS Storage Gateway, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region">Regions and Endpoints</a> in the <i>Amazon Web Services Glossary</i>.</p> <p> Valid Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1", "eu-west-1", "eu-central-1", "eu-west-2", "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2", "ap-south-1", "sa-east-1"</p>
--- * ActivationKey [ActivationKey] <p>Your gateway activation key. You can obtain the activation key by sending an HTTP GET request with redirects enabled to the gateway IP address (port 80). The redirect URL returned in the response provides you the activation key for your gateway in the query string parameter <code>activationKey</code>. It may also include other activation-related parameters, however, these are merely defaults -- the arguments you pass to the <code>ActivateGateway</code> API call determine the actual configuration of your gateway.</p>
+-- * GatewayRegion [RegionId] <p>A value that indicates the region where you want to store your data. The gateway region specified must be the same region as the region in your <code>Host</code> header in the request. For more information about available regions and endpoints for AWS Storage Gateway, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region">Regions and Endpoints</a> in the <i>Amazon Web Services Glossary</i>.</p> <p> Valid Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1", "eu-west-1", "eu-central-1", "eu-west-2", "eu-west-3", "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2", "ap-south-1", "sa-east-1"</p>
+-- * ActivationKey [ActivationKey] <p>Your gateway activation key. You can obtain the activation key by sending an HTTP GET request with redirects enabled to the gateway IP address (port 80). The redirect URL returned in the response provides you the activation key for your gateway in the query string parameter <code>activationKey</code>. It may also include other activation-related parameters, however, these are merely defaults -- the arguments you pass to the <code>ActivateGateway</code> API call determine the actual configuration of your gateway. </p> <p>For more information, see https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html in the Storage Gateway User Guide.</p>
 -- Required key: ActivationKey
 -- Required key: GatewayName
 -- Required key: GatewayTimezone
@@ -4014,46 +4572,6 @@ function M.DescribeCacheInput(args)
 		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertDescribeCacheInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidGatewayRequestException = { ["message"] = true, ["error"] = true, nil }
-
-function asserts.AssertInvalidGatewayRequestException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidGatewayRequestException to be of type 'table'")
-	if struct["message"] then asserts.Assertstring(struct["message"]) end
-	if struct["error"] then asserts.AssertStorageGatewayError(struct["error"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidGatewayRequestException[k], "InvalidGatewayRequestException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidGatewayRequestException
--- <p>An exception occurred because an invalid gateway request was issued to the service. For more information, see the error and message fields.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [string] <p>A human-readable message describing the error that occurred.</p>
--- * error [StorageGatewayError] <p>A <a>StorageGatewayError</a> that provides more detail about the cause of the error.</p>
--- @return InvalidGatewayRequestException structure as a key-value pair table
-function M.InvalidGatewayRequestException(args)
-	assert(args, "You must provide an argument table when creating InvalidGatewayRequestException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-		["error"] = args["error"],
-	}
-	asserts.AssertInvalidGatewayRequestException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4265,6 +4783,45 @@ function M.ListFileSharesInput(args)
     }
 end
 
+keys.DescribeSMBSettingsInput = { ["GatewayARN"] = true, nil }
+
+function asserts.AssertDescribeSMBSettingsInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeSMBSettingsInput to be of type 'table'")
+	assert(struct["GatewayARN"], "Expected key GatewayARN to exist in table")
+	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeSMBSettingsInput[k], "DescribeSMBSettingsInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeSMBSettingsInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- Required key: GatewayARN
+-- @return DescribeSMBSettingsInput structure as a key-value pair table
+function M.DescribeSMBSettingsInput(args)
+	assert(args, "You must provide an argument table when creating DescribeSMBSettingsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["GatewayARN"] = args["GatewayARN"],
+	}
+	asserts.AssertDescribeSMBSettingsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.UpdateGatewaySoftwareNowOutput = { ["GatewayARN"] = true, nil }
 
 function asserts.AssertUpdateGatewaySoftwareNowOutput(struct)
@@ -4457,7 +5014,7 @@ function M.CreateSnapshotFromVolumeRecoveryPointInput(args)
     }
 end
 
-keys.TapeArchive = { ["TapeCreatedDate"] = true, ["TapeUsedInBytes"] = true, ["TapeARN"] = true, ["CompletionTime"] = true, ["TapeSizeInBytes"] = true, ["TapeBarcode"] = true, ["RetrievedTo"] = true, ["TapeStatus"] = true, nil }
+keys.TapeArchive = { ["TapeCreatedDate"] = true, ["TapeUsedInBytes"] = true, ["TapeARN"] = true, ["KMSKey"] = true, ["CompletionTime"] = true, ["TapeSizeInBytes"] = true, ["TapeBarcode"] = true, ["RetrievedTo"] = true, ["TapeStatus"] = true, nil }
 
 function asserts.AssertTapeArchive(struct)
 	assert(struct)
@@ -4465,6 +5022,7 @@ function asserts.AssertTapeArchive(struct)
 	if struct["TapeCreatedDate"] then asserts.AssertTime(struct["TapeCreatedDate"]) end
 	if struct["TapeUsedInBytes"] then asserts.AssertTapeUsage(struct["TapeUsedInBytes"]) end
 	if struct["TapeARN"] then asserts.AssertTapeARN(struct["TapeARN"]) end
+	if struct["KMSKey"] then asserts.AssertKMSKey(struct["KMSKey"]) end
 	if struct["CompletionTime"] then asserts.AssertTime(struct["CompletionTime"]) end
 	if struct["TapeSizeInBytes"] then asserts.AssertTapeSize(struct["TapeSizeInBytes"]) end
 	if struct["TapeBarcode"] then asserts.AssertTapeBarcode(struct["TapeBarcode"]) end
@@ -4479,10 +5037,11 @@ end
 -- <p>Represents a virtual tape that is archived in the virtual tape shelf (VTS).</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * TapeCreatedDate [Time] 
--- * TapeUsedInBytes [TapeUsage] <p>The size, in bytes, of data written to the virtual tape.</p> <note> <p>This value is not available for tapes created prior to May,13 2015.</p> </note>
+-- * TapeCreatedDate [Time] <p>The date the virtual tape was created.</p>
+-- * TapeUsedInBytes [TapeUsage] <p>The size, in bytes, of data stored on the virtual tape.</p> <note> <p>This value is not available for tapes created prior to May 13, 2015.</p> </note>
 -- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of an archived virtual tape.</p>
--- * CompletionTime [Time] <p>The time that the archiving of the virtual tape was completed.</p> <p>The string format of the completion time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.</p>
+-- * KMSKey [KMSKey] 
+-- * CompletionTime [Time] <p>The time that the archiving of the virtual tape was completed.</p> <p>The default time stamp format is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.</p>
 -- * TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the archived virtual tape.</p>
 -- * TapeBarcode [TapeBarcode] <p>The barcode that identifies the archived virtual tape.</p>
 -- * RetrievedTo [GatewayARN] <p>The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is being retrieved to.</p> <p>The virtual tape is retrieved from the virtual tape shelf (VTS).</p>
@@ -4500,6 +5059,7 @@ function M.TapeArchive(args)
 		["TapeCreatedDate"] = args["TapeCreatedDate"],
 		["TapeUsedInBytes"] = args["TapeUsedInBytes"],
 		["TapeARN"] = args["TapeARN"],
+		["KMSKey"] = args["KMSKey"],
 		["CompletionTime"] = args["CompletionTime"],
 		["TapeSizeInBytes"] = args["TapeSizeInBytes"],
 		["TapeBarcode"] = args["TapeBarcode"],
@@ -4628,33 +5188,27 @@ function M.CreateNFSFileShareOutput(args)
     }
 end
 
-keys.VTLDevice = { ["VTLDeviceType"] = true, ["VTLDeviceProductIdentifier"] = true, ["DeviceiSCSIAttributes"] = true, ["VTLDeviceARN"] = true, ["VTLDeviceVendor"] = true, nil }
+keys.NotifyWhenUploadedOutput = { ["FileShareARN"] = true, ["NotificationId"] = true, nil }
 
-function asserts.AssertVTLDevice(struct)
+function asserts.AssertNotifyWhenUploadedOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected VTLDevice to be of type 'table'")
-	if struct["VTLDeviceType"] then asserts.AssertVTLDeviceType(struct["VTLDeviceType"]) end
-	if struct["VTLDeviceProductIdentifier"] then asserts.AssertVTLDeviceProductIdentifier(struct["VTLDeviceProductIdentifier"]) end
-	if struct["DeviceiSCSIAttributes"] then asserts.AssertDeviceiSCSIAttributes(struct["DeviceiSCSIAttributes"]) end
-	if struct["VTLDeviceARN"] then asserts.AssertVTLDeviceARN(struct["VTLDeviceARN"]) end
-	if struct["VTLDeviceVendor"] then asserts.AssertVTLDeviceVendor(struct["VTLDeviceVendor"]) end
+	assert(type(struct) == "table", "Expected NotifyWhenUploadedOutput to be of type 'table'")
+	if struct["FileShareARN"] then asserts.AssertFileShareARN(struct["FileShareARN"]) end
+	if struct["NotificationId"] then asserts.AssertNotificationId(struct["NotificationId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.VTLDevice[k], "VTLDevice contains unknown key " .. tostring(k))
+		assert(keys.NotifyWhenUploadedOutput[k], "NotifyWhenUploadedOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type VTLDevice
--- <p>Represents a device object associated with a tape gateway.</p>
+--- Create a structure of type NotifyWhenUploadedOutput
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * VTLDeviceType [VTLDeviceType] 
--- * VTLDeviceProductIdentifier [VTLDeviceProductIdentifier] 
--- * DeviceiSCSIAttributes [DeviceiSCSIAttributes] <p>A list of iSCSI information about a VTL device.</p>
--- * VTLDeviceARN [VTLDeviceARN] <p>Specifies the unique Amazon Resource Name (ARN) of the device (tape drive or media changer).</p>
--- * VTLDeviceVendor [VTLDeviceVendor] 
--- @return VTLDevice structure as a key-value pair table
-function M.VTLDevice(args)
-	assert(args, "You must provide an argument table when creating VTLDevice")
+-- * FileShareARN [FileShareARN] 
+-- * NotificationId [NotificationId] 
+-- @return NotifyWhenUploadedOutput structure as a key-value pair table
+function M.NotifyWhenUploadedOutput(args)
+	assert(args, "You must provide an argument table when creating NotifyWhenUploadedOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -4662,13 +5216,49 @@ function M.VTLDevice(args)
     local header_args = { 
     }
 	local all_args = { 
-		["VTLDeviceType"] = args["VTLDeviceType"],
-		["VTLDeviceProductIdentifier"] = args["VTLDeviceProductIdentifier"],
-		["DeviceiSCSIAttributes"] = args["DeviceiSCSIAttributes"],
-		["VTLDeviceARN"] = args["VTLDeviceARN"],
-		["VTLDeviceVendor"] = args["VTLDeviceVendor"],
+		["FileShareARN"] = args["FileShareARN"],
+		["NotificationId"] = args["NotificationId"],
 	}
-	asserts.AssertVTLDevice(all_args)
+	asserts.AssertNotifyWhenUploadedOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeSMBFileSharesInput = { ["FileShareARNList"] = true, nil }
+
+function asserts.AssertDescribeSMBFileSharesInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeSMBFileSharesInput to be of type 'table'")
+	assert(struct["FileShareARNList"], "Expected key FileShareARNList to exist in table")
+	if struct["FileShareARNList"] then asserts.AssertFileShareARNList(struct["FileShareARNList"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeSMBFileSharesInput[k], "DescribeSMBFileSharesInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeSMBFileSharesInput
+-- <p>DescribeSMBFileSharesInput</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileShareARNList [FileShareARNList] <p>An array containing the Amazon Resource Name (ARN) of each file share to be described. </p>
+-- Required key: FileShareARNList
+-- @return DescribeSMBFileSharesInput structure as a key-value pair table
+function M.DescribeSMBFileSharesInput(args)
+	assert(args, "You must provide an argument table when creating DescribeSMBFileSharesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["FileShareARNList"] = args["FileShareARNList"],
+	}
+	asserts.AssertDescribeSMBFileSharesInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4805,7 +5395,7 @@ function M.ListGatewaysOutput(args)
     }
 end
 
-keys.CreateTapeWithBarcodeInput = { ["GatewayARN"] = true, ["TapeSizeInBytes"] = true, ["TapeBarcode"] = true, nil }
+keys.CreateTapeWithBarcodeInput = { ["GatewayARN"] = true, ["KMSKey"] = true, ["TapeSizeInBytes"] = true, ["KMSEncrypted"] = true, ["TapeBarcode"] = true, nil }
 
 function asserts.AssertCreateTapeWithBarcodeInput(struct)
 	assert(struct)
@@ -4814,7 +5404,9 @@ function asserts.AssertCreateTapeWithBarcodeInput(struct)
 	assert(struct["TapeSizeInBytes"], "Expected key TapeSizeInBytes to exist in table")
 	assert(struct["TapeBarcode"], "Expected key TapeBarcode to exist in table")
 	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
+	if struct["KMSKey"] then asserts.AssertKMSKey(struct["KMSKey"]) end
 	if struct["TapeSizeInBytes"] then asserts.AssertTapeSize(struct["TapeSizeInBytes"]) end
+	if struct["KMSEncrypted"] then asserts.AssertBoolean(struct["KMSEncrypted"]) end
 	if struct["TapeBarcode"] then asserts.AssertTapeBarcode(struct["TapeBarcode"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateTapeWithBarcodeInput[k], "CreateTapeWithBarcodeInput contains unknown key " .. tostring(k))
@@ -4826,8 +5418,10 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * GatewayARN [GatewayARN] <p>The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tape with. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
+-- * KMSKey [KMSKey] <p>The Amazon Resource Name (ARN) of the AWS KMS Key used for Amazon S3 server side encryption. This value can only be set when KMSEncrypted is true. Optional.</p>
 -- * TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the virtual tape that you want to create.</p> <note> <p>The size must be aligned by gigabyte (1024*1024*1024 byte).</p> </note>
--- * TapeBarcode [TapeBarcode] <p>The barcode that you want to assign to the tape.</p>
+-- * KMSEncrypted [Boolean] <p>True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.</p>
+-- * TapeBarcode [TapeBarcode] <p>The barcode that you want to assign to the tape.</p> <note> <p>Barcodes cannot be reused. This includes barcodes used for tapes that have been deleted.</p> </note>
 -- Required key: GatewayARN
 -- Required key: TapeSizeInBytes
 -- Required key: TapeBarcode
@@ -4842,7 +5436,9 @@ function M.CreateTapeWithBarcodeInput(args)
     }
 	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
+		["KMSKey"] = args["KMSKey"],
 		["TapeSizeInBytes"] = args["TapeSizeInBytes"],
+		["KMSEncrypted"] = args["KMSEncrypted"],
 		["TapeBarcode"] = args["TapeBarcode"],
 	}
 	asserts.AssertCreateTapeWithBarcodeInput(all_args)
@@ -4963,7 +5559,7 @@ end
 -- <p>Lists iSCSI information about a VTL device.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * TargetARN [TargetARN] <p>Specifies the unique Amazon Resource Name(ARN) that encodes the iSCSI qualified name(iqn) of a tape drive or media changer target.</p>
+-- * TargetARN [TargetARN] <p>Specifies the unique Amazon Resource Name (ARN) that encodes the iSCSI qualified name(iqn) of a tape drive or media changer target.</p>
 -- * NetworkInterfaceId [NetworkInterfaceId] <p>The network interface identifier of the VTL device.</p>
 -- * ChapEnabled [boolean] <p>Indicates whether mutual CHAP is enabled for the iSCSI target.</p>
 -- * NetworkInterfacePort [integer] <p>The port used to communicate with iSCSI VTL device targets.</p>
@@ -5028,46 +5624,6 @@ function M.DescribeChapCredentialsOutput(args)
     }
 end
 
-keys.ServiceUnavailableError = { ["message"] = true, ["error"] = true, nil }
-
-function asserts.AssertServiceUnavailableError(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ServiceUnavailableError to be of type 'table'")
-	if struct["message"] then asserts.Assertstring(struct["message"]) end
-	if struct["error"] then asserts.AssertStorageGatewayError(struct["error"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ServiceUnavailableError[k], "ServiceUnavailableError contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ServiceUnavailableError
--- <p>An internal server error has occurred because the service is unavailable. For more information, see the error and message fields.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [string] <p>A human-readable message describing the error that occurred.</p>
--- * error [StorageGatewayError] <p>A <a>StorageGatewayError</a> that provides more information about the cause of the error.</p>
--- @return ServiceUnavailableError structure as a key-value pair table
-function M.ServiceUnavailableError(args)
-	assert(args, "You must provide an argument table when creating ServiceUnavailableError")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-		["error"] = args["error"],
-	}
-	asserts.AssertServiceUnavailableError(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.UpdateNFSFileShareOutput = { ["FileShareARN"] = true, nil }
 
 function asserts.AssertUpdateNFSFileShareOutput(struct)
@@ -5120,7 +5676,7 @@ function asserts.AssertNFSFileShareDefaults(struct)
 end
 
 --- Create a structure of type NFSFileShareDefaults
--- <p>Describes file share default values. Files and folders stored as Amazon S3 objects in S3 buckets don't, by default, have Unix file permissions assigned to them. Upon discovery in an S3 bucket by Storage Gateway, the S3 objects that represent files and folders are assigned these default Unix permissions. This operation is only supported in the file gateway architecture.</p>
+-- <p>Describes Network File System (NFS) file share default values. Files and folders stored as Amazon S3 objects in S3 buckets don't, by default, have Unix file permissions assigned to them. Upon discovery in an S3 bucket by Storage Gateway, the S3 objects that represent files and folders are assigned these default Unix permissions. This operation is only supported for file gateways.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * OwnerId [PermissionId] <p>The default owner ID for files in the file share (unless the files have another owner ID specified). The default value is nfsnobody. </p>
@@ -5474,7 +6030,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Marker [Marker] <p>An opaque string that indicates the position at which the virtual tapes that were fetched for description ended. Use this marker in your next request to fetch the next set of virtual tapes in the virtual tape shelf (VTS). If there are no more virtual tapes to describe, this field does not appear in the response.</p>
--- * TapeArchives [TapeArchives] <p>An array of virtual tape objects in the virtual tape shelf (VTS). The description includes of the Amazon Resource Name(ARN) of the virtual tapes. The information returned includes the Amazon Resource Names (ARNs) of the tapes, size of the tapes, status of the tapes, progress of the description and tape barcode.</p>
+-- * TapeArchives [TapeArchives] <p>An array of virtual tape objects in the virtual tape shelf (VTS). The description includes of the Amazon Resource Name (ARN) of the virtual tapes. The information returned includes the Amazon Resource Names (ARNs) of the tapes, size of the tapes, status of the tapes, progress of the description and tape barcode.</p>
 -- @return DescribeTapeArchivesOutput structure as a key-value pair table
 function M.DescribeTapeArchivesOutput(args)
 	assert(args, "You must provide an argument table when creating DescribeTapeArchivesOutput")
@@ -5708,7 +6264,7 @@ function asserts.AssertDeleteGatewayOutput(struct)
 end
 
 --- Create a structure of type DeleteGatewayOutput
--- <p>A JSON object containing the id of the deleted gateway.</p>
+-- <p>A JSON object containing the ID of the deleted gateway.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * GatewayARN [GatewayARN] 
@@ -5733,31 +6289,29 @@ function M.DeleteGatewayOutput(args)
     }
 end
 
-keys.UpdateVTLDeviceTypeInput = { ["DeviceType"] = true, ["VTLDeviceARN"] = true, nil }
+keys.ListVolumesInput = { ["Marker"] = true, ["GatewayARN"] = true, ["Limit"] = true, nil }
 
-function asserts.AssertUpdateVTLDeviceTypeInput(struct)
+function asserts.AssertListVolumesInput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateVTLDeviceTypeInput to be of type 'table'")
-	assert(struct["VTLDeviceARN"], "Expected key VTLDeviceARN to exist in table")
-	assert(struct["DeviceType"], "Expected key DeviceType to exist in table")
-	if struct["DeviceType"] then asserts.AssertDeviceType(struct["DeviceType"]) end
-	if struct["VTLDeviceARN"] then asserts.AssertVTLDeviceARN(struct["VTLDeviceARN"]) end
+	assert(type(struct) == "table", "Expected ListVolumesInput to be of type 'table'")
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
+	if struct["Limit"] then asserts.AssertPositiveIntObject(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.UpdateVTLDeviceTypeInput[k], "UpdateVTLDeviceTypeInput contains unknown key " .. tostring(k))
+		assert(keys.ListVolumesInput[k], "ListVolumesInput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type UpdateVTLDeviceTypeInput
---  
+--- Create a structure of type ListVolumesInput
+-- <p>A JSON object that contains one or more of the following fields:</p> <ul> <li> <p> <a>ListVolumesInput$Limit</a> </p> </li> <li> <p> <a>ListVolumesInput$Marker</a> </p> </li> </ul>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DeviceType [DeviceType] <p>The type of medium changer you want to select.</p> <p> Valid Values: "STK-L700", "AWS-Gateway-VTL"</p>
--- * VTLDeviceARN [VTLDeviceARN] <p>The Amazon Resource Name (ARN) of the medium changer you want to select.</p>
--- Required key: VTLDeviceARN
--- Required key: DeviceType
--- @return UpdateVTLDeviceTypeInput structure as a key-value pair table
-function M.UpdateVTLDeviceTypeInput(args)
-	assert(args, "You must provide an argument table when creating UpdateVTLDeviceTypeInput")
+-- * Marker [Marker] <p>A string that indicates the position at which to begin the returned list of volumes. Obtain the marker from the response of a previous List iSCSI Volumes request.</p>
+-- * GatewayARN [GatewayARN] 
+-- * Limit [PositiveIntObject] <p>Specifies that the list of volumes returned be limited to the specified number of items.</p>
+-- @return ListVolumesInput structure as a key-value pair table
+function M.ListVolumesInput(args)
+	assert(args, "You must provide an argument table when creating ListVolumesInput")
     local query_args = { 
     }
     local uri_args = { 
@@ -5765,10 +6319,11 @@ function M.UpdateVTLDeviceTypeInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["DeviceType"] = args["DeviceType"],
-		["VTLDeviceARN"] = args["VTLDeviceARN"],
+		["Marker"] = args["Marker"],
+		["GatewayARN"] = args["GatewayARN"],
+		["Limit"] = args["Limit"],
 	}
-	asserts.AssertUpdateVTLDeviceTypeInput(all_args)
+	asserts.AssertListVolumesInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5996,27 +6551,33 @@ function M.RetrieveTapeArchiveOutput(args)
     }
 end
 
-keys.CreateSnapshotOutput = { ["SnapshotId"] = true, ["VolumeARN"] = true, nil }
+keys.DescribeVTLDevicesInput = { ["Marker"] = true, ["GatewayARN"] = true, ["Limit"] = true, ["VTLDeviceARNs"] = true, nil }
 
-function asserts.AssertCreateSnapshotOutput(struct)
+function asserts.AssertDescribeVTLDevicesInput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected CreateSnapshotOutput to be of type 'table'")
-	if struct["SnapshotId"] then asserts.AssertSnapshotId(struct["SnapshotId"]) end
-	if struct["VolumeARN"] then asserts.AssertVolumeARN(struct["VolumeARN"]) end
+	assert(type(struct) == "table", "Expected DescribeVTLDevicesInput to be of type 'table'")
+	assert(struct["GatewayARN"], "Expected key GatewayARN to exist in table")
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
+	if struct["Limit"] then asserts.AssertPositiveIntObject(struct["Limit"]) end
+	if struct["VTLDeviceARNs"] then asserts.AssertVTLDeviceARNs(struct["VTLDeviceARNs"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.CreateSnapshotOutput[k], "CreateSnapshotOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeVTLDevicesInput[k], "DescribeVTLDevicesInput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type CreateSnapshotOutput
--- <p>A JSON object containing the following fields:</p>
+--- Create a structure of type DescribeVTLDevicesInput
+-- <p>DescribeVTLDevicesInput</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SnapshotId [SnapshotId] <p>The snapshot ID that is used to refer to the snapshot in future operations such as describing snapshots (Amazon Elastic Compute Cloud API <code>DescribeSnapshots</code>) or creating a volume from a snapshot (<a>CreateStorediSCSIVolume</a>).</p>
--- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume of which the snapshot was taken.</p>
--- @return CreateSnapshotOutput structure as a key-value pair table
-function M.CreateSnapshotOutput(args)
-	assert(args, "You must provide an argument table when creating CreateSnapshotOutput")
+-- * Marker [Marker] <p>An opaque string that indicates the position at which to begin describing the VTL devices.</p>
+-- * GatewayARN [GatewayARN] 
+-- * Limit [PositiveIntObject] <p>Specifies that the number of VTL devices described be limited to the specified number.</p>
+-- * VTLDeviceARNs [VTLDeviceARNs] <p>An array of strings, where each string represents the Amazon Resource Name (ARN) of a VTL device.</p> <note> <p>All of the specified VTL devices must be from the same gateway. If no VTL devices are specified, the result will contain all devices on the specified gateway.</p> </note>
+-- Required key: GatewayARN
+-- @return DescribeVTLDevicesInput structure as a key-value pair table
+function M.DescribeVTLDevicesInput(args)
+	assert(args, "You must provide an argument table when creating DescribeVTLDevicesInput")
     local query_args = { 
     }
     local uri_args = { 
@@ -6024,10 +6585,12 @@ function M.CreateSnapshotOutput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["SnapshotId"] = args["SnapshotId"],
-		["VolumeARN"] = args["VolumeARN"],
+		["Marker"] = args["Marker"],
+		["GatewayARN"] = args["GatewayARN"],
+		["Limit"] = args["Limit"],
+		["VTLDeviceARNs"] = args["VTLDeviceARNs"],
 	}
-	asserts.AssertCreateSnapshotOutput(all_args)
+	asserts.AssertDescribeVTLDevicesInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6073,7 +6636,7 @@ function M.RetrieveTapeRecoveryPointOutput(args)
     }
 end
 
-keys.UpdateNFSFileShareInput = { ["FileShareARN"] = true, ["DefaultStorageClass"] = true, ["Squash"] = true, ["NFSFileShareDefaults"] = true, ["KMSKey"] = true, ["ReadOnly"] = true, ["ClientList"] = true, ["KMSEncrypted"] = true, nil }
+keys.UpdateNFSFileShareInput = { ["FileShareARN"] = true, ["DefaultStorageClass"] = true, ["Squash"] = true, ["GuessMIMETypeEnabled"] = true, ["NFSFileShareDefaults"] = true, ["KMSKey"] = true, ["ReadOnly"] = true, ["ObjectACL"] = true, ["ClientList"] = true, ["KMSEncrypted"] = true, ["RequesterPays"] = true, nil }
 
 function asserts.AssertUpdateNFSFileShareInput(struct)
 	assert(struct)
@@ -6082,11 +6645,14 @@ function asserts.AssertUpdateNFSFileShareInput(struct)
 	if struct["FileShareARN"] then asserts.AssertFileShareARN(struct["FileShareARN"]) end
 	if struct["DefaultStorageClass"] then asserts.AssertStorageClass(struct["DefaultStorageClass"]) end
 	if struct["Squash"] then asserts.AssertSquash(struct["Squash"]) end
+	if struct["GuessMIMETypeEnabled"] then asserts.AssertBoolean(struct["GuessMIMETypeEnabled"]) end
 	if struct["NFSFileShareDefaults"] then asserts.AssertNFSFileShareDefaults(struct["NFSFileShareDefaults"]) end
 	if struct["KMSKey"] then asserts.AssertKMSKey(struct["KMSKey"]) end
 	if struct["ReadOnly"] then asserts.AssertBoolean(struct["ReadOnly"]) end
+	if struct["ObjectACL"] then asserts.AssertObjectACL(struct["ObjectACL"]) end
 	if struct["ClientList"] then asserts.AssertFileShareClientList(struct["ClientList"]) end
 	if struct["KMSEncrypted"] then asserts.AssertBoolean(struct["KMSEncrypted"]) end
+	if struct["RequesterPays"] then asserts.AssertBoolean(struct["RequesterPays"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.UpdateNFSFileShareInput[k], "UpdateNFSFileShareInput contains unknown key " .. tostring(k))
 	end
@@ -6097,13 +6663,16 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the file share to be updated. </p>
--- * DefaultStorageClass [StorageClass] <p>The default storage class for objects put into an Amazon S3 bucket by a file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.</p>
--- * Squash [Squash] <p>The user mapped to anonymous user. Valid options are the following:</p> <ul> <li> <p>"RootSquash" - Only root is mapped to anonymous user.</p> </li> <li> <p>"NoSquash" - No one is mapped to anonymous user</p> </li> <li> <p>"AllSquash" - Everyone is mapped to anonymous user.</p> </li> </ul>
+-- * DefaultStorageClass [StorageClass] <p>The default storage class for objects put into an Amazon S3 bucket by the file gateway. Possible values are <code>S3_STANDARD</code>, <code>S3_STANDARD_IA</code>, or <code>S3_ONEZONE_IA</code>. If this field is not populated, the default value <code>S3_STANDARD</code> is used. Optional.</p>
+-- * Squash [Squash] <p>The user mapped to anonymous user. Valid options are the following:</p> <ul> <li> <p> <code>RootSquash</code> - Only root is mapped to anonymous user.</p> </li> <li> <p> <code>NoSquash</code> - No one is mapped to anonymous user</p> </li> <li> <p> <code>AllSquash</code> - Everyone is mapped to anonymous user.</p> </li> </ul>
+-- * GuessMIMETypeEnabled [Boolean] <p>A value that enables guessing of the MIME type for uploaded objects based on file extensions. Set this value to true to enable MIME type guessing, and otherwise to false. The default value is true.</p>
 -- * NFSFileShareDefaults [NFSFileShareDefaults] <p>The default values for the file share. Optional.</p>
--- * KMSKey [KMSKey] <p>The KMS key used for Amazon S3 server side encryption. This value can only be set when KmsEncrypted is true. Optional. </p>
--- * ReadOnly [Boolean] <p>Sets the write status of a file share: "true" if the write status is read-only, and otherwise "false".</p>
+-- * KMSKey [KMSKey] <p>The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. This value can only be set when KMSEncrypted is true. Optional. </p>
+-- * ReadOnly [Boolean] <p>A value that sets the write status of a file share. This value is true if the write status is read-only, and otherwise false.</p>
+-- * ObjectACL [ObjectACL] <p>A value that sets the access control list permission for objects in the S3 bucket that a file gateway puts objects into. The default value is "private".</p>
 -- * ClientList [FileShareClientList] <p>The list of clients that are allowed to access the file gateway. The list must contain either valid IP addresses or valid CIDR blocks.</p>
 -- * KMSEncrypted [Boolean] <p>True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional. </p>
+-- * RequesterPays [Boolean] <p>A value that sets the access control list permission for objects in the Amazon S3 bucket that a file gateway puts objects into. The default value is <code>private</code>.</p>
 -- Required key: FileShareARN
 -- @return UpdateNFSFileShareInput structure as a key-value pair table
 function M.UpdateNFSFileShareInput(args)
@@ -6118,11 +6687,14 @@ function M.UpdateNFSFileShareInput(args)
 		["FileShareARN"] = args["FileShareARN"],
 		["DefaultStorageClass"] = args["DefaultStorageClass"],
 		["Squash"] = args["Squash"],
+		["GuessMIMETypeEnabled"] = args["GuessMIMETypeEnabled"],
 		["NFSFileShareDefaults"] = args["NFSFileShareDefaults"],
 		["KMSKey"] = args["KMSKey"],
 		["ReadOnly"] = args["ReadOnly"],
+		["ObjectACL"] = args["ObjectACL"],
 		["ClientList"] = args["ClientList"],
 		["KMSEncrypted"] = args["KMSEncrypted"],
+		["RequesterPays"] = args["RequesterPays"],
 	}
 	asserts.AssertUpdateNFSFileShareInput(all_args)
 	return {
@@ -6133,7 +6705,7 @@ function M.UpdateNFSFileShareInput(args)
     }
 end
 
-keys.CreateStorediSCSIVolumeInput = { ["NetworkInterfaceId"] = true, ["SnapshotId"] = true, ["GatewayARN"] = true, ["PreserveExistingData"] = true, ["TargetName"] = true, ["DiskId"] = true, nil }
+keys.CreateStorediSCSIVolumeInput = { ["NetworkInterfaceId"] = true, ["KMSKey"] = true, ["SnapshotId"] = true, ["GatewayARN"] = true, ["PreserveExistingData"] = true, ["TargetName"] = true, ["KMSEncrypted"] = true, ["DiskId"] = true, nil }
 
 function asserts.AssertCreateStorediSCSIVolumeInput(struct)
 	assert(struct)
@@ -6144,10 +6716,12 @@ function asserts.AssertCreateStorediSCSIVolumeInput(struct)
 	assert(struct["TargetName"], "Expected key TargetName to exist in table")
 	assert(struct["NetworkInterfaceId"], "Expected key NetworkInterfaceId to exist in table")
 	if struct["NetworkInterfaceId"] then asserts.AssertNetworkInterfaceId(struct["NetworkInterfaceId"]) end
+	if struct["KMSKey"] then asserts.AssertKMSKey(struct["KMSKey"]) end
 	if struct["SnapshotId"] then asserts.AssertSnapshotId(struct["SnapshotId"]) end
 	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
 	if struct["PreserveExistingData"] then asserts.Assertboolean(struct["PreserveExistingData"]) end
 	if struct["TargetName"] then asserts.AssertTargetName(struct["TargetName"]) end
+	if struct["KMSEncrypted"] then asserts.AssertBoolean(struct["KMSEncrypted"]) end
 	if struct["DiskId"] then asserts.AssertDiskId(struct["DiskId"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateStorediSCSIVolumeInput[k], "CreateStorediSCSIVolumeInput contains unknown key " .. tostring(k))
@@ -6159,10 +6733,12 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NetworkInterfaceId [NetworkInterfaceId] <p>The network interface of the gateway on which to expose the iSCSI target. Only IPv4 addresses are accepted. Use <a>DescribeGatewayInformation</a> to get a list of the network interfaces available on a gateway.</p> <p> Valid Values: A valid IP address.</p>
+-- * KMSKey [KMSKey] <p>The Amazon Resource Name (ARN) of the KMS key used for Amazon S3 server side encryption. This value can only be set when KMSEncrypted is true. Optional.</p>
 -- * SnapshotId [SnapshotId] <p>The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the new stored volume. Specify this field if you want to create the iSCSI storage volume from a snapshot otherwise do not include this field. To list snapshots for your account use <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a> in the <i>Amazon Elastic Compute Cloud API Reference</i>.</p>
 -- * GatewayARN [GatewayARN] 
 -- * PreserveExistingData [boolean] <p>Specify this field as true if you want to preserve the data on the local disk. Otherwise, specifying this field as false creates an empty volume.</p> <p> Valid Values: true, false</p>
--- * TargetName [TargetName] <p>The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. For example, specifying <code>TargetName</code> as <i>myvolume</i> results in the target ARN of arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume. The target name must be unique across all volumes of a gateway.</p>
+-- * TargetName [TargetName] <p>The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. For example, specifying <code>TargetName</code> as <i>myvolume</i> results in the target ARN of arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume. The target name must be unique across all volumes of a gateway.</p>
+-- * KMSEncrypted [Boolean] <p>True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.</p>
 -- * DiskId [DiskId] <p>The unique identifier for the gateway local disk that is configured as a stored volume. Use <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a> to list disk IDs for a gateway.</p>
 -- Required key: GatewayARN
 -- Required key: DiskId
@@ -6180,10 +6756,12 @@ function M.CreateStorediSCSIVolumeInput(args)
     }
 	local all_args = { 
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
+		["KMSKey"] = args["KMSKey"],
 		["SnapshotId"] = args["SnapshotId"],
 		["GatewayARN"] = args["GatewayARN"],
 		["PreserveExistingData"] = args["PreserveExistingData"],
 		["TargetName"] = args["TargetName"],
+		["KMSEncrypted"] = args["KMSEncrypted"],
 		["DiskId"] = args["DiskId"],
 	}
 	asserts.AssertCreateStorediSCSIVolumeInput(all_args)
@@ -6232,7 +6810,7 @@ function M.CancelArchivalOutput(args)
     }
 end
 
-keys.CreateCachediSCSIVolumeInput = { ["VolumeSizeInBytes"] = true, ["NetworkInterfaceId"] = true, ["ClientToken"] = true, ["SnapshotId"] = true, ["SourceVolumeARN"] = true, ["GatewayARN"] = true, ["TargetName"] = true, nil }
+keys.CreateCachediSCSIVolumeInput = { ["VolumeSizeInBytes"] = true, ["NetworkInterfaceId"] = true, ["ClientToken"] = true, ["SnapshotId"] = true, ["KMSKey"] = true, ["SourceVolumeARN"] = true, ["GatewayARN"] = true, ["TargetName"] = true, ["KMSEncrypted"] = true, nil }
 
 function asserts.AssertCreateCachediSCSIVolumeInput(struct)
 	assert(struct)
@@ -6246,9 +6824,11 @@ function asserts.AssertCreateCachediSCSIVolumeInput(struct)
 	if struct["NetworkInterfaceId"] then asserts.AssertNetworkInterfaceId(struct["NetworkInterfaceId"]) end
 	if struct["ClientToken"] then asserts.AssertClientToken(struct["ClientToken"]) end
 	if struct["SnapshotId"] then asserts.AssertSnapshotId(struct["SnapshotId"]) end
+	if struct["KMSKey"] then asserts.AssertKMSKey(struct["KMSKey"]) end
 	if struct["SourceVolumeARN"] then asserts.AssertVolumeARN(struct["SourceVolumeARN"]) end
 	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
 	if struct["TargetName"] then asserts.AssertTargetName(struct["TargetName"]) end
+	if struct["KMSEncrypted"] then asserts.AssertBoolean(struct["KMSEncrypted"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateCachediSCSIVolumeInput[k], "CreateCachediSCSIVolumeInput contains unknown key " .. tostring(k))
 	end
@@ -6258,13 +6838,15 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * VolumeSizeInBytes [long] 
--- * NetworkInterfaceId [NetworkInterfaceId] 
--- * ClientToken [ClientToken] 
--- * SnapshotId [SnapshotId] 
+-- * VolumeSizeInBytes [long] <p>The size of the volume in bytes.</p>
+-- * NetworkInterfaceId [NetworkInterfaceId] <p>The network interface of the gateway on which to expose the iSCSI target. Only IPv4 addresses are accepted. Use <a>DescribeGatewayInformation</a> to get a list of the network interfaces available on a gateway.</p> <p> Valid Values: A valid IP address.</p>
+-- * ClientToken [ClientToken] <p>A unique identifier that you use to retry a request. If you retry a request, use the same <code>ClientToken</code> you specified in the initial request.</p>
+-- * SnapshotId [SnapshotId] <p>The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the new cached volume. Specify this field if you want to create the iSCSI storage volume from a snapshot otherwise do not include this field. To list snapshots for your account use <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a> in the <i>Amazon Elastic Compute Cloud API Reference</i>.</p>
+-- * KMSKey [KMSKey] <p>The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. This value can only be set when KMSEncrypted is true. Optional.</p>
 -- * SourceVolumeARN [VolumeARN] <p>The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified existing volume's latest recovery point. The <code>VolumeSizeInBytes</code> value for this new volume must be equal to or larger than the size of the existing volume, in bytes.</p>
 -- * GatewayARN [GatewayARN] 
--- * TargetName [TargetName] 
+-- * TargetName [TargetName] <p>The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. For example, specifying <code>TargetName</code> as <i>myvolume</i> results in the target ARN of arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume. The target name must be unique across all volumes of a gateway.</p>
+-- * KMSEncrypted [Boolean] <p>True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.</p>
 -- Required key: GatewayARN
 -- Required key: VolumeSizeInBytes
 -- Required key: TargetName
@@ -6284,9 +6866,11 @@ function M.CreateCachediSCSIVolumeInput(args)
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
 		["ClientToken"] = args["ClientToken"],
 		["SnapshotId"] = args["SnapshotId"],
+		["KMSKey"] = args["KMSKey"],
 		["SourceVolumeARN"] = args["SourceVolumeARN"],
 		["GatewayARN"] = args["GatewayARN"],
 		["TargetName"] = args["TargetName"],
+		["KMSEncrypted"] = args["KMSEncrypted"],
 	}
 	asserts.AssertCreateCachediSCSIVolumeInput(all_args)
 	return {
@@ -6297,33 +6881,45 @@ function M.CreateCachediSCSIVolumeInput(args)
     }
 end
 
-keys.DescribeVTLDevicesInput = { ["Marker"] = true, ["GatewayARN"] = true, ["Limit"] = true, ["VTLDeviceARNs"] = true, nil }
+keys.UpdateSMBFileShareInput = { ["FileShareARN"] = true, ["ValidUserList"] = true, ["DefaultStorageClass"] = true, ["ReadOnly"] = true, ["GuessMIMETypeEnabled"] = true, ["InvalidUserList"] = true, ["KMSKey"] = true, ["ObjectACL"] = true, ["KMSEncrypted"] = true, ["RequesterPays"] = true, nil }
 
-function asserts.AssertDescribeVTLDevicesInput(struct)
+function asserts.AssertUpdateSMBFileShareInput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeVTLDevicesInput to be of type 'table'")
-	assert(struct["GatewayARN"], "Expected key GatewayARN to exist in table")
-	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
-	if struct["GatewayARN"] then asserts.AssertGatewayARN(struct["GatewayARN"]) end
-	if struct["Limit"] then asserts.AssertPositiveIntObject(struct["Limit"]) end
-	if struct["VTLDeviceARNs"] then asserts.AssertVTLDeviceARNs(struct["VTLDeviceARNs"]) end
+	assert(type(struct) == "table", "Expected UpdateSMBFileShareInput to be of type 'table'")
+	assert(struct["FileShareARN"], "Expected key FileShareARN to exist in table")
+	if struct["FileShareARN"] then asserts.AssertFileShareARN(struct["FileShareARN"]) end
+	if struct["ValidUserList"] then asserts.AssertFileShareUserList(struct["ValidUserList"]) end
+	if struct["DefaultStorageClass"] then asserts.AssertStorageClass(struct["DefaultStorageClass"]) end
+	if struct["ReadOnly"] then asserts.AssertBoolean(struct["ReadOnly"]) end
+	if struct["GuessMIMETypeEnabled"] then asserts.AssertBoolean(struct["GuessMIMETypeEnabled"]) end
+	if struct["InvalidUserList"] then asserts.AssertFileShareUserList(struct["InvalidUserList"]) end
+	if struct["KMSKey"] then asserts.AssertKMSKey(struct["KMSKey"]) end
+	if struct["ObjectACL"] then asserts.AssertObjectACL(struct["ObjectACL"]) end
+	if struct["KMSEncrypted"] then asserts.AssertBoolean(struct["KMSEncrypted"]) end
+	if struct["RequesterPays"] then asserts.AssertBoolean(struct["RequesterPays"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DescribeVTLDevicesInput[k], "DescribeVTLDevicesInput contains unknown key " .. tostring(k))
+		assert(keys.UpdateSMBFileShareInput[k], "UpdateSMBFileShareInput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DescribeVTLDevicesInput
--- <p>DescribeVTLDevicesInput</p>
+--- Create a structure of type UpdateSMBFileShareInput
+-- <p>UpdateSMBFileShareInput</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Marker [Marker] <p>An opaque string that indicates the position at which to begin describing the VTL devices.</p>
--- * GatewayARN [GatewayARN] 
--- * Limit [PositiveIntObject] <p>Specifies that the number of VTL devices described be limited to the specified number.</p>
--- * VTLDeviceARNs [VTLDeviceARNs] <p>An array of strings, where each string represents the Amazon Resource Name (ARN) of a VTL device.</p> <note> <p>All of the specified VTL devices must be from the same gateway. If no VTL devices are specified, the result will contain all devices on the specified gateway.</p> </note>
--- Required key: GatewayARN
--- @return DescribeVTLDevicesInput structure as a key-value pair table
-function M.DescribeVTLDevicesInput(args)
-	assert(args, "You must provide an argument table when creating DescribeVTLDevicesInput")
+-- * FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the SMB file share that you want to update.</p>
+-- * ValidUserList [FileShareUserList] <p>A list of users or groups in the Active Directory that are allowed to access the file share. A group must be prefixed with the @ character. For example <code>@group1</code>. Can only be set if Authentication is set to <code>ActiveDirectory</code>.</p>
+-- * DefaultStorageClass [StorageClass] <p>The default storage class for objects put into an Amazon S3 bucket by the file gateway. Possible values are <code>S3_STANDARD</code>, <code>S3_STANDARD_IA</code>, or <code>S3_ONEZONE_IA</code>. If this field is not populated, the default value <code>S3_STANDARD</code> is used. Optional.</p>
+-- * ReadOnly [Boolean] <p>A value that sets the write status of a file share. This value is true if the write status is read-only, and otherwise false.</p>
+-- * GuessMIMETypeEnabled [Boolean] <p>A value that enables guessing of the MIME type for uploaded objects based on file extensions. Set this value to true to enable MIME type guessing, and otherwise to false. The default value is true.</p>
+-- * InvalidUserList [FileShareUserList] <p>A list of users or groups in the Active Directory that are not allowed to access the file share. A group must be prefixed with the @ character. For example <code>@group1</code>. Can only be set if Authentication is set to <code>ActiveDirectory</code>.</p>
+-- * KMSKey [KMSKey] <p>The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. This value can only be set when KMSEncrypted is true. Optional.</p>
+-- * ObjectACL [ObjectACL] <p>A value that sets the access control list permission for objects in the S3 bucket that a file gateway puts objects into. The default value is "private".</p>
+-- * KMSEncrypted [Boolean] <p>True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.</p>
+-- * RequesterPays [Boolean] <p>A value that sets the access control list permission for objects in the Amazon S3 bucket that a file gateway puts objects into. The default value is <code>private</code>.</p>
+-- Required key: FileShareARN
+-- @return UpdateSMBFileShareInput structure as a key-value pair table
+function M.UpdateSMBFileShareInput(args)
+	assert(args, "You must provide an argument table when creating UpdateSMBFileShareInput")
     local query_args = { 
     }
     local uri_args = { 
@@ -6331,12 +6927,58 @@ function M.DescribeVTLDevicesInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Marker"] = args["Marker"],
-		["GatewayARN"] = args["GatewayARN"],
-		["Limit"] = args["Limit"],
-		["VTLDeviceARNs"] = args["VTLDeviceARNs"],
+		["FileShareARN"] = args["FileShareARN"],
+		["ValidUserList"] = args["ValidUserList"],
+		["DefaultStorageClass"] = args["DefaultStorageClass"],
+		["ReadOnly"] = args["ReadOnly"],
+		["GuessMIMETypeEnabled"] = args["GuessMIMETypeEnabled"],
+		["InvalidUserList"] = args["InvalidUserList"],
+		["KMSKey"] = args["KMSKey"],
+		["ObjectACL"] = args["ObjectACL"],
+		["KMSEncrypted"] = args["KMSEncrypted"],
+		["RequesterPays"] = args["RequesterPays"],
 	}
-	asserts.AssertDescribeVTLDevicesInput(all_args)
+	asserts.AssertUpdateSMBFileShareInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateSnapshotOutput = { ["SnapshotId"] = true, ["VolumeARN"] = true, nil }
+
+function asserts.AssertCreateSnapshotOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateSnapshotOutput to be of type 'table'")
+	if struct["SnapshotId"] then asserts.AssertSnapshotId(struct["SnapshotId"]) end
+	if struct["VolumeARN"] then asserts.AssertVolumeARN(struct["VolumeARN"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateSnapshotOutput[k], "CreateSnapshotOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateSnapshotOutput
+-- <p>A JSON object containing the following fields:</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SnapshotId [SnapshotId] <p>The snapshot ID that is used to refer to the snapshot in future operations such as describing snapshots (Amazon Elastic Compute Cloud API <code>DescribeSnapshots</code>) or creating a volume from a snapshot (<a>CreateStorediSCSIVolume</a>).</p>
+-- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume of which the snapshot was taken.</p>
+-- @return CreateSnapshotOutput structure as a key-value pair table
+function M.CreateSnapshotOutput(args)
+	assert(args, "You must provide an argument table when creating CreateSnapshotOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SnapshotId"] = args["SnapshotId"],
+		["VolumeARN"] = args["VolumeARN"],
+	}
+	asserts.AssertCreateSnapshotOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6417,7 +7059,7 @@ function asserts.AssertFileShareStatus(str)
 	assert(#str >= 3, "Expected string to be min 3 characters")
 end
 
--- <p>The status of the file share. Possible values are CREATING, UPDATING, AVAILABLE and DELETING. </p>
+-- <p>The status of the file share. Possible values are <code>CREATING</code>, <code>UPDATING</code>, <code>AVAILABLE</code> and <code>DELETING</code>. </p>
 function M.FileShareStatus(str)
 	asserts.AssertFileShareStatus(str)
 	return str
@@ -6433,19 +7075,6 @@ end
 --  
 function M.TagKey(str)
 	asserts.AssertTagKey(str)
-	return str
-end
-
-function asserts.AssertRegionId(str)
-	assert(str)
-	assert(type(str) == "string", "Expected RegionId to be of type 'string'")
-	assert(#str <= 25, "Expected string to be max 25 characters")
-	assert(#str >= 1, "Expected string to be min 1 characters")
-end
-
---  
-function M.RegionId(str)
-	asserts.AssertRegionId(str)
 	return str
 end
 
@@ -6597,6 +7226,17 @@ function M.GatewayId(str)
 	return str
 end
 
+function asserts.AssertTapeArchiveStatus(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TapeArchiveStatus to be of type 'string'")
+end
+
+--  
+function M.TapeArchiveStatus(str)
+	asserts.AssertTapeArchiveStatus(str)
+	return str
+end
+
 function asserts.AssertGatewayName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected GatewayName to be of type 'string'")
@@ -6623,14 +7263,38 @@ function M.GatewayOperationalState(str)
 	return str
 end
 
-function asserts.AssertTapeArchiveStatus(str)
+function asserts.AssertAuthentication(str)
 	assert(str)
-	assert(type(str) == "string", "Expected TapeArchiveStatus to be of type 'string'")
+	assert(type(str) == "string", "Expected Authentication to be of type 'string'")
+	assert(#str <= 15, "Expected string to be max 15 characters")
+	assert(#str >= 5, "Expected string to be min 5 characters")
+end
+
+-- <p>The authentication method of the file share.</p> <p>Valid values are <code>ActiveDirectory</code> or <code>GuestAccess</code>. The default is <code>ActiveDirectory</code>.</p>
+function M.Authentication(str)
+	asserts.AssertAuthentication(str)
+	return str
+end
+
+function asserts.AssertDomainUserName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected DomainUserName to be of type 'string'")
 end
 
 --  
-function M.TapeArchiveStatus(str)
-	asserts.AssertTapeArchiveStatus(str)
+function M.DomainUserName(str)
+	asserts.AssertDomainUserName(str)
+	return str
+end
+
+function asserts.AssertDomainName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected DomainName to be of type 'string'")
+end
+
+--  
+function M.DomainName(str)
+	asserts.AssertDomainName(str)
 	return str
 end
 
@@ -6654,7 +7318,7 @@ function asserts.AssertKMSKey(str)
 	assert(#str >= 20, "Expected string to be min 20 characters")
 end
 
--- <p>The ARN of the KMS key used for Amazon S3 server side encryption. </p>
+-- <p>The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. This value can only be set when KMSEncrypted is true. Optional.</p>
 function M.KMSKey(str)
 	asserts.AssertKMSKey(str)
 	return str
@@ -6699,14 +7363,16 @@ function M.GatewayTimezone(str)
 	return str
 end
 
-function asserts.AssertVTLDeviceType(str)
+function asserts.AssertFileShareUser(str)
 	assert(str)
-	assert(type(str) == "string", "Expected VTLDeviceType to be of type 'string'")
+	assert(type(str) == "string", "Expected FileShareUser to be of type 'string'")
+	assert(#str <= 64, "Expected string to be max 64 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
-function M.VTLDeviceType(str)
-	asserts.AssertVTLDeviceType(str)
+function M.FileShareUser(str)
+	asserts.AssertFileShareUser(str)
 	return str
 end
 
@@ -6717,7 +7383,7 @@ function asserts.AssertSquash(str)
 	assert(#str >= 5, "Expected string to be min 5 characters")
 end
 
--- <p>The user mapped to anonymous user. Valid options are the following: </p> <ul> <li> <p>"RootSquash" - Only root is mapped to anonymous user.</p> </li> <li> <p>"NoSquash" - No one is mapped to anonymous user</p> </li> <li> <p>"AllSquash" - Everyone is mapped to anonymous user.</p> </li> </ul>
+-- <p>The user mapped to anonymous user. Valid options are the following: </p> <ul> <li> <p> <code>RootSquash</code> - Only root is mapped to anonymous user.</p> </li> <li> <p> <code>NoSquash</code> - No one is mapped to anonymous user</p> </li> <li> <p> <code>AllSquash</code> - Everyone is mapped to anonymous user.</p> </li> </ul>
 function M.Squash(str)
 	asserts.AssertSquash(str)
 	return str
@@ -6809,6 +7475,17 @@ function M.NextUpdateAvailabilityDate(str)
 	return str
 end
 
+function asserts.AssertFileShareType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected FileShareType to be of type 'string'")
+end
+
+-- <p>The type of the file share.</p>
+function M.FileShareType(str)
+	asserts.AssertFileShareType(str)
+	return str
+end
+
 function asserts.AssertVTLDeviceARN(str)
 	assert(str)
 	assert(type(str) == "string", "Expected VTLDeviceARN to be of type 'string'")
@@ -6858,17 +7535,6 @@ end
 --  
 function M.TapeDriveType(str)
 	asserts.AssertTapeDriveType(str)
-	return str
-end
-
-function asserts.AssertErrorCode(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ErrorCode to be of type 'string'")
-end
-
---  
-function M.ErrorCode(str)
-	asserts.AssertErrorCode(str)
 	return str
 end
 
@@ -6948,6 +7614,19 @@ function M.TargetARN(str)
 	return str
 end
 
+function asserts.AssertSMBGuestPassword(str)
+	assert(str)
+	assert(type(str) == "string", "Expected SMBGuestPassword to be of type 'string'")
+	assert(#str <= 512, "Expected string to be max 512 characters")
+	assert(#str >= 6, "Expected string to be min 6 characters")
+end
+
+--  
+function M.SMBGuestPassword(str)
+	asserts.AssertSMBGuestPassword(str)
+	return str
+end
+
 function asserts.AssertResourceARN(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ResourceARN to be of type 'string'")
@@ -6961,6 +7640,17 @@ function M.ResourceARN(str)
 	return str
 end
 
+function asserts.AssertObjectACL(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ObjectACL to be of type 'string'")
+end
+
+-- <p>A value that sets the access control list permission for objects in the S3 bucket that a file gateway puts objects into. The default value is "private".</p>
+function M.ObjectACL(str)
+	asserts.AssertObjectACL(str)
+	return str
+end
+
 function asserts.AssertBandwidthType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected BandwidthType to be of type 'string'")
@@ -6971,6 +7661,17 @@ end
 --  
 function M.BandwidthType(str)
 	asserts.AssertBandwidthType(str)
+	return str
+end
+
+function asserts.AssertDomainUserPassword(str)
+	assert(str)
+	assert(type(str) == "string", "Expected DomainUserPassword to be of type 'string'")
+end
+
+--  
+function M.DomainUserPassword(str)
+	asserts.AssertDomainUserPassword(str)
 	return str
 end
 
@@ -7000,6 +7701,19 @@ function M.SnapshotDescription(str)
 	return str
 end
 
+function asserts.AssertFolder(str)
+	assert(str)
+	assert(type(str) == "string", "Expected Folder to be of type 'string'")
+	assert(#str <= 1024, "Expected string to be max 1024 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.Folder(str)
+	asserts.AssertFolder(str)
+	return str
+end
+
 function asserts.AssertTapeStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TapeStatus to be of type 'string'")
@@ -7021,6 +7735,19 @@ end
 --  
 function M.Description(str)
 	asserts.AssertDescription(str)
+	return str
+end
+
+function asserts.AssertRegionId(str)
+	assert(str)
+	assert(type(str) == "string", "Expected RegionId to be of type 'string'")
+	assert(#str <= 25, "Expected string to be max 25 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.RegionId(str)
+	asserts.AssertRegionId(str)
 	return str
 end
 
@@ -7060,6 +7787,17 @@ end
 --  
 function M.TapeBarcodePrefix(str)
 	asserts.AssertTapeBarcodePrefix(str)
+	return str
+end
+
+function asserts.AssertVTLDeviceType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected VTLDeviceType to be of type 'string'")
+end
+
+--  
+function M.VTLDeviceType(str)
+	asserts.AssertVTLDeviceType(str)
 	return str
 end
 
@@ -7115,6 +7853,19 @@ function M.MediumChangerType(str)
 	return str
 end
 
+function asserts.AssertNotificationId(str)
+	assert(str)
+	assert(type(str) == "string", "Expected NotificationId to be of type 'string'")
+	assert(#str <= 2048, "Expected string to be max 2048 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+-- <p>The randomly generated ID of the notification that was sent. This ID is in UUID format.</p>
+function M.NotificationId(str)
+	asserts.AssertNotificationId(str)
+	return str
+end
+
 function asserts.AssertTapeRecoveryPointStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TapeRecoveryPointStatus to be of type 'string'")
@@ -7157,17 +7908,6 @@ function M.BandwidthUploadRateLimit(long)
 	return long
 end
 
-function asserts.AssertPermissionId(long)
-	assert(long)
-	assert(type(long) == "number", "Expected PermissionId to be of type 'number'")
-	assert(long % 1 == 0, "Expected a whole integer number")
-end
-
-function M.PermissionId(long)
-	asserts.AssertPermissionId(long)
-	return long
-end
-
 function asserts.AssertBandwidthDownloadRateLimit(long)
 	assert(long)
 	assert(type(long) == "number", "Expected BandwidthDownloadRateLimit to be of type 'number'")
@@ -7176,6 +7916,28 @@ end
 
 function M.BandwidthDownloadRateLimit(long)
 	asserts.AssertBandwidthDownloadRateLimit(long)
+	return long
+end
+
+function asserts.AssertTapeSize(long)
+	assert(long)
+	assert(type(long) == "number", "Expected TapeSize to be of type 'number'")
+	assert(long % 1 == 0, "Expected a whole integer number")
+end
+
+function M.TapeSize(long)
+	asserts.AssertTapeSize(long)
+	return long
+end
+
+function asserts.AssertVolumeUsedInBytes(long)
+	assert(long)
+	assert(type(long) == "number", "Expected VolumeUsedInBytes to be of type 'number'")
+	assert(long % 1 == 0, "Expected a whole integer number")
+end
+
+function M.VolumeUsedInBytes(long)
+	asserts.AssertVolumeUsedInBytes(long)
 	return long
 end
 
@@ -7190,14 +7952,14 @@ function M.long(long)
 	return long
 end
 
-function asserts.AssertTapeSize(long)
+function asserts.AssertPermissionId(long)
 	assert(long)
-	assert(type(long) == "number", "Expected TapeSize to be of type 'number'")
+	assert(type(long) == "number", "Expected PermissionId to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
-function M.TapeSize(long)
-	asserts.AssertTapeSize(long)
+function M.PermissionId(long)
+	asserts.AssertPermissionId(long)
 	return long
 end
 
@@ -7317,20 +8079,6 @@ function M.Boolean(boolean)
 	return boolean
 end
 
-function asserts.AsserterrorDetails(map)
-	assert(map)
-	assert(type(map) == "table", "Expected errorDetails to be of type 'table'")
-	for k,v in pairs(map) do
-		asserts.Assertstring(k)
-		asserts.Assertstring(v)
-	end
-end
-
-function M.errorDetails(map)
-	asserts.AsserterrorDetails(map)
-	return map
-end
-
 function asserts.AssertTime(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected Time to be of type 'string'")
@@ -7411,6 +8159,36 @@ function M.Gateways(list)
 	return list
 end
 
+function asserts.AssertTapeARNs(list)
+	assert(list)
+	assert(type(list) == "table", "Expected TapeARNs to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertTapeARN(v)
+	end
+end
+
+-- <p>The Amazon Resource Name (ARN) of each of the tapes you want to list. If you don't specify a tape ARN, the response lists all tapes in both your VTL and VTS.</p>
+-- List of TapeARN objects
+function M.TapeARNs(list)
+	asserts.AssertTapeARNs(list)
+	return list
+end
+
+function asserts.AssertSMBFileShareInfoList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected SMBFileShareInfoList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertSMBFileShareInfo(v)
+	end
+end
+
+--  
+-- List of SMBFileShareInfo objects
+function M.SMBFileShareInfoList(list)
+	asserts.AssertSMBFileShareInfoList(list)
+	return list
+end
+
 function asserts.AssertVolumeInfos(list)
 	assert(list)
 	assert(type(list) == "table", "Expected VolumeInfos to be of type ''table")
@@ -7441,6 +8219,22 @@ function M.TapeInfos(list)
 	return list
 end
 
+function asserts.AssertFileShareUserList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected FileShareUserList to be of type ''table")
+	assert(#list <= 100, "Expected list to be contain 100 elements")
+	for _,v in ipairs(list) do
+		asserts.AssertFileShareUser(v)
+	end
+end
+
+--  
+-- List of FileShareUser objects
+function M.FileShareUserList(list)
+	asserts.AssertFileShareUserList(list)
+	return list
+end
+
 function asserts.AssertTags(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Tags to be of type ''table")
@@ -7456,18 +8250,20 @@ function M.Tags(list)
 	return list
 end
 
-function asserts.AssertVTLDeviceARNs(list)
+function asserts.AssertFolderList(list)
 	assert(list)
-	assert(type(list) == "table", "Expected VTLDeviceARNs to be of type ''table")
+	assert(type(list) == "table", "Expected FolderList to be of type ''table")
+	assert(#list <= 50, "Expected list to be contain 50 elements")
+	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		asserts.AssertVTLDeviceARN(v)
+		asserts.AssertFolder(v)
 	end
 end
 
---  
--- List of VTLDeviceARN objects
-function M.VTLDeviceARNs(list)
-	asserts.AssertVTLDeviceARNs(list)
+-- <p>A comma-separated list of the paths of folders to refresh in the cache. The default is [<code>"/"</code>]. The default refreshes objects and folders at the root of the Amazon S3 bucket. If <code>Recursive</code> is set to "true", the entire S3 bucket that the file share has access to is refreshed.</p>
+-- List of Folder objects
+function M.FolderList(list)
+	asserts.AssertFolderList(list)
 	return list
 end
 
@@ -7625,21 +8421,6 @@ function M.VTLDevices(list)
 	return list
 end
 
-function asserts.AssertTapeARNs(list)
-	assert(list)
-	assert(type(list) == "table", "Expected TapeARNs to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertTapeARN(v)
-	end
-end
-
--- <p>The Amazon Resource Name (ARN) of each of the tapes you want to list. If you don't specify a tape ARN, the response lists all tapes in both your VTL and VTS.</p>
--- List of TapeARN objects
-function M.TapeARNs(list)
-	asserts.AssertTapeARNs(list)
-	return list
-end
-
 function asserts.AssertTapes(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Tapes to be of type ''table")
@@ -7667,6 +8448,21 @@ end
 -- List of StorediSCSIVolume objects
 function M.StorediSCSIVolumes(list)
 	asserts.AssertStorediSCSIVolumes(list)
+	return list
+end
+
+function asserts.AssertVTLDeviceARNs(list)
+	assert(list)
+	assert(type(list) == "table", "Expected VTLDeviceARNs to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertVTLDeviceARN(v)
+	end
+end
+
+--  
+-- List of VTLDeviceARN objects
+function M.VTLDeviceARNs(list)
+	asserts.AssertVTLDeviceARNs(list)
 	return list
 end
 
@@ -7758,6 +8554,41 @@ end
 --
 -- OPERATIONS
 --
+--- Call UpdateSMBFileShare asynchronously, invoking a callback when done
+-- @param UpdateSMBFileShareInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateSMBFileShareAsync(UpdateSMBFileShareInput, cb)
+	assert(UpdateSMBFileShareInput, "You must provide a UpdateSMBFileShareInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateSMBFileShare",
+	}
+	for header,value in pairs(UpdateSMBFileShareInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateSMBFileShareInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateSMBFileShare synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateSMBFileShareInput
+-- @return response
+-- @return error_message
+function M.UpdateSMBFileShareSync(UpdateSMBFileShareInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateSMBFileShareAsync(UpdateSMBFileShareInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call DescribeSnapshotSchedule asynchronously, invoking a callback when done
 -- @param DescribeSnapshotScheduleInput
 -- @param cb Callback function accepting two args: response, error_message
@@ -8073,6 +8904,76 @@ function M.DisableGatewaySync(DisableGatewayInput, ...)
 	return coroutine.yield()
 end
 
+--- Call CreateSMBFileShare asynchronously, invoking a callback when done
+-- @param CreateSMBFileShareInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.CreateSMBFileShareAsync(CreateSMBFileShareInput, cb)
+	assert(CreateSMBFileShareInput, "You must provide a CreateSMBFileShareInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateSMBFileShare",
+	}
+	for header,value in pairs(CreateSMBFileShareInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", CreateSMBFileShareInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CreateSMBFileShare synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateSMBFileShareInput
+-- @return response
+-- @return error_message
+function M.CreateSMBFileShareSync(CreateSMBFileShareInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateSMBFileShareAsync(CreateSMBFileShareInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeSMBSettings asynchronously, invoking a callback when done
+-- @param DescribeSMBSettingsInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeSMBSettingsAsync(DescribeSMBSettingsInput, cb)
+	assert(DescribeSMBSettingsInput, "You must provide a DescribeSMBSettingsInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeSMBSettings",
+	}
+	for header,value in pairs(DescribeSMBSettingsInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeSMBSettingsInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeSMBSettings synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeSMBSettingsInput
+-- @return response
+-- @return error_message
+function M.DescribeSMBSettingsSync(DescribeSMBSettingsInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeSMBSettingsAsync(DescribeSMBSettingsInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ListFileShares asynchronously, invoking a callback when done
 -- @param ListFileSharesInput
 -- @param cb Callback function accepting two args: response, error_message
@@ -8178,36 +9079,36 @@ function M.CreateTapesSync(CreateTapesInput, ...)
 	return coroutine.yield()
 end
 
---- Call UpdateBandwidthRateLimit asynchronously, invoking a callback when done
--- @param UpdateBandwidthRateLimitInput
+--- Call NotifyWhenUploaded asynchronously, invoking a callback when done
+-- @param NotifyWhenUploadedInput
 -- @param cb Callback function accepting two args: response, error_message
-function M.UpdateBandwidthRateLimitAsync(UpdateBandwidthRateLimitInput, cb)
-	assert(UpdateBandwidthRateLimitInput, "You must provide a UpdateBandwidthRateLimitInput")
+function M.NotifyWhenUploadedAsync(NotifyWhenUploadedInput, cb)
+	assert(NotifyWhenUploadedInput, "You must provide a NotifyWhenUploadedInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateBandwidthRateLimit",
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.NotifyWhenUploaded",
 	}
-	for header,value in pairs(UpdateBandwidthRateLimitInput.headers) do
+	for header,value in pairs(NotifyWhenUploadedInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", UpdateBandwidthRateLimitInput, headers, settings, cb)
+		request_handler(settings.uri, "/", NotifyWhenUploadedInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call UpdateBandwidthRateLimit synchronously, returning when done
+--- Call NotifyWhenUploaded synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param UpdateBandwidthRateLimitInput
+-- @param NotifyWhenUploadedInput
 -- @return response
 -- @return error_message
-function M.UpdateBandwidthRateLimitSync(UpdateBandwidthRateLimitInput, ...)
+function M.NotifyWhenUploadedSync(NotifyWhenUploadedInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateBandwidthRateLimitAsync(UpdateBandwidthRateLimitInput, function(response, error_message)
+	M.NotifyWhenUploadedAsync(NotifyWhenUploadedInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8493,6 +9394,76 @@ function M.RetrieveTapeArchiveSync(RetrieveTapeArchiveInput, ...)
 	return coroutine.yield()
 end
 
+--- Call JoinDomain asynchronously, invoking a callback when done
+-- @param JoinDomainInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.JoinDomainAsync(JoinDomainInput, cb)
+	assert(JoinDomainInput, "You must provide a JoinDomainInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.JoinDomain",
+	}
+	for header,value in pairs(JoinDomainInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", JoinDomainInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call JoinDomain synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param JoinDomainInput
+-- @return response
+-- @return error_message
+function M.JoinDomainSync(JoinDomainInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.JoinDomainAsync(JoinDomainInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateBandwidthRateLimit asynchronously, invoking a callback when done
+-- @param UpdateBandwidthRateLimitInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateBandwidthRateLimitAsync(UpdateBandwidthRateLimitInput, cb)
+	assert(UpdateBandwidthRateLimitInput, "You must provide a UpdateBandwidthRateLimitInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateBandwidthRateLimit",
+	}
+	for header,value in pairs(UpdateBandwidthRateLimitInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateBandwidthRateLimitInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateBandwidthRateLimit synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateBandwidthRateLimitInput
+-- @return response
+-- @return error_message
+function M.UpdateBandwidthRateLimitSync(UpdateBandwidthRateLimitInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateBandwidthRateLimitAsync(UpdateBandwidthRateLimitInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call SetLocalConsolePassword asynchronously, invoking a callback when done
 -- @param SetLocalConsolePasswordInput
 -- @param cb Callback function accepting two args: response, error_message
@@ -8523,41 +9494,6 @@ function M.SetLocalConsolePasswordSync(SetLocalConsolePasswordInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.SetLocalConsolePasswordAsync(SetLocalConsolePasswordInput, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call UpdateSnapshotSchedule asynchronously, invoking a callback when done
--- @param UpdateSnapshotScheduleInput
--- @param cb Callback function accepting two args: response, error_message
-function M.UpdateSnapshotScheduleAsync(UpdateSnapshotScheduleInput, cb)
-	assert(UpdateSnapshotScheduleInput, "You must provide a UpdateSnapshotScheduleInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateSnapshotSchedule",
-	}
-	for header,value in pairs(UpdateSnapshotScheduleInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", UpdateSnapshotScheduleInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call UpdateSnapshotSchedule synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param UpdateSnapshotScheduleInput
--- @return response
--- @return error_message
-function M.UpdateSnapshotScheduleSync(UpdateSnapshotScheduleInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.UpdateSnapshotScheduleAsync(UpdateSnapshotScheduleInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8668,6 +9604,41 @@ function M.CreateSnapshotFromVolumeRecoveryPointSync(CreateSnapshotFromVolumeRec
 	return coroutine.yield()
 end
 
+--- Call DescribeSMBFileShares asynchronously, invoking a callback when done
+-- @param DescribeSMBFileSharesInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeSMBFileSharesAsync(DescribeSMBFileSharesInput, cb)
+	assert(DescribeSMBFileSharesInput, "You must provide a DescribeSMBFileSharesInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeSMBFileShares",
+	}
+	for header,value in pairs(DescribeSMBFileSharesInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeSMBFileSharesInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeSMBFileShares synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeSMBFileSharesInput
+-- @return response
+-- @return error_message
+function M.DescribeSMBFileSharesSync(DescribeSMBFileSharesInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeSMBFileSharesAsync(DescribeSMBFileSharesInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ListGateways asynchronously, invoking a callback when done
 -- @param ListGatewaysInput
 -- @param cb Callback function accepting two args: response, error_message
@@ -8738,36 +9709,36 @@ function M.DeleteChapCredentialsSync(DeleteChapCredentialsInput, ...)
 	return coroutine.yield()
 end
 
---- Call DeleteVolume asynchronously, invoking a callback when done
--- @param DeleteVolumeInput
+--- Call DeleteBandwidthRateLimit asynchronously, invoking a callback when done
+-- @param DeleteBandwidthRateLimitInput
 -- @param cb Callback function accepting two args: response, error_message
-function M.DeleteVolumeAsync(DeleteVolumeInput, cb)
-	assert(DeleteVolumeInput, "You must provide a DeleteVolumeInput")
+function M.DeleteBandwidthRateLimitAsync(DeleteBandwidthRateLimitInput, cb)
+	assert(DeleteBandwidthRateLimitInput, "You must provide a DeleteBandwidthRateLimitInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteVolume",
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteBandwidthRateLimit",
 	}
-	for header,value in pairs(DeleteVolumeInput.headers) do
+	for header,value in pairs(DeleteBandwidthRateLimitInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DeleteVolumeInput, headers, settings, cb)
+		request_handler(settings.uri, "/", DeleteBandwidthRateLimitInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DeleteVolume synchronously, returning when done
+--- Call DeleteBandwidthRateLimit synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DeleteVolumeInput
+-- @param DeleteBandwidthRateLimitInput
 -- @return response
 -- @return error_message
-function M.DeleteVolumeSync(DeleteVolumeInput, ...)
+function M.DeleteBandwidthRateLimitSync(DeleteBandwidthRateLimitInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteVolumeAsync(DeleteVolumeInput, function(response, error_message)
+	M.DeleteBandwidthRateLimitAsync(DeleteBandwidthRateLimitInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8943,6 +9914,41 @@ function M.AddCacheSync(AddCacheInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.AddCacheAsync(AddCacheInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteVolume asynchronously, invoking a callback when done
+-- @param DeleteVolumeInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteVolumeAsync(DeleteVolumeInput, cb)
+	assert(DeleteVolumeInput, "You must provide a DeleteVolumeInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteVolume",
+	}
+	for header,value in pairs(DeleteVolumeInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteVolumeInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteVolume synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteVolumeInput
+-- @return response
+-- @return error_message
+function M.DeleteVolumeSync(DeleteVolumeInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteVolumeAsync(DeleteVolumeInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9438,36 +10444,36 @@ function M.DeleteTapeSync(DeleteTapeInput, ...)
 	return coroutine.yield()
 end
 
---- Call DeleteBandwidthRateLimit asynchronously, invoking a callback when done
--- @param DeleteBandwidthRateLimitInput
+--- Call UpdateSnapshotSchedule asynchronously, invoking a callback when done
+-- @param UpdateSnapshotScheduleInput
 -- @param cb Callback function accepting two args: response, error_message
-function M.DeleteBandwidthRateLimitAsync(DeleteBandwidthRateLimitInput, cb)
-	assert(DeleteBandwidthRateLimitInput, "You must provide a DeleteBandwidthRateLimitInput")
+function M.UpdateSnapshotScheduleAsync(UpdateSnapshotScheduleInput, cb)
+	assert(UpdateSnapshotScheduleInput, "You must provide a UpdateSnapshotScheduleInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteBandwidthRateLimit",
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateSnapshotSchedule",
 	}
-	for header,value in pairs(DeleteBandwidthRateLimitInput.headers) do
+	for header,value in pairs(UpdateSnapshotScheduleInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DeleteBandwidthRateLimitInput, headers, settings, cb)
+		request_handler(settings.uri, "/", UpdateSnapshotScheduleInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DeleteBandwidthRateLimit synchronously, returning when done
+--- Call UpdateSnapshotSchedule synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DeleteBandwidthRateLimitInput
+-- @param UpdateSnapshotScheduleInput
 -- @return response
 -- @return error_message
-function M.DeleteBandwidthRateLimitSync(DeleteBandwidthRateLimitInput, ...)
+function M.UpdateSnapshotScheduleSync(UpdateSnapshotScheduleInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBandwidthRateLimitAsync(DeleteBandwidthRateLimitInput, function(response, error_message)
+	M.UpdateSnapshotScheduleAsync(UpdateSnapshotScheduleInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9643,6 +10649,41 @@ function M.CancelArchivalSync(CancelArchivalInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.CancelArchivalAsync(CancelArchivalInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetSMBGuestPassword asynchronously, invoking a callback when done
+-- @param SetSMBGuestPasswordInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.SetSMBGuestPasswordAsync(SetSMBGuestPasswordInput, cb)
+	assert(SetSMBGuestPasswordInput, "You must provide a SetSMBGuestPasswordInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.SetSMBGuestPassword",
+	}
+	for header,value in pairs(SetSMBGuestPasswordInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", SetSMBGuestPasswordInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call SetSMBGuestPassword synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetSMBGuestPasswordInput
+-- @return response
+-- @return error_message
+function M.SetSMBGuestPasswordSync(SetSMBGuestPasswordInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetSMBGuestPasswordAsync(SetSMBGuestPasswordInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

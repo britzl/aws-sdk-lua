@@ -60,6 +60,40 @@ function M.DeleteProtectionRequest(args)
     }
 end
 
+keys.DisassociateDRTLogBucketResponse = { nil }
+
+function asserts.AssertDisassociateDRTLogBucketResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DisassociateDRTLogBucketResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DisassociateDRTLogBucketResponse[k], "DisassociateDRTLogBucketResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DisassociateDRTLogBucketResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DisassociateDRTLogBucketResponse structure as a key-value pair table
+function M.DisassociateDRTLogBucketResponse(args)
+	assert(args, "You must provide an argument table when creating DisassociateDRTLogBucketResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDisassociateDRTLogBucketResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListProtectionsResponse = { ["Protections"] = true, ["NextToken"] = true, nil }
 
 function asserts.AssertListProtectionsResponse(struct)
@@ -77,7 +111,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Protections [Protections] <p>The array of enabled <a>Protection</a> objects.</p>
--- * NextToken [Token] <p>If you specify a value for <code>MaxResults</code> and you have more Protections than the value of MaxResults, AWS Shield Advanced returns a NextToken value in the response that allows you to list another group of Protections. For the second and subsequent ListProtections requests, specify the value of NextToken from the previous response to get information about another batch of Protections.</p>
+-- * NextToken [Token] <p>If you specify a value for <code>MaxResults</code> and you have more Protections than the value of MaxResults, AWS Shield Advanced returns a NextToken value in the response that allows you to list another group of Protections. For the second and subsequent ListProtections requests, specify the value of NextToken from the previous response to get information about another batch of Protections.</p> <p>AWS WAF might return the list of <a>Protection</a> objects in batches smaller than the number specified by MaxResults. If there are more <a>Protection</a> objects to return, AWS WAF will always also return a <code>NextToken</code>.</p>
 -- @return ListProtectionsResponse structure as a key-value pair table
 function M.ListProtectionsResponse(args)
 	assert(args, "You must provide an argument table when creating ListProtectionsResponse")
@@ -139,6 +173,40 @@ function M.DescribeAttackRequest(args)
     }
 end
 
+keys.DescribeDRTAccessRequest = { nil }
+
+function asserts.AssertDescribeDRTAccessRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeDRTAccessRequest to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeDRTAccessRequest[k], "DescribeDRTAccessRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeDRTAccessRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DescribeDRTAccessRequest structure as a key-value pair table
+function M.DescribeDRTAccessRequest(args)
+	assert(args, "You must provide an argument table when creating DescribeDRTAccessRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDescribeDRTAccessRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.TimeRange = { ["FromInclusive"] = true, ["ToExclusive"] = true, nil }
 
 function asserts.AssertTimeRange(struct)
@@ -155,8 +223,8 @@ end
 -- <p>The time range.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * FromInclusive [AttackTimestamp] <p>The start time, in the format 2016-12-16T13:50Z.</p>
--- * ToExclusive [AttackTimestamp] <p>The end time, in the format 2016-12-16T15:50Z.</p>
+-- * FromInclusive [AttackTimestamp] <p>The start time, in Unix time in seconds. For more information see <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types">timestamp</a>.</p>
+-- * ToExclusive [AttackTimestamp] <p>The end time, in Unix time in seconds. For more information see <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types">timestamp</a>.</p>
 -- @return TimeRange structure as a key-value pair table
 function M.TimeRange(args)
 	assert(args, "You must provide an argument table when creating TimeRange")
@@ -179,25 +247,27 @@ function M.TimeRange(args)
     }
 end
 
-keys.DescribeSubscriptionResponse = { ["Subscription"] = true, nil }
+keys.DescribeProtectionRequest = { ["ProtectionId"] = true, nil }
 
-function asserts.AssertDescribeSubscriptionResponse(struct)
+function asserts.AssertDescribeProtectionRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeSubscriptionResponse to be of type 'table'")
-	if struct["Subscription"] then asserts.AssertSubscription(struct["Subscription"]) end
+	assert(type(struct) == "table", "Expected DescribeProtectionRequest to be of type 'table'")
+	assert(struct["ProtectionId"], "Expected key ProtectionId to exist in table")
+	if struct["ProtectionId"] then asserts.AssertProtectionId(struct["ProtectionId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DescribeSubscriptionResponse[k], "DescribeSubscriptionResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeProtectionRequest[k], "DescribeProtectionRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DescribeSubscriptionResponse
+--- Create a structure of type DescribeProtectionRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Subscription [Subscription] <p>The AWS Shield Advanced subscription details for an account.</p>
--- @return DescribeSubscriptionResponse structure as a key-value pair table
-function M.DescribeSubscriptionResponse(args)
-	assert(args, "You must provide an argument table when creating DescribeSubscriptionResponse")
+-- * ProtectionId [ProtectionId] <p>The unique identifier (ID) for the <a>Protection</a> object that is described.</p>
+-- Required key: ProtectionId
+-- @return DescribeProtectionRequest structure as a key-value pair table
+function M.DescribeProtectionRequest(args)
+	assert(args, "You must provide an argument table when creating DescribeProtectionRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -205,9 +275,77 @@ function M.DescribeSubscriptionResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Subscription"] = args["Subscription"],
+		["ProtectionId"] = args["ProtectionId"],
 	}
-	asserts.AssertDescribeSubscriptionResponse(all_args)
+	asserts.AssertDescribeProtectionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteProtectionResponse = { nil }
+
+function asserts.AssertDeleteProtectionResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteProtectionResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteProtectionResponse[k], "DeleteProtectionResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteProtectionResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteProtectionResponse structure as a key-value pair table
+function M.DeleteProtectionResponse(args)
+	assert(args, "You must provide an argument table when creating DeleteProtectionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDeleteProtectionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetSubscriptionStateRequest = { nil }
+
+function asserts.AssertGetSubscriptionStateRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetSubscriptionStateRequest to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.GetSubscriptionStateRequest[k], "GetSubscriptionStateRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetSubscriptionStateRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return GetSubscriptionStateRequest structure as a key-value pair table
+function M.GetSubscriptionStateRequest(args)
+	assert(args, "You must provide an argument table when creating GetSubscriptionStateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertGetSubscriptionStateRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -253,25 +391,23 @@ function M.Mitigation(args)
     }
 end
 
-keys.InternalErrorException = { ["message"] = true, nil }
+keys.UpdateSubscriptionResponse = { nil }
 
-function asserts.AssertInternalErrorException(struct)
+function asserts.AssertUpdateSubscriptionResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InternalErrorException to be of type 'table'")
-	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected UpdateSubscriptionResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.InternalErrorException[k], "InternalErrorException contains unknown key " .. tostring(k))
+		assert(keys.UpdateSubscriptionResponse[k], "UpdateSubscriptionResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InternalErrorException
--- <p>Exception that indicates that a problem occurred with the service infrastructure. You can retry the request.</p>
+--- Create a structure of type UpdateSubscriptionResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [errorMessage] 
--- @return InternalErrorException structure as a key-value pair table
-function M.InternalErrorException(args)
-	assert(args, "You must provide an argument table when creating InternalErrorException")
+-- @return UpdateSubscriptionResponse structure as a key-value pair table
+function M.UpdateSubscriptionResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateSubscriptionResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -279,9 +415,47 @@ function M.InternalErrorException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
 	}
-	asserts.AssertInternalErrorException(all_args)
+	asserts.AssertUpdateSubscriptionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.EmergencyContact = { ["EmailAddress"] = true, nil }
+
+function asserts.AssertEmergencyContact(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected EmergencyContact to be of type 'table'")
+	assert(struct["EmailAddress"], "Expected key EmailAddress to exist in table")
+	if struct["EmailAddress"] then asserts.AssertEmailAddress(struct["EmailAddress"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.EmergencyContact[k], "EmergencyContact contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type EmergencyContact
+-- <p>Contact information that the DRT can use to contact you during a suspected attack.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EmailAddress [EmailAddress] <p>An email address that the DRT can use to contact you during a suspected attack.</p>
+-- Required key: EmailAddress
+-- @return EmergencyContact structure as a key-value pair table
+function M.EmergencyContact(args)
+	assert(args, "You must provide an argument table when creating EmergencyContact")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["EmailAddress"] = args["EmailAddress"],
+	}
+	asserts.AssertEmergencyContact(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -306,7 +480,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [Token] <p>The token returned by a previous call to indicate that there is more data available. If not null, more results are available. Pass this value for the <code>NextMarker</code> parameter in a subsequent call to <code>ListAttacks</code> to retrieve the next set of items.</p>
+-- * NextToken [Token] <p>The token returned by a previous call to indicate that there is more data available. If not null, more results are available. Pass this value for the <code>NextMarker</code> parameter in a subsequent call to <code>ListAttacks</code> to retrieve the next set of items.</p> <p>AWS WAF might return the list of <a>AttackSummary</a> objects in batches smaller than the number specified by MaxResults. If there are more <a>AttackSummary</a> objects to return, AWS WAF will always also return a <code>NextToken</code>.</p>
 -- * AttackSummaries [AttackSummaries] <p>The attack information for the specified time range.</p>
 -- @return ListAttacksResponse structure as a key-value pair table
 function M.ListAttacksResponse(args)
@@ -322,6 +496,79 @@ function M.ListAttacksResponse(args)
 		["AttackSummaries"] = args["AttackSummaries"],
 	}
 	asserts.AssertListAttacksResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.AssociateDRTRoleRequest = { ["RoleArn"] = true, nil }
+
+function asserts.AssertAssociateDRTRoleRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected AssociateDRTRoleRequest to be of type 'table'")
+	assert(struct["RoleArn"], "Expected key RoleArn to exist in table")
+	if struct["RoleArn"] then asserts.AssertRoleArn(struct["RoleArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.AssociateDRTRoleRequest[k], "AssociateDRTRoleRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type AssociateDRTRoleRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleArn [RoleArn] <p>The Amazon Resource Name (ARN) of the role the DRT will use to access your AWS account.</p> <p>Prior to making the <code>AssociateDRTRole</code> request, you must attach the <a href="https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy">AWSShieldDRTAccessPolicy</a> managed policy to this role. For more information see <a href=" https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html">Attaching and Detaching IAM Policies</a>.</p>
+-- Required key: RoleArn
+-- @return AssociateDRTRoleRequest structure as a key-value pair table
+function M.AssociateDRTRoleRequest(args)
+	assert(args, "You must provide an argument table when creating AssociateDRTRoleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RoleArn"] = args["RoleArn"],
+	}
+	asserts.AssertAssociateDRTRoleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DisassociateDRTRoleRequest = { nil }
+
+function asserts.AssertDisassociateDRTRoleRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DisassociateDRTRoleRequest to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DisassociateDRTRoleRequest[k], "DisassociateDRTRoleRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DisassociateDRTRoleRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DisassociateDRTRoleRequest structure as a key-value pair table
+function M.DisassociateDRTRoleRequest(args)
+	assert(args, "You must provide an argument table when creating DisassociateDRTRoleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDisassociateDRTRoleRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -350,10 +597,10 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [Token] <p>The <code>ListAttacksRequest.NextMarker</code> value from a previous call to <code>ListAttacksRequest</code>. Pass null if this is the first call.</p>
--- * EndTime [TimeRange] <p>The end of the time period for the attacks.</p>
+-- * EndTime [TimeRange] <p>The end of the time period for the attacks. This is a <code>timestamp</code> type. The sample request above indicates a <code>number</code> type because the default used by WAF is Unix time in seconds. However any valid <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types">timestamp format</a> is allowed. </p>
 -- * ResourceArns [ResourceArnFilterList] <p>The ARN (Amazon Resource Name) of the resource that was attacked. If this is left blank, all applicable resources for this account will be included.</p>
--- * MaxResults [MaxResults] <p>The maximum number of <a>AttackSummary</a> objects to be returned. If this is left blank, the first 20 results will be returned.</p>
--- * StartTime [TimeRange] <p>The time period for the attacks.</p>
+-- * MaxResults [MaxResults] <p>The maximum number of <a>AttackSummary</a> objects to be returned. If this is left blank, the first 20 results will be returned.</p> <p>This is a maximum value; it is possible that AWS WAF will return the results in smaller batches. That is, the number of <a>AttackSummary</a> objects returned could be less than <code>MaxResults</code>, even if there are still more <a>AttackSummary</a> objects yet to return. If there are more <a>AttackSummary</a> objects to return, AWS WAF will always also return a <code>NextToken</code>.</p>
+-- * StartTime [TimeRange] <p>The start of the time period for the attacks. This is a <code>timestamp</code> type. The sample request above indicates a <code>number</code> type because the default used by WAF is Unix time in seconds. However any valid <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types">timestamp format</a> is allowed. </p>
 -- @return ListAttacksRequest structure as a key-value pair table
 function M.ListAttacksRequest(args)
 	assert(args, "You must provide an argument table when creating ListAttacksRequest")
@@ -379,25 +626,23 @@ function M.ListAttacksRequest(args)
     }
 end
 
-keys.LockedSubscriptionException = { ["message"] = true, nil }
+keys.AssociateDRTRoleResponse = { nil }
 
-function asserts.AssertLockedSubscriptionException(struct)
+function asserts.AssertAssociateDRTRoleResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected LockedSubscriptionException to be of type 'table'")
-	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected AssociateDRTRoleResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.LockedSubscriptionException[k], "LockedSubscriptionException contains unknown key " .. tostring(k))
+		assert(keys.AssociateDRTRoleResponse[k], "AssociateDRTRoleResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type LockedSubscriptionException
--- <p>Exception that indicates that the subscription has been modified by another client. You can retry the request.</p>
+--- Create a structure of type AssociateDRTRoleResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [errorMessage] 
--- @return LockedSubscriptionException structure as a key-value pair table
-function M.LockedSubscriptionException(args)
-	assert(args, "You must provide an argument table when creating LockedSubscriptionException")
+-- @return AssociateDRTRoleResponse structure as a key-value pair table
+function M.AssociateDRTRoleResponse(args)
+	assert(args, "You must provide an argument table when creating AssociateDRTRoleResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -405,9 +650,8 @@ function M.LockedSubscriptionException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
 	}
-	asserts.AssertLockedSubscriptionException(all_args)
+	asserts.AssertAssociateDRTRoleResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -504,7 +748,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [Token] <p>The <code>ListProtectionsRequest.NextToken</code> value from a previous call to <code>ListProtections</code>. Pass null if this is the first call.</p>
--- * MaxResults [MaxResults] <p>The maximum number of <a>Protection</a> objects to be returned. If this is left blank the first 20 results will be returned.</p>
+-- * MaxResults [MaxResults] <p>The maximum number of <a>Protection</a> objects to be returned. If this is left blank the first 20 results will be returned.</p> <p>This is a maximum value; it is possible that AWS WAF will return the results in smaller batches. That is, the number of <a>Protection</a> objects returned could be less than <code>MaxResults</code>, even if there are still more <a>Protection</a> objects yet to return. If there are more <a>Protection</a> objects to return, AWS WAF will always also return a <code>NextToken</code>.</p>
 -- @return ListProtectionsRequest structure as a key-value pair table
 function M.ListProtectionsRequest(args)
 	assert(args, "You must provide an argument table when creating ListProtectionsRequest")
@@ -519,120 +763,6 @@ function M.ListProtectionsRequest(args)
 		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListProtectionsRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.LimitsExceededException = { ["Limit"] = true, ["message"] = true, ["Type"] = true, nil }
-
-function asserts.AssertLimitsExceededException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected LimitsExceededException to be of type 'table'")
-	if struct["Limit"] then asserts.AssertLimitNumber(struct["Limit"]) end
-	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
-	if struct["Type"] then asserts.AssertLimitType(struct["Type"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.LimitsExceededException[k], "LimitsExceededException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type LimitsExceededException
--- <p>Exception that indicates that the operation would exceed a limit.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Limit [LimitNumber] 
--- * message [errorMessage] 
--- * Type [LimitType] 
--- @return LimitsExceededException structure as a key-value pair table
-function M.LimitsExceededException(args)
-	assert(args, "You must provide an argument table when creating LimitsExceededException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Limit"] = args["Limit"],
-		["message"] = args["message"],
-		["Type"] = args["Type"],
-	}
-	asserts.AssertLimitsExceededException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidParameterException = { ["message"] = true, nil }
-
-function asserts.AssertInvalidParameterException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidParameterException to be of type 'table'")
-	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidParameterException[k], "InvalidParameterException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidParameterException
--- <p>Exception that indicates that the parameters passed to the API are invalid. </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [errorMessage] 
--- @return InvalidParameterException structure as a key-value pair table
-function M.InvalidParameterException(args)
-	assert(args, "You must provide an argument table when creating InvalidParameterException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertInvalidParameterException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DescribeSubscriptionRequest = { nil }
-
-function asserts.AssertDescribeSubscriptionRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeSubscriptionRequest to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.DescribeSubscriptionRequest[k], "DescribeSubscriptionRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DescribeSubscriptionRequest
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return DescribeSubscriptionRequest structure as a key-value pair table
-function M.DescribeSubscriptionRequest(args)
-	assert(args, "You must provide an argument table when creating DescribeSubscriptionRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertDescribeSubscriptionRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -736,7 +866,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ResourceArn [ResourceArn] <p>The ARN (Amazon Resource Name) of the resource to be protected.</p>
+-- * ResourceArn [ResourceArn] <p>The ARN (Amazon Resource Name) of the resource to be protected.</p> <p>The ARN should be in one of the following formats:</p> <ul> <li> <p>For an Application Load Balancer: <code>arn:aws:elasticloadbalancing:<i>region</i>:<i>account-id</i>:loadbalancer/app/<i>load-balancer-name</i>/<i>load-balancer-id</i> </code> </p> </li> <li> <p>For an Elastic Load Balancer (Classic Load Balancer): <code>arn:aws:elasticloadbalancing:<i>region</i>:<i>account-id</i>:loadbalancer/<i>load-balancer-name</i> </code> </p> </li> <li> <p>For AWS CloudFront distribution: <code>arn:aws:cloudfront::<i>account-id</i>:distribution/<i>distribution-id</i> </code> </p> </li> <li> <p>For Amazon Route 53: <code>arn:aws:route53:::hostedzone/<i>hosted-zone-id</i> </code> </p> </li> <li> <p>For an Elastic IP address: <code>arn:aws:ec2:<i>region</i>:<i>account-id</i>:eip-allocation/<i>allocation-id</i> </code> </p> </li> </ul>
 -- * Name [ProtectionName] <p>Friendly name for the <code>Protection</code> you are creating.</p>
 -- Required key: Name
 -- Required key: ResourceArn
@@ -762,25 +892,23 @@ function M.CreateProtectionRequest(args)
     }
 end
 
-keys.InvalidOperationException = { ["message"] = true, nil }
+keys.AssociateDRTLogBucketResponse = { nil }
 
-function asserts.AssertInvalidOperationException(struct)
+function asserts.AssertAssociateDRTLogBucketResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidOperationException to be of type 'table'")
-	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected AssociateDRTLogBucketResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidOperationException[k], "InvalidOperationException contains unknown key " .. tostring(k))
+		assert(keys.AssociateDRTLogBucketResponse[k], "AssociateDRTLogBucketResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidOperationException
--- <p>Exception that indicates that the operation would not cause any change to occur.</p>
+--- Create a structure of type AssociateDRTLogBucketResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [errorMessage] 
--- @return InvalidOperationException structure as a key-value pair table
-function M.InvalidOperationException(args)
-	assert(args, "You must provide an argument table when creating InvalidOperationException")
+-- @return AssociateDRTLogBucketResponse structure as a key-value pair table
+function M.AssociateDRTLogBucketResponse(args)
+	assert(args, "You must provide an argument table when creating AssociateDRTLogBucketResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -788,9 +916,8 @@ function M.InvalidOperationException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
 	}
-	asserts.AssertInvalidOperationException(all_args)
+	asserts.AssertAssociateDRTLogBucketResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -799,25 +926,23 @@ function M.InvalidOperationException(args)
     }
 end
 
-keys.ResourceNotFoundException = { ["message"] = true, nil }
+keys.DescribeEmergencyContactSettingsRequest = { nil }
 
-function asserts.AssertResourceNotFoundException(struct)
+function asserts.AssertDescribeEmergencyContactSettingsRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
-	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected DescribeEmergencyContactSettingsRequest to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.DescribeEmergencyContactSettingsRequest[k], "DescribeEmergencyContactSettingsRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ResourceNotFoundException
--- <p>Exception indicating the specified resource does not exist.</p>
+--- Create a structure of type DescribeEmergencyContactSettingsRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [errorMessage] 
--- @return ResourceNotFoundException structure as a key-value pair table
-function M.ResourceNotFoundException(args)
-	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+-- @return DescribeEmergencyContactSettingsRequest structure as a key-value pair table
+function M.DescribeEmergencyContactSettingsRequest(args)
+	assert(args, "You must provide an argument table when creating DescribeEmergencyContactSettingsRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -825,9 +950,8 @@ function M.ResourceNotFoundException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
 	}
-	asserts.AssertResourceNotFoundException(all_args)
+	asserts.AssertDescribeEmergencyContactSettingsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -836,27 +960,27 @@ function M.ResourceNotFoundException(args)
     }
 end
 
-keys.Subscription = { ["StartTime"] = true, ["TimeCommitmentInSeconds"] = true, nil }
+keys.DescribeDRTAccessResponse = { ["LogBucketList"] = true, ["RoleArn"] = true, nil }
 
-function asserts.AssertSubscription(struct)
+function asserts.AssertDescribeDRTAccessResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected Subscription to be of type 'table'")
-	if struct["StartTime"] then asserts.AssertTimestamp(struct["StartTime"]) end
-	if struct["TimeCommitmentInSeconds"] then asserts.AssertDurationInSeconds(struct["TimeCommitmentInSeconds"]) end
+	assert(type(struct) == "table", "Expected DescribeDRTAccessResponse to be of type 'table'")
+	if struct["LogBucketList"] then asserts.AssertLogBucketList(struct["LogBucketList"]) end
+	if struct["RoleArn"] then asserts.AssertRoleArn(struct["RoleArn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.Subscription[k], "Subscription contains unknown key " .. tostring(k))
+		assert(keys.DescribeDRTAccessResponse[k], "DescribeDRTAccessResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type Subscription
--- <p>Information about the AWS Shield Advanced subscription for an account.</p>
+--- Create a structure of type DescribeDRTAccessResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * StartTime [Timestamp] <p>The start time of the subscription, in the format "2016-12-16T13:50Z".</p>
--- * TimeCommitmentInSeconds [DurationInSeconds] <p>The length, in seconds, of the AWS Shield Advanced subscription for the account.</p>
--- @return Subscription structure as a key-value pair table
-function M.Subscription(args)
-	assert(args, "You must provide an argument table when creating Subscription")
+-- * LogBucketList [LogBucketList] <p>The list of Amazon S3 buckets accessed by the DRT.</p>
+-- * RoleArn [RoleArn] <p>The Amazon Resource Name (ARN) of the role the DRT used to access your AWS account.</p>
+-- @return DescribeDRTAccessResponse structure as a key-value pair table
+function M.DescribeDRTAccessResponse(args)
+	assert(args, "You must provide an argument table when creating DescribeDRTAccessResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -864,10 +988,10 @@ function M.Subscription(args)
     local header_args = { 
     }
 	local all_args = { 
-		["StartTime"] = args["StartTime"],
-		["TimeCommitmentInSeconds"] = args["TimeCommitmentInSeconds"],
+		["LogBucketList"] = args["LogBucketList"],
+		["RoleArn"] = args["RoleArn"],
 	}
-	asserts.AssertSubscription(all_args)
+	asserts.AssertDescribeDRTAccessResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -941,11 +1065,11 @@ end
 -- <p>Summarizes all DDoS attacks for a specified time period.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * EndTime [AttackTimestamp] <p>The end time of the attack, in the format 2016-12-16T13:50Z.</p>
+-- * EndTime [AttackTimestamp] <p>The end time of the attack, in Unix time in seconds. For more information see <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types">timestamp</a>.</p>
 -- * ResourceArn [String] <p>The ARN (Amazon Resource Name) of the resource that was attacked.</p>
 -- * AttackId [String] <p>The unique identifier (ID) of the attack.</p>
 -- * AttackVectors [AttackVectorDescriptionList] <p>The list of attacks for a specified time period.</p>
--- * StartTime [AttackTimestamp] <p>The start time of the attack, in the format 2016-12-16T13:50Z.</p>
+-- * StartTime [AttackTimestamp] <p>The start time of the attack, in Unix time in seconds. For more information see <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types">timestamp</a>.</p>
 -- @return AttackSummary structure as a key-value pair table
 function M.AttackSummary(args)
 	assert(args, "You must provide an argument table when creating AttackSummary")
@@ -971,11 +1095,12 @@ function M.AttackSummary(args)
     }
 end
 
-keys.AttackDetail = { ["Mitigations"] = true, ["ResourceArn"] = true, ["AttackId"] = true, ["SubResources"] = true, ["StartTime"] = true, ["EndTime"] = true, ["AttackCounters"] = true, nil }
+keys.AttackDetail = { ["AttackProperties"] = true, ["Mitigations"] = true, ["ResourceArn"] = true, ["AttackId"] = true, ["SubResources"] = true, ["StartTime"] = true, ["EndTime"] = true, ["AttackCounters"] = true, nil }
 
 function asserts.AssertAttackDetail(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttackDetail to be of type 'table'")
+	if struct["AttackProperties"] then asserts.AssertAttackProperties(struct["AttackProperties"]) end
 	if struct["Mitigations"] then asserts.AssertMitigationList(struct["Mitigations"]) end
 	if struct["ResourceArn"] then asserts.AssertResourceArn(struct["ResourceArn"]) end
 	if struct["AttackId"] then asserts.AssertAttackId(struct["AttackId"]) end
@@ -992,12 +1117,13 @@ end
 -- <p>The details of a DDoS attack.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * AttackProperties [AttackProperties] <p>The array of <a>AttackProperty</a> objects.</p>
 -- * Mitigations [MitigationList] <p>List of mitigation actions taken for the attack.</p>
 -- * ResourceArn [ResourceArn] <p>The ARN (Amazon Resource Name) of the resource that was attacked.</p>
 -- * AttackId [AttackId] <p>The unique identifier (ID) of the attack.</p>
 -- * SubResources [SubResourceSummaryList] <p>If applicable, additional detail about the resource being attacked, for example, IP address or URL.</p>
--- * StartTime [AttackTimestamp] <p>The time the attack started, in the format 2016-12-16T13:50Z.</p>
--- * EndTime [AttackTimestamp] <p>The time the attack ended, in the format 2016-12-16T13:50Z.</p>
+-- * StartTime [AttackTimestamp] <p>The time the attack started, in Unix time in seconds. For more information see <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types">timestamp</a>.</p>
+-- * EndTime [AttackTimestamp] <p>The time the attack ended, in Unix time in seconds. For more information see <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types">timestamp</a>.</p>
 -- * AttackCounters [SummarizedCounterList] <p>List of counters that describe the attack for the specified time period.</p>
 -- @return AttackDetail structure as a key-value pair table
 function M.AttackDetail(args)
@@ -1009,6 +1135,7 @@ function M.AttackDetail(args)
     local header_args = { 
     }
 	local all_args = { 
+		["AttackProperties"] = args["AttackProperties"],
 		["Mitigations"] = args["Mitigations"],
 		["ResourceArn"] = args["ResourceArn"],
 		["AttackId"] = args["AttackId"],
@@ -1018,43 +1145,6 @@ function M.AttackDetail(args)
 		["AttackCounters"] = args["AttackCounters"],
 	}
 	asserts.AssertAttackDetail(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.OptimisticLockException = { ["message"] = true, nil }
-
-function asserts.AssertOptimisticLockException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected OptimisticLockException to be of type 'table'")
-	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.OptimisticLockException[k], "OptimisticLockException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type OptimisticLockException
--- <p>Exception that indicates that the protection state has been modified by another client. You can retry the request.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [errorMessage] 
--- @return OptimisticLockException structure as a key-value pair table
-function M.OptimisticLockException(args)
-	assert(args, "You must provide an argument table when creating OptimisticLockException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertOptimisticLockException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1134,6 +1224,82 @@ function M.SummarizedAttackVector(args)
 		["VectorType"] = args["VectorType"],
 	}
 	asserts.AssertSummarizedAttackVector(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetSubscriptionStateResponse = { ["SubscriptionState"] = true, nil }
+
+function asserts.AssertGetSubscriptionStateResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetSubscriptionStateResponse to be of type 'table'")
+	assert(struct["SubscriptionState"], "Expected key SubscriptionState to exist in table")
+	if struct["SubscriptionState"] then asserts.AssertSubscriptionState(struct["SubscriptionState"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetSubscriptionStateResponse[k], "GetSubscriptionStateResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetSubscriptionStateResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubscriptionState [SubscriptionState] <p>The status of the subscription.</p>
+-- Required key: SubscriptionState
+-- @return GetSubscriptionStateResponse structure as a key-value pair table
+function M.GetSubscriptionStateResponse(args)
+	assert(args, "You must provide an argument table when creating GetSubscriptionStateResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SubscriptionState"] = args["SubscriptionState"],
+	}
+	asserts.AssertGetSubscriptionStateResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeEmergencyContactSettingsResponse = { ["EmergencyContactList"] = true, nil }
+
+function asserts.AssertDescribeEmergencyContactSettingsResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeEmergencyContactSettingsResponse to be of type 'table'")
+	if struct["EmergencyContactList"] then asserts.AssertEmergencyContactList(struct["EmergencyContactList"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeEmergencyContactSettingsResponse[k], "DescribeEmergencyContactSettingsResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeEmergencyContactSettingsResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EmergencyContactList [EmergencyContactList] <p>A list of email addresses that the DRT can use to contact you during a suspected attack.</p>
+-- @return DescribeEmergencyContactSettingsResponse structure as a key-value pair table
+function M.DescribeEmergencyContactSettingsResponse(args)
+	assert(args, "You must provide an argument table when creating DescribeEmergencyContactSettingsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["EmergencyContactList"] = args["EmergencyContactList"],
+	}
+	asserts.AssertDescribeEmergencyContactSettingsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1231,6 +1397,46 @@ function M.SummarizedCounter(args)
     }
 end
 
+keys.Limit = { ["Max"] = true, ["Type"] = true, nil }
+
+function asserts.AssertLimit(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Limit to be of type 'table'")
+	if struct["Max"] then asserts.AssertLong(struct["Max"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Limit[k], "Limit contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Limit
+-- <p>Specifies how many protections of a given type you can create.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Max [Long] <p>The maximum number of protections that can be created for the specified <code>Type</code>.</p>
+-- * Type [String] <p>The type of protection.</p>
+-- @return Limit structure as a key-value pair table
+function M.Limit(args)
+	assert(args, "You must provide an argument table when creating Limit")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Max"] = args["Max"],
+		["Type"] = args["Type"],
+	}
+	asserts.AssertLimit(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.CreateSubscriptionRequest = { nil }
 
 function asserts.AssertCreateSubscriptionRequest(struct)
@@ -1265,25 +1471,23 @@ function M.CreateSubscriptionRequest(args)
     }
 end
 
-keys.InvalidResourceException = { ["message"] = true, nil }
+keys.DescribeSubscriptionRequest = { nil }
 
-function asserts.AssertInvalidResourceException(struct)
+function asserts.AssertDescribeSubscriptionRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidResourceException to be of type 'table'")
-	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected DescribeSubscriptionRequest to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidResourceException[k], "InvalidResourceException contains unknown key " .. tostring(k))
+		assert(keys.DescribeSubscriptionRequest[k], "DescribeSubscriptionRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidResourceException
--- <p>Exception that indicates that the resource is invalid. You might not have access to the resource, or the resource might not exist.</p>
+--- Create a structure of type DescribeSubscriptionRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [errorMessage] 
--- @return InvalidResourceException structure as a key-value pair table
-function M.InvalidResourceException(args)
-	assert(args, "You must provide an argument table when creating InvalidResourceException")
+-- @return DescribeSubscriptionRequest structure as a key-value pair table
+function M.DescribeSubscriptionRequest(args)
+	assert(args, "You must provide an argument table when creating DescribeSubscriptionRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1291,9 +1495,8 @@ function M.InvalidResourceException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
 	}
-	asserts.AssertInvalidResourceException(all_args)
+	asserts.AssertDescribeSubscriptionRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1302,23 +1505,27 @@ function M.InvalidResourceException(args)
     }
 end
 
-keys.DeleteProtectionResponse = { nil }
+keys.DisassociateDRTLogBucketRequest = { ["LogBucket"] = true, nil }
 
-function asserts.AssertDeleteProtectionResponse(struct)
+function asserts.AssertDisassociateDRTLogBucketRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteProtectionResponse to be of type 'table'")
+	assert(type(struct) == "table", "Expected DisassociateDRTLogBucketRequest to be of type 'table'")
+	assert(struct["LogBucket"], "Expected key LogBucket to exist in table")
+	if struct["LogBucket"] then asserts.AssertLogBucket(struct["LogBucket"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteProtectionResponse[k], "DeleteProtectionResponse contains unknown key " .. tostring(k))
+		assert(keys.DisassociateDRTLogBucketRequest[k], "DisassociateDRTLogBucketRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteProtectionResponse
+--- Create a structure of type DisassociateDRTLogBucketRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return DeleteProtectionResponse structure as a key-value pair table
-function M.DeleteProtectionResponse(args)
-	assert(args, "You must provide an argument table when creating DeleteProtectionResponse")
+-- * LogBucket [LogBucket] <p>The Amazon S3 bucket that contains your flow logs.</p>
+-- Required key: LogBucket
+-- @return DisassociateDRTLogBucketRequest structure as a key-value pair table
+function M.DisassociateDRTLogBucketRequest(args)
+	assert(args, "You must provide an argument table when creating DisassociateDRTLogBucketRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1326,8 +1533,85 @@ function M.DeleteProtectionResponse(args)
     local header_args = { 
     }
 	local all_args = { 
+		["LogBucket"] = args["LogBucket"],
 	}
-	asserts.AssertDeleteProtectionResponse(all_args)
+	asserts.AssertDisassociateDRTLogBucketRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.AssociateDRTLogBucketRequest = { ["LogBucket"] = true, nil }
+
+function asserts.AssertAssociateDRTLogBucketRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected AssociateDRTLogBucketRequest to be of type 'table'")
+	assert(struct["LogBucket"], "Expected key LogBucket to exist in table")
+	if struct["LogBucket"] then asserts.AssertLogBucket(struct["LogBucket"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.AssociateDRTLogBucketRequest[k], "AssociateDRTLogBucketRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type AssociateDRTLogBucketRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LogBucket [LogBucket] <p>The Amazon S3 bucket that contains your flow logs.</p>
+-- Required key: LogBucket
+-- @return AssociateDRTLogBucketRequest structure as a key-value pair table
+function M.AssociateDRTLogBucketRequest(args)
+	assert(args, "You must provide an argument table when creating AssociateDRTLogBucketRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["LogBucket"] = args["LogBucket"],
+	}
+	asserts.AssertAssociateDRTLogBucketRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateEmergencyContactSettingsRequest = { ["EmergencyContactList"] = true, nil }
+
+function asserts.AssertUpdateEmergencyContactSettingsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateEmergencyContactSettingsRequest to be of type 'table'")
+	if struct["EmergencyContactList"] then asserts.AssertEmergencyContactList(struct["EmergencyContactList"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateEmergencyContactSettingsRequest[k], "UpdateEmergencyContactSettingsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateEmergencyContactSettingsRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EmergencyContactList [EmergencyContactList] <p>A list of email addresses that the DRT can use to contact you during a suspected attack.</p>
+-- @return UpdateEmergencyContactSettingsRequest structure as a key-value pair table
+function M.UpdateEmergencyContactSettingsRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateEmergencyContactSettingsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["EmergencyContactList"] = args["EmergencyContactList"],
+	}
+	asserts.AssertUpdateEmergencyContactSettingsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1370,45 +1654,6 @@ function M.CreateSubscriptionResponse(args)
     }
 end
 
-keys.DescribeProtectionRequest = { ["ProtectionId"] = true, nil }
-
-function asserts.AssertDescribeProtectionRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeProtectionRequest to be of type 'table'")
-	assert(struct["ProtectionId"], "Expected key ProtectionId to exist in table")
-	if struct["ProtectionId"] then asserts.AssertProtectionId(struct["ProtectionId"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DescribeProtectionRequest[k], "DescribeProtectionRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DescribeProtectionRequest
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ProtectionId [ProtectionId] <p>The unique identifier (ID) for the <a>Protection</a> object that is described.</p>
--- Required key: ProtectionId
--- @return DescribeProtectionRequest structure as a key-value pair table
-function M.DescribeProtectionRequest(args)
-	assert(args, "You must provide an argument table when creating DescribeProtectionRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ProtectionId"] = args["ProtectionId"],
-	}
-	asserts.AssertDescribeProtectionRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.AttackVectorDescription = { ["VectorType"] = true, nil }
 
 function asserts.AssertAttackVectorDescription(struct)
@@ -1425,7 +1670,7 @@ end
 -- <p>Describes the attack.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * VectorType [String] <p>The attack type, for example, SNMP reflection or SYN flood.</p>
+-- * VectorType [String] <p>The attack type. Valid values:</p> <ul> <li> <p>UDP_TRAFFIC</p> </li> <li> <p>UDP_FRAGMENT</p> </li> <li> <p>GENERIC_UDP_REFLECTION</p> </li> <li> <p>DNS_REFLECTION</p> </li> <li> <p>NTP_REFLECTION</p> </li> <li> <p>CHARGEN_REFLECTION</p> </li> <li> <p>SSDP_REFLECTION</p> </li> <li> <p>PORT_MAPPER</p> </li> <li> <p>RIP_REFLECTION</p> </li> <li> <p>SNMP_REFLECTION</p> </li> <li> <p>MSSQL_REFLECTION</p> </li> <li> <p>NET_BIOS_REFLECTION</p> </li> <li> <p>SYN_FLOOD</p> </li> <li> <p>ACK_FLOOD</p> </li> <li> <p>REQUEST_FLOOD</p> </li> </ul>
 -- Required key: VectorType
 -- @return AttackVectorDescription structure as a key-value pair table
 function M.AttackVectorDescription(args)
@@ -1448,25 +1693,23 @@ function M.AttackVectorDescription(args)
     }
 end
 
-keys.ResourceAlreadyExistsException = { ["message"] = true, nil }
+keys.UpdateEmergencyContactSettingsResponse = { nil }
 
-function asserts.AssertResourceAlreadyExistsException(struct)
+function asserts.AssertUpdateEmergencyContactSettingsResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceAlreadyExistsException to be of type 'table'")
-	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected UpdateEmergencyContactSettingsResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.ResourceAlreadyExistsException[k], "ResourceAlreadyExistsException contains unknown key " .. tostring(k))
+		assert(keys.UpdateEmergencyContactSettingsResponse[k], "UpdateEmergencyContactSettingsResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ResourceAlreadyExistsException
--- <p>Exception indicating the specified resource already exists.</p>
+--- Create a structure of type UpdateEmergencyContactSettingsResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [errorMessage] 
--- @return ResourceAlreadyExistsException structure as a key-value pair table
-function M.ResourceAlreadyExistsException(args)
-	assert(args, "You must provide an argument table when creating ResourceAlreadyExistsException")
+-- @return UpdateEmergencyContactSettingsResponse structure as a key-value pair table
+function M.UpdateEmergencyContactSettingsResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateEmergencyContactSettingsResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -1474,9 +1717,254 @@ function M.ResourceAlreadyExistsException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
 	}
-	asserts.AssertResourceAlreadyExistsException(all_args)
+	asserts.AssertUpdateEmergencyContactSettingsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Contributor = { ["Name"] = true, ["Value"] = true, nil }
+
+function asserts.AssertContributor(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Contributor to be of type 'table'")
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	if struct["Value"] then asserts.AssertLong(struct["Value"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Contributor[k], "Contributor contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Contributor
+-- <p>A contributor to the attack and their contribution.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [String] <p>The name of the contributor. This is dependent on the <code>AttackPropertyIdentifier</code>. For example, if the <code>AttackPropertyIdentifier</code> is <code>SOURCE_COUNTRY</code>, the <code>Name</code> could be <code>United States</code>.</p>
+-- * Value [Long] <p>The contribution of this contributor expressed in <a>Protection</a> units. For example <code>10,000</code>.</p>
+-- @return Contributor structure as a key-value pair table
+function M.Contributor(args)
+	assert(args, "You must provide an argument table when creating Contributor")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Name"] = args["Name"],
+		["Value"] = args["Value"],
+	}
+	asserts.AssertContributor(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.AttackProperty = { ["AttackLayer"] = true, ["AttackPropertyIdentifier"] = true, ["Total"] = true, ["TopContributors"] = true, ["Unit"] = true, nil }
+
+function asserts.AssertAttackProperty(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected AttackProperty to be of type 'table'")
+	if struct["AttackLayer"] then asserts.AssertAttackLayer(struct["AttackLayer"]) end
+	if struct["AttackPropertyIdentifier"] then asserts.AssertAttackPropertyIdentifier(struct["AttackPropertyIdentifier"]) end
+	if struct["Total"] then asserts.AssertLong(struct["Total"]) end
+	if struct["TopContributors"] then asserts.AssertTopContributors(struct["TopContributors"]) end
+	if struct["Unit"] then asserts.AssertUnit(struct["Unit"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.AttackProperty[k], "AttackProperty contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type AttackProperty
+-- <p>Details of the described attack.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttackLayer [AttackLayer] <p>The type of DDoS event that was observed. <code>NETWORK</code> indicates layer 3 and layer 4 events and <code>APPLICATION</code> indicates layer 7 events.</p>
+-- * AttackPropertyIdentifier [AttackPropertyIdentifier] <p>Defines the DDoS attack property information that is provided.</p>
+-- * Total [Long] <p>The total contributions made to this attack by all contributors, not just the five listed in the <code>TopContributors</code> list.</p>
+-- * TopContributors [TopContributors] <p>The array of <a>Contributor</a> objects that includes the top five contributors to an attack. </p>
+-- * Unit [Unit] <p>The unit of the <code>Value</code> of the contributions.</p>
+-- @return AttackProperty structure as a key-value pair table
+function M.AttackProperty(args)
+	assert(args, "You must provide an argument table when creating AttackProperty")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["AttackLayer"] = args["AttackLayer"],
+		["AttackPropertyIdentifier"] = args["AttackPropertyIdentifier"],
+		["Total"] = args["Total"],
+		["TopContributors"] = args["TopContributors"],
+		["Unit"] = args["Unit"],
+	}
+	asserts.AssertAttackProperty(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Subscription = { ["AutoRenew"] = true, ["EndTime"] = true, ["Limits"] = true, ["StartTime"] = true, ["TimeCommitmentInSeconds"] = true, nil }
+
+function asserts.AssertSubscription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Subscription to be of type 'table'")
+	if struct["AutoRenew"] then asserts.AssertAutoRenew(struct["AutoRenew"]) end
+	if struct["EndTime"] then asserts.AssertTimestamp(struct["EndTime"]) end
+	if struct["Limits"] then asserts.AssertLimits(struct["Limits"]) end
+	if struct["StartTime"] then asserts.AssertTimestamp(struct["StartTime"]) end
+	if struct["TimeCommitmentInSeconds"] then asserts.AssertDurationInSeconds(struct["TimeCommitmentInSeconds"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Subscription[k], "Subscription contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Subscription
+-- <p>Information about the AWS Shield Advanced subscription for an account.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AutoRenew [AutoRenew] <p>If <code>ENABLED</code>, the subscription will be automatically renewed at the end of the existing subscription period.</p> <p>When you initally create a subscription, <code>AutoRenew</code> is set to <code>ENABLED</code>. You can change this by submitting an <code>UpdateSubscription</code> request. If the <code>UpdateSubscription</code> request does not included a value for <code>AutoRenew</code>, the existing value for <code>AutoRenew</code> remains unchanged.</p>
+-- * EndTime [Timestamp] <p>The date and time your subscription will end.</p>
+-- * Limits [Limits] <p>Specifies how many protections of a given type you can create.</p>
+-- * StartTime [Timestamp] <p>The start time of the subscription, in Unix time in seconds. For more information see <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types">timestamp</a>.</p>
+-- * TimeCommitmentInSeconds [DurationInSeconds] <p>The length, in seconds, of the AWS Shield Advanced subscription for the account.</p>
+-- @return Subscription structure as a key-value pair table
+function M.Subscription(args)
+	assert(args, "You must provide an argument table when creating Subscription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["AutoRenew"] = args["AutoRenew"],
+		["EndTime"] = args["EndTime"],
+		["Limits"] = args["Limits"],
+		["StartTime"] = args["StartTime"],
+		["TimeCommitmentInSeconds"] = args["TimeCommitmentInSeconds"],
+	}
+	asserts.AssertSubscription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeSubscriptionResponse = { ["Subscription"] = true, nil }
+
+function asserts.AssertDescribeSubscriptionResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeSubscriptionResponse to be of type 'table'")
+	if struct["Subscription"] then asserts.AssertSubscription(struct["Subscription"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeSubscriptionResponse[k], "DescribeSubscriptionResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeSubscriptionResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Subscription [Subscription] <p>The AWS Shield Advanced subscription details for an account.</p>
+-- @return DescribeSubscriptionResponse structure as a key-value pair table
+function M.DescribeSubscriptionResponse(args)
+	assert(args, "You must provide an argument table when creating DescribeSubscriptionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Subscription"] = args["Subscription"],
+	}
+	asserts.AssertDescribeSubscriptionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateSubscriptionRequest = { ["AutoRenew"] = true, nil }
+
+function asserts.AssertUpdateSubscriptionRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateSubscriptionRequest to be of type 'table'")
+	if struct["AutoRenew"] then asserts.AssertAutoRenew(struct["AutoRenew"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateSubscriptionRequest[k], "UpdateSubscriptionRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateSubscriptionRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AutoRenew [AutoRenew] <p>When you initally create a subscription, <code>AutoRenew</code> is set to <code>ENABLED</code>. If <code>ENABLED</code>, the subscription will be automatically renewed at the end of the existing subscription period. You can change this by submitting an <code>UpdateSubscription</code> request. If the <code>UpdateSubscription</code> request does not included a value for <code>AutoRenew</code>, the existing value for <code>AutoRenew</code> remains unchanged.</p>
+-- @return UpdateSubscriptionRequest structure as a key-value pair table
+function M.UpdateSubscriptionRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateSubscriptionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["AutoRenew"] = args["AutoRenew"],
+	}
+	asserts.AssertUpdateSubscriptionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DisassociateDRTRoleResponse = { nil }
+
+function asserts.AssertDisassociateDRTRoleResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DisassociateDRTRoleResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DisassociateDRTRoleResponse[k], "DisassociateDRTRoleResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DisassociateDRTRoleResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DisassociateDRTRoleResponse structure as a key-value pair table
+function M.DisassociateDRTRoleResponse(args)
+	assert(args, "You must provide an argument table when creating DisassociateDRTRoleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDisassociateDRTRoleResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1498,14 +1986,16 @@ function M.ProtectionId(str)
 	return str
 end
 
-function asserts.AssertLimitType(str)
+function asserts.AssertRoleArn(str)
 	assert(str)
-	assert(type(str) == "string", "Expected LimitType to be of type 'string'")
+	assert(type(str) == "string", "Expected RoleArn to be of type 'string'")
+	assert(#str <= 2048, "Expected string to be max 2048 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
-function M.LimitType(str)
-	asserts.AssertLimitType(str)
+function M.RoleArn(str)
+	asserts.AssertRoleArn(str)
 	return str
 end
 
@@ -1520,9 +2010,32 @@ function M.String(str)
 	return str
 end
 
+function asserts.AssertAttackPropertyIdentifier(str)
+	assert(str)
+	assert(type(str) == "string", "Expected AttackPropertyIdentifier to be of type 'string'")
+end
+
+--  
+function M.AttackPropertyIdentifier(str)
+	asserts.AssertAttackPropertyIdentifier(str)
+	return str
+end
+
+function asserts.AssertAutoRenew(str)
+	assert(str)
+	assert(type(str) == "string", "Expected AutoRenew to be of type 'string'")
+end
+
+--  
+function M.AutoRenew(str)
+	asserts.AssertAutoRenew(str)
+	return str
+end
+
 function asserts.AssertResourceArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ResourceArn to be of type 'string'")
+	assert(#str <= 2048, "Expected string to be max 2048 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
@@ -1545,14 +2058,16 @@ function M.ProtectionName(str)
 	return str
 end
 
-function asserts.AsserterrorMessage(str)
+function asserts.AssertLogBucket(str)
 	assert(str)
-	assert(type(str) == "string", "Expected errorMessage to be of type 'string'")
+	assert(type(str) == "string", "Expected LogBucket to be of type 'string'")
+	assert(#str <= 63, "Expected string to be max 63 characters")
+	assert(#str >= 3, "Expected string to be min 3 characters")
 end
 
 --  
-function M.errorMessage(str)
-	asserts.AsserterrorMessage(str)
+function M.LogBucket(str)
+	asserts.AssertLogBucket(str)
 	return str
 end
 
@@ -1567,9 +2082,43 @@ function M.SubResourceType(str)
 	return str
 end
 
+function asserts.AssertSubscriptionState(str)
+	assert(str)
+	assert(type(str) == "string", "Expected SubscriptionState to be of type 'string'")
+end
+
+--  
+function M.SubscriptionState(str)
+	asserts.AssertSubscriptionState(str)
+	return str
+end
+
+function asserts.AssertUnit(str)
+	assert(str)
+	assert(type(str) == "string", "Expected Unit to be of type 'string'")
+end
+
+--  
+function M.Unit(str)
+	asserts.AssertUnit(str)
+	return str
+end
+
+function asserts.AssertAttackLayer(str)
+	assert(str)
+	assert(type(str) == "string", "Expected AttackLayer to be of type 'string'")
+end
+
+--  
+function M.AttackLayer(str)
+	asserts.AssertAttackLayer(str)
+	return str
+end
+
 function asserts.AssertToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Token to be of type 'string'")
+	assert(#str <= 4096, "Expected string to be max 4096 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
@@ -1592,6 +2141,19 @@ function M.AttackId(str)
 	return str
 end
 
+function asserts.AssertEmailAddress(str)
+	assert(str)
+	assert(type(str) == "string", "Expected EmailAddress to be of type 'string'")
+	assert(#str <= 150, "Expected string to be max 150 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.EmailAddress(str)
+	asserts.AssertEmailAddress(str)
+	return str
+end
+
 function asserts.AssertDouble(double)
 	assert(double)
 	assert(type(double) == "number", "Expected Double to be of type 'number'")
@@ -1602,14 +2164,14 @@ function M.Double(double)
 	return double
 end
 
-function asserts.AssertLimitNumber(long)
+function asserts.AssertLong(long)
 	assert(long)
-	assert(type(long) == "number", "Expected LimitNumber to be of type 'number'")
+	assert(type(long) == "number", "Expected Long to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
-function M.LimitNumber(long)
-	asserts.AssertLimitNumber(long)
+function M.Long(long)
+	asserts.AssertLong(long)
 	return long
 end
 
@@ -1639,7 +2201,7 @@ function asserts.AssertMaxResults(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected MaxResults to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
-	assert(integer <= 100, "Expected integer to be max 100")
+	assert(integer <= 10000, "Expected integer to be max 10000")
 end
 
 function M.MaxResults(integer)
@@ -1665,6 +2227,21 @@ end
 function M.AttackTimestamp(timestamp)
 	asserts.AssertAttackTimestamp(timestamp)
 	return timestamp
+end
+
+function asserts.AssertAttackProperties(list)
+	assert(list)
+	assert(type(list) == "table", "Expected AttackProperties to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertAttackProperty(v)
+	end
+end
+
+--  
+-- List of AttackProperty objects
+function M.AttackProperties(list)
+	asserts.AssertAttackProperties(list)
+	return list
 end
 
 function asserts.AssertMitigationList(list)
@@ -1712,6 +2289,37 @@ function M.Protections(list)
 	return list
 end
 
+function asserts.AssertLogBucketList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected LogBucketList to be of type ''table")
+	assert(#list <= 10, "Expected list to be contain 10 elements")
+	for _,v in ipairs(list) do
+		asserts.AssertLogBucket(v)
+	end
+end
+
+--  
+-- List of LogBucket objects
+function M.LogBucketList(list)
+	asserts.AssertLogBucketList(list)
+	return list
+end
+
+function asserts.AssertLimits(list)
+	assert(list)
+	assert(type(list) == "table", "Expected Limits to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertLimit(v)
+	end
+end
+
+--  
+-- List of Limit objects
+function M.Limits(list)
+	asserts.AssertLimits(list)
+	return list
+end
+
 function asserts.AssertResourceArnFilterList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ResourceArnFilterList to be of type ''table")
@@ -1724,21 +2332,6 @@ end
 -- List of ResourceArn objects
 function M.ResourceArnFilterList(list)
 	asserts.AssertResourceArnFilterList(list)
-	return list
-end
-
-function asserts.AssertSubResourceSummaryList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected SubResourceSummaryList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertSubResourceSummary(v)
-	end
-end
-
---  
--- List of SubResourceSummary objects
-function M.SubResourceSummaryList(list)
-	asserts.AssertSubResourceSummaryList(list)
 	return list
 end
 
@@ -1757,6 +2350,21 @@ function M.SummarizedAttackVectorList(list)
 	return list
 end
 
+function asserts.AssertSubResourceSummaryList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected SubResourceSummaryList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertSubResourceSummary(v)
+	end
+end
+
+--  
+-- List of SubResourceSummary objects
+function M.SubResourceSummaryList(list)
+	asserts.AssertSubResourceSummaryList(list)
+	return list
+end
+
 function asserts.AssertSummarizedCounterList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SummarizedCounterList to be of type ''table")
@@ -1772,6 +2380,21 @@ function M.SummarizedCounterList(list)
 	return list
 end
 
+function asserts.AssertTopContributors(list)
+	assert(list)
+	assert(type(list) == "table", "Expected TopContributors to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertContributor(v)
+	end
+end
+
+--  
+-- List of Contributor objects
+function M.TopContributors(list)
+	asserts.AssertTopContributors(list)
+	return list
+end
+
 function asserts.AssertAttackSummaries(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AttackSummaries to be of type ''table")
@@ -1784,6 +2407,22 @@ end
 -- List of AttackSummary objects
 function M.AttackSummaries(list)
 	asserts.AssertAttackSummaries(list)
+	return list
+end
+
+function asserts.AssertEmergencyContactList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected EmergencyContactList to be of type ''table")
+	assert(#list <= 10, "Expected list to be contain 10 elements")
+	for _,v in ipairs(list) do
+		asserts.AssertEmergencyContact(v)
+	end
+end
+
+--  
+-- List of EmergencyContact objects
+function M.EmergencyContactList(list)
+	asserts.AssertEmergencyContactList(list)
 	return list
 end
 
@@ -1830,6 +2469,41 @@ end
 --
 -- OPERATIONS
 --
+--- Call DisassociateDRTRole asynchronously, invoking a callback when done
+-- @param DisassociateDRTRoleRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DisassociateDRTRoleAsync(DisassociateDRTRoleRequest, cb)
+	assert(DisassociateDRTRoleRequest, "You must provide a DisassociateDRTRoleRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DisassociateDRTRole",
+	}
+	for header,value in pairs(DisassociateDRTRoleRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DisassociateDRTRoleRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DisassociateDRTRole synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisassociateDRTRoleRequest
+-- @return response
+-- @return error_message
+function M.DisassociateDRTRoleSync(DisassociateDRTRoleRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisassociateDRTRoleAsync(DisassociateDRTRoleRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call DeleteProtection asynchronously, invoking a callback when done
 -- @param DeleteProtectionRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -1860,6 +2534,146 @@ function M.DeleteProtectionSync(DeleteProtectionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DeleteProtectionAsync(DeleteProtectionRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AssociateDRTLogBucket asynchronously, invoking a callback when done
+-- @param AssociateDRTLogBucketRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.AssociateDRTLogBucketAsync(AssociateDRTLogBucketRequest, cb)
+	assert(AssociateDRTLogBucketRequest, "You must provide a AssociateDRTLogBucketRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.AssociateDRTLogBucket",
+	}
+	for header,value in pairs(AssociateDRTLogBucketRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", AssociateDRTLogBucketRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call AssociateDRTLogBucket synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AssociateDRTLogBucketRequest
+-- @return response
+-- @return error_message
+function M.AssociateDRTLogBucketSync(AssociateDRTLogBucketRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AssociateDRTLogBucketAsync(AssociateDRTLogBucketRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetSubscriptionState asynchronously, invoking a callback when done
+-- @param GetSubscriptionStateRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetSubscriptionStateAsync(GetSubscriptionStateRequest, cb)
+	assert(GetSubscriptionStateRequest, "You must provide a GetSubscriptionStateRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.GetSubscriptionState",
+	}
+	for header,value in pairs(GetSubscriptionStateRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", GetSubscriptionStateRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetSubscriptionState synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetSubscriptionStateRequest
+-- @return response
+-- @return error_message
+function M.GetSubscriptionStateSync(GetSubscriptionStateRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetSubscriptionStateAsync(GetSubscriptionStateRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEmergencyContactSettings asynchronously, invoking a callback when done
+-- @param DescribeEmergencyContactSettingsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeEmergencyContactSettingsAsync(DescribeEmergencyContactSettingsRequest, cb)
+	assert(DescribeEmergencyContactSettingsRequest, "You must provide a DescribeEmergencyContactSettingsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DescribeEmergencyContactSettings",
+	}
+	for header,value in pairs(DescribeEmergencyContactSettingsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeEmergencyContactSettingsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeEmergencyContactSettings synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEmergencyContactSettingsRequest
+-- @return response
+-- @return error_message
+function M.DescribeEmergencyContactSettingsSync(DescribeEmergencyContactSettingsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEmergencyContactSettingsAsync(DescribeEmergencyContactSettingsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateEmergencyContactSettings asynchronously, invoking a callback when done
+-- @param UpdateEmergencyContactSettingsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateEmergencyContactSettingsAsync(UpdateEmergencyContactSettingsRequest, cb)
+	assert(UpdateEmergencyContactSettingsRequest, "You must provide a UpdateEmergencyContactSettingsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.UpdateEmergencyContactSettings",
+	}
+	for header,value in pairs(UpdateEmergencyContactSettingsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateEmergencyContactSettingsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateEmergencyContactSettings synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateEmergencyContactSettingsRequest
+-- @return response
+-- @return error_message
+function M.UpdateEmergencyContactSettingsSync(UpdateEmergencyContactSettingsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateEmergencyContactSettingsAsync(UpdateEmergencyContactSettingsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1970,71 +2784,176 @@ function M.DescribeProtectionSync(DescribeProtectionRequest, ...)
 	return coroutine.yield()
 end
 
---- Call DescribeAttack asynchronously, invoking a callback when done
--- @param DescribeAttackRequest
+--- Call UpdateSubscription asynchronously, invoking a callback when done
+-- @param UpdateSubscriptionRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.DescribeAttackAsync(DescribeAttackRequest, cb)
-	assert(DescribeAttackRequest, "You must provide a DescribeAttackRequest")
+function M.UpdateSubscriptionAsync(UpdateSubscriptionRequest, cb)
+	assert(UpdateSubscriptionRequest, "You must provide a UpdateSubscriptionRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DescribeAttack",
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.UpdateSubscription",
 	}
-	for header,value in pairs(DescribeAttackRequest.headers) do
+	for header,value in pairs(UpdateSubscriptionRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DescribeAttackRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", UpdateSubscriptionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DescribeAttack synchronously, returning when done
+--- Call UpdateSubscription synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DescribeAttackRequest
+-- @param UpdateSubscriptionRequest
 -- @return response
 -- @return error_message
-function M.DescribeAttackSync(DescribeAttackRequest, ...)
+function M.UpdateSubscriptionSync(UpdateSubscriptionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAttackAsync(DescribeAttackRequest, function(response, error_message)
+	M.UpdateSubscriptionAsync(UpdateSubscriptionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
 end
 
---- Call DeleteSubscription asynchronously, invoking a callback when done
--- @param DeleteSubscriptionRequest
+--- Call DescribeDRTAccess asynchronously, invoking a callback when done
+-- @param DescribeDRTAccessRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.DeleteSubscriptionAsync(DeleteSubscriptionRequest, cb)
-	assert(DeleteSubscriptionRequest, "You must provide a DeleteSubscriptionRequest")
+function M.DescribeDRTAccessAsync(DescribeDRTAccessRequest, cb)
+	assert(DescribeDRTAccessRequest, "You must provide a DescribeDRTAccessRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DeleteSubscription",
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DescribeDRTAccess",
 	}
-	for header,value in pairs(DeleteSubscriptionRequest.headers) do
+	for header,value in pairs(DescribeDRTAccessRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DeleteSubscriptionRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", DescribeDRTAccessRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DeleteSubscription synchronously, returning when done
+--- Call DescribeDRTAccess synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DeleteSubscriptionRequest
+-- @param DescribeDRTAccessRequest
 -- @return response
 -- @return error_message
-function M.DeleteSubscriptionSync(DeleteSubscriptionRequest, ...)
+function M.DescribeDRTAccessSync(DescribeDRTAccessRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteSubscriptionAsync(DeleteSubscriptionRequest, function(response, error_message)
+	M.DescribeDRTAccessAsync(DescribeDRTAccessRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DisassociateDRTLogBucket asynchronously, invoking a callback when done
+-- @param DisassociateDRTLogBucketRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DisassociateDRTLogBucketAsync(DisassociateDRTLogBucketRequest, cb)
+	assert(DisassociateDRTLogBucketRequest, "You must provide a DisassociateDRTLogBucketRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DisassociateDRTLogBucket",
+	}
+	for header,value in pairs(DisassociateDRTLogBucketRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DisassociateDRTLogBucketRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DisassociateDRTLogBucket synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisassociateDRTLogBucketRequest
+-- @return response
+-- @return error_message
+function M.DisassociateDRTLogBucketSync(DisassociateDRTLogBucketRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisassociateDRTLogBucketAsync(DisassociateDRTLogBucketRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateProtection asynchronously, invoking a callback when done
+-- @param CreateProtectionRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.CreateProtectionAsync(CreateProtectionRequest, cb)
+	assert(CreateProtectionRequest, "You must provide a CreateProtectionRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.CreateProtection",
+	}
+	for header,value in pairs(CreateProtectionRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", CreateProtectionRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CreateProtection synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateProtectionRequest
+-- @return response
+-- @return error_message
+function M.CreateProtectionSync(CreateProtectionRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateProtectionAsync(CreateProtectionRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AssociateDRTRole asynchronously, invoking a callback when done
+-- @param AssociateDRTRoleRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.AssociateDRTRoleAsync(AssociateDRTRoleRequest, cb)
+	assert(AssociateDRTRoleRequest, "You must provide a AssociateDRTRoleRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.AssociateDRTRole",
+	}
+	for header,value in pairs(AssociateDRTRoleRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", AssociateDRTRoleRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call AssociateDRTRole synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AssociateDRTRoleRequest
+-- @return response
+-- @return error_message
+function M.AssociateDRTRoleSync(AssociateDRTRoleRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AssociateDRTRoleAsync(AssociateDRTRoleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2110,36 +3029,36 @@ function M.ListAttacksSync(ListAttacksRequest, ...)
 	return coroutine.yield()
 end
 
---- Call CreateProtection asynchronously, invoking a callback when done
--- @param CreateProtectionRequest
+--- Call DescribeAttack asynchronously, invoking a callback when done
+-- @param DescribeAttackRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.CreateProtectionAsync(CreateProtectionRequest, cb)
-	assert(CreateProtectionRequest, "You must provide a CreateProtectionRequest")
+function M.DescribeAttackAsync(DescribeAttackRequest, cb)
+	assert(DescribeAttackRequest, "You must provide a DescribeAttackRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.CreateProtection",
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DescribeAttack",
 	}
-	for header,value in pairs(CreateProtectionRequest.headers) do
+	for header,value in pairs(DescribeAttackRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", CreateProtectionRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", DescribeAttackRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call CreateProtection synchronously, returning when done
+--- Call DescribeAttack synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param CreateProtectionRequest
+-- @param DescribeAttackRequest
 -- @return response
 -- @return error_message
-function M.CreateProtectionSync(CreateProtectionRequest, ...)
+function M.DescribeAttackSync(DescribeAttackRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateProtectionAsync(CreateProtectionRequest, function(response, error_message)
+	M.DescribeAttackAsync(DescribeAttackRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

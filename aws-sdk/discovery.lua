@@ -199,43 +199,6 @@ function M.DescribeTagsRequest(args)
     }
 end
 
-keys.OperationNotPermittedException = { ["message"] = true, nil }
-
-function asserts.AssertOperationNotPermittedException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected OperationNotPermittedException to be of type 'table'")
-	if struct["message"] then asserts.AssertMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.OperationNotPermittedException[k], "OperationNotPermittedException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type OperationNotPermittedException
--- <p>This operation is not permitted.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [Message] 
--- @return OperationNotPermittedException structure as a key-value pair table
-function M.OperationNotPermittedException(args)
-	assert(args, "You must provide an argument table when creating OperationNotPermittedException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertOperationNotPermittedException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.UpdateApplicationRequest = { ["configurationId"] = true, ["name"] = true, ["description"] = true, nil }
 
 function asserts.AssertUpdateApplicationRequest(struct)
@@ -625,6 +588,55 @@ function M.DescribeAgentsResponse(args)
     }
 end
 
+keys.ExportFilter = { ["values"] = true, ["name"] = true, ["condition"] = true, nil }
+
+function asserts.AssertExportFilter(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ExportFilter to be of type 'table'")
+	assert(struct["name"], "Expected key name to exist in table")
+	assert(struct["values"], "Expected key values to exist in table")
+	assert(struct["condition"], "Expected key condition to exist in table")
+	if struct["values"] then asserts.AssertFilterValues(struct["values"]) end
+	if struct["name"] then asserts.AssertFilterName(struct["name"]) end
+	if struct["condition"] then asserts.AssertCondition(struct["condition"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ExportFilter[k], "ExportFilter contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ExportFilter
+-- <p>Used to select which agent's data is to be exported. A single agent ID may be selected for export using the <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/API_StartExportTask.html">StartExportTask</a> action.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * values [FilterValues] <p>A single <code>agentId</code> for a Discovery Agent. An <code>agentId</code> can be found using the <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html">DescribeAgents</a> action. Typically an ADS <code>agentId</code> is in the form <code>o-0123456789abcdef0</code>.</p>
+-- * name [FilterName] <p>A single <code>ExportFilter</code> name. Supported filters: <code>agentId</code>.</p>
+-- * condition [Condition] <p>Supported condition: <code>EQUALS</code> </p>
+-- Required key: name
+-- Required key: values
+-- Required key: condition
+-- @return ExportFilter structure as a key-value pair table
+function M.ExportFilter(args)
+	assert(args, "You must provide an argument table when creating ExportFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["values"] = args["values"],
+		["name"] = args["name"],
+		["condition"] = args["condition"],
+	}
+	asserts.AssertExportFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ExportConfigurationsResponse = { ["exportId"] = true, nil }
 
 function asserts.AssertExportConfigurationsResponse(struct)
@@ -654,43 +666,6 @@ function M.ExportConfigurationsResponse(args)
 		["exportId"] = args["exportId"],
 	}
 	asserts.AssertExportConfigurationsResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ServerInternalErrorException = { ["message"] = true, nil }
-
-function asserts.AssertServerInternalErrorException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ServerInternalErrorException to be of type 'table'")
-	if struct["message"] then asserts.AssertMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ServerInternalErrorException[k], "ServerInternalErrorException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ServerInternalErrorException
--- <p>The server experienced an internal error. Try again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [Message] 
--- @return ServerInternalErrorException structure as a key-value pair table
-function M.ServerInternalErrorException(args)
-	assert(args, "You must provide an argument table when creating ServerInternalErrorException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertServerInternalErrorException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -861,43 +836,6 @@ function M.ListServerNeighborsResponse(args)
     }
 end
 
-keys.StopDataCollectionByAgentIdsResponse = { ["agentsConfigurationStatus"] = true, nil }
-
-function asserts.AssertStopDataCollectionByAgentIdsResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected StopDataCollectionByAgentIdsResponse to be of type 'table'")
-	if struct["agentsConfigurationStatus"] then asserts.AssertAgentConfigurationStatusList(struct["agentsConfigurationStatus"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.StopDataCollectionByAgentIdsResponse[k], "StopDataCollectionByAgentIdsResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type StopDataCollectionByAgentIdsResponse
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * agentsConfigurationStatus [AgentConfigurationStatusList] <p>Information about the agents or connector that were instructed to stop collecting data. Information includes the agent/connector ID, a description of the operation performed, and whether the agent/connector configuration was updated.</p>
--- @return StopDataCollectionByAgentIdsResponse structure as a key-value pair table
-function M.StopDataCollectionByAgentIdsResponse(args)
-	assert(args, "You must provide an argument table when creating StopDataCollectionByAgentIdsResponse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["agentsConfigurationStatus"] = args["agentsConfigurationStatus"],
-	}
-	asserts.AssertStopDataCollectionByAgentIdsResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.NeighborConnectionDetail = { ["connectionsCount"] = true, ["destinationServerId"] = true, ["sourceServerId"] = true, ["transportProtocol"] = true, ["destinationPort"] = true, nil }
 
 function asserts.AssertNeighborConnectionDetail(struct)
@@ -1024,11 +962,14 @@ function M.DeleteTagsResponse(args)
     }
 end
 
-keys.StartExportTaskRequest = { ["exportDataFormat"] = true, nil }
+keys.StartExportTaskRequest = { ["endTime"] = true, ["startTime"] = true, ["filters"] = true, ["exportDataFormat"] = true, nil }
 
 function asserts.AssertStartExportTaskRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StartExportTaskRequest to be of type 'table'")
+	if struct["endTime"] then asserts.AssertTimeStamp(struct["endTime"]) end
+	if struct["startTime"] then asserts.AssertTimeStamp(struct["startTime"]) end
+	if struct["filters"] then asserts.AssertExportFilters(struct["filters"]) end
 	if struct["exportDataFormat"] then asserts.AssertExportDataFormats(struct["exportDataFormat"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.StartExportTaskRequest[k], "StartExportTaskRequest contains unknown key " .. tostring(k))
@@ -1039,7 +980,10 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * exportDataFormat [ExportDataFormats] <p>The file format for the returned export data. Default value is <code>CSV</code>.</p>
+-- * endTime [TimeStamp] <p>The end timestamp for exported data from the single Application Discovery Agent selected in the filters. If no value is specified, exported data includes the most recent data collected by the agent.</p>
+-- * startTime [TimeStamp] <p>The start timestamp for exported data from the single Application Discovery Agent selected in the filters. If no value is specified, data is exported starting from the first data collected by the agent.</p>
+-- * filters [ExportFilters] <p>If a filter is present, it selects the single <code>agentId</code> of the Application Discovery Agent for which data is exported. The <code>agentId</code> can be found in the results of the <code>DescribeAgents</code> API or CLI. If no filter is present, <code>startTime</code> and <code>endTime</code> are ignored and exported data includes both Agentless Discovery Connector data and summary data from Application Discovery agents. </p>
+-- * exportDataFormat [ExportDataFormats] <p>The file format for the returned export data. Default value is <code>CSV</code>. <b>Note:</b> <i>The</i> <code>GRAPHML</code> <i>option has been deprecated.</i> </p>
 -- @return StartExportTaskRequest structure as a key-value pair table
 function M.StartExportTaskRequest(args)
 	assert(args, "You must provide an argument table when creating StartExportTaskRequest")
@@ -1050,6 +994,9 @@ function M.StartExportTaskRequest(args)
     local header_args = { 
     }
 	local all_args = { 
+		["endTime"] = args["endTime"],
+		["startTime"] = args["startTime"],
+		["filters"] = args["filters"],
 		["exportDataFormat"] = args["exportDataFormat"],
 	}
 	asserts.AssertStartExportTaskRequest(all_args)
@@ -1220,25 +1167,39 @@ function M.UpdateApplicationResponse(args)
     }
 end
 
-keys.AuthorizationErrorException = { ["message"] = true, nil }
+keys.ContinuousExportDescription = { ["status"] = true, ["schemaStorageConfig"] = true, ["statusDetail"] = true, ["s3Bucket"] = true, ["exportId"] = true, ["stopTime"] = true, ["dataSource"] = true, ["startTime"] = true, nil }
 
-function asserts.AssertAuthorizationErrorException(struct)
+function asserts.AssertContinuousExportDescription(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected AuthorizationErrorException to be of type 'table'")
-	if struct["message"] then asserts.AssertMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected ContinuousExportDescription to be of type 'table'")
+	if struct["status"] then asserts.AssertContinuousExportStatus(struct["status"]) end
+	if struct["schemaStorageConfig"] then asserts.AssertSchemaStorageConfig(struct["schemaStorageConfig"]) end
+	if struct["statusDetail"] then asserts.AssertStringMax255(struct["statusDetail"]) end
+	if struct["s3Bucket"] then asserts.AssertS3Bucket(struct["s3Bucket"]) end
+	if struct["exportId"] then asserts.AssertConfigurationsExportId(struct["exportId"]) end
+	if struct["stopTime"] then asserts.AssertTimeStamp(struct["stopTime"]) end
+	if struct["dataSource"] then asserts.AssertDataSource(struct["dataSource"]) end
+	if struct["startTime"] then asserts.AssertTimeStamp(struct["startTime"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.AuthorizationErrorException[k], "AuthorizationErrorException contains unknown key " .. tostring(k))
+		assert(keys.ContinuousExportDescription[k], "ContinuousExportDescription contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type AuthorizationErrorException
--- <p>The AWS user account does not have permission to perform the action. Check the IAM policy associated with this account.</p>
+--- Create a structure of type ContinuousExportDescription
+-- <p>A list of continuous export descriptions.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [Message] 
--- @return AuthorizationErrorException structure as a key-value pair table
-function M.AuthorizationErrorException(args)
-	assert(args, "You must provide an argument table when creating AuthorizationErrorException")
+-- * status [ContinuousExportStatus] <p>Describes the status of the export. Can be one of the following values:</p> <ul> <li> <p>START_IN_PROGRESS - setting up resources to start continuous export.</p> </li> <li> <p>START_FAILED - an error occurred setting up continuous export. To recover, call start-continuous-export again.</p> </li> <li> <p>ACTIVE - data is being exported to the customer bucket.</p> </li> <li> <p>ERROR - an error occurred during export. To fix the issue, call stop-continuous-export and start-continuous-export.</p> </li> <li> <p>STOP_IN_PROGRESS - stopping the export.</p> </li> <li> <p>STOP_FAILED - an error occurred stopping the export. To recover, call stop-continuous-export again.</p> </li> <li> <p>INACTIVE - the continuous export has been stopped. Data is no longer being exported to the customer bucket.</p> </li> </ul>
+-- * schemaStorageConfig [SchemaStorageConfig] <p>An object which describes how the data is stored.</p> <ul> <li> <p> <code>databaseName</code> - the name of the Glue database used to store the schema.</p> </li> </ul>
+-- * statusDetail [StringMax255] <p>Contains information about any errors that may have occurred.</p>
+-- * s3Bucket [S3Bucket] <p>The name of the s3 bucket where the export data parquet files are stored.</p>
+-- * exportId [ConfigurationsExportId] <p>The unique ID assigned to this export.</p>
+-- * stopTime [TimeStamp] <p>The timestamp that represents when this continuous export was stopped.</p>
+-- * dataSource [DataSource] <p>The type of data collector used to gather this data (currently only offered for AGENT).</p>
+-- * startTime [TimeStamp] <p>The timestamp representing when the continuous export was started.</p>
+-- @return ContinuousExportDescription structure as a key-value pair table
+function M.ContinuousExportDescription(args)
+	assert(args, "You must provide an argument table when creating ContinuousExportDescription")
     local query_args = { 
     }
     local uri_args = { 
@@ -1246,9 +1207,105 @@ function M.AuthorizationErrorException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["status"] = args["status"],
+		["schemaStorageConfig"] = args["schemaStorageConfig"],
+		["statusDetail"] = args["statusDetail"],
+		["s3Bucket"] = args["s3Bucket"],
+		["exportId"] = args["exportId"],
+		["stopTime"] = args["stopTime"],
+		["dataSource"] = args["dataSource"],
+		["startTime"] = args["startTime"],
 	}
-	asserts.AssertAuthorizationErrorException(all_args)
+	asserts.AssertContinuousExportDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.StartContinuousExportResponse = { ["s3Bucket"] = true, ["exportId"] = true, ["dataSource"] = true, ["startTime"] = true, ["schemaStorageConfig"] = true, nil }
+
+function asserts.AssertStartContinuousExportResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected StartContinuousExportResponse to be of type 'table'")
+	if struct["s3Bucket"] then asserts.AssertS3Bucket(struct["s3Bucket"]) end
+	if struct["exportId"] then asserts.AssertConfigurationsExportId(struct["exportId"]) end
+	if struct["dataSource"] then asserts.AssertDataSource(struct["dataSource"]) end
+	if struct["startTime"] then asserts.AssertTimeStamp(struct["startTime"]) end
+	if struct["schemaStorageConfig"] then asserts.AssertSchemaStorageConfig(struct["schemaStorageConfig"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.StartContinuousExportResponse[k], "StartContinuousExportResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type StartContinuousExportResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * s3Bucket [S3Bucket] <p>The name of the s3 bucket where the export data parquet files are stored.</p>
+-- * exportId [ConfigurationsExportId] <p>The unique ID assigned to this export.</p>
+-- * dataSource [DataSource] <p>The type of data collector used to gather this data (currently only offered for AGENT).</p>
+-- * startTime [TimeStamp] <p>The timestamp representing when the continuous export was started.</p>
+-- * schemaStorageConfig [SchemaStorageConfig] <p>A dictionary which describes how the data is stored.</p> <ul> <li> <p> <code>databaseName</code> - the name of the Glue database used to store the schema.</p> </li> </ul>
+-- @return StartContinuousExportResponse structure as a key-value pair table
+function M.StartContinuousExportResponse(args)
+	assert(args, "You must provide an argument table when creating StartContinuousExportResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["s3Bucket"] = args["s3Bucket"],
+		["exportId"] = args["exportId"],
+		["dataSource"] = args["dataSource"],
+		["startTime"] = args["startTime"],
+		["schemaStorageConfig"] = args["schemaStorageConfig"],
+	}
+	asserts.AssertStartContinuousExportResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.StopContinuousExportResponse = { ["stopTime"] = true, ["startTime"] = true, nil }
+
+function asserts.AssertStopContinuousExportResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected StopContinuousExportResponse to be of type 'table'")
+	if struct["stopTime"] then asserts.AssertTimeStamp(struct["stopTime"]) end
+	if struct["startTime"] then asserts.AssertTimeStamp(struct["startTime"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.StopContinuousExportResponse[k], "StopContinuousExportResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type StopContinuousExportResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * stopTime [TimeStamp] <p>Timestamp that represents when this continuous export was stopped.</p>
+-- * startTime [TimeStamp] <p>Timestamp that represents when this continuous export started collecting data.</p>
+-- @return StopContinuousExportResponse structure as a key-value pair table
+function M.StopContinuousExportResponse(args)
+	assert(args, "You must provide an argument table when creating StopContinuousExportResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["stopTime"] = args["stopTime"],
+		["startTime"] = args["startTime"],
+	}
+	asserts.AssertStopContinuousExportResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1438,44 +1495,7 @@ function M.Filter(args)
     }
 end
 
-keys.InvalidParameterValueException = { ["message"] = true, nil }
-
-function asserts.AssertInvalidParameterValueException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidParameterValueException to be of type 'table'")
-	if struct["message"] then asserts.AssertMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidParameterValueException[k], "InvalidParameterValueException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidParameterValueException
--- <p>The value of one or more parameters are either invalid or out of range. Verify the parameter values and try again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [Message] 
--- @return InvalidParameterValueException structure as a key-value pair table
-function M.InvalidParameterValueException(args)
-	assert(args, "You must provide an argument table when creating InvalidParameterValueException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertInvalidParameterValueException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ExportInfo = { ["exportId"] = true, ["exportRequestTime"] = true, ["exportStatus"] = true, ["statusMessage"] = true, ["configurationsDownloadUrl"] = true, nil }
+keys.ExportInfo = { ["requestedStartTime"] = true, ["exportId"] = true, ["exportStatus"] = true, ["exportRequestTime"] = true, ["configurationsDownloadUrl"] = true, ["isTruncated"] = true, ["statusMessage"] = true, ["requestedEndTime"] = true, nil }
 
 function asserts.AssertExportInfo(struct)
 	assert(struct)
@@ -1484,25 +1504,31 @@ function asserts.AssertExportInfo(struct)
 	assert(struct["exportStatus"], "Expected key exportStatus to exist in table")
 	assert(struct["statusMessage"], "Expected key statusMessage to exist in table")
 	assert(struct["exportRequestTime"], "Expected key exportRequestTime to exist in table")
+	if struct["requestedStartTime"] then asserts.AssertTimeStamp(struct["requestedStartTime"]) end
 	if struct["exportId"] then asserts.AssertConfigurationsExportId(struct["exportId"]) end
-	if struct["exportRequestTime"] then asserts.AssertExportRequestTime(struct["exportRequestTime"]) end
 	if struct["exportStatus"] then asserts.AssertExportStatus(struct["exportStatus"]) end
-	if struct["statusMessage"] then asserts.AssertExportStatusMessage(struct["statusMessage"]) end
+	if struct["exportRequestTime"] then asserts.AssertExportRequestTime(struct["exportRequestTime"]) end
 	if struct["configurationsDownloadUrl"] then asserts.AssertConfigurationsDownloadUrl(struct["configurationsDownloadUrl"]) end
+	if struct["isTruncated"] then asserts.AssertBoolean(struct["isTruncated"]) end
+	if struct["statusMessage"] then asserts.AssertExportStatusMessage(struct["statusMessage"]) end
+	if struct["requestedEndTime"] then asserts.AssertTimeStamp(struct["requestedEndTime"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ExportInfo[k], "ExportInfo contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ExportInfo
--- <p>Information regarding the export status of the discovered data. The value is an array of objects.</p>
+-- <p>Information regarding the export status of discovered data. The value is an array of objects.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * exportId [ConfigurationsExportId] <p>A unique identifier that you can use to query the export.</p>
--- * exportRequestTime [ExportRequestTime] <p>The time that the configuration data export was initiated.</p>
--- * exportStatus [ExportStatus] <p>The status of the configuration data export. The status can succeed, fail, or be in-progress.</p>
--- * statusMessage [ExportStatusMessage] <p>Helpful status messages for API callers. For example: Too many exports in the last 6 hours. Export in progress. Export was successful.</p>
--- * configurationsDownloadUrl [ConfigurationsDownloadUrl] <p>A URL for an Amazon S3 bucket where you can review the configuration data. The URL is displayed only if the export succeeded.</p>
+-- * requestedStartTime [TimeStamp] <p>The value of <code>startTime</code> parameter in the <code>StartExportTask</code> request. If no <code>startTime</code> was requested, this result does not appear in <code>ExportInfo</code>.</p>
+-- * exportId [ConfigurationsExportId] <p>A unique identifier used to query an export.</p>
+-- * exportStatus [ExportStatus] <p>The status of the data export job.</p>
+-- * exportRequestTime [ExportRequestTime] <p>The time that the data export was initiated.</p>
+-- * configurationsDownloadUrl [ConfigurationsDownloadUrl] <p>A URL for an Amazon S3 bucket where you can review the exported data. The URL is displayed only if the export succeeded.</p>
+-- * isTruncated [Boolean] <p>If true, the export of agent information exceeded the size limit for a single export and the exported data is incomplete for the requested time range. To address this, select a smaller time range for the export by using <code>startDate</code> and <code>endDate</code>.</p>
+-- * statusMessage [ExportStatusMessage] <p>A status message provided for API callers.</p>
+-- * requestedEndTime [TimeStamp] <p>The <code>endTime</code> used in the <code>StartExportTask</code> request. If no <code>endTime</code> was requested, this result does not appear in <code>ExportInfo</code>.</p>
 -- Required key: exportId
 -- Required key: exportStatus
 -- Required key: statusMessage
@@ -1517,11 +1543,14 @@ function M.ExportInfo(args)
     local header_args = { 
     }
 	local all_args = { 
+		["requestedStartTime"] = args["requestedStartTime"],
 		["exportId"] = args["exportId"],
-		["exportRequestTime"] = args["exportRequestTime"],
 		["exportStatus"] = args["exportStatus"],
-		["statusMessage"] = args["statusMessage"],
+		["exportRequestTime"] = args["exportRequestTime"],
 		["configurationsDownloadUrl"] = args["configurationsDownloadUrl"],
+		["isTruncated"] = args["isTruncated"],
+		["statusMessage"] = args["statusMessage"],
+		["requestedEndTime"] = args["requestedEndTime"],
 	}
 	asserts.AssertExportInfo(all_args)
 	return {
@@ -1547,7 +1576,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * exportId [ConfigurationsExportId] <p> A unique identifier used to query the status of an export request.</p>
+-- * exportId [ConfigurationsExportId] <p>A unique identifier used to query the status of an export request.</p>
 -- @return StartExportTaskResponse structure as a key-value pair table
 function M.StartExportTaskResponse(args)
 	assert(args, "You must provide an argument table when creating StartExportTaskResponse")
@@ -1637,25 +1666,29 @@ function M.CreateTagsResponse(args)
     }
 end
 
-keys.ResourceNotFoundException = { ["message"] = true, nil }
+keys.DescribeContinuousExportsRequest = { ["exportIds"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
 
-function asserts.AssertResourceNotFoundException(struct)
+function asserts.AssertDescribeContinuousExportsRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
-	if struct["message"] then asserts.AssertMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected DescribeContinuousExportsRequest to be of type 'table'")
+	if struct["exportIds"] then asserts.AssertContinuousExportIds(struct["exportIds"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertDescribeContinuousExportsMaxResults(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.DescribeContinuousExportsRequest[k], "DescribeContinuousExportsRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ResourceNotFoundException
--- <p>The specified configuration ID was not located. Verify the configuration ID and try again.</p>
+--- Create a structure of type DescribeContinuousExportsRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [Message] 
--- @return ResourceNotFoundException structure as a key-value pair table
-function M.ResourceNotFoundException(args)
-	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+-- * exportIds [ContinuousExportIds] <p>The unique IDs assigned to the exports.</p>
+-- * nextToken [NextToken] <p>The token from the previous call to <code>DescribeExportTasks</code>.</p>
+-- * maxResults [DescribeContinuousExportsMaxResults] <p>A number between 1 and 100 specifying the maximum number of continuous export descriptions returned.</p>
+-- @return DescribeContinuousExportsRequest structure as a key-value pair table
+function M.DescribeContinuousExportsRequest(args)
+	assert(args, "You must provide an argument table when creating DescribeContinuousExportsRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1663,9 +1696,11 @@ function M.ResourceNotFoundException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["exportIds"] = args["exportIds"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertResourceNotFoundException(all_args)
+	asserts.AssertDescribeContinuousExportsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1742,8 +1777,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * exportsInfo [ExportsInfo] <p>Returns export details. When the status is complete, the response includes a URL for an Amazon S3 bucket where you can view the data in a CSV file.</p>
--- * nextToken [NextToken] <p>A token to get the next set of results. For example, if you specify 100 IDs for <code>DescribeExportConfigurationsRequest$exportIds</code> but set <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the token in the query to get the next set of 10.</p>
+-- * exportsInfo [ExportsInfo] <p/>
+-- * nextToken [NextToken] <p>The token from the previous call to describe-export-tasks.</p>
 -- @return DescribeExportConfigurationsResponse structure as a key-value pair table
 function M.DescribeExportConfigurationsResponse(args)
 	assert(args, "You must provide an argument table when creating DescribeExportConfigurationsResponse")
@@ -1837,6 +1872,46 @@ function M.DescribeConfigurationsRequest(args)
 		["configurationIds"] = args["configurationIds"],
 	}
 	asserts.AssertDescribeConfigurationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeContinuousExportsResponse = { ["nextToken"] = true, ["descriptions"] = true, nil }
+
+function asserts.AssertDescribeContinuousExportsResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeContinuousExportsResponse to be of type 'table'")
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
+	if struct["descriptions"] then asserts.AssertContinuousExportDescriptions(struct["descriptions"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeContinuousExportsResponse[k], "DescribeContinuousExportsResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeContinuousExportsResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>The token from the previous call to <code>DescribeExportTasks</code>.</p>
+-- * descriptions [ContinuousExportDescriptions] <p>A list of continuous export descriptions.</p>
+-- @return DescribeContinuousExportsResponse structure as a key-value pair table
+function M.DescribeContinuousExportsResponse(args)
+	assert(args, "You must provide an argument table when creating DescribeContinuousExportsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["nextToken"] = args["nextToken"],
+		["descriptions"] = args["descriptions"],
+	}
+	asserts.AssertDescribeContinuousExportsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1948,7 +2023,7 @@ function M.CustomerConnectorInfo(args)
     }
 end
 
-keys.DescribeExportTasksRequest = { ["exportIds"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
+keys.DescribeExportTasksRequest = { ["exportIds"] = true, ["nextToken"] = true, ["maxResults"] = true, ["filters"] = true, nil }
 
 function asserts.AssertDescribeExportTasksRequest(struct)
 	assert(struct)
@@ -1956,6 +2031,7 @@ function asserts.AssertDescribeExportTasksRequest(struct)
 	if struct["exportIds"] then asserts.AssertExportIds(struct["exportIds"]) end
 	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
 	if struct["maxResults"] then asserts.AssertInteger(struct["maxResults"]) end
+	if struct["filters"] then asserts.AssertExportFilters(struct["filters"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.DescribeExportTasksRequest[k], "DescribeExportTasksRequest contains unknown key " .. tostring(k))
 	end
@@ -1968,6 +2044,7 @@ end
 -- * exportIds [ExportIds] <p>One or more unique identifiers used to query the status of an export request.</p>
 -- * nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeExportTasks</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is null when there are no more results to return.</p>
 -- * maxResults [Integer] <p>The maximum number of volume results returned by <code>DescribeExportTasks</code> in paginated output. When this parameter is used, <code>DescribeExportTasks</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element.</p>
+-- * filters [ExportFilters] <p>One or more filters.</p> <ul> <li> <p> <code>AgentId</code> - ID of the agent whose collected data will be exported</p> </li> </ul>
 -- @return DescribeExportTasksRequest structure as a key-value pair table
 function M.DescribeExportTasksRequest(args)
 	assert(args, "You must provide an argument table when creating DescribeExportTasksRequest")
@@ -1981,45 +2058,9 @@ function M.DescribeExportTasksRequest(args)
 		["exportIds"] = args["exportIds"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
+		["filters"] = args["filters"],
 	}
 	asserts.AssertDescribeExportTasksRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidParameterException = { ["message"] = true, nil }
-
-function asserts.AssertInvalidParameterException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidParameterException to be of type 'table'")
-	if struct["message"] then asserts.AssertMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidParameterException[k], "InvalidParameterException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidParameterException
--- <p>One or more parameters are not valid. Verify the parameters and try again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [Message] 
--- @return InvalidParameterException structure as a key-value pair table
-function M.InvalidParameterException(args)
-	assert(args, "You must provide an argument table when creating InvalidParameterException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertInvalidParameterException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2070,6 +2111,45 @@ function M.CreateApplicationRequest(args)
     }
 end
 
+keys.StopContinuousExportRequest = { ["exportId"] = true, nil }
+
+function asserts.AssertStopContinuousExportRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected StopContinuousExportRequest to be of type 'table'")
+	assert(struct["exportId"], "Expected key exportId to exist in table")
+	if struct["exportId"] then asserts.AssertConfigurationsExportId(struct["exportId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.StopContinuousExportRequest[k], "StopContinuousExportRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type StopContinuousExportRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * exportId [ConfigurationsExportId] <p>The unique ID assigned to this export.</p>
+-- Required key: exportId
+-- @return StopContinuousExportRequest structure as a key-value pair table
+function M.StopContinuousExportRequest(args)
+	assert(args, "You must provide an argument table when creating StopContinuousExportRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["exportId"] = args["exportId"],
+	}
+	asserts.AssertStopContinuousExportRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ConfigurationTag = { ["timeOfCreation"] = true, ["configurationId"] = true, ["value"] = true, ["key"] = true, ["configurationType"] = true, nil }
 
 function asserts.AssertConfigurationTag(struct)
@@ -2111,6 +2191,77 @@ function M.ConfigurationTag(args)
 		["configurationType"] = args["configurationType"],
 	}
 	asserts.AssertConfigurationTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.StopDataCollectionByAgentIdsResponse = { ["agentsConfigurationStatus"] = true, nil }
+
+function asserts.AssertStopDataCollectionByAgentIdsResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected StopDataCollectionByAgentIdsResponse to be of type 'table'")
+	if struct["agentsConfigurationStatus"] then asserts.AssertAgentConfigurationStatusList(struct["agentsConfigurationStatus"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.StopDataCollectionByAgentIdsResponse[k], "StopDataCollectionByAgentIdsResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type StopDataCollectionByAgentIdsResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * agentsConfigurationStatus [AgentConfigurationStatusList] <p>Information about the agents or connector that were instructed to stop collecting data. Information includes the agent/connector ID, a description of the operation performed, and whether the agent/connector configuration was updated.</p>
+-- @return StopDataCollectionByAgentIdsResponse structure as a key-value pair table
+function M.StopDataCollectionByAgentIdsResponse(args)
+	assert(args, "You must provide an argument table when creating StopDataCollectionByAgentIdsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["agentsConfigurationStatus"] = args["agentsConfigurationStatus"],
+	}
+	asserts.AssertStopDataCollectionByAgentIdsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.StartContinuousExportRequest = { nil }
+
+function asserts.AssertStartContinuousExportRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected StartContinuousExportRequest to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.StartContinuousExportRequest[k], "StartContinuousExportRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type StartContinuousExportRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return StartContinuousExportRequest structure as a key-value pair table
+function M.StartContinuousExportRequest(args)
+	assert(args, "You must provide an argument table when creating StartContinuousExportRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertStartContinuousExportRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2286,9 +2437,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * exportIds [ExportIds] <p>A unique identifier that you can use to query the export status.</p>
--- * nextToken [NextToken] <p>A token to get the next set of results. For example, if you specify 100 IDs for <code>DescribeExportConfigurationsRequest$exportIds</code> but set <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the token in the query to get the next set of 10.</p>
--- * maxResults [Integer] <p>The maximum number of results that you want to display as a part of the query.</p>
+-- * exportIds [ExportIds] <p>A list of continuous export ids to search for.</p>
+-- * nextToken [NextToken] <p>The token from the previous call to describe-export-tasks.</p>
+-- * maxResults [Integer] <p>A number between 1 and 100 specifying the maximum number of continuous export descriptions returned.</p>
 -- @return DescribeExportConfigurationsRequest structure as a key-value pair table
 function M.DescribeExportConfigurationsRequest(args)
 	assert(args, "You must provide an argument table when creating DescribeExportConfigurationsRequest")
@@ -2422,6 +2573,17 @@ function M.String(str)
 	return str
 end
 
+function asserts.AssertTagValue(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
+end
+
+--  
+function M.TagValue(str)
+	asserts.AssertTagValue(str)
+	return str
+end
+
 function asserts.AssertConfigurationsDownloadUrl(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ConfigurationsDownloadUrl to be of type 'string'")
@@ -2444,25 +2606,38 @@ function M.ConfigurationId(str)
 	return str
 end
 
-function asserts.AssertTagValue(str)
+function asserts.AssertDataSource(str)
 	assert(str)
-	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
+	assert(type(str) == "string", "Expected DataSource to be of type 'string'")
 end
 
 --  
-function M.TagValue(str)
-	asserts.AssertTagValue(str)
+function M.DataSource(str)
+	asserts.AssertDataSource(str)
 	return str
 end
 
-function asserts.AssertMessage(str)
+function asserts.AssertDatabaseName(str)
 	assert(str)
-	assert(type(str) == "string", "Expected Message to be of type 'string'")
+	assert(type(str) == "string", "Expected DatabaseName to be of type 'string'")
+	assert(#str <= 252, "Expected string to be max 252 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
-function M.Message(str)
-	asserts.AssertMessage(str)
+function M.DatabaseName(str)
+	asserts.AssertDatabaseName(str)
+	return str
+end
+
+function asserts.AssertContinuousExportStatus(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ContinuousExportStatus to be of type 'string'")
+end
+
+--  
+function M.ContinuousExportStatus(str)
+	asserts.AssertContinuousExportStatus(str)
 	return str
 end
 
@@ -2554,6 +2729,19 @@ function M.FilterName(str)
 	return str
 end
 
+function asserts.AssertStringMax255(str)
+	assert(str)
+	assert(type(str) == "string", "Expected StringMax255 to be of type 'string'")
+	assert(#str <= 255, "Expected string to be max 255 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.StringMax255(str)
+	asserts.AssertStringMax255(str)
+	return str
+end
+
 function asserts.AssertApplicationId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ApplicationId to be of type 'string'")
@@ -2562,6 +2750,17 @@ end
 --  
 function M.ApplicationId(str)
 	asserts.AssertApplicationId(str)
+	return str
+end
+
+function asserts.AssertS3Bucket(str)
+	assert(str)
+	assert(type(str) == "string", "Expected S3Bucket to be of type 'string'")
+end
+
+--  
+function M.S3Bucket(str)
+	asserts.AssertS3Bucket(str)
 	return str
 end
 
@@ -2587,6 +2786,19 @@ function M.BoxedInteger(integer)
 	return integer
 end
 
+function asserts.AssertDescribeContinuousExportsMaxResults(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected DescribeContinuousExportsMaxResults to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
+	assert(integer <= 100, "Expected integer to be max 100")
+	assert(integer >= 1, "Expected integer to be min 1")
+end
+
+function M.DescribeContinuousExportsMaxResults(integer)
+	asserts.AssertDescribeContinuousExportsMaxResults(integer)
+	return integer
+end
+
 function asserts.AssertInteger(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected Integer to be of type 'number'")
@@ -2606,6 +2818,20 @@ end
 function M.Boolean(boolean)
 	asserts.AssertBoolean(boolean)
 	return boolean
+end
+
+function asserts.AssertSchemaStorageConfig(map)
+	assert(map)
+	assert(type(map) == "table", "Expected SchemaStorageConfig to be of type 'table'")
+	for k,v in pairs(map) do
+		asserts.AssertDatabaseName(k)
+		asserts.AssertString(v)
+	end
+end
+
+function M.SchemaStorageConfig(map)
+	asserts.AssertSchemaStorageConfig(map)
+	return map
 end
 
 function asserts.AssertConfiguration(map)
@@ -2671,18 +2897,18 @@ function M.ApplicationIdsList(list)
 	return list
 end
 
-function asserts.AssertConfigurationIdList(list)
+function asserts.AssertExportFilters(list)
 	assert(list)
-	assert(type(list) == "table", "Expected ConfigurationIdList to be of type ''table")
+	assert(type(list) == "table", "Expected ExportFilters to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertConfigurationId(v)
+		asserts.AssertExportFilter(v)
 	end
 end
 
 --  
--- List of ConfigurationId objects
-function M.ConfigurationIdList(list)
-	asserts.AssertConfigurationIdList(list)
+-- List of ExportFilter objects
+function M.ExportFilters(list)
+	asserts.AssertExportFilters(list)
 	return list
 end
 
@@ -2761,6 +2987,21 @@ function M.ExportsInfo(list)
 	return list
 end
 
+function asserts.AssertContinuousExportDescriptions(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ContinuousExportDescriptions to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertContinuousExportDescription(v)
+	end
+end
+
+--  
+-- List of ContinuousExportDescription objects
+function M.ContinuousExportDescriptions(list)
+	asserts.AssertContinuousExportDescriptions(list)
+	return list
+end
+
 function asserts.AssertDescribeConfigurationsAttributes(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DescribeConfigurationsAttributes to be of type ''table")
@@ -2788,6 +3029,21 @@ end
 -- List of AgentId objects
 function M.AgentIds(list)
 	asserts.AssertAgentIds(list)
+	return list
+end
+
+function asserts.AssertConfigurationIdList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ConfigurationIdList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertConfigurationId(v)
+	end
+end
+
+--  
+-- List of ConfigurationId objects
+function M.ConfigurationIdList(list)
+	asserts.AssertConfigurationIdList(list)
 	return list
 end
 
@@ -2848,6 +3104,21 @@ end
 -- List of FilterValue objects
 function M.FilterValues(list)
 	asserts.AssertFilterValues(list)
+	return list
+end
+
+function asserts.AssertContinuousExportIds(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ContinuousExportIds to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertConfigurationsExportId(v)
+	end
+end
+
+--  
+-- List of ConfigurationsExportId objects
+function M.ContinuousExportIds(list)
+	asserts.AssertContinuousExportIds(list)
 	return list
 end
 
@@ -3004,176 +3275,36 @@ function M.DeleteTagsSync(DeleteTagsRequest, ...)
 	return coroutine.yield()
 end
 
---- Call GetDiscoverySummary asynchronously, invoking a callback when done
--- @param GetDiscoverySummaryRequest
+--- Call StopDataCollectionByAgentIds asynchronously, invoking a callback when done
+-- @param StopDataCollectionByAgentIdsRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.GetDiscoverySummaryAsync(GetDiscoverySummaryRequest, cb)
-	assert(GetDiscoverySummaryRequest, "You must provide a GetDiscoverySummaryRequest")
+function M.StopDataCollectionByAgentIdsAsync(StopDataCollectionByAgentIdsRequest, cb)
+	assert(StopDataCollectionByAgentIdsRequest, "You must provide a StopDataCollectionByAgentIdsRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.GetDiscoverySummary",
+		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.StopDataCollectionByAgentIds",
 	}
-	for header,value in pairs(GetDiscoverySummaryRequest.headers) do
+	for header,value in pairs(StopDataCollectionByAgentIdsRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", GetDiscoverySummaryRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", StopDataCollectionByAgentIdsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call GetDiscoverySummary synchronously, returning when done
+--- Call StopDataCollectionByAgentIds synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param GetDiscoverySummaryRequest
+-- @param StopDataCollectionByAgentIdsRequest
 -- @return response
 -- @return error_message
-function M.GetDiscoverySummarySync(GetDiscoverySummaryRequest, ...)
+function M.StopDataCollectionByAgentIdsSync(StopDataCollectionByAgentIdsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDiscoverySummaryAsync(GetDiscoverySummaryRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call ListConfigurations asynchronously, invoking a callback when done
--- @param ListConfigurationsRequest
--- @param cb Callback function accepting two args: response, error_message
-function M.ListConfigurationsAsync(ListConfigurationsRequest, cb)
-	assert(ListConfigurationsRequest, "You must provide a ListConfigurationsRequest")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.ListConfigurations",
-	}
-	for header,value in pairs(ListConfigurationsRequest.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", ListConfigurationsRequest, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call ListConfigurations synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param ListConfigurationsRequest
--- @return response
--- @return error_message
-function M.ListConfigurationsSync(ListConfigurationsRequest, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.ListConfigurationsAsync(ListConfigurationsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call CreateTags asynchronously, invoking a callback when done
--- @param CreateTagsRequest
--- @param cb Callback function accepting two args: response, error_message
-function M.CreateTagsAsync(CreateTagsRequest, cb)
-	assert(CreateTagsRequest, "You must provide a CreateTagsRequest")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.CreateTags",
-	}
-	for header,value in pairs(CreateTagsRequest.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", CreateTagsRequest, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call CreateTags synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param CreateTagsRequest
--- @return response
--- @return error_message
-function M.CreateTagsSync(CreateTagsRequest, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.CreateTagsAsync(CreateTagsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call DescribeExportTasks asynchronously, invoking a callback when done
--- @param DescribeExportTasksRequest
--- @param cb Callback function accepting two args: response, error_message
-function M.DescribeExportTasksAsync(DescribeExportTasksRequest, cb)
-	assert(DescribeExportTasksRequest, "You must provide a DescribeExportTasksRequest")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.DescribeExportTasks",
-	}
-	for header,value in pairs(DescribeExportTasksRequest.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", DescribeExportTasksRequest, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call DescribeExportTasks synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param DescribeExportTasksRequest
--- @return response
--- @return error_message
-function M.DescribeExportTasksSync(DescribeExportTasksRequest, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.DescribeExportTasksAsync(DescribeExportTasksRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call DisassociateConfigurationItemsFromApplication asynchronously, invoking a callback when done
--- @param DisassociateConfigurationItemsFromApplicationRequest
--- @param cb Callback function accepting two args: response, error_message
-function M.DisassociateConfigurationItemsFromApplicationAsync(DisassociateConfigurationItemsFromApplicationRequest, cb)
-	assert(DisassociateConfigurationItemsFromApplicationRequest, "You must provide a DisassociateConfigurationItemsFromApplicationRequest")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.DisassociateConfigurationItemsFromApplication",
-	}
-	for header,value in pairs(DisassociateConfigurationItemsFromApplicationRequest.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", DisassociateConfigurationItemsFromApplicationRequest, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call DisassociateConfigurationItemsFromApplication synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param DisassociateConfigurationItemsFromApplicationRequest
--- @return response
--- @return error_message
-function M.DisassociateConfigurationItemsFromApplicationSync(DisassociateConfigurationItemsFromApplicationRequest, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.DisassociateConfigurationItemsFromApplicationAsync(DisassociateConfigurationItemsFromApplicationRequest, function(response, error_message)
+	M.StopDataCollectionByAgentIdsAsync(StopDataCollectionByAgentIdsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3214,6 +3345,251 @@ function M.StartDataCollectionByAgentIdsSync(StartDataCollectionByAgentIdsReques
 	return coroutine.yield()
 end
 
+--- Call AssociateConfigurationItemsToApplication asynchronously, invoking a callback when done
+-- @param AssociateConfigurationItemsToApplicationRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.AssociateConfigurationItemsToApplicationAsync(AssociateConfigurationItemsToApplicationRequest, cb)
+	assert(AssociateConfigurationItemsToApplicationRequest, "You must provide a AssociateConfigurationItemsToApplicationRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.AssociateConfigurationItemsToApplication",
+	}
+	for header,value in pairs(AssociateConfigurationItemsToApplicationRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", AssociateConfigurationItemsToApplicationRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call AssociateConfigurationItemsToApplication synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AssociateConfigurationItemsToApplicationRequest
+-- @return response
+-- @return error_message
+function M.AssociateConfigurationItemsToApplicationSync(AssociateConfigurationItemsToApplicationRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AssociateConfigurationItemsToApplicationAsync(AssociateConfigurationItemsToApplicationRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartContinuousExport asynchronously, invoking a callback when done
+-- @param StartContinuousExportRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.StartContinuousExportAsync(StartContinuousExportRequest, cb)
+	assert(StartContinuousExportRequest, "You must provide a StartContinuousExportRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.StartContinuousExport",
+	}
+	for header,value in pairs(StartContinuousExportRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", StartContinuousExportRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call StartContinuousExport synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartContinuousExportRequest
+-- @return response
+-- @return error_message
+function M.StartContinuousExportSync(StartContinuousExportRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartContinuousExportAsync(StartContinuousExportRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListConfigurations asynchronously, invoking a callback when done
+-- @param ListConfigurationsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListConfigurationsAsync(ListConfigurationsRequest, cb)
+	assert(ListConfigurationsRequest, "You must provide a ListConfigurationsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.ListConfigurations",
+	}
+	for header,value in pairs(ListConfigurationsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListConfigurationsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListConfigurations synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListConfigurationsRequest
+-- @return response
+-- @return error_message
+function M.ListConfigurationsSync(ListConfigurationsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListConfigurationsAsync(ListConfigurationsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeContinuousExports asynchronously, invoking a callback when done
+-- @param DescribeContinuousExportsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeContinuousExportsAsync(DescribeContinuousExportsRequest, cb)
+	assert(DescribeContinuousExportsRequest, "You must provide a DescribeContinuousExportsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.DescribeContinuousExports",
+	}
+	for header,value in pairs(DescribeContinuousExportsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeContinuousExportsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeContinuousExports synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeContinuousExportsRequest
+-- @return response
+-- @return error_message
+function M.DescribeContinuousExportsSync(DescribeContinuousExportsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeContinuousExportsAsync(DescribeContinuousExportsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartExportTask asynchronously, invoking a callback when done
+-- @param StartExportTaskRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.StartExportTaskAsync(StartExportTaskRequest, cb)
+	assert(StartExportTaskRequest, "You must provide a StartExportTaskRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.StartExportTask",
+	}
+	for header,value in pairs(StartExportTaskRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", StartExportTaskRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call StartExportTask synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartExportTaskRequest
+-- @return response
+-- @return error_message
+function M.StartExportTaskSync(StartExportTaskRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartExportTaskAsync(StartExportTaskRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteApplications asynchronously, invoking a callback when done
+-- @param DeleteApplicationsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteApplicationsAsync(DeleteApplicationsRequest, cb)
+	assert(DeleteApplicationsRequest, "You must provide a DeleteApplicationsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.DeleteApplications",
+	}
+	for header,value in pairs(DeleteApplicationsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteApplicationsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteApplications synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteApplicationsRequest
+-- @return response
+-- @return error_message
+function M.DeleteApplicationsSync(DeleteApplicationsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteApplicationsAsync(DeleteApplicationsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateApplication asynchronously, invoking a callback when done
+-- @param CreateApplicationRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.CreateApplicationAsync(CreateApplicationRequest, cb)
+	assert(CreateApplicationRequest, "You must provide a CreateApplicationRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.CreateApplication",
+	}
+	for header,value in pairs(CreateApplicationRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", CreateApplicationRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CreateApplication synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateApplicationRequest
+-- @return response
+-- @return error_message
+function M.CreateApplicationSync(CreateApplicationRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateApplicationAsync(CreateApplicationRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call UpdateApplication asynchronously, invoking a callback when done
 -- @param UpdateApplicationRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -3249,71 +3625,36 @@ function M.UpdateApplicationSync(UpdateApplicationRequest, ...)
 	return coroutine.yield()
 end
 
---- Call ListServerNeighbors asynchronously, invoking a callback when done
--- @param ListServerNeighborsRequest
+--- Call DescribeExportTasks asynchronously, invoking a callback when done
+-- @param DescribeExportTasksRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.ListServerNeighborsAsync(ListServerNeighborsRequest, cb)
-	assert(ListServerNeighborsRequest, "You must provide a ListServerNeighborsRequest")
+function M.DescribeExportTasksAsync(DescribeExportTasksRequest, cb)
+	assert(DescribeExportTasksRequest, "You must provide a DescribeExportTasksRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.ListServerNeighbors",
+		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.DescribeExportTasks",
 	}
-	for header,value in pairs(ListServerNeighborsRequest.headers) do
+	for header,value in pairs(DescribeExportTasksRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", ListServerNeighborsRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", DescribeExportTasksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call ListServerNeighbors synchronously, returning when done
+--- Call DescribeExportTasks synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param ListServerNeighborsRequest
+-- @param DescribeExportTasksRequest
 -- @return response
 -- @return error_message
-function M.ListServerNeighborsSync(ListServerNeighborsRequest, ...)
+function M.DescribeExportTasksSync(DescribeExportTasksRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListServerNeighborsAsync(ListServerNeighborsRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call StopDataCollectionByAgentIds asynchronously, invoking a callback when done
--- @param StopDataCollectionByAgentIdsRequest
--- @param cb Callback function accepting two args: response, error_message
-function M.StopDataCollectionByAgentIdsAsync(StopDataCollectionByAgentIdsRequest, cb)
-	assert(StopDataCollectionByAgentIdsRequest, "You must provide a StopDataCollectionByAgentIdsRequest")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.StopDataCollectionByAgentIds",
-	}
-	for header,value in pairs(StopDataCollectionByAgentIdsRequest.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", StopDataCollectionByAgentIdsRequest, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call StopDataCollectionByAgentIds synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param StopDataCollectionByAgentIdsRequest
--- @return response
--- @return error_message
-function M.StopDataCollectionByAgentIdsSync(StopDataCollectionByAgentIdsRequest, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.StopDataCollectionByAgentIdsAsync(StopDataCollectionByAgentIdsRequest, function(response, error_message)
+	M.DescribeExportTasksAsync(DescribeExportTasksRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3389,36 +3730,71 @@ function M.DescribeConfigurationsSync(DescribeConfigurationsRequest, ...)
 	return coroutine.yield()
 end
 
---- Call StartExportTask asynchronously, invoking a callback when done
--- @param StartExportTaskRequest
+--- Call StopContinuousExport asynchronously, invoking a callback when done
+-- @param StopContinuousExportRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.StartExportTaskAsync(StartExportTaskRequest, cb)
-	assert(StartExportTaskRequest, "You must provide a StartExportTaskRequest")
+function M.StopContinuousExportAsync(StopContinuousExportRequest, cb)
+	assert(StopContinuousExportRequest, "You must provide a StopContinuousExportRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.StartExportTask",
+		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.StopContinuousExport",
 	}
-	for header,value in pairs(StartExportTaskRequest.headers) do
+	for header,value in pairs(StopContinuousExportRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", StartExportTaskRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", StopContinuousExportRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call StartExportTask synchronously, returning when done
+--- Call StopContinuousExport synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param StartExportTaskRequest
+-- @param StopContinuousExportRequest
 -- @return response
 -- @return error_message
-function M.StartExportTaskSync(StartExportTaskRequest, ...)
+function M.StopContinuousExportSync(StopContinuousExportRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartExportTaskAsync(StartExportTaskRequest, function(response, error_message)
+	M.StopContinuousExportAsync(StopContinuousExportRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateTags asynchronously, invoking a callback when done
+-- @param CreateTagsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.CreateTagsAsync(CreateTagsRequest, cb)
+	assert(CreateTagsRequest, "You must provide a CreateTagsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.CreateTags",
+	}
+	for header,value in pairs(CreateTagsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", CreateTagsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CreateTags synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateTagsRequest
+-- @return response
+-- @return error_message
+function M.CreateTagsSync(CreateTagsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateTagsAsync(CreateTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3459,106 +3835,106 @@ function M.DescribeTagsSync(DescribeTagsRequest, ...)
 	return coroutine.yield()
 end
 
---- Call DeleteApplications asynchronously, invoking a callback when done
--- @param DeleteApplicationsRequest
+--- Call GetDiscoverySummary asynchronously, invoking a callback when done
+-- @param GetDiscoverySummaryRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.DeleteApplicationsAsync(DeleteApplicationsRequest, cb)
-	assert(DeleteApplicationsRequest, "You must provide a DeleteApplicationsRequest")
+function M.GetDiscoverySummaryAsync(GetDiscoverySummaryRequest, cb)
+	assert(GetDiscoverySummaryRequest, "You must provide a GetDiscoverySummaryRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.DeleteApplications",
+		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.GetDiscoverySummary",
 	}
-	for header,value in pairs(DeleteApplicationsRequest.headers) do
+	for header,value in pairs(GetDiscoverySummaryRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DeleteApplicationsRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", GetDiscoverySummaryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DeleteApplications synchronously, returning when done
+--- Call GetDiscoverySummary synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DeleteApplicationsRequest
+-- @param GetDiscoverySummaryRequest
 -- @return response
 -- @return error_message
-function M.DeleteApplicationsSync(DeleteApplicationsRequest, ...)
+function M.GetDiscoverySummarySync(GetDiscoverySummaryRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteApplicationsAsync(DeleteApplicationsRequest, function(response, error_message)
+	M.GetDiscoverySummaryAsync(GetDiscoverySummaryRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
 end
 
---- Call AssociateConfigurationItemsToApplication asynchronously, invoking a callback when done
--- @param AssociateConfigurationItemsToApplicationRequest
+--- Call ListServerNeighbors asynchronously, invoking a callback when done
+-- @param ListServerNeighborsRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.AssociateConfigurationItemsToApplicationAsync(AssociateConfigurationItemsToApplicationRequest, cb)
-	assert(AssociateConfigurationItemsToApplicationRequest, "You must provide a AssociateConfigurationItemsToApplicationRequest")
+function M.ListServerNeighborsAsync(ListServerNeighborsRequest, cb)
+	assert(ListServerNeighborsRequest, "You must provide a ListServerNeighborsRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.AssociateConfigurationItemsToApplication",
+		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.ListServerNeighbors",
 	}
-	for header,value in pairs(AssociateConfigurationItemsToApplicationRequest.headers) do
+	for header,value in pairs(ListServerNeighborsRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", AssociateConfigurationItemsToApplicationRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", ListServerNeighborsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call AssociateConfigurationItemsToApplication synchronously, returning when done
+--- Call ListServerNeighbors synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param AssociateConfigurationItemsToApplicationRequest
+-- @param ListServerNeighborsRequest
 -- @return response
 -- @return error_message
-function M.AssociateConfigurationItemsToApplicationSync(AssociateConfigurationItemsToApplicationRequest, ...)
+function M.ListServerNeighborsSync(ListServerNeighborsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateConfigurationItemsToApplicationAsync(AssociateConfigurationItemsToApplicationRequest, function(response, error_message)
+	M.ListServerNeighborsAsync(ListServerNeighborsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
 end
 
---- Call CreateApplication asynchronously, invoking a callback when done
--- @param CreateApplicationRequest
+--- Call DisassociateConfigurationItemsFromApplication asynchronously, invoking a callback when done
+-- @param DisassociateConfigurationItemsFromApplicationRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.CreateApplicationAsync(CreateApplicationRequest, cb)
-	assert(CreateApplicationRequest, "You must provide a CreateApplicationRequest")
+function M.DisassociateConfigurationItemsFromApplicationAsync(DisassociateConfigurationItemsFromApplicationRequest, cb)
+	assert(DisassociateConfigurationItemsFromApplicationRequest, "You must provide a DisassociateConfigurationItemsFromApplicationRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.CreateApplication",
+		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.DisassociateConfigurationItemsFromApplication",
 	}
-	for header,value in pairs(CreateApplicationRequest.headers) do
+	for header,value in pairs(DisassociateConfigurationItemsFromApplicationRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", CreateApplicationRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", DisassociateConfigurationItemsFromApplicationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call CreateApplication synchronously, returning when done
+--- Call DisassociateConfigurationItemsFromApplication synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param CreateApplicationRequest
+-- @param DisassociateConfigurationItemsFromApplicationRequest
 -- @return response
 -- @return error_message
-function M.CreateApplicationSync(CreateApplicationRequest, ...)
+function M.DisassociateConfigurationItemsFromApplicationSync(DisassociateConfigurationItemsFromApplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateApplicationAsync(CreateApplicationRequest, function(response, error_message)
+	M.DisassociateConfigurationItemsFromApplicationAsync(DisassociateConfigurationItemsFromApplicationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

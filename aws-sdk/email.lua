@@ -41,7 +41,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NotificationType [NotificationType] <p>The type of notifications that will be published to the specified Amazon SNS topic.</p>
--- * Identity [Identity] <p>The identity for which the Amazon SNS topic will be set. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p>
+-- * Identity [Identity] <p>The identity (email address or domain) that you want to set the Amazon SNS topic for.</p> <important> <p>You can only specify a verified identity for this parameter.</p> </important> <p>You can specify an identity by using its name or by using its Amazon Resource Name (ARN). The following examples are all valid identities: <code>sender@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p>
 -- * SnsTopic [NotificationTopic] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic. If the parameter is omitted from the request or a null value is passed, <code>SnsTopic</code> is cleared and publishing is disabled.</p>
 -- Required key: Identity
 -- Required key: NotificationType
@@ -60,6 +60,79 @@ function M.SetIdentityNotificationTopicRequest(args)
 		["SnsTopic"] = args["SnsTopic"],
 	}
 	asserts.AssertSetIdentityNotificationTopicRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.VerifyEmailIdentityResponse = { nil }
+
+function asserts.AssertVerifyEmailIdentityResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected VerifyEmailIdentityResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.VerifyEmailIdentityResponse[k], "VerifyEmailIdentityResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type VerifyEmailIdentityResponse
+-- <p>An empty element returned on a successful request.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return VerifyEmailIdentityResponse structure as a key-value pair table
+function M.VerifyEmailIdentityResponse(args)
+	assert(args, "You must provide an argument table when creating VerifyEmailIdentityResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertVerifyEmailIdentityResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateTemplateRequest = { ["Template"] = true, nil }
+
+function asserts.AssertUpdateTemplateRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateTemplateRequest to be of type 'table'")
+	assert(struct["Template"], "Expected key Template to exist in table")
+	if struct["Template"] then asserts.AssertTemplate(struct["Template"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateTemplateRequest[k], "UpdateTemplateRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateTemplateRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Template [Template] 
+-- Required key: Template
+-- @return UpdateTemplateRequest structure as a key-value pair table
+function M.UpdateTemplateRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateTemplateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Template"] = args["Template"],
+	}
+	asserts.AssertUpdateTemplateRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -146,46 +219,6 @@ function M.DescribeActiveReceiptRuleSetRequest(args)
     }
 end
 
-keys.InvalidFirehoseDestinationException = { ["EventDestinationName"] = true, ["ConfigurationSetName"] = true, nil }
-
-function asserts.AssertInvalidFirehoseDestinationException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidFirehoseDestinationException to be of type 'table'")
-	if struct["EventDestinationName"] then asserts.AssertEventDestinationName(struct["EventDestinationName"]) end
-	if struct["ConfigurationSetName"] then asserts.AssertConfigurationSetName(struct["ConfigurationSetName"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidFirehoseDestinationException[k], "InvalidFirehoseDestinationException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidFirehoseDestinationException
--- <p>Indicates that the Amazon Kinesis Firehose destination is invalid. See the error message for details.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * EventDestinationName [EventDestinationName] 
--- * ConfigurationSetName [ConfigurationSetName] 
--- @return InvalidFirehoseDestinationException structure as a key-value pair table
-function M.InvalidFirehoseDestinationException(args)
-	assert(args, "You must provide an argument table when creating InvalidFirehoseDestinationException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["EventDestinationName"] = args["EventDestinationName"],
-		["ConfigurationSetName"] = args["ConfigurationSetName"],
-	}
-	asserts.AssertInvalidFirehoseDestinationException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.Destination = { ["CcAddresses"] = true, ["BccAddresses"] = true, ["ToAddresses"] = true, nil }
 
 function asserts.AssertDestination(struct)
@@ -200,7 +233,7 @@ function asserts.AssertDestination(struct)
 end
 
 --- Create a structure of type Destination
--- <p>Represents the destination of the message, consisting of To:, CC:, and BCC: fields.</p> <p> By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: <code>=?charset?encoding?encoded-text?=</code>. For more information, see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>. </p>
+-- <p>Represents the destination of the message, consisting of To:, CC:, and BCC: fields.</p> <note> <p>Amazon SES does not support the SMTPUTF8 extension, as described in <a href="https://tools.ietf.org/html/rfc6531">RFC6531</a>. For this reason, the <i>local part</i> of a destination email address (the part of the email address that precedes the @ sign) may only contain <a href="https://en.wikipedia.org/wiki/Email_address#Local-part">7-bit ASCII characters</a>. If the <i>domain part</i> of an address (the part after the @ sign) contains non-ASCII characters, they must be encoded using Punycode, as described in <a href="https://tools.ietf.org/html/rfc3492.html">RFC3492</a>.</p> </note>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * CcAddresses [AddressList] <p>The CC: field(s) of the message.</p>
@@ -268,6 +301,77 @@ function M.VerifyDomainDkimRequest(args)
     }
 end
 
+keys.DeleteTemplateResponse = { nil }
+
+function asserts.AssertDeleteTemplateResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteTemplateResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteTemplateResponse[k], "DeleteTemplateResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteTemplateResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteTemplateResponse structure as a key-value pair table
+function M.DeleteTemplateResponse(args)
+	assert(args, "You must provide an argument table when creating DeleteTemplateResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDeleteTemplateResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateAccountSendingEnabledRequest = { ["Enabled"] = true, nil }
+
+function asserts.AssertUpdateAccountSendingEnabledRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateAccountSendingEnabledRequest to be of type 'table'")
+	if struct["Enabled"] then asserts.AssertEnabled(struct["Enabled"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateAccountSendingEnabledRequest[k], "UpdateAccountSendingEnabledRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateAccountSendingEnabledRequest
+-- <p>Represents a request to enable or disable the email sending capabilities for your entire Amazon SES account.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Enabled [Enabled] <p>Describes whether email sending is enabled or disabled for your Amazon SES account in the current AWS Region.</p>
+-- @return UpdateAccountSendingEnabledRequest structure as a key-value pair table
+function M.UpdateAccountSendingEnabledRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateAccountSendingEnabledRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Enabled"] = args["Enabled"],
+	}
+	asserts.AssertUpdateAccountSendingEnabledRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.S3Action = { ["KmsKeyArn"] = true, ["ObjectKeyPrefix"] = true, ["BucketName"] = true, ["TopicArn"] = true, nil }
 
 function asserts.AssertS3Action(struct)
@@ -287,9 +391,9 @@ end
 -- <p>When included in a receipt rule, this action saves the received message to an Amazon Simple Storage Service (Amazon S3) bucket and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p> <p>To enable Amazon SES to write emails to your Amazon S3 bucket, use an AWS KMS key to encrypt your emails, or publish to an Amazon SNS topic of another account, Amazon SES must have permission to access those resources. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p> <note> <p>When you save your emails to an Amazon S3 bucket, the maximum email size (including headers) is 30 MB. Emails larger than that will bounce.</p> </note> <p>For information about specifying Amazon S3 actions in receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-s3.html">Amazon SES Developer Guide</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * KmsKeyArn [AmazonResourceName] <p>The customer master key that Amazon SES should use to encrypt your emails before saving them to the Amazon S3 bucket. You can use the default master key or a custom master key you created in AWS KMS as follows:</p> <ul> <li> <p>To use the default master key, provide an ARN in the form of <code>arn:aws:kms:REGION:ACCOUNT-ID-WITHOUT-HYPHENS:alias/aws/ses</code>. For example, if your AWS account ID is 123456789012 and you want to use the default master key in the US West (Oregon) region, the ARN of the default master key would be <code>arn:aws:kms:us-west-2:123456789012:alias/aws/ses</code>. If you use the default master key, you don't need to perform any extra steps to give Amazon SES permission to use the key.</p> </li> <li> <p>To use a custom master key you created in AWS KMS, provide the ARN of the master key and ensure that you add a statement to your key's policy to give Amazon SES permission to use it. For more information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p> </li> </ul> <p>For more information about key policies, see the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html">AWS KMS Developer Guide</a>. If you do not specify a master key, Amazon SES will not encrypt your emails.</p> <important> <p>Your mail is encrypted by Amazon SES using the Amazon S3 encryption client before the mail is submitted to Amazon S3 for storage. It is not encrypted using Amazon S3 server-side encryption. This means that you must use the Amazon S3 encryption client to decrypt the email after retrieving it from Amazon S3, as the service has no access to use your AWS KMS keys for decryption. This encryption client is currently available with the <a href="http://aws.amazon.com/sdk-for-java/">AWS Java SDK</a> and <a href="http://aws.amazon.com/sdk-for-ruby/">AWS Ruby SDK</a> only. For more information about client-side encryption using AWS KMS master keys, see the <a href="http://alpha-docs-aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html">Amazon S3 Developer Guide</a>.</p> </important>
+-- * KmsKeyArn [AmazonResourceName] <p>The customer master key that Amazon SES should use to encrypt your emails before saving them to the Amazon S3 bucket. You can use the default master key or a custom master key you created in AWS KMS as follows:</p> <ul> <li> <p>To use the default master key, provide an ARN in the form of <code>arn:aws:kms:REGION:ACCOUNT-ID-WITHOUT-HYPHENS:alias/aws/ses</code>. For example, if your AWS account ID is 123456789012 and you want to use the default master key in the US West (Oregon) region, the ARN of the default master key would be <code>arn:aws:kms:us-west-2:123456789012:alias/aws/ses</code>. If you use the default master key, you don't need to perform any extra steps to give Amazon SES permission to use the key.</p> </li> <li> <p>To use a custom master key you created in AWS KMS, provide the ARN of the master key and ensure that you add a statement to your key's policy to give Amazon SES permission to use it. For more information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p> </li> </ul> <p>For more information about key policies, see the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html">AWS KMS Developer Guide</a>. If you do not specify a master key, Amazon SES will not encrypt your emails.</p> <important> <p>Your mail is encrypted by Amazon SES using the Amazon S3 encryption client before the mail is submitted to Amazon S3 for storage. It is not encrypted using Amazon S3 server-side encryption. This means that you must use the Amazon S3 encryption client to decrypt the email after retrieving it from Amazon S3, as the service has no access to use your AWS KMS keys for decryption. This encryption client is currently available with the <a href="http://aws.amazon.com/sdk-for-java/">AWS SDK for Java</a> and <a href="http://aws.amazon.com/sdk-for-ruby/">AWS SDK for Ruby</a> only. For more information about client-side encryption using AWS KMS master keys, see the <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html">Amazon S3 Developer Guide</a>.</p> </important>
 -- * ObjectKeyPrefix [S3KeyPrefix] <p>The key prefix of the Amazon S3 bucket. The key prefix is similar to a directory name that enables you to store similar data under the same directory in a bucket.</p>
--- * BucketName [S3BucketName] <p>The name of the Amazon S3 bucket to which to save the received email.</p>
+-- * BucketName [S3BucketName] <p>The name of the Amazon S3 bucket that incoming email will be saved to.</p>
 -- * TopicArn [AmazonResourceName] <p>The ARN of the Amazon SNS topic to notify when the message is saved to the Amazon S3 bucket. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
 -- Required key: BucketName
 -- @return S3Action structure as a key-value pair table
@@ -308,6 +412,54 @@ function M.S3Action(args)
 		["TopicArn"] = args["TopicArn"],
 	}
 	asserts.AssertS3Action(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Template = { ["HtmlPart"] = true, ["SubjectPart"] = true, ["TextPart"] = true, ["TemplateName"] = true, nil }
+
+function asserts.AssertTemplate(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Template to be of type 'table'")
+	assert(struct["TemplateName"], "Expected key TemplateName to exist in table")
+	if struct["HtmlPart"] then asserts.AssertHtmlPart(struct["HtmlPart"]) end
+	if struct["SubjectPart"] then asserts.AssertSubjectPart(struct["SubjectPart"]) end
+	if struct["TextPart"] then asserts.AssertTextPart(struct["TextPart"]) end
+	if struct["TemplateName"] then asserts.AssertTemplateName(struct["TemplateName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Template[k], "Template contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Template
+-- <p>The content of the email, composed of a subject line, an HTML part, and a text-only part.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HtmlPart [HtmlPart] <p>The HTML body of the email.</p>
+-- * SubjectPart [SubjectPart] <p>The subject line of the email.</p>
+-- * TextPart [TextPart] <p>The email body that will be visible to recipients whose email clients do not display HTML.</p>
+-- * TemplateName [TemplateName] <p>The name of the template. You will refer to this name when you send email using the <code>SendTemplatedEmail</code> or <code>SendBulkTemplatedEmail</code> operations.</p>
+-- Required key: TemplateName
+-- @return Template structure as a key-value pair table
+function M.Template(args)
+	assert(args, "You must provide an argument table when creating Template")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["HtmlPart"] = args["HtmlPart"],
+		["SubjectPart"] = args["SubjectPart"],
+		["TextPart"] = args["TextPart"],
+		["TemplateName"] = args["TemplateName"],
+	}
+	asserts.AssertTemplate(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -342,6 +494,51 @@ function M.SetIdentityNotificationTopicResponse(args)
 	local all_args = { 
 	}
 	asserts.AssertSetIdentityNotificationTopicResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BulkEmailDestination = { ["ReplacementTags"] = true, ["Destination"] = true, ["ReplacementTemplateData"] = true, nil }
+
+function asserts.AssertBulkEmailDestination(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BulkEmailDestination to be of type 'table'")
+	assert(struct["Destination"], "Expected key Destination to exist in table")
+	if struct["ReplacementTags"] then asserts.AssertMessageTagList(struct["ReplacementTags"]) end
+	if struct["Destination"] then asserts.AssertDestination(struct["Destination"]) end
+	if struct["ReplacementTemplateData"] then asserts.AssertTemplateData(struct["ReplacementTemplateData"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BulkEmailDestination[k], "BulkEmailDestination contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BulkEmailDestination
+-- <p>An array that contains one or more Destinations, as well as the tags and replacement data associated with each of those Destinations.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplacementTags [MessageTagList] <p>A list of tags, in the form of name/value pairs, to apply to an email that you send using <code>SendBulkTemplatedEmail</code>. Tags correspond to characteristics of the email that you define, so that you can publish email sending events.</p>
+-- * Destination [Destination] 
+-- * ReplacementTemplateData [TemplateData] <p>A list of replacement values to apply to the template. This parameter is a JSON object, typically consisting of key-value pairs in which the keys correspond to replacement tags in the email template.</p>
+-- Required key: Destination
+-- @return BulkEmailDestination structure as a key-value pair table
+function M.BulkEmailDestination(args)
+	assert(args, "You must provide an argument table when creating BulkEmailDestination")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ReplacementTags"] = args["ReplacementTags"],
+		["Destination"] = args["Destination"],
+		["ReplacementTemplateData"] = args["ReplacementTemplateData"],
+	}
+	asserts.AssertBulkEmailDestination(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -413,7 +610,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * EventDestination [EventDestination] <p>The event destination object that you want to apply to the specified configuration set.</p>
--- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set that you want to update.</p>
+-- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set that contains the event destination that you want to update.</p>
 -- Required key: ConfigurationSetName
 -- Required key: EventDestination
 -- @return UpdateConfigurationSetEventDestinationRequest structure as a key-value pair table
@@ -478,23 +675,27 @@ function M.Body(args)
     }
 end
 
-keys.InvalidConfigurationSetException = { nil }
+keys.VerifyEmailIdentityRequest = { ["EmailAddress"] = true, nil }
 
-function asserts.AssertInvalidConfigurationSetException(struct)
+function asserts.AssertVerifyEmailIdentityRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidConfigurationSetException to be of type 'table'")
+	assert(type(struct) == "table", "Expected VerifyEmailIdentityRequest to be of type 'table'")
+	assert(struct["EmailAddress"], "Expected key EmailAddress to exist in table")
+	if struct["EmailAddress"] then asserts.AssertAddress(struct["EmailAddress"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidConfigurationSetException[k], "InvalidConfigurationSetException contains unknown key " .. tostring(k))
+		assert(keys.VerifyEmailIdentityRequest[k], "VerifyEmailIdentityRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidConfigurationSetException
--- <p>Indicates that the configuration set is invalid. See the error message for details.</p>
+--- Create a structure of type VerifyEmailIdentityRequest
+-- <p>Represents a request to begin email address verification with Amazon SES. For information about email address verification, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html">Amazon SES Developer Guide</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidConfigurationSetException structure as a key-value pair table
-function M.InvalidConfigurationSetException(args)
-	assert(args, "You must provide an argument table when creating InvalidConfigurationSetException")
+-- * EmailAddress [Address] <p>The email address to be verified.</p>
+-- Required key: EmailAddress
+-- @return VerifyEmailIdentityRequest structure as a key-value pair table
+function M.VerifyEmailIdentityRequest(args)
+	assert(args, "You must provide an argument table when creating VerifyEmailIdentityRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -502,8 +703,9 @@ function M.InvalidConfigurationSetException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["EmailAddress"] = args["EmailAddress"],
 	}
-	asserts.AssertInvalidConfigurationSetException(all_args)
+	asserts.AssertVerifyEmailIdentityRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -512,27 +714,100 @@ function M.InvalidConfigurationSetException(args)
     }
 end
 
-keys.DeleteConfigurationSetRequest = { ["ConfigurationSetName"] = true, nil }
+keys.SendBulkTemplatedEmailRequest = { ["ReturnPathArn"] = true, ["ReplyToAddresses"] = true, ["DefaultTemplateData"] = true, ["TemplateArn"] = true, ["Source"] = true, ["DefaultTags"] = true, ["ReturnPath"] = true, ["Template"] = true, ["ConfigurationSetName"] = true, ["SourceArn"] = true, ["Destinations"] = true, nil }
 
-function asserts.AssertDeleteConfigurationSetRequest(struct)
+function asserts.AssertSendBulkTemplatedEmailRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteConfigurationSetRequest to be of type 'table'")
-	assert(struct["ConfigurationSetName"], "Expected key ConfigurationSetName to exist in table")
+	assert(type(struct) == "table", "Expected SendBulkTemplatedEmailRequest to be of type 'table'")
+	assert(struct["Source"], "Expected key Source to exist in table")
+	assert(struct["Template"], "Expected key Template to exist in table")
+	assert(struct["Destinations"], "Expected key Destinations to exist in table")
+	if struct["ReturnPathArn"] then asserts.AssertAmazonResourceName(struct["ReturnPathArn"]) end
+	if struct["ReplyToAddresses"] then asserts.AssertAddressList(struct["ReplyToAddresses"]) end
+	if struct["DefaultTemplateData"] then asserts.AssertTemplateData(struct["DefaultTemplateData"]) end
+	if struct["TemplateArn"] then asserts.AssertAmazonResourceName(struct["TemplateArn"]) end
+	if struct["Source"] then asserts.AssertAddress(struct["Source"]) end
+	if struct["DefaultTags"] then asserts.AssertMessageTagList(struct["DefaultTags"]) end
+	if struct["ReturnPath"] then asserts.AssertAddress(struct["ReturnPath"]) end
+	if struct["Template"] then asserts.AssertTemplateName(struct["Template"]) end
 	if struct["ConfigurationSetName"] then asserts.AssertConfigurationSetName(struct["ConfigurationSetName"]) end
+	if struct["SourceArn"] then asserts.AssertAmazonResourceName(struct["SourceArn"]) end
+	if struct["Destinations"] then asserts.AssertBulkEmailDestinationList(struct["Destinations"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteConfigurationSetRequest[k], "DeleteConfigurationSetRequest contains unknown key " .. tostring(k))
+		assert(keys.SendBulkTemplatedEmailRequest[k], "SendBulkTemplatedEmailRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteConfigurationSetRequest
--- <p>Represents a request to delete a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+--- Create a structure of type SendBulkTemplatedEmailRequest
+-- <p>Represents a request to send a templated email to multiple destinations using Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html">Amazon SES Developer Guide</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to delete.</p>
+-- * ReturnPathArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the email address specified in the <code>ReturnPath</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to use <code>feedback@example.com</code>, then you would specify the <code>ReturnPathArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>ReturnPath</code> to be <code>feedback@example.com</code>.</p> <p>For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
+-- * ReplyToAddresses [AddressList] <p>The reply-to email address(es) for the message. If the recipient replies to the message, each reply-to address will receive the reply.</p>
+-- * DefaultTemplateData [TemplateData] <p>A list of replacement values to apply to the template when replacement data is not specified in a Destination object. These values act as a default or fallback option when no other data is available.</p> <p>The template data is a JSON object, typically consisting of key-value pairs in which the keys correspond to replacement tags in the email template.</p>
+-- * TemplateArn [AmazonResourceName] <p>The ARN of the template to use when sending this email.</p>
+-- * Source [Address] <p>The email address that is sending the email. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. For information about verifying identities, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html">Amazon SES Developer Guide</a>.</p> <p>If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the <code>SourceArn</code> parameter. For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p> <note> <p>Amazon SES does not support the SMTPUTF8 extension, as described in <a href="https://tools.ietf.org/html/rfc6531">RFC6531</a>. For this reason, the <i>local part</i> of a source email address (the part of the email address that precedes the @ sign) may only contain <a href="https://en.wikipedia.org/wiki/Email_address#Local-part">7-bit ASCII characters</a>. If the <i>domain part</i> of an address (the part after the @ sign) contains non-ASCII characters, they must be encoded using Punycode, as described in <a href="https://tools.ietf.org/html/rfc3492.html">RFC3492</a>. The sender name (also known as the <i>friendly name</i>) may contain non-ASCII characters. These characters must be encoded using MIME encoded-word syntax, as described in <a href="https://tools.ietf.org/html/rfc2047">RFC 2047</a>. MIME encoded-word syntax uses the following form: <code>=?charset?encoding?encoded-text?=</code>.</p> </note>
+-- * DefaultTags [MessageTagList] <p>A list of tags, in the form of name/value pairs, to apply to an email that you send to a destination using <code>SendBulkTemplatedEmail</code>.</p>
+-- * ReturnPath [Address] <p>The email address that bounces and complaints will be forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the <code>ReturnPath</code> parameter. The <code>ReturnPath</code> parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. </p>
+-- * Template [TemplateName] <p>The template to use when sending this email.</p>
+-- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to use when you send an email using <code>SendBulkTemplatedEmail</code>.</p>
+-- * SourceArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to send for the email address specified in the <code>Source</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to send from <code>user@example.com</code>, then you would specify the <code>SourceArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>Source</code> to be <code>user@example.com</code>.</p> <p>For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
+-- * Destinations [BulkEmailDestinationList] <p>One or more <code>Destination</code> objects. All of the recipients in a <code>Destination</code> will receive the same version of the email. You can specify up to 50 <code>Destination</code> objects within a <code>Destinations</code> array.</p>
+-- Required key: Source
+-- Required key: Template
+-- Required key: Destinations
+-- @return SendBulkTemplatedEmailRequest structure as a key-value pair table
+function M.SendBulkTemplatedEmailRequest(args)
+	assert(args, "You must provide an argument table when creating SendBulkTemplatedEmailRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ReturnPathArn"] = args["ReturnPathArn"],
+		["ReplyToAddresses"] = args["ReplyToAddresses"],
+		["DefaultTemplateData"] = args["DefaultTemplateData"],
+		["TemplateArn"] = args["TemplateArn"],
+		["Source"] = args["Source"],
+		["DefaultTags"] = args["DefaultTags"],
+		["ReturnPath"] = args["ReturnPath"],
+		["Template"] = args["Template"],
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
+		["SourceArn"] = args["SourceArn"],
+		["Destinations"] = args["Destinations"],
+	}
+	asserts.AssertSendBulkTemplatedEmailRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteConfigurationSetTrackingOptionsRequest = { ["ConfigurationSetName"] = true, nil }
+
+function asserts.AssertDeleteConfigurationSetTrackingOptionsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteConfigurationSetTrackingOptionsRequest to be of type 'table'")
+	assert(struct["ConfigurationSetName"], "Expected key ConfigurationSetName to exist in table")
+	if struct["ConfigurationSetName"] then asserts.AssertConfigurationSetName(struct["ConfigurationSetName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteConfigurationSetTrackingOptionsRequest[k], "DeleteConfigurationSetTrackingOptionsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteConfigurationSetTrackingOptionsRequest
+-- <p>Represents a request to delete open and click tracking options in a configuration set. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set from which you want to delete the tracking options.</p>
 -- Required key: ConfigurationSetName
--- @return DeleteConfigurationSetRequest structure as a key-value pair table
-function M.DeleteConfigurationSetRequest(args)
-	assert(args, "You must provide an argument table when creating DeleteConfigurationSetRequest")
+-- @return DeleteConfigurationSetTrackingOptionsRequest structure as a key-value pair table
+function M.DeleteConfigurationSetTrackingOptionsRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteConfigurationSetTrackingOptionsRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -542,7 +817,7 @@ function M.DeleteConfigurationSetRequest(args)
 	local all_args = { 
 		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
-	asserts.AssertDeleteConfigurationSetRequest(all_args)
+	asserts.AssertDeleteConfigurationSetTrackingOptionsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -591,6 +866,100 @@ function M.BouncedRecipientInfo(args)
 		["RecipientDsnFields"] = args["RecipientDsnFields"],
 	}
 	asserts.AssertBouncedRecipientInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListConfigurationSetsRequest = { ["NextToken"] = true, ["MaxItems"] = true, nil }
+
+function asserts.AssertListConfigurationSetsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListConfigurationSetsRequest to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxItems"] then asserts.AssertMaxItems(struct["MaxItems"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListConfigurationSetsRequest[k], "ListConfigurationSetsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListConfigurationSetsRequest
+-- <p>Represents a request to list the configuration sets associated with your AWS account. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>A token returned from a previous call to <code>ListConfigurationSets</code> to indicate the position of the configuration set in the configuration set list.</p>
+-- * MaxItems [MaxItems] <p>The number of configuration sets to return.</p>
+-- @return ListConfigurationSetsRequest structure as a key-value pair table
+function M.ListConfigurationSetsRequest(args)
+	assert(args, "You must provide an argument table when creating ListConfigurationSetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["MaxItems"] = args["MaxItems"],
+	}
+	asserts.AssertListConfigurationSetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ReceiptRule = { ["Name"] = true, ["Recipients"] = true, ["Enabled"] = true, ["ScanEnabled"] = true, ["Actions"] = true, ["TlsPolicy"] = true, nil }
+
+function asserts.AssertReceiptRule(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ReceiptRule to be of type 'table'")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	if struct["Name"] then asserts.AssertReceiptRuleName(struct["Name"]) end
+	if struct["Recipients"] then asserts.AssertRecipientsList(struct["Recipients"]) end
+	if struct["Enabled"] then asserts.AssertEnabled(struct["Enabled"]) end
+	if struct["ScanEnabled"] then asserts.AssertEnabled(struct["ScanEnabled"]) end
+	if struct["Actions"] then asserts.AssertReceiptActionsList(struct["Actions"]) end
+	if struct["TlsPolicy"] then asserts.AssertTlsPolicy(struct["TlsPolicy"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ReceiptRule[k], "ReceiptRule contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ReceiptRule
+-- <p>Receipt rules enable you to specify which actions Amazon SES should take when it receives mail on behalf of one or more email addresses or domains that you own.</p> <p>Each receipt rule defines a set of email addresses or domains that it applies to. If the email addresses or domains match at least one recipient address of the message, Amazon SES executes all of the receipt rule's actions on the message.</p> <p>For information about setting up receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html">Amazon SES Developer Guide</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [ReceiptRuleName] <p>The name of the receipt rule. The name must:</p> <ul> <li> <p>This value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
+-- * Recipients [RecipientsList] <p>The recipient domains and email addresses that the receipt rule applies to. If this field is not specified, this rule will match all recipients under all verified domains.</p>
+-- * Enabled [Enabled] <p>If <code>true</code>, the receipt rule is active. The default value is <code>false</code>.</p>
+-- * ScanEnabled [Enabled] <p>If <code>true</code>, then messages that this receipt rule applies to are scanned for spam and viruses. The default value is <code>false</code>.</p>
+-- * Actions [ReceiptActionsList] <p>An ordered list of actions to perform on messages that match at least one of the recipient email addresses or domains specified in the receipt rule.</p>
+-- * TlsPolicy [TlsPolicy] <p>Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted with Transport Layer Security (TLS). If this parameter is set to <code>Require</code>, Amazon SES will bounce emails that are not received over TLS. The default is <code>Optional</code>.</p>
+-- Required key: Name
+-- @return ReceiptRule structure as a key-value pair table
+function M.ReceiptRule(args)
+	assert(args, "You must provide an argument table when creating ReceiptRule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Name"] = args["Name"],
+		["Recipients"] = args["Recipients"],
+		["Enabled"] = args["Enabled"],
+		["ScanEnabled"] = args["ScanEnabled"],
+		["Actions"] = args["Actions"],
+		["TlsPolicy"] = args["TlsPolicy"],
+	}
+	asserts.AssertReceiptRule(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -717,6 +1086,40 @@ function M.ListVerifiedEmailAddressesResponse(args)
     }
 end
 
+keys.CreateReceiptRuleResponse = { nil }
+
+function asserts.AssertCreateReceiptRuleResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateReceiptRuleResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.CreateReceiptRuleResponse[k], "CreateReceiptRuleResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateReceiptRuleResponse
+-- <p>An empty element returned on a successful request.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateReceiptRuleResponse structure as a key-value pair table
+function M.CreateReceiptRuleResponse(args)
+	assert(args, "You must provide an argument table when creating CreateReceiptRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertCreateReceiptRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DeleteIdentityResponse = { nil }
 
 function asserts.AssertDeleteIdentityResponse(struct)
@@ -751,27 +1154,25 @@ function M.DeleteIdentityResponse(args)
     }
 end
 
-keys.EventDestinationAlreadyExistsException = { ["EventDestinationName"] = true, ["ConfigurationSetName"] = true, nil }
+keys.GetTemplateResponse = { ["Template"] = true, nil }
 
-function asserts.AssertEventDestinationAlreadyExistsException(struct)
+function asserts.AssertGetTemplateResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected EventDestinationAlreadyExistsException to be of type 'table'")
-	if struct["EventDestinationName"] then asserts.AssertEventDestinationName(struct["EventDestinationName"]) end
-	if struct["ConfigurationSetName"] then asserts.AssertConfigurationSetName(struct["ConfigurationSetName"]) end
+	assert(type(struct) == "table", "Expected GetTemplateResponse to be of type 'table'")
+	if struct["Template"] then asserts.AssertTemplate(struct["Template"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.EventDestinationAlreadyExistsException[k], "EventDestinationAlreadyExistsException contains unknown key " .. tostring(k))
+		assert(keys.GetTemplateResponse[k], "GetTemplateResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type EventDestinationAlreadyExistsException
--- <p>Indicates that the event destination could not be created because of a naming conflict.</p>
+--- Create a structure of type GetTemplateResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * EventDestinationName [EventDestinationName] 
--- * ConfigurationSetName [ConfigurationSetName] 
--- @return EventDestinationAlreadyExistsException structure as a key-value pair table
-function M.EventDestinationAlreadyExistsException(args)
-	assert(args, "You must provide an argument table when creating EventDestinationAlreadyExistsException")
+-- * Template [Template] 
+-- @return GetTemplateResponse structure as a key-value pair table
+function M.GetTemplateResponse(args)
+	assert(args, "You must provide an argument table when creating GetTemplateResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -779,10 +1180,97 @@ function M.EventDestinationAlreadyExistsException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["EventDestinationName"] = args["EventDestinationName"],
+		["Template"] = args["Template"],
+	}
+	asserts.AssertGetTemplateResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SetIdentityDkimEnabledRequest = { ["DkimEnabled"] = true, ["Identity"] = true, nil }
+
+function asserts.AssertSetIdentityDkimEnabledRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SetIdentityDkimEnabledRequest to be of type 'table'")
+	assert(struct["Identity"], "Expected key Identity to exist in table")
+	assert(struct["DkimEnabled"], "Expected key DkimEnabled to exist in table")
+	if struct["DkimEnabled"] then asserts.AssertEnabled(struct["DkimEnabled"]) end
+	if struct["Identity"] then asserts.AssertIdentity(struct["Identity"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SetIdentityDkimEnabledRequest[k], "SetIdentityDkimEnabledRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SetIdentityDkimEnabledRequest
+-- <p>Represents a request to enable or disable Amazon SES Easy DKIM signing for an identity. For more information about setting up Easy DKIM, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Amazon SES Developer Guide</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DkimEnabled [Enabled] <p>Sets whether DKIM signing is enabled for an identity. Set to <code>true</code> to enable DKIM signing for this identity; <code>false</code> to disable it. </p>
+-- * Identity [Identity] <p>The identity for which DKIM signing should be enabled or disabled.</p>
+-- Required key: Identity
+-- Required key: DkimEnabled
+-- @return SetIdentityDkimEnabledRequest structure as a key-value pair table
+function M.SetIdentityDkimEnabledRequest(args)
+	assert(args, "You must provide an argument table when creating SetIdentityDkimEnabledRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["DkimEnabled"] = args["DkimEnabled"],
+		["Identity"] = args["Identity"],
+	}
+	asserts.AssertSetIdentityDkimEnabledRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateConfigurationSetTrackingOptionsRequest = { ["TrackingOptions"] = true, ["ConfigurationSetName"] = true, nil }
+
+function asserts.AssertUpdateConfigurationSetTrackingOptionsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateConfigurationSetTrackingOptionsRequest to be of type 'table'")
+	assert(struct["ConfigurationSetName"], "Expected key ConfigurationSetName to exist in table")
+	assert(struct["TrackingOptions"], "Expected key TrackingOptions to exist in table")
+	if struct["TrackingOptions"] then asserts.AssertTrackingOptions(struct["TrackingOptions"]) end
+	if struct["ConfigurationSetName"] then asserts.AssertConfigurationSetName(struct["ConfigurationSetName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateConfigurationSetTrackingOptionsRequest[k], "UpdateConfigurationSetTrackingOptionsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateConfigurationSetTrackingOptionsRequest
+-- <p>Represents a request to update the tracking options for a configuration set. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrackingOptions [TrackingOptions] 
+-- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set for which you want to update the custom tracking domain.</p>
+-- Required key: ConfigurationSetName
+-- Required key: TrackingOptions
+-- @return UpdateConfigurationSetTrackingOptionsRequest structure as a key-value pair table
+function M.UpdateConfigurationSetTrackingOptionsRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateConfigurationSetTrackingOptionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["TrackingOptions"] = args["TrackingOptions"],
 		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
-	asserts.AssertEventDestinationAlreadyExistsException(all_args)
+	asserts.AssertUpdateConfigurationSetTrackingOptionsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -807,7 +1295,7 @@ end
 -- <p>Returns a TXT record that you must publish to the DNS server of your domain to complete domain verification with Amazon SES.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * VerificationToken [VerificationToken] <p>A TXT record that must be placed in the DNS settings for the domain, in order to complete domain verification.</p>
+-- * VerificationToken [VerificationToken] <p>A TXT record that you must place in the DNS settings of the domain to complete domain verification with Amazon SES.</p> <p>As Amazon SES searches for the TXT record, the domain's verification status is "Pending". When Amazon SES detects the record, the domain's verification status changes to "Success". If Amazon SES is unable to detect the record within 72 hours, the domain's verification status changes to "Failed." In that case, if you still want to verify the domain, you must restart the verification process from the beginning.</p>
 -- Required key: VerificationToken
 -- @return VerifyDomainIdentityResponse structure as a key-value pair table
 function M.VerifyDomainIdentityResponse(args)
@@ -864,6 +1352,50 @@ function M.DeleteConfigurationSetResponse(args)
     }
 end
 
+keys.UpdateConfigurationSetReputationMetricsEnabledRequest = { ["Enabled"] = true, ["ConfigurationSetName"] = true, nil }
+
+function asserts.AssertUpdateConfigurationSetReputationMetricsEnabledRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateConfigurationSetReputationMetricsEnabledRequest to be of type 'table'")
+	assert(struct["ConfigurationSetName"], "Expected key ConfigurationSetName to exist in table")
+	assert(struct["Enabled"], "Expected key Enabled to exist in table")
+	if struct["Enabled"] then asserts.AssertEnabled(struct["Enabled"]) end
+	if struct["ConfigurationSetName"] then asserts.AssertConfigurationSetName(struct["ConfigurationSetName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateConfigurationSetReputationMetricsEnabledRequest[k], "UpdateConfigurationSetReputationMetricsEnabledRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateConfigurationSetReputationMetricsEnabledRequest
+-- <p>Represents a request to modify the reputation metric publishing settings for a configuration set.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Enabled [Enabled] <p>Describes whether or not Amazon SES will publish reputation metrics for the configuration set, such as bounce and complaint rates, to Amazon CloudWatch.</p>
+-- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set that you want to update.</p>
+-- Required key: ConfigurationSetName
+-- Required key: Enabled
+-- @return UpdateConfigurationSetReputationMetricsEnabledRequest structure as a key-value pair table
+function M.UpdateConfigurationSetReputationMetricsEnabledRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateConfigurationSetReputationMetricsEnabledRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Enabled"] = args["Enabled"],
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
+	}
+	asserts.AssertUpdateConfigurationSetReputationMetricsEnabledRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.CreateReceiptFilterResponse = { nil }
 
 function asserts.AssertCreateReceiptFilterResponse(struct)
@@ -898,23 +1430,23 @@ function M.CreateReceiptFilterResponse(args)
     }
 end
 
-keys.VerifyEmailIdentityResponse = { nil }
+keys.DeleteConfigurationSetTrackingOptionsResponse = { nil }
 
-function asserts.AssertVerifyEmailIdentityResponse(struct)
+function asserts.AssertDeleteConfigurationSetTrackingOptionsResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected VerifyEmailIdentityResponse to be of type 'table'")
+	assert(type(struct) == "table", "Expected DeleteConfigurationSetTrackingOptionsResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.VerifyEmailIdentityResponse[k], "VerifyEmailIdentityResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteConfigurationSetTrackingOptionsResponse[k], "DeleteConfigurationSetTrackingOptionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type VerifyEmailIdentityResponse
+--- Create a structure of type DeleteConfigurationSetTrackingOptionsResponse
 -- <p>An empty element returned on a successful request.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return VerifyEmailIdentityResponse structure as a key-value pair table
-function M.VerifyEmailIdentityResponse(args)
-	assert(args, "You must provide an argument table when creating VerifyEmailIdentityResponse")
+-- @return DeleteConfigurationSetTrackingOptionsResponse structure as a key-value pair table
+function M.DeleteConfigurationSetTrackingOptionsResponse(args)
+	assert(args, "You must provide an argument table when creating DeleteConfigurationSetTrackingOptionsResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -923,7 +1455,7 @@ function M.VerifyEmailIdentityResponse(args)
     }
 	local all_args = { 
 	}
-	asserts.AssertVerifyEmailIdentityResponse(all_args)
+	asserts.AssertDeleteConfigurationSetTrackingOptionsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -957,8 +1489,8 @@ end
 -- Valid keys:
 -- * ReturnPathArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the email address specified in the <code>ReturnPath</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to use <code>feedback@example.com</code>, then you would specify the <code>ReturnPathArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>ReturnPath</code> to be <code>feedback@example.com</code>.</p> <p>Instead of using this parameter, you can use the X-header <code>X-SES-RETURN-PATH-ARN</code> in the raw message of the email. If you use both the <code>ReturnPathArn</code> parameter and the corresponding X-header, Amazon SES uses the value of the <code>ReturnPathArn</code> parameter.</p> <note> <p>For information about when to use this parameter, see the description of <code>SendRawEmail</code> in this guide, or see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html">Amazon SES Developer Guide</a>.</p> </note>
 -- * Tags [MessageTagList] <p>A list of tags, in the form of name/value pairs, to apply to an email that you send using <code>SendRawEmail</code>. Tags correspond to characteristics of the email that you define, so that you can publish email sending events.</p>
--- * RawMessage [RawMessage] <p>The raw text of the message. The client is responsible for ensuring the following:</p> <ul> <li> <p>Message must contain a header and a body, separated by a blank line.</p> </li> <li> <p>All required header fields must be present.</p> </li> <li> <p>Each part of a multipart MIME message must be formatted properly.</p> </li> <li> <p>MIME content types must be among those supported by Amazon SES. For more information, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html">Amazon SES Developer Guide</a>.</p> </li> <li> <p>Must be base64-encoded.</p> </li> </ul>
--- * Source [Address] <p>The identity's email address. If you do not provide a value for this parameter, you must specify a "From" address in the raw text of the message. (You can also specify both.)</p> <p> By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: <code>=?charset?encoding?encoded-text?=</code>. For more information, see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>. </p> <note> <p>If you specify the <code>Source</code> parameter and have feedback forwarding enabled, then bounces and complaints will be sent to this email address. This takes precedence over any <i>Return-Path</i> header that you might include in the raw text of the message.</p> </note>
+-- * RawMessage [RawMessage] <p>The raw email message itself. The message has to meet the following criteria:</p> <ul> <li> <p>The message has to contain a header and a body, separated by a blank line.</p> </li> <li> <p>All of the required header fields must be present in the message.</p> </li> <li> <p>Each part of a multipart MIME message must be formatted properly.</p> </li> <li> <p>Attachments must be of a content type that Amazon SES supports. For a list on unsupported content types, see <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html">Unsupported Attachment Types</a> in the <i>Amazon SES Developer Guide</i>.</p> </li> <li> <p>The entire message must be base64-encoded.</p> </li> <li> <p>If any of the MIME parts in your message contain content that is outside of the 7-bit ASCII character range, we highly recommend that you encode that content. For more information, see <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Sending Raw Email</a> in the <i>Amazon SES Developer Guide</i>.</p> </li> <li> <p>Per <a href="https://tools.ietf.org/html/rfc5321#section-4.5.3.1.6">RFC 5321</a>, the maximum length of each line of text, including the &lt;CRLF&gt;, must not exceed 1,000 characters.</p> </li> </ul>
+-- * Source [Address] <p>The identity's email address. If you do not provide a value for this parameter, you must specify a "From" address in the raw text of the message. (You can also specify both.)</p> <note> <p>Amazon SES does not support the SMTPUTF8 extension, as described in<a href="https://tools.ietf.org/html/rfc6531">RFC6531</a>. For this reason, the <i>local part</i> of a source email address (the part of the email address that precedes the @ sign) may only contain <a href="https://en.wikipedia.org/wiki/Email_address#Local-part">7-bit ASCII characters</a>. If the <i>domain part</i> of an address (the part after the @ sign) contains non-ASCII characters, they must be encoded using Punycode, as described in <a href="https://tools.ietf.org/html/rfc3492.html">RFC3492</a>. The sender name (also known as the <i>friendly name</i>) may contain non-ASCII characters. These characters must be encoded using MIME encoded-word syntax, as described in <a href="https://tools.ietf.org/html/rfc2047">RFC 2047</a>. MIME encoded-word syntax uses the following form: <code>=?charset?encoding?encoded-text?=</code>.</p> </note> <p>If you specify the <code>Source</code> parameter and have feedback forwarding enabled, then bounces and complaints will be sent to this email address. This takes precedence over any Return-Path header that you might include in the raw text of the message.</p>
 -- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to use when you send an email using <code>SendRawEmail</code>.</p>
 -- * FromArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to specify a particular "From" address in the header of the raw email.</p> <p>Instead of using this parameter, you can use the X-header <code>X-SES-FROM-ARN</code> in the raw message of the email. If you use both the <code>FromArn</code> parameter and the corresponding X-header, Amazon SES uses the value of the <code>FromArn</code> parameter.</p> <note> <p>For information about when to use this parameter, see the description of <code>SendRawEmail</code> in this guide, or see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html">Amazon SES Developer Guide</a>.</p> </note>
 -- * SourceArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to send for the email address specified in the <code>Source</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to send from <code>user@example.com</code>, then you would specify the <code>SourceArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>Source</code> to be <code>user@example.com</code>.</p> <p>Instead of using this parameter, you can use the X-header <code>X-SES-SOURCE-ARN</code> in the raw message of the email. If you use both the <code>SourceArn</code> parameter and the corresponding X-header, Amazon SES uses the value of the <code>SourceArn</code> parameter.</p> <note> <p>For information about when to use this parameter, see the description of <code>SendRawEmail</code> in this guide, or see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html">Amazon SES Developer Guide</a>.</p> </note>
@@ -1065,6 +1597,46 @@ function M.DeleteReceiptFilterResponse(args)
     }
 end
 
+keys.ListCustomVerificationEmailTemplatesResponse = { ["NextToken"] = true, ["CustomVerificationEmailTemplates"] = true, nil }
+
+function asserts.AssertListCustomVerificationEmailTemplatesResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListCustomVerificationEmailTemplatesResponse to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["CustomVerificationEmailTemplates"] then asserts.AssertCustomVerificationEmailTemplates(struct["CustomVerificationEmailTemplates"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListCustomVerificationEmailTemplatesResponse[k], "ListCustomVerificationEmailTemplatesResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListCustomVerificationEmailTemplatesResponse
+-- <p>A paginated list of custom verification email templates.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>A token indicating that there are additional custom verification email templates available to be listed. Pass this token to a subsequent call to <code>ListTemplates</code> to retrieve the next 50 custom verification email templates.</p>
+-- * CustomVerificationEmailTemplates [CustomVerificationEmailTemplates] <p>A list of the custom verification email templates that exist in your account.</p>
+-- @return ListCustomVerificationEmailTemplatesResponse structure as a key-value pair table
+function M.ListCustomVerificationEmailTemplatesResponse(args)
+	assert(args, "You must provide an argument table when creating ListCustomVerificationEmailTemplatesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["CustomVerificationEmailTemplates"] = args["CustomVerificationEmailTemplates"],
+	}
+	asserts.AssertListCustomVerificationEmailTemplatesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.SetIdentityFeedbackForwardingEnabledRequest = { ["ForwardingEnabled"] = true, ["Identity"] = true, nil }
 
 function asserts.AssertSetIdentityFeedbackForwardingEnabledRequest(struct)
@@ -1109,25 +1681,27 @@ function M.SetIdentityFeedbackForwardingEnabledRequest(args)
     }
 end
 
-keys.SendBounceResponse = { ["MessageId"] = true, nil }
+keys.ListCustomVerificationEmailTemplatesRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function asserts.AssertSendBounceResponse(struct)
+function asserts.AssertListCustomVerificationEmailTemplatesRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SendBounceResponse to be of type 'table'")
-	if struct["MessageId"] then asserts.AssertMessageId(struct["MessageId"]) end
+	assert(type(struct) == "table", "Expected ListCustomVerificationEmailTemplatesRequest to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertMaxResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SendBounceResponse[k], "SendBounceResponse contains unknown key " .. tostring(k))
+		assert(keys.ListCustomVerificationEmailTemplatesRequest[k], "ListCustomVerificationEmailTemplatesRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SendBounceResponse
--- <p>Represents a unique message ID.</p>
+--- Create a structure of type ListCustomVerificationEmailTemplatesRequest
+-- <p>Represents a request to list the existing custom verification email templates for your account.</p> <p>For more information about custom verification email templates, see <a href="ses/latest/DeveloperGuide/custom-verification-emails.html">Using Custom Verification Email Templates</a> in the <i>Amazon SES Developer Guide</i>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * MessageId [MessageId] <p>The message ID of the bounce message.</p>
--- @return SendBounceResponse structure as a key-value pair table
-function M.SendBounceResponse(args)
-	assert(args, "You must provide an argument table when creating SendBounceResponse")
+-- * NextToken [NextToken] <p>An array the contains the name and creation time stamp for each template in your Amazon SES account.</p>
+-- * MaxResults [MaxResults] <p>The maximum number of custom verification email templates to return. This value must be at least 1 and less than or equal to 50. If you do not specify a value, or if you specify a value less than 1 or greater than 50, the operation will return up to 50 results.</p>
+-- @return ListCustomVerificationEmailTemplatesRequest structure as a key-value pair table
+function M.ListCustomVerificationEmailTemplatesRequest(args)
+	assert(args, "You must provide an argument table when creating ListCustomVerificationEmailTemplatesRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1135,9 +1709,69 @@ function M.SendBounceResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["MessageId"] = args["MessageId"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertSendBounceResponse(all_args)
+	asserts.AssertListCustomVerificationEmailTemplatesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.RecipientDsnFields = { ["Status"] = true, ["FinalRecipient"] = true, ["DiagnosticCode"] = true, ["LastAttemptDate"] = true, ["ExtensionFields"] = true, ["RemoteMta"] = true, ["Action"] = true, nil }
+
+function asserts.AssertRecipientDsnFields(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RecipientDsnFields to be of type 'table'")
+	assert(struct["Action"], "Expected key Action to exist in table")
+	assert(struct["Status"], "Expected key Status to exist in table")
+	if struct["Status"] then asserts.AssertDsnStatus(struct["Status"]) end
+	if struct["FinalRecipient"] then asserts.AssertAddress(struct["FinalRecipient"]) end
+	if struct["DiagnosticCode"] then asserts.AssertDiagnosticCode(struct["DiagnosticCode"]) end
+	if struct["LastAttemptDate"] then asserts.AssertLastAttemptDate(struct["LastAttemptDate"]) end
+	if struct["ExtensionFields"] then asserts.AssertExtensionFieldList(struct["ExtensionFields"]) end
+	if struct["RemoteMta"] then asserts.AssertRemoteMta(struct["RemoteMta"]) end
+	if struct["Action"] then asserts.AssertDsnAction(struct["Action"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RecipientDsnFields[k], "RecipientDsnFields contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RecipientDsnFields
+-- <p>Recipient-related information to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.</p> <p>For information about receiving email through Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon SES Developer Guide</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [DsnStatus] <p>The status code that indicates what went wrong. This is required by <a href="https://tools.ietf.org/html/rfc3464">RFC 3464</a>.</p>
+-- * FinalRecipient [Address] <p>The email address that the message was ultimately delivered to. This corresponds to the <code>Final-Recipient</code> in the DSN. If not specified, <code>FinalRecipient</code> will be set to the <code>Recipient</code> specified in the <code>BouncedRecipientInfo</code> structure. Either <code>FinalRecipient</code> or the recipient in <code>BouncedRecipientInfo</code> must be a recipient of the original bounced message.</p> <note> <p>Do not prepend the <code>FinalRecipient</code> email address with <code>rfc 822;</code>, as described in <a href="https://tools.ietf.org/html/rfc3798">RFC 3798</a>.</p> </note>
+-- * DiagnosticCode [DiagnosticCode] <p>An extended explanation of what went wrong; this is usually an SMTP response. See <a href="https://tools.ietf.org/html/rfc3463">RFC 3463</a> for the correct formatting of this parameter.</p>
+-- * LastAttemptDate [LastAttemptDate] <p>The time the final delivery attempt was made, in <a href="https://www.ietf.org/rfc/rfc0822.txt">RFC 822</a> date-time format.</p>
+-- * ExtensionFields [ExtensionFieldList] <p>Additional X-headers to include in the DSN.</p>
+-- * RemoteMta [RemoteMta] <p>The MTA to which the remote MTA attempted to deliver the message, formatted as specified in <a href="https://tools.ietf.org/html/rfc3464">RFC 3464</a> (<code>mta-name-type; mta-name</code>). This parameter typically applies only to propagating synchronous bounces.</p>
+-- * Action [DsnAction] <p>The action performed by the reporting mail transfer agent (MTA) as a result of its attempt to deliver the message to the recipient address. This is required by <a href="https://tools.ietf.org/html/rfc3464">RFC 3464</a>.</p>
+-- Required key: Action
+-- Required key: Status
+-- @return RecipientDsnFields structure as a key-value pair table
+function M.RecipientDsnFields(args)
+	assert(args, "You must provide an argument table when creating RecipientDsnFields")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Status"] = args["Status"],
+		["FinalRecipient"] = args["FinalRecipient"],
+		["DiagnosticCode"] = args["DiagnosticCode"],
+		["LastAttemptDate"] = args["LastAttemptDate"],
+		["ExtensionFields"] = args["ExtensionFields"],
+		["RemoteMta"] = args["RemoteMta"],
+		["Action"] = args["Action"],
+	}
+	asserts.AssertRecipientDsnFields(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1234,40 +1868,6 @@ function M.SetIdentityHeadersInNotificationsEnabledRequest(args)
     }
 end
 
-keys.LimitExceededException = { nil }
-
-function asserts.AssertLimitExceededException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type LimitExceededException
--- <p>Indicates that a resource could not be created because of service limits. For a list of Amazon SES limits, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/limits.html">Amazon SES Developer Guide</a>.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return LimitExceededException structure as a key-value pair table
-function M.LimitExceededException(args)
-	assert(args, "You must provide an argument table when creating LimitExceededException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertLimitExceededException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ConfigurationSet = { ["Name"] = true, nil }
 
 function asserts.AssertConfigurationSet(struct)
@@ -1281,10 +1881,10 @@ function asserts.AssertConfigurationSet(struct)
 end
 
 --- Create a structure of type ConfigurationSet
--- <p>The name of the configuration set.</p> <p>Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- <p>The name of the configuration set.</p> <p>Configuration sets let you create groups of rules that you can apply to the emails you send using Amazon SES. For more information about using configuration sets, see <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/using-configuration-sets.html">Using Amazon SES Configuration Sets</a> in the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/">Amazon SES Developer Guide</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Name [ConfigurationSetName] <p>The name of the configuration set. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
+-- * Name [ConfigurationSetName] <p>The name of the configuration set. The name must meet the following requirements:</p> <ul> <li> <p>Contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain 64 characters or fewer.</p> </li> </ul>
 -- Required key: Name
 -- @return ConfigurationSet structure as a key-value pair table
 function M.ConfigurationSet(args)
@@ -1299,6 +1899,50 @@ function M.ConfigurationSet(args)
 		["Name"] = args["Name"],
 	}
 	asserts.AssertConfigurationSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.TestRenderTemplateRequest = { ["TemplateData"] = true, ["TemplateName"] = true, nil }
+
+function asserts.AssertTestRenderTemplateRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected TestRenderTemplateRequest to be of type 'table'")
+	assert(struct["TemplateName"], "Expected key TemplateName to exist in table")
+	assert(struct["TemplateData"], "Expected key TemplateData to exist in table")
+	if struct["TemplateData"] then asserts.AssertTemplateData(struct["TemplateData"]) end
+	if struct["TemplateName"] then asserts.AssertTemplateName(struct["TemplateName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.TestRenderTemplateRequest[k], "TestRenderTemplateRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type TestRenderTemplateRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TemplateData [TemplateData] <p>A list of replacement values to apply to the template. This parameter is a JSON object, typically consisting of key-value pairs in which the keys correspond to replacement tags in the email template.</p>
+-- * TemplateName [TemplateName] <p>The name of the template that you want to render.</p>
+-- Required key: TemplateName
+-- Required key: TemplateData
+-- @return TestRenderTemplateRequest structure as a key-value pair table
+function M.TestRenderTemplateRequest(args)
+	assert(args, "You must provide an argument table when creating TestRenderTemplateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["TemplateData"] = args["TemplateData"],
+		["TemplateName"] = args["TemplateName"],
+	}
+	asserts.AssertTestRenderTemplateRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1390,6 +2034,46 @@ function M.GetIdentityPoliciesRequest(args)
     }
 end
 
+keys.ListTemplatesRequest = { ["NextToken"] = true, ["MaxItems"] = true, nil }
+
+function asserts.AssertListTemplatesRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListTemplatesRequest to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxItems"] then asserts.AssertMaxItems(struct["MaxItems"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListTemplatesRequest[k], "ListTemplatesRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListTemplatesRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>A token returned from a previous call to <code>ListTemplates</code> to indicate the position in the list of email templates.</p>
+-- * MaxItems [MaxItems] <p>The maximum number of templates to return. This value must be at least 1 and less than or equal to 10. If you do not specify a value, or if you specify a value less than 1 or greater than 10, the operation will return up to 10 results.</p>
+-- @return ListTemplatesRequest structure as a key-value pair table
+function M.ListTemplatesRequest(args)
+	assert(args, "You must provide an argument table when creating ListTemplatesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["MaxItems"] = args["MaxItems"],
+	}
+	asserts.AssertListTemplatesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.SetIdentityDkimEnabledResponse = { nil }
 
 function asserts.AssertSetIdentityDkimEnabledResponse(struct)
@@ -1442,8 +2126,8 @@ end
 -- <p>Represents a request to create a configuration set event destination. A configuration set event destination, which can be either Amazon CloudWatch or Amazon Kinesis Firehose, describes an AWS service in which Amazon SES publishes the email sending events associated with a configuration set. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * EventDestination [EventDestination] <p>An object that describes the AWS service to which Amazon SES will publish the email sending events associated with the specified configuration set.</p>
--- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to which to apply the event destination.</p>
+-- * EventDestination [EventDestination] <p>An object that describes the AWS service that email sending event information will be published to.</p>
+-- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set that the event destination should be associated with.</p>
 -- Required key: ConfigurationSetName
 -- Required key: EventDestination
 -- @return CreateConfigurationSetEventDestinationRequest structure as a key-value pair table
@@ -1460,6 +2144,74 @@ function M.CreateConfigurationSetEventDestinationRequest(args)
 		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
 	asserts.AssertCreateConfigurationSetEventDestinationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SetReceiptRulePositionResponse = { nil }
+
+function asserts.AssertSetReceiptRulePositionResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SetReceiptRulePositionResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.SetReceiptRulePositionResponse[k], "SetReceiptRulePositionResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SetReceiptRulePositionResponse
+-- <p>An empty element returned on a successful request.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SetReceiptRulePositionResponse structure as a key-value pair table
+function M.SetReceiptRulePositionResponse(args)
+	assert(args, "You must provide an argument table when creating SetReceiptRulePositionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertSetReceiptRulePositionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateTemplateResponse = { nil }
+
+function asserts.AssertUpdateTemplateResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateTemplateResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateTemplateResponse[k], "UpdateTemplateResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateTemplateResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateTemplateResponse structure as a key-value pair table
+function M.UpdateTemplateResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateTemplateResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertUpdateTemplateResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1524,7 +2276,7 @@ end
 -- <p>When included in a receipt rule, this action terminates the evaluation of the receipt rule set and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p> <p>For information about setting a stop action in a receipt rule, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-stop.html">Amazon SES Developer Guide</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Scope [StopScope] <p>The scope to which the Stop action applies. That is, what is being stopped.</p>
+-- * Scope [StopScope] <p>The name of the RuleSet that is being stopped.</p>
 -- * TopicArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the stop action is taken. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
 -- Required key: Scope
 -- @return StopAction structure as a key-value pair table
@@ -1576,14 +2328,14 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Tags [MessageTagList] <p>A list of tags, in the form of name/value pairs, to apply to an email that you send using <code>SendEmail</code>. Tags correspond to characteristics of the email that you define, so that you can publish email sending events.</p>
--- * ReturnPathArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the email address specified in the <code>ReturnPath</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to use <code>feedback@example.com</code>, then you would specify the <code>ReturnPathArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>ReturnPath</code> to be <code>feedback@example.com</code>.</p> <p>For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>. </p>
+-- * ReturnPathArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the email address specified in the <code>ReturnPath</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to use <code>feedback@example.com</code>, then you would specify the <code>ReturnPathArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>ReturnPath</code> to be <code>feedback@example.com</code>.</p> <p>For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
 -- * ReplyToAddresses [AddressList] <p>The reply-to email address(es) for the message. If the recipient replies to the message, each reply-to address will receive the reply.</p>
 -- * Destination [Destination] <p>The destination for this email, composed of To:, CC:, and BCC: fields.</p>
--- * Source [Address] <p>The email address that is sending the email. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. For information about verifying identities, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html">Amazon SES Developer Guide</a>.</p> <p>If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the <code>SourceArn</code> parameter. For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p> <p> In all cases, the email address must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: <code>=?charset?encoding?encoded-text?=</code>. For more information, see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>. </p>
--- * ReturnPath [Address] <p>The email address to which bounces and complaints are to be forwarded when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the <code>ReturnPath</code> parameter. The <code>ReturnPath</code> parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. </p>
+-- * Source [Address] <p>The email address that is sending the email. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. For information about verifying identities, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html">Amazon SES Developer Guide</a>.</p> <p>If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the <code>SourceArn</code> parameter. For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p> <note> <p>Amazon SES does not support the SMTPUTF8 extension, as described in <a href="https://tools.ietf.org/html/rfc6531">RFC6531</a>. For this reason, the <i>local part</i> of a source email address (the part of the email address that precedes the @ sign) may only contain <a href="https://en.wikipedia.org/wiki/Email_address#Local-part">7-bit ASCII characters</a>. If the <i>domain part</i> of an address (the part after the @ sign) contains non-ASCII characters, they must be encoded using Punycode, as described in <a href="https://tools.ietf.org/html/rfc3492.html">RFC3492</a>. The sender name (also known as the <i>friendly name</i>) may contain non-ASCII characters. These characters must be encoded using MIME encoded-word syntax, as described in <a href="https://tools.ietf.org/html/rfc2047">RFC 2047</a>. MIME encoded-word syntax uses the following form: <code>=?charset?encoding?encoded-text?=</code>.</p> </note>
+-- * ReturnPath [Address] <p>The email address that bounces and complaints will be forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the <code>ReturnPath</code> parameter. The <code>ReturnPath</code> parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. </p>
 -- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to use when you send an email using <code>SendEmail</code>.</p>
 -- * Message [Message] <p>The message to be sent.</p>
--- * SourceArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to send for the email address specified in the <code>Source</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to send from <code>user@example.com</code>, then you would specify the <code>SourceArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>Source</code> to be <code>user@example.com</code>.</p> <p>For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>. </p>
+-- * SourceArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to send for the email address specified in the <code>Source</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to send from <code>user@example.com</code>, then you would specify the <code>SourceArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>Source</code> to be <code>user@example.com</code>.</p> <p>For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
 -- Required key: Source
 -- Required key: Destination
 -- Required key: Message
@@ -1616,25 +2368,23 @@ function M.SendEmailRequest(args)
     }
 end
 
-keys.InvalidSnsTopicException = { ["Topic"] = true, nil }
+keys.UpdateConfigurationSetTrackingOptionsResponse = { nil }
 
-function asserts.AssertInvalidSnsTopicException(struct)
+function asserts.AssertUpdateConfigurationSetTrackingOptionsResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidSnsTopicException to be of type 'table'")
-	if struct["Topic"] then asserts.AssertAmazonResourceName(struct["Topic"]) end
+	assert(type(struct) == "table", "Expected UpdateConfigurationSetTrackingOptionsResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidSnsTopicException[k], "InvalidSnsTopicException contains unknown key " .. tostring(k))
+		assert(keys.UpdateConfigurationSetTrackingOptionsResponse[k], "UpdateConfigurationSetTrackingOptionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidSnsTopicException
--- <p>Indicates that the provided Amazon SNS topic is invalid, or that Amazon SES could not publish to the topic, possibly due to permissions issues. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p>
+--- Create a structure of type UpdateConfigurationSetTrackingOptionsResponse
+-- <p>An empty element returned on a successful request.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Topic [AmazonResourceName] 
--- @return InvalidSnsTopicException structure as a key-value pair table
-function M.InvalidSnsTopicException(args)
-	assert(args, "You must provide an argument table when creating InvalidSnsTopicException")
+-- @return UpdateConfigurationSetTrackingOptionsResponse structure as a key-value pair table
+function M.UpdateConfigurationSetTrackingOptionsResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateConfigurationSetTrackingOptionsResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -1642,9 +2392,47 @@ function M.InvalidSnsTopicException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Topic"] = args["Topic"],
 	}
-	asserts.AssertInvalidSnsTopicException(all_args)
+	asserts.AssertUpdateConfigurationSetTrackingOptionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SendTemplatedEmailResponse = { ["MessageId"] = true, nil }
+
+function asserts.AssertSendTemplatedEmailResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SendTemplatedEmailResponse to be of type 'table'")
+	assert(struct["MessageId"], "Expected key MessageId to exist in table")
+	if struct["MessageId"] then asserts.AssertMessageId(struct["MessageId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SendTemplatedEmailResponse[k], "SendTemplatedEmailResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SendTemplatedEmailResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MessageId [MessageId] <p>The unique message identifier returned from the <code>SendTemplatedEmail</code> action. </p>
+-- Required key: MessageId
+-- @return SendTemplatedEmailResponse structure as a key-value pair table
+function M.SendTemplatedEmailResponse(args)
+	assert(args, "You must provide an argument table when creating SendTemplatedEmailResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["MessageId"] = args["MessageId"],
+	}
+	asserts.AssertSendTemplatedEmailResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1692,17 +2480,18 @@ function M.DeleteVerifiedEmailAddressRequest(args)
     }
 end
 
-keys.EventDestination = { ["MatchingEventTypes"] = true, ["Enabled"] = true, ["Name"] = true, ["CloudWatchDestination"] = true, ["KinesisFirehoseDestination"] = true, nil }
+keys.EventDestination = { ["CloudWatchDestination"] = true, ["MatchingEventTypes"] = true, ["Name"] = true, ["Enabled"] = true, ["SNSDestination"] = true, ["KinesisFirehoseDestination"] = true, nil }
 
 function asserts.AssertEventDestination(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EventDestination to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["MatchingEventTypes"], "Expected key MatchingEventTypes to exist in table")
-	if struct["MatchingEventTypes"] then asserts.AssertEventTypes(struct["MatchingEventTypes"]) end
-	if struct["Enabled"] then asserts.AssertEnabled(struct["Enabled"]) end
-	if struct["Name"] then asserts.AssertEventDestinationName(struct["Name"]) end
 	if struct["CloudWatchDestination"] then asserts.AssertCloudWatchDestination(struct["CloudWatchDestination"]) end
+	if struct["MatchingEventTypes"] then asserts.AssertEventTypes(struct["MatchingEventTypes"]) end
+	if struct["Name"] then asserts.AssertEventDestinationName(struct["Name"]) end
+	if struct["Enabled"] then asserts.AssertEnabled(struct["Enabled"]) end
+	if struct["SNSDestination"] then asserts.AssertSNSDestination(struct["SNSDestination"]) end
 	if struct["KinesisFirehoseDestination"] then asserts.AssertKinesisFirehoseDestination(struct["KinesisFirehoseDestination"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.EventDestination[k], "EventDestination contains unknown key " .. tostring(k))
@@ -1710,13 +2499,14 @@ function asserts.AssertEventDestination(struct)
 end
 
 --- Create a structure of type EventDestination
--- <p>Contains information about the event destination to which the specified email sending events are published.</p> <note> <p>When you create or update an event destination, you must provide one, and only one, destination. The destination can be either Amazon CloudWatch or Amazon Kinesis Firehose.</p> </note> <p>Event destinations are associated with configuration sets, which enable you to publish email sending events to Amazon CloudWatch or Amazon Kinesis Firehose. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- <p>Contains information about the event destination that the specified email sending events will be published to.</p> <note> <p>When you create or update an event destination, you must provide one, and only one, destination. The destination can be Amazon CloudWatch, Amazon Kinesis Firehose or Amazon Simple Notification Service (Amazon SNS).</p> </note> <p>Event destinations are associated with configuration sets, which enable you to publish email sending events to Amazon CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS). For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * MatchingEventTypes [EventTypes] <p>The type of email sending events to publish to the event destination.</p>
--- * Enabled [Enabled] <p>Sets whether Amazon SES publishes events to this destination when you send an email with the associated configuration set. Set to <code>true</code> to enable publishing to this destination; set to <code>false</code> to prevent publishing to this destination. The default value is <code>false</code>.</p>
--- * Name [EventDestinationName] <p>The name of the event destination. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
 -- * CloudWatchDestination [CloudWatchDestination] <p>An object that contains the names, default values, and sources of the dimensions associated with an Amazon CloudWatch event destination.</p>
+-- * MatchingEventTypes [EventTypes] <p>The type of email sending events to publish to the event destination.</p>
+-- * Name [EventDestinationName] <p>The name of the event destination. The name must:</p> <ul> <li> <p>This value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
+-- * Enabled [Enabled] <p>Sets whether Amazon SES publishes events to this destination when you send an email with the associated configuration set. Set to <code>true</code> to enable publishing to this destination; set to <code>false</code> to prevent publishing to this destination. The default value is <code>false</code>.</p>
+-- * SNSDestination [SNSDestination] <p>An object that contains the topic ARN associated with an Amazon Simple Notification Service (Amazon SNS) event destination.</p>
 -- * KinesisFirehoseDestination [KinesisFirehoseDestination] <p>An object that contains the delivery stream ARN and the IAM role ARN associated with an Amazon Kinesis Firehose event destination.</p>
 -- Required key: Name
 -- Required key: MatchingEventTypes
@@ -1730,10 +2520,11 @@ function M.EventDestination(args)
     local header_args = { 
     }
 	local all_args = { 
-		["MatchingEventTypes"] = args["MatchingEventTypes"],
-		["Enabled"] = args["Enabled"],
-		["Name"] = args["Name"],
 		["CloudWatchDestination"] = args["CloudWatchDestination"],
+		["MatchingEventTypes"] = args["MatchingEventTypes"],
+		["Name"] = args["Name"],
+		["Enabled"] = args["Enabled"],
+		["SNSDestination"] = args["SNSDestination"],
 		["KinesisFirehoseDestination"] = args["KinesisFirehoseDestination"],
 	}
 	asserts.AssertEventDestination(all_args)
@@ -1865,31 +2656,27 @@ function M.GetSendStatisticsResponse(args)
     }
 end
 
-keys.SetIdentityDkimEnabledRequest = { ["DkimEnabled"] = true, ["Identity"] = true, nil }
+keys.SendBulkTemplatedEmailResponse = { ["Status"] = true, nil }
 
-function asserts.AssertSetIdentityDkimEnabledRequest(struct)
+function asserts.AssertSendBulkTemplatedEmailResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SetIdentityDkimEnabledRequest to be of type 'table'")
-	assert(struct["Identity"], "Expected key Identity to exist in table")
-	assert(struct["DkimEnabled"], "Expected key DkimEnabled to exist in table")
-	if struct["DkimEnabled"] then asserts.AssertEnabled(struct["DkimEnabled"]) end
-	if struct["Identity"] then asserts.AssertIdentity(struct["Identity"]) end
+	assert(type(struct) == "table", "Expected SendBulkTemplatedEmailResponse to be of type 'table'")
+	assert(struct["Status"], "Expected key Status to exist in table")
+	if struct["Status"] then asserts.AssertBulkEmailDestinationStatusList(struct["Status"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SetIdentityDkimEnabledRequest[k], "SetIdentityDkimEnabledRequest contains unknown key " .. tostring(k))
+		assert(keys.SendBulkTemplatedEmailResponse[k], "SendBulkTemplatedEmailResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SetIdentityDkimEnabledRequest
--- <p>Represents a request to enable or disable Amazon SES Easy DKIM signing for an identity. For more information about setting up Easy DKIM, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Amazon SES Developer Guide</a>.</p>
+--- Create a structure of type SendBulkTemplatedEmailResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DkimEnabled [Enabled] <p>Sets whether DKIM signing is enabled for an identity. Set to <code>true</code> to enable DKIM signing for this identity; <code>false</code> to disable it. </p>
--- * Identity [Identity] <p>The identity for which DKIM signing should be enabled or disabled.</p>
--- Required key: Identity
--- Required key: DkimEnabled
--- @return SetIdentityDkimEnabledRequest structure as a key-value pair table
-function M.SetIdentityDkimEnabledRequest(args)
-	assert(args, "You must provide an argument table when creating SetIdentityDkimEnabledRequest")
+-- * Status [BulkEmailDestinationStatusList] <p>The unique message identifier returned from the <code>SendBulkTemplatedEmail</code> action.</p>
+-- Required key: Status
+-- @return SendBulkTemplatedEmailResponse structure as a key-value pair table
+function M.SendBulkTemplatedEmailResponse(args)
+	assert(args, "You must provide an argument table when creating SendBulkTemplatedEmailResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -1897,64 +2684,9 @@ function M.SetIdentityDkimEnabledRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["DkimEnabled"] = args["DkimEnabled"],
-		["Identity"] = args["Identity"],
+		["Status"] = args["Status"],
 	}
-	asserts.AssertSetIdentityDkimEnabledRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ReceiptRule = { ["Name"] = true, ["Recipients"] = true, ["Enabled"] = true, ["ScanEnabled"] = true, ["Actions"] = true, ["TlsPolicy"] = true, nil }
-
-function asserts.AssertReceiptRule(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ReceiptRule to be of type 'table'")
-	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Name"] then asserts.AssertReceiptRuleName(struct["Name"]) end
-	if struct["Recipients"] then asserts.AssertRecipientsList(struct["Recipients"]) end
-	if struct["Enabled"] then asserts.AssertEnabled(struct["Enabled"]) end
-	if struct["ScanEnabled"] then asserts.AssertEnabled(struct["ScanEnabled"]) end
-	if struct["Actions"] then asserts.AssertReceiptActionsList(struct["Actions"]) end
-	if struct["TlsPolicy"] then asserts.AssertTlsPolicy(struct["TlsPolicy"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ReceiptRule[k], "ReceiptRule contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ReceiptRule
--- <p>Receipt rules enable you to specify which actions Amazon SES should take when it receives mail on behalf of one or more email addresses or domains that you own.</p> <p>Each receipt rule defines a set of email addresses or domains to which it applies. If the email addresses or domains match at least one recipient address of the message, Amazon SES executes all of the receipt rule's actions on the message.</p> <p>For information about setting up receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html">Amazon SES Developer Guide</a>.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Name [ReceiptRuleName] <p>The name of the receipt rule. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
--- * Recipients [RecipientsList] <p>The recipient domains and email addresses to which the receipt rule applies. If this field is not specified, this rule will match all recipients under all verified domains.</p>
--- * Enabled [Enabled] <p>If <code>true</code>, the receipt rule is active. The default value is <code>false</code>.</p>
--- * ScanEnabled [Enabled] <p>If <code>true</code>, then messages to which this receipt rule applies are scanned for spam and viruses. The default value is <code>false</code>.</p>
--- * Actions [ReceiptActionsList] <p>An ordered list of actions to perform on messages that match at least one of the recipient email addresses or domains specified in the receipt rule.</p>
--- * TlsPolicy [TlsPolicy] <p>Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted with Transport Layer Security (TLS). If this parameter is set to <code>Require</code>, Amazon SES will bounce emails that are not received over TLS. The default is <code>Optional</code>.</p>
--- Required key: Name
--- @return ReceiptRule structure as a key-value pair table
-function M.ReceiptRule(args)
-	assert(args, "You must provide an argument table when creating ReceiptRule")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Name"] = args["Name"],
-		["Recipients"] = args["Recipients"],
-		["Enabled"] = args["Enabled"],
-		["ScanEnabled"] = args["ScanEnabled"],
-		["Actions"] = args["Actions"],
-		["TlsPolicy"] = args["TlsPolicy"],
-	}
-	asserts.AssertReceiptRule(all_args)
+	asserts.AssertSendBulkTemplatedEmailResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1997,6 +2729,77 @@ function M.CreateReceiptRuleSetResponse(args)
     }
 end
 
+keys.SendCustomVerificationEmailResponse = { ["MessageId"] = true, nil }
+
+function asserts.AssertSendCustomVerificationEmailResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SendCustomVerificationEmailResponse to be of type 'table'")
+	if struct["MessageId"] then asserts.AssertMessageId(struct["MessageId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SendCustomVerificationEmailResponse[k], "SendCustomVerificationEmailResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SendCustomVerificationEmailResponse
+-- <p>The response received when attempting to send the custom verification email.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MessageId [MessageId] <p>The unique message identifier returned from the <code>SendCustomVerificationEmail</code> operation.</p>
+-- @return SendCustomVerificationEmailResponse structure as a key-value pair table
+function M.SendCustomVerificationEmailResponse(args)
+	assert(args, "You must provide an argument table when creating SendCustomVerificationEmailResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["MessageId"] = args["MessageId"],
+	}
+	asserts.AssertSendCustomVerificationEmailResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateTemplateResponse = { nil }
+
+function asserts.AssertCreateTemplateResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateTemplateResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.CreateTemplateResponse[k], "CreateTemplateResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateTemplateResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateTemplateResponse structure as a key-value pair table
+function M.CreateTemplateResponse(args)
+	assert(args, "You must provide an argument table when creating CreateTemplateResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertCreateTemplateResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ReceiptAction = { ["AddHeaderAction"] = true, ["S3Action"] = true, ["SNSAction"] = true, ["BounceAction"] = true, ["LambdaAction"] = true, ["StopAction"] = true, ["WorkmailAction"] = true, nil }
 
 function asserts.AssertReceiptAction(struct)
@@ -2024,7 +2827,7 @@ end
 -- * BounceAction [BounceAction] <p>Rejects the received email by returning a bounce response to the sender and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p>
 -- * LambdaAction [LambdaAction] <p>Calls an AWS Lambda function, and optionally, publishes a notification to Amazon SNS.</p>
 -- * StopAction [StopAction] <p>Terminates the evaluation of the receipt rule set and optionally publishes a notification to Amazon SNS.</p>
--- * WorkmailAction [WorkmailAction] <p>Calls Amazon WorkMail and, optionally, publishes a notification to Amazon SNS.</p>
+-- * WorkmailAction [WorkmailAction] <p>Calls Amazon WorkMail and, optionally, publishes a notification to Amazon Amazon SNS.</p>
 -- @return ReceiptAction structure as a key-value pair table
 function M.ReceiptAction(args)
 	assert(args, "You must provide an argument table when creating ReceiptAction")
@@ -2091,23 +2894,27 @@ function M.DeleteReceiptRuleSetRequest(args)
     }
 end
 
-keys.SetReceiptRulePositionResponse = { nil }
+keys.ListTemplatesResponse = { ["TemplatesMetadata"] = true, ["NextToken"] = true, nil }
 
-function asserts.AssertSetReceiptRulePositionResponse(struct)
+function asserts.AssertListTemplatesResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SetReceiptRulePositionResponse to be of type 'table'")
+	assert(type(struct) == "table", "Expected ListTemplatesResponse to be of type 'table'")
+	if struct["TemplatesMetadata"] then asserts.AssertTemplateMetadataList(struct["TemplatesMetadata"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SetReceiptRulePositionResponse[k], "SetReceiptRulePositionResponse contains unknown key " .. tostring(k))
+		assert(keys.ListTemplatesResponse[k], "ListTemplatesResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SetReceiptRulePositionResponse
--- <p>An empty element returned on a successful request.</p>
+--- Create a structure of type ListTemplatesResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return SetReceiptRulePositionResponse structure as a key-value pair table
-function M.SetReceiptRulePositionResponse(args)
-	assert(args, "You must provide an argument table when creating SetReceiptRulePositionResponse")
+-- * TemplatesMetadata [TemplateMetadataList] <p>An array the contains the name and creation time stamp for each template in your Amazon SES account.</p>
+-- * NextToken [NextToken] <p>A token indicating that there are additional email templates available to be listed. Pass this token to a subsequent call to <code>ListTemplates</code> to retrieve the next 50 email templates.</p>
+-- @return ListTemplatesResponse structure as a key-value pair table
+function M.ListTemplatesResponse(args)
+	assert(args, "You must provide an argument table when creating ListTemplatesResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -2115,8 +2922,10 @@ function M.SetReceiptRulePositionResponse(args)
     local header_args = { 
     }
 	local all_args = { 
+		["TemplatesMetadata"] = args["TemplatesMetadata"],
+		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertSetReceiptRulePositionResponse(all_args)
+	asserts.AssertListTemplatesResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2156,88 +2965,6 @@ function M.GetIdentityNotificationAttributesRequest(args)
 		["Identities"] = args["Identities"],
 	}
 	asserts.AssertGetIdentityNotificationAttributesRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidS3ConfigurationException = { ["Bucket"] = true, nil }
-
-function asserts.AssertInvalidS3ConfigurationException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidS3ConfigurationException to be of type 'table'")
-	if struct["Bucket"] then asserts.AssertS3BucketName(struct["Bucket"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidS3ConfigurationException[k], "InvalidS3ConfigurationException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidS3ConfigurationException
--- <p>Indicates that the provided Amazon S3 bucket or AWS KMS encryption key is invalid, or that Amazon SES could not publish to the bucket, possibly due to permissions issues. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Bucket [S3BucketName] 
--- @return InvalidS3ConfigurationException structure as a key-value pair table
-function M.InvalidS3ConfigurationException(args)
-	assert(args, "You must provide an argument table when creating InvalidS3ConfigurationException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Bucket"] = args["Bucket"],
-	}
-	asserts.AssertInvalidS3ConfigurationException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SetIdentityMailFromDomainRequest = { ["MailFromDomain"] = true, ["Identity"] = true, ["BehaviorOnMXFailure"] = true, nil }
-
-function asserts.AssertSetIdentityMailFromDomainRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SetIdentityMailFromDomainRequest to be of type 'table'")
-	assert(struct["Identity"], "Expected key Identity to exist in table")
-	if struct["MailFromDomain"] then asserts.AssertMailFromDomainName(struct["MailFromDomain"]) end
-	if struct["Identity"] then asserts.AssertIdentity(struct["Identity"]) end
-	if struct["BehaviorOnMXFailure"] then asserts.AssertBehaviorOnMXFailure(struct["BehaviorOnMXFailure"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.SetIdentityMailFromDomainRequest[k], "SetIdentityMailFromDomainRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SetIdentityMailFromDomainRequest
--- <p>Represents a request to enable or disable the Amazon SES custom MAIL FROM domain setup for a verified identity. For information about using a custom MAIL FROM domain, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html">Amazon SES Developer Guide</a>.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * MailFromDomain [MailFromDomainName] <p>The custom MAIL FROM domain that you want the verified identity to use. The MAIL FROM domain must 1) be a subdomain of the verified identity, 2) not be used in a "From" address if the MAIL FROM domain is the destination of email feedback forwarding (for more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html">Amazon SES Developer Guide</a>), and 3) not be used to receive emails. A value of <code>null</code> disables the custom MAIL FROM setting for the identity.</p>
--- * Identity [Identity] <p>The verified identity for which you want to enable or disable the specified custom MAIL FROM domain.</p>
--- * BehaviorOnMXFailure [BehaviorOnMXFailure] <p>The action that you want Amazon SES to take if it cannot successfully read the required MX record when you send an email. If you choose <code>UseDefaultValue</code>, Amazon SES will use amazonses.com (or a subdomain of that) as the MAIL FROM domain. If you choose <code>RejectMessage</code>, Amazon SES will return a <code>MailFromDomainNotVerified</code> error and not send the email.</p> <p>The action specified in <code>BehaviorOnMXFailure</code> is taken when the custom MAIL FROM domain setup is in the <code>Pending</code>, <code>Failed</code>, and <code>TemporaryFailure</code> states.</p>
--- Required key: Identity
--- @return SetIdentityMailFromDomainRequest structure as a key-value pair table
-function M.SetIdentityMailFromDomainRequest(args)
-	assert(args, "You must provide an argument table when creating SetIdentityMailFromDomainRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["MailFromDomain"] = args["MailFromDomain"],
-		["Identity"] = args["Identity"],
-		["BehaviorOnMXFailure"] = args["BehaviorOnMXFailure"],
-	}
-	asserts.AssertSetIdentityMailFromDomainRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2298,7 +3025,7 @@ end
 -- <p>Represents a request to update a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to which the receipt rule belongs.</p>
+-- * RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set that the receipt rule belongs to.</p>
 -- * Rule [ReceiptRule] <p>A data structure that contains the updated receipt rule information.</p>
 -- Required key: RuleSetName
 -- Required key: Rule
@@ -2419,7 +3146,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * IpFilter [ReceiptIpFilter] <p>A structure that provides the IP addresses to block or allow, and whether to block or allow incoming mail from them.</p>
--- * Name [ReceiptFilterName] <p>The name of the IP address filter. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
+-- * Name [ReceiptFilterName] <p>The name of the IP address filter. The name must:</p> <ul> <li> <p>This value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
 -- Required key: Name
 -- Required key: IpFilter
 -- @return ReceiptFilter structure as a key-value pair table
@@ -2478,43 +3205,6 @@ function M.SetIdentityFeedbackForwardingEnabledResponse(args)
     }
 end
 
-keys.ConfigurationSetAlreadyExistsException = { ["ConfigurationSetName"] = true, nil }
-
-function asserts.AssertConfigurationSetAlreadyExistsException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ConfigurationSetAlreadyExistsException to be of type 'table'")
-	if struct["ConfigurationSetName"] then asserts.AssertConfigurationSetName(struct["ConfigurationSetName"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ConfigurationSetAlreadyExistsException[k], "ConfigurationSetAlreadyExistsException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ConfigurationSetAlreadyExistsException
--- <p>Indicates that the configuration set could not be created because of a naming conflict.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ConfigurationSetName [ConfigurationSetName] 
--- @return ConfigurationSetAlreadyExistsException structure as a key-value pair table
-function M.ConfigurationSetAlreadyExistsException(args)
-	assert(args, "You must provide an argument table when creating ConfigurationSetAlreadyExistsException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ConfigurationSetName"] = args["ConfigurationSetName"],
-	}
-	asserts.AssertConfigurationSetAlreadyExistsException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.DescribeReceiptRuleSetResponse = { ["Rules"] = true, ["Metadata"] = true, nil }
 
 function asserts.AssertDescribeReceiptRuleSetResponse(struct)
@@ -2547,6 +3237,45 @@ function M.DescribeReceiptRuleSetResponse(args)
 		["Metadata"] = args["Metadata"],
 	}
 	asserts.AssertDescribeReceiptRuleSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetTemplateRequest = { ["TemplateName"] = true, nil }
+
+function asserts.AssertGetTemplateRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetTemplateRequest to be of type 'table'")
+	assert(struct["TemplateName"], "Expected key TemplateName to exist in table")
+	if struct["TemplateName"] then asserts.AssertTemplateName(struct["TemplateName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetTemplateRequest[k], "GetTemplateRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetTemplateRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TemplateName [TemplateName] <p>The name of the template you want to retrieve.</p>
+-- Required key: TemplateName
+-- @return GetTemplateRequest structure as a key-value pair table
+function M.GetTemplateRequest(args)
+	assert(args, "You must provide an argument table when creating GetTemplateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["TemplateName"] = args["TemplateName"],
+	}
+	asserts.AssertGetTemplateRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2592,27 +3321,25 @@ function M.ListReceiptRuleSetsRequest(args)
     }
 end
 
-keys.VerifyEmailIdentityRequest = { ["EmailAddress"] = true, nil }
+keys.TestRenderTemplateResponse = { ["RenderedTemplate"] = true, nil }
 
-function asserts.AssertVerifyEmailIdentityRequest(struct)
+function asserts.AssertTestRenderTemplateResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected VerifyEmailIdentityRequest to be of type 'table'")
-	assert(struct["EmailAddress"], "Expected key EmailAddress to exist in table")
-	if struct["EmailAddress"] then asserts.AssertAddress(struct["EmailAddress"]) end
+	assert(type(struct) == "table", "Expected TestRenderTemplateResponse to be of type 'table'")
+	if struct["RenderedTemplate"] then asserts.AssertRenderedTemplate(struct["RenderedTemplate"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.VerifyEmailIdentityRequest[k], "VerifyEmailIdentityRequest contains unknown key " .. tostring(k))
+		assert(keys.TestRenderTemplateResponse[k], "TestRenderTemplateResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type VerifyEmailIdentityRequest
--- <p>Represents a request to begin email address verification with Amazon SES. For information about email address verification, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html">Amazon SES Developer Guide</a>.</p>
+--- Create a structure of type TestRenderTemplateResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * EmailAddress [Address] <p>The email address to be verified.</p>
--- Required key: EmailAddress
--- @return VerifyEmailIdentityRequest structure as a key-value pair table
-function M.VerifyEmailIdentityRequest(args)
-	assert(args, "You must provide an argument table when creating VerifyEmailIdentityRequest")
+-- * RenderedTemplate [RenderedTemplate] <p>The complete MIME message rendered by applying the data in the TemplateData parameter to the template specified in the TemplateName parameter.</p>
+-- @return TestRenderTemplateResponse structure as a key-value pair table
+function M.TestRenderTemplateResponse(args)
+	assert(args, "You must provide an argument table when creating TestRenderTemplateResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -2620,9 +3347,9 @@ function M.VerifyEmailIdentityRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["EmailAddress"] = args["EmailAddress"],
+		["RenderedTemplate"] = args["RenderedTemplate"],
 	}
-	asserts.AssertVerifyEmailIdentityRequest(all_args)
+	asserts.AssertTestRenderTemplateResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2649,8 +3376,8 @@ end
 -- <p>Contains the name and value of a tag that you can provide to <code>SendEmail</code> or <code>SendRawEmail</code> to apply to an email.</p> <p>Message tags, which you use with configuration sets, enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Name [MessageTagName] <p>The name of the tag. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
--- * Value [MessageTagValue] <p>The value of the tag. The value must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
+-- * Name [MessageTagName] <p>The name of the tag. The name must:</p> <ul> <li> <p>This value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
+-- * Value [MessageTagValue] <p>The value of the tag. The value must:</p> <ul> <li> <p>This value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
 -- Required key: Name
 -- Required key: Value
 -- @return MessageTag structure as a key-value pair table
@@ -2897,6 +3624,85 @@ function M.SendBounceRequest(args)
     }
 end
 
+keys.UpdateReceiptRuleResponse = { nil }
+
+function asserts.AssertUpdateReceiptRuleResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateReceiptRuleResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateReceiptRuleResponse[k], "UpdateReceiptRuleResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateReceiptRuleResponse
+-- <p>An empty element returned on a successful request.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateReceiptRuleResponse structure as a key-value pair table
+function M.UpdateReceiptRuleResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateReceiptRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertUpdateReceiptRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SetIdentityMailFromDomainRequest = { ["MailFromDomain"] = true, ["Identity"] = true, ["BehaviorOnMXFailure"] = true, nil }
+
+function asserts.AssertSetIdentityMailFromDomainRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SetIdentityMailFromDomainRequest to be of type 'table'")
+	assert(struct["Identity"], "Expected key Identity to exist in table")
+	if struct["MailFromDomain"] then asserts.AssertMailFromDomainName(struct["MailFromDomain"]) end
+	if struct["Identity"] then asserts.AssertIdentity(struct["Identity"]) end
+	if struct["BehaviorOnMXFailure"] then asserts.AssertBehaviorOnMXFailure(struct["BehaviorOnMXFailure"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SetIdentityMailFromDomainRequest[k], "SetIdentityMailFromDomainRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SetIdentityMailFromDomainRequest
+-- <p>Represents a request to enable or disable the Amazon SES custom MAIL FROM domain setup for a verified identity. For information about using a custom MAIL FROM domain, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html">Amazon SES Developer Guide</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MailFromDomain [MailFromDomainName] <p>The custom MAIL FROM domain that you want the verified identity to use. The MAIL FROM domain must 1) be a subdomain of the verified identity, 2) not be used in a "From" address if the MAIL FROM domain is the destination of email feedback forwarding (for more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html">Amazon SES Developer Guide</a>), and 3) not be used to receive emails. A value of <code>null</code> disables the custom MAIL FROM setting for the identity.</p>
+-- * Identity [Identity] <p>The verified identity for which you want to enable or disable the specified custom MAIL FROM domain.</p>
+-- * BehaviorOnMXFailure [BehaviorOnMXFailure] <p>The action that you want Amazon SES to take if it cannot successfully read the required MX record when you send an email. If you choose <code>UseDefaultValue</code>, Amazon SES will use amazonses.com (or a subdomain of that) as the MAIL FROM domain. If you choose <code>RejectMessage</code>, Amazon SES will return a <code>MailFromDomainNotVerified</code> error and not send the email.</p> <p>The action specified in <code>BehaviorOnMXFailure</code> is taken when the custom MAIL FROM domain setup is in the <code>Pending</code>, <code>Failed</code>, and <code>TemporaryFailure</code> states.</p>
+-- Required key: Identity
+-- @return SetIdentityMailFromDomainRequest structure as a key-value pair table
+function M.SetIdentityMailFromDomainRequest(args)
+	assert(args, "You must provide an argument table when creating SetIdentityMailFromDomainRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["MailFromDomain"] = args["MailFromDomain"],
+		["Identity"] = args["Identity"],
+		["BehaviorOnMXFailure"] = args["BehaviorOnMXFailure"],
+	}
+	asserts.AssertSetIdentityMailFromDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.CloudWatchDimensionConfiguration = { ["DimensionName"] = true, ["DimensionValueSource"] = true, ["DefaultDimensionValue"] = true, nil }
 
 function asserts.AssertCloudWatchDimensionConfiguration(struct)
@@ -2917,9 +3723,9 @@ end
 -- <p>Contains the dimension configuration to use when you publish email sending events to Amazon CloudWatch.</p> <p>For information about publishing email sending events to Amazon CloudWatch, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DimensionName [DimensionName] <p>The name of an Amazon CloudWatch dimension associated with an email sending metric. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
+-- * DimensionName [DimensionName] <p>The name of an Amazon CloudWatch dimension associated with an email sending metric. The name must:</p> <ul> <li> <p>This value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
 -- * DimensionValueSource [DimensionValueSource] <p>The place where Amazon SES finds the value of a dimension to publish to Amazon CloudWatch. If you want Amazon SES to use the message tags that you specify using an <code>X-SES-MESSAGE-TAGS</code> header or a parameter to the <code>SendEmail</code>/<code>SendRawEmail</code> API, choose <code>messageTag</code>. If you want Amazon SES to use your own email headers, choose <code>emailHeader</code>.</p>
--- * DefaultDimensionValue [DefaultDimensionValue] <p>The default value of the dimension that is published to Amazon CloudWatch if you do not provide the value of the dimension when you send an email. The default value must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
+-- * DefaultDimensionValue [DefaultDimensionValue] <p>The default value of the dimension that is published to Amazon CloudWatch if you do not provide the value of the dimension when you send an email. The default value must:</p> <ul> <li> <p>This value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
 -- Required key: DimensionName
 -- Required key: DimensionValueSource
 -- Required key: DefaultDimensionValue
@@ -2985,43 +3791,6 @@ function M.ListIdentityPoliciesRequest(args)
     }
 end
 
-keys.AlreadyExistsException = { ["Name"] = true, nil }
-
-function asserts.AssertAlreadyExistsException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected AlreadyExistsException to be of type 'table'")
-	if struct["Name"] then asserts.AssertRuleOrRuleSetName(struct["Name"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.AlreadyExistsException[k], "AlreadyExistsException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type AlreadyExistsException
--- <p>Indicates that a resource could not be created because of a naming conflict.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Name [RuleOrRuleSetName] 
--- @return AlreadyExistsException structure as a key-value pair table
-function M.AlreadyExistsException(args)
-	assert(args, "You must provide an argument table when creating AlreadyExistsException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Name"] = args["Name"],
-	}
-	asserts.AssertAlreadyExistsException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.DescribeReceiptRuleResponse = { ["Rule"] = true, nil }
 
 function asserts.AssertDescribeReceiptRuleResponse(struct)
@@ -3051,6 +3820,46 @@ function M.DescribeReceiptRuleResponse(args)
 		["Rule"] = args["Rule"],
 	}
 	asserts.AssertDescribeReceiptRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.TemplateMetadata = { ["CreatedTimestamp"] = true, ["Name"] = true, nil }
+
+function asserts.AssertTemplateMetadata(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected TemplateMetadata to be of type 'table'")
+	if struct["CreatedTimestamp"] then asserts.AssertTimestamp(struct["CreatedTimestamp"]) end
+	if struct["Name"] then asserts.AssertTemplateName(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.TemplateMetadata[k], "TemplateMetadata contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type TemplateMetadata
+-- <p>Contains information about an email template.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CreatedTimestamp [Timestamp] <p>The time and date the template was created.</p>
+-- * Name [TemplateName] <p>The name of the template.</p>
+-- @return TemplateMetadata structure as a key-value pair table
+function M.TemplateMetadata(args)
+	assert(args, "You must provide an argument table when creating TemplateMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["CreatedTimestamp"] = args["CreatedTimestamp"],
+		["Name"] = args["Name"],
+	}
+	asserts.AssertTemplateMetadata(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3118,7 +3927,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * After [ReceiptRuleName] <p>The name of an existing rule after which the new rule will be placed. If this parameter is null, the new rule will be inserted at the beginning of the rule list.</p>
--- * RuleSetName [ReceiptRuleSetName] <p>The name of the rule set to which to add the rule.</p>
+-- * RuleSetName [ReceiptRuleSetName] <p>The name of the rule set that the receipt rule will be added to.</p>
 -- * Rule [ReceiptRule] <p>A data structure that contains the specified rule's name, actions, recipients, domains, enabled status, scan status, and TLS policy.</p>
 -- Required key: RuleSetName
 -- Required key: Rule
@@ -3257,6 +4066,45 @@ function M.DeleteIdentityPolicyResponse(args)
 	local all_args = { 
 	}
 	asserts.AssertDeleteIdentityPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteConfigurationSetRequest = { ["ConfigurationSetName"] = true, nil }
+
+function asserts.AssertDeleteConfigurationSetRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteConfigurationSetRequest to be of type 'table'")
+	assert(struct["ConfigurationSetName"], "Expected key ConfigurationSetName to exist in table")
+	if struct["ConfigurationSetName"] then asserts.AssertConfigurationSetName(struct["ConfigurationSetName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteConfigurationSetRequest[k], "DeleteConfigurationSetRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteConfigurationSetRequest
+-- <p>Represents a request to delete a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to delete.</p>
+-- Required key: ConfigurationSetName
+-- @return DeleteConfigurationSetRequest structure as a key-value pair table
+function M.DeleteConfigurationSetRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteConfigurationSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
+	}
+	asserts.AssertDeleteConfigurationSetRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3425,6 +4273,45 @@ function M.DescribeConfigurationSetRequest(args)
     }
 end
 
+keys.GetCustomVerificationEmailTemplateRequest = { ["TemplateName"] = true, nil }
+
+function asserts.AssertGetCustomVerificationEmailTemplateRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetCustomVerificationEmailTemplateRequest to be of type 'table'")
+	assert(struct["TemplateName"], "Expected key TemplateName to exist in table")
+	if struct["TemplateName"] then asserts.AssertTemplateName(struct["TemplateName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetCustomVerificationEmailTemplateRequest[k], "GetCustomVerificationEmailTemplateRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetCustomVerificationEmailTemplateRequest
+-- <p>Represents a request to retrieve an existing custom verification email template.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TemplateName [TemplateName] <p>The name of the custom verification email template that you want to retrieve.</p>
+-- Required key: TemplateName
+-- @return GetCustomVerificationEmailTemplateRequest structure as a key-value pair table
+function M.GetCustomVerificationEmailTemplateRequest(args)
+	assert(args, "You must provide an argument table when creating GetCustomVerificationEmailTemplateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["TemplateName"] = args["TemplateName"],
+	}
+	asserts.AssertGetCustomVerificationEmailTemplateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.CreateConfigurationSetEventDestinationResponse = { nil }
 
 function asserts.AssertCreateConfigurationSetEventDestinationResponse(struct)
@@ -3576,43 +4463,6 @@ function M.CreateReceiptFilterRequest(args)
     }
 end
 
-keys.CannotDeleteException = { ["Name"] = true, nil }
-
-function asserts.AssertCannotDeleteException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CannotDeleteException to be of type 'table'")
-	if struct["Name"] then asserts.AssertRuleOrRuleSetName(struct["Name"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.CannotDeleteException[k], "CannotDeleteException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CannotDeleteException
--- <p>Indicates that the delete operation could not be completed.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Name [RuleOrRuleSetName] 
--- @return CannotDeleteException structure as a key-value pair table
-function M.CannotDeleteException(args)
-	assert(args, "You must provide an argument table when creating CannotDeleteException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Name"] = args["Name"],
-	}
-	asserts.AssertCannotDeleteException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ListReceiptRuleSetsResponse = { ["NextToken"] = true, ["RuleSets"] = true, nil }
 
 function asserts.AssertListReceiptRuleSetsResponse(struct)
@@ -3671,7 +4521,7 @@ end
 -- <p>Represents a request to create a receipt rule set by cloning an existing one. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * RuleSetName [ReceiptRuleSetName] <p>The name of the rule set to create. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
+-- * RuleSetName [ReceiptRuleSetName] <p>The name of the rule set to create. The name must:</p> <ul> <li> <p>This value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
 -- * OriginalRuleSetName [ReceiptRuleSetName] <p>The name of the rule set to clone.</p>
 -- Required key: RuleSetName
 -- Required key: OriginalRuleSetName
@@ -3697,12 +4547,14 @@ function M.CloneReceiptRuleSetRequest(args)
     }
 end
 
-keys.DescribeConfigurationSetResponse = { ["EventDestinations"] = true, ["ConfigurationSet"] = true, nil }
+keys.DescribeConfigurationSetResponse = { ["ReputationOptions"] = true, ["EventDestinations"] = true, ["TrackingOptions"] = true, ["ConfigurationSet"] = true, nil }
 
 function asserts.AssertDescribeConfigurationSetResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeConfigurationSetResponse to be of type 'table'")
+	if struct["ReputationOptions"] then asserts.AssertReputationOptions(struct["ReputationOptions"]) end
 	if struct["EventDestinations"] then asserts.AssertEventDestinations(struct["EventDestinations"]) end
+	if struct["TrackingOptions"] then asserts.AssertTrackingOptions(struct["TrackingOptions"]) end
 	if struct["ConfigurationSet"] then asserts.AssertConfigurationSet(struct["ConfigurationSet"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.DescribeConfigurationSetResponse[k], "DescribeConfigurationSetResponse contains unknown key " .. tostring(k))
@@ -3713,7 +4565,9 @@ end
 -- <p>Represents the details of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * ReputationOptions [ReputationOptions] <p>An object that represents the reputation settings for the configuration set. </p>
 -- * EventDestinations [EventDestinations] <p>A list of event destinations associated with the configuration set. </p>
+-- * TrackingOptions [TrackingOptions] <p>The name of the custom open and click tracking domain associated with the configuration set.</p>
 -- * ConfigurationSet [ConfigurationSet] <p>The configuration set object associated with the specified configuration set.</p>
 -- @return DescribeConfigurationSetResponse structure as a key-value pair table
 function M.DescribeConfigurationSetResponse(args)
@@ -3725,10 +4579,51 @@ function M.DescribeConfigurationSetResponse(args)
     local header_args = { 
     }
 	local all_args = { 
+		["ReputationOptions"] = args["ReputationOptions"],
 		["EventDestinations"] = args["EventDestinations"],
+		["TrackingOptions"] = args["TrackingOptions"],
 		["ConfigurationSet"] = args["ConfigurationSet"],
 	}
 	asserts.AssertDescribeConfigurationSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateTemplateRequest = { ["Template"] = true, nil }
+
+function asserts.AssertCreateTemplateRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateTemplateRequest to be of type 'table'")
+	assert(struct["Template"], "Expected key Template to exist in table")
+	if struct["Template"] then asserts.AssertTemplate(struct["Template"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateTemplateRequest[k], "CreateTemplateRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateTemplateRequest
+-- <p>Represents a request to create an email template. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html">Amazon SES Developer Guide</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Template [Template] <p>The content of the email, composed of a subject line, an HTML part, and a text-only part.</p>
+-- Required key: Template
+-- @return CreateTemplateRequest structure as a key-value pair table
+function M.CreateTemplateRequest(args)
+	assert(args, "You must provide an argument table when creating CreateTemplateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Template"] = args["Template"],
+	}
+	asserts.AssertCreateTemplateRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3787,7 +4682,7 @@ end
 -- <p>Represents a request to create an empty receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * RuleSetName [ReceiptRuleSetName] <p>The name of the rule set to create. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
+-- * RuleSetName [ReceiptRuleSetName] <p>The name of the rule set to create. The name must:</p> <ul> <li> <p>This value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
 -- Required key: RuleSetName
 -- @return CreateReceiptRuleSetRequest structure as a key-value pair table
 function M.CreateReceiptRuleSetRequest(args)
@@ -3860,7 +4755,7 @@ end
 -- <p>Represents the raw data of the message.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Data [RawMessageData] <p>The raw data of the message. The client must ensure that the message format complies with Internet email standards regarding email header fields, MIME types, MIME encoding, and base64 encoding.</p> <p>The To:, CC:, and BCC: headers in the raw message can contain a group list.</p> <p>If you are using <code>SendRawEmail</code> with sending authorization, you can include X-headers in the raw message to specify the "Source," "From," and "Return-Path" addresses. For more information, see the documentation for <code>SendRawEmail</code>. </p> <important> <p>Do not include these X-headers in the DKIM signature, because they are removed by Amazon SES before sending the email.</p> </important> <p>For more information, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer Guide</a>. </p>
+-- * Data [RawMessageData] <p>The raw data of the message. This data needs to base64-encoded if you are accessing Amazon SES directly through the HTTPS interface. If you are accessing Amazon SES using an AWS SDK, the SDK takes care of the base 64-encoding for you. In all cases, the client must ensure that the message format complies with Internet email standards regarding email header fields, MIME types, and MIME encoding.</p> <p>The To:, CC:, and BCC: headers in the raw message can contain a group list.</p> <p>If you are using <code>SendRawEmail</code> with sending authorization, you can include X-headers in the raw message to specify the "Source," "From," and "Return-Path" addresses. For more information, see the documentation for <code>SendRawEmail</code>. </p> <important> <p>Do not include these X-headers in the DKIM signature, because they are removed by Amazon SES before sending the email.</p> </important> <p>For more information, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer Guide</a>.</p>
 -- Required key: Data
 -- @return RawMessage structure as a key-value pair table
 function M.RawMessage(args)
@@ -3967,43 +4862,6 @@ function M.LambdaAction(args)
     }
 end
 
-keys.RuleDoesNotExistException = { ["Name"] = true, nil }
-
-function asserts.AssertRuleDoesNotExistException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected RuleDoesNotExistException to be of type 'table'")
-	if struct["Name"] then asserts.AssertRuleOrRuleSetName(struct["Name"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.RuleDoesNotExistException[k], "RuleDoesNotExistException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type RuleDoesNotExistException
--- <p>Indicates that the provided receipt rule does not exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Name [RuleOrRuleSetName] 
--- @return RuleDoesNotExistException structure as a key-value pair table
-function M.RuleDoesNotExistException(args)
-	assert(args, "You must provide an argument table when creating RuleDoesNotExistException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Name"] = args["Name"],
-	}
-	asserts.AssertRuleDoesNotExistException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ReceiptRuleSetMetadata = { ["CreatedTimestamp"] = true, ["Name"] = true, nil }
 
 function asserts.AssertReceiptRuleSetMetadata(struct)
@@ -4021,7 +4879,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * CreatedTimestamp [Timestamp] <p>The date and time the receipt rule set was created.</p>
--- * Name [ReceiptRuleSetName] <p>The name of the receipt rule set. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
+-- * Name [ReceiptRuleSetName] <p>The name of the receipt rule set. The name must:</p> <ul> <li> <p>This value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
 -- @return ReceiptRuleSetMetadata structure as a key-value pair table
 function M.ReceiptRuleSetMetadata(args)
 	assert(args, "You must provide an argument table when creating ReceiptRuleSetMetadata")
@@ -4044,23 +4902,23 @@ function M.ReceiptRuleSetMetadata(args)
     }
 end
 
-keys.MailFromDomainNotVerifiedException = { nil }
+keys.SetIdentityMailFromDomainResponse = { nil }
 
-function asserts.AssertMailFromDomainNotVerifiedException(struct)
+function asserts.AssertSetIdentityMailFromDomainResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected MailFromDomainNotVerifiedException to be of type 'table'")
+	assert(type(struct) == "table", "Expected SetIdentityMailFromDomainResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.MailFromDomainNotVerifiedException[k], "MailFromDomainNotVerifiedException contains unknown key " .. tostring(k))
+		assert(keys.SetIdentityMailFromDomainResponse[k], "SetIdentityMailFromDomainResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type MailFromDomainNotVerifiedException
--- <p> Indicates that the message could not be sent because Amazon SES could not read the MX record required to use the specified MAIL FROM domain. For information about editing the custom MAIL FROM domain settings for an identity, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-edit.html">Amazon SES Developer Guide</a>.</p>
+--- Create a structure of type SetIdentityMailFromDomainResponse
+-- <p>An empty element returned on a successful request.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return MailFromDomainNotVerifiedException structure as a key-value pair table
-function M.MailFromDomainNotVerifiedException(args)
-	assert(args, "You must provide an argument table when creating MailFromDomainNotVerifiedException")
+-- @return SetIdentityMailFromDomainResponse structure as a key-value pair table
+function M.SetIdentityMailFromDomainResponse(args)
+	assert(args, "You must provide an argument table when creating SetIdentityMailFromDomainResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -4069,7 +4927,7 @@ function M.MailFromDomainNotVerifiedException(args)
     }
 	local all_args = { 
 	}
-	asserts.AssertMailFromDomainNotVerifiedException(all_args)
+	asserts.AssertSetIdentityMailFromDomainResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4125,23 +4983,27 @@ function M.SetReceiptRulePositionRequest(args)
     }
 end
 
-keys.SetIdentityMailFromDomainResponse = { nil }
+keys.SNSDestination = { ["TopicARN"] = true, nil }
 
-function asserts.AssertSetIdentityMailFromDomainResponse(struct)
+function asserts.AssertSNSDestination(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SetIdentityMailFromDomainResponse to be of type 'table'")
+	assert(type(struct) == "table", "Expected SNSDestination to be of type 'table'")
+	assert(struct["TopicARN"], "Expected key TopicARN to exist in table")
+	if struct["TopicARN"] then asserts.AssertAmazonResourceName(struct["TopicARN"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SetIdentityMailFromDomainResponse[k], "SetIdentityMailFromDomainResponse contains unknown key " .. tostring(k))
+		assert(keys.SNSDestination[k], "SNSDestination contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SetIdentityMailFromDomainResponse
--- <p>An empty element returned on a successful request.</p>
+--- Create a structure of type SNSDestination
+-- <p>Contains the topic ARN associated with an Amazon Simple Notification Service (Amazon SNS) event destination.</p> <p>Event destinations, such as Amazon SNS, are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return SetIdentityMailFromDomainResponse structure as a key-value pair table
-function M.SetIdentityMailFromDomainResponse(args)
-	assert(args, "You must provide an argument table when creating SetIdentityMailFromDomainResponse")
+-- * TopicARN [AmazonResourceName] <p>The ARN of the Amazon SNS topic that email sending events will be published to. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
+-- Required key: TopicARN
+-- @return SNSDestination structure as a key-value pair table
+function M.SNSDestination(args)
+	assert(args, "You must provide an argument table when creating SNSDestination")
     local query_args = { 
     }
     local uri_args = { 
@@ -4149,8 +5011,9 @@ function M.SetIdentityMailFromDomainResponse(args)
     local header_args = { 
     }
 	local all_args = { 
+		["TopicARN"] = args["TopicARN"],
 	}
-	asserts.AssertSetIdentityMailFromDomainResponse(all_args)
+	asserts.AssertSNSDestination(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4159,25 +5022,33 @@ function M.SetIdentityMailFromDomainResponse(args)
     }
 end
 
-keys.ConfigurationSetDoesNotExistException = { ["ConfigurationSetName"] = true, nil }
+keys.CustomVerificationEmailTemplate = { ["FromEmailAddress"] = true, ["FailureRedirectionURL"] = true, ["TemplateSubject"] = true, ["SuccessRedirectionURL"] = true, ["TemplateName"] = true, nil }
 
-function asserts.AssertConfigurationSetDoesNotExistException(struct)
+function asserts.AssertCustomVerificationEmailTemplate(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ConfigurationSetDoesNotExistException to be of type 'table'")
-	if struct["ConfigurationSetName"] then asserts.AssertConfigurationSetName(struct["ConfigurationSetName"]) end
+	assert(type(struct) == "table", "Expected CustomVerificationEmailTemplate to be of type 'table'")
+	if struct["FromEmailAddress"] then asserts.AssertFromAddress(struct["FromEmailAddress"]) end
+	if struct["FailureRedirectionURL"] then asserts.AssertFailureRedirectionURL(struct["FailureRedirectionURL"]) end
+	if struct["TemplateSubject"] then asserts.AssertSubject(struct["TemplateSubject"]) end
+	if struct["SuccessRedirectionURL"] then asserts.AssertSuccessRedirectionURL(struct["SuccessRedirectionURL"]) end
+	if struct["TemplateName"] then asserts.AssertTemplateName(struct["TemplateName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ConfigurationSetDoesNotExistException[k], "ConfigurationSetDoesNotExistException contains unknown key " .. tostring(k))
+		assert(keys.CustomVerificationEmailTemplate[k], "CustomVerificationEmailTemplate contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ConfigurationSetDoesNotExistException
--- <p>Indicates that the configuration set does not exist.</p>
+--- Create a structure of type CustomVerificationEmailTemplate
+-- <p>Contains information about a custom verification email template.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ConfigurationSetName [ConfigurationSetName] 
--- @return ConfigurationSetDoesNotExistException structure as a key-value pair table
-function M.ConfigurationSetDoesNotExistException(args)
-	assert(args, "You must provide an argument table when creating ConfigurationSetDoesNotExistException")
+-- * FromEmailAddress [FromAddress] <p>The email address that the custom verification email is sent from.</p>
+-- * FailureRedirectionURL [FailureRedirectionURL] <p>The URL that the recipient of the verification email is sent to if his or her address is not successfully verified.</p>
+-- * TemplateSubject [Subject] <p>The subject line of the custom verification email.</p>
+-- * SuccessRedirectionURL [SuccessRedirectionURL] <p>The URL that the recipient of the verification email is sent to if his or her address is successfully verified.</p>
+-- * TemplateName [TemplateName] <p>The name of the custom verification email template.</p>
+-- @return CustomVerificationEmailTemplate structure as a key-value pair table
+function M.CustomVerificationEmailTemplate(args)
+	assert(args, "You must provide an argument table when creating CustomVerificationEmailTemplate")
     local query_args = { 
     }
     local uri_args = { 
@@ -4185,9 +5056,13 @@ function M.ConfigurationSetDoesNotExistException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["ConfigurationSetName"] = args["ConfigurationSetName"],
+		["FromEmailAddress"] = args["FromEmailAddress"],
+		["FailureRedirectionURL"] = args["FailureRedirectionURL"],
+		["TemplateSubject"] = args["TemplateSubject"],
+		["SuccessRedirectionURL"] = args["SuccessRedirectionURL"],
+		["TemplateName"] = args["TemplateName"],
 	}
-	asserts.AssertConfigurationSetDoesNotExistException(all_args)
+	asserts.AssertCustomVerificationEmailTemplate(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4235,43 +5110,6 @@ function M.GetIdentityPoliciesResponse(args)
     }
 end
 
-keys.RuleSetDoesNotExistException = { ["Name"] = true, nil }
-
-function asserts.AssertRuleSetDoesNotExistException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected RuleSetDoesNotExistException to be of type 'table'")
-	if struct["Name"] then asserts.AssertRuleOrRuleSetName(struct["Name"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.RuleSetDoesNotExistException[k], "RuleSetDoesNotExistException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type RuleSetDoesNotExistException
--- <p>Indicates that the provided receipt rule set does not exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Name [RuleOrRuleSetName] 
--- @return RuleSetDoesNotExistException structure as a key-value pair table
-function M.RuleSetDoesNotExistException(args)
-	assert(args, "You must provide an argument table when creating RuleSetDoesNotExistException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Name"] = args["Name"],
-	}
-	asserts.AssertRuleSetDoesNotExistException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.DeleteReceiptFilterRequest = { ["FilterName"] = true, nil }
 
 function asserts.AssertDeleteReceiptFilterRequest(struct)
@@ -4311,27 +5149,47 @@ function M.DeleteReceiptFilterRequest(args)
     }
 end
 
-keys.ListConfigurationSetsRequest = { ["NextToken"] = true, ["MaxItems"] = true, nil }
+keys.CreateCustomVerificationEmailTemplateRequest = { ["SuccessRedirectionURL"] = true, ["TemplateName"] = true, ["FromEmailAddress"] = true, ["TemplateSubject"] = true, ["FailureRedirectionURL"] = true, ["TemplateContent"] = true, nil }
 
-function asserts.AssertListConfigurationSetsRequest(struct)
+function asserts.AssertCreateCustomVerificationEmailTemplateRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ListConfigurationSetsRequest to be of type 'table'")
-	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxItems"] then asserts.AssertMaxItems(struct["MaxItems"]) end
+	assert(type(struct) == "table", "Expected CreateCustomVerificationEmailTemplateRequest to be of type 'table'")
+	assert(struct["TemplateName"], "Expected key TemplateName to exist in table")
+	assert(struct["FromEmailAddress"], "Expected key FromEmailAddress to exist in table")
+	assert(struct["TemplateSubject"], "Expected key TemplateSubject to exist in table")
+	assert(struct["TemplateContent"], "Expected key TemplateContent to exist in table")
+	assert(struct["SuccessRedirectionURL"], "Expected key SuccessRedirectionURL to exist in table")
+	assert(struct["FailureRedirectionURL"], "Expected key FailureRedirectionURL to exist in table")
+	if struct["SuccessRedirectionURL"] then asserts.AssertSuccessRedirectionURL(struct["SuccessRedirectionURL"]) end
+	if struct["TemplateName"] then asserts.AssertTemplateName(struct["TemplateName"]) end
+	if struct["FromEmailAddress"] then asserts.AssertFromAddress(struct["FromEmailAddress"]) end
+	if struct["TemplateSubject"] then asserts.AssertSubject(struct["TemplateSubject"]) end
+	if struct["FailureRedirectionURL"] then asserts.AssertFailureRedirectionURL(struct["FailureRedirectionURL"]) end
+	if struct["TemplateContent"] then asserts.AssertTemplateContent(struct["TemplateContent"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ListConfigurationSetsRequest[k], "ListConfigurationSetsRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateCustomVerificationEmailTemplateRequest[k], "CreateCustomVerificationEmailTemplateRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ListConfigurationSetsRequest
--- <p>Represents a request to list the configuration sets associated with your AWS account. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+--- Create a structure of type CreateCustomVerificationEmailTemplateRequest
+-- <p>Represents a request to create a custom verification email template.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [NextToken] <p>A token returned from a previous call to <code>ListConfigurationSets</code> to indicate the position of the configuration set in the configuration set list.</p>
--- * MaxItems [MaxItems] <p>The number of configuration sets to return.</p>
--- @return ListConfigurationSetsRequest structure as a key-value pair table
-function M.ListConfigurationSetsRequest(args)
-	assert(args, "You must provide an argument table when creating ListConfigurationSetsRequest")
+-- * SuccessRedirectionURL [SuccessRedirectionURL] <p>The URL that the recipient of the verification email is sent to if his or her address is successfully verified.</p>
+-- * TemplateName [TemplateName] <p>The name of the custom verification email template.</p>
+-- * FromEmailAddress [FromAddress] <p>The email address that the custom verification email is sent from.</p>
+-- * TemplateSubject [Subject] <p>The subject line of the custom verification email.</p>
+-- * FailureRedirectionURL [FailureRedirectionURL] <p>The URL that the recipient of the verification email is sent to if his or her address is not successfully verified.</p>
+-- * TemplateContent [TemplateContent] <p>The content of the custom verification email. The total size of the email must be less than 10 MB. The message body may contain HTML, with some limitations. For more information, see <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq">Custom Verification Email Frequently Asked Questions</a> in the <i>Amazon SES Developer Guide</i>.</p>
+-- Required key: TemplateName
+-- Required key: FromEmailAddress
+-- Required key: TemplateSubject
+-- Required key: TemplateContent
+-- Required key: SuccessRedirectionURL
+-- Required key: FailureRedirectionURL
+-- @return CreateCustomVerificationEmailTemplateRequest structure as a key-value pair table
+function M.CreateCustomVerificationEmailTemplateRequest(args)
+	assert(args, "You must provide an argument table when creating CreateCustomVerificationEmailTemplateRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -4339,10 +5197,14 @@ function M.ListConfigurationSetsRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["NextToken"] = args["NextToken"],
-		["MaxItems"] = args["MaxItems"],
+		["SuccessRedirectionURL"] = args["SuccessRedirectionURL"],
+		["TemplateName"] = args["TemplateName"],
+		["FromEmailAddress"] = args["FromEmailAddress"],
+		["TemplateSubject"] = args["TemplateSubject"],
+		["FailureRedirectionURL"] = args["FailureRedirectionURL"],
+		["TemplateContent"] = args["TemplateContent"],
 	}
-	asserts.AssertListConfigurationSetsRequest(all_args)
+	asserts.AssertCreateCustomVerificationEmailTemplateRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4351,25 +5213,37 @@ function M.ListConfigurationSetsRequest(args)
     }
 end
 
-keys.InvalidLambdaFunctionException = { ["FunctionArn"] = true, nil }
+keys.UpdateCustomVerificationEmailTemplateRequest = { ["SuccessRedirectionURL"] = true, ["TemplateName"] = true, ["FromEmailAddress"] = true, ["TemplateSubject"] = true, ["FailureRedirectionURL"] = true, ["TemplateContent"] = true, nil }
 
-function asserts.AssertInvalidLambdaFunctionException(struct)
+function asserts.AssertUpdateCustomVerificationEmailTemplateRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidLambdaFunctionException to be of type 'table'")
-	if struct["FunctionArn"] then asserts.AssertAmazonResourceName(struct["FunctionArn"]) end
+	assert(type(struct) == "table", "Expected UpdateCustomVerificationEmailTemplateRequest to be of type 'table'")
+	assert(struct["TemplateName"], "Expected key TemplateName to exist in table")
+	if struct["SuccessRedirectionURL"] then asserts.AssertSuccessRedirectionURL(struct["SuccessRedirectionURL"]) end
+	if struct["TemplateName"] then asserts.AssertTemplateName(struct["TemplateName"]) end
+	if struct["FromEmailAddress"] then asserts.AssertFromAddress(struct["FromEmailAddress"]) end
+	if struct["TemplateSubject"] then asserts.AssertSubject(struct["TemplateSubject"]) end
+	if struct["FailureRedirectionURL"] then asserts.AssertFailureRedirectionURL(struct["FailureRedirectionURL"]) end
+	if struct["TemplateContent"] then asserts.AssertTemplateContent(struct["TemplateContent"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidLambdaFunctionException[k], "InvalidLambdaFunctionException contains unknown key " .. tostring(k))
+		assert(keys.UpdateCustomVerificationEmailTemplateRequest[k], "UpdateCustomVerificationEmailTemplateRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidLambdaFunctionException
--- <p>Indicates that the provided AWS Lambda function is invalid, or that Amazon SES could not execute the provided function, possibly due to permissions issues. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p>
+--- Create a structure of type UpdateCustomVerificationEmailTemplateRequest
+-- <p>Represents a request to update an existing custom verification email template.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * FunctionArn [AmazonResourceName] 
--- @return InvalidLambdaFunctionException structure as a key-value pair table
-function M.InvalidLambdaFunctionException(args)
-	assert(args, "You must provide an argument table when creating InvalidLambdaFunctionException")
+-- * SuccessRedirectionURL [SuccessRedirectionURL] <p>The URL that the recipient of the verification email is sent to if his or her address is successfully verified.</p>
+-- * TemplateName [TemplateName] <p>The name of the custom verification email template that you want to update.</p>
+-- * FromEmailAddress [FromAddress] <p>The email address that the custom verification email is sent from.</p>
+-- * TemplateSubject [Subject] <p>The subject line of the custom verification email.</p>
+-- * FailureRedirectionURL [FailureRedirectionURL] <p>The URL that the recipient of the verification email is sent to if his or her address is not successfully verified.</p>
+-- * TemplateContent [TemplateContent] <p>The content of the custom verification email. The total size of the email must be less than 10 MB. The message body may contain HTML, with some limitations. For more information, see <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq">Custom Verification Email Frequently Asked Questions</a> in the <i>Amazon SES Developer Guide</i>.</p>
+-- Required key: TemplateName
+-- @return UpdateCustomVerificationEmailTemplateRequest structure as a key-value pair table
+function M.UpdateCustomVerificationEmailTemplateRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateCustomVerificationEmailTemplateRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -4377,9 +5251,101 @@ function M.InvalidLambdaFunctionException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["FunctionArn"] = args["FunctionArn"],
+		["SuccessRedirectionURL"] = args["SuccessRedirectionURL"],
+		["TemplateName"] = args["TemplateName"],
+		["FromEmailAddress"] = args["FromEmailAddress"],
+		["TemplateSubject"] = args["TemplateSubject"],
+		["FailureRedirectionURL"] = args["FailureRedirectionURL"],
+		["TemplateContent"] = args["TemplateContent"],
 	}
-	asserts.AssertInvalidLambdaFunctionException(all_args)
+	asserts.AssertUpdateCustomVerificationEmailTemplateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ReputationOptions = { ["SendingEnabled"] = true, ["LastFreshStart"] = true, ["ReputationMetricsEnabled"] = true, nil }
+
+function asserts.AssertReputationOptions(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ReputationOptions to be of type 'table'")
+	if struct["SendingEnabled"] then asserts.AssertEnabled(struct["SendingEnabled"]) end
+	if struct["LastFreshStart"] then asserts.AssertLastFreshStart(struct["LastFreshStart"]) end
+	if struct["ReputationMetricsEnabled"] then asserts.AssertEnabled(struct["ReputationMetricsEnabled"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ReputationOptions[k], "ReputationOptions contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ReputationOptions
+-- <p>Contains information about the reputation settings for a configuration set.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SendingEnabled [Enabled] <p>Describes whether email sending is enabled or disabled for the configuration set. If the value is <code>true</code>, then Amazon SES will send emails that use the configuration set. If the value is <code>false</code>, Amazon SES will not send emails that use the configuration set. The default value is <code>true</code>. You can change this setting using <a>UpdateConfigurationSetSendingEnabled</a>.</p>
+-- * LastFreshStart [LastFreshStart] <p>The date and time at which the reputation metrics for the configuration set were last reset. Resetting these metrics is known as a <i>fresh start</i>.</p> <p>When you disable email sending for a configuration set using <a>UpdateConfigurationSetSendingEnabled</a> and later re-enable it, the reputation metrics for the configuration set (but not for the entire Amazon SES account) are reset.</p> <p>If email sending for the configuration set has never been disabled and later re-enabled, the value of this attribute is <code>null</code>.</p>
+-- * ReputationMetricsEnabled [Enabled] <p>Describes whether or not Amazon SES publishes reputation metrics for the configuration set, such as bounce and complaint rates, to Amazon CloudWatch.</p> <p>If the value is <code>true</code>, reputation metrics are published. If the value is <code>false</code>, reputation metrics are not published. The default value is <code>false</code>.</p>
+-- @return ReputationOptions structure as a key-value pair table
+function M.ReputationOptions(args)
+	assert(args, "You must provide an argument table when creating ReputationOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SendingEnabled"] = args["SendingEnabled"],
+		["LastFreshStart"] = args["LastFreshStart"],
+		["ReputationMetricsEnabled"] = args["ReputationMetricsEnabled"],
+	}
+	asserts.AssertReputationOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateConfigurationSetTrackingOptionsRequest = { ["TrackingOptions"] = true, ["ConfigurationSetName"] = true, nil }
+
+function asserts.AssertCreateConfigurationSetTrackingOptionsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateConfigurationSetTrackingOptionsRequest to be of type 'table'")
+	assert(struct["ConfigurationSetName"], "Expected key ConfigurationSetName to exist in table")
+	assert(struct["TrackingOptions"], "Expected key TrackingOptions to exist in table")
+	if struct["TrackingOptions"] then asserts.AssertTrackingOptions(struct["TrackingOptions"]) end
+	if struct["ConfigurationSetName"] then asserts.AssertConfigurationSetName(struct["ConfigurationSetName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateConfigurationSetTrackingOptionsRequest[k], "CreateConfigurationSetTrackingOptionsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateConfigurationSetTrackingOptionsRequest
+-- <p>Represents a request to create an open and click tracking option object in a configuration set. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrackingOptions [TrackingOptions] 
+-- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set that the tracking options should be associated with.</p>
+-- Required key: ConfigurationSetName
+-- Required key: TrackingOptions
+-- @return CreateConfigurationSetTrackingOptionsRequest structure as a key-value pair table
+function M.CreateConfigurationSetTrackingOptionsRequest(args)
+	assert(args, "You must provide an argument table when creating CreateConfigurationSetTrackingOptionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["TrackingOptions"] = args["TrackingOptions"],
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
+	}
+	asserts.AssertCreateConfigurationSetTrackingOptionsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4583,7 +5549,7 @@ end
 -- <p>Contains the delivery stream ARN and the IAM role ARN associated with an Amazon Kinesis Firehose event destination.</p> <p>Event destinations, such as Amazon Kinesis Firehose, are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DeliveryStreamARN [AmazonResourceName] <p>The ARN of the Amazon Kinesis Firehose stream to which to publish email sending events.</p>
+-- * DeliveryStreamARN [AmazonResourceName] <p>The ARN of the Amazon Kinesis Firehose stream that email sending events should be published to.</p>
 -- * IAMRoleARN [AmazonResourceName] <p>The ARN of the IAM role under which Amazon SES publishes email sending events to the Amazon Kinesis Firehose stream.</p>
 -- Required key: IAMRoleARN
 -- Required key: DeliveryStreamARN
@@ -4609,23 +5575,23 @@ function M.KinesisFirehoseDestination(args)
     }
 end
 
-keys.UpdateReceiptRuleResponse = { nil }
+keys.CreateConfigurationSetTrackingOptionsResponse = { nil }
 
-function asserts.AssertUpdateReceiptRuleResponse(struct)
+function asserts.AssertCreateConfigurationSetTrackingOptionsResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateReceiptRuleResponse to be of type 'table'")
+	assert(type(struct) == "table", "Expected CreateConfigurationSetTrackingOptionsResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.UpdateReceiptRuleResponse[k], "UpdateReceiptRuleResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateConfigurationSetTrackingOptionsResponse[k], "CreateConfigurationSetTrackingOptionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type UpdateReceiptRuleResponse
+--- Create a structure of type CreateConfigurationSetTrackingOptionsResponse
 -- <p>An empty element returned on a successful request.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return UpdateReceiptRuleResponse structure as a key-value pair table
-function M.UpdateReceiptRuleResponse(args)
-	assert(args, "You must provide an argument table when creating UpdateReceiptRuleResponse")
+-- @return CreateConfigurationSetTrackingOptionsResponse structure as a key-value pair table
+function M.CreateConfigurationSetTrackingOptionsResponse(args)
+	assert(args, "You must provide an argument table when creating CreateConfigurationSetTrackingOptionsResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -4634,7 +5600,7 @@ function M.UpdateReceiptRuleResponse(args)
     }
 	local all_args = { 
 	}
-	asserts.AssertUpdateReceiptRuleResponse(all_args)
+	asserts.AssertCreateConfigurationSetTrackingOptionsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4661,7 +5627,7 @@ end
 -- <p>Represents a request to return the details of a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to which the receipt rule belongs.</p>
+-- * RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set that the receipt rule belongs to.</p>
 -- * RuleName [ReceiptRuleName] <p>The name of the receipt rule.</p>
 -- Required key: RuleSetName
 -- Required key: RuleName
@@ -4679,6 +5645,45 @@ function M.DescribeReceiptRuleRequest(args)
 		["RuleName"] = args["RuleName"],
 	}
 	asserts.AssertDescribeReceiptRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetIdentityNotificationAttributesResponse = { ["NotificationAttributes"] = true, nil }
+
+function asserts.AssertGetIdentityNotificationAttributesResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetIdentityNotificationAttributesResponse to be of type 'table'")
+	assert(struct["NotificationAttributes"], "Expected key NotificationAttributes to exist in table")
+	if struct["NotificationAttributes"] then asserts.AssertNotificationAttributes(struct["NotificationAttributes"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetIdentityNotificationAttributesResponse[k], "GetIdentityNotificationAttributesResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetIdentityNotificationAttributesResponse
+-- <p>Represents the notification attributes for a list of identities.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NotificationAttributes [NotificationAttributes] <p>A map of Identity to IdentityNotificationAttributes.</p>
+-- Required key: NotificationAttributes
+-- @return GetIdentityNotificationAttributesResponse structure as a key-value pair table
+function M.GetIdentityNotificationAttributesResponse(args)
+	assert(args, "You must provide an argument table when creating GetIdentityNotificationAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NotificationAttributes"] = args["NotificationAttributes"],
+	}
+	asserts.AssertGetIdentityNotificationAttributesResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4770,41 +5775,25 @@ function M.GetSendQuotaResponse(args)
     }
 end
 
-keys.RecipientDsnFields = { ["Status"] = true, ["FinalRecipient"] = true, ["DiagnosticCode"] = true, ["LastAttemptDate"] = true, ["ExtensionFields"] = true, ["RemoteMta"] = true, ["Action"] = true, nil }
+keys.GetAccountSendingEnabledResponse = { ["Enabled"] = true, nil }
 
-function asserts.AssertRecipientDsnFields(struct)
+function asserts.AssertGetAccountSendingEnabledResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected RecipientDsnFields to be of type 'table'")
-	assert(struct["Action"], "Expected key Action to exist in table")
-	assert(struct["Status"], "Expected key Status to exist in table")
-	if struct["Status"] then asserts.AssertDsnStatus(struct["Status"]) end
-	if struct["FinalRecipient"] then asserts.AssertAddress(struct["FinalRecipient"]) end
-	if struct["DiagnosticCode"] then asserts.AssertDiagnosticCode(struct["DiagnosticCode"]) end
-	if struct["LastAttemptDate"] then asserts.AssertLastAttemptDate(struct["LastAttemptDate"]) end
-	if struct["ExtensionFields"] then asserts.AssertExtensionFieldList(struct["ExtensionFields"]) end
-	if struct["RemoteMta"] then asserts.AssertRemoteMta(struct["RemoteMta"]) end
-	if struct["Action"] then asserts.AssertDsnAction(struct["Action"]) end
+	assert(type(struct) == "table", "Expected GetAccountSendingEnabledResponse to be of type 'table'")
+	if struct["Enabled"] then asserts.AssertEnabled(struct["Enabled"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.RecipientDsnFields[k], "RecipientDsnFields contains unknown key " .. tostring(k))
+		assert(keys.GetAccountSendingEnabledResponse[k], "GetAccountSendingEnabledResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type RecipientDsnFields
--- <p>Recipient-related information to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.</p> <p>For information about receiving email through Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon SES Developer Guide</a>.</p>
+--- Create a structure of type GetAccountSendingEnabledResponse
+-- <p>Represents a request to return the email sending status for your Amazon SES account in the current AWS Region.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Status [DsnStatus] <p>The status code that indicates what went wrong. This is required by <a href="https://tools.ietf.org/html/rfc3464">RFC 3464</a>.</p>
--- * FinalRecipient [Address] <p>The email address to which the message was ultimately delivered. This corresponds to the <code>Final-Recipient</code> in the DSN. If not specified, <code>FinalRecipient</code> will be set to the <code>Recipient</code> specified in the <code>BouncedRecipientInfo</code> structure. Either <code>FinalRecipient</code> or the recipient in <code>BouncedRecipientInfo</code> must be a recipient of the original bounced message.</p> <note> <p>Do not prepend the <code>FinalRecipient</code> email address with <code>rfc 822;</code>, as described in <a href="https://tools.ietf.org/html/rfc3798">RFC 3798</a>.</p> </note>
--- * DiagnosticCode [DiagnosticCode] <p>An extended explanation of what went wrong; this is usually an SMTP response. See <a href="https://tools.ietf.org/html/rfc3463">RFC 3463</a> for the correct formatting of this parameter.</p>
--- * LastAttemptDate [LastAttemptDate] <p>The time the final delivery attempt was made, in <a href="https://www.ietf.org/rfc/rfc0822.txt">RFC 822</a> date-time format.</p>
--- * ExtensionFields [ExtensionFieldList] <p>Additional X-headers to include in the DSN.</p>
--- * RemoteMta [RemoteMta] <p>The MTA to which the remote MTA attempted to deliver the message, formatted as specified in <a href="https://tools.ietf.org/html/rfc3464">RFC 3464</a> (<code>mta-name-type; mta-name</code>). This parameter typically applies only to propagating synchronous bounces.</p>
--- * Action [DsnAction] <p>The action performed by the reporting mail transfer agent (MTA) as a result of its attempt to deliver the message to the recipient address. This is required by <a href="https://tools.ietf.org/html/rfc3464">RFC 3464</a>.</p>
--- Required key: Action
--- Required key: Status
--- @return RecipientDsnFields structure as a key-value pair table
-function M.RecipientDsnFields(args)
-	assert(args, "You must provide an argument table when creating RecipientDsnFields")
+-- * Enabled [Enabled] <p>Describes whether email sending is enabled or disabled for your Amazon SES account in the current AWS Region.</p>
+-- @return GetAccountSendingEnabledResponse structure as a key-value pair table
+function M.GetAccountSendingEnabledResponse(args)
+	assert(args, "You must provide an argument table when creating GetAccountSendingEnabledResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -4812,15 +5801,9 @@ function M.RecipientDsnFields(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Status"] = args["Status"],
-		["FinalRecipient"] = args["FinalRecipient"],
-		["DiagnosticCode"] = args["DiagnosticCode"],
-		["LastAttemptDate"] = args["LastAttemptDate"],
-		["ExtensionFields"] = args["ExtensionFields"],
-		["RemoteMta"] = args["RemoteMta"],
-		["Action"] = args["Action"],
+		["Enabled"] = args["Enabled"],
 	}
-	asserts.AssertRecipientDsnFields(all_args)
+	asserts.AssertGetAccountSendingEnabledResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5094,23 +6077,27 @@ function M.IdentityNotificationAttributes(args)
     }
 end
 
-keys.CreateReceiptRuleResponse = { nil }
+keys.DeleteTemplateRequest = { ["TemplateName"] = true, nil }
 
-function asserts.AssertCreateReceiptRuleResponse(struct)
+function asserts.AssertDeleteTemplateRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected CreateReceiptRuleResponse to be of type 'table'")
+	assert(type(struct) == "table", "Expected DeleteTemplateRequest to be of type 'table'")
+	assert(struct["TemplateName"], "Expected key TemplateName to exist in table")
+	if struct["TemplateName"] then asserts.AssertTemplateName(struct["TemplateName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.CreateReceiptRuleResponse[k], "CreateReceiptRuleResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteTemplateRequest[k], "DeleteTemplateRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type CreateReceiptRuleResponse
--- <p>An empty element returned on a successful request.</p>
+--- Create a structure of type DeleteTemplateRequest
+-- <p>Represents a request to delete an email template. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html">Amazon SES Developer Guide</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return CreateReceiptRuleResponse structure as a key-value pair table
-function M.CreateReceiptRuleResponse(args)
-	assert(args, "You must provide an argument table when creating CreateReceiptRuleResponse")
+-- * TemplateName [TemplateName] <p>The name of the template to be deleted.</p>
+-- Required key: TemplateName
+-- @return DeleteTemplateRequest structure as a key-value pair table
+function M.DeleteTemplateRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteTemplateRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -5118,8 +6105,9 @@ function M.CreateReceiptRuleResponse(args)
     local header_args = { 
     }
 	local all_args = { 
+		["TemplateName"] = args["TemplateName"],
 	}
-	asserts.AssertCreateReceiptRuleResponse(all_args)
+	asserts.AssertDeleteTemplateRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5128,23 +6116,25 @@ function M.CreateReceiptRuleResponse(args)
     }
 end
 
-keys.MessageRejected = { nil }
+keys.TrackingOptions = { ["CustomRedirectDomain"] = true, nil }
 
-function asserts.AssertMessageRejected(struct)
+function asserts.AssertTrackingOptions(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected MessageRejected to be of type 'table'")
+	assert(type(struct) == "table", "Expected TrackingOptions to be of type 'table'")
+	if struct["CustomRedirectDomain"] then asserts.AssertCustomRedirectDomain(struct["CustomRedirectDomain"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.MessageRejected[k], "MessageRejected contains unknown key " .. tostring(k))
+		assert(keys.TrackingOptions[k], "TrackingOptions contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type MessageRejected
--- <p>Indicates that the action failed, and the message could not be sent. Check the error stack for more information about what caused the error.</p>
+--- Create a structure of type TrackingOptions
+-- <p>A domain that is used to redirect email recipients to an Amazon SES-operated domain. This domain captures open and click events generated by Amazon SES emails.</p> <p>For more information, see <a href="ses/latest/DeveloperGuide/configure-custom-open-click-domains.html">Configuring Custom Domains to Handle Open and Click Tracking</a> in the <i>Amazon SES Developer Guide</i>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return MessageRejected structure as a key-value pair table
-function M.MessageRejected(args)
-	assert(args, "You must provide an argument table when creating MessageRejected")
+-- * CustomRedirectDomain [CustomRedirectDomain] <p>The custom subdomain that will be used to redirect email recipients to the Amazon SES event tracking domain.</p>
+-- @return TrackingOptions structure as a key-value pair table
+function M.TrackingOptions(args)
+	assert(args, "You must provide an argument table when creating TrackingOptions")
     local query_args = { 
     }
     local uri_args = { 
@@ -5152,8 +6142,9 @@ function M.MessageRejected(args)
     local header_args = { 
     }
 	local all_args = { 
+		["CustomRedirectDomain"] = args["CustomRedirectDomain"],
 	}
-	asserts.AssertMessageRejected(all_args)
+	asserts.AssertTrackingOptions(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5162,23 +6153,27 @@ function M.MessageRejected(args)
     }
 end
 
-keys.InvalidPolicyException = { nil }
+keys.DeleteCustomVerificationEmailTemplateRequest = { ["TemplateName"] = true, nil }
 
-function asserts.AssertInvalidPolicyException(struct)
+function asserts.AssertDeleteCustomVerificationEmailTemplateRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidPolicyException to be of type 'table'")
+	assert(type(struct) == "table", "Expected DeleteCustomVerificationEmailTemplateRequest to be of type 'table'")
+	assert(struct["TemplateName"], "Expected key TemplateName to exist in table")
+	if struct["TemplateName"] then asserts.AssertTemplateName(struct["TemplateName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidPolicyException[k], "InvalidPolicyException contains unknown key " .. tostring(k))
+		assert(keys.DeleteCustomVerificationEmailTemplateRequest[k], "DeleteCustomVerificationEmailTemplateRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidPolicyException
--- <p>Indicates that the provided policy is invalid. Check the error stack for more information about what caused the error.</p>
+--- Create a structure of type DeleteCustomVerificationEmailTemplateRequest
+-- <p>Represents a request to delete an existing custom verification email template.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidPolicyException structure as a key-value pair table
-function M.InvalidPolicyException(args)
-	assert(args, "You must provide an argument table when creating InvalidPolicyException")
+-- * TemplateName [TemplateName] <p>The name of the custom verification email template that you want to delete.</p>
+-- Required key: TemplateName
+-- @return DeleteCustomVerificationEmailTemplateRequest structure as a key-value pair table
+function M.DeleteCustomVerificationEmailTemplateRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteCustomVerificationEmailTemplateRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -5186,8 +6181,84 @@ function M.InvalidPolicyException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["TemplateName"] = args["TemplateName"],
 	}
-	asserts.AssertInvalidPolicyException(all_args)
+	asserts.AssertDeleteCustomVerificationEmailTemplateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SendTemplatedEmailRequest = { ["Tags"] = true, ["TemplateData"] = true, ["ReturnPathArn"] = true, ["ReplyToAddresses"] = true, ["Destination"] = true, ["TemplateArn"] = true, ["Source"] = true, ["ReturnPath"] = true, ["Template"] = true, ["ConfigurationSetName"] = true, ["SourceArn"] = true, nil }
+
+function asserts.AssertSendTemplatedEmailRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SendTemplatedEmailRequest to be of type 'table'")
+	assert(struct["Source"], "Expected key Source to exist in table")
+	assert(struct["Destination"], "Expected key Destination to exist in table")
+	assert(struct["Template"], "Expected key Template to exist in table")
+	assert(struct["TemplateData"], "Expected key TemplateData to exist in table")
+	if struct["Tags"] then asserts.AssertMessageTagList(struct["Tags"]) end
+	if struct["TemplateData"] then asserts.AssertTemplateData(struct["TemplateData"]) end
+	if struct["ReturnPathArn"] then asserts.AssertAmazonResourceName(struct["ReturnPathArn"]) end
+	if struct["ReplyToAddresses"] then asserts.AssertAddressList(struct["ReplyToAddresses"]) end
+	if struct["Destination"] then asserts.AssertDestination(struct["Destination"]) end
+	if struct["TemplateArn"] then asserts.AssertAmazonResourceName(struct["TemplateArn"]) end
+	if struct["Source"] then asserts.AssertAddress(struct["Source"]) end
+	if struct["ReturnPath"] then asserts.AssertAddress(struct["ReturnPath"]) end
+	if struct["Template"] then asserts.AssertTemplateName(struct["Template"]) end
+	if struct["ConfigurationSetName"] then asserts.AssertConfigurationSetName(struct["ConfigurationSetName"]) end
+	if struct["SourceArn"] then asserts.AssertAmazonResourceName(struct["SourceArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SendTemplatedEmailRequest[k], "SendTemplatedEmailRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SendTemplatedEmailRequest
+-- <p>Represents a request to send a templated email using Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html">Amazon SES Developer Guide</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Tags [MessageTagList] <p>A list of tags, in the form of name/value pairs, to apply to an email that you send using <code>SendTemplatedEmail</code>. Tags correspond to characteristics of the email that you define, so that you can publish email sending events.</p>
+-- * TemplateData [TemplateData] <p>A list of replacement values to apply to the template. This parameter is a JSON object, typically consisting of key-value pairs in which the keys correspond to replacement tags in the email template.</p>
+-- * ReturnPathArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the email address specified in the <code>ReturnPath</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to use <code>feedback@example.com</code>, then you would specify the <code>ReturnPathArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>ReturnPath</code> to be <code>feedback@example.com</code>.</p> <p>For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
+-- * ReplyToAddresses [AddressList] <p>The reply-to email address(es) for the message. If the recipient replies to the message, each reply-to address will receive the reply.</p>
+-- * Destination [Destination] <p>The destination for this email, composed of To:, CC:, and BCC: fields. A Destination can include up to 50 recipients across these three fields.</p>
+-- * TemplateArn [AmazonResourceName] <p>The ARN of the template to use when sending this email.</p>
+-- * Source [Address] <p>The email address that is sending the email. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. For information about verifying identities, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html">Amazon SES Developer Guide</a>.</p> <p>If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the <code>SourceArn</code> parameter. For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p> <note> <p>Amazon SES does not support the SMTPUTF8 extension, as described in <a href="https://tools.ietf.org/html/rfc6531">RFC6531</a>. For this reason, the <i>local part</i> of a source email address (the part of the email address that precedes the @ sign) may only contain <a href="https://en.wikipedia.org/wiki/Email_address#Local-part">7-bit ASCII characters</a>. If the <i>domain part</i> of an address (the part after the @ sign) contains non-ASCII characters, they must be encoded using Punycode, as described in <a href="https://tools.ietf.org/html/rfc3492.html">RFC3492</a>. The sender name (also known as the <i>friendly name</i>) may contain non-ASCII characters. These characters must be encoded using MIME encoded-word syntax, as described in<a href="https://tools.ietf.org/html/rfc2047">RFC 2047</a>. MIME encoded-word syntax uses the following form: <code>=?charset?encoding?encoded-text?=</code>.</p> </note>
+-- * ReturnPath [Address] <p>The email address that bounces and complaints will be forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the <code>ReturnPath</code> parameter. The <code>ReturnPath</code> parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. </p>
+-- * Template [TemplateName] <p>The template to use when sending this email.</p>
+-- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to use when you send an email using <code>SendTemplatedEmail</code>.</p>
+-- * SourceArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to send for the email address specified in the <code>Source</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to send from <code>user@example.com</code>, then you would specify the <code>SourceArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>Source</code> to be <code>user@example.com</code>.</p> <p>For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
+-- Required key: Source
+-- Required key: Destination
+-- Required key: Template
+-- Required key: TemplateData
+-- @return SendTemplatedEmailRequest structure as a key-value pair table
+function M.SendTemplatedEmailRequest(args)
+	assert(args, "You must provide an argument table when creating SendTemplatedEmailRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Tags"] = args["Tags"],
+		["TemplateData"] = args["TemplateData"],
+		["ReturnPathArn"] = args["ReturnPathArn"],
+		["ReplyToAddresses"] = args["ReplyToAddresses"],
+		["Destination"] = args["Destination"],
+		["TemplateArn"] = args["TemplateArn"],
+		["Source"] = args["Source"],
+		["ReturnPath"] = args["ReturnPath"],
+		["Template"] = args["Template"],
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
+		["SourceArn"] = args["SourceArn"],
+	}
+	asserts.AssertSendTemplatedEmailRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5222,6 +6293,102 @@ function M.CloneReceiptRuleSetResponse(args)
 	local all_args = { 
 	}
 	asserts.AssertCloneReceiptRuleSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetCustomVerificationEmailTemplateResponse = { ["SuccessRedirectionURL"] = true, ["TemplateName"] = true, ["FromEmailAddress"] = true, ["TemplateSubject"] = true, ["FailureRedirectionURL"] = true, ["TemplateContent"] = true, nil }
+
+function asserts.AssertGetCustomVerificationEmailTemplateResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetCustomVerificationEmailTemplateResponse to be of type 'table'")
+	if struct["SuccessRedirectionURL"] then asserts.AssertSuccessRedirectionURL(struct["SuccessRedirectionURL"]) end
+	if struct["TemplateName"] then asserts.AssertTemplateName(struct["TemplateName"]) end
+	if struct["FromEmailAddress"] then asserts.AssertFromAddress(struct["FromEmailAddress"]) end
+	if struct["TemplateSubject"] then asserts.AssertSubject(struct["TemplateSubject"]) end
+	if struct["FailureRedirectionURL"] then asserts.AssertFailureRedirectionURL(struct["FailureRedirectionURL"]) end
+	if struct["TemplateContent"] then asserts.AssertTemplateContent(struct["TemplateContent"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetCustomVerificationEmailTemplateResponse[k], "GetCustomVerificationEmailTemplateResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetCustomVerificationEmailTemplateResponse
+-- <p>The content of the custom verification email template.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SuccessRedirectionURL [SuccessRedirectionURL] <p>The URL that the recipient of the verification email is sent to if his or her address is successfully verified.</p>
+-- * TemplateName [TemplateName] <p>The name of the custom verification email template.</p>
+-- * FromEmailAddress [FromAddress] <p>The email address that the custom verification email is sent from.</p>
+-- * TemplateSubject [Subject] <p>The subject line of the custom verification email.</p>
+-- * FailureRedirectionURL [FailureRedirectionURL] <p>The URL that the recipient of the verification email is sent to if his or her address is not successfully verified.</p>
+-- * TemplateContent [TemplateContent] <p>The content of the custom verification email.</p>
+-- @return GetCustomVerificationEmailTemplateResponse structure as a key-value pair table
+function M.GetCustomVerificationEmailTemplateResponse(args)
+	assert(args, "You must provide an argument table when creating GetCustomVerificationEmailTemplateResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SuccessRedirectionURL"] = args["SuccessRedirectionURL"],
+		["TemplateName"] = args["TemplateName"],
+		["FromEmailAddress"] = args["FromEmailAddress"],
+		["TemplateSubject"] = args["TemplateSubject"],
+		["FailureRedirectionURL"] = args["FailureRedirectionURL"],
+		["TemplateContent"] = args["TemplateContent"],
+	}
+	asserts.AssertGetCustomVerificationEmailTemplateResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateConfigurationSetSendingEnabledRequest = { ["Enabled"] = true, ["ConfigurationSetName"] = true, nil }
+
+function asserts.AssertUpdateConfigurationSetSendingEnabledRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateConfigurationSetSendingEnabledRequest to be of type 'table'")
+	assert(struct["ConfigurationSetName"], "Expected key ConfigurationSetName to exist in table")
+	assert(struct["Enabled"], "Expected key Enabled to exist in table")
+	if struct["Enabled"] then asserts.AssertEnabled(struct["Enabled"]) end
+	if struct["ConfigurationSetName"] then asserts.AssertConfigurationSetName(struct["ConfigurationSetName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateConfigurationSetSendingEnabledRequest[k], "UpdateConfigurationSetSendingEnabledRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateConfigurationSetSendingEnabledRequest
+-- <p>Represents a request to enable or disable the email sending capabilities for a specific configuration set.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Enabled [Enabled] <p>Describes whether email sending is enabled or disabled for the configuration set. </p>
+-- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set that you want to update.</p>
+-- Required key: ConfigurationSetName
+-- Required key: Enabled
+-- @return UpdateConfigurationSetSendingEnabledRequest structure as a key-value pair table
+function M.UpdateConfigurationSetSendingEnabledRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateConfigurationSetSendingEnabledRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Enabled"] = args["Enabled"],
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
+	}
+	asserts.AssertUpdateConfigurationSetSendingEnabledRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5559,27 +6726,33 @@ function M.VerifyDomainIdentityRequest(args)
     }
 end
 
-keys.EventDestinationDoesNotExistException = { ["EventDestinationName"] = true, ["ConfigurationSetName"] = true, nil }
+keys.SendCustomVerificationEmailRequest = { ["ConfigurationSetName"] = true, ["EmailAddress"] = true, ["TemplateName"] = true, nil }
 
-function asserts.AssertEventDestinationDoesNotExistException(struct)
+function asserts.AssertSendCustomVerificationEmailRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected EventDestinationDoesNotExistException to be of type 'table'")
-	if struct["EventDestinationName"] then asserts.AssertEventDestinationName(struct["EventDestinationName"]) end
+	assert(type(struct) == "table", "Expected SendCustomVerificationEmailRequest to be of type 'table'")
+	assert(struct["EmailAddress"], "Expected key EmailAddress to exist in table")
+	assert(struct["TemplateName"], "Expected key TemplateName to exist in table")
 	if struct["ConfigurationSetName"] then asserts.AssertConfigurationSetName(struct["ConfigurationSetName"]) end
+	if struct["EmailAddress"] then asserts.AssertAddress(struct["EmailAddress"]) end
+	if struct["TemplateName"] then asserts.AssertTemplateName(struct["TemplateName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.EventDestinationDoesNotExistException[k], "EventDestinationDoesNotExistException contains unknown key " .. tostring(k))
+		assert(keys.SendCustomVerificationEmailRequest[k], "SendCustomVerificationEmailRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type EventDestinationDoesNotExistException
--- <p>Indicates that the event destination does not exist.</p>
+--- Create a structure of type SendCustomVerificationEmailRequest
+-- <p>Represents a request to send a custom verification email to a specified recipient.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * EventDestinationName [EventDestinationName] 
--- * ConfigurationSetName [ConfigurationSetName] 
--- @return EventDestinationDoesNotExistException structure as a key-value pair table
-function M.EventDestinationDoesNotExistException(args)
-	assert(args, "You must provide an argument table when creating EventDestinationDoesNotExistException")
+-- * ConfigurationSetName [ConfigurationSetName] <p>Name of a configuration set to use when sending the verification email.</p>
+-- * EmailAddress [Address] <p>The email address to verify.</p>
+-- * TemplateName [TemplateName] <p>The name of the custom verification email template to use when sending the verification email.</p>
+-- Required key: EmailAddress
+-- Required key: TemplateName
+-- @return SendCustomVerificationEmailRequest structure as a key-value pair table
+function M.SendCustomVerificationEmailRequest(args)
+	assert(args, "You must provide an argument table when creating SendCustomVerificationEmailRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -5587,10 +6760,11 @@ function M.EventDestinationDoesNotExistException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["EventDestinationName"] = args["EventDestinationName"],
 		["ConfigurationSetName"] = args["ConfigurationSetName"],
+		["EmailAddress"] = args["EmailAddress"],
+		["TemplateName"] = args["TemplateName"],
 	}
-	asserts.AssertEventDestinationDoesNotExistException(all_args)
+	asserts.AssertSendCustomVerificationEmailRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5599,27 +6773,29 @@ function M.EventDestinationDoesNotExistException(args)
     }
 end
 
-keys.GetIdentityNotificationAttributesResponse = { ["NotificationAttributes"] = true, nil }
+keys.BulkEmailDestinationStatus = { ["Status"] = true, ["MessageId"] = true, ["Error"] = true, nil }
 
-function asserts.AssertGetIdentityNotificationAttributesResponse(struct)
+function asserts.AssertBulkEmailDestinationStatus(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected GetIdentityNotificationAttributesResponse to be of type 'table'")
-	assert(struct["NotificationAttributes"], "Expected key NotificationAttributes to exist in table")
-	if struct["NotificationAttributes"] then asserts.AssertNotificationAttributes(struct["NotificationAttributes"]) end
+	assert(type(struct) == "table", "Expected BulkEmailDestinationStatus to be of type 'table'")
+	if struct["Status"] then asserts.AssertBulkEmailStatus(struct["Status"]) end
+	if struct["MessageId"] then asserts.AssertMessageId(struct["MessageId"]) end
+	if struct["Error"] then asserts.AssertError(struct["Error"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.GetIdentityNotificationAttributesResponse[k], "GetIdentityNotificationAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.BulkEmailDestinationStatus[k], "BulkEmailDestinationStatus contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type GetIdentityNotificationAttributesResponse
--- <p>Represents the notification attributes for a list of identities.</p>
+--- Create a structure of type BulkEmailDestinationStatus
+-- <p>An object that contains the response from the <code>SendBulkTemplatedEmail</code> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NotificationAttributes [NotificationAttributes] <p>A map of Identity to IdentityNotificationAttributes.</p>
--- Required key: NotificationAttributes
--- @return GetIdentityNotificationAttributesResponse structure as a key-value pair table
-function M.GetIdentityNotificationAttributesResponse(args)
-	assert(args, "You must provide an argument table when creating GetIdentityNotificationAttributesResponse")
+-- * Status [BulkEmailStatus] <p>The status of a message sent using the <code>SendBulkTemplatedEmail</code> operation.</p> <p>Possible values for this parameter include:</p> <ul> <li> <p> <code>Success</code>: Amazon SES accepted the message, and will attempt to deliver it to the recipients.</p> </li> <li> <p> <code>MessageRejected</code>: The message was rejected because it contained a virus.</p> </li> <li> <p> <code>MailFromDomainNotVerified</code>: The sender's email address or domain was not verified.</p> </li> <li> <p> <code>ConfigurationSetDoesNotExist</code>: The configuration set you specified does not exist.</p> </li> <li> <p> <code>TemplateDoesNotExist</code>: The template you specified does not exist.</p> </li> <li> <p> <code>AccountSuspended</code>: Your account has been shut down because of issues related to your email sending practices.</p> </li> <li> <p> <code>AccountThrottled</code>: The number of emails you can send has been reduced because your account has exceeded its allocated sending limit.</p> </li> <li> <p> <code>AccountDailyQuotaExceeded</code>: You have reached or exceeded the maximum number of emails you can send from your account in a 24-hour period.</p> </li> <li> <p> <code>InvalidSendingPoolName</code>: The configuration set you specified refers to an IP pool that does not exist.</p> </li> <li> <p> <code>AccountSendingPaused</code>: Email sending for the Amazon SES account was disabled using the <a>UpdateAccountSendingEnabled</a> operation.</p> </li> <li> <p> <code>ConfigurationSetSendingPaused</code>: Email sending for this configuration set was disabled using the <a>UpdateConfigurationSetSendingEnabled</a> operation.</p> </li> <li> <p> <code>InvalidParameterValue</code>: One or more of the parameters you specified when calling this operation was invalid. See the error message for additional information.</p> </li> <li> <p> <code>TransientFailure</code>: Amazon SES was unable to process your request because of a temporary issue.</p> </li> <li> <p> <code>Failed</code>: Amazon SES was unable to process your request. See the error message for additional information.</p> </li> </ul>
+-- * MessageId [MessageId] <p>The unique message identifier returned from the <code>SendBulkTemplatedEmail</code> operation.</p>
+-- * Error [Error] <p>A description of an error that prevented a message being sent using the <code>SendBulkTemplatedEmail</code> operation.</p>
+-- @return BulkEmailDestinationStatus structure as a key-value pair table
+function M.BulkEmailDestinationStatus(args)
+	assert(args, "You must provide an argument table when creating BulkEmailDestinationStatus")
     local query_args = { 
     }
     local uri_args = { 
@@ -5627,9 +6803,11 @@ function M.GetIdentityNotificationAttributesResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["NotificationAttributes"] = args["NotificationAttributes"],
+		["Status"] = args["Status"],
+		["MessageId"] = args["MessageId"],
+		["Error"] = args["Error"],
 	}
-	asserts.AssertGetIdentityNotificationAttributesResponse(all_args)
+	asserts.AssertBulkEmailDestinationStatus(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5664,46 +6842,6 @@ function M.DeleteReceiptRuleResponse(args)
 	local all_args = { 
 	}
 	asserts.AssertDeleteReceiptRuleResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidCloudWatchDestinationException = { ["EventDestinationName"] = true, ["ConfigurationSetName"] = true, nil }
-
-function asserts.AssertInvalidCloudWatchDestinationException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidCloudWatchDestinationException to be of type 'table'")
-	if struct["EventDestinationName"] then asserts.AssertEventDestinationName(struct["EventDestinationName"]) end
-	if struct["ConfigurationSetName"] then asserts.AssertConfigurationSetName(struct["ConfigurationSetName"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidCloudWatchDestinationException[k], "InvalidCloudWatchDestinationException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidCloudWatchDestinationException
--- <p>Indicates that the Amazon CloudWatch destination is invalid. See the error message for details.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * EventDestinationName [EventDestinationName] 
--- * ConfigurationSetName [ConfigurationSetName] 
--- @return InvalidCloudWatchDestinationException structure as a key-value pair table
-function M.InvalidCloudWatchDestinationException(args)
-	assert(args, "You must provide an argument table when creating InvalidCloudWatchDestinationException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["EventDestinationName"] = args["EventDestinationName"],
-		["ConfigurationSetName"] = args["ConfigurationSetName"],
-	}
-	asserts.AssertInvalidCloudWatchDestinationException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5788,6 +6926,43 @@ function M.ListReceiptFiltersResponse(args)
     }
 end
 
+keys.SendBounceResponse = { ["MessageId"] = true, nil }
+
+function asserts.AssertSendBounceResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SendBounceResponse to be of type 'table'")
+	if struct["MessageId"] then asserts.AssertMessageId(struct["MessageId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SendBounceResponse[k], "SendBounceResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SendBounceResponse
+-- <p>Represents a unique message ID.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MessageId [MessageId] <p>The message ID of the bounce message.</p>
+-- @return SendBounceResponse structure as a key-value pair table
+function M.SendBounceResponse(args)
+	assert(args, "You must provide an argument table when creating SendBounceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["MessageId"] = args["MessageId"],
+	}
+	asserts.AssertSendBounceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.PutIdentityPolicyRequest = { ["Policy"] = true, ["PolicyName"] = true, ["Identity"] = true, nil }
 
 function asserts.AssertPutIdentityPolicyRequest(struct)
@@ -5810,7 +6985,7 @@ end
 -- Valid keys:
 -- * Policy [Policy] <p>The text of the policy in JSON format. The policy cannot exceed 4 KB.</p> <p>For information about the syntax of sending authorization policies, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html">Amazon SES Developer Guide</a>. </p>
 -- * PolicyName [PolicyName] <p>The name of the policy.</p> <p>The policy name cannot exceed 64 characters and can only include alphanumeric characters, dashes, and underscores.</p>
--- * Identity [Identity] <p>The identity to which the policy will apply. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p> <p>To successfully call this API, you must own the identity.</p>
+-- * Identity [Identity] <p>The identity that the policy will apply to. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p> <p>To successfully call this API, you must own the identity.</p>
 -- Required key: Identity
 -- Required key: PolicyName
 -- Required key: Policy
@@ -5867,6 +7042,18 @@ end
 --  
 function M.VerificationStatus(str)
 	asserts.AssertVerificationStatus(str)
+	return str
+end
+
+function asserts.AssertTemplateData(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TemplateData to be of type 'string'")
+	assert(#str <= 262144, "Expected string to be max 262144 characters")
+end
+
+--  
+function M.TemplateData(str)
+	asserts.AssertTemplateData(str)
 	return str
 end
 
@@ -5947,6 +7134,28 @@ function M.NotificationTopic(str)
 	return str
 end
 
+function asserts.AssertTemplateContent(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TemplateContent to be of type 'string'")
+end
+
+--  
+function M.TemplateContent(str)
+	asserts.AssertTemplateContent(str)
+	return str
+end
+
+function asserts.AssertNextToken(str)
+	assert(str)
+	assert(type(str) == "string", "Expected NextToken to be of type 'string'")
+end
+
+--  
+function M.NextToken(str)
+	asserts.AssertNextToken(str)
+	return str
+end
+
 function asserts.AssertDefaultDimensionValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DefaultDimensionValue to be of type 'string'")
@@ -5966,6 +7175,17 @@ end
 --  
 function M.SNSActionEncoding(str)
 	asserts.AssertSNSActionEncoding(str)
+	return str
+end
+
+function asserts.AssertSubject(str)
+	assert(str)
+	assert(type(str) == "string", "Expected Subject to be of type 'string'")
+end
+
+--  
+function M.Subject(str)
+	asserts.AssertSubject(str)
 	return str
 end
 
@@ -6002,17 +7222,6 @@ function M.DsnStatus(str)
 	return str
 end
 
-function asserts.AssertS3KeyPrefix(str)
-	assert(str)
-	assert(type(str) == "string", "Expected S3KeyPrefix to be of type 'string'")
-end
-
---  
-function M.S3KeyPrefix(str)
-	asserts.AssertS3KeyPrefix(str)
-	return str
-end
-
 function asserts.AssertReportingMta(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ReportingMta to be of type 'string'")
@@ -6021,6 +7230,28 @@ end
 --  
 function M.ReportingMta(str)
 	asserts.AssertReportingMta(str)
+	return str
+end
+
+function asserts.AssertInvocationType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected InvocationType to be of type 'string'")
+end
+
+--  
+function M.InvocationType(str)
+	asserts.AssertInvocationType(str)
+	return str
+end
+
+function asserts.AssertDiagnosticCode(str)
+	assert(str)
+	assert(type(str) == "string", "Expected DiagnosticCode to be of type 'string'")
+end
+
+--  
+function M.DiagnosticCode(str)
+	asserts.AssertDiagnosticCode(str)
 	return str
 end
 
@@ -6046,6 +7277,17 @@ function M.S3BucketName(str)
 	return str
 end
 
+function asserts.AssertHtmlPart(str)
+	assert(str)
+	assert(type(str) == "string", "Expected HtmlPart to be of type 'string'")
+end
+
+--  
+function M.HtmlPart(str)
+	asserts.AssertHtmlPart(str)
+	return str
+end
+
 function asserts.AssertExtensionFieldName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ExtensionFieldName to be of type 'string'")
@@ -6054,6 +7296,39 @@ end
 --  
 function M.ExtensionFieldName(str)
 	asserts.AssertExtensionFieldName(str)
+	return str
+end
+
+function asserts.AssertTemplateName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TemplateName to be of type 'string'")
+end
+
+--  
+function M.TemplateName(str)
+	asserts.AssertTemplateName(str)
+	return str
+end
+
+function asserts.AssertBulkEmailStatus(str)
+	assert(str)
+	assert(type(str) == "string", "Expected BulkEmailStatus to be of type 'string'")
+end
+
+--  
+function M.BulkEmailStatus(str)
+	asserts.AssertBulkEmailStatus(str)
+	return str
+end
+
+function asserts.AssertFailureRedirectionURL(str)
+	assert(str)
+	assert(type(str) == "string", "Expected FailureRedirectionURL to be of type 'string'")
+end
+
+--  
+function M.FailureRedirectionURL(str)
+	asserts.AssertFailureRedirectionURL(str)
 	return str
 end
 
@@ -6068,6 +7343,17 @@ function M.DimensionValueSource(str)
 	return str
 end
 
+function asserts.AssertCustomRedirectDomain(str)
+	assert(str)
+	assert(type(str) == "string", "Expected CustomRedirectDomain to be of type 'string'")
+end
+
+--  
+function M.CustomRedirectDomain(str)
+	asserts.AssertCustomRedirectDomain(str)
+	return str
+end
+
 function asserts.AssertDomain(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Domain to be of type 'string'")
@@ -6076,17 +7362,6 @@ end
 --  
 function M.Domain(str)
 	asserts.AssertDomain(str)
-	return str
-end
-
-function asserts.AssertReceiptFilterPolicy(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ReceiptFilterPolicy to be of type 'string'")
-end
-
---  
-function M.ReceiptFilterPolicy(str)
-	asserts.AssertReceiptFilterPolicy(str)
 	return str
 end
 
@@ -6156,14 +7431,14 @@ function M.Recipient(str)
 	return str
 end
 
-function asserts.AssertDiagnosticCode(str)
+function asserts.AssertSuccessRedirectionURL(str)
 	assert(str)
-	assert(type(str) == "string", "Expected DiagnosticCode to be of type 'string'")
+	assert(type(str) == "string", "Expected SuccessRedirectionURL to be of type 'string'")
 end
 
 --  
-function M.DiagnosticCode(str)
-	asserts.AssertDiagnosticCode(str)
+function M.SuccessRedirectionURL(str)
+	asserts.AssertSuccessRedirectionURL(str)
 	return str
 end
 
@@ -6186,6 +7461,17 @@ end
 --  
 function M.VerificationToken(str)
 	asserts.AssertVerificationToken(str)
+	return str
+end
+
+function asserts.AssertError(str)
+	assert(str)
+	assert(type(str) == "string", "Expected Error to be of type 'string'")
+end
+
+--  
+function M.Error(str)
+	asserts.AssertError(str)
 	return str
 end
 
@@ -6244,6 +7530,17 @@ function M.ConfigurationSetAttribute(str)
 	return str
 end
 
+function asserts.AssertSubjectPart(str)
+	assert(str)
+	assert(type(str) == "string", "Expected SubjectPart to be of type 'string'")
+end
+
+--  
+function M.SubjectPart(str)
+	asserts.AssertSubjectPart(str)
+	return str
+end
+
 function asserts.AssertPolicyName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PolicyName to be of type 'string'")
@@ -6290,6 +7587,17 @@ function M.ReceiptFilterName(str)
 	return str
 end
 
+function asserts.AssertReceiptFilterPolicy(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ReceiptFilterPolicy to be of type 'string'")
+end
+
+--  
+function M.ReceiptFilterPolicy(str)
+	asserts.AssertReceiptFilterPolicy(str)
+	return str
+end
+
 function asserts.AssertPolicy(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Policy to be of type 'string'")
@@ -6321,17 +7629,6 @@ end
 --  
 function M.BounceMessage(str)
 	asserts.AssertBounceMessage(str)
-	return str
-end
-
-function asserts.AssertInvocationType(str)
-	assert(str)
-	assert(type(str) == "string", "Expected InvocationType to be of type 'string'")
-end
-
---  
-function M.InvocationType(str)
-	asserts.AssertInvocationType(str)
 	return str
 end
 
@@ -6368,25 +7665,14 @@ function M.Cidr(str)
 	return str
 end
 
-function asserts.AssertRuleOrRuleSetName(str)
+function asserts.AssertFromAddress(str)
 	assert(str)
-	assert(type(str) == "string", "Expected RuleOrRuleSetName to be of type 'string'")
+	assert(type(str) == "string", "Expected FromAddress to be of type 'string'")
 end
 
 --  
-function M.RuleOrRuleSetName(str)
-	asserts.AssertRuleOrRuleSetName(str)
-	return str
-end
-
-function asserts.AssertNextToken(str)
-	assert(str)
-	assert(type(str) == "string", "Expected NextToken to be of type 'string'")
-end
-
---  
-function M.NextToken(str)
-	asserts.AssertNextToken(str)
+function M.FromAddress(str)
+	asserts.AssertFromAddress(str)
 	return str
 end
 
@@ -6412,6 +7698,17 @@ function M.BehaviorOnMXFailure(str)
 	return str
 end
 
+function asserts.AssertS3KeyPrefix(str)
+	assert(str)
+	assert(type(str) == "string", "Expected S3KeyPrefix to be of type 'string'")
+end
+
+--  
+function M.S3KeyPrefix(str)
+	asserts.AssertS3KeyPrefix(str)
+	return str
+end
+
 function asserts.AssertConfigurationSetName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ConfigurationSetName to be of type 'string'")
@@ -6431,6 +7728,28 @@ end
 --  
 function M.ReceiptRuleName(str)
 	asserts.AssertReceiptRuleName(str)
+	return str
+end
+
+function asserts.AssertRenderedTemplate(str)
+	assert(str)
+	assert(type(str) == "string", "Expected RenderedTemplate to be of type 'string'")
+end
+
+--  
+function M.RenderedTemplate(str)
+	asserts.AssertRenderedTemplate(str)
+	return str
+end
+
+function asserts.AssertTextPart(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TextPart to be of type 'string'")
+end
+
+--  
+function M.TextPart(str)
+	asserts.AssertTextPart(str)
 	return str
 end
 
@@ -6486,6 +7805,19 @@ function M.MaxItems(integer)
 	return integer
 end
 
+function asserts.AssertMaxResults(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected MaxResults to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
+	assert(integer <= 50, "Expected integer to be max 50")
+	assert(integer >= 1, "Expected integer to be min 1")
+end
+
+function M.MaxResults(integer)
+	asserts.AssertMaxResults(integer)
+	return integer
+end
+
 function asserts.AssertEnabled(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected Enabled to be of type 'boolean'")
@@ -6538,20 +7870,6 @@ function M.MailFromDomainAttributes(map)
 	return map
 end
 
-function asserts.AssertVerificationAttributes(map)
-	assert(map)
-	assert(type(map) == "table", "Expected VerificationAttributes to be of type 'table'")
-	for k,v in pairs(map) do
-		asserts.AssertIdentity(k)
-		asserts.AssertIdentityVerificationAttributes(v)
-	end
-end
-
-function M.VerificationAttributes(map)
-	asserts.AssertVerificationAttributes(map)
-	return map
-end
-
 function asserts.AssertNotificationAttributes(map)
 	assert(map)
 	assert(type(map) == "table", "Expected NotificationAttributes to be of type 'table'")
@@ -6563,6 +7881,20 @@ end
 
 function M.NotificationAttributes(map)
 	asserts.AssertNotificationAttributes(map)
+	return map
+end
+
+function asserts.AssertVerificationAttributes(map)
+	assert(map)
+	assert(type(map) == "table", "Expected VerificationAttributes to be of type 'table'")
+	for k,v in pairs(map) do
+		asserts.AssertIdentity(k)
+		asserts.AssertIdentityVerificationAttributes(v)
+	end
+end
+
+function M.VerificationAttributes(map)
+	asserts.AssertVerificationAttributes(map)
 	return map
 end
 
@@ -6586,6 +7918,16 @@ function M.LastAttemptDate(timestamp)
 	return timestamp
 end
 
+function asserts.AssertLastFreshStart(timestamp)
+	assert(timestamp)
+	assert(type(timestamp) == "string", "Expected LastFreshStart to be of type 'string'")
+end
+
+function M.LastFreshStart(timestamp)
+	asserts.AssertLastFreshStart(timestamp)
+	return timestamp
+end
+
 function asserts.AssertTimestamp(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected Timestamp to be of type 'string'")
@@ -6606,6 +7948,21 @@ function M.RawMessageData(blob)
 	return blob
 end
 
+function asserts.AssertBulkEmailDestinationStatusList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected BulkEmailDestinationStatusList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertBulkEmailDestinationStatus(v)
+	end
+end
+
+--  
+-- List of BulkEmailDestinationStatus objects
+function M.BulkEmailDestinationStatusList(list)
+	asserts.AssertBulkEmailDestinationStatusList(list)
+	return list
+end
+
 function asserts.AssertAddressList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AddressList to be of type ''table")
@@ -6621,21 +7978,6 @@ function M.AddressList(list)
 	return list
 end
 
-function asserts.AssertEventDestinations(list)
-	assert(list)
-	assert(type(list) == "table", "Expected EventDestinations to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertEventDestination(v)
-	end
-end
-
---  
--- List of EventDestination objects
-function M.EventDestinations(list)
-	asserts.AssertEventDestinations(list)
-	return list
-end
-
 function asserts.AssertPolicyNameList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PolicyNameList to be of type ''table")
@@ -6648,6 +7990,21 @@ end
 -- List of PolicyName objects
 function M.PolicyNameList(list)
 	asserts.AssertPolicyNameList(list)
+	return list
+end
+
+function asserts.AssertTemplateMetadataList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected TemplateMetadataList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertTemplateMetadata(v)
+	end
+end
+
+--  
+-- List of TemplateMetadata objects
+function M.TemplateMetadataList(list)
+	asserts.AssertTemplateMetadataList(list)
 	return list
 end
 
@@ -6678,6 +8035,21 @@ end
 -- List of Identity objects
 function M.IdentityList(list)
 	asserts.AssertIdentityList(list)
+	return list
+end
+
+function asserts.AssertCustomVerificationEmailTemplates(list)
+	assert(list)
+	assert(type(list) == "table", "Expected CustomVerificationEmailTemplates to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertCustomVerificationEmailTemplate(v)
+	end
+end
+
+--  
+-- List of CustomVerificationEmailTemplate objects
+function M.CustomVerificationEmailTemplates(list)
+	asserts.AssertCustomVerificationEmailTemplates(list)
 	return list
 end
 
@@ -6876,6 +8248,36 @@ function M.MessageTagList(list)
 	return list
 end
 
+function asserts.AssertBulkEmailDestinationList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected BulkEmailDestinationList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertBulkEmailDestination(v)
+	end
+end
+
+--  
+-- List of BulkEmailDestination objects
+function M.BulkEmailDestinationList(list)
+	asserts.AssertBulkEmailDestinationList(list)
+	return list
+end
+
+function asserts.AssertEventDestinations(list)
+	assert(list)
+	assert(type(list) == "table", "Expected EventDestinations to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertEventDestination(v)
+	end
+end
+
+--  
+-- List of EventDestination objects
+function M.EventDestinations(list)
+	asserts.AssertEventDestinations(list)
+	return list
+end
+
 function asserts.AssertReceiptActionsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ReceiptActionsList to be of type ''table")
@@ -6934,6 +8336,41 @@ end
 --
 -- OPERATIONS
 --
+--- Call UpdateConfigurationSetTrackingOptions asynchronously, invoking a callback when done
+-- @param UpdateConfigurationSetTrackingOptionsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateConfigurationSetTrackingOptionsAsync(UpdateConfigurationSetTrackingOptionsRequest, cb)
+	assert(UpdateConfigurationSetTrackingOptionsRequest, "You must provide a UpdateConfigurationSetTrackingOptionsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateConfigurationSetTrackingOptions",
+	}
+	for header,value in pairs(UpdateConfigurationSetTrackingOptionsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateConfigurationSetTrackingOptionsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateConfigurationSetTrackingOptions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateConfigurationSetTrackingOptionsRequest
+-- @return response
+-- @return error_message
+function M.UpdateConfigurationSetTrackingOptionsSync(UpdateConfigurationSetTrackingOptionsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateConfigurationSetTrackingOptionsAsync(UpdateConfigurationSetTrackingOptionsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call CreateReceiptRule asynchronously, invoking a callback when done
 -- @param CreateReceiptRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -7069,6 +8506,71 @@ function M.GetIdentityPoliciesSync(GetIdentityPoliciesRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call GetAccountSendingEnabled asynchronously, invoking a callback when done
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetAccountSendingEnabledAsync(cb)
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetAccountSendingEnabled",
+	}
+
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetAccountSendingEnabled synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @return response
+-- @return error_message
+function M.GetAccountSendingEnabledSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetAccountSendingEnabledAsync(function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateConfigurationSetSendingEnabled asynchronously, invoking a callback when done
+-- @param UpdateConfigurationSetSendingEnabledRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateConfigurationSetSendingEnabledAsync(UpdateConfigurationSetSendingEnabledRequest, cb)
+	assert(UpdateConfigurationSetSendingEnabledRequest, "You must provide a UpdateConfigurationSetSendingEnabledRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateConfigurationSetSendingEnabled",
+	}
+	for header,value in pairs(UpdateConfigurationSetSendingEnabledRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateConfigurationSetSendingEnabledRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateConfigurationSetSendingEnabled synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateConfigurationSetSendingEnabledRequest
+-- @return response
+-- @return error_message
+function M.UpdateConfigurationSetSendingEnabledSync(UpdateConfigurationSetSendingEnabledRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateConfigurationSetSendingEnabledAsync(UpdateConfigurationSetSendingEnabledRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call VerifyEmailAddress asynchronously, invoking a callback when done
 -- @param VerifyEmailAddressRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -7134,6 +8636,41 @@ function M.SetIdentityMailFromDomainSync(SetIdentityMailFromDomainRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.SetIdentityMailFromDomainAsync(SetIdentityMailFromDomainRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteConfigurationSet asynchronously, invoking a callback when done
+-- @param DeleteConfigurationSetRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteConfigurationSetAsync(DeleteConfigurationSetRequest, cb)
+	assert(DeleteConfigurationSetRequest, "You must provide a DeleteConfigurationSetRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteConfigurationSet",
+	}
+	for header,value in pairs(DeleteConfigurationSetRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteConfigurationSetRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteConfigurationSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteConfigurationSetRequest
+-- @return response
+-- @return error_message
+function M.DeleteConfigurationSetSync(DeleteConfigurationSetRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteConfigurationSetAsync(DeleteConfigurationSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7454,36 +8991,36 @@ function M.GetIdentityDkimAttributesSync(GetIdentityDkimAttributesRequest, ...)
 	return coroutine.yield()
 end
 
---- Call SetReceiptRulePosition asynchronously, invoking a callback when done
--- @param SetReceiptRulePositionRequest
+--- Call GetIdentityMailFromDomainAttributes asynchronously, invoking a callback when done
+-- @param GetIdentityMailFromDomainAttributesRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.SetReceiptRulePositionAsync(SetReceiptRulePositionRequest, cb)
-	assert(SetReceiptRulePositionRequest, "You must provide a SetReceiptRulePositionRequest")
+function M.GetIdentityMailFromDomainAttributesAsync(GetIdentityMailFromDomainAttributesRequest, cb)
+	assert(GetIdentityMailFromDomainAttributesRequest, "You must provide a GetIdentityMailFromDomainAttributesRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".SetReceiptRulePosition",
+		[request_headers.AMZ_TARGET_HEADER] = ".GetIdentityMailFromDomainAttributes",
 	}
-	for header,value in pairs(SetReceiptRulePositionRequest.headers) do
+	for header,value in pairs(GetIdentityMailFromDomainAttributesRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", SetReceiptRulePositionRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", GetIdentityMailFromDomainAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call SetReceiptRulePosition synchronously, returning when done
+--- Call GetIdentityMailFromDomainAttributes synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param SetReceiptRulePositionRequest
+-- @param GetIdentityMailFromDomainAttributesRequest
 -- @return response
 -- @return error_message
-function M.SetReceiptRulePositionSync(SetReceiptRulePositionRequest, ...)
+function M.GetIdentityMailFromDomainAttributesSync(GetIdentityMailFromDomainAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetReceiptRulePositionAsync(SetReceiptRulePositionRequest, function(response, error_message)
+	M.GetIdentityMailFromDomainAttributesAsync(GetIdentityMailFromDomainAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7589,36 +9126,36 @@ function M.ListVerifiedEmailAddressesSync(...)
 	return coroutine.yield()
 end
 
---- Call DeleteConfigurationSet asynchronously, invoking a callback when done
--- @param DeleteConfigurationSetRequest
+--- Call DeleteTemplate asynchronously, invoking a callback when done
+-- @param DeleteTemplateRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.DeleteConfigurationSetAsync(DeleteConfigurationSetRequest, cb)
-	assert(DeleteConfigurationSetRequest, "You must provide a DeleteConfigurationSetRequest")
+function M.DeleteTemplateAsync(DeleteTemplateRequest, cb)
+	assert(DeleteTemplateRequest, "You must provide a DeleteTemplateRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".DeleteConfigurationSet",
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTemplate",
 	}
-	for header,value in pairs(DeleteConfigurationSetRequest.headers) do
+	for header,value in pairs(DeleteTemplateRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DeleteConfigurationSetRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", DeleteTemplateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DeleteConfigurationSet synchronously, returning when done
+--- Call DeleteTemplate synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DeleteConfigurationSetRequest
+-- @param DeleteTemplateRequest
 -- @return response
 -- @return error_message
-function M.DeleteConfigurationSetSync(DeleteConfigurationSetRequest, ...)
+function M.DeleteTemplateSync(DeleteTemplateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteConfigurationSetAsync(DeleteConfigurationSetRequest, function(response, error_message)
+	M.DeleteTemplateAsync(DeleteTemplateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7659,6 +9196,76 @@ function M.CloneReceiptRuleSetSync(CloneReceiptRuleSetRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call SendCustomVerificationEmail asynchronously, invoking a callback when done
+-- @param SendCustomVerificationEmailRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.SendCustomVerificationEmailAsync(SendCustomVerificationEmailRequest, cb)
+	assert(SendCustomVerificationEmailRequest, "You must provide a SendCustomVerificationEmailRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SendCustomVerificationEmail",
+	}
+	for header,value in pairs(SendCustomVerificationEmailRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", SendCustomVerificationEmailRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call SendCustomVerificationEmail synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SendCustomVerificationEmailRequest
+-- @return response
+-- @return error_message
+function M.SendCustomVerificationEmailSync(SendCustomVerificationEmailRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SendCustomVerificationEmailAsync(SendCustomVerificationEmailRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call TestRenderTemplate asynchronously, invoking a callback when done
+-- @param TestRenderTemplateRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.TestRenderTemplateAsync(TestRenderTemplateRequest, cb)
+	assert(TestRenderTemplateRequest, "You must provide a TestRenderTemplateRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".TestRenderTemplate",
+	}
+	for header,value in pairs(TestRenderTemplateRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", TestRenderTemplateRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call TestRenderTemplate synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TestRenderTemplateRequest
+-- @return response
+-- @return error_message
+function M.TestRenderTemplateSync(TestRenderTemplateRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TestRenderTemplateAsync(TestRenderTemplateRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call VerifyDomainIdentity asynchronously, invoking a callback when done
 -- @param VerifyDomainIdentityRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -7689,6 +9296,76 @@ function M.VerifyDomainIdentitySync(VerifyDomainIdentityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.VerifyDomainIdentityAsync(VerifyDomainIdentityRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateCustomVerificationEmailTemplate asynchronously, invoking a callback when done
+-- @param UpdateCustomVerificationEmailTemplateRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateCustomVerificationEmailTemplateAsync(UpdateCustomVerificationEmailTemplateRequest, cb)
+	assert(UpdateCustomVerificationEmailTemplateRequest, "You must provide a UpdateCustomVerificationEmailTemplateRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateCustomVerificationEmailTemplate",
+	}
+	for header,value in pairs(UpdateCustomVerificationEmailTemplateRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateCustomVerificationEmailTemplateRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateCustomVerificationEmailTemplate synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateCustomVerificationEmailTemplateRequest
+-- @return response
+-- @return error_message
+function M.UpdateCustomVerificationEmailTemplateSync(UpdateCustomVerificationEmailTemplateRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateCustomVerificationEmailTemplateAsync(UpdateCustomVerificationEmailTemplateRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call VerifyEmailIdentity asynchronously, invoking a callback when done
+-- @param VerifyEmailIdentityRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.VerifyEmailIdentityAsync(VerifyEmailIdentityRequest, cb)
+	assert(VerifyEmailIdentityRequest, "You must provide a VerifyEmailIdentityRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".VerifyEmailIdentity",
+	}
+	for header,value in pairs(VerifyEmailIdentityRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", VerifyEmailIdentityRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call VerifyEmailIdentity synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param VerifyEmailIdentityRequest
+-- @return response
+-- @return error_message
+function M.VerifyEmailIdentitySync(VerifyEmailIdentityRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.VerifyEmailIdentityAsync(VerifyEmailIdentityRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7869,6 +9546,181 @@ function M.SetIdentityDkimEnabledSync(SetIdentityDkimEnabledRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call GetTemplate asynchronously, invoking a callback when done
+-- @param GetTemplateRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetTemplateAsync(GetTemplateRequest, cb)
+	assert(GetTemplateRequest, "You must provide a GetTemplateRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetTemplate",
+	}
+	for header,value in pairs(GetTemplateRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", GetTemplateRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetTemplate synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetTemplateRequest
+-- @return response
+-- @return error_message
+function M.GetTemplateSync(GetTemplateRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetTemplateAsync(GetTemplateRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTemplates asynchronously, invoking a callback when done
+-- @param ListTemplatesRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListTemplatesAsync(ListTemplatesRequest, cb)
+	assert(ListTemplatesRequest, "You must provide a ListTemplatesRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTemplates",
+	}
+	for header,value in pairs(ListTemplatesRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListTemplatesRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListTemplates synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTemplatesRequest
+-- @return response
+-- @return error_message
+function M.ListTemplatesSync(ListTemplatesRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTemplatesAsync(ListTemplatesRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeReceiptRule asynchronously, invoking a callback when done
+-- @param DescribeReceiptRuleRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeReceiptRuleAsync(DescribeReceiptRuleRequest, cb)
+	assert(DescribeReceiptRuleRequest, "You must provide a DescribeReceiptRuleRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReceiptRule",
+	}
+	for header,value in pairs(DescribeReceiptRuleRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeReceiptRuleRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeReceiptRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeReceiptRuleRequest
+-- @return response
+-- @return error_message
+function M.DescribeReceiptRuleSync(DescribeReceiptRuleRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeReceiptRuleAsync(DescribeReceiptRuleRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SendBulkTemplatedEmail asynchronously, invoking a callback when done
+-- @param SendBulkTemplatedEmailRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.SendBulkTemplatedEmailAsync(SendBulkTemplatedEmailRequest, cb)
+	assert(SendBulkTemplatedEmailRequest, "You must provide a SendBulkTemplatedEmailRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SendBulkTemplatedEmail",
+	}
+	for header,value in pairs(SendBulkTemplatedEmailRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", SendBulkTemplatedEmailRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call SendBulkTemplatedEmail synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SendBulkTemplatedEmailRequest
+-- @return response
+-- @return error_message
+function M.SendBulkTemplatedEmailSync(SendBulkTemplatedEmailRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SendBulkTemplatedEmailAsync(SendBulkTemplatedEmailRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateConfigurationSetReputationMetricsEnabled asynchronously, invoking a callback when done
+-- @param UpdateConfigurationSetReputationMetricsEnabledRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateConfigurationSetReputationMetricsEnabledAsync(UpdateConfigurationSetReputationMetricsEnabledRequest, cb)
+	assert(UpdateConfigurationSetReputationMetricsEnabledRequest, "You must provide a UpdateConfigurationSetReputationMetricsEnabledRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateConfigurationSetReputationMetricsEnabled",
+	}
+	for header,value in pairs(UpdateConfigurationSetReputationMetricsEnabledRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateConfigurationSetReputationMetricsEnabledRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateConfigurationSetReputationMetricsEnabled synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateConfigurationSetReputationMetricsEnabledRequest
+-- @return response
+-- @return error_message
+function M.UpdateConfigurationSetReputationMetricsEnabledSync(UpdateConfigurationSetReputationMetricsEnabledRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateConfigurationSetReputationMetricsEnabledAsync(UpdateConfigurationSetReputationMetricsEnabledRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call GetSendQuota asynchronously, invoking a callback when done
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetSendQuotaAsync(cb)
@@ -7899,36 +9751,106 @@ function M.GetSendQuotaSync(...)
 	return coroutine.yield()
 end
 
---- Call SetIdentityNotificationTopic asynchronously, invoking a callback when done
--- @param SetIdentityNotificationTopicRequest
+--- Call GetCustomVerificationEmailTemplate asynchronously, invoking a callback when done
+-- @param GetCustomVerificationEmailTemplateRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.SetIdentityNotificationTopicAsync(SetIdentityNotificationTopicRequest, cb)
-	assert(SetIdentityNotificationTopicRequest, "You must provide a SetIdentityNotificationTopicRequest")
+function M.GetCustomVerificationEmailTemplateAsync(GetCustomVerificationEmailTemplateRequest, cb)
+	assert(GetCustomVerificationEmailTemplateRequest, "You must provide a GetCustomVerificationEmailTemplateRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".SetIdentityNotificationTopic",
+		[request_headers.AMZ_TARGET_HEADER] = ".GetCustomVerificationEmailTemplate",
 	}
-	for header,value in pairs(SetIdentityNotificationTopicRequest.headers) do
+	for header,value in pairs(GetCustomVerificationEmailTemplateRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", SetIdentityNotificationTopicRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", GetCustomVerificationEmailTemplateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call SetIdentityNotificationTopic synchronously, returning when done
+--- Call GetCustomVerificationEmailTemplate synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param SetIdentityNotificationTopicRequest
+-- @param GetCustomVerificationEmailTemplateRequest
 -- @return response
 -- @return error_message
-function M.SetIdentityNotificationTopicSync(SetIdentityNotificationTopicRequest, ...)
+function M.GetCustomVerificationEmailTemplateSync(GetCustomVerificationEmailTemplateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetIdentityNotificationTopicAsync(SetIdentityNotificationTopicRequest, function(response, error_message)
+	M.GetCustomVerificationEmailTemplateAsync(GetCustomVerificationEmailTemplateRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateAccountSendingEnabled asynchronously, invoking a callback when done
+-- @param UpdateAccountSendingEnabledRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateAccountSendingEnabledAsync(UpdateAccountSendingEnabledRequest, cb)
+	assert(UpdateAccountSendingEnabledRequest, "You must provide a UpdateAccountSendingEnabledRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateAccountSendingEnabled",
+	}
+	for header,value in pairs(UpdateAccountSendingEnabledRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateAccountSendingEnabledRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateAccountSendingEnabled synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateAccountSendingEnabledRequest
+-- @return response
+-- @return error_message
+function M.UpdateAccountSendingEnabledSync(UpdateAccountSendingEnabledRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateAccountSendingEnabledAsync(UpdateAccountSendingEnabledRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetReceiptRulePosition asynchronously, invoking a callback when done
+-- @param SetReceiptRulePositionRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.SetReceiptRulePositionAsync(SetReceiptRulePositionRequest, cb)
+	assert(SetReceiptRulePositionRequest, "You must provide a SetReceiptRulePositionRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetReceiptRulePosition",
+	}
+	for header,value in pairs(SetReceiptRulePositionRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", SetReceiptRulePositionRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call SetReceiptRulePosition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetReceiptRulePositionRequest
+-- @return response
+-- @return error_message
+function M.SetReceiptRulePositionSync(SetReceiptRulePositionRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetReceiptRulePositionAsync(SetReceiptRulePositionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8074,36 +9996,71 @@ function M.CreateReceiptFilterSync(CreateReceiptFilterRequest, ...)
 	return coroutine.yield()
 end
 
---- Call DescribeReceiptRule asynchronously, invoking a callback when done
--- @param DescribeReceiptRuleRequest
+--- Call SendTemplatedEmail asynchronously, invoking a callback when done
+-- @param SendTemplatedEmailRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.DescribeReceiptRuleAsync(DescribeReceiptRuleRequest, cb)
-	assert(DescribeReceiptRuleRequest, "You must provide a DescribeReceiptRuleRequest")
+function M.SendTemplatedEmailAsync(SendTemplatedEmailRequest, cb)
+	assert(SendTemplatedEmailRequest, "You must provide a SendTemplatedEmailRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReceiptRule",
+		[request_headers.AMZ_TARGET_HEADER] = ".SendTemplatedEmail",
 	}
-	for header,value in pairs(DescribeReceiptRuleRequest.headers) do
+	for header,value in pairs(SendTemplatedEmailRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DescribeReceiptRuleRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", SendTemplatedEmailRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DescribeReceiptRule synchronously, returning when done
+--- Call SendTemplatedEmail synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DescribeReceiptRuleRequest
+-- @param SendTemplatedEmailRequest
 -- @return response
 -- @return error_message
-function M.DescribeReceiptRuleSync(DescribeReceiptRuleRequest, ...)
+function M.SendTemplatedEmailSync(SendTemplatedEmailRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeReceiptRuleAsync(DescribeReceiptRuleRequest, function(response, error_message)
+	M.SendTemplatedEmailAsync(SendTemplatedEmailRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateConfigurationSetTrackingOptions asynchronously, invoking a callback when done
+-- @param CreateConfigurationSetTrackingOptionsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.CreateConfigurationSetTrackingOptionsAsync(CreateConfigurationSetTrackingOptionsRequest, cb)
+	assert(CreateConfigurationSetTrackingOptionsRequest, "You must provide a CreateConfigurationSetTrackingOptionsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateConfigurationSetTrackingOptions",
+	}
+	for header,value in pairs(CreateConfigurationSetTrackingOptionsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", CreateConfigurationSetTrackingOptionsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CreateConfigurationSetTrackingOptions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateConfigurationSetTrackingOptionsRequest
+-- @return response
+-- @return error_message
+function M.CreateConfigurationSetTrackingOptionsSync(CreateConfigurationSetTrackingOptionsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateConfigurationSetTrackingOptionsAsync(CreateConfigurationSetTrackingOptionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8139,6 +10096,41 @@ function M.ListReceiptRuleSetsSync(ListReceiptRuleSetsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.ListReceiptRuleSetsAsync(ListReceiptRuleSetsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateTemplate asynchronously, invoking a callback when done
+-- @param CreateTemplateRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.CreateTemplateAsync(CreateTemplateRequest, cb)
+	assert(CreateTemplateRequest, "You must provide a CreateTemplateRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateTemplate",
+	}
+	for header,value in pairs(CreateTemplateRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", CreateTemplateRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CreateTemplate synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateTemplateRequest
+-- @return response
+-- @return error_message
+function M.CreateTemplateSync(CreateTemplateRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateTemplateAsync(CreateTemplateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8319,36 +10311,36 @@ function M.VerifyDomainDkimSync(VerifyDomainDkimRequest, ...)
 	return coroutine.yield()
 end
 
---- Call GetIdentityMailFromDomainAttributes asynchronously, invoking a callback when done
--- @param GetIdentityMailFromDomainAttributesRequest
+--- Call CreateCustomVerificationEmailTemplate asynchronously, invoking a callback when done
+-- @param CreateCustomVerificationEmailTemplateRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.GetIdentityMailFromDomainAttributesAsync(GetIdentityMailFromDomainAttributesRequest, cb)
-	assert(GetIdentityMailFromDomainAttributesRequest, "You must provide a GetIdentityMailFromDomainAttributesRequest")
+function M.CreateCustomVerificationEmailTemplateAsync(CreateCustomVerificationEmailTemplateRequest, cb)
+	assert(CreateCustomVerificationEmailTemplateRequest, "You must provide a CreateCustomVerificationEmailTemplateRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".GetIdentityMailFromDomainAttributes",
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateCustomVerificationEmailTemplate",
 	}
-	for header,value in pairs(GetIdentityMailFromDomainAttributesRequest.headers) do
+	for header,value in pairs(CreateCustomVerificationEmailTemplateRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", GetIdentityMailFromDomainAttributesRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", CreateCustomVerificationEmailTemplateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call GetIdentityMailFromDomainAttributes synchronously, returning when done
+--- Call CreateCustomVerificationEmailTemplate synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param GetIdentityMailFromDomainAttributesRequest
+-- @param CreateCustomVerificationEmailTemplateRequest
 -- @return response
 -- @return error_message
-function M.GetIdentityMailFromDomainAttributesSync(GetIdentityMailFromDomainAttributesRequest, ...)
+function M.CreateCustomVerificationEmailTemplateSync(CreateCustomVerificationEmailTemplateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetIdentityMailFromDomainAttributesAsync(GetIdentityMailFromDomainAttributesRequest, function(response, error_message)
+	M.CreateCustomVerificationEmailTemplateAsync(CreateCustomVerificationEmailTemplateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8424,6 +10416,41 @@ function M.DeleteConfigurationSetEventDestinationSync(DeleteConfigurationSetEven
 	return coroutine.yield()
 end
 
+--- Call DeleteConfigurationSetTrackingOptions asynchronously, invoking a callback when done
+-- @param DeleteConfigurationSetTrackingOptionsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteConfigurationSetTrackingOptionsAsync(DeleteConfigurationSetTrackingOptionsRequest, cb)
+	assert(DeleteConfigurationSetTrackingOptionsRequest, "You must provide a DeleteConfigurationSetTrackingOptionsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteConfigurationSetTrackingOptions",
+	}
+	for header,value in pairs(DeleteConfigurationSetTrackingOptionsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteConfigurationSetTrackingOptionsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteConfigurationSetTrackingOptions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteConfigurationSetTrackingOptionsRequest
+-- @return response
+-- @return error_message
+function M.DeleteConfigurationSetTrackingOptionsSync(DeleteConfigurationSetTrackingOptionsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteConfigurationSetTrackingOptionsAsync(DeleteConfigurationSetTrackingOptionsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ListIdentities asynchronously, invoking a callback when done
 -- @param ListIdentitiesRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -8494,36 +10521,141 @@ function M.GetIdentityVerificationAttributesSync(GetIdentityVerificationAttribut
 	return coroutine.yield()
 end
 
---- Call VerifyEmailIdentity asynchronously, invoking a callback when done
--- @param VerifyEmailIdentityRequest
+--- Call UpdateTemplate asynchronously, invoking a callback when done
+-- @param UpdateTemplateRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.VerifyEmailIdentityAsync(VerifyEmailIdentityRequest, cb)
-	assert(VerifyEmailIdentityRequest, "You must provide a VerifyEmailIdentityRequest")
+function M.UpdateTemplateAsync(UpdateTemplateRequest, cb)
+	assert(UpdateTemplateRequest, "You must provide a UpdateTemplateRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".VerifyEmailIdentity",
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateTemplate",
 	}
-	for header,value in pairs(VerifyEmailIdentityRequest.headers) do
+	for header,value in pairs(UpdateTemplateRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", VerifyEmailIdentityRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", UpdateTemplateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call VerifyEmailIdentity synchronously, returning when done
+--- Call UpdateTemplate synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param VerifyEmailIdentityRequest
+-- @param UpdateTemplateRequest
 -- @return response
 -- @return error_message
-function M.VerifyEmailIdentitySync(VerifyEmailIdentityRequest, ...)
+function M.UpdateTemplateSync(UpdateTemplateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.VerifyEmailIdentityAsync(VerifyEmailIdentityRequest, function(response, error_message)
+	M.UpdateTemplateAsync(UpdateTemplateRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListCustomVerificationEmailTemplates asynchronously, invoking a callback when done
+-- @param ListCustomVerificationEmailTemplatesRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListCustomVerificationEmailTemplatesAsync(ListCustomVerificationEmailTemplatesRequest, cb)
+	assert(ListCustomVerificationEmailTemplatesRequest, "You must provide a ListCustomVerificationEmailTemplatesRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListCustomVerificationEmailTemplates",
+	}
+	for header,value in pairs(ListCustomVerificationEmailTemplatesRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListCustomVerificationEmailTemplatesRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListCustomVerificationEmailTemplates synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListCustomVerificationEmailTemplatesRequest
+-- @return response
+-- @return error_message
+function M.ListCustomVerificationEmailTemplatesSync(ListCustomVerificationEmailTemplatesRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListCustomVerificationEmailTemplatesAsync(ListCustomVerificationEmailTemplatesRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteCustomVerificationEmailTemplate asynchronously, invoking a callback when done
+-- @param DeleteCustomVerificationEmailTemplateRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteCustomVerificationEmailTemplateAsync(DeleteCustomVerificationEmailTemplateRequest, cb)
+	assert(DeleteCustomVerificationEmailTemplateRequest, "You must provide a DeleteCustomVerificationEmailTemplateRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCustomVerificationEmailTemplate",
+	}
+	for header,value in pairs(DeleteCustomVerificationEmailTemplateRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteCustomVerificationEmailTemplateRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteCustomVerificationEmailTemplate synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteCustomVerificationEmailTemplateRequest
+-- @return response
+-- @return error_message
+function M.DeleteCustomVerificationEmailTemplateSync(DeleteCustomVerificationEmailTemplateRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteCustomVerificationEmailTemplateAsync(DeleteCustomVerificationEmailTemplateRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetIdentityNotificationTopic asynchronously, invoking a callback when done
+-- @param SetIdentityNotificationTopicRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.SetIdentityNotificationTopicAsync(SetIdentityNotificationTopicRequest, cb)
+	assert(SetIdentityNotificationTopicRequest, "You must provide a SetIdentityNotificationTopicRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetIdentityNotificationTopic",
+	}
+	for header,value in pairs(SetIdentityNotificationTopicRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", SetIdentityNotificationTopicRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call SetIdentityNotificationTopic synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetIdentityNotificationTopicRequest
+-- @return response
+-- @return error_message
+function M.SetIdentityNotificationTopicSync(SetIdentityNotificationTopicRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetIdentityNotificationTopicAsync(SetIdentityNotificationTopicRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

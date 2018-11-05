@@ -101,27 +101,27 @@ function M.ClusterNode(args)
     }
 end
 
-keys.DeleteEventSubscriptionMessage = { ["SubscriptionName"] = true, nil }
+keys.DeleteClusterSubnetGroupMessage = { ["ClusterSubnetGroupName"] = true, nil }
 
-function asserts.AssertDeleteEventSubscriptionMessage(struct)
+function asserts.AssertDeleteClusterSubnetGroupMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteEventSubscriptionMessage to be of type 'table'")
-	assert(struct["SubscriptionName"], "Expected key SubscriptionName to exist in table")
-	if struct["SubscriptionName"] then asserts.AssertString(struct["SubscriptionName"]) end
+	assert(type(struct) == "table", "Expected DeleteClusterSubnetGroupMessage to be of type 'table'")
+	assert(struct["ClusterSubnetGroupName"], "Expected key ClusterSubnetGroupName to exist in table")
+	if struct["ClusterSubnetGroupName"] then asserts.AssertString(struct["ClusterSubnetGroupName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteEventSubscriptionMessage[k], "DeleteEventSubscriptionMessage contains unknown key " .. tostring(k))
+		assert(keys.DeleteClusterSubnetGroupMessage[k], "DeleteClusterSubnetGroupMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteEventSubscriptionMessage
+--- Create a structure of type DeleteClusterSubnetGroupMessage
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SubscriptionName [String] <p>The name of the Amazon Redshift event notification subscription to be deleted.</p>
--- Required key: SubscriptionName
--- @return DeleteEventSubscriptionMessage structure as a key-value pair table
-function M.DeleteEventSubscriptionMessage(args)
-	assert(args, "You must provide an argument table when creating DeleteEventSubscriptionMessage")
+-- * ClusterSubnetGroupName [String] <p>The name of the cluster subnet group name to be deleted.</p>
+-- Required key: ClusterSubnetGroupName
+-- @return DeleteClusterSubnetGroupMessage structure as a key-value pair table
+function M.DeleteClusterSubnetGroupMessage(args)
+	assert(args, "You must provide an argument table when creating DeleteClusterSubnetGroupMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -129,9 +129,9 @@ function M.DeleteEventSubscriptionMessage(args)
     local header_args = { 
     }
 	local all_args = { 
-		["SubscriptionName"] = args["SubscriptionName"],
+		["ClusterSubnetGroupName"] = args["ClusterSubnetGroupName"],
 	}
-	asserts.AssertDeleteEventSubscriptionMessage(all_args)
+	asserts.AssertDeleteClusterSubnetGroupMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -192,23 +192,33 @@ function M.ClusterSubnetGroup(args)
     }
 end
 
-keys.ClusterNotFoundFault = { nil }
+keys.DescribeClusterSecurityGroupsMessage = { ["Marker"] = true, ["TagValues"] = true, ["MaxRecords"] = true, ["TagKeys"] = true, ["ClusterSecurityGroupName"] = true, nil }
 
-function asserts.AssertClusterNotFoundFault(struct)
+function asserts.AssertDescribeClusterSecurityGroupsMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterNotFoundFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected DescribeClusterSecurityGroupsMessage to be of type 'table'")
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["TagValues"] then asserts.AssertTagValueList(struct["TagValues"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["TagKeys"] then asserts.AssertTagKeyList(struct["TagKeys"]) end
+	if struct["ClusterSecurityGroupName"] then asserts.AssertString(struct["ClusterSecurityGroupName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ClusterNotFoundFault[k], "ClusterNotFoundFault contains unknown key " .. tostring(k))
+		assert(keys.DescribeClusterSecurityGroupsMessage[k], "DescribeClusterSecurityGroupsMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ClusterNotFoundFault
--- <p>The <code>ClusterIdentifier</code> parameter does not refer to an existing cluster. </p>
+--- Create a structure of type DescribeClusterSecurityGroupsMessage
+-- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return ClusterNotFoundFault structure as a key-value pair table
-function M.ClusterNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating ClusterNotFoundFault")
+-- * Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeClusterSecurityGroups</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p> <p>Constraints: You can specify either the <b>ClusterSecurityGroupName</b> parameter or the <b>Marker</b> parameter, but not both. </p>
+-- * TagValues [TagValueList] <p>A tag value or values for which you want to return all matching cluster security groups that are associated with the specified tag value or values. For example, suppose that you have security groups that are tagged with values called <code>admin</code> and <code>test</code>. If you specify both of these tag values in the request, Amazon Redshift returns a response with the security groups that have either or both of these tag values associated with them.</p>
+-- * MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
+-- * TagKeys [TagKeyList] <p>A tag key or keys for which you want to return all matching cluster security groups that are associated with the specified key or keys. For example, suppose that you have security groups that are tagged with keys called <code>owner</code> and <code>environment</code>. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the security groups that have either or both of these tag keys associated with them.</p>
+-- * ClusterSecurityGroupName [String] <p>The name of a cluster security group for which you are requesting details. You can specify either the <b>Marker</b> parameter or a <b>ClusterSecurityGroupName</b> parameter, but not both. </p> <p> Example: <code>securitygroup1</code> </p>
+-- @return DescribeClusterSecurityGroupsMessage structure as a key-value pair table
+function M.DescribeClusterSecurityGroupsMessage(args)
+	assert(args, "You must provide an argument table when creating DescribeClusterSecurityGroupsMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -216,8 +226,13 @@ function M.ClusterNotFoundFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Marker"] = args["Marker"],
+		["TagValues"] = args["TagValues"],
+		["MaxRecords"] = args["MaxRecords"],
+		["TagKeys"] = args["TagKeys"],
+		["ClusterSecurityGroupName"] = args["ClusterSecurityGroupName"],
 	}
-	asserts.AssertClusterNotFoundFault(all_args)
+	asserts.AssertDescribeClusterSecurityGroupsMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -226,23 +241,27 @@ function M.ClusterNotFoundFault(args)
     }
 end
 
-keys.InvalidClusterStateFault = { nil }
+keys.ClustersMessage = { ["Marker"] = true, ["Clusters"] = true, nil }
 
-function asserts.AssertInvalidClusterStateFault(struct)
+function asserts.AssertClustersMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidClusterStateFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected ClustersMessage to be of type 'table'")
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["Clusters"] then asserts.AssertClusterList(struct["Clusters"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidClusterStateFault[k], "InvalidClusterStateFault contains unknown key " .. tostring(k))
+		assert(keys.ClustersMessage[k], "ClustersMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidClusterStateFault
--- <p>The specified cluster is not in the <code>available</code> state. </p>
+--- Create a structure of type ClustersMessage
+-- <p>Contains the output from the <a>DescribeClusters</a> action. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidClusterStateFault structure as a key-value pair table
-function M.InvalidClusterStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidClusterStateFault")
+-- * Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- * Clusters [ClusterList] <p>A list of <code>Cluster</code> objects, where each object describes one cluster. </p>
+-- @return ClustersMessage structure as a key-value pair table
+function M.ClustersMessage(args)
+	assert(args, "You must provide an argument table when creating ClustersMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -250,76 +269,10 @@ function M.InvalidClusterStateFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Marker"] = args["Marker"],
+		["Clusters"] = args["Clusters"],
 	}
-	asserts.AssertInvalidClusterStateFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ClusterSnapshotNotFoundFault = { nil }
-
-function asserts.AssertClusterSnapshotNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterSnapshotNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ClusterSnapshotNotFoundFault[k], "ClusterSnapshotNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ClusterSnapshotNotFoundFault
--- <p>The snapshot identifier does not refer to an existing cluster snapshot.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ClusterSnapshotNotFoundFault structure as a key-value pair table
-function M.ClusterSnapshotNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating ClusterSnapshotNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertClusterSnapshotNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SNSNoAuthorizationFault = { nil }
-
-function asserts.AssertSNSNoAuthorizationFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SNSNoAuthorizationFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SNSNoAuthorizationFault[k], "SNSNoAuthorizationFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SNSNoAuthorizationFault
--- <p>You do not have permission to publish to the specified Amazon SNS topic.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SNSNoAuthorizationFault structure as a key-value pair table
-function M.SNSNoAuthorizationFault(args)
-	assert(args, "You must provide an argument table when creating SNSNoAuthorizationFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSNSNoAuthorizationFault(all_args)
+	asserts.AssertClustersMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -360,43 +313,6 @@ function M.EventCategoriesMap(args)
 		["Events"] = args["Events"],
 	}
 	asserts.AssertEventCategoriesMap(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CreateHsmConfigurationResult = { ["HsmConfiguration"] = true, nil }
-
-function asserts.AssertCreateHsmConfigurationResult(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CreateHsmConfigurationResult to be of type 'table'")
-	if struct["HsmConfiguration"] then asserts.AssertHsmConfiguration(struct["HsmConfiguration"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.CreateHsmConfigurationResult[k], "CreateHsmConfigurationResult contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CreateHsmConfigurationResult
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * HsmConfiguration [HsmConfiguration] 
--- @return CreateHsmConfigurationResult structure as a key-value pair table
-function M.CreateHsmConfigurationResult(args)
-	assert(args, "You must provide an argument table when creating CreateHsmConfigurationResult")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["HsmConfiguration"] = args["HsmConfiguration"],
-	}
-	asserts.AssertCreateHsmConfigurationResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -473,6 +389,49 @@ function M.DeleteHsmConfigurationMessage(args)
 		["HsmConfigurationIdentifier"] = args["HsmConfigurationIdentifier"],
 	}
 	asserts.AssertDeleteHsmConfigurationMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeClusterDbRevisionsMessage = { ["Marker"] = true, ["ClusterIdentifier"] = true, ["MaxRecords"] = true, nil }
+
+function asserts.AssertDescribeClusterDbRevisionsMessage(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeClusterDbRevisionsMessage to be of type 'table'")
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["ClusterIdentifier"] then asserts.AssertString(struct["ClusterIdentifier"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeClusterDbRevisionsMessage[k], "DescribeClusterDbRevisionsMessage contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeClusterDbRevisionsMessage
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p>An optional parameter that specifies the starting point for returning a set of response records. When the results of a <code>DescribeClusterDbRevisions</code> request exceed the value specified in <code>MaxRecords</code>, Amazon Redshift returns a value in the <code>marker</code> field of the response. You can retrieve the next set of response records by providing the returned <code>marker</code> value in the <code>marker</code> parameter and retrying the request. </p> <p>Constraints: You can specify either the <code>ClusterIdentifier</code> parameter, or the <code>marker</code> parameter, but not both.</p>
+-- * ClusterIdentifier [String] <p>A unique identifier for a cluster whose <code>ClusterDbRevisions</code> you are requesting. This parameter is case sensitive. All clusters defined for an account are returned by default.</p>
+-- * MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in the <code>marker</code> field of the response. You can retrieve the next set of response records by providing the returned <code>marker</code> value in the <code>marker</code> parameter and retrying the request. </p> <p>Default: 100</p> <p>Constraints: minimum 20, maximum 100.</p>
+-- @return DescribeClusterDbRevisionsMessage structure as a key-value pair table
+function M.DescribeClusterDbRevisionsMessage(args)
+	assert(args, "You must provide an argument table when creating DescribeClusterDbRevisionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Marker"] = args["Marker"],
+		["ClusterIdentifier"] = args["ClusterIdentifier"],
+		["MaxRecords"] = args["MaxRecords"],
+	}
+	asserts.AssertDescribeClusterDbRevisionsMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -654,40 +613,6 @@ function M.DescribeEventCategoriesMessage(args)
     }
 end
 
-keys.SubscriptionEventIdNotFoundFault = { nil }
-
-function asserts.AssertSubscriptionEventIdNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SubscriptionEventIdNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SubscriptionEventIdNotFoundFault[k], "SubscriptionEventIdNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SubscriptionEventIdNotFoundFault
--- <p>An Amazon Redshift event with the specified event ID does not exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SubscriptionEventIdNotFoundFault structure as a key-value pair table
-function M.SubscriptionEventIdNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating SubscriptionEventIdNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSubscriptionEventIdNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.CreateClusterSecurityGroupResult = { ["ClusterSecurityGroup"] = true, nil }
 
 function asserts.AssertCreateClusterSecurityGroupResult(struct)
@@ -717,74 +642,6 @@ function M.CreateClusterSecurityGroupResult(args)
 		["ClusterSecurityGroup"] = args["ClusterSecurityGroup"],
 	}
 	asserts.AssertCreateClusterSecurityGroupResult(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SnapshotCopyAlreadyDisabledFault = { nil }
-
-function asserts.AssertSnapshotCopyAlreadyDisabledFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SnapshotCopyAlreadyDisabledFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SnapshotCopyAlreadyDisabledFault[k], "SnapshotCopyAlreadyDisabledFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SnapshotCopyAlreadyDisabledFault
--- <p>The cluster already has cross-region snapshot copy disabled.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SnapshotCopyAlreadyDisabledFault structure as a key-value pair table
-function M.SnapshotCopyAlreadyDisabledFault(args)
-	assert(args, "You must provide an argument table when creating SnapshotCopyAlreadyDisabledFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSnapshotCopyAlreadyDisabledFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidElasticIpFault = { nil }
-
-function asserts.AssertInvalidElasticIpFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidElasticIpFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidElasticIpFault[k], "InvalidElasticIpFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidElasticIpFault
--- <p>The Elastic IP (EIP) is invalid or cannot be found.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidElasticIpFault structure as a key-value pair table
-function M.InvalidElasticIpFault(args)
-	assert(args, "You must provide an argument table when creating InvalidElasticIpFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidElasticIpFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -879,12 +736,13 @@ function M.ClusterVersion(args)
     }
 end
 
-keys.ModifyClusterMessage = { ["HsmClientCertificateIdentifier"] = true, ["NodeType"] = true, ["PubliclyAccessible"] = true, ["ClusterParameterGroupName"] = true, ["EnhancedVpcRouting"] = true, ["ElasticIp"] = true, ["ClusterType"] = true, ["MasterUserPassword"] = true, ["VpcSecurityGroupIds"] = true, ["AllowVersionUpgrade"] = true, ["PreferredMaintenanceWindow"] = true, ["AutomatedSnapshotRetentionPeriod"] = true, ["ClusterSecurityGroups"] = true, ["ClusterIdentifier"] = true, ["HsmConfigurationIdentifier"] = true, ["NewClusterIdentifier"] = true, ["NumberOfNodes"] = true, ["ClusterVersion"] = true, nil }
+keys.ModifyClusterMessage = { ["Encrypted"] = true, ["HsmClientCertificateIdentifier"] = true, ["NodeType"] = true, ["PubliclyAccessible"] = true, ["ClusterParameterGroupName"] = true, ["EnhancedVpcRouting"] = true, ["ElasticIp"] = true, ["ClusterType"] = true, ["MasterUserPassword"] = true, ["VpcSecurityGroupIds"] = true, ["AllowVersionUpgrade"] = true, ["KmsKeyId"] = true, ["MaintenanceTrackName"] = true, ["PreferredMaintenanceWindow"] = true, ["AutomatedSnapshotRetentionPeriod"] = true, ["ClusterSecurityGroups"] = true, ["ClusterIdentifier"] = true, ["HsmConfigurationIdentifier"] = true, ["NewClusterIdentifier"] = true, ["NumberOfNodes"] = true, ["ClusterVersion"] = true, nil }
 
 function asserts.AssertModifyClusterMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyClusterMessage to be of type 'table'")
 	assert(struct["ClusterIdentifier"], "Expected key ClusterIdentifier to exist in table")
+	if struct["Encrypted"] then asserts.AssertBooleanOptional(struct["Encrypted"]) end
 	if struct["HsmClientCertificateIdentifier"] then asserts.AssertString(struct["HsmClientCertificateIdentifier"]) end
 	if struct["NodeType"] then asserts.AssertString(struct["NodeType"]) end
 	if struct["PubliclyAccessible"] then asserts.AssertBooleanOptional(struct["PubliclyAccessible"]) end
@@ -895,6 +753,8 @@ function asserts.AssertModifyClusterMessage(struct)
 	if struct["MasterUserPassword"] then asserts.AssertString(struct["MasterUserPassword"]) end
 	if struct["VpcSecurityGroupIds"] then asserts.AssertVpcSecurityGroupIdList(struct["VpcSecurityGroupIds"]) end
 	if struct["AllowVersionUpgrade"] then asserts.AssertBooleanOptional(struct["AllowVersionUpgrade"]) end
+	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
+	if struct["MaintenanceTrackName"] then asserts.AssertString(struct["MaintenanceTrackName"]) end
 	if struct["PreferredMaintenanceWindow"] then asserts.AssertString(struct["PreferredMaintenanceWindow"]) end
 	if struct["AutomatedSnapshotRetentionPeriod"] then asserts.AssertIntegerOptional(struct["AutomatedSnapshotRetentionPeriod"]) end
 	if struct["ClusterSecurityGroups"] then asserts.AssertClusterSecurityGroupNameList(struct["ClusterSecurityGroups"]) end
@@ -912,16 +772,19 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * Encrypted [BooleanOptional] <p>Indicates whether the cluster is encrypted. If the cluster is encrypted and you provide a value for the <code>KmsKeyId</code> parameter, we will encrypt the cluster with the provided <code>KmsKeyId</code>. If you don't provide a <code>KmsKeyId</code>, we will encrypt with the default key. In the China region we will use legacy encryption if you specify that the cluster is encrypted.</p>
 -- * HsmClientCertificateIdentifier [String] <p>Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption keys stored in an HSM.</p>
--- * NodeType [String] <p>The new node type of the cluster. If you specify a new node type, you must also specify the number of nodes parameter.</p> <p>When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the new connection is complete, the original access permissions for the cluster are restored. You can use <a>DescribeResize</a> to track the progress of the resize request. </p> <p>Valid Values: <code> ds1.xlarge</code> | <code>ds1.8xlarge</code> | <code> ds2.xlarge</code> | <code>ds2.8xlarge</code> | <code>dc1.large</code> | <code>dc1.8xlarge</code>.</p>
+-- * NodeType [String] <p>The new node type of the cluster. If you specify a new node type, you must also specify the number of nodes parameter.</p> <p>When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the new connection is complete, the original access permissions for the cluster are restored. You can use <a>DescribeResize</a> to track the progress of the resize request. </p> <p>Valid Values: <code>ds2.xlarge</code> | <code>ds2.8xlarge</code> | <code>dc1.large</code> | <code>dc1.8xlarge</code> | <code>dc2.large</code> | <code>dc2.8xlarge</code> </p>
 -- * PubliclyAccessible [BooleanOptional] <p>If <code>true</code>, the cluster can be accessed from a public network. Only clusters in VPCs can be set to be publicly available.</p>
 -- * ClusterParameterGroupName [String] <p>The name of the cluster parameter group to apply to this cluster. This change is applied only after the cluster is rebooted. To reboot a cluster use <a>RebootCluster</a>. </p> <p>Default: Uses existing setting.</p> <p>Constraints: The cluster parameter group must be in the same parameter group family that matches the cluster version.</p>
 -- * EnhancedVpcRouting [BooleanOptional] <p>An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the Amazon Redshift Cluster Management Guide.</p> <p>If this option is <code>true</code>, enhanced VPC routing is enabled. </p> <p>Default: false</p>
 -- * ElasticIp [String] <p>The Elastic IP (EIP) address for the cluster.</p> <p>Constraints: The cluster must be provisioned in EC2-VPC and publicly-accessible through an Internet gateway. For more information about provisioning clusters in EC2-VPC, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms">Supported Platforms to Launch Your Cluster</a> in the Amazon Redshift Cluster Management Guide.</p>
 -- * ClusterType [String] <p>The new cluster type.</p> <p>When you submit your cluster resize request, your existing cluster goes into a read-only mode. After Amazon Redshift provisions a new cluster based on your resize requirements, there will be outage for a period while the old cluster is deleted and your connection is switched to the new cluster. You can use <a>DescribeResize</a> to track the progress of the resize request. </p> <p>Valid Values: <code> multi-node | single-node </code> </p>
 -- * MasterUserPassword [String] <p>The new password for the cluster master user. This change is asynchronously applied as soon as possible. Between the time of the request and the completion of the request, the <code>MasterUserPassword</code> element exists in the <code>PendingModifiedValues</code> element of the operation response. </p> <note> <p>Operations never return the password, so this operation provides a way to regain access to the master user account for a cluster if the password is lost.</p> </note> <p>Default: Uses existing setting.</p> <p>Constraints:</p> <ul> <li> <p>Must be between 8 and 64 characters in length.</p> </li> <li> <p>Must contain at least one uppercase letter.</p> </li> <li> <p>Must contain at least one lowercase letter.</p> </li> <li> <p>Must contain one number.</p> </li> <li> <p>Can be any printable ASCII character (ASCII code 33 to 126) except ' (single quote), " (double quote), \, /, @, or space.</p> </li> </ul>
--- * VpcSecurityGroupIds [VpcSecurityGroupIdList] <p>A list of virtual private cloud (VPC) security groups to be associated with the cluster.</p>
+-- * VpcSecurityGroupIds [VpcSecurityGroupIdList] <p>A list of virtual private cloud (VPC) security groups to be associated with the cluster. This change is asynchronously applied as soon as possible.</p>
 -- * AllowVersionUpgrade [BooleanOptional] <p>If <code>true</code>, major version upgrades will be applied automatically to the cluster during the maintenance window. </p> <p>Default: <code>false</code> </p>
+-- * KmsKeyId [String] <p>The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in the cluster.</p>
+-- * MaintenanceTrackName [String] <p>The name for the maintenance track that you want to assign for the cluster. This name change is asynchronous. The new track name stays in the <code>PendingModifiedValues</code> for the cluster until the next maintenance window. When the maintenance track changes, the cluster is switched to the latest cluster release available for the maintenance track. At this point, the maintenance track name is applied.</p>
 -- * PreferredMaintenanceWindow [String] <p>The weekly time range (in UTC) during which system maintenance can occur, if necessary. If system maintenance is necessary during the window, it may result in an outage.</p> <p>This maintenance window change is made immediately. If the new maintenance window indicates the current time, there must be at least 120 minutes between the current time and end of the window in order to ensure that pending changes are applied.</p> <p>Default: Uses existing setting.</p> <p>Format: ddd:hh24:mi-ddd:hh24:mi, for example <code>wed:07:30-wed:08:00</code>.</p> <p>Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun</p> <p>Constraints: Must be at least 30 minutes.</p>
 -- * AutomatedSnapshotRetentionPeriod [IntegerOptional] <p>The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with <a>CreateClusterSnapshot</a>. </p> <p>If you decrease the automated snapshot retention period from its current value, existing automated snapshots that fall outside of the new retention period will be immediately deleted.</p> <p>Default: Uses existing setting.</p> <p>Constraints: Must be a value from 0 to 35.</p>
 -- * ClusterSecurityGroups [ClusterSecurityGroupNameList] <p>A list of cluster security groups to be authorized on this cluster. This change is asynchronously applied as soon as possible.</p> <p>Security groups currently associated with the cluster, and not in the list of groups to apply, will be revoked from the cluster.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
@@ -941,6 +804,7 @@ function M.ModifyClusterMessage(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Encrypted"] = args["Encrypted"],
 		["HsmClientCertificateIdentifier"] = args["HsmClientCertificateIdentifier"],
 		["NodeType"] = args["NodeType"],
 		["PubliclyAccessible"] = args["PubliclyAccessible"],
@@ -951,6 +815,8 @@ function M.ModifyClusterMessage(args)
 		["MasterUserPassword"] = args["MasterUserPassword"],
 		["VpcSecurityGroupIds"] = args["VpcSecurityGroupIds"],
 		["AllowVersionUpgrade"] = args["AllowVersionUpgrade"],
+		["KmsKeyId"] = args["KmsKeyId"],
+		["MaintenanceTrackName"] = args["MaintenanceTrackName"],
 		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
 		["AutomatedSnapshotRetentionPeriod"] = args["AutomatedSnapshotRetentionPeriod"],
 		["ClusterSecurityGroups"] = args["ClusterSecurityGroups"],
@@ -1129,74 +995,6 @@ function M.ClusterSecurityGroupMembership(args)
     }
 end
 
-keys.ResizeNotFoundFault = { nil }
-
-function asserts.AssertResizeNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ResizeNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ResizeNotFoundFault[k], "ResizeNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ResizeNotFoundFault
--- <p>A resize operation for the specified cluster is not found.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ResizeNotFoundFault structure as a key-value pair table
-function M.ResizeNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating ResizeNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertResizeNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DependentServiceRequestThrottlingFault = { nil }
-
-function asserts.AssertDependentServiceRequestThrottlingFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DependentServiceRequestThrottlingFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.DependentServiceRequestThrottlingFault[k], "DependentServiceRequestThrottlingFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DependentServiceRequestThrottlingFault
--- <p>The request cannot be completed because a dependent service is throttling requests made by Amazon Redshift on your behalf. Wait and retry the request.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return DependentServiceRequestThrottlingFault structure as a key-value pair table
-function M.DependentServiceRequestThrottlingFault(args)
-	assert(args, "You must provide an argument table when creating DependentServiceRequestThrottlingFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertDependentServiceRequestThrottlingFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.AccountWithRestoreAccess = { ["AccountAlias"] = true, ["AccountId"] = true, nil }
 
 function asserts.AssertAccountWithRestoreAccess(struct)
@@ -1229,46 +1027,6 @@ function M.AccountWithRestoreAccess(args)
 		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertAccountWithRestoreAccess(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TaggedResourceListMessage = { ["Marker"] = true, ["TaggedResources"] = true, nil }
-
-function asserts.AssertTaggedResourceListMessage(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TaggedResourceListMessage to be of type 'table'")
-	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
-	if struct["TaggedResources"] then asserts.AssertTaggedResourceList(struct["TaggedResources"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.TaggedResourceListMessage[k], "TaggedResourceListMessage contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TaggedResourceListMessage
--- <p/>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
--- * TaggedResources [TaggedResourceList] <p>A list of tags with their associated resources.</p>
--- @return TaggedResourceListMessage structure as a key-value pair table
-function M.TaggedResourceListMessage(args)
-	assert(args, "You must provide an argument table when creating TaggedResourceListMessage")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Marker"] = args["Marker"],
-		["TaggedResources"] = args["TaggedResources"],
-	}
-	asserts.AssertTaggedResourceListMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1348,40 +1106,6 @@ function M.PurchaseReservedNodeOfferingMessage(args)
 		["ReservedNodeOfferingId"] = args["ReservedNodeOfferingId"],
 	}
 	asserts.AssertPurchaseReservedNodeOfferingMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InsufficientClusterCapacityFault = { nil }
-
-function asserts.AssertInsufficientClusterCapacityFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InsufficientClusterCapacityFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InsufficientClusterCapacityFault[k], "InsufficientClusterCapacityFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InsufficientClusterCapacityFault
--- <p>The number of nodes specified exceeds the allotted capacity of the cluster.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InsufficientClusterCapacityFault structure as a key-value pair table
-function M.InsufficientClusterCapacityFault(args)
-	assert(args, "You must provide an argument table when creating InsufficientClusterCapacityFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInsufficientClusterCapacityFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1470,40 +1194,6 @@ function M.HsmStatus(args)
     }
 end
 
-keys.SNSInvalidTopicFault = { nil }
-
-function asserts.AssertSNSInvalidTopicFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SNSInvalidTopicFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SNSInvalidTopicFault[k], "SNSInvalidTopicFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SNSInvalidTopicFault
--- <p>Amazon SNS has responded that there is a problem with the specified Amazon SNS topic.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SNSInvalidTopicFault structure as a key-value pair table
-function M.SNSInvalidTopicFault(args)
-	assert(args, "You must provide an argument table when creating SNSInvalidTopicFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSNSInvalidTopicFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ReservedNodeOfferingsMessage = { ["Marker"] = true, ["ReservedNodeOfferings"] = true, nil }
 
 function asserts.AssertReservedNodeOfferingsMessage(struct)
@@ -1536,74 +1226,6 @@ function M.ReservedNodeOfferingsMessage(args)
 		["ReservedNodeOfferings"] = args["ReservedNodeOfferings"],
 	}
 	asserts.AssertReservedNodeOfferingsMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.HsmConfigurationNotFoundFault = { nil }
-
-function asserts.AssertHsmConfigurationNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected HsmConfigurationNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.HsmConfigurationNotFoundFault[k], "HsmConfigurationNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type HsmConfigurationNotFoundFault
--- <p>There is no Amazon Redshift HSM configuration with the specified identifier.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return HsmConfigurationNotFoundFault structure as a key-value pair table
-function M.HsmConfigurationNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating HsmConfigurationNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertHsmConfigurationNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.NumberOfNodesQuotaExceededFault = { nil }
-
-function asserts.AssertNumberOfNodesQuotaExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected NumberOfNodesQuotaExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.NumberOfNodesQuotaExceededFault[k], "NumberOfNodesQuotaExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type NumberOfNodesQuotaExceededFault
--- <p>The operation would exceed the number of nodes allotted to the account. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return NumberOfNodesQuotaExceededFault structure as a key-value pair table
-function M.NumberOfNodesQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating NumberOfNodesQuotaExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertNumberOfNodesQuotaExceededFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1723,40 +1345,6 @@ function M.DescribeClusterParameterGroupsMessage(args)
     }
 end
 
-keys.IncompatibleOrderableOptions = { nil }
-
-function asserts.AssertIncompatibleOrderableOptions(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected IncompatibleOrderableOptions to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.IncompatibleOrderableOptions[k], "IncompatibleOrderableOptions contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type IncompatibleOrderableOptions
--- <p>The specified options are incompatible.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return IncompatibleOrderableOptions structure as a key-value pair table
-function M.IncompatibleOrderableOptions(args)
-	assert(args, "You must provide an argument table when creating IncompatibleOrderableOptions")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertIncompatibleOrderableOptions(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.CreateHsmClientCertificateMessage = { ["HsmClientCertificateIdentifier"] = true, ["Tags"] = true, nil }
 
 function asserts.AssertCreateHsmClientCertificateMessage(struct)
@@ -1791,74 +1379,6 @@ function M.CreateHsmClientCertificateMessage(args)
 		["Tags"] = args["Tags"],
 	}
 	asserts.AssertCreateHsmClientCertificateMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidS3KeyPrefixFault = { nil }
-
-function asserts.AssertInvalidS3KeyPrefixFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidS3KeyPrefixFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidS3KeyPrefixFault[k], "InvalidS3KeyPrefixFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidS3KeyPrefixFault
--- <p>The string specified for the logging S3 key prefix does not comply with the documented constraints.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidS3KeyPrefixFault structure as a key-value pair table
-function M.InvalidS3KeyPrefixFault(args)
-	assert(args, "You must provide an argument table when creating InvalidS3KeyPrefixFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidS3KeyPrefixFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SubscriptionAlreadyExistFault = { nil }
-
-function asserts.AssertSubscriptionAlreadyExistFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SubscriptionAlreadyExistFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SubscriptionAlreadyExistFault[k], "SubscriptionAlreadyExistFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SubscriptionAlreadyExistFault
--- <p>There is already an existing event notification subscription with the specified name.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SubscriptionAlreadyExistFault structure as a key-value pair table
-function M.SubscriptionAlreadyExistFault(args)
-	assert(args, "You must provide an argument table when creating SubscriptionAlreadyExistFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSubscriptionAlreadyExistFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1938,6 +1458,43 @@ function M.ClusterSecurityGroupMessage(args)
 		["ClusterSecurityGroups"] = args["ClusterSecurityGroups"],
 	}
 	asserts.AssertClusterSecurityGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ResizeClusterResult = { ["Cluster"] = true, nil }
+
+function asserts.AssertResizeClusterResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ResizeClusterResult to be of type 'table'")
+	if struct["Cluster"] then asserts.AssertCluster(struct["Cluster"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ResizeClusterResult[k], "ResizeClusterResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ResizeClusterResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Cluster [Cluster] 
+-- @return ResizeClusterResult structure as a key-value pair table
+function M.ResizeClusterResult(args)
+	assert(args, "You must provide an argument table when creating ResizeClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Cluster"] = args["Cluster"],
+	}
+	asserts.AssertResizeClusterResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2081,23 +1638,27 @@ function M.ClusterParameterGroupsMessage(args)
     }
 end
 
-keys.ClusterSubnetGroupAlreadyExistsFault = { nil }
+keys.GetReservedNodeExchangeOfferingsOutputMessage = { ["Marker"] = true, ["ReservedNodeOfferings"] = true, nil }
 
-function asserts.AssertClusterSubnetGroupAlreadyExistsFault(struct)
+function asserts.AssertGetReservedNodeExchangeOfferingsOutputMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterSubnetGroupAlreadyExistsFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected GetReservedNodeExchangeOfferingsOutputMessage to be of type 'table'")
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["ReservedNodeOfferings"] then asserts.AssertReservedNodeOfferingList(struct["ReservedNodeOfferings"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ClusterSubnetGroupAlreadyExistsFault[k], "ClusterSubnetGroupAlreadyExistsFault contains unknown key " .. tostring(k))
+		assert(keys.GetReservedNodeExchangeOfferingsOutputMessage[k], "GetReservedNodeExchangeOfferingsOutputMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ClusterSubnetGroupAlreadyExistsFault
--- <p>A <i>ClusterSubnetGroupName</i> is already used by an existing cluster subnet group. </p>
+--- Create a structure of type GetReservedNodeExchangeOfferingsOutputMessage
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return ClusterSubnetGroupAlreadyExistsFault structure as a key-value pair table
-function M.ClusterSubnetGroupAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating ClusterSubnetGroupAlreadyExistsFault")
+-- * Marker [String] <p>An optional parameter that specifies the starting point for returning a set of response records. When the results of a <code>GetReservedNodeExchangeOfferings</code> request exceed the value specified in MaxRecords, Amazon Redshift returns a value in the marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the marker parameter and retrying the request. </p>
+-- * ReservedNodeOfferings [ReservedNodeOfferingList] <p>Returns an array of <a>ReservedNodeOffering</a> objects.</p>
+-- @return GetReservedNodeExchangeOfferingsOutputMessage structure as a key-value pair table
+function M.GetReservedNodeExchangeOfferingsOutputMessage(args)
+	assert(args, "You must provide an argument table when creating GetReservedNodeExchangeOfferingsOutputMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -2105,42 +1666,10 @@ function M.ClusterSubnetGroupAlreadyExistsFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Marker"] = args["Marker"],
+		["ReservedNodeOfferings"] = args["ReservedNodeOfferings"],
 	}
-	asserts.AssertClusterSubnetGroupAlreadyExistsFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.AccessToSnapshotDeniedFault = { nil }
-
-function asserts.AssertAccessToSnapshotDeniedFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected AccessToSnapshotDeniedFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.AccessToSnapshotDeniedFault[k], "AccessToSnapshotDeniedFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type AccessToSnapshotDeniedFault
--- <p>The owner of the specified snapshot has not authorized your account to access the snapshot.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return AccessToSnapshotDeniedFault structure as a key-value pair table
-function M.AccessToSnapshotDeniedFault(args)
-	assert(args, "You must provide an argument table when creating AccessToSnapshotDeniedFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertAccessToSnapshotDeniedFault(all_args)
+	asserts.AssertGetReservedNodeExchangeOfferingsOutputMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2366,23 +1895,35 @@ function M.DisableLoggingMessage(args)
     }
 end
 
-keys.SubscriptionNotFoundFault = { nil }
+keys.LoggingStatus = { ["LastFailureMessage"] = true, ["LoggingEnabled"] = true, ["LastFailureTime"] = true, ["LastSuccessfulDeliveryTime"] = true, ["S3KeyPrefix"] = true, ["BucketName"] = true, nil }
 
-function asserts.AssertSubscriptionNotFoundFault(struct)
+function asserts.AssertLoggingStatus(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SubscriptionNotFoundFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected LoggingStatus to be of type 'table'")
+	if struct["LastFailureMessage"] then asserts.AssertString(struct["LastFailureMessage"]) end
+	if struct["LoggingEnabled"] then asserts.AssertBoolean(struct["LoggingEnabled"]) end
+	if struct["LastFailureTime"] then asserts.AssertTStamp(struct["LastFailureTime"]) end
+	if struct["LastSuccessfulDeliveryTime"] then asserts.AssertTStamp(struct["LastSuccessfulDeliveryTime"]) end
+	if struct["S3KeyPrefix"] then asserts.AssertString(struct["S3KeyPrefix"]) end
+	if struct["BucketName"] then asserts.AssertString(struct["BucketName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SubscriptionNotFoundFault[k], "SubscriptionNotFoundFault contains unknown key " .. tostring(k))
+		assert(keys.LoggingStatus[k], "LoggingStatus contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SubscriptionNotFoundFault
--- <p>An Amazon Redshift event notification subscription with the specified name does not exist.</p>
+--- Create a structure of type LoggingStatus
+-- <p>Describes the status of logging for a cluster.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return SubscriptionNotFoundFault structure as a key-value pair table
-function M.SubscriptionNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating SubscriptionNotFoundFault")
+-- * LastFailureMessage [String] <p>The message indicating that logs failed to be delivered.</p>
+-- * LoggingEnabled [Boolean] <p> <code>true</code> if logging is on, <code>false</code> if logging is off.</p>
+-- * LastFailureTime [TStamp] <p>The last time when logs failed to be delivered.</p>
+-- * LastSuccessfulDeliveryTime [TStamp] <p>The last time that logs were delivered.</p>
+-- * S3KeyPrefix [String] <p>The prefix applied to the log file names.</p>
+-- * BucketName [String] <p>The name of the S3 bucket where the log files are stored.</p>
+-- @return LoggingStatus structure as a key-value pair table
+function M.LoggingStatus(args)
+	assert(args, "You must provide an argument table when creating LoggingStatus")
     local query_args = { 
     }
     local uri_args = { 
@@ -2390,8 +1931,14 @@ function M.SubscriptionNotFoundFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["LastFailureMessage"] = args["LastFailureMessage"],
+		["LoggingEnabled"] = args["LoggingEnabled"],
+		["LastFailureTime"] = args["LastFailureTime"],
+		["LastSuccessfulDeliveryTime"] = args["LastSuccessfulDeliveryTime"],
+		["S3KeyPrefix"] = args["S3KeyPrefix"],
+		["BucketName"] = args["BucketName"],
 	}
-	asserts.AssertSubscriptionNotFoundFault(all_args)
+	asserts.AssertLoggingStatus(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2400,109 +1947,7 @@ function M.SubscriptionNotFoundFault(args)
     }
 end
 
-keys.InvalidSubnet = { nil }
-
-function asserts.AssertInvalidSubnet(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidSubnet to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidSubnet[k], "InvalidSubnet contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidSubnet
--- <p>The requested subnet is not valid, or not all of the subnets are in the same VPC.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidSubnet structure as a key-value pair table
-function M.InvalidSubnet(args)
-	assert(args, "You must provide an argument table when creating InvalidSubnet")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidSubnet(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ClusterSecurityGroupQuotaExceededFault = { nil }
-
-function asserts.AssertClusterSecurityGroupQuotaExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterSecurityGroupQuotaExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ClusterSecurityGroupQuotaExceededFault[k], "ClusterSecurityGroupQuotaExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ClusterSecurityGroupQuotaExceededFault
--- <p>The request would result in the user exceeding the allowed number of cluster security groups. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ClusterSecurityGroupQuotaExceededFault structure as a key-value pair table
-function M.ClusterSecurityGroupQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating ClusterSecurityGroupQuotaExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertClusterSecurityGroupQuotaExceededFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ReservedNodeOfferingNotFoundFault = { nil }
-
-function asserts.AssertReservedNodeOfferingNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ReservedNodeOfferingNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ReservedNodeOfferingNotFoundFault[k], "ReservedNodeOfferingNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ReservedNodeOfferingNotFoundFault
--- <p>Specified offering does not exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ReservedNodeOfferingNotFoundFault structure as a key-value pair table
-function M.ReservedNodeOfferingNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating ReservedNodeOfferingNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertReservedNodeOfferingNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CreateClusterMessage = { ["ClusterParameterGroupName"] = true, ["PubliclyAccessible"] = true, ["MasterUsername"] = true, ["VpcSecurityGroupIds"] = true, ["NumberOfNodes"] = true, ["ClusterVersion"] = true, ["Tags"] = true, ["AutomatedSnapshotRetentionPeriod"] = true, ["EnhancedVpcRouting"] = true, ["DBName"] = true, ["PreferredMaintenanceWindow"] = true, ["AdditionalInfo"] = true, ["ClusterType"] = true, ["IamRoles"] = true, ["AllowVersionUpgrade"] = true, ["HsmConfigurationIdentifier"] = true, ["ClusterSecurityGroups"] = true, ["ClusterIdentifier"] = true, ["HsmClientCertificateIdentifier"] = true, ["AvailabilityZone"] = true, ["NodeType"] = true, ["ElasticIp"] = true, ["Encrypted"] = true, ["MasterUserPassword"] = true, ["KmsKeyId"] = true, ["Port"] = true, ["ClusterSubnetGroupName"] = true, nil }
+keys.CreateClusterMessage = { ["ClusterParameterGroupName"] = true, ["PubliclyAccessible"] = true, ["MasterUsername"] = true, ["VpcSecurityGroupIds"] = true, ["NumberOfNodes"] = true, ["ClusterVersion"] = true, ["Tags"] = true, ["AutomatedSnapshotRetentionPeriod"] = true, ["EnhancedVpcRouting"] = true, ["DBName"] = true, ["PreferredMaintenanceWindow"] = true, ["AdditionalInfo"] = true, ["ClusterType"] = true, ["IamRoles"] = true, ["AllowVersionUpgrade"] = true, ["MaintenanceTrackName"] = true, ["HsmConfigurationIdentifier"] = true, ["ClusterSecurityGroups"] = true, ["ClusterIdentifier"] = true, ["HsmClientCertificateIdentifier"] = true, ["AvailabilityZone"] = true, ["NodeType"] = true, ["ElasticIp"] = true, ["Encrypted"] = true, ["MasterUserPassword"] = true, ["KmsKeyId"] = true, ["Port"] = true, ["ClusterSubnetGroupName"] = true, nil }
 
 function asserts.AssertCreateClusterMessage(struct)
 	assert(struct)
@@ -2526,6 +1971,7 @@ function asserts.AssertCreateClusterMessage(struct)
 	if struct["ClusterType"] then asserts.AssertString(struct["ClusterType"]) end
 	if struct["IamRoles"] then asserts.AssertIamRoleArnList(struct["IamRoles"]) end
 	if struct["AllowVersionUpgrade"] then asserts.AssertBooleanOptional(struct["AllowVersionUpgrade"]) end
+	if struct["MaintenanceTrackName"] then asserts.AssertString(struct["MaintenanceTrackName"]) end
 	if struct["HsmConfigurationIdentifier"] then asserts.AssertString(struct["HsmConfigurationIdentifier"]) end
 	if struct["ClusterSecurityGroups"] then asserts.AssertClusterSecurityGroupNameList(struct["ClusterSecurityGroups"]) end
 	if struct["ClusterIdentifier"] then asserts.AssertString(struct["ClusterIdentifier"]) end
@@ -2549,7 +1995,7 @@ end
 -- Valid keys:
 -- * ClusterParameterGroupName [String] <p>The name of the parameter group to be associated with this cluster.</p> <p>Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with Amazon Redshift Parameter Groups</a> </p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
 -- * PubliclyAccessible [BooleanOptional] <p>If <code>true</code>, the cluster can be accessed from a public network. </p>
--- * MasterUsername [String] <p>The user name associated with the master user account for the cluster that is being created.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 - 128 alphanumeric characters.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot be a reserved word. A list of reserved words can be found in <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html">Reserved Words</a> in the Amazon Redshift Database Developer Guide. </p> </li> </ul>
+-- * MasterUsername [String] <p>The user name associated with the master user account for the cluster that is being created.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 - 128 alphanumeric characters. The user name can't be <code>PUBLIC</code>.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot be a reserved word. A list of reserved words can be found in <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html">Reserved Words</a> in the Amazon Redshift Database Developer Guide. </p> </li> </ul>
 -- * VpcSecurityGroupIds [VpcSecurityGroupIdList] <p>A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.</p> <p>Default: The default VPC security group is associated with the cluster.</p>
 -- * NumberOfNodes [IntegerOptional] <p>The number of compute nodes in the cluster. This parameter is required when the <b>ClusterType</b> parameter is specified as <code>multi-node</code>. </p> <p>For information about determining how many nodes you need, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes"> Working with Clusters</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p> <p>If you don't specify this parameter, you get a single-node cluster. When requesting a multi-node cluster, you must specify the number of nodes that you want in the cluster.</p> <p>Default: <code>1</code> </p> <p>Constraints: Value must be at least 1 and no more than 100.</p>
 -- * ClusterVersion [String] <p>The version of the Amazon Redshift engine software that you want to deploy on the cluster.</p> <p>The version selected runs on all the nodes in the cluster.</p> <p>Constraints: Only version 1.0 is currently available.</p> <p>Example: <code>1.0</code> </p>
@@ -2562,12 +2008,13 @@ end
 -- * ClusterType [String] <p>The type of the cluster. When cluster type is specified as</p> <ul> <li> <p> <code>single-node</code>, the <b>NumberOfNodes</b> parameter is not required.</p> </li> <li> <p> <code>multi-node</code>, the <b>NumberOfNodes</b> parameter is required.</p> </li> </ul> <p>Valid Values: <code>multi-node</code> | <code>single-node</code> </p> <p>Default: <code>multi-node</code> </p>
 -- * IamRoles [IamRoleArnList] <p>A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up to 10 IAM roles in a single request.</p> <p>A cluster can have up to 10 IAM roles associated with it at any time.</p>
 -- * AllowVersionUpgrade [BooleanOptional] <p>If <code>true</code>, major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster.</p> <p>When a new major version of the Amazon Redshift engine is released, you can request that the service automatically apply upgrades during the maintenance window to the Amazon Redshift engine that is running on your cluster.</p> <p>Default: <code>true</code> </p>
+-- * MaintenanceTrackName [String] <p>An optional parameter for the name of the maintenance track for the cluster. If you don't provide a maintenance track name, the cluster is assigned to the <code>current</code> track.</p>
 -- * HsmConfigurationIdentifier [String] <p>Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to retrieve and store keys in an HSM.</p>
 -- * ClusterSecurityGroups [ClusterSecurityGroupNameList] <p>A list of security groups to be associated with this cluster.</p> <p>Default: The default cluster security group for Amazon Redshift.</p>
 -- * ClusterIdentifier [String] <p>A unique identifier for the cluster. You use this identifier to refer to the cluster for any subsequent cluster operations such as deleting or modifying. The identifier also appears in the Amazon Redshift console.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>Alphabetic characters must be lowercase.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> <li> <p>Must be unique for all clusters within an AWS account.</p> </li> </ul> <p>Example: <code>myexamplecluster</code> </p>
 -- * HsmClientCertificateIdentifier [String] <p>Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption keys stored in an HSM.</p>
 -- * AvailabilityZone [String] <p>The EC2 Availability Zone (AZ) in which you want Amazon Redshift to provision the cluster. For example, if you have several EC2 instances running in a specific Availability Zone, then you might want the cluster to be provisioned in the same zone in order to decrease network latency.</p> <p>Default: A random, system-chosen Availability Zone in the region that is specified by the endpoint.</p> <p>Example: <code>us-east-1d</code> </p> <p>Constraint: The specified Availability Zone must be in the same region as the current endpoint.</p>
--- * NodeType [String] <p>The node type to be provisioned for the cluster. For information about node types, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes"> Working with Clusters</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p> <p>Valid Values: <code>ds1.xlarge</code> | <code>ds1.8xlarge</code> | <code>ds2.xlarge</code> | <code>ds2.8xlarge</code> | <code>dc1.large</code> | <code>dc1.8xlarge</code>. </p>
+-- * NodeType [String] <p>The node type to be provisioned for the cluster. For information about node types, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes"> Working with Clusters</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p> <p>Valid Values: <code>ds2.xlarge</code> | <code>ds2.8xlarge</code> | <code>ds2.xlarge</code> | <code>ds2.8xlarge</code> | <code>dc1.large</code> | <code>dc1.8xlarge</code> | <code>dc2.large</code> | <code>dc2.8xlarge</code> </p>
 -- * ElasticIp [String] <p>The Elastic IP (EIP) address for the cluster.</p> <p>Constraints: The cluster must be provisioned in EC2-VPC and publicly-accessible through an Internet gateway. For more information about provisioning clusters in EC2-VPC, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms">Supported Platforms to Launch Your Cluster</a> in the Amazon Redshift Cluster Management Guide.</p>
 -- * Encrypted [BooleanOptional] <p>If <code>true</code>, the data in the cluster is encrypted at rest. </p> <p>Default: false</p>
 -- * MasterUserPassword [String] <p>The password associated with the master user account for the cluster that is being created.</p> <p>Constraints:</p> <ul> <li> <p>Must be between 8 and 64 characters in length.</p> </li> <li> <p>Must contain at least one uppercase letter.</p> </li> <li> <p>Must contain at least one lowercase letter.</p> </li> <li> <p>Must contain one number.</p> </li> <li> <p>Can be any printable ASCII character (ASCII code 33 to 126) except ' (single quote), " (double quote), \, /, @, or space.</p> </li> </ul>
@@ -2603,6 +2050,7 @@ function M.CreateClusterMessage(args)
 		["ClusterType"] = args["ClusterType"],
 		["IamRoles"] = args["IamRoles"],
 		["AllowVersionUpgrade"] = args["AllowVersionUpgrade"],
+		["MaintenanceTrackName"] = args["MaintenanceTrackName"],
 		["HsmConfigurationIdentifier"] = args["HsmConfigurationIdentifier"],
 		["ClusterSecurityGroups"] = args["ClusterSecurityGroups"],
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
@@ -2625,23 +2073,27 @@ function M.CreateClusterMessage(args)
     }
 end
 
-keys.ClusterSnapshotQuotaExceededFault = { nil }
+keys.DescribeLoggingStatusMessage = { ["ClusterIdentifier"] = true, nil }
 
-function asserts.AssertClusterSnapshotQuotaExceededFault(struct)
+function asserts.AssertDescribeLoggingStatusMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterSnapshotQuotaExceededFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected DescribeLoggingStatusMessage to be of type 'table'")
+	assert(struct["ClusterIdentifier"], "Expected key ClusterIdentifier to exist in table")
+	if struct["ClusterIdentifier"] then asserts.AssertString(struct["ClusterIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ClusterSnapshotQuotaExceededFault[k], "ClusterSnapshotQuotaExceededFault contains unknown key " .. tostring(k))
+		assert(keys.DescribeLoggingStatusMessage[k], "DescribeLoggingStatusMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ClusterSnapshotQuotaExceededFault
--- <p>The request would result in the user exceeding the allowed number of cluster snapshots.</p>
+--- Create a structure of type DescribeLoggingStatusMessage
+-- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return ClusterSnapshotQuotaExceededFault structure as a key-value pair table
-function M.ClusterSnapshotQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating ClusterSnapshotQuotaExceededFault")
+-- * ClusterIdentifier [String] <p>The identifier of the cluster from which to get the logging status.</p> <p>Example: <code>examplecluster</code> </p>
+-- Required key: ClusterIdentifier
+-- @return DescribeLoggingStatusMessage structure as a key-value pair table
+function M.DescribeLoggingStatusMessage(args)
+	assert(args, "You must provide an argument table when creating DescribeLoggingStatusMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -2649,8 +2101,9 @@ function M.ClusterSnapshotQuotaExceededFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["ClusterIdentifier"] = args["ClusterIdentifier"],
 	}
-	asserts.AssertClusterSnapshotQuotaExceededFault(all_args)
+	asserts.AssertDescribeLoggingStatusMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2829,7 +2282,7 @@ function M.HsmConfiguration(args)
     }
 end
 
-keys.ReservedNode = { ["OfferingType"] = true, ["FixedPrice"] = true, ["NodeType"] = true, ["NodeCount"] = true, ["UsagePrice"] = true, ["RecurringCharges"] = true, ["ReservedNodeId"] = true, ["State"] = true, ["StartTime"] = true, ["Duration"] = true, ["ReservedNodeOfferingId"] = true, ["CurrencyCode"] = true, nil }
+keys.ReservedNode = { ["OfferingType"] = true, ["FixedPrice"] = true, ["NodeType"] = true, ["ReservedNodeOfferingType"] = true, ["NodeCount"] = true, ["UsagePrice"] = true, ["RecurringCharges"] = true, ["ReservedNodeId"] = true, ["State"] = true, ["StartTime"] = true, ["Duration"] = true, ["ReservedNodeOfferingId"] = true, ["CurrencyCode"] = true, nil }
 
 function asserts.AssertReservedNode(struct)
 	assert(struct)
@@ -2837,6 +2290,7 @@ function asserts.AssertReservedNode(struct)
 	if struct["OfferingType"] then asserts.AssertString(struct["OfferingType"]) end
 	if struct["FixedPrice"] then asserts.AssertDouble(struct["FixedPrice"]) end
 	if struct["NodeType"] then asserts.AssertString(struct["NodeType"]) end
+	if struct["ReservedNodeOfferingType"] then asserts.AssertReservedNodeOfferingType(struct["ReservedNodeOfferingType"]) end
 	if struct["NodeCount"] then asserts.AssertInteger(struct["NodeCount"]) end
 	if struct["UsagePrice"] then asserts.AssertDouble(struct["UsagePrice"]) end
 	if struct["RecurringCharges"] then asserts.AssertRecurringChargeList(struct["RecurringCharges"]) end
@@ -2858,11 +2312,12 @@ end
 -- * OfferingType [String] <p>The anticipated utilization of the reserved node, as defined in the reserved node offering.</p>
 -- * FixedPrice [Double] <p>The fixed cost Amazon Redshift charges you for this reserved node.</p>
 -- * NodeType [String] <p>The node type of the reserved node.</p>
+-- * ReservedNodeOfferingType [ReservedNodeOfferingType] 
 -- * NodeCount [Integer] <p>The number of reserved compute nodes.</p>
 -- * UsagePrice [Double] <p>The hourly rate Amazon Redshift charges you for this reserved node.</p>
 -- * RecurringCharges [RecurringChargeList] <p>The recurring charges for the reserved node.</p>
 -- * ReservedNodeId [String] <p>The unique identifier for the reservation.</p>
--- * State [String] <p>The state of the reserved compute node.</p> <p>Possible Values:</p> <ul> <li> <p>pending-payment-This reserved node has recently been purchased, and the sale has been approved, but payment has not yet been confirmed.</p> </li> <li> <p>active-This reserved node is owned by the caller and is available for use.</p> </li> <li> <p>payment-failed-Payment failed for the purchase attempt.</p> </li> </ul>
+-- * State [String] <p>The state of the reserved compute node.</p> <p>Possible Values:</p> <ul> <li> <p>pending-payment-This reserved node has recently been purchased, and the sale has been approved, but payment has not yet been confirmed.</p> </li> <li> <p>active-This reserved node is owned by the caller and is available for use.</p> </li> <li> <p>payment-failed-Payment failed for the purchase attempt.</p> </li> <li> <p>retired-The reserved node is no longer available. </p> </li> <li> <p>exchanging-The owner is exchanging the reserved node for another reserved node.</p> </li> </ul>
 -- * StartTime [TStamp] <p>The time the reservation started. You purchase a reserved node offering for a duration. This is the start time of that duration.</p>
 -- * Duration [Integer] <p>The duration of the node reservation in seconds.</p>
 -- * ReservedNodeOfferingId [String] <p>The identifier for the reserved node offering.</p>
@@ -2880,6 +2335,7 @@ function M.ReservedNode(args)
 		["OfferingType"] = args["OfferingType"],
 		["FixedPrice"] = args["FixedPrice"],
 		["NodeType"] = args["NodeType"],
+		["ReservedNodeOfferingType"] = args["ReservedNodeOfferingType"],
 		["NodeCount"] = args["NodeCount"],
 		["UsagePrice"] = args["UsagePrice"],
 		["RecurringCharges"] = args["RecurringCharges"],
@@ -2973,74 +2429,6 @@ function M.ModifyClusterResult(args)
 		["Cluster"] = args["Cluster"],
 	}
 	asserts.AssertModifyClusterResult(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidSubscriptionStateFault = { nil }
-
-function asserts.AssertInvalidSubscriptionStateFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidSubscriptionStateFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidSubscriptionStateFault[k], "InvalidSubscriptionStateFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidSubscriptionStateFault
--- <p>The subscription request is invalid because it is a duplicate request. This subscription request is already in progress.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidSubscriptionStateFault structure as a key-value pair table
-function M.InvalidSubscriptionStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidSubscriptionStateFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidSubscriptionStateFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InProgressTableRestoreQuotaExceededFault = { nil }
-
-function asserts.AssertInProgressTableRestoreQuotaExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InProgressTableRestoreQuotaExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InProgressTableRestoreQuotaExceededFault[k], "InProgressTableRestoreQuotaExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InProgressTableRestoreQuotaExceededFault
--- <p>You have exceeded the allowed number of table restore requests. Wait for your current table restore requests to complete before making a new request.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InProgressTableRestoreQuotaExceededFault structure as a key-value pair table
-function M.InProgressTableRestoreQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating InProgressTableRestoreQuotaExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInProgressTableRestoreQuotaExceededFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3187,145 +2575,6 @@ function M.ClusterIamRole(args)
     }
 end
 
-keys.InvalidTableRestoreArgumentFault = { nil }
-
-function asserts.AssertInvalidTableRestoreArgumentFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidTableRestoreArgumentFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidTableRestoreArgumentFault[k], "InvalidTableRestoreArgumentFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidTableRestoreArgumentFault
--- <p>The value specified for the <code>sourceDatabaseName</code>, <code>sourceSchemaName</code>, or <code>sourceTableName</code> parameter, or a combination of these, doesn't exist in the snapshot.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidTableRestoreArgumentFault structure as a key-value pair table
-function M.InvalidTableRestoreArgumentFault(args)
-	assert(args, "You must provide an argument table when creating InvalidTableRestoreArgumentFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidTableRestoreArgumentFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ClusterSubnetQuotaExceededFault = { nil }
-
-function asserts.AssertClusterSubnetQuotaExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterSubnetQuotaExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ClusterSubnetQuotaExceededFault[k], "ClusterSubnetQuotaExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ClusterSubnetQuotaExceededFault
--- <p>The request would result in user exceeding the allowed number of subnets in a cluster subnet groups. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ClusterSubnetQuotaExceededFault structure as a key-value pair table
-function M.ClusterSubnetQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating ClusterSubnetQuotaExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertClusterSubnetQuotaExceededFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.UnsupportedOptionFault = { nil }
-
-function asserts.AssertUnsupportedOptionFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UnsupportedOptionFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.UnsupportedOptionFault[k], "UnsupportedOptionFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UnsupportedOptionFault
--- <p>A request option was specified that is not supported.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return UnsupportedOptionFault structure as a key-value pair table
-function M.UnsupportedOptionFault(args)
-	assert(args, "You must provide an argument table when creating UnsupportedOptionFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertUnsupportedOptionFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.RestoreTableFromClusterSnapshotResult = { ["TableRestoreStatus"] = true, nil }
-
-function asserts.AssertRestoreTableFromClusterSnapshotResult(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected RestoreTableFromClusterSnapshotResult to be of type 'table'")
-	if struct["TableRestoreStatus"] then asserts.AssertTableRestoreStatus(struct["TableRestoreStatus"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.RestoreTableFromClusterSnapshotResult[k], "RestoreTableFromClusterSnapshotResult contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type RestoreTableFromClusterSnapshotResult
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * TableRestoreStatus [TableRestoreStatus] 
--- @return RestoreTableFromClusterSnapshotResult structure as a key-value pair table
-function M.RestoreTableFromClusterSnapshotResult(args)
-	assert(args, "You must provide an argument table when creating RestoreTableFromClusterSnapshotResult")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["TableRestoreStatus"] = args["TableRestoreStatus"],
-	}
-	asserts.AssertRestoreTableFromClusterSnapshotResult(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ModifyClusterSubnetGroupMessage = { ["SubnetIds"] = true, ["ClusterSubnetGroupName"] = true, ["Description"] = true, nil }
 
 function asserts.AssertModifyClusterSubnetGroupMessage(struct)
@@ -3373,40 +2622,6 @@ function M.ModifyClusterSubnetGroupMessage(args)
     }
 end
 
-keys.HsmClientCertificateQuotaExceededFault = { nil }
-
-function asserts.AssertHsmClientCertificateQuotaExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected HsmClientCertificateQuotaExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.HsmClientCertificateQuotaExceededFault[k], "HsmClientCertificateQuotaExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type HsmClientCertificateQuotaExceededFault
--- <p>The quota for HSM client certificates has been reached. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return HsmClientCertificateQuotaExceededFault structure as a key-value pair table
-function M.HsmClientCertificateQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating HsmClientCertificateQuotaExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertHsmClientCertificateQuotaExceededFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ModifyClusterIamRolesResult = { ["Cluster"] = true, nil }
 
 function asserts.AssertModifyClusterIamRolesResult(struct)
@@ -3436,51 +2651,6 @@ function M.ModifyClusterIamRolesResult(args)
 		["Cluster"] = args["Cluster"],
 	}
 	asserts.AssertModifyClusterIamRolesResult(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ModifyClusterIamRolesMessage = { ["AddIamRoles"] = true, ["RemoveIamRoles"] = true, ["ClusterIdentifier"] = true, nil }
-
-function asserts.AssertModifyClusterIamRolesMessage(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ModifyClusterIamRolesMessage to be of type 'table'")
-	assert(struct["ClusterIdentifier"], "Expected key ClusterIdentifier to exist in table")
-	if struct["AddIamRoles"] then asserts.AssertIamRoleArnList(struct["AddIamRoles"]) end
-	if struct["RemoveIamRoles"] then asserts.AssertIamRoleArnList(struct["RemoveIamRoles"]) end
-	if struct["ClusterIdentifier"] then asserts.AssertString(struct["ClusterIdentifier"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ModifyClusterIamRolesMessage[k], "ModifyClusterIamRolesMessage contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ModifyClusterIamRolesMessage
--- <p/>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * AddIamRoles [IamRoleArnList] <p>Zero or more IAM roles to associate with the cluster. The roles must be in their Amazon Resource Name (ARN) format. You can associate up to 10 IAM roles with a single cluster in a single request.</p>
--- * RemoveIamRoles [IamRoleArnList] <p>Zero or more IAM roles in ARN format to disassociate from the cluster. You can disassociate up to 10 IAM roles from a single cluster in a single request.</p>
--- * ClusterIdentifier [String] <p>The unique identifier of the cluster for which you want to associate or disassociate IAM roles.</p>
--- Required key: ClusterIdentifier
--- @return ModifyClusterIamRolesMessage structure as a key-value pair table
-function M.ModifyClusterIamRolesMessage(args)
-	assert(args, "You must provide an argument table when creating ModifyClusterIamRolesMessage")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["AddIamRoles"] = args["AddIamRoles"],
-		["RemoveIamRoles"] = args["RemoveIamRoles"],
-		["ClusterIdentifier"] = args["ClusterIdentifier"],
-	}
-	asserts.AssertModifyClusterIamRolesMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3536,23 +2706,25 @@ function M.CreateClusterSecurityGroupMessage(args)
     }
 end
 
-keys.HsmClientCertificateNotFoundFault = { nil }
+keys.ModifyClusterDbRevisionResult = { ["Cluster"] = true, nil }
 
-function asserts.AssertHsmClientCertificateNotFoundFault(struct)
+function asserts.AssertModifyClusterDbRevisionResult(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected HsmClientCertificateNotFoundFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected ModifyClusterDbRevisionResult to be of type 'table'")
+	if struct["Cluster"] then asserts.AssertCluster(struct["Cluster"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.HsmClientCertificateNotFoundFault[k], "HsmClientCertificateNotFoundFault contains unknown key " .. tostring(k))
+		assert(keys.ModifyClusterDbRevisionResult[k], "ModifyClusterDbRevisionResult contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type HsmClientCertificateNotFoundFault
--- <p>There is no Amazon Redshift HSM client certificate with the specified identifier.</p>
+--- Create a structure of type ModifyClusterDbRevisionResult
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return HsmClientCertificateNotFoundFault structure as a key-value pair table
-function M.HsmClientCertificateNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating HsmClientCertificateNotFoundFault")
+-- * Cluster [Cluster] 
+-- @return ModifyClusterDbRevisionResult structure as a key-value pair table
+function M.ModifyClusterDbRevisionResult(args)
+	assert(args, "You must provide an argument table when creating ModifyClusterDbRevisionResult")
     local query_args = { 
     }
     local uri_args = { 
@@ -3560,42 +2732,9 @@ function M.HsmClientCertificateNotFoundFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertHsmClientCertificateNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.EventSubscriptionQuotaExceededFault = { nil }
-
-function asserts.AssertEventSubscriptionQuotaExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected EventSubscriptionQuotaExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.EventSubscriptionQuotaExceededFault[k], "EventSubscriptionQuotaExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type EventSubscriptionQuotaExceededFault
--- <p>The request would exceed the allowed number of event subscriptions for this account. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return EventSubscriptionQuotaExceededFault structure as a key-value pair table
-function M.EventSubscriptionQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating EventSubscriptionQuotaExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertEventSubscriptionQuotaExceededFault(all_args)
+	asserts.AssertModifyClusterDbRevisionResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3692,80 +2831,6 @@ function M.DescribeClusterVersionsMessage(args)
     }
 end
 
-keys.ClustersMessage = { ["Marker"] = true, ["Clusters"] = true, nil }
-
-function asserts.AssertClustersMessage(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ClustersMessage to be of type 'table'")
-	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
-	if struct["Clusters"] then asserts.AssertClusterList(struct["Clusters"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ClustersMessage[k], "ClustersMessage contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ClustersMessage
--- <p>Contains the output from the <a>DescribeClusters</a> action. </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
--- * Clusters [ClusterList] <p>A list of <code>Cluster</code> objects, where each object describes one cluster. </p>
--- @return ClustersMessage structure as a key-value pair table
-function M.ClustersMessage(args)
-	assert(args, "You must provide an argument table when creating ClustersMessage")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Marker"] = args["Marker"],
-		["Clusters"] = args["Clusters"],
-	}
-	asserts.AssertClustersMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.AuthorizationQuotaExceededFault = { nil }
-
-function asserts.AssertAuthorizationQuotaExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected AuthorizationQuotaExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.AuthorizationQuotaExceededFault[k], "AuthorizationQuotaExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type AuthorizationQuotaExceededFault
--- <p>The authorization quota for the cluster security group has been reached.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return AuthorizationQuotaExceededFault structure as a key-value pair table
-function M.AuthorizationQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating AuthorizationQuotaExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertAuthorizationQuotaExceededFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.DisableSnapshotCopyMessage = { ["ClusterIdentifier"] = true, nil }
 
 function asserts.AssertDisableSnapshotCopyMessage(struct)
@@ -3805,23 +2870,25 @@ function M.DisableSnapshotCopyMessage(args)
     }
 end
 
-keys.SourceNotFoundFault = { nil }
+keys.EventCategoriesMessage = { ["EventCategoriesMapList"] = true, nil }
 
-function asserts.AssertSourceNotFoundFault(struct)
+function asserts.AssertEventCategoriesMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SourceNotFoundFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected EventCategoriesMessage to be of type 'table'")
+	if struct["EventCategoriesMapList"] then asserts.AssertEventCategoriesMapList(struct["EventCategoriesMapList"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SourceNotFoundFault[k], "SourceNotFoundFault contains unknown key " .. tostring(k))
+		assert(keys.EventCategoriesMessage[k], "EventCategoriesMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SourceNotFoundFault
--- <p>The specified Amazon Redshift event source could not be found.</p>
+--- Create a structure of type EventCategoriesMessage
+-- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return SourceNotFoundFault structure as a key-value pair table
-function M.SourceNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating SourceNotFoundFault")
+-- * EventCategoriesMapList [EventCategoriesMapList] <p>A list of event categories descriptions.</p>
+-- @return EventCategoriesMessage structure as a key-value pair table
+function M.EventCategoriesMessage(args)
+	assert(args, "You must provide an argument table when creating EventCategoriesMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -3829,8 +2896,9 @@ function M.SourceNotFoundFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["EventCategoriesMapList"] = args["EventCategoriesMapList"],
 	}
-	asserts.AssertSourceNotFoundFault(all_args)
+	asserts.AssertEventCategoriesMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4110,53 +3178,18 @@ function M.RecurringCharge(args)
     }
 end
 
-keys.EventCategoriesMessage = { ["EventCategoriesMapList"] = true, nil }
-
-function asserts.AssertEventCategoriesMessage(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected EventCategoriesMessage to be of type 'table'")
-	if struct["EventCategoriesMapList"] then asserts.AssertEventCategoriesMapList(struct["EventCategoriesMapList"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.EventCategoriesMessage[k], "EventCategoriesMessage contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type EventCategoriesMessage
--- <p/>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * EventCategoriesMapList [EventCategoriesMapList] <p>A list of event categories descriptions.</p>
--- @return EventCategoriesMessage structure as a key-value pair table
-function M.EventCategoriesMessage(args)
-	assert(args, "You must provide an argument table when creating EventCategoriesMessage")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["EventCategoriesMapList"] = args["EventCategoriesMapList"],
-	}
-	asserts.AssertEventCategoriesMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.PendingModifiedValues = { ["ClusterVersion"] = true, ["PubliclyAccessible"] = true, ["EnhancedVpcRouting"] = true, ["ClusterType"] = true, ["MasterUserPassword"] = true, ["AutomatedSnapshotRetentionPeriod"] = true, ["NodeType"] = true, ["ClusterIdentifier"] = true, ["NumberOfNodes"] = true, nil }
+keys.PendingModifiedValues = { ["ClusterVersion"] = true, ["EncryptionType"] = true, ["PubliclyAccessible"] = true, ["EnhancedVpcRouting"] = true, ["ClusterType"] = true, ["MasterUserPassword"] = true, ["MaintenanceTrackName"] = true, ["AutomatedSnapshotRetentionPeriod"] = true, ["NodeType"] = true, ["ClusterIdentifier"] = true, ["NumberOfNodes"] = true, nil }
 
 function asserts.AssertPendingModifiedValues(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PendingModifiedValues to be of type 'table'")
 	if struct["ClusterVersion"] then asserts.AssertString(struct["ClusterVersion"]) end
+	if struct["EncryptionType"] then asserts.AssertString(struct["EncryptionType"]) end
 	if struct["PubliclyAccessible"] then asserts.AssertBooleanOptional(struct["PubliclyAccessible"]) end
 	if struct["EnhancedVpcRouting"] then asserts.AssertBooleanOptional(struct["EnhancedVpcRouting"]) end
 	if struct["ClusterType"] then asserts.AssertString(struct["ClusterType"]) end
 	if struct["MasterUserPassword"] then asserts.AssertString(struct["MasterUserPassword"]) end
+	if struct["MaintenanceTrackName"] then asserts.AssertString(struct["MaintenanceTrackName"]) end
 	if struct["AutomatedSnapshotRetentionPeriod"] then asserts.AssertIntegerOptional(struct["AutomatedSnapshotRetentionPeriod"]) end
 	if struct["NodeType"] then asserts.AssertString(struct["NodeType"]) end
 	if struct["ClusterIdentifier"] then asserts.AssertString(struct["ClusterIdentifier"]) end
@@ -4171,10 +3204,12 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ClusterVersion [String] <p>The pending or in-progress change of the service version.</p>
+-- * EncryptionType [String] <p>The encryption type for a cluster. Possible values are: KMS and None. For the China region the possible values are None, and Legacy. </p>
 -- * PubliclyAccessible [BooleanOptional] <p>The pending or in-progress change of the ability to connect to the cluster from the public network.</p>
 -- * EnhancedVpcRouting [BooleanOptional] <p>An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the Amazon Redshift Cluster Management Guide.</p> <p>If this option is <code>true</code>, enhanced VPC routing is enabled. </p> <p>Default: false</p>
 -- * ClusterType [String] <p>The pending or in-progress change of the cluster type.</p>
 -- * MasterUserPassword [String] <p>The pending or in-progress change of the master user password for the cluster.</p>
+-- * MaintenanceTrackName [String] <p>The name of the maintenance track that the cluster will change to during the next maintenance window.</p>
 -- * AutomatedSnapshotRetentionPeriod [IntegerOptional] <p>The pending or in-progress change of the automated snapshot retention period.</p>
 -- * NodeType [String] <p>The pending or in-progress change of the cluster's node type.</p>
 -- * ClusterIdentifier [String] <p>The pending or in-progress change of the new identifier for the cluster.</p>
@@ -4190,10 +3225,12 @@ function M.PendingModifiedValues(args)
     }
 	local all_args = { 
 		["ClusterVersion"] = args["ClusterVersion"],
+		["EncryptionType"] = args["EncryptionType"],
 		["PubliclyAccessible"] = args["PubliclyAccessible"],
 		["EnhancedVpcRouting"] = args["EnhancedVpcRouting"],
 		["ClusterType"] = args["ClusterType"],
 		["MasterUserPassword"] = args["MasterUserPassword"],
+		["MaintenanceTrackName"] = args["MaintenanceTrackName"],
 		["AutomatedSnapshotRetentionPeriod"] = args["AutomatedSnapshotRetentionPeriod"],
 		["NodeType"] = args["NodeType"],
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
@@ -4230,12 +3267,12 @@ end
 -- <p>The request parameters to get cluster credentials.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DbGroups [DbGroupList] <p>A list of the names of existing database groups that <code>DbUser</code> will join for the current session. If not specified, the new user is added only to PUBLIC.</p>
--- * AutoCreate [BooleanOptional] <p>Create a database user with the name specified for <code>DbUser</code> if one does not exist.</p>
+-- * DbGroups [DbGroupList] <p>A list of the names of existing database groups that the user named in <code>DbUser</code> will join for the current session, in addition to any group memberships for an existing user. If not specified, a new user is added only to PUBLIC.</p> <p>Database group name constraints</p> <ul> <li> <p>Must be 1 to 64 alphanumeric characters or hyphens</p> </li> <li> <p>Must contain only lowercase letters, numbers, underscore, plus sign, period (dot), at symbol (@), or hyphen.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Must not contain a colon ( : ) or slash ( / ). </p> </li> <li> <p>Cannot be a reserved word. A list of reserved words can be found in <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html">Reserved Words</a> in the Amazon Redshift Database Developer Guide.</p> </li> </ul>
+-- * AutoCreate [BooleanOptional] <p>Create a database user with the name specified for the user named in <code>DbUser</code> if one does not exist.</p>
 -- * DurationSeconds [IntegerOptional] <p>The number of seconds until the returned temporary password expires.</p> <p>Constraint: minimum 900, maximum 3600.</p> <p>Default: 900</p>
--- * DbUser [String] <p>The name of a database user. If a user name matching <code>DbUser</code> exists in the database, the temporary user credentials have the same permissions as the existing user. If <code>DbUser</code> doesn't exist in the database and <code>Autocreate</code> is <code>True</code>, a new user is created using the value for <code>DbUser</code> with PUBLIC permissions. If a database user matching the value for <code>DbUser</code> doesn't exist and <code>Autocreate</code> is <code>False</code>, then the command succeeds but the connection attempt will fail because the user doesn't exist in the database.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/http:/docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html">CREATE USER</a> in the Amazon Redshift Database Developer Guide. </p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 128 alphanumeric characters or hyphens</p> </li> <li> <p>Must contain only lowercase letters.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Must not contain a colon ( : ) or slash ( / ). </p> </li> <li> <p>Cannot be a reserved word. A list of reserved words can be found in <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html">Reserved Words</a> in the Amazon Redshift Database Developer Guide.</p> </li> </ul>
+-- * DbUser [String] <p>The name of a database user. If a user name matching <code>DbUser</code> exists in the database, the temporary user credentials have the same permissions as the existing user. If <code>DbUser</code> doesn't exist in the database and <code>Autocreate</code> is <code>True</code>, a new user is created using the value for <code>DbUser</code> with PUBLIC permissions. If a database user matching the value for <code>DbUser</code> doesn't exist and <code>Autocreate</code> is <code>False</code>, then the command succeeds but the connection attempt will fail because the user doesn't exist in the database.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html">CREATE USER</a> in the Amazon Redshift Database Developer Guide. </p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 64 alphanumeric characters or hyphens. The user name can't be <code>PUBLIC</code>.</p> </li> <li> <p>Must contain only lowercase letters, numbers, underscore, plus sign, period (dot), at symbol (@), or hyphen.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Must not contain a colon ( : ) or slash ( / ). </p> </li> <li> <p>Cannot be a reserved word. A list of reserved words can be found in <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html">Reserved Words</a> in the Amazon Redshift Database Developer Guide.</p> </li> </ul>
 -- * ClusterIdentifier [String] <p>The unique identifier of the cluster that contains the database for which your are requesting credentials. This parameter is case sensitive.</p>
--- * DbName [String] <p>The name of a database that <code>DbUser</code> is authorized to log on to. If <code>DbName</code> is not specified, <code>DbUser</code> can log in to any existing database.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 64 alphanumeric characters or hyphens</p> </li> <li> <p>Must contain only lowercase letters.</p> </li> <li> <p>Cannot be a reserved word. A list of reserved words can be found in <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html">Reserved Words</a> in the Amazon Redshift Database Developer Guide.</p> </li> </ul>
+-- * DbName [String] <p>The name of a database that <code>DbUser</code> is authorized to log on to. If <code>DbName</code> is not specified, <code>DbUser</code> can log on to any existing database.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 64 alphanumeric characters or hyphens</p> </li> <li> <p>Must contain only lowercase letters, numbers, underscore, plus sign, period (dot), at symbol (@), or hyphen.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Must not contain a colon ( : ) or slash ( / ). </p> </li> <li> <p>Cannot be a reserved word. A list of reserved words can be found in <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html">Reserved Words</a> in the Amazon Redshift Database Developer Guide.</p> </li> </ul>
 -- Required key: DbUser
 -- Required key: ClusterIdentifier
 -- @return GetClusterCredentialsMessage structure as a key-value pair table
@@ -4341,74 +3378,6 @@ function M.DeleteSnapshotCopyGrantMessage(args)
 		["SnapshotCopyGrantName"] = args["SnapshotCopyGrantName"],
 	}
 	asserts.AssertDeleteSnapshotCopyGrantMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidClusterSubnetStateFault = { nil }
-
-function asserts.AssertInvalidClusterSubnetStateFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidClusterSubnetStateFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidClusterSubnetStateFault[k], "InvalidClusterSubnetStateFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidClusterSubnetStateFault
--- <p>The state of the subnet is invalid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidClusterSubnetStateFault structure as a key-value pair table
-function M.InvalidClusterSubnetStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidClusterSubnetStateFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidClusterSubnetStateFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.UnauthorizedOperation = { nil }
-
-function asserts.AssertUnauthorizedOperation(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UnauthorizedOperation to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.UnauthorizedOperation[k], "UnauthorizedOperation contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UnauthorizedOperation
--- <p>Your account is not authorized to perform the requested operation.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return UnauthorizedOperation structure as a key-value pair table
-function M.UnauthorizedOperation(args)
-	assert(args, "You must provide an argument table when creating UnauthorizedOperation")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertUnauthorizedOperation(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4576,7 +3545,7 @@ function M.CreateHsmClientCertificateResult(args)
     }
 end
 
-keys.RestoreFromClusterSnapshotMessage = { ["ClusterParameterGroupName"] = true, ["PubliclyAccessible"] = true, ["OwnerAccount"] = true, ["VpcSecurityGroupIds"] = true, ["SnapshotClusterIdentifier"] = true, ["AutomatedSnapshotRetentionPeriod"] = true, ["EnhancedVpcRouting"] = true, ["PreferredMaintenanceWindow"] = true, ["AdditionalInfo"] = true, ["IamRoles"] = true, ["AllowVersionUpgrade"] = true, ["HsmConfigurationIdentifier"] = true, ["ClusterSecurityGroups"] = true, ["ClusterIdentifier"] = true, ["HsmClientCertificateIdentifier"] = true, ["AvailabilityZone"] = true, ["NodeType"] = true, ["ElasticIp"] = true, ["KmsKeyId"] = true, ["SnapshotIdentifier"] = true, ["Port"] = true, ["ClusterSubnetGroupName"] = true, nil }
+keys.RestoreFromClusterSnapshotMessage = { ["ClusterParameterGroupName"] = true, ["PubliclyAccessible"] = true, ["OwnerAccount"] = true, ["VpcSecurityGroupIds"] = true, ["SnapshotClusterIdentifier"] = true, ["AutomatedSnapshotRetentionPeriod"] = true, ["EnhancedVpcRouting"] = true, ["PreferredMaintenanceWindow"] = true, ["AdditionalInfo"] = true, ["IamRoles"] = true, ["AllowVersionUpgrade"] = true, ["MaintenanceTrackName"] = true, ["HsmConfigurationIdentifier"] = true, ["ClusterSecurityGroups"] = true, ["ClusterIdentifier"] = true, ["HsmClientCertificateIdentifier"] = true, ["AvailabilityZone"] = true, ["NodeType"] = true, ["ElasticIp"] = true, ["KmsKeyId"] = true, ["SnapshotIdentifier"] = true, ["Port"] = true, ["ClusterSubnetGroupName"] = true, nil }
 
 function asserts.AssertRestoreFromClusterSnapshotMessage(struct)
 	assert(struct)
@@ -4594,6 +3563,7 @@ function asserts.AssertRestoreFromClusterSnapshotMessage(struct)
 	if struct["AdditionalInfo"] then asserts.AssertString(struct["AdditionalInfo"]) end
 	if struct["IamRoles"] then asserts.AssertIamRoleArnList(struct["IamRoles"]) end
 	if struct["AllowVersionUpgrade"] then asserts.AssertBooleanOptional(struct["AllowVersionUpgrade"]) end
+	if struct["MaintenanceTrackName"] then asserts.AssertString(struct["MaintenanceTrackName"]) end
 	if struct["HsmConfigurationIdentifier"] then asserts.AssertString(struct["HsmConfigurationIdentifier"]) end
 	if struct["ClusterSecurityGroups"] then asserts.AssertClusterSecurityGroupNameList(struct["ClusterSecurityGroups"]) end
 	if struct["ClusterIdentifier"] then asserts.AssertString(struct["ClusterIdentifier"]) end
@@ -4625,12 +3595,13 @@ end
 -- * AdditionalInfo [String] <p>Reserved.</p>
 -- * IamRoles [IamRoleArnList] <p>A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up to 10 IAM roles in a single request.</p> <p>A cluster can have up to 10 IAM roles associated at any time.</p>
 -- * AllowVersionUpgrade [BooleanOptional] <p>If <code>true</code>, major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. </p> <p>Default: <code>true</code> </p>
+-- * MaintenanceTrackName [String] <p>The name of the maintenance track for the restored cluster. When you take a snapshot, the snapshot inherits the <code>MaintenanceTrack</code> value from the cluster. The snapshot might be on a different track than the cluster that was the source for the snapshot. For example, suppose that you take a snapshot of a cluster that is on the current track and then change the cluster to be on the trailing track. In this case, the snapshot and the source cluster are on different tracks.</p>
 -- * HsmConfigurationIdentifier [String] <p>Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to retrieve and store keys in an HSM.</p>
 -- * ClusterSecurityGroups [ClusterSecurityGroupNameList] <p>A list of security groups to be associated with this cluster.</p> <p>Default: The default cluster security group for Amazon Redshift.</p> <p>Cluster security groups only apply to clusters outside of VPCs.</p>
 -- * ClusterIdentifier [String] <p>The identifier of the cluster that will be created from restoring the snapshot.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>Alphabetic characters must be lowercase.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> <li> <p>Must be unique for all clusters within an AWS account.</p> </li> </ul>
 -- * HsmClientCertificateIdentifier [String] <p>Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption keys stored in an HSM.</p>
 -- * AvailabilityZone [String] <p>The Amazon EC2 Availability Zone in which to restore the cluster.</p> <p>Default: A random, system-chosen Availability Zone.</p> <p>Example: <code>us-east-1a</code> </p>
--- * NodeType [String] <p>The node type that the restored cluster will be provisioned with.</p> <p>Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are using any DS node type. In that case, you can choose to restore into another DS node type of the same size. For example, you can restore ds1.8xlarge into ds2.8xlarge, or ds2.xlarge into ds1.xlarge. If you have a DC instance type, you must restore into that same instance type and size. In other words, you can only restore a dc1.large instance type into another dc1.large instance type. For more information about node types, see <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes"> About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i> </p>
+-- * NodeType [String] <p>The node type that the restored cluster will be provisioned with.</p> <p>Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are using any DS node type. In that case, you can choose to restore into another DS node type of the same size. For example, you can restore ds1.8xlarge into ds2.8xlarge, or ds1.xlarge into ds2.xlarge. If you have a DC instance type, you must restore into that same instance type and size. In other words, you can only restore a dc1.large instance type into another dc1.large instance type or dc2.large instance type. You can't restore dc1.8xlarge to dc2.8xlarge. First restore to a dc1.8xlareg cluster, then resize to a dc2.8large cluster. For more information about node types, see <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes"> About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 -- * ElasticIp [String] <p>The elastic IP (EIP) address for the cluster.</p>
 -- * KmsKeyId [String] <p>The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in the cluster that you restore from a shared snapshot.</p>
 -- * SnapshotIdentifier [String] <p>The name of the snapshot from which to create the new cluster. This parameter isn't case sensitive.</p> <p>Example: <code>my-snapshot-id</code> </p>
@@ -4659,6 +3630,7 @@ function M.RestoreFromClusterSnapshotMessage(args)
 		["AdditionalInfo"] = args["AdditionalInfo"],
 		["IamRoles"] = args["IamRoles"],
 		["AllowVersionUpgrade"] = args["AllowVersionUpgrade"],
+		["MaintenanceTrackName"] = args["MaintenanceTrackName"],
 		["HsmConfigurationIdentifier"] = args["HsmConfigurationIdentifier"],
 		["ClusterSecurityGroups"] = args["ClusterSecurityGroups"],
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
@@ -4723,11 +3695,12 @@ function M.HsmClientCertificate(args)
     }
 end
 
-keys.AvailabilityZone = { ["Name"] = true, nil }
+keys.AvailabilityZone = { ["SupportedPlatforms"] = true, ["Name"] = true, nil }
 
 function asserts.AssertAvailabilityZone(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AvailabilityZone to be of type 'table'")
+	if struct["SupportedPlatforms"] then asserts.AssertSupportedPlatformsList(struct["SupportedPlatforms"]) end
 	if struct["Name"] then asserts.AssertString(struct["Name"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.AvailabilityZone[k], "AvailabilityZone contains unknown key " .. tostring(k))
@@ -4738,6 +3711,7 @@ end
 -- <p>Describes an availability zone.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * SupportedPlatforms [SupportedPlatformsList] 
 -- * Name [String] <p>The name of the availability zone.</p>
 -- @return AvailabilityZone structure as a key-value pair table
 function M.AvailabilityZone(args)
@@ -4749,6 +3723,7 @@ function M.AvailabilityZone(args)
     local header_args = { 
     }
 	local all_args = { 
+		["SupportedPlatforms"] = args["SupportedPlatforms"],
 		["Name"] = args["Name"],
 	}
 	asserts.AssertAvailabilityZone(all_args)
@@ -4801,40 +3776,6 @@ function M.DescribeHsmClientCertificatesMessage(args)
 		["HsmClientCertificateIdentifier"] = args["HsmClientCertificateIdentifier"],
 	}
 	asserts.AssertDescribeHsmClientCertificatesMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidTagFault = { nil }
-
-function asserts.AssertInvalidTagFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidTagFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidTagFault[k], "InvalidTagFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidTagFault
--- <p>The tag is invalid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidTagFault structure as a key-value pair table
-function M.InvalidTagFault(args)
-	assert(args, "You must provide an argument table when creating InvalidTagFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidTagFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4915,40 +3856,6 @@ function M.ModifySnapshotCopyRetentionPeriodResult(args)
 		["Cluster"] = args["Cluster"],
 	}
 	asserts.AssertModifySnapshotCopyRetentionPeriodResult(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SnapshotCopyGrantAlreadyExistsFault = { nil }
-
-function asserts.AssertSnapshotCopyGrantAlreadyExistsFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SnapshotCopyGrantAlreadyExistsFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SnapshotCopyGrantAlreadyExistsFault[k], "SnapshotCopyGrantAlreadyExistsFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SnapshotCopyGrantAlreadyExistsFault
--- <p>The snapshot copy grant can't be created because a grant with the same name already exists.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SnapshotCopyGrantAlreadyExistsFault structure as a key-value pair table
-function M.SnapshotCopyGrantAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating SnapshotCopyGrantAlreadyExistsFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSnapshotCopyGrantAlreadyExistsFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5176,40 +4083,6 @@ function M.RevokeSnapshotAccessMessage(args)
     }
 end
 
-keys.InvalidClusterSnapshotStateFault = { nil }
-
-function asserts.AssertInvalidClusterSnapshotStateFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidClusterSnapshotStateFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidClusterSnapshotStateFault[k], "InvalidClusterSnapshotStateFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidClusterSnapshotStateFault
--- <p>The specified cluster snapshot is not in the <code>available</code> state, or other accounts are authorized to access the snapshot. </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidClusterSnapshotStateFault structure as a key-value pair table
-function M.InvalidClusterSnapshotStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidClusterSnapshotStateFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidClusterSnapshotStateFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.Subnet = { ["SubnetStatus"] = true, ["SubnetIdentifier"] = true, ["SubnetAvailabilityZone"] = true, nil }
 
 function asserts.AssertSubnet(struct)
@@ -5253,23 +4126,29 @@ function M.Subnet(args)
     }
 end
 
-keys.InvalidHsmClientCertificateStateFault = { nil }
+keys.MaintenanceTrack = { ["DatabaseVersion"] = true, ["MaintenanceTrackName"] = true, ["UpdateTargets"] = true, nil }
 
-function asserts.AssertInvalidHsmClientCertificateStateFault(struct)
+function asserts.AssertMaintenanceTrack(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidHsmClientCertificateStateFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected MaintenanceTrack to be of type 'table'")
+	if struct["DatabaseVersion"] then asserts.AssertString(struct["DatabaseVersion"]) end
+	if struct["MaintenanceTrackName"] then asserts.AssertString(struct["MaintenanceTrackName"]) end
+	if struct["UpdateTargets"] then asserts.AssertEligibleTracksToUpdateList(struct["UpdateTargets"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidHsmClientCertificateStateFault[k], "InvalidHsmClientCertificateStateFault contains unknown key " .. tostring(k))
+		assert(keys.MaintenanceTrack[k], "MaintenanceTrack contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidHsmClientCertificateStateFault
--- <p>The specified HSM client certificate is not in the <code>available</code> state, or it is still in use by one or more Amazon Redshift clusters.</p>
+--- Create a structure of type MaintenanceTrack
+-- <p>Defines a maintenance track that determines which Amazon Redshift version to apply during a maintenance window. If the value for <code>MaintenanceTrack</code> is <code>current</code>, the cluster is updated to the most recently certified maintenance release. If the value is <code>trailing</code>, the cluster is updated to the previously certified maintenance release. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidHsmClientCertificateStateFault structure as a key-value pair table
-function M.InvalidHsmClientCertificateStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidHsmClientCertificateStateFault")
+-- * DatabaseVersion [String] <p>The version number for the cluster release.</p>
+-- * MaintenanceTrackName [String] <p>The name of the maintenance track. Possible values are <code>current</code> and <code>trailing</code>.</p>
+-- * UpdateTargets [EligibleTracksToUpdateList] <p>An array of <a>UpdateTarget</a> objects to update with the maintenance track. </p>
+-- @return MaintenanceTrack structure as a key-value pair table
+function M.MaintenanceTrack(args)
+	assert(args, "You must provide an argument table when creating MaintenanceTrack")
     local query_args = { 
     }
     local uri_args = { 
@@ -5277,8 +4156,11 @@ function M.InvalidHsmClientCertificateStateFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["DatabaseVersion"] = args["DatabaseVersion"],
+		["MaintenanceTrackName"] = args["MaintenanceTrackName"],
+		["UpdateTargets"] = args["UpdateTargets"],
 	}
-	asserts.AssertInvalidHsmClientCertificateStateFault(all_args)
+	asserts.AssertMaintenanceTrack(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5287,23 +4169,25 @@ function M.InvalidHsmClientCertificateStateFault(args)
     }
 end
 
-keys.InvalidS3BucketNameFault = { nil }
+keys.AcceptReservedNodeExchangeOutputMessage = { ["ExchangedReservedNode"] = true, nil }
 
-function asserts.AssertInvalidS3BucketNameFault(struct)
+function asserts.AssertAcceptReservedNodeExchangeOutputMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidS3BucketNameFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected AcceptReservedNodeExchangeOutputMessage to be of type 'table'")
+	if struct["ExchangedReservedNode"] then asserts.AssertReservedNode(struct["ExchangedReservedNode"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidS3BucketNameFault[k], "InvalidS3BucketNameFault contains unknown key " .. tostring(k))
+		assert(keys.AcceptReservedNodeExchangeOutputMessage[k], "AcceptReservedNodeExchangeOutputMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidS3BucketNameFault
--- <p>The S3 bucket name is invalid. For more information about naming rules, go to <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html">Bucket Restrictions and Limitations</a> in the Amazon Simple Storage Service (S3) Developer Guide.</p>
+--- Create a structure of type AcceptReservedNodeExchangeOutputMessage
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidS3BucketNameFault structure as a key-value pair table
-function M.InvalidS3BucketNameFault(args)
-	assert(args, "You must provide an argument table when creating InvalidS3BucketNameFault")
+-- * ExchangedReservedNode [ReservedNode] 
+-- @return AcceptReservedNodeExchangeOutputMessage structure as a key-value pair table
+function M.AcceptReservedNodeExchangeOutputMessage(args)
+	assert(args, "You must provide an argument table when creating AcceptReservedNodeExchangeOutputMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -5311,110 +4195,9 @@ function M.InvalidS3BucketNameFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["ExchangedReservedNode"] = args["ExchangedReservedNode"],
 	}
-	asserts.AssertInvalidS3BucketNameFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SnapshotCopyGrantQuotaExceededFault = { nil }
-
-function asserts.AssertSnapshotCopyGrantQuotaExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SnapshotCopyGrantQuotaExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SnapshotCopyGrantQuotaExceededFault[k], "SnapshotCopyGrantQuotaExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SnapshotCopyGrantQuotaExceededFault
--- <p>The AWS account has exceeded the maximum number of snapshot copy grants in this region.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SnapshotCopyGrantQuotaExceededFault structure as a key-value pair table
-function M.SnapshotCopyGrantQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating SnapshotCopyGrantQuotaExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSnapshotCopyGrantQuotaExceededFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.AuthorizationNotFoundFault = { nil }
-
-function asserts.AssertAuthorizationNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected AuthorizationNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.AuthorizationNotFoundFault[k], "AuthorizationNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type AuthorizationNotFoundFault
--- <p>The specified CIDR IP range or EC2 security group is not authorized for the specified cluster security group.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return AuthorizationNotFoundFault structure as a key-value pair table
-function M.AuthorizationNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating AuthorizationNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertAuthorizationNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.LimitExceededFault = { nil }
-
-function asserts.AssertLimitExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected LimitExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.LimitExceededFault[k], "LimitExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type LimitExceededFault
--- <p>The encryption key has exceeded its grant limit in AWS KMS.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return LimitExceededFault structure as a key-value pair table
-function M.LimitExceededFault(args)
-	assert(args, "You must provide an argument table when creating LimitExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertLimitExceededFault(all_args)
+	asserts.AssertAcceptReservedNodeExchangeOutputMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5504,7 +4287,7 @@ function M.ModifyClusterParameterGroupMessage(args)
     }
 end
 
-keys.DescribeClusterSnapshotsMessage = { ["TagKeys"] = true, ["OwnerAccount"] = true, ["TagValues"] = true, ["Marker"] = true, ["MaxRecords"] = true, ["StartTime"] = true, ["SnapshotType"] = true, ["ClusterIdentifier"] = true, ["EndTime"] = true, ["SnapshotIdentifier"] = true, nil }
+keys.DescribeClusterSnapshotsMessage = { ["TagKeys"] = true, ["OwnerAccount"] = true, ["TagValues"] = true, ["Marker"] = true, ["MaxRecords"] = true, ["ClusterExists"] = true, ["StartTime"] = true, ["SnapshotType"] = true, ["ClusterIdentifier"] = true, ["EndTime"] = true, ["SnapshotIdentifier"] = true, nil }
 
 function asserts.AssertDescribeClusterSnapshotsMessage(struct)
 	assert(struct)
@@ -5514,6 +4297,7 @@ function asserts.AssertDescribeClusterSnapshotsMessage(struct)
 	if struct["TagValues"] then asserts.AssertTagValueList(struct["TagValues"]) end
 	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
 	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["ClusterExists"] then asserts.AssertBooleanOptional(struct["ClusterExists"]) end
 	if struct["StartTime"] then asserts.AssertTStamp(struct["StartTime"]) end
 	if struct["SnapshotType"] then asserts.AssertString(struct["SnapshotType"]) end
 	if struct["ClusterIdentifier"] then asserts.AssertString(struct["ClusterIdentifier"]) end
@@ -5533,6 +4317,7 @@ end
 -- * TagValues [TagValueList] <p>A tag value or values for which you want to return all matching cluster snapshots that are associated with the specified tag value or values. For example, suppose that you have snapshots that are tagged with values called <code>admin</code> and <code>test</code>. If you specify both of these tag values in the request, Amazon Redshift returns a response with the snapshots that have either or both of these tag values associated with them.</p>
 -- * Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeClusterSnapshots</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p>
 -- * MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
+-- * ClusterExists [BooleanOptional] <p>A value that indicates whether to return snapshots only for an existing cluster. Table-level restore can be performed only using a snapshot of an existing cluster, that is, a cluster that has not been deleted. If <code>ClusterExists</code> is set to <code>true</code>, <code>ClusterIdentifier</code> is required.</p>
 -- * StartTime [TStamp] <p>A value that requests only snapshots created at or after the specified time. The time value is specified in ISO 8601 format. For more information about ISO 8601, go to the <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO8601 Wikipedia page.</a> </p> <p>Example: <code>2012-07-16T18:00:00Z</code> </p>
 -- * SnapshotType [String] <p>The type of snapshots for which you are requesting information. By default, snapshots of all types are returned.</p> <p>Valid Values: <code>automated</code> | <code>manual</code> </p>
 -- * ClusterIdentifier [String] <p>The identifier of the cluster for which information about snapshots is requested.</p>
@@ -5553,6 +4338,7 @@ function M.DescribeClusterSnapshotsMessage(args)
 		["TagValues"] = args["TagValues"],
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
+		["ClusterExists"] = args["ClusterExists"],
 		["StartTime"] = args["StartTime"],
 		["SnapshotType"] = args["SnapshotType"],
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
@@ -5634,74 +4420,6 @@ function M.CreateClusterSnapshotResult(args)
 		["Snapshot"] = args["Snapshot"],
 	}
 	asserts.AssertCreateClusterSnapshotResult(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ClusterSubnetGroupQuotaExceededFault = { nil }
-
-function asserts.AssertClusterSubnetGroupQuotaExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterSubnetGroupQuotaExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ClusterSubnetGroupQuotaExceededFault[k], "ClusterSubnetGroupQuotaExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ClusterSubnetGroupQuotaExceededFault
--- <p>The request would result in user exceeding the allowed number of cluster subnet groups. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ClusterSubnetGroupQuotaExceededFault structure as a key-value pair table
-function M.ClusterSubnetGroupQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating ClusterSubnetGroupQuotaExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertClusterSubnetGroupQuotaExceededFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DependentServiceUnavailableFault = { nil }
-
-function asserts.AssertDependentServiceUnavailableFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DependentServiceUnavailableFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.DependentServiceUnavailableFault[k], "DependentServiceUnavailableFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DependentServiceUnavailableFault
--- <p>Your request cannot be completed because a dependent internal service is temporarily unavailable. Wait 30 to 60 seconds and try again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return DependentServiceUnavailableFault structure as a key-value pair table
-function M.DependentServiceUnavailableFault(args)
-	assert(args, "You must provide an argument table when creating DependentServiceUnavailableFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertDependentServiceUnavailableFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5817,13 +4535,15 @@ function M.DescribeResizeMessage(args)
     }
 end
 
-keys.DescribeEventSubscriptionsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["SubscriptionName"] = true, nil }
+keys.DescribeEventSubscriptionsMessage = { ["Marker"] = true, ["TagValues"] = true, ["MaxRecords"] = true, ["TagKeys"] = true, ["SubscriptionName"] = true, nil }
 
 function asserts.AssertDescribeEventSubscriptionsMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEventSubscriptionsMessage to be of type 'table'")
 	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["TagValues"] then asserts.AssertTagValueList(struct["TagValues"]) end
 	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["TagKeys"] then asserts.AssertTagKeyList(struct["TagKeys"]) end
 	if struct["SubscriptionName"] then asserts.AssertString(struct["SubscriptionName"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.DescribeEventSubscriptionsMessage[k], "DescribeEventSubscriptionsMessage contains unknown key " .. tostring(k))
@@ -5834,8 +4554,10 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeEventSubscriptions</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p>
+-- * Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeEventSubscriptions request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p>
+-- * TagValues [TagValueList] <p>A tag value or values for which you want to return all matching event notification subscriptions that are associated with the specified tag value or values. For example, suppose that you have subscriptions that are tagged with values called <code>admin</code> and <code>test</code>. If you specify both of these tag values in the request, Amazon Redshift returns a response with the subscriptions that have either or both of these tag values associated with them.</p>
 -- * MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
+-- * TagKeys [TagKeyList] <p>A tag key or keys for which you want to return all matching event notification subscriptions that are associated with the specified key or keys. For example, suppose that you have subscriptions that are tagged with keys called <code>owner</code> and <code>environment</code>. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the subscriptions that have either or both of these tag keys associated with them.</p>
 -- * SubscriptionName [String] <p>The name of the Amazon Redshift event notification subscription to be described.</p>
 -- @return DescribeEventSubscriptionsMessage structure as a key-value pair table
 function M.DescribeEventSubscriptionsMessage(args)
@@ -5848,7 +4570,9 @@ function M.DescribeEventSubscriptionsMessage(args)
     }
 	local all_args = { 
 		["Marker"] = args["Marker"],
+		["TagValues"] = args["TagValues"],
 		["MaxRecords"] = args["MaxRecords"],
+		["TagKeys"] = args["TagKeys"],
 		["SubscriptionName"] = args["SubscriptionName"],
 	}
 	asserts.AssertDescribeEventSubscriptionsMessage(all_args)
@@ -5897,40 +4621,6 @@ function M.EnableSnapshotCopyResult(args)
     }
 end
 
-keys.SnapshotCopyDisabledFault = { nil }
-
-function asserts.AssertSnapshotCopyDisabledFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SnapshotCopyDisabledFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SnapshotCopyDisabledFault[k], "SnapshotCopyDisabledFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SnapshotCopyDisabledFault
--- <p>Cross-region snapshot copy was temporarily disabled. Try your request again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SnapshotCopyDisabledFault structure as a key-value pair table
-function M.SnapshotCopyDisabledFault(args)
-	assert(args, "You must provide an argument table when creating SnapshotCopyDisabledFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSnapshotCopyDisabledFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.DescribeTagsMessage = { ["ResourceType"] = true, ["TagValues"] = true, ["MaxRecords"] = true, ["Marker"] = true, ["ResourceName"] = true, ["TagKeys"] = true, nil }
 
 function asserts.AssertDescribeTagsMessage(struct)
@@ -5951,7 +4641,7 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ResourceType [String] <p>The type of resource with which you want to view tags. Valid resource types are: </p> <ul> <li> <p>Cluster</p> </li> <li> <p>CIDR/IP</p> </li> <li> <p>EC2 security group</p> </li> <li> <p>Snapshot</p> </li> <li> <p>Cluster security group</p> </li> <li> <p>Subnet group</p> </li> <li> <p>HSM connection</p> </li> <li> <p>HSM certificate</p> </li> <li> <p>Parameter group</p> </li> <li> <p>Snapshot copy grant</p> </li> </ul> <p>For more information about Amazon Redshift resource types and constructing ARNs, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/constructing-redshift-arn.html">Constructing an Amazon Redshift Amazon Resource Name (ARN)</a> in the Amazon Redshift Cluster Management Guide. </p>
+-- * ResourceType [String] <p>The type of resource with which you want to view tags. Valid resource types are: </p> <ul> <li> <p>Cluster</p> </li> <li> <p>CIDR/IP</p> </li> <li> <p>EC2 security group</p> </li> <li> <p>Snapshot</p> </li> <li> <p>Cluster security group</p> </li> <li> <p>Subnet group</p> </li> <li> <p>HSM connection</p> </li> <li> <p>HSM certificate</p> </li> <li> <p>Parameter group</p> </li> <li> <p>Snapshot copy grant</p> </li> </ul> <p>For more information about Amazon Redshift resource types and constructing ARNs, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions">Specifying Policy Elements: Actions, Effects, Resources, and Principals</a> in the Amazon Redshift Cluster Management Guide. </p>
 -- * TagValues [TagValueList] <p>A tag value or values for which you want to return all matching resources that are associated with the specified value or values. For example, suppose that you have resources tagged with values called <code>admin</code> and <code>test</code>. If you specify both of these tag values in the request, Amazon Redshift returns a response with all resources that have either or both of these tag values associated with them.</p>
 -- * MaxRecords [IntegerOptional] <p>The maximum number or response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned <code>marker</code> value. </p>
 -- * Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>marker</code> parameter and retrying the command. If the <code>marker</code> field is empty, all response records have been retrieved for the request. </p>
@@ -5983,23 +4673,25 @@ function M.DescribeTagsMessage(args)
     }
 end
 
-keys.ClusterParameterGroupAlreadyExistsFault = { nil }
+keys.SupportedPlatform = { ["Name"] = true, nil }
 
-function asserts.AssertClusterParameterGroupAlreadyExistsFault(struct)
+function asserts.AssertSupportedPlatform(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterParameterGroupAlreadyExistsFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected SupportedPlatform to be of type 'table'")
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ClusterParameterGroupAlreadyExistsFault[k], "ClusterParameterGroupAlreadyExistsFault contains unknown key " .. tostring(k))
+		assert(keys.SupportedPlatform[k], "SupportedPlatform contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ClusterParameterGroupAlreadyExistsFault
--- <p>A cluster parameter group with the same name already exists.</p>
+--- Create a structure of type SupportedPlatform
+-- <p>A list of supported platforms for orderable clusters.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return ClusterParameterGroupAlreadyExistsFault structure as a key-value pair table
-function M.ClusterParameterGroupAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating ClusterParameterGroupAlreadyExistsFault")
+-- * Name [String] 
+-- @return SupportedPlatform structure as a key-value pair table
+function M.SupportedPlatform(args)
+	assert(args, "You must provide an argument table when creating SupportedPlatform")
     local query_args = { 
     }
     local uri_args = { 
@@ -6007,42 +4699,9 @@ function M.ClusterParameterGroupAlreadyExistsFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Name"] = args["Name"],
 	}
-	asserts.AssertClusterParameterGroupAlreadyExistsFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SnapshotCopyGrantNotFoundFault = { nil }
-
-function asserts.AssertSnapshotCopyGrantNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SnapshotCopyGrantNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SnapshotCopyGrantNotFoundFault[k], "SnapshotCopyGrantNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SnapshotCopyGrantNotFoundFault
--- <p>The specified snapshot copy grant can't be found. Make sure that the name is typed correctly and that the grant exists in the destination region.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SnapshotCopyGrantNotFoundFault structure as a key-value pair table
-function M.SnapshotCopyGrantNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating SnapshotCopyGrantNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSnapshotCopyGrantNotFoundFault(all_args)
+	asserts.AssertSupportedPlatform(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6091,23 +4750,31 @@ function M.OrderableClusterOptionsMessage(args)
     }
 end
 
-keys.InvalidRestoreFault = { nil }
+keys.GetReservedNodeExchangeOfferingsInputMessage = { ["Marker"] = true, ["ReservedNodeId"] = true, ["MaxRecords"] = true, nil }
 
-function asserts.AssertInvalidRestoreFault(struct)
+function asserts.AssertGetReservedNodeExchangeOfferingsInputMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidRestoreFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected GetReservedNodeExchangeOfferingsInputMessage to be of type 'table'")
+	assert(struct["ReservedNodeId"], "Expected key ReservedNodeId to exist in table")
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["ReservedNodeId"] then asserts.AssertString(struct["ReservedNodeId"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidRestoreFault[k], "InvalidRestoreFault contains unknown key " .. tostring(k))
+		assert(keys.GetReservedNodeExchangeOfferingsInputMessage[k], "GetReservedNodeExchangeOfferingsInputMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidRestoreFault
--- <p>The restore is invalid.</p>
+--- Create a structure of type GetReservedNodeExchangeOfferingsInputMessage
+-- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidRestoreFault structure as a key-value pair table
-function M.InvalidRestoreFault(args)
-	assert(args, "You must provide an argument table when creating InvalidRestoreFault")
+-- * Marker [String] <p>A value that indicates the starting point for the next set of ReservedNodeOfferings.</p>
+-- * ReservedNodeId [String] <p>A string representing the node identifier for the DC1 Reserved Node to be exchanged.</p>
+-- * MaxRecords [IntegerOptional] <p>An integer setting the maximum number of ReservedNodeOfferings to retrieve.</p>
+-- Required key: ReservedNodeId
+-- @return GetReservedNodeExchangeOfferingsInputMessage structure as a key-value pair table
+function M.GetReservedNodeExchangeOfferingsInputMessage(args)
+	assert(args, "You must provide an argument table when creating GetReservedNodeExchangeOfferingsInputMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -6115,8 +4782,11 @@ function M.InvalidRestoreFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Marker"] = args["Marker"],
+		["ReservedNodeId"] = args["ReservedNodeId"],
+		["MaxRecords"] = args["MaxRecords"],
 	}
-	asserts.AssertInvalidRestoreFault(all_args)
+	asserts.AssertGetReservedNodeExchangeOfferingsInputMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6154,108 +4824,6 @@ function M.DeleteClusterResult(args)
 		["Cluster"] = args["Cluster"],
 	}
 	asserts.AssertDeleteClusterResult(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SubscriptionCategoryNotFoundFault = { nil }
-
-function asserts.AssertSubscriptionCategoryNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SubscriptionCategoryNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SubscriptionCategoryNotFoundFault[k], "SubscriptionCategoryNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SubscriptionCategoryNotFoundFault
--- <p>The value specified for the event category was not one of the allowed values, or it specified a category that does not apply to the specified source type. The allowed values are Configuration, Management, Monitoring, and Security.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SubscriptionCategoryNotFoundFault structure as a key-value pair table
-function M.SubscriptionCategoryNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating SubscriptionCategoryNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSubscriptionCategoryNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SubscriptionSeverityNotFoundFault = { nil }
-
-function asserts.AssertSubscriptionSeverityNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SubscriptionSeverityNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SubscriptionSeverityNotFoundFault[k], "SubscriptionSeverityNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SubscriptionSeverityNotFoundFault
--- <p>The value specified for the event severity was not one of the allowed values, or it specified a severity that does not apply to the specified source type. The allowed values are ERROR and INFO.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SubscriptionSeverityNotFoundFault structure as a key-value pair table
-function M.SubscriptionSeverityNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating SubscriptionSeverityNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSubscriptionSeverityNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidSnapshotCopyGrantStateFault = { nil }
-
-function asserts.AssertInvalidSnapshotCopyGrantStateFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidSnapshotCopyGrantStateFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidSnapshotCopyGrantStateFault[k], "InvalidSnapshotCopyGrantStateFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidSnapshotCopyGrantStateFault
--- <p>The snapshot copy grant can't be deleted because it is used by one or more clusters.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidSnapshotCopyGrantStateFault structure as a key-value pair table
-function M.InvalidSnapshotCopyGrantStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidSnapshotCopyGrantStateFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidSnapshotCopyGrantStateFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6302,108 +4870,6 @@ function M.DescribeOrderableClusterOptionsMessage(args)
 		["ClusterVersion"] = args["ClusterVersion"],
 	}
 	asserts.AssertDescribeOrderableClusterOptionsMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ClusterSnapshotAlreadyExistsFault = { nil }
-
-function asserts.AssertClusterSnapshotAlreadyExistsFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterSnapshotAlreadyExistsFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ClusterSnapshotAlreadyExistsFault[k], "ClusterSnapshotAlreadyExistsFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ClusterSnapshotAlreadyExistsFault
--- <p>The value specified as a snapshot identifier is already used by an existing snapshot.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ClusterSnapshotAlreadyExistsFault structure as a key-value pair table
-function M.ClusterSnapshotAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating ClusterSnapshotAlreadyExistsFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertClusterSnapshotAlreadyExistsFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TagLimitExceededFault = { nil }
-
-function asserts.AssertTagLimitExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TagLimitExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TagLimitExceededFault[k], "TagLimitExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TagLimitExceededFault
--- <p>The request exceeds the limit of 10 tags for the resource.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TagLimitExceededFault structure as a key-value pair table
-function M.TagLimitExceededFault(args)
-	assert(args, "You must provide an argument table when creating TagLimitExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTagLimitExceededFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ReservedNodeQuotaExceededFault = { nil }
-
-function asserts.AssertReservedNodeQuotaExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ReservedNodeQuotaExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ReservedNodeQuotaExceededFault[k], "ReservedNodeQuotaExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ReservedNodeQuotaExceededFault
--- <p>Request would exceed the user's compute node quota. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ReservedNodeQuotaExceededFault structure as a key-value pair table
-function M.ReservedNodeQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating ReservedNodeQuotaExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertReservedNodeQuotaExceededFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6562,23 +5028,31 @@ function M.DescribeClusterSubnetGroupsMessage(args)
     }
 end
 
-keys.HsmClientCertificateAlreadyExistsFault = { nil }
+keys.ModifyClusterDbRevisionMessage = { ["ClusterIdentifier"] = true, ["RevisionTarget"] = true, nil }
 
-function asserts.AssertHsmClientCertificateAlreadyExistsFault(struct)
+function asserts.AssertModifyClusterDbRevisionMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected HsmClientCertificateAlreadyExistsFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected ModifyClusterDbRevisionMessage to be of type 'table'")
+	assert(struct["ClusterIdentifier"], "Expected key ClusterIdentifier to exist in table")
+	assert(struct["RevisionTarget"], "Expected key RevisionTarget to exist in table")
+	if struct["ClusterIdentifier"] then asserts.AssertString(struct["ClusterIdentifier"]) end
+	if struct["RevisionTarget"] then asserts.AssertString(struct["RevisionTarget"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.HsmClientCertificateAlreadyExistsFault[k], "HsmClientCertificateAlreadyExistsFault contains unknown key " .. tostring(k))
+		assert(keys.ModifyClusterDbRevisionMessage[k], "ModifyClusterDbRevisionMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type HsmClientCertificateAlreadyExistsFault
--- <p>There is already an existing Amazon Redshift HSM client certificate with the specified identifier.</p>
+--- Create a structure of type ModifyClusterDbRevisionMessage
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return HsmClientCertificateAlreadyExistsFault structure as a key-value pair table
-function M.HsmClientCertificateAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating HsmClientCertificateAlreadyExistsFault")
+-- * ClusterIdentifier [String] <p>The unique identifier of a cluster whose database revision you want to modify. </p> <p>Example: <code>examplecluster</code> </p>
+-- * RevisionTarget [String] <p>The identifier of the database revision. You can retrieve this value from the response to the <a>DescribeClusterDbRevisions</a> request.</p>
+-- Required key: ClusterIdentifier
+-- Required key: RevisionTarget
+-- @return ModifyClusterDbRevisionMessage structure as a key-value pair table
+function M.ModifyClusterDbRevisionMessage(args)
+	assert(args, "You must provide an argument table when creating ModifyClusterDbRevisionMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -6586,8 +5060,10 @@ function M.HsmClientCertificateAlreadyExistsFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["ClusterIdentifier"] = args["ClusterIdentifier"],
+		["RevisionTarget"] = args["RevisionTarget"],
 	}
-	asserts.AssertHsmClientCertificateAlreadyExistsFault(all_args)
+	asserts.AssertModifyClusterDbRevisionMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6635,6 +5111,46 @@ function M.EnableLoggingMessage(args)
 		["BucketName"] = args["BucketName"],
 	}
 	asserts.AssertEnableLoggingMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ClusterDbRevisionsMessage = { ["Marker"] = true, ["ClusterDbRevisions"] = true, nil }
+
+function asserts.AssertClusterDbRevisionsMessage(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ClusterDbRevisionsMessage to be of type 'table'")
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["ClusterDbRevisions"] then asserts.AssertClusterDbRevisionsList(struct["ClusterDbRevisions"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ClusterDbRevisionsMessage[k], "ClusterDbRevisionsMessage contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ClusterDbRevisionsMessage
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p>A string representing the starting point for the next set of revisions. If a value is returned in a response, you can retrieve the next set of revisions by providing the value in the <code>marker</code> parameter and retrying the command. If the <code>marker</code> field is empty, all revisions have already been returned.</p>
+-- * ClusterDbRevisions [ClusterDbRevisionsList] <p>A list of revisions.</p>
+-- @return ClusterDbRevisionsMessage structure as a key-value pair table
+function M.ClusterDbRevisionsMessage(args)
+	assert(args, "You must provide an argument table when creating ClusterDbRevisionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Marker"] = args["Marker"],
+		["ClusterDbRevisions"] = args["ClusterDbRevisions"],
+	}
+	asserts.AssertClusterDbRevisionsMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6691,45 +5207,6 @@ function M.AuthorizeClusterSecurityGroupIngressMessage(args)
     }
 end
 
-keys.DescribeLoggingStatusMessage = { ["ClusterIdentifier"] = true, nil }
-
-function asserts.AssertDescribeLoggingStatusMessage(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeLoggingStatusMessage to be of type 'table'")
-	assert(struct["ClusterIdentifier"], "Expected key ClusterIdentifier to exist in table")
-	if struct["ClusterIdentifier"] then asserts.AssertString(struct["ClusterIdentifier"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DescribeLoggingStatusMessage[k], "DescribeLoggingStatusMessage contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DescribeLoggingStatusMessage
--- <p/>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ClusterIdentifier [String] <p>The identifier of the cluster from which to get the logging status.</p> <p>Example: <code>examplecluster</code> </p>
--- Required key: ClusterIdentifier
--- @return DescribeLoggingStatusMessage structure as a key-value pair table
-function M.DescribeLoggingStatusMessage(args)
-	assert(args, "You must provide an argument table when creating DescribeLoggingStatusMessage")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ClusterIdentifier"] = args["ClusterIdentifier"],
-	}
-	asserts.AssertDescribeLoggingStatusMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ClusterParameterGroupDetails = { ["Marker"] = true, ["Parameters"] = true, nil }
 
 function asserts.AssertClusterParameterGroupDetails(struct)
@@ -6770,7 +5247,7 @@ function M.ClusterParameterGroupDetails(args)
     }
 end
 
-keys.Snapshot = { ["MasterUsername"] = true, ["OwnerAccount"] = true, ["CurrentBackupRateInMegaBytesPerSecond"] = true, ["ActualIncrementalBackupSizeInMegaBytes"] = true, ["NumberOfNodes"] = true, ["Status"] = true, ["VpcId"] = true, ["ClusterVersion"] = true, ["Tags"] = true, ["EnhancedVpcRouting"] = true, ["EstimatedSecondsToCompletion"] = true, ["SourceRegion"] = true, ["AccountsWithRestoreAccess"] = true, ["TotalBackupSizeInMegaBytes"] = true, ["DBName"] = true, ["BackupProgressInMegaBytes"] = true, ["ClusterCreateTime"] = true, ["RestorableNodeTypes"] = true, ["EncryptedWithHSM"] = true, ["ClusterIdentifier"] = true, ["SnapshotCreateTime"] = true, ["AvailabilityZone"] = true, ["NodeType"] = true, ["Encrypted"] = true, ["ElapsedTimeInSeconds"] = true, ["KmsKeyId"] = true, ["SnapshotType"] = true, ["Port"] = true, ["SnapshotIdentifier"] = true, nil }
+keys.Snapshot = { ["MasterUsername"] = true, ["OwnerAccount"] = true, ["CurrentBackupRateInMegaBytesPerSecond"] = true, ["ActualIncrementalBackupSizeInMegaBytes"] = true, ["NumberOfNodes"] = true, ["Status"] = true, ["VpcId"] = true, ["ClusterVersion"] = true, ["Tags"] = true, ["EnhancedVpcRouting"] = true, ["EstimatedSecondsToCompletion"] = true, ["SourceRegion"] = true, ["AccountsWithRestoreAccess"] = true, ["TotalBackupSizeInMegaBytes"] = true, ["DBName"] = true, ["BackupProgressInMegaBytes"] = true, ["MaintenanceTrackName"] = true, ["ClusterCreateTime"] = true, ["RestorableNodeTypes"] = true, ["EncryptedWithHSM"] = true, ["ClusterIdentifier"] = true, ["SnapshotCreateTime"] = true, ["AvailabilityZone"] = true, ["NodeType"] = true, ["Encrypted"] = true, ["ElapsedTimeInSeconds"] = true, ["KmsKeyId"] = true, ["SnapshotType"] = true, ["Port"] = true, ["SnapshotIdentifier"] = true, nil }
 
 function asserts.AssertSnapshot(struct)
 	assert(struct)
@@ -6791,6 +5268,7 @@ function asserts.AssertSnapshot(struct)
 	if struct["TotalBackupSizeInMegaBytes"] then asserts.AssertDouble(struct["TotalBackupSizeInMegaBytes"]) end
 	if struct["DBName"] then asserts.AssertString(struct["DBName"]) end
 	if struct["BackupProgressInMegaBytes"] then asserts.AssertDouble(struct["BackupProgressInMegaBytes"]) end
+	if struct["MaintenanceTrackName"] then asserts.AssertString(struct["MaintenanceTrackName"]) end
 	if struct["ClusterCreateTime"] then asserts.AssertTStamp(struct["ClusterCreateTime"]) end
 	if struct["RestorableNodeTypes"] then asserts.AssertRestorableNodeTypeList(struct["RestorableNodeTypes"]) end
 	if struct["EncryptedWithHSM"] then asserts.AssertBoolean(struct["EncryptedWithHSM"]) end
@@ -6829,6 +5307,7 @@ end
 -- * TotalBackupSizeInMegaBytes [Double] <p>The size of the complete set of backup data that would be used to restore the cluster.</p>
 -- * DBName [String] <p>The name of the database that was created when the cluster was created.</p>
 -- * BackupProgressInMegaBytes [Double] <p>The number of megabytes that have been transferred to the snapshot backup.</p>
+-- * MaintenanceTrackName [String] <p>The name of the maintenance track for the snapshot.</p>
 -- * ClusterCreateTime [TStamp] <p>The time (UTC) when the cluster was originally created.</p>
 -- * RestorableNodeTypes [RestorableNodeTypeList] <p>The list of node types that this cluster snapshot is able to restore into.</p>
 -- * EncryptedWithHSM [Boolean] <p>A boolean that indicates whether the snapshot data is encrypted using the HSM keys of the source cluster. <code>true</code> indicates that the data is encrypted using HSM keys.</p>
@@ -6868,6 +5347,7 @@ function M.Snapshot(args)
 		["TotalBackupSizeInMegaBytes"] = args["TotalBackupSizeInMegaBytes"],
 		["DBName"] = args["DBName"],
 		["BackupProgressInMegaBytes"] = args["BackupProgressInMegaBytes"],
+		["MaintenanceTrackName"] = args["MaintenanceTrackName"],
 		["ClusterCreateTime"] = args["ClusterCreateTime"],
 		["RestorableNodeTypes"] = args["RestorableNodeTypes"],
 		["EncryptedWithHSM"] = args["EncryptedWithHSM"],
@@ -6977,6 +5457,59 @@ function M.AuthorizeSnapshotAccessMessage(args)
     }
 end
 
+keys.ResizeClusterMessage = { ["ClusterIdentifier"] = true, ["NodeType"] = true, ["ClusterType"] = true, ["NumberOfNodes"] = true, ["Classic"] = true, nil }
+
+function asserts.AssertResizeClusterMessage(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ResizeClusterMessage to be of type 'table'")
+	assert(struct["ClusterIdentifier"], "Expected key ClusterIdentifier to exist in table")
+	assert(struct["NumberOfNodes"], "Expected key NumberOfNodes to exist in table")
+	if struct["ClusterIdentifier"] then asserts.AssertString(struct["ClusterIdentifier"]) end
+	if struct["NodeType"] then asserts.AssertString(struct["NodeType"]) end
+	if struct["ClusterType"] then asserts.AssertString(struct["ClusterType"]) end
+	if struct["NumberOfNodes"] then asserts.AssertInteger(struct["NumberOfNodes"]) end
+	if struct["Classic"] then asserts.AssertBooleanOptional(struct["Classic"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ResizeClusterMessage[k], "ResizeClusterMessage contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ResizeClusterMessage
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ClusterIdentifier [String] <p>The unique identifier for the cluster to resize.</p>
+-- * NodeType [String] <p>The new node type for the nodes you are adding.</p>
+-- * ClusterType [String] <p>The new cluster type for the specified cluster.</p>
+-- * NumberOfNodes [Integer] <p>The new number of nodes for the cluster.</p>
+-- * Classic [BooleanOptional] <p>A boolean value indicating whether the resize operation is using the classic resize process. If you don't provide this parameter or set the value to <code>false</code> the resize type is elastic. </p>
+-- Required key: ClusterIdentifier
+-- Required key: NumberOfNodes
+-- @return ResizeClusterMessage structure as a key-value pair table
+function M.ResizeClusterMessage(args)
+	assert(args, "You must provide an argument table when creating ResizeClusterMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ClusterIdentifier"] = args["ClusterIdentifier"],
+		["NodeType"] = args["NodeType"],
+		["ClusterType"] = args["ClusterType"],
+		["NumberOfNodes"] = args["NumberOfNodes"],
+		["Classic"] = args["Classic"],
+	}
+	asserts.AssertResizeClusterMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.AuthorizeSnapshotAccessResult = { ["Snapshot"] = true, nil }
 
 function asserts.AssertAuthorizeSnapshotAccessResult(struct)
@@ -7014,23 +5547,27 @@ function M.AuthorizeSnapshotAccessResult(args)
     }
 end
 
-keys.InvalidVPCNetworkStateFault = { nil }
+keys.UpdateTarget = { ["DatabaseVersion"] = true, ["MaintenanceTrackName"] = true, nil }
 
-function asserts.AssertInvalidVPCNetworkStateFault(struct)
+function asserts.AssertUpdateTarget(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidVPCNetworkStateFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected UpdateTarget to be of type 'table'")
+	if struct["DatabaseVersion"] then asserts.AssertString(struct["DatabaseVersion"]) end
+	if struct["MaintenanceTrackName"] then asserts.AssertString(struct["MaintenanceTrackName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidVPCNetworkStateFault[k], "InvalidVPCNetworkStateFault contains unknown key " .. tostring(k))
+		assert(keys.UpdateTarget[k], "UpdateTarget contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidVPCNetworkStateFault
--- <p>The cluster subnet group does not cover all Availability Zones.</p>
+--- Create a structure of type UpdateTarget
+-- <p>A maintenance track that you can switch the current track to.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidVPCNetworkStateFault structure as a key-value pair table
-function M.InvalidVPCNetworkStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidVPCNetworkStateFault")
+-- * DatabaseVersion [String] <p>The cluster version for the new maintenance track.</p>
+-- * MaintenanceTrackName [String] <p>The name of the new maintenance track.</p>
+-- @return UpdateTarget structure as a key-value pair table
+function M.UpdateTarget(args)
+	assert(args, "You must provide an argument table when creating UpdateTarget")
     local query_args = { 
     }
     local uri_args = { 
@@ -7038,8 +5575,10 @@ function M.InvalidVPCNetworkStateFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["DatabaseVersion"] = args["DatabaseVersion"],
+		["MaintenanceTrackName"] = args["MaintenanceTrackName"],
 	}
-	asserts.AssertInvalidVPCNetworkStateFault(all_args)
+	asserts.AssertUpdateTarget(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -7048,67 +5587,27 @@ function M.InvalidVPCNetworkStateFault(args)
     }
 end
 
-keys.ClusterSecurityGroupNotFoundFault = { nil }
+keys.TaggedResourceListMessage = { ["Marker"] = true, ["TaggedResources"] = true, nil }
 
-function asserts.AssertClusterSecurityGroupNotFoundFault(struct)
+function asserts.AssertTaggedResourceListMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterSecurityGroupNotFoundFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected TaggedResourceListMessage to be of type 'table'")
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["TaggedResources"] then asserts.AssertTaggedResourceList(struct["TaggedResources"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ClusterSecurityGroupNotFoundFault[k], "ClusterSecurityGroupNotFoundFault contains unknown key " .. tostring(k))
+		assert(keys.TaggedResourceListMessage[k], "TaggedResourceListMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ClusterSecurityGroupNotFoundFault
--- <p>The cluster security group name does not refer to an existing cluster security group.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ClusterSecurityGroupNotFoundFault structure as a key-value pair table
-function M.ClusterSecurityGroupNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating ClusterSecurityGroupNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertClusterSecurityGroupNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.RevokeClusterSecurityGroupIngressMessage = { ["EC2SecurityGroupName"] = true, ["EC2SecurityGroupOwnerId"] = true, ["ClusterSecurityGroupName"] = true, ["CIDRIP"] = true, nil }
-
-function asserts.AssertRevokeClusterSecurityGroupIngressMessage(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected RevokeClusterSecurityGroupIngressMessage to be of type 'table'")
-	assert(struct["ClusterSecurityGroupName"], "Expected key ClusterSecurityGroupName to exist in table")
-	if struct["EC2SecurityGroupName"] then asserts.AssertString(struct["EC2SecurityGroupName"]) end
-	if struct["EC2SecurityGroupOwnerId"] then asserts.AssertString(struct["EC2SecurityGroupOwnerId"]) end
-	if struct["ClusterSecurityGroupName"] then asserts.AssertString(struct["ClusterSecurityGroupName"]) end
-	if struct["CIDRIP"] then asserts.AssertString(struct["CIDRIP"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.RevokeClusterSecurityGroupIngressMessage[k], "RevokeClusterSecurityGroupIngressMessage contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type RevokeClusterSecurityGroupIngressMessage
+--- Create a structure of type TaggedResourceListMessage
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * EC2SecurityGroupName [String] <p>The name of the EC2 Security Group whose access is to be revoked. If <code>EC2SecurityGroupName</code> is specified, <code>EC2SecurityGroupOwnerId</code> must also be provided and <code>CIDRIP</code> cannot be provided. </p>
--- * EC2SecurityGroupOwnerId [String] <p>The AWS account number of the owner of the security group specified in the <code>EC2SecurityGroupName</code> parameter. The AWS access key ID is not an acceptable value. If <code>EC2SecurityGroupOwnerId</code> is specified, <code>EC2SecurityGroupName</code> must also be provided. and <code>CIDRIP</code> cannot be provided. </p> <p>Example: <code>111122223333</code> </p>
--- * ClusterSecurityGroupName [String] <p>The name of the security Group from which to revoke the ingress rule.</p>
--- * CIDRIP [String] <p>The IP range for which to revoke access. This range must be a valid Classless Inter-Domain Routing (CIDR) block of IP addresses. If <code>CIDRIP</code> is specified, <code>EC2SecurityGroupName</code> and <code>EC2SecurityGroupOwnerId</code> cannot be provided. </p>
--- Required key: ClusterSecurityGroupName
--- @return RevokeClusterSecurityGroupIngressMessage structure as a key-value pair table
-function M.RevokeClusterSecurityGroupIngressMessage(args)
-	assert(args, "You must provide an argument table when creating RevokeClusterSecurityGroupIngressMessage")
+-- * Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- * TaggedResources [TaggedResourceList] <p>A list of tags with their associated resources.</p>
+-- @return TaggedResourceListMessage structure as a key-value pair table
+function M.TaggedResourceListMessage(args)
+	assert(args, "You must provide an argument table when creating TaggedResourceListMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -7116,12 +5615,10 @@ function M.RevokeClusterSecurityGroupIngressMessage(args)
     local header_args = { 
     }
 	local all_args = { 
-		["EC2SecurityGroupName"] = args["EC2SecurityGroupName"],
-		["EC2SecurityGroupOwnerId"] = args["EC2SecurityGroupOwnerId"],
-		["ClusterSecurityGroupName"] = args["ClusterSecurityGroupName"],
-		["CIDRIP"] = args["CIDRIP"],
+		["Marker"] = args["Marker"],
+		["TaggedResources"] = args["TaggedResources"],
 	}
-	asserts.AssertRevokeClusterSecurityGroupIngressMessage(all_args)
+	asserts.AssertTaggedResourceListMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -7165,40 +5662,6 @@ function M.SnapshotCopyGrant(args)
 		["KmsKeyId"] = args["KmsKeyId"],
 	}
 	asserts.AssertSnapshotCopyGrant(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.NumberOfNodesPerClusterLimitExceededFault = { nil }
-
-function asserts.AssertNumberOfNodesPerClusterLimitExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected NumberOfNodesPerClusterLimitExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.NumberOfNodesPerClusterLimitExceededFault[k], "NumberOfNodesPerClusterLimitExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type NumberOfNodesPerClusterLimitExceededFault
--- <p>The operation would exceed the number of nodes allowed for a cluster.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return NumberOfNodesPerClusterLimitExceededFault structure as a key-value pair table
-function M.NumberOfNodesPerClusterLimitExceededFault(args)
-	assert(args, "You must provide an argument table when creating NumberOfNodesPerClusterLimitExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertNumberOfNodesPerClusterLimitExceededFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -7257,7 +5720,7 @@ function M.EnableSnapshotCopyMessage(args)
     }
 end
 
-keys.Cluster = { ["PubliclyAccessible"] = true, ["MasterUsername"] = true, ["VpcSecurityGroups"] = true, ["HsmStatus"] = true, ["ClusterPublicKey"] = true, ["ModifyStatus"] = true, ["NumberOfNodes"] = true, ["PendingModifiedValues"] = true, ["IamRoles"] = true, ["VpcId"] = true, ["ClusterVersion"] = true, ["Tags"] = true, ["AutomatedSnapshotRetentionPeriod"] = true, ["ClusterParameterGroups"] = true, ["DBName"] = true, ["PreferredMaintenanceWindow"] = true, ["Endpoint"] = true, ["RestoreStatus"] = true, ["ElasticIpStatus"] = true, ["AllowVersionUpgrade"] = true, ["ClusterCreateTime"] = true, ["ClusterSubnetGroupName"] = true, ["EnhancedVpcRouting"] = true, ["ClusterSecurityGroups"] = true, ["ClusterIdentifier"] = true, ["ClusterNodes"] = true, ["AvailabilityZone"] = true, ["NodeType"] = true, ["Encrypted"] = true, ["ClusterRevisionNumber"] = true, ["ClusterSnapshotCopyStatus"] = true, ["KmsKeyId"] = true, ["ClusterStatus"] = true, nil }
+keys.Cluster = { ["PubliclyAccessible"] = true, ["MasterUsername"] = true, ["VpcSecurityGroups"] = true, ["HsmStatus"] = true, ["ClusterPublicKey"] = true, ["ModifyStatus"] = true, ["NumberOfNodes"] = true, ["PendingModifiedValues"] = true, ["IamRoles"] = true, ["VpcId"] = true, ["ClusterVersion"] = true, ["Tags"] = true, ["PendingActions"] = true, ["AutomatedSnapshotRetentionPeriod"] = true, ["ClusterParameterGroups"] = true, ["DBName"] = true, ["PreferredMaintenanceWindow"] = true, ["Endpoint"] = true, ["RestoreStatus"] = true, ["ElasticIpStatus"] = true, ["AllowVersionUpgrade"] = true, ["MaintenanceTrackName"] = true, ["ClusterCreateTime"] = true, ["ClusterSubnetGroupName"] = true, ["EnhancedVpcRouting"] = true, ["ClusterSecurityGroups"] = true, ["ClusterIdentifier"] = true, ["ClusterNodes"] = true, ["AvailabilityZone"] = true, ["NodeType"] = true, ["Encrypted"] = true, ["ClusterRevisionNumber"] = true, ["ClusterSnapshotCopyStatus"] = true, ["KmsKeyId"] = true, ["ElasticResizeNumberOfNodeOptions"] = true, ["ClusterStatus"] = true, nil }
 
 function asserts.AssertCluster(struct)
 	assert(struct)
@@ -7274,6 +5737,7 @@ function asserts.AssertCluster(struct)
 	if struct["VpcId"] then asserts.AssertString(struct["VpcId"]) end
 	if struct["ClusterVersion"] then asserts.AssertString(struct["ClusterVersion"]) end
 	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["PendingActions"] then asserts.AssertPendingActionsList(struct["PendingActions"]) end
 	if struct["AutomatedSnapshotRetentionPeriod"] then asserts.AssertInteger(struct["AutomatedSnapshotRetentionPeriod"]) end
 	if struct["ClusterParameterGroups"] then asserts.AssertClusterParameterGroupStatusList(struct["ClusterParameterGroups"]) end
 	if struct["DBName"] then asserts.AssertString(struct["DBName"]) end
@@ -7282,6 +5746,7 @@ function asserts.AssertCluster(struct)
 	if struct["RestoreStatus"] then asserts.AssertRestoreStatus(struct["RestoreStatus"]) end
 	if struct["ElasticIpStatus"] then asserts.AssertElasticIpStatus(struct["ElasticIpStatus"]) end
 	if struct["AllowVersionUpgrade"] then asserts.AssertBoolean(struct["AllowVersionUpgrade"]) end
+	if struct["MaintenanceTrackName"] then asserts.AssertString(struct["MaintenanceTrackName"]) end
 	if struct["ClusterCreateTime"] then asserts.AssertTStamp(struct["ClusterCreateTime"]) end
 	if struct["ClusterSubnetGroupName"] then asserts.AssertString(struct["ClusterSubnetGroupName"]) end
 	if struct["EnhancedVpcRouting"] then asserts.AssertBoolean(struct["EnhancedVpcRouting"]) end
@@ -7294,6 +5759,7 @@ function asserts.AssertCluster(struct)
 	if struct["ClusterRevisionNumber"] then asserts.AssertString(struct["ClusterRevisionNumber"]) end
 	if struct["ClusterSnapshotCopyStatus"] then asserts.AssertClusterSnapshotCopyStatus(struct["ClusterSnapshotCopyStatus"]) end
 	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
+	if struct["ElasticResizeNumberOfNodeOptions"] then asserts.AssertString(struct["ElasticResizeNumberOfNodeOptions"]) end
 	if struct["ClusterStatus"] then asserts.AssertString(struct["ClusterStatus"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Cluster[k], "Cluster contains unknown key " .. tostring(k))
@@ -7316,6 +5782,7 @@ end
 -- * VpcId [String] <p>The identifier of the VPC the cluster is in, if the cluster is in a VPC.</p>
 -- * ClusterVersion [String] <p>The version ID of the Amazon Redshift engine that is running on the cluster.</p>
 -- * Tags [TagList] <p>The list of tags for the cluster.</p>
+-- * PendingActions [PendingActionsList] <p>Cluster operations that are waiting to be started.</p>
 -- * AutomatedSnapshotRetentionPeriod [Integer] <p>The number of days that automatic cluster snapshots are retained.</p>
 -- * ClusterParameterGroups [ClusterParameterGroupStatusList] <p>The list of cluster parameter groups that are associated with this cluster. Each parameter group in the list is returned with its status.</p>
 -- * DBName [String] <p>The name of the initial database that was created when the cluster was created. This same name is returned for the life of the cluster. If an initial database was not specified, a database named <code>dev</code>dev was created by default. </p>
@@ -7324,6 +5791,7 @@ end
 -- * RestoreStatus [RestoreStatus] <p>A value that describes the status of a cluster restore action. This parameter returns null if the cluster was not created by restoring a snapshot.</p>
 -- * ElasticIpStatus [ElasticIpStatus] <p>The status of the elastic IP (EIP) address.</p>
 -- * AllowVersionUpgrade [Boolean] <p>A Boolean value that, if <code>true</code>, indicates that major version upgrades will be applied automatically to the cluster during the maintenance window. </p>
+-- * MaintenanceTrackName [String] <p>The name of the maintenance track for the cluster.</p>
 -- * ClusterCreateTime [TStamp] <p>The date and time that the cluster was created.</p>
 -- * ClusterSubnetGroupName [String] <p>The name of the subnet group that is associated with the cluster. This parameter is valid only when the cluster is in a VPC.</p>
 -- * EnhancedVpcRouting [Boolean] <p>An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the Amazon Redshift Cluster Management Guide.</p> <p>If this option is <code>true</code>, enhanced VPC routing is enabled. </p> <p>Default: false</p>
@@ -7336,6 +5804,7 @@ end
 -- * ClusterRevisionNumber [String] <p>The specific revision number of the database in the cluster.</p>
 -- * ClusterSnapshotCopyStatus [ClusterSnapshotCopyStatus] <p>A value that returns the destination region and retention period that are configured for cross-region snapshot copy.</p>
 -- * KmsKeyId [String] <p>The AWS Key Management Service (AWS KMS) key ID of the encryption key used to encrypt data in the cluster.</p>
+-- * ElasticResizeNumberOfNodeOptions [String] <p>Indicates the number of nodes the cluster can be resized to with the elastic resize method. </p>
 -- * ClusterStatus [String] <p> The current state of the cluster. Possible values are the following:</p> <ul> <li> <p> <code>available</code> </p> </li> <li> <p> <code>creating</code> </p> </li> <li> <p> <code>deleting</code> </p> </li> <li> <p> <code>final-snapshot</code> </p> </li> <li> <p> <code>hardware-failure</code> </p> </li> <li> <p> <code>incompatible-hsm</code> </p> </li> <li> <p> <code>incompatible-network</code> </p> </li> <li> <p> <code>incompatible-parameters</code> </p> </li> <li> <p> <code>incompatible-restore</code> </p> </li> <li> <p> <code>modifying</code> </p> </li> <li> <p> <code>rebooting</code> </p> </li> <li> <p> <code>renaming</code> </p> </li> <li> <p> <code>resizing</code> </p> </li> <li> <p> <code>rotating-keys</code> </p> </li> <li> <p> <code>storage-full</code> </p> </li> <li> <p> <code>updating-hsm</code> </p> </li> </ul>
 -- @return Cluster structure as a key-value pair table
 function M.Cluster(args)
@@ -7359,6 +5828,7 @@ function M.Cluster(args)
 		["VpcId"] = args["VpcId"],
 		["ClusterVersion"] = args["ClusterVersion"],
 		["Tags"] = args["Tags"],
+		["PendingActions"] = args["PendingActions"],
 		["AutomatedSnapshotRetentionPeriod"] = args["AutomatedSnapshotRetentionPeriod"],
 		["ClusterParameterGroups"] = args["ClusterParameterGroups"],
 		["DBName"] = args["DBName"],
@@ -7367,6 +5837,7 @@ function M.Cluster(args)
 		["RestoreStatus"] = args["RestoreStatus"],
 		["ElasticIpStatus"] = args["ElasticIpStatus"],
 		["AllowVersionUpgrade"] = args["AllowVersionUpgrade"],
+		["MaintenanceTrackName"] = args["MaintenanceTrackName"],
 		["ClusterCreateTime"] = args["ClusterCreateTime"],
 		["ClusterSubnetGroupName"] = args["ClusterSubnetGroupName"],
 		["EnhancedVpcRouting"] = args["EnhancedVpcRouting"],
@@ -7379,6 +5850,7 @@ function M.Cluster(args)
 		["ClusterRevisionNumber"] = args["ClusterRevisionNumber"],
 		["ClusterSnapshotCopyStatus"] = args["ClusterSnapshotCopyStatus"],
 		["KmsKeyId"] = args["KmsKeyId"],
+		["ElasticResizeNumberOfNodeOptions"] = args["ElasticResizeNumberOfNodeOptions"],
 		["ClusterStatus"] = args["ClusterStatus"],
 	}
 	asserts.AssertCluster(all_args)
@@ -7527,133 +5999,14 @@ function M.DescribeDefaultClusterParametersResult(args)
     }
 end
 
-keys.ReservedNodeNotFoundFault = { nil }
-
-function asserts.AssertReservedNodeNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ReservedNodeNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ReservedNodeNotFoundFault[k], "ReservedNodeNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ReservedNodeNotFoundFault
--- <p>The specified reserved compute node not found.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ReservedNodeNotFoundFault structure as a key-value pair table
-function M.ReservedNodeNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating ReservedNodeNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertReservedNodeNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.UnsupportedOperationFault = { nil }
-
-function asserts.AssertUnsupportedOperationFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UnsupportedOperationFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.UnsupportedOperationFault[k], "UnsupportedOperationFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UnsupportedOperationFault
--- <p>The requested operation isn't supported.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return UnsupportedOperationFault structure as a key-value pair table
-function M.UnsupportedOperationFault(args)
-	assert(args, "You must provide an argument table when creating UnsupportedOperationFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertUnsupportedOperationFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.LoggingStatus = { ["LastFailureMessage"] = true, ["LoggingEnabled"] = true, ["LastFailureTime"] = true, ["LastSuccessfulDeliveryTime"] = true, ["S3KeyPrefix"] = true, ["BucketName"] = true, nil }
-
-function asserts.AssertLoggingStatus(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected LoggingStatus to be of type 'table'")
-	if struct["LastFailureMessage"] then asserts.AssertString(struct["LastFailureMessage"]) end
-	if struct["LoggingEnabled"] then asserts.AssertBoolean(struct["LoggingEnabled"]) end
-	if struct["LastFailureTime"] then asserts.AssertTStamp(struct["LastFailureTime"]) end
-	if struct["LastSuccessfulDeliveryTime"] then asserts.AssertTStamp(struct["LastSuccessfulDeliveryTime"]) end
-	if struct["S3KeyPrefix"] then asserts.AssertString(struct["S3KeyPrefix"]) end
-	if struct["BucketName"] then asserts.AssertString(struct["BucketName"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.LoggingStatus[k], "LoggingStatus contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type LoggingStatus
--- <p>Describes the status of logging for a cluster.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * LastFailureMessage [String] <p>The message indicating that logs failed to be delivered.</p>
--- * LoggingEnabled [Boolean] <p> <code>true</code> if logging is on, <code>false</code> if logging is off.</p>
--- * LastFailureTime [TStamp] <p>The last time when logs failed to be delivered.</p>
--- * LastSuccessfulDeliveryTime [TStamp] <p>The last time that logs were delivered.</p>
--- * S3KeyPrefix [String] <p>The prefix applied to the log file names.</p>
--- * BucketName [String] <p>The name of the S3 bucket where the log files are stored.</p>
--- @return LoggingStatus structure as a key-value pair table
-function M.LoggingStatus(args)
-	assert(args, "You must provide an argument table when creating LoggingStatus")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["LastFailureMessage"] = args["LastFailureMessage"],
-		["LoggingEnabled"] = args["LoggingEnabled"],
-		["LastFailureTime"] = args["LastFailureTime"],
-		["LastSuccessfulDeliveryTime"] = args["LastSuccessfulDeliveryTime"],
-		["S3KeyPrefix"] = args["S3KeyPrefix"],
-		["BucketName"] = args["BucketName"],
-	}
-	asserts.AssertLoggingStatus(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ResizeProgressMessage = { ["Status"] = true, ["ImportTablesCompleted"] = true, ["EstimatedTimeToCompletionInSeconds"] = true, ["ProgressInMegaBytes"] = true, ["TargetClusterType"] = true, ["TotalResizeDataInMegaBytes"] = true, ["TargetNumberOfNodes"] = true, ["ImportTablesInProgress"] = true, ["ImportTablesNotStarted"] = true, ["AvgResizeRateInMegaBytesPerSecond"] = true, ["ElapsedTimeInSeconds"] = true, ["TargetNodeType"] = true, nil }
+keys.ResizeProgressMessage = { ["Status"] = true, ["ImportTablesCompleted"] = true, ["TargetEncryptionType"] = true, ["EstimatedTimeToCompletionInSeconds"] = true, ["ProgressInMegaBytes"] = true, ["TargetClusterType"] = true, ["TotalResizeDataInMegaBytes"] = true, ["TargetNumberOfNodes"] = true, ["ImportTablesInProgress"] = true, ["ImportTablesNotStarted"] = true, ["ResizeType"] = true, ["AvgResizeRateInMegaBytesPerSecond"] = true, ["ElapsedTimeInSeconds"] = true, ["Message"] = true, ["TargetNodeType"] = true, nil }
 
 function asserts.AssertResizeProgressMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResizeProgressMessage to be of type 'table'")
 	if struct["Status"] then asserts.AssertString(struct["Status"]) end
 	if struct["ImportTablesCompleted"] then asserts.AssertImportTablesCompleted(struct["ImportTablesCompleted"]) end
+	if struct["TargetEncryptionType"] then asserts.AssertString(struct["TargetEncryptionType"]) end
 	if struct["EstimatedTimeToCompletionInSeconds"] then asserts.AssertLongOptional(struct["EstimatedTimeToCompletionInSeconds"]) end
 	if struct["ProgressInMegaBytes"] then asserts.AssertLongOptional(struct["ProgressInMegaBytes"]) end
 	if struct["TargetClusterType"] then asserts.AssertString(struct["TargetClusterType"]) end
@@ -7661,8 +6014,10 @@ function asserts.AssertResizeProgressMessage(struct)
 	if struct["TargetNumberOfNodes"] then asserts.AssertIntegerOptional(struct["TargetNumberOfNodes"]) end
 	if struct["ImportTablesInProgress"] then asserts.AssertImportTablesInProgress(struct["ImportTablesInProgress"]) end
 	if struct["ImportTablesNotStarted"] then asserts.AssertImportTablesNotStarted(struct["ImportTablesNotStarted"]) end
+	if struct["ResizeType"] then asserts.AssertString(struct["ResizeType"]) end
 	if struct["AvgResizeRateInMegaBytesPerSecond"] then asserts.AssertDoubleOptional(struct["AvgResizeRateInMegaBytesPerSecond"]) end
 	if struct["ElapsedTimeInSeconds"] then asserts.AssertLongOptional(struct["ElapsedTimeInSeconds"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
 	if struct["TargetNodeType"] then asserts.AssertString(struct["TargetNodeType"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ResizeProgressMessage[k], "ResizeProgressMessage contains unknown key " .. tostring(k))
@@ -7675,6 +6030,7 @@ end
 -- Valid keys:
 -- * Status [String] <p>The status of the resize operation.</p> <p>Valid Values: <code>NONE</code> | <code>IN_PROGRESS</code> | <code>FAILED</code> | <code>SUCCEEDED</code> </p>
 -- * ImportTablesCompleted [ImportTablesCompleted] <p>The names of tables that have been completely imported .</p> <p>Valid Values: List of table names.</p>
+-- * TargetEncryptionType [String] <p>The type of encryption for the cluster after the resize is complete.</p> <p>Possible values are <code>KMS</code> and <code>None</code>. In the China region possible values are: <code>Legacy</code> and <code>None</code>.</p>
 -- * EstimatedTimeToCompletionInSeconds [LongOptional] <p>The estimated time remaining, in seconds, until the resize operation is complete. This value is calculated based on the average resize rate and the estimated amount of data remaining to be processed. Once the resize operation is complete, this value will be 0.</p>
 -- * ProgressInMegaBytes [LongOptional] <p>While the resize operation is in progress, this value shows the current amount of data, in megabytes, that has been processed so far. When the resize operation is complete, this value shows the total amount of data, in megabytes, on the cluster, which may be more or less than TotalResizeDataInMegaBytes (the estimated total amount of data before resize).</p>
 -- * TargetClusterType [String] <p>The cluster type after the resize operation is complete.</p> <p>Valid Values: <code>multi-node</code> | <code>single-node</code> </p>
@@ -7682,8 +6038,10 @@ end
 -- * TargetNumberOfNodes [IntegerOptional] <p>The number of nodes that the cluster will have after the resize operation is complete.</p>
 -- * ImportTablesInProgress [ImportTablesInProgress] <p>The names of tables that are being currently imported.</p> <p>Valid Values: List of table names.</p>
 -- * ImportTablesNotStarted [ImportTablesNotStarted] <p>The names of tables that have not been yet imported.</p> <p>Valid Values: List of table names</p>
+-- * ResizeType [String] <p>An enum with possible values of ClassicResize and ElasticResize. These values describe the type of resize operation being performed. </p>
 -- * AvgResizeRateInMegaBytesPerSecond [DoubleOptional] <p>The average rate of the resize operation over the last few minutes, measured in megabytes per second. After the resize operation completes, this value shows the average rate of the entire resize operation.</p>
 -- * ElapsedTimeInSeconds [LongOptional] <p>The amount of seconds that have elapsed since the resize operation began. After the resize operation completes, this value shows the total actual time, in seconds, for the resize operation.</p>
+-- * Message [String] <p>An optional string to provide additional details about the resize action.</p>
 -- * TargetNodeType [String] <p>The node type that the cluster will have after the resize operation is complete.</p>
 -- @return ResizeProgressMessage structure as a key-value pair table
 function M.ResizeProgressMessage(args)
@@ -7697,6 +6055,7 @@ function M.ResizeProgressMessage(args)
 	local all_args = { 
 		["Status"] = args["Status"],
 		["ImportTablesCompleted"] = args["ImportTablesCompleted"],
+		["TargetEncryptionType"] = args["TargetEncryptionType"],
 		["EstimatedTimeToCompletionInSeconds"] = args["EstimatedTimeToCompletionInSeconds"],
 		["ProgressInMegaBytes"] = args["ProgressInMegaBytes"],
 		["TargetClusterType"] = args["TargetClusterType"],
@@ -7704,79 +6063,13 @@ function M.ResizeProgressMessage(args)
 		["TargetNumberOfNodes"] = args["TargetNumberOfNodes"],
 		["ImportTablesInProgress"] = args["ImportTablesInProgress"],
 		["ImportTablesNotStarted"] = args["ImportTablesNotStarted"],
+		["ResizeType"] = args["ResizeType"],
 		["AvgResizeRateInMegaBytesPerSecond"] = args["AvgResizeRateInMegaBytesPerSecond"],
 		["ElapsedTimeInSeconds"] = args["ElapsedTimeInSeconds"],
+		["Message"] = args["Message"],
 		["TargetNodeType"] = args["TargetNodeType"],
 	}
 	asserts.AssertResizeProgressMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ResourceNotFoundFault = { nil }
-
-function asserts.AssertResourceNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ResourceNotFoundFault[k], "ResourceNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ResourceNotFoundFault
--- <p>The resource could not be found.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ResourceNotFoundFault structure as a key-value pair table
-function M.ResourceNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating ResourceNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertResourceNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.HsmConfigurationAlreadyExistsFault = { nil }
-
-function asserts.AssertHsmConfigurationAlreadyExistsFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected HsmConfigurationAlreadyExistsFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.HsmConfigurationAlreadyExistsFault[k], "HsmConfigurationAlreadyExistsFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type HsmConfigurationAlreadyExistsFault
--- <p>There is already an existing Amazon Redshift HSM configuration with the specified identifier.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return HsmConfigurationAlreadyExistsFault structure as a key-value pair table
-function M.HsmConfigurationAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating HsmConfigurationAlreadyExistsFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertHsmConfigurationAlreadyExistsFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -7894,11 +6187,11 @@ function asserts.AssertClusterCredentials(struct)
 end
 
 --- Create a structure of type ClusterCredentials
--- <p>Temporary credentials with authorization to log in to an Amazon Redshift database. </p>
+-- <p>Temporary credentials with authorization to log on to an Amazon Redshift database. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DbUser [String] <p>A database user name that is authorized to log on to the database <code>DbName</code> using the password <code>DbPassword</code>. If the <code>DbGroups</code> parameter is specifed, <code>DbUser</code> is added to the listed groups for the current session. The user name is prefixed with <code>IAM:</code> for an existing user name or <code>IAMA:</code> if the user was auto-created. </p>
--- * Expiration [TStamp] <p>The date and time <code>DbPassword</code> expires.</p>
+-- * DbUser [String] <p>A database user name that is authorized to log on to the database <code>DbName</code> using the password <code>DbPassword</code>. If the specified DbUser exists in the database, the new user name has the same database privileges as the the user named in DbUser. By default, the user is added to PUBLIC. If the <code>DbGroups</code> parameter is specifed, <code>DbUser</code> is added to the listed groups for any sessions created using these credentials.</p>
+-- * Expiration [TStamp] <p>The date and time the password in <code>DbPassword</code> expires.</p>
 -- * DbPassword [SensitiveString] <p>A temporary password that authorizes the user name returned by <code>DbUser</code> to log on to the database <code>DbName</code>. </p>
 -- @return ClusterCredentials structure as a key-value pair table
 function M.ClusterCredentials(args)
@@ -8000,23 +6293,33 @@ function M.SnapshotCopyGrantMessage(args)
     }
 end
 
-keys.HsmConfigurationQuotaExceededFault = { nil }
+keys.RevokeClusterSecurityGroupIngressMessage = { ["EC2SecurityGroupName"] = true, ["EC2SecurityGroupOwnerId"] = true, ["ClusterSecurityGroupName"] = true, ["CIDRIP"] = true, nil }
 
-function asserts.AssertHsmConfigurationQuotaExceededFault(struct)
+function asserts.AssertRevokeClusterSecurityGroupIngressMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected HsmConfigurationQuotaExceededFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected RevokeClusterSecurityGroupIngressMessage to be of type 'table'")
+	assert(struct["ClusterSecurityGroupName"], "Expected key ClusterSecurityGroupName to exist in table")
+	if struct["EC2SecurityGroupName"] then asserts.AssertString(struct["EC2SecurityGroupName"]) end
+	if struct["EC2SecurityGroupOwnerId"] then asserts.AssertString(struct["EC2SecurityGroupOwnerId"]) end
+	if struct["ClusterSecurityGroupName"] then asserts.AssertString(struct["ClusterSecurityGroupName"]) end
+	if struct["CIDRIP"] then asserts.AssertString(struct["CIDRIP"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.HsmConfigurationQuotaExceededFault[k], "HsmConfigurationQuotaExceededFault contains unknown key " .. tostring(k))
+		assert(keys.RevokeClusterSecurityGroupIngressMessage[k], "RevokeClusterSecurityGroupIngressMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type HsmConfigurationQuotaExceededFault
--- <p>The quota for HSM configurations has been reached. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
+--- Create a structure of type RevokeClusterSecurityGroupIngressMessage
+-- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return HsmConfigurationQuotaExceededFault structure as a key-value pair table
-function M.HsmConfigurationQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating HsmConfigurationQuotaExceededFault")
+-- * EC2SecurityGroupName [String] <p>The name of the EC2 Security Group whose access is to be revoked. If <code>EC2SecurityGroupName</code> is specified, <code>EC2SecurityGroupOwnerId</code> must also be provided and <code>CIDRIP</code> cannot be provided. </p>
+-- * EC2SecurityGroupOwnerId [String] <p>The AWS account number of the owner of the security group specified in the <code>EC2SecurityGroupName</code> parameter. The AWS access key ID is not an acceptable value. If <code>EC2SecurityGroupOwnerId</code> is specified, <code>EC2SecurityGroupName</code> must also be provided. and <code>CIDRIP</code> cannot be provided. </p> <p>Example: <code>111122223333</code> </p>
+-- * ClusterSecurityGroupName [String] <p>The name of the security Group from which to revoke the ingress rule.</p>
+-- * CIDRIP [String] <p>The IP range for which to revoke access. This range must be a valid Classless Inter-Domain Routing (CIDR) block of IP addresses. If <code>CIDRIP</code> is specified, <code>EC2SecurityGroupName</code> and <code>EC2SecurityGroupOwnerId</code> cannot be provided. </p>
+-- Required key: ClusterSecurityGroupName
+-- @return RevokeClusterSecurityGroupIngressMessage structure as a key-value pair table
+function M.RevokeClusterSecurityGroupIngressMessage(args)
+	assert(args, "You must provide an argument table when creating RevokeClusterSecurityGroupIngressMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -8024,8 +6327,12 @@ function M.HsmConfigurationQuotaExceededFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["EC2SecurityGroupName"] = args["EC2SecurityGroupName"],
+		["EC2SecurityGroupOwnerId"] = args["EC2SecurityGroupOwnerId"],
+		["ClusterSecurityGroupName"] = args["ClusterSecurityGroupName"],
+		["CIDRIP"] = args["CIDRIP"],
 	}
-	asserts.AssertHsmConfigurationQuotaExceededFault(all_args)
+	asserts.AssertRevokeClusterSecurityGroupIngressMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -8110,23 +6417,31 @@ function M.TableRestoreStatus(args)
     }
 end
 
-keys.SnapshotCopyAlreadyEnabledFault = { nil }
+keys.ClusterDbRevision = { ["CurrentDatabaseRevision"] = true, ["DatabaseRevisionReleaseDate"] = true, ["ClusterIdentifier"] = true, ["RevisionTargets"] = true, nil }
 
-function asserts.AssertSnapshotCopyAlreadyEnabledFault(struct)
+function asserts.AssertClusterDbRevision(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SnapshotCopyAlreadyEnabledFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected ClusterDbRevision to be of type 'table'")
+	if struct["CurrentDatabaseRevision"] then asserts.AssertString(struct["CurrentDatabaseRevision"]) end
+	if struct["DatabaseRevisionReleaseDate"] then asserts.AssertTStamp(struct["DatabaseRevisionReleaseDate"]) end
+	if struct["ClusterIdentifier"] then asserts.AssertString(struct["ClusterIdentifier"]) end
+	if struct["RevisionTargets"] then asserts.AssertRevisionTargetsList(struct["RevisionTargets"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SnapshotCopyAlreadyEnabledFault[k], "SnapshotCopyAlreadyEnabledFault contains unknown key " .. tostring(k))
+		assert(keys.ClusterDbRevision[k], "ClusterDbRevision contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SnapshotCopyAlreadyEnabledFault
--- <p>The cluster already has cross-region snapshot copy enabled.</p>
+--- Create a structure of type ClusterDbRevision
+-- <p>Describes a <code>ClusterDbRevision</code>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return SnapshotCopyAlreadyEnabledFault structure as a key-value pair table
-function M.SnapshotCopyAlreadyEnabledFault(args)
-	assert(args, "You must provide an argument table when creating SnapshotCopyAlreadyEnabledFault")
+-- * CurrentDatabaseRevision [String] <p>A string representing the current cluster version.</p>
+-- * DatabaseRevisionReleaseDate [TStamp] <p>The date on which the database revision was released.</p>
+-- * ClusterIdentifier [String] <p>The unique identifier of the cluster.</p>
+-- * RevisionTargets [RevisionTargetsList] <p>A list of <code>RevisionTarget</code> objects, where each object describes the database revision that a cluster can be updated to.</p>
+-- @return ClusterDbRevision structure as a key-value pair table
+function M.ClusterDbRevision(args)
+	assert(args, "You must provide an argument table when creating ClusterDbRevision")
     local query_args = { 
     }
     local uri_args = { 
@@ -8134,8 +6449,12 @@ function M.SnapshotCopyAlreadyEnabledFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["CurrentDatabaseRevision"] = args["CurrentDatabaseRevision"],
+		["DatabaseRevisionReleaseDate"] = args["DatabaseRevisionReleaseDate"],
+		["ClusterIdentifier"] = args["ClusterIdentifier"],
+		["RevisionTargets"] = args["RevisionTargets"],
 	}
-	asserts.AssertSnapshotCopyAlreadyEnabledFault(all_args)
+	asserts.AssertClusterDbRevision(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -8232,6 +6551,49 @@ function M.DefaultClusterParameters(args)
     }
 end
 
+keys.DescribeClusterTracksMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["MaintenanceTrackName"] = true, nil }
+
+function asserts.AssertDescribeClusterTracksMessage(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeClusterTracksMessage to be of type 'table'")
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["MaintenanceTrackName"] then asserts.AssertString(struct["MaintenanceTrackName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeClusterTracksMessage[k], "DescribeClusterTracksMessage contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeClusterTracksMessage
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <code>DescribeClusterTracks</code> request exceed the value specified in <code>MaxRecords</code>, Amazon Redshift returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p>
+-- * MaxRecords [IntegerOptional] <p>An integer value for the maximum number of maintenance tracks to return.</p>
+-- * MaintenanceTrackName [String] <p>The name of the maintenance track. </p>
+-- @return DescribeClusterTracksMessage structure as a key-value pair table
+function M.DescribeClusterTracksMessage(args)
+	assert(args, "You must provide an argument table when creating DescribeClusterTracksMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Marker"] = args["Marker"],
+		["MaxRecords"] = args["MaxRecords"],
+		["MaintenanceTrackName"] = args["MaintenanceTrackName"],
+	}
+	asserts.AssertDescribeClusterTracksMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ClusterParameterGroupNameMessage = { ["ParameterGroupStatus"] = true, ["ParameterGroupName"] = true, nil }
 
 function asserts.AssertClusterParameterGroupNameMessage(struct)
@@ -8264,40 +6626,6 @@ function M.ClusterParameterGroupNameMessage(args)
 		["ParameterGroupName"] = args["ParameterGroupName"],
 	}
 	asserts.AssertClusterParameterGroupNameMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidClusterSecurityGroupStateFault = { nil }
-
-function asserts.AssertInvalidClusterSecurityGroupStateFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidClusterSecurityGroupStateFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidClusterSecurityGroupStateFault[k], "InvalidClusterSecurityGroupStateFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidClusterSecurityGroupStateFault
--- <p>The state of the cluster security group is not <code>available</code>. </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidClusterSecurityGroupStateFault structure as a key-value pair table
-function M.InvalidClusterSecurityGroupStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidClusterSecurityGroupStateFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidClusterSecurityGroupStateFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -8350,40 +6678,6 @@ function M.CreateTagsMessage(args)
     }
 end
 
-keys.InsufficientS3BucketPolicyFault = { nil }
-
-function asserts.AssertInsufficientS3BucketPolicyFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InsufficientS3BucketPolicyFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InsufficientS3BucketPolicyFault[k], "InsufficientS3BucketPolicyFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InsufficientS3BucketPolicyFault
--- <p>The cluster does not have read bucket or put object permissions on the S3 bucket specified when enabling logging.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InsufficientS3BucketPolicyFault structure as a key-value pair table
-function M.InsufficientS3BucketPolicyFault(args)
-	assert(args, "You must provide an argument table when creating InsufficientS3BucketPolicyFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInsufficientS3BucketPolicyFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.RotateEncryptionKeyResult = { ["Cluster"] = true, nil }
 
 function asserts.AssertRotateEncryptionKeyResult(struct)
@@ -8421,27 +6715,27 @@ function M.RotateEncryptionKeyResult(args)
     }
 end
 
-keys.DeleteClusterSubnetGroupMessage = { ["ClusterSubnetGroupName"] = true, nil }
+keys.DeleteEventSubscriptionMessage = { ["SubscriptionName"] = true, nil }
 
-function asserts.AssertDeleteClusterSubnetGroupMessage(struct)
+function asserts.AssertDeleteEventSubscriptionMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteClusterSubnetGroupMessage to be of type 'table'")
-	assert(struct["ClusterSubnetGroupName"], "Expected key ClusterSubnetGroupName to exist in table")
-	if struct["ClusterSubnetGroupName"] then asserts.AssertString(struct["ClusterSubnetGroupName"]) end
+	assert(type(struct) == "table", "Expected DeleteEventSubscriptionMessage to be of type 'table'")
+	assert(struct["SubscriptionName"], "Expected key SubscriptionName to exist in table")
+	if struct["SubscriptionName"] then asserts.AssertString(struct["SubscriptionName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteClusterSubnetGroupMessage[k], "DeleteClusterSubnetGroupMessage contains unknown key " .. tostring(k))
+		assert(keys.DeleteEventSubscriptionMessage[k], "DeleteEventSubscriptionMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteClusterSubnetGroupMessage
+--- Create a structure of type DeleteEventSubscriptionMessage
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ClusterSubnetGroupName [String] <p>The name of the cluster subnet group name to be deleted.</p>
--- Required key: ClusterSubnetGroupName
--- @return DeleteClusterSubnetGroupMessage structure as a key-value pair table
-function M.DeleteClusterSubnetGroupMessage(args)
-	assert(args, "You must provide an argument table when creating DeleteClusterSubnetGroupMessage")
+-- * SubscriptionName [String] <p>The name of the Amazon Redshift event notification subscription to be deleted.</p>
+-- Required key: SubscriptionName
+-- @return DeleteEventSubscriptionMessage structure as a key-value pair table
+function M.DeleteEventSubscriptionMessage(args)
+	assert(args, "You must provide an argument table when creating DeleteEventSubscriptionMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -8449,9 +6743,9 @@ function M.DeleteClusterSubnetGroupMessage(args)
     local header_args = { 
     }
 	local all_args = { 
-		["ClusterSubnetGroupName"] = args["ClusterSubnetGroupName"],
+		["SubscriptionName"] = args["SubscriptionName"],
 	}
-	asserts.AssertDeleteClusterSubnetGroupMessage(all_args)
+	asserts.AssertDeleteEventSubscriptionMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -8460,33 +6754,25 @@ function M.DeleteClusterSubnetGroupMessage(args)
     }
 end
 
-keys.DescribeClusterSecurityGroupsMessage = { ["Marker"] = true, ["TagValues"] = true, ["MaxRecords"] = true, ["TagKeys"] = true, ["ClusterSecurityGroupName"] = true, nil }
+keys.CreateHsmConfigurationResult = { ["HsmConfiguration"] = true, nil }
 
-function asserts.AssertDescribeClusterSecurityGroupsMessage(struct)
+function asserts.AssertCreateHsmConfigurationResult(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeClusterSecurityGroupsMessage to be of type 'table'")
-	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
-	if struct["TagValues"] then asserts.AssertTagValueList(struct["TagValues"]) end
-	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
-	if struct["TagKeys"] then asserts.AssertTagKeyList(struct["TagKeys"]) end
-	if struct["ClusterSecurityGroupName"] then asserts.AssertString(struct["ClusterSecurityGroupName"]) end
+	assert(type(struct) == "table", "Expected CreateHsmConfigurationResult to be of type 'table'")
+	if struct["HsmConfiguration"] then asserts.AssertHsmConfiguration(struct["HsmConfiguration"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DescribeClusterSecurityGroupsMessage[k], "DescribeClusterSecurityGroupsMessage contains unknown key " .. tostring(k))
+		assert(keys.CreateHsmConfigurationResult[k], "CreateHsmConfigurationResult contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DescribeClusterSecurityGroupsMessage
--- <p/>
+--- Create a structure of type CreateHsmConfigurationResult
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeClusterSecurityGroups</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p> <p>Constraints: You can specify either the <b>ClusterSecurityGroupName</b> parameter or the <b>Marker</b> parameter, but not both. </p>
--- * TagValues [TagValueList] <p>A tag value or values for which you want to return all matching cluster security groups that are associated with the specified tag value or values. For example, suppose that you have security groups that are tagged with values called <code>admin</code> and <code>test</code>. If you specify both of these tag values in the request, Amazon Redshift returns a response with the security groups that have either or both of these tag values associated with them.</p>
--- * MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
--- * TagKeys [TagKeyList] <p>A tag key or keys for which you want to return all matching cluster security groups that are associated with the specified key or keys. For example, suppose that you have security groups that are tagged with keys called <code>owner</code> and <code>environment</code>. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the security groups that have either or both of these tag keys associated with them.</p>
--- * ClusterSecurityGroupName [String] <p>The name of a cluster security group for which you are requesting details. You can specify either the <b>Marker</b> parameter or a <b>ClusterSecurityGroupName</b> parameter, but not both. </p> <p> Example: <code>securitygroup1</code> </p>
--- @return DescribeClusterSecurityGroupsMessage structure as a key-value pair table
-function M.DescribeClusterSecurityGroupsMessage(args)
-	assert(args, "You must provide an argument table when creating DescribeClusterSecurityGroupsMessage")
+-- * HsmConfiguration [HsmConfiguration] 
+-- @return CreateHsmConfigurationResult structure as a key-value pair table
+function M.CreateHsmConfigurationResult(args)
+	assert(args, "You must provide an argument table when creating CreateHsmConfigurationResult")
     local query_args = { 
     }
     local uri_args = { 
@@ -8494,81 +6780,9 @@ function M.DescribeClusterSecurityGroupsMessage(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Marker"] = args["Marker"],
-		["TagValues"] = args["TagValues"],
-		["MaxRecords"] = args["MaxRecords"],
-		["TagKeys"] = args["TagKeys"],
-		["ClusterSecurityGroupName"] = args["ClusterSecurityGroupName"],
+		["HsmConfiguration"] = args["HsmConfiguration"],
 	}
-	asserts.AssertDescribeClusterSecurityGroupsMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CopyToRegionDisabledFault = { nil }
-
-function asserts.AssertCopyToRegionDisabledFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CopyToRegionDisabledFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.CopyToRegionDisabledFault[k], "CopyToRegionDisabledFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CopyToRegionDisabledFault
--- <p>Cross-region snapshot copy was temporarily disabled. Try your request again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return CopyToRegionDisabledFault structure as a key-value pair table
-function M.CopyToRegionDisabledFault(args)
-	assert(args, "You must provide an argument table when creating CopyToRegionDisabledFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertCopyToRegionDisabledFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidHsmConfigurationStateFault = { nil }
-
-function asserts.AssertInvalidHsmConfigurationStateFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidHsmConfigurationStateFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidHsmConfigurationStateFault[k], "InvalidHsmConfigurationStateFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidHsmConfigurationStateFault
--- <p>The specified HSM configuration is not in the <code>available</code> state, or it is still in use by one or more Amazon Redshift clusters.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidHsmConfigurationStateFault structure as a key-value pair table
-function M.InvalidHsmConfigurationStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidHsmConfigurationStateFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidHsmConfigurationStateFault(all_args)
+	asserts.AssertCreateHsmConfigurationResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -8624,6 +6838,46 @@ function M.CreateClusterSnapshotMessage(args)
     }
 end
 
+keys.TrackListMessage = { ["Marker"] = true, ["MaintenanceTracks"] = true, nil }
+
+function asserts.AssertTrackListMessage(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected TrackListMessage to be of type 'table'")
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaintenanceTracks"] then asserts.AssertTrackList(struct["MaintenanceTracks"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.TrackListMessage[k], "TrackListMessage contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type TrackListMessage
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p>The starting point to return a set of response tracklist records. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request.</p>
+-- * MaintenanceTracks [TrackList] <p>A list of maintenance tracks output by the <code>DescribeClusterTracks</code> operation. </p>
+-- @return TrackListMessage structure as a key-value pair table
+function M.TrackListMessage(args)
+	assert(args, "You must provide an argument table when creating TrackListMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Marker"] = args["Marker"],
+		["MaintenanceTracks"] = args["MaintenanceTracks"],
+	}
+	asserts.AssertTrackListMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.SnapshotMessage = { ["Marker"] = true, ["Snapshots"] = true, nil }
 
 function asserts.AssertSnapshotMessage(struct)
@@ -8656,74 +6910,6 @@ function M.SnapshotMessage(args)
 		["Snapshots"] = args["Snapshots"],
 	}
 	asserts.AssertSnapshotMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.AuthorizationAlreadyExistsFault = { nil }
-
-function asserts.AssertAuthorizationAlreadyExistsFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected AuthorizationAlreadyExistsFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.AuthorizationAlreadyExistsFault[k], "AuthorizationAlreadyExistsFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type AuthorizationAlreadyExistsFault
--- <p>The specified CIDR block or EC2 security group is already authorized for the specified cluster security group.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return AuthorizationAlreadyExistsFault structure as a key-value pair table
-function M.AuthorizationAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating AuthorizationAlreadyExistsFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertAuthorizationAlreadyExistsFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidClusterParameterGroupStateFault = { nil }
-
-function asserts.AssertInvalidClusterParameterGroupStateFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidClusterParameterGroupStateFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidClusterParameterGroupStateFault[k], "InvalidClusterParameterGroupStateFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidClusterParameterGroupStateFault
--- <p>The cluster parameter group action can not be completed because another task is in progress that involves the parameter group. Wait a few moments and try the operation again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidClusterParameterGroupStateFault structure as a key-value pair table
-function M.InvalidClusterParameterGroupStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidClusterParameterGroupStateFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidClusterParameterGroupStateFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -8857,23 +7043,25 @@ function M.ClusterVersionsMessage(args)
     }
 end
 
-keys.ReservedNodeAlreadyExistsFault = { nil }
+keys.RestoreTableFromClusterSnapshotResult = { ["TableRestoreStatus"] = true, nil }
 
-function asserts.AssertReservedNodeAlreadyExistsFault(struct)
+function asserts.AssertRestoreTableFromClusterSnapshotResult(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ReservedNodeAlreadyExistsFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected RestoreTableFromClusterSnapshotResult to be of type 'table'")
+	if struct["TableRestoreStatus"] then asserts.AssertTableRestoreStatus(struct["TableRestoreStatus"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ReservedNodeAlreadyExistsFault[k], "ReservedNodeAlreadyExistsFault contains unknown key " .. tostring(k))
+		assert(keys.RestoreTableFromClusterSnapshotResult[k], "RestoreTableFromClusterSnapshotResult contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ReservedNodeAlreadyExistsFault
--- <p>User already has a reservation with the given identifier.</p>
+--- Create a structure of type RestoreTableFromClusterSnapshotResult
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return ReservedNodeAlreadyExistsFault structure as a key-value pair table
-function M.ReservedNodeAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating ReservedNodeAlreadyExistsFault")
+-- * TableRestoreStatus [TableRestoreStatus] 
+-- @return RestoreTableFromClusterSnapshotResult structure as a key-value pair table
+function M.RestoreTableFromClusterSnapshotResult(args)
+	assert(args, "You must provide an argument table when creating RestoreTableFromClusterSnapshotResult")
     local query_args = { 
     }
     local uri_args = { 
@@ -8881,8 +7069,9 @@ function M.ReservedNodeAlreadyExistsFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["TableRestoreStatus"] = args["TableRestoreStatus"],
 	}
-	asserts.AssertReservedNodeAlreadyExistsFault(all_args)
+	asserts.AssertRestoreTableFromClusterSnapshotResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -8891,23 +7080,31 @@ function M.ReservedNodeAlreadyExistsFault(args)
     }
 end
 
-keys.ClusterSecurityGroupAlreadyExistsFault = { nil }
+keys.ModifyClusterIamRolesMessage = { ["AddIamRoles"] = true, ["RemoveIamRoles"] = true, ["ClusterIdentifier"] = true, nil }
 
-function asserts.AssertClusterSecurityGroupAlreadyExistsFault(struct)
+function asserts.AssertModifyClusterIamRolesMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterSecurityGroupAlreadyExistsFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected ModifyClusterIamRolesMessage to be of type 'table'")
+	assert(struct["ClusterIdentifier"], "Expected key ClusterIdentifier to exist in table")
+	if struct["AddIamRoles"] then asserts.AssertIamRoleArnList(struct["AddIamRoles"]) end
+	if struct["RemoveIamRoles"] then asserts.AssertIamRoleArnList(struct["RemoveIamRoles"]) end
+	if struct["ClusterIdentifier"] then asserts.AssertString(struct["ClusterIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ClusterSecurityGroupAlreadyExistsFault[k], "ClusterSecurityGroupAlreadyExistsFault contains unknown key " .. tostring(k))
+		assert(keys.ModifyClusterIamRolesMessage[k], "ModifyClusterIamRolesMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ClusterSecurityGroupAlreadyExistsFault
--- <p>A cluster security group with the same name already exists.</p>
+--- Create a structure of type ModifyClusterIamRolesMessage
+-- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return ClusterSecurityGroupAlreadyExistsFault structure as a key-value pair table
-function M.ClusterSecurityGroupAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating ClusterSecurityGroupAlreadyExistsFault")
+-- * AddIamRoles [IamRoleArnList] <p>Zero or more IAM roles to associate with the cluster. The roles must be in their Amazon Resource Name (ARN) format. You can associate up to 10 IAM roles with a single cluster in a single request.</p>
+-- * RemoveIamRoles [IamRoleArnList] <p>Zero or more IAM roles in ARN format to disassociate from the cluster. You can disassociate up to 10 IAM roles from a single cluster in a single request.</p>
+-- * ClusterIdentifier [String] <p>The unique identifier of the cluster for which you want to associate or disassociate IAM roles.</p>
+-- Required key: ClusterIdentifier
+-- @return ModifyClusterIamRolesMessage structure as a key-value pair table
+function M.ModifyClusterIamRolesMessage(args)
+	assert(args, "You must provide an argument table when creating ModifyClusterIamRolesMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -8915,42 +7112,11 @@ function M.ClusterSecurityGroupAlreadyExistsFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["AddIamRoles"] = args["AddIamRoles"],
+		["RemoveIamRoles"] = args["RemoveIamRoles"],
+		["ClusterIdentifier"] = args["ClusterIdentifier"],
 	}
-	asserts.AssertClusterSecurityGroupAlreadyExistsFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ClusterParameterGroupNotFoundFault = { nil }
-
-function asserts.AssertClusterParameterGroupNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterParameterGroupNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ClusterParameterGroupNotFoundFault[k], "ClusterParameterGroupNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ClusterParameterGroupNotFoundFault
--- <p>The parameter group name does not refer to an existing parameter group.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ClusterParameterGroupNotFoundFault structure as a key-value pair table
-function M.ClusterParameterGroupNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating ClusterParameterGroupNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertClusterParameterGroupNotFoundFault(all_args)
+	asserts.AssertModifyClusterIamRolesMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -8988,40 +7154,6 @@ function M.RebootClusterResult(args)
 		["Cluster"] = args["Cluster"],
 	}
 	asserts.AssertRebootClusterResult(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ClusterQuotaExceededFault = { nil }
-
-function asserts.AssertClusterQuotaExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterQuotaExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ClusterQuotaExceededFault[k], "ClusterQuotaExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ClusterQuotaExceededFault
--- <p>The request would exceed the allowed number of cluster instances for this account. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ClusterQuotaExceededFault structure as a key-value pair table
-function M.ClusterQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating ClusterQuotaExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertClusterQuotaExceededFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -9082,40 +7214,6 @@ function M.CreateClusterParameterGroupMessage(args)
     }
 end
 
-keys.SNSTopicArnNotFoundFault = { nil }
-
-function asserts.AssertSNSTopicArnNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SNSTopicArnNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SNSTopicArnNotFoundFault[k], "SNSTopicArnNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SNSTopicArnNotFoundFault
--- <p>An Amazon SNS topic with the specified Amazon Resource Name (ARN) does not exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SNSTopicArnNotFoundFault structure as a key-value pair table
-function M.SNSTopicArnNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating SNSTopicArnNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSNSTopicArnNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ReservedNodesMessage = { ["Marker"] = true, ["ReservedNodes"] = true, nil }
 
 function asserts.AssertReservedNodesMessage(struct)
@@ -9156,23 +7254,29 @@ function M.ReservedNodesMessage(args)
     }
 end
 
-keys.TableRestoreNotFoundFault = { nil }
+keys.RevisionTarget = { ["DatabaseRevision"] = true, ["DatabaseRevisionReleaseDate"] = true, ["Description"] = true, nil }
 
-function asserts.AssertTableRestoreNotFoundFault(struct)
+function asserts.AssertRevisionTarget(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TableRestoreNotFoundFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected RevisionTarget to be of type 'table'")
+	if struct["DatabaseRevision"] then asserts.AssertString(struct["DatabaseRevision"]) end
+	if struct["DatabaseRevisionReleaseDate"] then asserts.AssertTStamp(struct["DatabaseRevisionReleaseDate"]) end
+	if struct["Description"] then asserts.AssertString(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TableRestoreNotFoundFault[k], "TableRestoreNotFoundFault contains unknown key " .. tostring(k))
+		assert(keys.RevisionTarget[k], "RevisionTarget contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TableRestoreNotFoundFault
--- <p>The specified <code>TableRestoreRequestId</code> value was not found.</p>
+--- Create a structure of type RevisionTarget
+-- <p>Describes a <code>RevisionTarget</code>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return TableRestoreNotFoundFault structure as a key-value pair table
-function M.TableRestoreNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating TableRestoreNotFoundFault")
+-- * DatabaseRevision [String] <p>A unique string that identifies the version to update the cluster to. You can use this value in <a>ModifyClusterDbRevision</a>.</p>
+-- * DatabaseRevisionReleaseDate [TStamp] <p>The date on which the database revision was released.</p>
+-- * Description [String] <p>A string that describes the changes and features that will be applied to the cluster when it is updated to the corresponding <a>ClusterDbRevision</a>.</p>
+-- @return RevisionTarget structure as a key-value pair table
+function M.RevisionTarget(args)
+	assert(args, "You must provide an argument table when creating RevisionTarget")
     local query_args = { 
     }
     local uri_args = { 
@@ -9180,8 +7284,11 @@ function M.TableRestoreNotFoundFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["DatabaseRevision"] = args["DatabaseRevision"],
+		["DatabaseRevisionReleaseDate"] = args["DatabaseRevisionReleaseDate"],
+		["Description"] = args["Description"],
 	}
-	asserts.AssertTableRestoreNotFoundFault(all_args)
+	asserts.AssertRevisionTarget(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -9278,7 +7385,7 @@ function M.DescribeSnapshotCopyGrantsMessage(args)
     }
 end
 
-keys.ReservedNodeOffering = { ["OfferingType"] = true, ["FixedPrice"] = true, ["NodeType"] = true, ["UsagePrice"] = true, ["RecurringCharges"] = true, ["Duration"] = true, ["ReservedNodeOfferingId"] = true, ["CurrencyCode"] = true, nil }
+keys.ReservedNodeOffering = { ["OfferingType"] = true, ["FixedPrice"] = true, ["NodeType"] = true, ["UsagePrice"] = true, ["RecurringCharges"] = true, ["ReservedNodeOfferingType"] = true, ["Duration"] = true, ["ReservedNodeOfferingId"] = true, ["CurrencyCode"] = true, nil }
 
 function asserts.AssertReservedNodeOffering(struct)
 	assert(struct)
@@ -9288,6 +7395,7 @@ function asserts.AssertReservedNodeOffering(struct)
 	if struct["NodeType"] then asserts.AssertString(struct["NodeType"]) end
 	if struct["UsagePrice"] then asserts.AssertDouble(struct["UsagePrice"]) end
 	if struct["RecurringCharges"] then asserts.AssertRecurringChargeList(struct["RecurringCharges"]) end
+	if struct["ReservedNodeOfferingType"] then asserts.AssertReservedNodeOfferingType(struct["ReservedNodeOfferingType"]) end
 	if struct["Duration"] then asserts.AssertInteger(struct["Duration"]) end
 	if struct["ReservedNodeOfferingId"] then asserts.AssertString(struct["ReservedNodeOfferingId"]) end
 	if struct["CurrencyCode"] then asserts.AssertString(struct["CurrencyCode"]) end
@@ -9305,6 +7413,7 @@ end
 -- * NodeType [String] <p>The node type offered by the reserved node offering.</p>
 -- * UsagePrice [Double] <p>The rate you are charged for each hour the cluster that is using the offering is running.</p>
 -- * RecurringCharges [RecurringChargeList] <p>The charge to your account regardless of whether you are creating any clusters using the node offering. Recurring charges are only in effect for heavy-utilization reserved nodes.</p>
+-- * ReservedNodeOfferingType [ReservedNodeOfferingType] 
 -- * Duration [Integer] <p>The duration, in seconds, for which the offering will reserve the node.</p>
 -- * ReservedNodeOfferingId [String] <p>The offering identifier.</p>
 -- * CurrencyCode [String] <p>The currency code for the compute nodes offering.</p>
@@ -9323,6 +7432,7 @@ function M.ReservedNodeOffering(args)
 		["NodeType"] = args["NodeType"],
 		["UsagePrice"] = args["UsagePrice"],
 		["RecurringCharges"] = args["RecurringCharges"],
+		["ReservedNodeOfferingType"] = args["ReservedNodeOfferingType"],
 		["Duration"] = args["Duration"],
 		["ReservedNodeOfferingId"] = args["ReservedNodeOfferingId"],
 		["CurrencyCode"] = args["CurrencyCode"],
@@ -9496,40 +7606,6 @@ function M.TableRestoreStatusMessage(args)
     }
 end
 
-keys.InvalidClusterSubnetGroupStateFault = { nil }
-
-function asserts.AssertInvalidClusterSubnetGroupStateFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidClusterSubnetGroupStateFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidClusterSubnetGroupStateFault[k], "InvalidClusterSubnetGroupStateFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidClusterSubnetGroupStateFault
--- <p>The cluster subnet group cannot be deleted because it is in use.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidClusterSubnetGroupStateFault structure as a key-value pair table
-function M.InvalidClusterSubnetGroupStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidClusterSubnetGroupStateFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidClusterSubnetGroupStateFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.DescribeClustersMessage = { ["Marker"] = true, ["TagValues"] = true, ["ClusterIdentifier"] = true, ["TagKeys"] = true, ["MaxRecords"] = true, nil }
 
 function asserts.AssertDescribeClustersMessage(struct)
@@ -9571,40 +7647,6 @@ function M.DescribeClustersMessage(args)
 		["MaxRecords"] = args["MaxRecords"],
 	}
 	asserts.AssertDescribeClustersMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.UnknownSnapshotCopyRegionFault = { nil }
-
-function asserts.AssertUnknownSnapshotCopyRegionFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UnknownSnapshotCopyRegionFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.UnknownSnapshotCopyRegionFault[k], "UnknownSnapshotCopyRegionFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UnknownSnapshotCopyRegionFault
--- <p>The specified region is incorrect or does not exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return UnknownSnapshotCopyRegionFault structure as a key-value pair table
-function M.UnknownSnapshotCopyRegionFault(args)
-	assert(args, "You must provide an argument table when creating UnknownSnapshotCopyRegionFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertUnknownSnapshotCopyRegionFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -9659,23 +7701,31 @@ function M.OrderableClusterOption(args)
     }
 end
 
-keys.ClusterSubnetGroupNotFoundFault = { nil }
+keys.AcceptReservedNodeExchangeInputMessage = { ["ReservedNodeId"] = true, ["TargetReservedNodeOfferingId"] = true, nil }
 
-function asserts.AssertClusterSubnetGroupNotFoundFault(struct)
+function asserts.AssertAcceptReservedNodeExchangeInputMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterSubnetGroupNotFoundFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected AcceptReservedNodeExchangeInputMessage to be of type 'table'")
+	assert(struct["ReservedNodeId"], "Expected key ReservedNodeId to exist in table")
+	assert(struct["TargetReservedNodeOfferingId"], "Expected key TargetReservedNodeOfferingId to exist in table")
+	if struct["ReservedNodeId"] then asserts.AssertString(struct["ReservedNodeId"]) end
+	if struct["TargetReservedNodeOfferingId"] then asserts.AssertString(struct["TargetReservedNodeOfferingId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ClusterSubnetGroupNotFoundFault[k], "ClusterSubnetGroupNotFoundFault contains unknown key " .. tostring(k))
+		assert(keys.AcceptReservedNodeExchangeInputMessage[k], "AcceptReservedNodeExchangeInputMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ClusterSubnetGroupNotFoundFault
--- <p>The cluster subnet group name does not refer to an existing cluster subnet group.</p>
+--- Create a structure of type AcceptReservedNodeExchangeInputMessage
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return ClusterSubnetGroupNotFoundFault structure as a key-value pair table
-function M.ClusterSubnetGroupNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating ClusterSubnetGroupNotFoundFault")
+-- * ReservedNodeId [String] <p>A string representing the node identifier of the DC1 Reserved Node to be exchanged.</p>
+-- * TargetReservedNodeOfferingId [String] <p>The unique identifier of the DC2 Reserved Node offering to be used for the exchange. You can obtain the value for the parameter by calling <a>GetReservedNodeExchangeOfferings</a> </p>
+-- Required key: ReservedNodeId
+-- Required key: TargetReservedNodeOfferingId
+-- @return AcceptReservedNodeExchangeInputMessage structure as a key-value pair table
+function M.AcceptReservedNodeExchangeInputMessage(args)
+	assert(args, "You must provide an argument table when creating AcceptReservedNodeExchangeInputMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -9683,8 +7733,10 @@ function M.ClusterSubnetGroupNotFoundFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["ReservedNodeId"] = args["ReservedNodeId"],
+		["TargetReservedNodeOfferingId"] = args["TargetReservedNodeOfferingId"],
 	}
-	asserts.AssertClusterSubnetGroupNotFoundFault(all_args)
+	asserts.AssertAcceptReservedNodeExchangeInputMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -9725,74 +7777,6 @@ function M.HsmConfigurationMessage(args)
 		["HsmConfigurations"] = args["HsmConfigurations"],
 	}
 	asserts.AssertHsmConfigurationMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ClusterParameterGroupQuotaExceededFault = { nil }
-
-function asserts.AssertClusterParameterGroupQuotaExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterParameterGroupQuotaExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ClusterParameterGroupQuotaExceededFault[k], "ClusterParameterGroupQuotaExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ClusterParameterGroupQuotaExceededFault
--- <p>The request would result in the user exceeding the allowed number of cluster parameter groups. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ClusterParameterGroupQuotaExceededFault structure as a key-value pair table
-function M.ClusterParameterGroupQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating ClusterParameterGroupQuotaExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertClusterParameterGroupQuotaExceededFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ClusterAlreadyExistsFault = { nil }
-
-function asserts.AssertClusterAlreadyExistsFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterAlreadyExistsFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ClusterAlreadyExistsFault[k], "ClusterAlreadyExistsFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ClusterAlreadyExistsFault
--- <p>The account already has a cluster with the given identifier.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ClusterAlreadyExistsFault structure as a key-value pair table
-function M.ClusterAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating ClusterAlreadyExistsFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertClusterAlreadyExistsFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -9885,7 +7869,7 @@ end
 -- <p>A tag and its associated resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ResourceType [String] <p>The type of resource with which the tag is associated. Valid resource types are: </p> <ul> <li> <p>Cluster</p> </li> <li> <p>CIDR/IP</p> </li> <li> <p>EC2 security group</p> </li> <li> <p>Snapshot</p> </li> <li> <p>Cluster security group</p> </li> <li> <p>Subnet group</p> </li> <li> <p>HSM connection</p> </li> <li> <p>HSM certificate</p> </li> <li> <p>Parameter group</p> </li> </ul> <p>For more information about Amazon Redshift resource types and constructing ARNs, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/constructing-redshift-arn.html">Constructing an Amazon Redshift Amazon Resource Name (ARN)</a> in the Amazon Redshift Cluster Management Guide. </p>
+-- * ResourceType [String] <p>The type of resource with which the tag is associated. Valid resource types are: </p> <ul> <li> <p>Cluster</p> </li> <li> <p>CIDR/IP</p> </li> <li> <p>EC2 security group</p> </li> <li> <p>Snapshot</p> </li> <li> <p>Cluster security group</p> </li> <li> <p>Subnet group</p> </li> <li> <p>HSM connection</p> </li> <li> <p>HSM certificate</p> </li> <li> <p>Parameter group</p> </li> </ul> <p>For more information about Amazon Redshift resource types and constructing ARNs, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions">Constructing an Amazon Redshift Amazon Resource Name (ARN)</a> in the Amazon Redshift Cluster Management Guide. </p>
 -- * ResourceName [String] <p>The Amazon Resource Name (ARN) with which the tag is associated. For example, <code>arn:aws:redshift:us-east-1:123456789:cluster:t1</code>.</p>
 -- * Tag [Tag] <p>The tag for the resource.</p>
 -- @return TaggedResource structure as a key-value pair table
@@ -9911,74 +7895,6 @@ function M.TaggedResource(args)
     }
 end
 
-keys.BucketNotFoundFault = { nil }
-
-function asserts.AssertBucketNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected BucketNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.BucketNotFoundFault[k], "BucketNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type BucketNotFoundFault
--- <p>Could not find the specified S3 bucket.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return BucketNotFoundFault structure as a key-value pair table
-function M.BucketNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating BucketNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertBucketNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SubnetAlreadyInUse = { nil }
-
-function asserts.AssertSubnetAlreadyInUse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SubnetAlreadyInUse to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SubnetAlreadyInUse[k], "SubnetAlreadyInUse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SubnetAlreadyInUse
--- <p>A specified subnet is already in use by another cluster.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SubnetAlreadyInUse structure as a key-value pair table
-function M.SubnetAlreadyInUse(args)
-	assert(args, "You must provide an argument table when creating SubnetAlreadyInUse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSubnetAlreadyInUse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 function asserts.AssertTableRestoreStatusType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TableRestoreStatusType to be of type 'string'")
@@ -9987,6 +7903,17 @@ end
 --  
 function M.TableRestoreStatusType(str)
 	asserts.AssertTableRestoreStatusType(str)
+	return str
+end
+
+function asserts.AssertReservedNodeOfferingType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ReservedNodeOfferingType to be of type 'string'")
+end
+
+--  
+function M.ReservedNodeOfferingType(str)
+	asserts.AssertReservedNodeOfferingType(str)
 	return str
 end
 
@@ -10158,21 +8085,6 @@ function M.SnapshotCopyGrantList(list)
 	return list
 end
 
-function asserts.AssertSnapshotList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected SnapshotList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertSnapshot(v)
-	end
-end
-
---  
--- List of Snapshot objects
-function M.SnapshotList(list)
-	asserts.AssertSnapshotList(list)
-	return list
-end
-
 function asserts.AssertClusterNodesList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ClusterNodesList to be of type ''table")
@@ -10203,36 +8115,6 @@ function M.EventInfoMapList(list)
 	return list
 end
 
-function asserts.AssertTableRestoreStatusList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected TableRestoreStatusList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertTableRestoreStatus(v)
-	end
-end
-
---  
--- List of TableRestoreStatus objects
-function M.TableRestoreStatusList(list)
-	asserts.AssertTableRestoreStatusList(list)
-	return list
-end
-
-function asserts.AssertImportTablesNotStarted(list)
-	assert(list)
-	assert(type(list) == "table", "Expected ImportTablesNotStarted to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertString(v)
-	end
-end
-
---  
--- List of String objects
-function M.ImportTablesNotStarted(list)
-	asserts.AssertImportTablesNotStarted(list)
-	return list
-end
-
 function asserts.AssertParametersList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ParametersList to be of type ''table")
@@ -10248,6 +8130,21 @@ function M.ParametersList(list)
 	return list
 end
 
+function asserts.AssertClusterDbRevisionsList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ClusterDbRevisionsList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertClusterDbRevision(v)
+	end
+end
+
+--  
+-- List of ClusterDbRevision objects
+function M.ClusterDbRevisionsList(list)
+	asserts.AssertClusterDbRevisionsList(list)
+	return list
+end
+
 function asserts.AssertImportTablesCompleted(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ImportTablesCompleted to be of type ''table")
@@ -10260,6 +8157,36 @@ end
 -- List of String objects
 function M.ImportTablesCompleted(list)
 	asserts.AssertImportTablesCompleted(list)
+	return list
+end
+
+function asserts.AssertEligibleTracksToUpdateList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected EligibleTracksToUpdateList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertUpdateTarget(v)
+	end
+end
+
+--  
+-- List of UpdateTarget objects
+function M.EligibleTracksToUpdateList(list)
+	asserts.AssertEligibleTracksToUpdateList(list)
+	return list
+end
+
+function asserts.AssertSupportedPlatformsList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected SupportedPlatformsList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertSupportedPlatform(v)
+	end
+end
+
+--  
+-- List of SupportedPlatform objects
+function M.SupportedPlatformsList(list)
+	asserts.AssertSupportedPlatformsList(list)
 	return list
 end
 
@@ -10323,6 +8250,21 @@ function M.TagKeyList(list)
 	return list
 end
 
+function asserts.AssertIamRoleArnList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected IamRoleArnList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertString(v)
+	end
+end
+
+--  
+-- List of String objects
+function M.IamRoleArnList(list)
+	asserts.AssertIamRoleArnList(list)
+	return list
+end
+
 function asserts.AssertEventCategoriesMapList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EventCategoriesMapList to be of type ''table")
@@ -10383,6 +8325,21 @@ function M.DbGroupList(list)
 	return list
 end
 
+function asserts.AssertImportTablesNotStarted(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ImportTablesNotStarted to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertString(v)
+	end
+end
+
+--  
+-- List of String objects
+function M.ImportTablesNotStarted(list)
+	asserts.AssertImportTablesNotStarted(list)
+	return list
+end
+
 function asserts.AssertSubnetIdentifierList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SubnetIdentifierList to be of type ''table")
@@ -10410,6 +8367,21 @@ end
 -- List of Subnet objects
 function M.SubnetList(list)
 	asserts.AssertSubnetList(list)
+	return list
+end
+
+function asserts.AssertHsmClientCertificateList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected HsmClientCertificateList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertHsmClientCertificate(v)
+	end
+end
+
+--  
+-- List of HsmClientCertificate objects
+function M.HsmClientCertificateList(list)
+	asserts.AssertHsmClientCertificateList(list)
 	return list
 end
 
@@ -10473,18 +8445,33 @@ function M.OrderableClusterOptionsList(list)
 	return list
 end
 
-function asserts.AssertTagValueList(list)
+function asserts.AssertTrackList(list)
 	assert(list)
-	assert(type(list) == "table", "Expected TagValueList to be of type ''table")
+	assert(type(list) == "table", "Expected TrackList to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertString(v)
+		asserts.AssertMaintenanceTrack(v)
 	end
 end
 
 --  
--- List of String objects
-function M.TagValueList(list)
-	asserts.AssertTagValueList(list)
+-- List of MaintenanceTrack objects
+function M.TrackList(list)
+	asserts.AssertTrackList(list)
+	return list
+end
+
+function asserts.AssertRevisionTargetsList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected RevisionTargetsList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertRevisionTarget(v)
+	end
+end
+
+--  
+-- List of RevisionTarget objects
+function M.RevisionTargetsList(list)
+	asserts.AssertRevisionTargetsList(list)
 	return list
 end
 
@@ -10515,6 +8502,21 @@ end
 -- List of RecurringCharge objects
 function M.RecurringChargeList(list)
 	asserts.AssertRecurringChargeList(list)
+	return list
+end
+
+function asserts.AssertSnapshotList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected SnapshotList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertSnapshot(v)
+	end
+end
+
+--  
+-- List of Snapshot objects
+function M.SnapshotList(list)
+	asserts.AssertSnapshotList(list)
 	return list
 end
 
@@ -10563,6 +8565,21 @@ function M.ClusterSecurityGroups(list)
 	return list
 end
 
+function asserts.AssertTableRestoreStatusList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected TableRestoreStatusList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertTableRestoreStatus(v)
+	end
+end
+
+--  
+-- List of TableRestoreStatus objects
+function M.TableRestoreStatusList(list)
+	asserts.AssertTableRestoreStatusList(list)
+	return list
+end
+
 function asserts.AssertTaggedResourceList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TaggedResourceList to be of type ''table")
@@ -10575,6 +8592,21 @@ end
 -- List of TaggedResource objects
 function M.TaggedResourceList(list)
 	asserts.AssertTaggedResourceList(list)
+	return list
+end
+
+function asserts.AssertPendingActionsList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected PendingActionsList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertString(v)
+	end
+end
+
+--  
+-- List of String objects
+function M.PendingActionsList(list)
+	asserts.AssertPendingActionsList(list)
 	return list
 end
 
@@ -10668,6 +8700,21 @@ function M.ClusterList(list)
 	return list
 end
 
+function asserts.AssertAvailabilityZoneList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected AvailabilityZoneList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertAvailabilityZone(v)
+	end
+end
+
+--  
+-- List of AvailabilityZone objects
+function M.AvailabilityZoneList(list)
+	asserts.AssertAvailabilityZoneList(list)
+	return list
+end
+
 function asserts.AssertAccountsWithRestoreAccessList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AccountsWithRestoreAccessList to be of type ''table")
@@ -10680,6 +8727,21 @@ end
 -- List of AccountWithRestoreAccess objects
 function M.AccountsWithRestoreAccessList(list)
 	asserts.AssertAccountsWithRestoreAccessList(list)
+	return list
+end
+
+function asserts.AssertTagValueList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected TagValueList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertString(v)
+	end
+end
+
+--  
+-- List of String objects
+function M.TagValueList(list)
+	asserts.AssertTagValueList(list)
 	return list
 end
 
@@ -10698,21 +8760,6 @@ function M.HsmConfigurationList(list)
 	return list
 end
 
-function asserts.AssertHsmClientCertificateList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected HsmClientCertificateList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertHsmClientCertificate(v)
-	end
-end
-
---  
--- List of HsmClientCertificate objects
-function M.HsmClientCertificateList(list)
-	asserts.AssertHsmClientCertificateList(list)
-	return list
-end
-
 function asserts.AssertClusterSubnetGroups(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ClusterSubnetGroups to be of type ''table")
@@ -10725,36 +8772,6 @@ end
 -- List of ClusterSubnetGroup objects
 function M.ClusterSubnetGroups(list)
 	asserts.AssertClusterSubnetGroups(list)
-	return list
-end
-
-function asserts.AssertIamRoleArnList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected IamRoleArnList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertString(v)
-	end
-end
-
---  
--- List of String objects
-function M.IamRoleArnList(list)
-	asserts.AssertIamRoleArnList(list)
-	return list
-end
-
-function asserts.AssertAvailabilityZoneList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected AvailabilityZoneList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertAvailabilityZone(v)
-	end
-end
-
---  
--- List of AvailabilityZone objects
-function M.AvailabilityZoneList(list)
-	asserts.AssertAvailabilityZoneList(list)
 	return list
 end
 
@@ -11056,36 +9073,36 @@ function M.CopyClusterSnapshotSync(CopyClusterSnapshotMessage, ...)
 	return coroutine.yield()
 end
 
---- Call CreateClusterParameterGroup asynchronously, invoking a callback when done
--- @param CreateClusterParameterGroupMessage
+--- Call CreateClusterSecurityGroup asynchronously, invoking a callback when done
+-- @param CreateClusterSecurityGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
-function M.CreateClusterParameterGroupAsync(CreateClusterParameterGroupMessage, cb)
-	assert(CreateClusterParameterGroupMessage, "You must provide a CreateClusterParameterGroupMessage")
+function M.CreateClusterSecurityGroupAsync(CreateClusterSecurityGroupMessage, cb)
+	assert(CreateClusterSecurityGroupMessage, "You must provide a CreateClusterSecurityGroupMessage")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".CreateClusterParameterGroup",
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateClusterSecurityGroup",
 	}
-	for header,value in pairs(CreateClusterParameterGroupMessage.headers) do
+	for header,value in pairs(CreateClusterSecurityGroupMessage.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", CreateClusterParameterGroupMessage, headers, settings, cb)
+		request_handler(settings.uri, "/", CreateClusterSecurityGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call CreateClusterParameterGroup synchronously, returning when done
+--- Call CreateClusterSecurityGroup synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param CreateClusterParameterGroupMessage
+-- @param CreateClusterSecurityGroupMessage
 -- @return response
 -- @return error_message
-function M.CreateClusterParameterGroupSync(CreateClusterParameterGroupMessage, ...)
+function M.CreateClusterSecurityGroupSync(CreateClusterSecurityGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateClusterParameterGroupAsync(CreateClusterParameterGroupMessage, function(response, error_message)
+	M.CreateClusterSecurityGroupAsync(CreateClusterSecurityGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11651,6 +9668,41 @@ function M.RebootClusterSync(RebootClusterMessage, ...)
 	return coroutine.yield()
 end
 
+--- Call DescribeClusterDbRevisions asynchronously, invoking a callback when done
+-- @param DescribeClusterDbRevisionsMessage
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeClusterDbRevisionsAsync(DescribeClusterDbRevisionsMessage, cb)
+	assert(DescribeClusterDbRevisionsMessage, "You must provide a DescribeClusterDbRevisionsMessage")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeClusterDbRevisions",
+	}
+	for header,value in pairs(DescribeClusterDbRevisionsMessage.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeClusterDbRevisionsMessage, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeClusterDbRevisions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeClusterDbRevisionsMessage
+-- @return response
+-- @return error_message
+function M.DescribeClusterDbRevisionsSync(DescribeClusterDbRevisionsMessage, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeClusterDbRevisionsAsync(DescribeClusterDbRevisionsMessage, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call CreateHsmConfiguration asynchronously, invoking a callback when done
 -- @param CreateHsmConfigurationMessage
 -- @param cb Callback function accepting two args: response, error_message
@@ -11966,36 +10018,36 @@ function M.DescribeClusterSnapshotsSync(DescribeClusterSnapshotsMessage, ...)
 	return coroutine.yield()
 end
 
---- Call CreateClusterSecurityGroup asynchronously, invoking a callback when done
--- @param CreateClusterSecurityGroupMessage
+--- Call CreateClusterParameterGroup asynchronously, invoking a callback when done
+-- @param CreateClusterParameterGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
-function M.CreateClusterSecurityGroupAsync(CreateClusterSecurityGroupMessage, cb)
-	assert(CreateClusterSecurityGroupMessage, "You must provide a CreateClusterSecurityGroupMessage")
+function M.CreateClusterParameterGroupAsync(CreateClusterParameterGroupMessage, cb)
+	assert(CreateClusterParameterGroupMessage, "You must provide a CreateClusterParameterGroupMessage")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".CreateClusterSecurityGroup",
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateClusterParameterGroup",
 	}
-	for header,value in pairs(CreateClusterSecurityGroupMessage.headers) do
+	for header,value in pairs(CreateClusterParameterGroupMessage.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", CreateClusterSecurityGroupMessage, headers, settings, cb)
+		request_handler(settings.uri, "/", CreateClusterParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call CreateClusterSecurityGroup synchronously, returning when done
+--- Call CreateClusterParameterGroup synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param CreateClusterSecurityGroupMessage
+-- @param CreateClusterParameterGroupMessage
 -- @return response
 -- @return error_message
-function M.CreateClusterSecurityGroupSync(CreateClusterSecurityGroupMessage, ...)
+function M.CreateClusterParameterGroupSync(CreateClusterParameterGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateClusterSecurityGroupAsync(CreateClusterSecurityGroupMessage, function(response, error_message)
+	M.CreateClusterParameterGroupAsync(CreateClusterParameterGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12351,6 +10403,76 @@ function M.CreateClusterSubnetGroupSync(CreateClusterSubnetGroupMessage, ...)
 	return coroutine.yield()
 end
 
+--- Call ResizeCluster asynchronously, invoking a callback when done
+-- @param ResizeClusterMessage
+-- @param cb Callback function accepting two args: response, error_message
+function M.ResizeClusterAsync(ResizeClusterMessage, cb)
+	assert(ResizeClusterMessage, "You must provide a ResizeClusterMessage")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ResizeCluster",
+	}
+	for header,value in pairs(ResizeClusterMessage.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ResizeClusterMessage, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ResizeCluster synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ResizeClusterMessage
+-- @return response
+-- @return error_message
+function M.ResizeClusterSync(ResizeClusterMessage, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ResizeClusterAsync(ResizeClusterMessage, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyClusterDbRevision asynchronously, invoking a callback when done
+-- @param ModifyClusterDbRevisionMessage
+-- @param cb Callback function accepting two args: response, error_message
+function M.ModifyClusterDbRevisionAsync(ModifyClusterDbRevisionMessage, cb)
+	assert(ModifyClusterDbRevisionMessage, "You must provide a ModifyClusterDbRevisionMessage")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyClusterDbRevision",
+	}
+	for header,value in pairs(ModifyClusterDbRevisionMessage.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ModifyClusterDbRevisionMessage, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ModifyClusterDbRevision synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyClusterDbRevisionMessage
+-- @return response
+-- @return error_message
+function M.ModifyClusterDbRevisionSync(ModifyClusterDbRevisionMessage, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyClusterDbRevisionAsync(ModifyClusterDbRevisionMessage, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call DescribeClusterParameters asynchronously, invoking a callback when done
 -- @param DescribeClusterParametersMessage
 -- @param cb Callback function accepting two args: response, error_message
@@ -12486,6 +10608,41 @@ function M.DescribeSnapshotCopyGrantsSync(DescribeSnapshotCopyGrantsMessage, ...
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DescribeSnapshotCopyGrantsAsync(DescribeSnapshotCopyGrantsMessage, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AcceptReservedNodeExchange asynchronously, invoking a callback when done
+-- @param AcceptReservedNodeExchangeInputMessage
+-- @param cb Callback function accepting two args: response, error_message
+function M.AcceptReservedNodeExchangeAsync(AcceptReservedNodeExchangeInputMessage, cb)
+	assert(AcceptReservedNodeExchangeInputMessage, "You must provide a AcceptReservedNodeExchangeInputMessage")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AcceptReservedNodeExchange",
+	}
+	for header,value in pairs(AcceptReservedNodeExchangeInputMessage.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", AcceptReservedNodeExchangeInputMessage, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call AcceptReservedNodeExchange synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AcceptReservedNodeExchangeInputMessage
+-- @return response
+-- @return error_message
+function M.AcceptReservedNodeExchangeSync(AcceptReservedNodeExchangeInputMessage, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AcceptReservedNodeExchangeAsync(AcceptReservedNodeExchangeInputMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12736,6 +10893,41 @@ function M.CreateTagsSync(CreateTagsMessage, ...)
 	return coroutine.yield()
 end
 
+--- Call DescribeClusterTracks asynchronously, invoking a callback when done
+-- @param DescribeClusterTracksMessage
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeClusterTracksAsync(DescribeClusterTracksMessage, cb)
+	assert(DescribeClusterTracksMessage, "You must provide a DescribeClusterTracksMessage")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeClusterTracks",
+	}
+	for header,value in pairs(DescribeClusterTracksMessage.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeClusterTracksMessage, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeClusterTracks synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeClusterTracksMessage
+-- @return response
+-- @return error_message
+function M.DescribeClusterTracksSync(DescribeClusterTracksMessage, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeClusterTracksAsync(DescribeClusterTracksMessage, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call DescribeReservedNodeOfferings asynchronously, invoking a callback when done
 -- @param DescribeReservedNodeOfferingsMessage
 -- @param cb Callback function accepting two args: response, error_message
@@ -12801,6 +10993,41 @@ function M.DescribeLoggingStatusSync(DescribeLoggingStatusMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DescribeLoggingStatusAsync(DescribeLoggingStatusMessage, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetReservedNodeExchangeOfferings asynchronously, invoking a callback when done
+-- @param GetReservedNodeExchangeOfferingsInputMessage
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetReservedNodeExchangeOfferingsAsync(GetReservedNodeExchangeOfferingsInputMessage, cb)
+	assert(GetReservedNodeExchangeOfferingsInputMessage, "You must provide a GetReservedNodeExchangeOfferingsInputMessage")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetReservedNodeExchangeOfferings",
+	}
+	for header,value in pairs(GetReservedNodeExchangeOfferingsInputMessage.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", GetReservedNodeExchangeOfferingsInputMessage, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetReservedNodeExchangeOfferings synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetReservedNodeExchangeOfferingsInputMessage
+-- @return response
+-- @return error_message
+function M.GetReservedNodeExchangeOfferingsSync(GetReservedNodeExchangeOfferingsInputMessage, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetReservedNodeExchangeOfferingsAsync(GetReservedNodeExchangeOfferingsInputMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

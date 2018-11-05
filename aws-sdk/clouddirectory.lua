@@ -1,10 +1,10 @@
 --- GENERATED CODE - DO NOT MODIFY
--- Amazon CloudDirectory (clouddirectory-2016-05-10)
+-- Amazon CloudDirectory (clouddirectory-2017-01-11)
 
 local M = {}
 
 M.metadata = {
-	api_version = "2016-05-10",
+	api_version = "2017-01-11",
 	json_version = "",
 	protocol = "rest-json",
 	checksum_format = "",
@@ -15,11 +15,96 @@ M.metadata = {
 	target_prefix = "",
 	timestamp_format = "",
 	global_endpoint = "",
-	uid = "clouddirectory-2016-05-10",
+	uid = "clouddirectory-2017-01-11",
 }
 
 local keys = {}
 local asserts = {}
+
+keys.BatchListObjectPolicies = { ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
+
+function asserts.AssertBatchListObjectPolicies(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchListObjectPolicies to be of type 'table'")
+	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchListObjectPolicies[k], "BatchListObjectPolicies contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchListObjectPolicies
+-- <p>Returns policies attached to an object in pagination fashion inside a <a>BatchRead</a> operation. For more information, see <a>ListObjectPolicies</a> and <a>BatchReadRequest$Operations</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectReference [ObjectReference] <p>The reference that identifies the object whose attributes will be listed.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- Required key: ObjectReference
+-- @return BatchListObjectPolicies structure as a key-value pair table
+function M.BatchListObjectPolicies(args)
+	assert(args, "You must provide an argument table when creating BatchListObjectPolicies")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ObjectReference"] = args["ObjectReference"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+	}
+	asserts.AssertBatchListObjectPolicies(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListPublishedSchemaArnsResponse = { ["NextToken"] = true, ["SchemaArns"] = true, nil }
+
+function asserts.AssertListPublishedSchemaArnsResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListPublishedSchemaArnsResponse to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["SchemaArns"] then asserts.AssertArns(struct["SchemaArns"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListPublishedSchemaArnsResponse[k], "ListPublishedSchemaArnsResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListPublishedSchemaArnsResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * SchemaArns [Arns] <p>The ARNs of published schemas.</p>
+-- @return ListPublishedSchemaArnsResponse structure as a key-value pair table
+function M.ListPublishedSchemaArnsResponse(args)
+	assert(args, "You must provide an argument table when creating ListPublishedSchemaArnsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["SchemaArns"] = args["SchemaArns"],
+	}
+	asserts.AssertListPublishedSchemaArnsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
 
 keys.GetSchemaAsJsonResponse = { ["Document"] = true, ["Name"] = true, nil }
 
@@ -101,25 +186,27 @@ function M.ObjectAttributeRange(args)
     }
 end
 
-keys.LinkNameAlreadyInUseException = { ["Message"] = true, nil }
+keys.BatchLookupPolicyResponse = { ["PolicyToPathList"] = true, ["NextToken"] = true, nil }
 
-function asserts.AssertLinkNameAlreadyInUseException(struct)
+function asserts.AssertBatchLookupPolicyResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected LinkNameAlreadyInUseException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected BatchLookupPolicyResponse to be of type 'table'")
+	if struct["PolicyToPathList"] then asserts.AssertPolicyToPathList(struct["PolicyToPathList"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.LinkNameAlreadyInUseException[k], "LinkNameAlreadyInUseException contains unknown key " .. tostring(k))
+		assert(keys.BatchLookupPolicyResponse[k], "BatchLookupPolicyResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type LinkNameAlreadyInUseException
--- <p>Indicates that a link could not be created due to a naming conflict. Choose a different name and then try again.</p>
+--- Create a structure of type BatchLookupPolicyResponse
+-- <p>Represents the output of a <a>LookupPolicy</a> response operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return LinkNameAlreadyInUseException structure as a key-value pair table
-function M.LinkNameAlreadyInUseException(args)
-	assert(args, "You must provide an argument table when creating LinkNameAlreadyInUseException")
+-- * PolicyToPathList [PolicyToPathList] <p>Provides list of path to policies. Policies contain <code>PolicyId</code>, <code>ObjectIdentifier</code>, and <code>PolicyType</code>. For more information, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies">Policies</a>.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- @return BatchLookupPolicyResponse structure as a key-value pair table
+function M.BatchLookupPolicyResponse(args)
+	assert(args, "You must provide an argument table when creating BatchLookupPolicyResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -127,9 +214,10 @@ function M.LinkNameAlreadyInUseException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["PolicyToPathList"] = args["PolicyToPathList"],
+		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertLinkNameAlreadyInUseException(all_args)
+	asserts.AssertBatchLookupPolicyResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -178,6 +266,55 @@ function M.BatchReadException(args)
     }
 end
 
+keys.AttributeKey = { ["SchemaArn"] = true, ["FacetName"] = true, ["Name"] = true, nil }
+
+function asserts.AssertAttributeKey(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected AttributeKey to be of type 'table'")
+	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
+	assert(struct["FacetName"], "Expected key FacetName to exist in table")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	if struct["FacetName"] then asserts.AssertFacetName(struct["FacetName"]) end
+	if struct["Name"] then asserts.AssertAttributeName(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.AttributeKey[k], "AttributeKey contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type AttributeKey
+-- <p>A unique identifier for an attribute.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) of the schema that contains the facet and attribute.</p>
+-- * FacetName [FacetName] <p>The name of the facet that the attribute exists within.</p>
+-- * Name [AttributeName] <p>The name of the attribute.</p>
+-- Required key: SchemaArn
+-- Required key: FacetName
+-- Required key: Name
+-- @return AttributeKey structure as a key-value pair table
+function M.AttributeKey(args)
+	assert(args, "You must provide an argument table when creating AttributeKey")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SchemaArn"] = args["SchemaArn"],
+		["FacetName"] = args["FacetName"],
+		["Name"] = args["Name"],
+	}
+	asserts.AssertAttributeKey(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.RemoveFacetFromObjectResponse = { nil }
 
 function asserts.AssertRemoveFacetFromObjectResponse(struct)
@@ -204,43 +341,6 @@ function M.RemoveFacetFromObjectResponse(args)
 	local all_args = { 
 	}
 	asserts.AssertRemoveFacetFromObjectResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidNextTokenException = { ["Message"] = true, nil }
-
-function asserts.AssertInvalidNextTokenException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidNextTokenException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidNextTokenException[k], "InvalidNextTokenException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidNextTokenException
--- <p>Indicates that the <code>NextToken</code> value is not valid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return InvalidNextTokenException structure as a key-value pair table
-function M.InvalidNextTokenException(args)
-	assert(args, "You must provide an argument table when creating InvalidNextTokenException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertInvalidNextTokenException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -304,25 +404,31 @@ function M.AttachObjectRequest(args)
     }
 end
 
-keys.SchemaAlreadyPublishedException = { ["Message"] = true, nil }
+keys.BatchGetLinkAttributes = { ["AttributeNames"] = true, ["TypedLinkSpecifier"] = true, nil }
 
-function asserts.AssertSchemaAlreadyPublishedException(struct)
+function asserts.AssertBatchGetLinkAttributes(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SchemaAlreadyPublishedException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected BatchGetLinkAttributes to be of type 'table'")
+	assert(struct["TypedLinkSpecifier"], "Expected key TypedLinkSpecifier to exist in table")
+	assert(struct["AttributeNames"], "Expected key AttributeNames to exist in table")
+	if struct["AttributeNames"] then asserts.AssertAttributeNameList(struct["AttributeNames"]) end
+	if struct["TypedLinkSpecifier"] then asserts.AssertTypedLinkSpecifier(struct["TypedLinkSpecifier"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SchemaAlreadyPublishedException[k], "SchemaAlreadyPublishedException contains unknown key " .. tostring(k))
+		assert(keys.BatchGetLinkAttributes[k], "BatchGetLinkAttributes contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SchemaAlreadyPublishedException
--- <p>Indicates that a schema is already published.</p>
+--- Create a structure of type BatchGetLinkAttributes
+-- <p>Retrieves attributes that are associated with a typed link inside a <a>BatchRead</a> operation. For more information, see <a>GetLinkAttributes</a> and <a>BatchReadRequest$Operations</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return SchemaAlreadyPublishedException structure as a key-value pair table
-function M.SchemaAlreadyPublishedException(args)
-	assert(args, "You must provide an argument table when creating SchemaAlreadyPublishedException")
+-- * AttributeNames [AttributeNameList] <p>A list of attribute names whose values will be retrieved.</p>
+-- * TypedLinkSpecifier [TypedLinkSpecifier] <p>Allows a typed link specifier to be accepted as input.</p>
+-- Required key: TypedLinkSpecifier
+-- Required key: AttributeNames
+-- @return BatchGetLinkAttributes structure as a key-value pair table
+function M.BatchGetLinkAttributes(args)
+	assert(args, "You must provide an argument table when creating BatchGetLinkAttributes")
     local query_args = { 
     }
     local uri_args = { 
@@ -330,9 +436,10 @@ function M.SchemaAlreadyPublishedException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["AttributeNames"] = args["AttributeNames"],
+		["TypedLinkSpecifier"] = args["TypedLinkSpecifier"],
 	}
-	asserts.AssertSchemaAlreadyPublishedException(all_args)
+	asserts.AssertBatchGetLinkAttributes(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -403,7 +510,7 @@ function asserts.AssertTypedAttributeValueRange(struct)
 end
 
 --- Create a structure of type TypedAttributeValueRange
--- <p>A range of attribute values.</p>
+-- <p>A range of attribute values. For more information, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_range_filters.html">Range Filters</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * EndMode [RangeMode] <p>The inclusive or exclusive range end.</p>
@@ -436,25 +543,25 @@ function M.TypedAttributeValueRange(args)
     }
 end
 
-keys.InvalidFacetUpdateException = { ["Message"] = true, nil }
+keys.BatchAttachToIndexResponse = { ["AttachedObjectIdentifier"] = true, nil }
 
-function asserts.AssertInvalidFacetUpdateException(struct)
+function asserts.AssertBatchAttachToIndexResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidFacetUpdateException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected BatchAttachToIndexResponse to be of type 'table'")
+	if struct["AttachedObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["AttachedObjectIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidFacetUpdateException[k], "InvalidFacetUpdateException contains unknown key " .. tostring(k))
+		assert(keys.BatchAttachToIndexResponse[k], "BatchAttachToIndexResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidFacetUpdateException
--- <p>An attempt to modify a <a>Facet</a> resulted in an invalid schema exception.</p>
+--- Create a structure of type BatchAttachToIndexResponse
+-- <p>Represents the output of a <a>AttachToIndex</a> response operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return InvalidFacetUpdateException structure as a key-value pair table
-function M.InvalidFacetUpdateException(args)
-	assert(args, "You must provide an argument table when creating InvalidFacetUpdateException")
+-- * AttachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object that was attached to the index.</p>
+-- @return BatchAttachToIndexResponse structure as a key-value pair table
+function M.BatchAttachToIndexResponse(args)
+	assert(args, "You must provide an argument table when creating BatchAttachToIndexResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -462,9 +569,9 @@ function M.InvalidFacetUpdateException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["AttachedObjectIdentifier"] = args["AttachedObjectIdentifier"],
 	}
-	asserts.AssertInvalidFacetUpdateException(all_args)
+	asserts.AssertBatchAttachToIndexResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -553,11 +660,80 @@ function M.ListPolicyAttachmentsResponse(args)
     }
 end
 
+keys.UpdateLinkAttributesResponse = { nil }
+
+function asserts.AssertUpdateLinkAttributesResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateLinkAttributesResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateLinkAttributesResponse[k], "UpdateLinkAttributesResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateLinkAttributesResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateLinkAttributesResponse structure as a key-value pair table
+function M.UpdateLinkAttributesResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateLinkAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertUpdateLinkAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchDetachTypedLinkResponse = { nil }
+
+function asserts.AssertBatchDetachTypedLinkResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchDetachTypedLinkResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.BatchDetachTypedLinkResponse[k], "BatchDetachTypedLinkResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchDetachTypedLinkResponse
+-- <p>Represents the output of a <a>DetachTypedLink</a> response operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return BatchDetachTypedLinkResponse structure as a key-value pair table
+function M.BatchDetachTypedLinkResponse(args)
+	assert(args, "You must provide an argument table when creating BatchDetachTypedLinkResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertBatchDetachTypedLinkResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.AttachPolicyRequest = { ["PolicyReference"] = true, ["ObjectReference"] = true, ["DirectoryArn"] = true, nil }
 
 function asserts.AssertAttachPolicyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachPolicyRequest to be of type 'table'")
+	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["PolicyReference"], "Expected key PolicyReference to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
 	if struct["PolicyReference"] then asserts.AssertObjectReference(struct["PolicyReference"]) end
@@ -575,6 +751,7 @@ end
 -- * PolicyReference [ObjectReference] <p>The reference that is associated with the policy object.</p>
 -- * ObjectReference [ObjectReference] <p>The reference that identifies the object to which the policy will be attached.</p>
 -- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where both objects reside. For more information, see <a>arns</a>.</p>
+-- Required key: DirectoryArn
 -- Required key: PolicyReference
 -- Required key: ObjectReference
 -- @return AttachPolicyRequest structure as a key-value pair table
@@ -601,27 +778,25 @@ function M.AttachPolicyRequest(args)
     }
 end
 
-keys.EnableDirectoryResponse = { ["DirectoryArn"] = true, nil }
+keys.BatchGetLinkAttributesResponse = { ["Attributes"] = true, nil }
 
-function asserts.AssertEnableDirectoryResponse(struct)
+function asserts.AssertBatchGetLinkAttributesResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected EnableDirectoryResponse to be of type 'table'")
-	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
-	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	assert(type(struct) == "table", "Expected BatchGetLinkAttributesResponse to be of type 'table'")
+	if struct["Attributes"] then asserts.AssertAttributeKeyAndValueList(struct["Attributes"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.EnableDirectoryResponse[k], "EnableDirectoryResponse contains unknown key " .. tostring(k))
+		assert(keys.BatchGetLinkAttributesResponse[k], "BatchGetLinkAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type EnableDirectoryResponse
---  
+--- Create a structure of type BatchGetLinkAttributesResponse
+-- <p>Represents the output of a <a>GetLinkAttributes</a> response operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DirectoryArn [Arn] <p>The ARN of the enabled directory.</p>
--- Required key: DirectoryArn
--- @return EnableDirectoryResponse structure as a key-value pair table
-function M.EnableDirectoryResponse(args)
-	assert(args, "You must provide an argument table when creating EnableDirectoryResponse")
+-- * Attributes [AttributeKeyAndValueList] <p>The attributes that are associated with the typed link.</p>
+-- @return BatchGetLinkAttributesResponse structure as a key-value pair table
+function M.BatchGetLinkAttributesResponse(args)
+	assert(args, "You must provide an argument table when creating BatchGetLinkAttributesResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -629,9 +804,9 @@ function M.EnableDirectoryResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["DirectoryArn"] = args["DirectoryArn"],
+		["Attributes"] = args["Attributes"],
 	}
-	asserts.AssertEnableDirectoryResponse(all_args)
+	asserts.AssertBatchGetLinkAttributesResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -672,80 +847,6 @@ function M.ListDevelopmentSchemaArnsRequest(args)
 		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListDevelopmentSchemaArnsRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ObjectNotDetachedException = { ["Message"] = true, nil }
-
-function asserts.AssertObjectNotDetachedException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ObjectNotDetachedException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ObjectNotDetachedException[k], "ObjectNotDetachedException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ObjectNotDetachedException
--- <p>Indicates that the requested operation cannot be completed because the object has not been detached from the tree.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return ObjectNotDetachedException structure as a key-value pair table
-function M.ObjectNotDetachedException(args)
-	assert(args, "You must provide an argument table when creating ObjectNotDetachedException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertObjectNotDetachedException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.StillContainsLinksException = { ["Message"] = true, nil }
-
-function asserts.AssertStillContainsLinksException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected StillContainsLinksException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.StillContainsLinksException[k], "StillContainsLinksException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type StillContainsLinksException
--- <p>The object could not be deleted because links still exist. Remove the links and then try the operation again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return StillContainsLinksException structure as a key-value pair table
-function M.StillContainsLinksException(args)
-	assert(args, "You must provide an argument table when creating StillContainsLinksException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertStillContainsLinksException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -813,7 +914,7 @@ function asserts.AssertPolicyAttachment(struct)
 end
 
 --- Create a structure of type PolicyAttachment
--- <p>Contains the <code>PolicyType</code>, <code>PolicyId</code>, and the <code>ObjectIdentifier</code> to which it is attached. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies">Policies</a>.</p>
+-- <p>Contains the <code>PolicyType</code>, <code>PolicyId</code>, and the <code>ObjectIdentifier</code> to which it is attached. For more information, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies">Policies</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * PolicyType [PolicyType] <p>The type of policy that can be associated with <code>PolicyAttachment</code>.</p>
@@ -834,6 +935,51 @@ function M.PolicyAttachment(args)
 		["PolicyId"] = args["PolicyId"],
 	}
 	asserts.AssertPolicyAttachment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchListPolicyAttachments = { ["PolicyReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
+
+function asserts.AssertBatchListPolicyAttachments(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchListPolicyAttachments to be of type 'table'")
+	assert(struct["PolicyReference"], "Expected key PolicyReference to exist in table")
+	if struct["PolicyReference"] then asserts.AssertObjectReference(struct["PolicyReference"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchListPolicyAttachments[k], "BatchListPolicyAttachments contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchListPolicyAttachments
+-- <p>Returns all of the <code>ObjectIdentifiers</code> to which a given policy is attached inside a <a>BatchRead</a> operation. For more information, see <a>ListPolicyAttachments</a> and <a>BatchReadRequest$Operations</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyReference [ObjectReference] <p>The reference that identifies the policy object.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- Required key: PolicyReference
+-- @return BatchListPolicyAttachments structure as a key-value pair table
+function M.BatchListPolicyAttachments(args)
+	assert(args, "You must provide an argument table when creating BatchListPolicyAttachments")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["PolicyReference"] = args["PolicyReference"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+	}
+	asserts.AssertBatchListPolicyAttachments(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -879,25 +1025,27 @@ function M.AttachToIndexResponse(args)
     }
 end
 
-keys.FacetNotFoundException = { ["Message"] = true, nil }
+keys.BatchListObjectParentPathsResponse = { ["PathToObjectIdentifiersList"] = true, ["NextToken"] = true, nil }
 
-function asserts.AssertFacetNotFoundException(struct)
+function asserts.AssertBatchListObjectParentPathsResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected FacetNotFoundException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected BatchListObjectParentPathsResponse to be of type 'table'")
+	if struct["PathToObjectIdentifiersList"] then asserts.AssertPathToObjectIdentifiersList(struct["PathToObjectIdentifiersList"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.FacetNotFoundException[k], "FacetNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.BatchListObjectParentPathsResponse[k], "BatchListObjectParentPathsResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type FacetNotFoundException
--- <p>The specified <a>Facet</a> could not be found.</p>
+--- Create a structure of type BatchListObjectParentPathsResponse
+-- <p>Represents the output of a <a>ListObjectParentPaths</a> response operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return FacetNotFoundException structure as a key-value pair table
-function M.FacetNotFoundException(args)
-	assert(args, "You must provide an argument table when creating FacetNotFoundException")
+-- * PathToObjectIdentifiersList [PathToObjectIdentifiersList] <p>Returns the path to the <code>ObjectIdentifiers</code> that are associated with the directory.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- @return BatchListObjectParentPathsResponse structure as a key-value pair table
+function M.BatchListObjectParentPathsResponse(args)
+	assert(args, "You must provide an argument table when creating BatchListObjectParentPathsResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -905,46 +1053,10 @@ function M.FacetNotFoundException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["PathToObjectIdentifiersList"] = args["PathToObjectIdentifiersList"],
+		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertFacetNotFoundException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.UpdateObjectAttributesResponse = { ["ObjectIdentifier"] = true, nil }
-
-function asserts.AssertUpdateObjectAttributesResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateObjectAttributesResponse to be of type 'table'")
-	if struct["ObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.UpdateObjectAttributesResponse[k], "UpdateObjectAttributesResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UpdateObjectAttributesResponse
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the updated object.</p>
--- @return UpdateObjectAttributesResponse structure as a key-value pair table
-function M.UpdateObjectAttributesResponse(args)
-	assert(args, "You must provide an argument table when creating UpdateObjectAttributesResponse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ObjectIdentifier"] = args["ObjectIdentifier"],
-	}
-	asserts.AssertUpdateObjectAttributesResponse(all_args)
+	asserts.AssertBatchListObjectParentPathsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1013,35 +1125,57 @@ function M.AttachTypedLinkRequest(args)
     }
 end
 
-keys.UnsupportedIndexTypeException = { ["Message"] = true, nil }
+keys.GetObjectAttributesRequest = { ["AttributeNames"] = true, ["ObjectReference"] = true, ["ConsistencyLevel"] = true, ["DirectoryArn"] = true, ["SchemaFacet"] = true, nil }
 
-function asserts.AssertUnsupportedIndexTypeException(struct)
+function asserts.AssertGetObjectAttributesRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected UnsupportedIndexTypeException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected GetObjectAttributesRequest to be of type 'table'")
+	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
+	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
+	assert(struct["SchemaFacet"], "Expected key SchemaFacet to exist in table")
+	assert(struct["AttributeNames"], "Expected key AttributeNames to exist in table")
+	if struct["AttributeNames"] then asserts.AssertAttributeNameList(struct["AttributeNames"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["ConsistencyLevel"] then asserts.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	if struct["SchemaFacet"] then asserts.AssertSchemaFacet(struct["SchemaFacet"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.UnsupportedIndexTypeException[k], "UnsupportedIndexTypeException contains unknown key " .. tostring(k))
+		assert(keys.GetObjectAttributesRequest[k], "GetObjectAttributesRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type UnsupportedIndexTypeException
--- <p>Indicates that the requested index type is not supported.</p>
+--- Create a structure of type GetObjectAttributesRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return UnsupportedIndexTypeException structure as a key-value pair table
-function M.UnsupportedIndexTypeException(args)
-	assert(args, "You must provide an argument table when creating UnsupportedIndexTypeException")
+-- * AttributeNames [AttributeNameList] <p>List of attribute names whose values will be retrieved.</p>
+-- * ObjectReference [ObjectReference] <p>Reference that identifies the object whose attributes will be retrieved.</p>
+-- * ConsistencyLevel [ConsistencyLevel] <p>The consistency level at which to retrieve the attributes on an object.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides.</p>
+-- * SchemaFacet [SchemaFacet] <p>Identifier for the facet whose attributes will be retrieved. See <a>SchemaFacet</a> for details.</p>
+-- Required key: DirectoryArn
+-- Required key: ObjectReference
+-- Required key: SchemaFacet
+-- Required key: AttributeNames
+-- @return GetObjectAttributesRequest structure as a key-value pair table
+function M.GetObjectAttributesRequest(args)
+	assert(args, "You must provide an argument table when creating GetObjectAttributesRequest")
     local query_args = { 
     }
     local uri_args = { 
     }
     local header_args = { 
+        ["x-amz-consistency-level"] = args["ConsistencyLevel"],
+        ["x-amz-data-partition"] = args["DirectoryArn"],
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["AttributeNames"] = args["AttributeNames"],
+		["ObjectReference"] = args["ObjectReference"],
+		["ConsistencyLevel"] = args["ConsistencyLevel"],
+		["DirectoryArn"] = args["DirectoryArn"],
+		["SchemaFacet"] = args["SchemaFacet"],
 	}
-	asserts.AssertUnsupportedIndexTypeException(all_args)
+	asserts.AssertGetObjectAttributesRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1124,44 +1258,35 @@ function M.AddFacetToObjectResponse(args)
     }
 end
 
-keys.ListFacetNamesRequest = { ["SchemaArn"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
+keys.UpdateSchemaResponse = { ["SchemaArn"] = true, nil }
 
-function asserts.AssertListFacetNamesRequest(struct)
+function asserts.AssertUpdateSchemaResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ListFacetNamesRequest to be of type 'table'")
-	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
+	assert(type(struct) == "table", "Expected UpdateSchemaResponse to be of type 'table'")
 	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
-	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ListFacetNamesRequest[k], "ListFacetNamesRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateSchemaResponse[k], "UpdateSchemaResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ListFacetNamesRequest
+--- Create a structure of type UpdateSchemaResponse
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) to retrieve facet names from.</p>
--- * NextToken [NextToken] <p>The pagination token.</p>
--- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
--- Required key: SchemaArn
--- @return ListFacetNamesRequest structure as a key-value pair table
-function M.ListFacetNamesRequest(args)
-	assert(args, "You must provide an argument table when creating ListFacetNamesRequest")
+-- * SchemaArn [Arn] <p>The ARN that is associated with the updated schema. For more information, see <a>arns</a>.</p>
+-- @return UpdateSchemaResponse structure as a key-value pair table
+function M.UpdateSchemaResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateSchemaResponse")
     local query_args = { 
     }
     local uri_args = { 
     }
     local header_args = { 
-        ["x-amz-data-partition"] = args["SchemaArn"],
     }
 	local all_args = { 
 		["SchemaArn"] = args["SchemaArn"],
-		["NextToken"] = args["NextToken"],
-		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListFacetNamesRequest(all_args)
+	asserts.AssertUpdateSchemaResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1204,25 +1329,39 @@ function M.DeleteFacetResponse(args)
     }
 end
 
-keys.InvalidArnException = { ["Message"] = true, nil }
+keys.TypedLinkSpecifier = { ["SourceObjectReference"] = true, ["IdentityAttributeValues"] = true, ["TargetObjectReference"] = true, ["TypedLinkFacet"] = true, nil }
 
-function asserts.AssertInvalidArnException(struct)
+function asserts.AssertTypedLinkSpecifier(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidArnException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected TypedLinkSpecifier to be of type 'table'")
+	assert(struct["TypedLinkFacet"], "Expected key TypedLinkFacet to exist in table")
+	assert(struct["SourceObjectReference"], "Expected key SourceObjectReference to exist in table")
+	assert(struct["TargetObjectReference"], "Expected key TargetObjectReference to exist in table")
+	assert(struct["IdentityAttributeValues"], "Expected key IdentityAttributeValues to exist in table")
+	if struct["SourceObjectReference"] then asserts.AssertObjectReference(struct["SourceObjectReference"]) end
+	if struct["IdentityAttributeValues"] then asserts.AssertAttributeNameAndValueList(struct["IdentityAttributeValues"]) end
+	if struct["TargetObjectReference"] then asserts.AssertObjectReference(struct["TargetObjectReference"]) end
+	if struct["TypedLinkFacet"] then asserts.AssertTypedLinkSchemaAndFacetName(struct["TypedLinkFacet"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidArnException[k], "InvalidArnException contains unknown key " .. tostring(k))
+		assert(keys.TypedLinkSpecifier[k], "TypedLinkSpecifier contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidArnException
--- <p>Indicates that the provided ARN value is not valid.</p>
+--- Create a structure of type TypedLinkSpecifier
+-- <p>Contains all the information that is used to uniquely identify a typed link. The parameters discussed in this topic are used to uniquely specify the typed link being operated on. The <a>AttachTypedLink</a> API returns a typed link specifier while the <a>DetachTypedLink</a> API accepts one as input. Similarly, the <a>ListIncomingTypedLinks</a> and <a>ListOutgoingTypedLinks</a> API operations provide typed link specifiers as output. You can also construct a typed link specifier from scratch.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return InvalidArnException structure as a key-value pair table
-function M.InvalidArnException(args)
-	assert(args, "You must provide an argument table when creating InvalidArnException")
+-- * SourceObjectReference [ObjectReference] <p>Identifies the source object that the typed link will attach to.</p>
+-- * IdentityAttributeValues [AttributeNameAndValueList] <p>Identifies the attribute value to update.</p>
+-- * TargetObjectReference [ObjectReference] <p>Identifies the target object that the typed link will attach to.</p>
+-- * TypedLinkFacet [TypedLinkSchemaAndFacetName] <p>Identifies the typed link facet that is associated with the typed link.</p>
+-- Required key: TypedLinkFacet
+-- Required key: SourceObjectReference
+-- Required key: TargetObjectReference
+-- Required key: IdentityAttributeValues
+-- @return TypedLinkSpecifier structure as a key-value pair table
+function M.TypedLinkSpecifier(args)
+	assert(args, "You must provide an argument table when creating TypedLinkSpecifier")
     local query_args = { 
     }
     local uri_args = { 
@@ -1230,9 +1369,12 @@ function M.InvalidArnException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["SourceObjectReference"] = args["SourceObjectReference"],
+		["IdentityAttributeValues"] = args["IdentityAttributeValues"],
+		["TargetObjectReference"] = args["TargetObjectReference"],
+		["TypedLinkFacet"] = args["TypedLinkFacet"],
 	}
-	asserts.AssertInvalidArnException(all_args)
+	asserts.AssertTypedLinkSpecifier(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1241,35 +1383,39 @@ function M.InvalidArnException(args)
     }
 end
 
-keys.AttributeKey = { ["SchemaArn"] = true, ["FacetName"] = true, ["Name"] = true, nil }
+keys.BatchAttachTypedLink = { ["SourceObjectReference"] = true, ["Attributes"] = true, ["TargetObjectReference"] = true, ["TypedLinkFacet"] = true, nil }
 
-function asserts.AssertAttributeKey(struct)
+function asserts.AssertBatchAttachTypedLink(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected AttributeKey to be of type 'table'")
-	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
-	assert(struct["FacetName"], "Expected key FacetName to exist in table")
-	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
-	if struct["FacetName"] then asserts.AssertFacetName(struct["FacetName"]) end
-	if struct["Name"] then asserts.AssertAttributeName(struct["Name"]) end
+	assert(type(struct) == "table", "Expected BatchAttachTypedLink to be of type 'table'")
+	assert(struct["SourceObjectReference"], "Expected key SourceObjectReference to exist in table")
+	assert(struct["TargetObjectReference"], "Expected key TargetObjectReference to exist in table")
+	assert(struct["TypedLinkFacet"], "Expected key TypedLinkFacet to exist in table")
+	assert(struct["Attributes"], "Expected key Attributes to exist in table")
+	if struct["SourceObjectReference"] then asserts.AssertObjectReference(struct["SourceObjectReference"]) end
+	if struct["Attributes"] then asserts.AssertAttributeNameAndValueList(struct["Attributes"]) end
+	if struct["TargetObjectReference"] then asserts.AssertObjectReference(struct["TargetObjectReference"]) end
+	if struct["TypedLinkFacet"] then asserts.AssertTypedLinkSchemaAndFacetName(struct["TypedLinkFacet"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.AttributeKey[k], "AttributeKey contains unknown key " .. tostring(k))
+		assert(keys.BatchAttachTypedLink[k], "BatchAttachTypedLink contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type AttributeKey
--- <p>A unique identifier for an attribute.</p>
+--- Create a structure of type BatchAttachTypedLink
+-- <p>Attaches a typed link to a specified source and target object inside a <a>BatchRead</a> operation. For more information, see <a>AttachTypedLink</a> and <a>BatchReadRequest$Operations</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) of the schema that contains the facet and attribute.</p>
--- * FacetName [FacetName] <p>The name of the facet that the attribute exists within.</p>
--- * Name [AttributeName] <p>The name of the attribute.</p>
--- Required key: SchemaArn
--- Required key: FacetName
--- Required key: Name
--- @return AttributeKey structure as a key-value pair table
-function M.AttributeKey(args)
-	assert(args, "You must provide an argument table when creating AttributeKey")
+-- * SourceObjectReference [ObjectReference] <p>Identifies the source object that the typed link will attach to.</p>
+-- * Attributes [AttributeNameAndValueList] <p>A set of attributes that are associated with the typed link.</p>
+-- * TargetObjectReference [ObjectReference] <p>Identifies the target object that the typed link will attach to.</p>
+-- * TypedLinkFacet [TypedLinkSchemaAndFacetName] <p>Identifies the typed link facet that is associated with the typed link.</p>
+-- Required key: SourceObjectReference
+-- Required key: TargetObjectReference
+-- Required key: TypedLinkFacet
+-- Required key: Attributes
+-- @return BatchAttachTypedLink structure as a key-value pair table
+function M.BatchAttachTypedLink(args)
+	assert(args, "You must provide an argument table when creating BatchAttachTypedLink")
     local query_args = { 
     }
     local uri_args = { 
@@ -1277,11 +1423,12 @@ function M.AttributeKey(args)
     local header_args = { 
     }
 	local all_args = { 
-		["SchemaArn"] = args["SchemaArn"],
-		["FacetName"] = args["FacetName"],
-		["Name"] = args["Name"],
+		["SourceObjectReference"] = args["SourceObjectReference"],
+		["Attributes"] = args["Attributes"],
+		["TargetObjectReference"] = args["TargetObjectReference"],
+		["TypedLinkFacet"] = args["TypedLinkFacet"],
 	}
-	asserts.AssertAttributeKey(all_args)
+	asserts.AssertBatchAttachTypedLink(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1290,12 +1437,57 @@ function M.AttributeKey(args)
     }
 end
 
-keys.ListAppliedSchemaArnsRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["DirectoryArn"] = true, nil }
+keys.TagResourceRequest = { ["ResourceArn"] = true, ["Tags"] = true, nil }
+
+function asserts.AssertTagResourceRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected TagResourceRequest to be of type 'table'")
+	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
+	assert(struct["Tags"], "Expected key Tags to exist in table")
+	if struct["ResourceArn"] then asserts.AssertArn(struct["ResourceArn"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.TagResourceRequest[k], "TagResourceRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type TagResourceRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [Arn] <p>The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.</p>
+-- * Tags [TagList] <p>A list of tag key-value pairs.</p>
+-- Required key: ResourceArn
+-- Required key: Tags
+-- @return TagResourceRequest structure as a key-value pair table
+function M.TagResourceRequest(args)
+	assert(args, "You must provide an argument table when creating TagResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceArn"] = args["ResourceArn"],
+		["Tags"] = args["Tags"],
+	}
+	asserts.AssertTagResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListAppliedSchemaArnsRequest = { ["SchemaArn"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["DirectoryArn"] = true, nil }
 
 function asserts.AssertListAppliedSchemaArnsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAppliedSchemaArnsRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
 	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
 	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
@@ -1308,6 +1500,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * SchemaArn [Arn] <p>The response for <code>ListAppliedSchemaArns</code> when this parameter is used will list all minor version ARNs for a major version.</p>
 -- * NextToken [NextToken] <p>The pagination token.</p>
 -- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
 -- * DirectoryArn [Arn] <p>The ARN of the directory you are listing.</p>
@@ -1322,11 +1515,54 @@ function M.ListAppliedSchemaArnsRequest(args)
     local header_args = { 
     }
 	local all_args = { 
+		["SchemaArn"] = args["SchemaArn"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertListAppliedSchemaArnsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.TypedLinkAttributeRange = { ["Range"] = true, ["AttributeName"] = true, nil }
+
+function asserts.AssertTypedLinkAttributeRange(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected TypedLinkAttributeRange to be of type 'table'")
+	assert(struct["Range"], "Expected key Range to exist in table")
+	if struct["Range"] then asserts.AssertTypedAttributeValueRange(struct["Range"]) end
+	if struct["AttributeName"] then asserts.AssertAttributeName(struct["AttributeName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.TypedLinkAttributeRange[k], "TypedLinkAttributeRange contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type TypedLinkAttributeRange
+-- <p>Identifies the range of attributes that are used by a specified filter.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Range [TypedAttributeValueRange] <p>The range of attribute values that are being selected.</p>
+-- * AttributeName [AttributeName] <p>The unique name of the typed link attribute.</p>
+-- Required key: Range
+-- @return TypedLinkAttributeRange structure as a key-value pair table
+function M.TypedLinkAttributeRange(args)
+	assert(args, "You must provide an argument table when creating TypedLinkAttributeRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Range"] = args["Range"],
+		["AttributeName"] = args["AttributeName"],
+	}
+	asserts.AssertTypedLinkAttributeRange(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1347,7 +1583,7 @@ function asserts.AssertBatchCreateObjectResponse(struct)
 end
 
 --- Create a structure of type BatchCreateObjectResponse
--- <p>Represents the output of a <code>CreateObject</code> response operation.</p>
+-- <p>Represents the output of a <a>CreateObject</a> response operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ObjectIdentifier [ObjectIdentifier] <p>The ID that is associated with the object.</p>
@@ -1406,35 +1642,44 @@ function M.UpdateFacetResponse(args)
     }
 end
 
-keys.FacetInUseException = { ["Message"] = true, nil }
+keys.ListFacetNamesRequest = { ["SchemaArn"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function asserts.AssertFacetInUseException(struct)
+function asserts.AssertListFacetNamesRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected FacetInUseException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected ListFacetNamesRequest to be of type 'table'")
+	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.FacetInUseException[k], "FacetInUseException contains unknown key " .. tostring(k))
+		assert(keys.ListFacetNamesRequest[k], "ListFacetNamesRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type FacetInUseException
--- <p>Occurs when deleting a facet that contains an attribute that is a target to an attribute reference in a different facet.</p>
+--- Create a structure of type ListFacetNamesRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return FacetInUseException structure as a key-value pair table
-function M.FacetInUseException(args)
-	assert(args, "You must provide an argument table when creating FacetInUseException")
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) to retrieve facet names from.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- Required key: SchemaArn
+-- @return ListFacetNamesRequest structure as a key-value pair table
+function M.ListFacetNamesRequest(args)
+	assert(args, "You must provide an argument table when creating ListFacetNamesRequest")
     local query_args = { 
     }
     local uri_args = { 
     }
     local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["SchemaArn"] = args["SchemaArn"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertFacetInUseException(all_args)
+	asserts.AssertListFacetNamesRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1483,74 +1728,31 @@ function M.PathToObjectIdentifiers(args)
     }
 end
 
-keys.BatchReadRequest = { ["Operations"] = true, ["ConsistencyLevel"] = true, ["DirectoryArn"] = true, nil }
+keys.BatchDetachFromIndex = { ["IndexReference"] = true, ["TargetReference"] = true, nil }
 
-function asserts.AssertBatchReadRequest(struct)
+function asserts.AssertBatchDetachFromIndex(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected BatchReadRequest to be of type 'table'")
-	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
-	assert(struct["Operations"], "Expected key Operations to exist in table")
-	if struct["Operations"] then asserts.AssertBatchReadOperationList(struct["Operations"]) end
-	if struct["ConsistencyLevel"] then asserts.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
-	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	assert(type(struct) == "table", "Expected BatchDetachFromIndex to be of type 'table'")
+	assert(struct["IndexReference"], "Expected key IndexReference to exist in table")
+	assert(struct["TargetReference"], "Expected key TargetReference to exist in table")
+	if struct["IndexReference"] then asserts.AssertObjectReference(struct["IndexReference"]) end
+	if struct["TargetReference"] then asserts.AssertObjectReference(struct["TargetReference"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.BatchReadRequest[k], "BatchReadRequest contains unknown key " .. tostring(k))
+		assert(keys.BatchDetachFromIndex[k], "BatchDetachFromIndex contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type BatchReadRequest
---  
+--- Create a structure of type BatchDetachFromIndex
+-- <p>Detaches the specified object from the specified index inside a <a>BatchRead</a> operation. For more information, see <a>DetachFromIndex</a> and <a>BatchReadRequest$Operations</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Operations [BatchReadOperationList] <p>A list of operations that are part of the batch.</p>
--- * ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
--- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
--- Required key: DirectoryArn
--- Required key: Operations
--- @return BatchReadRequest structure as a key-value pair table
-function M.BatchReadRequest(args)
-	assert(args, "You must provide an argument table when creating BatchReadRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-        ["x-amz-consistency-level"] = args["ConsistencyLevel"],
-        ["x-amz-data-partition"] = args["DirectoryArn"],
-    }
-	local all_args = { 
-		["Operations"] = args["Operations"],
-		["ConsistencyLevel"] = args["ConsistencyLevel"],
-		["DirectoryArn"] = args["DirectoryArn"],
-	}
-	asserts.AssertBatchReadRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.FacetValidationException = { ["Message"] = true, nil }
-
-function asserts.AssertFacetValidationException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected FacetValidationException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.FacetValidationException[k], "FacetValidationException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type FacetValidationException
--- <p>The <a>Facet</a> that you provided was not well formed or could not be validated with the schema.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return FacetValidationException structure as a key-value pair table
-function M.FacetValidationException(args)
-	assert(args, "You must provide an argument table when creating FacetValidationException")
+-- * IndexReference [ObjectReference] <p>A reference to the index object.</p>
+-- * TargetReference [ObjectReference] <p>A reference to the object being detached from the index.</p>
+-- Required key: IndexReference
+-- Required key: TargetReference
+-- @return BatchDetachFromIndex structure as a key-value pair table
+function M.BatchDetachFromIndex(args)
+	assert(args, "You must provide an argument table when creating BatchDetachFromIndex")
     local query_args = { 
     }
     local uri_args = { 
@@ -1558,9 +1760,10 @@ function M.FacetValidationException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["IndexReference"] = args["IndexReference"],
+		["TargetReference"] = args["TargetReference"],
 	}
-	asserts.AssertFacetValidationException(all_args)
+	asserts.AssertBatchDetachFromIndex(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1624,16 +1827,24 @@ function M.ListObjectChildrenRequest(args)
     }
 end
 
-keys.BatchWriteOperationResponse = { ["DetachObject"] = true, ["AttachObject"] = true, ["AddFacetToObject"] = true, ["RemoveFacetFromObject"] = true, ["CreateObject"] = true, ["DeleteObject"] = true, ["UpdateObjectAttributes"] = true, nil }
+keys.BatchWriteOperationResponse = { ["DetachObject"] = true, ["AttachObject"] = true, ["CreateIndex"] = true, ["AddFacetToObject"] = true, ["RemoveFacetFromObject"] = true, ["DetachTypedLink"] = true, ["AttachPolicy"] = true, ["CreateObject"] = true, ["AttachToIndex"] = true, ["UpdateLinkAttributes"] = true, ["DetachFromIndex"] = true, ["AttachTypedLink"] = true, ["DetachPolicy"] = true, ["DeleteObject"] = true, ["UpdateObjectAttributes"] = true, nil }
 
 function asserts.AssertBatchWriteOperationResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchWriteOperationResponse to be of type 'table'")
 	if struct["DetachObject"] then asserts.AssertBatchDetachObjectResponse(struct["DetachObject"]) end
 	if struct["AttachObject"] then asserts.AssertBatchAttachObjectResponse(struct["AttachObject"]) end
+	if struct["CreateIndex"] then asserts.AssertBatchCreateIndexResponse(struct["CreateIndex"]) end
 	if struct["AddFacetToObject"] then asserts.AssertBatchAddFacetToObjectResponse(struct["AddFacetToObject"]) end
 	if struct["RemoveFacetFromObject"] then asserts.AssertBatchRemoveFacetFromObjectResponse(struct["RemoveFacetFromObject"]) end
+	if struct["DetachTypedLink"] then asserts.AssertBatchDetachTypedLinkResponse(struct["DetachTypedLink"]) end
+	if struct["AttachPolicy"] then asserts.AssertBatchAttachPolicyResponse(struct["AttachPolicy"]) end
 	if struct["CreateObject"] then asserts.AssertBatchCreateObjectResponse(struct["CreateObject"]) end
+	if struct["AttachToIndex"] then asserts.AssertBatchAttachToIndexResponse(struct["AttachToIndex"]) end
+	if struct["UpdateLinkAttributes"] then asserts.AssertBatchUpdateLinkAttributesResponse(struct["UpdateLinkAttributes"]) end
+	if struct["DetachFromIndex"] then asserts.AssertBatchDetachFromIndexResponse(struct["DetachFromIndex"]) end
+	if struct["AttachTypedLink"] then asserts.AssertBatchAttachTypedLinkResponse(struct["AttachTypedLink"]) end
+	if struct["DetachPolicy"] then asserts.AssertBatchDetachPolicyResponse(struct["DetachPolicy"]) end
 	if struct["DeleteObject"] then asserts.AssertBatchDeleteObjectResponse(struct["DeleteObject"]) end
 	if struct["UpdateObjectAttributes"] then asserts.AssertBatchUpdateObjectAttributesResponse(struct["UpdateObjectAttributes"]) end
 	for k,_ in pairs(struct) do
@@ -1647,9 +1858,17 @@ end
 -- Valid keys:
 -- * DetachObject [BatchDetachObjectResponse] <p>Detaches an object from a <a>Directory</a>.</p>
 -- * AttachObject [BatchAttachObjectResponse] <p>Attaches an object to a <a>Directory</a>.</p>
+-- * CreateIndex [BatchCreateIndexResponse] <p>Creates an index object. See <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.htm">Indexing and search</a> for more information.</p>
 -- * AddFacetToObject [BatchAddFacetToObjectResponse] <p>The result of an add facet to object batch operation.</p>
 -- * RemoveFacetFromObject [BatchRemoveFacetFromObjectResponse] <p>The result of a batch remove facet from object operation.</p>
+-- * DetachTypedLink [BatchDetachTypedLinkResponse] <p>Detaches a typed link from a specified source and target object. For more information, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed Links</a>.</p>
+-- * AttachPolicy [BatchAttachPolicyResponse] <p>Attaches a policy object to a regular object. An object can have a limited number of attached policies.</p>
 -- * CreateObject [BatchCreateObjectResponse] <p>Creates an object in a <a>Directory</a>.</p>
+-- * AttachToIndex [BatchAttachToIndexResponse] <p>Attaches the specified object to the specified index.</p>
+-- * UpdateLinkAttributes [BatchUpdateLinkAttributesResponse] <p>Represents the output of a <code>BatchWrite</code> response operation.</p>
+-- * DetachFromIndex [BatchDetachFromIndexResponse] <p>Detaches the specified object from the specified index.</p>
+-- * AttachTypedLink [BatchAttachTypedLinkResponse] <p>Attaches a typed link to a specified source and target object. For more information, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed Links</a>.</p>
+-- * DetachPolicy [BatchDetachPolicyResponse] <p>Detaches a policy from a <a>Directory</a>.</p>
 -- * DeleteObject [BatchDeleteObjectResponse] <p>Deletes an object in a <a>Directory</a>.</p>
 -- * UpdateObjectAttributes [BatchUpdateObjectAttributesResponse] <p>Updates a given object’s attributes.</p>
 -- @return BatchWriteOperationResponse structure as a key-value pair table
@@ -1664,13 +1883,155 @@ function M.BatchWriteOperationResponse(args)
 	local all_args = { 
 		["DetachObject"] = args["DetachObject"],
 		["AttachObject"] = args["AttachObject"],
+		["CreateIndex"] = args["CreateIndex"],
 		["AddFacetToObject"] = args["AddFacetToObject"],
 		["RemoveFacetFromObject"] = args["RemoveFacetFromObject"],
+		["DetachTypedLink"] = args["DetachTypedLink"],
+		["AttachPolicy"] = args["AttachPolicy"],
 		["CreateObject"] = args["CreateObject"],
+		["AttachToIndex"] = args["AttachToIndex"],
+		["UpdateLinkAttributes"] = args["UpdateLinkAttributes"],
+		["DetachFromIndex"] = args["DetachFromIndex"],
+		["AttachTypedLink"] = args["AttachTypedLink"],
+		["DetachPolicy"] = args["DetachPolicy"],
 		["DeleteObject"] = args["DeleteObject"],
 		["UpdateObjectAttributes"] = args["UpdateObjectAttributes"],
 	}
 	asserts.AssertBatchWriteOperationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchReadRequest = { ["Operations"] = true, ["ConsistencyLevel"] = true, ["DirectoryArn"] = true, nil }
+
+function asserts.AssertBatchReadRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchReadRequest to be of type 'table'")
+	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
+	assert(struct["Operations"], "Expected key Operations to exist in table")
+	if struct["Operations"] then asserts.AssertBatchReadOperationList(struct["Operations"]) end
+	if struct["ConsistencyLevel"] then asserts.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchReadRequest[k], "BatchReadRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchReadRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Operations [BatchReadOperationList] <p>A list of operations that are part of the batch.</p>
+-- * ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
+-- Required key: DirectoryArn
+-- Required key: Operations
+-- @return BatchReadRequest structure as a key-value pair table
+function M.BatchReadRequest(args)
+	assert(args, "You must provide an argument table when creating BatchReadRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-consistency-level"] = args["ConsistencyLevel"],
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
+		["Operations"] = args["Operations"],
+		["ConsistencyLevel"] = args["ConsistencyLevel"],
+		["DirectoryArn"] = args["DirectoryArn"],
+	}
+	asserts.AssertBatchReadRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchGetObjectInformationResponse = { ["ObjectIdentifier"] = true, ["SchemaFacets"] = true, nil }
+
+function asserts.AssertBatchGetObjectInformationResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchGetObjectInformationResponse to be of type 'table'")
+	if struct["ObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
+	if struct["SchemaFacets"] then asserts.AssertSchemaFacetList(struct["SchemaFacets"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchGetObjectInformationResponse[k], "BatchGetObjectInformationResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchGetObjectInformationResponse
+-- <p>Represents the output of a <a>GetObjectInformation</a> response operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the specified object.</p>
+-- * SchemaFacets [SchemaFacetList] <p>The facets attached to the specified object.</p>
+-- @return BatchGetObjectInformationResponse structure as a key-value pair table
+function M.BatchGetObjectInformationResponse(args)
+	assert(args, "You must provide an argument table when creating BatchGetObjectInformationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ObjectIdentifier"] = args["ObjectIdentifier"],
+		["SchemaFacets"] = args["SchemaFacets"],
+	}
+	asserts.AssertBatchGetObjectInformationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchListObjectParents = { ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
+
+function asserts.AssertBatchListObjectParents(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchListObjectParents to be of type 'table'")
+	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchListObjectParents[k], "BatchListObjectParents contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchListObjectParents
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectReference [ObjectReference] 
+-- * NextToken [NextToken] 
+-- * MaxResults [NumberResults] 
+-- Required key: ObjectReference
+-- @return BatchListObjectParents structure as a key-value pair table
+function M.BatchListObjectParents(args)
+	assert(args, "You must provide an argument table when creating BatchListObjectParents")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ObjectReference"] = args["ObjectReference"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+	}
+	asserts.AssertBatchListObjectParents(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1719,6 +2080,51 @@ function M.Tag(args)
     }
 end
 
+keys.DeleteFacetRequest = { ["SchemaArn"] = true, ["Name"] = true, nil }
+
+function asserts.AssertDeleteFacetRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteFacetRequest to be of type 'table'")
+	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	if struct["Name"] then asserts.AssertFacetName(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteFacetRequest[k], "DeleteFacetRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteFacetRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Facet</a>. For more information, see <a>arns</a>.</p>
+-- * Name [FacetName] <p>The name of the facet to delete.</p>
+-- Required key: SchemaArn
+-- Required key: Name
+-- @return DeleteFacetRequest structure as a key-value pair table
+function M.DeleteFacetRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteFacetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
+    }
+	local all_args = { 
+		["SchemaArn"] = args["SchemaArn"],
+		["Name"] = args["Name"],
+	}
+	asserts.AssertDeleteFacetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListFacetAttributesResponse = { ["Attributes"] = true, ["NextToken"] = true, nil }
 
 function asserts.AssertListFacetAttributesResponse(struct)
@@ -1759,25 +2165,33 @@ function M.ListFacetAttributesResponse(args)
     }
 end
 
-keys.UpdateSchemaResponse = { ["SchemaArn"] = true, nil }
+keys.UpgradeAppliedSchemaRequest = { ["DryRun"] = true, ["DirectoryArn"] = true, ["PublishedSchemaArn"] = true, nil }
 
-function asserts.AssertUpdateSchemaResponse(struct)
+function asserts.AssertUpgradeAppliedSchemaRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateSchemaResponse to be of type 'table'")
-	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	assert(type(struct) == "table", "Expected UpgradeAppliedSchemaRequest to be of type 'table'")
+	assert(struct["PublishedSchemaArn"], "Expected key PublishedSchemaArn to exist in table")
+	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
+	if struct["DryRun"] then asserts.AssertBool(struct["DryRun"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	if struct["PublishedSchemaArn"] then asserts.AssertArn(struct["PublishedSchemaArn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.UpdateSchemaResponse[k], "UpdateSchemaResponse contains unknown key " .. tostring(k))
+		assert(keys.UpgradeAppliedSchemaRequest[k], "UpgradeAppliedSchemaRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type UpdateSchemaResponse
+--- Create a structure of type UpgradeAppliedSchemaRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SchemaArn [Arn] <p>The ARN that is associated with the updated schema. For more information, see <a>arns</a>.</p>
--- @return UpdateSchemaResponse structure as a key-value pair table
-function M.UpdateSchemaResponse(args)
-	assert(args, "You must provide an argument table when creating UpdateSchemaResponse")
+-- * DryRun [Bool] <p>Used for testing whether the major version schemas are backward compatible or not. If schema compatibility fails, an exception would be thrown else the call would succeed but no changes will be saved. This parameter is optional.</p>
+-- * DirectoryArn [Arn] <p>The ARN for the directory to which the upgraded schema will be applied.</p>
+-- * PublishedSchemaArn [Arn] <p>The revision of the published schema to upgrade the directory to.</p>
+-- Required key: PublishedSchemaArn
+-- Required key: DirectoryArn
+-- @return UpgradeAppliedSchemaRequest structure as a key-value pair table
+function M.UpgradeAppliedSchemaRequest(args)
+	assert(args, "You must provide an argument table when creating UpgradeAppliedSchemaRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1785,9 +2199,11 @@ function M.UpdateSchemaResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["SchemaArn"] = args["SchemaArn"],
+		["DryRun"] = args["DryRun"],
+		["DirectoryArn"] = args["DirectoryArn"],
+		["PublishedSchemaArn"] = args["PublishedSchemaArn"],
 	}
-	asserts.AssertUpdateSchemaResponse(all_args)
+	asserts.AssertUpgradeAppliedSchemaRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1828,43 +2244,6 @@ function M.DisableDirectoryRequest(args)
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertDisableDirectoryRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.LimitExceededException = { ["Message"] = true, nil }
-
-function asserts.AssertLimitExceededException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type LimitExceededException
--- <p>Indicates that limits are exceeded. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/limits.html">Limits</a> for more information.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return LimitExceededException structure as a key-value pair table
-function M.LimitExceededException(args)
-	assert(args, "You must provide an argument table when creating LimitExceededException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertLimitExceededException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2011,29 +2390,74 @@ function M.GetFacetResponse(args)
     }
 end
 
-keys.ListDirectoriesRequest = { ["state"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
+keys.BatchDetachFromIndexResponse = { ["DetachedObjectIdentifier"] = true, nil }
 
-function asserts.AssertListDirectoriesRequest(struct)
+function asserts.AssertBatchDetachFromIndexResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ListDirectoriesRequest to be of type 'table'")
-	if struct["state"] then asserts.AssertDirectoryState(struct["state"]) end
-	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	assert(type(struct) == "table", "Expected BatchDetachFromIndexResponse to be of type 'table'")
+	if struct["DetachedObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["DetachedObjectIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ListDirectoriesRequest[k], "ListDirectoriesRequest contains unknown key " .. tostring(k))
+		assert(keys.BatchDetachFromIndexResponse[k], "BatchDetachFromIndexResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ListDirectoriesRequest
+--- Create a structure of type BatchDetachFromIndexResponse
+-- <p>Represents the output of a <a>DetachFromIndex</a> response operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DetachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object that was detached from the index.</p>
+-- @return BatchDetachFromIndexResponse structure as a key-value pair table
+function M.BatchDetachFromIndexResponse(args)
+	assert(args, "You must provide an argument table when creating BatchDetachFromIndexResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["DetachedObjectIdentifier"] = args["DetachedObjectIdentifier"],
+	}
+	asserts.AssertBatchDetachFromIndexResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpgradePublishedSchemaRequest = { ["DevelopmentSchemaArn"] = true, ["DryRun"] = true, ["MinorVersion"] = true, ["PublishedSchemaArn"] = true, nil }
+
+function asserts.AssertUpgradePublishedSchemaRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpgradePublishedSchemaRequest to be of type 'table'")
+	assert(struct["DevelopmentSchemaArn"], "Expected key DevelopmentSchemaArn to exist in table")
+	assert(struct["PublishedSchemaArn"], "Expected key PublishedSchemaArn to exist in table")
+	assert(struct["MinorVersion"], "Expected key MinorVersion to exist in table")
+	if struct["DevelopmentSchemaArn"] then asserts.AssertArn(struct["DevelopmentSchemaArn"]) end
+	if struct["DryRun"] then asserts.AssertBool(struct["DryRun"]) end
+	if struct["MinorVersion"] then asserts.AssertVersion(struct["MinorVersion"]) end
+	if struct["PublishedSchemaArn"] then asserts.AssertArn(struct["PublishedSchemaArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpgradePublishedSchemaRequest[k], "UpgradePublishedSchemaRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpgradePublishedSchemaRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * state [DirectoryState] <p>The state of the directories in the list. Can be either Enabled, Disabled, or Deleted.</p>
--- * NextToken [NextToken] <p>The pagination token.</p>
--- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
--- @return ListDirectoriesRequest structure as a key-value pair table
-function M.ListDirectoriesRequest(args)
-	assert(args, "You must provide an argument table when creating ListDirectoriesRequest")
+-- * DevelopmentSchemaArn [Arn] <p>The ARN of the development schema with the changes used for the upgrade.</p>
+-- * DryRun [Bool] <p>Used for testing whether the Development schema provided is backwards compatible, or not, with the publish schema provided by the user to be upgraded. If schema compatibility fails, an exception would be thrown else the call would succeed. This parameter is optional and defaults to false.</p>
+-- * MinorVersion [Version] <p>Identifies the minor version of the published schema that will be created. This parameter is NOT optional.</p>
+-- * PublishedSchemaArn [Arn] <p>The ARN of the published schema to be upgraded.</p>
+-- Required key: DevelopmentSchemaArn
+-- Required key: PublishedSchemaArn
+-- Required key: MinorVersion
+-- @return UpgradePublishedSchemaRequest structure as a key-value pair table
+function M.UpgradePublishedSchemaRequest(args)
+	assert(args, "You must provide an argument table when creating UpgradePublishedSchemaRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -2041,85 +2465,12 @@ function M.ListDirectoriesRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["state"] = args["state"],
-		["NextToken"] = args["NextToken"],
-		["MaxResults"] = args["MaxResults"],
+		["DevelopmentSchemaArn"] = args["DevelopmentSchemaArn"],
+		["DryRun"] = args["DryRun"],
+		["MinorVersion"] = args["MinorVersion"],
+		["PublishedSchemaArn"] = args["PublishedSchemaArn"],
 	}
-	asserts.AssertListDirectoriesRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ValidationException = { ["Message"] = true, nil }
-
-function asserts.AssertValidationException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ValidationException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ValidationException[k], "ValidationException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ValidationException
--- <p>Indicates that your request is malformed in some manner. See the exception message.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return ValidationException structure as a key-value pair table
-function M.ValidationException(args)
-	assert(args, "You must provide an argument table when creating ValidationException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertValidationException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DirectoryNotDisabledException = { ["Message"] = true, nil }
-
-function asserts.AssertDirectoryNotDisabledException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DirectoryNotDisabledException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DirectoryNotDisabledException[k], "DirectoryNotDisabledException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DirectoryNotDisabledException
--- <p>An operation can only operate on a disabled directory.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return DirectoryNotDisabledException structure as a key-value pair table
-function M.DirectoryNotDisabledException(args)
-	assert(args, "You must provide an argument table when creating DirectoryNotDisabledException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertDirectoryNotDisabledException(all_args)
+	asserts.AssertUpgradePublishedSchemaRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2143,7 +2494,7 @@ end
 -- <p>The reference that identifies an object.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Selector [SelectorObjectReference] <p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#accessingobjects">Accessing Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>
+-- * Selector [SelectorObjectReference] <p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>
 -- @return ObjectReference structure as a key-value pair table
 function M.ObjectReference(args)
 	assert(args, "You must provide an argument table when creating ObjectReference")
@@ -2165,27 +2516,29 @@ function M.ObjectReference(args)
     }
 end
 
-keys.ListObjectPoliciesResponse = { ["AttachedPolicyIds"] = true, ["NextToken"] = true, nil }
+keys.ListManagedSchemaArnsRequest = { ["SchemaArn"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function asserts.AssertListObjectPoliciesResponse(struct)
+function asserts.AssertListManagedSchemaArnsRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ListObjectPoliciesResponse to be of type 'table'")
-	if struct["AttachedPolicyIds"] then asserts.AssertObjectIdentifierList(struct["AttachedPolicyIds"]) end
+	assert(type(struct) == "table", "Expected ListManagedSchemaArnsRequest to be of type 'table'")
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
 	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ListObjectPoliciesResponse[k], "ListObjectPoliciesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListManagedSchemaArnsRequest[k], "ListManagedSchemaArnsRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ListObjectPoliciesResponse
+--- Create a structure of type ListManagedSchemaArnsRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AttachedPolicyIds [ObjectIdentifierList] <p>A list of policy <code>ObjectIdentifiers</code>, that are attached to the object.</p>
+-- * SchemaArn [Arn] <p>The response for ListManagedSchemaArns. When this parameter is used, all minor version ARNs for a major version are listed.</p>
 -- * NextToken [NextToken] <p>The pagination token.</p>
--- @return ListObjectPoliciesResponse structure as a key-value pair table
-function M.ListObjectPoliciesResponse(args)
-	assert(args, "You must provide an argument table when creating ListObjectPoliciesResponse")
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- @return ListManagedSchemaArnsRequest structure as a key-value pair table
+function M.ListManagedSchemaArnsRequest(args)
+	assert(args, "You must provide an argument table when creating ListManagedSchemaArnsRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -2193,47 +2546,11 @@ function M.ListObjectPoliciesResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["AttachedPolicyIds"] = args["AttachedPolicyIds"],
+		["SchemaArn"] = args["SchemaArn"],
 		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListObjectPoliciesResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InternalServiceException = { ["Message"] = true, nil }
-
-function asserts.AssertInternalServiceException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InternalServiceException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InternalServiceException[k], "InternalServiceException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InternalServiceException
--- <p>Indicates a problem that must be resolved by Amazon Web Services. This might be a transient error in which case you can retry your request until it succeeds. Otherwise, go to the <a href="http://status.aws.amazon.com/">AWS Service Health Dashboard</a> site to see if there are any operational issues with the service.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return InternalServiceException structure as a key-value pair table
-function M.InternalServiceException(args)
-	assert(args, "You must provide an argument table when creating InternalServiceException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertInternalServiceException(all_args)
+	asserts.AssertListManagedSchemaArnsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2301,10 +2618,10 @@ end
 -- <p>An attribute that is associated with the <a>Facet</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AttributeDefinition [FacetAttributeDefinition] <p>A facet attribute consists of either a definition or a reference. This structure contains the attribute definition. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
+-- * AttributeDefinition [FacetAttributeDefinition] <p>A facet attribute consists of either a definition or a reference. This structure contains the attribute definition. See <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute References</a> for more information.</p>
 -- * RequiredBehavior [RequiredAttributeBehavior] <p>The required behavior of the <code>FacetAttribute</code>.</p>
 -- * Name [AttributeName] <p>The name of the facet attribute.</p>
--- * AttributeReference [FacetAttributeReference] <p>An attribute reference that is associated with the attribute. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
+-- * AttributeReference [FacetAttributeReference] <p>An attribute reference that is associated with the attribute. See <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute References</a> for more information.</p>
 -- Required key: Name
 -- @return FacetAttribute structure as a key-value pair table
 function M.FacetAttribute(args)
@@ -2476,25 +2793,27 @@ function M.ListObjectParentPathsRequest(args)
     }
 end
 
-keys.RetryableConflictException = { ["Message"] = true, nil }
+keys.BatchListObjectParentsResponse = { ["ParentLinks"] = true, ["NextToken"] = true, nil }
 
-function asserts.AssertRetryableConflictException(struct)
+function asserts.AssertBatchListObjectParentsResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected RetryableConflictException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected BatchListObjectParentsResponse to be of type 'table'")
+	if struct["ParentLinks"] then asserts.AssertObjectIdentifierAndLinkNameList(struct["ParentLinks"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.RetryableConflictException[k], "RetryableConflictException contains unknown key " .. tostring(k))
+		assert(keys.BatchListObjectParentsResponse[k], "BatchListObjectParentsResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type RetryableConflictException
--- <p>Occurs when a conflict with a previous successful write is detected. For example, if a write operation occurs on an object and then an attempt is made to read the object using “SERIALIZABLE” consistency, this exception may result. This generally occurs when the previous write did not have time to propagate to the host serving the current request. A retry (with appropriate backoff logic) is the recommended response to this exception.</p>
+--- Create a structure of type BatchListObjectParentsResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return RetryableConflictException structure as a key-value pair table
-function M.RetryableConflictException(args)
-	assert(args, "You must provide an argument table when creating RetryableConflictException")
+-- * ParentLinks [ObjectIdentifierAndLinkNameList] 
+-- * NextToken [NextToken] 
+-- @return BatchListObjectParentsResponse structure as a key-value pair table
+function M.BatchListObjectParentsResponse(args)
+	assert(args, "You must provide an argument table when creating BatchListObjectParentsResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -2502,9 +2821,10 @@ function M.RetryableConflictException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["ParentLinks"] = args["ParentLinks"],
+		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertRetryableConflictException(all_args)
+	asserts.AssertBatchListObjectParentsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2513,85 +2833,12 @@ function M.RetryableConflictException(args)
     }
 end
 
-keys.SchemaAlreadyExistsException = { ["Message"] = true, nil }
-
-function asserts.AssertSchemaAlreadyExistsException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SchemaAlreadyExistsException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.SchemaAlreadyExistsException[k], "SchemaAlreadyExistsException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SchemaAlreadyExistsException
--- <p>Indicates that a schema could not be created due to a naming conflict. Please select a different name and then try again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return SchemaAlreadyExistsException structure as a key-value pair table
-function M.SchemaAlreadyExistsException(args)
-	assert(args, "You must provide an argument table when creating SchemaAlreadyExistsException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertSchemaAlreadyExistsException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.NotIndexException = { ["Message"] = true, nil }
-
-function asserts.AssertNotIndexException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected NotIndexException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.NotIndexException[k], "NotIndexException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type NotIndexException
--- <p>Indicates that the requested operation can only operate on index objects.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return NotIndexException structure as a key-value pair table
-function M.NotIndexException(args)
-	assert(args, "You must provide an argument table when creating NotIndexException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertNotIndexException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ListObjectParentsResponse = { ["NextToken"] = true, ["Parents"] = true, nil }
+keys.ListObjectParentsResponse = { ["ParentLinks"] = true, ["NextToken"] = true, ["Parents"] = true, nil }
 
 function asserts.AssertListObjectParentsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListObjectParentsResponse to be of type 'table'")
+	if struct["ParentLinks"] then asserts.AssertObjectIdentifierAndLinkNameList(struct["ParentLinks"]) end
 	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	if struct["Parents"] then asserts.AssertObjectIdentifierToLinkNameMap(struct["Parents"]) end
 	for k,_ in pairs(struct) do
@@ -2603,6 +2850,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * ParentLinks [ObjectIdentifierAndLinkNameList] <p>Returns a list of parent reference and LinkName Tuples.</p>
 -- * NextToken [NextToken] <p>The pagination token.</p>
 -- * Parents [ObjectIdentifierToLinkNameMap] <p>The parent structure, which is a map with key as the <code>ObjectIdentifier</code> and LinkName as the value.</p>
 -- @return ListObjectParentsResponse structure as a key-value pair table
@@ -2615,6 +2863,7 @@ function M.ListObjectParentsResponse(args)
     local header_args = { 
     }
 	local all_args = { 
+		["ParentLinks"] = args["ParentLinks"],
 		["NextToken"] = args["NextToken"],
 		["Parents"] = args["Parents"],
 	}
@@ -2692,7 +2941,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ObjectReference [ObjectReference] <p>A reference to the object to remove the facet from.</p>
--- * SchemaFacet [SchemaFacet] <p>The facet to remove.</p>
+-- * SchemaFacet [SchemaFacet] <p>The facet to remove. See <a>SchemaFacet</a> for details.</p>
 -- * DirectoryArn [Arn] <p>The ARN of the directory in which the object resides.</p>
 -- Required key: DirectoryArn
 -- Required key: SchemaFacet
@@ -2721,31 +2970,27 @@ function M.RemoveFacetFromObjectRequest(args)
     }
 end
 
-keys.TypedLinkFacetAttributeUpdate = { ["Action"] = true, ["Attribute"] = true, nil }
+keys.LinkAttributeAction = { ["AttributeActionType"] = true, ["AttributeUpdateValue"] = true, nil }
 
-function asserts.AssertTypedLinkFacetAttributeUpdate(struct)
+function asserts.AssertLinkAttributeAction(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TypedLinkFacetAttributeUpdate to be of type 'table'")
-	assert(struct["Attribute"], "Expected key Attribute to exist in table")
-	assert(struct["Action"], "Expected key Action to exist in table")
-	if struct["Action"] then asserts.AssertUpdateActionType(struct["Action"]) end
-	if struct["Attribute"] then asserts.AssertTypedLinkAttributeDefinition(struct["Attribute"]) end
+	assert(type(struct) == "table", "Expected LinkAttributeAction to be of type 'table'")
+	if struct["AttributeActionType"] then asserts.AssertUpdateActionType(struct["AttributeActionType"]) end
+	if struct["AttributeUpdateValue"] then asserts.AssertTypedAttributeValue(struct["AttributeUpdateValue"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TypedLinkFacetAttributeUpdate[k], "TypedLinkFacetAttributeUpdate contains unknown key " .. tostring(k))
+		assert(keys.LinkAttributeAction[k], "LinkAttributeAction contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TypedLinkFacetAttributeUpdate
--- <p>A typed link facet attribute update.</p>
+--- Create a structure of type LinkAttributeAction
+-- <p>The action to take on a typed link attribute value. Updates are only supported for attributes which don’t contribute to link identity.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Action [UpdateActionType] <p>The action to perform when updating the attribute.</p>
--- * Attribute [TypedLinkAttributeDefinition] <p>The attribute to update.</p>
--- Required key: Attribute
--- Required key: Action
--- @return TypedLinkFacetAttributeUpdate structure as a key-value pair table
-function M.TypedLinkFacetAttributeUpdate(args)
-	assert(args, "You must provide an argument table when creating TypedLinkFacetAttributeUpdate")
+-- * AttributeActionType [UpdateActionType] <p>A type that can be either <code>UPDATE_OR_CREATE</code> or <code>DELETE</code>.</p>
+-- * AttributeUpdateValue [TypedAttributeValue] <p>The value that you want to update to.</p>
+-- @return LinkAttributeAction structure as a key-value pair table
+function M.LinkAttributeAction(args)
+	assert(args, "You must provide an argument table when creating LinkAttributeAction")
     local query_args = { 
     }
     local uri_args = { 
@@ -2753,10 +2998,10 @@ function M.TypedLinkFacetAttributeUpdate(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Action"] = args["Action"],
-		["Attribute"] = args["Attribute"],
+		["AttributeActionType"] = args["AttributeActionType"],
+		["AttributeUpdateValue"] = args["AttributeUpdateValue"],
 	}
-	asserts.AssertTypedLinkFacetAttributeUpdate(all_args)
+	asserts.AssertLinkAttributeAction(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2765,25 +3010,31 @@ function M.TypedLinkFacetAttributeUpdate(args)
     }
 end
 
-keys.InvalidSchemaDocException = { ["Message"] = true, nil }
+keys.BatchLookupPolicy = { ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function asserts.AssertInvalidSchemaDocException(struct)
+function asserts.AssertBatchLookupPolicy(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidSchemaDocException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected BatchLookupPolicy to be of type 'table'")
+	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidSchemaDocException[k], "InvalidSchemaDocException contains unknown key " .. tostring(k))
+		assert(keys.BatchLookupPolicy[k], "BatchLookupPolicy contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidSchemaDocException
--- <p>Indicates that the provided <code>SchemaDoc</code> value is not valid.</p>
+--- Create a structure of type BatchLookupPolicy
+-- <p>Lists all policies from the root of the Directory to the object specified inside a <a>BatchRead</a> operation. For more information, see <a>LookupPolicy</a> and <a>BatchReadRequest$Operations</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return InvalidSchemaDocException structure as a key-value pair table
-function M.InvalidSchemaDocException(args)
-	assert(args, "You must provide an argument table when creating InvalidSchemaDocException")
+-- * ObjectReference [ObjectReference] <p>Reference that identifies the object whose policies will be looked up.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- Required key: ObjectReference
+-- @return BatchLookupPolicy structure as a key-value pair table
+function M.BatchLookupPolicy(args)
+	assert(args, "You must provide an argument table when creating BatchLookupPolicy")
     local query_args = { 
     }
     local uri_args = { 
@@ -2791,9 +3042,11 @@ function M.InvalidSchemaDocException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["ObjectReference"] = args["ObjectReference"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertInvalidSchemaDocException(all_args)
+	asserts.AssertBatchLookupPolicy(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2802,32 +3055,43 @@ function M.InvalidSchemaDocException(args)
     }
 end
 
-keys.DeleteObjectResponse = { nil }
+keys.CreateTypedLinkFacetRequest = { ["Facet"] = true, ["SchemaArn"] = true, nil }
 
-function asserts.AssertDeleteObjectResponse(struct)
+function asserts.AssertCreateTypedLinkFacetRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteObjectResponse to be of type 'table'")
+	assert(type(struct) == "table", "Expected CreateTypedLinkFacetRequest to be of type 'table'")
+	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
+	assert(struct["Facet"], "Expected key Facet to exist in table")
+	if struct["Facet"] then asserts.AssertTypedLinkFacet(struct["Facet"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteObjectResponse[k], "DeleteObjectResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateTypedLinkFacetRequest[k], "CreateTypedLinkFacetRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteObjectResponse
+--- Create a structure of type CreateTypedLinkFacetRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return DeleteObjectResponse structure as a key-value pair table
-function M.DeleteObjectResponse(args)
-	assert(args, "You must provide an argument table when creating DeleteObjectResponse")
+-- * Facet [TypedLinkFacet] <p> <a>Facet</a> structure that is associated with the typed link facet.</p>
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
+-- Required key: SchemaArn
+-- Required key: Facet
+-- @return CreateTypedLinkFacetRequest structure as a key-value pair table
+function M.CreateTypedLinkFacetRequest(args)
+	assert(args, "You must provide an argument table when creating CreateTypedLinkFacetRequest")
     local query_args = { 
     }
     local uri_args = { 
     }
     local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
     }
 	local all_args = { 
+		["Facet"] = args["Facet"],
+		["SchemaArn"] = args["SchemaArn"],
 	}
-	asserts.AssertDeleteObjectResponse(all_args)
+	asserts.AssertCreateTypedLinkFacetRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2860,7 +3124,7 @@ end
 -- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
 -- * ConsistencyLevel [ConsistencyLevel] <p>The consistency level to use for this operation.</p>
 -- * NextToken [NextToken] <p>The pagination token.</p>
--- * TargetReference [ObjectReference] <p>A reference to the object to that has indices attached.</p>
+-- * TargetReference [ObjectReference] <p>A reference to the object that has indices attached.</p>
 -- * DirectoryArn [Arn] <p>The ARN of the directory.</p>
 -- Required key: DirectoryArn
 -- Required key: TargetReference
@@ -2891,25 +3155,25 @@ function M.ListAttachedIndicesRequest(args)
     }
 end
 
-keys.AttachObjectResponse = { ["AttachedObjectIdentifier"] = true, nil }
+keys.GetLinkAttributesResponse = { ["Attributes"] = true, nil }
 
-function asserts.AssertAttachObjectResponse(struct)
+function asserts.AssertGetLinkAttributesResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected AttachObjectResponse to be of type 'table'")
-	if struct["AttachedObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["AttachedObjectIdentifier"]) end
+	assert(type(struct) == "table", "Expected GetLinkAttributesResponse to be of type 'table'")
+	if struct["Attributes"] then asserts.AssertAttributeKeyAndValueList(struct["Attributes"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.AttachObjectResponse[k], "AttachObjectResponse contains unknown key " .. tostring(k))
+		assert(keys.GetLinkAttributesResponse[k], "GetLinkAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type AttachObjectResponse
+--- Create a structure of type GetLinkAttributesResponse
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AttachedObjectIdentifier [ObjectIdentifier] <p>The attached <code>ObjectIdentifier</code>, which is the child <code>ObjectIdentifier</code>.</p>
--- @return AttachObjectResponse structure as a key-value pair table
-function M.AttachObjectResponse(args)
-	assert(args, "You must provide an argument table when creating AttachObjectResponse")
+-- * Attributes [AttributeKeyAndValueList] <p>The attributes that are associated with the typed link.</p>
+-- @return GetLinkAttributesResponse structure as a key-value pair table
+function M.GetLinkAttributesResponse(args)
+	assert(args, "You must provide an argument table when creating GetLinkAttributesResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -2917,9 +3181,89 @@ function M.AttachObjectResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["AttachedObjectIdentifier"] = args["AttachedObjectIdentifier"],
+		["Attributes"] = args["Attributes"],
 	}
-	asserts.AssertAttachObjectResponse(all_args)
+	asserts.AssertGetLinkAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchListIndexResponse = { ["IndexAttachments"] = true, ["NextToken"] = true, nil }
+
+function asserts.AssertBatchListIndexResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchListIndexResponse to be of type 'table'")
+	if struct["IndexAttachments"] then asserts.AssertIndexAttachmentList(struct["IndexAttachments"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchListIndexResponse[k], "BatchListIndexResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchListIndexResponse
+-- <p>Represents the output of a <a>ListIndex</a> response operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IndexAttachments [IndexAttachmentList] <p>The objects and indexed values attached to the index.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- @return BatchListIndexResponse structure as a key-value pair table
+function M.BatchListIndexResponse(args)
+	assert(args, "You must provide an argument table when creating BatchListIndexResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["IndexAttachments"] = args["IndexAttachments"],
+		["NextToken"] = args["NextToken"],
+	}
+	asserts.AssertBatchListIndexResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ObjectIdentifierAndLinkNameTuple = { ["LinkName"] = true, ["ObjectIdentifier"] = true, nil }
+
+function asserts.AssertObjectIdentifierAndLinkNameTuple(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ObjectIdentifierAndLinkNameTuple to be of type 'table'")
+	if struct["LinkName"] then asserts.AssertLinkName(struct["LinkName"]) end
+	if struct["ObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ObjectIdentifierAndLinkNameTuple[k], "ObjectIdentifierAndLinkNameTuple contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ObjectIdentifierAndLinkNameTuple
+-- <p>A pair of ObjectIdentifier and LinkName.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LinkName [LinkName] <p>The name of the link between the parent and the child object.</p>
+-- * ObjectIdentifier [ObjectIdentifier] <p>The ID that is associated with the object.</p>
+-- @return ObjectIdentifierAndLinkNameTuple structure as a key-value pair table
+function M.ObjectIdentifierAndLinkNameTuple(args)
+	assert(args, "You must provide an argument table when creating ObjectIdentifierAndLinkNameTuple")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["LinkName"] = args["LinkName"],
+		["ObjectIdentifier"] = args["ObjectIdentifier"],
+	}
+	asserts.AssertObjectIdentifierAndLinkNameTuple(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3155,11 +3499,12 @@ function M.DeleteSchemaResponse(args)
     }
 end
 
-keys.Facet = { ["Name"] = true, ["ObjectType"] = true, nil }
+keys.Facet = { ["FacetStyle"] = true, ["Name"] = true, ["ObjectType"] = true, nil }
 
 function asserts.AssertFacet(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Facet to be of type 'table'")
+	if struct["FacetStyle"] then asserts.AssertFacetStyle(struct["FacetStyle"]) end
 	if struct["Name"] then asserts.AssertFacetName(struct["Name"]) end
 	if struct["ObjectType"] then asserts.AssertObjectType(struct["ObjectType"]) end
 	for k,_ in pairs(struct) do
@@ -3168,9 +3513,10 @@ function asserts.AssertFacet(struct)
 end
 
 --- Create a structure of type Facet
--- <p>A structure that contains <code>Name</code>, <code>ARN</code>, <code>Attributes</code>, <a>Rule</a>s, and <code>ObjectTypes</code>.</p>
+-- <p>A structure that contains <code>Name</code>, <code>ARN</code>, <code>Attributes</code>, <code> <a>Rule</a>s</code>, and <code>ObjectTypes</code>. See <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_whatarefacets.html">Facets</a> for more information.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * FacetStyle [FacetStyle] <p>There are two different styles that you can define on any given facet, <code>Static</code> and <code>Dynamic</code>. For static facets, all attributes must be defined in the schema. For dynamic facets, attributes can be defined during data plane operations.</p>
 -- * Name [FacetName] <p>The name of the <a>Facet</a>.</p>
 -- * ObjectType [ObjectType] <p>The object type that is associated with the facet. See <a>CreateFacetRequest$ObjectType</a> for more details.</p>
 -- @return Facet structure as a key-value pair table
@@ -3183,6 +3529,7 @@ function M.Facet(args)
     local header_args = { 
     }
 	local all_args = { 
+		["FacetStyle"] = args["FacetStyle"],
 		["Name"] = args["Name"],
 		["ObjectType"] = args["ObjectType"],
 	}
@@ -3195,43 +3542,52 @@ function M.Facet(args)
     }
 end
 
-keys.CreateTypedLinkFacetRequest = { ["Facet"] = true, ["SchemaArn"] = true, nil }
+keys.CreateDirectoryResponse = { ["AppliedSchemaArn"] = true, ["ObjectIdentifier"] = true, ["Name"] = true, ["DirectoryArn"] = true, nil }
 
-function asserts.AssertCreateTypedLinkFacetRequest(struct)
+function asserts.AssertCreateDirectoryResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected CreateTypedLinkFacetRequest to be of type 'table'")
-	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
-	assert(struct["Facet"], "Expected key Facet to exist in table")
-	if struct["Facet"] then asserts.AssertTypedLinkFacet(struct["Facet"]) end
-	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	assert(type(struct) == "table", "Expected CreateDirectoryResponse to be of type 'table'")
+	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	assert(struct["ObjectIdentifier"], "Expected key ObjectIdentifier to exist in table")
+	assert(struct["AppliedSchemaArn"], "Expected key AppliedSchemaArn to exist in table")
+	if struct["AppliedSchemaArn"] then asserts.AssertArn(struct["AppliedSchemaArn"]) end
+	if struct["ObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
+	if struct["Name"] then asserts.AssertDirectoryName(struct["Name"]) end
+	if struct["DirectoryArn"] then asserts.AssertDirectoryArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.CreateTypedLinkFacetRequest[k], "CreateTypedLinkFacetRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateDirectoryResponse[k], "CreateDirectoryResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type CreateTypedLinkFacetRequest
+--- Create a structure of type CreateDirectoryResponse
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Facet [TypedLinkFacet] <p> <a>Facet</a> structure that is associated with the typed link facet.</p>
--- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
--- Required key: SchemaArn
--- Required key: Facet
--- @return CreateTypedLinkFacetRequest structure as a key-value pair table
-function M.CreateTypedLinkFacetRequest(args)
-	assert(args, "You must provide an argument table when creating CreateTypedLinkFacetRequest")
+-- * AppliedSchemaArn [Arn] <p>The ARN of the published schema in the <a>Directory</a>. Once a published schema is copied into the directory, it has its own ARN, which is referred to applied schema ARN. For more information, see <a>arns</a>.</p>
+-- * ObjectIdentifier [ObjectIdentifier] <p>The root object node of the created directory.</p>
+-- * Name [DirectoryName] <p>The name of the <a>Directory</a>.</p>
+-- * DirectoryArn [DirectoryArn] <p>The ARN that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
+-- Required key: DirectoryArn
+-- Required key: Name
+-- Required key: ObjectIdentifier
+-- Required key: AppliedSchemaArn
+-- @return CreateDirectoryResponse structure as a key-value pair table
+function M.CreateDirectoryResponse(args)
+	assert(args, "You must provide an argument table when creating CreateDirectoryResponse")
     local query_args = { 
     }
     local uri_args = { 
     }
     local header_args = { 
-        ["x-amz-data-partition"] = args["SchemaArn"],
     }
 	local all_args = { 
-		["Facet"] = args["Facet"],
-		["SchemaArn"] = args["SchemaArn"],
+		["AppliedSchemaArn"] = args["AppliedSchemaArn"],
+		["ObjectIdentifier"] = args["ObjectIdentifier"],
+		["Name"] = args["Name"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertCreateTypedLinkFacetRequest(all_args)
+	asserts.AssertCreateDirectoryResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3240,25 +3596,25 @@ function M.CreateTypedLinkFacetRequest(args)
     }
 end
 
-keys.DirectoryDeletedException = { ["Message"] = true, nil }
+keys.GetAppliedSchemaVersionResponse = { ["AppliedSchemaArn"] = true, nil }
 
-function asserts.AssertDirectoryDeletedException(struct)
+function asserts.AssertGetAppliedSchemaVersionResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DirectoryDeletedException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected GetAppliedSchemaVersionResponse to be of type 'table'")
+	if struct["AppliedSchemaArn"] then asserts.AssertArn(struct["AppliedSchemaArn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DirectoryDeletedException[k], "DirectoryDeletedException contains unknown key " .. tostring(k))
+		assert(keys.GetAppliedSchemaVersionResponse[k], "GetAppliedSchemaVersionResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DirectoryDeletedException
--- <p>A directory that has been deleted and to which access has been attempted. Note: The requested resource will eventually cease to exist.</p>
+--- Create a structure of type GetAppliedSchemaVersionResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return DirectoryDeletedException structure as a key-value pair table
-function M.DirectoryDeletedException(args)
-	assert(args, "You must provide an argument table when creating DirectoryDeletedException")
+-- * AppliedSchemaArn [Arn] <p>Current applied schema ARN, including the minor version in use if one was provided.</p>
+-- @return GetAppliedSchemaVersionResponse structure as a key-value pair table
+function M.GetAppliedSchemaVersionResponse(args)
+	assert(args, "You must provide an argument table when creating GetAppliedSchemaVersionResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -3266,9 +3622,9 @@ function M.DirectoryDeletedException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["AppliedSchemaArn"] = args["AppliedSchemaArn"],
 	}
-	asserts.AssertDirectoryDeletedException(all_args)
+	asserts.AssertGetAppliedSchemaVersionResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3277,18 +3633,59 @@ function M.DirectoryDeletedException(args)
     }
 end
 
-keys.ListObjectParentsRequest = { ["ConsistencyLevel"] = true, ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["DirectoryArn"] = true, nil }
+keys.BatchListObjectPoliciesResponse = { ["AttachedPolicyIds"] = true, ["NextToken"] = true, nil }
+
+function asserts.AssertBatchListObjectPoliciesResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchListObjectPoliciesResponse to be of type 'table'")
+	if struct["AttachedPolicyIds"] then asserts.AssertObjectIdentifierList(struct["AttachedPolicyIds"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchListObjectPoliciesResponse[k], "BatchListObjectPoliciesResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchListObjectPoliciesResponse
+-- <p>Represents the output of a <a>ListObjectPolicies</a> response operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttachedPolicyIds [ObjectIdentifierList] <p>A list of policy <code>ObjectIdentifiers</code>, that are attached to the object.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- @return BatchListObjectPoliciesResponse structure as a key-value pair table
+function M.BatchListObjectPoliciesResponse(args)
+	assert(args, "You must provide an argument table when creating BatchListObjectPoliciesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["AttachedPolicyIds"] = args["AttachedPolicyIds"],
+		["NextToken"] = args["NextToken"],
+	}
+	asserts.AssertBatchListObjectPoliciesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListObjectParentsRequest = { ["MaxResults"] = true, ["IncludeAllLinksToEachParent"] = true, ["ObjectReference"] = true, ["DirectoryArn"] = true, ["NextToken"] = true, ["ConsistencyLevel"] = true, nil }
 
 function asserts.AssertListObjectParentsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListObjectParentsRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["ConsistencyLevel"] then asserts.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
-	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	if struct["IncludeAllLinksToEachParent"] then asserts.AssertBool(struct["IncludeAllLinksToEachParent"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
 	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["ConsistencyLevel"] then asserts.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListObjectParentsRequest[k], "ListObjectParentsRequest contains unknown key " .. tostring(k))
 	end
@@ -3298,11 +3695,12 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
--- * ObjectReference [ObjectReference] <p>The reference that identifies the object for which parent objects are being listed.</p>
--- * NextToken [NextToken] <p>The pagination token.</p>
 -- * MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- * IncludeAllLinksToEachParent [Bool] <p>When set to True, returns all <a>ListObjectParentsResponse$ParentLinks</a>. There could be multiple links between a parent-child pair.</p>
+-- * ObjectReference [ObjectReference] <p>The reference that identifies the object for which parent objects are being listed.</p>
 -- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
 -- Required key: DirectoryArn
 -- Required key: ObjectReference
 -- @return ListObjectParentsRequest structure as a key-value pair table
@@ -3313,15 +3711,16 @@ function M.ListObjectParentsRequest(args)
     local uri_args = { 
     }
     local header_args = { 
-        ["x-amz-consistency-level"] = args["ConsistencyLevel"],
         ["x-amz-data-partition"] = args["DirectoryArn"],
+        ["x-amz-consistency-level"] = args["ConsistencyLevel"],
     }
 	local all_args = { 
-		["ConsistencyLevel"] = args["ConsistencyLevel"],
-		["ObjectReference"] = args["ObjectReference"],
-		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
+		["IncludeAllLinksToEachParent"] = args["IncludeAllLinksToEachParent"],
+		["ObjectReference"] = args["ObjectReference"],
 		["DirectoryArn"] = args["DirectoryArn"],
+		["NextToken"] = args["NextToken"],
+		["ConsistencyLevel"] = args["ConsistencyLevel"],
 	}
 	asserts.AssertListObjectParentsRequest(all_args)
 	return {
@@ -3378,6 +3777,94 @@ function M.Directory(args)
     }
 end
 
+keys.PolicyToPath = { ["Path"] = true, ["Policies"] = true, nil }
+
+function asserts.AssertPolicyToPath(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PolicyToPath to be of type 'table'")
+	if struct["Path"] then asserts.AssertPathString(struct["Path"]) end
+	if struct["Policies"] then asserts.AssertPolicyAttachmentList(struct["Policies"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PolicyToPath[k], "PolicyToPath contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PolicyToPath
+-- <p>Used when a regular object exists in a <a>Directory</a> and you want to find all of the policies that are associated with that object and the parent to that object.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Path [PathString] <p>The path that is referenced from the root.</p>
+-- * Policies [PolicyAttachmentList] <p>List of policy objects.</p>
+-- @return PolicyToPath structure as a key-value pair table
+function M.PolicyToPath(args)
+	assert(args, "You must provide an argument table when creating PolicyToPath")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Path"] = args["Path"],
+		["Policies"] = args["Policies"],
+	}
+	asserts.AssertPolicyToPath(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchListIndex = { ["NextToken"] = true, ["IndexReference"] = true, ["MaxResults"] = true, ["RangesOnIndexedValues"] = true, nil }
+
+function asserts.AssertBatchListIndex(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchListIndex to be of type 'table'")
+	assert(struct["IndexReference"], "Expected key IndexReference to exist in table")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["IndexReference"] then asserts.AssertObjectReference(struct["IndexReference"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	if struct["RangesOnIndexedValues"] then asserts.AssertObjectAttributeRangeList(struct["RangesOnIndexedValues"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchListIndex[k], "BatchListIndex contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchListIndex
+-- <p>Lists objects attached to the specified index inside a <a>BatchRead</a> operation. For more information, see <a>ListIndex</a> and <a>BatchReadRequest$Operations</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * IndexReference [ObjectReference] <p>The reference to the index to list.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- * RangesOnIndexedValues [ObjectAttributeRangeList] <p>Specifies the ranges of indexed values that you want to query.</p>
+-- Required key: IndexReference
+-- @return BatchListIndex structure as a key-value pair table
+function M.BatchListIndex(args)
+	assert(args, "You must provide an argument table when creating BatchListIndex")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["IndexReference"] = args["IndexReference"],
+		["MaxResults"] = args["MaxResults"],
+		["RangesOnIndexedValues"] = args["RangesOnIndexedValues"],
+	}
+	asserts.AssertBatchListIndex(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.SchemaFacet = { ["SchemaArn"] = true, ["FacetName"] = true, nil }
 
 function asserts.AssertSchemaFacet(struct)
@@ -3394,7 +3881,7 @@ end
 -- <p>A facet.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SchemaArn [Arn] <p>The ARN of the schema that contains the facet.</p>
+-- * SchemaArn [Arn] <p>The ARN of the schema that contains the facet with no minor component. See <a>arns</a> and <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_inplaceschemaupgrade.html">In-Place Schema Upgrade</a> for a description of when to provide minor versions.</p>
 -- * FacetName [FacetName] <p>The name of the facet.</p>
 -- @return SchemaFacet structure as a key-value pair table
 function M.SchemaFacet(args)
@@ -3488,7 +3975,7 @@ function asserts.AssertBatchDetachObjectResponse(struct)
 end
 
 --- Create a structure of type BatchDetachObjectResponse
--- <p>Represents the output of a <code>DetachObject</code> response operation.</p>
+-- <p>Represents the output of a <a>DetachObject</a> response operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * detachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the detached object.</p>
@@ -3587,7 +4074,7 @@ function M.DetachPolicyResponse(args)
     }
 end
 
-keys.PublishSchemaRequest = { ["DevelopmentSchemaArn"] = true, ["Version"] = true, ["Name"] = true, nil }
+keys.PublishSchemaRequest = { ["DevelopmentSchemaArn"] = true, ["Version"] = true, ["MinorVersion"] = true, ["Name"] = true, nil }
 
 function asserts.AssertPublishSchemaRequest(struct)
 	assert(struct)
@@ -3596,6 +4083,7 @@ function asserts.AssertPublishSchemaRequest(struct)
 	assert(struct["Version"], "Expected key Version to exist in table")
 	if struct["DevelopmentSchemaArn"] then asserts.AssertArn(struct["DevelopmentSchemaArn"]) end
 	if struct["Version"] then asserts.AssertVersion(struct["Version"]) end
+	if struct["MinorVersion"] then asserts.AssertVersion(struct["MinorVersion"]) end
 	if struct["Name"] then asserts.AssertSchemaName(struct["Name"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.PublishSchemaRequest[k], "PublishSchemaRequest contains unknown key " .. tostring(k))
@@ -3607,7 +4095,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * DevelopmentSchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the development schema. For more information, see <a>arns</a>.</p>
--- * Version [Version] <p>The version under which the schema will be published.</p>
+-- * Version [Version] <p>The major version under which the schema will be published. Schemas have both a major and minor version associated with them.</p>
+-- * MinorVersion [Version] <p>The minor version under which the schema will be published. This parameter is recommended. Schemas have both a major and minor version associated with them.</p>
 -- * Name [SchemaName] <p>The new name under which the schema will be published. If this is not provided, the development schema is considered.</p>
 -- Required key: DevelopmentSchemaArn
 -- Required key: Version
@@ -3624,6 +4113,7 @@ function M.PublishSchemaRequest(args)
 	local all_args = { 
 		["DevelopmentSchemaArn"] = args["DevelopmentSchemaArn"],
 		["Version"] = args["Version"],
+		["MinorVersion"] = args["MinorVersion"],
 		["Name"] = args["Name"],
 	}
 	asserts.AssertPublishSchemaRequest(all_args)
@@ -3723,43 +4213,51 @@ function M.ListFacetAttributesRequest(args)
     }
 end
 
-keys.DeleteObjectRequest = { ["ObjectReference"] = true, ["DirectoryArn"] = true, nil }
+keys.BatchCreateIndex = { ["ParentReference"] = true, ["OrderedIndexedAttributeList"] = true, ["BatchReferenceName"] = true, ["IsUnique"] = true, ["LinkName"] = true, nil }
 
-function asserts.AssertDeleteObjectRequest(struct)
+function asserts.AssertBatchCreateIndex(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteObjectRequest to be of type 'table'")
-	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
-	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	assert(type(struct) == "table", "Expected BatchCreateIndex to be of type 'table'")
+	assert(struct["OrderedIndexedAttributeList"], "Expected key OrderedIndexedAttributeList to exist in table")
+	assert(struct["IsUnique"], "Expected key IsUnique to exist in table")
+	if struct["ParentReference"] then asserts.AssertObjectReference(struct["ParentReference"]) end
+	if struct["OrderedIndexedAttributeList"] then asserts.AssertAttributeKeyList(struct["OrderedIndexedAttributeList"]) end
+	if struct["BatchReferenceName"] then asserts.AssertBatchReferenceName(struct["BatchReferenceName"]) end
+	if struct["IsUnique"] then asserts.AssertBool(struct["IsUnique"]) end
+	if struct["LinkName"] then asserts.AssertLinkName(struct["LinkName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteObjectRequest[k], "DeleteObjectRequest contains unknown key " .. tostring(k))
+		assert(keys.BatchCreateIndex[k], "BatchCreateIndex contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteObjectRequest
---  
+--- Create a structure of type BatchCreateIndex
+-- <p>Creates an index object inside of a <a>BatchRead</a> operation. For more information, see <a>CreateIndex</a> and <a>BatchReadRequest$Operations</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ObjectReference [ObjectReference] <p>A reference that identifies the object.</p>
--- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
--- Required key: DirectoryArn
--- Required key: ObjectReference
--- @return DeleteObjectRequest structure as a key-value pair table
-function M.DeleteObjectRequest(args)
-	assert(args, "You must provide an argument table when creating DeleteObjectRequest")
+-- * ParentReference [ObjectReference] <p>A reference to the parent object that contains the index object.</p>
+-- * OrderedIndexedAttributeList [AttributeKeyList] <p>Specifies the attributes that should be indexed on. Currently only a single attribute is supported.</p>
+-- * BatchReferenceName [BatchReferenceName] <p>The batch reference name. See <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html">Transaction Support</a> for more information.</p>
+-- * IsUnique [Bool] <p>Indicates whether the attribute that is being indexed has unique values or not.</p>
+-- * LinkName [LinkName] <p>The name of the link between the parent object and the index object.</p>
+-- Required key: OrderedIndexedAttributeList
+-- Required key: IsUnique
+-- @return BatchCreateIndex structure as a key-value pair table
+function M.BatchCreateIndex(args)
+	assert(args, "You must provide an argument table when creating BatchCreateIndex")
     local query_args = { 
     }
     local uri_args = { 
     }
     local header_args = { 
-        ["x-amz-data-partition"] = args["DirectoryArn"],
     }
 	local all_args = { 
-		["ObjectReference"] = args["ObjectReference"],
-		["DirectoryArn"] = args["DirectoryArn"],
+		["ParentReference"] = args["ParentReference"],
+		["OrderedIndexedAttributeList"] = args["OrderedIndexedAttributeList"],
+		["BatchReferenceName"] = args["BatchReferenceName"],
+		["IsUnique"] = args["IsUnique"],
+		["LinkName"] = args["LinkName"],
 	}
-	asserts.AssertDeleteObjectRequest(all_args)
+	asserts.AssertBatchCreateIndex(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3863,29 +4361,68 @@ function M.GetFacetRequest(args)
     }
 end
 
-keys.ListDirectoriesResponse = { ["Directories"] = true, ["NextToken"] = true, nil }
+keys.GetAppliedSchemaVersionRequest = { ["SchemaArn"] = true, nil }
 
-function asserts.AssertListDirectoriesResponse(struct)
+function asserts.AssertGetAppliedSchemaVersionRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ListDirectoriesResponse to be of type 'table'")
-	assert(struct["Directories"], "Expected key Directories to exist in table")
-	if struct["Directories"] then asserts.AssertDirectoryList(struct["Directories"]) end
+	assert(type(struct) == "table", "Expected GetAppliedSchemaVersionRequest to be of type 'table'")
+	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetAppliedSchemaVersionRequest[k], "GetAppliedSchemaVersionRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetAppliedSchemaVersionRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The ARN of the applied schema.</p>
+-- Required key: SchemaArn
+-- @return GetAppliedSchemaVersionRequest structure as a key-value pair table
+function M.GetAppliedSchemaVersionRequest(args)
+	assert(args, "You must provide an argument table when creating GetAppliedSchemaVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SchemaArn"] = args["SchemaArn"],
+	}
+	asserts.AssertGetAppliedSchemaVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListPublishedSchemaArnsRequest = { ["SchemaArn"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
+
+function asserts.AssertListPublishedSchemaArnsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListPublishedSchemaArnsRequest to be of type 'table'")
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
 	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ListDirectoriesResponse[k], "ListDirectoriesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListPublishedSchemaArnsRequest[k], "ListPublishedSchemaArnsRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ListDirectoriesResponse
+--- Create a structure of type ListPublishedSchemaArnsRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Directories [DirectoryList] <p>Lists all directories that are associated with your account in pagination fashion.</p>
+-- * SchemaArn [Arn] <p>The response for <code>ListPublishedSchemaArns</code> when this parameter is used will list all minor version ARNs for a major version.</p>
 -- * NextToken [NextToken] <p>The pagination token.</p>
--- Required key: Directories
--- @return ListDirectoriesResponse structure as a key-value pair table
-function M.ListDirectoriesResponse(args)
-	assert(args, "You must provide an argument table when creating ListDirectoriesResponse")
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- @return ListPublishedSchemaArnsRequest structure as a key-value pair table
+function M.ListPublishedSchemaArnsRequest(args)
+	assert(args, "You must provide an argument table when creating ListPublishedSchemaArnsRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -3893,10 +4430,11 @@ function M.ListDirectoriesResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Directories"] = args["Directories"],
+		["SchemaArn"] = args["SchemaArn"],
 		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListDirectoriesResponse(all_args)
+	asserts.AssertListPublishedSchemaArnsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3905,76 +4443,27 @@ function M.ListDirectoriesResponse(args)
     }
 end
 
-keys.InvalidTaggingRequestException = { ["Message"] = true, nil }
+keys.CreateSchemaRequest = { ["Name"] = true, nil }
 
-function asserts.AssertInvalidTaggingRequestException(struct)
+function asserts.AssertCreateSchemaRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidTaggingRequestException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidTaggingRequestException[k], "InvalidTaggingRequestException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidTaggingRequestException
--- <p>Can occur for multiple reasons such as when you tag a resource that doesn’t exist or if you specify a higher number of tags for a resource than the allowed limit. Allowed limit is 50 tags per resource.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return InvalidTaggingRequestException structure as a key-value pair table
-function M.InvalidTaggingRequestException(args)
-	assert(args, "You must provide an argument table when creating InvalidTaggingRequestException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertInvalidTaggingRequestException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CreateDirectoryResponse = { ["AppliedSchemaArn"] = true, ["ObjectIdentifier"] = true, ["Name"] = true, ["DirectoryArn"] = true, nil }
-
-function asserts.AssertCreateDirectoryResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CreateDirectoryResponse to be of type 'table'")
-	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
+	assert(type(struct) == "table", "Expected CreateSchemaRequest to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	assert(struct["ObjectIdentifier"], "Expected key ObjectIdentifier to exist in table")
-	assert(struct["AppliedSchemaArn"], "Expected key AppliedSchemaArn to exist in table")
-	if struct["AppliedSchemaArn"] then asserts.AssertArn(struct["AppliedSchemaArn"]) end
-	if struct["ObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
-	if struct["Name"] then asserts.AssertDirectoryName(struct["Name"]) end
-	if struct["DirectoryArn"] then asserts.AssertDirectoryArn(struct["DirectoryArn"]) end
+	if struct["Name"] then asserts.AssertSchemaName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.CreateDirectoryResponse[k], "CreateDirectoryResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateSchemaRequest[k], "CreateSchemaRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type CreateDirectoryResponse
+--- Create a structure of type CreateSchemaRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AppliedSchemaArn [Arn] <p>The ARN of the published schema in the <a>Directory</a>. Once a published schema is copied into the directory, it has its own ARN, which is referred to applied schema ARN. For more information, see <a>arns</a>.</p>
--- * ObjectIdentifier [ObjectIdentifier] <p>The root object node of the created directory.</p>
--- * Name [DirectoryName] <p>The name of the <a>Directory</a>.</p>
--- * DirectoryArn [DirectoryArn] <p>The ARN that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
--- Required key: DirectoryArn
+-- * Name [SchemaName] <p>The name that is associated with the schema. This is unique to each account and in each region.</p>
 -- Required key: Name
--- Required key: ObjectIdentifier
--- Required key: AppliedSchemaArn
--- @return CreateDirectoryResponse structure as a key-value pair table
-function M.CreateDirectoryResponse(args)
-	assert(args, "You must provide an argument table when creating CreateDirectoryResponse")
+-- @return CreateSchemaRequest structure as a key-value pair table
+function M.CreateSchemaRequest(args)
+	assert(args, "You must provide an argument table when creating CreateSchemaRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -3982,12 +4471,9 @@ function M.CreateDirectoryResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["AppliedSchemaArn"] = args["AppliedSchemaArn"],
-		["ObjectIdentifier"] = args["ObjectIdentifier"],
 		["Name"] = args["Name"],
-		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertCreateDirectoryResponse(all_args)
+	asserts.AssertCreateSchemaRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4080,25 +4566,25 @@ function M.UntagResourceRequest(args)
     }
 end
 
-keys.DirectoryAlreadyExistsException = { ["Message"] = true, nil }
+keys.UpgradePublishedSchemaResponse = { ["UpgradedSchemaArn"] = true, nil }
 
-function asserts.AssertDirectoryAlreadyExistsException(struct)
+function asserts.AssertUpgradePublishedSchemaResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DirectoryAlreadyExistsException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected UpgradePublishedSchemaResponse to be of type 'table'")
+	if struct["UpgradedSchemaArn"] then asserts.AssertArn(struct["UpgradedSchemaArn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DirectoryAlreadyExistsException[k], "DirectoryAlreadyExistsException contains unknown key " .. tostring(k))
+		assert(keys.UpgradePublishedSchemaResponse[k], "UpgradePublishedSchemaResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DirectoryAlreadyExistsException
--- <p>Indicates that a <a>Directory</a> could not be created due to a naming conflict. Choose a different name and try again.</p>
+--- Create a structure of type UpgradePublishedSchemaResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return DirectoryAlreadyExistsException structure as a key-value pair table
-function M.DirectoryAlreadyExistsException(args)
-	assert(args, "You must provide an argument table when creating DirectoryAlreadyExistsException")
+-- * UpgradedSchemaArn [Arn] <p>The ARN of the upgraded schema that is returned as part of the response.</p>
+-- @return UpgradePublishedSchemaResponse structure as a key-value pair table
+function M.UpgradePublishedSchemaResponse(args)
+	assert(args, "You must provide an argument table when creating UpgradePublishedSchemaResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -4106,9 +4592,9 @@ function M.DirectoryAlreadyExistsException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["UpgradedSchemaArn"] = args["UpgradedSchemaArn"],
 	}
-	asserts.AssertDirectoryAlreadyExistsException(all_args)
+	asserts.AssertUpgradePublishedSchemaResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4130,7 +4616,7 @@ function asserts.AssertBatchListObjectChildrenResponse(struct)
 end
 
 --- Create a structure of type BatchListObjectChildrenResponse
--- <p>Represents the output of a <code>ListObjectChildren</code> response operation.</p>
+-- <p>Represents the output of a <a>ListObjectChildren</a> response operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [NextToken] <p>The pagination token.</p>
@@ -4243,25 +4729,25 @@ function M.PublishSchemaResponse(args)
     }
 end
 
-keys.InvalidAttachmentException = { ["Message"] = true, nil }
+keys.BatchCreateIndexResponse = { ["ObjectIdentifier"] = true, nil }
 
-function asserts.AssertInvalidAttachmentException(struct)
+function asserts.AssertBatchCreateIndexResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidAttachmentException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected BatchCreateIndexResponse to be of type 'table'")
+	if struct["ObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidAttachmentException[k], "InvalidAttachmentException contains unknown key " .. tostring(k))
+		assert(keys.BatchCreateIndexResponse[k], "BatchCreateIndexResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidAttachmentException
--- <p>Indicates that an attempt to attach an object with the same link name or to apply a schema with the same name has occurred. Rename the link or the schema and then try again.</p>
+--- Create a structure of type BatchCreateIndexResponse
+-- <p>Represents the output of a <a>CreateIndex</a> response operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return InvalidAttachmentException structure as a key-value pair table
-function M.InvalidAttachmentException(args)
-	assert(args, "You must provide an argument table when creating InvalidAttachmentException")
+-- * ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the index created by this operation.</p>
+-- @return BatchCreateIndexResponse structure as a key-value pair table
+function M.BatchCreateIndexResponse(args)
+	assert(args, "You must provide an argument table when creating BatchCreateIndexResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -4269,9 +4755,46 @@ function M.InvalidAttachmentException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["ObjectIdentifier"] = args["ObjectIdentifier"],
 	}
-	asserts.AssertInvalidAttachmentException(all_args)
+	asserts.AssertBatchCreateIndexResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchAttachTypedLinkResponse = { ["TypedLinkSpecifier"] = true, nil }
+
+function asserts.AssertBatchAttachTypedLinkResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchAttachTypedLinkResponse to be of type 'table'")
+	if struct["TypedLinkSpecifier"] then asserts.AssertTypedLinkSpecifier(struct["TypedLinkSpecifier"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchAttachTypedLinkResponse[k], "BatchAttachTypedLinkResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchAttachTypedLinkResponse
+-- <p>Represents the output of a <a>AttachTypedLink</a> response operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TypedLinkSpecifier [TypedLinkSpecifier] <p>Returns a typed link specifier as output.</p>
+-- @return BatchAttachTypedLinkResponse structure as a key-value pair table
+function M.BatchAttachTypedLinkResponse(args)
+	assert(args, "You must provide an argument table when creating BatchAttachTypedLinkResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["TypedLinkSpecifier"] = args["TypedLinkSpecifier"],
+	}
+	asserts.AssertBatchAttachTypedLinkResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4567,97 +5090,6 @@ function M.PutSchemaFromJsonResponse(args)
     }
 end
 
-keys.TypedLinkSpecifier = { ["SourceObjectReference"] = true, ["IdentityAttributeValues"] = true, ["TargetObjectReference"] = true, ["TypedLinkFacet"] = true, nil }
-
-function asserts.AssertTypedLinkSpecifier(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TypedLinkSpecifier to be of type 'table'")
-	assert(struct["TypedLinkFacet"], "Expected key TypedLinkFacet to exist in table")
-	assert(struct["SourceObjectReference"], "Expected key SourceObjectReference to exist in table")
-	assert(struct["TargetObjectReference"], "Expected key TargetObjectReference to exist in table")
-	assert(struct["IdentityAttributeValues"], "Expected key IdentityAttributeValues to exist in table")
-	if struct["SourceObjectReference"] then asserts.AssertObjectReference(struct["SourceObjectReference"]) end
-	if struct["IdentityAttributeValues"] then asserts.AssertAttributeNameAndValueList(struct["IdentityAttributeValues"]) end
-	if struct["TargetObjectReference"] then asserts.AssertObjectReference(struct["TargetObjectReference"]) end
-	if struct["TypedLinkFacet"] then asserts.AssertTypedLinkSchemaAndFacetName(struct["TypedLinkFacet"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.TypedLinkSpecifier[k], "TypedLinkSpecifier contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TypedLinkSpecifier
--- <p>Contains all the information that is used to uniquely identify a typed link. The parameters discussed in this topic are used to uniquely specify the typed link being operated on. The <a>AttachTypedLink</a> API returns a typed link specifier while the <a>DetachTypedLink</a> API accepts one as input. Similarly, the <a>ListIncomingTypedLinks</a> and <a>ListOutgoingTypedLinks</a> API operations provide typed link specifiers as output. You can also construct a typed link specifier from scratch.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * SourceObjectReference [ObjectReference] <p>Identifies the source object that the typed link will attach to.</p>
--- * IdentityAttributeValues [AttributeNameAndValueList] <p>Identifies the attribute value to update.</p>
--- * TargetObjectReference [ObjectReference] <p>Identifies the target object that the typed link will attach to.</p>
--- * TypedLinkFacet [TypedLinkSchemaAndFacetName] <p>Identifies the typed link facet that is associated with the typed link.</p>
--- Required key: TypedLinkFacet
--- Required key: SourceObjectReference
--- Required key: TargetObjectReference
--- Required key: IdentityAttributeValues
--- @return TypedLinkSpecifier structure as a key-value pair table
-function M.TypedLinkSpecifier(args)
-	assert(args, "You must provide an argument table when creating TypedLinkSpecifier")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["SourceObjectReference"] = args["SourceObjectReference"],
-		["IdentityAttributeValues"] = args["IdentityAttributeValues"],
-		["TargetObjectReference"] = args["TargetObjectReference"],
-		["TypedLinkFacet"] = args["TypedLinkFacet"],
-	}
-	asserts.AssertTypedLinkSpecifier(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ObjectAlreadyDetachedException = { ["Message"] = true, nil }
-
-function asserts.AssertObjectAlreadyDetachedException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ObjectAlreadyDetachedException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ObjectAlreadyDetachedException[k], "ObjectAlreadyDetachedException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ObjectAlreadyDetachedException
--- <p>Indicates that the object is not attached to the index.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return ObjectAlreadyDetachedException structure as a key-value pair table
-function M.ObjectAlreadyDetachedException(args)
-	assert(args, "You must provide an argument table when creating ObjectAlreadyDetachedException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertObjectAlreadyDetachedException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ListIndexRequest = { ["MaxResults"] = true, ["RangesOnIndexedValues"] = true, ["IndexReference"] = true, ["DirectoryArn"] = true, ["NextToken"] = true, ["ConsistencyLevel"] = true, nil }
 
 function asserts.AssertListIndexRequest(struct)
@@ -4680,7 +5112,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * MaxResults [NumberResults] <p>The maximum number of results to retrieve from the index.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of objects in a single page to retrieve from the index during a request. For more information, see <a href="http://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html">Amazon Cloud Directory Limits</a>.</p>
 -- * RangesOnIndexedValues [ObjectAttributeRangeList] <p>Specifies the ranges of indexed values that you want to query.</p>
 -- * IndexReference [ObjectReference] <p>The reference to the index to list.</p>
 -- * DirectoryArn [Arn] <p>The ARN of the directory that the index exists in.</p>
@@ -4750,27 +5182,27 @@ function M.CreateTypedLinkFacetResponse(args)
     }
 end
 
-keys.ListPublishedSchemaArnsResponse = { ["NextToken"] = true, ["SchemaArns"] = true, nil }
+keys.GetDirectoryResponse = { ["Directory"] = true, nil }
 
-function asserts.AssertListPublishedSchemaArnsResponse(struct)
+function asserts.AssertGetDirectoryResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ListPublishedSchemaArnsResponse to be of type 'table'")
-	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
-	if struct["SchemaArns"] then asserts.AssertArns(struct["SchemaArns"]) end
+	assert(type(struct) == "table", "Expected GetDirectoryResponse to be of type 'table'")
+	assert(struct["Directory"], "Expected key Directory to exist in table")
+	if struct["Directory"] then asserts.AssertDirectory(struct["Directory"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ListPublishedSchemaArnsResponse[k], "ListPublishedSchemaArnsResponse contains unknown key " .. tostring(k))
+		assert(keys.GetDirectoryResponse[k], "GetDirectoryResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ListPublishedSchemaArnsResponse
+--- Create a structure of type GetDirectoryResponse
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [NextToken] <p>The pagination token.</p>
--- * SchemaArns [Arns] <p>The ARNs of published schemas.</p>
--- @return ListPublishedSchemaArnsResponse structure as a key-value pair table
-function M.ListPublishedSchemaArnsResponse(args)
-	assert(args, "You must provide an argument table when creating ListPublishedSchemaArnsResponse")
+-- * Directory [Directory] <p>Metadata about the directory.</p>
+-- Required key: Directory
+-- @return GetDirectoryResponse structure as a key-value pair table
+function M.GetDirectoryResponse(args)
+	assert(args, "You must provide an argument table when creating GetDirectoryResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -4778,10 +5210,9 @@ function M.ListPublishedSchemaArnsResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["NextToken"] = args["NextToken"],
-		["SchemaArns"] = args["SchemaArns"],
+		["Directory"] = args["Directory"],
 	}
-	asserts.AssertListPublishedSchemaArnsResponse(all_args)
+	asserts.AssertGetDirectoryResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4844,7 +5275,7 @@ function asserts.AssertBatchAttachObject(struct)
 end
 
 --- Create a structure of type BatchAttachObject
--- <p>Represents the output of an <code>AttachObject</code> operation.</p>
+-- <p>Represents the output of an <a>AttachObject</a> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ParentReference [ObjectReference] <p>The parent object reference.</p>
@@ -4892,7 +5323,7 @@ function asserts.AssertFacetAttributeDefinition(struct)
 end
 
 --- Create a structure of type FacetAttributeDefinition
--- <p>A facet attribute definition. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
+-- <p>A facet attribute definition. See <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute References</a> for more information.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Rules [RuleMap] <p>Validation rules attached to the attribute definition.</p>
@@ -4969,6 +5400,43 @@ function M.ListTagsForResourceRequest(args)
     }
 end
 
+keys.BatchGetObjectAttributesResponse = { ["Attributes"] = true, nil }
+
+function asserts.AssertBatchGetObjectAttributesResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchGetObjectAttributesResponse to be of type 'table'")
+	if struct["Attributes"] then asserts.AssertAttributeKeyAndValueList(struct["Attributes"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchGetObjectAttributesResponse[k], "BatchGetObjectAttributesResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchGetObjectAttributesResponse
+-- <p>Represents the output of a <a>GetObjectAttributes</a> response operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [AttributeKeyAndValueList] <p>The attribute values that are associated with an object.</p>
+-- @return BatchGetObjectAttributesResponse structure as a key-value pair table
+function M.BatchGetObjectAttributesResponse(args)
+	assert(args, "You must provide an argument table when creating BatchGetObjectAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Attributes"] = args["Attributes"],
+	}
+	asserts.AssertBatchGetObjectAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.BatchAddFacetToObjectResponse = { nil }
 
 function asserts.AssertBatchAddFacetToObjectResponse(struct)
@@ -4995,6 +5463,50 @@ function M.BatchAddFacetToObjectResponse(args)
 	local all_args = { 
 	}
 	asserts.AssertBatchAddFacetToObjectResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchDetachPolicy = { ["PolicyReference"] = true, ["ObjectReference"] = true, nil }
+
+function asserts.AssertBatchDetachPolicy(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchDetachPolicy to be of type 'table'")
+	assert(struct["PolicyReference"], "Expected key PolicyReference to exist in table")
+	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
+	if struct["PolicyReference"] then asserts.AssertObjectReference(struct["PolicyReference"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchDetachPolicy[k], "BatchDetachPolicy contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchDetachPolicy
+-- <p>Detaches the specified policy from the specified directory inside a <a>BatchWrite</a> operation. For more information, see <a>DetachPolicy</a> and <a>BatchWriteRequest$Operations</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyReference [ObjectReference] <p>Reference that identifies the policy object.</p>
+-- * ObjectReference [ObjectReference] <p>Reference that identifies the object whose policy object will be detached.</p>
+-- Required key: PolicyReference
+-- Required key: ObjectReference
+-- @return BatchDetachPolicy structure as a key-value pair table
+function M.BatchDetachPolicy(args)
+	assert(args, "You must provide an argument table when creating BatchDetachPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["PolicyReference"] = args["PolicyReference"],
+		["ObjectReference"] = args["ObjectReference"],
+	}
+	asserts.AssertBatchDetachPolicy(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5071,27 +5583,29 @@ function M.AttachPolicyResponse(args)
     }
 end
 
-keys.PolicyToPath = { ["Path"] = true, ["Policies"] = true, nil }
+keys.ListDirectoriesRequest = { ["state"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function asserts.AssertPolicyToPath(struct)
+function asserts.AssertListDirectoriesRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected PolicyToPath to be of type 'table'")
-	if struct["Path"] then asserts.AssertPathString(struct["Path"]) end
-	if struct["Policies"] then asserts.AssertPolicyAttachmentList(struct["Policies"]) end
+	assert(type(struct) == "table", "Expected ListDirectoriesRequest to be of type 'table'")
+	if struct["state"] then asserts.AssertDirectoryState(struct["state"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.PolicyToPath[k], "PolicyToPath contains unknown key " .. tostring(k))
+		assert(keys.ListDirectoriesRequest[k], "ListDirectoriesRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type PolicyToPath
--- <p>Used when a regular object exists in a <a>Directory</a> and you want to find all of the policies that are associated with that object and the parent to that object.</p>
+--- Create a structure of type ListDirectoriesRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Path [PathString] <p>The path that is referenced from the root.</p>
--- * Policies [PolicyAttachmentList] <p>List of policy objects.</p>
--- @return PolicyToPath structure as a key-value pair table
-function M.PolicyToPath(args)
-	assert(args, "You must provide an argument table when creating PolicyToPath")
+-- * state [DirectoryState] <p>The state of the directories in the list. Can be either Enabled, Disabled, or Deleted.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- @return ListDirectoriesRequest structure as a key-value pair table
+function M.ListDirectoriesRequest(args)
+	assert(args, "You must provide an argument table when creating ListDirectoriesRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -5099,10 +5613,50 @@ function M.PolicyToPath(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Path"] = args["Path"],
-		["Policies"] = args["Policies"],
+		["state"] = args["state"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertPolicyToPath(all_args)
+	asserts.AssertListDirectoriesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchGetObjectInformation = { ["ObjectReference"] = true, nil }
+
+function asserts.AssertBatchGetObjectInformation(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchGetObjectInformation to be of type 'table'")
+	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchGetObjectInformation[k], "BatchGetObjectInformation contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchGetObjectInformation
+-- <p>Retrieves metadata about an object inside a <a>BatchRead</a> operation. For more information, see <a>GetObjectInformation</a> and <a>BatchReadRequest$Operations</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectReference [ObjectReference] <p>A reference to the object.</p>
+-- Required key: ObjectReference
+-- @return BatchGetObjectInformation structure as a key-value pair table
+function M.BatchGetObjectInformation(args)
+	assert(args, "You must provide an argument table when creating BatchGetObjectInformation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ObjectReference"] = args["ObjectReference"],
+	}
+	asserts.AssertBatchGetObjectInformation(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5126,7 +5680,7 @@ function asserts.AssertBatchListObjectChildren(struct)
 end
 
 --- Create a structure of type BatchListObjectChildren
--- <p>Represents the output of a <code>ListObjectChildren</code> operation.</p>
+-- <p>Represents the output of a <a>ListObjectChildren</a> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ObjectReference [ObjectReference] <p>Reference of the object for which child objects are being listed.</p>
@@ -5156,27 +5710,25 @@ function M.BatchListObjectChildren(args)
     }
 end
 
-keys.ListPublishedSchemaArnsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
+keys.GetTypedLinkFacetInformationResponse = { ["IdentityAttributeOrder"] = true, nil }
 
-function asserts.AssertListPublishedSchemaArnsRequest(struct)
+function asserts.AssertGetTypedLinkFacetInformationResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ListPublishedSchemaArnsRequest to be of type 'table'")
-	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	assert(type(struct) == "table", "Expected GetTypedLinkFacetInformationResponse to be of type 'table'")
+	if struct["IdentityAttributeOrder"] then asserts.AssertAttributeNameList(struct["IdentityAttributeOrder"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ListPublishedSchemaArnsRequest[k], "ListPublishedSchemaArnsRequest contains unknown key " .. tostring(k))
+		assert(keys.GetTypedLinkFacetInformationResponse[k], "GetTypedLinkFacetInformationResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ListPublishedSchemaArnsRequest
+--- Create a structure of type GetTypedLinkFacetInformationResponse
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [NextToken] <p>The pagination token.</p>
--- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
--- @return ListPublishedSchemaArnsRequest structure as a key-value pair table
-function M.ListPublishedSchemaArnsRequest(args)
-	assert(args, "You must provide an argument table when creating ListPublishedSchemaArnsRequest")
+-- * IdentityAttributeOrder [AttributeNameList] <p>The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed Links</a>.</p>
+-- @return GetTypedLinkFacetInformationResponse structure as a key-value pair table
+function M.GetTypedLinkFacetInformationResponse(args)
+	assert(args, "You must provide an argument table when creating GetTypedLinkFacetInformationResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -5184,10 +5736,9 @@ function M.ListPublishedSchemaArnsRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["NextToken"] = args["NextToken"],
-		["MaxResults"] = args["MaxResults"],
+		["IdentityAttributeOrder"] = args["IdentityAttributeOrder"],
 	}
-	asserts.AssertListPublishedSchemaArnsRequest(all_args)
+	asserts.AssertGetTypedLinkFacetInformationResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5230,25 +5781,31 @@ function M.UpdateTypedLinkFacetResponse(args)
     }
 end
 
-keys.FacetAlreadyExistsException = { ["Message"] = true, nil }
+keys.BatchUpdateLinkAttributes = { ["AttributeUpdates"] = true, ["TypedLinkSpecifier"] = true, nil }
 
-function asserts.AssertFacetAlreadyExistsException(struct)
+function asserts.AssertBatchUpdateLinkAttributes(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected FacetAlreadyExistsException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected BatchUpdateLinkAttributes to be of type 'table'")
+	assert(struct["TypedLinkSpecifier"], "Expected key TypedLinkSpecifier to exist in table")
+	assert(struct["AttributeUpdates"], "Expected key AttributeUpdates to exist in table")
+	if struct["AttributeUpdates"] then asserts.AssertLinkAttributeUpdateList(struct["AttributeUpdates"]) end
+	if struct["TypedLinkSpecifier"] then asserts.AssertTypedLinkSpecifier(struct["TypedLinkSpecifier"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.FacetAlreadyExistsException[k], "FacetAlreadyExistsException contains unknown key " .. tostring(k))
+		assert(keys.BatchUpdateLinkAttributes[k], "BatchUpdateLinkAttributes contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type FacetAlreadyExistsException
--- <p>A facet with the same name already exists.</p>
+--- Create a structure of type BatchUpdateLinkAttributes
+-- <p>Updates a given typed link’s attributes inside a <a>BatchRead</a> operation. Attributes to be updated must not contribute to the typed link’s identity, as defined by its <code>IdentityAttributeOrder</code>. For more information, see <a>UpdateLinkAttributes</a> and <a>BatchReadRequest$Operations</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return FacetAlreadyExistsException structure as a key-value pair table
-function M.FacetAlreadyExistsException(args)
-	assert(args, "You must provide an argument table when creating FacetAlreadyExistsException")
+-- * AttributeUpdates [LinkAttributeUpdateList] <p>The attributes update structure.</p>
+-- * TypedLinkSpecifier [TypedLinkSpecifier] <p>Allows a typed link specifier to be accepted as input.</p>
+-- Required key: TypedLinkSpecifier
+-- Required key: AttributeUpdates
+-- @return BatchUpdateLinkAttributes structure as a key-value pair table
+function M.BatchUpdateLinkAttributes(args)
+	assert(args, "You must provide an argument table when creating BatchUpdateLinkAttributes")
     local query_args = { 
     }
     local uri_args = { 
@@ -5256,9 +5813,10 @@ function M.FacetAlreadyExistsException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["AttributeUpdates"] = args["AttributeUpdates"],
+		["TypedLinkSpecifier"] = args["TypedLinkSpecifier"],
 	}
-	asserts.AssertFacetAlreadyExistsException(all_args)
+	asserts.AssertBatchUpdateLinkAttributes(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5267,31 +5825,35 @@ function M.FacetAlreadyExistsException(args)
     }
 end
 
-keys.TagResourceRequest = { ["ResourceArn"] = true, ["Tags"] = true, nil }
+keys.BatchListIncomingTypedLinks = { ["FilterTypedLink"] = true, ["ObjectReference"] = true, ["NextToken"] = true, ["FilterAttributeRanges"] = true, ["MaxResults"] = true, nil }
 
-function asserts.AssertTagResourceRequest(struct)
+function asserts.AssertBatchListIncomingTypedLinks(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TagResourceRequest to be of type 'table'")
-	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
-	assert(struct["Tags"], "Expected key Tags to exist in table")
-	if struct["ResourceArn"] then asserts.AssertArn(struct["ResourceArn"]) end
-	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	assert(type(struct) == "table", "Expected BatchListIncomingTypedLinks to be of type 'table'")
+	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
+	if struct["FilterTypedLink"] then asserts.AssertTypedLinkSchemaAndFacetName(struct["FilterTypedLink"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["FilterAttributeRanges"] then asserts.AssertTypedLinkAttributeRangeList(struct["FilterAttributeRanges"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TagResourceRequest[k], "TagResourceRequest contains unknown key " .. tostring(k))
+		assert(keys.BatchListIncomingTypedLinks[k], "BatchListIncomingTypedLinks contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TagResourceRequest
---  
+--- Create a structure of type BatchListIncomingTypedLinks
+-- <p>Returns a paginated list of all the incoming <a>TypedLinkSpecifier</a> information for an object inside a <a>BatchRead</a> operation. For more information, see <a>ListIncomingTypedLinks</a> and <a>BatchReadRequest$Operations</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ResourceArn [Arn] <p>The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.</p>
--- * Tags [TagList] <p>A list of tag key-value pairs.</p>
--- Required key: ResourceArn
--- Required key: Tags
--- @return TagResourceRequest structure as a key-value pair table
-function M.TagResourceRequest(args)
-	assert(args, "You must provide an argument table when creating TagResourceRequest")
+-- * FilterTypedLink [TypedLinkSchemaAndFacetName] <p>Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls.</p>
+-- * ObjectReference [ObjectReference] <p>The reference that identifies the object whose attributes will be listed.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * FilterAttributeRanges [TypedLinkAttributeRangeList] <p>Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- Required key: ObjectReference
+-- @return BatchListIncomingTypedLinks structure as a key-value pair table
+function M.BatchListIncomingTypedLinks(args)
+	assert(args, "You must provide an argument table when creating BatchListIncomingTypedLinks")
     local query_args = { 
     }
     local uri_args = { 
@@ -5299,10 +5861,57 @@ function M.TagResourceRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["ResourceArn"] = args["ResourceArn"],
-		["Tags"] = args["Tags"],
+		["FilterTypedLink"] = args["FilterTypedLink"],
+		["ObjectReference"] = args["ObjectReference"],
+		["NextToken"] = args["NextToken"],
+		["FilterAttributeRanges"] = args["FilterAttributeRanges"],
+		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertTagResourceRequest(all_args)
+	asserts.AssertBatchListIncomingTypedLinks(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.TypedLinkFacetAttributeUpdate = { ["Action"] = true, ["Attribute"] = true, nil }
+
+function asserts.AssertTypedLinkFacetAttributeUpdate(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected TypedLinkFacetAttributeUpdate to be of type 'table'")
+	assert(struct["Attribute"], "Expected key Attribute to exist in table")
+	assert(struct["Action"], "Expected key Action to exist in table")
+	if struct["Action"] then asserts.AssertUpdateActionType(struct["Action"]) end
+	if struct["Attribute"] then asserts.AssertTypedLinkAttributeDefinition(struct["Attribute"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.TypedLinkFacetAttributeUpdate[k], "TypedLinkFacetAttributeUpdate contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type TypedLinkFacetAttributeUpdate
+-- <p>A typed link facet attribute update.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Action [UpdateActionType] <p>The action to perform when updating the attribute.</p>
+-- * Attribute [TypedLinkAttributeDefinition] <p>The attribute to update.</p>
+-- Required key: Attribute
+-- Required key: Action
+-- @return TypedLinkFacetAttributeUpdate structure as a key-value pair table
+function M.TypedLinkFacetAttributeUpdate(args)
+	assert(args, "You must provide an argument table when creating TypedLinkFacetAttributeUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Action"] = args["Action"],
+		["Attribute"] = args["Attribute"],
+	}
+	asserts.AssertTypedLinkFacetAttributeUpdate(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5440,7 +6049,7 @@ function asserts.AssertBatchListObjectAttributes(struct)
 end
 
 --- Create a structure of type BatchListObjectAttributes
--- <p>Represents the output of a <code>ListObjectAttributes</code> operation.</p>
+-- <p>Represents the output of a <a>ListObjectAttributes</a> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * FacetFilter [SchemaFacet] <p>Used to filter the list of object attributes that are associated with a certain facet.</p>
@@ -5472,25 +6081,27 @@ function M.BatchListObjectAttributes(args)
     }
 end
 
-keys.GetTypedLinkFacetInformationResponse = { ["IdentityAttributeOrder"] = true, nil }
+keys.EnableDirectoryResponse = { ["DirectoryArn"] = true, nil }
 
-function asserts.AssertGetTypedLinkFacetInformationResponse(struct)
+function asserts.AssertEnableDirectoryResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected GetTypedLinkFacetInformationResponse to be of type 'table'")
-	if struct["IdentityAttributeOrder"] then asserts.AssertAttributeNameList(struct["IdentityAttributeOrder"]) end
+	assert(type(struct) == "table", "Expected EnableDirectoryResponse to be of type 'table'")
+	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.GetTypedLinkFacetInformationResponse[k], "GetTypedLinkFacetInformationResponse contains unknown key " .. tostring(k))
+		assert(keys.EnableDirectoryResponse[k], "EnableDirectoryResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type GetTypedLinkFacetInformationResponse
+--- Create a structure of type EnableDirectoryResponse
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * IdentityAttributeOrder [AttributeNameList] <p>The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
--- @return GetTypedLinkFacetInformationResponse structure as a key-value pair table
-function M.GetTypedLinkFacetInformationResponse(args)
-	assert(args, "You must provide an argument table when creating GetTypedLinkFacetInformationResponse")
+-- * DirectoryArn [Arn] <p>The ARN of the enabled directory.</p>
+-- Required key: DirectoryArn
+-- @return EnableDirectoryResponse structure as a key-value pair table
+function M.EnableDirectoryResponse(args)
+	assert(args, "You must provide an argument table when creating EnableDirectoryResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -5498,9 +6109,9 @@ function M.GetTypedLinkFacetInformationResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["IdentityAttributeOrder"] = args["IdentityAttributeOrder"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertGetTypedLinkFacetInformationResponse(all_args)
+	asserts.AssertEnableDirectoryResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5560,7 +6171,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the specified object.</p>
--- * SchemaFacets [SchemaFacetList] <p>The facets attached to the specified object.</p>
+-- * SchemaFacets [SchemaFacetList] <p>The facets attached to the specified object. Although the response does not include minor version information, the most recently applied minor version of each Facet is in effect. See <a>GetAppliedSchemaVersion</a> for details.</p>
 -- @return GetObjectInformationResponse structure as a key-value pair table
 function M.GetObjectInformationResponse(args)
 	assert(args, "You must provide an argument table when creating GetObjectInformationResponse")
@@ -5583,25 +6194,35 @@ function M.GetObjectInformationResponse(args)
     }
 end
 
-keys.DirectoryNotEnabledException = { ["Message"] = true, nil }
+keys.BatchListOutgoingTypedLinks = { ["FilterTypedLink"] = true, ["ObjectReference"] = true, ["NextToken"] = true, ["FilterAttributeRanges"] = true, ["MaxResults"] = true, nil }
 
-function asserts.AssertDirectoryNotEnabledException(struct)
+function asserts.AssertBatchListOutgoingTypedLinks(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DirectoryNotEnabledException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected BatchListOutgoingTypedLinks to be of type 'table'")
+	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
+	if struct["FilterTypedLink"] then asserts.AssertTypedLinkSchemaAndFacetName(struct["FilterTypedLink"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["FilterAttributeRanges"] then asserts.AssertTypedLinkAttributeRangeList(struct["FilterAttributeRanges"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DirectoryNotEnabledException[k], "DirectoryNotEnabledException contains unknown key " .. tostring(k))
+		assert(keys.BatchListOutgoingTypedLinks[k], "BatchListOutgoingTypedLinks contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DirectoryNotEnabledException
--- <p>An operation can only operate on a directory that is not enabled.</p>
+--- Create a structure of type BatchListOutgoingTypedLinks
+-- <p>Returns a paginated list of all the outgoing <a>TypedLinkSpecifier</a> information for an object inside a <a>BatchRead</a> operation. For more information, see <a>ListOutgoingTypedLinks</a> and <a>BatchReadRequest$Operations</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return DirectoryNotEnabledException structure as a key-value pair table
-function M.DirectoryNotEnabledException(args)
-	assert(args, "You must provide an argument table when creating DirectoryNotEnabledException")
+-- * FilterTypedLink [TypedLinkSchemaAndFacetName] <p>Filters are interpreted in the order of the attributes defined on the typed link facet, not the order they are supplied to any API calls.</p>
+-- * ObjectReference [ObjectReference] <p>The reference that identifies the object whose attributes will be listed.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * FilterAttributeRanges [TypedLinkAttributeRangeList] <p>Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- Required key: ObjectReference
+-- @return BatchListOutgoingTypedLinks structure as a key-value pair table
+function M.BatchListOutgoingTypedLinks(args)
+	assert(args, "You must provide an argument table when creating BatchListOutgoingTypedLinks")
     local query_args = { 
     }
     local uri_args = { 
@@ -5609,9 +6230,13 @@ function M.DirectoryNotEnabledException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["FilterTypedLink"] = args["FilterTypedLink"],
+		["ObjectReference"] = args["ObjectReference"],
+		["NextToken"] = args["NextToken"],
+		["FilterAttributeRanges"] = args["FilterAttributeRanges"],
+		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDirectoryNotEnabledException(all_args)
+	asserts.AssertBatchListOutgoingTypedLinks(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5649,6 +6274,46 @@ function M.CreateSchemaResponse(args)
 		["SchemaArn"] = args["SchemaArn"],
 	}
 	asserts.AssertCreateSchemaResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListManagedSchemaArnsResponse = { ["NextToken"] = true, ["SchemaArns"] = true, nil }
+
+function asserts.AssertListManagedSchemaArnsResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListManagedSchemaArnsResponse to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["SchemaArns"] then asserts.AssertArns(struct["SchemaArns"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListManagedSchemaArnsResponse[k], "ListManagedSchemaArnsResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListManagedSchemaArnsResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * SchemaArns [Arns] <p>The ARNs for all AWS managed schemas.</p>
+-- @return ListManagedSchemaArnsResponse structure as a key-value pair table
+function M.ListManagedSchemaArnsResponse(args)
+	assert(args, "You must provide an argument table when creating ListManagedSchemaArnsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["SchemaArns"] = args["SchemaArns"],
+	}
+	asserts.AssertListManagedSchemaArnsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5810,27 +6475,27 @@ function M.GetTypedLinkFacetInformationRequest(args)
     }
 end
 
-keys.ListOutgoingTypedLinksResponse = { ["NextToken"] = true, ["TypedLinkSpecifiers"] = true, nil }
+keys.BatchListIncomingTypedLinksResponse = { ["NextToken"] = true, ["LinkSpecifiers"] = true, nil }
 
-function asserts.AssertListOutgoingTypedLinksResponse(struct)
+function asserts.AssertBatchListIncomingTypedLinksResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ListOutgoingTypedLinksResponse to be of type 'table'")
+	assert(type(struct) == "table", "Expected BatchListIncomingTypedLinksResponse to be of type 'table'")
 	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
-	if struct["TypedLinkSpecifiers"] then asserts.AssertTypedLinkSpecifierList(struct["TypedLinkSpecifiers"]) end
+	if struct["LinkSpecifiers"] then asserts.AssertTypedLinkSpecifierList(struct["LinkSpecifiers"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ListOutgoingTypedLinksResponse[k], "ListOutgoingTypedLinksResponse contains unknown key " .. tostring(k))
+		assert(keys.BatchListIncomingTypedLinksResponse[k], "BatchListIncomingTypedLinksResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ListOutgoingTypedLinksResponse
---  
+--- Create a structure of type BatchListIncomingTypedLinksResponse
+-- <p>Represents the output of a <a>ListIncomingTypedLinks</a> response operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [NextToken] <p>The pagination token.</p>
--- * TypedLinkSpecifiers [TypedLinkSpecifierList] <p>Returns a typed link specifier as output.</p>
--- @return ListOutgoingTypedLinksResponse structure as a key-value pair table
-function M.ListOutgoingTypedLinksResponse(args)
-	assert(args, "You must provide an argument table when creating ListOutgoingTypedLinksResponse")
+-- * LinkSpecifiers [TypedLinkSpecifierList] <p>Returns one or more typed link specifiers as output.</p>
+-- @return BatchListIncomingTypedLinksResponse structure as a key-value pair table
+function M.BatchListIncomingTypedLinksResponse(args)
+	assert(args, "You must provide an argument table when creating BatchListIncomingTypedLinksResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -5839,9 +6504,9 @@ function M.ListOutgoingTypedLinksResponse(args)
     }
 	local all_args = { 
 		["NextToken"] = args["NextToken"],
-		["TypedLinkSpecifiers"] = args["TypedLinkSpecifiers"],
+		["LinkSpecifiers"] = args["LinkSpecifiers"],
 	}
-	asserts.AssertListOutgoingTypedLinksResponse(all_args)
+	asserts.AssertBatchListIncomingTypedLinksResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5935,25 +6600,25 @@ function M.EnableDirectoryRequest(args)
     }
 end
 
-keys.IndexedAttributeMissingException = { ["Message"] = true, nil }
+keys.UpdateObjectAttributesResponse = { ["ObjectIdentifier"] = true, nil }
 
-function asserts.AssertIndexedAttributeMissingException(struct)
+function asserts.AssertUpdateObjectAttributesResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected IndexedAttributeMissingException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected UpdateObjectAttributesResponse to be of type 'table'")
+	if struct["ObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.IndexedAttributeMissingException[k], "IndexedAttributeMissingException contains unknown key " .. tostring(k))
+		assert(keys.UpdateObjectAttributesResponse[k], "UpdateObjectAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type IndexedAttributeMissingException
--- <p>An object has been attempted to be attached to an object that does not have the appropriate attribute value.</p>
+--- Create a structure of type UpdateObjectAttributesResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return IndexedAttributeMissingException structure as a key-value pair table
-function M.IndexedAttributeMissingException(args)
-	assert(args, "You must provide an argument table when creating IndexedAttributeMissingException")
+-- * ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the updated object.</p>
+-- @return UpdateObjectAttributesResponse structure as a key-value pair table
+function M.UpdateObjectAttributesResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateObjectAttributesResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -5961,9 +6626,9 @@ function M.IndexedAttributeMissingException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["ObjectIdentifier"] = args["ObjectIdentifier"],
 	}
-	asserts.AssertIndexedAttributeMissingException(all_args)
+	asserts.AssertUpdateObjectAttributesResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6012,6 +6677,56 @@ function M.ListObjectParentPathsResponse(args)
     }
 end
 
+keys.UpdateLinkAttributesRequest = { ["AttributeUpdates"] = true, ["TypedLinkSpecifier"] = true, ["DirectoryArn"] = true, nil }
+
+function asserts.AssertUpdateLinkAttributesRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateLinkAttributesRequest to be of type 'table'")
+	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
+	assert(struct["TypedLinkSpecifier"], "Expected key TypedLinkSpecifier to exist in table")
+	assert(struct["AttributeUpdates"], "Expected key AttributeUpdates to exist in table")
+	if struct["AttributeUpdates"] then asserts.AssertLinkAttributeUpdateList(struct["AttributeUpdates"]) end
+	if struct["TypedLinkSpecifier"] then asserts.AssertTypedLinkSpecifier(struct["TypedLinkSpecifier"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateLinkAttributesRequest[k], "UpdateLinkAttributesRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateLinkAttributesRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttributeUpdates [LinkAttributeUpdateList] <p>The attributes update structure.</p>
+-- * TypedLinkSpecifier [TypedLinkSpecifier] <p>Allows a typed link specifier to be accepted as input.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the Directory where the updated typed link resides. For more information, see <a>arns</a> or <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed Links</a>.</p>
+-- Required key: DirectoryArn
+-- Required key: TypedLinkSpecifier
+-- Required key: AttributeUpdates
+-- @return UpdateLinkAttributesRequest structure as a key-value pair table
+function M.UpdateLinkAttributesRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateLinkAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
+		["AttributeUpdates"] = args["AttributeUpdates"],
+		["TypedLinkSpecifier"] = args["TypedLinkSpecifier"],
+		["DirectoryArn"] = args["DirectoryArn"],
+	}
+	asserts.AssertUpdateLinkAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.UpdateTypedLinkFacetRequest = { ["AttributeUpdates"] = true, ["SchemaArn"] = true, ["IdentityAttributeOrder"] = true, ["Name"] = true, nil }
 
 function asserts.AssertUpdateTypedLinkFacetRequest(struct)
@@ -6036,7 +6751,7 @@ end
 -- Valid keys:
 -- * AttributeUpdates [TypedLinkFacetAttributeUpdateList] <p>Attributes update structure.</p>
 -- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
--- * IdentityAttributeOrder [AttributeNameList] <p>The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to a typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
+-- * IdentityAttributeOrder [AttributeNameList] <p>The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to a typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed Links</a>.</p>
 -- * Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
 -- Required key: SchemaArn
 -- Required key: Name
@@ -6059,6 +6774,80 @@ function M.UpdateTypedLinkFacetRequest(args)
 		["Name"] = args["Name"],
 	}
 	asserts.AssertUpdateTypedLinkFacetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchDetachPolicyResponse = { nil }
+
+function asserts.AssertBatchDetachPolicyResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchDetachPolicyResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.BatchDetachPolicyResponse[k], "BatchDetachPolicyResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchDetachPolicyResponse
+-- <p>Represents the output of a <a>DetachPolicy</a> response operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return BatchDetachPolicyResponse structure as a key-value pair table
+function M.BatchDetachPolicyResponse(args)
+	assert(args, "You must provide an argument table when creating BatchDetachPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertBatchDetachPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchListPolicyAttachmentsResponse = { ["NextToken"] = true, ["ObjectIdentifiers"] = true, nil }
+
+function asserts.AssertBatchListPolicyAttachmentsResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchListPolicyAttachmentsResponse to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["ObjectIdentifiers"] then asserts.AssertObjectIdentifierList(struct["ObjectIdentifiers"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchListPolicyAttachmentsResponse[k], "BatchListPolicyAttachmentsResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchListPolicyAttachmentsResponse
+-- <p>Represents the output of a <a>ListPolicyAttachments</a> response operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * ObjectIdentifiers [ObjectIdentifierList] <p>A list of <code>ObjectIdentifiers</code> to which the policy is attached.</p>
+-- @return BatchListPolicyAttachmentsResponse structure as a key-value pair table
+function M.BatchListPolicyAttachmentsResponse(args)
+	assert(args, "You must provide an argument table when creating BatchListPolicyAttachmentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["ObjectIdentifiers"] = args["ObjectIdentifiers"],
+	}
+	asserts.AssertBatchListPolicyAttachmentsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6150,40 +6939,6 @@ function M.ListTypedLinkFacetAttributesRequest(args)
 		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListTypedLinkFacetAttributesRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TagResourceResponse = { nil }
-
-function asserts.AssertTagResourceResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TagResourceResponse to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TagResourceResponse[k], "TagResourceResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TagResourceResponse
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TagResourceResponse structure as a key-value pair table
-function M.TagResourceResponse(args)
-	assert(args, "You must provide an argument table when creating TagResourceResponse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTagResourceResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6435,6 +7190,50 @@ function M.GetDirectoryRequest(args)
     }
 end
 
+keys.BatchAttachPolicy = { ["PolicyReference"] = true, ["ObjectReference"] = true, nil }
+
+function asserts.AssertBatchAttachPolicy(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchAttachPolicy to be of type 'table'")
+	assert(struct["PolicyReference"], "Expected key PolicyReference to exist in table")
+	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
+	if struct["PolicyReference"] then asserts.AssertObjectReference(struct["PolicyReference"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchAttachPolicy[k], "BatchAttachPolicy contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchAttachPolicy
+-- <p>Attaches a policy object to a regular object inside a <a>BatchRead</a> operation. For more information, see <a>AttachPolicy</a> and <a>BatchReadRequest$Operations</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyReference [ObjectReference] <p>The reference that is associated with the policy object.</p>
+-- * ObjectReference [ObjectReference] <p>The reference that identifies the object to which the policy will be attached.</p>
+-- Required key: PolicyReference
+-- Required key: ObjectReference
+-- @return BatchAttachPolicy structure as a key-value pair table
+function M.BatchAttachPolicy(args)
+	assert(args, "You must provide an argument table when creating BatchAttachPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["PolicyReference"] = args["PolicyReference"],
+		["ObjectReference"] = args["ObjectReference"],
+	}
+	asserts.AssertBatchAttachPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.BatchAttachObjectResponse = { ["attachedObjectIdentifier"] = true, nil }
 
 function asserts.AssertBatchAttachObjectResponse(struct)
@@ -6447,7 +7246,7 @@ function asserts.AssertBatchAttachObjectResponse(struct)
 end
 
 --- Create a structure of type BatchAttachObjectResponse
--- <p>Represents the output batch <code>AttachObject</code> response operation.</p>
+-- <p>Represents the output batch <a>AttachObject</a> response operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * attachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object that has been attached.</p>
@@ -6472,16 +7271,24 @@ function M.BatchAttachObjectResponse(args)
     }
 end
 
-keys.BatchWriteOperation = { ["DetachObject"] = true, ["AttachObject"] = true, ["AddFacetToObject"] = true, ["RemoveFacetFromObject"] = true, ["CreateObject"] = true, ["DeleteObject"] = true, ["UpdateObjectAttributes"] = true, nil }
+keys.BatchWriteOperation = { ["DetachObject"] = true, ["AttachObject"] = true, ["CreateIndex"] = true, ["AddFacetToObject"] = true, ["RemoveFacetFromObject"] = true, ["DetachTypedLink"] = true, ["AttachPolicy"] = true, ["CreateObject"] = true, ["AttachToIndex"] = true, ["UpdateLinkAttributes"] = true, ["DetachFromIndex"] = true, ["AttachTypedLink"] = true, ["DetachPolicy"] = true, ["DeleteObject"] = true, ["UpdateObjectAttributes"] = true, nil }
 
 function asserts.AssertBatchWriteOperation(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchWriteOperation to be of type 'table'")
 	if struct["DetachObject"] then asserts.AssertBatchDetachObject(struct["DetachObject"]) end
 	if struct["AttachObject"] then asserts.AssertBatchAttachObject(struct["AttachObject"]) end
+	if struct["CreateIndex"] then asserts.AssertBatchCreateIndex(struct["CreateIndex"]) end
 	if struct["AddFacetToObject"] then asserts.AssertBatchAddFacetToObject(struct["AddFacetToObject"]) end
 	if struct["RemoveFacetFromObject"] then asserts.AssertBatchRemoveFacetFromObject(struct["RemoveFacetFromObject"]) end
+	if struct["DetachTypedLink"] then asserts.AssertBatchDetachTypedLink(struct["DetachTypedLink"]) end
+	if struct["AttachPolicy"] then asserts.AssertBatchAttachPolicy(struct["AttachPolicy"]) end
 	if struct["CreateObject"] then asserts.AssertBatchCreateObject(struct["CreateObject"]) end
+	if struct["AttachToIndex"] then asserts.AssertBatchAttachToIndex(struct["AttachToIndex"]) end
+	if struct["UpdateLinkAttributes"] then asserts.AssertBatchUpdateLinkAttributes(struct["UpdateLinkAttributes"]) end
+	if struct["DetachFromIndex"] then asserts.AssertBatchDetachFromIndex(struct["DetachFromIndex"]) end
+	if struct["AttachTypedLink"] then asserts.AssertBatchAttachTypedLink(struct["AttachTypedLink"]) end
+	if struct["DetachPolicy"] then asserts.AssertBatchDetachPolicy(struct["DetachPolicy"]) end
 	if struct["DeleteObject"] then asserts.AssertBatchDeleteObject(struct["DeleteObject"]) end
 	if struct["UpdateObjectAttributes"] then asserts.AssertBatchUpdateObjectAttributes(struct["UpdateObjectAttributes"]) end
 	for k,_ in pairs(struct) do
@@ -6495,9 +7302,17 @@ end
 -- Valid keys:
 -- * DetachObject [BatchDetachObject] <p>Detaches an object from a <a>Directory</a>.</p>
 -- * AttachObject [BatchAttachObject] <p>Attaches an object to a <a>Directory</a>.</p>
+-- * CreateIndex [BatchCreateIndex] <p>Creates an index object. See <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.htm">Indexing and search</a> for more information.</p>
 -- * AddFacetToObject [BatchAddFacetToObject] <p>A batch operation that adds a facet to an object.</p>
 -- * RemoveFacetFromObject [BatchRemoveFacetFromObject] <p>A batch operation that removes a facet from an object.</p>
+-- * DetachTypedLink [BatchDetachTypedLink] <p>Detaches a typed link from a specified source and target object. For more information, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed Links</a>.</p>
+-- * AttachPolicy [BatchAttachPolicy] <p>Attaches a policy object to a regular object. An object can have a limited number of attached policies.</p>
 -- * CreateObject [BatchCreateObject] <p>Creates an object.</p>
+-- * AttachToIndex [BatchAttachToIndex] <p>Attaches the specified object to the specified index.</p>
+-- * UpdateLinkAttributes [BatchUpdateLinkAttributes] <p>Updates a given object's attributes.</p>
+-- * DetachFromIndex [BatchDetachFromIndex] <p>Detaches the specified object from the specified index.</p>
+-- * AttachTypedLink [BatchAttachTypedLink] <p>Attaches a typed link to a specified source and target object. For more information, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed Links</a>.</p>
+-- * DetachPolicy [BatchDetachPolicy] <p>Detaches a policy from a <a>Directory</a>.</p>
 -- * DeleteObject [BatchDeleteObject] <p>Deletes an object in a <a>Directory</a>.</p>
 -- * UpdateObjectAttributes [BatchUpdateObjectAttributes] <p>Updates a given object's attributes.</p>
 -- @return BatchWriteOperation structure as a key-value pair table
@@ -6512,9 +7327,17 @@ function M.BatchWriteOperation(args)
 	local all_args = { 
 		["DetachObject"] = args["DetachObject"],
 		["AttachObject"] = args["AttachObject"],
+		["CreateIndex"] = args["CreateIndex"],
 		["AddFacetToObject"] = args["AddFacetToObject"],
 		["RemoveFacetFromObject"] = args["RemoveFacetFromObject"],
+		["DetachTypedLink"] = args["DetachTypedLink"],
+		["AttachPolicy"] = args["AttachPolicy"],
 		["CreateObject"] = args["CreateObject"],
+		["AttachToIndex"] = args["AttachToIndex"],
+		["UpdateLinkAttributes"] = args["UpdateLinkAttributes"],
+		["DetachFromIndex"] = args["DetachFromIndex"],
+		["AttachTypedLink"] = args["AttachTypedLink"],
+		["DetachPolicy"] = args["DetachPolicy"],
 		["DeleteObject"] = args["DeleteObject"],
 		["UpdateObjectAttributes"] = args["UpdateObjectAttributes"],
 	}
@@ -6527,27 +7350,27 @@ function M.BatchWriteOperation(args)
     }
 end
 
-keys.GetDirectoryResponse = { ["Directory"] = true, nil }
+keys.DeleteDirectoryResponse = { ["DirectoryArn"] = true, nil }
 
-function asserts.AssertGetDirectoryResponse(struct)
+function asserts.AssertDeleteDirectoryResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected GetDirectoryResponse to be of type 'table'")
-	assert(struct["Directory"], "Expected key Directory to exist in table")
-	if struct["Directory"] then asserts.AssertDirectory(struct["Directory"]) end
+	assert(type(struct) == "table", "Expected DeleteDirectoryResponse to be of type 'table'")
+	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.GetDirectoryResponse[k], "GetDirectoryResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteDirectoryResponse[k], "DeleteDirectoryResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type GetDirectoryResponse
+--- Create a structure of type DeleteDirectoryResponse
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Directory [Directory] <p>Metadata about the directory.</p>
--- Required key: Directory
--- @return GetDirectoryResponse structure as a key-value pair table
-function M.GetDirectoryResponse(args)
-	assert(args, "You must provide an argument table when creating GetDirectoryResponse")
+-- * DirectoryArn [Arn] <p>The ARN of the deleted directory.</p>
+-- Required key: DirectoryArn
+-- @return DeleteDirectoryResponse structure as a key-value pair table
+function M.DeleteDirectoryResponse(args)
+	assert(args, "You must provide an argument table when creating DeleteDirectoryResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -6555,9 +7378,9 @@ function M.GetDirectoryResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Directory"] = args["Directory"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertGetDirectoryResponse(all_args)
+	asserts.AssertDeleteDirectoryResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6566,13 +7389,70 @@ function M.GetDirectoryResponse(args)
     }
 end
 
-keys.BatchReadSuccessfulResponse = { ["ListObjectAttributes"] = true, ["ListObjectChildren"] = true, nil }
+keys.BatchListObjectParentPaths = { ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
+
+function asserts.AssertBatchListObjectParentPaths(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchListObjectParentPaths to be of type 'table'")
+	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchListObjectParentPaths[k], "BatchListObjectParentPaths contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchListObjectParentPaths
+-- <p>Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects inside a <a>BatchRead</a> operation. For more information, see <a>ListObjectParentPaths</a> and <a>BatchReadRequest$Operations</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectReference [ObjectReference] <p>The reference that identifies the object whose attributes will be listed.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- Required key: ObjectReference
+-- @return BatchListObjectParentPaths structure as a key-value pair table
+function M.BatchListObjectParentPaths(args)
+	assert(args, "You must provide an argument table when creating BatchListObjectParentPaths")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ObjectReference"] = args["ObjectReference"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+	}
+	asserts.AssertBatchListObjectParentPaths(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchReadSuccessfulResponse = { ["GetObjectAttributes"] = true, ["ListObjectAttributes"] = true, ["ListIndex"] = true, ["ListPolicyAttachments"] = true, ["ListObjectParents"] = true, ["GetObjectInformation"] = true, ["LookupPolicy"] = true, ["GetLinkAttributes"] = true, ["ListAttachedIndices"] = true, ["ListObjectChildren"] = true, ["ListOutgoingTypedLinks"] = true, ["ListObjectPolicies"] = true, ["ListObjectParentPaths"] = true, ["ListIncomingTypedLinks"] = true, nil }
 
 function asserts.AssertBatchReadSuccessfulResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchReadSuccessfulResponse to be of type 'table'")
+	if struct["GetObjectAttributes"] then asserts.AssertBatchGetObjectAttributesResponse(struct["GetObjectAttributes"]) end
 	if struct["ListObjectAttributes"] then asserts.AssertBatchListObjectAttributesResponse(struct["ListObjectAttributes"]) end
+	if struct["ListIndex"] then asserts.AssertBatchListIndexResponse(struct["ListIndex"]) end
+	if struct["ListPolicyAttachments"] then asserts.AssertBatchListPolicyAttachmentsResponse(struct["ListPolicyAttachments"]) end
+	if struct["ListObjectParents"] then asserts.AssertBatchListObjectParentsResponse(struct["ListObjectParents"]) end
+	if struct["GetObjectInformation"] then asserts.AssertBatchGetObjectInformationResponse(struct["GetObjectInformation"]) end
+	if struct["LookupPolicy"] then asserts.AssertBatchLookupPolicyResponse(struct["LookupPolicy"]) end
+	if struct["GetLinkAttributes"] then asserts.AssertBatchGetLinkAttributesResponse(struct["GetLinkAttributes"]) end
+	if struct["ListAttachedIndices"] then asserts.AssertBatchListAttachedIndicesResponse(struct["ListAttachedIndices"]) end
 	if struct["ListObjectChildren"] then asserts.AssertBatchListObjectChildrenResponse(struct["ListObjectChildren"]) end
+	if struct["ListOutgoingTypedLinks"] then asserts.AssertBatchListOutgoingTypedLinksResponse(struct["ListOutgoingTypedLinks"]) end
+	if struct["ListObjectPolicies"] then asserts.AssertBatchListObjectPoliciesResponse(struct["ListObjectPolicies"]) end
+	if struct["ListObjectParentPaths"] then asserts.AssertBatchListObjectParentPathsResponse(struct["ListObjectParentPaths"]) end
+	if struct["ListIncomingTypedLinks"] then asserts.AssertBatchListIncomingTypedLinksResponse(struct["ListIncomingTypedLinks"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.BatchReadSuccessfulResponse[k], "BatchReadSuccessfulResponse contains unknown key " .. tostring(k))
 	end
@@ -6582,8 +7462,20 @@ end
 -- <p>Represents the output of a <code>BatchRead</code> success response operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * GetObjectAttributes [BatchGetObjectAttributesResponse] <p>Retrieves attributes within a facet that are associated with an object.</p>
 -- * ListObjectAttributes [BatchListObjectAttributesResponse] <p>Lists all attributes that are associated with an object.</p>
+-- * ListIndex [BatchListIndexResponse] <p>Lists objects attached to the specified index.</p>
+-- * ListPolicyAttachments [BatchListPolicyAttachmentsResponse] <p>Returns all of the <code>ObjectIdentifiers</code> to which a given policy is attached.</p>
+-- * ListObjectParents [BatchListObjectParentsResponse] 
+-- * GetObjectInformation [BatchGetObjectInformationResponse] <p>Retrieves metadata about an object.</p>
+-- * LookupPolicy [BatchLookupPolicyResponse] <p>Lists all policies from the root of the <a>Directory</a> to the object specified. If there are no policies present, an empty list is returned. If policies are present, and if some objects don't have the policies attached, it returns the <code>ObjectIdentifier</code> for such objects. If policies are present, it returns <code>ObjectIdentifier</code>, <code>policyId</code>, and <code>policyType</code>. Paths that don't lead to the root from the target object are ignored. For more information, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies">Policies</a>.</p>
+-- * GetLinkAttributes [BatchGetLinkAttributesResponse] <p>The list of attributes to retrieve from the typed link.</p>
+-- * ListAttachedIndices [BatchListAttachedIndicesResponse] <p>Lists indices attached to an object.</p>
 -- * ListObjectChildren [BatchListObjectChildrenResponse] <p>Returns a paginated list of child objects that are associated with a given object.</p>
+-- * ListOutgoingTypedLinks [BatchListOutgoingTypedLinksResponse] <p>Returns a paginated list of all the outgoing <a>TypedLinkSpecifier</a> information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed Links</a>.</p>
+-- * ListObjectPolicies [BatchListObjectPoliciesResponse] <p>Returns policies attached to an object in pagination fashion.</p>
+-- * ListObjectParentPaths [BatchListObjectParentPathsResponse] <p>Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html">Directory Structure</a>.</p>
+-- * ListIncomingTypedLinks [BatchListIncomingTypedLinksResponse] <p>Returns a paginated list of all the incoming <a>TypedLinkSpecifier</a> information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed Links</a>.</p>
 -- @return BatchReadSuccessfulResponse structure as a key-value pair table
 function M.BatchReadSuccessfulResponse(args)
 	assert(args, "You must provide an argument table when creating BatchReadSuccessfulResponse")
@@ -6594,8 +7486,20 @@ function M.BatchReadSuccessfulResponse(args)
     local header_args = { 
     }
 	local all_args = { 
+		["GetObjectAttributes"] = args["GetObjectAttributes"],
 		["ListObjectAttributes"] = args["ListObjectAttributes"],
+		["ListIndex"] = args["ListIndex"],
+		["ListPolicyAttachments"] = args["ListPolicyAttachments"],
+		["ListObjectParents"] = args["ListObjectParents"],
+		["GetObjectInformation"] = args["GetObjectInformation"],
+		["LookupPolicy"] = args["LookupPolicy"],
+		["GetLinkAttributes"] = args["GetLinkAttributes"],
+		["ListAttachedIndices"] = args["ListAttachedIndices"],
 		["ListObjectChildren"] = args["ListObjectChildren"],
+		["ListOutgoingTypedLinks"] = args["ListOutgoingTypedLinks"],
+		["ListObjectPolicies"] = args["ListObjectPolicies"],
+		["ListObjectParentPaths"] = args["ListObjectParentPaths"],
+		["ListIncomingTypedLinks"] = args["ListIncomingTypedLinks"],
 	}
 	asserts.AssertBatchReadSuccessfulResponse(all_args)
 	return {
@@ -6606,27 +7510,27 @@ function M.BatchReadSuccessfulResponse(args)
     }
 end
 
-keys.CreateSchemaRequest = { ["Name"] = true, nil }
+keys.ListOutgoingTypedLinksResponse = { ["NextToken"] = true, ["TypedLinkSpecifiers"] = true, nil }
 
-function asserts.AssertCreateSchemaRequest(struct)
+function asserts.AssertListOutgoingTypedLinksResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected CreateSchemaRequest to be of type 'table'")
-	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Name"] then asserts.AssertSchemaName(struct["Name"]) end
+	assert(type(struct) == "table", "Expected ListOutgoingTypedLinksResponse to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["TypedLinkSpecifiers"] then asserts.AssertTypedLinkSpecifierList(struct["TypedLinkSpecifiers"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.CreateSchemaRequest[k], "CreateSchemaRequest contains unknown key " .. tostring(k))
+		assert(keys.ListOutgoingTypedLinksResponse[k], "ListOutgoingTypedLinksResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type CreateSchemaRequest
+--- Create a structure of type ListOutgoingTypedLinksResponse
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Name [SchemaName] <p>The name that is associated with the schema. This is unique to each account and in each region.</p>
--- Required key: Name
--- @return CreateSchemaRequest structure as a key-value pair table
-function M.CreateSchemaRequest(args)
-	assert(args, "You must provide an argument table when creating CreateSchemaRequest")
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * TypedLinkSpecifiers [TypedLinkSpecifierList] <p>Returns a typed link specifier as output.</p>
+-- @return ListOutgoingTypedLinksResponse structure as a key-value pair table
+function M.ListOutgoingTypedLinksResponse(args)
+	assert(args, "You must provide an argument table when creating ListOutgoingTypedLinksResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -6634,9 +7538,10 @@ function M.CreateSchemaRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Name"] = args["Name"],
+		["NextToken"] = args["NextToken"],
+		["TypedLinkSpecifiers"] = args["TypedLinkSpecifiers"],
 	}
-	asserts.AssertCreateSchemaRequest(all_args)
+	asserts.AssertListOutgoingTypedLinksResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6674,6 +7579,40 @@ function M.BatchReadResponse(args)
 		["Responses"] = args["Responses"],
 	}
 	asserts.AssertBatchReadResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteObjectResponse = { nil }
+
+function asserts.AssertDeleteObjectResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteObjectResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteObjectResponse[k], "DeleteObjectResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteObjectResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteObjectResponse structure as a key-value pair table
+function M.DeleteObjectResponse(args)
+	assert(args, "You must provide an argument table when creating DeleteObjectResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDeleteObjectResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6868,56 +7807,25 @@ function M.LookupPolicyRequest(args)
     }
 end
 
-keys.BatchWriteException = { ["Index"] = true, ["Message"] = true, ["Type"] = true, nil }
-
-function asserts.AssertBatchWriteException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected BatchWriteException to be of type 'table'")
-	if struct["Index"] then asserts.AssertBatchOperationIndex(struct["Index"]) end
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["Type"] then asserts.AssertBatchWriteExceptionType(struct["Type"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.BatchWriteException[k], "BatchWriteException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type BatchWriteException
--- <p>A <code>BatchWrite</code> exception has occurred.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Index [BatchOperationIndex] 
--- * Message [ExceptionMessage] 
--- * Type [BatchWriteExceptionType] 
--- @return BatchWriteException structure as a key-value pair table
-function M.BatchWriteException(args)
-	assert(args, "You must provide an argument table when creating BatchWriteException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Index"] = args["Index"],
-		["Message"] = args["Message"],
-		["Type"] = args["Type"],
-	}
-	asserts.AssertBatchWriteException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.BatchReadOperation = { ["ListObjectAttributes"] = true, ["ListObjectChildren"] = true, nil }
+keys.BatchReadOperation = { ["GetObjectAttributes"] = true, ["ListObjectAttributes"] = true, ["ListIndex"] = true, ["ListPolicyAttachments"] = true, ["ListObjectParents"] = true, ["GetObjectInformation"] = true, ["LookupPolicy"] = true, ["GetLinkAttributes"] = true, ["ListAttachedIndices"] = true, ["ListObjectChildren"] = true, ["ListOutgoingTypedLinks"] = true, ["ListObjectPolicies"] = true, ["ListObjectParentPaths"] = true, ["ListIncomingTypedLinks"] = true, nil }
 
 function asserts.AssertBatchReadOperation(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchReadOperation to be of type 'table'")
+	if struct["GetObjectAttributes"] then asserts.AssertBatchGetObjectAttributes(struct["GetObjectAttributes"]) end
 	if struct["ListObjectAttributes"] then asserts.AssertBatchListObjectAttributes(struct["ListObjectAttributes"]) end
+	if struct["ListIndex"] then asserts.AssertBatchListIndex(struct["ListIndex"]) end
+	if struct["ListPolicyAttachments"] then asserts.AssertBatchListPolicyAttachments(struct["ListPolicyAttachments"]) end
+	if struct["ListObjectParents"] then asserts.AssertBatchListObjectParents(struct["ListObjectParents"]) end
+	if struct["GetObjectInformation"] then asserts.AssertBatchGetObjectInformation(struct["GetObjectInformation"]) end
+	if struct["LookupPolicy"] then asserts.AssertBatchLookupPolicy(struct["LookupPolicy"]) end
+	if struct["GetLinkAttributes"] then asserts.AssertBatchGetLinkAttributes(struct["GetLinkAttributes"]) end
+	if struct["ListAttachedIndices"] then asserts.AssertBatchListAttachedIndices(struct["ListAttachedIndices"]) end
 	if struct["ListObjectChildren"] then asserts.AssertBatchListObjectChildren(struct["ListObjectChildren"]) end
+	if struct["ListOutgoingTypedLinks"] then asserts.AssertBatchListOutgoingTypedLinks(struct["ListOutgoingTypedLinks"]) end
+	if struct["ListObjectPolicies"] then asserts.AssertBatchListObjectPolicies(struct["ListObjectPolicies"]) end
+	if struct["ListObjectParentPaths"] then asserts.AssertBatchListObjectParentPaths(struct["ListObjectParentPaths"]) end
+	if struct["ListIncomingTypedLinks"] then asserts.AssertBatchListIncomingTypedLinks(struct["ListIncomingTypedLinks"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.BatchReadOperation[k], "BatchReadOperation contains unknown key " .. tostring(k))
 	end
@@ -6927,8 +7835,20 @@ end
 -- <p>Represents the output of a <code>BatchRead</code> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * GetObjectAttributes [BatchGetObjectAttributes] <p>Retrieves attributes within a facet that are associated with an object.</p>
 -- * ListObjectAttributes [BatchListObjectAttributes] <p>Lists all attributes that are associated with an object.</p>
+-- * ListIndex [BatchListIndex] <p>Lists objects attached to the specified index.</p>
+-- * ListPolicyAttachments [BatchListPolicyAttachments] <p>Returns all of the <code>ObjectIdentifiers</code> to which a given policy is attached.</p>
+-- * ListObjectParents [BatchListObjectParents] 
+-- * GetObjectInformation [BatchGetObjectInformation] <p>Retrieves metadata about an object.</p>
+-- * LookupPolicy [BatchLookupPolicy] <p>Lists all policies from the root of the <a>Directory</a> to the object specified. If there are no policies present, an empty list is returned. If policies are present, and if some objects don't have the policies attached, it returns the <code>ObjectIdentifier</code> for such objects. If policies are present, it returns <code>ObjectIdentifier</code>, <code>policyId</code>, and <code>policyType</code>. Paths that don't lead to the root from the target object are ignored. For more information, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies">Policies</a>.</p>
+-- * GetLinkAttributes [BatchGetLinkAttributes] <p>Retrieves attributes that are associated with a typed link.</p>
+-- * ListAttachedIndices [BatchListAttachedIndices] <p>Lists indices attached to an object.</p>
 -- * ListObjectChildren [BatchListObjectChildren] <p>Returns a paginated list of child objects that are associated with a given object.</p>
+-- * ListOutgoingTypedLinks [BatchListOutgoingTypedLinks] <p>Returns a paginated list of all the outgoing <a>TypedLinkSpecifier</a> information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed Links</a>.</p>
+-- * ListObjectPolicies [BatchListObjectPolicies] <p>Returns policies attached to an object in pagination fashion.</p>
+-- * ListObjectParentPaths [BatchListObjectParentPaths] <p>Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html">Directory Structure</a>.</p>
+-- * ListIncomingTypedLinks [BatchListIncomingTypedLinks] <p>Returns a paginated list of all the incoming <a>TypedLinkSpecifier</a> information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed Links</a>.</p>
 -- @return BatchReadOperation structure as a key-value pair table
 function M.BatchReadOperation(args)
 	assert(args, "You must provide an argument table when creating BatchReadOperation")
@@ -6939,10 +7859,102 @@ function M.BatchReadOperation(args)
     local header_args = { 
     }
 	local all_args = { 
+		["GetObjectAttributes"] = args["GetObjectAttributes"],
 		["ListObjectAttributes"] = args["ListObjectAttributes"],
+		["ListIndex"] = args["ListIndex"],
+		["ListPolicyAttachments"] = args["ListPolicyAttachments"],
+		["ListObjectParents"] = args["ListObjectParents"],
+		["GetObjectInformation"] = args["GetObjectInformation"],
+		["LookupPolicy"] = args["LookupPolicy"],
+		["GetLinkAttributes"] = args["GetLinkAttributes"],
+		["ListAttachedIndices"] = args["ListAttachedIndices"],
 		["ListObjectChildren"] = args["ListObjectChildren"],
+		["ListOutgoingTypedLinks"] = args["ListOutgoingTypedLinks"],
+		["ListObjectPolicies"] = args["ListObjectPolicies"],
+		["ListObjectParentPaths"] = args["ListObjectParentPaths"],
+		["ListIncomingTypedLinks"] = args["ListIncomingTypedLinks"],
 	}
 	asserts.AssertBatchReadOperation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.LinkAttributeUpdate = { ["AttributeKey"] = true, ["AttributeAction"] = true, nil }
+
+function asserts.AssertLinkAttributeUpdate(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LinkAttributeUpdate to be of type 'table'")
+	if struct["AttributeKey"] then asserts.AssertAttributeKey(struct["AttributeKey"]) end
+	if struct["AttributeAction"] then asserts.AssertLinkAttributeAction(struct["AttributeAction"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.LinkAttributeUpdate[k], "LinkAttributeUpdate contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LinkAttributeUpdate
+-- <p>Structure that contains attribute update information.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttributeKey [AttributeKey] <p>The key of the attribute being updated.</p>
+-- * AttributeAction [LinkAttributeAction] <p>The action to perform as part of the attribute update.</p>
+-- @return LinkAttributeUpdate structure as a key-value pair table
+function M.LinkAttributeUpdate(args)
+	assert(args, "You must provide an argument table when creating LinkAttributeUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["AttributeKey"] = args["AttributeKey"],
+		["AttributeAction"] = args["AttributeAction"],
+	}
+	asserts.AssertLinkAttributeUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListObjectPoliciesResponse = { ["AttachedPolicyIds"] = true, ["NextToken"] = true, nil }
+
+function asserts.AssertListObjectPoliciesResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListObjectPoliciesResponse to be of type 'table'")
+	if struct["AttachedPolicyIds"] then asserts.AssertObjectIdentifierList(struct["AttachedPolicyIds"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListObjectPoliciesResponse[k], "ListObjectPoliciesResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListObjectPoliciesResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttachedPolicyIds [ObjectIdentifierList] <p>A list of policy <code>ObjectIdentifiers</code>, that are attached to the object.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- @return ListObjectPoliciesResponse structure as a key-value pair table
+function M.ListObjectPoliciesResponse(args)
+	assert(args, "You must provide an argument table when creating ListObjectPoliciesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["AttachedPolicyIds"] = args["AttachedPolicyIds"],
+		["NextToken"] = args["NextToken"],
+	}
+	asserts.AssertListObjectPoliciesResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -7011,7 +8023,7 @@ end
 -- <p>Represents an index and an attached object.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object attached to the index.</p>
+-- * ObjectIdentifier [ObjectIdentifier] <p>In response to <a>ListIndex</a>, the <code>ObjectIdentifier</code> of the object attached to the index. In response to <a>ListAttachedIndices</a>, the <code>ObjectIdentifier</code> of the index attached to the object. This field will always contain the <code>ObjectIdentifier</code> of the object on the opposite side of the attachment specified in the query.</p>
 -- * IndexedAttributes [AttributeKeyAndValueList] <p>The indexed attribute values.</p>
 -- @return IndexAttachment structure as a key-value pair table
 function M.IndexAttachment(args)
@@ -7035,43 +8047,25 @@ function M.IndexAttachment(args)
     }
 end
 
-keys.BatchCreateObject = { ["ObjectAttributeList"] = true, ["ParentReference"] = true, ["BatchReferenceName"] = true, ["SchemaFacet"] = true, ["LinkName"] = true, nil }
+keys.GetObjectAttributesResponse = { ["Attributes"] = true, nil }
 
-function asserts.AssertBatchCreateObject(struct)
+function asserts.AssertGetObjectAttributesResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected BatchCreateObject to be of type 'table'")
-	assert(struct["SchemaFacet"], "Expected key SchemaFacet to exist in table")
-	assert(struct["ObjectAttributeList"], "Expected key ObjectAttributeList to exist in table")
-	assert(struct["ParentReference"], "Expected key ParentReference to exist in table")
-	assert(struct["LinkName"], "Expected key LinkName to exist in table")
-	assert(struct["BatchReferenceName"], "Expected key BatchReferenceName to exist in table")
-	if struct["ObjectAttributeList"] then asserts.AssertAttributeKeyAndValueList(struct["ObjectAttributeList"]) end
-	if struct["ParentReference"] then asserts.AssertObjectReference(struct["ParentReference"]) end
-	if struct["BatchReferenceName"] then asserts.AssertBatchReferenceName(struct["BatchReferenceName"]) end
-	if struct["SchemaFacet"] then asserts.AssertSchemaFacetList(struct["SchemaFacet"]) end
-	if struct["LinkName"] then asserts.AssertLinkName(struct["LinkName"]) end
+	assert(type(struct) == "table", "Expected GetObjectAttributesResponse to be of type 'table'")
+	if struct["Attributes"] then asserts.AssertAttributeKeyAndValueList(struct["Attributes"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.BatchCreateObject[k], "BatchCreateObject contains unknown key " .. tostring(k))
+		assert(keys.GetObjectAttributesResponse[k], "GetObjectAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type BatchCreateObject
--- <p>Represents the output of a <code>CreateObject</code> operation.</p>
+--- Create a structure of type GetObjectAttributesResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ObjectAttributeList [AttributeKeyAndValueList] <p>An attribute map, which contains an attribute ARN as the key and attribute value as the map value.</p>
--- * ParentReference [ObjectReference] <p>If specified, the parent reference to which this object will be attached.</p>
--- * BatchReferenceName [BatchReferenceName] <p>The batch reference name. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches">Batches</a> for more information.</p>
--- * SchemaFacet [SchemaFacetList] <p>A list of <code>FacetArns</code> that will be associated with the object. For more information, see <a>arns</a>.</p>
--- * LinkName [LinkName] <p>The name of the link.</p>
--- Required key: SchemaFacet
--- Required key: ObjectAttributeList
--- Required key: ParentReference
--- Required key: LinkName
--- Required key: BatchReferenceName
--- @return BatchCreateObject structure as a key-value pair table
-function M.BatchCreateObject(args)
-	assert(args, "You must provide an argument table when creating BatchCreateObject")
+-- * Attributes [AttributeKeyAndValueList] <p>The attributes that are associated with the object.</p>
+-- @return GetObjectAttributesResponse structure as a key-value pair table
+function M.GetObjectAttributesResponse(args)
+	assert(args, "You must provide an argument table when creating GetObjectAttributesResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -7079,13 +8073,43 @@ function M.BatchCreateObject(args)
     local header_args = { 
     }
 	local all_args = { 
-		["ObjectAttributeList"] = args["ObjectAttributeList"],
-		["ParentReference"] = args["ParentReference"],
-		["BatchReferenceName"] = args["BatchReferenceName"],
-		["SchemaFacet"] = args["SchemaFacet"],
-		["LinkName"] = args["LinkName"],
+		["Attributes"] = args["Attributes"],
 	}
-	asserts.AssertBatchCreateObject(all_args)
+	asserts.AssertGetObjectAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchAttachPolicyResponse = { nil }
+
+function asserts.AssertBatchAttachPolicyResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchAttachPolicyResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.BatchAttachPolicyResponse[k], "BatchAttachPolicyResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchAttachPolicyResponse
+-- <p>Represents the output of an <a>AttachPolicy</a> response operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return BatchAttachPolicyResponse structure as a key-value pair table
+function M.BatchAttachPolicyResponse(args)
+	assert(args, "You must provide an argument table when creating BatchAttachPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertBatchAttachPolicyResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -7134,6 +8158,101 @@ function M.ListDevelopmentSchemaArnsResponse(args)
     }
 end
 
+keys.BatchCreateObject = { ["ObjectAttributeList"] = true, ["ParentReference"] = true, ["BatchReferenceName"] = true, ["SchemaFacet"] = true, ["LinkName"] = true, nil }
+
+function asserts.AssertBatchCreateObject(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchCreateObject to be of type 'table'")
+	assert(struct["SchemaFacet"], "Expected key SchemaFacet to exist in table")
+	assert(struct["ObjectAttributeList"], "Expected key ObjectAttributeList to exist in table")
+	if struct["ObjectAttributeList"] then asserts.AssertAttributeKeyAndValueList(struct["ObjectAttributeList"]) end
+	if struct["ParentReference"] then asserts.AssertObjectReference(struct["ParentReference"]) end
+	if struct["BatchReferenceName"] then asserts.AssertBatchReferenceName(struct["BatchReferenceName"]) end
+	if struct["SchemaFacet"] then asserts.AssertSchemaFacetList(struct["SchemaFacet"]) end
+	if struct["LinkName"] then asserts.AssertLinkName(struct["LinkName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchCreateObject[k], "BatchCreateObject contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchCreateObject
+-- <p>Represents the output of a <a>CreateObject</a> operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectAttributeList [AttributeKeyAndValueList] <p>An attribute map, which contains an attribute ARN as the key and attribute value as the map value.</p>
+-- * ParentReference [ObjectReference] <p>If specified, the parent reference to which this object will be attached.</p>
+-- * BatchReferenceName [BatchReferenceName] <p>The batch reference name. See <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html">Transaction Support</a> for more information.</p>
+-- * SchemaFacet [SchemaFacetList] <p>A list of <code>FacetArns</code> that will be associated with the object. For more information, see <a>arns</a>.</p>
+-- * LinkName [LinkName] <p>The name of the link.</p>
+-- Required key: SchemaFacet
+-- Required key: ObjectAttributeList
+-- @return BatchCreateObject structure as a key-value pair table
+function M.BatchCreateObject(args)
+	assert(args, "You must provide an argument table when creating BatchCreateObject")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ObjectAttributeList"] = args["ObjectAttributeList"],
+		["ParentReference"] = args["ParentReference"],
+		["BatchReferenceName"] = args["BatchReferenceName"],
+		["SchemaFacet"] = args["SchemaFacet"],
+		["LinkName"] = args["LinkName"],
+	}
+	asserts.AssertBatchCreateObject(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListDirectoriesResponse = { ["Directories"] = true, ["NextToken"] = true, nil }
+
+function asserts.AssertListDirectoriesResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListDirectoriesResponse to be of type 'table'")
+	assert(struct["Directories"], "Expected key Directories to exist in table")
+	if struct["Directories"] then asserts.AssertDirectoryList(struct["Directories"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListDirectoriesResponse[k], "ListDirectoriesResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListDirectoriesResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Directories [DirectoryList] <p>Lists all directories that are associated with your account in pagination fashion.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- Required key: Directories
+-- @return ListDirectoriesResponse structure as a key-value pair table
+function M.ListDirectoriesResponse(args)
+	assert(args, "You must provide an argument table when creating ListDirectoriesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Directories"] = args["Directories"],
+		["NextToken"] = args["NextToken"],
+	}
+	asserts.AssertListDirectoriesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.LookupPolicyResponse = { ["PolicyToPathList"] = true, ["NextToken"] = true, nil }
 
 function asserts.AssertLookupPolicyResponse(struct)
@@ -7150,7 +8269,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * PolicyToPathList [PolicyToPathList] <p>Provides list of path to policies. Policies contain <code>PolicyId</code>, <code>ObjectIdentifier</code>, and <code>PolicyType</code>. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies">Policies</a>.</p>
+-- * PolicyToPathList [PolicyToPathList] <p>Provides list of path to policies. Policies contain <code>PolicyId</code>, <code>ObjectIdentifier</code>, and <code>PolicyType</code>. For more information, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies">Policies</a>.</p>
 -- * NextToken [NextToken] <p>The pagination token.</p>
 -- @return LookupPolicyResponse structure as a key-value pair table
 function M.LookupPolicyResponse(args)
@@ -7174,75 +8293,51 @@ function M.LookupPolicyResponse(args)
     }
 end
 
-keys.InvalidRuleException = { ["Message"] = true, nil }
+keys.GetLinkAttributesRequest = { ["ConsistencyLevel"] = true, ["AttributeNames"] = true, ["TypedLinkSpecifier"] = true, ["DirectoryArn"] = true, nil }
 
-function asserts.AssertInvalidRuleException(struct)
+function asserts.AssertGetLinkAttributesRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidRuleException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected GetLinkAttributesRequest to be of type 'table'")
+	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
+	assert(struct["TypedLinkSpecifier"], "Expected key TypedLinkSpecifier to exist in table")
+	assert(struct["AttributeNames"], "Expected key AttributeNames to exist in table")
+	if struct["ConsistencyLevel"] then asserts.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
+	if struct["AttributeNames"] then asserts.AssertAttributeNameList(struct["AttributeNames"]) end
+	if struct["TypedLinkSpecifier"] then asserts.AssertTypedLinkSpecifier(struct["TypedLinkSpecifier"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidRuleException[k], "InvalidRuleException contains unknown key " .. tostring(k))
+		assert(keys.GetLinkAttributesRequest[k], "GetLinkAttributesRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidRuleException
--- <p>Occurs when any of the rule parameter keys or values are invalid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return InvalidRuleException structure as a key-value pair table
-function M.InvalidRuleException(args)
-	assert(args, "You must provide an argument table when creating InvalidRuleException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertInvalidRuleException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ListTagsForResourceResponse = { ["NextToken"] = true, ["Tags"] = true, nil }
-
-function asserts.AssertListTagsForResourceResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ListTagsForResourceResponse to be of type 'table'")
-	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
-	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ListTagsForResourceResponse[k], "ListTagsForResourceResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ListTagsForResourceResponse
+--- Create a structure of type GetLinkAttributesRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [NextToken] <p>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</p>
--- * Tags [TagList] <p>A list of tag key value pairs that are associated with the response.</p>
--- @return ListTagsForResourceResponse structure as a key-value pair table
-function M.ListTagsForResourceResponse(args)
-	assert(args, "You must provide an argument table when creating ListTagsForResourceResponse")
+-- * ConsistencyLevel [ConsistencyLevel] <p>The consistency level at which to retrieve the attributes on a typed link.</p>
+-- * AttributeNames [AttributeNameList] <p>A list of attribute names whose values will be retrieved.</p>
+-- * TypedLinkSpecifier [TypedLinkSpecifier] <p>Allows a typed link specifier to be accepted as input.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the Directory where the typed link resides. For more information, see <a>arns</a> or <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink">Typed Links</a>.</p>
+-- Required key: DirectoryArn
+-- Required key: TypedLinkSpecifier
+-- Required key: AttributeNames
+-- @return GetLinkAttributesRequest structure as a key-value pair table
+function M.GetLinkAttributesRequest(args)
+	assert(args, "You must provide an argument table when creating GetLinkAttributesRequest")
     local query_args = { 
     }
     local uri_args = { 
     }
     local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
     }
 	local all_args = { 
-		["NextToken"] = args["NextToken"],
-		["Tags"] = args["Tags"],
+		["ConsistencyLevel"] = args["ConsistencyLevel"],
+		["AttributeNames"] = args["AttributeNames"],
+		["TypedLinkSpecifier"] = args["TypedLinkSpecifier"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertListTagsForResourceResponse(all_args)
+	asserts.AssertGetLinkAttributesRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -7287,6 +8382,45 @@ function M.TypedLinkSchemaAndFacetName(args)
 		["SchemaArn"] = args["SchemaArn"],
 	}
 	asserts.AssertTypedLinkSchemaAndFacetName(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchDetachTypedLink = { ["TypedLinkSpecifier"] = true, nil }
+
+function asserts.AssertBatchDetachTypedLink(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchDetachTypedLink to be of type 'table'")
+	assert(struct["TypedLinkSpecifier"], "Expected key TypedLinkSpecifier to exist in table")
+	if struct["TypedLinkSpecifier"] then asserts.AssertTypedLinkSpecifier(struct["TypedLinkSpecifier"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchDetachTypedLink[k], "BatchDetachTypedLink contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchDetachTypedLink
+-- <p>Detaches a typed link from a specified source and target object inside a <a>BatchRead</a> operation. For more information, see <a>DetachTypedLink</a> and <a>BatchReadRequest$Operations</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TypedLinkSpecifier [TypedLinkSpecifier] <p>Used to accept a typed link specifier as input.</p>
+-- Required key: TypedLinkSpecifier
+-- @return BatchDetachTypedLink structure as a key-value pair table
+function M.BatchDetachTypedLink(args)
+	assert(args, "You must provide an argument table when creating BatchDetachTypedLink")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["TypedLinkSpecifier"] = args["TypedLinkSpecifier"],
+	}
+	asserts.AssertBatchDetachTypedLink(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -7342,7 +8476,6 @@ function asserts.AssertBatchDetachObject(struct)
 	assert(type(struct) == "table", "Expected BatchDetachObject to be of type 'table'")
 	assert(struct["ParentReference"], "Expected key ParentReference to exist in table")
 	assert(struct["LinkName"], "Expected key LinkName to exist in table")
-	assert(struct["BatchReferenceName"], "Expected key BatchReferenceName to exist in table")
 	if struct["ParentReference"] then asserts.AssertObjectReference(struct["ParentReference"]) end
 	if struct["LinkName"] then asserts.AssertLinkName(struct["LinkName"]) end
 	if struct["BatchReferenceName"] then asserts.AssertBatchReferenceName(struct["BatchReferenceName"]) end
@@ -7352,15 +8485,14 @@ function asserts.AssertBatchDetachObject(struct)
 end
 
 --- Create a structure of type BatchDetachObject
--- <p>Represents the output of a <code>DetachObject</code> operation.</p>
+-- <p>Represents the output of a <a>DetachObject</a> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ParentReference [ObjectReference] <p>Parent reference from which the object with the specified link name is detached.</p>
 -- * LinkName [LinkName] <p>The name of the link.</p>
--- * BatchReferenceName [BatchReferenceName] <p>The batch reference name. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches">Batches</a> for more information.</p>
+-- * BatchReferenceName [BatchReferenceName] <p>The batch reference name. See <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html">Transaction Support</a> for more information.</p>
 -- Required key: ParentReference
 -- Required key: LinkName
--- Required key: BatchReferenceName
 -- @return BatchDetachObject structure as a key-value pair table
 function M.BatchDetachObject(args)
 	assert(args, "You must provide an argument table when creating BatchDetachObject")
@@ -7384,15 +8516,15 @@ function M.BatchDetachObject(args)
     }
 end
 
-keys.CreateFacetRequest = { ["Attributes"] = true, ["SchemaArn"] = true, ["Name"] = true, ["ObjectType"] = true, nil }
+keys.CreateFacetRequest = { ["Attributes"] = true, ["FacetStyle"] = true, ["SchemaArn"] = true, ["Name"] = true, ["ObjectType"] = true, nil }
 
 function asserts.AssertCreateFacetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateFacetRequest to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	assert(struct["ObjectType"], "Expected key ObjectType to exist in table")
 	if struct["Attributes"] then asserts.AssertFacetAttributeList(struct["Attributes"]) end
+	if struct["FacetStyle"] then asserts.AssertFacetStyle(struct["FacetStyle"]) end
 	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
 	if struct["Name"] then asserts.AssertFacetName(struct["Name"]) end
 	if struct["ObjectType"] then asserts.AssertObjectType(struct["ObjectType"]) end
@@ -7406,12 +8538,12 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Attributes [FacetAttributeList] <p>The attributes that are associated with the <a>Facet</a>.</p>
+-- * FacetStyle [FacetStyle] <p>There are two different styles that you can define on any given facet, <code>Static</code> and <code>Dynamic</code>. For static facets, all attributes must be defined in the schema. For dynamic facets, attributes can be defined during data plane operations.</p>
 -- * SchemaArn [Arn] <p>The schema ARN in which the new <a>Facet</a> will be created. For more information, see <a>arns</a>.</p>
 -- * Name [FacetName] <p>The name of the <a>Facet</a>, which is unique for a given schema.</p>
--- * ObjectType [ObjectType] <p>Specifies whether a given object created from this facet is of type node, leaf node, policy or index.</p> <ul> <li> <p>Node: Can have multiple children but one parent.</p> </li> </ul> <ul> <li> <p>Leaf node: Cannot have children but can have multiple parents.</p> </li> </ul> <ul> <li> <p>Policy: Allows you to store a policy document and policy type. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies">Policies</a>.</p> </li> </ul> <ul> <li> <p>Index: Can be created with the Index API.</p> </li> </ul>
+-- * ObjectType [ObjectType] <p>Specifies whether a given object created from this facet is of type node, leaf node, policy or index.</p> <ul> <li> <p>Node: Can have multiple children but one parent.</p> </li> </ul> <ul> <li> <p>Leaf node: Cannot have children but can have multiple parents.</p> </li> </ul> <ul> <li> <p>Policy: Allows you to store a policy document and policy type. For more information, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies">Policies</a>.</p> </li> </ul> <ul> <li> <p>Index: Can be created with the Index API.</p> </li> </ul>
 -- Required key: SchemaArn
 -- Required key: Name
--- Required key: ObjectType
 -- @return CreateFacetRequest structure as a key-value pair table
 function M.CreateFacetRequest(args)
 	assert(args, "You must provide an argument table when creating CreateFacetRequest")
@@ -7424,53 +8556,12 @@ function M.CreateFacetRequest(args)
     }
 	local all_args = { 
 		["Attributes"] = args["Attributes"],
+		["FacetStyle"] = args["FacetStyle"],
 		["SchemaArn"] = args["SchemaArn"],
 		["Name"] = args["Name"],
 		["ObjectType"] = args["ObjectType"],
 	}
 	asserts.AssertCreateFacetRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TypedLinkAttributeRange = { ["Range"] = true, ["AttributeName"] = true, nil }
-
-function asserts.AssertTypedLinkAttributeRange(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TypedLinkAttributeRange to be of type 'table'")
-	assert(struct["Range"], "Expected key Range to exist in table")
-	if struct["Range"] then asserts.AssertTypedAttributeValueRange(struct["Range"]) end
-	if struct["AttributeName"] then asserts.AssertAttributeName(struct["AttributeName"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.TypedLinkAttributeRange[k], "TypedLinkAttributeRange contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TypedLinkAttributeRange
--- <p>Identifies the range of attributes that are used by a specified filter.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Range [TypedAttributeValueRange] <p>The range of attribute values that are being selected.</p>
--- * AttributeName [AttributeName] <p>The unique name of the typed link attribute.</p>
--- Required key: Range
--- @return TypedLinkAttributeRange structure as a key-value pair table
-function M.TypedLinkAttributeRange(args)
-	assert(args, "You must provide an argument table when creating TypedLinkAttributeRange")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Range"] = args["Range"],
-		["AttributeName"] = args["AttributeName"],
-	}
-	asserts.AssertTypedLinkAttributeRange(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -7492,7 +8583,7 @@ function asserts.AssertBatchDeleteObject(struct)
 end
 
 --- Create a structure of type BatchDeleteObject
--- <p>Represents the output of a <code>DeleteObject</code> operation.</p>
+-- <p>Represents the output of a <a>DeleteObject</a> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ObjectReference [ObjectReference] <p>The reference that identifies the object.</p>
@@ -7558,6 +8649,51 @@ function M.DeleteDirectoryRequest(args)
     }
 end
 
+keys.DeleteObjectRequest = { ["ObjectReference"] = true, ["DirectoryArn"] = true, nil }
+
+function asserts.AssertDeleteObjectRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteObjectRequest to be of type 'table'")
+	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
+	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteObjectRequest[k], "DeleteObjectRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteObjectRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectReference [ObjectReference] <p>A reference that identifies the object.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
+-- Required key: DirectoryArn
+-- Required key: ObjectReference
+-- @return DeleteObjectRequest structure as a key-value pair table
+function M.DeleteObjectRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteObjectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
+		["ObjectReference"] = args["ObjectReference"],
+		["DirectoryArn"] = args["DirectoryArn"],
+	}
+	asserts.AssertDeleteObjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.BatchListObjectAttributesResponse = { ["Attributes"] = true, ["NextToken"] = true, nil }
 
 function asserts.AssertBatchListObjectAttributesResponse(struct)
@@ -7571,7 +8707,7 @@ function asserts.AssertBatchListObjectAttributesResponse(struct)
 end
 
 --- Create a structure of type BatchListObjectAttributesResponse
--- <p>Represents the output of a <code>ListObjectAttributes</code> response operation.</p>
+-- <p>Represents the output of a <a>ListObjectAttributes</a> response operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Attributes [AttributeKeyAndValueList] <p>The attributes map that is associated with the object. <code>AttributeArn</code> is the key; attribute value is the value.</p>
@@ -7621,7 +8757,7 @@ end
 -- Valid keys:
 -- * ObjectAttributeList [AttributeKeyAndValueList] <p>Attributes on the facet that you are adding to the object.</p>
 -- * ObjectReference [ObjectReference] <p>A reference to the object you are adding the specified facet to.</p>
--- * SchemaFacet [SchemaFacet] <p>Identifiers for the facet that you are adding to the object.</p>
+-- * SchemaFacet [SchemaFacet] <p>Identifiers for the facet that you are adding to the object. See <a>SchemaFacet</a> for details.</p>
 -- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
 -- Required key: DirectoryArn
 -- Required key: SchemaFacet
@@ -7683,43 +8819,6 @@ function M.ObjectAttributeUpdate(args)
 		["ObjectAttributeKey"] = args["ObjectAttributeKey"],
 	}
 	asserts.AssertObjectAttributeUpdate(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CannotListParentOfRootException = { ["Message"] = true, nil }
-
-function asserts.AssertCannotListParentOfRootException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CannotListParentOfRootException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.CannotListParentOfRootException[k], "CannotListParentOfRootException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CannotListParentOfRootException
--- <p>Cannot list the parents of a <a>Directory</a> root.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return CannotListParentOfRootException structure as a key-value pair table
-function M.CannotListParentOfRootException(args)
-	assert(args, "You must provide an argument table when creating CannotListParentOfRootException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertCannotListParentOfRootException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -7805,25 +8904,25 @@ function M.DetachFromIndexResponse(args)
     }
 end
 
-keys.AccessDeniedException = { ["Message"] = true, nil }
+keys.AttachObjectResponse = { ["AttachedObjectIdentifier"] = true, nil }
 
-function asserts.AssertAccessDeniedException(struct)
+function asserts.AssertAttachObjectResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected AccessDeniedException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected AttachObjectResponse to be of type 'table'")
+	if struct["AttachedObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["AttachedObjectIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.AccessDeniedException[k], "AccessDeniedException contains unknown key " .. tostring(k))
+		assert(keys.AttachObjectResponse[k], "AttachObjectResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type AccessDeniedException
--- <p>Access denied. Check your permissions.</p>
+--- Create a structure of type AttachObjectResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return AccessDeniedException structure as a key-value pair table
-function M.AccessDeniedException(args)
-	assert(args, "You must provide an argument table when creating AccessDeniedException")
+-- * AttachedObjectIdentifier [ObjectIdentifier] <p>The attached <code>ObjectIdentifier</code>, which is the child <code>ObjectIdentifier</code>.</p>
+-- @return AttachObjectResponse structure as a key-value pair table
+function M.AttachObjectResponse(args)
+	assert(args, "You must provide an argument table when creating AttachObjectResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -7831,9 +8930,9 @@ function M.AccessDeniedException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["AttachedObjectIdentifier"] = args["AttachedObjectIdentifier"],
 	}
-	asserts.AssertAccessDeniedException(all_args)
+	asserts.AssertAttachObjectResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -7842,25 +8941,23 @@ function M.AccessDeniedException(args)
     }
 end
 
-keys.NotPolicyException = { ["Message"] = true, nil }
+keys.TagResourceResponse = { nil }
 
-function asserts.AssertNotPolicyException(struct)
+function asserts.AssertTagResourceResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected NotPolicyException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected TagResourceResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.NotPolicyException[k], "NotPolicyException contains unknown key " .. tostring(k))
+		assert(keys.TagResourceResponse[k], "TagResourceResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type NotPolicyException
--- <p>Indicates that the requested operation can only operate on policy objects.</p>
+--- Create a structure of type TagResourceResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return NotPolicyException structure as a key-value pair table
-function M.NotPolicyException(args)
-	assert(args, "You must provide an argument table when creating NotPolicyException")
+-- @return TagResourceResponse structure as a key-value pair table
+function M.TagResourceResponse(args)
+	assert(args, "You must provide an argument table when creating TagResourceResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -7868,46 +8965,8 @@ function M.NotPolicyException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
 	}
-	asserts.AssertNotPolicyException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.NotNodeException = { ["Message"] = true, nil }
-
-function asserts.AssertNotNodeException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected NotNodeException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.NotNodeException[k], "NotNodeException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type NotNodeException
--- <p>Occurs when any invalid operations are performed on an object that is not a node, such as calling <code>ListObjectChildren</code> for a leaf node object.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- @return NotNodeException structure as a key-value pair table
-function M.NotNodeException(args)
-	assert(args, "You must provide an argument table when creating NotNodeException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertNotNodeException(all_args)
+	asserts.AssertTagResourceResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -8016,7 +9075,7 @@ end
 -- Valid keys:
 -- * ObjectAttributeList [AttributeKeyAndValueList] <p>The attribute map whose attribute ARN contains the key and attribute value as the map value.</p>
 -- * ParentReference [ObjectReference] <p>If specified, the parent reference to which this object will be attached.</p>
--- * SchemaFacets [SchemaFacetList] <p>A list of schema facets to be associated with the object that contains <code>SchemaArn</code> and facet name. For more information, see <a>arns</a>.</p>
+-- * SchemaFacets [SchemaFacetList] <p>A list of schema facets to be associated with the object. Do not provide minor version components. See <a>SchemaFacet</a> for details.</p>
 -- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> in which the object will be created. For more information, see <a>arns</a>.</p>
 -- * LinkName [LinkName] <p>The name of link that is used to attach this object to a parent.</p>
 -- Required key: DirectoryArn
@@ -8096,25 +9155,31 @@ function M.BatchAddFacetToObject(args)
     }
 end
 
-keys.ResourceNotFoundException = { ["Message"] = true, nil }
+keys.BatchAttachToIndex = { ["IndexReference"] = true, ["TargetReference"] = true, nil }
 
-function asserts.AssertResourceNotFoundException(struct)
+function asserts.AssertBatchAttachToIndex(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected BatchAttachToIndex to be of type 'table'")
+	assert(struct["IndexReference"], "Expected key IndexReference to exist in table")
+	assert(struct["TargetReference"], "Expected key TargetReference to exist in table")
+	if struct["IndexReference"] then asserts.AssertObjectReference(struct["IndexReference"]) end
+	if struct["TargetReference"] then asserts.AssertObjectReference(struct["TargetReference"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.BatchAttachToIndex[k], "BatchAttachToIndex contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ResourceNotFoundException
--- <p>The specified resource could not be found.</p>
+--- Create a structure of type BatchAttachToIndex
+-- <p>Attaches the specified object to the specified index inside a <a>BatchRead</a> operation. For more information, see <a>AttachToIndex</a> and <a>BatchReadRequest$Operations</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- @return ResourceNotFoundException structure as a key-value pair table
-function M.ResourceNotFoundException(args)
-	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+-- * IndexReference [ObjectReference] <p>A reference to the index that you are attaching the object to.</p>
+-- * TargetReference [ObjectReference] <p>A reference to the object that you are attaching to the index.</p>
+-- Required key: IndexReference
+-- Required key: TargetReference
+-- @return BatchAttachToIndex structure as a key-value pair table
+function M.BatchAttachToIndex(args)
+	assert(args, "You must provide an argument table when creating BatchAttachToIndex")
     local query_args = { 
     }
     local uri_args = { 
@@ -8122,9 +9187,59 @@ function M.ResourceNotFoundException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["IndexReference"] = args["IndexReference"],
+		["TargetReference"] = args["TargetReference"],
 	}
-	asserts.AssertResourceNotFoundException(all_args)
+	asserts.AssertBatchAttachToIndex(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchGetObjectAttributes = { ["ObjectReference"] = true, ["SchemaFacet"] = true, ["AttributeNames"] = true, nil }
+
+function asserts.AssertBatchGetObjectAttributes(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchGetObjectAttributes to be of type 'table'")
+	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
+	assert(struct["SchemaFacet"], "Expected key SchemaFacet to exist in table")
+	assert(struct["AttributeNames"], "Expected key AttributeNames to exist in table")
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["SchemaFacet"] then asserts.AssertSchemaFacet(struct["SchemaFacet"]) end
+	if struct["AttributeNames"] then asserts.AssertAttributeNameList(struct["AttributeNames"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchGetObjectAttributes[k], "BatchGetObjectAttributes contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchGetObjectAttributes
+-- <p>Retrieves attributes within a facet that are associated with an object inside an <a>BatchRead</a> operation. For more information, see <a>GetObjectAttributes</a> and <a>BatchReadRequest$Operations</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectReference [ObjectReference] <p>Reference that identifies the object whose attributes will be retrieved.</p>
+-- * SchemaFacet [SchemaFacet] <p>Identifier for the facet whose attributes will be retrieved. See <a>SchemaFacet</a> for details.</p>
+-- * AttributeNames [AttributeNameList] <p>List of attribute names whose values will be retrieved.</p>
+-- Required key: ObjectReference
+-- Required key: SchemaFacet
+-- Required key: AttributeNames
+-- @return BatchGetObjectAttributes structure as a key-value pair table
+function M.BatchGetObjectAttributes(args)
+	assert(args, "You must provide an argument table when creating BatchGetObjectAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ObjectReference"] = args["ObjectReference"],
+		["SchemaFacet"] = args["SchemaFacet"],
+		["AttributeNames"] = args["AttributeNames"],
+	}
+	asserts.AssertBatchGetObjectAttributes(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -8144,7 +9259,7 @@ function asserts.AssertBatchDeleteObjectResponse(struct)
 end
 
 --- Create a structure of type BatchDeleteObjectResponse
--- <p>Represents the output of a <code>DeleteObject</code> response operation.</p>
+-- <p>Represents the output of a <a>DeleteObject</a> response operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- @return BatchDeleteObjectResponse structure as a key-value pair table
@@ -8167,27 +9282,27 @@ function M.BatchDeleteObjectResponse(args)
     }
 end
 
-keys.DeleteDirectoryResponse = { ["DirectoryArn"] = true, nil }
+keys.ListTagsForResourceResponse = { ["NextToken"] = true, ["Tags"] = true, nil }
 
-function asserts.AssertDeleteDirectoryResponse(struct)
+function asserts.AssertListTagsForResourceResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteDirectoryResponse to be of type 'table'")
-	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
-	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	assert(type(struct) == "table", "Expected ListTagsForResourceResponse to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteDirectoryResponse[k], "DeleteDirectoryResponse contains unknown key " .. tostring(k))
+		assert(keys.ListTagsForResourceResponse[k], "ListTagsForResourceResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteDirectoryResponse
+--- Create a structure of type ListTagsForResourceResponse
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DirectoryArn [Arn] <p>The ARN of the deleted directory.</p>
--- Required key: DirectoryArn
--- @return DeleteDirectoryResponse structure as a key-value pair table
-function M.DeleteDirectoryResponse(args)
-	assert(args, "You must provide an argument table when creating DeleteDirectoryResponse")
+-- * NextToken [NextToken] <p>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</p>
+-- * Tags [TagList] <p>A list of tag key value pairs that are associated with the response.</p>
+-- @return ListTagsForResourceResponse structure as a key-value pair table
+function M.ListTagsForResourceResponse(args)
+	assert(args, "You must provide an argument table when creating ListTagsForResourceResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -8195,9 +9310,84 @@ function M.DeleteDirectoryResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["DirectoryArn"] = args["DirectoryArn"],
+		["NextToken"] = args["NextToken"],
+		["Tags"] = args["Tags"],
 	}
-	asserts.AssertDeleteDirectoryResponse(all_args)
+	asserts.AssertListTagsForResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchListAttachedIndicesResponse = { ["IndexAttachments"] = true, ["NextToken"] = true, nil }
+
+function asserts.AssertBatchListAttachedIndicesResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchListAttachedIndicesResponse to be of type 'table'")
+	if struct["IndexAttachments"] then asserts.AssertIndexAttachmentList(struct["IndexAttachments"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchListAttachedIndicesResponse[k], "BatchListAttachedIndicesResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchListAttachedIndicesResponse
+-- <p>Represents the output of a <a>ListAttachedIndices</a> response operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IndexAttachments [IndexAttachmentList] <p>The indices attached to the specified object.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- @return BatchListAttachedIndicesResponse structure as a key-value pair table
+function M.BatchListAttachedIndicesResponse(args)
+	assert(args, "You must provide an argument table when creating BatchListAttachedIndicesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["IndexAttachments"] = args["IndexAttachments"],
+		["NextToken"] = args["NextToken"],
+	}
+	asserts.AssertBatchListAttachedIndicesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchUpdateLinkAttributesResponse = { nil }
+
+function asserts.AssertBatchUpdateLinkAttributesResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchUpdateLinkAttributesResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.BatchUpdateLinkAttributesResponse[k], "BatchUpdateLinkAttributesResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchUpdateLinkAttributesResponse
+-- <p>Represents the output of a <a>UpdateLinkAttributes</a> response operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return BatchUpdateLinkAttributesResponse structure as a key-value pair table
+function M.BatchUpdateLinkAttributesResponse(args)
+	assert(args, "You must provide an argument table when creating BatchUpdateLinkAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertBatchUpdateLinkAttributesResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -8224,8 +9414,8 @@ end
 -- <p>The facet attribute reference that specifies the attribute definition that contains the attribute facet name and attribute name.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * TargetFacetName [FacetName] <p>The target facet name that is associated with the facet reference. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
--- * TargetAttributeName [AttributeName] <p>The target attribute name that is associated with the facet reference. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
+-- * TargetFacetName [FacetName] <p>The target facet name that is associated with the facet reference. See <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute References</a> for more information.</p>
+-- * TargetAttributeName [AttributeName] <p>The target attribute name that is associated with the facet reference. See <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute References</a> for more information.</p>
 -- Required key: TargetFacetName
 -- Required key: TargetAttributeName
 -- @return FacetAttributeReference structure as a key-value pair table
@@ -8242,6 +9432,46 @@ function M.FacetAttributeReference(args)
 		["TargetAttributeName"] = args["TargetAttributeName"],
 	}
 	asserts.AssertFacetAttributeReference(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpgradeAppliedSchemaResponse = { ["UpgradedSchemaArn"] = true, ["DirectoryArn"] = true, nil }
+
+function asserts.AssertUpgradeAppliedSchemaResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpgradeAppliedSchemaResponse to be of type 'table'")
+	if struct["UpgradedSchemaArn"] then asserts.AssertArn(struct["UpgradedSchemaArn"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpgradeAppliedSchemaResponse[k], "UpgradeAppliedSchemaResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpgradeAppliedSchemaResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UpgradedSchemaArn [Arn] <p>The ARN of the upgraded schema that is returned as part of the response.</p>
+-- * DirectoryArn [Arn] <p>The ARN of the directory that is returned as part of the response.</p>
+-- @return UpgradeAppliedSchemaResponse structure as a key-value pair table
+function M.UpgradeAppliedSchemaResponse(args)
+	assert(args, "You must provide an argument table when creating UpgradeAppliedSchemaResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["UpgradedSchemaArn"] = args["UpgradedSchemaArn"],
+		["DirectoryArn"] = args["DirectoryArn"],
+	}
+	asserts.AssertUpgradeAppliedSchemaResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -8474,43 +9704,83 @@ function M.DeleteSchemaRequest(args)
     }
 end
 
-keys.DeleteFacetRequest = { ["SchemaArn"] = true, ["Name"] = true, nil }
+keys.BatchListOutgoingTypedLinksResponse = { ["NextToken"] = true, ["TypedLinkSpecifiers"] = true, nil }
 
-function asserts.AssertDeleteFacetRequest(struct)
+function asserts.AssertBatchListOutgoingTypedLinksResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteFacetRequest to be of type 'table'")
-	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
-	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
-	if struct["Name"] then asserts.AssertFacetName(struct["Name"]) end
+	assert(type(struct) == "table", "Expected BatchListOutgoingTypedLinksResponse to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["TypedLinkSpecifiers"] then asserts.AssertTypedLinkSpecifierList(struct["TypedLinkSpecifiers"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteFacetRequest[k], "DeleteFacetRequest contains unknown key " .. tostring(k))
+		assert(keys.BatchListOutgoingTypedLinksResponse[k], "BatchListOutgoingTypedLinksResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteFacetRequest
---  
+--- Create a structure of type BatchListOutgoingTypedLinksResponse
+-- <p>Represents the output of a <a>ListOutgoingTypedLinks</a> response operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Facet</a>. For more information, see <a>arns</a>.</p>
--- * Name [FacetName] <p>The name of the facet to delete.</p>
--- Required key: SchemaArn
--- Required key: Name
--- @return DeleteFacetRequest structure as a key-value pair table
-function M.DeleteFacetRequest(args)
-	assert(args, "You must provide an argument table when creating DeleteFacetRequest")
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * TypedLinkSpecifiers [TypedLinkSpecifierList] <p>Returns a typed link specifier as output.</p>
+-- @return BatchListOutgoingTypedLinksResponse structure as a key-value pair table
+function M.BatchListOutgoingTypedLinksResponse(args)
+	assert(args, "You must provide an argument table when creating BatchListOutgoingTypedLinksResponse")
     local query_args = { 
     }
     local uri_args = { 
     }
     local header_args = { 
-        ["x-amz-data-partition"] = args["SchemaArn"],
     }
 	local all_args = { 
-		["SchemaArn"] = args["SchemaArn"],
-		["Name"] = args["Name"],
+		["NextToken"] = args["NextToken"],
+		["TypedLinkSpecifiers"] = args["TypedLinkSpecifiers"],
 	}
-	asserts.AssertDeleteFacetRequest(all_args)
+	asserts.AssertBatchListOutgoingTypedLinksResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.BatchListAttachedIndices = { ["NextToken"] = true, ["TargetReference"] = true, ["MaxResults"] = true, nil }
+
+function asserts.AssertBatchListAttachedIndices(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected BatchListAttachedIndices to be of type 'table'")
+	assert(struct["TargetReference"], "Expected key TargetReference to exist in table")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["TargetReference"] then asserts.AssertObjectReference(struct["TargetReference"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.BatchListAttachedIndices[k], "BatchListAttachedIndices contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type BatchListAttachedIndices
+-- <p>Lists indices attached to an object inside a <a>BatchRead</a> operation. For more information, see <a>ListAttachedIndices</a> and <a>BatchReadRequest$Operations</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * TargetReference [ObjectReference] <p>A reference to the object that has indices attached.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- Required key: TargetReference
+-- @return BatchListAttachedIndices structure as a key-value pair table
+function M.BatchListAttachedIndices(args)
+	assert(args, "You must provide an argument table when creating BatchListAttachedIndices")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["TargetReference"] = args["TargetReference"],
+		["MaxResults"] = args["MaxResults"],
+	}
+	asserts.AssertBatchListAttachedIndices(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -8540,7 +9810,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Attributes [TypedLinkAttributeDefinitionList] <p>A set of key-value pairs associated with the typed link. Typed link attributes are used when you have data values that are related to the link itself, and not to one of the two objects being linked. Identity attributes also serve to distinguish the link from others of the same type between the same objects.</p>
--- * IdentityAttributeOrder [AttributeNameList] <p>The set of attributes that distinguish links made from this facet from each other, in the order of significance. Listing typed links can filter on the values of these attributes. See <a>ListOutgoingTypedLinks</a> and <a>ListIncomingTypeLinks</a> for details.</p>
+-- * IdentityAttributeOrder [AttributeNameList] <p>The set of attributes that distinguish links made from this facet from each other, in the order of significance. Listing typed links can filter on the values of these attributes. See <a>ListOutgoingTypedLinks</a> and <a>ListIncomingTypedLinks</a> for details.</p>
 -- * Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
 -- Required key: Name
 -- Required key: Attributes
@@ -8616,17 +9886,6 @@ function M.DirectoryArn(str)
 	return str
 end
 
-function asserts.AssertSchemaJsonDocument(str)
-	assert(str)
-	assert(type(str) == "string", "Expected SchemaJsonDocument to be of type 'string'")
-end
-
---  
-function M.SchemaJsonDocument(str)
-	asserts.AssertSchemaJsonDocument(str)
-	return str
-end
-
 function asserts.AssertTagKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagKey to be of type 'string'")
@@ -8660,25 +9919,14 @@ function M.ObjectType(str)
 	return str
 end
 
-function asserts.AssertPathString(str)
+function asserts.AssertRuleParameterKey(str)
 	assert(str)
-	assert(type(str) == "string", "Expected PathString to be of type 'string'")
+	assert(type(str) == "string", "Expected RuleParameterKey to be of type 'string'")
 end
 
 --  
-function M.PathString(str)
-	asserts.AssertPathString(str)
-	return str
-end
-
-function asserts.AssertBatchWriteExceptionType(str)
-	assert(str)
-	assert(type(str) == "string", "Expected BatchWriteExceptionType to be of type 'string'")
-end
-
---  
-function M.BatchWriteExceptionType(str)
-	asserts.AssertBatchWriteExceptionType(str)
+function M.RuleParameterKey(str)
+	asserts.AssertRuleParameterKey(str)
 	return str
 end
 
@@ -8690,6 +9938,17 @@ end
 --  
 function M.RuleParameterValue(str)
 	asserts.AssertRuleParameterValue(str)
+	return str
+end
+
+function asserts.AssertPathString(str)
+	assert(str)
+	assert(type(str) == "string", "Expected PathString to be of type 'string'")
+end
+
+--  
+function M.PathString(str)
+	asserts.AssertPathString(str)
 	return str
 end
 
@@ -8726,6 +9985,32 @@ function M.Arn(str)
 	return str
 end
 
+function asserts.AssertAttributeName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected AttributeName to be of type 'string'")
+	assert(#str <= 230, "Expected string to be max 230 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.AttributeName(str)
+	asserts.AssertAttributeName(str)
+	return str
+end
+
+function asserts.AssertVersion(str)
+	assert(str)
+	assert(type(str) == "string", "Expected Version to be of type 'string'")
+	assert(#str <= 10, "Expected string to be max 10 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.Version(str)
+	asserts.AssertVersion(str)
+	return str
+end
+
 function asserts.AssertNextToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NextToken to be of type 'string'")
@@ -8748,14 +10033,16 @@ function M.NumberAttributeValue(str)
 	return str
 end
 
-function asserts.AssertTagValue(str)
+function asserts.AssertSchemaName(str)
 	assert(str)
-	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
+	assert(type(str) == "string", "Expected SchemaName to be of type 'string'")
+	assert(#str <= 32, "Expected string to be max 32 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
-function M.TagValue(str)
-	asserts.AssertTagValue(str)
+function M.SchemaName(str)
+	asserts.AssertSchemaName(str)
 	return str
 end
 
@@ -8767,30 +10054,6 @@ end
 --  
 function M.PolicyType(str)
 	asserts.AssertPolicyType(str)
-	return str
-end
-
-function asserts.AssertRequiredAttributeBehavior(str)
-	assert(str)
-	assert(type(str) == "string", "Expected RequiredAttributeBehavior to be of type 'string'")
-end
-
---  
-function M.RequiredAttributeBehavior(str)
-	asserts.AssertRequiredAttributeBehavior(str)
-	return str
-end
-
-function asserts.AssertSchemaName(str)
-	assert(str)
-	assert(type(str) == "string", "Expected SchemaName to be of type 'string'")
-	assert(#str <= 32, "Expected string to be max 32 characters")
-	assert(#str >= 1, "Expected string to be min 1 characters")
-end
-
---  
-function M.SchemaName(str)
-	asserts.AssertSchemaName(str)
 	return str
 end
 
@@ -8853,6 +10116,17 @@ function M.TypedLinkName(str)
 	return str
 end
 
+function asserts.AssertRequiredAttributeBehavior(str)
+	assert(str)
+	assert(type(str) == "string", "Expected RequiredAttributeBehavior to be of type 'string'")
+end
+
+--  
+function M.RequiredAttributeBehavior(str)
+	asserts.AssertRequiredAttributeBehavior(str)
+	return str
+end
+
 function asserts.AssertConsistencyLevel(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ConsistencyLevel to be of type 'string'")
@@ -8908,29 +10182,14 @@ function M.ExceptionMessage(str)
 	return str
 end
 
-function asserts.AssertAttributeName(str)
+function asserts.AssertFacetStyle(str)
 	assert(str)
-	assert(type(str) == "string", "Expected AttributeName to be of type 'string'")
-	assert(#str <= 64, "Expected string to be max 64 characters")
-	assert(#str >= 1, "Expected string to be min 1 characters")
+	assert(type(str) == "string", "Expected FacetStyle to be of type 'string'")
 end
 
 --  
-function M.AttributeName(str)
-	asserts.AssertAttributeName(str)
-	return str
-end
-
-function asserts.AssertVersion(str)
-	assert(str)
-	assert(type(str) == "string", "Expected Version to be of type 'string'")
-	assert(#str <= 10, "Expected string to be max 10 characters")
-	assert(#str >= 1, "Expected string to be min 1 characters")
-end
-
---  
-function M.Version(str)
-	asserts.AssertVersion(str)
+function M.FacetStyle(str)
+	asserts.AssertFacetStyle(str)
 	return str
 end
 
@@ -8982,14 +10241,25 @@ function M.RuleKey(str)
 	return str
 end
 
-function asserts.AssertRuleParameterKey(str)
+function asserts.AssertSchemaJsonDocument(str)
 	assert(str)
-	assert(type(str) == "string", "Expected RuleParameterKey to be of type 'string'")
+	assert(type(str) == "string", "Expected SchemaJsonDocument to be of type 'string'")
 end
 
 --  
-function M.RuleParameterKey(str)
-	asserts.AssertRuleParameterKey(str)
+function M.SchemaJsonDocument(str)
+	asserts.AssertSchemaJsonDocument(str)
+	return str
+end
+
+function asserts.AssertTagValue(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
+end
+
+--  
+function M.TagValue(str)
+	asserts.AssertTagValue(str)
 	return str
 end
 
@@ -9002,17 +10272,6 @@ end
 
 function M.TagsNumberResults(integer)
 	asserts.AssertTagsNumberResults(integer)
-	return integer
-end
-
-function asserts.AssertBatchOperationIndex(integer)
-	assert(integer)
-	assert(type(integer) == "number", "Expected BatchOperationIndex to be of type 'number'")
-	assert(integer % 1 == 0, "Expected a while integer number")
-end
-
-function M.BatchOperationIndex(integer)
-	asserts.AssertBatchOperationIndex(integer)
 	return integer
 end
 
@@ -9076,20 +10335,6 @@ function M.RuleParameterMap(map)
 	return map
 end
 
-function asserts.AssertRuleMap(map)
-	assert(map)
-	assert(type(map) == "table", "Expected RuleMap to be of type 'table'")
-	for k,v in pairs(map) do
-		asserts.AssertRuleKey(k)
-		asserts.AssertRule(v)
-	end
-end
-
-function M.RuleMap(map)
-	asserts.AssertRuleMap(map)
-	return map
-end
-
 function asserts.AssertLinkNameToObjectIdentifierMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected LinkNameToObjectIdentifierMap to be of type 'table'")
@@ -9101,6 +10346,20 @@ end
 
 function M.LinkNameToObjectIdentifierMap(map)
 	asserts.AssertLinkNameToObjectIdentifierMap(map)
+	return map
+end
+
+function asserts.AssertRuleMap(map)
+	assert(map)
+	assert(type(map) == "table", "Expected RuleMap to be of type 'table'")
+	for k,v in pairs(map) do
+		asserts.AssertRuleKey(k)
+		asserts.AssertRule(v)
+	end
+end
+
+function M.RuleMap(map)
+	asserts.AssertRuleMap(map)
 	return map
 end
 
@@ -9134,6 +10393,21 @@ function M.BinaryAttributeValue(blob)
 	return blob
 end
 
+function asserts.AssertTypedLinkSpecifierList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected TypedLinkSpecifierList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertTypedLinkSpecifier(v)
+	end
+end
+
+--  
+-- List of TypedLinkSpecifier objects
+function M.TypedLinkSpecifierList(list)
+	asserts.AssertTypedLinkSpecifierList(list)
+	return list
+end
+
 function asserts.AssertPolicyToPathList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PolicyToPathList to be of type ''table")
@@ -9164,6 +10438,21 @@ function M.AttributeNameAndValueList(list)
 	return list
 end
 
+function asserts.AssertPolicyAttachmentList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected PolicyAttachmentList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertPolicyAttachment(v)
+	end
+end
+
+--  
+-- List of PolicyAttachment objects
+function M.PolicyAttachmentList(list)
+	asserts.AssertPolicyAttachmentList(list)
+	return list
+end
+
 function asserts.AssertAttributeKeyList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AttributeKeyList to be of type ''table")
@@ -9176,21 +10465,6 @@ end
 -- List of AttributeKey objects
 function M.AttributeKeyList(list)
 	asserts.AssertAttributeKeyList(list)
-	return list
-end
-
-function asserts.AssertTypedLinkSpecifierList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected TypedLinkSpecifierList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertTypedLinkSpecifier(v)
-	end
-end
-
---  
--- List of TypedLinkSpecifier objects
-function M.TypedLinkSpecifierList(list)
-	asserts.AssertTypedLinkSpecifierList(list)
 	return list
 end
 
@@ -9209,21 +10483,6 @@ function M.ObjectAttributeUpdateList(list)
 	return list
 end
 
-function asserts.AssertTagKeyList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected TagKeyList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertTagKey(v)
-	end
-end
-
---  
--- List of TagKey objects
-function M.TagKeyList(list)
-	asserts.AssertTagKeyList(list)
-	return list
-end
-
 function asserts.AssertObjectAttributeRangeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ObjectAttributeRangeList to be of type ''table")
@@ -9239,6 +10498,21 @@ function M.ObjectAttributeRangeList(list)
 	return list
 end
 
+function asserts.AssertPathToObjectIdentifiersList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected PathToObjectIdentifiersList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertPathToObjectIdentifiers(v)
+	end
+end
+
+--  
+-- List of PathToObjectIdentifiers objects
+function M.PathToObjectIdentifiersList(list)
+	asserts.AssertPathToObjectIdentifiersList(list)
+	return list
+end
+
 function asserts.AssertDirectoryList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DirectoryList to be of type ''table")
@@ -9251,6 +10525,21 @@ end
 -- List of Directory objects
 function M.DirectoryList(list)
 	asserts.AssertDirectoryList(list)
+	return list
+end
+
+function asserts.AssertSchemaFacetList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected SchemaFacetList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertSchemaFacet(v)
+	end
+end
+
+--  
+-- List of SchemaFacet objects
+function M.SchemaFacetList(list)
+	asserts.AssertSchemaFacetList(list)
 	return list
 end
 
@@ -9344,21 +10633,6 @@ function M.AttributeNameList(list)
 	return list
 end
 
-function asserts.AssertSchemaFacetList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected SchemaFacetList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertSchemaFacet(v)
-	end
-end
-
---  
--- List of SchemaFacet objects
-function M.SchemaFacetList(list)
-	asserts.AssertSchemaFacetList(list)
-	return list
-end
-
 function asserts.AssertFacetAttributeUpdateList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FacetAttributeUpdateList to be of type ''table")
@@ -9404,6 +10678,21 @@ function M.BatchWriteOperationResponseList(list)
 	return list
 end
 
+function asserts.AssertObjectIdentifierAndLinkNameList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ObjectIdentifierAndLinkNameList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertObjectIdentifierAndLinkNameTuple(v)
+	end
+end
+
+--  
+-- List of ObjectIdentifierAndLinkNameTuple objects
+function M.ObjectIdentifierAndLinkNameList(list)
+	asserts.AssertObjectIdentifierAndLinkNameList(list)
+	return list
+end
+
 function asserts.AssertTypedLinkFacetAttributeUpdateList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TypedLinkFacetAttributeUpdateList to be of type ''table")
@@ -9416,6 +10705,21 @@ end
 -- List of TypedLinkFacetAttributeUpdate objects
 function M.TypedLinkFacetAttributeUpdateList(list)
 	asserts.AssertTypedLinkFacetAttributeUpdateList(list)
+	return list
+end
+
+function asserts.AssertTagKeyList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected TagKeyList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertTagKey(v)
+	end
+end
+
+--  
+-- List of TagKey objects
+function M.TagKeyList(list)
+	asserts.AssertTagKeyList(list)
 	return list
 end
 
@@ -9464,36 +10768,6 @@ function M.BatchReadOperationResponseList(list)
 	return list
 end
 
-function asserts.AssertPolicyAttachmentList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected PolicyAttachmentList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertPolicyAttachment(v)
-	end
-end
-
---  
--- List of PolicyAttachment objects
-function M.PolicyAttachmentList(list)
-	asserts.AssertPolicyAttachmentList(list)
-	return list
-end
-
-function asserts.AssertTypedLinkAttributeDefinitionList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected TypedLinkAttributeDefinitionList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertTypedLinkAttributeDefinition(v)
-	end
-end
-
---  
--- List of TypedLinkAttributeDefinition objects
-function M.TypedLinkAttributeDefinitionList(list)
-	asserts.AssertTypedLinkAttributeDefinitionList(list)
-	return list
-end
-
 function asserts.AssertAttributeKeyAndValueList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AttributeKeyAndValueList to be of type ''table")
@@ -9524,18 +10798,33 @@ function M.BatchWriteOperationList(list)
 	return list
 end
 
-function asserts.AssertPathToObjectIdentifiersList(list)
+function asserts.AssertTypedLinkAttributeDefinitionList(list)
 	assert(list)
-	assert(type(list) == "table", "Expected PathToObjectIdentifiersList to be of type ''table")
+	assert(type(list) == "table", "Expected TypedLinkAttributeDefinitionList to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertPathToObjectIdentifiers(v)
+		asserts.AssertTypedLinkAttributeDefinition(v)
 	end
 end
 
 --  
--- List of PathToObjectIdentifiers objects
-function M.PathToObjectIdentifiersList(list)
-	asserts.AssertPathToObjectIdentifiersList(list)
+-- List of TypedLinkAttributeDefinition objects
+function M.TypedLinkAttributeDefinitionList(list)
+	asserts.AssertTypedLinkAttributeDefinitionList(list)
+	return list
+end
+
+function asserts.AssertLinkAttributeUpdateList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected LinkAttributeUpdateList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertLinkAttributeUpdate(v)
+	end
+end
+
+--  
+-- List of LinkAttributeUpdate objects
+function M.LinkAttributeUpdateList(list)
+	asserts.AssertLinkAttributeUpdateList(list)
 	return list
 end
 
@@ -9872,6 +11161,41 @@ function M.GetObjectInformationSync(GetObjectInformationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.GetObjectInformationAsync(GetObjectInformationRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTagsForResource asynchronously, invoking a callback when done
+-- @param ListTagsForResourceRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
+	assert(ListTagsForResourceRequest, "You must provide a ListTagsForResourceRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTagsForResource",
+	}
+	for header,value in pairs(ListTagsForResourceRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/tags", ListTagsForResourceRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListTagsForResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTagsForResourceRequest
+-- @return response
+-- @return error_message
+function M.ListTagsForResourceSync(ListTagsForResourceRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTagsForResourceAsync(ListTagsForResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10297,6 +11621,41 @@ function M.PutSchemaFromJsonSync(PutSchemaFromJsonRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call UpdateLinkAttributes asynchronously, invoking a callback when done
+-- @param UpdateLinkAttributesRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateLinkAttributesAsync(UpdateLinkAttributesRequest, cb)
+	assert(UpdateLinkAttributesRequest, "You must provide a UpdateLinkAttributesRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateLinkAttributes",
+	}
+	for header,value in pairs(UpdateLinkAttributesRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/attributes/update", UpdateLinkAttributesRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateLinkAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateLinkAttributesRequest
+-- @return response
+-- @return error_message
+function M.UpdateLinkAttributesSync(UpdateLinkAttributesRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateLinkAttributesAsync(UpdateLinkAttributesRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ListPolicyAttachments asynchronously, invoking a callback when done
 -- @param ListPolicyAttachmentsRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -10507,6 +11866,41 @@ function M.RemoveFacetFromObjectSync(RemoveFacetFromObjectRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call UpgradeAppliedSchema asynchronously, invoking a callback when done
+-- @param UpgradeAppliedSchemaRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpgradeAppliedSchemaAsync(UpgradeAppliedSchemaRequest, cb)
+	assert(UpgradeAppliedSchemaRequest, "You must provide a UpgradeAppliedSchemaRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpgradeAppliedSchema",
+	}
+	for header,value in pairs(UpgradeAppliedSchemaRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	if request_handler then
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/upgradeapplied", UpgradeAppliedSchemaRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpgradeAppliedSchema synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpgradeAppliedSchemaRequest
+-- @return response
+-- @return error_message
+function M.UpgradeAppliedSchemaSync(UpgradeAppliedSchemaRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpgradeAppliedSchemaAsync(UpgradeAppliedSchemaRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call LookupPolicy asynchronously, invoking a callback when done
 -- @param LookupPolicyRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -10682,71 +12076,71 @@ function M.AttachTypedLinkSync(AttachTypedLinkRequest, ...)
 	return coroutine.yield()
 end
 
---- Call UpdateObjectAttributes asynchronously, invoking a callback when done
--- @param UpdateObjectAttributesRequest
+--- Call GetObjectAttributes asynchronously, invoking a callback when done
+-- @param GetObjectAttributesRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.UpdateObjectAttributesAsync(UpdateObjectAttributesRequest, cb)
-	assert(UpdateObjectAttributesRequest, "You must provide a UpdateObjectAttributesRequest")
+function M.GetObjectAttributesAsync(GetObjectAttributesRequest, cb)
+	assert(GetObjectAttributesRequest, "You must provide a GetObjectAttributesRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".UpdateObjectAttributes",
+		[request_headers.AMZ_TARGET_HEADER] = ".GetObjectAttributes",
 	}
-	for header,value in pairs(UpdateObjectAttributesRequest.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
-	if request_handler then
-		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/update", UpdateObjectAttributesRequest, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call UpdateObjectAttributes synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param UpdateObjectAttributesRequest
--- @return response
--- @return error_message
-function M.UpdateObjectAttributesSync(UpdateObjectAttributesRequest, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.UpdateObjectAttributesAsync(UpdateObjectAttributesRequest, function(response, error_message)
-		assert(coroutine.resume(co, response, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call ListTypedLinkFacetAttributes asynchronously, invoking a callback when done
--- @param ListTypedLinkFacetAttributesRequest
--- @param cb Callback function accepting two args: response, error_message
-function M.ListTypedLinkFacetAttributesAsync(ListTypedLinkFacetAttributesRequest, cb)
-	assert(ListTypedLinkFacetAttributesRequest, "You must provide a ListTypedLinkFacetAttributesRequest")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".ListTypedLinkFacetAttributes",
-	}
-	for header,value in pairs(ListTypedLinkFacetAttributesRequest.headers) do
+	for header,value in pairs(GetObjectAttributesRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet/attributes", ListTypedLinkFacetAttributesRequest, headers, settings, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/attributes/get", GetObjectAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call ListTypedLinkFacetAttributes synchronously, returning when done
+--- Call GetObjectAttributes synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param ListTypedLinkFacetAttributesRequest
+-- @param GetObjectAttributesRequest
 -- @return response
 -- @return error_message
-function M.ListTypedLinkFacetAttributesSync(ListTypedLinkFacetAttributesRequest, ...)
+function M.GetObjectAttributesSync(GetObjectAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTypedLinkFacetAttributesAsync(ListTypedLinkFacetAttributesRequest, function(response, error_message)
+	M.GetObjectAttributesAsync(GetObjectAttributesRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetLinkAttributes asynchronously, invoking a callback when done
+-- @param GetLinkAttributesRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetLinkAttributesAsync(GetLinkAttributesRequest, cb)
+	assert(GetLinkAttributesRequest, "You must provide a GetLinkAttributesRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetLinkAttributes",
+	}
+	for header,value in pairs(GetLinkAttributesRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/attributes/get", GetLinkAttributesRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetLinkAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetLinkAttributesRequest
+-- @return response
+-- @return error_message
+function M.GetLinkAttributesSync(GetLinkAttributesRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetLinkAttributesAsync(GetLinkAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11067,36 +12461,36 @@ function M.DeleteTypedLinkFacetSync(DeleteTypedLinkFacetRequest, ...)
 	return coroutine.yield()
 end
 
---- Call UpdateTypedLinkFacet asynchronously, invoking a callback when done
--- @param UpdateTypedLinkFacetRequest
+--- Call ListObjectPolicies asynchronously, invoking a callback when done
+-- @param ListObjectPoliciesRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.UpdateTypedLinkFacetAsync(UpdateTypedLinkFacetRequest, cb)
-	assert(UpdateTypedLinkFacetRequest, "You must provide a UpdateTypedLinkFacetRequest")
+function M.ListObjectPoliciesAsync(ListObjectPoliciesRequest, cb)
+	assert(ListObjectPoliciesRequest, "You must provide a ListObjectPoliciesRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".UpdateTypedLinkFacet",
+		[request_headers.AMZ_TARGET_HEADER] = ".ListObjectPolicies",
 	}
-	for header,value in pairs(UpdateTypedLinkFacetRequest.headers) do
+	for header,value in pairs(ListObjectPoliciesRequest.headers) do
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet", UpdateTypedLinkFacetRequest, headers, settings, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/policy", ListObjectPoliciesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call UpdateTypedLinkFacet synchronously, returning when done
+--- Call ListObjectPolicies synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param UpdateTypedLinkFacetRequest
+-- @param ListObjectPoliciesRequest
 -- @return response
 -- @return error_message
-function M.UpdateTypedLinkFacetSync(UpdateTypedLinkFacetRequest, ...)
+function M.ListObjectPoliciesSync(ListObjectPoliciesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateTypedLinkFacetAsync(UpdateTypedLinkFacetRequest, function(response, error_message)
+	M.ListObjectPoliciesAsync(ListObjectPoliciesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11137,6 +12531,41 @@ function M.DetachFromIndexSync(DetachFromIndexRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call UpgradePublishedSchema asynchronously, invoking a callback when done
+-- @param UpgradePublishedSchemaRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpgradePublishedSchemaAsync(UpgradePublishedSchemaRequest, cb)
+	assert(UpgradePublishedSchemaRequest, "You must provide a UpgradePublishedSchemaRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpgradePublishedSchema",
+	}
+	for header,value in pairs(UpgradePublishedSchemaRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	if request_handler then
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/upgradepublished", UpgradePublishedSchemaRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpgradePublishedSchema synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpgradePublishedSchemaRequest
+-- @return response
+-- @return error_message
+function M.UpgradePublishedSchemaSync(UpgradePublishedSchemaRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpgradePublishedSchemaAsync(UpgradePublishedSchemaRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ListAppliedSchemaArns asynchronously, invoking a callback when done
 -- @param ListAppliedSchemaArnsRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -11172,36 +12601,36 @@ function M.ListAppliedSchemaArnsSync(ListAppliedSchemaArnsRequest, ...)
 	return coroutine.yield()
 end
 
---- Call ListObjectPolicies asynchronously, invoking a callback when done
--- @param ListObjectPoliciesRequest
+--- Call GetAppliedSchemaVersion asynchronously, invoking a callback when done
+-- @param GetAppliedSchemaVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.ListObjectPoliciesAsync(ListObjectPoliciesRequest, cb)
-	assert(ListObjectPoliciesRequest, "You must provide a ListObjectPoliciesRequest")
+function M.GetAppliedSchemaVersionAsync(GetAppliedSchemaVersionRequest, cb)
+	assert(GetAppliedSchemaVersionRequest, "You must provide a GetAppliedSchemaVersionRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".ListObjectPolicies",
+		[request_headers.AMZ_TARGET_HEADER] = ".GetAppliedSchemaVersion",
 	}
-	for header,value in pairs(ListObjectPoliciesRequest.headers) do
+	for header,value in pairs(GetAppliedSchemaVersionRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/policy", ListObjectPoliciesRequest, headers, settings, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/getappliedschema", GetAppliedSchemaVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call ListObjectPolicies synchronously, returning when done
+--- Call GetAppliedSchemaVersion synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param ListObjectPoliciesRequest
+-- @param GetAppliedSchemaVersionRequest
 -- @return response
 -- @return error_message
-function M.ListObjectPoliciesSync(ListObjectPoliciesRequest, ...)
+function M.GetAppliedSchemaVersionSync(GetAppliedSchemaVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListObjectPoliciesAsync(ListObjectPoliciesRequest, function(response, error_message)
+	M.GetAppliedSchemaVersionAsync(GetAppliedSchemaVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11347,36 +12776,71 @@ function M.AttachObjectSync(AttachObjectRequest, ...)
 	return coroutine.yield()
 end
 
---- Call ListTagsForResource asynchronously, invoking a callback when done
--- @param ListTagsForResourceRequest
+--- Call ListOutgoingTypedLinks asynchronously, invoking a callback when done
+-- @param ListOutgoingTypedLinksRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
-	assert(ListTagsForResourceRequest, "You must provide a ListTagsForResourceRequest")
+function M.ListOutgoingTypedLinksAsync(ListOutgoingTypedLinksRequest, cb)
+	assert(ListOutgoingTypedLinksRequest, "You must provide a ListOutgoingTypedLinksRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".ListTagsForResource",
+		[request_headers.AMZ_TARGET_HEADER] = ".ListOutgoingTypedLinks",
 	}
-	for header,value in pairs(ListTagsForResourceRequest.headers) do
+	for header,value in pairs(ListOutgoingTypedLinksRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/tags", ListTagsForResourceRequest, headers, settings, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/outgoing", ListOutgoingTypedLinksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call ListTagsForResource synchronously, returning when done
+--- Call ListOutgoingTypedLinks synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param ListTagsForResourceRequest
+-- @param ListOutgoingTypedLinksRequest
 -- @return response
 -- @return error_message
-function M.ListTagsForResourceSync(ListTagsForResourceRequest, ...)
+function M.ListOutgoingTypedLinksSync(ListOutgoingTypedLinksRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsForResourceAsync(ListTagsForResourceRequest, function(response, error_message)
+	M.ListOutgoingTypedLinksAsync(ListOutgoingTypedLinksRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateObjectAttributes asynchronously, invoking a callback when done
+-- @param UpdateObjectAttributesRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateObjectAttributesAsync(UpdateObjectAttributesRequest, cb)
+	assert(UpdateObjectAttributesRequest, "You must provide a UpdateObjectAttributesRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateObjectAttributes",
+	}
+	for header,value in pairs(UpdateObjectAttributesRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	if request_handler then
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/update", UpdateObjectAttributesRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateObjectAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateObjectAttributesRequest
+-- @return response
+-- @return error_message
+function M.UpdateObjectAttributesSync(UpdateObjectAttributesRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateObjectAttributesAsync(UpdateObjectAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11522,6 +12986,41 @@ function M.ListIndexSync(ListIndexRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call ListTypedLinkFacetAttributes asynchronously, invoking a callback when done
+-- @param ListTypedLinkFacetAttributesRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListTypedLinkFacetAttributesAsync(ListTypedLinkFacetAttributesRequest, cb)
+	assert(ListTypedLinkFacetAttributesRequest, "You must provide a ListTypedLinkFacetAttributesRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTypedLinkFacetAttributes",
+	}
+	for header,value in pairs(ListTypedLinkFacetAttributesRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet/attributes", ListTypedLinkFacetAttributesRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListTypedLinkFacetAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTypedLinkFacetAttributesRequest
+-- @return response
+-- @return error_message
+function M.ListTypedLinkFacetAttributesSync(ListTypedLinkFacetAttributesRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTypedLinkFacetAttributesAsync(ListTypedLinkFacetAttributesRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call UpdateFacet asynchronously, invoking a callback when done
 -- @param UpdateFacetRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -11557,36 +13056,71 @@ function M.UpdateFacetSync(UpdateFacetRequest, ...)
 	return coroutine.yield()
 end
 
---- Call ListOutgoingTypedLinks asynchronously, invoking a callback when done
--- @param ListOutgoingTypedLinksRequest
+--- Call UpdateTypedLinkFacet asynchronously, invoking a callback when done
+-- @param UpdateTypedLinkFacetRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.ListOutgoingTypedLinksAsync(ListOutgoingTypedLinksRequest, cb)
-	assert(ListOutgoingTypedLinksRequest, "You must provide a ListOutgoingTypedLinksRequest")
+function M.UpdateTypedLinkFacetAsync(UpdateTypedLinkFacetRequest, cb)
+	assert(UpdateTypedLinkFacetRequest, "You must provide a UpdateTypedLinkFacetRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".ListOutgoingTypedLinks",
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateTypedLinkFacet",
 	}
-	for header,value in pairs(ListOutgoingTypedLinksRequest.headers) do
+	for header,value in pairs(UpdateTypedLinkFacetRequest.headers) do
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
-		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/outgoing", ListOutgoingTypedLinksRequest, headers, settings, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet", UpdateTypedLinkFacetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call ListOutgoingTypedLinks synchronously, returning when done
+--- Call UpdateTypedLinkFacet synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param ListOutgoingTypedLinksRequest
+-- @param UpdateTypedLinkFacetRequest
 -- @return response
 -- @return error_message
-function M.ListOutgoingTypedLinksSync(ListOutgoingTypedLinksRequest, ...)
+function M.UpdateTypedLinkFacetSync(UpdateTypedLinkFacetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListOutgoingTypedLinksAsync(ListOutgoingTypedLinksRequest, function(response, error_message)
+	M.UpdateTypedLinkFacetAsync(UpdateTypedLinkFacetRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListManagedSchemaArns asynchronously, invoking a callback when done
+-- @param ListManagedSchemaArnsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListManagedSchemaArnsAsync(ListManagedSchemaArnsRequest, cb)
+	assert(ListManagedSchemaArnsRequest, "You must provide a ListManagedSchemaArnsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListManagedSchemaArns",
+	}
+	for header,value in pairs(ListManagedSchemaArnsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/managed", ListManagedSchemaArnsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListManagedSchemaArns synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListManagedSchemaArnsRequest
+-- @return response
+-- @return error_message
+function M.ListManagedSchemaArnsSync(ListManagedSchemaArnsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListManagedSchemaArnsAsync(ListManagedSchemaArnsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

@@ -112,11 +112,11 @@ function asserts.AssertListHsmsResponse(struct)
 end
 
 --- Create a structure of type ListHsmsResponse
--- <p>Contains the output of the <a>ListHsms</a> operation.</p>
+-- <p>Contains the output of the <code>ListHsms</code> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * HsmList [HsmList] <p>The list of ARNs that identify the HSMs.</p>
--- * NextToken [PaginationToken] <p>If not null, more results are available. Pass this value to <a>ListHsms</a> to retrieve the next set of items.</p>
+-- * NextToken [PaginationToken] <p>If not null, more results are available. Pass this value to <code>ListHsms</code> to retrieve the next set of items.</p>
 -- @return ListHsmsResponse structure as a key-value pair table
 function M.ListHsmsResponse(args)
 	assert(args, "You must provide an argument table when creating ListHsmsResponse")
@@ -222,7 +222,7 @@ function asserts.AssertCreateHsmResponse(struct)
 end
 
 --- Create a structure of type CreateHsmResponse
--- <p>Contains the output of the <a>CreateHsm</a> operation.</p>
+-- <p>Contains the output of the <code>CreateHsm</code> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * HsmArn [HsmArn] <p>The ARN of the HSM.</p>
@@ -306,7 +306,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListLunaClients</a>. Pass null if this is the first call.</p>
+-- * NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to <code>ListLunaClients</code>. Pass null if this is the first call.</p>
 -- @return ListLunaClientsRequest structure as a key-value pair table
 function M.ListLunaClientsRequest(args)
 	assert(args, "You must provide an argument table when creating ListLunaClientsRequest")
@@ -506,9 +506,9 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * PartitionSerialList [PartitionSerialList] <p>The list of partition serial numbers that belong to the high-availability partition group.</p>
--- * HsmsPendingRegistration [HsmList] 
--- * HsmsLastActionFailed [HsmList] 
--- * HsmsPendingDeletion [HsmList] 
+-- * HsmsPendingRegistration [HsmList] <p/>
+-- * HsmsLastActionFailed [HsmList] <p/>
+-- * HsmsPendingDeletion [HsmList] <p/>
 -- * LastModifiedTimestamp [Timestamp] <p>The date and time the high-availability partition group was last modified.</p>
 -- * Label [Label] <p>The label for the high-availability partition group.</p>
 -- * HapgSerial [String] <p>The serial number of the high-availability partition group.</p>
@@ -597,7 +597,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListHapgs</a>. Pass null if this is the first call.</p>
+-- * NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to <code>ListHapgs</code>. Pass null if this is the first call.</p>
 -- @return ListHapgsRequest structure as a key-value pair table
 function M.ListHapgsRequest(args)
 	assert(args, "You must provide an argument table when creating ListHapgsRequest")
@@ -764,7 +764,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * HapgList [HapgList] <p>The list of high-availability partition groups.</p>
--- * NextToken [PaginationToken] <p>If not null, more results are available. Pass this value to <a>ListHapgs</a> to retrieve the next set of items.</p>
+-- * NextToken [PaginationToken] <p>If not null, more results are available. Pass this value to <code>ListHapgs</code> to retrieve the next set of items.</p>
 -- Required key: HapgList
 -- @return ListHapgsResponse structure as a key-value pair table
 function M.ListHapgsResponse(args)
@@ -801,11 +801,11 @@ function asserts.AssertDescribeHsmRequest(struct)
 end
 
 --- Create a structure of type DescribeHsmRequest
--- <p>Contains the inputs for the <a>DescribeHsm</a> operation. </p>
+-- <p>Contains the inputs for the <a>DescribeHsm</a> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * HsmSerialNumber [HsmSerialNumber] <p>The serial number of the HSM. Either the <i>HsmArn</i> or the <i>HsmSerialNumber</i> parameter must be specified.</p>
--- * HsmArn [HsmArn] <p>The ARN of the HSM. Either the <i>HsmArn</i> or the <i>SerialNumber</i> parameter must be specified.</p>
+-- * HsmSerialNumber [HsmSerialNumber] <p>The serial number of the HSM. Either the <code>HsmArn</code> or the <code>HsmSerialNumber</code> parameter must be specified.</p>
+-- * HsmArn [HsmArn] <p>The ARN of the HSM. Either the <code>HsmArn</code> or the <code>SerialNumber</code> parameter must be specified.</p>
 -- @return DescribeHsmRequest structure as a key-value pair table
 function M.DescribeHsmRequest(args)
 	assert(args, "You must provide an argument table when creating DescribeHsmRequest")
@@ -1049,7 +1049,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [PaginationToken] <p>If not null, more results are available. Pass this to <a>ListLunaClients</a> to retrieve the next set of items.</p>
+-- * NextToken [PaginationToken] <p>If not null, more results are available. Pass this to <code>ListLunaClients</code> to retrieve the next set of items.</p>
 -- * ClientList [ClientList] <p>The list of clients.</p>
 -- Required key: ClientList
 -- @return ListLunaClientsResponse structure as a key-value pair table
@@ -1331,7 +1331,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListHsms</a>. Pass null if this is the first call.</p>
+-- * NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to <code>ListHsms</code>. Pass null if this is the first call.</p>
 -- @return ListHsmsRequest structure as a key-value pair table
 function M.ListHsmsRequest(args)
 	assert(args, "You must provide an argument table when creating ListHsmsRequest")
@@ -1588,14 +1588,14 @@ function asserts.AssertCreateHsmRequest(struct)
 end
 
 --- Create a structure of type CreateHsmRequest
--- <p>Contains the inputs for the <a>CreateHsm</a> operation.</p>
+-- <p>Contains the inputs for the <code>CreateHsm</code> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * SshKey [SshKey] <p>The SSH public key to install on the HSM.</p>
 -- * SubscriptionType [SubscriptionType] 
 -- * IamRoleArn [IamRoleArn] <p>The ARN of an IAM role to enable the AWS CloudHSM service to allocate an ENI on your behalf.</p>
 -- * EniIp [IpAddress] <p>The IP address to assign to the HSM's ENI.</p> <p>If an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the subnet.</p>
--- * ExternalId [ExternalId] <p>The external ID from <b>IamRoleArn</b>, if present.</p>
+-- * ExternalId [ExternalId] <p>The external ID from <code>IamRoleArn</code>, if present.</p>
 -- * ClientToken [ClientToken] <p>A user-defined token to ensure idempotence. Subsequent calls to this operation with the same token will be ignored.</p>
 -- * SubnetId [SubnetId] <p>The identifier of the subnet in your VPC in which to place the HSM.</p>
 -- * SyslogIp [IpAddress] <p>The IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring server.</p>
@@ -2172,7 +2172,7 @@ function asserts.AssertSubscriptionType(str)
 	assert(type(str) == "string", "Expected SubscriptionType to be of type 'string'")
 end
 
--- <p>Specifies the type of subscription for the HSM.</p> <ul> <li><b>PRODUCTION</b> - The HSM is being used in a production environment.</li> <li><b>TRIAL</b> - The HSM is being used in a product trial.</li> </ul>
+-- <p>Specifies the type of subscription for the HSM.</p> <ul> <li> <p> <b>PRODUCTION</b> - The HSM is being used in a production environment.</p> </li> <li> <p> <b>TRIAL</b> - The HSM is being used in a product trial.</p> </li> </ul>
 function M.SubscriptionType(str)
 	asserts.AssertSubscriptionType(str)
 	return str

@@ -696,7 +696,7 @@ function M.AssociateQualificationWithWorkerResponse(args)
     }
 end
 
-keys.QualificationRequirement = { ["RequiredToPreview"] = true, ["LocaleValues"] = true, ["IntegerValues"] = true, ["Comparator"] = true, ["QualificationTypeId"] = true, nil }
+keys.QualificationRequirement = { ["RequiredToPreview"] = true, ["Comparator"] = true, ["QualificationTypeId"] = true, ["ActionsGuarded"] = true, ["IntegerValues"] = true, ["LocaleValues"] = true, nil }
 
 function asserts.AssertQualificationRequirement(struct)
 	assert(struct)
@@ -704,24 +704,26 @@ function asserts.AssertQualificationRequirement(struct)
 	assert(struct["QualificationTypeId"], "Expected key QualificationTypeId to exist in table")
 	assert(struct["Comparator"], "Expected key Comparator to exist in table")
 	if struct["RequiredToPreview"] then asserts.AssertBoolean(struct["RequiredToPreview"]) end
-	if struct["LocaleValues"] then asserts.AssertLocaleList(struct["LocaleValues"]) end
-	if struct["IntegerValues"] then asserts.AssertIntegerList(struct["IntegerValues"]) end
 	if struct["Comparator"] then asserts.AssertComparator(struct["Comparator"]) end
 	if struct["QualificationTypeId"] then asserts.AssertString(struct["QualificationTypeId"]) end
+	if struct["ActionsGuarded"] then asserts.AssertHITAccessActions(struct["ActionsGuarded"]) end
+	if struct["IntegerValues"] then asserts.AssertIntegerList(struct["IntegerValues"]) end
+	if struct["LocaleValues"] then asserts.AssertLocaleList(struct["LocaleValues"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.QualificationRequirement[k], "QualificationRequirement contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type QualificationRequirement
--- <p> The QualificationRequirement data structure describes a Qualification that a Worker must have before the Worker is allowed to accept a HIT. A requirement may optionally state that a Worker must have the Qualification in order to preview the HIT. </p>
+-- <p> The QualificationRequirement data structure describes a Qualification that a Worker must have before the Worker is allowed to accept a HIT. A requirement may optionally state that a Worker must have the Qualification in order to preview the HIT, or see the HIT in search results. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * RequiredToPreview [Boolean] <p> If true, the question data for the HIT will not be shown when a Worker whose Qualifications do not meet this requirement tries to preview the HIT. That is, a Worker's Qualifications must meet all of the requirements for which RequiredToPreview is true in order to preview the HIT. If a Worker meets all of the requirements where RequiredToPreview is true (or if there are no such requirements), but does not meet all of the requirements for the HIT, the Worker will be allowed to preview the HIT's question data, but will not be allowed to accept and complete the HIT. The default is false. </p>
--- * LocaleValues [LocaleList] <p> The locale value to compare against the Qualification's value. The local value must be a valid ISO 3166 country code or supports ISO 3166-2 subdivisions. LocaleValue can only be used with a Worker_Locale QualificationType ID. LocaleValue can only be used with the EqualTo, NotEqualTo, In, and NotIn comparators. You must only use a single LocaleValue element when using the EqualTo or NotEqualTo comparators. When performing a set comparison by using the In or the NotIn comparator, you can use up to 30 LocaleValue elements in a QualificationRequirement data structure. </p>
--- * IntegerValues [IntegerList] <p> The integer value to compare against the Qualification's value. IntegerValue must not be present if Comparator is Exists or DoesNotExist. IntegerValue can only be used if the Qualification type has an integer value; it cannot be used with the Worker_Locale QualificationType ID. When performing a set comparison by using the In or the NotIn comparator, you can use up to 15 IntegerValue elements in a QualificationRequirement data structure. </p>
+-- * RequiredToPreview [Boolean] <p> DEPRECATED: Use the <code>ActionsGuarded</code> field instead. If RequiredToPreview is true, the question data for the HIT will not be shown when a Worker whose Qualifications do not meet this requirement tries to preview the HIT. That is, a Worker's Qualifications must meet all of the requirements for which RequiredToPreview is true in order to preview the HIT. If a Worker meets all of the requirements where RequiredToPreview is true (or if there are no such requirements), but does not meet all of the requirements for the HIT, the Worker will be allowed to preview the HIT's question data, but will not be allowed to accept and complete the HIT. The default is false. This should not be used in combination with the <code>ActionsGuarded</code> field. </p>
 -- * Comparator [Comparator] <p>The kind of comparison to make against a Qualification's value. You can compare a Qualification's value to an IntegerValue to see if it is LessThan, LessThanOrEqualTo, GreaterThan, GreaterThanOrEqualTo, EqualTo, or NotEqualTo the IntegerValue. You can compare it to a LocaleValue to see if it is EqualTo, or NotEqualTo the LocaleValue. You can check to see if the value is In or NotIn a set of IntegerValue or LocaleValue values. Lastly, a Qualification requirement can also test if a Qualification Exists or DoesNotExist in the user's profile, regardless of its value. </p>
 -- * QualificationTypeId [String] <p> The ID of the Qualification type for the requirement.</p>
+-- * ActionsGuarded [HITAccessActions] <p> Setting this attribute prevents Workers whose Qualifications do not meet this QualificationRequirement from taking the specified action. Valid arguments include "Accept" (Worker cannot accept the HIT, but can preview the HIT and see it in their search results), "PreviewAndAccept" (Worker cannot accept or preview the HIT, but can see the HIT in their search results), and "DiscoverPreviewAndAccept" (Worker cannot accept, preview, or see the HIT in their search results). It's possible for you to create a HIT with multiple QualificationRequirements (which can have different values for the ActionGuarded attribute). In this case, the Worker is only permitted to perform an action when they have met all QualificationRequirements guarding the action. The actions in the order of least restrictive to most restrictive are Discover, Preview and Accept. For example, if a Worker meets all QualificationRequirements that are set to DiscoverPreviewAndAccept, but do not meet all requirements that are set with PreviewAndAccept, then the Worker will be able to Discover, i.e. see the HIT in their search result, but will not be able to Preview or Accept the HIT. ActionsGuarded should not be used in combination with the <code>RequiredToPreview</code> field. </p>
+-- * IntegerValues [IntegerList] <p> The integer value to compare against the Qualification's value. IntegerValue must not be present if Comparator is Exists or DoesNotExist. IntegerValue can only be used if the Qualification type has an integer value; it cannot be used with the Worker_Locale QualificationType ID. When performing a set comparison by using the In or the NotIn comparator, you can use up to 15 IntegerValue elements in a QualificationRequirement data structure. </p>
+-- * LocaleValues [LocaleList] <p> The locale value to compare against the Qualification's value. The local value must be a valid ISO 3166 country code or supports ISO 3166-2 subdivisions. LocaleValue can only be used with a Worker_Locale QualificationType ID. LocaleValue can only be used with the EqualTo, NotEqualTo, In, and NotIn comparators. You must only use a single LocaleValue element when using the EqualTo or NotEqualTo comparators. When performing a set comparison by using the In or the NotIn comparator, you can use up to 30 LocaleValue elements in a QualificationRequirement data structure. </p>
 -- Required key: QualificationTypeId
 -- Required key: Comparator
 -- @return QualificationRequirement structure as a key-value pair table
@@ -735,10 +737,11 @@ function M.QualificationRequirement(args)
     }
 	local all_args = { 
 		["RequiredToPreview"] = args["RequiredToPreview"],
-		["LocaleValues"] = args["LocaleValues"],
-		["IntegerValues"] = args["IntegerValues"],
 		["Comparator"] = args["Comparator"],
 		["QualificationTypeId"] = args["QualificationTypeId"],
+		["ActionsGuarded"] = args["ActionsGuarded"],
+		["IntegerValues"] = args["IntegerValues"],
+		["LocaleValues"] = args["LocaleValues"],
 	}
 	asserts.AssertQualificationRequirement(all_args)
 	return {
@@ -893,45 +896,6 @@ function M.ApproveAssignmentResponse(args)
 	local all_args = { 
 	}
 	asserts.AssertApproveAssignmentResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.GetQualificationTypeRequest = { ["QualificationTypeId"] = true, nil }
-
-function asserts.AssertGetQualificationTypeRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected GetQualificationTypeRequest to be of type 'table'")
-	assert(struct["QualificationTypeId"], "Expected key QualificationTypeId to exist in table")
-	if struct["QualificationTypeId"] then asserts.AssertEntityId(struct["QualificationTypeId"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.GetQualificationTypeRequest[k], "GetQualificationTypeRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type GetQualificationTypeRequest
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * QualificationTypeId [EntityId] <p>The ID of the QualificationType.</p>
--- Required key: QualificationTypeId
--- @return GetQualificationTypeRequest structure as a key-value pair table
-function M.GetQualificationTypeRequest(args)
-	assert(args, "You must provide an argument table when creating GetQualificationTypeRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["QualificationTypeId"] = args["QualificationTypeId"],
-	}
-	asserts.AssertGetQualificationTypeRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1275,29 +1239,23 @@ function M.ListReviewableHITsResponse(args)
     }
 end
 
-keys.ListQualificationTypesResponse = { ["NumResults"] = true, ["QualificationTypes"] = true, ["NextToken"] = true, nil }
+keys.DeleteWorkerBlockResponse = { nil }
 
-function asserts.AssertListQualificationTypesResponse(struct)
+function asserts.AssertDeleteWorkerBlockResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ListQualificationTypesResponse to be of type 'table'")
-	if struct["NumResults"] then asserts.AssertInteger(struct["NumResults"]) end
-	if struct["QualificationTypes"] then asserts.AssertQualificationTypeList(struct["QualificationTypes"]) end
-	if struct["NextToken"] then asserts.AssertPaginationToken(struct["NextToken"]) end
+	assert(type(struct) == "table", "Expected DeleteWorkerBlockResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.ListQualificationTypesResponse[k], "ListQualificationTypesResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteWorkerBlockResponse[k], "DeleteWorkerBlockResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ListQualificationTypesResponse
+--- Create a structure of type DeleteWorkerBlockResponse
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NumResults [Integer] <p> The number of Qualification types on this page in the filtered results list, equivalent to the number of types this operation returns. </p>
--- * QualificationTypes [QualificationTypeList] <p> The list of QualificationType elements returned by the query. </p>
--- * NextToken [PaginationToken] 
--- @return ListQualificationTypesResponse structure as a key-value pair table
-function M.ListQualificationTypesResponse(args)
-	assert(args, "You must provide an argument table when creating ListQualificationTypesResponse")
+-- @return DeleteWorkerBlockResponse structure as a key-value pair table
+function M.DeleteWorkerBlockResponse(args)
+	assert(args, "You must provide an argument table when creating DeleteWorkerBlockResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -1305,11 +1263,8 @@ function M.ListQualificationTypesResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["NumResults"] = args["NumResults"],
-		["QualificationTypes"] = args["QualificationTypes"],
-		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListQualificationTypesResponse(all_args)
+	asserts.AssertDeleteWorkerBlockResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1466,7 +1421,7 @@ function asserts.AssertCreateHITRequest(struct)
 	if struct["QualificationRequirements"] then asserts.AssertQualificationRequirementList(struct["QualificationRequirements"]) end
 	if struct["HITReviewPolicy"] then asserts.AssertReviewPolicy(struct["HITReviewPolicy"]) end
 	if struct["Keywords"] then asserts.AssertString(struct["Keywords"]) end
-	if struct["Reward"] then asserts.AssertNumericValue(struct["Reward"]) end
+	if struct["Reward"] then asserts.AssertCurrencyAmount(struct["Reward"]) end
 	if struct["HITLayoutId"] then asserts.AssertEntityId(struct["HITLayoutId"]) end
 	if struct["LifetimeInSeconds"] then asserts.AssertLong(struct["LifetimeInSeconds"]) end
 	if struct["Description"] then asserts.AssertString(struct["Description"]) end
@@ -1488,10 +1443,10 @@ end
 -- * UniqueRequestToken [IdempotencyToken] <p> A unique identifier for this request which allows you to retry the call on error without creating duplicate HITs. This is useful in cases such as network timeouts where it is unclear whether or not the call succeeded on the server. If the HIT already exists in the system from a previous call using the same UniqueRequestToken, subsequent calls will return a AWS.MechanicalTurk.HitAlreadyExists error with a message containing the HITId. </p> <note> <p> Note: It is your responsibility to ensure uniqueness of the token. The unique token expires after 24 hours. Subsequent calls using the same UniqueRequestToken made after the 24 hour limit could create duplicate HITs. </p> </note>
 -- * AssignmentDurationInSeconds [Long] <p> The amount of time, in seconds, that a Worker has to complete the HIT after accepting it. If a Worker does not complete the assignment within the specified duration, the assignment is considered abandoned. If the HIT is still active (that is, its lifetime has not elapsed), the assignment becomes available for other users to find and accept. </p>
 -- * AssignmentReviewPolicy [ReviewPolicy] <p> The Assignment-level Review Policy applies to the assignments under the HIT. You can specify for Mechanical Turk to take various actions based on the policy. </p>
--- * QualificationRequirements [QualificationRequirementList] <p> A condition that a Worker's Qualifications must meet before the Worker is allowed to accept and complete the HIT. </p>
+-- * QualificationRequirements [QualificationRequirementList] <p> Conditions that a Worker's Qualifications must meet in order to accept the HIT. A HIT can have between zero and ten Qualification requirements. All requirements must be met in order for a Worker to accept the HIT. Additionally, other actions can be restricted using the <code>ActionsGuarded</code> field on each <code>QualificationRequirement</code> structure. </p>
 -- * HITReviewPolicy [ReviewPolicy] <p> The HIT-level Review Policy applies to the HIT. You can specify for Mechanical Turk to take various actions based on the policy. </p>
 -- * Keywords [String] <p> One or more words or phrases that describe the HIT, separated by commas. These words are used in searches to find HITs. </p>
--- * Reward [NumericValue] <p> The amount of money the Requester will pay a Worker for successfully completing the HIT. </p>
+-- * Reward [CurrencyAmount] <p> The amount of money the Requester will pay a Worker for successfully completing the HIT. </p>
 -- * HITLayoutId [EntityId] <p> The HITLayoutId allows you to use a pre-existing HIT design with placeholder values and create an additional HIT by providing those values as HITLayoutParameters. </p> <p> Constraints: Either a Question parameter or a HITLayoutId parameter must be provided. </p>
 -- * LifetimeInSeconds [Long] <p> An amount of time, in seconds, after which the HIT is no longer available for users to accept. After the lifetime of the HIT elapses, the HIT no longer appears in HIT searches, even if not all of the assignments for the HIT have been accepted. </p>
 -- * Description [String] <p> A general description of the HIT. A description includes detailed information about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT description appears in the expanded view of search results, and in the HIT and assignment screens. A good description gives the user enough information to evaluate the HIT before accepting it. </p>
@@ -1528,6 +1483,40 @@ function M.CreateHITRequest(args)
 		["Description"] = args["Description"],
 	}
 	asserts.AssertCreateHITRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteQualificationTypeResponse = { nil }
+
+function asserts.AssertDeleteQualificationTypeResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteQualificationTypeResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteQualificationTypeResponse[k], "DeleteQualificationTypeResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteQualificationTypeResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteQualificationTypeResponse structure as a key-value pair table
+function M.DeleteQualificationTypeResponse(args)
+	assert(args, "You must provide an argument table when creating DeleteQualificationTypeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDeleteQualificationTypeResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1947,7 +1936,7 @@ function asserts.AssertCreateHITTypeRequest(struct)
 	if struct["AssignmentDurationInSeconds"] then asserts.AssertLong(struct["AssignmentDurationInSeconds"]) end
 	if struct["QualificationRequirements"] then asserts.AssertQualificationRequirementList(struct["QualificationRequirements"]) end
 	if struct["Keywords"] then asserts.AssertString(struct["Keywords"]) end
-	if struct["Reward"] then asserts.AssertNumericValue(struct["Reward"]) end
+	if struct["Reward"] then asserts.AssertCurrencyAmount(struct["Reward"]) end
 	if struct["AutoApprovalDelayInSeconds"] then asserts.AssertLong(struct["AutoApprovalDelayInSeconds"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateHITTypeRequest[k], "CreateHITTypeRequest contains unknown key " .. tostring(k))
@@ -1961,9 +1950,9 @@ end
 -- * Description [String] <p> A general description of the HIT. A description includes detailed information about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT description appears in the expanded view of search results, and in the HIT and assignment screens. A good description gives the user enough information to evaluate the HIT before accepting it. </p>
 -- * Title [String] <p> The title of the HIT. A title should be short and descriptive about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT title appears in search results, and everywhere the HIT is mentioned. </p>
 -- * AssignmentDurationInSeconds [Long] <p> The amount of time, in seconds, that a Worker has to complete the HIT after accepting it. If a Worker does not complete the assignment within the specified duration, the assignment is considered abandoned. If the HIT is still active (that is, its lifetime has not elapsed), the assignment becomes available for other users to find and accept. </p>
--- * QualificationRequirements [QualificationRequirementList] <p> A condition that a Worker's Qualifications must meet before the Worker is allowed to accept and complete the HIT. </p>
+-- * QualificationRequirements [QualificationRequirementList] <p> Conditions that a Worker's Qualifications must meet in order to accept the HIT. A HIT can have between zero and ten Qualification requirements. All requirements must be met in order for a Worker to accept the HIT. Additionally, other actions can be restricted using the <code>ActionsGuarded</code> field on each <code>QualificationRequirement</code> structure. </p>
 -- * Keywords [String] <p> One or more words or phrases that describe the HIT, separated by commas. These words are used in searches to find HITs. </p>
--- * Reward [NumericValue] <p> The amount of money the Requester will pay a Worker for successfully completing the HIT. </p>
+-- * Reward [CurrencyAmount] <p> The amount of money the Requester will pay a Worker for successfully completing the HIT. </p>
 -- * AutoApprovalDelayInSeconds [Long] <p> The number of seconds after an assignment for the HIT has been submitted, after which the assignment is considered Approved automatically unless the Requester explicitly rejects it. </p>
 -- Required key: AssignmentDurationInSeconds
 -- Required key: Reward
@@ -2039,6 +2028,7 @@ function asserts.AssertRejectAssignmentRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RejectAssignmentRequest to be of type 'table'")
 	assert(struct["AssignmentId"], "Expected key AssignmentId to exist in table")
+	assert(struct["RequesterFeedback"], "Expected key RequesterFeedback to exist in table")
 	if struct["AssignmentId"] then asserts.AssertEntityId(struct["AssignmentId"]) end
 	if struct["RequesterFeedback"] then asserts.AssertString(struct["RequesterFeedback"]) end
 	for k,_ in pairs(struct) do
@@ -2053,6 +2043,7 @@ end
 -- * AssignmentId [EntityId] <p> The ID of the assignment. The assignment must correspond to a HIT created by the Requester. </p>
 -- * RequesterFeedback [String] <p> A message for the Worker, which the Worker can see in the Status section of the web site. </p>
 -- Required key: AssignmentId
+-- Required key: RequesterFeedback
 -- @return RejectAssignmentRequest structure as a key-value pair table
 function M.RejectAssignmentRequest(args)
 	assert(args, "You must provide an argument table when creating RejectAssignmentRequest")
@@ -2206,6 +2197,49 @@ function M.UpdateExpirationForHITResponse(args)
     }
 end
 
+keys.ListQualificationTypesResponse = { ["NumResults"] = true, ["QualificationTypes"] = true, ["NextToken"] = true, nil }
+
+function asserts.AssertListQualificationTypesResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListQualificationTypesResponse to be of type 'table'")
+	if struct["NumResults"] then asserts.AssertInteger(struct["NumResults"]) end
+	if struct["QualificationTypes"] then asserts.AssertQualificationTypeList(struct["QualificationTypes"]) end
+	if struct["NextToken"] then asserts.AssertPaginationToken(struct["NextToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListQualificationTypesResponse[k], "ListQualificationTypesResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListQualificationTypesResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NumResults [Integer] <p> The number of Qualification types on this page in the filtered results list, equivalent to the number of types this operation returns. </p>
+-- * QualificationTypes [QualificationTypeList] <p> The list of QualificationType elements returned by the query. </p>
+-- * NextToken [PaginationToken] 
+-- @return ListQualificationTypesResponse structure as a key-value pair table
+function M.ListQualificationTypesResponse(args)
+	assert(args, "You must provide an argument table when creating ListQualificationTypesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NumResults"] = args["NumResults"],
+		["QualificationTypes"] = args["QualificationTypes"],
+		["NextToken"] = args["NextToken"],
+	}
+	asserts.AssertListQualificationTypesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetQualificationScoreResponse = { ["Qualification"] = true, nil }
 
 function asserts.AssertGetQualificationScoreResponse(struct)
@@ -2284,7 +2318,7 @@ function asserts.AssertBonusPayment(struct)
 	assert(type(struct) == "table", "Expected BonusPayment to be of type 'table'")
 	if struct["AssignmentId"] then asserts.AssertEntityId(struct["AssignmentId"]) end
 	if struct["WorkerId"] then asserts.AssertCustomerId(struct["WorkerId"]) end
-	if struct["BonusAmount"] then asserts.AssertNumericValue(struct["BonusAmount"]) end
+	if struct["BonusAmount"] then asserts.AssertCurrencyAmount(struct["BonusAmount"]) end
 	if struct["GrantTime"] then asserts.AssertTimestamp(struct["GrantTime"]) end
 	if struct["Reason"] then asserts.AssertString(struct["Reason"]) end
 	for k,_ in pairs(struct) do
@@ -2298,7 +2332,7 @@ end
 -- Valid keys:
 -- * AssignmentId [EntityId] <p>The ID of the assignment associated with this bonus payment.</p>
 -- * WorkerId [CustomerId] <p>The ID of the Worker to whom the bonus was paid.</p>
--- * BonusAmount [NumericValue] 
+-- * BonusAmount [CurrencyAmount] 
 -- * GrantTime [Timestamp] <p>The date and time of when the bonus was granted.</p>
 -- * Reason [String] <p>The Reason text given when the bonus was granted, if any.</p>
 -- @return BonusPayment structure as a key-value pair table
@@ -2956,6 +2990,7 @@ function asserts.AssertCreateAdditionalAssignmentsForHITRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateAdditionalAssignmentsForHITRequest to be of type 'table'")
 	assert(struct["HITId"], "Expected key HITId to exist in table")
+	assert(struct["NumberOfAdditionalAssignments"], "Expected key NumberOfAdditionalAssignments to exist in table")
 	if struct["NumberOfAdditionalAssignments"] then asserts.AssertInteger(struct["NumberOfAdditionalAssignments"]) end
 	if struct["HITId"] then asserts.AssertEntityId(struct["HITId"]) end
 	if struct["UniqueRequestToken"] then asserts.AssertIdempotencyToken(struct["UniqueRequestToken"]) end
@@ -2972,6 +3007,7 @@ end
 -- * HITId [EntityId] <p>The ID of the HIT to extend.</p>
 -- * UniqueRequestToken [IdempotencyToken] <p> A unique identifier for this request, which allows you to retry the call on error without extending the HIT multiple times. This is useful in cases such as network timeouts where it is unclear whether or not the call succeeded on the server. If the extend HIT already exists in the system from a previous call using the same <code>UniqueRequestToken</code>, subsequent calls will return an error with a message containing the request ID. </p>
 -- Required key: HITId
+-- Required key: NumberOfAdditionalAssignments
 -- @return CreateAdditionalAssignmentsForHITRequest structure as a key-value pair table
 function M.CreateAdditionalAssignmentsForHITRequest(args)
 	assert(args, "You must provide an argument table when creating CreateAdditionalAssignmentsForHITRequest")
@@ -3000,8 +3036,8 @@ keys.GetAccountBalanceResponse = { ["AvailableBalance"] = true, ["OnHoldBalance"
 function asserts.AssertGetAccountBalanceResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetAccountBalanceResponse to be of type 'table'")
-	if struct["AvailableBalance"] then asserts.AssertNumericValue(struct["AvailableBalance"]) end
-	if struct["OnHoldBalance"] then asserts.AssertNumericValue(struct["OnHoldBalance"]) end
+	if struct["AvailableBalance"] then asserts.AssertCurrencyAmount(struct["AvailableBalance"]) end
+	if struct["OnHoldBalance"] then asserts.AssertCurrencyAmount(struct["OnHoldBalance"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.GetAccountBalanceResponse[k], "GetAccountBalanceResponse contains unknown key " .. tostring(k))
 	end
@@ -3011,8 +3047,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AvailableBalance [NumericValue] 
--- * OnHoldBalance [NumericValue] 
+-- * AvailableBalance [CurrencyAmount] 
+-- * OnHoldBalance [CurrencyAmount] 
 -- @return GetAccountBalanceResponse structure as a key-value pair table
 function M.GetAccountBalanceResponse(args)
 	assert(args, "You must provide an argument table when creating GetAccountBalanceResponse")
@@ -3041,6 +3077,7 @@ function asserts.AssertUpdateExpirationForHITRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateExpirationForHITRequest to be of type 'table'")
 	assert(struct["HITId"], "Expected key HITId to exist in table")
+	assert(struct["ExpireAt"], "Expected key ExpireAt to exist in table")
 	if struct["HITId"] then asserts.AssertEntityId(struct["HITId"]) end
 	if struct["ExpireAt"] then asserts.AssertTimestamp(struct["ExpireAt"]) end
 	for k,_ in pairs(struct) do
@@ -3055,6 +3092,7 @@ end
 -- * HITId [EntityId] <p> The HIT to update. </p>
 -- * ExpireAt [Timestamp] <p> The date and time at which you want the HIT to expire </p>
 -- Required key: HITId
+-- Required key: ExpireAt
 -- @return UpdateExpirationForHITRequest structure as a key-value pair table
 function M.UpdateExpirationForHITRequest(args)
 	assert(args, "You must provide an argument table when creating UpdateExpirationForHITRequest")
@@ -3151,23 +3189,27 @@ function M.DeleteHITResponse(args)
     }
 end
 
-keys.DeleteQualificationTypeResponse = { nil }
+keys.GetQualificationTypeRequest = { ["QualificationTypeId"] = true, nil }
 
-function asserts.AssertDeleteQualificationTypeResponse(struct)
+function asserts.AssertGetQualificationTypeRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteQualificationTypeResponse to be of type 'table'")
+	assert(type(struct) == "table", "Expected GetQualificationTypeRequest to be of type 'table'")
+	assert(struct["QualificationTypeId"], "Expected key QualificationTypeId to exist in table")
+	if struct["QualificationTypeId"] then asserts.AssertEntityId(struct["QualificationTypeId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteQualificationTypeResponse[k], "DeleteQualificationTypeResponse contains unknown key " .. tostring(k))
+		assert(keys.GetQualificationTypeRequest[k], "GetQualificationTypeRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteQualificationTypeResponse
+--- Create a structure of type GetQualificationTypeRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return DeleteQualificationTypeResponse structure as a key-value pair table
-function M.DeleteQualificationTypeResponse(args)
-	assert(args, "You must provide an argument table when creating DeleteQualificationTypeResponse")
+-- * QualificationTypeId [EntityId] <p>The ID of the QualificationType.</p>
+-- Required key: QualificationTypeId
+-- @return GetQualificationTypeRequest structure as a key-value pair table
+function M.GetQualificationTypeRequest(args)
+	assert(args, "You must provide an argument table when creating GetQualificationTypeRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -3175,8 +3217,9 @@ function M.DeleteQualificationTypeResponse(args)
     local header_args = { 
     }
 	local all_args = { 
+		["QualificationTypeId"] = args["QualificationTypeId"],
 	}
-	asserts.AssertDeleteQualificationTypeResponse(all_args)
+	asserts.AssertGetQualificationTypeRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3282,40 +3325,6 @@ function M.UpdateNotificationSettingsResponse(args)
 	local all_args = { 
 	}
 	asserts.AssertUpdateNotificationSettingsResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DeleteWorkerBlockResponse = { nil }
-
-function asserts.AssertDeleteWorkerBlockResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteWorkerBlockResponse to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.DeleteWorkerBlockResponse[k], "DeleteWorkerBlockResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DeleteWorkerBlockResponse
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return DeleteWorkerBlockResponse structure as a key-value pair table
-function M.DeleteWorkerBlockResponse(args)
-	assert(args, "You must provide an argument table when creating DeleteWorkerBlockResponse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertDeleteWorkerBlockResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3762,7 +3771,7 @@ function asserts.AssertHIT(struct)
 	if struct["QualificationRequirements"] then asserts.AssertQualificationRequirementList(struct["QualificationRequirements"]) end
 	if struct["Keywords"] then asserts.AssertString(struct["Keywords"]) end
 	if struct["Expiration"] then asserts.AssertTimestamp(struct["Expiration"]) end
-	if struct["Reward"] then asserts.AssertNumericValue(struct["Reward"]) end
+	if struct["Reward"] then asserts.AssertCurrencyAmount(struct["Reward"]) end
 	if struct["HITLayoutId"] then asserts.AssertEntityId(struct["HITLayoutId"]) end
 	if struct["HITReviewStatus"] then asserts.AssertHITReviewStatus(struct["HITReviewStatus"]) end
 	if struct["AutoApprovalDelayInSeconds"] then asserts.AssertLong(struct["AutoApprovalDelayInSeconds"]) end
@@ -3789,10 +3798,10 @@ end
 -- * NumberOfAssignmentsPending [Integer] <p> The number of assignments for this HIT that are being previewed or have been accepted by Workers, but have not yet been submitted, returned, or abandoned.</p>
 -- * HITStatus [HITStatus] <p>The status of the HIT and its assignments. Valid Values are Assignable | Unassignable | Reviewable | Reviewing | Disposed. </p>
 -- * HITId [EntityId] <p> A unique identifier for the HIT.</p>
--- * QualificationRequirements [QualificationRequirementList] <p> A condition that a Worker's Qualifications must meet in order to accept the HIT. A HIT can have between zero and ten Qualification requirements. All requirements must be met by a Worker's Qualifications for the Worker to accept the HIT.</p>
+-- * QualificationRequirements [QualificationRequirementList] <p> Conditions that a Worker's Qualifications must meet in order to accept the HIT. A HIT can have between zero and ten Qualification requirements. All requirements must be met in order for a Worker to accept the HIT. Additionally, other actions can be restricted using the <code>ActionsGuarded</code> field on each <code>QualificationRequirement</code> structure. </p>
 -- * Keywords [String] <p> One or more words or phrases that describe the HIT, separated by commas. Search terms similar to the keywords of a HIT are more likely to have the HIT in the search results.</p>
 -- * Expiration [Timestamp] <p>The date and time the HIT expires.</p>
--- * Reward [NumericValue] 
+-- * Reward [CurrencyAmount] 
 -- * HITLayoutId [EntityId] <p> The ID of the HIT Layout of this HIT.</p>
 -- * HITReviewStatus [HITReviewStatus] <p> Indicates the review status of the HIT. Valid Values are NotReviewed | MarkedForReview | ReviewedAppropriate | ReviewedInappropriate.</p>
 -- * AutoApprovalDelayInSeconds [Long] <p>The amount of time, in seconds, after the Worker submits an assignment for the HIT that the results are automatically approved by Amazon Mechanical Turk. This is the amount of time the Requester has to reject an assignment submitted by a Worker before the assignment is auto-approved and the Worker is paid. </p>
@@ -3924,6 +3933,8 @@ keys.HITLayoutParameter = { ["Name"] = true, ["Value"] = true, nil }
 function asserts.AssertHITLayoutParameter(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected HITLayoutParameter to be of type 'table'")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	assert(struct["Value"], "Expected key Value to exist in table")
 	if struct["Name"] then asserts.AssertString(struct["Name"]) end
 	if struct["Value"] then asserts.AssertString(struct["Value"]) end
 	for k,_ in pairs(struct) do
@@ -3937,6 +3948,8 @@ end
 -- Valid keys:
 -- * Name [String] <p> The name of the parameter in the HITLayout. </p>
 -- * Value [String] <p>The value substituted for the parameter referenced in the HITLayout. </p>
+-- Required key: Name
+-- Required key: Value
 -- @return HITLayoutParameter structure as a key-value pair table
 function M.HITLayoutParameter(args)
 	assert(args, "You must provide an argument table when creating HITLayoutParameter")
@@ -4089,9 +4102,10 @@ function asserts.AssertSendBonusRequest(struct)
 	assert(struct["WorkerId"], "Expected key WorkerId to exist in table")
 	assert(struct["BonusAmount"], "Expected key BonusAmount to exist in table")
 	assert(struct["AssignmentId"], "Expected key AssignmentId to exist in table")
+	assert(struct["Reason"], "Expected key Reason to exist in table")
 	if struct["AssignmentId"] then asserts.AssertEntityId(struct["AssignmentId"]) end
 	if struct["WorkerId"] then asserts.AssertCustomerId(struct["WorkerId"]) end
-	if struct["BonusAmount"] then asserts.AssertNumericValue(struct["BonusAmount"]) end
+	if struct["BonusAmount"] then asserts.AssertCurrencyAmount(struct["BonusAmount"]) end
 	if struct["Reason"] then asserts.AssertString(struct["Reason"]) end
 	if struct["UniqueRequestToken"] then asserts.AssertIdempotencyToken(struct["UniqueRequestToken"]) end
 	for k,_ in pairs(struct) do
@@ -4105,12 +4119,13 @@ end
 -- Valid keys:
 -- * AssignmentId [EntityId] <p>The ID of the assignment for which this bonus is paid.</p>
 -- * WorkerId [CustomerId] <p>The ID of the Worker being paid the bonus.</p>
--- * BonusAmount [NumericValue] <p> The Bonus amount is a US Dollar amount specified using a string (for example, "5" represents $5.00 USD and "101.42" represents $101.42 USD). Do not include currency symbols or currency codes. </p>
+-- * BonusAmount [CurrencyAmount] <p> The Bonus amount is a US Dollar amount specified using a string (for example, "5" represents $5.00 USD and "101.42" represents $101.42 USD). Do not include currency symbols or currency codes. </p>
 -- * Reason [String] <p>A message that explains the reason for the bonus payment. The Worker receiving the bonus can see this message.</p>
 -- * UniqueRequestToken [IdempotencyToken] <p>A unique identifier for this request, which allows you to retry the call on error without granting multiple bonuses. This is useful in cases such as network timeouts where it is unclear whether or not the call succeeded on the server. If the bonus already exists in the system from a previous call using the same UniqueRequestToken, subsequent calls will return an error with a message containing the request ID.</p>
 -- Required key: WorkerId
 -- Required key: BonusAmount
 -- Required key: AssignmentId
+-- Required key: Reason
 -- @return SendBonusRequest structure as a key-value pair table
 function M.SendBonusRequest(args)
 	assert(args, "You must provide an argument table when creating SendBonusRequest")
@@ -4143,6 +4158,8 @@ function asserts.AssertNotificationSpecification(struct)
 	assert(type(struct) == "table", "Expected NotificationSpecification to be of type 'table'")
 	assert(struct["Destination"], "Expected key Destination to exist in table")
 	assert(struct["Transport"], "Expected key Transport to exist in table")
+	assert(struct["Version"], "Expected key Version to exist in table")
+	assert(struct["EventTypes"], "Expected key EventTypes to exist in table")
 	if struct["EventTypes"] then asserts.AssertEventTypeList(struct["EventTypes"]) end
 	if struct["Destination"] then asserts.AssertString(struct["Destination"]) end
 	if struct["Version"] then asserts.AssertString(struct["Version"]) end
@@ -4157,11 +4174,13 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * EventTypes [EventTypeList] <p> The list of events that should cause notifications to be sent. Valid Values: AssignmentAccepted | AssignmentAbandoned | AssignmentReturned | AssignmentSubmitted | AssignmentRejected | AssignmentApproved | HITCreated | HITExtended | HITDisposed | HITReviewable | HITExpired | Ping. The Ping event is only valid for the SendTestEventNotification operation. </p>
--- * Destination [String] <p> The destination for notification messages. or email notifications (if Transport is Email), this is an email address. For Amazon Simple Queue Service (Amazon SQS) notifications (if Transport is SQS), this is the URL for your Amazon SQS queue. </p>
+-- * Destination [String] <p> The target for notification messages. The Destination’s format is determined by the specified Transport: </p> <ul> <li> <p>When Transport is Email, the Destination is your email address.</p> </li> <li> <p>When Transport is SQS, the Destination is your queue URL.</p> </li> <li> <p>When Transport is SNS, the Destination is the ARN of your topic.</p> </li> </ul>
 -- * Version [String] <p>The version of the Notification API to use. Valid value is 2006-05-05.</p>
--- * Transport [NotificationTransport] <p> The method Amazon Mechanical Turk uses to send the notification. Valid Values: Email | SQS. </p>
+-- * Transport [NotificationTransport] <p> The method Amazon Mechanical Turk uses to send the notification. Valid Values: Email | SQS | SNS. </p>
 -- Required key: Destination
 -- Required key: Transport
+-- Required key: Version
+-- Required key: EventTypes
 -- @return NotificationSpecification structure as a key-value pair table
 function M.NotificationSpecification(args)
 	assert(args, "You must provide an argument table when creating NotificationSpecification")
@@ -4235,6 +4254,7 @@ keys.ReviewPolicy = { ["PolicyName"] = true, ["Parameters"] = true, nil }
 function asserts.AssertReviewPolicy(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReviewPolicy to be of type 'table'")
+	assert(struct["PolicyName"], "Expected key PolicyName to exist in table")
 	if struct["PolicyName"] then asserts.AssertString(struct["PolicyName"]) end
 	if struct["Parameters"] then asserts.AssertPolicyParameterList(struct["Parameters"]) end
 	for k,_ in pairs(struct) do
@@ -4248,6 +4268,7 @@ end
 -- Valid keys:
 -- * PolicyName [String] <p> Name of a Review Policy: SimplePlurality/2011-09-01 or ScoreMyKnownAnswers/2011-09-01 </p>
 -- * Parameters [PolicyParameterList] <p>Name of the parameter from the Review policy.</p>
+-- Required key: PolicyName
 -- @return ReviewPolicy structure as a key-value pair table
 function M.ReviewPolicy(args)
 	assert(args, "You must provide an argument table when creating ReviewPolicy")
@@ -4389,6 +4410,17 @@ function M.NotifyWorkersFailureCode(str)
 	return str
 end
 
+function asserts.AssertCurrencyAmount(str)
+	assert(str)
+	assert(type(str) == "string", "Expected CurrencyAmount to be of type 'string'")
+end
+
+-- <p>A string representing a currency amount.</p>
+function M.CurrencyAmount(str)
+	asserts.AssertCurrencyAmount(str)
+	return str
+end
+
 function asserts.AssertNotificationTransport(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NotificationTransport to be of type 'string'")
@@ -4527,6 +4559,17 @@ function M.ExceptionMessage(str)
 	return str
 end
 
+function asserts.AssertHITAccessActions(str)
+	assert(str)
+	assert(type(str) == "string", "Expected HITAccessActions to be of type 'string'")
+end
+
+--  
+function M.HITAccessActions(str)
+	asserts.AssertHITAccessActions(str)
+	return str
+end
+
 function asserts.AssertHITReviewStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected HITReviewStatus to be of type 'string'")
@@ -4559,17 +4602,6 @@ end
 --  
 function M.IdempotencyToken(str)
 	asserts.AssertIdempotencyToken(str)
-	return str
-end
-
-function asserts.AssertNumericValue(str)
-	assert(str)
-	assert(type(str) == "string", "Expected NumericValue to be of type 'string'")
-end
-
--- <p>A string representing a numeric value.</p>
-function M.NumericValue(str)
-	asserts.AssertNumericValue(str)
 	return str
 end
 

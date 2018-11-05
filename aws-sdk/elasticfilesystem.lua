@@ -75,7 +75,7 @@ function asserts.AssertSecurityGroupNotFound(struct)
 end
 
 --- Create a structure of type SecurityGroupNotFound
--- <p>Returned if one of the specified security groups does not exist in the subnet's VPC.</p>
+-- <p>Returned if one of the specified security groups doesn't exist in the subnet's VPC.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ErrorCode [ErrorCode] 
@@ -388,7 +388,7 @@ function asserts.AssertFileSystemNotFound(struct)
 end
 
 --- Create a structure of type FileSystemNotFound
--- <p>Returned if the specified <code>FileSystemId</code> does not exist in the requester's AWS account.</p>
+-- <p>Returned if the specified <code>FileSystemId</code> value doesn't exist in the requester's AWS account.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ErrorCode [ErrorCode] 
@@ -451,6 +451,48 @@ function M.DescribeFileSystemsResponse(args)
 		["FileSystems"] = args["FileSystems"],
 	}
 	asserts.AssertDescribeFileSystemsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ThroughputLimitExceeded = { ["ErrorCode"] = true, ["Message"] = true, nil }
+
+function asserts.AssertThroughputLimitExceeded(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ThroughputLimitExceeded to be of type 'table'")
+	assert(struct["ErrorCode"], "Expected key ErrorCode to exist in table")
+	if struct["ErrorCode"] then asserts.AssertErrorCode(struct["ErrorCode"]) end
+	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ThroughputLimitExceeded[k], "ThroughputLimitExceeded contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ThroughputLimitExceeded
+-- <p>Returned if the throughput mode or amount of provisioned throughput can't be changed because the throughput limit of 1024 MiB/s has been reached.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return ThroughputLimitExceeded structure as a key-value pair table
+function M.ThroughputLimitExceeded(args)
+	assert(args, "You must provide an argument table when creating ThroughputLimitExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
+	}
+	asserts.AssertThroughputLimitExceeded(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -629,14 +671,18 @@ function M.DeleteFileSystemRequest(args)
     }
 end
 
-keys.CreateFileSystemRequest = { ["PerformanceMode"] = true, ["CreationToken"] = true, nil }
+keys.CreateFileSystemRequest = { ["ThroughputMode"] = true, ["CreationToken"] = true, ["Encrypted"] = true, ["PerformanceMode"] = true, ["KmsKeyId"] = true, ["ProvisionedThroughputInMibps"] = true, nil }
 
 function asserts.AssertCreateFileSystemRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateFileSystemRequest to be of type 'table'")
 	assert(struct["CreationToken"], "Expected key CreationToken to exist in table")
-	if struct["PerformanceMode"] then asserts.AssertPerformanceMode(struct["PerformanceMode"]) end
+	if struct["ThroughputMode"] then asserts.AssertThroughputMode(struct["ThroughputMode"]) end
 	if struct["CreationToken"] then asserts.AssertCreationToken(struct["CreationToken"]) end
+	if struct["Encrypted"] then asserts.AssertEncrypted(struct["Encrypted"]) end
+	if struct["PerformanceMode"] then asserts.AssertPerformanceMode(struct["PerformanceMode"]) end
+	if struct["KmsKeyId"] then asserts.AssertKmsKeyId(struct["KmsKeyId"]) end
+	if struct["ProvisionedThroughputInMibps"] then asserts.AssertProvisionedThroughputInMibps(struct["ProvisionedThroughputInMibps"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateFileSystemRequest[k], "CreateFileSystemRequest contains unknown key " .. tostring(k))
 	end
@@ -646,8 +692,12 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * PerformanceMode [PerformanceMode] <p>The <code>PerformanceMode</code> of the file system. We recommend <code>generalPurpose</code> performance mode for most file systems. File systems using the <code>maxIO</code> performance mode can scale to higher levels of aggregate throughput and operations per second with a tradeoff of slightly higher latencies for most file operations. This can't be changed after the file system has been created.</p>
+-- * ThroughputMode [ThroughputMode] <p>The throughput mode for the file system to be created. There are two throughput modes to choose from for your file system: bursting and provisioned. You can decrease your file system's throughput in Provisioned Throughput mode or change between the throughput modes as long as it’s been more than 24 hours since the last decrease or throughput mode change.</p>
 -- * CreationToken [CreationToken] <p>String of up to 64 ASCII characters. Amazon EFS uses this to ensure idempotent creation.</p>
+-- * Encrypted [Encrypted] <p>A Boolean value that, if true, creates an encrypted file system. When creating an encrypted file system, you have the option of specifying a <a>CreateFileSystemRequest$KmsKeyId</a> for an existing AWS Key Management Service (AWS KMS) customer master key (CMK). If you don't specify a CMK, then the default CMK for Amazon EFS, <code>/aws/elasticfilesystem</code>, is used to protect the encrypted file system. </p>
+-- * PerformanceMode [PerformanceMode] <p>The <code>PerformanceMode</code> of the file system. We recommend <code>generalPurpose</code> performance mode for most file systems. File systems using the <code>maxIO</code> performance mode can scale to higher levels of aggregate throughput and operations per second with a tradeoff of slightly higher latencies for most file operations. This can't be changed after the file system has been created.</p>
+-- * KmsKeyId [KmsKeyId] <p>The ID of the AWS KMS CMK to be used to protect the encrypted file system. This parameter is only required if you want to use a non-default CMK. If this parameter is not specified, the default CMK for Amazon EFS is used. This ID can be in one of the following formats:</p> <ul> <li> <p>Key ID - A unique identifier of the key, for example, <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>.</p> </li> <li> <p>ARN - An Amazon Resource Name (ARN) for the key, for example, <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>.</p> </li> <li> <p>Key alias - A previously created display name for a key. For example, <code>alias/projectKey1</code>.</p> </li> <li> <p>Key alias ARN - An ARN for a key alias, for example, <code>arn:aws:kms:us-west-2:444455556666:alias/projectKey1</code>.</p> </li> </ul> <p>If KmsKeyId is specified, the <a>CreateFileSystemRequest$Encrypted</a> parameter must be set to true.</p>
+-- * ProvisionedThroughputInMibps [ProvisionedThroughputInMibps] <p>The throughput, measured in MiB/s, that you want to provision for a file system that you're creating. The limit on throughput is 1024 MiB/s. You can get these limits increased by contacting AWS Support. For more information, see <a href="http://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits">Amazon EFS Limits That You Can Increase</a> in the <i>Amazon EFS User Guide.</i> </p>
 -- Required key: CreationToken
 -- @return CreateFileSystemRequest structure as a key-value pair table
 function M.CreateFileSystemRequest(args)
@@ -659,8 +709,12 @@ function M.CreateFileSystemRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["PerformanceMode"] = args["PerformanceMode"],
+		["ThroughputMode"] = args["ThroughputMode"],
 		["CreationToken"] = args["CreationToken"],
+		["Encrypted"] = args["Encrypted"],
+		["PerformanceMode"] = args["PerformanceMode"],
+		["KmsKeyId"] = args["KmsKeyId"],
+		["ProvisionedThroughputInMibps"] = args["ProvisionedThroughputInMibps"],
 	}
 	asserts.AssertCreateFileSystemRequest(all_args)
 	return {
@@ -752,6 +806,50 @@ function M.FileSystemInUse(args)
     }
 end
 
+keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
+
+function asserts.AssertTag(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
+	assert(struct["Key"], "Expected key Key to exist in table")
+	assert(struct["Value"], "Expected key Value to exist in table")
+	if struct["Value"] then asserts.AssertTagValue(struct["Value"]) end
+	if struct["Key"] then asserts.AssertTagKey(struct["Key"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Tag
+-- <p>A tag is a key-value pair. Allowed characters: letters, whitespace, and numbers, representable in UTF-8, and the following characters:<code> + - = . _ : /</code> </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [TagValue] <p>Value of the tag key.</p>
+-- * Key [TagKey] <p>Tag key (String). The key can't start with <code>aws:</code>.</p>
+-- Required key: Key
+-- Required key: Value
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
+	}
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.FileSystemSize = { ["Timestamp"] = true, ["Value"] = true, nil }
 
 function asserts.AssertFileSystemSize(struct)
@@ -808,7 +906,7 @@ function asserts.AssertFileSystemLimitExceeded(struct)
 end
 
 --- Create a structure of type FileSystemLimitExceeded
--- <p>Returned if the AWS account has already created maximum number of file systems allowed per account.</p>
+-- <p>Returned if the AWS account has already created the maximum number of file systems allowed per account.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ErrorCode [ErrorCode] 
@@ -926,6 +1024,48 @@ function M.DescribeTagsRequest(args)
 		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertDescribeTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.InsufficientThroughputCapacity = { ["ErrorCode"] = true, ["Message"] = true, nil }
+
+function asserts.AssertInsufficientThroughputCapacity(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InsufficientThroughputCapacity to be of type 'table'")
+	assert(struct["ErrorCode"], "Expected key ErrorCode to exist in table")
+	if struct["ErrorCode"] then asserts.AssertErrorCode(struct["ErrorCode"]) end
+	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.InsufficientThroughputCapacity[k], "InsufficientThroughputCapacity contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InsufficientThroughputCapacity
+-- <p>Returned if there's not enough capacity to provision additional throughput. This value might be returned when you try to create a file system in provisioned throughput mode, when you attempt to increase the provisioned throughput of an existing file system, or when you attempt to change an existing file system from bursting to provisioned throughput mode.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return InsufficientThroughputCapacity structure as a key-value pair table
+function M.InsufficientThroughputCapacity(args)
+	assert(args, "You must provide an argument table when creating InsufficientThroughputCapacity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
+	}
+	asserts.AssertInsufficientThroughputCapacity(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1262,7 +1402,7 @@ function asserts.AssertIncorrectFileSystemLifeCycleState(struct)
 end
 
 --- Create a structure of type IncorrectFileSystemLifeCycleState
--- <p>Returned if the file system's life cycle state is not "created".</p>
+-- <p>Returned if the file system's lifecycle state is not "available".</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ErrorCode [ErrorCode] 
@@ -1282,6 +1422,94 @@ function M.IncorrectFileSystemLifeCycleState(args)
 		["Message"] = args["Message"],
 	}
 	asserts.AssertIncorrectFileSystemLifeCycleState(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateFileSystemRequest = { ["FileSystemId"] = true, ["ProvisionedThroughputInMibps"] = true, ["ThroughputMode"] = true, nil }
+
+function asserts.AssertUpdateFileSystemRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateFileSystemRequest to be of type 'table'")
+	assert(struct["FileSystemId"], "Expected key FileSystemId to exist in table")
+	if struct["FileSystemId"] then asserts.AssertFileSystemId(struct["FileSystemId"]) end
+	if struct["ProvisionedThroughputInMibps"] then asserts.AssertProvisionedThroughputInMibps(struct["ProvisionedThroughputInMibps"]) end
+	if struct["ThroughputMode"] then asserts.AssertThroughputMode(struct["ThroughputMode"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateFileSystemRequest[k], "UpdateFileSystemRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateFileSystemRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileSystemId [FileSystemId] <p>The ID of the file system that you want to update.</p>
+-- * ProvisionedThroughputInMibps [ProvisionedThroughputInMibps] <p>(Optional) The amount of throughput, in MiB/s, that you want to provision for your file system. If you're not updating the amount of provisioned throughput for your file system, you don't need to provide this value in your request.</p>
+-- * ThroughputMode [ThroughputMode] <p>(Optional) The throughput mode that you want your file system to use. If you're not updating your throughput mode, you don't need to provide this value in your request.</p>
+-- Required key: FileSystemId
+-- @return UpdateFileSystemRequest structure as a key-value pair table
+function M.UpdateFileSystemRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateFileSystemRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FileSystemId}"] = args["FileSystemId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["FileSystemId"] = args["FileSystemId"],
+		["ProvisionedThroughputInMibps"] = args["ProvisionedThroughputInMibps"],
+		["ThroughputMode"] = args["ThroughputMode"],
+	}
+	asserts.AssertUpdateFileSystemRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SubnetNotFound = { ["ErrorCode"] = true, ["Message"] = true, nil }
+
+function asserts.AssertSubnetNotFound(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SubnetNotFound to be of type 'table'")
+	assert(struct["ErrorCode"], "Expected key ErrorCode to exist in table")
+	if struct["ErrorCode"] then asserts.AssertErrorCode(struct["ErrorCode"]) end
+	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SubnetNotFound[k], "SubnetNotFound contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SubnetNotFound
+-- <p>Returned if there is no subnet with ID <code>SubnetId</code> provided in the request.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return SubnetNotFound structure as a key-value pair table
+function M.SubnetNotFound(args)
+	assert(args, "You must provide an argument table when creating SubnetNotFound")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
+	}
+	asserts.AssertSubnetNotFound(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1337,29 +1565,29 @@ function M.FileSystemAlreadyExists(args)
     }
 end
 
-keys.SubnetNotFound = { ["ErrorCode"] = true, ["Message"] = true, nil }
+keys.TooManyRequests = { ["ErrorCode"] = true, ["Message"] = true, nil }
 
-function asserts.AssertSubnetNotFound(struct)
+function asserts.AssertTooManyRequests(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SubnetNotFound to be of type 'table'")
+	assert(type(struct) == "table", "Expected TooManyRequests to be of type 'table'")
 	assert(struct["ErrorCode"], "Expected key ErrorCode to exist in table")
 	if struct["ErrorCode"] then asserts.AssertErrorCode(struct["ErrorCode"]) end
 	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SubnetNotFound[k], "SubnetNotFound contains unknown key " .. tostring(k))
+		assert(keys.TooManyRequests[k], "TooManyRequests contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SubnetNotFound
--- <p>Returned if there is no subnet with ID <code>SubnetId</code> provided in the request.</p>
+--- Create a structure of type TooManyRequests
+-- <p>Returned if you don’t wait at least 24 hours before changing the throughput mode, or decreasing the Provisioned Throughput value.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ErrorCode [ErrorCode] 
 -- * Message [ErrorMessage] 
 -- Required key: ErrorCode
--- @return SubnetNotFound structure as a key-value pair table
-function M.SubnetNotFound(args)
-	assert(args, "You must provide an argument table when creating SubnetNotFound")
+-- @return TooManyRequests structure as a key-value pair table
+function M.TooManyRequests(args)
+	assert(args, "You must provide an argument table when creating TooManyRequests")
     local query_args = { 
     }
     local uri_args = { 
@@ -1370,7 +1598,7 @@ function M.SubnetNotFound(args)
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertSubnetNotFound(all_args)
+	asserts.AssertTooManyRequests(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1421,7 +1649,7 @@ function M.MountTargetNotFound(args)
     }
 end
 
-keys.FileSystemDescription = { ["SizeInBytes"] = true, ["Name"] = true, ["CreationToken"] = true, ["CreationTime"] = true, ["PerformanceMode"] = true, ["FileSystemId"] = true, ["NumberOfMountTargets"] = true, ["LifeCycleState"] = true, ["OwnerId"] = true, nil }
+keys.FileSystemDescription = { ["SizeInBytes"] = true, ["Name"] = true, ["CreationToken"] = true, ["Encrypted"] = true, ["CreationTime"] = true, ["PerformanceMode"] = true, ["FileSystemId"] = true, ["NumberOfMountTargets"] = true, ["ProvisionedThroughputInMibps"] = true, ["LifeCycleState"] = true, ["KmsKeyId"] = true, ["OwnerId"] = true, ["ThroughputMode"] = true, nil }
 
 function asserts.AssertFileSystemDescription(struct)
 	assert(struct)
@@ -1437,12 +1665,16 @@ function asserts.AssertFileSystemDescription(struct)
 	if struct["SizeInBytes"] then asserts.AssertFileSystemSize(struct["SizeInBytes"]) end
 	if struct["Name"] then asserts.AssertTagValue(struct["Name"]) end
 	if struct["CreationToken"] then asserts.AssertCreationToken(struct["CreationToken"]) end
+	if struct["Encrypted"] then asserts.AssertEncrypted(struct["Encrypted"]) end
 	if struct["CreationTime"] then asserts.AssertTimestamp(struct["CreationTime"]) end
 	if struct["PerformanceMode"] then asserts.AssertPerformanceMode(struct["PerformanceMode"]) end
 	if struct["FileSystemId"] then asserts.AssertFileSystemId(struct["FileSystemId"]) end
 	if struct["NumberOfMountTargets"] then asserts.AssertMountTargetCount(struct["NumberOfMountTargets"]) end
+	if struct["ProvisionedThroughputInMibps"] then asserts.AssertProvisionedThroughputInMibps(struct["ProvisionedThroughputInMibps"]) end
 	if struct["LifeCycleState"] then asserts.AssertLifeCycleState(struct["LifeCycleState"]) end
+	if struct["KmsKeyId"] then asserts.AssertKmsKeyId(struct["KmsKeyId"]) end
 	if struct["OwnerId"] then asserts.AssertAwsAccountId(struct["OwnerId"]) end
+	if struct["ThroughputMode"] then asserts.AssertThroughputMode(struct["ThroughputMode"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.FileSystemDescription[k], "FileSystemDescription contains unknown key " .. tostring(k))
 	end
@@ -1452,15 +1684,19 @@ end
 -- <p>Description of the file system.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SizeInBytes [FileSystemSize] <p>Latest known metered size (in bytes) of data stored in the file system, in bytes, in its <code>Value</code> field, and the time at which that size was determined in its <code>Timestamp</code> field. The <code>Timestamp</code> value is the integer number of seconds since 1970-01-01T00:00:00Z. Note that the value does not represent the size of a consistent snapshot of the file system, but it is eventually consistent when there are no writes to the file system. That is, the value will represent actual size only if the file system is not modified for a period longer than a couple of hours. Otherwise, the value is not the exact size the file system was at any instant in time. </p>
+-- * SizeInBytes [FileSystemSize] <p>Latest known metered size (in bytes) of data stored in the file system, in its <code>Value</code> field, and the time at which that size was determined in its <code>Timestamp</code> field. The <code>Timestamp</code> value is the integer number of seconds since 1970-01-01T00:00:00Z. The <code>SizeInBytes</code> value doesn't represent the size of a consistent snapshot of the file system, but it is eventually consistent when there are no writes to the file system. That is, <code>SizeInBytes</code> represents actual size only if the file system is not modified for a period longer than a couple of hours. Otherwise, the value is not the exact size that the file system was at any point in time. </p>
 -- * Name [TagValue] <p>You can add tags to a file system, including a <code>Name</code> tag. For more information, see <a>CreateTags</a>. If the file system has a <code>Name</code> tag, Amazon EFS returns the value in this field. </p>
 -- * CreationToken [CreationToken] <p>Opaque string specified in the request.</p>
+-- * Encrypted [Encrypted] <p>A Boolean value that, if true, indicates that the file system is encrypted.</p>
 -- * CreationTime [Timestamp] <p>Time that the file system was created, in seconds (since 1970-01-01T00:00:00Z).</p>
 -- * PerformanceMode [PerformanceMode] <p>The <code>PerformanceMode</code> of the file system.</p>
 -- * FileSystemId [FileSystemId] <p>ID of the file system, assigned by Amazon EFS.</p>
 -- * NumberOfMountTargets [MountTargetCount] <p>Current number of mount targets that the file system has. For more information, see <a>CreateMountTarget</a>.</p>
+-- * ProvisionedThroughputInMibps [ProvisionedThroughputInMibps] <p>The throughput, measured in MiB/s, that you want to provision for a file system. The limit on throughput is 1024 MiB/s. You can get these limits increased by contacting AWS Support. For more information, see <a href="http://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits">Amazon EFS Limits That You Can Increase</a> in the <i>Amazon EFS User Guide.</i> </p>
 -- * LifeCycleState [LifeCycleState] <p>Lifecycle phase of the file system.</p>
+-- * KmsKeyId [KmsKeyId] <p>The ID of an AWS Key Management Service (AWS KMS) customer master key (CMK) that was used to protect the encrypted file system.</p>
 -- * OwnerId [AwsAccountId] <p>AWS account that created the file system. If the file system was created by an IAM user, the parent account to which the user belongs is the owner.</p>
+-- * ThroughputMode [ThroughputMode] <p>The throughput mode for a file system. There are two throughput modes to choose from for your file system: bursting and provisioned. You can decrease your file system's throughput in Provisioned Throughput mode or change between the throughput modes as long as it’s been more than 24 hours since the last decrease or throughput mode change.</p>
 -- Required key: OwnerId
 -- Required key: CreationToken
 -- Required key: FileSystemId
@@ -1482,12 +1718,16 @@ function M.FileSystemDescription(args)
 		["SizeInBytes"] = args["SizeInBytes"],
 		["Name"] = args["Name"],
 		["CreationToken"] = args["CreationToken"],
+		["Encrypted"] = args["Encrypted"],
 		["CreationTime"] = args["CreationTime"],
 		["PerformanceMode"] = args["PerformanceMode"],
 		["FileSystemId"] = args["FileSystemId"],
 		["NumberOfMountTargets"] = args["NumberOfMountTargets"],
+		["ProvisionedThroughputInMibps"] = args["ProvisionedThroughputInMibps"],
 		["LifeCycleState"] = args["LifeCycleState"],
+		["KmsKeyId"] = args["KmsKeyId"],
 		["OwnerId"] = args["OwnerId"],
+		["ThroughputMode"] = args["ThroughputMode"],
 	}
 	asserts.AssertFileSystemDescription(all_args)
 	return {
@@ -1512,7 +1752,7 @@ function asserts.AssertNetworkInterfaceLimitExceeded(struct)
 end
 
 --- Create a structure of type NetworkInterfaceLimitExceeded
--- <p> The calling account has reached the ENI limit for the specific AWS region. Client should try to delete some ENIs or get its account limit raised. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC Limits</a> in the Amazon Virtual Private Cloud User Guide (see the Network interfaces per VPC entry in the table). </p>
+-- <p>The calling account has reached the limit for elastic network interfaces for the specific AWS Region. The client should try to delete some elastic network interfaces or get the account limit raised. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC Limits</a> in the <i>Amazon VPC User Guide </i> (see the Network interfaces per VPC entry in the table). </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ErrorCode [ErrorCode] 
@@ -1585,50 +1825,6 @@ function M.CreateTagsRequest(args)
     }
 end
 
-keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
-
-function asserts.AssertTag(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
-	assert(struct["Key"], "Expected key Key to exist in table")
-	assert(struct["Value"], "Expected key Value to exist in table")
-	if struct["Value"] then asserts.AssertTagValue(struct["Value"]) end
-	if struct["Key"] then asserts.AssertTagKey(struct["Key"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type Tag
--- <p>A tag is a key-value pair. Allowed characters: letters, whitespace, and numbers, representable in UTF-8, and the following characters:<code> + - = . _ : /</code> </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Value [TagValue] <p>Value of the tag key.</p>
--- * Key [TagKey] <p>Tag key (String). The key can't start with <code>aws:</code>.</p>
--- Required key: Key
--- Required key: Value
--- @return Tag structure as a key-value pair table
-function M.Tag(args)
-	assert(args, "You must provide an argument table when creating Tag")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Value"] = args["Value"],
-		["Key"] = args["Key"],
-	}
-	asserts.AssertTag(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.UnsupportedAvailabilityZone = { ["ErrorCode"] = true, ["Message"] = true, nil }
 
 function asserts.AssertUnsupportedAvailabilityZone(struct)
@@ -1643,7 +1839,7 @@ function asserts.AssertUnsupportedAvailabilityZone(struct)
 end
 
 --- Create a structure of type UnsupportedAvailabilityZone
--- <p></p>
+-- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ErrorCode [ErrorCode] 
@@ -1809,6 +2005,17 @@ function M.LifeCycleState(str)
 	return str
 end
 
+function asserts.AssertThroughputMode(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ThroughputMode to be of type 'string'")
+end
+
+--  
+function M.ThroughputMode(str)
+	asserts.AssertThroughputMode(str)
+	return str
+end
+
 function asserts.AssertErrorMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
@@ -1831,6 +2038,19 @@ function M.FileSystemId(str)
 	return str
 end
 
+function asserts.AssertKmsKeyId(str)
+	assert(str)
+	assert(type(str) == "string", "Expected KmsKeyId to be of type 'string'")
+	assert(#str <= 2048, "Expected string to be max 2048 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.KmsKeyId(str)
+	asserts.AssertKmsKeyId(str)
+	return str
+end
+
 function asserts.AssertMarker(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Marker to be of type 'string'")
@@ -1840,6 +2060,16 @@ end
 function M.Marker(str)
 	asserts.AssertMarker(str)
 	return str
+end
+
+function asserts.AssertProvisionedThroughputInMibps(double)
+	assert(double)
+	assert(type(double) == "number", "Expected ProvisionedThroughputInMibps to be of type 'number'")
+end
+
+function M.ProvisionedThroughputInMibps(double)
+	asserts.AssertProvisionedThroughputInMibps(double)
+	return double
 end
 
 function asserts.AssertFileSystemSizeValue(long)
@@ -1874,6 +2104,16 @@ end
 function M.MaxItems(integer)
 	asserts.AssertMaxItems(integer)
 	return integer
+end
+
+function asserts.AssertEncrypted(boolean)
+	assert(boolean)
+	assert(type(boolean) == "boolean", "Expected Encrypted to be of type 'boolean'")
+end
+
+function M.Encrypted(boolean)
+	asserts.AssertEncrypted(boolean)
+	return boolean
 end
 
 function asserts.AssertTimestamp(timestamp)
@@ -2245,6 +2485,41 @@ function M.DescribeTagsSync(DescribeTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DescribeTagsAsync(DescribeTagsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateFileSystem asynchronously, invoking a callback when done
+-- @param UpdateFileSystemRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateFileSystemAsync(UpdateFileSystemRequest, cb)
+	assert(UpdateFileSystemRequest, "You must provide a UpdateFileSystemRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateFileSystem",
+	}
+	for header,value in pairs(UpdateFileSystemRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	if request_handler then
+		request_handler(settings.uri, "/2015-02-01/file-systems/{FileSystemId}", UpdateFileSystemRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateFileSystem synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateFileSystemRequest
+-- @return response
+-- @return error_message
+function M.UpdateFileSystemSync(UpdateFileSystemRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateFileSystemAsync(UpdateFileSystemRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

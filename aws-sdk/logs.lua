@@ -122,10 +122,10 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * roleArn [RoleArn] <p>A role for impersonation, used when delivering log events to the target.</p>
--- * creationTime [Timestamp] <p>The creation time of the destination, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * creationTime [Timestamp] <p>The creation time of the destination, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</p>
 -- * destinationName [DestinationName] <p>The name of the destination.</p>
 -- * accessPolicy [AccessPolicy] <p>An IAM policy document that governs which AWS accounts can create subscription filters against this destination.</p>
--- * targetArn [TargetArn] <p>The Amazon Resource Name (ARN) of the physical target where the log events will be delivered (for example, a Kinesis stream).</p>
+-- * targetArn [TargetArn] <p>The Amazon Resource Name (ARN) of the physical target to where the log events are delivered (for example, a Kinesis stream).</p>
 -- * arn [Arn] <p>The ARN of this destination.</p>
 -- @return Destination structure as a key-value pair table
 function M.Destination(args)
@@ -153,19 +153,20 @@ function M.Destination(args)
     }
 end
 
-keys.FilterLogEventsRequest = { ["endTime"] = true, ["filterPattern"] = true, ["logStreamNames"] = true, ["logGroupName"] = true, ["limit"] = true, ["startTime"] = true, ["nextToken"] = true, ["interleaved"] = true, nil }
+keys.FilterLogEventsRequest = { ["nextToken"] = true, ["logStreamNamePrefix"] = true, ["filterPattern"] = true, ["logStreamNames"] = true, ["logGroupName"] = true, ["limit"] = true, ["startTime"] = true, ["endTime"] = true, ["interleaved"] = true, nil }
 
 function asserts.AssertFilterLogEventsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FilterLogEventsRequest to be of type 'table'")
 	assert(struct["logGroupName"], "Expected key logGroupName to exist in table")
-	if struct["endTime"] then asserts.AssertTimestamp(struct["endTime"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
+	if struct["logStreamNamePrefix"] then asserts.AssertLogStreamName(struct["logStreamNamePrefix"]) end
 	if struct["filterPattern"] then asserts.AssertFilterPattern(struct["filterPattern"]) end
 	if struct["logStreamNames"] then asserts.AssertInputLogStreamNames(struct["logStreamNames"]) end
 	if struct["logGroupName"] then asserts.AssertLogGroupName(struct["logGroupName"]) end
 	if struct["limit"] then asserts.AssertEventsLimit(struct["limit"]) end
 	if struct["startTime"] then asserts.AssertTimestamp(struct["startTime"]) end
-	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
+	if struct["endTime"] then asserts.AssertTimestamp(struct["endTime"]) end
 	if struct["interleaved"] then asserts.AssertInterleaved(struct["interleaved"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.FilterLogEventsRequest[k], "FilterLogEventsRequest contains unknown key " .. tostring(k))
@@ -176,14 +177,15 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * endTime [Timestamp] <p>The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not returned.</p>
--- * filterPattern [FilterPattern] <p>The filter pattern to use. If not provided, all the events are matched.</p>
--- * logStreamNames [InputLogStreamNames] <p>Optional list of log stream names.</p>
--- * logGroupName [LogGroupName] <p>The name of the log group.</p>
--- * limit [EventsLimit] <p>The maximum number of events to return. The default is 10,000 events.</p>
--- * startTime [Timestamp] <p>The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp prior to this time are not returned.</p>
 -- * nextToken [NextToken] <p>The token for the next set of events to return. (You received this token from a previous call.)</p>
--- * interleaved [Interleaved] <p>If the value is true, the operation makes a best effort to provide responses that contain events from multiple log streams within the log group interleaved in a single response. If the value is false all the matched log events in the first log stream are searched first, then those in the next log stream, and so on. The default is false.</p>
+-- * logStreamNamePrefix [LogStreamName] <p>Filters the results to include only events from log streams that have names starting with this prefix.</p> <p>If you specify a value for both <code>logStreamNamePrefix</code> and <code>logStreamNames</code>, but the value for <code>logStreamNamePrefix</code> does not match any log stream names specified in <code>logStreamNames</code>, the action returns an <code>InvalidParameterException</code> error.</p>
+-- * filterPattern [FilterPattern] <p>The filter pattern to use. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html">Filter and Pattern Syntax</a>.</p> <p>If not provided, all the events are matched.</p>
+-- * logStreamNames [InputLogStreamNames] <p>Filters the results to only logs from the log streams in this list.</p> <p>If you specify a value for both <code>logStreamNamePrefix</code> and <code>logStreamNames</code>, but the value for <code>logStreamNamePrefix</code> does not match any log stream names specified in <code>logStreamNames</code>, the action returns an <code>InvalidParameterException</code> error.</p>
+-- * logGroupName [LogGroupName] <p>The name of the log group to search.</p>
+-- * limit [EventsLimit] <p>The maximum number of events to return. The default is 10,000 events.</p>
+-- * startTime [Timestamp] <p>The start of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp before this time are not returned.</p>
+-- * endTime [Timestamp] <p>The end of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp later than this time are not returned.</p>
+-- * interleaved [Interleaved] <p>If the value is true, the operation makes a best effort to provide responses that contain events from multiple log streams within the log group, interleaved in a single response. If the value is false, all the matched log events in the first log stream are searched first, then those in the next log stream, and so on. The default is false.</p>
 -- Required key: logGroupName
 -- @return FilterLogEventsRequest structure as a key-value pair table
 function M.FilterLogEventsRequest(args)
@@ -195,13 +197,14 @@ function M.FilterLogEventsRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["endTime"] = args["endTime"],
+		["nextToken"] = args["nextToken"],
+		["logStreamNamePrefix"] = args["logStreamNamePrefix"],
 		["filterPattern"] = args["filterPattern"],
 		["logStreamNames"] = args["logStreamNames"],
 		["logGroupName"] = args["logGroupName"],
 		["limit"] = args["limit"],
 		["startTime"] = args["startTime"],
-		["nextToken"] = args["nextToken"],
+		["endTime"] = args["endTime"],
 		["interleaved"] = args["interleaved"],
 	}
 	asserts.AssertFilterLogEventsRequest(all_args)
@@ -235,12 +238,12 @@ end
 -- <p>Represents a log stream, which is a sequence of log events from a single emitter of logs.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * firstEventTimestamp [Timestamp] <p>The time of the first event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
--- * lastEventTimestamp [Timestamp] <p> the time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. lastEventTime updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but may take longer in some rare situations.</p>
--- * creationTime [Timestamp] <p>The creation time of the stream, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * firstEventTimestamp [Timestamp] <p>The time of the first event, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</p>
+-- * lastEventTimestamp [Timestamp] <p> the time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. lastEventTime updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but may take longer in some rare situations.</p>
+-- * creationTime [Timestamp] <p>The creation time of the stream, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</p>
 -- * uploadSequenceToken [SequenceToken] <p>The sequence token.</p>
 -- * logStreamName [LogStreamName] <p>The name of the log stream.</p>
--- * lastIngestionTime [Timestamp] <p>The ingestion time, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * lastIngestionTime [Timestamp] <p>The ingestion time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</p>
 -- * arn [Arn] <p>The Amazon Resource Name (ARN) of the log stream.</p>
 -- * storedBytes [StoredBytes] <p>The number of bytes stored.</p>
 -- @return LogStream structure as a key-value pair table
@@ -314,6 +317,128 @@ function M.DescribeDestinationsRequest(args)
     }
 end
 
+keys.PutResourcePolicyRequest = { ["policyName"] = true, ["policyDocument"] = true, nil }
+
+function asserts.AssertPutResourcePolicyRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PutResourcePolicyRequest to be of type 'table'")
+	if struct["policyName"] then asserts.AssertPolicyName(struct["policyName"]) end
+	if struct["policyDocument"] then asserts.AssertPolicyDocument(struct["policyDocument"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PutResourcePolicyRequest[k], "PutResourcePolicyRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PutResourcePolicyRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyName [PolicyName] <p>Name of the new policy. This parameter is required.</p>
+-- * policyDocument [PolicyDocument] <p>Details of the new policy, including the identity of the principal that is enabled to put logs to this account. This is formatted as a JSON string.</p> <p>The following example creates a resource policy enabling the Route 53 service to put DNS query logs in to the specified log group. Replace "logArn" with the ARN of your CloudWatch Logs resource, such as a log group or log stream.</p> <p> <code>{ "Version": "2012-10-17", "Statement": [ { "Sid": "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": { "Service": [ "route53.amazonaws.com" ] }, "Action":"logs:PutLogEvents", "Resource": "logArn" } ] } </code> </p>
+-- @return PutResourcePolicyRequest structure as a key-value pair table
+function M.PutResourcePolicyRequest(args)
+	assert(args, "You must provide an argument table when creating PutResourcePolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["policyName"] = args["policyName"],
+		["policyDocument"] = args["policyDocument"],
+	}
+	asserts.AssertPutResourcePolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ResourcePolicy = { ["policyName"] = true, ["policyDocument"] = true, ["lastUpdatedTime"] = true, nil }
+
+function asserts.AssertResourcePolicy(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ResourcePolicy to be of type 'table'")
+	if struct["policyName"] then asserts.AssertPolicyName(struct["policyName"]) end
+	if struct["policyDocument"] then asserts.AssertPolicyDocument(struct["policyDocument"]) end
+	if struct["lastUpdatedTime"] then asserts.AssertTimestamp(struct["lastUpdatedTime"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ResourcePolicy[k], "ResourcePolicy contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ResourcePolicy
+-- <p>A policy enabling one or more entities to put logs to a log group in this account.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyName [PolicyName] <p>The name of the resource policy.</p>
+-- * policyDocument [PolicyDocument] <p>The details of the policy.</p>
+-- * lastUpdatedTime [Timestamp] <p>Time stamp showing when this policy was last updated, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</p>
+-- @return ResourcePolicy structure as a key-value pair table
+function M.ResourcePolicy(args)
+	assert(args, "You must provide an argument table when creating ResourcePolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["policyName"] = args["policyName"],
+		["policyDocument"] = args["policyDocument"],
+		["lastUpdatedTime"] = args["lastUpdatedTime"],
+	}
+	asserts.AssertResourcePolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DisassociateKmsKeyRequest = { ["logGroupName"] = true, nil }
+
+function asserts.AssertDisassociateKmsKeyRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DisassociateKmsKeyRequest to be of type 'table'")
+	assert(struct["logGroupName"], "Expected key logGroupName to exist in table")
+	if struct["logGroupName"] then asserts.AssertLogGroupName(struct["logGroupName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DisassociateKmsKeyRequest[k], "DisassociateKmsKeyRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DisassociateKmsKeyRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- Required key: logGroupName
+-- @return DisassociateKmsKeyRequest structure as a key-value pair table
+function M.DisassociateKmsKeyRequest(args)
+	assert(args, "You must provide an argument table when creating DisassociateKmsKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["logGroupName"] = args["logGroupName"],
+	}
+	asserts.AssertDisassociateKmsKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.TestMetricFilterRequest = { ["filterPattern"] = true, ["logEventMessages"] = true, nil }
 
 function asserts.AssertTestMetricFilterRequest(struct)
@@ -350,40 +475,6 @@ function M.TestMetricFilterRequest(args)
 		["logEventMessages"] = args["logEventMessages"],
 	}
 	asserts.AssertTestMetricFilterRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ServiceUnavailableException = { nil }
-
-function asserts.AssertServiceUnavailableException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ServiceUnavailableException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ServiceUnavailableException[k], "ServiceUnavailableException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ServiceUnavailableException
--- <p>The service cannot complete the request.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ServiceUnavailableException structure as a key-value pair table
-function M.ServiceUnavailableException(args)
-	assert(args, "You must provide an argument table when creating ServiceUnavailableException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertServiceUnavailableException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -453,8 +544,8 @@ end
 -- <p>Represents a log event.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ingestionTime [Timestamp] <p>The time the event was ingested, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
--- * timestamp [Timestamp] <p>The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * ingestionTime [Timestamp] <p>The time the event was ingested, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</p>
+-- * timestamp [Timestamp] <p>The time the event occurred, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</p>
 -- * message [EventMessage] <p>The data contained in the log event.</p>
 -- @return OutputLogEvent structure as a key-value pair table
 function M.OutputLogEvent(args)
@@ -471,43 +562,6 @@ function M.OutputLogEvent(args)
 		["message"] = args["message"],
 	}
 	asserts.AssertOutputLogEvent(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidSequenceTokenException = { ["expectedSequenceToken"] = true, nil }
-
-function asserts.AssertInvalidSequenceTokenException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidSequenceTokenException to be of type 'table'")
-	if struct["expectedSequenceToken"] then asserts.AssertSequenceToken(struct["expectedSequenceToken"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidSequenceTokenException[k], "InvalidSequenceTokenException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidSequenceTokenException
--- <p>The sequence token is not valid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * expectedSequenceToken [SequenceToken] 
--- @return InvalidSequenceTokenException structure as a key-value pair table
-function M.InvalidSequenceTokenException(args)
-	assert(args, "You must provide an argument table when creating InvalidSequenceTokenException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["expectedSequenceToken"] = args["expectedSequenceToken"],
-	}
-	asserts.AssertInvalidSequenceTokenException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -537,7 +591,7 @@ end
 -- Valid keys:
 -- * filterName [FilterName] <p>The name of the metric filter.</p>
 -- * metricTransformations [MetricTransformations] <p>The metric transformations.</p>
--- * creationTime [Timestamp] <p>The creation time of the metric filter, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * creationTime [Timestamp] <p>The creation time of the metric filter, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</p>
 -- * filterPattern [FilterPattern] 
 -- * logGroupName [LogGroupName] <p>The name of the log group.</p>
 -- @return MetricFilter structure as a key-value pair table
@@ -721,40 +775,6 @@ function M.ExportTaskStatus(args)
     }
 end
 
-keys.LimitExceededException = { nil }
-
-function asserts.AssertLimitExceededException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type LimitExceededException
--- <p>You have reached the maximum number of resources that can be created.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return LimitExceededException structure as a key-value pair table
-function M.LimitExceededException(args)
-	assert(args, "You must provide an argument table when creating LimitExceededException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertLimitExceededException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.PutDestinationPolicyRequest = { ["accessPolicy"] = true, ["destinationName"] = true, nil }
 
 function asserts.AssertPutDestinationPolicyRequest(struct)
@@ -838,12 +858,13 @@ function M.CancelExportTaskRequest(args)
     }
 end
 
-keys.CreateLogGroupRequest = { ["logGroupName"] = true, ["tags"] = true, nil }
+keys.CreateLogGroupRequest = { ["kmsKeyId"] = true, ["logGroupName"] = true, ["tags"] = true, nil }
 
 function asserts.AssertCreateLogGroupRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateLogGroupRequest to be of type 'table'")
 	assert(struct["logGroupName"], "Expected key logGroupName to exist in table")
+	if struct["kmsKeyId"] then asserts.AssertKmsKeyId(struct["kmsKeyId"]) end
 	if struct["logGroupName"] then asserts.AssertLogGroupName(struct["logGroupName"]) end
 	if struct["tags"] then asserts.AssertTags(struct["tags"]) end
 	for k,_ in pairs(struct) do
@@ -855,6 +876,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * kmsKeyId [KmsKeyId] <p>The Amazon Resource Name (ARN) of the CMK to use when encrypting log data. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms">Amazon Resource Names - AWS Key Management Service (AWS KMS)</a>.</p>
 -- * logGroupName [LogGroupName] <p>The name of the log group.</p>
 -- * tags [Tags] <p>The key-value pairs to use for the tags.</p>
 -- Required key: logGroupName
@@ -868,6 +890,7 @@ function M.CreateLogGroupRequest(args)
     local header_args = { 
     }
 	local all_args = { 
+		["kmsKeyId"] = args["kmsKeyId"],
 		["logGroupName"] = args["logGroupName"],
 		["tags"] = args["tags"],
 	}
@@ -1029,7 +1052,7 @@ function asserts.AssertMetricTransformation(struct)
 end
 
 --- Create a structure of type MetricTransformation
--- <p>Indicates how to transform ingested log events into metric data in a CloudWatch metric.</p>
+-- <p>Indicates how to transform ingested log events in to metric data in a CloudWatch metric.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * defaultValue [DefaultValue] <p>(Optional) The value to emit when a filter pattern does not match a log event. This value can be null.</p>
@@ -1130,7 +1153,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * filterName [FilterName] <p>A name for the metric filter.</p>
--- * metricTransformations [MetricTransformations] <p>A collection of information needed to define how metric data gets emitted.</p>
+-- * metricTransformations [MetricTransformations] <p>A collection of information that defines how metric data gets emitted.</p>
 -- * filterPattern [FilterPattern] <p>A filter pattern for extracting metric data out of ingested log events.</p>
 -- * logGroupName [LogGroupName] <p>The name of the log group.</p>
 -- Required key: logGroupName
@@ -1265,9 +1288,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * nextForwardToken [NextToken] <p>The token for the next set of items in the forward direction. The token expires after 24 hours.</p>
+-- * nextForwardToken [NextToken] <p>The token for the next set of items in the forward direction. The token expires after 24 hours. If you have reached the end of the stream, it will return the same token you passed in.</p>
 -- * events [OutputLogEvents] <p>The events.</p>
--- * nextBackwardToken [NextToken] <p>The token for the next set of items in the backward direction. The token expires after 24 hours.</p>
+-- * nextBackwardToken [NextToken] <p>The token for the next set of items in the backward direction. The token expires after 24 hours. This token will never be null. If you have reached the end of the stream, it will return the same token you passed in.</p>
 -- @return GetLogEventsResponse structure as a key-value pair table
 function M.GetLogEventsResponse(args)
 	assert(args, "You must provide an argument table when creating GetLogEventsResponse")
@@ -1283,43 +1306,6 @@ function M.GetLogEventsResponse(args)
 		["nextBackwardToken"] = args["nextBackwardToken"],
 	}
 	asserts.AssertGetLogEventsResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DataAlreadyAcceptedException = { ["expectedSequenceToken"] = true, nil }
-
-function asserts.AssertDataAlreadyAcceptedException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DataAlreadyAcceptedException to be of type 'table'")
-	if struct["expectedSequenceToken"] then asserts.AssertSequenceToken(struct["expectedSequenceToken"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DataAlreadyAcceptedException[k], "DataAlreadyAcceptedException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DataAlreadyAcceptedException
--- <p>The event was already logged.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * expectedSequenceToken [SequenceToken] 
--- @return DataAlreadyAcceptedException structure as a key-value pair table
-function M.DataAlreadyAcceptedException(args)
-	assert(args, "You must provide an argument table when creating DataAlreadyAcceptedException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["expectedSequenceToken"] = args["expectedSequenceToken"],
-	}
-	asserts.AssertDataAlreadyAcceptedException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1347,8 +1333,8 @@ end
 -- <p>Represents a matched event.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ingestionTime [Timestamp] <p>The time the event was ingested, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
--- * timestamp [Timestamp] <p>The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * ingestionTime [Timestamp] <p>The time the event was ingested, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</p>
+-- * timestamp [Timestamp] <p>The time the event occurred, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</p>
 -- * message [EventMessage] <p>The data contained in the log event.</p>
 -- * eventId [EventId] <p>The ID of the event.</p>
 -- * logStreamName [LogStreamName] <p>The name of the log stream this event belongs to.</p>
@@ -1377,23 +1363,31 @@ function M.FilteredLogEvent(args)
     }
 end
 
-keys.ResourceAlreadyExistsException = { nil }
+keys.UntagLogGroupRequest = { ["logGroupName"] = true, ["tags"] = true, nil }
 
-function asserts.AssertResourceAlreadyExistsException(struct)
+function asserts.AssertUntagLogGroupRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceAlreadyExistsException to be of type 'table'")
+	assert(type(struct) == "table", "Expected UntagLogGroupRequest to be of type 'table'")
+	assert(struct["logGroupName"], "Expected key logGroupName to exist in table")
+	assert(struct["tags"], "Expected key tags to exist in table")
+	if struct["logGroupName"] then asserts.AssertLogGroupName(struct["logGroupName"]) end
+	if struct["tags"] then asserts.AssertTagList(struct["tags"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ResourceAlreadyExistsException[k], "ResourceAlreadyExistsException contains unknown key " .. tostring(k))
+		assert(keys.UntagLogGroupRequest[k], "UntagLogGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ResourceAlreadyExistsException
--- <p>The specified resource already exists.</p>
+--- Create a structure of type UntagLogGroupRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return ResourceAlreadyExistsException structure as a key-value pair table
-function M.ResourceAlreadyExistsException(args)
-	assert(args, "You must provide an argument table when creating ResourceAlreadyExistsException")
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- * tags [TagList] <p>The tag keys. The corresponding tags are removed from the log group.</p>
+-- Required key: logGroupName
+-- Required key: tags
+-- @return UntagLogGroupRequest structure as a key-value pair table
+function M.UntagLogGroupRequest(args)
+	assert(args, "You must provide an argument table when creating UntagLogGroupRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1401,8 +1395,10 @@ function M.ResourceAlreadyExistsException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["logGroupName"] = args["logGroupName"],
+		["tags"] = args["tags"],
 	}
-	asserts.AssertResourceAlreadyExistsException(all_args)
+	asserts.AssertUntagLogGroupRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1495,40 +1491,6 @@ function M.CreateLogStreamRequest(args)
     }
 end
 
-keys.OperationAbortedException = { nil }
-
-function asserts.AssertOperationAbortedException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected OperationAbortedException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.OperationAbortedException[k], "OperationAbortedException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type OperationAbortedException
--- <p>Multiple requests to update the same resource were in conflict.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return OperationAbortedException structure as a key-value pair table
-function M.OperationAbortedException(args)
-	assert(args, "You must provide an argument table when creating OperationAbortedException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertOperationAbortedException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.SubscriptionFilter = { ["filterPattern"] = true, ["filterName"] = true, ["roleArn"] = true, ["creationTime"] = true, ["logGroupName"] = true, ["destinationArn"] = true, ["distribution"] = true, nil }
 
 function asserts.AssertSubscriptionFilter(struct)
@@ -1553,10 +1515,10 @@ end
 -- * filterPattern [FilterPattern] 
 -- * filterName [FilterName] <p>The name of the subscription filter.</p>
 -- * roleArn [RoleArn] <p/>
--- * creationTime [Timestamp] <p>The creation time of the subscription filter, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * creationTime [Timestamp] <p>The creation time of the subscription filter, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</p>
 -- * logGroupName [LogGroupName] <p>The name of the log group.</p>
 -- * destinationArn [DestinationArn] <p>The Amazon Resource Name (ARN) of the destination.</p>
--- * distribution [Distribution] <p>The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream.</p>
+-- * distribution [Distribution] 
 -- @return SubscriptionFilter structure as a key-value pair table
 function M.SubscriptionFilter(args)
 	assert(args, "You must provide an argument table when creating SubscriptionFilter")
@@ -1686,11 +1648,11 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * from [Timestamp] <p>The start time of the range for the request, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp earlier than this time are not exported.</p>
+-- * from [Timestamp] <p>The start time of the range for the request, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp earlier than this time are not exported.</p>
 -- * destinationPrefix [ExportDestinationPrefix] <p>The prefix used as the start of the key for every object exported. If you don't specify a value, the default is <code>exportedlogs</code>.</p>
 -- * destination [ExportDestinationBucket] <p>The name of S3 bucket for the exported log data. The bucket must be in the same AWS region.</p>
 -- * logGroupName [LogGroupName] <p>The name of the log group.</p>
--- * to [Timestamp] <p>The end time of the range for the request, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not exported.</p>
+-- * to [Timestamp] <p>The end time of the range for the request, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp later than this time are not exported.</p>
 -- * logStreamNamePrefix [LogStreamName] <p>Export only log streams that match the provided prefix. If you don't specify a value, no prefix filter is applied.</p>
 -- * taskName [ExportTaskName] <p>The name of the export task.</p>
 -- Required key: logGroupName
@@ -1747,9 +1709,9 @@ end
 -- * logGroupName [LogGroupName] <p>The name of the log group.</p>
 -- * filterNamePrefix [FilterName] <p>The prefix to match.</p>
 -- * limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
--- * metricNamespace [MetricNamespace] <p>The namespace of the CloudWatch metric.</p>
+-- * metricNamespace [MetricNamespace] <p>Filters results to include only those in the specified namespace. If you include this parameter in your request, you must also include the <code>metricName</code> parameter.</p>
 -- * nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- * metricName [MetricName] <p>The name of the CloudWatch metric.</p>
+-- * metricName [MetricName] <p>Filters results to include only those with the specified metric name. If you include this parameter in your request, you must also include the <code>metricNamespace</code> parameter.</p>
 -- @return DescribeMetricFiltersRequest structure as a key-value pair table
 function M.DescribeMetricFiltersRequest(args)
 	assert(args, "You must provide an argument table when creating DescribeMetricFiltersRequest")
@@ -1796,8 +1758,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * targetArn [TargetArn] <p>The ARN of an Amazon Kinesis stream to deliver matching log events to.</p>
--- * roleArn [RoleArn] <p>The ARN of an IAM role that grants CloudWatch Logs permissions to call Amazon Kinesis PutRecord on the destination stream.</p>
+-- * targetArn [TargetArn] <p>The ARN of an Amazon Kinesis stream to which to deliver matching log events.</p>
+-- * roleArn [RoleArn] <p>The ARN of an IAM role that grants CloudWatch Logs permissions to call the Amazon Kinesis PutRecord operation on the destination stream.</p>
 -- * destinationName [DestinationName] <p>A name for the destination.</p>
 -- Required key: destinationName
 -- Required key: targetArn
@@ -1817,50 +1779,6 @@ function M.PutDestinationRequest(args)
 		["destinationName"] = args["destinationName"],
 	}
 	asserts.AssertPutDestinationRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.UntagLogGroupRequest = { ["logGroupName"] = true, ["tags"] = true, nil }
-
-function asserts.AssertUntagLogGroupRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UntagLogGroupRequest to be of type 'table'")
-	assert(struct["logGroupName"], "Expected key logGroupName to exist in table")
-	assert(struct["tags"], "Expected key tags to exist in table")
-	if struct["logGroupName"] then asserts.AssertLogGroupName(struct["logGroupName"]) end
-	if struct["tags"] then asserts.AssertTagList(struct["tags"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.UntagLogGroupRequest[k], "UntagLogGroupRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UntagLogGroupRequest
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * logGroupName [LogGroupName] <p>The name of the log group.</p>
--- * tags [TagList] <p>The tag keys. The corresponding tags are removed from the log group.</p>
--- Required key: logGroupName
--- Required key: tags
--- @return UntagLogGroupRequest structure as a key-value pair table
-function M.UntagLogGroupRequest(args)
-	assert(args, "You must provide an argument table when creating UntagLogGroupRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["logGroupName"] = args["logGroupName"],
-		["tags"] = args["tags"],
-	}
-	asserts.AssertUntagLogGroupRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1934,11 +1852,11 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * filterPattern [FilterPattern] <p>A filter pattern for subscribing to a filtered stream of log events.</p>
--- * filterName [FilterName] <p>A name for the subscription filter. If you are updating an existing filter, you must specify the correct name in <code>filterName</code>. Otherwise, the call will fail because you cannot associate a second filter with a log group. To find the name of the filter currently associated with a log group, use <a>DescribeSubscriptionFilters</a>.</p>
+-- * filterName [FilterName] <p>A name for the subscription filter. If you are updating an existing filter, you must specify the correct name in <code>filterName</code>. Otherwise, the call fails because you cannot associate a second filter with a log group. To find the name of the filter currently associated with a log group, use <a>DescribeSubscriptionFilters</a>.</p>
 -- * roleArn [RoleArn] <p>The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination stream. You don't need to provide the ARN when you are working with a logical destination for cross-account delivery.</p>
 -- * logGroupName [LogGroupName] <p>The name of the log group.</p>
--- * destinationArn [DestinationArn] <p>The ARN of the destination to deliver matching log events to. Currently, the supported destinations are:</p> <ul> <li> <p>An Amazon Kinesis stream belonging to the same account as the subscription filter, for same-account delivery.</p> </li> <li> <p>A logical destination (specified using an ARN) belonging to a different account, for cross-account delivery.</p> </li> <li> <p>An Amazon Kinesis Firehose stream belonging to the same account as the subscription filter, for same-account delivery.</p> </li> <li> <p>An AWS Lambda function belonging to the same account as the subscription filter, for same-account delivery.</p> </li> </ul>
--- * distribution [Distribution] <p>The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream. By default, log data is grouped by log stream. For a more even distribution, you can group log data randomly.</p>
+-- * destinationArn [DestinationArn] <p>The ARN of the destination to deliver matching log events to. Currently, the supported destinations are:</p> <ul> <li> <p>An Amazon Kinesis stream belonging to the same account as the subscription filter, for same-account delivery.</p> </li> <li> <p>A logical destination (specified using an ARN) belonging to a different account, for cross-account delivery.</p> </li> <li> <p>An Amazon Kinesis Firehose delivery stream belonging to the same account as the subscription filter, for same-account delivery.</p> </li> <li> <p>An AWS Lambda function belonging to the same account as the subscription filter, for same-account delivery.</p> </li> </ul>
+-- * distribution [Distribution] <p>The method used to distribute log data to the destination. By default log data is grouped by log stream, but the grouping can be set to random for a more even distribution. This property is only applicable when the destination is an Amazon Kinesis stream. </p>
 -- Required key: logGroupName
 -- Required key: filterName
 -- Required key: filterPattern
@@ -1969,23 +1887,25 @@ function M.PutSubscriptionFilterRequest(args)
     }
 end
 
-keys.InvalidOperationException = { nil }
+keys.DeleteResourcePolicyRequest = { ["policyName"] = true, nil }
 
-function asserts.AssertInvalidOperationException(struct)
+function asserts.AssertDeleteResourcePolicyRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidOperationException to be of type 'table'")
+	assert(type(struct) == "table", "Expected DeleteResourcePolicyRequest to be of type 'table'")
+	if struct["policyName"] then asserts.AssertPolicyName(struct["policyName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidOperationException[k], "InvalidOperationException contains unknown key " .. tostring(k))
+		assert(keys.DeleteResourcePolicyRequest[k], "DeleteResourcePolicyRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidOperationException
--- <p>The operation is not valid on the specified resource.</p>
+--- Create a structure of type DeleteResourcePolicyRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidOperationException structure as a key-value pair table
-function M.InvalidOperationException(args)
-	assert(args, "You must provide an argument table when creating InvalidOperationException")
+-- * policyName [PolicyName] <p>The name of the policy to be revoked. This parameter is required.</p>
+-- @return DeleteResourcePolicyRequest structure as a key-value pair table
+function M.DeleteResourcePolicyRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteResourcePolicyRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1993,8 +1913,9 @@ function M.InvalidOperationException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["policyName"] = args["policyName"],
 	}
-	asserts.AssertInvalidOperationException(all_args)
+	asserts.AssertDeleteResourcePolicyRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2051,6 +1972,50 @@ function M.DescribeSubscriptionFiltersRequest(args)
     }
 end
 
+keys.AssociateKmsKeyRequest = { ["kmsKeyId"] = true, ["logGroupName"] = true, nil }
+
+function asserts.AssertAssociateKmsKeyRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected AssociateKmsKeyRequest to be of type 'table'")
+	assert(struct["logGroupName"], "Expected key logGroupName to exist in table")
+	assert(struct["kmsKeyId"], "Expected key kmsKeyId to exist in table")
+	if struct["kmsKeyId"] then asserts.AssertKmsKeyId(struct["kmsKeyId"]) end
+	if struct["logGroupName"] then asserts.AssertLogGroupName(struct["logGroupName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.AssociateKmsKeyRequest[k], "AssociateKmsKeyRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type AssociateKmsKeyRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * kmsKeyId [KmsKeyId] <p>The Amazon Resource Name (ARN) of the CMK to use when encrypting log data. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms">Amazon Resource Names - AWS Key Management Service (AWS KMS)</a>.</p>
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- Required key: logGroupName
+-- Required key: kmsKeyId
+-- @return AssociateKmsKeyRequest structure as a key-value pair table
+function M.AssociateKmsKeyRequest(args)
+	assert(args, "You must provide an argument table when creating AssociateKmsKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["kmsKeyId"] = args["kmsKeyId"],
+		["logGroupName"] = args["logGroupName"],
+	}
+	asserts.AssertAssociateKmsKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ExportTaskExecutionInfo = { ["completionTime"] = true, ["creationTime"] = true, nil }
 
 function asserts.AssertExportTaskExecutionInfo(struct)
@@ -2067,8 +2032,8 @@ end
 -- <p>Represents the status of an export task.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * completionTime [Timestamp] <p>The completion time of the export task, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
--- * creationTime [Timestamp] <p>The creation time of the export task, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * completionTime [Timestamp] <p>The completion time of the export task, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</p>
+-- * creationTime [Timestamp] <p>The creation time of the export task, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</p>
 -- @return ExportTaskExecutionInfo structure as a key-value pair table
 function M.ExportTaskExecutionInfo(args)
 	assert(args, "You must provide an argument table when creating ExportTaskExecutionInfo")
@@ -2091,23 +2056,25 @@ function M.ExportTaskExecutionInfo(args)
     }
 end
 
-keys.ResourceNotFoundException = { nil }
+keys.PutResourcePolicyResponse = { ["resourcePolicy"] = true, nil }
 
-function asserts.AssertResourceNotFoundException(struct)
+function asserts.AssertPutResourcePolicyResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
+	assert(type(struct) == "table", "Expected PutResourcePolicyResponse to be of type 'table'")
+	if struct["resourcePolicy"] then asserts.AssertResourcePolicy(struct["resourcePolicy"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.PutResourcePolicyResponse[k], "PutResourcePolicyResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ResourceNotFoundException
--- <p>The specified resource does not exist.</p>
+--- Create a structure of type PutResourcePolicyResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return ResourceNotFoundException structure as a key-value pair table
-function M.ResourceNotFoundException(args)
-	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+-- * resourcePolicy [ResourcePolicy] <p>The new policy.</p>
+-- @return PutResourcePolicyResponse structure as a key-value pair table
+function M.PutResourcePolicyResponse(args)
+	assert(args, "You must provide an argument table when creating PutResourcePolicyResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -2115,8 +2082,9 @@ function M.ResourceNotFoundException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["resourcePolicy"] = args["resourcePolicy"],
 	}
-	asserts.AssertResourceNotFoundException(all_args)
+	asserts.AssertPutResourcePolicyResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2146,7 +2114,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * sequenceToken [SequenceToken] <p>The sequence token.</p>
+-- * sequenceToken [SequenceToken] <p>The sequence token obtained from the response of the previous <code>PutLogEvents</code> call. An upload in a newly created log stream does not require a sequence token. You can also get the sequence token using <a>DescribeLogStreams</a>. If you call <code>PutLogEvents</code> twice within a narrow time period using the same value for <code>sequenceToken</code>, both calls may be successful, or one may be rejected.</p>
 -- * logEvents [InputLogEvents] <p>The log events.</p>
 -- * logStreamName [LogStreamName] <p>The name of the log stream.</p>
 -- * logGroupName [LogGroupName] <p>The name of the log group.</p>
@@ -2306,23 +2274,27 @@ function M.DescribeExportTasksRequest(args)
     }
 end
 
-keys.InvalidParameterException = { nil }
+keys.DescribeResourcePoliciesResponse = { ["resourcePolicies"] = true, ["nextToken"] = true, nil }
 
-function asserts.AssertInvalidParameterException(struct)
+function asserts.AssertDescribeResourcePoliciesResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidParameterException to be of type 'table'")
+	assert(type(struct) == "table", "Expected DescribeResourcePoliciesResponse to be of type 'table'")
+	if struct["resourcePolicies"] then asserts.AssertResourcePolicies(struct["resourcePolicies"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidParameterException[k], "InvalidParameterException contains unknown key " .. tostring(k))
+		assert(keys.DescribeResourcePoliciesResponse[k], "DescribeResourcePoliciesResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidParameterException
--- <p>A parameter is specified incorrectly.</p>
+--- Create a structure of type DescribeResourcePoliciesResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidParameterException structure as a key-value pair table
-function M.InvalidParameterException(args)
-	assert(args, "You must provide an argument table when creating InvalidParameterException")
+-- * resourcePolicies [ResourcePolicies] <p>The resource policies that exist in this account.</p>
+-- * nextToken [NextToken] 
+-- @return DescribeResourcePoliciesResponse structure as a key-value pair table
+function M.DescribeResourcePoliciesResponse(args)
+	assert(args, "You must provide an argument table when creating DescribeResourcePoliciesResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -2330,8 +2302,10 @@ function M.InvalidParameterException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["resourcePolicies"] = args["resourcePolicies"],
+		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertInvalidParameterException(all_args)
+	asserts.AssertDescribeResourcePoliciesResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2358,7 +2332,7 @@ end
 -- <p>Represents a log event, which is a record of activity that was recorded by the application or resource being monitored.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * timestamp [Timestamp] <p>The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * timestamp [Timestamp] <p>The time the event occurred, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</p>
 -- * message [EventMessage] <p>The raw event message.</p>
 -- Required key: timestamp
 -- Required key: message
@@ -2384,7 +2358,7 @@ function M.InputLogEvent(args)
     }
 end
 
-keys.LogGroup = { ["storedBytes"] = true, ["metricFilterCount"] = true, ["creationTime"] = true, ["logGroupName"] = true, ["retentionInDays"] = true, ["arn"] = true, nil }
+keys.LogGroup = { ["storedBytes"] = true, ["metricFilterCount"] = true, ["creationTime"] = true, ["logGroupName"] = true, ["kmsKeyId"] = true, ["retentionInDays"] = true, ["arn"] = true, nil }
 
 function asserts.AssertLogGroup(struct)
 	assert(struct)
@@ -2393,6 +2367,7 @@ function asserts.AssertLogGroup(struct)
 	if struct["metricFilterCount"] then asserts.AssertFilterCount(struct["metricFilterCount"]) end
 	if struct["creationTime"] then asserts.AssertTimestamp(struct["creationTime"]) end
 	if struct["logGroupName"] then asserts.AssertLogGroupName(struct["logGroupName"]) end
+	if struct["kmsKeyId"] then asserts.AssertKmsKeyId(struct["kmsKeyId"]) end
 	if struct["retentionInDays"] then asserts.AssertDays(struct["retentionInDays"]) end
 	if struct["arn"] then asserts.AssertArn(struct["arn"]) end
 	for k,_ in pairs(struct) do
@@ -2406,8 +2381,9 @@ end
 -- Valid keys:
 -- * storedBytes [StoredBytes] <p>The number of bytes stored.</p>
 -- * metricFilterCount [FilterCount] <p>The number of metric filters.</p>
--- * creationTime [Timestamp] <p>The creation time of the log group, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * creationTime [Timestamp] <p>The creation time of the log group, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.</p>
 -- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- * kmsKeyId [KmsKeyId] <p>The Amazon Resource Name (ARN) of the CMK to use when encrypting log data.</p>
 -- * retentionInDays [Days] 
 -- * arn [Arn] <p>The Amazon Resource Name (ARN) of the log group.</p>
 -- @return LogGroup structure as a key-value pair table
@@ -2424,6 +2400,7 @@ function M.LogGroup(args)
 		["metricFilterCount"] = args["metricFilterCount"],
 		["creationTime"] = args["creationTime"],
 		["logGroupName"] = args["logGroupName"],
+		["kmsKeyId"] = args["kmsKeyId"],
 		["retentionInDays"] = args["retentionInDays"],
 		["arn"] = args["arn"],
 	}
@@ -2451,7 +2428,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * tags [Tags] <p>The tags.</p>
+-- * tags [Tags] <p>The tags for the log group.</p>
 -- @return ListTagsLogGroupResponse structure as a key-value pair table
 function M.ListTagsLogGroupResponse(args)
 	assert(args, "You must provide an argument table when creating ListTagsLogGroupResponse")
@@ -2533,8 +2510,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * orderBy [OrderBy] <p>If the value is <code>LogStreamName</code>, the results are ordered by log stream name. If the value is <code>LastEventTime</code>, the results are ordered by the event time. The default value is <code>LogStreamName</code>.</p> <p>If you order the results by event time, you cannot specify the <code>logStreamNamePrefix</code> parameter.</p> <p>lastEventTimestamp represents the time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. lastEventTimeStamp updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but may take longer in some rare situations.</p>
--- * logStreamNamePrefix [LogStreamName] <p>The prefix to match.</p> <p>You cannot specify this parameter if <code>orderBy</code> is <code>LastEventTime</code>.</p>
+-- * orderBy [OrderBy] <p>If the value is <code>LogStreamName</code>, the results are ordered by log stream name. If the value is <code>LastEventTime</code>, the results are ordered by the event time. The default value is <code>LogStreamName</code>.</p> <p>If you order the results by event time, you cannot specify the <code>logStreamNamePrefix</code> parameter.</p> <p>lastEventTimestamp represents the time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. lastEventTimeStamp updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but may take longer in some rare situations.</p>
+-- * logStreamNamePrefix [LogStreamName] <p>The prefix to match.</p> <p>If <code>orderBy</code> is <code>LastEventTime</code>,you cannot specify this parameter.</p>
 -- * logGroupName [LogGroupName] <p>The name of the log group.</p>
 -- * descending [Descending] <p>If the value is true, results are returned in descending order. If the value is to false, results are returned in ascending order. The default value is false.</p>
 -- * limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
@@ -2628,11 +2605,11 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * endTime [Timestamp] <p>The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not included.</p>
+-- * endTime [Timestamp] <p>The end of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp equal to or later than this time are not included.</p>
 -- * logStreamName [LogStreamName] <p>The name of the log stream.</p>
 -- * logGroupName [LogGroupName] <p>The name of the log group.</p>
--- * limit [EventsLimit] <p>The maximum number of log events returned. If you don't specify a value, the maximum is as many log events as can fit in a response size of 1MB, up to 10,000 log events.</p>
--- * startTime [Timestamp] <p>The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp earlier than this time are not included.</p>
+-- * limit [EventsLimit] <p>The maximum number of log events returned. If you don't specify a value, the maximum is as many log events as can fit in a response size of 1 MB, up to 10,000 log events.</p>
+-- * startTime [Timestamp] <p>The start of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp equal to this time or later than this time are included. Events with a time stamp earlier than this time are not included.</p>
 -- * nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
 -- * startFromHead [StartFromHead] <p>If the value is true, the earliest log events are returned first. If the value is false, the latest log events are returned first. The default value is false.</p>
 -- Required key: logGroupName
@@ -2847,11 +2824,11 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * status [ExportTaskStatus] <p>The status of the export task.</p>
--- * from [Timestamp] <p>The start time, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp prior to this time are not exported.</p>
+-- * from [Timestamp] <p>The start time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp before this time are not exported.</p>
 -- * destinationPrefix [ExportDestinationPrefix] <p>The prefix that was used as the start of Amazon S3 key for every object exported.</p>
 -- * destination [ExportDestinationBucket] <p>The name of Amazon S3 bucket to which the log data was exported.</p>
 -- * logGroupName [LogGroupName] <p>The name of the log group from which logs data was exported.</p>
--- * to [Timestamp] <p>The end time, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not exported.</p>
+-- * to [Timestamp] <p>The end time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp later than this time are not exported.</p>
 -- * taskId [ExportTaskId] <p>The ID of the export task.</p>
 -- * taskName [ExportTaskName] <p>The name of the export task.</p>
 -- * executionInfo [ExportTaskExecutionInfo] <p>Execution info about the export task.</p>
@@ -2884,6 +2861,46 @@ function M.ExportTask(args)
     }
 end
 
+keys.DescribeResourcePoliciesRequest = { ["nextToken"] = true, ["limit"] = true, nil }
+
+function asserts.AssertDescribeResourcePoliciesRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeResourcePoliciesRequest to be of type 'table'")
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
+	if struct["limit"] then asserts.AssertDescribeLimit(struct["limit"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeResourcePoliciesRequest[k], "DescribeResourcePoliciesRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeResourcePoliciesRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] 
+-- * limit [DescribeLimit] <p>The maximum number of resource policies to be displayed with one call of this API.</p>
+-- @return DescribeResourcePoliciesRequest structure as a key-value pair table
+function M.DescribeResourcePoliciesRequest(args)
+	assert(args, "You must provide an argument table when creating DescribeResourcePoliciesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["nextToken"] = args["nextToken"],
+		["limit"] = args["limit"],
+	}
+	asserts.AssertDescribeResourcePoliciesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 function asserts.AssertTagKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagKey to be of type 'string'")
@@ -2894,6 +2911,17 @@ end
 --  
 function M.TagKey(str)
 	asserts.AssertTagKey(str)
+	return str
+end
+
+function asserts.AssertPolicyName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected PolicyName to be of type 'string'")
+end
+
+--  
+function M.PolicyName(str)
+	asserts.AssertPolicyName(str)
 	return str
 end
 
@@ -2927,6 +2955,18 @@ end
 --  
 function M.Arn(str)
 	asserts.AssertArn(str)
+	return str
+end
+
+function asserts.AssertSequenceToken(str)
+	assert(str)
+	assert(type(str) == "string", "Expected SequenceToken to be of type 'string'")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.SequenceToken(str)
+	asserts.AssertSequenceToken(str)
 	return str
 end
 
@@ -2972,7 +3012,7 @@ function asserts.AssertFilterPattern(str)
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
 end
 
--- <p>A symbolic description of how CloudWatch Logs should interpret the data in each log event. For example, a log event may contain timestamps, IP addresses, strings, and so on. You use the filter pattern to specify what to look for in the log event message.</p>
+-- <p>A symbolic description of how CloudWatch Logs should interpret the data in each log event. For example, a log event may contain time stamps, IP addresses, strings, and so on. You use the filter pattern to specify what to look for in the log event message.</p>
 function M.FilterPattern(str)
 	asserts.AssertFilterPattern(str)
 	return str
@@ -3021,21 +3061,21 @@ function asserts.AssertDistribution(str)
 	assert(type(str) == "string", "Expected Distribution to be of type 'string'")
 end
 
---  
+-- <p>The method used to distribute log data to the destination, which can be either random or grouped by log stream.</p>
 function M.Distribution(str)
 	asserts.AssertDistribution(str)
 	return str
 end
 
-function asserts.AssertDestinationArn(str)
+function asserts.AssertKmsKeyId(str)
 	assert(str)
-	assert(type(str) == "string", "Expected DestinationArn to be of type 'string'")
-	assert(#str >= 1, "Expected string to be min 1 characters")
+	assert(type(str) == "string", "Expected KmsKeyId to be of type 'string'")
+	assert(#str <= 256, "Expected string to be max 256 characters")
 end
 
 --  
-function M.DestinationArn(str)
-	asserts.AssertDestinationArn(str)
+function M.KmsKeyId(str)
+	asserts.AssertKmsKeyId(str)
 	return str
 end
 
@@ -3183,15 +3223,15 @@ function M.NextToken(str)
 	return str
 end
 
-function asserts.AssertSequenceToken(str)
+function asserts.AssertDestinationArn(str)
 	assert(str)
-	assert(type(str) == "string", "Expected SequenceToken to be of type 'string'")
+	assert(type(str) == "string", "Expected DestinationArn to be of type 'string'")
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
-function M.SequenceToken(str)
-	asserts.AssertSequenceToken(str)
+function M.DestinationArn(str)
+	asserts.AssertDestinationArn(str)
 	return str
 end
 
@@ -3215,6 +3255,19 @@ end
 --  
 function M.EventId(str)
 	asserts.AssertEventId(str)
+	return str
+end
+
+function asserts.AssertPolicyDocument(str)
+	assert(str)
+	assert(type(str) == "string", "Expected PolicyDocument to be of type 'string'")
+	assert(#str <= 5120, "Expected string to be max 5120 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.PolicyDocument(str)
+	asserts.AssertPolicyDocument(str)
 	return str
 end
 
@@ -3463,6 +3516,21 @@ function M.ExportTasks(list)
 	return list
 end
 
+function asserts.AssertResourcePolicies(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ResourcePolicies to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertResourcePolicy(v)
+	end
+end
+
+--  
+-- List of ResourcePolicy objects
+function M.ResourcePolicies(list)
+	asserts.AssertResourcePolicies(list)
+	return list
+end
+
 function asserts.AssertLogStreams(list)
 	assert(list)
 	assert(type(list) == "table", "Expected LogStreams to be of type ''table")
@@ -3708,6 +3776,41 @@ function M.PutDestinationSync(PutDestinationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.PutDestinationAsync(PutDestinationRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutResourcePolicy asynchronously, invoking a callback when done
+-- @param PutResourcePolicyRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.PutResourcePolicyAsync(PutResourcePolicyRequest, cb)
+	assert(PutResourcePolicyRequest, "You must provide a PutResourcePolicyRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutResourcePolicy",
+	}
+	for header,value in pairs(PutResourcePolicyRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", PutResourcePolicyRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call PutResourcePolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutResourcePolicyRequest
+-- @return response
+-- @return error_message
+function M.PutResourcePolicySync(PutResourcePolicyRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutResourcePolicyAsync(PutResourcePolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4098,6 +4201,41 @@ function M.PutMetricFilterSync(PutMetricFilterRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call DeleteResourcePolicy asynchronously, invoking a callback when done
+-- @param DeleteResourcePolicyRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteResourcePolicyAsync(DeleteResourcePolicyRequest, cb)
+	assert(DeleteResourcePolicyRequest, "You must provide a DeleteResourcePolicyRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteResourcePolicy",
+	}
+	for header,value in pairs(DeleteResourcePolicyRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteResourcePolicyRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteResourcePolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteResourcePolicyRequest
+-- @return response
+-- @return error_message
+function M.DeleteResourcePolicySync(DeleteResourcePolicyRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteResourcePolicyAsync(DeleteResourcePolicyRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call PutLogEvents asynchronously, invoking a callback when done
 -- @param PutLogEventsRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -4198,6 +4336,41 @@ function M.DescribeDestinationsSync(DescribeDestinationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DescribeDestinationsAsync(DescribeDestinationsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AssociateKmsKey asynchronously, invoking a callback when done
+-- @param AssociateKmsKeyRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.AssociateKmsKeyAsync(AssociateKmsKeyRequest, cb)
+	assert(AssociateKmsKeyRequest, "You must provide a AssociateKmsKeyRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.AssociateKmsKey",
+	}
+	for header,value in pairs(AssociateKmsKeyRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", AssociateKmsKeyRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call AssociateKmsKey synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AssociateKmsKeyRequest
+-- @return response
+-- @return error_message
+function M.AssociateKmsKeySync(AssociateKmsKeyRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AssociateKmsKeyAsync(AssociateKmsKeyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4553,6 +4726,41 @@ function M.UntagLogGroupSync(UntagLogGroupRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call DisassociateKmsKey asynchronously, invoking a callback when done
+-- @param DisassociateKmsKeyRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DisassociateKmsKeyAsync(DisassociateKmsKeyRequest, cb)
+	assert(DisassociateKmsKeyRequest, "You must provide a DisassociateKmsKeyRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DisassociateKmsKey",
+	}
+	for header,value in pairs(DisassociateKmsKeyRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DisassociateKmsKeyRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DisassociateKmsKey synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisassociateKmsKeyRequest
+-- @return response
+-- @return error_message
+function M.DisassociateKmsKeySync(DisassociateKmsKeyRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisassociateKmsKeyAsync(DisassociateKmsKeyRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call DeleteRetentionPolicy asynchronously, invoking a callback when done
 -- @param DeleteRetentionPolicyRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -4618,6 +4826,41 @@ function M.GetLogEventsSync(GetLogEventsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.GetLogEventsAsync(GetLogEventsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeResourcePolicies asynchronously, invoking a callback when done
+-- @param DescribeResourcePoliciesRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeResourcePoliciesAsync(DescribeResourcePoliciesRequest, cb)
+	assert(DescribeResourcePoliciesRequest, "You must provide a DescribeResourcePoliciesRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeResourcePolicies",
+	}
+	for header,value in pairs(DescribeResourcePoliciesRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeResourcePoliciesRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeResourcePolicies synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeResourcePoliciesRequest
+-- @return response
+-- @return error_message
+function M.DescribeResourcePoliciesSync(DescribeResourcePoliciesRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeResourcePoliciesAsync(DescribeResourcePoliciesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

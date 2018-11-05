@@ -40,11 +40,11 @@ end
 -- <p>Represents a single node within a node group (shard).</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CurrentRole [String] <p>The role that is currently assigned to the node - <code>primary</code> or <code>replica</code>.</p>
+-- * CurrentRole [String] <p>The role that is currently assigned to the node - <code>primary</code> or <code>replica</code>. This member is only applicable for Redis (cluster mode disabled) replication groups.</p>
 -- * PreferredAvailabilityZone [String] <p>The name of the Availability Zone in which the node is located.</p>
--- * CacheNodeId [String] <p>The ID of the node within its cache cluster. A node ID is a numeric identifier (0001, 0002, etc.).</p>
--- * ReadEndpoint [Endpoint] 
--- * CacheClusterId [String] <p>The ID of the cache cluster to which the node belongs.</p>
+-- * CacheNodeId [String] <p>The ID of the node within its cluster. A node ID is a numeric identifier (0001, 0002, etc.).</p>
+-- * ReadEndpoint [Endpoint] <p>The information required for client programs to connect to a node for read operations. The read endpoint is only applicable on Redis (cluster mode disabled) clusters.</p>
+-- * CacheClusterId [String] <p>The ID of the cluster to which the node belongs.</p>
 -- @return NodeGroupMember structure as a key-value pair table
 function M.NodeGroupMember(args)
 	assert(args, "You must provide an argument table when creating NodeGroupMember")
@@ -99,6 +99,64 @@ function M.RebootCacheClusterResult(args)
 		["CacheCluster"] = args["CacheCluster"],
 	}
 	asserts.AssertRebootCacheClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ModifyReplicationGroupShardConfigurationMessage = { ["NodeGroupsToRemove"] = true, ["ReplicationGroupId"] = true, ["NodeGroupsToRetain"] = true, ["ReshardingConfiguration"] = true, ["ApplyImmediately"] = true, ["NodeGroupCount"] = true, nil }
+
+function asserts.AssertModifyReplicationGroupShardConfigurationMessage(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ModifyReplicationGroupShardConfigurationMessage to be of type 'table'")
+	assert(struct["ReplicationGroupId"], "Expected key ReplicationGroupId to exist in table")
+	assert(struct["NodeGroupCount"], "Expected key NodeGroupCount to exist in table")
+	assert(struct["ApplyImmediately"], "Expected key ApplyImmediately to exist in table")
+	if struct["NodeGroupsToRemove"] then asserts.AssertNodeGroupsToRemoveList(struct["NodeGroupsToRemove"]) end
+	if struct["ReplicationGroupId"] then asserts.AssertString(struct["ReplicationGroupId"]) end
+	if struct["NodeGroupsToRetain"] then asserts.AssertNodeGroupsToRetainList(struct["NodeGroupsToRetain"]) end
+	if struct["ReshardingConfiguration"] then asserts.AssertReshardingConfigurationList(struct["ReshardingConfiguration"]) end
+	if struct["ApplyImmediately"] then asserts.AssertBoolean(struct["ApplyImmediately"]) end
+	if struct["NodeGroupCount"] then asserts.AssertInteger(struct["NodeGroupCount"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ModifyReplicationGroupShardConfigurationMessage[k], "ModifyReplicationGroupShardConfigurationMessage contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ModifyReplicationGroupShardConfigurationMessage
+-- <p>Represents the input for a <code>ModifyReplicationGroupShardConfiguration</code> operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NodeGroupsToRemove [NodeGroupsToRemoveList] <p>If the value of <code>NodeGroupCount</code> is less than the current number of node groups (shards), the <code>NodeGroupsToRemove</code> or <code>NodeGroupsToRetain</code> is a required list of node group ids to remove from or retain in the cluster.</p> <p>ElastiCache for Redis will attempt to remove all node groups listed by <code>NodeGroupsToRemove</code> from the cluster.</p>
+-- * ReplicationGroupId [String] <p>The name of the Redis (cluster mode enabled) cluster (replication group) on which the shards are to be configured.</p>
+-- * NodeGroupsToRetain [NodeGroupsToRetainList] <p>If the value of <code>NodeGroupCount</code> is less than the current number of node groups (shards), the <code>NodeGroupsToRemove</code> or <code>NodeGroupsToRetain</code> is a required list of node group ids to remove from or retain in the cluster.</p> <p>ElastiCache for Redis will attempt to remove all node groups except those listed by <code>NodeGroupsToRetain</code> from the cluster.</p>
+-- * ReshardingConfiguration [ReshardingConfigurationList] <p>Specifies the preferred availability zones for each node group in the cluster. If the value of <code>NodeGroupCount</code> is greater than the current number of node groups (shards), you can use this parameter to specify the preferred availability zones of the cluster's shards. If you omit this parameter ElastiCache selects availability zones for you.</p> <p>You can specify this parameter only if the value of <code>NodeGroupCount</code> is greater than the current number of node groups (shards).</p>
+-- * ApplyImmediately [Boolean] <p>Indicates that the shard reconfiguration process begins immediately. At present, the only permitted value for this parameter is <code>true</code>.</p> <p>Value: true</p>
+-- * NodeGroupCount [Integer] <p>The number of node groups (shards) that results from the modification of the shard configuration.</p>
+-- Required key: ReplicationGroupId
+-- Required key: NodeGroupCount
+-- Required key: ApplyImmediately
+-- @return ModifyReplicationGroupShardConfigurationMessage structure as a key-value pair table
+function M.ModifyReplicationGroupShardConfigurationMessage(args)
+	assert(args, "You must provide an argument table when creating ModifyReplicationGroupShardConfigurationMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NodeGroupsToRemove"] = args["NodeGroupsToRemove"],
+		["ReplicationGroupId"] = args["ReplicationGroupId"],
+		["NodeGroupsToRetain"] = args["NodeGroupsToRetain"],
+		["ReshardingConfiguration"] = args["ReshardingConfiguration"],
+		["ApplyImmediately"] = args["ApplyImmediately"],
+		["NodeGroupCount"] = args["NodeGroupCount"],
+	}
+	asserts.AssertModifyReplicationGroupShardConfigurationMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -172,7 +230,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * SnapshotName [String] <p>A name for the snapshot being created.</p>
--- * CacheClusterId [String] <p>The identifier of an existing cache cluster. The snapshot is created from this cache cluster.</p>
+-- * CacheClusterId [String] <p>The identifier of an existing cluster. The snapshot is created from this cluster.</p>
 -- * ReplicationGroupId [String] <p>The identifier of an existing replication group. The snapshot is created from this replication group.</p>
 -- Required key: SnapshotName
 -- @return CreateSnapshotMessage structure as a key-value pair table
@@ -327,7 +385,7 @@ function asserts.AssertTestFailoverMessage(struct)
 	assert(type(struct) == "table", "Expected TestFailoverMessage to be of type 'table'")
 	assert(struct["ReplicationGroupId"], "Expected key ReplicationGroupId to exist in table")
 	assert(struct["NodeGroupId"], "Expected key NodeGroupId to exist in table")
-	if struct["NodeGroupId"] then asserts.AssertString(struct["NodeGroupId"]) end
+	if struct["NodeGroupId"] then asserts.AssertAllowedNodeGroupId(struct["NodeGroupId"]) end
 	if struct["ReplicationGroupId"] then asserts.AssertString(struct["ReplicationGroupId"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.TestFailoverMessage[k], "TestFailoverMessage contains unknown key " .. tostring(k))
@@ -338,7 +396,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NodeGroupId [String] <p>The name of the node group (called shard in the console) in this replication group on which automatic failover is to be tested. You may test automatic failover on up to 5 node groups in any rolling 24-hour period.</p>
+-- * NodeGroupId [AllowedNodeGroupId] <p>The name of the node group (called shard in the console) in this replication group on which automatic failover is to be tested. You may test automatic failover on up to 5 node groups in any rolling 24-hour period.</p>
 -- * ReplicationGroupId [String] <p>The name of the replication group (console: cluster) whose automatic failover is being tested by this operation.</p>
 -- Required key: ReplicationGroupId
 -- Required key: NodeGroupId
@@ -364,74 +422,6 @@ function M.TestFailoverMessage(args)
     }
 end
 
-keys.SnapshotNotFoundFault = { nil }
-
-function asserts.AssertSnapshotNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SnapshotNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SnapshotNotFoundFault[k], "SnapshotNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SnapshotNotFoundFault
--- <p>The requested snapshot name does not refer to an existing snapshot.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SnapshotNotFoundFault structure as a key-value pair table
-function M.SnapshotNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating SnapshotNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSnapshotNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidSnapshotStateFault = { nil }
-
-function asserts.AssertInvalidSnapshotStateFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidSnapshotStateFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidSnapshotStateFault[k], "InvalidSnapshotStateFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidSnapshotStateFault
--- <p>The current state of the snapshot does not allow the requested operation to occur.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidSnapshotStateFault structure as a key-value pair table
-function M.InvalidSnapshotStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidSnapshotStateFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidSnapshotStateFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.AllowedNodeTypeModificationsMessage = { ["ScaleUpModifications"] = true, nil }
 
 function asserts.AssertAllowedNodeTypeModificationsMessage(struct)
@@ -444,10 +434,10 @@ function asserts.AssertAllowedNodeTypeModificationsMessage(struct)
 end
 
 --- Create a structure of type AllowedNodeTypeModificationsMessage
--- <p>Represents the allowed node types you can use to modify your cache cluster or replication group.</p>
+-- <p>Represents the allowed node types you can use to modify your cluster or replication group.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ScaleUpModifications [NodeTypeList] <p>A string list, each element of which specifies a cache node type which you can use to scale your cache cluster or replication group.</p> <p>When scaling up a Redis cluster or replication group using <code>ModifyCacheCluster</code> or <code>ModifyReplicationGroup</code>, use a value from this list for the <code>CacheNodeType</code> parameter.</p>
+-- * ScaleUpModifications [NodeTypeList] <p>A string list, each element of which specifies a cache node type which you can use to scale your cluster or replication group.</p> <p>When scaling up a Redis cluster or replication group using <code>ModifyCacheCluster</code> or <code>ModifyReplicationGroup</code>, use a value from this list for the <code>CacheNodeType</code> parameter.</p>
 -- @return AllowedNodeTypeModificationsMessage structure as a key-value pair table
 function M.AllowedNodeTypeModificationsMessage(args)
 	assert(args, "You must provide an argument table when creating AllowedNodeTypeModificationsMessage")
@@ -507,28 +497,28 @@ end
 -- <p>Represents the input of a CreateCacheCluster operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CacheParameterGroupName [String] <p>The name of the parameter group to associate with this cache cluster. If this argument is omitted, the default parameter group for the specified engine is used. You cannot use any parameter group which has <code>cluster-enabled='yes'</code> when creating a cluster.</p>
+-- * CacheParameterGroupName [String] <p>The name of the parameter group to associate with this cluster. If this argument is omitted, the default parameter group for the specified engine is used. You cannot use any parameter group which has <code>cluster-enabled='yes'</code> when creating a cluster.</p>
 -- * CacheClusterId [String] <p>The node group (shard) identifier. This parameter is stored as a lowercase string.</p> <p> <b>Constraints:</b> </p> <ul> <li> <p>A name must contain from 1 to 20 alphanumeric characters or hyphens.</p> </li> <li> <p>The first character must be a letter.</p> </li> <li> <p>A name cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
--- * ReplicationGroupId [String] <important> <p>Due to current limitations on Redis (cluster mode disabled), this operation or parameter is not supported on Redis (cluster mode enabled) replication groups.</p> </important> <p>The ID of the replication group to which this cache cluster should belong. If this parameter is specified, the cache cluster is added to the specified replication group as a read replica; otherwise, the cache cluster is a standalone primary that is not part of any replication group.</p> <p>If the specified replication group is Multi-AZ enabled and the Availability Zone is not specified, the cache cluster is created in Availability Zones that provide the best spread of read replicas across Availability Zones.</p> <note> <p>This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.</p> </note>
+-- * ReplicationGroupId [String] <p>The ID of the replication group to which this cluster should belong. If this parameter is specified, the cluster is added to the specified replication group as a read replica; otherwise, the cluster is a standalone primary that is not part of any replication group.</p> <p>If the specified replication group is Multi-AZ enabled and the Availability Zone is not specified, the cluster is created in Availability Zones that provide the best spread of read replicas across Availability Zones.</p> <note> <p>This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.</p> </note>
 -- * SnapshotRetentionLimit [IntegerOptional] <p>The number of days for which ElastiCache retains automatic snapshots before deleting them. For example, if you set <code>SnapshotRetentionLimit</code> to 5, a snapshot taken today is retained for 5 days before being deleted.</p> <note> <p>This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.</p> </note> <p>Default: 0 (i.e., automatic backups are disabled for this cache cluster).</p>
--- * NotificationTopicArn [String] <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic to which notifications are sent.</p> <note> <p>The Amazon SNS topic owner must be the same as the cache cluster owner.</p> </note>
--- * CacheNodeType [String] <p>The compute and memory capacity of the nodes in the node group (shard).</p> <p>Valid node types are as follows:</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> or <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a>.</p>
--- * Engine [String] <p>The name of the cache engine to be used for this cache cluster.</p> <p>Valid values for this parameter are: <code>memcached</code> | <code>redis</code> </p>
--- * AuthToken [String] <p> <b>Reserved parameter.</b> The password used to access a password protected server.</p> <p>Password constraints:</p> <ul> <li> <p>Must be only printable ASCII characters.</p> </li> <li> <p>Must be at least 16 characters and no more than 128 characters in length.</p> </li> <li> <p>Cannot contain any of the following characters: '/', '"', or "@". </p> </li> </ul> <p>For more information, see <a href="http://redis.io/commands/AUTH">AUTH password</a> at Redis.</p>
--- * Tags [TagList] <p>A list of cost allocation tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value.</p>
--- * NumCacheNodes [IntegerOptional] <p>The initial number of cache nodes that the cache cluster has.</p> <p>For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1 and 20.</p> <p>If you need more than 20 nodes for your Memcached cluster, please fill out the ElastiCache Limit Increase Request form at <a href="http://aws.amazon.com/contact-us/elasticache-node-limit-request/">http://aws.amazon.com/contact-us/elasticache-node-limit-request/</a>.</p>
+-- * NotificationTopicArn [String] <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic to which notifications are sent.</p> <note> <p>The Amazon SNS topic owner must be the same as the cluster owner.</p> </note>
+-- * CacheNodeType [String] <p>The compute and memory capacity of the nodes in the node group (shard).</p> <p>The following node types are supported by ElastiCache. Generally speaking, the current generation types provide more memory and computational power at lower cost when compared to their equivalent previous generation counterparts.</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: </p> <p> <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code> </p> <p> <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code> </p> <p> <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: (not recommended)</p> <p> <b>T1 node types:</b> <code>cache.t1.micro</code> </p> <p> <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized:</p> <ul> <li> <p>Previous generation: (not recommended)</p> <p> <b>C1 node types:</b> <code>cache.c1.xlarge</code> </p> </li> </ul> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: </p> <p> <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> <p> <b>R4 node types;</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>, <code>cache.r4.2xlarge</code>, <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>, <code>cache.r4.16xlarge</code> </p> </li> <li> <p>Previous generation: (not recommended)</p> <p> <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances. </p> </li> <li> <p>Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see:</p> <ul> <li> <p> <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a> </p> </li> </ul>
+-- * Engine [String] <p>The name of the cache engine to be used for this cluster.</p> <p>Valid values for this parameter are: <code>memcached</code> | <code>redis</code> </p>
+-- * AuthToken [String] <p> <b>Reserved parameter.</b> The password used to access a password protected server.</p> <p>Password constraints:</p> <ul> <li> <p>Must be only printable ASCII characters.</p> </li> <li> <p>Must be at least 16 characters and no more than 128 characters in length.</p> </li> <li> <p>Cannot contain any of the following characters: '/', '"', or '@'. </p> </li> </ul> <p>For more information, see <a href="http://redis.io/commands/AUTH">AUTH password</a> at http://redis.io/commands/AUTH.</p>
+-- * Tags [TagList] <p>A list of cost allocation tags to be added to this resource.</p>
+-- * NumCacheNodes [IntegerOptional] <p>The initial number of cache nodes that the cluster has.</p> <p>For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1 and 20.</p> <p>If you need more than 20 nodes for your Memcached cluster, please fill out the ElastiCache Limit Increase Request form at <a href="http://aws.amazon.com/contact-us/elasticache-node-limit-request/">http://aws.amazon.com/contact-us/elasticache-node-limit-request/</a>.</p>
 -- * AutoMinorVersionUpgrade [BooleanOptional] <p>This parameter is currently disabled.</p>
--- * PreferredMaintenanceWindow [String] <p>Specifies the weekly time range during which maintenance on the cache cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for <code>ddd</code> are:</p> <p>Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period.</p> <p>Valid values for <code>ddd</code> are:</p> <ul> <li> <p> <code>sun</code> </p> </li> <li> <p> <code>mon</code> </p> </li> <li> <p> <code>tue</code> </p> </li> <li> <p> <code>wed</code> </p> </li> <li> <p> <code>thu</code> </p> </li> <li> <p> <code>fri</code> </p> </li> <li> <p> <code>sat</code> </p> </li> </ul> <p>Example: <code>sun:23:00-mon:01:30</code> </p>
--- * CacheSubnetGroupName [String] <p>The name of the subnet group to be used for the cache cluster.</p> <p>Use this parameter only when you are creating a cache cluster in an Amazon Virtual Private Cloud (Amazon VPC).</p> <important> <p>If you're going to launch your cluster in an Amazon VPC, you need to create a subnet group before you start creating a cluster. For more information, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SubnetGroups.html">Subnets and Subnet Groups</a>.</p> </important>
--- * CacheSecurityGroupNames [CacheSecurityGroupNameList] <p>A list of security group names to associate with this cache cluster.</p> <p>Use this parameter only when you are creating a cache cluster outside of an Amazon Virtual Private Cloud (Amazon VPC).</p>
+-- * PreferredMaintenanceWindow [String] <p>Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for <code>ddd</code> are:</p> <p>Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period.</p> <p>Valid values for <code>ddd</code> are:</p> <ul> <li> <p> <code>sun</code> </p> </li> <li> <p> <code>mon</code> </p> </li> <li> <p> <code>tue</code> </p> </li> <li> <p> <code>wed</code> </p> </li> <li> <p> <code>thu</code> </p> </li> <li> <p> <code>fri</code> </p> </li> <li> <p> <code>sat</code> </p> </li> </ul> <p>Example: <code>sun:23:00-mon:01:30</code> </p>
+-- * CacheSubnetGroupName [String] <p>The name of the subnet group to be used for the cluster.</p> <p>Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).</p> <important> <p>If you're going to launch your cluster in an Amazon VPC, you need to create a subnet group before you start creating a cluster. For more information, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html">Subnets and Subnet Groups</a>.</p> </important>
+-- * CacheSecurityGroupNames [CacheSecurityGroupNameList] <p>A list of security group names to associate with this cluster.</p> <p>Use this parameter only when you are creating a cluster outside of an Amazon Virtual Private Cloud (Amazon VPC).</p>
 -- * SnapshotName [String] <p>The name of a Redis snapshot from which to restore data into the new node group (shard). The snapshot status changes to <code>restoring</code> while the new node group (shard) is being created.</p> <note> <p>This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.</p> </note>
--- * SecurityGroupIds [SecurityGroupIdsList] <p>One or more VPC security groups associated with the cache cluster.</p> <p>Use this parameter only when you are creating a cache cluster in an Amazon Virtual Private Cloud (Amazon VPC).</p>
--- * PreferredAvailabilityZones [PreferredAvailabilityZoneList] <p>A list of the Availability Zones in which cache nodes are created. The order of the zones in the list is not important.</p> <p>This option is only supported on Memcached.</p> <note> <p>If you are creating your cache cluster in an Amazon VPC (recommended) you can only locate nodes in Availability Zones that are associated with the subnets in the selected subnet group.</p> <p>The number of Availability Zones listed must equal the value of <code>NumCacheNodes</code>.</p> </note> <p>If you want all the nodes in the same Availability Zone, use <code>PreferredAvailabilityZone</code> instead, or repeat the Availability Zone multiple times in the list.</p> <p>Default: System chosen Availability Zones.</p>
--- * EngineVersion [String] <p>The version number of the cache engine to be used for this cache cluster. To view the supported cache engine versions, use the DescribeCacheEngineVersions operation.</p> <p> <b>Important:</b> You can upgrade to a newer engine version (see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement">Selecting a Cache Engine and Version</a>), but you cannot downgrade to an earlier engine version. If you want to use an earlier engine version, you must delete the existing cache cluster or replication group and create it anew with the earlier engine version. </p>
--- * AZMode [AZMode] <p>Specifies whether the nodes in this Memcached cluster are created in a single Availability Zone or created across multiple Availability Zones in the cluster's region.</p> <p>This parameter is only supported for Memcached cache clusters.</p> <p>If the <code>AZMode</code> and <code>PreferredAvailabilityZones</code> are not specified, ElastiCache assumes <code>single-az</code> mode.</p>
+-- * SecurityGroupIds [SecurityGroupIdsList] <p>One or more VPC security groups associated with the cluster.</p> <p>Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).</p>
+-- * PreferredAvailabilityZones [PreferredAvailabilityZoneList] <p>A list of the Availability Zones in which cache nodes are created. The order of the zones in the list is not important.</p> <p>This option is only supported on Memcached.</p> <note> <p>If you are creating your cluster in an Amazon VPC (recommended) you can only locate nodes in Availability Zones that are associated with the subnets in the selected subnet group.</p> <p>The number of Availability Zones listed must equal the value of <code>NumCacheNodes</code>.</p> </note> <p>If you want all the nodes in the same Availability Zone, use <code>PreferredAvailabilityZone</code> instead, or repeat the Availability Zone multiple times in the list.</p> <p>Default: System chosen Availability Zones.</p>
+-- * EngineVersion [String] <p>The version number of the cache engine to be used for this cluster. To view the supported cache engine versions, use the DescribeCacheEngineVersions operation.</p> <p> <b>Important:</b> You can upgrade to a newer engine version (see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement">Selecting a Cache Engine and Version</a>), but you cannot downgrade to an earlier engine version. If you want to use an earlier engine version, you must delete the existing cluster or replication group and create it anew with the earlier engine version. </p>
+-- * AZMode [AZMode] <p>Specifies whether the nodes in this Memcached cluster are created in a single Availability Zone or created across multiple Availability Zones in the cluster's region.</p> <p>This parameter is only supported for Memcached clusters.</p> <p>If the <code>AZMode</code> and <code>PreferredAvailabilityZones</code> are not specified, ElastiCache assumes <code>single-az</code> mode.</p>
 -- * SnapshotArns [SnapshotArnsList] <p>A single-element string list containing an Amazon Resource Name (ARN) that uniquely identifies a Redis RDB snapshot file stored in Amazon S3. The snapshot file is used to populate the node group (shard). The Amazon S3 object name in the ARN cannot contain any commas.</p> <note> <p>This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.</p> </note> <p>Example of an Amazon S3 ARN: <code>arn:aws:s3:::my_bucket/snapshot1.rdb</code> </p>
--- * PreferredAvailabilityZone [String] <p>The EC2 Availability Zone in which the cache cluster is created.</p> <p>All nodes belonging to this Memcached cache cluster are placed in the preferred Availability Zone. If you want to create your nodes across multiple Availability Zones, use <code>PreferredAvailabilityZones</code>.</p> <p>Default: System chosen Availability Zone.</p>
--- * SnapshotWindow [String] <p>The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard).</p> <p>Example: <code>05:00-09:00</code> </p> <p>If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range.</p> <p> <b>Note:</b> This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.</p>
+-- * PreferredAvailabilityZone [String] <p>The EC2 Availability Zone in which the cluster is created.</p> <p>All nodes belonging to this Memcached cluster are placed in the preferred Availability Zone. If you want to create your nodes across multiple Availability Zones, use <code>PreferredAvailabilityZones</code>.</p> <p>Default: System chosen Availability Zone.</p>
+-- * SnapshotWindow [String] <p>The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard).</p> <p>Example: <code>05:00-09:00</code> </p> <p>If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range.</p> <note> <p>This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.</p> </note>
 -- * Port [IntegerOptional] <p>The port number on which each of the cache nodes accepts connections.</p>
 -- Required key: CacheClusterId
 -- @return CreateCacheClusterMessage structure as a key-value pair table
@@ -574,23 +564,27 @@ function M.CreateCacheClusterMessage(args)
     }
 end
 
-keys.InvalidCacheClusterStateFault = { nil }
+keys.ReshardingConfiguration = { ["PreferredAvailabilityZones"] = true, ["NodeGroupId"] = true, nil }
 
-function asserts.AssertInvalidCacheClusterStateFault(struct)
+function asserts.AssertReshardingConfiguration(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidCacheClusterStateFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected ReshardingConfiguration to be of type 'table'")
+	if struct["PreferredAvailabilityZones"] then asserts.AssertAvailabilityZonesList(struct["PreferredAvailabilityZones"]) end
+	if struct["NodeGroupId"] then asserts.AssertAllowedNodeGroupId(struct["NodeGroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidCacheClusterStateFault[k], "InvalidCacheClusterStateFault contains unknown key " .. tostring(k))
+		assert(keys.ReshardingConfiguration[k], "ReshardingConfiguration contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidCacheClusterStateFault
--- <p>The requested cache cluster is not in the <code>available</code> state.</p>
+--- Create a structure of type ReshardingConfiguration
+-- <p>A list of <code>PreferredAvailabilityZones</code> objects that specifies the configuration of a node group in the resharded cluster.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidCacheClusterStateFault structure as a key-value pair table
-function M.InvalidCacheClusterStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidCacheClusterStateFault")
+-- * PreferredAvailabilityZones [AvailabilityZonesList] <p>A list of preferred availability zones for the nodes in this cluster.</p>
+-- * NodeGroupId [AllowedNodeGroupId] <p>The 4-digit id for the node group these configuration values apply to.</p>
+-- @return ReshardingConfiguration structure as a key-value pair table
+function M.ReshardingConfiguration(args)
+	assert(args, "You must provide an argument table when creating ReshardingConfiguration")
     local query_args = { 
     }
     local uri_args = { 
@@ -598,8 +592,10 @@ function M.InvalidCacheClusterStateFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["PreferredAvailabilityZones"] = args["PreferredAvailabilityZones"],
+		["NodeGroupId"] = args["NodeGroupId"],
 	}
-	asserts.AssertInvalidCacheClusterStateFault(all_args)
+	asserts.AssertReshardingConfiguration(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -714,8 +710,8 @@ end
 -- <p>Represents the input of a <code>DeleteCacheCluster</code> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * FinalSnapshotIdentifier [String] <p>The user-supplied name of a final cache cluster snapshot. This is the unique name that identifies the snapshot. ElastiCache creates the snapshot, and then deletes the cache cluster immediately afterward.</p>
--- * CacheClusterId [String] <p>The cache cluster identifier for the cluster to be deleted. This parameter is not case sensitive.</p>
+-- * FinalSnapshotIdentifier [String] <p>The user-supplied name of a final cluster snapshot. This is the unique name that identifies the snapshot. ElastiCache creates the snapshot, and then deletes the cluster immediately afterward.</p>
+-- * CacheClusterId [String] <p>The cluster identifier for the cluster to be deleted. This parameter is not case sensitive.</p>
 -- Required key: CacheClusterId
 -- @return DeleteCacheClusterMessage structure as a key-value pair table
 function M.DeleteCacheClusterMessage(args)
@@ -739,29 +735,31 @@ function M.DeleteCacheClusterMessage(args)
     }
 end
 
-keys.DescribeCacheSubnetGroupsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["CacheSubnetGroupName"] = true, nil }
+keys.CreateCacheSecurityGroupMessage = { ["CacheSecurityGroupName"] = true, ["Description"] = true, nil }
 
-function asserts.AssertDescribeCacheSubnetGroupsMessage(struct)
+function asserts.AssertCreateCacheSecurityGroupMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeCacheSubnetGroupsMessage to be of type 'table'")
-	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
-	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
-	if struct["CacheSubnetGroupName"] then asserts.AssertString(struct["CacheSubnetGroupName"]) end
+	assert(type(struct) == "table", "Expected CreateCacheSecurityGroupMessage to be of type 'table'")
+	assert(struct["CacheSecurityGroupName"], "Expected key CacheSecurityGroupName to exist in table")
+	assert(struct["Description"], "Expected key Description to exist in table")
+	if struct["CacheSecurityGroupName"] then asserts.AssertString(struct["CacheSecurityGroupName"]) end
+	if struct["Description"] then asserts.AssertString(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DescribeCacheSubnetGroupsMessage[k], "DescribeCacheSubnetGroupsMessage contains unknown key " .. tostring(k))
+		assert(keys.CreateCacheSecurityGroupMessage[k], "CreateCacheSecurityGroupMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DescribeCacheSubnetGroupsMessage
--- <p>Represents the input of a <code>DescribeCacheSubnetGroups</code> operation.</p>
+--- Create a structure of type CreateCacheSecurityGroupMessage
+-- <p>Represents the input of a <code>CreateCacheSecurityGroup</code> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Marker [String] <p>An optional marker returned from a prior request. Use this marker for pagination of results from this operation. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>.</p>
--- * MaxRecords [IntegerOptional] <p>The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a marker is included in the response so that the remaining results can be retrieved.</p> <p>Default: 100</p> <p>Constraints: minimum 20; maximum 100.</p>
--- * CacheSubnetGroupName [String] <p>The name of the cache subnet group to return details for.</p>
--- @return DescribeCacheSubnetGroupsMessage structure as a key-value pair table
-function M.DescribeCacheSubnetGroupsMessage(args)
-	assert(args, "You must provide an argument table when creating DescribeCacheSubnetGroupsMessage")
+-- * CacheSecurityGroupName [String] <p>A name for the cache security group. This value is stored as a lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric characters. Cannot be the word "Default".</p> <p>Example: <code>mysecuritygroup</code> </p>
+-- * Description [String] <p>A description for the cache security group.</p>
+-- Required key: CacheSecurityGroupName
+-- Required key: Description
+-- @return CreateCacheSecurityGroupMessage structure as a key-value pair table
+function M.CreateCacheSecurityGroupMessage(args)
+	assert(args, "You must provide an argument table when creating CreateCacheSecurityGroupMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -769,11 +767,10 @@ function M.DescribeCacheSubnetGroupsMessage(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Marker"] = args["Marker"],
-		["MaxRecords"] = args["MaxRecords"],
-		["CacheSubnetGroupName"] = args["CacheSubnetGroupName"],
+		["CacheSecurityGroupName"] = args["CacheSecurityGroupName"],
+		["Description"] = args["Description"],
 	}
-	asserts.AssertDescribeCacheSubnetGroupsMessage(all_args)
+	asserts.AssertCreateCacheSecurityGroupMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -856,46 +853,6 @@ function M.CreateCacheSecurityGroupResult(args)
     }
 end
 
-keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
-
-function asserts.AssertTag(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
-	if struct["Value"] then asserts.AssertString(struct["Value"]) end
-	if struct["Key"] then asserts.AssertString(struct["Key"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type Tag
--- <p>A cost allocation Tag that can be added to an ElastiCache cluster or replication group. Tags are composed of a Key/Value pair. A tag with a null Value is permitted.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Value [String] <p>The tag's value. May be null.</p>
--- * Key [String] <p>The key for the tag. May not be null.</p>
--- @return Tag structure as a key-value pair table
-function M.Tag(args)
-	assert(args, "You must provide an argument table when creating Tag")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Value"] = args["Value"],
-		["Key"] = args["Key"],
-	}
-	asserts.AssertTag(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.RevokeCacheSecurityGroupIngressMessage = { ["EC2SecurityGroupName"] = true, ["CacheSecurityGroupName"] = true, ["EC2SecurityGroupOwnerId"] = true, nil }
 
 function asserts.AssertRevokeCacheSecurityGroupIngressMessage(struct)
@@ -945,25 +902,29 @@ function M.RevokeCacheSecurityGroupIngressMessage(args)
     }
 end
 
-keys.DescribeEngineDefaultParametersResult = { ["EngineDefaults"] = true, nil }
+keys.DescribeCacheSubnetGroupsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["CacheSubnetGroupName"] = true, nil }
 
-function asserts.AssertDescribeEngineDefaultParametersResult(struct)
+function asserts.AssertDescribeCacheSubnetGroupsMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeEngineDefaultParametersResult to be of type 'table'")
-	if struct["EngineDefaults"] then asserts.AssertEngineDefaults(struct["EngineDefaults"]) end
+	assert(type(struct) == "table", "Expected DescribeCacheSubnetGroupsMessage to be of type 'table'")
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["CacheSubnetGroupName"] then asserts.AssertString(struct["CacheSubnetGroupName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DescribeEngineDefaultParametersResult[k], "DescribeEngineDefaultParametersResult contains unknown key " .. tostring(k))
+		assert(keys.DescribeCacheSubnetGroupsMessage[k], "DescribeCacheSubnetGroupsMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DescribeEngineDefaultParametersResult
---  
+--- Create a structure of type DescribeCacheSubnetGroupsMessage
+-- <p>Represents the input of a <code>DescribeCacheSubnetGroups</code> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * EngineDefaults [EngineDefaults] 
--- @return DescribeEngineDefaultParametersResult structure as a key-value pair table
-function M.DescribeEngineDefaultParametersResult(args)
-	assert(args, "You must provide an argument table when creating DescribeEngineDefaultParametersResult")
+-- * Marker [String] <p>An optional marker returned from a prior request. Use this marker for pagination of results from this operation. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>.</p>
+-- * MaxRecords [IntegerOptional] <p>The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a marker is included in the response so that the remaining results can be retrieved.</p> <p>Default: 100</p> <p>Constraints: minimum 20; maximum 100.</p>
+-- * CacheSubnetGroupName [String] <p>The name of the cache subnet group to return details for.</p>
+-- @return DescribeCacheSubnetGroupsMessage structure as a key-value pair table
+function M.DescribeCacheSubnetGroupsMessage(args)
+	assert(args, "You must provide an argument table when creating DescribeCacheSubnetGroupsMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -971,53 +932,11 @@ function M.DescribeEngineDefaultParametersResult(args)
     local header_args = { 
     }
 	local all_args = { 
-		["EngineDefaults"] = args["EngineDefaults"],
+		["Marker"] = args["Marker"],
+		["MaxRecords"] = args["MaxRecords"],
+		["CacheSubnetGroupName"] = args["CacheSubnetGroupName"],
 	}
-	asserts.AssertDescribeEngineDefaultParametersResult(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CreateCacheSecurityGroupMessage = { ["CacheSecurityGroupName"] = true, ["Description"] = true, nil }
-
-function asserts.AssertCreateCacheSecurityGroupMessage(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CreateCacheSecurityGroupMessage to be of type 'table'")
-	assert(struct["CacheSecurityGroupName"], "Expected key CacheSecurityGroupName to exist in table")
-	assert(struct["Description"], "Expected key Description to exist in table")
-	if struct["CacheSecurityGroupName"] then asserts.AssertString(struct["CacheSecurityGroupName"]) end
-	if struct["Description"] then asserts.AssertString(struct["Description"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.CreateCacheSecurityGroupMessage[k], "CreateCacheSecurityGroupMessage contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CreateCacheSecurityGroupMessage
--- <p>Represents the input of a <code>CreateCacheSecurityGroup</code> operation.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * CacheSecurityGroupName [String] <p>A name for the cache security group. This value is stored as a lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric characters. Cannot be the word "Default".</p> <p>Example: <code>mysecuritygroup</code> </p>
--- * Description [String] <p>A description for the cache security group.</p>
--- Required key: CacheSecurityGroupName
--- Required key: Description
--- @return CreateCacheSecurityGroupMessage structure as a key-value pair table
-function M.CreateCacheSecurityGroupMessage(args)
-	assert(args, "You must provide an argument table when creating CreateCacheSecurityGroupMessage")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["CacheSecurityGroupName"] = args["CacheSecurityGroupName"],
-		["Description"] = args["Description"],
-	}
-	asserts.AssertCreateCacheSecurityGroupMessage(all_args)
+	asserts.AssertDescribeCacheSubnetGroupsMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1115,23 +1034,31 @@ function M.EventsMessage(args)
     }
 end
 
-keys.InsufficientCacheClusterCapacityFault = { nil }
+keys.DescribeEngineDefaultParametersMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["CacheParameterGroupFamily"] = true, nil }
 
-function asserts.AssertInsufficientCacheClusterCapacityFault(struct)
+function asserts.AssertDescribeEngineDefaultParametersMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InsufficientCacheClusterCapacityFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected DescribeEngineDefaultParametersMessage to be of type 'table'")
+	assert(struct["CacheParameterGroupFamily"], "Expected key CacheParameterGroupFamily to exist in table")
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["CacheParameterGroupFamily"] then asserts.AssertString(struct["CacheParameterGroupFamily"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InsufficientCacheClusterCapacityFault[k], "InsufficientCacheClusterCapacityFault contains unknown key " .. tostring(k))
+		assert(keys.DescribeEngineDefaultParametersMessage[k], "DescribeEngineDefaultParametersMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InsufficientCacheClusterCapacityFault
--- <p>The requested cache node type is not available in the specified Availability Zone.</p>
+--- Create a structure of type DescribeEngineDefaultParametersMessage
+-- <p>Represents the input of a <code>DescribeEngineDefaultParameters</code> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InsufficientCacheClusterCapacityFault structure as a key-value pair table
-function M.InsufficientCacheClusterCapacityFault(args)
-	assert(args, "You must provide an argument table when creating InsufficientCacheClusterCapacityFault")
+-- * Marker [String] <p>An optional marker returned from a prior request. Use this marker for pagination of results from this operation. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>.</p>
+-- * MaxRecords [IntegerOptional] <p>The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a marker is included in the response so that the remaining results can be retrieved.</p> <p>Default: 100</p> <p>Constraints: minimum 20; maximum 100.</p>
+-- * CacheParameterGroupFamily [String] <p>The name of the cache parameter group family.</p> <p>Valid values are: <code>memcached1.4</code> | <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> | <code>redis4.0</code> </p>
+-- Required key: CacheParameterGroupFamily
+-- @return DescribeEngineDefaultParametersMessage structure as a key-value pair table
+function M.DescribeEngineDefaultParametersMessage(args)
+	assert(args, "You must provide an argument table when creating DescribeEngineDefaultParametersMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -1139,42 +1066,11 @@ function M.InsufficientCacheClusterCapacityFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Marker"] = args["Marker"],
+		["MaxRecords"] = args["MaxRecords"],
+		["CacheParameterGroupFamily"] = args["CacheParameterGroupFamily"],
 	}
-	asserts.AssertInsufficientCacheClusterCapacityFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CacheSecurityGroupNotFoundFault = { nil }
-
-function asserts.AssertCacheSecurityGroupNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CacheSecurityGroupNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.CacheSecurityGroupNotFoundFault[k], "CacheSecurityGroupNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CacheSecurityGroupNotFoundFault
--- <p>The requested cache security group name does not refer to an existing cache security group.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return CacheSecurityGroupNotFoundFault structure as a key-value pair table
-function M.CacheSecurityGroupNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating CacheSecurityGroupNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertCacheSecurityGroupNotFoundFault(all_args)
+	asserts.AssertDescribeEngineDefaultParametersMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1238,23 +1134,33 @@ function M.DescribeEventsMessage(args)
     }
 end
 
-keys.CacheSubnetQuotaExceededFault = { nil }
+keys.ConfigureShard = { ["NewReplicaCount"] = true, ["PreferredAvailabilityZones"] = true, ["NodeGroupId"] = true, nil }
 
-function asserts.AssertCacheSubnetQuotaExceededFault(struct)
+function asserts.AssertConfigureShard(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected CacheSubnetQuotaExceededFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected ConfigureShard to be of type 'table'")
+	assert(struct["NodeGroupId"], "Expected key NodeGroupId to exist in table")
+	assert(struct["NewReplicaCount"], "Expected key NewReplicaCount to exist in table")
+	if struct["NewReplicaCount"] then asserts.AssertInteger(struct["NewReplicaCount"]) end
+	if struct["PreferredAvailabilityZones"] then asserts.AssertPreferredAvailabilityZoneList(struct["PreferredAvailabilityZones"]) end
+	if struct["NodeGroupId"] then asserts.AssertAllowedNodeGroupId(struct["NodeGroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.CacheSubnetQuotaExceededFault[k], "CacheSubnetQuotaExceededFault contains unknown key " .. tostring(k))
+		assert(keys.ConfigureShard[k], "ConfigureShard contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type CacheSubnetQuotaExceededFault
--- <p>The request cannot be processed because it would exceed the allowed number of subnets in a cache subnet group.</p>
+--- Create a structure of type ConfigureShard
+-- <p>Node group (shard) configuration options when adding or removing replicas. Each node group (shard) configuration has the following members: NodeGroupId, NewReplicaCount, and PreferredAvailabilityZones. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return CacheSubnetQuotaExceededFault structure as a key-value pair table
-function M.CacheSubnetQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating CacheSubnetQuotaExceededFault")
+-- * NewReplicaCount [Integer] <p>The number of replicas you want in this node group at the end of this operation. The maximum value for <code>NewReplicaCount</code> is 5. The minimum value depends upon the type of Redis replication group you are working with.</p> <p>The minimum number of replicas in a shard or replication group is:</p> <ul> <li> <p>Redis (cluster mode disabled)</p> <ul> <li> <p>If Multi-AZ with Automatic Failover is enabled: 1</p> </li> <li> <p>If Multi-AZ with Automatic Failover is not enable: 0</p> </li> </ul> </li> <li> <p>Redis (cluster mode enabled): 0 (though you will not be able to failover to a replica if your primary node fails)</p> </li> </ul>
+-- * PreferredAvailabilityZones [PreferredAvailabilityZoneList] <p>A list of <code>PreferredAvailabilityZone</code> strings that specify which availability zones the replication group's nodes are to be in. The nummber of <code>PreferredAvailabilityZone</code> values must equal the value of <code>NewReplicaCount</code> plus 1 to account for the primary node. If this member of <code>ReplicaConfiguration</code> is omitted, ElastiCache for Redis selects the availability zone for each of the replicas.</p>
+-- * NodeGroupId [AllowedNodeGroupId] <p>The 4-digit id for the node group you are configuring. For Redis (cluster mode disabled) replication groups, the node group id is always 0001. To find a Redis (cluster mode enabled)'s node group's (shard's) id, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/shard-find-id.html">Finding a Shard's Id</a>.</p>
+-- Required key: NodeGroupId
+-- Required key: NewReplicaCount
+-- @return ConfigureShard structure as a key-value pair table
+function M.ConfigureShard(args)
+	assert(args, "You must provide an argument table when creating ConfigureShard")
     local query_args = { 
     }
     local uri_args = { 
@@ -1262,8 +1168,11 @@ function M.CacheSubnetQuotaExceededFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["NewReplicaCount"] = args["NewReplicaCount"],
+		["PreferredAvailabilityZones"] = args["PreferredAvailabilityZones"],
+		["NodeGroupId"] = args["NodeGroupId"],
 	}
-	asserts.AssertCacheSubnetQuotaExceededFault(all_args)
+	asserts.AssertConfigureShard(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1272,31 +1181,25 @@ function M.CacheSubnetQuotaExceededFault(args)
     }
 end
 
-keys.DescribeEngineDefaultParametersMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["CacheParameterGroupFamily"] = true, nil }
+keys.IncreaseReplicaCountResult = { ["ReplicationGroup"] = true, nil }
 
-function asserts.AssertDescribeEngineDefaultParametersMessage(struct)
+function asserts.AssertIncreaseReplicaCountResult(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeEngineDefaultParametersMessage to be of type 'table'")
-	assert(struct["CacheParameterGroupFamily"], "Expected key CacheParameterGroupFamily to exist in table")
-	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
-	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
-	if struct["CacheParameterGroupFamily"] then asserts.AssertString(struct["CacheParameterGroupFamily"]) end
+	assert(type(struct) == "table", "Expected IncreaseReplicaCountResult to be of type 'table'")
+	if struct["ReplicationGroup"] then asserts.AssertReplicationGroup(struct["ReplicationGroup"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DescribeEngineDefaultParametersMessage[k], "DescribeEngineDefaultParametersMessage contains unknown key " .. tostring(k))
+		assert(keys.IncreaseReplicaCountResult[k], "IncreaseReplicaCountResult contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DescribeEngineDefaultParametersMessage
--- <p>Represents the input of a <code>DescribeEngineDefaultParameters</code> operation.</p>
+--- Create a structure of type IncreaseReplicaCountResult
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Marker [String] <p>An optional marker returned from a prior request. Use this marker for pagination of results from this operation. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>.</p>
--- * MaxRecords [IntegerOptional] <p>The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a marker is included in the response so that the remaining results can be retrieved.</p> <p>Default: 100</p> <p>Constraints: minimum 20; maximum 100.</p>
--- * CacheParameterGroupFamily [String] <p>The name of the cache parameter group family.</p> <p>Valid values are: <code>memcached1.4</code> | <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
--- Required key: CacheParameterGroupFamily
--- @return DescribeEngineDefaultParametersMessage structure as a key-value pair table
-function M.DescribeEngineDefaultParametersMessage(args)
-	assert(args, "You must provide an argument table when creating DescribeEngineDefaultParametersMessage")
+-- * ReplicationGroup [ReplicationGroup] 
+-- @return IncreaseReplicaCountResult structure as a key-value pair table
+function M.IncreaseReplicaCountResult(args)
+	assert(args, "You must provide an argument table when creating IncreaseReplicaCountResult")
     local query_args = { 
     }
     local uri_args = { 
@@ -1304,11 +1207,9 @@ function M.DescribeEngineDefaultParametersMessage(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Marker"] = args["Marker"],
-		["MaxRecords"] = args["MaxRecords"],
-		["CacheParameterGroupFamily"] = args["CacheParameterGroupFamily"],
+		["ReplicationGroup"] = args["ReplicationGroup"],
 	}
-	asserts.AssertDescribeEngineDefaultParametersMessage(all_args)
+	asserts.AssertIncreaseReplicaCountResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1317,23 +1218,25 @@ function M.DescribeEngineDefaultParametersMessage(args)
     }
 end
 
-keys.SnapshotFeatureNotSupportedFault = { nil }
+keys.DecreaseReplicaCountResult = { ["ReplicationGroup"] = true, nil }
 
-function asserts.AssertSnapshotFeatureNotSupportedFault(struct)
+function asserts.AssertDecreaseReplicaCountResult(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SnapshotFeatureNotSupportedFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected DecreaseReplicaCountResult to be of type 'table'")
+	if struct["ReplicationGroup"] then asserts.AssertReplicationGroup(struct["ReplicationGroup"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SnapshotFeatureNotSupportedFault[k], "SnapshotFeatureNotSupportedFault contains unknown key " .. tostring(k))
+		assert(keys.DecreaseReplicaCountResult[k], "DecreaseReplicaCountResult contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SnapshotFeatureNotSupportedFault
--- <p>You attempted one of the following operations:</p> <ul> <li> <p>Creating a snapshot of a Redis cache cluster running on a <code>cache.t1.micro</code> cache node.</p> </li> <li> <p>Creating a snapshot of a cache cluster that is running Memcached rather than Redis.</p> </li> </ul> <p>Neither of these are supported by ElastiCache.</p>
+--- Create a structure of type DecreaseReplicaCountResult
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return SnapshotFeatureNotSupportedFault structure as a key-value pair table
-function M.SnapshotFeatureNotSupportedFault(args)
-	assert(args, "You must provide an argument table when creating SnapshotFeatureNotSupportedFault")
+-- * ReplicationGroup [ReplicationGroup] 
+-- @return DecreaseReplicaCountResult structure as a key-value pair table
+function M.DecreaseReplicaCountResult(args)
+	assert(args, "You must provide an argument table when creating DecreaseReplicaCountResult")
     local query_args = { 
     }
     local uri_args = { 
@@ -1341,8 +1244,9 @@ function M.SnapshotFeatureNotSupportedFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["ReplicationGroup"] = args["ReplicationGroup"],
 	}
-	asserts.AssertSnapshotFeatureNotSupportedFault(all_args)
+	asserts.AssertDecreaseReplicaCountResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1388,23 +1292,27 @@ function M.DeleteSnapshotResult(args)
     }
 end
 
-keys.SnapshotQuotaExceededFault = { nil }
+keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
 
-function asserts.AssertSnapshotQuotaExceededFault(struct)
+function asserts.AssertTag(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SnapshotQuotaExceededFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
+	if struct["Value"] then asserts.AssertString(struct["Value"]) end
+	if struct["Key"] then asserts.AssertString(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SnapshotQuotaExceededFault[k], "SnapshotQuotaExceededFault contains unknown key " .. tostring(k))
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SnapshotQuotaExceededFault
--- <p>The request cannot be processed because it would exceed the maximum number of snapshots.</p>
+--- Create a structure of type Tag
+-- <p>A cost allocation Tag that can be added to an ElastiCache cluster or replication group. Tags are composed of a Key/Value pair. A tag with a null Value is permitted.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return SnapshotQuotaExceededFault structure as a key-value pair table
-function M.SnapshotQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating SnapshotQuotaExceededFault")
+-- * Value [String] <p>The tag's value. May be null.</p>
+-- * Key [String] <p>The key for the tag. May not be null.</p>
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provide an argument table when creating Tag")
     local query_args = { 
     }
     local uri_args = { 
@@ -1412,8 +1320,10 @@ function M.SnapshotQuotaExceededFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
-	asserts.AssertSnapshotQuotaExceededFault(all_args)
+	asserts.AssertTag(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1451,7 +1361,7 @@ end
 -- * Marker [String] <p>An optional marker returned from a prior request. Use this marker for pagination of results from this operation. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>.</p>
 -- * MaxRecords [IntegerOptional] <p>The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a marker is included in the response so that the remaining results can be retrieved.</p> <p>Default: 100</p> <p>Constraints: minimum 20; maximum 100.</p>
 -- * Duration [String] <p>The duration filter value, specified in years or seconds. Use this parameter to show only reservations for this duration.</p> <p>Valid Values: <code>1 | 3 | 31536000 | 94608000</code> </p>
--- * CacheNodeType [String] <p>The cache node type filter value. Use this parameter to show only those reservations matching the specified cache node type.</p> <p>Valid node types are as follows:</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> or <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a>.</p>
+-- * CacheNodeType [String] <p>The cache node type filter value. Use this parameter to show only those reservations matching the specified cache node type.</p> <p>The following node types are supported by ElastiCache. Generally speaking, the current generation types provide more memory and computational power at lower cost when compared to their equivalent previous generation counterparts.</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: </p> <p> <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code> </p> <p> <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code> </p> <p> <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: (not recommended)</p> <p> <b>T1 node types:</b> <code>cache.t1.micro</code> </p> <p> <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized:</p> <ul> <li> <p>Previous generation: (not recommended)</p> <p> <b>C1 node types:</b> <code>cache.c1.xlarge</code> </p> </li> </ul> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: </p> <p> <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> <p> <b>R4 node types;</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>, <code>cache.r4.2xlarge</code>, <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>, <code>cache.r4.16xlarge</code> </p> </li> <li> <p>Previous generation: (not recommended)</p> <p> <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances. </p> </li> <li> <p>Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see:</p> <ul> <li> <p> <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a> </p> </li> </ul>
 -- @return DescribeReservedCacheNodesMessage structure as a key-value pair table
 function M.DescribeReservedCacheNodesMessage(args)
 	assert(args, "You must provide an argument table when creating DescribeReservedCacheNodesMessage")
@@ -1480,23 +1390,25 @@ function M.DescribeReservedCacheNodesMessage(args)
     }
 end
 
-keys.NodeGroupsPerReplicationGroupQuotaExceededFault = { nil }
+keys.ReshardingStatus = { ["SlotMigration"] = true, nil }
 
-function asserts.AssertNodeGroupsPerReplicationGroupQuotaExceededFault(struct)
+function asserts.AssertReshardingStatus(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected NodeGroupsPerReplicationGroupQuotaExceededFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected ReshardingStatus to be of type 'table'")
+	if struct["SlotMigration"] then asserts.AssertSlotMigration(struct["SlotMigration"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.NodeGroupsPerReplicationGroupQuotaExceededFault[k], "NodeGroupsPerReplicationGroupQuotaExceededFault contains unknown key " .. tostring(k))
+		assert(keys.ReshardingStatus[k], "ReshardingStatus contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type NodeGroupsPerReplicationGroupQuotaExceededFault
--- <p>The request cannot be processed because it would exceed the maximum of 15 node groups (shards) in a single replication group.</p>
+--- Create a structure of type ReshardingStatus
+-- <p>The status of an online resharding operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return NodeGroupsPerReplicationGroupQuotaExceededFault structure as a key-value pair table
-function M.NodeGroupsPerReplicationGroupQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating NodeGroupsPerReplicationGroupQuotaExceededFault")
+-- * SlotMigration [SlotMigration] <p>Represents the progress of an online resharding operation.</p>
+-- @return ReshardingStatus structure as a key-value pair table
+function M.ReshardingStatus(args)
+	assert(args, "You must provide an argument table when creating ReshardingStatus")
     local query_args = { 
     }
     local uri_args = { 
@@ -1504,8 +1416,9 @@ function M.NodeGroupsPerReplicationGroupQuotaExceededFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["SlotMigration"] = args["SlotMigration"],
 	}
-	asserts.AssertNodeGroupsPerReplicationGroupQuotaExceededFault(all_args)
+	asserts.AssertReshardingStatus(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1532,7 +1445,7 @@ end
 -- <p>Represents the input of an AddTagsToResource operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ResourceName [String] <p>The Amazon Resource Name (ARN) of the resource to which the tags are to be added, for example <code>arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster</code> or <code>arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot</code>.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+-- * ResourceName [String] <p>The Amazon Resource Name (ARN) of the resource to which the tags are to be added, for example <code>arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster</code> or <code>arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot</code>. ElastiCache resources are <i>cluster</i> and <i>snapshot</i>.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
 -- * Tags [TagList] <p>A list of cost allocation tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value.</p>
 -- Required key: ResourceName
 -- Required key: Tags
@@ -1637,119 +1550,12 @@ function M.DeleteCacheSubnetGroupMessage(args)
     }
 end
 
-keys.CacheSubnetGroupAlreadyExistsFault = { nil }
-
-function asserts.AssertCacheSubnetGroupAlreadyExistsFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CacheSubnetGroupAlreadyExistsFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.CacheSubnetGroupAlreadyExistsFault[k], "CacheSubnetGroupAlreadyExistsFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CacheSubnetGroupAlreadyExistsFault
--- <p>The requested cache subnet group name is already in use by an existing cache subnet group.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return CacheSubnetGroupAlreadyExistsFault structure as a key-value pair table
-function M.CacheSubnetGroupAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating CacheSubnetGroupAlreadyExistsFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertCacheSubnetGroupAlreadyExistsFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidSubnet = { nil }
-
-function asserts.AssertInvalidSubnet(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidSubnet to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidSubnet[k], "InvalidSubnet contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidSubnet
--- <p>An invalid subnet identifier was specified.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidSubnet structure as a key-value pair table
-function M.InvalidSubnet(args)
-	assert(args, "You must provide an argument table when creating InvalidSubnet")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidSubnet(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.Endpoint = { ["Port"] = true, ["Address"] = true, nil }
-
-function asserts.AssertEndpoint(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected Endpoint to be of type 'table'")
-	if struct["Port"] then asserts.AssertInteger(struct["Port"]) end
-	if struct["Address"] then asserts.AssertString(struct["Address"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.Endpoint[k], "Endpoint contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type Endpoint
--- <p>Represents the information required for client programs to connect to a cache node.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Port [Integer] <p>The port number that the cache engine is listening on.</p>
--- * Address [String] <p>The DNS hostname of the cache node.</p>
--- @return Endpoint structure as a key-value pair table
-function M.Endpoint(args)
-	assert(args, "You must provide an argument table when creating Endpoint")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Port"] = args["Port"],
-		["Address"] = args["Address"],
-	}
-	asserts.AssertEndpoint(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ReplicationGroupPendingModifiedValues = { ["AutomaticFailoverStatus"] = true, ["PrimaryClusterId"] = true, nil }
+keys.ReplicationGroupPendingModifiedValues = { ["Resharding"] = true, ["AutomaticFailoverStatus"] = true, ["PrimaryClusterId"] = true, nil }
 
 function asserts.AssertReplicationGroupPendingModifiedValues(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReplicationGroupPendingModifiedValues to be of type 'table'")
+	if struct["Resharding"] then asserts.AssertReshardingStatus(struct["Resharding"]) end
 	if struct["AutomaticFailoverStatus"] then asserts.AssertPendingAutomaticFailoverStatus(struct["AutomaticFailoverStatus"]) end
 	if struct["PrimaryClusterId"] then asserts.AssertString(struct["PrimaryClusterId"]) end
 	for k,_ in pairs(struct) do
@@ -1761,7 +1567,8 @@ end
 -- <p>The settings to be applied to the Redis replication group, either immediately or during the next maintenance window.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AutomaticFailoverStatus [PendingAutomaticFailoverStatus] <p>Indicates the status of Multi-AZ for this Redis replication group.</p> <note> <p>ElastiCache Multi-AZ replication groups are not supported on:</p> <ul> <li> <p>Redis versions earlier than 2.8.6.</p> </li> <li> <p>Redis (cluster mode disabled):T1 and T2 cache node types.</p> <p>Redis (cluster mode enabled): T1 node types.</p> </li> </ul> </note>
+-- * Resharding [ReshardingStatus] <p>The status of an online resharding operation.</p>
+-- * AutomaticFailoverStatus [PendingAutomaticFailoverStatus] <p>Indicates the status of Multi-AZ with automatic failover for this Redis replication group.</p> <p>Amazon ElastiCache for Redis does not support Multi-AZ with automatic failover on:</p> <ul> <li> <p>Redis versions earlier than 2.8.6.</p> </li> <li> <p>Redis (cluster mode disabled): T1 and T2 cache node types.</p> </li> <li> <p>Redis (cluster mode enabled): T1 node types.</p> </li> </ul>
 -- * PrimaryClusterId [String] <p>The primary cluster ID that is applied immediately (if <code>--apply-immediately</code> was specified), or during the next maintenance window.</p>
 -- @return ReplicationGroupPendingModifiedValues structure as a key-value pair table
 function M.ReplicationGroupPendingModifiedValues(args)
@@ -1773,6 +1580,7 @@ function M.ReplicationGroupPendingModifiedValues(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Resharding"] = args["Resharding"],
 		["AutomaticFailoverStatus"] = args["AutomaticFailoverStatus"],
 		["PrimaryClusterId"] = args["PrimaryClusterId"],
 	}
@@ -1854,7 +1662,7 @@ end
 -- Valid keys:
 -- * Description [String] <p>A description of the parameter.</p>
 -- * DataType [String] <p>The valid data type for the parameter.</p>
--- * ChangeType [ChangeType] <p>Indicates whether a change to the parameter is applied immediately or requires a reboot for the change to be applied. You can force a reboot or wait until the next maintenance window's reboot. For more information, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Clusters.Rebooting.html">Rebooting a Cluster</a>.</p>
+-- * ChangeType [ChangeType] <p>Indicates whether a change to the parameter is applied immediately or requires a reboot for the change to be applied. You can force a reboot or wait until the next maintenance window's reboot. For more information, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Rebooting.html">Rebooting a Cluster</a>.</p>
 -- * IsModifiable [Boolean] <p>Indicates whether (<code>true</code>) or not (<code>false</code>) the parameter can be modified. Some parameters have security or operational implications that prevent them from being changed.</p>
 -- * AllowedValues [String] <p>The valid range of values for the parameter.</p>
 -- * Source [String] <p>The source of the parameter.</p>
@@ -1890,23 +1698,25 @@ function M.Parameter(args)
     }
 end
 
-keys.CacheSubnetGroupQuotaExceededFault = { nil }
+keys.SlotMigration = { ["ProgressPercentage"] = true, nil }
 
-function asserts.AssertCacheSubnetGroupQuotaExceededFault(struct)
+function asserts.AssertSlotMigration(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected CacheSubnetGroupQuotaExceededFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected SlotMigration to be of type 'table'")
+	if struct["ProgressPercentage"] then asserts.AssertDouble(struct["ProgressPercentage"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.CacheSubnetGroupQuotaExceededFault[k], "CacheSubnetGroupQuotaExceededFault contains unknown key " .. tostring(k))
+		assert(keys.SlotMigration[k], "SlotMigration contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type CacheSubnetGroupQuotaExceededFault
--- <p>The request cannot be processed because it would exceed the allowed number of cache subnet groups.</p>
+--- Create a structure of type SlotMigration
+-- <p>Represents the progress of an online resharding operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return CacheSubnetGroupQuotaExceededFault structure as a key-value pair table
-function M.CacheSubnetGroupQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating CacheSubnetGroupQuotaExceededFault")
+-- * ProgressPercentage [Double] <p>The percentage of the slot migration that is complete.</p>
+-- @return SlotMigration structure as a key-value pair table
+function M.SlotMigration(args)
+	assert(args, "You must provide an argument table when creating SlotMigration")
     local query_args = { 
     }
     local uri_args = { 
@@ -1914,8 +1724,48 @@ function M.CacheSubnetGroupQuotaExceededFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["ProgressPercentage"] = args["ProgressPercentage"],
 	}
-	asserts.AssertCacheSubnetGroupQuotaExceededFault(all_args)
+	asserts.AssertSlotMigration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteCacheSecurityGroupMessage = { ["CacheSecurityGroupName"] = true, nil }
+
+function asserts.AssertDeleteCacheSecurityGroupMessage(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteCacheSecurityGroupMessage to be of type 'table'")
+	assert(struct["CacheSecurityGroupName"], "Expected key CacheSecurityGroupName to exist in table")
+	if struct["CacheSecurityGroupName"] then asserts.AssertString(struct["CacheSecurityGroupName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteCacheSecurityGroupMessage[k], "DeleteCacheSecurityGroupMessage contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteCacheSecurityGroupMessage
+-- <p>Represents the input of a <code>DeleteCacheSecurityGroup</code> operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CacheSecurityGroupName [String] <p>The name of the cache security group to delete.</p> <note> <p>You cannot delete the default security group.</p> </note>
+-- Required key: CacheSecurityGroupName
+-- @return DeleteCacheSecurityGroupMessage structure as a key-value pair table
+function M.DeleteCacheSecurityGroupMessage(args)
+	assert(args, "You must provide an argument table when creating DeleteCacheSecurityGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["CacheSecurityGroupName"] = args["CacheSecurityGroupName"],
+	}
+	asserts.AssertDeleteCacheSecurityGroupMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2077,25 +1927,37 @@ function M.DeleteReplicationGroupResult(args)
     }
 end
 
-keys.InvalidParameterCombinationException = { ["message"] = true, nil }
+keys.DecreaseReplicaCountMessage = { ["NewReplicaCount"] = true, ["ApplyImmediately"] = true, ["ReplicasToRemove"] = true, ["ReplicaConfiguration"] = true, ["ReplicationGroupId"] = true, nil }
 
-function asserts.AssertInvalidParameterCombinationException(struct)
+function asserts.AssertDecreaseReplicaCountMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidParameterCombinationException to be of type 'table'")
-	if struct["message"] then asserts.AssertAwsQueryErrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected DecreaseReplicaCountMessage to be of type 'table'")
+	assert(struct["ReplicationGroupId"], "Expected key ReplicationGroupId to exist in table")
+	assert(struct["ApplyImmediately"], "Expected key ApplyImmediately to exist in table")
+	if struct["NewReplicaCount"] then asserts.AssertIntegerOptional(struct["NewReplicaCount"]) end
+	if struct["ApplyImmediately"] then asserts.AssertBoolean(struct["ApplyImmediately"]) end
+	if struct["ReplicasToRemove"] then asserts.AssertRemoveReplicasList(struct["ReplicasToRemove"]) end
+	if struct["ReplicaConfiguration"] then asserts.AssertReplicaConfigurationList(struct["ReplicaConfiguration"]) end
+	if struct["ReplicationGroupId"] then asserts.AssertString(struct["ReplicationGroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidParameterCombinationException[k], "InvalidParameterCombinationException contains unknown key " .. tostring(k))
+		assert(keys.DecreaseReplicaCountMessage[k], "DecreaseReplicaCountMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidParameterCombinationException
--- <p>Two or more incompatible parameters were specified.</p>
+--- Create a structure of type DecreaseReplicaCountMessage
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [AwsQueryErrorMessage] <p>Two or more parameters that must not be used together were used together.</p>
--- @return InvalidParameterCombinationException structure as a key-value pair table
-function M.InvalidParameterCombinationException(args)
-	assert(args, "You must provide an argument table when creating InvalidParameterCombinationException")
+-- * NewReplicaCount [IntegerOptional] <p>The number of read replica nodes you want at the completion of this operation. For Redis (cluster mode disabled) replication groups, this is the number of replica nodes in the replication group. For Redis (cluster mode enabled) replication groups, this is the number of replica nodes in each of the replication group's node groups.</p> <p>The minimum number of replicas in a shard or replication group is:</p> <ul> <li> <p>Redis (cluster mode disabled)</p> <ul> <li> <p>If Multi-AZ with Automatic Failover is enabled: 1</p> </li> <li> <p>If Multi-AZ with Automatic Failover is not enabled: 0</p> </li> </ul> </li> <li> <p>Redis (cluster mode enabled): 0 (though you will not be able to failover to a replica if your primary node fails)</p> </li> </ul>
+-- * ApplyImmediately [Boolean] <p>If <code>True</code>, the number of replica nodes is decreased immediately. If <code>False</code>, the number of replica nodes is decreased during the next maintenance window.</p>
+-- * ReplicasToRemove [RemoveReplicasList] <p>A list of the node ids to remove from the replication group or node group (shard).</p>
+-- * ReplicaConfiguration [ReplicaConfigurationList] <p>A list of <code>ConfigureShard</code> objects that can be used to configure each shard in a Redis (cluster mode enabled) replication group. The <code>ConfigureShard</code> has three members: <code>NewReplicaCount</code>, <code>NodeGroupId</code>, and <code>PreferredAvailabilityZones</code>.</p>
+-- * ReplicationGroupId [String] <p>The id of the replication group from which you want to remove replica nodes.</p>
+-- Required key: ReplicationGroupId
+-- Required key: ApplyImmediately
+-- @return DecreaseReplicaCountMessage structure as a key-value pair table
+function M.DecreaseReplicaCountMessage(args)
+	assert(args, "You must provide an argument table when creating DecreaseReplicaCountMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -2103,9 +1965,50 @@ function M.InvalidParameterCombinationException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["NewReplicaCount"] = args["NewReplicaCount"],
+		["ApplyImmediately"] = args["ApplyImmediately"],
+		["ReplicasToRemove"] = args["ReplicasToRemove"],
+		["ReplicaConfiguration"] = args["ReplicaConfiguration"],
+		["ReplicationGroupId"] = args["ReplicationGroupId"],
 	}
-	asserts.AssertInvalidParameterCombinationException(all_args)
+	asserts.AssertDecreaseReplicaCountMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeEngineDefaultParametersResult = { ["EngineDefaults"] = true, nil }
+
+function asserts.AssertDescribeEngineDefaultParametersResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeEngineDefaultParametersResult to be of type 'table'")
+	if struct["EngineDefaults"] then asserts.AssertEngineDefaults(struct["EngineDefaults"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeEngineDefaultParametersResult[k], "DescribeEngineDefaultParametersResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeEngineDefaultParametersResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EngineDefaults [EngineDefaults] 
+-- @return DescribeEngineDefaultParametersResult structure as a key-value pair table
+function M.DescribeEngineDefaultParametersResult(args)
+	assert(args, "You must provide an argument table when creating DescribeEngineDefaultParametersResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["EngineDefaults"] = args["EngineDefaults"],
+	}
+	asserts.AssertDescribeEngineDefaultParametersResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2129,13 +2032,13 @@ function asserts.AssertPendingModifiedValues(struct)
 end
 
 --- Create a structure of type PendingModifiedValues
--- <p>A group of settings that are applied to the cache cluster in the future, or that are currently being applied.</p>
+-- <p>A group of settings that are applied to the cluster in the future, or that are currently being applied.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NumCacheNodes [IntegerOptional] <p>The new number of cache nodes for the cache cluster.</p> <p>For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1 and 20.</p>
--- * CacheNodeType [String] <p>The cache node type that this cache cluster or replication group is scaled to.</p>
--- * EngineVersion [String] <p>The new cache engine version that the cache cluster runs.</p>
--- * CacheNodeIdsToRemove [CacheNodeIdsList] <p>A list of cache node IDs that are being removed (or will be removed) from the cache cluster. A node ID is a numeric identifier (0001, 0002, etc.).</p>
+-- * NumCacheNodes [IntegerOptional] <p>The new number of cache nodes for the cluster.</p> <p>For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1 and 20.</p>
+-- * CacheNodeType [String] <p>The cache node type that this cluster or replication group is scaled to.</p>
+-- * EngineVersion [String] <p>The new cache engine version that the cluster runs.</p>
+-- * CacheNodeIdsToRemove [CacheNodeIdsList] <p>A list of cache node IDs that are being removed (or will be removed) from the cluster. A node ID is a 4-digit numeric identifier (0001, 0002, etc.).</p>
 -- @return PendingModifiedValues structure as a key-value pair table
 function M.PendingModifiedValues(args)
 	assert(args, "You must provide an argument table when creating PendingModifiedValues")
@@ -2241,74 +2144,6 @@ function M.RecurringCharge(args)
 		["RecurringChargeFrequency"] = args["RecurringChargeFrequency"],
 	}
 	asserts.AssertRecurringCharge(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.NodeGroupNotFoundFault = { nil }
-
-function asserts.AssertNodeGroupNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected NodeGroupNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.NodeGroupNotFoundFault[k], "NodeGroupNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type NodeGroupNotFoundFault
--- <p>The node group specified by the <code>NodeGroupId</code> parameter could not be found. Please verify that the node group exists and that you spelled the <code>NodeGroupId</code> value correctly.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return NodeGroupNotFoundFault structure as a key-value pair table
-function M.NodeGroupNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating NodeGroupNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertNodeGroupNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SnapshotAlreadyExistsFault = { nil }
-
-function asserts.AssertSnapshotAlreadyExistsFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SnapshotAlreadyExistsFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SnapshotAlreadyExistsFault[k], "SnapshotAlreadyExistsFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SnapshotAlreadyExistsFault
--- <p>You already have a snapshot with the given name.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SnapshotAlreadyExistsFault structure as a key-value pair table
-function M.SnapshotAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating SnapshotAlreadyExistsFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSnapshotAlreadyExistsFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2438,40 +2273,6 @@ function M.DescribeSnapshotsListMessage(args)
     }
 end
 
-keys.CacheSubnetGroupInUse = { nil }
-
-function asserts.AssertCacheSubnetGroupInUse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CacheSubnetGroupInUse to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.CacheSubnetGroupInUse[k], "CacheSubnetGroupInUse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CacheSubnetGroupInUse
--- <p>The requested cache subnet group is currently in use.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return CacheSubnetGroupInUse structure as a key-value pair table
-function M.CacheSubnetGroupInUse(args)
-	assert(args, "You must provide an argument table when creating CacheSubnetGroupInUse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertCacheSubnetGroupInUse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.CreateCacheClusterResult = { ["CacheCluster"] = true, nil }
 
 function asserts.AssertCreateCacheClusterResult(struct)
@@ -2525,7 +2326,7 @@ end
 -- <p>The input parameters for the <code>ListAllowedNodeTypeModifications</code> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CacheClusterId [String] <p>The name of the cache cluster you want to scale up to a larger node instanced type. ElastiCache uses the cluster id to identify the current node type of this cluster and from that to create a list of node types you can scale up to.</p> <important> <p>You must provide a value for either the <code>CacheClusterId</code> or the <code>ReplicationGroupId</code>.</p> </important>
+-- * CacheClusterId [String] <p>The name of the cluster you want to scale up to a larger node instanced type. ElastiCache uses the cluster id to identify the current node type of this cluster and from that to create a list of node types you can scale up to.</p> <important> <p>You must provide a value for either the <code>CacheClusterId</code> or the <code>ReplicationGroupId</code>.</p> </important>
 -- * ReplicationGroupId [String] <p>The name of the replication group want to scale up to a larger node type. ElastiCache uses the replication group id to identify the current node type being used by this replication group, and from that to create a list of node types you can scale up to.</p> <important> <p>You must provide a value for either the <code>CacheClusterId</code> or the <code>ReplicationGroupId</code>.</p> </important>
 -- @return ListAllowedNodeTypeModificationsMessage structure as a key-value pair table
 function M.ListAllowedNodeTypeModificationsMessage(args)
@@ -2549,7 +2350,7 @@ function M.ListAllowedNodeTypeModificationsMessage(args)
     }
 end
 
-keys.CacheCluster = { ["CacheClusterId"] = true, ["ReplicationGroupId"] = true, ["CacheClusterStatus"] = true, ["SnapshotRetentionLimit"] = true, ["ClientDownloadLandingPage"] = true, ["PendingModifiedValues"] = true, ["Engine"] = true, ["CacheSecurityGroups"] = true, ["NumCacheNodes"] = true, ["AutoMinorVersionUpgrade"] = true, ["SecurityGroups"] = true, ["CacheNodeType"] = true, ["PreferredMaintenanceWindow"] = true, ["CacheSubnetGroupName"] = true, ["EngineVersion"] = true, ["CacheNodes"] = true, ["ConfigurationEndpoint"] = true, ["CacheClusterCreateTime"] = true, ["PreferredAvailabilityZone"] = true, ["SnapshotWindow"] = true, ["NotificationConfiguration"] = true, ["CacheParameterGroup"] = true, nil }
+keys.CacheCluster = { ["CacheClusterId"] = true, ["ReplicationGroupId"] = true, ["CacheClusterStatus"] = true, ["SnapshotRetentionLimit"] = true, ["ClientDownloadLandingPage"] = true, ["PendingModifiedValues"] = true, ["Engine"] = true, ["CacheSecurityGroups"] = true, ["NumCacheNodes"] = true, ["AutoMinorVersionUpgrade"] = true, ["TransitEncryptionEnabled"] = true, ["SecurityGroups"] = true, ["CacheNodeType"] = true, ["PreferredMaintenanceWindow"] = true, ["CacheSubnetGroupName"] = true, ["AuthTokenEnabled"] = true, ["AtRestEncryptionEnabled"] = true, ["EngineVersion"] = true, ["CacheNodes"] = true, ["ConfigurationEndpoint"] = true, ["CacheClusterCreateTime"] = true, ["PreferredAvailabilityZone"] = true, ["SnapshotWindow"] = true, ["NotificationConfiguration"] = true, ["CacheParameterGroup"] = true, nil }
 
 function asserts.AssertCacheCluster(struct)
 	assert(struct)
@@ -2564,10 +2365,13 @@ function asserts.AssertCacheCluster(struct)
 	if struct["CacheSecurityGroups"] then asserts.AssertCacheSecurityGroupMembershipList(struct["CacheSecurityGroups"]) end
 	if struct["NumCacheNodes"] then asserts.AssertIntegerOptional(struct["NumCacheNodes"]) end
 	if struct["AutoMinorVersionUpgrade"] then asserts.AssertBoolean(struct["AutoMinorVersionUpgrade"]) end
+	if struct["TransitEncryptionEnabled"] then asserts.AssertBooleanOptional(struct["TransitEncryptionEnabled"]) end
 	if struct["SecurityGroups"] then asserts.AssertSecurityGroupMembershipList(struct["SecurityGroups"]) end
 	if struct["CacheNodeType"] then asserts.AssertString(struct["CacheNodeType"]) end
 	if struct["PreferredMaintenanceWindow"] then asserts.AssertString(struct["PreferredMaintenanceWindow"]) end
 	if struct["CacheSubnetGroupName"] then asserts.AssertString(struct["CacheSubnetGroupName"]) end
+	if struct["AuthTokenEnabled"] then asserts.AssertBooleanOptional(struct["AuthTokenEnabled"]) end
+	if struct["AtRestEncryptionEnabled"] then asserts.AssertBooleanOptional(struct["AtRestEncryptionEnabled"]) end
 	if struct["EngineVersion"] then asserts.AssertString(struct["EngineVersion"]) end
 	if struct["CacheNodes"] then asserts.AssertCacheNodeList(struct["CacheNodes"]) end
 	if struct["ConfigurationEndpoint"] then asserts.AssertEndpoint(struct["ConfigurationEndpoint"]) end
@@ -2582,31 +2386,34 @@ function asserts.AssertCacheCluster(struct)
 end
 
 --- Create a structure of type CacheCluster
--- <p>Contains all of the attributes of a specific cache cluster.</p>
+-- <p>Contains all of the attributes of a specific cluster.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CacheClusterId [String] <p>The user-supplied identifier of the cache cluster. This identifier is a unique key that identifies a cache cluster.</p>
--- * ReplicationGroupId [String] <p>The replication group to which this cache cluster belongs. If this field is empty, the cache cluster is not associated with any replication group.</p>
--- * CacheClusterStatus [String] <p>The current state of this cache cluster, one of the following values: <code>available</code>, <code>creating</code>, <code>deleted</code>, <code>deleting</code>, <code>incompatible-network</code>, <code>modifying</code>, <code>rebooting cache cluster nodes</code>, <code>restore-failed</code>, or <code>snapshotting</code>.</p>
--- * SnapshotRetentionLimit [IntegerOptional] <p>The number of days for which ElastiCache retains automatic cache cluster snapshots before deleting them. For example, if you set <code>SnapshotRetentionLimit</code> to 5, a snapshot that was taken today is retained for 5 days before being deleted.</p> <important> <p> If the value of SnapshotRetentionLimit is set to zero (0), backups are turned off.</p> </important>
+-- * CacheClusterId [String] <p>The user-supplied identifier of the cluster. This identifier is a unique key that identifies a cluster.</p>
+-- * ReplicationGroupId [String] <p>The replication group to which this cluster belongs. If this field is empty, the cluster is not associated with any replication group.</p>
+-- * CacheClusterStatus [String] <p>The current state of this cluster, one of the following values: <code>available</code>, <code>creating</code>, <code>deleted</code>, <code>deleting</code>, <code>incompatible-network</code>, <code>modifying</code>, <code>rebooting cluster nodes</code>, <code>restore-failed</code>, or <code>snapshotting</code>.</p>
+-- * SnapshotRetentionLimit [IntegerOptional] <p>The number of days for which ElastiCache retains automatic cluster snapshots before deleting them. For example, if you set <code>SnapshotRetentionLimit</code> to 5, a snapshot that was taken today is retained for 5 days before being deleted.</p> <important> <p> If the value of SnapshotRetentionLimit is set to zero (0), backups are turned off.</p> </important>
 -- * ClientDownloadLandingPage [String] <p>The URL of the web page where you can download the latest ElastiCache client library.</p>
 -- * PendingModifiedValues [PendingModifiedValues] 
--- * Engine [String] <p>The name of the cache engine (<code>memcached</code> or <code>redis</code>) to be used for this cache cluster.</p>
+-- * Engine [String] <p>The name of the cache engine (<code>memcached</code> or <code>redis</code>) to be used for this cluster.</p>
 -- * CacheSecurityGroups [CacheSecurityGroupMembershipList] <p>A list of cache security group elements, composed of name and status sub-elements.</p>
--- * NumCacheNodes [IntegerOptional] <p>The number of cache nodes in the cache cluster.</p> <p>For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1 and 20.</p>
+-- * NumCacheNodes [IntegerOptional] <p>The number of cache nodes in the cluster.</p> <p>For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1 and 20.</p>
 -- * AutoMinorVersionUpgrade [Boolean] <p>This parameter is currently disabled.</p>
--- * SecurityGroups [SecurityGroupMembershipList] <p>A list of VPC Security Groups associated with the cache cluster.</p>
--- * CacheNodeType [String] <p>The name of the compute and memory capacity node type for the cache cluster.</p> <p>Valid node types are as follows:</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> or <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a>.</p>
+-- * TransitEncryptionEnabled [BooleanOptional] <p>A flag that enables in-transit encryption when set to <code>true</code>.</p> <p>You cannot modify the value of <code>TransitEncryptionEnabled</code> after the cluster is created. To enable in-transit encryption on a cluster you must set <code>TransitEncryptionEnabled</code> to <code>true</code> when you create a cluster.</p> <p> <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version <code>3.2.6</code> or <code>4.x</code>.</p> <p>Default: <code>false</code> </p>
+-- * SecurityGroups [SecurityGroupMembershipList] <p>A list of VPC Security Groups associated with the cluster.</p>
+-- * CacheNodeType [String] <p>The name of the compute and memory capacity node type for the cluster.</p> <p>The following node types are supported by ElastiCache. Generally speaking, the current generation types provide more memory and computational power at lower cost when compared to their equivalent previous generation counterparts.</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: </p> <p> <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code> </p> <p> <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code> </p> <p> <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: (not recommended)</p> <p> <b>T1 node types:</b> <code>cache.t1.micro</code> </p> <p> <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized:</p> <ul> <li> <p>Previous generation: (not recommended)</p> <p> <b>C1 node types:</b> <code>cache.c1.xlarge</code> </p> </li> </ul> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: </p> <p> <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> <p> <b>R4 node types;</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>, <code>cache.r4.2xlarge</code>, <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>, <code>cache.r4.16xlarge</code> </p> </li> <li> <p>Previous generation: (not recommended)</p> <p> <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances. </p> </li> <li> <p>Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see:</p> <ul> <li> <p> <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a> </p> </li> </ul>
 -- * PreferredMaintenanceWindow [String] <p>Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period.</p> <p>Valid values for <code>ddd</code> are:</p> <ul> <li> <p> <code>sun</code> </p> </li> <li> <p> <code>mon</code> </p> </li> <li> <p> <code>tue</code> </p> </li> <li> <p> <code>wed</code> </p> </li> <li> <p> <code>thu</code> </p> </li> <li> <p> <code>fri</code> </p> </li> <li> <p> <code>sat</code> </p> </li> </ul> <p>Example: <code>sun:23:00-mon:01:30</code> </p>
--- * CacheSubnetGroupName [String] <p>The name of the cache subnet group associated with the cache cluster.</p>
--- * EngineVersion [String] <p>The version of the cache engine that is used in this cache cluster.</p>
--- * CacheNodes [CacheNodeList] <p>A list of cache nodes that are members of the cache cluster.</p>
+-- * CacheSubnetGroupName [String] <p>The name of the cache subnet group associated with the cluster.</p>
+-- * AuthTokenEnabled [BooleanOptional] <p>A flag that enables using an <code>AuthToken</code> (password) when issuing Redis commands.</p> <p>Default: <code>false</code> </p>
+-- * AtRestEncryptionEnabled [BooleanOptional] <p>A flag that enables encryption at-rest when set to <code>true</code>.</p> <p>You cannot modify the value of <code>AtRestEncryptionEnabled</code> after the cluster is created. To enable at-rest encryption on a cluster you must set <code>AtRestEncryptionEnabled</code> to <code>true</code> when you create a cluster.</p> <p> <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version <code>3.2.6</code> or <code>4.x</code>.</p> <p>Default: <code>false</code> </p>
+-- * EngineVersion [String] <p>The version of the cache engine that is used in this cluster.</p>
+-- * CacheNodes [CacheNodeList] <p>A list of cache nodes that are members of the cluster.</p>
 -- * ConfigurationEndpoint [Endpoint] <p>Represents a Memcached cluster endpoint which, if Automatic Discovery is enabled on the cluster, can be used by an application to connect to any node in the cluster. The configuration endpoint will always have <code>.cfg</code> in it.</p> <p>Example: <code>mem-3.9dvc4r<u>.cfg</u>.usw2.cache.amazonaws.com:11211</code> </p>
--- * CacheClusterCreateTime [TStamp] <p>The date and time when the cache cluster was created.</p>
--- * PreferredAvailabilityZone [String] <p>The name of the Availability Zone in which the cache cluster is located or "Multiple" if the cache nodes are located in different Availability Zones.</p>
--- * SnapshotWindow [String] <p>The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your cache cluster.</p> <p>Example: <code>05:00-09:00</code> </p>
--- * NotificationConfiguration [NotificationConfiguration] 
--- * CacheParameterGroup [CacheParameterGroupStatus] 
+-- * CacheClusterCreateTime [TStamp] <p>The date and time when the cluster was created.</p>
+-- * PreferredAvailabilityZone [String] <p>The name of the Availability Zone in which the cluster is located or "Multiple" if the cache nodes are located in different Availability Zones.</p>
+-- * SnapshotWindow [String] <p>The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your cluster.</p> <p>Example: <code>05:00-09:00</code> </p>
+-- * NotificationConfiguration [NotificationConfiguration] <p>Describes a notification topic and its status. Notification topics are used for publishing ElastiCache events to subscribers using Amazon Simple Notification Service (SNS). </p>
+-- * CacheParameterGroup [CacheParameterGroupStatus] <p>Status of the cache parameter group.</p>
 -- @return CacheCluster structure as a key-value pair table
 function M.CacheCluster(args)
 	assert(args, "You must provide an argument table when creating CacheCluster")
@@ -2627,10 +2434,13 @@ function M.CacheCluster(args)
 		["CacheSecurityGroups"] = args["CacheSecurityGroups"],
 		["NumCacheNodes"] = args["NumCacheNodes"],
 		["AutoMinorVersionUpgrade"] = args["AutoMinorVersionUpgrade"],
+		["TransitEncryptionEnabled"] = args["TransitEncryptionEnabled"],
 		["SecurityGroups"] = args["SecurityGroups"],
 		["CacheNodeType"] = args["CacheNodeType"],
 		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
 		["CacheSubnetGroupName"] = args["CacheSubnetGroupName"],
+		["AuthTokenEnabled"] = args["AuthTokenEnabled"],
+		["AtRestEncryptionEnabled"] = args["AtRestEncryptionEnabled"],
 		["EngineVersion"] = args["EngineVersion"],
 		["CacheNodes"] = args["CacheNodes"],
 		["ConfigurationEndpoint"] = args["ConfigurationEndpoint"],
@@ -2667,7 +2477,7 @@ function asserts.AssertCacheNode(struct)
 end
 
 --- Create a structure of type CacheNode
--- <p>Represents an individual cache node within a cache cluster. Each cache node runs its own instance of the cluster's protocol-compliant caching software - either Memcached or Redis.</p> <p>Valid node types are as follows:</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> or <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a>.</p>
+-- <p>Represents an individual cache node within a cluster. Each cache node runs its own instance of the cluster's protocol-compliant caching software - either Memcached or Redis.</p> <p>The following node types are supported by ElastiCache. Generally speaking, the current generation types provide more memory and computational power at lower cost when compared to their equivalent previous generation counterparts.</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: </p> <p> <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code> </p> <p> <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code> </p> <p> <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: (not recommended)</p> <p> <b>T1 node types:</b> <code>cache.t1.micro</code> </p> <p> <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized:</p> <ul> <li> <p>Previous generation: (not recommended)</p> <p> <b>C1 node types:</b> <code>cache.c1.xlarge</code> </p> </li> </ul> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: </p> <p> <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> <p> <b>R4 node types;</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>, <code>cache.r4.2xlarge</code>, <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>, <code>cache.r4.16xlarge</code> </p> </li> <li> <p>Previous generation: (not recommended)</p> <p> <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances. </p> </li> <li> <p>Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see:</p> <ul> <li> <p> <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a> </p> </li> </ul>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * CacheNodeId [String] <p>The cache node identifier. A node ID is a numeric identifier (0001, 0002, etc.). The combination of cluster ID and node ID uniquely identifies every cache node used in a customer's AWS account.</p>
@@ -2676,7 +2486,7 @@ end
 -- * ParameterGroupStatus [String] <p>The status of the parameter group applied to this cache node.</p>
 -- * CacheNodeCreateTime [TStamp] <p>The date and time when the cache node was created.</p>
 -- * CustomerAvailabilityZone [String] <p>The Availability Zone where this node was created and now resides.</p>
--- * SourceCacheNodeId [String] <p>The ID of the primary node to which this read replica node is synchronized. If this field is empty, this node is not associated with a primary cache cluster.</p>
+-- * SourceCacheNodeId [String] <p>The ID of the primary node to which this read replica node is synchronized. If this field is empty, this node is not associated with a primary cluster.</p>
 -- @return CacheNode structure as a key-value pair table
 function M.CacheNode(args)
 	assert(args, "You must provide an argument table when creating CacheNode")
@@ -2719,13 +2529,13 @@ function asserts.AssertEvent(struct)
 end
 
 --- Create a structure of type Event
--- <p>Represents a single occurrence of something interesting within the system. Some examples of events are creating a cache cluster, adding or removing a cache node, or rebooting a node.</p>
+-- <p>Represents a single occurrence of something interesting within the system. Some examples of events are creating a cluster, adding or removing a cache node, or rebooting a node.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Date [TStamp] <p>The date and time when the event occurred.</p>
 -- * Message [String] <p>The text of the event.</p>
--- * SourceIdentifier [String] <p>The identifier for the source of the event. For example, if the event occurred at the cache cluster level, the identifier would be the name of the cache cluster.</p>
--- * SourceType [SourceType] <p>Specifies the origin of this event - a cache cluster, a parameter group, a security group, etc.</p>
+-- * SourceIdentifier [String] <p>The identifier for the source of the event. For example, if the event occurred at the cluster level, the identifier would be the name of the cluster.</p>
+-- * SourceType [SourceType] <p>Specifies the origin of this event - a cluster, a parameter group, a security group, etc.</p>
 -- @return Event structure as a key-value pair table
 function M.Event(args)
 	assert(args, "You must provide an argument table when creating Event")
@@ -2787,40 +2597,6 @@ function M.ModifyCacheSubnetGroupResult(args)
     }
 end
 
-keys.CacheParameterGroupQuotaExceededFault = { nil }
-
-function asserts.AssertCacheParameterGroupQuotaExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CacheParameterGroupQuotaExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.CacheParameterGroupQuotaExceededFault[k], "CacheParameterGroupQuotaExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CacheParameterGroupQuotaExceededFault
--- <p>The request cannot be processed because it would exceed the maximum number of cache security groups.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return CacheParameterGroupQuotaExceededFault structure as a key-value pair table
-function M.CacheParameterGroupQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating CacheParameterGroupQuotaExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertCacheParameterGroupQuotaExceededFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.CacheEngineVersionMessage = { ["Marker"] = true, ["CacheEngineVersions"] = true, nil }
 
 function asserts.AssertCacheEngineVersionMessage(struct)
@@ -2874,7 +2650,7 @@ function asserts.AssertSubnet(struct)
 end
 
 --- Create a structure of type Subnet
--- <p>Represents the subnet associated with a cache cluster. This parameter refers to subnets defined in Amazon Virtual Private Cloud (Amazon VPC) and used with ElastiCache.</p>
+-- <p>Represents the subnet associated with a cluster. This parameter refers to subnets defined in Amazon Virtual Private Cloud (Amazon VPC) and used with ElastiCache.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * SubnetIdentifier [String] <p>The unique identifier for the subnet.</p>
@@ -2934,23 +2710,23 @@ end
 -- <p>Represents the input of a <code>ModifyReplicationGroups</code> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CacheSecurityGroupNames [CacheSecurityGroupNameList] <p>A list of cache security group names to authorize for the clusters in this replication group. This change is asynchronously applied as soon as possible.</p> <p>This parameter can be used only with replication group containing cache clusters running outside of an Amazon Virtual Private Cloud (Amazon VPC).</p> <p>Constraints: Must contain no more than 255 alphanumeric characters. Must not be <code>Default</code>.</p>
+-- * CacheSecurityGroupNames [CacheSecurityGroupNameList] <p>A list of cache security group names to authorize for the clusters in this replication group. This change is asynchronously applied as soon as possible.</p> <p>This parameter can be used only with replication group containing clusters running outside of an Amazon Virtual Private Cloud (Amazon VPC).</p> <p>Constraints: Must contain no more than 255 alphanumeric characters. Must not be <code>Default</code>.</p>
 -- * CacheParameterGroupName [String] <p>The name of the cache parameter group to apply to all of the clusters in this replication group. This change is asynchronously applied as soon as possible for parameters when the <code>ApplyImmediately</code> parameter is specified as <code>true</code> for this request.</p>
--- * NodeGroupId [String] <p>The name of the Node Group (called shard in the console).</p>
+-- * NodeGroupId [String] <p>Deprecated. This parameter is not used.</p>
 -- * PrimaryClusterId [String] <p>For replication groups with a single primary, if this parameter is specified, ElastiCache promotes the specified cluster in the specified replication group to the primary role. The nodes of all other clusters in the replication group are read replicas.</p>
 -- * AutoMinorVersionUpgrade [BooleanOptional] <p>This parameter is currently disabled.</p>
 -- * ReplicationGroupId [String] <p>The identifier of the replication group to modify.</p>
--- * SecurityGroupIds [SecurityGroupIdsList] <p>Specifies the VPC Security Groups associated with the cache clusters in the replication group.</p> <p>This parameter can be used only with replication group containing cache clusters running in an Amazon Virtual Private Cloud (Amazon VPC).</p>
+-- * SecurityGroupIds [SecurityGroupIdsList] <p>Specifies the VPC Security Groups associated with the clusters in the replication group.</p> <p>This parameter can be used only with replication group containing clusters running in an Amazon Virtual Private Cloud (Amazon VPC).</p>
 -- * SnapshotRetentionLimit [IntegerOptional] <p>The number of days for which ElastiCache retains automatic node group (shard) snapshots before deleting them. For example, if you set <code>SnapshotRetentionLimit</code> to 5, a snapshot that was taken today is retained for 5 days before being deleted.</p> <p> <b>Important</b> If the value of SnapshotRetentionLimit is set to zero (0), backups are turned off.</p>
 -- * NotificationTopicStatus [String] <p>The status of the Amazon SNS notification topic for the replication group. Notifications are sent only if the status is <code>active</code>.</p> <p>Valid values: <code>active</code> | <code>inactive</code> </p>
 -- * PreferredMaintenanceWindow [String] <p>Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period.</p> <p>Valid values for <code>ddd</code> are:</p> <ul> <li> <p> <code>sun</code> </p> </li> <li> <p> <code>mon</code> </p> </li> <li> <p> <code>tue</code> </p> </li> <li> <p> <code>wed</code> </p> </li> <li> <p> <code>thu</code> </p> </li> <li> <p> <code>fri</code> </p> </li> <li> <p> <code>sat</code> </p> </li> </ul> <p>Example: <code>sun:23:00-mon:01:30</code> </p>
 -- * SnapshotWindow [String] <p>The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of the node group (shard) specified by <code>SnapshottingClusterId</code>.</p> <p>Example: <code>05:00-09:00</code> </p> <p>If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range.</p>
--- * EngineVersion [String] <p>The upgraded version of the cache engine to be run on the cache clusters in the replication group.</p> <p> <b>Important:</b> You can upgrade to a newer engine version (see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement">Selecting a Cache Engine and Version</a>), but you cannot downgrade to an earlier engine version. If you want to use an earlier engine version, you must delete the existing replication group and create it anew with the earlier engine version. </p>
--- * SnapshottingClusterId [String] <p>The cache cluster ID that is used as the daily snapshot source for the replication group. This parameter cannot be set for Redis (cluster mode enabled) replication groups.</p>
+-- * EngineVersion [String] <p>The upgraded version of the cache engine to be run on the clusters in the replication group.</p> <p> <b>Important:</b> You can upgrade to a newer engine version (see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement">Selecting a Cache Engine and Version</a>), but you cannot downgrade to an earlier engine version. If you want to use an earlier engine version, you must delete the existing replication group and create it anew with the earlier engine version. </p>
+-- * SnapshottingClusterId [String] <p>The cluster ID that is used as the daily snapshot source for the replication group. This parameter cannot be set for Redis (cluster mode enabled) replication groups.</p>
 -- * NotificationTopicArn [String] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to which notifications are sent.</p> <note> <p>The Amazon SNS topic owner must be same as the replication group owner. </p> </note>
 -- * ReplicationGroupDescription [String] <p>A description for the replication group. Maximum length is 255 characters.</p>
 -- * ApplyImmediately [Boolean] <p>If <code>true</code>, this parameter causes the modifications in this request and any pending modifications to be applied, asynchronously and as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the replication group.</p> <p>If <code>false</code>, changes to the nodes in the replication group are applied on the next maintenance reboot, or the next failure reboot, whichever occurs first.</p> <p>Valid values: <code>true</code> | <code>false</code> </p> <p>Default: <code>false</code> </p>
--- * AutomaticFailoverEnabled [BooleanOptional] <p>Determines whether a read replica is automatically promoted to read/write primary if the existing primary encounters a failure.</p> <p>Valid values: <code>true</code> | <code>false</code> </p> <note> <p>ElastiCache Multi-AZ replication groups are not supported on:</p> <ul> <li> <p>Redis versions earlier than 2.8.6.</p> </li> <li> <p>Redis (cluster mode disabled):T1 and T2 cache node types.</p> <p>Redis (cluster mode enabled): T1 node types.</p> </li> </ul> </note>
+-- * AutomaticFailoverEnabled [BooleanOptional] <p>Determines whether a read replica is automatically promoted to read/write primary if the existing primary encounters a failure.</p> <p>Valid values: <code>true</code> | <code>false</code> </p> <p>Amazon ElastiCache for Redis does not support Multi-AZ with automatic failover on:</p> <ul> <li> <p>Redis versions earlier than 2.8.6.</p> </li> <li> <p>Redis (cluster mode disabled): T1 and T2 cache node types.</p> </li> <li> <p>Redis (cluster mode enabled): T1 node types.</p> </li> </ul>
 -- * CacheNodeType [String] <p>A valid cache node type that you want to scale this replication group to.</p>
 -- Required key: ReplicationGroupId
 -- @return ModifyReplicationGroupMessage structure as a key-value pair table
@@ -2983,74 +2759,6 @@ function M.ModifyReplicationGroupMessage(args)
 		["CacheNodeType"] = args["CacheNodeType"],
 	}
 	asserts.AssertModifyReplicationGroupMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.AuthorizationNotFoundFault = { nil }
-
-function asserts.AssertAuthorizationNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected AuthorizationNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.AuthorizationNotFoundFault[k], "AuthorizationNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type AuthorizationNotFoundFault
--- <p>The specified Amazon EC2 security group is not authorized for the specified cache security group.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return AuthorizationNotFoundFault structure as a key-value pair table
-function M.AuthorizationNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating AuthorizationNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertAuthorizationNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CacheParameterGroupAlreadyExistsFault = { nil }
-
-function asserts.AssertCacheParameterGroupAlreadyExistsFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CacheParameterGroupAlreadyExistsFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.CacheParameterGroupAlreadyExistsFault[k], "CacheParameterGroupAlreadyExistsFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CacheParameterGroupAlreadyExistsFault
--- <p>A cache parameter group with the requested name already exists.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return CacheParameterGroupAlreadyExistsFault structure as a key-value pair table
-function M.CacheParameterGroupAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating CacheParameterGroupAlreadyExistsFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertCacheParameterGroupAlreadyExistsFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3094,40 +2802,6 @@ function M.DescribeReplicationGroupsMessage(args)
 		["ReplicationGroupId"] = args["ReplicationGroupId"],
 	}
 	asserts.AssertDescribeReplicationGroupsMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CacheSecurityGroupAlreadyExistsFault = { nil }
-
-function asserts.AssertCacheSecurityGroupAlreadyExistsFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CacheSecurityGroupAlreadyExistsFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.CacheSecurityGroupAlreadyExistsFault[k], "CacheSecurityGroupAlreadyExistsFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CacheSecurityGroupAlreadyExistsFault
--- <p>A cache security group with the specified name already exists.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return CacheSecurityGroupAlreadyExistsFault structure as a key-value pair table
-function M.CacheSecurityGroupAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating CacheSecurityGroupAlreadyExistsFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertCacheSecurityGroupAlreadyExistsFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3228,40 +2902,6 @@ function M.CacheParameterGroupStatus(args)
     }
 end
 
-keys.InvalidARNFault = { nil }
-
-function asserts.AssertInvalidARNFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidARNFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidARNFault[k], "InvalidARNFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidARNFault
--- <p>The requested Amazon Resource Name (ARN) does not refer to an existing resource.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidARNFault structure as a key-value pair table
-function M.InvalidARNFault(args)
-	assert(args, "You must provide an argument table when creating InvalidARNFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidARNFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.TagListMessage = { ["TagList"] = true, nil }
 
 function asserts.AssertTagListMessage(struct)
@@ -3291,52 +2931,6 @@ function M.TagListMessage(args)
 		["TagList"] = args["TagList"],
 	}
 	asserts.AssertTagListMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.EngineDefaults = { ["Marker"] = true, ["CacheParameterGroupFamily"] = true, ["Parameters"] = true, ["CacheNodeTypeSpecificParameters"] = true, nil }
-
-function asserts.AssertEngineDefaults(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected EngineDefaults to be of type 'table'")
-	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
-	if struct["CacheParameterGroupFamily"] then asserts.AssertString(struct["CacheParameterGroupFamily"]) end
-	if struct["Parameters"] then asserts.AssertParametersList(struct["Parameters"]) end
-	if struct["CacheNodeTypeSpecificParameters"] then asserts.AssertCacheNodeTypeSpecificParametersList(struct["CacheNodeTypeSpecificParameters"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.EngineDefaults[k], "EngineDefaults contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type EngineDefaults
--- <p>Represents the output of a <code>DescribeEngineDefaultParameters</code> operation.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Marker [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
--- * CacheParameterGroupFamily [String] <p>Specifies the name of the cache parameter group family to which the engine default parameters apply.</p> <p>Valid values are: <code>memcached1.4</code> | <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
--- * Parameters [ParametersList] <p>Contains a list of engine default parameters.</p>
--- * CacheNodeTypeSpecificParameters [CacheNodeTypeSpecificParametersList] <p>A list of parameters specific to a particular cache node type. Each element in the list contains detailed information about one parameter.</p>
--- @return EngineDefaults structure as a key-value pair table
-function M.EngineDefaults(args)
-	assert(args, "You must provide an argument table when creating EngineDefaults")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Marker"] = args["Marker"],
-		["CacheParameterGroupFamily"] = args["CacheParameterGroupFamily"],
-		["Parameters"] = args["Parameters"],
-		["CacheNodeTypeSpecificParameters"] = args["CacheNodeTypeSpecificParameters"],
-	}
-	asserts.AssertEngineDefaults(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3400,8 +2994,8 @@ end
 -- <p>Represents the input of a <code>RebootCacheCluster</code> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CacheNodeIdsToReboot [CacheNodeIdsList] <p>A list of cache node IDs to reboot. A node ID is a numeric identifier (0001, 0002, etc.). To reboot an entire cache cluster, specify all of the cache node IDs.</p>
--- * CacheClusterId [String] <p>The cache cluster identifier. This parameter is stored as a lowercase string.</p>
+-- * CacheNodeIdsToReboot [CacheNodeIdsList] <p>A list of cache node IDs to reboot. A node ID is a numeric identifier (0001, 0002, etc.). To reboot an entire cluster, specify all of the cache node IDs.</p>
+-- * CacheClusterId [String] <p>The cluster identifier. This parameter is stored as a lowercase string.</p>
 -- Required key: CacheClusterId
 -- Required key: CacheNodeIdsToReboot
 -- @return RebootCacheClusterMessage structure as a key-value pair table
@@ -3530,7 +3124,7 @@ end
 -- * Marker [String] <p>An optional marker returned from a prior request. Use this marker for pagination of results from this operation. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>.</p>
 -- * MaxRecords [IntegerOptional] <p>The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a marker is included in the response so that the remaining results can be retrieved.</p> <p>Default: 100</p> <p>Constraints: minimum 20; maximum 100.</p>
 -- * Duration [String] <p>Duration filter value, specified in years or seconds. Use this parameter to show only reservations for a given duration.</p> <p>Valid Values: <code>1 | 3 | 31536000 | 94608000</code> </p>
--- * CacheNodeType [String] <p>The cache node type filter value. Use this parameter to show only the available offerings matching the specified cache node type.</p> <p>Valid node types are as follows:</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> or <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a>.</p>
+-- * CacheNodeType [String] <p>The cache node type filter value. Use this parameter to show only the available offerings matching the specified cache node type.</p> <p>The following node types are supported by ElastiCache. Generally speaking, the current generation types provide more memory and computational power at lower cost when compared to their equivalent previous generation counterparts.</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: </p> <p> <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code> </p> <p> <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code> </p> <p> <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: (not recommended)</p> <p> <b>T1 node types:</b> <code>cache.t1.micro</code> </p> <p> <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized:</p> <ul> <li> <p>Previous generation: (not recommended)</p> <p> <b>C1 node types:</b> <code>cache.c1.xlarge</code> </p> </li> </ul> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: </p> <p> <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> <p> <b>R4 node types;</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>, <code>cache.r4.2xlarge</code>, <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>, <code>cache.r4.16xlarge</code> </p> </li> <li> <p>Previous generation: (not recommended)</p> <p> <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances. </p> </li> <li> <p>Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see:</p> <ul> <li> <p> <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a> </p> </li> </ul>
 -- @return DescribeReservedCacheNodesOfferingsMessage structure as a key-value pair table
 function M.DescribeReservedCacheNodesOfferingsMessage(args)
 	assert(args, "You must provide an argument table when creating DescribeReservedCacheNodesOfferingsMessage")
@@ -3580,7 +3174,7 @@ end
 -- * Marker [String] <p>An optional marker returned from a prior request. Use this marker for pagination of results from this operation. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>.</p>
 -- * ShowCacheNodeInfo [BooleanOptional] <p>An optional flag that can be included in the <code>DescribeCacheCluster</code> request to retrieve information about the individual cache nodes.</p>
 -- * MaxRecords [IntegerOptional] <p>The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a marker is included in the response so that the remaining results can be retrieved.</p> <p>Default: 100</p> <p>Constraints: minimum 20; maximum 100.</p>
--- * CacheClusterId [String] <p>The user-supplied cluster identifier. If this parameter is specified, only information about that specific cache cluster is returned. This parameter isn't case sensitive.</p>
+-- * CacheClusterId [String] <p>The user-supplied cluster identifier. If this parameter is specified, only information about that specific cluster is returned. This parameter isn't case sensitive.</p>
 -- * ShowCacheClustersNotInReplicationGroups [BooleanOptional] <p>An optional flag that can be included in the <code>DescribeCacheCluster</code> request to show only nodes (API/CLI: clusters) that are not members of a replication group. In practice, this mean Memcached and single node Redis clusters.</p>
 -- @return DescribeCacheClustersMessage structure as a key-value pair table
 function M.DescribeCacheClustersMessage(args)
@@ -3599,40 +3193,6 @@ function M.DescribeCacheClustersMessage(args)
 		["ShowCacheClustersNotInReplicationGroups"] = args["ShowCacheClustersNotInReplicationGroups"],
 	}
 	asserts.AssertDescribeCacheClustersMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidReplicationGroupStateFault = { nil }
-
-function asserts.AssertInvalidReplicationGroupStateFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidReplicationGroupStateFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidReplicationGroupStateFault[k], "InvalidReplicationGroupStateFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidReplicationGroupStateFault
--- <p>The requested replication group is not in the <code>available</code> state.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidReplicationGroupStateFault structure as a key-value pair table
-function M.InvalidReplicationGroupStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidReplicationGroupStateFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidReplicationGroupStateFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3760,13 +3320,64 @@ function M.CacheParameterGroupsMessage(args)
     }
 end
 
-keys.ReservedCacheNode = { ["OfferingType"] = true, ["FixedPrice"] = true, ["ReservedCacheNodesOfferingId"] = true, ["CacheNodeCount"] = true, ["UsagePrice"] = true, ["RecurringCharges"] = true, ["ReservedCacheNodeId"] = true, ["State"] = true, ["ProductDescription"] = true, ["StartTime"] = true, ["Duration"] = true, ["CacheNodeType"] = true, nil }
+keys.IncreaseReplicaCountMessage = { ["NewReplicaCount"] = true, ["ApplyImmediately"] = true, ["ReplicaConfiguration"] = true, ["ReplicationGroupId"] = true, nil }
+
+function asserts.AssertIncreaseReplicaCountMessage(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected IncreaseReplicaCountMessage to be of type 'table'")
+	assert(struct["ReplicationGroupId"], "Expected key ReplicationGroupId to exist in table")
+	assert(struct["ApplyImmediately"], "Expected key ApplyImmediately to exist in table")
+	if struct["NewReplicaCount"] then asserts.AssertIntegerOptional(struct["NewReplicaCount"]) end
+	if struct["ApplyImmediately"] then asserts.AssertBoolean(struct["ApplyImmediately"]) end
+	if struct["ReplicaConfiguration"] then asserts.AssertReplicaConfigurationList(struct["ReplicaConfiguration"]) end
+	if struct["ReplicationGroupId"] then asserts.AssertString(struct["ReplicationGroupId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.IncreaseReplicaCountMessage[k], "IncreaseReplicaCountMessage contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type IncreaseReplicaCountMessage
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NewReplicaCount [IntegerOptional] <p>The number of read replica nodes you want at the completion of this operation. For Redis (cluster mode disabled) replication groups, this is the number of replica nodes in the replication group. For Redis (cluster mode enabled) replication groups, this is the number of replica nodes in each of the replication group's node groups.</p>
+-- * ApplyImmediately [Boolean] <p>If <code>True</code>, the number of replica nodes is increased immediately. If <code>False</code>, the number of replica nodes is increased during the next maintenance window.</p>
+-- * ReplicaConfiguration [ReplicaConfigurationList] <p>A list of <code>ConfigureShard</code> objects that can be used to configure each shard in a Redis (cluster mode enabled) replication group. The <code>ConfigureShard</code> has three members: <code>NewReplicaCount</code>, <code>NodeGroupId</code>, and <code>PreferredAvailabilityZones</code>.</p>
+-- * ReplicationGroupId [String] <p>The id of the replication group to which you want to add replica nodes.</p>
+-- Required key: ReplicationGroupId
+-- Required key: ApplyImmediately
+-- @return IncreaseReplicaCountMessage structure as a key-value pair table
+function M.IncreaseReplicaCountMessage(args)
+	assert(args, "You must provide an argument table when creating IncreaseReplicaCountMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NewReplicaCount"] = args["NewReplicaCount"],
+		["ApplyImmediately"] = args["ApplyImmediately"],
+		["ReplicaConfiguration"] = args["ReplicaConfiguration"],
+		["ReplicationGroupId"] = args["ReplicationGroupId"],
+	}
+	asserts.AssertIncreaseReplicaCountMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ReservedCacheNode = { ["OfferingType"] = true, ["FixedPrice"] = true, ["ReservationARN"] = true, ["ReservedCacheNodesOfferingId"] = true, ["CacheNodeCount"] = true, ["UsagePrice"] = true, ["RecurringCharges"] = true, ["ReservedCacheNodeId"] = true, ["State"] = true, ["ProductDescription"] = true, ["StartTime"] = true, ["Duration"] = true, ["CacheNodeType"] = true, nil }
 
 function asserts.AssertReservedCacheNode(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReservedCacheNode to be of type 'table'")
 	if struct["OfferingType"] then asserts.AssertString(struct["OfferingType"]) end
 	if struct["FixedPrice"] then asserts.AssertDouble(struct["FixedPrice"]) end
+	if struct["ReservationARN"] then asserts.AssertString(struct["ReservationARN"]) end
 	if struct["ReservedCacheNodesOfferingId"] then asserts.AssertString(struct["ReservedCacheNodesOfferingId"]) end
 	if struct["CacheNodeCount"] then asserts.AssertInteger(struct["CacheNodeCount"]) end
 	if struct["UsagePrice"] then asserts.AssertDouble(struct["UsagePrice"]) end
@@ -3788,6 +3399,7 @@ end
 -- Valid keys:
 -- * OfferingType [String] <p>The offering type of this reserved cache node.</p>
 -- * FixedPrice [Double] <p>The fixed price charged for this reserved cache node.</p>
+-- * ReservationARN [String] <p>The Amazon Resource Name (ARN) of the reserved cache node.</p> <p>Example: <code>arn:aws:elasticache:us-east-1:123456789012:reserved-instance:ri-2017-03-27-08-33-25-582</code> </p>
 -- * ReservedCacheNodesOfferingId [String] <p>The offering identifier.</p>
 -- * CacheNodeCount [Integer] <p>The number of cache nodes that have been reserved.</p>
 -- * UsagePrice [Double] <p>The hourly price charged for this reserved cache node.</p>
@@ -3797,7 +3409,7 @@ end
 -- * ProductDescription [String] <p>The description of the reserved cache node.</p>
 -- * StartTime [TStamp] <p>The time the reservation started.</p>
 -- * Duration [Integer] <p>The duration of the reservation in seconds.</p>
--- * CacheNodeType [String] <p>The cache node type for the reserved cache nodes.</p> <p>Valid node types are as follows:</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> or <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a>.</p>
+-- * CacheNodeType [String] <p>The cache node type for the reserved cache nodes.</p> <p>The following node types are supported by ElastiCache. Generally speaking, the current generation types provide more memory and computational power at lower cost when compared to their equivalent previous generation counterparts.</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: </p> <p> <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code> </p> <p> <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code> </p> <p> <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: (not recommended)</p> <p> <b>T1 node types:</b> <code>cache.t1.micro</code> </p> <p> <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized:</p> <ul> <li> <p>Previous generation: (not recommended)</p> <p> <b>C1 node types:</b> <code>cache.c1.xlarge</code> </p> </li> </ul> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: </p> <p> <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> <p> <b>R4 node types;</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>, <code>cache.r4.2xlarge</code>, <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>, <code>cache.r4.16xlarge</code> </p> </li> <li> <p>Previous generation: (not recommended)</p> <p> <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances. </p> </li> <li> <p>Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see:</p> <ul> <li> <p> <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a> </p> </li> </ul>
 -- @return ReservedCacheNode structure as a key-value pair table
 function M.ReservedCacheNode(args)
 	assert(args, "You must provide an argument table when creating ReservedCacheNode")
@@ -3810,6 +3422,7 @@ function M.ReservedCacheNode(args)
 	local all_args = { 
 		["OfferingType"] = args["OfferingType"],
 		["FixedPrice"] = args["FixedPrice"],
+		["ReservationARN"] = args["ReservationARN"],
 		["ReservedCacheNodesOfferingId"] = args["ReservedCacheNodesOfferingId"],
 		["CacheNodeCount"] = args["CacheNodeCount"],
 		["UsagePrice"] = args["UsagePrice"],
@@ -3867,43 +3480,6 @@ function M.CreateCacheSubnetGroupResult(args)
     }
 end
 
-keys.InvalidParameterValueException = { ["message"] = true, nil }
-
-function asserts.AssertInvalidParameterValueException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidParameterValueException to be of type 'table'")
-	if struct["message"] then asserts.AssertAwsQueryErrorMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidParameterValueException[k], "InvalidParameterValueException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidParameterValueException
--- <p>The value for a parameter is invalid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [AwsQueryErrorMessage] <p>A parameter value is invalid.</p>
--- @return InvalidParameterValueException structure as a key-value pair table
-function M.InvalidParameterValueException(args)
-	assert(args, "You must provide an argument table when creating InvalidParameterValueException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertInvalidParameterValueException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.AvailabilityZone = { ["Name"] = true, nil }
 
 function asserts.AssertAvailabilityZone(struct)
@@ -3916,7 +3492,7 @@ function asserts.AssertAvailabilityZone(struct)
 end
 
 --- Create a structure of type AvailabilityZone
--- <p>Describes an Availability Zone in which the cache cluster is launched.</p>
+-- <p>Describes an Availability Zone in which the cluster is launched.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Name [String] <p>The name of the Availability Zone.</p>
@@ -3976,33 +3552,33 @@ function asserts.AssertSnapshot(struct)
 end
 
 --- Create a structure of type Snapshot
--- <p>Represents a copy of an entire Redis cache cluster as of the time when the snapshot was taken.</p>
+-- <p>Represents a copy of an entire Redis cluster as of the time when the snapshot was taken.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CacheParameterGroupName [String] <p>The cache parameter group that is associated with the source cache cluster.</p>
--- * CacheClusterId [String] <p>The user-supplied identifier of the source cache cluster.</p>
+-- * CacheParameterGroupName [String] <p>The cache parameter group that is associated with the source cluster.</p>
+-- * CacheClusterId [String] <p>The user-supplied identifier of the source cluster.</p>
 -- * ReplicationGroupId [String] <p>The unique identifier of the source replication group.</p>
--- * SnapshotRetentionLimit [IntegerOptional] <p>For an automatic snapshot, the number of days for which ElastiCache retains the snapshot before deleting it.</p> <p>For manual snapshots, this field reflects the <code>SnapshotRetentionLimit</code> for the source cache cluster when the snapshot was created. This field is otherwise ignored: Manual snapshots do not expire, and can only be deleted using the <code>DeleteSnapshot</code> operation. </p> <p> <b>Important</b> If the value of SnapshotRetentionLimit is set to zero (0), backups are turned off.</p>
--- * NodeSnapshots [NodeSnapshotList] <p>A list of the cache nodes in the source cache cluster.</p>
--- * CacheNodeType [String] <p>The name of the compute and memory capacity node type for the source cache cluster.</p> <p>Valid node types are as follows:</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> or <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a>.</p>
--- * Engine [String] <p>The name of the cache engine (<code>memcached</code> or <code>redis</code>) used by the source cache cluster.</p>
--- * VpcId [String] <p>The Amazon Virtual Private Cloud identifier (VPC ID) of the cache subnet group for the source cache cluster.</p>
--- * NumCacheNodes [IntegerOptional] <p>The number of cache nodes in the source cache cluster.</p> <p>For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1 and 20.</p>
+-- * SnapshotRetentionLimit [IntegerOptional] <p>For an automatic snapshot, the number of days for which ElastiCache retains the snapshot before deleting it.</p> <p>For manual snapshots, this field reflects the <code>SnapshotRetentionLimit</code> for the source cluster when the snapshot was created. This field is otherwise ignored: Manual snapshots do not expire, and can only be deleted using the <code>DeleteSnapshot</code> operation. </p> <p> <b>Important</b> If the value of SnapshotRetentionLimit is set to zero (0), backups are turned off.</p>
+-- * NodeSnapshots [NodeSnapshotList] <p>A list of the cache nodes in the source cluster.</p>
+-- * CacheNodeType [String] <p>The name of the compute and memory capacity node type for the source cluster.</p> <p>The following node types are supported by ElastiCache. Generally speaking, the current generation types provide more memory and computational power at lower cost when compared to their equivalent previous generation counterparts.</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: </p> <p> <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code> </p> <p> <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code> </p> <p> <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: (not recommended)</p> <p> <b>T1 node types:</b> <code>cache.t1.micro</code> </p> <p> <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized:</p> <ul> <li> <p>Previous generation: (not recommended)</p> <p> <b>C1 node types:</b> <code>cache.c1.xlarge</code> </p> </li> </ul> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: </p> <p> <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> <p> <b>R4 node types;</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>, <code>cache.r4.2xlarge</code>, <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>, <code>cache.r4.16xlarge</code> </p> </li> <li> <p>Previous generation: (not recommended)</p> <p> <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances. </p> </li> <li> <p>Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see:</p> <ul> <li> <p> <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a> </p> </li> </ul>
+-- * Engine [String] <p>The name of the cache engine (<code>memcached</code> or <code>redis</code>) used by the source cluster.</p>
+-- * VpcId [String] <p>The Amazon Virtual Private Cloud identifier (VPC ID) of the cache subnet group for the source cluster.</p>
+-- * NumCacheNodes [IntegerOptional] <p>The number of cache nodes in the source cluster.</p> <p>For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1 and 20.</p>
 -- * AutoMinorVersionUpgrade [Boolean] <p>This parameter is currently disabled.</p>
--- * AutomaticFailover [AutomaticFailoverStatus] <p>Indicates the status of Multi-AZ for the source replication group.</p> <note> <p>ElastiCache Multi-AZ replication groups are not supported on:</p> <ul> <li> <p>Redis versions earlier than 2.8.6.</p> </li> <li> <p>Redis (cluster mode disabled):T1 and T2 cache node types.</p> <p>Redis (cluster mode enabled): T1 node types.</p> </li> </ul> </note>
+-- * AutomaticFailover [AutomaticFailoverStatus] <p>Indicates the status of Multi-AZ with automatic failover for the source Redis replication group.</p> <p>Amazon ElastiCache for Redis does not support Multi-AZ with automatic failover on:</p> <ul> <li> <p>Redis versions earlier than 2.8.6.</p> </li> <li> <p>Redis (cluster mode disabled): T1 and T2 cache node types.</p> </li> <li> <p>Redis (cluster mode enabled): T1 node types.</p> </li> </ul>
 -- * PreferredMaintenanceWindow [String] <p>Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period.</p> <p>Valid values for <code>ddd</code> are:</p> <ul> <li> <p> <code>sun</code> </p> </li> <li> <p> <code>mon</code> </p> </li> <li> <p> <code>tue</code> </p> </li> <li> <p> <code>wed</code> </p> </li> <li> <p> <code>thu</code> </p> </li> <li> <p> <code>fri</code> </p> </li> <li> <p> <code>sat</code> </p> </li> </ul> <p>Example: <code>sun:23:00-mon:01:30</code> </p>
--- * CacheSubnetGroupName [String] <p>The name of the cache subnet group associated with the source cache cluster.</p>
+-- * CacheSubnetGroupName [String] <p>The name of the cache subnet group associated with the source cluster.</p>
 -- * SnapshotName [String] <p>The name of a snapshot. For an automatic snapshot, the name is system-generated. For a manual snapshot, this is the user-provided name.</p>
 -- * SnapshotStatus [String] <p>The status of the snapshot. Valid values: <code>creating</code> | <code>available</code> | <code>restoring</code> | <code>copying</code> | <code>deleting</code>.</p>
--- * EngineVersion [String] <p>The version of the cache engine version that is used by the source cache cluster.</p>
+-- * EngineVersion [String] <p>The version of the cache engine version that is used by the source cluster.</p>
 -- * ReplicationGroupDescription [String] <p>A description of the source replication group.</p>
--- * TopicArn [String] <p>The Amazon Resource Name (ARN) for the topic used by the source cache cluster for publishing notifications.</p>
+-- * TopicArn [String] <p>The Amazon Resource Name (ARN) for the topic used by the source cluster for publishing notifications.</p>
 -- * NumNodeGroups [IntegerOptional] <p>The number of node groups (shards) in this snapshot. When restoring from a snapshot, the number of node groups (shards) in the snapshot and in the restored replication group must be the same.</p>
--- * CacheClusterCreateTime [TStamp] <p>The date and time when the source cache cluster was created.</p>
--- * PreferredAvailabilityZone [String] <p>The name of the Availability Zone in which the source cache cluster is located.</p>
+-- * CacheClusterCreateTime [TStamp] <p>The date and time when the source cluster was created.</p>
+-- * PreferredAvailabilityZone [String] <p>The name of the Availability Zone in which the source cluster is located.</p>
 -- * SnapshotSource [String] <p>Indicates whether the snapshot is from an automatic backup (<code>automated</code>) or was created manually (<code>manual</code>).</p>
--- * SnapshotWindow [String] <p>The daily time range during which ElastiCache takes daily snapshots of the source cache cluster.</p>
--- * Port [IntegerOptional] <p>The port number used by each cache nodes in the source cache cluster.</p>
+-- * SnapshotWindow [String] <p>The daily time range during which ElastiCache takes daily snapshots of the source cluster.</p>
+-- * Port [IntegerOptional] <p>The port number used by each cache nodes in the source cluster.</p>
 -- @return Snapshot structure as a key-value pair table
 function M.Snapshot(args)
 	assert(args, "You must provide an argument table when creating Snapshot")
@@ -4076,142 +3652,6 @@ function M.PurchaseReservedCacheNodesOfferingResult(args)
 		["ReservedCacheNode"] = args["ReservedCacheNode"],
 	}
 	asserts.AssertPurchaseReservedCacheNodesOfferingResult(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.NodeQuotaForCustomerExceededFault = { nil }
-
-function asserts.AssertNodeQuotaForCustomerExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected NodeQuotaForCustomerExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.NodeQuotaForCustomerExceededFault[k], "NodeQuotaForCustomerExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type NodeQuotaForCustomerExceededFault
--- <p>The request cannot be processed because it would exceed the allowed number of cache nodes per customer.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return NodeQuotaForCustomerExceededFault structure as a key-value pair table
-function M.NodeQuotaForCustomerExceededFault(args)
-	assert(args, "You must provide an argument table when creating NodeQuotaForCustomerExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertNodeQuotaForCustomerExceededFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidVPCNetworkStateFault = { nil }
-
-function asserts.AssertInvalidVPCNetworkStateFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidVPCNetworkStateFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidVPCNetworkStateFault[k], "InvalidVPCNetworkStateFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidVPCNetworkStateFault
--- <p>The VPC network is in an invalid state.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidVPCNetworkStateFault structure as a key-value pair table
-function M.InvalidVPCNetworkStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidVPCNetworkStateFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidVPCNetworkStateFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CacheClusterNotFoundFault = { nil }
-
-function asserts.AssertCacheClusterNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CacheClusterNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.CacheClusterNotFoundFault[k], "CacheClusterNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CacheClusterNotFoundFault
--- <p>The requested cache cluster ID does not refer to an existing cache cluster.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return CacheClusterNotFoundFault structure as a key-value pair table
-function M.CacheClusterNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating CacheClusterNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertCacheClusterNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CacheClusterAlreadyExistsFault = { nil }
-
-function asserts.AssertCacheClusterAlreadyExistsFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CacheClusterAlreadyExistsFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.CacheClusterAlreadyExistsFault[k], "CacheClusterAlreadyExistsFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CacheClusterAlreadyExistsFault
--- <p>You already have a cache cluster with the given identifier.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return CacheClusterAlreadyExistsFault structure as a key-value pair table
-function M.CacheClusterAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating CacheClusterAlreadyExistsFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertCacheClusterAlreadyExistsFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4319,7 +3759,7 @@ end
 -- <p>Represents a single cache security group and its status.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Status [String] <p>The status of the cache security group membership. The status changes whenever a cache security group is modified, or when the cache security groups assigned to a cache cluster are modified.</p>
+-- * Status [String] <p>The status of the cache security group membership. The status changes whenever a cache security group is modified, or when the cache security groups assigned to a cluster are modified.</p>
 -- * SecurityGroupId [String] <p>The identifier of the cache security group.</p>
 -- @return SecurityGroupMembership structure as a key-value pair table
 function M.SecurityGroupMembership(args)
@@ -4343,27 +3783,31 @@ function M.SecurityGroupMembership(args)
     }
 end
 
-keys.DeleteCacheSecurityGroupMessage = { ["CacheSecurityGroupName"] = true, nil }
+keys.EngineDefaults = { ["Marker"] = true, ["CacheParameterGroupFamily"] = true, ["Parameters"] = true, ["CacheNodeTypeSpecificParameters"] = true, nil }
 
-function asserts.AssertDeleteCacheSecurityGroupMessage(struct)
+function asserts.AssertEngineDefaults(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteCacheSecurityGroupMessage to be of type 'table'")
-	assert(struct["CacheSecurityGroupName"], "Expected key CacheSecurityGroupName to exist in table")
-	if struct["CacheSecurityGroupName"] then asserts.AssertString(struct["CacheSecurityGroupName"]) end
+	assert(type(struct) == "table", "Expected EngineDefaults to be of type 'table'")
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["CacheParameterGroupFamily"] then asserts.AssertString(struct["CacheParameterGroupFamily"]) end
+	if struct["Parameters"] then asserts.AssertParametersList(struct["Parameters"]) end
+	if struct["CacheNodeTypeSpecificParameters"] then asserts.AssertCacheNodeTypeSpecificParametersList(struct["CacheNodeTypeSpecificParameters"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteCacheSecurityGroupMessage[k], "DeleteCacheSecurityGroupMessage contains unknown key " .. tostring(k))
+		assert(keys.EngineDefaults[k], "EngineDefaults contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteCacheSecurityGroupMessage
--- <p>Represents the input of a <code>DeleteCacheSecurityGroup</code> operation.</p>
+--- Create a structure of type EngineDefaults
+-- <p>Represents the output of a <code>DescribeEngineDefaultParameters</code> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CacheSecurityGroupName [String] <p>The name of the cache security group to delete.</p> <note> <p>You cannot delete the default security group.</p> </note>
--- Required key: CacheSecurityGroupName
--- @return DeleteCacheSecurityGroupMessage structure as a key-value pair table
-function M.DeleteCacheSecurityGroupMessage(args)
-	assert(args, "You must provide an argument table when creating DeleteCacheSecurityGroupMessage")
+-- * Marker [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
+-- * CacheParameterGroupFamily [String] <p>Specifies the name of the cache parameter group family to which the engine default parameters apply.</p> <p>Valid values are: <code>memcached1.4</code> | <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> | <code>redis4.0</code> </p>
+-- * Parameters [ParametersList] <p>Contains a list of engine default parameters.</p>
+-- * CacheNodeTypeSpecificParameters [CacheNodeTypeSpecificParametersList] <p>A list of parameters specific to a particular cache node type. Each element in the list contains detailed information about one parameter.</p>
+-- @return EngineDefaults structure as a key-value pair table
+function M.EngineDefaults(args)
+	assert(args, "You must provide an argument table when creating EngineDefaults")
     local query_args = { 
     }
     local uri_args = { 
@@ -4371,9 +3815,12 @@ function M.DeleteCacheSecurityGroupMessage(args)
     local header_args = { 
     }
 	local all_args = { 
-		["CacheSecurityGroupName"] = args["CacheSecurityGroupName"],
+		["Marker"] = args["Marker"],
+		["CacheParameterGroupFamily"] = args["CacheParameterGroupFamily"],
+		["Parameters"] = args["Parameters"],
+		["CacheNodeTypeSpecificParameters"] = args["CacheNodeTypeSpecificParameters"],
 	}
-	asserts.AssertDeleteCacheSecurityGroupMessage(all_args)
+	asserts.AssertEngineDefaults(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4400,15 +3847,15 @@ function asserts.AssertNodeSnapshot(struct)
 end
 
 --- Create a structure of type NodeSnapshot
--- <p>Represents an individual cache node in a snapshot of a cache cluster.</p>
+-- <p>Represents an individual cache node in a snapshot of a cluster.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * SnapshotCreateTime [TStamp] <p>The date and time when the source node's metadata and cache data set was obtained for the snapshot.</p>
--- * CacheNodeId [String] <p>The cache node identifier for the node in the source cache cluster.</p>
+-- * CacheNodeId [String] <p>The cache node identifier for the node in the source cluster.</p>
 -- * NodeGroupConfiguration [NodeGroupConfiguration] <p>The configuration for the source node group (shard).</p>
--- * CacheClusterId [String] <p>A unique identifier for the source cache cluster.</p>
+-- * CacheClusterId [String] <p>A unique identifier for the source cluster.</p>
 -- * NodeGroupId [String] <p>A unique identifier for the source node group (shard).</p>
--- * CacheNodeCreateTime [TStamp] <p>The date and time when the cache node was created in the source cache cluster.</p>
+-- * CacheNodeCreateTime [TStamp] <p>The date and time when the cache node was created in the source cluster.</p>
 -- * CacheSize [String] <p>The size of the cache on the source cache node.</p>
 -- @return NodeSnapshot structure as a key-value pair table
 function M.NodeSnapshot(args)
@@ -4459,7 +3906,7 @@ end
 -- * Engine [String] <p>The name of the cache engine.</p>
 -- * CacheEngineDescription [String] <p>The description of the cache engine.</p>
 -- * CacheEngineVersionDescription [String] <p>The description of the cache engine version.</p>
--- * CacheParameterGroupFamily [String] <p>The name of the cache parameter group family associated with this cache engine.</p> <p>Valid values are: <code>memcached1.4</code> | <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
+-- * CacheParameterGroupFamily [String] <p>The name of the cache parameter group family associated with this cache engine.</p> <p>Valid values are: <code>memcached1.4</code> | <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> | <code>redis4.0</code> </p>
 -- * EngineVersion [String] <p>The version number of the cache engine.</p>
 -- @return CacheEngineVersion structure as a key-value pair table
 function M.CacheEngineVersion(args)
@@ -4544,7 +3991,7 @@ end
 -- Valid keys:
 -- * SourceSnapshotName [String] <p>The name of an existing snapshot from which to make a copy.</p>
 -- * TargetSnapshotName [String] <p>A name for the snapshot copy. ElastiCache does not permit overwriting a snapshot, therefore this name must be unique within its context - ElastiCache or an Amazon S3 bucket if exporting.</p>
--- * TargetBucket [String] <p>The Amazon S3 bucket to which the snapshot is exported. This parameter is used only when exporting a snapshot for external access.</p> <p>When using this parameter to export a snapshot, be sure Amazon ElastiCache has the needed permissions to this S3 bucket. For more information, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess">Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket</a> in the <i>Amazon ElastiCache User Guide</i>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html">Exporting a Snapshot</a> in the <i>Amazon ElastiCache User Guide</i>.</p>
+-- * TargetBucket [String] <p>The Amazon S3 bucket to which the snapshot is exported. This parameter is used only when exporting a snapshot for external access.</p> <p>When using this parameter to export a snapshot, be sure Amazon ElastiCache has the needed permissions to this S3 bucket. For more information, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess">Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket</a> in the <i>Amazon ElastiCache User Guide</i>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html">Exporting a Snapshot</a> in the <i>Amazon ElastiCache User Guide</i>.</p>
 -- Required key: SourceSnapshotName
 -- Required key: TargetSnapshotName
 -- @return CopySnapshotMessage structure as a key-value pair table
@@ -4591,7 +4038,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * CacheParameterGroupName [String] <p>A user-specified name for the cache parameter group.</p>
--- * CacheParameterGroupFamily [String] <p>The name of the cache parameter group family that the cache parameter group can be used with.</p> <p>Valid values are: <code>memcached1.4</code> | <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
+-- * CacheParameterGroupFamily [String] <p>The name of the cache parameter group family that the cache parameter group can be used with.</p> <p>Valid values are: <code>memcached1.4</code> | <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> | <code>redis4.0</code> </p>
 -- * Description [String] <p>A user-specified description for the cache parameter group.</p>
 -- Required key: CacheParameterGroupName
 -- Required key: CacheParameterGroupFamily
@@ -4637,7 +4084,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * CacheParameterGroupName [String] <p>The name of the cache parameter group.</p>
--- * CacheParameterGroupFamily [String] <p>The name of the cache parameter group family that this cache parameter group is compatible with.</p> <p>Valid values are: <code>memcached1.4</code> | <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
+-- * CacheParameterGroupFamily [String] <p>The name of the cache parameter group family that this cache parameter group is compatible with.</p> <p>Valid values are: <code>memcached1.4</code> | <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> | <code>redis4.0</code> </p>
 -- * Description [String] <p>The description for this cache parameter group.</p>
 -- @return CacheParameterGroup structure as a key-value pair table
 function M.CacheParameterGroup(args)
@@ -4662,23 +4109,33 @@ function M.CacheParameterGroup(args)
     }
 end
 
-keys.APICallRateForCustomerExceededFault = { nil }
+keys.NodeGroupConfiguration = { ["Slots"] = true, ["ReplicaAvailabilityZones"] = true, ["NodeGroupId"] = true, ["PrimaryAvailabilityZone"] = true, ["ReplicaCount"] = true, nil }
 
-function asserts.AssertAPICallRateForCustomerExceededFault(struct)
+function asserts.AssertNodeGroupConfiguration(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected APICallRateForCustomerExceededFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected NodeGroupConfiguration to be of type 'table'")
+	if struct["Slots"] then asserts.AssertString(struct["Slots"]) end
+	if struct["ReplicaAvailabilityZones"] then asserts.AssertAvailabilityZonesList(struct["ReplicaAvailabilityZones"]) end
+	if struct["NodeGroupId"] then asserts.AssertAllowedNodeGroupId(struct["NodeGroupId"]) end
+	if struct["PrimaryAvailabilityZone"] then asserts.AssertString(struct["PrimaryAvailabilityZone"]) end
+	if struct["ReplicaCount"] then asserts.AssertIntegerOptional(struct["ReplicaCount"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.APICallRateForCustomerExceededFault[k], "APICallRateForCustomerExceededFault contains unknown key " .. tostring(k))
+		assert(keys.NodeGroupConfiguration[k], "NodeGroupConfiguration contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type APICallRateForCustomerExceededFault
--- <p>The customer has exceeded the allowed rate of API calls.</p>
+--- Create a structure of type NodeGroupConfiguration
+-- <p>Node group (shard) configuration options. Each node group (shard) configuration has the following: <code>Slots</code>, <code>PrimaryAvailabilityZone</code>, <code>ReplicaAvailabilityZones</code>, <code>ReplicaCount</code>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return APICallRateForCustomerExceededFault structure as a key-value pair table
-function M.APICallRateForCustomerExceededFault(args)
-	assert(args, "You must provide an argument table when creating APICallRateForCustomerExceededFault")
+-- * Slots [String] <p>A string that specifies the keyspace for a particular node group. Keyspaces range from 0 to 16,383. The string is in the format <code>startkey-endkey</code>.</p> <p>Example: <code>"0-3999"</code> </p>
+-- * ReplicaAvailabilityZones [AvailabilityZonesList] <p>A list of Availability Zones to be used for the read replicas. The number of Availability Zones in this list must match the value of <code>ReplicaCount</code> or <code>ReplicasPerNodeGroup</code> if not specified.</p>
+-- * NodeGroupId [AllowedNodeGroupId] <p>The 4-digit id for the node group these configuration values apply to.</p>
+-- * PrimaryAvailabilityZone [String] <p>The Availability Zone where the primary node of this node group (shard) is launched.</p>
+-- * ReplicaCount [IntegerOptional] <p>The number of read replica nodes in this node group (shard).</p>
+-- @return NodeGroupConfiguration structure as a key-value pair table
+function M.NodeGroupConfiguration(args)
+	assert(args, "You must provide an argument table when creating NodeGroupConfiguration")
     local query_args = { 
     }
     local uri_args = { 
@@ -4686,42 +4143,13 @@ function M.APICallRateForCustomerExceededFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Slots"] = args["Slots"],
+		["ReplicaAvailabilityZones"] = args["ReplicaAvailabilityZones"],
+		["NodeGroupId"] = args["NodeGroupId"],
+		["PrimaryAvailabilityZone"] = args["PrimaryAvailabilityZone"],
+		["ReplicaCount"] = args["ReplicaCount"],
 	}
-	asserts.AssertAPICallRateForCustomerExceededFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CacheSubnetGroupNotFoundFault = { nil }
-
-function asserts.AssertCacheSubnetGroupNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CacheSubnetGroupNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.CacheSubnetGroupNotFoundFault[k], "CacheSubnetGroupNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CacheSubnetGroupNotFoundFault
--- <p>The requested cache subnet group name does not refer to an existing cache subnet group.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return CacheSubnetGroupNotFoundFault structure as a key-value pair table
-function M.CacheSubnetGroupNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating CacheSubnetGroupNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertCacheSubnetGroupNotFoundFault(all_args)
+	asserts.AssertNodeGroupConfiguration(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4747,7 +4175,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Marker [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
--- * CacheClusters [CacheClusterList] <p>A list of cache clusters. Each item in the list contains detailed information about one cache cluster.</p>
+-- * CacheClusters [CacheClusterList] <p>A list of clusters. Each item in the list contains detailed information about one cluster.</p>
 -- @return CacheClusterMessage structure as a key-value pair table
 function M.CacheClusterMessage(args)
 	assert(args, "You must provide an argument table when creating CacheClusterMessage")
@@ -4802,23 +4230,23 @@ end
 -- <p>Represents the input of a <code>ModifyCacheCluster</code> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CacheSecurityGroupNames [CacheSecurityGroupNameList] <p>A list of cache security group names to authorize on this cache cluster. This change is asynchronously applied as soon as possible.</p> <p>You can use this parameter only with clusters that are created outside of an Amazon Virtual Private Cloud (Amazon VPC).</p> <p>Constraints: Must contain no more than 255 alphanumeric characters. Must not be "Default".</p>
--- * CacheParameterGroupName [String] <p>The name of the cache parameter group to apply to this cache cluster. This change is asynchronously applied as soon as possible for parameters when the <code>ApplyImmediately</code> parameter is specified as <code>true</code> for this request.</p>
--- * CacheClusterId [String] <p>The cache cluster identifier. This value is stored as a lowercase string.</p>
--- * NumCacheNodes [IntegerOptional] <p>The number of cache nodes that the cache cluster should have. If the value for <code>NumCacheNodes</code> is greater than the sum of the number of current cache nodes and the number of cache nodes pending creation (which may be zero), more nodes are added. If the value is less than the number of existing cache nodes, nodes are removed. If the value is equal to the number of current cache nodes, any pending add or remove requests are canceled.</p> <p>If you are removing cache nodes, you must use the <code>CacheNodeIdsToRemove</code> parameter to provide the IDs of the specific cache nodes to remove.</p> <p>For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1 and 20.</p> <note> <p>Adding or removing Memcached cache nodes can be applied immediately or as a pending operation (see <code>ApplyImmediately</code>).</p> <p>A pending operation to modify the number of cache nodes in a cluster during its maintenance window, whether by adding or removing nodes in accordance with the scale out architecture, is not queued. The customer's latest request to add or remove nodes to the cluster overrides any previous pending operations to modify the number of cache nodes in the cluster. For example, a request to remove 2 nodes would override a previous pending operation to remove 3 nodes. Similarly, a request to add 2 nodes would override a previous pending operation to remove 3 nodes and vice versa. As Memcached cache nodes may now be provisioned in different Availability Zones with flexible cache node placement, a request to add nodes does not automatically override a previous pending operation to add nodes. The customer can modify the previous pending operation to add more nodes or explicitly cancel the pending request and retry the new request. To cancel pending operations to modify the number of cache nodes in a cluster, use the <code>ModifyCacheCluster</code> request and set <code>NumCacheNodes</code> equal to the number of cache nodes currently in the cache cluster.</p> </note>
+-- * CacheSecurityGroupNames [CacheSecurityGroupNameList] <p>A list of cache security group names to authorize on this cluster. This change is asynchronously applied as soon as possible.</p> <p>You can use this parameter only with clusters that are created outside of an Amazon Virtual Private Cloud (Amazon VPC).</p> <p>Constraints: Must contain no more than 255 alphanumeric characters. Must not be "Default".</p>
+-- * CacheParameterGroupName [String] <p>The name of the cache parameter group to apply to this cluster. This change is asynchronously applied as soon as possible for parameters when the <code>ApplyImmediately</code> parameter is specified as <code>true</code> for this request.</p>
+-- * CacheClusterId [String] <p>The cluster identifier. This value is stored as a lowercase string.</p>
+-- * NumCacheNodes [IntegerOptional] <p>The number of cache nodes that the cluster should have. If the value for <code>NumCacheNodes</code> is greater than the sum of the number of current cache nodes and the number of cache nodes pending creation (which may be zero), more nodes are added. If the value is less than the number of existing cache nodes, nodes are removed. If the value is equal to the number of current cache nodes, any pending add or remove requests are canceled.</p> <p>If you are removing cache nodes, you must use the <code>CacheNodeIdsToRemove</code> parameter to provide the IDs of the specific cache nodes to remove.</p> <p>For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1 and 20.</p> <note> <p>Adding or removing Memcached cache nodes can be applied immediately or as a pending operation (see <code>ApplyImmediately</code>).</p> <p>A pending operation to modify the number of cache nodes in a cluster during its maintenance window, whether by adding or removing nodes in accordance with the scale out architecture, is not queued. The customer's latest request to add or remove nodes to the cluster overrides any previous pending operations to modify the number of cache nodes in the cluster. For example, a request to remove 2 nodes would override a previous pending operation to remove 3 nodes. Similarly, a request to add 2 nodes would override a previous pending operation to remove 3 nodes and vice versa. As Memcached cache nodes may now be provisioned in different Availability Zones with flexible cache node placement, a request to add nodes does not automatically override a previous pending operation to add nodes. The customer can modify the previous pending operation to add more nodes or explicitly cancel the pending request and retry the new request. To cancel pending operations to modify the number of cache nodes in a cluster, use the <code>ModifyCacheCluster</code> request and set <code>NumCacheNodes</code> equal to the number of cache nodes currently in the cluster.</p> </note>
 -- * AutoMinorVersionUpgrade [BooleanOptional] <p>This parameter is currently disabled.</p>
--- * ApplyImmediately [Boolean] <p>If <code>true</code>, this parameter causes the modifications in this request and any pending modifications to be applied, asynchronously and as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the cache cluster.</p> <p>If <code>false</code>, changes to the cache cluster are applied on the next maintenance reboot, or the next failure reboot, whichever occurs first.</p> <important> <p>If you perform a <code>ModifyCacheCluster</code> before a pending modification is applied, the pending modification is replaced by the newer modification.</p> </important> <p>Valid values: <code>true</code> | <code>false</code> </p> <p>Default: <code>false</code> </p>
--- * SecurityGroupIds [SecurityGroupIdsList] <p>Specifies the VPC Security Groups associated with the cache cluster.</p> <p>This parameter can be used only with clusters that are created in an Amazon Virtual Private Cloud (Amazon VPC).</p>
--- * SnapshotRetentionLimit [IntegerOptional] <p>The number of days for which ElastiCache retains automatic cache cluster snapshots before deleting them. For example, if you set <code>SnapshotRetentionLimit</code> to 5, a snapshot that was taken today is retained for 5 days before being deleted.</p> <note> <p>If the value of <code>SnapshotRetentionLimit</code> is set to zero (0), backups are turned off.</p> </note>
+-- * ApplyImmediately [Boolean] <p>If <code>true</code>, this parameter causes the modifications in this request and any pending modifications to be applied, asynchronously and as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the cluster.</p> <p>If <code>false</code>, changes to the cluster are applied on the next maintenance reboot, or the next failure reboot, whichever occurs first.</p> <important> <p>If you perform a <code>ModifyCacheCluster</code> before a pending modification is applied, the pending modification is replaced by the newer modification.</p> </important> <p>Valid values: <code>true</code> | <code>false</code> </p> <p>Default: <code>false</code> </p>
+-- * SecurityGroupIds [SecurityGroupIdsList] <p>Specifies the VPC Security Groups associated with the cluster.</p> <p>This parameter can be used only with clusters that are created in an Amazon Virtual Private Cloud (Amazon VPC).</p>
+-- * SnapshotRetentionLimit [IntegerOptional] <p>The number of days for which ElastiCache retains automatic cluster snapshots before deleting them. For example, if you set <code>SnapshotRetentionLimit</code> to 5, a snapshot that was taken today is retained for 5 days before being deleted.</p> <note> <p>If the value of <code>SnapshotRetentionLimit</code> is set to zero (0), backups are turned off.</p> </note>
 -- * NotificationTopicStatus [String] <p>The status of the Amazon SNS notification topic. Notifications are sent only if the status is <code>active</code>.</p> <p>Valid values: <code>active</code> | <code>inactive</code> </p>
--- * SnapshotWindow [String] <p>The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your cache cluster. </p>
--- * EngineVersion [String] <p>The upgraded version of the cache engine to be run on the cache nodes.</p> <p> <b>Important:</b> You can upgrade to a newer engine version (see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement">Selecting a Cache Engine and Version</a>), but you cannot downgrade to an earlier engine version. If you want to use an earlier engine version, you must delete the existing cache cluster and create it anew with the earlier engine version. </p>
--- * CacheNodeType [String] <p>A valid cache node type that you want to scale this cache cluster up to.</p>
--- * AZMode [AZMode] <p>Specifies whether the new nodes in this Memcached cache cluster are all created in a single Availability Zone or created across multiple Availability Zones.</p> <p>Valid values: <code>single-az</code> | <code>cross-az</code>.</p> <p>This option is only supported for Memcached cache clusters.</p> <note> <p>You cannot specify <code>single-az</code> if the Memcached cache cluster already has cache nodes in different Availability Zones. If <code>cross-az</code> is specified, existing Memcached nodes remain in their current Availability Zone.</p> <p>Only newly created nodes are located in different Availability Zones. For instructions on how to move existing Memcached nodes to different Availability Zones, see the <b>Availability Zone Considerations</b> section of <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheNode.Memcached.html">Cache Node Considerations for Memcached</a>.</p> </note>
--- * NotificationTopicArn [String] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to which notifications are sent.</p> <note> <p>The Amazon SNS topic owner must be same as the cache cluster owner.</p> </note>
--- * NewAvailabilityZones [PreferredAvailabilityZoneList] <p>The list of Availability Zones where the new Memcached cache nodes are created.</p> <p>This parameter is only valid when <code>NumCacheNodes</code> in the request is greater than the sum of the number of active cache nodes and the number of cache nodes pending creation (which may be zero). The number of Availability Zones supplied in this list must match the cache nodes being added in this request.</p> <p>This option is only supported on Memcached clusters.</p> <p>Scenarios:</p> <ul> <li> <p> <b>Scenario 1:</b> You have 3 active nodes and wish to add 2 nodes. Specify <code>NumCacheNodes=5</code> (3 + 2) and optionally specify two Availability Zones for the two new nodes.</p> </li> <li> <p> <b>Scenario 2:</b> You have 3 active nodes and 2 nodes pending creation (from the scenario 1 call) and want to add 1 more node. Specify <code>NumCacheNodes=6</code> ((3 + 2) + 1) and optionally specify an Availability Zone for the new node.</p> </li> <li> <p> <b>Scenario 3:</b> You want to cancel all pending operations. Specify <code>NumCacheNodes=3</code> to cancel all pending operations.</p> </li> </ul> <p>The Availability Zone placement of nodes pending creation cannot be modified. If you wish to cancel any nodes pending creation, add 0 nodes by setting <code>NumCacheNodes</code> to the number of current nodes.</p> <p>If <code>cross-az</code> is specified, existing Memcached nodes remain in their current Availability Zone. Only newly created nodes can be located in different Availability Zones. For guidance on how to move existing Memcached nodes to different Availability Zones, see the <b>Availability Zone Considerations</b> section of <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheNode.Memcached.html">Cache Node Considerations for Memcached</a>.</p> <p> <b>Impact of new add/remove requests upon pending requests</b> </p> <ul> <li> <p>Scenario-1</p> <ul> <li> <p>Pending Action: Delete</p> </li> <li> <p>New Request: Delete</p> </li> <li> <p>Result: The new delete, pending or immediate, replaces the pending delete.</p> </li> </ul> </li> <li> <p>Scenario-2</p> <ul> <li> <p>Pending Action: Delete</p> </li> <li> <p>New Request: Create</p> </li> <li> <p>Result: The new create, pending or immediate, replaces the pending delete.</p> </li> </ul> </li> <li> <p>Scenario-3</p> <ul> <li> <p>Pending Action: Create</p> </li> <li> <p>New Request: Delete</p> </li> <li> <p>Result: The new delete, pending or immediate, replaces the pending create.</p> </li> </ul> </li> <li> <p>Scenario-4</p> <ul> <li> <p>Pending Action: Create</p> </li> <li> <p>New Request: Create</p> </li> <li> <p>Result: The new create is added to the pending create.</p> <important> <p> <b>Important:</b> If the new create request is <b>Apply Immediately - Yes</b>, all creates are performed immediately. If the new create request is <b>Apply Immediately - No</b>, all creates are pending.</p> </important> </li> </ul> </li> </ul>
+-- * SnapshotWindow [String] <p>The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your cluster. </p>
+-- * EngineVersion [String] <p>The upgraded version of the cache engine to be run on the cache nodes.</p> <p> <b>Important:</b> You can upgrade to a newer engine version (see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement">Selecting a Cache Engine and Version</a>), but you cannot downgrade to an earlier engine version. If you want to use an earlier engine version, you must delete the existing cluster and create it anew with the earlier engine version. </p>
+-- * CacheNodeType [String] <p>A valid cache node type that you want to scale this cluster up to.</p>
+-- * AZMode [AZMode] <p>Specifies whether the new nodes in this Memcached cluster are all created in a single Availability Zone or created across multiple Availability Zones.</p> <p>Valid values: <code>single-az</code> | <code>cross-az</code>.</p> <p>This option is only supported for Memcached clusters.</p> <note> <p>You cannot specify <code>single-az</code> if the Memcached cluster already has cache nodes in different Availability Zones. If <code>cross-az</code> is specified, existing Memcached nodes remain in their current Availability Zone.</p> <p>Only newly created nodes are located in different Availability Zones. For instructions on how to move existing Memcached nodes to different Availability Zones, see the <b>Availability Zone Considerations</b> section of <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNode.Memcached.html">Cache Node Considerations for Memcached</a>.</p> </note>
+-- * NotificationTopicArn [String] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to which notifications are sent.</p> <note> <p>The Amazon SNS topic owner must be same as the cluster owner.</p> </note>
+-- * NewAvailabilityZones [PreferredAvailabilityZoneList] <p>The list of Availability Zones where the new Memcached cache nodes are created.</p> <p>This parameter is only valid when <code>NumCacheNodes</code> in the request is greater than the sum of the number of active cache nodes and the number of cache nodes pending creation (which may be zero). The number of Availability Zones supplied in this list must match the cache nodes being added in this request.</p> <p>This option is only supported on Memcached clusters.</p> <p>Scenarios:</p> <ul> <li> <p> <b>Scenario 1:</b> You have 3 active nodes and wish to add 2 nodes. Specify <code>NumCacheNodes=5</code> (3 + 2) and optionally specify two Availability Zones for the two new nodes.</p> </li> <li> <p> <b>Scenario 2:</b> You have 3 active nodes and 2 nodes pending creation (from the scenario 1 call) and want to add 1 more node. Specify <code>NumCacheNodes=6</code> ((3 + 2) + 1) and optionally specify an Availability Zone for the new node.</p> </li> <li> <p> <b>Scenario 3:</b> You want to cancel all pending operations. Specify <code>NumCacheNodes=3</code> to cancel all pending operations.</p> </li> </ul> <p>The Availability Zone placement of nodes pending creation cannot be modified. If you wish to cancel any nodes pending creation, add 0 nodes by setting <code>NumCacheNodes</code> to the number of current nodes.</p> <p>If <code>cross-az</code> is specified, existing Memcached nodes remain in their current Availability Zone. Only newly created nodes can be located in different Availability Zones. For guidance on how to move existing Memcached nodes to different Availability Zones, see the <b>Availability Zone Considerations</b> section of <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNode.Memcached.html">Cache Node Considerations for Memcached</a>.</p> <p> <b>Impact of new add/remove requests upon pending requests</b> </p> <ul> <li> <p>Scenario-1</p> <ul> <li> <p>Pending Action: Delete</p> </li> <li> <p>New Request: Delete</p> </li> <li> <p>Result: The new delete, pending or immediate, replaces the pending delete.</p> </li> </ul> </li> <li> <p>Scenario-2</p> <ul> <li> <p>Pending Action: Delete</p> </li> <li> <p>New Request: Create</p> </li> <li> <p>Result: The new create, pending or immediate, replaces the pending delete.</p> </li> </ul> </li> <li> <p>Scenario-3</p> <ul> <li> <p>Pending Action: Create</p> </li> <li> <p>New Request: Delete</p> </li> <li> <p>Result: The new delete, pending or immediate, replaces the pending create.</p> </li> </ul> </li> <li> <p>Scenario-4</p> <ul> <li> <p>Pending Action: Create</p> </li> <li> <p>New Request: Create</p> </li> <li> <p>Result: The new create is added to the pending create.</p> <important> <p> <b>Important:</b> If the new create request is <b>Apply Immediately - Yes</b>, all creates are performed immediately. If the new create request is <b>Apply Immediately - No</b>, all creates are pending.</p> </important> </li> </ul> </li> </ul>
 -- * PreferredMaintenanceWindow [String] <p>Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period.</p> <p>Valid values for <code>ddd</code> are:</p> <ul> <li> <p> <code>sun</code> </p> </li> <li> <p> <code>mon</code> </p> </li> <li> <p> <code>tue</code> </p> </li> <li> <p> <code>wed</code> </p> </li> <li> <p> <code>thu</code> </p> </li> <li> <p> <code>fri</code> </p> </li> <li> <p> <code>sat</code> </p> </li> </ul> <p>Example: <code>sun:23:00-mon:01:30</code> </p>
--- * CacheNodeIdsToRemove [CacheNodeIdsList] <p>A list of cache node IDs to be removed. A node ID is a numeric identifier (0001, 0002, etc.). This parameter is only valid when <code>NumCacheNodes</code> is less than the existing number of cache nodes. The number of cache node IDs supplied in this parameter must match the difference between the existing number of cache nodes in the cluster or pending cache nodes, whichever is greater, and the value of <code>NumCacheNodes</code> in the request.</p> <p>For example: If you have 3 active cache nodes, 7 pending cache nodes, and the number of cache nodes in this <code>ModifyCacheCluser</code> call is 5, you must list 2 (7 - 5) cache node IDs to remove.</p>
+-- * CacheNodeIdsToRemove [CacheNodeIdsList] <p>A list of cache node IDs to be removed. A node ID is a numeric identifier (0001, 0002, etc.). This parameter is only valid when <code>NumCacheNodes</code> is less than the existing number of cache nodes. The number of cache node IDs supplied in this parameter must match the difference between the existing number of cache nodes in the cluster or pending cache nodes, whichever is greater, and the value of <code>NumCacheNodes</code> in the request.</p> <p>For example: If you have 3 active cache nodes, 7 pending cache nodes, and the number of cache nodes in this <code>ModifyCacheCluster</code> call is 5, you must list 2 (7 - 5) cache node IDs to remove.</p>
 -- Required key: CacheClusterId
 -- @return ModifyCacheClusterMessage structure as a key-value pair table
 function M.ModifyCacheClusterMessage(args)
@@ -4849,40 +4277,6 @@ function M.ModifyCacheClusterMessage(args)
 		["CacheNodeIdsToRemove"] = args["CacheNodeIdsToRemove"],
 	}
 	asserts.AssertModifyCacheClusterMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ReservedCacheNodesOfferingNotFoundFault = { nil }
-
-function asserts.AssertReservedCacheNodesOfferingNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ReservedCacheNodesOfferingNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ReservedCacheNodesOfferingNotFoundFault[k], "ReservedCacheNodesOfferingNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ReservedCacheNodesOfferingNotFoundFault
--- <p>The requested cache node offering does not exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ReservedCacheNodesOfferingNotFoundFault structure as a key-value pair table
-function M.ReservedCacheNodesOfferingNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating ReservedCacheNodesOfferingNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertReservedCacheNodesOfferingNotFoundFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4936,53 +4330,22 @@ function M.ModifyCacheSubnetGroupMessage(args)
     }
 end
 
-keys.ReplicationGroupAlreadyExistsFault = { nil }
-
-function asserts.AssertReplicationGroupAlreadyExistsFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ReplicationGroupAlreadyExistsFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ReplicationGroupAlreadyExistsFault[k], "ReplicationGroupAlreadyExistsFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ReplicationGroupAlreadyExistsFault
--- <p>The specified replication group already exists.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ReplicationGroupAlreadyExistsFault structure as a key-value pair table
-function M.ReplicationGroupAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating ReplicationGroupAlreadyExistsFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertReplicationGroupAlreadyExistsFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ReplicationGroup = { ["Status"] = true, ["Description"] = true, ["NodeGroups"] = true, ["ConfigurationEndpoint"] = true, ["ClusterEnabled"] = true, ["ReplicationGroupId"] = true, ["SnapshotRetentionLimit"] = true, ["AutomaticFailover"] = true, ["SnapshotWindow"] = true, ["SnapshottingClusterId"] = true, ["MemberClusters"] = true, ["CacheNodeType"] = true, ["PendingModifiedValues"] = true, nil }
+keys.ReplicationGroup = { ["Status"] = true, ["AuthTokenEnabled"] = true, ["Description"] = true, ["NodeGroups"] = true, ["ConfigurationEndpoint"] = true, ["AtRestEncryptionEnabled"] = true, ["ClusterEnabled"] = true, ["ReplicationGroupId"] = true, ["SnapshotRetentionLimit"] = true, ["AutomaticFailover"] = true, ["TransitEncryptionEnabled"] = true, ["SnapshotWindow"] = true, ["SnapshottingClusterId"] = true, ["MemberClusters"] = true, ["CacheNodeType"] = true, ["PendingModifiedValues"] = true, nil }
 
 function asserts.AssertReplicationGroup(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReplicationGroup to be of type 'table'")
 	if struct["Status"] then asserts.AssertString(struct["Status"]) end
+	if struct["AuthTokenEnabled"] then asserts.AssertBooleanOptional(struct["AuthTokenEnabled"]) end
 	if struct["Description"] then asserts.AssertString(struct["Description"]) end
 	if struct["NodeGroups"] then asserts.AssertNodeGroupList(struct["NodeGroups"]) end
 	if struct["ConfigurationEndpoint"] then asserts.AssertEndpoint(struct["ConfigurationEndpoint"]) end
+	if struct["AtRestEncryptionEnabled"] then asserts.AssertBooleanOptional(struct["AtRestEncryptionEnabled"]) end
 	if struct["ClusterEnabled"] then asserts.AssertBooleanOptional(struct["ClusterEnabled"]) end
 	if struct["ReplicationGroupId"] then asserts.AssertString(struct["ReplicationGroupId"]) end
 	if struct["SnapshotRetentionLimit"] then asserts.AssertIntegerOptional(struct["SnapshotRetentionLimit"]) end
 	if struct["AutomaticFailover"] then asserts.AssertAutomaticFailoverStatus(struct["AutomaticFailover"]) end
+	if struct["TransitEncryptionEnabled"] then asserts.AssertBooleanOptional(struct["TransitEncryptionEnabled"]) end
 	if struct["SnapshotWindow"] then asserts.AssertString(struct["SnapshotWindow"]) end
 	if struct["SnapshottingClusterId"] then asserts.AssertString(struct["SnapshottingClusterId"]) end
 	if struct["MemberClusters"] then asserts.AssertClusterIdList(struct["MemberClusters"]) end
@@ -4998,15 +4361,18 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Status [String] <p>The current state of this replication group - <code>creating</code>, <code>available</code>, <code>modifying</code>, <code>deleting</code>, <code>create-failed</code>, <code>snapshotting</code>.</p>
--- * Description [String] <p>The description of the replication group.</p>
--- * NodeGroups [NodeGroupList] <p>A single element list with information about the nodes in the replication group.</p>
--- * ConfigurationEndpoint [Endpoint] <p>The configuration endpoint for this replicaiton group. Use the configuration endpoint to connect to this replication group.</p>
+-- * AuthTokenEnabled [BooleanOptional] <p>A flag that enables using an <code>AuthToken</code> (password) when issuing Redis commands.</p> <p>Default: <code>false</code> </p>
+-- * Description [String] <p>The user supplied description of the replication group.</p>
+-- * NodeGroups [NodeGroupList] <p>A list of node groups in this replication group. For Redis (cluster mode disabled) replication groups, this is a single-element list. For Redis (cluster mode enabled) replication groups, the list contains an entry for each node group (shard).</p>
+-- * ConfigurationEndpoint [Endpoint] <p>The configuration endpoint for this replication group. Use the configuration endpoint to connect to this replication group.</p>
+-- * AtRestEncryptionEnabled [BooleanOptional] <p>A flag that enables encryption at-rest when set to <code>true</code>.</p> <p>You cannot modify the value of <code>AtRestEncryptionEnabled</code> after the cluster is created. To enable encryption at-rest on a cluster you must set <code>AtRestEncryptionEnabled</code> to <code>true</code> when you create a cluster.</p> <p> <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version <code>3.2.6</code> or <code>4.x</code>.</p> <p>Default: <code>false</code> </p>
 -- * ClusterEnabled [BooleanOptional] <p>A flag indicating whether or not this replication group is cluster enabled; i.e., whether its data can be partitioned across multiple shards (API/CLI: node groups).</p> <p>Valid values: <code>true</code> | <code>false</code> </p>
 -- * ReplicationGroupId [String] <p>The identifier for the replication group.</p>
--- * SnapshotRetentionLimit [IntegerOptional] <p>The number of days for which ElastiCache retains automatic cache cluster snapshots before deleting them. For example, if you set <code>SnapshotRetentionLimit</code> to 5, a snapshot that was taken today is retained for 5 days before being deleted.</p> <important> <p> If the value of <code>SnapshotRetentionLimit</code> is set to zero (0), backups are turned off.</p> </important>
--- * AutomaticFailover [AutomaticFailoverStatus] <p>Indicates the status of Multi-AZ for this replication group.</p> <note> <p>ElastiCache Multi-AZ replication groups are not supported on:</p> <ul> <li> <p>Redis versions earlier than 2.8.6.</p> </li> <li> <p>Redis (cluster mode disabled):T1 and T2 cache node types.</p> <p>Redis (cluster mode enabled): T1 node types.</p> </li> </ul> </note>
--- * SnapshotWindow [String] <p>The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard).</p> <p>Example: <code>05:00-09:00</code> </p> <p>If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range.</p> <p> <b>Note:</b> This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.</p>
--- * SnapshottingClusterId [String] <p>The cache cluster ID that is used as the daily snapshot source for the replication group.</p>
+-- * SnapshotRetentionLimit [IntegerOptional] <p>The number of days for which ElastiCache retains automatic cluster snapshots before deleting them. For example, if you set <code>SnapshotRetentionLimit</code> to 5, a snapshot that was taken today is retained for 5 days before being deleted.</p> <important> <p> If the value of <code>SnapshotRetentionLimit</code> is set to zero (0), backups are turned off.</p> </important>
+-- * AutomaticFailover [AutomaticFailoverStatus] <p>Indicates the status of Multi-AZ with automatic failover for this Redis replication group.</p> <p>Amazon ElastiCache for Redis does not support Multi-AZ with automatic failover on:</p> <ul> <li> <p>Redis versions earlier than 2.8.6.</p> </li> <li> <p>Redis (cluster mode disabled): T1 and T2 cache node types.</p> </li> <li> <p>Redis (cluster mode enabled): T1 node types.</p> </li> </ul>
+-- * TransitEncryptionEnabled [BooleanOptional] <p>A flag that enables in-transit encryption when set to <code>true</code>.</p> <p>You cannot modify the value of <code>TransitEncryptionEnabled</code> after the cluster is created. To enable in-transit encryption on a cluster you must set <code>TransitEncryptionEnabled</code> to <code>true</code> when you create a cluster.</p> <p> <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version <code>3.2.6</code> or <code>4.x</code>.</p> <p>Default: <code>false</code> </p>
+-- * SnapshotWindow [String] <p>The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard).</p> <p>Example: <code>05:00-09:00</code> </p> <p>If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range.</p> <note> <p>This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.</p> </note>
+-- * SnapshottingClusterId [String] <p>The cluster ID that is used as the daily snapshot source for the replication group.</p>
 -- * MemberClusters [ClusterIdList] <p>The names of all the cache clusters that are part of this replication group.</p>
 -- * CacheNodeType [String] <p>The name of the compute and memory capacity node type for each node in the replication group.</p>
 -- * PendingModifiedValues [ReplicationGroupPendingModifiedValues] <p>A group of settings to be applied to the replication group, either immediately or during the next maintenance window.</p>
@@ -5021,13 +4387,16 @@ function M.ReplicationGroup(args)
     }
 	local all_args = { 
 		["Status"] = args["Status"],
+		["AuthTokenEnabled"] = args["AuthTokenEnabled"],
 		["Description"] = args["Description"],
 		["NodeGroups"] = args["NodeGroups"],
 		["ConfigurationEndpoint"] = args["ConfigurationEndpoint"],
+		["AtRestEncryptionEnabled"] = args["AtRestEncryptionEnabled"],
 		["ClusterEnabled"] = args["ClusterEnabled"],
 		["ReplicationGroupId"] = args["ReplicationGroupId"],
 		["SnapshotRetentionLimit"] = args["SnapshotRetentionLimit"],
 		["AutomaticFailover"] = args["AutomaticFailover"],
+		["TransitEncryptionEnabled"] = args["TransitEncryptionEnabled"],
 		["SnapshotWindow"] = args["SnapshotWindow"],
 		["SnapshottingClusterId"] = args["SnapshottingClusterId"],
 		["MemberClusters"] = args["MemberClusters"],
@@ -5086,40 +4455,6 @@ function M.EC2SecurityGroup(args)
     }
 end
 
-keys.SubnetInUse = { nil }
-
-function asserts.AssertSubnetInUse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SubnetInUse to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SubnetInUse[k], "SubnetInUse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SubnetInUse
--- <p>The requested subnet is being used by another cache subnet group.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SubnetInUse structure as a key-value pair table
-function M.SubnetInUse(args)
-	assert(args, "You must provide an argument table when creating SubnetInUse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSubnetInUse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.CacheSecurityGroupMessage = { ["Marker"] = true, ["CacheSecurityGroups"] = true, nil }
 
 function asserts.AssertCacheSecurityGroupMessage(struct)
@@ -5160,75 +4495,7 @@ function M.CacheSecurityGroupMessage(args)
     }
 end
 
-keys.InvalidCacheParameterGroupStateFault = { nil }
-
-function asserts.AssertInvalidCacheParameterGroupStateFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidCacheParameterGroupStateFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidCacheParameterGroupStateFault[k], "InvalidCacheParameterGroupStateFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidCacheParameterGroupStateFault
--- <p>The current state of the cache parameter group does not allow the requested operation to occur.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidCacheParameterGroupStateFault structure as a key-value pair table
-function M.InvalidCacheParameterGroupStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidCacheParameterGroupStateFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidCacheParameterGroupStateFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TagNotFoundFault = { nil }
-
-function asserts.AssertTagNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TagNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TagNotFoundFault[k], "TagNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TagNotFoundFault
--- <p>The requested tag was not found on this resource.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TagNotFoundFault structure as a key-value pair table
-function M.TagNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating TagNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTagNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CreateReplicationGroupMessage = { ["CacheParameterGroupName"] = true, ["NodeGroupConfiguration"] = true, ["ReplicationGroupId"] = true, ["NumNodeGroups"] = true, ["NotificationTopicArn"] = true, ["CacheNodeType"] = true, ["Engine"] = true, ["AuthToken"] = true, ["PrimaryClusterId"] = true, ["AutoMinorVersionUpgrade"] = true, ["PreferredMaintenanceWindow"] = true, ["CacheSubnetGroupName"] = true, ["CacheSecurityGroupNames"] = true, ["SnapshotName"] = true, ["ReplicasPerNodeGroup"] = true, ["SecurityGroupIds"] = true, ["PreferredCacheClusterAZs"] = true, ["EngineVersion"] = true, ["ReplicationGroupDescription"] = true, ["NumCacheClusters"] = true, ["SnapshotArns"] = true, ["SnapshotRetentionLimit"] = true, ["Tags"] = true, ["SnapshotWindow"] = true, ["Port"] = true, ["AutomaticFailoverEnabled"] = true, nil }
+keys.CreateReplicationGroupMessage = { ["CacheParameterGroupName"] = true, ["NodeGroupConfiguration"] = true, ["TransitEncryptionEnabled"] = true, ["ReplicationGroupId"] = true, ["NumNodeGroups"] = true, ["NotificationTopicArn"] = true, ["CacheNodeType"] = true, ["Engine"] = true, ["AuthToken"] = true, ["PrimaryClusterId"] = true, ["AutoMinorVersionUpgrade"] = true, ["PreferredMaintenanceWindow"] = true, ["CacheSubnetGroupName"] = true, ["CacheSecurityGroupNames"] = true, ["SnapshotName"] = true, ["AtRestEncryptionEnabled"] = true, ["ReplicasPerNodeGroup"] = true, ["SecurityGroupIds"] = true, ["PreferredCacheClusterAZs"] = true, ["EngineVersion"] = true, ["ReplicationGroupDescription"] = true, ["NumCacheClusters"] = true, ["SnapshotArns"] = true, ["SnapshotRetentionLimit"] = true, ["Tags"] = true, ["SnapshotWindow"] = true, ["Port"] = true, ["AutomaticFailoverEnabled"] = true, nil }
 
 function asserts.AssertCreateReplicationGroupMessage(struct)
 	assert(struct)
@@ -5237,6 +4504,7 @@ function asserts.AssertCreateReplicationGroupMessage(struct)
 	assert(struct["ReplicationGroupDescription"], "Expected key ReplicationGroupDescription to exist in table")
 	if struct["CacheParameterGroupName"] then asserts.AssertString(struct["CacheParameterGroupName"]) end
 	if struct["NodeGroupConfiguration"] then asserts.AssertNodeGroupConfigurationList(struct["NodeGroupConfiguration"]) end
+	if struct["TransitEncryptionEnabled"] then asserts.AssertBooleanOptional(struct["TransitEncryptionEnabled"]) end
 	if struct["ReplicationGroupId"] then asserts.AssertString(struct["ReplicationGroupId"]) end
 	if struct["NumNodeGroups"] then asserts.AssertIntegerOptional(struct["NumNodeGroups"]) end
 	if struct["NotificationTopicArn"] then asserts.AssertString(struct["NotificationTopicArn"]) end
@@ -5249,6 +4517,7 @@ function asserts.AssertCreateReplicationGroupMessage(struct)
 	if struct["CacheSubnetGroupName"] then asserts.AssertString(struct["CacheSubnetGroupName"]) end
 	if struct["CacheSecurityGroupNames"] then asserts.AssertCacheSecurityGroupNameList(struct["CacheSecurityGroupNames"]) end
 	if struct["SnapshotName"] then asserts.AssertString(struct["SnapshotName"]) end
+	if struct["AtRestEncryptionEnabled"] then asserts.AssertBooleanOptional(struct["AtRestEncryptionEnabled"]) end
 	if struct["ReplicasPerNodeGroup"] then asserts.AssertIntegerOptional(struct["ReplicasPerNodeGroup"]) end
 	if struct["SecurityGroupIds"] then asserts.AssertSecurityGroupIdsList(struct["SecurityGroupIds"]) end
 	if struct["PreferredCacheClusterAZs"] then asserts.AssertAvailabilityZonesList(struct["PreferredCacheClusterAZs"]) end
@@ -5271,31 +4540,33 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * CacheParameterGroupName [String] <p>The name of the parameter group to associate with this replication group. If this argument is omitted, the default cache parameter group for the specified engine is used.</p> <p>If you are running Redis version 3.2.4 or later, only one node group (shard), and want to use a default parameter group, we recommend that you specify the parameter group by name. </p> <ul> <li> <p>To create a Redis (cluster mode disabled) replication group, use <code>CacheParameterGroupName=default.redis3.2</code>.</p> </li> <li> <p>To create a Redis (cluster mode enabled) replication group, use <code>CacheParameterGroupName=default.redis3.2.cluster.on</code>.</p> </li> </ul>
--- * NodeGroupConfiguration [NodeGroupConfigurationList] <p>A list of node group (shard) configuration options. Each node group (shard) configuration has the following: Slots, PrimaryAvailabilityZone, ReplicaAvailabilityZones, ReplicaCount.</p> <p>If you're creating a Redis (cluster mode disabled) or a Redis (cluster mode enabled) replication group, you can use this parameter to individually configure each node group (shard), or you can omit this parameter.</p>
+-- * NodeGroupConfiguration [NodeGroupConfigurationList] <p>A list of node group (shard) configuration options. Each node group (shard) configuration has the following members: <code>PrimaryAvailabilityZone</code>, <code>ReplicaAvailabilityZones</code>, <code>ReplicaCount</code>, and <code>Slots</code>.</p> <p>If you're creating a Redis (cluster mode disabled) or a Redis (cluster mode enabled) replication group, you can use this parameter to individually configure each node group (shard), or you can omit this parameter. However, when seeding a Redis (cluster mode enabled) cluster from a S3 rdb file, you must configure each node group (shard) using this parameter because you must specify the slots for each node group.</p>
+-- * TransitEncryptionEnabled [BooleanOptional] <p>A flag that enables in-transit encryption when set to <code>true</code>.</p> <p>You cannot modify the value of <code>TransitEncryptionEnabled</code> after the cluster is created. To enable in-transit encryption on a cluster you must set <code>TransitEncryptionEnabled</code> to <code>true</code> when you create a cluster.</p> <p>This parameter is valid only if the <code>Engine</code> parameter is <code>redis</code>, the <code>EngineVersion</code> parameter is <code>3.2.6</code> or <code>4.x</code>, and the cluster is being created in an Amazon VPC.</p> <p>If you enable in-transit encryption, you must also specify a value for <code>CacheSubnetGroup</code>.</p> <p> <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version <code>3.2.6</code> or <code>4.x</code>.</p> <p>Default: <code>false</code> </p> <important> <p>For HIPAA compliance, you must specify <code>TransitEncryptionEnabled</code> as <code>true</code>, an <code>AuthToken</code>, and a <code>CacheSubnetGroup</code>.</p> </important>
 -- * ReplicationGroupId [String] <p>The replication group identifier. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>A name must contain from 1 to 20 alphanumeric characters or hyphens.</p> </li> <li> <p>The first character must be a letter.</p> </li> <li> <p>A name cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
 -- * NumNodeGroups [IntegerOptional] <p>An optional parameter that specifies the number of node groups (shards) for this Redis (cluster mode enabled) replication group. For Redis (cluster mode disabled) either omit this parameter or set it to 1.</p> <p>Default: 1</p>
--- * NotificationTopicArn [String] <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic to which notifications are sent.</p> <note> <p>The Amazon SNS topic owner must be the same as the cache cluster owner.</p> </note>
--- * CacheNodeType [String] <p>The compute and memory capacity of the nodes in the node group (shard).</p> <p>Valid node types are as follows:</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> or <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a>.</p>
--- * Engine [String] <p>The name of the cache engine to be used for the cache clusters in this replication group.</p>
--- * AuthToken [String] <p> <b>Reserved parameter.</b> The password used to access a password protected server.</p> <p>Password constraints:</p> <ul> <li> <p>Must be only printable ASCII characters.</p> </li> <li> <p>Must be at least 16 characters and no more than 128 characters in length.</p> </li> <li> <p>Cannot contain any of the following characters: '/', '"', or "@". </p> </li> </ul> <p>For more information, see <a href="http://redis.io/commands/AUTH">AUTH password</a> at Redis.</p>
--- * PrimaryClusterId [String] <p>The identifier of the cache cluster that serves as the primary for this replication group. This cache cluster must already exist and have a status of <code>available</code>.</p> <p>This parameter is not required if <code>NumCacheClusters</code>, <code>NumNodeGroups</code>, or <code>ReplicasPerNodeGroup</code> is specified.</p>
+-- * NotificationTopicArn [String] <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic to which notifications are sent.</p> <note> <p>The Amazon SNS topic owner must be the same as the cluster owner.</p> </note>
+-- * CacheNodeType [String] <p>The compute and memory capacity of the nodes in the node group (shard).</p> <p>The following node types are supported by ElastiCache. Generally speaking, the current generation types provide more memory and computational power at lower cost when compared to their equivalent previous generation counterparts.</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: </p> <p> <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code> </p> <p> <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code> </p> <p> <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: (not recommended)</p> <p> <b>T1 node types:</b> <code>cache.t1.micro</code> </p> <p> <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized:</p> <ul> <li> <p>Previous generation: (not recommended)</p> <p> <b>C1 node types:</b> <code>cache.c1.xlarge</code> </p> </li> </ul> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: </p> <p> <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> <p> <b>R4 node types;</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>, <code>cache.r4.2xlarge</code>, <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>, <code>cache.r4.16xlarge</code> </p> </li> <li> <p>Previous generation: (not recommended)</p> <p> <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances. </p> </li> <li> <p>Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see:</p> <ul> <li> <p> <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a> </p> </li> </ul>
+-- * Engine [String] <p>The name of the cache engine to be used for the clusters in this replication group.</p>
+-- * AuthToken [String] <p> <b>Reserved parameter.</b> The password used to access a password protected server.</p> <p> <code>AuthToken</code> can be specified only on replication groups where <code>TransitEncryptionEnabled</code> is <code>true</code>.</p> <important> <p>For HIPAA compliance, you must specify <code>TransitEncryptionEnabled</code> as <code>true</code>, an <code>AuthToken</code>, and a <code>CacheSubnetGroup</code>.</p> </important> <p>Password constraints:</p> <ul> <li> <p>Must be only printable ASCII characters.</p> </li> <li> <p>Must be at least 16 characters and no more than 128 characters in length.</p> </li> <li> <p>Cannot contain any of the following characters: '/', '"', or '@'. </p> </li> </ul> <p>For more information, see <a href="http://redis.io/commands/AUTH">AUTH password</a> at http://redis.io/commands/AUTH.</p>
+-- * PrimaryClusterId [String] <p>The identifier of the cluster that serves as the primary for this replication group. This cluster must already exist and have a status of <code>available</code>.</p> <p>This parameter is not required if <code>NumCacheClusters</code>, <code>NumNodeGroups</code>, or <code>ReplicasPerNodeGroup</code> is specified.</p>
 -- * AutoMinorVersionUpgrade [BooleanOptional] <p>This parameter is currently disabled.</p>
--- * PreferredMaintenanceWindow [String] <p>Specifies the weekly time range during which maintenance on the cache cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for <code>ddd</code> are:</p> <p>Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period.</p> <p>Valid values for <code>ddd</code> are:</p> <ul> <li> <p> <code>sun</code> </p> </li> <li> <p> <code>mon</code> </p> </li> <li> <p> <code>tue</code> </p> </li> <li> <p> <code>wed</code> </p> </li> <li> <p> <code>thu</code> </p> </li> <li> <p> <code>fri</code> </p> </li> <li> <p> <code>sat</code> </p> </li> </ul> <p>Example: <code>sun:23:00-mon:01:30</code> </p>
--- * CacheSubnetGroupName [String] <p>The name of the cache subnet group to be used for the replication group.</p> <important> <p>If you're going to launch your cluster in an Amazon VPC, you need to create a subnet group before you start creating a cluster. For more information, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SubnetGroups.html">Subnets and Subnet Groups</a>.</p> </important>
+-- * PreferredMaintenanceWindow [String] <p>Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for <code>ddd</code> are:</p> <p>Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period.</p> <p>Valid values for <code>ddd</code> are:</p> <ul> <li> <p> <code>sun</code> </p> </li> <li> <p> <code>mon</code> </p> </li> <li> <p> <code>tue</code> </p> </li> <li> <p> <code>wed</code> </p> </li> <li> <p> <code>thu</code> </p> </li> <li> <p> <code>fri</code> </p> </li> <li> <p> <code>sat</code> </p> </li> </ul> <p>Example: <code>sun:23:00-mon:01:30</code> </p>
+-- * CacheSubnetGroupName [String] <p>The name of the cache subnet group to be used for the replication group.</p> <important> <p>If you're going to launch your cluster in an Amazon VPC, you need to create a subnet group before you start creating a cluster. For more information, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html">Subnets and Subnet Groups</a>.</p> </important>
 -- * CacheSecurityGroupNames [CacheSecurityGroupNameList] <p>A list of cache security group names to associate with this replication group.</p>
--- * SnapshotName [String] <p>The name of a snapshot from which to restore data into the new replication group. The snapshot status changes to <code>restoring</code> while the new replication group is being created.</p> <note> <p>This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.</p> </note>
+-- * SnapshotName [String] <p>The name of a snapshot from which to restore data into the new replication group. The snapshot status changes to <code>restoring</code> while the new replication group is being created.</p>
+-- * AtRestEncryptionEnabled [BooleanOptional] <p>A flag that enables encryption at rest when set to <code>true</code>.</p> <p>You cannot modify the value of <code>AtRestEncryptionEnabled</code> after the replication group is created. To enable encryption at rest on a replication group you must set <code>AtRestEncryptionEnabled</code> to <code>true</code> when you create the replication group. </p> <p> <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version <code>3.2.6</code> or <code>4.x</code>.</p> <p>Default: <code>false</code> </p>
 -- * ReplicasPerNodeGroup [IntegerOptional] <p>An optional parameter that specifies the number of replica nodes in each node group (shard). Valid values are 0 to 5.</p>
 -- * SecurityGroupIds [SecurityGroupIdsList] <p>One or more Amazon VPC security groups associated with this replication group.</p> <p>Use this parameter only when you are creating a replication group in an Amazon Virtual Private Cloud (Amazon VPC).</p>
--- * PreferredCacheClusterAZs [AvailabilityZonesList] <p>A list of EC2 Availability Zones in which the replication group's cache clusters are created. The order of the Availability Zones in the list is the order in which clusters are allocated. The primary cluster is created in the first AZ in the list.</p> <p>This parameter is not used if there is more than one node group (shard). You should use <code>NodeGroupConfiguration</code> instead.</p> <note> <p>If you are creating your replication group in an Amazon VPC (recommended), you can only locate cache clusters in Availability Zones associated with the subnets in the selected subnet group.</p> <p>The number of Availability Zones listed must equal the value of <code>NumCacheClusters</code>.</p> </note> <p>Default: system chosen Availability Zones.</p>
--- * EngineVersion [String] <p>The version number of the cache engine to be used for the cache clusters in this replication group. To view the supported cache engine versions, use the <code>DescribeCacheEngineVersions</code> operation.</p> <p> <b>Important:</b> You can upgrade to a newer engine version (see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement">Selecting a Cache Engine and Version</a>) in the <i>ElastiCache User Guide</i>, but you cannot downgrade to an earlier engine version. If you want to use an earlier engine version, you must delete the existing cache cluster or replication group and create it anew with the earlier engine version. </p>
+-- * PreferredCacheClusterAZs [AvailabilityZonesList] <p>A list of EC2 Availability Zones in which the replication group's clusters are created. The order of the Availability Zones in the list is the order in which clusters are allocated. The primary cluster is created in the first AZ in the list.</p> <p>This parameter is not used if there is more than one node group (shard). You should use <code>NodeGroupConfiguration</code> instead.</p> <note> <p>If you are creating your replication group in an Amazon VPC (recommended), you can only locate clusters in Availability Zones associated with the subnets in the selected subnet group.</p> <p>The number of Availability Zones listed must equal the value of <code>NumCacheClusters</code>.</p> </note> <p>Default: system chosen Availability Zones.</p>
+-- * EngineVersion [String] <p>The version number of the cache engine to be used for the clusters in this replication group. To view the supported cache engine versions, use the <code>DescribeCacheEngineVersions</code> operation.</p> <p> <b>Important:</b> You can upgrade to a newer engine version (see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement">Selecting a Cache Engine and Version</a>) in the <i>ElastiCache User Guide</i>, but you cannot downgrade to an earlier engine version. If you want to use an earlier engine version, you must delete the existing cluster or replication group and create it anew with the earlier engine version. </p>
 -- * ReplicationGroupDescription [String] <p>A user-created description for the replication group.</p>
--- * NumCacheClusters [IntegerOptional] <p>The number of clusters this replication group initially has.</p> <p>This parameter is not used if there is more than one node group (shard). You should use <code>ReplicasPerNodeGroup</code> instead.</p> <p>If <code>AutomaticFailoverEnabled</code> is <code>true</code>, the value of this parameter must be at least 2. If <code>AutomaticFailoverEnabled</code> is <code>false</code> you can omit this parameter (it will default to 1), or you can explicitly set it to a value between 2 and 6.</p> <p>The maximum permitted value for <code>NumCacheClusters</code> is 6 (primary plus 5 replicas).</p>
--- * SnapshotArns [SnapshotArnsList] <p>A list of Amazon Resource Names (ARN) that uniquely identify the Redis RDB snapshot files stored in Amazon S3. The snapshot files are used to populate the new replication group. The Amazon S3 object name in the ARN cannot contain any commas. The new replication group will have the number of node groups (console: shards) specified by the parameter <i>NumNodeGroups</i> or the number of node groups configured by <i>NodeGroupConfiguration</i> regardless of the number of ARNs specified here.</p> <note> <p>This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.</p> </note> <p>Example of an Amazon S3 ARN: <code>arn:aws:s3:::my_bucket/snapshot1.rdb</code> </p>
--- * SnapshotRetentionLimit [IntegerOptional] <p>The number of days for which ElastiCache retains automatic snapshots before deleting them. For example, if you set <code>SnapshotRetentionLimit</code> to 5, a snapshot that was taken today is retained for 5 days before being deleted.</p> <note> <p>This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.</p> </note> <p>Default: 0 (i.e., automatic backups are disabled for this cache cluster).</p>
--- * Tags [TagList] <p>A list of cost allocation tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value.</p>
--- * SnapshotWindow [String] <p>The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard).</p> <p>Example: <code>05:00-09:00</code> </p> <p>If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range.</p> <note> <p>This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.</p> </note>
+-- * NumCacheClusters [IntegerOptional] <p>The number of clusters this replication group initially has.</p> <p>This parameter is not used if there is more than one node group (shard). You should use <code>ReplicasPerNodeGroup</code> instead.</p> <p>If <code>AutomaticFailoverEnabled</code> is <code>true</code>, the value of this parameter must be at least 2. If <code>AutomaticFailoverEnabled</code> is <code>false</code> you can omit this parameter (it will default to 1), or you can explicitly set it to a value between 2 and 6.</p> <p>The maximum permitted value for <code>NumCacheClusters</code> is 6 (1 primary plus 5 replicas).</p>
+-- * SnapshotArns [SnapshotArnsList] <p>A list of Amazon Resource Names (ARN) that uniquely identify the Redis RDB snapshot files stored in Amazon S3. The snapshot files are used to populate the new replication group. The Amazon S3 object name in the ARN cannot contain any commas. The new replication group will have the number of node groups (console: shards) specified by the parameter <i>NumNodeGroups</i> or the number of node groups configured by <i>NodeGroupConfiguration</i> regardless of the number of ARNs specified here.</p> <p>Example of an Amazon S3 ARN: <code>arn:aws:s3:::my_bucket/snapshot1.rdb</code> </p>
+-- * SnapshotRetentionLimit [IntegerOptional] <p>The number of days for which ElastiCache retains automatic snapshots before deleting them. For example, if you set <code>SnapshotRetentionLimit</code> to 5, a snapshot that was taken today is retained for 5 days before being deleted.</p> <p>Default: 0 (i.e., automatic backups are disabled for this cluster).</p>
+-- * Tags [TagList] <p>A list of cost allocation tags to be added to this resource. A tag is a key-value pair.</p>
+-- * SnapshotWindow [String] <p>The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard).</p> <p>Example: <code>05:00-09:00</code> </p> <p>If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range.</p>
 -- * Port [IntegerOptional] <p>The port number on which each member of the replication group accepts connections.</p>
--- * AutomaticFailoverEnabled [BooleanOptional] <p>Specifies whether a read-only replica is automatically promoted to read/write primary if the existing primary fails.</p> <p>If <code>true</code>, Multi-AZ is enabled for this replication group. If <code>false</code>, Multi-AZ is disabled for this replication group.</p> <p> <code>AutomaticFailoverEnabled</code> must be enabled for Redis (cluster mode enabled) replication groups.</p> <p>Default: false</p> <note> <p>ElastiCache Multi-AZ replication groups is not supported on:</p> <ul> <li> <p>Redis versions earlier than 2.8.6.</p> </li> <li> <p>Redis (cluster mode disabled): T1 and T2 node types.</p> <p>Redis (cluster mode enabled): T2 node types.</p> </li> </ul> </note>
+-- * AutomaticFailoverEnabled [BooleanOptional] <p>Specifies whether a read-only replica is automatically promoted to read/write primary if the existing primary fails.</p> <p>If <code>true</code>, Multi-AZ is enabled for this replication group. If <code>false</code>, Multi-AZ is disabled for this replication group.</p> <p> <code>AutomaticFailoverEnabled</code> must be enabled for Redis (cluster mode enabled) replication groups.</p> <p>Default: false</p> <p>Amazon ElastiCache for Redis does not support Multi-AZ with automatic failover on:</p> <ul> <li> <p>Redis versions earlier than 2.8.6.</p> </li> <li> <p>Redis (cluster mode disabled): T1 and T2 cache node types.</p> </li> <li> <p>Redis (cluster mode enabled): T1 node types.</p> </li> </ul>
 -- Required key: ReplicationGroupId
 -- Required key: ReplicationGroupDescription
 -- @return CreateReplicationGroupMessage structure as a key-value pair table
@@ -5310,6 +4581,7 @@ function M.CreateReplicationGroupMessage(args)
 	local all_args = { 
 		["CacheParameterGroupName"] = args["CacheParameterGroupName"],
 		["NodeGroupConfiguration"] = args["NodeGroupConfiguration"],
+		["TransitEncryptionEnabled"] = args["TransitEncryptionEnabled"],
 		["ReplicationGroupId"] = args["ReplicationGroupId"],
 		["NumNodeGroups"] = args["NumNodeGroups"],
 		["NotificationTopicArn"] = args["NotificationTopicArn"],
@@ -5322,6 +4594,7 @@ function M.CreateReplicationGroupMessage(args)
 		["CacheSubnetGroupName"] = args["CacheSubnetGroupName"],
 		["CacheSecurityGroupNames"] = args["CacheSecurityGroupNames"],
 		["SnapshotName"] = args["SnapshotName"],
+		["AtRestEncryptionEnabled"] = args["AtRestEncryptionEnabled"],
 		["ReplicasPerNodeGroup"] = args["ReplicasPerNodeGroup"],
 		["SecurityGroupIds"] = args["SecurityGroupIds"],
 		["PreferredCacheClusterAZs"] = args["PreferredCacheClusterAZs"],
@@ -5376,120 +4649,6 @@ function M.ReservedCacheNodeMessage(args)
 		["ReservedCacheNodes"] = args["ReservedCacheNodes"],
 	}
 	asserts.AssertReservedCacheNodeMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidCacheSecurityGroupStateFault = { nil }
-
-function asserts.AssertInvalidCacheSecurityGroupStateFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidCacheSecurityGroupStateFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidCacheSecurityGroupStateFault[k], "InvalidCacheSecurityGroupStateFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidCacheSecurityGroupStateFault
--- <p>The current state of the cache security group does not allow deletion.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidCacheSecurityGroupStateFault structure as a key-value pair table
-function M.InvalidCacheSecurityGroupStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidCacheSecurityGroupStateFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidCacheSecurityGroupStateFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ReplicationGroupNotFoundFault = { nil }
-
-function asserts.AssertReplicationGroupNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ReplicationGroupNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ReplicationGroupNotFoundFault[k], "ReplicationGroupNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ReplicationGroupNotFoundFault
--- <p>The specified replication group does not exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ReplicationGroupNotFoundFault structure as a key-value pair table
-function M.ReplicationGroupNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating ReplicationGroupNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertReplicationGroupNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.NodeGroupConfiguration = { ["Slots"] = true, ["ReplicaCount"] = true, ["PrimaryAvailabilityZone"] = true, ["ReplicaAvailabilityZones"] = true, nil }
-
-function asserts.AssertNodeGroupConfiguration(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected NodeGroupConfiguration to be of type 'table'")
-	if struct["Slots"] then asserts.AssertString(struct["Slots"]) end
-	if struct["ReplicaCount"] then asserts.AssertIntegerOptional(struct["ReplicaCount"]) end
-	if struct["PrimaryAvailabilityZone"] then asserts.AssertString(struct["PrimaryAvailabilityZone"]) end
-	if struct["ReplicaAvailabilityZones"] then asserts.AssertAvailabilityZonesList(struct["ReplicaAvailabilityZones"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.NodeGroupConfiguration[k], "NodeGroupConfiguration contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type NodeGroupConfiguration
--- <p>node group (shard) configuration options. Each node group (shard) configuration has the following: <code>Slots</code>, <code>PrimaryAvailabilityZone</code>, <code>ReplicaAvailabilityZones</code>, <code>ReplicaCount</code>.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Slots [String] <p>A string that specifies the keyspace for a particular node group. Keyspaces range from 0 to 16,383. The string is in the format <code>startkey-endkey</code>.</p> <p>Example: <code>"0-3999"</code> </p>
--- * ReplicaCount [IntegerOptional] <p>The number of read replica nodes in this node group (shard).</p>
--- * PrimaryAvailabilityZone [String] <p>The Availability Zone where the primary node of this node group (shard) is launched.</p>
--- * ReplicaAvailabilityZones [AvailabilityZonesList] <p>A list of Availability Zones to be used for the read replicas. The number of Availability Zones in this list must match the value of <code>ReplicaCount</code> or <code>ReplicasPerNodeGroup</code> if not specified.</p>
--- @return NodeGroupConfiguration structure as a key-value pair table
-function M.NodeGroupConfiguration(args)
-	assert(args, "You must provide an argument table when creating NodeGroupConfiguration")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Slots"] = args["Slots"],
-		["ReplicaCount"] = args["ReplicaCount"],
-		["PrimaryAvailabilityZone"] = args["PrimaryAvailabilityZone"],
-		["ReplicaAvailabilityZones"] = args["ReplicaAvailabilityZones"],
-	}
-	asserts.AssertNodeGroupConfiguration(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5580,23 +4739,27 @@ function M.DeleteReplicationGroupMessage(args)
     }
 end
 
-keys.AuthorizationAlreadyExistsFault = { nil }
+keys.Endpoint = { ["Port"] = true, ["Address"] = true, nil }
 
-function asserts.AssertAuthorizationAlreadyExistsFault(struct)
+function asserts.AssertEndpoint(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected AuthorizationAlreadyExistsFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected Endpoint to be of type 'table'")
+	if struct["Port"] then asserts.AssertInteger(struct["Port"]) end
+	if struct["Address"] then asserts.AssertString(struct["Address"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.AuthorizationAlreadyExistsFault[k], "AuthorizationAlreadyExistsFault contains unknown key " .. tostring(k))
+		assert(keys.Endpoint[k], "Endpoint contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type AuthorizationAlreadyExistsFault
--- <p>The specified Amazon EC2 security group is already authorized for the specified cache security group.</p>
+--- Create a structure of type Endpoint
+-- <p>Represents the information required for client programs to connect to a cache node.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return AuthorizationAlreadyExistsFault structure as a key-value pair table
-function M.AuthorizationAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating AuthorizationAlreadyExistsFault")
+-- * Port [Integer] <p>The port number that the cache engine is listening on.</p>
+-- * Address [String] <p>The DNS hostname of the cache node.</p>
+-- @return Endpoint structure as a key-value pair table
+function M.Endpoint(args)
+	assert(args, "You must provide an argument table when creating Endpoint")
     local query_args = { 
     }
     local uri_args = { 
@@ -5604,110 +4767,10 @@ function M.AuthorizationAlreadyExistsFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Port"] = args["Port"],
+		["Address"] = args["Address"],
 	}
-	asserts.AssertAuthorizationAlreadyExistsFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TagQuotaPerResourceExceeded = { nil }
-
-function asserts.AssertTagQuotaPerResourceExceeded(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TagQuotaPerResourceExceeded to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TagQuotaPerResourceExceeded[k], "TagQuotaPerResourceExceeded contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TagQuotaPerResourceExceeded
--- <p>The request cannot be processed because it would cause the resource to have more than the allowed number of tags. The maximum number of tags permitted on a resource is 50.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TagQuotaPerResourceExceeded structure as a key-value pair table
-function M.TagQuotaPerResourceExceeded(args)
-	assert(args, "You must provide an argument table when creating TagQuotaPerResourceExceeded")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTagQuotaPerResourceExceeded(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CacheParameterGroupNotFoundFault = { nil }
-
-function asserts.AssertCacheParameterGroupNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CacheParameterGroupNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.CacheParameterGroupNotFoundFault[k], "CacheParameterGroupNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CacheParameterGroupNotFoundFault
--- <p>The requested cache parameter group name does not refer to an existing cache parameter group.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return CacheParameterGroupNotFoundFault structure as a key-value pair table
-function M.CacheParameterGroupNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating CacheParameterGroupNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertCacheParameterGroupNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TestFailoverNotAvailableFault = { nil }
-
-function asserts.AssertTestFailoverNotAvailableFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TestFailoverNotAvailableFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TestFailoverNotAvailableFault[k], "TestFailoverNotAvailableFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TestFailoverNotAvailableFault
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TestFailoverNotAvailableFault structure as a key-value pair table
-function M.TestFailoverNotAvailableFault(args)
-	assert(args, "You must provide an argument table when creating TestFailoverNotAvailableFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTestFailoverNotAvailableFault(all_args)
+	asserts.AssertEndpoint(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5738,7 +4801,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ShowNodeGroupConfig [BooleanOptional] <p>A Boolean value which if true, the node group (shard) configuration is included in the snapshot description.</p>
--- * CacheClusterId [String] <p>A user-supplied cluster identifier. If this parameter is specified, only snapshots associated with that specific cache cluster are described.</p>
+-- * CacheClusterId [String] <p>A user-supplied cluster identifier. If this parameter is specified, only snapshots associated with that specific cluster are described.</p>
 -- * SnapshotName [String] <p>A user-supplied name of the snapshot. If this parameter is specified, only this snapshot are described.</p>
 -- * ReplicationGroupId [String] <p>A user-supplied replication group identifier. If this parameter is specified, only snapshots associated with that specific replication group are described.</p>
 -- * MaxRecords [IntegerOptional] <p>The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a marker is included in the response so that the remaining results can be retrieved.</p> <p>Default: 50</p> <p>Constraints: minimum 20; maximum 50.</p>
@@ -5763,40 +4826,6 @@ function M.DescribeSnapshotsMessage(args)
 		["Marker"] = args["Marker"],
 	}
 	asserts.AssertDescribeSnapshotsMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CacheSecurityGroupQuotaExceededFault = { nil }
-
-function asserts.AssertCacheSecurityGroupQuotaExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CacheSecurityGroupQuotaExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.CacheSecurityGroupQuotaExceededFault[k], "CacheSecurityGroupQuotaExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CacheSecurityGroupQuotaExceededFault
--- <p>The request cannot be processed because it would exceed the allowed number of cache security groups.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return CacheSecurityGroupQuotaExceededFault structure as a key-value pair table
-function M.CacheSecurityGroupQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating CacheSecurityGroupQuotaExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertCacheSecurityGroupQuotaExceededFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5842,40 +4871,6 @@ function M.TestFailoverResult(args)
     }
 end
 
-keys.ReservedCacheNodeQuotaExceededFault = { nil }
-
-function asserts.AssertReservedCacheNodeQuotaExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ReservedCacheNodeQuotaExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ReservedCacheNodeQuotaExceededFault[k], "ReservedCacheNodeQuotaExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ReservedCacheNodeQuotaExceededFault
--- <p>The request cannot be processed because it would exceed the user's cache node quota.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ReservedCacheNodeQuotaExceededFault structure as a key-value pair table
-function M.ReservedCacheNodeQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating ReservedCacheNodeQuotaExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertReservedCacheNodeQuotaExceededFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.CacheNodeTypeSpecificParameter = { ["Description"] = true, ["DataType"] = true, ["ChangeType"] = true, ["AllowedValues"] = true, ["Source"] = true, ["IsModifiable"] = true, ["CacheNodeTypeSpecificValues"] = true, ["ParameterName"] = true, ["MinimumEngineVersion"] = true, nil }
 
 function asserts.AssertCacheNodeTypeSpecificParameter(struct)
@@ -5896,12 +4891,12 @@ function asserts.AssertCacheNodeTypeSpecificParameter(struct)
 end
 
 --- Create a structure of type CacheNodeTypeSpecificParameter
--- <p>A parameter that has a different value for each cache node type it is applied to. For example, in a Redis cache cluster, a <code>cache.m1.large</code> cache node type would have a larger <code>maxmemory</code> value than a <code>cache.m1.small</code> type.</p>
+-- <p>A parameter that has a different value for each cache node type it is applied to. For example, in a Redis cluster, a <code>cache.m1.large</code> cache node type would have a larger <code>maxmemory</code> value than a <code>cache.m1.small</code> type.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Description [String] <p>A description of the parameter.</p>
 -- * DataType [String] <p>The valid data type for the parameter.</p>
--- * ChangeType [ChangeType] <p>Indicates whether a change to the parameter is applied immediately or requires a reboot for the change to be applied. You can force a reboot or wait until the next maintenance window's reboot. For more information, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Clusters.Rebooting.html">Rebooting a Cluster</a>.</p>
+-- * ChangeType [ChangeType] <p>Indicates whether a change to the parameter is applied immediately or requires a reboot for the change to be applied. You can force a reboot or wait until the next maintenance window's reboot. For more information, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Rebooting.html">Rebooting a Cluster</a>.</p>
 -- * AllowedValues [String] <p>The valid range of values for the parameter.</p>
 -- * Source [String] <p>The source of the parameter value.</p>
 -- * IsModifiable [Boolean] <p>Indicates whether (<code>true</code>) or not (<code>false</code>) the parameter can be modified. Some parameters have security or operational implications that prevent them from being changed.</p>
@@ -5929,40 +4924,6 @@ function M.CacheNodeTypeSpecificParameter(args)
 		["MinimumEngineVersion"] = args["MinimumEngineVersion"],
 	}
 	asserts.AssertCacheNodeTypeSpecificParameter(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.NodeQuotaForClusterExceededFault = { nil }
-
-function asserts.AssertNodeQuotaForClusterExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected NodeQuotaForClusterExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.NodeQuotaForClusterExceededFault[k], "NodeQuotaForClusterExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type NodeQuotaForClusterExceededFault
--- <p>The request cannot be processed because it would exceed the allowed number of cache nodes in a single cache cluster.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return NodeQuotaForClusterExceededFault structure as a key-value pair table
-function M.NodeQuotaForClusterExceededFault(args)
-	assert(args, "You must provide an argument table when creating NodeQuotaForClusterExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertNodeQuotaForClusterExceededFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6008,23 +4969,25 @@ function M.DeleteCacheClusterResult(args)
     }
 end
 
-keys.ReservedCacheNodeAlreadyExistsFault = { nil }
+keys.ModifyReplicationGroupShardConfigurationResult = { ["ReplicationGroup"] = true, nil }
 
-function asserts.AssertReservedCacheNodeAlreadyExistsFault(struct)
+function asserts.AssertModifyReplicationGroupShardConfigurationResult(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ReservedCacheNodeAlreadyExistsFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected ModifyReplicationGroupShardConfigurationResult to be of type 'table'")
+	if struct["ReplicationGroup"] then asserts.AssertReplicationGroup(struct["ReplicationGroup"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ReservedCacheNodeAlreadyExistsFault[k], "ReservedCacheNodeAlreadyExistsFault contains unknown key " .. tostring(k))
+		assert(keys.ModifyReplicationGroupShardConfigurationResult[k], "ModifyReplicationGroupShardConfigurationResult contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ReservedCacheNodeAlreadyExistsFault
--- <p>You already have a reservation with the given identifier.</p>
+--- Create a structure of type ModifyReplicationGroupShardConfigurationResult
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return ReservedCacheNodeAlreadyExistsFault structure as a key-value pair table
-function M.ReservedCacheNodeAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating ReservedCacheNodeAlreadyExistsFault")
+-- * ReplicationGroup [ReplicationGroup] 
+-- @return ModifyReplicationGroupShardConfigurationResult structure as a key-value pair table
+function M.ModifyReplicationGroupShardConfigurationResult(args)
+	assert(args, "You must provide an argument table when creating ModifyReplicationGroupShardConfigurationResult")
     local query_args = { 
     }
     local uri_args = { 
@@ -6032,42 +4995,9 @@ function M.ReservedCacheNodeAlreadyExistsFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["ReplicationGroup"] = args["ReplicationGroup"],
 	}
-	asserts.AssertReservedCacheNodeAlreadyExistsFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ClusterQuotaForCustomerExceededFault = { nil }
-
-function asserts.AssertClusterQuotaForCustomerExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterQuotaForCustomerExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ClusterQuotaForCustomerExceededFault[k], "ClusterQuotaForCustomerExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ClusterQuotaForCustomerExceededFault
--- <p>The request cannot be processed because it would exceed the allowed number of cache clusters per customer.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ClusterQuotaForCustomerExceededFault structure as a key-value pair table
-function M.ClusterQuotaForCustomerExceededFault(args)
-	assert(args, "You must provide an argument table when creating ClusterQuotaForCustomerExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertClusterQuotaForCustomerExceededFault(all_args)
+	asserts.AssertModifyReplicationGroupShardConfigurationResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6092,7 +5022,7 @@ end
 -- <p>Represents the input of a <code>DeleteCacheParameterGroup</code> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CacheParameterGroupName [String] <p>The name of the cache parameter group to delete.</p> <note> <p>The specified cache security group must not be associated with any cache clusters.</p> </note>
+-- * CacheParameterGroupName [String] <p>The name of the cache parameter group to delete.</p> <note> <p>The specified cache security group must not be associated with any clusters.</p> </note>
 -- Required key: CacheParameterGroupName
 -- @return DeleteCacheParameterGroupMessage structure as a key-value pair table
 function M.DeleteCacheParameterGroupMessage(args)
@@ -6144,7 +5074,7 @@ end
 -- * RecurringCharges [RecurringChargeList] <p>The recurring price charged to run this reserved cache node.</p>
 -- * ProductDescription [String] <p>The cache engine used by the offering.</p>
 -- * Duration [Integer] <p>The duration of the offering. in seconds.</p>
--- * CacheNodeType [String] <p>The cache node type for the reserved cache node.</p> <p>Valid node types are as follows:</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> or <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a>.</p>
+-- * CacheNodeType [String] <p>The cache node type for the reserved cache node.</p> <p>The following node types are supported by ElastiCache. Generally speaking, the current generation types provide more memory and computational power at lower cost when compared to their equivalent previous generation counterparts.</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: </p> <p> <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code> </p> <p> <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code> </p> <p> <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: (not recommended)</p> <p> <b>T1 node types:</b> <code>cache.t1.micro</code> </p> <p> <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized:</p> <ul> <li> <p>Previous generation: (not recommended)</p> <p> <b>C1 node types:</b> <code>cache.c1.xlarge</code> </p> </li> </ul> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: </p> <p> <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> <p> <b>R4 node types;</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>, <code>cache.r4.2xlarge</code>, <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>, <code>cache.r4.16xlarge</code> </p> </li> <li> <p>Previous generation: (not recommended)</p> <p> <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances. </p> </li> <li> <p>Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see:</p> <ul> <li> <p> <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a> </p> </li> </ul>
 -- @return ReservedCacheNodesOffering structure as a key-value pair table
 function M.ReservedCacheNodesOffering(args)
 	assert(args, "You must provide an argument table when creating ReservedCacheNodesOffering")
@@ -6221,40 +5151,6 @@ function M.DescribeCacheParametersMessage(args)
     }
 end
 
-keys.ReservedCacheNodeNotFoundFault = { nil }
-
-function asserts.AssertReservedCacheNodeNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ReservedCacheNodeNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ReservedCacheNodeNotFoundFault[k], "ReservedCacheNodeNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ReservedCacheNodeNotFoundFault
--- <p>The requested reserved cache node was not found.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ReservedCacheNodeNotFoundFault structure as a key-value pair table
-function M.ReservedCacheNodeNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating ReservedCacheNodeNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertReservedCacheNodeNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.DescribeCacheEngineVersionsMessage = { ["Engine"] = true, ["CacheParameterGroupFamily"] = true, ["DefaultOnly"] = true, ["MaxRecords"] = true, ["EngineVersion"] = true, ["Marker"] = true, nil }
 
 function asserts.AssertDescribeCacheEngineVersionsMessage(struct)
@@ -6276,7 +5172,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Engine [String] <p>The cache engine to return. Valid values: <code>memcached</code> | <code>redis</code> </p>
--- * CacheParameterGroupFamily [String] <p>The name of a specific cache parameter group family to return details for.</p> <p>Valid values are: <code>memcached1.4</code> | <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- * CacheParameterGroupFamily [String] <p>The name of a specific cache parameter group family to return details for.</p> <p>Valid values are: <code>memcached1.4</code> | <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> | <code>redis4.0</code> </p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
 -- * DefaultOnly [Boolean] <p>If <code>true</code>, specifies that only the default version of the specified engine or engine and major version combination is to be returned.</p>
 -- * MaxRecords [IntegerOptional] <p>The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a marker is included in the response so that the remaining results can be retrieved.</p> <p>Default: 100</p> <p>Constraints: minimum 20; maximum 100.</p>
 -- * EngineVersion [String] <p>The cache engine version to return.</p> <p>Example: <code>1.4.14</code> </p>
@@ -6408,10 +5304,10 @@ function asserts.AssertCacheSecurityGroupMembership(struct)
 end
 
 --- Create a structure of type CacheSecurityGroupMembership
--- <p>Represents a cache cluster's status within a particular cache security group.</p>
+-- <p>Represents a cluster's status within a particular cache security group.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Status [String] <p>The membership status in the cache security group. The status changes when a cache security group is modified, or when the cache security groups assigned to a cache cluster are modified.</p>
+-- * Status [String] <p>The membership status in the cache security group. The status changes when a cache security group is modified, or when the cache security groups assigned to a cluster are modified.</p>
 -- * CacheSecurityGroupName [String] <p>The name of the cache security group.</p>
 -- @return CacheSecurityGroupMembership structure as a key-value pair table
 function M.CacheSecurityGroupMembership(args)
@@ -6472,6 +5368,19 @@ function M.AuthorizeCacheSecurityGroupIngressResult(args)
     }
 end
 
+function asserts.AssertAllowedNodeGroupId(str)
+	assert(str)
+	assert(type(str) == "string", "Expected AllowedNodeGroupId to be of type 'string'")
+	assert(#str <= 4, "Expected string to be max 4 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.AllowedNodeGroupId(str)
+	asserts.AssertAllowedNodeGroupId(str)
+	return str
+end
+
 function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
@@ -6480,17 +5389,6 @@ end
 --  
 function M.String(str)
 	asserts.AssertString(str)
-	return str
-end
-
-function asserts.AssertAwsQueryErrorMessage(str)
-	assert(str)
-	assert(type(str) == "string", "Expected AwsQueryErrorMessage to be of type 'string'")
-end
-
---  
-function M.AwsQueryErrorMessage(str)
-	asserts.AssertAwsQueryErrorMessage(str)
 	return str
 end
 
@@ -6611,6 +5509,21 @@ function M.TStamp(timestamp)
 	return timestamp
 end
 
+function asserts.AssertNodeGroupsToRemoveList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected NodeGroupsToRemoveList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertAllowedNodeGroupId(v)
+	end
+end
+
+--  
+-- List of AllowedNodeGroupId objects
+function M.NodeGroupsToRemoveList(list)
+	asserts.AssertNodeGroupsToRemoveList(list)
+	return list
+end
+
 function asserts.AssertSecurityGroupIdsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SecurityGroupIdsList to be of type ''table")
@@ -6656,6 +5569,21 @@ function M.ParametersList(list)
 	return list
 end
 
+function asserts.AssertReshardingConfigurationList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ReshardingConfigurationList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertReshardingConfiguration(v)
+	end
+end
+
+--  
+-- List of ReshardingConfiguration objects
+function M.ReshardingConfigurationList(list)
+	asserts.AssertReshardingConfigurationList(list)
+	return list
+end
+
 function asserts.AssertReservedCacheNodeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ReservedCacheNodeList to be of type ''table")
@@ -6668,21 +5596,6 @@ end
 -- List of ReservedCacheNode objects
 function M.ReservedCacheNodeList(list)
 	asserts.AssertReservedCacheNodeList(list)
-	return list
-end
-
-function asserts.AssertCacheSecurityGroupMembershipList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected CacheSecurityGroupMembershipList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertCacheSecurityGroupMembership(v)
-	end
-end
-
---  
--- List of CacheSecurityGroupMembership objects
-function M.CacheSecurityGroupMembershipList(list)
-	asserts.AssertCacheSecurityGroupMembershipList(list)
 	return list
 end
 
@@ -6716,9 +5629,9 @@ function M.CacheNodeList(list)
 	return list
 end
 
-function asserts.AssertPreferredAvailabilityZoneList(list)
+function asserts.AssertSubnetIdentifierList(list)
 	assert(list)
-	assert(type(list) == "table", "Expected PreferredAvailabilityZoneList to be of type ''table")
+	assert(type(list) == "table", "Expected SubnetIdentifierList to be of type ''table")
 	for _,v in ipairs(list) do
 		asserts.AssertString(v)
 	end
@@ -6726,8 +5639,8 @@ end
 
 --  
 -- List of String objects
-function M.PreferredAvailabilityZoneList(list)
-	asserts.AssertPreferredAvailabilityZoneList(list)
+function M.SubnetIdentifierList(list)
+	asserts.AssertSubnetIdentifierList(list)
 	return list
 end
 
@@ -6743,6 +5656,21 @@ end
 -- List of EC2SecurityGroup objects
 function M.EC2SecurityGroupList(list)
 	asserts.AssertEC2SecurityGroupList(list)
+	return list
+end
+
+function asserts.AssertPreferredAvailabilityZoneList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected PreferredAvailabilityZoneList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertString(v)
+	end
+end
+
+--  
+-- List of String objects
+function M.PreferredAvailabilityZoneList(list)
+	asserts.AssertPreferredAvailabilityZoneList(list)
 	return list
 end
 
@@ -6896,18 +5824,18 @@ function M.ReservedCacheNodesOfferingList(list)
 	return list
 end
 
-function asserts.AssertSubnetIdentifierList(list)
+function asserts.AssertCacheSecurityGroupMembershipList(list)
 	assert(list)
-	assert(type(list) == "table", "Expected SubnetIdentifierList to be of type ''table")
+	assert(type(list) == "table", "Expected CacheSecurityGroupMembershipList to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertString(v)
+		asserts.AssertCacheSecurityGroupMembership(v)
 	end
 end
 
 --  
--- List of String objects
-function M.SubnetIdentifierList(list)
-	asserts.AssertSubnetIdentifierList(list)
+-- List of CacheSecurityGroupMembership objects
+function M.CacheSecurityGroupMembershipList(list)
+	asserts.AssertCacheSecurityGroupMembershipList(list)
 	return list
 end
 
@@ -6986,6 +5914,21 @@ function M.SnapshotArnsList(list)
 	return list
 end
 
+function asserts.AssertRemoveReplicasList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected RemoveReplicasList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertString(v)
+	end
+end
+
+--  
+-- List of String objects
+function M.RemoveReplicasList(list)
+	asserts.AssertRemoveReplicasList(list)
+	return list
+end
+
 function asserts.AssertSecurityGroupMembershipList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SecurityGroupMembershipList to be of type ''table")
@@ -7061,6 +6004,21 @@ function M.CacheSecurityGroups(list)
 	return list
 end
 
+function asserts.AssertNodeGroupsToRetainList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected NodeGroupsToRetainList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertAllowedNodeGroupId(v)
+	end
+end
+
+--  
+-- List of AllowedNodeGroupId objects
+function M.NodeGroupsToRetainList(list)
+	asserts.AssertNodeGroupsToRetainList(list)
+	return list
+end
+
 function asserts.AssertNodeSnapshotList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected NodeSnapshotList to be of type ''table")
@@ -7133,6 +6091,21 @@ end
 -- List of Tag objects
 function M.TagList(list)
 	asserts.AssertTagList(list)
+	return list
+end
+
+function asserts.AssertReplicaConfigurationList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ReplicaConfigurationList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertConfigureShard(v)
+	end
+end
+
+--  
+-- List of ConfigureShard objects
+function M.ReplicaConfigurationList(list)
+	asserts.AssertReplicaConfigurationList(list)
 	return list
 end
 
@@ -7494,6 +6467,41 @@ function M.RebootCacheClusterSync(RebootCacheClusterMessage, ...)
 	return coroutine.yield()
 end
 
+--- Call DecreaseReplicaCount asynchronously, invoking a callback when done
+-- @param DecreaseReplicaCountMessage
+-- @param cb Callback function accepting two args: response, error_message
+function M.DecreaseReplicaCountAsync(DecreaseReplicaCountMessage, cb)
+	assert(DecreaseReplicaCountMessage, "You must provide a DecreaseReplicaCountMessage")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DecreaseReplicaCount",
+	}
+	for header,value in pairs(DecreaseReplicaCountMessage.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DecreaseReplicaCountMessage, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DecreaseReplicaCount synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DecreaseReplicaCountMessage
+-- @return response
+-- @return error_message
+function M.DecreaseReplicaCountSync(DecreaseReplicaCountMessage, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DecreaseReplicaCountAsync(DecreaseReplicaCountMessage, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ModifyCacheSubnetGroup asynchronously, invoking a callback when done
 -- @param ModifyCacheSubnetGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
@@ -7699,6 +6707,41 @@ function M.AddTagsToResourceSync(AddTagsToResourceMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.AddTagsToResourceAsync(AddTagsToResourceMessage, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call IncreaseReplicaCount asynchronously, invoking a callback when done
+-- @param IncreaseReplicaCountMessage
+-- @param cb Callback function accepting two args: response, error_message
+function M.IncreaseReplicaCountAsync(IncreaseReplicaCountMessage, cb)
+	assert(IncreaseReplicaCountMessage, "You must provide a IncreaseReplicaCountMessage")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".IncreaseReplicaCount",
+	}
+	for header,value in pairs(IncreaseReplicaCountMessage.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", IncreaseReplicaCountMessage, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call IncreaseReplicaCount synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param IncreaseReplicaCountMessage
+-- @return response
+-- @return error_message
+function M.IncreaseReplicaCountSync(IncreaseReplicaCountMessage, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.IncreaseReplicaCountAsync(IncreaseReplicaCountMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8224,6 +7267,41 @@ function M.DescribeSnapshotsSync(DescribeSnapshotsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DescribeSnapshotsAsync(DescribeSnapshotsMessage, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyReplicationGroupShardConfiguration asynchronously, invoking a callback when done
+-- @param ModifyReplicationGroupShardConfigurationMessage
+-- @param cb Callback function accepting two args: response, error_message
+function M.ModifyReplicationGroupShardConfigurationAsync(ModifyReplicationGroupShardConfigurationMessage, cb)
+	assert(ModifyReplicationGroupShardConfigurationMessage, "You must provide a ModifyReplicationGroupShardConfigurationMessage")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyReplicationGroupShardConfiguration",
+	}
+	for header,value in pairs(ModifyReplicationGroupShardConfigurationMessage.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ModifyReplicationGroupShardConfigurationMessage, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ModifyReplicationGroupShardConfiguration synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyReplicationGroupShardConfigurationMessage
+-- @return response
+-- @return error_message
+function M.ModifyReplicationGroupShardConfigurationSync(ModifyReplicationGroupShardConfigurationMessage, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyReplicationGroupShardConfigurationAsync(ModifyReplicationGroupShardConfigurationMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
