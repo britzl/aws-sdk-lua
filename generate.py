@@ -43,7 +43,7 @@ def parse_shapes(iterator_fn):
         shape_type = str(shape["type"])
         shape["name"] = shape_name
         # ensure empty documentation if none exists (otherwise mustache will start searching recursively)
-        shape.update({"documentation": shape.get("documentation", " ")})
+        shape.update({"documentation": shape.get("documentation", " ").replace("\n", "\n--")})
         # remove patterns
         if shape.get("pattern"):
             shape.pop("pattern", None)
@@ -56,7 +56,7 @@ def parse_shapes(iterator_fn):
             for member_name, member in shape["members"].iteritems():
                 member["name"] = member_name
                 member["locationName"] = member.get("locationName", member_name)
-                member["documentation"] = member.get("documentation", "").replace("\n", "")
+                member["documentation"] = member.get("documentation", "").replace("\n", "\n--")
                 if member.get("location") == "querystring":
                     query_string_members.append(member)
                 elif member.get("location") == "uri":
