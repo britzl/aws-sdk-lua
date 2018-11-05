@@ -489,7 +489,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * marker [string] <p>A string used for pagination. The marker specifies the vault ARN after which the listing of vaults should begin.</p>
--- * limit [string] <p>The maximum number of vaults to be returned. The default limit is 1000. The number of vaults returned might be fewer than the specified limit, but the number of returned vaults never exceeds the limit.</p>
+-- * limit [string] <p>The maximum number of vaults to be returned. The default limit is 10. The number of vaults returned might be fewer than the specified limit, but the number of returned vaults never exceeds the limit.</p>
 -- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.</p>
 -- Required key: accountId
 -- @return ListVaultsInput structure as a key-value pair table
@@ -666,7 +666,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '-' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, don't include any hyphens ('-') in the ID. </p>
+-- * accountId [string] <p>The AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '-' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, don't include any hyphens ('-') in the ID. </p>
 -- Required key: accountId
 -- @return ListProvisionedCapacityInput structure as a key-value pair table
 function M.ListProvisionedCapacityInput(args)
@@ -890,7 +890,7 @@ end
 -- * marker [string] <p>An opaque string used for pagination. This value specifies the part at which the listing of parts should begin. Get the marker value from the response of a previous List Parts response. You need only include the marker if you are continuing the pagination of results started in a previous List Parts request.</p>
 -- * uploadId [string] <p>The upload ID of the multipart upload.</p>
 -- * vaultName [string] <p>The name of the vault.</p>
--- * limit [string] <p>The maximum number of parts to be returned. The default limit is 1000. The number of parts returned might be fewer than the specified limit, but the number of returned parts never exceeds the limit.</p>
+-- * limit [string] <p>The maximum number of parts to be returned. The default limit is 50. The number of parts returned might be fewer than the specified limit, but the number of returned parts never exceeds the limit.</p>
 -- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
 -- Required key: accountId
 -- Required key: vaultName
@@ -1009,6 +1009,89 @@ function M.ArchiveCreationOutput(args)
 		["location"] = args["location"],
 	}
 	asserts.AssertArchiveCreationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Grant = { ["Grantee"] = true, ["Permission"] = true, nil }
+
+function asserts.AssertGrant(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Grant to be of type 'table'")
+	if struct["Grantee"] then asserts.AssertGrantee(struct["Grantee"]) end
+	if struct["Permission"] then asserts.AssertPermission(struct["Permission"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Grant[k], "Grant contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Grant
+-- <p>Contains information about a grant.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Grantee [Grantee] <p>The grantee.</p>
+-- * Permission [Permission] <p>Specifies the permission given to the grantee. </p>
+-- @return Grant structure as a key-value pair table
+function M.Grant(args)
+	assert(args, "You must provide an argument table when creating Grant")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Grantee"] = args["Grantee"],
+		["Permission"] = args["Permission"],
+	}
+	asserts.AssertGrant(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Encryption = { ["KMSKeyId"] = true, ["EncryptionType"] = true, ["KMSContext"] = true, nil }
+
+function asserts.AssertEncryption(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Encryption to be of type 'table'")
+	if struct["KMSKeyId"] then asserts.Assertstring(struct["KMSKeyId"]) end
+	if struct["EncryptionType"] then asserts.AssertEncryptionType(struct["EncryptionType"]) end
+	if struct["KMSContext"] then asserts.Assertstring(struct["KMSContext"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Encryption[k], "Encryption contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Encryption
+-- <p>Contains information about the encryption used to store the job results in Amazon S3. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * KMSKeyId [string] <p>The AWS KMS key ID to use for object encryption. All GET and PUT requests for an object protected by AWS KMS fail if not made by using Secure Sockets Layer (SSL) or Signature Version 4. </p>
+-- * EncryptionType [EncryptionType] <p>The server-side encryption algorithm used when storing job results in Amazon S3, for example <code>AES256</code> or <code>aws:kms</code>.</p>
+-- * KMSContext [string] <p>Optional. If the encryption type is <code>aws:kms</code>, you can use this value to specify the encryption context for the job results.</p>
+-- @return Encryption structure as a key-value pair table
+function M.Encryption(args)
+	assert(args, "You must provide an argument table when creating Encryption")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["KMSKeyId"] = args["KMSKeyId"],
+		["EncryptionType"] = args["EncryptionType"],
+		["KMSContext"] = args["KMSContext"],
+	}
+	asserts.AssertEncryption(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1350,49 +1433,6 @@ function M.DeleteVaultAccessPolicyInput(args)
     }
 end
 
-keys.ResourceNotFoundException = { ["message"] = true, ["code"] = true, ["type"] = true, nil }
-
-function asserts.AssertResourceNotFoundException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
-	if struct["message"] then asserts.Assertstring(struct["message"]) end
-	if struct["code"] then asserts.Assertstring(struct["code"]) end
-	if struct["type"] then asserts.Assertstring(struct["type"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ResourceNotFoundException
--- <p>Returned if the specified resource (such as a vault, upload ID, or job ID) doesn't exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [string] <p>Returned if the specified resource (such as a vault, upload ID, or job ID) doesn't exist.</p>
--- * code [string] <p>404 Not Found</p>
--- * type [string] <p>Client</p>
--- @return ResourceNotFoundException structure as a key-value pair table
-function M.ResourceNotFoundException(args)
-	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-		["code"] = args["code"],
-		["type"] = args["type"],
-	}
-	asserts.AssertResourceNotFoundException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.CreateVaultInput = { ["vaultName"] = true, ["accountId"] = true, nil }
 
 function asserts.AssertCreateVaultInput(struct)
@@ -1431,6 +1471,138 @@ function M.CreateVaultInput(args)
 		["accountId"] = args["accountId"],
 	}
 	asserts.AssertCreateVaultInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.OutputSerialization = { ["csv"] = true, nil }
+
+function asserts.AssertOutputSerialization(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected OutputSerialization to be of type 'table'")
+	if struct["csv"] then asserts.AssertCSVOutput(struct["csv"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.OutputSerialization[k], "OutputSerialization contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type OutputSerialization
+-- <p>Describes how the select output is serialized.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * csv [CSVOutput] <p>Describes the serialization of CSV-encoded query results.</p>
+-- @return OutputSerialization structure as a key-value pair table
+function M.OutputSerialization(args)
+	assert(args, "You must provide an argument table when creating OutputSerialization")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["csv"] = args["csv"],
+	}
+	asserts.AssertOutputSerialization(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SelectParameters = { ["ExpressionType"] = true, ["InputSerialization"] = true, ["Expression"] = true, ["OutputSerialization"] = true, nil }
+
+function asserts.AssertSelectParameters(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SelectParameters to be of type 'table'")
+	if struct["ExpressionType"] then asserts.AssertExpressionType(struct["ExpressionType"]) end
+	if struct["InputSerialization"] then asserts.AssertInputSerialization(struct["InputSerialization"]) end
+	if struct["Expression"] then asserts.Assertstring(struct["Expression"]) end
+	if struct["OutputSerialization"] then asserts.AssertOutputSerialization(struct["OutputSerialization"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SelectParameters[k], "SelectParameters contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SelectParameters
+-- <p>Contains information about the parameters used for a select.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ExpressionType [ExpressionType] <p>The type of the provided expression, for example <code>SQL</code>.</p>
+-- * InputSerialization [InputSerialization] <p>Describes the serialization format of the object.</p>
+-- * Expression [string] <p>The expression that is used to select the object.</p>
+-- * OutputSerialization [OutputSerialization] <p>Describes how the results of the select job are serialized.</p>
+-- @return SelectParameters structure as a key-value pair table
+function M.SelectParameters(args)
+	assert(args, "You must provide an argument table when creating SelectParameters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ExpressionType"] = args["ExpressionType"],
+		["InputSerialization"] = args["InputSerialization"],
+		["Expression"] = args["Expression"],
+		["OutputSerialization"] = args["OutputSerialization"],
+	}
+	asserts.AssertSelectParameters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CSVOutput = { ["QuoteFields"] = true, ["RecordDelimiter"] = true, ["QuoteCharacter"] = true, ["QuoteEscapeCharacter"] = true, ["FieldDelimiter"] = true, nil }
+
+function asserts.AssertCSVOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CSVOutput to be of type 'table'")
+	if struct["QuoteFields"] then asserts.AssertQuoteFields(struct["QuoteFields"]) end
+	if struct["RecordDelimiter"] then asserts.Assertstring(struct["RecordDelimiter"]) end
+	if struct["QuoteCharacter"] then asserts.Assertstring(struct["QuoteCharacter"]) end
+	if struct["QuoteEscapeCharacter"] then asserts.Assertstring(struct["QuoteEscapeCharacter"]) end
+	if struct["FieldDelimiter"] then asserts.Assertstring(struct["FieldDelimiter"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CSVOutput[k], "CSVOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CSVOutput
+-- <p>Contains information about the comma-separated value (CSV) file that the job results are stored in.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * QuoteFields [QuoteFields] <p>A value that indicates whether all output fields should be contained within quotation marks.</p>
+-- * RecordDelimiter [string] <p>A value used to separate individual records from each other.</p>
+-- * QuoteCharacter [string] <p>A value used as an escape character where the field delimiter is part of the value.</p>
+-- * QuoteEscapeCharacter [string] <p>A single character used for escaping the quotation-mark character inside an already escaped value.</p>
+-- * FieldDelimiter [string] <p>A value used to separate individual fields from each other within a record.</p>
+-- @return CSVOutput structure as a key-value pair table
+function M.CSVOutput(args)
+	assert(args, "You must provide an argument table when creating CSVOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["QuoteFields"] = args["QuoteFields"],
+		["RecordDelimiter"] = args["RecordDelimiter"],
+		["QuoteCharacter"] = args["QuoteCharacter"],
+		["QuoteEscapeCharacter"] = args["QuoteEscapeCharacter"],
+		["FieldDelimiter"] = args["FieldDelimiter"],
+	}
+	asserts.AssertCSVOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1700,11 +1872,12 @@ function M.CreateVaultOutput(args)
     }
 end
 
-keys.InitiateJobOutput = { ["location"] = true, ["jobId"] = true, nil }
+keys.InitiateJobOutput = { ["jobOutputPath"] = true, ["location"] = true, ["jobId"] = true, nil }
 
 function asserts.AssertInitiateJobOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InitiateJobOutput to be of type 'table'")
+	if struct["jobOutputPath"] then asserts.Assertstring(struct["jobOutputPath"]) end
 	if struct["location"] then asserts.Assertstring(struct["location"]) end
 	if struct["jobId"] then asserts.Assertstring(struct["jobId"]) end
 	for k,_ in pairs(struct) do
@@ -1716,6 +1889,7 @@ end
 -- <p>Contains the Amazon Glacier response to your request.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * jobOutputPath [string] <p>The path to the location of where the select results are stored.</p>
 -- * location [string] <p>The relative URI path of the job.</p>
 -- * jobId [string] <p>The ID of the job.</p>
 -- @return InitiateJobOutput structure as a key-value pair table
@@ -1726,10 +1900,12 @@ function M.InitiateJobOutput(args)
     local uri_args = { 
     }
     local header_args = { 
+        ["x-amz-job-output-path"] = args["jobOutputPath"],
         ["Location"] = args["location"],
         ["x-amz-job-id"] = args["jobId"],
     }
 	local all_args = { 
+		["jobOutputPath"] = args["jobOutputPath"],
 		["location"] = args["location"],
 		["jobId"] = args["jobId"],
 	}
@@ -1852,7 +2028,7 @@ end
 -- Valid keys:
 -- * completed [string] <p>The state of the jobs to return. You can specify <code>true</code> or <code>false</code>.</p>
 -- * vaultName [string] <p>The name of the vault.</p>
--- * limit [string] <p>The maximum number of jobs to be returned. The default limit is 1000. The number of jobs returned might be fewer than the specified limit, but the number of returned jobs never exceeds the limit.</p>
+-- * limit [string] <p>The maximum number of jobs to be returned. The default limit is 50. The number of jobs returned might be fewer than the specified limit, but the number of returned jobs never exceeds the limit.</p>
 -- * marker [string] <p>An opaque string used for pagination. This value specifies the job at which the listing of jobs should begin. Get the marker value from a previous List Jobs response. You only need to include the marker if you are continuing the pagination of results started in a previous List Jobs request.</p>
 -- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
 -- * statuscode [string] <p>The type of job status to return. You can specify the following values: <code>InProgress</code>, <code>Succeeded</code>, or <code>Failed</code>.</p>
@@ -2508,7 +2684,7 @@ function M.PurchaseProvisionedCapacityOutput(args)
     }
 end
 
-keys.GlacierJobDescription = { ["CompletionDate"] = true, ["VaultARN"] = true, ["RetrievalByteRange"] = true, ["Tier"] = true, ["SHA256TreeHash"] = true, ["SNSTopic"] = true, ["Completed"] = true, ["InventorySizeInBytes"] = true, ["InventoryRetrievalParameters"] = true, ["JobId"] = true, ["ArchiveId"] = true, ["JobDescription"] = true, ["ArchiveSizeInBytes"] = true, ["Action"] = true, ["ArchiveSHA256TreeHash"] = true, ["CreationDate"] = true, ["StatusMessage"] = true, ["StatusCode"] = true, nil }
+keys.GlacierJobDescription = { ["CompletionDate"] = true, ["VaultARN"] = true, ["RetrievalByteRange"] = true, ["Tier"] = true, ["SHA256TreeHash"] = true, ["SNSTopic"] = true, ["Completed"] = true, ["InventorySizeInBytes"] = true, ["OutputLocation"] = true, ["InventoryRetrievalParameters"] = true, ["JobId"] = true, ["ArchiveId"] = true, ["JobDescription"] = true, ["ArchiveSizeInBytes"] = true, ["Action"] = true, ["SelectParameters"] = true, ["ArchiveSHA256TreeHash"] = true, ["CreationDate"] = true, ["JobOutputPath"] = true, ["StatusMessage"] = true, ["StatusCode"] = true, nil }
 
 function asserts.AssertGlacierJobDescription(struct)
 	assert(struct)
@@ -2521,14 +2697,17 @@ function asserts.AssertGlacierJobDescription(struct)
 	if struct["SNSTopic"] then asserts.Assertstring(struct["SNSTopic"]) end
 	if struct["Completed"] then asserts.Assertboolean(struct["Completed"]) end
 	if struct["InventorySizeInBytes"] then asserts.AssertSize(struct["InventorySizeInBytes"]) end
+	if struct["OutputLocation"] then asserts.AssertOutputLocation(struct["OutputLocation"]) end
 	if struct["InventoryRetrievalParameters"] then asserts.AssertInventoryRetrievalJobDescription(struct["InventoryRetrievalParameters"]) end
 	if struct["JobId"] then asserts.Assertstring(struct["JobId"]) end
 	if struct["ArchiveId"] then asserts.Assertstring(struct["ArchiveId"]) end
 	if struct["JobDescription"] then asserts.Assertstring(struct["JobDescription"]) end
 	if struct["ArchiveSizeInBytes"] then asserts.AssertSize(struct["ArchiveSizeInBytes"]) end
 	if struct["Action"] then asserts.AssertActionCode(struct["Action"]) end
+	if struct["SelectParameters"] then asserts.AssertSelectParameters(struct["SelectParameters"]) end
 	if struct["ArchiveSHA256TreeHash"] then asserts.Assertstring(struct["ArchiveSHA256TreeHash"]) end
 	if struct["CreationDate"] then asserts.Assertstring(struct["CreationDate"]) end
+	if struct["JobOutputPath"] then asserts.Assertstring(struct["JobOutputPath"]) end
 	if struct["StatusMessage"] then asserts.Assertstring(struct["StatusMessage"]) end
 	if struct["StatusCode"] then asserts.AssertStatusCode(struct["StatusCode"]) end
 	for k,_ in pairs(struct) do
@@ -2537,27 +2716,30 @@ function asserts.AssertGlacierJobDescription(struct)
 end
 
 --- Create a structure of type GlacierJobDescription
--- <p>Describes an Amazon Glacier job.</p>
+-- <p>Contains the description of an Amazon Glacier job.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CompletionDate [string] <p>The UTC time that the archive retrieval request completed. While the job is in progress, the value will be null.</p>
--- * VaultARN [string] <p>The Amazon Resource Name (ARN) of the vault from which the archive retrieval was requested.</p>
--- * RetrievalByteRange [string] <p>The retrieved byte range for archive retrieval jobs in the form "<i>StartByteValue</i>-<i>EndByteValue</i>" If no range was specified in the archive retrieval, then the whole archive is retrieved and <i>StartByteValue</i> equals 0 and <i>EndByteValue</i> equals the size of the archive minus 1. For inventory retrieval jobs this field is null. </p>
--- * Tier [string] <p>The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>, <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.</p>
--- * SHA256TreeHash [string] <p>For an ArchiveRetrieval job, it is the checksum of the archive. Otherwise, the value is null.</p> <p>The SHA256 tree hash value for the requested range of an archive. If the Initiate a Job request for an archive specified a tree-hash aligned range, then this field returns a value.</p> <p>For the specific case when the whole archive is retrieved, this value is the same as the ArchiveSHA256TreeHash value.</p> <p>This field is null in the following situations:</p> <ul> <li> <p>Archive retrieval jobs that specify a range that is not tree-hash aligned.</p> </li> </ul> <ul> <li> <p>Archival jobs that specify a range that is equal to the whole archive and the job status is InProgress.</p> </li> </ul> <ul> <li> <p>Inventory jobs.</p> </li> </ul>
--- * SNSTopic [string] <p>An Amazon Simple Notification Service (Amazon SNS) topic that receives notification.</p>
--- * Completed [boolean] <p>The job status. When a job is completed, you get the job's output.</p>
--- * InventorySizeInBytes [Size] <p>For an InventoryRetrieval job, this is the size in bytes of the inventory requested for download. For the ArchiveRetrieval job, the value is null.</p>
+-- * CompletionDate [string] <p>The UTC time that the job request completed. While the job is in progress, the value is null.</p>
+-- * VaultARN [string] <p>The Amazon Resource Name (ARN) of the vault from which an archive retrieval was requested.</p>
+-- * RetrievalByteRange [string] <p>The retrieved byte range for archive retrieval jobs in the form <i>StartByteValue</i>-<i>EndByteValue</i>. If no range was specified in the archive retrieval, then the whole archive is retrieved. In this case, <i>StartByteValue</i> equals 0 and <i>EndByteValue</i> equals the size of the archive minus 1. For inventory retrieval or select jobs, this field is null. </p>
+-- * Tier [string] <p>The tier to use for a select or an archive retrieval. Valid values are <code>Expedited</code>, <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.</p>
+-- * SHA256TreeHash [string] <p>For an archive retrieval job, this value is the checksum of the archive. Otherwise, this value is null.</p> <p>The SHA256 tree hash value for the requested range of an archive. If the <b>InitiateJob</b> request for an archive specified a tree-hash aligned range, then this field returns a value.</p> <p>If the whole archive is retrieved, this value is the same as the ArchiveSHA256TreeHash value.</p> <p>This field is null for the following:</p> <ul> <li> <p>Archive retrieval jobs that specify a range that is not tree-hash aligned</p> </li> </ul> <ul> <li> <p>Archival jobs that specify a range that is equal to the whole archive, when the job status is <code>InProgress</code> </p> </li> </ul> <ul> <li> <p>Inventory jobs</p> </li> <li> <p>Select jobs</p> </li> </ul>
+-- * SNSTopic [string] <p>An Amazon SNS topic that receives notification.</p>
+-- * Completed [boolean] <p>The job status. When a job is completed, you get the job's output using Get Job Output (GET output).</p>
+-- * InventorySizeInBytes [Size] <p>For an inventory retrieval job, this value is the size in bytes of the inventory requested for download. For an archive retrieval or select job, this value is null.</p>
+-- * OutputLocation [OutputLocation] <p>Contains the location where the data from the select job is stored.</p>
 -- * InventoryRetrievalParameters [InventoryRetrievalJobDescription] <p>Parameters used for range inventory retrieval.</p>
 -- * JobId [string] <p>An opaque string that identifies an Amazon Glacier job.</p>
--- * ArchiveId [string] <p>For an ArchiveRetrieval job, this is the archive ID requested for download. Otherwise, this field is null.</p>
--- * JobDescription [string] <p>The job description you provided when you initiated the job.</p>
--- * ArchiveSizeInBytes [Size] <p>For an ArchiveRetrieval job, this is the size in bytes of the archive being requested for download. For the InventoryRetrieval job, the value is null.</p>
--- * Action [ActionCode] <p>The job type. It is either ArchiveRetrieval or InventoryRetrieval.</p>
--- * ArchiveSHA256TreeHash [string] <p>The SHA256 tree hash of the entire archive for an archive retrieval. For inventory retrieval jobs, this field is null.</p>
--- * CreationDate [string] <p>The UTC date when the job was created. A string representation of ISO 8601 date format, for example, "2012-03-20T17:03:43.221Z".</p>
+-- * ArchiveId [string] <p>The archive ID requested for a select job or archive retrieval. Otherwise, this field is null.</p>
+-- * JobDescription [string] <p>The job description provided when initiating the job.</p>
+-- * ArchiveSizeInBytes [Size] <p>For an archive retrieval job, this value is the size in bytes of the archive being requested for download. For an inventory retrieval or select job, this value is null.</p>
+-- * Action [ActionCode] <p>The job type. This value is either <code>ArchiveRetrieval</code>, <code>InventoryRetrieval</code>, or <code>Select</code>. </p>
+-- * SelectParameters [SelectParameters] <p>Contains the parameters used for a select.</p>
+-- * ArchiveSHA256TreeHash [string] <p>The SHA256 tree hash of the entire archive for an archive retrieval. For inventory retrieval or select jobs, this field is null.</p>
+-- * CreationDate [string] <p>The UTC date when the job was created. This value is a string representation of ISO 8601 date format, for example <code>"2012-03-20T17:03:43.221Z"</code>.</p>
+-- * JobOutputPath [string] <p>Contains the job output location.</p>
 -- * StatusMessage [string] <p>A friendly message that describes the job status.</p>
--- * StatusCode [StatusCode] <p>The status code can be InProgress, Succeeded, or Failed, and indicates the status of the job.</p>
+-- * StatusCode [StatusCode] <p>The status code can be <code>InProgress</code>, <code>Succeeded</code>, or <code>Failed</code>, and indicates the status of the job.</p>
 -- @return GlacierJobDescription structure as a key-value pair table
 function M.GlacierJobDescription(args)
 	assert(args, "You must provide an argument table when creating GlacierJobDescription")
@@ -2576,14 +2758,17 @@ function M.GlacierJobDescription(args)
 		["SNSTopic"] = args["SNSTopic"],
 		["Completed"] = args["Completed"],
 		["InventorySizeInBytes"] = args["InventorySizeInBytes"],
+		["OutputLocation"] = args["OutputLocation"],
 		["InventoryRetrievalParameters"] = args["InventoryRetrievalParameters"],
 		["JobId"] = args["JobId"],
 		["ArchiveId"] = args["ArchiveId"],
 		["JobDescription"] = args["JobDescription"],
 		["ArchiveSizeInBytes"] = args["ArchiveSizeInBytes"],
 		["Action"] = args["Action"],
+		["SelectParameters"] = args["SelectParameters"],
 		["ArchiveSHA256TreeHash"] = args["ArchiveSHA256TreeHash"],
 		["CreationDate"] = args["CreationDate"],
+		["JobOutputPath"] = args["JobOutputPath"],
 		["StatusMessage"] = args["StatusMessage"],
 		["StatusCode"] = args["StatusCode"],
 	}
@@ -2737,18 +2922,63 @@ function M.ListPartsOutput(args)
     }
 end
 
-keys.JobParameters = { ["InventoryRetrievalParameters"] = true, ["RetrievalByteRange"] = true, ["Description"] = true, ["Format"] = true, ["SNSTopic"] = true, ["Tier"] = true, ["ArchiveId"] = true, ["Type"] = true, nil }
+keys.ResourceNotFoundException = { ["message"] = true, ["code"] = true, ["type"] = true, nil }
+
+function asserts.AssertResourceNotFoundException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
+	if struct["message"] then asserts.Assertstring(struct["message"]) end
+	if struct["code"] then asserts.Assertstring(struct["code"]) end
+	if struct["type"] then asserts.Assertstring(struct["type"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ResourceNotFoundException
+-- <p>Returned if the specified resource (such as a vault, upload ID, or job ID) doesn't exist.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [string] <p>Returned if the specified resource (such as a vault, upload ID, or job ID) doesn't exist.</p>
+-- * code [string] <p>404 Not Found</p>
+-- * type [string] <p>Client</p>
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["message"] = args["message"],
+		["code"] = args["code"],
+		["type"] = args["type"],
+	}
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.JobParameters = { ["InventoryRetrievalParameters"] = true, ["RetrievalByteRange"] = true, ["SelectParameters"] = true, ["Description"] = true, ["Format"] = true, ["SNSTopic"] = true, ["Tier"] = true, ["ArchiveId"] = true, ["OutputLocation"] = true, ["Type"] = true, nil }
 
 function asserts.AssertJobParameters(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected JobParameters to be of type 'table'")
 	if struct["InventoryRetrievalParameters"] then asserts.AssertInventoryRetrievalJobInput(struct["InventoryRetrievalParameters"]) end
 	if struct["RetrievalByteRange"] then asserts.Assertstring(struct["RetrievalByteRange"]) end
+	if struct["SelectParameters"] then asserts.AssertSelectParameters(struct["SelectParameters"]) end
 	if struct["Description"] then asserts.Assertstring(struct["Description"]) end
 	if struct["Format"] then asserts.Assertstring(struct["Format"]) end
 	if struct["SNSTopic"] then asserts.Assertstring(struct["SNSTopic"]) end
 	if struct["Tier"] then asserts.Assertstring(struct["Tier"]) end
 	if struct["ArchiveId"] then asserts.Assertstring(struct["ArchiveId"]) end
+	if struct["OutputLocation"] then asserts.AssertOutputLocation(struct["OutputLocation"]) end
 	if struct["Type"] then asserts.Assertstring(struct["Type"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.JobParameters[k], "JobParameters contains unknown key " .. tostring(k))
@@ -2761,12 +2991,14 @@ end
 -- Valid keys:
 -- * InventoryRetrievalParameters [InventoryRetrievalJobInput] <p>Input parameters used for range inventory retrieval.</p>
 -- * RetrievalByteRange [string] <p>The byte range to retrieve for an archive retrieval. in the form "<i>StartByteValue</i>-<i>EndByteValue</i>" If not specified, the whole archive is retrieved. If specified, the byte range must be megabyte (1024*1024) aligned which means that <i>StartByteValue</i> must be divisible by 1 MB and <i>EndByteValue</i> plus 1 must be divisible by 1 MB or be the end of the archive specified as the archive byte size value minus 1. If RetrievalByteRange is not megabyte aligned, this operation returns a 400 response. </p> <p>An error occurs if you specify this field for an inventory retrieval job request.</p>
+-- * SelectParameters [SelectParameters] <p>Contains the parameters that define a job.</p>
 -- * Description [string] <p>The optional description for the job. The description must be less than or equal to 1,024 bytes. The allowable characters are 7-bit ASCII without control codes-specifically, ASCII values 32-126 decimal or 0x20-0x7E hexadecimal.</p>
 -- * Format [string] <p>When initiating a job to retrieve a vault inventory, you can optionally add this parameter to your request to specify the output format. If you are initiating an inventory job and do not specify a Format field, JSON is the default format. Valid values are "CSV" and "JSON".</p>
 -- * SNSTopic [string] <p>The Amazon SNS topic ARN to which Amazon Glacier sends a notification when the job is completed and the output is ready for you to download. The specified topic publishes the notification to its subscribers. The SNS topic must exist.</p>
--- * Tier [string] <p>The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>, <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.</p>
--- * ArchiveId [string] <p>The ID of the archive that you want to retrieve. This field is required only if <code>Type</code> is set to archive-retrieval. An error occurs if you specify this request parameter for an inventory retrieval job request. </p>
--- * Type [string] <p>The job type. You can initiate a job to retrieve an archive or get an inventory of a vault. Valid values are "archive-retrieval" and "inventory-retrieval".</p>
+-- * Tier [string] <p>The tier to use for a select or an archive retrieval job. Valid values are <code>Expedited</code>, <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.</p>
+-- * ArchiveId [string] <p>The ID of the archive that you want to retrieve. This field is required only if <code>Type</code> is set to <code>select</code> or <code>archive-retrieval</code>code&gt;. An error occurs if you specify this request parameter for an inventory retrieval job request. </p>
+-- * OutputLocation [OutputLocation] <p>Contains information about the location where the select job results are stored.</p>
+-- * Type [string] <p>The job type. You can initiate a job to perform a select query on an archive, retrieve an archive, or get an inventory of a vault. Valid values are "select", "archive-retrieval" and "inventory-retrieval".</p>
 -- @return JobParameters structure as a key-value pair table
 function M.JobParameters(args)
 	assert(args, "You must provide an argument table when creating JobParameters")
@@ -2779,11 +3011,13 @@ function M.JobParameters(args)
 	local all_args = { 
 		["InventoryRetrievalParameters"] = args["InventoryRetrievalParameters"],
 		["RetrievalByteRange"] = args["RetrievalByteRange"],
+		["SelectParameters"] = args["SelectParameters"],
 		["Description"] = args["Description"],
 		["Format"] = args["Format"],
 		["SNSTopic"] = args["SNSTopic"],
 		["Tier"] = args["Tier"],
 		["ArchiveId"] = args["ArchiveId"],
+		["OutputLocation"] = args["OutputLocation"],
 		["Type"] = args["Type"],
 	}
 	asserts.AssertJobParameters(all_args)
@@ -2832,6 +3066,109 @@ function M.GetDataRetrievalPolicyOutput(args)
     }
 end
 
+keys.Grantee = { ["DisplayName"] = true, ["Type"] = true, ["URI"] = true, ["EmailAddress"] = true, ["ID"] = true, nil }
+
+function asserts.AssertGrantee(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Grantee to be of type 'table'")
+	assert(struct["Type"], "Expected key Type to exist in table")
+	if struct["DisplayName"] then asserts.Assertstring(struct["DisplayName"]) end
+	if struct["Type"] then asserts.AssertType(struct["Type"]) end
+	if struct["URI"] then asserts.Assertstring(struct["URI"]) end
+	if struct["EmailAddress"] then asserts.Assertstring(struct["EmailAddress"]) end
+	if struct["ID"] then asserts.Assertstring(struct["ID"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Grantee[k], "Grantee contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Grantee
+-- <p>Contains information about the grantee.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DisplayName [string] <p>Screen name of the grantee.</p>
+-- * Type [Type] <p>Type of grantee</p>
+-- * URI [string] <p>URI of the grantee group.</p>
+-- * EmailAddress [string] <p>Email address of the grantee.</p>
+-- * ID [string] <p>The canonical user ID of the grantee.</p>
+-- Required key: Type
+-- @return Grantee structure as a key-value pair table
+function M.Grantee(args)
+	assert(args, "You must provide an argument table when creating Grantee")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["DisplayName"] = args["DisplayName"],
+		["Type"] = args["Type"],
+		["URI"] = args["URI"],
+		["EmailAddress"] = args["EmailAddress"],
+		["ID"] = args["ID"],
+	}
+	asserts.AssertGrantee(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CSVInput = { ["QuoteCharacter"] = true, ["FieldDelimiter"] = true, ["QuoteEscapeCharacter"] = true, ["RecordDelimiter"] = true, ["Comments"] = true, ["FileHeaderInfo"] = true, nil }
+
+function asserts.AssertCSVInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CSVInput to be of type 'table'")
+	if struct["QuoteCharacter"] then asserts.Assertstring(struct["QuoteCharacter"]) end
+	if struct["FieldDelimiter"] then asserts.Assertstring(struct["FieldDelimiter"]) end
+	if struct["QuoteEscapeCharacter"] then asserts.Assertstring(struct["QuoteEscapeCharacter"]) end
+	if struct["RecordDelimiter"] then asserts.Assertstring(struct["RecordDelimiter"]) end
+	if struct["Comments"] then asserts.Assertstring(struct["Comments"]) end
+	if struct["FileHeaderInfo"] then asserts.AssertFileHeaderInfo(struct["FileHeaderInfo"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CSVInput[k], "CSVInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CSVInput
+-- <p>Contains information about the comma-separated value (CSV) file to select from.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * QuoteCharacter [string] <p>A value used as an escape character where the field delimiter is part of the value.</p>
+-- * FieldDelimiter [string] <p>A value used to separate individual fields from each other within a record.</p>
+-- * QuoteEscapeCharacter [string] <p>A single character used for escaping the quotation-mark character inside an already escaped value.</p>
+-- * RecordDelimiter [string] <p>A value used to separate individual records from each other.</p>
+-- * Comments [string] <p>A single character used to indicate that a row should be ignored when the character is present at the start of that row.</p>
+-- * FileHeaderInfo [FileHeaderInfo] <p>Describes the first line of input. Valid values are <code>None</code>, <code>Ignore</code>, and <code>Use</code>.</p>
+-- @return CSVInput structure as a key-value pair table
+function M.CSVInput(args)
+	assert(args, "You must provide an argument table when creating CSVInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["QuoteCharacter"] = args["QuoteCharacter"],
+		["FieldDelimiter"] = args["FieldDelimiter"],
+		["QuoteEscapeCharacter"] = args["QuoteEscapeCharacter"],
+		["RecordDelimiter"] = args["RecordDelimiter"],
+		["Comments"] = args["Comments"],
+		["FileHeaderInfo"] = args["FileHeaderInfo"],
+	}
+	asserts.AssertCSVInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetVaultAccessPolicyOutput = { ["policy"] = true, nil }
 
 function asserts.AssertGetVaultAccessPolicyOutput(struct)
@@ -2861,6 +3198,43 @@ function M.GetVaultAccessPolicyOutput(args)
 		["policy"] = args["policy"],
 	}
 	asserts.AssertGetVaultAccessPolicyOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.InputSerialization = { ["csv"] = true, nil }
+
+function asserts.AssertInputSerialization(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InputSerialization to be of type 'table'")
+	if struct["csv"] then asserts.AssertCSVInput(struct["csv"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.InputSerialization[k], "InputSerialization contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InputSerialization
+-- <p>Describes how the archive is serialized.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * csv [CSVInput] <p>Describes the serialization of a CSV-encoded object.</p>
+-- @return InputSerialization structure as a key-value pair table
+function M.InputSerialization(args)
+	assert(args, "You must provide an argument table when creating InputSerialization")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["csv"] = args["csv"],
+	}
+	asserts.AssertInputSerialization(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2988,7 +3362,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * marker [string] <p>An opaque string used for pagination. This value specifies the upload at which the listing of uploads should begin. Get the marker value from a previous List Uploads response. You need only include the marker if you are continuing the pagination of results started in a previous List Uploads request.</p>
--- * limit [string] <p>Specifies the maximum number of uploads returned in the response body. If this value is not specified, the List Uploads operation returns up to 1,000 uploads.</p>
+-- * limit [string] <p>Specifies the maximum number of uploads returned in the response body. If this value is not specified, the List Uploads operation returns up to 50 uploads.</p>
 -- * vaultName [string] <p>The name of the vault.</p>
 -- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
 -- Required key: accountId
@@ -3227,6 +3601,64 @@ function M.VaultAccessPolicy(args)
     }
 end
 
+keys.S3Location = { ["AccessControlList"] = true, ["Encryption"] = true, ["Prefix"] = true, ["BucketName"] = true, ["UserMetadata"] = true, ["CannedACL"] = true, ["Tagging"] = true, ["StorageClass"] = true, nil }
+
+function asserts.AssertS3Location(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected S3Location to be of type 'table'")
+	if struct["AccessControlList"] then asserts.AssertAccessControlPolicyList(struct["AccessControlList"]) end
+	if struct["Encryption"] then asserts.AssertEncryption(struct["Encryption"]) end
+	if struct["Prefix"] then asserts.Assertstring(struct["Prefix"]) end
+	if struct["BucketName"] then asserts.Assertstring(struct["BucketName"]) end
+	if struct["UserMetadata"] then asserts.Asserthashmap(struct["UserMetadata"]) end
+	if struct["CannedACL"] then asserts.AssertCannedACL(struct["CannedACL"]) end
+	if struct["Tagging"] then asserts.Asserthashmap(struct["Tagging"]) end
+	if struct["StorageClass"] then asserts.AssertStorageClass(struct["StorageClass"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.S3Location[k], "S3Location contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type S3Location
+-- <p>Contains information about the location in Amazon S3 where the select job results are stored.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AccessControlList [AccessControlPolicyList] <p>A list of grants that control access to the staged results.</p>
+-- * Encryption [Encryption] <p>Contains information about the encryption used to store the job results in Amazon S3.</p>
+-- * Prefix [string] <p>The prefix that is prepended to the results for this request.</p>
+-- * BucketName [string] <p>The name of the Amazon S3 bucket where the job results are stored.</p>
+-- * UserMetadata [hashmap] <p>A map of metadata to store with the job results in Amazon S3.</p>
+-- * CannedACL [CannedACL] <p>The canned access control list (ACL) to apply to the job results.</p>
+-- * Tagging [hashmap] <p>The tag-set that is applied to the job results.</p>
+-- * StorageClass [StorageClass] <p>The storage class used to store the job results.</p>
+-- @return S3Location structure as a key-value pair table
+function M.S3Location(args)
+	assert(args, "You must provide an argument table when creating S3Location")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["AccessControlList"] = args["AccessControlList"],
+		["Encryption"] = args["Encryption"],
+		["Prefix"] = args["Prefix"],
+		["BucketName"] = args["BucketName"],
+		["UserMetadata"] = args["UserMetadata"],
+		["CannedACL"] = args["CannedACL"],
+		["Tagging"] = args["Tagging"],
+		["StorageClass"] = args["StorageClass"],
+	}
+	asserts.AssertS3Location(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.InsufficientCapacityException = { ["message"] = true, ["code"] = true, ["type"] = true, nil }
 
 function asserts.AssertInsufficientCapacityException(struct)
@@ -3262,6 +3694,43 @@ function M.InsufficientCapacityException(args)
 		["type"] = args["type"],
 	}
 	asserts.AssertInsufficientCapacityException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.OutputLocation = { ["S3"] = true, nil }
+
+function asserts.AssertOutputLocation(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected OutputLocation to be of type 'table'")
+	if struct["S3"] then asserts.AssertS3Location(struct["S3"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.OutputLocation[k], "OutputLocation contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type OutputLocation
+-- <p>Contains information about the location where the select job results are stored.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * S3 [S3Location] <p>Describes an S3 location that will receive the results of the job request.</p>
+-- @return OutputLocation structure as a key-value pair table
+function M.OutputLocation(args)
+	assert(args, "You must provide an argument table when creating OutputLocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["S3"] = args["S3"],
+	}
+	asserts.AssertOutputLocation(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3390,14 +3859,58 @@ function M.TagKey(str)
 	return str
 end
 
-function asserts.Assertstring(str)
+function asserts.AssertCannedACL(str)
 	assert(str)
-	assert(type(str) == "string", "Expected string to be of type 'string'")
+	assert(type(str) == "string", "Expected CannedACL to be of type 'string'")
 end
 
 --  
-function M.string(str)
-	asserts.Assertstring(str)
+function M.CannedACL(str)
+	asserts.AssertCannedACL(str)
+	return str
+end
+
+function asserts.AssertEncryptionType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected EncryptionType to be of type 'string'")
+end
+
+--  
+function M.EncryptionType(str)
+	asserts.AssertEncryptionType(str)
+	return str
+end
+
+function asserts.AssertExpressionType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ExpressionType to be of type 'string'")
+end
+
+--  
+function M.ExpressionType(str)
+	asserts.AssertExpressionType(str)
+	return str
+end
+
+function asserts.AssertType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected Type to be of type 'string'")
+end
+
+--  
+function M.Type(str)
+	asserts.AssertType(str)
+	return str
+end
+
+function asserts.AssertPermission(str)
+	assert(str)
+	assert(type(str) == "string", "Expected Permission to be of type 'string'")
+end
+
+--  
+function M.Permission(str)
+	asserts.AssertPermission(str)
 	return str
 end
 
@@ -3423,6 +3936,17 @@ function M.TagValue(str)
 	return str
 end
 
+function asserts.AssertFileHeaderInfo(str)
+	assert(str)
+	assert(type(str) == "string", "Expected FileHeaderInfo to be of type 'string'")
+end
+
+--  
+function M.FileHeaderInfo(str)
+	asserts.AssertFileHeaderInfo(str)
+	return str
+end
+
 function asserts.AssertActionCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ActionCode to be of type 'string'")
@@ -3432,6 +3956,50 @@ end
 function M.ActionCode(str)
 	asserts.AssertActionCode(str)
 	return str
+end
+
+function asserts.AssertStorageClass(str)
+	assert(str)
+	assert(type(str) == "string", "Expected StorageClass to be of type 'string'")
+end
+
+--  
+function M.StorageClass(str)
+	asserts.AssertStorageClass(str)
+	return str
+end
+
+function asserts.AssertQuoteFields(str)
+	assert(str)
+	assert(type(str) == "string", "Expected QuoteFields to be of type 'string'")
+end
+
+--  
+function M.QuoteFields(str)
+	asserts.AssertQuoteFields(str)
+	return str
+end
+
+function asserts.Assertstring(str)
+	assert(str)
+	assert(type(str) == "string", "Expected string to be of type 'string'")
+end
+
+--  
+function M.string(str)
+	asserts.Assertstring(str)
+	return str
+end
+
+function asserts.AssertSize(long)
+	assert(long)
+	assert(type(long) == "number", "Expected Size to be of type 'number'")
+	assert(long % 1 == 0, "Expected a whole integer number")
+end
+
+function M.Size(long)
+	asserts.AssertSize(long)
+	return long
 end
 
 function asserts.Assertlong(long)
@@ -3456,17 +4024,6 @@ function M.NullableLong(long)
 	return long
 end
 
-function asserts.AssertSize(long)
-	assert(long)
-	assert(type(long) == "number", "Expected Size to be of type 'number'")
-	assert(long % 1 == 0, "Expected a whole integer number")
-end
-
-function M.Size(long)
-	asserts.AssertSize(long)
-	return long
-end
-
 function asserts.Asserthttpstatus(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected httpstatus to be of type 'number'")
@@ -3486,6 +4043,20 @@ end
 function M.boolean(boolean)
 	asserts.Assertboolean(boolean)
 	return boolean
+end
+
+function asserts.Asserthashmap(map)
+	assert(map)
+	assert(type(map) == "table", "Expected hashmap to be of type 'table'")
+	for k,v in pairs(map) do
+		asserts.Assertstring(k)
+		asserts.Assertstring(v)
+	end
+end
+
+function M.hashmap(map)
+	asserts.Asserthashmap(map)
+	return map
 end
 
 function asserts.AssertTagMap(map)
@@ -3629,6 +4200,21 @@ end
 -- List of DescribeVaultOutput objects
 function M.VaultList(list)
 	asserts.AssertVaultList(list)
+	return list
+end
+
+function asserts.AssertAccessControlPolicyList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected AccessControlPolicyList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertGrant(v)
+	end
+end
+
+--  
+-- List of Grant objects
+function M.AccessControlPolicyList(list)
+	asserts.AssertAccessControlPolicyList(list)
 	return list
 end
 

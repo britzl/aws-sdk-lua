@@ -21,27 +21,31 @@ M.metadata = {
 local keys = {}
 local asserts = {}
 
-keys.InvalidRequestException = { ["AthenaErrorCode"] = true, ["Message"] = true, nil }
+keys.QueryExecutionStatus = { ["SubmissionDateTime"] = true, ["State"] = true, ["CompletionDateTime"] = true, ["StateChangeReason"] = true, nil }
 
-function asserts.AssertInvalidRequestException(struct)
+function asserts.AssertQueryExecutionStatus(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidRequestException to be of type 'table'")
-	if struct["AthenaErrorCode"] then asserts.AssertErrorCode(struct["AthenaErrorCode"]) end
-	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
+	assert(type(struct) == "table", "Expected QueryExecutionStatus to be of type 'table'")
+	if struct["SubmissionDateTime"] then asserts.AssertDate(struct["SubmissionDateTime"]) end
+	if struct["State"] then asserts.AssertQueryExecutionState(struct["State"]) end
+	if struct["CompletionDateTime"] then asserts.AssertDate(struct["CompletionDateTime"]) end
+	if struct["StateChangeReason"] then asserts.AssertString(struct["StateChangeReason"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidRequestException[k], "InvalidRequestException contains unknown key " .. tostring(k))
+		assert(keys.QueryExecutionStatus[k], "QueryExecutionStatus contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidRequestException
--- <p>Indicates that something is wrong with the input to the request. For example, a required parameter may be missing or out of range.</p>
+--- Create a structure of type QueryExecutionStatus
+-- <p>The completion date, current state, submission time, and state change reason (if applicable) for the query execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AthenaErrorCode [ErrorCode] 
--- * Message [ErrorMessage] 
--- @return InvalidRequestException structure as a key-value pair table
-function M.InvalidRequestException(args)
-	assert(args, "You must provide an argument table when creating InvalidRequestException")
+-- * SubmissionDateTime [Date] <p>The date and time that the query was submitted.</p>
+-- * State [QueryExecutionState] <p>The state of query execution. <code>QUEUED</code> state is listed but is not used by Athena and is reserved for future use. <code>RUNNING</code> indicates that the query has been submitted to the service, and Athena will execute the query as soon as resources are available. <code>SUCCEEDED</code> indicates that the query completed without error. <code>FAILED</code> indicates that the query experienced an error and did not complete processing.<code>CANCELLED</code> indicates that user input interrupted query execution. </p>
+-- * CompletionDateTime [Date] <p>The date and time that the query completed.</p>
+-- * StateChangeReason [String] <p>Further detail about the status of the query.</p>
+-- @return QueryExecutionStatus structure as a key-value pair table
+function M.QueryExecutionStatus(args)
+	assert(args, "You must provide an argument table when creating QueryExecutionStatus")
     local query_args = { 
     }
     local uri_args = { 
@@ -49,10 +53,12 @@ function M.InvalidRequestException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["AthenaErrorCode"] = args["AthenaErrorCode"],
-		["Message"] = args["Message"],
+		["SubmissionDateTime"] = args["SubmissionDateTime"],
+		["State"] = args["State"],
+		["CompletionDateTime"] = args["CompletionDateTime"],
+		["StateChangeReason"] = args["StateChangeReason"],
 	}
-	asserts.AssertInvalidRequestException(all_args)
+	asserts.AssertQueryExecutionStatus(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -196,43 +202,6 @@ function M.ResultSet(args)
     }
 end
 
-keys.InternalServerException = { ["Message"] = true, nil }
-
-function asserts.AssertInternalServerException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InternalServerException to be of type 'table'")
-	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InternalServerException[k], "InternalServerException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InternalServerException
--- <p>Indicates a platform issue, which may be due to a transient condition or outage.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ErrorMessage] 
--- @return InternalServerException structure as a key-value pair table
-function M.InternalServerException(args)
-	assert(args, "You must provide an argument table when creating InternalServerException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertInternalServerException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.EncryptionConfiguration = { ["EncryptionOption"] = true, ["KmsKey"] = true, nil }
 
 function asserts.AssertEncryptionConfiguration(struct)
@@ -247,7 +216,7 @@ function asserts.AssertEncryptionConfiguration(struct)
 end
 
 --- Create a structure of type EncryptionConfiguration
--- <p>If query results are encrypted in Amazon S3, indicates the Amazon S3 encryption option used.</p>
+-- <p>If query results are encrypted in Amazon S3, indicates the encryption option used (for example, <code>SSE-KMS</code> or <code>CSE-KMS</code>) and key information.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * EncryptionOption [EncryptionOption] <p>Indicates whether Amazon S3 server-side encryption with Amazon S3-managed keys (<code>SSE-S3</code>), server-side encryption with KMS-managed keys (<code>SSE-KMS</code>), or client-side encryption with KMS-managed keys (CSE-KMS) is used.</p>
@@ -667,7 +636,7 @@ function asserts.AssertQueryExecutionStatistics(struct)
 end
 
 --- Create a structure of type QueryExecutionStatistics
--- <p>The amount of data scanned during the query execution and the amount of time that it took to execute.</p>
+-- <p>The amount of data scanned during the query execution and the amount of time that it took to execute, and the type of statement that was run.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * DataScannedInBytes [Long] <p>The number of bytes in the data that was queried.</p>
@@ -810,7 +779,7 @@ function M.BatchGetQueryExecutionInput(args)
     }
 end
 
-keys.QueryExecution = { ["Status"] = true, ["Statistics"] = true, ["ResultConfiguration"] = true, ["QueryExecutionId"] = true, ["QueryExecutionContext"] = true, ["Query"] = true, nil }
+keys.QueryExecution = { ["Status"] = true, ["Statistics"] = true, ["ResultConfiguration"] = true, ["QueryExecutionId"] = true, ["QueryExecutionContext"] = true, ["Query"] = true, ["StatementType"] = true, nil }
 
 function asserts.AssertQueryExecution(struct)
 	assert(struct)
@@ -821,6 +790,7 @@ function asserts.AssertQueryExecution(struct)
 	if struct["QueryExecutionId"] then asserts.AssertQueryExecutionId(struct["QueryExecutionId"]) end
 	if struct["QueryExecutionContext"] then asserts.AssertQueryExecutionContext(struct["QueryExecutionContext"]) end
 	if struct["Query"] then asserts.AssertQueryString(struct["Query"]) end
+	if struct["StatementType"] then asserts.AssertStatementType(struct["StatementType"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.QueryExecution[k], "QueryExecution contains unknown key " .. tostring(k))
 	end
@@ -831,11 +801,12 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Status [QueryExecutionStatus] <p>The completion date, current state, submission time, and state change reason (if applicable) for the query execution.</p>
--- * Statistics [QueryExecutionStatistics] <p>The amount of data scanned during the query execution and the amount of time that it took to execute.</p>
+-- * Statistics [QueryExecutionStatistics] <p>The amount of data scanned during the query execution and the amount of time that it took to execute, and the type of statement that was run.</p>
 -- * ResultConfiguration [ResultConfiguration] <p>The location in Amazon S3 where query results were stored and the encryption option, if any, used for query results.</p>
 -- * QueryExecutionId [QueryExecutionId] <p>The unique identifier for each query execution.</p>
 -- * QueryExecutionContext [QueryExecutionContext] <p>The database in which the query execution occurred.</p>
 -- * Query [QueryString] <p>The SQL query statements which the query execution ran.</p>
+-- * StatementType [StatementType] <p>The type of query statement that was run. <code>DDL</code> indicates DDL query statements. <code>DML</code> indicates DML (Data Manipulation Language) query statements, such as <code>CREATE TABLE AS SELECT</code>. <code>UTILITY</code> indicates query statements other than DDL and DML, such as <code>SHOW CREATE TABLE</code>, or <code>DESCRIBE &lt;table&gt;</code>.</p>
 -- @return QueryExecution structure as a key-value pair table
 function M.QueryExecution(args)
 	assert(args, "You must provide an argument table when creating QueryExecution")
@@ -852,6 +823,7 @@ function M.QueryExecution(args)
 		["QueryExecutionId"] = args["QueryExecutionId"],
 		["QueryExecutionContext"] = args["QueryExecutionContext"],
 		["Query"] = args["Query"],
+		["StatementType"] = args["StatementType"],
 	}
 	asserts.AssertQueryExecution(all_args)
 	return {
@@ -899,52 +871,13 @@ function M.QueryExecutionContext(args)
     }
 end
 
-keys.TooManyRequestsException = { ["Message"] = true, ["Reason"] = true, nil }
-
-function asserts.AssertTooManyRequestsException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyRequestsException to be of type 'table'")
-	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
-	if struct["Reason"] then asserts.AssertThrottleReason(struct["Reason"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.TooManyRequestsException[k], "TooManyRequestsException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TooManyRequestsException
--- <p>Indicates that the request was throttled.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ErrorMessage] 
--- * Reason [ThrottleReason] 
--- @return TooManyRequestsException structure as a key-value pair table
-function M.TooManyRequestsException(args)
-	assert(args, "You must provide an argument table when creating TooManyRequestsException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-		["Reason"] = args["Reason"],
-	}
-	asserts.AssertTooManyRequestsException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.GetQueryResultsOutput = { ["NextToken"] = true, ["ResultSet"] = true, nil }
+keys.GetQueryResultsOutput = { ["NextToken"] = true, ["UpdateCount"] = true, ["ResultSet"] = true, nil }
 
 function asserts.AssertGetQueryResultsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetQueryResultsOutput to be of type 'table'")
 	if struct["NextToken"] then asserts.AssertToken(struct["NextToken"]) end
+	if struct["UpdateCount"] then asserts.AssertLong(struct["UpdateCount"]) end
 	if struct["ResultSet"] then asserts.AssertResultSet(struct["ResultSet"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.GetQueryResultsOutput[k], "GetQueryResultsOutput contains unknown key " .. tostring(k))
@@ -956,6 +889,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [Token] <p>A token to be used by the next request if this request is truncated.</p>
+-- * UpdateCount [Long] <p>The number of rows inserted with a CREATE TABLE AS SELECT statement. </p>
 -- * ResultSet [ResultSet] <p>The results of the query execution.</p>
 -- @return GetQueryResultsOutput structure as a key-value pair table
 function M.GetQueryResultsOutput(args)
@@ -968,6 +902,7 @@ function M.GetQueryResultsOutput(args)
     }
 	local all_args = { 
 		["NextToken"] = args["NextToken"],
+		["UpdateCount"] = args["UpdateCount"],
 		["ResultSet"] = args["ResultSet"],
 	}
 	asserts.AssertGetQueryResultsOutput(all_args)
@@ -1102,52 +1037,6 @@ function M.UnprocessedNamedQueryId(args)
     }
 end
 
-keys.QueryExecutionStatus = { ["SubmissionDateTime"] = true, ["State"] = true, ["CompletionDateTime"] = true, ["StateChangeReason"] = true, nil }
-
-function asserts.AssertQueryExecutionStatus(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected QueryExecutionStatus to be of type 'table'")
-	if struct["SubmissionDateTime"] then asserts.AssertDate(struct["SubmissionDateTime"]) end
-	if struct["State"] then asserts.AssertQueryExecutionState(struct["State"]) end
-	if struct["CompletionDateTime"] then asserts.AssertDate(struct["CompletionDateTime"]) end
-	if struct["StateChangeReason"] then asserts.AssertString(struct["StateChangeReason"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.QueryExecutionStatus[k], "QueryExecutionStatus contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type QueryExecutionStatus
--- <p>The completion date, current state, submission time, and state change reason (if applicable) for the query execution.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * SubmissionDateTime [Date] <p>The date and time that the query was submitted.</p>
--- * State [QueryExecutionState] <p>The state of query execution. <code>SUBMITTED</code> indicates that the query is queued for execution. <code>RUNNING</code> indicates that the query is scanning data and returning results. <code>SUCCEEDED</code> indicates that the query completed without error. <code>FAILED</code> indicates that the query experienced an error and did not complete processing. <code>CANCELLED</code> indicates that user input interrupted query execution.</p>
--- * CompletionDateTime [Date] <p>The date and time that the query completed.</p>
--- * StateChangeReason [String] <p>Further detail about the status of the query.</p>
--- @return QueryExecutionStatus structure as a key-value pair table
-function M.QueryExecutionStatus(args)
-	assert(args, "You must provide an argument table when creating QueryExecutionStatus")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["SubmissionDateTime"] = args["SubmissionDateTime"],
-		["State"] = args["State"],
-		["CompletionDateTime"] = args["CompletionDateTime"],
-		["StateChangeReason"] = args["StateChangeReason"],
-	}
-	asserts.AssertQueryExecutionStatus(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ResultConfiguration = { ["EncryptionConfiguration"] = true, ["OutputLocation"] = true, nil }
 
 function asserts.AssertResultConfiguration(struct)
@@ -1165,8 +1054,8 @@ end
 -- <p>The location in Amazon S3 where query results are stored and the encryption option, if any, used for query results.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * EncryptionConfiguration [EncryptionConfiguration] <p>If query results are encrypted in S3, indicates the S3 encryption option used (for example, <code>SSE-KMS</code> or <code>CSE-KMS</code> and key information.</p>
--- * OutputLocation [String] <p>The location in S3 where query results are stored.</p>
+-- * EncryptionConfiguration [EncryptionConfiguration] <p>If query results are encrypted in Amazon S3, indicates the encryption option used (for example, <code>SSE-KMS</code> or <code>CSE-KMS</code>) and key information.</p>
+-- * OutputLocation [String] <p>The location in Amazon S3 where your query results are stored, such as <code>s3://path/to/query/bucket/</code>. For more information, see <a href="http://docs.aws.amazon.com/athena/latest/ug/querying.html">Queries and Query Result Files. </a> </p>
 -- Required key: OutputLocation
 -- @return ResultConfiguration structure as a key-value pair table
 function M.ResultConfiguration(args)
@@ -1468,10 +1357,10 @@ function asserts.AssertResultSetMetadata(struct)
 end
 
 --- Create a structure of type ResultSetMetadata
--- <p>The metadata that describes the column structure and data types of a table of query results.</p>
+-- <p>The metadata that describes the column structure and data types of a table of query results. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ColumnInfo [ColumnInfoList] <p>Information about the columns in a query execution result.</p>
+-- * ColumnInfo [ColumnInfoList] <p>Information about the columns returned in a query result metadata.</p>
 -- @return ResultSetMetadata structure as a key-value pair table
 function M.ResultSetMetadata(args)
 	assert(args, "You must provide an argument table when creating ResultSetMetadata")
@@ -1738,7 +1627,7 @@ function asserts.AssertErrorCode(str)
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
---  
+-- <p>The error code returned when the query execution failed to process, or when the processing request for the named query failed.</p>
 function M.ErrorCode(str)
 	asserts.AssertErrorCode(str)
 	return str
@@ -1792,6 +1681,17 @@ function M.QueryExecutionId(str)
 	return str
 end
 
+function asserts.AssertStatementType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected StatementType to be of type 'string'")
+end
+
+--  
+function M.StatementType(str)
+	asserts.AssertStatementType(str)
+	return str
+end
+
 function asserts.AssertErrorMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
@@ -1811,17 +1711,6 @@ end
 --  
 function M.Token(str)
 	asserts.AssertToken(str)
-	return str
-end
-
-function asserts.AssertThrottleReason(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ThrottleReason to be of type 'string'")
-end
-
---  
-function M.ThrottleReason(str)
-	asserts.AssertThrottleReason(str)
 	return str
 end
 

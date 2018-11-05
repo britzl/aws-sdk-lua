@@ -76,9 +76,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * input [Data] <p>The JSON input data for the execution.</p>
+-- * input [Data] <p>The string that contains the JSON input data for the execution, for example:</p> <p> <code>"input": "{\"first_name\" : \"test\"}"</code> </p> <note> <p>If you don't include any JSON input data, you still must include the two braces, for example: <code>"input": "{}"</code> </p> </note>
 -- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the state machine to execute.</p>
--- * name [Name] <p>The name of the execution. This name must be unique for your AWS account and region.</p>
+-- * name [Name] <p>The name of the execution. This name must be unique for your AWS account and region for 90 days. For more information, see <a href="http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions"> Limits Related to State Machine Executions</a> in the <i>AWS Step Functions Developer Guide</i>.</p> <important> <p>An execution can't use the name of another execution for 90 days.</p> <p>When you make multiple <code>StartExecution</code> calls with the same name, the new execution doesn't run and the following rules apply:</p> <ul> <li> <p>When the original execution is open and the execution input from the new call is <i>different</i>, the <code>ExecutionAlreadyExists</code> message is returned.</p> </li> <li> <p>When the original execution is open and the execution input from the new call is <i>identical</i>, the <code>Success</code> message is returned.</p> </li> <li> <p>When the original execution is closed, the <code>ExecutionAlreadyExists</code> message is returned regardless of input.</p> </li> </ul> </important> <p>A name must <i>not</i> contain:</p> <ul> <li> <p>whitespace</p> </li> <li> <p>brackets <code>&lt; &gt; { } [ ]</code> </p> </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li> <p>special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li> <li> <p>control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)</p> </li> </ul>
 -- Required key: stateMachineArn
 -- @return StartExecutionInput structure as a key-value pair table
 function M.StartExecutionInput(args)
@@ -117,11 +117,11 @@ function asserts.AssertStateExitedEventDetails(struct)
 end
 
 --- Create a structure of type StateExitedEventDetails
---  
+-- <p>Contains details about an exit from a state during an execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * output [Data] <p>The JSON output data of the state.</p>
--- * name [Name] <p>The name of the state.</p>
+-- * name [Name] <p>The name of the state.</p> <p>A name must <i>not</i> contain:</p> <ul> <li> <p>whitespace</p> </li> <li> <p>brackets <code>&lt; &gt; { } [ ]</code> </p> </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li> <p>special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li> <li> <p>control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)</p> </li> </ul>
 -- Required key: name
 -- @return StateExitedEventDetails structure as a key-value pair table
 function M.StateExitedEventDetails(args)
@@ -162,11 +162,11 @@ function asserts.AssertActivityListItem(struct)
 end
 
 --- Create a structure of type ActivityListItem
---  
+-- <p>Contains details about an activity.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * creationDate [Timestamp] <p>The date the activity was created.</p>
--- * name [Name] <p>The name of the activity.</p>
+-- * creationDate [Timestamp] <p>The date the activity is created.</p>
+-- * name [Name] <p>The name of the activity.</p> <p>A name must <i>not</i> contain:</p> <ul> <li> <p>whitespace</p> </li> <li> <p>brackets <code>&lt; &gt; { } [ ]</code> </p> </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li> <p>special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li> <li> <p>control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)</p> </li> </ul>
 -- * activityArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the activity.</p>
 -- Required key: activityArn
 -- Required key: name
@@ -206,10 +206,10 @@ function asserts.AssertActivityStartedEventDetails(struct)
 end
 
 --- Create a structure of type ActivityStartedEventDetails
---  
+-- <p>Contains details about the start of an activity during an execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * workerName [Identity] <p>The name of the worker that the task was assigned to. These names are provided by the workers when calling <a>GetActivityTask</a>.</p>
+-- * workerName [Identity] <p>The name of the worker that the task is assigned to. These names are provided by the workers when calling <a>GetActivityTask</a>.</p>
 -- @return ActivityStartedEventDetails structure as a key-value pair table
 function M.ActivityStartedEventDetails(args)
 	assert(args, "You must provide an argument table when creating ActivityStartedEventDetails")
@@ -251,9 +251,9 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * statusFilter [ExecutionStatus] <p>If specified, only list the executions whose current execution status matches the given filter.</p>
--- * nextToken [PageToken] <p>If a <code>nextToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
--- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the state machine whose executions will be listed.</p>
--- * maxResults [PageSize] <p>The maximum number of results that will be returned per call. <code>nextToken</code> can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
+-- * nextToken [PageToken] <p>If a <code>nextToken</code> is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the state machine whose executions is listed.</p>
+-- * maxResults [PageSize] <p>The maximum number of results that are returned per call. You can use <code>nextToken</code> to obtain further pages of results. The default is 100 and the maximum allowed page size is 100. A value of 0 uses the default.</p> <p>This is only an upper limit. The actual number of results returned per call might be fewer than the specified maximum.</p>
 -- Required key: stateMachineArn
 -- @return ListExecutionsInput structure as a key-value pair table
 function M.ListExecutionsInput(args)
@@ -308,6 +308,45 @@ function M.StateMachineLimitExceeded(args)
 		["message"] = args["message"],
 	}
 	asserts.AssertStateMachineLimitExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateStateMachineOutput = { ["updateDate"] = true, nil }
+
+function asserts.AssertUpdateStateMachineOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateStateMachineOutput to be of type 'table'")
+	assert(struct["updateDate"], "Expected key updateDate to exist in table")
+	if struct["updateDate"] then asserts.AssertTimestamp(struct["updateDate"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateStateMachineOutput[k], "UpdateStateMachineOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateStateMachineOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * updateDate [Timestamp] <p>The date and time the state machine was updated.</p>
+-- Required key: updateDate
+-- @return UpdateStateMachineOutput structure as a key-value pair table
+function M.UpdateStateMachineOutput(args)
+	assert(args, "You must provide an argument table when creating UpdateStateMachineOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["updateDate"] = args["updateDate"],
+	}
+	asserts.AssertUpdateStateMachineOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -377,7 +416,7 @@ end
 -- Valid keys:
 -- * definition [Definition] <p>The Amazon States Language definition of the state machine.</p>
 -- * roleArn [Arn] <p>The Amazon Resource Name (ARN) of the IAM role to use for this state machine.</p>
--- * name [Name] <p>The name of the state machine. This name must be unique for your AWS account and region.</p>
+-- * name [Name] <p>The name of the state machine. This name must be unique for your AWS account and region for 90 days. For more information, see <a href="http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions"> Limits Related to State Machine Executions</a> in the <i>AWS Step Functions Developer Guide</i>.</p> <p>A name must <i>not</i> contain:</p> <ul> <li> <p>whitespace</p> </li> <li> <p>brackets <code>&lt; &gt; { } [ ]</code> </p> </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li> <p>special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li> <li> <p>control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)</p> </li> </ul>
 -- Required key: name
 -- Required key: definition
 -- Required key: roleArn
@@ -422,7 +461,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * creationDate [Timestamp] <p>The date the state machine was created.</p>
+-- * creationDate [Timestamp] <p>The date the state machine is created.</p>
 -- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the created state machine.</p>
 -- Required key: stateMachineArn
 -- Required key: creationDate
@@ -543,9 +582,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * nextToken [PageToken] <p>If a <code>nextToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- * nextToken [PageToken] <p>If a <code>nextToken</code> is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
 -- * reverseOrder [ReverseOrder] <p>Lists events in descending order of their <code>timeStamp</code>.</p>
--- * maxResults [PageSize] <p>The maximum number of results that will be returned per call. <code>nextToken</code> can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
+-- * maxResults [PageSize] <p>The maximum number of results that are returned per call. You can use <code>nextToken</code> to obtain further pages of results. The default is 100 and the maximum allowed page size is 100. A value of 0 uses the default.</p> <p>This is only an upper limit. The actual number of results returned per call might be fewer than the specified maximum.</p>
 -- * executionArn [Arn] <p>The Amazon Resource Name (ARN) of the execution.</p>
 -- Required key: executionArn
 -- @return GetExecutionHistoryInput structure as a key-value pair table
@@ -631,10 +670,10 @@ function asserts.AssertStateEnteredEventDetails(struct)
 end
 
 --- Create a structure of type StateEnteredEventDetails
---  
+-- <p>Contains details about a state entered during an execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * input [Data] <p>The JSON input data to the state.</p>
+-- * input [Data] <p>The string that contains the JSON input data for the state.</p>
 -- * name [Name] <p>The name of the state.</p>
 -- Required key: name
 -- @return StateEnteredEventDetails structure as a key-value pair table
@@ -676,8 +715,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * workerName [Name] <p>An arbitrary name may be provided in order to identify the worker that the task is assigned to. This name will be used when it is logged in the execution history.</p>
--- * activityArn [Arn] <p>The Amazon Resource Name (ARN) of the activity to retrieve tasks from.</p>
+-- * workerName [Name] <p>You can provide an arbitrary name in order to identify the worker that the task is assigned to. This name is used when it is logged in the execution history.</p>
+-- * activityArn [Arn] <p>The Amazon Resource Name (ARN) of the activity to retrieve tasks from (assigned when you create the task using <a>CreateActivity</a>.)</p>
 -- Required key: activityArn
 -- @return GetActivityTaskInput structure as a key-value pair table
 function M.GetActivityTaskInput(args)
@@ -718,7 +757,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * nextToken [PageToken] <p>If a <code>nextToken</code> is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- * nextToken [PageToken] <p>If a <code>nextToken</code> is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
 -- * executions [ExecutionList] <p>The list of matching executions.</p>
 -- Required key: executions
 -- @return ListExecutionsOutput structure as a key-value pair table
@@ -756,7 +795,7 @@ function asserts.AssertActivityFailedEventDetails(struct)
 end
 
 --- Create a structure of type ActivityFailedEventDetails
---  
+-- <p>Contains details about an activity which failed during an execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
@@ -799,8 +838,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * nextToken [PageToken] <p>If a <code>nextToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
--- * maxResults [PageSize] <p>The maximum number of results that will be returned per call. <code>nextToken</code> can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
+-- * nextToken [PageToken] <p>If a <code>nextToken</code> is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- * maxResults [PageSize] <p>The maximum number of results that are returned per call. You can use <code>nextToken</code> to obtain further pages of results. The default is 100 and the maximum allowed page size is 100. A value of 0 uses the default.</p> <p>This is only an upper limit. The actual number of results returned per call might be fewer than the specified maximum.</p>
 -- @return ListActivitiesInput structure as a key-value pair table
 function M.ListActivitiesInput(args)
 	assert(args, "You must provide an argument table when creating ListActivitiesInput")
@@ -876,7 +915,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * taskToken [TaskToken] <p>The token that represents this task. Task tokens are generated by the service when the tasks are assigned to a worker (see GetActivityTask::taskToken).</p>
+-- * taskToken [TaskToken] <p>The token that represents this task. Task tokens are generated by the service when the tasks are assigned to a worker (see <a>GetActivityTaskOutput$taskToken</a>).</p>
 -- Required key: taskToken
 -- @return SendTaskHeartbeatInput structure as a key-value pair table
 function M.SendTaskHeartbeatInput(args)
@@ -915,8 +954,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * nextToken [PageToken] <p>If a <code>nextToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
--- * maxResults [PageSize] <p>The maximum number of results that will be returned per call. <code>nextToken</code> can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
+-- * nextToken [PageToken] <p>If a <code>nextToken</code> is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- * maxResults [PageSize] <p>The maximum number of results that are returned per call. You can use <code>nextToken</code> to obtain further pages of results. The default is 100 and the maximum allowed page size is 100. A value of 0 uses the default.</p> <p>This is only an upper limit. The actual number of results returned per call might be fewer than the specified maximum.</p>
 -- @return ListStateMachinesInput structure as a key-value pair table
 function M.ListStateMachinesInput(args)
 	assert(args, "You must provide an argument table when creating ListStateMachinesInput")
@@ -1049,20 +1088,20 @@ function asserts.AssertHistoryEvent(struct)
 end
 
 --- Create a structure of type HistoryEvent
---  
+-- <p>Contains details about the events of an execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * lambdaFunctionSucceededEventDetails [LambdaFunctionSucceededEventDetails] 
+-- * lambdaFunctionSucceededEventDetails [LambdaFunctionSucceededEventDetails] <p>Contains details about a lambda function which terminated successfully during an execution.</p>
 -- * lambdaFunctionTimedOutEventDetails [LambdaFunctionTimedOutEventDetails] 
--- * activityScheduleFailedEventDetails [ActivityScheduleFailedEventDetails] 
--- * lambdaFunctionStartFailedEventDetails [LambdaFunctionStartFailedEventDetails] 
+-- * activityScheduleFailedEventDetails [ActivityScheduleFailedEventDetails] <p>Contains details about an activity schedule event which failed during an execution.</p>
+-- * lambdaFunctionStartFailedEventDetails [LambdaFunctionStartFailedEventDetails] <p>Contains details about a lambda function which failed to start during an execution.</p>
 -- * id [EventId] <p>The id of the event. Events are numbered sequentially, starting at one.</p>
 -- * activityScheduledEventDetails [ActivityScheduledEventDetails] 
 -- * executionSucceededEventDetails [ExecutionSucceededEventDetails] 
 -- * activitySucceededEventDetails [ActivitySucceededEventDetails] 
 -- * type [HistoryEventType] <p>The type of the event.</p>
 -- * executionTimedOutEventDetails [ExecutionTimedOutEventDetails] 
--- * timestamp [Timestamp] <p>The date the event occured.</p>
+-- * timestamp [Timestamp] <p>The date the event occurred.</p>
 -- * activityTimedOutEventDetails [ActivityTimedOutEventDetails] 
 -- * executionFailedEventDetails [ExecutionFailedEventDetails] 
 -- * lambdaFunctionFailedEventDetails [LambdaFunctionFailedEventDetails] 
@@ -1178,8 +1217,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * creationDate [Timestamp] <p>The date the activity was created.</p>
--- * name [Name] <p>The name of the activity.</p>
+-- * creationDate [Timestamp] <p>The date the activity is created.</p>
+-- * name [Name] <p>The name of the activity.</p> <p>A name must <i>not</i> contain:</p> <ul> <li> <p>whitespace</p> </li> <li> <p>brackets <code>&lt; &gt; { } [ ]</code> </p> </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li> <p>special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li> <li> <p>control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)</p> </li> </ul>
 -- * activityArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the activity.</p>
 -- Required key: activityArn
 -- Required key: name
@@ -1225,7 +1264,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * activities [ActivityList] <p>The list of activities.</p>
--- * nextToken [PageToken] <p>If a <code>nextToken</code> is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- * nextToken [PageToken] <p>If a <code>nextToken</code> is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
 -- Required key: activities
 -- @return ListActivitiesOutput structure as a key-value pair table
 function M.ListActivitiesOutput(args)
@@ -1265,7 +1304,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * name [Name] <p>The name of the activity to create. This name must be unique for your AWS account and region.</p>
+-- * name [Name] <p>The name of the activity to create. This name must be unique for your AWS account and region for 90 days. For more information, see <a href="http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions"> Limits Related to State Machine Executions</a> in the <i>AWS Step Functions Developer Guide</i>.</p> <p>A name must <i>not</i> contain:</p> <ul> <li> <p>whitespace</p> </li> <li> <p>brackets <code>&lt; &gt; { } [ ]</code> </p> </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li> <p>special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li> <li> <p>control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)</p> </li> </ul>
 -- Required key: name
 -- @return CreateActivityInput structure as a key-value pair table
 function M.CreateActivityInput(args)
@@ -1343,7 +1382,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * creationDate [Timestamp] <p>The date the activity was created.</p>
+-- * creationDate [Timestamp] <p>The date the activity is created.</p>
 -- * activityArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the created activity.</p>
 -- Required key: activityArn
 -- Required key: creationDate
@@ -1381,7 +1420,7 @@ function asserts.AssertExecutionSucceededEventDetails(struct)
 end
 
 --- Create a structure of type ExecutionSucceededEventDetails
---  
+-- <p>Contains details about the successful termination of the execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * output [Data] <p>The JSON data output by the execution.</p>
@@ -1418,7 +1457,7 @@ function asserts.AssertActivitySucceededEventDetails(struct)
 end
 
 --- Create a structure of type ActivitySucceededEventDetails
---  
+-- <p>Contains details about an activity which successfully terminated during an execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * output [Data] <p>The JSON data output by the activity task.</p>
@@ -1459,7 +1498,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * stopDate [Timestamp] <p>The date the execution was stopped.</p>
+-- * stopDate [Timestamp] <p>The date the execution is stopped.</p>
 -- Required key: stopDate
 -- @return StopExecutionOutput structure as a key-value pair table
 function M.StopExecutionOutput(args)
@@ -1577,7 +1616,7 @@ function asserts.AssertLambdaFunctionTimedOutEventDetails(struct)
 end
 
 --- Create a structure of type LambdaFunctionTimedOutEventDetails
---  
+-- <p>Contains details about a lambda function timeout which occurred during an execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * cause [Cause] <p>A more detailed explanation of the cause of the timeout.</p>
@@ -1617,7 +1656,7 @@ function asserts.AssertExecutionAbortedEventDetails(struct)
 end
 
 --- Create a structure of type ExecutionAbortedEventDetails
---  
+-- <p>Contains details about an abort of an execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
@@ -1731,7 +1770,7 @@ function asserts.AssertExecutionStartedEventDetails(struct)
 end
 
 --- Create a structure of type ExecutionStartedEventDetails
---  
+-- <p>Contains details about the start of the execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * input [Data] <p>The JSON data input to the execution.</p>
@@ -1804,7 +1843,7 @@ function asserts.AssertLambdaFunctionSucceededEventDetails(struct)
 end
 
 --- Create a structure of type LambdaFunctionSucceededEventDetails
---  
+-- <p>Contains details about a lambda function which successfully terminated during an execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * output [Data] <p>The JSON data output by the lambda function.</p>
@@ -1842,7 +1881,7 @@ function asserts.AssertActivityScheduleFailedEventDetails(struct)
 end
 
 --- Create a structure of type ActivityScheduleFailedEventDetails
---  
+-- <p>Contains details about an activity schedule failure which occurred during an execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
@@ -1922,7 +1961,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * input [Data] <p>The JSON input data for the task.</p>
+-- * input [Data] <p>The string that contains the JSON input data for the task.</p>
 -- * taskToken [TaskToken] <p>A token that identifies the scheduled task. This token must be copied and included in subsequent calls to <a>SendTaskHeartbeat</a>, <a>SendTaskSuccess</a> or <a>SendTaskFailure</a> in order to report the progress or completion of the task.</p>
 -- @return GetActivityTaskOutput structure as a key-value pair table
 function M.GetActivityTaskOutput(args)
@@ -2057,6 +2096,82 @@ function M.StateMachineAlreadyExists(args)
     }
 end
 
+keys.DescribeStateMachineForExecutionInput = { ["executionArn"] = true, nil }
+
+function asserts.AssertDescribeStateMachineForExecutionInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeStateMachineForExecutionInput to be of type 'table'")
+	assert(struct["executionArn"], "Expected key executionArn to exist in table")
+	if struct["executionArn"] then asserts.AssertArn(struct["executionArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeStateMachineForExecutionInput[k], "DescribeStateMachineForExecutionInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeStateMachineForExecutionInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * executionArn [Arn] <p>The Amazon Resource Name (ARN) of the execution you want state machine information for.</p>
+-- Required key: executionArn
+-- @return DescribeStateMachineForExecutionInput structure as a key-value pair table
+function M.DescribeStateMachineForExecutionInput(args)
+	assert(args, "You must provide an argument table when creating DescribeStateMachineForExecutionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["executionArn"] = args["executionArn"],
+	}
+	asserts.AssertDescribeStateMachineForExecutionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.MissingRequiredParameter = { ["message"] = true, nil }
+
+function asserts.AssertMissingRequiredParameter(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected MissingRequiredParameter to be of type 'table'")
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.MissingRequiredParameter[k], "MissingRequiredParameter contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type MissingRequiredParameter
+-- <p>Request is missing a required parameter. This error occurs if both <code>definition</code> and <code>roleArn</code> are not specified.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return MissingRequiredParameter structure as a key-value pair table
+function M.MissingRequiredParameter(args)
+	assert(args, "You must provide an argument table when creating MissingRequiredParameter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["message"] = args["message"],
+	}
+	asserts.AssertMissingRequiredParameter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ExecutionAlreadyExists = { ["message"] = true, nil }
 
 function asserts.AssertExecutionAlreadyExists(struct)
@@ -2069,7 +2184,7 @@ function asserts.AssertExecutionAlreadyExists(struct)
 end
 
 --- Create a structure of type ExecutionAlreadyExists
--- <p>An execution with the same name already exists.</p>
+-- <p>The execution has the same <code>name</code> as another execution (but a different <code>input</code>).</p> <note> <p>Executions with the same <code>name</code> and <code>input</code> are considered idempotent.</p> </note>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * message [ErrorMessage] 
@@ -2141,7 +2256,7 @@ function asserts.AssertLambdaFunctionStartFailedEventDetails(struct)
 end
 
 --- Create a structure of type LambdaFunctionStartFailedEventDetails
---  
+-- <p>Contains details about a lambda function which failed to start during an execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
@@ -2185,12 +2300,12 @@ function asserts.AssertStateMachineListItem(struct)
 end
 
 --- Create a structure of type StateMachineListItem
---  
+-- <p>Contains details about the state machine.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * creationDate [Timestamp] <p>The date the state machine was created.</p>
+-- * creationDate [Timestamp] <p>The date the state machine is created.</p>
 -- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the state machine.</p>
--- * name [Name] <p>The name of the state machine.</p>
+-- * name [Name] <p>The name of the state machine.</p> <p>A name must <i>not</i> contain:</p> <ul> <li> <p>whitespace</p> </li> <li> <p>brackets <code>&lt; &gt; { } [ ]</code> </p> </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li> <p>special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li> <li> <p>control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)</p> </li> </ul>
 -- Required key: stateMachineArn
 -- Required key: name
 -- Required key: creationDate
@@ -2274,7 +2389,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * startDate [Timestamp] <p>The date the execution was started.</p>
+-- * startDate [Timestamp] <p>The date the execution is started.</p>
 -- * executionArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
 -- Required key: executionArn
 -- Required key: startDate
@@ -2328,13 +2443,13 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * status [ExecutionStatus] <p>The current status of the execution.</p>
--- * startDate [Timestamp] <p>The date the execution was started.</p>
--- * name [Name] <p>The name of the execution.</p>
+-- * startDate [Timestamp] <p>The date the execution is started.</p>
+-- * name [Name] <p>The name of the execution.</p> <p>A name must <i>not</i> contain:</p> <ul> <li> <p>whitespace</p> </li> <li> <p>brackets <code>&lt; &gt; { } [ ]</code> </p> </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li> <p>special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li> <li> <p>control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)</p> </li> </ul>
 -- * executionArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
 -- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the executed stated machine.</p>
 -- * stopDate [Timestamp] <p>If the execution has already ended, the date the execution stopped.</p>
--- * output [Data] <p>The JSON output data of the execution.</p>
--- * input [Data] <p>The JSON input data of the execution.</p>
+-- * output [Data] <p>The JSON output data of the execution.</p> <note> <p>This field is set only if the execution succeeds. If the execution fails, this field is null.</p> </note>
+-- * input [Data] <p>The string that contains the JSON input data of the execution.</p>
 -- Required key: executionArn
 -- Required key: stateMachineArn
 -- Required key: status
@@ -2385,7 +2500,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * nextToken [PageToken] <p>If a <code>nextToken</code> is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- * nextToken [PageToken] <p>If a <code>nextToken</code> is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
 -- * events [HistoryEventList] <p>The list of events that occurred in the execution.</p>
 -- Required key: events
 -- @return GetExecutionHistoryOutput structure as a key-value pair table
@@ -2402,6 +2517,51 @@ function M.GetExecutionHistoryOutput(args)
 		["events"] = args["events"],
 	}
 	asserts.AssertGetExecutionHistoryOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateStateMachineInput = { ["definition"] = true, ["roleArn"] = true, ["stateMachineArn"] = true, nil }
+
+function asserts.AssertUpdateStateMachineInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateStateMachineInput to be of type 'table'")
+	assert(struct["stateMachineArn"], "Expected key stateMachineArn to exist in table")
+	if struct["definition"] then asserts.AssertDefinition(struct["definition"]) end
+	if struct["roleArn"] then asserts.AssertArn(struct["roleArn"]) end
+	if struct["stateMachineArn"] then asserts.AssertArn(struct["stateMachineArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateStateMachineInput[k], "UpdateStateMachineInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateStateMachineInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * definition [Definition] <p>The Amazon States Language definition of the state machine.</p>
+-- * roleArn [Arn] <p>The Amazon Resource Name (ARN) of the IAM role of the state machine.</p>
+-- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the state machine.</p>
+-- Required key: stateMachineArn
+-- @return UpdateStateMachineInput structure as a key-value pair table
+function M.UpdateStateMachineInput(args)
+	assert(args, "You must provide an argument table when creating UpdateStateMachineInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["definition"] = args["definition"],
+		["roleArn"] = args["roleArn"],
+		["stateMachineArn"] = args["stateMachineArn"],
+	}
+	asserts.AssertUpdateStateMachineInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2462,7 +2622,7 @@ function asserts.AssertLambdaFunctionScheduledEventDetails(struct)
 end
 
 --- Create a structure of type LambdaFunctionScheduledEventDetails
---  
+-- <p>Contains details about a lambda function scheduled during an execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * input [Data] <p>The JSON data input to the lambda function.</p>
@@ -2505,7 +2665,7 @@ function asserts.AssertExecutionTimedOutEventDetails(struct)
 end
 
 --- Create a structure of type ExecutionTimedOutEventDetails
---  
+-- <p>Contains details about the execution timeout which occurred during the execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * cause [Cause] <p>A more detailed explanation of the cause of the timeout.</p>
@@ -2545,7 +2705,7 @@ function asserts.AssertActivityTimedOutEventDetails(struct)
 end
 
 --- Create a structure of type ActivityTimedOutEventDetails
---  
+-- <p>Contains details about an activity timeout which occurred during an execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * cause [Cause] <p>A more detailed explanation of the cause of the timeout.</p>
@@ -2590,7 +2750,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * stateMachines [StateMachineList] 
--- * nextToken [PageToken] <p>If a <code>nextToken</code> is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- * nextToken [PageToken] <p>If a <code>nextToken</code> is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
 -- Required key: stateMachines
 -- @return ListStateMachinesOutput structure as a key-value pair table
 function M.ListStateMachinesOutput(args)
@@ -2636,12 +2796,12 @@ function asserts.AssertExecutionListItem(struct)
 end
 
 --- Create a structure of type ExecutionListItem
---  
+-- <p>Contains details about an execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * status [ExecutionStatus] <p>The current status of the execution.</p>
 -- * startDate [Timestamp] <p>The date the execution started.</p>
--- * name [Name] <p>The name of the execution.</p>
+-- * name [Name] <p>The name of the execution.</p> <p>A name must <i>not</i> contain:</p> <ul> <li> <p>whitespace</p> </li> <li> <p>brackets <code>&lt; &gt; { } [ ]</code> </p> </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li> <p>special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li> <li> <p>control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)</p> </li> </ul>
 -- * executionArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
 -- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the executed state machine.</p>
 -- * stopDate [Timestamp] <p>If the execution already ended, the date the execution stopped.</p>
@@ -2692,7 +2852,7 @@ function asserts.AssertActivityScheduledEventDetails(struct)
 end
 
 --- Create a structure of type ActivityScheduledEventDetails
---  
+-- <p>Contains details about an activity scheduled during an execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * input [Data] <p>The JSON data input to the activity task.</p>
@@ -2737,7 +2897,7 @@ function asserts.AssertLambdaFunctionScheduleFailedEventDetails(struct)
 end
 
 --- Create a structure of type LambdaFunctionScheduleFailedEventDetails
---  
+-- <p>Contains details about a failed lambda function schedule event which occurred during an execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
@@ -2756,6 +2916,65 @@ function M.LambdaFunctionScheduleFailedEventDetails(args)
 		["error"] = args["error"],
 	}
 	asserts.AssertLambdaFunctionScheduleFailedEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeStateMachineForExecutionOutput = { ["definition"] = true, ["roleArn"] = true, ["stateMachineArn"] = true, ["name"] = true, ["updateDate"] = true, nil }
+
+function asserts.AssertDescribeStateMachineForExecutionOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeStateMachineForExecutionOutput to be of type 'table'")
+	assert(struct["stateMachineArn"], "Expected key stateMachineArn to exist in table")
+	assert(struct["name"], "Expected key name to exist in table")
+	assert(struct["definition"], "Expected key definition to exist in table")
+	assert(struct["roleArn"], "Expected key roleArn to exist in table")
+	assert(struct["updateDate"], "Expected key updateDate to exist in table")
+	if struct["definition"] then asserts.AssertDefinition(struct["definition"]) end
+	if struct["roleArn"] then asserts.AssertArn(struct["roleArn"]) end
+	if struct["stateMachineArn"] then asserts.AssertArn(struct["stateMachineArn"]) end
+	if struct["name"] then asserts.AssertName(struct["name"]) end
+	if struct["updateDate"] then asserts.AssertTimestamp(struct["updateDate"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeStateMachineForExecutionOutput[k], "DescribeStateMachineForExecutionOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeStateMachineForExecutionOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * definition [Definition] <p>The Amazon States Language definition of the state machine.</p>
+-- * roleArn [Arn] <p>The Amazon Resource Name (ARN) of the IAM role of the State Machine for the execution. </p>
+-- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the state machine associated with the execution.</p>
+-- * name [Name] <p>The name of the state machine associated with the execution.</p>
+-- * updateDate [Timestamp] <p>The date and time the state machine associated with an execution was updated. For a newly created state machine, this is the creation date.</p>
+-- Required key: stateMachineArn
+-- Required key: name
+-- Required key: definition
+-- Required key: roleArn
+-- Required key: updateDate
+-- @return DescribeStateMachineForExecutionOutput structure as a key-value pair table
+function M.DescribeStateMachineForExecutionOutput(args)
+	assert(args, "You must provide an argument table when creating DescribeStateMachineForExecutionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["definition"] = args["definition"],
+		["roleArn"] = args["roleArn"],
+		["stateMachineArn"] = args["stateMachineArn"],
+		["name"] = args["name"],
+		["updateDate"] = args["updateDate"],
+	}
+	asserts.AssertDescribeStateMachineForExecutionOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2865,10 +3084,10 @@ end
 -- Valid keys:
 -- * status [StateMachineStatus] <p>The current status of the state machine.</p>
 -- * definition [Definition] <p>The Amazon States Language definition of the state machine.</p>
--- * name [Name] <p>The name of the state machine.</p>
--- * roleArn [Arn] <p>The Amazon Resource Name (ARN) of the IAM role used for executing this state machine.</p>
+-- * name [Name] <p>The name of the state machine.</p> <p>A name must <i>not</i> contain:</p> <ul> <li> <p>whitespace</p> </li> <li> <p>brackets <code>&lt; &gt; { } [ ]</code> </p> </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li> <p>special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li> <li> <p>control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)</p> </li> </ul>
+-- * roleArn [Arn] <p>The Amazon Resource Name (ARN) of the IAM role used when creating this state machine. (The IAM role maintains security by granting Step Functions access to AWS resources.)</p>
 -- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the state machine.</p>
--- * creationDate [Timestamp] <p>The date the state machine was created.</p>
+-- * creationDate [Timestamp] <p>The date the state machine is created.</p>
 -- Required key: stateMachineArn
 -- Required key: name
 -- Required key: definition
@@ -2919,7 +3138,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * output [Data] <p>The JSON output of the task.</p>
--- * taskToken [TaskToken] <p>The token that represents this task. Task tokens are generated by the service when the tasks are assigned to a worker (see GetActivityTask::taskToken).</p>
+-- * taskToken [TaskToken] <p>The token that represents this task. Task tokens are generated by the service when the tasks are assigned to a worker (see <a>GetActivityTaskOutput$taskToken</a>).</p>
 -- Required key: taskToken
 -- Required key: output
 -- @return SendTaskSuccessInput structure as a key-value pair table
@@ -3028,7 +3247,7 @@ function asserts.AssertExecutionFailedEventDetails(struct)
 end
 
 --- Create a structure of type ExecutionFailedEventDetails
---  
+-- <p>Contains details about an execution failure event.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
@@ -3102,7 +3321,7 @@ function asserts.AssertLambdaFunctionFailedEventDetails(struct)
 end
 
 --- Create a structure of type LambdaFunctionFailedEventDetails
---  
+-- <p>Contains details about a lambda function which failed during an execution.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
@@ -3432,7 +3651,7 @@ function asserts.AssertHistoryEventList(list)
 	end
 end
 
---  
+-- <p>Contains details about the events which occurred during an execution.</p>
 -- List of HistoryEvent objects
 function M.HistoryEventList(list)
 	asserts.AssertHistoryEventList(list)
@@ -3547,6 +3766,41 @@ function M.ListExecutionsSync(ListExecutionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.ListExecutionsAsync(ListExecutionsInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeStateMachineForExecution asynchronously, invoking a callback when done
+-- @param DescribeStateMachineForExecutionInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeStateMachineForExecutionAsync(DescribeStateMachineForExecutionInput, cb)
+	assert(DescribeStateMachineForExecutionInput, "You must provide a DescribeStateMachineForExecutionInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.DescribeStateMachineForExecution",
+	}
+	for header,value in pairs(DescribeStateMachineForExecutionInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeStateMachineForExecutionInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeStateMachineForExecution synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeStateMachineForExecutionInput
+-- @return response
+-- @return error_message
+function M.DescribeStateMachineForExecutionSync(DescribeStateMachineForExecutionInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeStateMachineForExecutionAsync(DescribeStateMachineForExecutionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3967,6 +4221,41 @@ function M.DeleteStateMachineSync(DeleteStateMachineInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DeleteStateMachineAsync(DeleteStateMachineInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateStateMachine asynchronously, invoking a callback when done
+-- @param UpdateStateMachineInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateStateMachineAsync(UpdateStateMachineInput, cb)
+	assert(UpdateStateMachineInput, "You must provide a UpdateStateMachineInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.UpdateStateMachine",
+	}
+	for header,value in pairs(UpdateStateMachineInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateStateMachineInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateStateMachine synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateStateMachineInput
+-- @return response
+-- @return error_message
+function M.UpdateStateMachineSync(UpdateStateMachineInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateStateMachineAsync(UpdateStateMachineInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

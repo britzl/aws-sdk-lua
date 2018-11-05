@@ -193,7 +193,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- * KeyId [KeyIdType] <p>A unique identifier for the customer master key (CMK).</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- Required key: KeyId
 -- @return EnableKeyRotationRequest structure as a key-value pair table
 function M.EnableKeyRotationRequest(args)
@@ -276,9 +276,9 @@ end
 -- * Origin [OriginType] <p>The source of the CMK's key material.</p> <p>The default is <code>AWS_KMS</code>, which means AWS KMS creates the key material. When this parameter is set to <code>EXTERNAL</code>, the request creates a CMK without key material so that you can import key material from your existing key management infrastructure. For more information about importing key material into AWS KMS, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key Material</a> in the <i>AWS Key Management Service Developer Guide</i>.</p> <p>The CMK's <code>Origin</code> is immutable and is set when the CMK is created.</p>
 -- * Description [DescriptionType] <p>A description of the CMK.</p> <p>Use a description that helps you decide whether the CMK is appropriate for a task.</p>
 -- * Tags [TagList] <p>One or more tags. Each tag consists of a tag key and a tag value. Tag keys and tag values are both required, but tag values can be empty (null) strings.</p> <p>Use this parameter to tag the CMK when it is created. Alternately, you can omit this parameter and instead tag the CMK after it is created using <a>TagResource</a>.</p>
--- * BypassPolicyLockoutSafetyCheck [BooleanType] <p>A flag to indicate whether to bypass the key policy lockout safety check.</p> <important> <p>Setting this value to true increases the likelihood that the CMK becomes unmanageable. Do not set this value to true indiscriminately.</p> <p>For more information, refer to the scenario in the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam">Default Key Policy</a> section in the <i>AWS Key Management Service Developer Guide</i>.</p> </important> <p>Use this parameter only when you include a policy in the request and you intend to prevent the principal that is making the request from making a subsequent <a>PutKeyPolicy</a> request on the CMK.</p> <p>The default value is false.</p>
+-- * BypassPolicyLockoutSafetyCheck [BooleanType] <p>A flag to indicate whether to bypass the key policy lockout safety check.</p> <important> <p>Setting this value to true increases the risk that the CMK becomes unmanageable. Do not set this value to true indiscriminately.</p> <p>For more information, refer to the scenario in the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam">Default Key Policy</a> section in the <i>AWS Key Management Service Developer Guide</i>.</p> </important> <p>Use this parameter only when you include a policy in the request and you intend to prevent the principal that is making the request from making a subsequent <a>PutKeyPolicy</a> request on the CMK.</p> <p>The default value is false.</p>
 -- * KeyUsage [KeyUsageType] <p>The intended use of the CMK.</p> <p>You can use CMKs only for symmetric encryption and decryption.</p>
--- * Policy [PolicyType] <p>The key policy to attach to the CMK.</p> <p>If you specify a policy and do not set <code>BypassPolicyLockoutSafetyCheck</code> to true, the policy must meet the following criteria:</p> <ul> <li> <p>It must allow the principal that is making the <code>CreateKey</code> request to make a subsequent <a>PutKeyPolicy</a> request on the CMK. This reduces the likelihood that the CMK becomes unmanageable. For more information, refer to the scenario in the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam">Default Key Policy</a> section in the <i>AWS Key Management Service Developer Guide</i>.</p> </li> <li> <p>The principals that are specified in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before specifying the new principal in a key policy because the new principal might not immediately be visible to AWS KMS. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency">Changes that I make are not always immediately visible</a> in the <i>IAM User Guide</i>.</p> </li> </ul> <p>If you do not specify a policy, AWS KMS attaches a default key policy to the CMK. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default">Default Key Policy</a> in the <i>AWS Key Management Service Developer Guide</i>.</p> <p>The policy size limit is 32 KiB (32768 bytes).</p>
+-- * Policy [PolicyType] <p>The key policy to attach to the CMK.</p> <p>If you provide a key policy, it must meet the following criteria:</p> <ul> <li> <p>If you don't set <code>BypassPolicyLockoutSafetyCheck</code> to true, the key policy must allow the principal that is making the <code>CreateKey</code> request to make a subsequent <a>PutKeyPolicy</a> request on the CMK. This reduces the risk that the CMK becomes unmanageable. For more information, refer to the scenario in the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam">Default Key Policy</a> section of the <i>AWS Key Management Service Developer Guide</i>.</p> </li> <li> <p>Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before including the new principal in a key policy. The reason for this is that the new principal might not be immediately visible to AWS KMS. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency">Changes that I make are not always immediately visible</a> in the <i>AWS Identity and Access Management User Guide</i>.</p> </li> </ul> <p>If you do not provide a key policy, AWS KMS attaches a default key policy to the CMK. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default">Default Key Policy</a> in the <i>AWS Key Management Service Developer Guide</i>.</p> <p>The key policy size limit is 32 kilobytes (32768 bytes).</p>
 -- @return CreateKeyRequest structure as a key-value pair table
 function M.CreateKeyRequest(args)
 	assert(args, "You must provide an argument table when creating CreateKeyRequest")
@@ -320,7 +320,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Policy [PolicyType] <p>A policy document in JSON format.</p>
+-- * Policy [PolicyType] <p>A key policy document in JSON format.</p>
 -- @return GetKeyPolicyResponse structure as a key-value pair table
 function M.GetKeyPolicyResponse(args)
 	assert(args, "You must provide an argument table when creating GetKeyPolicyResponse")
@@ -396,7 +396,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * KeyId [KeyIdType] <p>The identifier of the CMK under which the data encryption key was generated and encrypted.</p>
--- * CiphertextBlob [CiphertextType] <p>The encrypted data encryption key.</p>
+-- * CiphertextBlob [CiphertextType] <p>The encrypted data encryption key. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not encoded.</p>
 -- @return GenerateDataKeyWithoutPlaintextResponse structure as a key-value pair table
 function M.GenerateDataKeyWithoutPlaintextResponse(args)
 	assert(args, "You must provide an argument table when creating GenerateDataKeyWithoutPlaintextResponse")
@@ -436,7 +436,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier, a fully specified ARN to either an alias or a key, or an alias name prefixed by "alias/".</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Alias ARN Example - arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Alias Name Example - alias/MyAliasName</p> </li> </ul>
+-- * KeyId [KeyIdType] <p>Describes the specified customer master key (CMK). </p> <p>If you specify a predefined AWS alias (an AWS alias with no key ID), KMS associates the alias with an <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys">AWS managed CMK</a> and returns its <code>KeyId</code> and <code>Arn</code> in the response.</p> <p>To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with <code>"alias/"</code>. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Alias name: <code>alias/ExampleAlias</code> </p> </li> <li> <p>Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>. To get the alias name and alias ARN, use <a>ListAliases</a>.</p>
 -- * GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
 -- Required key: KeyId
 -- @return DescribeKeyRequest structure as a key-value pair table
@@ -514,7 +514,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- * KeyId [KeyIdType] <p>A unique identifier for the customer master key (CMK).</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- Required key: KeyId
 -- @return EnableKeyRequest structure as a key-value pair table
 function M.EnableKeyRequest(args)
@@ -589,7 +589,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * TargetKeyId [KeyIdType] <p>Unique identifier of the customer master key to be mapped to the alias. This value can be a globally unique identifier or the fully specified ARN of a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul> <p>You can call <a>ListAliases</a> to verify that the alias is mapped to the correct <code>TargetKeyId</code>.</p>
+-- * TargetKeyId [KeyIdType] <p>Unique identifier of the customer master key to be mapped to the alias.</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p> <p>To verify that the alias is mapped to the correct CMK, use <a>ListAliases</a>.</p>
 -- * AliasName [AliasNameType] <p>String that contains the name of the alias to be modified. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/aws" are reserved.</p>
 -- Required key: AliasName
 -- Required key: TargetKeyId
@@ -637,7 +637,7 @@ end
 -- Valid keys:
 -- * NumberOfBytes [NumberOfBytesType] <p>The length of the data encryption key in bytes. For example, use the value 64 to generate a 512-bit data key (64 bytes is 512 bits). For common key lengths (128-bit and 256-bit symmetric keys), we recommend that you use the <code>KeySpec</code> field instead of this one.</p>
 -- * EncryptionContext [EncryptionContextType] <p>A set of key-value pairs that represents additional authenticated data.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption Context</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
--- * KeyId [KeyIdType] <p>The identifier of the CMK under which to generate and encrypt the data encryption key.</p> <p>A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK, or the alias name or ARN of an alias that refers to the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>CMK ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Alias name: <code>alias/ExampleAlias</code> </p> </li> <li> <p>Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code> </p> </li> </ul>
+-- * KeyId [KeyIdType] <p>The identifier of the CMK under which to generate and encrypt the data encryption key.</p> <p>To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with <code>"alias/"</code>. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Alias name: <code>alias/ExampleAlias</code> </p> </li> <li> <p>Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>. To get the alias name and alias ARN, use <a>ListAliases</a>.</p>
 -- * GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
 -- * KeySpec [DataKeySpec] <p>The length of the data encryption key. Use <code>AES_128</code> to generate a 128-bit symmetric key, or <code>AES_256</code> to generate a 256-bit symmetric key.</p>
 -- Required key: KeyId
@@ -725,7 +725,7 @@ end
 -- Valid keys:
 -- * NumberOfBytes [NumberOfBytesType] <p>The length of the data encryption key in bytes. For example, use the value 64 to generate a 512-bit data key (64 bytes is 512 bits). For common key lengths (128-bit and 256-bit symmetric keys), we recommend that you use the <code>KeySpec</code> field instead of this one.</p>
 -- * EncryptionContext [EncryptionContextType] <p>A set of key-value pairs that represents additional authenticated data.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption Context</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
--- * KeyId [KeyIdType] <p>The identifier of the CMK under which to generate and encrypt the data encryption key.</p> <p>A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK, or the alias name or ARN of an alias that refers to the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>CMK ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Alias name: <code>alias/ExampleAlias</code> </p> </li> <li> <p>Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code> </p> </li> </ul>
+-- * KeyId [KeyIdType] <p>The identifier of the customer master key (CMK) under which to generate and encrypt the data encryption key.</p> <p>To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with <code>"alias/"</code>. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Alias name: <code>alias/ExampleAlias</code> </p> </li> <li> <p>Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>. To get the alias name and alias ARN, use <a>ListAliases</a>.</p>
 -- * GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
 -- * KeySpec [DataKeySpec] <p>The length of the data encryption key. Use <code>AES_128</code> to generate a 128-bit symmetric key, or <code>AES_256</code> to generate a 256-bit symmetric key.</p>
 -- Required key: KeyId
@@ -846,7 +846,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Plaintext [PlaintextType] <p>The random byte string.</p>
+-- * Plaintext [PlaintextType] <p>The random byte string. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not encoded.</p>
 -- @return GenerateRandomResponse structure as a key-value pair table
 function M.GenerateRandomResponse(args)
 	assert(args, "You must provide an argument table when creating GenerateRandomResponse")
@@ -892,7 +892,7 @@ end
 -- * SourceEncryptionContext [EncryptionContextType] <p>Encryption context used to encrypt and decrypt the data specified in the <code>CiphertextBlob</code> parameter.</p>
 -- * GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
 -- * DestinationEncryptionContext [EncryptionContextType] <p>Encryption context to use when the data is reencrypted.</p>
--- * DestinationKeyId [KeyIdType] <p>A unique identifier for the CMK to use to reencrypt the data. This value can be a globally unique identifier, a fully specified ARN to either an alias or a key, or an alias name prefixed by "alias/".</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Alias ARN Example - arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Alias Name Example - alias/MyAliasName</p> </li> </ul>
+-- * DestinationKeyId [KeyIdType] <p>A unique identifier for the CMK that is used to reencrypt the data.</p> <p>To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with <code>"alias/"</code>. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Alias name: <code>alias/ExampleAlias</code> </p> </li> <li> <p>Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>. To get the alias name and alias ARN, use <a>ListAliases</a>.</p>
 -- * CiphertextBlob [CiphertextType] <p>Ciphertext of the data to reencrypt.</p>
 -- Required key: CiphertextBlob
 -- Required key: DestinationKeyId
@@ -1012,9 +1012,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
+-- * Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
 -- * NextMarker [MarkerType] <p>When <code>Truncated</code> is true, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent request.</p>
--- * Aliases [AliasList] <p>A list of key aliases in the user's account.</p>
+-- * Aliases [AliasList] <p>A list of aliases.</p>
 -- @return ListAliasesResponse structure as a key-value pair table
 function M.ListAliasesResponse(args)
 	assert(args, "You must provide an argument table when creating ListAliasesResponse")
@@ -1094,7 +1094,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Marker [MarkerType] <p>Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextMarker</code> from the truncated response you just received.</p>
--- * KeyId [KeyIdType] <p>A unique identifier for the customer master key (CMK). You can use the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
+-- * KeyId [KeyIdType] <p>A unique identifier for the customer master key (CMK).</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- * Limit [LimitType] <p>Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.</p> <p>This value is optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not include a value, it defaults to 100.</p> <p>Currently only 1 policy can be attached to a key.</p>
 -- Required key: KeyId
 -- @return ListKeyPoliciesRequest structure as a key-value pair table
@@ -1136,7 +1136,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AliasName [AliasNameType] <p>The alias to be deleted. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/AWS" are reserved.</p>
+-- * AliasName [AliasNameType] <p>The alias to be deleted. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/aws" are reserved.</p>
 -- Required key: AliasName
 -- @return DeleteAliasRequest structure as a key-value pair table
 function M.DeleteAliasRequest(args)
@@ -1212,7 +1212,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Plaintext [PlaintextType] <p>Decrypted plaintext data. This value may not be returned if the customer master key is not available or if you didn't have permission to use it.</p>
+-- * Plaintext [PlaintextType] <p>Decrypted plaintext data. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not encoded.</p>
 -- * KeyId [KeyIdType] <p>ARN of the key used to perform the decryption. This value is returned if no errors are encountered during the operation.</p>
 -- @return DecryptResponse structure as a key-value pair table
 function M.DecryptResponse(args)
@@ -1253,7 +1253,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
+-- * Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
 -- * NextMarker [MarkerType] <p>When <code>Truncated</code> is true, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent request.</p> <p>Do not assume or infer any information from this value.</p>
 -- * Tags [TagList] <p>A list of tags. Each tag consists of a tag key and a tag value.</p>
 -- @return ListResourceTagsResponse structure as a key-value pair table
@@ -1292,7 +1292,7 @@ function asserts.AssertGrantConstraints(struct)
 end
 
 --- Create a structure of type GrantConstraints
--- <p>A structure that you can use to allow certain operations in the grant only when the desired encryption context is present. For more information about encryption context, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption Context</a> in the <i>AWS Key Management Service Developer Guide</i>.</p> <p>Grant constraints apply only to operations that accept encryption context as input. For example, the <code> <a>DescribeKey</a> </code> operation does not accept encryption context as input. A grant that allows the <code>DescribeKey</code> operation does so regardless of the grant constraints. In constrast, the <code> <a>Encrypt</a> </code> operation accepts encryption context as input. A grant that allows the <code>Encrypt</code> operation does so only when the encryption context of the <code>Encrypt</code> operation satisfies the grant constraints.</p>
+-- <p>A structure that you can use to allow certain operations in the grant only when the preferred encryption context is present. For more information about encryption context, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption Context</a> in the <i>AWS Key Management Service Developer Guide</i>.</p> <p>Grant constraints apply only to operations that accept encryption context as input. For example, the <code> <a>DescribeKey</a> </code> operation does not accept encryption context as input. A grant that allows the <code>DescribeKey</code> operation does so regardless of the grant constraints. In contrast, the <code> <a>Encrypt</a> </code> operation accepts encryption context as input. A grant that allows the <code>Encrypt</code> operation does so only when the encryption context of the <code>Encrypt</code> operation satisfies the grant constraints.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * EncryptionContextSubset [EncryptionContextType] <p>A list of key-value pairs, all of which must be present in the encryption context of certain subsequent operations that the grant allows. When certain subsequent operations allowed by the grant include encryption context that matches this list or is a superset of this list, the grant allows the operation. Otherwise, the grant does not allow the operation.</p>
@@ -1334,7 +1334,7 @@ function asserts.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- <p>A key-value pair. A tag consists of a tag key and a tag value. Tag keys and tag values are both required, but tag values can be empty (null) strings.</p>
+-- <p>A key-value pair. A tag consists of a tag key and a tag value. Tag keys and tag values are both required, but tag values can be empty (null) strings.</p> <p>For information about the rules that apply to tag keys and tag values, see <a href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html">User-Defined Tag Restrictions</a> in the <i>AWS Billing and Cost Management User Guide</i>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * TagKey [TagKeyType] <p>The key of the tag.</p>
@@ -1387,7 +1387,7 @@ end
 -- Valid keys:
 -- * ExpirationModel [ExpirationModelType] <p>Specifies whether the key material expires. The default is <code>KEY_MATERIAL_EXPIRES</code>, in which case you must include the <code>ValidTo</code> parameter. When this parameter is set to <code>KEY_MATERIAL_DOES_NOT_EXPIRE</code>, you must omit the <code>ValidTo</code> parameter.</p>
 -- * ValidTo [DateType] <p>The time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. You must omit this parameter when the <code>ExpirationModel</code> parameter is set to <code>KEY_MATERIAL_DOES_NOT_EXPIRE</code>. Otherwise it is required.</p>
--- * KeyId [KeyIdType] <p>The identifier of the CMK to import the key material into. The CMK's <code>Origin</code> must be <code>EXTERNAL</code>.</p> <p>A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
+-- * KeyId [KeyIdType] <p>The identifier of the CMK to import the key material into. The CMK's <code>Origin</code> must be <code>EXTERNAL</code>.</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- * ImportToken [CiphertextType] <p>The import token that you received in the response to a previous <a>GetParametersForImport</a> request. It must be from the same response that contained the public key that you used to encrypt the key material.</p>
 -- * EncryptedKeyMaterial [CiphertextType] <p>The encrypted key material to import. It must be encrypted with the public key that you received in the response to a previous <a>GetParametersForImport</a> request, using the wrapping algorithm that you specified in that request.</p>
 -- Required key: KeyId
@@ -1436,7 +1436,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * GrantToken [GrantTokenType] <p>Token that identifies the grant to be retired.</p>
--- * KeyId [KeyIdType] <p>The Amazon Resource Name of the CMK associated with the grant. Example:</p> <ul> <li> <p>arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> </ul>
+-- * KeyId [KeyIdType] <p>The Amazon Resource Name (ARN) of the CMK associated with the grant. </p> <p>For example: <code>arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p>
 -- * GrantId [GrantIdType] <p>Unique identifier of the grant to retire. The grant ID is returned in the response to a <code>CreateGrant</code> operation.</p> <ul> <li> <p>Grant ID Example - 0123456789012345678901234567890123456789012345678901234567890123</p> </li> </ul>
 -- @return RetireGrantRequest structure as a key-value pair table
 function M.RetireGrantRequest(args)
@@ -1478,9 +1478,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Keys [KeyList] <p>A list of keys.</p>
+-- * Keys [KeyList] <p>A list of customer master keys (CMKs).</p>
 -- * NextMarker [MarkerType] <p>When <code>Truncated</code> is true, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent request.</p>
--- * Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
+-- * Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
 -- @return ListKeysResponse structure as a key-value pair table
 function M.ListKeysResponse(args)
 	assert(args, "You must provide an argument table when creating ListKeysResponse")
@@ -1522,7 +1522,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * KeyId [KeyIdType] <p>A unique identifier for the CMK from which you are removing tags. You can use the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
+-- * KeyId [KeyIdType] <p>A unique identifier for the CMK from which you are removing tags.</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- * TagKeys [TagKeyList] <p>One or more tag keys. Specify only the tag keys, not the tag values.</p>
 -- Required key: KeyId
 -- Required key: TagKeys
@@ -1565,7 +1565,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * KeyId [KeyIdType] <p>The ID of the key used during encryption.</p>
--- * CiphertextBlob [CiphertextType] <p>The encrypted plaintext. If you are using the CLI, the value is Base64 encoded. Otherwise, it is not encoded.</p>
+-- * CiphertextBlob [CiphertextType] <p>The encrypted plaintext. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not encoded.</p>
 -- @return EncryptResponse structure as a key-value pair table
 function M.EncryptResponse(args)
 	assert(args, "You must provide an argument table when creating EncryptResponse")
@@ -1642,9 +1642,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Plaintext [PlaintextType] <p>The data encryption key. Use this data key for local encryption and decryption, then remove it from memory as soon as possible.</p>
+-- * Plaintext [PlaintextType] <p>The data encryption key. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not encoded. Use this data key for local encryption and decryption, then remove it from memory as soon as possible.</p>
 -- * KeyId [KeyIdType] <p>The identifier of the CMK under which the data encryption key was generated and encrypted.</p>
--- * CiphertextBlob [CiphertextType] <p>The encrypted data encryption key.</p>
+-- * CiphertextBlob [CiphertextType] <p>The encrypted data encryption key. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not encoded.</p>
 -- @return GenerateDataKeyResponse structure as a key-value pair table
 function M.GenerateDataKeyResponse(args)
 	assert(args, "You must provide an argument table when creating GenerateDataKeyResponse")
@@ -1685,9 +1685,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * PolicyNames [PolicyNameList] <p>A list of policy names. Currently, there is only one policy and it is named "Default".</p>
+-- * PolicyNames [PolicyNameList] <p>A list of key policy names. Currently, there is only one key policy per CMK and it is always named <code>default</code>.</p>
 -- * NextMarker [MarkerType] <p>When <code>Truncated</code> is true, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent request.</p>
--- * Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
+-- * Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
 -- @return ListKeyPoliciesResponse structure as a key-value pair table
 function M.ListKeyPoliciesResponse(args)
 	assert(args, "You must provide an argument table when creating ListKeyPoliciesResponse")
@@ -1731,8 +1731,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * WrappingAlgorithm [AlgorithmSpec] <p>The algorithm you will use to encrypt the key material before importing it with <a>ImportKeyMaterial</a>. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html">Encrypt the Key Material</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
--- * KeyId [KeyIdType] <p>The identifier of the CMK into which you will import key material. The CMK's <code>Origin</code> must be <code>EXTERNAL</code>.</p> <p>A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
+-- * WrappingAlgorithm [AlgorithmSpec] <p>The algorithm you use to encrypt the key material before importing it with <a>ImportKeyMaterial</a>. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html">Encrypt the Key Material</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+-- * KeyId [KeyIdType] <p>The identifier of the CMK into which you will import key material. The CMK's <code>Origin</code> must be <code>EXTERNAL</code>.</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- * WrappingKeySpec [WrappingKeySpec] <p>The type of wrapping key (public key) to return in the response. Only 2048-bit RSA public keys are supported.</p>
 -- Required key: KeyId
 -- Required key: WrappingAlgorithm
@@ -1816,7 +1816,7 @@ end
 -- Valid keys:
 -- * SourceKeyId [KeyIdType] <p>Unique identifier of the CMK used to originally encrypt the data.</p>
 -- * KeyId [KeyIdType] <p>Unique identifier of the CMK used to reencrypt the data.</p>
--- * CiphertextBlob [CiphertextType] <p>The reencrypted data.</p>
+-- * CiphertextBlob [CiphertextType] <p>The reencrypted data. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not encoded.</p>
 -- @return ReEncryptResponse structure as a key-value pair table
 function M.ReEncryptResponse(args)
 	assert(args, "You must provide an argument table when creating ReEncryptResponse")
@@ -1858,8 +1858,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * TargetKeyId [KeyIdType] <p>An identifier of the key for which you are creating the alias. This value cannot be another alias but can be a globally unique identifier or a fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
--- * AliasName [AliasNameType] <p>String that contains the display name. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/AWS" are reserved.</p>
+-- * TargetKeyId [KeyIdType] <p>Identifies the CMK for which you are creating the alias. This value cannot be an alias.</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
+-- * AliasName [AliasNameType] <p>Specifies the alias name. This value must begin with <code>alias/</code> followed by the alias name, such as <code>alias/ExampleAlias</code>. The alias name cannot begin with <code>aws/</code>. The <code>alias/aws/</code> prefix is reserved for AWS managed CMKs.</p>
 -- Required key: AliasName
 -- Required key: TargetKeyId
 -- @return CreateAliasRequest structure as a key-value pair table
@@ -1937,7 +1937,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * KeyId [KeyIdType] <p>The unique identifier for the customer master key (CMK) for which to cancel deletion.</p> <p>To specify this value, use the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: 1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> <li> <p>Key ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> </ul> <p>To obtain the unique key ID and key ARN for a given CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
+-- * KeyId [KeyIdType] <p>The unique identifier for the customer master key (CMK) for which to cancel deletion.</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- Required key: KeyId
 -- @return CancelKeyDeletionRequest structure as a key-value pair table
 function M.CancelKeyDeletionRequest(args)
@@ -2013,7 +2013,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * KeyId [KeyIdType] <p>The identifier of the CMK whose key material to delete. The CMK's <code>Origin</code> must be <code>EXTERNAL</code>.</p> <p>A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
+-- * KeyId [KeyIdType] <p>The identifier of the CMK whose key material to delete. The CMK's <code>Origin</code> must be <code>EXTERNAL</code>.</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- Required key: KeyId
 -- @return DeleteImportedKeyMaterialRequest structure as a key-value pair table
 function M.DeleteImportedKeyMaterialRequest(args)
@@ -2095,7 +2095,7 @@ end
 -- Valid keys:
 -- * Plaintext [PlaintextType] <p>Data to be encrypted.</p>
 -- * EncryptionContext [EncryptionContextType] <p>Name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the <code>Decrypt</code> API or decryption will fail. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption Context</a>.</p>
--- * KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier, a fully specified ARN to either an alias or a key, or an alias name prefixed by "alias/".</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Alias ARN Example - arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Alias Name Example - alias/MyAliasName</p> </li> </ul>
+-- * KeyId [KeyIdType] <p>A unique identifier for the customer master key (CMK).</p> <p>To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with <code>"alias/"</code>. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Alias name: <code>alias/ExampleAlias</code> </p> </li> <li> <p>Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>. To get the alias name and alias ARN, use <a>ListAliases</a>.</p>
 -- * GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
 -- Required key: KeyId
 -- Required key: Plaintext
@@ -2203,7 +2203,7 @@ function M.ListKeysRequest(args)
     }
 end
 
-keys.KeyMetadata = { ["Origin"] = true, ["KeyId"] = true, ["Description"] = true, ["DeletionDate"] = true, ["ExpirationModel"] = true, ["ValidTo"] = true, ["Enabled"] = true, ["KeyUsage"] = true, ["KeyState"] = true, ["CreationDate"] = true, ["Arn"] = true, ["AWSAccountId"] = true, nil }
+keys.KeyMetadata = { ["Origin"] = true, ["KeyId"] = true, ["Description"] = true, ["DeletionDate"] = true, ["KeyManager"] = true, ["ExpirationModel"] = true, ["ValidTo"] = true, ["Enabled"] = true, ["KeyUsage"] = true, ["KeyState"] = true, ["CreationDate"] = true, ["Arn"] = true, ["AWSAccountId"] = true, nil }
 
 function asserts.AssertKeyMetadata(struct)
 	assert(struct)
@@ -2213,6 +2213,7 @@ function asserts.AssertKeyMetadata(struct)
 	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
 	if struct["Description"] then asserts.AssertDescriptionType(struct["Description"]) end
 	if struct["DeletionDate"] then asserts.AssertDateType(struct["DeletionDate"]) end
+	if struct["KeyManager"] then asserts.AssertKeyManagerType(struct["KeyManager"]) end
 	if struct["ExpirationModel"] then asserts.AssertExpirationModelType(struct["ExpirationModel"]) end
 	if struct["ValidTo"] then asserts.AssertDateType(struct["ValidTo"]) end
 	if struct["Enabled"] then asserts.AssertBooleanType(struct["Enabled"]) end
@@ -2234,6 +2235,7 @@ end
 -- * KeyId [KeyIdType] <p>The globally unique identifier for the CMK.</p>
 -- * Description [DescriptionType] <p>The description of the CMK.</p>
 -- * DeletionDate [DateType] <p>The date and time after which AWS KMS deletes the CMK. This value is present only when <code>KeyState</code> is <code>PendingDeletion</code>, otherwise this value is omitted.</p>
+-- * KeyManager [KeyManagerType] <p>The CMK's manager. CMKs are either customer managed or AWS managed. For more information about the difference, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys">Customer Master Keys</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
 -- * ExpirationModel [ExpirationModelType] <p>Specifies whether the CMK's key material expires. This value is present only when <code>Origin</code> is <code>EXTERNAL</code>, otherwise this value is omitted.</p>
 -- * ValidTo [DateType] <p>The time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. This value is present only for CMKs whose <code>Origin</code> is <code>EXTERNAL</code> and whose <code>ExpirationModel</code> is <code>KEY_MATERIAL_EXPIRES</code>, otherwise this value is omitted.</p>
 -- * Enabled [BooleanType] <p>Specifies whether the CMK is enabled. When <code>KeyState</code> is <code>Enabled</code> this value is true, otherwise it is false.</p>
@@ -2257,6 +2259,7 @@ function M.KeyMetadata(args)
 		["KeyId"] = args["KeyId"],
 		["Description"] = args["Description"],
 		["DeletionDate"] = args["DeletionDate"],
+		["KeyManager"] = args["KeyManager"],
 		["ExpirationModel"] = args["ExpirationModel"],
 		["ValidTo"] = args["ValidTo"],
 		["Enabled"] = args["Enabled"],
@@ -2294,7 +2297,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Marker [MarkerType] <p>Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextMarker</code> from the truncated response you just received.</p>
--- * KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- * KeyId [KeyIdType] <p>A unique identifier for the customer master key (CMK).</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- * Limit [LimitType] <p>Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.</p> <p>This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.</p>
 -- Required key: KeyId
 -- @return ListGrantsRequest structure as a key-value pair table
@@ -2463,8 +2466,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * PolicyName [PolicyNameType] <p>String that contains the name of the policy. Currently, this must be "default". Policy names can be discovered by calling <a>ListKeyPolicies</a>.</p>
--- * KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- * PolicyName [PolicyNameType] <p>Specifies the name of the key policy. The only valid name is <code>default</code>. To get the names of key policies, use <a>ListKeyPolicies</a>.</p>
+-- * KeyId [KeyIdType] <p>A unique identifier for the customer master key (CMK).</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- Required key: KeyId
 -- Required key: PolicyName
 -- @return GetKeyPolicyRequest structure as a key-value pair table
@@ -2507,7 +2510,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * KeyId [KeyIdType] <p>A unique identifier for the CMK. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- * KeyId [KeyIdType] <p>A unique identifier for the customer master key (CMK).</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- * Description [DescriptionType] <p>New description for the CMK.</p>
 -- Required key: KeyId
 -- Required key: Description
@@ -2554,10 +2557,10 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Policy [PolicyType] <p>The key policy to attach to the CMK.</p> <p>If you do not set <code>BypassPolicyLockoutSafetyCheck</code> to true, the policy must meet the following criteria:</p> <ul> <li> <p>It must allow the principal that is making the <code>PutKeyPolicy</code> request to make a subsequent <code>PutKeyPolicy</code> request on the CMK. This reduces the likelihood that the CMK becomes unmanageable. For more information, refer to the scenario in the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam">Default Key Policy</a> section in the <i>AWS Key Management Service Developer Guide</i>.</p> </li> <li> <p>The principals that are specified in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before specifying the new principal in a key policy because the new principal might not immediately be visible to AWS KMS. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency">Changes that I make are not always immediately visible</a> in the <i>IAM User Guide</i>.</p> </li> </ul> <p>The policy size limit is 32 KiB (32768 bytes).</p>
--- * PolicyName [PolicyNameType] <p>The name of the key policy.</p> <p>This value must be <code>default</code>.</p>
--- * KeyId [KeyIdType] <p>A unique identifier for the CMK.</p> <p>Use the CMK's unique identifier or its Amazon Resource Name (ARN). For example:</p> <ul> <li> <p>Unique ID: 1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> <li> <p>ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> </ul>
--- * BypassPolicyLockoutSafetyCheck [BooleanType] <p>A flag to indicate whether to bypass the key policy lockout safety check.</p> <important> <p>Setting this value to true increases the likelihood that the CMK becomes unmanageable. Do not set this value to true indiscriminately.</p> <p>For more information, refer to the scenario in the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam">Default Key Policy</a> section in the <i>AWS Key Management Service Developer Guide</i>.</p> </important> <p>Use this parameter only when you intend to prevent the principal that is making the request from making a subsequent <code>PutKeyPolicy</code> request on the CMK.</p> <p>The default value is false.</p>
+-- * Policy [PolicyType] <p>The key policy to attach to the CMK.</p> <p>The key policy must meet the following criteria:</p> <ul> <li> <p>If you don't set <code>BypassPolicyLockoutSafetyCheck</code> to true, the key policy must allow the principal that is making the <code>PutKeyPolicy</code> request to make a subsequent <code>PutKeyPolicy</code> request on the CMK. This reduces the risk that the CMK becomes unmanageable. For more information, refer to the scenario in the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam">Default Key Policy</a> section of the <i>AWS Key Management Service Developer Guide</i>.</p> </li> <li> <p>Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before including the new principal in a key policy. The reason for this is that the new principal might not be immediately visible to AWS KMS. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency">Changes that I make are not always immediately visible</a> in the <i>AWS Identity and Access Management User Guide</i>.</p> </li> </ul> <p>The key policy size limit is 32 kilobytes (32768 bytes).</p>
+-- * PolicyName [PolicyNameType] <p>The name of the key policy. The only valid value is <code>default</code>.</p>
+-- * KeyId [KeyIdType] <p>A unique identifier for the customer master key (CMK).</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
+-- * BypassPolicyLockoutSafetyCheck [BooleanType] <p>A flag to indicate whether to bypass the key policy lockout safety check.</p> <important> <p>Setting this value to true increases the risk that the CMK becomes unmanageable. Do not set this value to true indiscriminately.</p> <p>For more information, refer to the scenario in the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam">Default Key Policy</a> section in the <i>AWS Key Management Service Developer Guide</i>.</p> </important> <p>Use this parameter only when you intend to prevent the principal that is making the request from making a subsequent <code>PutKeyPolicy</code> request on the CMK.</p> <p>The default value is false.</p>
 -- Required key: KeyId
 -- Required key: PolicyName
 -- Required key: Policy
@@ -2603,7 +2606,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * KeyId [KeyIdType] <p>A unique identifier for the customer master key associated with the grant. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- * KeyId [KeyIdType] <p>A unique identifier for the customer master key associated with the grant.</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- * GrantId [GrantIdType] <p>Identifier of the grant to be revoked.</p>
 -- Required key: KeyId
 -- Required key: GrantId
@@ -2722,7 +2725,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Marker [MarkerType] <p>Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextMarker</code> from the truncated response you just received.</p> <p>Do not attempt to construct this value. Use only the value of <code>NextMarker</code> from the truncated response you just received.</p>
--- * KeyId [KeyIdType] <p>A unique identifier for the CMK whose tags you are listing. You can use the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
+-- * KeyId [KeyIdType] <p>A unique identifier for the customer master key (CMK).</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- * Limit [LimitType] <p>Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.</p> <p>This value is optional. If you include a value, it must be between 1 and 50, inclusive. If you do not include a value, it defaults to 50.</p>
 -- Required key: KeyId
 -- @return ListResourceTagsRequest structure as a key-value pair table
@@ -2766,7 +2769,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * PendingWindowInDays [PendingWindowInDaysType] <p>The waiting period, specified in number of days. After the waiting period ends, AWS KMS deletes the customer master key (CMK).</p> <p>This value is optional. If you include a value, it must be between 7 and 30, inclusive. If you do not include a value, it defaults to 30.</p>
--- * KeyId [KeyIdType] <p>The unique identifier for the customer master key (CMK) to delete.</p> <p>To specify this value, use the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: 1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> <li> <p>Key ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> </ul> <p>To obtain the unique key ID and key ARN for a given CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
+-- * KeyId [KeyIdType] <p>The unique identifier of the customer master key (CMK) to delete.</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- Required key: KeyId
 -- @return ScheduleKeyDeletionRequest structure as a key-value pair table
 function M.ScheduleKeyDeletionRequest(args)
@@ -2843,7 +2846,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * KeyId [KeyIdType] <p>A unique identifier for the CMK.</p> <p>Use the CMK's unique identifier or its Amazon Resource Name (ARN). For example:</p> <ul> <li> <p>Unique ID: 1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> <li> <p>ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> </ul>
+-- * KeyId [KeyIdType] <p>A unique identifier for the customer master key (CMK).</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- Required key: KeyId
 -- @return DisableKeyRequest structure as a key-value pair table
 function M.DisableKeyRequest(args)
@@ -2873,6 +2876,7 @@ function asserts.AssertCreateGrantRequest(struct)
 	assert(type(struct) == "table", "Expected CreateGrantRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
 	assert(struct["GranteePrincipal"], "Expected key GranteePrincipal to exist in table")
+	assert(struct["Operations"], "Expected key Operations to exist in table")
 	if struct["Operations"] then asserts.AssertGrantOperationList(struct["Operations"]) end
 	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
 	if struct["Name"] then asserts.AssertGrantNameType(struct["Name"]) end
@@ -2890,14 +2894,15 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Operations [GrantOperationList] <p>A list of operations that the grant permits.</p>
--- * KeyId [KeyIdType] <p>The unique identifier for the customer master key (CMK) that the grant applies to.</p> <p>To specify this value, use the globally unique key ID or the Amazon Resource Name (ARN) of the key. Examples:</p> <ul> <li> <p>Globally unique key ID: 12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Key ARN: arn:aws:kms:us-west-2:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> </ul>
--- * Name [GrantNameType] <p>A friendly name for identifying the grant. Use this value to prevent unintended creation of duplicate grants when retrying this request.</p> <p>When this value is absent, all <code>CreateGrant</code> requests result in a new grant with a unique <code>GrantId</code> even if all the supplied parameters are identical. This can result in unintended duplicates when you retry the <code>CreateGrant</code> request.</p> <p>When this value is present, you can retry a <code>CreateGrant</code> request with identical parameters; if the grant already exists, the original <code>GrantId</code> is returned without creating a new grant. Note that the returned grant token is unique with every <code>CreateGrant</code> request, even when a duplicate <code>GrantId</code> is returned. All grant tokens obtained in this way can be used interchangeably.</p>
+-- * KeyId [KeyIdType] <p>The unique identifier for the customer master key (CMK) that the grant applies to.</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
+-- * Name [GrantNameType] <p>A friendly name for identifying the grant. Use this value to prevent the unintended creation of duplicate grants when retrying this request.</p> <p>When this value is absent, all <code>CreateGrant</code> requests result in a new grant with a unique <code>GrantId</code> even if all the supplied parameters are identical. This can result in unintended duplicates when you retry the <code>CreateGrant</code> request.</p> <p>When this value is present, you can retry a <code>CreateGrant</code> request with identical parameters; if the grant already exists, the original <code>GrantId</code> is returned without creating a new grant. Note that the returned grant token is unique with every <code>CreateGrant</code> request, even when a duplicate <code>GrantId</code> is returned. All grant tokens obtained in this way can be used interchangeably.</p>
 -- * RetiringPrincipal [PrincipalIdType] <p>The principal that is given permission to retire the grant by using <a>RetireGrant</a> operation.</p> <p>To specify the principal, use the <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, federated users, and assumed role users. For examples of the ARN syntax to use for specifying a principal, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and Access Management (IAM)</a> in the Example ARNs section of the <i>AWS General Reference</i>.</p>
 -- * GranteePrincipal [PrincipalIdType] <p>The principal that is given permission to perform the operations that the grant permits.</p> <p>To specify the principal, use the <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, IAM roles, federated users, and assumed role users. For examples of the ARN syntax to use for specifying a principal, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and Access Management (IAM)</a> in the Example ARNs section of the <i>AWS General Reference</i>.</p>
 -- * GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
 -- * Constraints [GrantConstraints] <p>A structure that you can use to allow certain operations in the grant only when the desired encryption context is present. For more information about encryption context, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption Context</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
 -- Required key: KeyId
 -- Required key: GranteePrincipal
+-- Required key: Operations
 -- @return CreateGrantRequest structure as a key-value pair table
 function M.CreateGrantRequest(args)
 	assert(args, "You must provide an argument table when creating CreateGrantRequest")
@@ -2937,7 +2942,7 @@ function asserts.AssertExpiredImportTokenException(struct)
 end
 
 --- Create a structure of type ExpiredImportTokenException
--- <p>The request was rejected because the provided import token is expired. Use <a>GetParametersForImport</a> to retrieve a new import token and public key, use the new public key to encrypt the key material, and then try the request again.</p>
+-- <p>The request was rejected because the provided import token is expired. Use <a>GetParametersForImport</a> to get a new import token and public key, use the new public key to encrypt the key material, and then try the request again.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * message [ErrorMessageType] 
@@ -2978,7 +2983,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- * KeyId [KeyIdType] <p>A unique identifier for the customer master key (CMK).</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- Required key: KeyId
 -- @return GetKeyRotationStatusRequest structure as a key-value pair table
 function M.GetKeyRotationStatusRequest(args)
@@ -3019,7 +3024,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ParametersValidTo [DateType] <p>The time at which the import token and public key are no longer valid. After this time, you cannot use them to make an <a>ImportKeyMaterial</a> request and you must send another <code>GetParametersForImport</code> request to retrieve new ones.</p>
+-- * ParametersValidTo [DateType] <p>The time at which the import token and public key are no longer valid. After this time, you cannot use them to make an <a>ImportKeyMaterial</a> request and you must send another <code>GetParametersForImport</code> request to get new ones.</p>
 -- * PublicKey [PlaintextType] <p>The public key to use to encrypt the key material before importing it with <a>ImportKeyMaterial</a>.</p>
 -- * KeyId [KeyIdType] <p>The identifier of the CMK to use in a subsequent <a>ImportKeyMaterial</a> request. This is the same CMK specified in the <code>GetParametersForImport</code> request.</p>
 -- * ImportToken [CiphertextType] <p>The import token to send in a subsequent <a>ImportKeyMaterial</a> request.</p>
@@ -3047,12 +3052,13 @@ function M.GetParametersForImportResponse(args)
     }
 end
 
-keys.ListAliasesRequest = { ["Marker"] = true, ["Limit"] = true, nil }
+keys.ListAliasesRequest = { ["Marker"] = true, ["KeyId"] = true, ["Limit"] = true, nil }
 
 function asserts.AssertListAliasesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAliasesRequest to be of type 'table'")
 	if struct["Marker"] then asserts.AssertMarkerType(struct["Marker"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
 	if struct["Limit"] then asserts.AssertLimitType(struct["Limit"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListAliasesRequest[k], "ListAliasesRequest contains unknown key " .. tostring(k))
@@ -3064,6 +3070,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Marker [MarkerType] <p>Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextMarker</code> from the truncated response you just received.</p>
+-- * KeyId [KeyIdType] <p>Lists only aliases that refer to the specified CMK. The value of this parameter can be the ID or Amazon Resource Name (ARN) of a CMK in the caller's account and region. You cannot use an alias name or alias ARN in this value.</p> <p>This parameter is optional. If you omit it, <code>ListAliases</code> returns all aliases in the account and region.</p>
 -- * Limit [LimitType] <p>Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.</p> <p>This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.</p>
 -- @return ListAliasesRequest structure as a key-value pair table
 function M.ListAliasesRequest(args)
@@ -3076,6 +3083,7 @@ function M.ListAliasesRequest(args)
     }
 	local all_args = { 
 		["Marker"] = args["Marker"],
+		["KeyId"] = args["KeyId"],
 		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListAliasesRequest(all_args)
@@ -3099,7 +3107,7 @@ function asserts.AssertInvalidCiphertextException(struct)
 end
 
 --- Create a structure of type InvalidCiphertextException
--- <p>The request was rejected because the specified ciphertext has been corrupted or is otherwise invalid.</p>
+-- <p>The request was rejected because the specified ciphertext, or additional authenticated data incorporated into the ciphertext, such as the encryption context, is corrupted, missing, or otherwise invalid.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * message [ErrorMessageType] 
@@ -3142,7 +3150,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * KeyId [KeyIdType] <p>A unique identifier for the CMK you are tagging. You can use the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
+-- * KeyId [KeyIdType] <p>A unique identifier for the CMK you are tagging.</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- * Tags [TagList] <p>One or more tags. Each tag consists of a tag key and a tag value.</p>
 -- Required key: KeyId
 -- Required key: Tags
@@ -3288,7 +3296,7 @@ end
 -- Valid keys:
 -- * NextMarker [MarkerType] <p>When <code>Truncated</code> is true, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent request.</p>
 -- * Grants [GrantList] <p>A list of grants.</p>
--- * Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
+-- * Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
 -- @return ListGrantsResponse structure as a key-value pair table
 function M.ListGrantsResponse(args)
 	assert(args, "You must provide an argument table when creating ListGrantsResponse")
@@ -3439,7 +3447,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- * KeyId [KeyIdType] <p>A unique identifier for the customer master key (CMK).</p> <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- Required key: KeyId
 -- @return DisableKeyRotationRequest structure as a key-value pair table
 function M.DisableKeyRotationRequest(args)
@@ -3668,7 +3676,7 @@ end
 function asserts.AssertMarkerType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected MarkerType to be of type 'string'")
-	assert(#str <= 320, "Expected string to be max 320 characters")
+	assert(#str <= 1024, "Expected string to be max 1024 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
@@ -3688,6 +3696,17 @@ end
 --  
 function M.ArnType(str)
 	asserts.AssertArnType(str)
+	return str
+end
+
+function asserts.AssertKeyManagerType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected KeyManagerType to be of type 'string'")
+end
+
+--  
+function M.KeyManagerType(str)
+	asserts.AssertKeyManagerType(str)
 	return str
 end
 

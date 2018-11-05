@@ -33,10 +33,10 @@ function asserts.AssertOrganizationsDecisionDetail(struct)
 end
 
 --- Create a structure of type OrganizationsDecisionDetail
--- <p>Contains information about AWS Organizations's affect on a policy simulation.</p>
+-- <p>Contains information about AWS Organizations's effect on a policy simulation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AllowedByOrganizations [booleanType] <p>Specifies whether the simulated action is allowed by the AWS Organizations service control policies that impact the simulated user's account.</p>
+-- * AllowedByOrganizations [booleanType] <p>Specifies whether the simulated operation is allowed by the AWS Organizations service control policies that impact the simulated user's account.</p>
 -- @return OrganizationsDecisionDetail structure as a key-value pair table
 function M.OrganizationsDecisionDetail(args)
 	assert(args, "You must provide an argument table when creating OrganizationsDecisionDetail")
@@ -124,7 +124,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * UserName [userNameType] <p>The name of the IAM user associated with the service-specific credential.</p>
--- * Status [statusType] <p>The status of the service-specific credential. <code>Active</code> means the key is valid for API calls, while <code>Inactive</code> means it is not.</p>
+-- * Status [statusType] <p>The status of the service-specific credential. <code>Active</code> means that the key is valid for API calls, while <code>Inactive</code> means it is not.</p>
 -- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the service-specific credential were created.</p>
 -- * ServiceName [serviceName] <p>The name of the service associated with the service-specific credential.</p>
 -- * ServiceSpecificCredentialId [serviceSpecificCredentialId] <p>The unique identifier for the service-specific credential.</p>
@@ -182,8 +182,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * RoleName [roleNameType] <p>The name of the role to associate the policy with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- * PolicyDocument [policyDocumentType] <p>The policy document.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- * PolicyName [policyNameType] <p>The name of the policy document.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * PolicyDocument [policyDocumentType] <p>The policy document.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul>
+-- * PolicyName [policyNameType] <p>The name of the policy document.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: RoleName
 -- Required key: PolicyName
 -- Required key: PolicyDocument
@@ -267,7 +267,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the user to list groups for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [existingUserNameType] <p>The name of the user to list groups for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- Required key: UserName
@@ -312,7 +312,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM OIDC provider resource to remove the client ID from. You can get a list of OIDC provider ARNs by using the <a>ListOpenIDConnectProviders</a> action.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- * OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM OIDC provider resource to remove the client ID from. You can get a list of OIDC provider ARNs by using the <a>ListOpenIDConnectProviders</a> operation.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
 -- * ClientID [clientIDType] <p>The client ID (also known as audience) to remove from the IAM OIDC provider resource. For more information about client IDs, see <a>CreateOpenIDConnectProvider</a>.</p>
 -- Required key: OpenIDConnectProviderArn
 -- Required key: ClientID
@@ -400,7 +400,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * RoleName [roleNameType] <p>The name (friendly name, not ARN) identifying the role that the policy is embedded in.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- * PolicyName [policyNameType] <p>The name of the inline policy to delete from the specified IAM role.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * PolicyName [policyNameType] <p>The name of the inline policy to delete from the specified IAM role.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: RoleName
 -- Required key: PolicyName
 -- @return DeleteRolePolicyRequest structure as a key-value pair table
@@ -443,7 +443,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- * AssignmentStatus [assignmentStatusType] <p> The status (<code>Unassigned</code> or <code>Assigned</code>) of the devices to list. If you do not specify an <code>AssignmentStatus</code>, the action defaults to <code>Any</code> which lists both assigned and unassigned virtual MFA devices.</p>
+-- * AssignmentStatus [assignmentStatusType] <p> The status (<code>Unassigned</code> or <code>Assigned</code>) of the devices to list. If you do not specify an <code>AssignmentStatus</code>, the operation defaults to <code>Any</code> which lists both assigned and unassigned virtual MFA devices.</p>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListVirtualMFADevicesRequest structure as a key-value pair table
 function M.ListVirtualMFADevicesRequest(args)
@@ -530,7 +530,7 @@ function asserts.AssertInstanceProfile(struct)
 end
 
 --- Create a structure of type InstanceProfile
--- <p>Contains information about an instance profile.</p> <p>This data type is used as a response element in the following actions:</p> <ul> <li> <p> <a>CreateInstanceProfile</a> </p> </li> <li> <p> <a>GetInstanceProfile</a> </p> </li> <li> <p> <a>ListInstanceProfiles</a> </p> </li> <li> <p> <a>ListInstanceProfilesForRole</a> </p> </li> </ul>
+-- <p>Contains information about an instance profile.</p> <p>This data type is used as a response element in the following operations:</p> <ul> <li> <p> <a>CreateInstanceProfile</a> </p> </li> <li> <p> <a>GetInstanceProfile</a> </p> </li> <li> <p> <a>ListInstanceProfiles</a> </p> </li> <li> <p> <a>ListInstanceProfilesForRole</a> </p> </li> </ul>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * InstanceProfileId [idType] <p> The stable and unique string identifying the instance profile. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
@@ -710,7 +710,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the user whose access key pair you want to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [existingUserNameType] <p>The name of the user whose access key pair you want to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * AccessKeyId [accessKeyIdType] <p>The access key ID for the access key ID and secret access key you want to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
 -- Required key: AccessKeyId
 -- @return DeleteAccessKeyRequest structure as a key-value pair table
@@ -751,7 +751,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * PolicyInputList [SimulationPolicyListType] <p>A list of policies for which you want the list of context keys referenced in those policies. Each document is specified as a string containing the complete, valid JSON text of an IAM policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * PolicyInputList [SimulationPolicyListType] <p>A list of policies for which you want the list of context keys referenced in those policies. Each document is specified as a string containing the complete, valid JSON text of an IAM policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul>
 -- Required key: PolicyInputList
 -- @return GetContextKeysForCustomPolicyRequest structure as a key-value pair table
 function M.GetContextKeysForCustomPolicyRequest(args)
@@ -856,6 +856,45 @@ function M.MalformedPolicyDocumentException(args)
     }
 end
 
+keys.DeleteServiceLinkedRoleResponse = { ["DeletionTaskId"] = true, nil }
+
+function asserts.AssertDeleteServiceLinkedRoleResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteServiceLinkedRoleResponse to be of type 'table'")
+	assert(struct["DeletionTaskId"], "Expected key DeletionTaskId to exist in table")
+	if struct["DeletionTaskId"] then asserts.AssertDeletionTaskIdType(struct["DeletionTaskId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteServiceLinkedRoleResponse[k], "DeleteServiceLinkedRoleResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteServiceLinkedRoleResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeletionTaskId [DeletionTaskIdType] <p>The deletion task identifier that you can use to check the status of the deletion. This identifier is returned in the format <code>task/aws-service-role/&lt;service-principal-name&gt;/&lt;role-name&gt;/&lt;task-uuid&gt;</code>.</p>
+-- Required key: DeletionTaskId
+-- @return DeleteServiceLinkedRoleResponse structure as a key-value pair table
+function M.DeleteServiceLinkedRoleResponse(args)
+	assert(args, "You must provide an argument table when creating DeleteServiceLinkedRoleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["DeletionTaskId"] = args["DeletionTaskId"],
+	}
+	asserts.AssertDeleteServiceLinkedRoleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DeactivateMFADeviceRequest = { ["UserName"] = true, ["SerialNumber"] = true, nil }
 
 function asserts.AssertDeactivateMFADeviceRequest(struct)
@@ -874,7 +913,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the user whose MFA device you want to deactivate.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [existingUserNameType] <p>The name of the user whose MFA device you want to deactivate.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * SerialNumber [serialNumberType] <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@:/-</p>
 -- Required key: UserName
 -- Required key: SerialNumber
@@ -918,7 +957,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NewPassword [passwordType] <p>The new password. The new password must conform to the AWS account's password policy, if one exists.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of almost any printable ASCII character from the space (\u0020) through the end of the ASCII character range (\u00FF). You can also include the tab (\u0009), line feed (\u000A), and carriage return (\u000D) characters. Although any of these characters are valid in a password, note that many tools, such as the AWS Management Console, might restrict the ability to enter certain characters because they have special meaning within that tool.</p>
+-- * NewPassword [passwordType] <p>The new password. The new password must conform to the AWS account's password policy, if one exists.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a string of characters. That string can include almost any printable ASCII character from the space (\u0020) through the end of the ASCII character range (\u00FF). You can also include the tab (\u0009), line feed (\u000A), and carriage return (\u000D) characters. Any of these characters are valid in a password. However, many tools, such as the AWS Management Console, might restrict the ability to type certain characters because they have special meaning within that tool.</p>
 -- * OldPassword [passwordType] <p>The IAM user's current password.</p>
 -- Required key: OldPassword
 -- Required key: NewPassword
@@ -1205,8 +1244,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the IAM user the signing certificate belongs to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * Status [statusType] <p> The status you want to assign to the certificate. <code>Active</code> means the certificate can be used for API calls to AWS, while <code>Inactive</code> means the certificate cannot be used.</p>
+-- * UserName [existingUserNameType] <p>The name of the IAM user the signing certificate belongs to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * Status [statusType] <p> The status you want to assign to the certificate. <code>Active</code> means that the certificate can be used for API calls to AWS <code>Inactive</code> means that the certificate cannot be used.</p>
 -- * CertificateId [certificateIdType] <p>The ID of the signing certificate you want to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
 -- Required key: CertificateId
 -- Required key: Status
@@ -1250,7 +1289,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name of the IAM user associated with the service-specific credential. If this value is not specified, then the operation assumes the user whose credentials are used to call the operation.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [userNameType] <p>The name of the IAM user associated with the service-specific credential. If this value is not specified, then the operation assumes the user whose credentials are used to call the operation.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * ServiceSpecificCredentialId [serviceSpecificCredentialId] <p>The unique identifier of the service-specific credential. You can get this value by calling <a>ListServiceSpecificCredentials</a>.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
 -- Required key: ServiceSpecificCredentialId
 -- @return DeleteServiceSpecificCredentialRequest structure as a key-value pair table
@@ -1296,7 +1335,7 @@ function asserts.AssertGroup(struct)
 end
 
 --- Create a structure of type Group
--- <p>Contains information about an IAM group entity.</p> <p>This data type is used as a response element in the following actions:</p> <ul> <li> <p> <a>CreateGroup</a> </p> </li> <li> <p> <a>GetGroup</a> </p> </li> <li> <p> <a>ListGroups</a> </p> </li> </ul>
+-- <p>Contains information about an IAM group entity.</p> <p>This data type is used as a response element in the following operations:</p> <ul> <li> <p> <a>CreateGroup</a> </p> </li> <li> <p> <a>GetGroup</a> </p> </li> <li> <p> <a>ListGroups</a> </p> </li> </ul>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Path [pathType] <p>The path to the group. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
@@ -1356,10 +1395,10 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the IAM user for whom you want to enable the MFA device.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * AuthenticationCode1 [authenticationCodeType] <p>An authentication code emitted by the device. </p> <p>The format for this parameter is a string of 6 digits.</p> <important> <p>Submit your request immediately after generating the authentication codes. If you generate the codes and then wait too long to submit the request, the MFA device successfully associates with the user but the MFA device becomes out of sync. This happens because time-based one-time passwords (TOTP) expire after a short period of time. If this happens, you can <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html">resync the device</a>.</p> </important>
+-- * UserName [existingUserNameType] <p>The name of the IAM user for whom you want to enable the MFA device.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * AuthenticationCode1 [authenticationCodeType] <p>An authentication code emitted by the device. </p> <p>The format for this parameter is a string of six digits.</p> <important> <p>Submit your request immediately after generating the authentication codes. If you generate the codes and then wait too long to submit the request, the MFA device successfully associates with the user but the MFA device becomes out of sync. This happens because time-based one-time passwords (TOTP) expire after a short period of time. If this happens, you can <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html">resync the device</a>.</p> </important>
 -- * SerialNumber [serialNumberType] <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@:/-</p>
--- * AuthenticationCode2 [authenticationCodeType] <p>A subsequent authentication code emitted by the device.</p> <p>The format for this parameter is a string of 6 digits.</p> <important> <p>Submit your request immediately after generating the authentication codes. If you generate the codes and then wait too long to submit the request, the MFA device successfully associates with the user but the MFA device becomes out of sync. This happens because time-based one-time passwords (TOTP) expire after a short period of time. If this happens, you can <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html">resync the device</a>.</p> </important>
+-- * AuthenticationCode2 [authenticationCodeType] <p>A subsequent authentication code emitted by the device.</p> <p>The format for this parameter is a string of six digits.</p> <important> <p>Submit your request immediately after generating the authentication codes. If you generate the codes and then wait too long to submit the request, the MFA device successfully associates with the user but the MFA device becomes out of sync. This happens because time-based one-time passwords (TOTP) expire after a short period of time. If this happens, you can <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html">resync the device</a>.</p> </important>
 -- Required key: UserName
 -- Required key: SerialNumber
 -- Required key: AuthenticationCode1
@@ -1380,6 +1419,50 @@ function M.EnableMFADeviceRequest(args)
 		["AuthenticationCode2"] = args["AuthenticationCode2"],
 	}
 	asserts.AssertEnableMFADeviceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.PutRolePermissionsBoundaryRequest = { ["RoleName"] = true, ["PermissionsBoundary"] = true, nil }
+
+function asserts.AssertPutRolePermissionsBoundaryRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PutRolePermissionsBoundaryRequest to be of type 'table'")
+	assert(struct["RoleName"], "Expected key RoleName to exist in table")
+	assert(struct["PermissionsBoundary"], "Expected key PermissionsBoundary to exist in table")
+	if struct["RoleName"] then asserts.AssertroleNameType(struct["RoleName"]) end
+	if struct["PermissionsBoundary"] then asserts.AssertarnType(struct["PermissionsBoundary"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PutRolePermissionsBoundaryRequest[k], "PutRolePermissionsBoundaryRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PutRolePermissionsBoundaryRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleName [roleNameType] <p>The name (friendly name, not ARN) of the IAM role for which you want to set the permissions boundary.</p>
+-- * PermissionsBoundary [arnType] <p>The ARN of the policy that is used to set the permissions boundary for the role.</p>
+-- Required key: RoleName
+-- Required key: PermissionsBoundary
+-- @return PutRolePermissionsBoundaryRequest structure as a key-value pair table
+function M.PutRolePermissionsBoundaryRequest(args)
+	assert(args, "You must provide an argument table when creating PutRolePermissionsBoundaryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RoleName"] = args["RoleName"],
+		["PermissionsBoundary"] = args["PermissionsBoundary"],
+	}
+	asserts.AssertPutRolePermissionsBoundaryRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1431,6 +1514,46 @@ function M.ListAttachedGroupPoliciesResponse(args)
     }
 end
 
+keys.DeletionTaskFailureReasonType = { ["RoleUsageList"] = true, ["Reason"] = true, nil }
+
+function asserts.AssertDeletionTaskFailureReasonType(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeletionTaskFailureReasonType to be of type 'table'")
+	if struct["RoleUsageList"] then asserts.AssertRoleUsageListType(struct["RoleUsageList"]) end
+	if struct["Reason"] then asserts.AssertReasonType(struct["Reason"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeletionTaskFailureReasonType[k], "DeletionTaskFailureReasonType contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeletionTaskFailureReasonType
+-- <p>The reason that the service-linked role deletion failed.</p> <p>This data type is used as a response element in the <a>GetServiceLinkedRoleDeletionStatus</a> operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleUsageList [RoleUsageListType] <p>A list of objects that contains details about the service-linked role deletion failure, if that information is returned by the service. If the service-linked role has active sessions or if any resources that were used by the role have not been deleted from the linked service, the role can't be deleted. This parameter includes a list of the resources that are associated with the role and the region in which the resources are being used.</p>
+-- * Reason [ReasonType] <p>A short description of the reason that the service-linked role deletion failed.</p>
+-- @return DeletionTaskFailureReasonType structure as a key-value pair table
+function M.DeletionTaskFailureReasonType(args)
+	assert(args, "You must provide an argument table when creating DeletionTaskFailureReasonType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RoleUsageList"] = args["RoleUsageList"],
+		["Reason"] = args["Reason"],
+	}
+	asserts.AssertDeletionTaskFailureReasonType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.UpdateAccountPasswordPolicyRequest = { ["AllowUsersToChangePassword"] = true, ["RequireLowercaseCharacters"] = true, ["RequireUppercaseCharacters"] = true, ["MinimumPasswordLength"] = true, ["RequireNumbers"] = true, ["PasswordReusePrevention"] = true, ["HardExpiry"] = true, ["RequireSymbols"] = true, ["MaxPasswordAge"] = true, nil }
 
 function asserts.AssertUpdateAccountPasswordPolicyRequest(struct)
@@ -1454,15 +1577,15 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AllowUsersToChangePassword [booleanType] <p> Allows all IAM users in your account to use the AWS Management Console to change their own passwords. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/HowToPwdIAMUser.html">Letting IAM Users Change Their Own Passwords</a> in the <i>IAM User Guide</i>.</p> <p>Default value: false</p>
--- * RequireLowercaseCharacters [booleanType] <p>Specifies whether IAM user passwords must contain at least one lowercase character from the ISO basic Latin alphabet (a to z).</p> <p>Default value: false</p>
--- * RequireUppercaseCharacters [booleanType] <p>Specifies whether IAM user passwords must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z).</p> <p>Default value: false</p>
--- * MinimumPasswordLength [minimumPasswordLengthType] <p>The minimum number of characters allowed in an IAM user password.</p> <p>Default value: 6</p>
--- * RequireNumbers [booleanType] <p>Specifies whether IAM user passwords must contain at least one numeric character (0 to 9).</p> <p>Default value: false</p>
--- * PasswordReusePrevention [passwordReusePreventionType] <p>Specifies the number of previous passwords that IAM users are prevented from reusing. The default value of 0 means IAM users are not prevented from reusing previous passwords.</p> <p>Default value: 0</p>
--- * HardExpiry [booleanObjectType] <p>Prevents IAM users from setting a new password after their password has expired.</p> <p>Default value: false</p>
--- * RequireSymbols [booleanType] <p>Specifies whether IAM user passwords must contain at least one of the following non-alphanumeric characters:</p> <p>! @ # $ % ^ &amp;amp; * ( ) _ + - = [ ] { } | '</p> <p>Default value: false</p>
--- * MaxPasswordAge [maxPasswordAgeType] <p>The number of days that an IAM user password is valid. The default value of 0 means IAM user passwords never expire.</p> <p>Default value: 0</p>
+-- * AllowUsersToChangePassword [booleanType] <p> Allows all IAM users in your account to use the AWS Management Console to change their own passwords. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/HowToPwdIAMUser.html">Letting IAM Users Change Their Own Passwords</a> in the <i>IAM User Guide</i>.</p> <p>If you do not specify a value for this parameter, then the operation uses the default value of <code>false</code>. The result is that IAM users in the account do not automatically have permissions to change their own password.</p>
+-- * RequireLowercaseCharacters [booleanType] <p>Specifies whether IAM user passwords must contain at least one lowercase character from the ISO basic Latin alphabet (a to z).</p> <p>If you do not specify a value for this parameter, then the operation uses the default value of <code>false</code>. The result is that passwords do not require at least one lowercase character.</p>
+-- * RequireUppercaseCharacters [booleanType] <p>Specifies whether IAM user passwords must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z).</p> <p>If you do not specify a value for this parameter, then the operation uses the default value of <code>false</code>. The result is that passwords do not require at least one uppercase character.</p>
+-- * MinimumPasswordLength [minimumPasswordLengthType] <p>The minimum number of characters allowed in an IAM user password.</p> <p>If you do not specify a value for this parameter, then the operation uses the default value of <code>6</code>.</p>
+-- * RequireNumbers [booleanType] <p>Specifies whether IAM user passwords must contain at least one numeric character (0 to 9).</p> <p>If you do not specify a value for this parameter, then the operation uses the default value of <code>false</code>. The result is that passwords do not require at least one numeric character.</p>
+-- * PasswordReusePrevention [passwordReusePreventionType] <p>Specifies the number of previous passwords that IAM users are prevented from reusing.</p> <p>If you do not specify a value for this parameter, then the operation uses the default value of <code>0</code>. The result is that IAM users are not prevented from reusing previous passwords.</p>
+-- * HardExpiry [booleanObjectType] <p>Prevents IAM users from setting a new password after their password has expired. The IAM user cannot be accessed until an administrator resets the password.</p> <p>If you do not specify a value for this parameter, then the operation uses the default value of <code>false</code>. The result is that IAM users can change their passwords after they expire and continue to sign in as the user.</p>
+-- * RequireSymbols [booleanType] <p>Specifies whether IAM user passwords must contain at least one of the following non-alphanumeric characters:</p> <p>! @ # $ % ^ &amp; * ( ) _ + - = [ ] { } | '</p> <p>If you do not specify a value for this parameter, then the operation uses the default value of <code>false</code>. The result is that passwords do not require at least one symbol character.</p>
+-- * MaxPasswordAge [maxPasswordAgeType] <p>The number of days that an IAM user password is valid.</p> <p>If you do not specify a value for this parameter, then the operation uses the default value of <code>0</code>. The result is that IAM user passwords never expire.</p>
 -- @return UpdateAccountPasswordPolicyRequest structure as a key-value pair table
 function M.UpdateAccountPasswordPolicyRequest(args)
 	assert(args, "You must provide an argument table when creating UpdateAccountPasswordPolicyRequest")
@@ -1686,8 +1809,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the user the signing certificate is for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * CertificateBody [certificateBodyType] <p>The contents of the signing certificate.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * UserName [existingUserNameType] <p>The name of the user the signing certificate is for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * CertificateBody [certificateBodyType] <p>The contents of the signing certificate.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul>
 -- Required key: CertificateBody
 -- @return UploadSigningCertificateRequest structure as a key-value pair table
 function M.UploadSigningCertificateRequest(args)
@@ -1805,7 +1928,7 @@ function asserts.AssertPolicyEvaluationException(struct)
 end
 
 --- Create a structure of type PolicyEvaluationException
--- <p>The request failed because a provided policy could not be successfully evaluated. An additional detail message indicates the source of the failure.</p>
+-- <p>The request failed because a provided policy could not be successfully evaluated. An additional detailed message indicates the source of the failure.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * message [policyEvaluationErrorMessage] 
@@ -1892,11 +2015,11 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * OrganizationsDecisionDetail [OrganizationsDecisionDetail] <p>A structure that details how AWS Organizations and its service control policies affect the results of the simulation. Only applies if the simulated user's account is part of an organization.</p>
--- * MatchedStatements [StatementListType] <p>A list of the statements in the input policies that determine the result for this scenario. Remember that even if multiple statements allow the action on the resource, if only one statement denies that action, then the explicit deny overrides any allow, and the deny statement is the only entry included in the result.</p>
+-- * MatchedStatements [StatementListType] <p>A list of the statements in the input policies that determine the result for this scenario. Remember that even if multiple statements allow the operation on the resource, if only one statement denies that operation, then the explicit deny overrides any allow, and the deny statement is the only entry included in the result.</p>
 -- * EvalDecisionDetails [EvalDecisionDetailsType] <p>Additional details about the results of the evaluation decision. When there are both IAM policies and resource policies, this parameter explains how each set of policies contributes to the final evaluation decision. When simulating cross-account access to a resource, both the resource-based policy and the caller's IAM policy must grant access. See <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html">How IAM Roles Differ from Resource-based Policies</a> </p>
--- * EvalResourceName [ResourceNameType] <p>The ARN of the resource that the indicated API action was tested on.</p>
--- * ResourceSpecificResults [ResourceSpecificResultListType] <p>The individual results of the simulation of the API action specified in EvalActionName on each resource.</p>
--- * EvalActionName [ActionNameType] <p>The name of the API action tested on the indicated resource.</p>
+-- * EvalResourceName [ResourceNameType] <p>The ARN of the resource that the indicated API operation was tested on.</p>
+-- * ResourceSpecificResults [ResourceSpecificResultListType] <p>The individual results of the simulation of the API operation specified in EvalActionName on each resource.</p>
+-- * EvalActionName [ActionNameType] <p>The name of the API operation tested on the indicated resource.</p>
 -- * MissingContextValues [ContextKeyNamesResultListType] <p>A list of context keys that are required by the included input policies but that were not provided by one of the input parameters. This list is used when the resource in a simulation is "*", either explicitly, or when the <code>ResourceArns</code> parameter blank. If you include a list of resources, then any missing context values are instead included under the <code>ResourceSpecificResults</code> section. To discover the context keys used by a set of policies, you can call <a>GetContextKeysForCustomPolicy</a> or <a>GetContextKeysForPrincipalPolicy</a>.</p>
 -- * EvalDecision [PolicyEvaluationDecisionType] <p>The result of the simulation.</p>
 -- Required key: EvalActionName
@@ -1947,9 +2070,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NewPath [pathType] <p>New path for the IAM group. Only include this if changing the group's path.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- * GroupName [groupNameType] <p>Name of the IAM group to update. If you're changing the name of the group, this is the original name.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * NewGroupName [groupNameType] <p>New name for the IAM group. Only include this if changing the group's name.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * NewPath [pathType] <p>New path for the IAM group. Only include this if changing the group's path.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * GroupName [groupNameType] <p>Name of the IAM group to update. If you're changing the name of the group, this is the original name.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * NewGroupName [groupNameType] <p>New name for the IAM group. Only include this if changing the group's name.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: GroupName
 -- @return UpdateGroupRequest structure as a key-value pair table
 function M.UpdateGroupRequest(args)
@@ -2056,13 +2179,14 @@ function M.ListPolicyVersionsResponse(args)
     }
 end
 
-keys.Policy = { ["PolicyName"] = true, ["Description"] = true, ["CreateDate"] = true, ["AttachmentCount"] = true, ["IsAttachable"] = true, ["PolicyId"] = true, ["DefaultVersionId"] = true, ["Path"] = true, ["Arn"] = true, ["UpdateDate"] = true, nil }
+keys.Policy = { ["PolicyName"] = true, ["Description"] = true, ["PermissionsBoundaryUsageCount"] = true, ["CreateDate"] = true, ["AttachmentCount"] = true, ["IsAttachable"] = true, ["PolicyId"] = true, ["DefaultVersionId"] = true, ["Path"] = true, ["Arn"] = true, ["UpdateDate"] = true, nil }
 
 function asserts.AssertPolicy(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Policy to be of type 'table'")
 	if struct["PolicyName"] then asserts.AssertpolicyNameType(struct["PolicyName"]) end
 	if struct["Description"] then asserts.AssertpolicyDescriptionType(struct["Description"]) end
+	if struct["PermissionsBoundaryUsageCount"] then asserts.AssertattachmentCountType(struct["PermissionsBoundaryUsageCount"]) end
 	if struct["CreateDate"] then asserts.AssertdateType(struct["CreateDate"]) end
 	if struct["AttachmentCount"] then asserts.AssertattachmentCountType(struct["AttachmentCount"]) end
 	if struct["IsAttachable"] then asserts.AssertbooleanType(struct["IsAttachable"]) end
@@ -2077,11 +2201,12 @@ function asserts.AssertPolicy(struct)
 end
 
 --- Create a structure of type Policy
--- <p>Contains information about a managed policy.</p> <p>This data type is used as a response element in the <a>CreatePolicy</a>, <a>GetPolicy</a>, and <a>ListPolicies</a> actions. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
+-- <p>Contains information about a managed policy.</p> <p>This data type is used as a response element in the <a>CreatePolicy</a>, <a>GetPolicy</a>, and <a>ListPolicies</a> operations. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * PolicyName [policyNameType] <p>The friendly name (not ARN) identifying the policy.</p>
 -- * Description [policyDescriptionType] <p>A friendly description of the policy.</p> <p>This element is included in the response to the <a>GetPolicy</a> operation. It is not included in the response to the <a>ListPolicies</a> operation. </p>
+-- * PermissionsBoundaryUsageCount [attachmentCountType] <p>The number of entities (users and roles) for which the policy is used to set the permissions boundary. </p> <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions Boundaries for IAM Identities </a> in the <i>IAM User Guide</i>.</p>
 -- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the policy was created.</p>
 -- * AttachmentCount [attachmentCountType] <p>The number of entities (users, groups, and roles) that the policy is attached to.</p>
 -- * IsAttachable [booleanType] <p>Specifies whether the policy can be attached to an IAM user, group, or role.</p>
@@ -2102,6 +2227,7 @@ function M.Policy(args)
 	local all_args = { 
 		["PolicyName"] = args["PolicyName"],
 		["Description"] = args["Description"],
+		["PermissionsBoundaryUsageCount"] = args["PermissionsBoundaryUsageCount"],
 		["CreateDate"] = args["CreateDate"],
 		["AttachmentCount"] = args["AttachmentCount"],
 		["IsAttachable"] = args["IsAttachable"],
@@ -2267,7 +2393,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: InstanceProfileName
 -- @return DeleteInstanceProfileRequest structure as a key-value pair table
 function M.DeleteInstanceProfileRequest(args)
@@ -2454,12 +2580,12 @@ function asserts.AssertResourceSpecificResult(struct)
 end
 
 --- Create a structure of type ResourceSpecificResult
--- <p>Contains the result of the simulation of a single API action call on a single resource.</p> <p>This data type is used by a member of the <a>EvaluationResult</a> data type.</p>
+-- <p>Contains the result of the simulation of a single API operation call on a single resource.</p> <p>This data type is used by a member of the <a>EvaluationResult</a> data type.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * EvalResourceDecision [PolicyEvaluationDecisionType] <p>The result of the simulation of the simulated API action on the resource specified in <code>EvalResourceName</code>.</p>
+-- * EvalResourceDecision [PolicyEvaluationDecisionType] <p>The result of the simulation of the simulated API operation on the resource specified in <code>EvalResourceName</code>.</p>
 -- * MissingContextValues [ContextKeyNamesResultListType] <p>A list of context keys that are required by the included input policies but that were not provided by one of the input parameters. This list is used when a list of ARNs is included in the <code>ResourceArns</code> parameter instead of "*". If you do not specify individual resources, by setting <code>ResourceArns</code> to "*" or by not including the <code>ResourceArns</code> parameter, then any missing context values are instead included under the <code>EvaluationResults</code> section. To discover the context keys used by a set of policies, you can call <a>GetContextKeysForCustomPolicy</a> or <a>GetContextKeysForPrincipalPolicy</a>.</p>
--- * MatchedStatements [StatementListType] <p>A list of the statements in the input policies that determine the result for this part of the simulation. Remember that even if multiple statements allow the action on the resource, if <i>any</i> statement denies that action, then the explicit deny overrides any allow, and the deny statement is the only entry included in the result.</p>
+-- * MatchedStatements [StatementListType] <p>A list of the statements in the input policies that determine the result for this part of the simulation. Remember that even if multiple statements allow the operation on the resource, if <i>any</i> statement denies that operation, then the explicit deny overrides any allow, and the deny statement is the only entry included in the result.</p>
 -- * EvalDecisionDetails [EvalDecisionDetailsType] <p>Additional details about the results of the evaluation decision. When there are both IAM policies and resource policies, this parameter explains how each set of policies contributes to the final evaluation decision. When simulating cross-account access to a resource, both the resource-based policy and the caller's IAM policy must grant access.</p>
 -- * EvalResourceName [ResourceNameType] <p>The name of the simulated resource, in Amazon Resource Name (ARN) format.</p>
 -- Required key: EvalResourceName
@@ -2506,7 +2632,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the user the signing certificate belongs to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [existingUserNameType] <p>The name of the user the signing certificate belongs to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * CertificateId [certificateIdType] <p>The ID of the signing certificate to delete.</p> <p>The format of this parameter, as described by its <a href="http://wikipedia.org/wiki/regex">regex</a> pattern, is a string of characters that can be upper- or lower-cased letters or digits.</p>
 -- Required key: CertificateId
 -- @return DeleteSigningCertificateRequest structure as a key-value pair table
@@ -2549,7 +2675,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- * PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example, the prefix <code>/application_abc/component_xyz/</code> gets all instance profiles whose path starts with <code>/application_abc/component_xyz/</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all instance profiles. This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example, the prefix <code>/application_abc/component_xyz/</code> gets all instance profiles whose path starts with <code>/application_abc/component_xyz/</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all instance profiles. This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListInstanceProfilesRequest structure as a key-value pair table
 function M.ListInstanceProfilesRequest(args)
@@ -2611,49 +2737,6 @@ function M.OpenIDConnectProviderListEntry(args)
     }
 end
 
-keys.ListAccessKeysRequest = { ["UserName"] = true, ["Marker"] = true, ["MaxItems"] = true, nil }
-
-function asserts.AssertListAccessKeysRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ListAccessKeysRequest to be of type 'table'")
-	if struct["UserName"] then asserts.AssertexistingUserNameType(struct["UserName"]) end
-	if struct["Marker"] then asserts.AssertmarkerType(struct["Marker"]) end
-	if struct["MaxItems"] then asserts.AssertmaxItemsType(struct["MaxItems"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ListAccessKeysRequest[k], "ListAccessKeysRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ListAccessKeysRequest
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the user.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
--- @return ListAccessKeysRequest structure as a key-value pair table
-function M.ListAccessKeysRequest(args)
-	assert(args, "You must provide an argument table when creating ListAccessKeysRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["UserName"] = args["UserName"],
-		["Marker"] = args["Marker"],
-		["MaxItems"] = args["MaxItems"],
-	}
-	asserts.AssertListAccessKeysRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.GetSSHPublicKeyRequest = { ["UserName"] = true, ["SSHPublicKeyId"] = true, ["Encoding"] = true, nil }
 
 function asserts.AssertGetSSHPublicKeyRequest(struct)
@@ -2674,7 +2757,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * SSHPublicKeyId [publicKeyIdType] <p>The unique identifier for the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
 -- * Encoding [encodingType] <p>Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use <code>SSH</code>. To retrieve the public key in PEM format, use <code>PEM</code>.</p>
 -- Required key: UserName
@@ -2817,7 +2900,7 @@ function asserts.AssertServerCertificateMetadata(struct)
 end
 
 --- Create a structure of type ServerCertificateMetadata
--- <p>Contains information about a server certificate without its certificate body, certificate chain, and private key.</p> <p> This data type is used as a response element in the <a>UploadServerCertificate</a> and <a>ListServerCertificates</a> actions. </p>
+-- <p>Contains information about a server certificate without its certificate body, certificate chain, and private key.</p> <p> This data type is used as a response element in the <a>UploadServerCertificate</a> and <a>ListServerCertificates</a> operations. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ServerCertificateId [idType] <p> The stable and unique string identifying the server certificate. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
@@ -2872,7 +2955,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ServerCertificateName [serverCertificateNameType] <p>The name of the server certificate you want to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * ServerCertificateName [serverCertificateNameType] <p>The name of the server certificate you want to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: ServerCertificateName
 -- @return DeleteServerCertificateRequest structure as a key-value pair table
 function M.DeleteServerCertificateRequest(args)
@@ -2912,8 +2995,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Path [pathType] <p> The path to the group. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- * GroupName [groupNameType] <p>The name of the group to create. Do not include the path in this value.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-. The group name must be unique within the account. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".</p>
+-- * Path [pathType] <p> The path to the group. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * GroupName [groupNameType] <p>The name of the group to create. Do not include the path in this value.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-. The group name must be unique within the account. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".</p>
 -- Required key: GroupName
 -- @return CreateGroupRequest structure as a key-value pair table
 function M.CreateGroupRequest(args)
@@ -2929,52 +3012,6 @@ function M.CreateGroupRequest(args)
 		["GroupName"] = args["GroupName"],
 	}
 	asserts.AssertCreateGroupRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.PolicyVersion = { ["CreateDate"] = true, ["VersionId"] = true, ["Document"] = true, ["IsDefaultVersion"] = true, nil }
-
-function asserts.AssertPolicyVersion(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected PolicyVersion to be of type 'table'")
-	if struct["CreateDate"] then asserts.AssertdateType(struct["CreateDate"]) end
-	if struct["VersionId"] then asserts.AssertpolicyVersionIdType(struct["VersionId"]) end
-	if struct["Document"] then asserts.AssertpolicyDocumentType(struct["Document"]) end
-	if struct["IsDefaultVersion"] then asserts.AssertbooleanType(struct["IsDefaultVersion"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.PolicyVersion[k], "PolicyVersion contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type PolicyVersion
--- <p>Contains information about a version of a managed policy.</p> <p>This data type is used as a response element in the <a>CreatePolicyVersion</a>, <a>GetPolicyVersion</a>, <a>ListPolicyVersions</a>, and <a>GetAccountAuthorizationDetails</a> actions. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the policy version was created.</p>
--- * VersionId [policyVersionIdType] <p>The identifier for the policy version.</p> <p>Policy version identifiers always begin with <code>v</code> (always lowercase). When a policy is created, the first policy version is <code>v1</code>. </p>
--- * Document [policyDocumentType] <p>The policy document.</p> <p>The policy document is returned in the response to the <a>GetPolicyVersion</a> and <a>GetAccountAuthorizationDetails</a> operations. It is not returned in the response to the <a>CreatePolicyVersion</a> or <a>ListPolicyVersions</a> operations. </p>
--- * IsDefaultVersion [booleanType] <p>Specifies whether the policy version is set as the policy's default version.</p>
--- @return PolicyVersion structure as a key-value pair table
-function M.PolicyVersion(args)
-	assert(args, "You must provide an argument table when creating PolicyVersion")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["CreateDate"] = args["CreateDate"],
-		["VersionId"] = args["VersionId"],
-		["Document"] = args["Document"],
-		["IsDefaultVersion"] = args["IsDefaultVersion"],
-	}
-	asserts.AssertPolicyVersion(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3000,8 +3037,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * PolicySourceArn [arnType] <p>The ARN of a user, group, or role whose policies contain the context keys that you want listed. If you specify a user, the list includes context keys that are found in all policies attached to the user as well as to all groups that the user is a member of. If you pick a group or a role, then it includes only those context keys that are found in policies attached to that entity. Note that all parameters are shown in unencoded form here for clarity, but must be URL encoded to be included as a part of a real HTML request.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- * PolicyInputList [SimulationPolicyListType] <p>An optional list of additional policies for which you want the list of context keys that are referenced.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * PolicySourceArn [arnType] <p>The ARN of a user, group, or role whose policies contain the context keys that you want listed. If you specify a user, the list includes context keys that are found in all policies that are attached to the user. The list also includes all groups that the user is a member of. If you pick a group or a role, then it includes only those context keys that are found in policies attached to that entity. Note that all parameters are shown in unencoded form here for clarity, but must be URL encoded to be included as a part of a real HTML request.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- * PolicyInputList [SimulationPolicyListType] <p>An optional list of additional policies for which you want the list of context keys that are referenced.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul>
 -- Required key: PolicySourceArn
 -- @return GetContextKeysForPrincipalPolicyRequest structure as a key-value pair table
 function M.GetContextKeysForPrincipalPolicyRequest(args)
@@ -3043,7 +3080,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the user to list policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [existingUserNameType] <p>The name of the user to list policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- Required key: UserName
@@ -3086,7 +3123,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name of the user whose service-specific credentials you want information about. If this value is not specified then the operation assumes the user whose credentials are used to call the operation.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [userNameType] <p>The name of the user whose service-specific credentials you want information about. If this value is not specified, then the operation assumes the user whose credentials are used to call the operation.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * ServiceName [serviceName] <p>Filters the returned results to only those for the specified AWS service. If not specified, then AWS returns service-specific credentials for all services.</p>
 -- @return ListServiceSpecificCredentialsRequest structure as a key-value pair table
 function M.ListServiceSpecificCredentialsRequest(args)
@@ -3127,7 +3164,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name of the IAM user to list SSH public keys for. If none is specified, the UserName field is determined implicitly based on the AWS access key used to sign the request.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [userNameType] <p>The name of the IAM user to list SSH public keys for. If none is specified, the <code>UserName</code> field is determined implicitly based on the AWS access key used to sign the request.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListSSHPublicKeysRequest structure as a key-value pair table
@@ -3206,7 +3243,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * RoleName [roleNameType] <p>The name of the role to update with the new policy.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- * PolicyDocument [policyDocumentType] <p>The policy that grants an entity permission to assume the role.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * PolicyDocument [policyDocumentType] <p>The policy that grants an entity permission to assume the role.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul>
 -- Required key: RoleName
 -- Required key: PolicyDocument
 -- @return UpdateAssumeRolePolicyRequest structure as a key-value pair table
@@ -3249,8 +3286,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the user to remove.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * GroupName [groupNameType] <p>The name of the group to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [existingUserNameType] <p>The name of the user to remove.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * GroupName [groupNameType] <p>The name of the group to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: GroupName
 -- Required key: UserName
 -- @return RemoveUserFromGroupRequest structure as a key-value pair table
@@ -3275,70 +3312,14 @@ function M.RemoveUserFromGroupRequest(args)
     }
 end
 
-keys.SigningCertificate = { ["UserName"] = true, ["Status"] = true, ["CertificateBody"] = true, ["CertificateId"] = true, ["UploadDate"] = true, nil }
-
-function asserts.AssertSigningCertificate(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SigningCertificate to be of type 'table'")
-	assert(struct["UserName"], "Expected key UserName to exist in table")
-	assert(struct["CertificateId"], "Expected key CertificateId to exist in table")
-	assert(struct["CertificateBody"], "Expected key CertificateBody to exist in table")
-	assert(struct["Status"], "Expected key Status to exist in table")
-	if struct["UserName"] then asserts.AssertuserNameType(struct["UserName"]) end
-	if struct["Status"] then asserts.AssertstatusType(struct["Status"]) end
-	if struct["CertificateBody"] then asserts.AssertcertificateBodyType(struct["CertificateBody"]) end
-	if struct["CertificateId"] then asserts.AssertcertificateIdType(struct["CertificateId"]) end
-	if struct["UploadDate"] then asserts.AssertdateType(struct["UploadDate"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.SigningCertificate[k], "SigningCertificate contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SigningCertificate
--- <p>Contains information about an X.509 signing certificate.</p> <p>This data type is used as a response element in the <a>UploadSigningCertificate</a> and <a>ListSigningCertificates</a> actions. </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * UserName [userNameType] <p>The name of the user the signing certificate is associated with.</p>
--- * Status [statusType] <p>The status of the signing certificate. <code>Active</code> means the key is valid for API calls, while <code>Inactive</code> means it is not.</p>
--- * CertificateBody [certificateBodyType] <p>The contents of the signing certificate.</p>
--- * CertificateId [certificateIdType] <p>The ID for the signing certificate.</p>
--- * UploadDate [dateType] <p>The date when the signing certificate was uploaded.</p>
--- Required key: UserName
--- Required key: CertificateId
--- Required key: CertificateBody
--- Required key: Status
--- @return SigningCertificate structure as a key-value pair table
-function M.SigningCertificate(args)
-	assert(args, "You must provide an argument table when creating SigningCertificate")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["UserName"] = args["UserName"],
-		["Status"] = args["Status"],
-		["CertificateBody"] = args["CertificateBody"],
-		["CertificateId"] = args["CertificateId"],
-		["UploadDate"] = args["UploadDate"],
-	}
-	asserts.AssertSigningCertificate(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ManagedPolicyDetail = { ["PolicyName"] = true, ["Description"] = true, ["CreateDate"] = true, ["AttachmentCount"] = true, ["IsAttachable"] = true, ["PolicyId"] = true, ["DefaultVersionId"] = true, ["PolicyVersionList"] = true, ["Path"] = true, ["Arn"] = true, ["UpdateDate"] = true, nil }
+keys.ManagedPolicyDetail = { ["PolicyName"] = true, ["Description"] = true, ["PermissionsBoundaryUsageCount"] = true, ["CreateDate"] = true, ["AttachmentCount"] = true, ["IsAttachable"] = true, ["PolicyId"] = true, ["DefaultVersionId"] = true, ["PolicyVersionList"] = true, ["Path"] = true, ["Arn"] = true, ["UpdateDate"] = true, nil }
 
 function asserts.AssertManagedPolicyDetail(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ManagedPolicyDetail to be of type 'table'")
 	if struct["PolicyName"] then asserts.AssertpolicyNameType(struct["PolicyName"]) end
 	if struct["Description"] then asserts.AssertpolicyDescriptionType(struct["Description"]) end
+	if struct["PermissionsBoundaryUsageCount"] then asserts.AssertattachmentCountType(struct["PermissionsBoundaryUsageCount"]) end
 	if struct["CreateDate"] then asserts.AssertdateType(struct["CreateDate"]) end
 	if struct["AttachmentCount"] then asserts.AssertattachmentCountType(struct["AttachmentCount"]) end
 	if struct["IsAttachable"] then asserts.AssertbooleanType(struct["IsAttachable"]) end
@@ -3354,11 +3335,12 @@ function asserts.AssertManagedPolicyDetail(struct)
 end
 
 --- Create a structure of type ManagedPolicyDetail
--- <p>Contains information about a managed policy, including the policy's ARN, versions, and the number of principal entities (users, groups, and roles) that the policy is attached to.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> action.</p> <p>For more information about managed policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
+-- <p>Contains information about a managed policy, including the policy's ARN, versions, and the number of principal entities (users, groups, and roles) that the policy is attached to.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> operation.</p> <p>For more information about managed policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * PolicyName [policyNameType] <p>The friendly name (not ARN) identifying the policy.</p>
 -- * Description [policyDescriptionType] <p>A friendly description of the policy.</p>
+-- * PermissionsBoundaryUsageCount [attachmentCountType] <p>The number of entities (users and roles) for which the policy is used as the permissions boundary. </p> <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions Boundaries for IAM Identities </a> in the <i>IAM User Guide</i>.</p>
 -- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the policy was created.</p>
 -- * AttachmentCount [attachmentCountType] <p>The number of principal entities (users, groups, and roles) that the policy is attached to.</p>
 -- * IsAttachable [booleanType] <p>Specifies whether the policy can be attached to an IAM user, group, or role.</p>
@@ -3380,6 +3362,7 @@ function M.ManagedPolicyDetail(args)
 	local all_args = { 
 		["PolicyName"] = args["PolicyName"],
 		["Description"] = args["Description"],
+		["PermissionsBoundaryUsageCount"] = args["PermissionsBoundaryUsageCount"],
 		["CreateDate"] = args["CreateDate"],
 		["AttachmentCount"] = args["AttachmentCount"],
 		["IsAttachable"] = args["IsAttachable"],
@@ -3499,8 +3482,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name (friendly name, not ARN) identifying the user that the policy is embedded in.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * PolicyName [policyNameType] <p>The name identifying the policy document to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [existingUserNameType] <p>The name (friendly name, not ARN) identifying the user that the policy is embedded in.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * PolicyName [policyNameType] <p>The name identifying the policy document to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: UserName
 -- Required key: PolicyName
 -- @return DeleteUserPolicyRequest structure as a key-value pair table
@@ -3580,7 +3563,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to get information for. You can get a list of OIDC provider resource ARNs by using the <a>ListOpenIDConnectProviders</a> action.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- * OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to get information for. You can get a list of OIDC provider resource ARNs by using the <a>ListOpenIDConnectProviders</a> operation.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
 -- Required key: OpenIDConnectProviderArn
 -- @return GetOpenIDConnectProviderRequest structure as a key-value pair table
 function M.GetOpenIDConnectProviderRequest(args)
@@ -3655,7 +3638,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the user to get information about.</p> <p>This parameter is optional. If it is not included, it defaults to the user making the request. This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [existingUserNameType] <p>The name of the user to get information about.</p> <p>This parameter is optional. If it is not included, it defaults to the user making the request. This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- @return GetUserRequest structure as a key-value pair table
 function M.GetUserRequest(args)
 	assert(args, "You must provide an argument table when creating GetUserRequest")
@@ -3727,7 +3710,7 @@ function asserts.AssertAttachedPolicy(struct)
 end
 
 --- Create a structure of type AttachedPolicy
--- <p>Contains information about an attached policy.</p> <p>An attached policy is a managed policy that has been attached to a user, group, or role. This data type is used as a response element in the <a>ListAttachedGroupPolicies</a>, <a>ListAttachedRolePolicies</a>, <a>ListAttachedUserPolicies</a>, and <a>GetAccountAuthorizationDetails</a> actions. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
+-- <p>Contains information about an attached policy.</p> <p>An attached policy is a managed policy that has been attached to a user, group, or role. This data type is used as a response element in the <a>ListAttachedGroupPolicies</a>, <a>ListAttachedRolePolicies</a>, <a>ListAttachedUserPolicies</a>, and <a>GetAccountAuthorizationDetails</a> operations. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * PolicyName [policyNameType] <p>The friendly name of the attached policy.</p>
@@ -3773,8 +3756,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the user whose key you want to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * Status [statusType] <p> The status you want to assign to the secret access key. <code>Active</code> means the key can be used for API calls to AWS, while <code>Inactive</code> means the key cannot be used.</p>
+-- * UserName [existingUserNameType] <p>The name of the user whose key you want to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * Status [statusType] <p> The status you want to assign to the secret access key. <code>Active</code> means that the key can be used for API calls to AWS, while <code>Inactive</code> means that the key cannot be used.</p>
 -- * AccessKeyId [accessKeyIdType] <p>The access key ID of the secret access key you want to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
 -- Required key: AccessKeyId
 -- Required key: Status
@@ -3819,9 +3802,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>Name of the user to update. If you're changing the name of the user, this is the original user name.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * NewPath [pathType] <p>New path for the IAM user. Include this parameter only if you're changing the user's path.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- * NewUserName [userNameType] <p>New name for the user. Include this parameter only if you're changing the user's name.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [existingUserNameType] <p>Name of the user to update. If you're changing the name of the user, this is the original user name.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * NewPath [pathType] <p>New path for the IAM user. Include this parameter only if you're changing the user's path.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * NewUserName [userNameType] <p>New name for the user. Include this parameter only if you're changing the user's name.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: UserName
 -- @return UpdateUserRequest structure as a key-value pair table
 function M.UpdateUserRequest(args)
@@ -3866,8 +3849,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- * GroupName [groupNameType] <p>The name (friendly name, not ARN) of the group to list attached policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * PathPrefix [policyPathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * GroupName [groupNameType] <p>The name (friendly name, not ARN) of the group to list attached policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * PathPrefix [policyPathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- Required key: GroupName
 -- @return ListAttachedGroupPoliciesRequest structure as a key-value pair table
@@ -3916,11 +3899,11 @@ function asserts.AssertSSHPublicKey(struct)
 end
 
 --- Create a structure of type SSHPublicKey
--- <p>Contains information about an SSH public key.</p> <p>This data type is used as a response element in the <a>GetSSHPublicKey</a> and <a>UploadSSHPublicKey</a> actions. </p>
+-- <p>Contains information about an SSH public key.</p> <p>This data type is used as a response element in the <a>GetSSHPublicKey</a> and <a>UploadSSHPublicKey</a> operations. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p>
--- * Status [statusType] <p>The status of the SSH public key. <code>Active</code> means the key can be used for authentication with an AWS CodeCommit repository. <code>Inactive</code> means the key cannot be used.</p>
+-- * Status [statusType] <p>The status of the SSH public key. <code>Active</code> means that the key can be used for authentication with an AWS CodeCommit repository. <code>Inactive</code> means that the key cannot be used.</p>
 -- * SSHPublicKeyBody [publicKeyMaterialType] <p>The SSH public key.</p>
 -- * UploadDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the SSH public key was uploaded.</p>
 -- * Fingerprint [publicKeyFingerprintType] <p>The MD5 message digest of the SSH public key.</p>
@@ -4017,7 +4000,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name (friendly name, not ARN) of the IAM user to attach the policy to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [userNameType] <p>The name (friendly name, not ARN) of the IAM user to attach the policy to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy you want to attach.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
 -- Required key: UserName
 -- Required key: PolicyArn
@@ -4143,7 +4126,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name of the IAM user that is to be associated with the credentials. The new service-specific credentials have the same permissions as the associated user except that they can be used only to access the specified service.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [userNameType] <p>The name of the IAM user that is to be associated with the credentials. The new service-specific credentials have the same permissions as the associated user except that they can be used only to access the specified service.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * ServiceName [serviceName] <p>The name of the AWS service that is to be associated with the credentials. The service you specify here is the only service that can be accessed using these credentials.</p>
 -- Required key: UserName
 -- Required key: ServiceName
@@ -4225,7 +4208,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- * GroupName [groupNameType] <p>The name of the group to list policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * GroupName [groupNameType] <p>The name of the group to list policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- Required key: GroupName
 -- @return ListGroupPoliciesRequest structure as a key-value pair table
@@ -4269,7 +4252,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- * PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example: <code>/division_abc/subdivision_xyz/</code>, which would get all user names whose path starts with <code>/division_abc/subdivision_xyz/</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all user names. This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example: <code>/division_abc/subdivision_xyz/</code>, which would get all user names whose path starts with <code>/division_abc/subdivision_xyz/</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all user names. This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListUsersRequest structure as a key-value pair table
 function M.ListUsersRequest(args)
@@ -4356,8 +4339,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name of the IAM user to associate the SSH public key with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * SSHPublicKeyBody [publicKeyMaterialType] <p>The SSH public key. The public key must be encoded in ssh-rsa format or PEM format.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * UserName [userNameType] <p>The name of the IAM user to associate the SSH public key with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * SSHPublicKeyBody [publicKeyMaterialType] <p>The SSH public key. The public key must be encoded in ssh-rsa format or PEM format. The miminum bit-length of the public key is 2048 bits. For example, you can generate a 2048-bit key, and the resulting PEM file is 1679 bytes long.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul>
 -- Required key: UserName
 -- Required key: SSHPublicKeyBody
 -- @return UploadSSHPublicKeyRequest structure as a key-value pair table
@@ -4382,11 +4365,12 @@ function M.UploadSSHPublicKeyRequest(args)
     }
 end
 
-keys.RoleDetail = { ["AssumeRolePolicyDocument"] = true, ["RoleId"] = true, ["CreateDate"] = true, ["InstanceProfileList"] = true, ["RoleName"] = true, ["Path"] = true, ["AttachedManagedPolicies"] = true, ["RolePolicyList"] = true, ["Arn"] = true, nil }
+keys.RoleDetail = { ["PermissionsBoundary"] = true, ["AssumeRolePolicyDocument"] = true, ["RoleId"] = true, ["CreateDate"] = true, ["InstanceProfileList"] = true, ["RoleName"] = true, ["Path"] = true, ["AttachedManagedPolicies"] = true, ["RolePolicyList"] = true, ["Arn"] = true, nil }
 
 function asserts.AssertRoleDetail(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RoleDetail to be of type 'table'")
+	if struct["PermissionsBoundary"] then asserts.AssertAttachedPermissionsBoundary(struct["PermissionsBoundary"]) end
 	if struct["AssumeRolePolicyDocument"] then asserts.AssertpolicyDocumentType(struct["AssumeRolePolicyDocument"]) end
 	if struct["RoleId"] then asserts.AssertidType(struct["RoleId"]) end
 	if struct["CreateDate"] then asserts.AssertdateType(struct["CreateDate"]) end
@@ -4402,9 +4386,10 @@ function asserts.AssertRoleDetail(struct)
 end
 
 --- Create a structure of type RoleDetail
--- <p>Contains information about an IAM role, including all of the role's policies.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> action.</p>
+-- <p>Contains information about an IAM role, including all of the role's policies.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * PermissionsBoundary [AttachedPermissionsBoundary] <p>The ARN of the policy used to set the permissions boundary for the role.</p> <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions Boundaries for IAM Identities </a> in the <i>IAM User Guide</i>.</p>
 -- * AssumeRolePolicyDocument [policyDocumentType] <p>The trust policy that grants permission to assume the role.</p>
 -- * RoleId [idType] <p>The stable and unique string identifying the role. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
 -- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the role was created.</p>
@@ -4424,6 +4409,7 @@ function M.RoleDetail(args)
     local header_args = { 
     }
 	local all_args = { 
+		["PermissionsBoundary"] = args["PermissionsBoundary"],
 		["AssumeRolePolicyDocument"] = args["AssumeRolePolicyDocument"],
 		["RoleId"] = args["RoleId"],
 		["CreateDate"] = args["CreateDate"],
@@ -4456,7 +4442,7 @@ function asserts.AssertPolicyDetail(struct)
 end
 
 --- Create a structure of type PolicyDetail
--- <p>Contains information about an IAM policy, including the policy document.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> action.</p>
+-- <p>Contains information about an IAM policy, including the policy document.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * PolicyName [policyNameType] <p>The name of the policy.</p>
@@ -4543,7 +4529,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name of the user whose login profile you want to retrieve.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [userNameType] <p>The name of the user whose login profile you want to retrieve.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: UserName
 -- @return GetLoginProfileRequest structure as a key-value pair table
 function M.GetLoginProfileRequest(args)
@@ -4605,6 +4591,70 @@ function M.GetPolicyRequest(args)
     }
 end
 
+keys.PasswordPolicy = { ["AllowUsersToChangePassword"] = true, ["RequireLowercaseCharacters"] = true, ["RequireUppercaseCharacters"] = true, ["MinimumPasswordLength"] = true, ["RequireNumbers"] = true, ["PasswordReusePrevention"] = true, ["HardExpiry"] = true, ["RequireSymbols"] = true, ["MaxPasswordAge"] = true, ["ExpirePasswords"] = true, nil }
+
+function asserts.AssertPasswordPolicy(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PasswordPolicy to be of type 'table'")
+	if struct["AllowUsersToChangePassword"] then asserts.AssertbooleanType(struct["AllowUsersToChangePassword"]) end
+	if struct["RequireLowercaseCharacters"] then asserts.AssertbooleanType(struct["RequireLowercaseCharacters"]) end
+	if struct["RequireUppercaseCharacters"] then asserts.AssertbooleanType(struct["RequireUppercaseCharacters"]) end
+	if struct["MinimumPasswordLength"] then asserts.AssertminimumPasswordLengthType(struct["MinimumPasswordLength"]) end
+	if struct["RequireNumbers"] then asserts.AssertbooleanType(struct["RequireNumbers"]) end
+	if struct["PasswordReusePrevention"] then asserts.AssertpasswordReusePreventionType(struct["PasswordReusePrevention"]) end
+	if struct["HardExpiry"] then asserts.AssertbooleanObjectType(struct["HardExpiry"]) end
+	if struct["RequireSymbols"] then asserts.AssertbooleanType(struct["RequireSymbols"]) end
+	if struct["MaxPasswordAge"] then asserts.AssertmaxPasswordAgeType(struct["MaxPasswordAge"]) end
+	if struct["ExpirePasswords"] then asserts.AssertbooleanType(struct["ExpirePasswords"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PasswordPolicy[k], "PasswordPolicy contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PasswordPolicy
+-- <p>Contains information about the account password policy.</p> <p> This data type is used as a response element in the <a>GetAccountPasswordPolicy</a> operation. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AllowUsersToChangePassword [booleanType] <p>Specifies whether IAM users are allowed to change their own password.</p>
+-- * RequireLowercaseCharacters [booleanType] <p>Specifies whether to require lowercase characters for IAM user passwords.</p>
+-- * RequireUppercaseCharacters [booleanType] <p>Specifies whether to require uppercase characters for IAM user passwords.</p>
+-- * MinimumPasswordLength [minimumPasswordLengthType] <p>Minimum length to require for IAM user passwords.</p>
+-- * RequireNumbers [booleanType] <p>Specifies whether to require numbers for IAM user passwords.</p>
+-- * PasswordReusePrevention [passwordReusePreventionType] <p>Specifies the number of previous passwords that IAM users are prevented from reusing.</p>
+-- * HardExpiry [booleanObjectType] <p>Specifies whether IAM users are prevented from setting a new password after their password has expired.</p>
+-- * RequireSymbols [booleanType] <p>Specifies whether to require symbols for IAM user passwords.</p>
+-- * MaxPasswordAge [maxPasswordAgeType] <p>The number of days that an IAM user password is valid.</p>
+-- * ExpirePasswords [booleanType] <p>Indicates whether passwords in the account expire. Returns true if <code>MaxPasswordAge</code> contains a value greater than 0. Returns false if MaxPasswordAge is 0 or not present.</p>
+-- @return PasswordPolicy structure as a key-value pair table
+function M.PasswordPolicy(args)
+	assert(args, "You must provide an argument table when creating PasswordPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["AllowUsersToChangePassword"] = args["AllowUsersToChangePassword"],
+		["RequireLowercaseCharacters"] = args["RequireLowercaseCharacters"],
+		["RequireUppercaseCharacters"] = args["RequireUppercaseCharacters"],
+		["MinimumPasswordLength"] = args["MinimumPasswordLength"],
+		["RequireNumbers"] = args["RequireNumbers"],
+		["PasswordReusePrevention"] = args["PasswordReusePrevention"],
+		["HardExpiry"] = args["HardExpiry"],
+		["RequireSymbols"] = args["RequireSymbols"],
+		["MaxPasswordAge"] = args["MaxPasswordAge"],
+		["ExpirePasswords"] = args["ExpirePasswords"],
+	}
+	asserts.AssertPasswordPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListSigningCertificatesRequest = { ["UserName"] = true, ["Marker"] = true, ["MaxItems"] = true, nil }
 
 function asserts.AssertListSigningCertificatesRequest(struct)
@@ -4622,7 +4672,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the IAM user whose signing certificates you want to examine.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [existingUserNameType] <p>The name of the IAM user whose signing certificates you want to examine.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListSigningCertificatesRequest structure as a key-value pair table
@@ -4703,8 +4753,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GroupName [groupNameType] <p>The name (friendly name, not ARN) identifying the group that the policy is embedded in.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * PolicyName [policyNameType] <p>The name identifying the policy document to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * GroupName [groupNameType] <p>The name (friendly name, not ARN) identifying the group that the policy is embedded in.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * PolicyName [policyNameType] <p>The name identifying the policy document to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: GroupName
 -- Required key: PolicyName
 -- @return DeleteGroupPolicyRequest structure as a key-value pair table
@@ -4729,17 +4779,19 @@ function M.DeleteGroupPolicyRequest(args)
     }
 end
 
-keys.CreateRoleRequest = { ["Path"] = true, ["AssumeRolePolicyDocument"] = true, ["Description"] = true, ["RoleName"] = true, nil }
+keys.CreateRoleRequest = { ["Description"] = true, ["AssumeRolePolicyDocument"] = true, ["MaxSessionDuration"] = true, ["RoleName"] = true, ["Path"] = true, ["PermissionsBoundary"] = true, nil }
 
 function asserts.AssertCreateRoleRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateRoleRequest to be of type 'table'")
 	assert(struct["RoleName"], "Expected key RoleName to exist in table")
 	assert(struct["AssumeRolePolicyDocument"], "Expected key AssumeRolePolicyDocument to exist in table")
-	if struct["Path"] then asserts.AssertpathType(struct["Path"]) end
-	if struct["AssumeRolePolicyDocument"] then asserts.AssertpolicyDocumentType(struct["AssumeRolePolicyDocument"]) end
 	if struct["Description"] then asserts.AssertroleDescriptionType(struct["Description"]) end
+	if struct["AssumeRolePolicyDocument"] then asserts.AssertpolicyDocumentType(struct["AssumeRolePolicyDocument"]) end
+	if struct["MaxSessionDuration"] then asserts.AssertroleMaxSessionDurationType(struct["MaxSessionDuration"]) end
 	if struct["RoleName"] then asserts.AssertroleNameType(struct["RoleName"]) end
+	if struct["Path"] then asserts.AssertpathType(struct["Path"]) end
+	if struct["PermissionsBoundary"] then asserts.AssertarnType(struct["PermissionsBoundary"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateRoleRequest[k], "CreateRoleRequest contains unknown key " .. tostring(k))
 	end
@@ -4749,10 +4801,12 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Path [pathType] <p> The path to the role. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- * AssumeRolePolicyDocument [policyDocumentType] <p>The trust relationship policy document that grants an entity permission to assume the role.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- * Description [roleDescriptionType] <p>A customer-provided description of the role.</p>
+-- * Description [roleDescriptionType] <p>A description of the role.</p>
+-- * AssumeRolePolicyDocument [policyDocumentType] <p>The trust relationship policy document that grants an entity permission to assume the role.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul>
+-- * MaxSessionDuration [roleMaxSessionDurationType] <p>The maximum session duration (in seconds) that you want to set for the specified role. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 1 hour to 12 hours.</p> <p>Anyone who assumes the role from the AWS CLI or API can use the <code>DurationSeconds</code> API parameter or the <code>duration-seconds</code> CLI parameter to request a longer session. The <code>MaxSessionDuration</code> setting determines the maximum duration that can be requested using the <code>DurationSeconds</code> parameter. If users don't specify a value for the <code>DurationSeconds</code> parameter, their security credentials are valid for one hour by default. This applies when you use the <code>AssumeRole*</code> API operations or the <code>assume-role*</code> CLI operations but does not apply when you use those operations to create a console URL. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html">Using IAM Roles</a> in the <i>IAM User Guide</i>.</p>
 -- * RoleName [roleNameType] <p>The name of the role to create.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p> <p>Role names are not distinguished by case. For example, you cannot create roles named both "PRODROLE" and "prodrole".</p>
+-- * Path [pathType] <p> The path to the role. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * PermissionsBoundary [arnType] <p>The ARN of the policy that is used to set the permissions boundary for the role.</p>
 -- Required key: RoleName
 -- Required key: AssumeRolePolicyDocument
 -- @return CreateRoleRequest structure as a key-value pair table
@@ -4765,10 +4819,12 @@ function M.CreateRoleRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Path"] = args["Path"],
-		["AssumeRolePolicyDocument"] = args["AssumeRolePolicyDocument"],
 		["Description"] = args["Description"],
+		["AssumeRolePolicyDocument"] = args["AssumeRolePolicyDocument"],
+		["MaxSessionDuration"] = args["MaxSessionDuration"],
 		["RoleName"] = args["RoleName"],
+		["Path"] = args["Path"],
+		["PermissionsBoundary"] = args["PermissionsBoundary"],
 	}
 	asserts.AssertCreateRoleRequest(all_args)
 	return {
@@ -4862,6 +4918,43 @@ function M.CreateLoginProfileResponse(args)
     }
 end
 
+keys.CreateServiceLinkedRoleResponse = { ["Role"] = true, nil }
+
+function asserts.AssertCreateServiceLinkedRoleResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateServiceLinkedRoleResponse to be of type 'table'")
+	if struct["Role"] then asserts.AssertRole(struct["Role"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateServiceLinkedRoleResponse[k], "CreateServiceLinkedRoleResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateServiceLinkedRoleResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Role [Role] <p>A <a>Role</a> object that contains details about the newly created role.</p>
+-- @return CreateServiceLinkedRoleResponse structure as a key-value pair table
+function M.CreateServiceLinkedRoleResponse(args)
+	assert(args, "You must provide an argument table when creating CreateServiceLinkedRoleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Role"] = args["Role"],
+	}
+	asserts.AssertCreateServiceLinkedRoleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DeleteOpenIDConnectProviderRequest = { ["OpenIDConnectProviderArn"] = true, nil }
 
 function asserts.AssertDeleteOpenIDConnectProviderRequest(struct)
@@ -4878,7 +4971,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM OpenID Connect provider resource object to delete. You can get a list of OpenID Connect provider resource ARNs by using the <a>ListOpenIDConnectProviders</a> action.</p>
+-- * OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM OpenID Connect provider resource object to delete. You can get a list of OpenID Connect provider resource ARNs by using the <a>ListOpenIDConnectProviders</a> operation.</p>
 -- Required key: OpenIDConnectProviderArn
 -- @return DeleteOpenIDConnectProviderRequest structure as a key-value pair table
 function M.DeleteOpenIDConnectProviderRequest(args)
@@ -4893,6 +4986,40 @@ function M.DeleteOpenIDConnectProviderRequest(args)
 		["OpenIDConnectProviderArn"] = args["OpenIDConnectProviderArn"],
 	}
 	asserts.AssertDeleteOpenIDConnectProviderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateRoleResponse = { nil }
+
+function asserts.AssertUpdateRoleResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateRoleResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateRoleResponse[k], "UpdateRoleResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateRoleResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateRoleResponse structure as a key-value pair table
+function M.UpdateRoleResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateRoleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertUpdateRoleResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4994,7 +5121,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- * PolicyNames [policyNameListType] <p>A list of policy names.</p>
+-- * PolicyNames [policyNameListType] <p>A list of policy names.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
 -- Required key: PolicyNames
 -- @return ListGroupPoliciesResponse structure as a key-value pair table
@@ -5120,7 +5247,7 @@ function asserts.AssertGroupDetail(struct)
 end
 
 --- Create a structure of type GroupDetail
--- <p>Contains information about an IAM group, including all of the group's policies.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> action.</p>
+-- <p>Contains information about an IAM group, including all of the group's policies.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * GroupPolicyList [policyDetailListType] <p>A list of the inline policies embedded in the group.</p>
@@ -5224,7 +5351,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the user to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [existingUserNameType] <p>The name of the user to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: UserName
 -- @return DeleteUserRequest structure as a key-value pair table
 function M.DeleteUserRequest(args)
@@ -5247,7 +5374,7 @@ function M.DeleteUserRequest(args)
     }
 end
 
-keys.Role = { ["Description"] = true, ["AssumeRolePolicyDocument"] = true, ["RoleId"] = true, ["CreateDate"] = true, ["RoleName"] = true, ["Path"] = true, ["Arn"] = true, nil }
+keys.Role = { ["Description"] = true, ["AssumeRolePolicyDocument"] = true, ["MaxSessionDuration"] = true, ["RoleId"] = true, ["CreateDate"] = true, ["RoleName"] = true, ["Path"] = true, ["Arn"] = true, ["PermissionsBoundary"] = true, nil }
 
 function asserts.AssertRole(struct)
 	assert(struct)
@@ -5259,27 +5386,31 @@ function asserts.AssertRole(struct)
 	assert(struct["CreateDate"], "Expected key CreateDate to exist in table")
 	if struct["Description"] then asserts.AssertroleDescriptionType(struct["Description"]) end
 	if struct["AssumeRolePolicyDocument"] then asserts.AssertpolicyDocumentType(struct["AssumeRolePolicyDocument"]) end
+	if struct["MaxSessionDuration"] then asserts.AssertroleMaxSessionDurationType(struct["MaxSessionDuration"]) end
 	if struct["RoleId"] then asserts.AssertidType(struct["RoleId"]) end
 	if struct["CreateDate"] then asserts.AssertdateType(struct["CreateDate"]) end
 	if struct["RoleName"] then asserts.AssertroleNameType(struct["RoleName"]) end
 	if struct["Path"] then asserts.AssertpathType(struct["Path"]) end
 	if struct["Arn"] then asserts.AssertarnType(struct["Arn"]) end
+	if struct["PermissionsBoundary"] then asserts.AssertAttachedPermissionsBoundary(struct["PermissionsBoundary"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Role[k], "Role contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Role
--- <p>Contains information about an IAM role. This structure is returned as a response element in several APIs that interact with roles.</p>
+-- <p>Contains information about an IAM role. This structure is returned as a response element in several API operations that interact with roles.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Description [roleDescriptionType] <p>A description of the role that you provide.</p>
 -- * AssumeRolePolicyDocument [policyDocumentType] <p>The policy that grants an entity permission to assume the role.</p>
+-- * MaxSessionDuration [roleMaxSessionDurationType] <p>The maximum session duration (in seconds) for the specified role. Anyone who uses the AWS CLI or API to assume the role can specify the duration using the optional <code>DurationSeconds</code> API parameter or <code>duration-seconds</code> CLI parameter.</p>
 -- * RoleId [idType] <p> The stable and unique string identifying the role. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
 -- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the role was created.</p>
 -- * RoleName [roleNameType] <p>The friendly name that identifies the role.</p>
 -- * Path [pathType] <p> The path to the role. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
 -- * Arn [arnType] <p> The Amazon Resource Name (ARN) specifying the role. For more information about ARNs and how to use them in policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i> guide. </p>
+-- * PermissionsBoundary [AttachedPermissionsBoundary] <p>The ARN of the policy used to set the permissions boundary for the role.</p> <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions Boundaries for IAM Identities </a> in the <i>IAM User Guide</i>.</p>
 -- Required key: Path
 -- Required key: RoleName
 -- Required key: RoleId
@@ -5297,11 +5428,13 @@ function M.Role(args)
 	local all_args = { 
 		["Description"] = args["Description"],
 		["AssumeRolePolicyDocument"] = args["AssumeRolePolicyDocument"],
+		["MaxSessionDuration"] = args["MaxSessionDuration"],
 		["RoleId"] = args["RoleId"],
 		["CreateDate"] = args["CreateDate"],
 		["RoleName"] = args["RoleName"],
 		["Path"] = args["Path"],
 		["Arn"] = args["Arn"],
+		["PermissionsBoundary"] = args["PermissionsBoundary"],
 	}
 	asserts.AssertRole(all_args)
 	return {
@@ -5373,7 +5506,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ServerCertificateName [serverCertificateNameType] <p>The name of the server certificate you want to retrieve information about.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * ServerCertificateName [serverCertificateNameType] <p>The name of the server certificate you want to retrieve information about.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: ServerCertificateName
 -- @return GetServerCertificateRequest structure as a key-value pair table
 function M.GetServerCertificateRequest(args)
@@ -5396,13 +5529,14 @@ function M.GetServerCertificateRequest(args)
     }
 end
 
-keys.UserDetail = { ["UserName"] = true, ["GroupList"] = true, ["CreateDate"] = true, ["UserId"] = true, ["UserPolicyList"] = true, ["Path"] = true, ["AttachedManagedPolicies"] = true, ["Arn"] = true, nil }
+keys.UserDetail = { ["UserName"] = true, ["GroupList"] = true, ["PermissionsBoundary"] = true, ["CreateDate"] = true, ["UserId"] = true, ["UserPolicyList"] = true, ["Path"] = true, ["AttachedManagedPolicies"] = true, ["Arn"] = true, nil }
 
 function asserts.AssertUserDetail(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserDetail to be of type 'table'")
 	if struct["UserName"] then asserts.AssertuserNameType(struct["UserName"]) end
 	if struct["GroupList"] then asserts.AssertgroupNameListType(struct["GroupList"]) end
+	if struct["PermissionsBoundary"] then asserts.AssertAttachedPermissionsBoundary(struct["PermissionsBoundary"]) end
 	if struct["CreateDate"] then asserts.AssertdateType(struct["CreateDate"]) end
 	if struct["UserId"] then asserts.AssertidType(struct["UserId"]) end
 	if struct["UserPolicyList"] then asserts.AssertpolicyDetailListType(struct["UserPolicyList"]) end
@@ -5415,11 +5549,12 @@ function asserts.AssertUserDetail(struct)
 end
 
 --- Create a structure of type UserDetail
--- <p>Contains information about an IAM user, including all the user's policies and all the IAM groups the user is in.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> action.</p>
+-- <p>Contains information about an IAM user, including all the user's policies and all the IAM groups the user is in.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * UserName [userNameType] <p>The friendly name identifying the user.</p>
 -- * GroupList [groupNameListType] <p>A list of IAM groups that the user is in.</p>
+-- * PermissionsBoundary [AttachedPermissionsBoundary] <p>The ARN of the policy used to set the permissions boundary for the user.</p> <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions Boundaries for IAM Identities </a> in the <i>IAM User Guide</i>.</p>
 -- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the user was created.</p>
 -- * UserId [idType] <p>The stable and unique string identifying the user. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
 -- * UserPolicyList [policyDetailListType] <p>A list of the inline policies embedded in the user.</p>
@@ -5438,6 +5573,7 @@ function M.UserDetail(args)
 	local all_args = { 
 		["UserName"] = args["UserName"],
 		["GroupList"] = args["GroupList"],
+		["PermissionsBoundary"] = args["PermissionsBoundary"],
 		["CreateDate"] = args["CreateDate"],
 		["UserId"] = args["UserId"],
 		["UserPolicyList"] = args["UserPolicyList"],
@@ -5473,9 +5609,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Url [OpenIDConnectProviderUrlType] <p>The URL of the identity provider. The URL must begin with "https://" and should correspond to the <code>iss</code> claim in the provider's OpenID Connect ID tokens. Per the OIDC standard, path components are allowed but query parameters are not. Typically the URL consists of only a host name, like "https://server.example.org" or "https://example.com".</p> <p>You cannot register the same provider multiple times in a single AWS account. If you try to submit a URL that has already been used for an OpenID Connect provider in the AWS account, you will get an error.</p>
--- * ThumbprintList [thumbprintListType] <p>A list of server certificate thumbprints for the OpenID Connect (OIDC) identity provider's server certificate(s). Typically this list includes only one entry. However, IAM lets you have up to five thumbprints for an OIDC provider. This lets you maintain multiple thumbprints if the identity provider is rotating certificates.</p> <p>The server certificate thumbprint is the hex-encoded SHA-1 hash value of the X.509 certificate used by the domain where the OpenID Connect provider makes its keys available. It is always a 40-character string.</p> <p>You must provide at least one thumbprint when creating an IAM OIDC provider. For example, if the OIDC provider is <code>server.example.com</code> and the provider stores its keys at "https://keys.server.example.com/openid-connect", the thumbprint string would be the hex-encoded SHA-1 hash value of the certificate used by https://keys.server.example.com.</p> <p>For more information about obtaining the OIDC provider's thumbprint, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/identity-providers-oidc-obtain-thumbprint.html">Obtaining the Thumbprint for an OpenID Connect Provider</a> in the <i>IAM User Guide</i>.</p>
--- * ClientIDList [clientIDListType] <p>A list of client IDs (also known as audiences). When a mobile or web app registers with an OpenID Connect provider, they establish a value that identifies the application. (This is the value that's sent as the <code>client_id</code> parameter on OAuth requests.)</p> <p>You can register multiple client IDs with the same provider. For example, you might have multiple applications that use the same OIDC provider. You cannot register more than 100 client IDs with a single IAM OIDC provider.</p> <p>There is no defined format for a client ID. The <code>CreateOpenIDConnectProviderRequest</code> action accepts client IDs up to 255 characters long.</p>
+-- * Url [OpenIDConnectProviderUrlType] <p>The URL of the identity provider. The URL must begin with <code>https://</code> and should correspond to the <code>iss</code> claim in the provider's OpenID Connect ID tokens. Per the OIDC standard, path components are allowed but query parameters are not. Typically the URL consists of only a hostname, like <code>https://server.example.org</code> or <code>https://example.com</code>.</p> <p>You cannot register the same provider multiple times in a single AWS account. If you try to submit a URL that has already been used for an OpenID Connect provider in the AWS account, you will get an error.</p>
+-- * ThumbprintList [thumbprintListType] <p>A list of server certificate thumbprints for the OpenID Connect (OIDC) identity provider's server certificates. Typically this list includes only one entry. However, IAM lets you have up to five thumbprints for an OIDC provider. This lets you maintain multiple thumbprints if the identity provider is rotating certificates.</p> <p>The server certificate thumbprint is the hex-encoded SHA-1 hash value of the X.509 certificate used by the domain where the OpenID Connect provider makes its keys available. It is always a 40-character string.</p> <p>You must provide at least one thumbprint when creating an IAM OIDC provider. For example, assume that the OIDC provider is <code>server.example.com</code> and the provider stores its keys at https://keys.server.example.com/openid-connect. In that case, the thumbprint string would be the hex-encoded SHA-1 hash value of the certificate used by https://keys.server.example.com.</p> <p>For more information about obtaining the OIDC provider's thumbprint, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/identity-providers-oidc-obtain-thumbprint.html">Obtaining the Thumbprint for an OpenID Connect Provider</a> in the <i>IAM User Guide</i>.</p>
+-- * ClientIDList [clientIDListType] <p>A list of client IDs (also known as audiences). When a mobile or web app registers with an OpenID Connect provider, they establish a value that identifies the application. (This is the value that's sent as the <code>client_id</code> parameter on OAuth requests.)</p> <p>You can register multiple client IDs with the same provider. For example, you might have multiple applications that use the same OIDC provider. You cannot register more than 100 client IDs with a single IAM OIDC provider.</p> <p>There is no defined format for a client ID. The <code>CreateOpenIDConnectProviderRequest</code> operation accepts client IDs up to 255 characters long.</p>
 -- Required key: Url
 -- Required key: ThumbprintList
 -- @return CreateOpenIDConnectProviderRequest structure as a key-value pair table
@@ -5568,9 +5704,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the user whose MFA device you want to resynchronize.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [existingUserNameType] <p>The name of the user whose MFA device you want to resynchronize.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * AuthenticationCode1 [authenticationCodeType] <p>An authentication code emitted by the device.</p> <p>The format for this parameter is a sequence of six digits.</p>
--- * SerialNumber [serialNumberType] <p>Serial number that uniquely identifies the MFA device.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * SerialNumber [serialNumberType] <p>Serial number that uniquely identifies the MFA device.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * AuthenticationCode2 [authenticationCodeType] <p>A subsequent authentication code emitted by the device.</p> <p>The format for this parameter is a sequence of six digits.</p>
 -- Required key: UserName
 -- Required key: SerialNumber
@@ -5713,6 +5849,49 @@ function M.GetInstanceProfileResponse(args)
     }
 end
 
+keys.ListAccessKeysRequest = { ["UserName"] = true, ["Marker"] = true, ["MaxItems"] = true, nil }
+
+function asserts.AssertListAccessKeysRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListAccessKeysRequest to be of type 'table'")
+	if struct["UserName"] then asserts.AssertexistingUserNameType(struct["UserName"]) end
+	if struct["Marker"] then asserts.AssertmarkerType(struct["Marker"]) end
+	if struct["MaxItems"] then asserts.AssertmaxItemsType(struct["MaxItems"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListAccessKeysRequest[k], "ListAccessKeysRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListAccessKeysRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the user.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- @return ListAccessKeysRequest structure as a key-value pair table
+function M.ListAccessKeysRequest(args)
+	assert(args, "You must provide an argument table when creating ListAccessKeysRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["UserName"] = args["UserName"],
+		["Marker"] = args["Marker"],
+		["MaxItems"] = args["MaxItems"],
+	}
+	asserts.AssertListAccessKeysRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListPolicyVersionsRequest = { ["Marker"] = true, ["MaxItems"] = true, ["PolicyArn"] = true, nil }
 
 function asserts.AssertListPolicyVersionsRequest(struct)
@@ -5776,8 +5955,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GroupName [groupNameType] <p>The name of the group the policy is associated with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * PolicyName [policyNameType] <p>The name of the policy document to get.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * GroupName [groupNameType] <p>The name of the group the policy is associated with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * PolicyName [policyNameType] <p>The name of the policy document to get.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: GroupName
 -- Required key: PolicyName
 -- @return GetGroupPolicyRequest structure as a key-value pair table
@@ -5821,7 +6000,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- * GroupName [groupNameType] <p>The name of the group.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * GroupName [groupNameType] <p>The name of the group.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- Required key: GroupName
 -- @return GetGroupRequest structure as a key-value pair table
@@ -5865,7 +6044,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- * PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example, the prefix <code>/application_abc/component_xyz/</code> gets all roles whose path starts with <code>/application_abc/component_xyz/</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all roles. This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example, the prefix <code>/application_abc/component_xyz/</code> gets all roles whose path starts with <code>/application_abc/component_xyz/</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all roles. This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListRolesRequest structure as a key-value pair table
 function M.ListRolesRequest(args)
@@ -5882,6 +6061,45 @@ function M.ListRolesRequest(args)
 		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListRolesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteUserPermissionsBoundaryRequest = { ["UserName"] = true, nil }
+
+function asserts.AssertDeleteUserPermissionsBoundaryRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteUserPermissionsBoundaryRequest to be of type 'table'")
+	assert(struct["UserName"], "Expected key UserName to exist in table")
+	if struct["UserName"] then asserts.AssertuserNameType(struct["UserName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteUserPermissionsBoundaryRequest[k], "DeleteUserPermissionsBoundaryRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteUserPermissionsBoundaryRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name (friendly name, not ARN) of the IAM user from which you want to remove the permissions boundary.</p>
+-- Required key: UserName
+-- @return DeleteUserPermissionsBoundaryRequest structure as a key-value pair table
+function M.DeleteUserPermissionsBoundaryRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteUserPermissionsBoundaryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["UserName"] = args["UserName"],
+	}
+	asserts.AssertDeleteUserPermissionsBoundaryRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5908,9 +6126,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name of the user whose password you want to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [userNameType] <p>The name of the user whose password you want to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * PasswordResetRequired [booleanObjectType] <p>Allows this new password to be used only once by requiring the specified IAM user to set a new password on next sign-in.</p>
--- * Password [passwordType] <p>The new password for the specified IAM user.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D). However, the format can be further restricted by the account administrator by setting a password policy on the AWS account. For more information, see <a>UpdateAccountPasswordPolicy</a>.</p>
+-- * Password [passwordType] <p>The new password for the specified IAM user.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul> <p>However, the format can be further restricted by the account administrator by setting a password policy on the AWS account. For more information, see <a>UpdateAccountPasswordPolicy</a>.</p>
 -- Required key: UserName
 -- @return UpdateLoginProfileRequest structure as a key-value pair table
 function M.UpdateLoginProfileRequest(args)
@@ -5927,6 +6145,43 @@ function M.UpdateLoginProfileRequest(args)
 		["Password"] = args["Password"],
 	}
 	asserts.AssertUpdateLoginProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.PolicyNotAttachableException = { ["message"] = true, nil }
+
+function asserts.AssertPolicyNotAttachableException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PolicyNotAttachableException to be of type 'table'")
+	if struct["message"] then asserts.AssertpolicyNotAttachableMessage(struct["message"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PolicyNotAttachableException[k], "PolicyNotAttachableException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PolicyNotAttachableException
+-- <p>The request failed because AWS service role policies can only be attached to the service-linked role for that service.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [policyNotAttachableMessage] 
+-- @return PolicyNotAttachableException structure as a key-value pair table
+function M.PolicyNotAttachableException(args)
+	assert(args, "You must provide an argument table when creating PolicyNotAttachableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["message"] = args["message"],
+	}
+	asserts.AssertPolicyNotAttachableException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5954,7 +6209,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ThumbprintList [thumbprintListType] <p>A list of certificate thumbprints that are associated with the specified IAM OpenID Connect provider. For more information, see <a>CreateOpenIDConnectProvider</a>. </p>
--- * OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM OIDC provider resource object for which you want to update the thumbprint. You can get a list of OIDC provider ARNs by using the <a>ListOpenIDConnectProviders</a> action.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- * OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM OIDC provider resource object for which you want to update the thumbprint. You can get a list of OIDC provider ARNs by using the <a>ListOpenIDConnectProviders</a> operation.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
 -- Required key: OpenIDConnectProviderArn
 -- Required key: ThumbprintList
 -- @return UpdateOpenIDConnectProviderThumbprintRequest structure as a key-value pair table
@@ -6036,9 +6291,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the user to associate the policy with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * PolicyName [policyNameType] <p>The name of the policy document.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * PolicyDocument [policyDocumentType] <p>The policy document.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * UserName [existingUserNameType] <p>The name of the user to associate the policy with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * PolicyName [policyNameType] <p>The name of the policy document.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * PolicyDocument [policyDocumentType] <p>The policy document.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul>
 -- Required key: UserName
 -- Required key: PolicyName
 -- Required key: PolicyDocument
@@ -6156,12 +6411,12 @@ function asserts.AssertAccessKeyLastUsed(struct)
 end
 
 --- Create a structure of type AccessKeyLastUsed
--- <p>Contains information about the last time an AWS access key was used.</p> <p>This data type is used as a response element in the <a>GetAccessKeyLastUsed</a> action.</p>
+-- <p>Contains information about the last time an AWS access key was used.</p> <p>This data type is used as a response element in the <a>GetAccessKeyLastUsed</a> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Region [stringType] <p>The AWS region where this access key was most recently used. This field is displays "N/A" when:</p> <ul> <li> <p>The user does not have an access key.</p> </li> <li> <p>An access key exists but has never been used, at least not since IAM started tracking this information on April 22nd, 2015.</p> </li> <li> <p>There is no sign-in data associated with the user</p> </li> </ul> <p>For more information about AWS regions, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a> in the Amazon Web Services General Reference.</p>
--- * ServiceName [stringType] <p>The name of the AWS service with which this access key was most recently used. This field displays "N/A" when:</p> <ul> <li> <p>The user does not have an access key.</p> </li> <li> <p>An access key exists but has never been used, at least not since IAM started tracking this information on April 22nd, 2015.</p> </li> <li> <p>There is no sign-in data associated with the user</p> </li> </ul>
--- * LastUsedDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the access key was most recently used. This field is null when:</p> <ul> <li> <p>The user does not have an access key.</p> </li> <li> <p>An access key exists but has never been used, at least not since IAM started tracking this information on April 22nd, 2015.</p> </li> <li> <p>There is no sign-in data associated with the user</p> </li> </ul>
+-- * Region [stringType] <p>The AWS region where this access key was most recently used. This field is displays "N/A" in the following situations:</p> <ul> <li> <p>The user does not have an access key.</p> </li> <li> <p>An access key exists but has never been used, at least not since IAM started tracking this information on April 22nd, 2015.</p> </li> <li> <p>There is no sign-in data associated with the user</p> </li> </ul> <p>For more information about AWS regions, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a> in the Amazon Web Services General Reference.</p>
+-- * ServiceName [stringType] <p>The name of the AWS service with which this access key was most recently used. This field displays "N/A" in the following situations:</p> <ul> <li> <p>The user does not have an access key.</p> </li> <li> <p>An access key exists but has never been used, at least not since IAM started tracking this information on April 22nd, 2015.</p> </li> <li> <p>There is no sign-in data associated with the user</p> </li> </ul>
+-- * LastUsedDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the access key was most recently used. This field is null in the following situations:</p> <ul> <li> <p>The user does not have an access key.</p> </li> <li> <p>An access key exists but has never been used, at least not since IAM started tracking this information on April 22nd, 2015.</p> </li> <li> <p>There is no sign-in data associated with the user</p> </li> </ul>
 -- Required key: LastUsedDate
 -- Required key: ServiceName
 -- Required key: Region
@@ -6244,8 +6499,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SetAsDefault [booleanType] <p>Specifies whether to set this version as the policy's default version.</p> <p>When this parameter is <code>true</code>, the new policy version becomes the operative version; that is, the version that is in effect for the IAM users, groups, and roles that the policy is attached to.</p> <p>For more information about managed policy versions, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for Managed Policies</a> in the <i>IAM User Guide</i>.</p>
--- * PolicyDocument [policyDocumentType] <p>The JSON policy document that you want to use as the content for this new version of the policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * SetAsDefault [booleanType] <p>Specifies whether to set this version as the policy's default version.</p> <p>When this parameter is <code>true</code>, the new policy version becomes the operative version. That is, it becomes the version that is in effect for the IAM users, groups, and roles that the policy is attached to.</p> <p>For more information about managed policy versions, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for Managed Policies</a> in the <i>IAM User Guide</i>.</p>
+-- * PolicyDocument [policyDocumentType] <p>The JSON policy document that you want to use as the content for this new version of the policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul>
 -- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy to which you want to add a new version.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
 -- Required key: PolicyArn
 -- Required key: PolicyDocument
@@ -6288,7 +6543,7 @@ end
 -- <p>Contains the response to a successful <a>GetUser</a> request. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * User [User] <p>A structure containing details about the IAM user.</p>
+-- * User [User] <p>A structure containing details about the IAM user.</p> <important> <p>Due to a service issue, password last used data does not include password use from May 3rd 2018 22:50 PDT to May 23rd 2018 14:08 PDT. This affects <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_finding-unused.html">last sign-in</a> dates shown in the IAM console and password last used dates in the <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html">IAM credential report</a>, and returned by this GetUser API. If users signed in during the affected time, the password last used date that is returned is the date the user last signed in before May 3rd 2018. For users that signed in after May 23rd 2018 14:08 PDT, the returned password last used date is accurate.</p> <p>If you use password last used information to identify unused credentials for deletion, such as deleting users who did not sign in to AWS in the last 90 days, we recommend that you adjust your evaluation window to include dates after May 23rd 2018. Alternatively, if your users use access keys to access AWS programmatically you can refer to access key last used information because it is accurate for all dates. </p> </important>
 -- Required key: User
 -- @return GetUserResponse structure as a key-value pair table
 function M.GetUserResponse(args)
@@ -6337,16 +6592,16 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ResourceHandlingOption [ResourceHandlingOptionType] <p>Specifies the type of simulation to run. Different APIs that support resource-based policies require different combinations of resources. By specifying the type of simulation to run, you enable the policy simulator to enforce the presence of the required resources to ensure reliable simulation results. If your simulation does not match one of the following scenarios, then you can omit this parameter. The following list shows each of the supported scenario values and the resources that you must define to run the simulation.</p> <p>Each of the EC2 scenarios requires that you specify instance, image, and security-group resources. If your scenario includes an EBS volume, then you must specify that volume as a resource. If the EC2 scenario includes VPC, then you must supply the network-interface resource. If it includes an IP subnet, then you must specify the subnet resource. For more information on the EC2 scenario options, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a> in the <i>AWS EC2 User Guide</i>.</p> <ul> <li> <p> <b>EC2-Classic-InstanceStore</b> </p> <p>instance, image, security-group</p> </li> <li> <p> <b>EC2-Classic-EBS</b> </p> <p>instance, image, security-group, volume</p> </li> <li> <p> <b>EC2-VPC-InstanceStore</b> </p> <p>instance, image, security-group, network-interface</p> </li> <li> <p> <b>EC2-VPC-InstanceStore-Subnet</b> </p> <p>instance, image, security-group, network-interface, subnet</p> </li> <li> <p> <b>EC2-VPC-EBS</b> </p> <p>instance, image, security-group, network-interface, volume</p> </li> <li> <p> <b>EC2-VPC-EBS-Subnet</b> </p> <p>instance, image, security-group, network-interface, subnet, volume</p> </li> </ul>
+-- * ResourceHandlingOption [ResourceHandlingOptionType] <p>Specifies the type of simulation to run. Different API operations that support resource-based policies require different combinations of resources. By specifying the type of simulation to run, you enable the policy simulator to enforce the presence of the required resources to ensure reliable simulation results. If your simulation does not match one of the following scenarios, then you can omit this parameter. The following list shows each of the supported scenario values and the resources that you must define to run the simulation.</p> <p>Each of the EC2 scenarios requires that you specify instance, image, and security-group resources. If your scenario includes an EBS volume, then you must specify that volume as a resource. If the EC2 scenario includes VPC, then you must supply the network-interface resource. If it includes an IP subnet, then you must specify the subnet resource. For more information on the EC2 scenario options, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a> in the <i>Amazon EC2 User Guide</i>.</p> <ul> <li> <p> <b>EC2-Classic-InstanceStore</b> </p> <p>instance, image, security-group</p> </li> <li> <p> <b>EC2-Classic-EBS</b> </p> <p>instance, image, security-group, volume</p> </li> <li> <p> <b>EC2-VPC-InstanceStore</b> </p> <p>instance, image, security-group, network-interface</p> </li> <li> <p> <b>EC2-VPC-InstanceStore-Subnet</b> </p> <p>instance, image, security-group, network-interface, subnet</p> </li> <li> <p> <b>EC2-VPC-EBS</b> </p> <p>instance, image, security-group, network-interface, volume</p> </li> <li> <p> <b>EC2-VPC-EBS-Subnet</b> </p> <p>instance, image, security-group, network-interface, subnet, volume</p> </li> </ul>
 -- * ContextEntries [ContextEntryListType] <p>A list of context keys and corresponding values for the simulation to use. Whenever a context key is evaluated in one of the simulated IAM permission policies, the corresponding value is supplied.</p>
--- * CallerArn [ResourceNameType] <p>The ARN of the IAM user that you want to use as the simulated caller of the APIs. <code>CallerArn</code> is required if you include a <code>ResourcePolicy</code> so that the policy's <code>Principal</code> element has a value to use in evaluating the policy.</p> <p>You can specify only the ARN of an IAM user. You cannot specify the ARN of an assumed role, federated user, or a service principal.</p>
--- * PolicyInputList [SimulationPolicyListType] <p>A list of policy documents to include in the simulation. Each document is specified as a string containing the complete, valid JSON text of an IAM policy. Do not include any resource-based policies in this parameter. Any resource-based policy must be submitted with the <code>ResourcePolicy</code> parameter. The policies cannot be "scope-down" policies, such as you could include in a call to <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html">GetFederationToken</a> or one of the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html">AssumeRole</a> APIs to restrict what a user can do while using the temporary credentials.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- * ResourcePolicy [policyDocumentType] <p>A resource-based policy to include in the simulation provided as a string. Each resource in the simulation is treated as if it had this policy attached. You can include only one resource-based policy in a simulation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * CallerArn [ResourceNameType] <p>The ARN of the IAM user that you want to use as the simulated caller of the API operations. <code>CallerArn</code> is required if you include a <code>ResourcePolicy</code> so that the policy's <code>Principal</code> element has a value to use in evaluating the policy.</p> <p>You can specify only the ARN of an IAM user. You cannot specify the ARN of an assumed role, federated user, or a service principal.</p>
+-- * PolicyInputList [SimulationPolicyListType] <p>A list of policy documents to include in the simulation. Each document is specified as a string containing the complete, valid JSON text of an IAM policy. Do not include any resource-based policies in this parameter. Any resource-based policy must be submitted with the <code>ResourcePolicy</code> parameter. The policies cannot be "scope-down" policies, such as you could include in a call to <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html">GetFederationToken</a> or one of the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html">AssumeRole</a> API operations. In other words, do not use policies designed to restrict what a user can do while using the temporary credentials.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul>
+-- * ResourcePolicy [policyDocumentType] <p>A resource-based policy to include in the simulation provided as a string. Each resource in the simulation is treated as if it had this policy attached. You can include only one resource-based policy in a simulation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
--- * ActionNames [ActionNameListType] <p>A list of names of API actions to evaluate in the simulation. Each action is evaluated against each resource. Each action must include the service identifier, such as <code>iam:CreateUser</code>.</p>
+-- * ActionNames [ActionNameListType] <p>A list of names of API operations to evaluate in the simulation. Each operation is evaluated against each resource. Each operation must include the service identifier, such as <code>iam:CreateUser</code>.</p>
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
 -- * ResourceArns [ResourceNameListType] <p>A list of ARNs of AWS resources to include in the simulation. If this parameter is not provided then the value defaults to <code>*</code> (all resources). Each API in the <code>ActionNames</code> parameter is evaluated for each resource in this list. The simulation determines the access result (allowed or denied) of each combination and reports it in the response.</p> <p>The simulation does not automatically retrieve policies for the specified resources. If you want to include a resource policy in the simulation, then you must include the policy as a string in the <code>ResourcePolicy</code> parameter.</p> <p>If you include a <code>ResourcePolicy</code>, then it must be applicable to all of the resources included in the simulation or you receive an invalid input error.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- * ResourceOwner [ResourceNameType] <p>An AWS account ID that specifies the owner of any simulated resource that does not identify its owner in the resource ARN, such as an S3 bucket or object. If <code>ResourceOwner</code> is specified, it is also used as the account owner of any <code>ResourcePolicy</code> included in the simulation. If the <code>ResourceOwner</code> parameter is not specified, then the owner of the resources and the resource policy defaults to the account of the identity provided in <code>CallerArn</code>. This parameter is required only if you specify a resource-based policy and account that owns the resource is different from the account that owns the simulated calling user <code>CallerArn</code>.</p>
+-- * ResourceOwner [ResourceNameType] <p>An ARN representing the AWS account ID that specifies the owner of any simulated resource that does not identify its owner in the resource ARN, such as an S3 bucket or object. If <code>ResourceOwner</code> is specified, it is also used as the account owner of any <code>ResourcePolicy</code> included in the simulation. If the <code>ResourceOwner</code> parameter is not specified, then the owner of the resources and the resource policy defaults to the account of the identity provided in <code>CallerArn</code>. This parameter is required only if you specify a resource-based policy and account that owns the resource is different from the account that owns the simulated calling user <code>CallerArn</code>.</p> <p>The ARN for an account uses the following syntax: <code>arn:aws:iam::<i>AWS-account-ID</i>:root</code>. For example, to represent the account with the 112233445566 ID, use the following ARN: <code>arn:aws:iam::112233445566-ID:root</code>. </p>
 -- Required key: PolicyInputList
 -- Required key: ActionNames
 -- @return SimulateCustomPolicyRequest structure as a key-value pair table
@@ -6379,31 +6634,31 @@ function M.SimulateCustomPolicyRequest(args)
     }
 end
 
-keys.AccessKeyMetadata = { ["UserName"] = true, ["Status"] = true, ["CreateDate"] = true, ["AccessKeyId"] = true, nil }
+keys.PolicyVersion = { ["CreateDate"] = true, ["VersionId"] = true, ["Document"] = true, ["IsDefaultVersion"] = true, nil }
 
-function asserts.AssertAccessKeyMetadata(struct)
+function asserts.AssertPolicyVersion(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected AccessKeyMetadata to be of type 'table'")
-	if struct["UserName"] then asserts.AssertuserNameType(struct["UserName"]) end
-	if struct["Status"] then asserts.AssertstatusType(struct["Status"]) end
+	assert(type(struct) == "table", "Expected PolicyVersion to be of type 'table'")
 	if struct["CreateDate"] then asserts.AssertdateType(struct["CreateDate"]) end
-	if struct["AccessKeyId"] then asserts.AssertaccessKeyIdType(struct["AccessKeyId"]) end
+	if struct["VersionId"] then asserts.AssertpolicyVersionIdType(struct["VersionId"]) end
+	if struct["Document"] then asserts.AssertpolicyDocumentType(struct["Document"]) end
+	if struct["IsDefaultVersion"] then asserts.AssertbooleanType(struct["IsDefaultVersion"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.AccessKeyMetadata[k], "AccessKeyMetadata contains unknown key " .. tostring(k))
+		assert(keys.PolicyVersion[k], "PolicyVersion contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type AccessKeyMetadata
--- <p>Contains information about an AWS access key, without its secret key.</p> <p>This data type is used as a response element in the <a>ListAccessKeys</a> action.</p>
+--- Create a structure of type PolicyVersion
+-- <p>Contains information about a version of a managed policy.</p> <p>This data type is used as a response element in the <a>CreatePolicyVersion</a>, <a>GetPolicyVersion</a>, <a>ListPolicyVersions</a>, and <a>GetAccountAuthorizationDetails</a> operations. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name of the IAM user that the key is associated with.</p>
--- * Status [statusType] <p>The status of the access key. <code>Active</code> means the key is valid for API calls; <code>Inactive</code> means it is not.</p>
--- * CreateDate [dateType] <p>The date when the access key was created.</p>
--- * AccessKeyId [accessKeyIdType] <p>The ID for this access key.</p>
--- @return AccessKeyMetadata structure as a key-value pair table
-function M.AccessKeyMetadata(args)
-	assert(args, "You must provide an argument table when creating AccessKeyMetadata")
+-- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the policy version was created.</p>
+-- * VersionId [policyVersionIdType] <p>The identifier for the policy version.</p> <p>Policy version identifiers always begin with <code>v</code> (always lowercase). When a policy is created, the first policy version is <code>v1</code>. </p>
+-- * Document [policyDocumentType] <p>The policy document.</p> <p>The policy document is returned in the response to the <a>GetPolicyVersion</a> and <a>GetAccountAuthorizationDetails</a> operations. It is not returned in the response to the <a>CreatePolicyVersion</a> or <a>ListPolicyVersions</a> operations. </p> <p>The policy document returned in this structure is URL-encoded compliant with <a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>. You can use a URL decoding method to convert the policy back to plain JSON text. For example, if you use Java, you can use the <code>decode</code> method of the <code>java.net.URLDecoder</code> utility class in the Java SDK. Other languages and SDKs provide similar functionality.</p>
+-- * IsDefaultVersion [booleanType] <p>Specifies whether the policy version is set as the policy's default version.</p>
+-- @return PolicyVersion structure as a key-value pair table
+function M.PolicyVersion(args)
+	assert(args, "You must provide an argument table when creating PolicyVersion")
     local query_args = { 
     }
     local uri_args = { 
@@ -6411,12 +6666,12 @@ function M.AccessKeyMetadata(args)
     local header_args = { 
     }
 	local all_args = { 
-		["UserName"] = args["UserName"],
-		["Status"] = args["Status"],
 		["CreateDate"] = args["CreateDate"],
-		["AccessKeyId"] = args["AccessKeyId"],
+		["VersionId"] = args["VersionId"],
+		["Document"] = args["Document"],
+		["IsDefaultVersion"] = args["IsDefaultVersion"],
 	}
-	asserts.AssertAccessKeyMetadata(all_args)
+	asserts.AssertPolicyVersion(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6754,7 +7009,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- * PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example: <code>/company/servercerts</code> would get all server certificates for which the path starts with <code>/company/servercerts</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all server certificates. This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example: <code>/company/servercerts</code> would get all server certificates for which the path starts with <code>/company/servercerts</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all server certificates. This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListServerCertificatesRequest structure as a key-value pair table
 function M.ListServerCertificatesRequest(args)
@@ -6771,6 +7026,46 @@ function M.ListServerCertificatesRequest(args)
 		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListServerCertificatesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetAccessKeyLastUsedResponse = { ["UserName"] = true, ["AccessKeyLastUsed"] = true, nil }
+
+function asserts.AssertGetAccessKeyLastUsedResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetAccessKeyLastUsedResponse to be of type 'table'")
+	if struct["UserName"] then asserts.AssertexistingUserNameType(struct["UserName"]) end
+	if struct["AccessKeyLastUsed"] then asserts.AssertAccessKeyLastUsed(struct["AccessKeyLastUsed"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetAccessKeyLastUsedResponse[k], "GetAccessKeyLastUsedResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetAccessKeyLastUsedResponse
+-- <p>Contains the response to a successful <a>GetAccessKeyLastUsed</a> request. It is also returned as a member of the <a>AccessKeyMetaData</a> structure returned by the <a>ListAccessKeys</a> action.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the AWS IAM user that owns this access key.</p> <p/>
+-- * AccessKeyLastUsed [AccessKeyLastUsed] <p>Contains information about the last time the access key was used.</p>
+-- @return GetAccessKeyLastUsedResponse structure as a key-value pair table
+function M.GetAccessKeyLastUsedResponse(args)
+	assert(args, "You must provide an argument table when creating GetAccessKeyLastUsedResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["UserName"] = args["UserName"],
+		["AccessKeyLastUsed"] = args["AccessKeyLastUsed"],
+	}
+	asserts.AssertGetAccessKeyLastUsedResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6920,7 +7215,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the user whose MFA devices you want to list.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [existingUserNameType] <p>The name of the user whose MFA devices you want to list.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListMFADevicesRequest structure as a key-value pair table
@@ -7037,7 +7332,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name of the IAM user associated with the service-specific credential. If this value is not specified, then the operation assumes the user whose credentials are used to call the operation.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [userNameType] <p>The name of the IAM user associated with the service-specific credential. If this value is not specified, then the operation assumes the user whose credentials are used to call the operation.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * ServiceSpecificCredentialId [serviceSpecificCredentialId] <p>The unique identifier of the service-specific credential.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
 -- Required key: ServiceSpecificCredentialId
 -- @return ResetServiceSpecificCredentialRequest structure as a key-value pair table
@@ -7142,7 +7437,7 @@ function M.GetAccountSummaryResponse(args)
     }
 end
 
-keys.CreateUserRequest = { ["UserName"] = true, ["Path"] = true, nil }
+keys.CreateUserRequest = { ["UserName"] = true, ["Path"] = true, ["PermissionsBoundary"] = true, nil }
 
 function asserts.AssertCreateUserRequest(struct)
 	assert(struct)
@@ -7150,6 +7445,7 @@ function asserts.AssertCreateUserRequest(struct)
 	assert(struct["UserName"], "Expected key UserName to exist in table")
 	if struct["UserName"] then asserts.AssertuserNameType(struct["UserName"]) end
 	if struct["Path"] then asserts.AssertpathType(struct["Path"]) end
+	if struct["PermissionsBoundary"] then asserts.AssertarnType(struct["PermissionsBoundary"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateUserRequest[k], "CreateUserRequest contains unknown key " .. tostring(k))
 	end
@@ -7159,8 +7455,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name of the user to create.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-. User names are not distinguished by case. For example, you cannot create users named both "TESTUSER" and "testuser".</p>
--- * Path [pathType] <p> The path for the user name. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * UserName [userNameType] <p>The name of the user to create.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-. User names are not distinguished by case. For example, you cannot create users named both "TESTUSER" and "testuser".</p>
+-- * Path [pathType] <p> The path for the user name. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * PermissionsBoundary [arnType] <p>The ARN of the policy that is used to set the permissions boundary for the user.</p>
 -- Required key: UserName
 -- @return CreateUserRequest structure as a key-value pair table
 function M.CreateUserRequest(args)
@@ -7174,6 +7471,7 @@ function M.CreateUserRequest(args)
 	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Path"] = args["Path"],
+		["PermissionsBoundary"] = args["PermissionsBoundary"],
 	}
 	asserts.AssertCreateUserRequest(all_args)
 	return {
@@ -7197,7 +7495,7 @@ function asserts.AssertPolicyGroup(struct)
 end
 
 --- Create a structure of type PolicyGroup
--- <p>Contains information about a group that a managed policy is attached to.</p> <p>This data type is used as a response element in the <a>ListEntitiesForPolicy</a> action. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
+-- <p>Contains information about a group that a managed policy is attached to.</p> <p>This data type is used as a response element in the <a>ListEntitiesForPolicy</a> operation. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * GroupName [groupNameType] <p>The name (friendly name, not ARN) identifying the group.</p>
@@ -7224,16 +7522,17 @@ function M.PolicyGroup(args)
     }
 end
 
-keys.ListPoliciesRequest = { ["Marker"] = true, ["Scope"] = true, ["OnlyAttached"] = true, ["PathPrefix"] = true, ["MaxItems"] = true, nil }
+keys.ListPoliciesRequest = { ["OnlyAttached"] = true, ["PolicyUsageFilter"] = true, ["PathPrefix"] = true, ["MaxItems"] = true, ["Marker"] = true, ["Scope"] = true, nil }
 
 function asserts.AssertListPoliciesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListPoliciesRequest to be of type 'table'")
-	if struct["Marker"] then asserts.AssertmarkerType(struct["Marker"]) end
-	if struct["Scope"] then asserts.AssertpolicyScopeType(struct["Scope"]) end
 	if struct["OnlyAttached"] then asserts.AssertbooleanType(struct["OnlyAttached"]) end
+	if struct["PolicyUsageFilter"] then asserts.AssertPolicyUsageType(struct["PolicyUsageFilter"]) end
 	if struct["PathPrefix"] then asserts.AssertpolicyPathType(struct["PathPrefix"]) end
 	if struct["MaxItems"] then asserts.AssertmaxItemsType(struct["MaxItems"]) end
+	if struct["Marker"] then asserts.AssertmarkerType(struct["Marker"]) end
+	if struct["Scope"] then asserts.AssertpolicyScopeType(struct["Scope"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListPoliciesRequest[k], "ListPoliciesRequest contains unknown key " .. tostring(k))
 	end
@@ -7243,11 +7542,12 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * OnlyAttached [booleanType] <p>A flag to filter the results to only the attached policies.</p> <p>When <code>OnlyAttached</code> is <code>true</code>, the returned list contains only the policies that are attached to an IAM user, group, or role. When <code>OnlyAttached</code> is <code>false</code>, or when the parameter is not included, all policies are returned.</p>
+-- * PolicyUsageFilter [PolicyUsageType] <p>The policy usage method to use for filtering the results.</p> <p>To list only permissions policies, set <code>PolicyUsageFilter</code> to <code>PermissionsPolicy</code>. To list only the policies used to set permissions boundaries, set the value to <code>PermissionsBoundary</code>.</p> <p>This parameter is optional. If it is not included, all policies are returned. </p>
+-- * PathPrefix [policyPathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies. This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
 -- * Scope [policyScopeType] <p>The scope to use for filtering the results.</p> <p>To list only AWS managed policies, set <code>Scope</code> to <code>AWS</code>. To list only the customer managed policies in your AWS account, set <code>Scope</code> to <code>Local</code>.</p> <p>This parameter is optional. If it is not included, or if it is set to <code>All</code>, all policies are returned.</p>
--- * OnlyAttached [booleanType] <p>A flag to filter the results to only the attached policies.</p> <p>When <code>OnlyAttached</code> is <code>true</code>, the returned list contains only the policies that are attached to an IAM user, group, or role. When <code>OnlyAttached</code> is <code>false</code>, or when the parameter is not included, all policies are returned.</p>
--- * PathPrefix [policyPathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies. This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListPoliciesRequest structure as a key-value pair table
 function M.ListPoliciesRequest(args)
 	assert(args, "You must provide an argument table when creating ListPoliciesRequest")
@@ -7258,13 +7558,53 @@ function M.ListPoliciesRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Marker"] = args["Marker"],
-		["Scope"] = args["Scope"],
 		["OnlyAttached"] = args["OnlyAttached"],
+		["PolicyUsageFilter"] = args["PolicyUsageFilter"],
 		["PathPrefix"] = args["PathPrefix"],
 		["MaxItems"] = args["MaxItems"],
+		["Marker"] = args["Marker"],
+		["Scope"] = args["Scope"],
 	}
 	asserts.AssertListPoliciesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetServiceLinkedRoleDeletionStatusRequest = { ["DeletionTaskId"] = true, nil }
+
+function asserts.AssertGetServiceLinkedRoleDeletionStatusRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetServiceLinkedRoleDeletionStatusRequest to be of type 'table'")
+	assert(struct["DeletionTaskId"], "Expected key DeletionTaskId to exist in table")
+	if struct["DeletionTaskId"] then asserts.AssertDeletionTaskIdType(struct["DeletionTaskId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetServiceLinkedRoleDeletionStatusRequest[k], "GetServiceLinkedRoleDeletionStatusRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetServiceLinkedRoleDeletionStatusRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeletionTaskId [DeletionTaskIdType] <p>The deletion task identifier. This identifier is returned by the <a>DeleteServiceLinkedRole</a> operation in the format <code>task/aws-service-role/&lt;service-principal-name&gt;/&lt;role-name&gt;/&lt;task-uuid&gt;</code>.</p>
+-- Required key: DeletionTaskId
+-- @return GetServiceLinkedRoleDeletionStatusRequest structure as a key-value pair table
+function M.GetServiceLinkedRoleDeletionStatusRequest(args)
+	assert(args, "You must provide an argument table when creating GetServiceLinkedRoleDeletionStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["DeletionTaskId"] = args["DeletionTaskId"],
+	}
+	asserts.AssertGetServiceLinkedRoleDeletionStatusRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -7332,10 +7672,10 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * PolicyName [policyNameType] <p>The friendly name of the policy.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * PolicyDocument [policyDocumentType] <p>The JSON policy document that you want to use as the content for the new policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * PolicyName [policyNameType] <p>The friendly name of the policy.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * PolicyDocument [policyDocumentType] <p>The JSON policy document that you want to use as the content for the new policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul>
 -- * Description [policyDescriptionType] <p>A friendly description of the policy.</p> <p>Typically used to store information about the permissions defined in the policy. For example, "Grants access to production DynamoDB tables."</p> <p>The policy description is immutable. After a value is assigned, it cannot be changed.</p>
--- * Path [policyPathType] <p>The path for the policy.</p> <p>For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * Path [policyPathType] <p>The path for the policy.</p> <p>For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
 -- Required key: PolicyName
 -- Required key: PolicyDocument
 -- @return CreatePolicyRequest structure as a key-value pair table
@@ -7464,9 +7804,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NewPath [pathType] <p>The new path for the server certificate. Include this only if you are updating the server certificate's path.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- * NewServerCertificateName [serverCertificateNameType] <p>The new name for the server certificate. Include this only if you are updating the server certificate's name. The name of the certificate cannot contain any spaces.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * ServerCertificateName [serverCertificateNameType] <p>The name of the server certificate that you want to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * NewPath [pathType] <p>The new path for the server certificate. Include this only if you are updating the server certificate's path.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * NewServerCertificateName [serverCertificateNameType] <p>The new name for the server certificate. Include this only if you are updating the server certificate's name. The name of the certificate cannot contain any spaces.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * ServerCertificateName [serverCertificateNameType] <p>The name of the server certificate that you want to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: ServerCertificateName
 -- @return UpdateServerCertificateRequest structure as a key-value pair table
 function M.UpdateServerCertificateRequest(args)
@@ -7509,7 +7849,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GroupName [groupNameType] <p>The name (friendly name, not ARN) of the group to attach the policy to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * GroupName [groupNameType] <p>The name (friendly name, not ARN) of the group to attach the policy to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy you want to attach.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
 -- Required key: GroupName
 -- Required key: PolicyArn
@@ -7575,6 +7915,46 @@ function M.ListAccountAliasesRequest(args)
     }
 end
 
+keys.RoleUsageType = { ["Region"] = true, ["Resources"] = true, nil }
+
+function asserts.AssertRoleUsageType(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RoleUsageType to be of type 'table'")
+	if struct["Region"] then asserts.AssertRegionNameType(struct["Region"]) end
+	if struct["Resources"] then asserts.AssertArnListType(struct["Resources"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RoleUsageType[k], "RoleUsageType contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RoleUsageType
+-- <p>An object that contains details about how a service-linked role is used, if that information is returned by the service.</p> <p>This data type is used as a response element in the <a>GetServiceLinkedRoleDeletionStatus</a> operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Region [RegionNameType] <p>The name of the region where the service-linked role is being used.</p>
+-- * Resources [ArnListType] <p>The name of the resource that is using the service-linked role.</p>
+-- @return RoleUsageType structure as a key-value pair table
+function M.RoleUsageType(args)
+	assert(args, "You must provide an argument table when creating RoleUsageType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Region"] = args["Region"],
+		["Resources"] = args["Resources"],
+	}
+	asserts.AssertRoleUsageType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.AddUserToGroupRequest = { ["UserName"] = true, ["GroupName"] = true, nil }
 
 function asserts.AssertAddUserToGroupRequest(struct)
@@ -7593,8 +7973,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the user to add.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * GroupName [groupNameType] <p>The name of the group to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [existingUserNameType] <p>The name of the user to add.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * GroupName [groupNameType] <p>The name of the group to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: GroupName
 -- Required key: UserName
 -- @return AddUserToGroupRequest structure as a key-value pair table
@@ -7637,7 +8017,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name (friendly name, not ARN) of the IAM user to detach the policy from.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [userNameType] <p>The name (friendly name, not ARN) of the IAM user to detach the policy from.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy you want to detach.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
 -- Required key: UserName
 -- Required key: PolicyArn
@@ -7725,7 +8105,7 @@ function asserts.AssertMFADevice(struct)
 end
 
 --- Create a structure of type MFADevice
--- <p>Contains information about an MFA device.</p> <p>This data type is used as a response element in the <a>ListMFADevices</a> action.</p>
+-- <p>Contains information about an MFA device.</p> <p>This data type is used as a response element in the <a>ListMFADevices</a> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * UserName [userNameType] <p>The user with whom the MFA device is associated.</p>
@@ -7858,11 +8238,11 @@ function asserts.AssertServiceSpecificCredential(struct)
 end
 
 --- Create a structure of type ServiceSpecificCredential
--- <p>Contains the details of a service specific credential.</p>
+-- <p>Contains the details of a service-specific credential.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * UserName [userNameType] <p>The name of the IAM user associated with the service-specific credential.</p>
--- * Status [statusType] <p>The status of the service-specific credential. <code>Active</code> means the key is valid for API calls, while <code>Inactive</code> means it is not.</p>
+-- * Status [statusType] <p>The status of the service-specific credential. <code>Active</code> means that the key is valid for API calls, while <code>Inactive</code> means it is not.</p>
 -- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the service-specific credential were created.</p>
 -- * ServiceName [serviceName] <p>The name of the service associated with the service-specific credential.</p>
 -- * ServicePassword [servicePassword] <p>The generated password for the service-specific credential.</p>
@@ -7976,43 +8356,31 @@ function M.ServiceNotSupportedException(args)
     }
 end
 
-keys.PasswordPolicy = { ["AllowUsersToChangePassword"] = true, ["RequireLowercaseCharacters"] = true, ["RequireUppercaseCharacters"] = true, ["MinimumPasswordLength"] = true, ["RequireNumbers"] = true, ["PasswordReusePrevention"] = true, ["HardExpiry"] = true, ["RequireSymbols"] = true, ["MaxPasswordAge"] = true, ["ExpirePasswords"] = true, nil }
+keys.UpdateRoleRequest = { ["MaxSessionDuration"] = true, ["RoleName"] = true, ["Description"] = true, nil }
 
-function asserts.AssertPasswordPolicy(struct)
+function asserts.AssertUpdateRoleRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected PasswordPolicy to be of type 'table'")
-	if struct["AllowUsersToChangePassword"] then asserts.AssertbooleanType(struct["AllowUsersToChangePassword"]) end
-	if struct["RequireLowercaseCharacters"] then asserts.AssertbooleanType(struct["RequireLowercaseCharacters"]) end
-	if struct["RequireUppercaseCharacters"] then asserts.AssertbooleanType(struct["RequireUppercaseCharacters"]) end
-	if struct["MinimumPasswordLength"] then asserts.AssertminimumPasswordLengthType(struct["MinimumPasswordLength"]) end
-	if struct["RequireNumbers"] then asserts.AssertbooleanType(struct["RequireNumbers"]) end
-	if struct["PasswordReusePrevention"] then asserts.AssertpasswordReusePreventionType(struct["PasswordReusePrevention"]) end
-	if struct["HardExpiry"] then asserts.AssertbooleanObjectType(struct["HardExpiry"]) end
-	if struct["RequireSymbols"] then asserts.AssertbooleanType(struct["RequireSymbols"]) end
-	if struct["MaxPasswordAge"] then asserts.AssertmaxPasswordAgeType(struct["MaxPasswordAge"]) end
-	if struct["ExpirePasswords"] then asserts.AssertbooleanType(struct["ExpirePasswords"]) end
+	assert(type(struct) == "table", "Expected UpdateRoleRequest to be of type 'table'")
+	assert(struct["RoleName"], "Expected key RoleName to exist in table")
+	if struct["MaxSessionDuration"] then asserts.AssertroleMaxSessionDurationType(struct["MaxSessionDuration"]) end
+	if struct["RoleName"] then asserts.AssertroleNameType(struct["RoleName"]) end
+	if struct["Description"] then asserts.AssertroleDescriptionType(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.PasswordPolicy[k], "PasswordPolicy contains unknown key " .. tostring(k))
+		assert(keys.UpdateRoleRequest[k], "UpdateRoleRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type PasswordPolicy
--- <p>Contains information about the account password policy.</p> <p> This data type is used as a response element in the <a>GetAccountPasswordPolicy</a> action. </p>
+--- Create a structure of type UpdateRoleRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AllowUsersToChangePassword [booleanType] <p>Specifies whether IAM users are allowed to change their own password.</p>
--- * RequireLowercaseCharacters [booleanType] <p>Specifies whether to require lowercase characters for IAM user passwords.</p>
--- * RequireUppercaseCharacters [booleanType] <p>Specifies whether to require uppercase characters for IAM user passwords.</p>
--- * MinimumPasswordLength [minimumPasswordLengthType] <p>Minimum length to require for IAM user passwords.</p>
--- * RequireNumbers [booleanType] <p>Specifies whether to require numbers for IAM user passwords.</p>
--- * PasswordReusePrevention [passwordReusePreventionType] <p>Specifies the number of previous passwords that IAM users are prevented from reusing.</p>
--- * HardExpiry [booleanObjectType] <p>Specifies whether IAM users are prevented from setting a new password after their password has expired.</p>
--- * RequireSymbols [booleanType] <p>Specifies whether to require symbols for IAM user passwords.</p>
--- * MaxPasswordAge [maxPasswordAgeType] <p>The number of days that an IAM user password is valid.</p>
--- * ExpirePasswords [booleanType] <p>Indicates whether passwords in the account expire. Returns true if MaxPasswordAge is contains a value greater than 0. Returns false if MaxPasswordAge is 0 or not present.</p>
--- @return PasswordPolicy structure as a key-value pair table
-function M.PasswordPolicy(args)
-	assert(args, "You must provide an argument table when creating PasswordPolicy")
+-- * MaxSessionDuration [roleMaxSessionDurationType] <p>The maximum session duration (in seconds) that you want to set for the specified role. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 1 hour to 12 hours.</p> <p>Anyone who assumes the role from the AWS CLI or API can use the <code>DurationSeconds</code> API parameter or the <code>duration-seconds</code> CLI parameter to request a longer session. The <code>MaxSessionDuration</code> setting determines the maximum duration that can be requested using the <code>DurationSeconds</code> parameter. If users don't specify a value for the <code>DurationSeconds</code> parameter, their security credentials are valid for one hour by default. This applies when you use the <code>AssumeRole*</code> API operations or the <code>assume-role*</code> CLI operations but does not apply when you use those operations to create a console URL. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html">Using IAM Roles</a> in the <i>IAM User Guide</i>.</p>
+-- * RoleName [roleNameType] <p>The name of the role that you want to modify.</p>
+-- * Description [roleDescriptionType] <p>The new description that you want to apply to the specified role.</p>
+-- Required key: RoleName
+-- @return UpdateRoleRequest structure as a key-value pair table
+function M.UpdateRoleRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateRoleRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -8020,18 +8388,11 @@ function M.PasswordPolicy(args)
     local header_args = { 
     }
 	local all_args = { 
-		["AllowUsersToChangePassword"] = args["AllowUsersToChangePassword"],
-		["RequireLowercaseCharacters"] = args["RequireLowercaseCharacters"],
-		["RequireUppercaseCharacters"] = args["RequireUppercaseCharacters"],
-		["MinimumPasswordLength"] = args["MinimumPasswordLength"],
-		["RequireNumbers"] = args["RequireNumbers"],
-		["PasswordReusePrevention"] = args["PasswordReusePrevention"],
-		["HardExpiry"] = args["HardExpiry"],
-		["RequireSymbols"] = args["RequireSymbols"],
-		["MaxPasswordAge"] = args["MaxPasswordAge"],
-		["ExpirePasswords"] = args["ExpirePasswords"],
+		["MaxSessionDuration"] = args["MaxSessionDuration"],
+		["RoleName"] = args["RoleName"],
+		["Description"] = args["Description"],
 	}
-	asserts.AssertPasswordPolicy(all_args)
+	asserts.AssertUpdateRoleRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -8217,7 +8578,7 @@ function asserts.AssertPolicyUser(struct)
 end
 
 --- Create a structure of type PolicyUser
--- <p>Contains information about a user that a managed policy is attached to.</p> <p>This data type is used as a response element in the <a>ListEntitiesForPolicy</a> action. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
+-- <p>Contains information about a user that a managed policy is attached to.</p> <p>This data type is used as a response element in the <a>ListEntitiesForPolicy</a> operation. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * UserName [userNameType] <p>The name (friendly name, not ARN) identifying the user.</p>
@@ -8262,7 +8623,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- * PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example, the prefix <code>/division_abc/subdivision_xyz/</code> gets all groups whose path starts with <code>/division_abc/subdivision_xyz/</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all groups. This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example, the prefix <code>/division_abc/subdivision_xyz/</code> gets all groups whose path starts with <code>/division_abc/subdivision_xyz/</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all groups. This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListGroupsRequest structure as a key-value pair table
 function M.ListGroupsRequest(args)
@@ -8305,7 +8666,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GroupName [groupNameType] <p>The name (friendly name, not ARN) of the IAM group to detach the policy from.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * GroupName [groupNameType] <p>The name (friendly name, not ARN) of the IAM group to detach the policy from.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy you want to detach.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
 -- Required key: GroupName
 -- Required key: PolicyArn
@@ -8397,9 +8758,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GroupName [groupNameType] <p>The name of the group to associate the policy with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * PolicyDocument [policyDocumentType] <p>The policy document.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- * PolicyName [policyNameType] <p>The name of the policy document.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * GroupName [groupNameType] <p>The name of the group to associate the policy with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * PolicyDocument [policyDocumentType] <p>The policy document.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul>
+-- * PolicyName [policyNameType] <p>The name of the policy document.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: GroupName
 -- Required key: PolicyName
 -- Required key: PolicyDocument
@@ -8549,6 +8910,48 @@ function M.DeleteVirtualMFADeviceRequest(args)
     }
 end
 
+keys.GetServiceLinkedRoleDeletionStatusResponse = { ["Status"] = true, ["Reason"] = true, nil }
+
+function asserts.AssertGetServiceLinkedRoleDeletionStatusResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetServiceLinkedRoleDeletionStatusResponse to be of type 'table'")
+	assert(struct["Status"], "Expected key Status to exist in table")
+	if struct["Status"] then asserts.AssertDeletionTaskStatusType(struct["Status"]) end
+	if struct["Reason"] then asserts.AssertDeletionTaskFailureReasonType(struct["Reason"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetServiceLinkedRoleDeletionStatusResponse[k], "GetServiceLinkedRoleDeletionStatusResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetServiceLinkedRoleDeletionStatusResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [DeletionTaskStatusType] <p>The status of the deletion.</p>
+-- * Reason [DeletionTaskFailureReasonType] <p>An object that contains details about the reason the deletion failed.</p>
+-- Required key: Status
+-- @return GetServiceLinkedRoleDeletionStatusResponse structure as a key-value pair table
+function M.GetServiceLinkedRoleDeletionStatusResponse(args)
+	assert(args, "You must provide an argument table when creating GetServiceLinkedRoleDeletionStatusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Status"] = args["Status"],
+		["Reason"] = args["Reason"],
+	}
+	asserts.AssertGetServiceLinkedRoleDeletionStatusResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.AddRoleToInstanceProfileRequest = { ["RoleName"] = true, ["InstanceProfileName"] = true, nil }
 
 function asserts.AssertAddRoleToInstanceProfileRequest(struct)
@@ -8568,7 +8971,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * RoleName [roleNameType] <p>The name of the role to add.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- * InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: InstanceProfileName
 -- Required key: RoleName
 -- @return AddRoleToInstanceProfileRequest structure as a key-value pair table
@@ -8585,46 +8988,6 @@ function M.AddRoleToInstanceProfileRequest(args)
 		["InstanceProfileName"] = args["InstanceProfileName"],
 	}
 	asserts.AssertAddRoleToInstanceProfileRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.GetAccessKeyLastUsedResponse = { ["UserName"] = true, ["AccessKeyLastUsed"] = true, nil }
-
-function asserts.AssertGetAccessKeyLastUsedResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected GetAccessKeyLastUsedResponse to be of type 'table'")
-	if struct["UserName"] then asserts.AssertexistingUserNameType(struct["UserName"]) end
-	if struct["AccessKeyLastUsed"] then asserts.AssertAccessKeyLastUsed(struct["AccessKeyLastUsed"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.GetAccessKeyLastUsedResponse[k], "GetAccessKeyLastUsedResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type GetAccessKeyLastUsedResponse
--- <p>Contains the response to a successful <a>GetAccessKeyLastUsed</a> request. It is also returned as a member of the <a>AccessKeyMetaData</a> structure returned by the <a>ListAccessKeys</a> action.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the AWS IAM user that owns this access key.</p> <p/>
--- * AccessKeyLastUsed [AccessKeyLastUsed] <p>Contains information about the last time the access key was used.</p>
--- @return GetAccessKeyLastUsedResponse structure as a key-value pair table
-function M.GetAccessKeyLastUsedResponse(args)
-	assert(args, "You must provide an argument table when creating GetAccessKeyLastUsedResponse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["UserName"] = args["UserName"],
-		["AccessKeyLastUsed"] = args["AccessKeyLastUsed"],
-	}
-	asserts.AssertGetAccessKeyLastUsedResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -8695,11 +9058,11 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Path [pathType] <p>The path for the server certificate. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/). This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p> <note> <p> If you are uploading a server certificate specifically for use with Amazon CloudFront distributions, you must specify a path using the <code>--path</code> option. The path must begin with <code>/cloudfront</code> and must include a trailing slash (for example, <code>/cloudfront/test/</code>).</p> </note>
--- * CertificateBody [certificateBodyType] <p>The contents of the public key certificate in PEM-encoded format.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- * PrivateKey [privateKeyType] <p>The contents of the private key in PEM-encoded format.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- * ServerCertificateName [serverCertificateNameType] <p>The name for the server certificate. Do not include the path in this value. The name of the certificate cannot contain any spaces.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * CertificateChain [certificateChainType] <p>The contents of the certificate chain. This is typically a concatenation of the PEM-encoded public key certificates of the chain.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * Path [pathType] <p>The path for the server certificate. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/). This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p> <note> <p> If you are uploading a server certificate specifically for use with Amazon CloudFront distributions, you must specify a path using the <code>path</code> parameter. The path must begin with <code>/cloudfront</code> and must include a trailing slash (for example, <code>/cloudfront/test/</code>).</p> </note>
+-- * CertificateBody [certificateBodyType] <p>The contents of the public key certificate in PEM-encoded format.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul>
+-- * PrivateKey [privateKeyType] <p>The contents of the private key in PEM-encoded format.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul>
+-- * ServerCertificateName [serverCertificateNameType] <p>The name for the server certificate. Do not include the path in this value. The name of the certificate cannot contain any spaces.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * CertificateChain [certificateChainType] <p>The contents of the certificate chain. This is typically a concatenation of the PEM-encoded public key certificates of the chain.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul>
 -- Required key: ServerCertificateName
 -- Required key: CertificateBody
 -- Required key: PrivateKey
@@ -8744,7 +9107,7 @@ function asserts.AssertLoginProfile(struct)
 end
 
 --- Create a structure of type LoginProfile
--- <p>Contains the user name and password create date for a user.</p> <p> This data type is used as a response element in the <a>CreateLoginProfile</a> and <a>GetLoginProfile</a> actions. </p>
+-- <p>Contains the user name and password create date for a user.</p> <p> This data type is used as a response element in the <a>CreateLoginProfile</a> and <a>GetLoginProfile</a> operations. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * UserName [userNameType] <p>The name of the user, which can be used for signing in to the AWS Management Console.</p>
@@ -8790,7 +9153,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the IAM user that the new key will belong to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [existingUserNameType] <p>The name of the IAM user that the new key will belong to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- @return CreateAccessKeyRequest structure as a key-value pair table
 function M.CreateAccessKeyRequest(args)
 	assert(args, "You must provide an argument table when creating CreateAccessKeyRequest")
@@ -8829,7 +9192,7 @@ end
 -- <p>Contains information about a condition context key. It includes the name of the key and specifies the value (or values, if the context key supports multiple values) to use in the simulation. This information is used when evaluating the <code>Condition</code> elements of the input policies.</p> <p>This data type is used as an input parameter to <code> <a>SimulateCustomPolicy</a> </code> and <code> <a>SimulateCustomPolicy</a> </code>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ContextKeyValues [ContextKeyValueListType] <p>The value (or values, if the condition context key supports multiple values) to provide to the simulation for use when the key is referenced by a <code>Condition</code> element in an input policy.</p>
+-- * ContextKeyValues [ContextKeyValueListType] <p>The value (or values, if the condition context key supports multiple values) to provide to the simulation when the key is referenced by a <code>Condition</code> element in an input policy.</p>
 -- * ContextKeyType [ContextKeyTypeEnum] <p>The data type of the value (or values) specified in the <code>ContextKeyValues</code> parameter.</p>
 -- * ContextKeyName [ContextKeyNameType] <p>The full name of a condition context key, including the service prefix. For example, <code>aws:SourceIp</code> or <code>s3:VersionId</code>.</p>
 -- @return ContextEntry structure as a key-value pair table
@@ -8868,7 +9231,7 @@ function asserts.AssertPolicyRole(struct)
 end
 
 --- Create a structure of type PolicyRole
--- <p>Contains information about a role that a managed policy is attached to.</p> <p>This data type is used as a response element in the <a>ListEntitiesForPolicy</a> action. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
+-- <p>Contains information about a role that a managed policy is attached to.</p> <p>This data type is used as a response element in the <a>ListEntitiesForPolicy</a> operation. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * RoleName [roleNameType] <p>The name (friendly name, not ARN) identifying the role.</p>
@@ -8912,8 +9275,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Path [pathType] <p> The path to the instance profile. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- * InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to create.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * Path [pathType] <p> The path to the instance profile. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to create.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: InstanceProfileName
 -- @return CreateInstanceProfileRequest structure as a key-value pair table
 function M.CreateInstanceProfileRequest(args)
@@ -8955,7 +9318,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * SSHPublicKeyId [publicKeyIdType] <p>The unique identifier for the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
 -- Required key: UserName
 -- Required key: SSHPublicKeyId
@@ -8997,7 +9360,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * GroupName [groupNameType] <p>The name of the IAM group to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * GroupName [groupNameType] <p>The name of the IAM group to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: GroupName
 -- @return DeleteGroupRequest structure as a key-value pair table
 function M.DeleteGroupRequest(args)
@@ -9101,6 +9464,85 @@ function M.DetachRolePolicyRequest(args)
     }
 end
 
+keys.AttachedPermissionsBoundary = { ["PermissionsBoundaryType"] = true, ["PermissionsBoundaryArn"] = true, nil }
+
+function asserts.AssertAttachedPermissionsBoundary(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected AttachedPermissionsBoundary to be of type 'table'")
+	if struct["PermissionsBoundaryType"] then asserts.AssertPermissionsBoundaryAttachmentType(struct["PermissionsBoundaryType"]) end
+	if struct["PermissionsBoundaryArn"] then asserts.AssertarnType(struct["PermissionsBoundaryArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.AttachedPermissionsBoundary[k], "AttachedPermissionsBoundary contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type AttachedPermissionsBoundary
+-- <p>Contains information about an attached permissions boundary.</p> <p>An attached permissions boundary is a managed policy that has been attached to a user or role to set the permissions boundary.</p> <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions Boundaries for IAM Identities </a> in the <i>IAM User Guide</i>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PermissionsBoundaryType [PermissionsBoundaryAttachmentType] <p> The permissions boundary usage type that indicates what type of IAM resource is used as the permissions boundary for an entity. This data type can only have a value of <code>Policy</code>.</p>
+-- * PermissionsBoundaryArn [arnType] <p> The ARN of the policy used to set the permissions boundary for the user or role.</p>
+-- @return AttachedPermissionsBoundary structure as a key-value pair table
+function M.AttachedPermissionsBoundary(args)
+	assert(args, "You must provide an argument table when creating AttachedPermissionsBoundary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["PermissionsBoundaryType"] = args["PermissionsBoundaryType"],
+		["PermissionsBoundaryArn"] = args["PermissionsBoundaryArn"],
+	}
+	asserts.AssertAttachedPermissionsBoundary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteRolePermissionsBoundaryRequest = { ["RoleName"] = true, nil }
+
+function asserts.AssertDeleteRolePermissionsBoundaryRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteRolePermissionsBoundaryRequest to be of type 'table'")
+	assert(struct["RoleName"], "Expected key RoleName to exist in table")
+	if struct["RoleName"] then asserts.AssertroleNameType(struct["RoleName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteRolePermissionsBoundaryRequest[k], "DeleteRolePermissionsBoundaryRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteRolePermissionsBoundaryRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleName [roleNameType] <p>The name (friendly name, not ARN) of the IAM role from which you want to remove the permissions boundary.</p>
+-- Required key: RoleName
+-- @return DeleteRolePermissionsBoundaryRequest structure as a key-value pair table
+function M.DeleteRolePermissionsBoundaryRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteRolePermissionsBoundaryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RoleName"] = args["RoleName"],
+	}
+	asserts.AssertDeleteRolePermissionsBoundaryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.UpdateSSHPublicKeyRequest = { ["UserName"] = true, ["Status"] = true, ["SSHPublicKeyId"] = true, nil }
 
 function asserts.AssertUpdateSSHPublicKeyRequest(struct)
@@ -9121,8 +9563,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * Status [statusType] <p>The status to assign to the SSH public key. <code>Active</code> means the key can be used for authentication with an AWS CodeCommit repository. <code>Inactive</code> means the key cannot be used.</p>
+-- * UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * Status [statusType] <p>The status to assign to the SSH public key. <code>Active</code> means that the key can be used for authentication with an AWS CodeCommit repository. <code>Inactive</code> means that the key cannot be used.</p>
 -- * SSHPublicKeyId [publicKeyIdType] <p>The unique identifier for the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
 -- Required key: UserName
 -- Required key: SSHPublicKeyId
@@ -9142,6 +9584,45 @@ function M.UpdateSSHPublicKeyRequest(args)
 		["SSHPublicKeyId"] = args["SSHPublicKeyId"],
 	}
 	asserts.AssertUpdateSSHPublicKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteServiceLinkedRoleRequest = { ["RoleName"] = true, nil }
+
+function asserts.AssertDeleteServiceLinkedRoleRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteServiceLinkedRoleRequest to be of type 'table'")
+	assert(struct["RoleName"], "Expected key RoleName to exist in table")
+	if struct["RoleName"] then asserts.AssertroleNameType(struct["RoleName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteServiceLinkedRoleRequest[k], "DeleteServiceLinkedRoleRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteServiceLinkedRoleRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleName [roleNameType] <p>The name of the service-linked role to be deleted.</p>
+-- Required key: RoleName
+-- @return DeleteServiceLinkedRoleRequest structure as a key-value pair table
+function M.DeleteServiceLinkedRoleRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteServiceLinkedRoleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RoleName"] = args["RoleName"],
+	}
+	asserts.AssertDeleteServiceLinkedRoleRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -9206,7 +9687,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * RoleName [roleNameType] <p>The name of the role to remove.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- * InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: InstanceProfileName
 -- Required key: RoleName
 -- @return RemoveRoleFromInstanceProfileRequest structure as a key-value pair table
@@ -9259,15 +9740,15 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * PolicySourceArn [arnType] <p>The Amazon Resource Name (ARN) of a user, group, or role whose policies you want to include in the simulation. If you specify a user, group, or role, the simulation includes all policies that are associated with that entity. If you specify a user, the simulation also includes all policies that are attached to any groups the user belongs to.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- * ResourceHandlingOption [ResourceHandlingOptionType] <p>Specifies the type of simulation to run. Different APIs that support resource-based policies require different combinations of resources. By specifying the type of simulation to run, you enable the policy simulator to enforce the presence of the required resources to ensure reliable simulation results. If your simulation does not match one of the following scenarios, then you can omit this parameter. The following list shows each of the supported scenario values and the resources that you must define to run the simulation.</p> <p>Each of the EC2 scenarios requires that you specify instance, image, and security-group resources. If your scenario includes an EBS volume, then you must specify that volume as a resource. If the EC2 scenario includes VPC, then you must supply the network-interface resource. If it includes an IP subnet, then you must specify the subnet resource. For more information on the EC2 scenario options, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a> in the <i>AWS EC2 User Guide</i>.</p> <ul> <li> <p> <b>EC2-Classic-InstanceStore</b> </p> <p>instance, image, security-group</p> </li> <li> <p> <b>EC2-Classic-EBS</b> </p> <p>instance, image, security-group, volume</p> </li> <li> <p> <b>EC2-VPC-InstanceStore</b> </p> <p>instance, image, security-group, network-interface</p> </li> <li> <p> <b>EC2-VPC-InstanceStore-Subnet</b> </p> <p>instance, image, security-group, network-interface, subnet</p> </li> <li> <p> <b>EC2-VPC-EBS</b> </p> <p>instance, image, security-group, network-interface, volume</p> </li> <li> <p> <b>EC2-VPC-EBS-Subnet</b> </p> <p>instance, image, security-group, network-interface, subnet, volume</p> </li> </ul>
+-- * ResourceHandlingOption [ResourceHandlingOptionType] <p>Specifies the type of simulation to run. Different API operations that support resource-based policies require different combinations of resources. By specifying the type of simulation to run, you enable the policy simulator to enforce the presence of the required resources to ensure reliable simulation results. If your simulation does not match one of the following scenarios, then you can omit this parameter. The following list shows each of the supported scenario values and the resources that you must define to run the simulation.</p> <p>Each of the EC2 scenarios requires that you specify instance, image, and security-group resources. If your scenario includes an EBS volume, then you must specify that volume as a resource. If the EC2 scenario includes VPC, then you must supply the network-interface resource. If it includes an IP subnet, then you must specify the subnet resource. For more information on the EC2 scenario options, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a> in the <i>Amazon EC2 User Guide</i>.</p> <ul> <li> <p> <b>EC2-Classic-InstanceStore</b> </p> <p>instance, image, security-group</p> </li> <li> <p> <b>EC2-Classic-EBS</b> </p> <p>instance, image, security-group, volume</p> </li> <li> <p> <b>EC2-VPC-InstanceStore</b> </p> <p>instance, image, security-group, network-interface</p> </li> <li> <p> <b>EC2-VPC-InstanceStore-Subnet</b> </p> <p>instance, image, security-group, network-interface, subnet</p> </li> <li> <p> <b>EC2-VPC-EBS</b> </p> <p>instance, image, security-group, network-interface, volume</p> </li> <li> <p> <b>EC2-VPC-EBS-Subnet</b> </p> <p>instance, image, security-group, network-interface, subnet, volume</p> </li> </ul>
 -- * ContextEntries [ContextEntryListType] <p>A list of context keys and corresponding values for the simulation to use. Whenever a context key is evaluated in one of the simulated IAM permission policies, the corresponding value is supplied.</p>
--- * CallerArn [ResourceNameType] <p>The ARN of the IAM user that you want to specify as the simulated caller of the APIs. If you do not specify a <code>CallerArn</code>, it defaults to the ARN of the user that you specify in <code>PolicySourceArn</code>, if you specified a user. If you include both a <code>PolicySourceArn</code> (for example, <code>arn:aws:iam::123456789012:user/David</code>) and a <code>CallerArn</code> (for example, <code>arn:aws:iam::123456789012:user/Bob</code>), the result is that you simulate calling the APIs as Bob, as if Bob had David's policies.</p> <p>You can specify only the ARN of an IAM user. You cannot specify the ARN of an assumed role, federated user, or a service principal.</p> <p> <code>CallerArn</code> is required if you include a <code>ResourcePolicy</code> and the <code>PolicySourceArn</code> is not the ARN for an IAM user. This is required so that the resource-based policy's <code>Principal</code> element has a value to use in evaluating the policy.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- * ResourceArns [ResourceNameListType] <p>A list of ARNs of AWS resources to include in the simulation. If this parameter is not provided then the value defaults to <code>*</code> (all resources). Each API in the <code>ActionNames</code> parameter is evaluated for each resource in this list. The simulation determines the access result (allowed or denied) of each combination and reports it in the response.</p> <p>The simulation does not automatically retrieve policies for the specified resources. If you want to include a resource policy in the simulation, then you must include the policy as a string in the <code>ResourcePolicy</code> parameter.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- * PolicyInputList [SimulationPolicyListType] <p>An optional list of additional policy documents to include in the simulation. Each document is specified as a string containing the complete, valid JSON text of an IAM policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- * ResourcePolicy [policyDocumentType] <p>A resource-based policy to include in the simulation provided as a string. Each resource in the simulation is treated as if it had this policy attached. You can include only one resource-based policy in a simulation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * CallerArn [ResourceNameType] <p>The ARN of the IAM user that you want to specify as the simulated caller of the API operations. If you do not specify a <code>CallerArn</code>, it defaults to the ARN of the user that you specify in <code>PolicySourceArn</code>, if you specified a user. If you include both a <code>PolicySourceArn</code> (for example, <code>arn:aws:iam::123456789012:user/David</code>) and a <code>CallerArn</code> (for example, <code>arn:aws:iam::123456789012:user/Bob</code>), the result is that you simulate calling the API operations as Bob, as if Bob had David's policies.</p> <p>You can specify only the ARN of an IAM user. You cannot specify the ARN of an assumed role, federated user, or a service principal.</p> <p> <code>CallerArn</code> is required if you include a <code>ResourcePolicy</code> and the <code>PolicySourceArn</code> is not the ARN for an IAM user. This is required so that the resource-based policy's <code>Principal</code> element has a value to use in evaluating the policy.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- * ResourceArns [ResourceNameListType] <p>A list of ARNs of AWS resources to include in the simulation. If this parameter is not provided, then the value defaults to <code>*</code> (all resources). Each API in the <code>ActionNames</code> parameter is evaluated for each resource in this list. The simulation determines the access result (allowed or denied) of each combination and reports it in the response.</p> <p>The simulation does not automatically retrieve policies for the specified resources. If you want to include a resource policy in the simulation, then you must include the policy as a string in the <code>ResourcePolicy</code> parameter.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- * PolicyInputList [SimulationPolicyListType] <p>An optional list of additional policy documents to include in the simulation. Each document is specified as a string containing the complete, valid JSON text of an IAM policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul>
+-- * ResourcePolicy [policyDocumentType] <p>A resource-based policy to include in the simulation provided as a string. Each resource in the simulation is treated as if it had this policy attached. You can include only one resource-based policy in a simulation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of the following:</p> <ul> <li> <p>Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range</p> </li> <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)</p> </li> <li> <p>The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</p> </li> </ul>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- * ActionNames [ActionNameListType] <p>A list of names of API actions to evaluate in the simulation. Each action is evaluated for each resource. Each action must include the service identifier, such as <code>iam:CreateUser</code>.</p>
+-- * ActionNames [ActionNameListType] <p>A list of names of API operations to evaluate in the simulation. Each operation is evaluated for each resource. Each operation must include the service identifier, such as <code>iam:CreateUser</code>.</p>
 -- * ResourceOwner [ResourceNameType] <p>An AWS account ID that specifies the owner of any simulated resource that does not identify its owner in the resource ARN, such as an S3 bucket or object. If <code>ResourceOwner</code> is specified, it is also used as the account owner of any <code>ResourcePolicy</code> included in the simulation. If the <code>ResourceOwner</code> parameter is not specified, then the owner of the resources and the resource policy defaults to the account of the identity provided in <code>CallerArn</code>. This parameter is required only if you specify a resource-based policy and account that owns the resource is different from the account that owns the simulated calling user <code>CallerArn</code>.</p>
 -- Required key: PolicySourceArn
 -- Required key: ActionNames
@@ -9320,8 +9801,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [existingUserNameType] <p>The name of the user who the policy is associated with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- * PolicyName [policyNameType] <p>The name of the policy document to get.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [existingUserNameType] <p>The name of the user who the policy is associated with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * PolicyName [policyNameType] <p>The name of the policy document to get.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: UserName
 -- Required key: PolicyName
 -- @return GetUserPolicyRequest structure as a key-value pair table
@@ -9365,7 +9846,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * RoleName [roleNameType] <p>The name of the role associated with the policy.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- * PolicyName [policyNameType] <p>The name of the policy document to get.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * PolicyName [policyNameType] <p>The name of the policy document to get.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: RoleName
 -- Required key: PolicyName
 -- @return GetRolePolicyRequest structure as a key-value pair table
@@ -9382,6 +9863,60 @@ function M.GetRolePolicyRequest(args)
 		["PolicyName"] = args["PolicyName"],
 	}
 	asserts.AssertGetRolePolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SSHPublicKeyMetadata = { ["UserName"] = true, ["Status"] = true, ["SSHPublicKeyId"] = true, ["UploadDate"] = true, nil }
+
+function asserts.AssertSSHPublicKeyMetadata(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SSHPublicKeyMetadata to be of type 'table'")
+	assert(struct["UserName"], "Expected key UserName to exist in table")
+	assert(struct["SSHPublicKeyId"], "Expected key SSHPublicKeyId to exist in table")
+	assert(struct["Status"], "Expected key Status to exist in table")
+	assert(struct["UploadDate"], "Expected key UploadDate to exist in table")
+	if struct["UserName"] then asserts.AssertuserNameType(struct["UserName"]) end
+	if struct["Status"] then asserts.AssertstatusType(struct["Status"]) end
+	if struct["SSHPublicKeyId"] then asserts.AssertpublicKeyIdType(struct["SSHPublicKeyId"]) end
+	if struct["UploadDate"] then asserts.AssertdateType(struct["UploadDate"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SSHPublicKeyMetadata[k], "SSHPublicKeyMetadata contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SSHPublicKeyMetadata
+-- <p>Contains information about an SSH public key, without the key's body or fingerprint.</p> <p>This data type is used as a response element in the <a>ListSSHPublicKeys</a> operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p>
+-- * Status [statusType] <p>The status of the SSH public key. <code>Active</code> means that the key can be used for authentication with an AWS CodeCommit repository. <code>Inactive</code> means that the key cannot be used.</p>
+-- * SSHPublicKeyId [publicKeyIdType] <p>The unique identifier for the SSH public key.</p>
+-- * UploadDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the SSH public key was uploaded.</p>
+-- Required key: UserName
+-- Required key: SSHPublicKeyId
+-- Required key: Status
+-- Required key: UploadDate
+-- @return SSHPublicKeyMetadata structure as a key-value pair table
+function M.SSHPublicKeyMetadata(args)
+	assert(args, "You must provide an argument table when creating SSHPublicKeyMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["UserName"] = args["UserName"],
+		["Status"] = args["Status"],
+		["SSHPublicKeyId"] = args["SSHPublicKeyId"],
+		["UploadDate"] = args["UploadDate"],
+	}
+	asserts.AssertSSHPublicKeyMetadata(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -9446,7 +9981,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * SAMLMetadataDocument [SAMLMetadataDocumentType] <p>An XML document generated by an identity provider (IdP) that supports SAML 2.0. The document includes the issuer's name, expiration information, and keys that can be used to validate the SAML authentication response (assertions) that are received from the IdP. You must generate the metadata document using the identity management software that is used as your organization's IdP.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html">About SAML 2.0-based Federation</a> in the <i>IAM User Guide</i> </p>
--- * Name [SAMLProviderNameType] <p>The name of the provider to create.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * Name [SAMLProviderNameType] <p>The name of the provider to create.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: SAMLMetadataDocument
 -- Required key: Name
 -- @return CreateSAMLProviderRequest structure as a key-value pair table
@@ -9487,7 +10022,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name of the user whose password you want to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [userNameType] <p>The name of the user whose password you want to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: UserName
 -- @return DeleteLoginProfileRequest structure as a key-value pair table
 function M.DeleteLoginProfileRequest(args)
@@ -9527,8 +10062,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Path [pathType] <p> The path for the virtual MFA device. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- * VirtualMFADeviceName [virtualMFADeviceName] <p>The name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * Path [pathType] <p> The path for the virtual MFA device. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * VirtualMFADeviceName [virtualMFADeviceName] <p>The name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: VirtualMFADeviceName
 -- @return CreateVirtualMFADeviceRequest structure as a key-value pair table
 function M.CreateVirtualMFADeviceRequest(args)
@@ -9552,7 +10087,64 @@ function M.CreateVirtualMFADeviceRequest(args)
     }
 end
 
-keys.User = { ["UserName"] = true, ["PasswordLastUsed"] = true, ["CreateDate"] = true, ["UserId"] = true, ["Path"] = true, ["Arn"] = true, nil }
+keys.SigningCertificate = { ["UserName"] = true, ["Status"] = true, ["CertificateBody"] = true, ["CertificateId"] = true, ["UploadDate"] = true, nil }
+
+function asserts.AssertSigningCertificate(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SigningCertificate to be of type 'table'")
+	assert(struct["UserName"], "Expected key UserName to exist in table")
+	assert(struct["CertificateId"], "Expected key CertificateId to exist in table")
+	assert(struct["CertificateBody"], "Expected key CertificateBody to exist in table")
+	assert(struct["Status"], "Expected key Status to exist in table")
+	if struct["UserName"] then asserts.AssertuserNameType(struct["UserName"]) end
+	if struct["Status"] then asserts.AssertstatusType(struct["Status"]) end
+	if struct["CertificateBody"] then asserts.AssertcertificateBodyType(struct["CertificateBody"]) end
+	if struct["CertificateId"] then asserts.AssertcertificateIdType(struct["CertificateId"]) end
+	if struct["UploadDate"] then asserts.AssertdateType(struct["UploadDate"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SigningCertificate[k], "SigningCertificate contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SigningCertificate
+-- <p>Contains information about an X.509 signing certificate.</p> <p>This data type is used as a response element in the <a>UploadSigningCertificate</a> and <a>ListSigningCertificates</a> operations. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the user the signing certificate is associated with.</p>
+-- * Status [statusType] <p>The status of the signing certificate. <code>Active</code> means that the key is valid for API calls, while <code>Inactive</code> means it is not.</p>
+-- * CertificateBody [certificateBodyType] <p>The contents of the signing certificate.</p>
+-- * CertificateId [certificateIdType] <p>The ID for the signing certificate.</p>
+-- * UploadDate [dateType] <p>The date when the signing certificate was uploaded.</p>
+-- Required key: UserName
+-- Required key: CertificateId
+-- Required key: CertificateBody
+-- Required key: Status
+-- @return SigningCertificate structure as a key-value pair table
+function M.SigningCertificate(args)
+	assert(args, "You must provide an argument table when creating SigningCertificate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["UserName"] = args["UserName"],
+		["Status"] = args["Status"],
+		["CertificateBody"] = args["CertificateBody"],
+		["CertificateId"] = args["CertificateId"],
+		["UploadDate"] = args["UploadDate"],
+	}
+	asserts.AssertSigningCertificate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.User = { ["UserName"] = true, ["PermissionsBoundary"] = true, ["PasswordLastUsed"] = true, ["CreateDate"] = true, ["UserId"] = true, ["Path"] = true, ["Arn"] = true, nil }
 
 function asserts.AssertUser(struct)
 	assert(struct)
@@ -9563,6 +10155,7 @@ function asserts.AssertUser(struct)
 	assert(struct["Arn"], "Expected key Arn to exist in table")
 	assert(struct["CreateDate"], "Expected key CreateDate to exist in table")
 	if struct["UserName"] then asserts.AssertuserNameType(struct["UserName"]) end
+	if struct["PermissionsBoundary"] then asserts.AssertAttachedPermissionsBoundary(struct["PermissionsBoundary"]) end
 	if struct["PasswordLastUsed"] then asserts.AssertdateType(struct["PasswordLastUsed"]) end
 	if struct["CreateDate"] then asserts.AssertdateType(struct["CreateDate"]) end
 	if struct["UserId"] then asserts.AssertidType(struct["UserId"]) end
@@ -9574,11 +10167,12 @@ function asserts.AssertUser(struct)
 end
 
 --- Create a structure of type User
--- <p>Contains information about an IAM user entity.</p> <p>This data type is used as a response element in the following actions:</p> <ul> <li> <p> <a>CreateUser</a> </p> </li> <li> <p> <a>GetUser</a> </p> </li> <li> <p> <a>ListUsers</a> </p> </li> </ul>
+-- <p>Contains information about an IAM user entity.</p> <p>This data type is used as a response element in the following operations:</p> <ul> <li> <p> <a>CreateUser</a> </p> </li> <li> <p> <a>GetUser</a> </p> </li> <li> <p> <a>ListUsers</a> </p> </li> </ul>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * UserName [userNameType] <p>The friendly name identifying the user.</p>
--- * PasswordLastUsed [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the user's password was last used to sign in to an AWS website. For a list of AWS websites that capture a user's last sign-in time, see the <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html">Credential Reports</a> topic in the <i>Using IAM</i> guide. If a password is used more than once in a five-minute span, only the first use is returned in this field. This field is null (not present) when:</p> <ul> <li> <p>The user does not have a password</p> </li> <li> <p>The password exists but has never been used (at least not since IAM started tracking this information on October 20th, 2014</p> </li> <li> <p>there is no sign-in data associated with the user</p> </li> </ul> <p>This value is returned only in the <a>GetUser</a> and <a>ListUsers</a> actions. </p>
+-- * PermissionsBoundary [AttachedPermissionsBoundary] <p>The ARN of the policy used to set the permissions boundary for the user.</p> <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions Boundaries for IAM Identities </a> in the <i>IAM User Guide</i>.</p>
+-- * PasswordLastUsed [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the user's password was last used to sign in to an AWS website. For a list of AWS websites that capture a user's last sign-in time, see the <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html">Credential Reports</a> topic in the <i>Using IAM</i> guide. If a password is used more than once in a five-minute span, only the first use is returned in this field. If the field is null (no value) then it indicates that they never signed in with a password. This can be because:</p> <ul> <li> <p>The user never had a password.</p> </li> <li> <p>A password exists but has not been used since IAM started tracking this information on October 20th, 2014.</p> </li> </ul> <p>A null does not mean that the user <i>never</i> had a password. Also, if the user does not currently have a password, but had one in the past, then this field contains the date and time the most recent password was used.</p> <p>This value is returned only in the <a>GetUser</a> and <a>ListUsers</a> operations. </p>
 -- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the user was created.</p>
 -- * UserId [idType] <p>The stable and unique string identifying the user. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
 -- * Path [pathType] <p>The path to the user. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
@@ -9599,6 +10193,7 @@ function M.User(args)
     }
 	local all_args = { 
 		["UserName"] = args["UserName"],
+		["PermissionsBoundary"] = args["PermissionsBoundary"],
 		["PasswordLastUsed"] = args["PasswordLastUsed"],
 		["CreateDate"] = args["CreateDate"],
 		["UserId"] = args["UserId"],
@@ -9630,7 +10225,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to get information about.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to get information about.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- Required key: InstanceProfileName
 -- @return GetInstanceProfileRequest structure as a key-value pair table
 function M.GetInstanceProfileRequest(args)
@@ -9696,54 +10291,18 @@ function M.SimulatePolicyResponse(args)
     }
 end
 
-keys.CreateServiceLinkedRoleResponse = { ["Role"] = true, nil }
-
-function asserts.AssertCreateServiceLinkedRoleResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CreateServiceLinkedRoleResponse to be of type 'table'")
-	if struct["Role"] then asserts.AssertRole(struct["Role"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.CreateServiceLinkedRoleResponse[k], "CreateServiceLinkedRoleResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CreateServiceLinkedRoleResponse
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Role [Role] <p>A <a>Role</a> object that contains details about the newly created role.</p>
--- @return CreateServiceLinkedRoleResponse structure as a key-value pair table
-function M.CreateServiceLinkedRoleResponse(args)
-	assert(args, "You must provide an argument table when creating CreateServiceLinkedRoleResponse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Role"] = args["Role"],
-	}
-	asserts.AssertCreateServiceLinkedRoleResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ListEntitiesForPolicyRequest = { ["Marker"] = true, ["EntityFilter"] = true, ["PathPrefix"] = true, ["PolicyArn"] = true, ["MaxItems"] = true, nil }
+keys.ListEntitiesForPolicyRequest = { ["EntityFilter"] = true, ["PolicyUsageFilter"] = true, ["PolicyArn"] = true, ["PathPrefix"] = true, ["MaxItems"] = true, ["Marker"] = true, nil }
 
 function asserts.AssertListEntitiesForPolicyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListEntitiesForPolicyRequest to be of type 'table'")
 	assert(struct["PolicyArn"], "Expected key PolicyArn to exist in table")
-	if struct["Marker"] then asserts.AssertmarkerType(struct["Marker"]) end
 	if struct["EntityFilter"] then asserts.AssertEntityType(struct["EntityFilter"]) end
-	if struct["PathPrefix"] then asserts.AssertpathType(struct["PathPrefix"]) end
+	if struct["PolicyUsageFilter"] then asserts.AssertPolicyUsageType(struct["PolicyUsageFilter"]) end
 	if struct["PolicyArn"] then asserts.AssertarnType(struct["PolicyArn"]) end
+	if struct["PathPrefix"] then asserts.AssertpathType(struct["PathPrefix"]) end
 	if struct["MaxItems"] then asserts.AssertmaxItemsType(struct["MaxItems"]) end
+	if struct["Marker"] then asserts.AssertmarkerType(struct["Marker"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListEntitiesForPolicyRequest[k], "ListEntitiesForPolicyRequest contains unknown key " .. tostring(k))
 	end
@@ -9753,11 +10312,12 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
 -- * EntityFilter [EntityType] <p>The entity type to use for filtering the results.</p> <p>For example, when <code>EntityFilter</code> is <code>Role</code>, only the roles that are attached to the specified policy are returned. This parameter is optional. If it is not included, all attached entities (users, groups, and roles) are returned. The argument for this parameter must be one of the valid values listed below.</p>
--- * PathPrefix [pathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all entities.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * PolicyUsageFilter [PolicyUsageType] <p>The policy usage method to use for filtering the results.</p> <p>To list only permissions policies, set <code>PolicyUsageFilter</code> to <code>PermissionsPolicy</code>. To list only the policies used to set permissions boundaries, set the value to <code>PermissionsBoundary</code>.</p> <p>This parameter is optional. If it is not included, all policies are returned. </p>
 -- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy for which you want the versions.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- * PathPrefix [pathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all entities.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
 -- Required key: PolicyArn
 -- @return ListEntitiesForPolicyRequest structure as a key-value pair table
 function M.ListEntitiesForPolicyRequest(args)
@@ -9769,11 +10329,12 @@ function M.ListEntitiesForPolicyRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Marker"] = args["Marker"],
 		["EntityFilter"] = args["EntityFilter"],
-		["PathPrefix"] = args["PathPrefix"],
+		["PolicyUsageFilter"] = args["PolicyUsageFilter"],
 		["PolicyArn"] = args["PolicyArn"],
+		["PathPrefix"] = args["PathPrefix"],
 		["MaxItems"] = args["MaxItems"],
+		["Marker"] = args["Marker"],
 	}
 	asserts.AssertListEntitiesForPolicyRequest(all_args)
 	return {
@@ -9893,7 +10454,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC) provider resource to add the client ID to. You can get a list of OIDC provider ARNs by using the <a>ListOpenIDConnectProviders</a> action.</p>
+-- * OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC) provider resource to add the client ID to. You can get a list of OIDC provider ARNs by using the <a>ListOpenIDConnectProviders</a> operation.</p>
 -- * ClientID [clientIDType] <p>The client ID (also known as audience) to add to the IAM OpenID Connect provider resource.</p>
 -- Required key: OpenIDConnectProviderArn
 -- Required key: ClientID
@@ -10134,9 +10695,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name of the IAM user to create a password for. The user must already exist.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [userNameType] <p>The name of the IAM user to create a password for. The user must already exist.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * PasswordResetRequired [booleanType] <p>Specifies whether the user is required to set a new password on next sign-in.</p>
--- * Password [passwordType] <p>The new password for the user.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of almost any printable ASCII character from the space (\u0020) through the end of the ASCII character range (\u00FF). You can also include the tab (\u0009), line feed (\u000A), and carriage return (\u000D) characters. Although any of these characters are valid in a password, note that many tools, such as the AWS Management Console, might restrict the ability to enter certain characters because they have special meaning within that tool.</p>
+-- * Password [passwordType] <p>The new password for the user.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a string of characters. That string can include almost any printable ASCII character from the space (\u0020) through the end of the ASCII character range (\u00FF). You can also include the tab (\u0009), line feed (\u000A), and carriage return (\u000D) characters. Any of these characters are valid in a password. However, many tools, such as the AWS Management Console, might restrict the ability to type certain characters because they have special meaning within that tool.</p>
 -- Required key: UserName
 -- Required key: Password
 -- @return CreateLoginProfileRequest structure as a key-value pair table
@@ -10154,6 +10715,50 @@ function M.CreateLoginProfileRequest(args)
 		["Password"] = args["Password"],
 	}
 	asserts.AssertCreateLoginProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.PutUserPermissionsBoundaryRequest = { ["UserName"] = true, ["PermissionsBoundary"] = true, nil }
+
+function asserts.AssertPutUserPermissionsBoundaryRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PutUserPermissionsBoundaryRequest to be of type 'table'")
+	assert(struct["UserName"], "Expected key UserName to exist in table")
+	assert(struct["PermissionsBoundary"], "Expected key PermissionsBoundary to exist in table")
+	if struct["UserName"] then asserts.AssertuserNameType(struct["UserName"]) end
+	if struct["PermissionsBoundary"] then asserts.AssertarnType(struct["PermissionsBoundary"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PutUserPermissionsBoundaryRequest[k], "PutUserPermissionsBoundaryRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PutUserPermissionsBoundaryRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name (friendly name, not ARN) of the IAM user for which you want to set the permissions boundary.</p>
+-- * PermissionsBoundary [arnType] <p>The ARN of the policy that is used to set the permissions boundary for the user.</p>
+-- Required key: UserName
+-- Required key: PermissionsBoundary
+-- @return PutUserPermissionsBoundaryRequest structure as a key-value pair table
+function M.PutUserPermissionsBoundaryRequest(args)
+	assert(args, "You must provide an argument table when creating PutUserPermissionsBoundaryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["UserName"] = args["UserName"],
+		["PermissionsBoundary"] = args["PermissionsBoundary"],
+	}
+	asserts.AssertPutUserPermissionsBoundaryRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -10218,7 +10823,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name of the IAM user associated with the service-specific credential. If you do not specify this value, then the operation assumes the user whose credentials are used to call the operation.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [userNameType] <p>The name of the IAM user associated with the service-specific credential. If you do not specify this value, then the operation assumes the user whose credentials are used to call the operation.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * Status [statusType] <p>The status to be assigned to the service-specific credential.</p>
 -- * ServiceSpecificCredentialId [serviceSpecificCredentialId] <p>The unique identifier of the service-specific credential.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
 -- Required key: ServiceSpecificCredentialId
@@ -10267,7 +10872,7 @@ end
 -- Valid keys:
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
 -- * RoleName [roleNameType] <p>The name (friendly name, not ARN) of the role to list attached policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- * PathPrefix [policyPathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * PathPrefix [policyPathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- Required key: RoleName
 -- @return ListAttachedRolePoliciesRequest structure as a key-value pair table
@@ -10390,11 +10995,11 @@ function asserts.AssertAccessKey(struct)
 end
 
 --- Create a structure of type AccessKey
--- <p>Contains information about an AWS access key.</p> <p> This data type is used as a response element in the <a>CreateAccessKey</a> and <a>ListAccessKeys</a> actions. </p> <note> <p>The <code>SecretAccessKey</code> value is returned only in response to <a>CreateAccessKey</a>. You can get a secret access key only when you first create an access key; you cannot recover the secret access key later. If you lose a secret access key, you must create a new access key.</p> </note>
+-- <p>Contains information about an AWS access key.</p> <p> This data type is used as a response element in the <a>CreateAccessKey</a> and <a>ListAccessKeys</a> operations. </p> <note> <p>The <code>SecretAccessKey</code> value is returned only in response to <a>CreateAccessKey</a>. You can get a secret access key only when you first create an access key; you cannot recover the secret access key later. If you lose a secret access key, you must create a new access key.</p> </note>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * UserName [userNameType] <p>The name of the IAM user that the access key is associated with.</p>
--- * Status [statusType] <p>The status of the access key. <code>Active</code> means the key is valid for API calls, while <code>Inactive</code> means it is not. </p>
+-- * Status [statusType] <p>The status of the access key. <code>Active</code> means that the key is valid for API calls, while <code>Inactive</code> means it is not. </p>
 -- * CreateDate [dateType] <p>The date when the access key was created.</p>
 -- * SecretAccessKey [accessKeySecretType] <p>The secret key used to sign requests.</p>
 -- * AccessKeyId [accessKeyIdType] <p>The ID for this access key.</p>
@@ -10427,39 +11032,31 @@ function M.AccessKey(args)
     }
 end
 
-keys.SSHPublicKeyMetadata = { ["UserName"] = true, ["Status"] = true, ["SSHPublicKeyId"] = true, ["UploadDate"] = true, nil }
+keys.AccessKeyMetadata = { ["UserName"] = true, ["Status"] = true, ["CreateDate"] = true, ["AccessKeyId"] = true, nil }
 
-function asserts.AssertSSHPublicKeyMetadata(struct)
+function asserts.AssertAccessKeyMetadata(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SSHPublicKeyMetadata to be of type 'table'")
-	assert(struct["UserName"], "Expected key UserName to exist in table")
-	assert(struct["SSHPublicKeyId"], "Expected key SSHPublicKeyId to exist in table")
-	assert(struct["Status"], "Expected key Status to exist in table")
-	assert(struct["UploadDate"], "Expected key UploadDate to exist in table")
+	assert(type(struct) == "table", "Expected AccessKeyMetadata to be of type 'table'")
 	if struct["UserName"] then asserts.AssertuserNameType(struct["UserName"]) end
 	if struct["Status"] then asserts.AssertstatusType(struct["Status"]) end
-	if struct["SSHPublicKeyId"] then asserts.AssertpublicKeyIdType(struct["SSHPublicKeyId"]) end
-	if struct["UploadDate"] then asserts.AssertdateType(struct["UploadDate"]) end
+	if struct["CreateDate"] then asserts.AssertdateType(struct["CreateDate"]) end
+	if struct["AccessKeyId"] then asserts.AssertaccessKeyIdType(struct["AccessKeyId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SSHPublicKeyMetadata[k], "SSHPublicKeyMetadata contains unknown key " .. tostring(k))
+		assert(keys.AccessKeyMetadata[k], "AccessKeyMetadata contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SSHPublicKeyMetadata
--- <p>Contains information about an SSH public key, without the key's body or fingerprint.</p> <p>This data type is used as a response element in the <a>ListSSHPublicKeys</a> action.</p>
+--- Create a structure of type AccessKeyMetadata
+-- <p>Contains information about an AWS access key, without its secret key.</p> <p>This data type is used as a response element in the <a>ListAccessKeys</a> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p>
--- * Status [statusType] <p>The status of the SSH public key. <code>Active</code> means the key can be used for authentication with an AWS CodeCommit repository. <code>Inactive</code> means the key cannot be used.</p>
--- * SSHPublicKeyId [publicKeyIdType] <p>The unique identifier for the SSH public key.</p>
--- * UploadDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the SSH public key was uploaded.</p>
--- Required key: UserName
--- Required key: SSHPublicKeyId
--- Required key: Status
--- Required key: UploadDate
--- @return SSHPublicKeyMetadata structure as a key-value pair table
-function M.SSHPublicKeyMetadata(args)
-	assert(args, "You must provide an argument table when creating SSHPublicKeyMetadata")
+-- * UserName [userNameType] <p>The name of the IAM user that the key is associated with.</p>
+-- * Status [statusType] <p>The status of the access key. <code>Active</code> means the key is valid for API calls; <code>Inactive</code> means it is not.</p>
+-- * CreateDate [dateType] <p>The date when the access key was created.</p>
+-- * AccessKeyId [accessKeyIdType] <p>The ID for this access key.</p>
+-- @return AccessKeyMetadata structure as a key-value pair table
+function M.AccessKeyMetadata(args)
+	assert(args, "You must provide an argument table when creating AccessKeyMetadata")
     local query_args = { 
     }
     local uri_args = { 
@@ -10469,10 +11066,10 @@ function M.SSHPublicKeyMetadata(args)
 	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Status"] = args["Status"],
-		["SSHPublicKeyId"] = args["SSHPublicKeyId"],
-		["UploadDate"] = args["UploadDate"],
+		["CreateDate"] = args["CreateDate"],
+		["AccessKeyId"] = args["AccessKeyId"],
 	}
-	asserts.AssertSSHPublicKeyMetadata(all_args)
+	asserts.AssertAccessKeyMetadata(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -10537,9 +11134,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserName [userNameType] <p>The name (friendly name, not ARN) of the user to list attached policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * UserName [userNameType] <p>The name (friendly name, not ARN) of the user to list attached policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
 -- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- * PathPrefix [policyPathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * PathPrefix [policyPathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- Required key: UserName
 -- @return ListAttachedUserPoliciesRequest structure as a key-value pair table
@@ -10621,7 +11218,7 @@ function asserts.AssertServerCertificate(struct)
 end
 
 --- Create a structure of type ServerCertificate
--- <p>Contains information about a server certificate.</p> <p> This data type is used as a response element in the <a>GetServerCertificate</a> action. </p>
+-- <p>Contains information about a server certificate.</p> <p> This data type is used as a response element in the <a>GetServerCertificate</a> operation. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * CertificateChain [certificateChainType] <p>The contents of the public key certificate chain.</p>
@@ -10814,6 +11411,19 @@ end
 --  
 function M.ReportStateDescriptionType(str)
 	asserts.AssertReportStateDescriptionType(str)
+	return str
+end
+
+function asserts.AssertDeletionTaskIdType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected DeletionTaskIdType to be of type 'string'")
+	assert(#str <= 1000, "Expected string to be max 1000 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.DeletionTaskIdType(str)
+	asserts.AssertDeletionTaskIdType(str)
 	return str
 end
 
@@ -11023,6 +11633,17 @@ function M.policyNameType(str)
 	return str
 end
 
+function asserts.AssertpolicyNotAttachableMessage(str)
+	assert(str)
+	assert(type(str) == "string", "Expected policyNotAttachableMessage to be of type 'string'")
+end
+
+--  
+function M.policyNotAttachableMessage(str)
+	asserts.AssertpolicyNotAttachableMessage(str)
+	return str
+end
+
 function asserts.AssertpublicKeyMaterialType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected publicKeyMaterialType to be of type 'string'")
@@ -11082,6 +11703,17 @@ function M.keyPairMismatchMessage(str)
 	return str
 end
 
+function asserts.AssertPermissionsBoundaryAttachmentType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected PermissionsBoundaryAttachmentType to be of type 'string'")
+end
+
+--  
+function M.PermissionsBoundaryAttachmentType(str)
+	asserts.AssertPermissionsBoundaryAttachmentType(str)
+	return str
+end
+
 function asserts.AssertContextKeyValueType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ContextKeyValueType to be of type 'string'")
@@ -11106,6 +11738,17 @@ function M.SAMLMetadataDocumentType(str)
 	return str
 end
 
+function asserts.AssertDeletionTaskStatusType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected DeletionTaskStatusType to be of type 'string'")
+end
+
+--  
+function M.DeletionTaskStatusType(str)
+	asserts.AssertDeletionTaskStatusType(str)
+	return str
+end
+
 function asserts.AssertnoSuchEntityMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected noSuchEntityMessage to be of type 'string'")
@@ -11114,6 +11757,18 @@ end
 --  
 function M.noSuchEntityMessage(str)
 	asserts.AssertnoSuchEntityMessage(str)
+	return str
+end
+
+function asserts.AssertReasonType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ReasonType to be of type 'string'")
+	assert(#str <= 1000, "Expected string to be max 1000 characters")
+end
+
+--  
+function M.ReasonType(str)
+	asserts.AssertReasonType(str)
 	return str
 end
 
@@ -11252,17 +11907,6 @@ end
 --  
 function M.serviceUserName(str)
 	asserts.AssertserviceUserName(str)
-	return str
-end
-
-function asserts.AssertmalformedPolicyDocumentMessage(str)
-	assert(str)
-	assert(type(str) == "string", "Expected malformedPolicyDocumentMessage to be of type 'string'")
-end
-
---  
-function M.malformedPolicyDocumentMessage(str)
-	asserts.AssertmalformedPolicyDocumentMessage(str)
 	return str
 end
 
@@ -11406,6 +12050,17 @@ function M.duplicateSSHPublicKeyMessage(str)
 	return str
 end
 
+function asserts.AssertmalformedPolicyDocumentMessage(str)
+	assert(str)
+	assert(type(str) == "string", "Expected malformedPolicyDocumentMessage to be of type 'string'")
+end
+
+--  
+function M.malformedPolicyDocumentMessage(str)
+	asserts.AssertmalformedPolicyDocumentMessage(str)
+	return str
+end
+
 function asserts.AssertexistingUserNameType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected existingUserNameType to be of type 'string'")
@@ -11535,6 +12190,17 @@ function M.statusType(str)
 	return str
 end
 
+function asserts.AssertPolicyUsageType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected PolicyUsageType to be of type 'string'")
+end
+
+-- <p>The policy usage type that indicates whether the policy is used as a permissions policy or as the permissions boundary for an entity.</p> <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions Boundaries for IAM Identities </a> in the <i>IAM User Guide</i>.</p>
+function M.PolicyUsageType(str)
+	asserts.AssertPolicyUsageType(str)
+	return str
+end
+
 function asserts.AssertContextKeyTypeEnum(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ContextKeyTypeEnum to be of type 'string'")
@@ -11629,6 +12295,19 @@ function M.encodingType(str)
 	return str
 end
 
+function asserts.AssertRegionNameType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected RegionNameType to be of type 'string'")
+	assert(#str <= 100, "Expected string to be max 100 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.RegionNameType(str)
+	asserts.AssertRegionNameType(str)
+	return str
+end
+
 function asserts.AssertpathType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected pathType to be of type 'string'")
@@ -11676,6 +12355,19 @@ end
 
 function M.maxPasswordAgeType(integer)
 	asserts.AssertmaxPasswordAgeType(integer)
+	return integer
+end
+
+function asserts.AssertroleMaxSessionDurationType(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected roleMaxSessionDurationType to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
+	assert(integer <= 43200, "Expected integer to be max 43200")
+	assert(integer >= 3600, "Expected integer to be min 3600")
+end
+
+function M.roleMaxSessionDurationType(integer)
+	asserts.AssertroleMaxSessionDurationType(integer)
 	return integer
 end
 
@@ -11870,6 +12562,21 @@ function M.userDetailListType(list)
 	return list
 end
 
+function asserts.AssertArnListType(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ArnListType to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertarnType(v)
+	end
+end
+
+--  
+-- List of arnType objects
+function M.ArnListType(list)
+	asserts.AssertArnListType(list)
+	return list
+end
+
 function asserts.AssertContextKeyValueListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ContextKeyValueListType to be of type ''table")
@@ -11968,7 +12675,7 @@ function asserts.AssertcertificateListType(list)
 	end
 end
 
--- <p>Contains a list of signing certificates.</p> <p>This data type is used as a response element in the <a>ListSigningCertificates</a> action.</p>
+-- <p>Contains a list of signing certificates.</p> <p>This data type is used as a response element in the <a>ListSigningCertificates</a> operation.</p>
 -- List of SigningCertificate objects
 function M.certificateListType(list)
 	asserts.AssertcertificateListType(list)
@@ -12050,6 +12757,21 @@ function M.virtualMFADeviceListType(list)
 	return list
 end
 
+function asserts.AssertContextKeyNamesResultListType(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ContextKeyNamesResultListType to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertContextKeyNameType(v)
+	end
+end
+
+--  
+-- List of ContextKeyNameType objects
+function M.ContextKeyNamesResultListType(list)
+	asserts.AssertContextKeyNamesResultListType(list)
+	return list
+end
+
 function asserts.AssertinstanceProfileListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected instanceProfileListType to be of type ''table")
@@ -12110,18 +12832,18 @@ function M.thumbprintListType(list)
 	return list
 end
 
-function asserts.AssertpolicyListType(list)
+function asserts.AssertRoleUsageListType(list)
 	assert(list)
-	assert(type(list) == "table", "Expected policyListType to be of type ''table")
+	assert(type(list) == "table", "Expected RoleUsageListType to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertPolicy(v)
+		asserts.AssertRoleUsageType(v)
 	end
 end
 
 --  
--- List of Policy objects
-function M.policyListType(list)
-	asserts.AssertpolicyListType(list)
+-- List of RoleUsageType objects
+function M.RoleUsageListType(list)
+	asserts.AssertRoleUsageListType(list)
 	return list
 end
 
@@ -12163,7 +12885,7 @@ function asserts.AssertaccessKeyMetadataListType(list)
 	end
 end
 
--- <p>Contains a list of access key metadata.</p> <p>This data type is used as a response element in the <a>ListAccessKeys</a> action.</p>
+-- <p>Contains a list of access key metadata.</p> <p>This data type is used as a response element in the <a>ListAccessKeys</a> operation.</p>
 -- List of AccessKeyMetadata objects
 function M.accessKeyMetadataListType(list)
 	asserts.AssertaccessKeyMetadataListType(list)
@@ -12178,7 +12900,7 @@ function asserts.AssertroleListType(list)
 	end
 end
 
--- <p>Contains a list of IAM roles.</p> <p>This data type is used as a response element in the <a>ListRoles</a> action.</p>
+-- <p>Contains a list of IAM roles.</p> <p>This data type is used as a response element in the <a>ListRoles</a> operation.</p>
 -- List of Role objects
 function M.roleListType(list)
 	asserts.AssertroleListType(list)
@@ -12268,7 +12990,7 @@ function asserts.AssertuserListType(list)
 	end
 end
 
--- <p>Contains a list of users.</p> <p>This data type is used as a response element in the <a>GetGroup</a> and <a>ListUsers</a> actions. </p>
+-- <p>Contains a list of users.</p> <p>This data type is used as a response element in the <a>GetGroup</a> and <a>ListUsers</a> operations. </p>
 -- List of User objects
 function M.userListType(list)
 	asserts.AssertuserListType(list)
@@ -12298,10 +13020,25 @@ function asserts.AssertpolicyNameListType(list)
 	end
 end
 
--- <p>Contains a list of policy names.</p> <p>This data type is used as a response element in the <a>ListPolicies</a> action.</p>
+-- <p>Contains a list of policy names.</p> <p>This data type is used as a response element in the <a>ListPolicies</a> operation.</p>
 -- List of policyNameType objects
 function M.policyNameListType(list)
 	asserts.AssertpolicyNameListType(list)
+	return list
+end
+
+function asserts.AssertpolicyListType(list)
+	assert(list)
+	assert(type(list) == "table", "Expected policyListType to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertPolicy(v)
+	end
+end
+
+--  
+-- List of Policy objects
+function M.policyListType(list)
+	asserts.AssertpolicyListType(list)
 	return list
 end
 
@@ -12328,25 +13065,10 @@ function asserts.AssertmfaDeviceListType(list)
 	end
 end
 
--- <p>Contains a list of MFA devices.</p> <p>This data type is used as a response element in the <a>ListMFADevices</a> and <a>ListVirtualMFADevices</a> actions. </p>
+-- <p>Contains a list of MFA devices.</p> <p>This data type is used as a response element in the <a>ListMFADevices</a> and <a>ListVirtualMFADevices</a> operations. </p>
 -- List of MFADevice objects
 function M.mfaDeviceListType(list)
 	asserts.AssertmfaDeviceListType(list)
-	return list
-end
-
-function asserts.AssertContextKeyNamesResultListType(list)
-	assert(list)
-	assert(type(list) == "table", "Expected ContextKeyNamesResultListType to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertContextKeyNameType(v)
-	end
-end
-
---  
--- List of ContextKeyNameType objects
-function M.ContextKeyNamesResultListType(list)
-	asserts.AssertContextKeyNamesResultListType(list)
 	return list
 end
 
@@ -12358,7 +13080,7 @@ function asserts.AssertgroupListType(list)
 	end
 end
 
--- <p>Contains a list of IAM groups.</p> <p>This data type is used as a response element in the <a>ListGroups</a> action.</p>
+-- <p>Contains a list of IAM groups.</p> <p>This data type is used as a response element in the <a>ListGroups</a> operation.</p>
 -- List of Group objects
 function M.groupListType(list)
 	asserts.AssertgroupListType(list)
@@ -12603,6 +13325,41 @@ function M.GetAccountSummarySync(...)
 	return coroutine.yield()
 end
 
+--- Call DeleteRolePermissionsBoundary asynchronously, invoking a callback when done
+-- @param DeleteRolePermissionsBoundaryRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteRolePermissionsBoundaryAsync(DeleteRolePermissionsBoundaryRequest, cb)
+	assert(DeleteRolePermissionsBoundaryRequest, "You must provide a DeleteRolePermissionsBoundaryRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteRolePermissionsBoundary",
+	}
+	for header,value in pairs(DeleteRolePermissionsBoundaryRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteRolePermissionsBoundaryRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteRolePermissionsBoundary synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteRolePermissionsBoundaryRequest
+-- @return response
+-- @return error_message
+function M.DeleteRolePermissionsBoundarySync(DeleteRolePermissionsBoundaryRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteRolePermissionsBoundaryAsync(DeleteRolePermissionsBoundaryRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ListAttachedGroupPolicies asynchronously, invoking a callback when done
 -- @param ListAttachedGroupPoliciesRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -12743,6 +13500,41 @@ function M.GetUserSync(GetUserRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call ListInstanceProfilesForRole asynchronously, invoking a callback when done
+-- @param ListInstanceProfilesForRoleRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListInstanceProfilesForRoleAsync(ListInstanceProfilesForRoleRequest, cb)
+	assert(ListInstanceProfilesForRoleRequest, "You must provide a ListInstanceProfilesForRoleRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListInstanceProfilesForRole",
+	}
+	for header,value in pairs(ListInstanceProfilesForRoleRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListInstanceProfilesForRoleRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListInstanceProfilesForRole synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListInstanceProfilesForRoleRequest
+-- @return response
+-- @return error_message
+function M.ListInstanceProfilesForRoleSync(ListInstanceProfilesForRoleRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListInstanceProfilesForRoleAsync(ListInstanceProfilesForRoleRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call UploadSSHPublicKey asynchronously, invoking a callback when done
 -- @param UploadSSHPublicKeyRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -12773,6 +13565,41 @@ function M.UploadSSHPublicKeySync(UploadSSHPublicKeyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.UploadSSHPublicKeyAsync(UploadSSHPublicKeyRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetServiceLinkedRoleDeletionStatus asynchronously, invoking a callback when done
+-- @param GetServiceLinkedRoleDeletionStatusRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetServiceLinkedRoleDeletionStatusAsync(GetServiceLinkedRoleDeletionStatusRequest, cb)
+	assert(GetServiceLinkedRoleDeletionStatusRequest, "You must provide a GetServiceLinkedRoleDeletionStatusRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetServiceLinkedRoleDeletionStatus",
+	}
+	for header,value in pairs(GetServiceLinkedRoleDeletionStatusRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", GetServiceLinkedRoleDeletionStatusRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetServiceLinkedRoleDeletionStatus synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetServiceLinkedRoleDeletionStatusRequest
+-- @return response
+-- @return error_message
+function M.GetServiceLinkedRoleDeletionStatusSync(GetServiceLinkedRoleDeletionStatusRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetServiceLinkedRoleDeletionStatusAsync(GetServiceLinkedRoleDeletionStatusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13053,6 +13880,41 @@ function M.DeleteSSHPublicKeySync(DeleteSSHPublicKeyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DeleteSSHPublicKeyAsync(DeleteSSHPublicKeyRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateRole asynchronously, invoking a callback when done
+-- @param UpdateRoleRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateRoleAsync(UpdateRoleRequest, cb)
+	assert(UpdateRoleRequest, "You must provide a UpdateRoleRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateRole",
+	}
+	for header,value in pairs(UpdateRoleRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateRoleRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateRole synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateRoleRequest
+-- @return response
+-- @return error_message
+function M.UpdateRoleSync(UpdateRoleRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateRoleAsync(UpdateRoleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13438,6 +14300,41 @@ function M.GetGroupPolicySync(GetGroupPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.GetGroupPolicyAsync(GetGroupPolicyRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteServiceLinkedRole asynchronously, invoking a callback when done
+-- @param DeleteServiceLinkedRoleRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteServiceLinkedRoleAsync(DeleteServiceLinkedRoleRequest, cb)
+	assert(DeleteServiceLinkedRoleRequest, "You must provide a DeleteServiceLinkedRoleRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteServiceLinkedRole",
+	}
+	for header,value in pairs(DeleteServiceLinkedRoleRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteServiceLinkedRoleRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteServiceLinkedRole synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteServiceLinkedRoleRequest
+-- @return response
+-- @return error_message
+function M.DeleteServiceLinkedRoleSync(DeleteServiceLinkedRoleRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteServiceLinkedRoleAsync(DeleteServiceLinkedRoleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -14628,6 +15525,41 @@ function M.DeleteVirtualMFADeviceSync(DeleteVirtualMFADeviceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DeleteVirtualMFADeviceAsync(DeleteVirtualMFADeviceRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutRolePermissionsBoundary asynchronously, invoking a callback when done
+-- @param PutRolePermissionsBoundaryRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.PutRolePermissionsBoundaryAsync(PutRolePermissionsBoundaryRequest, cb)
+	assert(PutRolePermissionsBoundaryRequest, "You must provide a PutRolePermissionsBoundaryRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutRolePermissionsBoundary",
+	}
+	for header,value in pairs(PutRolePermissionsBoundaryRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", PutRolePermissionsBoundaryRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call PutRolePermissionsBoundary synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutRolePermissionsBoundaryRequest
+-- @return response
+-- @return error_message
+function M.PutRolePermissionsBoundarySync(PutRolePermissionsBoundaryRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutRolePermissionsBoundaryAsync(PutRolePermissionsBoundaryRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -15953,36 +16885,36 @@ function M.UploadSigningCertificateSync(UploadSigningCertificateRequest, ...)
 	return coroutine.yield()
 end
 
---- Call ListInstanceProfilesForRole asynchronously, invoking a callback when done
--- @param ListInstanceProfilesForRoleRequest
+--- Call DeleteUserPermissionsBoundary asynchronously, invoking a callback when done
+-- @param DeleteUserPermissionsBoundaryRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.ListInstanceProfilesForRoleAsync(ListInstanceProfilesForRoleRequest, cb)
-	assert(ListInstanceProfilesForRoleRequest, "You must provide a ListInstanceProfilesForRoleRequest")
+function M.DeleteUserPermissionsBoundaryAsync(DeleteUserPermissionsBoundaryRequest, cb)
+	assert(DeleteUserPermissionsBoundaryRequest, "You must provide a DeleteUserPermissionsBoundaryRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".ListInstanceProfilesForRole",
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteUserPermissionsBoundary",
 	}
-	for header,value in pairs(ListInstanceProfilesForRoleRequest.headers) do
+	for header,value in pairs(DeleteUserPermissionsBoundaryRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", ListInstanceProfilesForRoleRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", DeleteUserPermissionsBoundaryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call ListInstanceProfilesForRole synchronously, returning when done
+--- Call DeleteUserPermissionsBoundary synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param ListInstanceProfilesForRoleRequest
+-- @param DeleteUserPermissionsBoundaryRequest
 -- @return response
 -- @return error_message
-function M.ListInstanceProfilesForRoleSync(ListInstanceProfilesForRoleRequest, ...)
+function M.DeleteUserPermissionsBoundarySync(DeleteUserPermissionsBoundaryRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListInstanceProfilesForRoleAsync(ListInstanceProfilesForRoleRequest, function(response, error_message)
+	M.DeleteUserPermissionsBoundaryAsync(DeleteUserPermissionsBoundaryRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -16083,6 +17015,41 @@ function M.ListEntitiesForPolicySync(ListEntitiesForPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.ListEntitiesForPolicyAsync(ListEntitiesForPolicyRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutUserPermissionsBoundary asynchronously, invoking a callback when done
+-- @param PutUserPermissionsBoundaryRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.PutUserPermissionsBoundaryAsync(PutUserPermissionsBoundaryRequest, cb)
+	assert(PutUserPermissionsBoundaryRequest, "You must provide a PutUserPermissionsBoundaryRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutUserPermissionsBoundary",
+	}
+	for header,value in pairs(PutUserPermissionsBoundaryRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", PutUserPermissionsBoundaryRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call PutUserPermissionsBoundary synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutUserPermissionsBoundaryRequest
+-- @return response
+-- @return error_message
+function M.PutUserPermissionsBoundarySync(PutUserPermissionsBoundaryRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutUserPermissionsBoundaryAsync(PutUserPermissionsBoundaryRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

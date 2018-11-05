@@ -33,7 +33,7 @@ function asserts.AssertDuplicateRecordException(struct)
 end
 
 --- Create a structure of type DuplicateRecordException
--- The exception is thrown when customer tries to create a record (e.g. budget) that already exists.
+-- <p>The budget name already exists. Budget names must be unique within an account.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Message [errorMessage] 
@@ -72,11 +72,11 @@ function asserts.AssertCalculatedSpend(struct)
 end
 
 --- Create a structure of type CalculatedSpend
--- A structure holds the actual and forecasted spend for a budget.
+-- <p>The spend objects associated with this budget. The <code>actualSpend</code> tracks how much you've used, cost, usage, or RI units, and the <code>forecastedSpend</code> tracks how much you are predicted to spend if your current usage remains steady.</p> <p>For example, if it is the 20th of the month and you have spent <code>50</code> dollars on Amazon EC2, your <code>actualSpend</code> is <code>50 USD</code>, and your <code>forecastedSpend</code> is <code>75 USD</code>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ForecastedSpend [Spend] 
--- * ActualSpend [Spend] 
+-- * ForecastedSpend [Spend] <p>The amount of cost, usage, or RI units that you are forecasted to use.</p>
+-- * ActualSpend [Spend] <p>The amount of cost, usage, or RI units that you have used.</p>
 -- Required key: ActualSpend
 -- @return CalculatedSpend structure as a key-value pair table
 function M.CalculatedSpend(args)
@@ -108,18 +108,18 @@ function asserts.AssertSubscriber(struct)
 	assert(struct["SubscriptionType"], "Expected key SubscriptionType to exist in table")
 	assert(struct["Address"], "Expected key Address to exist in table")
 	if struct["SubscriptionType"] then asserts.AssertSubscriptionType(struct["SubscriptionType"]) end
-	if struct["Address"] then asserts.AssertGenericString(struct["Address"]) end
+	if struct["Address"] then asserts.AssertSubscriberAddress(struct["Address"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Subscriber[k], "Subscriber contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Subscriber
--- Subscriber model. Each notification may contain multiple subscribers with different addresses.
+-- <p>The subscriber to a budget notification. The subscriber consists of a subscription type and either an Amazon Simple Notification Service topic or an email address.</p> <p>For example, an email subscriber would have the following parameters:</p> <ul> <li> <p>A <code>subscriptionType</code> of <code>EMAIL</code> </p> </li> <li> <p>An <code>address</code> of <code>example@example.com</code> </p> </li> </ul>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SubscriptionType [SubscriptionType] 
--- * Address [GenericString] 
+-- * SubscriptionType [SubscriptionType] <p>The type of notification that AWS sends to a subscriber.</p>
+-- * Address [SubscriberAddress] <p>The address that AWS sends budget notifications to, either an SNS topic or an email.</p>
 -- Required key: SubscriptionType
 -- Required key: Address
 -- @return Subscriber structure as a key-value pair table
@@ -155,7 +155,7 @@ function asserts.AssertCreateNotificationResponse(struct)
 end
 
 --- Create a structure of type CreateNotificationResponse
--- Response of CreateNotification
+-- <p> Response of CreateNotification </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- @return CreateNotificationResponse structure as a key-value pair table
@@ -190,7 +190,7 @@ function asserts.AssertInternalErrorException(struct)
 end
 
 --- Create a structure of type InternalErrorException
--- This exception is thrown on an unknown internal failure.
+-- <p>An error on the server occurred during the processing of your request. Try again later.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Message [errorMessage] 
@@ -232,13 +232,13 @@ function asserts.AssertDescribeNotificationsForBudgetRequest(struct)
 end
 
 --- Create a structure of type DescribeNotificationsForBudgetRequest
--- Request of DescribeNotificationsForBudget
+-- <p> Request of DescribeNotificationsForBudget </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [GenericString] 
--- * BudgetName [BudgetName] 
--- * MaxResults [MaxResults] 
--- * AccountId [AccountId] 
+-- * NextToken [GenericString] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- * BudgetName [BudgetName] <p>The name of the budget whose notifications you want descriptions of.</p>
+-- * MaxResults [MaxResults] <p>Optional integer. Specifies the maximum number of results to return in response.</p>
+-- * AccountId [AccountId] <p>The <code>accountId</code> that is associated with the budget whose notifications you want descriptions of.</p>
 -- Required key: AccountId
 -- Required key: BudgetName
 -- @return DescribeNotificationsForBudgetRequest structure as a key-value pair table
@@ -265,32 +265,42 @@ function M.DescribeNotificationsForBudgetRequest(args)
     }
 end
 
-keys.CostTypes = { ["IncludeTax"] = true, ["UseBlended"] = true, ["IncludeSubscription"] = true, nil }
+keys.CostTypes = { ["IncludeOtherSubscription"] = true, ["IncludeUpfront"] = true, ["IncludeRefund"] = true, ["UseBlended"] = true, ["IncludeDiscount"] = true, ["UseAmortized"] = true, ["IncludeTax"] = true, ["IncludeCredit"] = true, ["IncludeSupport"] = true, ["IncludeRecurring"] = true, ["IncludeSubscription"] = true, nil }
 
 function asserts.AssertCostTypes(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CostTypes to be of type 'table'")
-	assert(struct["IncludeTax"], "Expected key IncludeTax to exist in table")
-	assert(struct["IncludeSubscription"], "Expected key IncludeSubscription to exist in table")
-	assert(struct["UseBlended"], "Expected key UseBlended to exist in table")
-	if struct["IncludeTax"] then asserts.AssertGenericBoolean(struct["IncludeTax"]) end
-	if struct["UseBlended"] then asserts.AssertGenericBoolean(struct["UseBlended"]) end
-	if struct["IncludeSubscription"] then asserts.AssertGenericBoolean(struct["IncludeSubscription"]) end
+	if struct["IncludeOtherSubscription"] then asserts.AssertNullableBoolean(struct["IncludeOtherSubscription"]) end
+	if struct["IncludeUpfront"] then asserts.AssertNullableBoolean(struct["IncludeUpfront"]) end
+	if struct["IncludeRefund"] then asserts.AssertNullableBoolean(struct["IncludeRefund"]) end
+	if struct["UseBlended"] then asserts.AssertNullableBoolean(struct["UseBlended"]) end
+	if struct["IncludeDiscount"] then asserts.AssertNullableBoolean(struct["IncludeDiscount"]) end
+	if struct["UseAmortized"] then asserts.AssertNullableBoolean(struct["UseAmortized"]) end
+	if struct["IncludeTax"] then asserts.AssertNullableBoolean(struct["IncludeTax"]) end
+	if struct["IncludeCredit"] then asserts.AssertNullableBoolean(struct["IncludeCredit"]) end
+	if struct["IncludeSupport"] then asserts.AssertNullableBoolean(struct["IncludeSupport"]) end
+	if struct["IncludeRecurring"] then asserts.AssertNullableBoolean(struct["IncludeRecurring"]) end
+	if struct["IncludeSubscription"] then asserts.AssertNullableBoolean(struct["IncludeSubscription"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CostTypes[k], "CostTypes contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CostTypes
--- This includes the options for getting the cost of a budget.
+-- <p>The types of cost included in a budget, such as tax and subscriptions.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * IncludeTax [GenericBoolean] 
--- * UseBlended [GenericBoolean] 
--- * IncludeSubscription [GenericBoolean] 
--- Required key: IncludeTax
--- Required key: IncludeSubscription
--- Required key: UseBlended
+-- * IncludeOtherSubscription [NullableBoolean] <p>Specifies whether a budget includes non-RI subscription costs.</p> <p>The default value is <code>true</code>.</p>
+-- * IncludeUpfront [NullableBoolean] <p>Specifies whether a budget includes upfront RI costs.</p> <p>The default value is <code>true</code>.</p>
+-- * IncludeRefund [NullableBoolean] <p>Specifies whether a budget includes refunds.</p> <p>The default value is <code>true</code>.</p>
+-- * UseBlended [NullableBoolean] <p>Specifies whether a budget uses blended rate.</p> <p>The default value is <code>false</code>.</p>
+-- * IncludeDiscount [NullableBoolean] <p>Specifies whether a budget includes discounts.</p> <p>The default value is <code>true</code>.</p>
+-- * UseAmortized [NullableBoolean] <p>Specifies whether a budget uses the amortized rate.</p> <p>The default value is <code>false</code>.</p>
+-- * IncludeTax [NullableBoolean] <p>Specifies whether a budget includes taxes.</p> <p>The default value is <code>true</code>.</p>
+-- * IncludeCredit [NullableBoolean] <p>Specifies whether a budget includes credits.</p> <p>The default value is <code>true</code>.</p>
+-- * IncludeSupport [NullableBoolean] <p>Specifies whether a budget includes support subscription fees.</p> <p>The default value is <code>true</code>.</p>
+-- * IncludeRecurring [NullableBoolean] <p>Specifies whether a budget includes recurring fees such as monthly RI fees.</p> <p>The default value is <code>true</code>.</p>
+-- * IncludeSubscription [NullableBoolean] <p>Specifies whether a budget includes subscriptions.</p> <p>The default value is <code>true</code>.</p>
 -- @return CostTypes structure as a key-value pair table
 function M.CostTypes(args)
 	assert(args, "You must provide an argument table when creating CostTypes")
@@ -301,8 +311,16 @@ function M.CostTypes(args)
     local header_args = { 
     }
 	local all_args = { 
-		["IncludeTax"] = args["IncludeTax"],
+		["IncludeOtherSubscription"] = args["IncludeOtherSubscription"],
+		["IncludeUpfront"] = args["IncludeUpfront"],
+		["IncludeRefund"] = args["IncludeRefund"],
 		["UseBlended"] = args["UseBlended"],
+		["IncludeDiscount"] = args["IncludeDiscount"],
+		["UseAmortized"] = args["UseAmortized"],
+		["IncludeTax"] = args["IncludeTax"],
+		["IncludeCredit"] = args["IncludeCredit"],
+		["IncludeSupport"] = args["IncludeSupport"],
+		["IncludeRecurring"] = args["IncludeRecurring"],
 		["IncludeSubscription"] = args["IncludeSubscription"],
 	}
 	asserts.AssertCostTypes(all_args)
@@ -326,7 +344,7 @@ function asserts.AssertInvalidNextTokenException(struct)
 end
 
 --- Create a structure of type InvalidNextTokenException
--- This exception is thrown if paging token signature didn't match the token, or the paging token isn't for this request
+-- <p>The pagination token is invalid.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Message [errorMessage] 
@@ -366,11 +384,11 @@ function asserts.AssertDeleteBudgetRequest(struct)
 end
 
 --- Create a structure of type DeleteBudgetRequest
--- Request of DeleteBudget
+-- <p> Request of DeleteBudget </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * BudgetName [BudgetName] 
--- * AccountId [AccountId] 
+-- * BudgetName [BudgetName] <p>The name of the budget that you want to delete.</p>
+-- * AccountId [AccountId] <p>The <code>accountId</code> that is associated with the budget that you want to delete.</p>
 -- Required key: AccountId
 -- Required key: BudgetName
 -- @return DeleteBudgetRequest structure as a key-value pair table
@@ -408,11 +426,11 @@ function asserts.AssertDescribeNotificationsForBudgetResponse(struct)
 end
 
 --- Create a structure of type DescribeNotificationsForBudgetResponse
--- Response of GetNotificationsForBudget
+-- <p> Response of GetNotificationsForBudget </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Notifications [Notifications] 
--- * NextToken [GenericString] 
+-- * Notifications [Notifications] <p>A list of notifications associated with a budget.</p>
+-- * NextToken [GenericString] <p>The pagination token that indicates the next set of results that you can retrieve.</p>
 -- @return DescribeNotificationsForBudgetResponse structure as a key-value pair table
 function M.DescribeNotificationsForBudgetResponse(args)
 	assert(args, "You must provide an argument table when creating DescribeNotificationsForBudgetResponse")
@@ -456,14 +474,14 @@ function asserts.AssertUpdateSubscriberRequest(struct)
 end
 
 --- Create a structure of type UpdateSubscriberRequest
--- Request of UpdateSubscriber
+-- <p> Request of UpdateSubscriber </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Notification [Notification] 
--- * OldSubscriber [Subscriber] 
--- * BudgetName [BudgetName] 
--- * NewSubscriber [Subscriber] 
--- * AccountId [AccountId] 
+-- * Notification [Notification] <p>The notification whose subscriber you want to update.</p>
+-- * OldSubscriber [Subscriber] <p>The previous subscriber associated with a budget notification.</p>
+-- * BudgetName [BudgetName] <p>The name of the budget whose subscriber you want to update.</p>
+-- * NewSubscriber [Subscriber] <p>The updated subscriber associated with a budget notification.</p>
+-- * AccountId [AccountId] <p>The <code>accountId</code> that is associated with the budget whose subscriber you want to update.</p>
 -- Required key: AccountId
 -- Required key: BudgetName
 -- Required key: Notification
@@ -506,7 +524,7 @@ function asserts.AssertExpiredNextTokenException(struct)
 end
 
 --- Create a structure of type ExpiredNextTokenException
--- This exception is thrown if the paging token is expired - past its TTL
+-- <p>The pagination token expired.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Message [errorMessage] 
@@ -546,11 +564,11 @@ function asserts.AssertDescribeBudgetRequest(struct)
 end
 
 --- Create a structure of type DescribeBudgetRequest
--- Request of DescribeBudget
+-- <p> Request of DescribeBudget </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * BudgetName [BudgetName] 
--- * AccountId [AccountId] 
+-- * BudgetName [BudgetName] <p>The name of the budget that you want a description of.</p>
+-- * AccountId [AccountId] <p>The <code>accountId</code> that is associated with the budget that you want a description of.</p>
 -- Required key: AccountId
 -- Required key: BudgetName
 -- @return DescribeBudgetRequest structure as a key-value pair table
@@ -587,7 +605,7 @@ function asserts.AssertInvalidParameterException(struct)
 end
 
 --- Create a structure of type InvalidParameterException
--- This exception is thrown if any request is given an invalid parameter. E.g., if a required Date field is null.
+-- <p>An error on the client occurred. Typically, the cause is an invalid input value.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Message [errorMessage] 
@@ -631,13 +649,13 @@ function asserts.AssertCreateNotificationRequest(struct)
 end
 
 --- Create a structure of type CreateNotificationRequest
--- Request of CreateNotification
+-- <p> Request of CreateNotification </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Notification [Notification] 
--- * BudgetName [BudgetName] 
--- * Subscribers [Subscribers] 
--- * AccountId [AccountId] 
+-- * Notification [Notification] <p>The notification that you want to create.</p>
+-- * BudgetName [BudgetName] <p>The name of the budget that you want AWS to notified you about. Budget names must be unique within an account.</p>
+-- * Subscribers [Subscribers] <p>A list of subscribers that you want to associate with the notification. Each notification can have one SNS subscriber and up to ten email subscribers.</p>
+-- * AccountId [AccountId] <p>The <code>accountId</code> that is associated with the budget that you want to create a notification for.</p>
 -- Required key: AccountId
 -- Required key: BudgetName
 -- Required key: Notification
@@ -666,7 +684,7 @@ function M.CreateNotificationRequest(args)
     }
 end
 
-keys.Notification = { ["Threshold"] = true, ["ComparisonOperator"] = true, ["NotificationType"] = true, nil }
+keys.Notification = { ["Threshold"] = true, ["ComparisonOperator"] = true, ["ThresholdType"] = true, ["NotificationType"] = true, nil }
 
 function asserts.AssertNotification(struct)
 	assert(struct)
@@ -676,6 +694,7 @@ function asserts.AssertNotification(struct)
 	assert(struct["Threshold"], "Expected key Threshold to exist in table")
 	if struct["Threshold"] then asserts.AssertNotificationThreshold(struct["Threshold"]) end
 	if struct["ComparisonOperator"] then asserts.AssertComparisonOperator(struct["ComparisonOperator"]) end
+	if struct["ThresholdType"] then asserts.AssertThresholdType(struct["ThresholdType"]) end
 	if struct["NotificationType"] then asserts.AssertNotificationType(struct["NotificationType"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Notification[k], "Notification contains unknown key " .. tostring(k))
@@ -683,12 +702,13 @@ function asserts.AssertNotification(struct)
 end
 
 --- Create a structure of type Notification
--- Notification model. Each budget may contain multiple notifications with different settings.
+-- <p>A notification associated with a budget. A budget can have up to five notifications. </p> <p>Each notification must have at least one subscriber. A notification can have one SNS subscriber and up to ten email subscribers, for a total of 11 subscribers.</p> <p>For example, if you have a budget for 200 dollars and you want to be notified when you go over 160 dollars, create a notification with the following parameters:</p> <ul> <li> <p>A notificationType of <code>ACTUAL</code> </p> </li> <li> <p>A comparisonOperator of <code>GREATER_THAN</code> </p> </li> <li> <p>A notification threshold of <code>80</code> </p> </li> </ul>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Threshold [NotificationThreshold] 
--- * ComparisonOperator [ComparisonOperator] 
--- * NotificationType [NotificationType] 
+-- * Threshold [NotificationThreshold] <p>The threshold associated with a notification. Thresholds are always a percentage.</p>
+-- * ComparisonOperator [ComparisonOperator] <p>The comparison used for this notification.</p>
+-- * ThresholdType [ThresholdType] <p>The type of threshold for a notification. For <code>ACTUAL</code> thresholds, AWS notifies you when you go over the threshold, and for <code>FORECASTED</code> thresholds AWS notifies you when you are forecasted to go over the threshold.</p>
+-- * NotificationType [NotificationType] <p>Whether the notification is for how much you have spent (<code>ACTUAL</code>) or for how much you are forecasted to spend (<code>FORECASTED</code>).</p>
 -- Required key: NotificationType
 -- Required key: ComparisonOperator
 -- Required key: Threshold
@@ -704,6 +724,7 @@ function M.Notification(args)
 	local all_args = { 
 		["Threshold"] = args["Threshold"],
 		["ComparisonOperator"] = args["ComparisonOperator"],
+		["ThresholdType"] = args["ThresholdType"],
 		["NotificationType"] = args["NotificationType"],
 	}
 	asserts.AssertNotification(all_args)
@@ -720,8 +741,6 @@ keys.TimePeriod = { ["Start"] = true, ["End"] = true, nil }
 function asserts.AssertTimePeriod(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TimePeriod to be of type 'table'")
-	assert(struct["Start"], "Expected key Start to exist in table")
-	assert(struct["End"], "Expected key End to exist in table")
 	if struct["Start"] then asserts.AssertGenericTimestamp(struct["Start"]) end
 	if struct["End"] then asserts.AssertGenericTimestamp(struct["End"]) end
 	for k,_ in pairs(struct) do
@@ -730,13 +749,11 @@ function asserts.AssertTimePeriod(struct)
 end
 
 --- Create a structure of type TimePeriod
--- A time period indicated the start date and end date of a budget.
+-- <p>The period of time covered by a budget. Has a start date and an end date. The start date must come before the end date. There are no restrictions on the end date. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Start [GenericTimestamp] 
--- * End [GenericTimestamp] 
--- Required key: Start
--- Required key: End
+-- * Start [GenericTimestamp] <p>The start date for a budget. If you created your budget and didn't specify a start date, AWS defaults to the start of your chosen time period (i.e. DAILY, MONTHLY, QUARTERLY, ANNUALLY). For example, if you created your budget on January 24th 2018, chose <code>DAILY</code>, and didn't set a start date, AWS set your start date to <code>01/24/18 00:00 UTC</code>. If you chose <code>MONTHLY</code>, AWS set your start date to <code>01/01/18 00:00 UTC</code>. The defaults are the same for the AWS Billing and Cost Management console and the API.</p> <p>You can change your start date with the <code>UpdateBudget</code> operation.</p>
+-- * End [GenericTimestamp] <p>The end date for a budget. If you didn't specify an end date, AWS set your end date to <code>06/15/87 00:00 UTC</code>. The defaults are the same for the AWS Billing and Cost Management console and the API.</p> <p>After the end date, AWS deletes the budget and all associated notifications and subscribers. You can change your end date with the <code>UpdateBudget</code> operation.</p>
 -- @return TimePeriod structure as a key-value pair table
 function M.TimePeriod(args)
 	assert(args, "You must provide an argument table when creating TimePeriod")
@@ -770,7 +787,7 @@ function asserts.AssertDeleteNotificationResponse(struct)
 end
 
 --- Create a structure of type DeleteNotificationResponse
--- Response of DeleteNotification
+-- <p> Response of DeleteNotification </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- @return DeleteNotificationResponse structure as a key-value pair table
@@ -804,7 +821,7 @@ function asserts.AssertUpdateBudgetResponse(struct)
 end
 
 --- Create a structure of type UpdateBudgetResponse
--- Response of UpdateBudget
+-- <p> Response of UpdateBudget </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- @return UpdateBudgetResponse structure as a key-value pair table
@@ -843,12 +860,12 @@ function asserts.AssertCreateBudgetRequest(struct)
 end
 
 --- Create a structure of type CreateBudgetRequest
--- Request of CreateBudget
+-- <p> Request of CreateBudget </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NotificationsWithSubscribers [NotificationWithSubscribersList] 
--- * Budget [Budget] 
--- * AccountId [AccountId] 
+-- * NotificationsWithSubscribers [NotificationWithSubscribersList] <p>A notification that you want to associate with a budget. A budget can have up to five notifications, and each notification can have one SNS subscriber and up to ten email subscribers. If you include notifications and subscribers in your <code>CreateBudget</code> call, AWS creates the notifications and subscribers for you.</p>
+-- * Budget [Budget] <p>The budget object that you want to create.</p>
+-- * AccountId [AccountId] <p>The <code>accountId</code> that is associated with the budget.</p>
 -- Required key: AccountId
 -- Required key: Budget
 -- @return CreateBudgetRequest structure as a key-value pair table
@@ -885,7 +902,7 @@ function asserts.AssertCreateSubscriberResponse(struct)
 end
 
 --- Create a structure of type CreateSubscriberResponse
--- Response of CreateSubscriber
+-- <p> Response of CreateSubscriber </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- @return CreateSubscriberResponse structure as a key-value pair table
@@ -923,12 +940,12 @@ function asserts.AssertDescribeBudgetsRequest(struct)
 end
 
 --- Create a structure of type DescribeBudgetsRequest
--- Request of DescribeBudgets
+-- <p> Request of DescribeBudgets </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [GenericString] 
--- * MaxResults [MaxResults] 
--- * AccountId [AccountId] 
+-- * NextToken [GenericString] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- * MaxResults [MaxResults] <p>Optional integer. Specifies the maximum number of results to return in response.</p>
+-- * AccountId [AccountId] <p>The <code>accountId</code> that is associated with the budgets that you want descriptions of.</p>
 -- Required key: AccountId
 -- @return DescribeBudgetsRequest structure as a key-value pair table
 function M.DescribeBudgetsRequest(args)
@@ -964,7 +981,7 @@ function asserts.AssertDeleteSubscriberResponse(struct)
 end
 
 --- Create a structure of type DeleteSubscriberResponse
--- Response of DeleteSubscriber
+-- <p> Response of DeleteSubscriber </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- @return DeleteSubscriberResponse structure as a key-value pair table
@@ -1000,11 +1017,11 @@ function asserts.AssertDescribeSubscribersForNotificationResponse(struct)
 end
 
 --- Create a structure of type DescribeSubscribersForNotificationResponse
--- Response of DescribeSubscribersForNotification
+-- <p> Response of DescribeSubscribersForNotification </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [GenericString] 
--- * Subscribers [Subscribers] 
+-- * NextToken [GenericString] <p>The pagination token that indicates the next set of results that you can retrieve.</p>
+-- * Subscribers [Subscribers] <p>A list of subscribers associated with a notification.</p>
 -- @return DescribeSubscribersForNotificationResponse structure as a key-value pair table
 function M.DescribeSubscribersForNotificationResponse(args)
 	assert(args, "You must provide an argument table when creating DescribeSubscribersForNotificationResponse")
@@ -1046,13 +1063,13 @@ function asserts.AssertUpdateNotificationRequest(struct)
 end
 
 --- Create a structure of type UpdateNotificationRequest
--- Request of UpdateNotification
+-- <p> Request of UpdateNotification </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NewNotification [Notification] 
--- * BudgetName [BudgetName] 
--- * OldNotification [Notification] 
--- * AccountId [AccountId] 
+-- * NewNotification [Notification] <p>The updated notification to be associated with a budget.</p>
+-- * BudgetName [BudgetName] <p>The name of the budget whose notification you want to update.</p>
+-- * OldNotification [Notification] <p>The previous notification associated with a budget.</p>
+-- * AccountId [AccountId] <p>The <code>accountId</code> that is associated with the budget whose notification you want to update.</p>
 -- Required key: AccountId
 -- Required key: BudgetName
 -- Required key: OldNotification
@@ -1092,7 +1109,7 @@ function asserts.AssertCreateBudgetResponse(struct)
 end
 
 --- Create a structure of type CreateBudgetResponse
--- Response of CreateBudget
+-- <p> Response of CreateBudget </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- @return CreateBudgetResponse structure as a key-value pair table
@@ -1126,7 +1143,7 @@ function asserts.AssertDeleteBudgetResponse(struct)
 end
 
 --- Create a structure of type DeleteBudgetResponse
--- Response of DeleteBudget
+-- <p> Response of DeleteBudget </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- @return DeleteBudgetResponse structure as a key-value pair table
@@ -1160,7 +1177,7 @@ function asserts.AssertUpdateSubscriberResponse(struct)
 end
 
 --- Create a structure of type UpdateSubscriberResponse
--- Response of UpdateSubscriber
+-- <p> Response of UpdateSubscriber </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- @return UpdateSubscriberResponse structure as a key-value pair table
@@ -1189,10 +1206,7 @@ function asserts.AssertBudget(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Budget to be of type 'table'")
 	assert(struct["BudgetName"], "Expected key BudgetName to exist in table")
-	assert(struct["BudgetLimit"], "Expected key BudgetLimit to exist in table")
-	assert(struct["CostTypes"], "Expected key CostTypes to exist in table")
 	assert(struct["TimeUnit"], "Expected key TimeUnit to exist in table")
-	assert(struct["TimePeriod"], "Expected key TimePeriod to exist in table")
 	assert(struct["BudgetType"], "Expected key BudgetType to exist in table")
 	if struct["CalculatedSpend"] then asserts.AssertCalculatedSpend(struct["CalculatedSpend"]) end
 	if struct["BudgetType"] then asserts.AssertBudgetType(struct["BudgetType"]) end
@@ -1208,22 +1222,19 @@ function asserts.AssertBudget(struct)
 end
 
 --- Create a structure of type Budget
--- AWS Budget model
+-- <p>Represents the output of the <code>CreateBudget</code> operation. The content consists of the detailed metadata and data file information, and the current status of the <code>budget</code>.</p> <p>The ARN pattern for a budget is: <code>arn:aws:budgetservice::AccountId:budget/budgetName</code> </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CalculatedSpend [CalculatedSpend] 
--- * BudgetType [BudgetType] 
--- * BudgetLimit [Spend] 
--- * BudgetName [BudgetName] 
--- * CostTypes [CostTypes] 
--- * TimeUnit [TimeUnit] 
--- * TimePeriod [TimePeriod] 
--- * CostFilters [CostFilters] 
+-- * CalculatedSpend [CalculatedSpend] <p>The actual and forecasted cost or usage being tracked by a budget.</p>
+-- * BudgetType [BudgetType] <p>Whether this budget tracks monetary costs, usage, or RI utilization.</p>
+-- * BudgetLimit [Spend] <p>The total amount of cost, usage, or RI utilization that you want to track with your budget.</p> <p> <code>BudgetLimit</code> is required for cost or usage budgets, but optional for RI utilization budgets. RI utilization budgets default to the only valid value for RI utilization budgets, which is <code>100</code>.</p>
+-- * BudgetName [BudgetName] <p>The name of a budget. Unique within accounts. <code>:</code> and <code>\</code> characters are not allowed in the <code>BudgetName</code>.</p>
+-- * CostTypes [CostTypes] <p>The types of costs included in this budget.</p>
+-- * TimeUnit [TimeUnit] <p>The length of time until a budget resets the actual and forecasted spend.</p>
+-- * TimePeriod [TimePeriod] <p>The period of time covered by a budget. Has a start date and an end date. The start date must come before the end date. There are no restrictions on the end date. </p> <p>If you created your budget and didn't specify a start date, AWS defaults to the start of your chosen time period (i.e. DAILY, MONTHLY, QUARTERLY, ANNUALLY). For example, if you created your budget on January 24th 2018, chose <code>DAILY</code>, and didn't set a start date, AWS set your start date to <code>01/24/18 00:00 UTC</code>. If you chose <code>MONTHLY</code>, AWS set your start date to <code>01/01/18 00:00 UTC</code>. If you didn't specify an end date, AWS set your end date to <code>06/15/87 00:00 UTC</code>. The defaults are the same for the AWS Billing and Cost Management console and the API. </p> <p>You can change either date with the <code>UpdateBudget</code> operation.</p> <p>After the end date, AWS deletes the budget and all associated notifications and subscribers.</p>
+-- * CostFilters [CostFilters] <p>The cost filters applied to a budget, such as service or region.</p>
 -- Required key: BudgetName
--- Required key: BudgetLimit
--- Required key: CostTypes
 -- Required key: TimeUnit
--- Required key: TimePeriod
 -- Required key: BudgetType
 -- @return Budget structure as a key-value pair table
 function M.Budget(args)
@@ -1272,13 +1283,13 @@ function asserts.AssertDeleteSubscriberRequest(struct)
 end
 
 --- Create a structure of type DeleteSubscriberRequest
--- Request of DeleteSubscriber
+-- <p> Request of DeleteSubscriber </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Subscriber [Subscriber] 
--- * Notification [Notification] 
--- * BudgetName [BudgetName] 
--- * AccountId [AccountId] 
+-- * Subscriber [Subscriber] <p>The subscriber that you want to delete.</p>
+-- * Notification [Notification] <p>The notification whose subscriber you want to delete.</p>
+-- * BudgetName [BudgetName] <p>The name of the budget whose subscriber you want to delete.</p>
+-- * AccountId [AccountId] <p>The <code>accountId</code> that is associated with the budget whose subscriber you want to delete.</p>
 -- Required key: AccountId
 -- Required key: BudgetName
 -- Required key: Notification
@@ -1326,13 +1337,13 @@ function asserts.AssertCreateSubscriberRequest(struct)
 end
 
 --- Create a structure of type CreateSubscriberRequest
--- Request of CreateSubscriber
+-- <p> Request of CreateSubscriber </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Subscriber [Subscriber] 
--- * Notification [Notification] 
--- * BudgetName [BudgetName] 
--- * AccountId [AccountId] 
+-- * Subscriber [Subscriber] <p>The subscriber that you want to associate with a budget notification.</p>
+-- * Notification [Notification] <p>The notification that you want to create a subscriber for.</p>
+-- * BudgetName [BudgetName] <p>The name of the budget that you want to subscribe to. Budget names must be unique within an account.</p>
+-- * AccountId [AccountId] <p>The <code>accountId</code> associated with the budget that you want to create a subscriber for.</p>
 -- Required key: AccountId
 -- Required key: BudgetName
 -- Required key: Notification
@@ -1376,11 +1387,11 @@ function asserts.AssertUpdateBudgetRequest(struct)
 end
 
 --- Create a structure of type UpdateBudgetRequest
--- Request of UpdateBudget
+-- <p> Request of UpdateBudget </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NewBudget [Budget] 
--- * AccountId [AccountId] 
+-- * NewBudget [Budget] <p>The budget that you want to update your budget to.</p>
+-- * AccountId [AccountId] <p>The <code>accountId</code> that is associated with the budget that you want to update.</p>
 -- Required key: AccountId
 -- Required key: NewBudget
 -- @return UpdateBudgetRequest structure as a key-value pair table
@@ -1413,18 +1424,18 @@ function asserts.AssertSpend(struct)
 	assert(struct["Amount"], "Expected key Amount to exist in table")
 	assert(struct["Unit"], "Expected key Unit to exist in table")
 	if struct["Amount"] then asserts.AssertNumericValue(struct["Amount"]) end
-	if struct["Unit"] then asserts.AssertGenericString(struct["Unit"]) end
+	if struct["Unit"] then asserts.AssertUnitValue(struct["Unit"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Spend[k], "Spend contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Spend
--- A structure represent either a cost spend or usage spend. Contains an amount and a unit.
+-- <p>The amount of cost or usage being measured for a budget.</p> <p>For example, a <code>Spend</code> for <code>3 GB</code> of S3 usage would have the following parameters:</p> <ul> <li> <p>An <code>Amount</code> of <code>3</code> </p> </li> <li> <p>A <code>unit</code> of <code>GB</code> </p> </li> </ul>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Amount [NumericValue] 
--- * Unit [GenericString] 
+-- * Amount [NumericValue] <p>The cost or usage amount associated with a budget forecast, actual spend, or budget threshold.</p>
+-- * Unit [UnitValue] <p>The unit of measurement used for the budget forecast, actual spend, or budget threshold, such as dollars or GB.</p>
 -- Required key: Amount
 -- Required key: Unit
 -- @return Spend structure as a key-value pair table
@@ -1468,14 +1479,14 @@ function asserts.AssertDescribeSubscribersForNotificationRequest(struct)
 end
 
 --- Create a structure of type DescribeSubscribersForNotificationRequest
--- Request of DescribeSubscribersForNotification
+-- <p> Request of DescribeSubscribersForNotification </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Notification [Notification] 
--- * NextToken [GenericString] 
--- * BudgetName [BudgetName] 
--- * MaxResults [MaxResults] 
--- * AccountId [AccountId] 
+-- * Notification [Notification] <p>The notification whose subscribers you want to list.</p>
+-- * NextToken [GenericString] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- * BudgetName [BudgetName] <p>The name of the budget whose subscribers you want descriptions of.</p>
+-- * MaxResults [MaxResults] <p>Optional integer. Specifies the maximum number of results to return in response.</p>
+-- * AccountId [AccountId] <p>The <code>accountId</code> that is associated with the budget whose subscribers you want descriptions of.</p>
 -- Required key: AccountId
 -- Required key: BudgetName
 -- Required key: Notification
@@ -1516,7 +1527,7 @@ function asserts.AssertNotFoundException(struct)
 end
 
 --- Create a structure of type NotFoundException
--- This exception is thrown if a requested entity is not found. E.g., if a budget id doesn't exist for an account ID.
+-- <p>We can’t locate the resource that you specified.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Message [errorMessage] 
@@ -1558,12 +1569,12 @@ function asserts.AssertDeleteNotificationRequest(struct)
 end
 
 --- Create a structure of type DeleteNotificationRequest
--- Request of DeleteNotification
+-- <p> Request of DeleteNotification </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Notification [Notification] 
--- * BudgetName [BudgetName] 
--- * AccountId [AccountId] 
+-- * Notification [Notification] <p>The notification that you want to delete.</p>
+-- * BudgetName [BudgetName] <p>The name of the budget whose notification you want to delete.</p>
+-- * AccountId [AccountId] <p>The <code>accountId</code> that is associated with the budget whose notification you want to delete.</p>
 -- Required key: AccountId
 -- Required key: BudgetName
 -- Required key: Notification
@@ -1605,11 +1616,11 @@ function asserts.AssertNotificationWithSubscribers(struct)
 end
 
 --- Create a structure of type NotificationWithSubscribers
--- A structure to relate notification and a list of subscribers who belong to the notification.
+-- <p>A notification with subscribers. A notification can have one SNS subscriber and up to ten email subscribers, for a total of 11 subscribers.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Notification [Notification] 
--- * Subscribers [Subscribers] 
+-- * Notification [Notification] <p>The notification associated with a budget.</p>
+-- * Subscribers [Subscribers] <p>A list of subscribers who are subscribed to this notification.</p>
 -- Required key: Notification
 -- Required key: Subscribers
 -- @return NotificationWithSubscribers structure as a key-value pair table
@@ -1646,7 +1657,7 @@ function asserts.AssertCreationLimitExceededException(struct)
 end
 
 --- Create a structure of type CreationLimitExceededException
--- The exception is thrown when customer tries to create a record (e.g. budget), but the number this record already exceeds the limitation.
+-- <p>You've exceeded the notification or subscriber limit.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Message [errorMessage] 
@@ -1684,11 +1695,11 @@ function asserts.AssertDescribeBudgetsResponse(struct)
 end
 
 --- Create a structure of type DescribeBudgetsResponse
--- Response of DescribeBudgets
+-- <p> Response of DescribeBudgets </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [GenericString] 
--- * Budgets [Budgets] 
+-- * NextToken [GenericString] <p>The pagination token that indicates the next set of results that you can retrieve.</p>
+-- * Budgets [Budgets] <p>A list of budgets.</p>
 -- @return DescribeBudgetsResponse structure as a key-value pair table
 function M.DescribeBudgetsResponse(args)
 	assert(args, "You must provide an argument table when creating DescribeBudgetsResponse")
@@ -1722,7 +1733,7 @@ function asserts.AssertUpdateNotificationResponse(struct)
 end
 
 --- Create a structure of type UpdateNotificationResponse
--- Response of UpdateNotification
+-- <p> Response of UpdateNotification </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- @return UpdateNotificationResponse structure as a key-value pair table
@@ -1757,10 +1768,10 @@ function asserts.AssertDescribeBudgetResponse(struct)
 end
 
 --- Create a structure of type DescribeBudgetResponse
--- Response of DescribeBudget
+-- <p> Response of DescribeBudget </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Budget [Budget] 
+-- * Budget [Budget] <p>The description of the budget.</p>
 -- @return DescribeBudgetResponse structure as a key-value pair table
 function M.DescribeBudgetResponse(args)
 	assert(args, "You must provide an argument table when creating DescribeBudgetResponse")
@@ -1782,12 +1793,24 @@ function M.DescribeBudgetResponse(args)
     }
 end
 
+function asserts.AssertUnitValue(str)
+	assert(str)
+	assert(type(str) == "string", "Expected UnitValue to be of type 'string'")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+-- <p> A string to represent budget spend unit. It should be not null and not empty.</p>
+function M.UnitValue(str)
+	asserts.AssertUnitValue(str)
+	return str
+end
+
 function asserts.AssertNumericValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NumericValue to be of type 'string'")
 end
 
--- A string to represent NumericValue.
+-- <p> A string to represent NumericValue.</p>
 function M.NumericValue(str)
 	asserts.AssertNumericValue(str)
 	return str
@@ -1798,7 +1821,7 @@ function asserts.AssertBudgetType(str)
 	assert(type(str) == "string", "Expected BudgetType to be of type 'string'")
 end
 
--- The type of a budget. Can be COST or USAGE.
+-- <p> The type of a budget. It should be COST, USAGE, or RI_UTILIZATION.</p>
 function M.BudgetType(str)
 	asserts.AssertBudgetType(str)
 	return str
@@ -1809,7 +1832,7 @@ function asserts.AssertNotificationType(str)
 	assert(type(str) == "string", "Expected NotificationType to be of type 'string'")
 end
 
--- The type of a notification. It should be ACTUAL or FORECASTED.
+-- <p> The type of a notification. It should be ACTUAL or FORECASTED.</p>
 function M.NotificationType(str)
 	asserts.AssertNotificationType(str)
 	return str
@@ -1820,7 +1843,7 @@ function asserts.AsserterrorMessage(str)
 	assert(type(str) == "string", "Expected errorMessage to be of type 'string'")
 end
 
--- The error message the exception carries.
+-- <p>The error message the exception carries.</p>
 function M.errorMessage(str)
 	asserts.AsserterrorMessage(str)
 	return str
@@ -1831,7 +1854,7 @@ function asserts.AssertGenericString(str)
 	assert(type(str) == "string", "Expected GenericString to be of type 'string'")
 end
 
--- A generic String.
+-- <p> A generic String.</p>
 function M.GenericString(str)
 	asserts.AssertGenericString(str)
 	return str
@@ -1842,7 +1865,7 @@ function asserts.AssertSubscriptionType(str)
 	assert(type(str) == "string", "Expected SubscriptionType to be of type 'string'")
 end
 
--- The subscription type of the subscriber. It can be SMS or EMAIL.
+-- <p> The subscription type of the subscriber. It can be SMS or EMAIL.</p>
 function M.SubscriptionType(str)
 	asserts.AssertSubscriptionType(str)
 	return str
@@ -1854,9 +1877,21 @@ function asserts.AssertBudgetName(str)
 	assert(#str <= 100, "Expected string to be max 100 characters")
 end
 
--- A string represents the budget name. No ":" character is allowed.
+-- <p> A string represents the budget name. No ":" and "\" character is allowed.</p>
 function M.BudgetName(str)
 	asserts.AssertBudgetName(str)
+	return str
+end
+
+function asserts.AssertSubscriberAddress(str)
+	assert(str)
+	assert(type(str) == "string", "Expected SubscriberAddress to be of type 'string'")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+-- <p> String containing email or sns topic for the subscriber address.</p>
+function M.SubscriberAddress(str)
+	asserts.AssertSubscriberAddress(str)
 	return str
 end
 
@@ -1865,9 +1900,20 @@ function asserts.AssertComparisonOperator(str)
 	assert(type(str) == "string", "Expected ComparisonOperator to be of type 'string'")
 end
 
--- The comparison operator of a notification. Currently we support less than, equal to and greater than.
+-- <p> The comparison operator of a notification. Currently we support less than, equal to and greater than.</p>
 function M.ComparisonOperator(str)
 	asserts.AssertComparisonOperator(str)
+	return str
+end
+
+function asserts.AssertThresholdType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ThresholdType to be of type 'string'")
+end
+
+-- <p> The type of threshold for a notification. It can be PERCENTAGE or ABSOLUTE_VALUE.</p>
+function M.ThresholdType(str)
+	asserts.AssertThresholdType(str)
 	return str
 end
 
@@ -1876,7 +1922,7 @@ function asserts.AssertTimeUnit(str)
 	assert(type(str) == "string", "Expected TimeUnit to be of type 'string'")
 end
 
--- The time unit of the budget. e.g. weekly, monthly, etc.
+-- <p> The time unit of the budget. e.g. MONTHLY, QUARTERLY, etc.</p>
 function M.TimeUnit(str)
 	asserts.AssertTimeUnit(str)
 	return str
@@ -1889,7 +1935,7 @@ function asserts.AssertAccountId(str)
 	assert(#str >= 12, "Expected string to be min 12 characters")
 end
 
--- Account Id of the customer. It should be a 12 digit number.
+-- <p>The account ID of the customer. It should be a 12 digit number.</p>
 function M.AccountId(str)
 	asserts.AssertAccountId(str)
 	return str
@@ -1918,13 +1964,13 @@ function M.MaxResults(integer)
 	return integer
 end
 
-function asserts.AssertGenericBoolean(boolean)
+function asserts.AssertNullableBoolean(boolean)
 	assert(boolean)
-	assert(type(boolean) == "boolean", "Expected GenericBoolean to be of type 'boolean'")
+	assert(type(boolean) == "boolean", "Expected NullableBoolean to be of type 'boolean'")
 end
 
-function M.GenericBoolean(boolean)
-	asserts.AssertGenericBoolean(boolean)
+function M.NullableBoolean(boolean)
+	asserts.AssertNullableBoolean(boolean)
 	return boolean
 end
 
@@ -1960,7 +2006,7 @@ function asserts.AssertNotifications(list)
 	end
 end
 
--- A list of notifications.
+-- <p> A list of notifications.</p>
 -- List of Notification objects
 function M.Notifications(list)
 	asserts.AssertNotifications(list)
@@ -1977,7 +2023,7 @@ function asserts.AssertSubscribers(list)
 	end
 end
 
--- A list of subscribers.
+-- <p> A list of subscribers.</p>
 -- List of Subscriber objects
 function M.Subscribers(list)
 	asserts.AssertSubscribers(list)
@@ -2007,7 +2053,7 @@ function asserts.AssertBudgets(list)
 	end
 end
 
--- A list of budgets
+-- <p> A list of budgets</p>
 -- List of Budget objects
 function M.Budgets(list)
 	asserts.AssertBudgets(list)
@@ -2023,7 +2069,7 @@ function asserts.AssertNotificationWithSubscribersList(list)
 	end
 end
 
--- A list of Notifications, each with a list of subscribers.
+-- <p> A list of Notifications, each with a list of subscribers.</p>
 -- List of NotificationWithSubscribers objects
 function M.NotificationWithSubscribersList(list)
 	asserts.AssertNotificationWithSubscribersList(list)

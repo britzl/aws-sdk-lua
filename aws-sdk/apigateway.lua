@@ -42,10 +42,10 @@ end
 -- <p>Represents an update integration request.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * resourceId [String] <p>Represents an update integration request's resource identifier.</p>
+-- * resourceId [String] <p>[Required] Represents an update integration request's resource identifier.</p>
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
--- * restApiId [String] <p>Represents an update integration request's API identifier.</p>
--- * httpMethod [String] <p>Represents an update integration request's HTTP method.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * httpMethod [String] <p>[Required] Represents an update integration request's HTTP method.</p>
 -- Required key: restApiId
 -- Required key: resourceId
 -- Required key: httpMethod
@@ -76,6 +76,48 @@ function M.UpdateIntegrationRequest(args)
     }
 end
 
+keys.GetRestApisRequest = { ["position"] = true, ["limit"] = true, nil }
+
+function asserts.AssertGetRestApisRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetRestApisRequest to be of type 'table'")
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetRestApisRequest[k], "GetRestApisRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetRestApisRequest
+-- <p>The GET request to list existing <a>RestApis</a> defined for your collection.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * position [String] <p>The current pagination position in the paged result set.</p>
+-- * limit [NullableInteger] <p>The maximum number of returned results per page. The default value is 25 and the maximum value is 500.</p>
+-- @return GetRestApisRequest structure as a key-value pair table
+function M.GetRestApisRequest(args)
+	assert(args, "You must provide an argument table when creating GetRestApisRequest")
+    local query_args = { 
+        ["position"] = args["position"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["position"] = args["position"],
+		["limit"] = args["limit"],
+	}
+	asserts.AssertGetRestApisRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.CreateResourceRequest = { ["restApiId"] = true, ["pathPart"] = true, ["parentId"] = true, nil }
 
 function asserts.AssertCreateResourceRequest(struct)
@@ -93,12 +135,12 @@ function asserts.AssertCreateResourceRequest(struct)
 end
 
 --- Create a structure of type CreateResourceRequest
--- <p>Requests Amazon API Gateway to create a <a>Resource</a> resource.</p>
+-- <p>Requests API Gateway to create a <a>Resource</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>The identifier of the <a>RestApi</a> for the resource. </p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * pathPart [String] <p>The last path segment for this resource.</p>
--- * parentId [String] <p>The parent resource's identifier.</p>
+-- * parentId [String] <p>[Required] The parent resource's identifier.</p>
 -- Required key: restApiId
 -- Required key: parentId
 -- Required key: pathPart
@@ -143,11 +185,11 @@ function asserts.AssertUpdateStageRequest(struct)
 end
 
 --- Create a structure of type UpdateStageRequest
--- <p>Requests Amazon API Gateway to change information about a <a>Stage</a> resource.</p>
+-- <p>Requests API Gateway to change information about a <a>Stage</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to change information about.</p>
--- * stageName [String] <p>The name of the <a>Stage</a> resource to change information about.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * stageName [String] <p>[Required] The name of the <a>Stage</a> resource to change information about.</p>
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required key: restApiId
 -- Required key: stageName
@@ -176,76 +218,42 @@ function M.UpdateStageRequest(args)
     }
 end
 
-keys.ServiceUnavailableException = { ["message"] = true, ["retryAfterSeconds"] = true, nil }
+keys.GetStagesRequest = { ["deploymentId"] = true, ["restApiId"] = true, nil }
 
-function asserts.AssertServiceUnavailableException(struct)
+function asserts.AssertGetStagesRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ServiceUnavailableException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
-	if struct["retryAfterSeconds"] then asserts.AssertString(struct["retryAfterSeconds"]) end
+	assert(type(struct) == "table", "Expected GetStagesRequest to be of type 'table'")
+	assert(struct["restApiId"], "Expected key restApiId to exist in table")
+	if struct["deploymentId"] then asserts.AssertString(struct["deploymentId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ServiceUnavailableException[k], "ServiceUnavailableException contains unknown key " .. tostring(k))
+		assert(keys.GetStagesRequest[k], "GetStagesRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ServiceUnavailableException
---  
+--- Create a structure of type GetStagesRequest
+-- <p>Requests API Gateway to get information about one or more <a>Stage</a> resources.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [String] 
--- * retryAfterSeconds [String] 
--- @return ServiceUnavailableException structure as a key-value pair table
-function M.ServiceUnavailableException(args)
-	assert(args, "You must provide an argument table when creating ServiceUnavailableException")
+-- * deploymentId [String] <p>The stages' deployment identifiers.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- Required key: restApiId
+-- @return GetStagesRequest structure as a key-value pair table
+function M.GetStagesRequest(args)
+	assert(args, "You must provide an argument table when creating GetStagesRequest")
     local query_args = { 
+        ["deploymentId"] = args["deploymentId"],
     }
     local uri_args = { 
-    }
-    local header_args = { 
-        ["Retry-After"] = args["retryAfterSeconds"],
-    }
-	local all_args = { 
-		["message"] = args["message"],
-		["retryAfterSeconds"] = args["retryAfterSeconds"],
-	}
-	asserts.AssertServiceUnavailableException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.BadRequestException = { ["message"] = true, nil }
-
-function asserts.AssertBadRequestException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected BadRequestException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.BadRequestException[k], "BadRequestException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type BadRequestException
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [String] 
--- @return BadRequestException structure as a key-value pair table
-function M.BadRequestException(args)
-	assert(args, "You must provide an argument table when creating BadRequestException")
-    local query_args = { 
-    }
-    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
     }
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["deploymentId"] = args["deploymentId"],
+		["restApiId"] = args["restApiId"],
 	}
-	asserts.AssertBadRequestException(all_args)
+	asserts.AssertGetStagesRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -267,11 +275,11 @@ function asserts.AssertClientCertificates(struct)
 end
 
 --- Create a structure of type ClientCertificates
--- <p>Represents a collection of <a>ClientCertificate</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html">Use Client-Side Certificate</a> </div>
+-- <p>Represents a collection of <a>ClientCertificate</a> resources.</p> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html">Use Client-Side Certificate</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] 
--- * items [ListOfClientCertificate] <p>The current page of any <a>ClientCertificate</a> resources in the collection of <a>ClientCertificate</a> resources.</p>
+-- * items [ListOfClientCertificate] <p>The current page of elements from this collection.</p>
 -- @return ClientCertificates structure as a key-value pair table
 function M.ClientCertificates(args)
 	assert(args, "You must provide an argument table when creating ClientCertificates")
@@ -294,25 +302,27 @@ function M.ClientCertificates(args)
     }
 end
 
-keys.UnauthorizedException = { ["message"] = true, nil }
+keys.UsagePlanKeys = { ["position"] = true, ["items"] = true, nil }
 
-function asserts.AssertUnauthorizedException(struct)
+function asserts.AssertUsagePlanKeys(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected UnauthorizedException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
+	assert(type(struct) == "table", "Expected UsagePlanKeys to be of type 'table'")
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["items"] then asserts.AssertListOfUsagePlanKey(struct["items"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.UnauthorizedException[k], "UnauthorizedException contains unknown key " .. tostring(k))
+		assert(keys.UsagePlanKeys[k], "UsagePlanKeys contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type UnauthorizedException
---  
+--- Create a structure of type UsagePlanKeys
+-- <p>Represents the collection of usage plan keys added to usage plans for the associated API keys and, possibly, other types of keys.</p> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [String] 
--- @return UnauthorizedException structure as a key-value pair table
-function M.UnauthorizedException(args)
-	assert(args, "You must provide an argument table when creating UnauthorizedException")
+-- * position [String] 
+-- * items [ListOfUsagePlanKey] <p>The current page of elements from this collection.</p>
+-- @return UsagePlanKeys structure as a key-value pair table
+function M.UsagePlanKeys(args)
+	assert(args, "You must provide an argument table when creating UsagePlanKeys")
     local query_args = { 
     }
     local uri_args = { 
@@ -320,9 +330,50 @@ function M.UnauthorizedException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["position"] = args["position"],
+		["items"] = args["items"],
 	}
-	asserts.AssertUnauthorizedException(all_args)
+	asserts.AssertUsagePlanKeys(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GatewayResponses = { ["position"] = true, ["items"] = true, nil }
+
+function asserts.AssertGatewayResponses(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GatewayResponses to be of type 'table'")
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["items"] then asserts.AssertListOfGatewayResponse(struct["items"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GatewayResponses[k], "GatewayResponses contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GatewayResponses
+-- <p>The collection of the <a>GatewayResponse</a> instances of a <a>RestApi</a> as a <code>responseType</code>-to-<a>GatewayResponse</a> object map of key-value pairs. As such, pagination is not supported for querying this collection.</p> <div class="remarks"> For more information about valid gateway response types, see <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/supported-gateway-response-types.html">Gateway Response Types Supported by API Gateway</a> <div class="example"> <h4>Example: Get the collection of gateway responses of an API</h4> <h5>Request</h5> <p>This example request shows how to retrieve the <a>GatewayResponses</a> collection from an API.</p> <pre><code>GET /restapis/o81lxisefl/gatewayresponses HTTP/1.1 Host: beta-apigateway.us-east-1.amazonaws.com Content-Type: application/json X-Amz-Date: 20170503T220604Z Authorization: AWS4-HMAC-SHA256 Credential={access-key-id}/20170503/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=59b42fe54a76a5de8adf2c67baa6d39206f8e9ad49a1d77ccc6a5da3103a398a Cache-Control: no-cache Postman-Token: 5637af27-dc29-fc5c-9dfe-0645d52cb515 </code></pre> <p></p> <h5>Response</h5> <p>The successful operation returns the <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-gatewayresponse-{rel}.html", "name": "gatewayresponse", "templated": true }, "self": { "href": "/restapis/o81lxisefl/gatewayresponses" }, "first": { "href": "/restapis/o81lxisefl/gatewayresponses" }, "gatewayresponse:by-type": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "item": [ { "href": "/restapis/o81lxisefl/gatewayresponses/INTEGRATION_FAILURE" }, { "href": "/restapis/o81lxisefl/gatewayresponses/RESOURCE_NOT_FOUND" }, { "href": "/restapis/o81lxisefl/gatewayresponses/REQUEST_TOO_LARGE" }, { "href": "/restapis/o81lxisefl/gatewayresponses/THROTTLED" }, { "href": "/restapis/o81lxisefl/gatewayresponses/UNSUPPORTED_MEDIA_TYPE" }, { "href": "/restapis/o81lxisefl/gatewayresponses/AUTHORIZER_CONFIGURATION_ERROR" }, { "href": "/restapis/o81lxisefl/gatewayresponses/DEFAULT_5XX" }, { "href": "/restapis/o81lxisefl/gatewayresponses/DEFAULT_4XX" }, { "href": "/restapis/o81lxisefl/gatewayresponses/BAD_REQUEST_PARAMETERS" }, { "href": "/restapis/o81lxisefl/gatewayresponses/BAD_REQUEST_BODY" }, { "href": "/restapis/o81lxisefl/gatewayresponses/EXPIRED_TOKEN" }, { "href": "/restapis/o81lxisefl/gatewayresponses/ACCESS_DENIED" }, { "href": "/restapis/o81lxisefl/gatewayresponses/INVALID_API_KEY" }, { "href": "/restapis/o81lxisefl/gatewayresponses/UNAUTHORIZED" }, { "href": "/restapis/o81lxisefl/gatewayresponses/API_CONFIGURATION_ERROR" }, { "href": "/restapis/o81lxisefl/gatewayresponses/QUOTA_EXCEEDED" }, { "href": "/restapis/o81lxisefl/gatewayresponses/INTEGRATION_TIMEOUT" }, { "href": "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" }, { "href": "/restapis/o81lxisefl/gatewayresponses/INVALID_SIGNATURE" }, { "href": "/restapis/o81lxisefl/gatewayresponses/AUTHORIZER_FAILURE" } ] }, "_embedded": { "item": [ { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/INTEGRATION_FAILURE" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/INTEGRATION_FAILURE" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "INTEGRATION_FAILURE", "statusCode": "504" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/RESOURCE_NOT_FOUND" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/RESOURCE_NOT_FOUND" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "RESOURCE_NOT_FOUND", "statusCode": "404" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/REQUEST_TOO_LARGE" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/REQUEST_TOO_LARGE" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "REQUEST_TOO_LARGE", "statusCode": "413" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/THROTTLED" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/THROTTLED" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "THROTTLED", "statusCode": "429" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/UNSUPPORTED_MEDIA_TYPE" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/UNSUPPORTED_MEDIA_TYPE" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "UNSUPPORTED_MEDIA_TYPE", "statusCode": "415" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/AUTHORIZER_CONFIGURATION_ERROR" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/AUTHORIZER_CONFIGURATION_ERROR" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "AUTHORIZER_CONFIGURATION_ERROR", "statusCode": "500" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/DEFAULT_5XX" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/DEFAULT_5XX" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "DEFAULT_5XX" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/DEFAULT_4XX" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/DEFAULT_4XX" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "DEFAULT_4XX" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/BAD_REQUEST_PARAMETERS" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/BAD_REQUEST_PARAMETERS" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "BAD_REQUEST_PARAMETERS", "statusCode": "400" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/BAD_REQUEST_BODY" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/BAD_REQUEST_BODY" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "BAD_REQUEST_BODY", "statusCode": "400" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/EXPIRED_TOKEN" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/EXPIRED_TOKEN" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "EXPIRED_TOKEN", "statusCode": "403" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/ACCESS_DENIED" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/ACCESS_DENIED" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "ACCESS_DENIED", "statusCode": "403" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/INVALID_API_KEY" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/INVALID_API_KEY" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "INVALID_API_KEY", "statusCode": "403" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/UNAUTHORIZED" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/UNAUTHORIZED" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "UNAUTHORIZED", "statusCode": "401" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/API_CONFIGURATION_ERROR" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/API_CONFIGURATION_ERROR" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "API_CONFIGURATION_ERROR", "statusCode": "500" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/QUOTA_EXCEEDED" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/QUOTA_EXCEEDED" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "QUOTA_EXCEEDED", "statusCode": "429" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/INTEGRATION_TIMEOUT" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/INTEGRATION_TIMEOUT" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "INTEGRATION_TIMEOUT", "statusCode": "504" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "MISSING_AUTHENTICATION_TOKEN", "statusCode": "403" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/INVALID_SIGNATURE" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/INVALID_SIGNATURE" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "INVALID_SIGNATURE", "statusCode": "403" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/AUTHORIZER_FAILURE" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/AUTHORIZER_FAILURE" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "AUTHORIZER_FAILURE", "statusCode": "500" } ] } }</code></pre> <p></p> </div> </div> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/customize-gateway-responses.html">Customize Gateway Responses</a> </div>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * position [String] 
+-- * items [ListOfGatewayResponse] <p>Returns the entire collection, because of no pagination support.</p>
+-- @return GatewayResponses structure as a key-value pair table
+function M.GatewayResponses(args)
+	assert(args, "You must provide an argument table when creating GatewayResponses")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["position"] = args["position"],
+		["items"] = args["items"],
+	}
+	asserts.AssertGatewayResponses(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -348,7 +399,7 @@ end
 -- <p>A request to get information about the current <a>ApiKey</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * apiKey [String] <p>The identifier of the <a>ApiKey</a> resource.</p>
+-- * apiKey [String] <p>[Required] The identifier of the <a>ApiKey</a> resource.</p>
 -- * includeValue [NullableBoolean] <p>A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains the key value.</p>
 -- Required key: apiKey
 -- @return GetApiKeyRequest structure as a key-value pair table
@@ -387,10 +438,10 @@ function asserts.AssertTemplate(struct)
 end
 
 --- Create a structure of type Template
--- <p>Represents a mapping template used to transform a payload.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html#models-mappings-mappings">Mapping Templates</a> </div>
+-- <p>Represents a mapping template used to transform a payload.</p> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html#models-mappings-mappings">Mapping Templates</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * value [String] <p>The Apache <a href="http://velocity.apache.org/engine/devel/vtl-reference-guide.html" target="_blank">Velocity Template Language (VTL)</a> template content used for the template resource.</p>
+-- * value [String] <p>The Apache <a href="https://velocity.apache.org/engine/devel/vtl-reference-guide.html" target="_blank">Velocity Template Language (VTL)</a> template content used for the template resource.</p>
 -- @return Template structure as a key-value pair table
 function M.Template(args)
 	assert(args, "You must provide an argument table when creating Template")
@@ -449,6 +500,48 @@ function M.GenerateClientCertificateRequest(args)
     }
 end
 
+keys.GetVpcLinksRequest = { ["position"] = true, ["limit"] = true, nil }
+
+function asserts.AssertGetVpcLinksRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetVpcLinksRequest to be of type 'table'")
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetVpcLinksRequest[k], "GetVpcLinksRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetVpcLinksRequest
+-- <p>Gets the <a>VpcLinks</a> collection under the caller's account in a selected region.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * position [String] <p>The current pagination position in the paged result set.</p>
+-- * limit [NullableInteger] <p>The maximum number of returned results per page. The default value is 25 and the maximum value is 500.</p>
+-- @return GetVpcLinksRequest structure as a key-value pair table
+function M.GetVpcLinksRequest(args)
+	assert(args, "You must provide an argument table when creating GetVpcLinksRequest")
+    local query_args = { 
+        ["position"] = args["position"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["position"] = args["position"],
+		["limit"] = args["limit"],
+	}
+	asserts.AssertGetVpcLinksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.Resources = { ["position"] = true, ["items"] = true, nil }
 
 function asserts.AssertResources(struct)
@@ -462,11 +555,11 @@ function asserts.AssertResources(struct)
 end
 
 --- Create a structure of type Resources
--- <p>Represents a collection of <a>Resource</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
+-- <p>Represents a collection of <a>Resource</a> resources.</p> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] 
--- * items [ListOfResource] <p>Gets the current <a>Resource</a> resource in the collection.</p>
+-- * items [ListOfResource] <p>The current page of elements from this collection.</p>
 -- @return Resources structure as a key-value pair table
 function M.Resources(args)
 	assert(args, "You must provide an argument table when creating Resources")
@@ -505,7 +598,7 @@ end
 -- <p>Request to get the name of a <a>DomainName</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * domainName [String] <p>The name of the <a>DomainName</a> resource.</p>
+-- * domainName [String] <p>[Required] The name of the <a>DomainName</a> resource.</p>
 -- Required key: domainName
 -- @return GetDomainNameRequest structure as a key-value pair table
 function M.GetDomainNameRequest(args)
@@ -529,7 +622,7 @@ function M.GetDomainNameRequest(args)
     }
 end
 
-keys.PutMethodRequest = { ["restApiId"] = true, ["requestParameters"] = true, ["requestModels"] = true, ["resourceId"] = true, ["authorizationType"] = true, ["operationName"] = true, ["apiKeyRequired"] = true, ["httpMethod"] = true, ["requestValidatorId"] = true, ["authorizerId"] = true, nil }
+keys.PutMethodRequest = { ["restApiId"] = true, ["requestParameters"] = true, ["authorizationScopes"] = true, ["requestModels"] = true, ["resourceId"] = true, ["authorizationType"] = true, ["operationName"] = true, ["apiKeyRequired"] = true, ["httpMethod"] = true, ["requestValidatorId"] = true, ["authorizerId"] = true, nil }
 
 function asserts.AssertPutMethodRequest(struct)
 	assert(struct)
@@ -540,6 +633,7 @@ function asserts.AssertPutMethodRequest(struct)
 	assert(struct["authorizationType"], "Expected key authorizationType to exist in table")
 	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	if struct["requestParameters"] then asserts.AssertMapOfStringToBoolean(struct["requestParameters"]) end
+	if struct["authorizationScopes"] then asserts.AssertListOfString(struct["authorizationScopes"]) end
 	if struct["requestModels"] then asserts.AssertMapOfStringToString(struct["requestModels"]) end
 	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
 	if struct["authorizationType"] then asserts.AssertString(struct["authorizationType"]) end
@@ -557,16 +651,17 @@ end
 -- <p>Request to add a method to an existing <a>Resource</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>The <a>RestApi</a> identifier for the new <a>Method</a> resource.</p>
--- * requestParameters [MapOfStringToBoolean] <p>A key-value map defining required or optional method request parameters that can be accepted by Amazon API Gateway. A key defines a method request parameter name matching the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> is a valid and unique parameter name. The value associated with the key is a Boolean flag indicating whether the parameter is required (<code>true</code>) or optional (<code>false</code>). The method request parameter names defined here are available in <a>Integration</a> to be mapped to integration request parameters or body-mapping templates.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * requestParameters [MapOfStringToBoolean] <p>A key-value map defining required or optional method request parameters that can be accepted by API Gateway. A key defines a method request parameter name matching the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> is a valid and unique parameter name. The value associated with the key is a Boolean flag indicating whether the parameter is required (<code>true</code>) or optional (<code>false</code>). The method request parameter names defined here are available in <a>Integration</a> to be mapped to integration request parameters or body-mapping templates.</p>
+-- * authorizationScopes [ListOfString] <p>A list of authorization scopes configured on the method. The scopes are used with a <code>COGNITO_USER_POOLS</code> authorizer to authorize the method invocation. The authorization works by matching the method scopes against the scopes parsed from the access token in the incoming request. The method invocation is authorized if any method scopes matches a claimed scope in the access token. Otherwise, the invocation is not authorized. When the method scope is configured, the client must provide an access token instead of an identity token for authorization purposes.</p>
 -- * requestModels [MapOfStringToString] <p>Specifies the <a>Model</a> resources used for the request's content type. Request models are represented as a key/value map, with a content type as the key and a <a>Model</a> name as the value.</p>
--- * resourceId [String] <p>The <a>Resource</a> identifier for the new <a>Method</a> resource.</p>
--- * authorizationType [String] <p>The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.</p>
--- * operationName [String] <p>A human-friendly operation identifier for the method. For example, you can assign the <code>operationName</code> of <code>ListPets</code> for the <code>GET /pets</code> method in <a href="http://petstore-demo-endpoint.execute-api.com/petstore/pets">PetStore</a> example.</p>
+-- * resourceId [String] <p>[Required] The <a>Resource</a> identifier for the new <a>Method</a> resource.</p>
+-- * authorizationType [String] <p>[Required] The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.</p>
+-- * operationName [String] <p>A human-friendly operation identifier for the method. For example, you can assign the <code>operationName</code> of <code>ListPets</code> for the <code>GET /pets</code> method in <a href="https://petstore-demo-endpoint.execute-api.com/petstore/pets">PetStore</a> example.</p>
 -- * apiKeyRequired [Boolean] <p>Specifies whether the method required a valid <a>ApiKey</a>.</p>
--- * httpMethod [String] <p>Specifies the method request's HTTP method type.</p>
+-- * httpMethod [String] <p>[Required] Specifies the method request's HTTP method type.</p>
 -- * requestValidatorId [String] <p>The identifier of a <a>RequestValidator</a> for validating the method request.</p>
--- * authorizerId [String] <p>Specifies the identifier of an <a>Authorizer</a> to use on this Method, if the type is CUSTOM.</p>
+-- * authorizerId [String] <p>Specifies the identifier of an <a>Authorizer</a> to use on this Method, if the type is CUSTOM or COGNITO_USER_POOLS. The authorizer identifier is generated by API Gateway when you created the authorizer.</p>
 -- Required key: restApiId
 -- Required key: resourceId
 -- Required key: httpMethod
@@ -586,6 +681,7 @@ function M.PutMethodRequest(args)
 	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["requestParameters"] = args["requestParameters"],
+		["authorizationScopes"] = args["authorizationScopes"],
 		["requestModels"] = args["requestModels"],
 		["resourceId"] = args["resourceId"],
 		["authorizationType"] = args["authorizationType"],
@@ -618,11 +714,11 @@ function asserts.AssertDocumentationPart(struct)
 end
 
 --- Create a structure of type DocumentationPart
--- <p>A documentation part for a targeted API entity.</p> <div class="remarks"> <p>A documentation part consists of a content map (<code>properties</code>) and a target (<code>location</code>). The target specifies an API entity to which the documentation content applies. The supported API entity types are <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>, <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. Valid <code>location</code> fields depend on the API entity type. All valid fields are not required.</p> <p>The content map is a JSON string of API-specific key-value pairs. Although an API can use any shape for the content map, only the Swagger-compliant documentation fields will be injected into the associated API entity definition in the exported Swagger definition file.</p></div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationParts</a> </div>
+-- <p>A documentation part for a targeted API entity.</p> <div class="remarks"> <p>A documentation part consists of a content map (<code>properties</code>) and a target (<code>location</code>). The target specifies an API entity to which the documentation content applies. The supported API entity types are <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>, <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. Valid <code>location</code> fields depend on the API entity type. All valid fields are not required.</p> <p>The content map is a JSON string of API-specific key-value pairs. Although an API can use any shape for the content map, only the OpenAPI-compliant documentation fields will be injected into the associated API entity definition in the exported OpenAPI definition file.</p></div> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationParts</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * properties [String] <p>A content map of API-specific key-value pairs describing the targeted API entity. The map must be encoded as a JSON string, e.g., <code>"{ \"description\": \"The API does ...\" }"</code>. Only Swagger-compliant documentation-related fields from the <literal>properties</literal> map are exported and, hence, published as part of the API entity definitions, while the original documentation parts are exported in a Swagger extension of <code>x-amazon-apigateway-documentation</code>.</p>
--- * id [String] <p>The <a>DocumentationPart</a> identifier, generated by Amazon API Gateway when the <code>DocumentationPart</code> is created.</p>
+-- * properties [String] <p>A content map of API-specific key-value pairs describing the targeted API entity. The map must be encoded as a JSON string, e.g., <code>"{ \"description\": \"The API does ...\" }"</code>. Only OpenAPI-compliant documentation-related fields from the <literal>properties</literal> map are exported and, hence, published as part of the API entity definitions, while the original documentation parts are exported in a OpenAPI extension of <code>x-amazon-apigateway-documentation</code>.</p>
+-- * id [String] <p>The <a>DocumentationPart</a> identifier, generated by API Gateway when the <code>DocumentationPart</code> is created.</p>
 -- * location [DocumentationPartLocation] <p>The location of the API entity to which the documentation applies. Valid fields depend on the targeted API entity type. All the valid location fields are not required. If not explicitly specified, a valid location field is treated as a wildcard and associated documentation content may be inherited by matching entities, unless overridden.</p>
 -- @return DocumentationPart structure as a key-value pair table
 function M.DocumentationPart(args)
@@ -669,10 +765,10 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * latency [Long] <p>The execution latency of the test authorizer request.</p>
--- * log [String] <p>The Amazon API Gateway execution log for the test authorizer request.</p>
+-- * log [String] <p>The API Gateway execution log for the test authorizer request.</p>
 -- * principalId [String] <p>The principal identity returned by the <a>Authorizer</a></p>
 -- * policy [String] <p>The JSON policy document returned by the <a>Authorizer</a></p>
--- * claims [MapOfStringToString] <p>The <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">open identity claims</a>, with any supported custom attributes, returned from the Cognito Your User Pool configured for the API.</p>
+-- * claims [MapOfStringToString] <p>The <a href="https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">open identity claims</a>, with any supported custom attributes, returned from the Cognito Your User Pool configured for the API.</p>
 -- * authorization [MapOfStringToList] 
 -- * clientStatus [Integer] <p>The HTTP status code that the client would have received. Value is 0 if the authorizer succeeded.</p>
 -- @return TestInvokeAuthorizerResponse structure as a key-value pair table
@@ -718,7 +814,7 @@ end
 -- <p>A request to get information about the current <a>ClientCertificate</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * clientCertificateId [String] <p>The identifier of the <a>ClientCertificate</a> resource to be described.</p>
+-- * clientCertificateId [String] <p>[Required] The identifier of the <a>ClientCertificate</a> resource to be described.</p>
 -- Required key: clientCertificateId
 -- @return GetClientCertificateRequest structure as a key-value pair table
 function M.GetClientCertificateRequest(args)
@@ -759,12 +855,12 @@ function asserts.AssertGetIntegrationRequest(struct)
 end
 
 --- Create a structure of type GetIntegrationRequest
--- <p>Represents a get integration request.</p>
+-- <p>Represents a request to get the integration configuration.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * resourceId [String] <p>Specifies a get integration request's resource identifier</p>
--- * restApiId [String] <p>Specifies a get integration request's API identifier.</p>
--- * httpMethod [String] <p>Specifies a get integration request's HTTP method.</p>
+-- * resourceId [String] <p>[Required] Specifies a get integration request's resource identifier</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * httpMethod [String] <p>[Required] Specifies a get integration request's HTTP method.</p>
 -- Required key: restApiId
 -- Required key: resourceId
 -- Required key: httpMethod
@@ -854,7 +950,7 @@ function asserts.AssertAccount(struct)
 end
 
 --- Create a structure of type Account
--- <p>Represents an AWS account that is associated with Amazon API Gateway.</p> <div class="remarks"> <p>To view the account info, call <code>GET</code> on this resource.</p> <h4>Error Codes</h4> <p>The following exception may be thrown when the request fails.</p> <ul> <li>UnauthorizedException</li> <li>NotFoundException</li> <li>TooManyRequestsException</li> </ul> <p>For detailed error code information, including the corresponding HTTP Status Codes, see <a href="http://docs.aws.amazon.com/apigateway/api-reference/handling-errors/#api-error-codes">API Gateway Error Codes</a></p> <h4>Example: Get the information about an account.</h4> <h5>Request</h5> <pre><code>GET /account HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160531T184618Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} </code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/account-apigateway-{rel}.html", "name": "account", "templated": true }, "self": { "href": "/account" }, "account:update": { "href": "/account" } }, "cloudwatchRoleArn": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "throttleSettings": { "rateLimit": 500, "burstLimit": 1000 } } </code></pre> <p>In addition to making the REST API call directly, you can use the AWS CLI and an AWS SDK to access this resource.</p> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-limits.html">API Gateway Limits</a> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html">Developer Guide</a>, <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-account.html">AWS CLI</a> </div>
+-- <p>Represents an AWS account that is associated with API Gateway.</p> <div class="remarks"> <p>To view the account info, call <code>GET</code> on this resource.</p> <h4>Error Codes</h4> <p>The following exception may be thrown when the request fails.</p> <ul> <li>UnauthorizedException</li> <li>NotFoundException</li> <li>TooManyRequestsException</li> </ul> <p>For detailed error code information, including the corresponding HTTP Status Codes, see <a href="https://docs.aws.amazon.com/apigateway/api-reference/handling-errors/#api-error-codes">API Gateway Error Codes</a></p> <h4>Example: Get the information about an account.</h4> <h5>Request</h5> <pre><code>GET /account HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160531T184618Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} </code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/account-apigateway-{rel}.html", "name": "account", "templated": true }, "self": { "href": "/account" }, "account:update": { "href": "/account" } }, "cloudwatchRoleArn": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "throttleSettings": { "rateLimit": 500, "burstLimit": 1000 } } </code></pre> <p>In addition to making the REST API call directly, you can use the AWS CLI and an AWS SDK to access this resource.</p> </div> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-limits.html">API Gateway Limits</a> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html">Developer Guide</a>, <a href="https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-account.html">AWS CLI</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * cloudwatchRoleArn [String] <p>The ARN of an Amazon CloudWatch role for the current <a>Account</a>. </p>
@@ -904,9 +1000,9 @@ end
 -- <p>A request to change information about the <a>BasePathMapping</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * basePath [String] <p>The base path of the <a>BasePathMapping</a> resource to change.</p>
+-- * basePath [String] <p>[Required] The base path of the <a>BasePathMapping</a> resource to change.</p>
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
--- * domainName [String] <p>The domain name of the <a>BasePathMapping</a> resource to change.</p>
+-- * domainName [String] <p>[Required] The domain name of the <a>BasePathMapping</a> resource to change.</p>
 -- Required key: domainName
 -- Required key: basePath
 -- @return UpdateBasePathMappingRequest structure as a key-value pair table
@@ -934,84 +1030,35 @@ function M.UpdateBasePathMappingRequest(args)
     }
 end
 
-keys.GetStagesRequest = { ["deploymentId"] = true, ["restApiId"] = true, nil }
+keys.EndpointConfiguration = { ["types"] = true, nil }
 
-function asserts.AssertGetStagesRequest(struct)
+function asserts.AssertEndpointConfiguration(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected GetStagesRequest to be of type 'table'")
-	assert(struct["restApiId"], "Expected key restApiId to exist in table")
-	if struct["deploymentId"] then asserts.AssertString(struct["deploymentId"]) end
-	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	assert(type(struct) == "table", "Expected EndpointConfiguration to be of type 'table'")
+	if struct["types"] then asserts.AssertListOfEndpointType(struct["types"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.GetStagesRequest[k], "GetStagesRequest contains unknown key " .. tostring(k))
+		assert(keys.EndpointConfiguration[k], "EndpointConfiguration contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type GetStagesRequest
--- <p>Requests Amazon API Gateway to get information about one or more <a>Stage</a> resources.</p>
+--- Create a structure of type EndpointConfiguration
+-- <p>The endpoint configuration to indicate the types of endpoints an API (<a>RestApi</a>) or its custom domain name (<a>DomainName</a>) has. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * deploymentId [String] <p>The stages' deployment identifiers.</p>
--- * restApiId [String] <p>The stages' API identifiers.</p>
--- Required key: restApiId
--- @return GetStagesRequest structure as a key-value pair table
-function M.GetStagesRequest(args)
-	assert(args, "You must provide an argument table when creating GetStagesRequest")
+-- * types [ListOfEndpointType] <p>A list of endpoint types of an API (<a>RestApi</a>) or its custom domain name (<a>DomainName</a>). For an edge-optimized API and its custom domain name, the endpoint type is <code>"EDGE"</code>. For a regional API and its custom domain name, the endpoint type is <code>REGIONAL</code>. For a private API, the endpoint type is <code>PRIVATE</code>.</p>
+-- @return EndpointConfiguration structure as a key-value pair table
+function M.EndpointConfiguration(args)
+	assert(args, "You must provide an argument table when creating EndpointConfiguration")
     local query_args = { 
-        ["deploymentId"] = args["deploymentId"],
-    }
-    local uri_args = { 
-        ["{restapi_id}"] = args["restApiId"],
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["deploymentId"] = args["deploymentId"],
-		["restApiId"] = args["restApiId"],
-	}
-	asserts.AssertGetStagesRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.GetRestApisRequest = { ["position"] = true, ["limit"] = true, nil }
-
-function asserts.AssertGetRestApisRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected GetRestApisRequest to be of type 'table'")
-	if struct["position"] then asserts.AssertString(struct["position"]) end
-	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.GetRestApisRequest[k], "GetRestApisRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type GetRestApisRequest
--- <p>The GET request to list existing <a>RestApis</a> defined for your collection.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * position [String] <p>The current pagination position in the paged result set.</p>
--- * limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
--- @return GetRestApisRequest structure as a key-value pair table
-function M.GetRestApisRequest(args)
-	assert(args, "You must provide an argument table when creating GetRestApisRequest")
-    local query_args = { 
-        ["position"] = args["position"],
-        ["limit"] = args["limit"],
     }
     local uri_args = { 
     }
     local header_args = { 
     }
 	local all_args = { 
-		["position"] = args["position"],
-		["limit"] = args["limit"],
+		["types"] = args["types"],
 	}
-	asserts.AssertGetRestApisRequest(all_args)
+	asserts.AssertEndpointConfiguration(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1039,7 +1086,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * documentationPartId [String] <p>[Required] The identifier of the to-be-deleted documentation part.</p>
--- * restApiId [String] <p>[Required] Specifies the identifier of an API of the to-be-deleted documentation part.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- Required key: restApiId
 -- Required key: documentationPartId
 -- @return DeleteDocumentationPartRequest structure as a key-value pair table
@@ -1066,6 +1113,61 @@ function M.DeleteDocumentationPartRequest(args)
     }
 end
 
+keys.PutGatewayResponseRequest = { ["responseType"] = true, ["responseParameters"] = true, ["restApiId"] = true, ["responseTemplates"] = true, ["statusCode"] = true, nil }
+
+function asserts.AssertPutGatewayResponseRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PutGatewayResponseRequest to be of type 'table'")
+	assert(struct["restApiId"], "Expected key restApiId to exist in table")
+	assert(struct["responseType"], "Expected key responseType to exist in table")
+	if struct["responseType"] then asserts.AssertGatewayResponseType(struct["responseType"]) end
+	if struct["responseParameters"] then asserts.AssertMapOfStringToString(struct["responseParameters"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["responseTemplates"] then asserts.AssertMapOfStringToString(struct["responseTemplates"]) end
+	if struct["statusCode"] then asserts.AssertStatusCode(struct["statusCode"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PutGatewayResponseRequest[k], "PutGatewayResponseRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PutGatewayResponseRequest
+-- <p>Creates a customization of a <a>GatewayResponse</a> of a specified response type and status code on the given <a>RestApi</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * responseType [GatewayResponseType] <p>[Required] <p>The response type of the associated <a>GatewayResponse</a>. Valid values are <ul><li>ACCESS_DENIED</li><li>API_CONFIGURATION_ERROR</li><li>AUTHORIZER_FAILURE</li><li> AUTHORIZER_CONFIGURATION_ERROR</li><li>BAD_REQUEST_PARAMETERS</li><li>BAD_REQUEST_BODY</li><li>DEFAULT_4XX</li><li>DEFAULT_5XX</li><li>EXPIRED_TOKEN</li><li>INVALID_SIGNATURE</li><li>INTEGRATION_FAILURE</li><li>INTEGRATION_TIMEOUT</li><li>INVALID_API_KEY</li><li>MISSING_AUTHENTICATION_TOKEN</li><li> QUOTA_EXCEEDED</li><li>REQUEST_TOO_LARGE</li><li>RESOURCE_NOT_FOUND</li><li>THROTTLED</li><li>UNAUTHORIZED</li><li>UNSUPPORTED_MEDIA_TYPE</li></ul> </p></p>
+-- * responseParameters [MapOfStringToString] <p><p>Response parameters (paths, query strings and headers) of the <a>GatewayResponse</a> as a string-to-string map of key-value pairs.</p></p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * responseTemplates [MapOfStringToString] <p><p>Response templates of the <a>GatewayResponse</a> as a string-to-string map of key-value pairs.</p></p>
+-- * statusCode [StatusCode] The HTTP status code of the <a>GatewayResponse</a>.
+-- Required key: restApiId
+-- Required key: responseType
+-- @return PutGatewayResponseRequest structure as a key-value pair table
+function M.PutGatewayResponseRequest(args)
+	assert(args, "You must provide an argument table when creating PutGatewayResponseRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{response_type}"] = args["responseType"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["responseType"] = args["responseType"],
+		["responseParameters"] = args["responseParameters"],
+		["restApiId"] = args["restApiId"],
+		["responseTemplates"] = args["responseTemplates"],
+		["statusCode"] = args["statusCode"],
+	}
+	asserts.AssertPutGatewayResponseRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetStageRequest = { ["restApiId"] = true, ["stageName"] = true, nil }
 
 function asserts.AssertGetStageRequest(struct)
@@ -1081,11 +1183,11 @@ function asserts.AssertGetStageRequest(struct)
 end
 
 --- Create a structure of type GetStageRequest
--- <p>Requests Amazon API Gateway to get information about a <a>Stage</a> resource.</p>
+-- <p>Requests API Gateway to get information about a <a>Stage</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to get information about.</p>
--- * stageName [String] <p>The name of the <a>Stage</a> resource to get information about.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * stageName [String] <p>[Required] The name of the <a>Stage</a> resource to get information about.</p>
 -- Required key: restApiId
 -- Required key: stageName
 -- @return GetStageRequest structure as a key-value pair table
@@ -1125,10 +1227,10 @@ function asserts.AssertDeleteUsagePlanRequest(struct)
 end
 
 --- Create a structure of type DeleteUsagePlanRequest
--- <p>The DELETE request to delete a uasge plan of a given plan Id.</p>
+-- <p>The DELETE request to delete a usage plan of a given plan Id.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * usagePlanId [String] <p>The Id of the to-be-deleted usage plan.</p>
+-- * usagePlanId [String] <p>[Required] The Id of the to-be-deleted usage plan.</p>
 -- Required key: usagePlanId
 -- @return DeleteUsagePlanRequest structure as a key-value pair table
 function M.DeleteUsagePlanRequest(args)
@@ -1165,11 +1267,11 @@ function asserts.AssertDeployments(struct)
 end
 
 --- Create a structure of type Deployments
--- <p>Represents a collection resource that contains zero or more references to your existing deployments, and links that guide you on how to interact with your collection. The collection offers a paginated view of the contained deployments.</p> <div class="remarks">To create a new deployment of a <a>RestApi</a>, make a <code>POST</code> request against this resource. To view, update, or delete an existing deployment, make a <code>GET</code>, <code>PATCH</code>, or <code>DELETE</code> request, respectively, on a specified <a>Deployment</a> resource.</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html">Deploying an API</a>, <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html">AWS CLI</a>, <a href="https://aws.amazon.com/tools/">AWS SDKs</a> </div>
+-- <p>Represents a collection resource that contains zero or more references to your existing deployments, and links that guide you on how to interact with your collection. The collection offers a paginated view of the contained deployments.</p> <div class="remarks">To create a new deployment of a <a>RestApi</a>, make a <code>POST</code> request against this resource. To view, update, or delete an existing deployment, make a <code>GET</code>, <code>PATCH</code>, or <code>DELETE</code> request, respectively, on a specified <a>Deployment</a> resource.</div> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html">Deploying an API</a>, <a href="https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html">AWS CLI</a>, <a href="https://aws.amazon.com/tools/">AWS SDKs</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] 
--- * items [ListOfDeployment] <p>The current page of any <a>Deployment</a> resources in the collection of deployment resources.</p>
+-- * items [ListOfDeployment] <p>The current page of elements from this collection.</p>
 -- @return Deployments structure as a key-value pair table
 function M.Deployments(args)
 	assert(args, "You must provide an argument table when creating Deployments")
@@ -1206,11 +1308,11 @@ function asserts.AssertApiKeys(struct)
 end
 
 --- Create a structure of type ApiKeys
--- <p>Represents a collection of API keys as represented by an <a>ApiKeys</a> resource.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html">Use API Keys</a> </div>
+-- <p>Represents a collection of API keys as represented by an <a>ApiKeys</a> resource.</p> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html">Use API Keys</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] 
--- * items [ListOfApiKey] <p>The current page of any <a>ApiKey</a> resources in the collection of <a>ApiKey</a> resources.</p>
+-- * items [ListOfApiKey] <p>The current page of elements from this collection.</p>
 -- * warnings [ListOfString] <p>A list of warning messages logged during the import of API keys when the <code>failOnWarnings</code> option is set to true.</p>
 -- @return ApiKeys structure as a key-value pair table
 function M.ApiKeys(args)
@@ -1250,12 +1352,12 @@ function asserts.AssertImportRestApiRequest(struct)
 end
 
 --- Create a structure of type ImportRestApiRequest
--- <p>A POST request to import an API to Amazon API Gateway using an input of an API definition file.</p>
+-- <p>A POST request to import an API to API Gateway using an input of an API definition file.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * body [Blob] <p>The POST request body containing external API definitions. Currently, only Swagger definition JSON files are supported.</p>
+-- * body [Blob] <p>[Required] The POST request body containing external API definitions. Currently, only OpenAPI definition JSON/YAML files are supported. The maximum size of the API definition file is 2MB.</p>
 -- * failOnWarnings [Boolean] <p>A query parameter to indicate whether to rollback the API creation (<code>true</code>) or not (<code>false</code>) when a warning is encountered. The default value is <code>false</code>.</p>
--- * parameters [MapOfStringToString] <p>Custom header parameters as part of the request.</p>
+-- * parameters [MapOfStringToString] <p>A key-value map of context-specific query string parameters specifying the behavior of different API importing operations. The following shows operation-specific parameters and their supported values.</p> <p> To exclude <a>DocumentationParts</a> from the import, set <code>parameters</code> as <code>ignore=documentation</code>.</p> <p> To configure the endpoint type, set <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code>, <code>endpointConfigurationTypes=REGIONAL</code>, or <code>endpointConfigurationTypes=PRIVATE</code>. The default endpoint type is <code>EDGE</code>.</p> <p> To handle imported <code>basePath</code>, set <code>parameters</code> as <code>basePath=ignore</code>, <code>basePath=prepend</code> or <code>basePath=split</code>.</p> <p>For example, the AWS CLI command to exclude documentation from the imported API is:</p> <pre><code>aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'</code></pre> <p>The AWS CLI command to set the regional endpoint on the imported API is:</p> <pre><code>aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json'</code></pre>
 -- Required key: body
 -- @return ImportRestApiRequest structure as a key-value pair table
 function M.ImportRestApiRequest(args)
@@ -1300,7 +1402,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
--- * domainName [String] <p>The name of the <a>DomainName</a> resource to be changed.</p>
+-- * domainName [String] <p>[Required] The name of the <a>DomainName</a> resource to be changed.</p>
 -- Required key: domainName
 -- @return UpdateDomainNameRequest structure as a key-value pair table
 function M.UpdateDomainNameRequest(args)
@@ -1346,7 +1448,7 @@ end
 -- Valid keys:
 -- * validateRequestParameters [Boolean] <p>A Boolean flag to indicate whether to validate request parameters, <code>true</code>, or not <code>false</code>.</p>
 -- * validateRequestBody [Boolean] <p>A Boolean flag to indicate whether to validate request body according to the configured model schema for the method (<code>true</code>) or not (<code>false</code>).</p>
--- * restApiId [String] <p>[Required] The identifier of the <a>RestApi</a> for which the <a>RequestValidator</a> is created.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * name [String] <p>The name of the to-be-created <a>RequestValidator</a>.</p>
 -- Required key: restApiId
 -- @return CreateRequestValidatorRequest structure as a key-value pair table
@@ -1389,11 +1491,11 @@ function asserts.AssertDeleteDeploymentRequest(struct)
 end
 
 --- Create a structure of type DeleteDeploymentRequest
--- <p>Requests Amazon API Gateway to delete a <a>Deployment</a> resource.</p>
+-- <p>Requests API Gateway to delete a <a>Deployment</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * deploymentId [String] <p>The identifier of the <a>Deployment</a> resource to delete.</p>
--- * restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Deployment</a> resource to delete.</p>
+-- * deploymentId [String] <p>[Required] The identifier of the <a>Deployment</a> resource to delete.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- Required key: restApiId
 -- Required key: deploymentId
 -- @return DeleteDeploymentRequest structure as a key-value pair table
@@ -1435,7 +1537,7 @@ function asserts.AssertUsagePlanKey(struct)
 end
 
 --- Create a structure of type UsagePlanKey
--- <p>Represents a usage plan key to identify a plan customer.</p> <div class="remarks"> <p>To associate an API stage with a selected API key in a usage plan, you must create a UsagePlanKey resource to represent the selected <a>ApiKey</a>.</p> </div>" <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
+-- <p>Represents a usage plan key to identify a plan customer.</p> <div class="remarks"> <p>To associate an API stage with a selected API key in a usage plan, you must create a UsagePlanKey resource to represent the selected <a>ApiKey</a>.</p> </div>" <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * type [String] <p>The type of a usage plan key. Currently, the valid key type is <code>API_KEY</code>.</p>
@@ -1481,11 +1583,11 @@ function asserts.AssertDeleteStageRequest(struct)
 end
 
 --- Create a structure of type DeleteStageRequest
--- <p>Requests Amazon API Gateway to delete a <a>Stage</a> resource.</p>
+-- <p>Requests API Gateway to delete a <a>Stage</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to delete.</p>
--- * stageName [String] <p>The name of the <a>Stage</a> resource to delete.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * stageName [String] <p>[Required] The name of the <a>Stage</a> resource to delete.</p>
 -- Required key: restApiId
 -- Required key: stageName
 -- @return DeleteStageRequest structure as a key-value pair table
@@ -1534,11 +1636,11 @@ end
 -- <p>Request a new export of a <a>RestApi</a> for a particular <a>Stage</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * exportType [String] <p>The type of export. Currently only 'swagger' is supported.</p>
--- * accepts [String] <p>The content-type of the export, for example <code>application/json</code>. Currently <code>application/json</code> and <code>application/yaml</code> are supported for <code>exportType</code> of <code>swagger</code>. This should be specified in the <code>Accept</code> header for direct API requests.</p>
--- * restApiId [String] <p>The identifier of the <a>RestApi</a> to be exported.</p>
--- * parameters [MapOfStringToString] <p>A key-value map of query string parameters that specify properties of the export, depending on the requested <code>exportType</code>. For <code>exportType</code> <code>swagger</code>, any combination of the following parameters are supported: <code>integrations</code> will export the API with x-amazon-apigateway-integration extensions. <code>authorizers</code> will export the API with x-amazon-apigateway-authorizer extensions. <code>postman</code> will export the API with Postman extensions, allowing for import to the Postman tool</p>
--- * stageName [String] <p>The name of the <a>Stage</a> that will be exported.</p>
+-- * exportType [String] <p>[Required] The type of export. Acceptable values are 'oas30' for OpenAPI 3.0.x and 'swagger' for Swagger/OpenAPI 2.0.</p>
+-- * accepts [String] <p>The content-type of the export, for example <code>application/json</code>. Currently <code>application/json</code> and <code>application/yaml</code> are supported for <code>exportType</code> of<code>oas30</code> and <code>swagger</code>. This should be specified in the <code>Accept</code> header for direct API requests.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * parameters [MapOfStringToString] <p>A key-value map of query string parameters that specify properties of the export, depending on the requested <code>exportType</code>. For <code>exportType</code> <code>oas30</code> and <code>swagger</code>, any combination of the following parameters are supported: <code>extensions='integrations'</code> or <code>extensions='apigateway'</code> will export the API with x-amazon-apigateway-integration extensions. <code>extensions='authorizers'</code> will export the API with x-amazon-apigateway-authorizer extensions. <code>postman</code> will export the API with Postman extensions, allowing for import to the Postman tool</p>
+-- * stageName [String] <p>[Required] The name of the <a>Stage</a> that will be exported.</p>
 -- Required key: restApiId
 -- Required key: stageName
 -- Required key: exportType
@@ -1572,6 +1674,46 @@ function M.GetExportRequest(args)
     }
 end
 
+keys.VpcLinks = { ["position"] = true, ["items"] = true, nil }
+
+function asserts.AssertVpcLinks(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected VpcLinks to be of type 'table'")
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["items"] then asserts.AssertListOfVpcLink(struct["items"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.VpcLinks[k], "VpcLinks contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type VpcLinks
+-- <p>The collection of VPC links under the caller's account in a region.</p> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-with-private-integration.html">Getting Started with Private Integrations</a>, <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-private-integration.html">Set up Private Integrations</a> </div>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * position [String] 
+-- * items [ListOfVpcLink] <p>The current page of elements from this collection.</p>
+-- @return VpcLinks structure as a key-value pair table
+function M.VpcLinks(args)
+	assert(args, "You must provide an argument table when creating VpcLinks")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["position"] = args["position"],
+		["items"] = args["items"],
+	}
+	asserts.AssertVpcLinks(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetDomainNamesRequest = { ["position"] = true, ["limit"] = true, nil }
 
 function asserts.AssertGetDomainNamesRequest(struct)
@@ -1589,7 +1731,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] <p>The current pagination position in the paged result set.</p>
--- * limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
+-- * limit [NullableInteger] <p>The maximum number of returned results per page. The default value is 25 and the maximum value is 500.</p>
 -- @return GetDomainNamesRequest structure as a key-value pair table
 function M.GetDomainNamesRequest(args)
 	assert(args, "You must provide an argument table when creating GetDomainNamesRequest")
@@ -1614,7 +1756,7 @@ function M.GetDomainNamesRequest(args)
     }
 end
 
-keys.CreateStageRequest = { ["restApiId"] = true, ["description"] = true, ["stageName"] = true, ["cacheClusterSize"] = true, ["variables"] = true, ["cacheClusterEnabled"] = true, ["documentationVersion"] = true, ["deploymentId"] = true, nil }
+keys.CreateStageRequest = { ["tracingEnabled"] = true, ["restApiId"] = true, ["description"] = true, ["stageName"] = true, ["cacheClusterSize"] = true, ["variables"] = true, ["tags"] = true, ["cacheClusterEnabled"] = true, ["documentationVersion"] = true, ["deploymentId"] = true, ["canarySettings"] = true, nil }
 
 function asserts.AssertCreateStageRequest(struct)
 	assert(struct)
@@ -1622,31 +1764,37 @@ function asserts.AssertCreateStageRequest(struct)
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["stageName"], "Expected key stageName to exist in table")
 	assert(struct["deploymentId"], "Expected key deploymentId to exist in table")
+	if struct["tracingEnabled"] then asserts.AssertBoolean(struct["tracingEnabled"]) end
 	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	if struct["description"] then asserts.AssertString(struct["description"]) end
 	if struct["stageName"] then asserts.AssertString(struct["stageName"]) end
 	if struct["cacheClusterSize"] then asserts.AssertCacheClusterSize(struct["cacheClusterSize"]) end
 	if struct["variables"] then asserts.AssertMapOfStringToString(struct["variables"]) end
+	if struct["tags"] then asserts.AssertMapOfStringToString(struct["tags"]) end
 	if struct["cacheClusterEnabled"] then asserts.AssertBoolean(struct["cacheClusterEnabled"]) end
 	if struct["documentationVersion"] then asserts.AssertString(struct["documentationVersion"]) end
 	if struct["deploymentId"] then asserts.AssertString(struct["deploymentId"]) end
+	if struct["canarySettings"] then asserts.AssertCanarySettings(struct["canarySettings"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateStageRequest[k], "CreateStageRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateStageRequest
--- <p>Requests Amazon API Gateway to create a <a>Stage</a> resource.</p>
+-- <p>Requests API Gateway to create a <a>Stage</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to create.</p>
+-- * tracingEnabled [Boolean] <p>Specifies whether active tracing with X-ray is enabled for the <a>Stage</a>.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * description [String] <p>The description of the <a>Stage</a> resource.</p>
--- * stageName [String] <p>The name for the <a>Stage</a> resource.</p>
+-- * stageName [String] <p>[Required] The name for the <a>Stage</a> resource.</p>
 -- * cacheClusterSize [CacheClusterSize] <p>The stage's cache cluster size.</p>
 -- * variables [MapOfStringToString] <p>A map that defines the stage variables for the new <a>Stage</a> resource. Variable names can have alphanumeric and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
+-- * tags [MapOfStringToString] <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with <code>aws:</code>. The tag value can be up to 256 characters.</p>
 -- * cacheClusterEnabled [Boolean] <p>Whether cache clustering is enabled for the stage.</p>
 -- * documentationVersion [String] <p>The version of the associated API documentation.</p>
--- * deploymentId [String] <p>The identifier of the <a>Deployment</a> resource for the <a>Stage</a> resource.</p>
+-- * deploymentId [String] <p>[Required] The identifier of the <a>Deployment</a> resource for the <a>Stage</a> resource.</p>
+-- * canarySettings [CanarySettings] <p>The canary deployment settings of this stage.</p>
 -- Required key: restApiId
 -- Required key: stageName
 -- Required key: deploymentId
@@ -1661,14 +1809,17 @@ function M.CreateStageRequest(args)
     local header_args = { 
     }
 	local all_args = { 
+		["tracingEnabled"] = args["tracingEnabled"],
 		["restApiId"] = args["restApiId"],
 		["description"] = args["description"],
 		["stageName"] = args["stageName"],
 		["cacheClusterSize"] = args["cacheClusterSize"],
 		["variables"] = args["variables"],
+		["tags"] = args["tags"],
 		["cacheClusterEnabled"] = args["cacheClusterEnabled"],
 		["documentationVersion"] = args["documentationVersion"],
 		["deploymentId"] = args["deploymentId"],
+		["canarySettings"] = args["canarySettings"],
 	}
 	asserts.AssertCreateStageRequest(all_args)
 	return {
@@ -1741,10 +1892,10 @@ end
 -- <p>Request to describe a <a>MethodResponse</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * resourceId [String] <p>The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.</p>
--- * statusCode [StatusCode] <p>The status code for the <a>MethodResponse</a> resource.</p>
--- * restApiId [String] <p>The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.</p>
--- * httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
+-- * resourceId [String] <p>[Required] The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.</p>
+-- * statusCode [StatusCode] <p>[Required] The status code for the <a>MethodResponse</a> resource.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * httpMethod [String] <p>[Required] The HTTP verb of the <a>Method</a> resource.</p>
 -- Required key: restApiId
 -- Required key: resourceId
 -- Required key: httpMethod
@@ -1794,7 +1945,7 @@ end
 -- <p>A request to change information about an <a>ClientCertificate</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * clientCertificateId [String] <p>The identifier of the <a>ClientCertificate</a> resource to be updated.</p>
+-- * clientCertificateId [String] <p>[Required] The identifier of the <a>ClientCertificate</a> resource to be updated.</p>
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required key: clientCertificateId
 -- @return UpdateClientCertificateRequest structure as a key-value pair table
@@ -1836,7 +1987,7 @@ end
 -- <p>A request to delete the <a>DomainName</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * domainName [String] <p>The name of the <a>DomainName</a> resource to be deleted.</p>
+-- * domainName [String] <p>[Required] The name of the <a>DomainName</a> resource to be deleted.</p>
 -- Required key: domainName
 -- @return DeleteDomainNameRequest structure as a key-value pair table
 function M.DeleteDomainNameRequest(args)
@@ -1878,8 +2029,8 @@ end
 -- <p>Request to delete an existing model in an existing <a>RestApi</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * modelName [String] <p>The name of the model to delete.</p>
--- * restApiId [String] <p>The <a>RestApi</a> under which the model will be deleted.</p>
+-- * modelName [String] <p>[Required] The name of the model to delete.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- Required key: restApiId
 -- Required key: modelName
 -- @return DeleteModelRequest structure as a key-value pair table
@@ -1927,18 +2078,18 @@ function asserts.AssertAuthorizer(struct)
 end
 
 --- Create a structure of type Authorizer
--- <p>Represents an authorization layer for methods. If enabled on a method, API Gateway will activate the authorizer when a client calls the method.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable custom authorization</a> </div>
+-- <p>Represents an authorization layer for methods. If enabled on a method, API Gateway will activate the authorizer when a client calls the method.</p> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable custom authorization</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * authType [String] <p>Optional customer-defined field, used in Swagger imports/exports. Has no functional impact.</p>
+-- * authType [String] <p>Optional customer-defined field, used in OpenAPI imports and exports without functional impact.</p>
 -- * name [String] <p>[Required] The name of the authorizer.</p>
--- * providerARNs [ListOfARNs] <p>A list of the provider ARNs of the authorizer. For an <code>TOKEN</code> authorizer, this is not defined. For authorizers of the <code>COGNITO_USER_POOLS</code> type, each element corresponds to a user pool ARN of this format: <code>arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}</code>. </p>
--- * authorizerUri [String] <p>[Required] Specifies the authorizer's Uniform Resource Identifier (URI). For <code>TOKEN</code> authorizers, this must be a well-formed Lambda function URI, for example, <code>arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations</code>. In general, the URI has this form <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>, where <code>{region}</code> is the same as the region hosting the Lambda function, <code>path</code> indicates that the remaining substring in the URI should be treated as the path to the resource, including the initial <code>/</code>. For Lambda functions, this is usually of the form /2015-03-31/functions/[FunctionARN]/invocations.</p>
--- * identityValidationExpression [String] <p>A validation expression for the incoming identity. For <code>TOKEN</code> authorizers, this value should be a regular expression. The incoming token from the client is matched against this expression, and will proceed if the token matches. If the token doesn't match, the client receives a 401 Unauthorized response.</p>
--- * authorizerResultTtlInSeconds [NullableInteger] <p>The TTL in seconds of cached authorizer results. If greater than 0, API Gateway will cache authorizer responses. If this field is not set, the default value is 300. The maximum value is 3600, or 1 hour.</p>
--- * authorizerCredentials [String] <p>Specifies the credentials required for the authorizer, if any. Two options are available. To specify an IAM role for Amazon API Gateway to assume, use the role's Amazon Resource Name (ARN). To use resource-based permissions on the Lambda function, specify null.</p>
--- * identitySource [String] <p>[Required] The source of the identity in an incoming request. For a <code>TOKEN</code> authorizer, this value is a mapping expression with the same syntax as integration parameter mappings. The only valid source for tokens is 'header', so the expression should match 'method.request.header.[headerName]'. The value of the header '[headerName]' will be interpreted as the incoming token. For <code>COGNITO_USER_POOLS</code> authorizers, this property is used.</p>
--- * type [AuthorizerType] <p>[Required] The type of the authorizer. Currently, the valid type is <code>TOKEN</code> for a Lambda function or <code>COGNITO_USER_POOLS</code> for an Amazon Cognito user pool.</p>
+-- * providerARNs [ListOfARNs] <p>A list of the Amazon Cognito user pool ARNs for the <code>COGNITO_USER_POOLS</code> authorizer. Each element is of this format: <code>arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}</code>. For a <code>TOKEN</code> or <code>REQUEST</code> authorizer, this is not defined. </p>
+-- * authorizerUri [String] <p>Specifies the authorizer's Uniform Resource Identifier (URI). For <code>TOKEN</code> or <code>REQUEST</code> authorizers, this must be a well-formed Lambda function URI, for example, <code>arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations</code>. In general, the URI has this form <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>, where <code>{region}</code> is the same as the region hosting the Lambda function, <code>path</code> indicates that the remaining substring in the URI should be treated as the path to the resource, including the initial <code>/</code>. For Lambda functions, this is usually of the form <code>/2015-03-31/functions/[FunctionARN]/invocations</code>.</p>
+-- * identityValidationExpression [String] <p>A validation expression for the incoming identity token. For <code>TOKEN</code> authorizers, this value is a regular expression. API Gateway will match the <code>aud</code> field of the incoming token from the client against the specified regular expression. It will invoke the authorizer's Lambda function when there is a match. Otherwise, it will return a 401 Unauthorized response without calling the Lambda function. The validation expression does not apply to the <code>REQUEST</code> authorizer.</p>
+-- * authorizerResultTtlInSeconds [NullableInteger] <p>The TTL in seconds of cached authorizer results. If it equals 0, authorization caching is disabled. If it is greater than 0, API Gateway will cache authorizer responses. If this field is not set, the default value is 300. The maximum value is 3600, or 1 hour.</p>
+-- * authorizerCredentials [String] <p>Specifies the required credentials as an IAM role for API Gateway to invoke the authorizer. To specify an IAM role for API Gateway to assume, use the role's Amazon Resource Name (ARN). To use resource-based permissions on the Lambda function, specify null.</p>
+-- * identitySource [String] <p>The identity source for which authorization is requested. <ul><li>For a <code>TOKEN</code> or <code>COGNITO_USER_POOLS</code> authorizer, this is required and specifies the request header mapping expression for the custom header holding the authorization token submitted by the client. For example, if the token header name is <code>Auth</code>, the header mapping expression is <code>method.request.header.Auth</code>.</li><li>For the <code>REQUEST</code> authorizer, this is required when authorization caching is enabled. The value is a comma-separated string of one or more mapping expressions of the specified request parameters. For example, if an <code>Auth</code> header, a <code>Name</code> query string parameter are defined as identity sources, this value is <code>method.request.header.Auth, method.request.querystring.Name</code>. These parameters will be used to derive the authorization caching key and to perform runtime validation of the <code>REQUEST</code> authorizer by verifying all of the identity-related request parameters are present, not null and non-empty. Only when this is true does the authorizer invoke the authorizer Lambda function, otherwise, it returns a 401 Unauthorized response without calling the Lambda function. The valid value is a string of comma-separated mapping expressions of the specified request parameters. When the authorization caching is not enabled, this property is optional.</li></ul></p>
+-- * type [AuthorizerType] <p>The authorizer type. Valid values are <code>TOKEN</code> for a Lambda function using a single authorization token submitted in a custom header, <code>REQUEST</code> for a Lambda function using incoming request parameters, and <code>COGNITO_USER_POOLS</code> for using an Amazon Cognito user pool.</p>
 -- * id [String] <p>The identifier for the authorizer resource.</p>
 -- @return Authorizer structure as a key-value pair table
 function M.Authorizer(args)
@@ -1987,12 +2138,12 @@ function asserts.AssertImportDocumentationPartsRequest(struct)
 end
 
 --- Create a structure of type ImportDocumentationPartsRequest
--- <p>Import documentation parts from an external (e.g., Swagger) definition file. </p>
+-- <p>Import documentation parts from an external (e.g., OpenAPI) definition file. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * body [Blob] <p>[Required] Raw byte array representing the to-be-imported documentation parts. To import from a Swagger file, this is a JSON object.</p>
+-- * body [Blob] <p>[Required] Raw byte array representing the to-be-imported documentation parts. To import from an OpenAPI file, this is a JSON object.</p>
 -- * failOnWarnings [Boolean] <p>A query parameter to specify whether to rollback the documentation importation (<code>true</code>) or not (<code>false</code>) when a warning is encountered. The default value is <code>false</code>.</p>
--- * restApiId [String] <p>[Required] The identifier of an API of the to-be-imported documentation parts.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * mode [PutMode] <p>A query parameter to indicate whether to overwrite (<code>OVERWRITE</code>) any existing <a>DocumentationParts</a> definition or to merge (<code>MERGE</code>) the new definition into the existing one. The default value is <code>MERGE</code>.</p>
 -- Required key: restApiId
 -- Required key: body
@@ -2023,30 +2174,42 @@ function M.ImportDocumentationPartsRequest(args)
     }
 end
 
-keys.DomainName = { ["certificateArn"] = true, ["distributionDomainName"] = true, ["certificateUploadDate"] = true, ["certificateName"] = true, ["domainName"] = true, nil }
+keys.DomainName = { ["certificateArn"] = true, ["distributionDomainName"] = true, ["regionalCertificateName"] = true, ["certificateName"] = true, ["domainName"] = true, ["endpointConfiguration"] = true, ["regionalCertificateArn"] = true, ["regionalDomainName"] = true, ["regionalHostedZoneId"] = true, ["distributionHostedZoneId"] = true, ["certificateUploadDate"] = true, nil }
 
 function asserts.AssertDomainName(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DomainName to be of type 'table'")
 	if struct["certificateArn"] then asserts.AssertString(struct["certificateArn"]) end
 	if struct["distributionDomainName"] then asserts.AssertString(struct["distributionDomainName"]) end
-	if struct["certificateUploadDate"] then asserts.AssertTimestamp(struct["certificateUploadDate"]) end
+	if struct["regionalCertificateName"] then asserts.AssertString(struct["regionalCertificateName"]) end
 	if struct["certificateName"] then asserts.AssertString(struct["certificateName"]) end
 	if struct["domainName"] then asserts.AssertString(struct["domainName"]) end
+	if struct["endpointConfiguration"] then asserts.AssertEndpointConfiguration(struct["endpointConfiguration"]) end
+	if struct["regionalCertificateArn"] then asserts.AssertString(struct["regionalCertificateArn"]) end
+	if struct["regionalDomainName"] then asserts.AssertString(struct["regionalDomainName"]) end
+	if struct["regionalHostedZoneId"] then asserts.AssertString(struct["regionalHostedZoneId"]) end
+	if struct["distributionHostedZoneId"] then asserts.AssertString(struct["distributionHostedZoneId"]) end
+	if struct["certificateUploadDate"] then asserts.AssertTimestamp(struct["certificateUploadDate"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.DomainName[k], "DomainName contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DomainName
--- <p>Represents a domain name that is contained in a simpler, more intuitive URL that can be called.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Client-Side Certificate</a> </div>
+-- <p>Represents a custom domain name as a user-friendly host name of an API (<a>RestApi</a>).</p> <div class="Remarks"> <p>When you deploy an API, API Gateway creates a default host name for the API. This default API host name is of the <code>{restapi-id}.execute-api.{region}.amazonaws.com</code> format. With the default host name, you can access the API's root resource with the URL of <code>https://{restapi-id}.execute-api.{region}.amazonaws.com/{stage}/</code>. When you set up a custom domain name of <code>apis.example.com</code> for this API, you can then access the same resource using the URL of the <code>https://apis.examples.com/myApi</code>, where <code>myApi</code> is the base path mapping (<a>BasePathMapping</a>) of your API under the custom domain name. </p> </div> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Set a Custom Host Name for an API</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * certificateArn [String] <p>The reference to an AWS-managed certificate. AWS Certificate Manager is the only supported source.</p>
--- * distributionDomainName [String] <p>The domain name of the Amazon CloudFront distribution. For more information, see the <a href="http://aws.amazon.com/documentation/cloudfront/" target="_blank">Amazon CloudFront documentation</a>.</p>
--- * certificateUploadDate [Timestamp] <p>The timestamp when the certificate was uploaded.</p>
--- * certificateName [String] <p>The name of the certificate.</p>
--- * domainName [String] <p>The name of the <a>DomainName</a> resource.</p>
+-- * certificateArn [String] <p>The reference to an AWS-managed certificate that will be used by edge-optimized endpoint for this domain name. AWS Certificate Manager is the only supported source.</p>
+-- * distributionDomainName [String] <p>The domain name of the Amazon CloudFront distribution associated with this custom domain name for an edge-optimized endpoint. You set up this association when adding a DNS record pointing the custom domain name to this distribution name. For more information about CloudFront distributions, see the <a href="https://aws.amazon.com/documentation/cloudfront/" target="_blank">Amazon CloudFront documentation</a>.</p>
+-- * regionalCertificateName [String] <p>The name of the certificate that will be used for validating the regional domain name.</p>
+-- * certificateName [String] <p>The name of the certificate that will be used by edge-optimized endpoint for this domain name.</p>
+-- * domainName [String] <p>The custom domain name as an API host name, for example, <code>my-api.example.com</code>.</p>
+-- * endpointConfiguration [EndpointConfiguration] <p>The endpoint configuration of this <a>DomainName</a> showing the endpoint types of the domain name. </p>
+-- * regionalCertificateArn [String] <p>The reference to an AWS-managed certificate that will be used for validating the regional domain name. AWS Certificate Manager is the only supported source.</p>
+-- * regionalDomainName [String] <p>The domain name associated with the regional endpoint for this custom domain name. You set up this association by adding a DNS record that points the custom domain name to this regional domain name. The regional domain name is returned by API Gateway when you create a regional endpoint.</p>
+-- * regionalHostedZoneId [String] <p>The region-specific Amazon Route 53 Hosted Zone ID of the regional endpoint. For more information, see <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-regional-api-custom-domain-create.html">Set up a Regional Custom Domain Name</a> and <a href="https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region">AWS Regions and Endpoints for API Gateway</a>. </p>
+-- * distributionHostedZoneId [String] <p>The region-agnostic Amazon Route 53 Hosted Zone ID of the edge-optimized endpoint. The valid value is <code>Z2FDTNDATAQYW2</code> for all the regions. For more information, see <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-regional-api-custom-domain-create.html">Set up a Regional Custom Domain Name</a> and <a href="https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region">AWS Regions and Endpoints for API Gateway</a>. </p>
+-- * certificateUploadDate [Timestamp] <p>The timestamp when the certificate that was used by edge-optimized endpoint for this domain name was uploaded.</p>
 -- @return DomainName structure as a key-value pair table
 function M.DomainName(args)
 	assert(args, "You must provide an argument table when creating DomainName")
@@ -2059,9 +2222,15 @@ function M.DomainName(args)
 	local all_args = { 
 		["certificateArn"] = args["certificateArn"],
 		["distributionDomainName"] = args["distributionDomainName"],
-		["certificateUploadDate"] = args["certificateUploadDate"],
+		["regionalCertificateName"] = args["regionalCertificateName"],
 		["certificateName"] = args["certificateName"],
 		["domainName"] = args["domainName"],
+		["endpointConfiguration"] = args["endpointConfiguration"],
+		["regionalCertificateArn"] = args["regionalCertificateArn"],
+		["regionalDomainName"] = args["regionalDomainName"],
+		["regionalHostedZoneId"] = args["regionalHostedZoneId"],
+		["distributionHostedZoneId"] = args["distributionHostedZoneId"],
+		["certificateUploadDate"] = args["certificateUploadDate"],
 	}
 	asserts.AssertDomainName(all_args)
 	return {
@@ -2072,35 +2241,39 @@ function M.DomainName(args)
     }
 end
 
-keys.CreateDeploymentRequest = { ["stageDescription"] = true, ["restApiId"] = true, ["description"] = true, ["stageName"] = true, ["cacheClusterSize"] = true, ["variables"] = true, ["cacheClusterEnabled"] = true, nil }
+keys.CreateDeploymentRequest = { ["stageDescription"] = true, ["tracingEnabled"] = true, ["restApiId"] = true, ["description"] = true, ["stageName"] = true, ["cacheClusterSize"] = true, ["variables"] = true, ["cacheClusterEnabled"] = true, ["canarySettings"] = true, nil }
 
 function asserts.AssertCreateDeploymentRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateDeploymentRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	if struct["stageDescription"] then asserts.AssertString(struct["stageDescription"]) end
+	if struct["tracingEnabled"] then asserts.AssertNullableBoolean(struct["tracingEnabled"]) end
 	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	if struct["description"] then asserts.AssertString(struct["description"]) end
 	if struct["stageName"] then asserts.AssertString(struct["stageName"]) end
 	if struct["cacheClusterSize"] then asserts.AssertCacheClusterSize(struct["cacheClusterSize"]) end
 	if struct["variables"] then asserts.AssertMapOfStringToString(struct["variables"]) end
 	if struct["cacheClusterEnabled"] then asserts.AssertNullableBoolean(struct["cacheClusterEnabled"]) end
+	if struct["canarySettings"] then asserts.AssertDeploymentCanarySettings(struct["canarySettings"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateDeploymentRequest[k], "CreateDeploymentRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateDeploymentRequest
--- <p>Requests Amazon API Gateway to create a <a>Deployment</a> resource.</p>
+-- <p>Requests API Gateway to create a <a>Deployment</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * stageDescription [String] <p>The description of the <a>Stage</a> resource for the <a>Deployment</a> resource to create.</p>
--- * restApiId [String] <p>The <a>RestApi</a> resource identifier for the <a>Deployment</a> resource to create.</p>
+-- * tracingEnabled [NullableBoolean] <p>Specifies whether active tracing with X-ray is enabled for the <a>Stage</a>.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * description [String] <p>The description for the <a>Deployment</a> resource to create.</p>
 -- * stageName [String] <p>The name of the <a>Stage</a> resource for the <a>Deployment</a> resource to create.</p>
 -- * cacheClusterSize [CacheClusterSize] <p>Specifies the cache cluster size for the <a>Stage</a> resource specified in the input, if a cache cluster is enabled.</p>
 -- * variables [MapOfStringToString] <p>A map that defines the stage variables for the <a>Stage</a> resource that is associated with the new deployment. Variable names can have alphanumeric and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
 -- * cacheClusterEnabled [NullableBoolean] <p>Enables a cache cluster for the <a>Stage</a> resource specified in the input.</p>
+-- * canarySettings [DeploymentCanarySettings] <p>The input configuration for the canary deployment when the deployment is a canary release deployment. </p>
 -- Required key: restApiId
 -- @return CreateDeploymentRequest structure as a key-value pair table
 function M.CreateDeploymentRequest(args)
@@ -2114,12 +2287,14 @@ function M.CreateDeploymentRequest(args)
     }
 	local all_args = { 
 		["stageDescription"] = args["stageDescription"],
+		["tracingEnabled"] = args["tracingEnabled"],
 		["restApiId"] = args["restApiId"],
 		["description"] = args["description"],
 		["stageName"] = args["stageName"],
 		["cacheClusterSize"] = args["cacheClusterSize"],
 		["variables"] = args["variables"],
 		["cacheClusterEnabled"] = args["cacheClusterEnabled"],
+		["canarySettings"] = args["canarySettings"],
 	}
 	asserts.AssertCreateDeploymentRequest(all_args)
 	return {
@@ -2148,8 +2323,8 @@ end
 -- <p>A request to delete the <a>BasePathMapping</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * basePath [String] <p>The base path name of the <a>BasePathMapping</a> resource to delete.</p>
--- * domainName [String] <p>The domain name of the <a>BasePathMapping</a> resource to delete.</p>
+-- * basePath [String] <p>[Required] The base path name of the <a>BasePathMapping</a> resource to delete.</p>
+-- * domainName [String] <p>[Required] The domain name of the <a>BasePathMapping</a> resource to delete.</p>
 -- Required key: domainName
 -- Required key: basePath
 -- @return DeleteBasePathMappingRequest structure as a key-value pair table
@@ -2192,7 +2367,7 @@ function asserts.AssertUsage(struct)
 end
 
 --- Create a structure of type Usage
--- <p>Represents the usage data of a usage plan.</p> <div class="remarks"/> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-usage-plans-with-console.html#api-gateway-usage-plan-manage-usage">Manage Usage in a Usage Plan</a> </div>
+-- <p>Represents the usage data of a usage plan.</p> <div class="remarks"/> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a>, <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-usage-plans-with-console.html#api-gateway-usage-plan-manage-usage">Manage Usage in a Usage Plan</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * startDate [String] <p>The starting date of the usage data.</p>
@@ -2311,6 +2486,49 @@ function M.MethodSnapshot(args)
     }
 end
 
+keys.DeploymentCanarySettings = { ["percentTraffic"] = true, ["useStageCache"] = true, ["stageVariableOverrides"] = true, nil }
+
+function asserts.AssertDeploymentCanarySettings(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeploymentCanarySettings to be of type 'table'")
+	if struct["percentTraffic"] then asserts.AssertDouble(struct["percentTraffic"]) end
+	if struct["useStageCache"] then asserts.AssertBoolean(struct["useStageCache"]) end
+	if struct["stageVariableOverrides"] then asserts.AssertMapOfStringToString(struct["stageVariableOverrides"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeploymentCanarySettings[k], "DeploymentCanarySettings contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeploymentCanarySettings
+-- <p>The input configuration for a canary deployment.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * percentTraffic [Double] <p>The percentage (0.0-100.0) of traffic routed to the canary deployment.</p>
+-- * useStageCache [Boolean] <p>A Boolean flag to indicate whether the canary release deployment uses the stage cache or not.</p>
+-- * stageVariableOverrides [MapOfStringToString] <p>A stage variable overrides used for the canary release deployment. They can override existing stage variables or add new stage variables for the canary release deployment. These stage variables are represented as a string-to-string map between stage variable names and their values.</p>
+-- @return DeploymentCanarySettings structure as a key-value pair table
+function M.DeploymentCanarySettings(args)
+	assert(args, "You must provide an argument table when creating DeploymentCanarySettings")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["percentTraffic"] = args["percentTraffic"],
+		["useStageCache"] = args["useStageCache"],
+		["stageVariableOverrides"] = args["stageVariableOverrides"],
+	}
+	asserts.AssertDeploymentCanarySettings(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.Resource = { ["path"] = true, ["resourceMethods"] = true, ["id"] = true, ["pathPart"] = true, ["parentId"] = true, nil }
 
 function asserts.AssertResource(struct)
@@ -2327,11 +2545,11 @@ function asserts.AssertResource(struct)
 end
 
 --- Create a structure of type Resource
--- <p>Represents an API resource.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
+-- <p>Represents an API resource.</p> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * path [String] <p>The full path for this resource.</p>
--- * resourceMethods [MapOfMethod] <p>Gets an API resource's method of a given HTTP verb.</p> <div class="remarks"> <p>The resource methods are a map of methods indexed by methods' HTTP verbs enabled on the resource. This method map is included in the <code>200 OK</code> response of the <code>GET /restapis/{restapi_id}/resources/{resource_id}</code> or <code>GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods</code> request.</p> <h4>Example: Get the GET method of an API resource</h4> <h5>Request</h5> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20170223T031827Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <pre><code>{ "_links": { "curies": [ { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-{rel}.html", "name": "method", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true } ], "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET", "name": "GET", "title": "GET" }, "integration:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "method:integration": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "method:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "methodresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/{status_code}", "templated": true } }, "apiKeyRequired": false, "authorizationType": "NONE", "httpMethod": "GET", "_embedded": { "method:integration": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "3kzxbg5sa2", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestParameters": { "integration.request.header.Content-Type": "'application/x-amz-json-1.1'" }, "requestTemplates": { "application/json": "{\n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" } } }, "method:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" } } }</code></pre> <p>If the <code>OPTIONS</code> is enabled on the resource, you can follow the example here to get that method. Just replace the <code>GET</code> of the last path segment in the request URL with <code>OPTIONS</code>.</p> </div> <div class="seeAlso"> </div>
+-- * resourceMethods [MapOfMethod] <p>Gets an API resource's method of a given HTTP verb.</p> <div class="remarks"> <p>The resource methods are a map of methods indexed by methods' HTTP verbs enabled on the resource. This method map is included in the <code>200 OK</code> response of the <code>GET /restapis/{restapi_id}/resources/{resource_id}</code> or <code>GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods</code> request.</p> <h4>Example: Get the GET method of an API resource</h4> <h5>Request</h5> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20170223T031827Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <pre><code>{ "_links": { "curies": [ { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-{rel}.html", "name": "method", "templated": true }, { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true } ], "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET", "name": "GET", "title": "GET" }, "integration:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "method:integration": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "method:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "methodresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/{status_code}", "templated": true } }, "apiKeyRequired": false, "authorizationType": "NONE", "httpMethod": "GET", "_embedded": { "method:integration": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "3kzxbg5sa2", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestParameters": { "integration.request.header.Content-Type": "'application/x-amz-json-1.1'" }, "requestTemplates": { "application/json": "{\n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" } } }, "method:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" } } }</code></pre> <p>If the <code>OPTIONS</code> is enabled on the resource, you can follow the example here to get that method. Just replace the <code>GET</code> of the last path segment in the request URL with <code>OPTIONS</code>.</p> </div> <div class="seeAlso"> </div>
 -- * id [String] <p>The resource's identifier.</p>
 -- * pathPart [String] <p>The last path segment for this resource.</p>
 -- * parentId [String] <p>The parent resource's identifier.</p>
@@ -2378,8 +2596,8 @@ end
 -- <p>The DELETE request to delete a usage plan key and remove the underlying API key from the associated usage plan.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * keyId [String] <p>The Id of the <a>UsagePlanKey</a> resource to be deleted.</p>
--- * usagePlanId [String] <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-deleted <a>UsagePlanKey</a> resource representing a plan customer.</p>
+-- * keyId [String] <p>[Required] The Id of the <a>UsagePlanKey</a> resource to be deleted.</p>
+-- * usagePlanId [String] <p>[Required] The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-deleted <a>UsagePlanKey</a> resource representing a plan customer.</p>
 -- Required key: usagePlanId
 -- Required key: keyId
 -- @return DeleteUsagePlanKeyRequest structure as a key-value pair table
@@ -2419,11 +2637,11 @@ function asserts.AssertDomainNames(struct)
 end
 
 --- Create a structure of type DomainNames
--- <p>Represents a collection of <a>DomainName</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Client-Side Certificate</a> </div>
+-- <p>Represents a collection of <a>DomainName</a> resources.</p> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Client-Side Certificate</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] 
--- * items [ListOfDomainName] <p>The current page of any <a>DomainName</a> resources in the collection of <a>DomainName</a> resources.</p>
+-- * items [ListOfDomainName] <p>The current page of elements from this collection.</p>
 -- @return DomainNames structure as a key-value pair table
 function M.DomainNames(args)
 	assert(args, "You must provide an argument table when creating DomainNames")
@@ -2464,7 +2682,7 @@ end
 -- <p>Request to flush authorizer cache entries on a specified stage.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>The API identifier of the stage to flush.</p>
+-- * restApiId [String] <p>The string identifier of the associated <a>RestApi</a>.</p>
 -- * stageName [String] <p>The name of the stage to flush.</p>
 -- Required key: restApiId
 -- Required key: stageName
@@ -2508,7 +2726,7 @@ end
 -- <p>A request to delete the <a>ClientCertificate</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * clientCertificateId [String] <p>The identifier of the <a>ClientCertificate</a> resource to be deleted.</p>
+-- * clientCertificateId [String] <p>[Required] The identifier of the <a>ClientCertificate</a> resource to be deleted.</p>
 -- Required key: clientCertificateId
 -- @return DeleteClientCertificateRequest structure as a key-value pair table
 function M.DeleteClientCertificateRequest(args)
@@ -2546,7 +2764,7 @@ function asserts.AssertDocumentationVersion(struct)
 end
 
 --- Create a structure of type DocumentationVersion
--- <p>A snapshot of the documentation of an API.</p> <div class="remarks"><p>Publishing API documentation involves creating a documentation version associated with an API stage and exporting the versioned documentation to an external (e.g., Swagger) file.</p></div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a>, <a>DocumentationVersions</a> </div>
+-- <p>A snapshot of the documentation of an API.</p> <div class="remarks"><p>Publishing API documentation involves creating a documentation version associated with an API stage and exporting the versioned documentation to an external (e.g., OpenAPI) file.</p></div> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a>, <a>DocumentationVersions</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * version [String] <p>The version identifier of the API documentation snapshot.</p>
@@ -2594,8 +2812,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] <p>The current pagination position in the paged result set.</p>
--- * restApiId [String] <p>The <a>RestApi</a> identifier.</p>
--- * limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * limit [NullableInteger] <p>The maximum number of returned results per page. The default value is 25 and the maximum value is 500.</p>
 -- Required key: restApiId
 -- @return GetModelsRequest structure as a key-value pair table
 function M.GetModelsRequest(args)
@@ -2681,7 +2899,7 @@ function asserts.AssertUsagePlan(struct)
 end
 
 --- Create a structure of type UsagePlan
--- <p>Represents a usage plan than can specify who can assess associated API stages with specified request limits and quotas.</p> <div class="remarks"> <p>In a usage plan, you associate an API by specifying the API's Id and a stage name of the specified API. You add plan customers by adding API keys to the plan. </p> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
+-- <p>Represents a usage plan than can specify who can assess associated API stages with specified request limits and quotas.</p> <div class="remarks"> <p>In a usage plan, you associate an API by specifying the API's Id and a stage name of the specified API. You add plan customers by adding API keys to the plan. </p> </div> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * productCode [String] <p>The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.</p>
@@ -2718,16 +2936,67 @@ function M.UsagePlan(args)
     }
 end
 
-keys.CreateRestApiRequest = { ["binaryMediaTypes"] = true, ["version"] = true, ["name"] = true, ["cloneFrom"] = true, ["description"] = true, nil }
+keys.CreateVpcLinkRequest = { ["targetArns"] = true, ["name"] = true, ["description"] = true, nil }
+
+function asserts.AssertCreateVpcLinkRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateVpcLinkRequest to be of type 'table'")
+	assert(struct["name"], "Expected key name to exist in table")
+	assert(struct["targetArns"], "Expected key targetArns to exist in table")
+	if struct["targetArns"] then asserts.AssertListOfString(struct["targetArns"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateVpcLinkRequest[k], "CreateVpcLinkRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateVpcLinkRequest
+-- <p>Creates a VPC link, under the caller's account in a selected region, in an asynchronous operation that typically takes 2-4 minutes to complete and become operational. The caller must have permissions to create and update VPC Endpoint services.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * targetArns [ListOfString] <p>[Required] The ARNs of network load balancers of the VPC targeted by the VPC link. The network load balancers must be owned by the same AWS account of the API owner.</p>
+-- * name [String] <p>[Required] The name used to label and identify the VPC link.</p>
+-- * description [String] <p>The description of the VPC link.</p>
+-- Required key: name
+-- Required key: targetArns
+-- @return CreateVpcLinkRequest structure as a key-value pair table
+function M.CreateVpcLinkRequest(args)
+	assert(args, "You must provide an argument table when creating CreateVpcLinkRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["targetArns"] = args["targetArns"],
+		["name"] = args["name"],
+		["description"] = args["description"],
+	}
+	asserts.AssertCreateVpcLinkRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateRestApiRequest = { ["apiKeySource"] = true, ["name"] = true, ["cloneFrom"] = true, ["endpointConfiguration"] = true, ["minimumCompressionSize"] = true, ["policy"] = true, ["version"] = true, ["binaryMediaTypes"] = true, ["description"] = true, nil }
 
 function asserts.AssertCreateRestApiRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateRestApiRequest to be of type 'table'")
 	assert(struct["name"], "Expected key name to exist in table")
-	if struct["binaryMediaTypes"] then asserts.AssertListOfString(struct["binaryMediaTypes"]) end
-	if struct["version"] then asserts.AssertString(struct["version"]) end
+	if struct["apiKeySource"] then asserts.AssertApiKeySourceType(struct["apiKeySource"]) end
 	if struct["name"] then asserts.AssertString(struct["name"]) end
 	if struct["cloneFrom"] then asserts.AssertString(struct["cloneFrom"]) end
+	if struct["endpointConfiguration"] then asserts.AssertEndpointConfiguration(struct["endpointConfiguration"]) end
+	if struct["minimumCompressionSize"] then asserts.AssertNullableInteger(struct["minimumCompressionSize"]) end
+	if struct["policy"] then asserts.AssertString(struct["policy"]) end
+	if struct["version"] then asserts.AssertString(struct["version"]) end
+	if struct["binaryMediaTypes"] then asserts.AssertListOfString(struct["binaryMediaTypes"]) end
 	if struct["description"] then asserts.AssertString(struct["description"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateRestApiRequest[k], "CreateRestApiRequest contains unknown key " .. tostring(k))
@@ -2738,10 +3007,14 @@ end
 -- <p>The POST Request to add a new <a>RestApi</a> resource to your collection.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * binaryMediaTypes [ListOfString] <p>The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only UTF-8-encoded text payloads.</p>
--- * version [String] <p>A version identifier for the API.</p>
--- * name [String] <p>The name of the <a>RestApi</a>.</p>
+-- * apiKeySource [ApiKeySourceType] <p>The source of the API key for metering requests according to a usage plan. Valid values are: <ul><li><code>HEADER</code> to read the API key from the <code>X-API-Key</code> header of a request. </li><li><code>AUTHORIZER</code> to read the API key from the <code>UsageIdentifierKey</code> from a custom authorizer.</li></ul> </p>
+-- * name [String] <p>[Required] The name of the <a>RestApi</a>.</p>
 -- * cloneFrom [String] <p>The ID of the <a>RestApi</a> that you want to clone from.</p>
+-- * endpointConfiguration [EndpointConfiguration] <p>The endpoint configuration of this <a>RestApi</a> showing the endpoint types of the API. </p>
+-- * minimumCompressionSize [NullableInteger] <p>A nullable integer that is used to enable compression (with non-negative between 0 and 10485760 (10M) bytes, inclusive) or disable compression (with a null value) on an API. When compression is enabled, compression or decompression is not applied on the payload if the payload size is smaller than this value. Setting it to zero allows compression for any payload size.</p>
+-- * policy [String] A stringified JSON policy document that applies to this RestApi regardless of the caller and <a>Method</a> configuration.
+-- * version [String] <p>A version identifier for the API.</p>
+-- * binaryMediaTypes [ListOfString] <p>The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only UTF-8-encoded text payloads.</p>
 -- * description [String] <p>The description of the <a>RestApi</a>.</p>
 -- Required key: name
 -- @return CreateRestApiRequest structure as a key-value pair table
@@ -2754,10 +3027,14 @@ function M.CreateRestApiRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["binaryMediaTypes"] = args["binaryMediaTypes"],
-		["version"] = args["version"],
+		["apiKeySource"] = args["apiKeySource"],
 		["name"] = args["name"],
 		["cloneFrom"] = args["cloneFrom"],
+		["endpointConfiguration"] = args["endpointConfiguration"],
+		["minimumCompressionSize"] = args["minimumCompressionSize"],
+		["policy"] = args["policy"],
+		["version"] = args["version"],
+		["binaryMediaTypes"] = args["binaryMediaTypes"],
 		["description"] = args["description"],
 	}
 	asserts.AssertCreateRestApiRequest(all_args)
@@ -2769,22 +3046,26 @@ function M.CreateRestApiRequest(args)
     }
 end
 
-keys.Stage = { ["clientCertificateId"] = true, ["description"] = true, ["stageName"] = true, ["cacheClusterSize"] = true, ["variables"] = true, ["cacheClusterEnabled"] = true, ["documentationVersion"] = true, ["cacheClusterStatus"] = true, ["deploymentId"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["methodSettings"] = true, nil }
+keys.Stage = { ["clientCertificateId"] = true, ["tracingEnabled"] = true, ["description"] = true, ["stageName"] = true, ["cacheClusterSize"] = true, ["variables"] = true, ["tags"] = true, ["cacheClusterEnabled"] = true, ["documentationVersion"] = true, ["accessLogSettings"] = true, ["cacheClusterStatus"] = true, ["deploymentId"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["canarySettings"] = true, ["methodSettings"] = true, nil }
 
 function asserts.AssertStage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Stage to be of type 'table'")
 	if struct["clientCertificateId"] then asserts.AssertString(struct["clientCertificateId"]) end
+	if struct["tracingEnabled"] then asserts.AssertBoolean(struct["tracingEnabled"]) end
 	if struct["description"] then asserts.AssertString(struct["description"]) end
 	if struct["stageName"] then asserts.AssertString(struct["stageName"]) end
 	if struct["cacheClusterSize"] then asserts.AssertCacheClusterSize(struct["cacheClusterSize"]) end
 	if struct["variables"] then asserts.AssertMapOfStringToString(struct["variables"]) end
+	if struct["tags"] then asserts.AssertMapOfStringToString(struct["tags"]) end
 	if struct["cacheClusterEnabled"] then asserts.AssertBoolean(struct["cacheClusterEnabled"]) end
 	if struct["documentationVersion"] then asserts.AssertString(struct["documentationVersion"]) end
+	if struct["accessLogSettings"] then asserts.AssertAccessLogSettings(struct["accessLogSettings"]) end
 	if struct["cacheClusterStatus"] then asserts.AssertCacheClusterStatus(struct["cacheClusterStatus"]) end
 	if struct["deploymentId"] then asserts.AssertString(struct["deploymentId"]) end
 	if struct["lastUpdatedDate"] then asserts.AssertTimestamp(struct["lastUpdatedDate"]) end
 	if struct["createdDate"] then asserts.AssertTimestamp(struct["createdDate"]) end
+	if struct["canarySettings"] then asserts.AssertCanarySettings(struct["canarySettings"]) end
 	if struct["methodSettings"] then asserts.AssertMapOfMethodSettings(struct["methodSettings"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Stage[k], "Stage contains unknown key " .. tostring(k))
@@ -2792,20 +3073,24 @@ function asserts.AssertStage(struct)
 end
 
 --- Create a structure of type Stage
--- <p>Represents a unique identifier for a version of a deployed <a>RestApi</a> that is callable by users.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html">Deploy an API</a> </div>
+-- <p>Represents a unique identifier for a version of a deployed <a>RestApi</a> that is callable by users.</p> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html">Deploy an API</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * clientCertificateId [String] <p>The identifier of a client certificate for an API stage.</p>
+-- * tracingEnabled [Boolean] <p>Specifies whether active tracing with X-ray is enabled for the <a>Stage</a>.</p>
 -- * description [String] <p>The stage's description.</p>
--- * stageName [String] <p>The name of the stage is the first path segment in the Uniform Resource Identifier (URI) of a call to Amazon API Gateway.</p>
+-- * stageName [String] <p>The name of the stage is the first path segment in the Uniform Resource Identifier (URI) of a call to API Gateway.</p>
 -- * cacheClusterSize [CacheClusterSize] <p>The size of the cache cluster for the stage, if enabled.</p>
 -- * variables [MapOfStringToString] <p>A map that defines the stage variables for a <a>Stage</a> resource. Variable names can have alphanumeric and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
+-- * tags [MapOfStringToString] <p>The collection of tags. Each tag element is associated with a given resource.</p>
 -- * cacheClusterEnabled [Boolean] <p>Specifies whether a cache cluster is enabled for the stage.</p>
 -- * documentationVersion [String] <p>The version of the associated API documentation.</p>
+-- * accessLogSettings [AccessLogSettings] <p>Settings for logging access in this stage.</p>
 -- * cacheClusterStatus [CacheClusterStatus] <p>The status of the cache cluster for the stage, if enabled.</p>
 -- * deploymentId [String] <p>The identifier of the <a>Deployment</a> that the stage points to.</p>
 -- * lastUpdatedDate [Timestamp] <p>The timestamp when the stage last updated.</p>
 -- * createdDate [Timestamp] <p>The timestamp when the stage was created.</p>
+-- * canarySettings [CanarySettings] <p>Settings for the canary deployment in this stage.</p>
 -- * methodSettings [MapOfMethodSettings] <p>A map that defines the method settings for a <a>Stage</a> resource. Keys (designated as <code>/{method_setting_key</code> below) are method paths defined as <code>{resource_path}/{http_method}</code> for an individual method override, or <code>/\*/\*</code> for overriding all methods in the stage. </p>
 -- @return Stage structure as a key-value pair table
 function M.Stage(args)
@@ -2818,16 +3103,20 @@ function M.Stage(args)
     }
 	local all_args = { 
 		["clientCertificateId"] = args["clientCertificateId"],
+		["tracingEnabled"] = args["tracingEnabled"],
 		["description"] = args["description"],
 		["stageName"] = args["stageName"],
 		["cacheClusterSize"] = args["cacheClusterSize"],
 		["variables"] = args["variables"],
+		["tags"] = args["tags"],
 		["cacheClusterEnabled"] = args["cacheClusterEnabled"],
 		["documentationVersion"] = args["documentationVersion"],
+		["accessLogSettings"] = args["accessLogSettings"],
 		["cacheClusterStatus"] = args["cacheClusterStatus"],
 		["deploymentId"] = args["deploymentId"],
 		["lastUpdatedDate"] = args["lastUpdatedDate"],
 		["createdDate"] = args["createdDate"],
+		["canarySettings"] = args["canarySettings"],
 		["methodSettings"] = args["methodSettings"],
 	}
 	asserts.AssertStage(all_args)
@@ -2852,11 +3141,11 @@ function asserts.AssertDocumentationParts(struct)
 end
 
 --- Create a structure of type DocumentationParts
--- <p>The collection of documentation parts of an API.</p> <div class="remarks"/> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a> </div>
+-- <p>The collection of documentation parts of an API.</p> <div class="remarks"/> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] 
--- * items [ListOfDocumentationPart] <p>The current page of <a>DocumentationPart</a> resources in the <a>DocumentationParts</a> collection.</p>
+-- * items [ListOfDocumentationPart] <p>The current page of elements from this collection.</p>
 -- @return DocumentationParts structure as a key-value pair table
 function M.DocumentationParts(args)
 	assert(args, "You must provide an argument table when creating DocumentationParts")
@@ -2899,9 +3188,9 @@ end
 -- <p>Request to describe an existing <a>Method</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * resourceId [String] <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
--- * restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
--- * httpMethod [String] <p>Specifies the method request's HTTP method type.</p>
+-- * resourceId [String] <p>[Required] The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * httpMethod [String] <p>[Required] Specifies the method request's HTTP method type.</p>
 -- Required key: restApiId
 -- Required key: resourceId
 -- Required key: httpMethod
@@ -2948,7 +3237,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] 
--- * items [ListOfSdkType] <p>The set of <a>SdkType</a> items that comprise this view of the <a>SdkTypes</a> collection.</p>
+-- * items [ListOfSdkType] <p>The current page of elements from this collection.</p>
 -- @return SdkTypes structure as a key-value pair table
 function M.SdkTypes(args)
 	assert(args, "You must provide an argument table when creating SdkTypes")
@@ -2984,11 +3273,11 @@ function asserts.AssertDocumentationVersions(struct)
 end
 
 --- Create a structure of type DocumentationVersions
--- <p>The collection of documentation snapshots of an API. </p> <div class="remarks"><p>Use the <a>DocumentationVersions</a> to manage documentation snapshots associated with various API stages.</p></div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a>, <a>DocumentationVersion</a> </div>
+-- <p>The collection of documentation snapshots of an API. </p> <div class="remarks"><p>Use the <a>DocumentationVersions</a> to manage documentation snapshots associated with various API stages.</p></div> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a>, <a>DocumentationVersion</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] 
--- * items [ListOfDocumentationVersion] <p>The current page of <a>DocumentationVersion</a> items from the <a>DocumentationVersions</a> collection of an API.</p>
+-- * items [ListOfDocumentationVersion] <p>The current page of elements from this collection.</p>
 -- @return DocumentationVersions structure as a key-value pair table
 function M.DocumentationVersions(args)
 	assert(args, "You must provide an argument table when creating DocumentationVersions")
@@ -3011,13 +3300,17 @@ function M.DocumentationVersions(args)
     }
 end
 
-keys.RestApi = { ["description"] = true, ["warnings"] = true, ["version"] = true, ["createdDate"] = true, ["binaryMediaTypes"] = true, ["id"] = true, ["name"] = true, nil }
+keys.RestApi = { ["apiKeySource"] = true, ["description"] = true, ["warnings"] = true, ["endpointConfiguration"] = true, ["minimumCompressionSize"] = true, ["policy"] = true, ["version"] = true, ["createdDate"] = true, ["binaryMediaTypes"] = true, ["id"] = true, ["name"] = true, nil }
 
 function asserts.AssertRestApi(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RestApi to be of type 'table'")
+	if struct["apiKeySource"] then asserts.AssertApiKeySourceType(struct["apiKeySource"]) end
 	if struct["description"] then asserts.AssertString(struct["description"]) end
 	if struct["warnings"] then asserts.AssertListOfString(struct["warnings"]) end
+	if struct["endpointConfiguration"] then asserts.AssertEndpointConfiguration(struct["endpointConfiguration"]) end
+	if struct["minimumCompressionSize"] then asserts.AssertNullableInteger(struct["minimumCompressionSize"]) end
+	if struct["policy"] then asserts.AssertString(struct["policy"]) end
 	if struct["version"] then asserts.AssertString(struct["version"]) end
 	if struct["createdDate"] then asserts.AssertTimestamp(struct["createdDate"]) end
 	if struct["binaryMediaTypes"] then asserts.AssertListOfString(struct["binaryMediaTypes"]) end
@@ -3029,15 +3322,19 @@ function asserts.AssertRestApi(struct)
 end
 
 --- Create a structure of type RestApi
--- <p>Represents a REST API.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
+-- <p>Represents a REST API.</p> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * apiKeySource [ApiKeySourceType] <p>The source of the API key for metering requests according to a usage plan. Valid values are: <ul><li><code>HEADER</code> to read the API key from the <code>X-API-Key</code> header of a request. </li><li><code>AUTHORIZER</code> to read the API key from the <code>UsageIdentifierKey</code> from a custom authorizer.</li></ul> </p>
 -- * description [String] <p>The API's description.</p>
 -- * warnings [ListOfString] <p>The warning messages reported when <code>failonwarnings</code> is turned on during API import.</p>
+-- * endpointConfiguration [EndpointConfiguration] <p>The endpoint configuration of this <a>RestApi</a> showing the endpoint types of the API. </p>
+-- * minimumCompressionSize [NullableInteger] <p>A nullable integer that is used to enable compression (with non-negative between 0 and 10485760 (10M) bytes, inclusive) or disable compression (with a null value) on an API. When compression is enabled, compression or decompression is not applied on the payload if the payload size is smaller than this value. Setting it to zero allows compression for any payload size.</p>
+-- * policy [String] A stringified JSON policy document that applies to this RestApi regardless of the caller and <a>Method</a> configuration.
 -- * version [String] <p>A version identifier for the API.</p>
 -- * createdDate [Timestamp] <p>The timestamp when the API was created.</p>
 -- * binaryMediaTypes [ListOfString] <p>The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only UTF-8-encoded text payloads.</p>
--- * id [String] <p>The API's identifier. This identifier is unique across all of your APIs in Amazon API Gateway.</p>
+-- * id [String] <p>The API's identifier. This identifier is unique across all of your APIs in API Gateway.</p>
 -- * name [String] <p>The API's name.</p>
 -- @return RestApi structure as a key-value pair table
 function M.RestApi(args)
@@ -3049,8 +3346,12 @@ function M.RestApi(args)
     local header_args = { 
     }
 	local all_args = { 
+		["apiKeySource"] = args["apiKeySource"],
 		["description"] = args["description"],
 		["warnings"] = args["warnings"],
+		["endpointConfiguration"] = args["endpointConfiguration"],
+		["minimumCompressionSize"] = args["minimumCompressionSize"],
+		["policy"] = args["policy"],
 		["version"] = args["version"],
 		["createdDate"] = args["createdDate"],
 		["binaryMediaTypes"] = args["binaryMediaTypes"],
@@ -3080,12 +3381,12 @@ function asserts.AssertBasePathMapping(struct)
 end
 
 --- Create a structure of type BasePathMapping
--- <p>Represents the base path that callers of the API must provide as part of the URL after the domain name.</p> <div class="remarks">A custom domain name plus a <code>BasePathMapping</code> specification identifies a deployed <a>RestApi</a> in a given stage of the owner <a>Account</a>.</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Custom Domain Names</a> </div>
+-- <p>Represents the base path that callers of the API must provide as part of the URL after the domain name.</p> <div class="remarks">A custom domain name plus a <code>BasePathMapping</code> specification identifies a deployed <a>RestApi</a> in a given stage of the owner <a>Account</a>.</div> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Custom Domain Names</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * basePath [String] <p>The base path name that callers of the API must provide as part of the URL after the domain name.</p>
--- * restApiId [String] <p>The name of the API.</p>
--- * stage [String] <p>The name of the API's stage.</p>
+-- * restApiId [String] <p>The string identifier of the associated <a>RestApi</a>.</p>
+-- * stage [String] <p>The name of the associated stage.</p>
 -- @return BasePathMapping structure as a key-value pair table
 function M.BasePathMapping(args)
 	assert(args, "You must provide an argument table when creating BasePathMapping")
@@ -3109,39 +3410,44 @@ function M.BasePathMapping(args)
     }
 end
 
-keys.TooManyRequestsException = { ["message"] = true, ["retryAfterSeconds"] = true, nil }
+keys.GetGatewayResponseRequest = { ["responseType"] = true, ["restApiId"] = true, nil }
 
-function asserts.AssertTooManyRequestsException(struct)
+function asserts.AssertGetGatewayResponseRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyRequestsException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
-	if struct["retryAfterSeconds"] then asserts.AssertString(struct["retryAfterSeconds"]) end
+	assert(type(struct) == "table", "Expected GetGatewayResponseRequest to be of type 'table'")
+	assert(struct["restApiId"], "Expected key restApiId to exist in table")
+	assert(struct["responseType"], "Expected key responseType to exist in table")
+	if struct["responseType"] then asserts.AssertGatewayResponseType(struct["responseType"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TooManyRequestsException[k], "TooManyRequestsException contains unknown key " .. tostring(k))
+		assert(keys.GetGatewayResponseRequest[k], "GetGatewayResponseRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TooManyRequestsException
---  
+--- Create a structure of type GetGatewayResponseRequest
+-- <p>Gets a <a>GatewayResponse</a> of a specified response type on the given <a>RestApi</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [String] 
--- * retryAfterSeconds [String] 
--- @return TooManyRequestsException structure as a key-value pair table
-function M.TooManyRequestsException(args)
-	assert(args, "You must provide an argument table when creating TooManyRequestsException")
+-- * responseType [GatewayResponseType] <p>[Required] <p>The response type of the associated <a>GatewayResponse</a>. Valid values are <ul><li>ACCESS_DENIED</li><li>API_CONFIGURATION_ERROR</li><li>AUTHORIZER_FAILURE</li><li> AUTHORIZER_CONFIGURATION_ERROR</li><li>BAD_REQUEST_PARAMETERS</li><li>BAD_REQUEST_BODY</li><li>DEFAULT_4XX</li><li>DEFAULT_5XX</li><li>EXPIRED_TOKEN</li><li>INVALID_SIGNATURE</li><li>INTEGRATION_FAILURE</li><li>INTEGRATION_TIMEOUT</li><li>INVALID_API_KEY</li><li>MISSING_AUTHENTICATION_TOKEN</li><li> QUOTA_EXCEEDED</li><li>REQUEST_TOO_LARGE</li><li>RESOURCE_NOT_FOUND</li><li>THROTTLED</li><li>UNAUTHORIZED</li><li>UNSUPPORTED_MEDIA_TYPE</li></ul> </p></p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- Required key: restApiId
+-- Required key: responseType
+-- @return GetGatewayResponseRequest structure as a key-value pair table
+function M.GetGatewayResponseRequest(args)
+	assert(args, "You must provide an argument table when creating GetGatewayResponseRequest")
     local query_args = { 
     }
     local uri_args = { 
+        ["{response_type}"] = args["responseType"],
+        ["{restapi_id}"] = args["restApiId"],
     }
     local header_args = { 
-        ["Retry-After"] = args["retryAfterSeconds"],
     }
 	local all_args = { 
-		["message"] = args["message"],
-		["retryAfterSeconds"] = args["retryAfterSeconds"],
+		["responseType"] = args["responseType"],
+		["restApiId"] = args["restApiId"],
 	}
-	asserts.AssertTooManyRequestsException(all_args)
+	asserts.AssertGetGatewayResponseRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3150,7 +3456,7 @@ function M.TooManyRequestsException(args)
     }
 end
 
-keys.GetDocumentationPartsRequest = { ["restApiId"] = true, ["nameQuery"] = true, ["limit"] = true, ["path"] = true, ["position"] = true, ["type"] = true, nil }
+keys.GetDocumentationPartsRequest = { ["restApiId"] = true, ["nameQuery"] = true, ["limit"] = true, ["locationStatus"] = true, ["path"] = true, ["position"] = true, ["type"] = true, nil }
 
 function asserts.AssertGetDocumentationPartsRequest(struct)
 	assert(struct)
@@ -3159,6 +3465,7 @@ function asserts.AssertGetDocumentationPartsRequest(struct)
 	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	if struct["nameQuery"] then asserts.AssertString(struct["nameQuery"]) end
 	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
+	if struct["locationStatus"] then asserts.AssertLocationStatusType(struct["locationStatus"]) end
 	if struct["path"] then asserts.AssertString(struct["path"]) end
 	if struct["position"] then asserts.AssertString(struct["position"]) end
 	if struct["type"] then asserts.AssertDocumentationPartType(struct["type"]) end
@@ -3171,9 +3478,10 @@ end
 -- <p>Gets the documentation parts of an API. The result may be filtered by the type, name, or path of API entities (targets).</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>[Required] The identifier of the API of the to-be-retrieved documentation parts.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * nameQuery [String] <p>The name of API entities of the to-be-retrieved documentation parts.</p>
--- * limit [NullableInteger] <p>The maximum number of returned results per page.</p>
+-- * limit [NullableInteger] <p>The maximum number of returned results per page. The default value is 25 and the maximum value is 500.</p>
+-- * locationStatus [LocationStatusType] <p>The status of the API documentation parts to retrieve. Valid values are <code>DOCUMENTED</code> for retrieving <a>DocumentationPart</a> resources with content and <code>UNDOCUMENTED</code> for <a>DocumentationPart</a> resources without content.</p>
 -- * path [String] <p>The path of API entities of the to-be-retrieved documentation parts.</p>
 -- * position [String] <p>The current pagination position in the paged result set.</p>
 -- * type [DocumentationPartType] <p>The type of API entities of the to-be-retrieved documentation parts. </p>
@@ -3184,6 +3492,7 @@ function M.GetDocumentationPartsRequest(args)
     local query_args = { 
         ["name"] = args["nameQuery"],
         ["limit"] = args["limit"],
+        ["locationStatus"] = args["locationStatus"],
         ["path"] = args["path"],
         ["position"] = args["position"],
         ["type"] = args["type"],
@@ -3197,6 +3506,7 @@ function M.GetDocumentationPartsRequest(args)
 		["restApiId"] = args["restApiId"],
 		["nameQuery"] = args["nameQuery"],
 		["limit"] = args["limit"],
+		["locationStatus"] = args["locationStatus"],
 		["path"] = args["path"],
 		["position"] = args["position"],
 		["type"] = args["type"],
@@ -3233,7 +3543,7 @@ end
 -- * throttle [ThrottleSettings] <p>The throttling limits of the usage plan.</p>
 -- * quota [QuotaSettings] <p>The quota of the usage plan.</p>
 -- * apiStages [ListOfApiStage] <p>The associated API stages of the usage plan.</p>
--- * name [String] <p>The name of the usage plan.</p>
+-- * name [String] <p>[Required] The name of the usage plan.</p>
 -- * description [String] <p>The description of the usage plan.</p>
 -- Required key: name
 -- @return CreateUsagePlanRequest structure as a key-value pair table
@@ -3316,10 +3626,10 @@ function asserts.AssertStages(struct)
 end
 
 --- Create a structure of type Stages
--- <p>A list of <a>Stage</a> resources that are associated with the <a>ApiKey</a> resource.</p> <div class="seeAlso"><a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/stages.html">Deploying API in Stages</a></div>
+-- <p>A list of <a>Stage</a> resources that are associated with the <a>ApiKey</a> resource.</p> <div class="seeAlso"><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/stages.html">Deploying API in Stages</a></div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * item [ListOfStage] <p>An individual <a>Stage</a> resource.</p>
+-- * item [ListOfStage] <p>The current page of elements from this collection.</p>
 -- @return Stages structure as a key-value pair table
 function M.Stages(args)
 	assert(args, "You must provide an argument table when creating Stages")
@@ -3357,11 +3667,11 @@ function asserts.AssertGetDeploymentRequest(struct)
 end
 
 --- Create a structure of type GetDeploymentRequest
--- <p>Requests Amazon API Gateway to get information about a <a>Deployment</a> resource.</p>
+-- <p>Requests API Gateway to get information about a <a>Deployment</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * deploymentId [String] <p>The identifier of the <a>Deployment</a> resource to get information about.</p>
--- * restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Deployment</a> resource to get information about.</p>
+-- * deploymentId [String] <p>[Required] The identifier of the <a>Deployment</a> resource to get information about.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * embed [ListOfString] <p>A query parameter to retrieve the specified embedded resources of the returned <a>Deployment</a> resource in the response. In a REST API call, this <code>embed</code> parameter value is a list of comma-separated strings, as in <code>GET /restapis/{restapi_id}/deployments/{deployment_id}?embed=var1,var2</code>. The SDK and other platform-dependent libraries might use a different format for the list. Currently, this request supports only retrieval of the embedded API summary this way. Hence, the parameter value must be a single-valued list containing only the <code>"apisummary"</code> string. For example, <code>GET /restapis/{restapi_id}/deployments/{deployment_id}?embed=apisummary</code>.</p>
 -- Required key: restApiId
 -- Required key: deploymentId
@@ -3391,15 +3701,18 @@ function M.GetDeploymentRequest(args)
     }
 end
 
-keys.CreateDomainNameRequest = { ["certificateArn"] = true, ["certificateName"] = true, ["domainName"] = true, ["certificateChain"] = true, ["certificatePrivateKey"] = true, ["certificateBody"] = true, nil }
+keys.CreateDomainNameRequest = { ["certificateArn"] = true, ["regionalCertificateName"] = true, ["certificateName"] = true, ["domainName"] = true, ["endpointConfiguration"] = true, ["regionalCertificateArn"] = true, ["certificateChain"] = true, ["certificatePrivateKey"] = true, ["certificateBody"] = true, nil }
 
 function asserts.AssertCreateDomainNameRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateDomainNameRequest to be of type 'table'")
 	assert(struct["domainName"], "Expected key domainName to exist in table")
 	if struct["certificateArn"] then asserts.AssertString(struct["certificateArn"]) end
+	if struct["regionalCertificateName"] then asserts.AssertString(struct["regionalCertificateName"]) end
 	if struct["certificateName"] then asserts.AssertString(struct["certificateName"]) end
 	if struct["domainName"] then asserts.AssertString(struct["domainName"]) end
+	if struct["endpointConfiguration"] then asserts.AssertEndpointConfiguration(struct["endpointConfiguration"]) end
+	if struct["regionalCertificateArn"] then asserts.AssertString(struct["regionalCertificateArn"]) end
 	if struct["certificateChain"] then asserts.AssertString(struct["certificateChain"]) end
 	if struct["certificatePrivateKey"] then asserts.AssertString(struct["certificatePrivateKey"]) end
 	if struct["certificateBody"] then asserts.AssertString(struct["certificateBody"]) end
@@ -3412,12 +3725,15 @@ end
 -- <p>A request to create a new domain name.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * certificateArn [String] <p>The reference to an AWS-managed certificate. AWS Certificate Manager is the only supported source.</p>
--- * certificateName [String] <p>The user-friendly name of the certificate.</p>
--- * domainName [String] <p>(Required) The name of the <a>DomainName</a> resource.</p>
--- * certificateChain [String] <p>[Deprecated] The intermediate certificates and optionally the root certificate, one after the other without any blank lines. If you include the root certificate, your certificate chain must start with intermediate certificates and end with the root certificate. Use the intermediate certificates that were provided by your certificate authority. Do not include any intermediaries that are not in the chain of trust path.</p>
--- * certificatePrivateKey [String] <p>[Deprecated] Your certificate's private key.</p>
--- * certificateBody [String] <p>[Deprecated] The body of the server certificate provided by your certificate authority.</p>
+-- * certificateArn [String] <p>The reference to an AWS-managed certificate that will be used by edge-optimized endpoint for this domain name. AWS Certificate Manager is the only supported source.</p>
+-- * regionalCertificateName [String] <p>The user-friendly name of the certificate that will be used by regional endpoint for this domain name.</p>
+-- * certificateName [String] <p>The user-friendly name of the certificate that will be used by edge-optimized endpoint for this domain name.</p>
+-- * domainName [String] <p>[Required] The name of the <a>DomainName</a> resource.</p>
+-- * endpointConfiguration [EndpointConfiguration] <p>The endpoint configuration of this <a>DomainName</a> showing the endpoint types of the domain name. </p>
+-- * regionalCertificateArn [String] <p>The reference to an AWS-managed certificate that will be used by regional endpoint for this domain name. AWS Certificate Manager is the only supported source.</p>
+-- * certificateChain [String] <p>[Deprecated] The intermediate certificates and optionally the root certificate, one after the other without any blank lines, used by an edge-optimized endpoint for this domain name. If you include the root certificate, your certificate chain must start with intermediate certificates and end with the root certificate. Use the intermediate certificates that were provided by your certificate authority. Do not include any intermediaries that are not in the chain of trust path.</p>
+-- * certificatePrivateKey [String] <p>[Deprecated] Your edge-optimized endpoint's domain name certificate's private key.</p>
+-- * certificateBody [String] <p>[Deprecated] The body of the server certificate that will be used by edge-optimized endpoint for this domain name provided by your certificate authority.</p>
 -- Required key: domainName
 -- @return CreateDomainNameRequest structure as a key-value pair table
 function M.CreateDomainNameRequest(args)
@@ -3430,8 +3746,11 @@ function M.CreateDomainNameRequest(args)
     }
 	local all_args = { 
 		["certificateArn"] = args["certificateArn"],
+		["regionalCertificateName"] = args["regionalCertificateName"],
 		["certificateName"] = args["certificateName"],
 		["domainName"] = args["domainName"],
+		["endpointConfiguration"] = args["endpointConfiguration"],
+		["regionalCertificateArn"] = args["regionalCertificateArn"],
 		["certificateChain"] = args["certificateChain"],
 		["certificatePrivateKey"] = args["certificatePrivateKey"],
 		["certificateBody"] = args["certificateBody"],
@@ -3461,7 +3780,7 @@ end
 -- <p>A request to delete the <a>ApiKey</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * apiKey [String] <p>The identifier of the <a>ApiKey</a> resource to be deleted.</p>
+-- * apiKey [String] <p>[Required] The identifier of the <a>ApiKey</a> resource to be deleted.</p>
 -- Required key: apiKey
 -- @return DeleteApiKeyRequest structure as a key-value pair table
 function M.DeleteApiKeyRequest(args)
@@ -3498,7 +3817,7 @@ function asserts.AssertDocumentationPartIds(struct)
 end
 
 --- Create a structure of type DocumentationPartIds
--- <p>A collection of the imported <a>DocumentationPart</a> identifiers.</p> <div class="remarks">This is used to return the result when documentation parts in an external (e.g., Swagger) file are imported into Amazon API Gateway</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a href="http://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-import/">documentationpart:import</a>, <a>DocumentationPart</a> </div>
+-- <p>A collection of the imported <a>DocumentationPart</a> identifiers.</p> <div class="remarks">This is used to return the result when documentation parts in an external (e.g., OpenAPI) file are imported into API Gateway</div> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a href="https://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-import/">documentationpart:import</a>, <a>DocumentationPart</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ids [ListOfString] <p>A list of the returned documentation part identifiers.</p>
@@ -3547,7 +3866,7 @@ end
 -- * position [String] <p>The current pagination position in the paged result set.</p>
 -- * nameQuery [String] <p>The name of queried API keys.</p>
 -- * includeValues [NullableBoolean] <p>A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains key values.</p>
--- * limit [NullableInteger] <p>The maximum number of <a>ApiKeys</a> to get information about.</p>
+-- * limit [NullableInteger] <p>The maximum number of returned results per page. The default value is 25 and the maximum value is 500.</p>
 -- * customerId [String] <p>The identifier of a customer in AWS Marketplace or an external system, such as a developer portal.</p>
 -- @return GetApiKeysRequest structure as a key-value pair table
 function M.GetApiKeysRequest(args)
@@ -3599,9 +3918,9 @@ end
 -- <p>Request to delete an existing <a>Method</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * resourceId [String] <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
--- * restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
--- * httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
+-- * resourceId [String] <p>[Required] The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * httpMethod [String] <p>[Required] The HTTP verb of the <a>Method</a> resource.</p>
 -- Required key: restApiId
 -- Required key: resourceId
 -- Required key: httpMethod
@@ -3649,7 +3968,7 @@ end
 -- <p>Deletes an existing documentation version of an API.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>[Required] The identifier of an API of a to-be-deleted documentation snapshot.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * documentationVersion [String] <p>[Required] The version identifier of a to-be-deleted documentation snapshot.</p>
 -- Required key: restApiId
 -- Required key: documentationVersion
@@ -3693,7 +4012,7 @@ end
 -- <p>The GET request to get a usage plan of a given plan identifier.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * usagePlanId [String] <p>The identifier of the <a>UsagePlan</a> resource to be retrieved.</p>
+-- * usagePlanId [String] <p>[Required] The identifier of the <a>UsagePlan</a> resource to be retrieved.</p>
 -- Required key: usagePlanId
 -- @return GetUsagePlanRequest structure as a key-value pair table
 function M.GetUsagePlanRequest(args)
@@ -3717,6 +4036,52 @@ function M.GetUsagePlanRequest(args)
     }
 end
 
+keys.UntagResourceRequest = { ["resourceArn"] = true, ["tagKeys"] = true, nil }
+
+function asserts.AssertUntagResourceRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UntagResourceRequest to be of type 'table'")
+	assert(struct["resourceArn"], "Expected key resourceArn to exist in table")
+	assert(struct["tagKeys"], "Expected key tagKeys to exist in table")
+	if struct["resourceArn"] then asserts.AssertString(struct["resourceArn"]) end
+	if struct["tagKeys"] then asserts.AssertListOfString(struct["tagKeys"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UntagResourceRequest[k], "UntagResourceRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UntagResourceRequest
+-- <p>Removes a tag from a given resource.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceArn [String] <p>[Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present, <a>Stage</a> is the only taggable resource.</p>
+-- * tagKeys [ListOfString] <p>[Required] The Tag keys to delete.</p>
+-- Required key: resourceArn
+-- Required key: tagKeys
+-- @return UntagResourceRequest structure as a key-value pair table
+function M.UntagResourceRequest(args)
+	assert(args, "You must provide an argument table when creating UntagResourceRequest")
+    local query_args = { 
+        ["tagKeys"] = args["tagKeys"],
+    }
+    local uri_args = { 
+        ["{resource_arn}"] = args["resourceArn"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["resourceArn"] = args["resourceArn"],
+		["tagKeys"] = args["tagKeys"],
+	}
+	asserts.AssertUntagResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.UsagePlans = { ["position"] = true, ["items"] = true, nil }
 
 function asserts.AssertUsagePlans(struct)
@@ -3730,11 +4095,11 @@ function asserts.AssertUsagePlans(struct)
 end
 
 --- Create a structure of type UsagePlans
--- <p>Represents a collection of usage plans for an AWS account.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
+-- <p>Represents a collection of usage plans for an AWS account.</p> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] 
--- * items [ListOfUsagePlan] <p>Gets the current item when enumerating the collection of <a>UsagePlan</a>.</p>
+-- * items [ListOfUsagePlan] <p>The current page of elements from this collection.</p>
 -- @return UsagePlans structure as a key-value pair table
 function M.UsagePlans(args)
 	assert(args, "You must provide an argument table when creating UsagePlans")
@@ -3774,7 +4139,7 @@ end
 -- <p>The PATCH request to update a usage plan of a given plan Id.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * usagePlanId [String] <p>The Id of the to-be-updated usage plan.</p>
+-- * usagePlanId [String] <p>[Required] The Id of the to-be-updated usage plan.</p>
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required key: usagePlanId
 -- @return UpdateUsagePlanRequest structure as a key-value pair table
@@ -3818,8 +4183,8 @@ end
 -- <p>Gets a specified documentation part of a given API.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * documentationPartId [String] <p>[Required] The identifier of the to-be-retrieved documentation part.</p>
--- * restApiId [String] <p>[Required] The identifier of an API of the to-be-retrieved documentation part.</p>
+-- * documentationPartId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- Required key: restApiId
 -- Required key: documentationPartId
 -- @return GetDocumentationPartRequest structure as a key-value pair table
@@ -3858,7 +4223,7 @@ function asserts.AssertUpdateAccountRequest(struct)
 end
 
 --- Create a structure of type UpdateAccountRequest
--- <p>Requests Amazon API Gateway to change information about the current <a>Account</a> resource.</p>
+-- <p>Requests API Gateway to change information about the current <a>Account</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
@@ -3899,7 +4264,7 @@ end
 -- <p>The GET request to list an existing <a>RestApi</a> defined for your collection. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>The identifier of the <a>RestApi</a> resource.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- Required key: restApiId
 -- @return GetRestApiRequest structure as a key-value pair table
 function M.GetRestApiRequest(args)
@@ -3940,7 +4305,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] <p>The current pagination position in the paged result set.</p>
--- * limit [NullableInteger] <p>The maximum number of returned results per page.</p>
+-- * limit [NullableInteger] <p>The maximum number of returned results per page. The default value is 25 and the maximum value is 500.</p>
 -- @return GetSdkTypesRequest structure as a key-value pair table
 function M.GetSdkTypesRequest(args)
 	assert(args, "You must provide an argument table when creating GetSdkTypesRequest")
@@ -3976,7 +4341,7 @@ function asserts.AssertGetAccountRequest(struct)
 end
 
 --- Create a structure of type GetAccountRequest
--- <p>Requests Amazon API Gateway to get information about the current <a>Account</a> resource.</p>
+-- <p>Requests API Gateway to get information about the current <a>Account</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- @return GetAccountRequest structure as a key-value pair table
@@ -4017,8 +4382,8 @@ end
 -- <p>The GET request to get a usage plan key of a given key identifier.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * keyId [String] <p>The key Id of the to-be-retrieved <a>UsagePlanKey</a> resource representing a plan customer.</p>
--- * usagePlanId [String] <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-retrieved <a>UsagePlanKey</a> resource representing a plan customer.</p>
+-- * keyId [String] <p>[Required] The key Id of the to-be-retrieved <a>UsagePlanKey</a> resource representing a plan customer.</p>
+-- * usagePlanId [String] <p>[Required] The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-retrieved <a>UsagePlanKey</a> resource representing a plan customer.</p>
 -- Required key: usagePlanId
 -- Required key: keyId
 -- @return GetUsagePlanKeyRequest structure as a key-value pair table
@@ -4064,7 +4429,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * requestValidatorId [String] <p>[Required] The identifier of the <a>RequestValidator</a> to be deleted.</p>
--- * restApiId [String] <p>[Required] The identifier of the <a>RestApi</a> from which the given <a>RequestValidator</a> is deleted.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- Required key: restApiId
 -- Required key: requestValidatorId
 -- @return DeleteRequestValidatorRequest structure as a key-value pair table
@@ -4104,11 +4469,11 @@ function asserts.AssertBasePathMappings(struct)
 end
 
 --- Create a structure of type BasePathMappings
--- <p>Represents a collection of <a>BasePathMapping</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Custom Domain Names</a> </div>
+-- <p>Represents a collection of <a>BasePathMapping</a> resources.</p> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Custom Domain Names</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] 
--- * items [ListOfBasePathMapping] <p>The current page of any <a>BasePathMapping</a> resources in the collection of base path mapping resources.</p>
+-- * items [ListOfBasePathMapping] <p>The current page of elements from this collection.</p>
 -- @return BasePathMappings structure as a key-value pair table
 function M.BasePathMappings(args)
 	assert(args, "You must provide an argument table when creating BasePathMappings")
@@ -4146,7 +4511,7 @@ function asserts.AssertRequestValidator(struct)
 end
 
 --- Create a structure of type RequestValidator
--- <p>A set of validation rules for incoming <a>Method</a> requests.</p> <div class="remarks"> <p>In Swagger, a <a>RequestValidator</a> of an API is defined by the <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validators.requestValidator.html">x-amazon-apigateway-request-validators.requestValidator</a> object. It the referenced using the <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validator">x-amazon-apigateway-request-validator</a> property.</p> </div> <div class="seeAlso"><a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html">Enable Basic Request Validation in API Gateway</a></div>
+-- <p>A set of validation rules for incoming <a>Method</a> requests.</p> <div class="remarks"> <p>In OpenAPI, a <a>RequestValidator</a> of an API is defined by the <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validators.requestValidator.html">x-amazon-apigateway-request-validators.requestValidator</a> object. It the referenced using the <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validator">x-amazon-apigateway-request-validator</a> property.</p> </div> <div class="seeAlso"><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html">Enable Basic Request Validation in API Gateway</a></div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * validateRequestParameters [Boolean] <p>A Boolean flag to indicate whether to validate request parameters (<code>true</code>) or not (<code>false</code>).</p>
@@ -4191,11 +4556,11 @@ function asserts.AssertMethodResponse(struct)
 end
 
 --- Create a structure of type MethodResponse
--- <p>Represents a method response of a given HTTP status code returned to the client. The method response is passed from the back end through the associated integration response that can be transformed using a mapping template. </p> <div class="remarks"> <p/> <h4>Example: A <b>MethodResponse</b> instance of an API</h4> <h5>Request</h5> <p>The example request retrieves a <b>MethodResponse</b> of the 200 status code.</p> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160603T222952Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160603/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns <code>200 OK</code> status and a payload as follows:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" }</code></pre> <p/> </div> <div class="seeAlso"> <a>Method</a>, <a>IntegrationResponse</a>, <a>Integration</a> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
+-- <p>Represents a method response of a given HTTP status code returned to the client. The method response is passed from the back end through the associated integration response that can be transformed using a mapping template. </p> <div class="remarks"> <p/> <h4>Example: A <b>MethodResponse</b> instance of an API</h4> <h5>Request</h5> <p>The example request retrieves a <b>MethodResponse</b> of the 200 status code.</p> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160603T222952Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160603/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns <code>200 OK</code> status and a payload as follows:</p> <pre><code>{ "_links": { "curies": { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" }</code></pre> <p/> </div> <div class="seeAlso"> <a>Method</a>, <a>IntegrationResponse</a>, <a>Integration</a> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * responseModels [MapOfStringToString] <p>Specifies the <a>Model</a> resources used for the response's content-type. Response models are represented as a key/value map, with a content-type as the key and a <a>Model</a> name as the value.</p>
--- * responseParameters [MapOfStringToBoolean] <p>A key-value map specifying required or optional response parameters that Amazon API Gateway can send back to the caller. A key defines a method response header and the value specifies whether the associated method response header is required or not. The expression of the key must match the pattern <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. Amazon API Gateway passes certain integration response data to the method response headers specified here according to the mapping you prescribe in the API's <a>IntegrationResponse</a>. The integration response data that can be mapped include an integration response header expressed in <code>integration.response.header.{name}</code>, a static value enclosed within a pair of single quotes (e.g., <code>'application/json'</code>), or a JSON expression from the back-end response payload in the form of <code>integration.response.body.{JSON-expression}</code>, where <code>JSON-expression</code> is a valid JSON expression without the <code>$</code> prefix.)</p>
+-- * responseParameters [MapOfStringToBoolean] <p>A key-value map specifying required or optional response parameters that API Gateway can send back to the caller. A key defines a method response header and the value specifies whether the associated method response header is required or not. The expression of the key must match the pattern <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. API Gateway passes certain integration response data to the method response headers specified here according to the mapping you prescribe in the API's <a>IntegrationResponse</a>. The integration response data that can be mapped include an integration response header expressed in <code>integration.response.header.{name}</code>, a static value enclosed within a pair of single quotes (e.g., <code>'application/json'</code>), or a JSON expression from the back-end response payload in the form of <code>integration.response.body.{JSON-expression}</code>, where <code>JSON-expression</code> is a valid JSON expression without the <code>$</code> prefix.)</p>
 -- * statusCode [StatusCode] <p>The method response's status code.</p>
 -- @return MethodResponse structure as a key-value pair table
 function M.MethodResponse(args)
@@ -4220,48 +4585,7 @@ function M.MethodResponse(args)
     }
 end
 
-keys.LimitExceededException = { ["message"] = true, ["retryAfterSeconds"] = true, nil }
-
-function asserts.AssertLimitExceededException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
-	if struct["retryAfterSeconds"] then asserts.AssertString(struct["retryAfterSeconds"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type LimitExceededException
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [String] 
--- * retryAfterSeconds [String] 
--- @return LimitExceededException structure as a key-value pair table
-function M.LimitExceededException(args)
-	assert(args, "You must provide an argument table when creating LimitExceededException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-        ["Retry-After"] = args["retryAfterSeconds"],
-    }
-	local all_args = { 
-		["message"] = args["message"],
-		["retryAfterSeconds"] = args["retryAfterSeconds"],
-	}
-	asserts.AssertLimitExceededException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TestInvokeAuthorizerRequest = { ["body"] = true, ["restApiId"] = true, ["pathWithQueryString"] = true, ["additionalContext"] = true, ["headers"] = true, ["stageVariables"] = true, ["authorizerId"] = true, nil }
+keys.TestInvokeAuthorizerRequest = { ["body"] = true, ["restApiId"] = true, ["multiValueHeaders"] = true, ["pathWithQueryString"] = true, ["additionalContext"] = true, ["headers"] = true, ["stageVariables"] = true, ["authorizerId"] = true, nil }
 
 function asserts.AssertTestInvokeAuthorizerRequest(struct)
 	assert(struct)
@@ -4270,9 +4594,10 @@ function asserts.AssertTestInvokeAuthorizerRequest(struct)
 	assert(struct["authorizerId"], "Expected key authorizerId to exist in table")
 	if struct["body"] then asserts.AssertString(struct["body"]) end
 	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["multiValueHeaders"] then asserts.AssertMapOfStringToList(struct["multiValueHeaders"]) end
 	if struct["pathWithQueryString"] then asserts.AssertString(struct["pathWithQueryString"]) end
 	if struct["additionalContext"] then asserts.AssertMapOfStringToString(struct["additionalContext"]) end
-	if struct["headers"] then asserts.AssertMapOfHeaderValues(struct["headers"]) end
+	if struct["headers"] then asserts.AssertMapOfStringToString(struct["headers"]) end
 	if struct["stageVariables"] then asserts.AssertMapOfStringToString(struct["stageVariables"]) end
 	if struct["authorizerId"] then asserts.AssertString(struct["authorizerId"]) end
 	for k,_ in pairs(struct) do
@@ -4285,12 +4610,13 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * body [String] <p>[Optional] The simulated request body of an incoming invocation request.</p>
--- * restApiId [String] <p>Specifies a test invoke authorizer request's <a>RestApi</a> identifier.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * multiValueHeaders [MapOfStringToList] <p>[Optional] The headers as a map from string to list of values to simulate an incoming invocation request. This is where the incoming authorization token, or identity source, may be specified.</p>
 -- * pathWithQueryString [String] <p>[Optional] The URI path, including query string, of the simulated invocation request. Use this to specify path parameters and query string parameters.</p>
 -- * additionalContext [MapOfStringToString] <p>[Optional] A key-value map of additional context variables.</p>
--- * headers [MapOfHeaderValues] <p>[Required] A key-value map of headers to simulate an incoming invocation request. This is where the incoming authorization token, or identity source, should be specified.</p>
+-- * headers [MapOfStringToString] <p>[Required] A key-value map of headers to simulate an incoming invocation request. This is where the incoming authorization token, or identity source, should be specified.</p>
 -- * stageVariables [MapOfStringToString] <p>A key-value map of stage variables to simulate an invocation on a deployed <a>Stage</a>.</p>
--- * authorizerId [String] <p>Specifies a test invoke authorizer request's <a>Authorizer</a> ID.</p>
+-- * authorizerId [String] <p>[Required] Specifies a test invoke authorizer request's <a>Authorizer</a> ID.</p>
 -- Required key: restApiId
 -- Required key: authorizerId
 -- @return TestInvokeAuthorizerRequest structure as a key-value pair table
@@ -4307,6 +4633,7 @@ function M.TestInvokeAuthorizerRequest(args)
 	local all_args = { 
 		["body"] = args["body"],
 		["restApiId"] = args["restApiId"],
+		["multiValueHeaders"] = args["multiValueHeaders"],
 		["pathWithQueryString"] = args["pathWithQueryString"],
 		["additionalContext"] = args["additionalContext"],
 		["headers"] = args["headers"],
@@ -4337,11 +4664,11 @@ function asserts.AssertFlushStageCacheRequest(struct)
 end
 
 --- Create a structure of type FlushStageCacheRequest
--- <p>Requests Amazon API Gateway to flush a stage's cache.</p>
+-- <p>Requests API Gateway to flush a stage's cache.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>The API identifier of the stage to flush its cache.</p>
--- * stageName [String] <p>The name of the stage to flush its cache.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * stageName [String] <p>[Required] The name of the stage to flush its cache.</p>
 -- Required key: restApiId
 -- Required key: stageName
 -- @return FlushStageCacheRequest structure as a key-value pair table
@@ -4386,8 +4713,8 @@ end
 -- <p>Request to describe an existing <a>Authorizer</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Authorizer</a> resource.</p>
--- * authorizerId [String] <p>The identifier of the <a>Authorizer</a> resource.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * authorizerId [String] <p>[Required] The identifier of the <a>Authorizer</a> resource.</p>
 -- Required key: restApiId
 -- Required key: authorizerId
 -- @return GetAuthorizerRequest structure as a key-value pair table
@@ -4414,13 +4741,14 @@ function M.GetAuthorizerRequest(args)
     }
 end
 
-keys.Method = { ["methodResponses"] = true, ["requestParameters"] = true, ["requestModels"] = true, ["authorizationType"] = true, ["operationName"] = true, ["apiKeyRequired"] = true, ["httpMethod"] = true, ["methodIntegration"] = true, ["requestValidatorId"] = true, ["authorizerId"] = true, nil }
+keys.Method = { ["methodResponses"] = true, ["requestParameters"] = true, ["authorizationScopes"] = true, ["requestModels"] = true, ["authorizationType"] = true, ["operationName"] = true, ["apiKeyRequired"] = true, ["httpMethod"] = true, ["methodIntegration"] = true, ["requestValidatorId"] = true, ["authorizerId"] = true, nil }
 
 function asserts.AssertMethod(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Method to be of type 'table'")
 	if struct["methodResponses"] then asserts.AssertMapOfMethodResponse(struct["methodResponses"]) end
 	if struct["requestParameters"] then asserts.AssertMapOfStringToBoolean(struct["requestParameters"]) end
+	if struct["authorizationScopes"] then asserts.AssertListOfString(struct["authorizationScopes"]) end
 	if struct["requestModels"] then asserts.AssertMapOfStringToString(struct["requestModels"]) end
 	if struct["authorizationType"] then asserts.AssertString(struct["authorizationType"]) end
 	if struct["operationName"] then asserts.AssertString(struct["operationName"]) end
@@ -4435,17 +4763,18 @@ function asserts.AssertMethod(struct)
 end
 
 --- Create a structure of type Method
--- <p> Represents a client-facing interface by which the client calls the API to access back-end resources. A <b>Method</b> resource is integrated with an <a>Integration</a> resource. Both consist of a request and one or more responses. The method request takes the client input that is passed to the back end through the integration request. A method response returns the output from the back end to the client through an integration response. A method request is embodied in a <b>Method</b> resource, whereas an integration request is embodied in an <a>Integration</a> resource. On the other hand, a method response is represented by a <a>MethodResponse</a> resource, whereas an integration response is represented by an <a>IntegrationResponse</a> resource. </p> <div class="remarks"> <p/> <h4>Example: Retrive the GET method on a specified resource</h4> <h5>Request</h5> <p>The following example request retrieves the information about the GET method on an API resource (<code>3kzxbg5sa2</code>) of an API (<code>fugvjdxtri</code>). </p> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160603T210259Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160603/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": [ { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-{rel}.html", "name": "method", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true } ], "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET", "name": "GET", "title": "GET" }, "integration:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "method:integration": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "method:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "methodresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/{status_code}", "templated": true } }, "apiKeyRequired": true, "authorizationType": "NONE", "httpMethod": "GET", "_embedded": { "method:integration": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "3kzxbg5sa2", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestParameters": { "integration.request.header.Content-Type": "'application/x-amz-json-1.1'" }, "requestTemplates": { "application/json": "{\n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E%23foreach(%24stream%20in%20%24input.path(%27%24.StreamNames%27))%3Cstream%3E%3Cname%3E%24stream%3C%2Fname%3E%3C%2Fstream%3E%23end%3C%2FkinesisStreams%3E\")" }, "statusCode": "200" } } }, "method:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" } } }</code></pre> <p>In the example above, the response template for the <code>200 OK</code> response maps the JSON output from the <code>ListStreams</code> action in the back end to an XML output. The mapping template is URL-encoded as <code>%3CkinesisStreams%3E%23foreach(%24stream%20in%20%24input.path(%27%24.StreamNames%27))%3Cstream%3E%3Cname%3E%24stream%3C%2Fname%3E%3C%2Fstream%3E%23end%3C%2FkinesisStreams%3E</code> and the output is decoded using the <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html#util-templat-reference">$util.urlDecode()</a> helper function.</p> </div> <div class="seeAlso"> <a>MethodResponse</a>, <a>Integration</a>, <a>IntegrationResponse</a>, <a>Resource</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-method-settings.html">Set up an API's method</a> </div>
+-- <p> Represents a client-facing interface by which the client calls the API to access back-end resources. A <b>Method</b> resource is integrated with an <a>Integration</a> resource. Both consist of a request and one or more responses. The method request takes the client input that is passed to the back end through the integration request. A method response returns the output from the back end to the client through an integration response. A method request is embodied in a <b>Method</b> resource, whereas an integration request is embodied in an <a>Integration</a> resource. On the other hand, a method response is represented by a <a>MethodResponse</a> resource, whereas an integration response is represented by an <a>IntegrationResponse</a> resource. </p> <div class="remarks"> <p/> <h4>Example: Retrive the GET method on a specified resource</h4> <h5>Request</h5> <p>The following example request retrieves the information about the GET method on an API resource (<code>3kzxbg5sa2</code>) of an API (<code>fugvjdxtri</code>). </p> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160603T210259Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160603/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": [ { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-{rel}.html", "name": "method", "templated": true }, { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true } ], "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET", "name": "GET", "title": "GET" }, "integration:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "method:integration": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "method:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "methodresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/{status_code}", "templated": true } }, "apiKeyRequired": true, "authorizationType": "NONE", "httpMethod": "GET", "_embedded": { "method:integration": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "3kzxbg5sa2", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestParameters": { "integration.request.header.Content-Type": "'application/x-amz-json-1.1'" }, "requestTemplates": { "application/json": "{\n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E%23foreach(%24stream%20in%20%24input.path(%27%24.StreamNames%27))%3Cstream%3E%3Cname%3E%24stream%3C%2Fname%3E%3C%2Fstream%3E%23end%3C%2FkinesisStreams%3E\")" }, "statusCode": "200" } } }, "method:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" } } }</code></pre> <p>In the example above, the response template for the <code>200 OK</code> response maps the JSON output from the <code>ListStreams</code> action in the back end to an XML output. The mapping template is URL-encoded as <code>%3CkinesisStreams%3E%23foreach(%24stream%20in%20%24input.path(%27%24.StreamNames%27))%3Cstream%3E%3Cname%3E%24stream%3C%2Fname%3E%3C%2Fstream%3E%23end%3C%2FkinesisStreams%3E</code> and the output is decoded using the <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html#util-templat-reference">$util.urlDecode()</a> helper function.</p> </div> <div class="seeAlso"> <a>MethodResponse</a>, <a>Integration</a>, <a>IntegrationResponse</a>, <a>Resource</a>, <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-method-settings.html">Set up an API's method</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * methodResponses [MapOfMethodResponse] <p>Gets a method response associated with a given HTTP status code. </p> <div class="remarks"> <p>The collection of method responses are encapsulated in a key-value map, where the key is a response's HTTP status code and the value is a <a>MethodResponse</a> resource that specifies the response returned to the caller from the back end through the integration response.</p> <h4>Example: Get a 200 OK response of a GET method</h4> <h5>Request</h5> <p/> <pre><code>GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T215008Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true }, "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.operator": false, "method.response.header.operand_2": false, "method.response.header.operand_1": false }, "statusCode": "200" }</code></pre> <p/> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-method-response.html">AWS CLI</a> </div>
--- * requestParameters [MapOfStringToBoolean] <p>A key-value map defining required or optional method request parameters that can be accepted by Amazon API Gateway. A key is a method request parameter name matching the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> is a valid and unique parameter name. The value associated with the key is a Boolean flag indicating whether the parameter is required (<code>true</code>) or optional (<code>false</code>). The method request parameter names defined here are available in <a>Integration</a> to be mapped to integration request parameters or templates.</p>
+-- * methodResponses [MapOfMethodResponse] <p>Gets a method response associated with a given HTTP status code. </p> <div class="remarks"> <p>The collection of method responses are encapsulated in a key-value map, where the key is a response's HTTP status code and the value is a <a>MethodResponse</a> resource that specifies the response returned to the caller from the back end through the integration response.</p> <h4>Example: Get a 200 OK response of a GET method</h4> <h5>Request</h5> <p/> <pre><code>GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T215008Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true }, "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.operator": false, "method.response.header.operand_2": false, "method.response.header.operand_1": false }, "statusCode": "200" }</code></pre> <p/> </div> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-method-response.html">AWS CLI</a> </div>
+-- * requestParameters [MapOfStringToBoolean] <p>A key-value map defining required or optional method request parameters that can be accepted by API Gateway. A key is a method request parameter name matching the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> is a valid and unique parameter name. The value associated with the key is a Boolean flag indicating whether the parameter is required (<code>true</code>) or optional (<code>false</code>). The method request parameter names defined here are available in <a>Integration</a> to be mapped to integration request parameters or templates.</p>
+-- * authorizationScopes [ListOfString] <p>A list of authorization scopes configured on the method. The scopes are used with a <code>COGNITO_USER_POOLS</code> authorizer to authorize the method invocation. The authorization works by matching the method scopes against the scopes parsed from the access token in the incoming request. The method invocation is authorized if any method scopes matches a claimed scope in the access token. Otherwise, the invocation is not authorized. When the method scope is configured, the client must provide an access token instead of an identity token for authorization purposes.</p>
 -- * requestModels [MapOfStringToString] <p>A key-value map specifying data schemas, represented by <a>Model</a> resources, (as the mapped value) of the request payloads of given content types (as the mapping key).</p>
 -- * authorizationType [String] <p>The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.</p>
--- * operationName [String] <p>A human-friendly operation identifier for the method. For example, you can assign the <code>operationName</code> of <code>ListPets</code> for the <code>GET /pets</code> method in <a href="http://petstore-demo-endpoint.execute-api.com/petstore/pets">PetStore</a> example.</p>
+-- * operationName [String] <p>A human-friendly operation identifier for the method. For example, you can assign the <code>operationName</code> of <code>ListPets</code> for the <code>GET /pets</code> method in <a href="https://petstore-demo-endpoint.execute-api.com/petstore/pets">PetStore</a> example.</p>
 -- * apiKeyRequired [NullableBoolean] <p>A boolean flag specifying whether a valid <a>ApiKey</a> is required to invoke this method.</p>
 -- * httpMethod [String] <p>The method's HTTP verb.</p>
--- * methodIntegration [Integration] <p>Gets the method's integration responsible for passing the client-submitted request to the back end and performing necessary transformations to make the request compliant with the back end.</p> <div class="remarks"> <p/> <h4>Example: </h4> <h5>Request</h5> <p/> <pre><code>GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T213210Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": [ { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true } ], "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:responses": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "0cjtch", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestTemplates": { "application/json": "{\n \"a\": \"$input.params('operand1')\",\n \"b\": \"$input.params('operand2')\", \n \"op\": \"$input.params('operator')\" \n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-west-2:lambda:path//2015-03-31/functions/arn:aws:lambda:us-west-2:123456789012:function:Calc/invocations", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.operator": "integration.response.body.op", "method.response.header.operand_2": "integration.response.body.b", "method.response.header.operand_1": "integration.response.body.a" }, "responseTemplates": { "application/json": "#set($res = $input.path('$'))\n{\n \"result\": \"$res.a, $res.b, $res.op => $res.c\",\n \"a\" : \"$res.a\",\n \"b\" : \"$res.b\",\n \"op\" : \"$res.op\",\n \"c\" : \"$res.c\"\n}" }, "selectionPattern": "", "statusCode": "200" } } }</code></pre> <p/> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-integration.html">AWS CLI</a> </div>
+-- * methodIntegration [Integration] <p>Gets the method's integration responsible for passing the client-submitted request to the back end and performing necessary transformations to make the request compliant with the back end.</p> <div class="remarks"> <p/> <h4>Example: </h4> <h5>Request</h5> <p/> <pre><code>GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T213210Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": [ { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true } ], "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:responses": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "0cjtch", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestTemplates": { "application/json": "{\n \"a\": \"$input.params('operand1')\",\n \"b\": \"$input.params('operand2')\", \n \"op\": \"$input.params('operator')\" \n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-west-2:lambda:path//2015-03-31/functions/arn:aws:lambda:us-west-2:123456789012:function:Calc/invocations", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.operator": "integration.response.body.op", "method.response.header.operand_2": "integration.response.body.b", "method.response.header.operand_1": "integration.response.body.a" }, "responseTemplates": { "application/json": "#set($res = $input.path('$'))\n{\n \"result\": \"$res.a, $res.b, $res.op => $res.c\",\n \"a\" : \"$res.a\",\n \"b\" : \"$res.b\",\n \"op\" : \"$res.op\",\n \"c\" : \"$res.c\"\n}" }, "selectionPattern": "", "statusCode": "200" } } }</code></pre> <p/> </div> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-integration.html">AWS CLI</a> </div>
 -- * requestValidatorId [String] <p>The identifier of a <a>RequestValidator</a> for request validation.</p>
 -- * authorizerId [String] <p>The identifier of an <a>Authorizer</a> to use on this method. The <code>authorizationType</code> must be <code>CUSTOM</code>.</p>
 -- @return Method structure as a key-value pair table
@@ -4460,6 +4789,7 @@ function M.Method(args)
 	local all_args = { 
 		["methodResponses"] = args["methodResponses"],
 		["requestParameters"] = args["requestParameters"],
+		["authorizationScopes"] = args["authorizationScopes"],
 		["requestModels"] = args["requestModels"],
 		["authorizationType"] = args["authorizationType"],
 		["operationName"] = args["operationName"],
@@ -4470,6 +4800,43 @@ function M.Method(args)
 		["authorizerId"] = args["authorizerId"],
 	}
 	asserts.AssertMethod(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Tags = { ["tags"] = true, nil }
+
+function asserts.AssertTags(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Tags to be of type 'table'")
+	if struct["tags"] then asserts.AssertMapOfStringToString(struct["tags"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Tags[k], "Tags contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Tags
+-- <p>The collection of tags. Each tag element is associated with a given resource.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * tags [MapOfStringToString] <p>The collection of tags. Each tag element is associated with a given resource.</p>
+-- @return Tags structure as a key-value pair table
+function M.Tags(args)
+	assert(args, "You must provide an argument table when creating Tags")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["tags"] = args["tags"],
+	}
+	asserts.AssertTags(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4491,11 +4858,11 @@ function asserts.AssertModels(struct)
 end
 
 --- Create a structure of type Models
--- <p>Represents a collection of <a>Model</a> resources.</p> <div class="seeAlso"> <a>Method</a>, <a>MethodResponse</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html">Models and Mappings</a> </div>
+-- <p>Represents a collection of <a>Model</a> resources.</p> <div class="seeAlso"> <a>Method</a>, <a>MethodResponse</a>, <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html">Models and Mappings</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] 
--- * items [ListOfModel] <p>Gets the current <a>Model</a> resource in the collection.</p>
+-- * items [ListOfModel] <p>The current page of elements from this collection.</p>
 -- @return Models structure as a key-value pair table
 function M.Models(args)
 	assert(args, "You must provide an argument table when creating Models")
@@ -4510,67 +4877,6 @@ function M.Models(args)
 		["items"] = args["items"],
 	}
 	asserts.AssertModels(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.UpdateMethodResponseRequest = { ["resourceId"] = true, ["statusCode"] = true, ["restApiId"] = true, ["patchOperations"] = true, ["httpMethod"] = true, nil }
-
-function asserts.AssertUpdateMethodResponseRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateMethodResponseRequest to be of type 'table'")
-	assert(struct["restApiId"], "Expected key restApiId to exist in table")
-	assert(struct["resourceId"], "Expected key resourceId to exist in table")
-	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
-	assert(struct["statusCode"], "Expected key statusCode to exist in table")
-	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
-	if struct["statusCode"] then asserts.AssertStatusCode(struct["statusCode"]) end
-	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
-	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
-	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.UpdateMethodResponseRequest[k], "UpdateMethodResponseRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UpdateMethodResponseRequest
--- <p>A request to update an existing <a>MethodResponse</a> resource.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * resourceId [String] <p>The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.</p>
--- * statusCode [StatusCode] <p>The status code for the <a>MethodResponse</a> resource.</p>
--- * restApiId [String] <p>The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.</p>
--- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
--- * httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
--- Required key: restApiId
--- Required key: resourceId
--- Required key: httpMethod
--- Required key: statusCode
--- @return UpdateMethodResponseRequest structure as a key-value pair table
-function M.UpdateMethodResponseRequest(args)
-	assert(args, "You must provide an argument table when creating UpdateMethodResponseRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-        ["{resource_id}"] = args["resourceId"],
-        ["{status_code}"] = args["statusCode"],
-        ["{restapi_id}"] = args["restApiId"],
-        ["{http_method}"] = args["httpMethod"],
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["resourceId"] = args["resourceId"],
-		["statusCode"] = args["statusCode"],
-		["restApiId"] = args["restApiId"],
-		["patchOperations"] = args["patchOperations"],
-		["httpMethod"] = args["httpMethod"],
-	}
-	asserts.AssertUpdateMethodResponseRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4597,8 +4903,8 @@ end
 -- <p>Request to delete an existing <a>Authorizer</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Authorizer</a> resource.</p>
--- * authorizerId [String] <p>The identifier of the <a>Authorizer</a> resource.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * authorizerId [String] <p>[Required] The identifier of the <a>Authorizer</a> resource.</p>
 -- Required key: restApiId
 -- Required key: authorizerId
 -- @return DeleteAuthorizerRequest structure as a key-value pair table
@@ -4625,6 +4931,95 @@ function M.DeleteAuthorizerRequest(args)
     }
 end
 
+keys.GetVpcLinkRequest = { ["vpcLinkId"] = true, nil }
+
+function asserts.AssertGetVpcLinkRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetVpcLinkRequest to be of type 'table'")
+	assert(struct["vpcLinkId"], "Expected key vpcLinkId to exist in table")
+	if struct["vpcLinkId"] then asserts.AssertString(struct["vpcLinkId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetVpcLinkRequest[k], "GetVpcLinkRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetVpcLinkRequest
+-- <p>Gets a specified VPC link under the caller's account in a region.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vpcLinkId [String] <p>[Required] The identifier of the <a>VpcLink</a>. It is used in an <a>Integration</a> to reference this <a>VpcLink</a>.</p>
+-- Required key: vpcLinkId
+-- @return GetVpcLinkRequest structure as a key-value pair table
+function M.GetVpcLinkRequest(args)
+	assert(args, "You must provide an argument table when creating GetVpcLinkRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vpclink_id}"] = args["vpcLinkId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["vpcLinkId"] = args["vpcLinkId"],
+	}
+	asserts.AssertGetVpcLinkRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GatewayResponse = { ["responseType"] = true, ["responseParameters"] = true, ["defaultResponse"] = true, ["responseTemplates"] = true, ["statusCode"] = true, nil }
+
+function asserts.AssertGatewayResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GatewayResponse to be of type 'table'")
+	if struct["responseType"] then asserts.AssertGatewayResponseType(struct["responseType"]) end
+	if struct["responseParameters"] then asserts.AssertMapOfStringToString(struct["responseParameters"]) end
+	if struct["defaultResponse"] then asserts.AssertBoolean(struct["defaultResponse"]) end
+	if struct["responseTemplates"] then asserts.AssertMapOfStringToString(struct["responseTemplates"]) end
+	if struct["statusCode"] then asserts.AssertStatusCode(struct["statusCode"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GatewayResponse[k], "GatewayResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GatewayResponse
+-- <p>A gateway response of a given response type and status code, with optional response parameters and mapping templates.</p> <div class="remarks"> For more information about valid gateway response types, see <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/supported-gateway-response-types.html">Gateway Response Types Supported by API Gateway</a> <div class="example"> <h4>Example: Get a Gateway Response of a given response type</h4> <h5>Request</h5> <p>This example shows how to get a gateway response of the <code>MISSING_AUTHENTICATION_TOKEN</code> type.</p> <pre><code>GET /restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN HTTP/1.1 Host: beta-apigateway.us-east-1.amazonaws.com Content-Type: application/json X-Amz-Date: 20170503T202516Z Authorization: AWS4-HMAC-SHA256 Credential={access-key-id}/20170503/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=1b52460e3159c1a26cff29093855d50ea141c1c5b937528fecaf60f51129697a Cache-Control: no-cache Postman-Token: 3b2a1ce9-c848-2e26-2e2f-9c2caefbed45 </code></pre> <p>The response type is specified as a URL path.</p> <h5>Response</h5> <p>The successful operation returns the <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-gatewayresponse-{rel}.html", "name": "gatewayresponse", "templated": true }, "self": { "href": "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" }, "gatewayresponse:delete": { "href": "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" } }, "defaultResponse": false, "responseParameters": { "gatewayresponse.header.x-request-path": "method.request.path.petId", "gatewayresponse.header.Access-Control-Allow-Origin": "&apos;a.b.c&apos;", "gatewayresponse.header.x-request-query": "method.request.querystring.q", "gatewayresponse.header.x-request-header": "method.request.header.Accept" }, "responseTemplates": { "application/json": "{\n \"message\": $context.error.messageString,\n \"type\": \"$context.error.responseType\",\n \"stage\": \"$context.stage\",\n \"resourcePath\": \"$context.resourcePath\",\n \"stageVariables.a\": \"$stageVariables.a\",\n \"statusCode\": \"&apos;404&apos;\"\n}" }, "responseType": "MISSING_AUTHENTICATION_TOKEN", "statusCode": "404" }</code></pre> <p></p> </div> </div> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/customize-gateway-responses.html">Customize Gateway Responses</a> </div>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * responseType [GatewayResponseType] <p>The response type of the associated <a>GatewayResponse</a>. Valid values are <ul><li>ACCESS_DENIED</li><li>API_CONFIGURATION_ERROR</li><li>AUTHORIZER_FAILURE</li><li> AUTHORIZER_CONFIGURATION_ERROR</li><li>BAD_REQUEST_PARAMETERS</li><li>BAD_REQUEST_BODY</li><li>DEFAULT_4XX</li><li>DEFAULT_5XX</li><li>EXPIRED_TOKEN</li><li>INVALID_SIGNATURE</li><li>INTEGRATION_FAILURE</li><li>INTEGRATION_TIMEOUT</li><li>INVALID_API_KEY</li><li>MISSING_AUTHENTICATION_TOKEN</li><li> QUOTA_EXCEEDED</li><li>REQUEST_TOO_LARGE</li><li>RESOURCE_NOT_FOUND</li><li>THROTTLED</li><li>UNAUTHORIZED</li><li>UNSUPPORTED_MEDIA_TYPE</li></ul> </p>
+-- * responseParameters [MapOfStringToString] <p>Response parameters (paths, query strings and headers) of the <a>GatewayResponse</a> as a string-to-string map of key-value pairs.</p>
+-- * defaultResponse [Boolean] <p>A Boolean flag to indicate whether this <a>GatewayResponse</a> is the default gateway response (<code>true</code>) or not (<code>false</code>). A default gateway response is one generated by API Gateway without any customization by an API developer. </p>
+-- * responseTemplates [MapOfStringToString] <p>Response templates of the <a>GatewayResponse</a> as a string-to-string map of key-value pairs.</p>
+-- * statusCode [StatusCode] <p>The HTTP status code for this <a>GatewayResponse</a>.</p>
+-- @return GatewayResponse structure as a key-value pair table
+function M.GatewayResponse(args)
+	assert(args, "You must provide an argument table when creating GatewayResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["responseType"] = args["responseType"],
+		["responseParameters"] = args["responseParameters"],
+		["defaultResponse"] = args["defaultResponse"],
+		["responseTemplates"] = args["responseTemplates"],
+		["statusCode"] = args["statusCode"],
+	}
+	asserts.AssertGatewayResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.CreateAuthorizerRequest = { ["authType"] = true, ["restApiId"] = true, ["name"] = true, ["providerARNs"] = true, ["authorizerUri"] = true, ["identityValidationExpression"] = true, ["authorizerResultTtlInSeconds"] = true, ["authorizerCredentials"] = true, ["identitySource"] = true, ["type"] = true, nil }
 
 function asserts.AssertCreateAuthorizerRequest(struct)
@@ -4633,7 +5028,6 @@ function asserts.AssertCreateAuthorizerRequest(struct)
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["name"], "Expected key name to exist in table")
 	assert(struct["type"], "Expected key type to exist in table")
-	assert(struct["identitySource"], "Expected key identitySource to exist in table")
 	if struct["authType"] then asserts.AssertString(struct["authType"]) end
 	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	if struct["name"] then asserts.AssertString(struct["name"]) end
@@ -4653,20 +5047,19 @@ end
 -- <p>Request to add a new <a>Authorizer</a> to an existing <a>RestApi</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * authType [String] <p>Optional customer-defined field, used in Swagger imports/exports. Has no functional impact.</p>
--- * restApiId [String] <p>The <a>RestApi</a> identifier under which the <a>Authorizer</a> will be created.</p>
+-- * authType [String] <p>Optional customer-defined field, used in OpenAPI imports and exports without functional impact.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * name [String] <p>[Required] The name of the authorizer.</p>
--- * providerARNs [ListOfARNs] <p>A list of the Cognito Your User Pool authorizer's provider ARNs.</p>
--- * authorizerUri [String] <p>[Required] Specifies the authorizer's Uniform Resource Identifier (URI).</p>
--- * identityValidationExpression [String] <p>A validation expression for the incoming identity.</p>
--- * authorizerResultTtlInSeconds [NullableInteger] <p>The TTL of cached authorizer results.</p>
--- * authorizerCredentials [String] <p>Specifies the credentials required for the authorizer, if any.</p>
--- * identitySource [String] <p>[Required] The source of the identity in an incoming request.</p>
--- * type [AuthorizerType] <p>[Required] The type of the authorizer.</p>
+-- * providerARNs [ListOfARNs] <p>A list of the Amazon Cognito user pool ARNs for the <code>COGNITO_USER_POOLS</code> authorizer. Each element is of this format: <code>arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}</code>. For a <code>TOKEN</code> or <code>REQUEST</code> authorizer, this is not defined. </p>
+-- * authorizerUri [String] <p>Specifies the authorizer's Uniform Resource Identifier (URI). For <code>TOKEN</code> or <code>REQUEST</code> authorizers, this must be a well-formed Lambda function URI, for example, <code>arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations</code>. In general, the URI has this form <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>, where <code>{region}</code> is the same as the region hosting the Lambda function, <code>path</code> indicates that the remaining substring in the URI should be treated as the path to the resource, including the initial <code>/</code>. For Lambda functions, this is usually of the form <code>/2015-03-31/functions/[FunctionARN]/invocations</code>.</p>
+-- * identityValidationExpression [String] <p>A validation expression for the incoming identity token. For <code>TOKEN</code> authorizers, this value is a regular expression. API Gateway will match the <code>aud</code> field of the incoming token from the client against the specified regular expression. It will invoke the authorizer's Lambda function when there is a match. Otherwise, it will return a 401 Unauthorized response without calling the Lambda function. The validation expression does not apply to the <code>REQUEST</code> authorizer.</p>
+-- * authorizerResultTtlInSeconds [NullableInteger] <p>The TTL in seconds of cached authorizer results. If it equals 0, authorization caching is disabled. If it is greater than 0, API Gateway will cache authorizer responses. If this field is not set, the default value is 300. The maximum value is 3600, or 1 hour.</p>
+-- * authorizerCredentials [String] <p>Specifies the required credentials as an IAM role for API Gateway to invoke the authorizer. To specify an IAM role for API Gateway to assume, use the role's Amazon Resource Name (ARN). To use resource-based permissions on the Lambda function, specify null.</p>
+-- * identitySource [String] <p>The identity source for which authorization is requested. <ul><li>For a <code>TOKEN</code> or <code>COGNITO_USER_POOLS</code> authorizer, this is required and specifies the request header mapping expression for the custom header holding the authorization token submitted by the client. For example, if the token header name is <code>Auth</code>, the header mapping expression is <code>method.request.header.Auth</code>.</li><li>For the <code>REQUEST</code> authorizer, this is required when authorization caching is enabled. The value is a comma-separated string of one or more mapping expressions of the specified request parameters. For example, if an <code>Auth</code> header, a <code>Name</code> query string parameter are defined as identity sources, this value is <code>method.request.header.Auth, method.request.querystring.Name</code>. These parameters will be used to derive the authorization caching key and to perform runtime validation of the <code>REQUEST</code> authorizer by verifying all of the identity-related request parameters are present, not null and non-empty. Only when this is true does the authorizer invoke the authorizer Lambda function, otherwise, it returns a 401 Unauthorized response without calling the Lambda function. The valid value is a string of comma-separated mapping expressions of the specified request parameters. When the authorization caching is not enabled, this property is optional.</li></ul></p>
+-- * type [AuthorizerType] <p>[Required] The authorizer type. Valid values are <code>TOKEN</code> for a Lambda function using a single authorization token submitted in a custom header, <code>REQUEST</code> for a Lambda function using incoming request parameters, and <code>COGNITO_USER_POOLS</code> for using an Amazon Cognito user pool.</p>
 -- Required key: restApiId
 -- Required key: name
 -- Required key: type
--- Required key: identitySource
 -- @return CreateAuthorizerRequest structure as a key-value pair table
 function M.CreateAuthorizerRequest(args)
 	assert(args, "You must provide an argument table when creating CreateAuthorizerRequest")
@@ -4723,8 +5116,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * cacheTtlInSeconds [Integer] <p>Specifies the time to live (TTL), in seconds, for cached responses. The higher the TTL, the longer the response will be cached. The PATCH path for this setting is <code>/{method_setting_key}/caching/ttlInSeconds</code>, and the value is an integer.</p>
--- * loggingLevel [String] <p>Specifies the logging level for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is <code>/{method_setting_key}/logging/loglevel</code>, and the available levels are <code>OFF</code>, <code>ERROR</code>, and <code>INFO</code>.</p>
--- * dataTraceEnabled [Boolean] <p>Specifies whether data trace logging is enabled for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is <code>/{method_setting_key}/logging/dataTrace</code>, and the value is a Boolean.</p>
+-- * loggingLevel [String] <p>Specifies the logging level for this method, which affects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is <code>/{method_setting_key}/logging/loglevel</code>, and the available levels are <code>OFF</code>, <code>ERROR</code>, and <code>INFO</code>.</p>
+-- * dataTraceEnabled [Boolean] <p>Specifies whether data trace logging is enabled for this method, which affects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is <code>/{method_setting_key}/logging/dataTrace</code>, and the value is a Boolean.</p>
 -- * metricsEnabled [Boolean] <p>Specifies whether Amazon CloudWatch metrics are enabled for this method. The PATCH path for this setting is <code>/{method_setting_key}/metrics/enabled</code>, and the value is a Boolean.</p>
 -- * unauthorizedCacheControlHeaderStrategy [UnauthorizedCacheControlHeaderStrategy] <p>Specifies how to handle unauthorized requests for cache invalidation. The PATCH path for this setting is <code>/{method_setting_key}/caching/unauthorizedCacheControlHeaderStrategy</code>, and the available values are <code>FAIL_WITH_403</code>, <code>SUCCEED_WITH_RESPONSE_HEADER</code>, <code>SUCCEED_WITHOUT_RESPONSE_HEADER</code>.</p>
 -- * throttlingRateLimit [Double] <p>Specifies the throttling rate limit. The PATCH path for this setting is <code>/{method_setting_key}/throttling/rateLimit</code>, and the value is a double.</p>
@@ -4781,8 +5174,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] <p>The current pagination position in the paged result set.</p>
--- * restApiId [String] <p>[Required] The identifier of an API of the to-be-retrieved documentation versions.</p>
--- * limit [NullableInteger] <p>The maximum number of returned results per page.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * limit [NullableInteger] <p>The maximum number of returned results per page. The default value is 25 and the maximum value is 500.</p>
 -- Required key: restApiId
 -- @return GetDocumentationVersionsRequest structure as a key-value pair table
 function M.GetDocumentationVersionsRequest(args)
@@ -4832,10 +5225,10 @@ end
 -- <p>A request to delete an existing <a>MethodResponse</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * resourceId [String] <p>The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.</p>
--- * statusCode [StatusCode] <p>The status code identifier for the <a>MethodResponse</a> resource.</p>
--- * restApiId [String] <p>The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.</p>
--- * httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
+-- * resourceId [String] <p>[Required] The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.</p>
+-- * statusCode [StatusCode] <p>[Required] The status code identifier for the <a>MethodResponse</a> resource.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * httpMethod [String] <p>[Required] The HTTP verb of the <a>Method</a> resource.</p>
 -- Required key: restApiId
 -- Required key: resourceId
 -- Required key: httpMethod
@@ -4891,12 +5284,12 @@ end
 -- <p>The GET request to get the usage data of a usage plan in a specified time interval.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * startDate [String] <p>The starting date (e.g., 2016-01-01) of the usage data.</p>
+-- * startDate [String] <p>[Required] The starting date (e.g., 2016-01-01) of the usage data.</p>
 -- * keyId [String] <p>The Id of the API key associated with the resultant usage data.</p>
--- * usagePlanId [String] <p>The Id of the usage plan associated with the usage data.</p>
--- * limit [NullableInteger] <p>The maximum number of returned results per page.</p>
+-- * usagePlanId [String] <p>[Required] The Id of the usage plan associated with the usage data.</p>
+-- * limit [NullableInteger] <p>The maximum number of returned results per page. The default value is 25 and the maximum value is 500.</p>
 -- * position [String] <p>The current pagination position in the paged result set.</p>
--- * endDate [String] <p>The ending date (e.g., 2016-12-31) of the usage data.</p>
+-- * endDate [String] <p>[Required] The ending date (e.g., 2016-12-31) of the usage data.</p>
 -- Required key: usagePlanId
 -- Required key: startDate
 -- Required key: endDate
@@ -4952,7 +5345,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * requestValidatorId [String] <p>[Required] The identifier of <a>RequestValidator</a> to be updated.</p>
--- * restApiId [String] <p>[Required] The identifier of the <a>RestApi</a> for which the given <a>RequestValidator</a> is updated.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required key: restApiId
 -- Required key: requestValidatorId
@@ -5001,9 +5394,9 @@ end
 -- <p>Represents a delete integration request.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * resourceId [String] <p>Specifies a delete integration request's resource identifier.</p>
--- * restApiId [String] <p>Specifies a delete integration request's API identifier.</p>
--- * httpMethod [String] <p>Specifies a delete integration request's HTTP method.</p>
+-- * resourceId [String] <p>[Required] Specifies a delete integration request's resource identifier.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * httpMethod [String] <p>[Required] Specifies a delete integration request's HTTP method.</p>
 -- Required key: restApiId
 -- Required key: resourceId
 -- Required key: httpMethod
@@ -5050,7 +5443,7 @@ end
 -- <p>A request to change information about an <a>ApiKey</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * apiKey [String] <p>The identifier of the <a>ApiKey</a> resource to be updated.</p>
+-- * apiKey [String] <p>[Required] The identifier of the <a>ApiKey</a> resource to be updated.</p>
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required key: apiKey
 -- @return UpdateApiKeyRequest structure as a key-value pair table
@@ -5076,7 +5469,7 @@ function M.UpdateApiKeyRequest(args)
     }
 end
 
-keys.TestInvokeMethodRequest = { ["body"] = true, ["clientCertificateId"] = true, ["restApiId"] = true, ["httpMethod"] = true, ["resourceId"] = true, ["pathWithQueryString"] = true, ["headers"] = true, ["stageVariables"] = true, nil }
+keys.TestInvokeMethodRequest = { ["body"] = true, ["clientCertificateId"] = true, ["restApiId"] = true, ["httpMethod"] = true, ["resourceId"] = true, ["pathWithQueryString"] = true, ["headers"] = true, ["multiValueHeaders"] = true, ["stageVariables"] = true, nil }
 
 function asserts.AssertTestInvokeMethodRequest(struct)
 	assert(struct)
@@ -5090,7 +5483,8 @@ function asserts.AssertTestInvokeMethodRequest(struct)
 	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
 	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
 	if struct["pathWithQueryString"] then asserts.AssertString(struct["pathWithQueryString"]) end
-	if struct["headers"] then asserts.AssertMapOfHeaderValues(struct["headers"]) end
+	if struct["headers"] then asserts.AssertMapOfStringToString(struct["headers"]) end
+	if struct["multiValueHeaders"] then asserts.AssertMapOfStringToList(struct["multiValueHeaders"]) end
 	if struct["stageVariables"] then asserts.AssertMapOfStringToString(struct["stageVariables"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.TestInvokeMethodRequest[k], "TestInvokeMethodRequest contains unknown key " .. tostring(k))
@@ -5103,11 +5497,12 @@ end
 -- Valid keys:
 -- * body [String] <p>The simulated request body of an incoming invocation request.</p>
 -- * clientCertificateId [String] <p>A <a>ClientCertificate</a> identifier to use in the test invocation. API Gateway will use the certificate when making the HTTPS request to the defined back-end endpoint.</p>
--- * restApiId [String] <p>Specifies a test invoke method request's API identifier.</p>
--- * httpMethod [String] <p>Specifies a test invoke method request's HTTP method.</p>
--- * resourceId [String] <p>Specifies a test invoke method request's resource ID.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * httpMethod [String] <p>[Required] Specifies a test invoke method request's HTTP method.</p>
+-- * resourceId [String] <p>[Required] Specifies a test invoke method request's resource ID.</p>
 -- * pathWithQueryString [String] <p>The URI path, including query string, of the simulated invocation request. Use this to specify path parameters and query string parameters.</p>
--- * headers [MapOfHeaderValues] <p>A key-value map of headers to simulate an incoming invocation request.</p>
+-- * headers [MapOfStringToString] <p>A key-value map of headers to simulate an incoming invocation request.</p>
+-- * multiValueHeaders [MapOfStringToList] <p>The headers as a map from string to list of values to simulate an incoming invocation request.</p>
 -- * stageVariables [MapOfStringToString] <p>A key-value map of stage variables to simulate an invocation on a deployed <a>Stage</a>.</p>
 -- Required key: restApiId
 -- Required key: resourceId
@@ -5132,46 +5527,10 @@ function M.TestInvokeMethodRequest(args)
 		["resourceId"] = args["resourceId"],
 		["pathWithQueryString"] = args["pathWithQueryString"],
 		["headers"] = args["headers"],
+		["multiValueHeaders"] = args["multiValueHeaders"],
 		["stageVariables"] = args["stageVariables"],
 	}
 	asserts.AssertTestInvokeMethodRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ConflictException = { ["message"] = true, nil }
-
-function asserts.AssertConflictException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ConflictException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ConflictException[k], "ConflictException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ConflictException
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [String] 
--- @return ConflictException structure as a key-value pair table
-function M.ConflictException(args)
-	assert(args, "You must provide an argument table when creating ConflictException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertConflictException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5199,8 +5558,8 @@ end
 -- <p>Request to update an existing model in an existing <a>RestApi</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * modelName [String] <p>The name of the model to update.</p>
--- * restApiId [String] <p>The <a>RestApi</a> identifier under which the model exists.</p>
+-- * modelName [String] <p>[Required] The name of the model to update.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required key: restApiId
 -- Required key: modelName
@@ -5245,11 +5604,11 @@ function asserts.AssertUpdateDeploymentRequest(struct)
 end
 
 --- Create a structure of type UpdateDeploymentRequest
--- <p>Requests Amazon API Gateway to change information about a <a>Deployment</a> resource.</p>
+-- <p>Requests API Gateway to change information about a <a>Deployment</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * deploymentId [String] <p>The replacement identifier for the <a>Deployment</a> resource to change information about.</p>
--- * restApiId [String] <p>The replacement identifier of the <a>RestApi</a> resource for the <a>Deployment</a> resource to change information about.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required key: restApiId
 -- Required key: deploymentId
@@ -5270,6 +5629,52 @@ function M.UpdateDeploymentRequest(args)
 		["patchOperations"] = args["patchOperations"],
 	}
 	asserts.AssertUpdateDeploymentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteGatewayResponseRequest = { ["responseType"] = true, ["restApiId"] = true, nil }
+
+function asserts.AssertDeleteGatewayResponseRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteGatewayResponseRequest to be of type 'table'")
+	assert(struct["restApiId"], "Expected key restApiId to exist in table")
+	assert(struct["responseType"], "Expected key responseType to exist in table")
+	if struct["responseType"] then asserts.AssertGatewayResponseType(struct["responseType"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteGatewayResponseRequest[k], "DeleteGatewayResponseRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteGatewayResponseRequest
+-- <p>Clears any customization of a <a>GatewayResponse</a> of a specified response type on the given <a>RestApi</a> and resets it with the default settings.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * responseType [GatewayResponseType] <p>[Required] <p>The response type of the associated <a>GatewayResponse</a>. Valid values are <ul><li>ACCESS_DENIED</li><li>API_CONFIGURATION_ERROR</li><li>AUTHORIZER_FAILURE</li><li> AUTHORIZER_CONFIGURATION_ERROR</li><li>BAD_REQUEST_PARAMETERS</li><li>BAD_REQUEST_BODY</li><li>DEFAULT_4XX</li><li>DEFAULT_5XX</li><li>EXPIRED_TOKEN</li><li>INVALID_SIGNATURE</li><li>INTEGRATION_FAILURE</li><li>INTEGRATION_TIMEOUT</li><li>INVALID_API_KEY</li><li>MISSING_AUTHENTICATION_TOKEN</li><li> QUOTA_EXCEEDED</li><li>REQUEST_TOO_LARGE</li><li>RESOURCE_NOT_FOUND</li><li>THROTTLED</li><li>UNAUTHORIZED</li><li>UNSUPPORTED_MEDIA_TYPE</li></ul> </p></p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- Required key: restApiId
+-- Required key: responseType
+-- @return DeleteGatewayResponseRequest structure as a key-value pair table
+function M.DeleteGatewayResponseRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteGatewayResponseRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{response_type}"] = args["responseType"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["responseType"] = args["responseType"],
+		["restApiId"] = args["restApiId"],
+	}
+	asserts.AssertDeleteGatewayResponseRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5299,11 +5704,11 @@ end
 -- <p>A PUT request to update an existing API, with external API definitions specified as the request body.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * body [Blob] <p>The PUT request body containing external API definitions. Currently, only Swagger definition JSON files are supported.</p>
+-- * body [Blob] <p>[Required] The PUT request body containing external API definitions. Currently, only OpenAPI definition JSON/YAML files are supported. The maximum size of the API definition file is 2MB.</p>
 -- * failOnWarnings [Boolean] <p>A query parameter to indicate whether to rollback the API update (<code>true</code>) or not (<code>false</code>) when a warning is encountered. The default value is <code>false</code>.</p>
--- * restApiId [String] <p>The identifier of the <a>RestApi</a> to be updated. </p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * mode [PutMode] <p>The <code>mode</code> query parameter to specify the update mode. Valid values are "merge" and "overwrite". By default, the update mode is "merge".</p>
--- * parameters [MapOfStringToString] <p>Custom headers supplied as part of the request. </p>
+-- * parameters [MapOfStringToString] <p>Custom header parameters as part of the request. For example, to exclude <a>DocumentationParts</a> from an imported API, set <code>ignore=documentation</code> as a <code>parameters</code> value, as in the AWS CLI command of <code>aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'</code>.</p>
 -- Required key: restApiId
 -- Required key: body
 -- @return PutRestApiRequest structure as a key-value pair table
@@ -5335,6 +5740,55 @@ function M.PutRestApiRequest(args)
     }
 end
 
+keys.UpdateGatewayResponseRequest = { ["responseType"] = true, ["restApiId"] = true, ["patchOperations"] = true, nil }
+
+function asserts.AssertUpdateGatewayResponseRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateGatewayResponseRequest to be of type 'table'")
+	assert(struct["restApiId"], "Expected key restApiId to exist in table")
+	assert(struct["responseType"], "Expected key responseType to exist in table")
+	if struct["responseType"] then asserts.AssertGatewayResponseType(struct["responseType"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateGatewayResponseRequest[k], "UpdateGatewayResponseRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateGatewayResponseRequest
+-- <p>Updates a <a>GatewayResponse</a> of a specified response type on the given <a>RestApi</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * responseType [GatewayResponseType] <p>[Required] <p>The response type of the associated <a>GatewayResponse</a>. Valid values are <ul><li>ACCESS_DENIED</li><li>API_CONFIGURATION_ERROR</li><li>AUTHORIZER_FAILURE</li><li> AUTHORIZER_CONFIGURATION_ERROR</li><li>BAD_REQUEST_PARAMETERS</li><li>BAD_REQUEST_BODY</li><li>DEFAULT_4XX</li><li>DEFAULT_5XX</li><li>EXPIRED_TOKEN</li><li>INVALID_SIGNATURE</li><li>INTEGRATION_FAILURE</li><li>INTEGRATION_TIMEOUT</li><li>INVALID_API_KEY</li><li>MISSING_AUTHENTICATION_TOKEN</li><li> QUOTA_EXCEEDED</li><li>REQUEST_TOO_LARGE</li><li>RESOURCE_NOT_FOUND</li><li>THROTTLED</li><li>UNAUTHORIZED</li><li>UNSUPPORTED_MEDIA_TYPE</li></ul> </p></p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- Required key: restApiId
+-- Required key: responseType
+-- @return UpdateGatewayResponseRequest structure as a key-value pair table
+function M.UpdateGatewayResponseRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateGatewayResponseRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{response_type}"] = args["responseType"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["responseType"] = args["responseType"],
+		["restApiId"] = args["restApiId"],
+		["patchOperations"] = args["patchOperations"],
+	}
+	asserts.AssertUpdateGatewayResponseRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetSdkRequest = { ["sdkType"] = true, ["restApiId"] = true, ["parameters"] = true, ["stageName"] = true, nil }
 
 function asserts.AssertGetSdkRequest(struct)
@@ -5356,10 +5810,10 @@ end
 -- <p>Request a new generated client SDK for a <a>RestApi</a> and <a>Stage</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * sdkType [String] <p>The language for the generated SDK. Currently <code>javascript</code>, <code>android</code>, and <code>objectivec</code> (for iOS) are supported.</p>
--- * restApiId [String] <p>The identifier of the <a>RestApi</a> that the SDK will use.</p>
--- * parameters [MapOfStringToString] <p>A key-value map of query string parameters that specify properties of the SDK, depending on the requested <code>sdkType</code>. For <code>sdkType</code> of <code>objectivec</code>, a parameter named <code>classPrefix</code> is required. For <code>sdkType</code> of <code>android</code>, parameters named <code>groupId</code>, <code>artifactId</code>, <code>artifactVersion</code>, and <code>invokerPackage</code> are required.</p>
--- * stageName [String] <p>The name of the <a>Stage</a> that the SDK will use.</p>
+-- * sdkType [String] <p>[Required] The language for the generated SDK. Currently <code>java</code>, <code>javascript</code>, <code>android</code>, <code>objectivec</code> (for iOS), <code>swift</code> (for iOS), and <code>ruby</code> are supported.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * parameters [MapOfStringToString] <p>A string-to-string key-value map of query parameters <code>sdkType</code>-dependent properties of the SDK. For <code>sdkType</code> of <code>objectivec</code> or <code>swift</code>, a parameter named <code>classPrefix</code> is required. For <code>sdkType</code> of <code>android</code>, parameters named <code>groupId</code>, <code>artifactId</code>, <code>artifactVersion</code>, and <code>invokerPackage</code> are required. For <code>sdkType</code> of <code>java</code>, parameters named <code>serviceName</code> and <code>javaPackageName</code> are required. </p>
+-- * stageName [String] <p>[Required] The name of the <a>Stage</a> that the SDK will use.</p>
 -- Required key: restApiId
 -- Required key: stageName
 -- Required key: sdkType
@@ -5407,11 +5861,11 @@ function asserts.AssertUpdateUsageRequest(struct)
 end
 
 --- Create a structure of type UpdateUsageRequest
--- <p>The PATCH request to grant a temporary extension to the reamining quota of a usage plan associated with a specified API key.</p>
+-- <p>The PATCH request to grant a temporary extension to the remaining quota of a usage plan associated with a specified API key.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * keyId [String] <p>The identifier of the API key associated with the usage plan in which a temporary extension is granted to the remaining quota.</p>
--- * usagePlanId [String] <p>The Id of the usage plan associated with the usage data.</p>
+-- * keyId [String] <p>[Required] The identifier of the API key associated with the usage plan in which a temporary extension is granted to the remaining quota.</p>
+-- * usagePlanId [String] <p>[Required] The Id of the usage plan associated with the usage data.</p>
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required key: usagePlanId
 -- Required key: keyId
@@ -5456,8 +5910,8 @@ end
 -- <p>A reference to a unique stage identified in the format <code>{restApiId}/{stage}</code>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>A list of <a>Stage</a> resources that are associated with the <a>ApiKey</a> resource.</p>
--- * stageName [String] <p>The stage name in the <a>RestApi</a> that the stage key references.</p>
+-- * restApiId [String] <p>The string identifier of the associated <a>RestApi</a>.</p>
+-- * stageName [String] <p>The stage name associated with the stage key.</p>
 -- @return StageKey structure as a key-value pair table
 function M.StageKey(args)
 	assert(args, "You must provide an argument table when creating StageKey")
@@ -5502,10 +5956,10 @@ end
 -- <p>Request to add a new <a>Model</a> to an existing <a>RestApi</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * contentType [String] <p>The content-type for the model.</p>
--- * schema [String] <p>The schema for the model. For <code>application/json</code> models, this should be <a href="http://json-schema.org/documentation.html" target="_blank">JSON-schema draft v4</a> model.</p>
--- * restApiId [String] <p>The <a>RestApi</a> identifier under which the <a>Model</a> will be created.</p>
--- * name [String] <p>The name of the model.</p>
+-- * contentType [String] <p>[Required] The content-type for the model.</p>
+-- * schema [String] <p>The schema for the model. For <code>application/json</code> models, this should be <a href="https://tools.ietf.org/html/draft-zyp-json-schema-04" target="_blank">JSON schema draft 4</a> model.</p>
+-- * restApiId [String] <p>[Required] The <a>RestApi</a> identifier under which the <a>Model</a> will be created.</p>
+-- * name [String] <p>[Required] The name of the model. Must be alphanumeric.</p>
 -- * description [String] <p>The description of the model.</p>
 -- Required key: restApiId
 -- Required key: name
@@ -5549,11 +6003,11 @@ function asserts.AssertRequestValidators(struct)
 end
 
 --- Create a structure of type RequestValidators
--- <p>A collection of <a>RequestValidator</a> resources of a given <a>RestApi</a>.</p> <div class="remarks"> <p>In Swagger, the <a>RequestValidators</a> of an API is defined by the <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validators.html">x-amazon-apigateway-request-validators</a> extension.</p> </div> <div class="seeAlso"><a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html">Enable Basic Request Validation in API Gateway</a></div>
+-- <p>A collection of <a>RequestValidator</a> resources of a given <a>RestApi</a>.</p> <div class="remarks"> <p>In OpenAPI, the <a>RequestValidators</a> of an API is defined by the <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validators.html">x-amazon-apigateway-request-validators</a> extension.</p> </div> <div class="seeAlso"><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html">Enable Basic Request Validation in API Gateway</a></div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] 
--- * items [ListOfRequestValidator] <p>The current page of <a>RequestValidator</a> resources in the <a>RequestValidators</a> collection.</p>
+-- * items [ListOfRequestValidator] <p>The current page of elements from this collection.</p>
 -- @return RequestValidators structure as a key-value pair table
 function M.RequestValidators(args)
 	assert(args, "You must provide an argument table when creating RequestValidators")
@@ -5601,11 +6055,11 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * responseModels [MapOfStringToString] <p>Specifies the <a>Model</a> resources used for the response's content type. Response models are represented as a key/value map, with a content type as the key and a <a>Model</a> name as the value.</p>
--- * restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
--- * resourceId [String] <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
--- * httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
--- * responseParameters [MapOfStringToBoolean] <p>A key-value map specifying required or optional response parameters that Amazon API Gateway can send back to the caller. A key defines a method response header name and the associated value is a Boolean flag indicating whether the method response parameter is required or not. The method response header names must match the pattern of <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. The response parameter names defined here are available in the integration response to be mapped from an integration response header expressed in <code>integration.response.header.{name}</code>, a static value enclosed within a pair of single quotes (e.g., <code>'application/json'</code>), or a JSON expression from the back-end response payload in the form of <code>integration.response.body.{JSON-expression}</code>, where <code>JSON-expression</code> is a valid JSON expression without the <code>$</code> prefix.)</p>
--- * statusCode [StatusCode] <p>The method response's status code.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * resourceId [String] <p>[Required] The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
+-- * httpMethod [String] <p>[Required] The HTTP verb of the <a>Method</a> resource.</p>
+-- * responseParameters [MapOfStringToBoolean] <p>A key-value map specifying required or optional response parameters that API Gateway can send back to the caller. A key defines a method response header name and the associated value is a Boolean flag indicating whether the method response parameter is required or not. The method response header names must match the pattern of <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. The response parameter names defined here are available in the integration response to be mapped from an integration response header expressed in <code>integration.response.header.{name}</code>, a static value enclosed within a pair of single quotes (e.g., <code>'application/json'</code>), or a JSON expression from the back-end response payload in the form of <code>integration.response.body.{JSON-expression}</code>, where <code>JSON-expression</code> is a valid JSON expression without the <code>$</code> prefix.)</p>
+-- * statusCode [StatusCode] <p>[Required] The method response's status code.</p>
 -- Required key: restApiId
 -- Required key: resourceId
 -- Required key: httpMethod
@@ -5655,12 +6109,12 @@ function asserts.AssertGetDeploymentsRequest(struct)
 end
 
 --- Create a structure of type GetDeploymentsRequest
--- <p>Requests Amazon API Gateway to get information about a <a>Deployments</a> collection.</p>
+-- <p>Requests API Gateway to get information about a <a>Deployments</a> collection.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] <p>The current pagination position in the paged result set.</p>
--- * restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the collection of <a>Deployment</a> resources to get information about.</p>
--- * limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * limit [NullableInteger] <p>The maximum number of returned results per page. The default value is 25 and the maximum value is 500.</p>
 -- Required key: restApiId
 -- @return GetDeploymentsRequest structure as a key-value pair table
 function M.GetDeploymentsRequest(args)
@@ -5688,7 +6142,7 @@ function M.GetDeploymentsRequest(args)
     }
 end
 
-keys.PutIntegrationRequest = { ["passthroughBehavior"] = true, ["restApiId"] = true, ["cacheKeyParameters"] = true, ["requestParameters"] = true, ["integrationHttpMethod"] = true, ["resourceId"] = true, ["uri"] = true, ["httpMethod"] = true, ["contentHandling"] = true, ["requestTemplates"] = true, ["cacheNamespace"] = true, ["credentials"] = true, ["type"] = true, nil }
+keys.PutIntegrationRequest = { ["passthroughBehavior"] = true, ["restApiId"] = true, ["cacheKeyParameters"] = true, ["requestParameters"] = true, ["integrationHttpMethod"] = true, ["resourceId"] = true, ["connectionId"] = true, ["uri"] = true, ["connectionType"] = true, ["httpMethod"] = true, ["contentHandling"] = true, ["requestTemplates"] = true, ["cacheNamespace"] = true, ["credentials"] = true, ["type"] = true, ["timeoutInMillis"] = true, nil }
 
 function asserts.AssertPutIntegrationRequest(struct)
 	assert(struct)
@@ -5703,35 +6157,41 @@ function asserts.AssertPutIntegrationRequest(struct)
 	if struct["requestParameters"] then asserts.AssertMapOfStringToString(struct["requestParameters"]) end
 	if struct["integrationHttpMethod"] then asserts.AssertString(struct["integrationHttpMethod"]) end
 	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["connectionId"] then asserts.AssertString(struct["connectionId"]) end
 	if struct["uri"] then asserts.AssertString(struct["uri"]) end
+	if struct["connectionType"] then asserts.AssertConnectionType(struct["connectionType"]) end
 	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
 	if struct["contentHandling"] then asserts.AssertContentHandlingStrategy(struct["contentHandling"]) end
 	if struct["requestTemplates"] then asserts.AssertMapOfStringToString(struct["requestTemplates"]) end
 	if struct["cacheNamespace"] then asserts.AssertString(struct["cacheNamespace"]) end
 	if struct["credentials"] then asserts.AssertString(struct["credentials"]) end
 	if struct["type"] then asserts.AssertIntegrationType(struct["type"]) end
+	if struct["timeoutInMillis"] then asserts.AssertNullableInteger(struct["timeoutInMillis"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.PutIntegrationRequest[k], "PutIntegrationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutIntegrationRequest
--- <p>Represents a put integration request.</p>
+-- <p>Sets up a method's integration.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * passthroughBehavior [String] <p>Specifies the pass-through behavior for incoming requests based on the Content-Type header in the request, and the available mapping templates specified as the <code>requestTemplates</code> property on the Integration resource. There are three valid values: <code>WHEN_NO_MATCH</code>, <code>WHEN_NO_TEMPLATES</code>, and <code>NEVER</code>. </p> <ul> <li><p><code>WHEN_NO_MATCH</code> passes the request body for unmapped content types through to the integration back end without transformation.</p></li> <li><p><code>NEVER</code> rejects unmapped content types with an HTTP 415 'Unsupported Media Type' response.</p></li> <li><p><code>WHEN_NO_TEMPLATES</code> allows pass-through when the integration has NO content types mapped to templates. However if there is at least one content type defined, unmapped content types will be rejected with the same 415 response.</p></li> </ul>
--- * restApiId [String] <p>Specifies a put integration request's API identifier.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * cacheKeyParameters [ListOfString] <p>Specifies a put integration input's cache key parameters.</p>
 -- * requestParameters [MapOfStringToString] <p>A key-value map specifying request parameters that are passed from the method request to the back end. The key is an integration request parameter name and the associated value is a method request parameter value or static value that must be enclosed within single quotes and pre-encoded as required by the back end. The method request parameter value must match the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> must be a valid and unique method request parameter name.</p>
 -- * integrationHttpMethod [String] <p>Specifies a put integration HTTP method. When the integration type is HTTP or AWS, this field is required.</p>
--- * resourceId [String] <p>Specifies a put integration request's resource ID.</p>
--- * uri [String] <p>Specifies a put integration input's Uniform Resource Identifier (URI). When the integration type is HTTP or AWS, this field is required. For integration with Lambda as an AWS service proxy, this value is of the 'arn:aws:apigateway:&lt;region&gt;:lambda:path/2015-03-31/functions/&lt;functionArn&gt;/invocations' format.</p>
--- * httpMethod [String] <p>Specifies a put integration request's HTTP method.</p>
+-- * resourceId [String] <p>[Required] Specifies a put integration request's resource ID.</p>
+-- * connectionId [String] <p>The (<a href="https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id"><code>id</code></a>) of the <a>VpcLink</a> used for the integration when <code>connectionType=VPC_LINK</code> and undefined, otherwise.</p>
+-- * uri [String] <p>Specifies Uniform Resource Identifier (URI) of the integration endpoint.</p> <ul> <li><p> For <code>HTTP</code> or <code>HTTP_PROXY</code> integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the <a target="_blank" href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">RFC-3986 specification</a>, for either standard integration, where <code>connectionType</code> is not <code>VPC_LINK</code>, or private integration, where <code>connectionType</code> is <code>VPC_LINK</code>. For a private HTTP integration, the URI is not used for routing. </p> </li> <li><p> For <code>AWS</code> or <code>AWS_PROXY</code> integrations, the URI is of the form <code>arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}</code>. Here, <code>{Region}</code> is the API Gateway region (e.g., <code>us-east-1</code>); <code>{service}</code> is the name of the integrated AWS service (e.g., <code>s3</code>); and <code>{subdomain}</code> is a designated subdomain supported by certain AWS service for fast host-name lookup. <code>action</code> can be used for an AWS service action-based API, using an <code>Action={name}&amp;{p1}={v1}&amp;p2={v2}...</code> query string. The ensuing <code>{service_api}</code> refers to a supported action <code>{name}</code> plus any required input parameters. Alternatively, <code>path</code> can be used for an AWS service path-based API. The ensuing <code>service_api</code> refers to the path to an AWS service resource, including the region of the integrated AWS service, if applicable. For example, for integration with the S3 API of <code><a href="https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html">GetObject</a></code>, the <code>uri</code> can be either <code>arn:aws:apigateway:us-west-2:s3:action/GetObject&amp;Bucket={bucket}&amp;Key={key}</code> or <code>arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}</code></p> </li></ul>
+-- * connectionType [ConnectionType] <p>The type of the network connection to the integration endpoint. The valid value is <code>INTERNET</code> for connections through the public routable internet or <code>VPC_LINK</code> for private connections between API Gateway and a network load balancer in a VPC. The default value is <code>INTERNET</code>.</p>
+-- * httpMethod [String] <p>[Required] Specifies a put integration request's HTTP method.</p>
 -- * contentHandling [ContentHandlingStrategy] <p>Specifies how to handle request payload content type conversions. Supported values are <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p> <ul> <li><p><code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the corresponding binary blob.</p></li> <li><p><code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.</p></li> </ul> <p>If this property is not defined, the request payload will be passed through from the method request to integration request without modification, provided that the <code>passthroughBehaviors</code> is configured to support payload pass-through.</p>
 -- * requestTemplates [MapOfStringToString] <p>Represents a map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client. The content type value is the key in this map, and the template (as a String) is the value.</p>
 -- * cacheNamespace [String] <p>Specifies a put integration input's cache namespace.</p>
 -- * credentials [String] <p>Specifies whether credentials are required for a put integration.</p>
--- * type [IntegrationType] <p>Specifies a put integration input's type.</p>
+-- * type [IntegrationType] <p>[Required] Specifies a put integration input's type.</p>
+-- * timeoutInMillis [NullableInteger] <p>Custom timeout between 50 and 29,000 milliseconds. The default value is 29,000 milliseconds or 29 seconds.</p>
 -- Required key: restApiId
 -- Required key: resourceId
 -- Required key: httpMethod
@@ -5755,13 +6215,16 @@ function M.PutIntegrationRequest(args)
 		["requestParameters"] = args["requestParameters"],
 		["integrationHttpMethod"] = args["integrationHttpMethod"],
 		["resourceId"] = args["resourceId"],
+		["connectionId"] = args["connectionId"],
 		["uri"] = args["uri"],
+		["connectionType"] = args["connectionType"],
 		["httpMethod"] = args["httpMethod"],
 		["contentHandling"] = args["contentHandling"],
 		["requestTemplates"] = args["requestTemplates"],
 		["cacheNamespace"] = args["cacheNamespace"],
 		["credentials"] = args["credentials"],
 		["type"] = args["type"],
+		["timeoutInMillis"] = args["timeoutInMillis"],
 	}
 	asserts.AssertPutIntegrationRequest(all_args)
 	return {
@@ -5791,8 +6254,8 @@ end
 -- <p>Request to update an existing <a>Authorizer</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Authorizer</a> resource.</p>
--- * authorizerId [String] <p>The identifier of the <a>Authorizer</a> resource.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * authorizerId [String] <p>[Required] The identifier of the <a>Authorizer</a> resource.</p>
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required key: restApiId
 -- Required key: authorizerId
@@ -5839,7 +6302,7 @@ end
 -- <p>Gets a documentation snapshot of an API.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>[Required] The identifier of the API of the to-be-retrieved documentation snapshot.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * documentationVersion [String] <p>[Required] The version identifier of the to-be-retrieved documentation snapshot.</p>
 -- Required key: restApiId
 -- Required key: documentationVersion
@@ -5887,7 +6350,7 @@ end
 -- <p>Creates a new documentation version of a given API.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>[Required] Specifies the API identifier of the to-be-created documentation version.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * stageName [String] <p>The stage name to be associated with the new documentation snapshot.</p>
 -- * documentationVersion [String] <p>[Required] The version identifier of the new snapshot.</p>
 -- * description [String] <p>A description about the new documentation snapshot.</p>
@@ -5935,7 +6398,7 @@ end
 -- <p>Request to update an existing <a>RestApi</a> resource in your collection.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>The ID of the <a>RestApi</a> you want to update.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required key: restApiId
 -- @return UpdateRestApiRequest structure as a key-value pair table
@@ -5953,6 +6416,46 @@ function M.UpdateRestApiRequest(args)
 		["patchOperations"] = args["patchOperations"],
 	}
 	asserts.AssertUpdateRestApiRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.AccessLogSettings = { ["destinationArn"] = true, ["format"] = true, nil }
+
+function asserts.AssertAccessLogSettings(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected AccessLogSettings to be of type 'table'")
+	if struct["destinationArn"] then asserts.AssertString(struct["destinationArn"]) end
+	if struct["format"] then asserts.AssertString(struct["format"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.AccessLogSettings[k], "AccessLogSettings contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type AccessLogSettings
+-- <p>Access log settings, including the access log format and access log destination ARN.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * destinationArn [String] <p>The ARN of the CloudWatch Logs log group to receive access logs.</p>
+-- * format [String] <p>A single line format of the access logs of data, as specified by selected <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html#context-variable-reference">$context variables</a>. The format must include at least <code>$context.requestId</code>.</p>
+-- @return AccessLogSettings structure as a key-value pair table
+function M.AccessLogSettings(args)
+	assert(args, "You must provide an argument table when creating AccessLogSettings")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["destinationArn"] = args["destinationArn"],
+		["format"] = args["format"],
+	}
+	asserts.AssertAccessLogSettings(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5980,8 +6483,8 @@ end
 -- <p>Request to change information about a <a>Resource</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * resourceId [String] <p>The identifier of the <a>Resource</a> resource.</p>
--- * restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Resource</a> resource.</p>
+-- * resourceId [String] <p>[Required] The identifier of the <a>Resource</a> resource.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required key: restApiId
 -- Required key: resourceId
@@ -6037,12 +6540,12 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * contentHandling [ContentHandlingStrategy] <p>Specifies how to handle response payload content type conversions. Supported values are <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p> <ul> <li><p><code>CONVERT_TO_BINARY</code>: Converts a response payload from a Base64-encoded string to the corresponding binary blob.</p></li> <li><p><code>CONVERT_TO_TEXT</code>: Converts a response payload from a binary blob to a Base64-encoded string.</p></li> </ul> <p>If this property is not defined, the response payload will be passed through from the integration response to the method response without modification.</p>
--- * restApiId [String] <p>Specifies a put integration response request's API identifier.</p>
--- * resourceId [String] <p>Specifies a put integration response request's resource identifier.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * resourceId [String] <p>[Required] Specifies a put integration response request's resource identifier.</p>
 -- * responseTemplates [MapOfStringToString] <p>Specifies a put integration response's templates.</p>
--- * httpMethod [String] <p>Specifies a put integration response request's HTTP method.</p>
+-- * httpMethod [String] <p>[Required] Specifies a put integration response request's HTTP method.</p>
 -- * selectionPattern [String] <p>Specifies the selection pattern of a put integration response.</p>
--- * statusCode [StatusCode] <p>Specifies the status code that is used to map the integration response to an existing <a>MethodResponse</a>.</p>
+-- * statusCode [StatusCode] <p>[Required] Specifies the status code that is used to map the integration response to an existing <a>MethodResponse</a>.</p>
 -- * responseParameters [MapOfStringToString] <p>A key-value map specifying response parameters that are passed to the method response from the back end. The key is a method response header parameter name and the mapped value is an integration response header value, a static value enclosed within a pair of single quotes, or a JSON expression from the integration response body. The mapping key must match the pattern of <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. The mapped non-static value must match the pattern of <code>integration.response.header.{name}</code> or <code>integration.response.body.{JSON-expression}</code>, where <code>name</code> must be a valid and unique response header name and <code>JSON-expression</code> a valid JSON expression without the <code>$</code> prefix.</p>
 -- Required key: restApiId
 -- Required key: resourceId
@@ -6101,8 +6604,8 @@ end
 -- Valid keys:
 -- * position [String] <p>The current pagination position in the paged result set.</p>
 -- * embed [ListOfString] <p>A query parameter used to retrieve the specified resources embedded in the returned <a>Resources</a> resource in the response. This <code>embed</code> parameter value is a list of comma-separated strings. Currently, the request supports only retrieval of the embedded <a>Method</a> resources this way. The query parameter value must be a single-valued list and contain the <code>"methods"</code> string. For example, <code>GET /restapis/{restapi_id}/resources?embed=methods</code>.</p>
--- * restApiId [String] <p>The <a>RestApi</a> identifier for the Resource.</p>
--- * limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * limit [NullableInteger] <p>The maximum number of returned results per page. The default value is 25 and the maximum value is 500.</p>
 -- Required key: restApiId
 -- @return GetResourcesRequest structure as a key-value pair table
 function M.GetResourcesRequest(args)
@@ -6151,8 +6654,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] <p>The current pagination position in the paged result set.</p>
--- * limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
--- * domainName [String] <p>The domain name of a <a>BasePathMapping</a> resource.</p>
+-- * limit [NullableInteger] <p>The maximum number of returned results per page. The default value is 25 and the maximum value is 500.</p>
+-- * domainName [String] <p>[Required] The domain name of a <a>BasePathMapping</a> resource.</p>
 -- Required key: domainName
 -- @return GetBasePathMappingsRequest structure as a key-value pair table
 function M.GetBasePathMappingsRequest(args)
@@ -6180,42 +6683,48 @@ function M.GetBasePathMappingsRequest(args)
     }
 end
 
-keys.Integration = { ["integrationResponses"] = true, ["passthroughBehavior"] = true, ["cacheKeyParameters"] = true, ["requestParameters"] = true, ["uri"] = true, ["httpMethod"] = true, ["contentHandling"] = true, ["requestTemplates"] = true, ["cacheNamespace"] = true, ["credentials"] = true, ["type"] = true, nil }
+keys.Integration = { ["integrationResponses"] = true, ["passthroughBehavior"] = true, ["timeoutInMillis"] = true, ["requestParameters"] = true, ["connectionId"] = true, ["uri"] = true, ["connectionType"] = true, ["httpMethod"] = true, ["contentHandling"] = true, ["requestTemplates"] = true, ["cacheNamespace"] = true, ["credentials"] = true, ["type"] = true, ["cacheKeyParameters"] = true, nil }
 
 function asserts.AssertIntegration(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Integration to be of type 'table'")
 	if struct["integrationResponses"] then asserts.AssertMapOfIntegrationResponse(struct["integrationResponses"]) end
 	if struct["passthroughBehavior"] then asserts.AssertString(struct["passthroughBehavior"]) end
-	if struct["cacheKeyParameters"] then asserts.AssertListOfString(struct["cacheKeyParameters"]) end
+	if struct["timeoutInMillis"] then asserts.AssertInteger(struct["timeoutInMillis"]) end
 	if struct["requestParameters"] then asserts.AssertMapOfStringToString(struct["requestParameters"]) end
+	if struct["connectionId"] then asserts.AssertString(struct["connectionId"]) end
 	if struct["uri"] then asserts.AssertString(struct["uri"]) end
+	if struct["connectionType"] then asserts.AssertConnectionType(struct["connectionType"]) end
 	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
 	if struct["contentHandling"] then asserts.AssertContentHandlingStrategy(struct["contentHandling"]) end
 	if struct["requestTemplates"] then asserts.AssertMapOfStringToString(struct["requestTemplates"]) end
 	if struct["cacheNamespace"] then asserts.AssertString(struct["cacheNamespace"]) end
 	if struct["credentials"] then asserts.AssertString(struct["credentials"]) end
 	if struct["type"] then asserts.AssertIntegrationType(struct["type"]) end
+	if struct["cacheKeyParameters"] then asserts.AssertListOfString(struct["cacheKeyParameters"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Integration[k], "Integration contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Integration
--- <p>Represents an HTTP, HTTP_PROXY, AWS, AWS_PROXY, or Mock integration.</p> <div class="remarks">In the API Gateway console, the built-in Lambda integration is an AWS integration.</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
+-- <p>Represents an HTTP, HTTP_PROXY, AWS, AWS_PROXY, or Mock integration.</p> <div class="remarks">In the API Gateway console, the built-in Lambda integration is an AWS integration.</div> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * integrationResponses [MapOfIntegrationResponse] <p>Specifies the integration's responses.</p> <div class="remarks"> <p/> <h4>Example: Get integration responses of a method</h4> <h5>Request</h5> <p/> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160607T191449Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160607/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} </code></pre> <h5>Response</h5> <p>The successful response returns <code>200 OK</code> status and a payload as follows:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" }</code></pre> <p/> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
--- * passthroughBehavior [String] <div> <p> Specifies how the method request body of an unmapped content type will be passed through the integration request to the back end without transformation. A content type is unmapped if no mapping template is defined in the integration or the content type does not match any of the mapped content types, as specified in <code>requestTemplates</code>. There are three valid values: <code>WHEN_NO_MATCH</code>, <code>WHEN_NO_TEMPLATES</code>, and <code>NEVER</code>. </p> <ul> <li> <code>WHEN_NO_MATCH</code> passes the method request body through the integration request to the back end without transformation when the method request content type does not match any content type associated with the mapping templates defined in the integration request. </li> <li> <code>WHEN_NO_TEMPLATES</code> passes the method request body through the integration request to the back end without transformation when no mapping template is defined in the integration request. If a template is defined when this option is selected, the method request of an unmapped content-type will be rejected with an HTTP <code>415 Unsupported Media Type</code> response. </li> <li> <code>NEVER</code> rejects the method request with an HTTP <code>415 Unsupported Media Type</code> response when either the method request content type does not match any content type associated with the mapping templates defined in the integration request or no mapping template is defined in the integration request. </li> </ul> </div>
--- * cacheKeyParameters [ListOfString] <p>Specifies the integration's cache key parameters.</p>
+-- * integrationResponses [MapOfIntegrationResponse] <p>Specifies the integration's responses.</p> <div class="remarks"> <p/> <h4>Example: Get integration responses of a method</h4> <h5>Request</h5> <p/> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160607T191449Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160607/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} </code></pre> <h5>Response</h5> <p>The successful response returns <code>200 OK</code> status and a payload as follows:</p> <pre><code>{ "_links": { "curies": { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" }</code></pre> <p/> </div> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
+-- * passthroughBehavior [String] <div> <p> Specifies how the method request body of an unmapped content type will be passed through the integration request to the back end without transformation. A content type is unmapped if no mapping template is defined in the integration or the content type does not match any of the mapped content types, as specified in <code>requestTemplates</code>. The valid value is one of the following: </p> <ul> <li> <code>WHEN_NO_MATCH</code>: passes the method request body through the integration request to the back end without transformation when the method request content type does not match any content type associated with the mapping templates defined in the integration request. </li> <li> <code>WHEN_NO_TEMPLATES</code>: passes the method request body through the integration request to the back end without transformation when no mapping template is defined in the integration request. If a template is defined when this option is selected, the method request of an unmapped content-type will be rejected with an HTTP <code>415 Unsupported Media Type</code> response. </li> <li> <code>NEVER</code>: rejects the method request with an HTTP <code>415 Unsupported Media Type</code> response when either the method request content type does not match any content type associated with the mapping templates defined in the integration request or no mapping template is defined in the integration request. </li> </ul> </div>
+-- * timeoutInMillis [Integer] <p>Custom timeout between 50 and 29,000 milliseconds. The default value is 29,000 milliseconds or 29 seconds.</p>
 -- * requestParameters [MapOfStringToString] <p>A key-value map specifying request parameters that are passed from the method request to the back end. The key is an integration request parameter name and the associated value is a method request parameter value or static value that must be enclosed within single quotes and pre-encoded as required by the back end. The method request parameter value must match the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> must be a valid and unique method request parameter name.</p>
--- * uri [String] <p>Specifies the integration's Uniform Resource Identifier (URI). For HTTP integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier" target="_blank">RFC-3986 specification</a>. For AWS integrations, the URI should be of the form <code>arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}</code>. <code>Region</code>, <code>subdomain</code> and <code>service</code> are used to determine the right endpoint. For AWS services that use the <code>Action=</code> query string parameter, <code>service_api</code> should be a valid action for the desired service. For RESTful AWS service APIs, <code>path</code> is used to indicate that the remaining substring in the URI should be treated as the path to the resource, including the initial <code>/</code>.</p>
+-- * connectionId [String] <p>The (<a href="https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id"><code>id</code></a>) of the <a>VpcLink</a> used for the integration when <code>connectionType=VPC_LINK</code> and undefined, otherwise.</p>
+-- * uri [String] <p>Specifies Uniform Resource Identifier (URI) of the integration endpoint.</p> <ul> <li><p> For <code>HTTP</code> or <code>HTTP_PROXY</code> integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the <a target="_blank" href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">RFC-3986 specification</a>, for either standard integration, where <code>connectionType</code> is not <code>VPC_LINK</code>, or private integration, where <code>connectionType</code> is <code>VPC_LINK</code>. For a private HTTP integration, the URI is not used for routing. </p> </li> <li><p> For <code>AWS</code> or <code>AWS_PROXY</code> integrations, the URI is of the form <code>arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}</code>. Here, <code>{Region}</code> is the API Gateway region (e.g., <code>us-east-1</code>); <code>{service}</code> is the name of the integrated AWS service (e.g., <code>s3</code>); and <code>{subdomain}</code> is a designated subdomain supported by certain AWS service for fast host-name lookup. <code>action</code> can be used for an AWS service action-based API, using an <code>Action={name}&amp;{p1}={v1}&amp;p2={v2}...</code> query string. The ensuing <code>{service_api}</code> refers to a supported action <code>{name}</code> plus any required input parameters. Alternatively, <code>path</code> can be used for an AWS service path-based API. The ensuing <code>service_api</code> refers to the path to an AWS service resource, including the region of the integrated AWS service, if applicable. For example, for integration with the S3 API of <code><a href="https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html">GetObject</a></code>, the <code>uri</code> can be either <code>arn:aws:apigateway:us-west-2:s3:action/GetObject&amp;Bucket={bucket}&amp;Key={key}</code> or <code>arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}</code></p> </li></ul>
+-- * connectionType [ConnectionType] <p>The type of the network connection to the integration endpoint. The valid value is <code>INTERNET</code> for connections through the public routable internet or <code>VPC_LINK</code> for private connections between API Gateway and a network load balancer in a VPC. The default value is <code>INTERNET</code>.</p>
 -- * httpMethod [String] <p>Specifies the integration's HTTP method type.</p>
 -- * contentHandling [ContentHandlingStrategy] <p>Specifies how to handle request payload content type conversions. Supported values are <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p> <ul> <li><p><code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the corresponding binary blob.</p></li> <li><p><code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.</p></li> </ul> <p>If this property is not defined, the request payload will be passed through from the method request to integration request without modification, provided that the <code>passthroughBehaviors</code> is configured to support payload pass-through.</p>
 -- * requestTemplates [MapOfStringToString] <p>Represents a map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client. The content type value is the key in this map, and the template (as a String) is the value.</p>
 -- * cacheNamespace [String] <p>Specifies the integration's cache namespace.</p>
--- * credentials [String] <p>Specifies the credentials required for the integration, if any. For AWS integrations, three options are available. To specify an IAM Role for Amazon API Gateway to assume, use the role's Amazon Resource Name (ARN). To require that the caller's identity be passed through from the request, specify the string <code>arn:aws:iam::\*:user/\*</code>. To use resource-based permissions on supported AWS services, specify null.</p>
--- * type [IntegrationType] <p>Specifies the integration's type. The valid value is <code>HTTP</code> for integrating with an HTTP back end, <code>AWS</code> for any AWS service endpoints, <code>MOCK</code> for testing without actually invoking the back end, <code>HTTP_PROXY</code> for integrating with the HTTP proxy integration, or <code>AWS_PROXY</code> for integrating with the Lambda proxy integration type.</p>
+-- * credentials [String] <p>Specifies the credentials required for the integration, if any. For AWS integrations, three options are available. To specify an IAM Role for API Gateway to assume, use the role's Amazon Resource Name (ARN). To require that the caller's identity be passed through from the request, specify the string <code>arn:aws:iam::\*:user/\*</code>. To use resource-based permissions on supported AWS services, specify null.</p>
+-- * type [IntegrationType] <p>Specifies an API method integration type. The valid value is one of the following:</p> <ul> <li><code>AWS</code>: for integrating the API method request with an AWS service action, including the Lambda function-invoking action. With the Lambda function-invoking action, this is referred to as the Lambda custom integration. With any other AWS service action, this is known as AWS integration.</li> <li><code>AWS_PROXY</code>: for integrating the API method request with the Lambda function-invoking action with the client request passed through as-is. This integration is also referred to as the Lambda proxy integration.</li> <li><code>HTTP</code>: for integrating the API method request with an HTTP endpoint, including a private HTTP endpoint within a VPC. This integration is also referred to as the HTTP custom integration.</li> <li><code>HTTP_PROXY</code>: for integrating the API method request with an HTTP endpoint, including a private HTTP endpoint within a VPC, with the client request passed through as-is. This is also referred to as the HTTP proxy integration.</li> <li><code>MOCK</code>: for integrating the API method request with API Gateway as a "loop-back" endpoint without invoking any backend.</li> </ul> <p>For the HTTP and HTTP proxy integrations, each integration can specify a protocol (<code>http/https</code>), port and path. Standard 80 and 443 ports are supported as well as custom ports above 1024. An HTTP or HTTP proxy integration with a <code>connectionType</code> of <code>VPC_LINK</code> is referred to as a private integration and uses a <a>VpcLink</a> to connect API Gateway to a network load balancer of a VPC.</p>
+-- * cacheKeyParameters [ListOfString] <p>Specifies the integration's cache key parameters.</p>
 -- @return Integration structure as a key-value pair table
 function M.Integration(args)
 	assert(args, "You must provide an argument table when creating Integration")
@@ -6228,15 +6737,18 @@ function M.Integration(args)
 	local all_args = { 
 		["integrationResponses"] = args["integrationResponses"],
 		["passthroughBehavior"] = args["passthroughBehavior"],
-		["cacheKeyParameters"] = args["cacheKeyParameters"],
+		["timeoutInMillis"] = args["timeoutInMillis"],
 		["requestParameters"] = args["requestParameters"],
+		["connectionId"] = args["connectionId"],
 		["uri"] = args["uri"],
+		["connectionType"] = args["connectionType"],
 		["httpMethod"] = args["httpMethod"],
 		["contentHandling"] = args["contentHandling"],
 		["requestTemplates"] = args["requestTemplates"],
 		["cacheNamespace"] = args["cacheNamespace"],
 		["credentials"] = args["credentials"],
 		["type"] = args["type"],
+		["cacheKeyParameters"] = args["cacheKeyParameters"],
 	}
 	asserts.AssertIntegration(all_args)
 	return {
@@ -6260,11 +6772,11 @@ function asserts.AssertRestApis(struct)
 end
 
 --- Create a structure of type RestApis
--- <p>Contains references to your APIs and links that guide you in how to interact with your collection. A collection offers a paginated view of your APIs.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
+-- <p>Contains references to your APIs and links that guide you in how to interact with your collection. A collection offers a paginated view of your APIs.</p> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] 
--- * items [ListOfRestApi] <p>An array of links to the current page of <a>RestApi</a> resources.</p>
+-- * items [ListOfRestApi] <p>The current page of elements from this collection.</p>
 -- @return RestApis structure as a key-value pair table
 function M.RestApis(args)
 	assert(args, "You must provide an argument table when creating RestApis")
@@ -6307,9 +6819,9 @@ end
 -- <p>Creates a new documentation part of a given API.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>[Required] The identifier of an API of the to-be-created documentation part.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * location [DocumentationPartLocation] <p>[Required] The location of the targeted API entity of the to-be-created documentation part.</p>
--- * properties [String] <p>[Required] The new documentation content map of the targeted API entity. Enclosed key-value pairs are API-specific, but only Swagger-compliant key-value pairs can be exported and, hence, published.</p>
+-- * properties [String] <p>[Required] The new documentation content map of the targeted API entity. Enclosed key-value pairs are API-specific, but only OpenAPI-compliant key-value pairs can be exported and, hence, published.</p>
 -- Required key: restApiId
 -- Required key: location
 -- Required key: properties
@@ -6337,6 +6849,52 @@ function M.CreateDocumentationPartRequest(args)
     }
 end
 
+keys.CanarySettings = { ["percentTraffic"] = true, ["deploymentId"] = true, ["useStageCache"] = true, ["stageVariableOverrides"] = true, nil }
+
+function asserts.AssertCanarySettings(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CanarySettings to be of type 'table'")
+	if struct["percentTraffic"] then asserts.AssertDouble(struct["percentTraffic"]) end
+	if struct["deploymentId"] then asserts.AssertString(struct["deploymentId"]) end
+	if struct["useStageCache"] then asserts.AssertBoolean(struct["useStageCache"]) end
+	if struct["stageVariableOverrides"] then asserts.AssertMapOfStringToString(struct["stageVariableOverrides"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CanarySettings[k], "CanarySettings contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CanarySettings
+-- <p>Configuration settings of a canary deployment.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * percentTraffic [Double] <p>The percent (0-100) of traffic diverted to a canary deployment.</p>
+-- * deploymentId [String] <p>The ID of the canary deployment.</p>
+-- * useStageCache [Boolean] <p>A Boolean flag to indicate whether the canary deployment uses the stage cache or not.</p>
+-- * stageVariableOverrides [MapOfStringToString] <p>Stage variables overridden for a canary release deployment, including new stage variables introduced in the canary. These stage variables are represented as a string-to-string map between stage variable names and their values.</p>
+-- @return CanarySettings structure as a key-value pair table
+function M.CanarySettings(args)
+	assert(args, "You must provide an argument table when creating CanarySettings")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["percentTraffic"] = args["percentTraffic"],
+		["deploymentId"] = args["deploymentId"],
+		["useStageCache"] = args["useStageCache"],
+		["stageVariableOverrides"] = args["stageVariableOverrides"],
+	}
+	asserts.AssertCanarySettings(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.CreateBasePathMappingRequest = { ["basePath"] = true, ["stage"] = true, ["restApiId"] = true, ["domainName"] = true, nil }
 
 function asserts.AssertCreateBasePathMappingRequest(struct)
@@ -6354,13 +6912,13 @@ function asserts.AssertCreateBasePathMappingRequest(struct)
 end
 
 --- Create a structure of type CreateBasePathMappingRequest
--- <p>Requests Amazon API Gateway to create a new <a>BasePathMapping</a> resource.</p>
+-- <p>Requests API Gateway to create a new <a>BasePathMapping</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * basePath [String] <p>The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify a base path name after the domain name.</p>
 -- * stage [String] <p>The name of the API's stage that you want to use for this mapping. Leave this blank if you do not want callers to explicitly specify the stage name after any base path name.</p>
--- * restApiId [String] <p>The name of the API that you want to apply this mapping to.</p>
--- * domainName [String] <p>The domain name of the <a>BasePathMapping</a> resource to create.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * domainName [String] <p>[Required] The domain name of the <a>BasePathMapping</a> resource to create.</p>
 -- Required key: domainName
 -- Required key: restApiId
 -- @return CreateBasePathMappingRequest structure as a key-value pair table
@@ -6407,7 +6965,7 @@ end
 -- Valid keys:
 -- * position [String] <p>The current pagination position in the paged result set.</p>
 -- * keyId [String] <p>The identifier of the API key associated with the usage plans.</p>
--- * limit [NullableInteger] <p>The maximum number of returned results per page.</p>
+-- * limit [NullableInteger] <p>The maximum number of returned results per page. The default value is 25 and the maximum value is 500.</p>
 -- @return GetUsagePlansRequest structure as a key-value pair table
 function M.GetUsagePlansRequest(args)
 	assert(args, "You must provide an argument table when creating GetUsagePlansRequest")
@@ -6450,7 +7008,7 @@ end
 -- <p>Get an <a>SdkType</a> instance.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * id [String] <p>The identifier of the queried <a>SdkType</a> instance.</p>
+-- * id [String] <p>[Required] The identifier of the queried <a>SdkType</a> instance.</p>
 -- Required key: id
 -- @return GetSdkTypeRequest structure as a key-value pair table
 function M.GetSdkTypeRequest(args)
@@ -6543,7 +7101,7 @@ function asserts.AssertApiKey(struct)
 end
 
 --- Create a structure of type ApiKey
--- <p>A resource that can be distributed to callers for executing <a>Method</a> resources that require an API key. API keys can be mapped to any <a>Stage</a> on any <a>RestApi</a>, which indicates that the callers with the API key can make requests to that stage.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html">Use API Keys</a> </div>
+-- <p>A resource that can be distributed to callers for executing <a>Method</a> resources that require an API key. API keys can be mapped to any <a>Stage</a> on any <a>RestApi</a>, which indicates that the callers with the API key can make requests to that stage.</p> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html">Use API Keys</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * description [String] <p>The description of the API Key.</p>
@@ -6607,11 +7165,11 @@ end
 -- <p>Represents an update integration response request.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * resourceId [String] <p>Specifies an update integration response request's resource identifier.</p>
--- * statusCode [StatusCode] <p>Specifies an update integration response request's status code.</p>
--- * restApiId [String] <p>Specifies an update integration response request's API identifier.</p>
+-- * resourceId [String] <p>[Required] Specifies an update integration response request's resource identifier.</p>
+-- * statusCode [StatusCode] <p>[Required] Specifies an update integration response request's status code.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
--- * httpMethod [String] <p>Specifies an update integration response request's HTTP method.</p>
+-- * httpMethod [String] <p>[Required] Specifies an update integration response request's HTTP method.</p>
 -- Required key: restApiId
 -- Required key: resourceId
 -- Required key: httpMethod
@@ -6645,6 +7203,137 @@ function M.UpdateIntegrationResponseRequest(args)
     }
 end
 
+keys.GetTagsRequest = { ["position"] = true, ["resourceArn"] = true, ["limit"] = true, nil }
+
+function asserts.AssertGetTagsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetTagsRequest to be of type 'table'")
+	assert(struct["resourceArn"], "Expected key resourceArn to exist in table")
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["resourceArn"] then asserts.AssertString(struct["resourceArn"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetTagsRequest[k], "GetTagsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetTagsRequest
+-- <p>Gets the <a>Tags</a> collection for a given resource.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * position [String] <p>(Not currently supported) The current pagination position in the paged result set.</p>
+-- * resourceArn [String] <p>[Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present, <a>Stage</a> is the only taggable resource.</p>
+-- * limit [NullableInteger] <p>(Not currently supported) The maximum number of returned results per page. The default value is 25 and the maximum value is 500.</p>
+-- Required key: resourceArn
+-- @return GetTagsRequest structure as a key-value pair table
+function M.GetTagsRequest(args)
+	assert(args, "You must provide an argument table when creating GetTagsRequest")
+    local query_args = { 
+        ["position"] = args["position"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+        ["{resource_arn}"] = args["resourceArn"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["position"] = args["position"],
+		["resourceArn"] = args["resourceArn"],
+		["limit"] = args["limit"],
+	}
+	asserts.AssertGetTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteVpcLinkRequest = { ["vpcLinkId"] = true, nil }
+
+function asserts.AssertDeleteVpcLinkRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteVpcLinkRequest to be of type 'table'")
+	assert(struct["vpcLinkId"], "Expected key vpcLinkId to exist in table")
+	if struct["vpcLinkId"] then asserts.AssertString(struct["vpcLinkId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteVpcLinkRequest[k], "DeleteVpcLinkRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteVpcLinkRequest
+-- <p>Deletes an existing <a>VpcLink</a> of a specified identifier.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vpcLinkId [String] <p>[Required] The identifier of the <a>VpcLink</a>. It is used in an <a>Integration</a> to reference this <a>VpcLink</a>.</p>
+-- Required key: vpcLinkId
+-- @return DeleteVpcLinkRequest structure as a key-value pair table
+function M.DeleteVpcLinkRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteVpcLinkRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vpclink_id}"] = args["vpcLinkId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["vpcLinkId"] = args["vpcLinkId"],
+	}
+	asserts.AssertDeleteVpcLinkRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateVpcLinkRequest = { ["vpcLinkId"] = true, ["patchOperations"] = true, nil }
+
+function asserts.AssertUpdateVpcLinkRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateVpcLinkRequest to be of type 'table'")
+	assert(struct["vpcLinkId"], "Expected key vpcLinkId to exist in table")
+	if struct["vpcLinkId"] then asserts.AssertString(struct["vpcLinkId"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateVpcLinkRequest[k], "UpdateVpcLinkRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateVpcLinkRequest
+-- <p>Updates an existing <a>VpcLink</a> of a specified identifier.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vpcLinkId [String] <p>[Required] The identifier of the <a>VpcLink</a>. It is used in an <a>Integration</a> to reference this <a>VpcLink</a>.</p>
+-- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- Required key: vpcLinkId
+-- @return UpdateVpcLinkRequest structure as a key-value pair table
+function M.UpdateVpcLinkRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateVpcLinkRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vpclink_id}"] = args["vpcLinkId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["vpcLinkId"] = args["vpcLinkId"],
+		["patchOperations"] = args["patchOperations"],
+	}
+	asserts.AssertUpdateVpcLinkRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetClientCertificatesRequest = { ["position"] = true, ["limit"] = true, nil }
 
 function asserts.AssertGetClientCertificatesRequest(struct)
@@ -6662,7 +7351,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] <p>The current pagination position in the paged result set.</p>
--- * limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
+-- * limit [NullableInteger] <p>The maximum number of returned results per page. The default value is 25 and the maximum value is 500.</p>
 -- @return GetClientCertificatesRequest structure as a key-value pair table
 function M.GetClientCertificatesRequest(args)
 	assert(args, "You must provide an argument table when creating GetClientCertificatesRequest")
@@ -6679,6 +7368,67 @@ function M.GetClientCertificatesRequest(args)
 		["limit"] = args["limit"],
 	}
 	asserts.AssertGetClientCertificatesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateMethodResponseRequest = { ["resourceId"] = true, ["statusCode"] = true, ["restApiId"] = true, ["patchOperations"] = true, ["httpMethod"] = true, nil }
+
+function asserts.AssertUpdateMethodResponseRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateMethodResponseRequest to be of type 'table'")
+	assert(struct["restApiId"], "Expected key restApiId to exist in table")
+	assert(struct["resourceId"], "Expected key resourceId to exist in table")
+	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
+	assert(struct["statusCode"], "Expected key statusCode to exist in table")
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["statusCode"] then asserts.AssertStatusCode(struct["statusCode"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateMethodResponseRequest[k], "UpdateMethodResponseRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateMethodResponseRequest
+-- <p>A request to update an existing <a>MethodResponse</a> resource.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceId [String] <p>[Required] The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.</p>
+-- * statusCode [StatusCode] <p>[Required] The status code for the <a>MethodResponse</a> resource.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- * httpMethod [String] <p>[Required] The HTTP verb of the <a>Method</a> resource.</p>
+-- Required key: restApiId
+-- Required key: resourceId
+-- Required key: httpMethod
+-- Required key: statusCode
+-- @return UpdateMethodResponseRequest structure as a key-value pair table
+function M.UpdateMethodResponseRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateMethodResponseRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{resource_id}"] = args["resourceId"],
+        ["{status_code}"] = args["statusCode"],
+        ["{restapi_id}"] = args["restApiId"],
+        ["{http_method}"] = args["httpMethod"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["resourceId"] = args["resourceId"],
+		["statusCode"] = args["statusCode"],
+		["restApiId"] = args["restApiId"],
+		["patchOperations"] = args["patchOperations"],
+		["httpMethod"] = args["httpMethod"],
+	}
+	asserts.AssertUpdateMethodResponseRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6706,8 +7456,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] <p>The current pagination position in the paged result set.</p>
--- * restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Authorizers</a> resource.</p>
--- * limit [NullableInteger] <p>The maximum number of returned results per page.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * limit [NullableInteger] <p>The maximum number of returned results per page. The default value is 25 and the maximum value is 500.</p>
 -- Required key: restApiId
 -- @return GetAuthorizersRequest structure as a key-value pair table
 function M.GetAuthorizersRequest(args)
@@ -6751,7 +7501,7 @@ end
 -- <p>Request to delete the specified API from your collection.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>The ID of the <a>RestApi</a> you want to delete.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- Required key: restApiId
 -- @return DeleteRestApiRequest structure as a key-value pair table
 function M.DeleteRestApiRequest(args)
@@ -6790,7 +7540,7 @@ function asserts.AssertDeployment(struct)
 end
 
 --- Create a structure of type Deployment
--- <p>An immutable representation of a <a>RestApi</a> resource that can be called by users using <a>Stages</a>. A deployment must be associated with a <a>Stage</a> for it to be callable over the Internet.</p> <div class="remarks">To create a deployment, call <code>POST</code> on the <a>Deployments</a> resource of a <a>RestApi</a>. To view, update, or delete a deployment, call <code>GET</code>, <code>PATCH</code>, or <code>DELETE</code> on the specified deployment resource (<code>/restapis/{restapi_id}/deployments/{deployment_id}</code>).</div> <div class="seeAlso"><a>RestApi</a>, <a>Deployments</a>, <a>Stage</a>, <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html">AWS CLI</a>, <a href="https://aws.amazon.com/tools/">AWS SDKs</a> </div>
+-- <p>An immutable representation of a <a>RestApi</a> resource that can be called by users using <a>Stages</a>. A deployment must be associated with a <a>Stage</a> for it to be callable over the Internet.</p> <div class="remarks">To create a deployment, call <code>POST</code> on the <a>Deployments</a> resource of a <a>RestApi</a>. To view, update, or delete a deployment, call <code>GET</code>, <code>PATCH</code>, or <code>DELETE</code> on the specified deployment resource (<code>/restapis/{restapi_id}/deployments/{deployment_id}</code>).</div> <div class="seeAlso"><a>RestApi</a>, <a>Deployments</a>, <a>Stage</a>, <a href="https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html">AWS CLI</a>, <a href="https://aws.amazon.com/tools/">AWS SDKs</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * apiSummary [PathToMapOfMethodSnapshot] <p>A summary of the <a>RestApi</a> at the date and time that the deployment resource was created.</p>
@@ -6840,9 +7590,9 @@ end
 -- <p>Request to list information about a resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * resourceId [String] <p>The identifier for the <a>Resource</a> resource.</p>
+-- * resourceId [String] <p>[Required] The identifier for the <a>Resource</a> resource.</p>
 -- * embed [ListOfString] <p>A query parameter to retrieve the specified resources embedded in the returned <a>Resource</a> representation in the response. This <code>embed</code> parameter value is a list of comma-separated strings. Currently, the request supports only retrieval of the embedded <a>Method</a> resources this way. The query parameter value must be a single-valued list and contain the <code>"methods"</code> string. For example, <code>GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods</code>.</p>
--- * restApiId [String] <p>The <a>RestApi</a> identifier for the resource.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- Required key: restApiId
 -- Required key: resourceId
 -- @return GetResourceRequest structure as a key-value pair table
@@ -6889,8 +7639,8 @@ end
 -- <p>Request to delete a <a>Resource</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * resourceId [String] <p>The identifier of the <a>Resource</a> resource.</p>
--- * restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Resource</a> resource.</p>
+-- * resourceId [String] <p>[Required] The identifier of the <a>Resource</a> resource.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- Required key: restApiId
 -- Required key: resourceId
 -- @return DeleteResourceRequest structure as a key-value pair table
@@ -6936,9 +7686,9 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * path [String] <p>The <code>op</code> operation's target, as identified by a <a href="https://tools.ietf.org/html/draft-ietf-appsawg-json-pointer-08">JSON Pointer</a> value that references a location within the targeted resource. For example, if the target resource has an updateable property of <code>{"name":"value"}</code>, the path for this property is <code>/name</code>. If the <code>name</code> property value is a JSON object (e.g., <code>{"name": {"child/name": "child-value"}}</code>), the path for the <code>child/name</code> property will be <code>/name/child~1name</code>. Any slash ("/") character appearing in path names must be escaped with "~1", as shown in the example above. Each <code>op</code> operation can have only one <code>path</code> associated with it.</p>
--- * from [String] <p> Not supported.</p>
--- * value [String] <p>The new target value of the update operation. When using AWS CLI to update a property of a JSON value, enclose the JSON object with a pair of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows shell, see <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json">Using JSON for Parameters</a>.</p>
--- * op [Op] <p>An update operation to be performed with this PATCH request. The valid value can be "add", "remove", or "replace". Not all valid operations are supported for a given resource. Support of the operations depends on specific operational contexts. Attempts to apply an unsupported operation on a resource will return an error message.</p>
+-- * from [String] <p>The <code>copy</code> update operation's source as identified by a <code>JSON-Pointer</code> value referencing the location within the targeted resource to copy the value from. For example, to promote a canary deployment, you copy the canary deployment ID to the affiliated deployment ID by calling a PATCH request on a <a>Stage</a> resource with <code>"op":"copy"</code>, <code>"from":"/canarySettings/deploymentId"</code> and <code>"path":"/deploymentId"</code>.</p>
+-- * value [String] <p>The new target value of the update operation. It is applicable for the <code>add</code> or <code>replace</code> operation. When using AWS CLI to update a property of a JSON value, enclose the JSON object with a pair of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows shell, see <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json">Using JSON for Parameters</a>.</p>
+-- * op [Op] <p> An update operation to be performed with this PATCH request. The valid value can be <code>add</code>, <code>remove</code>, <code>replace</code> or <code>copy</code>. Not all valid operations are supported for a given resource. Support of the operations depends on specific operational contexts. Attempts to apply an unsupported operation on a resource will return an error message.</p>
 -- @return PatchOperation structure as a key-value pair table
 function M.PatchOperation(args)
 	assert(args, "You must provide an argument table when creating PatchOperation")
@@ -6963,12 +7713,13 @@ function M.PatchOperation(args)
     }
 end
 
-keys.ApiStage = { ["apiId"] = true, ["stage"] = true, nil }
+keys.ApiStage = { ["apiId"] = true, ["throttle"] = true, ["stage"] = true, nil }
 
 function asserts.AssertApiStage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ApiStage to be of type 'table'")
 	if struct["apiId"] then asserts.AssertString(struct["apiId"]) end
+	if struct["throttle"] then asserts.AssertMapOfApiStageThrottleSettings(struct["throttle"]) end
 	if struct["stage"] then asserts.AssertString(struct["stage"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ApiStage[k], "ApiStage contains unknown key " .. tostring(k))
@@ -6980,6 +7731,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * apiId [String] <p>API Id of the associated API stage in a usage plan.</p>
+-- * throttle [MapOfApiStageThrottleSettings] <p>Map containing method level throttling information for API stage in a usage plan.</p>
 -- * stage [String] <p>API stage name of the associated API stage in a usage plan.</p>
 -- @return ApiStage structure as a key-value pair table
 function M.ApiStage(args)
@@ -6992,6 +7744,7 @@ function M.ApiStage(args)
     }
 	local all_args = { 
 		["apiId"] = args["apiId"],
+		["throttle"] = args["throttle"],
 		["stage"] = args["stage"],
 	}
 	asserts.AssertApiStage(all_args)
@@ -7022,7 +7775,7 @@ end
 -- <p>The POST request to import API keys from an external source, such as a CSV-formatted file.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * body [Blob] <p>The payload of the POST request to import API keys. For the payload format, see <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-key-file-format.html">API Key File Format</a>.</p>
+-- * body [Blob] <p>The payload of the POST request to import API keys. For the payload format, see <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-key-file-format.html">API Key File Format</a>.</p>
 -- * failOnWarnings [Boolean] <p>A query parameter to indicate whether to rollback <a>ApiKey</a> importation (<code>true</code>) or not (<code>false</code>) when error is encountered.</p>
 -- * format [ApiKeysFormat] <p>A query parameter to specify the input format to imported API keys. Currently, only the <code>csv</code> format is supported.</p>
 -- Required key: body
@@ -7071,8 +7824,8 @@ end
 -- <p>Request to list information about a model in an existing <a>RestApi</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * modelName [String] <p>The name of the model as an identifier.</p>
--- * restApiId [String] <p>The <a>RestApi</a> identifier under which the <a>Model</a> exists.</p>
+-- * modelName [String] <p>[Required] The name of the model as an identifier.</p>
+-- * restApiId [String] <p>[Required] The <a>RestApi</a> identifier under which the <a>Model</a> exists.</p>
 -- * flatten [Boolean] <p>A query parameter of a Boolean value to resolve (<code>true</code>) all external model references and returns a flattened model schema or not (<code>false</code>) The default is <code>false</code>.</p>
 -- Required key: restApiId
 -- Required key: modelName
@@ -7120,8 +7873,8 @@ end
 -- <p>Request to generate a sample mapping template used to transform the payload.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * modelName [String] <p>The name of the model for which to generate a template.</p>
--- * restApiId [String] <p>The ID of the <a>RestApi</a> under which the model exists.</p>
+-- * modelName [String] <p>[Required] The name of the model for which to generate a template.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- Required key: restApiId
 -- Required key: modelName
 -- @return GetModelTemplateRequest structure as a key-value pair table
@@ -7148,7 +7901,7 @@ function M.GetModelTemplateRequest(args)
     }
 end
 
-keys.TestInvokeMethodResponse = { ["status"] = true, ["body"] = true, ["log"] = true, ["latency"] = true, ["headers"] = true, nil }
+keys.TestInvokeMethodResponse = { ["status"] = true, ["body"] = true, ["log"] = true, ["latency"] = true, ["multiValueHeaders"] = true, ["headers"] = true, nil }
 
 function asserts.AssertTestInvokeMethodResponse(struct)
 	assert(struct)
@@ -7157,21 +7910,23 @@ function asserts.AssertTestInvokeMethodResponse(struct)
 	if struct["body"] then asserts.AssertString(struct["body"]) end
 	if struct["log"] then asserts.AssertString(struct["log"]) end
 	if struct["latency"] then asserts.AssertLong(struct["latency"]) end
-	if struct["headers"] then asserts.AssertMapOfHeaderValues(struct["headers"]) end
+	if struct["multiValueHeaders"] then asserts.AssertMapOfStringToList(struct["multiValueHeaders"]) end
+	if struct["headers"] then asserts.AssertMapOfStringToString(struct["headers"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.TestInvokeMethodResponse[k], "TestInvokeMethodResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TestInvokeMethodResponse
--- <p>Represents the response of the test invoke request in the HTTP method.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-test-method.html#how-to-test-method-console">Test API using the API Gateway console</a> </div>
+-- <p>Represents the response of the test invoke request in the HTTP method.</p> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-test-method.html#how-to-test-method-console">Test API using the API Gateway console</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * status [Integer] <p>The HTTP status code.</p>
 -- * body [String] <p>The body of the HTTP response.</p>
--- * log [String] <p>The Amazon API Gateway execution log for the test invoke request.</p>
+-- * log [String] <p>The API Gateway execution log for the test invoke request.</p>
 -- * latency [Long] <p>The execution latency of the test invoke request.</p>
--- * headers [MapOfHeaderValues] <p>The headers of the HTTP response.</p>
+-- * multiValueHeaders [MapOfStringToList] <p>The headers of the HTTP response as a map from string to list of values.</p>
+-- * headers [MapOfStringToString] <p>The headers of the HTTP response.</p>
 -- @return TestInvokeMethodResponse structure as a key-value pair table
 function M.TestInvokeMethodResponse(args)
 	assert(args, "You must provide an argument table when creating TestInvokeMethodResponse")
@@ -7186,6 +7941,7 @@ function M.TestInvokeMethodResponse(args)
 		["body"] = args["body"],
 		["log"] = args["log"],
 		["latency"] = args["latency"],
+		["multiValueHeaders"] = args["multiValueHeaders"],
 		["headers"] = args["headers"],
 	}
 	asserts.AssertTestInvokeMethodResponse(all_args)
@@ -7210,11 +7966,11 @@ function asserts.AssertAuthorizers(struct)
 end
 
 --- Create a structure of type Authorizers
--- <p>Represents a collection of <a>Authorizer</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable custom authorization</a> </div>
+-- <p>Represents a collection of <a>Authorizer</a> resources.</p> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable custom authorization</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] 
--- * items [ListOfAuthorizer] <p>Gets the current list of <a>Authorizer</a> resources in the collection.</p>
+-- * items [ListOfAuthorizer] <p>The current page of elements from this collection.</p>
 -- @return Authorizers structure as a key-value pair table
 function M.Authorizers(args)
 	assert(args, "You must provide an argument table when creating Authorizers")
@@ -7229,46 +7985,6 @@ function M.Authorizers(args)
 		["items"] = args["items"],
 	}
 	asserts.AssertAuthorizers(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.UsagePlanKeys = { ["position"] = true, ["items"] = true, nil }
-
-function asserts.AssertUsagePlanKeys(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UsagePlanKeys to be of type 'table'")
-	if struct["position"] then asserts.AssertString(struct["position"]) end
-	if struct["items"] then asserts.AssertListOfUsagePlanKey(struct["items"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.UsagePlanKeys[k], "UsagePlanKeys contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UsagePlanKeys
--- <p>Represents the collection of usage plan keys added to usage plans for the associated API keys and, possibly, other types of keys.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * position [String] 
--- * items [ListOfUsagePlanKey] <p>Gets the current item of the usage plan keys collection.</p>
--- @return UsagePlanKeys structure as a key-value pair table
-function M.UsagePlanKeys(args)
-	assert(args, "You must provide an argument table when creating UsagePlanKeys")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["position"] = args["position"],
-		["items"] = args["items"],
-	}
-	asserts.AssertUsagePlanKeys(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -7293,14 +8009,14 @@ function asserts.AssertModel(struct)
 end
 
 --- Create a structure of type Model
--- <p>Represents the data structure of a method's request or response payload.</p> <div class="remarks"> <p>A request model defines the data structure of the client-supplied request payload. A response model defines the data structure of the response payload returned by the back end. Although not required, models are useful for mapping payloads between the front end and back end.</p> <p>A model is used for generating an API's SDK, validating the input request body, and creating a skeletal mapping template.</p> </div> <div class="seeAlso"> <a>Method</a>, <a>MethodResponse</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html">Models and Mappings</a> </div>
+-- <p>Represents the data structure of a method's request or response payload.</p> <div class="remarks"> <p>A request model defines the data structure of the client-supplied request payload. A response model defines the data structure of the response payload returned by the back end. Although not required, models are useful for mapping payloads between the front end and back end.</p> <p>A model is used for generating an API's SDK, validating the input request body, and creating a skeletal mapping template.</p> </div> <div class="seeAlso"> <a>Method</a>, <a>MethodResponse</a>, <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html">Models and Mappings</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * description [String] <p>The description of the model.</p>
--- * schema [String] <p>The schema for the model. For <code>application/json</code> models, this should be <a href="http://json-schema.org/documentation.html" target="_blank">JSON-schema draft v4</a> model. Do not include "\*/" characters in the description of any properties because such "\*/" characters may be interpreted as the closing marker for comments in some languages, such as Java or JavaScript, causing the installation of your API's SDK generated by API Gateway to fail.</p>
+-- * schema [String] <p>The schema for the model. For <code>application/json</code> models, this should be <a href="https://tools.ietf.org/html/draft-zyp-json-schema-04" target="_blank">JSON schema draft 4</a> model. Do not include "\*/" characters in the description of any properties because such "\*/" characters may be interpreted as the closing marker for comments in some languages, such as Java or JavaScript, causing the installation of your API's SDK generated by API Gateway to fail.</p>
 -- * contentType [String] <p>The content-type for the model.</p>
 -- * id [String] <p>The identifier for the model resource.</p>
--- * name [String] <p>The name of the model.</p>
+-- * name [String] <p>The name of the model. Must be an alphanumeric string.</p>
 -- @return Model structure as a key-value pair table
 function M.Model(args)
 	assert(args, "You must provide an argument table when creating Model")
@@ -7347,10 +8063,10 @@ end
 -- <p>Request to update an existing <a>Method</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * resourceId [String] <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
+-- * resourceId [String] <p>[Required] The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
--- * restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
--- * httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * httpMethod [String] <p>[Required] The HTTP verb of the <a>Method</a> resource.</p>
 -- Required key: restApiId
 -- Required key: resourceId
 -- Required key: httpMethod
@@ -7381,35 +8097,43 @@ function M.UpdateMethodRequest(args)
     }
 end
 
-keys.NotFoundException = { ["message"] = true, nil }
+keys.TagResourceRequest = { ["resourceArn"] = true, ["tags"] = true, nil }
 
-function asserts.AssertNotFoundException(struct)
+function asserts.AssertTagResourceRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected NotFoundException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
+	assert(type(struct) == "table", "Expected TagResourceRequest to be of type 'table'")
+	assert(struct["resourceArn"], "Expected key resourceArn to exist in table")
+	assert(struct["tags"], "Expected key tags to exist in table")
+	if struct["resourceArn"] then asserts.AssertString(struct["resourceArn"]) end
+	if struct["tags"] then asserts.AssertMapOfStringToString(struct["tags"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.NotFoundException[k], "NotFoundException contains unknown key " .. tostring(k))
+		assert(keys.TagResourceRequest[k], "TagResourceRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type NotFoundException
---  
+--- Create a structure of type TagResourceRequest
+-- <p>Adds or updates a tag on a given resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [String] 
--- @return NotFoundException structure as a key-value pair table
-function M.NotFoundException(args)
-	assert(args, "You must provide an argument table when creating NotFoundException")
+-- * resourceArn [String] <p>[Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present, <a>Stage</a> is the only taggable resource.</p>
+-- * tags [MapOfStringToString] <p>[Required] The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with <code>aws:</code>. The tag value can be up to 256 characters.</p>
+-- Required key: resourceArn
+-- Required key: tags
+-- @return TagResourceRequest structure as a key-value pair table
+function M.TagResourceRequest(args)
+	assert(args, "You must provide an argument table when creating TagResourceRequest")
     local query_args = { 
     }
     local uri_args = { 
+        ["{resource_arn}"] = args["resourceArn"],
     }
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["resourceArn"] = args["resourceArn"],
+		["tags"] = args["tags"],
 	}
-	asserts.AssertNotFoundException(all_args)
+	asserts.AssertTagResourceRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -7437,8 +8161,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * position [String] <p>The current pagination position in the paged result set.</p>
--- * restApiId [String] <p>[Required] The identifier of a <a>RestApi</a> to which the <a>RequestValidators</a> collection belongs.</p>
--- * limit [NullableInteger] <p>The maximum number of returned results per page.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * limit [NullableInteger] <p>The maximum number of returned results per page. The default value is 25 and the maximum value is 500.</p>
 -- Required key: restApiId
 -- @return GetRequestValidatorsRequest structure as a key-value pair table
 function M.GetRequestValidatorsRequest(args)
@@ -7488,10 +8212,10 @@ end
 -- <p>Represents a delete integration response request.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * resourceId [String] <p>Specifies a delete integration response request's resource identifier.</p>
--- * statusCode [StatusCode] <p>Specifies a delete integration response request's status code.</p>
--- * restApiId [String] <p>Specifies a delete integration response request's API identifier.</p>
--- * httpMethod [String] <p>Specifies a delete integration response request's HTTP method.</p>
+-- * resourceId [String] <p>[Required] Specifies a delete integration response request's resource identifier.</p>
+-- * statusCode [StatusCode] <p>[Required] Specifies a delete integration response request's status code.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * httpMethod [String] <p>[Required] Specifies a delete integration response request's HTTP method.</p>
 -- Required key: restApiId
 -- Required key: resourceId
 -- Required key: httpMethod
@@ -7540,7 +8264,7 @@ function asserts.AssertIntegrationResponse(struct)
 end
 
 --- Create a structure of type IntegrationResponse
--- <p>Represents an integration response. The status code must map to an existing <a>MethodResponse</a>, and parameters and templates can be used to transform the back-end response.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
+-- <p>Represents an integration response. The status code must map to an existing <a>MethodResponse</a>, and parameters and templates can be used to transform the back-end response.</p> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * contentHandling [ContentHandlingStrategy] <p>Specifies how to handle response payload content type conversions. Supported values are <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p> <ul> <li><p><code>CONVERT_TO_BINARY</code>: Converts a response payload from a Base64-encoded string to the corresponding binary blob.</p></li> <li><p><code>CONVERT_TO_TEXT</code>: Converts a response payload from a binary blob to a Base64-encoded string.</p></li> </ul> <p>If this property is not defined, the response payload will be passed through from the integration response to the method response without modification.</p>
@@ -7591,8 +8315,8 @@ end
 -- <p>Request to describe a <a>BasePathMapping</a> resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * basePath [String] <p>The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify any base path name after the domain name.</p>
--- * domainName [String] <p>The domain name of the <a>BasePathMapping</a> resource to be described.</p>
+-- * basePath [String] <p>[Required] The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify any base path name after the domain name.</p>
+-- * domainName [String] <p>[Required] The domain name of the <a>BasePathMapping</a> resource to be described.</p>
 -- Required key: domainName
 -- Required key: basePath
 -- @return GetBasePathMappingRequest structure as a key-value pair table
@@ -7638,7 +8362,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * requestValidatorId [String] <p>[Required] The identifier of the <a>RequestValidator</a> to be retrieved.</p>
--- * restApiId [String] <p>[Required] The identifier of the <a>RestApi</a> to which the specified <a>RequestValidator</a> belongs.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- Required key: restApiId
 -- Required key: requestValidatorId
 -- @return GetRequestValidatorRequest structure as a key-value pair table
@@ -7681,7 +8405,7 @@ function asserts.AssertClientCertificate(struct)
 end
 
 --- Create a structure of type ClientCertificate
--- <p>Represents a client certificate used to configure client-side SSL authentication while sending requests to the integration endpoint.</p> <div class="remarks">Client certificates are used authenticate an API by the back-end server. To authenticate an API client (or user), use a custom <a>Authorizer</a>.</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html">Use Client-Side Certificate</a> </div>
+-- <p>Represents a client certificate used to configure client-side SSL authentication while sending requests to the integration endpoint.</p> <div class="remarks">Client certificates are used to authenticate an API by the backend server. To authenticate an API client (or user), use IAM roles and policies, a custom <a>Authorizer</a> or an Amazon Cognito user pool.</div> <div class="seeAlso"> <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html">Use Client-Side Certificate</a> </div>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * pemEncodedCertificate [String] <p>The PEM-encoded public key of the client certificate, which can be used to configure certificate authentication in the integration endpoint .</p>
@@ -7734,9 +8458,9 @@ end
 -- <p>The POST request to create a usage plan key for adding an existing API key to a usage plan.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * keyType [String] <p>The type of a <a>UsagePlanKey</a> resource for a plan customer.</p>
--- * keyId [String] <p>The identifier of a <a>UsagePlanKey</a> resource for a plan customer.</p>
--- * usagePlanId [String] <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-created <a>UsagePlanKey</a> resource representing a plan customer.</p>
+-- * keyType [String] <p>[Required] The type of a <a>UsagePlanKey</a> resource for a plan customer.</p>
+-- * keyId [String] <p>[Required] The identifier of a <a>UsagePlanKey</a> resource for a plan customer.</p>
+-- * usagePlanId [String] <p>[Required] The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-created <a>UsagePlanKey</a> resource representing a plan customer.</p>
 -- Required key: usagePlanId
 -- Required key: keyId
 -- Required key: keyType
@@ -7786,10 +8510,10 @@ end
 -- <p>Represents a get integration response request.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * resourceId [String] <p>Specifies a get integration response request's resource identifier.</p>
--- * statusCode [StatusCode] <p>Specifies a get integration response request's status code.</p>
--- * restApiId [String] <p>Specifies a get integration response request's API identifier.</p>
--- * httpMethod [String] <p>Specifies a get integration response request's HTTP method.</p>
+-- * resourceId [String] <p>[Required] Specifies a get integration response request's resource identifier.</p>
+-- * statusCode [StatusCode] <p>[Required] Specifies a get integration response request's status code.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * httpMethod [String] <p>[Required] Specifies a get integration response request's HTTP method.</p>
 -- Required key: restApiId
 -- Required key: resourceId
 -- Required key: httpMethod
@@ -7842,7 +8566,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * documentationPartId [String] <p>[Required] The identifier of the to-be-updated documentation part.</p>
--- * restApiId [String] <p>[Required] The identifier of an API of the to-be-updated documentation part.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required key: restApiId
 -- Required key: documentationPartId
@@ -7892,8 +8616,8 @@ end
 -- Valid keys:
 -- * position [String] <p>The current pagination position in the paged result set.</p>
 -- * nameQuery [String] <p>A query parameter specifying the name of the to-be-returned usage plan keys.</p>
--- * usagePlanId [String] <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-retrieved <a>UsagePlanKey</a> resource representing a plan customer.</p>
--- * limit [NullableInteger] <p>The maximum number of returned results per page.</p>
+-- * usagePlanId [String] <p>[Required] The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-retrieved <a>UsagePlanKey</a> resource representing a plan customer.</p>
+-- * limit [NullableInteger] <p>The maximum number of returned results per page. The default value is 25 and the maximum value is 500.</p>
 -- Required key: usagePlanId
 -- @return GetUsagePlanKeysRequest structure as a key-value pair table
 function M.GetUsagePlanKeysRequest(args)
@@ -7944,7 +8668,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * path [String] <p>The URL path of the target. It is a valid field for the API entity types of <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value is <code>/</code> for the root resource. When an applicable child entity inherits the content of another entity of the same type with more general specifications of the other <code>location</code> attributes, the child entity's <code>path</code> attribute must match that of the parent entity as a prefix.</p>
--- * type [DocumentationPartType] <p>The type of API entity to which the documentation content applies. It is a valid and required field for API entity types of <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>, <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. Content inheritance does not apply to any entity of the <code>API</code>, <code>AUTHROZER</code>, <code>METHOD</code>, <code>MODEL</code>, <code>REQUEST_BODY</code>, or <code>RESOURCE</code> type.</p>
+-- * type [DocumentationPartType] <p>[Required] The type of API entity to which the documentation content applies. Valid values are <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>, <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. Content inheritance does not apply to any entity of the <code>API</code>, <code>AUTHORIZER</code>, <code>METHOD</code>, <code>MODEL</code>, <code>REQUEST_BODY</code>, or <code>RESOURCE</code> type.</p>
 -- * method [String] <p>The HTTP verb of a method. It is a valid field for the API entity types of <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value is <code>*</code> for any method. When an applicable child entity inherits the content of an entity of the same type with more general specifications of the other <code>location</code> attributes, the child entity's <code>method</code> attribute must match that of the parent entity exactly.</p>
 -- * name [String] <p>The name of the targeted API entity. It is a valid and required field for the API entity types of <code>AUTHORIZER</code>, <code>MODEL</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code> and <code>RESPONSE_HEADER</code>. It is an invalid field for any other entity type.</p>
 -- * statusCode [DocumentationPartLocationStatusCode] <p>The HTTP status code of a response. It is a valid field for the API entity types of <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value is <code>*</code> for any status code. When an applicable child entity inherits the content of an entity of the same type with more general specifications of the other <code>location</code> attributes, the child entity's <code>statusCode</code> attribute must match that of the parent entity exactly.</p>
@@ -7974,6 +8698,58 @@ function M.DocumentationPartLocation(args)
     }
 end
 
+keys.VpcLink = { ["status"] = true, ["description"] = true, ["targetArns"] = true, ["id"] = true, ["statusMessage"] = true, ["name"] = true, nil }
+
+function asserts.AssertVpcLink(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected VpcLink to be of type 'table'")
+	if struct["status"] then asserts.AssertVpcLinkStatus(struct["status"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
+	if struct["targetArns"] then asserts.AssertListOfString(struct["targetArns"]) end
+	if struct["id"] then asserts.AssertString(struct["id"]) end
+	if struct["statusMessage"] then asserts.AssertString(struct["statusMessage"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.VpcLink[k], "VpcLink contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type VpcLink
+-- <p>A API Gateway VPC link for a <a>RestApi</a> to access resources in an Amazon Virtual Private Cloud (VPC).</p> <div class="remarks"> <p><p>To enable access to a resource in an Amazon Virtual Private Cloud through Amazon API Gateway, you, as an API developer, create a <a>VpcLink</a> resource targeted for one or more network load balancers of the VPC and then integrate an API method with a private integration that uses the <a>VpcLink</a>. The private integration has an integration type of <code>HTTP</code> or <code>HTTP_PROXY</code> and has a connection type of <code>VPC_LINK</code>. The integration uses the <code>connectionId</code> property to identify the <a>VpcLink</a> used.</p> </p> </div>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [VpcLinkStatus] <p>The status of the VPC link. The valid values are <code>AVAILABLE</code>, <code>PENDING</code>, <code>DELETING</code>, or <code>FAILED</code>. Deploying an API will wait if the status is <code>PENDING</code> and will fail if the status is <code>DELETING</code>. </p>
+-- * description [String] <p>The description of the VPC link.</p>
+-- * targetArns [ListOfString] <p>The ARNs of network load balancers of the VPC targeted by the VPC link. The network load balancers must be owned by the same AWS account of the API owner.</p>
+-- * id [String] <p>The identifier of the <a>VpcLink</a>. It is used in an <a>Integration</a> to reference this <a>VpcLink</a>.</p>
+-- * statusMessage [String] <p>A description about the VPC link status.</p>
+-- * name [String] <p>The name used to label and identify the VPC link.</p>
+-- @return VpcLink structure as a key-value pair table
+function M.VpcLink(args)
+	assert(args, "You must provide an argument table when creating VpcLink")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["status"] = args["status"],
+		["description"] = args["description"],
+		["targetArns"] = args["targetArns"],
+		["id"] = args["id"],
+		["statusMessage"] = args["statusMessage"],
+		["name"] = args["name"],
+	}
+	asserts.AssertVpcLink(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.UpdateDocumentationVersionRequest = { ["restApiId"] = true, ["documentationVersion"] = true, ["patchOperations"] = true, nil }
 
 function asserts.AssertUpdateDocumentationVersionRequest(struct)
@@ -7993,7 +8769,7 @@ end
 -- <p>Updates an existing documentation version of an API.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * restApiId [String] <p>[Required] The identifier of an API of the to-be-updated documentation version.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>..</p>
 -- * documentationVersion [String] <p>[Required] The version identifier of the to-be-updated documentation version.</p>
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required key: restApiId
@@ -8015,6 +8791,54 @@ function M.UpdateDocumentationVersionRequest(args)
 		["patchOperations"] = args["patchOperations"],
 	}
 	asserts.AssertUpdateDocumentationVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetGatewayResponsesRequest = { ["position"] = true, ["restApiId"] = true, ["limit"] = true, nil }
+
+function asserts.AssertGetGatewayResponsesRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetGatewayResponsesRequest to be of type 'table'")
+	assert(struct["restApiId"], "Expected key restApiId to exist in table")
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetGatewayResponsesRequest[k], "GetGatewayResponsesRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetGatewayResponsesRequest
+-- <p>Gets the <a>GatewayResponses</a> collection on the given <a>RestApi</a>. If an API developer has not added any definitions for gateway responses, the result will be the API Gateway-generated default <a>GatewayResponses</a> collection for the supported response types.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * position [String] <p>The current pagination position in the paged result set. The <a>GatewayResponse</a> collection does not support pagination and the position does not apply here.</p>
+-- * restApiId [String] <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
+-- * limit [NullableInteger] <p>The maximum number of returned results per page. The default value is 25 and the maximum value is 500. The <a>GatewayResponses</a> collection does not support pagination and the limit does not apply here.</p>
+-- Required key: restApiId
+-- @return GetGatewayResponsesRequest structure as a key-value pair table
+function M.GetGatewayResponsesRequest(args)
+	assert(args, "You must provide an argument table when creating GetGatewayResponsesRequest")
+    local query_args = { 
+        ["position"] = args["position"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["position"] = args["position"],
+		["restApiId"] = args["restApiId"],
+		["limit"] = args["limit"],
+	}
+	asserts.AssertGetGatewayResponsesRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -8123,6 +8947,17 @@ function M.CreateApiKeyRequest(args)
     }
 end
 
+function asserts.AssertVpcLinkStatus(str)
+	assert(str)
+	assert(type(str) == "string", "Expected VpcLinkStatus to be of type 'string'")
+end
+
+--  
+function M.VpcLinkStatus(str)
+	asserts.AssertVpcLinkStatus(str)
+	return str
+end
+
 function asserts.AssertDocumentationPartLocationStatusCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DocumentationPartLocationStatusCode to be of type 'string'")
@@ -8134,14 +8969,36 @@ function M.DocumentationPartLocationStatusCode(str)
 	return str
 end
 
+function asserts.AssertLocationStatusType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected LocationStatusType to be of type 'string'")
+end
+
+--  
+function M.LocationStatusType(str)
+	asserts.AssertLocationStatusType(str)
+	return str
+end
+
 function asserts.AssertIntegrationType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IntegrationType to be of type 'string'")
 end
 
--- <p>The integration type. The valid value is <code>HTTP</code> for integrating with an HTTP back end, <code>AWS</code> for any AWS service endpoints, <code>MOCK</code> for testing without actually invoking the back end, <code>HTTP_PROXY</code> for integrating with the HTTP proxy integration, or <code>AWS_PROXY</code> for integrating with the Lambda proxy integration type.</p>
+-- <p>The integration type. The valid value is <code>HTTP</code> for integrating an API method with an HTTP backend; <code>AWS</code> with any AWS service endpoints; <code>MOCK</code> for testing without actually invoking the backend; <code>HTTP_PROXY</code> for integrating with the HTTP proxy integration; <code>AWS_PROXY</code> for integrating with the Lambda proxy integration. </p>
 function M.IntegrationType(str)
 	asserts.AssertIntegrationType(str)
+	return str
+end
+
+function asserts.AssertApiKeySourceType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ApiKeySourceType to be of type 'string'")
+end
+
+--  
+function M.ApiKeySourceType(str)
+	asserts.AssertApiKeySourceType(str)
 	return str
 end
 
@@ -8183,7 +9040,7 @@ function asserts.AssertAuthorizerType(str)
 	assert(type(str) == "string", "Expected AuthorizerType to be of type 'string'")
 end
 
--- <p>The authorizer type. the current value is <code>TOKEN</code> for a Lambda function or <code>COGNITO_USER_POOLS</code> for an Amazon Cognito Your User Pool.</p>
+-- <p>The authorizer type. Valid values are <code>TOKEN</code> for a Lambda function using a single authorization token submitted in a custom header, <code>REQUEST</code> for a Lambda function using incoming request parameters, and <code>COGNITO_USER_POOLS</code> for using an Amazon Cognito user pool.</p>
 function M.AuthorizerType(str)
 	asserts.AssertAuthorizerType(str)
 	return str
@@ -8200,6 +9057,17 @@ function M.CacheClusterStatus(str)
 	return str
 end
 
+function asserts.AssertGatewayResponseType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected GatewayResponseType to be of type 'string'")
+end
+
+--  
+function M.GatewayResponseType(str)
+	asserts.AssertGatewayResponseType(str)
+	return str
+end
+
 function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
@@ -8211,6 +9079,17 @@ function M.String(str)
 	return str
 end
 
+function asserts.AssertConnectionType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ConnectionType to be of type 'string'")
+end
+
+--  
+function M.ConnectionType(str)
+	asserts.AssertConnectionType(str)
+	return str
+end
+
 function asserts.AssertDocumentationPartType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DocumentationPartType to be of type 'string'")
@@ -8219,17 +9098,6 @@ end
 --  
 function M.DocumentationPartType(str)
 	asserts.AssertDocumentationPartType(str)
-	return str
-end
-
-function asserts.AssertProviderARN(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ProviderARN to be of type 'string'")
-end
-
---  
-function M.ProviderARN(str)
-	asserts.AssertProviderARN(str)
 	return str
 end
 
@@ -8255,6 +9123,17 @@ function M.ApiKeysFormat(str)
 	return str
 end
 
+function asserts.AssertEndpointType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected EndpointType to be of type 'string'")
+end
+
+-- <p>The endpoint type. The valid values are <code>EDGE</code> for edge-optimized API setup, most suitable for mobile applications; <code>REGIONAL</code> for regional API endpoint setup, most suitable for calling from AWS Region; and <code>PRIVATE</code> for private APIs.</p>
+function M.EndpointType(str)
+	asserts.AssertEndpointType(str)
+	return str
+end
+
 function asserts.AssertPutMode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PutMode to be of type 'string'")
@@ -8263,6 +9142,17 @@ end
 --  
 function M.PutMode(str)
 	asserts.AssertPutMode(str)
+	return str
+end
+
+function asserts.AssertProviderARN(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ProviderARN to be of type 'string'")
+end
+
+--  
+function M.ProviderARN(str)
+	asserts.AssertProviderARN(str)
 	return str
 end
 
@@ -8407,20 +9297,6 @@ function M.MapOfKeyUsages(map)
 	return map
 end
 
-function asserts.AssertMapOfHeaderValues(map)
-	assert(map)
-	assert(type(map) == "table", "Expected MapOfHeaderValues to be of type 'table'")
-	for k,v in pairs(map) do
-		asserts.AssertString(k)
-		asserts.AssertString(v)
-	end
-end
-
-function M.MapOfHeaderValues(map)
-	asserts.AssertMapOfHeaderValues(map)
-	return map
-end
-
 function asserts.AssertPathToMapOfMethodSnapshot(map)
 	assert(map)
 	assert(type(map) == "table", "Expected PathToMapOfMethodSnapshot to be of type 'table'")
@@ -8505,6 +9381,20 @@ function M.MapOfStringToBoolean(map)
 	return map
 end
 
+function asserts.AssertMapOfApiStageThrottleSettings(map)
+	assert(map)
+	assert(type(map) == "table", "Expected MapOfApiStageThrottleSettings to be of type 'table'")
+	for k,v in pairs(map) do
+		asserts.AssertString(k)
+		asserts.AssertThrottleSettings(v)
+	end
+end
+
+function M.MapOfApiStageThrottleSettings(map)
+	asserts.AssertMapOfApiStageThrottleSettings(map)
+	return map
+end
+
 function asserts.AssertTimestamp(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected Timestamp to be of type 'string'")
@@ -8585,6 +9475,21 @@ function M.ListOfSdkType(list)
 	return list
 end
 
+function asserts.AssertListOfEndpointType(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ListOfEndpointType to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertEndpointType(v)
+	end
+end
+
+--  
+-- List of EndpointType objects
+function M.ListOfEndpointType(list)
+	asserts.AssertListOfEndpointType(list)
+	return list
+end
+
 function asserts.AssertListOfUsagePlan(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfUsagePlan to be of type ''table")
@@ -8660,6 +9565,21 @@ function M.ListOfLong(list)
 	return list
 end
 
+function asserts.AssertListOfGatewayResponse(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ListOfGatewayResponse to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertGatewayResponse(v)
+	end
+end
+
+--  
+-- List of GatewayResponse objects
+function M.ListOfGatewayResponse(list)
+	asserts.AssertListOfGatewayResponse(list)
+	return list
+end
+
 function asserts.AssertListOfApiKey(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfApiKey to be of type ''table")
@@ -8672,6 +9592,21 @@ end
 -- List of ApiKey objects
 function M.ListOfApiKey(list)
 	asserts.AssertListOfApiKey(list)
+	return list
+end
+
+function asserts.AssertListOfVpcLink(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ListOfVpcLink to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertVpcLink(v)
+	end
+end
+
+--  
+-- List of VpcLink objects
+function M.ListOfVpcLink(list)
+	asserts.AssertListOfVpcLink(list)
 	return list
 end
 
@@ -8928,6 +9863,41 @@ end
 --
 -- OPERATIONS
 --
+--- Call GetGatewayResponses asynchronously, invoking a callback when done
+-- @param GetGatewayResponsesRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetGatewayResponsesAsync(GetGatewayResponsesRequest, cb)
+	assert(GetGatewayResponsesRequest, "You must provide a GetGatewayResponsesRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetGatewayResponses",
+	}
+	for header,value in pairs(GetGatewayResponsesRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	if request_handler then
+		request_handler(settings.uri, "/restapis/{restapi_id}/gatewayresponses", GetGatewayResponsesRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetGatewayResponses synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetGatewayResponsesRequest
+-- @return response
+-- @return error_message
+function M.GetGatewayResponsesSync(GetGatewayResponsesRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetGatewayResponsesAsync(GetGatewayResponsesRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ImportDocumentationParts asynchronously, invoking a callback when done
 -- @param ImportDocumentationPartsRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -9138,6 +10108,41 @@ function M.UpdateRequestValidatorSync(UpdateRequestValidatorRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call GetGatewayResponse asynchronously, invoking a callback when done
+-- @param GetGatewayResponseRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetGatewayResponseAsync(GetGatewayResponseRequest, cb)
+	assert(GetGatewayResponseRequest, "You must provide a GetGatewayResponseRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetGatewayResponse",
+	}
+	for header,value in pairs(GetGatewayResponseRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	if request_handler then
+		request_handler(settings.uri, "/restapis/{restapi_id}/gatewayresponses/{response_type}", GetGatewayResponseRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetGatewayResponse synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetGatewayResponseRequest
+-- @return response
+-- @return error_message
+function M.GetGatewayResponseSync(GetGatewayResponseRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetGatewayResponseAsync(GetGatewayResponseRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call DeleteClientCertificate asynchronously, invoking a callback when done
 -- @param DeleteClientCertificateRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -9273,6 +10278,41 @@ function M.GenerateClientCertificateSync(GenerateClientCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.GenerateClientCertificateAsync(GenerateClientCertificateRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutGatewayResponse asynchronously, invoking a callback when done
+-- @param PutGatewayResponseRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.PutGatewayResponseAsync(PutGatewayResponseRequest, cb)
+	assert(PutGatewayResponseRequest, "You must provide a PutGatewayResponseRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutGatewayResponse",
+	}
+	for header,value in pairs(PutGatewayResponseRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	if request_handler then
+		request_handler(settings.uri, "/restapis/{restapi_id}/gatewayresponses/{response_type}", PutGatewayResponseRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call PutGatewayResponse synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutGatewayResponseRequest
+-- @return response
+-- @return error_message
+function M.PutGatewayResponseSync(PutGatewayResponseRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutGatewayResponseAsync(PutGatewayResponseRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9978,6 +11018,76 @@ function M.TestInvokeMethodSync(TestInvokeMethodRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call CreateVpcLink asynchronously, invoking a callback when done
+-- @param CreateVpcLinkRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.CreateVpcLinkAsync(CreateVpcLinkRequest, cb)
+	assert(CreateVpcLinkRequest, "You must provide a CreateVpcLinkRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateVpcLink",
+	}
+	for header,value in pairs(CreateVpcLinkRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/vpclinks", CreateVpcLinkRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CreateVpcLink synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateVpcLinkRequest
+-- @return response
+-- @return error_message
+function M.CreateVpcLinkSync(CreateVpcLinkRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateVpcLinkAsync(CreateVpcLinkRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteVpcLink asynchronously, invoking a callback when done
+-- @param DeleteVpcLinkRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteVpcLinkAsync(DeleteVpcLinkRequest, cb)
+	assert(DeleteVpcLinkRequest, "You must provide a DeleteVpcLinkRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVpcLink",
+	}
+	for header,value in pairs(DeleteVpcLinkRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	if request_handler then
+		request_handler(settings.uri, "/vpclinks/{vpclink_id}", DeleteVpcLinkRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteVpcLink synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteVpcLinkRequest
+-- @return response
+-- @return error_message
+function M.DeleteVpcLinkSync(DeleteVpcLinkRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteVpcLinkAsync(DeleteVpcLinkRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call UpdateStage asynchronously, invoking a callback when done
 -- @param UpdateStageRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -10293,6 +11403,76 @@ function M.GetIntegrationSync(GetIntegrationRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call TagResource asynchronously, invoking a callback when done
+-- @param TagResourceRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.TagResourceAsync(TagResourceRequest, cb)
+	assert(TagResourceRequest, "You must provide a TagResourceRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".TagResource",
+	}
+	for header,value in pairs(TagResourceRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	if request_handler then
+		request_handler(settings.uri, "/tags/{resource_arn}", TagResourceRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call TagResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TagResourceRequest
+-- @return response
+-- @return error_message
+function M.TagResourceSync(TagResourceRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TagResourceAsync(TagResourceRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateGatewayResponse asynchronously, invoking a callback when done
+-- @param UpdateGatewayResponseRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateGatewayResponseAsync(UpdateGatewayResponseRequest, cb)
+	assert(UpdateGatewayResponseRequest, "You must provide a UpdateGatewayResponseRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateGatewayResponse",
+	}
+	for header,value in pairs(UpdateGatewayResponseRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	if request_handler then
+		request_handler(settings.uri, "/restapis/{restapi_id}/gatewayresponses/{response_type}", UpdateGatewayResponseRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateGatewayResponse synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateGatewayResponseRequest
+-- @return response
+-- @return error_message
+function M.UpdateGatewayResponseSync(UpdateGatewayResponseRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateGatewayResponseAsync(UpdateGatewayResponseRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call DeleteDeployment asynchronously, invoking a callback when done
 -- @param DeleteDeploymentRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -10358,6 +11538,41 @@ function M.GetUsagePlanSync(GetUsagePlanRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.GetUsagePlanAsync(GetUsagePlanRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetVpcLink asynchronously, invoking a callback when done
+-- @param GetVpcLinkRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetVpcLinkAsync(GetVpcLinkRequest, cb)
+	assert(GetVpcLinkRequest, "You must provide a GetVpcLinkRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetVpcLink",
+	}
+	for header,value in pairs(GetVpcLinkRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	if request_handler then
+		request_handler(settings.uri, "/vpclinks/{vpclink_id}", GetVpcLinkRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetVpcLink synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetVpcLinkRequest
+-- @return response
+-- @return error_message
+function M.GetVpcLinkSync(GetVpcLinkRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetVpcLinkAsync(GetVpcLinkRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11798,6 +13013,76 @@ function M.CreateRestApiSync(CreateRestApiRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call GetTags asynchronously, invoking a callback when done
+-- @param GetTagsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetTagsAsync(GetTagsRequest, cb)
+	assert(GetTagsRequest, "You must provide a GetTagsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetTags",
+	}
+	for header,value in pairs(GetTagsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	if request_handler then
+		request_handler(settings.uri, "/tags/{resource_arn}", GetTagsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetTags synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetTagsRequest
+-- @return response
+-- @return error_message
+function M.GetTagsSync(GetTagsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetTagsAsync(GetTagsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateVpcLink asynchronously, invoking a callback when done
+-- @param UpdateVpcLinkRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateVpcLinkAsync(UpdateVpcLinkRequest, cb)
+	assert(UpdateVpcLinkRequest, "You must provide a UpdateVpcLinkRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateVpcLink",
+	}
+	for header,value in pairs(UpdateVpcLinkRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	if request_handler then
+		request_handler(settings.uri, "/vpclinks/{vpclink_id}", UpdateVpcLinkRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateVpcLink synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateVpcLinkRequest
+-- @return response
+-- @return error_message
+function M.UpdateVpcLinkSync(UpdateVpcLinkRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateVpcLinkAsync(UpdateVpcLinkRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call GetAuthorizers asynchronously, invoking a callback when done
 -- @param GetAuthorizersRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -12253,6 +13538,41 @@ function M.UpdateApiKeySync(UpdateApiKeyRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call DeleteGatewayResponse asynchronously, invoking a callback when done
+-- @param DeleteGatewayResponseRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteGatewayResponseAsync(DeleteGatewayResponseRequest, cb)
+	assert(DeleteGatewayResponseRequest, "You must provide a DeleteGatewayResponseRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteGatewayResponse",
+	}
+	for header,value in pairs(DeleteGatewayResponseRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	if request_handler then
+		request_handler(settings.uri, "/restapis/{restapi_id}/gatewayresponses/{response_type}", DeleteGatewayResponseRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteGatewayResponse synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteGatewayResponseRequest
+-- @return response
+-- @return error_message
+function M.DeleteGatewayResponseSync(DeleteGatewayResponseRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteGatewayResponseAsync(DeleteGatewayResponseRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ImportRestApi asynchronously, invoking a callback when done
 -- @param ImportRestApiRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -12603,6 +13923,41 @@ function M.DeleteRequestValidatorSync(DeleteRequestValidatorRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call UntagResource asynchronously, invoking a callback when done
+-- @param UntagResourceRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UntagResourceAsync(UntagResourceRequest, cb)
+	assert(UntagResourceRequest, "You must provide a UntagResourceRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UntagResource",
+	}
+	for header,value in pairs(UntagResourceRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	if request_handler then
+		request_handler(settings.uri, "/tags/{resource_arn}", UntagResourceRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UntagResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UntagResourceRequest
+-- @return response
+-- @return error_message
+function M.UntagResourceSync(UntagResourceRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UntagResourceAsync(UntagResourceRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call PutIntegration asynchronously, invoking a callback when done
 -- @param PutIntegrationRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -12668,6 +14023,41 @@ function M.UpdateIntegrationResponseSync(UpdateIntegrationResponseRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.UpdateIntegrationResponseAsync(UpdateIntegrationResponseRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetVpcLinks asynchronously, invoking a callback when done
+-- @param GetVpcLinksRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetVpcLinksAsync(GetVpcLinksRequest, cb)
+	assert(GetVpcLinksRequest, "You must provide a GetVpcLinksRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetVpcLinks",
+	}
+	for header,value in pairs(GetVpcLinksRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	if request_handler then
+		request_handler(settings.uri, "/vpclinks", GetVpcLinksRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetVpcLinks synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetVpcLinksRequest
+-- @return response
+-- @return error_message
+function M.GetVpcLinksSync(GetVpcLinksRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetVpcLinksAsync(GetVpcLinksRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

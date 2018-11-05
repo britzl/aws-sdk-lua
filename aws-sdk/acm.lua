@@ -21,43 +21,6 @@ M.metadata = {
 local keys = {}
 local asserts = {}
 
-keys.LimitExceededException = { ["message"] = true, nil }
-
-function asserts.AssertLimitExceededException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type LimitExceededException
--- <p>An ACM limit has been exceeded. For example, you may have input more domains than are allowed or you've requested too many certificates for your account. See the exception message returned by ACM to determine which limit you have violated. For more information about ACM limits, see the <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html">Limits</a> topic.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [String] 
--- @return LimitExceededException structure as a key-value pair table
-function M.LimitExceededException(args)
-	assert(args, "You must provide an argument table when creating LimitExceededException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertLimitExceededException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.DeleteCertificateRequest = { ["CertificateArn"] = true, nil }
 
 function asserts.AssertDeleteCertificateRequest(struct)
@@ -74,7 +37,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CertificateArn [Arn] <p>String that contains the ARN of the ACM Certificate to be deleted. This must be of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+-- * CertificateArn [Arn] <p>String that contains the ARN of the ACM certificate to be deleted. This must be of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
 -- Required key: CertificateArn
 -- @return DeleteCertificateRequest structure as a key-value pair table
 function M.DeleteCertificateRequest(args)
@@ -114,7 +77,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * CertificateChain [CertificateChain] <p>The certificate chain that contains the root certificate issued by the certificate authority (CA).</p>
--- * Certificate [CertificateBody] <p>String that contains the ACM Certificate represented by the ARN specified at input.</p>
+-- * Certificate [CertificateBody] <p>String that contains the ACM certificate represented by the ARN specified at input.</p>
 -- @return GetCertificateResponse structure as a key-value pair table
 function M.GetCertificateResponse(args)
 	assert(args, "You must provide an argument table when creating GetCertificateResponse")
@@ -150,10 +113,10 @@ function asserts.AssertCertificateSummary(struct)
 end
 
 --- Create a structure of type CertificateSummary
--- <p>This structure is returned in the response object of <a>ListCertificates</a> action.</p>
+-- <p>This structure is returned in the response object of <a>ListCertificates</a> action. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CertificateArn [Arn] <p>Amazon Resource Name (ARN) of the certificate. This is of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+-- * CertificateArn [Arn] <p>Amazon Resource Name (ARN) of the certificate. This is of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>. </p>
 -- * DomainName [DomainNameString] <p>Fully qualified domain name (FQDN), such as www.example.com or example.com, for the certificate.</p>
 -- @return CertificateSummary structure as a key-value pair table
 function M.CertificateSummary(args)
@@ -214,7 +177,7 @@ function M.TooManyTagsException(args)
     }
 end
 
-keys.ListCertificatesRequest = { ["NextToken"] = true, ["CertificateStatuses"] = true, ["MaxItems"] = true, nil }
+keys.ListCertificatesRequest = { ["NextToken"] = true, ["CertificateStatuses"] = true, ["MaxItems"] = true, ["Includes"] = true, nil }
 
 function asserts.AssertListCertificatesRequest(struct)
 	assert(struct)
@@ -222,6 +185,7 @@ function asserts.AssertListCertificatesRequest(struct)
 	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	if struct["CertificateStatuses"] then asserts.AssertCertificateStatuses(struct["CertificateStatuses"]) end
 	if struct["MaxItems"] then asserts.AssertMaxItems(struct["MaxItems"]) end
+	if struct["Includes"] then asserts.AssertFilters(struct["Includes"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListCertificatesRequest[k], "ListCertificatesRequest contains unknown key " .. tostring(k))
 	end
@@ -232,8 +196,9 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [NextToken] <p>Use this parameter only when paginating results and only in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextToken</code> from the response you just received.</p>
--- * CertificateStatuses [CertificateStatuses] <p>The status or statuses on which to filter the list of ACM Certificates.</p>
+-- * CertificateStatuses [CertificateStatuses] <p>Filter the certificate list by status value.</p>
 -- * MaxItems [MaxItems] <p>Use this parameter when paginating results to specify the maximum number of items to return in the response. If additional items exist beyond the number you specify, the <code>NextToken</code> element is sent in the response. Use this <code>NextToken</code> value in a subsequent request to retrieve additional items.</p>
+-- * Includes [Filters] <p>Filter the certificate list. For more information, see the <a>Filters</a> structure.</p>
 -- @return ListCertificatesRequest structure as a key-value pair table
 function M.ListCertificatesRequest(args)
 	assert(args, "You must provide an argument table when creating ListCertificatesRequest")
@@ -247,8 +212,46 @@ function M.ListCertificatesRequest(args)
 		["NextToken"] = args["NextToken"],
 		["CertificateStatuses"] = args["CertificateStatuses"],
 		["MaxItems"] = args["MaxItems"],
+		["Includes"] = args["Includes"],
 	}
 	asserts.AssertListCertificatesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.LimitExceededException = { ["message"] = true, nil }
+
+function asserts.AssertLimitExceededException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
+	if struct["message"] then asserts.AssertString(struct["message"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LimitExceededException
+-- <p>An ACM limit has been exceeded.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["message"] = args["message"],
+	}
+	asserts.AssertLimitExceededException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -275,7 +278,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CertificateArn [Arn] <p>String that contains the ARN of the ACM Certificate with one or more tags that you want to remove. This must be of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+-- * CertificateArn [Arn] <p>String that contains the ARN of the ACM Certificate with one or more tags that you want to remove. This must be of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>. </p>
 -- * Tags [TagList] <p>The key-value pair that defines the tag to remove.</p>
 -- Required key: CertificateArn
 -- Required key: Tags
@@ -293,6 +296,55 @@ function M.RemoveTagsFromCertificateRequest(args)
 		["Tags"] = args["Tags"],
 	}
 	asserts.AssertRemoveTagsFromCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ResourceRecord = { ["Type"] = true, ["Name"] = true, ["Value"] = true, nil }
+
+function asserts.AssertResourceRecord(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ResourceRecord to be of type 'table'")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	assert(struct["Type"], "Expected key Type to exist in table")
+	assert(struct["Value"], "Expected key Value to exist in table")
+	if struct["Type"] then asserts.AssertRecordType(struct["Type"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	if struct["Value"] then asserts.AssertString(struct["Value"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ResourceRecord[k], "ResourceRecord contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ResourceRecord
+-- <p>Contains a DNS record value that you can use to can use to validate ownership or control of a domain. This is used by the <a>DescribeCertificate</a> action. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [RecordType] <p>The type of DNS record. Currently this can be <code>CNAME</code>.</p>
+-- * Name [String] <p>The name of the DNS record to create in your domain. This is supplied by ACM.</p>
+-- * Value [String] <p>The value of the CNAME record to add to your DNS database. This is supplied by ACM.</p>
+-- Required key: Name
+-- Required key: Type
+-- Required key: Value
+-- @return ResourceRecord structure as a key-value pair table
+function M.ResourceRecord(args)
+	assert(args, "You must provide an argument table when creating ResourceRecord")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Type"] = args["Type"],
+		["Name"] = args["Name"],
+		["Value"] = args["Value"],
+	}
+	asserts.AssertResourceRecord(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -338,16 +390,19 @@ function M.DescribeCertificateResponse(args)
     }
 end
 
-keys.RequestCertificateRequest = { ["IdempotencyToken"] = true, ["SubjectAlternativeNames"] = true, ["DomainValidationOptions"] = true, ["DomainName"] = true, nil }
+keys.RequestCertificateRequest = { ["SubjectAlternativeNames"] = true, ["DomainName"] = true, ["IdempotencyToken"] = true, ["CertificateAuthorityArn"] = true, ["ValidationMethod"] = true, ["Options"] = true, ["DomainValidationOptions"] = true, nil }
 
 function asserts.AssertRequestCertificateRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RequestCertificateRequest to be of type 'table'")
 	assert(struct["DomainName"], "Expected key DomainName to exist in table")
-	if struct["IdempotencyToken"] then asserts.AssertIdempotencyToken(struct["IdempotencyToken"]) end
 	if struct["SubjectAlternativeNames"] then asserts.AssertDomainList(struct["SubjectAlternativeNames"]) end
-	if struct["DomainValidationOptions"] then asserts.AssertDomainValidationOptionList(struct["DomainValidationOptions"]) end
 	if struct["DomainName"] then asserts.AssertDomainNameString(struct["DomainName"]) end
+	if struct["IdempotencyToken"] then asserts.AssertIdempotencyToken(struct["IdempotencyToken"]) end
+	if struct["CertificateAuthorityArn"] then asserts.AssertArn(struct["CertificateAuthorityArn"]) end
+	if struct["ValidationMethod"] then asserts.AssertValidationMethod(struct["ValidationMethod"]) end
+	if struct["Options"] then asserts.AssertCertificateOptions(struct["Options"]) end
+	if struct["DomainValidationOptions"] then asserts.AssertDomainValidationOptionList(struct["DomainValidationOptions"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.RequestCertificateRequest[k], "RequestCertificateRequest contains unknown key " .. tostring(k))
 	end
@@ -357,10 +412,13 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * SubjectAlternativeNames [DomainList] <p>Additional FQDNs to be included in the Subject Alternative Name extension of the ACM certificate. For example, add the name www.example.net to a certificate for which the <code>DomainName</code> field is www.example.com if users can reach your site by using either name. The maximum number of domain names that you can add to an ACM certificate is 100. However, the initial limit is 10 domain names. If you need more than 10 names, you must request a limit increase. For more information, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html">Limits</a>.</p> <p> The maximum length of a SAN DNS name is 253 octets. The name is made up of multiple labels separated by periods. No label can be longer than 63 octets. Consider the following examples: </p> <ul> <li> <p> <code>(63 octets).(63 octets).(63 octets).(61 octets)</code> is legal because the total length is 253 octets (63+1+63+1+63+1+61) and no label exceeds 63 octets.</p> </li> <li> <p> <code>(64 octets).(63 octets).(63 octets).(61 octets)</code> is not legal because the total length exceeds 253 octets (64+1+63+1+63+1+61) and the first label exceeds 63 octets.</p> </li> <li> <p> <code>(63 octets).(63 octets).(63 octets).(62 octets)</code> is not legal because the total length of the DNS name (63+1+63+1+63+1+62) exceeds 253 octets.</p> </li> </ul>
+-- * DomainName [DomainNameString] <p> Fully qualified domain name (FQDN), such as www.example.com, that you want to secure with an ACM certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the same domain. For example, *.example.com protects www.example.com, site.example.com, and images.example.com. </p> <p> The first domain name you enter cannot exceed 63 octets, including periods. Each subsequent Subject Alternative Name (SAN), however, can be up to 253 octets in length. </p>
 -- * IdempotencyToken [IdempotencyToken] <p>Customer chosen string that can be used to distinguish between calls to <code>RequestCertificate</code>. Idempotency tokens time out after one hour. Therefore, if you call <code>RequestCertificate</code> multiple times with the same idempotency token within one hour, ACM recognizes that you are requesting only one certificate and will issue only one. If you change the idempotency token for each call, ACM recognizes that you are requesting multiple certificates.</p>
--- * SubjectAlternativeNames [DomainList] <p>Additional FQDNs to be included in the Subject Alternative Name extension of the ACM Certificate. For example, add the name www.example.net to a certificate for which the <code>DomainName</code> field is www.example.com if users can reach your site by using either name. The maximum number of domain names that you can add to an ACM Certificate is 100. However, the initial limit is 10 domain names. If you need more than 10 names, you must request a limit increase. For more information, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html">Limits</a>.</p>
--- * DomainValidationOptions [DomainValidationOptionList] <p>The domain name that you want ACM to use to send you emails to validate your ownership of the domain.</p>
--- * DomainName [DomainNameString] <p> Fully qualified domain name (FQDN), such as www.example.com, of the site that you want to secure with an ACM Certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the same domain. For example, *.example.com protects www.example.com, site.example.com, and images.example.com. </p> <p> The maximum length of a DNS name is 253 octets. The name is made up of multiple labels separated by periods. No label can be longer than 63 octets. Consider the following examples: </p> <p> <code>(63 octets).(63 octets).(63 octets).(61 octets)</code> is legal because the total length is 253 octets (63+1+63+1+63+1+61) and no label exceeds 63 octets. </p> <p> <code>(64 octets).(63 octets).(63 octets).(61 octets)</code> is not legal because the total length exceeds 253 octets (64+1+63+1+63+1+61) and the first label exceeds 63 octets. </p> <p> <code>(63 octets).(63 octets).(63 octets).(62 octets)</code> is not legal because the total length of the DNS name (63+1+63+1+63+1+62) exceeds 253 octets. </p>
+-- * CertificateAuthorityArn [Arn] <p>The Amazon Resource Name (ARN) of the private certificate authority (CA) that will be used to issue the certificate. If you do not provide an ARN and you are trying to request a private certificate, ACM will attempt to issue a public certificate. For more information about private CAs, see the <a href="http://docs.aws.amazon.com/acm-pca/latest/userguide/PcaWelcome.html">AWS Certificate Manager Private Certificate Authority (PCA)</a> user guide. The ARN must have the following form: </p> <p> <code>arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012</code> </p>
+-- * ValidationMethod [ValidationMethod] <p>The method you want to use if you are requesting a public certificate to validate that you own or control domain. You can <a href="http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html">validate with DNS</a> or <a href="http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html">validate with email</a>. We recommend that you use DNS validation. </p>
+-- * Options [CertificateOptions] <p>Currently, you can use this parameter to specify whether to add the certificate to a certificate transparency log. Certificate transparency makes it possible to detect SSL/TLS certificates that have been mistakenly or maliciously issued. Certificates that have not been logged typically produce an error message in a browser. For more information, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency">Opting Out of Certificate Transparency Logging</a>.</p>
+-- * DomainValidationOptions [DomainValidationOptionList] <p>The domain name that you want ACM to use to send you emails so that you can validate domain ownership.</p>
 -- Required key: DomainName
 -- @return RequestCertificateRequest structure as a key-value pair table
 function M.RequestCertificateRequest(args)
@@ -372,10 +430,13 @@ function M.RequestCertificateRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["IdempotencyToken"] = args["IdempotencyToken"],
 		["SubjectAlternativeNames"] = args["SubjectAlternativeNames"],
-		["DomainValidationOptions"] = args["DomainValidationOptions"],
 		["DomainName"] = args["DomainName"],
+		["IdempotencyToken"] = args["IdempotencyToken"],
+		["CertificateAuthorityArn"] = args["CertificateAuthorityArn"],
+		["ValidationMethod"] = args["ValidationMethod"],
+		["Options"] = args["Options"],
+		["DomainValidationOptions"] = args["DomainValidationOptions"],
 	}
 	asserts.AssertRequestCertificateRequest(all_args)
 	return {
@@ -386,16 +447,18 @@ function M.RequestCertificateRequest(args)
     }
 end
 
-keys.DomainValidation = { ["ValidationEmails"] = true, ["ValidationStatus"] = true, ["ValidationDomain"] = true, ["DomainName"] = true, nil }
+keys.DomainValidation = { ["ValidationEmails"] = true, ["DomainName"] = true, ["ResourceRecord"] = true, ["ValidationMethod"] = true, ["ValidationStatus"] = true, ["ValidationDomain"] = true, nil }
 
 function asserts.AssertDomainValidation(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DomainValidation to be of type 'table'")
 	assert(struct["DomainName"], "Expected key DomainName to exist in table")
 	if struct["ValidationEmails"] then asserts.AssertValidationEmailList(struct["ValidationEmails"]) end
+	if struct["DomainName"] then asserts.AssertDomainNameString(struct["DomainName"]) end
+	if struct["ResourceRecord"] then asserts.AssertResourceRecord(struct["ResourceRecord"]) end
+	if struct["ValidationMethod"] then asserts.AssertValidationMethod(struct["ValidationMethod"]) end
 	if struct["ValidationStatus"] then asserts.AssertDomainStatus(struct["ValidationStatus"]) end
 	if struct["ValidationDomain"] then asserts.AssertDomainNameString(struct["ValidationDomain"]) end
-	if struct["DomainName"] then asserts.AssertDomainNameString(struct["DomainName"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.DomainValidation[k], "DomainValidation contains unknown key " .. tostring(k))
 	end
@@ -406,9 +469,11 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ValidationEmails [ValidationEmailList] <p>A list of email addresses that ACM used to send domain validation emails.</p>
--- * ValidationStatus [DomainStatus] <p>The validation status of the domain name.</p>
+-- * DomainName [DomainNameString] <p>A fully qualified domain name (FQDN) in the certificate. For example, <code>www.example.com</code> or <code>example.com</code>. </p>
+-- * ResourceRecord [ResourceRecord] <p>Contains the CNAME record that you add to your DNS database for domain validation. For more information, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html">Use DNS to Validate Domain Ownership</a>.</p>
+-- * ValidationMethod [ValidationMethod] <p>Specifies the domain validation method.</p>
+-- * ValidationStatus [DomainStatus] <p>The validation status of the domain name. This can be one of the following values:</p> <ul> <li> <p> <code>PENDING_VALIDATION</code> </p> </li> <li> <p> <code/>SUCCESS</p> </li> <li> <p> <code/>FAILED</p> </li> </ul>
 -- * ValidationDomain [DomainNameString] <p>The domain name that ACM used to send domain validation emails.</p>
--- * DomainName [DomainNameString] <p>A fully qualified domain name (FQDN) in the certificate. For example, <code>www.example.com</code> or <code>example.com</code>.</p>
 -- Required key: DomainName
 -- @return DomainValidation structure as a key-value pair table
 function M.DomainValidation(args)
@@ -421,11 +486,50 @@ function M.DomainValidation(args)
     }
 	local all_args = { 
 		["ValidationEmails"] = args["ValidationEmails"],
+		["DomainName"] = args["DomainName"],
+		["ResourceRecord"] = args["ResourceRecord"],
+		["ValidationMethod"] = args["ValidationMethod"],
 		["ValidationStatus"] = args["ValidationStatus"],
 		["ValidationDomain"] = args["ValidationDomain"],
-		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDomainValidation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CertificateOptions = { ["CertificateTransparencyLoggingPreference"] = true, nil }
+
+function asserts.AssertCertificateOptions(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CertificateOptions to be of type 'table'")
+	if struct["CertificateTransparencyLoggingPreference"] then asserts.AssertCertificateTransparencyLoggingPreference(struct["CertificateTransparencyLoggingPreference"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CertificateOptions[k], "CertificateOptions contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CertificateOptions
+-- <p>Structure that contains options for your certificate. Currently, you can use this only to specify whether to opt in to or out of certificate transparency logging. Some browsers require that public certificates issued for your domain be recorded in a log. Certificates that are not logged typically generate a browser error. Transparency makes it possible for you to detect SSL/TLS certificates that have been mistakenly or maliciously issued for your domain. For general information, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-concepts.html#concept-transparency">Certificate Transparency Logging</a>. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateTransparencyLoggingPreference [CertificateTransparencyLoggingPreference] <p>You can opt out of certificate transparency logging by specifying the <code>DISABLED</code> option. Opt in by specifying <code>ENABLED</code>. </p>
+-- @return CertificateOptions structure as a key-value pair table
+function M.CertificateOptions(args)
+	assert(args, "You must provide an argument table when creating CertificateOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["CertificateTransparencyLoggingPreference"] = args["CertificateTransparencyLoggingPreference"],
+	}
+	asserts.AssertCertificateOptions(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -471,64 +575,29 @@ function M.ListTagsForCertificateResponse(args)
     }
 end
 
-keys.ResourceInUseException = { ["message"] = true, nil }
+keys.ExportCertificateResponse = { ["PrivateKey"] = true, ["CertificateChain"] = true, ["Certificate"] = true, nil }
 
-function asserts.AssertResourceInUseException(struct)
+function asserts.AssertExportCertificateResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceInUseException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
+	assert(type(struct) == "table", "Expected ExportCertificateResponse to be of type 'table'")
+	if struct["PrivateKey"] then asserts.AssertPrivateKey(struct["PrivateKey"]) end
+	if struct["CertificateChain"] then asserts.AssertCertificateChain(struct["CertificateChain"]) end
+	if struct["Certificate"] then asserts.AssertCertificateBody(struct["Certificate"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ResourceInUseException[k], "ResourceInUseException contains unknown key " .. tostring(k))
+		assert(keys.ExportCertificateResponse[k], "ExportCertificateResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ResourceInUseException
--- <p>The certificate is in use by another AWS service in the caller's account. Remove the association and try again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [String] 
--- @return ResourceInUseException structure as a key-value pair table
-function M.ResourceInUseException(args)
-	assert(args, "You must provide an argument table when creating ResourceInUseException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertResourceInUseException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ListCertificatesResponse = { ["CertificateSummaryList"] = true, ["NextToken"] = true, nil }
-
-function asserts.AssertListCertificatesResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ListCertificatesResponse to be of type 'table'")
-	if struct["CertificateSummaryList"] then asserts.AssertCertificateSummaryList(struct["CertificateSummaryList"]) end
-	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ListCertificatesResponse[k], "ListCertificatesResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ListCertificatesResponse
+--- Create a structure of type ExportCertificateResponse
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CertificateSummaryList [CertificateSummaryList] <p>A list of ACM Certificates.</p>
--- * NextToken [NextToken] <p>When the list is truncated, this value is present and contains the value to use for the <code>NextToken</code> parameter in a subsequent pagination request.</p>
--- @return ListCertificatesResponse structure as a key-value pair table
-function M.ListCertificatesResponse(args)
-	assert(args, "You must provide an argument table when creating ListCertificatesResponse")
+-- * PrivateKey [PrivateKey] <p>The PEM-encoded private key associated with the public key in the certificate.</p>
+-- * CertificateChain [CertificateChain] <p>The base64 PEM-encoded certificate chain. This does not include the certificate that you are exporting.</p>
+-- * Certificate [CertificateBody] <p>The base64 PEM-encoded certificate.</p>
+-- @return ExportCertificateResponse structure as a key-value pair table
+function M.ExportCertificateResponse(args)
+	assert(args, "You must provide an argument table when creating ExportCertificateResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -536,10 +605,11 @@ function M.ListCertificatesResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["CertificateSummaryList"] = args["CertificateSummaryList"],
-		["NextToken"] = args["NextToken"],
+		["PrivateKey"] = args["PrivateKey"],
+		["CertificateChain"] = args["CertificateChain"],
+		["Certificate"] = args["Certificate"],
 	}
-	asserts.AssertListCertificatesResponse(all_args)
+	asserts.AssertExportCertificateResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -585,48 +655,6 @@ function M.InvalidTagException(args)
     }
 end
 
-keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
-
-function asserts.AssertTag(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
-	assert(struct["Key"], "Expected key Key to exist in table")
-	if struct["Value"] then asserts.AssertTagValue(struct["Value"]) end
-	if struct["Key"] then asserts.AssertTagKey(struct["Key"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type Tag
--- <p>A key-value pair that identifies or specifies metadata about an ACM resource.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Value [TagValue] <p>The value of the tag.</p>
--- * Key [TagKey] <p>The key of the tag.</p>
--- Required key: Key
--- @return Tag structure as a key-value pair table
-function M.Tag(args)
-	assert(args, "You must provide an argument table when creating Tag")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Value"] = args["Value"],
-		["Key"] = args["Key"],
-	}
-	asserts.AssertTag(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ImportCertificateRequest = { ["CertificateArn"] = true, ["CertificateChain"] = true, ["PrivateKey"] = true, ["Certificate"] = true, nil }
 
 function asserts.AssertImportCertificateRequest(struct)
@@ -647,10 +675,10 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CertificateArn [Arn] <p>The <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of an imported certificate to replace. To import a new certificate, omit this field.</p>
--- * CertificateChain [CertificateChainBlob] <p>The certificate chain. It must be PEM-encoded.</p>
--- * PrivateKey [PrivateKeyBlob] <p>The private key that matches the public key in the certificate. It must meet the following requirements:</p> <ul> <li> <p>Must be PEM-encoded.</p> </li> <li> <p>Must be unencrypted. You cannot import a private key that is protected by a password or passphrase.</p> </li> </ul>
--- * Certificate [CertificateBodyBlob] <p>The certificate to import. It must meet the following requirements:</p> <ul> <li> <p>Must be PEM-encoded.</p> </li> <li> <p>Must contain a 1024-bit or 2048-bit RSA public key.</p> </li> <li> <p>Must be valid at the time of import. You cannot import a certificate before its validity period begins (the certificate's <code>NotBefore</code> date) or after it expires (the certificate's <code>NotAfter</code> date).</p> </li> </ul>
+-- * CertificateArn [Arn] <p>The <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of an imported certificate to replace. To import a new certificate, omit this field. </p>
+-- * CertificateChain [CertificateChainBlob] <p>The PEM encoded certificate chain.</p>
+-- * PrivateKey [PrivateKeyBlob] <p>The private key that matches the public key in the certificate.</p>
+-- * Certificate [CertificateBodyBlob] <p>The certificate to import.</p>
 -- Required key: Certificate
 -- Required key: PrivateKey
 -- @return ImportCertificateRequest structure as a key-value pair table
@@ -669,6 +697,55 @@ function M.ImportCertificateRequest(args)
 		["Certificate"] = args["Certificate"],
 	}
 	asserts.AssertImportCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ResendValidationEmailRequest = { ["CertificateArn"] = true, ["Domain"] = true, ["ValidationDomain"] = true, nil }
+
+function asserts.AssertResendValidationEmailRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ResendValidationEmailRequest to be of type 'table'")
+	assert(struct["CertificateArn"], "Expected key CertificateArn to exist in table")
+	assert(struct["Domain"], "Expected key Domain to exist in table")
+	assert(struct["ValidationDomain"], "Expected key ValidationDomain to exist in table")
+	if struct["CertificateArn"] then asserts.AssertArn(struct["CertificateArn"]) end
+	if struct["Domain"] then asserts.AssertDomainNameString(struct["Domain"]) end
+	if struct["ValidationDomain"] then asserts.AssertDomainNameString(struct["ValidationDomain"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ResendValidationEmailRequest[k], "ResendValidationEmailRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ResendValidationEmailRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateArn [Arn] <p>String that contains the ARN of the requested certificate. The certificate ARN is generated and returned by the <a>RequestCertificate</a> action as soon as the request is made. By default, using this parameter causes email to be sent to all top-level domains you specified in the certificate request. The ARN must be of the form: </p> <p> <code>arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p>
+-- * Domain [DomainNameString] <p>The fully qualified domain name (FQDN) of the certificate that needs to be validated.</p>
+-- * ValidationDomain [DomainNameString] <p>The base validation domain that will act as the suffix of the email addresses that are used to send the emails. This must be the same as the <code>Domain</code> value or a superdomain of the <code>Domain</code> value. For example, if you requested a certificate for <code>site.subdomain.example.com</code> and specify a <b>ValidationDomain</b> of <code>subdomain.example.com</code>, ACM sends email to the domain registrant, technical contact, and administrative contact in WHOIS and the following five addresses:</p> <ul> <li> <p>admin@subdomain.example.com</p> </li> <li> <p>administrator@subdomain.example.com</p> </li> <li> <p>hostmaster@subdomain.example.com</p> </li> <li> <p>postmaster@subdomain.example.com</p> </li> <li> <p>webmaster@subdomain.example.com</p> </li> </ul>
+-- Required key: CertificateArn
+-- Required key: Domain
+-- Required key: ValidationDomain
+-- @return ResendValidationEmailRequest structure as a key-value pair table
+function M.ResendValidationEmailRequest(args)
+	assert(args, "You must provide an argument table when creating ResendValidationEmailRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["CertificateArn"] = args["CertificateArn"],
+		["Domain"] = args["Domain"],
+		["ValidationDomain"] = args["ValidationDomain"],
+	}
+	asserts.AssertResendValidationEmailRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -706,6 +783,48 @@ function M.RequestInProgressException(args)
 		["message"] = args["message"],
 	}
 	asserts.AssertRequestInProgressException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
+
+function asserts.AssertTag(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
+	assert(struct["Key"], "Expected key Key to exist in table")
+	if struct["Value"] then asserts.AssertTagValue(struct["Value"]) end
+	if struct["Key"] then asserts.AssertTagKey(struct["Key"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Tag
+-- <p>A key-value pair that identifies or specifies metadata about an ACM resource.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [TagValue] <p>The value of the tag.</p>
+-- * Key [TagKey] <p>The key of the tag.</p>
+-- Required key: Key
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
+	}
+	asserts.AssertTag(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -767,7 +886,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CertificateArn [Arn] <p>The Amazon Resource Name (ARN) of the ACM Certificate. The ARN must have the following form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+-- * CertificateArn [Arn] <p>The Amazon Resource Name (ARN) of the ACM certificate. The ARN must have the following form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
 -- Required key: CertificateArn
 -- @return DescribeCertificateRequest structure as a key-value pair table
 function M.DescribeCertificateRequest(args)
@@ -805,7 +924,7 @@ function asserts.AssertDomainValidationOption(struct)
 end
 
 --- Create a structure of type DomainValidationOption
--- <p>Contains information about the domain names that you want ACM to use to send you emails to validate your ownership of the domain.</p>
+-- <p>Contains information about the domain names that you want ACM to use to send you emails that enable you to validate domain ownership.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ValidationDomain [DomainNameString] <p>The domain name that you want ACM to use to send you validation emails. This domain name is the suffix of the email addresses that you want ACM to use. This must be the same as the <code>DomainName</code> value or a superdomain of the <code>DomainName</code> value. For example, if you request a certificate for <code>testing.example.com</code>, you can specify <code>example.com</code> for this value. In that case, ACM sends domain validation emails to the following five addresses:</p> <ul> <li> <p>admin@example.com</p> </li> <li> <p>administrator@example.com</p> </li> <li> <p>hostmaster@example.com</p> </li> <li> <p>postmaster@example.com</p> </li> <li> <p>webmaster@example.com</p> </li> </ul>
@@ -826,92 +945,6 @@ function M.DomainValidationOption(args)
 		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDomainValidationOption(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ResendValidationEmailRequest = { ["CertificateArn"] = true, ["Domain"] = true, ["ValidationDomain"] = true, nil }
-
-function asserts.AssertResendValidationEmailRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ResendValidationEmailRequest to be of type 'table'")
-	assert(struct["CertificateArn"], "Expected key CertificateArn to exist in table")
-	assert(struct["Domain"], "Expected key Domain to exist in table")
-	assert(struct["ValidationDomain"], "Expected key ValidationDomain to exist in table")
-	if struct["CertificateArn"] then asserts.AssertArn(struct["CertificateArn"]) end
-	if struct["Domain"] then asserts.AssertDomainNameString(struct["Domain"]) end
-	if struct["ValidationDomain"] then asserts.AssertDomainNameString(struct["ValidationDomain"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ResendValidationEmailRequest[k], "ResendValidationEmailRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ResendValidationEmailRequest
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * CertificateArn [Arn] <p>String that contains the ARN of the requested certificate. The certificate ARN is generated and returned by the <a>RequestCertificate</a> action as soon as the request is made. By default, using this parameter causes email to be sent to all top-level domains you specified in the certificate request.</p> <p>The ARN must be of the form:</p> <p> <code>arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p>
--- * Domain [DomainNameString] <p>The fully qualified domain name (FQDN) of the certificate that needs to be validated.</p>
--- * ValidationDomain [DomainNameString] <p>The base validation domain that will act as the suffix of the email addresses that are used to send the emails. This must be the same as the <code>Domain</code> value or a superdomain of the <code>Domain</code> value. For example, if you requested a certificate for <code>site.subdomain.example.com</code> and specify a <b>ValidationDomain</b> of <code>subdomain.example.com</code>, ACM sends email to the domain registrant, technical contact, and administrative contact in WHOIS and the following five addresses:</p> <ul> <li> <p>admin@subdomain.example.com</p> </li> <li> <p>administrator@subdomain.example.com</p> </li> <li> <p>hostmaster@subdomain.example.com</p> </li> <li> <p>postmaster@subdomain.example.com</p> </li> <li> <p>webmaster@subdomain.example.com</p> </li> </ul>
--- Required key: CertificateArn
--- Required key: Domain
--- Required key: ValidationDomain
--- @return ResendValidationEmailRequest structure as a key-value pair table
-function M.ResendValidationEmailRequest(args)
-	assert(args, "You must provide an argument table when creating ResendValidationEmailRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["CertificateArn"] = args["CertificateArn"],
-		["Domain"] = args["Domain"],
-		["ValidationDomain"] = args["ValidationDomain"],
-	}
-	asserts.AssertResendValidationEmailRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidArnException = { ["message"] = true, nil }
-
-function asserts.AssertInvalidArnException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidArnException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidArnException[k], "InvalidArnException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidArnException
--- <p>The requested Amazon Resource Name (ARN) does not refer to an existing resource.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [String] 
--- @return InvalidArnException structure as a key-value pair table
-function M.InvalidArnException(args)
-	assert(args, "You must provide an argument table when creating InvalidArnException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertInvalidArnException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -964,6 +997,87 @@ function M.RenewalSummary(args)
     }
 end
 
+keys.InvalidArnException = { ["message"] = true, nil }
+
+function asserts.AssertInvalidArnException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InvalidArnException to be of type 'table'")
+	if struct["message"] then asserts.AssertString(struct["message"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.InvalidArnException[k], "InvalidArnException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InvalidArnException
+-- <p>The requested Amazon Resource Name (ARN) does not refer to an existing resource.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return InvalidArnException structure as a key-value pair table
+function M.InvalidArnException(args)
+	assert(args, "You must provide an argument table when creating InvalidArnException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["message"] = args["message"],
+	}
+	asserts.AssertInvalidArnException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateCertificateOptionsRequest = { ["CertificateArn"] = true, ["Options"] = true, nil }
+
+function asserts.AssertUpdateCertificateOptionsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateCertificateOptionsRequest to be of type 'table'")
+	assert(struct["CertificateArn"], "Expected key CertificateArn to exist in table")
+	assert(struct["Options"], "Expected key Options to exist in table")
+	if struct["CertificateArn"] then asserts.AssertArn(struct["CertificateArn"]) end
+	if struct["Options"] then asserts.AssertCertificateOptions(struct["Options"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateCertificateOptionsRequest[k], "UpdateCertificateOptionsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateCertificateOptionsRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateArn [Arn] <p>ARN of the requested certificate to update. This must be of the form:</p> <p> <code>arn:aws:acm:us-east-1:<i>account</i>:certificate/<i>12345678-1234-1234-1234-123456789012</i> </code> </p>
+-- * Options [CertificateOptions] <p>Use to update the options for your certificate. Currently, you can specify whether to add your certificate to a transparency log. Certificate transparency makes it possible to detect SSL/TLS certificates that have been mistakenly or maliciously issued. Certificates that have not been logged typically produce an error message in a browser. </p>
+-- Required key: CertificateArn
+-- Required key: Options
+-- @return UpdateCertificateOptionsRequest structure as a key-value pair table
+function M.UpdateCertificateOptionsRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateCertificateOptionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["CertificateArn"] = args["CertificateArn"],
+		["Options"] = args["Options"],
+	}
+	asserts.AssertUpdateCertificateOptionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListTagsForCertificateRequest = { ["CertificateArn"] = true, nil }
 
 function asserts.AssertListTagsForCertificateRequest(struct)
@@ -980,7 +1094,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CertificateArn [Arn] <p>String that contains the ARN of the ACM Certificate for which you want to list the tags. This has the following form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+-- * CertificateArn [Arn] <p>String that contains the ARN of the ACM certificate for which you want to list the tags. This must have the following form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>. </p>
 -- Required key: CertificateArn
 -- @return ListTagsForCertificateRequest structure as a key-value pair table
 function M.ListTagsForCertificateRequest(args)
@@ -1040,6 +1154,46 @@ function M.RequestCertificateResponse(args)
     }
 end
 
+keys.ExtendedKeyUsage = { ["OID"] = true, ["Name"] = true, nil }
+
+function asserts.AssertExtendedKeyUsage(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ExtendedKeyUsage to be of type 'table'")
+	if struct["OID"] then asserts.AssertString(struct["OID"]) end
+	if struct["Name"] then asserts.AssertExtendedKeyUsageName(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ExtendedKeyUsage[k], "ExtendedKeyUsage contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ExtendedKeyUsage
+-- <p>The Extended Key Usage X.509 v3 extension defines one or more purposes for which the public key can be used. This is in addition to or in place of the basic purposes specified by the Key Usage extension. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OID [String] <p>An object identifier (OID) for the extension value. OIDs are strings of numbers separated by periods. The following OIDs are defined in RFC 3280 and RFC 5280. </p> <ul> <li> <p> <code>1.3.6.1.5.5.7.3.1 (TLS_WEB_SERVER_AUTHENTICATION)</code> </p> </li> <li> <p> <code>1.3.6.1.5.5.7.3.2 (TLS_WEB_CLIENT_AUTHENTICATION)</code> </p> </li> <li> <p> <code>1.3.6.1.5.5.7.3.3 (CODE_SIGNING)</code> </p> </li> <li> <p> <code>1.3.6.1.5.5.7.3.4 (EMAIL_PROTECTION)</code> </p> </li> <li> <p> <code>1.3.6.1.5.5.7.3.8 (TIME_STAMPING)</code> </p> </li> <li> <p> <code>1.3.6.1.5.5.7.3.9 (OCSP_SIGNING)</code> </p> </li> <li> <p> <code>1.3.6.1.5.5.7.3.5 (IPSEC_END_SYSTEM)</code> </p> </li> <li> <p> <code>1.3.6.1.5.5.7.3.6 (IPSEC_TUNNEL)</code> </p> </li> <li> <p> <code>1.3.6.1.5.5.7.3.7 (IPSEC_USER)</code> </p> </li> </ul>
+-- * Name [ExtendedKeyUsageName] <p>The name of an Extended Key Usage value.</p>
+-- @return ExtendedKeyUsage structure as a key-value pair table
+function M.ExtendedKeyUsage(args)
+	assert(args, "You must provide an argument table when creating ExtendedKeyUsage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["OID"] = args["OID"],
+		["Name"] = args["Name"],
+	}
+	asserts.AssertExtendedKeyUsage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.AddTagsToCertificateRequest = { ["CertificateArn"] = true, ["Tags"] = true, nil }
 
 function asserts.AssertAddTagsToCertificateRequest(struct)
@@ -1058,7 +1212,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CertificateArn [Arn] <p>String that contains the ARN of the ACM Certificate to which the tag is to be applied. This must be of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+-- * CertificateArn [Arn] <p>String that contains the ARN of the ACM certificate to which the tag is to be applied. This must be of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>. </p>
 -- * Tags [TagList] <p>The key-value pair that defines the tag. The tag value is optional.</p>
 -- Required key: CertificateArn
 -- Required key: Tags
@@ -1084,25 +1238,69 @@ function M.AddTagsToCertificateRequest(args)
     }
 end
 
-keys.InvalidDomainValidationOptionsException = { ["message"] = true, nil }
+keys.ExportCertificateRequest = { ["CertificateArn"] = true, ["Passphrase"] = true, nil }
 
-function asserts.AssertInvalidDomainValidationOptionsException(struct)
+function asserts.AssertExportCertificateRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidDomainValidationOptionsException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
+	assert(type(struct) == "table", "Expected ExportCertificateRequest to be of type 'table'")
+	assert(struct["CertificateArn"], "Expected key CertificateArn to exist in table")
+	assert(struct["Passphrase"], "Expected key Passphrase to exist in table")
+	if struct["CertificateArn"] then asserts.AssertArn(struct["CertificateArn"]) end
+	if struct["Passphrase"] then asserts.AssertPassphraseBlob(struct["Passphrase"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidDomainValidationOptionsException[k], "InvalidDomainValidationOptionsException contains unknown key " .. tostring(k))
+		assert(keys.ExportCertificateRequest[k], "ExportCertificateRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidDomainValidationOptionsException
--- <p>One or more values in the <a>DomainValidationOption</a> structure is incorrect.</p>
+--- Create a structure of type ExportCertificateRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateArn [Arn] <p>An Amazon Resource Name (ARN) of the issued certificate. This must be of the form:</p> <p> <code>arn:aws:acm:region:account:certificate/12345678-1234-1234-1234-123456789012</code> </p>
+-- * Passphrase [PassphraseBlob] <p>Passphrase to associate with the encrypted exported private key. If you want to later decrypt the private key, you must have the passphrase. You can use the following OpenSSL command to decrypt a private key: </p> <p> <code>openssl rsa -in encrypted_key.pem -out decrypted_key.pem</code> </p>
+-- Required key: CertificateArn
+-- Required key: Passphrase
+-- @return ExportCertificateRequest structure as a key-value pair table
+function M.ExportCertificateRequest(args)
+	assert(args, "You must provide an argument table when creating ExportCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["CertificateArn"] = args["CertificateArn"],
+		["Passphrase"] = args["Passphrase"],
+	}
+	asserts.AssertExportCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ResourceInUseException = { ["message"] = true, nil }
+
+function asserts.AssertResourceInUseException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ResourceInUseException to be of type 'table'")
+	if struct["message"] then asserts.AssertString(struct["message"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ResourceInUseException[k], "ResourceInUseException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ResourceInUseException
+-- <p>The certificate is in use by another AWS service in the caller's account. Remove the association and try again.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * message [String] 
--- @return InvalidDomainValidationOptionsException structure as a key-value pair table
-function M.InvalidDomainValidationOptionsException(args)
-	assert(args, "You must provide an argument table when creating InvalidDomainValidationOptionsException")
+-- @return ResourceInUseException structure as a key-value pair table
+function M.ResourceInUseException(args)
+	assert(args, "You must provide an argument table when creating ResourceInUseException")
     local query_args = { 
     }
     local uri_args = { 
@@ -1112,7 +1310,44 @@ function M.InvalidDomainValidationOptionsException(args)
 	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidDomainValidationOptionsException(all_args)
+	asserts.AssertResourceInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.KeyUsage = { ["Name"] = true, nil }
+
+function asserts.AssertKeyUsage(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected KeyUsage to be of type 'table'")
+	if struct["Name"] then asserts.AssertKeyUsageName(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.KeyUsage[k], "KeyUsage contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type KeyUsage
+-- <p>The Key Usage X.509 v3 extension defines the purpose of the public key contained in the certificate.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [KeyUsageName] <p>A string value that contains a Key Usage extension name.</p>
+-- @return KeyUsage structure as a key-value pair table
+function M.KeyUsage(args)
+	assert(args, "You must provide an argument table when creating KeyUsage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Name"] = args["Name"],
+	}
+	asserts.AssertKeyUsage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1160,62 +1395,72 @@ function M.GetCertificateRequest(args)
     }
 end
 
-keys.CertificateDetail = { ["CertificateArn"] = true, ["Status"] = true, ["SubjectAlternativeNames"] = true, ["RenewalSummary"] = true, ["DomainName"] = true, ["RevokedAt"] = true, ["Type"] = true, ["NotBefore"] = true, ["KeyAlgorithm"] = true, ["NotAfter"] = true, ["ImportedAt"] = true, ["InUseBy"] = true, ["SignatureAlgorithm"] = true, ["CreatedAt"] = true, ["IssuedAt"] = true, ["Serial"] = true, ["Issuer"] = true, ["RevocationReason"] = true, ["FailureReason"] = true, ["DomainValidationOptions"] = true, ["Subject"] = true, nil }
+keys.CertificateDetail = { ["SubjectAlternativeNames"] = true, ["DomainName"] = true, ["ImportedAt"] = true, ["InUseBy"] = true, ["KeyAlgorithm"] = true, ["Type"] = true, ["SignatureAlgorithm"] = true, ["Status"] = true, ["IssuedAt"] = true, ["RevokedAt"] = true, ["RenewalEligibility"] = true, ["CreatedAt"] = true, ["FailureReason"] = true, ["RenewalSummary"] = true, ["NotBefore"] = true, ["NotAfter"] = true, ["RevocationReason"] = true, ["Options"] = true, ["CertificateArn"] = true, ["KeyUsages"] = true, ["CertificateAuthorityArn"] = true, ["Serial"] = true, ["Subject"] = true, ["ExtendedKeyUsages"] = true, ["DomainValidationOptions"] = true, ["Issuer"] = true, nil }
 
 function asserts.AssertCertificateDetail(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CertificateDetail to be of type 'table'")
-	if struct["CertificateArn"] then asserts.AssertArn(struct["CertificateArn"]) end
-	if struct["Status"] then asserts.AssertCertificateStatus(struct["Status"]) end
 	if struct["SubjectAlternativeNames"] then asserts.AssertDomainList(struct["SubjectAlternativeNames"]) end
-	if struct["RenewalSummary"] then asserts.AssertRenewalSummary(struct["RenewalSummary"]) end
 	if struct["DomainName"] then asserts.AssertDomainNameString(struct["DomainName"]) end
-	if struct["RevokedAt"] then asserts.AssertTStamp(struct["RevokedAt"]) end
-	if struct["Type"] then asserts.AssertCertificateType(struct["Type"]) end
-	if struct["NotBefore"] then asserts.AssertTStamp(struct["NotBefore"]) end
-	if struct["KeyAlgorithm"] then asserts.AssertKeyAlgorithm(struct["KeyAlgorithm"]) end
-	if struct["NotAfter"] then asserts.AssertTStamp(struct["NotAfter"]) end
 	if struct["ImportedAt"] then asserts.AssertTStamp(struct["ImportedAt"]) end
 	if struct["InUseBy"] then asserts.AssertInUseList(struct["InUseBy"]) end
+	if struct["KeyAlgorithm"] then asserts.AssertKeyAlgorithm(struct["KeyAlgorithm"]) end
+	if struct["Type"] then asserts.AssertCertificateType(struct["Type"]) end
 	if struct["SignatureAlgorithm"] then asserts.AssertString(struct["SignatureAlgorithm"]) end
-	if struct["CreatedAt"] then asserts.AssertTStamp(struct["CreatedAt"]) end
+	if struct["Status"] then asserts.AssertCertificateStatus(struct["Status"]) end
 	if struct["IssuedAt"] then asserts.AssertTStamp(struct["IssuedAt"]) end
-	if struct["Serial"] then asserts.AssertString(struct["Serial"]) end
-	if struct["Issuer"] then asserts.AssertString(struct["Issuer"]) end
-	if struct["RevocationReason"] then asserts.AssertRevocationReason(struct["RevocationReason"]) end
+	if struct["RevokedAt"] then asserts.AssertTStamp(struct["RevokedAt"]) end
+	if struct["RenewalEligibility"] then asserts.AssertRenewalEligibility(struct["RenewalEligibility"]) end
+	if struct["CreatedAt"] then asserts.AssertTStamp(struct["CreatedAt"]) end
 	if struct["FailureReason"] then asserts.AssertFailureReason(struct["FailureReason"]) end
-	if struct["DomainValidationOptions"] then asserts.AssertDomainValidationList(struct["DomainValidationOptions"]) end
+	if struct["RenewalSummary"] then asserts.AssertRenewalSummary(struct["RenewalSummary"]) end
+	if struct["NotBefore"] then asserts.AssertTStamp(struct["NotBefore"]) end
+	if struct["NotAfter"] then asserts.AssertTStamp(struct["NotAfter"]) end
+	if struct["RevocationReason"] then asserts.AssertRevocationReason(struct["RevocationReason"]) end
+	if struct["Options"] then asserts.AssertCertificateOptions(struct["Options"]) end
+	if struct["CertificateArn"] then asserts.AssertArn(struct["CertificateArn"]) end
+	if struct["KeyUsages"] then asserts.AssertKeyUsageList(struct["KeyUsages"]) end
+	if struct["CertificateAuthorityArn"] then asserts.AssertArn(struct["CertificateAuthorityArn"]) end
+	if struct["Serial"] then asserts.AssertString(struct["Serial"]) end
 	if struct["Subject"] then asserts.AssertString(struct["Subject"]) end
+	if struct["ExtendedKeyUsages"] then asserts.AssertExtendedKeyUsageList(struct["ExtendedKeyUsages"]) end
+	if struct["DomainValidationOptions"] then asserts.AssertDomainValidationList(struct["DomainValidationOptions"]) end
+	if struct["Issuer"] then asserts.AssertString(struct["Issuer"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CertificateDetail[k], "CertificateDetail contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CertificateDetail
--- <p>Contains metadata about an ACM certificate. This structure is returned in the response to a <a>DescribeCertificate</a> request.</p>
+-- <p>Contains metadata about an ACM certificate. This structure is returned in the response to a <a>DescribeCertificate</a> request. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CertificateArn [Arn] <p>The Amazon Resource Name (ARN) of the certificate. For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- * Status [CertificateStatus] <p>The status of the certificate.</p>
--- * SubjectAlternativeNames [DomainList] <p>One or more domain names (subject alternative names) included in the certificate. This list contains the domain names that are bound to the public key that is contained in the certificate. The subject alternative names include the canonical domain name (CN) of the certificate and additional domain names that can be used to connect to the website.</p>
--- * RenewalSummary [RenewalSummary] <p>Contains information about the status of ACM's <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a> for the certificate. This field exists only when the certificate type is <code>AMAZON_ISSUED</code>.</p>
+-- * SubjectAlternativeNames [DomainList] <p>One or more domain names (subject alternative names) included in the certificate. This list contains the domain names that are bound to the public key that is contained in the certificate. The subject alternative names include the canonical domain name (CN) of the certificate and additional domain names that can be used to connect to the website. </p>
 -- * DomainName [DomainNameString] <p>The fully qualified domain name for the certificate, such as www.example.com or example.com.</p>
--- * RevokedAt [TStamp] <p>The time at which the certificate was revoked. This value exists only when the certificate status is <code>REVOKED</code>.</p>
--- * Type [CertificateType] <p>The source of the certificate. For certificates provided by ACM, this value is <code>AMAZON_ISSUED</code>. For certificates that you imported with <a>ImportCertificate</a>, this value is <code>IMPORTED</code>. ACM does not provide <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a> for imported certificates. For more information about the differences between certificates that you import and those that ACM provides, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html">Importing Certificates</a> in the <i>AWS Certificate Manager User Guide</i>.</p>
--- * NotBefore [TStamp] <p>The time before which the certificate is not valid.</p>
--- * KeyAlgorithm [KeyAlgorithm] <p>The algorithm that was used to generate the key pair (the public and private key).</p>
--- * NotAfter [TStamp] <p>The time after which the certificate is not valid.</p>
--- * ImportedAt [TStamp] <p>The date and time at which the certificate was imported. This value exists only when the certificate type is <code>IMPORTED</code>.</p>
--- * InUseBy [InUseList] <p>A list of ARNs for the AWS resources that are using the certificate. A certificate can be used by multiple AWS resources.</p>
+-- * ImportedAt [TStamp] <p>The date and time at which the certificate was imported. This value exists only when the certificate type is <code>IMPORTED</code>. </p>
+-- * InUseBy [InUseList] <p>A list of ARNs for the AWS resources that are using the certificate. A certificate can be used by multiple AWS resources. </p>
+-- * KeyAlgorithm [KeyAlgorithm] <p>The algorithm that was used to generate the public-private key pair.</p>
+-- * Type [CertificateType] <p>The source of the certificate. For certificates provided by ACM, this value is <code>AMAZON_ISSUED</code>. For certificates that you imported with <a>ImportCertificate</a>, this value is <code>IMPORTED</code>. ACM does not provide <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a> for imported certificates. For more information about the differences between certificates that you import and those that ACM provides, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html">Importing Certificates</a> in the <i>AWS Certificate Manager User Guide</i>. </p>
 -- * SignatureAlgorithm [String] <p>The algorithm that was used to sign the certificate.</p>
--- * CreatedAt [TStamp] <p>The time at which the certificate was requested. This value exists only when the certificate type is <code>AMAZON_ISSUED</code>.</p>
--- * IssuedAt [TStamp] <p>The time at which the certificate was issued. This value exists only when the certificate type is <code>AMAZON_ISSUED</code>.</p>
+-- * Status [CertificateStatus] <p>The status of the certificate.</p>
+-- * IssuedAt [TStamp] <p>The time at which the certificate was issued. This value exists only when the certificate type is <code>AMAZON_ISSUED</code>. </p>
+-- * RevokedAt [TStamp] <p>The time at which the certificate was revoked. This value exists only when the certificate status is <code>REVOKED</code>. </p>
+-- * RenewalEligibility [RenewalEligibility] <p>Specifies whether the certificate is eligible for renewal.</p>
+-- * CreatedAt [TStamp] <p>The time at which the certificate was requested. This value exists only when the certificate type is <code>AMAZON_ISSUED</code>. </p>
+-- * FailureReason [FailureReason] <p>The reason the certificate request failed. This value exists only when the certificate status is <code>FAILED</code>. For more information, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/troubleshooting.html#troubleshooting-failed">Certificate Request Failed</a> in the <i>AWS Certificate Manager User Guide</i>. </p>
+-- * RenewalSummary [RenewalSummary] <p>Contains information about the status of ACM's <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a> for the certificate. This field exists only when the certificate type is <code>AMAZON_ISSUED</code>.</p>
+-- * NotBefore [TStamp] <p>The time before which the certificate is not valid.</p>
+-- * NotAfter [TStamp] <p>The time after which the certificate is not valid.</p>
+-- * RevocationReason [RevocationReason] <p>The reason the certificate was revoked. This value exists only when the certificate status is <code>REVOKED</code>. </p>
+-- * Options [CertificateOptions] <p>Value that specifies whether to add the certificate to a transparency log. Certificate transparency makes it possible to detect SSL certificates that have been mistakenly or maliciously issued. A browser might respond to certificate that has not been logged by showing an error message. The logs are cryptographically secure. </p>
+-- * CertificateArn [Arn] <p>The Amazon Resource Name (ARN) of the certificate. For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- * KeyUsages [KeyUsageList] <p>A list of Key Usage X.509 v3 extension objects. Each object is a string value that identifies the purpose of the public key contained in the certificate. Possible extension values include DIGITAL_SIGNATURE, KEY_ENCHIPHERMENT, NON_REPUDIATION, and more.</p>
+-- * CertificateAuthorityArn [Arn] <p>The Amazon Resource Name (ARN) of the ACM PCA private certificate authority (CA) that issued the certificate. This has the following format: </p> <p> <code>arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012</code> </p>
 -- * Serial [String] <p>The serial number of the certificate.</p>
--- * Issuer [String] <p>The name of the certificate authority that issued and signed the certificate.</p>
--- * RevocationReason [RevocationReason] <p>The reason the certificate was revoked. This value exists only when the certificate status is <code>REVOKED</code>.</p>
--- * FailureReason [FailureReason] <p>The reason the certificate request failed. This value exists only when the certificate status is <code>FAILED</code>. For more information, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/troubleshooting.html#troubleshooting-failed">Certificate Request Failed</a> in the <i>AWS Certificate Manager User Guide</i>.</p>
--- * DomainValidationOptions [DomainValidationList] <p>Contains information about the initial validation of each domain name that occurs as a result of the <a>RequestCertificate</a> request. This field exists only when the certificate type is <code>AMAZON_ISSUED</code>.</p>
 -- * Subject [String] <p>The name of the entity that is associated with the public key contained in the certificate.</p>
+-- * ExtendedKeyUsages [ExtendedKeyUsageList] <p>Contains a list of Extended Key Usage X.509 v3 extension objects. Each object specifies a purpose for which the certificate public key can be used and consists of a name and an object identifier (OID). </p>
+-- * DomainValidationOptions [DomainValidationList] <p>Contains information about the initial validation of each domain name that occurs as a result of the <a>RequestCertificate</a> request. This field exists only when the certificate type is <code>AMAZON_ISSUED</code>. </p>
+-- * Issuer [String] <p>The name of the certificate authority that issued and signed the certificate.</p>
 -- @return CertificateDetail structure as a key-value pair table
 function M.CertificateDetail(args)
 	assert(args, "You must provide an argument table when creating CertificateDetail")
@@ -1226,27 +1471,32 @@ function M.CertificateDetail(args)
     local header_args = { 
     }
 	local all_args = { 
-		["CertificateArn"] = args["CertificateArn"],
-		["Status"] = args["Status"],
 		["SubjectAlternativeNames"] = args["SubjectAlternativeNames"],
-		["RenewalSummary"] = args["RenewalSummary"],
 		["DomainName"] = args["DomainName"],
-		["RevokedAt"] = args["RevokedAt"],
-		["Type"] = args["Type"],
-		["NotBefore"] = args["NotBefore"],
-		["KeyAlgorithm"] = args["KeyAlgorithm"],
-		["NotAfter"] = args["NotAfter"],
 		["ImportedAt"] = args["ImportedAt"],
 		["InUseBy"] = args["InUseBy"],
+		["KeyAlgorithm"] = args["KeyAlgorithm"],
+		["Type"] = args["Type"],
 		["SignatureAlgorithm"] = args["SignatureAlgorithm"],
-		["CreatedAt"] = args["CreatedAt"],
+		["Status"] = args["Status"],
 		["IssuedAt"] = args["IssuedAt"],
-		["Serial"] = args["Serial"],
-		["Issuer"] = args["Issuer"],
-		["RevocationReason"] = args["RevocationReason"],
+		["RevokedAt"] = args["RevokedAt"],
+		["RenewalEligibility"] = args["RenewalEligibility"],
+		["CreatedAt"] = args["CreatedAt"],
 		["FailureReason"] = args["FailureReason"],
-		["DomainValidationOptions"] = args["DomainValidationOptions"],
+		["RenewalSummary"] = args["RenewalSummary"],
+		["NotBefore"] = args["NotBefore"],
+		["NotAfter"] = args["NotAfter"],
+		["RevocationReason"] = args["RevocationReason"],
+		["Options"] = args["Options"],
+		["CertificateArn"] = args["CertificateArn"],
+		["KeyUsages"] = args["KeyUsages"],
+		["CertificateAuthorityArn"] = args["CertificateAuthorityArn"],
+		["Serial"] = args["Serial"],
 		["Subject"] = args["Subject"],
+		["ExtendedKeyUsages"] = args["ExtendedKeyUsages"],
+		["DomainValidationOptions"] = args["DomainValidationOptions"],
+		["Issuer"] = args["Issuer"],
 	}
 	asserts.AssertCertificateDetail(all_args)
 	return {
@@ -1269,7 +1519,7 @@ function asserts.AssertInvalidStateException(struct)
 end
 
 --- Create a structure of type InvalidStateException
--- <p>Processing has reached an invalid state. For example, this exception can occur if the specified domain is not using email validation, or the current certificate status does not permit the requested operation. See the exception message returned by ACM to determine which state is not valid.</p>
+-- <p>Processing has reached an invalid state.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * message [String] 
@@ -1294,6 +1544,126 @@ function M.InvalidStateException(args)
     }
 end
 
+keys.Filters = { ["keyUsage"] = true, ["keyTypes"] = true, ["extendedKeyUsage"] = true, nil }
+
+function asserts.AssertFilters(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Filters to be of type 'table'")
+	if struct["keyUsage"] then asserts.AssertKeyUsageFilterList(struct["keyUsage"]) end
+	if struct["keyTypes"] then asserts.AssertKeyAlgorithmList(struct["keyTypes"]) end
+	if struct["extendedKeyUsage"] then asserts.AssertExtendedKeyUsageFilterList(struct["extendedKeyUsage"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Filters[k], "Filters contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Filters
+-- <p>This structure can be used in the <a>ListCertificates</a> action to filter the output of the certificate list. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * keyUsage [KeyUsageFilterList] <p>Specify one or more <a>KeyUsage</a> extension values.</p>
+-- * keyTypes [KeyAlgorithmList] <p>Specify one or more algorithms that can be used to generate key pairs.</p>
+-- * extendedKeyUsage [ExtendedKeyUsageFilterList] <p>Specify one or more <a>ExtendedKeyUsage</a> extension values.</p>
+-- @return Filters structure as a key-value pair table
+function M.Filters(args)
+	assert(args, "You must provide an argument table when creating Filters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["keyUsage"] = args["keyUsage"],
+		["keyTypes"] = args["keyTypes"],
+		["extendedKeyUsage"] = args["extendedKeyUsage"],
+	}
+	asserts.AssertFilters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListCertificatesResponse = { ["CertificateSummaryList"] = true, ["NextToken"] = true, nil }
+
+function asserts.AssertListCertificatesResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListCertificatesResponse to be of type 'table'")
+	if struct["CertificateSummaryList"] then asserts.AssertCertificateSummaryList(struct["CertificateSummaryList"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListCertificatesResponse[k], "ListCertificatesResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListCertificatesResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateSummaryList [CertificateSummaryList] <p>A list of ACM certificates.</p>
+-- * NextToken [NextToken] <p>When the list is truncated, this value is present and contains the value to use for the <code>NextToken</code> parameter in a subsequent pagination request.</p>
+-- @return ListCertificatesResponse structure as a key-value pair table
+function M.ListCertificatesResponse(args)
+	assert(args, "You must provide an argument table when creating ListCertificatesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["CertificateSummaryList"] = args["CertificateSummaryList"],
+		["NextToken"] = args["NextToken"],
+	}
+	asserts.AssertListCertificatesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.InvalidDomainValidationOptionsException = { ["message"] = true, nil }
+
+function asserts.AssertInvalidDomainValidationOptionsException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InvalidDomainValidationOptionsException to be of type 'table'")
+	if struct["message"] then asserts.AssertString(struct["message"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.InvalidDomainValidationOptionsException[k], "InvalidDomainValidationOptionsException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InvalidDomainValidationOptionsException
+-- <p>One or more values in the <a>DomainValidationOption</a> structure is incorrect.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return InvalidDomainValidationOptionsException structure as a key-value pair table
+function M.InvalidDomainValidationOptionsException(args)
+	assert(args, "You must provide an argument table when creating InvalidDomainValidationOptionsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["message"] = args["message"],
+	}
+	asserts.AssertInvalidDomainValidationOptionsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ResourceNotFoundException = { ["message"] = true, nil }
 
 function asserts.AssertResourceNotFoundException(struct)
@@ -1306,7 +1676,7 @@ function asserts.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- <p>The specified certificate cannot be found in the caller's account, or the caller's account cannot be found.</p>
+-- <p>The specified certificate cannot be found in the caller's account or the caller's account cannot be found.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * message [String] 
@@ -1329,6 +1699,29 @@ function M.ResourceNotFoundException(args)
         uri = uri_args,
         headers = header_args,
     }
+end
+
+function asserts.AssertKeyUsageName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected KeyUsageName to be of type 'string'")
+end
+
+--  
+function M.KeyUsageName(str)
+	asserts.AssertKeyUsageName(str)
+	return str
+end
+
+function asserts.AssertTagValue(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
+	assert(#str <= 256, "Expected string to be max 256 characters")
+end
+
+--  
+function M.TagValue(str)
+	asserts.AssertTagValue(str)
+	return str
 end
 
 function asserts.AssertDomainStatus(str)
@@ -1392,19 +1785,6 @@ function M.CertificateBody(str)
 	return str
 end
 
-function asserts.AssertTagKey(str)
-	assert(str)
-	assert(type(str) == "string", "Expected TagKey to be of type 'string'")
-	assert(#str <= 128, "Expected string to be max 128 characters")
-	assert(#str >= 1, "Expected string to be min 1 characters")
-end
-
---  
-function M.TagKey(str)
-	asserts.AssertTagKey(str)
-	return str
-end
-
 function asserts.AssertRenewalStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RenewalStatus to be of type 'string'")
@@ -1413,6 +1793,28 @@ end
 --  
 function M.RenewalStatus(str)
 	asserts.AssertRenewalStatus(str)
+	return str
+end
+
+function asserts.AssertRenewalEligibility(str)
+	assert(str)
+	assert(type(str) == "string", "Expected RenewalEligibility to be of type 'string'")
+end
+
+--  
+function M.RenewalEligibility(str)
+	asserts.AssertRenewalEligibility(str)
+	return str
+end
+
+function asserts.AssertString(str)
+	assert(str)
+	assert(type(str) == "string", "Expected String to be of type 'string'")
+end
+
+--  
+function M.String(str)
+	asserts.AssertString(str)
 	return str
 end
 
@@ -1453,6 +1855,30 @@ function M.IdempotencyToken(str)
 	return str
 end
 
+function asserts.AssertTagKey(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TagKey to be of type 'string'")
+	assert(#str <= 128, "Expected string to be max 128 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.TagKey(str)
+	asserts.AssertTagKey(str)
+	return str
+end
+
+function asserts.AssertCertificateTransparencyLoggingPreference(str)
+	assert(str)
+	assert(type(str) == "string", "Expected CertificateTransparencyLoggingPreference to be of type 'string'")
+end
+
+--  
+function M.CertificateTransparencyLoggingPreference(str)
+	asserts.AssertCertificateTransparencyLoggingPreference(str)
+	return str
+end
+
 function asserts.AssertCertificateType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CertificateType to be of type 'string'")
@@ -1464,26 +1890,49 @@ function M.CertificateType(str)
 	return str
 end
 
-function asserts.AssertString(str)
+function asserts.AssertRecordType(str)
 	assert(str)
-	assert(type(str) == "string", "Expected String to be of type 'string'")
+	assert(type(str) == "string", "Expected RecordType to be of type 'string'")
 end
 
 --  
-function M.String(str)
-	asserts.AssertString(str)
+function M.RecordType(str)
+	asserts.AssertRecordType(str)
 	return str
 end
 
-function asserts.AssertTagValue(str)
+function asserts.AssertExtendedKeyUsageName(str)
 	assert(str)
-	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
-	assert(#str <= 256, "Expected string to be max 256 characters")
+	assert(type(str) == "string", "Expected ExtendedKeyUsageName to be of type 'string'")
 end
 
 --  
-function M.TagValue(str)
-	asserts.AssertTagValue(str)
+function M.ExtendedKeyUsageName(str)
+	asserts.AssertExtendedKeyUsageName(str)
+	return str
+end
+
+function asserts.AssertValidationMethod(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ValidationMethod to be of type 'string'")
+end
+
+--  
+function M.ValidationMethod(str)
+	asserts.AssertValidationMethod(str)
+	return str
+end
+
+function asserts.AssertPrivateKey(str)
+	assert(str)
+	assert(type(str) == "string", "Expected PrivateKey to be of type 'string'")
+	assert(#str <= 524288, "Expected string to be max 524288 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.PrivateKey(str)
+	asserts.AssertPrivateKey(str)
 	return str
 end
 
@@ -1581,6 +2030,33 @@ function M.PrivateKeyBlob(blob)
 	return blob
 end
 
+function asserts.AssertPassphraseBlob(blob)
+	assert(blob)
+	assert(type(string) == "string", "Expected PassphraseBlob to be of type 'string'")
+	assert(#blob <= 128, "Expected blob to be max 128")
+	assert(#blob >= 4, "Expected blob to be max 4")
+end
+
+function M.PassphraseBlob(blob)
+	asserts.AssertPassphraseBlob(blob)
+	return blob
+end
+
+function asserts.AssertKeyUsageFilterList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected KeyUsageFilterList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertKeyUsageName(v)
+	end
+end
+
+--  
+-- List of KeyUsageName objects
+function M.KeyUsageFilterList(list)
+	asserts.AssertKeyUsageFilterList(list)
+	return list
+end
+
 function asserts.AssertValidationEmailList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ValidationEmailList to be of type ''table")
@@ -1593,6 +2069,66 @@ end
 -- List of String objects
 function M.ValidationEmailList(list)
 	asserts.AssertValidationEmailList(list)
+	return list
+end
+
+function asserts.AssertExtendedKeyUsageFilterList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ExtendedKeyUsageFilterList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertExtendedKeyUsageName(v)
+	end
+end
+
+--  
+-- List of ExtendedKeyUsageName objects
+function M.ExtendedKeyUsageFilterList(list)
+	asserts.AssertExtendedKeyUsageFilterList(list)
+	return list
+end
+
+function asserts.AssertExtendedKeyUsageList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ExtendedKeyUsageList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertExtendedKeyUsage(v)
+	end
+end
+
+--  
+-- List of ExtendedKeyUsage objects
+function M.ExtendedKeyUsageList(list)
+	asserts.AssertExtendedKeyUsageList(list)
+	return list
+end
+
+function asserts.AssertKeyAlgorithmList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected KeyAlgorithmList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertKeyAlgorithm(v)
+	end
+end
+
+--  
+-- List of KeyAlgorithm objects
+function M.KeyAlgorithmList(list)
+	asserts.AssertKeyAlgorithmList(list)
+	return list
+end
+
+function asserts.AssertInUseList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected InUseList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertString(v)
+	end
+end
+
+--  
+-- List of String objects
+function M.InUseList(list)
+	asserts.AssertInUseList(list)
 	return list
 end
 
@@ -1630,6 +2166,21 @@ function M.DomainValidationOptionList(list)
 	return list
 end
 
+function asserts.AssertKeyUsageList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected KeyUsageList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertKeyUsage(v)
+	end
+end
+
+--  
+-- List of KeyUsage objects
+function M.KeyUsageList(list)
+	asserts.AssertKeyUsageList(list)
+	return list
+end
+
 function asserts.AssertDomainList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DomainList to be of type ''table")
@@ -1659,21 +2210,6 @@ end
 -- List of CertificateStatus objects
 function M.CertificateStatuses(list)
 	asserts.AssertCertificateStatuses(list)
-	return list
-end
-
-function asserts.AssertInUseList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected InUseList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertString(v)
-	end
-end
-
---  
--- List of String objects
-function M.InUseList(list)
-	asserts.AssertInUseList(list)
 	return list
 end
 
@@ -1852,6 +2388,41 @@ function M.ListCertificatesSync(ListCertificatesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.ListCertificatesAsync(ListCertificatesRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateCertificateOptions asynchronously, invoking a callback when done
+-- @param UpdateCertificateOptionsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateCertificateOptionsAsync(UpdateCertificateOptionsRequest, cb)
+	assert(UpdateCertificateOptionsRequest, "You must provide a UpdateCertificateOptionsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.UpdateCertificateOptions",
+	}
+	for header,value in pairs(UpdateCertificateOptionsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateCertificateOptionsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateCertificateOptions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateCertificateOptionsRequest
+-- @return response
+-- @return error_message
+function M.UpdateCertificateOptionsSync(UpdateCertificateOptionsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateCertificateOptionsAsync(UpdateCertificateOptionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2062,6 +2633,41 @@ function M.DeleteCertificateSync(DeleteCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DeleteCertificateAsync(DeleteCertificateRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ExportCertificate asynchronously, invoking a callback when done
+-- @param ExportCertificateRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ExportCertificateAsync(ExportCertificateRequest, cb)
+	assert(ExportCertificateRequest, "You must provide a ExportCertificateRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.ExportCertificate",
+	}
+	for header,value in pairs(ExportCertificateRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ExportCertificateRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ExportCertificate synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ExportCertificateRequest
+-- @return response
+-- @return error_message
+function M.ExportCertificateSync(ExportCertificateRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ExportCertificateAsync(ExportCertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

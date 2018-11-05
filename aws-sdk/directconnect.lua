@@ -21,7 +21,7 @@ M.metadata = {
 local keys = {}
 local asserts = {}
 
-keys.Interconnect = { ["awsDevice"] = true, ["region"] = true, ["lagId"] = true, ["bandwidth"] = true, ["location"] = true, ["interconnectName"] = true, ["interconnectId"] = true, ["loaIssueTime"] = true, ["interconnectState"] = true, nil }
+keys.Interconnect = { ["awsDevice"] = true, ["region"] = true, ["lagId"] = true, ["awsDeviceV2"] = true, ["jumboFrameCapable"] = true, ["bandwidth"] = true, ["location"] = true, ["interconnectName"] = true, ["interconnectId"] = true, ["loaIssueTime"] = true, ["interconnectState"] = true, nil }
 
 function asserts.AssertInterconnect(struct)
 	assert(struct)
@@ -29,6 +29,8 @@ function asserts.AssertInterconnect(struct)
 	if struct["awsDevice"] then asserts.AssertAwsDevice(struct["awsDevice"]) end
 	if struct["region"] then asserts.AssertRegion(struct["region"]) end
 	if struct["lagId"] then asserts.AssertLagId(struct["lagId"]) end
+	if struct["awsDeviceV2"] then asserts.AssertAwsDeviceV2(struct["awsDeviceV2"]) end
+	if struct["jumboFrameCapable"] then asserts.AssertJumboFrameCapable(struct["jumboFrameCapable"]) end
 	if struct["bandwidth"] then asserts.AssertBandwidth(struct["bandwidth"]) end
 	if struct["location"] then asserts.AssertLocationCode(struct["location"]) end
 	if struct["interconnectName"] then asserts.AssertInterconnectName(struct["interconnectName"]) end
@@ -41,18 +43,20 @@ function asserts.AssertInterconnect(struct)
 end
 
 --- Create a structure of type Interconnect
--- <p>An interconnect is a connection that can host other connections.</p> <p>Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.</p> <p>The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.</p>
+-- <p>Information about an interconnect.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * awsDevice [AwsDevice] <p>The Direct Connection endpoint which the physical connection terminates on.</p>
--- * region [Region] 
--- * lagId [LagId] 
--- * bandwidth [Bandwidth] 
--- * location [LocationCode] 
--- * interconnectName [InterconnectName] 
--- * interconnectId [InterconnectId] 
--- * loaIssueTime [LoaIssueTime] <p>The time of the most recent call to DescribeInterconnectLoa for this Interconnect.</p>
--- * interconnectState [InterconnectState] 
+-- * awsDevice [AwsDevice] <p>The Direct Connect endpoint on which the physical connection terminates.</p>
+-- * region [Region] <p>The AWS Region where the connection is located.</p>
+-- * lagId [LagId] <p>The ID of the LAG.</p>
+-- * awsDeviceV2 [AwsDeviceV2] <p>The Direct Connect endpoint on which the physical connection terminates.</p>
+-- * jumboFrameCapable [JumboFrameCapable] <p>Indicates whether jumbo frames (9001 MTU) are supported.</p>
+-- * bandwidth [Bandwidth] <p>The bandwidth of the connection.</p>
+-- * location [LocationCode] <p>The location of the connection.</p>
+-- * interconnectName [InterconnectName] <p>The name of the interconnect.</p>
+-- * interconnectId [InterconnectId] <p>The ID of the interconnect.</p>
+-- * loaIssueTime [LoaIssueTime] <p>The time of the most recent call to <a>DescribeLoa</a> for this connection.</p>
+-- * interconnectState [InterconnectState] <p>The state of the interconnect. The following are the possible values:</p> <ul> <li> <p> <code>requested</code>: The initial state of an interconnect. The interconnect stays in the requested state until the Letter of Authorization (LOA) is sent to the customer.</p> </li> <li> <p> <code>pending</code>: The interconnect is approved, and is being initialized.</p> </li> <li> <p> <code>available</code>: The network link is up, and the interconnect is ready for use.</p> </li> <li> <p> <code>down</code>: The network link is down.</p> </li> <li> <p> <code>deleting</code>: The interconnect is being deleted.</p> </li> <li> <p> <code>deleted</code>: The interconnect is deleted.</p> </li> </ul>
 -- @return Interconnect structure as a key-value pair table
 function M.Interconnect(args)
 	assert(args, "You must provide an argument table when creating Interconnect")
@@ -66,6 +70,8 @@ function M.Interconnect(args)
 		["awsDevice"] = args["awsDevice"],
 		["region"] = args["region"],
 		["lagId"] = args["lagId"],
+		["awsDeviceV2"] = args["awsDeviceV2"],
+		["jumboFrameCapable"] = args["jumboFrameCapable"],
 		["bandwidth"] = args["bandwidth"],
 		["location"] = args["location"],
 		["interconnectName"] = args["interconnectName"],
@@ -82,23 +88,35 @@ function M.Interconnect(args)
     }
 end
 
-keys.DuplicateTagKeysException = { nil }
+keys.DirectConnectGatewayAttachment = { ["directConnectGatewayId"] = true, ["stateChangeError"] = true, ["attachmentState"] = true, ["virtualInterfaceId"] = true, ["virtualInterfaceRegion"] = true, ["virtualInterfaceOwnerAccount"] = true, nil }
 
-function asserts.AssertDuplicateTagKeysException(struct)
+function asserts.AssertDirectConnectGatewayAttachment(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DuplicateTagKeysException to be of type 'table'")
+	assert(type(struct) == "table", "Expected DirectConnectGatewayAttachment to be of type 'table'")
+	if struct["directConnectGatewayId"] then asserts.AssertDirectConnectGatewayId(struct["directConnectGatewayId"]) end
+	if struct["stateChangeError"] then asserts.AssertStateChangeError(struct["stateChangeError"]) end
+	if struct["attachmentState"] then asserts.AssertDirectConnectGatewayAttachmentState(struct["attachmentState"]) end
+	if struct["virtualInterfaceId"] then asserts.AssertVirtualInterfaceId(struct["virtualInterfaceId"]) end
+	if struct["virtualInterfaceRegion"] then asserts.AssertVirtualInterfaceRegion(struct["virtualInterfaceRegion"]) end
+	if struct["virtualInterfaceOwnerAccount"] then asserts.AssertOwnerAccount(struct["virtualInterfaceOwnerAccount"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DuplicateTagKeysException[k], "DuplicateTagKeysException contains unknown key " .. tostring(k))
+		assert(keys.DirectConnectGatewayAttachment[k], "DirectConnectGatewayAttachment contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DuplicateTagKeysException
--- <p>A tag key was specified more than once.</p>
+--- Create a structure of type DirectConnectGatewayAttachment
+-- <p>Information about an attachment between a Direct Connect gateway and a virtual interface.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return DuplicateTagKeysException structure as a key-value pair table
-function M.DuplicateTagKeysException(args)
-	assert(args, "You must provide an argument table when creating DuplicateTagKeysException")
+-- * directConnectGatewayId [DirectConnectGatewayId] <p>The ID of the Direct Connect gateway.</p>
+-- * stateChangeError [StateChangeError] <p>The error message if the state of an object failed to advance.</p>
+-- * attachmentState [DirectConnectGatewayAttachmentState] <p>The state of the attachment. The following are the possible values:</p> <ul> <li> <p> <code>attaching</code>: The initial state after a virtual interface is created using the Direct Connect gateway.</p> </li> <li> <p> <code>attached</code>: The Direct Connect gateway and virtual interface are attached and ready to pass traffic.</p> </li> <li> <p> <code>detaching</code>: The initial state after calling <a>DeleteVirtualInterface</a>.</p> </li> <li> <p> <code>detached</code>: The virtual interface is detached from the Direct Connect gateway. Traffic flow between the Direct Connect gateway and virtual interface is stopped.</p> </li> </ul>
+-- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface.</p>
+-- * virtualInterfaceRegion [VirtualInterfaceRegion] <p>The AWS Region where the virtual interface is located.</p>
+-- * virtualInterfaceOwnerAccount [OwnerAccount] <p>The ID of the AWS account that owns the virtual interface.</p>
+-- @return DirectConnectGatewayAttachment structure as a key-value pair table
+function M.DirectConnectGatewayAttachment(args)
+	assert(args, "You must provide an argument table when creating DirectConnectGatewayAttachment")
     local query_args = { 
     }
     local uri_args = { 
@@ -106,8 +124,14 @@ function M.DuplicateTagKeysException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["directConnectGatewayId"] = args["directConnectGatewayId"],
+		["stateChangeError"] = args["stateChangeError"],
+		["attachmentState"] = args["attachmentState"],
+		["virtualInterfaceId"] = args["virtualInterfaceId"],
+		["virtualInterfaceRegion"] = args["virtualInterfaceRegion"],
+		["virtualInterfaceOwnerAccount"] = args["virtualInterfaceOwnerAccount"],
 	}
-	asserts.AssertDuplicateTagKeysException(all_args)
+	asserts.AssertDirectConnectGatewayAttachment(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -129,10 +153,10 @@ function asserts.AssertDeleteInterconnectRequest(struct)
 end
 
 --- Create a structure of type DeleteInterconnectRequest
--- <p>Container for the parameters to the DeleteInterconnect operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * interconnectId [InterconnectId] 
+-- * interconnectId [InterconnectId] <p>The ID of the interconnect.</p>
 -- Required key: interconnectId
 -- @return DeleteInterconnectRequest structure as a key-value pair table
 function M.DeleteInterconnectRequest(args)
@@ -155,6 +179,85 @@ function M.DeleteInterconnectRequest(args)
     }
 end
 
+keys.CreateDirectConnectGatewayResult = { ["directConnectGateway"] = true, nil }
+
+function asserts.AssertCreateDirectConnectGatewayResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateDirectConnectGatewayResult to be of type 'table'")
+	if struct["directConnectGateway"] then asserts.AssertDirectConnectGateway(struct["directConnectGateway"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateDirectConnectGatewayResult[k], "CreateDirectConnectGatewayResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateDirectConnectGatewayResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * directConnectGateway [DirectConnectGateway] <p>The Direct Connect gateway.</p>
+-- @return CreateDirectConnectGatewayResult structure as a key-value pair table
+function M.CreateDirectConnectGatewayResult(args)
+	assert(args, "You must provide an argument table when creating CreateDirectConnectGatewayResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["directConnectGateway"] = args["directConnectGateway"],
+	}
+	asserts.AssertCreateDirectConnectGatewayResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateDirectConnectGatewayRequest = { ["amazonSideAsn"] = true, ["directConnectGatewayName"] = true, nil }
+
+function asserts.AssertCreateDirectConnectGatewayRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateDirectConnectGatewayRequest to be of type 'table'")
+	assert(struct["directConnectGatewayName"], "Expected key directConnectGatewayName to exist in table")
+	if struct["amazonSideAsn"] then asserts.AssertLongAsn(struct["amazonSideAsn"]) end
+	if struct["directConnectGatewayName"] then asserts.AssertDirectConnectGatewayName(struct["directConnectGatewayName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateDirectConnectGatewayRequest[k], "CreateDirectConnectGatewayRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateDirectConnectGatewayRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * amazonSideAsn [LongAsn] <p>The autonomous system number (ASN) for Border Gateway Protocol (BGP) to be configured on the Amazon side of the connection. The ASN must be in the private range of 64,512 to 65,534 or 4,200,000,000 to 4,294,967,294. The default is 64512.</p>
+-- * directConnectGatewayName [DirectConnectGatewayName] <p>The name of the Direct Connect gateway.</p>
+-- Required key: directConnectGatewayName
+-- @return CreateDirectConnectGatewayRequest structure as a key-value pair table
+function M.CreateDirectConnectGatewayRequest(args)
+	assert(args, "You must provide an argument table when creating CreateDirectConnectGatewayRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["amazonSideAsn"] = args["amazonSideAsn"],
+		["directConnectGatewayName"] = args["directConnectGatewayName"],
+	}
+	asserts.AssertCreateDirectConnectGatewayRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ConfirmPublicVirtualInterfaceRequest = { ["virtualInterfaceId"] = true, nil }
 
 function asserts.AssertConfirmPublicVirtualInterfaceRequest(struct)
@@ -168,10 +271,10 @@ function asserts.AssertConfirmPublicVirtualInterfaceRequest(struct)
 end
 
 --- Create a structure of type ConfirmPublicVirtualInterfaceRequest
--- <p>Container for the parameters to the ConfirmPublicVirtualInterface operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * virtualInterfaceId [VirtualInterfaceId] 
+-- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface.</p>
 -- Required key: virtualInterfaceId
 -- @return ConfirmPublicVirtualInterfaceRequest structure as a key-value pair table
 function M.ConfirmPublicVirtualInterfaceRequest(args)
@@ -209,12 +312,12 @@ function asserts.AssertDescribeConnectionLoaRequest(struct)
 end
 
 --- Create a structure of type DescribeConnectionLoaRequest
--- <p>Container for the parameters to the DescribeConnectionLoa operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * loaContentType [LoaContentType] 
--- * connectionId [ConnectionId] 
--- * providerName [ProviderName] <p>The name of the APN partner or service provider who establishes connectivity on your behalf. If you supply this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.</p> <p>Default: None</p>
+-- * loaContentType [LoaContentType] <p>The standard media type for the LOA-CFA document. The only supported value is application/pdf.</p>
+-- * connectionId [ConnectionId] <p>The ID of the connection.</p>
+-- * providerName [ProviderName] <p>The name of the APN partner or service provider who establishes connectivity on your behalf. If you specify this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.</p>
 -- Required key: connectionId
 -- @return DescribeConnectionLoaRequest structure as a key-value pair table
 function M.DescribeConnectionLoaRequest(args)
@@ -239,6 +342,43 @@ function M.DescribeConnectionLoaRequest(args)
     }
 end
 
+keys.DeleteDirectConnectGatewayResult = { ["directConnectGateway"] = true, nil }
+
+function asserts.AssertDeleteDirectConnectGatewayResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteDirectConnectGatewayResult to be of type 'table'")
+	if struct["directConnectGateway"] then asserts.AssertDirectConnectGateway(struct["directConnectGateway"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteDirectConnectGatewayResult[k], "DeleteDirectConnectGatewayResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteDirectConnectGatewayResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * directConnectGateway [DirectConnectGateway] <p>The Direct Connect gateway.</p>
+-- @return DeleteDirectConnectGatewayResult structure as a key-value pair table
+function M.DeleteDirectConnectGatewayResult(args)
+	assert(args, "You must provide an argument table when creating DeleteDirectConnectGatewayResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["directConnectGateway"] = args["directConnectGateway"],
+	}
+	asserts.AssertDeleteDirectConnectGatewayResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.AssociateConnectionWithLagRequest = { ["lagId"] = true, ["connectionId"] = true, nil }
 
 function asserts.AssertAssociateConnectionWithLagRequest(struct)
@@ -254,11 +394,11 @@ function asserts.AssertAssociateConnectionWithLagRequest(struct)
 end
 
 --- Create a structure of type AssociateConnectionWithLagRequest
--- <p>Container for the parameters to the AssociateConnectionWithLag operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * lagId [LagId] <p>The ID of the LAG with which to associate the connection.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
--- * connectionId [ConnectionId] <p>The ID of the connection.</p> <p>Example: dxcon-abc123</p> <p>Default: None</p>
+-- * lagId [LagId] <p>The ID of the LAG with which to associate the connection. For example, dxlag-abc123.</p>
+-- * connectionId [ConnectionId] <p>The ID of the connection. For example, dxcon-abc123.</p>
 -- Required key: connectionId
 -- Required key: lagId
 -- @return AssociateConnectionWithLagRequest structure as a key-value pair table
@@ -295,10 +435,10 @@ function asserts.AssertDeleteInterconnectResponse(struct)
 end
 
 --- Create a structure of type DeleteInterconnectResponse
--- <p>The response received when DeleteInterconnect is called.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * interconnectState [InterconnectState] 
+-- * interconnectState [InterconnectState] <p>The state of the interconnect. The following are the possible values:</p> <ul> <li> <p> <code>requested</code>: The initial state of an interconnect. The interconnect stays in the requested state until the Letter of Authorization (LOA) is sent to the customer.</p> </li> <li> <p> <code>pending</code>: The interconnect is approved, and is being initialized.</p> </li> <li> <p> <code>available</code>: The network link is up, and the interconnect is ready for use.</p> </li> <li> <p> <code>down</code>: The network link is down.</p> </li> <li> <p> <code>deleting</code>: The interconnect is being deleted.</p> </li> <li> <p> <code>deleted</code>: The interconnect is deleted.</p> </li> </ul>
 -- @return DeleteInterconnectResponse structure as a key-value pair table
 function M.DeleteInterconnectResponse(args)
 	assert(args, "You must provide an argument table when creating DeleteInterconnectResponse")
@@ -333,11 +473,11 @@ function asserts.AssertDescribeVirtualInterfacesRequest(struct)
 end
 
 --- Create a structure of type DescribeVirtualInterfacesRequest
--- <p>Container for the parameters to the DescribeVirtualInterfaces operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * connectionId [ConnectionId] 
--- * virtualInterfaceId [VirtualInterfaceId] 
+-- * connectionId [ConnectionId] <p>The ID of the connection.</p>
+-- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface.</p>
 -- @return DescribeVirtualInterfacesRequest structure as a key-value pair table
 function M.DescribeVirtualInterfacesRequest(args)
 	assert(args, "You must provide an argument table when creating DescribeVirtualInterfacesRequest")
@@ -372,10 +512,10 @@ function asserts.AssertDescribeLagsRequest(struct)
 end
 
 --- Create a structure of type DescribeLagsRequest
--- <p>Container for the parameters to the DescribeLags operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * lagId [LagId] <p>The ID of the LAG.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
+-- * lagId [LagId] <p>The ID of the LAG.</p>
 -- @return DescribeLagsRequest structure as a key-value pair table
 function M.DescribeLagsRequest(args)
 	assert(args, "You must provide an argument table when creating DescribeLagsRequest")
@@ -409,10 +549,10 @@ function asserts.AssertInterconnects(struct)
 end
 
 --- Create a structure of type Interconnects
--- <p>A structure containing a list of interconnects.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * interconnects [InterconnectList] <p>A list of interconnects.</p>
+-- * interconnects [InterconnectList] <p>The interconnects.</p>
 -- @return Interconnects structure as a key-value pair table
 function M.Interconnects(args)
 	assert(args, "You must provide an argument table when creating Interconnects")
@@ -446,10 +586,10 @@ function asserts.AssertDescribeInterconnectLoaResponse(struct)
 end
 
 --- Create a structure of type DescribeInterconnectLoaResponse
--- <p>The response received when DescribeInterconnectLoa is called.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * loa [Loa] 
+-- * loa [Loa] <p>The Letter of Authorization - Connecting Facility Assignment (LOA-CFA).</p>
 -- @return DescribeInterconnectLoaResponse structure as a key-value pair table
 function M.DescribeInterconnectLoaResponse(args)
 	assert(args, "You must provide an argument table when creating DescribeInterconnectLoaResponse")
@@ -486,11 +626,11 @@ function asserts.AssertDisassociateConnectionFromLagRequest(struct)
 end
 
 --- Create a structure of type DisassociateConnectionFromLagRequest
--- <p>Container for the parameters to the DisassociateConnectionFromLag operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * lagId [LagId] <p>The ID of the LAG.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
--- * connectionId [ConnectionId] <p>The ID of the connection to disassociate from the LAG.</p> <p>Example: dxcon-abc123</p> <p>Default: None</p>
+-- * lagId [LagId] <p>The ID of the LAG. For example, dxlag-abc123.</p>
+-- * connectionId [ConnectionId] <p>The ID of the connection. For example, dxcon-abc123.</p>
 -- Required key: connectionId
 -- Required key: lagId
 -- @return DisassociateConnectionFromLagRequest structure as a key-value pair table
@@ -535,14 +675,14 @@ function asserts.AssertCreateLagRequest(struct)
 end
 
 --- Create a structure of type CreateLagRequest
--- <p>Container for the parameters to the CreateLag operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * connectionId [ConnectionId] <p>The ID of an existing connection to migrate to the LAG.</p> <p>Default: None</p>
--- * lagName [LagName] <p>The name of the LAG.</p> <p>Example: "<code>3x10G LAG to AWS</code>"</p> <p>Default: None</p>
--- * numberOfConnections [Count] <p>The number of physical connections initially provisioned and bundled by the LAG.</p> <p>Default: None</p>
--- * location [LocationCode] <p>The AWS Direct Connect location in which the LAG should be allocated.</p> <p>Example: EqSV5</p> <p>Default: None</p>
--- * connectionsBandwidth [Bandwidth] <p>The bandwidth of the individual physical connections bundled by the LAG.</p> <p>Default: None</p> <p>Available values: 1Gbps, 10Gbps</p>
+-- * connectionId [ConnectionId] <p>The ID of an existing connection to migrate to the LAG.</p>
+-- * lagName [LagName] <p>The name of the LAG.</p>
+-- * numberOfConnections [Count] <p>The number of physical connections initially provisioned and bundled by the LAG.</p>
+-- * location [LocationCode] <p>The location for the LAG.</p>
+-- * connectionsBandwidth [Bandwidth] <p>The bandwidth of the individual physical connections bundled by the LAG. The possible values are 1Gbps and 10Gbps.</p>
 -- Required key: numberOfConnections
 -- Required key: location
 -- Required key: connectionsBandwidth
@@ -584,10 +724,10 @@ function asserts.AssertConnections(struct)
 end
 
 --- Create a structure of type Connections
--- <p>A structure containing a list of connections.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * connections [ConnectionList] <p>A list of connections.</p>
+-- * connections [ConnectionList] <p>The connections.</p>
 -- @return Connections structure as a key-value pair table
 function M.Connections(args)
 	assert(args, "You must provide an argument table when creating Connections")
@@ -609,29 +749,31 @@ function M.Connections(args)
     }
 end
 
-keys.Tag = { ["value"] = true, ["key"] = true, nil }
+keys.CreateDirectConnectGatewayAssociationRequest = { ["directConnectGatewayId"] = true, ["virtualGatewayId"] = true, nil }
 
-function asserts.AssertTag(struct)
+function asserts.AssertCreateDirectConnectGatewayAssociationRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
-	assert(struct["key"], "Expected key key to exist in table")
-	if struct["value"] then asserts.AssertTagValue(struct["value"]) end
-	if struct["key"] then asserts.AssertTagKey(struct["key"]) end
+	assert(type(struct) == "table", "Expected CreateDirectConnectGatewayAssociationRequest to be of type 'table'")
+	assert(struct["directConnectGatewayId"], "Expected key directConnectGatewayId to exist in table")
+	assert(struct["virtualGatewayId"], "Expected key virtualGatewayId to exist in table")
+	if struct["directConnectGatewayId"] then asserts.AssertDirectConnectGatewayId(struct["directConnectGatewayId"]) end
+	if struct["virtualGatewayId"] then asserts.AssertVirtualGatewayId(struct["virtualGatewayId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
+		assert(keys.CreateDirectConnectGatewayAssociationRequest[k], "CreateDirectConnectGatewayAssociationRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type Tag
--- <p>Information about a tag.</p>
+--- Create a structure of type CreateDirectConnectGatewayAssociationRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * value [TagValue] <p>The value of the tag.</p>
--- * key [TagKey] <p>The key of the tag.</p>
--- Required key: key
--- @return Tag structure as a key-value pair table
-function M.Tag(args)
-	assert(args, "You must provide an argument table when creating Tag")
+-- * directConnectGatewayId [DirectConnectGatewayId] <p>The ID of the Direct Connect gateway.</p>
+-- * virtualGatewayId [VirtualGatewayId] <p>The ID of the virtual private gateway.</p>
+-- Required key: directConnectGatewayId
+-- Required key: virtualGatewayId
+-- @return CreateDirectConnectGatewayAssociationRequest structure as a key-value pair table
+function M.CreateDirectConnectGatewayAssociationRequest(args)
+	assert(args, "You must provide an argument table when creating CreateDirectConnectGatewayAssociationRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -639,10 +781,47 @@ function M.Tag(args)
     local header_args = { 
     }
 	local all_args = { 
-		["value"] = args["value"],
-		["key"] = args["key"],
+		["directConnectGatewayId"] = args["directConnectGatewayId"],
+		["virtualGatewayId"] = args["virtualGatewayId"],
 	}
-	asserts.AssertTag(all_args)
+	asserts.AssertCreateDirectConnectGatewayAssociationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateDirectConnectGatewayAssociationResult = { ["directConnectGatewayAssociation"] = true, nil }
+
+function asserts.AssertCreateDirectConnectGatewayAssociationResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateDirectConnectGatewayAssociationResult to be of type 'table'")
+	if struct["directConnectGatewayAssociation"] then asserts.AssertDirectConnectGatewayAssociation(struct["directConnectGatewayAssociation"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateDirectConnectGatewayAssociationResult[k], "CreateDirectConnectGatewayAssociationResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateDirectConnectGatewayAssociationResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * directConnectGatewayAssociation [DirectConnectGatewayAssociation] <p>The association to be created.</p>
+-- @return CreateDirectConnectGatewayAssociationResult structure as a key-value pair table
+function M.CreateDirectConnectGatewayAssociationResult(args)
+	assert(args, "You must provide an argument table when creating CreateDirectConnectGatewayAssociationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["directConnectGatewayAssociation"] = args["directConnectGatewayAssociation"],
+	}
+	asserts.AssertCreateDirectConnectGatewayAssociationResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -664,10 +843,10 @@ function asserts.AssertDescribeConnectionsOnInterconnectRequest(struct)
 end
 
 --- Create a structure of type DescribeConnectionsOnInterconnectRequest
--- <p>Container for the parameters to the DescribeConnectionsOnInterconnect operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * interconnectId [InterconnectId] <p>ID of the interconnect on which a list of connection is provisioned.</p> <p>Example: dxcon-abc123</p> <p>Default: None</p>
+-- * interconnectId [InterconnectId] <p>The ID of the interconnect.</p>
 -- Required key: interconnectId
 -- @return DescribeConnectionsOnInterconnectRequest structure as a key-value pair table
 function M.DescribeConnectionsOnInterconnectRequest(args)
@@ -702,10 +881,10 @@ function asserts.AssertLags(struct)
 end
 
 --- Create a structure of type Lags
--- <p>A structure containing a list of LAGs.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * lags [LagList] <p>A list of LAGs.</p>
+-- * lags [LagList] <p>The LAGs.</p>
 -- @return Lags structure as a key-value pair table
 function M.Lags(args)
 	assert(args, "You must provide an argument table when creating Lags")
@@ -739,10 +918,10 @@ function asserts.AssertDeleteBGPPeerResponse(struct)
 end
 
 --- Create a structure of type DeleteBGPPeerResponse
--- <p>The response received when DeleteBGPPeer is called.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * virtualInterface [VirtualInterface] 
+-- * virtualInterface [VirtualInterface] <p>The virtual interface.</p>
 -- @return DeleteBGPPeerResponse structure as a key-value pair table
 function M.DeleteBGPPeerResponse(args)
 	assert(args, "You must provide an argument table when creating DeleteBGPPeerResponse")
@@ -764,14 +943,14 @@ function M.DeleteBGPPeerResponse(args)
     }
 end
 
-keys.ConfirmPrivateVirtualInterfaceRequest = { ["virtualGatewayId"] = true, ["virtualInterfaceId"] = true, nil }
+keys.ConfirmPrivateVirtualInterfaceRequest = { ["virtualGatewayId"] = true, ["directConnectGatewayId"] = true, ["virtualInterfaceId"] = true, nil }
 
 function asserts.AssertConfirmPrivateVirtualInterfaceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConfirmPrivateVirtualInterfaceRequest to be of type 'table'")
 	assert(struct["virtualInterfaceId"], "Expected key virtualInterfaceId to exist in table")
-	assert(struct["virtualGatewayId"], "Expected key virtualGatewayId to exist in table")
 	if struct["virtualGatewayId"] then asserts.AssertVirtualGatewayId(struct["virtualGatewayId"]) end
+	if struct["directConnectGatewayId"] then asserts.AssertDirectConnectGatewayId(struct["directConnectGatewayId"]) end
 	if struct["virtualInterfaceId"] then asserts.AssertVirtualInterfaceId(struct["virtualInterfaceId"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ConfirmPrivateVirtualInterfaceRequest[k], "ConfirmPrivateVirtualInterfaceRequest contains unknown key " .. tostring(k))
@@ -779,13 +958,13 @@ function asserts.AssertConfirmPrivateVirtualInterfaceRequest(struct)
 end
 
 --- Create a structure of type ConfirmPrivateVirtualInterfaceRequest
--- <p>Container for the parameters to the ConfirmPrivateVirtualInterface operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * virtualGatewayId [VirtualGatewayId] <p>ID of the virtual private gateway that will be attached to the virtual interface.</p> <p> A virtual private gateway can be managed via the Amazon Virtual Private Cloud (VPC) console or the <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html">EC2 CreateVpnGateway</a> action.</p> <p>Default: None</p>
--- * virtualInterfaceId [VirtualInterfaceId] 
+-- * virtualGatewayId [VirtualGatewayId] <p>The ID of the virtual private gateway.</p>
+-- * directConnectGatewayId [DirectConnectGatewayId] <p>The ID of the Direct Connect gateway.</p>
+-- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface.</p>
 -- Required key: virtualInterfaceId
--- Required key: virtualGatewayId
 -- @return ConfirmPrivateVirtualInterfaceRequest structure as a key-value pair table
 function M.ConfirmPrivateVirtualInterfaceRequest(args)
 	assert(args, "You must provide an argument table when creating ConfirmPrivateVirtualInterfaceRequest")
@@ -797,6 +976,7 @@ function M.ConfirmPrivateVirtualInterfaceRequest(args)
     }
 	local all_args = { 
 		["virtualGatewayId"] = args["virtualGatewayId"],
+		["directConnectGatewayId"] = args["directConnectGatewayId"],
 		["virtualInterfaceId"] = args["virtualInterfaceId"],
 	}
 	asserts.AssertConfirmPrivateVirtualInterfaceRequest(all_args)
@@ -808,12 +988,13 @@ function M.ConfirmPrivateVirtualInterfaceRequest(args)
     }
 end
 
-keys.Location = { ["locationName"] = true, ["locationCode"] = true, nil }
+keys.Location = { ["locationName"] = true, ["region"] = true, ["locationCode"] = true, nil }
 
 function asserts.AssertLocation(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Location to be of type 'table'")
 	if struct["locationName"] then asserts.AssertLocationName(struct["locationName"]) end
+	if struct["region"] then asserts.AssertRegion(struct["region"]) end
 	if struct["locationCode"] then asserts.AssertLocationCode(struct["locationCode"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Location[k], "Location contains unknown key " .. tostring(k))
@@ -821,11 +1002,12 @@ function asserts.AssertLocation(struct)
 end
 
 --- Create a structure of type Location
--- <p>An AWS Direct Connect location where connections and interconnects can be requested.</p>
+-- <p>Information about an AWS Direct Connect location.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * locationName [LocationName] <p>The name of the AWS Direct Connect location. The name includes the colocation partner name and the physical site of the lit building.</p>
--- * locationCode [LocationCode] <p>The code used to indicate the AWS Direct Connect location.</p>
+-- * locationName [LocationName] <p>The name of the location. This includes the name of the colocation partner and the physical site of the building.</p>
+-- * region [Region] <p>The AWS Region for the location.</p>
+-- * locationCode [LocationCode] <p>The code for the location.</p>
 -- @return Location structure as a key-value pair table
 function M.Location(args)
 	assert(args, "You must provide an argument table when creating Location")
@@ -837,9 +1019,54 @@ function M.Location(args)
     }
 	local all_args = { 
 		["locationName"] = args["locationName"],
+		["region"] = args["region"],
 		["locationCode"] = args["locationCode"],
 	}
 	asserts.AssertLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteDirectConnectGatewayAssociationRequest = { ["directConnectGatewayId"] = true, ["virtualGatewayId"] = true, nil }
+
+function asserts.AssertDeleteDirectConnectGatewayAssociationRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteDirectConnectGatewayAssociationRequest to be of type 'table'")
+	assert(struct["directConnectGatewayId"], "Expected key directConnectGatewayId to exist in table")
+	assert(struct["virtualGatewayId"], "Expected key virtualGatewayId to exist in table")
+	if struct["directConnectGatewayId"] then asserts.AssertDirectConnectGatewayId(struct["directConnectGatewayId"]) end
+	if struct["virtualGatewayId"] then asserts.AssertVirtualGatewayId(struct["virtualGatewayId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteDirectConnectGatewayAssociationRequest[k], "DeleteDirectConnectGatewayAssociationRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteDirectConnectGatewayAssociationRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * directConnectGatewayId [DirectConnectGatewayId] <p>The ID of the Direct Connect gateway.</p>
+-- * virtualGatewayId [VirtualGatewayId] <p>The ID of the virtual private gateway.</p>
+-- Required key: directConnectGatewayId
+-- Required key: virtualGatewayId
+-- @return DeleteDirectConnectGatewayAssociationRequest structure as a key-value pair table
+function M.DeleteDirectConnectGatewayAssociationRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteDirectConnectGatewayAssociationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["directConnectGatewayId"] = args["directConnectGatewayId"],
+		["virtualGatewayId"] = args["virtualGatewayId"],
+	}
+	asserts.AssertDeleteDirectConnectGatewayAssociationRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -860,10 +1087,10 @@ function asserts.AssertDescribeConnectionLoaResponse(struct)
 end
 
 --- Create a structure of type DescribeConnectionLoaResponse
--- <p>The response received when DescribeConnectionLoa is called.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * loa [Loa] 
+-- * loa [Loa] <p>The Letter of Authorization - Connecting Facility Assignment (LOA-CFA).</p>
 -- @return DescribeConnectionLoaResponse structure as a key-value pair table
 function M.DescribeConnectionLoaResponse(args)
 	assert(args, "You must provide an argument table when creating DescribeConnectionLoaResponse")
@@ -885,6 +1112,52 @@ function M.DescribeConnectionLoaResponse(args)
     }
 end
 
+keys.DescribeDirectConnectGatewayAttachmentsRequest = { ["directConnectGatewayId"] = true, ["nextToken"] = true, ["maxResults"] = true, ["virtualInterfaceId"] = true, nil }
+
+function asserts.AssertDescribeDirectConnectGatewayAttachmentsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeDirectConnectGatewayAttachmentsRequest to be of type 'table'")
+	if struct["directConnectGatewayId"] then asserts.AssertDirectConnectGatewayId(struct["directConnectGatewayId"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertMaxResultSetSize(struct["maxResults"]) end
+	if struct["virtualInterfaceId"] then asserts.AssertVirtualInterfaceId(struct["virtualInterfaceId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeDirectConnectGatewayAttachmentsRequest[k], "DescribeDirectConnectGatewayAttachmentsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeDirectConnectGatewayAttachmentsRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * directConnectGatewayId [DirectConnectGatewayId] <p>The ID of the Direct Connect gateway.</p>
+-- * nextToken [PaginationToken] <p>The token provided in the previous call to retrieve the next page.</p>
+-- * maxResults [MaxResultSetSize] <p>The maximum number of attachments to return per page.</p>
+-- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface.</p>
+-- @return DescribeDirectConnectGatewayAttachmentsRequest structure as a key-value pair table
+function M.DescribeDirectConnectGatewayAttachmentsRequest(args)
+	assert(args, "You must provide an argument table when creating DescribeDirectConnectGatewayAttachmentsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["directConnectGatewayId"] = args["directConnectGatewayId"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
+		["virtualInterfaceId"] = args["virtualInterfaceId"],
+	}
+	asserts.AssertDescribeDirectConnectGatewayAttachmentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ConfirmConnectionRequest = { ["connectionId"] = true, nil }
 
 function asserts.AssertConfirmConnectionRequest(struct)
@@ -898,10 +1171,10 @@ function asserts.AssertConfirmConnectionRequest(struct)
 end
 
 --- Create a structure of type ConfirmConnectionRequest
--- <p>Container for the parameters to the ConfirmConnection operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * connectionId [ConnectionId] 
+-- * connectionId [ConnectionId] <p>The ID of the hosted connection.</p>
 -- Required key: connectionId
 -- @return ConfirmConnectionRequest structure as a key-value pair table
 function M.ConfirmConnectionRequest(args)
@@ -924,54 +1197,66 @@ function M.ConfirmConnectionRequest(args)
     }
 end
 
-keys.VirtualInterface = { ["virtualInterfaceState"] = true, ["asn"] = true, ["vlan"] = true, ["customerAddress"] = true, ["ownerAccount"] = true, ["connectionId"] = true, ["addressFamily"] = true, ["virtualGatewayId"] = true, ["virtualInterfaceId"] = true, ["authKey"] = true, ["routeFilterPrefixes"] = true, ["location"] = true, ["bgpPeers"] = true, ["customerRouterConfig"] = true, ["amazonAddress"] = true, ["virtualInterfaceType"] = true, ["virtualInterfaceName"] = true, nil }
+keys.VirtualInterface = { ["virtualInterfaceId"] = true, ["amazonSideAsn"] = true, ["addressFamily"] = true, ["awsDeviceV2"] = true, ["virtualInterfaceState"] = true, ["directConnectGatewayId"] = true, ["authKey"] = true, ["location"] = true, ["virtualGatewayId"] = true, ["connectionId"] = true, ["virtualInterfaceType"] = true, ["customerAddress"] = true, ["vlan"] = true, ["jumboFrameCapable"] = true, ["routeFilterPrefixes"] = true, ["customerRouterConfig"] = true, ["asn"] = true, ["virtualInterfaceName"] = true, ["ownerAccount"] = true, ["mtu"] = true, ["bgpPeers"] = true, ["amazonAddress"] = true, ["region"] = true, nil }
 
 function asserts.AssertVirtualInterface(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected VirtualInterface to be of type 'table'")
-	if struct["virtualInterfaceState"] then asserts.AssertVirtualInterfaceState(struct["virtualInterfaceState"]) end
-	if struct["asn"] then asserts.AssertASN(struct["asn"]) end
-	if struct["vlan"] then asserts.AssertVLAN(struct["vlan"]) end
-	if struct["customerAddress"] then asserts.AssertCustomerAddress(struct["customerAddress"]) end
-	if struct["ownerAccount"] then asserts.AssertOwnerAccount(struct["ownerAccount"]) end
-	if struct["connectionId"] then asserts.AssertConnectionId(struct["connectionId"]) end
-	if struct["addressFamily"] then asserts.AssertAddressFamily(struct["addressFamily"]) end
-	if struct["virtualGatewayId"] then asserts.AssertVirtualGatewayId(struct["virtualGatewayId"]) end
 	if struct["virtualInterfaceId"] then asserts.AssertVirtualInterfaceId(struct["virtualInterfaceId"]) end
+	if struct["amazonSideAsn"] then asserts.AssertLongAsn(struct["amazonSideAsn"]) end
+	if struct["addressFamily"] then asserts.AssertAddressFamily(struct["addressFamily"]) end
+	if struct["awsDeviceV2"] then asserts.AssertAwsDeviceV2(struct["awsDeviceV2"]) end
+	if struct["virtualInterfaceState"] then asserts.AssertVirtualInterfaceState(struct["virtualInterfaceState"]) end
+	if struct["directConnectGatewayId"] then asserts.AssertDirectConnectGatewayId(struct["directConnectGatewayId"]) end
 	if struct["authKey"] then asserts.AssertBGPAuthKey(struct["authKey"]) end
-	if struct["routeFilterPrefixes"] then asserts.AssertRouteFilterPrefixList(struct["routeFilterPrefixes"]) end
 	if struct["location"] then asserts.AssertLocationCode(struct["location"]) end
-	if struct["bgpPeers"] then asserts.AssertBGPPeerList(struct["bgpPeers"]) end
-	if struct["customerRouterConfig"] then asserts.AssertRouterConfig(struct["customerRouterConfig"]) end
-	if struct["amazonAddress"] then asserts.AssertAmazonAddress(struct["amazonAddress"]) end
+	if struct["virtualGatewayId"] then asserts.AssertVirtualGatewayId(struct["virtualGatewayId"]) end
+	if struct["connectionId"] then asserts.AssertConnectionId(struct["connectionId"]) end
 	if struct["virtualInterfaceType"] then asserts.AssertVirtualInterfaceType(struct["virtualInterfaceType"]) end
+	if struct["customerAddress"] then asserts.AssertCustomerAddress(struct["customerAddress"]) end
+	if struct["vlan"] then asserts.AssertVLAN(struct["vlan"]) end
+	if struct["jumboFrameCapable"] then asserts.AssertJumboFrameCapable(struct["jumboFrameCapable"]) end
+	if struct["routeFilterPrefixes"] then asserts.AssertRouteFilterPrefixList(struct["routeFilterPrefixes"]) end
+	if struct["customerRouterConfig"] then asserts.AssertRouterConfig(struct["customerRouterConfig"]) end
+	if struct["asn"] then asserts.AssertASN(struct["asn"]) end
 	if struct["virtualInterfaceName"] then asserts.AssertVirtualInterfaceName(struct["virtualInterfaceName"]) end
+	if struct["ownerAccount"] then asserts.AssertOwnerAccount(struct["ownerAccount"]) end
+	if struct["mtu"] then asserts.AssertMTU(struct["mtu"]) end
+	if struct["bgpPeers"] then asserts.AssertBGPPeerList(struct["bgpPeers"]) end
+	if struct["amazonAddress"] then asserts.AssertAmazonAddress(struct["amazonAddress"]) end
+	if struct["region"] then asserts.AssertRegion(struct["region"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.VirtualInterface[k], "VirtualInterface contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type VirtualInterface
--- <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
+-- <p>Information about a virtual interface.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * virtualInterfaceState [VirtualInterfaceState] 
--- * asn [ASN] 
--- * vlan [VLAN] 
--- * customerAddress [CustomerAddress] 
--- * ownerAccount [OwnerAccount] <p>The AWS account that will own the new virtual interface.</p>
--- * connectionId [ConnectionId] 
--- * addressFamily [AddressFamily] 
--- * virtualGatewayId [VirtualGatewayId] 
--- * virtualInterfaceId [VirtualInterfaceId] 
--- * authKey [BGPAuthKey] 
--- * routeFilterPrefixes [RouteFilterPrefixList] 
--- * location [LocationCode] 
--- * bgpPeers [BGPPeerList] 
--- * customerRouterConfig [RouterConfig] <p>Information for generating the customer router configuration.</p>
--- * amazonAddress [AmazonAddress] 
--- * virtualInterfaceType [VirtualInterfaceType] 
--- * virtualInterfaceName [VirtualInterfaceName] 
+-- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface.</p>
+-- * amazonSideAsn [LongAsn] <p>The autonomous system number (ASN) for the Amazon side of the connection.</p>
+-- * addressFamily [AddressFamily] <p>The address family for the BGP peer.</p>
+-- * awsDeviceV2 [AwsDeviceV2] <p>The Direct Connect endpoint on which the virtual interface terminates.</p>
+-- * virtualInterfaceState [VirtualInterfaceState] <p>The state of the virtual interface. The following are the possible values:</p> <ul> <li> <p> <code>confirming</code>: The creation of the virtual interface is pending confirmation from the virtual interface owner. If the owner of the virtual interface is different from the owner of the connection on which it is provisioned, then the virtual interface will remain in this state until it is confirmed by the virtual interface owner.</p> </li> <li> <p> <code>verifying</code>: This state only applies to public virtual interfaces. Each public virtual interface needs validation before the virtual interface can be created.</p> </li> <li> <p> <code>pending</code>: A virtual interface is in this state from the time that it is created until the virtual interface is ready to forward traffic.</p> </li> <li> <p> <code>available</code>: A virtual interface that is able to forward traffic.</p> </li> <li> <p> <code>down</code>: A virtual interface that is BGP down.</p> </li> <li> <p> <code>deleting</code>: A virtual interface is in this state immediately after calling <a>DeleteVirtualInterface</a> until it can no longer forward traffic.</p> </li> <li> <p> <code>deleted</code>: A virtual interface that cannot forward traffic.</p> </li> <li> <p> <code>rejected</code>: The virtual interface owner has declined creation of the virtual interface. If a virtual interface in the <code>Confirming</code> state is deleted by the virtual interface owner, the virtual interface enters the <code>Rejected</code> state.</p> </li> </ul>
+-- * directConnectGatewayId [DirectConnectGatewayId] <p>The ID of the Direct Connect gateway.</p>
+-- * authKey [BGPAuthKey] <p>The authentication key for BGP configuration.</p>
+-- * location [LocationCode] <p>The location of the connection.</p>
+-- * virtualGatewayId [VirtualGatewayId] <p>The ID of the virtual private gateway. Applies only to private virtual interfaces.</p>
+-- * connectionId [ConnectionId] <p>The ID of the connection.</p>
+-- * virtualInterfaceType [VirtualInterfaceType] <p>The type of virtual interface. The possible values are <code>private</code> and <code>public</code>.</p>
+-- * customerAddress [CustomerAddress] <p>The IP address assigned to the customer interface.</p>
+-- * vlan [VLAN] <p>The ID of the VLAN.</p>
+-- * jumboFrameCapable [JumboFrameCapable] <p>Indicates whether jumbo frames (9001 MTU) are supported.</p>
+-- * routeFilterPrefixes [RouteFilterPrefixList] <p>The routes to be advertised to the AWS network in this Region. Applies to public virtual interfaces.</p>
+-- * customerRouterConfig [RouterConfig] <p>The customer router configuration.</p>
+-- * asn [ASN] <p>The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.</p>
+-- * virtualInterfaceName [VirtualInterfaceName] <p>The name of the virtual interface assigned by the customer network.</p>
+-- * ownerAccount [OwnerAccount] <p>The ID of the AWS account that owns the virtual interface.</p>
+-- * mtu [MTU] <p>The maximum transmission unit (MTU), in bytes. The supported values are 1500 and 9001. The default value is 1500.</p>
+-- * bgpPeers [BGPPeerList] <p>The BGP peers configured on this virtual interface.</p>
+-- * amazonAddress [AmazonAddress] <p>The IP address assigned to the Amazon interface.</p>
+-- * region [Region] <p>The AWS Region where the virtual interface is located.</p>
 -- @return VirtualInterface structure as a key-value pair table
 function M.VirtualInterface(args)
 	assert(args, "You must provide an argument table when creating VirtualInterface")
@@ -982,25 +1267,73 @@ function M.VirtualInterface(args)
     local header_args = { 
     }
 	local all_args = { 
-		["virtualInterfaceState"] = args["virtualInterfaceState"],
-		["asn"] = args["asn"],
-		["vlan"] = args["vlan"],
-		["customerAddress"] = args["customerAddress"],
-		["ownerAccount"] = args["ownerAccount"],
-		["connectionId"] = args["connectionId"],
-		["addressFamily"] = args["addressFamily"],
-		["virtualGatewayId"] = args["virtualGatewayId"],
 		["virtualInterfaceId"] = args["virtualInterfaceId"],
+		["amazonSideAsn"] = args["amazonSideAsn"],
+		["addressFamily"] = args["addressFamily"],
+		["awsDeviceV2"] = args["awsDeviceV2"],
+		["virtualInterfaceState"] = args["virtualInterfaceState"],
+		["directConnectGatewayId"] = args["directConnectGatewayId"],
 		["authKey"] = args["authKey"],
-		["routeFilterPrefixes"] = args["routeFilterPrefixes"],
 		["location"] = args["location"],
-		["bgpPeers"] = args["bgpPeers"],
-		["customerRouterConfig"] = args["customerRouterConfig"],
-		["amazonAddress"] = args["amazonAddress"],
+		["virtualGatewayId"] = args["virtualGatewayId"],
+		["connectionId"] = args["connectionId"],
 		["virtualInterfaceType"] = args["virtualInterfaceType"],
+		["customerAddress"] = args["customerAddress"],
+		["vlan"] = args["vlan"],
+		["jumboFrameCapable"] = args["jumboFrameCapable"],
+		["routeFilterPrefixes"] = args["routeFilterPrefixes"],
+		["customerRouterConfig"] = args["customerRouterConfig"],
+		["asn"] = args["asn"],
 		["virtualInterfaceName"] = args["virtualInterfaceName"],
+		["ownerAccount"] = args["ownerAccount"],
+		["mtu"] = args["mtu"],
+		["bgpPeers"] = args["bgpPeers"],
+		["amazonAddress"] = args["amazonAddress"],
+		["region"] = args["region"],
 	}
 	asserts.AssertVirtualInterface(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Tag = { ["value"] = true, ["key"] = true, nil }
+
+function asserts.AssertTag(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
+	assert(struct["key"], "Expected key key to exist in table")
+	if struct["value"] then asserts.AssertTagValue(struct["value"]) end
+	if struct["key"] then asserts.AssertTagKey(struct["key"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Tag
+-- <p>Information about a tag.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * value [TagValue] <p>The value.</p>
+-- * key [TagKey] <p>The key.</p>
+-- Required key: key
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["value"] = args["value"],
+		["key"] = args["key"],
+	}
+	asserts.AssertTag(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1022,10 +1355,10 @@ function asserts.AssertDeleteVirtualInterfaceRequest(struct)
 end
 
 --- Create a structure of type DeleteVirtualInterfaceRequest
--- <p>Container for the parameters to the DeleteVirtualInterface operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * virtualInterfaceId [VirtualInterfaceId] 
+-- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface.</p>
 -- Required key: virtualInterfaceId
 -- @return DeleteVirtualInterfaceRequest structure as a key-value pair table
 function M.DeleteVirtualInterfaceRequest(args)
@@ -1069,14 +1402,14 @@ function asserts.AssertAllocateHostedConnectionRequest(struct)
 end
 
 --- Create a structure of type AllocateHostedConnectionRequest
--- <p>Container for the parameters to theHostedConnection operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ownerAccount [OwnerAccount] <p>The numeric account ID of the customer for whom the connection will be provisioned.</p> <p>Example: 123443215678</p> <p>Default: None</p>
--- * connectionId [ConnectionId] <p>The ID of the interconnect or LAG on which the connection will be provisioned.</p> <p>Example: dxcon-456abc78 or dxlag-abc123</p> <p>Default: None</p>
--- * bandwidth [Bandwidth] <p>The bandwidth of the connection.</p> <p>Example: <code>500Mbps</code> </p> <p>Default: None</p> <p>Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps</p>
--- * vlan [VLAN] <p>The dedicated VLAN provisioned to the hosted connection.</p> <p>Example: 101</p> <p>Default: None</p>
--- * connectionName [ConnectionName] <p>The name of the provisioned connection.</p> <p>Example: "<code>500M Connection to AWS</code>"</p> <p>Default: None</p>
+-- * ownerAccount [OwnerAccount] <p>The ID of the AWS account ID of the customer for the connection.</p>
+-- * connectionId [ConnectionId] <p>The ID of the interconnect or LAG.</p>
+-- * bandwidth [Bandwidth] <p>The bandwidth of the hosted connection, in Mbps. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, and 500Mbps.</p>
+-- * vlan [VLAN] <p>The dedicated VLAN provisioned to the hosted connection.</p>
+-- * connectionName [ConnectionName] <p>The name of the hosted connection.</p>
 -- Required key: connectionId
 -- Required key: ownerAccount
 -- Required key: bandwidth
@@ -1107,7 +1440,7 @@ function M.AllocateHostedConnectionRequest(args)
     }
 end
 
-keys.BGPPeer = { ["bgpStatus"] = true, ["customerAddress"] = true, ["addressFamily"] = true, ["authKey"] = true, ["bgpPeerState"] = true, ["amazonAddress"] = true, ["asn"] = true, nil }
+keys.BGPPeer = { ["bgpStatus"] = true, ["customerAddress"] = true, ["addressFamily"] = true, ["authKey"] = true, ["bgpPeerState"] = true, ["amazonAddress"] = true, ["asn"] = true, ["awsDeviceV2"] = true, nil }
 
 function asserts.AssertBGPPeer(struct)
 	assert(struct)
@@ -1119,22 +1452,24 @@ function asserts.AssertBGPPeer(struct)
 	if struct["bgpPeerState"] then asserts.AssertBGPPeerState(struct["bgpPeerState"]) end
 	if struct["amazonAddress"] then asserts.AssertAmazonAddress(struct["amazonAddress"]) end
 	if struct["asn"] then asserts.AssertASN(struct["asn"]) end
+	if struct["awsDeviceV2"] then asserts.AssertAwsDeviceV2(struct["awsDeviceV2"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.BGPPeer[k], "BGPPeer contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BGPPeer
--- <p>A structure containing information about a BGP peer.</p>
+-- <p>Information about a BGP peer.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * bgpStatus [BGPStatus] 
--- * customerAddress [CustomerAddress] 
--- * addressFamily [AddressFamily] 
--- * authKey [BGPAuthKey] 
--- * bgpPeerState [BGPPeerState] 
--- * amazonAddress [AmazonAddress] 
--- * asn [ASN] 
+-- * bgpStatus [BGPStatus] <p>The status of the BGP peer. The following are the possible values:</p> <ul> <li> <p> <code>up</code>: The BGP peer is established. This state does not indicate the state of the routing function. Ensure that you are receiving routes over the BGP session.</p> </li> <li> <p> <code>down</code>: The BGP peer is down.</p> </li> <li> <p> <code>unknown</code>: The BGP peer status is unknown.</p> </li> </ul>
+-- * customerAddress [CustomerAddress] <p>The IP address assigned to the customer interface.</p>
+-- * addressFamily [AddressFamily] <p>The address family for the BGP peer.</p>
+-- * authKey [BGPAuthKey] <p>The authentication key for BGP configuration.</p>
+-- * bgpPeerState [BGPPeerState] <p>The state of the BGP peer. The following are the possible values:</p> <ul> <li> <p> <code>verifying</code>: The BGP peering addresses or ASN require validation before the BGP peer can be created. This state applies only to public virtual interfaces.</p> </li> <li> <p> <code>pending</code>: The BGP peer is created, and remains in this state until it is ready to be established.</p> </li> <li> <p> <code>available</code>: The BGP peer is ready to be established.</p> </li> <li> <p> <code>deleting</code>: The BGP peer is being deleted.</p> </li> <li> <p> <code>deleted</code>: The BGP peer is deleted and cannot be established.</p> </li> </ul>
+-- * amazonAddress [AmazonAddress] <p>The IP address assigned to the Amazon interface.</p>
+-- * asn [ASN] <p>The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.</p>
+-- * awsDeviceV2 [AwsDeviceV2] <p>The Direct Connect endpoint on which the BGP peer terminates.</p>
 -- @return BGPPeer structure as a key-value pair table
 function M.BGPPeer(args)
 	assert(args, "You must provide an argument table when creating BGPPeer")
@@ -1152,6 +1487,7 @@ function M.BGPPeer(args)
 		["bgpPeerState"] = args["bgpPeerState"],
 		["amazonAddress"] = args["amazonAddress"],
 		["asn"] = args["asn"],
+		["awsDeviceV2"] = args["awsDeviceV2"],
 	}
 	asserts.AssertBGPPeer(all_args)
 	return {
@@ -1175,11 +1511,11 @@ function asserts.AssertCreateBGPPeerRequest(struct)
 end
 
 --- Create a structure of type CreateBGPPeerRequest
--- <p>Container for the parameters to the CreateBGPPeer operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * newBGPPeer [NewBGPPeer] <p>Detailed information for the BGP peer to be created.</p> <p>Default: None</p>
--- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface on which the BGP peer will be provisioned.</p> <p>Example: dxvif-456abc78</p> <p>Default: None</p>
+-- * newBGPPeer [NewBGPPeer] <p>Information about the BGP peer.</p>
+-- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface.</p>
 -- @return CreateBGPPeerRequest structure as a key-value pair table
 function M.CreateBGPPeerRequest(args)
 	assert(args, "You must provide an argument table when creating CreateBGPPeerRequest")
@@ -1219,12 +1555,12 @@ function asserts.AssertAllocatePrivateVirtualInterfaceRequest(struct)
 end
 
 --- Create a structure of type AllocatePrivateVirtualInterfaceRequest
--- <p>Container for the parameters to the AllocatePrivateVirtualInterface operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ownerAccount [OwnerAccount] <p>The AWS account that will own the new private virtual interface.</p> <p>Default: None</p>
--- * connectionId [ConnectionId] <p>The connection ID on which the private virtual interface is provisioned.</p> <p>Default: None</p>
--- * newPrivateVirtualInterfaceAllocation [NewPrivateVirtualInterfaceAllocation] <p>Detailed information for the private virtual interface to be provisioned.</p> <p>Default: None</p>
+-- * ownerAccount [OwnerAccount] <p>The ID of the AWS account that owns the virtual private interface.</p>
+-- * connectionId [ConnectionId] <p>The ID of the connection on which the private virtual interface is provisioned.</p>
+-- * newPrivateVirtualInterfaceAllocation [NewPrivateVirtualInterfaceAllocation] <p>Information about the private virtual interface.</p>
 -- Required key: connectionId
 -- Required key: ownerAccount
 -- Required key: newPrivateVirtualInterfaceAllocation
@@ -1251,6 +1587,43 @@ function M.AllocatePrivateVirtualInterfaceRequest(args)
     }
 end
 
+keys.DeleteDirectConnectGatewayAssociationResult = { ["directConnectGatewayAssociation"] = true, nil }
+
+function asserts.AssertDeleteDirectConnectGatewayAssociationResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteDirectConnectGatewayAssociationResult to be of type 'table'")
+	if struct["directConnectGatewayAssociation"] then asserts.AssertDirectConnectGatewayAssociation(struct["directConnectGatewayAssociation"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteDirectConnectGatewayAssociationResult[k], "DeleteDirectConnectGatewayAssociationResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteDirectConnectGatewayAssociationResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * directConnectGatewayAssociation [DirectConnectGatewayAssociation] <p>The association to be deleted.</p>
+-- @return DeleteDirectConnectGatewayAssociationResult structure as a key-value pair table
+function M.DeleteDirectConnectGatewayAssociationResult(args)
+	assert(args, "You must provide an argument table when creating DeleteDirectConnectGatewayAssociationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["directConnectGatewayAssociation"] = args["directConnectGatewayAssociation"],
+	}
+	asserts.AssertDeleteDirectConnectGatewayAssociationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.UntagResourceRequest = { ["resourceArn"] = true, ["tagKeys"] = true, nil }
 
 function asserts.AssertUntagResourceRequest(struct)
@@ -1266,11 +1639,11 @@ function asserts.AssertUntagResourceRequest(struct)
 end
 
 --- Create a structure of type UntagResourceRequest
--- <p>Container for the parameters to the UntagResource operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * resourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the Direct Connect resource.</p>
--- * tagKeys [TagKeyList] <p>The list of tag keys to remove.</p>
+-- * resourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the resource.</p>
+-- * tagKeys [TagKeyList] <p>The tag keys of the tags to remove.</p>
 -- Required key: resourceArn
 -- Required key: tagKeys
 -- @return UntagResourceRequest structure as a key-value pair table
@@ -1310,12 +1683,12 @@ function asserts.AssertDescribeInterconnectLoaRequest(struct)
 end
 
 --- Create a structure of type DescribeInterconnectLoaRequest
--- <p>Container for the parameters to the DescribeInterconnectLoa operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * interconnectId [InterconnectId] 
--- * providerName [ProviderName] <p>The name of the service provider who establishes connectivity on your behalf. If you supply this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.</p> <p>Default: None</p>
--- * loaContentType [LoaContentType] 
+-- * interconnectId [InterconnectId] <p>The ID of the interconnect.</p>
+-- * providerName [ProviderName] <p>The name of the service provider who establishes connectivity on your behalf. If you supply this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.</p>
+-- * loaContentType [LoaContentType] <p>The standard media type for the LOA-CFA document. The only supported value is application/pdf.</p>
 -- Required key: interconnectId
 -- @return DescribeInterconnectLoaRequest structure as a key-value pair table
 function M.DescribeInterconnectLoaRequest(args)
@@ -1353,11 +1726,11 @@ function asserts.AssertLoa(struct)
 end
 
 --- Create a structure of type Loa
--- <p>A structure containing the Letter of Authorization - Connecting Facility Assignment (LOA-CFA) for a connection.</p>
+-- <p>Information about a Letter of Authorization - Connecting Facility Assignment (LOA-CFA) for a connection.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * loaContentType [LoaContentType] 
--- * loaContent [LoaContent] 
+-- * loaContentType [LoaContentType] <p>The standard media type for the LOA-CFA document. The only supported value is application/pdf.</p>
+-- * loaContent [LoaContent] <p>The binary contents of the LOA-CFA document.</p>
 -- @return Loa structure as a key-value pair table
 function M.Loa(args)
 	assert(args, "You must provide an argument table when creating Loa")
@@ -1392,10 +1765,10 @@ function asserts.AssertDescribeInterconnectsRequest(struct)
 end
 
 --- Create a structure of type DescribeInterconnectsRequest
--- <p>Container for the parameters to the DescribeInterconnects operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * interconnectId [InterconnectId] 
+-- * interconnectId [InterconnectId] <p>The ID of the interconnect.</p>
 -- @return DescribeInterconnectsRequest structure as a key-value pair table
 function M.DescribeInterconnectsRequest(args)
 	assert(args, "You must provide an argument table when creating DescribeInterconnectsRequest")
@@ -1432,11 +1805,11 @@ function asserts.AssertAssociateVirtualInterfaceRequest(struct)
 end
 
 --- Create a structure of type AssociateVirtualInterfaceRequest
--- <p>Container for the parameters to the AssociateVirtualInterface operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * connectionId [ConnectionId] <p>The ID of the LAG or connection with which to associate the virtual interface.</p> <p>Example: dxlag-abc123 or dxcon-abc123</p> <p>Default: None</p>
--- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface.</p> <p>Example: dxvif-123dfg56</p> <p>Default: None</p>
+-- * connectionId [ConnectionId] <p>The ID of the LAG or connection.</p>
+-- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface.</p>
 -- Required key: virtualInterfaceId
 -- Required key: connectionId
 -- @return AssociateVirtualInterfaceRequest structure as a key-value pair table
@@ -1478,12 +1851,12 @@ function asserts.AssertAllocatePublicVirtualInterfaceRequest(struct)
 end
 
 --- Create a structure of type AllocatePublicVirtualInterfaceRequest
--- <p>Container for the parameters to the AllocatePublicVirtualInterface operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ownerAccount [OwnerAccount] <p>The AWS account that will own the new public virtual interface.</p> <p>Default: None</p>
--- * connectionId [ConnectionId] <p>The connection ID on which the public virtual interface is provisioned.</p> <p>Default: None</p>
--- * newPublicVirtualInterfaceAllocation [NewPublicVirtualInterfaceAllocation] <p>Detailed information for the public virtual interface to be provisioned.</p> <p>Default: None</p>
+-- * ownerAccount [OwnerAccount] <p>The ID of the AWS account that owns the public virtual interface.</p>
+-- * connectionId [ConnectionId] <p>The ID of the connection on which the public virtual interface is provisioned.</p>
+-- * newPublicVirtualInterfaceAllocation [NewPublicVirtualInterfaceAllocation] <p>Information about the public virtual interface.</p>
 -- Required key: connectionId
 -- Required key: ownerAccount
 -- Required key: newPublicVirtualInterfaceAllocation
@@ -1510,6 +1883,46 @@ function M.AllocatePublicVirtualInterfaceRequest(args)
     }
 end
 
+keys.DescribeDirectConnectGatewaysResult = { ["nextToken"] = true, ["directConnectGateways"] = true, nil }
+
+function asserts.AssertDescribeDirectConnectGatewaysResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeDirectConnectGatewaysResult to be of type 'table'")
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["directConnectGateways"] then asserts.AssertDirectConnectGatewayList(struct["directConnectGateways"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeDirectConnectGatewaysResult[k], "DescribeDirectConnectGatewaysResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeDirectConnectGatewaysResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PaginationToken] <p>The token to retrieve the next page.</p>
+-- * directConnectGateways [DirectConnectGatewayList] <p>The Direct Connect gateways.</p>
+-- @return DescribeDirectConnectGatewaysResult structure as a key-value pair table
+function M.DescribeDirectConnectGatewaysResult(args)
+	assert(args, "You must provide an argument table when creating DescribeDirectConnectGatewaysResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["nextToken"] = args["nextToken"],
+		["directConnectGateways"] = args["directConnectGateways"],
+	}
+	asserts.AssertDescribeDirectConnectGatewaysResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DescribeConnectionsRequest = { ["connectionId"] = true, nil }
 
 function asserts.AssertDescribeConnectionsRequest(struct)
@@ -1522,10 +1935,10 @@ function asserts.AssertDescribeConnectionsRequest(struct)
 end
 
 --- Create a structure of type DescribeConnectionsRequest
--- <p>Container for the parameters to the DescribeConnections operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * connectionId [ConnectionId] 
+-- * connectionId [ConnectionId] <p>The ID of the connection.</p>
 -- @return DescribeConnectionsRequest structure as a key-value pair table
 function M.DescribeConnectionsRequest(args)
 	assert(args, "You must provide an argument table when creating DescribeConnectionsRequest")
@@ -1559,10 +1972,10 @@ function asserts.AssertConfirmPublicVirtualInterfaceResponse(struct)
 end
 
 --- Create a structure of type ConfirmPublicVirtualInterfaceResponse
--- <p>The response received when ConfirmPublicVirtualInterface is called.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * virtualInterfaceState [VirtualInterfaceState] 
+-- * virtualInterfaceState [VirtualInterfaceState] <p>The state of the virtual interface. The following are the possible values:</p> <ul> <li> <p> <code>confirming</code>: The creation of the virtual interface is pending confirmation from the virtual interface owner. If the owner of the virtual interface is different from the owner of the connection on which it is provisioned, then the virtual interface will remain in this state until it is confirmed by the virtual interface owner.</p> </li> <li> <p> <code>verifying</code>: This state only applies to public virtual interfaces. Each public virtual interface needs validation before the virtual interface can be created.</p> </li> <li> <p> <code>pending</code>: A virtual interface is in this state from the time that it is created until the virtual interface is ready to forward traffic.</p> </li> <li> <p> <code>available</code>: A virtual interface that is able to forward traffic.</p> </li> <li> <p> <code>down</code>: A virtual interface that is BGP down.</p> </li> <li> <p> <code>deleting</code>: A virtual interface is in this state immediately after calling <a>DeleteVirtualInterface</a> until it can no longer forward traffic.</p> </li> <li> <p> <code>deleted</code>: A virtual interface that cannot forward traffic.</p> </li> <li> <p> <code>rejected</code>: The virtual interface owner has declined creation of the virtual interface. If a virtual interface in the <code>Confirming</code> state is deleted by the virtual interface owner, the virtual interface enters the <code>Rejected</code> state.</p> </li> </ul>
 -- @return ConfirmPublicVirtualInterfaceResponse structure as a key-value pair table
 function M.ConfirmPublicVirtualInterfaceResponse(args)
 	assert(args, "You must provide an argument table when creating ConfirmPublicVirtualInterfaceResponse")
@@ -1584,6 +1997,49 @@ function M.ConfirmPublicVirtualInterfaceResponse(args)
     }
 end
 
+keys.DescribeDirectConnectGatewaysRequest = { ["directConnectGatewayId"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
+
+function asserts.AssertDescribeDirectConnectGatewaysRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeDirectConnectGatewaysRequest to be of type 'table'")
+	if struct["directConnectGatewayId"] then asserts.AssertDirectConnectGatewayId(struct["directConnectGatewayId"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertMaxResultSetSize(struct["maxResults"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeDirectConnectGatewaysRequest[k], "DescribeDirectConnectGatewaysRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeDirectConnectGatewaysRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * directConnectGatewayId [DirectConnectGatewayId] <p>The ID of the Direct Connect gateway.</p>
+-- * nextToken [PaginationToken] <p>The token provided in the previous call to retrieve the next page.</p>
+-- * maxResults [MaxResultSetSize] <p>The maximum number of Direct Connect gateways to return per page.</p>
+-- @return DescribeDirectConnectGatewaysRequest structure as a key-value pair table
+function M.DescribeDirectConnectGatewaysRequest(args)
+	assert(args, "You must provide an argument table when creating DescribeDirectConnectGatewaysRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["directConnectGatewayId"] = args["directConnectGatewayId"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
+	}
+	asserts.AssertDescribeDirectConnectGatewaysRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.RouteFilterPrefix = { ["cidr"] = true, nil }
 
 function asserts.AssertRouteFilterPrefix(struct)
@@ -1596,10 +2052,10 @@ function asserts.AssertRouteFilterPrefix(struct)
 end
 
 --- Create a structure of type RouteFilterPrefix
--- <p>A route filter prefix that the customer can advertise through Border Gateway Protocol (BGP) over a public virtual interface.</p>
+-- <p>Information about a route filter prefix that a customer can advertise through Border Gateway Protocol (BGP) over a public virtual interface.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * cidr [CIDR] <p>CIDR notation for the advertised route. Multiple routes are separated by commas.</p> <p>IPv6 CIDRs must be at least a /64 or shorter</p> <p>Example: 10.10.10.0/24,10.10.11.0/24,2001:db8::/64</p>
+-- * cidr [CIDR] <p>The CIDR block for the advertised route. Separate multiple routes using commas. An IPv6 CIDR must use /64 or shorter.</p>
 -- @return RouteFilterPrefix structure as a key-value pair table
 function M.RouteFilterPrefix(args)
 	assert(args, "You must provide an argument table when creating RouteFilterPrefix")
@@ -1634,11 +2090,11 @@ function asserts.AssertVirtualGateway(struct)
 end
 
 --- Create a structure of type VirtualGateway
--- <p>You can create one or more AWS Direct Connect private virtual interfaces linking to your virtual private gateway.</p> <p>Virtual private gateways can be managed using the Amazon Virtual Private Cloud (Amazon VPC) console or the <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html">Amazon EC2 CreateVpnGateway action</a>.</p>
+-- <p>Information about a virtual private gateway for a private virtual interface.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * virtualGatewayId [VirtualGatewayId] 
--- * virtualGatewayState [VirtualGatewayState] 
+-- * virtualGatewayId [VirtualGatewayId] <p>The ID of the virtual private gateway.</p>
+-- * virtualGatewayState [VirtualGatewayState] <p>The state of the virtual private gateway. The following are the possible values:</p> <ul> <li> <p> <code>pending</code>: Initial state after creating the virtual private gateway.</p> </li> <li> <p> <code>available</code>: Ready for use by a private virtual interface.</p> </li> <li> <p> <code>deleting</code>: Initial state after deleting the virtual private gateway.</p> </li> <li> <p> <code>deleted</code>: The virtual private gateway is deleted. The private virtual interface is unable to send traffic over this gateway.</p> </li> </ul>
 -- @return VirtualGateway structure as a key-value pair table
 function M.VirtualGateway(args)
 	assert(args, "You must provide an argument table when creating VirtualGateway")
@@ -1677,14 +2133,14 @@ function asserts.AssertNewBGPPeer(struct)
 end
 
 --- Create a structure of type NewBGPPeer
--- <p>A structure containing information about a new BGP peer.</p>
+-- <p>Information about a new BGP peer.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * authKey [BGPAuthKey] 
--- * amazonAddress [AmazonAddress] 
--- * customerAddress [CustomerAddress] 
--- * asn [ASN] 
--- * addressFamily [AddressFamily] 
+-- * authKey [BGPAuthKey] <p>The authentication key for BGP configuration.</p>
+-- * amazonAddress [AmazonAddress] <p>The IP address assigned to the Amazon interface.</p>
+-- * customerAddress [CustomerAddress] <p>The IP address assigned to the customer interface.</p>
+-- * asn [ASN] <p>The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.</p>
+-- * addressFamily [AddressFamily] <p>The address family for the BGP peer.</p>
 -- @return NewBGPPeer structure as a key-value pair table
 function M.NewBGPPeer(args)
 	assert(args, "You must provide an argument table when creating NewBGPPeer")
@@ -1725,12 +2181,12 @@ function asserts.AssertDescribeLoaRequest(struct)
 end
 
 --- Create a structure of type DescribeLoaRequest
--- <p>Container for the parameters to the DescribeLoa operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * loaContentType [LoaContentType] <p>A standard media type indicating the content type of the LOA-CFA document. Currently, the only supported value is "application/pdf".</p> <p>Default: application/pdf</p>
--- * connectionId [ConnectionId] <p>The ID of a connection, LAG, or interconnect for which to get the LOA-CFA information.</p> <p>Example: dxcon-abc123 or dxlag-abc123</p> <p>Default: None</p>
--- * providerName [ProviderName] <p>The name of the service provider who establishes connectivity on your behalf. If you supply this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.</p> <p>Default: None</p>
+-- * loaContentType [LoaContentType] <p>The standard media type for the LOA-CFA document. The only supported value is application/pdf.</p>
+-- * connectionId [ConnectionId] <p>The ID of a connection, LAG, or interconnect.</p>
+-- * providerName [ProviderName] <p>The name of the service provider who establishes connectivity on your behalf. If you specify this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.</p>
 -- Required key: connectionId
 -- @return DescribeLoaRequest structure as a key-value pair table
 function M.DescribeLoaRequest(args)
@@ -1766,7 +2222,7 @@ function asserts.AssertUntagResourceResponse(struct)
 end
 
 --- Create a structure of type UntagResourceResponse
--- <p>The response received when UntagResource is called.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- @return UntagResourceResponse structure as a key-value pair table
@@ -1803,12 +2259,12 @@ function asserts.AssertDeleteBGPPeerRequest(struct)
 end
 
 --- Create a structure of type DeleteBGPPeerRequest
--- <p>Container for the parameters to the DeleteBGPPeer operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * customerAddress [CustomerAddress] 
--- * asn [ASN] 
--- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface from which the BGP peer will be deleted.</p> <p>Example: dxvif-456abc78</p> <p>Default: None</p>
+-- * customerAddress [CustomerAddress] <p>The IP address assigned to the customer interface.</p>
+-- * asn [ASN] <p>The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.</p>
+-- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface.</p>
 -- @return DeleteBGPPeerRequest structure as a key-value pair table
 function M.DeleteBGPPeerRequest(args)
 	assert(args, "You must provide an argument table when creating DeleteBGPPeerRequest")
@@ -1832,7 +2288,47 @@ function M.DeleteBGPPeerRequest(args)
     }
 end
 
-keys.Connection = { ["partnerName"] = true, ["awsDevice"] = true, ["vlan"] = true, ["ownerAccount"] = true, ["connectionId"] = true, ["lagId"] = true, ["connectionState"] = true, ["bandwidth"] = true, ["location"] = true, ["connectionName"] = true, ["loaIssueTime"] = true, ["region"] = true, nil }
+keys.DescribeDirectConnectGatewayAssociationsResult = { ["nextToken"] = true, ["directConnectGatewayAssociations"] = true, nil }
+
+function asserts.AssertDescribeDirectConnectGatewayAssociationsResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeDirectConnectGatewayAssociationsResult to be of type 'table'")
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["directConnectGatewayAssociations"] then asserts.AssertDirectConnectGatewayAssociationList(struct["directConnectGatewayAssociations"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeDirectConnectGatewayAssociationsResult[k], "DescribeDirectConnectGatewayAssociationsResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeDirectConnectGatewayAssociationsResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PaginationToken] <p>The token to retrieve the next page.</p>
+-- * directConnectGatewayAssociations [DirectConnectGatewayAssociationList] <p>The associations.</p>
+-- @return DescribeDirectConnectGatewayAssociationsResult structure as a key-value pair table
+function M.DescribeDirectConnectGatewayAssociationsResult(args)
+	assert(args, "You must provide an argument table when creating DescribeDirectConnectGatewayAssociationsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["nextToken"] = args["nextToken"],
+		["directConnectGatewayAssociations"] = args["directConnectGatewayAssociations"],
+	}
+	asserts.AssertDescribeDirectConnectGatewayAssociationsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Connection = { ["partnerName"] = true, ["awsDevice"] = true, ["vlan"] = true, ["ownerAccount"] = true, ["connectionId"] = true, ["lagId"] = true, ["jumboFrameCapable"] = true, ["connectionState"] = true, ["bandwidth"] = true, ["location"] = true, ["connectionName"] = true, ["loaIssueTime"] = true, ["region"] = true, ["awsDeviceV2"] = true, nil }
 
 function asserts.AssertConnection(struct)
 	assert(struct)
@@ -1843,33 +2339,37 @@ function asserts.AssertConnection(struct)
 	if struct["ownerAccount"] then asserts.AssertOwnerAccount(struct["ownerAccount"]) end
 	if struct["connectionId"] then asserts.AssertConnectionId(struct["connectionId"]) end
 	if struct["lagId"] then asserts.AssertLagId(struct["lagId"]) end
+	if struct["jumboFrameCapable"] then asserts.AssertJumboFrameCapable(struct["jumboFrameCapable"]) end
 	if struct["connectionState"] then asserts.AssertConnectionState(struct["connectionState"]) end
 	if struct["bandwidth"] then asserts.AssertBandwidth(struct["bandwidth"]) end
 	if struct["location"] then asserts.AssertLocationCode(struct["location"]) end
 	if struct["connectionName"] then asserts.AssertConnectionName(struct["connectionName"]) end
 	if struct["loaIssueTime"] then asserts.AssertLoaIssueTime(struct["loaIssueTime"]) end
 	if struct["region"] then asserts.AssertRegion(struct["region"]) end
+	if struct["awsDeviceV2"] then asserts.AssertAwsDeviceV2(struct["awsDeviceV2"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Connection[k], "Connection contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Connection
--- <p>A connection represents the physical network connection between the AWS Direct Connect location and the customer.</p>
+-- <p>Information about an AWS Direct Connect connection.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * partnerName [PartnerName] <p>The name of the AWS Direct Connect service provider associated with the connection.</p>
--- * awsDevice [AwsDevice] <p>The Direct Connection endpoint which the physical connection terminates on.</p>
--- * vlan [VLAN] 
--- * ownerAccount [OwnerAccount] <p>The AWS account that will own the new connection.</p>
--- * connectionId [ConnectionId] 
--- * lagId [LagId] 
--- * connectionState [ConnectionState] 
--- * bandwidth [Bandwidth] <p>Bandwidth of the connection.</p> <p>Example: 1Gbps (for regular connections), or 500Mbps (for hosted connections)</p> <p>Default: None</p>
--- * location [LocationCode] 
--- * connectionName [ConnectionName] 
+-- * awsDevice [AwsDevice] <p>The Direct Connect endpoint on which the physical connection terminates.</p>
+-- * vlan [VLAN] <p>The ID of the VLAN.</p>
+-- * ownerAccount [OwnerAccount] <p>The ID of the AWS account that owns the connection.</p>
+-- * connectionId [ConnectionId] <p>The ID of the connection.</p>
+-- * lagId [LagId] <p>The ID of the LAG.</p>
+-- * jumboFrameCapable [JumboFrameCapable] <p>Indicates whether jumbo frames (9001 MTU) are supported.</p>
+-- * connectionState [ConnectionState] <p>The state of the connection. The following are the possible values:</p> <ul> <li> <p> <code>ordering</code>: The initial state of a hosted connection provisioned on an interconnect. The connection stays in the ordering state until the owner of the hosted connection confirms or declines the connection order.</p> </li> <li> <p> <code>requested</code>: The initial state of a standard connection. The connection stays in the requested state until the Letter of Authorization (LOA) is sent to the customer.</p> </li> <li> <p> <code>pending</code>: The connection has been approved and is being initialized.</p> </li> <li> <p> <code>available</code>: The network link is up and the connection is ready for use.</p> </li> <li> <p> <code>down</code>: The network link is down.</p> </li> <li> <p> <code>deleting</code>: The connection is being deleted.</p> </li> <li> <p> <code>deleted</code>: The connection has been deleted.</p> </li> <li> <p> <code>rejected</code>: A hosted connection in the <code>ordering</code> state enters the <code>rejected</code> state if it is deleted by the customer.</p> </li> </ul>
+-- * bandwidth [Bandwidth] <p>The bandwidth of the connection.</p>
+-- * location [LocationCode] <p>The location of the connection.</p>
+-- * connectionName [ConnectionName] <p>The name of the connection.</p>
 -- * loaIssueTime [LoaIssueTime] <p>The time of the most recent call to <a>DescribeLoa</a> for this connection.</p>
--- * region [Region] 
+-- * region [Region] <p>The AWS Region where the connection is located.</p>
+-- * awsDeviceV2 [AwsDeviceV2] <p>The Direct Connect endpoint on which the physical connection terminates.</p>
 -- @return Connection structure as a key-value pair table
 function M.Connection(args)
 	assert(args, "You must provide an argument table when creating Connection")
@@ -1886,12 +2386,14 @@ function M.Connection(args)
 		["ownerAccount"] = args["ownerAccount"],
 		["connectionId"] = args["connectionId"],
 		["lagId"] = args["lagId"],
+		["jumboFrameCapable"] = args["jumboFrameCapable"],
 		["connectionState"] = args["connectionState"],
 		["bandwidth"] = args["bandwidth"],
 		["location"] = args["location"],
 		["connectionName"] = args["connectionName"],
 		["loaIssueTime"] = args["loaIssueTime"],
 		["region"] = args["region"],
+		["awsDeviceV2"] = args["awsDeviceV2"],
 	}
 	asserts.AssertConnection(all_args)
 	return {
@@ -1902,7 +2404,7 @@ function M.Connection(args)
     }
 end
 
-keys.NewPrivateVirtualInterfaceAllocation = { ["customerAddress"] = true, ["vlan"] = true, ["asn"] = true, ["authKey"] = true, ["amazonAddress"] = true, ["addressFamily"] = true, ["virtualInterfaceName"] = true, nil }
+keys.NewPrivateVirtualInterfaceAllocation = { ["customerAddress"] = true, ["vlan"] = true, ["addressFamily"] = true, ["mtu"] = true, ["authKey"] = true, ["amazonAddress"] = true, ["asn"] = true, ["virtualInterfaceName"] = true, nil }
 
 function asserts.AssertNewPrivateVirtualInterfaceAllocation(struct)
 	assert(struct)
@@ -1912,10 +2414,11 @@ function asserts.AssertNewPrivateVirtualInterfaceAllocation(struct)
 	assert(struct["asn"], "Expected key asn to exist in table")
 	if struct["customerAddress"] then asserts.AssertCustomerAddress(struct["customerAddress"]) end
 	if struct["vlan"] then asserts.AssertVLAN(struct["vlan"]) end
-	if struct["asn"] then asserts.AssertASN(struct["asn"]) end
+	if struct["addressFamily"] then asserts.AssertAddressFamily(struct["addressFamily"]) end
+	if struct["mtu"] then asserts.AssertMTU(struct["mtu"]) end
 	if struct["authKey"] then asserts.AssertBGPAuthKey(struct["authKey"]) end
 	if struct["amazonAddress"] then asserts.AssertAmazonAddress(struct["amazonAddress"]) end
-	if struct["addressFamily"] then asserts.AssertAddressFamily(struct["addressFamily"]) end
+	if struct["asn"] then asserts.AssertASN(struct["asn"]) end
 	if struct["virtualInterfaceName"] then asserts.AssertVirtualInterfaceName(struct["virtualInterfaceName"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.NewPrivateVirtualInterfaceAllocation[k], "NewPrivateVirtualInterfaceAllocation contains unknown key " .. tostring(k))
@@ -1923,16 +2426,17 @@ function asserts.AssertNewPrivateVirtualInterfaceAllocation(struct)
 end
 
 --- Create a structure of type NewPrivateVirtualInterfaceAllocation
--- <p>A structure containing information about a private virtual interface that will be provisioned on a connection.</p>
+-- <p>Information about a private virtual interface to be provisioned on a connection.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * customerAddress [CustomerAddress] 
--- * vlan [VLAN] 
--- * asn [ASN] 
--- * authKey [BGPAuthKey] 
--- * amazonAddress [AmazonAddress] 
--- * addressFamily [AddressFamily] 
--- * virtualInterfaceName [VirtualInterfaceName] 
+-- * customerAddress [CustomerAddress] <p>The IP address assigned to the customer interface.</p>
+-- * vlan [VLAN] <p>The ID of the VLAN.</p>
+-- * addressFamily [AddressFamily] <p>The address family for the BGP peer.</p>
+-- * mtu [MTU] <p>The maximum transmission unit (MTU), in bytes. The supported values are 1500 and 9001. The default value is 1500.</p>
+-- * authKey [BGPAuthKey] <p>The authentication key for BGP configuration.</p>
+-- * amazonAddress [AmazonAddress] <p>The IP address assigned to the Amazon interface.</p>
+-- * asn [ASN] <p>The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.</p>
+-- * virtualInterfaceName [VirtualInterfaceName] <p>The name of the virtual interface assigned by the customer network.</p>
 -- Required key: virtualInterfaceName
 -- Required key: vlan
 -- Required key: asn
@@ -1948,10 +2452,11 @@ function M.NewPrivateVirtualInterfaceAllocation(args)
 	local all_args = { 
 		["customerAddress"] = args["customerAddress"],
 		["vlan"] = args["vlan"],
-		["asn"] = args["asn"],
+		["addressFamily"] = args["addressFamily"],
+		["mtu"] = args["mtu"],
 		["authKey"] = args["authKey"],
 		["amazonAddress"] = args["amazonAddress"],
-		["addressFamily"] = args["addressFamily"],
+		["asn"] = args["asn"],
 		["virtualInterfaceName"] = args["virtualInterfaceName"],
 	}
 	asserts.AssertNewPrivateVirtualInterfaceAllocation(all_args)
@@ -1976,10 +2481,10 @@ function asserts.AssertDeleteConnectionRequest(struct)
 end
 
 --- Create a structure of type DeleteConnectionRequest
--- <p>Container for the parameters to the DeleteConnection operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * connectionId [ConnectionId] 
+-- * connectionId [ConnectionId] <p>The ID of the connection.</p>
 -- Required key: connectionId
 -- @return DeleteConnectionRequest structure as a key-value pair table
 function M.DeleteConnectionRequest(args)
@@ -2002,6 +2507,46 @@ function M.DeleteConnectionRequest(args)
     }
 end
 
+keys.DescribeDirectConnectGatewayAttachmentsResult = { ["directConnectGatewayAttachments"] = true, ["nextToken"] = true, nil }
+
+function asserts.AssertDescribeDirectConnectGatewayAttachmentsResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeDirectConnectGatewayAttachmentsResult to be of type 'table'")
+	if struct["directConnectGatewayAttachments"] then asserts.AssertDirectConnectGatewayAttachmentList(struct["directConnectGatewayAttachments"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeDirectConnectGatewayAttachmentsResult[k], "DescribeDirectConnectGatewayAttachmentsResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeDirectConnectGatewayAttachmentsResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * directConnectGatewayAttachments [DirectConnectGatewayAttachmentList] <p>The attachments.</p>
+-- * nextToken [PaginationToken] <p>The token to retrieve the next page.</p>
+-- @return DescribeDirectConnectGatewayAttachmentsResult structure as a key-value pair table
+function M.DescribeDirectConnectGatewayAttachmentsResult(args)
+	assert(args, "You must provide an argument table when creating DescribeDirectConnectGatewayAttachmentsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["directConnectGatewayAttachments"] = args["directConnectGatewayAttachments"],
+		["nextToken"] = args["nextToken"],
+	}
+	asserts.AssertDescribeDirectConnectGatewayAttachmentsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DescribeTagsRequest = { ["resourceArns"] = true, nil }
 
 function asserts.AssertDescribeTagsRequest(struct)
@@ -2015,10 +2560,10 @@ function asserts.AssertDescribeTagsRequest(struct)
 end
 
 --- Create a structure of type DescribeTagsRequest
--- <p>Container for the parameters to the DescribeTags operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * resourceArns [ResourceArnList] <p>The Amazon Resource Names (ARNs) of the Direct Connect resources.</p>
+-- * resourceArns [ResourceArnList] <p>The Amazon Resource Names (ARNs) of the resources.</p>
 -- Required key: resourceArns
 -- @return DescribeTagsRequest structure as a key-value pair table
 function M.DescribeTagsRequest(args)
@@ -2063,17 +2608,17 @@ function asserts.AssertNewPublicVirtualInterface(struct)
 end
 
 --- Create a structure of type NewPublicVirtualInterface
--- <p>A structure containing information about a new public virtual interface.</p>
+-- <p>Information about a public virtual interface.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * customerAddress [CustomerAddress] 
--- * vlan [VLAN] 
--- * addressFamily [AddressFamily] 
--- * authKey [BGPAuthKey] 
--- * routeFilterPrefixes [RouteFilterPrefixList] 
--- * amazonAddress [AmazonAddress] 
--- * asn [ASN] 
--- * virtualInterfaceName [VirtualInterfaceName] 
+-- * customerAddress [CustomerAddress] <p>The IP address assigned to the customer interface.</p>
+-- * vlan [VLAN] <p>The ID of the VLAN.</p>
+-- * addressFamily [AddressFamily] <p>The address family for the BGP peer.</p>
+-- * authKey [BGPAuthKey] <p>The authentication key for BGP configuration.</p>
+-- * routeFilterPrefixes [RouteFilterPrefixList] <p>The routes to be advertised to the AWS network in this Region. Applies to public virtual interfaces.</p>
+-- * amazonAddress [AmazonAddress] <p>The IP address assigned to the Amazon interface.</p>
+-- * asn [ASN] <p>The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.</p>
+-- * virtualInterfaceName [VirtualInterfaceName] <p>The name of the virtual interface assigned by the customer network.</p>
 -- Required key: virtualInterfaceName
 -- Required key: vlan
 -- Required key: asn
@@ -2117,10 +2662,10 @@ function asserts.AssertLocations(struct)
 end
 
 --- Create a structure of type Locations
--- <p>A location is a network facility where AWS Direct Connect routers are available to be connected. Generally, these are colocation hubs where many network providers have equipment, and where cross connects can be delivered. Locations include a name and facility code, and must be provided when creating a connection.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * locations [LocationList] <p>A list of colocation hubs where network providers have equipment. Most regions have multiple locations available.</p>
+-- * locations [LocationList] <p>The locations.</p>
 -- @return Locations structure as a key-value pair table
 function M.Locations(args)
 	assert(args, "You must provide an argument table when creating Locations")
@@ -2163,14 +2708,14 @@ function asserts.AssertAllocateConnectionOnInterconnectRequest(struct)
 end
 
 --- Create a structure of type AllocateConnectionOnInterconnectRequest
--- <p>Container for the parameters to the AllocateConnectionOnInterconnect operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * interconnectId [InterconnectId] <p>ID of the interconnect on which the connection will be provisioned.</p> <p>Example: dxcon-456abc78</p> <p>Default: None</p>
--- * bandwidth [Bandwidth] <p>Bandwidth of the connection.</p> <p>Example: "<i>500Mbps</i>"</p> <p>Default: None</p> <p>Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps</p>
--- * vlan [VLAN] <p>The dedicated VLAN provisioned to the connection.</p> <p>Example: 101</p> <p>Default: None</p>
--- * ownerAccount [OwnerAccount] <p>Numeric account Id of the customer for whom the connection will be provisioned.</p> <p>Example: 123443215678</p> <p>Default: None</p>
--- * connectionName [ConnectionName] <p>Name of the provisioned connection.</p> <p>Example: "<i>500M Connection to AWS</i>"</p> <p>Default: None</p>
+-- * interconnectId [InterconnectId] <p>The ID of the interconnect on which the connection will be provisioned. For example, dxcon-456abc78.</p>
+-- * bandwidth [Bandwidth] <p>The bandwidth of the connection, in Mbps. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, and 500Mbps.</p>
+-- * vlan [VLAN] <p>The dedicated VLAN provisioned to the connection.</p>
+-- * ownerAccount [OwnerAccount] <p>The ID of the AWS account of the customer for whom the connection will be provisioned.</p>
+-- * connectionName [ConnectionName] <p>The name of the provisioned connection.</p>
 -- Required key: bandwidth
 -- Required key: connectionName
 -- Required key: ownerAccount
@@ -2214,10 +2759,10 @@ function asserts.AssertResourceTag(struct)
 end
 
 --- Create a structure of type ResourceTag
--- <p>The tags associated with a Direct Connect resource.</p>
+-- <p>Information about a tag associated with an AWS Direct Connect resource.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * resourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the Direct Connect resource.</p>
+-- * resourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the resource.</p>
 -- * tags [TagList] <p>The tags.</p>
 -- @return ResourceTag structure as a key-value pair table
 function M.ResourceTag(args)
@@ -2256,12 +2801,12 @@ function asserts.AssertUpdateLagRequest(struct)
 end
 
 --- Create a structure of type UpdateLagRequest
--- <p>Container for the parameters to the UpdateLag operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * lagId [LagId] <p>The ID of the LAG to update.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
--- * minimumLinks [Count] <p>The minimum number of physical connections that must be operational for the LAG itself to be operational.</p> <p>Default: None</p>
--- * lagName [LagName] <p>The name for the LAG.</p> <p>Example: "<code>3x10G LAG to AWS</code>"</p> <p>Default: None</p>
+-- * lagId [LagId] <p>The ID of the LAG.</p>
+-- * minimumLinks [Count] <p>The minimum number of physical connections that must be operational for the LAG itself to be operational.</p>
+-- * lagName [LagName] <p>The name of the LAG.</p>
 -- Required key: lagId
 -- @return UpdateLagRequest structure as a key-value pair table
 function M.UpdateLagRequest(args)
@@ -2301,11 +2846,11 @@ function asserts.AssertCreatePublicVirtualInterfaceRequest(struct)
 end
 
 --- Create a structure of type CreatePublicVirtualInterfaceRequest
--- <p>Container for the parameters to the CreatePublicVirtualInterface operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * newPublicVirtualInterface [NewPublicVirtualInterface] <p>Detailed information for the public virtual interface to be created.</p> <p>Default: None</p>
--- * connectionId [ConnectionId] 
+-- * newPublicVirtualInterface [NewPublicVirtualInterface] <p>Information about the public virtual interface.</p>
+-- * connectionId [ConnectionId] <p>The ID of the connection.</p>
 -- Required key: connectionId
 -- Required key: newPublicVirtualInterface
 -- @return CreatePublicVirtualInterfaceRequest structure as a key-value pair table
@@ -2342,7 +2887,7 @@ function asserts.AssertDescribeTagsResponse(struct)
 end
 
 --- Create a structure of type DescribeTagsResponse
--- <p>The response received when DescribeTags is called.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * resourceTags [ResourceTagList] <p>Information about the tags.</p>
@@ -2367,23 +2912,35 @@ function M.DescribeTagsResponse(args)
     }
 end
 
-keys.TooManyTagsException = { nil }
+keys.DirectConnectGatewayAssociation = { ["associationState"] = true, ["virtualGatewayOwnerAccount"] = true, ["directConnectGatewayId"] = true, ["stateChangeError"] = true, ["virtualGatewayRegion"] = true, ["virtualGatewayId"] = true, nil }
 
-function asserts.AssertTooManyTagsException(struct)
+function asserts.AssertDirectConnectGatewayAssociation(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyTagsException to be of type 'table'")
+	assert(type(struct) == "table", "Expected DirectConnectGatewayAssociation to be of type 'table'")
+	if struct["associationState"] then asserts.AssertDirectConnectGatewayAssociationState(struct["associationState"]) end
+	if struct["virtualGatewayOwnerAccount"] then asserts.AssertOwnerAccount(struct["virtualGatewayOwnerAccount"]) end
+	if struct["directConnectGatewayId"] then asserts.AssertDirectConnectGatewayId(struct["directConnectGatewayId"]) end
+	if struct["stateChangeError"] then asserts.AssertStateChangeError(struct["stateChangeError"]) end
+	if struct["virtualGatewayRegion"] then asserts.AssertVirtualGatewayRegion(struct["virtualGatewayRegion"]) end
+	if struct["virtualGatewayId"] then asserts.AssertVirtualGatewayId(struct["virtualGatewayId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TooManyTagsException[k], "TooManyTagsException contains unknown key " .. tostring(k))
+		assert(keys.DirectConnectGatewayAssociation[k], "DirectConnectGatewayAssociation contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TooManyTagsException
--- <p>You have reached the limit on the number of tags that can be assigned to a Direct Connect resource.</p>
+--- Create a structure of type DirectConnectGatewayAssociation
+-- <p>Information about an association between a Direct Connect gateway and a virtual private gateway.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return TooManyTagsException structure as a key-value pair table
-function M.TooManyTagsException(args)
-	assert(args, "You must provide an argument table when creating TooManyTagsException")
+-- * associationState [DirectConnectGatewayAssociationState] <p>The state of the association. The following are the possible values:</p> <ul> <li> <p> <code>associating</code>: The initial state after calling <a>CreateDirectConnectGatewayAssociation</a>.</p> </li> <li> <p> <code>associated</code>: The Direct Connect gateway and virtual private gateway are successfully associated and ready to pass traffic.</p> </li> <li> <p> <code>disassociating</code>: The initial state after calling <a>DeleteDirectConnectGatewayAssociation</a>.</p> </li> <li> <p> <code>disassociated</code>: The virtual private gateway is disassociated from the Direct Connect gateway. Traffic flow between the Direct Connect gateway and virtual private gateway is stopped.</p> </li> </ul>
+-- * virtualGatewayOwnerAccount [OwnerAccount] <p>The ID of the AWS account that owns the virtual private gateway.</p>
+-- * directConnectGatewayId [DirectConnectGatewayId] <p>The ID of the Direct Connect gateway.</p>
+-- * stateChangeError [StateChangeError] <p>The error message if the state of an object failed to advance.</p>
+-- * virtualGatewayRegion [VirtualGatewayRegion] <p>The AWS Region where the virtual private gateway is located.</p>
+-- * virtualGatewayId [VirtualGatewayId] <p>The ID of the virtual private gateway. Applies only to private virtual interfaces.</p>
+-- @return DirectConnectGatewayAssociation structure as a key-value pair table
+function M.DirectConnectGatewayAssociation(args)
+	assert(args, "You must provide an argument table when creating DirectConnectGatewayAssociation")
     local query_args = { 
     }
     local uri_args = { 
@@ -2391,8 +2948,14 @@ function M.TooManyTagsException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["associationState"] = args["associationState"],
+		["virtualGatewayOwnerAccount"] = args["virtualGatewayOwnerAccount"],
+		["directConnectGatewayId"] = args["directConnectGatewayId"],
+		["stateChangeError"] = args["stateChangeError"],
+		["virtualGatewayRegion"] = args["virtualGatewayRegion"],
+		["virtualGatewayId"] = args["virtualGatewayId"],
 	}
-	asserts.AssertTooManyTagsException(all_args)
+	asserts.AssertDirectConnectGatewayAssociation(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2413,10 +2976,10 @@ function asserts.AssertCreateBGPPeerResponse(struct)
 end
 
 --- Create a structure of type CreateBGPPeerResponse
--- <p>The response received when CreateBGPPeer is called.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * virtualInterface [VirtualInterface] 
+-- * virtualInterface [VirtualInterface] <p>The virtual interface.</p>
 -- @return CreateBGPPeerResponse structure as a key-value pair table
 function M.CreateBGPPeerResponse(args)
 	assert(args, "You must provide an argument table when creating CreateBGPPeerResponse")
@@ -2449,7 +3012,7 @@ function asserts.AssertTagResourceResponse(struct)
 end
 
 --- Create a structure of type TagResourceResponse
--- <p>The response received when TagResource is called.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- @return TagResourceResponse structure as a key-value pair table
@@ -2484,10 +3047,10 @@ function asserts.AssertDeleteVirtualInterfaceResponse(struct)
 end
 
 --- Create a structure of type DeleteVirtualInterfaceResponse
--- <p>The response received when DeleteVirtualInterface is called.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * virtualInterfaceState [VirtualInterfaceState] 
+-- * virtualInterfaceState [VirtualInterfaceState] <p>The state of the virtual interface. The following are the possible values:</p> <ul> <li> <p> <code>confirming</code>: The creation of the virtual interface is pending confirmation from the virtual interface owner. If the owner of the virtual interface is different from the owner of the connection on which it is provisioned, then the virtual interface will remain in this state until it is confirmed by the virtual interface owner.</p> </li> <li> <p> <code>verifying</code>: This state only applies to public virtual interfaces. Each public virtual interface needs validation before the virtual interface can be created.</p> </li> <li> <p> <code>pending</code>: A virtual interface is in this state from the time that it is created until the virtual interface is ready to forward traffic.</p> </li> <li> <p> <code>available</code>: A virtual interface that is able to forward traffic.</p> </li> <li> <p> <code>down</code>: A virtual interface that is BGP down.</p> </li> <li> <p> <code>deleting</code>: A virtual interface is in this state immediately after calling <a>DeleteVirtualInterface</a> until it can no longer forward traffic.</p> </li> <li> <p> <code>deleted</code>: A virtual interface that cannot forward traffic.</p> </li> <li> <p> <code>rejected</code>: The virtual interface owner has declined creation of the virtual interface. If a virtual interface in the <code>Confirming</code> state is deleted by the virtual interface owner, the virtual interface enters the <code>Rejected</code> state.</p> </li> </ul>
 -- @return DeleteVirtualInterfaceResponse structure as a key-value pair table
 function M.DeleteVirtualInterfaceResponse(args)
 	assert(args, "You must provide an argument table when creating DeleteVirtualInterfaceResponse")
@@ -2501,6 +3064,100 @@ function M.DeleteVirtualInterfaceResponse(args)
 		["virtualInterfaceState"] = args["virtualInterfaceState"],
 	}
 	asserts.AssertDeleteVirtualInterfaceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateVirtualInterfaceAttributesRequest = { ["mtu"] = true, ["virtualInterfaceId"] = true, nil }
+
+function asserts.AssertUpdateVirtualInterfaceAttributesRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateVirtualInterfaceAttributesRequest to be of type 'table'")
+	assert(struct["virtualInterfaceId"], "Expected key virtualInterfaceId to exist in table")
+	if struct["mtu"] then asserts.AssertMTU(struct["mtu"]) end
+	if struct["virtualInterfaceId"] then asserts.AssertVirtualInterfaceId(struct["virtualInterfaceId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateVirtualInterfaceAttributesRequest[k], "UpdateVirtualInterfaceAttributesRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateVirtualInterfaceAttributesRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * mtu [MTU] <p>The maximum transmission unit (MTU), in bytes. The supported values are 1500 and 9001. The default value is 1500.</p>
+-- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual private interface.</p>
+-- Required key: virtualInterfaceId
+-- @return UpdateVirtualInterfaceAttributesRequest structure as a key-value pair table
+function M.UpdateVirtualInterfaceAttributesRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateVirtualInterfaceAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["mtu"] = args["mtu"],
+		["virtualInterfaceId"] = args["virtualInterfaceId"],
+	}
+	asserts.AssertUpdateVirtualInterfaceAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DirectConnectGateway = { ["directConnectGatewayId"] = true, ["stateChangeError"] = true, ["directConnectGatewayState"] = true, ["ownerAccount"] = true, ["amazonSideAsn"] = true, ["directConnectGatewayName"] = true, nil }
+
+function asserts.AssertDirectConnectGateway(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DirectConnectGateway to be of type 'table'")
+	if struct["directConnectGatewayId"] then asserts.AssertDirectConnectGatewayId(struct["directConnectGatewayId"]) end
+	if struct["stateChangeError"] then asserts.AssertStateChangeError(struct["stateChangeError"]) end
+	if struct["directConnectGatewayState"] then asserts.AssertDirectConnectGatewayState(struct["directConnectGatewayState"]) end
+	if struct["ownerAccount"] then asserts.AssertOwnerAccount(struct["ownerAccount"]) end
+	if struct["amazonSideAsn"] then asserts.AssertLongAsn(struct["amazonSideAsn"]) end
+	if struct["directConnectGatewayName"] then asserts.AssertDirectConnectGatewayName(struct["directConnectGatewayName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DirectConnectGateway[k], "DirectConnectGateway contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DirectConnectGateway
+-- <p>Information about a Direct Connect gateway, which enables you to connect virtual interfaces and virtual private gateways.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * directConnectGatewayId [DirectConnectGatewayId] <p>The ID of the Direct Connect gateway.</p>
+-- * stateChangeError [StateChangeError] <p>The error message if the state of an object failed to advance.</p>
+-- * directConnectGatewayState [DirectConnectGatewayState] <p>The state of the Direct Connect gateway. The following are the possible values:</p> <ul> <li> <p> <code>pending</code>: The initial state after calling <a>CreateDirectConnectGateway</a>.</p> </li> <li> <p> <code>available</code>: The Direct Connect gateway is ready for use.</p> </li> <li> <p> <code>deleting</code>: The initial state after calling <a>DeleteDirectConnectGateway</a>.</p> </li> <li> <p> <code>deleted</code>: The Direct Connect gateway is deleted and cannot pass traffic.</p> </li> </ul>
+-- * ownerAccount [OwnerAccount] <p>The ID of the AWS account that owns the Direct Connect gateway.</p>
+-- * amazonSideAsn [LongAsn] <p>The autonomous system number (ASN) for the Amazon side of the connection.</p>
+-- * directConnectGatewayName [DirectConnectGatewayName] <p>The name of the Direct Connect gateway.</p>
+-- @return DirectConnectGateway structure as a key-value pair table
+function M.DirectConnectGateway(args)
+	assert(args, "You must provide an argument table when creating DirectConnectGateway")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["directConnectGatewayId"] = args["directConnectGatewayId"],
+		["stateChangeError"] = args["stateChangeError"],
+		["directConnectGatewayState"] = args["directConnectGatewayState"],
+		["ownerAccount"] = args["ownerAccount"],
+		["amazonSideAsn"] = args["amazonSideAsn"],
+		["directConnectGatewayName"] = args["directConnectGatewayName"],
+	}
+	asserts.AssertDirectConnectGateway(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2531,17 +3188,17 @@ function asserts.AssertNewPublicVirtualInterfaceAllocation(struct)
 end
 
 --- Create a structure of type NewPublicVirtualInterfaceAllocation
--- <p>A structure containing information about a public virtual interface that will be provisioned on a connection.</p>
+-- <p>Information about a public virtual interface to be provisioned on a connection.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * customerAddress [CustomerAddress] 
--- * vlan [VLAN] 
--- * addressFamily [AddressFamily] 
--- * authKey [BGPAuthKey] 
--- * routeFilterPrefixes [RouteFilterPrefixList] 
--- * amazonAddress [AmazonAddress] 
--- * asn [ASN] 
--- * virtualInterfaceName [VirtualInterfaceName] 
+-- * customerAddress [CustomerAddress] <p>The IP address assigned to the customer interface.</p>
+-- * vlan [VLAN] <p>The ID of the VLAN.</p>
+-- * addressFamily [AddressFamily] <p>The address family for the BGP peer.</p>
+-- * authKey [BGPAuthKey] <p>The authentication key for BGP configuration.</p>
+-- * routeFilterPrefixes [RouteFilterPrefixList] <p>The routes to be advertised to the AWS network in this Region. Applies to public virtual interfaces.</p>
+-- * amazonAddress [AmazonAddress] <p>The IP address assigned to the Amazon interface.</p>
+-- * asn [ASN] <p>The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.</p>
+-- * virtualInterfaceName [VirtualInterfaceName] <p>The name of the virtual interface assigned by the customer network.</p>
 -- Required key: virtualInterfaceName
 -- Required key: vlan
 -- Required key: asn
@@ -2573,7 +3230,7 @@ function M.NewPublicVirtualInterfaceAllocation(args)
     }
 end
 
-keys.Lag = { ["awsDevice"] = true, ["allowsHostedConnections"] = true, ["numberOfConnections"] = true, ["lagState"] = true, ["ownerAccount"] = true, ["lagName"] = true, ["connections"] = true, ["lagId"] = true, ["minimumLinks"] = true, ["connectionsBandwidth"] = true, ["region"] = true, ["location"] = true, nil }
+keys.Lag = { ["awsDevice"] = true, ["allowsHostedConnections"] = true, ["numberOfConnections"] = true, ["lagState"] = true, ["ownerAccount"] = true, ["jumboFrameCapable"] = true, ["lagName"] = true, ["connections"] = true, ["lagId"] = true, ["minimumLinks"] = true, ["connectionsBandwidth"] = true, ["region"] = true, ["awsDeviceV2"] = true, ["location"] = true, nil }
 
 function asserts.AssertLag(struct)
 	assert(struct)
@@ -2583,12 +3240,14 @@ function asserts.AssertLag(struct)
 	if struct["numberOfConnections"] then asserts.AssertCount(struct["numberOfConnections"]) end
 	if struct["lagState"] then asserts.AssertLagState(struct["lagState"]) end
 	if struct["ownerAccount"] then asserts.AssertOwnerAccount(struct["ownerAccount"]) end
+	if struct["jumboFrameCapable"] then asserts.AssertJumboFrameCapable(struct["jumboFrameCapable"]) end
 	if struct["lagName"] then asserts.AssertLagName(struct["lagName"]) end
 	if struct["connections"] then asserts.AssertConnectionList(struct["connections"]) end
 	if struct["lagId"] then asserts.AssertLagId(struct["lagId"]) end
 	if struct["minimumLinks"] then asserts.AssertCount(struct["minimumLinks"]) end
 	if struct["connectionsBandwidth"] then asserts.AssertBandwidth(struct["connectionsBandwidth"]) end
 	if struct["region"] then asserts.AssertRegion(struct["region"]) end
+	if struct["awsDeviceV2"] then asserts.AssertAwsDeviceV2(struct["awsDeviceV2"]) end
 	if struct["location"] then asserts.AssertLocationCode(struct["location"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Lag[k], "Lag contains unknown key " .. tostring(k))
@@ -2596,21 +3255,23 @@ function asserts.AssertLag(struct)
 end
 
 --- Create a structure of type Lag
--- <p>Describes a link aggregation group (LAG). A LAG is a connection that uses the Link Aggregation Control Protocol (LACP) to logically aggregate a bundle of physical connections. Like an interconnect, it can host other connections. All connections in a LAG must terminate on the same physical AWS Direct Connect endpoint, and must be the same bandwidth.</p>
+-- <p>Information about a link aggregation group (LAG).</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * awsDevice [AwsDevice] <p>The AWS Direct Connection endpoint that hosts the LAG.</p>
--- * allowsHostedConnections [BooleanFlag] <p>Indicates whether the LAG can host other connections.</p> <note> <p>This is intended for use by AWS Direct Connect partners only.</p> </note>
+-- * awsDevice [AwsDevice] <p>The Direct Connect endpoint that hosts the LAG.</p>
+-- * allowsHostedConnections [BooleanFlag] <p>Indicates whether the LAG can host other connections.</p>
 -- * numberOfConnections [Count] <p>The number of physical connections bundled by the LAG, up to a maximum of 10.</p>
--- * lagState [LagState] 
--- * ownerAccount [OwnerAccount] <p>The owner of the LAG.</p>
+-- * lagState [LagState] <p>The state of the LAG. The following are the possible values:</p> <ul> <li> <p> <code>requested</code>: The initial state of a LAG. The LAG stays in the requested state until the Letter of Authorization (LOA) is available.</p> </li> <li> <p> <code>pending</code>: The LAG has been approved and is being initialized.</p> </li> <li> <p> <code>available</code>: The network link is established and the LAG is ready for use.</p> </li> <li> <p> <code>down</code>: The network link is down.</p> </li> <li> <p> <code>deleting</code>: The LAG is being deleted.</p> </li> <li> <p> <code>deleted</code>: The LAG is deleted.</p> </li> </ul>
+-- * ownerAccount [OwnerAccount] <p>The ID of the AWS account that owns the LAG.</p>
+-- * jumboFrameCapable [JumboFrameCapable] <p>Indicates whether jumbo frames (9001 MTU) are supported.</p>
 -- * lagName [LagName] <p>The name of the LAG.</p>
--- * connections [ConnectionList] <p>A list of connections bundled by this LAG.</p>
--- * lagId [LagId] 
--- * minimumLinks [Count] <p>The minimum number of physical connections that must be operational for the LAG itself to be operational. If the number of operational connections drops below this setting, the LAG state changes to <code>down</code>. This value can help to ensure that a LAG is not overutilized if a significant number of its bundled connections go down.</p>
--- * connectionsBandwidth [Bandwidth] <p>The individual bandwidth of the physical connections bundled by the LAG.</p> <p>Available values: 1Gbps, 10Gbps</p>
--- * region [Region] 
--- * location [LocationCode] 
+-- * connections [ConnectionList] <p>The connections bundled by the LAG.</p>
+-- * lagId [LagId] <p>The ID of the LAG.</p>
+-- * minimumLinks [Count] <p>The minimum number of physical connections that must be operational for the LAG itself to be operational.</p>
+-- * connectionsBandwidth [Bandwidth] <p>The individual bandwidth of the physical connections bundled by the LAG. The possible values are 1Gbps and 10Gbps.</p>
+-- * region [Region] <p>The AWS Region where the connection is located.</p>
+-- * awsDeviceV2 [AwsDeviceV2] <p>The Direct Connect endpoint that hosts the LAG.</p>
+-- * location [LocationCode] <p>The location of the LAG.</p>
 -- @return Lag structure as a key-value pair table
 function M.Lag(args)
 	assert(args, "You must provide an argument table when creating Lag")
@@ -2626,12 +3287,14 @@ function M.Lag(args)
 		["numberOfConnections"] = args["numberOfConnections"],
 		["lagState"] = args["lagState"],
 		["ownerAccount"] = args["ownerAccount"],
+		["jumboFrameCapable"] = args["jumboFrameCapable"],
 		["lagName"] = args["lagName"],
 		["connections"] = args["connections"],
 		["lagId"] = args["lagId"],
 		["minimumLinks"] = args["minimumLinks"],
 		["connectionsBandwidth"] = args["connectionsBandwidth"],
 		["region"] = args["region"],
+		["awsDeviceV2"] = args["awsDeviceV2"],
 		["location"] = args["location"],
 	}
 	asserts.AssertLag(all_args)
@@ -2655,10 +3318,10 @@ function asserts.AssertConfirmPrivateVirtualInterfaceResponse(struct)
 end
 
 --- Create a structure of type ConfirmPrivateVirtualInterfaceResponse
--- <p>The response received when ConfirmPrivateVirtualInterface is called.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * virtualInterfaceState [VirtualInterfaceState] 
+-- * virtualInterfaceState [VirtualInterfaceState] <p>The state of the virtual interface. The following are the possible values:</p> <ul> <li> <p> <code>confirming</code>: The creation of the virtual interface is pending confirmation from the virtual interface owner. If the owner of the virtual interface is different from the owner of the connection on which it is provisioned, then the virtual interface will remain in this state until it is confirmed by the virtual interface owner.</p> </li> <li> <p> <code>verifying</code>: This state only applies to public virtual interfaces. Each public virtual interface needs validation before the virtual interface can be created.</p> </li> <li> <p> <code>pending</code>: A virtual interface is in this state from the time that it is created until the virtual interface is ready to forward traffic.</p> </li> <li> <p> <code>available</code>: A virtual interface that is able to forward traffic.</p> </li> <li> <p> <code>down</code>: A virtual interface that is BGP down.</p> </li> <li> <p> <code>deleting</code>: A virtual interface is in this state immediately after calling <a>DeleteVirtualInterface</a> until it can no longer forward traffic.</p> </li> <li> <p> <code>deleted</code>: A virtual interface that cannot forward traffic.</p> </li> <li> <p> <code>rejected</code>: The virtual interface owner has declined creation of the virtual interface. If a virtual interface in the <code>Confirming</code> state is deleted by the virtual interface owner, the virtual interface enters the <code>Rejected</code> state.</p> </li> </ul>
 -- @return ConfirmPrivateVirtualInterfaceResponse structure as a key-value pair table
 function M.ConfirmPrivateVirtualInterfaceResponse(args)
 	assert(args, "You must provide an argument table when creating ConfirmPrivateVirtualInterfaceResponse")
@@ -2695,11 +3358,11 @@ function asserts.AssertAssociateHostedConnectionRequest(struct)
 end
 
 --- Create a structure of type AssociateHostedConnectionRequest
--- <p>Container for the parameters to the AssociateHostedConnection operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * connectionId [ConnectionId] <p>The ID of the hosted connection.</p> <p>Example: dxcon-abc123</p> <p>Default: None</p>
--- * parentConnectionId [ConnectionId] <p>The ID of the interconnect or the LAG.</p> <p>Example: dxcon-abc123 or dxlag-abc123</p> <p>Default: None</p>
+-- * connectionId [ConnectionId] <p>The ID of the hosted connection.</p>
+-- * parentConnectionId [ConnectionId] <p>The ID of the interconnect or the LAG.</p>
 -- Required key: connectionId
 -- Required key: parentConnectionId
 -- @return AssociateHostedConnectionRequest structure as a key-value pair table
@@ -2742,13 +3405,13 @@ function asserts.AssertCreateInterconnectRequest(struct)
 end
 
 --- Create a structure of type CreateInterconnectRequest
--- <p>Container for the parameters to the CreateInterconnect operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * interconnectName [InterconnectName] <p>The name of the interconnect.</p> <p>Example: "<i>1G Interconnect to AWS</i>"</p> <p>Default: None</p>
--- * bandwidth [Bandwidth] <p>The port bandwidth</p> <p>Example: 1Gbps</p> <p>Default: None</p> <p>Available values: 1Gbps,10Gbps</p>
--- * lagId [LagId] 
--- * location [LocationCode] <p>Where the interconnect is located</p> <p>Example: EqSV5</p> <p>Default: None</p>
+-- * interconnectName [InterconnectName] <p>The name of the interconnect.</p>
+-- * bandwidth [Bandwidth] <p>The port bandwidth, in Gbps. The possible values are 1 and 10.</p>
+-- * lagId [LagId] <p>The ID of the LAG.</p>
+-- * location [LocationCode] <p>The location of the interconnect.</p>
 -- Required key: interconnectName
 -- Required key: bandwidth
 -- Required key: location
@@ -2776,43 +3439,6 @@ function M.CreateInterconnectRequest(args)
     }
 end
 
-keys.DirectConnectClientException = { ["message"] = true, nil }
-
-function asserts.AssertDirectConnectClientException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DirectConnectClientException to be of type 'table'")
-	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DirectConnectClientException[k], "DirectConnectClientException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DirectConnectClientException
--- <p>The API was called with invalid parameters. The error message will contain additional details about the cause.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [ErrorMessage] <p>This is an exception thrown when there is an issue with the input provided by the API call. For example, the name provided for a connection contains a pound sign (#). This can also occur when a valid value is provided, but is otherwise constrained. For example, the valid VLAN tag range is 1-4096 but each can only be used once per connection.</p>
--- @return DirectConnectClientException structure as a key-value pair table
-function M.DirectConnectClientException(args)
-	assert(args, "You must provide an argument table when creating DirectConnectClientException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertDirectConnectClientException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.VirtualGateways = { ["virtualGateways"] = true, nil }
 
 function asserts.AssertVirtualGateways(struct)
@@ -2825,10 +3451,10 @@ function asserts.AssertVirtualGateways(struct)
 end
 
 --- Create a structure of type VirtualGateways
--- <p>A structure containing a list of virtual private gateways.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * virtualGateways [VirtualGatewayList] <p>A list of virtual private gateways.</p>
+-- * virtualGateways [VirtualGatewayList] <p>The virtual private gateways.</p>
 -- @return VirtualGateways structure as a key-value pair table
 function M.VirtualGateways(args)
 	assert(args, "You must provide an argument table when creating VirtualGateways")
@@ -2868,13 +3494,13 @@ function asserts.AssertCreateConnectionRequest(struct)
 end
 
 --- Create a structure of type CreateConnectionRequest
--- <p>Container for the parameters to the CreateConnection operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * lagId [LagId] 
--- * bandwidth [Bandwidth] 
--- * location [LocationCode] 
--- * connectionName [ConnectionName] 
+-- * lagId [LagId] <p>The ID of the LAG.</p>
+-- * bandwidth [Bandwidth] <p>The bandwidth of the connection.</p>
+-- * location [LocationCode] <p>The location of the connection.</p>
+-- * connectionName [ConnectionName] <p>The name of the connection.</p>
 -- Required key: location
 -- Required key: bandwidth
 -- Required key: connectionName
@@ -2902,7 +3528,7 @@ function M.CreateConnectionRequest(args)
     }
 end
 
-keys.NewPrivateVirtualInterface = { ["virtualGatewayId"] = true, ["customerAddress"] = true, ["vlan"] = true, ["addressFamily"] = true, ["authKey"] = true, ["amazonAddress"] = true, ["asn"] = true, ["virtualInterfaceName"] = true, nil }
+keys.NewPrivateVirtualInterface = { ["virtualGatewayId"] = true, ["customerAddress"] = true, ["vlan"] = true, ["addressFamily"] = true, ["directConnectGatewayId"] = true, ["mtu"] = true, ["authKey"] = true, ["amazonAddress"] = true, ["asn"] = true, ["virtualInterfaceName"] = true, nil }
 
 function asserts.AssertNewPrivateVirtualInterface(struct)
 	assert(struct)
@@ -2910,11 +3536,12 @@ function asserts.AssertNewPrivateVirtualInterface(struct)
 	assert(struct["virtualInterfaceName"], "Expected key virtualInterfaceName to exist in table")
 	assert(struct["vlan"], "Expected key vlan to exist in table")
 	assert(struct["asn"], "Expected key asn to exist in table")
-	assert(struct["virtualGatewayId"], "Expected key virtualGatewayId to exist in table")
 	if struct["virtualGatewayId"] then asserts.AssertVirtualGatewayId(struct["virtualGatewayId"]) end
 	if struct["customerAddress"] then asserts.AssertCustomerAddress(struct["customerAddress"]) end
 	if struct["vlan"] then asserts.AssertVLAN(struct["vlan"]) end
 	if struct["addressFamily"] then asserts.AssertAddressFamily(struct["addressFamily"]) end
+	if struct["directConnectGatewayId"] then asserts.AssertDirectConnectGatewayId(struct["directConnectGatewayId"]) end
+	if struct["mtu"] then asserts.AssertMTU(struct["mtu"]) end
 	if struct["authKey"] then asserts.AssertBGPAuthKey(struct["authKey"]) end
 	if struct["amazonAddress"] then asserts.AssertAmazonAddress(struct["amazonAddress"]) end
 	if struct["asn"] then asserts.AssertASN(struct["asn"]) end
@@ -2925,21 +3552,22 @@ function asserts.AssertNewPrivateVirtualInterface(struct)
 end
 
 --- Create a structure of type NewPrivateVirtualInterface
--- <p>A structure containing information about a new private virtual interface.</p>
+-- <p>Information about a private virtual interface.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * virtualGatewayId [VirtualGatewayId] 
--- * customerAddress [CustomerAddress] 
--- * vlan [VLAN] 
--- * addressFamily [AddressFamily] 
--- * authKey [BGPAuthKey] 
--- * amazonAddress [AmazonAddress] 
--- * asn [ASN] 
--- * virtualInterfaceName [VirtualInterfaceName] 
+-- * virtualGatewayId [VirtualGatewayId] <p>The ID of the virtual private gateway.</p>
+-- * customerAddress [CustomerAddress] <p>The IP address assigned to the customer interface.</p>
+-- * vlan [VLAN] <p>The ID of the VLAN.</p>
+-- * addressFamily [AddressFamily] <p>The address family for the BGP peer.</p>
+-- * directConnectGatewayId [DirectConnectGatewayId] <p>The ID of the Direct Connect gateway.</p>
+-- * mtu [MTU] <p>The maximum transmission unit (MTU), in bytes. The supported values are 1500 and 9001. The default value is 1500.</p>
+-- * authKey [BGPAuthKey] <p>The authentication key for BGP configuration.</p>
+-- * amazonAddress [AmazonAddress] <p>The IP address assigned to the Amazon interface.</p>
+-- * asn [ASN] <p>The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.</p>
+-- * virtualInterfaceName [VirtualInterfaceName] <p>The name of the virtual interface assigned by the customer network.</p>
 -- Required key: virtualInterfaceName
 -- Required key: vlan
 -- Required key: asn
--- Required key: virtualGatewayId
 -- @return NewPrivateVirtualInterface structure as a key-value pair table
 function M.NewPrivateVirtualInterface(args)
 	assert(args, "You must provide an argument table when creating NewPrivateVirtualInterface")
@@ -2954,6 +3582,8 @@ function M.NewPrivateVirtualInterface(args)
 		["customerAddress"] = args["customerAddress"],
 		["vlan"] = args["vlan"],
 		["addressFamily"] = args["addressFamily"],
+		["directConnectGatewayId"] = args["directConnectGatewayId"],
+		["mtu"] = args["mtu"],
 		["authKey"] = args["authKey"],
 		["amazonAddress"] = args["amazonAddress"],
 		["asn"] = args["asn"],
@@ -2968,25 +3598,31 @@ function M.NewPrivateVirtualInterface(args)
     }
 end
 
-keys.DirectConnectServerException = { ["message"] = true, nil }
+keys.DescribeDirectConnectGatewayAssociationsRequest = { ["directConnectGatewayId"] = true, ["nextToken"] = true, ["virtualGatewayId"] = true, ["maxResults"] = true, nil }
 
-function asserts.AssertDirectConnectServerException(struct)
+function asserts.AssertDescribeDirectConnectGatewayAssociationsRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DirectConnectServerException to be of type 'table'")
-	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
+	assert(type(struct) == "table", "Expected DescribeDirectConnectGatewayAssociationsRequest to be of type 'table'")
+	if struct["directConnectGatewayId"] then asserts.AssertDirectConnectGatewayId(struct["directConnectGatewayId"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["virtualGatewayId"] then asserts.AssertVirtualGatewayId(struct["virtualGatewayId"]) end
+	if struct["maxResults"] then asserts.AssertMaxResultSetSize(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DirectConnectServerException[k], "DirectConnectServerException contains unknown key " .. tostring(k))
+		assert(keys.DescribeDirectConnectGatewayAssociationsRequest[k], "DescribeDirectConnectGatewayAssociationsRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DirectConnectServerException
--- <p>A server-side error occurred during the API call. The error message will contain additional details about the cause.</p>
+--- Create a structure of type DescribeDirectConnectGatewayAssociationsRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [ErrorMessage] <p>This is an exception thrown when there is a backend issue on the server side.</p>
--- @return DirectConnectServerException structure as a key-value pair table
-function M.DirectConnectServerException(args)
-	assert(args, "You must provide an argument table when creating DirectConnectServerException")
+-- * directConnectGatewayId [DirectConnectGatewayId] <p>The ID of the Direct Connect gateway.</p>
+-- * nextToken [PaginationToken] <p>The token provided in the previous call to retrieve the next page.</p>
+-- * virtualGatewayId [VirtualGatewayId] <p>The ID of the virtual private gateway.</p>
+-- * maxResults [MaxResultSetSize] <p>The maximum number of associations to return per page.</p>
+-- @return DescribeDirectConnectGatewayAssociationsRequest structure as a key-value pair table
+function M.DescribeDirectConnectGatewayAssociationsRequest(args)
+	assert(args, "You must provide an argument table when creating DescribeDirectConnectGatewayAssociationsRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -2994,9 +3630,12 @@ function M.DirectConnectServerException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["message"] = args["message"],
+		["directConnectGatewayId"] = args["directConnectGatewayId"],
+		["nextToken"] = args["nextToken"],
+		["virtualGatewayId"] = args["virtualGatewayId"],
+		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertDirectConnectServerException(all_args)
+	asserts.AssertDescribeDirectConnectGatewayAssociationsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3017,10 +3656,10 @@ function asserts.AssertVirtualInterfaces(struct)
 end
 
 --- Create a structure of type VirtualInterfaces
--- <p>A structure containing a list of virtual interfaces.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * virtualInterfaces [VirtualInterfaceList] <p>A list of virtual interfaces.</p>
+-- * virtualInterfaces [VirtualInterfaceList] <p>The virtual interfaces</p>
 -- @return VirtualInterfaces structure as a key-value pair table
 function M.VirtualInterfaces(args)
 	assert(args, "You must provide an argument table when creating VirtualInterfaces")
@@ -3057,11 +3696,11 @@ function asserts.AssertTagResourceRequest(struct)
 end
 
 --- Create a structure of type TagResourceRequest
--- <p>Container for the parameters to the TagResource operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * resourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the Direct Connect resource.</p> <p>Example: arn:aws:directconnect:us-east-1:123456789012:dxcon/dxcon-fg5678gh</p>
--- * tags [TagList] <p>The list of tags to add.</p>
+-- * resourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the resource.</p>
+-- * tags [TagList] <p>The tags to add.</p>
 -- Required key: resourceArn
 -- Required key: tags
 -- @return TagResourceRequest structure as a key-value pair table
@@ -3099,10 +3738,10 @@ function asserts.AssertDeleteLagRequest(struct)
 end
 
 --- Create a structure of type DeleteLagRequest
--- <p>Container for the parameters to the DeleteLag operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * lagId [LagId] <p>The ID of the LAG to delete.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
+-- * lagId [LagId] <p>The ID of the LAG.</p>
 -- Required key: lagId
 -- @return DeleteLagRequest structure as a key-value pair table
 function M.DeleteLagRequest(args)
@@ -3125,6 +3764,45 @@ function M.DeleteLagRequest(args)
     }
 end
 
+keys.DeleteDirectConnectGatewayRequest = { ["directConnectGatewayId"] = true, nil }
+
+function asserts.AssertDeleteDirectConnectGatewayRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteDirectConnectGatewayRequest to be of type 'table'")
+	assert(struct["directConnectGatewayId"], "Expected key directConnectGatewayId to exist in table")
+	if struct["directConnectGatewayId"] then asserts.AssertDirectConnectGatewayId(struct["directConnectGatewayId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteDirectConnectGatewayRequest[k], "DeleteDirectConnectGatewayRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteDirectConnectGatewayRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * directConnectGatewayId [DirectConnectGatewayId] <p>The ID of the Direct Connect gateway.</p>
+-- Required key: directConnectGatewayId
+-- @return DeleteDirectConnectGatewayRequest structure as a key-value pair table
+function M.DeleteDirectConnectGatewayRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteDirectConnectGatewayRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["directConnectGatewayId"] = args["directConnectGatewayId"],
+	}
+	asserts.AssertDeleteDirectConnectGatewayRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DescribeHostedConnectionsRequest = { ["connectionId"] = true, nil }
 
 function asserts.AssertDescribeHostedConnectionsRequest(struct)
@@ -3138,10 +3816,10 @@ function asserts.AssertDescribeHostedConnectionsRequest(struct)
 end
 
 --- Create a structure of type DescribeHostedConnectionsRequest
--- <p>Container for the parameters to the DescribeHostedConnections operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * connectionId [ConnectionId] <p>The ID of the interconnect or LAG on which the hosted connections are provisioned.</p> <p>Example: dxcon-abc123 or dxlag-abc123</p> <p>Default: None</p>
+-- * connectionId [ConnectionId] <p>The ID of the interconnect or LAG.</p>
 -- Required key: connectionId
 -- @return DescribeHostedConnectionsRequest structure as a key-value pair table
 function M.DescribeHostedConnectionsRequest(args)
@@ -3176,10 +3854,10 @@ function asserts.AssertConfirmConnectionResponse(struct)
 end
 
 --- Create a structure of type ConfirmConnectionResponse
--- <p>The response received when ConfirmConnection is called.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * connectionState [ConnectionState] 
+-- * connectionState [ConnectionState] <p>The state of the connection. The following are the possible values:</p> <ul> <li> <p> <code>ordering</code>: The initial state of a hosted connection provisioned on an interconnect. The connection stays in the ordering state until the owner of the hosted connection confirms or declines the connection order.</p> </li> <li> <p> <code>requested</code>: The initial state of a standard connection. The connection stays in the requested state until the Letter of Authorization (LOA) is sent to the customer.</p> </li> <li> <p> <code>pending</code>: The connection has been approved and is being initialized.</p> </li> <li> <p> <code>available</code>: The network link is up and the connection is ready for use.</p> </li> <li> <p> <code>down</code>: The network link is down.</p> </li> <li> <p> <code>deleting</code>: The connection is being deleted.</p> </li> <li> <p> <code>deleted</code>: The connection has been deleted.</p> </li> <li> <p> <code>rejected</code>: A hosted connection in the <code>ordering</code> state enters the <code>rejected</code> state if it is deleted by the customer.</p> </li> </ul>
 -- @return ConfirmConnectionResponse structure as a key-value pair table
 function M.ConfirmConnectionResponse(args)
 	assert(args, "You must provide an argument table when creating ConfirmConnectionResponse")
@@ -3216,11 +3894,11 @@ function asserts.AssertCreatePrivateVirtualInterfaceRequest(struct)
 end
 
 --- Create a structure of type CreatePrivateVirtualInterfaceRequest
--- <p>Container for the parameters to the CreatePrivateVirtualInterface operation.</p>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * connectionId [ConnectionId] 
--- * newPrivateVirtualInterface [NewPrivateVirtualInterface] <p>Detailed information for the private virtual interface to be created.</p> <p>Default: None</p>
+-- * connectionId [ConnectionId] <p>The ID of the connection.</p>
+-- * newPrivateVirtualInterface [NewPrivateVirtualInterface] <p>Information about the private virtual interface.</p>
 -- Required key: connectionId
 -- Required key: newPrivateVirtualInterface
 -- @return CreatePrivateVirtualInterfaceRequest structure as a key-value pair table
@@ -3250,7 +3928,7 @@ function asserts.AssertVirtualGatewayState(str)
 	assert(type(str) == "string", "Expected VirtualGatewayState to be of type 'string'")
 end
 
--- <p>State of the virtual private gateway.</p> <ul> <li> <p> <b>Pending</b>: This is the initial state after calling <i>CreateVpnGateway</i>.</p> </li> <li> <p> <b>Available</b>: Ready for use by a private virtual interface.</p> </li> <li> <p> <b>Deleting</b>: This is the initial state after calling <i>DeleteVpnGateway</i>.</p> </li> <li> <p> <b>Deleted</b>: In this state, a private virtual interface is unable to send traffic over this gateway.</p> </li> </ul>
+--  
 function M.VirtualGatewayState(str)
 	asserts.AssertVirtualGatewayState(str)
 	return str
@@ -3272,7 +3950,7 @@ function asserts.AssertAmazonAddress(str)
 	assert(type(str) == "string", "Expected AmazonAddress to be of type 'string'")
 end
 
--- <p>IP address assigned to the Amazon interface.</p> <p>Example: 192.168.1.1/30 or 2001:db8::1/125</p>
+--  
 function M.AmazonAddress(str)
 	asserts.AssertAmazonAddress(str)
 	return str
@@ -3283,7 +3961,7 @@ function asserts.AssertVirtualGatewayId(str)
 	assert(type(str) == "string", "Expected VirtualGatewayId to be of type 'string'")
 end
 
--- <p>The ID of the virtual private gateway to a VPC. This only applies to private virtual interfaces.</p> <p>Example: vgw-123er56</p>
+--  
 function M.VirtualGatewayId(str)
 	asserts.AssertVirtualGatewayId(str)
 	return str
@@ -3307,7 +3985,7 @@ function asserts.AssertLagState(str)
 	assert(type(str) == "string", "Expected LagState to be of type 'string'")
 end
 
--- <p>The state of the LAG.</p> <ul> <li> <p> <b>Requested</b>: The initial state of a LAG. The LAG stays in the requested state until the Letter of Authorization (LOA) is available.</p> </li> <li> <p> <b>Pending</b>: The LAG has been approved, and is being initialized.</p> </li> <li> <p> <b>Available</b>: The network link is established, and the LAG is ready for use.</p> </li> <li> <p> <b>Down</b>: The network link is down.</p> </li> <li> <p> <b>Deleting</b>: The LAG is in the process of being deleted.</p> </li> <li> <p> <b>Deleted</b>: The LAG has been deleted.</p> </li> </ul>
+--  
 function M.LagState(str)
 	asserts.AssertLagState(str)
 	return str
@@ -3318,7 +3996,7 @@ function asserts.AssertBGPStatus(str)
 	assert(type(str) == "string", "Expected BGPStatus to be of type 'string'")
 end
 
--- <p>The Up/Down state of the BGP peer.</p> <ul> <li> <p> <b>Up</b>: The BGP peer is established.</p> </li> <li> <p> <b>Down</b>: The BGP peer is down.</p> </li> </ul>
+--  
 function M.BGPStatus(str)
 	asserts.AssertBGPStatus(str)
 	return str
@@ -3329,9 +4007,20 @@ function asserts.AssertLagId(str)
 	assert(type(str) == "string", "Expected LagId to be of type 'string'")
 end
 
--- <p>The ID of the LAG.</p> <p>Example: dxlag-fg5678gh</p>
+--  
 function M.LagId(str)
 	asserts.AssertLagId(str)
+	return str
+end
+
+function asserts.AssertVirtualInterfaceRegion(str)
+	assert(str)
+	assert(type(str) == "string", "Expected VirtualInterfaceRegion to be of type 'string'")
+end
+
+--  
+function M.VirtualInterfaceRegion(str)
+	asserts.AssertVirtualInterfaceRegion(str)
 	return str
 end
 
@@ -3351,7 +4040,7 @@ function asserts.AssertRegion(str)
 	assert(type(str) == "string", "Expected Region to be of type 'string'")
 end
 
--- <p>The AWS region where the connection is located.</p> <p>Example: us-east-1</p> <p>Default: None</p>
+--  
 function M.Region(str)
 	asserts.AssertRegion(str)
 	return str
@@ -3373,7 +4062,7 @@ function asserts.AssertAwsDevice(str)
 	assert(type(str) == "string", "Expected AwsDevice to be of type 'string'")
 end
 
--- <p>An abstract ID for the physical Direct Connect endpoint.</p> <p>Example: EQC50-abcdef123456</p>
+--  
 function M.AwsDevice(str)
 	asserts.AssertAwsDevice(str)
 	return str
@@ -3384,7 +4073,7 @@ function asserts.AssertLoaContentType(str)
 	assert(type(str) == "string", "Expected LoaContentType to be of type 'string'")
 end
 
--- <p>A standard media type indicating the content type of the LOA-CFA document. Currently, the only supported value is "application/pdf".</p> <p>Default: application/pdf</p>
+--  
 function M.LoaContentType(str)
 	asserts.AssertLoaContentType(str)
 	return str
@@ -3395,7 +4084,7 @@ function asserts.AssertInterconnectName(str)
 	assert(type(str) == "string", "Expected InterconnectName to be of type 'string'")
 end
 
--- <p>The name of the interconnect.</p> <p>Example: "<i>1G Interconnect to AWS</i>"</p>
+--  
 function M.InterconnectName(str)
 	asserts.AssertInterconnectName(str)
 	return str
@@ -3409,6 +4098,17 @@ end
 --  
 function M.OwnerAccount(str)
 	asserts.AssertOwnerAccount(str)
+	return str
+end
+
+function asserts.AssertStateChangeError(str)
+	assert(str)
+	assert(type(str) == "string", "Expected StateChangeError to be of type 'string'")
+end
+
+--  
+function M.StateChangeError(str)
+	asserts.AssertStateChangeError(str)
 	return str
 end
 
@@ -3428,9 +4128,31 @@ function asserts.AssertInterconnectState(str)
 	assert(type(str) == "string", "Expected InterconnectState to be of type 'string'")
 end
 
--- <p>State of the interconnect.</p> <ul> <li> <p> <b>Requested</b>: The initial state of an interconnect. The interconnect stays in the requested state until the Letter of Authorization (LOA) is sent to the customer.</p> </li> <li> <p> <b>Pending</b>: The interconnect has been approved, and is being initialized.</p> </li> <li> <p> <b>Available</b>: The network link is up, and the interconnect is ready for use.</p> </li> <li> <p> <b>Down</b>: The network link is down.</p> </li> <li> <p> <b>Deleting</b>: The interconnect is in the process of being deleted.</p> </li> <li> <p> <b>Deleted</b>: The interconnect has been deleted.</p> </li> </ul>
+--  
 function M.InterconnectState(str)
 	asserts.AssertInterconnectState(str)
+	return str
+end
+
+function asserts.AssertDirectConnectGatewayId(str)
+	assert(str)
+	assert(type(str) == "string", "Expected DirectConnectGatewayId to be of type 'string'")
+end
+
+--  
+function M.DirectConnectGatewayId(str)
+	asserts.AssertDirectConnectGatewayId(str)
+	return str
+end
+
+function asserts.AssertDirectConnectGatewayState(str)
+	assert(str)
+	assert(type(str) == "string", "Expected DirectConnectGatewayState to be of type 'string'")
+end
+
+--  
+function M.DirectConnectGatewayState(str)
+	asserts.AssertDirectConnectGatewayState(str)
 	return str
 end
 
@@ -3439,20 +4161,20 @@ function asserts.AssertVirtualInterfaceType(str)
 	assert(type(str) == "string", "Expected VirtualInterfaceType to be of type 'string'")
 end
 
--- <p>The type of virtual interface.</p> <p>Example: private (Amazon VPC) or public (Amazon S3, Amazon DynamoDB, and so on.)</p>
+--  
 function M.VirtualInterfaceType(str)
 	asserts.AssertVirtualInterfaceType(str)
 	return str
 end
 
-function asserts.AssertErrorMessage(str)
+function asserts.AssertDirectConnectGatewayAssociationState(str)
 	assert(str)
-	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
+	assert(type(str) == "string", "Expected DirectConnectGatewayAssociationState to be of type 'string'")
 end
 
 --  
-function M.ErrorMessage(str)
-	asserts.AssertErrorMessage(str)
+function M.DirectConnectGatewayAssociationState(str)
+	asserts.AssertDirectConnectGatewayAssociationState(str)
 	return str
 end
 
@@ -3461,7 +4183,7 @@ function asserts.AssertVirtualInterfaceId(str)
 	assert(type(str) == "string", "Expected VirtualInterfaceId to be of type 'string'")
 end
 
--- <p>The ID of the virtual interface.</p> <p>Example: dxvif-123dfg56</p> <p>Default: None</p>
+--  
 function M.VirtualInterfaceId(str)
 	asserts.AssertVirtualInterfaceId(str)
 	return str
@@ -3484,9 +4206,20 @@ function asserts.AssertConnectionName(str)
 	assert(type(str) == "string", "Expected ConnectionName to be of type 'string'")
 end
 
--- <p>The name of the connection.</p> <p>Example: "<i>My Connection to AWS</i>"</p> <p>Default: None</p>
+--  
 function M.ConnectionName(str)
 	asserts.AssertConnectionName(str)
+	return str
+end
+
+function asserts.AssertAwsDeviceV2(str)
+	assert(str)
+	assert(type(str) == "string", "Expected AwsDeviceV2 to be of type 'string'")
+end
+
+--  
+function M.AwsDeviceV2(str)
+	asserts.AssertAwsDeviceV2(str)
 	return str
 end
 
@@ -3495,7 +4228,7 @@ function asserts.AssertVirtualInterfaceState(str)
 	assert(type(str) == "string", "Expected VirtualInterfaceState to be of type 'string'")
 end
 
--- <p>State of the virtual interface.</p> <ul> <li> <p> <b>Confirming</b>: The creation of the virtual interface is pending confirmation from the virtual interface owner. If the owner of the virtual interface is different from the owner of the connection on which it is provisioned, then the virtual interface will remain in this state until it is confirmed by the virtual interface owner.</p> </li> <li> <p> <b>Verifying</b>: This state only applies to public virtual interfaces. Each public virtual interface needs validation before the virtual interface can be created.</p> </li> <li> <p> <b>Pending</b>: A virtual interface is in this state from the time that it is created until the virtual interface is ready to forward traffic.</p> </li> <li> <p> <b>Available</b>: A virtual interface that is able to forward traffic.</p> </li> <li> <p> <b>Down</b>: A virtual interface that is BGP down.</p> </li> <li> <p> <b>Deleting</b>: A virtual interface is in this state immediately after calling <a>DeleteVirtualInterface</a> until it can no longer forward traffic.</p> </li> <li> <p> <b>Deleted</b>: A virtual interface that cannot forward traffic.</p> </li> <li> <p> <b>Rejected</b>: The virtual interface owner has declined creation of the virtual interface. If a virtual interface in the 'Confirming' state is deleted by the virtual interface owner, the virtual interface will enter the 'Rejected' state.</p> </li> </ul>
+--  
 function M.VirtualInterfaceState(str)
 	asserts.AssertVirtualInterfaceState(str)
 	return str
@@ -3506,9 +4239,20 @@ function asserts.AssertBGPAuthKey(str)
 	assert(type(str) == "string", "Expected BGPAuthKey to be of type 'string'")
 end
 
--- <p>The authentication key for BGP configuration.</p> <p>Example: asdf34example</p>
+--  
 function M.BGPAuthKey(str)
 	asserts.AssertBGPAuthKey(str)
+	return str
+end
+
+function asserts.AssertDirectConnectGatewayAttachmentState(str)
+	assert(str)
+	assert(type(str) == "string", "Expected DirectConnectGatewayAttachmentState to be of type 'string'")
+end
+
+--  
+function M.DirectConnectGatewayAttachmentState(str)
+	asserts.AssertDirectConnectGatewayAttachmentState(str)
 	return str
 end
 
@@ -3517,9 +4261,20 @@ function asserts.AssertInterconnectId(str)
 	assert(type(str) == "string", "Expected InterconnectId to be of type 'string'")
 end
 
--- <p>The ID of the interconnect.</p> <p>Example: dxcon-abc123</p>
+--  
 function M.InterconnectId(str)
 	asserts.AssertInterconnectId(str)
+	return str
+end
+
+function asserts.AssertPaginationToken(str)
+	assert(str)
+	assert(type(str) == "string", "Expected PaginationToken to be of type 'string'")
+end
+
+--  
+function M.PaginationToken(str)
+	asserts.AssertPaginationToken(str)
 	return str
 end
 
@@ -3528,7 +4283,7 @@ function asserts.AssertConnectionId(str)
 	assert(type(str) == "string", "Expected ConnectionId to be of type 'string'")
 end
 
--- <p>The ID of the connection. This field is also used as the ID type for operations that use multiple connection types (LAG, interconnect, and/or connection).</p> <p>Example: dxcon-fg5678gh</p> <p>Default: None</p>
+--  
 function M.ConnectionId(str)
 	asserts.AssertConnectionId(str)
 	return str
@@ -3545,12 +4300,23 @@ function M.ProviderName(str)
 	return str
 end
 
+function asserts.AssertVirtualGatewayRegion(str)
+	assert(str)
+	assert(type(str) == "string", "Expected VirtualGatewayRegion to be of type 'string'")
+end
+
+--  
+function M.VirtualGatewayRegion(str)
+	asserts.AssertVirtualGatewayRegion(str)
+	return str
+end
+
 function asserts.AssertConnectionState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ConnectionState to be of type 'string'")
 end
 
--- <p>State of the connection.</p> <ul> <li> <p> <b>Ordering</b>: The initial state of a hosted connection provisioned on an interconnect. The connection stays in the ordering state until the owner of the hosted connection confirms or declines the connection order.</p> </li> <li> <p> <b>Requested</b>: The initial state of a standard connection. The connection stays in the requested state until the Letter of Authorization (LOA) is sent to the customer.</p> </li> <li> <p> <b>Pending</b>: The connection has been approved, and is being initialized.</p> </li> <li> <p> <b>Available</b>: The network link is up, and the connection is ready for use.</p> </li> <li> <p> <b>Down</b>: The network link is down.</p> </li> <li> <p> <b>Deleting</b>: The connection is in the process of being deleted.</p> </li> <li> <p> <b>Deleted</b>: The connection has been deleted.</p> </li> <li> <p> <b>Rejected</b>: A hosted connection in the 'Ordering' state will enter the 'Rejected' state if it is deleted by the end customer.</p> </li> </ul>
+--  
 function M.ConnectionState(str)
 	asserts.AssertConnectionState(str)
 	return str
@@ -3561,7 +4327,7 @@ function asserts.AssertAddressFamily(str)
 	assert(type(str) == "string", "Expected AddressFamily to be of type 'string'")
 end
 
--- <p>Indicates the address family for the BGP peer.</p> <ul> <li> <p> <b>ipv4</b>: IPv4 address family</p> </li> <li> <p> <b>ipv6</b>: IPv6 address family</p> </li> </ul>
+--  
 function M.AddressFamily(str)
 	asserts.AssertAddressFamily(str)
 	return str
@@ -3572,7 +4338,7 @@ function asserts.AssertVirtualInterfaceName(str)
 	assert(type(str) == "string", "Expected VirtualInterfaceName to be of type 'string'")
 end
 
--- <p>The name of the virtual interface assigned by the customer.</p> <p>Example: "My VPC"</p>
+--  
 function M.VirtualInterfaceName(str)
 	asserts.AssertVirtualInterfaceName(str)
 	return str
@@ -3594,7 +4360,7 @@ function asserts.AssertBGPPeerState(str)
 	assert(type(str) == "string", "Expected BGPPeerState to be of type 'string'")
 end
 
--- <p>The state of the BGP peer.</p> <ul> <li> <p> <b>Verifying</b>: The BGP peering addresses or ASN require validation before the BGP peer can be created. This state only applies to BGP peers on a public virtual interface. </p> </li> <li> <p> <b>Pending</b>: The BGP peer has been created, and is in this state until it is ready to be established.</p> </li> <li> <p> <b>Available</b>: The BGP peer can be established.</p> </li> <li> <p> <b>Deleting</b>: The BGP peer is in the process of being deleted.</p> </li> <li> <p> <b>Deleted</b>: The BGP peer has been deleted and cannot be established.</p> </li> </ul>
+--  
 function M.BGPPeerState(str)
 	asserts.AssertBGPPeerState(str)
 	return str
@@ -3616,7 +4382,7 @@ function asserts.AssertCustomerAddress(str)
 	assert(type(str) == "string", "Expected CustomerAddress to be of type 'string'")
 end
 
--- <p>IP address assigned to the customer interface.</p> <p>Example: 192.168.1.2/30 or 2001:db8::2/125</p>
+--  
 function M.CustomerAddress(str)
 	asserts.AssertCustomerAddress(str)
 	return str
@@ -3627,7 +4393,7 @@ function asserts.AssertBandwidth(str)
 	assert(type(str) == "string", "Expected Bandwidth to be of type 'string'")
 end
 
--- <p>Bandwidth of the connection.</p> <p>Example: 1Gbps</p> <p>Default: None</p>
+--  
 function M.Bandwidth(str)
 	asserts.AssertBandwidth(str)
 	return str
@@ -3638,10 +4404,32 @@ function asserts.AssertLocationCode(str)
 	assert(type(str) == "string", "Expected LocationCode to be of type 'string'")
 end
 
--- <p>Where the connection is located.</p> <p>Example: EqSV5</p> <p>Default: None</p>
+--  
 function M.LocationCode(str)
 	asserts.AssertLocationCode(str)
 	return str
+end
+
+function asserts.AssertDirectConnectGatewayName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected DirectConnectGatewayName to be of type 'string'")
+end
+
+--  
+function M.DirectConnectGatewayName(str)
+	asserts.AssertDirectConnectGatewayName(str)
+	return str
+end
+
+function asserts.AssertLongAsn(long)
+	assert(long)
+	assert(type(long) == "number", "Expected LongAsn to be of type 'number'")
+	assert(long % 1 == 0, "Expected a whole integer number")
+end
+
+function M.LongAsn(long)
+	asserts.AssertLongAsn(long)
+	return long
 end
 
 function asserts.AssertVLAN(integer)
@@ -3675,6 +4463,38 @@ end
 function M.Count(integer)
 	asserts.AssertCount(integer)
 	return integer
+end
+
+function asserts.AssertMaxResultSetSize(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected MaxResultSetSize to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
+end
+
+function M.MaxResultSetSize(integer)
+	asserts.AssertMaxResultSetSize(integer)
+	return integer
+end
+
+function asserts.AssertMTU(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected MTU to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
+end
+
+function M.MTU(integer)
+	asserts.AssertMTU(integer)
+	return integer
+end
+
+function asserts.AssertJumboFrameCapable(boolean)
+	assert(boolean)
+	assert(type(boolean) == "boolean", "Expected JumboFrameCapable to be of type 'boolean'")
+end
+
+function M.JumboFrameCapable(boolean)
+	asserts.AssertJumboFrameCapable(boolean)
+	return boolean
 end
 
 function asserts.AssertBooleanFlag(boolean)
@@ -3715,7 +4535,7 @@ function asserts.AssertVirtualGatewayList(list)
 	end
 end
 
--- <p>A list of virtual private gateways.</p>
+--  
 -- List of VirtualGateway objects
 function M.VirtualGatewayList(list)
 	asserts.AssertVirtualGatewayList(list)
@@ -3745,7 +4565,7 @@ function asserts.AssertConnectionList(list)
 	end
 end
 
--- <p>A list of connections.</p>
+--  
 -- List of Connection objects
 function M.ConnectionList(list)
 	asserts.AssertConnectionList(list)
@@ -3775,10 +4595,25 @@ function asserts.AssertLagList(list)
 	end
 end
 
--- <p>A list of LAGs.</p>
+--  
 -- List of Lag objects
 function M.LagList(list)
 	asserts.AssertLagList(list)
+	return list
+end
+
+function asserts.AssertDirectConnectGatewayList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected DirectConnectGatewayList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertDirectConnectGateway(v)
+	end
+end
+
+--  
+-- List of DirectConnectGateway objects
+function M.DirectConnectGatewayList(list)
+	asserts.AssertDirectConnectGatewayList(list)
 	return list
 end
 
@@ -3797,6 +4632,21 @@ function M.ResourceTagList(list)
 	return list
 end
 
+function asserts.AssertDirectConnectGatewayAssociationList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected DirectConnectGatewayAssociationList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertDirectConnectGatewayAssociation(v)
+	end
+end
+
+--  
+-- List of DirectConnectGatewayAssociation objects
+function M.DirectConnectGatewayAssociationList(list)
+	asserts.AssertDirectConnectGatewayAssociationList(list)
+	return list
+end
+
 function asserts.AssertRouteFilterPrefixList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected RouteFilterPrefixList to be of type ''table")
@@ -3805,7 +4655,7 @@ function asserts.AssertRouteFilterPrefixList(list)
 	end
 end
 
--- <p>A list of routes to be advertised to the AWS network in this region (public virtual interface).</p>
+--  
 -- List of RouteFilterPrefix objects
 function M.RouteFilterPrefixList(list)
 	asserts.AssertRouteFilterPrefixList(list)
@@ -3820,7 +4670,7 @@ function asserts.AssertVirtualInterfaceList(list)
 	end
 end
 
--- <p>A list of virtual interfaces.</p>
+--  
 -- List of VirtualInterface objects
 function M.VirtualInterfaceList(list)
 	asserts.AssertVirtualInterfaceList(list)
@@ -3835,10 +4685,25 @@ function asserts.AssertBGPPeerList(list)
 	end
 end
 
--- <p>A list of the BGP peers configured on this virtual interface.</p>
+--  
 -- List of BGPPeer objects
 function M.BGPPeerList(list)
 	asserts.AssertBGPPeerList(list)
+	return list
+end
+
+function asserts.AssertDirectConnectGatewayAttachmentList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected DirectConnectGatewayAttachmentList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertDirectConnectGatewayAttachment(v)
+	end
+end
+
+--  
+-- List of DirectConnectGatewayAttachment objects
+function M.DirectConnectGatewayAttachmentList(list)
+	asserts.AssertDirectConnectGatewayAttachmentList(list)
 	return list
 end
 
@@ -3865,7 +4730,7 @@ function asserts.AssertInterconnectList(list)
 	end
 end
 
--- <p>A list of interconnects.</p>
+--  
 -- List of Interconnect objects
 function M.InterconnectList(list)
 	asserts.AssertInterconnectList(list)
@@ -3956,6 +4821,41 @@ function M.DescribeVirtualGatewaysSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DescribeVirtualGatewaysAsync(function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDirectConnectGatewayAssociations asynchronously, invoking a callback when done
+-- @param DescribeDirectConnectGatewayAssociationsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeDirectConnectGatewayAssociationsAsync(DescribeDirectConnectGatewayAssociationsRequest, cb)
+	assert(DescribeDirectConnectGatewayAssociationsRequest, "You must provide a DescribeDirectConnectGatewayAssociationsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeDirectConnectGatewayAssociations",
+	}
+	for header,value in pairs(DescribeDirectConnectGatewayAssociationsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeDirectConnectGatewayAssociationsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeDirectConnectGatewayAssociations synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDirectConnectGatewayAssociationsRequest
+-- @return response
+-- @return error_message
+function M.DescribeDirectConnectGatewayAssociationsSync(DescribeDirectConnectGatewayAssociationsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDirectConnectGatewayAssociationsAsync(DescribeDirectConnectGatewayAssociationsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4206,6 +5106,41 @@ function M.DescribeLagsSync(DescribeLagsRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call DeleteInterconnect asynchronously, invoking a callback when done
+-- @param DeleteInterconnectRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteInterconnectAsync(DeleteInterconnectRequest, cb)
+	assert(DeleteInterconnectRequest, "You must provide a DeleteInterconnectRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteInterconnect",
+	}
+	for header,value in pairs(DeleteInterconnectRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteInterconnectRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteInterconnect synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteInterconnectRequest
+-- @return response
+-- @return error_message
+function M.DeleteInterconnectSync(DeleteInterconnectRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteInterconnectAsync(DeleteInterconnectRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call DeleteBGPPeer asynchronously, invoking a callback when done
 -- @param DeleteBGPPeerRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -4236,6 +5171,76 @@ function M.DeleteBGPPeerSync(DeleteBGPPeerRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DeleteBGPPeerAsync(DeleteBGPPeerRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDirectConnectGatewayAssociation asynchronously, invoking a callback when done
+-- @param DeleteDirectConnectGatewayAssociationRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteDirectConnectGatewayAssociationAsync(DeleteDirectConnectGatewayAssociationRequest, cb)
+	assert(DeleteDirectConnectGatewayAssociationRequest, "You must provide a DeleteDirectConnectGatewayAssociationRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteDirectConnectGatewayAssociation",
+	}
+	for header,value in pairs(DeleteDirectConnectGatewayAssociationRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteDirectConnectGatewayAssociationRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteDirectConnectGatewayAssociation synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDirectConnectGatewayAssociationRequest
+-- @return response
+-- @return error_message
+function M.DeleteDirectConnectGatewayAssociationSync(DeleteDirectConnectGatewayAssociationRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDirectConnectGatewayAssociationAsync(DeleteDirectConnectGatewayAssociationRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDirectConnectGatewayAttachments asynchronously, invoking a callback when done
+-- @param DescribeDirectConnectGatewayAttachmentsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeDirectConnectGatewayAttachmentsAsync(DescribeDirectConnectGatewayAttachmentsRequest, cb)
+	assert(DescribeDirectConnectGatewayAttachmentsRequest, "You must provide a DescribeDirectConnectGatewayAttachmentsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeDirectConnectGatewayAttachments",
+	}
+	for header,value in pairs(DescribeDirectConnectGatewayAttachmentsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeDirectConnectGatewayAttachmentsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeDirectConnectGatewayAttachments synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDirectConnectGatewayAttachmentsRequest
+-- @return response
+-- @return error_message
+function M.DescribeDirectConnectGatewayAttachmentsSync(DescribeDirectConnectGatewayAttachmentsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDirectConnectGatewayAttachmentsAsync(DescribeDirectConnectGatewayAttachmentsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4451,36 +5456,36 @@ function M.DescribeHostedConnectionsSync(DescribeHostedConnectionsRequest, ...)
 	return coroutine.yield()
 end
 
---- Call DeleteInterconnect asynchronously, invoking a callback when done
--- @param DeleteInterconnectRequest
+--- Call AssociateVirtualInterface asynchronously, invoking a callback when done
+-- @param AssociateVirtualInterfaceRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.DeleteInterconnectAsync(DeleteInterconnectRequest, cb)
-	assert(DeleteInterconnectRequest, "You must provide a DeleteInterconnectRequest")
+function M.AssociateVirtualInterfaceAsync(AssociateVirtualInterfaceRequest, cb)
+	assert(AssociateVirtualInterfaceRequest, "You must provide a AssociateVirtualInterfaceRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteInterconnect",
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.AssociateVirtualInterface",
 	}
-	for header,value in pairs(DeleteInterconnectRequest.headers) do
+	for header,value in pairs(AssociateVirtualInterfaceRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DeleteInterconnectRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", AssociateVirtualInterfaceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DeleteInterconnect synchronously, returning when done
+--- Call AssociateVirtualInterface synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DeleteInterconnectRequest
+-- @param AssociateVirtualInterfaceRequest
 -- @return response
 -- @return error_message
-function M.DeleteInterconnectSync(DeleteInterconnectRequest, ...)
+function M.AssociateVirtualInterfaceSync(AssociateVirtualInterfaceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteInterconnectAsync(DeleteInterconnectRequest, function(response, error_message)
+	M.AssociateVirtualInterfaceAsync(AssociateVirtualInterfaceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4521,36 +5526,36 @@ function M.DescribeVirtualInterfacesSync(DescribeVirtualInterfacesRequest, ...)
 	return coroutine.yield()
 end
 
---- Call UpdateLag asynchronously, invoking a callback when done
--- @param UpdateLagRequest
+--- Call CreateDirectConnectGateway asynchronously, invoking a callback when done
+-- @param CreateDirectConnectGatewayRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.UpdateLagAsync(UpdateLagRequest, cb)
-	assert(UpdateLagRequest, "You must provide a UpdateLagRequest")
+function M.CreateDirectConnectGatewayAsync(CreateDirectConnectGatewayRequest, cb)
+	assert(CreateDirectConnectGatewayRequest, "You must provide a CreateDirectConnectGatewayRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.UpdateLag",
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.CreateDirectConnectGateway",
 	}
-	for header,value in pairs(UpdateLagRequest.headers) do
+	for header,value in pairs(CreateDirectConnectGatewayRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", UpdateLagRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", CreateDirectConnectGatewayRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call UpdateLag synchronously, returning when done
+--- Call CreateDirectConnectGateway synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param UpdateLagRequest
+-- @param CreateDirectConnectGatewayRequest
 -- @return response
 -- @return error_message
-function M.UpdateLagSync(UpdateLagRequest, ...)
+function M.CreateDirectConnectGatewaySync(CreateDirectConnectGatewayRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateLagAsync(UpdateLagRequest, function(response, error_message)
+	M.CreateDirectConnectGatewayAsync(CreateDirectConnectGatewayRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4621,6 +5626,41 @@ function M.DisassociateConnectionFromLagSync(DisassociateConnectionFromLagReques
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DisassociateConnectionFromLagAsync(DisassociateConnectionFromLagRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDirectConnectGateway asynchronously, invoking a callback when done
+-- @param DeleteDirectConnectGatewayRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteDirectConnectGatewayAsync(DeleteDirectConnectGatewayRequest, cb)
+	assert(DeleteDirectConnectGatewayRequest, "You must provide a DeleteDirectConnectGatewayRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteDirectConnectGateway",
+	}
+	for header,value in pairs(DeleteDirectConnectGatewayRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteDirectConnectGatewayRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteDirectConnectGateway synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDirectConnectGatewayRequest
+-- @return response
+-- @return error_message
+function M.DeleteDirectConnectGatewaySync(DeleteDirectConnectGatewayRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDirectConnectGatewayAsync(DeleteDirectConnectGatewayRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5006,6 +6046,41 @@ function M.DeleteConnectionSync(DeleteConnectionRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call DescribeDirectConnectGateways asynchronously, invoking a callback when done
+-- @param DescribeDirectConnectGatewaysRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeDirectConnectGatewaysAsync(DescribeDirectConnectGatewaysRequest, cb)
+	assert(DescribeDirectConnectGatewaysRequest, "You must provide a DescribeDirectConnectGatewaysRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeDirectConnectGateways",
+	}
+	for header,value in pairs(DescribeDirectConnectGatewaysRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeDirectConnectGatewaysRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeDirectConnectGateways synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDirectConnectGatewaysRequest
+-- @return response
+-- @return error_message
+function M.DescribeDirectConnectGatewaysSync(DescribeDirectConnectGatewaysRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDirectConnectGatewaysAsync(DescribeDirectConnectGatewaysRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call DeleteLag asynchronously, invoking a callback when done
 -- @param DeleteLagRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -5041,36 +6116,106 @@ function M.DeleteLagSync(DeleteLagRequest, ...)
 	return coroutine.yield()
 end
 
---- Call AssociateVirtualInterface asynchronously, invoking a callback when done
--- @param AssociateVirtualInterfaceRequest
+--- Call CreateDirectConnectGatewayAssociation asynchronously, invoking a callback when done
+-- @param CreateDirectConnectGatewayAssociationRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.AssociateVirtualInterfaceAsync(AssociateVirtualInterfaceRequest, cb)
-	assert(AssociateVirtualInterfaceRequest, "You must provide a AssociateVirtualInterfaceRequest")
+function M.CreateDirectConnectGatewayAssociationAsync(CreateDirectConnectGatewayAssociationRequest, cb)
+	assert(CreateDirectConnectGatewayAssociationRequest, "You must provide a CreateDirectConnectGatewayAssociationRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.AssociateVirtualInterface",
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.CreateDirectConnectGatewayAssociation",
 	}
-	for header,value in pairs(AssociateVirtualInterfaceRequest.headers) do
+	for header,value in pairs(CreateDirectConnectGatewayAssociationRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", AssociateVirtualInterfaceRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", CreateDirectConnectGatewayAssociationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call AssociateVirtualInterface synchronously, returning when done
+--- Call CreateDirectConnectGatewayAssociation synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param AssociateVirtualInterfaceRequest
+-- @param CreateDirectConnectGatewayAssociationRequest
 -- @return response
 -- @return error_message
-function M.AssociateVirtualInterfaceSync(AssociateVirtualInterfaceRequest, ...)
+function M.CreateDirectConnectGatewayAssociationSync(CreateDirectConnectGatewayAssociationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateVirtualInterfaceAsync(AssociateVirtualInterfaceRequest, function(response, error_message)
+	M.CreateDirectConnectGatewayAssociationAsync(CreateDirectConnectGatewayAssociationRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateVirtualInterfaceAttributes asynchronously, invoking a callback when done
+-- @param UpdateVirtualInterfaceAttributesRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateVirtualInterfaceAttributesAsync(UpdateVirtualInterfaceAttributesRequest, cb)
+	assert(UpdateVirtualInterfaceAttributesRequest, "You must provide a UpdateVirtualInterfaceAttributesRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.UpdateVirtualInterfaceAttributes",
+	}
+	for header,value in pairs(UpdateVirtualInterfaceAttributesRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateVirtualInterfaceAttributesRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateVirtualInterfaceAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateVirtualInterfaceAttributesRequest
+-- @return response
+-- @return error_message
+function M.UpdateVirtualInterfaceAttributesSync(UpdateVirtualInterfaceAttributesRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateVirtualInterfaceAttributesAsync(UpdateVirtualInterfaceAttributesRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateLag asynchronously, invoking a callback when done
+-- @param UpdateLagRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateLagAsync(UpdateLagRequest, cb)
+	assert(UpdateLagRequest, "You must provide a UpdateLagRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.UpdateLag",
+	}
+	for header,value in pairs(UpdateLagRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateLagRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateLag synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateLagRequest
+-- @return response
+-- @return error_message
+function M.UpdateLagSync(UpdateLagRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateLagAsync(UpdateLagRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

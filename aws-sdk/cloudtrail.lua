@@ -37,7 +37,7 @@ end
 -- <p>Passes the request to CloudTrail to stop logging AWS API calls for the specified account.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Name [String] <p>Specifies the name or the CloudTrail ARN of the trail for which CloudTrail will stop logging AWS API calls. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- * Name [String] <p>Specifies the name or the CloudTrail ARN of the trail for which CloudTrail will stop logging AWS API calls. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail</code> </p>
 -- Required key: Name
 -- @return StopLoggingRequest structure as a key-value pair table
 function M.StopLoggingRequest(args)
@@ -52,1786 +52,6 @@ function M.StopLoggingRequest(args)
 		["Name"] = args["Name"],
 	}
 	asserts.AssertStopLoggingRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.UnsupportedOperationException = { nil }
-
-function asserts.AssertUnsupportedOperationException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UnsupportedOperationException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.UnsupportedOperationException[k], "UnsupportedOperationException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UnsupportedOperationException
--- <p>This exception is thrown when the requested operation is not supported.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return UnsupportedOperationException structure as a key-value pair table
-function M.UnsupportedOperationException(args)
-	assert(args, "You must provide an argument table when creating UnsupportedOperationException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertUnsupportedOperationException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.AddTagsResponse = { nil }
-
-function asserts.AssertAddTagsResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected AddTagsResponse to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.AddTagsResponse[k], "AddTagsResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type AddTagsResponse
--- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return AddTagsResponse structure as a key-value pair table
-function M.AddTagsResponse(args)
-	assert(args, "You must provide an argument table when creating AddTagsResponse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertAddTagsResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ListTagsRequest = { ["ResourceIdList"] = true, ["NextToken"] = true, nil }
-
-function asserts.AssertListTagsRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ListTagsRequest to be of type 'table'")
-	assert(struct["ResourceIdList"], "Expected key ResourceIdList to exist in table")
-	if struct["ResourceIdList"] then asserts.AssertResourceIdList(struct["ResourceIdList"]) end
-	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ListTagsRequest[k], "ListTagsRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ListTagsRequest
--- <p>Specifies a list of trail tags to return.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ResourceIdList [ResourceIdList] <p>Specifies a list of trail ARNs whose tags will be listed. The list has a limit of 20 ARNs. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- * NextToken [String] <p>Reserved for future use.</p>
--- Required key: ResourceIdList
--- @return ListTagsRequest structure as a key-value pair table
-function M.ListTagsRequest(args)
-	assert(args, "You must provide an argument table when creating ListTagsRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ResourceIdList"] = args["ResourceIdList"],
-		["NextToken"] = args["NextToken"],
-	}
-	asserts.AssertListTagsRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.RemoveTagsRequest = { ["ResourceId"] = true, ["TagsList"] = true, nil }
-
-function asserts.AssertRemoveTagsRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected RemoveTagsRequest to be of type 'table'")
-	assert(struct["ResourceId"], "Expected key ResourceId to exist in table")
-	if struct["ResourceId"] then asserts.AssertString(struct["ResourceId"]) end
-	if struct["TagsList"] then asserts.AssertTagsList(struct["TagsList"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.RemoveTagsRequest[k], "RemoveTagsRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type RemoveTagsRequest
--- <p>Specifies the tags to remove from a trail.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ResourceId [String] <p>Specifies the ARN of the trail from which tags should be removed. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- * TagsList [TagsList] <p>Specifies a list of tags to be removed.</p>
--- Required key: ResourceId
--- @return RemoveTagsRequest structure as a key-value pair table
-function M.RemoveTagsRequest(args)
-	assert(args, "You must provide an argument table when creating RemoveTagsRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ResourceId"] = args["ResourceId"],
-		["TagsList"] = args["TagsList"],
-	}
-	asserts.AssertRemoveTagsRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TrailNotProvidedException = { nil }
-
-function asserts.AssertTrailNotProvidedException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TrailNotProvidedException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TrailNotProvidedException[k], "TrailNotProvidedException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TrailNotProvidedException
--- <p>This exception is deprecated.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TrailNotProvidedException structure as a key-value pair table
-function M.TrailNotProvidedException(args)
-	assert(args, "You must provide an argument table when creating TrailNotProvidedException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTrailNotProvidedException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DeleteTrailRequest = { ["Name"] = true, nil }
-
-function asserts.AssertDeleteTrailRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteTrailRequest to be of type 'table'")
-	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Name"] then asserts.AssertString(struct["Name"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DeleteTrailRequest[k], "DeleteTrailRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DeleteTrailRequest
--- <p>The request that specifies the name of a trail to delete.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Name [String] <p>Specifies the name or the CloudTrail ARN of the trail to be deleted. The format of a trail ARN is: <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- Required key: Name
--- @return DeleteTrailRequest structure as a key-value pair table
-function M.DeleteTrailRequest(args)
-	assert(args, "You must provide an argument table when creating DeleteTrailRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Name"] = args["Name"],
-	}
-	asserts.AssertDeleteTrailRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InsufficientEncryptionPolicyException = { nil }
-
-function asserts.AssertInsufficientEncryptionPolicyException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InsufficientEncryptionPolicyException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InsufficientEncryptionPolicyException[k], "InsufficientEncryptionPolicyException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InsufficientEncryptionPolicyException
--- <p>This exception is thrown when the policy on the S3 bucket or KMS key is not sufficient.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InsufficientEncryptionPolicyException structure as a key-value pair table
-function M.InsufficientEncryptionPolicyException(args)
-	assert(args, "You must provide an argument table when creating InsufficientEncryptionPolicyException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInsufficientEncryptionPolicyException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.OperationNotPermittedException = { nil }
-
-function asserts.AssertOperationNotPermittedException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected OperationNotPermittedException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.OperationNotPermittedException[k], "OperationNotPermittedException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type OperationNotPermittedException
--- <p>This exception is thrown when the requested operation is not permitted.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return OperationNotPermittedException structure as a key-value pair table
-function M.OperationNotPermittedException(args)
-	assert(args, "You must provide an argument table when creating OperationNotPermittedException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertOperationNotPermittedException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.StartLoggingResponse = { nil }
-
-function asserts.AssertStartLoggingResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected StartLoggingResponse to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.StartLoggingResponse[k], "StartLoggingResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type StartLoggingResponse
--- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return StartLoggingResponse structure as a key-value pair table
-function M.StartLoggingResponse(args)
-	assert(args, "You must provide an argument table when creating StartLoggingResponse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertStartLoggingResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DescribeTrailsRequest = { ["trailNameList"] = true, ["includeShadowTrails"] = true, nil }
-
-function asserts.AssertDescribeTrailsRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeTrailsRequest to be of type 'table'")
-	if struct["trailNameList"] then asserts.AssertTrailNameList(struct["trailNameList"]) end
-	if struct["includeShadowTrails"] then asserts.AssertBoolean(struct["includeShadowTrails"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DescribeTrailsRequest[k], "DescribeTrailsRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DescribeTrailsRequest
--- <p>Returns information about the trail.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * trailNameList [TrailNameList] <p>Specifies a list of trail names, trail ARNs, or both, of the trails to describe. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p> <p>If an empty list is specified, information for the trail in the current region is returned.</p> <ul> <li> <p>If an empty list is specified and <code>IncludeShadowTrails</code> is false, then information for all trails in the current region is returned.</p> </li> <li> <p>If an empty list is specified and IncludeShadowTrails is null or true, then information for all trails in the current region and any associated shadow trails in other regions is returned.</p> </li> </ul> <note> <p>If one or more trail names are specified, information is returned only if the names match the names of trails belonging only to the current region. To return information about a trail in another region, you must specify its trail ARN.</p> </note>
--- * includeShadowTrails [Boolean] <p>Specifies whether to include shadow trails in the response. A shadow trail is the replication in a region of a trail that was created in a different region. The default is true.</p>
--- @return DescribeTrailsRequest structure as a key-value pair table
-function M.DescribeTrailsRequest(args)
-	assert(args, "You must provide an argument table when creating DescribeTrailsRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["trailNameList"] = args["trailNameList"],
-		["includeShadowTrails"] = args["includeShadowTrails"],
-	}
-	asserts.AssertDescribeTrailsRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.GetTrailStatusRequest = { ["Name"] = true, nil }
-
-function asserts.AssertGetTrailStatusRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected GetTrailStatusRequest to be of type 'table'")
-	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Name"] then asserts.AssertString(struct["Name"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.GetTrailStatusRequest[k], "GetTrailStatusRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type GetTrailStatusRequest
--- <p>The name of a trail about which you want the current status.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Name [String] <p>Specifies the name or the CloudTrail ARN of the trail for which you are requesting status. To get the status of a shadow trail (a replication of the trail in another region), you must specify its ARN. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- Required key: Name
--- @return GetTrailStatusRequest structure as a key-value pair table
-function M.GetTrailStatusRequest(args)
-	assert(args, "You must provide an argument table when creating GetTrailStatusRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Name"] = args["Name"],
-	}
-	asserts.AssertGetTrailStatusRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.MaximumNumberOfTrailsExceededException = { nil }
-
-function asserts.AssertMaximumNumberOfTrailsExceededException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected MaximumNumberOfTrailsExceededException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.MaximumNumberOfTrailsExceededException[k], "MaximumNumberOfTrailsExceededException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type MaximumNumberOfTrailsExceededException
--- <p>This exception is thrown when the maximum number of trails is reached.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return MaximumNumberOfTrailsExceededException structure as a key-value pair table
-function M.MaximumNumberOfTrailsExceededException(args)
-	assert(args, "You must provide an argument table when creating MaximumNumberOfTrailsExceededException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertMaximumNumberOfTrailsExceededException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ResourceTypeNotSupportedException = { nil }
-
-function asserts.AssertResourceTypeNotSupportedException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceTypeNotSupportedException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ResourceTypeNotSupportedException[k], "ResourceTypeNotSupportedException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ResourceTypeNotSupportedException
--- <p>This exception is thrown when the specified resource type is not supported by CloudTrail.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ResourceTypeNotSupportedException structure as a key-value pair table
-function M.ResourceTypeNotSupportedException(args)
-	assert(args, "You must provide an argument table when creating ResourceTypeNotSupportedException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertResourceTypeNotSupportedException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.Trail = { ["IncludeGlobalServiceEvents"] = true, ["Name"] = true, ["S3KeyPrefix"] = true, ["TrailARN"] = true, ["LogFileValidationEnabled"] = true, ["SnsTopicARN"] = true, ["IsMultiRegionTrail"] = true, ["HasCustomEventSelectors"] = true, ["S3BucketName"] = true, ["CloudWatchLogsRoleArn"] = true, ["KmsKeyId"] = true, ["CloudWatchLogsLogGroupArn"] = true, ["SnsTopicName"] = true, ["HomeRegion"] = true, nil }
-
-function asserts.AssertTrail(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected Trail to be of type 'table'")
-	if struct["IncludeGlobalServiceEvents"] then asserts.AssertBoolean(struct["IncludeGlobalServiceEvents"]) end
-	if struct["Name"] then asserts.AssertString(struct["Name"]) end
-	if struct["S3KeyPrefix"] then asserts.AssertString(struct["S3KeyPrefix"]) end
-	if struct["TrailARN"] then asserts.AssertString(struct["TrailARN"]) end
-	if struct["LogFileValidationEnabled"] then asserts.AssertBoolean(struct["LogFileValidationEnabled"]) end
-	if struct["SnsTopicARN"] then asserts.AssertString(struct["SnsTopicARN"]) end
-	if struct["IsMultiRegionTrail"] then asserts.AssertBoolean(struct["IsMultiRegionTrail"]) end
-	if struct["HasCustomEventSelectors"] then asserts.AssertBoolean(struct["HasCustomEventSelectors"]) end
-	if struct["S3BucketName"] then asserts.AssertString(struct["S3BucketName"]) end
-	if struct["CloudWatchLogsRoleArn"] then asserts.AssertString(struct["CloudWatchLogsRoleArn"]) end
-	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
-	if struct["CloudWatchLogsLogGroupArn"] then asserts.AssertString(struct["CloudWatchLogsLogGroupArn"]) end
-	if struct["SnsTopicName"] then asserts.AssertString(struct["SnsTopicName"]) end
-	if struct["HomeRegion"] then asserts.AssertString(struct["HomeRegion"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.Trail[k], "Trail contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type Trail
--- <p>The settings for a trail.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * IncludeGlobalServiceEvents [Boolean] <p>Set to <b>True</b> to include AWS API calls from AWS global services such as IAM. Otherwise, <b>False</b>.</p>
--- * Name [String] <p>Name of the trail set by calling <a>CreateTrail</a>. The maximum length is 128 characters.</p>
--- * S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>.The maximum length is 200 characters.</p>
--- * TrailARN [String] <p>Specifies the ARN of the trail. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- * LogFileValidationEnabled [Boolean] <p>Specifies whether log file validation is enabled.</p>
--- * SnsTopicARN [String] <p>Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered. The format of a topic ARN is:</p> <p> <code>arn:aws:sns:us-east-1:123456789012:MyTopic</code> </p>
--- * IsMultiRegionTrail [Boolean] <p>Specifies whether the trail belongs only to one region or exists in all regions.</p>
--- * HasCustomEventSelectors [Boolean] <p>Specifies if the trail has custom event selectors.</p>
--- * S3BucketName [String] <p>Name of the Amazon S3 bucket into which CloudTrail delivers your trail files. See <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3 Bucket Naming Requirements</a>.</p>
--- * CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
--- * KmsKeyId [String] <p>Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the format:</p> <p> <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code> </p>
--- * CloudWatchLogsLogGroupArn [String] <p>Specifies an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered.</p>
--- * SnsTopicName [String] <p>This field is deprecated. Use SnsTopicARN.</p>
--- * HomeRegion [String] <p>The region in which the trail was created.</p>
--- @return Trail structure as a key-value pair table
-function M.Trail(args)
-	assert(args, "You must provide an argument table when creating Trail")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["IncludeGlobalServiceEvents"] = args["IncludeGlobalServiceEvents"],
-		["Name"] = args["Name"],
-		["S3KeyPrefix"] = args["S3KeyPrefix"],
-		["TrailARN"] = args["TrailARN"],
-		["LogFileValidationEnabled"] = args["LogFileValidationEnabled"],
-		["SnsTopicARN"] = args["SnsTopicARN"],
-		["IsMultiRegionTrail"] = args["IsMultiRegionTrail"],
-		["HasCustomEventSelectors"] = args["HasCustomEventSelectors"],
-		["S3BucketName"] = args["S3BucketName"],
-		["CloudWatchLogsRoleArn"] = args["CloudWatchLogsRoleArn"],
-		["KmsKeyId"] = args["KmsKeyId"],
-		["CloudWatchLogsLogGroupArn"] = args["CloudWatchLogsLogGroupArn"],
-		["SnsTopicName"] = args["SnsTopicName"],
-		["HomeRegion"] = args["HomeRegion"],
-	}
-	asserts.AssertTrail(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.KmsKeyDisabledException = { nil }
-
-function asserts.AssertKmsKeyDisabledException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected KmsKeyDisabledException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.KmsKeyDisabledException[k], "KmsKeyDisabledException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type KmsKeyDisabledException
--- <p>This exception is deprecated.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return KmsKeyDisabledException structure as a key-value pair table
-function M.KmsKeyDisabledException(args)
-	assert(args, "You must provide an argument table when creating KmsKeyDisabledException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertKmsKeyDisabledException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidEventSelectorsException = { nil }
-
-function asserts.AssertInvalidEventSelectorsException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidEventSelectorsException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidEventSelectorsException[k], "InvalidEventSelectorsException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidEventSelectorsException
--- <p>This exception is thrown when the <code>PutEventSelectors</code> operation is called with an invalid number of event selectors, data resources, or an invalid value for a parameter:</p> <ul> <li> <p>Specify a valid number of event selectors (1 to 5) for a trail.</p> </li> <li> <p>Specify a valid number of data resources (1 to 250) for an event selector.</p> </li> <li> <p>Specify a valid value for a parameter. For example, specifying the <code>ReadWriteType</code> parameter with a value of <code>read-only</code> is invalid.</p> </li> </ul>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidEventSelectorsException structure as a key-value pair table
-function M.InvalidEventSelectorsException(args)
-	assert(args, "You must provide an argument table when creating InvalidEventSelectorsException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidEventSelectorsException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
-
-function asserts.AssertTag(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
-	assert(struct["Key"], "Expected key Key to exist in table")
-	if struct["Value"] then asserts.AssertString(struct["Value"]) end
-	if struct["Key"] then asserts.AssertString(struct["Key"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type Tag
--- <p>A custom key-value pair associated with a resource such as a CloudTrail trail.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Value [String] <p>The value in a key-value pair of a tag. The value must be no longer than 256 Unicode characters.</p>
--- * Key [String] <p>The key in a key-value pair. The key must be must be no longer than 128 Unicode characters. The key must be unique for the resource to which it applies.</p>
--- Required key: Key
--- @return Tag structure as a key-value pair table
-function M.Tag(args)
-	assert(args, "You must provide an argument table when creating Tag")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Value"] = args["Value"],
-		["Key"] = args["Key"],
-	}
-	asserts.AssertTag(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.Event = { ["EventId"] = true, ["Username"] = true, ["EventTime"] = true, ["CloudTrailEvent"] = true, ["EventName"] = true, ["EventSource"] = true, ["Resources"] = true, nil }
-
-function asserts.AssertEvent(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected Event to be of type 'table'")
-	if struct["EventId"] then asserts.AssertString(struct["EventId"]) end
-	if struct["Username"] then asserts.AssertString(struct["Username"]) end
-	if struct["EventTime"] then asserts.AssertDate(struct["EventTime"]) end
-	if struct["CloudTrailEvent"] then asserts.AssertString(struct["CloudTrailEvent"]) end
-	if struct["EventName"] then asserts.AssertString(struct["EventName"]) end
-	if struct["EventSource"] then asserts.AssertString(struct["EventSource"]) end
-	if struct["Resources"] then asserts.AssertResourceList(struct["Resources"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.Event[k], "Event contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type Event
--- <p>Contains information about an event that was returned by a lookup request. The result includes a representation of a CloudTrail event.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * EventId [String] <p>The CloudTrail ID of the event returned.</p>
--- * Username [String] <p>A user name or role name of the requester that called the API in the event returned.</p>
--- * EventTime [Date] <p>The date and time of the event returned.</p>
--- * CloudTrailEvent [String] <p>A JSON string that contains a representation of the event returned.</p>
--- * EventName [String] <p>The name of the event returned.</p>
--- * EventSource [String] <p>The AWS service that the request was made to.</p>
--- * Resources [ResourceList] <p>A list of resources referenced by the event returned.</p>
--- @return Event structure as a key-value pair table
-function M.Event(args)
-	assert(args, "You must provide an argument table when creating Event")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["EventId"] = args["EventId"],
-		["Username"] = args["Username"],
-		["EventTime"] = args["EventTime"],
-		["CloudTrailEvent"] = args["CloudTrailEvent"],
-		["EventName"] = args["EventName"],
-		["EventSource"] = args["EventSource"],
-		["Resources"] = args["Resources"],
-	}
-	asserts.AssertEvent(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TrailAlreadyExistsException = { nil }
-
-function asserts.AssertTrailAlreadyExistsException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TrailAlreadyExistsException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TrailAlreadyExistsException[k], "TrailAlreadyExistsException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TrailAlreadyExistsException
--- <p>This exception is thrown when the specified trail already exists.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TrailAlreadyExistsException structure as a key-value pair table
-function M.TrailAlreadyExistsException(args)
-	assert(args, "You must provide an argument table when creating TrailAlreadyExistsException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTrailAlreadyExistsException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CloudTrailARNInvalidException = { nil }
-
-function asserts.AssertCloudTrailARNInvalidException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CloudTrailARNInvalidException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.CloudTrailARNInvalidException[k], "CloudTrailARNInvalidException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CloudTrailARNInvalidException
--- <p>This exception is thrown when an operation is called with an invalid trail ARN. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return CloudTrailARNInvalidException structure as a key-value pair table
-function M.CloudTrailARNInvalidException(args)
-	assert(args, "You must provide an argument table when creating CloudTrailARNInvalidException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertCloudTrailARNInvalidException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidNextTokenException = { nil }
-
-function asserts.AssertInvalidNextTokenException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidNextTokenException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidNextTokenException[k], "InvalidNextTokenException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidNextTokenException
--- <p>Invalid token or token that was previously used in a request with different parameters. This exception is thrown if the token is invalid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidNextTokenException structure as a key-value pair table
-function M.InvalidNextTokenException(args)
-	assert(args, "You must provide an argument table when creating InvalidNextTokenException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidNextTokenException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CreateTrailRequest = { ["IncludeGlobalServiceEvents"] = true, ["Name"] = true, ["S3KeyPrefix"] = true, ["KmsKeyId"] = true, ["IsMultiRegionTrail"] = true, ["S3BucketName"] = true, ["CloudWatchLogsRoleArn"] = true, ["CloudWatchLogsLogGroupArn"] = true, ["SnsTopicName"] = true, ["EnableLogFileValidation"] = true, nil }
-
-function asserts.AssertCreateTrailRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CreateTrailRequest to be of type 'table'")
-	assert(struct["Name"], "Expected key Name to exist in table")
-	assert(struct["S3BucketName"], "Expected key S3BucketName to exist in table")
-	if struct["IncludeGlobalServiceEvents"] then asserts.AssertBoolean(struct["IncludeGlobalServiceEvents"]) end
-	if struct["Name"] then asserts.AssertString(struct["Name"]) end
-	if struct["S3KeyPrefix"] then asserts.AssertString(struct["S3KeyPrefix"]) end
-	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
-	if struct["IsMultiRegionTrail"] then asserts.AssertBoolean(struct["IsMultiRegionTrail"]) end
-	if struct["S3BucketName"] then asserts.AssertString(struct["S3BucketName"]) end
-	if struct["CloudWatchLogsRoleArn"] then asserts.AssertString(struct["CloudWatchLogsRoleArn"]) end
-	if struct["CloudWatchLogsLogGroupArn"] then asserts.AssertString(struct["CloudWatchLogsLogGroupArn"]) end
-	if struct["SnsTopicName"] then asserts.AssertString(struct["SnsTopicName"]) end
-	if struct["EnableLogFileValidation"] then asserts.AssertBoolean(struct["EnableLogFileValidation"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.CreateTrailRequest[k], "CreateTrailRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CreateTrailRequest
--- <p>Specifies the settings for each trail.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * IncludeGlobalServiceEvents [Boolean] <p>Specifies whether the trail is publishing events from global services such as IAM to the log files.</p>
--- * Name [String] <p>Specifies the name of the trail. The name must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul>
--- * S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>. The maximum length is 200 characters.</p>
--- * KmsKeyId [String] <p>Specifies the KMS key ID to use to encrypt the logs delivered by CloudTrail. The value can be an alias name prefixed by "alias/", a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.</p> <p>Examples:</p> <ul> <li> <p>alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>12345678-1234-1234-1234-123456789012</p> </li> </ul>
--- * IsMultiRegionTrail [Boolean] <p>Specifies whether the trail is created in the current region or in all regions. The default is false.</p>
--- * S3BucketName [String] <p>Specifies the name of the Amazon S3 bucket designated for publishing log files. See <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3 Bucket Naming Requirements</a>.</p>
--- * CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
--- * CloudWatchLogsLogGroupArn [String] <p>Specifies a log group name using an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered. Not required unless you specify CloudWatchLogsRoleArn.</p>
--- * SnsTopicName [String] <p>Specifies the name of the Amazon SNS topic defined for notification of log file delivery. The maximum length is 256 characters.</p>
--- * EnableLogFileValidation [Boolean] <p>Specifies whether log file integrity validation is enabled. The default is false.</p> <note> <p>When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.</p> </note>
--- Required key: Name
--- Required key: S3BucketName
--- @return CreateTrailRequest structure as a key-value pair table
-function M.CreateTrailRequest(args)
-	assert(args, "You must provide an argument table when creating CreateTrailRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["IncludeGlobalServiceEvents"] = args["IncludeGlobalServiceEvents"],
-		["Name"] = args["Name"],
-		["S3KeyPrefix"] = args["S3KeyPrefix"],
-		["KmsKeyId"] = args["KmsKeyId"],
-		["IsMultiRegionTrail"] = args["IsMultiRegionTrail"],
-		["S3BucketName"] = args["S3BucketName"],
-		["CloudWatchLogsRoleArn"] = args["CloudWatchLogsRoleArn"],
-		["CloudWatchLogsLogGroupArn"] = args["CloudWatchLogsLogGroupArn"],
-		["SnsTopicName"] = args["SnsTopicName"],
-		["EnableLogFileValidation"] = args["EnableLogFileValidation"],
-	}
-	asserts.AssertCreateTrailRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidCloudWatchLogsLogGroupArnException = { nil }
-
-function asserts.AssertInvalidCloudWatchLogsLogGroupArnException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidCloudWatchLogsLogGroupArnException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidCloudWatchLogsLogGroupArnException[k], "InvalidCloudWatchLogsLogGroupArnException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidCloudWatchLogsLogGroupArnException
--- <p>This exception is thrown when the provided CloudWatch log group is not valid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidCloudWatchLogsLogGroupArnException structure as a key-value pair table
-function M.InvalidCloudWatchLogsLogGroupArnException(args)
-	assert(args, "You must provide an argument table when creating InvalidCloudWatchLogsLogGroupArnException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidCloudWatchLogsLogGroupArnException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.PutEventSelectorsResponse = { ["EventSelectors"] = true, ["TrailARN"] = true, nil }
-
-function asserts.AssertPutEventSelectorsResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected PutEventSelectorsResponse to be of type 'table'")
-	if struct["EventSelectors"] then asserts.AssertEventSelectors(struct["EventSelectors"]) end
-	if struct["TrailARN"] then asserts.AssertString(struct["TrailARN"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.PutEventSelectorsResponse[k], "PutEventSelectorsResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type PutEventSelectorsResponse
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * EventSelectors [EventSelectors] <p>Specifies the event selectors configured for your trail.</p>
--- * TrailARN [String] <p>Specifies the ARN of the trail that was updated with event selectors. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- @return PutEventSelectorsResponse structure as a key-value pair table
-function M.PutEventSelectorsResponse(args)
-	assert(args, "You must provide an argument table when creating PutEventSelectorsResponse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["EventSelectors"] = args["EventSelectors"],
-		["TrailARN"] = args["TrailARN"],
-	}
-	asserts.AssertPutEventSelectorsResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidParameterCombinationException = { nil }
-
-function asserts.AssertInvalidParameterCombinationException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidParameterCombinationException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidParameterCombinationException[k], "InvalidParameterCombinationException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidParameterCombinationException
--- <p>This exception is thrown when the combination of parameters provided is not valid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidParameterCombinationException structure as a key-value pair table
-function M.InvalidParameterCombinationException(args)
-	assert(args, "You must provide an argument table when creating InvalidParameterCombinationException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidParameterCombinationException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidLookupAttributesException = { nil }
-
-function asserts.AssertInvalidLookupAttributesException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidLookupAttributesException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidLookupAttributesException[k], "InvalidLookupAttributesException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidLookupAttributesException
--- <p>Occurs when an invalid lookup attribute is specified.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidLookupAttributesException structure as a key-value pair table
-function M.InvalidLookupAttributesException(args)
-	assert(args, "You must provide an argument table when creating InvalidLookupAttributesException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidLookupAttributesException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.UpdateTrailResponse = { ["IncludeGlobalServiceEvents"] = true, ["Name"] = true, ["S3KeyPrefix"] = true, ["TrailARN"] = true, ["LogFileValidationEnabled"] = true, ["SnsTopicARN"] = true, ["IsMultiRegionTrail"] = true, ["S3BucketName"] = true, ["CloudWatchLogsRoleArn"] = true, ["KmsKeyId"] = true, ["CloudWatchLogsLogGroupArn"] = true, ["SnsTopicName"] = true, nil }
-
-function asserts.AssertUpdateTrailResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateTrailResponse to be of type 'table'")
-	if struct["IncludeGlobalServiceEvents"] then asserts.AssertBoolean(struct["IncludeGlobalServiceEvents"]) end
-	if struct["Name"] then asserts.AssertString(struct["Name"]) end
-	if struct["S3KeyPrefix"] then asserts.AssertString(struct["S3KeyPrefix"]) end
-	if struct["TrailARN"] then asserts.AssertString(struct["TrailARN"]) end
-	if struct["LogFileValidationEnabled"] then asserts.AssertBoolean(struct["LogFileValidationEnabled"]) end
-	if struct["SnsTopicARN"] then asserts.AssertString(struct["SnsTopicARN"]) end
-	if struct["IsMultiRegionTrail"] then asserts.AssertBoolean(struct["IsMultiRegionTrail"]) end
-	if struct["S3BucketName"] then asserts.AssertString(struct["S3BucketName"]) end
-	if struct["CloudWatchLogsRoleArn"] then asserts.AssertString(struct["CloudWatchLogsRoleArn"]) end
-	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
-	if struct["CloudWatchLogsLogGroupArn"] then asserts.AssertString(struct["CloudWatchLogsLogGroupArn"]) end
-	if struct["SnsTopicName"] then asserts.AssertString(struct["SnsTopicName"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.UpdateTrailResponse[k], "UpdateTrailResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UpdateTrailResponse
--- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * IncludeGlobalServiceEvents [Boolean] <p>Specifies whether the trail is publishing events from global services such as IAM to the log files.</p>
--- * Name [String] <p>Specifies the name of the trail.</p>
--- * S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>.</p>
--- * TrailARN [String] <p>Specifies the ARN of the trail that was updated. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- * LogFileValidationEnabled [Boolean] <p>Specifies whether log file integrity validation is enabled.</p>
--- * SnsTopicARN [String] <p>Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered. The format of a topic ARN is:</p> <p> <code>arn:aws:sns:us-east-1:123456789012:MyTopic</code> </p>
--- * IsMultiRegionTrail [Boolean] <p>Specifies whether the trail exists in one region or in all regions.</p>
--- * S3BucketName [String] <p>Specifies the name of the Amazon S3 bucket designated for publishing log files.</p>
--- * CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
--- * KmsKeyId [String] <p>Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the format:</p> <p> <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code> </p>
--- * CloudWatchLogsLogGroupArn [String] <p>Specifies the Amazon Resource Name (ARN) of the log group to which CloudTrail logs will be delivered.</p>
--- * SnsTopicName [String] <p>This field is deprecated. Use SnsTopicARN.</p>
--- @return UpdateTrailResponse structure as a key-value pair table
-function M.UpdateTrailResponse(args)
-	assert(args, "You must provide an argument table when creating UpdateTrailResponse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["IncludeGlobalServiceEvents"] = args["IncludeGlobalServiceEvents"],
-		["Name"] = args["Name"],
-		["S3KeyPrefix"] = args["S3KeyPrefix"],
-		["TrailARN"] = args["TrailARN"],
-		["LogFileValidationEnabled"] = args["LogFileValidationEnabled"],
-		["SnsTopicARN"] = args["SnsTopicARN"],
-		["IsMultiRegionTrail"] = args["IsMultiRegionTrail"],
-		["S3BucketName"] = args["S3BucketName"],
-		["CloudWatchLogsRoleArn"] = args["CloudWatchLogsRoleArn"],
-		["KmsKeyId"] = args["KmsKeyId"],
-		["CloudWatchLogsLogGroupArn"] = args["CloudWatchLogsLogGroupArn"],
-		["SnsTopicName"] = args["SnsTopicName"],
-	}
-	asserts.AssertUpdateTrailResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidSnsTopicNameException = { nil }
-
-function asserts.AssertInvalidSnsTopicNameException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidSnsTopicNameException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidSnsTopicNameException[k], "InvalidSnsTopicNameException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidSnsTopicNameException
--- <p>This exception is thrown when the provided SNS topic name is not valid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidSnsTopicNameException structure as a key-value pair table
-function M.InvalidSnsTopicNameException(args)
-	assert(args, "You must provide an argument table when creating InvalidSnsTopicNameException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidSnsTopicNameException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.LookupEventsRequest = { ["LookupAttributes"] = true, ["EndTime"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["StartTime"] = true, nil }
-
-function asserts.AssertLookupEventsRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected LookupEventsRequest to be of type 'table'")
-	if struct["LookupAttributes"] then asserts.AssertLookupAttributesList(struct["LookupAttributes"]) end
-	if struct["EndTime"] then asserts.AssertDate(struct["EndTime"]) end
-	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then asserts.AssertMaxResults(struct["MaxResults"]) end
-	if struct["StartTime"] then asserts.AssertDate(struct["StartTime"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.LookupEventsRequest[k], "LookupEventsRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type LookupEventsRequest
--- <p>Contains a request for LookupEvents.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * LookupAttributes [LookupAttributesList] <p>Contains a list of lookup attributes. Currently the list can contain only one item.</p>
--- * EndTime [Date] <p>Specifies that only events that occur before or at the specified time are returned. If the specified end time is before the specified start time, an error is returned.</p>
--- * NextToken [NextToken] <p>The token to use to get the next page of results after a previous API call. This token must be passed in with the same parameters that were specified in the the original call. For example, if the original call specified an AttributeKey of 'Username' with a value of 'root', the call with NextToken should include those same parameters.</p>
--- * MaxResults [MaxResults] <p>The number of events to return. Possible values are 1 through 50. The default is 10.</p>
--- * StartTime [Date] <p>Specifies that only events that occur after or at the specified time are returned. If the specified start time is after the specified end time, an error is returned.</p>
--- @return LookupEventsRequest structure as a key-value pair table
-function M.LookupEventsRequest(args)
-	assert(args, "You must provide an argument table when creating LookupEventsRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["LookupAttributes"] = args["LookupAttributes"],
-		["EndTime"] = args["EndTime"],
-		["NextToken"] = args["NextToken"],
-		["MaxResults"] = args["MaxResults"],
-		["StartTime"] = args["StartTime"],
-	}
-	asserts.AssertLookupEventsRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.StopLoggingResponse = { nil }
-
-function asserts.AssertStopLoggingResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected StopLoggingResponse to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.StopLoggingResponse[k], "StopLoggingResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type StopLoggingResponse
--- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return StopLoggingResponse structure as a key-value pair table
-function M.StopLoggingResponse(args)
-	assert(args, "You must provide an argument table when creating StopLoggingResponse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertStopLoggingResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidTimeRangeException = { nil }
-
-function asserts.AssertInvalidTimeRangeException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidTimeRangeException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidTimeRangeException[k], "InvalidTimeRangeException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidTimeRangeException
--- <p>Occurs if the timestamp values are invalid. Either the start time occurs after the end time or the time range is outside the range of possible values.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidTimeRangeException structure as a key-value pair table
-function M.InvalidTimeRangeException(args)
-	assert(args, "You must provide an argument table when creating InvalidTimeRangeException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidTimeRangeException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TrailNotFoundException = { nil }
-
-function asserts.AssertTrailNotFoundException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TrailNotFoundException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TrailNotFoundException[k], "TrailNotFoundException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TrailNotFoundException
--- <p>This exception is thrown when the trail with the given name is not found.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TrailNotFoundException structure as a key-value pair table
-function M.TrailNotFoundException(args)
-	assert(args, "You must provide an argument table when creating TrailNotFoundException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTrailNotFoundException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidS3BucketNameException = { nil }
-
-function asserts.AssertInvalidS3BucketNameException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidS3BucketNameException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidS3BucketNameException[k], "InvalidS3BucketNameException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidS3BucketNameException
--- <p>This exception is thrown when the provided S3 bucket name is not valid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidS3BucketNameException structure as a key-value pair table
-function M.InvalidS3BucketNameException(args)
-	assert(args, "You must provide an argument table when creating InvalidS3BucketNameException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidS3BucketNameException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.S3BucketDoesNotExistException = { nil }
-
-function asserts.AssertS3BucketDoesNotExistException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected S3BucketDoesNotExistException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.S3BucketDoesNotExistException[k], "S3BucketDoesNotExistException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type S3BucketDoesNotExistException
--- <p>This exception is thrown when the specified S3 bucket does not exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return S3BucketDoesNotExistException structure as a key-value pair table
-function M.S3BucketDoesNotExistException(args)
-	assert(args, "You must provide an argument table when creating S3BucketDoesNotExistException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertS3BucketDoesNotExistException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.UpdateTrailRequest = { ["IncludeGlobalServiceEvents"] = true, ["Name"] = true, ["S3KeyPrefix"] = true, ["KmsKeyId"] = true, ["IsMultiRegionTrail"] = true, ["S3BucketName"] = true, ["CloudWatchLogsRoleArn"] = true, ["CloudWatchLogsLogGroupArn"] = true, ["SnsTopicName"] = true, ["EnableLogFileValidation"] = true, nil }
-
-function asserts.AssertUpdateTrailRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateTrailRequest to be of type 'table'")
-	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["IncludeGlobalServiceEvents"] then asserts.AssertBoolean(struct["IncludeGlobalServiceEvents"]) end
-	if struct["Name"] then asserts.AssertString(struct["Name"]) end
-	if struct["S3KeyPrefix"] then asserts.AssertString(struct["S3KeyPrefix"]) end
-	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
-	if struct["IsMultiRegionTrail"] then asserts.AssertBoolean(struct["IsMultiRegionTrail"]) end
-	if struct["S3BucketName"] then asserts.AssertString(struct["S3BucketName"]) end
-	if struct["CloudWatchLogsRoleArn"] then asserts.AssertString(struct["CloudWatchLogsRoleArn"]) end
-	if struct["CloudWatchLogsLogGroupArn"] then asserts.AssertString(struct["CloudWatchLogsLogGroupArn"]) end
-	if struct["SnsTopicName"] then asserts.AssertString(struct["SnsTopicName"]) end
-	if struct["EnableLogFileValidation"] then asserts.AssertBoolean(struct["EnableLogFileValidation"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.UpdateTrailRequest[k], "UpdateTrailRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UpdateTrailRequest
--- <p>Specifies settings to update for the trail.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * IncludeGlobalServiceEvents [Boolean] <p>Specifies whether the trail is publishing events from global services such as IAM to the log files.</p>
--- * Name [String] <p>Specifies the name of the trail or trail ARN. If <code>Name</code> is a trail name, the string must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If <code>Name</code> is a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- * S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>. The maximum length is 200 characters.</p>
--- * KmsKeyId [String] <p>Specifies the KMS key ID to use to encrypt the logs delivered by CloudTrail. The value can be an alias name prefixed by "alias/", a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.</p> <p>Examples:</p> <ul> <li> <p>alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>12345678-1234-1234-1234-123456789012</p> </li> </ul>
--- * IsMultiRegionTrail [Boolean] <p>Specifies whether the trail applies only to the current region or to all regions. The default is false. If the trail exists only in the current region and this value is set to true, shadow trails (replications of the trail) will be created in the other regions. If the trail exists in all regions and this value is set to false, the trail will remain in the region where it was created, and its shadow trails in other regions will be deleted.</p>
--- * S3BucketName [String] <p>Specifies the name of the Amazon S3 bucket designated for publishing log files. See <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3 Bucket Naming Requirements</a>.</p>
--- * CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
--- * CloudWatchLogsLogGroupArn [String] <p>Specifies a log group name using an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered. Not required unless you specify CloudWatchLogsRoleArn.</p>
--- * SnsTopicName [String] <p>Specifies the name of the Amazon SNS topic defined for notification of log file delivery. The maximum length is 256 characters.</p>
--- * EnableLogFileValidation [Boolean] <p>Specifies whether log file validation is enabled. The default is false.</p> <note> <p>When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.</p> </note>
--- Required key: Name
--- @return UpdateTrailRequest structure as a key-value pair table
-function M.UpdateTrailRequest(args)
-	assert(args, "You must provide an argument table when creating UpdateTrailRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["IncludeGlobalServiceEvents"] = args["IncludeGlobalServiceEvents"],
-		["Name"] = args["Name"],
-		["S3KeyPrefix"] = args["S3KeyPrefix"],
-		["KmsKeyId"] = args["KmsKeyId"],
-		["IsMultiRegionTrail"] = args["IsMultiRegionTrail"],
-		["S3BucketName"] = args["S3BucketName"],
-		["CloudWatchLogsRoleArn"] = args["CloudWatchLogsRoleArn"],
-		["CloudWatchLogsLogGroupArn"] = args["CloudWatchLogsLogGroupArn"],
-		["SnsTopicName"] = args["SnsTopicName"],
-		["EnableLogFileValidation"] = args["EnableLogFileValidation"],
-	}
-	asserts.AssertUpdateTrailRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.EventSelector = { ["IncludeManagementEvents"] = true, ["DataResources"] = true, ["ReadWriteType"] = true, nil }
-
-function asserts.AssertEventSelector(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected EventSelector to be of type 'table'")
-	if struct["IncludeManagementEvents"] then asserts.AssertBoolean(struct["IncludeManagementEvents"]) end
-	if struct["DataResources"] then asserts.AssertDataResources(struct["DataResources"]) end
-	if struct["ReadWriteType"] then asserts.AssertReadWriteType(struct["ReadWriteType"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.EventSelector[k], "EventSelector contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type EventSelector
--- <p>Use event selectors to specify whether you want your trail to log management and/or data events. When an event occurs in your account, CloudTrail evaluates the event selector for all trails. For each trail, if the event matches any event selector, the trail processes and logs the event. If the event doesn't match any event selector, the trail doesn't log the event.</p> <p>You can configure up to five event selectors for a trail.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * IncludeManagementEvents [Boolean] <p>Specify if you want your event selector to include management events for your trail.</p> <p> For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events">Management Events</a> in the <i>AWS CloudTrail User Guide</i>.</p> <p>By default, the value is <code>true</code>.</p>
--- * DataResources [DataResources] <p>CloudTrail supports logging only data events for S3 objects. You can specify up to 250 S3 buckets and object prefixes for a trail.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events">Data Events</a> in the <i>AWS CloudTrail User Guide</i>.</p>
--- * ReadWriteType [ReadWriteType] <p>Specify if you want your trail to log read-only events, write-only events, or all. For example, the EC2 <code>GetConsoleOutput</code> is a read-only API operation and <code>RunInstances</code> is a write-only API operation.</p> <p> By default, the value is <code>All</code>.</p>
--- @return EventSelector structure as a key-value pair table
-function M.EventSelector(args)
-	assert(args, "You must provide an argument table when creating EventSelector")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["IncludeManagementEvents"] = args["IncludeManagementEvents"],
-		["DataResources"] = args["DataResources"],
-		["ReadWriteType"] = args["ReadWriteType"],
-	}
-	asserts.AssertEventSelector(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InsufficientS3BucketPolicyException = { nil }
-
-function asserts.AssertInsufficientS3BucketPolicyException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InsufficientS3BucketPolicyException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InsufficientS3BucketPolicyException[k], "InsufficientS3BucketPolicyException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InsufficientS3BucketPolicyException
--- <p>This exception is thrown when the policy on the S3 bucket is not sufficient.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InsufficientS3BucketPolicyException structure as a key-value pair table
-function M.InsufficientS3BucketPolicyException(args)
-	assert(args, "You must provide an argument table when creating InsufficientS3BucketPolicyException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInsufficientS3BucketPolicyException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DescribeTrailsResponse = { ["trailList"] = true, nil }
-
-function asserts.AssertDescribeTrailsResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeTrailsResponse to be of type 'table'")
-	if struct["trailList"] then asserts.AssertTrailList(struct["trailList"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DescribeTrailsResponse[k], "DescribeTrailsResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DescribeTrailsResponse
--- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * trailList [TrailList] <p>The list of trail objects.</p>
--- @return DescribeTrailsResponse structure as a key-value pair table
-function M.DescribeTrailsResponse(args)
-	assert(args, "You must provide an argument table when creating DescribeTrailsResponse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["trailList"] = args["trailList"],
-	}
-	asserts.AssertDescribeTrailsResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidCloudWatchLogsRoleArnException = { nil }
-
-function asserts.AssertInvalidCloudWatchLogsRoleArnException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidCloudWatchLogsRoleArnException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidCloudWatchLogsRoleArnException[k], "InvalidCloudWatchLogsRoleArnException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidCloudWatchLogsRoleArnException
--- <p>This exception is thrown when the provided role is not valid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidCloudWatchLogsRoleArnException structure as a key-value pair table
-function M.InvalidCloudWatchLogsRoleArnException(args)
-	assert(args, "You must provide an argument table when creating InvalidCloudWatchLogsRoleArnException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidCloudWatchLogsRoleArnException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CloudWatchLogsDeliveryUnavailableException = { nil }
-
-function asserts.AssertCloudWatchLogsDeliveryUnavailableException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CloudWatchLogsDeliveryUnavailableException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.CloudWatchLogsDeliveryUnavailableException[k], "CloudWatchLogsDeliveryUnavailableException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CloudWatchLogsDeliveryUnavailableException
--- <p>Cannot set a CloudWatch Logs delivery for this region.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return CloudWatchLogsDeliveryUnavailableException structure as a key-value pair table
-function M.CloudWatchLogsDeliveryUnavailableException(args)
-	assert(args, "You must provide an argument table when creating CloudWatchLogsDeliveryUnavailableException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertCloudWatchLogsDeliveryUnavailableException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidTrailNameException = { nil }
-
-function asserts.AssertInvalidTrailNameException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidTrailNameException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidTrailNameException[k], "InvalidTrailNameException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidTrailNameException
--- <p>This exception is thrown when the provided trail name is not valid. Trail names must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidTrailNameException structure as a key-value pair table
-function M.InvalidTrailNameException(args)
-	assert(args, "You must provide an argument table when creating InvalidTrailNameException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidTrailNameException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ListPublicKeysResponse = { ["NextToken"] = true, ["PublicKeyList"] = true, nil }
-
-function asserts.AssertListPublicKeysResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ListPublicKeysResponse to be of type 'table'")
-	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
-	if struct["PublicKeyList"] then asserts.AssertPublicKeyList(struct["PublicKeyList"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ListPublicKeysResponse[k], "ListPublicKeysResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ListPublicKeysResponse
--- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * NextToken [String] <p>Reserved for future use.</p>
--- * PublicKeyList [PublicKeyList] <p>Contains an array of PublicKey objects.</p> <note> <p>The returned public keys may have validity time ranges that overlap.</p> </note>
--- @return ListPublicKeysResponse structure as a key-value pair table
-function M.ListPublicKeysResponse(args)
-	assert(args, "You must provide an argument table when creating ListPublicKeysResponse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["NextToken"] = args["NextToken"],
-		["PublicKeyList"] = args["PublicKeyList"],
-	}
-	asserts.AssertListPublicKeysResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ResourceNotFoundException = { nil }
-
-function asserts.AssertResourceNotFoundException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ResourceNotFoundException
--- <p>This exception is thrown when the specified resource is not found.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ResourceNotFoundException structure as a key-value pair table
-function M.ResourceNotFoundException(args)
-	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertResourceNotFoundException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DeleteTrailResponse = { nil }
-
-function asserts.AssertDeleteTrailResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteTrailResponse to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.DeleteTrailResponse[k], "DeleteTrailResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DeleteTrailResponse
--- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return DeleteTrailResponse structure as a key-value pair table
-function M.DeleteTrailResponse(args)
-	assert(args, "You must provide an argument table when creating DeleteTrailResponse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertDeleteTrailResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ResourceTag = { ["ResourceId"] = true, ["TagsList"] = true, nil }
-
-function asserts.AssertResourceTag(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceTag to be of type 'table'")
-	if struct["ResourceId"] then asserts.AssertString(struct["ResourceId"]) end
-	if struct["TagsList"] then asserts.AssertTagsList(struct["TagsList"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ResourceTag[k], "ResourceTag contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ResourceTag
--- <p>A resource tag.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ResourceId [String] <p>Specifies the ARN of the resource.</p>
--- * TagsList [TagsList] <p>A list of tags.</p>
--- @return ResourceTag structure as a key-value pair table
-function M.ResourceTag(args)
-	assert(args, "You must provide an argument table when creating ResourceTag")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ResourceId"] = args["ResourceId"],
-		["TagsList"] = args["TagsList"],
-	}
-	asserts.AssertResourceTag(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1925,23 +145,29 @@ function M.GetTrailStatusResponse(args)
     }
 end
 
-keys.InvalidTokenException = { nil }
+keys.ListTagsRequest = { ["ResourceIdList"] = true, ["NextToken"] = true, nil }
 
-function asserts.AssertInvalidTokenException(struct)
+function asserts.AssertListTagsRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidTokenException to be of type 'table'")
+	assert(type(struct) == "table", "Expected ListTagsRequest to be of type 'table'")
+	assert(struct["ResourceIdList"], "Expected key ResourceIdList to exist in table")
+	if struct["ResourceIdList"] then asserts.AssertResourceIdList(struct["ResourceIdList"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidTokenException[k], "InvalidTokenException contains unknown key " .. tostring(k))
+		assert(keys.ListTagsRequest[k], "ListTagsRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidTokenException
--- <p>Reserved for future use.</p>
+--- Create a structure of type ListTagsRequest
+-- <p>Specifies a list of trail tags to return.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidTokenException structure as a key-value pair table
-function M.InvalidTokenException(args)
-	assert(args, "You must provide an argument table when creating InvalidTokenException")
+-- * ResourceIdList [ResourceIdList] <p>Specifies a list of trail ARNs whose tags will be listed. The list has a limit of 20 ARNs. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail</code> </p>
+-- * NextToken [String] <p>Reserved for future use.</p>
+-- Required key: ResourceIdList
+-- @return ListTagsRequest structure as a key-value pair table
+function M.ListTagsRequest(args)
+	assert(args, "You must provide an argument table when creating ListTagsRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1949,8 +175,10 @@ function M.InvalidTokenException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["ResourceIdList"] = args["ResourceIdList"],
+		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertInvalidTokenException(all_args)
+	asserts.AssertListTagsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1959,23 +187,29 @@ function M.InvalidTokenException(args)
     }
 end
 
-keys.InvalidTagParameterException = { nil }
+keys.EventSelector = { ["IncludeManagementEvents"] = true, ["DataResources"] = true, ["ReadWriteType"] = true, nil }
 
-function asserts.AssertInvalidTagParameterException(struct)
+function asserts.AssertEventSelector(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidTagParameterException to be of type 'table'")
+	assert(type(struct) == "table", "Expected EventSelector to be of type 'table'")
+	if struct["IncludeManagementEvents"] then asserts.AssertBoolean(struct["IncludeManagementEvents"]) end
+	if struct["DataResources"] then asserts.AssertDataResources(struct["DataResources"]) end
+	if struct["ReadWriteType"] then asserts.AssertReadWriteType(struct["ReadWriteType"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidTagParameterException[k], "InvalidTagParameterException contains unknown key " .. tostring(k))
+		assert(keys.EventSelector[k], "EventSelector contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidTagParameterException
--- <p>This exception is thrown when the key or value specified for the tag does not match the regular expression <code>^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$</code>.</p>
+--- Create a structure of type EventSelector
+-- <p>Use event selectors to further specify the management and data event settings for your trail. By default, trails created without specific event selectors will be configured to log all read and write management events, and no data events. When an event occurs in your account, CloudTrail evaluates the event selector for all trails. For each trail, if the event matches any event selector, the trail processes and logs the event. If the event doesn't match any event selector, the trail doesn't log the event.</p> <p>You can configure up to five event selectors for a trail.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidTagParameterException structure as a key-value pair table
-function M.InvalidTagParameterException(args)
-	assert(args, "You must provide an argument table when creating InvalidTagParameterException")
+-- * IncludeManagementEvents [Boolean] <p>Specify if you want your event selector to include management events for your trail.</p> <p> For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events">Management Events</a> in the <i>AWS CloudTrail User Guide</i>.</p> <p>By default, the value is <code>true</code>.</p>
+-- * DataResources [DataResources] <p>CloudTrail supports data event logging for Amazon S3 objects and AWS Lambda functions. You can specify up to 250 resources for an individual event selector, but the total number of data resources cannot exceed 250 across all event selectors in a trail. This limit does not apply if you configure resource logging for all data events. </p> <p>For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events">Data Events</a> and <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html">Limits in AWS CloudTrail</a> in the <i>AWS CloudTrail User Guide</i>.</p>
+-- * ReadWriteType [ReadWriteType] <p>Specify if you want your trail to log read-only events, write-only events, or all. For example, the EC2 <code>GetConsoleOutput</code> is a read-only API operation and <code>RunInstances</code> is a write-only API operation.</p> <p> By default, the value is <code>All</code>.</p>
+-- @return EventSelector structure as a key-value pair table
+function M.EventSelector(args)
+	assert(args, "You must provide an argument table when creating EventSelector")
     local query_args = { 
     }
     local uri_args = { 
@@ -1983,8 +217,53 @@ function M.InvalidTagParameterException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["IncludeManagementEvents"] = args["IncludeManagementEvents"],
+		["DataResources"] = args["DataResources"],
+		["ReadWriteType"] = args["ReadWriteType"],
 	}
-	asserts.AssertInvalidTagParameterException(all_args)
+	asserts.AssertEventSelector(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.RemoveTagsRequest = { ["ResourceId"] = true, ["TagsList"] = true, nil }
+
+function asserts.AssertRemoveTagsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RemoveTagsRequest to be of type 'table'")
+	assert(struct["ResourceId"], "Expected key ResourceId to exist in table")
+	if struct["ResourceId"] then asserts.AssertString(struct["ResourceId"]) end
+	if struct["TagsList"] then asserts.AssertTagsList(struct["TagsList"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RemoveTagsRequest[k], "RemoveTagsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RemoveTagsRequest
+-- <p>Specifies the tags to remove from a trail.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceId [String] <p>Specifies the ARN of the trail from which tags should be removed. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail</code> </p>
+-- * TagsList [TagsList] <p>Specifies a list of tags to be removed.</p>
+-- Required key: ResourceId
+-- @return RemoveTagsRequest structure as a key-value pair table
+function M.RemoveTagsRequest(args)
+	assert(args, "You must provide an argument table when creating RemoveTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceId"] = args["ResourceId"],
+		["TagsList"] = args["TagsList"],
+	}
+	asserts.AssertRemoveTagsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2033,40 +312,6 @@ function M.LookupEventsResponse(args)
     }
 end
 
-keys.InvalidMaxResultsException = { nil }
-
-function asserts.AssertInvalidMaxResultsException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidMaxResultsException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidMaxResultsException[k], "InvalidMaxResultsException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidMaxResultsException
--- <p>This exception is thrown if the limit specified is invalid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidMaxResultsException structure as a key-value pair table
-function M.InvalidMaxResultsException(args)
-	assert(args, "You must provide an argument table when creating InvalidMaxResultsException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidMaxResultsException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.DataResource = { ["Values"] = true, ["Type"] = true, nil }
 
 function asserts.AssertDataResource(struct)
@@ -2080,11 +325,11 @@ function asserts.AssertDataResource(struct)
 end
 
 --- Create a structure of type DataResource
--- <p>The Amazon S3 objects that you specify in your event selectors for your trail to log data events. Data events are object-level API operations that access S3 objects, such as <code>GetObject</code>, <code>DeleteObject</code>, and <code>PutObject</code>. You can specify up to 250 S3 buckets and object prefixes for a trail. </p> <p>Example</p> <ol> <li> <p>You create an event selector for a trail and specify an S3 bucket and an empty prefix, such as <code>arn:aws:s3:::bucket-1/</code>.</p> </li> <li> <p>You upload an image file to <code>bucket-1</code>.</p> </li> <li> <p>The <code>PutObject</code> API operation occurs on an object in the S3 bucket that you specified in the event selector. The trail processes and logs the event.</p> </li> <li> <p>You upload another image file to a different S3 bucket named <code>arn:aws:s3:::bucket-2</code>.</p> </li> <li> <p>The event occurs on an object in an S3 bucket that you didn't specify in the event selector. The trail doesn’t log the event.</p> </li> </ol>
+-- <p>The Amazon S3 buckets or AWS Lambda functions that you specify in your event selectors for your trail to log data events. Data events provide insight into the resource operations performed on or within a resource itself. These are also known as data plane operations. You can specify up to 250 data resources for a trail.</p> <note> <p>The total number of allowed data resources is 250. This number can be distributed between 1 and 5 event selectors, but the total cannot exceed 250 across all selectors.</p> </note> <p>The following example demonstrates how logging works when you configure logging of all data events for an S3 bucket named <code>bucket-1</code>. In this example, the CloudTrail user spcified an empty prefix, and the option to log both <code>Read</code> and <code>Write</code> data events.</p> <ol> <li> <p>A user uploads an image file to <code>bucket-1</code>.</p> </li> <li> <p>The <code>PutObject</code> API operation is an Amazon S3 object-level API. It is recorded as a data event in CloudTrail. Because the CloudTrail user specified an S3 bucket with an empty prefix, events that occur on any object in that bucket are logged. The trail processes and logs the event.</p> </li> <li> <p>A user uploads an object to an Amazon S3 bucket named <code>arn:aws:s3:::bucket-2</code>.</p> </li> <li> <p>The <code>PutObject</code> API operation occurred for an object in an S3 bucket that the CloudTrail user didn't specify for the trail. The trail doesn’t log the event.</p> </li> </ol> <p>The following example demonstrates how logging works when you configure logging of AWS Lambda data events for a Lambda function named <i>MyLambdaFunction</i>, but not for all AWS Lambda functions.</p> <ol> <li> <p>A user runs a script that includes a call to the <i>MyLambdaFunction</i> function and the <i>MyOtherLambdaFunction</i> function.</p> </li> <li> <p>The <code>Invoke</code> API operation on <i>MyLambdaFunction</i> is an AWS Lambda API. It is recorded as a data event in CloudTrail. Because the CloudTrail user specified logging data events for <i>MyLambdaFunction</i>, any invocations of that function are logged. The trail processes and logs the event. </p> </li> <li> <p>The <code>Invoke</code> API operation on <i>MyOtherLambdaFunction</i> is an AWS Lambda API. Because the CloudTrail user did not specify logging data events for all Lambda functions, the <code>Invoke</code> operation for <i>MyOtherLambdaFunction</i> does not match the function specified for the trail. The trail doesn’t log the event. </p> </li> </ol>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Values [DataResourceValues] <p>A list of ARN-like strings for the specified S3 objects.</p> <p>To log data events for all objects in an S3 bucket, specify the bucket and an empty object prefix such as <code>arn:aws:s3:::bucket-1/</code>. The trail logs data events for all objects in this S3 bucket.</p> <p>To log data events for specific objects, specify the S3 bucket and object prefix such as <code>arn:aws:s3:::bucket-1/example-images</code>. The trail logs data events for objects in this S3 bucket that match the prefix.</p>
--- * Type [String] <p>The resource type in which you want to log data events. You can specify only the following value: <code>AWS::S3::Object</code>.</p>
+-- * Values [DataResourceValues] <p>An array of Amazon Resource Name (ARN) strings or partial ARN strings for the specified objects.</p> <ul> <li> <p>To log data events for all objects in all S3 buckets in your AWS account, specify the prefix as <code>arn:aws:s3:::</code>. </p> <note> <p>This will also enable logging of data event activity performed by any user or role in your AWS account, even if that activity is performed on a bucket that belongs to another AWS account. </p> </note> </li> <li> <p>To log data events for all objects in all S3 buckets that include <i>my-bucket</i> in their names, specify the prefix as <code>aws:s3:::my-bucket</code>. The trail logs data events for all objects in all buckets whose name contains a match for <i>my-bucket</i>. </p> </li> <li> <p>To log data events for all objects in an S3 bucket, specify the bucket and an empty object prefix such as <code>arn:aws:s3:::bucket-1/</code>. The trail logs data events for all objects in this S3 bucket.</p> </li> <li> <p>To log data events for specific objects, specify the S3 bucket and object prefix such as <code>arn:aws:s3:::bucket-1/example-images</code>. The trail logs data events for objects in this S3 bucket that match the prefix.</p> </li> <li> <p>To log data events for all functions in your AWS account, specify the prefix as <code>arn:aws:lambda</code>.</p> <note> <p>This will also enable logging of <code>Invoke</code> activity performed by any user or role in your AWS account, even if that activity is performed on a function that belongs to another AWS account. </p> </note> </li> <li> <p>To log data eents for a specific Lambda function, specify the function ARN.</p> <note> <p>Lambda function ARNs are exact. Unlike S3, you cannot use matching. For example, if you specify a function ARN <i>arn:aws:lambda:us-west-2:111111111111:function:helloworld</i>, data events will only be logged for <i>arn:aws:lambda:us-west-2:111111111111:function:helloworld</i>. They will not be logged for <i>arn:aws:lambda:us-west-2:111111111111:function:helloworld2</i>.</p> </note> </li> </ul>
+-- * Type [String] <p>The resource type in which you want to log data events. You can specify <code>AWS::S3::Object</code> or <code>AWS::Lambda::Function</code> resources.</p>
 -- @return DataResource structure as a key-value pair table
 function M.DataResource(args)
 	assert(args, "You must provide an argument table when creating DataResource")
@@ -2099,40 +344,6 @@ function M.DataResource(args)
 		["Type"] = args["Type"],
 	}
 	asserts.AssertDataResource(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.KmsException = { nil }
-
-function asserts.AssertKmsException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected KmsException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.KmsException[k], "KmsException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type KmsException
--- <p>This exception is thrown when there is an issue with the specified KMS key and the trail can’t be updated.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return KmsException structure as a key-value pair table
-function M.KmsException(args)
-	assert(args, "You must provide an argument table when creating KmsException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertKmsException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2184,27 +395,47 @@ function M.ListPublicKeysRequest(args)
     }
 end
 
-keys.GetEventSelectorsRequest = { ["TrailName"] = true, nil }
+keys.CreateTrailRequest = { ["IncludeGlobalServiceEvents"] = true, ["Name"] = true, ["S3KeyPrefix"] = true, ["KmsKeyId"] = true, ["IsMultiRegionTrail"] = true, ["S3BucketName"] = true, ["CloudWatchLogsRoleArn"] = true, ["CloudWatchLogsLogGroupArn"] = true, ["SnsTopicName"] = true, ["EnableLogFileValidation"] = true, nil }
 
-function asserts.AssertGetEventSelectorsRequest(struct)
+function asserts.AssertCreateTrailRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected GetEventSelectorsRequest to be of type 'table'")
-	assert(struct["TrailName"], "Expected key TrailName to exist in table")
-	if struct["TrailName"] then asserts.AssertString(struct["TrailName"]) end
+	assert(type(struct) == "table", "Expected CreateTrailRequest to be of type 'table'")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	assert(struct["S3BucketName"], "Expected key S3BucketName to exist in table")
+	if struct["IncludeGlobalServiceEvents"] then asserts.AssertBoolean(struct["IncludeGlobalServiceEvents"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	if struct["S3KeyPrefix"] then asserts.AssertString(struct["S3KeyPrefix"]) end
+	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
+	if struct["IsMultiRegionTrail"] then asserts.AssertBoolean(struct["IsMultiRegionTrail"]) end
+	if struct["S3BucketName"] then asserts.AssertString(struct["S3BucketName"]) end
+	if struct["CloudWatchLogsRoleArn"] then asserts.AssertString(struct["CloudWatchLogsRoleArn"]) end
+	if struct["CloudWatchLogsLogGroupArn"] then asserts.AssertString(struct["CloudWatchLogsLogGroupArn"]) end
+	if struct["SnsTopicName"] then asserts.AssertString(struct["SnsTopicName"]) end
+	if struct["EnableLogFileValidation"] then asserts.AssertBoolean(struct["EnableLogFileValidation"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.GetEventSelectorsRequest[k], "GetEventSelectorsRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateTrailRequest[k], "CreateTrailRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type GetEventSelectorsRequest
---  
+--- Create a structure of type CreateTrailRequest
+-- <p>Specifies the settings for each trail.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * TrailName [String] <p>Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If you specify a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- Required key: TrailName
--- @return GetEventSelectorsRequest structure as a key-value pair table
-function M.GetEventSelectorsRequest(args)
-	assert(args, "You must provide an argument table when creating GetEventSelectorsRequest")
+-- * IncludeGlobalServiceEvents [Boolean] <p>Specifies whether the trail is publishing events from global services such as IAM to the log files.</p>
+-- * Name [String] <p>Specifies the name of the trail. The name must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul>
+-- * S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>. The maximum length is 200 characters.</p>
+-- * KmsKeyId [String] <p>Specifies the KMS key ID to use to encrypt the logs delivered by CloudTrail. The value can be an alias name prefixed by "alias/", a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.</p> <p>Examples:</p> <ul> <li> <p>alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-2:123456789012:alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- * IsMultiRegionTrail [Boolean] <p>Specifies whether the trail is created in the current region or in all regions. The default is false.</p>
+-- * S3BucketName [String] <p>Specifies the name of the Amazon S3 bucket designated for publishing log files. See <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3 Bucket Naming Requirements</a>.</p>
+-- * CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
+-- * CloudWatchLogsLogGroupArn [String] <p>Specifies a log group name using an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered. Not required unless you specify CloudWatchLogsRoleArn.</p>
+-- * SnsTopicName [String] <p>Specifies the name of the Amazon SNS topic defined for notification of log file delivery. The maximum length is 256 characters.</p>
+-- * EnableLogFileValidation [Boolean] <p>Specifies whether log file integrity validation is enabled. The default is false.</p> <note> <p>When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.</p> </note>
+-- Required key: Name
+-- Required key: S3BucketName
+-- @return CreateTrailRequest structure as a key-value pair table
+function M.CreateTrailRequest(args)
+	assert(args, "You must provide an argument table when creating CreateTrailRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -2212,9 +443,18 @@ function M.GetEventSelectorsRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["TrailName"] = args["TrailName"],
+		["IncludeGlobalServiceEvents"] = args["IncludeGlobalServiceEvents"],
+		["Name"] = args["Name"],
+		["S3KeyPrefix"] = args["S3KeyPrefix"],
+		["KmsKeyId"] = args["KmsKeyId"],
+		["IsMultiRegionTrail"] = args["IsMultiRegionTrail"],
+		["S3BucketName"] = args["S3BucketName"],
+		["CloudWatchLogsRoleArn"] = args["CloudWatchLogsRoleArn"],
+		["CloudWatchLogsLogGroupArn"] = args["CloudWatchLogsLogGroupArn"],
+		["SnsTopicName"] = args["SnsTopicName"],
+		["EnableLogFileValidation"] = args["EnableLogFileValidation"],
 	}
-	asserts.AssertGetEventSelectorsRequest(all_args)
+	asserts.AssertCreateTrailRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2223,23 +463,25 @@ function M.GetEventSelectorsRequest(args)
     }
 end
 
-keys.TagsLimitExceededException = { nil }
+keys.DescribeTrailsResponse = { ["trailList"] = true, nil }
 
-function asserts.AssertTagsLimitExceededException(struct)
+function asserts.AssertDescribeTrailsResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TagsLimitExceededException to be of type 'table'")
+	assert(type(struct) == "table", "Expected DescribeTrailsResponse to be of type 'table'")
+	if struct["trailList"] then asserts.AssertTrailList(struct["trailList"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TagsLimitExceededException[k], "TagsLimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.DescribeTrailsResponse[k], "DescribeTrailsResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TagsLimitExceededException
--- <p>The number of tags per trail has exceeded the permitted amount. Currently, the limit is 50.</p>
+--- Create a structure of type DescribeTrailsResponse
+-- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return TagsLimitExceededException structure as a key-value pair table
-function M.TagsLimitExceededException(args)
-	assert(args, "You must provide an argument table when creating TagsLimitExceededException")
+-- * trailList [TrailList] <p>The list of trail objects.</p>
+-- @return DescribeTrailsResponse structure as a key-value pair table
+function M.DescribeTrailsResponse(args)
+	assert(args, "You must provide an argument table when creating DescribeTrailsResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -2247,8 +489,9 @@ function M.TagsLimitExceededException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["trailList"] = args["trailList"],
 	}
-	asserts.AssertTagsLimitExceededException(all_args)
+	asserts.AssertDescribeTrailsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2297,23 +540,23 @@ function M.GetEventSelectorsResponse(args)
     }
 end
 
-keys.InsufficientSnsTopicPolicyException = { nil }
+keys.AddTagsResponse = { nil }
 
-function asserts.AssertInsufficientSnsTopicPolicyException(struct)
+function asserts.AssertAddTagsResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InsufficientSnsTopicPolicyException to be of type 'table'")
+	assert(type(struct) == "table", "Expected AddTagsResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.InsufficientSnsTopicPolicyException[k], "InsufficientSnsTopicPolicyException contains unknown key " .. tostring(k))
+		assert(keys.AddTagsResponse[k], "AddTagsResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InsufficientSnsTopicPolicyException
--- <p>This exception is thrown when the policy on the SNS topic is not sufficient.</p>
+--- Create a structure of type AddTagsResponse
+-- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InsufficientSnsTopicPolicyException structure as a key-value pair table
-function M.InsufficientSnsTopicPolicyException(args)
-	assert(args, "You must provide an argument table when creating InsufficientSnsTopicPolicyException")
+-- @return AddTagsResponse structure as a key-value pair table
+function M.AddTagsResponse(args)
+	assert(args, "You must provide an argument table when creating AddTagsResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -2322,7 +565,7 @@ function M.InsufficientSnsTopicPolicyException(args)
     }
 	local all_args = { 
 	}
-	asserts.AssertInsufficientSnsTopicPolicyException(all_args)
+	asserts.AssertAddTagsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2347,7 +590,7 @@ end
 -- <p>The request to CloudTrail to start logging AWS API calls for an account.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Name [String] <p>Specifies the name or the CloudTrail ARN of the trail for which CloudTrail logs AWS API calls. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- * Name [String] <p>Specifies the name or the CloudTrail ARN of the trail for which CloudTrail logs AWS API calls. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail</code> </p>
 -- Required key: Name
 -- @return StartLoggingRequest structure as a key-value pair table
 function M.StartLoggingRequest(args)
@@ -2362,6 +605,125 @@ function M.StartLoggingRequest(args)
 		["Name"] = args["Name"],
 	}
 	asserts.AssertStartLoggingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteTrailRequest = { ["Name"] = true, nil }
+
+function asserts.AssertDeleteTrailRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteTrailRequest to be of type 'table'")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteTrailRequest[k], "DeleteTrailRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteTrailRequest
+-- <p>The request that specifies the name of a trail to delete.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [String] <p>Specifies the name or the CloudTrail ARN of the trail to be deleted. The format of a trail ARN is: <code>arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail</code> </p>
+-- Required key: Name
+-- @return DeleteTrailRequest structure as a key-value pair table
+function M.DeleteTrailRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteTrailRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Name"] = args["Name"],
+	}
+	asserts.AssertDeleteTrailRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.PublicKey = { ["ValidityStartTime"] = true, ["ValidityEndTime"] = true, ["Value"] = true, ["Fingerprint"] = true, nil }
+
+function asserts.AssertPublicKey(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PublicKey to be of type 'table'")
+	if struct["ValidityStartTime"] then asserts.AssertDate(struct["ValidityStartTime"]) end
+	if struct["ValidityEndTime"] then asserts.AssertDate(struct["ValidityEndTime"]) end
+	if struct["Value"] then asserts.AssertByteBuffer(struct["Value"]) end
+	if struct["Fingerprint"] then asserts.AssertString(struct["Fingerprint"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PublicKey[k], "PublicKey contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PublicKey
+-- <p>Contains information about a returned public key.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ValidityStartTime [Date] <p>The starting time of validity of the public key.</p>
+-- * ValidityEndTime [Date] <p>The ending time of validity of the public key.</p>
+-- * Value [ByteBuffer] <p>The DER encoded public key value in PKCS#1 format.</p>
+-- * Fingerprint [String] <p>The fingerprint of the public key.</p>
+-- @return PublicKey structure as a key-value pair table
+function M.PublicKey(args)
+	assert(args, "You must provide an argument table when creating PublicKey")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ValidityStartTime"] = args["ValidityStartTime"],
+		["ValidityEndTime"] = args["ValidityEndTime"],
+		["Value"] = args["Value"],
+		["Fingerprint"] = args["Fingerprint"],
+	}
+	asserts.AssertPublicKey(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.StartLoggingResponse = { nil }
+
+function asserts.AssertStartLoggingResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected StartLoggingResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.StartLoggingResponse[k], "StartLoggingResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type StartLoggingResponse
+-- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return StartLoggingResponse structure as a key-value pair table
+function M.StartLoggingResponse(args)
+	assert(args, "You must provide an argument table when creating StartLoggingResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertStartLoggingResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2414,6 +776,157 @@ function M.LookupAttribute(args)
     }
 end
 
+keys.UpdateTrailResponse = { ["IncludeGlobalServiceEvents"] = true, ["Name"] = true, ["S3KeyPrefix"] = true, ["TrailARN"] = true, ["LogFileValidationEnabled"] = true, ["SnsTopicARN"] = true, ["IsMultiRegionTrail"] = true, ["S3BucketName"] = true, ["CloudWatchLogsRoleArn"] = true, ["KmsKeyId"] = true, ["CloudWatchLogsLogGroupArn"] = true, ["SnsTopicName"] = true, nil }
+
+function asserts.AssertUpdateTrailResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateTrailResponse to be of type 'table'")
+	if struct["IncludeGlobalServiceEvents"] then asserts.AssertBoolean(struct["IncludeGlobalServiceEvents"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	if struct["S3KeyPrefix"] then asserts.AssertString(struct["S3KeyPrefix"]) end
+	if struct["TrailARN"] then asserts.AssertString(struct["TrailARN"]) end
+	if struct["LogFileValidationEnabled"] then asserts.AssertBoolean(struct["LogFileValidationEnabled"]) end
+	if struct["SnsTopicARN"] then asserts.AssertString(struct["SnsTopicARN"]) end
+	if struct["IsMultiRegionTrail"] then asserts.AssertBoolean(struct["IsMultiRegionTrail"]) end
+	if struct["S3BucketName"] then asserts.AssertString(struct["S3BucketName"]) end
+	if struct["CloudWatchLogsRoleArn"] then asserts.AssertString(struct["CloudWatchLogsRoleArn"]) end
+	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
+	if struct["CloudWatchLogsLogGroupArn"] then asserts.AssertString(struct["CloudWatchLogsLogGroupArn"]) end
+	if struct["SnsTopicName"] then asserts.AssertString(struct["SnsTopicName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateTrailResponse[k], "UpdateTrailResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateTrailResponse
+-- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IncludeGlobalServiceEvents [Boolean] <p>Specifies whether the trail is publishing events from global services such as IAM to the log files.</p>
+-- * Name [String] <p>Specifies the name of the trail.</p>
+-- * S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>.</p>
+-- * TrailARN [String] <p>Specifies the ARN of the trail that was updated. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail</code> </p>
+-- * LogFileValidationEnabled [Boolean] <p>Specifies whether log file integrity validation is enabled.</p>
+-- * SnsTopicARN [String] <p>Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered. The format of a topic ARN is:</p> <p> <code>arn:aws:sns:us-east-2:123456789012:MyTopic</code> </p>
+-- * IsMultiRegionTrail [Boolean] <p>Specifies whether the trail exists in one region or in all regions.</p>
+-- * S3BucketName [String] <p>Specifies the name of the Amazon S3 bucket designated for publishing log files.</p>
+-- * CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
+-- * KmsKeyId [String] <p>Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the format:</p> <p> <code>arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012</code> </p>
+-- * CloudWatchLogsLogGroupArn [String] <p>Specifies the Amazon Resource Name (ARN) of the log group to which CloudTrail logs will be delivered.</p>
+-- * SnsTopicName [String] <p>This field is deprecated. Use SnsTopicARN.</p>
+-- @return UpdateTrailResponse structure as a key-value pair table
+function M.UpdateTrailResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateTrailResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["IncludeGlobalServiceEvents"] = args["IncludeGlobalServiceEvents"],
+		["Name"] = args["Name"],
+		["S3KeyPrefix"] = args["S3KeyPrefix"],
+		["TrailARN"] = args["TrailARN"],
+		["LogFileValidationEnabled"] = args["LogFileValidationEnabled"],
+		["SnsTopicARN"] = args["SnsTopicARN"],
+		["IsMultiRegionTrail"] = args["IsMultiRegionTrail"],
+		["S3BucketName"] = args["S3BucketName"],
+		["CloudWatchLogsRoleArn"] = args["CloudWatchLogsRoleArn"],
+		["KmsKeyId"] = args["KmsKeyId"],
+		["CloudWatchLogsLogGroupArn"] = args["CloudWatchLogsLogGroupArn"],
+		["SnsTopicName"] = args["SnsTopicName"],
+	}
+	asserts.AssertUpdateTrailResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetTrailStatusRequest = { ["Name"] = true, nil }
+
+function asserts.AssertGetTrailStatusRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetTrailStatusRequest to be of type 'table'")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetTrailStatusRequest[k], "GetTrailStatusRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetTrailStatusRequest
+-- <p>The name of a trail about which you want the current status.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [String] <p>Specifies the name or the CloudTrail ARN of the trail for which you are requesting status. To get the status of a shadow trail (a replication of the trail in another region), you must specify its ARN. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail</code> </p>
+-- Required key: Name
+-- @return GetTrailStatusRequest structure as a key-value pair table
+function M.GetTrailStatusRequest(args)
+	assert(args, "You must provide an argument table when creating GetTrailStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Name"] = args["Name"],
+	}
+	asserts.AssertGetTrailStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
+
+function asserts.AssertTag(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
+	assert(struct["Key"], "Expected key Key to exist in table")
+	if struct["Value"] then asserts.AssertString(struct["Value"]) end
+	if struct["Key"] then asserts.AssertString(struct["Key"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Tag
+-- <p>A custom key-value pair associated with a resource such as a CloudTrail trail.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [String] <p>The value in a key-value pair of a tag. The value must be no longer than 256 Unicode characters.</p>
+-- * Key [String] <p>The key in a key-value pair. The key must be must be no longer than 128 Unicode characters. The key must be unique for the resource to which it applies.</p>
+-- Required key: Key
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
+	}
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.Resource = { ["ResourceType"] = true, ["ResourceName"] = true, nil }
 
 function asserts.AssertResource(struct)
@@ -2454,23 +967,33 @@ function M.Resource(args)
     }
 end
 
-keys.KmsKeyNotFoundException = { nil }
+keys.LookupEventsRequest = { ["LookupAttributes"] = true, ["EndTime"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["StartTime"] = true, nil }
 
-function asserts.AssertKmsKeyNotFoundException(struct)
+function asserts.AssertLookupEventsRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected KmsKeyNotFoundException to be of type 'table'")
+	assert(type(struct) == "table", "Expected LookupEventsRequest to be of type 'table'")
+	if struct["LookupAttributes"] then asserts.AssertLookupAttributesList(struct["LookupAttributes"]) end
+	if struct["EndTime"] then asserts.AssertDate(struct["EndTime"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertMaxResults(struct["MaxResults"]) end
+	if struct["StartTime"] then asserts.AssertDate(struct["StartTime"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.KmsKeyNotFoundException[k], "KmsKeyNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.LookupEventsRequest[k], "LookupEventsRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type KmsKeyNotFoundException
--- <p>This exception is thrown when the KMS key does not exist, or when the S3 bucket and the KMS key are not in the same region.</p>
+--- Create a structure of type LookupEventsRequest
+-- <p>Contains a request for LookupEvents.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return KmsKeyNotFoundException structure as a key-value pair table
-function M.KmsKeyNotFoundException(args)
-	assert(args, "You must provide an argument table when creating KmsKeyNotFoundException")
+-- * LookupAttributes [LookupAttributesList] <p>Contains a list of lookup attributes. Currently the list can contain only one item.</p>
+-- * EndTime [Date] <p>Specifies that only events that occur before or at the specified time are returned. If the specified end time is before the specified start time, an error is returned.</p>
+-- * NextToken [NextToken] <p>The token to use to get the next page of results after a previous API call. This token must be passed in with the same parameters that were specified in the the original call. For example, if the original call specified an AttributeKey of 'Username' with a value of 'root', the call with NextToken should include those same parameters.</p>
+-- * MaxResults [MaxResults] <p>The number of events to return. Possible values are 1 through 50. The default is 50.</p>
+-- * StartTime [Date] <p>Specifies that only events that occur after or at the specified time are returned. If the specified start time is after the specified end time, an error is returned.</p>
+-- @return LookupEventsRequest structure as a key-value pair table
+function M.LookupEventsRequest(args)
+	assert(args, "You must provide an argument table when creating LookupEventsRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -2478,8 +1001,13 @@ function M.KmsKeyNotFoundException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["LookupAttributes"] = args["LookupAttributes"],
+		["EndTime"] = args["EndTime"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["StartTime"] = args["StartTime"],
 	}
-	asserts.AssertKmsKeyNotFoundException(all_args)
+	asserts.AssertLookupEventsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2507,7 +1035,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * EventSelectors [EventSelectors] <p>Specifies the settings for your event selectors. You can configure up to five event selectors for a trail.</p>
--- * TrailName [String] <p>Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If you specify a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- * TrailName [String] <p>Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If you specify a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail</code> </p>
 -- Required key: TrailName
 -- Required key: EventSelectors
 -- @return PutEventSelectorsRequest structure as a key-value pair table
@@ -2524,40 +1052,6 @@ function M.PutEventSelectorsRequest(args)
 		["TrailName"] = args["TrailName"],
 	}
 	asserts.AssertPutEventSelectorsRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidHomeRegionException = { nil }
-
-function asserts.AssertInvalidHomeRegionException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidHomeRegionException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidHomeRegionException[k], "InvalidHomeRegionException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidHomeRegionException
--- <p>This exception is thrown when an operation is called on a trail from a region other than the region in which the trail was created.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidHomeRegionException structure as a key-value pair table
-function M.InvalidHomeRegionException(args)
-	assert(args, "You must provide an argument table when creating InvalidHomeRegionException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidHomeRegionException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2583,7 +1077,7 @@ end
 -- <p>Specifies the tags to add to a trail.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ResourceId [String] <p>Specifies the ARN of the trail to which one or more tags will be added. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- * ResourceId [String] <p>Specifies the ARN of the trail to which one or more tags will be added. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail</code> </p>
 -- * TagsList [TagsList] <p>Contains a list of CloudTrail tags, up to a limit of 50</p>
 -- Required key: ResourceId
 -- @return AddTagsRequest structure as a key-value pair table
@@ -2608,23 +1102,27 @@ function M.AddTagsRequest(args)
     }
 end
 
-keys.InvalidS3PrefixException = { nil }
+keys.DescribeTrailsRequest = { ["trailNameList"] = true, ["includeShadowTrails"] = true, nil }
 
-function asserts.AssertInvalidS3PrefixException(struct)
+function asserts.AssertDescribeTrailsRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidS3PrefixException to be of type 'table'")
+	assert(type(struct) == "table", "Expected DescribeTrailsRequest to be of type 'table'")
+	if struct["trailNameList"] then asserts.AssertTrailNameList(struct["trailNameList"]) end
+	if struct["includeShadowTrails"] then asserts.AssertBoolean(struct["includeShadowTrails"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidS3PrefixException[k], "InvalidS3PrefixException contains unknown key " .. tostring(k))
+		assert(keys.DescribeTrailsRequest[k], "DescribeTrailsRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidS3PrefixException
--- <p>This exception is thrown when the provided S3 prefix is not valid.</p>
+--- Create a structure of type DescribeTrailsRequest
+-- <p>Returns information about the trail.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidS3PrefixException structure as a key-value pair table
-function M.InvalidS3PrefixException(args)
-	assert(args, "You must provide an argument table when creating InvalidS3PrefixException")
+-- * trailNameList [TrailNameList] <p>Specifies a list of trail names, trail ARNs, or both, of the trails to describe. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail</code> </p> <p>If an empty list is specified, information for the trail in the current region is returned.</p> <ul> <li> <p>If an empty list is specified and <code>IncludeShadowTrails</code> is false, then information for all trails in the current region is returned.</p> </li> <li> <p>If an empty list is specified and IncludeShadowTrails is null or true, then information for all trails in the current region and any associated shadow trails in other regions is returned.</p> </li> </ul> <note> <p>If one or more trail names are specified, information is returned only if the names match the names of trails belonging only to the current region. To return information about a trail in another region, you must specify its trail ARN.</p> </note>
+-- * includeShadowTrails [Boolean] <p>Specifies whether to include shadow trails in the response. A shadow trail is the replication in a region of a trail that was created in a different region. The default is true.</p>
+-- @return DescribeTrailsRequest structure as a key-value pair table
+function M.DescribeTrailsRequest(args)
+	assert(args, "You must provide an argument table when creating DescribeTrailsRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -2632,8 +1130,10 @@ function M.InvalidS3PrefixException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["trailNameList"] = args["trailNameList"],
+		["includeShadowTrails"] = args["includeShadowTrails"],
 	}
-	asserts.AssertInvalidS3PrefixException(all_args)
+	asserts.AssertDescribeTrailsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2716,31 +1216,23 @@ function M.ListTagsResponse(args)
     }
 end
 
-keys.PublicKey = { ["ValidityStartTime"] = true, ["ValidityEndTime"] = true, ["Value"] = true, ["Fingerprint"] = true, nil }
+keys.StopLoggingResponse = { nil }
 
-function asserts.AssertPublicKey(struct)
+function asserts.AssertStopLoggingResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected PublicKey to be of type 'table'")
-	if struct["ValidityStartTime"] then asserts.AssertDate(struct["ValidityStartTime"]) end
-	if struct["ValidityEndTime"] then asserts.AssertDate(struct["ValidityEndTime"]) end
-	if struct["Value"] then asserts.AssertByteBuffer(struct["Value"]) end
-	if struct["Fingerprint"] then asserts.AssertString(struct["Fingerprint"]) end
+	assert(type(struct) == "table", "Expected StopLoggingResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.PublicKey[k], "PublicKey contains unknown key " .. tostring(k))
+		assert(keys.StopLoggingResponse[k], "StopLoggingResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type PublicKey
--- <p>Contains information about a returned public key.</p>
+--- Create a structure of type StopLoggingResponse
+-- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ValidityStartTime [Date] <p>The starting time of validity of the public key.</p>
--- * ValidityEndTime [Date] <p>The ending time of validity of the public key.</p>
--- * Value [ByteBuffer] <p>The DER encoded public key value in PKCS#1 format.</p>
--- * Fingerprint [String] <p>The fingerprint of the public key.</p>
--- @return PublicKey structure as a key-value pair table
-function M.PublicKey(args)
-	assert(args, "You must provide an argument table when creating PublicKey")
+-- @return StopLoggingResponse structure as a key-value pair table
+function M.StopLoggingResponse(args)
+	assert(args, "You must provide an argument table when creating StopLoggingResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -2748,12 +1240,8 @@ function M.PublicKey(args)
     local header_args = { 
     }
 	local all_args = { 
-		["ValidityStartTime"] = args["ValidityStartTime"],
-		["ValidityEndTime"] = args["ValidityEndTime"],
-		["Value"] = args["Value"],
-		["Fingerprint"] = args["Fingerprint"],
 	}
-	asserts.AssertPublicKey(all_args)
+	asserts.AssertStopLoggingResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2762,23 +1250,99 @@ function M.PublicKey(args)
     }
 end
 
-keys.InvalidKmsKeyIdException = { nil }
+keys.Trail = { ["IncludeGlobalServiceEvents"] = true, ["Name"] = true, ["S3KeyPrefix"] = true, ["TrailARN"] = true, ["LogFileValidationEnabled"] = true, ["SnsTopicARN"] = true, ["IsMultiRegionTrail"] = true, ["HasCustomEventSelectors"] = true, ["S3BucketName"] = true, ["CloudWatchLogsRoleArn"] = true, ["KmsKeyId"] = true, ["CloudWatchLogsLogGroupArn"] = true, ["SnsTopicName"] = true, ["HomeRegion"] = true, nil }
 
-function asserts.AssertInvalidKmsKeyIdException(struct)
+function asserts.AssertTrail(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidKmsKeyIdException to be of type 'table'")
+	assert(type(struct) == "table", "Expected Trail to be of type 'table'")
+	if struct["IncludeGlobalServiceEvents"] then asserts.AssertBoolean(struct["IncludeGlobalServiceEvents"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	if struct["S3KeyPrefix"] then asserts.AssertString(struct["S3KeyPrefix"]) end
+	if struct["TrailARN"] then asserts.AssertString(struct["TrailARN"]) end
+	if struct["LogFileValidationEnabled"] then asserts.AssertBoolean(struct["LogFileValidationEnabled"]) end
+	if struct["SnsTopicARN"] then asserts.AssertString(struct["SnsTopicARN"]) end
+	if struct["IsMultiRegionTrail"] then asserts.AssertBoolean(struct["IsMultiRegionTrail"]) end
+	if struct["HasCustomEventSelectors"] then asserts.AssertBoolean(struct["HasCustomEventSelectors"]) end
+	if struct["S3BucketName"] then asserts.AssertString(struct["S3BucketName"]) end
+	if struct["CloudWatchLogsRoleArn"] then asserts.AssertString(struct["CloudWatchLogsRoleArn"]) end
+	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
+	if struct["CloudWatchLogsLogGroupArn"] then asserts.AssertString(struct["CloudWatchLogsLogGroupArn"]) end
+	if struct["SnsTopicName"] then asserts.AssertString(struct["SnsTopicName"]) end
+	if struct["HomeRegion"] then asserts.AssertString(struct["HomeRegion"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidKmsKeyIdException[k], "InvalidKmsKeyIdException contains unknown key " .. tostring(k))
+		assert(keys.Trail[k], "Trail contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidKmsKeyIdException
--- <p>This exception is thrown when the KMS key ARN is invalid.</p>
+--- Create a structure of type Trail
+-- <p>The settings for a trail.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidKmsKeyIdException structure as a key-value pair table
-function M.InvalidKmsKeyIdException(args)
-	assert(args, "You must provide an argument table when creating InvalidKmsKeyIdException")
+-- * IncludeGlobalServiceEvents [Boolean] <p>Set to <b>True</b> to include AWS API calls from AWS global services such as IAM. Otherwise, <b>False</b>.</p>
+-- * Name [String] <p>Name of the trail set by calling <a>CreateTrail</a>. The maximum length is 128 characters.</p>
+-- * S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>.The maximum length is 200 characters.</p>
+-- * TrailARN [String] <p>Specifies the ARN of the trail. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail</code> </p>
+-- * LogFileValidationEnabled [Boolean] <p>Specifies whether log file validation is enabled.</p>
+-- * SnsTopicARN [String] <p>Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered. The format of a topic ARN is:</p> <p> <code>arn:aws:sns:us-east-2:123456789012:MyTopic</code> </p>
+-- * IsMultiRegionTrail [Boolean] <p>Specifies whether the trail belongs only to one region or exists in all regions.</p>
+-- * HasCustomEventSelectors [Boolean] <p>Specifies if the trail has custom event selectors.</p>
+-- * S3BucketName [String] <p>Name of the Amazon S3 bucket into which CloudTrail delivers your trail files. See <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3 Bucket Naming Requirements</a>.</p>
+-- * CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
+-- * KmsKeyId [String] <p>Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the format:</p> <p> <code>arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012</code> </p>
+-- * CloudWatchLogsLogGroupArn [String] <p>Specifies an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered.</p>
+-- * SnsTopicName [String] <p>This field is deprecated. Use SnsTopicARN.</p>
+-- * HomeRegion [String] <p>The region in which the trail was created.</p>
+-- @return Trail structure as a key-value pair table
+function M.Trail(args)
+	assert(args, "You must provide an argument table when creating Trail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["IncludeGlobalServiceEvents"] = args["IncludeGlobalServiceEvents"],
+		["Name"] = args["Name"],
+		["S3KeyPrefix"] = args["S3KeyPrefix"],
+		["TrailARN"] = args["TrailARN"],
+		["LogFileValidationEnabled"] = args["LogFileValidationEnabled"],
+		["SnsTopicARN"] = args["SnsTopicARN"],
+		["IsMultiRegionTrail"] = args["IsMultiRegionTrail"],
+		["HasCustomEventSelectors"] = args["HasCustomEventSelectors"],
+		["S3BucketName"] = args["S3BucketName"],
+		["CloudWatchLogsRoleArn"] = args["CloudWatchLogsRoleArn"],
+		["KmsKeyId"] = args["KmsKeyId"],
+		["CloudWatchLogsLogGroupArn"] = args["CloudWatchLogsLogGroupArn"],
+		["SnsTopicName"] = args["SnsTopicName"],
+		["HomeRegion"] = args["HomeRegion"],
+	}
+	asserts.AssertTrail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteTrailResponse = { nil }
+
+function asserts.AssertDeleteTrailResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteTrailResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteTrailResponse[k], "DeleteTrailResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteTrailResponse
+-- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteTrailResponse structure as a key-value pair table
+function M.DeleteTrailResponse(args)
+	assert(args, "You must provide an argument table when creating DeleteTrailResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -2787,7 +1351,253 @@ function M.InvalidKmsKeyIdException(args)
     }
 	local all_args = { 
 	}
-	asserts.AssertInvalidKmsKeyIdException(all_args)
+	asserts.AssertDeleteTrailResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListPublicKeysResponse = { ["NextToken"] = true, ["PublicKeyList"] = true, nil }
+
+function asserts.AssertListPublicKeysResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListPublicKeysResponse to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
+	if struct["PublicKeyList"] then asserts.AssertPublicKeyList(struct["PublicKeyList"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListPublicKeysResponse[k], "ListPublicKeysResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListPublicKeysResponse
+-- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>Reserved for future use.</p>
+-- * PublicKeyList [PublicKeyList] <p>Contains an array of PublicKey objects.</p> <note> <p>The returned public keys may have validity time ranges that overlap.</p> </note>
+-- @return ListPublicKeysResponse structure as a key-value pair table
+function M.ListPublicKeysResponse(args)
+	assert(args, "You must provide an argument table when creating ListPublicKeysResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["PublicKeyList"] = args["PublicKeyList"],
+	}
+	asserts.AssertListPublicKeysResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetEventSelectorsRequest = { ["TrailName"] = true, nil }
+
+function asserts.AssertGetEventSelectorsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetEventSelectorsRequest to be of type 'table'")
+	assert(struct["TrailName"], "Expected key TrailName to exist in table")
+	if struct["TrailName"] then asserts.AssertString(struct["TrailName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetEventSelectorsRequest[k], "GetEventSelectorsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetEventSelectorsRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrailName [String] <p>Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are not valid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If you specify a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail</code> </p>
+-- Required key: TrailName
+-- @return GetEventSelectorsRequest structure as a key-value pair table
+function M.GetEventSelectorsRequest(args)
+	assert(args, "You must provide an argument table when creating GetEventSelectorsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["TrailName"] = args["TrailName"],
+	}
+	asserts.AssertGetEventSelectorsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.PutEventSelectorsResponse = { ["EventSelectors"] = true, ["TrailARN"] = true, nil }
+
+function asserts.AssertPutEventSelectorsResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PutEventSelectorsResponse to be of type 'table'")
+	if struct["EventSelectors"] then asserts.AssertEventSelectors(struct["EventSelectors"]) end
+	if struct["TrailARN"] then asserts.AssertString(struct["TrailARN"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PutEventSelectorsResponse[k], "PutEventSelectorsResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PutEventSelectorsResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventSelectors [EventSelectors] <p>Specifies the event selectors configured for your trail.</p>
+-- * TrailARN [String] <p>Specifies the ARN of the trail that was updated with event selectors. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail</code> </p>
+-- @return PutEventSelectorsResponse structure as a key-value pair table
+function M.PutEventSelectorsResponse(args)
+	assert(args, "You must provide an argument table when creating PutEventSelectorsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["EventSelectors"] = args["EventSelectors"],
+		["TrailARN"] = args["TrailARN"],
+	}
+	asserts.AssertPutEventSelectorsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateTrailRequest = { ["IncludeGlobalServiceEvents"] = true, ["Name"] = true, ["S3KeyPrefix"] = true, ["KmsKeyId"] = true, ["IsMultiRegionTrail"] = true, ["S3BucketName"] = true, ["CloudWatchLogsRoleArn"] = true, ["CloudWatchLogsLogGroupArn"] = true, ["SnsTopicName"] = true, ["EnableLogFileValidation"] = true, nil }
+
+function asserts.AssertUpdateTrailRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateTrailRequest to be of type 'table'")
+	assert(struct["Name"], "Expected key Name to exist in table")
+	if struct["IncludeGlobalServiceEvents"] then asserts.AssertBoolean(struct["IncludeGlobalServiceEvents"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	if struct["S3KeyPrefix"] then asserts.AssertString(struct["S3KeyPrefix"]) end
+	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
+	if struct["IsMultiRegionTrail"] then asserts.AssertBoolean(struct["IsMultiRegionTrail"]) end
+	if struct["S3BucketName"] then asserts.AssertString(struct["S3BucketName"]) end
+	if struct["CloudWatchLogsRoleArn"] then asserts.AssertString(struct["CloudWatchLogsRoleArn"]) end
+	if struct["CloudWatchLogsLogGroupArn"] then asserts.AssertString(struct["CloudWatchLogsLogGroupArn"]) end
+	if struct["SnsTopicName"] then asserts.AssertString(struct["SnsTopicName"]) end
+	if struct["EnableLogFileValidation"] then asserts.AssertBoolean(struct["EnableLogFileValidation"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateTrailRequest[k], "UpdateTrailRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateTrailRequest
+-- <p>Specifies settings to update for the trail.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IncludeGlobalServiceEvents [Boolean] <p>Specifies whether the trail is publishing events from global services such as IAM to the log files.</p>
+-- * Name [String] <p>Specifies the name of the trail or trail ARN. If <code>Name</code> is a trail name, the string must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If <code>Name</code> is a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail</code> </p>
+-- * S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>. The maximum length is 200 characters.</p>
+-- * KmsKeyId [String] <p>Specifies the KMS key ID to use to encrypt the logs delivered by CloudTrail. The value can be an alias name prefixed by "alias/", a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.</p> <p>Examples:</p> <ul> <li> <p>alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-2:123456789012:alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- * IsMultiRegionTrail [Boolean] <p>Specifies whether the trail applies only to the current region or to all regions. The default is false. If the trail exists only in the current region and this value is set to true, shadow trails (replications of the trail) will be created in the other regions. If the trail exists in all regions and this value is set to false, the trail will remain in the region where it was created, and its shadow trails in other regions will be deleted.</p>
+-- * S3BucketName [String] <p>Specifies the name of the Amazon S3 bucket designated for publishing log files. See <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3 Bucket Naming Requirements</a>.</p>
+-- * CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
+-- * CloudWatchLogsLogGroupArn [String] <p>Specifies a log group name using an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered. Not required unless you specify CloudWatchLogsRoleArn.</p>
+-- * SnsTopicName [String] <p>Specifies the name of the Amazon SNS topic defined for notification of log file delivery. The maximum length is 256 characters.</p>
+-- * EnableLogFileValidation [Boolean] <p>Specifies whether log file validation is enabled. The default is false.</p> <note> <p>When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.</p> </note>
+-- Required key: Name
+-- @return UpdateTrailRequest structure as a key-value pair table
+function M.UpdateTrailRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateTrailRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["IncludeGlobalServiceEvents"] = args["IncludeGlobalServiceEvents"],
+		["Name"] = args["Name"],
+		["S3KeyPrefix"] = args["S3KeyPrefix"],
+		["KmsKeyId"] = args["KmsKeyId"],
+		["IsMultiRegionTrail"] = args["IsMultiRegionTrail"],
+		["S3BucketName"] = args["S3BucketName"],
+		["CloudWatchLogsRoleArn"] = args["CloudWatchLogsRoleArn"],
+		["CloudWatchLogsLogGroupArn"] = args["CloudWatchLogsLogGroupArn"],
+		["SnsTopicName"] = args["SnsTopicName"],
+		["EnableLogFileValidation"] = args["EnableLogFileValidation"],
+	}
+	asserts.AssertUpdateTrailRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Event = { ["EventId"] = true, ["Username"] = true, ["EventTime"] = true, ["CloudTrailEvent"] = true, ["AccessKeyId"] = true, ["EventName"] = true, ["ReadOnly"] = true, ["EventSource"] = true, ["Resources"] = true, nil }
+
+function asserts.AssertEvent(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Event to be of type 'table'")
+	if struct["EventId"] then asserts.AssertString(struct["EventId"]) end
+	if struct["Username"] then asserts.AssertString(struct["Username"]) end
+	if struct["EventTime"] then asserts.AssertDate(struct["EventTime"]) end
+	if struct["CloudTrailEvent"] then asserts.AssertString(struct["CloudTrailEvent"]) end
+	if struct["AccessKeyId"] then asserts.AssertString(struct["AccessKeyId"]) end
+	if struct["EventName"] then asserts.AssertString(struct["EventName"]) end
+	if struct["ReadOnly"] then asserts.AssertString(struct["ReadOnly"]) end
+	if struct["EventSource"] then asserts.AssertString(struct["EventSource"]) end
+	if struct["Resources"] then asserts.AssertResourceList(struct["Resources"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Event[k], "Event contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Event
+-- <p>Contains information about an event that was returned by a lookup request. The result includes a representation of a CloudTrail event.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventId [String] <p>The CloudTrail ID of the event returned.</p>
+-- * Username [String] <p>A user name or role name of the requester that called the API in the event returned.</p>
+-- * EventTime [Date] <p>The date and time of the event returned.</p>
+-- * CloudTrailEvent [String] <p>A JSON string that contains a representation of the event returned.</p>
+-- * AccessKeyId [String] <p>The AWS access key ID that was used to sign the request. If the request was made with temporary security credentials, this is the access key ID of the temporary credentials.</p>
+-- * EventName [String] <p>The name of the event returned.</p>
+-- * ReadOnly [String] <p>Information about whether the event is a write event or a read event. </p>
+-- * EventSource [String] <p>The AWS service that the request was made to.</p>
+-- * Resources [ResourceList] <p>A list of resources referenced by the event returned.</p>
+-- @return Event structure as a key-value pair table
+function M.Event(args)
+	assert(args, "You must provide an argument table when creating Event")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["EventId"] = args["EventId"],
+		["Username"] = args["Username"],
+		["EventTime"] = args["EventTime"],
+		["CloudTrailEvent"] = args["CloudTrailEvent"],
+		["AccessKeyId"] = args["AccessKeyId"],
+		["EventName"] = args["EventName"],
+		["ReadOnly"] = args["ReadOnly"],
+		["EventSource"] = args["EventSource"],
+		["Resources"] = args["Resources"],
+	}
+	asserts.AssertEvent(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2825,13 +1635,13 @@ end
 -- * IncludeGlobalServiceEvents [Boolean] <p>Specifies whether the trail is publishing events from global services such as IAM to the log files.</p>
 -- * Name [String] <p>Specifies the name of the trail.</p>
 -- * S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>.</p>
--- * TrailARN [String] <p>Specifies the ARN of the trail that was created. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- * TrailARN [String] <p>Specifies the ARN of the trail that was created. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail</code> </p>
 -- * LogFileValidationEnabled [Boolean] <p>Specifies whether log file integrity validation is enabled.</p>
--- * SnsTopicARN [String] <p>Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered. The format of a topic ARN is:</p> <p> <code>arn:aws:sns:us-east-1:123456789012:MyTopic</code> </p>
+-- * SnsTopicARN [String] <p>Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered. The format of a topic ARN is:</p> <p> <code>arn:aws:sns:us-east-2:123456789012:MyTopic</code> </p>
 -- * IsMultiRegionTrail [Boolean] <p>Specifies whether the trail exists in one region or in all regions.</p>
 -- * S3BucketName [String] <p>Specifies the name of the Amazon S3 bucket designated for publishing log files.</p>
 -- * CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
--- * KmsKeyId [String] <p>Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the format:</p> <p> <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code> </p>
+-- * KmsKeyId [String] <p>Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the format:</p> <p> <code>arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012</code> </p>
 -- * CloudWatchLogsLogGroupArn [String] <p>Specifies the Amazon Resource Name (ARN) of the log group to which CloudTrail logs will be delivered.</p>
 -- * SnsTopicName [String] <p>This field is deprecated. Use SnsTopicARN.</p>
 -- @return CreateTrailResponse structure as a key-value pair table
@@ -2858,6 +1668,46 @@ function M.CreateTrailResponse(args)
 		["SnsTopicName"] = args["SnsTopicName"],
 	}
 	asserts.AssertCreateTrailResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ResourceTag = { ["ResourceId"] = true, ["TagsList"] = true, nil }
+
+function asserts.AssertResourceTag(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ResourceTag to be of type 'table'")
+	if struct["ResourceId"] then asserts.AssertString(struct["ResourceId"]) end
+	if struct["TagsList"] then asserts.AssertTagsList(struct["TagsList"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ResourceTag[k], "ResourceTag contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ResourceTag
+-- <p>A resource tag.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceId [String] <p>Specifies the ARN of the resource.</p>
+-- * TagsList [TagsList] <p>A list of tags.</p>
+-- @return ResourceTag structure as a key-value pair table
+function M.ResourceTag(args)
+	assert(args, "You must provide an argument table when creating ResourceTag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceId"] = args["ResourceId"],
+		["TagsList"] = args["TagsList"],
+	}
+	asserts.AssertResourceTag(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2953,66 +1803,6 @@ function M.ByteBuffer(blob)
 	return blob
 end
 
-function asserts.AssertResourceIdList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected ResourceIdList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertString(v)
-	end
-end
-
---  
--- List of String objects
-function M.ResourceIdList(list)
-	asserts.AssertResourceIdList(list)
-	return list
-end
-
-function asserts.AssertPublicKeyList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected PublicKeyList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertPublicKey(v)
-	end
-end
-
---  
--- List of PublicKey objects
-function M.PublicKeyList(list)
-	asserts.AssertPublicKeyList(list)
-	return list
-end
-
-function asserts.AssertResourceList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected ResourceList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertResource(v)
-	end
-end
-
--- <p>A list of resources referenced by the event returned.</p>
--- List of Resource objects
-function M.ResourceList(list)
-	asserts.AssertResourceList(list)
-	return list
-end
-
-function asserts.AssertLookupAttributesList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected LookupAttributesList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertLookupAttribute(v)
-	end
-end
-
---  
--- List of LookupAttribute objects
-function M.LookupAttributesList(list)
-	asserts.AssertLookupAttributesList(list)
-	return list
-end
-
 function asserts.AssertTrailList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TrailList to be of type ''table")
@@ -3028,24 +1818,9 @@ function M.TrailList(list)
 	return list
 end
 
-function asserts.AssertResourceTagList(list)
+function asserts.AssertResourceIdList(list)
 	assert(list)
-	assert(type(list) == "table", "Expected ResourceTagList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertResourceTag(v)
-	end
-end
-
---  
--- List of ResourceTag objects
-function M.ResourceTagList(list)
-	asserts.AssertResourceTagList(list)
-	return list
-end
-
-function asserts.AssertDataResourceValues(list)
-	assert(list)
-	assert(type(list) == "table", "Expected DataResourceValues to be of type ''table")
+	assert(type(list) == "table", "Expected ResourceIdList to be of type ''table")
 	for _,v in ipairs(list) do
 		asserts.AssertString(v)
 	end
@@ -3053,53 +1828,8 @@ end
 
 --  
 -- List of String objects
-function M.DataResourceValues(list)
-	asserts.AssertDataResourceValues(list)
-	return list
-end
-
-function asserts.AssertTrailNameList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected TrailNameList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertString(v)
-	end
-end
-
---  
--- List of String objects
-function M.TrailNameList(list)
-	asserts.AssertTrailNameList(list)
-	return list
-end
-
-function asserts.AssertEventSelectors(list)
-	assert(list)
-	assert(type(list) == "table", "Expected EventSelectors to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertEventSelector(v)
-	end
-end
-
---  
--- List of EventSelector objects
-function M.EventSelectors(list)
-	asserts.AssertEventSelectors(list)
-	return list
-end
-
-function asserts.AssertEventsList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected EventsList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertEvent(v)
-	end
-end
-
---  
--- List of Event objects
-function M.EventsList(list)
-	asserts.AssertEventsList(list)
+function M.ResourceIdList(list)
+	asserts.AssertResourceIdList(list)
 	return list
 end
 
@@ -3130,6 +1860,126 @@ end
 -- List of DataResource objects
 function M.DataResources(list)
 	asserts.AssertDataResources(list)
+	return list
+end
+
+function asserts.AssertPublicKeyList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected PublicKeyList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertPublicKey(v)
+	end
+end
+
+--  
+-- List of PublicKey objects
+function M.PublicKeyList(list)
+	asserts.AssertPublicKeyList(list)
+	return list
+end
+
+function asserts.AssertLookupAttributesList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected LookupAttributesList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertLookupAttribute(v)
+	end
+end
+
+--  
+-- List of LookupAttribute objects
+function M.LookupAttributesList(list)
+	asserts.AssertLookupAttributesList(list)
+	return list
+end
+
+function asserts.AssertResourceTagList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ResourceTagList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertResourceTag(v)
+	end
+end
+
+--  
+-- List of ResourceTag objects
+function M.ResourceTagList(list)
+	asserts.AssertResourceTagList(list)
+	return list
+end
+
+function asserts.AssertEventSelectors(list)
+	assert(list)
+	assert(type(list) == "table", "Expected EventSelectors to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertEventSelector(v)
+	end
+end
+
+--  
+-- List of EventSelector objects
+function M.EventSelectors(list)
+	asserts.AssertEventSelectors(list)
+	return list
+end
+
+function asserts.AssertDataResourceValues(list)
+	assert(list)
+	assert(type(list) == "table", "Expected DataResourceValues to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertString(v)
+	end
+end
+
+--  
+-- List of String objects
+function M.DataResourceValues(list)
+	asserts.AssertDataResourceValues(list)
+	return list
+end
+
+function asserts.AssertEventsList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected EventsList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertEvent(v)
+	end
+end
+
+--  
+-- List of Event objects
+function M.EventsList(list)
+	asserts.AssertEventsList(list)
+	return list
+end
+
+function asserts.AssertTrailNameList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected TrailNameList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertString(v)
+	end
+end
+
+--  
+-- List of String objects
+function M.TrailNameList(list)
+	asserts.AssertTrailNameList(list)
+	return list
+end
+
+function asserts.AssertResourceList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ResourceList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertResource(v)
+	end
+end
+
+-- <p>A list of resources referenced by the event returned.</p>
+-- List of Resource objects
+function M.ResourceList(list)
+	asserts.AssertResourceList(list)
 	return list
 end
 

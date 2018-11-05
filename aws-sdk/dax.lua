@@ -21,40 +21,6 @@ M.metadata = {
 local keys = {}
 local asserts = {}
 
-keys.ClusterNotFoundFault = { nil }
-
-function asserts.AssertClusterNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ClusterNotFoundFault[k], "ClusterNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ClusterNotFoundFault
--- <p>The requested cluster ID does not refer to an existing DAX cluster.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ClusterNotFoundFault structure as a key-value pair table
-function M.ClusterNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating ClusterNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertClusterNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.DescribeParametersResponse = { ["NextToken"] = true, ["Parameters"] = true, nil }
 
 function asserts.AssertDescribeParametersResponse(struct)
@@ -137,50 +103,6 @@ function M.ListTagsRequest(args)
     }
 end
 
-keys.UpdateParameterGroupRequest = { ["ParameterGroupName"] = true, ["ParameterNameValues"] = true, nil }
-
-function asserts.AssertUpdateParameterGroupRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateParameterGroupRequest to be of type 'table'")
-	assert(struct["ParameterGroupName"], "Expected key ParameterGroupName to exist in table")
-	assert(struct["ParameterNameValues"], "Expected key ParameterNameValues to exist in table")
-	if struct["ParameterGroupName"] then asserts.AssertString(struct["ParameterGroupName"]) end
-	if struct["ParameterNameValues"] then asserts.AssertParameterNameValueList(struct["ParameterNameValues"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.UpdateParameterGroupRequest[k], "UpdateParameterGroupRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UpdateParameterGroupRequest
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ParameterGroupName [String] <p>The name of the parameter group.</p>
--- * ParameterNameValues [ParameterNameValueList] <p>An array of name-value pairs for the parameters in the group. Each element in the array represents a single parameter.</p>
--- Required key: ParameterGroupName
--- Required key: ParameterNameValues
--- @return UpdateParameterGroupRequest structure as a key-value pair table
-function M.UpdateParameterGroupRequest(args)
-	assert(args, "You must provide an argument table when creating UpdateParameterGroupRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ParameterGroupName"] = args["ParameterGroupName"],
-		["ParameterNameValues"] = args["ParameterNameValues"],
-	}
-	asserts.AssertUpdateParameterGroupRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.DeleteClusterResponse = { ["Cluster"] = true, nil }
 
 function asserts.AssertDeleteClusterResponse(struct)
@@ -255,23 +177,25 @@ function M.DeleteParameterGroupResponse(args)
     }
 end
 
-keys.InvalidClusterStateFault = { nil }
+keys.SSEDescription = { ["Status"] = true, nil }
 
-function asserts.AssertInvalidClusterStateFault(struct)
+function asserts.AssertSSEDescription(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidClusterStateFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected SSEDescription to be of type 'table'")
+	if struct["Status"] then asserts.AssertSSEStatus(struct["Status"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidClusterStateFault[k], "InvalidClusterStateFault contains unknown key " .. tostring(k))
+		assert(keys.SSEDescription[k], "SSEDescription contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidClusterStateFault
--- <p>The requested DAX cluster is not in the <i>available</i> state.</p>
+--- Create a structure of type SSEDescription
+-- <p>The description of the server-side encryption status on the specified DAX cluster.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidClusterStateFault structure as a key-value pair table
-function M.InvalidClusterStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidClusterStateFault")
+-- * Status [SSEStatus] <p>The current state of server-side encryption:</p> <ul> <li> <p> <code>ENABLING</code> - Server-side encryption is being enabled.</p> </li> <li> <p> <code>ENABLED</code> - Server-side encryption is enabled.</p> </li> <li> <p> <code>DISABLING</code> - Server-side encryption is being disabled.</p> </li> <li> <p> <code>DISABLED</code> - Server-side encryption is disabled.</p> </li> </ul>
+-- @return SSEDescription structure as a key-value pair table
+function M.SSEDescription(args)
+	assert(args, "You must provide an argument table when creating SSEDescription")
     local query_args = { 
     }
     local uri_args = { 
@@ -279,8 +203,9 @@ function M.InvalidClusterStateFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Status"] = args["Status"],
 	}
-	asserts.AssertInvalidClusterStateFault(all_args)
+	asserts.AssertSSEDescription(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -405,40 +330,6 @@ function M.ParameterGroup(args)
     }
 end
 
-keys.InsufficientClusterCapacityFault = { nil }
-
-function asserts.AssertInsufficientClusterCapacityFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InsufficientClusterCapacityFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InsufficientClusterCapacityFault[k], "InsufficientClusterCapacityFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InsufficientClusterCapacityFault
--- <p>There are not enough system resources to create the cluster you requested (or to resize an already-existing cluster). </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InsufficientClusterCapacityFault structure as a key-value pair table
-function M.InsufficientClusterCapacityFault(args)
-	assert(args, "You must provide an argument table when creating InsufficientClusterCapacityFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInsufficientClusterCapacityFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.DeleteClusterRequest = { ["ClusterName"] = true, nil }
 
 function asserts.AssertDeleteClusterRequest(struct)
@@ -470,40 +361,6 @@ function M.DeleteClusterRequest(args)
 		["ClusterName"] = args["ClusterName"],
 	}
 	asserts.AssertDeleteClusterRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidParameterGroupStateFault = { nil }
-
-function asserts.AssertInvalidParameterGroupStateFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidParameterGroupStateFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidParameterGroupStateFault[k], "InvalidParameterGroupStateFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidParameterGroupStateFault
--- <p>One or more parameters in a parameter group are in an invalid state.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidParameterGroupStateFault structure as a key-value pair table
-function M.InvalidParameterGroupStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidParameterGroupStateFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidParameterGroupStateFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -661,79 +518,6 @@ function M.DescribeSubnetGroupsRequest(args)
 		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertDescribeSubnetGroupsRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DeleteSubnetGroupRequest = { ["SubnetGroupName"] = true, nil }
-
-function asserts.AssertDeleteSubnetGroupRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteSubnetGroupRequest to be of type 'table'")
-	assert(struct["SubnetGroupName"], "Expected key SubnetGroupName to exist in table")
-	if struct["SubnetGroupName"] then asserts.AssertString(struct["SubnetGroupName"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DeleteSubnetGroupRequest[k], "DeleteSubnetGroupRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DeleteSubnetGroupRequest
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * SubnetGroupName [String] <p>The name of the subnet group to delete.</p>
--- Required key: SubnetGroupName
--- @return DeleteSubnetGroupRequest structure as a key-value pair table
-function M.DeleteSubnetGroupRequest(args)
-	assert(args, "You must provide an argument table when creating DeleteSubnetGroupRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["SubnetGroupName"] = args["SubnetGroupName"],
-	}
-	asserts.AssertDeleteSubnetGroupRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SubnetGroupQuotaExceededFault = { nil }
-
-function asserts.AssertSubnetGroupQuotaExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SubnetGroupQuotaExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SubnetGroupQuotaExceededFault[k], "SubnetGroupQuotaExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SubnetGroupQuotaExceededFault
--- <p>The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SubnetGroupQuotaExceededFault structure as a key-value pair table
-function M.SubnetGroupQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating SubnetGroupQuotaExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSubnetGroupQuotaExceededFault(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1040,23 +824,25 @@ function M.DescribeClustersRequest(args)
     }
 end
 
-keys.InvalidSubnet = { nil }
+keys.UpdateClusterResponse = { ["Cluster"] = true, nil }
 
-function asserts.AssertInvalidSubnet(struct)
+function asserts.AssertUpdateClusterResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidSubnet to be of type 'table'")
+	assert(type(struct) == "table", "Expected UpdateClusterResponse to be of type 'table'")
+	if struct["Cluster"] then asserts.AssertCluster(struct["Cluster"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidSubnet[k], "InvalidSubnet contains unknown key " .. tostring(k))
+		assert(keys.UpdateClusterResponse[k], "UpdateClusterResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidSubnet
--- <p>An invalid subnet identifier was specified.</p>
+--- Create a structure of type UpdateClusterResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidSubnet structure as a key-value pair table
-function M.InvalidSubnet(args)
-	assert(args, "You must provide an argument table when creating InvalidSubnet")
+-- * Cluster [Cluster] <p>A description of the DAX cluster, after it has been modified.</p>
+-- @return UpdateClusterResponse structure as a key-value pair table
+function M.UpdateClusterResponse(args)
+	assert(args, "You must provide an argument table when creating UpdateClusterResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -1064,8 +850,49 @@ function M.InvalidSubnet(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertInvalidSubnet(all_args)
+	asserts.AssertUpdateClusterResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Endpoint = { ["Port"] = true, ["Address"] = true, nil }
+
+function asserts.AssertEndpoint(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Endpoint to be of type 'table'")
+	if struct["Port"] then asserts.AssertInteger(struct["Port"]) end
+	if struct["Address"] then asserts.AssertString(struct["Address"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Endpoint[k], "Endpoint contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Endpoint
+-- <p>Represents the information required for client programs to connect to the configuration endpoint for a DAX cluster, or to an individual node within the cluster.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Port [Integer] <p>The port number that applications should use to connect to the endpoint.</p>
+-- * Address [String] <p>The DNS hostname of the endpoint.</p>
+-- @return Endpoint structure as a key-value pair table
+function M.Endpoint(args)
+	assert(args, "You must provide an argument table when creating Endpoint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Port"] = args["Port"],
+		["Address"] = args["Address"],
+	}
+	asserts.AssertEndpoint(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1178,23 +1005,33 @@ function M.DescribeDefaultParametersResponse(args)
     }
 end
 
-keys.ParameterGroupQuotaExceededFault = { nil }
+keys.CreateSubnetGroupRequest = { ["SubnetIds"] = true, ["SubnetGroupName"] = true, ["Description"] = true, nil }
 
-function asserts.AssertParameterGroupQuotaExceededFault(struct)
+function asserts.AssertCreateSubnetGroupRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ParameterGroupQuotaExceededFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected CreateSubnetGroupRequest to be of type 'table'")
+	assert(struct["SubnetGroupName"], "Expected key SubnetGroupName to exist in table")
+	assert(struct["SubnetIds"], "Expected key SubnetIds to exist in table")
+	if struct["SubnetIds"] then asserts.AssertSubnetIdentifierList(struct["SubnetIds"]) end
+	if struct["SubnetGroupName"] then asserts.AssertString(struct["SubnetGroupName"]) end
+	if struct["Description"] then asserts.AssertString(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ParameterGroupQuotaExceededFault[k], "ParameterGroupQuotaExceededFault contains unknown key " .. tostring(k))
+		assert(keys.CreateSubnetGroupRequest[k], "CreateSubnetGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ParameterGroupQuotaExceededFault
--- <p>You have attempted to exceed the maximum number of parameter groups.</p>
+--- Create a structure of type CreateSubnetGroupRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return ParameterGroupQuotaExceededFault structure as a key-value pair table
-function M.ParameterGroupQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating ParameterGroupQuotaExceededFault")
+-- * SubnetIds [SubnetIdentifierList] <p>A list of VPC subnet IDs for the subnet group.</p>
+-- * SubnetGroupName [String] <p>A name for the subnet group. This value is stored as a lowercase string. </p>
+-- * Description [String] <p>A description for the subnet group</p>
+-- Required key: SubnetGroupName
+-- Required key: SubnetIds
+-- @return CreateSubnetGroupRequest structure as a key-value pair table
+function M.CreateSubnetGroupRequest(args)
+	assert(args, "You must provide an argument table when creating CreateSubnetGroupRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1202,79 +1039,11 @@ function M.ParameterGroupQuotaExceededFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["SubnetIds"] = args["SubnetIds"],
+		["SubnetGroupName"] = args["SubnetGroupName"],
+		["Description"] = args["Description"],
 	}
-	asserts.AssertParameterGroupQuotaExceededFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidParameterCombinationException = { ["message"] = true, nil }
-
-function asserts.AssertInvalidParameterCombinationException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidParameterCombinationException to be of type 'table'")
-	if struct["message"] then asserts.AssertAwsQueryErrorMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidParameterCombinationException[k], "InvalidParameterCombinationException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidParameterCombinationException
--- <p>Two or more incompatible parameters were specified.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [AwsQueryErrorMessage] 
--- @return InvalidParameterCombinationException structure as a key-value pair table
-function M.InvalidParameterCombinationException(args)
-	assert(args, "You must provide an argument table when creating InvalidParameterCombinationException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertInvalidParameterCombinationException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ParameterGroupAlreadyExistsFault = { nil }
-
-function asserts.AssertParameterGroupAlreadyExistsFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ParameterGroupAlreadyExistsFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ParameterGroupAlreadyExistsFault[k], "ParameterGroupAlreadyExistsFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ParameterGroupAlreadyExistsFault
--- <p>The specified parameter group already exists.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ParameterGroupAlreadyExistsFault structure as a key-value pair table
-function M.ParameterGroupAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating ParameterGroupAlreadyExistsFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertParameterGroupAlreadyExistsFault(all_args)
+	asserts.AssertCreateSubnetGroupRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1377,40 +1146,6 @@ function M.RebootNodeResponse(args)
     }
 end
 
-keys.ParameterGroupNotFoundFault = { nil }
-
-function asserts.AssertParameterGroupNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ParameterGroupNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ParameterGroupNotFoundFault[k], "ParameterGroupNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ParameterGroupNotFoundFault
--- <p>The specified parameter group does not exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ParameterGroupNotFoundFault structure as a key-value pair table
-function M.ParameterGroupNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating ParameterGroupNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertParameterGroupNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.CreateParameterGroupResponse = { ["ParameterGroup"] = true, nil }
 
 function asserts.AssertCreateParameterGroupResponse(struct)
@@ -1480,53 +1215,6 @@ function M.SecurityGroupMembership(args)
 		["SecurityGroupIdentifier"] = args["SecurityGroupIdentifier"],
 	}
 	asserts.AssertSecurityGroupMembership(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.IncreaseReplicationFactorRequest = { ["ClusterName"] = true, ["AvailabilityZones"] = true, ["NewReplicationFactor"] = true, nil }
-
-function asserts.AssertIncreaseReplicationFactorRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected IncreaseReplicationFactorRequest to be of type 'table'")
-	assert(struct["ClusterName"], "Expected key ClusterName to exist in table")
-	assert(struct["NewReplicationFactor"], "Expected key NewReplicationFactor to exist in table")
-	if struct["ClusterName"] then asserts.AssertString(struct["ClusterName"]) end
-	if struct["AvailabilityZones"] then asserts.AssertAvailabilityZoneList(struct["AvailabilityZones"]) end
-	if struct["NewReplicationFactor"] then asserts.AssertInteger(struct["NewReplicationFactor"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.IncreaseReplicationFactorRequest[k], "IncreaseReplicationFactorRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type IncreaseReplicationFactorRequest
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ClusterName [String] <p>The name of the DAX cluster that will receive additional nodes.</p>
--- * AvailabilityZones [AvailabilityZoneList] <p>The Availability Zones (AZs) in which the cluster nodes will be created. All nodes belonging to the cluster are placed in these Availability Zones. Use this parameter if you want to distribute the nodes across multiple AZs.</p>
--- * NewReplicationFactor [Integer] <p>The new number of nodes for the DAX cluster.</p>
--- Required key: ClusterName
--- Required key: NewReplicationFactor
--- @return IncreaseReplicationFactorRequest structure as a key-value pair table
-function M.IncreaseReplicationFactorRequest(args)
-	assert(args, "You must provide an argument table when creating IncreaseReplicationFactorRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ClusterName"] = args["ClusterName"],
-		["AvailabilityZones"] = args["AvailabilityZones"],
-		["NewReplicationFactor"] = args["NewReplicationFactor"],
-	}
-	asserts.AssertIncreaseReplicationFactorRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1745,40 +1433,6 @@ function M.Subnet(args)
     }
 end
 
-keys.InvalidARNFault = { nil }
-
-function asserts.AssertInvalidARNFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidARNFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidARNFault[k], "InvalidARNFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidARNFault
--- <p>The Amazon Resource Name (ARN) supplied in the request is not valid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidARNFault structure as a key-value pair table
-function M.InvalidARNFault(args)
-	assert(args, "You must provide an argument table when creating InvalidARNFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidARNFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.CreateClusterResponse = { ["Cluster"] = true, nil }
 
 function asserts.AssertCreateClusterResponse(struct)
@@ -1908,7 +1562,7 @@ function M.DescribeEventsResponse(args)
     }
 end
 
-keys.CreateClusterRequest = { ["ReplicationFactor"] = true, ["NotificationTopicArn"] = true, ["NodeType"] = true, ["Description"] = true, ["Tags"] = true, ["ClusterName"] = true, ["SubnetGroupName"] = true, ["IamRoleArn"] = true, ["SecurityGroupIds"] = true, ["ParameterGroupName"] = true, ["AvailabilityZones"] = true, ["PreferredMaintenanceWindow"] = true, nil }
+keys.CreateClusterRequest = { ["ReplicationFactor"] = true, ["NotificationTopicArn"] = true, ["NodeType"] = true, ["Description"] = true, ["Tags"] = true, ["ClusterName"] = true, ["SubnetGroupName"] = true, ["IamRoleArn"] = true, ["SecurityGroupIds"] = true, ["ParameterGroupName"] = true, ["SSESpecification"] = true, ["AvailabilityZones"] = true, ["PreferredMaintenanceWindow"] = true, nil }
 
 function asserts.AssertCreateClusterRequest(struct)
 	assert(struct)
@@ -1927,6 +1581,7 @@ function asserts.AssertCreateClusterRequest(struct)
 	if struct["IamRoleArn"] then asserts.AssertString(struct["IamRoleArn"]) end
 	if struct["SecurityGroupIds"] then asserts.AssertSecurityGroupIdentifierList(struct["SecurityGroupIds"]) end
 	if struct["ParameterGroupName"] then asserts.AssertString(struct["ParameterGroupName"]) end
+	if struct["SSESpecification"] then asserts.AssertSSESpecification(struct["SSESpecification"]) end
 	if struct["AvailabilityZones"] then asserts.AssertAvailabilityZoneList(struct["AvailabilityZones"]) end
 	if struct["PreferredMaintenanceWindow"] then asserts.AssertString(struct["PreferredMaintenanceWindow"]) end
 	for k,_ in pairs(struct) do
@@ -1948,6 +1603,7 @@ end
 -- * IamRoleArn [String] <p>A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.</p>
 -- * SecurityGroupIds [SecurityGroupIdentifierList] <p>A list of security group IDs to be assigned to each node in the DAX cluster. (Each of the security group ID is system-generated.)</p> <p>If this parameter is not specified, DAX assigns the default VPC security group to each node.</p>
 -- * ParameterGroupName [String] <p>The parameter group to be associated with the DAX cluster.</p>
+-- * SSESpecification [SSESpecification] <p>Represents the settings used to enable server-side encryption on the cluster.</p>
 -- * AvailabilityZones [AvailabilityZoneList] <p>The Availability Zones (AZs) in which the cluster nodes will be created. All nodes belonging to the cluster are placed in these Availability Zones. Use this parameter if you want to distribute the nodes across multiple AZs.</p>
 -- * PreferredMaintenanceWindow [String] <p>Specifies the weekly time range during which maintenance on the DAX cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for <code>ddd</code> are:</p> <ul> <li> <p> <code>sun</code> </p> </li> <li> <p> <code>mon</code> </p> </li> <li> <p> <code>tue</code> </p> </li> <li> <p> <code>wed</code> </p> </li> <li> <p> <code>thu</code> </p> </li> <li> <p> <code>fri</code> </p> </li> <li> <p> <code>sat</code> </p> </li> </ul> <p>Example: <code>sun:05:00-sun:09:00</code> </p> <note> <p>If you don't specify a preferred maintenance window when you create or modify a cache cluster, DAX assigns a 60-minute maintenance window on a randomly selected day of the week.</p> </note>
 -- Required key: ClusterName
@@ -1974,6 +1630,7 @@ function M.CreateClusterRequest(args)
 		["IamRoleArn"] = args["IamRoleArn"],
 		["SecurityGroupIds"] = args["SecurityGroupIds"],
 		["ParameterGroupName"] = args["ParameterGroupName"],
+		["SSESpecification"] = args["SSESpecification"],
 		["AvailabilityZones"] = args["AvailabilityZones"],
 		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
 	}
@@ -2026,61 +1683,27 @@ function M.DescribeSubnetGroupsResponse(args)
     }
 end
 
-keys.SubnetGroupInUseFault = { nil }
+keys.DeleteSubnetGroupRequest = { ["SubnetGroupName"] = true, nil }
 
-function asserts.AssertSubnetGroupInUseFault(struct)
+function asserts.AssertDeleteSubnetGroupRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SubnetGroupInUseFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected DeleteSubnetGroupRequest to be of type 'table'")
+	assert(struct["SubnetGroupName"], "Expected key SubnetGroupName to exist in table")
+	if struct["SubnetGroupName"] then asserts.AssertString(struct["SubnetGroupName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SubnetGroupInUseFault[k], "SubnetGroupInUseFault contains unknown key " .. tostring(k))
+		assert(keys.DeleteSubnetGroupRequest[k], "DeleteSubnetGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SubnetGroupInUseFault
--- <p>The specified subnet group is currently in use.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SubnetGroupInUseFault structure as a key-value pair table
-function M.SubnetGroupInUseFault(args)
-	assert(args, "You must provide an argument table when creating SubnetGroupInUseFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSubnetGroupInUseFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ListTagsResponse = { ["NextToken"] = true, ["Tags"] = true, nil }
-
-function asserts.AssertListTagsResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ListTagsResponse to be of type 'table'")
-	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
-	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ListTagsResponse[k], "ListTagsResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ListTagsResponse
+--- Create a structure of type DeleteSubnetGroupRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * NextToken [String] <p>If this value is present, there are additional results to be displayed. To retrieve them, call <code>ListTags</code> again, with <code>NextToken</code> set to this value.</p>
--- * Tags [TagList] <p>A list of tags currently associated with the DAX cluster.</p>
--- @return ListTagsResponse structure as a key-value pair table
-function M.ListTagsResponse(args)
-	assert(args, "You must provide an argument table when creating ListTagsResponse")
+-- * SubnetGroupName [String] <p>The name of the subnet group to delete.</p>
+-- Required key: SubnetGroupName
+-- @return DeleteSubnetGroupRequest structure as a key-value pair table
+function M.DeleteSubnetGroupRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteSubnetGroupRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -2088,10 +1711,9 @@ function M.ListTagsResponse(args)
     local header_args = { 
     }
 	local all_args = { 
-		["NextToken"] = args["NextToken"],
-		["Tags"] = args["Tags"],
+		["SubnetGroupName"] = args["SubnetGroupName"],
 	}
-	asserts.AssertListTagsResponse(all_args)
+	asserts.AssertDeleteSubnetGroupRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2137,43 +1759,6 @@ function M.UntagResourceResponse(args)
     }
 end
 
-keys.UpdateClusterResponse = { ["Cluster"] = true, nil }
-
-function asserts.AssertUpdateClusterResponse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateClusterResponse to be of type 'table'")
-	if struct["Cluster"] then asserts.AssertCluster(struct["Cluster"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.UpdateClusterResponse[k], "UpdateClusterResponse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UpdateClusterResponse
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Cluster [Cluster] <p>A description of the DAX cluster, after it has been modified.</p>
--- @return UpdateClusterResponse structure as a key-value pair table
-function M.UpdateClusterResponse(args)
-	assert(args, "You must provide an argument table when creating UpdateClusterResponse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Cluster"] = args["Cluster"],
-	}
-	asserts.AssertUpdateClusterResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ParameterNameValue = { ["ParameterName"] = true, ["ParameterValue"] = true, nil }
 
 function asserts.AssertParameterNameValue(struct)
@@ -2206,43 +1791,6 @@ function M.ParameterNameValue(args)
 		["ParameterValue"] = args["ParameterValue"],
 	}
 	asserts.AssertParameterNameValue(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidParameterValueException = { ["message"] = true, nil }
-
-function asserts.AssertInvalidParameterValueException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidParameterValueException to be of type 'table'")
-	if struct["message"] then asserts.AssertAwsQueryErrorMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidParameterValueException[k], "InvalidParameterValueException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidParameterValueException
--- <p>The value for a parameter is invalid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [AwsQueryErrorMessage] 
--- @return InvalidParameterValueException structure as a key-value pair table
-function M.InvalidParameterValueException(args)
-	assert(args, "You must provide an argument table when creating InvalidParameterValueException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertInvalidParameterValueException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2301,143 +1849,7 @@ function M.DecreaseReplicationFactorRequest(args)
     }
 end
 
-keys.NodeQuotaForCustomerExceededFault = { nil }
-
-function asserts.AssertNodeQuotaForCustomerExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected NodeQuotaForCustomerExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.NodeQuotaForCustomerExceededFault[k], "NodeQuotaForCustomerExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type NodeQuotaForCustomerExceededFault
--- <p>You have attempted to exceed the maximum number of nodes for your AWS account.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return NodeQuotaForCustomerExceededFault structure as a key-value pair table
-function M.NodeQuotaForCustomerExceededFault(args)
-	assert(args, "You must provide an argument table when creating NodeQuotaForCustomerExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertNodeQuotaForCustomerExceededFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidVPCNetworkStateFault = { nil }
-
-function asserts.AssertInvalidVPCNetworkStateFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidVPCNetworkStateFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidVPCNetworkStateFault[k], "InvalidVPCNetworkStateFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidVPCNetworkStateFault
--- <p>The VPC network is in an invalid state.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidVPCNetworkStateFault structure as a key-value pair table
-function M.InvalidVPCNetworkStateFault(args)
-	assert(args, "You must provide an argument table when creating InvalidVPCNetworkStateFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidVPCNetworkStateFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SubnetGroupNotFoundFault = { nil }
-
-function asserts.AssertSubnetGroupNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SubnetGroupNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SubnetGroupNotFoundFault[k], "SubnetGroupNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SubnetGroupNotFoundFault
--- <p>The requested subnet group name does not refer to an existing subnet group.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SubnetGroupNotFoundFault structure as a key-value pair table
-function M.SubnetGroupNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating SubnetGroupNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSubnetGroupNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SubnetGroupAlreadyExistsFault = { nil }
-
-function asserts.AssertSubnetGroupAlreadyExistsFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SubnetGroupAlreadyExistsFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SubnetGroupAlreadyExistsFault[k], "SubnetGroupAlreadyExistsFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SubnetGroupAlreadyExistsFault
--- <p>The specified subnet group already exists.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SubnetGroupAlreadyExistsFault structure as a key-value pair table
-function M.SubnetGroupAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating SubnetGroupAlreadyExistsFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSubnetGroupAlreadyExistsFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.Cluster = { ["Status"] = true, ["SubnetGroup"] = true, ["NodeType"] = true, ["Description"] = true, ["ClusterName"] = true, ["ParameterGroup"] = true, ["ActiveNodes"] = true, ["TotalNodes"] = true, ["IamRoleArn"] = true, ["NodeIdsToRemove"] = true, ["SecurityGroups"] = true, ["ClusterArn"] = true, ["Nodes"] = true, ["ClusterDiscoveryEndpoint"] = true, ["NotificationConfiguration"] = true, ["PreferredMaintenanceWindow"] = true, nil }
+keys.Cluster = { ["Status"] = true, ["SubnetGroup"] = true, ["NodeType"] = true, ["Description"] = true, ["ClusterName"] = true, ["ParameterGroup"] = true, ["ActiveNodes"] = true, ["TotalNodes"] = true, ["IamRoleArn"] = true, ["NodeIdsToRemove"] = true, ["SecurityGroups"] = true, ["ClusterArn"] = true, ["SSEDescription"] = true, ["Nodes"] = true, ["ClusterDiscoveryEndpoint"] = true, ["NotificationConfiguration"] = true, ["PreferredMaintenanceWindow"] = true, nil }
 
 function asserts.AssertCluster(struct)
 	assert(struct)
@@ -2454,6 +1866,7 @@ function asserts.AssertCluster(struct)
 	if struct["NodeIdsToRemove"] then asserts.AssertNodeIdentifierList(struct["NodeIdsToRemove"]) end
 	if struct["SecurityGroups"] then asserts.AssertSecurityGroupMembershipList(struct["SecurityGroups"]) end
 	if struct["ClusterArn"] then asserts.AssertString(struct["ClusterArn"]) end
+	if struct["SSEDescription"] then asserts.AssertSSEDescription(struct["SSEDescription"]) end
 	if struct["Nodes"] then asserts.AssertNodeList(struct["Nodes"]) end
 	if struct["ClusterDiscoveryEndpoint"] then asserts.AssertEndpoint(struct["ClusterDiscoveryEndpoint"]) end
 	if struct["NotificationConfiguration"] then asserts.AssertNotificationConfiguration(struct["NotificationConfiguration"]) end
@@ -2479,6 +1892,7 @@ end
 -- * NodeIdsToRemove [NodeIdentifierList] <p>A list of nodes to be removed from the cluster.</p>
 -- * SecurityGroups [SecurityGroupMembershipList] <p>A list of security groups, and the status of each, for the nodes in the cluster.</p>
 -- * ClusterArn [String] <p>The Amazon Resource Name (ARN) that uniquely identifies the cluster. </p>
+-- * SSEDescription [SSEDescription] <p>The description of the server-side encryption status on the specified DAX cluster.</p>
 -- * Nodes [NodeList] <p>A list of nodes that are currently in the cluster.</p>
 -- * ClusterDiscoveryEndpoint [Endpoint] <p>The configuration endpoint for this DAX cluster, consisting of a DNS name and a port number. Client applications can specify this endpoint, rather than an individual node endpoint, and allow the DAX client software to intelligently route requests and responses to nodes in the DAX cluster.</p>
 -- * NotificationConfiguration [NotificationConfiguration] <p>Describes a notification topic and its status. Notification topics are used for publishing DAX events to subscribers using Amazon Simple Notification Service (SNS).</p>
@@ -2505,6 +1919,7 @@ function M.Cluster(args)
 		["NodeIdsToRemove"] = args["NodeIdsToRemove"],
 		["SecurityGroups"] = args["SecurityGroups"],
 		["ClusterArn"] = args["ClusterArn"],
+		["SSEDescription"] = args["SSEDescription"],
 		["Nodes"] = args["Nodes"],
 		["ClusterDiscoveryEndpoint"] = args["ClusterDiscoveryEndpoint"],
 		["NotificationConfiguration"] = args["NotificationConfiguration"],
@@ -2519,33 +1934,31 @@ function M.Cluster(args)
     }
 end
 
-keys.CreateSubnetGroupRequest = { ["SubnetIds"] = true, ["SubnetGroupName"] = true, ["Description"] = true, nil }
+keys.UpdateParameterGroupRequest = { ["ParameterGroupName"] = true, ["ParameterNameValues"] = true, nil }
 
-function asserts.AssertCreateSubnetGroupRequest(struct)
+function asserts.AssertUpdateParameterGroupRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected CreateSubnetGroupRequest to be of type 'table'")
-	assert(struct["SubnetGroupName"], "Expected key SubnetGroupName to exist in table")
-	assert(struct["SubnetIds"], "Expected key SubnetIds to exist in table")
-	if struct["SubnetIds"] then asserts.AssertSubnetIdentifierList(struct["SubnetIds"]) end
-	if struct["SubnetGroupName"] then asserts.AssertString(struct["SubnetGroupName"]) end
-	if struct["Description"] then asserts.AssertString(struct["Description"]) end
+	assert(type(struct) == "table", "Expected UpdateParameterGroupRequest to be of type 'table'")
+	assert(struct["ParameterGroupName"], "Expected key ParameterGroupName to exist in table")
+	assert(struct["ParameterNameValues"], "Expected key ParameterNameValues to exist in table")
+	if struct["ParameterGroupName"] then asserts.AssertString(struct["ParameterGroupName"]) end
+	if struct["ParameterNameValues"] then asserts.AssertParameterNameValueList(struct["ParameterNameValues"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.CreateSubnetGroupRequest[k], "CreateSubnetGroupRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateParameterGroupRequest[k], "UpdateParameterGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type CreateSubnetGroupRequest
+--- Create a structure of type UpdateParameterGroupRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SubnetIds [SubnetIdentifierList] <p>A list of VPC subnet IDs for the subnet group.</p>
--- * SubnetGroupName [String] <p>A name for the subnet group. This value is stored as a lowercase string. </p>
--- * Description [String] <p>A description for the subnet group</p>
--- Required key: SubnetGroupName
--- Required key: SubnetIds
--- @return CreateSubnetGroupRequest structure as a key-value pair table
-function M.CreateSubnetGroupRequest(args)
-	assert(args, "You must provide an argument table when creating CreateSubnetGroupRequest")
+-- * ParameterGroupName [String] <p>The name of the parameter group.</p>
+-- * ParameterNameValues [ParameterNameValueList] <p>An array of name-value pairs for the parameters in the group. Each element in the array represents a single parameter.</p>
+-- Required key: ParameterGroupName
+-- Required key: ParameterNameValues
+-- @return UpdateParameterGroupRequest structure as a key-value pair table
+function M.UpdateParameterGroupRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateParameterGroupRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -2553,11 +1966,10 @@ function M.CreateSubnetGroupRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["SubnetIds"] = args["SubnetIds"],
-		["SubnetGroupName"] = args["SubnetGroupName"],
-		["Description"] = args["Description"],
+		["ParameterGroupName"] = args["ParameterGroupName"],
+		["ParameterNameValues"] = args["ParameterNameValues"],
 	}
-	asserts.AssertCreateSubnetGroupRequest(all_args)
+	asserts.AssertUpdateParameterGroupRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2688,108 +2100,6 @@ function M.TagResourceResponse(args)
     }
 end
 
-keys.SubnetInUse = { nil }
-
-function asserts.AssertSubnetInUse(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SubnetInUse to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SubnetInUse[k], "SubnetInUse contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SubnetInUse
--- <p>The requested subnet is being used by another subnet group.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SubnetInUse structure as a key-value pair table
-function M.SubnetInUse(args)
-	assert(args, "You must provide an argument table when creating SubnetInUse")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSubnetInUse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.NodeNotFoundFault = { nil }
-
-function asserts.AssertNodeNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected NodeNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.NodeNotFoundFault[k], "NodeNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type NodeNotFoundFault
--- <p>None of the nodes in the cluster have the given node ID.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return NodeNotFoundFault structure as a key-value pair table
-function M.NodeNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating NodeNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertNodeNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TagNotFoundFault = { nil }
-
-function asserts.AssertTagNotFoundFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TagNotFoundFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TagNotFoundFault[k], "TagNotFoundFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TagNotFoundFault
--- <p>The tag does not exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TagNotFoundFault structure as a key-value pair table
-function M.TagNotFoundFault(args)
-	assert(args, "You must provide an argument table when creating TagNotFoundFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTagNotFoundFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.UpdateSubnetGroupResponse = { ["SubnetGroup"] = true, nil }
 
 function asserts.AssertUpdateSubnetGroupResponse(struct)
@@ -2827,23 +2137,27 @@ function M.UpdateSubnetGroupResponse(args)
     }
 end
 
-keys.TagQuotaPerResourceExceeded = { nil }
+keys.SSESpecification = { ["Enabled"] = true, nil }
 
-function asserts.AssertTagQuotaPerResourceExceeded(struct)
+function asserts.AssertSSESpecification(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TagQuotaPerResourceExceeded to be of type 'table'")
+	assert(type(struct) == "table", "Expected SSESpecification to be of type 'table'")
+	assert(struct["Enabled"], "Expected key Enabled to exist in table")
+	if struct["Enabled"] then asserts.AssertSSEEnabled(struct["Enabled"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TagQuotaPerResourceExceeded[k], "TagQuotaPerResourceExceeded contains unknown key " .. tostring(k))
+		assert(keys.SSESpecification[k], "SSESpecification contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TagQuotaPerResourceExceeded
--- <p>You have exceeded the maximum number of tags for this DAX cluster.</p>
+--- Create a structure of type SSESpecification
+-- <p>Represents the settings used to enable server-side encryption.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return TagQuotaPerResourceExceeded structure as a key-value pair table
-function M.TagQuotaPerResourceExceeded(args)
-	assert(args, "You must provide an argument table when creating TagQuotaPerResourceExceeded")
+-- * Enabled [SSEEnabled] <p>Indicates whether server-side encryption is enabled (true) or disabled (false) on the cluster.</p>
+-- Required key: Enabled
+-- @return SSESpecification structure as a key-value pair table
+function M.SSESpecification(args)
+	assert(args, "You must provide an argument table when creating SSESpecification")
     local query_args = { 
     }
     local uri_args = { 
@@ -2851,48 +2165,9 @@ function M.TagQuotaPerResourceExceeded(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Enabled"] = args["Enabled"],
 	}
-	asserts.AssertTagQuotaPerResourceExceeded(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.Endpoint = { ["Port"] = true, ["Address"] = true, nil }
-
-function asserts.AssertEndpoint(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected Endpoint to be of type 'table'")
-	if struct["Port"] then asserts.AssertInteger(struct["Port"]) end
-	if struct["Address"] then asserts.AssertString(struct["Address"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.Endpoint[k], "Endpoint contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type Endpoint
--- <p>Represents the information required for client programs to connect to the configuration endpoint for a DAX cluster, or to an individual node within the cluster.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Port [Integer] <p>The port number that applications should use to connect to the endpoint.</p>
--- * Address [String] <p>The DNS hostname of the endpoint.</p>
--- @return Endpoint structure as a key-value pair table
-function M.Endpoint(args)
-	assert(args, "You must provide an argument table when creating Endpoint")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Port"] = args["Port"],
-		["Address"] = args["Address"],
-	}
-	asserts.AssertEndpoint(all_args)
+	asserts.AssertSSESpecification(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2944,40 +2219,6 @@ function M.ParameterGroupStatus(args)
     }
 end
 
-keys.NodeQuotaForClusterExceededFault = { nil }
-
-function asserts.AssertNodeQuotaForClusterExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected NodeQuotaForClusterExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.NodeQuotaForClusterExceededFault[k], "NodeQuotaForClusterExceededFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type NodeQuotaForClusterExceededFault
--- <p>You have attempted to exceed the maximum number of nodes for a DAX cluster.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return NodeQuotaForClusterExceededFault structure as a key-value pair table
-function M.NodeQuotaForClusterExceededFault(args)
-	assert(args, "You must provide an argument table when creating NodeQuotaForClusterExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertNodeQuotaForClusterExceededFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.UpdateParameterGroupResponse = { ["ParameterGroup"] = true, nil }
 
 function asserts.AssertUpdateParameterGroupResponse(struct)
@@ -3015,31 +2256,33 @@ function M.UpdateParameterGroupResponse(args)
     }
 end
 
-keys.TagResourceRequest = { ["ResourceName"] = true, ["Tags"] = true, nil }
+keys.IncreaseReplicationFactorRequest = { ["ClusterName"] = true, ["AvailabilityZones"] = true, ["NewReplicationFactor"] = true, nil }
 
-function asserts.AssertTagResourceRequest(struct)
+function asserts.AssertIncreaseReplicationFactorRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TagResourceRequest to be of type 'table'")
-	assert(struct["ResourceName"], "Expected key ResourceName to exist in table")
-	assert(struct["Tags"], "Expected key Tags to exist in table")
-	if struct["ResourceName"] then asserts.AssertString(struct["ResourceName"]) end
-	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	assert(type(struct) == "table", "Expected IncreaseReplicationFactorRequest to be of type 'table'")
+	assert(struct["ClusterName"], "Expected key ClusterName to exist in table")
+	assert(struct["NewReplicationFactor"], "Expected key NewReplicationFactor to exist in table")
+	if struct["ClusterName"] then asserts.AssertString(struct["ClusterName"]) end
+	if struct["AvailabilityZones"] then asserts.AssertAvailabilityZoneList(struct["AvailabilityZones"]) end
+	if struct["NewReplicationFactor"] then asserts.AssertInteger(struct["NewReplicationFactor"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TagResourceRequest[k], "TagResourceRequest contains unknown key " .. tostring(k))
+		assert(keys.IncreaseReplicationFactorRequest[k], "IncreaseReplicationFactorRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TagResourceRequest
+--- Create a structure of type IncreaseReplicationFactorRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ResourceName [String] <p>The name of the DAX resource to which tags should be added.</p>
--- * Tags [TagList] <p>The tags to be assigned to the DAX resource. </p>
--- Required key: ResourceName
--- Required key: Tags
--- @return TagResourceRequest structure as a key-value pair table
-function M.TagResourceRequest(args)
-	assert(args, "You must provide an argument table when creating TagResourceRequest")
+-- * ClusterName [String] <p>The name of the DAX cluster that will receive additional nodes.</p>
+-- * AvailabilityZones [AvailabilityZoneList] <p>The Availability Zones (AZs) in which the cluster nodes will be created. All nodes belonging to the cluster are placed in these Availability Zones. Use this parameter if you want to distribute the nodes across multiple AZs.</p>
+-- * NewReplicationFactor [Integer] <p>The new number of nodes for the DAX cluster.</p>
+-- Required key: ClusterName
+-- Required key: NewReplicationFactor
+-- @return IncreaseReplicationFactorRequest structure as a key-value pair table
+function M.IncreaseReplicationFactorRequest(args)
+	assert(args, "You must provide an argument table when creating IncreaseReplicationFactorRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -3047,10 +2290,11 @@ function M.TagResourceRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["ResourceName"] = args["ResourceName"],
-		["Tags"] = args["Tags"],
+		["ClusterName"] = args["ClusterName"],
+		["AvailabilityZones"] = args["AvailabilityZones"],
+		["NewReplicationFactor"] = args["NewReplicationFactor"],
 	}
-	asserts.AssertTagResourceRequest(all_args)
+	asserts.AssertIncreaseReplicationFactorRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3114,23 +2358,31 @@ function M.DescribeEventsRequest(args)
     }
 end
 
-keys.ClusterQuotaForCustomerExceededFault = { nil }
+keys.TagResourceRequest = { ["ResourceName"] = true, ["Tags"] = true, nil }
 
-function asserts.AssertClusterQuotaForCustomerExceededFault(struct)
+function asserts.AssertTagResourceRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterQuotaForCustomerExceededFault to be of type 'table'")
+	assert(type(struct) == "table", "Expected TagResourceRequest to be of type 'table'")
+	assert(struct["ResourceName"], "Expected key ResourceName to exist in table")
+	assert(struct["Tags"], "Expected key Tags to exist in table")
+	if struct["ResourceName"] then asserts.AssertString(struct["ResourceName"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ClusterQuotaForCustomerExceededFault[k], "ClusterQuotaForCustomerExceededFault contains unknown key " .. tostring(k))
+		assert(keys.TagResourceRequest[k], "TagResourceRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ClusterQuotaForCustomerExceededFault
--- <p>You have attempted to exceed the maximum number of DAX clusters for your AWS account.</p>
+--- Create a structure of type TagResourceRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return ClusterQuotaForCustomerExceededFault structure as a key-value pair table
-function M.ClusterQuotaForCustomerExceededFault(args)
-	assert(args, "You must provide an argument table when creating ClusterQuotaForCustomerExceededFault")
+-- * ResourceName [String] <p>The name of the DAX resource to which tags should be added.</p>
+-- * Tags [TagList] <p>The tags to be assigned to the DAX resource. </p>
+-- Required key: ResourceName
+-- Required key: Tags
+-- @return TagResourceRequest structure as a key-value pair table
+function M.TagResourceRequest(args)
+	assert(args, "You must provide an argument table when creating TagResourceRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -3138,8 +2390,50 @@ function M.ClusterQuotaForCustomerExceededFault(args)
     local header_args = { 
     }
 	local all_args = { 
+		["ResourceName"] = args["ResourceName"],
+		["Tags"] = args["Tags"],
 	}
-	asserts.AssertClusterQuotaForCustomerExceededFault(all_args)
+	asserts.AssertTagResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListTagsResponse = { ["NextToken"] = true, ["Tags"] = true, nil }
+
+function asserts.AssertListTagsResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListTagsResponse to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListTagsResponse[k], "ListTagsResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListTagsResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>If this value is present, there are additional results to be displayed. To retrieve them, call <code>ListTags</code> again, with <code>NextToken</code> set to this value.</p>
+-- * Tags [TagList] <p>A list of tags currently associated with the DAX cluster.</p>
+-- @return ListTagsResponse structure as a key-value pair table
+function M.ListTagsResponse(args)
+	assert(args, "You must provide an argument table when creating ListTagsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["Tags"] = args["Tags"],
+	}
+	asserts.AssertListTagsResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3193,40 +2487,6 @@ function M.UpdateSubnetGroupRequest(args)
     }
 end
 
-keys.ClusterAlreadyExistsFault = { nil }
-
-function asserts.AssertClusterAlreadyExistsFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterAlreadyExistsFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ClusterAlreadyExistsFault[k], "ClusterAlreadyExistsFault contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ClusterAlreadyExistsFault
--- <p>You already have a DAX cluster with the given identifier.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ClusterAlreadyExistsFault structure as a key-value pair table
-function M.ClusterAlreadyExistsFault(args)
-	assert(args, "You must provide an argument table when creating ClusterAlreadyExistsFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertClusterAlreadyExistsFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.NodeTypeSpecificValue = { ["NodeType"] = true, ["Value"] = true, nil }
 
 function asserts.AssertNodeTypeSpecificValue(struct)
@@ -3267,38 +2527,15 @@ function M.NodeTypeSpecificValue(args)
     }
 end
 
-keys.SubnetQuotaExceededFault = { nil }
-
-function asserts.AssertSubnetQuotaExceededFault(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SubnetQuotaExceededFault to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SubnetQuotaExceededFault[k], "SubnetQuotaExceededFault contains unknown key " .. tostring(k))
-	end
+function asserts.AssertSSEStatus(str)
+	assert(str)
+	assert(type(str) == "string", "Expected SSEStatus to be of type 'string'")
 end
 
---- Create a structure of type SubnetQuotaExceededFault
--- <p>The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SubnetQuotaExceededFault structure as a key-value pair table
-function M.SubnetQuotaExceededFault(args)
-	assert(args, "You must provide an argument table when creating SubnetQuotaExceededFault")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSubnetQuotaExceededFault(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
+--  
+function M.SSEStatus(str)
+	asserts.AssertSSEStatus(str)
+	return str
 end
 
 function asserts.AssertString(str)
@@ -3309,17 +2546,6 @@ end
 --  
 function M.String(str)
 	asserts.AssertString(str)
-	return str
-end
-
-function asserts.AssertAwsQueryErrorMessage(str)
-	assert(str)
-	assert(type(str) == "string", "Expected AwsQueryErrorMessage to be of type 'string'")
-end
-
---  
-function M.AwsQueryErrorMessage(str)
-	asserts.AssertAwsQueryErrorMessage(str)
 	return str
 end
 
@@ -3345,17 +2571,6 @@ function M.ChangeType(str)
 	return str
 end
 
-function asserts.AssertParameterType(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ParameterType to be of type 'string'")
-end
-
---  
-function M.ParameterType(str)
-	asserts.AssertParameterType(str)
-	return str
-end
-
 function asserts.AssertIsModifiable(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IsModifiable to be of type 'string'")
@@ -3364,6 +2579,17 @@ end
 --  
 function M.IsModifiable(str)
 	asserts.AssertIsModifiable(str)
+	return str
+end
+
+function asserts.AssertParameterType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ParameterType to be of type 'string'")
+end
+
+--  
+function M.ParameterType(str)
+	asserts.AssertParameterType(str)
 	return str
 end
 
@@ -3387,6 +2613,16 @@ end
 function M.Integer(integer)
 	asserts.AssertInteger(integer)
 	return integer
+end
+
+function asserts.AssertSSEEnabled(boolean)
+	assert(boolean)
+	assert(type(boolean) == "boolean", "Expected SSEEnabled to be of type 'boolean'")
+end
+
+function M.SSEEnabled(boolean)
+	asserts.AssertSSEEnabled(boolean)
+	return boolean
 end
 
 function asserts.AssertTStamp(timestamp)
@@ -3414,21 +2650,6 @@ function M.NodeList(list)
 	return list
 end
 
-function asserts.AssertSubnetIdentifierList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected SubnetIdentifierList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertString(v)
-	end
-end
-
---  
--- List of String objects
-function M.SubnetIdentifierList(list)
-	asserts.AssertSubnetIdentifierList(list)
-	return list
-end
-
 function asserts.AssertNodeIdentifierList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected NodeIdentifierList to be of type ''table")
@@ -3444,18 +2665,18 @@ function M.NodeIdentifierList(list)
 	return list
 end
 
-function asserts.AssertSubnetGroupList(list)
+function asserts.AssertSubnetIdentifierList(list)
 	assert(list)
-	assert(type(list) == "table", "Expected SubnetGroupList to be of type ''table")
+	assert(type(list) == "table", "Expected SubnetIdentifierList to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertSubnetGroup(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
--- List of SubnetGroup objects
-function M.SubnetGroupList(list)
-	asserts.AssertSubnetGroupList(list)
+-- List of String objects
+function M.SubnetIdentifierList(list)
+	asserts.AssertSubnetIdentifierList(list)
 	return list
 end
 
@@ -3636,6 +2857,21 @@ end
 -- List of Cluster objects
 function M.ClusterList(list)
 	asserts.AssertClusterList(list)
+	return list
+end
+
+function asserts.AssertSubnetGroupList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected SubnetGroupList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertSubnetGroup(v)
+	end
+end
+
+--  
+-- List of SubnetGroup objects
+function M.SubnetGroupList(list)
+	asserts.AssertSubnetGroupList(list)
 	return list
 end
 

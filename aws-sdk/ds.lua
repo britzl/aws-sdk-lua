@@ -65,27 +65,27 @@ function M.DirectoryVpcSettings(args)
     }
 end
 
-keys.UnsupportedOperationException = { ["Message"] = true, ["RequestId"] = true, nil }
+keys.RejectSharedDirectoryRequest = { ["SharedDirectoryId"] = true, nil }
 
-function asserts.AssertUnsupportedOperationException(struct)
+function asserts.AssertRejectSharedDirectoryRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected UnsupportedOperationException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["RequestId"] then asserts.AssertRequestId(struct["RequestId"]) end
+	assert(type(struct) == "table", "Expected RejectSharedDirectoryRequest to be of type 'table'")
+	assert(struct["SharedDirectoryId"], "Expected key SharedDirectoryId to exist in table")
+	if struct["SharedDirectoryId"] then asserts.AssertDirectoryId(struct["SharedDirectoryId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.UnsupportedOperationException[k], "UnsupportedOperationException contains unknown key " .. tostring(k))
+		assert(keys.RejectSharedDirectoryRequest[k], "RejectSharedDirectoryRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type UnsupportedOperationException
--- <p>The operation is not supported.</p>
+--- Create a structure of type RejectSharedDirectoryRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- * RequestId [RequestId] 
--- @return UnsupportedOperationException structure as a key-value pair table
-function M.UnsupportedOperationException(args)
-	assert(args, "You must provide an argument table when creating UnsupportedOperationException")
+-- * SharedDirectoryId [DirectoryId] <p>Identifier of the shared directory in the directory consumer account. This identifier is different for each directory owner account.</p>
+-- Required key: SharedDirectoryId
+-- @return RejectSharedDirectoryRequest structure as a key-value pair table
+function M.RejectSharedDirectoryRequest(args)
+	assert(args, "You must provide an argument table when creating RejectSharedDirectoryRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -93,10 +93,9 @@ function M.UnsupportedOperationException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
-		["RequestId"] = args["RequestId"],
+		["SharedDirectoryId"] = args["SharedDirectoryId"],
 	}
-	asserts.AssertUnsupportedOperationException(all_args)
+	asserts.AssertRejectSharedDirectoryRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -150,6 +149,50 @@ function M.DisableSsoRequest(args)
     }
 end
 
+keys.UnshareTarget = { ["Type"] = true, ["Id"] = true, nil }
+
+function asserts.AssertUnshareTarget(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UnshareTarget to be of type 'table'")
+	assert(struct["Id"], "Expected key Id to exist in table")
+	assert(struct["Type"], "Expected key Type to exist in table")
+	if struct["Type"] then asserts.AssertTargetType(struct["Type"]) end
+	if struct["Id"] then asserts.AssertTargetId(struct["Id"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UnshareTarget[k], "UnshareTarget contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UnshareTarget
+-- <p>Identifier that contains details about the directory consumer account with whom the directory is being unshared.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [TargetType] <p>Type of identifier to be used in the <i>Id</i> field.</p>
+-- * Id [TargetId] <p>Identifier of the directory consumer account.</p>
+-- Required key: Id
+-- Required key: Type
+-- @return UnshareTarget structure as a key-value pair table
+function M.UnshareTarget(args)
+	assert(args, "You must provide an argument table when creating UnshareTarget")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Type"] = args["Type"],
+		["Id"] = args["Id"],
+	}
+	asserts.AssertUnshareTarget(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DeleteTrustRequest = { ["TrustId"] = true, ["DeleteAssociatedConditionalForwarder"] = true, nil }
 
 function asserts.AssertDeleteTrustRequest(struct)
@@ -164,7 +207,7 @@ function asserts.AssertDeleteTrustRequest(struct)
 end
 
 --- Create a structure of type DeleteTrustRequest
--- <p>Deletes the local side of an existing trust relationship between the Microsoft AD in the AWS cloud and the external domain.</p>
+-- <p>Deletes the local side of an existing trust relationship between the AWS Managed Microsoft AD directory and the external domain.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * TrustId [TrustId] <p>The Trust ID of the trust relationship to be deleted.</p>
@@ -184,46 +227,6 @@ function M.DeleteTrustRequest(args)
 		["DeleteAssociatedConditionalForwarder"] = args["DeleteAssociatedConditionalForwarder"],
 	}
 	asserts.AssertDeleteTrustRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DescribeTrustsResult = { ["NextToken"] = true, ["Trusts"] = true, nil }
-
-function asserts.AssertDescribeTrustsResult(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeTrustsResult to be of type 'table'")
-	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
-	if struct["Trusts"] then asserts.AssertTrusts(struct["Trusts"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DescribeTrustsResult[k], "DescribeTrustsResult contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DescribeTrustsResult
--- <p>The result of a DescribeTrust request.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <i>NextToken</i> parameter in a subsequent call to <a>DescribeTrusts</a> to retrieve the next set of items.</p>
--- * Trusts [Trusts] <p>The list of Trust objects that were retrieved.</p> <p>It is possible that this list contains less than the number of items specified in the <i>Limit</i> member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.</p>
--- @return DescribeTrustsResult structure as a key-value pair table
-function M.DescribeTrustsResult(args)
-	assert(args, "You must provide an argument table when creating DescribeTrustsResult")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["NextToken"] = args["NextToken"],
-		["Trusts"] = args["Trusts"],
-	}
-	asserts.AssertDescribeTrustsResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -269,27 +272,25 @@ function M.DeleteDirectoryResult(args)
     }
 end
 
-keys.DirectoryUnavailableException = { ["Message"] = true, ["RequestId"] = true, nil }
+keys.AcceptSharedDirectoryResult = { ["SharedDirectory"] = true, nil }
 
-function asserts.AssertDirectoryUnavailableException(struct)
+function asserts.AssertAcceptSharedDirectoryResult(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DirectoryUnavailableException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["RequestId"] then asserts.AssertRequestId(struct["RequestId"]) end
+	assert(type(struct) == "table", "Expected AcceptSharedDirectoryResult to be of type 'table'")
+	if struct["SharedDirectory"] then asserts.AssertSharedDirectory(struct["SharedDirectory"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DirectoryUnavailableException[k], "DirectoryUnavailableException contains unknown key " .. tostring(k))
+		assert(keys.AcceptSharedDirectoryResult[k], "AcceptSharedDirectoryResult contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DirectoryUnavailableException
--- <p>The specified directory is unavailable or could not be found.</p>
+--- Create a structure of type AcceptSharedDirectoryResult
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- * RequestId [RequestId] 
--- @return DirectoryUnavailableException structure as a key-value pair table
-function M.DirectoryUnavailableException(args)
-	assert(args, "You must provide an argument table when creating DirectoryUnavailableException")
+-- * SharedDirectory [SharedDirectory] <p>The shared directory in the directory consumer account.</p>
+-- @return AcceptSharedDirectoryResult structure as a key-value pair table
+function M.AcceptSharedDirectoryResult(args)
+	assert(args, "You must provide an argument table when creating AcceptSharedDirectoryResult")
     local query_args = { 
     }
     local uri_args = { 
@@ -297,10 +298,9 @@ function M.DirectoryUnavailableException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
-		["RequestId"] = args["RequestId"],
+		["SharedDirectory"] = args["SharedDirectory"],
 	}
-	asserts.AssertDirectoryUnavailableException(all_args)
+	asserts.AssertAcceptSharedDirectoryResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -309,27 +309,23 @@ function M.DirectoryUnavailableException(args)
     }
 end
 
-keys.InvalidParameterException = { ["Message"] = true, ["RequestId"] = true, nil }
+keys.RemoveTagsFromResourceResult = { nil }
 
-function asserts.AssertInvalidParameterException(struct)
+function asserts.AssertRemoveTagsFromResourceResult(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidParameterException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["RequestId"] then asserts.AssertRequestId(struct["RequestId"]) end
+	assert(type(struct) == "table", "Expected RemoveTagsFromResourceResult to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidParameterException[k], "InvalidParameterException contains unknown key " .. tostring(k))
+		assert(keys.RemoveTagsFromResourceResult[k], "RemoveTagsFromResourceResult contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidParameterException
--- <p>One or more parameters are not valid.</p>
+--- Create a structure of type RemoveTagsFromResourceResult
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- * RequestId [RequestId] 
--- @return InvalidParameterException structure as a key-value pair table
-function M.InvalidParameterException(args)
-	assert(args, "You must provide an argument table when creating InvalidParameterException")
+-- @return RemoveTagsFromResourceResult structure as a key-value pair table
+function M.RemoveTagsFromResourceResult(args)
+	assert(args, "You must provide an argument table when creating RemoveTagsFromResourceResult")
     local query_args = { 
     }
     local uri_args = { 
@@ -337,10 +333,48 @@ function M.InvalidParameterException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
-		["RequestId"] = args["RequestId"],
 	}
-	asserts.AssertInvalidParameterException(all_args)
+	asserts.AssertRemoveTagsFromResourceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListIpRoutesResult = { ["IpRoutesInfo"] = true, ["NextToken"] = true, nil }
+
+function asserts.AssertListIpRoutesResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListIpRoutesResult to be of type 'table'")
+	if struct["IpRoutesInfo"] then asserts.AssertIpRoutesInfo(struct["IpRoutesInfo"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListIpRoutesResult[k], "ListIpRoutesResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListIpRoutesResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IpRoutesInfo [IpRoutesInfo] <p>A list of <a>IpRoute</a>s.</p>
+-- * NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <i>NextToken</i> parameter in a subsequent call to <a>ListIpRoutes</a> to retrieve the next set of items.</p>
+-- @return ListIpRoutesResult structure as a key-value pair table
+function M.ListIpRoutesResult(args)
+	assert(args, "You must provide an argument table when creating ListIpRoutesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["IpRoutesInfo"] = args["IpRoutesInfo"],
+		["NextToken"] = args["NextToken"],
+	}
+	asserts.AssertListIpRoutesResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -588,6 +622,46 @@ function M.DescribeSnapshotsRequest(args)
     }
 end
 
+keys.DescribeTrustsResult = { ["NextToken"] = true, ["Trusts"] = true, nil }
+
+function asserts.AssertDescribeTrustsResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeTrustsResult to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["Trusts"] then asserts.AssertTrusts(struct["Trusts"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeTrustsResult[k], "DescribeTrustsResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeTrustsResult
+-- <p>The result of a DescribeTrust request.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <i>NextToken</i> parameter in a subsequent call to <a>DescribeTrusts</a> to retrieve the next set of items.</p>
+-- * Trusts [Trusts] <p>The list of Trust objects that were retrieved.</p> <p>It is possible that this list contains less than the number of items specified in the <i>Limit</i> member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.</p>
+-- @return DescribeTrustsResult structure as a key-value pair table
+function M.DescribeTrustsResult(args)
+	assert(args, "You must provide an argument table when creating DescribeTrustsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["Trusts"] = args["Trusts"],
+	}
+	asserts.AssertDescribeTrustsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DeleteSnapshotRequest = { ["SnapshotId"] = true, nil }
 
 function asserts.AssertDeleteSnapshotRequest(struct)
@@ -667,6 +741,45 @@ function M.ListTagsForResourceResult(args)
     }
 end
 
+keys.AcceptSharedDirectoryRequest = { ["SharedDirectoryId"] = true, nil }
+
+function asserts.AssertAcceptSharedDirectoryRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected AcceptSharedDirectoryRequest to be of type 'table'")
+	assert(struct["SharedDirectoryId"], "Expected key SharedDirectoryId to exist in table")
+	if struct["SharedDirectoryId"] then asserts.AssertDirectoryId(struct["SharedDirectoryId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.AcceptSharedDirectoryRequest[k], "AcceptSharedDirectoryRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type AcceptSharedDirectoryRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SharedDirectoryId [DirectoryId] <p>Identifier of the shared directory in the directory consumer account. This identifier is different for each directory owner account. </p>
+-- Required key: SharedDirectoryId
+-- @return AcceptSharedDirectoryRequest structure as a key-value pair table
+function M.AcceptSharedDirectoryRequest(args)
+	assert(args, "You must provide an argument table when creating AcceptSharedDirectoryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SharedDirectoryId"] = args["SharedDirectoryId"],
+	}
+	asserts.AssertAcceptSharedDirectoryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DeleteSnapshotResult = { ["SnapshotId"] = true, nil }
 
 function asserts.AssertDeleteSnapshotResult(struct)
@@ -704,68 +817,34 @@ function M.DeleteSnapshotResult(args)
     }
 end
 
-keys.InsufficientPermissionsException = { ["Message"] = true, ["RequestId"] = true, nil }
-
-function asserts.AssertInsufficientPermissionsException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InsufficientPermissionsException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["RequestId"] then asserts.AssertRequestId(struct["RequestId"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InsufficientPermissionsException[k], "InsufficientPermissionsException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InsufficientPermissionsException
--- <p>The account does not have sufficient permission to perform the operation.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- * RequestId [RequestId] 
--- @return InsufficientPermissionsException structure as a key-value pair table
-function M.InsufficientPermissionsException(args)
-	assert(args, "You must provide an argument table when creating InsufficientPermissionsException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-		["RequestId"] = args["RequestId"],
-	}
-	asserts.AssertInsufficientPermissionsException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DirectoryDescription = { ["AccessUrl"] = true, ["DirectoryId"] = true, ["SsoEnabled"] = true, ["Name"] = true, ["RadiusStatus"] = true, ["DnsIpAddrs"] = true, ["VpcSettings"] = true, ["ConnectSettings"] = true, ["RadiusSettings"] = true, ["StageLastUpdatedDateTime"] = true, ["Alias"] = true, ["LaunchTime"] = true, ["StageReason"] = true, ["Description"] = true, ["ShortName"] = true, ["Stage"] = true, ["Type"] = true, ["Size"] = true, nil }
+keys.DirectoryDescription = { ["DirectoryId"] = true, ["ConnectSettings"] = true, ["RadiusSettings"] = true, ["StageLastUpdatedDateTime"] = true, ["RadiusStatus"] = true, ["Type"] = true, ["Name"] = true, ["Description"] = true, ["ShareStatus"] = true, ["StageReason"] = true, ["Stage"] = true, ["AccessUrl"] = true, ["ShareMethod"] = true, ["OwnerDirectoryDescription"] = true, ["ShareNotes"] = true, ["Alias"] = true, ["SsoEnabled"] = true, ["DesiredNumberOfDomainControllers"] = true, ["DnsIpAddrs"] = true, ["VpcSettings"] = true, ["Edition"] = true, ["LaunchTime"] = true, ["ShortName"] = true, ["Size"] = true, nil }
 
 function asserts.AssertDirectoryDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DirectoryDescription to be of type 'table'")
-	if struct["AccessUrl"] then asserts.AssertAccessUrl(struct["AccessUrl"]) end
 	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
-	if struct["SsoEnabled"] then asserts.AssertSsoEnabled(struct["SsoEnabled"]) end
-	if struct["Name"] then asserts.AssertDirectoryName(struct["Name"]) end
-	if struct["RadiusStatus"] then asserts.AssertRadiusStatus(struct["RadiusStatus"]) end
-	if struct["DnsIpAddrs"] then asserts.AssertDnsIpAddrs(struct["DnsIpAddrs"]) end
-	if struct["VpcSettings"] then asserts.AssertDirectoryVpcSettingsDescription(struct["VpcSettings"]) end
 	if struct["ConnectSettings"] then asserts.AssertDirectoryConnectSettingsDescription(struct["ConnectSettings"]) end
 	if struct["RadiusSettings"] then asserts.AssertRadiusSettings(struct["RadiusSettings"]) end
 	if struct["StageLastUpdatedDateTime"] then asserts.AssertLastUpdatedDateTime(struct["StageLastUpdatedDateTime"]) end
-	if struct["Alias"] then asserts.AssertAliasName(struct["Alias"]) end
-	if struct["LaunchTime"] then asserts.AssertLaunchTime(struct["LaunchTime"]) end
-	if struct["StageReason"] then asserts.AssertStageReason(struct["StageReason"]) end
-	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
-	if struct["ShortName"] then asserts.AssertDirectoryShortName(struct["ShortName"]) end
-	if struct["Stage"] then asserts.AssertDirectoryStage(struct["Stage"]) end
+	if struct["RadiusStatus"] then asserts.AssertRadiusStatus(struct["RadiusStatus"]) end
 	if struct["Type"] then asserts.AssertDirectoryType(struct["Type"]) end
+	if struct["Name"] then asserts.AssertDirectoryName(struct["Name"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
+	if struct["ShareStatus"] then asserts.AssertShareStatus(struct["ShareStatus"]) end
+	if struct["StageReason"] then asserts.AssertStageReason(struct["StageReason"]) end
+	if struct["Stage"] then asserts.AssertDirectoryStage(struct["Stage"]) end
+	if struct["AccessUrl"] then asserts.AssertAccessUrl(struct["AccessUrl"]) end
+	if struct["ShareMethod"] then asserts.AssertShareMethod(struct["ShareMethod"]) end
+	if struct["OwnerDirectoryDescription"] then asserts.AssertOwnerDirectoryDescription(struct["OwnerDirectoryDescription"]) end
+	if struct["ShareNotes"] then asserts.AssertNotes(struct["ShareNotes"]) end
+	if struct["Alias"] then asserts.AssertAliasName(struct["Alias"]) end
+	if struct["SsoEnabled"] then asserts.AssertSsoEnabled(struct["SsoEnabled"]) end
+	if struct["DesiredNumberOfDomainControllers"] then asserts.AssertDesiredNumberOfDomainControllers(struct["DesiredNumberOfDomainControllers"]) end
+	if struct["DnsIpAddrs"] then asserts.AssertDnsIpAddrs(struct["DnsIpAddrs"]) end
+	if struct["VpcSettings"] then asserts.AssertDirectoryVpcSettingsDescription(struct["VpcSettings"]) end
+	if struct["Edition"] then asserts.AssertDirectoryEdition(struct["Edition"]) end
+	if struct["LaunchTime"] then asserts.AssertLaunchTime(struct["LaunchTime"]) end
+	if struct["ShortName"] then asserts.AssertDirectoryShortName(struct["ShortName"]) end
 	if struct["Size"] then asserts.AssertDirectorySize(struct["Size"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.DirectoryDescription[k], "DirectoryDescription contains unknown key " .. tostring(k))
@@ -776,23 +855,29 @@ end
 -- <p>Contains information about an AWS Directory Service directory.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * AccessUrl [AccessUrl] <p>The access URL for the directory, such as <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has been created for the directory, <code>&lt;alias&gt;</code> is the directory identifier, such as <code>d-XXXXXXXXXX</code>.</p>
 -- * DirectoryId [DirectoryId] <p>The directory identifier.</p>
--- * SsoEnabled [SsoEnabled] <p>Indicates if single-sign on is enabled for the directory. For more information, see <a>EnableSso</a> and <a>DisableSso</a>.</p>
--- * Name [DirectoryName] <p>The fully-qualified name of the directory.</p>
--- * RadiusStatus [RadiusStatus] <p>The status of the RADIUS MFA server connection.</p>
--- * DnsIpAddrs [DnsIpAddrs] <p>The IP addresses of the DNS servers for the directory. For a Simple AD or Microsoft AD directory, these are the IP addresses of the Simple AD or Microsoft AD directory servers. For an AD Connector directory, these are the IP addresses of the DNS servers or domain controllers in the on-premises directory to which the AD Connector is connected.</p>
--- * VpcSettings [DirectoryVpcSettingsDescription] <p>A <a>DirectoryVpcSettingsDescription</a> object that contains additional information about a directory. This member is only present if the directory is a Simple AD or Managed AD directory.</p>
 -- * ConnectSettings [DirectoryConnectSettingsDescription] <p>A <a>DirectoryConnectSettingsDescription</a> object that contains additional information about an AD Connector directory. This member is only present if the directory is an AD Connector directory.</p>
 -- * RadiusSettings [RadiusSettings] <p>A <a>RadiusSettings</a> object that contains information about the RADIUS server configured for this directory.</p>
 -- * StageLastUpdatedDateTime [LastUpdatedDateTime] <p>The date and time that the stage was last updated.</p>
--- * Alias [AliasName] <p>The alias for the directory. If no alias has been created for the directory, the alias is the directory identifier, such as <code>d-XXXXXXXXXX</code>.</p>
--- * LaunchTime [LaunchTime] <p>Specifies when the directory was created.</p>
--- * StageReason [StageReason] <p>Additional information about the directory stage.</p>
--- * Description [Description] <p>The textual description for the directory.</p>
--- * ShortName [DirectoryShortName] <p>The short name of the directory.</p>
--- * Stage [DirectoryStage] <p>The current stage of the directory.</p>
+-- * RadiusStatus [RadiusStatus] <p>The status of the RADIUS MFA server connection.</p>
 -- * Type [DirectoryType] <p>The directory size.</p>
+-- * Name [DirectoryName] <p>The fully qualified name of the directory.</p>
+-- * Description [Description] <p>The textual description for the directory.</p>
+-- * ShareStatus [ShareStatus] <p>Current directory status of the shared AWS Managed Microsoft AD directory.</p>
+-- * StageReason [StageReason] <p>Additional information about the directory stage.</p>
+-- * Stage [DirectoryStage] <p>The current stage of the directory.</p>
+-- * AccessUrl [AccessUrl] <p>The access URL for the directory, such as <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has been created for the directory, <code>&lt;alias&gt;</code> is the directory identifier, such as <code>d-XXXXXXXXXX</code>.</p>
+-- * ShareMethod [ShareMethod] <p>The method used when sharing a directory to determine whether the directory should be shared within your AWS organization (<code>ORGANIZATIONS</code>) or with any AWS account by sending a shared directory request (<code>HANDSHAKE</code>).</p>
+-- * OwnerDirectoryDescription [OwnerDirectoryDescription] <p>Describes the AWS Managed Microsoft AD directory in the directory owner account.</p>
+-- * ShareNotes [Notes] <p>A directory share request that is sent by the directory owner to the directory consumer. The request includes a typed message to help the directory consumer administrator determine whether to approve or reject the share invitation.</p>
+-- * Alias [AliasName] <p>The alias for the directory. If no alias has been created for the directory, the alias is the directory identifier, such as <code>d-XXXXXXXXXX</code>.</p>
+-- * SsoEnabled [SsoEnabled] <p>Indicates if single sign-on is enabled for the directory. For more information, see <a>EnableSso</a> and <a>DisableSso</a>.</p>
+-- * DesiredNumberOfDomainControllers [DesiredNumberOfDomainControllers] <p>The desired number of domain controllers in the directory if the directory is Microsoft AD.</p>
+-- * DnsIpAddrs [DnsIpAddrs] <p>The IP addresses of the DNS servers for the directory. For a Simple AD or Microsoft AD directory, these are the IP addresses of the Simple AD or Microsoft AD directory servers. For an AD Connector directory, these are the IP addresses of the DNS servers or domain controllers in the on-premises directory to which the AD Connector is connected.</p>
+-- * VpcSettings [DirectoryVpcSettingsDescription] <p>A <a>DirectoryVpcSettingsDescription</a> object that contains additional information about a directory. This member is only present if the directory is a Simple AD or Managed AD directory.</p>
+-- * Edition [DirectoryEdition] <p>The edition associated with this directory.</p>
+-- * LaunchTime [LaunchTime] <p>Specifies when the directory was created.</p>
+-- * ShortName [DirectoryShortName] <p>The short name of the directory.</p>
 -- * Size [DirectorySize] <p>The directory size.</p>
 -- @return DirectoryDescription structure as a key-value pair table
 function M.DirectoryDescription(args)
@@ -804,23 +889,29 @@ function M.DirectoryDescription(args)
     local header_args = { 
     }
 	local all_args = { 
-		["AccessUrl"] = args["AccessUrl"],
 		["DirectoryId"] = args["DirectoryId"],
-		["SsoEnabled"] = args["SsoEnabled"],
-		["Name"] = args["Name"],
-		["RadiusStatus"] = args["RadiusStatus"],
-		["DnsIpAddrs"] = args["DnsIpAddrs"],
-		["VpcSettings"] = args["VpcSettings"],
 		["ConnectSettings"] = args["ConnectSettings"],
 		["RadiusSettings"] = args["RadiusSettings"],
 		["StageLastUpdatedDateTime"] = args["StageLastUpdatedDateTime"],
-		["Alias"] = args["Alias"],
-		["LaunchTime"] = args["LaunchTime"],
-		["StageReason"] = args["StageReason"],
-		["Description"] = args["Description"],
-		["ShortName"] = args["ShortName"],
-		["Stage"] = args["Stage"],
+		["RadiusStatus"] = args["RadiusStatus"],
 		["Type"] = args["Type"],
+		["Name"] = args["Name"],
+		["Description"] = args["Description"],
+		["ShareStatus"] = args["ShareStatus"],
+		["StageReason"] = args["StageReason"],
+		["Stage"] = args["Stage"],
+		["AccessUrl"] = args["AccessUrl"],
+		["ShareMethod"] = args["ShareMethod"],
+		["OwnerDirectoryDescription"] = args["OwnerDirectoryDescription"],
+		["ShareNotes"] = args["ShareNotes"],
+		["Alias"] = args["Alias"],
+		["SsoEnabled"] = args["SsoEnabled"],
+		["DesiredNumberOfDomainControllers"] = args["DesiredNumberOfDomainControllers"],
+		["DnsIpAddrs"] = args["DnsIpAddrs"],
+		["VpcSettings"] = args["VpcSettings"],
+		["Edition"] = args["Edition"],
+		["LaunchTime"] = args["LaunchTime"],
+		["ShortName"] = args["ShortName"],
 		["Size"] = args["Size"],
 	}
 	asserts.AssertDirectoryDescription(all_args)
@@ -876,47 +967,7 @@ function M.RegisterEventTopicRequest(args)
     }
 end
 
-keys.IpRouteLimitExceededException = { ["Message"] = true, ["RequestId"] = true, nil }
-
-function asserts.AssertIpRouteLimitExceededException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected IpRouteLimitExceededException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["RequestId"] then asserts.AssertRequestId(struct["RequestId"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.IpRouteLimitExceededException[k], "IpRouteLimitExceededException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type IpRouteLimitExceededException
--- <p>The maximum allowed number of IP addresses was exceeded. The default limit is 100 IP address blocks.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- * RequestId [RequestId] 
--- @return IpRouteLimitExceededException structure as a key-value pair table
-function M.IpRouteLimitExceededException(args)
-	assert(args, "You must provide an argument table when creating IpRouteLimitExceededException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-		["RequestId"] = args["RequestId"],
-	}
-	asserts.AssertIpRouteLimitExceededException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.Trust = { ["DirectoryId"] = true, ["StateLastUpdatedDateTime"] = true, ["LastUpdatedDateTime"] = true, ["CreatedDateTime"] = true, ["TrustStateReason"] = true, ["RemoteDomainName"] = true, ["TrustType"] = true, ["TrustId"] = true, ["TrustDirection"] = true, ["TrustState"] = true, nil }
+keys.Trust = { ["DirectoryId"] = true, ["StateLastUpdatedDateTime"] = true, ["LastUpdatedDateTime"] = true, ["CreatedDateTime"] = true, ["TrustStateReason"] = true, ["RemoteDomainName"] = true, ["SelectiveAuth"] = true, ["TrustType"] = true, ["TrustId"] = true, ["TrustDirection"] = true, ["TrustState"] = true, nil }
 
 function asserts.AssertTrust(struct)
 	assert(struct)
@@ -927,6 +978,7 @@ function asserts.AssertTrust(struct)
 	if struct["CreatedDateTime"] then asserts.AssertCreatedDateTime(struct["CreatedDateTime"]) end
 	if struct["TrustStateReason"] then asserts.AssertTrustStateReason(struct["TrustStateReason"]) end
 	if struct["RemoteDomainName"] then asserts.AssertRemoteDomainName(struct["RemoteDomainName"]) end
+	if struct["SelectiveAuth"] then asserts.AssertSelectiveAuth(struct["SelectiveAuth"]) end
 	if struct["TrustType"] then asserts.AssertTrustType(struct["TrustType"]) end
 	if struct["TrustId"] then asserts.AssertTrustId(struct["TrustId"]) end
 	if struct["TrustDirection"] then asserts.AssertTrustDirection(struct["TrustDirection"]) end
@@ -937,7 +989,7 @@ function asserts.AssertTrust(struct)
 end
 
 --- Create a structure of type Trust
--- <p>Describes a trust relationship between an Microsoft AD in the AWS cloud and an external domain.</p>
+-- <p>Describes a trust relationship between an AWS Managed Microsoft AD directory and an external domain.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * DirectoryId [DirectoryId] <p>The Directory ID of the AWS directory involved in the trust relationship.</p>
@@ -946,7 +998,8 @@ end
 -- * CreatedDateTime [CreatedDateTime] <p>The date and time that the trust relationship was created.</p>
 -- * TrustStateReason [TrustStateReason] <p>The reason for the TrustState.</p>
 -- * RemoteDomainName [RemoteDomainName] <p>The Fully Qualified Domain Name (FQDN) of the external domain involved in the trust relationship.</p>
--- * TrustType [TrustType] <p>The trust relationship type.</p>
+-- * SelectiveAuth [SelectiveAuth] <p>Current state of selective authentication for the trust.</p>
+-- * TrustType [TrustType] <p>The trust relationship type. <code>Forest</code> is the default.</p>
 -- * TrustId [TrustId] <p>The unique ID of the trust relationship.</p>
 -- * TrustDirection [TrustDirection] <p>The trust relationship direction.</p>
 -- * TrustState [TrustState] <p>The trust relationship state.</p>
@@ -966,6 +1019,7 @@ function M.Trust(args)
 		["CreatedDateTime"] = args["CreatedDateTime"],
 		["TrustStateReason"] = args["TrustStateReason"],
 		["RemoteDomainName"] = args["RemoteDomainName"],
+		["SelectiveAuth"] = args["SelectiveAuth"],
 		["TrustType"] = args["TrustType"],
 		["TrustId"] = args["TrustId"],
 		["TrustDirection"] = args["TrustDirection"],
@@ -1017,23 +1071,29 @@ function M.DescribeConditionalForwardersResult(args)
     }
 end
 
-keys.RemoveTagsFromResourceResult = { nil }
+keys.ListLogSubscriptionsRequest = { ["DirectoryId"] = true, ["NextToken"] = true, ["Limit"] = true, nil }
 
-function asserts.AssertRemoveTagsFromResourceResult(struct)
+function asserts.AssertListLogSubscriptionsRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected RemoveTagsFromResourceResult to be of type 'table'")
+	assert(type(struct) == "table", "Expected ListLogSubscriptionsRequest to be of type 'table'")
+	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["Limit"] then asserts.AssertLimit(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.RemoveTagsFromResourceResult[k], "RemoveTagsFromResourceResult contains unknown key " .. tostring(k))
+		assert(keys.ListLogSubscriptionsRequest[k], "ListLogSubscriptionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type RemoveTagsFromResourceResult
+--- Create a structure of type ListLogSubscriptionsRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return RemoveTagsFromResourceResult structure as a key-value pair table
-function M.RemoveTagsFromResourceResult(args)
-	assert(args, "You must provide an argument table when creating RemoveTagsFromResourceResult")
+-- * DirectoryId [DirectoryId] <p>If a <i>DirectoryID</i> is provided, lists only the log subscription associated with that directory. If no <i>DirectoryId</i> is provided, lists all log subscriptions associated with your AWS account. If there are no log subscriptions for the AWS account or the directory, an empty list will be returned.</p>
+-- * NextToken [NextToken] <p>The token for the next set of items to return.</p>
+-- * Limit [Limit] <p>The maximum number of items returned.</p>
+-- @return ListLogSubscriptionsRequest structure as a key-value pair table
+function M.ListLogSubscriptionsRequest(args)
+	assert(args, "You must provide an argument table when creating ListLogSubscriptionsRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1041,8 +1101,11 @@ function M.RemoveTagsFromResourceResult(args)
     local header_args = { 
     }
 	local all_args = { 
+		["DirectoryId"] = args["DirectoryId"],
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
 	}
-	asserts.AssertRemoveTagsFromResourceResult(all_args)
+	asserts.AssertListLogSubscriptionsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1091,27 +1154,31 @@ function M.ListSchemaExtensionsResult(args)
     }
 end
 
-keys.DirectoryLimitExceededException = { ["Message"] = true, ["RequestId"] = true, nil }
+keys.UnshareDirectoryRequest = { ["DirectoryId"] = true, ["UnshareTarget"] = true, nil }
 
-function asserts.AssertDirectoryLimitExceededException(struct)
+function asserts.AssertUnshareDirectoryRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DirectoryLimitExceededException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["RequestId"] then asserts.AssertRequestId(struct["RequestId"]) end
+	assert(type(struct) == "table", "Expected UnshareDirectoryRequest to be of type 'table'")
+	assert(struct["DirectoryId"], "Expected key DirectoryId to exist in table")
+	assert(struct["UnshareTarget"], "Expected key UnshareTarget to exist in table")
+	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
+	if struct["UnshareTarget"] then asserts.AssertUnshareTarget(struct["UnshareTarget"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DirectoryLimitExceededException[k], "DirectoryLimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.UnshareDirectoryRequest[k], "UnshareDirectoryRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DirectoryLimitExceededException
--- <p>The maximum number of directories in the region has been reached. You can use the <a>GetDirectoryLimits</a> operation to determine your directory limits in the region.</p>
+--- Create a structure of type UnshareDirectoryRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- * RequestId [RequestId] 
--- @return DirectoryLimitExceededException structure as a key-value pair table
-function M.DirectoryLimitExceededException(args)
-	assert(args, "You must provide an argument table when creating DirectoryLimitExceededException")
+-- * DirectoryId [DirectoryId] <p>The identifier of the AWS Managed Microsoft AD directory that you want to stop sharing.</p>
+-- * UnshareTarget [UnshareTarget] <p>Identifier for the directory consumer account with whom the directory has to be unshared.</p>
+-- Required key: DirectoryId
+-- Required key: UnshareTarget
+-- @return UnshareDirectoryRequest structure as a key-value pair table
+function M.UnshareDirectoryRequest(args)
+	assert(args, "You must provide an argument table when creating UnshareDirectoryRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1119,10 +1186,10 @@ function M.DirectoryLimitExceededException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
-		["RequestId"] = args["RequestId"],
+		["DirectoryId"] = args["DirectoryId"],
+		["UnshareTarget"] = args["UnshareTarget"],
 	}
-	asserts.AssertDirectoryLimitExceededException(all_args)
+	asserts.AssertUnshareDirectoryRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1175,27 +1242,25 @@ function M.AddTagsToResourceRequest(args)
     }
 end
 
-keys.InvalidNextTokenException = { ["Message"] = true, ["RequestId"] = true, nil }
+keys.RejectSharedDirectoryResult = { ["SharedDirectoryId"] = true, nil }
 
-function asserts.AssertInvalidNextTokenException(struct)
+function asserts.AssertRejectSharedDirectoryResult(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidNextTokenException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["RequestId"] then asserts.AssertRequestId(struct["RequestId"]) end
+	assert(type(struct) == "table", "Expected RejectSharedDirectoryResult to be of type 'table'")
+	if struct["SharedDirectoryId"] then asserts.AssertDirectoryId(struct["SharedDirectoryId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidNextTokenException[k], "InvalidNextTokenException contains unknown key " .. tostring(k))
+		assert(keys.RejectSharedDirectoryResult[k], "RejectSharedDirectoryResult contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidNextTokenException
--- <p>The <i>NextToken</i> value is not valid.</p>
+--- Create a structure of type RejectSharedDirectoryResult
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- * RequestId [RequestId] 
--- @return InvalidNextTokenException structure as a key-value pair table
-function M.InvalidNextTokenException(args)
-	assert(args, "You must provide an argument table when creating InvalidNextTokenException")
+-- * SharedDirectoryId [DirectoryId] <p>Identifier of the shared directory in the directory consumer account.</p>
+-- @return RejectSharedDirectoryResult structure as a key-value pair table
+function M.RejectSharedDirectoryResult(args)
+	assert(args, "You must provide an argument table when creating RejectSharedDirectoryResult")
     local query_args = { 
     }
     local uri_args = { 
@@ -1203,10 +1268,58 @@ function M.InvalidNextTokenException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
-		["RequestId"] = args["RequestId"],
+		["SharedDirectoryId"] = args["SharedDirectoryId"],
 	}
-	asserts.AssertInvalidNextTokenException(all_args)
+	asserts.AssertRejectSharedDirectoryResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ResetUserPasswordRequest = { ["UserName"] = true, ["DirectoryId"] = true, ["NewPassword"] = true, nil }
+
+function asserts.AssertResetUserPasswordRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ResetUserPasswordRequest to be of type 'table'")
+	assert(struct["DirectoryId"], "Expected key DirectoryId to exist in table")
+	assert(struct["UserName"], "Expected key UserName to exist in table")
+	assert(struct["NewPassword"], "Expected key NewPassword to exist in table")
+	if struct["UserName"] then asserts.AssertCustomerUserName(struct["UserName"]) end
+	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
+	if struct["NewPassword"] then asserts.AssertUserPassword(struct["NewPassword"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ResetUserPasswordRequest[k], "ResetUserPasswordRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ResetUserPasswordRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [CustomerUserName] <p>The user name of the user whose password will be reset.</p>
+-- * DirectoryId [DirectoryId] <p>Identifier of the AWS Managed Microsoft AD or Simple AD directory in which the user resides.</p>
+-- * NewPassword [UserPassword] <p>The new password that will be reset.</p>
+-- Required key: DirectoryId
+-- Required key: UserName
+-- Required key: NewPassword
+-- @return ResetUserPasswordRequest structure as a key-value pair table
+function M.ResetUserPasswordRequest(args)
+	assert(args, "You must provide an argument table when creating ResetUserPasswordRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["UserName"] = args["UserName"],
+		["DirectoryId"] = args["DirectoryId"],
+		["NewPassword"] = args["NewPassword"],
+	}
+	asserts.AssertResetUserPasswordRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1321,7 +1434,7 @@ end
 -- <p>Contains information about an AD Connector directory.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CustomerUserName [UserName] <p>The username of the service account in the on-premises directory.</p>
+-- * CustomerUserName [UserName] <p>The user name of the service account in the on-premises directory.</p>
 -- * VpcId [VpcId] <p>The identifier of the VPC that the AD Connector is in.</p>
 -- * SubnetIds [SubnetIds] <p>A list of subnet identifiers in the VPC that the AD connector is in.</p>
 -- * SecurityGroupId [SecurityGroupId] <p>The security group identifier for the AD Connector directory.</p>
@@ -1377,7 +1490,7 @@ end
 -- <p>Contains the inputs for the <a>ConnectDirectory</a> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Name [DirectoryName] <p>The fully-qualified name of the on-premises directory, such as <code>corp.example.com</code>.</p>
+-- * Name [DirectoryName] <p>The fully qualified name of the on-premises directory, such as <code>corp.example.com</code>.</p>
 -- * ConnectSettings [DirectoryConnectSettings] <p>A <a>DirectoryConnectSettings</a> object that contains additional information for the operation.</p>
 -- * Description [Description] <p>A textual description for the directory.</p>
 -- * ShortName [DirectoryShortName] <p>The NetBIOS name of the on-premises directory, such as <code>CORP</code>.</p>
@@ -1413,6 +1526,46 @@ function M.ConnectDirectoryRequest(args)
     }
 end
 
+keys.DescribeDomainControllersResult = { ["NextToken"] = true, ["DomainControllers"] = true, nil }
+
+function asserts.AssertDescribeDomainControllersResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeDomainControllersResult to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["DomainControllers"] then asserts.AssertDomainControllers(struct["DomainControllers"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeDomainControllersResult[k], "DescribeDomainControllersResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeDomainControllersResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to <a>DescribeDomainControllers</a> retrieve the next set of items.</p>
+-- * DomainControllers [DomainControllers] <p>List of the <a>DomainController</a> objects that were retrieved.</p>
+-- @return DescribeDomainControllersResult structure as a key-value pair table
+function M.DescribeDomainControllersResult(args)
+	assert(args, "You must provide an argument table when creating DescribeDomainControllersResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["DomainControllers"] = args["DomainControllers"],
+	}
+	asserts.AssertDescribeDomainControllersResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.VerifyTrustRequest = { ["TrustId"] = true, nil }
 
 function asserts.AssertVerifyTrustRequest(struct)
@@ -1426,7 +1579,7 @@ function asserts.AssertVerifyTrustRequest(struct)
 end
 
 --- Create a structure of type VerifyTrustRequest
--- <p>Initiates the verification of an existing trust relationship between a Microsoft AD in the AWS cloud and an external domain.</p>
+-- <p>Initiates the verification of an existing trust relationship between an AWS Managed Microsoft AD directory and an external domain.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * TrustId [TrustId] <p>The unique Trust ID of the trust relationship to verify.</p>
@@ -1444,6 +1597,49 @@ function M.VerifyTrustRequest(args)
 		["TrustId"] = args["TrustId"],
 	}
 	asserts.AssertVerifyTrustRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.LogSubscription = { ["DirectoryId"] = true, ["SubscriptionCreatedDateTime"] = true, ["LogGroupName"] = true, nil }
+
+function asserts.AssertLogSubscription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LogSubscription to be of type 'table'")
+	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
+	if struct["SubscriptionCreatedDateTime"] then asserts.AssertSubscriptionCreatedDateTime(struct["SubscriptionCreatedDateTime"]) end
+	if struct["LogGroupName"] then asserts.AssertLogGroupName(struct["LogGroupName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.LogSubscription[k], "LogSubscription contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LogSubscription
+-- <p>Represents a log subscription, which tracks real-time data from a chosen log group to a specified destination.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>Identifier (ID) of the directory that you want to associate with the log subscription.</p>
+-- * SubscriptionCreatedDateTime [SubscriptionCreatedDateTime] <p>The date and time that the log subscription was created.</p>
+-- * LogGroupName [LogGroupName] <p>The name of the log group.</p>
+-- @return LogSubscription structure as a key-value pair table
+function M.LogSubscription(args)
+	assert(args, "You must provide an argument table when creating LogSubscription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["DirectoryId"] = args["DirectoryId"],
+		["SubscriptionCreatedDateTime"] = args["SubscriptionCreatedDateTime"],
+		["LogGroupName"] = args["LogGroupName"],
+	}
+	asserts.AssertLogSubscription(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1650,7 +1846,7 @@ end
 -- * SubnetIds [SubnetIds] <p>The identifiers of the subnets for the directory servers.</p>
 -- * VpcId [VpcId] <p>The identifier of the VPC that the directory is in.</p>
 -- * AvailabilityZones [AvailabilityZones] <p>The list of Availability Zones that the directory is in.</p>
--- * SecurityGroupId [SecurityGroupId] <p>The security group identifier for the directory. If the directory was created before 8/1/2014, this is the identifier of the directory members security group that was created when the directory was created. If the directory was created after this date, this value is null.</p>
+-- * SecurityGroupId [SecurityGroupId] <p>The domain controller security group identifier for the directory.</p>
 -- @return DirectoryVpcSettingsDescription structure as a key-value pair table
 function M.DirectoryVpcSettingsDescription(args)
 	assert(args, "You must provide an argument table when creating DirectoryVpcSettingsDescription")
@@ -1675,27 +1871,33 @@ function M.DirectoryVpcSettingsDescription(args)
     }
 end
 
-keys.ClientException = { ["Message"] = true, ["RequestId"] = true, nil }
+keys.DescribeDomainControllersRequest = { ["DirectoryId"] = true, ["NextToken"] = true, ["Limit"] = true, ["DomainControllerIds"] = true, nil }
 
-function asserts.AssertClientException(struct)
+function asserts.AssertDescribeDomainControllersRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ClientException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["RequestId"] then asserts.AssertRequestId(struct["RequestId"]) end
+	assert(type(struct) == "table", "Expected DescribeDomainControllersRequest to be of type 'table'")
+	assert(struct["DirectoryId"], "Expected key DirectoryId to exist in table")
+	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["Limit"] then asserts.AssertLimit(struct["Limit"]) end
+	if struct["DomainControllerIds"] then asserts.AssertDomainControllerIds(struct["DomainControllerIds"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ClientException[k], "ClientException contains unknown key " .. tostring(k))
+		assert(keys.DescribeDomainControllersRequest[k], "DescribeDomainControllersRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ClientException
--- <p>A client exception has occurred.</p>
+--- Create a structure of type DescribeDomainControllersRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- * RequestId [RequestId] 
--- @return ClientException structure as a key-value pair table
-function M.ClientException(args)
-	assert(args, "You must provide an argument table when creating ClientException")
+-- * DirectoryId [DirectoryId] <p>Identifier of the directory for which to retrieve the domain controller information.</p>
+-- * NextToken [NextToken] <p>The <i>DescribeDomainControllers.NextToken</i> value from a previous call to <a>DescribeDomainControllers</a>. Pass null if this is the first call. </p>
+-- * Limit [Limit] <p>The maximum number of items to return.</p>
+-- * DomainControllerIds [DomainControllerIds] <p>A list of identifiers for the domain controllers whose information will be provided.</p>
+-- Required key: DirectoryId
+-- @return DescribeDomainControllersRequest structure as a key-value pair table
+function M.DescribeDomainControllersRequest(args)
+	assert(args, "You must provide an argument table when creating DescribeDomainControllersRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -1703,10 +1905,12 @@ function M.ClientException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
-		["RequestId"] = args["RequestId"],
+		["DirectoryId"] = args["DirectoryId"],
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
+		["DomainControllerIds"] = args["DomainControllerIds"],
 	}
-	asserts.AssertClientException(all_args)
+	asserts.AssertDescribeDomainControllersRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1752,61 +1956,6 @@ function M.CreateTrustResult(args)
     }
 end
 
-keys.SchemaExtensionInfo = { ["DirectoryId"] = true, ["Description"] = true, ["SchemaExtensionStatus"] = true, ["SchemaExtensionId"] = true, ["EndDateTime"] = true, ["StartDateTime"] = true, ["SchemaExtensionStatusReason"] = true, nil }
-
-function asserts.AssertSchemaExtensionInfo(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SchemaExtensionInfo to be of type 'table'")
-	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
-	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
-	if struct["SchemaExtensionStatus"] then asserts.AssertSchemaExtensionStatus(struct["SchemaExtensionStatus"]) end
-	if struct["SchemaExtensionId"] then asserts.AssertSchemaExtensionId(struct["SchemaExtensionId"]) end
-	if struct["EndDateTime"] then asserts.AssertEndDateTime(struct["EndDateTime"]) end
-	if struct["StartDateTime"] then asserts.AssertStartDateTime(struct["StartDateTime"]) end
-	if struct["SchemaExtensionStatusReason"] then asserts.AssertSchemaExtensionStatusReason(struct["SchemaExtensionStatusReason"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.SchemaExtensionInfo[k], "SchemaExtensionInfo contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SchemaExtensionInfo
--- <p>Information about a schema extension.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * DirectoryId [DirectoryId] <p>The identifier of the directory to which the schema extension is applied.</p>
--- * Description [Description] <p>A description of the schema extension.</p>
--- * SchemaExtensionStatus [SchemaExtensionStatus] <p>The current status of the schema extension.</p>
--- * SchemaExtensionId [SchemaExtensionId] <p>The identifier of the schema extension.</p>
--- * EndDateTime [EndDateTime] <p>The date and time that the schema extension was completed.</p>
--- * StartDateTime [StartDateTime] <p>The date and time that the schema extension started being applied to the directory.</p>
--- * SchemaExtensionStatusReason [SchemaExtensionStatusReason] <p>The reason for the <code>SchemaExtensionStatus</code>.</p>
--- @return SchemaExtensionInfo structure as a key-value pair table
-function M.SchemaExtensionInfo(args)
-	assert(args, "You must provide an argument table when creating SchemaExtensionInfo")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["DirectoryId"] = args["DirectoryId"],
-		["Description"] = args["Description"],
-		["SchemaExtensionStatus"] = args["SchemaExtensionStatus"],
-		["SchemaExtensionId"] = args["SchemaExtensionId"],
-		["EndDateTime"] = args["EndDateTime"],
-		["StartDateTime"] = args["StartDateTime"],
-		["SchemaExtensionStatusReason"] = args["SchemaExtensionStatusReason"],
-	}
-	asserts.AssertSchemaExtensionInfo(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.RemoveIpRoutesResult = { nil }
 
 function asserts.AssertRemoveIpRoutesResult(struct)
@@ -1841,27 +1990,43 @@ function M.RemoveIpRoutesResult(args)
     }
 end
 
-keys.ListIpRoutesResult = { ["IpRoutesInfo"] = true, ["NextToken"] = true, nil }
+keys.DomainController = { ["Status"] = true, ["DirectoryId"] = true, ["VpcId"] = true, ["DomainControllerId"] = true, ["DnsIpAddr"] = true, ["AvailabilityZone"] = true, ["LaunchTime"] = true, ["StatusReason"] = true, ["SubnetId"] = true, ["StatusLastUpdatedDateTime"] = true, nil }
 
-function asserts.AssertListIpRoutesResult(struct)
+function asserts.AssertDomainController(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ListIpRoutesResult to be of type 'table'")
-	if struct["IpRoutesInfo"] then asserts.AssertIpRoutesInfo(struct["IpRoutesInfo"]) end
-	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	assert(type(struct) == "table", "Expected DomainController to be of type 'table'")
+	if struct["Status"] then asserts.AssertDomainControllerStatus(struct["Status"]) end
+	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
+	if struct["VpcId"] then asserts.AssertVpcId(struct["VpcId"]) end
+	if struct["DomainControllerId"] then asserts.AssertDomainControllerId(struct["DomainControllerId"]) end
+	if struct["DnsIpAddr"] then asserts.AssertIpAddr(struct["DnsIpAddr"]) end
+	if struct["AvailabilityZone"] then asserts.AssertAvailabilityZone(struct["AvailabilityZone"]) end
+	if struct["LaunchTime"] then asserts.AssertLaunchTime(struct["LaunchTime"]) end
+	if struct["StatusReason"] then asserts.AssertDomainControllerStatusReason(struct["StatusReason"]) end
+	if struct["SubnetId"] then asserts.AssertSubnetId(struct["SubnetId"]) end
+	if struct["StatusLastUpdatedDateTime"] then asserts.AssertLastUpdatedDateTime(struct["StatusLastUpdatedDateTime"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ListIpRoutesResult[k], "ListIpRoutesResult contains unknown key " .. tostring(k))
+		assert(keys.DomainController[k], "DomainController contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ListIpRoutesResult
---  
+--- Create a structure of type DomainController
+-- <p>Contains information about the domain controllers for a specified directory.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * IpRoutesInfo [IpRoutesInfo] <p>A list of <a>IpRoute</a>s.</p>
--- * NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <i>NextToken</i> parameter in a subsequent call to <a>ListIpRoutes</a> to retrieve the next set of items.</p>
--- @return ListIpRoutesResult structure as a key-value pair table
-function M.ListIpRoutesResult(args)
-	assert(args, "You must provide an argument table when creating ListIpRoutesResult")
+-- * Status [DomainControllerStatus] <p>The status of the domain controller.</p>
+-- * DirectoryId [DirectoryId] <p>Identifier of the directory where the domain controller resides.</p>
+-- * VpcId [VpcId] <p>The identifier of the VPC that contains the domain controller.</p>
+-- * DomainControllerId [DomainControllerId] <p>Identifies a specific domain controller in the directory.</p>
+-- * DnsIpAddr [IpAddr] <p>The IP address of the domain controller.</p>
+-- * AvailabilityZone [AvailabilityZone] <p>The Availability Zone where the domain controller is located.</p>
+-- * LaunchTime [LaunchTime] <p>Specifies when the domain controller was created.</p>
+-- * StatusReason [DomainControllerStatusReason] <p>A description of the domain controller state.</p>
+-- * SubnetId [SubnetId] <p>Identifier of the subnet in the VPC that contains the domain controller.</p>
+-- * StatusLastUpdatedDateTime [LastUpdatedDateTime] <p>The date and time that the status was last updated.</p>
+-- @return DomainController structure as a key-value pair table
+function M.DomainController(args)
+	assert(args, "You must provide an argument table when creating DomainController")
     local query_args = { 
     }
     local uri_args = { 
@@ -1869,10 +2034,18 @@ function M.ListIpRoutesResult(args)
     local header_args = { 
     }
 	local all_args = { 
-		["IpRoutesInfo"] = args["IpRoutesInfo"],
-		["NextToken"] = args["NextToken"],
+		["Status"] = args["Status"],
+		["DirectoryId"] = args["DirectoryId"],
+		["VpcId"] = args["VpcId"],
+		["DomainControllerId"] = args["DomainControllerId"],
+		["DnsIpAddr"] = args["DnsIpAddr"],
+		["AvailabilityZone"] = args["AvailabilityZone"],
+		["LaunchTime"] = args["LaunchTime"],
+		["StatusReason"] = args["StatusReason"],
+		["SubnetId"] = args["SubnetId"],
+		["StatusLastUpdatedDateTime"] = args["StatusLastUpdatedDateTime"],
 	}
-	asserts.AssertListIpRoutesResult(all_args)
+	asserts.AssertDomainController(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1917,6 +2090,50 @@ function M.DeleteConditionalForwarderRequest(args)
 		["RemoteDomainName"] = args["RemoteDomainName"],
 	}
 	asserts.AssertDeleteConditionalForwarderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateLogSubscriptionRequest = { ["DirectoryId"] = true, ["LogGroupName"] = true, nil }
+
+function asserts.AssertCreateLogSubscriptionRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateLogSubscriptionRequest to be of type 'table'")
+	assert(struct["DirectoryId"], "Expected key DirectoryId to exist in table")
+	assert(struct["LogGroupName"], "Expected key LogGroupName to exist in table")
+	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
+	if struct["LogGroupName"] then asserts.AssertLogGroupName(struct["LogGroupName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateLogSubscriptionRequest[k], "CreateLogSubscriptionRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateLogSubscriptionRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>Identifier (ID) of the directory to which you want to subscribe and receive real-time logs to your specified CloudWatch log group.</p>
+-- * LogGroupName [LogGroupName] <p>The name of the CloudWatch log group where the real-time domain controller logs are forwarded.</p>
+-- Required key: DirectoryId
+-- Required key: LogGroupName
+-- @return CreateLogSubscriptionRequest structure as a key-value pair table
+function M.CreateLogSubscriptionRequest(args)
+	assert(args, "You must provide an argument table when creating CreateLogSubscriptionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["DirectoryId"] = args["DirectoryId"],
+		["LogGroupName"] = args["LogGroupName"],
+	}
+	asserts.AssertCreateLogSubscriptionRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1991,7 +2208,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * CustomerDnsIps [DnsIpAddrs] <p>A list of one or more IP addresses of DNS servers or domain controllers in the on-premises directory.</p>
--- * CustomerUserName [UserName] <p>The username of an account in the on-premises directory that is used to connect to the directory. This account must have the following privileges:</p> <ul> <li> <p>Read users and groups</p> </li> <li> <p>Create computer objects</p> </li> <li> <p>Join computers to the domain</p> </li> </ul>
+-- * CustomerUserName [UserName] <p>The user name of an account in the on-premises directory that is used to connect to the directory. This account must have the following permissions:</p> <ul> <li> <p>Read users and groups</p> </li> <li> <p>Create computer objects</p> </li> <li> <p>Join computers to the domain</p> </li> </ul>
 -- * SubnetIds [SubnetIds] <p>A list of subnet identifiers in the VPC in which the AD Connector is created.</p>
 -- * VpcId [VpcId] <p>The identifier of the VPC in which the AD Connector is created.</p>
 -- Required key: VpcId
@@ -2014,6 +2231,40 @@ function M.DirectoryConnectSettings(args)
 		["VpcId"] = args["VpcId"],
 	}
 	asserts.AssertDirectoryConnectSettings(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateNumberOfDomainControllersResult = { nil }
+
+function asserts.AssertUpdateNumberOfDomainControllersResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateNumberOfDomainControllersResult to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateNumberOfDomainControllersResult[k], "UpdateNumberOfDomainControllersResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateNumberOfDomainControllersResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateNumberOfDomainControllersResult structure as a key-value pair table
+function M.UpdateNumberOfDomainControllersResult(args)
+	assert(args, "You must provide an argument table when creating UpdateNumberOfDomainControllersResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertUpdateNumberOfDomainControllersResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2235,8 +2486,8 @@ end
 -- <p>Contains the results of the <a>DescribeDirectories</a> operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DirectoryDescriptions [DirectoryDescriptions] <p>The list of <a>DirectoryDescription</a> objects that were retrieved.</p> <p>It is possible that this list contains less than the number of items specified in the <i>Limit</i> member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.</p>
--- * NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <i>NextToken</i> parameter in a subsequent call to <a>DescribeDirectories</a> to retrieve the next set of items.</p>
+-- * DirectoryDescriptions [DirectoryDescriptions] <p>The list of <a>DirectoryDescription</a> objects that were retrieved.</p> <p>It is possible that this list contains less than the number of items specified in the <code>Limit</code> member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.</p>
+-- * NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to <a>DescribeDirectories</a> to retrieve the next set of items.</p>
 -- @return DescribeDirectoriesResult structure as a key-value pair table
 function M.DescribeDirectoriesResult(args)
 	assert(args, "You must provide an argument table when creating DescribeDirectoriesResult")
@@ -2298,7 +2549,7 @@ function M.GetSnapshotLimitsRequest(args)
     }
 end
 
-keys.CreateMicrosoftADRequest = { ["ShortName"] = true, ["Password"] = true, ["Name"] = true, ["VpcSettings"] = true, ["Description"] = true, nil }
+keys.CreateMicrosoftADRequest = { ["Name"] = true, ["VpcSettings"] = true, ["Edition"] = true, ["ShortName"] = true, ["Password"] = true, ["Description"] = true, nil }
 
 function asserts.AssertCreateMicrosoftADRequest(struct)
 	assert(struct)
@@ -2306,10 +2557,11 @@ function asserts.AssertCreateMicrosoftADRequest(struct)
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["Password"], "Expected key Password to exist in table")
 	assert(struct["VpcSettings"], "Expected key VpcSettings to exist in table")
-	if struct["ShortName"] then asserts.AssertDirectoryShortName(struct["ShortName"]) end
-	if struct["Password"] then asserts.AssertPassword(struct["Password"]) end
 	if struct["Name"] then asserts.AssertDirectoryName(struct["Name"]) end
 	if struct["VpcSettings"] then asserts.AssertDirectoryVpcSettings(struct["VpcSettings"]) end
+	if struct["Edition"] then asserts.AssertDirectoryEdition(struct["Edition"]) end
+	if struct["ShortName"] then asserts.AssertDirectoryShortName(struct["ShortName"]) end
+	if struct["Password"] then asserts.AssertPassword(struct["Password"]) end
 	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateMicrosoftADRequest[k], "CreateMicrosoftADRequest contains unknown key " .. tostring(k))
@@ -2317,13 +2569,14 @@ function asserts.AssertCreateMicrosoftADRequest(struct)
 end
 
 --- Create a structure of type CreateMicrosoftADRequest
--- <p>Creates a Microsoft AD in the AWS cloud.</p>
+-- <p>Creates an AWS Managed Microsoft AD directory.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * Name [DirectoryName] <p>The fully qualified domain name for the directory, such as <code>corp.example.com</code>. This name will resolve inside your VPC only. It does not need to be publicly resolvable.</p>
+-- * VpcSettings [DirectoryVpcSettings] <p>Contains VPC information for the <a>CreateDirectory</a> or <a>CreateMicrosoftAD</a> operation.</p>
+-- * Edition [DirectoryEdition] <p>AWS Managed Microsoft AD is available in two editions: Standard and Enterprise. Enterprise is the default.</p>
 -- * ShortName [DirectoryShortName] <p>The NetBIOS name for your domain. A short identifier for your domain, such as <code>CORP</code>. If you don't specify a NetBIOS name, it will default to the first part of your directory DNS. For example, <code>CORP</code> for the directory DNS <code>corp.example.com</code>. </p>
 -- * Password [Password] <p>The password for the default administrative user named <code>Admin</code>.</p>
--- * Name [DirectoryName] <p>The fully qualified domain name for the directory, such as <code>corp.example.com</code>. This name will resolve inside your VPC only. It does not need to be publicly resolvable.</p>
--- * VpcSettings [DirectoryVpcSettings] 
 -- * Description [Description] <p>A textual description for the directory. This label will appear on the AWS console <code>Directory Details</code> page after the directory is created.</p>
 -- Required key: Name
 -- Required key: Password
@@ -2338,13 +2591,54 @@ function M.CreateMicrosoftADRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["ShortName"] = args["ShortName"],
-		["Password"] = args["Password"],
 		["Name"] = args["Name"],
 		["VpcSettings"] = args["VpcSettings"],
+		["Edition"] = args["Edition"],
+		["ShortName"] = args["ShortName"],
+		["Password"] = args["Password"],
 		["Description"] = args["Description"],
 	}
 	asserts.AssertCreateMicrosoftADRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateTrustResult = { ["TrustId"] = true, ["RequestId"] = true, nil }
+
+function asserts.AssertUpdateTrustResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateTrustResult to be of type 'table'")
+	if struct["TrustId"] then asserts.AssertTrustId(struct["TrustId"]) end
+	if struct["RequestId"] then asserts.AssertRequestId(struct["RequestId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateTrustResult[k], "UpdateTrustResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateTrustResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrustId [TrustId] <p>Identifier of the trust relationship.</p>
+-- * RequestId [RequestId] 
+-- @return UpdateTrustResult structure as a key-value pair table
+function M.UpdateTrustResult(args)
+	assert(args, "You must provide an argument table when creating UpdateTrustResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["TrustId"] = args["TrustId"],
+		["RequestId"] = args["RequestId"],
+	}
+	asserts.AssertUpdateTrustResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2408,7 +2702,7 @@ function asserts.AssertDescribeTrustsRequest(struct)
 end
 
 --- Create a structure of type DescribeTrustsRequest
--- <p>Describes the trust relationships for a particular Microsoft AD in the AWS cloud. If no input parameters are are provided, such as directory ID or trust ID, this request describes all the trust relationships.</p>
+-- <p>Describes the trust relationships for a particular AWS Managed Microsoft AD directory. If no input parameters are are provided, such as directory ID or trust ID, this request describes all the trust relationships.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Limit [Limit] <p>The maximum number of objects to return.</p>
@@ -2557,27 +2851,37 @@ function M.DisableRadiusRequest(args)
     }
 end
 
-keys.AuthenticationFailedException = { ["Message"] = true, ["RequestId"] = true, nil }
+keys.SchemaExtensionInfo = { ["DirectoryId"] = true, ["Description"] = true, ["SchemaExtensionStatus"] = true, ["SchemaExtensionId"] = true, ["EndDateTime"] = true, ["StartDateTime"] = true, ["SchemaExtensionStatusReason"] = true, nil }
 
-function asserts.AssertAuthenticationFailedException(struct)
+function asserts.AssertSchemaExtensionInfo(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected AuthenticationFailedException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["RequestId"] then asserts.AssertRequestId(struct["RequestId"]) end
+	assert(type(struct) == "table", "Expected SchemaExtensionInfo to be of type 'table'")
+	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
+	if struct["SchemaExtensionStatus"] then asserts.AssertSchemaExtensionStatus(struct["SchemaExtensionStatus"]) end
+	if struct["SchemaExtensionId"] then asserts.AssertSchemaExtensionId(struct["SchemaExtensionId"]) end
+	if struct["EndDateTime"] then asserts.AssertEndDateTime(struct["EndDateTime"]) end
+	if struct["StartDateTime"] then asserts.AssertStartDateTime(struct["StartDateTime"]) end
+	if struct["SchemaExtensionStatusReason"] then asserts.AssertSchemaExtensionStatusReason(struct["SchemaExtensionStatusReason"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.AuthenticationFailedException[k], "AuthenticationFailedException contains unknown key " .. tostring(k))
+		assert(keys.SchemaExtensionInfo[k], "SchemaExtensionInfo contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type AuthenticationFailedException
--- <p>An authentication error occurred.</p>
+--- Create a structure of type SchemaExtensionInfo
+-- <p>Information about a schema extension.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] <p>The textual message for the exception.</p>
--- * RequestId [RequestId] <p>The identifier of the request that caused the exception.</p>
--- @return AuthenticationFailedException structure as a key-value pair table
-function M.AuthenticationFailedException(args)
-	assert(args, "You must provide an argument table when creating AuthenticationFailedException")
+-- * DirectoryId [DirectoryId] <p>The identifier of the directory to which the schema extension is applied.</p>
+-- * Description [Description] <p>A description of the schema extension.</p>
+-- * SchemaExtensionStatus [SchemaExtensionStatus] <p>The current status of the schema extension.</p>
+-- * SchemaExtensionId [SchemaExtensionId] <p>The identifier of the schema extension.</p>
+-- * EndDateTime [EndDateTime] <p>The date and time that the schema extension was completed.</p>
+-- * StartDateTime [StartDateTime] <p>The date and time that the schema extension started being applied to the directory.</p>
+-- * SchemaExtensionStatusReason [SchemaExtensionStatusReason] <p>The reason for the <code>SchemaExtensionStatus</code>.</p>
+-- @return SchemaExtensionInfo structure as a key-value pair table
+function M.SchemaExtensionInfo(args)
+	assert(args, "You must provide an argument table when creating SchemaExtensionInfo")
     local query_args = { 
     }
     local uri_args = { 
@@ -2585,50 +2889,15 @@ function M.AuthenticationFailedException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
-		["RequestId"] = args["RequestId"],
+		["DirectoryId"] = args["DirectoryId"],
+		["Description"] = args["Description"],
+		["SchemaExtensionStatus"] = args["SchemaExtensionStatus"],
+		["SchemaExtensionId"] = args["SchemaExtensionId"],
+		["EndDateTime"] = args["EndDateTime"],
+		["StartDateTime"] = args["StartDateTime"],
+		["SchemaExtensionStatusReason"] = args["SchemaExtensionStatusReason"],
 	}
-	asserts.AssertAuthenticationFailedException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ServiceException = { ["Message"] = true, ["RequestId"] = true, nil }
-
-function asserts.AssertServiceException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ServiceException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["RequestId"] then asserts.AssertRequestId(struct["RequestId"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ServiceException[k], "ServiceException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ServiceException
--- <p>An exception has occurred in AWS Directory Service.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- * RequestId [RequestId] 
--- @return ServiceException structure as a key-value pair table
-function M.ServiceException(args)
-	assert(args, "You must provide an argument table when creating ServiceException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-		["RequestId"] = args["RequestId"],
-	}
-	asserts.AssertServiceException(all_args)
+	asserts.AssertSchemaExtensionInfo(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2673,6 +2942,50 @@ function M.CreateAliasRequest(args)
 		["Alias"] = args["Alias"],
 	}
 	asserts.AssertCreateAliasRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateNumberOfDomainControllersRequest = { ["DesiredNumber"] = true, ["DirectoryId"] = true, nil }
+
+function asserts.AssertUpdateNumberOfDomainControllersRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateNumberOfDomainControllersRequest to be of type 'table'")
+	assert(struct["DirectoryId"], "Expected key DirectoryId to exist in table")
+	assert(struct["DesiredNumber"], "Expected key DesiredNumber to exist in table")
+	if struct["DesiredNumber"] then asserts.AssertDesiredNumberOfDomainControllers(struct["DesiredNumber"]) end
+	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateNumberOfDomainControllersRequest[k], "UpdateNumberOfDomainControllersRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateNumberOfDomainControllersRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DesiredNumber [DesiredNumberOfDomainControllers] <p>The number of domain controllers desired in the directory.</p>
+-- * DirectoryId [DirectoryId] <p>Identifier of the directory to which the domain controllers will be added or removed.</p>
+-- Required key: DirectoryId
+-- Required key: DesiredNumber
+-- @return UpdateNumberOfDomainControllersRequest structure as a key-value pair table
+function M.UpdateNumberOfDomainControllersRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateNumberOfDomainControllersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["DesiredNumber"] = args["DesiredNumber"],
+		["DirectoryId"] = args["DirectoryId"],
+	}
+	asserts.AssertUpdateNumberOfDomainControllersRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2849,7 +3162,7 @@ function M.RemoveTagsFromResourceRequest(args)
     }
 end
 
-keys.CreateTrustRequest = { ["TrustPassword"] = true, ["DirectoryId"] = true, ["RemoteDomainName"] = true, ["ConditionalForwarderIpAddrs"] = true, ["TrustType"] = true, ["TrustDirection"] = true, nil }
+keys.CreateTrustRequest = { ["TrustPassword"] = true, ["DirectoryId"] = true, ["RemoteDomainName"] = true, ["ConditionalForwarderIpAddrs"] = true, ["SelectiveAuth"] = true, ["TrustType"] = true, ["TrustDirection"] = true, nil }
 
 function asserts.AssertCreateTrustRequest(struct)
 	assert(struct)
@@ -2862,6 +3175,7 @@ function asserts.AssertCreateTrustRequest(struct)
 	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
 	if struct["RemoteDomainName"] then asserts.AssertRemoteDomainName(struct["RemoteDomainName"]) end
 	if struct["ConditionalForwarderIpAddrs"] then asserts.AssertDnsIpAddrs(struct["ConditionalForwarderIpAddrs"]) end
+	if struct["SelectiveAuth"] then asserts.AssertSelectiveAuth(struct["SelectiveAuth"]) end
 	if struct["TrustType"] then asserts.AssertTrustType(struct["TrustType"]) end
 	if struct["TrustDirection"] then asserts.AssertTrustDirection(struct["TrustDirection"]) end
 	for k,_ in pairs(struct) do
@@ -2870,14 +3184,15 @@ function asserts.AssertCreateTrustRequest(struct)
 end
 
 --- Create a structure of type CreateTrustRequest
--- <p>AWS Directory Service for Microsoft Active Directory allows you to configure trust relationships. For example, you can establish a trust between your Microsoft AD in the AWS cloud, and your existing on-premises Microsoft Active Directory. This would allow you to provide users and groups access to resources in either domain, with a single set of credentials.</p> <p>This action initiates the creation of the AWS side of a trust relationship between a Microsoft AD in the AWS cloud and an external domain.</p>
+-- <p>AWS Directory Service for Microsoft Active Directory allows you to configure trust relationships. For example, you can establish a trust between your AWS Managed Microsoft AD directory, and your existing on-premises Microsoft Active Directory. This would allow you to provide users and groups access to resources in either domain, with a single set of credentials.</p> <p>This action initiates the creation of the AWS side of a trust relationship between an AWS Managed Microsoft AD directory and an external domain.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * TrustPassword [TrustPassword] <p>The trust password. The must be the same password that was used when creating the trust relationship on the external domain.</p>
--- * DirectoryId [DirectoryId] <p>The Directory ID of the Microsoft AD in the AWS cloud for which to establish the trust relationship.</p>
+-- * DirectoryId [DirectoryId] <p>The Directory ID of the AWS Managed Microsoft AD directory for which to establish the trust relationship.</p>
 -- * RemoteDomainName [RemoteDomainName] <p>The Fully Qualified Domain Name (FQDN) of the external domain for which to create the trust relationship.</p>
 -- * ConditionalForwarderIpAddrs [DnsIpAddrs] <p>The IP addresses of the remote DNS server associated with RemoteDomainName.</p>
--- * TrustType [TrustType] <p>The trust relationship type.</p>
+-- * SelectiveAuth [SelectiveAuth] <p>Optional parameter to enable selective authentication for the trust.</p>
+-- * TrustType [TrustType] <p>The trust relationship type. <code>Forest</code> is the default.</p>
 -- * TrustDirection [TrustDirection] <p>The direction of the trust relationship.</p>
 -- Required key: DirectoryId
 -- Required key: RemoteDomainName
@@ -2897,6 +3212,7 @@ function M.CreateTrustRequest(args)
 		["DirectoryId"] = args["DirectoryId"],
 		["RemoteDomainName"] = args["RemoteDomainName"],
 		["ConditionalForwarderIpAddrs"] = args["ConditionalForwarderIpAddrs"],
+		["SelectiveAuth"] = args["SelectiveAuth"],
 		["TrustType"] = args["TrustType"],
 		["TrustDirection"] = args["TrustDirection"],
 	}
@@ -2945,6 +3261,58 @@ function M.CancelSchemaExtensionRequest(args)
 		["SchemaExtensionId"] = args["SchemaExtensionId"],
 	}
 	asserts.AssertCancelSchemaExtensionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.OwnerDirectoryDescription = { ["DirectoryId"] = true, ["DnsIpAddrs"] = true, ["VpcSettings"] = true, ["RadiusSettings"] = true, ["RadiusStatus"] = true, ["AccountId"] = true, nil }
+
+function asserts.AssertOwnerDirectoryDescription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected OwnerDirectoryDescription to be of type 'table'")
+	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
+	if struct["DnsIpAddrs"] then asserts.AssertDnsIpAddrs(struct["DnsIpAddrs"]) end
+	if struct["VpcSettings"] then asserts.AssertDirectoryVpcSettingsDescription(struct["VpcSettings"]) end
+	if struct["RadiusSettings"] then asserts.AssertRadiusSettings(struct["RadiusSettings"]) end
+	if struct["RadiusStatus"] then asserts.AssertRadiusStatus(struct["RadiusStatus"]) end
+	if struct["AccountId"] then asserts.AssertCustomerId(struct["AccountId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.OwnerDirectoryDescription[k], "OwnerDirectoryDescription contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type OwnerDirectoryDescription
+-- <p>Describes the directory owner account details that have been shared to the directory consumer account.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>Identifier of the AWS Managed Microsoft AD directory in the directory owner account.</p>
+-- * DnsIpAddrs [DnsIpAddrs] <p>IP address of the directory’s domain controllers.</p>
+-- * VpcSettings [DirectoryVpcSettingsDescription] <p>Information about the VPC settings for the directory.</p>
+-- * RadiusSettings [RadiusSettings] <p>A <a>RadiusSettings</a> object that contains information about the RADIUS server.</p>
+-- * RadiusStatus [RadiusStatus] <p>Information about the status of the RADIUS server.</p>
+-- * AccountId [CustomerId] <p>Identifier of the directory owner account.</p>
+-- @return OwnerDirectoryDescription structure as a key-value pair table
+function M.OwnerDirectoryDescription(args)
+	assert(args, "You must provide an argument table when creating OwnerDirectoryDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["DirectoryId"] = args["DirectoryId"],
+		["DnsIpAddrs"] = args["DnsIpAddrs"],
+		["VpcSettings"] = args["VpcSettings"],
+		["RadiusSettings"] = args["RadiusSettings"],
+		["RadiusStatus"] = args["RadiusStatus"],
+		["AccountId"] = args["AccountId"],
+	}
+	asserts.AssertOwnerDirectoryDescription(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3041,6 +3409,46 @@ function M.Snapshot(args)
 		["Type"] = args["Type"],
 	}
 	asserts.AssertSnapshot(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeSharedDirectoriesResult = { ["NextToken"] = true, ["SharedDirectories"] = true, nil }
+
+function asserts.AssertDescribeSharedDirectoriesResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeSharedDirectoriesResult to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["SharedDirectories"] then asserts.AssertSharedDirectories(struct["SharedDirectories"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeSharedDirectoriesResult[k], "DescribeSharedDirectoriesResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeSharedDirectoriesResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>If not null, token that indicates that more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to <a>DescribeSharedDirectories</a> to retrieve the next set of items.</p>
+-- * SharedDirectories [SharedDirectories] <p>A list of all shared directories in your account.</p>
+-- @return DescribeSharedDirectoriesResult structure as a key-value pair table
+function M.DescribeSharedDirectoriesResult(args)
+	assert(args, "You must provide an argument table when creating DescribeSharedDirectoriesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["SharedDirectories"] = args["SharedDirectories"],
+	}
+	asserts.AssertDescribeSharedDirectoriesResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3147,7 +3555,7 @@ end
 -- * VpcSettings [DirectoryVpcSettings] <p>A <a>DirectoryVpcSettings</a> object that contains additional information for the operation.</p>
 -- * Description [Description] <p>A textual description for the directory.</p>
 -- * ShortName [DirectoryShortName] <p>The short name of the directory, such as <code>CORP</code>.</p>
--- * Password [Password] <p>The password for the directory administrator. The directory creation process creates a directory administrator account with the username <code>Administrator</code> and this password.</p>
+-- * Password [Password] <p>The password for the directory administrator. The directory creation process creates a directory administrator account with the user name <code>Administrator</code> and this password.</p>
 -- * Size [DirectorySize] <p>The size of the directory.</p>
 -- Required key: Name
 -- Required key: Password
@@ -3391,7 +3799,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * DirectoryIds [DirectoryIds] <p>A list of identifiers of the directories for which to obtain the information. If this member is null, all directories that belong to the current account are returned.</p> <p>An empty list results in an <code>InvalidParameterException</code> being thrown.</p>
--- * NextToken [NextToken] <p>The <i>DescribeDirectoriesResult.NextToken</i> value from a previous call to <a>DescribeDirectories</a>. Pass null if this is the first call.</p>
+-- * NextToken [NextToken] <p>The <code>DescribeDirectoriesResult.NextToken</code> value from a previous call to <a>DescribeDirectories</a>. Pass null if this is the first call.</p>
 -- * Limit [Limit] <p>The maximum number of items to return. If this value is zero, the maximum number of items is specified by the limitations of the operation.</p>
 -- @return DescribeDirectoriesRequest structure as a key-value pair table
 function M.DescribeDirectoriesRequest(args)
@@ -3408,6 +3816,40 @@ function M.DescribeDirectoriesRequest(args)
 		["Limit"] = args["Limit"],
 	}
 	asserts.AssertDescribeDirectoriesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteLogSubscriptionResult = { nil }
+
+function asserts.AssertDeleteLogSubscriptionResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteLogSubscriptionResult to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteLogSubscriptionResult[k], "DeleteLogSubscriptionResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteLogSubscriptionResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteLogSubscriptionResult structure as a key-value pair table
+function M.DeleteLogSubscriptionResult(args)
+	assert(args, "You must provide an argument table when creating DeleteLogSubscriptionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDeleteLogSubscriptionResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3536,6 +3978,87 @@ function M.UpdateConditionalForwarderRequest(args)
     }
 end
 
+keys.UnshareDirectoryResult = { ["SharedDirectoryId"] = true, nil }
+
+function asserts.AssertUnshareDirectoryResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UnshareDirectoryResult to be of type 'table'")
+	if struct["SharedDirectoryId"] then asserts.AssertDirectoryId(struct["SharedDirectoryId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UnshareDirectoryResult[k], "UnshareDirectoryResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UnshareDirectoryResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SharedDirectoryId [DirectoryId] <p>Identifier of the directory stored in the directory consumer account that is to be unshared from the specified directory (<code>DirectoryId</code>).</p>
+-- @return UnshareDirectoryResult structure as a key-value pair table
+function M.UnshareDirectoryResult(args)
+	assert(args, "You must provide an argument table when creating UnshareDirectoryResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SharedDirectoryId"] = args["SharedDirectoryId"],
+	}
+	asserts.AssertUnshareDirectoryResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ShareTarget = { ["Type"] = true, ["Id"] = true, nil }
+
+function asserts.AssertShareTarget(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ShareTarget to be of type 'table'")
+	assert(struct["Id"], "Expected key Id to exist in table")
+	assert(struct["Type"], "Expected key Type to exist in table")
+	if struct["Type"] then asserts.AssertTargetType(struct["Type"]) end
+	if struct["Id"] then asserts.AssertTargetId(struct["Id"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ShareTarget[k], "ShareTarget contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ShareTarget
+-- <p>Identifier that contains details about the directory consumer account.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [TargetType] <p>Type of identifier to be used in the <code>Id</code> field.</p>
+-- * Id [TargetId] <p>Identifier of the directory consumer account.</p>
+-- Required key: Id
+-- Required key: Type
+-- @return ShareTarget structure as a key-value pair table
+function M.ShareTarget(args)
+	assert(args, "You must provide an argument table when creating ShareTarget")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Type"] = args["Type"],
+		["Id"] = args["Id"],
+	}
+	asserts.AssertShareTarget(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.CreateConditionalForwarderRequest = { ["DirectoryId"] = true, ["RemoteDomainName"] = true, ["DnsIpAddrs"] = true, nil }
 
 function asserts.AssertCreateConditionalForwarderRequest(struct)
@@ -3577,6 +4100,46 @@ function M.CreateConditionalForwarderRequest(args)
 		["DnsIpAddrs"] = args["DnsIpAddrs"],
 	}
 	asserts.AssertCreateConditionalForwarderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListLogSubscriptionsResult = { ["NextToken"] = true, ["LogSubscriptions"] = true, nil }
+
+function asserts.AssertListLogSubscriptionsResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListLogSubscriptionsResult to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["LogSubscriptions"] then asserts.AssertLogSubscriptions(struct["LogSubscriptions"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListLogSubscriptionsResult[k], "ListLogSubscriptionsResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListLogSubscriptionsResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token for the next set of items to return.</p>
+-- * LogSubscriptions [LogSubscriptions] <p>A list of active <a>LogSubscription</a> objects for calling the AWS account.</p>
+-- @return ListLogSubscriptionsResult structure as a key-value pair table
+function M.ListLogSubscriptionsResult(args)
+	assert(args, "You must provide an argument table when creating ListLogSubscriptionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["NextToken"] = args["NextToken"],
+		["LogSubscriptions"] = args["LogSubscriptions"],
+	}
+	asserts.AssertListLogSubscriptionsResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3645,6 +4208,40 @@ function M.DeregisterEventTopicResult(args)
 	local all_args = { 
 	}
 	asserts.AssertDeregisterEventTopicResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ResetUserPasswordResult = { nil }
+
+function asserts.AssertResetUserPasswordResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ResetUserPasswordResult to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.ResetUserPasswordResult[k], "ResetUserPasswordResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ResetUserPasswordResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ResetUserPasswordResult structure as a key-value pair table
+function M.ResetUserPasswordResult(args)
+	assert(args, "You must provide an argument table when creating ResetUserPasswordResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertResetUserPasswordResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3761,46 +4358,6 @@ function M.StartSchemaExtensionResult(args)
     }
 end
 
-keys.EntityDoesNotExistException = { ["Message"] = true, ["RequestId"] = true, nil }
-
-function asserts.AssertEntityDoesNotExistException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected EntityDoesNotExistException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["RequestId"] then asserts.AssertRequestId(struct["RequestId"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.EntityDoesNotExistException[k], "EntityDoesNotExistException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type EntityDoesNotExistException
--- <p>The specified entity could not be found.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- * RequestId [RequestId] 
--- @return EntityDoesNotExistException structure as a key-value pair table
-function M.EntityDoesNotExistException(args)
-	assert(args, "You must provide an argument table when creating EntityDoesNotExistException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-		["RequestId"] = args["RequestId"],
-	}
-	asserts.AssertEntityDoesNotExistException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.RadiusSettings = { ["DisplayLabel"] = true, ["UseSameUsername"] = true, ["RadiusTimeout"] = true, ["AuthenticationProtocol"] = true, ["RadiusPort"] = true, ["RadiusRetries"] = true, ["RadiusServers"] = true, ["SharedSecret"] = true, nil }
 
 function asserts.AssertRadiusSettings(struct)
@@ -3830,7 +4387,7 @@ end
 -- * RadiusPort [PortNumber] <p>The port that your RADIUS server is using for communications. Your on-premises network must allow inbound traffic over this port from the AWS Directory Service servers.</p>
 -- * RadiusRetries [RadiusRetries] <p>The maximum number of times that communication with the RADIUS server is attempted.</p>
 -- * RadiusServers [Servers] <p>An array of strings that contains the IP addresses of the RADIUS server endpoints, or the IP addresses of your RADIUS server load balancer.</p>
--- * SharedSecret [RadiusSharedSecret] <p>Not currently used.</p>
+-- * SharedSecret [RadiusSharedSecret] <p>Required for enabling RADIUS on the directory.</p>
 -- @return RadiusSettings structure as a key-value pair table
 function M.RadiusSettings(args)
 	assert(args, "You must provide an argument table when creating RadiusSettings")
@@ -4063,6 +4620,45 @@ function M.DeleteDirectoryRequest(args)
     }
 end
 
+keys.DeleteLogSubscriptionRequest = { ["DirectoryId"] = true, nil }
+
+function asserts.AssertDeleteLogSubscriptionRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteLogSubscriptionRequest to be of type 'table'")
+	assert(struct["DirectoryId"], "Expected key DirectoryId to exist in table")
+	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteLogSubscriptionRequest[k], "DeleteLogSubscriptionRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteLogSubscriptionRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>Identifier (ID) of the directory whose log subscription you want to delete.</p>
+-- Required key: DirectoryId
+-- @return DeleteLogSubscriptionRequest structure as a key-value pair table
+function M.DeleteLogSubscriptionRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteLogSubscriptionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["DirectoryId"] = args["DirectoryId"],
+	}
+	asserts.AssertDeleteLogSubscriptionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.IpRouteInfo = { ["DirectoryId"] = true, ["IpRouteStatusReason"] = true, ["Description"] = true, ["AddedDateTime"] = true, ["CidrIp"] = true, ["IpRouteStatusMsg"] = true, nil }
 
 function asserts.AssertIpRouteInfo(struct)
@@ -4152,27 +4748,37 @@ function M.GetDirectoryLimitsResult(args)
     }
 end
 
-keys.SnapshotLimitExceededException = { ["Message"] = true, ["RequestId"] = true, nil }
+keys.ShareDirectoryRequest = { ["DirectoryId"] = true, ["ShareNotes"] = true, ["ShareMethod"] = true, ["ShareTarget"] = true, nil }
 
-function asserts.AssertSnapshotLimitExceededException(struct)
+function asserts.AssertShareDirectoryRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SnapshotLimitExceededException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["RequestId"] then asserts.AssertRequestId(struct["RequestId"]) end
+	assert(type(struct) == "table", "Expected ShareDirectoryRequest to be of type 'table'")
+	assert(struct["DirectoryId"], "Expected key DirectoryId to exist in table")
+	assert(struct["ShareTarget"], "Expected key ShareTarget to exist in table")
+	assert(struct["ShareMethod"], "Expected key ShareMethod to exist in table")
+	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
+	if struct["ShareNotes"] then asserts.AssertNotes(struct["ShareNotes"]) end
+	if struct["ShareMethod"] then asserts.AssertShareMethod(struct["ShareMethod"]) end
+	if struct["ShareTarget"] then asserts.AssertShareTarget(struct["ShareTarget"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SnapshotLimitExceededException[k], "SnapshotLimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.ShareDirectoryRequest[k], "ShareDirectoryRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SnapshotLimitExceededException
--- <p>The maximum number of manual snapshots for the directory has been reached. You can use the <a>GetSnapshotLimits</a> operation to determine the snapshot limits for a directory.</p>
+--- Create a structure of type ShareDirectoryRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- * RequestId [RequestId] 
--- @return SnapshotLimitExceededException structure as a key-value pair table
-function M.SnapshotLimitExceededException(args)
-	assert(args, "You must provide an argument table when creating SnapshotLimitExceededException")
+-- * DirectoryId [DirectoryId] <p>Identifier of the AWS Managed Microsoft AD directory that you want to share with other AWS accounts.</p>
+-- * ShareNotes [Notes] <p>A directory share request that is sent by the directory owner to the directory consumer. The request includes a typed message to help the directory consumer administrator determine whether to approve or reject the share invitation.</p>
+-- * ShareMethod [ShareMethod] <p>The method used when sharing a directory to determine whether the directory should be shared within your AWS organization (<code>ORGANIZATIONS</code>) or with any AWS account by sending a directory sharing request (<code>HANDSHAKE</code>).</p>
+-- * ShareTarget [ShareTarget] <p>Identifier for the directory consumer account with whom the directory is to be shared.</p>
+-- Required key: DirectoryId
+-- Required key: ShareTarget
+-- Required key: ShareMethod
+-- @return ShareDirectoryRequest structure as a key-value pair table
+function M.ShareDirectoryRequest(args)
+	assert(args, "You must provide an argument table when creating ShareDirectoryRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -4180,10 +4786,12 @@ function M.SnapshotLimitExceededException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
-		["RequestId"] = args["RequestId"],
+		["DirectoryId"] = args["DirectoryId"],
+		["ShareNotes"] = args["ShareNotes"],
+		["ShareMethod"] = args["ShareMethod"],
+		["ShareTarget"] = args["ShareTarget"],
 	}
-	asserts.AssertSnapshotLimitExceededException(all_args)
+	asserts.AssertShareDirectoryRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4227,6 +4835,101 @@ function M.SnapshotLimits(args)
 		["ManualSnapshotsLimitReached"] = args["ManualSnapshotsLimitReached"],
 	}
 	asserts.AssertSnapshotLimits(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateLogSubscriptionResult = { nil }
+
+function asserts.AssertCreateLogSubscriptionResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateLogSubscriptionResult to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.CreateLogSubscriptionResult[k], "CreateLogSubscriptionResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateLogSubscriptionResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateLogSubscriptionResult structure as a key-value pair table
+function M.CreateLogSubscriptionResult(args)
+	assert(args, "You must provide an argument table when creating CreateLogSubscriptionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertCreateLogSubscriptionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SharedDirectory = { ["OwnerDirectoryId"] = true, ["ShareNotes"] = true, ["ShareMethod"] = true, ["CreatedDateTime"] = true, ["SharedAccountId"] = true, ["SharedDirectoryId"] = true, ["ShareStatus"] = true, ["OwnerAccountId"] = true, ["LastUpdatedDateTime"] = true, nil }
+
+function asserts.AssertSharedDirectory(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SharedDirectory to be of type 'table'")
+	if struct["OwnerDirectoryId"] then asserts.AssertDirectoryId(struct["OwnerDirectoryId"]) end
+	if struct["ShareNotes"] then asserts.AssertNotes(struct["ShareNotes"]) end
+	if struct["ShareMethod"] then asserts.AssertShareMethod(struct["ShareMethod"]) end
+	if struct["CreatedDateTime"] then asserts.AssertCreatedDateTime(struct["CreatedDateTime"]) end
+	if struct["SharedAccountId"] then asserts.AssertCustomerId(struct["SharedAccountId"]) end
+	if struct["SharedDirectoryId"] then asserts.AssertDirectoryId(struct["SharedDirectoryId"]) end
+	if struct["ShareStatus"] then asserts.AssertShareStatus(struct["ShareStatus"]) end
+	if struct["OwnerAccountId"] then asserts.AssertCustomerId(struct["OwnerAccountId"]) end
+	if struct["LastUpdatedDateTime"] then asserts.AssertLastUpdatedDateTime(struct["LastUpdatedDateTime"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SharedDirectory[k], "SharedDirectory contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SharedDirectory
+-- <p>Details about the shared directory in the directory owner account for which the share request in the directory consumer account has been accepted.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OwnerDirectoryId [DirectoryId] <p>Identifier of the directory in the directory owner account. </p>
+-- * ShareNotes [Notes] <p>A directory share request that is sent by the directory owner to the directory consumer. The request includes a typed message to help the directory consumer administrator determine whether to approve or reject the share invitation.</p>
+-- * ShareMethod [ShareMethod] <p>The method used when sharing a directory to determine whether the directory should be shared within your AWS organization (<code>ORGANIZATIONS</code>) or with any AWS account by sending a shared directory request (<code>HANDSHAKE</code>).</p>
+-- * CreatedDateTime [CreatedDateTime] <p>The date and time that the shared directory was created.</p>
+-- * SharedAccountId [CustomerId] <p>Identifier of the directory consumer account that has access to the shared directory (<code>OwnerDirectoryId</code>) in the directory owner account.</p>
+-- * SharedDirectoryId [DirectoryId] <p>Identifier of the shared directory in the directory consumer account. This identifier is different for each directory owner account.</p>
+-- * ShareStatus [ShareStatus] <p>Current directory status of the shared AWS Managed Microsoft AD directory.</p>
+-- * OwnerAccountId [CustomerId] <p>Identifier of the directory owner account, which contains the directory that has been shared to the consumer account.</p>
+-- * LastUpdatedDateTime [LastUpdatedDateTime] <p>The date and time that the shared directory was last updated.</p>
+-- @return SharedDirectory structure as a key-value pair table
+function M.SharedDirectory(args)
+	assert(args, "You must provide an argument table when creating SharedDirectory")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["OwnerDirectoryId"] = args["OwnerDirectoryId"],
+		["ShareNotes"] = args["ShareNotes"],
+		["ShareMethod"] = args["ShareMethod"],
+		["CreatedDateTime"] = args["CreatedDateTime"],
+		["SharedAccountId"] = args["SharedAccountId"],
+		["SharedDirectoryId"] = args["SharedDirectoryId"],
+		["ShareStatus"] = args["ShareStatus"],
+		["OwnerAccountId"] = args["OwnerAccountId"],
+		["LastUpdatedDateTime"] = args["LastUpdatedDateTime"],
+	}
+	asserts.AssertSharedDirectory(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4298,13 +5001,13 @@ end
 -- <p>Contains directory limit information for a region.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CloudOnlyMicrosoftADCurrentCount [Limit] <p>The current number of Microsoft AD directories in the region.</p>
+-- * CloudOnlyMicrosoftADCurrentCount [Limit] <p>The current number of AWS Managed Microsoft AD directories in the region.</p>
 -- * ConnectedDirectoriesLimitReached [ConnectedDirectoriesLimitReached] <p>Indicates if the connected directory limit has been reached.</p>
 -- * ConnectedDirectoriesLimit [Limit] <p>The maximum number of connected directories allowed in the region.</p>
 -- * CloudOnlyDirectoriesLimit [Limit] <p>The maximum number of cloud directories allowed in the region.</p>
--- * CloudOnlyMicrosoftADLimit [Limit] <p>The maximum number of Microsoft AD directories allowed in the region.</p>
+-- * CloudOnlyMicrosoftADLimit [Limit] <p>The maximum number of AWS Managed Microsoft AD directories allowed in the region.</p>
 -- * ConnectedDirectoriesCurrentCount [Limit] <p>The current number of connected directories in the region.</p>
--- * CloudOnlyMicrosoftADLimitReached [CloudOnlyDirectoriesLimitReached] <p>Indicates if the Microsoft AD directory limit has been reached.</p>
+-- * CloudOnlyMicrosoftADLimitReached [CloudOnlyDirectoriesLimitReached] <p>Indicates if the AWS Managed Microsoft AD directory limit has been reached.</p>
 -- * CloudOnlyDirectoriesCurrentCount [Limit] <p>The current number of cloud directories in the region.</p>
 -- * CloudOnlyDirectoriesLimitReached [CloudOnlyDirectoriesLimitReached] <p>Indicates if the cloud directory limit has been reached.</p>
 -- @return DirectoryLimits structure as a key-value pair table
@@ -4328,6 +5031,85 @@ function M.DirectoryLimits(args)
 		["CloudOnlyDirectoriesLimitReached"] = args["CloudOnlyDirectoriesLimitReached"],
 	}
 	asserts.AssertDirectoryLimits(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ShareDirectoryResult = { ["SharedDirectoryId"] = true, nil }
+
+function asserts.AssertShareDirectoryResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ShareDirectoryResult to be of type 'table'")
+	if struct["SharedDirectoryId"] then asserts.AssertDirectoryId(struct["SharedDirectoryId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ShareDirectoryResult[k], "ShareDirectoryResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ShareDirectoryResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SharedDirectoryId [DirectoryId] <p>Identifier of the directory that is stored in the directory consumer account that is shared from the specified directory (<code>DirectoryId</code>).</p>
+-- @return ShareDirectoryResult structure as a key-value pair table
+function M.ShareDirectoryResult(args)
+	assert(args, "You must provide an argument table when creating ShareDirectoryResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SharedDirectoryId"] = args["SharedDirectoryId"],
+	}
+	asserts.AssertShareDirectoryResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateTrustRequest = { ["SelectiveAuth"] = true, ["TrustId"] = true, nil }
+
+function asserts.AssertUpdateTrustRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateTrustRequest to be of type 'table'")
+	assert(struct["TrustId"], "Expected key TrustId to exist in table")
+	if struct["SelectiveAuth"] then asserts.AssertSelectiveAuth(struct["SelectiveAuth"]) end
+	if struct["TrustId"] then asserts.AssertTrustId(struct["TrustId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateTrustRequest[k], "UpdateTrustRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateTrustRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SelectiveAuth [SelectiveAuth] <p>Updates selective authentication for the trust.</p>
+-- * TrustId [TrustId] <p>Identifier of the trust relationship.</p>
+-- Required key: TrustId
+-- @return UpdateTrustRequest structure as a key-value pair table
+function M.UpdateTrustRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateTrustRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["SelectiveAuth"] = args["SelectiveAuth"],
+		["TrustId"] = args["TrustId"],
+	}
+	asserts.AssertUpdateTrustRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4495,46 +5277,6 @@ function M.StartSchemaExtensionRequest(args)
     }
 end
 
-keys.EntityAlreadyExistsException = { ["Message"] = true, ["RequestId"] = true, nil }
-
-function asserts.AssertEntityAlreadyExistsException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected EntityAlreadyExistsException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["RequestId"] then asserts.AssertRequestId(struct["RequestId"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.EntityAlreadyExistsException[k], "EntityAlreadyExistsException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type EntityAlreadyExistsException
--- <p>The specified entity already exists.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [ExceptionMessage] 
--- * RequestId [RequestId] 
--- @return EntityAlreadyExistsException structure as a key-value pair table
-function M.EntityAlreadyExistsException(args)
-	assert(args, "You must provide an argument table when creating EntityAlreadyExistsException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-		["RequestId"] = args["RequestId"],
-	}
-	asserts.AssertEntityAlreadyExistsException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.RestoreFromSnapshotResult = { nil }
 
 function asserts.AssertRestoreFromSnapshotResult(struct)
@@ -4569,27 +5311,33 @@ function M.RestoreFromSnapshotResult(args)
     }
 end
 
-keys.TagLimitExceededException = { ["Message"] = true, ["RequestId"] = true, nil }
+keys.DescribeSharedDirectoriesRequest = { ["Limit"] = true, ["OwnerDirectoryId"] = true, ["NextToken"] = true, ["SharedDirectoryIds"] = true, nil }
 
-function asserts.AssertTagLimitExceededException(struct)
+function asserts.AssertDescribeSharedDirectoriesRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TagLimitExceededException to be of type 'table'")
-	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
-	if struct["RequestId"] then asserts.AssertRequestId(struct["RequestId"]) end
+	assert(type(struct) == "table", "Expected DescribeSharedDirectoriesRequest to be of type 'table'")
+	assert(struct["OwnerDirectoryId"], "Expected key OwnerDirectoryId to exist in table")
+	if struct["Limit"] then asserts.AssertLimit(struct["Limit"]) end
+	if struct["OwnerDirectoryId"] then asserts.AssertDirectoryId(struct["OwnerDirectoryId"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["SharedDirectoryIds"] then asserts.AssertDirectoryIds(struct["SharedDirectoryIds"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TagLimitExceededException[k], "TagLimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.DescribeSharedDirectoriesRequest[k], "DescribeSharedDirectoriesRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TagLimitExceededException
--- <p>The maximum allowed number of tags was exceeded.</p>
+--- Create a structure of type DescribeSharedDirectoriesRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [ExceptionMessage] 
--- * RequestId [RequestId] 
--- @return TagLimitExceededException structure as a key-value pair table
-function M.TagLimitExceededException(args)
-	assert(args, "You must provide an argument table when creating TagLimitExceededException")
+-- * Limit [Limit] <p>The number of shared directories to return in the response object.</p>
+-- * OwnerDirectoryId [DirectoryId] <p>Returns the identifier of the directory in the directory owner account. </p>
+-- * NextToken [NextToken] <p>The <code>DescribeSharedDirectoriesResult.NextToken</code> value from a previous call to <a>DescribeSharedDirectories</a>. Pass null if this is the first call. </p>
+-- * SharedDirectoryIds [DirectoryIds] <p>A list of identifiers of all shared directories in your account. </p>
+-- Required key: OwnerDirectoryId
+-- @return DescribeSharedDirectoriesRequest structure as a key-value pair table
+function M.DescribeSharedDirectoriesRequest(args)
+	assert(args, "You must provide an argument table when creating DescribeSharedDirectoriesRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -4597,16 +5345,31 @@ function M.TagLimitExceededException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
-		["RequestId"] = args["RequestId"],
+		["Limit"] = args["Limit"],
+		["OwnerDirectoryId"] = args["OwnerDirectoryId"],
+		["NextToken"] = args["NextToken"],
+		["SharedDirectoryIds"] = args["SharedDirectoryIds"],
 	}
-	asserts.AssertTagLimitExceededException(all_args)
+	asserts.AssertDescribeSharedDirectoriesRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
         uri = uri_args,
         headers = header_args,
     }
+end
+
+function asserts.AssertTargetId(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TargetId to be of type 'string'")
+	assert(#str <= 64, "Expected string to be max 64 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.TargetId(str)
+	asserts.AssertTargetId(str)
+	return str
 end
 
 function asserts.AssertIpRouteStatusMsg(str)
@@ -4631,19 +5394,6 @@ function M.RadiusStatus(str)
 	return str
 end
 
-function asserts.AssertTrustPassword(str)
-	assert(str)
-	assert(type(str) == "string", "Expected TrustPassword to be of type 'string'")
-	assert(#str <= 128, "Expected string to be max 128 characters")
-	assert(#str >= 1, "Expected string to be min 1 characters")
-end
-
---  
-function M.TrustPassword(str)
-	asserts.AssertTrustPassword(str)
-	return str
-end
-
 function asserts.AssertTagKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagKey to be of type 'string'")
@@ -4657,6 +5407,19 @@ function M.TagKey(str)
 	return str
 end
 
+function asserts.AssertUserPassword(str)
+	assert(str)
+	assert(type(str) == "string", "Expected UserPassword to be of type 'string'")
+	assert(#str <= 127, "Expected string to be max 127 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.UserPassword(str)
+	asserts.AssertUserPassword(str)
+	return str
+end
+
 function asserts.AssertSchemaExtensionId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SchemaExtensionId to be of type 'string'")
@@ -4665,6 +5428,17 @@ end
 --  
 function M.SchemaExtensionId(str)
 	asserts.AssertSchemaExtensionId(str)
+	return str
+end
+
+function asserts.AssertVpcId(str)
+	assert(str)
+	assert(type(str) == "string", "Expected VpcId to be of type 'string'")
+end
+
+--  
+function M.VpcId(str)
+	asserts.AssertVpcId(str)
 	return str
 end
 
@@ -4689,6 +5463,18 @@ end
 --  
 function M.RadiusSharedSecret(str)
 	asserts.AssertRadiusSharedSecret(str)
+	return str
+end
+
+function asserts.AssertNotes(str)
+	assert(str)
+	assert(type(str) == "string", "Expected Notes to be of type 'string'")
+	assert(#str <= 1024, "Expected string to be max 1024 characters")
+end
+
+--  
+function M.Notes(str)
+	asserts.AssertNotes(str)
 	return str
 end
 
@@ -4751,6 +5537,17 @@ function M.ConnectPassword(str)
 	return str
 end
 
+function asserts.AssertTargetType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TargetType to be of type 'string'")
+end
+
+--  
+function M.TargetType(str)
+	asserts.AssertTargetType(str)
+	return str
+end
+
 function asserts.AssertIpAddr(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IpAddr to be of type 'string'")
@@ -4795,6 +5592,19 @@ function M.NextToken(str)
 	return str
 end
 
+function asserts.AssertCustomerUserName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected CustomerUserName to be of type 'string'")
+	assert(#str <= 64, "Expected string to be max 64 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.CustomerUserName(str)
+	asserts.AssertCustomerUserName(str)
+	return str
+end
+
 function asserts.AssertReplicationScope(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ReplicationScope to be of type 'string'")
@@ -4803,6 +5613,17 @@ end
 --  
 function M.ReplicationScope(str)
 	asserts.AssertReplicationScope(str)
+	return str
+end
+
+function asserts.AssertSelectiveAuth(str)
+	assert(str)
+	assert(type(str) == "string", "Expected SelectiveAuth to be of type 'string'")
+end
+
+--  
+function M.SelectiveAuth(str)
+	asserts.AssertSelectiveAuth(str)
 	return str
 end
 
@@ -4819,15 +5640,28 @@ function M.AliasName(str)
 	return str
 end
 
-function asserts.AssertTagValue(str)
+function asserts.AssertRadiusDisplayLabel(str)
 	assert(str)
-	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
-	assert(#str <= 256, "Expected string to be max 256 characters")
+	assert(type(str) == "string", "Expected RadiusDisplayLabel to be of type 'string'")
+	assert(#str <= 64, "Expected string to be max 64 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
-function M.TagValue(str)
-	asserts.AssertTagValue(str)
+function M.RadiusDisplayLabel(str)
+	asserts.AssertRadiusDisplayLabel(str)
+	return str
+end
+
+function asserts.AssertSnapshotName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected SnapshotName to be of type 'string'")
+	assert(#str <= 128, "Expected string to be max 128 characters")
+end
+
+--  
+function M.SnapshotName(str)
+	asserts.AssertSnapshotName(str)
 	return str
 end
 
@@ -4855,6 +5689,19 @@ function M.AccessUrl(str)
 	return str
 end
 
+function asserts.AssertTrustPassword(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TrustPassword to be of type 'string'")
+	assert(#str <= 128, "Expected string to be max 128 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.TrustPassword(str)
+	asserts.AssertTrustPassword(str)
+	return str
+end
+
 function asserts.AssertTopicName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TopicName to be of type 'string'")
@@ -4865,6 +5712,17 @@ end
 --  
 function M.TopicName(str)
 	asserts.AssertTopicName(str)
+	return str
+end
+
+function asserts.AssertShareMethod(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ShareMethod to be of type 'string'")
+end
+
+--  
+function M.ShareMethod(str)
+	asserts.AssertShareMethod(str)
 	return str
 end
 
@@ -4879,18 +5737,6 @@ function M.SchemaExtensionStatus(str)
 	return str
 end
 
-function asserts.AssertSnapshotName(str)
-	assert(str)
-	assert(type(str) == "string", "Expected SnapshotName to be of type 'string'")
-	assert(#str <= 128, "Expected string to be max 128 characters")
-end
-
---  
-function M.SnapshotName(str)
-	asserts.AssertSnapshotName(str)
-	return str
-end
-
 function asserts.AssertServer(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Server to be of type 'string'")
@@ -4901,6 +5747,18 @@ end
 --  
 function M.Server(str)
 	asserts.AssertServer(str)
+	return str
+end
+
+function asserts.AssertTagValue(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
+	assert(#str <= 256, "Expected string to be max 256 characters")
+end
+
+--  
+function M.TagValue(str)
+	asserts.AssertTagValue(str)
 	return str
 end
 
@@ -4926,6 +5784,17 @@ function M.TopicStatus(str)
 	return str
 end
 
+function asserts.AssertDomainControllerStatusReason(str)
+	assert(str)
+	assert(type(str) == "string", "Expected DomainControllerStatusReason to be of type 'string'")
+end
+
+--  
+function M.DomainControllerStatusReason(str)
+	asserts.AssertDomainControllerStatusReason(str)
+	return str
+end
+
 function asserts.AssertAvailabilityZone(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AvailabilityZone to be of type 'string'")
@@ -4945,6 +5814,17 @@ end
 --  
 function M.DirectoryName(str)
 	asserts.AssertDirectoryName(str)
+	return str
+end
+
+function asserts.AssertDirectoryEdition(str)
+	assert(str)
+	assert(type(str) == "string", "Expected DirectoryEdition to be of type 'string'")
+end
+
+--  
+function M.DirectoryEdition(str)
+	asserts.AssertDirectoryEdition(str)
 	return str
 end
 
@@ -4984,6 +5864,17 @@ function M.ComputerPassword(str)
 	return str
 end
 
+function asserts.AssertCustomerId(str)
+	assert(str)
+	assert(type(str) == "string", "Expected CustomerId to be of type 'string'")
+end
+
+--  
+function M.CustomerId(str)
+	asserts.AssertCustomerId(str)
+	return str
+end
+
 function asserts.AssertRadiusAuthenticationProtocol(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RadiusAuthenticationProtocol to be of type 'string'")
@@ -4992,6 +5883,17 @@ end
 --  
 function M.RadiusAuthenticationProtocol(str)
 	asserts.AssertRadiusAuthenticationProtocol(str)
+	return str
+end
+
+function asserts.AssertDomainControllerStatus(str)
+	assert(str)
+	assert(type(str) == "string", "Expected DomainControllerStatus to be of type 'string'")
+end
+
+--  
+function M.DomainControllerStatus(str)
+	asserts.AssertDomainControllerStatus(str)
 	return str
 end
 
@@ -5054,27 +5956,16 @@ function M.StageReason(str)
 	return str
 end
 
-function asserts.AssertRequestId(str)
+function asserts.AssertLogGroupName(str)
 	assert(str)
-	assert(type(str) == "string", "Expected RequestId to be of type 'string'")
-end
-
--- <p>The AWS request identifier.</p>
-function M.RequestId(str)
-	asserts.AssertRequestId(str)
-	return str
-end
-
-function asserts.AssertRadiusDisplayLabel(str)
-	assert(str)
-	assert(type(str) == "string", "Expected RadiusDisplayLabel to be of type 'string'")
-	assert(#str <= 64, "Expected string to be max 64 characters")
+	assert(type(str) == "string", "Expected LogGroupName to be of type 'string'")
+	assert(#str <= 512, "Expected string to be max 512 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
-function M.RadiusDisplayLabel(str)
-	asserts.AssertRadiusDisplayLabel(str)
+function M.LogGroupName(str)
+	asserts.AssertLogGroupName(str)
 	return str
 end
 
@@ -5097,17 +5988,6 @@ end
 --  
 function M.TopicArn(str)
 	asserts.AssertTopicArn(str)
-	return str
-end
-
-function asserts.AssertExceptionMessage(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ExceptionMessage to be of type 'string'")
-end
-
--- <p>The descriptive message for the exception.</p>
-function M.ExceptionMessage(str)
-	asserts.AssertExceptionMessage(str)
 	return str
 end
 
@@ -5142,6 +6022,17 @@ end
 --  
 function M.SecurityGroupId(str)
 	asserts.AssertSecurityGroupId(str)
+	return str
+end
+
+function asserts.AssertDomainControllerId(str)
+	assert(str)
+	assert(type(str) == "string", "Expected DomainControllerId to be of type 'string'")
+end
+
+--  
+function M.DomainControllerId(str)
+	asserts.AssertDomainControllerId(str)
 	return str
 end
 
@@ -5201,6 +6092,17 @@ function M.ResourceId(str)
 	return str
 end
 
+function asserts.AssertShareStatus(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ShareStatus to be of type 'string'")
+end
+
+--  
+function M.ShareStatus(str)
+	asserts.AssertShareStatus(str)
+	return str
+end
+
 function asserts.AssertRemoteDomainName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RemoteDomainName to be of type 'string'")
@@ -5247,17 +6149,6 @@ function M.CidrIp(str)
 	return str
 end
 
-function asserts.AssertVpcId(str)
-	assert(str)
-	assert(type(str) == "string", "Expected VpcId to be of type 'string'")
-end
-
---  
-function M.VpcId(str)
-	asserts.AssertVpcId(str)
-	return str
-end
-
 function asserts.AssertTrustStateReason(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TrustStateReason to be of type 'string'")
@@ -5266,6 +6157,17 @@ end
 --  
 function M.TrustStateReason(str)
 	asserts.AssertTrustStateReason(str)
+	return str
+end
+
+function asserts.AssertRequestId(str)
+	assert(str)
+	assert(type(str) == "string", "Expected RequestId to be of type 'string'")
+end
+
+-- <p>The AWS request identifier.</p>
+function M.RequestId(str)
+	asserts.AssertRequestId(str)
 	return str
 end
 
@@ -5318,6 +6220,18 @@ function M.RadiusTimeout(integer)
 	return integer
 end
 
+function asserts.AssertDesiredNumberOfDomainControllers(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected DesiredNumberOfDomainControllers to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
+	assert(integer >= 2, "Expected integer to be min 2")
+end
+
+function M.DesiredNumberOfDomainControllers(integer)
+	asserts.AssertDesiredNumberOfDomainControllers(integer)
+	return integer
+end
+
 function asserts.AssertUseSameUsername(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected UseSameUsername to be of type 'boolean'")
@@ -5348,16 +6262,6 @@ function M.SsoEnabled(boolean)
 	return boolean
 end
 
-function asserts.AssertUpdateSecurityGroupForDirectoryControllers(boolean)
-	assert(boolean)
-	assert(type(boolean) == "boolean", "Expected UpdateSecurityGroupForDirectoryControllers to be of type 'boolean'")
-end
-
-function M.UpdateSecurityGroupForDirectoryControllers(boolean)
-	asserts.AssertUpdateSecurityGroupForDirectoryControllers(boolean)
-	return boolean
-end
-
 function asserts.AssertDeleteAssociatedConditionalForwarder(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected DeleteAssociatedConditionalForwarder to be of type 'boolean'")
@@ -5385,6 +6289,16 @@ end
 
 function M.CreateSnapshotBeforeSchemaExtension(boolean)
 	asserts.AssertCreateSnapshotBeforeSchemaExtension(boolean)
+	return boolean
+end
+
+function asserts.AssertUpdateSecurityGroupForDirectoryControllers(boolean)
+	assert(boolean)
+	assert(type(boolean) == "boolean", "Expected UpdateSecurityGroupForDirectoryControllers to be of type 'boolean'")
+end
+
+function M.UpdateSecurityGroupForDirectoryControllers(boolean)
+	asserts.AssertUpdateSecurityGroupForDirectoryControllers(boolean)
 	return boolean
 end
 
@@ -5448,6 +6362,16 @@ function M.CreatedDateTime(timestamp)
 	return timestamp
 end
 
+function asserts.AssertSubscriptionCreatedDateTime(timestamp)
+	assert(timestamp)
+	assert(type(timestamp) == "string", "Expected SubscriptionCreatedDateTime to be of type 'string'")
+end
+
+function M.SubscriptionCreatedDateTime(timestamp)
+	asserts.AssertSubscriptionCreatedDateTime(timestamp)
+	return timestamp
+end
+
 function asserts.AssertStartTime(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected StartTime to be of type 'string'")
@@ -5493,6 +6417,51 @@ function M.EventTopics(list)
 	return list
 end
 
+function asserts.AssertAttributes(list)
+	assert(list)
+	assert(type(list) == "table", "Expected Attributes to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertAttribute(v)
+	end
+end
+
+--  
+-- List of Attribute objects
+function M.Attributes(list)
+	asserts.AssertAttributes(list)
+	return list
+end
+
+function asserts.AssertSharedDirectories(list)
+	assert(list)
+	assert(type(list) == "table", "Expected SharedDirectories to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertSharedDirectory(v)
+	end
+end
+
+--  
+-- List of SharedDirectory objects
+function M.SharedDirectories(list)
+	asserts.AssertSharedDirectories(list)
+	return list
+end
+
+function asserts.AssertSnapshotIds(list)
+	assert(list)
+	assert(type(list) == "table", "Expected SnapshotIds to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertSnapshotId(v)
+	end
+end
+
+-- <p>A list of directory snapshot identifiers.</p>
+-- List of SnapshotId objects
+function M.SnapshotIds(list)
+	asserts.AssertSnapshotIds(list)
+	return list
+end
+
 function asserts.AssertIpRoutesInfo(list)
 	assert(list)
 	assert(type(list) == "table", "Expected IpRoutesInfo to be of type ''table")
@@ -5520,21 +6489,6 @@ end
 -- List of ConditionalForwarder objects
 function M.ConditionalForwarders(list)
 	asserts.AssertConditionalForwarders(list)
-	return list
-end
-
-function asserts.AssertAttributes(list)
-	assert(list)
-	assert(type(list) == "table", "Expected Attributes to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertAttribute(v)
-	end
-end
-
---  
--- List of Attribute objects
-function M.Attributes(list)
-	asserts.AssertAttributes(list)
 	return list
 end
 
@@ -5568,21 +6522,6 @@ function M.RemoteDomainNames(list)
 	return list
 end
 
-function asserts.AssertSnapshotIds(list)
-	assert(list)
-	assert(type(list) == "table", "Expected SnapshotIds to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertSnapshotId(v)
-	end
-end
-
--- <p>A list of directory snapshot identifiers.</p>
--- List of SnapshotId objects
-function M.SnapshotIds(list)
-	asserts.AssertSnapshotIds(list)
-	return list
-end
-
 function asserts.AssertSnapshots(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Snapshots to be of type ''table")
@@ -5595,6 +6534,21 @@ end
 -- List of Snapshot objects
 function M.Snapshots(list)
 	asserts.AssertSnapshots(list)
+	return list
+end
+
+function asserts.AssertLogSubscriptions(list)
+	assert(list)
+	assert(type(list) == "table", "Expected LogSubscriptions to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertLogSubscription(v)
+	end
+end
+
+--  
+-- List of LogSubscription objects
+function M.LogSubscriptions(list)
+	asserts.AssertLogSubscriptions(list)
 	return list
 end
 
@@ -5718,6 +6672,21 @@ function M.CidrIps(list)
 	return list
 end
 
+function asserts.AssertDomainControllers(list)
+	assert(list)
+	assert(type(list) == "table", "Expected DomainControllers to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertDomainController(v)
+	end
+end
+
+--  
+-- List of DomainController objects
+function M.DomainControllers(list)
+	asserts.AssertDomainControllers(list)
+	return list
+end
+
 function asserts.AssertTagKeys(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagKeys to be of type ''table")
@@ -5790,6 +6759,21 @@ end
 -- List of IpAddr objects
 function M.DnsIpAddrs(list)
 	asserts.AssertDnsIpAddrs(list)
+	return list
+end
+
+function asserts.AssertDomainControllerIds(list)
+	assert(list)
+	assert(type(list) == "table", "Expected DomainControllerIds to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertDomainControllerId(v)
+	end
+end
+
+--  
+-- List of DomainControllerId objects
+function M.DomainControllerIds(list)
+	asserts.AssertDomainControllerIds(list)
 	return list
 end
 
@@ -5886,6 +6870,111 @@ function M.RemoveTagsFromResourceSync(RemoveTagsFromResourceRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call DisableRadius asynchronously, invoking a callback when done
+-- @param DisableRadiusRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DisableRadiusAsync(DisableRadiusRequest, cb)
+	assert(DisableRadiusRequest, "You must provide a DisableRadiusRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DisableRadius",
+	}
+	for header,value in pairs(DisableRadiusRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DisableRadiusRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DisableRadius synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisableRadiusRequest
+-- @return response
+-- @return error_message
+function M.DisableRadiusSync(DisableRadiusRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisableRadiusAsync(DisableRadiusRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RejectSharedDirectory asynchronously, invoking a callback when done
+-- @param RejectSharedDirectoryRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.RejectSharedDirectoryAsync(RejectSharedDirectoryRequest, cb)
+	assert(RejectSharedDirectoryRequest, "You must provide a RejectSharedDirectoryRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.RejectSharedDirectory",
+	}
+	for header,value in pairs(RejectSharedDirectoryRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", RejectSharedDirectoryRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call RejectSharedDirectory synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RejectSharedDirectoryRequest
+-- @return response
+-- @return error_message
+function M.RejectSharedDirectorySync(RejectSharedDirectoryRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RejectSharedDirectoryAsync(RejectSharedDirectoryRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AcceptSharedDirectory asynchronously, invoking a callback when done
+-- @param AcceptSharedDirectoryRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.AcceptSharedDirectoryAsync(AcceptSharedDirectoryRequest, cb)
+	assert(AcceptSharedDirectoryRequest, "You must provide a AcceptSharedDirectoryRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.AcceptSharedDirectory",
+	}
+	for header,value in pairs(AcceptSharedDirectoryRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", AcceptSharedDirectoryRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call AcceptSharedDirectory synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AcceptSharedDirectoryRequest
+-- @return response
+-- @return error_message
+function M.AcceptSharedDirectorySync(AcceptSharedDirectoryRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AcceptSharedDirectoryAsync(AcceptSharedDirectoryRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call CreateComputer asynchronously, invoking a callback when done
 -- @param CreateComputerRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -5956,6 +7045,41 @@ function M.EnableRadiusSync(EnableRadiusRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call ListLogSubscriptions asynchronously, invoking a callback when done
+-- @param ListLogSubscriptionsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListLogSubscriptionsAsync(ListLogSubscriptionsRequest, cb)
+	assert(ListLogSubscriptionsRequest, "You must provide a ListLogSubscriptionsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.ListLogSubscriptions",
+	}
+	for header,value in pairs(ListLogSubscriptionsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListLogSubscriptionsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListLogSubscriptions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListLogSubscriptionsRequest
+-- @return response
+-- @return error_message
+function M.ListLogSubscriptionsSync(ListLogSubscriptionsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListLogSubscriptionsAsync(ListLogSubscriptionsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call DeleteConditionalForwarder asynchronously, invoking a callback when done
 -- @param DeleteConditionalForwarderRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -6021,6 +7145,76 @@ function M.CreateDirectorySync(CreateDirectoryRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.CreateDirectoryAsync(CreateDirectoryRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ResetUserPassword asynchronously, invoking a callback when done
+-- @param ResetUserPasswordRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ResetUserPasswordAsync(ResetUserPasswordRequest, cb)
+	assert(ResetUserPasswordRequest, "You must provide a ResetUserPasswordRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.ResetUserPassword",
+	}
+	for header,value in pairs(ResetUserPasswordRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ResetUserPasswordRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ResetUserPassword synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ResetUserPasswordRequest
+-- @return response
+-- @return error_message
+function M.ResetUserPasswordSync(ResetUserPasswordRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ResetUserPasswordAsync(ResetUserPasswordRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateTrust asynchronously, invoking a callback when done
+-- @param UpdateTrustRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateTrustAsync(UpdateTrustRequest, cb)
+	assert(UpdateTrustRequest, "You must provide a UpdateTrustRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.UpdateTrust",
+	}
+	for header,value in pairs(UpdateTrustRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateTrustRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateTrust synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateTrustRequest
+-- @return response
+-- @return error_message
+function M.UpdateTrustSync(UpdateTrustRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateTrustAsync(UpdateTrustRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6166,36 +7360,36 @@ function M.UpdateRadiusSync(UpdateRadiusRequest, ...)
 	return coroutine.yield()
 end
 
---- Call DisableRadius asynchronously, invoking a callback when done
--- @param DisableRadiusRequest
+--- Call DescribeDomainControllers asynchronously, invoking a callback when done
+-- @param DescribeDomainControllersRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.DisableRadiusAsync(DisableRadiusRequest, cb)
-	assert(DisableRadiusRequest, "You must provide a DisableRadiusRequest")
+function M.DescribeDomainControllersAsync(DescribeDomainControllersRequest, cb)
+	assert(DescribeDomainControllersRequest, "You must provide a DescribeDomainControllersRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DisableRadius",
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DescribeDomainControllers",
 	}
-	for header,value in pairs(DisableRadiusRequest.headers) do
+	for header,value in pairs(DescribeDomainControllersRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DisableRadiusRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", DescribeDomainControllersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DisableRadius synchronously, returning when done
+--- Call DescribeDomainControllers synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DisableRadiusRequest
+-- @param DescribeDomainControllersRequest
 -- @return response
 -- @return error_message
-function M.DisableRadiusSync(DisableRadiusRequest, ...)
+function M.DescribeDomainControllersSync(DescribeDomainControllersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisableRadiusAsync(DisableRadiusRequest, function(response, error_message)
+	M.DescribeDomainControllersAsync(DescribeDomainControllersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6301,6 +7495,41 @@ function M.DescribeEventTopicsSync(DescribeEventTopicsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DescribeEventTopicsAsync(DescribeEventTopicsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteLogSubscription asynchronously, invoking a callback when done
+-- @param DeleteLogSubscriptionRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteLogSubscriptionAsync(DeleteLogSubscriptionRequest, cb)
+	assert(DeleteLogSubscriptionRequest, "You must provide a DeleteLogSubscriptionRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DeleteLogSubscription",
+	}
+	for header,value in pairs(DeleteLogSubscriptionRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteLogSubscriptionRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteLogSubscription synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteLogSubscriptionRequest
+-- @return response
+-- @return error_message
+function M.DeleteLogSubscriptionSync(DeleteLogSubscriptionRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteLogSubscriptionAsync(DeleteLogSubscriptionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6551,6 +7780,41 @@ function M.AddIpRoutesSync(AddIpRoutesRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call CreateLogSubscription asynchronously, invoking a callback when done
+-- @param CreateLogSubscriptionRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.CreateLogSubscriptionAsync(CreateLogSubscriptionRequest, cb)
+	assert(CreateLogSubscriptionRequest, "You must provide a CreateLogSubscriptionRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateLogSubscription",
+	}
+	for header,value in pairs(CreateLogSubscriptionRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", CreateLogSubscriptionRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CreateLogSubscription synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateLogSubscriptionRequest
+-- @return response
+-- @return error_message
+function M.CreateLogSubscriptionSync(CreateLogSubscriptionRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateLogSubscriptionAsync(CreateLogSubscriptionRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call CancelSchemaExtension asynchronously, invoking a callback when done
 -- @param CancelSchemaExtensionRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -6656,6 +7920,41 @@ function M.RestoreFromSnapshotSync(RestoreFromSnapshotRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call DescribeSharedDirectories asynchronously, invoking a callback when done
+-- @param DescribeSharedDirectoriesRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeSharedDirectoriesAsync(DescribeSharedDirectoriesRequest, cb)
+	assert(DescribeSharedDirectoriesRequest, "You must provide a DescribeSharedDirectoriesRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DescribeSharedDirectories",
+	}
+	for header,value in pairs(DescribeSharedDirectoriesRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeSharedDirectoriesRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeSharedDirectories synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeSharedDirectoriesRequest
+-- @return response
+-- @return error_message
+function M.DescribeSharedDirectoriesSync(DescribeSharedDirectoriesRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeSharedDirectoriesAsync(DescribeSharedDirectoriesRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ListSchemaExtensions asynchronously, invoking a callback when done
 -- @param ListSchemaExtensionsRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -6721,6 +8020,41 @@ function M.DescribeTrustsSync(DescribeTrustsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DescribeTrustsAsync(DescribeTrustsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UnshareDirectory asynchronously, invoking a callback when done
+-- @param UnshareDirectoryRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UnshareDirectoryAsync(UnshareDirectoryRequest, cb)
+	assert(UnshareDirectoryRequest, "You must provide a UnshareDirectoryRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.UnshareDirectory",
+	}
+	for header,value in pairs(UnshareDirectoryRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UnshareDirectoryRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UnshareDirectory synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UnshareDirectoryRequest
+-- @return response
+-- @return error_message
+function M.UnshareDirectorySync(UnshareDirectoryRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UnshareDirectoryAsync(UnshareDirectoryRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7001,6 +8335,76 @@ function M.DeleteTrustSync(DeleteTrustRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DeleteTrustAsync(DeleteTrustRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ShareDirectory asynchronously, invoking a callback when done
+-- @param ShareDirectoryRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ShareDirectoryAsync(ShareDirectoryRequest, cb)
+	assert(ShareDirectoryRequest, "You must provide a ShareDirectoryRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.ShareDirectory",
+	}
+	for header,value in pairs(ShareDirectoryRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ShareDirectoryRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ShareDirectory synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ShareDirectoryRequest
+-- @return response
+-- @return error_message
+function M.ShareDirectorySync(ShareDirectoryRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ShareDirectoryAsync(ShareDirectoryRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateNumberOfDomainControllers asynchronously, invoking a callback when done
+-- @param UpdateNumberOfDomainControllersRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateNumberOfDomainControllersAsync(UpdateNumberOfDomainControllersRequest, cb)
+	assert(UpdateNumberOfDomainControllersRequest, "You must provide a UpdateNumberOfDomainControllersRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.UpdateNumberOfDomainControllers",
+	}
+	for header,value in pairs(UpdateNumberOfDomainControllersRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateNumberOfDomainControllersRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateNumberOfDomainControllers synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateNumberOfDomainControllersRequest
+-- @return response
+-- @return error_message
+function M.UpdateNumberOfDomainControllersSync(UpdateNumberOfDomainControllersRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateNumberOfDomainControllersAsync(UpdateNumberOfDomainControllersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

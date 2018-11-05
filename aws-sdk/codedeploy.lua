@@ -102,6 +102,86 @@ function M.AddTagsToOnPremisesInstancesInput(args)
     }
 end
 
+keys.TrafficRoutingConfig = { ["timeBasedLinear"] = true, ["type"] = true, ["timeBasedCanary"] = true, nil }
+
+function asserts.AssertTrafficRoutingConfig(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected TrafficRoutingConfig to be of type 'table'")
+	if struct["timeBasedLinear"] then asserts.AssertTimeBasedLinear(struct["timeBasedLinear"]) end
+	if struct["type"] then asserts.AssertTrafficRoutingType(struct["type"]) end
+	if struct["timeBasedCanary"] then asserts.AssertTimeBasedCanary(struct["timeBasedCanary"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.TrafficRoutingConfig[k], "TrafficRoutingConfig contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type TrafficRoutingConfig
+-- <p>The configuration that specifies how traffic is shifted from one version of a Lambda function to another version during an AWS Lambda deployment.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * timeBasedLinear [TimeBasedLinear] <p>A configuration that shifts traffic from one version of a Lambda function to another in equal increments, with an equal number of minutes between each increment. The original and target Lambda function versions are specified in the deployment's AppSpec file.</p>
+-- * type [TrafficRoutingType] <p>The type of traffic shifting (<code>TimeBasedCanary</code> or <code>TimeBasedLinear</code>) used by a deployment configuration .</p>
+-- * timeBasedCanary [TimeBasedCanary] <p>A configuration that shifts traffic from one version of a Lambda function to another in two increments. The original and target Lambda function versions are specified in the deployment's AppSpec file.</p>
+-- @return TrafficRoutingConfig structure as a key-value pair table
+function M.TrafficRoutingConfig(args)
+	assert(args, "You must provide an argument table when creating TrafficRoutingConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["timeBasedLinear"] = args["timeBasedLinear"],
+		["type"] = args["type"],
+		["timeBasedCanary"] = args["timeBasedCanary"],
+	}
+	asserts.AssertTrafficRoutingConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteGitHubAccountTokenInput = { ["tokenName"] = true, nil }
+
+function asserts.AssertDeleteGitHubAccountTokenInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteGitHubAccountTokenInput to be of type 'table'")
+	if struct["tokenName"] then asserts.AssertGitHubAccountTokenName(struct["tokenName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteGitHubAccountTokenInput[k], "DeleteGitHubAccountTokenInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteGitHubAccountTokenInput
+-- <p>Represents the input of a DeleteGitHubAccount operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * tokenName [GitHubAccountTokenName] <p>The name of the GitHub account connection to delete.</p>
+-- @return DeleteGitHubAccountTokenInput structure as a key-value pair table
+function M.DeleteGitHubAccountTokenInput(args)
+	assert(args, "You must provide an argument table when creating DeleteGitHubAccountTokenInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["tokenName"] = args["tokenName"],
+	}
+	asserts.AssertDeleteGitHubAccountTokenInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListGitHubAccountTokenNamesInput = { ["nextToken"] = true, nil }
 
 function asserts.AssertListGitHubAccountTokenNamesInput(struct)
@@ -131,46 +211,6 @@ function M.ListGitHubAccountTokenNamesInput(args)
 		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListGitHubAccountTokenNamesInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.RevisionInfo = { ["revisionLocation"] = true, ["genericRevisionInfo"] = true, nil }
-
-function asserts.AssertRevisionInfo(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected RevisionInfo to be of type 'table'")
-	if struct["revisionLocation"] then asserts.AssertRevisionLocation(struct["revisionLocation"]) end
-	if struct["genericRevisionInfo"] then asserts.AssertGenericRevisionInfo(struct["genericRevisionInfo"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.RevisionInfo[k], "RevisionInfo contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type RevisionInfo
--- <p>Information about an application revision.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * revisionLocation [RevisionLocation] <p>Information about the location and type of an application revision.</p>
--- * genericRevisionInfo [GenericRevisionInfo] <p>Information about an application revision, including usage details and associated deployment groups.</p>
--- @return RevisionInfo structure as a key-value pair table
-function M.RevisionInfo(args)
-	assert(args, "You must provide an argument table when creating RevisionInfo")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["revisionLocation"] = args["revisionLocation"],
-		["genericRevisionInfo"] = args["genericRevisionInfo"],
-	}
-	asserts.AssertRevisionInfo(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -273,6 +313,40 @@ function M.InvalidTagException(args)
 	local all_args = { 
 	}
 	asserts.AssertInvalidTagException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.InvalidGitHubAccountTokenException = { nil }
+
+function asserts.AssertInvalidGitHubAccountTokenException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InvalidGitHubAccountTokenException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.InvalidGitHubAccountTokenException[k], "InvalidGitHubAccountTokenException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InvalidGitHubAccountTokenException
+-- <p>The GitHub token is not valid.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidGitHubAccountTokenException structure as a key-value pair table
+function M.InvalidGitHubAccountTokenException(args)
+	assert(args, "You must provide an argument table when creating InvalidGitHubAccountTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertInvalidGitHubAccountTokenException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -749,7 +823,7 @@ function asserts.AssertELBInfo(struct)
 end
 
 --- Create a structure of type ELBInfo
--- <p>Information about a load balancer in Elastic Load Balancing to use in a deployment.</p>
+-- <p>Information about a load balancer in Elastic Load Balancing to use in a deployment. Instances are registered directly with a load balancer, and traffic is routed to the load balancer.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * name [ELBName] <p>For blue/green deployments, the name of the load balancer that will be used to route traffic from original instances to replacement instances in a blue/green deployment. For in-place deployments, the name of the load balancer that instances are deregistered from so they are not serving traffic during a deployment, and then re-registered with after the deployment completes.</p>
@@ -1048,7 +1122,7 @@ function M.GetApplicationRevisionInput(args)
     }
 end
 
-keys.DeploymentGroupInfo = { ["applicationName"] = true, ["deploymentGroupId"] = true, ["loadBalancerInfo"] = true, ["blueGreenDeploymentConfiguration"] = true, ["deploymentConfigName"] = true, ["autoScalingGroups"] = true, ["alarmConfiguration"] = true, ["ec2TagFilters"] = true, ["lastSuccessfulDeployment"] = true, ["autoRollbackConfiguration"] = true, ["deploymentStyle"] = true, ["triggerConfigurations"] = true, ["lastAttemptedDeployment"] = true, ["serviceRoleArn"] = true, ["deploymentGroupName"] = true, ["targetRevision"] = true, ["onPremisesInstanceTagFilters"] = true, nil }
+keys.DeploymentGroupInfo = { ["applicationName"] = true, ["deploymentGroupId"] = true, ["loadBalancerInfo"] = true, ["blueGreenDeploymentConfiguration"] = true, ["deploymentConfigName"] = true, ["autoScalingGroups"] = true, ["alarmConfiguration"] = true, ["ec2TagFilters"] = true, ["lastSuccessfulDeployment"] = true, ["ec2TagSet"] = true, ["onPremisesTagSet"] = true, ["autoRollbackConfiguration"] = true, ["deploymentStyle"] = true, ["triggerConfigurations"] = true, ["lastAttemptedDeployment"] = true, ["serviceRoleArn"] = true, ["deploymentGroupName"] = true, ["targetRevision"] = true, ["computePlatform"] = true, ["onPremisesInstanceTagFilters"] = true, nil }
 
 function asserts.AssertDeploymentGroupInfo(struct)
 	assert(struct)
@@ -1062,6 +1136,8 @@ function asserts.AssertDeploymentGroupInfo(struct)
 	if struct["alarmConfiguration"] then asserts.AssertAlarmConfiguration(struct["alarmConfiguration"]) end
 	if struct["ec2TagFilters"] then asserts.AssertEC2TagFilterList(struct["ec2TagFilters"]) end
 	if struct["lastSuccessfulDeployment"] then asserts.AssertLastDeploymentInfo(struct["lastSuccessfulDeployment"]) end
+	if struct["ec2TagSet"] then asserts.AssertEC2TagSet(struct["ec2TagSet"]) end
+	if struct["onPremisesTagSet"] then asserts.AssertOnPremisesTagSet(struct["onPremisesTagSet"]) end
 	if struct["autoRollbackConfiguration"] then asserts.AssertAutoRollbackConfiguration(struct["autoRollbackConfiguration"]) end
 	if struct["deploymentStyle"] then asserts.AssertDeploymentStyle(struct["deploymentStyle"]) end
 	if struct["triggerConfigurations"] then asserts.AssertTriggerConfigList(struct["triggerConfigurations"]) end
@@ -1069,6 +1145,7 @@ function asserts.AssertDeploymentGroupInfo(struct)
 	if struct["serviceRoleArn"] then asserts.AssertRole(struct["serviceRoleArn"]) end
 	if struct["deploymentGroupName"] then asserts.AssertDeploymentGroupName(struct["deploymentGroupName"]) end
 	if struct["targetRevision"] then asserts.AssertRevisionLocation(struct["targetRevision"]) end
+	if struct["computePlatform"] then asserts.AssertComputePlatform(struct["computePlatform"]) end
 	if struct["onPremisesInstanceTagFilters"] then asserts.AssertTagFilterList(struct["onPremisesInstanceTagFilters"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.DeploymentGroupInfo[k], "DeploymentGroupInfo contains unknown key " .. tostring(k))
@@ -1086,8 +1163,10 @@ end
 -- * deploymentConfigName [DeploymentConfigName] <p>The deployment configuration name.</p>
 -- * autoScalingGroups [AutoScalingGroupList] <p>A list of associated Auto Scaling groups.</p>
 -- * alarmConfiguration [AlarmConfiguration] <p>A list of alarms associated with the deployment group.</p>
--- * ec2TagFilters [EC2TagFilterList] <p>The Amazon EC2 tags on which to filter.</p>
+-- * ec2TagFilters [EC2TagFilterList] <p>The Amazon EC2 tags on which to filter. The deployment group includes EC2 instances with any of the specified tags.</p>
 -- * lastSuccessfulDeployment [LastDeploymentInfo] <p>Information about the most recent successful deployment to the deployment group.</p>
+-- * ec2TagSet [EC2TagSet] <p>Information about groups of tags applied to an EC2 instance. The deployment group includes only EC2 instances identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.</p>
+-- * onPremisesTagSet [OnPremisesTagSet] <p>Information about groups of tags applied to an on-premises instance. The deployment group includes only on-premises instances identified by all the tag groups. Cannot be used in the same call as onPremisesInstanceTagFilters.</p>
 -- * autoRollbackConfiguration [AutoRollbackConfiguration] <p>Information about the automatic rollback configuration associated with the deployment group.</p>
 -- * deploymentStyle [DeploymentStyle] <p>Information about the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer.</p>
 -- * triggerConfigurations [TriggerConfigList] <p>Information about triggers associated with the deployment group.</p>
@@ -1095,7 +1174,8 @@ end
 -- * serviceRoleArn [Role] <p>A service role ARN.</p>
 -- * deploymentGroupName [DeploymentGroupName] <p>The deployment group name.</p>
 -- * targetRevision [RevisionLocation] <p>Information about the deployment group's target revision, including type and location.</p>
--- * onPremisesInstanceTagFilters [TagFilterList] <p>The on-premises instance tags on which to filter.</p>
+-- * computePlatform [ComputePlatform] <p>The destination platform type for the deployment group (<code>Lambda</code> or <code>Server</code>).</p>
+-- * onPremisesInstanceTagFilters [TagFilterList] <p>The on-premises instance tags on which to filter. The deployment group includes on-premises instances with any of the specified tags.</p>
 -- @return DeploymentGroupInfo structure as a key-value pair table
 function M.DeploymentGroupInfo(args)
 	assert(args, "You must provide an argument table when creating DeploymentGroupInfo")
@@ -1115,6 +1195,8 @@ function M.DeploymentGroupInfo(args)
 		["alarmConfiguration"] = args["alarmConfiguration"],
 		["ec2TagFilters"] = args["ec2TagFilters"],
 		["lastSuccessfulDeployment"] = args["lastSuccessfulDeployment"],
+		["ec2TagSet"] = args["ec2TagSet"],
+		["onPremisesTagSet"] = args["onPremisesTagSet"],
 		["autoRollbackConfiguration"] = args["autoRollbackConfiguration"],
 		["deploymentStyle"] = args["deploymentStyle"],
 		["triggerConfigurations"] = args["triggerConfigurations"],
@@ -1122,6 +1204,7 @@ function M.DeploymentGroupInfo(args)
 		["serviceRoleArn"] = args["serviceRoleArn"],
 		["deploymentGroupName"] = args["deploymentGroupName"],
 		["targetRevision"] = args["targetRevision"],
+		["computePlatform"] = args["computePlatform"],
 		["onPremisesInstanceTagFilters"] = args["onPremisesInstanceTagFilters"],
 	}
 	asserts.AssertDeploymentGroupInfo(all_args)
@@ -1269,15 +1352,17 @@ function M.TriggerTargetsLimitExceededException(args)
     }
 end
 
-keys.DeploymentConfigInfo = { ["deploymentConfigId"] = true, ["minimumHealthyHosts"] = true, ["createTime"] = true, ["deploymentConfigName"] = true, nil }
+keys.DeploymentConfigInfo = { ["trafficRoutingConfig"] = true, ["deploymentConfigId"] = true, ["minimumHealthyHosts"] = true, ["computePlatform"] = true, ["deploymentConfigName"] = true, ["createTime"] = true, nil }
 
 function asserts.AssertDeploymentConfigInfo(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeploymentConfigInfo to be of type 'table'")
+	if struct["trafficRoutingConfig"] then asserts.AssertTrafficRoutingConfig(struct["trafficRoutingConfig"]) end
 	if struct["deploymentConfigId"] then asserts.AssertDeploymentConfigId(struct["deploymentConfigId"]) end
 	if struct["minimumHealthyHosts"] then asserts.AssertMinimumHealthyHosts(struct["minimumHealthyHosts"]) end
-	if struct["createTime"] then asserts.AssertTimestamp(struct["createTime"]) end
+	if struct["computePlatform"] then asserts.AssertComputePlatform(struct["computePlatform"]) end
 	if struct["deploymentConfigName"] then asserts.AssertDeploymentConfigName(struct["deploymentConfigName"]) end
+	if struct["createTime"] then asserts.AssertTimestamp(struct["createTime"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.DeploymentConfigInfo[k], "DeploymentConfigInfo contains unknown key " .. tostring(k))
 	end
@@ -1287,10 +1372,12 @@ end
 -- <p>Information about a deployment configuration.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * trafficRoutingConfig [TrafficRoutingConfig] <p>The configuration specifying how the deployment traffic will be routed. Only deployments with a Lambda compute platform can specify this.</p>
 -- * deploymentConfigId [DeploymentConfigId] <p>The deployment configuration ID.</p>
 -- * minimumHealthyHosts [MinimumHealthyHosts] <p>Information about the number or percentage of minimum healthy instance.</p>
--- * createTime [Timestamp] <p>The time at which the deployment configuration was created.</p>
+-- * computePlatform [ComputePlatform] <p>The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).</p>
 -- * deploymentConfigName [DeploymentConfigName] <p>The deployment configuration name.</p>
+-- * createTime [Timestamp] <p>The time at which the deployment configuration was created.</p>
 -- @return DeploymentConfigInfo structure as a key-value pair table
 function M.DeploymentConfigInfo(args)
 	assert(args, "You must provide an argument table when creating DeploymentConfigInfo")
@@ -1301,10 +1388,12 @@ function M.DeploymentConfigInfo(args)
     local header_args = { 
     }
 	local all_args = { 
+		["trafficRoutingConfig"] = args["trafficRoutingConfig"],
 		["deploymentConfigId"] = args["deploymentConfigId"],
 		["minimumHealthyHosts"] = args["minimumHealthyHosts"],
-		["createTime"] = args["createTime"],
+		["computePlatform"] = args["computePlatform"],
 		["deploymentConfigName"] = args["deploymentConfigName"],
+		["createTime"] = args["createTime"],
 	}
 	asserts.AssertDeploymentConfigInfo(all_args)
 	return {
@@ -1409,6 +1498,40 @@ function M.InvalidAlarmConfigException(args)
 	local all_args = { 
 	}
 	asserts.AssertInvalidAlarmConfigException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.TagRequiredException = { nil }
+
+function asserts.AssertTagRequiredException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected TagRequiredException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.TagRequiredException[k], "TagRequiredException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type TagRequiredException
+-- <p>A tag was not specified.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TagRequiredException structure as a key-value pair table
+function M.TagRequiredException(args)
+	assert(args, "You must provide an argument table when creating TagRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertTagRequiredException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1600,6 +1723,40 @@ function M.RemoveTagsFromOnPremisesInstancesInput(args)
     }
 end
 
+keys.InvalidInputException = { nil }
+
+function asserts.AssertInvalidInputException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InvalidInputException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.InvalidInputException[k], "InvalidInputException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InvalidInputException
+-- <p>The specified input was specified in an invalid format.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidInputException structure as a key-value pair table
+function M.InvalidInputException(args)
+	assert(args, "You must provide an argument table when creating InvalidInputException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertInvalidInputException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.StopDeploymentInput = { ["deploymentId"] = true, ["autoRollbackEnabled"] = true, nil }
 
 function asserts.AssertStopDeploymentInput(struct)
@@ -1642,23 +1799,25 @@ function M.StopDeploymentInput(args)
     }
 end
 
-keys.TagRequiredException = { nil }
+keys.DeleteGitHubAccountTokenOutput = { ["tokenName"] = true, nil }
 
-function asserts.AssertTagRequiredException(struct)
+function asserts.AssertDeleteGitHubAccountTokenOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TagRequiredException to be of type 'table'")
+	assert(type(struct) == "table", "Expected DeleteGitHubAccountTokenOutput to be of type 'table'")
+	if struct["tokenName"] then asserts.AssertGitHubAccountTokenName(struct["tokenName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TagRequiredException[k], "TagRequiredException contains unknown key " .. tostring(k))
+		assert(keys.DeleteGitHubAccountTokenOutput[k], "DeleteGitHubAccountTokenOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TagRequiredException
--- <p>A tag was not specified.</p>
+--- Create a structure of type DeleteGitHubAccountTokenOutput
+-- <p>Represents the output of a DeleteGitHubAccountToken operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return TagRequiredException structure as a key-value pair table
-function M.TagRequiredException(args)
-	assert(args, "You must provide an argument table when creating TagRequiredException")
+-- * tokenName [GitHubAccountTokenName] <p>The name of the GitHub account connection that was deleted.</p>
+-- @return DeleteGitHubAccountTokenOutput structure as a key-value pair table
+function M.DeleteGitHubAccountTokenOutput(args)
+	assert(args, "You must provide an argument table when creating DeleteGitHubAccountTokenOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -1666,8 +1825,9 @@ function M.TagRequiredException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["tokenName"] = args["tokenName"],
 	}
-	asserts.AssertTagRequiredException(all_args)
+	asserts.AssertDeleteGitHubAccountTokenOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1676,13 +1836,15 @@ function M.TagRequiredException(args)
     }
 end
 
-keys.CreateDeploymentConfigInput = { ["minimumHealthyHosts"] = true, ["deploymentConfigName"] = true, nil }
+keys.CreateDeploymentConfigInput = { ["trafficRoutingConfig"] = true, ["minimumHealthyHosts"] = true, ["computePlatform"] = true, ["deploymentConfigName"] = true, nil }
 
 function asserts.AssertCreateDeploymentConfigInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateDeploymentConfigInput to be of type 'table'")
 	assert(struct["deploymentConfigName"], "Expected key deploymentConfigName to exist in table")
+	if struct["trafficRoutingConfig"] then asserts.AssertTrafficRoutingConfig(struct["trafficRoutingConfig"]) end
 	if struct["minimumHealthyHosts"] then asserts.AssertMinimumHealthyHosts(struct["minimumHealthyHosts"]) end
+	if struct["computePlatform"] then asserts.AssertComputePlatform(struct["computePlatform"]) end
 	if struct["deploymentConfigName"] then asserts.AssertDeploymentConfigName(struct["deploymentConfigName"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateDeploymentConfigInput[k], "CreateDeploymentConfigInput contains unknown key " .. tostring(k))
@@ -1693,7 +1855,9 @@ end
 -- <p>Represents the input of a CreateDeploymentConfig operation.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * trafficRoutingConfig [TrafficRoutingConfig] <p>The configuration that specifies how the deployment traffic will be routed.</p>
 -- * minimumHealthyHosts [MinimumHealthyHosts] <p>The minimum number of healthy instances that should be available at any time during the deployment. There are two parameters expected in the input: type and value.</p> <p>The type parameter takes either of the following values:</p> <ul> <li> <p>HOST_COUNT: The value parameter represents the minimum number of healthy instances as an absolute value.</p> </li> <li> <p>FLEET_PERCENT: The value parameter represents the minimum number of healthy instances as a percentage of the total number of instances in the deployment. If you specify FLEET_PERCENT, at the start of the deployment, AWS CodeDeploy converts the percentage to the equivalent number of instance and rounds up fractional instances.</p> </li> </ul> <p>The value parameter takes an integer.</p> <p>For example, to set a minimum of 95% healthy instance, specify a type of FLEET_PERCENT and a value of 95.</p>
+-- * computePlatform [ComputePlatform] <p>The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>&gt;).</p>
 -- * deploymentConfigName [DeploymentConfigName] <p>The name of the deployment configuration to create.</p>
 -- Required key: deploymentConfigName
 -- @return CreateDeploymentConfigInput structure as a key-value pair table
@@ -1706,7 +1870,9 @@ function M.CreateDeploymentConfigInput(args)
     local header_args = { 
     }
 	local all_args = { 
+		["trafficRoutingConfig"] = args["trafficRoutingConfig"],
 		["minimumHealthyHosts"] = args["minimumHealthyHosts"],
+		["computePlatform"] = args["computePlatform"],
 		["deploymentConfigName"] = args["deploymentConfigName"],
 	}
 	asserts.AssertCreateDeploymentConfigInput(all_args)
@@ -1761,27 +1927,25 @@ function M.TriggerConfig(args)
     }
 end
 
-keys.TimeRange = { ["start"] = true, ["end"] = true, nil }
+keys.OnPremisesTagSet = { ["onPremisesTagSetList"] = true, nil }
 
-function asserts.AssertTimeRange(struct)
+function asserts.AssertOnPremisesTagSet(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TimeRange to be of type 'table'")
-	if struct["start"] then asserts.AssertTimestamp(struct["start"]) end
-	if struct["end"] then asserts.AssertTimestamp(struct["end"]) end
+	assert(type(struct) == "table", "Expected OnPremisesTagSet to be of type 'table'")
+	if struct["onPremisesTagSetList"] then asserts.AssertOnPremisesTagSetList(struct["onPremisesTagSetList"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TimeRange[k], "TimeRange contains unknown key " .. tostring(k))
+		assert(keys.OnPremisesTagSet[k], "OnPremisesTagSet contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TimeRange
--- <p>Information about a time range.</p>
+--- Create a structure of type OnPremisesTagSet
+-- <p>Information about groups of on-premises instance tags.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * start [Timestamp] <p>The start time of the time range.</p> <note> <p>Specify null to leave the start time open-ended.</p> </note>
--- * end [Timestamp] <p>The end time of the time range.</p> <note> <p>Specify null to leave the end time open-ended.</p> </note>
--- @return TimeRange structure as a key-value pair table
-function M.TimeRange(args)
-	assert(args, "You must provide an argument table when creating TimeRange")
+-- * onPremisesTagSetList [OnPremisesTagSetList] <p>A list containing other lists of on-premises instance tag groups. In order for an instance to be included in the deployment group, it must be identified by all the tag groups in the list.</p>
+-- @return OnPremisesTagSet structure as a key-value pair table
+function M.OnPremisesTagSet(args)
+	assert(args, "You must provide an argument table when creating OnPremisesTagSet")
     local query_args = { 
     }
     local uri_args = { 
@@ -1789,10 +1953,9 @@ function M.TimeRange(args)
     local header_args = { 
     }
 	local all_args = { 
-		["start"] = args["start"],
-		["end"] = args["end"],
+		["onPremisesTagSetList"] = args["onPremisesTagSetList"],
 	}
-	asserts.AssertTimeRange(all_args)
+	asserts.AssertOnPremisesTagSet(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2088,6 +2251,63 @@ function M.SkipWaitTimeForInstanceTerminationInput(args)
     }
 end
 
+keys.ListApplicationRevisionsInput = { ["applicationName"] = true, ["s3KeyPrefix"] = true, ["s3Bucket"] = true, ["sortBy"] = true, ["nextToken"] = true, ["deployed"] = true, ["sortOrder"] = true, nil }
+
+function asserts.AssertListApplicationRevisionsInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListApplicationRevisionsInput to be of type 'table'")
+	assert(struct["applicationName"], "Expected key applicationName to exist in table")
+	if struct["applicationName"] then asserts.AssertApplicationName(struct["applicationName"]) end
+	if struct["s3KeyPrefix"] then asserts.AssertS3Key(struct["s3KeyPrefix"]) end
+	if struct["s3Bucket"] then asserts.AssertS3Bucket(struct["s3Bucket"]) end
+	if struct["sortBy"] then asserts.AssertApplicationRevisionSortBy(struct["sortBy"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
+	if struct["deployed"] then asserts.AssertListStateFilterAction(struct["deployed"]) end
+	if struct["sortOrder"] then asserts.AssertSortOrder(struct["sortOrder"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListApplicationRevisionsInput[k], "ListApplicationRevisionsInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListApplicationRevisionsInput
+-- <p>Represents the input of a ListApplicationRevisions operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
+-- * s3KeyPrefix [S3Key] <p>A key prefix for the set of Amazon S3 objects to limit the search for revisions.</p>
+-- * s3Bucket [S3Bucket] <p>An Amazon S3 bucket name to limit the search for revisions.</p> <p>If set to null, all of the user's buckets will be searched.</p>
+-- * sortBy [ApplicationRevisionSortBy] <p>The column name to use to sort the list results:</p> <ul> <li> <p>registerTime: Sort by the time the revisions were registered with AWS CodeDeploy.</p> </li> <li> <p>firstUsedTime: Sort by the time the revisions were first used in a deployment.</p> </li> <li> <p>lastUsedTime: Sort by the time the revisions were last used in a deployment.</p> </li> </ul> <p>If not specified or set to null, the results will be returned in an arbitrary order.</p>
+-- * nextToken [NextToken] <p>An identifier returned from the previous list application revisions call. It can be used to return the next set of applications in the list.</p>
+-- * deployed [ListStateFilterAction] <p>Whether to list revisions based on whether the revision is the target revision of an deployment group:</p> <ul> <li> <p>include: List revisions that are target revisions of a deployment group.</p> </li> <li> <p>exclude: Do not list revisions that are target revisions of a deployment group.</p> </li> <li> <p>ignore: List all revisions.</p> </li> </ul>
+-- * sortOrder [SortOrder] <p>The order in which to sort the list results:</p> <ul> <li> <p>ascending: ascending order.</p> </li> <li> <p>descending: descending order.</p> </li> </ul> <p>If not specified, the results will be sorted in ascending order.</p> <p>If set to null, the results will be sorted in an arbitrary order.</p>
+-- Required key: applicationName
+-- @return ListApplicationRevisionsInput structure as a key-value pair table
+function M.ListApplicationRevisionsInput(args)
+	assert(args, "You must provide an argument table when creating ListApplicationRevisionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["applicationName"] = args["applicationName"],
+		["s3KeyPrefix"] = args["s3KeyPrefix"],
+		["s3Bucket"] = args["s3Bucket"],
+		["sortBy"] = args["sortBy"],
+		["nextToken"] = args["nextToken"],
+		["deployed"] = args["deployed"],
+		["sortOrder"] = args["sortOrder"],
+	}
+	asserts.AssertListApplicationRevisionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.AutoRollbackConfiguration = { ["enabled"] = true, ["events"] = true, nil }
 
 function asserts.AssertAutoRollbackConfiguration(struct)
@@ -2284,6 +2504,40 @@ function M.DeleteDeploymentConfigInput(args)
     }
 end
 
+keys.InvalidLifecycleEventHookExecutionIdException = { nil }
+
+function asserts.AssertInvalidLifecycleEventHookExecutionIdException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InvalidLifecycleEventHookExecutionIdException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.InvalidLifecycleEventHookExecutionIdException[k], "InvalidLifecycleEventHookExecutionIdException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InvalidLifecycleEventHookExecutionIdException
+-- <p>A lifecycle event hook is invalid. Review the <code>hooks</code> section in your AppSpec file to ensure the lifecycle events and <code>hooks</code> functions are valid.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidLifecycleEventHookExecutionIdException structure as a key-value pair table
+function M.InvalidLifecycleEventHookExecutionIdException(args)
+	assert(args, "You must provide an argument table when creating InvalidLifecycleEventHookExecutionIdException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertInvalidLifecycleEventHookExecutionIdException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DeploymentReadyOption = { ["actionOnTimeout"] = true, ["waitTimeInMinutes"] = true, nil }
 
 function asserts.AssertDeploymentReadyOption(struct)
@@ -2300,7 +2554,7 @@ end
 -- <p>Information about how traffic is rerouted to instances in a replacement environment in a blue/green deployment.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * actionOnTimeout [DeploymentReadyAction] <p>Information about when to reroute traffic from an original environment to a replacement environment in a blue/green deployment.</p> <ul> <li> <p>CONTINUE_DEPLOYMENT: Register new instances with the load balancer immediately after the new application revision is installed on the instances in the replacement environment.</p> </li> <li> <p>STOP_DEPLOYMENT: Do not register new instances with load balancer unless traffic is rerouted manually. If traffic is not rerouted manually before the end of the specified wait period, the deployment status is changed to Stopped.</p> </li> </ul>
+-- * actionOnTimeout [DeploymentReadyAction] <p>Information about when to reroute traffic from an original environment to a replacement environment in a blue/green deployment.</p> <ul> <li> <p>CONTINUE_DEPLOYMENT: Register new instances with the load balancer immediately after the new application revision is installed on the instances in the replacement environment.</p> </li> <li> <p>STOP_DEPLOYMENT: Do not register new instances with a load balancer unless traffic rerouting is started using <a>ContinueDeployment</a>. If traffic rerouting is not started before the end of the specified wait period, the deployment status is changed to Stopped.</p> </li> </ul>
 -- * waitTimeInMinutes [Duration] <p>The number of minutes to wait before the status of a blue/green deployment changed to Stopped if rerouting is not started manually. Applies only to the STOP_DEPLOYMENT option for actionOnTimeout</p>
 -- @return DeploymentReadyOption structure as a key-value pair table
 function M.DeploymentReadyOption(args)
@@ -2565,6 +2819,80 @@ function M.LifecycleHookLimitExceededException(args)
 	local all_args = { 
 	}
 	asserts.AssertLifecycleHookLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.InvalidUpdateOutdatedInstancesOnlyValueException = { nil }
+
+function asserts.AssertInvalidUpdateOutdatedInstancesOnlyValueException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InvalidUpdateOutdatedInstancesOnlyValueException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.InvalidUpdateOutdatedInstancesOnlyValueException[k], "InvalidUpdateOutdatedInstancesOnlyValueException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InvalidUpdateOutdatedInstancesOnlyValueException
+-- <p>The UpdateOutdatedInstancesOnly value is invalid. For AWS Lambda deployments, <code>false</code> is expected. For EC2/On-premises deployments, <code>true</code> or <code>false</code> is expected.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidUpdateOutdatedInstancesOnlyValueException structure as a key-value pair table
+function M.InvalidUpdateOutdatedInstancesOnlyValueException(args)
+	assert(args, "You must provide an argument table when creating InvalidUpdateOutdatedInstancesOnlyValueException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertInvalidUpdateOutdatedInstancesOnlyValueException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.RawString = { ["content"] = true, ["sha256"] = true, nil }
+
+function asserts.AssertRawString(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RawString to be of type 'table'")
+	if struct["content"] then asserts.AssertRawStringContent(struct["content"]) end
+	if struct["sha256"] then asserts.AssertRawStringSha256(struct["sha256"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RawString[k], "RawString contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RawString
+-- <p>A revision for an AWS Lambda deployment that is a YAML-formatted or JSON-formatted string. For AWS Lambda deployments, the revision is the same as the AppSpec file.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * content [RawStringContent] <p>The YAML-formatted or JSON-formatted revision string. It includes information about which Lambda function to update and optional Lambda functions that validate deployment lifecycle events.</p>
+-- * sha256 [RawStringSha256] <p>The SHA256 hash value of the revision that is specified as a RawString.</p>
+-- @return RawString structure as a key-value pair table
+function M.RawString(args)
+	assert(args, "You must provide an argument table when creating RawString")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["content"] = args["content"],
+		["sha256"] = args["sha256"],
+	}
+	asserts.AssertRawString(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2904,13 +3232,14 @@ function M.ApplicationDoesNotExistException(args)
     }
 end
 
-keys.TargetInstances = { ["autoScalingGroups"] = true, ["tagFilters"] = true, nil }
+keys.TargetInstances = { ["autoScalingGroups"] = true, ["tagFilters"] = true, ["ec2TagSet"] = true, nil }
 
 function asserts.AssertTargetInstances(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TargetInstances to be of type 'table'")
 	if struct["autoScalingGroups"] then asserts.AssertAutoScalingGroupNameList(struct["autoScalingGroups"]) end
 	if struct["tagFilters"] then asserts.AssertEC2TagFilterList(struct["tagFilters"]) end
+	if struct["ec2TagSet"] then asserts.AssertEC2TagSet(struct["ec2TagSet"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.TargetInstances[k], "TargetInstances contains unknown key " .. tostring(k))
 	end
@@ -2921,7 +3250,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * autoScalingGroups [AutoScalingGroupNameList] <p>The names of one or more Auto Scaling groups to identify a replacement environment for a blue/green deployment.</p>
--- * tagFilters [EC2TagFilterList] <p>The tag filter key, type, and value used to identify Amazon EC2 instances in a replacement environment for a blue/green deployment.</p>
+-- * tagFilters [EC2TagFilterList] <p>The tag filter key, type, and value used to identify Amazon EC2 instances in a replacement environment for a blue/green deployment. Cannot be used in the same call as ec2TagSet.</p>
+-- * ec2TagSet [EC2TagSet] <p>Information about the groups of EC2 instance tags that an instance must be identified by in order for it to be included in the replacement environment for a blue/green deployment. Cannot be used in the same call as tagFilters.</p>
 -- @return TargetInstances structure as a key-value pair table
 function M.TargetInstances(args)
 	assert(args, "You must provide an argument table when creating TargetInstances")
@@ -2934,6 +3264,7 @@ function M.TargetInstances(args)
 	local all_args = { 
 		["autoScalingGroups"] = args["autoScalingGroups"],
 		["tagFilters"] = args["tagFilters"],
+		["ec2TagSet"] = args["ec2TagSet"],
 	}
 	asserts.AssertTargetInstances(all_args)
 	return {
@@ -3051,14 +3382,15 @@ function M.InvalidApplicationNameException(args)
     }
 end
 
-keys.ApplicationInfo = { ["applicationName"] = true, ["gitHubAccountName"] = true, ["linkedToGitHub"] = true, ["applicationId"] = true, ["createTime"] = true, nil }
+keys.ApplicationInfo = { ["applicationName"] = true, ["computePlatform"] = true, ["linkedToGitHub"] = true, ["gitHubAccountName"] = true, ["applicationId"] = true, ["createTime"] = true, nil }
 
 function asserts.AssertApplicationInfo(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ApplicationInfo to be of type 'table'")
 	if struct["applicationName"] then asserts.AssertApplicationName(struct["applicationName"]) end
-	if struct["gitHubAccountName"] then asserts.AssertGitHubAccountTokenName(struct["gitHubAccountName"]) end
+	if struct["computePlatform"] then asserts.AssertComputePlatform(struct["computePlatform"]) end
 	if struct["linkedToGitHub"] then asserts.AssertBoolean(struct["linkedToGitHub"]) end
+	if struct["gitHubAccountName"] then asserts.AssertGitHubAccountTokenName(struct["gitHubAccountName"]) end
 	if struct["applicationId"] then asserts.AssertApplicationId(struct["applicationId"]) end
 	if struct["createTime"] then asserts.AssertTimestamp(struct["createTime"]) end
 	for k,_ in pairs(struct) do
@@ -3071,8 +3403,9 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * applicationName [ApplicationName] <p>The application name.</p>
--- * gitHubAccountName [GitHubAccountTokenName] <p>The name for a connection to a GitHub account.</p>
+-- * computePlatform [ComputePlatform] <p>The destination platform type for deployment of the application (<code>Lambda</code> or <code>Server</code>).</p>
 -- * linkedToGitHub [Boolean] <p>True if the user has authenticated with GitHub for the specified application; otherwise, false.</p>
+-- * gitHubAccountName [GitHubAccountTokenName] <p>The name for a connection to a GitHub account.</p>
 -- * applicationId [ApplicationId] <p>The application ID.</p>
 -- * createTime [Timestamp] <p>The time at which the application was created.</p>
 -- @return ApplicationInfo structure as a key-value pair table
@@ -3086,8 +3419,9 @@ function M.ApplicationInfo(args)
     }
 	local all_args = { 
 		["applicationName"] = args["applicationName"],
-		["gitHubAccountName"] = args["gitHubAccountName"],
+		["computePlatform"] = args["computePlatform"],
 		["linkedToGitHub"] = args["linkedToGitHub"],
+		["gitHubAccountName"] = args["gitHubAccountName"],
 		["applicationId"] = args["applicationId"],
 		["createTime"] = args["createTime"],
 	}
@@ -3476,7 +3810,7 @@ function M.InvalidBlueGreenDeploymentConfigurationException(args)
     }
 end
 
-keys.UpdateDeploymentGroupInput = { ["applicationName"] = true, ["autoScalingGroups"] = true, ["loadBalancerInfo"] = true, ["currentDeploymentGroupName"] = true, ["blueGreenDeploymentConfiguration"] = true, ["deploymentConfigName"] = true, ["triggerConfigurations"] = true, ["alarmConfiguration"] = true, ["ec2TagFilters"] = true, ["serviceRoleArn"] = true, ["autoRollbackConfiguration"] = true, ["deploymentStyle"] = true, ["newDeploymentGroupName"] = true, ["onPremisesInstanceTagFilters"] = true, nil }
+keys.UpdateDeploymentGroupInput = { ["applicationName"] = true, ["autoScalingGroups"] = true, ["loadBalancerInfo"] = true, ["currentDeploymentGroupName"] = true, ["blueGreenDeploymentConfiguration"] = true, ["deploymentConfigName"] = true, ["triggerConfigurations"] = true, ["alarmConfiguration"] = true, ["ec2TagFilters"] = true, ["ec2TagSet"] = true, ["serviceRoleArn"] = true, ["onPremisesTagSet"] = true, ["autoRollbackConfiguration"] = true, ["deploymentStyle"] = true, ["newDeploymentGroupName"] = true, ["onPremisesInstanceTagFilters"] = true, nil }
 
 function asserts.AssertUpdateDeploymentGroupInput(struct)
 	assert(struct)
@@ -3492,7 +3826,9 @@ function asserts.AssertUpdateDeploymentGroupInput(struct)
 	if struct["triggerConfigurations"] then asserts.AssertTriggerConfigList(struct["triggerConfigurations"]) end
 	if struct["alarmConfiguration"] then asserts.AssertAlarmConfiguration(struct["alarmConfiguration"]) end
 	if struct["ec2TagFilters"] then asserts.AssertEC2TagFilterList(struct["ec2TagFilters"]) end
+	if struct["ec2TagSet"] then asserts.AssertEC2TagSet(struct["ec2TagSet"]) end
 	if struct["serviceRoleArn"] then asserts.AssertRole(struct["serviceRoleArn"]) end
+	if struct["onPremisesTagSet"] then asserts.AssertOnPremisesTagSet(struct["onPremisesTagSet"]) end
 	if struct["autoRollbackConfiguration"] then asserts.AssertAutoRollbackConfiguration(struct["autoRollbackConfiguration"]) end
 	if struct["deploymentStyle"] then asserts.AssertDeploymentStyle(struct["deploymentStyle"]) end
 	if struct["newDeploymentGroupName"] then asserts.AssertDeploymentGroupName(struct["newDeploymentGroupName"]) end
@@ -3515,7 +3851,9 @@ end
 -- * triggerConfigurations [TriggerConfigList] <p>Information about triggers to change when the deployment group is updated. For examples, see <a href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html">Modify Triggers in an AWS CodeDeploy Deployment Group</a> in the AWS CodeDeploy User Guide.</p>
 -- * alarmConfiguration [AlarmConfiguration] <p>Information to add or change about Amazon CloudWatch alarms when the deployment group is updated.</p>
 -- * ec2TagFilters [EC2TagFilterList] <p>The replacement set of Amazon EC2 tags on which to filter, if you want to change them. To keep the existing tags, enter their names. To remove tags, do not enter any tag names.</p>
+-- * ec2TagSet [EC2TagSet] <p>Information about groups of tags applied to on-premises instances. The deployment group will include only EC2 instances identified by all the tag groups.</p>
 -- * serviceRoleArn [Role] <p>A replacement ARN for the service role, if you want to change it.</p>
+-- * onPremisesTagSet [OnPremisesTagSet] <p>Information about an on-premises instance tag set. The deployment group will include only on-premises instances identified by all the tag groups.</p>
 -- * autoRollbackConfiguration [AutoRollbackConfiguration] <p>Information for an automatic rollback configuration that is added or changed when a deployment group is updated.</p>
 -- * deploymentStyle [DeploymentStyle] <p>Information about the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer.</p>
 -- * newDeploymentGroupName [DeploymentGroupName] <p>The new name of the deployment group, if you want to change it.</p>
@@ -3541,7 +3879,9 @@ function M.UpdateDeploymentGroupInput(args)
 		["triggerConfigurations"] = args["triggerConfigurations"],
 		["alarmConfiguration"] = args["alarmConfiguration"],
 		["ec2TagFilters"] = args["ec2TagFilters"],
+		["ec2TagSet"] = args["ec2TagSet"],
 		["serviceRoleArn"] = args["serviceRoleArn"],
+		["onPremisesTagSet"] = args["onPremisesTagSet"],
 		["autoRollbackConfiguration"] = args["autoRollbackConfiguration"],
 		["deploymentStyle"] = args["deploymentStyle"],
 		["newDeploymentGroupName"] = args["newDeploymentGroupName"],
@@ -3714,6 +4054,49 @@ function M.GetApplicationRevisionOutput(args)
     }
 end
 
+keys.PutLifecycleEventHookExecutionStatusInput = { ["status"] = true, ["deploymentId"] = true, ["lifecycleEventHookExecutionId"] = true, nil }
+
+function asserts.AssertPutLifecycleEventHookExecutionStatusInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PutLifecycleEventHookExecutionStatusInput to be of type 'table'")
+	if struct["status"] then asserts.AssertLifecycleEventStatus(struct["status"]) end
+	if struct["deploymentId"] then asserts.AssertDeploymentId(struct["deploymentId"]) end
+	if struct["lifecycleEventHookExecutionId"] then asserts.AssertLifecycleEventHookExecutionId(struct["lifecycleEventHookExecutionId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PutLifecycleEventHookExecutionStatusInput[k], "PutLifecycleEventHookExecutionStatusInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PutLifecycleEventHookExecutionStatusInput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [LifecycleEventStatus] <p>The result of a Lambda function that validates a deployment lifecycle event (<code>Succeeded</code> or <code>Failed</code>).</p>
+-- * deploymentId [DeploymentId] <p>The ID of the deployment. Pass this ID to a Lambda function that validates a deployment lifecycle event.</p>
+-- * lifecycleEventHookExecutionId [LifecycleEventHookExecutionId] <p>The execution ID of a deployment's lifecycle hook. A deployment lifecycle hook is specified in the <code>hooks</code> section of the AppSpec file.</p>
+-- @return PutLifecycleEventHookExecutionStatusInput structure as a key-value pair table
+function M.PutLifecycleEventHookExecutionStatusInput(args)
+	assert(args, "You must provide an argument table when creating PutLifecycleEventHookExecutionStatusInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["status"] = args["status"],
+		["deploymentId"] = args["deploymentId"],
+		["lifecycleEventHookExecutionId"] = args["lifecycleEventHookExecutionId"],
+	}
+	asserts.AssertPutLifecycleEventHookExecutionStatusInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DeploymentConfigLimitExceededException = { nil }
 
 function asserts.AssertDeploymentConfigLimitExceededException(struct)
@@ -3740,6 +4123,40 @@ function M.DeploymentConfigLimitExceededException(args)
 	local all_args = { 
 	}
 	asserts.AssertDeploymentConfigLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.TagSetListLimitExceededException = { nil }
+
+function asserts.AssertTagSetListLimitExceededException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected TagSetListLimitExceededException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.TagSetListLimitExceededException[k], "TagSetListLimitExceededException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type TagSetListLimitExceededException
+-- <p>The number of tag groups included in the tag set list exceeded the maximum allowed limit of 3.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TagSetListLimitExceededException structure as a key-value pair table
+function M.TagSetListLimitExceededException(args)
+	assert(args, "You must provide an argument table when creating TagSetListLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertTagSetListLimitExceededException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3855,6 +4272,7 @@ keys.BatchGetApplicationsInput = { ["applicationNames"] = true, nil }
 function asserts.AssertBatchGetApplicationsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchGetApplicationsInput to be of type 'table'")
+	assert(struct["applicationNames"], "Expected key applicationNames to exist in table")
 	if struct["applicationNames"] then asserts.AssertApplicationsList(struct["applicationNames"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.BatchGetApplicationsInput[k], "BatchGetApplicationsInput contains unknown key " .. tostring(k))
@@ -3866,6 +4284,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * applicationNames [ApplicationsList] <p>A list of application names separated by spaces.</p>
+-- Required key: applicationNames
 -- @return BatchGetApplicationsInput structure as a key-value pair table
 function M.BatchGetApplicationsInput(args)
 	assert(args, "You must provide an argument table when creating BatchGetApplicationsInput")
@@ -4142,13 +4561,48 @@ function M.InvalidTagFilterException(args)
     }
 end
 
-keys.CreateApplicationInput = { ["applicationName"] = true, nil }
+keys.OperationNotSupportedException = { nil }
+
+function asserts.AssertOperationNotSupportedException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected OperationNotSupportedException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.OperationNotSupportedException[k], "OperationNotSupportedException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type OperationNotSupportedException
+-- <p>The API used does not support the deployment.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return OperationNotSupportedException structure as a key-value pair table
+function M.OperationNotSupportedException(args)
+	assert(args, "You must provide an argument table when creating OperationNotSupportedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertOperationNotSupportedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateApplicationInput = { ["applicationName"] = true, ["computePlatform"] = true, nil }
 
 function asserts.AssertCreateApplicationInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateApplicationInput to be of type 'table'")
 	assert(struct["applicationName"], "Expected key applicationName to exist in table")
 	if struct["applicationName"] then asserts.AssertApplicationName(struct["applicationName"]) end
+	if struct["computePlatform"] then asserts.AssertComputePlatform(struct["computePlatform"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateApplicationInput[k], "CreateApplicationInput contains unknown key " .. tostring(k))
 	end
@@ -4159,6 +4613,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * applicationName [ApplicationName] <p>The name of the application. This name must be unique with the applicable IAM user or AWS account.</p>
+-- * computePlatform [ComputePlatform] <p> The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).</p>
 -- Required key: applicationName
 -- @return CreateApplicationInput structure as a key-value pair table
 function M.CreateApplicationInput(args)
@@ -4171,6 +4626,7 @@ function M.CreateApplicationInput(args)
     }
 	local all_args = { 
 		["applicationName"] = args["applicationName"],
+		["computePlatform"] = args["computePlatform"],
 	}
 	asserts.AssertCreateApplicationInput(all_args)
 	return {
@@ -4218,7 +4674,7 @@ function M.CreateApplicationOutput(args)
     }
 end
 
-keys.DeploymentInfo = { ["autoRollbackConfiguration"] = true, ["additionalDeploymentStatusInfo"] = true, ["creator"] = true, ["previousRevision"] = true, ["fileExistsBehavior"] = true, ["completeTime"] = true, ["applicationName"] = true, ["deploymentOverview"] = true, ["deploymentId"] = true, ["ignoreApplicationStopFailures"] = true, ["updateOutdatedInstancesOnly"] = true, ["rollbackInfo"] = true, ["targetInstances"] = true, ["revision"] = true, ["status"] = true, ["description"] = true, ["errorInformation"] = true, ["startTime"] = true, ["instanceTerminationWaitTimeStarted"] = true, ["deploymentGroupName"] = true, ["createTime"] = true, ["loadBalancerInfo"] = true, ["blueGreenDeploymentConfiguration"] = true, ["deploymentConfigName"] = true, ["deploymentStyle"] = true, nil }
+keys.DeploymentInfo = { ["autoRollbackConfiguration"] = true, ["additionalDeploymentStatusInfo"] = true, ["creator"] = true, ["previousRevision"] = true, ["deploymentStatusMessages"] = true, ["fileExistsBehavior"] = true, ["completeTime"] = true, ["applicationName"] = true, ["deploymentOverview"] = true, ["deploymentId"] = true, ["ignoreApplicationStopFailures"] = true, ["updateOutdatedInstancesOnly"] = true, ["rollbackInfo"] = true, ["targetInstances"] = true, ["revision"] = true, ["status"] = true, ["description"] = true, ["errorInformation"] = true, ["startTime"] = true, ["instanceTerminationWaitTimeStarted"] = true, ["deploymentGroupName"] = true, ["createTime"] = true, ["computePlatform"] = true, ["loadBalancerInfo"] = true, ["blueGreenDeploymentConfiguration"] = true, ["deploymentConfigName"] = true, ["deploymentStyle"] = true, nil }
 
 function asserts.AssertDeploymentInfo(struct)
 	assert(struct)
@@ -4227,6 +4683,7 @@ function asserts.AssertDeploymentInfo(struct)
 	if struct["additionalDeploymentStatusInfo"] then asserts.AssertAdditionalDeploymentStatusInfo(struct["additionalDeploymentStatusInfo"]) end
 	if struct["creator"] then asserts.AssertDeploymentCreator(struct["creator"]) end
 	if struct["previousRevision"] then asserts.AssertRevisionLocation(struct["previousRevision"]) end
+	if struct["deploymentStatusMessages"] then asserts.AssertDeploymentStatusMessageList(struct["deploymentStatusMessages"]) end
 	if struct["fileExistsBehavior"] then asserts.AssertFileExistsBehavior(struct["fileExistsBehavior"]) end
 	if struct["completeTime"] then asserts.AssertTimestamp(struct["completeTime"]) end
 	if struct["applicationName"] then asserts.AssertApplicationName(struct["applicationName"]) end
@@ -4244,6 +4701,7 @@ function asserts.AssertDeploymentInfo(struct)
 	if struct["instanceTerminationWaitTimeStarted"] then asserts.AssertBoolean(struct["instanceTerminationWaitTimeStarted"]) end
 	if struct["deploymentGroupName"] then asserts.AssertDeploymentGroupName(struct["deploymentGroupName"]) end
 	if struct["createTime"] then asserts.AssertTimestamp(struct["createTime"]) end
+	if struct["computePlatform"] then asserts.AssertComputePlatform(struct["computePlatform"]) end
 	if struct["loadBalancerInfo"] then asserts.AssertLoadBalancerInfo(struct["loadBalancerInfo"]) end
 	if struct["blueGreenDeploymentConfiguration"] then asserts.AssertBlueGreenDeploymentConfiguration(struct["blueGreenDeploymentConfiguration"]) end
 	if struct["deploymentConfigName"] then asserts.AssertDeploymentConfigName(struct["deploymentConfigName"]) end
@@ -4261,6 +4719,7 @@ end
 -- * additionalDeploymentStatusInfo [AdditionalDeploymentStatusInfo] <p>Provides information about the results of a deployment, such as whether instances in the original environment in a blue/green deployment were not terminated.</p>
 -- * creator [DeploymentCreator] <p>The means by which the deployment was created:</p> <ul> <li> <p>user: A user created the deployment.</p> </li> <li> <p>autoscaling: Auto Scaling created the deployment.</p> </li> <li> <p>codeDeployRollback: A rollback process created the deployment.</p> </li> </ul>
 -- * previousRevision [RevisionLocation] <p>Information about the application revision that was deployed to the deployment group before the most recent successful deployment.</p>
+-- * deploymentStatusMessages [DeploymentStatusMessageList] <p>Messages that contain information about the status of a deployment.</p>
 -- * fileExistsBehavior [FileExistsBehavior] <p>Information about how AWS CodeDeploy handles files that already exist in a deployment target location but weren't part of the previous successful deployment.</p> <ul> <li> <p>DISALLOW: The deployment fails. This is also the default behavior if no option is specified.</p> </li> <li> <p>OVERWRITE: The version of the file from the application revision currently being deployed replaces the version already on the instance.</p> </li> <li> <p>RETAIN: The version of the file already on the instance is kept and used as part of the new deployment.</p> </li> </ul>
 -- * completeTime [Timestamp] <p>A timestamp indicating when the deployment was complete.</p>
 -- * applicationName [ApplicationName] <p>The application name.</p>
@@ -4278,6 +4737,7 @@ end
 -- * instanceTerminationWaitTimeStarted [Boolean] <p>Indicates whether the wait period set for the termination of instances in the original environment has started. Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the termination wait period starts.</p>
 -- * deploymentGroupName [DeploymentGroupName] <p>The deployment group name.</p>
 -- * createTime [Timestamp] <p>A timestamp indicating when the deployment was created.</p>
+-- * computePlatform [ComputePlatform] <p>The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).</p>
 -- * loadBalancerInfo [LoadBalancerInfo] <p>Information about the load balancer used in the deployment.</p>
 -- * blueGreenDeploymentConfiguration [BlueGreenDeploymentConfiguration] <p>Information about blue/green deployment options for this deployment.</p>
 -- * deploymentConfigName [DeploymentConfigName] <p>The deployment configuration name.</p>
@@ -4296,6 +4756,7 @@ function M.DeploymentInfo(args)
 		["additionalDeploymentStatusInfo"] = args["additionalDeploymentStatusInfo"],
 		["creator"] = args["creator"],
 		["previousRevision"] = args["previousRevision"],
+		["deploymentStatusMessages"] = args["deploymentStatusMessages"],
 		["fileExistsBehavior"] = args["fileExistsBehavior"],
 		["completeTime"] = args["completeTime"],
 		["applicationName"] = args["applicationName"],
@@ -4313,12 +4774,53 @@ function M.DeploymentInfo(args)
 		["instanceTerminationWaitTimeStarted"] = args["instanceTerminationWaitTimeStarted"],
 		["deploymentGroupName"] = args["deploymentGroupName"],
 		["createTime"] = args["createTime"],
+		["computePlatform"] = args["computePlatform"],
 		["loadBalancerInfo"] = args["loadBalancerInfo"],
 		["blueGreenDeploymentConfiguration"] = args["blueGreenDeploymentConfiguration"],
 		["deploymentConfigName"] = args["deploymentConfigName"],
 		["deploymentStyle"] = args["deploymentStyle"],
 	}
 	asserts.AssertDeploymentInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.LoadBalancerInfo = { ["elbInfoList"] = true, ["targetGroupInfoList"] = true, nil }
+
+function asserts.AssertLoadBalancerInfo(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LoadBalancerInfo to be of type 'table'")
+	if struct["elbInfoList"] then asserts.AssertELBInfoList(struct["elbInfoList"]) end
+	if struct["targetGroupInfoList"] then asserts.AssertTargetGroupInfoList(struct["targetGroupInfoList"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.LoadBalancerInfo[k], "LoadBalancerInfo contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LoadBalancerInfo
+-- <p>Information about the Elastic Load Balancing load balancer or target group used in a deployment.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * elbInfoList [ELBInfoList] <p>An array containing information about the load balancer to use for load balancing in a deployment. In Elastic Load Balancing, load balancers are used with Classic Load Balancers.</p> <note> <p> Adding more than one load balancer to the array is not supported. </p> </note>
+-- * targetGroupInfoList [TargetGroupInfoList] <p>An array containing information about the target group to use for load balancing in a deployment. In Elastic Load Balancing, target groups are used with Application Load Balancers.</p> <note> <p> Adding more than one target group to the array is not supported. </p> </note>
+-- @return LoadBalancerInfo structure as a key-value pair table
+function M.LoadBalancerInfo(args)
+	assert(args, "You must provide an argument table when creating LoadBalancerInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["elbInfoList"] = args["elbInfoList"],
+		["targetGroupInfoList"] = args["targetGroupInfoList"],
+	}
+	asserts.AssertLoadBalancerInfo(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4361,6 +4863,49 @@ function M.RevisionRequiredException(args)
     }
 end
 
+keys.TagFilter = { ["Type"] = true, ["Value"] = true, ["Key"] = true, nil }
+
+function asserts.AssertTagFilter(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected TagFilter to be of type 'table'")
+	if struct["Type"] then asserts.AssertTagFilterType(struct["Type"]) end
+	if struct["Value"] then asserts.AssertValue(struct["Value"]) end
+	if struct["Key"] then asserts.AssertKey(struct["Key"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.TagFilter[k], "TagFilter contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type TagFilter
+-- <p>Information about an on-premises instance tag filter.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [TagFilterType] <p>The on-premises instance tag filter type:</p> <ul> <li> <p>KEY_ONLY: Key only.</p> </li> <li> <p>VALUE_ONLY: Value only.</p> </li> <li> <p>KEY_AND_VALUE: Key and value.</p> </li> </ul>
+-- * Value [Value] <p>The on-premises instance tag filter value.</p>
+-- * Key [Key] <p>The on-premises instance tag filter key.</p>
+-- @return TagFilter structure as a key-value pair table
+function M.TagFilter(args)
+	assert(args, "You must provide an argument table when creating TagFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Type"] = args["Type"],
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
+	}
+	asserts.AssertTagFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.InstanceLimitExceededException = { nil }
 
 function asserts.AssertInstanceLimitExceededException(struct)
@@ -4387,6 +4932,40 @@ function M.InstanceLimitExceededException(args)
 	local all_args = { 
 	}
 	asserts.AssertInstanceLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.InvalidTrafficRoutingConfigurationException = { nil }
+
+function asserts.AssertInvalidTrafficRoutingConfigurationException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InvalidTrafficRoutingConfigurationException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.InvalidTrafficRoutingConfigurationException[k], "InvalidTrafficRoutingConfigurationException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InvalidTrafficRoutingConfigurationException
+-- <p> The configuration that specifies how traffic is routed during a deployment is invalid.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidTrafficRoutingConfigurationException structure as a key-value pair table
+function M.InvalidTrafficRoutingConfigurationException(args)
+	assert(args, "You must provide an argument table when creating InvalidTrafficRoutingConfigurationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertInvalidTrafficRoutingConfigurationException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4595,25 +5174,23 @@ function M.ListApplicationsOutput(args)
     }
 end
 
-keys.LoadBalancerInfo = { ["elbInfoList"] = true, nil }
+keys.InvalidLifecycleEventHookExecutionStatusException = { nil }
 
-function asserts.AssertLoadBalancerInfo(struct)
+function asserts.AssertInvalidLifecycleEventHookExecutionStatusException(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected LoadBalancerInfo to be of type 'table'")
-	if struct["elbInfoList"] then asserts.AssertELBInfoList(struct["elbInfoList"]) end
+	assert(type(struct) == "table", "Expected InvalidLifecycleEventHookExecutionStatusException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.LoadBalancerInfo[k], "LoadBalancerInfo contains unknown key " .. tostring(k))
+		assert(keys.InvalidLifecycleEventHookExecutionStatusException[k], "InvalidLifecycleEventHookExecutionStatusException contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type LoadBalancerInfo
--- <p>Information about the load balancer used in a deployment.</p>
+--- Create a structure of type InvalidLifecycleEventHookExecutionStatusException
+-- <p>The result of a Lambda validation function that verifies a lifecycle event is invalid. It should return <code>Succeeded</code> or <code>Failed</code>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * elbInfoList [ELBInfoList] <p>An array containing information about the load balancer in Elastic Load Balancing to use in a deployment.</p>
--- @return LoadBalancerInfo structure as a key-value pair table
-function M.LoadBalancerInfo(args)
-	assert(args, "You must provide an argument table when creating LoadBalancerInfo")
+-- @return InvalidLifecycleEventHookExecutionStatusException structure as a key-value pair table
+function M.InvalidLifecycleEventHookExecutionStatusException(args)
+	assert(args, "You must provide an argument table when creating InvalidLifecycleEventHookExecutionStatusException")
     local query_args = { 
     }
     local uri_args = { 
@@ -4621,9 +5198,82 @@ function M.LoadBalancerInfo(args)
     local header_args = { 
     }
 	local all_args = { 
-		["elbInfoList"] = args["elbInfoList"],
 	}
-	asserts.AssertLoadBalancerInfo(all_args)
+	asserts.AssertInvalidLifecycleEventHookExecutionStatusException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.TimeRange = { ["start"] = true, ["end"] = true, nil }
+
+function asserts.AssertTimeRange(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected TimeRange to be of type 'table'")
+	if struct["start"] then asserts.AssertTimestamp(struct["start"]) end
+	if struct["end"] then asserts.AssertTimestamp(struct["end"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.TimeRange[k], "TimeRange contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type TimeRange
+-- <p>Information about a time range.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * start [Timestamp] <p>The start time of the time range.</p> <note> <p>Specify null to leave the start time open-ended.</p> </note>
+-- * end [Timestamp] <p>The end time of the time range.</p> <note> <p>Specify null to leave the end time open-ended.</p> </note>
+-- @return TimeRange structure as a key-value pair table
+function M.TimeRange(args)
+	assert(args, "You must provide an argument table when creating TimeRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["start"] = args["start"],
+		["end"] = args["end"],
+	}
+	asserts.AssertTimeRange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.InvalidInstanceIdException = { nil }
+
+function asserts.AssertInvalidInstanceIdException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InvalidInstanceIdException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.InvalidInstanceIdException[k], "InvalidInstanceIdException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InvalidInstanceIdException
+-- <p> </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidInstanceIdException structure as a key-value pair table
+function M.InvalidInstanceIdException(args)
+	assert(args, "You must provide an argument table when creating InvalidInstanceIdException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertInvalidInstanceIdException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4683,7 +5333,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * action [InstanceAction] <p>The action to take on instances in the original environment after a successful blue/green deployment.</p> <ul> <li> <p>TERMINATE: Instances are terminated after a specified wait time.</p> </li> <li> <p>KEEP_ALIVE: Instances are left running after they are deregistered from the load balancer and removed from the deployment group.</p> </li> </ul>
--- * terminationWaitTimeInMinutes [Duration] <p>The number of minutes to wait after a successful blue/green deployment before terminating instances from the original environment.</p>
+-- * terminationWaitTimeInMinutes [Duration] <p>The number of minutes to wait after a successful blue/green deployment before terminating instances from the original environment. The maximum setting is 2880 minutes (2 days).</p>
 -- @return BlueInstanceTerminationOption structure as a key-value pair table
 function M.BlueInstanceTerminationOption(args)
 	assert(args, "You must provide an argument table when creating BlueInstanceTerminationOption")
@@ -4706,7 +5356,7 @@ function M.BlueInstanceTerminationOption(args)
     }
 end
 
-keys.RevisionLocation = { ["revisionType"] = true, ["s3Location"] = true, ["gitHubLocation"] = true, nil }
+keys.RevisionLocation = { ["revisionType"] = true, ["s3Location"] = true, ["gitHubLocation"] = true, ["string"] = true, nil }
 
 function asserts.AssertRevisionLocation(struct)
 	assert(struct)
@@ -4714,6 +5364,7 @@ function asserts.AssertRevisionLocation(struct)
 	if struct["revisionType"] then asserts.AssertRevisionLocationType(struct["revisionType"]) end
 	if struct["s3Location"] then asserts.AssertS3Location(struct["s3Location"]) end
 	if struct["gitHubLocation"] then asserts.AssertGitHubLocation(struct["gitHubLocation"]) end
+	if struct["string"] then asserts.AssertRawString(struct["string"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.RevisionLocation[k], "RevisionLocation contains unknown key " .. tostring(k))
 	end
@@ -4723,9 +5374,10 @@ end
 -- <p>Information about the location of an application revision.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * revisionType [RevisionLocationType] <p>The type of application revision:</p> <ul> <li> <p>S3: An application revision stored in Amazon S3.</p> </li> <li> <p>GitHub: An application revision stored in GitHub.</p> </li> </ul>
--- * s3Location [S3Location] <p>Information about the location of application artifacts stored in Amazon S3. </p>
+-- * revisionType [RevisionLocationType] <p>The type of application revision:</p> <ul> <li> <p>S3: An application revision stored in Amazon S3.</p> </li> <li> <p>GitHub: An application revision stored in GitHub (EC2/On-premises deployments only)</p> </li> <li> <p>String: A YAML-formatted or JSON-formatted string (AWS Lambda deployments only)</p> </li> </ul>
+-- * s3Location [S3Location] <p>Information about the location of a revision stored in Amazon S3. </p>
 -- * gitHubLocation [GitHubLocation] <p>Information about the location of application artifacts stored in GitHub.</p>
+-- * string [RawString] <p>Information about the location of an AWS Lambda deployment revision stored as a RawString.</p>
 -- @return RevisionLocation structure as a key-value pair table
 function M.RevisionLocation(args)
 	assert(args, "You must provide an argument table when creating RevisionLocation")
@@ -4739,6 +5391,7 @@ function M.RevisionLocation(args)
 		["revisionType"] = args["revisionType"],
 		["s3Location"] = args["s3Location"],
 		["gitHubLocation"] = args["gitHubLocation"],
+		["string"] = args["string"],
 	}
 	asserts.AssertRevisionLocation(all_args)
 	return {
@@ -4895,6 +5548,7 @@ keys.BatchGetDeploymentsInput = { ["deploymentIds"] = true, nil }
 function asserts.AssertBatchGetDeploymentsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchGetDeploymentsInput to be of type 'table'")
+	assert(struct["deploymentIds"], "Expected key deploymentIds to exist in table")
 	if struct["deploymentIds"] then asserts.AssertDeploymentsList(struct["deploymentIds"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.BatchGetDeploymentsInput[k], "BatchGetDeploymentsInput contains unknown key " .. tostring(k))
@@ -4906,6 +5560,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * deploymentIds [DeploymentsList] <p>A list of deployment IDs, separated by spaces.</p>
+-- Required key: deploymentIds
 -- @return BatchGetDeploymentsInput structure as a key-value pair table
 function M.BatchGetDeploymentsInput(args)
 	assert(args, "You must provide an argument table when creating BatchGetDeploymentsInput")
@@ -4993,6 +5648,40 @@ function M.ListDeploymentConfigsInput(args)
 		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListDeploymentConfigsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ThrottlingException = { nil }
+
+function asserts.AssertThrottlingException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ThrottlingException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.ThrottlingException[k], "ThrottlingException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ThrottlingException
+-- <p>An API function was called too frequently.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ThrottlingException structure as a key-value pair table
+function M.ThrottlingException(args)
+	assert(args, "You must provide an argument table when creating ThrottlingException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertThrottlingException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5165,23 +5854,23 @@ function M.BatchGetApplicationRevisionsOutput(args)
     }
 end
 
-keys.InvalidLoadBalancerInfoException = { nil }
+keys.InvalidGitHubAccountTokenNameException = { nil }
 
-function asserts.AssertInvalidLoadBalancerInfoException(struct)
+function asserts.AssertInvalidGitHubAccountTokenNameException(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidLoadBalancerInfoException to be of type 'table'")
+	assert(type(struct) == "table", "Expected InvalidGitHubAccountTokenNameException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidLoadBalancerInfoException[k], "InvalidLoadBalancerInfoException contains unknown key " .. tostring(k))
+		assert(keys.InvalidGitHubAccountTokenNameException[k], "InvalidGitHubAccountTokenNameException contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidLoadBalancerInfoException
--- <p>An invalid load balancer name, or no load balancer name, was specified.</p>
+--- Create a structure of type InvalidGitHubAccountTokenNameException
+-- <p>The format of the specified GitHub account connection name is invalid.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidLoadBalancerInfoException structure as a key-value pair table
-function M.InvalidLoadBalancerInfoException(args)
-	assert(args, "You must provide an argument table when creating InvalidLoadBalancerInfoException")
+-- @return InvalidGitHubAccountTokenNameException structure as a key-value pair table
+function M.InvalidGitHubAccountTokenNameException(args)
+	assert(args, "You must provide an argument table when creating InvalidGitHubAccountTokenNameException")
     local query_args = { 
     }
     local uri_args = { 
@@ -5190,7 +5879,47 @@ function M.InvalidLoadBalancerInfoException(args)
     }
 	local all_args = { 
 	}
-	asserts.AssertInvalidLoadBalancerInfoException(all_args)
+	asserts.AssertInvalidGitHubAccountTokenNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.RevisionInfo = { ["revisionLocation"] = true, ["genericRevisionInfo"] = true, nil }
+
+function asserts.AssertRevisionInfo(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RevisionInfo to be of type 'table'")
+	if struct["revisionLocation"] then asserts.AssertRevisionLocation(struct["revisionLocation"]) end
+	if struct["genericRevisionInfo"] then asserts.AssertGenericRevisionInfo(struct["genericRevisionInfo"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RevisionInfo[k], "RevisionInfo contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RevisionInfo
+-- <p>Information about an application revision.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * revisionLocation [RevisionLocation] <p>Information about the location and type of an application revision.</p>
+-- * genericRevisionInfo [GenericRevisionInfo] <p>Information about an application revision, including usage details and associated deployment groups.</p>
+-- @return RevisionInfo structure as a key-value pair table
+function M.RevisionInfo(args)
+	assert(args, "You must provide an argument table when creating RevisionInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["revisionLocation"] = args["revisionLocation"],
+		["genericRevisionInfo"] = args["genericRevisionInfo"],
+	}
+	asserts.AssertRevisionInfo(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5342,6 +6071,40 @@ function M.BatchGetDeploymentGroupsOutput(args)
     }
 end
 
+keys.InvalidLoadBalancerInfoException = { nil }
+
+function asserts.AssertInvalidLoadBalancerInfoException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InvalidLoadBalancerInfoException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.InvalidLoadBalancerInfoException[k], "InvalidLoadBalancerInfoException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InvalidLoadBalancerInfoException
+-- <p>An invalid load balancer name, or no load balancer name, was specified.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidLoadBalancerInfoException structure as a key-value pair table
+function M.InvalidLoadBalancerInfoException(args)
+	assert(args, "You must provide an argument table when creating InvalidLoadBalancerInfoException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertInvalidLoadBalancerInfoException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DeploymentConfigAlreadyExistsException = { nil }
 
 function asserts.AssertDeploymentConfigAlreadyExistsException(struct)
@@ -5410,7 +6173,7 @@ function M.InvalidInstanceTypeException(args)
     }
 end
 
-keys.CreateDeploymentGroupInput = { ["applicationName"] = true, ["autoScalingGroups"] = true, ["loadBalancerInfo"] = true, ["blueGreenDeploymentConfiguration"] = true, ["deploymentConfigName"] = true, ["triggerConfigurations"] = true, ["alarmConfiguration"] = true, ["ec2TagFilters"] = true, ["autoRollbackConfiguration"] = true, ["deploymentStyle"] = true, ["serviceRoleArn"] = true, ["deploymentGroupName"] = true, ["onPremisesInstanceTagFilters"] = true, nil }
+keys.CreateDeploymentGroupInput = { ["applicationName"] = true, ["autoScalingGroups"] = true, ["loadBalancerInfo"] = true, ["blueGreenDeploymentConfiguration"] = true, ["deploymentConfigName"] = true, ["triggerConfigurations"] = true, ["alarmConfiguration"] = true, ["ec2TagFilters"] = true, ["ec2TagSet"] = true, ["onPremisesTagSet"] = true, ["autoRollbackConfiguration"] = true, ["deploymentStyle"] = true, ["serviceRoleArn"] = true, ["deploymentGroupName"] = true, ["onPremisesInstanceTagFilters"] = true, nil }
 
 function asserts.AssertCreateDeploymentGroupInput(struct)
 	assert(struct)
@@ -5426,6 +6189,8 @@ function asserts.AssertCreateDeploymentGroupInput(struct)
 	if struct["triggerConfigurations"] then asserts.AssertTriggerConfigList(struct["triggerConfigurations"]) end
 	if struct["alarmConfiguration"] then asserts.AssertAlarmConfiguration(struct["alarmConfiguration"]) end
 	if struct["ec2TagFilters"] then asserts.AssertEC2TagFilterList(struct["ec2TagFilters"]) end
+	if struct["ec2TagSet"] then asserts.AssertEC2TagSet(struct["ec2TagSet"]) end
+	if struct["onPremisesTagSet"] then asserts.AssertOnPremisesTagSet(struct["onPremisesTagSet"]) end
 	if struct["autoRollbackConfiguration"] then asserts.AssertAutoRollbackConfiguration(struct["autoRollbackConfiguration"]) end
 	if struct["deploymentStyle"] then asserts.AssertDeploymentStyle(struct["deploymentStyle"]) end
 	if struct["serviceRoleArn"] then asserts.AssertRole(struct["serviceRoleArn"]) end
@@ -5447,12 +6212,14 @@ end
 -- * deploymentConfigName [DeploymentConfigName] <p>If specified, the deployment configuration name can be either one of the predefined configurations provided with AWS CodeDeploy or a custom deployment configuration that you create by calling the create deployment configuration operation.</p> <p>CodeDeployDefault.OneAtATime is the default deployment configuration. It is used if a configuration isn't specified for the deployment or the deployment group.</p> <p>For more information about the predefined deployment configurations in AWS CodeDeploy, see <a href="http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working with Deployment Groups in AWS CodeDeploy</a> in the AWS CodeDeploy User Guide.</p>
 -- * triggerConfigurations [TriggerConfigList] <p>Information about triggers to create when the deployment group is created. For examples, see <a href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for an AWS CodeDeploy Event</a> in the AWS CodeDeploy User Guide.</p>
 -- * alarmConfiguration [AlarmConfiguration] <p>Information to add about Amazon CloudWatch alarms when the deployment group is created.</p>
--- * ec2TagFilters [EC2TagFilterList] <p>The Amazon EC2 tags on which to filter. The deployment group will include EC2 instances with any of the specified tags.</p>
+-- * ec2TagFilters [EC2TagFilterList] <p>The Amazon EC2 tags on which to filter. The deployment group will include EC2 instances with any of the specified tags. Cannot be used in the same call as ec2TagSet.</p>
+-- * ec2TagSet [EC2TagSet] <p>Information about groups of tags applied to EC2 instances. The deployment group will include only EC2 instances identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.</p>
+-- * onPremisesTagSet [OnPremisesTagSet] <p>Information about groups of tags applied to on-premises instances. The deployment group will include only on-premises instances identified by all the tag groups. Cannot be used in the same call as onPremisesInstanceTagFilters.</p>
 -- * autoRollbackConfiguration [AutoRollbackConfiguration] <p>Configuration information for an automatic rollback that is added when a deployment group is created.</p>
 -- * deploymentStyle [DeploymentStyle] <p>Information about the type of deployment, in-place or blue/green, that you want to run and whether to route deployment traffic behind a load balancer.</p>
 -- * serviceRoleArn [Role] <p>A service role ARN that allows AWS CodeDeploy to act on the user's behalf when interacting with AWS services.</p>
 -- * deploymentGroupName [DeploymentGroupName] <p>The name of a new deployment group for the specified application.</p>
--- * onPremisesInstanceTagFilters [TagFilterList] <p>The on-premises instance tags on which to filter. The deployment group will include on-premises instances with any of the specified tags.</p>
+-- * onPremisesInstanceTagFilters [TagFilterList] <p>The on-premises instance tags on which to filter. The deployment group will include on-premises instances with any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.</p>
 -- Required key: applicationName
 -- Required key: deploymentGroupName
 -- Required key: serviceRoleArn
@@ -5474,6 +6241,8 @@ function M.CreateDeploymentGroupInput(args)
 		["triggerConfigurations"] = args["triggerConfigurations"],
 		["alarmConfiguration"] = args["alarmConfiguration"],
 		["ec2TagFilters"] = args["ec2TagFilters"],
+		["ec2TagSet"] = args["ec2TagSet"],
+		["onPremisesTagSet"] = args["onPremisesTagSet"],
 		["autoRollbackConfiguration"] = args["autoRollbackConfiguration"],
 		["deploymentStyle"] = args["deploymentStyle"],
 		["serviceRoleArn"] = args["serviceRoleArn"],
@@ -5604,6 +6373,77 @@ function M.UpdateDeploymentGroupOutput(args)
     }
 end
 
+keys.EC2TagSet = { ["ec2TagSetList"] = true, nil }
+
+function asserts.AssertEC2TagSet(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected EC2TagSet to be of type 'table'")
+	if struct["ec2TagSetList"] then asserts.AssertEC2TagSetList(struct["ec2TagSetList"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.EC2TagSet[k], "EC2TagSet contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type EC2TagSet
+-- <p>Information about groups of EC2 instance tags.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ec2TagSetList [EC2TagSetList] <p>A list containing other lists of EC2 instance tag groups. In order for an instance to be included in the deployment group, it must be identified by all the tag groups in the list.</p>
+-- @return EC2TagSet structure as a key-value pair table
+function M.EC2TagSet(args)
+	assert(args, "You must provide an argument table when creating EC2TagSet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ec2TagSetList"] = args["ec2TagSetList"],
+	}
+	asserts.AssertEC2TagSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.LifecycleEventAlreadyCompletedException = { nil }
+
+function asserts.AssertLifecycleEventAlreadyCompletedException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LifecycleEventAlreadyCompletedException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.LifecycleEventAlreadyCompletedException[k], "LifecycleEventAlreadyCompletedException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LifecycleEventAlreadyCompletedException
+-- <p>An attempt to return the status of an already completed lifecycle event occurred.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return LifecycleEventAlreadyCompletedException structure as a key-value pair table
+function M.LifecycleEventAlreadyCompletedException(args)
+	assert(args, "You must provide an argument table when creating LifecycleEventAlreadyCompletedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertLifecycleEventAlreadyCompletedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListDeploymentConfigsOutput = { ["nextToken"] = true, ["deploymentConfigsList"] = true, nil }
 
 function asserts.AssertListDeploymentConfigsOutput(struct)
@@ -5680,6 +6520,46 @@ function M.DeleteDeploymentGroupInput(args)
 		["deploymentGroupName"] = args["deploymentGroupName"],
 	}
 	asserts.AssertDeleteDeploymentGroupInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.TimeBasedCanary = { ["canaryPercentage"] = true, ["canaryInterval"] = true, nil }
+
+function asserts.AssertTimeBasedCanary(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected TimeBasedCanary to be of type 'table'")
+	if struct["canaryPercentage"] then asserts.AssertPercentage(struct["canaryPercentage"]) end
+	if struct["canaryInterval"] then asserts.AssertWaitTimeInMins(struct["canaryInterval"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.TimeBasedCanary[k], "TimeBasedCanary contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type TimeBasedCanary
+-- <p>A configuration that shifts traffic from one version of a Lambda function to another in two increments. The original and target Lambda function versions are specified in the deployment's AppSpec file.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * canaryPercentage [Percentage] <p>The percentage of traffic to shift in the first increment of a <code>TimeBasedCanary</code> deployment.</p>
+-- * canaryInterval [WaitTimeInMins] <p>The number of minutes between the first and second traffic shifts of a <code>TimeBasedCanary</code> deployment.</p>
+-- @return TimeBasedCanary structure as a key-value pair table
+function M.TimeBasedCanary(args)
+	assert(args, "You must provide an argument table when creating TimeBasedCanary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["canaryPercentage"] = args["canaryPercentage"],
+		["canaryInterval"] = args["canaryInterval"],
+	}
+	asserts.AssertTimeBasedCanary(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5805,6 +6685,40 @@ function M.ListDeploymentsOutput(args)
     }
 end
 
+keys.InvalidEC2TagCombinationException = { nil }
+
+function asserts.AssertInvalidEC2TagCombinationException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InvalidEC2TagCombinationException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.InvalidEC2TagCombinationException[k], "InvalidEC2TagCombinationException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InvalidEC2TagCombinationException
+-- <p>A call was submitted that specified both Ec2TagFilters and Ec2TagSet, but only one of these data types can be used in a single call.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidEC2TagCombinationException structure as a key-value pair table
+function M.InvalidEC2TagCombinationException(args)
+	assert(args, "You must provide an argument table when creating InvalidEC2TagCombinationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertInvalidEC2TagCombinationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.InvalidMinimumHealthyHostValueException = { nil }
 
 function asserts.AssertInvalidMinimumHealthyHostValueException(struct)
@@ -5831,6 +6745,40 @@ function M.InvalidMinimumHealthyHostValueException(args)
 	local all_args = { 
 	}
 	asserts.AssertInvalidMinimumHealthyHostValueException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.InvalidComputePlatformException = { nil }
+
+function asserts.AssertInvalidComputePlatformException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InvalidComputePlatformException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.InvalidComputePlatformException[k], "InvalidComputePlatformException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InvalidComputePlatformException
+-- <p>The computePlatform is invalid. The computePlatform should be <code>Lambda</code> or <code>Server</code>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidComputePlatformException structure as a key-value pair table
+function M.InvalidComputePlatformException(args)
+	assert(args, "You must provide an argument table when creating InvalidComputePlatformException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertInvalidComputePlatformException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5868,6 +6816,40 @@ function M.BatchGetDeploymentsOutput(args)
 		["deploymentsInfo"] = args["deploymentsInfo"],
 	}
 	asserts.AssertBatchGetDeploymentsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.InvalidIgnoreApplicationStopFailuresValueException = { nil }
+
+function asserts.AssertInvalidIgnoreApplicationStopFailuresValueException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InvalidIgnoreApplicationStopFailuresValueException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.InvalidIgnoreApplicationStopFailuresValueException[k], "InvalidIgnoreApplicationStopFailuresValueException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InvalidIgnoreApplicationStopFailuresValueException
+-- <p>The IgnoreApplicationStopFailures value is invalid. For AWS Lambda deployments, <code>false</code> is expected. For EC2/On-premises deployments, <code>true</code> or <code>false</code> is expected.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidIgnoreApplicationStopFailuresValueException structure as a key-value pair table
+function M.InvalidIgnoreApplicationStopFailuresValueException(args)
+	assert(args, "You must provide an argument table when creating InvalidIgnoreApplicationStopFailuresValueException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertInvalidIgnoreApplicationStopFailuresValueException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6030,39 +7012,23 @@ function M.InvalidRegistrationStatusException(args)
     }
 end
 
-keys.ListApplicationRevisionsInput = { ["applicationName"] = true, ["s3KeyPrefix"] = true, ["s3Bucket"] = true, ["sortBy"] = true, ["nextToken"] = true, ["deployed"] = true, ["sortOrder"] = true, nil }
+keys.GitHubAccountTokenNameRequiredException = { nil }
 
-function asserts.AssertListApplicationRevisionsInput(struct)
+function asserts.AssertGitHubAccountTokenNameRequiredException(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ListApplicationRevisionsInput to be of type 'table'")
-	assert(struct["applicationName"], "Expected key applicationName to exist in table")
-	if struct["applicationName"] then asserts.AssertApplicationName(struct["applicationName"]) end
-	if struct["s3KeyPrefix"] then asserts.AssertS3Key(struct["s3KeyPrefix"]) end
-	if struct["s3Bucket"] then asserts.AssertS3Bucket(struct["s3Bucket"]) end
-	if struct["sortBy"] then asserts.AssertApplicationRevisionSortBy(struct["sortBy"]) end
-	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
-	if struct["deployed"] then asserts.AssertListStateFilterAction(struct["deployed"]) end
-	if struct["sortOrder"] then asserts.AssertSortOrder(struct["sortOrder"]) end
+	assert(type(struct) == "table", "Expected GitHubAccountTokenNameRequiredException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.ListApplicationRevisionsInput[k], "ListApplicationRevisionsInput contains unknown key " .. tostring(k))
+		assert(keys.GitHubAccountTokenNameRequiredException[k], "GitHubAccountTokenNameRequiredException contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ListApplicationRevisionsInput
--- <p>Represents the input of a ListApplicationRevisions operation.</p>
+--- Create a structure of type GitHubAccountTokenNameRequiredException
+-- <p>The call is missing a required GitHub account connection name.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
--- * s3KeyPrefix [S3Key] <p>A key prefix for the set of Amazon S3 objects to limit the search for revisions.</p>
--- * s3Bucket [S3Bucket] <p>An Amazon S3 bucket name to limit the search for revisions.</p> <p>If set to null, all of the user's buckets will be searched.</p>
--- * sortBy [ApplicationRevisionSortBy] <p>The column name to use to sort the list results:</p> <ul> <li> <p>registerTime: Sort by the time the revisions were registered with AWS CodeDeploy.</p> </li> <li> <p>firstUsedTime: Sort by the time the revisions were first used in a deployment.</p> </li> <li> <p>lastUsedTime: Sort by the time the revisions were last used in a deployment.</p> </li> </ul> <p>If not specified or set to null, the results will be returned in an arbitrary order.</p>
--- * nextToken [NextToken] <p>An identifier returned from the previous list application revisions call. It can be used to return the next set of applications in the list.</p>
--- * deployed [ListStateFilterAction] <p>Whether to list revisions based on whether the revision is the target revision of an deployment group:</p> <ul> <li> <p>include: List revisions that are target revisions of a deployment group.</p> </li> <li> <p>exclude: Do not list revisions that are target revisions of a deployment group.</p> </li> <li> <p>ignore: List all revisions.</p> </li> </ul>
--- * sortOrder [SortOrder] <p>The order in which to sort the list results:</p> <ul> <li> <p>ascending: ascending order.</p> </li> <li> <p>descending: descending order.</p> </li> </ul> <p>If not specified, the results will be sorted in ascending order.</p> <p>If set to null, the results will be sorted in an arbitrary order.</p>
--- Required key: applicationName
--- @return ListApplicationRevisionsInput structure as a key-value pair table
-function M.ListApplicationRevisionsInput(args)
-	assert(args, "You must provide an argument table when creating ListApplicationRevisionsInput")
+-- @return GitHubAccountTokenNameRequiredException structure as a key-value pair table
+function M.GitHubAccountTokenNameRequiredException(args)
+	assert(args, "You must provide an argument table when creating GitHubAccountTokenNameRequiredException")
     local query_args = { 
     }
     local uri_args = { 
@@ -6070,15 +7036,8 @@ function M.ListApplicationRevisionsInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["applicationName"] = args["applicationName"],
-		["s3KeyPrefix"] = args["s3KeyPrefix"],
-		["s3Bucket"] = args["s3Bucket"],
-		["sortBy"] = args["sortBy"],
-		["nextToken"] = args["nextToken"],
-		["deployed"] = args["deployed"],
-		["sortOrder"] = args["sortOrder"],
 	}
-	asserts.AssertListApplicationRevisionsInput(all_args)
+	asserts.AssertGitHubAccountTokenNameRequiredException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6206,6 +7165,7 @@ keys.BatchGetOnPremisesInstancesInput = { ["instanceNames"] = true, nil }
 function asserts.AssertBatchGetOnPremisesInstancesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchGetOnPremisesInstancesInput to be of type 'table'")
+	assert(struct["instanceNames"], "Expected key instanceNames to exist in table")
 	if struct["instanceNames"] then asserts.AssertInstanceNameList(struct["instanceNames"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.BatchGetOnPremisesInstancesInput[k], "BatchGetOnPremisesInstancesInput contains unknown key " .. tostring(k))
@@ -6217,6 +7177,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * instanceNames [InstanceNameList] <p>The names of the on-premises instances about which to get information.</p>
+-- Required key: instanceNames
 -- @return BatchGetOnPremisesInstancesInput structure as a key-value pair table
 function M.BatchGetOnPremisesInstancesInput(args)
 	assert(args, "You must provide an argument table when creating BatchGetOnPremisesInstancesInput")
@@ -6230,6 +7191,46 @@ function M.BatchGetOnPremisesInstancesInput(args)
 		["instanceNames"] = args["instanceNames"],
 	}
 	asserts.AssertBatchGetOnPremisesInstancesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.TimeBasedLinear = { ["linearInterval"] = true, ["linearPercentage"] = true, nil }
+
+function asserts.AssertTimeBasedLinear(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected TimeBasedLinear to be of type 'table'")
+	if struct["linearInterval"] then asserts.AssertWaitTimeInMins(struct["linearInterval"]) end
+	if struct["linearPercentage"] then asserts.AssertPercentage(struct["linearPercentage"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.TimeBasedLinear[k], "TimeBasedLinear contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type TimeBasedLinear
+-- <p>A configuration that shifts traffic from one version of a Lambda function to another in equal increments, with an equal number of minutes between each increment. The original and target Lambda function versions are specified in the deployment's AppSpec file.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * linearInterval [WaitTimeInMins] <p>The number of minutes between each incremental traffic shift of a <code>TimeBasedLinear</code> deployment.</p>
+-- * linearPercentage [Percentage] <p>The percentage of traffic that is shifted at the start of each increment of a <code>TimeBasedLinear</code> deployment.</p>
+-- @return TimeBasedLinear structure as a key-value pair table
+function M.TimeBasedLinear(args)
+	assert(args, "You must provide an argument table when creating TimeBasedLinear")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["linearInterval"] = args["linearInterval"],
+		["linearPercentage"] = args["linearPercentage"],
+	}
+	asserts.AssertTimeBasedLinear(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6274,49 +7275,6 @@ function M.BatchGetDeploymentInstancesInput(args)
 		["instanceIds"] = args["instanceIds"],
 	}
 	asserts.AssertBatchGetDeploymentInstancesInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TagFilter = { ["Type"] = true, ["Value"] = true, ["Key"] = true, nil }
-
-function asserts.AssertTagFilter(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TagFilter to be of type 'table'")
-	if struct["Type"] then asserts.AssertTagFilterType(struct["Type"]) end
-	if struct["Value"] then asserts.AssertValue(struct["Value"]) end
-	if struct["Key"] then asserts.AssertKey(struct["Key"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.TagFilter[k], "TagFilter contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TagFilter
--- <p>Information about an on-premises instance tag filter.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Type [TagFilterType] <p>The on-premises instance tag filter type:</p> <ul> <li> <p>KEY_ONLY: Key only.</p> </li> <li> <p>VALUE_ONLY: Value only.</p> </li> <li> <p>KEY_AND_VALUE: Key and value.</p> </li> </ul>
--- * Value [Value] <p>The on-premises instance tag filter value.</p>
--- * Key [Key] <p>The on-premises instance tag filter key.</p>
--- @return TagFilter structure as a key-value pair table
-function M.TagFilter(args)
-	assert(args, "You must provide an argument table when creating TagFilter")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Type"] = args["Type"],
-		["Value"] = args["Value"],
-		["Key"] = args["Key"],
-	}
-	asserts.AssertTagFilter(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6649,6 +7607,40 @@ function M.GetDeploymentOutput(args)
     }
 end
 
+keys.InvalidOnPremisesTagCombinationException = { nil }
+
+function asserts.AssertInvalidOnPremisesTagCombinationException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InvalidOnPremisesTagCombinationException to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.InvalidOnPremisesTagCombinationException[k], "InvalidOnPremisesTagCombinationException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InvalidOnPremisesTagCombinationException
+-- <p>A call was submitted that specified both OnPremisesTagFilters and OnPremisesTagSet, but only one of these data types can be used in a single call.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidOnPremisesTagCombinationException structure as a key-value pair table
+function M.InvalidOnPremisesTagCombinationException(args)
+	assert(args, "You must provide an argument table when creating InvalidOnPremisesTagCombinationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertInvalidOnPremisesTagCombinationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListDeploymentGroupsOutput = { ["applicationName"] = true, ["nextToken"] = true, ["deploymentGroups"] = true, nil }
 
 function asserts.AssertListDeploymentGroupsOutput(struct)
@@ -6877,6 +7869,43 @@ function M.ErrorInformation(args)
     }
 end
 
+keys.PutLifecycleEventHookExecutionStatusOutput = { ["lifecycleEventHookExecutionId"] = true, nil }
+
+function asserts.AssertPutLifecycleEventHookExecutionStatusOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PutLifecycleEventHookExecutionStatusOutput to be of type 'table'")
+	if struct["lifecycleEventHookExecutionId"] then asserts.AssertLifecycleEventHookExecutionId(struct["lifecycleEventHookExecutionId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PutLifecycleEventHookExecutionStatusOutput[k], "PutLifecycleEventHookExecutionStatusOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PutLifecycleEventHookExecutionStatusOutput
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lifecycleEventHookExecutionId [LifecycleEventHookExecutionId] <p>The execution ID of the lifecycle event hook. A hook is specified in the <code>hooks</code> section of the deployment's AppSpec file.</p>
+-- @return PutLifecycleEventHookExecutionStatusOutput structure as a key-value pair table
+function M.PutLifecycleEventHookExecutionStatusOutput(args)
+	assert(args, "You must provide an argument table when creating PutLifecycleEventHookExecutionStatusOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["lifecycleEventHookExecutionId"] = args["lifecycleEventHookExecutionId"],
+	}
+	asserts.AssertPutLifecycleEventHookExecutionStatusOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DeploymentNotStartedException = { nil }
 
 function asserts.AssertDeploymentNotStartedException(struct)
@@ -7057,6 +8086,43 @@ function M.GetDeploymentInput(args)
     }
 end
 
+keys.TargetGroupInfo = { ["name"] = true, nil }
+
+function asserts.AssertTargetGroupInfo(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected TargetGroupInfo to be of type 'table'")
+	if struct["name"] then asserts.AssertTargetGroupName(struct["name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.TargetGroupInfo[k], "TargetGroupInfo contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type TargetGroupInfo
+-- <p>Information about a target group in Elastic Load Balancing to use in a deployment. Instances are registered as targets in a target group, and traffic is routed to the target group.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [TargetGroupName] <p>For blue/green deployments, the name of the target group that instances in the original environment are deregistered from, and instances in the replacement environment registered with. For in-place deployments, the name of the target group that instances are deregistered from, so they are not serving traffic during a deployment, and then re-registered with after the deployment completes. </p>
+-- @return TargetGroupInfo structure as a key-value pair table
+function M.TargetGroupInfo(args)
+	assert(args, "You must provide an argument table when creating TargetGroupInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["name"] = args["name"],
+	}
+	asserts.AssertTargetGroupInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.TagLimitExceededException = { nil }
 
 function asserts.AssertTagLimitExceededException(struct)
@@ -7102,17 +8168,6 @@ function M.DeploymentGroupId(str)
 	return str
 end
 
-function asserts.AssertVersionId(str)
-	assert(str)
-	assert(type(str) == "string", "Expected VersionId to be of type 'string'")
-end
-
---  
-function M.VersionId(str)
-	asserts.AssertVersionId(str)
-	return str
-end
-
 function asserts.AssertApplicationRevisionSortBy(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ApplicationRevisionSortBy to be of type 'string'")
@@ -7121,6 +8176,17 @@ end
 --  
 function M.ApplicationRevisionSortBy(str)
 	asserts.AssertApplicationRevisionSortBy(str)
+	return str
+end
+
+function asserts.AssertRawStringSha256(str)
+	assert(str)
+	assert(type(str) == "string", "Expected RawStringSha256 to be of type 'string'")
+end
+
+--  
+function M.RawStringSha256(str)
+	asserts.AssertRawStringSha256(str)
 	return str
 end
 
@@ -7187,6 +8253,17 @@ end
 --  
 function M.LifecycleEventStatus(str)
 	asserts.AssertLifecycleEventStatus(str)
+	return str
+end
+
+function asserts.AssertRawStringContent(str)
+	assert(str)
+	assert(type(str) == "string", "Expected RawStringContent to be of type 'string'")
+end
+
+--  
+function M.RawStringContent(str)
+	asserts.AssertRawStringContent(str)
 	return str
 end
 
@@ -7266,6 +8343,17 @@ end
 --  
 function M.GitHubAccountTokenName(str)
 	asserts.AssertGitHubAccountTokenName(str)
+	return str
+end
+
+function asserts.AssertComputePlatform(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ComputePlatform to be of type 'string'")
+end
+
+--  
+function M.ComputePlatform(str)
+	asserts.AssertComputePlatform(str)
 	return str
 end
 
@@ -7458,6 +8546,17 @@ function M.TagFilterType(str)
 	return str
 end
 
+function asserts.AssertLifecycleEventHookExecutionId(str)
+	assert(str)
+	assert(type(str) == "string", "Expected LifecycleEventHookExecutionId to be of type 'string'")
+end
+
+--  
+function M.LifecycleEventHookExecutionId(str)
+	asserts.AssertLifecycleEventHookExecutionId(str)
+	return str
+end
+
 function asserts.AssertDeploymentOption(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DeploymentOption to be of type 'string'")
@@ -7466,6 +8565,17 @@ end
 --  
 function M.DeploymentOption(str)
 	asserts.AssertDeploymentOption(str)
+	return str
+end
+
+function asserts.AssertTrafficRoutingType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TrafficRoutingType to be of type 'string'")
+end
+
+--  
+function M.TrafficRoutingType(str)
+	asserts.AssertTrafficRoutingType(str)
 	return str
 end
 
@@ -7488,17 +8598,6 @@ end
 --  
 function M.ErrorCode(str)
 	asserts.AssertErrorCode(str)
-	return str
-end
-
-function asserts.AssertLifecycleEventName(str)
-	assert(str)
-	assert(type(str) == "string", "Expected LifecycleEventName to be of type 'string'")
-end
-
---  
-function M.LifecycleEventName(str)
-	asserts.AssertLifecycleEventName(str)
 	return str
 end
 
@@ -7625,6 +8724,17 @@ function M.LogTail(str)
 	return str
 end
 
+function asserts.AssertLifecycleEventName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected LifecycleEventName to be of type 'string'")
+end
+
+--  
+function M.LifecycleEventName(str)
+	asserts.AssertLifecycleEventName(str)
+	return str
+end
+
 function asserts.AssertErrorMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
@@ -7655,17 +8765,6 @@ end
 --  
 function M.S3Bucket(str)
 	asserts.AssertS3Bucket(str)
-	return str
-end
-
-function asserts.AssertLifecycleErrorCode(str)
-	assert(str)
-	assert(type(str) == "string", "Expected LifecycleErrorCode to be of type 'string'")
-end
-
---  
-function M.LifecycleErrorCode(str)
-	asserts.AssertLifecycleErrorCode(str)
 	return str
 end
 
@@ -7735,6 +8834,17 @@ function M.ApplicationId(str)
 	return str
 end
 
+function asserts.AssertVersionId(str)
+	assert(str)
+	assert(type(str) == "string", "Expected VersionId to be of type 'string'")
+end
+
+--  
+function M.VersionId(str)
+	asserts.AssertVersionId(str)
+	return str
+end
+
 function asserts.AssertMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Message to be of type 'string'")
@@ -7743,6 +8853,17 @@ end
 --  
 function M.Message(str)
 	asserts.AssertMessage(str)
+	return str
+end
+
+function asserts.AssertLifecycleErrorCode(str)
+	assert(str)
+	assert(type(str) == "string", "Expected LifecycleErrorCode to be of type 'string'")
+end
+
+--  
+function M.LifecycleErrorCode(str)
+	asserts.AssertLifecycleErrorCode(str)
 	return str
 end
 
@@ -7779,6 +8900,17 @@ function M.AutoScalingGroupHook(str)
 	return str
 end
 
+function asserts.AssertTargetGroupName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TargetGroupName to be of type 'string'")
+end
+
+--  
+function M.TargetGroupName(str)
+	asserts.AssertTargetGroupName(str)
+	return str
+end
+
 function asserts.AssertInstanceCount(long)
 	assert(long)
 	assert(type(long) == "number", "Expected InstanceCount to be of type 'number'")
@@ -7788,6 +8920,28 @@ end
 function M.InstanceCount(long)
 	asserts.AssertInstanceCount(long)
 	return long
+end
+
+function asserts.AssertWaitTimeInMins(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected WaitTimeInMins to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
+end
+
+function M.WaitTimeInMins(integer)
+	asserts.AssertWaitTimeInMins(integer)
+	return integer
+end
+
+function asserts.AssertPercentage(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected Percentage to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
+end
+
+function M.Percentage(integer)
+	asserts.AssertPercentage(integer)
+	return integer
 end
 
 function asserts.AssertMinimumHealthyHostsValue(integer)
@@ -7917,6 +9071,21 @@ function M.LifecycleEventList(list)
 	return list
 end
 
+function asserts.AssertDeploymentStatusMessageList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected DeploymentStatusMessageList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertErrorMessage(v)
+	end
+end
+
+--  
+-- List of ErrorMessage objects
+function M.DeploymentStatusMessageList(list)
+	asserts.AssertDeploymentStatusMessageList(list)
+	return list
+end
+
 function asserts.AssertInstancesList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected InstancesList to be of type ''table")
@@ -8037,6 +9206,21 @@ function M.ApplicationsInfoList(list)
 	return list
 end
 
+function asserts.AssertOnPremisesTagSetList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected OnPremisesTagSetList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertTagFilterList(v)
+	end
+end
+
+--  
+-- List of TagFilterList objects
+function M.OnPremisesTagSetList(list)
+	asserts.AssertOnPremisesTagSetList(list)
+	return list
+end
+
 function asserts.AssertDeploymentConfigsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DeploymentConfigsList to be of type ''table")
@@ -8112,6 +9296,21 @@ function M.InstanceStatusList(list)
 	return list
 end
 
+function asserts.AssertTargetGroupInfoList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected TargetGroupInfoList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertTargetGroupInfo(v)
+	end
+end
+
+--  
+-- List of TargetGroupInfo objects
+function M.TargetGroupInfoList(list)
+	asserts.AssertTargetGroupInfoList(list)
+	return list
+end
+
 function asserts.AssertDeploymentGroupInfoList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DeploymentGroupInfoList to be of type ''table")
@@ -8154,6 +9353,21 @@ end
 -- List of InstanceSummary objects
 function M.InstanceSummaryList(list)
 	asserts.AssertInstanceSummaryList(list)
+	return list
+end
+
+function asserts.AssertEC2TagSetList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected EC2TagSetList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertEC2TagFilterList(v)
+	end
+end
+
+--  
+-- List of EC2TagFilterList objects
+function M.EC2TagSetList(list)
+	asserts.AssertEC2TagSetList(list)
 	return list
 end
 
@@ -8305,6 +9519,41 @@ end
 --
 -- OPERATIONS
 --
+--- Call DeleteGitHubAccountToken asynchronously, invoking a callback when done
+-- @param DeleteGitHubAccountTokenInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteGitHubAccountTokenAsync(DeleteGitHubAccountTokenInput, cb)
+	assert(DeleteGitHubAccountTokenInput, "You must provide a DeleteGitHubAccountTokenInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.DeleteGitHubAccountToken",
+	}
+	for header,value in pairs(DeleteGitHubAccountTokenInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteGitHubAccountTokenInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteGitHubAccountToken synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteGitHubAccountTokenInput
+-- @return response
+-- @return error_message
+function M.DeleteGitHubAccountTokenSync(DeleteGitHubAccountTokenInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteGitHubAccountTokenAsync(DeleteGitHubAccountTokenInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call GetDeploymentConfig asynchronously, invoking a callback when done
 -- @param GetDeploymentConfigInput
 -- @param cb Callback function accepting two args: response, error_message
@@ -9210,6 +10459,41 @@ function M.BatchGetApplicationRevisionsSync(BatchGetApplicationRevisionsInput, .
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.BatchGetApplicationRevisionsAsync(BatchGetApplicationRevisionsInput, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutLifecycleEventHookExecutionStatus asynchronously, invoking a callback when done
+-- @param PutLifecycleEventHookExecutionStatusInput
+-- @param cb Callback function accepting two args: response, error_message
+function M.PutLifecycleEventHookExecutionStatusAsync(PutLifecycleEventHookExecutionStatusInput, cb)
+	assert(PutLifecycleEventHookExecutionStatusInput, "You must provide a PutLifecycleEventHookExecutionStatusInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.PutLifecycleEventHookExecutionStatus",
+	}
+	for header,value in pairs(PutLifecycleEventHookExecutionStatusInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", PutLifecycleEventHookExecutionStatusInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call PutLifecycleEventHookExecutionStatus synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutLifecycleEventHookExecutionStatusInput
+-- @return response
+-- @return error_message
+function M.PutLifecycleEventHookExecutionStatusSync(PutLifecycleEventHookExecutionStatusInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutLifecycleEventHookExecutionStatusAsync(PutLifecycleEventHookExecutionStatusInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

@@ -126,7 +126,7 @@ end
 -- * ShippingOption [ShippingOption] <p>The updated shipping option value of this job's <a>ShippingDetails</a> object.</p>
 -- * ForwardingAddressId [AddressId] <p>The updated ID for the forwarding address for a job. This field is not supported in most regions.</p>
 -- * SnowballCapacityPreference [SnowballCapacity] <p>The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. The 50 TB Snowballs are only available in the US regions.</p>
--- * Resources [JobResource] <p>The updated <a>S3Resource</a> object (for a single Amazon S3 bucket or key range), or the updated <a>JobResource</a> object (for multiple buckets or key ranges). </p>
+-- * Resources [JobResource] <p>The updated <code>JobResource</code> object, or the updated <a>JobResource</a> object. </p>
 -- Required key: JobId
 -- @return UpdateJobRequest structure as a key-value pair table
 function M.UpdateJobRequest(args)
@@ -149,43 +149,6 @@ function M.UpdateJobRequest(args)
 		["Resources"] = args["Resources"],
 	}
 	asserts.AssertUpdateJobRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.UnsupportedAddressException = { ["Message"] = true, nil }
-
-function asserts.AssertUnsupportedAddressException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UnsupportedAddressException to be of type 'table'")
-	if struct["Message"] then asserts.AssertString(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.UnsupportedAddressException[k], "UnsupportedAddressException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UnsupportedAddressException
--- <p>The address is either outside the serviceable area for your region, or an error occurred. Check the address with your region's carrier and try again. If the issue persists, contact AWS Support.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [String] 
--- @return UnsupportedAddressException structure as a key-value pair table
-function M.UnsupportedAddressException(args)
-	assert(args, "You must provide an argument table when creating UnsupportedAddressException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertUnsupportedAddressException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -229,7 +192,7 @@ end
 -- * ForwardingAddressId [AddressId] <p>The forwarding address ID for a job. This field is not supported in most regions.</p>
 -- * ShippingOption [ShippingOption] <p>The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as follows:</p> <ul> <li> <p>In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day.</p> </li> <li> <p>In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.</p> </li> <li> <p>In India, Snowballs are delivered in one to seven days.</p> </li> <li> <p>In the US, you have access to one-day shipping and two-day shipping.</p> </li> </ul>
 -- * JobType [JobType] <p>Defines the type of job that you're creating. </p>
--- * SnowballType [SnowballType] <p>The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for cluster jobs is <code>EDGE</code>.</p>
+-- * SnowballType [SnowballType] <p>The type of AWS Snowball device to use for this job. Currently, the only supported device type for cluster jobs is <code>EDGE</code>.</p>
 -- * SnowballCapacityPreference [SnowballCapacity] <p>If your job is being created in one of the US regions, you have the option of specifying what size Snowball you'd like for this job. In all other regions, Snowballs come with 80 TB in storage capacity.</p>
 -- * Resources [JobResource] <p>Defines the Amazon S3 buckets associated with this job.</p> <p>With <code>IMPORT</code> jobs, you specify the bucket or buckets that your transferred data will be imported into.</p> <p>With <code>EXPORT</code> jobs, you specify the bucket or buckets that your transferred data will be exported from. Optionally, you can also specify a <code>KeyRange</code> value. If you choose to export a range, you define the length of the range by providing either an inclusive <code>BeginMarker</code> value, an inclusive <code>EndMarker</code> value, or both. Ranges are UTF-8 binary sorted.</p>
 -- @return CreateJobRequest structure as a key-value pair table
@@ -304,25 +267,27 @@ function M.ListJobsRequest(args)
     }
 end
 
-keys.KMSRequestFailedException = { ["Message"] = true, nil }
+keys.ListCompatibleImagesRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function asserts.AssertKMSRequestFailedException(struct)
+function asserts.AssertListCompatibleImagesRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected KMSRequestFailedException to be of type 'table'")
-	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	assert(type(struct) == "table", "Expected ListCompatibleImagesRequest to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertListLimit(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.KMSRequestFailedException[k], "KMSRequestFailedException contains unknown key " .. tostring(k))
+		assert(keys.ListCompatibleImagesRequest[k], "ListCompatibleImagesRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type KMSRequestFailedException
--- <p>The provided AWS Key Management Service key lacks the permissions to perform the specified <a>CreateJob</a> or <a>UpdateJob</a> action.</p>
+--- Create a structure of type ListCompatibleImagesRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [String] 
--- @return KMSRequestFailedException structure as a key-value pair table
-function M.KMSRequestFailedException(args)
-	assert(args, "You must provide an argument table when creating KMSRequestFailedException")
+-- * NextToken [String] <p>HTTP requests are stateless. To identify what object comes "next" in the list of compatible images, you can specify a value for <code>NextToken</code> as the starting point for your list of returned images.</p>
+-- * MaxResults [ListLimit] <p>The maximum number of results for the list of compatible images. Currently, a Snowball Edge device can store 10 AMIs.</p>
+-- @return ListCompatibleImagesRequest structure as a key-value pair table
+function M.ListCompatibleImagesRequest(args)
+	assert(args, "You must provide an argument table when creating ListCompatibleImagesRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -330,46 +295,10 @@ function M.KMSRequestFailedException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertKMSRequestFailedException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidResourceException = { ["Message"] = true, nil }
-
-function asserts.AssertInvalidResourceException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidResourceException to be of type 'table'")
-	if struct["Message"] then asserts.AssertString(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidResourceException[k], "InvalidResourceException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidResourceException
--- <p>The specified resource can't be found. Check the information you provided in your last request, and try again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [String] 
--- @return InvalidResourceException structure as a key-value pair table
-function M.InvalidResourceException(args)
-	assert(args, "You must provide an argument table when creating InvalidResourceException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertInvalidResourceException(all_args)
+	asserts.AssertListCompatibleImagesRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -413,9 +342,9 @@ end
 -- * ClusterId [String] <p>The automatically generated ID for a cluster.</p>
 -- * ForwardingAddressId [AddressId] <p>The ID of the address that you want a cluster shipped to, after it will be shipped to its primary address. This field is not supported in most regions.</p>
 -- * ClusterState [ClusterState] <p>The current status of the cluster.</p>
--- * ShippingOption [ShippingOption] <p>The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge appliance, rather it represents how quickly each appliance moves to its destination while in transit. Regional shipping speeds are as follows:</p> <ul> <li> <p>In Australia, you have access to express shipping. Typically, appliances shipped express are delivered in about a day.</p> </li> <li> <p>In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.</p> </li> <li> <p>In India, Snowball Edges are delivered in one to seven days.</p> </li> <li> <p>In the US, you have access to one-day shipping and two-day shipping.</p> </li> </ul>
+-- * ShippingOption [ShippingOption] <p>The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge device, rather it represents how quickly each device moves to its destination while in transit. Regional shipping speeds are as follows:</p> <ul> <li> <p>In Australia, you have access to express shipping. Typically, devices shipped express are delivered in about a day.</p> </li> <li> <p>In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.</p> </li> <li> <p>In India, Snowball Edges are delivered in one to seven days.</p> </li> <li> <p>In the US, you have access to one-day shipping and two-day shipping.</p> </li> </ul>
 -- * Resources [JobResource] <p>The arrays of <a>JobResource</a> objects that can include updated <a>S3Resource</a> objects or <a>LambdaResource</a> objects.</p>
--- * SnowballType [SnowballType] <p>The type of AWS Snowball appliance to use for this cluster. Currently, the only supported appliance type for cluster jobs is <code>EDGE</code>.</p>
+-- * SnowballType [SnowballType] <p>The type of AWS Snowball device to use for this cluster. Currently, the only supported device type for cluster jobs is <code>EDGE</code>.</p>
 -- * CreationDate [Timestamp] <p>The creation date for this cluster.</p>
 -- * JobType [JobType] <p>The type of job for this cluster. Currently, the only job type supported for clusters is <code>LOCAL_USE</code>.</p>
 -- @return ClusterMetadata structure as a key-value pair table
@@ -560,43 +489,6 @@ function M.Shipment(args)
 		["TrackingNumber"] = args["TrackingNumber"],
 	}
 	asserts.AssertShipment(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidNextTokenException = { ["Message"] = true, nil }
-
-function asserts.AssertInvalidNextTokenException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidNextTokenException to be of type 'table'")
-	if struct["Message"] then asserts.AssertString(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidNextTokenException[k], "InvalidNextTokenException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidNextTokenException
--- <p>The <code>NextToken</code> string was altered unexpectedly, and the operation has stopped. Run the operation without changing the <code>NextToken</code> string, and try again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [String] 
--- @return InvalidNextTokenException structure as a key-value pair table
-function M.InvalidNextTokenException(args)
-	assert(args, "You must provide an argument table when creating InvalidNextTokenException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertInvalidNextTokenException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -804,25 +696,53 @@ function M.ClusterListEntry(args)
     }
 end
 
-keys.CreateJobResult = { ["JobId"] = true, nil }
+keys.CreateClusterRequest = { ["Description"] = true, ["AddressId"] = true, ["KmsKeyARN"] = true, ["Notification"] = true, ["RoleARN"] = true, ["ForwardingAddressId"] = true, ["ShippingOption"] = true, ["JobType"] = true, ["SnowballType"] = true, ["Resources"] = true, nil }
 
-function asserts.AssertCreateJobResult(struct)
+function asserts.AssertCreateClusterRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected CreateJobResult to be of type 'table'")
-	if struct["JobId"] then asserts.AssertJobId(struct["JobId"]) end
+	assert(type(struct) == "table", "Expected CreateClusterRequest to be of type 'table'")
+	assert(struct["JobType"], "Expected key JobType to exist in table")
+	assert(struct["Resources"], "Expected key Resources to exist in table")
+	assert(struct["AddressId"], "Expected key AddressId to exist in table")
+	assert(struct["RoleARN"], "Expected key RoleARN to exist in table")
+	assert(struct["ShippingOption"], "Expected key ShippingOption to exist in table")
+	if struct["Description"] then asserts.AssertString(struct["Description"]) end
+	if struct["AddressId"] then asserts.AssertAddressId(struct["AddressId"]) end
+	if struct["KmsKeyARN"] then asserts.AssertKmsKeyARN(struct["KmsKeyARN"]) end
+	if struct["Notification"] then asserts.AssertNotification(struct["Notification"]) end
+	if struct["RoleARN"] then asserts.AssertRoleARN(struct["RoleARN"]) end
+	if struct["ForwardingAddressId"] then asserts.AssertAddressId(struct["ForwardingAddressId"]) end
+	if struct["ShippingOption"] then asserts.AssertShippingOption(struct["ShippingOption"]) end
+	if struct["JobType"] then asserts.AssertJobType(struct["JobType"]) end
+	if struct["SnowballType"] then asserts.AssertSnowballType(struct["SnowballType"]) end
+	if struct["Resources"] then asserts.AssertJobResource(struct["Resources"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.CreateJobResult[k], "CreateJobResult contains unknown key " .. tostring(k))
+		assert(keys.CreateClusterRequest[k], "CreateClusterRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type CreateJobResult
+--- Create a structure of type CreateClusterRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * JobId [JobId] <p>The automatically generated ID for a job, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
--- @return CreateJobResult structure as a key-value pair table
-function M.CreateJobResult(args)
-	assert(args, "You must provide an argument table when creating CreateJobResult")
+-- * Description [String] <p>An optional description of this specific cluster, for example <code>Environmental Data Cluster-01</code>.</p>
+-- * AddressId [AddressId] <p>The ID for the address that you want the cluster shipped to.</p>
+-- * KmsKeyARN [KmsKeyARN] <p>The <code>KmsKeyARN</code> value that you want to associate with this cluster. <code>KmsKeyARN</code> values are created by using the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS Key Management Service (AWS KMS). </p>
+-- * Notification [Notification] <p>The Amazon Simple Notification Service (Amazon SNS) notification settings for this cluster.</p>
+-- * RoleARN [RoleARN] <p>The <code>RoleARN</code> that you want to associate with this cluster. <code>RoleArn</code> values are created by using the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS Identity and Access Management (IAM).</p>
+-- * ForwardingAddressId [AddressId] <p>The forwarding address ID for a cluster. This field is not supported in most regions.</p>
+-- * ShippingOption [ShippingOption] <p>The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge device, rather it represents how quickly each device moves to its destination while in transit. Regional shipping speeds are as follows:</p> <ul> <li> <p>In Australia, you have access to express shipping. Typically, devices shipped express are delivered in about a day.</p> </li> <li> <p>In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.</p> </li> <li> <p>In India, Snowball Edges are delivered in one to seven days.</p> </li> <li> <p>In the US, you have access to one-day shipping and two-day shipping.</p> </li> </ul>
+-- * JobType [JobType] <p>The type of job for this cluster. Currently, the only job type supported for clusters is <code>LOCAL_USE</code>.</p>
+-- * SnowballType [SnowballType] <p>The type of AWS Snowball device to use for this cluster. Currently, the only supported device type for cluster jobs is <code>EDGE</code>.</p>
+-- * Resources [JobResource] <p>The resources associated with the cluster job. These resources include Amazon S3 buckets and optional AWS Lambda functions written in the Python language. </p>
+-- Required key: JobType
+-- Required key: Resources
+-- Required key: AddressId
+-- Required key: RoleARN
+-- Required key: ShippingOption
+-- @return CreateClusterRequest structure as a key-value pair table
+function M.CreateClusterRequest(args)
+	assert(args, "You must provide an argument table when creating CreateClusterRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -830,9 +750,18 @@ function M.CreateJobResult(args)
     local header_args = { 
     }
 	local all_args = { 
-		["JobId"] = args["JobId"],
+		["Description"] = args["Description"],
+		["AddressId"] = args["AddressId"],
+		["KmsKeyARN"] = args["KmsKeyARN"],
+		["Notification"] = args["Notification"],
+		["RoleARN"] = args["RoleARN"],
+		["ForwardingAddressId"] = args["ForwardingAddressId"],
+		["ShippingOption"] = args["ShippingOption"],
+		["JobType"] = args["JobType"],
+		["SnowballType"] = args["SnowballType"],
+		["Resources"] = args["Resources"],
 	}
-	asserts.AssertCreateJobResult(all_args)
+	asserts.AssertCreateClusterRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1117,9 +1046,9 @@ end
 -- * RoleARN [RoleARN] <p>The role ARN associated with this job. This ARN was created using the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS Identity and Access Management (IAM).</p>
 -- * ClusterId [String] <p>The 39-character ID for the cluster, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
 -- * JobId [String] <p>The automatically generated ID for a job, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
--- * DataTransferProgress [DataTransfer] <p>A value that defines the real-time status of a Snowball's data transfer while the appliance is at AWS. This data is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both import and export jobs.</p>
+-- * DataTransferProgress [DataTransfer] <p>A value that defines the real-time status of a Snowball's data transfer while the device is at AWS. This data is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both import and export jobs.</p>
 -- * JobType [JobType] <p>The type of job.</p>
--- * SnowballType [SnowballType] <p>The type of appliance used with this job.</p>
+-- * SnowballType [SnowballType] <p>The type of device used with this job.</p>
 -- * JobLogInfo [JobLogs] <p>Links to Amazon S3 presigned URLs for the job report and logs. For import jobs, the PDF job report becomes available at the end of the import process. For export jobs, your job report typically becomes available while the Snowball for your job part is being delivered to you.</p>
 -- * CreationDate [Timestamp] <p>The creation date for this job.</p>
 -- * Resources [JobResource] <p>An array of <code>S3Resource</code> objects. Each <code>S3Resource</code> object represents an Amazon S3 bucket that your transferred data will be exported from or imported into.</p>
@@ -1348,43 +1277,6 @@ function M.GetSnowballUsageRequest(args)
     }
 end
 
-keys.InvalidInputCombinationException = { ["Message"] = true, nil }
-
-function asserts.AssertInvalidInputCombinationException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidInputCombinationException to be of type 'table'")
-	if struct["Message"] then asserts.AssertString(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidInputCombinationException[k], "InvalidInputCombinationException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidInputCombinationException
--- <p>Job or cluster creation failed. One ore more inputs were invalid. Confirm that the <a>CreateClusterRequest$SnowballType</a> value supports your <a>CreateJobRequest$JobType</a>, and try again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [String] 
--- @return InvalidInputCombinationException structure as a key-value pair table
-function M.InvalidInputCombinationException(args)
-	assert(args, "You must provide an argument table when creating InvalidInputCombinationException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertInvalidInputCombinationException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.DescribeAddressRequest = { ["AddressId"] = true, nil }
 
 function asserts.AssertDescribeAddressRequest(struct)
@@ -1504,25 +1396,27 @@ function M.ListClusterJobsResult(args)
     }
 end
 
-keys.ClusterLimitExceededException = { ["Message"] = true, nil }
+keys.ListClustersResult = { ["ClusterListEntries"] = true, ["NextToken"] = true, nil }
 
-function asserts.AssertClusterLimitExceededException(struct)
+function asserts.AssertListClustersResult(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ClusterLimitExceededException to be of type 'table'")
-	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	assert(type(struct) == "table", "Expected ListClustersResult to be of type 'table'")
+	if struct["ClusterListEntries"] then asserts.AssertClusterListEntryList(struct["ClusterListEntries"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ClusterLimitExceededException[k], "ClusterLimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.ListClustersResult[k], "ListClustersResult contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ClusterLimitExceededException
--- <p>Job creation failed. Currently, clusters support five nodes. If you have less than five nodes for your cluster and you have more nodes to create for this cluster, try again and create jobs until your cluster has exactly five notes.</p>
+--- Create a structure of type ListClustersResult
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [String] 
--- @return ClusterLimitExceededException structure as a key-value pair table
-function M.ClusterLimitExceededException(args)
-	assert(args, "You must provide an argument table when creating ClusterLimitExceededException")
+-- * ClusterListEntries [ClusterListEntryList] <p>Each <code>ClusterListEntry</code> object contains a cluster's state, a cluster's ID, and other important status information.</p>
+-- * NextToken [String] <p>HTTP requests are stateless. If you use the automatically generated <code>NextToken</code> value in your next <code>ClusterListEntry</code> call, your list of returned clusters will start from this point in the array.</p>
+-- @return ListClustersResult structure as a key-value pair table
+function M.ListClustersResult(args)
+	assert(args, "You must provide an argument table when creating ListClustersResult")
     local query_args = { 
     }
     local uri_args = { 
@@ -1530,9 +1424,70 @@ function M.ClusterLimitExceededException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["ClusterListEntries"] = args["ClusterListEntries"],
+		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertClusterLimitExceededException(all_args)
+	asserts.AssertListClustersResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateClusterRequest = { ["Description"] = true, ["AddressId"] = true, ["Notification"] = true, ["RoleARN"] = true, ["ClusterId"] = true, ["ForwardingAddressId"] = true, ["ShippingOption"] = true, ["Resources"] = true, nil }
+
+function asserts.AssertUpdateClusterRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateClusterRequest to be of type 'table'")
+	assert(struct["ClusterId"], "Expected key ClusterId to exist in table")
+	if struct["Description"] then asserts.AssertString(struct["Description"]) end
+	if struct["AddressId"] then asserts.AssertAddressId(struct["AddressId"]) end
+	if struct["Notification"] then asserts.AssertNotification(struct["Notification"]) end
+	if struct["RoleARN"] then asserts.AssertRoleARN(struct["RoleARN"]) end
+	if struct["ClusterId"] then asserts.AssertClusterId(struct["ClusterId"]) end
+	if struct["ForwardingAddressId"] then asserts.AssertAddressId(struct["ForwardingAddressId"]) end
+	if struct["ShippingOption"] then asserts.AssertShippingOption(struct["ShippingOption"]) end
+	if struct["Resources"] then asserts.AssertJobResource(struct["Resources"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateClusterRequest[k], "UpdateClusterRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateClusterRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Description [String] <p>The updated description of this cluster.</p>
+-- * AddressId [AddressId] <p>The ID of the updated <a>Address</a> object.</p>
+-- * Notification [Notification] <p>The new or updated <a>Notification</a> object.</p>
+-- * RoleARN [RoleARN] <p>The new role Amazon Resource Name (ARN) that you want to associate with this cluster. To create a role ARN, use the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS Identity and Access Management (IAM).</p>
+-- * ClusterId [ClusterId] <p>The cluster ID of the cluster that you want to update, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- * ForwardingAddressId [AddressId] <p>The updated ID for the forwarding address for a cluster. This field is not supported in most regions.</p>
+-- * ShippingOption [ShippingOption] <p>The updated shipping option value of this cluster's <a>ShippingDetails</a> object.</p>
+-- * Resources [JobResource] <p>The updated arrays of <a>JobResource</a> objects that can include updated <a>S3Resource</a> objects or <a>LambdaResource</a> objects.</p>
+-- Required key: ClusterId
+-- @return UpdateClusterRequest structure as a key-value pair table
+function M.UpdateClusterRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateClusterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Description"] = args["Description"],
+		["AddressId"] = args["AddressId"],
+		["Notification"] = args["Notification"],
+		["RoleARN"] = args["RoleARN"],
+		["ClusterId"] = args["ClusterId"],
+		["ForwardingAddressId"] = args["ForwardingAddressId"],
+		["ShippingOption"] = args["ShippingOption"],
+		["Resources"] = args["Resources"],
+	}
+	asserts.AssertUpdateClusterRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1624,6 +1579,40 @@ function M.Notification(args)
     }
 end
 
+keys.UpdateClusterResult = { nil }
+
+function asserts.AssertUpdateClusterResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateClusterResult to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateClusterResult[k], "UpdateClusterResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateClusterResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateClusterResult structure as a key-value pair table
+function M.UpdateClusterResult(args)
+	assert(args, "You must provide an argument table when creating UpdateClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertUpdateClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DescribeAddressesRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
 
 function asserts.AssertDescribeAddressesRequest(struct)
@@ -1698,27 +1687,65 @@ function M.UpdateJobResult(args)
     }
 end
 
-keys.GetJobUnlockCodeRequest = { ["JobId"] = true, nil }
+keys.CompatibleImage = { ["AmiId"] = true, ["Name"] = true, nil }
 
-function asserts.AssertGetJobUnlockCodeRequest(struct)
+function asserts.AssertCompatibleImage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected GetJobUnlockCodeRequest to be of type 'table'")
-	assert(struct["JobId"], "Expected key JobId to exist in table")
-	if struct["JobId"] then asserts.AssertJobId(struct["JobId"]) end
+	assert(type(struct) == "table", "Expected CompatibleImage to be of type 'table'")
+	if struct["AmiId"] then asserts.AssertString(struct["AmiId"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.GetJobUnlockCodeRequest[k], "GetJobUnlockCodeRequest contains unknown key " .. tostring(k))
+		assert(keys.CompatibleImage[k], "CompatibleImage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type GetJobUnlockCodeRequest
+--- Create a structure of type CompatibleImage
+-- <p>A JSON-formatted object that describes a compatible Amazon Machine Image (AMI), including the ID and name for a Snowball Edge AMI. This AMI is compatible with the device's physical hardware requirements, and it should be able to be run in an SBE1 instance on the device.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AmiId [String] <p>The unique identifier for an individual Snowball Edge AMI.</p>
+-- * Name [String] <p>The optional name of a compatible image.</p>
+-- @return CompatibleImage structure as a key-value pair table
+function M.CompatibleImage(args)
+	assert(args, "You must provide an argument table when creating CompatibleImage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["AmiId"] = args["AmiId"],
+		["Name"] = args["Name"],
+	}
+	asserts.AssertCompatibleImage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateJobResult = { ["JobId"] = true, nil }
+
+function asserts.AssertCreateJobResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateJobResult to be of type 'table'")
+	if struct["JobId"] then asserts.AssertJobId(struct["JobId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateJobResult[k], "CreateJobResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateJobResult
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * JobId [JobId] <p>The ID for the job that you want to get the <code>UnlockCode</code> value for, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
--- Required key: JobId
--- @return GetJobUnlockCodeRequest structure as a key-value pair table
-function M.GetJobUnlockCodeRequest(args)
-	assert(args, "You must provide an argument table when creating GetJobUnlockCodeRequest")
+-- * JobId [JobId] <p>The automatically generated ID for a job, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- @return CreateJobResult structure as a key-value pair table
+function M.CreateJobResult(args)
+	assert(args, "You must provide an argument table when creating CreateJobResult")
     local query_args = { 
     }
     local uri_args = { 
@@ -1728,81 +1755,7 @@ function M.GetJobUnlockCodeRequest(args)
 	local all_args = { 
 		["JobId"] = args["JobId"],
 	}
-	asserts.AssertGetJobUnlockCodeRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CreateClusterRequest = { ["Description"] = true, ["AddressId"] = true, ["KmsKeyARN"] = true, ["Notification"] = true, ["RoleARN"] = true, ["ForwardingAddressId"] = true, ["ShippingOption"] = true, ["JobType"] = true, ["SnowballType"] = true, ["Resources"] = true, nil }
-
-function asserts.AssertCreateClusterRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CreateClusterRequest to be of type 'table'")
-	assert(struct["JobType"], "Expected key JobType to exist in table")
-	assert(struct["Resources"], "Expected key Resources to exist in table")
-	assert(struct["AddressId"], "Expected key AddressId to exist in table")
-	assert(struct["RoleARN"], "Expected key RoleARN to exist in table")
-	assert(struct["ShippingOption"], "Expected key ShippingOption to exist in table")
-	if struct["Description"] then asserts.AssertString(struct["Description"]) end
-	if struct["AddressId"] then asserts.AssertAddressId(struct["AddressId"]) end
-	if struct["KmsKeyARN"] then asserts.AssertKmsKeyARN(struct["KmsKeyARN"]) end
-	if struct["Notification"] then asserts.AssertNotification(struct["Notification"]) end
-	if struct["RoleARN"] then asserts.AssertRoleARN(struct["RoleARN"]) end
-	if struct["ForwardingAddressId"] then asserts.AssertAddressId(struct["ForwardingAddressId"]) end
-	if struct["ShippingOption"] then asserts.AssertShippingOption(struct["ShippingOption"]) end
-	if struct["JobType"] then asserts.AssertJobType(struct["JobType"]) end
-	if struct["SnowballType"] then asserts.AssertSnowballType(struct["SnowballType"]) end
-	if struct["Resources"] then asserts.AssertJobResource(struct["Resources"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.CreateClusterRequest[k], "CreateClusterRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CreateClusterRequest
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Description [String] <p>An optional description of this specific cluster, for example <code>Environmental Data Cluster-01</code>.</p>
--- * AddressId [AddressId] <p>The ID for the address that you want the cluster shipped to.&gt;</p>
--- * KmsKeyARN [KmsKeyARN] <p>The <code>KmsKeyARN</code> value that you want to associate with this cluster. <code>KmsKeyARN</code> values are created by using the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS Key Management Service (AWS KMS). </p>
--- * Notification [Notification] <p>The Amazon Simple Notification Service (Amazon SNS) notification settings for this cluster.</p>
--- * RoleARN [RoleARN] <p>The <code>RoleARN</code> that you want to associate with this cluster. <code>RoleArn</code> values are created by using the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS Identity and Access Management (IAM).</p>
--- * ForwardingAddressId [AddressId] <p>The forwarding address ID for a cluster. This field is not supported in most regions.</p>
--- * ShippingOption [ShippingOption] <p>The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge appliance, rather it represents how quickly each appliance moves to its destination while in transit. Regional shipping speeds are as follows:</p> <ul> <li> <p>In Australia, you have access to express shipping. Typically, appliances shipped express are delivered in about a day.</p> </li> <li> <p>In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.</p> </li> <li> <p>In India, Snowball Edges are delivered in one to seven days.</p> </li> <li> <p>In the US, you have access to one-day shipping and two-day shipping.</p> </li> </ul>
--- * JobType [JobType] <p>The type of job for this cluster. Currently, the only job type supported for clusters is <code>LOCAL_USE</code>.</p>
--- * SnowballType [SnowballType] <p>The type of AWS Snowball appliance to use for this cluster. Currently, the only supported appliance type for cluster jobs is <code>EDGE</code>.</p>
--- * Resources [JobResource] <p>The resources associated with the cluster job. These resources include Amazon S3 buckets and optional AWS Lambda functions written in the Python language. </p>
--- Required key: JobType
--- Required key: Resources
--- Required key: AddressId
--- Required key: RoleARN
--- Required key: ShippingOption
--- @return CreateClusterRequest structure as a key-value pair table
-function M.CreateClusterRequest(args)
-	assert(args, "You must provide an argument table when creating CreateClusterRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Description"] = args["Description"],
-		["AddressId"] = args["AddressId"],
-		["KmsKeyARN"] = args["KmsKeyARN"],
-		["Notification"] = args["Notification"],
-		["RoleARN"] = args["RoleARN"],
-		["ForwardingAddressId"] = args["ForwardingAddressId"],
-		["ShippingOption"] = args["ShippingOption"],
-		["JobType"] = args["JobType"],
-		["SnowballType"] = args["SnowballType"],
-		["Resources"] = args["Resources"],
-	}
-	asserts.AssertCreateClusterRequest(all_args)
+	asserts.AssertCreateJobResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1836,7 +1789,7 @@ end
 -- * JobState [JobState] <p>The current state of this job.</p>
 -- * Description [String] <p>The optional description of this specific job, for example <code>Important Photos 2016-08-11</code>.</p>
 -- * JobId [String] <p>The automatically generated ID for a job, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
--- * SnowballType [SnowballType] <p>The type of appliance used with this job.</p>
+-- * SnowballType [SnowballType] <p>The type of device used with this job.</p>
 -- * CreationDate [Timestamp] <p>The creation date for this job.</p>
 -- * JobType [JobType] <p>The type of job.</p>
 -- @return JobListEntry structure as a key-value pair table
@@ -1881,7 +1834,7 @@ function asserts.AssertDataTransfer(struct)
 end
 
 --- Create a structure of type DataTransfer
--- <p>Defines the real-time status of a Snowball's data transfer while the appliance is at AWS. This data is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both import and export jobs.</p>
+-- <p>Defines the real-time status of a Snowball's data transfer while the device is at AWS. This data is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both import and export jobs.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ObjectsTransferred [Long] <p>The number of objects transferred between a Snowball and Amazon S3.</p>
@@ -1912,25 +1865,29 @@ function M.DataTransfer(args)
     }
 end
 
-keys.InvalidAddressException = { ["Message"] = true, nil }
+keys.Ec2AmiResource = { ["AmiId"] = true, ["SnowballAmiId"] = true, nil }
 
-function asserts.AssertInvalidAddressException(struct)
+function asserts.AssertEc2AmiResource(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidAddressException to be of type 'table'")
-	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	assert(type(struct) == "table", "Expected Ec2AmiResource to be of type 'table'")
+	assert(struct["AmiId"], "Expected key AmiId to exist in table")
+	if struct["AmiId"] then asserts.AssertAmiId(struct["AmiId"]) end
+	if struct["SnowballAmiId"] then asserts.AssertString(struct["SnowballAmiId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidAddressException[k], "InvalidAddressException contains unknown key " .. tostring(k))
+		assert(keys.Ec2AmiResource[k], "Ec2AmiResource contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidAddressException
--- <p>The address provided was invalid. Check the address with your region's carrier, and try again.</p>
+--- Create a structure of type Ec2AmiResource
+-- <p>A JSON-formatted object that contains the IDs for an Amazon Machine Image (AMI), including the Amazon EC2 AMI ID and the Snowball Edge AMI ID. Each AMI has these two IDs to simplify identifying the AMI in both the AWS Cloud and on the device.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [String] 
--- @return InvalidAddressException structure as a key-value pair table
-function M.InvalidAddressException(args)
-	assert(args, "You must provide an argument table when creating InvalidAddressException")
+-- * AmiId [AmiId] <p>The ID of the AMI in Amazon EC2.</p>
+-- * SnowballAmiId [String] <p>The ID of the AMI on the Snowball Edge device.</p>
+-- Required key: AmiId
+-- @return Ec2AmiResource structure as a key-value pair table
+function M.Ec2AmiResource(args)
+	assert(args, "You must provide an argument table when creating Ec2AmiResource")
     local query_args = { 
     }
     local uri_args = { 
@@ -1938,9 +1895,10 @@ function M.InvalidAddressException(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Message"] = args["Message"],
+		["AmiId"] = args["AmiId"],
+		["SnowballAmiId"] = args["SnowballAmiId"],
 	}
-	asserts.AssertInvalidAddressException(all_args)
+	asserts.AssertEc2AmiResource(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1949,23 +1907,27 @@ function M.InvalidAddressException(args)
     }
 end
 
-keys.UpdateClusterResult = { nil }
+keys.ListCompatibleImagesResult = { ["CompatibleImages"] = true, ["NextToken"] = true, nil }
 
-function asserts.AssertUpdateClusterResult(struct)
+function asserts.AssertListCompatibleImagesResult(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateClusterResult to be of type 'table'")
+	assert(type(struct) == "table", "Expected ListCompatibleImagesResult to be of type 'table'")
+	if struct["CompatibleImages"] then asserts.AssertCompatibleImageList(struct["CompatibleImages"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.UpdateClusterResult[k], "UpdateClusterResult contains unknown key " .. tostring(k))
+		assert(keys.ListCompatibleImagesResult[k], "ListCompatibleImagesResult contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type UpdateClusterResult
+--- Create a structure of type ListCompatibleImagesResult
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return UpdateClusterResult structure as a key-value pair table
-function M.UpdateClusterResult(args)
-	assert(args, "You must provide an argument table when creating UpdateClusterResult")
+-- * CompatibleImages [CompatibleImageList] <p>A JSON-formatted object that describes a compatible AMI, including the ID and name for a Snowball Edge AMI.</p>
+-- * NextToken [String] <p>Because HTTP requests are stateless, this is the starting point for your next list of returned images.</p>
+-- @return ListCompatibleImagesResult structure as a key-value pair table
+function M.ListCompatibleImagesResult(args)
+	assert(args, "You must provide an argument table when creating ListCompatibleImagesResult")
     local query_args = { 
     }
     local uri_args = { 
@@ -1973,45 +1935,10 @@ function M.UpdateClusterResult(args)
     local header_args = { 
     }
 	local all_args = { 
+		["CompatibleImages"] = args["CompatibleImages"],
+		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertUpdateClusterResult(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidJobStateException = { ["Message"] = true, nil }
-
-function asserts.AssertInvalidJobStateException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidJobStateException to be of type 'table'")
-	if struct["Message"] then asserts.AssertString(struct["Message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidJobStateException[k], "InvalidJobStateException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidJobStateException
--- <p>The action can't be performed because the job's current state doesn't allow that action to be performed.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Message [String] 
--- @return InvalidJobStateException structure as a key-value pair table
-function M.InvalidJobStateException(args)
-	assert(args, "You must provide an argument table when creating InvalidJobStateException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Message"] = args["Message"],
-	}
-	asserts.AssertInvalidJobStateException(all_args)
+	asserts.AssertListCompatibleImagesResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2093,24 +2020,26 @@ function M.DescribeClusterRequest(args)
     }
 end
 
-keys.JobResource = { ["LambdaResources"] = true, ["S3Resources"] = true, nil }
+keys.JobResource = { ["LambdaResources"] = true, ["S3Resources"] = true, ["Ec2AmiResources"] = true, nil }
 
 function asserts.AssertJobResource(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected JobResource to be of type 'table'")
 	if struct["LambdaResources"] then asserts.AssertLambdaResourceList(struct["LambdaResources"]) end
 	if struct["S3Resources"] then asserts.AssertS3ResourceList(struct["S3Resources"]) end
+	if struct["Ec2AmiResources"] then asserts.AssertEc2AmiResourceList(struct["Ec2AmiResources"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.JobResource[k], "JobResource contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type JobResource
--- <p>Contains an array of <code>S3Resource</code> objects. Each <code>S3Resource</code> object represents an Amazon S3 bucket that your transferred data will be exported from or imported into.</p>
+-- <p>Contains an array of AWS resource objects. Each object represents an Amazon S3 bucket, an AWS Lambda function, or an Amazon Machine Image (AMI) based on Amazon EC2 that is associated with a particular job.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * LambdaResources [LambdaResourceList] <p>The Python-language Lambda functions for this job.</p>
 -- * S3Resources [S3ResourceList] <p>An array of <code>S3Resource</code> objects.</p>
+-- * Ec2AmiResources [Ec2AmiResourceList] <p>The Amazon Machine Images (AMIs) associated with this job.</p>
 -- @return JobResource structure as a key-value pair table
 function M.JobResource(args)
 	assert(args, "You must provide an argument table when creating JobResource")
@@ -2123,6 +2052,7 @@ function M.JobResource(args)
 	local all_args = { 
 		["LambdaResources"] = args["LambdaResources"],
 		["S3Resources"] = args["S3Resources"],
+		["Ec2AmiResources"] = args["Ec2AmiResources"],
 	}
 	asserts.AssertJobResource(all_args)
 	return {
@@ -2173,41 +2103,27 @@ function M.ListClustersRequest(args)
     }
 end
 
-keys.UpdateClusterRequest = { ["Description"] = true, ["AddressId"] = true, ["Notification"] = true, ["RoleARN"] = true, ["ClusterId"] = true, ["ForwardingAddressId"] = true, ["ShippingOption"] = true, ["Resources"] = true, nil }
+keys.GetJobUnlockCodeRequest = { ["JobId"] = true, nil }
 
-function asserts.AssertUpdateClusterRequest(struct)
+function asserts.AssertGetJobUnlockCodeRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateClusterRequest to be of type 'table'")
-	assert(struct["ClusterId"], "Expected key ClusterId to exist in table")
-	if struct["Description"] then asserts.AssertString(struct["Description"]) end
-	if struct["AddressId"] then asserts.AssertAddressId(struct["AddressId"]) end
-	if struct["Notification"] then asserts.AssertNotification(struct["Notification"]) end
-	if struct["RoleARN"] then asserts.AssertRoleARN(struct["RoleARN"]) end
-	if struct["ClusterId"] then asserts.AssertClusterId(struct["ClusterId"]) end
-	if struct["ForwardingAddressId"] then asserts.AssertAddressId(struct["ForwardingAddressId"]) end
-	if struct["ShippingOption"] then asserts.AssertShippingOption(struct["ShippingOption"]) end
-	if struct["Resources"] then asserts.AssertJobResource(struct["Resources"]) end
+	assert(type(struct) == "table", "Expected GetJobUnlockCodeRequest to be of type 'table'")
+	assert(struct["JobId"], "Expected key JobId to exist in table")
+	if struct["JobId"] then asserts.AssertJobId(struct["JobId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.UpdateClusterRequest[k], "UpdateClusterRequest contains unknown key " .. tostring(k))
+		assert(keys.GetJobUnlockCodeRequest[k], "GetJobUnlockCodeRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type UpdateClusterRequest
+--- Create a structure of type GetJobUnlockCodeRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Description [String] <p>The updated description of this cluster.</p>
--- * AddressId [AddressId] <p>The ID of the updated <a>Address</a> object.</p>
--- * Notification [Notification] <p>The new or updated <a>Notification</a> object.</p>
--- * RoleARN [RoleARN] <p>The new role Amazon Resource Name (ARN) that you want to associate with this cluster. To create a role ARN, use the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS Identity and Access Management (IAM).</p>
--- * ClusterId [ClusterId] <p>The cluster ID of the cluster that you want to update, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
--- * ForwardingAddressId [AddressId] <p>The updated ID for the forwarding address for a cluster. This field is not supported in most regions.</p>
--- * ShippingOption [ShippingOption] <p>The updated shipping option value of this cluster's <a>ShippingDetails</a> object.</p>
--- * Resources [JobResource] <p>The updated arrays of <a>JobResource</a> objects that can include updated <a>S3Resource</a> objects or <a>LambdaResource</a> objects.</p>
--- Required key: ClusterId
--- @return UpdateClusterRequest structure as a key-value pair table
-function M.UpdateClusterRequest(args)
-	assert(args, "You must provide an argument table when creating UpdateClusterRequest")
+-- * JobId [JobId] <p>The ID for the job that you want to get the <code>UnlockCode</code> value for, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- Required key: JobId
+-- @return GetJobUnlockCodeRequest structure as a key-value pair table
+function M.GetJobUnlockCodeRequest(args)
+	assert(args, "You must provide an argument table when creating GetJobUnlockCodeRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -2215,56 +2131,9 @@ function M.UpdateClusterRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Description"] = args["Description"],
-		["AddressId"] = args["AddressId"],
-		["Notification"] = args["Notification"],
-		["RoleARN"] = args["RoleARN"],
-		["ClusterId"] = args["ClusterId"],
-		["ForwardingAddressId"] = args["ForwardingAddressId"],
-		["ShippingOption"] = args["ShippingOption"],
-		["Resources"] = args["Resources"],
+		["JobId"] = args["JobId"],
 	}
-	asserts.AssertUpdateClusterRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ListClustersResult = { ["ClusterListEntries"] = true, ["NextToken"] = true, nil }
-
-function asserts.AssertListClustersResult(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ListClustersResult to be of type 'table'")
-	if struct["ClusterListEntries"] then asserts.AssertClusterListEntryList(struct["ClusterListEntries"]) end
-	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ListClustersResult[k], "ListClustersResult contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ListClustersResult
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ClusterListEntries [ClusterListEntryList] <p>Each <code>ClusterListEntry</code> object contains a cluster's state, a cluster's ID, and other important status information.</p>
--- * NextToken [String] <p>HTTP requests are stateless. If you use the automatically generated <code>NextToken</code> value in your next <code>ClusterListEntry</code> call, your list of returned clusters will start from this point in the array.</p>
--- @return ListClustersResult structure as a key-value pair table
-function M.ListClustersResult(args)
-	assert(args, "You must provide an argument table when creating ListClustersResult")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ClusterListEntries"] = args["ClusterListEntries"],
-		["NextToken"] = args["NextToken"],
-	}
-	asserts.AssertListClustersResult(all_args)
+	asserts.AssertGetJobUnlockCodeRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2451,9 +2320,9 @@ end
 -- <p>A job's shipping information, including inbound and outbound tracking numbers and shipping speed options.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * OutboundShipment [Shipment] <p>The <code>Status</code> and <code>TrackingNumber</code> values for a Snowball being returned to AWS for a particular job.</p>
+-- * OutboundShipment [Shipment] <p>The <code>Status</code> and <code>TrackingNumber</code> values for a Snowball being delivered to the address that you specified for a particular job.</p>
 -- * ShippingOption [ShippingOption] <p>The shipping speed for a particular job. This speed doesn't dictate how soon you'll get the Snowball from the job's creation date. This speed represents how quickly it moves to its destination while in transit. Regional shipping speeds are as follows:</p> <ul> <li> <p>In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day.</p> </li> <li> <p>In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.</p> </li> <li> <p>In India, Snowballs are delivered in one to seven days.</p> </li> <li> <p>In the United States of America (US), you have access to one-day shipping and two-day shipping.</p> </li> </ul>
--- * InboundShipment [Shipment] <p>The <code>Status</code> and <code>TrackingNumber</code> values for a Snowball being delivered to the address that you specified for a particular job.</p>
+-- * InboundShipment [Shipment] <p>The <code>Status</code> and <code>TrackingNumber</code> values for a Snowball being returned to AWS for a particular job.</p>
 -- @return ShippingDetails structure as a key-value pair table
 function M.ShippingDetails(args)
 	assert(args, "You must provide an argument table when creating ShippingDetails")
@@ -2477,16 +2346,14 @@ function M.ShippingDetails(args)
     }
 end
 
-function asserts.AssertJobId(str)
+function asserts.AssertSnowballType(str)
 	assert(str)
-	assert(type(str) == "string", "Expected JobId to be of type 'string'")
-	assert(#str <= 39, "Expected string to be max 39 characters")
-	assert(#str >= 39, "Expected string to be min 39 characters")
+	assert(type(str) == "string", "Expected SnowballType to be of type 'string'")
 end
 
 --  
-function M.JobId(str)
-	asserts.AssertJobId(str)
+function M.SnowballType(str)
+	asserts.AssertSnowballType(str)
 	return str
 end
 
@@ -2551,6 +2418,19 @@ function M.RoleARN(str)
 	return str
 end
 
+function asserts.AssertAmiId(str)
+	assert(str)
+	assert(type(str) == "string", "Expected AmiId to be of type 'string'")
+	assert(#str <= 21, "Expected string to be max 21 characters")
+	assert(#str >= 12, "Expected string to be min 12 characters")
+end
+
+--  
+function M.AmiId(str)
+	asserts.AssertAmiId(str)
+	return str
+end
+
 function asserts.AssertShippingOption(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ShippingOption to be of type 'string'")
@@ -2559,17 +2439,6 @@ end
 --  
 function M.ShippingOption(str)
 	asserts.AssertShippingOption(str)
-	return str
-end
-
-function asserts.AssertSnowballType(str)
-	assert(str)
-	assert(type(str) == "string", "Expected SnowballType to be of type 'string'")
-end
-
---  
-function M.SnowballType(str)
-	asserts.AssertSnowballType(str)
 	return str
 end
 
@@ -2594,6 +2463,19 @@ end
 --  
 function M.KmsKeyARN(str)
 	asserts.AssertKmsKeyARN(str)
+	return str
+end
+
+function asserts.AssertJobId(str)
+	assert(str)
+	assert(type(str) == "string", "Expected JobId to be of type 'string'")
+	assert(#str <= 39, "Expected string to be max 39 characters")
+	assert(#str >= 39, "Expected string to be min 39 characters")
+end
+
+--  
+function M.JobId(str)
+	asserts.AssertJobId(str)
 	return str
 end
 
@@ -2696,6 +2578,21 @@ function M.Timestamp(timestamp)
 	return timestamp
 end
 
+function asserts.AssertCompatibleImageList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected CompatibleImageList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertCompatibleImage(v)
+	end
+end
+
+--  
+-- List of CompatibleImage objects
+function M.CompatibleImageList(list)
+	asserts.AssertCompatibleImageList(list)
+	return list
+end
+
 function asserts.AssertJobStateList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected JobStateList to be of type ''table")
@@ -2708,6 +2605,21 @@ end
 -- List of JobState objects
 function M.JobStateList(list)
 	asserts.AssertJobStateList(list)
+	return list
+end
+
+function asserts.AssertEc2AmiResourceList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected Ec2AmiResourceList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertEc2AmiResource(v)
+	end
+end
+
+--  
+-- List of Ec2AmiResource objects
+function M.Ec2AmiResourceList(list)
+	asserts.AssertEc2AmiResourceList(list)
 	return list
 end
 
@@ -3099,6 +3011,41 @@ function M.UpdateJobSync(UpdateJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.UpdateJobAsync(UpdateJobRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListCompatibleImages asynchronously, invoking a callback when done
+-- @param ListCompatibleImagesRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListCompatibleImagesAsync(ListCompatibleImagesRequest, cb)
+	assert(ListCompatibleImagesRequest, "You must provide a ListCompatibleImagesRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.ListCompatibleImages",
+	}
+	for header,value in pairs(ListCompatibleImagesRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListCompatibleImagesRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListCompatibleImages synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListCompatibleImagesRequest
+-- @return response
+-- @return error_message
+function M.ListCompatibleImagesSync(ListCompatibleImagesRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListCompatibleImagesAsync(ListCompatibleImagesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

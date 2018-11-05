@@ -21,13 +21,14 @@ M.metadata = {
 local keys = {}
 local asserts = {}
 
-keys.ListUploadsRequest = { ["nextToken"] = true, ["arn"] = true, nil }
+keys.ListUploadsRequest = { ["nextToken"] = true, ["type"] = true, ["arn"] = true, nil }
 
 function asserts.AssertListUploadsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListUploadsRequest to be of type 'table'")
 	assert(struct["arn"], "Expected key arn to exist in table")
 	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["type"] then asserts.AssertUploadType(struct["type"]) end
 	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListUploadsRequest[k], "ListUploadsRequest contains unknown key " .. tostring(k))
@@ -39,6 +40,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * nextToken [PaginationToken] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- * type [UploadType] <p>The type of upload.</p> <p>Must be one of the following values:</p> <ul> <li> <p>ANDROID_APP: An Android upload.</p> </li> <li> <p>IOS_APP: An iOS upload.</p> </li> <li> <p>WEB_APP: A web appliction upload.</p> </li> <li> <p>EXTERNAL_DATA: An external data upload.</p> </li> <li> <p>APPIUM_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package upload.</p> </li> <li> <p>APPIUM_JAVA_TESTNG_TEST_PACKAGE: An Appium Java TestNG test package upload.</p> </li> <li> <p>APPIUM_PYTHON_TEST_PACKAGE: An Appium Python test package upload.</p> </li> <li> <p>APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package upload.</p> </li> <li> <p>APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE: An Appium Java TestNG test package upload.</p> </li> <li> <p>APPIUM_WEB_PYTHON_TEST_PACKAGE: An Appium Python test package upload.</p> </li> <li> <p>CALABASH_TEST_PACKAGE: A Calabash test package upload.</p> </li> <li> <p>INSTRUMENTATION_TEST_PACKAGE: An instrumentation upload.</p> </li> <li> <p>UIAUTOMATION_TEST_PACKAGE: A uiautomation test package upload.</p> </li> <li> <p>UIAUTOMATOR_TEST_PACKAGE: A uiautomator test package upload.</p> </li> <li> <p>XCTEST_TEST_PACKAGE: An XCode test package upload.</p> </li> <li> <p>XCTEST_UI_TEST_PACKAGE: An XCode UI test package upload.</p> </li> <li> <p>APPIUM_JAVA_JUNIT_TEST_SPEC: An Appium Java JUnit test spec upload.</p> </li> <li> <p>APPIUM_JAVA_TESTNG_TEST_SPEC: An Appium Java TestNG test spec upload.</p> </li> <li> <p>APPIUM_PYTHON_TEST_SPEC: An Appium Python test spec upload.</p> </li> <li> <p>APPIUM_WEB_JAVA_JUNIT_TEST_SPEC: An Appium Java JUnit test spec upload.</p> </li> <li> <p>APPIUM_WEB_JAVA_TESTNG_TEST_SPEC: An Appium Java TestNG test spec upload.</p> </li> <li> <p>APPIUM_WEB_PYTHON_TEST_SPEC: An Appium Python test spec upload.</p> </li> <li> <p>INSTRUMENTATION_TEST_SPEC: An instrumentation test spec upload.</p> </li> <li> <p>XCTEST_UI_TEST_SPEC: An XCode UI test spec upload.</p> </li> </ul>
 -- * arn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the project for which you want to list uploads.</p>
 -- Required key: arn
 -- @return ListUploadsRequest structure as a key-value pair table
@@ -52,6 +54,7 @@ function M.ListUploadsRequest(args)
     }
 	local all_args = { 
 		["nextToken"] = args["nextToken"],
+		["type"] = args["type"],
 		["arn"] = args["arn"],
 	}
 	asserts.AssertListUploadsRequest(all_args)
@@ -264,6 +267,43 @@ function M.DeviceMinutes(args)
     }
 end
 
+keys.PurchaseOfferingResult = { ["offeringTransaction"] = true, nil }
+
+function asserts.AssertPurchaseOfferingResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PurchaseOfferingResult to be of type 'table'")
+	if struct["offeringTransaction"] then asserts.AssertOfferingTransaction(struct["offeringTransaction"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PurchaseOfferingResult[k], "PurchaseOfferingResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PurchaseOfferingResult
+-- <p>The result of the purchase offering (e.g., success or failure).</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * offeringTransaction [OfferingTransaction] <p>Represents the offering transaction for the purchase result.</p>
+-- @return PurchaseOfferingResult structure as a key-value pair table
+function M.PurchaseOfferingResult(args)
+	assert(args, "You must provide an argument table when creating PurchaseOfferingResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["offeringTransaction"] = args["offeringTransaction"],
+	}
+	asserts.AssertPurchaseOfferingResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.CreateUploadResult = { ["upload"] = true, nil }
 
 function asserts.AssertCreateUploadResult(struct)
@@ -293,46 +333,6 @@ function M.CreateUploadResult(args)
 		["upload"] = args["upload"],
 	}
 	asserts.AssertCreateUploadResult(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.UniqueProblem = { ["message"] = true, ["problems"] = true, nil }
-
-function asserts.AssertUniqueProblem(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UniqueProblem to be of type 'table'")
-	if struct["message"] then asserts.AssertMessage(struct["message"]) end
-	if struct["problems"] then asserts.AssertProblems(struct["problems"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.UniqueProblem[k], "UniqueProblem contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UniqueProblem
--- <p>A collection of one or more problems, grouped by their result.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [Message] <p>A message about the unique problems' result.</p>
--- * problems [Problems] <p>Information about the problems.</p>
--- @return UniqueProblem structure as a key-value pair table
-function M.UniqueProblem(args)
-	assert(args, "You must provide an argument table when creating UniqueProblem")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-		["problems"] = args["problems"],
-	}
-	asserts.AssertUniqueProblem(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -668,27 +668,25 @@ function M.ListProjectsRequest(args)
     }
 end
 
-keys.GetProjectRequest = { ["arn"] = true, nil }
+keys.CreateInstanceProfileResult = { ["instanceProfile"] = true, nil }
 
-function asserts.AssertGetProjectRequest(struct)
+function asserts.AssertCreateInstanceProfileResult(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected GetProjectRequest to be of type 'table'")
-	assert(struct["arn"], "Expected key arn to exist in table")
-	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	assert(type(struct) == "table", "Expected CreateInstanceProfileResult to be of type 'table'")
+	if struct["instanceProfile"] then asserts.AssertInstanceProfile(struct["instanceProfile"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.GetProjectRequest[k], "GetProjectRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateInstanceProfileResult[k], "CreateInstanceProfileResult contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type GetProjectRequest
--- <p>Represents a request to the get project operation.</p>
+--- Create a structure of type CreateInstanceProfileResult
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * arn [AmazonResourceName] <p>The project's ARN.</p>
--- Required key: arn
--- @return GetProjectRequest structure as a key-value pair table
-function M.GetProjectRequest(args)
-	assert(args, "You must provide an argument table when creating GetProjectRequest")
+-- * instanceProfile [InstanceProfile] <p>An object containing information about your instance profile.</p>
+-- @return CreateInstanceProfileResult structure as a key-value pair table
+function M.CreateInstanceProfileResult(args)
+	assert(args, "You must provide an argument table when creating CreateInstanceProfileResult")
     local query_args = { 
     }
     local uri_args = { 
@@ -696,9 +694,46 @@ function M.GetProjectRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["arn"] = args["arn"],
+		["instanceProfile"] = args["instanceProfile"],
 	}
-	asserts.AssertGetProjectRequest(all_args)
+	asserts.AssertCreateInstanceProfileResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetInstanceProfileResult = { ["instanceProfile"] = true, nil }
+
+function asserts.AssertGetInstanceProfileResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetInstanceProfileResult to be of type 'table'")
+	if struct["instanceProfile"] then asserts.AssertInstanceProfile(struct["instanceProfile"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetInstanceProfileResult[k], "GetInstanceProfileResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetInstanceProfileResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceProfile [InstanceProfile] <p>An object containing information about your instance profile.</p>
+-- @return GetInstanceProfileResult structure as a key-value pair table
+function M.GetInstanceProfileResult(args)
+	assert(args, "You must provide an argument table when creating GetInstanceProfileResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["instanceProfile"] = args["instanceProfile"],
+	}
+	asserts.AssertGetInstanceProfileResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -784,12 +819,13 @@ function M.ListOfferingTransactionsRequest(args)
     }
 end
 
-keys.AccountSettings = { ["maxSlots"] = true, ["unmeteredRemoteAccessDevices"] = true, ["maxJobTimeoutMinutes"] = true, ["trialMinutes"] = true, ["defaultJobTimeoutMinutes"] = true, ["awsAccountNumber"] = true, ["unmeteredDevices"] = true, nil }
+keys.AccountSettings = { ["maxSlots"] = true, ["skipAppResign"] = true, ["unmeteredRemoteAccessDevices"] = true, ["maxJobTimeoutMinutes"] = true, ["trialMinutes"] = true, ["defaultJobTimeoutMinutes"] = true, ["awsAccountNumber"] = true, ["unmeteredDevices"] = true, nil }
 
 function asserts.AssertAccountSettings(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AccountSettings to be of type 'table'")
 	if struct["maxSlots"] then asserts.AssertMaxSlotMap(struct["maxSlots"]) end
+	if struct["skipAppResign"] then asserts.AssertSkipAppResign(struct["skipAppResign"]) end
 	if struct["unmeteredRemoteAccessDevices"] then asserts.AssertPurchasedDevicesMap(struct["unmeteredRemoteAccessDevices"]) end
 	if struct["maxJobTimeoutMinutes"] then asserts.AssertJobTimeoutMinutes(struct["maxJobTimeoutMinutes"]) end
 	if struct["trialMinutes"] then asserts.AssertTrialMinutes(struct["trialMinutes"]) end
@@ -806,6 +842,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * maxSlots [MaxSlotMap] <p>The maximum number of device slots that the AWS account can purchase. Each maximum is expressed as an <code>offering-id:number</code> pair, where the <code>offering-id</code> represents one of the IDs returned by the <code>ListOfferings</code> command.</p>
+-- * skipAppResign [SkipAppResign] <p>When set to <code>true</code>, for private devices, Device Farm will not sign your app again. For public devices, Device Farm always signs your apps again and this parameter has no effect.</p> <p>For more information about how Device Farm re-signs your app(s), see <a href="https://aws.amazon.com/device-farm/faq/">Do you modify my app?</a> in the <i>AWS Device Farm FAQs</i>.</p>
 -- * unmeteredRemoteAccessDevices [PurchasedDevicesMap] <p>Returns the unmetered remote access devices you have purchased or want to purchase.</p>
 -- * maxJobTimeoutMinutes [JobTimeoutMinutes] <p>The maximum number of minutes a test run will execute before it times out.</p>
 -- * trialMinutes [TrialMinutes] <p>Information about an AWS account's usage of free trial device minutes.</p>
@@ -823,6 +860,7 @@ function M.AccountSettings(args)
     }
 	local all_args = { 
 		["maxSlots"] = args["maxSlots"],
+		["skipAppResign"] = args["skipAppResign"],
 		["unmeteredRemoteAccessDevices"] = args["unmeteredRemoteAccessDevices"],
 		["maxJobTimeoutMinutes"] = args["maxJobTimeoutMinutes"],
 		["trialMinutes"] = args["trialMinutes"],
@@ -868,6 +906,49 @@ function M.UpdateDevicePoolResult(args)
 		["devicePool"] = args["devicePool"],
 	}
 	asserts.AssertUpdateDevicePoolResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CustomerArtifactPaths = { ["deviceHostPaths"] = true, ["iosPaths"] = true, ["androidPaths"] = true, nil }
+
+function asserts.AssertCustomerArtifactPaths(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CustomerArtifactPaths to be of type 'table'")
+	if struct["deviceHostPaths"] then asserts.AssertDeviceHostPaths(struct["deviceHostPaths"]) end
+	if struct["iosPaths"] then asserts.AssertIosPaths(struct["iosPaths"]) end
+	if struct["androidPaths"] then asserts.AssertAndroidPaths(struct["androidPaths"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CustomerArtifactPaths[k], "CustomerArtifactPaths contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CustomerArtifactPaths
+-- <p>A JSON object specifying the paths where the artifacts generated by the customer's tests, on the device or in the test environment, will be pulled from.</p> <p>Specify <code>deviceHostPaths</code> and optionally specify either <code>iosPaths</code> or <code>androidPaths</code>.</p> <p>For web app tests, you can specify both <code>iosPaths</code> and <code>androidPaths</code>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deviceHostPaths [DeviceHostPaths] <p>Comma-separated list of paths in the test execution environment where the artifacts generated by the customer's tests will be pulled from.</p>
+-- * iosPaths [IosPaths] <p>Comma-separated list of paths on the iOS device where the artifacts generated by the customer's tests will be pulled from.</p>
+-- * androidPaths [AndroidPaths] <p>Comma-separated list of paths on the Android device where the artifacts generated by the customer's tests will be pulled from.</p>
+-- @return CustomerArtifactPaths structure as a key-value pair table
+function M.CustomerArtifactPaths(args)
+	assert(args, "You must provide an argument table when creating CustomerArtifactPaths")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["deviceHostPaths"] = args["deviceHostPaths"],
+		["iosPaths"] = args["iosPaths"],
+		["androidPaths"] = args["androidPaths"],
+	}
+	asserts.AssertCustomerArtifactPaths(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -954,6 +1035,40 @@ function M.ServiceAccountException(args)
 		["message"] = args["message"],
 	}
 	asserts.AssertServiceAccountException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteVPCEConfigurationResult = { nil }
+
+function asserts.AssertDeleteVPCEConfigurationResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteVPCEConfigurationResult to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteVPCEConfigurationResult[k], "DeleteVPCEConfigurationResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteVPCEConfigurationResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteVPCEConfigurationResult structure as a key-value pair table
+function M.DeleteVPCEConfigurationResult(args)
+	assert(args, "You must provide an argument table when creating DeleteVPCEConfigurationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDeleteVPCEConfigurationResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1215,6 +1330,46 @@ function M.Project(args)
     }
 end
 
+keys.ListDeviceInstancesResult = { ["deviceInstances"] = true, ["nextToken"] = true, nil }
+
+function asserts.AssertListDeviceInstancesResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListDeviceInstancesResult to be of type 'table'")
+	if struct["deviceInstances"] then asserts.AssertDeviceInstances(struct["deviceInstances"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListDeviceInstancesResult[k], "ListDeviceInstancesResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListDeviceInstancesResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deviceInstances [DeviceInstances] <p>An object containing information about your device instances.</p>
+-- * nextToken [PaginationToken] <p>An identifier that can be used in the next call to this operation to return the next set of items in the list.</p>
+-- @return ListDeviceInstancesResult structure as a key-value pair table
+function M.ListDeviceInstancesResult(args)
+	assert(args, "You must provide an argument table when creating ListDeviceInstancesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["deviceInstances"] = args["deviceInstances"],
+		["nextToken"] = args["nextToken"],
+	}
+	asserts.AssertListDeviceInstancesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetRemoteAccessSessionResult = { ["remoteAccessSession"] = true, nil }
 
 function asserts.AssertGetRemoteAccessSessionResult(struct)
@@ -1252,6 +1407,60 @@ function M.GetRemoteAccessSessionResult(args)
     }
 end
 
+keys.UpdateInstanceProfileRequest = { ["rebootAfterUse"] = true, ["excludeAppPackagesFromCleanup"] = true, ["description"] = true, ["packageCleanup"] = true, ["arn"] = true, ["name"] = true, nil }
+
+function asserts.AssertUpdateInstanceProfileRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateInstanceProfileRequest to be of type 'table'")
+	assert(struct["arn"], "Expected key arn to exist in table")
+	if struct["rebootAfterUse"] then asserts.AssertBoolean(struct["rebootAfterUse"]) end
+	if struct["excludeAppPackagesFromCleanup"] then asserts.AssertPackageIds(struct["excludeAppPackagesFromCleanup"]) end
+	if struct["description"] then asserts.AssertMessage(struct["description"]) end
+	if struct["packageCleanup"] then asserts.AssertBoolean(struct["packageCleanup"]) end
+	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	if struct["name"] then asserts.AssertName(struct["name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateInstanceProfileRequest[k], "UpdateInstanceProfileRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateInstanceProfileRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * rebootAfterUse [Boolean] <p>The updated choice for whether you want to reboot the device after use. The default value is <code>true</code>.</p>
+-- * excludeAppPackagesFromCleanup [PackageIds] <p>An array of strings specifying the list of app packages that should not be cleaned up from the device after a test run is over.</p> <p>The list of packages is only considered if you set <code>packageCleanup</code> to <code>true</code>.</p>
+-- * description [Message] <p>The updated description for your instance profile.</p>
+-- * packageCleanup [Boolean] <p>The updated choice for whether you want to specify package cleanup. The default value is <code>false</code> for private devices.</p>
+-- * arn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the instance profile.</p>
+-- * name [Name] <p>The updated name for your instance profile.</p>
+-- Required key: arn
+-- @return UpdateInstanceProfileRequest structure as a key-value pair table
+function M.UpdateInstanceProfileRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateInstanceProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["rebootAfterUse"] = args["rebootAfterUse"],
+		["excludeAppPackagesFromCleanup"] = args["excludeAppPackagesFromCleanup"],
+		["description"] = args["description"],
+		["packageCleanup"] = args["packageCleanup"],
+		["arn"] = args["arn"],
+		["name"] = args["name"],
+	}
+	asserts.AssertUpdateInstanceProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.StopRunResult = { ["run"] = true, nil }
 
 function asserts.AssertStopRunResult(struct)
@@ -1281,6 +1490,43 @@ function M.StopRunResult(args)
 		["run"] = args["run"],
 	}
 	asserts.AssertStopRunResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateDeviceInstanceResult = { ["deviceInstance"] = true, nil }
+
+function asserts.AssertUpdateDeviceInstanceResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateDeviceInstanceResult to be of type 'table'")
+	if struct["deviceInstance"] then asserts.AssertDeviceInstance(struct["deviceInstance"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateDeviceInstanceResult[k], "UpdateDeviceInstanceResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateDeviceInstanceResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deviceInstance [DeviceInstance] <p>An object containing information about your device instance.</p>
+-- @return UpdateDeviceInstanceResult structure as a key-value pair table
+function M.UpdateDeviceInstanceResult(args)
+	assert(args, "You must provide an argument table when creating UpdateDeviceInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["deviceInstance"] = args["deviceInstance"],
+	}
+	asserts.AssertUpdateDeviceInstanceResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1405,6 +1651,45 @@ function M.GetProjectResult(args)
     }
 end
 
+keys.GetProjectRequest = { ["arn"] = true, nil }
+
+function asserts.AssertGetProjectRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetProjectRequest to be of type 'table'")
+	assert(struct["arn"], "Expected key arn to exist in table")
+	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetProjectRequest[k], "GetProjectRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetProjectRequest
+-- <p>Represents a request to the get project operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * arn [AmazonResourceName] <p>The project's ARN.</p>
+-- Required key: arn
+-- @return GetProjectRequest structure as a key-value pair table
+function M.GetProjectRequest(args)
+	assert(args, "You must provide an argument table when creating GetProjectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["arn"] = args["arn"],
+	}
+	asserts.AssertGetProjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.Radios = { ["gps"] = true, ["wifi"] = true, ["nfc"] = true, ["bluetooth"] = true, nil }
 
 function asserts.AssertRadios(struct)
@@ -1490,7 +1775,7 @@ function M.DeleteRunRequest(args)
     }
 end
 
-keys.ScheduleRunTest = { ["filter"] = true, ["type"] = true, ["parameters"] = true, ["testPackageArn"] = true, nil }
+keys.ScheduleRunTest = { ["filter"] = true, ["type"] = true, ["testSpecArn"] = true, ["parameters"] = true, ["testPackageArn"] = true, nil }
 
 function asserts.AssertScheduleRunTest(struct)
 	assert(struct)
@@ -1498,6 +1783,7 @@ function asserts.AssertScheduleRunTest(struct)
 	assert(struct["type"], "Expected key type to exist in table")
 	if struct["filter"] then asserts.AssertFilter(struct["filter"]) end
 	if struct["type"] then asserts.AssertTestType(struct["type"]) end
+	if struct["testSpecArn"] then asserts.AssertAmazonResourceName(struct["testSpecArn"]) end
 	if struct["parameters"] then asserts.AssertTestParameters(struct["parameters"]) end
 	if struct["testPackageArn"] then asserts.AssertAmazonResourceName(struct["testPackageArn"]) end
 	for k,_ in pairs(struct) do
@@ -1511,6 +1797,7 @@ end
 -- Valid keys:
 -- * filter [Filter] <p>The test's filter.</p>
 -- * type [TestType] <p>The test's type.</p> <p>Must be one of the following values:</p> <ul> <li> <p>BUILTIN_FUZZ: The built-in fuzz type.</p> </li> <li> <p>BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and capturing screenshots at the same time.</p> </li> <li> <p>APPIUM_JAVA_JUNIT: The Appium Java JUnit type.</p> </li> <li> <p>APPIUM_JAVA_TESTNG: The Appium Java TestNG type.</p> </li> <li> <p>APPIUM_PYTHON: The Appium Python type.</p> </li> <li> <p>APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.</p> </li> <li> <p>APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.</p> </li> <li> <p>APPIUM_WEB_PYTHON: The Appium Python type for Web apps.</p> </li> <li> <p>CALABASH: The Calabash type.</p> </li> <li> <p>INSTRUMENTATION: The Instrumentation type.</p> </li> <li> <p>UIAUTOMATION: The uiautomation type.</p> </li> <li> <p>UIAUTOMATOR: The uiautomator type.</p> </li> <li> <p>XCTEST: The XCode test type.</p> </li> <li> <p>XCTEST_UI: The XCode UI test type.</p> </li> </ul>
+-- * testSpecArn [AmazonResourceName] <p>The ARN of the YAML-formatted test specification.</p>
 -- * parameters [TestParameters] <p>The test's parameters, such as the following test framework parameters and fixture settings:</p> <p>For Calabash tests:</p> <ul> <li> <p>profile: A cucumber profile, for example, "my_profile_name".</p> </li> <li> <p>tags: You can limit execution to features or scenarios that have (or don't have) certain tags, for example, "@smoke" or "@smoke,~@wip".</p> </li> </ul> <p>For Appium tests (all types):</p> <ul> <li> <p>appium_version: The Appium version. Currently supported values are "1.4.16", "1.6.3", "latest", and "default".</p> <ul> <li> <p>“latest” will run the latest Appium version supported by Device Farm (1.6.3).</p> </li> <li> <p>For “default”, Device Farm will choose a compatible version of Appium for the device. The current behavior is to run 1.4.16 on Android devices and iOS 9 and earlier, 1.6.3 for iOS 10 and later.</p> </li> <li> <p>This behavior is subject to change.</p> </li> </ul> </li> </ul> <p>For Fuzz tests (Android only):</p> <ul> <li> <p>event_count: The number of events, between 1 and 10000, that the UI fuzz test should perform.</p> </li> <li> <p>throttle: The time, in ms, between 0 and 1000, that the UI fuzz test should wait between events.</p> </li> <li> <p>seed: A seed to use for randomizing the UI fuzz test. Using the same seed value between tests ensures identical event sequences.</p> </li> </ul> <p>For Explorer tests:</p> <ul> <li> <p>username: A username to use if the Explorer encounters a login form. If not supplied, no username will be inserted.</p> </li> <li> <p>password: A password to use if the Explorer encounters a login form. If not supplied, no password will be inserted.</p> </li> </ul> <p>For Instrumentation:</p> <ul> <li> <p>filter: A test filter string. Examples:</p> <ul> <li> <p>Running a single test case: "com.android.abc.Test1"</p> </li> <li> <p>Running a single test: "com.android.abc.Test1#smoke"</p> </li> <li> <p>Running multiple tests: "com.android.abc.Test1,com.android.abc.Test2"</p> </li> </ul> </li> </ul> <p>For XCTest and XCTestUI:</p> <ul> <li> <p>filter: A test filter string. Examples:</p> <ul> <li> <p>Running a single test class: "LoginTests"</p> </li> <li> <p>Running a multiple test classes: "LoginTests,SmokeTests"</p> </li> <li> <p>Running a single test: "LoginTests/testValid"</p> </li> <li> <p>Running multiple tests: "LoginTests/testValid,LoginTests/testInvalid"</p> </li> </ul> </li> </ul> <p>For UIAutomator:</p> <ul> <li> <p>filter: A test filter string. Examples:</p> <ul> <li> <p>Running a single test case: "com.android.abc.Test1"</p> </li> <li> <p>Running a single test: "com.android.abc.Test1#smoke"</p> </li> <li> <p>Running multiple tests: "com.android.abc.Test1,com.android.abc.Test2"</p> </li> </ul> </li> </ul>
 -- * testPackageArn [AmazonResourceName] <p>The ARN of the uploaded test that will be run.</p>
 -- Required key: type
@@ -1526,6 +1813,7 @@ function M.ScheduleRunTest(args)
 	local all_args = { 
 		["filter"] = args["filter"],
 		["type"] = args["type"],
+		["testSpecArn"] = args["testSpecArn"],
 		["parameters"] = args["parameters"],
 		["testPackageArn"] = args["testPackageArn"],
 	}
@@ -1569,6 +1857,95 @@ function M.DeleteRemoteAccessSessionRequest(args)
 		["arn"] = args["arn"],
 	}
 	asserts.AssertDeleteRemoteAccessSessionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.InvalidOperationException = { ["message"] = true, nil }
+
+function asserts.AssertInvalidOperationException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InvalidOperationException to be of type 'table'")
+	if struct["message"] then asserts.AssertMessage(struct["message"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.InvalidOperationException[k], "InvalidOperationException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InvalidOperationException
+-- <p>There was an error with the update request, or you do not have sufficient permissions to update this VPC endpoint configuration.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [Message] 
+-- @return InvalidOperationException structure as a key-value pair table
+function M.InvalidOperationException(args)
+	assert(args, "You must provide an argument table when creating InvalidOperationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["message"] = args["message"],
+	}
+	asserts.AssertInvalidOperationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.InstanceProfile = { ["rebootAfterUse"] = true, ["description"] = true, ["name"] = true, ["packageCleanup"] = true, ["arn"] = true, ["excludeAppPackagesFromCleanup"] = true, nil }
+
+function asserts.AssertInstanceProfile(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InstanceProfile to be of type 'table'")
+	if struct["rebootAfterUse"] then asserts.AssertBoolean(struct["rebootAfterUse"]) end
+	if struct["description"] then asserts.AssertMessage(struct["description"]) end
+	if struct["name"] then asserts.AssertName(struct["name"]) end
+	if struct["packageCleanup"] then asserts.AssertBoolean(struct["packageCleanup"]) end
+	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	if struct["excludeAppPackagesFromCleanup"] then asserts.AssertPackageIds(struct["excludeAppPackagesFromCleanup"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.InstanceProfile[k], "InstanceProfile contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InstanceProfile
+-- <p>Represents the instance profile.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * rebootAfterUse [Boolean] <p>When set to <code>true</code>, Device Farm will reboot the instance after a test run. The default value is <code>true</code>.</p>
+-- * description [Message] <p>The description of the instance profile.</p>
+-- * name [Name] <p>The name of the instance profile.</p>
+-- * packageCleanup [Boolean] <p>When set to <code>true</code>, Device Farm will remove app packages after a test run. The default value is <code>false</code> for private devices.</p>
+-- * arn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the instance profile.</p>
+-- * excludeAppPackagesFromCleanup [PackageIds] <p>An array of strings specifying the list of app packages that should not be cleaned up from the device after a test run is over.</p> <p>The list of packages is only considered if you set <code>packageCleanup</code> to <code>true</code>.</p>
+-- @return InstanceProfile structure as a key-value pair table
+function M.InstanceProfile(args)
+	assert(args, "You must provide an argument table when creating InstanceProfile")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["rebootAfterUse"] = args["rebootAfterUse"],
+		["description"] = args["description"],
+		["name"] = args["name"],
+		["packageCleanup"] = args["packageCleanup"],
+		["arn"] = args["arn"],
+		["excludeAppPackagesFromCleanup"] = args["excludeAppPackagesFromCleanup"],
+	}
+	asserts.AssertInstanceProfile(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1632,7 +2009,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * nextToken [PaginationToken] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
--- * arn [AmazonResourceName] <p>The tests' ARNs.</p>
+-- * arn [AmazonResourceName] <p>The test suite's Amazon Resource Name (ARN).</p>
 -- Required key: arn
 -- @return ListTestsRequest structure as a key-value pair table
 function M.ListTestsRequest(args)
@@ -1648,6 +2025,57 @@ function M.ListTestsRequest(args)
 		["arn"] = args["arn"],
 	}
 	asserts.AssertListTestsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateInstanceProfileRequest = { ["rebootAfterUse"] = true, ["packageCleanup"] = true, ["excludeAppPackagesFromCleanup"] = true, ["name"] = true, ["description"] = true, nil }
+
+function asserts.AssertCreateInstanceProfileRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateInstanceProfileRequest to be of type 'table'")
+	assert(struct["name"], "Expected key name to exist in table")
+	if struct["rebootAfterUse"] then asserts.AssertBoolean(struct["rebootAfterUse"]) end
+	if struct["packageCleanup"] then asserts.AssertBoolean(struct["packageCleanup"]) end
+	if struct["excludeAppPackagesFromCleanup"] then asserts.AssertPackageIds(struct["excludeAppPackagesFromCleanup"]) end
+	if struct["name"] then asserts.AssertName(struct["name"]) end
+	if struct["description"] then asserts.AssertMessage(struct["description"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateInstanceProfileRequest[k], "CreateInstanceProfileRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateInstanceProfileRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * rebootAfterUse [Boolean] <p>When set to <code>true</code>, Device Farm will reboot the instance after a test run. The default value is <code>true</code>.</p>
+-- * packageCleanup [Boolean] <p>When set to <code>true</code>, Device Farm will remove app packages after a test run. The default value is <code>false</code> for private devices.</p>
+-- * excludeAppPackagesFromCleanup [PackageIds] <p>An array of strings specifying the list of app packages that should not be cleaned up from the device after a test run is over.</p> <p>The list of packages is only considered if you set <code>packageCleanup</code> to <code>true</code>.</p>
+-- * name [Name] <p>The name of your instance profile.</p>
+-- * description [Message] <p>The description of your instance profile.</p>
+-- Required key: name
+-- @return CreateInstanceProfileRequest structure as a key-value pair table
+function M.CreateInstanceProfileRequest(args)
+	assert(args, "You must provide an argument table when creating CreateInstanceProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["rebootAfterUse"] = args["rebootAfterUse"],
+		["packageCleanup"] = args["packageCleanup"],
+		["excludeAppPackagesFromCleanup"] = args["excludeAppPackagesFromCleanup"],
+		["name"] = args["name"],
+		["description"] = args["description"],
+	}
+	asserts.AssertCreateInstanceProfileRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1815,6 +2243,98 @@ function M.LimitExceededException(args)
     }
 end
 
+keys.CreateVPCEConfigurationRequest = { ["vpceConfigurationName"] = true, ["serviceDnsName"] = true, ["vpceServiceName"] = true, ["vpceConfigurationDescription"] = true, nil }
+
+function asserts.AssertCreateVPCEConfigurationRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateVPCEConfigurationRequest to be of type 'table'")
+	assert(struct["vpceConfigurationName"], "Expected key vpceConfigurationName to exist in table")
+	assert(struct["vpceServiceName"], "Expected key vpceServiceName to exist in table")
+	assert(struct["serviceDnsName"], "Expected key serviceDnsName to exist in table")
+	if struct["vpceConfigurationName"] then asserts.AssertVPCEConfigurationName(struct["vpceConfigurationName"]) end
+	if struct["serviceDnsName"] then asserts.AssertServiceDnsName(struct["serviceDnsName"]) end
+	if struct["vpceServiceName"] then asserts.AssertVPCEServiceName(struct["vpceServiceName"]) end
+	if struct["vpceConfigurationDescription"] then asserts.AssertVPCEConfigurationDescription(struct["vpceConfigurationDescription"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateVPCEConfigurationRequest[k], "CreateVPCEConfigurationRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateVPCEConfigurationRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vpceConfigurationName [VPCEConfigurationName] <p>The friendly name you give to your VPC endpoint configuration, to manage your configurations more easily.</p>
+-- * serviceDnsName [ServiceDnsName] <p>The DNS name of the service running in your VPC that you want Device Farm to test.</p>
+-- * vpceServiceName [VPCEServiceName] <p>The name of the VPC endpoint service running inside your AWS account that you want Device Farm to test.</p>
+-- * vpceConfigurationDescription [VPCEConfigurationDescription] <p>An optional description, providing more details about your VPC endpoint configuration.</p>
+-- Required key: vpceConfigurationName
+-- Required key: vpceServiceName
+-- Required key: serviceDnsName
+-- @return CreateVPCEConfigurationRequest structure as a key-value pair table
+function M.CreateVPCEConfigurationRequest(args)
+	assert(args, "You must provide an argument table when creating CreateVPCEConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["vpceConfigurationName"] = args["vpceConfigurationName"],
+		["serviceDnsName"] = args["serviceDnsName"],
+		["vpceServiceName"] = args["vpceServiceName"],
+		["vpceConfigurationDescription"] = args["vpceConfigurationDescription"],
+	}
+	asserts.AssertCreateVPCEConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UniqueProblem = { ["message"] = true, ["problems"] = true, nil }
+
+function asserts.AssertUniqueProblem(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UniqueProblem to be of type 'table'")
+	if struct["message"] then asserts.AssertMessage(struct["message"]) end
+	if struct["problems"] then asserts.AssertProblems(struct["problems"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UniqueProblem[k], "UniqueProblem contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UniqueProblem
+-- <p>A collection of one or more problems, grouped by their result.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [Message] <p>A message about the unique problems' result.</p>
+-- * problems [Problems] <p>Information about the problems.</p>
+-- @return UniqueProblem structure as a key-value pair table
+function M.UniqueProblem(args)
+	assert(args, "You must provide an argument table when creating UniqueProblem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["message"] = args["message"],
+		["problems"] = args["problems"],
+	}
+	asserts.AssertUniqueProblem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListUploadsResult = { ["nextToken"] = true, ["uploads"] = true, nil }
 
 function asserts.AssertListUploadsResult(struct)
@@ -1847,6 +2367,46 @@ function M.ListUploadsResult(args)
 		["uploads"] = args["uploads"],
 	}
 	asserts.AssertListUploadsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListInstanceProfilesResult = { ["nextToken"] = true, ["instanceProfiles"] = true, nil }
+
+function asserts.AssertListInstanceProfilesResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListInstanceProfilesResult to be of type 'table'")
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["instanceProfiles"] then asserts.AssertInstanceProfiles(struct["instanceProfiles"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListInstanceProfilesResult[k], "ListInstanceProfilesResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListInstanceProfilesResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PaginationToken] <p>An identifier that can be used in the next call to this operation to return the next set of items in the list.</p>
+-- * instanceProfiles [InstanceProfiles] <p>An object containing information about your instance profiles.</p>
+-- @return ListInstanceProfilesResult structure as a key-value pair table
+function M.ListInstanceProfilesResult(args)
+	assert(args, "You must provide an argument table when creating ListInstanceProfilesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["nextToken"] = args["nextToken"],
+		["instanceProfiles"] = args["instanceProfiles"],
+	}
+	asserts.AssertListInstanceProfilesResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1917,7 +2477,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * contentType [ContentType] <p>The upload's content type (for example, "application/octet-stream").</p>
--- * type [UploadType] <p>The upload's upload type.</p> <p>Must be one of the following values:</p> <ul> <li> <p>ANDROID_APP: An Android upload.</p> </li> <li> <p>IOS_APP: An iOS upload.</p> </li> <li> <p>WEB_APP: A web appliction upload.</p> </li> <li> <p>EXTERNAL_DATA: An external data upload.</p> </li> <li> <p>APPIUM_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package upload.</p> </li> <li> <p>APPIUM_JAVA_TESTNG_TEST_PACKAGE: An Appium Java TestNG test package upload.</p> </li> <li> <p>APPIUM_PYTHON_TEST_PACKAGE: An Appium Python test package upload.</p> </li> <li> <p>APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package upload.</p> </li> <li> <p>APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE: An Appium Java TestNG test package upload.</p> </li> <li> <p>APPIUM_WEB_PYTHON_TEST_PACKAGE: An Appium Python test package upload.</p> </li> <li> <p>CALABASH_TEST_PACKAGE: A Calabash test package upload.</p> </li> <li> <p>INSTRUMENTATION_TEST_PACKAGE: An instrumentation upload.</p> </li> <li> <p>UIAUTOMATION_TEST_PACKAGE: A uiautomation test package upload.</p> </li> <li> <p>UIAUTOMATOR_TEST_PACKAGE: A uiautomator test package upload.</p> </li> <li> <p>XCTEST_TEST_PACKAGE: An XCode test package upload.</p> </li> <li> <p>XCTEST_UI_TEST_PACKAGE: An XCode UI test package upload.</p> </li> </ul> <p> <b>Note</b> If you call <code>CreateUpload</code> with <code>WEB_APP</code> specified, AWS Device Farm throws an <code>ArgumentException</code> error.</p>
+-- * type [UploadType] <p>The upload's upload type.</p> <p>Must be one of the following values:</p> <ul> <li> <p>ANDROID_APP: An Android upload.</p> </li> <li> <p>IOS_APP: An iOS upload.</p> </li> <li> <p>WEB_APP: A web application upload.</p> </li> <li> <p>EXTERNAL_DATA: An external data upload.</p> </li> <li> <p>APPIUM_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package upload.</p> </li> <li> <p>APPIUM_JAVA_TESTNG_TEST_PACKAGE: An Appium Java TestNG test package upload.</p> </li> <li> <p>APPIUM_PYTHON_TEST_PACKAGE: An Appium Python test package upload.</p> </li> <li> <p>APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package upload.</p> </li> <li> <p>APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE: An Appium Java TestNG test package upload.</p> </li> <li> <p>APPIUM_WEB_PYTHON_TEST_PACKAGE: An Appium Python test package upload.</p> </li> <li> <p>CALABASH_TEST_PACKAGE: A Calabash test package upload.</p> </li> <li> <p>INSTRUMENTATION_TEST_PACKAGE: An instrumentation upload.</p> </li> <li> <p>UIAUTOMATION_TEST_PACKAGE: A uiautomation test package upload.</p> </li> <li> <p>UIAUTOMATOR_TEST_PACKAGE: A uiautomator test package upload.</p> </li> <li> <p>XCTEST_TEST_PACKAGE: An XCode test package upload.</p> </li> <li> <p>XCTEST_UI_TEST_PACKAGE: An XCode UI test package upload.</p> </li> </ul> <p> <b>Note</b> If you call <code>CreateUpload</code> with <code>WEB_APP</code> specified, AWS Device Farm throws an <code>ArgumentException</code> error.</p>
 -- * name [Name] <p>The upload's file name. The name should not contain the '/' character. If uploading an iOS app, the file name needs to end with the <code>.ipa</code> extension. If uploading an Android app, the file name needs to end with the <code>.apk</code> extension. For all others, the file name must end with the <code>.zip</code> file extension.</p>
 -- * projectArn [AmazonResourceName] <p>The ARN of the project for the upload.</p>
 -- Required key: projectArn
@@ -2141,52 +2701,120 @@ function M.RenewOfferingRequest(args)
     }
 end
 
-keys.Run = { ["status"] = true, ["name"] = true, ["networkProfile"] = true, ["created"] = true, ["started"] = true, ["totalJobs"] = true, ["completedJobs"] = true, ["deviceMinutes"] = true, ["platform"] = true, ["stopped"] = true, ["result"] = true, ["message"] = true, ["billingMethod"] = true, ["type"] = true, ["arn"] = true, ["counters"] = true, nil }
+keys.ListVPCEConfigurationsRequest = { ["nextToken"] = true, ["maxResults"] = true, nil }
+
+function asserts.AssertListVPCEConfigurationsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListVPCEConfigurationsRequest to be of type 'table'")
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertInteger(struct["maxResults"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListVPCEConfigurationsRequest[k], "ListVPCEConfigurationsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListVPCEConfigurationsRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PaginationToken] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- * maxResults [Integer] <p>An integer specifying the maximum number of items you want to return in the API response.</p>
+-- @return ListVPCEConfigurationsRequest structure as a key-value pair table
+function M.ListVPCEConfigurationsRequest(args)
+	assert(args, "You must provide an argument table when creating ListVPCEConfigurationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
+	}
+	asserts.AssertListVPCEConfigurationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Run = { ["appUpload"] = true, ["radios"] = true, ["totalJobs"] = true, ["locale"] = true, ["completedJobs"] = true, ["seed"] = true, ["result"] = true, ["devicePoolArn"] = true, ["message"] = true, ["billingMethod"] = true, ["resultCode"] = true, ["arn"] = true, ["eventCount"] = true, ["webUrl"] = true, ["platform"] = true, ["location"] = true, ["type"] = true, ["counters"] = true, ["status"] = true, ["networkProfile"] = true, ["started"] = true, ["parsingResultUrl"] = true, ["testSpecArn"] = true, ["customerArtifactPaths"] = true, ["skipAppResign"] = true, ["name"] = true, ["created"] = true, ["deviceMinutes"] = true, ["stopped"] = true, ["jobTimeoutMinutes"] = true, nil }
 
 function asserts.AssertRun(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Run to be of type 'table'")
-	if struct["status"] then asserts.AssertExecutionStatus(struct["status"]) end
-	if struct["name"] then asserts.AssertName(struct["name"]) end
-	if struct["networkProfile"] then asserts.AssertNetworkProfile(struct["networkProfile"]) end
-	if struct["created"] then asserts.AssertDateTime(struct["created"]) end
-	if struct["started"] then asserts.AssertDateTime(struct["started"]) end
+	if struct["appUpload"] then asserts.AssertAmazonResourceName(struct["appUpload"]) end
+	if struct["radios"] then asserts.AssertRadios(struct["radios"]) end
 	if struct["totalJobs"] then asserts.AssertInteger(struct["totalJobs"]) end
+	if struct["locale"] then asserts.AssertString(struct["locale"]) end
 	if struct["completedJobs"] then asserts.AssertInteger(struct["completedJobs"]) end
-	if struct["deviceMinutes"] then asserts.AssertDeviceMinutes(struct["deviceMinutes"]) end
-	if struct["platform"] then asserts.AssertDevicePlatform(struct["platform"]) end
-	if struct["stopped"] then asserts.AssertDateTime(struct["stopped"]) end
+	if struct["seed"] then asserts.AssertInteger(struct["seed"]) end
 	if struct["result"] then asserts.AssertExecutionResult(struct["result"]) end
+	if struct["devicePoolArn"] then asserts.AssertAmazonResourceName(struct["devicePoolArn"]) end
 	if struct["message"] then asserts.AssertMessage(struct["message"]) end
 	if struct["billingMethod"] then asserts.AssertBillingMethod(struct["billingMethod"]) end
-	if struct["type"] then asserts.AssertTestType(struct["type"]) end
+	if struct["resultCode"] then asserts.AssertExecutionResultCode(struct["resultCode"]) end
 	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	if struct["eventCount"] then asserts.AssertInteger(struct["eventCount"]) end
+	if struct["webUrl"] then asserts.AssertString(struct["webUrl"]) end
+	if struct["platform"] then asserts.AssertDevicePlatform(struct["platform"]) end
+	if struct["location"] then asserts.AssertLocation(struct["location"]) end
+	if struct["type"] then asserts.AssertTestType(struct["type"]) end
 	if struct["counters"] then asserts.AssertCounters(struct["counters"]) end
+	if struct["status"] then asserts.AssertExecutionStatus(struct["status"]) end
+	if struct["networkProfile"] then asserts.AssertNetworkProfile(struct["networkProfile"]) end
+	if struct["started"] then asserts.AssertDateTime(struct["started"]) end
+	if struct["parsingResultUrl"] then asserts.AssertString(struct["parsingResultUrl"]) end
+	if struct["testSpecArn"] then asserts.AssertAmazonResourceName(struct["testSpecArn"]) end
+	if struct["customerArtifactPaths"] then asserts.AssertCustomerArtifactPaths(struct["customerArtifactPaths"]) end
+	if struct["skipAppResign"] then asserts.AssertSkipAppResign(struct["skipAppResign"]) end
+	if struct["name"] then asserts.AssertName(struct["name"]) end
+	if struct["created"] then asserts.AssertDateTime(struct["created"]) end
+	if struct["deviceMinutes"] then asserts.AssertDeviceMinutes(struct["deviceMinutes"]) end
+	if struct["stopped"] then asserts.AssertDateTime(struct["stopped"]) end
+	if struct["jobTimeoutMinutes"] then asserts.AssertJobTimeoutMinutes(struct["jobTimeoutMinutes"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Run[k], "Run contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Run
--- <p>Represents an app on a set of devices with a specific test and configuration.</p>
+-- <p>Represents a test run on a set of devices with a given app package, test parameters, etc.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * status [ExecutionStatus] <p>The run's status.</p> <p>Allowed values include:</p> <ul> <li> <p>PENDING: A pending status.</p> </li> <li> <p>PENDING_CONCURRENCY: A pending concurrency status.</p> </li> <li> <p>PENDING_DEVICE: A pending device status.</p> </li> <li> <p>PROCESSING: A processing status.</p> </li> <li> <p>SCHEDULING: A scheduling status.</p> </li> <li> <p>PREPARING: A preparing status.</p> </li> <li> <p>RUNNING: A running status.</p> </li> <li> <p>COMPLETED: A completed status.</p> </li> <li> <p>STOPPING: A stopping status.</p> </li> </ul>
--- * name [Name] <p>The run's name.</p>
--- * networkProfile [NetworkProfile] <p>The network profile being used for a test run.</p>
--- * created [DateTime] <p>When the run was created.</p>
--- * started [DateTime] <p>The run's start time.</p>
+-- * appUpload [AmazonResourceName] <p>An app to upload or that has been uploaded.</p>
+-- * radios [Radios] <p>Information about the radio states for the run.</p>
 -- * totalJobs [Integer] <p>The total number of jobs for the run.</p>
+-- * locale [String] <p>Information about the locale that is used for the run.</p>
 -- * completedJobs [Integer] <p>The total number of completed jobs.</p>
--- * deviceMinutes [DeviceMinutes] <p>Represents the total (metered or unmetered) minutes used by the test run.</p>
--- * platform [DevicePlatform] <p>The run's platform.</p> <p>Allowed values include:</p> <ul> <li> <p>ANDROID: The Android platform.</p> </li> <li> <p>IOS: The iOS platform.</p> </li> </ul>
--- * stopped [DateTime] <p>The run's stop time.</p>
+-- * seed [Integer] <p>For fuzz tests, this is a seed to use for randomizing the UI fuzz test. Using the same seed value between tests ensures identical event sequences.</p>
 -- * result [ExecutionResult] <p>The run's result.</p> <p>Allowed values include:</p> <ul> <li> <p>PENDING: A pending condition.</p> </li> <li> <p>PASSED: A passing condition.</p> </li> <li> <p>WARNED: A warning condition.</p> </li> <li> <p>FAILED: A failed condition.</p> </li> <li> <p>SKIPPED: A skipped condition.</p> </li> <li> <p>ERRORED: An error condition.</p> </li> <li> <p>STOPPED: A stopped condition.</p> </li> </ul>
+-- * devicePoolArn [AmazonResourceName] <p>The ARN of the device pool for the run.</p>
 -- * message [Message] <p>A message about the run's result.</p>
 -- * billingMethod [BillingMethod] <p>Specifies the billing method for a test run: <code>metered</code> or <code>unmetered</code>. If the parameter is not specified, the default value is <code>metered</code>.</p>
--- * type [TestType] <p>The run's type.</p> <p>Must be one of the following values:</p> <ul> <li> <p>BUILTIN_FUZZ: The built-in fuzz type.</p> </li> <li> <p>BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and capturing screenshots at the same time.</p> </li> <li> <p>APPIUM_JAVA_JUNIT: The Appium Java JUnit type.</p> </li> <li> <p>APPIUM_JAVA_TESTNG: The Appium Java TestNG type.</p> </li> <li> <p>APPIUM_PYTHON: The Appium Python type.</p> </li> <li> <p>APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.</p> </li> <li> <p>APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.</p> </li> <li> <p>APPIUM_WEB_PYTHON: The Appium Python type for Web apps.</p> </li> <li> <p>CALABASH: The Calabash type.</p> </li> <li> <p>INSTRUMENTATION: The Instrumentation type.</p> </li> <li> <p>UIAUTOMATION: The uiautomation type.</p> </li> <li> <p>UIAUTOMATOR: The uiautomator type.</p> </li> <li> <p>XCTEST: The XCode test type.</p> </li> <li> <p>XCTEST_UI: The XCode UI test type.</p> </li> </ul>
+-- * resultCode [ExecutionResultCode] <p>Supporting field for the result field. Set only if <code>result</code> is <code>SKIPPED</code>. <code>PARSING_FAILED</code> if the result is skipped because of test package parsing failure.</p>
 -- * arn [AmazonResourceName] <p>The run's ARN.</p>
+-- * eventCount [Integer] <p>For fuzz tests, this is the number of events, between 1 and 10000, that the UI fuzz test should perform.</p>
+-- * webUrl [String] <p>The Device Farm console URL for the recording of the run.</p>
+-- * platform [DevicePlatform] <p>The run's platform.</p> <p>Allowed values include:</p> <ul> <li> <p>ANDROID: The Android platform.</p> </li> <li> <p>IOS: The iOS platform.</p> </li> </ul>
+-- * location [Location] <p>Information about the location that is used for the run.</p>
+-- * type [TestType] <p>The run's type.</p> <p>Must be one of the following values:</p> <ul> <li> <p>BUILTIN_FUZZ: The built-in fuzz type.</p> </li> <li> <p>BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and capturing screenshots at the same time.</p> </li> <li> <p>APPIUM_JAVA_JUNIT: The Appium Java JUnit type.</p> </li> <li> <p>APPIUM_JAVA_TESTNG: The Appium Java TestNG type.</p> </li> <li> <p>APPIUM_PYTHON: The Appium Python type.</p> </li> <li> <p>APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.</p> </li> <li> <p>APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.</p> </li> <li> <p>APPIUM_WEB_PYTHON: The Appium Python type for Web apps.</p> </li> <li> <p>CALABASH: The Calabash type.</p> </li> <li> <p>INSTRUMENTATION: The Instrumentation type.</p> </li> <li> <p>UIAUTOMATION: The uiautomation type.</p> </li> <li> <p>UIAUTOMATOR: The uiautomator type.</p> </li> <li> <p>XCTEST: The XCode test type.</p> </li> <li> <p>XCTEST_UI: The XCode UI test type.</p> </li> </ul>
 -- * counters [Counters] <p>The run's result counters.</p>
+-- * status [ExecutionStatus] <p>The run's status.</p> <p>Allowed values include:</p> <ul> <li> <p>PENDING: A pending status.</p> </li> <li> <p>PENDING_CONCURRENCY: A pending concurrency status.</p> </li> <li> <p>PENDING_DEVICE: A pending device status.</p> </li> <li> <p>PROCESSING: A processing status.</p> </li> <li> <p>SCHEDULING: A scheduling status.</p> </li> <li> <p>PREPARING: A preparing status.</p> </li> <li> <p>RUNNING: A running status.</p> </li> <li> <p>COMPLETED: A completed status.</p> </li> <li> <p>STOPPING: A stopping status.</p> </li> </ul>
+-- * networkProfile [NetworkProfile] <p>The network profile being used for a test run.</p>
+-- * started [DateTime] <p>The run's start time.</p>
+-- * parsingResultUrl [String] <p>Read-only URL for an object in S3 bucket where you can get the parsing results of the test package. If the test package doesn't parse, the reason why it doesn't parse appears in the file that this URL points to.</p>
+-- * testSpecArn [AmazonResourceName] <p>The ARN of the YAML-formatted test specification for the run.</p>
+-- * customerArtifactPaths [CustomerArtifactPaths] <p>Output <code>CustomerArtifactPaths</code> object for the test run.</p>
+-- * skipAppResign [SkipAppResign] <p>When set to <code>true</code>, for private devices, Device Farm will not sign your app again. For public devices, Device Farm always signs your apps again and this parameter has no effect.</p> <p>For more information about how Device Farm re-signs your app(s), see <a href="https://aws.amazon.com/device-farm/faq/">Do you modify my app?</a> in the <i>AWS Device Farm FAQs</i>.</p>
+-- * name [Name] <p>The run's name.</p>
+-- * created [DateTime] <p>When the run was created.</p>
+-- * deviceMinutes [DeviceMinutes] <p>Represents the total (metered or unmetered) minutes used by the test run.</p>
+-- * stopped [DateTime] <p>The run's stop time.</p>
+-- * jobTimeoutMinutes [JobTimeoutMinutes] <p>The number of minutes the job will execute before it times out.</p>
 -- @return Run structure as a key-value pair table
 function M.Run(args)
 	assert(args, "You must provide an argument table when creating Run")
@@ -2197,22 +2825,36 @@ function M.Run(args)
     local header_args = { 
     }
 	local all_args = { 
-		["status"] = args["status"],
-		["name"] = args["name"],
-		["networkProfile"] = args["networkProfile"],
-		["created"] = args["created"],
-		["started"] = args["started"],
+		["appUpload"] = args["appUpload"],
+		["radios"] = args["radios"],
 		["totalJobs"] = args["totalJobs"],
+		["locale"] = args["locale"],
 		["completedJobs"] = args["completedJobs"],
-		["deviceMinutes"] = args["deviceMinutes"],
-		["platform"] = args["platform"],
-		["stopped"] = args["stopped"],
+		["seed"] = args["seed"],
 		["result"] = args["result"],
+		["devicePoolArn"] = args["devicePoolArn"],
 		["message"] = args["message"],
 		["billingMethod"] = args["billingMethod"],
-		["type"] = args["type"],
+		["resultCode"] = args["resultCode"],
 		["arn"] = args["arn"],
+		["eventCount"] = args["eventCount"],
+		["webUrl"] = args["webUrl"],
+		["platform"] = args["platform"],
+		["location"] = args["location"],
+		["type"] = args["type"],
 		["counters"] = args["counters"],
+		["status"] = args["status"],
+		["networkProfile"] = args["networkProfile"],
+		["started"] = args["started"],
+		["parsingResultUrl"] = args["parsingResultUrl"],
+		["testSpecArn"] = args["testSpecArn"],
+		["customerArtifactPaths"] = args["customerArtifactPaths"],
+		["skipAppResign"] = args["skipAppResign"],
+		["name"] = args["name"],
+		["created"] = args["created"],
+		["deviceMinutes"] = args["deviceMinutes"],
+		["stopped"] = args["stopped"],
+		["jobTimeoutMinutes"] = args["jobTimeoutMinutes"],
 	}
 	asserts.AssertRun(all_args)
 	return {
@@ -2347,15 +2989,57 @@ function M.GetUploadResult(args)
     }
 end
 
-keys.Job = { ["status"] = true, ["name"] = true, ["created"] = true, ["started"] = true, ["deviceMinutes"] = true, ["stopped"] = true, ["result"] = true, ["device"] = true, ["message"] = true, ["type"] = true, ["arn"] = true, ["counters"] = true, nil }
+keys.GetVPCEConfigurationRequest = { ["arn"] = true, nil }
+
+function asserts.AssertGetVPCEConfigurationRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetVPCEConfigurationRequest to be of type 'table'")
+	assert(struct["arn"], "Expected key arn to exist in table")
+	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetVPCEConfigurationRequest[k], "GetVPCEConfigurationRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetVPCEConfigurationRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * arn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the VPC endpoint configuration you want to describe.</p>
+-- Required key: arn
+-- @return GetVPCEConfigurationRequest structure as a key-value pair table
+function M.GetVPCEConfigurationRequest(args)
+	assert(args, "You must provide an argument table when creating GetVPCEConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["arn"] = args["arn"],
+	}
+	asserts.AssertGetVPCEConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Job = { ["status"] = true, ["instanceArn"] = true, ["videoCapture"] = true, ["name"] = true, ["created"] = true, ["started"] = true, ["videoEndpoint"] = true, ["deviceMinutes"] = true, ["stopped"] = true, ["result"] = true, ["device"] = true, ["message"] = true, ["type"] = true, ["arn"] = true, ["counters"] = true, nil }
 
 function asserts.AssertJob(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Job to be of type 'table'")
 	if struct["status"] then asserts.AssertExecutionStatus(struct["status"]) end
+	if struct["instanceArn"] then asserts.AssertAmazonResourceName(struct["instanceArn"]) end
+	if struct["videoCapture"] then asserts.AssertVideoCapture(struct["videoCapture"]) end
 	if struct["name"] then asserts.AssertName(struct["name"]) end
 	if struct["created"] then asserts.AssertDateTime(struct["created"]) end
 	if struct["started"] then asserts.AssertDateTime(struct["started"]) end
+	if struct["videoEndpoint"] then asserts.AssertString(struct["videoEndpoint"]) end
 	if struct["deviceMinutes"] then asserts.AssertDeviceMinutes(struct["deviceMinutes"]) end
 	if struct["stopped"] then asserts.AssertDateTime(struct["stopped"]) end
 	if struct["result"] then asserts.AssertExecutionResult(struct["result"]) end
@@ -2374,9 +3058,12 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * status [ExecutionStatus] <p>The job's status.</p> <p>Allowed values include:</p> <ul> <li> <p>PENDING: A pending status.</p> </li> <li> <p>PENDING_CONCURRENCY: A pending concurrency status.</p> </li> <li> <p>PENDING_DEVICE: A pending device status.</p> </li> <li> <p>PROCESSING: A processing status.</p> </li> <li> <p>SCHEDULING: A scheduling status.</p> </li> <li> <p>PREPARING: A preparing status.</p> </li> <li> <p>RUNNING: A running status.</p> </li> <li> <p>COMPLETED: A completed status.</p> </li> <li> <p>STOPPING: A stopping status.</p> </li> </ul>
+-- * instanceArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the instance.</p>
+-- * videoCapture [VideoCapture] <p>This value is set to true if video capture is enabled; otherwise, it is set to false.</p>
 -- * name [Name] <p>The job's name.</p>
 -- * created [DateTime] <p>When the job was created.</p>
 -- * started [DateTime] <p>The job's start time.</p>
+-- * videoEndpoint [String] <p>The endpoint for streaming device video.</p>
 -- * deviceMinutes [DeviceMinutes] <p>Represents the total (metered or unmetered) minutes used by the job.</p>
 -- * stopped [DateTime] <p>The job's stop time.</p>
 -- * result [ExecutionResult] <p>The job's result.</p> <p>Allowed values include:</p> <ul> <li> <p>PENDING: A pending condition.</p> </li> <li> <p>PASSED: A passing condition.</p> </li> <li> <p>WARNED: A warning condition.</p> </li> <li> <p>FAILED: A failed condition.</p> </li> <li> <p>SKIPPED: A skipped condition.</p> </li> <li> <p>ERRORED: An error condition.</p> </li> <li> <p>STOPPED: A stopped condition.</p> </li> </ul>
@@ -2396,9 +3083,12 @@ function M.Job(args)
     }
 	local all_args = { 
 		["status"] = args["status"],
+		["instanceArn"] = args["instanceArn"],
+		["videoCapture"] = args["videoCapture"],
 		["name"] = args["name"],
 		["created"] = args["created"],
 		["started"] = args["started"],
+		["videoEndpoint"] = args["videoEndpoint"],
 		["deviceMinutes"] = args["deviceMinutes"],
 		["stopped"] = args["stopped"],
 		["result"] = args["result"],
@@ -2549,7 +3239,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * nextToken [PaginationToken] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
--- * arn [AmazonResourceName] <p>The suites' ARNs.</p>
+-- * arn [AmazonResourceName] <p>The job's Amazon Resource Name (ARN).</p>
 -- Required key: arn
 -- @return ListSuitesRequest structure as a key-value pair table
 function M.ListSuitesRequest(args)
@@ -2610,6 +3300,40 @@ function M.NotFoundException(args)
     }
 end
 
+keys.DeleteInstanceProfileResult = { nil }
+
+function asserts.AssertDeleteInstanceProfileResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteInstanceProfileResult to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteInstanceProfileResult[k], "DeleteInstanceProfileResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteInstanceProfileResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteInstanceProfileResult structure as a key-value pair table
+function M.DeleteInstanceProfileResult(args)
+	assert(args, "You must provide an argument table when creating DeleteInstanceProfileResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDeleteInstanceProfileResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetAccountSettingsResult = { ["accountSettings"] = true, nil }
 
 function asserts.AssertGetAccountSettingsResult(struct)
@@ -2639,6 +3363,43 @@ function M.GetAccountSettingsResult(args)
 		["accountSettings"] = args["accountSettings"],
 	}
 	asserts.AssertGetAccountSettingsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetDeviceInstanceResult = { ["deviceInstance"] = true, nil }
+
+function asserts.AssertGetDeviceInstanceResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetDeviceInstanceResult to be of type 'table'")
+	if struct["deviceInstance"] then asserts.AssertDeviceInstance(struct["deviceInstance"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetDeviceInstanceResult[k], "GetDeviceInstanceResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetDeviceInstanceResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deviceInstance [DeviceInstance] <p>An object containing information about your device instance.</p>
+-- @return GetDeviceInstanceResult structure as a key-value pair table
+function M.GetDeviceInstanceResult(args)
+	assert(args, "You must provide an argument table when creating GetDeviceInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["deviceInstance"] = args["deviceInstance"],
+	}
+	asserts.AssertGetDeviceInstanceResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2776,12 +3537,13 @@ function M.CreateProjectResult(args)
     }
 end
 
-keys.Upload = { ["status"] = true, ["contentType"] = true, ["name"] = true, ["created"] = true, ["url"] = true, ["message"] = true, ["type"] = true, ["arn"] = true, ["metadata"] = true, nil }
+keys.Upload = { ["status"] = true, ["category"] = true, ["contentType"] = true, ["name"] = true, ["created"] = true, ["url"] = true, ["message"] = true, ["type"] = true, ["arn"] = true, ["metadata"] = true, nil }
 
 function asserts.AssertUpload(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Upload to be of type 'table'")
 	if struct["status"] then asserts.AssertUploadStatus(struct["status"]) end
+	if struct["category"] then asserts.AssertUploadCategory(struct["category"]) end
 	if struct["contentType"] then asserts.AssertContentType(struct["contentType"]) end
 	if struct["name"] then asserts.AssertName(struct["name"]) end
 	if struct["created"] then asserts.AssertDateTime(struct["created"]) end
@@ -2800,6 +3562,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * status [UploadStatus] <p>The upload's status.</p> <p>Must be one of the following values:</p> <ul> <li> <p>FAILED: A failed status.</p> </li> <li> <p>INITIALIZED: An initialized status.</p> </li> <li> <p>PROCESSING: A processing status.</p> </li> <li> <p>SUCCEEDED: A succeeded status.</p> </li> </ul>
+-- * category [UploadCategory] <p>The upload's category. Allowed values include:</p> <ul> <li> <p>CURATED: An upload managed by AWS Device Farm.</p> </li> <li> <p>PRIVATE: An upload managed by the AWS Device Farm customer.</p> </li> </ul>
 -- * contentType [ContentType] <p>The upload's content type (for example, "application/octet-stream").</p>
 -- * name [Name] <p>The upload's file name.</p>
 -- * created [DateTime] <p>When the upload was created.</p>
@@ -2819,6 +3582,7 @@ function M.Upload(args)
     }
 	local all_args = { 
 		["status"] = args["status"],
+		["category"] = args["category"],
 		["contentType"] = args["contentType"],
 		["name"] = args["name"],
 		["created"] = args["created"],
@@ -2829,45 +3593,6 @@ function M.Upload(args)
 		["metadata"] = args["metadata"],
 	}
 	asserts.AssertUpload(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DeleteDevicePoolRequest = { ["arn"] = true, nil }
-
-function asserts.AssertDeleteDevicePoolRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteDevicePoolRequest to be of type 'table'")
-	assert(struct["arn"], "Expected key arn to exist in table")
-	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DeleteDevicePoolRequest[k], "DeleteDevicePoolRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DeleteDevicePoolRequest
--- <p>Represents a request to the delete device pool operation.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * arn [AmazonResourceName] <p>Represents the Amazon Resource Name (ARN) of the Device Farm device pool you wish to delete.</p>
--- Required key: arn
--- @return DeleteDevicePoolRequest structure as a key-value pair table
-function M.DeleteDevicePoolRequest(args)
-	assert(args, "You must provide an argument table when creating DeleteDevicePoolRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["arn"] = args["arn"],
-	}
-	asserts.AssertDeleteDevicePoolRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3036,6 +3761,45 @@ function M.GetDeviceRequest(args)
     }
 end
 
+keys.DeleteDevicePoolRequest = { ["arn"] = true, nil }
+
+function asserts.AssertDeleteDevicePoolRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteDevicePoolRequest to be of type 'table'")
+	assert(struct["arn"], "Expected key arn to exist in table")
+	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteDevicePoolRequest[k], "DeleteDevicePoolRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteDevicePoolRequest
+-- <p>Represents a request to the delete device pool operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * arn [AmazonResourceName] <p>Represents the Amazon Resource Name (ARN) of the Device Farm device pool you wish to delete.</p>
+-- Required key: arn
+-- @return DeleteDevicePoolRequest structure as a key-value pair table
+function M.DeleteDevicePoolRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteDevicePoolRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["arn"] = args["arn"],
+	}
+	asserts.AssertDeleteDevicePoolRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.StopRemoteAccessSessionResult = { ["remoteAccessSession"] = true, nil }
 
 function asserts.AssertStopRemoteAccessSessionResult(struct)
@@ -3065,6 +3829,45 @@ function M.StopRemoteAccessSessionResult(args)
 		["remoteAccessSession"] = args["remoteAccessSession"],
 	}
 	asserts.AssertStopRemoteAccessSessionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.StopRunRequest = { ["arn"] = true, nil }
+
+function asserts.AssertStopRunRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected StopRunRequest to be of type 'table'")
+	assert(struct["arn"], "Expected key arn to exist in table")
+	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.StopRunRequest[k], "StopRunRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type StopRunRequest
+-- <p>Represents the request to stop a specific run.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * arn [AmazonResourceName] <p>Represents the Amazon Resource Name (ARN) of the Device Farm run you wish to stop.</p>
+-- Required key: arn
+-- @return StopRunRequest structure as a key-value pair table
+function M.StopRunRequest(args)
+	assert(args, "You must provide an argument table when creating StopRunRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["arn"] = args["arn"],
+	}
+	asserts.AssertStopRunRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3142,6 +3945,46 @@ function M.IncompatibilityMessage(args)
 		["type"] = args["type"],
 	}
 	asserts.AssertIncompatibilityMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.MonetaryAmount = { ["amount"] = true, ["currencyCode"] = true, nil }
+
+function asserts.AssertMonetaryAmount(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected MonetaryAmount to be of type 'table'")
+	if struct["amount"] then asserts.AssertDouble(struct["amount"]) end
+	if struct["currencyCode"] then asserts.AssertCurrencyCode(struct["currencyCode"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.MonetaryAmount[k], "MonetaryAmount contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type MonetaryAmount
+-- <p>A number representing the monetary amount for an offering or transaction.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * amount [Double] <p>The numerical amount of an offering or transaction.</p>
+-- * currencyCode [CurrencyCode] <p>The currency code of a monetary amount. For example, <code>USD</code> means "U.S. dollars."</p>
+-- @return MonetaryAmount structure as a key-value pair table
+function M.MonetaryAmount(args)
+	assert(args, "You must provide an argument table when creating MonetaryAmount")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["amount"] = args["amount"],
+		["currencyCode"] = args["currencyCode"],
+	}
+	asserts.AssertMonetaryAmount(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3229,6 +4072,55 @@ function M.ListDevicesResult(args)
     }
 end
 
+keys.ExecutionConfiguration = { ["jobTimeoutMinutes"] = true, ["appPackagesCleanup"] = true, ["skipAppResign"] = true, ["videoCapture"] = true, ["accountsCleanup"] = true, nil }
+
+function asserts.AssertExecutionConfiguration(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ExecutionConfiguration to be of type 'table'")
+	if struct["jobTimeoutMinutes"] then asserts.AssertJobTimeoutMinutes(struct["jobTimeoutMinutes"]) end
+	if struct["appPackagesCleanup"] then asserts.AssertAppPackagesCleanup(struct["appPackagesCleanup"]) end
+	if struct["skipAppResign"] then asserts.AssertSkipAppResign(struct["skipAppResign"]) end
+	if struct["videoCapture"] then asserts.AssertVideoCapture(struct["videoCapture"]) end
+	if struct["accountsCleanup"] then asserts.AssertAccountsCleanup(struct["accountsCleanup"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ExecutionConfiguration[k], "ExecutionConfiguration contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ExecutionConfiguration
+-- <p>Represents configuration information about a test run, such as the execution timeout (in minutes).</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobTimeoutMinutes [JobTimeoutMinutes] <p>The number of minutes a test run will execute before it times out.</p>
+-- * appPackagesCleanup [AppPackagesCleanup] <p>True if app package cleanup is enabled at the beginning of the test; otherwise, false.</p>
+-- * skipAppResign [SkipAppResign] <p>When set to <code>true</code>, for private devices, Device Farm will not sign your app again. For public devices, Device Farm always signs your apps again and this parameter has no effect.</p> <p>For more information about how Device Farm re-signs your app(s), see <a href="https://aws.amazon.com/device-farm/faq/">Do you modify my app?</a> in the <i>AWS Device Farm FAQs</i>.</p>
+-- * videoCapture [VideoCapture] <p>Set to true to enable video capture; otherwise, set to false. The default is true.</p>
+-- * accountsCleanup [AccountsCleanup] <p>True if account cleanup is enabled at the beginning of the test; otherwise, false.</p>
+-- @return ExecutionConfiguration structure as a key-value pair table
+function M.ExecutionConfiguration(args)
+	assert(args, "You must provide an argument table when creating ExecutionConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["jobTimeoutMinutes"] = args["jobTimeoutMinutes"],
+		["appPackagesCleanup"] = args["appPackagesCleanup"],
+		["skipAppResign"] = args["skipAppResign"],
+		["videoCapture"] = args["videoCapture"],
+		["accountsCleanup"] = args["accountsCleanup"],
+	}
+	asserts.AssertExecutionConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.UpdateNetworkProfileResult = { ["networkProfile"] = true, nil }
 
 function asserts.AssertUpdateNetworkProfileResult(struct)
@@ -3266,7 +4158,46 @@ function M.UpdateNetworkProfileResult(args)
     }
 end
 
-keys.GetDevicePoolCompatibilityRequest = { ["devicePoolArn"] = true, ["testType"] = true, ["test"] = true, ["appArn"] = true, nil }
+keys.DeleteVPCEConfigurationRequest = { ["arn"] = true, nil }
+
+function asserts.AssertDeleteVPCEConfigurationRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteVPCEConfigurationRequest to be of type 'table'")
+	assert(struct["arn"], "Expected key arn to exist in table")
+	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteVPCEConfigurationRequest[k], "DeleteVPCEConfigurationRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteVPCEConfigurationRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * arn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the VPC endpoint configuration you want to delete.</p>
+-- Required key: arn
+-- @return DeleteVPCEConfigurationRequest structure as a key-value pair table
+function M.DeleteVPCEConfigurationRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteVPCEConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["arn"] = args["arn"],
+	}
+	asserts.AssertDeleteVPCEConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetDevicePoolCompatibilityRequest = { ["devicePoolArn"] = true, ["testType"] = true, ["test"] = true, ["appArn"] = true, ["configuration"] = true, nil }
 
 function asserts.AssertGetDevicePoolCompatibilityRequest(struct)
 	assert(struct)
@@ -3276,6 +4207,7 @@ function asserts.AssertGetDevicePoolCompatibilityRequest(struct)
 	if struct["testType"] then asserts.AssertTestType(struct["testType"]) end
 	if struct["test"] then asserts.AssertScheduleRunTest(struct["test"]) end
 	if struct["appArn"] then asserts.AssertAmazonResourceName(struct["appArn"]) end
+	if struct["configuration"] then asserts.AssertScheduleRunConfiguration(struct["configuration"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.GetDevicePoolCompatibilityRequest[k], "GetDevicePoolCompatibilityRequest contains unknown key " .. tostring(k))
 	end
@@ -3289,6 +4221,7 @@ end
 -- * testType [TestType] <p>The test type for the specified device pool.</p> <p>Allowed values include the following:</p> <ul> <li> <p>BUILTIN_FUZZ: The built-in fuzz type.</p> </li> <li> <p>BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and capturing screenshots at the same time.</p> </li> <li> <p>APPIUM_JAVA_JUNIT: The Appium Java JUnit type.</p> </li> <li> <p>APPIUM_JAVA_TESTNG: The Appium Java TestNG type.</p> </li> <li> <p>APPIUM_PYTHON: The Appium Python type.</p> </li> <li> <p>APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.</p> </li> <li> <p>APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.</p> </li> <li> <p>APPIUM_WEB_PYTHON: The Appium Python type for Web apps.</p> </li> <li> <p>CALABASH: The Calabash type.</p> </li> <li> <p>INSTRUMENTATION: The Instrumentation type.</p> </li> <li> <p>UIAUTOMATION: The uiautomation type.</p> </li> <li> <p>UIAUTOMATOR: The uiautomator type.</p> </li> <li> <p>XCTEST: The XCode test type.</p> </li> <li> <p>XCTEST_UI: The XCode UI test type.</p> </li> </ul>
 -- * test [ScheduleRunTest] <p>Information about the uploaded test to be run against the device pool.</p>
 -- * appArn [AmazonResourceName] <p>The ARN of the app that is associated with the specified device pool.</p>
+-- * configuration [ScheduleRunConfiguration] <p>An object containing information about the settings for a run.</p>
 -- Required key: devicePoolArn
 -- @return GetDevicePoolCompatibilityRequest structure as a key-value pair table
 function M.GetDevicePoolCompatibilityRequest(args)
@@ -3304,6 +4237,7 @@ function M.GetDevicePoolCompatibilityRequest(args)
 		["testType"] = args["testType"],
 		["test"] = args["test"],
 		["appArn"] = args["appArn"],
+		["configuration"] = args["configuration"],
 	}
 	asserts.AssertGetDevicePoolCompatibilityRequest(all_args)
 	return {
@@ -3348,17 +4282,25 @@ function M.DeleteRunResult(args)
     }
 end
 
-keys.CreateRemoteAccessSessionRequest = { ["configuration"] = true, ["deviceArn"] = true, ["projectArn"] = true, ["name"] = true, nil }
+keys.CreateRemoteAccessSessionRequest = { ["instanceArn"] = true, ["skipAppResign"] = true, ["name"] = true, ["sshPublicKey"] = true, ["remoteRecordEnabled"] = true, ["deviceArn"] = true, ["clientId"] = true, ["interactionMode"] = true, ["remoteRecordAppArn"] = true, ["configuration"] = true, ["remoteDebugEnabled"] = true, ["projectArn"] = true, nil }
 
 function asserts.AssertCreateRemoteAccessSessionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateRemoteAccessSessionRequest to be of type 'table'")
 	assert(struct["projectArn"], "Expected key projectArn to exist in table")
 	assert(struct["deviceArn"], "Expected key deviceArn to exist in table")
-	if struct["configuration"] then asserts.AssertCreateRemoteAccessSessionConfiguration(struct["configuration"]) end
-	if struct["deviceArn"] then asserts.AssertAmazonResourceName(struct["deviceArn"]) end
-	if struct["projectArn"] then asserts.AssertAmazonResourceName(struct["projectArn"]) end
+	if struct["instanceArn"] then asserts.AssertAmazonResourceName(struct["instanceArn"]) end
+	if struct["skipAppResign"] then asserts.AssertBoolean(struct["skipAppResign"]) end
 	if struct["name"] then asserts.AssertName(struct["name"]) end
+	if struct["sshPublicKey"] then asserts.AssertSshPublicKey(struct["sshPublicKey"]) end
+	if struct["remoteRecordEnabled"] then asserts.AssertBoolean(struct["remoteRecordEnabled"]) end
+	if struct["deviceArn"] then asserts.AssertAmazonResourceName(struct["deviceArn"]) end
+	if struct["clientId"] then asserts.AssertClientId(struct["clientId"]) end
+	if struct["interactionMode"] then asserts.AssertInteractionMode(struct["interactionMode"]) end
+	if struct["remoteRecordAppArn"] then asserts.AssertAmazonResourceName(struct["remoteRecordAppArn"]) end
+	if struct["configuration"] then asserts.AssertCreateRemoteAccessSessionConfiguration(struct["configuration"]) end
+	if struct["remoteDebugEnabled"] then asserts.AssertBoolean(struct["remoteDebugEnabled"]) end
+	if struct["projectArn"] then asserts.AssertAmazonResourceName(struct["projectArn"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateRemoteAccessSessionRequest[k], "CreateRemoteAccessSessionRequest contains unknown key " .. tostring(k))
 	end
@@ -3368,10 +4310,18 @@ end
 -- <p>Creates and submits a request to start a remote access session.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * configuration [CreateRemoteAccessSessionConfiguration] <p>The configuration information for the remote access session request.</p>
--- * deviceArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the device for which you want to create a remote access session.</p>
--- * projectArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the project for which you want to create a remote access session.</p>
+-- * instanceArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the device instance for which you want to create a remote access session.</p>
+-- * skipAppResign [Boolean] <p>When set to <code>true</code>, for private devices, Device Farm will not sign your app again. For public devices, Device Farm always signs your apps again and this parameter has no effect.</p> <p>For more information about how Device Farm re-signs your app(s), see <a href="https://aws.amazon.com/device-farm/faq/">Do you modify my app?</a> in the <i>AWS Device Farm FAQs</i>.</p>
 -- * name [Name] <p>The name of the remote access session that you wish to create.</p>
+-- * sshPublicKey [SshPublicKey] <p>The public key of the <code>ssh</code> key pair you want to use for connecting to remote devices in your remote debugging session. This is only required if <code>remoteDebugEnabled</code> is set to <code>true</code>.</p>
+-- * remoteRecordEnabled [Boolean] <p>Set to <code>true</code> to enable remote recording for the remote access session.</p>
+-- * deviceArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the device for which you want to create a remote access session.</p>
+-- * clientId [ClientId] <p>Unique identifier for the client. If you want access to multiple devices on the same client, you should pass the same <code>clientId</code> value in each call to <code>CreateRemoteAccessSession</code>. This is required only if <code>remoteDebugEnabled</code> is set to <code>true</code>.</p>
+-- * interactionMode [InteractionMode] <p>The interaction mode of the remote access session. Valid values are:</p> <ul> <li> <p>INTERACTIVE: You can interact with the iOS device by viewing, touching, and rotating the screen. You <b>cannot</b> run XCUITest framework-based tests in this mode.</p> </li> <li> <p>NO_VIDEO: You are connected to the device but cannot interact with it or view the screen. This mode has the fastest test execution speed. You <b>can</b> run XCUITest framework-based tests in this mode.</p> </li> <li> <p>VIDEO_ONLY: You can view the screen but cannot touch or rotate it. You <b>can</b> run XCUITest framework-based tests and watch the screen in this mode.</p> </li> </ul>
+-- * remoteRecordAppArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) for the app to be recorded in the remote access session.</p>
+-- * configuration [CreateRemoteAccessSessionConfiguration] <p>The configuration information for the remote access session request.</p>
+-- * remoteDebugEnabled [Boolean] <p>Set to <code>true</code> if you want to access devices remotely for debugging in your remote access session.</p>
+-- * projectArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the project for which you want to create a remote access session.</p>
 -- Required key: projectArn
 -- Required key: deviceArn
 -- @return CreateRemoteAccessSessionRequest structure as a key-value pair table
@@ -3384,12 +4334,57 @@ function M.CreateRemoteAccessSessionRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["configuration"] = args["configuration"],
-		["deviceArn"] = args["deviceArn"],
-		["projectArn"] = args["projectArn"],
+		["instanceArn"] = args["instanceArn"],
+		["skipAppResign"] = args["skipAppResign"],
 		["name"] = args["name"],
+		["sshPublicKey"] = args["sshPublicKey"],
+		["remoteRecordEnabled"] = args["remoteRecordEnabled"],
+		["deviceArn"] = args["deviceArn"],
+		["clientId"] = args["clientId"],
+		["interactionMode"] = args["interactionMode"],
+		["remoteRecordAppArn"] = args["remoteRecordAppArn"],
+		["configuration"] = args["configuration"],
+		["remoteDebugEnabled"] = args["remoteDebugEnabled"],
+		["projectArn"] = args["projectArn"],
 	}
 	asserts.AssertCreateRemoteAccessSessionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetVPCEConfigurationResult = { ["vpceConfiguration"] = true, nil }
+
+function asserts.AssertGetVPCEConfigurationResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetVPCEConfigurationResult to be of type 'table'")
+	if struct["vpceConfiguration"] then asserts.AssertVPCEConfiguration(struct["vpceConfiguration"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetVPCEConfigurationResult[k], "GetVPCEConfigurationResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetVPCEConfigurationResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vpceConfiguration [VPCEConfiguration] <p>An object containing information about your VPC endpoint configuration.</p>
+-- @return GetVPCEConfigurationResult structure as a key-value pair table
+function M.GetVPCEConfigurationResult(args)
+	assert(args, "You must provide an argument table when creating GetVPCEConfigurationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["vpceConfiguration"] = args["vpceConfiguration"],
+	}
+	asserts.AssertGetVPCEConfigurationResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3427,6 +4422,48 @@ function M.GetNetworkProfileResult(args)
 		["networkProfile"] = args["networkProfile"],
 	}
 	asserts.AssertGetNetworkProfileResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListJobsRequest = { ["nextToken"] = true, ["arn"] = true, nil }
+
+function asserts.AssertListJobsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListJobsRequest to be of type 'table'")
+	assert(struct["arn"], "Expected key arn to exist in table")
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListJobsRequest[k], "ListJobsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListJobsRequest
+-- <p>Represents a request to the list jobs operation.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PaginationToken] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- * arn [AmazonResourceName] <p>The run's Amazon Resource Name (ARN).</p>
+-- Required key: arn
+-- @return ListJobsRequest structure as a key-value pair table
+function M.ListJobsRequest(args)
+	assert(args, "You must provide an argument table when creating ListJobsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["nextToken"] = args["nextToken"],
+		["arn"] = args["arn"],
+	}
+	asserts.AssertListJobsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3478,6 +4515,43 @@ function M.DevicePoolCompatibilityResult(args)
     }
 end
 
+keys.UpdateUploadResult = { ["upload"] = true, nil }
+
+function asserts.AssertUpdateUploadResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateUploadResult to be of type 'table'")
+	if struct["upload"] then asserts.AssertUpload(struct["upload"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateUploadResult[k], "UpdateUploadResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateUploadResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * upload [Upload] <p>A test spec uploaded to Device Farm.</p>
+-- @return UpdateUploadResult structure as a key-value pair table
+function M.UpdateUploadResult(args)
+	assert(args, "You must provide an argument table when creating UpdateUploadResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["upload"] = args["upload"],
+	}
+	asserts.AssertUpdateUploadResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetJobRequest = { ["arn"] = true, nil }
 
 function asserts.AssertGetJobRequest(struct)
@@ -3517,25 +4591,25 @@ function M.GetJobRequest(args)
     }
 end
 
-keys.PurchaseOfferingResult = { ["offeringTransaction"] = true, nil }
+keys.CreateVPCEConfigurationResult = { ["vpceConfiguration"] = true, nil }
 
-function asserts.AssertPurchaseOfferingResult(struct)
+function asserts.AssertCreateVPCEConfigurationResult(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected PurchaseOfferingResult to be of type 'table'")
-	if struct["offeringTransaction"] then asserts.AssertOfferingTransaction(struct["offeringTransaction"]) end
+	assert(type(struct) == "table", "Expected CreateVPCEConfigurationResult to be of type 'table'")
+	if struct["vpceConfiguration"] then asserts.AssertVPCEConfiguration(struct["vpceConfiguration"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.PurchaseOfferingResult[k], "PurchaseOfferingResult contains unknown key " .. tostring(k))
+		assert(keys.CreateVPCEConfigurationResult[k], "CreateVPCEConfigurationResult contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type PurchaseOfferingResult
--- <p>The result of the purchase offering (e.g., success or failure).</p>
+--- Create a structure of type CreateVPCEConfigurationResult
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * offeringTransaction [OfferingTransaction] <p>Represents the offering transaction for the purchase result.</p>
--- @return PurchaseOfferingResult structure as a key-value pair table
-function M.PurchaseOfferingResult(args)
-	assert(args, "You must provide an argument table when creating PurchaseOfferingResult")
+-- * vpceConfiguration [VPCEConfiguration] <p>An object containing information about your VPC endpoint configuration.</p>
+-- @return CreateVPCEConfigurationResult structure as a key-value pair table
+function M.CreateVPCEConfigurationResult(args)
+	assert(args, "You must provide an argument table when creating CreateVPCEConfigurationResult")
     local query_args = { 
     }
     local uri_args = { 
@@ -3543,9 +4617,9 @@ function M.PurchaseOfferingResult(args)
     local header_args = { 
     }
 	local all_args = { 
-		["offeringTransaction"] = args["offeringTransaction"],
+		["vpceConfiguration"] = args["vpceConfiguration"],
 	}
-	asserts.AssertPurchaseOfferingResult(all_args)
+	asserts.AssertCreateVPCEConfigurationResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3646,69 +4720,27 @@ function M.InstallToRemoteAccessSessionResult(args)
     }
 end
 
-keys.MonetaryAmount = { ["amount"] = true, ["currencyCode"] = true, nil }
+keys.ListDeviceInstancesRequest = { ["nextToken"] = true, ["maxResults"] = true, nil }
 
-function asserts.AssertMonetaryAmount(struct)
+function asserts.AssertListDeviceInstancesRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected MonetaryAmount to be of type 'table'")
-	if struct["amount"] then asserts.AssertDouble(struct["amount"]) end
-	if struct["currencyCode"] then asserts.AssertCurrencyCode(struct["currencyCode"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.MonetaryAmount[k], "MonetaryAmount contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type MonetaryAmount
--- <p>A number representing the monetary amount for an offering or transaction.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * amount [Double] <p>The numerical amount of an offering or transaction.</p>
--- * currencyCode [CurrencyCode] <p>The currency code of a monetary amount. For example, <code>USD</code> means "U.S. dollars."</p>
--- @return MonetaryAmount structure as a key-value pair table
-function M.MonetaryAmount(args)
-	assert(args, "You must provide an argument table when creating MonetaryAmount")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["amount"] = args["amount"],
-		["currencyCode"] = args["currencyCode"],
-	}
-	asserts.AssertMonetaryAmount(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ListJobsRequest = { ["nextToken"] = true, ["arn"] = true, nil }
-
-function asserts.AssertListJobsRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ListJobsRequest to be of type 'table'")
-	assert(struct["arn"], "Expected key arn to exist in table")
+	assert(type(struct) == "table", "Expected ListDeviceInstancesRequest to be of type 'table'")
 	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
-	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	if struct["maxResults"] then asserts.AssertInteger(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ListJobsRequest[k], "ListJobsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListDeviceInstancesRequest[k], "ListDeviceInstancesRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ListJobsRequest
--- <p>Represents a request to the list jobs operation.</p>
+--- Create a structure of type ListDeviceInstancesRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * nextToken [PaginationToken] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
--- * arn [AmazonResourceName] <p>The jobs' ARNs.</p>
--- Required key: arn
--- @return ListJobsRequest structure as a key-value pair table
-function M.ListJobsRequest(args)
-	assert(args, "You must provide an argument table when creating ListJobsRequest")
+-- * maxResults [Integer] <p>An integer specifying the maximum number of items you want to return in the API response.</p>
+-- @return ListDeviceInstancesRequest structure as a key-value pair table
+function M.ListDeviceInstancesRequest(args)
+	assert(args, "You must provide an argument table when creating ListDeviceInstancesRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -3717,9 +4749,92 @@ function M.ListJobsRequest(args)
     }
 	local all_args = { 
 		["nextToken"] = args["nextToken"],
-		["arn"] = args["arn"],
+		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListJobsRequest(all_args)
+	asserts.AssertListDeviceInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ListInstanceProfilesRequest = { ["nextToken"] = true, ["maxResults"] = true, nil }
+
+function asserts.AssertListInstanceProfilesRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListInstanceProfilesRequest to be of type 'table'")
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertInteger(struct["maxResults"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListInstanceProfilesRequest[k], "ListInstanceProfilesRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListInstanceProfilesRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PaginationToken] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- * maxResults [Integer] <p>An integer specifying the maximum number of items you want to return in the API response.</p>
+-- @return ListInstanceProfilesRequest structure as a key-value pair table
+function M.ListInstanceProfilesRequest(args)
+	assert(args, "You must provide an argument table when creating ListInstanceProfilesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
+	}
+	asserts.AssertListInstanceProfilesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Rule = { ["operator"] = true, ["attribute"] = true, ["value"] = true, nil }
+
+function asserts.AssertRule(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected Rule to be of type 'table'")
+	if struct["operator"] then asserts.AssertRuleOperator(struct["operator"]) end
+	if struct["attribute"] then asserts.AssertDeviceAttribute(struct["attribute"]) end
+	if struct["value"] then asserts.AssertString(struct["value"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.Rule[k], "Rule contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type Rule
+-- <p>Represents a condition for a device pool.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operator [RuleOperator] <p>The rule's operator.</p> <ul> <li> <p>EQUALS: The equals operator.</p> </li> <li> <p>GREATER_THAN: The greater-than operator.</p> </li> <li> <p>IN: The in operator.</p> </li> <li> <p>LESS_THAN: The less-than operator.</p> </li> <li> <p>NOT_IN: The not-in operator.</p> </li> <li> <p>CONTAINS: The contains operator.</p> </li> </ul>
+-- * attribute [DeviceAttribute] <p>The rule's stringified attribute. For example, specify the value as <code>"\"abc\""</code>.</p> <p>Allowed values include:</p> <ul> <li> <p>ARN: The ARN.</p> </li> <li> <p>FORM_FACTOR: The form factor (for example, phone or tablet).</p> </li> <li> <p>MANUFACTURER: The manufacturer.</p> </li> <li> <p>PLATFORM: The platform (for example, Android or iOS).</p> </li> <li> <p>REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.</p> </li> <li> <p>APPIUM_VERSION: The Appium version for the test.</p> </li> <li> <p>INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.</p> </li> <li> <p>INSTANCE_LABELS: The label of the device instance.</p> </li> </ul>
+-- * value [String] <p>The rule's value.</p>
+-- @return Rule structure as a key-value pair table
+function M.Rule(args)
+	assert(args, "You must provide an argument table when creating Rule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["operator"] = args["operator"],
+		["attribute"] = args["attribute"],
+		["value"] = args["value"],
+	}
+	asserts.AssertRule(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3760,7 +4875,7 @@ end
 -- * uplinkLossPercent [PercentInteger] <p>Proportion of transmitted packets that fail to arrive from 0 to 100 percent.</p>
 -- * uplinkJitterMs [Long] <p>Time variation in the delay of received packets in milliseconds as an integer from 0 to 2000.</p>
 -- * downlinkJitterMs [Long] <p>Time variation in the delay of received packets in milliseconds as an integer from 0 to 2000.</p>
--- * arn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the project that you wish to update network profile settings.</p>
+-- * arn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the project for which you want to update network profile settings.</p>
 -- * uplinkDelayMs [Long] <p>Delay time for all packets to destination in milliseconds as an integer from 0 to 2000.</p>
 -- * uplinkBandwidthBits [Long] <p>The data throughput rate in bits per second, as an integer from 0 to 104857600.</p>
 -- * downlinkDelayMs [Long] <p>Delay time for all packets to destination in milliseconds as an integer from 0 to 2000.</p>
@@ -3800,23 +4915,80 @@ function M.UpdateNetworkProfileRequest(args)
     }
 end
 
-keys.RemoteAccessSession = { ["status"] = true, ["endpoint"] = true, ["name"] = true, ["created"] = true, ["started"] = true, ["deviceMinutes"] = true, ["stopped"] = true, ["result"] = true, ["device"] = true, ["message"] = true, ["billingMethod"] = true, ["arn"] = true, nil }
+keys.UpdateUploadRequest = { ["editContent"] = true, ["contentType"] = true, ["name"] = true, ["arn"] = true, nil }
+
+function asserts.AssertUpdateUploadRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateUploadRequest to be of type 'table'")
+	assert(struct["arn"], "Expected key arn to exist in table")
+	if struct["editContent"] then asserts.AssertBoolean(struct["editContent"]) end
+	if struct["contentType"] then asserts.AssertContentType(struct["contentType"]) end
+	if struct["name"] then asserts.AssertName(struct["name"]) end
+	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateUploadRequest[k], "UpdateUploadRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateUploadRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * editContent [Boolean] <p>Set to true if the YAML file has changed and needs to be updated; otherwise, set to false.</p>
+-- * contentType [ContentType] <p>The upload's content type (for example, "application/x-yaml").</p>
+-- * name [Name] <p>The upload's test spec file name. The name should not contain the '/' character. The test spec file name must end with the <code>.yaml</code> or <code>.yml</code> file extension.</p>
+-- * arn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the uploaded test spec.</p>
+-- Required key: arn
+-- @return UpdateUploadRequest structure as a key-value pair table
+function M.UpdateUploadRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateUploadRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["editContent"] = args["editContent"],
+		["contentType"] = args["contentType"],
+		["name"] = args["name"],
+		["arn"] = args["arn"],
+	}
+	asserts.AssertUpdateUploadRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.RemoteAccessSession = { ["status"] = true, ["instanceArn"] = true, ["endpoint"] = true, ["name"] = true, ["created"] = true, ["started"] = true, ["remoteRecordEnabled"] = true, ["clientId"] = true, ["deviceMinutes"] = true, ["deviceUdid"] = true, ["skipAppResign"] = true, ["stopped"] = true, ["result"] = true, ["interactionMode"] = true, ["device"] = true, ["remoteRecordAppArn"] = true, ["message"] = true, ["billingMethod"] = true, ["remoteDebugEnabled"] = true, ["arn"] = true, ["hostAddress"] = true, nil }
 
 function asserts.AssertRemoteAccessSession(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoteAccessSession to be of type 'table'")
 	if struct["status"] then asserts.AssertExecutionStatus(struct["status"]) end
+	if struct["instanceArn"] then asserts.AssertAmazonResourceName(struct["instanceArn"]) end
 	if struct["endpoint"] then asserts.AssertString(struct["endpoint"]) end
 	if struct["name"] then asserts.AssertName(struct["name"]) end
 	if struct["created"] then asserts.AssertDateTime(struct["created"]) end
 	if struct["started"] then asserts.AssertDateTime(struct["started"]) end
+	if struct["remoteRecordEnabled"] then asserts.AssertBoolean(struct["remoteRecordEnabled"]) end
+	if struct["clientId"] then asserts.AssertClientId(struct["clientId"]) end
 	if struct["deviceMinutes"] then asserts.AssertDeviceMinutes(struct["deviceMinutes"]) end
+	if struct["deviceUdid"] then asserts.AssertString(struct["deviceUdid"]) end
+	if struct["skipAppResign"] then asserts.AssertSkipAppResign(struct["skipAppResign"]) end
 	if struct["stopped"] then asserts.AssertDateTime(struct["stopped"]) end
 	if struct["result"] then asserts.AssertExecutionResult(struct["result"]) end
+	if struct["interactionMode"] then asserts.AssertInteractionMode(struct["interactionMode"]) end
 	if struct["device"] then asserts.AssertDevice(struct["device"]) end
+	if struct["remoteRecordAppArn"] then asserts.AssertAmazonResourceName(struct["remoteRecordAppArn"]) end
 	if struct["message"] then asserts.AssertMessage(struct["message"]) end
 	if struct["billingMethod"] then asserts.AssertBillingMethod(struct["billingMethod"]) end
+	if struct["remoteDebugEnabled"] then asserts.AssertBoolean(struct["remoteDebugEnabled"]) end
 	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	if struct["hostAddress"] then asserts.AssertHostAddress(struct["hostAddress"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.RemoteAccessSession[k], "RemoteAccessSession contains unknown key " .. tostring(k))
 	end
@@ -3827,17 +4999,26 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * status [ExecutionStatus] <p>The status of the remote access session. Can be any of the following:</p> <ul> <li> <p>PENDING: A pending status.</p> </li> <li> <p>PENDING_CONCURRENCY: A pending concurrency status.</p> </li> <li> <p>PENDING_DEVICE: A pending device status.</p> </li> <li> <p>PROCESSING: A processing status.</p> </li> <li> <p>SCHEDULING: A scheduling status.</p> </li> <li> <p>PREPARING: A preparing status.</p> </li> <li> <p>RUNNING: A running status.</p> </li> <li> <p>COMPLETED: A completed status.</p> </li> <li> <p>STOPPING: A stopping status.</p> </li> </ul>
+-- * instanceArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the instance.</p>
 -- * endpoint [String] <p>The endpoint for the remote access sesssion.</p>
 -- * name [Name] <p>The name of the remote access session.</p>
 -- * created [DateTime] <p>The date and time the remote access session was created.</p>
 -- * started [DateTime] <p>The date and time the remote access session was started.</p>
+-- * remoteRecordEnabled [Boolean] <p>This flag is set to <code>true</code> if remote recording is enabled for the remote access session.</p>
+-- * clientId [ClientId] <p>Unique identifier of your client for the remote access session. Only returned if remote debugging is enabled for the remote access session.</p>
 -- * deviceMinutes [DeviceMinutes] <p>The number of minutes a device is used in a remote access sesssion (including setup and teardown minutes).</p>
+-- * deviceUdid [String] <p>Unique device identifier for the remote device. Only returned if remote debugging is enabled for the remote access session.</p>
+-- * skipAppResign [SkipAppResign] <p>When set to <code>true</code>, for private devices, Device Farm will not sign your app again. For public devices, Device Farm always signs your apps again and this parameter has no effect.</p> <p>For more information about how Device Farm re-signs your app(s), see <a href="https://aws.amazon.com/device-farm/faq/">Do you modify my app?</a> in the <i>AWS Device Farm FAQs</i>.</p>
 -- * stopped [DateTime] <p>The date and time the remote access session was stopped.</p>
 -- * result [ExecutionResult] <p>The result of the remote access session. Can be any of the following:</p> <ul> <li> <p>PENDING: A pending condition.</p> </li> <li> <p>PASSED: A passing condition.</p> </li> <li> <p>WARNED: A warning condition.</p> </li> <li> <p>FAILED: A failed condition.</p> </li> <li> <p>SKIPPED: A skipped condition.</p> </li> <li> <p>ERRORED: An error condition.</p> </li> <li> <p>STOPPED: A stopped condition.</p> </li> </ul>
+-- * interactionMode [InteractionMode] <p>The interaction mode of the remote access session. Valid values are:</p> <ul> <li> <p>INTERACTIVE: You can interact with the iOS device by viewing, touching, and rotating the screen. You <b>cannot</b> run XCUITest framework-based tests in this mode.</p> </li> <li> <p>NO_VIDEO: You are connected to the device but cannot interact with it or view the screen. This mode has the fastest test execution speed. You <b>can</b> run XCUITest framework-based tests in this mode.</p> </li> <li> <p>VIDEO_ONLY: You can view the screen but cannot touch or rotate it. You <b>can</b> run XCUITest framework-based tests and watch the screen in this mode.</p> </li> </ul>
 -- * device [Device] <p>The device (phone or tablet) used in the remote access session.</p>
+-- * remoteRecordAppArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) for the app to be recorded in the remote access session.</p>
 -- * message [Message] <p>A message about the remote access session.</p>
 -- * billingMethod [BillingMethod] <p>The billing method of the remote access session. Possible values include <code>METERED</code> or <code>UNMETERED</code>. For more information about metered devices, see <a href="http://docs.aws.amazon.com/devicefarm/latest/developerguide/welcome.html#welcome-terminology">AWS Device Farm terminology</a>."</p>
+-- * remoteDebugEnabled [Boolean] <p>This flag is set to <code>true</code> if remote debugging is enabled for the remote access session.</p>
 -- * arn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the remote access session.</p>
+-- * hostAddress [HostAddress] <p>IP address of the EC2 host where you need to connect to remotely debug devices. Only returned if remote debugging is enabled for the remote access session.</p>
 -- @return RemoteAccessSession structure as a key-value pair table
 function M.RemoteAccessSession(args)
 	assert(args, "You must provide an argument table when creating RemoteAccessSession")
@@ -3849,17 +5030,26 @@ function M.RemoteAccessSession(args)
     }
 	local all_args = { 
 		["status"] = args["status"],
+		["instanceArn"] = args["instanceArn"],
 		["endpoint"] = args["endpoint"],
 		["name"] = args["name"],
 		["created"] = args["created"],
 		["started"] = args["started"],
+		["remoteRecordEnabled"] = args["remoteRecordEnabled"],
+		["clientId"] = args["clientId"],
 		["deviceMinutes"] = args["deviceMinutes"],
+		["deviceUdid"] = args["deviceUdid"],
+		["skipAppResign"] = args["skipAppResign"],
 		["stopped"] = args["stopped"],
 		["result"] = args["result"],
+		["interactionMode"] = args["interactionMode"],
 		["device"] = args["device"],
+		["remoteRecordAppArn"] = args["remoteRecordAppArn"],
 		["message"] = args["message"],
 		["billingMethod"] = args["billingMethod"],
+		["remoteDebugEnabled"] = args["remoteDebugEnabled"],
 		["arn"] = args["arn"],
+		["hostAddress"] = args["hostAddress"],
 	}
 	asserts.AssertRemoteAccessSession(all_args)
 	return {
@@ -3870,17 +5060,19 @@ function M.RemoteAccessSession(args)
     }
 end
 
-keys.Device = { ["formFactor"] = true, ["name"] = true, ["remoteAccessEnabled"] = true, ["resolution"] = true, ["image"] = true, ["fleetName"] = true, ["fleetType"] = true, ["platform"] = true, ["carrier"] = true, ["radio"] = true, ["heapSize"] = true, ["memory"] = true, ["model"] = true, ["os"] = true, ["cpu"] = true, ["arn"] = true, ["manufacturer"] = true, nil }
+keys.Device = { ["formFactor"] = true, ["fleetName"] = true, ["name"] = true, ["instances"] = true, ["remoteAccessEnabled"] = true, ["resolution"] = true, ["image"] = true, ["remoteDebugEnabled"] = true, ["fleetType"] = true, ["platform"] = true, ["carrier"] = true, ["radio"] = true, ["heapSize"] = true, ["memory"] = true, ["model"] = true, ["manufacturer"] = true, ["os"] = true, ["cpu"] = true, ["arn"] = true, ["modelId"] = true, nil }
 
 function asserts.AssertDevice(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Device to be of type 'table'")
 	if struct["formFactor"] then asserts.AssertDeviceFormFactor(struct["formFactor"]) end
+	if struct["fleetName"] then asserts.AssertString(struct["fleetName"]) end
 	if struct["name"] then asserts.AssertName(struct["name"]) end
+	if struct["instances"] then asserts.AssertDeviceInstances(struct["instances"]) end
 	if struct["remoteAccessEnabled"] then asserts.AssertBoolean(struct["remoteAccessEnabled"]) end
 	if struct["resolution"] then asserts.AssertResolution(struct["resolution"]) end
 	if struct["image"] then asserts.AssertString(struct["image"]) end
-	if struct["fleetName"] then asserts.AssertString(struct["fleetName"]) end
+	if struct["remoteDebugEnabled"] then asserts.AssertBoolean(struct["remoteDebugEnabled"]) end
 	if struct["fleetType"] then asserts.AssertString(struct["fleetType"]) end
 	if struct["platform"] then asserts.AssertDevicePlatform(struct["platform"]) end
 	if struct["carrier"] then asserts.AssertString(struct["carrier"]) end
@@ -3888,10 +5080,11 @@ function asserts.AssertDevice(struct)
 	if struct["heapSize"] then asserts.AssertLong(struct["heapSize"]) end
 	if struct["memory"] then asserts.AssertLong(struct["memory"]) end
 	if struct["model"] then asserts.AssertString(struct["model"]) end
+	if struct["manufacturer"] then asserts.AssertString(struct["manufacturer"]) end
 	if struct["os"] then asserts.AssertString(struct["os"]) end
 	if struct["cpu"] then asserts.AssertCPU(struct["cpu"]) end
 	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
-	if struct["manufacturer"] then asserts.AssertString(struct["manufacturer"]) end
+	if struct["modelId"] then asserts.AssertString(struct["modelId"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Device[k], "Device contains unknown key " .. tostring(k))
 	end
@@ -3902,11 +5095,13 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * formFactor [DeviceFormFactor] <p>The device's form factor.</p> <p>Allowed values include:</p> <ul> <li> <p>PHONE: The phone form factor.</p> </li> <li> <p>TABLET: The tablet form factor.</p> </li> </ul>
+-- * fleetName [String] <p>The name of the fleet to which this device belongs.</p>
 -- * name [Name] <p>The device's display name.</p>
+-- * instances [DeviceInstances] <p>The instances belonging to this device.</p>
 -- * remoteAccessEnabled [Boolean] <p>Specifies whether remote access has been enabled for the specified device.</p>
 -- * resolution [Resolution] <p>The resolution of the device.</p>
 -- * image [String] <p>The device's image name.</p>
--- * fleetName [String] <p>The name of the fleet to which this device belongs.</p>
+-- * remoteDebugEnabled [Boolean] <p>This flag is set to <code>true</code> if remote debugging is enabled for the device.</p>
 -- * fleetType [String] <p>The type of fleet to which this device belongs. Possible values for fleet type are PRIVATE and PUBLIC.</p>
 -- * platform [DevicePlatform] <p>The device's platform.</p> <p>Allowed values include:</p> <ul> <li> <p>ANDROID: The Android platform.</p> </li> <li> <p>IOS: The iOS platform.</p> </li> </ul>
 -- * carrier [String] <p>The device's carrier.</p>
@@ -3914,10 +5109,11 @@ end
 -- * heapSize [Long] <p>The device's heap size, expressed in bytes.</p>
 -- * memory [Long] <p>The device's total memory size, expressed in bytes.</p>
 -- * model [String] <p>The device's model name.</p>
+-- * manufacturer [String] <p>The device's manufacturer name.</p>
 -- * os [String] <p>The device's operating system type.</p>
 -- * cpu [CPU] <p>Information about the device's CPU.</p>
 -- * arn [AmazonResourceName] <p>The device's ARN.</p>
--- * manufacturer [String] <p>The device's manufacturer name.</p>
+-- * modelId [String] <p>The device's model ID.</p>
 -- @return Device structure as a key-value pair table
 function M.Device(args)
 	assert(args, "You must provide an argument table when creating Device")
@@ -3929,11 +5125,13 @@ function M.Device(args)
     }
 	local all_args = { 
 		["formFactor"] = args["formFactor"],
+		["fleetName"] = args["fleetName"],
 		["name"] = args["name"],
+		["instances"] = args["instances"],
 		["remoteAccessEnabled"] = args["remoteAccessEnabled"],
 		["resolution"] = args["resolution"],
 		["image"] = args["image"],
-		["fleetName"] = args["fleetName"],
+		["remoteDebugEnabled"] = args["remoteDebugEnabled"],
 		["fleetType"] = args["fleetType"],
 		["platform"] = args["platform"],
 		["carrier"] = args["carrier"],
@@ -3941,12 +5139,52 @@ function M.Device(args)
 		["heapSize"] = args["heapSize"],
 		["memory"] = args["memory"],
 		["model"] = args["model"],
+		["manufacturer"] = args["manufacturer"],
 		["os"] = args["os"],
 		["cpu"] = args["cpu"],
 		["arn"] = args["arn"],
-		["manufacturer"] = args["manufacturer"],
+		["modelId"] = args["modelId"],
 	}
 	asserts.AssertDevice(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetInstanceProfileRequest = { ["arn"] = true, nil }
+
+function asserts.AssertGetInstanceProfileRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetInstanceProfileRequest to be of type 'table'")
+	assert(struct["arn"], "Expected key arn to exist in table")
+	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetInstanceProfileRequest[k], "GetInstanceProfileRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetInstanceProfileRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * arn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of your instance profile.</p>
+-- Required key: arn
+-- @return GetInstanceProfileRequest structure as a key-value pair table
+function M.GetInstanceProfileRequest(args)
+	assert(args, "You must provide an argument table when creating GetInstanceProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["arn"] = args["arn"],
+	}
+	asserts.AssertGetInstanceProfileRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4038,23 +5276,60 @@ function M.InstallToRemoteAccessSessionRequest(args)
     }
 end
 
-keys.DeleteProjectResult = { nil }
+keys.UpdateInstanceProfileResult = { ["instanceProfile"] = true, nil }
 
-function asserts.AssertDeleteProjectResult(struct)
+function asserts.AssertUpdateInstanceProfileResult(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteProjectResult to be of type 'table'")
+	assert(type(struct) == "table", "Expected UpdateInstanceProfileResult to be of type 'table'")
+	if struct["instanceProfile"] then asserts.AssertInstanceProfile(struct["instanceProfile"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteProjectResult[k], "DeleteProjectResult contains unknown key " .. tostring(k))
+		assert(keys.UpdateInstanceProfileResult[k], "UpdateInstanceProfileResult contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteProjectResult
--- <p>Represents the result of a delete project request.</p>
+--- Create a structure of type UpdateInstanceProfileResult
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return DeleteProjectResult structure as a key-value pair table
-function M.DeleteProjectResult(args)
-	assert(args, "You must provide an argument table when creating DeleteProjectResult")
+-- * instanceProfile [InstanceProfile] <p>An object containing information about your instance profile.</p>
+-- @return UpdateInstanceProfileResult structure as a key-value pair table
+function M.UpdateInstanceProfileResult(args)
+	assert(args, "You must provide an argument table when creating UpdateInstanceProfileResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["instanceProfile"] = args["instanceProfile"],
+	}
+	asserts.AssertUpdateInstanceProfileResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetAccountSettingsRequest = { nil }
+
+function asserts.AssertGetAccountSettingsRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetAccountSettingsRequest to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.GetAccountSettingsRequest[k], "GetAccountSettingsRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetAccountSettingsRequest
+-- <p>Represents the request sent to retrieve the account settings.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return GetAccountSettingsRequest structure as a key-value pair table
+function M.GetAccountSettingsRequest(args)
+	assert(args, "You must provide an argument table when creating GetAccountSettingsRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -4063,7 +5338,7 @@ function M.DeleteProjectResult(args)
     }
 	local all_args = { 
 	}
-	asserts.AssertDeleteProjectResult(all_args)
+	asserts.AssertGetAccountSettingsRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4349,22 +5624,24 @@ function M.CreateRemoteAccessSessionResult(args)
     }
 end
 
-keys.CreateRemoteAccessSessionConfiguration = { ["billingMethod"] = true, nil }
+keys.CreateRemoteAccessSessionConfiguration = { ["billingMethod"] = true, ["vpceConfigurationArns"] = true, nil }
 
 function asserts.AssertCreateRemoteAccessSessionConfiguration(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateRemoteAccessSessionConfiguration to be of type 'table'")
 	if struct["billingMethod"] then asserts.AssertBillingMethod(struct["billingMethod"]) end
+	if struct["vpceConfigurationArns"] then asserts.AssertAmazonResourceNames(struct["vpceConfigurationArns"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateRemoteAccessSessionConfiguration[k], "CreateRemoteAccessSessionConfiguration contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateRemoteAccessSessionConfiguration
--- <p>Creates the configuration settings for a remote access session, including the device model and type.</p>
+-- <p>Configuration settings for a remote access session, including billing method.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * billingMethod [BillingMethod] <p>Returns the billing method for purposes of configuring a remote access session.</p>
+-- * billingMethod [BillingMethod] <p>The billing method for the remote access session.</p>
+-- * vpceConfigurationArns [AmazonResourceNames] <p>An array of Amazon Resource Names (ARNs) included in the VPC endpoint configuration.</p>
 -- @return CreateRemoteAccessSessionConfiguration structure as a key-value pair table
 function M.CreateRemoteAccessSessionConfiguration(args)
 	assert(args, "You must provide an argument table when creating CreateRemoteAccessSessionConfiguration")
@@ -4376,6 +5653,7 @@ function M.CreateRemoteAccessSessionConfiguration(args)
     }
 	local all_args = { 
 		["billingMethod"] = args["billingMethod"],
+		["vpceConfigurationArns"] = args["vpceConfigurationArns"],
 	}
 	asserts.AssertCreateRemoteAccessSessionConfiguration(all_args)
 	return {
@@ -4423,7 +5701,7 @@ function M.GetTestResult(args)
     }
 end
 
-keys.ScheduleRunConfiguration = { ["radios"] = true, ["locale"] = true, ["networkProfileArn"] = true, ["location"] = true, ["extraDataPackageArn"] = true, ["auxiliaryApps"] = true, ["billingMethod"] = true, nil }
+keys.ScheduleRunConfiguration = { ["radios"] = true, ["locale"] = true, ["networkProfileArn"] = true, ["location"] = true, ["extraDataPackageArn"] = true, ["auxiliaryApps"] = true, ["billingMethod"] = true, ["vpceConfigurationArns"] = true, ["customerArtifactPaths"] = true, nil }
 
 function asserts.AssertScheduleRunConfiguration(struct)
 	assert(struct)
@@ -4435,6 +5713,8 @@ function asserts.AssertScheduleRunConfiguration(struct)
 	if struct["extraDataPackageArn"] then asserts.AssertAmazonResourceName(struct["extraDataPackageArn"]) end
 	if struct["auxiliaryApps"] then asserts.AssertAmazonResourceNames(struct["auxiliaryApps"]) end
 	if struct["billingMethod"] then asserts.AssertBillingMethod(struct["billingMethod"]) end
+	if struct["vpceConfigurationArns"] then asserts.AssertAmazonResourceNames(struct["vpceConfigurationArns"]) end
+	if struct["customerArtifactPaths"] then asserts.AssertCustomerArtifactPaths(struct["customerArtifactPaths"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ScheduleRunConfiguration[k], "ScheduleRunConfiguration contains unknown key " .. tostring(k))
 	end
@@ -4451,6 +5731,8 @@ end
 -- * extraDataPackageArn [AmazonResourceName] <p>The ARN of the extra data for the run. The extra data is a .zip file that AWS Device Farm will extract to external data for Android or the app's sandbox for iOS.</p>
 -- * auxiliaryApps [AmazonResourceNames] <p>A list of auxiliary apps for the run.</p>
 -- * billingMethod [BillingMethod] <p>Specifies the billing method for a test run: <code>metered</code> or <code>unmetered</code>. If the parameter is not specified, the default value is <code>metered</code>.</p>
+-- * vpceConfigurationArns [AmazonResourceNames] <p>An array of Amazon Resource Names (ARNs) for your VPC endpoint configurations.</p>
+-- * customerArtifactPaths [CustomerArtifactPaths] <p>Input <code>CustomerArtifactPaths</code> object for the scheduled run configuration.</p>
 -- @return ScheduleRunConfiguration structure as a key-value pair table
 function M.ScheduleRunConfiguration(args)
 	assert(args, "You must provide an argument table when creating ScheduleRunConfiguration")
@@ -4468,8 +5750,62 @@ function M.ScheduleRunConfiguration(args)
 		["extraDataPackageArn"] = args["extraDataPackageArn"],
 		["auxiliaryApps"] = args["auxiliaryApps"],
 		["billingMethod"] = args["billingMethod"],
+		["vpceConfigurationArns"] = args["vpceConfigurationArns"],
+		["customerArtifactPaths"] = args["customerArtifactPaths"],
 	}
 	asserts.AssertScheduleRunConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeviceInstance = { ["status"] = true, ["udid"] = true, ["labels"] = true, ["deviceArn"] = true, ["instanceProfile"] = true, ["arn"] = true, nil }
+
+function asserts.AssertDeviceInstance(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeviceInstance to be of type 'table'")
+	if struct["status"] then asserts.AssertInstanceStatus(struct["status"]) end
+	if struct["udid"] then asserts.AssertString(struct["udid"]) end
+	if struct["labels"] then asserts.AssertInstanceLabels(struct["labels"]) end
+	if struct["deviceArn"] then asserts.AssertAmazonResourceName(struct["deviceArn"]) end
+	if struct["instanceProfile"] then asserts.AssertInstanceProfile(struct["instanceProfile"]) end
+	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeviceInstance[k], "DeviceInstance contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeviceInstance
+-- <p>Represents the device instance.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [InstanceStatus] <p>The status of the device instance. Valid values are listed below.</p>
+-- * udid [String] <p>Unique device identifier for the device instance.</p>
+-- * labels [InstanceLabels] <p>An array of strings describing the device instance.</p>
+-- * deviceArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the device.</p>
+-- * instanceProfile [InstanceProfile] <p>A object containing information about the instance profile.</p>
+-- * arn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the device instance.</p>
+-- @return DeviceInstance structure as a key-value pair table
+function M.DeviceInstance(args)
+	assert(args, "You must provide an argument table when creating DeviceInstance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["status"] = args["status"],
+		["udid"] = args["udid"],
+		["labels"] = args["labels"],
+		["deviceArn"] = args["deviceArn"],
+		["instanceProfile"] = args["instanceProfile"],
+		["arn"] = args["arn"],
+	}
+	asserts.AssertDeviceInstance(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4540,6 +5876,43 @@ function M.NetworkProfile(args)
 		["description"] = args["description"],
 	}
 	asserts.AssertNetworkProfile(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateVPCEConfigurationResult = { ["vpceConfiguration"] = true, nil }
+
+function asserts.AssertUpdateVPCEConfigurationResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateVPCEConfigurationResult to be of type 'table'")
+	if struct["vpceConfiguration"] then asserts.AssertVPCEConfiguration(struct["vpceConfiguration"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateVPCEConfigurationResult[k], "UpdateVPCEConfigurationResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateVPCEConfigurationResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vpceConfiguration [VPCEConfiguration] <p>An object containing information about your VPC endpoint configuration.</p>
+-- @return UpdateVPCEConfigurationResult structure as a key-value pair table
+function M.UpdateVPCEConfigurationResult(args)
+	assert(args, "You must provide an argument table when creating UpdateVPCEConfigurationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["vpceConfiguration"] = args["vpceConfiguration"],
+	}
+	asserts.AssertUpdateVPCEConfigurationResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4791,6 +6164,45 @@ function M.TrialMinutes(args)
     }
 end
 
+keys.GetDeviceInstanceRequest = { ["arn"] = true, nil }
+
+function asserts.AssertGetDeviceInstanceRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetDeviceInstanceRequest to be of type 'table'")
+	assert(struct["arn"], "Expected key arn to exist in table")
+	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetDeviceInstanceRequest[k], "GetDeviceInstanceRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetDeviceInstanceRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * arn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the instance you're requesting information about.</p>
+-- Required key: arn
+-- @return GetDeviceInstanceRequest structure as a key-value pair table
+function M.GetDeviceInstanceRequest(args)
+	assert(args, "You must provide an argument table when creating GetDeviceInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["arn"] = args["arn"],
+	}
+	asserts.AssertGetDeviceInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.GetOfferingStatusRequest = { ["nextToken"] = true, nil }
 
 function asserts.AssertGetOfferingStatusRequest(struct)
@@ -4960,6 +6372,91 @@ function M.Offering(args)
     }
 end
 
+keys.ListVPCEConfigurationsResult = { ["nextToken"] = true, ["vpceConfigurations"] = true, nil }
+
+function asserts.AssertListVPCEConfigurationsResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListVPCEConfigurationsResult to be of type 'table'")
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["vpceConfigurations"] then asserts.AssertVPCEConfigurations(struct["vpceConfigurations"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListVPCEConfigurationsResult[k], "ListVPCEConfigurationsResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListVPCEConfigurationsResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PaginationToken] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- * vpceConfigurations [VPCEConfigurations] <p>An array of <code>VPCEConfiguration</code> objects containing information about your VPC endpoint configuration.</p>
+-- @return ListVPCEConfigurationsResult structure as a key-value pair table
+function M.ListVPCEConfigurationsResult(args)
+	assert(args, "You must provide an argument table when creating ListVPCEConfigurationsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["nextToken"] = args["nextToken"],
+		["vpceConfigurations"] = args["vpceConfigurations"],
+	}
+	asserts.AssertListVPCEConfigurationsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateDeviceInstanceRequest = { ["labels"] = true, ["profileArn"] = true, ["arn"] = true, nil }
+
+function asserts.AssertUpdateDeviceInstanceRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateDeviceInstanceRequest to be of type 'table'")
+	assert(struct["arn"], "Expected key arn to exist in table")
+	if struct["labels"] then asserts.AssertInstanceLabels(struct["labels"]) end
+	if struct["profileArn"] then asserts.AssertAmazonResourceName(struct["profileArn"]) end
+	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateDeviceInstanceRequest[k], "UpdateDeviceInstanceRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateDeviceInstanceRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * labels [InstanceLabels] <p>An array of strings that you want to associate with the device instance.</p>
+-- * profileArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the profile that you want to associate with the device instance.</p>
+-- * arn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the device instance.</p>
+-- Required key: arn
+-- @return UpdateDeviceInstanceRequest structure as a key-value pair table
+function M.UpdateDeviceInstanceRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateDeviceInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["labels"] = args["labels"],
+		["profileArn"] = args["profileArn"],
+		["arn"] = args["arn"],
+	}
+	asserts.AssertUpdateDeviceInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListTestsResult = { ["tests"] = true, ["nextToken"] = true, nil }
 
 function asserts.AssertListTestsResult(struct)
@@ -5000,29 +6497,27 @@ function M.ListTestsResult(args)
     }
 end
 
-keys.ExecutionConfiguration = { ["jobTimeoutMinutes"] = true, ["appPackagesCleanup"] = true, ["accountsCleanup"] = true, nil }
+keys.ListRemoteAccessSessionsResult = { ["nextToken"] = true, ["remoteAccessSessions"] = true, nil }
 
-function asserts.AssertExecutionConfiguration(struct)
+function asserts.AssertListRemoteAccessSessionsResult(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ExecutionConfiguration to be of type 'table'")
-	if struct["jobTimeoutMinutes"] then asserts.AssertJobTimeoutMinutes(struct["jobTimeoutMinutes"]) end
-	if struct["appPackagesCleanup"] then asserts.AssertAppPackagesCleanup(struct["appPackagesCleanup"]) end
-	if struct["accountsCleanup"] then asserts.AssertAccountsCleanup(struct["accountsCleanup"]) end
+	assert(type(struct) == "table", "Expected ListRemoteAccessSessionsResult to be of type 'table'")
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["remoteAccessSessions"] then asserts.AssertRemoteAccessSessions(struct["remoteAccessSessions"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ExecutionConfiguration[k], "ExecutionConfiguration contains unknown key " .. tostring(k))
+		assert(keys.ListRemoteAccessSessionsResult[k], "ListRemoteAccessSessionsResult contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ExecutionConfiguration
--- <p>Represents configuration information about a test run, such as the execution timeout (in minutes).</p>
+--- Create a structure of type ListRemoteAccessSessionsResult
+-- <p>Represents the response from the server after AWS Device Farm makes a request to return information about the remote access session.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * jobTimeoutMinutes [JobTimeoutMinutes] <p>The number of minutes a test run will execute before it times out.</p>
--- * appPackagesCleanup [AppPackagesCleanup] <p>True if app package cleanup is enabled at the beginning of the test; otherwise, false.</p>
--- * accountsCleanup [AccountsCleanup] <p>True if account cleanup is enabled at the beginning of the test; otherwise, false.</p>
--- @return ExecutionConfiguration structure as a key-value pair table
-function M.ExecutionConfiguration(args)
-	assert(args, "You must provide an argument table when creating ExecutionConfiguration")
+-- * nextToken [PaginationToken] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- * remoteAccessSessions [RemoteAccessSessions] <p>A container representing the metadata from the service about each remote access session you are requesting.</p>
+-- @return ListRemoteAccessSessionsResult structure as a key-value pair table
+function M.ListRemoteAccessSessionsResult(args)
+	assert(args, "You must provide an argument table when creating ListRemoteAccessSessionsResult")
     local query_args = { 
     }
     local uri_args = { 
@@ -5030,11 +6525,10 @@ function M.ExecutionConfiguration(args)
     local header_args = { 
     }
 	local all_args = { 
-		["jobTimeoutMinutes"] = args["jobTimeoutMinutes"],
-		["appPackagesCleanup"] = args["appPackagesCleanup"],
-		["accountsCleanup"] = args["accountsCleanup"],
+		["nextToken"] = args["nextToken"],
+		["remoteAccessSessions"] = args["remoteAccessSessions"],
 	}
-	asserts.AssertExecutionConfiguration(all_args)
+	asserts.AssertListRemoteAccessSessionsResult(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5092,23 +6586,23 @@ function M.Artifact(args)
     }
 end
 
-keys.GetAccountSettingsRequest = { nil }
+keys.DeleteProjectResult = { nil }
 
-function asserts.AssertGetAccountSettingsRequest(struct)
+function asserts.AssertDeleteProjectResult(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected GetAccountSettingsRequest to be of type 'table'")
+	assert(type(struct) == "table", "Expected DeleteProjectResult to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.GetAccountSettingsRequest[k], "GetAccountSettingsRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteProjectResult[k], "DeleteProjectResult contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type GetAccountSettingsRequest
--- <p>Represents the request sent to retrieve the account settings.</p>
+--- Create a structure of type DeleteProjectResult
+-- <p>Represents the result of a delete project request.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return GetAccountSettingsRequest structure as a key-value pair table
-function M.GetAccountSettingsRequest(args)
-	assert(args, "You must provide an argument table when creating GetAccountSettingsRequest")
+-- @return DeleteProjectResult structure as a key-value pair table
+function M.DeleteProjectResult(args)
+	assert(args, "You must provide an argument table when creating DeleteProjectResult")
     local query_args = { 
     }
     local uri_args = { 
@@ -5117,7 +6611,46 @@ function M.GetAccountSettingsRequest(args)
     }
 	local all_args = { 
 	}
-	asserts.AssertGetAccountSettingsRequest(all_args)
+	asserts.AssertDeleteProjectResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteInstanceProfileRequest = { ["arn"] = true, nil }
+
+function asserts.AssertDeleteInstanceProfileRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteInstanceProfileRequest to be of type 'table'")
+	assert(struct["arn"], "Expected key arn to exist in table")
+	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteInstanceProfileRequest[k], "DeleteInstanceProfileRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteInstanceProfileRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * arn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the instance profile you are requesting to delete.</p>
+-- Required key: arn
+-- @return DeleteInstanceProfileRequest structure as a key-value pair table
+function M.DeleteInstanceProfileRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteInstanceProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["arn"] = args["arn"],
+	}
+	asserts.AssertDeleteInstanceProfileRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5283,6 +6816,43 @@ function M.GetUploadRequest(args)
     }
 end
 
+keys.StopJobResult = { ["job"] = true, nil }
+
+function asserts.AssertStopJobResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected StopJobResult to be of type 'table'")
+	if struct["job"] then asserts.AssertJob(struct["job"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.StopJobResult[k], "StopJobResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type StopJobResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * job [Job] <p>The job that was stopped.</p>
+-- @return StopJobResult structure as a key-value pair table
+function M.StopJobResult(args)
+	assert(args, "You must provide an argument table when creating StopJobResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["job"] = args["job"],
+	}
+	asserts.AssertStopJobResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListOfferingPromotionsRequest = { ["nextToken"] = true, nil }
 
 function asserts.AssertListOfferingPromotionsRequest(struct)
@@ -5360,27 +6930,27 @@ function M.ListRunsResult(args)
     }
 end
 
-keys.StopRunRequest = { ["arn"] = true, nil }
+keys.StopJobRequest = { ["arn"] = true, nil }
 
-function asserts.AssertStopRunRequest(struct)
+function asserts.AssertStopJobRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected StopRunRequest to be of type 'table'")
+	assert(type(struct) == "table", "Expected StopJobRequest to be of type 'table'")
 	assert(struct["arn"], "Expected key arn to exist in table")
 	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.StopRunRequest[k], "StopRunRequest contains unknown key " .. tostring(k))
+		assert(keys.StopJobRequest[k], "StopJobRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type StopRunRequest
--- <p>Represents the request to stop a specific run.</p>
+--- Create a structure of type StopJobRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * arn [AmazonResourceName] <p>Represents the Amazon Resource Name (ARN) of the Device Farm run you wish to stop.</p>
+-- * arn [AmazonResourceName] <p>Represents the Amazon Resource Name (ARN) of the Device Farm job you wish to stop.</p>
 -- Required key: arn
--- @return StopRunRequest structure as a key-value pair table
-function M.StopRunRequest(args)
-	assert(args, "You must provide an argument table when creating StopRunRequest")
+-- @return StopJobRequest structure as a key-value pair table
+function M.StopJobRequest(args)
+	assert(args, "You must provide an argument table when creating StopJobRequest")
     local query_args = { 
     }
     local uri_args = { 
@@ -5390,7 +6960,7 @@ function M.StopRunRequest(args)
 	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertStopRunRequest(all_args)
+	asserts.AssertStopJobRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5509,49 +7079,6 @@ function M.GetSuiteRequest(args)
 		["arn"] = args["arn"],
 	}
 	asserts.AssertGetSuiteRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.Rule = { ["operator"] = true, ["attribute"] = true, ["value"] = true, nil }
-
-function asserts.AssertRule(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected Rule to be of type 'table'")
-	if struct["operator"] then asserts.AssertRuleOperator(struct["operator"]) end
-	if struct["attribute"] then asserts.AssertDeviceAttribute(struct["attribute"]) end
-	if struct["value"] then asserts.AssertString(struct["value"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.Rule[k], "Rule contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type Rule
--- <p>Represents a condition for a device pool.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * operator [RuleOperator] <p>The rule's operator.</p> <ul> <li> <p>EQUALS: The equals operator.</p> </li> <li> <p>GREATER_THAN: The greater-than operator.</p> </li> <li> <p>IN: The in operator.</p> </li> <li> <p>LESS_THAN: The less-than operator.</p> </li> <li> <p>NOT_IN: The not-in operator.</p> </li> <li> <p>CONTAINS: The contains operator.</p> </li> </ul>
--- * attribute [DeviceAttribute] <p>The rule's stringified attribute. For example, specify the value as <code>"\"abc\""</code>.</p> <p>Allowed values include:</p> <ul> <li> <p>ARN: The ARN.</p> </li> <li> <p>FORM_FACTOR: The form factor (for example, phone or tablet).</p> </li> <li> <p>MANUFACTURER: The manufacturer.</p> </li> <li> <p>PLATFORM: The platform (for example, Android or iOS).</p> </li> <li> <p>REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.</p> </li> <li> <p>APPIUM_VERSION: The Appium version for the test.</p> </li> </ul>
--- * value [String] <p>The rule's value.</p>
--- @return Rule structure as a key-value pair table
-function M.Rule(args)
-	assert(args, "You must provide an argument table when creating Rule")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["operator"] = args["operator"],
-		["attribute"] = args["attribute"],
-		["value"] = args["value"],
-	}
-	asserts.AssertRule(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5753,46 +7280,6 @@ function M.CreateNetworkProfileRequest(args)
     }
 end
 
-keys.ListRemoteAccessSessionsResult = { ["nextToken"] = true, ["remoteAccessSessions"] = true, nil }
-
-function asserts.AssertListRemoteAccessSessionsResult(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ListRemoteAccessSessionsResult to be of type 'table'")
-	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
-	if struct["remoteAccessSessions"] then asserts.AssertRemoteAccessSessions(struct["remoteAccessSessions"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ListRemoteAccessSessionsResult[k], "ListRemoteAccessSessionsResult contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ListRemoteAccessSessionsResult
--- <p>Represents the response from the server after AWS Device Farm makes a request to return information about the remote access session.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * nextToken [PaginationToken] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
--- * remoteAccessSessions [RemoteAccessSessions] <p>A container representing the metadata from the service about each remote access session you are requesting.</p>
--- @return ListRemoteAccessSessionsResult structure as a key-value pair table
-function M.ListRemoteAccessSessionsResult(args)
-	assert(args, "You must provide an argument table when creating ListRemoteAccessSessionsResult")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["nextToken"] = args["nextToken"],
-		["remoteAccessSessions"] = args["remoteAccessSessions"],
-	}
-	asserts.AssertListRemoteAccessSessionsResult(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ListNetworkProfilesResult = { ["nextToken"] = true, ["networkProfiles"] = true, nil }
 
 function asserts.AssertListNetworkProfilesResult(struct)
@@ -5825,6 +7312,106 @@ function M.ListNetworkProfilesResult(args)
 		["networkProfiles"] = args["networkProfiles"],
 	}
 	asserts.AssertListNetworkProfilesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateVPCEConfigurationRequest = { ["vpceConfigurationName"] = true, ["serviceDnsName"] = true, ["vpceConfigurationDescription"] = true, ["vpceServiceName"] = true, ["arn"] = true, nil }
+
+function asserts.AssertUpdateVPCEConfigurationRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateVPCEConfigurationRequest to be of type 'table'")
+	assert(struct["arn"], "Expected key arn to exist in table")
+	if struct["vpceConfigurationName"] then asserts.AssertVPCEConfigurationName(struct["vpceConfigurationName"]) end
+	if struct["serviceDnsName"] then asserts.AssertServiceDnsName(struct["serviceDnsName"]) end
+	if struct["vpceConfigurationDescription"] then asserts.AssertVPCEConfigurationDescription(struct["vpceConfigurationDescription"]) end
+	if struct["vpceServiceName"] then asserts.AssertVPCEServiceName(struct["vpceServiceName"]) end
+	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateVPCEConfigurationRequest[k], "UpdateVPCEConfigurationRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateVPCEConfigurationRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vpceConfigurationName [VPCEConfigurationName] <p>The friendly name you give to your VPC endpoint configuration, to manage your configurations more easily.</p>
+-- * serviceDnsName [ServiceDnsName] <p>The DNS (domain) name used to connect to your private service in your Amazon VPC. The DNS name must not already be in use on the Internet.</p>
+-- * vpceConfigurationDescription [VPCEConfigurationDescription] <p>An optional description, providing more details about your VPC endpoint configuration.</p>
+-- * vpceServiceName [VPCEServiceName] <p>The name of the VPC endpoint service running inside your AWS account that you want Device Farm to test.</p>
+-- * arn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the VPC endpoint configuration you want to update.</p>
+-- Required key: arn
+-- @return UpdateVPCEConfigurationRequest structure as a key-value pair table
+function M.UpdateVPCEConfigurationRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateVPCEConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["vpceConfigurationName"] = args["vpceConfigurationName"],
+		["serviceDnsName"] = args["serviceDnsName"],
+		["vpceConfigurationDescription"] = args["vpceConfigurationDescription"],
+		["vpceServiceName"] = args["vpceServiceName"],
+		["arn"] = args["arn"],
+	}
+	asserts.AssertUpdateVPCEConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.VPCEConfiguration = { ["vpceConfigurationName"] = true, ["serviceDnsName"] = true, ["vpceConfigurationDescription"] = true, ["vpceServiceName"] = true, ["arn"] = true, nil }
+
+function asserts.AssertVPCEConfiguration(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected VPCEConfiguration to be of type 'table'")
+	if struct["vpceConfigurationName"] then asserts.AssertVPCEConfigurationName(struct["vpceConfigurationName"]) end
+	if struct["serviceDnsName"] then asserts.AssertServiceDnsName(struct["serviceDnsName"]) end
+	if struct["vpceConfigurationDescription"] then asserts.AssertVPCEConfigurationDescription(struct["vpceConfigurationDescription"]) end
+	if struct["vpceServiceName"] then asserts.AssertVPCEServiceName(struct["vpceServiceName"]) end
+	if struct["arn"] then asserts.AssertAmazonResourceName(struct["arn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.VPCEConfiguration[k], "VPCEConfiguration contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type VPCEConfiguration
+-- <p>Represents an Amazon Virtual Private Cloud (VPC) endpoint configuration.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vpceConfigurationName [VPCEConfigurationName] <p>The friendly name you give to your VPC endpoint configuration, to manage your configurations more easily.</p>
+-- * serviceDnsName [ServiceDnsName] <p>The DNS name that maps to the private IP address of the service you want to access.</p>
+-- * vpceConfigurationDescription [VPCEConfigurationDescription] <p>An optional description, providing more details about your VPC endpoint configuration.</p>
+-- * vpceServiceName [VPCEServiceName] <p>The name of the VPC endpoint service running inside your AWS account that you want Device Farm to test.</p>
+-- * arn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the VPC endpoint configuration.</p>
+-- @return VPCEConfiguration structure as a key-value pair table
+function M.VPCEConfiguration(args)
+	assert(args, "You must provide an argument table when creating VPCEConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["vpceConfigurationName"] = args["vpceConfigurationName"],
+		["serviceDnsName"] = args["serviceDnsName"],
+		["vpceConfigurationDescription"] = args["vpceConfigurationDescription"],
+		["vpceServiceName"] = args["vpceServiceName"],
+		["arn"] = args["arn"],
+	}
+	asserts.AssertVPCEConfiguration(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -6104,6 +7691,40 @@ function M.SampleType(str)
 	return str
 end
 
+function asserts.AssertVPCEConfigurationName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected VPCEConfigurationName to be of type 'string'")
+	assert(#str <= 1024, "Expected string to be max 1024 characters")
+end
+
+--  
+function M.VPCEConfigurationName(str)
+	asserts.AssertVPCEConfigurationName(str)
+	return str
+end
+
+function asserts.AssertOfferingTransactionType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected OfferingTransactionType to be of type 'string'")
+end
+
+--  
+function M.OfferingTransactionType(str)
+	asserts.AssertOfferingTransactionType(str)
+	return str
+end
+
+function asserts.AssertExecutionResultCode(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ExecutionResultCode to be of type 'string'")
+end
+
+--  
+function M.ExecutionResultCode(str)
+	asserts.AssertExecutionResultCode(str)
+	return str
+end
+
 function asserts.AssertPaginationToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PaginationToken to be of type 'string'")
@@ -6114,6 +7735,18 @@ end
 --  
 function M.PaginationToken(str)
 	asserts.AssertPaginationToken(str)
+	return str
+end
+
+function asserts.AssertInteractionMode(str)
+	assert(str)
+	assert(type(str) == "string", "Expected InteractionMode to be of type 'string'")
+	assert(#str <= 64, "Expected string to be max 64 characters")
+end
+
+--  
+function M.InteractionMode(str)
+	asserts.AssertInteractionMode(str)
 	return str
 end
 
@@ -6139,17 +7772,6 @@ function M.ArtifactCategory(str)
 	return str
 end
 
-function asserts.AssertOfferingTransactionType(str)
-	assert(str)
-	assert(type(str) == "string", "Expected OfferingTransactionType to be of type 'string'")
-end
-
---  
-function M.OfferingTransactionType(str)
-	asserts.AssertOfferingTransactionType(str)
-	return str
-end
-
 function asserts.AssertUploadType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UploadType to be of type 'string'")
@@ -6158,6 +7780,18 @@ end
 --  
 function M.UploadType(str)
 	asserts.AssertUploadType(str)
+	return str
+end
+
+function asserts.AssertServiceDnsName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ServiceDnsName to be of type 'string'")
+	assert(#str <= 2048, "Expected string to be max 2048 characters")
+end
+
+--  
+function M.ServiceDnsName(str)
+	asserts.AssertServiceDnsName(str)
 	return str
 end
 
@@ -6240,14 +7874,38 @@ function M.NetworkProfileType(str)
 	return str
 end
 
-function asserts.AssertExecutionResult(str)
+function asserts.AssertVPCEServiceName(str)
 	assert(str)
-	assert(type(str) == "string", "Expected ExecutionResult to be of type 'string'")
+	assert(type(str) == "string", "Expected VPCEServiceName to be of type 'string'")
+	assert(#str <= 2048, "Expected string to be max 2048 characters")
 end
 
 --  
-function M.ExecutionResult(str)
-	asserts.AssertExecutionResult(str)
+function M.VPCEServiceName(str)
+	asserts.AssertVPCEServiceName(str)
+	return str
+end
+
+function asserts.AssertInstanceStatus(str)
+	assert(str)
+	assert(type(str) == "string", "Expected InstanceStatus to be of type 'string'")
+end
+
+--  
+function M.InstanceStatus(str)
+	asserts.AssertInstanceStatus(str)
+	return str
+end
+
+function asserts.AssertSshPublicKey(str)
+	assert(str)
+	assert(type(str) == "string", "Expected SshPublicKey to be of type 'string'")
+	assert(#str <= 8192, "Expected string to be max 8192 characters")
+end
+
+--  
+function M.SshPublicKey(str)
+	asserts.AssertSshPublicKey(str)
 	return str
 end
 
@@ -6286,6 +7944,17 @@ function M.ExecutionStatus(str)
 	return str
 end
 
+function asserts.AssertExecutionResult(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ExecutionResult to be of type 'string'")
+end
+
+--  
+function M.ExecutionResult(str)
+	asserts.AssertExecutionResult(str)
+	return str
+end
+
 function asserts.AssertOfferingType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected OfferingType to be of type 'string'")
@@ -6309,14 +7978,26 @@ function M.OfferingPromotionIdentifier(str)
 	return str
 end
 
-function asserts.AssertTestType(str)
+function asserts.AssertClientId(str)
 	assert(str)
-	assert(type(str) == "string", "Expected TestType to be of type 'string'")
+	assert(type(str) == "string", "Expected ClientId to be of type 'string'")
+	assert(#str <= 64, "Expected string to be max 64 characters")
 end
 
 --  
-function M.TestType(str)
-	asserts.AssertTestType(str)
+function M.ClientId(str)
+	asserts.AssertClientId(str)
+	return str
+end
+
+function asserts.AssertUploadCategory(str)
+	assert(str)
+	assert(type(str) == "string", "Expected UploadCategory to be of type 'string'")
+end
+
+--  
+function M.UploadCategory(str)
+	asserts.AssertUploadCategory(str)
 	return str
 end
 
@@ -6330,6 +8011,17 @@ end
 --  
 function M.AWSAccountNumber(str)
 	asserts.AssertAWSAccountNumber(str)
+	return str
+end
+
+function asserts.AssertTestType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected TestType to be of type 'string'")
+end
+
+--  
+function M.TestType(str)
+	asserts.AssertTestType(str)
 	return str
 end
 
@@ -6365,6 +8057,30 @@ end
 --  
 function M.Name(str)
 	asserts.AssertName(str)
+	return str
+end
+
+function asserts.AssertVPCEConfigurationDescription(str)
+	assert(str)
+	assert(type(str) == "string", "Expected VPCEConfigurationDescription to be of type 'string'")
+	assert(#str <= 2048, "Expected string to be max 2048 characters")
+end
+
+--  
+function M.VPCEConfigurationDescription(str)
+	asserts.AssertVPCEConfigurationDescription(str)
+	return str
+end
+
+function asserts.AssertHostAddress(str)
+	assert(str)
+	assert(type(str) == "string", "Expected HostAddress to be of type 'string'")
+	assert(#str <= 1024, "Expected string to be max 1024 characters")
+end
+
+--  
+function M.HostAddress(str)
+	asserts.AssertHostAddress(str)
 	return str
 end
 
@@ -6455,6 +8171,26 @@ end
 function M.PercentInteger(integer)
 	asserts.AssertPercentInteger(integer)
 	return integer
+end
+
+function asserts.AssertVideoCapture(boolean)
+	assert(boolean)
+	assert(type(boolean) == "boolean", "Expected VideoCapture to be of type 'boolean'")
+end
+
+function M.VideoCapture(boolean)
+	asserts.AssertVideoCapture(boolean)
+	return boolean
+end
+
+function asserts.AssertSkipAppResign(boolean)
+	assert(boolean)
+	assert(type(boolean) == "boolean", "Expected SkipAppResign to be of type 'boolean'")
+end
+
+function M.SkipAppResign(boolean)
+	asserts.AssertSkipAppResign(boolean)
+	return boolean
 end
 
 function asserts.AssertAppPackagesCleanup(boolean)
@@ -6597,6 +8333,21 @@ function M.RemoteAccessSessions(list)
 	return list
 end
 
+function asserts.AssertInstanceProfiles(list)
+	assert(list)
+	assert(type(list) == "table", "Expected InstanceProfiles to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertInstanceProfile(v)
+	end
+end
+
+--  
+-- List of InstanceProfile objects
+function M.InstanceProfiles(list)
+	asserts.AssertInstanceProfiles(list)
+	return list
+end
+
 function asserts.AssertJobs(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Jobs to be of type ''table")
@@ -6627,18 +8378,18 @@ function M.Rules(list)
 	return list
 end
 
-function asserts.AssertSamples(list)
+function asserts.AssertIncompatibilityMessages(list)
 	assert(list)
-	assert(type(list) == "table", "Expected Samples to be of type ''table")
+	assert(type(list) == "table", "Expected IncompatibilityMessages to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertSample(v)
+		asserts.AssertIncompatibilityMessage(v)
 	end
 end
 
 --  
--- List of Sample objects
-function M.Samples(list)
-	asserts.AssertSamples(list)
+-- List of IncompatibilityMessage objects
+function M.IncompatibilityMessages(list)
+	asserts.AssertIncompatibilityMessages(list)
 	return list
 end
 
@@ -6654,6 +8405,21 @@ end
 -- List of AmazonResourceName objects
 function M.AmazonResourceNames(list)
 	asserts.AssertAmazonResourceNames(list)
+	return list
+end
+
+function asserts.AssertAndroidPaths(list)
+	assert(list)
+	assert(type(list) == "table", "Expected AndroidPaths to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertString(v)
+	end
+end
+
+--  
+-- List of String objects
+function M.AndroidPaths(list)
+	asserts.AssertAndroidPaths(list)
 	return list
 end
 
@@ -6687,18 +8453,18 @@ function M.Offerings(list)
 	return list
 end
 
-function asserts.AssertDevicePools(list)
+function asserts.AssertPackageIds(list)
 	assert(list)
-	assert(type(list) == "table", "Expected DevicePools to be of type ''table")
+	assert(type(list) == "table", "Expected PackageIds to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertDevicePool(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
--- List of DevicePool objects
-function M.DevicePools(list)
-	asserts.AssertDevicePools(list)
+-- List of String objects
+function M.PackageIds(list)
+	asserts.AssertPackageIds(list)
 	return list
 end
 
@@ -6777,6 +8543,21 @@ function M.NetworkProfiles(list)
 	return list
 end
 
+function asserts.AssertInstanceLabels(list)
+	assert(list)
+	assert(type(list) == "table", "Expected InstanceLabels to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertString(v)
+	end
+end
+
+--  
+-- List of String objects
+function M.InstanceLabels(list)
+	asserts.AssertInstanceLabels(list)
+	return list
+end
+
 function asserts.AssertDevices(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Devices to be of type ''table")
@@ -6792,33 +8573,78 @@ function M.Devices(list)
 	return list
 end
 
-function asserts.AssertUploads(list)
+function asserts.AssertDeviceHostPaths(list)
 	assert(list)
-	assert(type(list) == "table", "Expected Uploads to be of type ''table")
+	assert(type(list) == "table", "Expected DeviceHostPaths to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertUpload(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
--- List of Upload objects
-function M.Uploads(list)
-	asserts.AssertUploads(list)
+-- List of String objects
+function M.DeviceHostPaths(list)
+	asserts.AssertDeviceHostPaths(list)
 	return list
 end
 
-function asserts.AssertIncompatibilityMessages(list)
+function asserts.AssertDevicePools(list)
 	assert(list)
-	assert(type(list) == "table", "Expected IncompatibilityMessages to be of type ''table")
+	assert(type(list) == "table", "Expected DevicePools to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertIncompatibilityMessage(v)
+		asserts.AssertDevicePool(v)
 	end
 end
 
 --  
--- List of IncompatibilityMessage objects
-function M.IncompatibilityMessages(list)
-	asserts.AssertIncompatibilityMessages(list)
+-- List of DevicePool objects
+function M.DevicePools(list)
+	asserts.AssertDevicePools(list)
+	return list
+end
+
+function asserts.AssertVPCEConfigurations(list)
+	assert(list)
+	assert(type(list) == "table", "Expected VPCEConfigurations to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertVPCEConfiguration(v)
+	end
+end
+
+--  
+-- List of VPCEConfiguration objects
+function M.VPCEConfigurations(list)
+	asserts.AssertVPCEConfigurations(list)
+	return list
+end
+
+function asserts.AssertIosPaths(list)
+	assert(list)
+	assert(type(list) == "table", "Expected IosPaths to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertString(v)
+	end
+end
+
+--  
+-- List of String objects
+function M.IosPaths(list)
+	asserts.AssertIosPaths(list)
+	return list
+end
+
+function asserts.AssertDeviceInstances(list)
+	assert(list)
+	assert(type(list) == "table", "Expected DeviceInstances to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertDeviceInstance(v)
+	end
+end
+
+--  
+-- List of DeviceInstance objects
+function M.DeviceInstances(list)
+	asserts.AssertDeviceInstances(list)
 	return list
 end
 
@@ -6882,6 +8708,21 @@ function M.Runs(list)
 	return list
 end
 
+function asserts.AssertSamples(list)
+	assert(list)
+	assert(type(list) == "table", "Expected Samples to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertSample(v)
+	end
+end
+
+--  
+-- List of Sample objects
+function M.Samples(list)
+	asserts.AssertSamples(list)
+	return list
+end
+
 function asserts.AssertRecurringCharges(list)
 	assert(list)
 	assert(type(list) == "table", "Expected RecurringCharges to be of type ''table")
@@ -6894,6 +8735,21 @@ end
 -- List of RecurringCharge objects
 function M.RecurringCharges(list)
 	asserts.AssertRecurringCharges(list)
+	return list
+end
+
+function asserts.AssertUploads(list)
+	assert(list)
+	assert(type(list) == "table", "Expected Uploads to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertUpload(v)
+	end
+end
+
+--  
+-- List of Upload objects
+function M.Uploads(list)
+	asserts.AssertUploads(list)
 	return list
 end
 
@@ -7185,6 +9041,41 @@ function M.CreateRemoteAccessSessionSync(CreateRemoteAccessSessionRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call DeleteInstanceProfile asynchronously, invoking a callback when done
+-- @param DeleteInstanceProfileRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteInstanceProfileAsync(DeleteInstanceProfileRequest, cb)
+	assert(DeleteInstanceProfileRequest, "You must provide a DeleteInstanceProfileRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteInstanceProfile",
+	}
+	for header,value in pairs(DeleteInstanceProfileRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteInstanceProfileRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteInstanceProfile synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteInstanceProfileRequest
+-- @return response
+-- @return error_message
+function M.DeleteInstanceProfileSync(DeleteInstanceProfileRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteInstanceProfileAsync(DeleteInstanceProfileRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ListOfferings asynchronously, invoking a callback when done
 -- @param ListOfferingsRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -7215,6 +9106,41 @@ function M.ListOfferingsSync(ListOfferingsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.ListOfferingsAsync(ListOfferingsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListDeviceInstances asynchronously, invoking a callback when done
+-- @param ListDeviceInstancesRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListDeviceInstancesAsync(ListDeviceInstancesRequest, cb)
+	assert(ListDeviceInstancesRequest, "You must provide a ListDeviceInstancesRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListDeviceInstances",
+	}
+	for header,value in pairs(ListDeviceInstancesRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListDeviceInstancesRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListDeviceInstances synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDeviceInstancesRequest
+-- @return response
+-- @return error_message
+function M.ListDeviceInstancesSync(ListDeviceInstancesRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDeviceInstancesAsync(ListDeviceInstancesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7360,6 +9286,76 @@ function M.ListNetworkProfilesSync(ListNetworkProfilesRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call UpdateInstanceProfile asynchronously, invoking a callback when done
+-- @param UpdateInstanceProfileRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateInstanceProfileAsync(UpdateInstanceProfileRequest, cb)
+	assert(UpdateInstanceProfileRequest, "You must provide a UpdateInstanceProfileRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.UpdateInstanceProfile",
+	}
+	for header,value in pairs(UpdateInstanceProfileRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateInstanceProfileRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateInstanceProfile synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateInstanceProfileRequest
+-- @return response
+-- @return error_message
+function M.UpdateInstanceProfileSync(UpdateInstanceProfileRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateInstanceProfileAsync(UpdateInstanceProfileRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateVPCEConfiguration asynchronously, invoking a callback when done
+-- @param UpdateVPCEConfigurationRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateVPCEConfigurationAsync(UpdateVPCEConfigurationRequest, cb)
+	assert(UpdateVPCEConfigurationRequest, "You must provide a UpdateVPCEConfigurationRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.UpdateVPCEConfiguration",
+	}
+	for header,value in pairs(UpdateVPCEConfigurationRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateVPCEConfigurationRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateVPCEConfiguration synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateVPCEConfigurationRequest
+-- @return response
+-- @return error_message
+function M.UpdateVPCEConfigurationSync(UpdateVPCEConfigurationRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateVPCEConfigurationAsync(UpdateVPCEConfigurationRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call DeleteUpload asynchronously, invoking a callback when done
 -- @param DeleteUploadRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -7460,6 +9456,41 @@ function M.DeleteRemoteAccessSessionSync(DeleteRemoteAccessSessionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DeleteRemoteAccessSessionAsync(DeleteRemoteAccessSessionRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetInstanceProfile asynchronously, invoking a callback when done
+-- @param GetInstanceProfileRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetInstanceProfileAsync(GetInstanceProfileRequest, cb)
+	assert(GetInstanceProfileRequest, "You must provide a GetInstanceProfileRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetInstanceProfile",
+	}
+	for header,value in pairs(GetInstanceProfileRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", GetInstanceProfileRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetInstanceProfile synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetInstanceProfileRequest
+-- @return response
+-- @return error_message
+function M.GetInstanceProfileSync(GetInstanceProfileRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetInstanceProfileAsync(GetInstanceProfileRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7605,6 +9636,76 @@ function M.InstallToRemoteAccessSessionSync(InstallToRemoteAccessSessionRequest,
 	return coroutine.yield()
 end
 
+--- Call ListInstanceProfiles asynchronously, invoking a callback when done
+-- @param ListInstanceProfilesRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListInstanceProfilesAsync(ListInstanceProfilesRequest, cb)
+	assert(ListInstanceProfilesRequest, "You must provide a ListInstanceProfilesRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListInstanceProfiles",
+	}
+	for header,value in pairs(ListInstanceProfilesRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListInstanceProfilesRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListInstanceProfiles synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListInstanceProfilesRequest
+-- @return response
+-- @return error_message
+function M.ListInstanceProfilesSync(ListInstanceProfilesRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListInstanceProfilesAsync(ListInstanceProfilesRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateUpload asynchronously, invoking a callback when done
+-- @param UpdateUploadRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateUploadAsync(UpdateUploadRequest, cb)
+	assert(UpdateUploadRequest, "You must provide a UpdateUploadRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.UpdateUpload",
+	}
+	for header,value in pairs(UpdateUploadRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateUploadRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateUpload synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateUploadRequest
+-- @return response
+-- @return error_message
+function M.UpdateUploadSync(UpdateUploadRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateUploadAsync(UpdateUploadRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ListUniqueProblems asynchronously, invoking a callback when done
 -- @param ListUniqueProblemsRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -7710,6 +9811,41 @@ function M.CreateUploadSync(CreateUploadRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call GetVPCEConfiguration asynchronously, invoking a callback when done
+-- @param GetVPCEConfigurationRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetVPCEConfigurationAsync(GetVPCEConfigurationRequest, cb)
+	assert(GetVPCEConfigurationRequest, "You must provide a GetVPCEConfigurationRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetVPCEConfiguration",
+	}
+	for header,value in pairs(GetVPCEConfigurationRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", GetVPCEConfigurationRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetVPCEConfiguration synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetVPCEConfigurationRequest
+-- @return response
+-- @return error_message
+function M.GetVPCEConfigurationSync(GetVPCEConfigurationRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetVPCEConfigurationAsync(GetVPCEConfigurationRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call GetDevicePoolCompatibility asynchronously, invoking a callback when done
 -- @param GetDevicePoolCompatibilityRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -7775,6 +9911,41 @@ function M.DeleteDevicePoolSync(DeleteDevicePoolRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DeleteDevicePoolAsync(DeleteDevicePoolRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateDeviceInstance asynchronously, invoking a callback when done
+-- @param UpdateDeviceInstanceRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateDeviceInstanceAsync(UpdateDeviceInstanceRequest, cb)
+	assert(UpdateDeviceInstanceRequest, "You must provide a UpdateDeviceInstanceRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.UpdateDeviceInstance",
+	}
+	for header,value in pairs(UpdateDeviceInstanceRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateDeviceInstanceRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateDeviceInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateDeviceInstanceRequest
+-- @return response
+-- @return error_message
+function M.UpdateDeviceInstanceSync(UpdateDeviceInstanceRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateDeviceInstanceAsync(UpdateDeviceInstanceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7920,6 +10091,76 @@ function M.GetDevicePoolSync(GetDevicePoolRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call ListDevices asynchronously, invoking a callback when done
+-- @param ListDevicesRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListDevicesAsync(ListDevicesRequest, cb)
+	assert(ListDevicesRequest, "You must provide a ListDevicesRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListDevices",
+	}
+	for header,value in pairs(ListDevicesRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListDevicesRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListDevices synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDevicesRequest
+-- @return response
+-- @return error_message
+function M.ListDevicesSync(ListDevicesRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDevicesAsync(ListDevicesRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListVPCEConfigurations asynchronously, invoking a callback when done
+-- @param ListVPCEConfigurationsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListVPCEConfigurationsAsync(ListVPCEConfigurationsRequest, cb)
+	assert(ListVPCEConfigurationsRequest, "You must provide a ListVPCEConfigurationsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListVPCEConfigurations",
+	}
+	for header,value in pairs(ListVPCEConfigurationsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListVPCEConfigurationsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListVPCEConfigurations synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListVPCEConfigurationsRequest
+-- @return response
+-- @return error_message
+function M.ListVPCEConfigurationsSync(ListVPCEConfigurationsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListVPCEConfigurationsAsync(ListVPCEConfigurationsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call StopRemoteAccessSession asynchronously, invoking a callback when done
 -- @param StopRemoteAccessSessionRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -8025,6 +10266,41 @@ function M.GetRemoteAccessSessionSync(GetRemoteAccessSessionRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call DeleteProject asynchronously, invoking a callback when done
+-- @param DeleteProjectRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteProjectAsync(DeleteProjectRequest, cb)
+	assert(DeleteProjectRequest, "You must provide a DeleteProjectRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteProject",
+	}
+	for header,value in pairs(DeleteProjectRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteProjectRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteProject synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteProjectRequest
+-- @return response
+-- @return error_message
+function M.DeleteProjectSync(DeleteProjectRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteProjectAsync(DeleteProjectRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ListJobs asynchronously, invoking a callback when done
 -- @param ListJobsRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -8095,36 +10371,36 @@ function M.GetRunSync(GetRunRequest, ...)
 	return coroutine.yield()
 end
 
---- Call ListUploads asynchronously, invoking a callback when done
--- @param ListUploadsRequest
+--- Call CreateVPCEConfiguration asynchronously, invoking a callback when done
+-- @param CreateVPCEConfigurationRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.ListUploadsAsync(ListUploadsRequest, cb)
-	assert(ListUploadsRequest, "You must provide a ListUploadsRequest")
+function M.CreateVPCEConfigurationAsync(CreateVPCEConfigurationRequest, cb)
+	assert(CreateVPCEConfigurationRequest, "You must provide a CreateVPCEConfigurationRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListUploads",
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateVPCEConfiguration",
 	}
-	for header,value in pairs(ListUploadsRequest.headers) do
+	for header,value in pairs(CreateVPCEConfigurationRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", ListUploadsRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", CreateVPCEConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call ListUploads synchronously, returning when done
+--- Call CreateVPCEConfiguration synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param ListUploadsRequest
+-- @param CreateVPCEConfigurationRequest
 -- @return response
 -- @return error_message
-function M.ListUploadsSync(ListUploadsRequest, ...)
+function M.CreateVPCEConfigurationSync(CreateVPCEConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListUploadsAsync(ListUploadsRequest, function(response, error_message)
+	M.CreateVPCEConfigurationAsync(CreateVPCEConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8160,6 +10436,41 @@ function M.UpdateNetworkProfileSync(UpdateNetworkProfileRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.UpdateNetworkProfileAsync(UpdateNetworkProfileRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StopJob asynchronously, invoking a callback when done
+-- @param StopJobRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.StopJobAsync(StopJobRequest, cb)
+	assert(StopJobRequest, "You must provide a StopJobRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.StopJob",
+	}
+	for header,value in pairs(StopJobRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", StopJobRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call StopJob synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StopJobRequest
+-- @return response
+-- @return error_message
+function M.StopJobSync(StopJobRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StopJobAsync(StopJobRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8235,71 +10546,71 @@ function M.GetNetworkProfileSync(GetNetworkProfileRequest, ...)
 	return coroutine.yield()
 end
 
---- Call CreateNetworkProfile asynchronously, invoking a callback when done
--- @param CreateNetworkProfileRequest
+--- Call GetOfferingStatus asynchronously, invoking a callback when done
+-- @param GetOfferingStatusRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.CreateNetworkProfileAsync(CreateNetworkProfileRequest, cb)
-	assert(CreateNetworkProfileRequest, "You must provide a CreateNetworkProfileRequest")
+function M.GetOfferingStatusAsync(GetOfferingStatusRequest, cb)
+	assert(GetOfferingStatusRequest, "You must provide a GetOfferingStatusRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateNetworkProfile",
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetOfferingStatus",
 	}
-	for header,value in pairs(CreateNetworkProfileRequest.headers) do
+	for header,value in pairs(GetOfferingStatusRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", CreateNetworkProfileRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", GetOfferingStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call CreateNetworkProfile synchronously, returning when done
+--- Call GetOfferingStatus synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param CreateNetworkProfileRequest
+-- @param GetOfferingStatusRequest
 -- @return response
 -- @return error_message
-function M.CreateNetworkProfileSync(CreateNetworkProfileRequest, ...)
+function M.GetOfferingStatusSync(GetOfferingStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateNetworkProfileAsync(CreateNetworkProfileRequest, function(response, error_message)
+	M.GetOfferingStatusAsync(GetOfferingStatusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
 end
 
---- Call ListDevices asynchronously, invoking a callback when done
--- @param ListDevicesRequest
+--- Call GetDeviceInstance asynchronously, invoking a callback when done
+-- @param GetDeviceInstanceRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.ListDevicesAsync(ListDevicesRequest, cb)
-	assert(ListDevicesRequest, "You must provide a ListDevicesRequest")
+function M.GetDeviceInstanceAsync(GetDeviceInstanceRequest, cb)
+	assert(GetDeviceInstanceRequest, "You must provide a GetDeviceInstanceRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListDevices",
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetDeviceInstance",
 	}
-	for header,value in pairs(ListDevicesRequest.headers) do
+	for header,value in pairs(GetDeviceInstanceRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", ListDevicesRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", GetDeviceInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call ListDevices synchronously, returning when done
+--- Call GetDeviceInstance synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param ListDevicesRequest
+-- @param GetDeviceInstanceRequest
 -- @return response
 -- @return error_message
-function M.ListDevicesSync(ListDevicesRequest, ...)
+function M.GetDeviceInstanceSync(GetDeviceInstanceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDevicesAsync(ListDevicesRequest, function(response, error_message)
+	M.GetDeviceInstanceAsync(GetDeviceInstanceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8515,36 +10826,71 @@ function M.GetJobSync(GetJobRequest, ...)
 	return coroutine.yield()
 end
 
---- Call DeleteProject asynchronously, invoking a callback when done
--- @param DeleteProjectRequest
+--- Call DeleteVPCEConfiguration asynchronously, invoking a callback when done
+-- @param DeleteVPCEConfigurationRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.DeleteProjectAsync(DeleteProjectRequest, cb)
-	assert(DeleteProjectRequest, "You must provide a DeleteProjectRequest")
+function M.DeleteVPCEConfigurationAsync(DeleteVPCEConfigurationRequest, cb)
+	assert(DeleteVPCEConfigurationRequest, "You must provide a DeleteVPCEConfigurationRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteProject",
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteVPCEConfiguration",
 	}
-	for header,value in pairs(DeleteProjectRequest.headers) do
+	for header,value in pairs(DeleteVPCEConfigurationRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DeleteProjectRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", DeleteVPCEConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DeleteProject synchronously, returning when done
+--- Call DeleteVPCEConfiguration synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DeleteProjectRequest
+-- @param DeleteVPCEConfigurationRequest
 -- @return response
 -- @return error_message
-function M.DeleteProjectSync(DeleteProjectRequest, ...)
+function M.DeleteVPCEConfigurationSync(DeleteVPCEConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteProjectAsync(DeleteProjectRequest, function(response, error_message)
+	M.DeleteVPCEConfigurationAsync(DeleteVPCEConfigurationRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateInstanceProfile asynchronously, invoking a callback when done
+-- @param CreateInstanceProfileRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.CreateInstanceProfileAsync(CreateInstanceProfileRequest, cb)
+	assert(CreateInstanceProfileRequest, "You must provide a CreateInstanceProfileRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateInstanceProfile",
+	}
+	for header,value in pairs(CreateInstanceProfileRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", CreateInstanceProfileRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CreateInstanceProfile synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateInstanceProfileRequest
+-- @return response
+-- @return error_message
+function M.CreateInstanceProfileSync(CreateInstanceProfileRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateInstanceProfileAsync(CreateInstanceProfileRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8585,6 +10931,41 @@ function M.ListRunsSync(ListRunsRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call ListUploads asynchronously, invoking a callback when done
+-- @param ListUploadsRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.ListUploadsAsync(ListUploadsRequest, cb)
+	assert(ListUploadsRequest, "You must provide a ListUploadsRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListUploads",
+	}
+	for header,value in pairs(ListUploadsRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ListUploadsRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ListUploads synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListUploadsRequest
+-- @return response
+-- @return error_message
+function M.ListUploadsSync(ListUploadsRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListUploadsAsync(ListUploadsRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call GetAccountSettings asynchronously, invoking a callback when done
 -- @param GetAccountSettingsRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -8620,36 +11001,36 @@ function M.GetAccountSettingsSync(GetAccountSettingsRequest, ...)
 	return coroutine.yield()
 end
 
---- Call GetOfferingStatus asynchronously, invoking a callback when done
--- @param GetOfferingStatusRequest
+--- Call CreateNetworkProfile asynchronously, invoking a callback when done
+-- @param CreateNetworkProfileRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.GetOfferingStatusAsync(GetOfferingStatusRequest, cb)
-	assert(GetOfferingStatusRequest, "You must provide a GetOfferingStatusRequest")
+function M.CreateNetworkProfileAsync(CreateNetworkProfileRequest, cb)
+	assert(CreateNetworkProfileRequest, "You must provide a CreateNetworkProfileRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetOfferingStatus",
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateNetworkProfile",
 	}
-	for header,value in pairs(GetOfferingStatusRequest.headers) do
+	for header,value in pairs(CreateNetworkProfileRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", GetOfferingStatusRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", CreateNetworkProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call GetOfferingStatus synchronously, returning when done
+--- Call CreateNetworkProfile synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param GetOfferingStatusRequest
+-- @param CreateNetworkProfileRequest
 -- @return response
 -- @return error_message
-function M.GetOfferingStatusSync(GetOfferingStatusRequest, ...)
+function M.CreateNetworkProfileSync(CreateNetworkProfileRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetOfferingStatusAsync(GetOfferingStatusRequest, function(response, error_message)
+	M.CreateNetworkProfileAsync(CreateNetworkProfileRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

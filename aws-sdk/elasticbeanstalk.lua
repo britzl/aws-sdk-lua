@@ -21,40 +21,6 @@ M.metadata = {
 local keys = {}
 local asserts = {}
 
-keys.InvalidRequestException = { nil }
-
-function asserts.AssertInvalidRequestException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidRequestException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidRequestException[k], "InvalidRequestException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidRequestException
--- <p>One or more input parameters is not valid. Please correct the input parameters and try the operation again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidRequestException structure as a key-value pair table
-function M.InvalidRequestException(args)
-	assert(args, "You must provide an argument table when creating InvalidRequestException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidRequestException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ApplyEnvironmentManagedActionRequest = { ["EnvironmentName"] = true, ["ActionId"] = true, ["EnvironmentId"] = true, nil }
 
 function asserts.AssertApplyEnvironmentManagedActionRequest(struct)
@@ -100,23 +66,31 @@ function M.ApplyEnvironmentManagedActionRequest(args)
     }
 end
 
-keys.TooManyApplicationVersionsException = { nil }
+keys.StatusCodes = { ["Status3xx"] = true, ["Status2xx"] = true, ["Status5xx"] = true, ["Status4xx"] = true, nil }
 
-function asserts.AssertTooManyApplicationVersionsException(struct)
+function asserts.AssertStatusCodes(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyApplicationVersionsException to be of type 'table'")
+	assert(type(struct) == "table", "Expected StatusCodes to be of type 'table'")
+	if struct["Status3xx"] then asserts.AssertNullableInteger(struct["Status3xx"]) end
+	if struct["Status2xx"] then asserts.AssertNullableInteger(struct["Status2xx"]) end
+	if struct["Status5xx"] then asserts.AssertNullableInteger(struct["Status5xx"]) end
+	if struct["Status4xx"] then asserts.AssertNullableInteger(struct["Status4xx"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TooManyApplicationVersionsException[k], "TooManyApplicationVersionsException contains unknown key " .. tostring(k))
+		assert(keys.StatusCodes[k], "StatusCodes contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TooManyApplicationVersionsException
--- <p>The specified account has reached its limit of application versions.</p>
+--- Create a structure of type StatusCodes
+-- <p>Represents the percentage of requests over the last 10 seconds that resulted in each type of status code response. For more information, see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">Status Code Definitions</a>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return TooManyApplicationVersionsException structure as a key-value pair table
-function M.TooManyApplicationVersionsException(args)
-	assert(args, "You must provide an argument table when creating TooManyApplicationVersionsException")
+-- * Status3xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 3xx (300, 301, etc.) status code.</p>
+-- * Status2xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 2xx (200, 201, etc.) status code.</p>
+-- * Status5xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 5xx (500, 501, etc.) status code.</p>
+-- * Status4xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 4xx (400, 401, etc.) status code.</p>
+-- @return StatusCodes structure as a key-value pair table
+function M.StatusCodes(args)
+	assert(args, "You must provide an argument table when creating StatusCodes")
     local query_args = { 
     }
     local uri_args = { 
@@ -124,76 +98,12 @@ function M.TooManyApplicationVersionsException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Status3xx"] = args["Status3xx"],
+		["Status2xx"] = args["Status2xx"],
+		["Status5xx"] = args["Status5xx"],
+		["Status4xx"] = args["Status4xx"],
 	}
-	asserts.AssertTooManyApplicationVersionsException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InsufficientPrivilegesException = { nil }
-
-function asserts.AssertInsufficientPrivilegesException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InsufficientPrivilegesException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InsufficientPrivilegesException[k], "InsufficientPrivilegesException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InsufficientPrivilegesException
--- <p>The specified account does not have sufficient privileges for one of more AWS services.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InsufficientPrivilegesException structure as a key-value pair table
-function M.InsufficientPrivilegesException(args)
-	assert(args, "You must provide an argument table when creating InsufficientPrivilegesException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInsufficientPrivilegesException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TooManyBucketsException = { nil }
-
-function asserts.AssertTooManyBucketsException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyBucketsException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TooManyBucketsException[k], "TooManyBucketsException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TooManyBucketsException
--- <p>The specified account has reached its limit of Amazon S3 buckets.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TooManyBucketsException structure as a key-value pair table
-function M.TooManyBucketsException(args)
-	assert(args, "You must provide an argument table when creating TooManyBucketsException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTooManyBucketsException(all_args)
+	asserts.AssertStatusCodes(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -230,7 +140,7 @@ end
 -- * VersionLabel [VersionLabel] <p>The release label for the application version associated with this event.</p>
 -- * Severity [EventSeverity] <p>The severity level of this event.</p>
 -- * TemplateName [ConfigurationTemplateName] <p>The name of the configuration associated with this event.</p>
--- * PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
+-- * PlatformArn [PlatformArn] <p>The ARN of the platform.</p>
 -- * RequestId [RequestId] <p>The web service request ID for the activity of this event.</p>
 -- * Message [EventMessage] <p>The event message.</p>
 -- * EventDate [EventDate] <p>The date when the event occurred.</p>
@@ -329,17 +239,17 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ApplicationName [ApplicationName] <p>The name of the application that contains the version to be deployed.</p> <p> If no application is found with this name, <code>CreateEnvironment</code> returns an <code>InvalidParameterValue</code> error. </p>
--- * EnvironmentName [EnvironmentName] <p>A unique name for the deployment environment. Used in the application URL.</p> <p>Constraint: Must be from 4 to 40 characters in length. The name can contain only letters, numbers, and hyphens. It cannot start or end with a hyphen. This name must be unique in your account. If the specified name already exists, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p> <p>Default: If the CNAME parameter is not specified, the environment name becomes part of the CNAME, and therefore part of the visible URL for your application.</p>
+-- * EnvironmentName [EnvironmentName] <p>A unique name for the deployment environment. Used in the application URL.</p> <p>Constraint: Must be from 4 to 40 characters in length. The name can contain only letters, numbers, and hyphens. It cannot start or end with a hyphen. This name must be unique within a region in your account. If the specified name already exists in the region, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p> <p>Default: If the CNAME parameter is not specified, the environment name becomes part of the CNAME, and therefore part of the visible URL for your application.</p>
 -- * VersionLabel [VersionLabel] <p>The name of the application version to deploy.</p> <p> If the specified application has no associated application versions, AWS Elastic Beanstalk <code>UpdateEnvironment</code> returns an <code>InvalidParameterValue</code> error. </p> <p>Default: If not specified, AWS Elastic Beanstalk attempts to launch the sample application in the container.</p>
 -- * Description [Description] <p>Describes this environment.</p>
 -- * Tags [Tags] <p>This specifies the tags applied to resources in the environment.</p>
 -- * CNAMEPrefix [DNSCnamePrefix] <p>If specified, the environment attempts to use this value as the prefix for the CNAME. If not specified, the CNAME is generated automatically by appending a random alphanumeric string to the environment name.</p>
 -- * TemplateName [ConfigurationTemplateName] <p> The name of the configuration template to use in deployment. If no configuration template is found with this name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
--- * SolutionStackName [SolutionStackName] <p>This is an alternative to specifying a template name. If specified, AWS Elastic Beanstalk sets the configuration values to the default values associated with the specified solution stack.</p>
+-- * SolutionStackName [SolutionStackName] <p>This is an alternative to specifying a template name. If specified, AWS Elastic Beanstalk sets the configuration values to the default values associated with the specified solution stack.</p> <p>For a list of current solution stacks, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html">Elastic Beanstalk Supported Platforms</a>.</p>
 -- * GroupName [GroupName] <p>The name of the group to which the target environment belongs. Specify a group name only if the environment's name is specified in an environment manifest and not with the environment name parameter. See <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html">Environment Manifest (env.yaml)</a> for details.</p>
 -- * OptionSettings [ConfigurationOptionSettingsList] <p>If specified, AWS Elastic Beanstalk sets the specified configuration options to the requested value in the configuration set for the new environment. These override the values obtained from the solution stack or the configuration template.</p>
 -- * Tier [EnvironmentTier] <p>This specifies the tier to use for creating this environment.</p>
--- * PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
+-- * PlatformArn [PlatformArn] <p>The ARN of the platform.</p>
 -- * OptionsToRemove [OptionsSpecifierList] <p>A list of custom user-defined configuration options to remove from the configuration set for this new environment.</p>
 -- Required key: ApplicationName
 -- @return CreateEnvironmentMessage structure as a key-value pair table
@@ -553,7 +463,52 @@ function M.DescribePlatformVersionResult(args)
     }
 end
 
-keys.CPUUtilization = { ["SoftIRQ"] = true, ["IOWait"] = true, ["System"] = true, ["Idle"] = true, ["User"] = true, ["IRQ"] = true, ["Nice"] = true, nil }
+keys.UpdateTagsForResourceMessage = { ["TagsToAdd"] = true, ["ResourceArn"] = true, ["TagsToRemove"] = true, nil }
+
+function asserts.AssertUpdateTagsForResourceMessage(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateTagsForResourceMessage to be of type 'table'")
+	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
+	if struct["TagsToAdd"] then asserts.AssertTagList(struct["TagsToAdd"]) end
+	if struct["ResourceArn"] then asserts.AssertResourceArn(struct["ResourceArn"]) end
+	if struct["TagsToRemove"] then asserts.AssertTagKeyList(struct["TagsToRemove"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateTagsForResourceMessage[k], "UpdateTagsForResourceMessage contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateTagsForResourceMessage
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagsToAdd [TagList] <p>A list of tags to add or update.</p> <p>If a key of an existing tag is added, the tag's value is updated.</p>
+-- * ResourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the resouce to be updated.</p> <p>Must be the ARN of an Elastic Beanstalk environment.</p>
+-- * TagsToRemove [TagKeyList] <p>A list of tag keys to remove.</p> <p>If a tag key doesn't exist, it is silently ignored.</p>
+-- Required key: ResourceArn
+-- @return UpdateTagsForResourceMessage structure as a key-value pair table
+function M.UpdateTagsForResourceMessage(args)
+	assert(args, "You must provide an argument table when creating UpdateTagsForResourceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["TagsToAdd"] = args["TagsToAdd"],
+		["ResourceArn"] = args["ResourceArn"],
+		["TagsToRemove"] = args["TagsToRemove"],
+	}
+	asserts.AssertUpdateTagsForResourceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CPUUtilization = { ["SoftIRQ"] = true, ["IOWait"] = true, ["System"] = true, ["Idle"] = true, ["User"] = true, ["IRQ"] = true, ["Privileged"] = true, ["Nice"] = true, nil }
 
 function asserts.AssertCPUUtilization(struct)
 	assert(struct)
@@ -564,6 +519,7 @@ function asserts.AssertCPUUtilization(struct)
 	if struct["Idle"] then asserts.AssertNullableDouble(struct["Idle"]) end
 	if struct["User"] then asserts.AssertNullableDouble(struct["User"]) end
 	if struct["IRQ"] then asserts.AssertNullableDouble(struct["IRQ"]) end
+	if struct["Privileged"] then asserts.AssertNullableDouble(struct["Privileged"]) end
 	if struct["Nice"] then asserts.AssertNullableDouble(struct["Nice"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CPUUtilization[k], "CPUUtilization contains unknown key " .. tostring(k))
@@ -574,13 +530,14 @@ end
 -- <p>CPU utilization metrics for an instance.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SoftIRQ [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>SoftIRQ</code> state over the last 10 seconds.</p>
--- * IOWait [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>I/O Wait</code> state over the last 10 seconds.</p>
--- * System [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>System</code> state over the last 10 seconds.</p>
+-- * SoftIRQ [NullableDouble] <p>Available on Linux environments only.</p> <p>Percentage of time that the CPU has spent in the <code>SoftIRQ</code> state over the last 10 seconds.</p>
+-- * IOWait [NullableDouble] <p>Available on Linux environments only.</p> <p>Percentage of time that the CPU has spent in the <code>I/O Wait</code> state over the last 10 seconds.</p>
+-- * System [NullableDouble] <p>Available on Linux environments only.</p> <p>Percentage of time that the CPU has spent in the <code>System</code> state over the last 10 seconds.</p>
 -- * Idle [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>Idle</code> state over the last 10 seconds.</p>
 -- * User [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>User</code> state over the last 10 seconds.</p>
--- * IRQ [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>IRQ</code> state over the last 10 seconds.</p>
--- * Nice [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>Nice</code> state over the last 10 seconds.</p>
+-- * IRQ [NullableDouble] <p>Available on Linux environments only.</p> <p>Percentage of time that the CPU has spent in the <code>IRQ</code> state over the last 10 seconds.</p>
+-- * Privileged [NullableDouble] <p>Available on Windows environments only.</p> <p>Percentage of time that the CPU has spent in the <code>Privileged</code> state over the last 10 seconds.</p>
+-- * Nice [NullableDouble] <p>Available on Linux environments only.</p> <p>Percentage of time that the CPU has spent in the <code>Nice</code> state over the last 10 seconds.</p>
 -- @return CPUUtilization structure as a key-value pair table
 function M.CPUUtilization(args)
 	assert(args, "You must provide an argument table when creating CPUUtilization")
@@ -597,89 +554,10 @@ function M.CPUUtilization(args)
 		["Idle"] = args["Idle"],
 		["User"] = args["User"],
 		["IRQ"] = args["IRQ"],
+		["Privileged"] = args["Privileged"],
 		["Nice"] = args["Nice"],
 	}
 	asserts.AssertCPUUtilization(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ManagedActionInvalidStateException = { nil }
-
-function asserts.AssertManagedActionInvalidStateException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ManagedActionInvalidStateException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ManagedActionInvalidStateException[k], "ManagedActionInvalidStateException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ManagedActionInvalidStateException
--- <p>Cannot modify the managed action in its current state.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ManagedActionInvalidStateException structure as a key-value pair table
-function M.ManagedActionInvalidStateException(args)
-	assert(args, "You must provide an argument table when creating ManagedActionInvalidStateException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertManagedActionInvalidStateException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.StatusCodes = { ["Status3xx"] = true, ["Status2xx"] = true, ["Status5xx"] = true, ["Status4xx"] = true, nil }
-
-function asserts.AssertStatusCodes(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected StatusCodes to be of type 'table'")
-	if struct["Status3xx"] then asserts.AssertNullableInteger(struct["Status3xx"]) end
-	if struct["Status2xx"] then asserts.AssertNullableInteger(struct["Status2xx"]) end
-	if struct["Status5xx"] then asserts.AssertNullableInteger(struct["Status5xx"]) end
-	if struct["Status4xx"] then asserts.AssertNullableInteger(struct["Status4xx"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.StatusCodes[k], "StatusCodes contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type StatusCodes
--- <p>Represents the percentage of requests over the last 10 seconds that resulted in each type of status code response. For more information, see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">Status Code Definitions</a>.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Status3xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 3xx (300, 301, etc.) status code.</p>
--- * Status2xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 2xx (200, 201, etc.) status code.</p>
--- * Status5xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 5xx (500, 501, etc.) status code.</p>
--- * Status4xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 4xx (400, 401, etc.) status code.</p>
--- @return StatusCodes structure as a key-value pair table
-function M.StatusCodes(args)
-	assert(args, "You must provide an argument table when creating StatusCodes")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Status3xx"] = args["Status3xx"],
-		["Status2xx"] = args["Status2xx"],
-		["Status5xx"] = args["Status5xx"],
-		["Status4xx"] = args["Status4xx"],
-	}
-	asserts.AssertStatusCodes(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -742,7 +620,7 @@ end
 -- <p>Describes the properties of an environment tier</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Version [String] <p>The version of this environment tier.</p>
+-- * Version [String] <p>The version of this environment tier. When you don't set a value to it, Elastic Beanstalk uses the latest compatible worker tier version.</p> <note> <p>This member is deprecated. Any specific version that you set may become out of date. We recommend leaving it unspecified.</p> </note>
 -- * Type [String] <p>The type of this environment tier.</p>
 -- * Name [String] <p>The name of this environment tier.</p>
 -- @return EnvironmentTier structure as a key-value pair table
@@ -872,7 +750,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ApplicationName [ApplicationName] <p>The name of the application to associate with this configuration template. If no application is found with this name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
--- * PlatformArn [PlatformArn] <p>The ARN of the custome platform.</p>
+-- * PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
 -- * Description [Description] <p>Describes this configuration.</p>
 -- * EnvironmentId [EnvironmentId] <p>The ID of the environment used with this configuration template.</p>
 -- * TemplateName [ConfigurationTemplateName] <p>The name of the configuration template.</p> <p>Constraint: This name must be unique per application.</p> <p>Default: If a configuration template already exists with this name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
@@ -909,31 +787,43 @@ function M.CreateConfigurationTemplateMessage(args)
     }
 end
 
-keys.DescribeConfigurationSettingsMessage = { ["ApplicationName"] = true, ["EnvironmentName"] = true, ["TemplateName"] = true, nil }
+keys.ApplicationVersionDescription = { ["ApplicationName"] = true, ["Status"] = true, ["VersionLabel"] = true, ["SourceBundle"] = true, ["Description"] = true, ["ApplicationVersionArn"] = true, ["DateCreated"] = true, ["DateUpdated"] = true, ["SourceBuildInformation"] = true, ["BuildArn"] = true, nil }
 
-function asserts.AssertDescribeConfigurationSettingsMessage(struct)
+function asserts.AssertApplicationVersionDescription(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeConfigurationSettingsMessage to be of type 'table'")
-	assert(struct["ApplicationName"], "Expected key ApplicationName to exist in table")
+	assert(type(struct) == "table", "Expected ApplicationVersionDescription to be of type 'table'")
 	if struct["ApplicationName"] then asserts.AssertApplicationName(struct["ApplicationName"]) end
-	if struct["EnvironmentName"] then asserts.AssertEnvironmentName(struct["EnvironmentName"]) end
-	if struct["TemplateName"] then asserts.AssertConfigurationTemplateName(struct["TemplateName"]) end
+	if struct["Status"] then asserts.AssertApplicationVersionStatus(struct["Status"]) end
+	if struct["VersionLabel"] then asserts.AssertVersionLabel(struct["VersionLabel"]) end
+	if struct["SourceBundle"] then asserts.AssertS3Location(struct["SourceBundle"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
+	if struct["ApplicationVersionArn"] then asserts.AssertApplicationVersionArn(struct["ApplicationVersionArn"]) end
+	if struct["DateCreated"] then asserts.AssertCreationDate(struct["DateCreated"]) end
+	if struct["DateUpdated"] then asserts.AssertUpdateDate(struct["DateUpdated"]) end
+	if struct["SourceBuildInformation"] then asserts.AssertSourceBuildInformation(struct["SourceBuildInformation"]) end
+	if struct["BuildArn"] then asserts.AssertString(struct["BuildArn"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DescribeConfigurationSettingsMessage[k], "DescribeConfigurationSettingsMessage contains unknown key " .. tostring(k))
+		assert(keys.ApplicationVersionDescription[k], "ApplicationVersionDescription contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DescribeConfigurationSettingsMessage
--- <p>Result message containing all of the configuration settings for a specified solution stack or configuration template.</p>
+--- Create a structure of type ApplicationVersionDescription
+-- <p>Describes the properties of an application version.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ApplicationName [ApplicationName] <p>The application for the environment or configuration template.</p>
--- * EnvironmentName [EnvironmentName] <p>The name of the environment to describe.</p> <p> Condition: You must specify either this or a TemplateName, but not both. If you specify both, AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
--- * TemplateName [ConfigurationTemplateName] <p>The name of the configuration template to describe.</p> <p> Conditional: You must specify either this parameter or an EnvironmentName, but not both. If you specify both, AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not specify either, AWS Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error. </p>
--- Required key: ApplicationName
--- @return DescribeConfigurationSettingsMessage structure as a key-value pair table
-function M.DescribeConfigurationSettingsMessage(args)
-	assert(args, "You must provide an argument table when creating DescribeConfigurationSettingsMessage")
+-- * ApplicationName [ApplicationName] <p>The name of the application to which the application version belongs.</p>
+-- * Status [ApplicationVersionStatus] <p>The processing status of the application version. Reflects the state of the application version during its creation. Many of the values are only applicable if you specified <code>True</code> for the <code>Process</code> parameter of the <code>CreateApplicationVersion</code> action. The following list describes the possible values.</p> <ul> <li> <p> <code>Unprocessed</code> – Application version wasn't pre-processed or validated. Elastic Beanstalk will validate configuration files during deployment of the application version to an environment.</p> </li> <li> <p> <code>Processing</code> – Elastic Beanstalk is currently processing the application version.</p> </li> <li> <p> <code>Building</code> – Application version is currently undergoing an AWS CodeBuild build.</p> </li> <li> <p> <code>Processed</code> – Elastic Beanstalk was successfully pre-processed and validated.</p> </li> <li> <p> <code>Failed</code> – Either the AWS CodeBuild build failed or configuration files didn't pass validation. This application version isn't usable.</p> </li> </ul>
+-- * VersionLabel [VersionLabel] <p>A unique identifier for the application version.</p>
+-- * SourceBundle [S3Location] <p>The storage location of the application version's source bundle in Amazon S3.</p>
+-- * Description [Description] <p>The description of the application version.</p>
+-- * ApplicationVersionArn [ApplicationVersionArn] <p>The Amazon Resource Name (ARN) of the application version.</p>
+-- * DateCreated [CreationDate] <p>The creation date of the application version.</p>
+-- * DateUpdated [UpdateDate] <p>The last modified date of the application version.</p>
+-- * SourceBuildInformation [SourceBuildInformation] <p>If the version's source code was retrieved from AWS CodeCommit, the location of the source code for the application version.</p>
+-- * BuildArn [String] <p>Reference to the artifact from the AWS CodeBuild build.</p>
+-- @return ApplicationVersionDescription structure as a key-value pair table
+function M.ApplicationVersionDescription(args)
+	assert(args, "You must provide an argument table when creating ApplicationVersionDescription")
     local query_args = { 
     }
     local uri_args = { 
@@ -942,10 +832,17 @@ function M.DescribeConfigurationSettingsMessage(args)
     }
 	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
-		["EnvironmentName"] = args["EnvironmentName"],
-		["TemplateName"] = args["TemplateName"],
+		["Status"] = args["Status"],
+		["VersionLabel"] = args["VersionLabel"],
+		["SourceBundle"] = args["SourceBundle"],
+		["Description"] = args["Description"],
+		["ApplicationVersionArn"] = args["ApplicationVersionArn"],
+		["DateCreated"] = args["DateCreated"],
+		["DateUpdated"] = args["DateUpdated"],
+		["SourceBuildInformation"] = args["SourceBuildInformation"],
+		["BuildArn"] = args["BuildArn"],
 	}
-	asserts.AssertDescribeConfigurationSettingsMessage(all_args)
+	asserts.AssertApplicationVersionDescription(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -954,23 +851,33 @@ function M.DescribeConfigurationSettingsMessage(args)
     }
 end
 
-keys.S3LocationNotInServiceRegionException = { nil }
+keys.ResourceQuotas = { ["ApplicationVersionQuota"] = true, ["ApplicationQuota"] = true, ["EnvironmentQuota"] = true, ["ConfigurationTemplateQuota"] = true, ["CustomPlatformQuota"] = true, nil }
 
-function asserts.AssertS3LocationNotInServiceRegionException(struct)
+function asserts.AssertResourceQuotas(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected S3LocationNotInServiceRegionException to be of type 'table'")
+	assert(type(struct) == "table", "Expected ResourceQuotas to be of type 'table'")
+	if struct["ApplicationVersionQuota"] then asserts.AssertResourceQuota(struct["ApplicationVersionQuota"]) end
+	if struct["ApplicationQuota"] then asserts.AssertResourceQuota(struct["ApplicationQuota"]) end
+	if struct["EnvironmentQuota"] then asserts.AssertResourceQuota(struct["EnvironmentQuota"]) end
+	if struct["ConfigurationTemplateQuota"] then asserts.AssertResourceQuota(struct["ConfigurationTemplateQuota"]) end
+	if struct["CustomPlatformQuota"] then asserts.AssertResourceQuota(struct["CustomPlatformQuota"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.S3LocationNotInServiceRegionException[k], "S3LocationNotInServiceRegionException contains unknown key " .. tostring(k))
+		assert(keys.ResourceQuotas[k], "ResourceQuotas contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type S3LocationNotInServiceRegionException
--- <p>The specified S3 bucket does not belong to the S3 region in which the service is running. The following regions are supported:</p> <ul> <li> <p>IAD/us-east-1</p> </li> <li> <p>PDX/us-west-2</p> </li> <li> <p>DUB/eu-west-1</p> </li> </ul>
+--- Create a structure of type ResourceQuotas
+-- <p>A set of per-resource AWS Elastic Beanstalk quotas associated with an AWS account. They reflect Elastic Beanstalk resource limits for this account.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return S3LocationNotInServiceRegionException structure as a key-value pair table
-function M.S3LocationNotInServiceRegionException(args)
-	assert(args, "You must provide an argument table when creating S3LocationNotInServiceRegionException")
+-- * ApplicationVersionQuota [ResourceQuota] <p>The quota for application versions in the AWS account.</p>
+-- * ApplicationQuota [ResourceQuota] <p>The quota for applications in the AWS account.</p>
+-- * EnvironmentQuota [ResourceQuota] <p>The quota for environments in the AWS account.</p>
+-- * ConfigurationTemplateQuota [ResourceQuota] <p>The quota for configuration templates in the AWS account.</p>
+-- * CustomPlatformQuota [ResourceQuota] <p>The quota for custom platforms in the AWS account.</p>
+-- @return ResourceQuotas structure as a key-value pair table
+function M.ResourceQuotas(args)
+	assert(args, "You must provide an argument table when creating ResourceQuotas")
     local query_args = { 
     }
     local uri_args = { 
@@ -978,8 +885,13 @@ function M.S3LocationNotInServiceRegionException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["ApplicationVersionQuota"] = args["ApplicationVersionQuota"],
+		["ApplicationQuota"] = args["ApplicationQuota"],
+		["EnvironmentQuota"] = args["EnvironmentQuota"],
+		["ConfigurationTemplateQuota"] = args["ConfigurationTemplateQuota"],
+		["CustomPlatformQuota"] = args["CustomPlatformQuota"],
 	}
-	asserts.AssertS3LocationNotInServiceRegionException(all_args)
+	asserts.AssertResourceQuotas(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1236,8 +1148,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ApplicationName [ApplicationName] <p>Specify an application name to show only application versions for that application.</p>
--- * MaxRecords [MaxRecords] <p>Specify a maximum number of application versions to paginate in the request.</p>
--- * NextToken [Token] <p>Specify a next token to retrieve the next page in a paginated request.</p>
+-- * MaxRecords [MaxRecords] <p>For a paginated request. Specify a maximum number of application versions to include in each response.</p> <p>If no <code>MaxRecords</code> is specified, all available application versions are retrieved in a single response.</p>
+-- * NextToken [Token] <p>For a paginated request. Specify a token from a previous response page to retrieve the next response page. All other parameter values must be identical to the ones specified in the initial request.</p> <p>If no <code>NextToken</code> is specified, the first page is retrieved.</p>
 -- * VersionLabels [VersionLabelsList] <p>Specify a version label to show a specific application version.</p>
 -- @return DescribeApplicationVersionsMessage structure as a key-value pair table
 function M.DescribeApplicationVersionsMessage(args)
@@ -1263,7 +1175,7 @@ function M.DescribeApplicationVersionsMessage(args)
     }
 end
 
-keys.DescribeEnvironmentsMessage = { ["ApplicationName"] = true, ["IncludedDeletedBackTo"] = true, ["VersionLabel"] = true, ["IncludeDeleted"] = true, ["EnvironmentNames"] = true, ["EnvironmentIds"] = true, nil }
+keys.DescribeEnvironmentsMessage = { ["ApplicationName"] = true, ["IncludedDeletedBackTo"] = true, ["VersionLabel"] = true, ["IncludeDeleted"] = true, ["EnvironmentNames"] = true, ["MaxRecords"] = true, ["EnvironmentIds"] = true, ["NextToken"] = true, nil }
 
 function asserts.AssertDescribeEnvironmentsMessage(struct)
 	assert(struct)
@@ -1273,7 +1185,9 @@ function asserts.AssertDescribeEnvironmentsMessage(struct)
 	if struct["VersionLabel"] then asserts.AssertVersionLabel(struct["VersionLabel"]) end
 	if struct["IncludeDeleted"] then asserts.AssertIncludeDeleted(struct["IncludeDeleted"]) end
 	if struct["EnvironmentNames"] then asserts.AssertEnvironmentNamesList(struct["EnvironmentNames"]) end
+	if struct["MaxRecords"] then asserts.AssertMaxRecords(struct["MaxRecords"]) end
 	if struct["EnvironmentIds"] then asserts.AssertEnvironmentIdList(struct["EnvironmentIds"]) end
+	if struct["NextToken"] then asserts.AssertToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.DescribeEnvironmentsMessage[k], "DescribeEnvironmentsMessage contains unknown key " .. tostring(k))
 	end
@@ -1288,7 +1202,9 @@ end
 -- * VersionLabel [VersionLabel] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that are associated with this application version.</p>
 -- * IncludeDeleted [IncludeDeleted] <p>Indicates whether to include deleted environments:</p> <p> <code>true</code>: Environments that have been deleted after <code>IncludedDeletedBackTo</code> are displayed.</p> <p> <code>false</code>: Do not include deleted environments.</p>
 -- * EnvironmentNames [EnvironmentNamesList] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that have the specified names.</p>
+-- * MaxRecords [MaxRecords] <p>For a paginated request. Specify a maximum number of environments to include in each response.</p> <p>If no <code>MaxRecords</code> is specified, all available environments are retrieved in a single response.</p>
 -- * EnvironmentIds [EnvironmentIdList] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that have the specified IDs.</p>
+-- * NextToken [Token] <p>For a paginated request. Specify a token from a previous response page to retrieve the next response page. All other parameter values must be identical to the ones specified in the initial request.</p> <p>If no <code>NextToken</code> is specified, the first page is retrieved.</p>
 -- @return DescribeEnvironmentsMessage structure as a key-value pair table
 function M.DescribeEnvironmentsMessage(args)
 	assert(args, "You must provide an argument table when creating DescribeEnvironmentsMessage")
@@ -1304,7 +1220,9 @@ function M.DescribeEnvironmentsMessage(args)
 		["VersionLabel"] = args["VersionLabel"],
 		["IncludeDeleted"] = args["IncludeDeleted"],
 		["EnvironmentNames"] = args["EnvironmentNames"],
+		["MaxRecords"] = args["MaxRecords"],
 		["EnvironmentIds"] = args["EnvironmentIds"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeEnvironmentsMessage(all_args)
 	return {
@@ -1332,7 +1250,7 @@ end
 -- <p>Detailed health information about the Amazon EC2 instances in an AWS Elastic Beanstalk environment.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * InstanceHealthList [InstanceHealthList] <p>Detailed health information about each instance.</p>
+-- * InstanceHealthList [InstanceHealthList] <p>Detailed health information about each instance.</p> <p>The output differs slightly between Linux and Windows environments. There is a difference in the members that are supported under the <code>&lt;CPUUtilization&gt;</code> type.</p>
 -- * NextToken [NextToken] <p>Pagination token for the next page of results, if available.</p>
 -- * RefreshedAt [RefreshedAt] <p>The date and time that the health information was retrieved.</p>
 -- @return DescribeInstancesHealthResult structure as a key-value pair table
@@ -1398,7 +1316,7 @@ function M.SourceConfiguration(args)
     }
 end
 
-keys.EnvironmentDescription = { ["ApplicationName"] = true, ["EnvironmentName"] = true, ["VersionLabel"] = true, ["Status"] = true, ["Description"] = true, ["EnvironmentLinks"] = true, ["PlatformArn"] = true, ["TemplateName"] = true, ["EndpointURL"] = true, ["SolutionStackName"] = true, ["HealthStatus"] = true, ["EnvironmentId"] = true, ["CNAME"] = true, ["AbortableOperationInProgress"] = true, ["Tier"] = true, ["Health"] = true, ["DateUpdated"] = true, ["DateCreated"] = true, ["Resources"] = true, nil }
+keys.EnvironmentDescription = { ["ApplicationName"] = true, ["EnvironmentName"] = true, ["VersionLabel"] = true, ["Status"] = true, ["Description"] = true, ["EnvironmentLinks"] = true, ["PlatformArn"] = true, ["TemplateName"] = true, ["EndpointURL"] = true, ["SolutionStackName"] = true, ["HealthStatus"] = true, ["EnvironmentId"] = true, ["CNAME"] = true, ["AbortableOperationInProgress"] = true, ["Tier"] = true, ["Health"] = true, ["DateUpdated"] = true, ["DateCreated"] = true, ["EnvironmentArn"] = true, ["Resources"] = true, nil }
 
 function asserts.AssertEnvironmentDescription(struct)
 	assert(struct)
@@ -1421,6 +1339,7 @@ function asserts.AssertEnvironmentDescription(struct)
 	if struct["Health"] then asserts.AssertEnvironmentHealth(struct["Health"]) end
 	if struct["DateUpdated"] then asserts.AssertUpdateDate(struct["DateUpdated"]) end
 	if struct["DateCreated"] then asserts.AssertCreationDate(struct["DateCreated"]) end
+	if struct["EnvironmentArn"] then asserts.AssertEnvironmentArn(struct["EnvironmentArn"]) end
 	if struct["Resources"] then asserts.AssertEnvironmentResourcesDescription(struct["Resources"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.EnvironmentDescription[k], "EnvironmentDescription contains unknown key " .. tostring(k))
@@ -1437,7 +1356,7 @@ end
 -- * Status [EnvironmentStatus] <p>The current operational status of the environment:</p> <ul> <li> <p> <code>Launching</code>: Environment is in the process of initial deployment.</p> </li> <li> <p> <code>Updating</code>: Environment is in the process of updating its configuration settings or application version.</p> </li> <li> <p> <code>Ready</code>: Environment is available to have an action performed on it, such as update or terminate.</p> </li> <li> <p> <code>Terminating</code>: Environment is in the shut-down process.</p> </li> <li> <p> <code>Terminated</code>: Environment is not running.</p> </li> </ul>
 -- * Description [Description] <p>Describes this environment.</p>
 -- * EnvironmentLinks [EnvironmentLinks] <p>A list of links to other environments in the same group.</p>
--- * PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
+-- * PlatformArn [PlatformArn] <p>The ARN of the platform.</p>
 -- * TemplateName [ConfigurationTemplateName] <p>The name of the configuration template used to originally launch this environment.</p>
 -- * EndpointURL [EndpointURL] <p>For load-balanced, autoscaling environments, the URL to the LoadBalancer. For single-instance environments, the IP address of the instance.</p>
 -- * SolutionStackName [SolutionStackName] <p> The name of the <code>SolutionStack</code> deployed with this environment. </p>
@@ -1449,6 +1368,7 @@ end
 -- * Health [EnvironmentHealth] <p>Describes the health status of the environment. AWS Elastic Beanstalk indicates the failure levels for a running environment:</p> <ul> <li> <p> <code>Red</code>: Indicates the environment is not responsive. Occurs when three or more consecutive failures occur for an environment.</p> </li> <li> <p> <code>Yellow</code>: Indicates that something is wrong. Occurs when two consecutive failures occur for an environment.</p> </li> <li> <p> <code>Green</code>: Indicates the environment is healthy and fully functional.</p> </li> <li> <p> <code>Grey</code>: Default health for a new environment. The environment is not fully launched and health checks have not started or health checks are suspended during an <code>UpdateEnvironment</code> or <code>RestartEnvironement</code> request.</p> </li> </ul> <p> Default: <code>Grey</code> </p>
 -- * DateUpdated [UpdateDate] <p>The last modified date for this environment.</p>
 -- * DateCreated [CreationDate] <p>The creation date for this environment.</p>
+-- * EnvironmentArn [EnvironmentArn] <p>The environment's Amazon Resource Name (ARN), which can be used in other API requests that require an ARN.</p>
 -- * Resources [EnvironmentResourcesDescription] <p>The description of the AWS resources used by this environment.</p>
 -- @return EnvironmentDescription structure as a key-value pair table
 function M.EnvironmentDescription(args)
@@ -1478,6 +1398,7 @@ function M.EnvironmentDescription(args)
 		["Health"] = args["Health"],
 		["DateUpdated"] = args["DateUpdated"],
 		["DateCreated"] = args["DateCreated"],
+		["EnvironmentArn"] = args["EnvironmentArn"],
 		["Resources"] = args["Resources"],
 	}
 	asserts.AssertEnvironmentDescription(all_args)
@@ -1551,58 +1472,6 @@ function M.DescribeEventsMessage(args)
 		["Severity"] = args["Severity"],
 	}
 	asserts.AssertDescribeEventsMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DescribeConfigurationOptionsMessage = { ["ApplicationName"] = true, ["EnvironmentName"] = true, ["PlatformArn"] = true, ["TemplateName"] = true, ["SolutionStackName"] = true, ["Options"] = true, nil }
-
-function asserts.AssertDescribeConfigurationOptionsMessage(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeConfigurationOptionsMessage to be of type 'table'")
-	if struct["ApplicationName"] then asserts.AssertApplicationName(struct["ApplicationName"]) end
-	if struct["EnvironmentName"] then asserts.AssertEnvironmentName(struct["EnvironmentName"]) end
-	if struct["PlatformArn"] then asserts.AssertPlatformArn(struct["PlatformArn"]) end
-	if struct["TemplateName"] then asserts.AssertConfigurationTemplateName(struct["TemplateName"]) end
-	if struct["SolutionStackName"] then asserts.AssertSolutionStackName(struct["SolutionStackName"]) end
-	if struct["Options"] then asserts.AssertOptionsSpecifierList(struct["Options"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DescribeConfigurationOptionsMessage[k], "DescribeConfigurationOptionsMessage contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DescribeConfigurationOptionsMessage
--- <p>Result message containing a list of application version descriptions.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ApplicationName [ApplicationName] <p>The name of the application associated with the configuration template or environment. Only needed if you want to describe the configuration options associated with either the configuration template or environment.</p>
--- * EnvironmentName [EnvironmentName] <p>The name of the environment whose configuration options you want to describe.</p>
--- * PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
--- * TemplateName [ConfigurationTemplateName] <p>The name of the configuration template whose configuration options you want to describe.</p>
--- * SolutionStackName [SolutionStackName] <p>The name of the solution stack whose configuration options you want to describe.</p>
--- * Options [OptionsSpecifierList] <p>If specified, restricts the descriptions to only the specified options.</p>
--- @return DescribeConfigurationOptionsMessage structure as a key-value pair table
-function M.DescribeConfigurationOptionsMessage(args)
-	assert(args, "You must provide an argument table when creating DescribeConfigurationOptionsMessage")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ApplicationName"] = args["ApplicationName"],
-		["EnvironmentName"] = args["EnvironmentName"],
-		["PlatformArn"] = args["PlatformArn"],
-		["TemplateName"] = args["TemplateName"],
-		["SolutionStackName"] = args["SolutionStackName"],
-		["Options"] = args["Options"],
-	}
-	asserts.AssertDescribeConfigurationOptionsMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2037,6 +1906,58 @@ function M.DescribeEnvironmentResourcesMessage(args)
     }
 end
 
+keys.DescribeConfigurationOptionsMessage = { ["ApplicationName"] = true, ["EnvironmentName"] = true, ["PlatformArn"] = true, ["TemplateName"] = true, ["SolutionStackName"] = true, ["Options"] = true, nil }
+
+function asserts.AssertDescribeConfigurationOptionsMessage(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeConfigurationOptionsMessage to be of type 'table'")
+	if struct["ApplicationName"] then asserts.AssertApplicationName(struct["ApplicationName"]) end
+	if struct["EnvironmentName"] then asserts.AssertEnvironmentName(struct["EnvironmentName"]) end
+	if struct["PlatformArn"] then asserts.AssertPlatformArn(struct["PlatformArn"]) end
+	if struct["TemplateName"] then asserts.AssertConfigurationTemplateName(struct["TemplateName"]) end
+	if struct["SolutionStackName"] then asserts.AssertSolutionStackName(struct["SolutionStackName"]) end
+	if struct["Options"] then asserts.AssertOptionsSpecifierList(struct["Options"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeConfigurationOptionsMessage[k], "DescribeConfigurationOptionsMessage contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeConfigurationOptionsMessage
+-- <p>Result message containing a list of application version descriptions.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application associated with the configuration template or environment. Only needed if you want to describe the configuration options associated with either the configuration template or environment.</p>
+-- * EnvironmentName [EnvironmentName] <p>The name of the environment whose configuration options you want to describe.</p>
+-- * PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
+-- * TemplateName [ConfigurationTemplateName] <p>The name of the configuration template whose configuration options you want to describe.</p>
+-- * SolutionStackName [SolutionStackName] <p>The name of the solution stack whose configuration options you want to describe.</p>
+-- * Options [OptionsSpecifierList] <p>If specified, restricts the descriptions to only the specified options.</p>
+-- @return DescribeConfigurationOptionsMessage structure as a key-value pair table
+function M.DescribeConfigurationOptionsMessage(args)
+	assert(args, "You must provide an argument table when creating DescribeConfigurationOptionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ApplicationName"] = args["ApplicationName"],
+		["EnvironmentName"] = args["EnvironmentName"],
+		["PlatformArn"] = args["PlatformArn"],
+		["TemplateName"] = args["TemplateName"],
+		["SolutionStackName"] = args["SolutionStackName"],
+		["Options"] = args["Options"],
+	}
+	asserts.AssertDescribeConfigurationOptionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.RetrieveEnvironmentInfoMessage = { ["EnvironmentId"] = true, ["InfoType"] = true, ["EnvironmentName"] = true, nil }
 
 function asserts.AssertRetrieveEnvironmentInfoMessage(struct)
@@ -2262,6 +2183,43 @@ function M.ApplicationResourceLifecycleDescriptionMessage(args)
     }
 end
 
+keys.ResourceQuota = { ["Maximum"] = true, nil }
+
+function asserts.AssertResourceQuota(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ResourceQuota to be of type 'table'")
+	if struct["Maximum"] then asserts.AssertBoxedInt(struct["Maximum"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ResourceQuota[k], "ResourceQuota contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ResourceQuota
+-- <p>The AWS Elastic Beanstalk quota information for a single resource type in an AWS account. It reflects the resource's limits for this account.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Maximum [BoxedInt] <p>The maximum number of instances of this Elastic Beanstalk resource type that an AWS account can use.</p>
+-- @return ResourceQuota structure as a key-value pair table
+function M.ResourceQuota(args)
+	assert(args, "You must provide an argument table when creating ResourceQuota")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Maximum"] = args["Maximum"],
+	}
+	asserts.AssertResourceQuota(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.SystemStatus = { ["LoadAverage"] = true, ["CPUUtilization"] = true, nil }
 
 function asserts.AssertSystemStatus(struct)
@@ -2339,40 +2297,6 @@ function M.DeletePlatformVersionRequest(args)
     }
 end
 
-keys.CodeBuildNotInServiceRegionException = { nil }
-
-function asserts.AssertCodeBuildNotInServiceRegionException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CodeBuildNotInServiceRegionException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.CodeBuildNotInServiceRegionException[k], "CodeBuildNotInServiceRegionException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CodeBuildNotInServiceRegionException
--- <p>AWS CodeBuild is not available in the specified region.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return CodeBuildNotInServiceRegionException structure as a key-value pair table
-function M.CodeBuildNotInServiceRegionException(args)
-	assert(args, "You must provide an argument table when creating CodeBuildNotInServiceRegionException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertCodeBuildNotInServiceRegionException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.CreateApplicationVersionMessage = { ["ApplicationName"] = true, ["VersionLabel"] = true, ["SourceBuildInformation"] = true, ["Description"] = true, ["AutoCreateApplication"] = true, ["Process"] = true, ["BuildConfiguration"] = true, ["SourceBundle"] = true, nil }
 
 function asserts.AssertCreateApplicationVersionMessage(struct)
@@ -2402,7 +2326,7 @@ end
 -- * SourceBuildInformation [SourceBuildInformation] <p>Specify a commit in an AWS CodeCommit Git repository to use as the source code for the application version.</p>
 -- * Description [Description] <p>Describes this version.</p>
 -- * AutoCreateApplication [AutoCreateApplication] <p>Set to <code>true</code> to create an application with the specified name if it doesn't already exist.</p>
--- * Process [ApplicationVersionProccess] <p>Preprocesses and validates the environment manifest and configuration files in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment.</p>
+-- * Process [ApplicationVersionProccess] <p>Pre-processes and validates the environment manifest (<code>env.yaml</code>) and configuration files (<code>*.config</code> files in the <code>.ebextensions</code> folder) in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment.</p> <p>You must turn processing on for application versions that you create using AWS CodeBuild or AWS CodeCommit. For application versions built from a source bundle in Amazon S3, processing is optional.</p> <note> <p>The <code>Process</code> option validates Elastic Beanstalk configuration files. It doesn't validate your application's configuration files, like proxy server or Docker configuration.</p> </note>
 -- * BuildConfiguration [BuildConfiguration] <p>Settings for an AWS CodeBuild build.</p>
 -- * SourceBundle [S3Location] <p>The Amazon S3 bucket and key that identify the location of the source bundle for this version.</p> <note> <p>The Amazon S3 bucket must be in the same region as the environment.</p> </note> <p>Specify a source bundle in S3 or a commit in an AWS CodeCommit repository (with <code>SourceBuildInformation</code>), but not both. If neither <code>SourceBundle</code> nor <code>SourceBuildInformation</code> are provided, Elastic Beanstalk uses a sample application.</p>
 -- Required key: ApplicationName
@@ -2452,7 +2376,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ApplicationVersions [ApplicationVersionDescriptionList] <p>List of <code>ApplicationVersionDescription</code> objects sorted in order of creation.</p>
--- * NextToken [Token] <p>For a paginated request, the token that you can pass in a subsequent request to get the next page.</p>
+-- * NextToken [Token] <p>In a paginated request, the token that you can pass in a subsequent request to get the next response page.</p>
 -- @return ApplicationVersionDescriptionsMessage structure as a key-value pair table
 function M.ApplicationVersionDescriptionsMessage(args)
 	assert(args, "You must provide an argument table when creating ApplicationVersionDescriptionsMessage")
@@ -2697,6 +2621,76 @@ function M.BuildConfiguration(args)
     }
 end
 
+keys.UpdateEnvironmentMessage = { ["ApplicationName"] = true, ["EnvironmentId"] = true, ["VersionLabel"] = true, ["Description"] = true, ["EnvironmentName"] = true, ["TemplateName"] = true, ["SolutionStackName"] = true, ["GroupName"] = true, ["OptionSettings"] = true, ["Tier"] = true, ["PlatformArn"] = true, ["OptionsToRemove"] = true, nil }
+
+function asserts.AssertUpdateEnvironmentMessage(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateEnvironmentMessage to be of type 'table'")
+	if struct["ApplicationName"] then asserts.AssertApplicationName(struct["ApplicationName"]) end
+	if struct["EnvironmentId"] then asserts.AssertEnvironmentId(struct["EnvironmentId"]) end
+	if struct["VersionLabel"] then asserts.AssertVersionLabel(struct["VersionLabel"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
+	if struct["EnvironmentName"] then asserts.AssertEnvironmentName(struct["EnvironmentName"]) end
+	if struct["TemplateName"] then asserts.AssertConfigurationTemplateName(struct["TemplateName"]) end
+	if struct["SolutionStackName"] then asserts.AssertSolutionStackName(struct["SolutionStackName"]) end
+	if struct["GroupName"] then asserts.AssertGroupName(struct["GroupName"]) end
+	if struct["OptionSettings"] then asserts.AssertConfigurationOptionSettingsList(struct["OptionSettings"]) end
+	if struct["Tier"] then asserts.AssertEnvironmentTier(struct["Tier"]) end
+	if struct["PlatformArn"] then asserts.AssertPlatformArn(struct["PlatformArn"]) end
+	if struct["OptionsToRemove"] then asserts.AssertOptionsSpecifierList(struct["OptionsToRemove"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateEnvironmentMessage[k], "UpdateEnvironmentMessage contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateEnvironmentMessage
+-- <p>Request to update an environment.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application with which the environment is associated.</p>
+-- * EnvironmentId [EnvironmentId] <p>The ID of the environment to update.</p> <p>If no environment with this ID exists, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error.</p> <p>Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- * VersionLabel [VersionLabel] <p>If this parameter is specified, AWS Elastic Beanstalk deploys the named application version to the environment. If no such application version is found, returns an <code>InvalidParameterValue</code> error. </p>
+-- * Description [Description] <p>If this parameter is specified, AWS Elastic Beanstalk updates the description of this environment.</p>
+-- * EnvironmentName [EnvironmentName] <p>The name of the environment to update. If no environment with this name exists, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- * TemplateName [ConfigurationTemplateName] <p>If this parameter is specified, AWS Elastic Beanstalk deploys this configuration template to the environment. If no such configuration template is found, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
+-- * SolutionStackName [SolutionStackName] <p>This specifies the platform version that the environment will run after the environment is updated.</p>
+-- * GroupName [GroupName] <p>The name of the group to which the target environment belongs. Specify a group name only if the environment's name is specified in an environment manifest and not with the environment name or environment ID parameters. See <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html">Environment Manifest (env.yaml)</a> for details.</p>
+-- * OptionSettings [ConfigurationOptionSettingsList] <p>If specified, AWS Elastic Beanstalk updates the configuration set associated with the running environment and sets the specified configuration options to the requested value.</p>
+-- * Tier [EnvironmentTier] <p>This specifies the tier to use to update the environment.</p> <p>Condition: At this time, if you change the tier version, name, or type, AWS Elastic Beanstalk returns <code>InvalidParameterValue</code> error. </p>
+-- * PlatformArn [PlatformArn] <p>The ARN of the platform, if used.</p>
+-- * OptionsToRemove [OptionsSpecifierList] <p>A list of custom user-defined configuration options to remove from the configuration set for this environment.</p>
+-- @return UpdateEnvironmentMessage structure as a key-value pair table
+function M.UpdateEnvironmentMessage(args)
+	assert(args, "You must provide an argument table when creating UpdateEnvironmentMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ApplicationName"] = args["ApplicationName"],
+		["EnvironmentId"] = args["EnvironmentId"],
+		["VersionLabel"] = args["VersionLabel"],
+		["Description"] = args["Description"],
+		["EnvironmentName"] = args["EnvironmentName"],
+		["TemplateName"] = args["TemplateName"],
+		["SolutionStackName"] = args["SolutionStackName"],
+		["GroupName"] = args["GroupName"],
+		["OptionSettings"] = args["OptionSettings"],
+		["Tier"] = args["Tier"],
+		["PlatformArn"] = args["PlatformArn"],
+		["OptionsToRemove"] = args["OptionsToRemove"],
+	}
+	asserts.AssertUpdateEnvironmentMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListAvailableSolutionStacksResultMessage = { ["SolutionStacks"] = true, ["SolutionStackDetails"] = true, nil }
 
 function asserts.AssertListAvailableSolutionStacksResultMessage(struct)
@@ -2907,40 +2901,6 @@ function M.ApplicationVersionLifecycleConfig(args)
     }
 end
 
-keys.OperationInProgressException = { nil }
-
-function asserts.AssertOperationInProgressException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected OperationInProgressException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.OperationInProgressException[k], "OperationInProgressException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type OperationInProgressException
--- <p>Unable to perform the specified operation because another operation that effects an element in this activity is already in progress.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return OperationInProgressException structure as a key-value pair table
-function M.OperationInProgressException(args)
-	assert(args, "You must provide an argument table when creating OperationInProgressException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertOperationInProgressException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.DeleteEnvironmentConfigurationMessage = { ["ApplicationName"] = true, ["EnvironmentName"] = true, nil }
 
 function asserts.AssertDeleteEnvironmentConfigurationMessage(struct)
@@ -3034,40 +2994,6 @@ function M.SourceBuildInformation(args)
     }
 end
 
-keys.TooManyConfigurationTemplatesException = { nil }
-
-function asserts.AssertTooManyConfigurationTemplatesException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyConfigurationTemplatesException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TooManyConfigurationTemplatesException[k], "TooManyConfigurationTemplatesException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TooManyConfigurationTemplatesException
--- <p>The specified account has reached its limit of configuration templates.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TooManyConfigurationTemplatesException structure as a key-value pair table
-function M.TooManyConfigurationTemplatesException(args)
-	assert(args, "You must provide an argument table when creating TooManyConfigurationTemplatesException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTooManyConfigurationTemplatesException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.SingleInstanceHealth = { ["AvailabilityZone"] = true, ["Deployment"] = true, ["InstanceId"] = true, ["ApplicationMetrics"] = true, ["System"] = true, ["Color"] = true, ["HealthStatus"] = true, ["LaunchedAt"] = true, ["InstanceType"] = true, ["Causes"] = true, nil }
 
 function asserts.AssertSingleInstanceHealth(struct)
@@ -3149,7 +3075,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * VersionLifecycleConfig [ApplicationVersionLifecycleConfig] <p>The application version lifecycle configuration.</p>
--- * ServiceRole [String] <p>The ARN of an IAM service role that Elastic Beanstalk has permission to assume.</p>
+-- * ServiceRole [String] <p>The ARN of an IAM service role that Elastic Beanstalk has permission to assume.</p> <p>The <code>ServiceRole</code> property is required the first time that you provide a <code>VersionLifecycleConfig</code> for the application in one of the supporting calls (<code>CreateApplication</code> or <code>UpdateApplicationResourceLifecycle</code>). After you provide it once, in either one of the calls, Elastic Beanstalk persists the Service Role with the application, and you don't need to specify it again in subsequent <code>UpdateApplicationResourceLifecycle</code> calls. You can, however, specify it in subsequent calls to change the Service Role to another value.</p>
 -- @return ApplicationResourceLifecycleConfig structure as a key-value pair table
 function M.ApplicationResourceLifecycleConfig(args)
 	assert(args, "You must provide an argument table when creating ApplicationResourceLifecycleConfig")
@@ -3326,6 +3252,43 @@ function M.ConfigurationSettingsValidationMessages(args)
     }
 end
 
+keys.DescribeAccountAttributesResult = { ["ResourceQuotas"] = true, nil }
+
+function asserts.AssertDescribeAccountAttributesResult(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeAccountAttributesResult to be of type 'table'")
+	if struct["ResourceQuotas"] then asserts.AssertResourceQuotas(struct["ResourceQuotas"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeAccountAttributesResult[k], "DescribeAccountAttributesResult contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeAccountAttributesResult
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceQuotas [ResourceQuotas] <p>The Elastic Beanstalk resource quotas associated with the calling AWS account.</p>
+-- @return DescribeAccountAttributesResult structure as a key-value pair table
+function M.DescribeAccountAttributesResult(args)
+	assert(args, "You must provide an argument table when creating DescribeAccountAttributesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceQuotas"] = args["ResourceQuotas"],
+	}
+	asserts.AssertDescribeAccountAttributesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DeletePlatformVersionResult = { ["PlatformSummary"] = true, nil }
 
 function asserts.AssertDeletePlatformVersionResult(struct)
@@ -3355,40 +3318,6 @@ function M.DeletePlatformVersionResult(args)
 		["PlatformSummary"] = args["PlatformSummary"],
 	}
 	asserts.AssertDeletePlatformVersionResult(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.S3SubscriptionRequiredException = { nil }
-
-function asserts.AssertS3SubscriptionRequiredException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected S3SubscriptionRequiredException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.S3SubscriptionRequiredException[k], "S3SubscriptionRequiredException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type S3SubscriptionRequiredException
--- <p>The specified account does not have a subscription to Amazon S3.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return S3SubscriptionRequiredException structure as a key-value pair table
-function M.S3SubscriptionRequiredException(args)
-	assert(args, "You must provide an argument table when creating S3SubscriptionRequiredException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertS3SubscriptionRequiredException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3532,6 +3461,45 @@ function M.ValidationMessage(args)
     }
 end
 
+keys.ListTagsForResourceMessage = { ["ResourceArn"] = true, nil }
+
+function asserts.AssertListTagsForResourceMessage(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListTagsForResourceMessage to be of type 'table'")
+	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
+	if struct["ResourceArn"] then asserts.AssertResourceArn(struct["ResourceArn"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListTagsForResourceMessage[k], "ListTagsForResourceMessage contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ListTagsForResourceMessage
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the resouce for which a tag list is requested.</p> <p>Must be the ARN of an Elastic Beanstalk environment.</p>
+-- Required key: ResourceArn
+-- @return ListTagsForResourceMessage structure as a key-value pair table
+function M.ListTagsForResourceMessage(args)
+	assert(args, "You must provide an argument table when creating ListTagsForResourceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceArn"] = args["ResourceArn"],
+	}
+	asserts.AssertListTagsForResourceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ApplyEnvironmentManagedActionResult = { ["Status"] = true, ["ActionType"] = true, ["ActionId"] = true, ["ActionDescription"] = true, nil }
 
 function asserts.AssertApplyEnvironmentManagedActionResult(struct)
@@ -3578,7 +3546,7 @@ function M.ApplyEnvironmentManagedActionResult(args)
     }
 end
 
-keys.ApplicationDescription = { ["ApplicationName"] = true, ["Description"] = true, ["Versions"] = true, ["DateCreated"] = true, ["ConfigurationTemplates"] = true, ["DateUpdated"] = true, ["ResourceLifecycleConfig"] = true, nil }
+keys.ApplicationDescription = { ["ApplicationName"] = true, ["Description"] = true, ["Versions"] = true, ["DateCreated"] = true, ["ConfigurationTemplates"] = true, ["DateUpdated"] = true, ["ResourceLifecycleConfig"] = true, ["ApplicationArn"] = true, nil }
 
 function asserts.AssertApplicationDescription(struct)
 	assert(struct)
@@ -3590,6 +3558,7 @@ function asserts.AssertApplicationDescription(struct)
 	if struct["ConfigurationTemplates"] then asserts.AssertConfigurationTemplateNamesList(struct["ConfigurationTemplates"]) end
 	if struct["DateUpdated"] then asserts.AssertUpdateDate(struct["DateUpdated"]) end
 	if struct["ResourceLifecycleConfig"] then asserts.AssertApplicationResourceLifecycleConfig(struct["ResourceLifecycleConfig"]) end
+	if struct["ApplicationArn"] then asserts.AssertApplicationArn(struct["ApplicationArn"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ApplicationDescription[k], "ApplicationDescription contains unknown key " .. tostring(k))
 	end
@@ -3606,6 +3575,7 @@ end
 -- * ConfigurationTemplates [ConfigurationTemplateNamesList] <p>The names of the configuration templates associated with this application.</p>
 -- * DateUpdated [UpdateDate] <p>The date when the application was last modified.</p>
 -- * ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] <p>The lifecycle settings for the application.</p>
+-- * ApplicationArn [ApplicationArn] <p>The Amazon Resource Name (ARN) of the application.</p>
 -- @return ApplicationDescription structure as a key-value pair table
 function M.ApplicationDescription(args)
 	assert(args, "You must provide an argument table when creating ApplicationDescription")
@@ -3623,6 +3593,7 @@ function M.ApplicationDescription(args)
 		["ConfigurationTemplates"] = args["ConfigurationTemplates"],
 		["DateUpdated"] = args["DateUpdated"],
 		["ResourceLifecycleConfig"] = args["ResourceLifecycleConfig"],
+		["ApplicationArn"] = args["ApplicationArn"],
 	}
 	asserts.AssertApplicationDescription(all_args)
 	return {
@@ -3960,43 +3931,6 @@ function M.ComposeEnvironmentsMessage(args)
     }
 end
 
-keys.ElasticBeanstalkServiceException = { ["message"] = true, nil }
-
-function asserts.AssertElasticBeanstalkServiceException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ElasticBeanstalkServiceException to be of type 'table'")
-	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ElasticBeanstalkServiceException[k], "ElasticBeanstalkServiceException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ElasticBeanstalkServiceException
--- <p>A generic service exception has occurred.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [ExceptionMessage] <p>The exception error message.</p>
--- @return ElasticBeanstalkServiceException structure as a key-value pair table
-function M.ElasticBeanstalkServiceException(args)
-	assert(args, "You must provide an argument table when creating ElasticBeanstalkServiceException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertElasticBeanstalkServiceException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.ConfigurationSettingsDescription = { ["ApplicationName"] = true, ["PlatformArn"] = true, ["Description"] = true, ["TemplateName"] = true, ["DeploymentStatus"] = true, ["SolutionStackName"] = true, ["OptionSettings"] = true, ["DateUpdated"] = true, ["DateCreated"] = true, ["EnvironmentName"] = true, nil }
 
 function asserts.AssertConfigurationSettingsDescription(struct)
@@ -4022,7 +3956,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ApplicationName [ApplicationName] <p>The name of the application associated with this configuration set.</p>
--- * PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
+-- * PlatformArn [PlatformArn] <p>The ARN of the platform.</p>
 -- * Description [Description] <p>Describes this configuration set.</p>
 -- * TemplateName [ConfigurationTemplateName] <p> If not <code>null</code>, the name of the configuration template for this configuration set. </p>
 -- * DeploymentStatus [ConfigurationDeploymentStatus] <p> If this configuration set is associated with an environment, the <code>DeploymentStatus</code> parameter indicates the deployment status of this configuration set: </p> <ul> <li> <p> <code>null</code>: This configuration is not associated with a running environment.</p> </li> <li> <p> <code>pending</code>: This is a draft configuration that is not deployed to the associated environment but is in the process of deploying.</p> </li> <li> <p> <code>deployed</code>: This is the configuration that is currently deployed to the associated running environment.</p> </li> <li> <p> <code>failed</code>: This is a draft configuration that failed to successfully deploy.</p> </li> </ul>
@@ -4098,23 +4032,27 @@ function M.DescribePlatformVersionRequest(args)
     }
 end
 
-keys.TooManyEnvironmentsException = { nil }
+keys.ResourceTagsDescriptionMessage = { ["ResourceArn"] = true, ["ResourceTags"] = true, nil }
 
-function asserts.AssertTooManyEnvironmentsException(struct)
+function asserts.AssertResourceTagsDescriptionMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyEnvironmentsException to be of type 'table'")
+	assert(type(struct) == "table", "Expected ResourceTagsDescriptionMessage to be of type 'table'")
+	if struct["ResourceArn"] then asserts.AssertResourceArn(struct["ResourceArn"]) end
+	if struct["ResourceTags"] then asserts.AssertTagList(struct["ResourceTags"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TooManyEnvironmentsException[k], "TooManyEnvironmentsException contains unknown key " .. tostring(k))
+		assert(keys.ResourceTagsDescriptionMessage[k], "ResourceTagsDescriptionMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TooManyEnvironmentsException
--- <p>The specified account has reached its limit of environments.</p>
+--- Create a structure of type ResourceTagsDescriptionMessage
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return TooManyEnvironmentsException structure as a key-value pair table
-function M.TooManyEnvironmentsException(args)
-	assert(args, "You must provide an argument table when creating TooManyEnvironmentsException")
+-- * ResourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the resouce for which a tag list was requested.</p>
+-- * ResourceTags [TagList] <p>A list of tag key-value pairs.</p>
+-- @return ResourceTagsDescriptionMessage structure as a key-value pair table
+function M.ResourceTagsDescriptionMessage(args)
+	assert(args, "You must provide an argument table when creating ResourceTagsDescriptionMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -4122,8 +4060,10 @@ function M.TooManyEnvironmentsException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["ResourceArn"] = args["ResourceArn"],
+		["ResourceTags"] = args["ResourceTags"],
 	}
-	asserts.AssertTooManyEnvironmentsException(all_args)
+	asserts.AssertResourceTagsDescriptionMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4190,40 +4130,6 @@ function M.ManagedActionHistoryItem(args)
     }
 end
 
-keys.SourceBundleDeletionException = { nil }
-
-function asserts.AssertSourceBundleDeletionException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SourceBundleDeletionException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SourceBundleDeletionException[k], "SourceBundleDeletionException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SourceBundleDeletionException
--- <p>Unable to delete the Amazon S3 source bundle associated with the application version. The application version was deleted successfully.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SourceBundleDeletionException structure as a key-value pair table
-function M.SourceBundleDeletionException(args)
-	assert(args, "You must provide an argument table when creating SourceBundleDeletionException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSourceBundleDeletionException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.Latency = { ["P99"] = true, ["P75"] = true, ["P90"] = true, ["P95"] = true, ["P85"] = true, ["P10"] = true, ["P999"] = true, ["P50"] = true, nil }
 
 function asserts.AssertLatency(struct)
@@ -4282,41 +4188,31 @@ function M.Latency(args)
     }
 end
 
-keys.ApplicationVersionDescription = { ["ApplicationName"] = true, ["Status"] = true, ["VersionLabel"] = true, ["SourceBuildInformation"] = true, ["Description"] = true, ["DateCreated"] = true, ["DateUpdated"] = true, ["SourceBundle"] = true, ["BuildArn"] = true, nil }
+keys.DescribeConfigurationSettingsMessage = { ["ApplicationName"] = true, ["EnvironmentName"] = true, ["TemplateName"] = true, nil }
 
-function asserts.AssertApplicationVersionDescription(struct)
+function asserts.AssertDescribeConfigurationSettingsMessage(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ApplicationVersionDescription to be of type 'table'")
+	assert(type(struct) == "table", "Expected DescribeConfigurationSettingsMessage to be of type 'table'")
+	assert(struct["ApplicationName"], "Expected key ApplicationName to exist in table")
 	if struct["ApplicationName"] then asserts.AssertApplicationName(struct["ApplicationName"]) end
-	if struct["Status"] then asserts.AssertApplicationVersionStatus(struct["Status"]) end
-	if struct["VersionLabel"] then asserts.AssertVersionLabel(struct["VersionLabel"]) end
-	if struct["SourceBuildInformation"] then asserts.AssertSourceBuildInformation(struct["SourceBuildInformation"]) end
-	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
-	if struct["DateCreated"] then asserts.AssertCreationDate(struct["DateCreated"]) end
-	if struct["DateUpdated"] then asserts.AssertUpdateDate(struct["DateUpdated"]) end
-	if struct["SourceBundle"] then asserts.AssertS3Location(struct["SourceBundle"]) end
-	if struct["BuildArn"] then asserts.AssertString(struct["BuildArn"]) end
+	if struct["EnvironmentName"] then asserts.AssertEnvironmentName(struct["EnvironmentName"]) end
+	if struct["TemplateName"] then asserts.AssertConfigurationTemplateName(struct["TemplateName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ApplicationVersionDescription[k], "ApplicationVersionDescription contains unknown key " .. tostring(k))
+		assert(keys.DescribeConfigurationSettingsMessage[k], "DescribeConfigurationSettingsMessage contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ApplicationVersionDescription
--- <p>Describes the properties of an application version.</p>
+--- Create a structure of type DescribeConfigurationSettingsMessage
+-- <p>Result message containing all of the configuration settings for a specified solution stack or configuration template.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ApplicationName [ApplicationName] <p>The name of the application to which the application version belongs.</p>
--- * Status [ApplicationVersionStatus] <p>The processing status of the application version.</p>
--- * VersionLabel [VersionLabel] <p>A unique identifier for the application version.</p>
--- * SourceBuildInformation [SourceBuildInformation] <p>If the version's source code was retrieved from AWS CodeCommit, the location of the source code for the application version.</p>
--- * Description [Description] <p>The description of the application version.</p>
--- * DateCreated [CreationDate] <p>The creation date of the application version.</p>
--- * DateUpdated [UpdateDate] <p>The last modified date of the application version.</p>
--- * SourceBundle [S3Location] <p>The storage location of the application version's source bundle in Amazon S3.</p>
--- * BuildArn [String] <p>Reference to the artifact from the AWS CodeBuild build.</p>
--- @return ApplicationVersionDescription structure as a key-value pair table
-function M.ApplicationVersionDescription(args)
-	assert(args, "You must provide an argument table when creating ApplicationVersionDescription")
+-- * ApplicationName [ApplicationName] <p>The application for the environment or configuration template.</p>
+-- * EnvironmentName [EnvironmentName] <p>The name of the environment to describe.</p> <p> Condition: You must specify either this or a TemplateName, but not both. If you specify both, AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- * TemplateName [ConfigurationTemplateName] <p>The name of the configuration template to describe.</p> <p> Conditional: You must specify either this parameter or an EnvironmentName, but not both. If you specify both, AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not specify either, AWS Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error. </p>
+-- Required key: ApplicationName
+-- @return DescribeConfigurationSettingsMessage structure as a key-value pair table
+function M.DescribeConfigurationSettingsMessage(args)
+	assert(args, "You must provide an argument table when creating DescribeConfigurationSettingsMessage")
     local query_args = { 
     }
     local uri_args = { 
@@ -4325,16 +4221,10 @@ function M.ApplicationVersionDescription(args)
     }
 	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
-		["Status"] = args["Status"],
-		["VersionLabel"] = args["VersionLabel"],
-		["SourceBuildInformation"] = args["SourceBuildInformation"],
-		["Description"] = args["Description"],
-		["DateCreated"] = args["DateCreated"],
-		["DateUpdated"] = args["DateUpdated"],
-		["SourceBundle"] = args["SourceBundle"],
-		["BuildArn"] = args["BuildArn"],
+		["EnvironmentName"] = args["EnvironmentName"],
+		["TemplateName"] = args["TemplateName"],
 	}
-	asserts.AssertApplicationVersionDescription(all_args)
+	asserts.AssertDescribeConfigurationSettingsMessage(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4568,40 +4458,6 @@ function M.EnvironmentLink(args)
     }
 end
 
-keys.PlatformVersionStillReferencedException = { nil }
-
-function asserts.AssertPlatformVersionStillReferencedException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected PlatformVersionStillReferencedException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.PlatformVersionStillReferencedException[k], "PlatformVersionStillReferencedException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type PlatformVersionStillReferencedException
--- <p>You cannot delete the platform version because there are still environments running on it.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return PlatformVersionStillReferencedException structure as a key-value pair table
-function M.PlatformVersionStillReferencedException(args)
-	assert(args, "You must provide an argument table when creating PlatformVersionStillReferencedException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertPlatformVersionStillReferencedException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.RetrieveEnvironmentInfoResultMessage = { ["EnvironmentInfo"] = true, nil }
 
 function asserts.AssertRetrieveEnvironmentInfoResultMessage(struct)
@@ -4795,40 +4651,6 @@ function M.PlatformProgrammingLanguage(args)
 		["Name"] = args["Name"],
 	}
 	asserts.AssertPlatformProgrammingLanguage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TooManyPlatformsException = { nil }
-
-function asserts.AssertTooManyPlatformsException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyPlatformsException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TooManyPlatformsException[k], "TooManyPlatformsException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TooManyPlatformsException
--- <p>You have exceeded the maximum number of allowed platforms associated with the account.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TooManyPlatformsException structure as a key-value pair table
-function M.TooManyPlatformsException(args)
-	assert(args, "You must provide an argument table when creating TooManyPlatformsException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTooManyPlatformsException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5038,7 +4860,7 @@ end
 -- Valid keys:
 -- * Status [String] <p>The status of the deployment:</p> <ul> <li> <p> <code>In Progress</code> : The deployment is in progress.</p> </li> <li> <p> <code>Deployed</code> : The deployment succeeded.</p> </li> <li> <p> <code>Failed</code> : The deployment failed.</p> </li> </ul>
 -- * VersionLabel [String] <p>The version label of the application version in the deployment.</p>
--- * DeploymentTime [DeploymentTimestamp] <p>For in-progress deployments, the time that the deloyment started.</p> <p>For completed deployments, the time that the deployment ended.</p>
+-- * DeploymentTime [DeploymentTimestamp] <p>For in-progress deployments, the time that the deployment started.</p> <p>For completed deployments, the time that the deployment ended.</p>
 -- * DeploymentId [NullableLong] <p>The ID of the deployment. This number increases by one each time that you deploy source code or change instance configuration settings.</p>
 -- @return Deployment structure as a key-value pair table
 function M.Deployment(args)
@@ -5250,11 +5072,12 @@ function M.InstanceHealthSummary(args)
     }
 end
 
-keys.EnvironmentDescriptionsMessage = { ["Environments"] = true, nil }
+keys.EnvironmentDescriptionsMessage = { ["NextToken"] = true, ["Environments"] = true, nil }
 
 function asserts.AssertEnvironmentDescriptionsMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EnvironmentDescriptionsMessage to be of type 'table'")
+	if struct["NextToken"] then asserts.AssertToken(struct["NextToken"]) end
 	if struct["Environments"] then asserts.AssertEnvironmentDescriptionsList(struct["Environments"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.EnvironmentDescriptionsMessage[k], "EnvironmentDescriptionsMessage contains unknown key " .. tostring(k))
@@ -5265,6 +5088,7 @@ end
 -- <p>Result message containing a list of environment descriptions.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * NextToken [Token] <p>In a paginated request, the token that you can pass in a subsequent request to get the next response page.</p>
 -- * Environments [EnvironmentDescriptionsList] <p> Returns an <a>EnvironmentDescription</a> list. </p>
 -- @return EnvironmentDescriptionsMessage structure as a key-value pair table
 function M.EnvironmentDescriptionsMessage(args)
@@ -5276,6 +5100,7 @@ function M.EnvironmentDescriptionsMessage(args)
     local header_args = { 
     }
 	local all_args = { 
+		["NextToken"] = args["NextToken"],
 		["Environments"] = args["Environments"],
 	}
 	asserts.AssertEnvironmentDescriptionsMessage(all_args)
@@ -5406,40 +5231,6 @@ function M.LoadBalancerDescription(args)
 		["LoadBalancerName"] = args["LoadBalancerName"],
 	}
 	asserts.AssertLoadBalancerDescription(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TooManyApplicationsException = { nil }
-
-function asserts.AssertTooManyApplicationsException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyApplicationsException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TooManyApplicationsException[k], "TooManyApplicationsException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TooManyApplicationsException
--- <p>The specified account has reached its limit of applications.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TooManyApplicationsException structure as a key-value pair table
-function M.TooManyApplicationsException(args)
-	assert(args, "You must provide an argument table when creating TooManyApplicationsException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTooManyApplicationsException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5595,7 +5386,7 @@ end
 -- <p>Describes the settings for a specified configuration set.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
+-- * PlatformArn [PlatformArn] <p>The ARN of the platform.</p>
 -- * Options [ConfigurationOptionDescriptionsList] <p> A list of <a>ConfigurationOptionDescription</a>. </p>
 -- * SolutionStackName [SolutionStackName] <p>The name of the solution stack these configuration options belong to.</p>
 -- @return ConfigurationOptionsDescription structure as a key-value pair table
@@ -5701,76 +5492,6 @@ function M.DescribeEnvironmentManagedActionsRequest(args)
     }
 end
 
-keys.UpdateEnvironmentMessage = { ["ApplicationName"] = true, ["EnvironmentId"] = true, ["VersionLabel"] = true, ["Description"] = true, ["EnvironmentName"] = true, ["TemplateName"] = true, ["SolutionStackName"] = true, ["GroupName"] = true, ["OptionSettings"] = true, ["Tier"] = true, ["PlatformArn"] = true, ["OptionsToRemove"] = true, nil }
-
-function asserts.AssertUpdateEnvironmentMessage(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateEnvironmentMessage to be of type 'table'")
-	if struct["ApplicationName"] then asserts.AssertApplicationName(struct["ApplicationName"]) end
-	if struct["EnvironmentId"] then asserts.AssertEnvironmentId(struct["EnvironmentId"]) end
-	if struct["VersionLabel"] then asserts.AssertVersionLabel(struct["VersionLabel"]) end
-	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
-	if struct["EnvironmentName"] then asserts.AssertEnvironmentName(struct["EnvironmentName"]) end
-	if struct["TemplateName"] then asserts.AssertConfigurationTemplateName(struct["TemplateName"]) end
-	if struct["SolutionStackName"] then asserts.AssertSolutionStackName(struct["SolutionStackName"]) end
-	if struct["GroupName"] then asserts.AssertGroupName(struct["GroupName"]) end
-	if struct["OptionSettings"] then asserts.AssertConfigurationOptionSettingsList(struct["OptionSettings"]) end
-	if struct["Tier"] then asserts.AssertEnvironmentTier(struct["Tier"]) end
-	if struct["PlatformArn"] then asserts.AssertPlatformArn(struct["PlatformArn"]) end
-	if struct["OptionsToRemove"] then asserts.AssertOptionsSpecifierList(struct["OptionsToRemove"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.UpdateEnvironmentMessage[k], "UpdateEnvironmentMessage contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type UpdateEnvironmentMessage
--- <p>Request to update an environment.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ApplicationName [ApplicationName] <p>The name of the application with which the environment is associated.</p>
--- * EnvironmentId [EnvironmentId] <p>The ID of the environment to update.</p> <p>If no environment with this ID exists, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error.</p> <p>Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
--- * VersionLabel [VersionLabel] <p>If this parameter is specified, AWS Elastic Beanstalk deploys the named application version to the environment. If no such application version is found, returns an <code>InvalidParameterValue</code> error. </p>
--- * Description [Description] <p>If this parameter is specified, AWS Elastic Beanstalk updates the description of this environment.</p>
--- * EnvironmentName [EnvironmentName] <p>The name of the environment to update. If no environment with this name exists, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
--- * TemplateName [ConfigurationTemplateName] <p>If this parameter is specified, AWS Elastic Beanstalk deploys this configuration template to the environment. If no such configuration template is found, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
--- * SolutionStackName [SolutionStackName] <p>This specifies the platform version that the environment will run after the environment is updated.</p>
--- * GroupName [GroupName] <p>The name of the group to which the target environment belongs. Specify a group name only if the environment's name is specified in an environment manifest and not with the environment name or environment ID parameters. See <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html">Environment Manifest (env.yaml)</a> for details.</p>
--- * OptionSettings [ConfigurationOptionSettingsList] <p>If specified, AWS Elastic Beanstalk updates the configuration set associated with the running environment and sets the specified configuration options to the requested value.</p>
--- * Tier [EnvironmentTier] <p>This specifies the tier to use to update the environment.</p> <p>Condition: At this time, if you change the tier version, name, or type, AWS Elastic Beanstalk returns <code>InvalidParameterValue</code> error. </p>
--- * PlatformArn [PlatformArn] <p>The ARN of the platform, if used.</p>
--- * OptionsToRemove [OptionsSpecifierList] <p>A list of custom user-defined configuration options to remove from the configuration set for this environment.</p>
--- @return UpdateEnvironmentMessage structure as a key-value pair table
-function M.UpdateEnvironmentMessage(args)
-	assert(args, "You must provide an argument table when creating UpdateEnvironmentMessage")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ApplicationName"] = args["ApplicationName"],
-		["EnvironmentId"] = args["EnvironmentId"],
-		["VersionLabel"] = args["VersionLabel"],
-		["Description"] = args["Description"],
-		["EnvironmentName"] = args["EnvironmentName"],
-		["TemplateName"] = args["TemplateName"],
-		["SolutionStackName"] = args["SolutionStackName"],
-		["GroupName"] = args["GroupName"],
-		["OptionSettings"] = args["OptionSettings"],
-		["Tier"] = args["Tier"],
-		["PlatformArn"] = args["PlatformArn"],
-		["OptionsToRemove"] = args["OptionsToRemove"],
-	}
-	asserts.AssertUpdateEnvironmentMessage(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 function asserts.AssertConfigurationOptionValueType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ConfigurationOptionValueType to be of type 'string'")
@@ -5779,17 +5500,6 @@ end
 --  
 function M.ConfigurationOptionValueType(str)
 	asserts.AssertConfigurationOptionValueType(str)
-	return str
-end
-
-function asserts.AssertRegexPattern(str)
-	assert(str)
-	assert(type(str) == "string", "Expected RegexPattern to be of type 'string'")
-end
-
---  
-function M.RegexPattern(str)
-	asserts.AssertRegexPattern(str)
 	return str
 end
 
@@ -5814,17 +5524,6 @@ end
 --  
 function M.ActionStatus(str)
 	asserts.AssertActionStatus(str)
-	return str
-end
-
-function asserts.AssertValidationSeverity(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ValidationSeverity to be of type 'string'")
-end
-
---  
-function M.ValidationSeverity(str)
-	asserts.AssertValidationSeverity(str)
 	return str
 end
 
@@ -5920,6 +5619,17 @@ function M.EnvironmentStatus(str)
 	return str
 end
 
+function asserts.AssertImageId(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ImageId to be of type 'string'")
+end
+
+--  
+function M.ImageId(str)
+	asserts.AssertImageId(str)
+	return str
+end
+
 function asserts.AssertActionType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ActionType to be of type 'string'")
@@ -5939,6 +5649,17 @@ end
 --  
 function M.ValidationMessageString(str)
 	asserts.AssertValidationMessageString(str)
+	return str
+end
+
+function asserts.AssertPlatformCategory(str)
+	assert(str)
+	assert(type(str) == "string", "Expected PlatformCategory to be of type 'string'")
+end
+
+--  
+function M.PlatformCategory(str)
+	asserts.AssertPlatformCategory(str)
 	return str
 end
 
@@ -6001,14 +5722,27 @@ function M.Maintainer(str)
 	return str
 end
 
-function asserts.AssertExceptionMessage(str)
+function asserts.AssertEnvironmentArn(str)
 	assert(str)
-	assert(type(str) == "string", "Expected ExceptionMessage to be of type 'string'")
+	assert(type(str) == "string", "Expected EnvironmentArn to be of type 'string'")
 end
 
 --  
-function M.ExceptionMessage(str)
-	asserts.AssertExceptionMessage(str)
+function M.EnvironmentArn(str)
+	asserts.AssertEnvironmentArn(str)
+	return str
+end
+
+function asserts.AssertDNSCnamePrefix(str)
+	assert(str)
+	assert(type(str) == "string", "Expected DNSCnamePrefix to be of type 'string'")
+	assert(#str <= 63, "Expected string to be max 63 characters")
+	assert(#str >= 4, "Expected string to be min 4 characters")
+end
+
+--  
+function M.DNSCnamePrefix(str)
+	asserts.AssertDNSCnamePrefix(str)
 	return str
 end
 
@@ -6058,19 +5792,6 @@ function M.PlatformOwner(str)
 	return str
 end
 
-function asserts.AssertDNSCnamePrefix(str)
-	assert(str)
-	assert(type(str) == "string", "Expected DNSCnamePrefix to be of type 'string'")
-	assert(#str <= 63, "Expected string to be max 63 characters")
-	assert(#str >= 4, "Expected string to be min 4 characters")
-end
-
---  
-function M.DNSCnamePrefix(str)
-	asserts.AssertDNSCnamePrefix(str)
-	return str
-end
-
 function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
@@ -6079,6 +5800,17 @@ end
 --  
 function M.String(str)
 	asserts.AssertString(str)
+	return str
+end
+
+function asserts.AssertResourceArn(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ResourceArn to be of type 'string'")
+end
+
+--  
+function M.ResourceArn(str)
+	asserts.AssertResourceArn(str)
 	return str
 end
 
@@ -6174,6 +5906,28 @@ function M.FileTypeExtension(str)
 	return str
 end
 
+function asserts.AssertRegexPattern(str)
+	assert(str)
+	assert(type(str) == "string", "Expected RegexPattern to be of type 'string'")
+end
+
+--  
+function M.RegexPattern(str)
+	asserts.AssertRegexPattern(str)
+	return str
+end
+
+function asserts.AssertApplicationArn(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ApplicationArn to be of type 'string'")
+end
+
+--  
+function M.ApplicationArn(str)
+	asserts.AssertApplicationArn(str)
+	return str
+end
+
 function asserts.AssertVirtualizationType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected VirtualizationType to be of type 'string'")
@@ -6251,17 +6005,6 @@ function M.PlatformFilterValue(str)
 	return str
 end
 
-function asserts.AssertImageId(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ImageId to be of type 'string'")
-end
-
---  
-function M.ImageId(str)
-	asserts.AssertImageId(str)
-	return str
-end
-
 function asserts.AssertConfigurationDeploymentStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ConfigurationDeploymentStatus to be of type 'string'")
@@ -6270,17 +6013,6 @@ end
 --  
 function M.ConfigurationDeploymentStatus(str)
 	asserts.AssertConfigurationDeploymentStatus(str)
-	return str
-end
-
-function asserts.AssertPlatformCategory(str)
-	assert(str)
-	assert(type(str) == "string", "Expected PlatformCategory to be of type 'string'")
-end
-
---  
-function M.PlatformCategory(str)
-	asserts.AssertPlatformCategory(str)
 	return str
 end
 
@@ -6303,6 +6035,17 @@ end
 --  
 function M.PlatformArn(str)
 	asserts.AssertPlatformArn(str)
+	return str
+end
+
+function asserts.AssertApplicationVersionArn(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ApplicationVersionArn to be of type 'string'")
+end
+
+--  
+function M.ApplicationVersionArn(str)
+	asserts.AssertApplicationVersionArn(str)
 	return str
 end
 
@@ -6361,6 +6104,17 @@ function M.EnvironmentId(str)
 	return str
 end
 
+function asserts.AssertToken(str)
+	assert(str)
+	assert(type(str) == "string", "Expected Token to be of type 'string'")
+end
+
+--  
+function M.Token(str)
+	asserts.AssertToken(str)
+	return str
+end
+
 function asserts.AssertS3Key(str)
 	assert(str)
 	assert(type(str) == "string", "Expected S3Key to be of type 'string'")
@@ -6416,17 +6170,6 @@ end
 --  
 function M.EndpointURL(str)
 	asserts.AssertEndpointURL(str)
-	return str
-end
-
-function asserts.AssertToken(str)
-	assert(str)
-	assert(type(str) == "string", "Expected Token to be of type 'string'")
-end
-
---  
-function M.Token(str)
-	asserts.AssertToken(str)
 	return str
 end
 
@@ -6511,6 +6254,17 @@ end
 --  
 function M.PlatformFilterOperator(str)
 	asserts.AssertPlatformFilterOperator(str)
+	return str
+end
+
+function asserts.AssertValidationSeverity(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ValidationSeverity to be of type 'string'")
+end
+
+--  
+function M.ValidationSeverity(str)
+	asserts.AssertValidationSeverity(str)
 	return str
 end
 
@@ -7136,6 +6890,21 @@ function M.LaunchConfigurationList(list)
 	return list
 end
 
+function asserts.AssertTagKeyList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected TagKeyList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertTagKey(v)
+	end
+end
+
+--  
+-- List of TagKey objects
+function M.TagKeyList(list)
+	asserts.AssertTagKeyList(list)
+	return list
+end
+
 function asserts.AssertInstancesHealthAttributes(list)
 	assert(list)
 	assert(type(list) == "table", "Expected InstancesHealthAttributes to be of type ''table")
@@ -7181,21 +6950,6 @@ function M.EnvironmentInfoDescriptionList(list)
 	return list
 end
 
-function asserts.AssertLoadBalancerListenersDescription(list)
-	assert(list)
-	assert(type(list) == "table", "Expected LoadBalancerListenersDescription to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertListener(v)
-	end
-end
-
---  
--- List of Listener objects
-function M.LoadBalancerListenersDescription(list)
-	asserts.AssertLoadBalancerListenersDescription(list)
-	return list
-end
-
 function asserts.AssertSolutionStackFileTypeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SolutionStackFileTypeList to be of type ''table")
@@ -7226,18 +6980,18 @@ function M.VersionLabels(list)
 	return list
 end
 
-function asserts.AssertEnvironmentIdList(list)
+function asserts.AssertLoadBalancerListenersDescription(list)
 	assert(list)
-	assert(type(list) == "table", "Expected EnvironmentIdList to be of type ''table")
+	assert(type(list) == "table", "Expected LoadBalancerListenersDescription to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertEnvironmentId(v)
+		asserts.AssertListener(v)
 	end
 end
 
 --  
--- List of EnvironmentId objects
-function M.EnvironmentIdList(list)
-	asserts.AssertEnvironmentIdList(list)
+-- List of Listener objects
+function M.LoadBalancerListenersDescription(list)
+	asserts.AssertLoadBalancerListenersDescription(list)
 	return list
 end
 
@@ -7313,6 +7067,21 @@ end
 -- List of ConfigurationTemplateName objects
 function M.ConfigurationTemplateNamesList(list)
 	asserts.AssertConfigurationTemplateNamesList(list)
+	return list
+end
+
+function asserts.AssertEnvironmentIdList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected EnvironmentIdList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertEnvironmentId(v)
+	end
+end
+
+--  
+-- List of EnvironmentId objects
+function M.EnvironmentIdList(list)
+	asserts.AssertEnvironmentIdList(list)
 	return list
 end
 
@@ -7438,21 +7207,6 @@ function M.CustomAmiList(list)
 	return list
 end
 
-function asserts.AssertSupportedTierList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected SupportedTierList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertSupportedTier(v)
-	end
-end
-
---  
--- List of SupportedTier objects
-function M.SupportedTierList(list)
-	asserts.AssertSupportedTierList(list)
-	return list
-end
-
 function asserts.AssertVersionLabelsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected VersionLabelsList to be of type ''table")
@@ -7575,6 +7329,21 @@ function M.Causes(list)
 	return list
 end
 
+function asserts.AssertSupportedTierList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected SupportedTierList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertSupportedTier(v)
+	end
+end
+
+--  
+-- List of SupportedTier objects
+function M.SupportedTierList(list)
+	asserts.AssertSupportedTierList(list)
+	return list
+end
+
 function asserts.AssertApplicationNamesList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ApplicationNamesList to be of type ''table")
@@ -7635,6 +7404,21 @@ function M.EventDescriptionList(list)
 	return list
 end
 
+function asserts.AssertTagList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected TagList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertTag(v)
+	end
+end
+
+--  
+-- List of Tag objects
+function M.TagList(list)
+	asserts.AssertTagList(list)
+	return list
+end
+
 
 local content_type = require "aws-sdk.core.content_type"
 local request_headers = require "aws-sdk.core.request_headers"
@@ -7678,6 +7462,41 @@ end
 --
 -- OPERATIONS
 --
+--- Call UpdateTagsForResource asynchronously, invoking a callback when done
+-- @param UpdateTagsForResourceMessage
+-- @param cb Callback function accepting two args: response, error_message
+function M.UpdateTagsForResourceAsync(UpdateTagsForResourceMessage, cb)
+	assert(UpdateTagsForResourceMessage, "You must provide a UpdateTagsForResourceMessage")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateTagsForResource",
+	}
+	for header,value in pairs(UpdateTagsForResourceMessage.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", UpdateTagsForResourceMessage, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call UpdateTagsForResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateTagsForResourceMessage
+-- @return response
+-- @return error_message
+function M.UpdateTagsForResourceSync(UpdateTagsForResourceMessage, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateTagsForResourceAsync(UpdateTagsForResourceMessage, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call DescribeApplicationVersions asynchronously, invoking a callback when done
 -- @param DescribeApplicationVersionsMessage
 -- @param cb Callback function accepting two args: response, error_message
@@ -7883,6 +7702,41 @@ function M.UpdateApplicationResourceLifecycleSync(UpdateApplicationResourceLifec
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.UpdateApplicationResourceLifecycleAsync(UpdateApplicationResourceLifecycleMessage, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call TerminateEnvironment asynchronously, invoking a callback when done
+-- @param TerminateEnvironmentMessage
+-- @param cb Callback function accepting two args: response, error_message
+function M.TerminateEnvironmentAsync(TerminateEnvironmentMessage, cb)
+	assert(TerminateEnvironmentMessage, "You must provide a TerminateEnvironmentMessage")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".TerminateEnvironment",
+	}
+	for header,value in pairs(TerminateEnvironmentMessage.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", TerminateEnvironmentMessage, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call TerminateEnvironment synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TerminateEnvironmentMessage
+-- @return response
+-- @return error_message
+function M.TerminateEnvironmentSync(TerminateEnvironmentMessage, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TerminateEnvironmentAsync(TerminateEnvironmentMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8583,36 +8437,36 @@ function M.AbortEnvironmentUpdateSync(AbortEnvironmentUpdateMessage, ...)
 	return coroutine.yield()
 end
 
---- Call TerminateEnvironment asynchronously, invoking a callback when done
--- @param TerminateEnvironmentMessage
+--- Call RestartAppServer asynchronously, invoking a callback when done
+-- @param RestartAppServerMessage
 -- @param cb Callback function accepting two args: response, error_message
-function M.TerminateEnvironmentAsync(TerminateEnvironmentMessage, cb)
-	assert(TerminateEnvironmentMessage, "You must provide a TerminateEnvironmentMessage")
+function M.RestartAppServerAsync(RestartAppServerMessage, cb)
+	assert(RestartAppServerMessage, "You must provide a RestartAppServerMessage")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".TerminateEnvironment",
+		[request_headers.AMZ_TARGET_HEADER] = ".RestartAppServer",
 	}
-	for header,value in pairs(TerminateEnvironmentMessage.headers) do
+	for header,value in pairs(RestartAppServerMessage.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", TerminateEnvironmentMessage, headers, settings, cb)
+		request_handler(settings.uri, "/", RestartAppServerMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call TerminateEnvironment synchronously, returning when done
+--- Call RestartAppServer synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param TerminateEnvironmentMessage
+-- @param RestartAppServerMessage
 -- @return response
 -- @return error_message
-function M.TerminateEnvironmentSync(TerminateEnvironmentMessage, ...)
+function M.RestartAppServerSync(RestartAppServerMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TerminateEnvironmentAsync(TerminateEnvironmentMessage, function(response, error_message)
+	M.RestartAppServerAsync(RestartAppServerMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8823,36 +8677,36 @@ function M.RebuildEnvironmentSync(RebuildEnvironmentMessage, ...)
 	return coroutine.yield()
 end
 
---- Call RestartAppServer asynchronously, invoking a callback when done
--- @param RestartAppServerMessage
+--- Call ListTagsForResource asynchronously, invoking a callback when done
+-- @param ListTagsForResourceMessage
 -- @param cb Callback function accepting two args: response, error_message
-function M.RestartAppServerAsync(RestartAppServerMessage, cb)
-	assert(RestartAppServerMessage, "You must provide a RestartAppServerMessage")
+function M.ListTagsForResourceAsync(ListTagsForResourceMessage, cb)
+	assert(ListTagsForResourceMessage, "You must provide a ListTagsForResourceMessage")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".RestartAppServer",
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTagsForResource",
 	}
-	for header,value in pairs(RestartAppServerMessage.headers) do
+	for header,value in pairs(ListTagsForResourceMessage.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", RestartAppServerMessage, headers, settings, cb)
+		request_handler(settings.uri, "/", ListTagsForResourceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call RestartAppServer synchronously, returning when done
+--- Call ListTagsForResource synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param RestartAppServerMessage
+-- @param ListTagsForResourceMessage
 -- @return response
 -- @return error_message
-function M.RestartAppServerSync(RestartAppServerMessage, ...)
+function M.ListTagsForResourceSync(ListTagsForResourceMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RestartAppServerAsync(RestartAppServerMessage, function(response, error_message)
+	M.ListTagsForResourceAsync(ListTagsForResourceMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8958,6 +8812,36 @@ function M.DescribePlatformVersionSync(DescribePlatformVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DescribePlatformVersionAsync(DescribePlatformVersionRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeAccountAttributes asynchronously, invoking a callback when done
+-- @param cb Callback function accepting two args: response, error_message
+function M.DescribeAccountAttributesAsync(cb)
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAccountAttributes",
+	}
+
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeAccountAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @return response
+-- @return error_message
+function M.DescribeAccountAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeAccountAttributesAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

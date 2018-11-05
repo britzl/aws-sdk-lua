@@ -21,6 +21,55 @@ M.metadata = {
 local keys = {}
 local asserts = {}
 
+keys.S3Configuration = { ["FileKey"] = true, ["RoleARN"] = true, ["BucketARN"] = true, nil }
+
+function asserts.AssertS3Configuration(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected S3Configuration to be of type 'table'")
+	assert(struct["RoleARN"], "Expected key RoleARN to exist in table")
+	assert(struct["BucketARN"], "Expected key BucketARN to exist in table")
+	assert(struct["FileKey"], "Expected key FileKey to exist in table")
+	if struct["FileKey"] then asserts.AssertFileKey(struct["FileKey"]) end
+	if struct["RoleARN"] then asserts.AssertRoleARN(struct["RoleARN"]) end
+	if struct["BucketARN"] then asserts.AssertBucketARN(struct["BucketARN"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.S3Configuration[k], "S3Configuration contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type S3Configuration
+-- <p>Provides a description of an Amazon S3 data source, including the Amazon Resource Name (ARN) of the S3 bucket, the ARN of the IAM role that is used to access the bucket, and the name of the S3 object that contains the data.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileKey [FileKey] <p>The name of the object that contains the data.</p>
+-- * RoleARN [RoleARN] <p>IAM ARN of the role used to access the data.</p>
+-- * BucketARN [BucketARN] <p>ARN of the S3 bucket that contains the data.</p>
+-- Required key: RoleARN
+-- Required key: BucketARN
+-- Required key: FileKey
+-- @return S3Configuration structure as a key-value pair table
+function M.S3Configuration(args)
+	assert(args, "You must provide an argument table when creating S3Configuration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["FileKey"] = args["FileKey"],
+		["RoleARN"] = args["RoleARN"],
+		["BucketARN"] = args["BucketARN"],
+	}
+	asserts.AssertS3Configuration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListApplicationsRequest = { ["Limit"] = true, ["ExclusiveStartApplicationName"] = true, nil }
 
 function asserts.AssertListApplicationsRequest(struct)
@@ -98,6 +147,43 @@ function M.DestinationSchema(args)
     }
 end
 
+keys.ServiceUnavailableException = { ["message"] = true, nil }
+
+function asserts.AssertServiceUnavailableException(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ServiceUnavailableException to be of type 'table'")
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ServiceUnavailableException[k], "ServiceUnavailableException contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ServiceUnavailableException
+-- <p>The service is unavailable, back off and retry the operation. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return ServiceUnavailableException structure as a key-value pair table
+function M.ServiceUnavailableException(args)
+	assert(args, "You must provide an argument table when creating ServiceUnavailableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["message"] = args["message"],
+	}
+	asserts.AssertServiceUnavailableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.InvalidApplicationConfigurationException = { ["message"] = true, nil }
 
 function asserts.AssertInvalidApplicationConfigurationException(struct)
@@ -151,7 +237,7 @@ end
 -- <p>Provides additional mapping information when JSON is the record format on the streaming source.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * RecordRowPath [RecordRowPath] <p>Path to the top-level parent that contains the records.</p> <p>For example, consider the following JSON record:</p> <p>In the <code>RecordRowPath</code>, <code>"$"</code> refers to the root and path <code>"$.vehicle.Model"</code> refers to the specific <code>"Model"</code> key in the JSON.</p>
+-- * RecordRowPath [RecordRowPath] <p>Path to the top-level parent that contains the records.</p>
 -- Required key: RecordRowPath
 -- @return JSONMappingParameters structure as a key-value pair table
 function M.JSONMappingParameters(args)
@@ -266,7 +352,7 @@ end
 -- * S3ReferenceDataSourceDescription [S3ReferenceDataSourceDescription] <p>Provides the S3 bucket name, the object key name that contains the reference data. It also provides the Amazon Resource Name (ARN) of the IAM role that Amazon Kinesis Analytics can assume to read the Amazon S3 object and populate the in-application reference table.</p>
 -- * ReferenceId [Id] <p>ID of the reference data source. This is the ID that Amazon Kinesis Analytics assigns when you add the reference data source to your application using the <a>AddApplicationReferenceDataSource</a> operation.</p>
 -- * TableName [InAppTableName] <p>The in-application table name created by the specific reference data source configuration.</p>
--- * ReferenceSchema [SourceSchema] 
+-- * ReferenceSchema [SourceSchema] <p>Describes the format of the data in the streaming source, and how each data element maps to corresponding columns created in the in-application stream.</p>
 -- Required key: ReferenceId
 -- Required key: TableName
 -- Required key: S3ReferenceDataSourceDescription
@@ -294,35 +380,27 @@ function M.ReferenceDataSourceDescription(args)
     }
 end
 
-keys.UpdateApplicationRequest = { ["ApplicationName"] = true, ["ApplicationUpdate"] = true, ["CurrentApplicationVersionId"] = true, nil }
+keys.InputLambdaProcessorUpdate = { ["RoleARNUpdate"] = true, ["ResourceARNUpdate"] = true, nil }
 
-function asserts.AssertUpdateApplicationRequest(struct)
+function asserts.AssertInputLambdaProcessorUpdate(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected UpdateApplicationRequest to be of type 'table'")
-	assert(struct["ApplicationName"], "Expected key ApplicationName to exist in table")
-	assert(struct["CurrentApplicationVersionId"], "Expected key CurrentApplicationVersionId to exist in table")
-	assert(struct["ApplicationUpdate"], "Expected key ApplicationUpdate to exist in table")
-	if struct["ApplicationName"] then asserts.AssertApplicationName(struct["ApplicationName"]) end
-	if struct["ApplicationUpdate"] then asserts.AssertApplicationUpdate(struct["ApplicationUpdate"]) end
-	if struct["CurrentApplicationVersionId"] then asserts.AssertApplicationVersionId(struct["CurrentApplicationVersionId"]) end
+	assert(type(struct) == "table", "Expected InputLambdaProcessorUpdate to be of type 'table'")
+	if struct["RoleARNUpdate"] then asserts.AssertRoleARN(struct["RoleARNUpdate"]) end
+	if struct["ResourceARNUpdate"] then asserts.AssertResourceARN(struct["ResourceARNUpdate"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.UpdateApplicationRequest[k], "UpdateApplicationRequest contains unknown key " .. tostring(k))
+		assert(keys.InputLambdaProcessorUpdate[k], "InputLambdaProcessorUpdate contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type UpdateApplicationRequest
---  
+--- Create a structure of type InputLambdaProcessorUpdate
+-- <p>Represents an update to the <a>InputLambdaProcessor</a> that is used to preprocess the records in the stream.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ApplicationName [ApplicationName] <p>Name of the Amazon Kinesis Analytics application to update.</p>
--- * ApplicationUpdate [ApplicationUpdate] <p>Describes application updates.</p>
--- * CurrentApplicationVersionId [ApplicationVersionId] <p>The current application version ID. You can use the <a>DescribeApplication</a> operation to get this value.</p>
--- Required key: ApplicationName
--- Required key: CurrentApplicationVersionId
--- Required key: ApplicationUpdate
--- @return UpdateApplicationRequest structure as a key-value pair table
-function M.UpdateApplicationRequest(args)
-	assert(args, "You must provide an argument table when creating UpdateApplicationRequest")
+-- * RoleARNUpdate [RoleARN] <p>The ARN of the new IAM role that is used to access the AWS Lambda function.</p>
+-- * ResourceARNUpdate [ResourceARN] <p>The Amazon Resource Name (ARN) of the new <a href="https://aws.amazon.com/documentation/lambda/">AWS Lambda</a> function that is used to preprocess the records in the stream.</p>
+-- @return InputLambdaProcessorUpdate structure as a key-value pair table
+function M.InputLambdaProcessorUpdate(args)
+	assert(args, "You must provide an argument table when creating InputLambdaProcessorUpdate")
     local query_args = { 
     }
     local uri_args = { 
@@ -330,11 +408,10 @@ function M.UpdateApplicationRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["ApplicationName"] = args["ApplicationName"],
-		["ApplicationUpdate"] = args["ApplicationUpdate"],
-		["CurrentApplicationVersionId"] = args["CurrentApplicationVersionId"],
+		["RoleARNUpdate"] = args["RoleARNUpdate"],
+		["ResourceARNUpdate"] = args["ResourceARNUpdate"],
 	}
-	asserts.AssertUpdateApplicationRequest(all_args)
+	asserts.AssertInputLambdaProcessorUpdate(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -358,10 +435,10 @@ function asserts.AssertCloudWatchLoggingOption(struct)
 end
 
 --- Create a structure of type CloudWatchLoggingOption
--- <p>Provides a description of CloudWatch logging options, including the log stream ARN and the role ARN.</p>
+-- <p>Provides a description of CloudWatch logging options, including the log stream Amazon Resource Name (ARN) and the role ARN.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * RoleARN [RoleARN] <p>IAM ARN of the role to use to send application messages. Note: To write application messages to CloudWatch, the IAM role used must have the <code>PutLogEvents</code> policy action enabled.</p>
+-- * RoleARN [RoleARN] <p>IAM ARN of the role to use to send application messages. Note: To write application messages to CloudWatch, the IAM role that is used must have the <code>PutLogEvents</code> policy action enabled.</p>
 -- * LogStreamARN [LogStreamARN] <p>ARN of the CloudWatch log to receive application messages.</p>
 -- Required key: LogStreamARN
 -- Required key: RoleARN
@@ -532,7 +609,7 @@ function asserts.AssertKinesisStreamsOutput(struct)
 end
 
 --- Create a structure of type KinesisStreamsOutput
--- <p>When configuring application output, identifies a Amazon Kinesis stream as the destination. You provide the stream Amazon Resource Name (ARN) and also an IAM role ARN that Amazon Kinesis Analytics can use to write to the stream on your behalf.</p>
+-- <p>When configuring application output, identifies an Amazon Kinesis stream as the destination. You provide the stream Amazon Resource Name (ARN) and also an IAM role ARN that Amazon Kinesis Analytics can use to write to the stream on your behalf.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ResourceARN [ResourceARN] <p>ARN of the destination Amazon Kinesis stream to write to.</p>
@@ -611,8 +688,8 @@ end
 -- <p>When updating application input configuration, provides information about an Amazon Kinesis Firehose delivery stream as the streaming source.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * RoleARNUpdate [RoleARN] <p>Amazon Resource Name (ARN) of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to grant necessary permissions to this role.</p>
--- * ResourceARNUpdate [ResourceARN] <p>ARN of the input Amazon Kinesis Firehose delivery stream to read.</p>
+-- * RoleARNUpdate [RoleARN] <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to grant necessary permissions to this role.</p>
+-- * ResourceARNUpdate [ResourceARN] <p>Amazon Resource Name (ARN) of the input Amazon Kinesis Firehose delivery stream to read.</p>
 -- @return KinesisFirehoseInputUpdate structure as a key-value pair table
 function M.KinesisFirehoseInputUpdate(args)
 	assert(args, "You must provide an argument table when creating KinesisFirehoseInputUpdate")
@@ -627,6 +704,45 @@ function M.KinesisFirehoseInputUpdate(args)
 		["ResourceARNUpdate"] = args["ResourceARNUpdate"],
 	}
 	asserts.AssertKinesisFirehoseInputUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.InputProcessingConfiguration = { ["InputLambdaProcessor"] = true, nil }
+
+function asserts.AssertInputProcessingConfiguration(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InputProcessingConfiguration to be of type 'table'")
+	assert(struct["InputLambdaProcessor"], "Expected key InputLambdaProcessor to exist in table")
+	if struct["InputLambdaProcessor"] then asserts.AssertInputLambdaProcessor(struct["InputLambdaProcessor"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.InputProcessingConfiguration[k], "InputProcessingConfiguration contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InputProcessingConfiguration
+-- <p>Provides a description of a processor that is used to preprocess the records in the stream before being processed by your application code. Currently, the only input processor available is <a href="https://aws.amazon.com/documentation/lambda/">AWS Lambda</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InputLambdaProcessor [InputLambdaProcessor] <p>The <a>InputLambdaProcessor</a> that is used to preprocess the records in the stream before being processed by your application code.</p>
+-- Required key: InputLambdaProcessor
+-- @return InputProcessingConfiguration structure as a key-value pair table
+function M.InputProcessingConfiguration(args)
+	assert(args, "You must provide an argument table when creating InputProcessingConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["InputLambdaProcessor"] = args["InputLambdaProcessor"],
+	}
+	asserts.AssertInputProcessingConfiguration(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1050,6 +1166,45 @@ function M.ApplicationSummary(args)
     }
 end
 
+keys.InputProcessingConfigurationUpdate = { ["InputLambdaProcessorUpdate"] = true, nil }
+
+function asserts.AssertInputProcessingConfigurationUpdate(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InputProcessingConfigurationUpdate to be of type 'table'")
+	assert(struct["InputLambdaProcessorUpdate"], "Expected key InputLambdaProcessorUpdate to exist in table")
+	if struct["InputLambdaProcessorUpdate"] then asserts.AssertInputLambdaProcessorUpdate(struct["InputLambdaProcessorUpdate"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.InputProcessingConfigurationUpdate[k], "InputProcessingConfigurationUpdate contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InputProcessingConfigurationUpdate
+-- <p>Describes updates to an <a>InputProcessingConfiguration</a>. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InputLambdaProcessorUpdate [InputLambdaProcessorUpdate] <p>Provides update information for an <a>InputLambdaProcessor</a>.</p>
+-- Required key: InputLambdaProcessorUpdate
+-- @return InputProcessingConfigurationUpdate structure as a key-value pair table
+function M.InputProcessingConfigurationUpdate(args)
+	assert(args, "You must provide an argument table when creating InputProcessingConfigurationUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["InputLambdaProcessorUpdate"] = args["InputLambdaProcessorUpdate"],
+	}
+	asserts.AssertInputProcessingConfigurationUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DescribeApplicationResponse = { ["ApplicationDetail"] = true, nil }
 
 function asserts.AssertDescribeApplicationResponse(struct)
@@ -1109,9 +1264,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ApplicationName [ApplicationName] <p>The Amazon Kinesis Analytics application name.</p>
--- * CloudWatchLoggingOptionId [Id] <p>The <code>CloudWatchLoggingOptionId</code> of the CloudWatch logging option to delete. You can use the <a>DescribeApplication</a> operation to get the <code>CloudWatchLoggingOptionId</code>. </p>
--- * CurrentApplicationVersionId [ApplicationVersionId] <p>The version ID of the Amazon Kinesis Analytics application.</p>
+-- * ApplicationName [ApplicationName] <p>The Kinesis Analytics application name.</p>
+-- * CloudWatchLoggingOptionId [Id] <p>The <code>CloudWatchLoggingOptionId</code> of the CloudWatch logging option to delete. You can get the <code>CloudWatchLoggingOptionId</code> by using the <a>DescribeApplication</a> operation. </p>
+-- * CurrentApplicationVersionId [ApplicationVersionId] <p>The version ID of the Kinesis Analytics application.</p>
 -- Required key: ApplicationName
 -- Required key: CurrentApplicationVersionId
 -- Required key: CloudWatchLoggingOptionId
@@ -1187,6 +1342,46 @@ function M.S3ReferenceDataSource(args)
     }
 end
 
+keys.LambdaOutputUpdate = { ["RoleARNUpdate"] = true, ["ResourceARNUpdate"] = true, nil }
+
+function asserts.AssertLambdaOutputUpdate(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LambdaOutputUpdate to be of type 'table'")
+	if struct["RoleARNUpdate"] then asserts.AssertRoleARN(struct["RoleARNUpdate"]) end
+	if struct["ResourceARNUpdate"] then asserts.AssertResourceARN(struct["ResourceARNUpdate"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.LambdaOutputUpdate[k], "LambdaOutputUpdate contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LambdaOutputUpdate
+-- <p>When updating an output configuration using the <a>UpdateApplication</a> operation, provides information about an AWS Lambda function configured as the destination.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleARNUpdate [RoleARN] <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to write to the destination function on your behalf. You need to grant the necessary permissions to this role. </p>
+-- * ResourceARNUpdate [ResourceARN] <p>Amazon Resource Name (ARN) of the destination Lambda function.</p>
+-- @return LambdaOutputUpdate structure as a key-value pair table
+function M.LambdaOutputUpdate(args)
+	assert(args, "You must provide an argument table when creating LambdaOutputUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["RoleARNUpdate"] = args["RoleARNUpdate"],
+		["ResourceARNUpdate"] = args["ResourceARNUpdate"],
+	}
+	asserts.AssertLambdaOutputUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.AddApplicationInputRequest = { ["ApplicationName"] = true, ["Input"] = true, ["CurrentApplicationVersionId"] = true, nil }
 
 function asserts.AssertAddApplicationInputRequest(struct)
@@ -1208,7 +1403,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ApplicationName [ApplicationName] <p>Name of your existing Amazon Kinesis Analytics application to which you want to add the streaming source.</p>
--- * Input [Input] <p/>
+-- * Input [Input] <p>The <a>Input</a> to add.</p>
 -- * CurrentApplicationVersionId [ApplicationVersionId] <p>Current version of your Amazon Kinesis Analytics application. You can use the <a>DescribeApplication</a> operation to find the current application version.</p>
 -- Required key: ApplicationName
 -- Required key: CurrentApplicationVersionId
@@ -1257,8 +1452,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ApplicationName [ApplicationName] <p>Name of the application to which you want to add the output configuration.</p>
--- * Output [Output] <p>An array of objects, each describing one output configuration. In the output configuration, you specify the name of an in-application stream, a destination (that is, an Amazon Kinesis stream or an Amazon Kinesis Firehose delivery stream), and record the formation to use when writing to the destination.</p>
--- * CurrentApplicationVersionId [ApplicationVersionId] <p>Version of the application to which you want add the output configuration. You can use the <a>DescribeApplication</a> operation to get the current application version. If the version specified is not the current version, the <code>ConcurrentModificationException</code> is returned. </p>
+-- * Output [Output] <p>An array of objects, each describing one output configuration. In the output configuration, you specify the name of an in-application stream, a destination (that is, an Amazon Kinesis stream, an Amazon Kinesis Firehose delivery stream, or an Amazon Lambda function), and record the formation to use when writing to the destination.</p>
+-- * CurrentApplicationVersionId [ApplicationVersionId] <p>Version of the application to which you want to add the output configuration. You can use the <a>DescribeApplication</a> operation to get the current application version. If the version specified is not the current version, the <code>ConcurrentModificationException</code> is returned. </p>
 -- Required key: ApplicationName
 -- Required key: CurrentApplicationVersionId
 -- Required key: Output
@@ -1285,13 +1480,14 @@ function M.AddApplicationOutputRequest(args)
     }
 end
 
-keys.UnableToDetectSchemaException = { ["message"] = true, ["RawInputRecords"] = true, nil }
+keys.UnableToDetectSchemaException = { ["message"] = true, ["RawInputRecords"] = true, ["ProcessedInputRecords"] = true, nil }
 
 function asserts.AssertUnableToDetectSchemaException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnableToDetectSchemaException to be of type 'table'")
 	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	if struct["RawInputRecords"] then asserts.AssertRawInputRecords(struct["RawInputRecords"]) end
+	if struct["ProcessedInputRecords"] then asserts.AssertProcessedInputRecords(struct["ProcessedInputRecords"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.UnableToDetectSchemaException[k], "UnableToDetectSchemaException contains unknown key " .. tostring(k))
 	end
@@ -1303,6 +1499,7 @@ end
 -- Valid keys:
 -- * message [ErrorMessage] 
 -- * RawInputRecords [RawInputRecords] 
+-- * ProcessedInputRecords [ProcessedInputRecords] 
 -- @return UnableToDetectSchemaException structure as a key-value pair table
 function M.UnableToDetectSchemaException(args)
 	assert(args, "You must provide an argument table when creating UnableToDetectSchemaException")
@@ -1315,6 +1512,7 @@ function M.UnableToDetectSchemaException(args)
 	local all_args = { 
 		["message"] = args["message"],
 		["RawInputRecords"] = args["RawInputRecords"],
+		["ProcessedInputRecords"] = args["ProcessedInputRecords"],
 	}
 	asserts.AssertUnableToDetectSchemaException(all_args)
 	return {
@@ -1556,18 +1754,19 @@ function M.StopApplicationRequest(args)
     }
 end
 
-keys.Input = { ["InputParallelism"] = true, ["KinesisFirehoseInput"] = true, ["KinesisStreamsInput"] = true, ["InputSchema"] = true, ["NamePrefix"] = true, nil }
+keys.Input = { ["KinesisFirehoseInput"] = true, ["KinesisStreamsInput"] = true, ["InputProcessingConfiguration"] = true, ["NamePrefix"] = true, ["InputParallelism"] = true, ["InputSchema"] = true, nil }
 
 function asserts.AssertInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Input to be of type 'table'")
 	assert(struct["NamePrefix"], "Expected key NamePrefix to exist in table")
 	assert(struct["InputSchema"], "Expected key InputSchema to exist in table")
-	if struct["InputParallelism"] then asserts.AssertInputParallelism(struct["InputParallelism"]) end
 	if struct["KinesisFirehoseInput"] then asserts.AssertKinesisFirehoseInput(struct["KinesisFirehoseInput"]) end
 	if struct["KinesisStreamsInput"] then asserts.AssertKinesisStreamsInput(struct["KinesisStreamsInput"]) end
-	if struct["InputSchema"] then asserts.AssertSourceSchema(struct["InputSchema"]) end
+	if struct["InputProcessingConfiguration"] then asserts.AssertInputProcessingConfiguration(struct["InputProcessingConfiguration"]) end
 	if struct["NamePrefix"] then asserts.AssertInAppStreamName(struct["NamePrefix"]) end
+	if struct["InputParallelism"] then asserts.AssertInputParallelism(struct["InputParallelism"]) end
+	if struct["InputSchema"] then asserts.AssertSourceSchema(struct["InputSchema"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Input[k], "Input contains unknown key " .. tostring(k))
 	end
@@ -1577,11 +1776,12 @@ end
 -- <p>When you configure the application input, you specify the streaming source, the in-application stream name that is created, and the mapping between the two. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application Input</a>. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * InputParallelism [InputParallelism] <p>Describes the number of in-application streams to create. </p> <p>Data from your source will be routed to these in-application input streams.</p> <p> (see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application Input</a>.</p>
--- * KinesisFirehoseInput [KinesisFirehoseInput] <p>If the streaming source is an Amazon Kinesis Firehose delivery stream, identifies the Firehose delivery stream's ARN and an IAM role that enables Amazon Kinesis Analytics to access the stream on your behalf.</p>
--- * KinesisStreamsInput [KinesisStreamsInput] <p>If the streaming source is an Amazon Kinesis stream, identifies the stream's Amazon Resource Name (ARN) and an IAM role that enables Amazon Kinesis Analytics to access the stream on your behalf.</p>
+-- * KinesisFirehoseInput [KinesisFirehoseInput] <p>If the streaming source is an Amazon Kinesis Firehose delivery stream, identifies the delivery stream's ARN and an IAM role that enables Amazon Kinesis Analytics to access the stream on your behalf.</p> <p>Note: Either <code>KinesisStreamsInput</code> or <code>KinesisFirehoseInput</code> is required.</p>
+-- * KinesisStreamsInput [KinesisStreamsInput] <p>If the streaming source is an Amazon Kinesis stream, identifies the stream's Amazon Resource Name (ARN) and an IAM role that enables Amazon Kinesis Analytics to access the stream on your behalf.</p> <p>Note: Either <code>KinesisStreamsInput</code> or <code>KinesisFirehoseInput</code> is required.</p>
+-- * InputProcessingConfiguration [InputProcessingConfiguration] <p>The <a>InputProcessingConfiguration</a> for the input. An input processor transforms records as they are received from the stream, before the application's SQL code executes. Currently, the only input processing configuration available is <a>InputLambdaProcessor</a>.</p>
+-- * NamePrefix [InAppStreamName] <p>Name prefix to use when creating an in-application stream. Suppose that you specify a prefix "MyInApplicationStream." Amazon Kinesis Analytics then creates one or more (as per the <code>InputParallelism</code> count you specified) in-application streams with names "MyInApplicationStream_001," "MyInApplicationStream_002," and so on. </p>
+-- * InputParallelism [InputParallelism] <p>Describes the number of in-application streams to create. </p> <p>Data from your source is routed to these in-application input streams.</p> <p> (see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application Input</a>.</p>
 -- * InputSchema [SourceSchema] <p>Describes the format of the data in the streaming source, and how each data element maps to corresponding columns in the in-application stream that is being created.</p> <p>Also used to describe the format of the reference data source.</p>
--- * NamePrefix [InAppStreamName] <p>Name prefix to use when creating in-application stream. Suppose you specify a prefix "MyInApplicationStream". Amazon Kinesis Analytics will then create one or more (as per the <code>InputParallelism</code> count you specified) in-application streams with names "MyInApplicationStream_001", "MyInApplicationStream_002" and so on. </p>
 -- Required key: NamePrefix
 -- Required key: InputSchema
 -- @return Input structure as a key-value pair table
@@ -1594,11 +1794,12 @@ function M.Input(args)
     local header_args = { 
     }
 	local all_args = { 
-		["InputParallelism"] = args["InputParallelism"],
 		["KinesisFirehoseInput"] = args["KinesisFirehoseInput"],
 		["KinesisStreamsInput"] = args["KinesisStreamsInput"],
-		["InputSchema"] = args["InputSchema"],
+		["InputProcessingConfiguration"] = args["InputProcessingConfiguration"],
 		["NamePrefix"] = args["NamePrefix"],
+		["InputParallelism"] = args["InputParallelism"],
+		["InputSchema"] = args["InputSchema"],
 	}
 	asserts.AssertInput(all_args)
 	return {
@@ -1629,9 +1830,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ApplicationName [ApplicationName] <p>The Amazon Kinesis Analytics application name.</p>
--- * CloudWatchLoggingOption [CloudWatchLoggingOption] <p>Provide the CloudWatch log stream ARN and the IAM role ARN. Note: To write application messages to CloudWatch, the IAM role used must have the <code>PutLogEvents</code> policy action enabled. </p>
--- * CurrentApplicationVersionId [ApplicationVersionId] <p>The version ID of the Amazon Kinesis Analytics application.</p>
+-- * ApplicationName [ApplicationName] <p>The Kinesis Analytics application name.</p>
+-- * CloudWatchLoggingOption [CloudWatchLoggingOption] <p>Provides the CloudWatch log stream Amazon Resource Name (ARN) and the IAM role ARN. Note: To write application messages to CloudWatch, the IAM role that is used must have the <code>PutLogEvents</code> policy action enabled.</p>
+-- * CurrentApplicationVersionId [ApplicationVersionId] <p>The version ID of the Kinesis Analytics application.</p>
 -- Required key: ApplicationName
 -- Required key: CurrentApplicationVersionId
 -- Required key: CloudWatchLoggingOption
@@ -1677,7 +1878,7 @@ end
 -- <p>When you update a reference data source configuration for an application, this object provides all the updated values (such as the source bucket name and object key name), the in-application table name that is created, and updated mapping information that maps the data in the Amazon S3 object to the in-application reference table that is created.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ReferenceSchemaUpdate [SourceSchema] 
+-- * ReferenceSchemaUpdate [SourceSchema] <p>Describes the format of the data in the streaming source, and how each data element maps to corresponding columns created in the in-application stream. </p>
 -- * ReferenceId [Id] <p>ID of the reference data source being updated. You can use the <a>DescribeApplication</a> operation to get this value.</p>
 -- * TableNameUpdate [InAppTableName] <p>In-application table name that is created by this update.</p>
 -- * S3ReferenceDataSourceUpdate [S3ReferenceDataSourceUpdate] <p>Describes the S3 bucket name, object key name, and IAM role that Amazon Kinesis Analytics can assume to read the Amazon S3 object on your behalf and populate the in-application reference table.</p>
@@ -1854,6 +2055,46 @@ function M.UpdateApplicationResponse(args)
     }
 end
 
+keys.InputLambdaProcessorDescription = { ["ResourceARN"] = true, ["RoleARN"] = true, nil }
+
+function asserts.AssertInputLambdaProcessorDescription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InputLambdaProcessorDescription to be of type 'table'")
+	if struct["ResourceARN"] then asserts.AssertResourceARN(struct["ResourceARN"]) end
+	if struct["RoleARN"] then asserts.AssertRoleARN(struct["RoleARN"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.InputLambdaProcessorDescription[k], "InputLambdaProcessorDescription contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InputLambdaProcessorDescription
+-- <p>An object that contains the Amazon Resource Name (ARN) of the <a href="https://aws.amazon.com/documentation/lambda/">AWS Lambda</a> function that is used to preprocess records in the stream, and the ARN of the IAM role that is used to access the AWS Lambda expression.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceARN [ResourceARN] <p>The ARN of the <a href="https://aws.amazon.com/documentation/lambda/">AWS Lambda</a> function that is used to preprocess the records in the stream.</p>
+-- * RoleARN [RoleARN] <p>The ARN of the IAM role that is used to access the AWS Lambda function.</p>
+-- @return InputLambdaProcessorDescription structure as a key-value pair table
+function M.InputLambdaProcessorDescription(args)
+	assert(args, "You must provide an argument table when creating InputLambdaProcessorDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceARN"] = args["ResourceARN"],
+		["RoleARN"] = args["RoleARN"],
+	}
+	asserts.AssertInputLambdaProcessorDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.KinesisStreamsOutputDescription = { ["ResourceARN"] = true, ["RoleARN"] = true, nil }
 
 function asserts.AssertKinesisStreamsOutputDescription(struct)
@@ -1886,6 +2127,46 @@ function M.KinesisStreamsOutputDescription(args)
 		["RoleARN"] = args["RoleARN"],
 	}
 	asserts.AssertKinesisStreamsOutputDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.LambdaOutputDescription = { ["ResourceARN"] = true, ["RoleARN"] = true, nil }
+
+function asserts.AssertLambdaOutputDescription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LambdaOutputDescription to be of type 'table'")
+	if struct["ResourceARN"] then asserts.AssertResourceARN(struct["ResourceARN"]) end
+	if struct["RoleARN"] then asserts.AssertRoleARN(struct["RoleARN"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.LambdaOutputDescription[k], "LambdaOutputDescription contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LambdaOutputDescription
+-- <p>For an application output, describes the AWS Lambda function configured as its destination. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceARN [ResourceARN] <p>Amazon Resource Name (ARN) of the destination Lambda function.</p>
+-- * RoleARN [RoleARN] <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to write to the destination function.</p>
+-- @return LambdaOutputDescription structure as a key-value pair table
+function M.LambdaOutputDescription(args)
+	assert(args, "You must provide an argument table when creating LambdaOutputDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceARN"] = args["ResourceARN"],
+		["RoleARN"] = args["RoleARN"],
+	}
+	asserts.AssertLambdaOutputDescription(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1939,7 +2220,41 @@ function M.CloudWatchLoggingOptionUpdate(args)
     }
 end
 
-keys.InputUpdate = { ["KinesisFirehoseInputUpdate"] = true, ["InputSchemaUpdate"] = true, ["NamePrefixUpdate"] = true, ["InputId"] = true, ["InputParallelismUpdate"] = true, ["KinesisStreamsInputUpdate"] = true, nil }
+keys.DeleteApplicationInputProcessingConfigurationResponse = { nil }
+
+function asserts.AssertDeleteApplicationInputProcessingConfigurationResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteApplicationInputProcessingConfigurationResponse to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteApplicationInputProcessingConfigurationResponse[k], "DeleteApplicationInputProcessingConfigurationResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteApplicationInputProcessingConfigurationResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteApplicationInputProcessingConfigurationResponse structure as a key-value pair table
+function M.DeleteApplicationInputProcessingConfigurationResponse(args)
+	assert(args, "You must provide an argument table when creating DeleteApplicationInputProcessingConfigurationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDeleteApplicationInputProcessingConfigurationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.InputUpdate = { ["KinesisFirehoseInputUpdate"] = true, ["InputSchemaUpdate"] = true, ["InputProcessingConfigurationUpdate"] = true, ["NamePrefixUpdate"] = true, ["InputId"] = true, ["InputParallelismUpdate"] = true, ["KinesisStreamsInputUpdate"] = true, nil }
 
 function asserts.AssertInputUpdate(struct)
 	assert(struct)
@@ -1947,6 +2262,7 @@ function asserts.AssertInputUpdate(struct)
 	assert(struct["InputId"], "Expected key InputId to exist in table")
 	if struct["KinesisFirehoseInputUpdate"] then asserts.AssertKinesisFirehoseInputUpdate(struct["KinesisFirehoseInputUpdate"]) end
 	if struct["InputSchemaUpdate"] then asserts.AssertInputSchemaUpdate(struct["InputSchemaUpdate"]) end
+	if struct["InputProcessingConfigurationUpdate"] then asserts.AssertInputProcessingConfigurationUpdate(struct["InputProcessingConfigurationUpdate"]) end
 	if struct["NamePrefixUpdate"] then asserts.AssertInAppStreamName(struct["NamePrefixUpdate"]) end
 	if struct["InputId"] then asserts.AssertId(struct["InputId"]) end
 	if struct["InputParallelismUpdate"] then asserts.AssertInputParallelismUpdate(struct["InputParallelismUpdate"]) end
@@ -1960,12 +2276,13 @@ end
 -- <p>Describes updates to a specific input configuration (identified by the <code>InputId</code> of an application). </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * KinesisFirehoseInputUpdate [KinesisFirehoseInputUpdate] <p>If an Amazon Kinesis Firehose delivery stream is the streaming source to be updated, provides an updated stream Amazon Resource Name (ARN) and IAM role ARN.</p>
+-- * KinesisFirehoseInputUpdate [KinesisFirehoseInputUpdate] <p>If an Amazon Kinesis Firehose delivery stream is the streaming source to be updated, provides an updated stream ARN and IAM role ARN.</p>
 -- * InputSchemaUpdate [InputSchemaUpdate] <p>Describes the data format on the streaming source, and how record elements on the streaming source map to columns of the in-application stream that is created.</p>
+-- * InputProcessingConfigurationUpdate [InputProcessingConfigurationUpdate] <p>Describes updates for an input processing configuration.</p>
 -- * NamePrefixUpdate [InAppStreamName] <p>Name prefix for in-application streams that Amazon Kinesis Analytics creates for the specific streaming source.</p>
 -- * InputId [Id] <p>Input ID of the application input to be updated.</p>
 -- * InputParallelismUpdate [InputParallelismUpdate] <p>Describes the parallelism updates (the number in-application streams Amazon Kinesis Analytics creates for the specific streaming source).</p>
--- * KinesisStreamsInputUpdate [KinesisStreamsInputUpdate] <p>If a Amazon Kinesis stream is the streaming source to be updated, provides an updated stream ARN and IAM role ARN.</p>
+-- * KinesisStreamsInputUpdate [KinesisStreamsInputUpdate] <p>If an Amazon Kinesis stream is the streaming source to be updated, provides an updated stream Amazon Resource Name (ARN) and IAM role ARN.</p>
 -- Required key: InputId
 -- @return InputUpdate structure as a key-value pair table
 function M.InputUpdate(args)
@@ -1979,6 +2296,7 @@ function M.InputUpdate(args)
 	local all_args = { 
 		["KinesisFirehoseInputUpdate"] = args["KinesisFirehoseInputUpdate"],
 		["InputSchemaUpdate"] = args["InputSchemaUpdate"],
+		["InputProcessingConfigurationUpdate"] = args["InputProcessingConfigurationUpdate"],
 		["NamePrefixUpdate"] = args["NamePrefixUpdate"],
 		["InputId"] = args["InputId"],
 		["InputParallelismUpdate"] = args["InputParallelismUpdate"],
@@ -2026,12 +2344,12 @@ end
 -- * ApplicationName [ApplicationName] <p>Name of the application.</p>
 -- * OutputDescriptions [OutputDescriptions] <p>Describes the application output configuration. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html">Configuring Application Output</a>. </p>
 -- * ApplicationDescription [ApplicationDescription] <p>Description of the application.</p>
--- * LastUpdateTimestamp [Timestamp] <p>Timestamp when the application was last updated.</p>
+-- * LastUpdateTimestamp [Timestamp] <p>Time stamp when the application was last updated.</p>
 -- * ApplicationVersionId [ApplicationVersionId] <p>Provides the current application version.</p>
 -- * ApplicationStatus [ApplicationStatus] <p>Status of the application.</p>
--- * CreateTimestamp [Timestamp] <p>Timestamp when the application version was created.</p>
+-- * CreateTimestamp [Timestamp] <p>Time stamp when the application version was created.</p>
 -- * ReferenceDataSourceDescriptions [ReferenceDataSourceDescriptions] <p>Describes reference data sources configured for the application. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application Input</a>. </p>
--- * CloudWatchLoggingOptionDescriptions [CloudWatchLoggingOptionDescriptions] <p>Describes the CloudWatch log streams configured to receive application messages. For more information about using CloudWatch log streams with Amazon Kinesis Analytics applications, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-monitor-configuration.html">Monitoring Configuration Errors</a>. </p>
+-- * CloudWatchLoggingOptionDescriptions [CloudWatchLoggingOptionDescriptions] <p>Describes the CloudWatch log streams that are configured to receive application messages. For more information about using CloudWatch log streams with Amazon Kinesis Analytics applications, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html">Working with Amazon CloudWatch Logs</a>. </p>
 -- * InputDescriptions [InputDescriptions] <p>Describes the application input configuration. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application Input</a>. </p>
 -- * ApplicationARN [ResourceARN] <p>ARN of the application.</p>
 -- * ApplicationCode [ApplicationCode] <p>Returns the application code that you provided to perform data analysis on any of the in-application streams in your application.</p>
@@ -2120,13 +2438,14 @@ function M.S3ReferenceDataSourceDescription(args)
     }
 end
 
-keys.InputDescription = { ["InputStartingPositionConfiguration"] = true, ["KinesisFirehoseInputDescription"] = true, ["InputId"] = true, ["KinesisStreamsInputDescription"] = true, ["NamePrefix"] = true, ["InAppStreamNames"] = true, ["InputParallelism"] = true, ["InputSchema"] = true, nil }
+keys.InputDescription = { ["InputStartingPositionConfiguration"] = true, ["KinesisFirehoseInputDescription"] = true, ["InputProcessingConfigurationDescription"] = true, ["InputId"] = true, ["KinesisStreamsInputDescription"] = true, ["NamePrefix"] = true, ["InAppStreamNames"] = true, ["InputParallelism"] = true, ["InputSchema"] = true, nil }
 
 function asserts.AssertInputDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InputDescription to be of type 'table'")
 	if struct["InputStartingPositionConfiguration"] then asserts.AssertInputStartingPositionConfiguration(struct["InputStartingPositionConfiguration"]) end
 	if struct["KinesisFirehoseInputDescription"] then asserts.AssertKinesisFirehoseInputDescription(struct["KinesisFirehoseInputDescription"]) end
+	if struct["InputProcessingConfigurationDescription"] then asserts.AssertInputProcessingConfigurationDescription(struct["InputProcessingConfigurationDescription"]) end
 	if struct["InputId"] then asserts.AssertId(struct["InputId"]) end
 	if struct["KinesisStreamsInputDescription"] then asserts.AssertKinesisStreamsInputDescription(struct["KinesisStreamsInputDescription"]) end
 	if struct["NamePrefix"] then asserts.AssertInAppStreamName(struct["NamePrefix"]) end
@@ -2143,13 +2462,14 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * InputStartingPositionConfiguration [InputStartingPositionConfiguration] <p>Point at which the application is configured to read from the input stream.</p>
--- * KinesisFirehoseInputDescription [KinesisFirehoseInputDescription] <p>If an Amazon Kinesis Firehose delivery stream is configured as a streaming source, provides the Firehose delivery stream's Amazon Resource Name (ARN) and an IAM role that enables Amazon Kinesis Analytics to access the stream on your behalf.</p>
+-- * KinesisFirehoseInputDescription [KinesisFirehoseInputDescription] <p>If an Amazon Kinesis Firehose delivery stream is configured as a streaming source, provides the delivery stream's ARN and an IAM role that enables Amazon Kinesis Analytics to access the stream on your behalf.</p>
+-- * InputProcessingConfigurationDescription [InputProcessingConfigurationDescription] <p>The description of the preprocessor that executes on records in this input before the application's code is run.</p>
 -- * InputId [Id] <p>Input ID associated with the application input. This is the ID that Amazon Kinesis Analytics assigns to each input configuration you add to your application. </p>
--- * KinesisStreamsInputDescription [KinesisStreamsInputDescription] <p>If an Amazon Kinesis stream is configured as streaming source, provides Amazon Kinesis stream's ARN and an IAM role that enables Amazon Kinesis Analytics to access the stream on your behalf.</p>
+-- * KinesisStreamsInputDescription [KinesisStreamsInputDescription] <p>If an Amazon Kinesis stream is configured as streaming source, provides Amazon Kinesis stream's Amazon Resource Name (ARN) and an IAM role that enables Amazon Kinesis Analytics to access the stream on your behalf.</p>
 -- * NamePrefix [InAppStreamName] <p>In-application name prefix.</p>
 -- * InAppStreamNames [InAppStreamNames] <p>Returns the in-application stream names that are mapped to the stream source.</p>
 -- * InputParallelism [InputParallelism] <p>Describes the configured parallelism (number of in-application streams mapped to the streaming source).</p>
--- * InputSchema [SourceSchema] 
+-- * InputSchema [SourceSchema] <p>Describes the format of the data in the streaming source, and how each data element maps to corresponding columns in the in-application stream that is being created. </p>
 -- @return InputDescription structure as a key-value pair table
 function M.InputDescription(args)
 	assert(args, "You must provide an argument table when creating InputDescription")
@@ -2162,6 +2482,7 @@ function M.InputDescription(args)
 	local all_args = { 
 		["InputStartingPositionConfiguration"] = args["InputStartingPositionConfiguration"],
 		["KinesisFirehoseInputDescription"] = args["KinesisFirehoseInputDescription"],
+		["InputProcessingConfigurationDescription"] = args["InputProcessingConfigurationDescription"],
 		["InputId"] = args["InputId"],
 		["KinesisStreamsInputDescription"] = args["KinesisStreamsInputDescription"],
 		["NamePrefix"] = args["NamePrefix"],
@@ -2235,8 +2556,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * TableName [InAppTableName] <p>Name of the in-application table to create.</p>
--- * ReferenceSchema [SourceSchema] 
--- * S3ReferenceDataSource [S3ReferenceDataSource] 
+-- * ReferenceSchema [SourceSchema] <p>Describes the format of the data in the streaming source, and how each data element maps to corresponding columns created in the in-application stream.</p>
+-- * S3ReferenceDataSource [S3ReferenceDataSource] <p>Identifies the S3 bucket and object that contains the reference data. Also identifies the IAM role Amazon Kinesis Analytics can assume to read this object on your behalf. An Amazon Kinesis Analytics application loads reference data only once. If the data changes, you call the <a>UpdateApplication</a> operation to trigger reloading of data into your application. </p>
 -- Required key: TableName
 -- Required key: ReferenceSchema
 -- @return ReferenceDataSource structure as a key-value pair table
@@ -2379,6 +2700,50 @@ function M.KinesisStreamsInputDescription(args)
     }
 end
 
+keys.InputLambdaProcessor = { ["ResourceARN"] = true, ["RoleARN"] = true, nil }
+
+function asserts.AssertInputLambdaProcessor(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InputLambdaProcessor to be of type 'table'")
+	assert(struct["ResourceARN"], "Expected key ResourceARN to exist in table")
+	assert(struct["RoleARN"], "Expected key RoleARN to exist in table")
+	if struct["ResourceARN"] then asserts.AssertResourceARN(struct["ResourceARN"]) end
+	if struct["RoleARN"] then asserts.AssertRoleARN(struct["RoleARN"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.InputLambdaProcessor[k], "InputLambdaProcessor contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InputLambdaProcessor
+-- <p>An object that contains the Amazon Resource Name (ARN) of the <a href="https://aws.amazon.com/documentation/lambda/">AWS Lambda</a> function that is used to preprocess records in the stream, and the ARN of the IAM role that is used to access the AWS Lambda function. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceARN [ResourceARN] <p>The ARN of the <a href="https://aws.amazon.com/documentation/lambda/">AWS Lambda</a> function that operates on records in the stream.</p>
+-- * RoleARN [RoleARN] <p>The ARN of the IAM role that is used to access the AWS Lambda function.</p>
+-- Required key: ResourceARN
+-- Required key: RoleARN
+-- @return InputLambdaProcessor structure as a key-value pair table
+function M.InputLambdaProcessor(args)
+	assert(args, "You must provide an argument table when creating InputLambdaProcessor")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceARN"] = args["ResourceARN"],
+		["RoleARN"] = args["RoleARN"],
+	}
+	asserts.AssertInputLambdaProcessor(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DescribeApplicationRequest = { ["ApplicationName"] = true, nil }
 
 function asserts.AssertDescribeApplicationRequest(struct)
@@ -2418,16 +2783,17 @@ function M.DescribeApplicationRequest(args)
     }
 end
 
-keys.OutputDescription = { ["OutputId"] = true, ["DestinationSchema"] = true, ["KinesisStreamsOutputDescription"] = true, ["KinesisFirehoseOutputDescription"] = true, ["Name"] = true, nil }
+keys.OutputDescription = { ["Name"] = true, ["DestinationSchema"] = true, ["OutputId"] = true, ["KinesisStreamsOutputDescription"] = true, ["KinesisFirehoseOutputDescription"] = true, ["LambdaOutputDescription"] = true, nil }
 
 function asserts.AssertOutputDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected OutputDescription to be of type 'table'")
-	if struct["OutputId"] then asserts.AssertId(struct["OutputId"]) end
+	if struct["Name"] then asserts.AssertInAppStreamName(struct["Name"]) end
 	if struct["DestinationSchema"] then asserts.AssertDestinationSchema(struct["DestinationSchema"]) end
+	if struct["OutputId"] then asserts.AssertId(struct["OutputId"]) end
 	if struct["KinesisStreamsOutputDescription"] then asserts.AssertKinesisStreamsOutputDescription(struct["KinesisStreamsOutputDescription"]) end
 	if struct["KinesisFirehoseOutputDescription"] then asserts.AssertKinesisFirehoseOutputDescription(struct["KinesisFirehoseOutputDescription"]) end
-	if struct["Name"] then asserts.AssertInAppStreamName(struct["Name"]) end
+	if struct["LambdaOutputDescription"] then asserts.AssertLambdaOutputDescription(struct["LambdaOutputDescription"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.OutputDescription[k], "OutputDescription contains unknown key " .. tostring(k))
 	end
@@ -2437,11 +2803,12 @@ end
 -- <p>Describes the application output configuration, which includes the in-application stream name and the destination where the stream data is written. The destination can be an Amazon Kinesis stream or an Amazon Kinesis Firehose delivery stream. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * OutputId [Id] <p>A unique identifier for the output configuration.</p>
+-- * Name [InAppStreamName] <p>Name of the in-application stream configured as output.</p>
 -- * DestinationSchema [DestinationSchema] <p>Data format used for writing data to the destination.</p>
+-- * OutputId [Id] <p>A unique identifier for the output configuration.</p>
 -- * KinesisStreamsOutputDescription [KinesisStreamsOutputDescription] <p>Describes Amazon Kinesis stream configured as the destination where output is written.</p>
 -- * KinesisFirehoseOutputDescription [KinesisFirehoseOutputDescription] <p>Describes the Amazon Kinesis Firehose delivery stream configured as the destination where output is written.</p>
--- * Name [InAppStreamName] <p>Name of the in-application stream configured as output.</p>
+-- * LambdaOutputDescription [LambdaOutputDescription] <p>Describes the AWS Lambda function configured as the destination where output is written.</p>
 -- @return OutputDescription structure as a key-value pair table
 function M.OutputDescription(args)
 	assert(args, "You must provide an argument table when creating OutputDescription")
@@ -2452,11 +2819,12 @@ function M.OutputDescription(args)
     local header_args = { 
     }
 	local all_args = { 
-		["OutputId"] = args["OutputId"],
+		["Name"] = args["Name"],
 		["DestinationSchema"] = args["DestinationSchema"],
+		["OutputId"] = args["OutputId"],
 		["KinesisStreamsOutputDescription"] = args["KinesisStreamsOutputDescription"],
 		["KinesisFirehoseOutputDescription"] = args["KinesisFirehoseOutputDescription"],
-		["Name"] = args["Name"],
+		["LambdaOutputDescription"] = args["LambdaOutputDescription"],
 	}
 	asserts.AssertOutputDescription(all_args)
 	return {
@@ -2501,14 +2869,13 @@ function M.StartApplicationResponse(args)
     }
 end
 
-keys.DiscoverInputSchemaRequest = { ["ResourceARN"] = true, ["InputStartingPositionConfiguration"] = true, ["RoleARN"] = true, nil }
+keys.DiscoverInputSchemaRequest = { ["S3Configuration"] = true, ["InputProcessingConfiguration"] = true, ["ResourceARN"] = true, ["InputStartingPositionConfiguration"] = true, ["RoleARN"] = true, nil }
 
 function asserts.AssertDiscoverInputSchemaRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DiscoverInputSchemaRequest to be of type 'table'")
-	assert(struct["ResourceARN"], "Expected key ResourceARN to exist in table")
-	assert(struct["RoleARN"], "Expected key RoleARN to exist in table")
-	assert(struct["InputStartingPositionConfiguration"], "Expected key InputStartingPositionConfiguration to exist in table")
+	if struct["S3Configuration"] then asserts.AssertS3Configuration(struct["S3Configuration"]) end
+	if struct["InputProcessingConfiguration"] then asserts.AssertInputProcessingConfiguration(struct["InputProcessingConfiguration"]) end
 	if struct["ResourceARN"] then asserts.AssertResourceARN(struct["ResourceARN"]) end
 	if struct["InputStartingPositionConfiguration"] then asserts.AssertInputStartingPositionConfiguration(struct["InputStartingPositionConfiguration"]) end
 	if struct["RoleARN"] then asserts.AssertRoleARN(struct["RoleARN"]) end
@@ -2518,15 +2885,14 @@ function asserts.AssertDiscoverInputSchemaRequest(struct)
 end
 
 --- Create a structure of type DiscoverInputSchemaRequest
--- <p/>
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * S3Configuration [S3Configuration] <p>Specify this parameter to discover a schema from data in an S3 object.</p>
+-- * InputProcessingConfiguration [InputProcessingConfiguration] <p>The <a>InputProcessingConfiguration</a> to use to preprocess the records before discovering the schema of the records.</p>
 -- * ResourceARN [ResourceARN] <p>Amazon Resource Name (ARN) of the streaming source.</p>
 -- * InputStartingPositionConfiguration [InputStartingPositionConfiguration] <p>Point at which you want Amazon Kinesis Analytics to start reading records from the specified streaming source discovery purposes.</p>
 -- * RoleARN [RoleARN] <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf.</p>
--- Required key: ResourceARN
--- Required key: RoleARN
--- Required key: InputStartingPositionConfiguration
 -- @return DiscoverInputSchemaRequest structure as a key-value pair table
 function M.DiscoverInputSchemaRequest(args)
 	assert(args, "You must provide an argument table when creating DiscoverInputSchemaRequest")
@@ -2537,6 +2903,8 @@ function M.DiscoverInputSchemaRequest(args)
     local header_args = { 
     }
 	local all_args = { 
+		["S3Configuration"] = args["S3Configuration"],
+		["InputProcessingConfiguration"] = args["InputProcessingConfiguration"],
 		["ResourceARN"] = args["ResourceARN"],
 		["InputStartingPositionConfiguration"] = args["InputStartingPositionConfiguration"],
 		["RoleARN"] = args["RoleARN"],
@@ -2550,27 +2918,23 @@ function M.DiscoverInputSchemaRequest(args)
     }
 end
 
-keys.MappingParameters = { ["JSONMappingParameters"] = true, ["CSVMappingParameters"] = true, nil }
+keys.AddApplicationInputProcessingConfigurationResponse = { nil }
 
-function asserts.AssertMappingParameters(struct)
+function asserts.AssertAddApplicationInputProcessingConfigurationResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected MappingParameters to be of type 'table'")
-	if struct["JSONMappingParameters"] then asserts.AssertJSONMappingParameters(struct["JSONMappingParameters"]) end
-	if struct["CSVMappingParameters"] then asserts.AssertCSVMappingParameters(struct["CSVMappingParameters"]) end
+	assert(type(struct) == "table", "Expected AddApplicationInputProcessingConfigurationResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.MappingParameters[k], "MappingParameters contains unknown key " .. tostring(k))
+		assert(keys.AddApplicationInputProcessingConfigurationResponse[k], "AddApplicationInputProcessingConfigurationResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type MappingParameters
--- <p>When configuring application input at the time of creating or updating an application, provides additional mapping information specific to the record format (such as JSON, CSV, or record fields delimited by some delimiter) on the streaming source.</p>
+--- Create a structure of type AddApplicationInputProcessingConfigurationResponse
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * JSONMappingParameters [JSONMappingParameters] <p>Provides additional mapping information when JSON is the record format on the streaming source.</p>
--- * CSVMappingParameters [CSVMappingParameters] <p>Provides additional mapping information when the record format uses delimiters (for example, CSV).</p>
--- @return MappingParameters structure as a key-value pair table
-function M.MappingParameters(args)
-	assert(args, "You must provide an argument table when creating MappingParameters")
+-- @return AddApplicationInputProcessingConfigurationResponse structure as a key-value pair table
+function M.AddApplicationInputProcessingConfigurationResponse(args)
+	assert(args, "You must provide an argument table when creating AddApplicationInputProcessingConfigurationResponse")
     local query_args = { 
     }
     local uri_args = { 
@@ -2578,10 +2942,57 @@ function M.MappingParameters(args)
     local header_args = { 
     }
 	local all_args = { 
-		["JSONMappingParameters"] = args["JSONMappingParameters"],
-		["CSVMappingParameters"] = args["CSVMappingParameters"],
 	}
-	asserts.AssertMappingParameters(all_args)
+	asserts.AssertAddApplicationInputProcessingConfigurationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.UpdateApplicationRequest = { ["ApplicationName"] = true, ["ApplicationUpdate"] = true, ["CurrentApplicationVersionId"] = true, nil }
+
+function asserts.AssertUpdateApplicationRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected UpdateApplicationRequest to be of type 'table'")
+	assert(struct["ApplicationName"], "Expected key ApplicationName to exist in table")
+	assert(struct["CurrentApplicationVersionId"], "Expected key CurrentApplicationVersionId to exist in table")
+	assert(struct["ApplicationUpdate"], "Expected key ApplicationUpdate to exist in table")
+	if struct["ApplicationName"] then asserts.AssertApplicationName(struct["ApplicationName"]) end
+	if struct["ApplicationUpdate"] then asserts.AssertApplicationUpdate(struct["ApplicationUpdate"]) end
+	if struct["CurrentApplicationVersionId"] then asserts.AssertApplicationVersionId(struct["CurrentApplicationVersionId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.UpdateApplicationRequest[k], "UpdateApplicationRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type UpdateApplicationRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>Name of the Amazon Kinesis Analytics application to update.</p>
+-- * ApplicationUpdate [ApplicationUpdate] <p>Describes application updates.</p>
+-- * CurrentApplicationVersionId [ApplicationVersionId] <p>The current application version ID. You can use the <a>DescribeApplication</a> operation to get this value.</p>
+-- Required key: ApplicationName
+-- Required key: CurrentApplicationVersionId
+-- Required key: ApplicationUpdate
+-- @return UpdateApplicationRequest structure as a key-value pair table
+function M.UpdateApplicationRequest(args)
+	assert(args, "You must provide an argument table when creating UpdateApplicationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ApplicationName"] = args["ApplicationName"],
+		["ApplicationUpdate"] = args["ApplicationUpdate"],
+		["CurrentApplicationVersionId"] = args["CurrentApplicationVersionId"],
+	}
+	asserts.AssertUpdateApplicationRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2619,6 +3030,50 @@ function M.ResourceProvisionedThroughputExceededException(args)
 		["message"] = args["message"],
 	}
 	asserts.AssertResourceProvisionedThroughputExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.LambdaOutput = { ["ResourceARN"] = true, ["RoleARN"] = true, nil }
+
+function asserts.AssertLambdaOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected LambdaOutput to be of type 'table'")
+	assert(struct["ResourceARN"], "Expected key ResourceARN to exist in table")
+	assert(struct["RoleARN"], "Expected key RoleARN to exist in table")
+	if struct["ResourceARN"] then asserts.AssertResourceARN(struct["ResourceARN"]) end
+	if struct["RoleARN"] then asserts.AssertRoleARN(struct["RoleARN"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.LambdaOutput[k], "LambdaOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type LambdaOutput
+-- <p>When configuring application output, identifies an AWS Lambda function as the destination. You provide the function Amazon Resource Name (ARN) and also an IAM role ARN that Amazon Kinesis Analytics can use to write to the function on your behalf. </p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceARN [ResourceARN] <p>Amazon Resource Name (ARN) of the destination Lambda function to write to.</p>
+-- * RoleARN [RoleARN] <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to write to the destination function on your behalf. You need to grant the necessary permissions to this role. </p>
+-- Required key: ResourceARN
+-- Required key: RoleARN
+-- @return LambdaOutput structure as a key-value pair table
+function M.LambdaOutput(args)
+	assert(args, "You must provide an argument table when creating LambdaOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ResourceARN"] = args["ResourceARN"],
+		["RoleARN"] = args["RoleARN"],
+	}
+	asserts.AssertLambdaOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2701,6 +3156,43 @@ function M.KinesisFirehoseInputDescription(args)
     }
 end
 
+keys.InputProcessingConfigurationDescription = { ["InputLambdaProcessorDescription"] = true, nil }
+
+function asserts.AssertInputProcessingConfigurationDescription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected InputProcessingConfigurationDescription to be of type 'table'")
+	if struct["InputLambdaProcessorDescription"] then asserts.AssertInputLambdaProcessorDescription(struct["InputLambdaProcessorDescription"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.InputProcessingConfigurationDescription[k], "InputProcessingConfigurationDescription contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type InputProcessingConfigurationDescription
+-- <p>Provides configuration information about an input processor. Currently, the only input processor available is <a href="https://aws.amazon.com/documentation/lambda/">AWS Lambda</a>.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InputLambdaProcessorDescription [InputLambdaProcessorDescription] <p>Provides configuration information about the associated <a>InputLambdaProcessorDescription</a>.</p>
+-- @return InputProcessingConfigurationDescription structure as a key-value pair table
+function M.InputProcessingConfigurationDescription(args)
+	assert(args, "You must provide an argument table when creating InputProcessingConfigurationDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["InputLambdaProcessorDescription"] = args["InputLambdaProcessorDescription"],
+	}
+	asserts.AssertInputProcessingConfigurationDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.CreateApplicationRequest = { ["ApplicationName"] = true, ["Inputs"] = true, ["ApplicationDescription"] = true, ["Outputs"] = true, ["CloudWatchLoggingOptions"] = true, ["ApplicationCode"] = true, nil }
 
 function asserts.AssertCreateApplicationRequest(struct)
@@ -2723,11 +3215,11 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ApplicationName [ApplicationName] <p>Name of your Amazon Kinesis Analytics application (for example, <code>sample-app</code>).</p>
--- * Inputs [Inputs] <p>Use this parameter to configure the application input.</p> <p>You can configure your application to receive input from a single streaming source. In this configuration, you map this streaming source to an in-application stream that is created. Your application code can then query the in-application stream like a table (you can think of it as a constantly updating table).</p> <p>For the streaming source, you provide its Amazon Resource Name (ARN) and format of data on the stream (for example, JSON, CSV, etc). You also must provide an IAM role that Amazon Kinesis Analytics can assume to read this stream on your behalf.</p> <p>To create the in-application stream, you need to specify a schema to transform your data into a schematized version used in SQL. In the schema, you provide the necessary mapping of the data elements in the streaming source to record columns in the in-app stream.</p>
+-- * Inputs [Inputs] <p>Use this parameter to configure the application input.</p> <p>You can configure your application to receive input from a single streaming source. In this configuration, you map this streaming source to an in-application stream that is created. Your application code can then query the in-application stream like a table (you can think of it as a constantly updating table).</p> <p>For the streaming source, you provide its Amazon Resource Name (ARN) and format of data on the stream (for example, JSON, CSV, etc.). You also must provide an IAM role that Amazon Kinesis Analytics can assume to read this stream on your behalf.</p> <p>To create the in-application stream, you need to specify a schema to transform your data into a schematized version used in SQL. In the schema, you provide the necessary mapping of the data elements in the streaming source to record columns in the in-app stream.</p>
 -- * ApplicationDescription [ApplicationDescription] <p>Summary description of the application.</p>
--- * Outputs [Outputs] <p>You can configure application output to write data from any of the in-application streams to up to five destinations.</p> <p>These destinations can be Amazon Kinesis streams, Amazon Kinesis Firehose delivery streams, or both.</p> <p>In the configuration, you specify the in-application stream name, the destination stream Amazon Resource Name (ARN), and the format to use when writing data. You must also provide an IAM role that Amazon Kinesis Analytics can assume to write to the destination stream on your behalf.</p> <p>In the output configuration, you also provide the output stream Amazon Resource Name (ARN) and the format of data in the stream (for example, JSON, CSV). You also must provide an IAM role that Amazon Kinesis Analytics can assume to write to this stream on your behalf.</p>
--- * CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>Use this parameter to configure a CloudWatch log stream to monitor application configuration errors. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-monitor-configuration.html">Monitoring Configuration Errors</a>.</p>
--- * ApplicationCode [ApplicationCode] <p>One or more SQL statements that read input data, transform it, and generate output. For example, you can write a SQL statement that reads data from one in-application stream, generates a running average of the number of advertisement clicks by vendor, and insert resulting rows in another in-application stream using pumps. For more inforamtion about the typical pattern, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-app-code.html">Application Code</a>. </p> <p>You can provide such series of SQL statements, where output of one statement can be used as the input for the next statement. You store intermediate results by creating in-application streams and pumps.</p> <p>Note that the application code must create the streams with names specified in the <code>Outputs</code>. For example, if your <code>Outputs</code> defines output streams named <code>ExampleOutputStream1</code> and <code>ExampleOutputStream2</code>, then your application code must create these streams. </p>
+-- * Outputs [Outputs] <p>You can configure application output to write data from any of the in-application streams to up to three destinations.</p> <p>These destinations can be Amazon Kinesis streams, Amazon Kinesis Firehose delivery streams, Amazon Lambda destinations, or any combination of the three.</p> <p>In the configuration, you specify the in-application stream name, the destination stream or Lambda function Amazon Resource Name (ARN), and the format to use when writing data. You must also provide an IAM role that Amazon Kinesis Analytics can assume to write to the destination stream or Lambda function on your behalf.</p> <p>In the output configuration, you also provide the output stream or Lambda function ARN. For stream destinations, you provide the format of data in the stream (for example, JSON, CSV). You also must provide an IAM role that Amazon Kinesis Analytics can assume to write to the stream or Lambda function on your behalf.</p>
+-- * CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>Use this parameter to configure a CloudWatch log stream to monitor application configuration errors. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html">Working with Amazon CloudWatch Logs</a>.</p>
+-- * ApplicationCode [ApplicationCode] <p>One or more SQL statements that read input data, transform it, and generate output. For example, you can write a SQL statement that reads data from one in-application stream, generates a running average of the number of advertisement clicks by vendor, and insert resulting rows in another in-application stream using pumps. For more information about the typical pattern, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-app-code.html">Application Code</a>. </p> <p>You can provide such series of SQL statements, where output of one statement can be used as the input for the next statement. You store intermediate results by creating in-application streams and pumps.</p> <p>Note that the application code must create the streams with names specified in the <code>Outputs</code>. For example, if your <code>Outputs</code> defines output streams named <code>ExampleOutputStream1</code> and <code>ExampleOutputStream2</code>, then your application code must create these streams. </p>
 -- Required key: ApplicationName
 -- @return CreateApplicationRequest structure as a key-value pair table
 function M.CreateApplicationRequest(args)
@@ -2772,7 +3264,7 @@ end
 -- <p> Describes the record format and relevant mapping information that should be applied to schematize the records on the stream. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * MappingParameters [MappingParameters] 
+-- * MappingParameters [MappingParameters] <p>When configuring application input at the time of creating or updating an application, provides additional mapping information specific to the record format (such as JSON, CSV, or record fields delimited by some delimiter) on the streaming source.</p>
 -- * RecordFormatType [RecordFormatType] <p>The type of record format.</p>
 -- Required key: RecordFormatType
 -- @return RecordFormat structure as a key-value pair table
@@ -2893,6 +3385,60 @@ function M.ApplicationUpdate(args)
     }
 end
 
+keys.AddApplicationInputProcessingConfigurationRequest = { ["ApplicationName"] = true, ["InputProcessingConfiguration"] = true, ["InputId"] = true, ["CurrentApplicationVersionId"] = true, nil }
+
+function asserts.AssertAddApplicationInputProcessingConfigurationRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected AddApplicationInputProcessingConfigurationRequest to be of type 'table'")
+	assert(struct["ApplicationName"], "Expected key ApplicationName to exist in table")
+	assert(struct["CurrentApplicationVersionId"], "Expected key CurrentApplicationVersionId to exist in table")
+	assert(struct["InputId"], "Expected key InputId to exist in table")
+	assert(struct["InputProcessingConfiguration"], "Expected key InputProcessingConfiguration to exist in table")
+	if struct["ApplicationName"] then asserts.AssertApplicationName(struct["ApplicationName"]) end
+	if struct["InputProcessingConfiguration"] then asserts.AssertInputProcessingConfiguration(struct["InputProcessingConfiguration"]) end
+	if struct["InputId"] then asserts.AssertId(struct["InputId"]) end
+	if struct["CurrentApplicationVersionId"] then asserts.AssertApplicationVersionId(struct["CurrentApplicationVersionId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.AddApplicationInputProcessingConfigurationRequest[k], "AddApplicationInputProcessingConfigurationRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type AddApplicationInputProcessingConfigurationRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>Name of the application to which you want to add the input processing configuration.</p>
+-- * InputProcessingConfiguration [InputProcessingConfiguration] <p>The <a>InputProcessingConfiguration</a> to add to the application.</p>
+-- * InputId [Id] <p>The ID of the input configuration to add the input processing configuration to. You can get a list of the input IDs for an application using the <a>DescribeApplication</a> operation.</p>
+-- * CurrentApplicationVersionId [ApplicationVersionId] <p>Version of the application to which you want to add the input processing configuration. You can use the <a>DescribeApplication</a> operation to get the current application version. If the version specified is not the current version, the <code>ConcurrentModificationException</code> is returned.</p>
+-- Required key: ApplicationName
+-- Required key: CurrentApplicationVersionId
+-- Required key: InputId
+-- Required key: InputProcessingConfiguration
+-- @return AddApplicationInputProcessingConfigurationRequest structure as a key-value pair table
+function M.AddApplicationInputProcessingConfigurationRequest(args)
+	assert(args, "You must provide an argument table when creating AddApplicationInputProcessingConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ApplicationName"] = args["ApplicationName"],
+		["InputProcessingConfiguration"] = args["InputProcessingConfiguration"],
+		["InputId"] = args["InputId"],
+		["CurrentApplicationVersionId"] = args["CurrentApplicationVersionId"],
+	}
+	asserts.AssertAddApplicationInputProcessingConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.InputStartingPositionConfiguration = { ["InputStartingPosition"] = true, nil }
 
 function asserts.AssertInputStartingPositionConfiguration(struct)
@@ -2908,7 +3454,7 @@ end
 -- <p>Describes the point at which the application reads from the streaming source.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * InputStartingPosition [InputStartingPosition] <p>The starting position on the stream.</p> <ul> <li> <p> <code>NOW</code> - Start reading just after the most recent record in the stream, start at the request timestamp that the customer issued.</p> </li> <li> <p> <code>TRIM_HORIZON</code> - Start reading at the last untrimmed record in the stream, which is the oldest record available in the stream. This option is not available for an Amazon Kinesis Firehose delivery stream.</p> </li> <li> <p> <code>LAST_STOPPED_POINT</code> - Resume reading from where the application last stopped reading.</p> </li> </ul>
+-- * InputStartingPosition [InputStartingPosition] <p>The starting position on the stream.</p> <ul> <li> <p> <code>NOW</code> - Start reading just after the most recent record in the stream, start at the request time stamp that the customer issued.</p> </li> <li> <p> <code>TRIM_HORIZON</code> - Start reading at the last untrimmed record in the stream, which is the oldest record available in the stream. This option is not available for an Amazon Kinesis Firehose delivery stream.</p> </li> <li> <p> <code>LAST_STOPPED_POINT</code> - Resume reading from where the application last stopped reading.</p> </li> </ul>
 -- @return InputStartingPositionConfiguration structure as a key-value pair table
 function M.InputStartingPositionConfiguration(args)
 	assert(args, "You must provide an argument table when creating InputStartingPositionConfiguration")
@@ -2945,7 +3491,7 @@ function asserts.AssertKinesisStreamsInput(struct)
 end
 
 --- Create a structure of type KinesisStreamsInput
--- <p> Identifies an Amazon Kinesis stream as the streaming source. You provide the stream's ARN and an IAM role ARN that enables Amazon Kinesis Analytics to access the stream on your behalf.</p>
+-- <p> Identifies an Amazon Kinesis stream as the streaming source. You provide the stream's Amazon Resource Name (ARN) and an IAM role ARN that enables Amazon Kinesis Analytics to access the stream on your behalf.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ResourceARN [ResourceARN] <p>ARN of the input Amazon Kinesis stream to read.</p>
@@ -2974,11 +3520,12 @@ function M.KinesisStreamsInput(args)
     }
 end
 
-keys.DiscoverInputSchemaResponse = { ["RawInputRecords"] = true, ["InputSchema"] = true, ["ParsedInputRecords"] = true, nil }
+keys.DiscoverInputSchemaResponse = { ["ProcessedInputRecords"] = true, ["RawInputRecords"] = true, ["InputSchema"] = true, ["ParsedInputRecords"] = true, nil }
 
 function asserts.AssertDiscoverInputSchemaResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DiscoverInputSchemaResponse to be of type 'table'")
+	if struct["ProcessedInputRecords"] then asserts.AssertProcessedInputRecords(struct["ProcessedInputRecords"]) end
 	if struct["RawInputRecords"] then asserts.AssertRawInputRecords(struct["RawInputRecords"]) end
 	if struct["InputSchema"] then asserts.AssertSourceSchema(struct["InputSchema"]) end
 	if struct["ParsedInputRecords"] then asserts.AssertParsedInputRecords(struct["ParsedInputRecords"]) end
@@ -2991,6 +3538,7 @@ end
 -- <p/>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * ProcessedInputRecords [ProcessedInputRecords] <p>Stream data that was modified by the processor specified in the <code>InputProcessingConfiguration</code> parameter.</p>
 -- * RawInputRecords [RawInputRecords] <p>Raw stream data that was sampled to infer the schema.</p>
 -- * InputSchema [SourceSchema] <p>Schema inferred from the streaming source. It identifies the format of the data in the streaming source and how each data element maps to corresponding columns in the in-application stream that you can create.</p>
 -- * ParsedInputRecords [ParsedInputRecords] <p>An array of elements, where each element corresponds to a row in a stream record (a stream record can have more than one row).</p>
@@ -3004,6 +3552,7 @@ function M.DiscoverInputSchemaResponse(args)
     local header_args = { 
     }
 	local all_args = { 
+		["ProcessedInputRecords"] = args["ProcessedInputRecords"],
 		["RawInputRecords"] = args["RawInputRecords"],
 		["InputSchema"] = args["InputSchema"],
 		["ParsedInputRecords"] = args["ParsedInputRecords"],
@@ -3017,7 +3566,47 @@ function M.DiscoverInputSchemaResponse(args)
     }
 end
 
-keys.Output = { ["DestinationSchema"] = true, ["KinesisStreamsOutput"] = true, ["KinesisFirehoseOutput"] = true, ["Name"] = true, nil }
+keys.MappingParameters = { ["JSONMappingParameters"] = true, ["CSVMappingParameters"] = true, nil }
+
+function asserts.AssertMappingParameters(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected MappingParameters to be of type 'table'")
+	if struct["JSONMappingParameters"] then asserts.AssertJSONMappingParameters(struct["JSONMappingParameters"]) end
+	if struct["CSVMappingParameters"] then asserts.AssertCSVMappingParameters(struct["CSVMappingParameters"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.MappingParameters[k], "MappingParameters contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type MappingParameters
+-- <p>When configuring application input at the time of creating or updating an application, provides additional mapping information specific to the record format (such as JSON, CSV, or record fields delimited by some delimiter) on the streaming source.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * JSONMappingParameters [JSONMappingParameters] <p>Provides additional mapping information when JSON is the record format on the streaming source.</p>
+-- * CSVMappingParameters [CSVMappingParameters] <p>Provides additional mapping information when the record format uses delimiters (for example, CSV).</p>
+-- @return MappingParameters structure as a key-value pair table
+function M.MappingParameters(args)
+	assert(args, "You must provide an argument table when creating MappingParameters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["JSONMappingParameters"] = args["JSONMappingParameters"],
+		["CSVMappingParameters"] = args["CSVMappingParameters"],
+	}
+	asserts.AssertMappingParameters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.Output = { ["DestinationSchema"] = true, ["KinesisStreamsOutput"] = true, ["KinesisFirehoseOutput"] = true, ["Name"] = true, ["LambdaOutput"] = true, nil }
 
 function asserts.AssertOutput(struct)
 	assert(struct)
@@ -3028,6 +3617,7 @@ function asserts.AssertOutput(struct)
 	if struct["KinesisStreamsOutput"] then asserts.AssertKinesisStreamsOutput(struct["KinesisStreamsOutput"]) end
 	if struct["KinesisFirehoseOutput"] then asserts.AssertKinesisFirehoseOutput(struct["KinesisFirehoseOutput"]) end
 	if struct["Name"] then asserts.AssertInAppStreamName(struct["Name"]) end
+	if struct["LambdaOutput"] then asserts.AssertLambdaOutput(struct["LambdaOutput"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Output[k], "Output contains unknown key " .. tostring(k))
 	end
@@ -3037,10 +3627,11 @@ end
 -- <p> Describes application output configuration in which you identify an in-application stream and a destination where you want the in-application stream data to be written. The destination can be an Amazon Kinesis stream or an Amazon Kinesis Firehose delivery stream. </p> <p/> <p>For limits on how many destinations an application can write and other limitations, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DestinationSchema [DestinationSchema] 
+-- * DestinationSchema [DestinationSchema] <p>Describes the data format when records are written to the destination. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html">Configuring Application Output</a>.</p>
 -- * KinesisStreamsOutput [KinesisStreamsOutput] <p>Identifies an Amazon Kinesis stream as the destination.</p>
 -- * KinesisFirehoseOutput [KinesisFirehoseOutput] <p>Identifies an Amazon Kinesis Firehose delivery stream as the destination.</p>
 -- * Name [InAppStreamName] <p>Name of the in-application stream.</p>
+-- * LambdaOutput [LambdaOutput] <p>Identifies an AWS Lambda function as the destination.</p>
 -- Required key: Name
 -- Required key: DestinationSchema
 -- @return Output structure as a key-value pair table
@@ -3057,6 +3648,7 @@ function M.Output(args)
 		["KinesisStreamsOutput"] = args["KinesisStreamsOutput"],
 		["KinesisFirehoseOutput"] = args["KinesisFirehoseOutput"],
 		["Name"] = args["Name"],
+		["LambdaOutput"] = args["LambdaOutput"],
 	}
 	asserts.AssertOutput(all_args)
 	return {
@@ -3119,10 +3711,10 @@ function asserts.AssertKinesisFirehoseInput(struct)
 end
 
 --- Create a structure of type KinesisFirehoseInput
--- <p> Identifies an Amazon Kinesis Firehose delivery stream as the streaming source. You provide the Firehose delivery stream's Amazon Resource Name (ARN) and an IAM role ARN that enables Amazon Kinesis Analytics to access the stream on your behalf.</p>
+-- <p> Identifies an Amazon Kinesis Firehose delivery stream as the streaming source. You provide the delivery stream's Amazon Resource Name (ARN) and an IAM role ARN that enables Amazon Kinesis Analytics to access the stream on your behalf.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ResourceARN [ResourceARN] <p>ARN of the input Firehose delivery stream.</p>
+-- * ResourceARN [ResourceARN] <p>ARN of the input delivery stream.</p>
 -- * RoleARN [RoleARN] <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to make sure the role has necessary permissions to access the stream.</p>
 -- Required key: ResourceARN
 -- Required key: RoleARN
@@ -3187,16 +3779,17 @@ function M.CreateApplicationResponse(args)
     }
 end
 
-keys.OutputUpdate = { ["OutputId"] = true, ["DestinationSchemaUpdate"] = true, ["KinesisFirehoseOutputUpdate"] = true, ["KinesisStreamsOutputUpdate"] = true, ["NameUpdate"] = true, nil }
+keys.OutputUpdate = { ["KinesisStreamsOutputUpdate"] = true, ["KinesisFirehoseOutputUpdate"] = true, ["OutputId"] = true, ["LambdaOutputUpdate"] = true, ["DestinationSchemaUpdate"] = true, ["NameUpdate"] = true, nil }
 
 function asserts.AssertOutputUpdate(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected OutputUpdate to be of type 'table'")
 	assert(struct["OutputId"], "Expected key OutputId to exist in table")
-	if struct["OutputId"] then asserts.AssertId(struct["OutputId"]) end
-	if struct["DestinationSchemaUpdate"] then asserts.AssertDestinationSchema(struct["DestinationSchemaUpdate"]) end
-	if struct["KinesisFirehoseOutputUpdate"] then asserts.AssertKinesisFirehoseOutputUpdate(struct["KinesisFirehoseOutputUpdate"]) end
 	if struct["KinesisStreamsOutputUpdate"] then asserts.AssertKinesisStreamsOutputUpdate(struct["KinesisStreamsOutputUpdate"]) end
+	if struct["KinesisFirehoseOutputUpdate"] then asserts.AssertKinesisFirehoseOutputUpdate(struct["KinesisFirehoseOutputUpdate"]) end
+	if struct["OutputId"] then asserts.AssertId(struct["OutputId"]) end
+	if struct["LambdaOutputUpdate"] then asserts.AssertLambdaOutputUpdate(struct["LambdaOutputUpdate"]) end
+	if struct["DestinationSchemaUpdate"] then asserts.AssertDestinationSchema(struct["DestinationSchemaUpdate"]) end
 	if struct["NameUpdate"] then asserts.AssertInAppStreamName(struct["NameUpdate"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.OutputUpdate[k], "OutputUpdate contains unknown key " .. tostring(k))
@@ -3207,10 +3800,11 @@ end
 -- <p> Describes updates to the output configuration identified by the <code>OutputId</code>. </p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * OutputId [Id] <p>Identifies the specific output configuration that you want to update.</p>
--- * DestinationSchemaUpdate [DestinationSchema] 
--- * KinesisFirehoseOutputUpdate [KinesisFirehoseOutputUpdate] <p>Describes a Amazon Kinesis Firehose delivery stream as the destination for the output.</p>
 -- * KinesisStreamsOutputUpdate [KinesisStreamsOutputUpdate] <p>Describes an Amazon Kinesis stream as the destination for the output.</p>
+-- * KinesisFirehoseOutputUpdate [KinesisFirehoseOutputUpdate] <p>Describes an Amazon Kinesis Firehose delivery stream as the destination for the output.</p>
+-- * OutputId [Id] <p>Identifies the specific output configuration that you want to update.</p>
+-- * LambdaOutputUpdate [LambdaOutputUpdate] <p>Describes an AWS Lambda function as the destination for the output.</p>
+-- * DestinationSchemaUpdate [DestinationSchema] <p>Describes the data format when records are written to the destination. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html">Configuring Application Output</a>.</p>
 -- * NameUpdate [InAppStreamName] <p>If you want to specify a different in-application stream for this output configuration, use this field to specify the new in-application stream name.</p>
 -- Required key: OutputId
 -- @return OutputUpdate structure as a key-value pair table
@@ -3223,10 +3817,11 @@ function M.OutputUpdate(args)
     local header_args = { 
     }
 	local all_args = { 
-		["OutputId"] = args["OutputId"],
-		["DestinationSchemaUpdate"] = args["DestinationSchemaUpdate"],
-		["KinesisFirehoseOutputUpdate"] = args["KinesisFirehoseOutputUpdate"],
 		["KinesisStreamsOutputUpdate"] = args["KinesisStreamsOutputUpdate"],
+		["KinesisFirehoseOutputUpdate"] = args["KinesisFirehoseOutputUpdate"],
+		["OutputId"] = args["OutputId"],
+		["LambdaOutputUpdate"] = args["LambdaOutputUpdate"],
+		["DestinationSchemaUpdate"] = args["DestinationSchemaUpdate"],
 		["NameUpdate"] = args["NameUpdate"],
 	}
 	asserts.AssertOutputUpdate(all_args)
@@ -3252,7 +3847,7 @@ function asserts.AssertInputSchemaUpdate(struct)
 end
 
 --- Create a structure of type InputSchemaUpdate
--- <p> Describes updates for the application's input schema. </p>
+-- <p>Describes updates for the application's input schema.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * RecordFormatUpdate [RecordFormat] <p>Specifies the format of the records on the streaming source.</p>
@@ -3418,6 +4013,55 @@ function M.CSVMappingParameters(args)
     }
 end
 
+keys.DeleteApplicationInputProcessingConfigurationRequest = { ["ApplicationName"] = true, ["InputId"] = true, ["CurrentApplicationVersionId"] = true, nil }
+
+function asserts.AssertDeleteApplicationInputProcessingConfigurationRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteApplicationInputProcessingConfigurationRequest to be of type 'table'")
+	assert(struct["ApplicationName"], "Expected key ApplicationName to exist in table")
+	assert(struct["CurrentApplicationVersionId"], "Expected key CurrentApplicationVersionId to exist in table")
+	assert(struct["InputId"], "Expected key InputId to exist in table")
+	if struct["ApplicationName"] then asserts.AssertApplicationName(struct["ApplicationName"]) end
+	if struct["InputId"] then asserts.AssertId(struct["InputId"]) end
+	if struct["CurrentApplicationVersionId"] then asserts.AssertApplicationVersionId(struct["CurrentApplicationVersionId"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteApplicationInputProcessingConfigurationRequest[k], "DeleteApplicationInputProcessingConfigurationRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteApplicationInputProcessingConfigurationRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The Kinesis Analytics application name.</p>
+-- * InputId [Id] <p>The ID of the input configuration from which to delete the input processing configuration. You can get a list of the input IDs for an application by using the <a>DescribeApplication</a> operation.</p>
+-- * CurrentApplicationVersionId [ApplicationVersionId] <p>The version ID of the Kinesis Analytics application.</p>
+-- Required key: ApplicationName
+-- Required key: CurrentApplicationVersionId
+-- Required key: InputId
+-- @return DeleteApplicationInputProcessingConfigurationRequest structure as a key-value pair table
+function M.DeleteApplicationInputProcessingConfigurationRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteApplicationInputProcessingConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["ApplicationName"] = args["ApplicationName"],
+		["InputId"] = args["InputId"],
+		["CurrentApplicationVersionId"] = args["CurrentApplicationVersionId"],
+	}
+	asserts.AssertDeleteApplicationInputProcessingConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.ListApplicationsResponse = { ["HasMoreApplications"] = true, ["ApplicationSummaries"] = true, nil }
 
 function asserts.AssertListApplicationsResponse(struct)
@@ -3516,6 +4160,8 @@ end
 function asserts.AssertFileKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FileKey to be of type 'string'")
+	assert(#str <= 1024, "Expected string to be max 1024 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
@@ -3570,14 +4216,27 @@ function M.BucketARN(str)
 	return str
 end
 
-function asserts.AssertRecordColumnSqlType(str)
+function asserts.AssertRoleARN(str)
 	assert(str)
-	assert(type(str) == "string", "Expected RecordColumnSqlType to be of type 'string'")
+	assert(type(str) == "string", "Expected RoleARN to be of type 'string'")
+	assert(#str <= 2048, "Expected string to be max 2048 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
-function M.RecordColumnSqlType(str)
-	asserts.AssertRecordColumnSqlType(str)
+function M.RoleARN(str)
+	asserts.AssertRoleARN(str)
+	return str
+end
+
+function asserts.AssertProcessedInputRecord(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ProcessedInputRecord to be of type 'string'")
+end
+
+--  
+function M.ProcessedInputRecord(str)
+	asserts.AssertProcessedInputRecord(str)
 	return str
 end
 
@@ -3592,16 +4251,15 @@ function M.ApplicationStatus(str)
 	return str
 end
 
-function asserts.AssertRoleARN(str)
+function asserts.AssertRecordRowDelimiter(str)
 	assert(str)
-	assert(type(str) == "string", "Expected RoleARN to be of type 'string'")
-	assert(#str <= 2048, "Expected string to be max 2048 characters")
+	assert(type(str) == "string", "Expected RecordRowDelimiter to be of type 'string'")
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
-function M.RoleARN(str)
-	asserts.AssertRoleARN(str)
+function M.RecordRowDelimiter(str)
+	asserts.AssertRecordRowDelimiter(str)
 	return str
 end
 
@@ -3715,6 +4373,7 @@ end
 function asserts.AssertRecordRowPath(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RecordRowPath to be of type 'string'")
+	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
 --  
@@ -3749,6 +4408,18 @@ function M.InAppStreamName(str)
 	return str
 end
 
+function asserts.AssertRecordColumnSqlType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected RecordColumnSqlType to be of type 'string'")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.RecordColumnSqlType(str)
+	asserts.AssertRecordColumnSqlType(str)
+	return str
+end
+
 function asserts.AssertRecordColumnDelimiter(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RecordColumnDelimiter to be of type 'string'")
@@ -3758,18 +4429,6 @@ end
 --  
 function M.RecordColumnDelimiter(str)
 	asserts.AssertRecordColumnDelimiter(str)
-	return str
-end
-
-function asserts.AssertRecordRowDelimiter(str)
-	assert(str)
-	assert(type(str) == "string", "Expected RecordRowDelimiter to be of type 'string'")
-	assert(#str >= 1, "Expected string to be min 1 characters")
-end
-
---  
-function M.RecordRowDelimiter(str)
-	asserts.AssertRecordRowDelimiter(str)
 	return str
 end
 
@@ -3801,7 +4460,7 @@ function asserts.AssertInputParallelismCount(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected InputParallelismCount to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
-	assert(integer <= 10, "Expected integer to be max 10")
+	assert(integer <= 64, "Expected integer to be max 64")
 	assert(integer >= 1, "Expected integer to be min 1")
 end
 
@@ -4115,6 +4774,21 @@ function M.InputUpdates(list)
 	return list
 end
 
+function asserts.AssertProcessedInputRecords(list)
+	assert(list)
+	assert(type(list) == "table", "Expected ProcessedInputRecords to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertProcessedInputRecord(v)
+	end
+end
+
+--  
+-- List of ProcessedInputRecord objects
+function M.ProcessedInputRecords(list)
+	asserts.AssertProcessedInputRecords(list)
+	return list
+end
+
 
 local content_type = require "aws-sdk.core.content_type"
 local request_headers = require "aws-sdk.core.request_headers"
@@ -4193,36 +4867,36 @@ function M.DiscoverInputSchemaSync(DiscoverInputSchemaRequest, ...)
 	return coroutine.yield()
 end
 
---- Call DeleteApplicationOutput asynchronously, invoking a callback when done
--- @param DeleteApplicationOutputRequest
+--- Call DeleteApplicationInputProcessingConfiguration asynchronously, invoking a callback when done
+-- @param DeleteApplicationInputProcessingConfigurationRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.DeleteApplicationOutputAsync(DeleteApplicationOutputRequest, cb)
-	assert(DeleteApplicationOutputRequest, "You must provide a DeleteApplicationOutputRequest")
+function M.DeleteApplicationInputProcessingConfigurationAsync(DeleteApplicationInputProcessingConfigurationRequest, cb)
+	assert(DeleteApplicationInputProcessingConfigurationRequest, "You must provide a DeleteApplicationInputProcessingConfigurationRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DeleteApplicationOutput",
+		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DeleteApplicationInputProcessingConfiguration",
 	}
-	for header,value in pairs(DeleteApplicationOutputRequest.headers) do
+	for header,value in pairs(DeleteApplicationInputProcessingConfigurationRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DeleteApplicationOutputRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", DeleteApplicationInputProcessingConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DeleteApplicationOutput synchronously, returning when done
+--- Call DeleteApplicationInputProcessingConfiguration synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DeleteApplicationOutputRequest
+-- @param DeleteApplicationInputProcessingConfigurationRequest
 -- @return response
 -- @return error_message
-function M.DeleteApplicationOutputSync(DeleteApplicationOutputRequest, ...)
+function M.DeleteApplicationInputProcessingConfigurationSync(DeleteApplicationInputProcessingConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteApplicationOutputAsync(DeleteApplicationOutputRequest, function(response, error_message)
+	M.DeleteApplicationInputProcessingConfigurationAsync(DeleteApplicationInputProcessingConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4473,6 +5147,41 @@ function M.AddApplicationCloudWatchLoggingOptionSync(AddApplicationCloudWatchLog
 	return coroutine.yield()
 end
 
+--- Call DeleteApplicationOutput asynchronously, invoking a callback when done
+-- @param DeleteApplicationOutputRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.DeleteApplicationOutputAsync(DeleteApplicationOutputRequest, cb)
+	assert(DeleteApplicationOutputRequest, "You must provide a DeleteApplicationOutputRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DeleteApplicationOutput",
+	}
+	for header,value in pairs(DeleteApplicationOutputRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeleteApplicationOutputRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeleteApplicationOutput synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteApplicationOutputRequest
+-- @return response
+-- @return error_message
+function M.DeleteApplicationOutputSync(DeleteApplicationOutputRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteApplicationOutputAsync(DeleteApplicationOutputRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call DeleteApplicationCloudWatchLoggingOption asynchronously, invoking a callback when done
 -- @param DeleteApplicationCloudWatchLoggingOptionRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -4573,6 +5282,41 @@ function M.DescribeApplicationSync(DescribeApplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DescribeApplicationAsync(DescribeApplicationRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddApplicationInputProcessingConfiguration asynchronously, invoking a callback when done
+-- @param AddApplicationInputProcessingConfigurationRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.AddApplicationInputProcessingConfigurationAsync(AddApplicationInputProcessingConfigurationRequest, cb)
+	assert(AddApplicationInputProcessingConfigurationRequest, "You must provide a AddApplicationInputProcessingConfigurationRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.AddApplicationInputProcessingConfiguration",
+	}
+	for header,value in pairs(AddApplicationInputProcessingConfigurationRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", AddApplicationInputProcessingConfigurationRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call AddApplicationInputProcessingConfiguration synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddApplicationInputProcessingConfigurationRequest
+-- @return response
+-- @return error_message
+function M.AddApplicationInputProcessingConfigurationSync(AddApplicationInputProcessingConfigurationRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddApplicationInputProcessingConfigurationAsync(AddApplicationInputProcessingConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

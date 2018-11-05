@@ -199,12 +199,13 @@ function M.DomainSummary(args)
     }
 end
 
-keys.ListOperationsRequest = { ["Marker"] = true, ["MaxItems"] = true, nil }
+keys.ListOperationsRequest = { ["Marker"] = true, ["SubmittedSince"] = true, ["MaxItems"] = true, nil }
 
 function asserts.AssertListOperationsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListOperationsRequest to be of type 'table'")
 	if struct["Marker"] then asserts.AssertPageMarker(struct["Marker"]) end
+	if struct["SubmittedSince"] then asserts.AssertTimestamp(struct["SubmittedSince"]) end
 	if struct["MaxItems"] then asserts.AssertPageMaxItems(struct["MaxItems"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ListOperationsRequest[k], "ListOperationsRequest contains unknown key " .. tostring(k))
@@ -216,6 +217,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Marker [PageMarker] <p>For an initial request for a list of operations, omit this element. If the number of operations that are not yet complete is greater than the value that you specified for <code>MaxItems</code>, you can use <code>Marker</code> to return additional operations. Get the value of <code>NextPageMarker</code> from the previous response, and submit another request that includes the value of <code>NextPageMarker</code> in the <code>Marker</code> element.</p>
+-- * SubmittedSince [Timestamp] <p>An optional parameter that lets you get information about all the operations that you submitted after a specified date and time. Specify the date and time in Coordinated Universal time (UTC).</p>
 -- * MaxItems [PageMaxItems] <p>Number of domains to be returned.</p> <p>Default: 20</p>
 -- @return ListOperationsRequest structure as a key-value pair table
 function M.ListOperationsRequest(args)
@@ -228,6 +230,7 @@ function M.ListOperationsRequest(args)
     }
 	local all_args = { 
 		["Marker"] = args["Marker"],
+		["SubmittedSince"] = args["SubmittedSince"],
 		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListOperationsRequest(all_args)
@@ -251,10 +254,10 @@ function asserts.AssertUnsupportedTLD(struct)
 end
 
 --- Create a structure of type UnsupportedTLD
--- <p>Amazon Route 53 does not support this top-level domain.</p>
+-- <p>Amazon Route 53 does not support this top-level domain (TLD).</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [ErrorMessage] <p>Amazon Route 53 does not support this top-level domain.</p>
+-- * message [ErrorMessage] <p>Amazon Route 53 does not support this top-level domain (TLD).</p>
 -- @return UnsupportedTLD structure as a key-value pair table
 function M.UnsupportedTLD(args)
 	assert(args, "You must provide an argument table when creating UnsupportedTLD")
@@ -372,7 +375,7 @@ end
 -- <p>ExtraParam includes the following elements.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Name [ExtraParamName] <p>Name of the additional parameter required by the top-level domain.</p>
+-- * Name [ExtraParamName] <p>Name of the additional parameter required by the top-level domain. Here are the top-level domains that require additional parameters and which parameters they require:</p> <ul> <li> <p> <b>.com.au and .net.au:</b> <code>AU_ID_NUMBER</code> and <code>AU_ID_TYPE</code> </p> </li> <li> <p> <b>.ca:</b> <code>BRAND_NUMBER</code>, <code>CA_LEGAL_TYPE</code>, and <code>CA_BUSINESS_ENTITY_TYPE</code> </p> </li> <li> <p> <b>.es:</b> <code>ES_IDENTIFICATION</code>, <code>ES_IDENTIFICATION_TYPE</code>, and <code>ES_LEGAL_FORM</code> </p> </li> <li> <p> <b>.fi:</b> <code>BIRTH_DATE_IN_YYYY_MM_DD</code>, <code>FI_BUSINESS_NUMBER</code>, <code>FI_ID_NUMBER</code>, <code>FI_NATIONALITY</code>, and <code>FI_ORGANIZATION_TYPE</code> </p> </li> <li> <p> <b>.fr:</b> <code>BRAND_NUMBER</code>, <code>BIRTH_DEPARTMENT</code>, <code>BIRTH_DATE_IN_YYYY_MM_DD</code>, <code>BIRTH_COUNTRY</code>, and <code>BIRTH_CITY</code> </p> </li> <li> <p> <b>.it:</b> <code>BIRTH_COUNTRY</code>, <code>IT_PIN</code>, and <code>IT_REGISTRANT_ENTITY_TYPE</code> </p> </li> <li> <p> <b>.ru:</b> <code>BIRTH_DATE_IN_YYYY_MM_DD</code> and <code>RU_PASSPORT_DATA</code> </p> </li> <li> <p> <b>.se:</b> <code>BIRTH_COUNTRY</code> and <code>SE_ID_NUMBER</code> </p> </li> <li> <p> <b>.sg:</b> <code>SG_ID_NUMBER</code> </p> </li> <li> <p> <b>.co.uk, .me.uk, and .org.uk:</b> <code>UK_CONTACT_TYPE</code> and <code>UK_COMPANY_NUMBER</code> </p> </li> </ul> <p>In addition, many TLDs require <code>VAT_NUMBER</code>.</p>
 -- * Value [ExtraParamValue] <p>Values corresponding to the additional parameter names required by some top-level domains.</p>
 -- Required key: Name
 -- Required key: Value
@@ -689,6 +692,48 @@ function M.GetContactReachabilityStatusResponse(args)
     }
 end
 
+keys.CheckDomainTransferabilityRequest = { ["AuthCode"] = true, ["DomainName"] = true, nil }
+
+function asserts.AssertCheckDomainTransferabilityRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CheckDomainTransferabilityRequest to be of type 'table'")
+	assert(struct["DomainName"], "Expected key DomainName to exist in table")
+	if struct["AuthCode"] then asserts.AssertDomainAuthCode(struct["AuthCode"]) end
+	if struct["DomainName"] then asserts.AssertDomainName(struct["DomainName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CheckDomainTransferabilityRequest[k], "CheckDomainTransferabilityRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CheckDomainTransferabilityRequest
+-- <p>The CheckDomainTransferability request contains the following elements.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthCode [DomainAuthCode] <p>If the registrar for the top-level domain (TLD) requires an authorization code to transfer the domain, the code that you got from the current registrar for the domain.</p>
+-- * DomainName [DomainName] <p>The name of the domain that you want to transfer to Amazon Route 53.</p> <p>Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.</p>
+-- Required key: DomainName
+-- @return CheckDomainTransferabilityRequest structure as a key-value pair table
+function M.CheckDomainTransferabilityRequest(args)
+	assert(args, "You must provide an argument table when creating CheckDomainTransferabilityRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["AuthCode"] = args["AuthCode"],
+		["DomainName"] = args["DomainName"],
+	}
+	asserts.AssertCheckDomainTransferabilityRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DeleteTagsForDomainRequest = { ["TagsToDelete"] = true, ["DomainName"] = true, nil }
 
 function asserts.AssertDeleteTagsForDomainRequest(struct)
@@ -965,8 +1010,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Marker [PageMarker] <p>For an initial request for a list of billing records, omit this element. If the number of billing records that are associated with the current AWS account during the specified period is greater than the value that you specified for <code>MaxItems</code>, you can use <code>Marker</code> to return additional billing records. Get the value of <code>NextPageMarker</code> from the previous response, and submit another request that includes the value of <code>NextPageMarker</code> in the <code>Marker</code> element. </p> <p>Constraints: The marker must match the value of <code>NextPageMarker</code> that was returned in the previous response.</p>
--- * Start [Timestamp] <p>The beginning date and time for the time period for which you want a list of billing records. Specify the date in Unix time format.</p>
--- * End [Timestamp] <p>The end date and time for the time period for which you want a list of billing records. Specify the date in Unix time format.</p>
+-- * Start [Timestamp] <p>The beginning date and time for the time period for which you want a list of billing records. Specify the date and time in Coordinated Universal time (UTC).</p>
+-- * End [Timestamp] <p>The end date and time for the time period for which you want a list of billing records. Specify the date and time in Coordinated Universal time (UTC).</p>
 -- * MaxItems [PageMaxItems] <p>The number of billing records to be returned.</p> <p>Default: 20</p>
 -- @return ViewBillingRequest structure as a key-value pair table
 function M.ViewBillingRequest(args)
@@ -1137,10 +1182,10 @@ end
 -- * RegistrantContact [ContactDetail] <p>Provides detailed contact information.</p>
 -- * IdnLangCode [LangCode] <p>Reserved for future use.</p>
 -- * DomainName [DomainName] <p>The domain name that you want to register.</p> <p>Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.</p>
--- * PrivacyProtectRegistrantContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
--- * PrivacyProtectTechContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
+-- * PrivacyProtectRegistrantContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify <code>false</code>, WHOIS queries return the information that you entered for the registrant contact (the domain owner).</p> <p>Default: <code>true</code> </p>
+-- * PrivacyProtectTechContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify <code>false</code>, WHOIS queries return the information that you entered for the technical contact.</p> <p>Default: <code>true</code> </p>
 -- * TechContact [ContactDetail] <p>Provides detailed contact information.</p>
--- * PrivacyProtectAdminContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
+-- * PrivacyProtectAdminContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify <code>false</code>, WHOIS queries return the information that you entered for the admin contact.</p> <p>Default: <code>true</code> </p>
 -- * AutoRenew [Boolean] <p>Indicates whether the domain will be automatically renewed (<code>true</code>) or not (<code>false</code>). Autorenewal only takes effect after the account is charged.</p> <p>Default: <code>true</code> </p>
 -- * DurationInYears [DurationInYears] <p>The number of years that you want to register the domain for. Domains are registered for a minimum of one year. The maximum period depends on the top-level domain. For the range of valid values for your domain, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html">Domains that You Can Register with Amazon Route 53</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>Default: 1</p>
 -- * AdminContact [ContactDetail] <p>Provides detailed contact information.</p>
@@ -1308,13 +1353,13 @@ end
 -- * DomainName [DomainName] <p>The name of the domain that you want to transfer to Amazon Route 53.</p> <p>Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.</p>
 -- * Nameservers [NameserverList] <p>Contains details for the host and glue IP addresses.</p>
 -- * AuthCode [DomainAuthCode] <p>The authorization code for the domain. You get this value from the current registrar.</p>
--- * PrivacyProtectRegistrantContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
+-- * PrivacyProtectRegistrantContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify <code>false</code>, WHOIS queries return the information that you entered for the registrant contact (domain owner).</p> <p>Default: <code>true</code> </p>
 -- * TechContact [ContactDetail] <p>Provides detailed contact information.</p>
--- * PrivacyProtectAdminContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
+-- * PrivacyProtectAdminContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify <code>false</code>, WHOIS queries return the information that you entered for the admin contact.</p> <p>Default: <code>true</code> </p>
 -- * AutoRenew [Boolean] <p>Indicates whether the domain will be automatically renewed (true) or not (false). Autorenewal only takes effect after the account is charged.</p> <p>Default: true</p>
 -- * DurationInYears [DurationInYears] <p>The number of years that you want to register the domain for. Domains are registered for a minimum of one year. The maximum period depends on the top-level domain.</p> <p>Default: 1</p>
 -- * AdminContact [ContactDetail] <p>Provides detailed contact information.</p>
--- * PrivacyProtectTechContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
+-- * PrivacyProtectTechContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify <code>false</code>, WHOIS queries return the information that you entered for the technical contact.</p> <p>Default: <code>true</code> </p>
 -- Required key: DomainName
 -- Required key: DurationInYears
 -- Required key: AdminContact
@@ -1590,21 +1635,21 @@ end
 -- * WhoIsServer [RegistrarWhoIsServer] <p>The fully qualified name of the WHOIS server that can answer the WHOIS query for the domain.</p>
 -- * AbuseContactEmail [Email] <p>Email address to contact to report incorrect contact information for a domain, to report that the domain is being used to send spam, to report that someone is cybersquatting on a domain name, or report some other type of abuse.</p>
 -- * Reseller [Reseller] <p>Reseller of the domain. Domains registered or transferred using Amazon Route 53 domains will have <code>"Amazon"</code> as the reseller. </p>
--- * RegistrarName [RegistrarName] <p>Name of the registrar of the domain as identified in the registry. Amazon Route 53 domains are registered by registrar Gandi. The value is <code>"GANDI SAS"</code>. </p>
+-- * RegistrarName [RegistrarName] <p>Name of the registrar of the domain as identified in the registry. Domains with a .com, .net, or .org TLD are registered by Amazon Registrar. All other domains are registered by our registrar associate, Gandi. The value for domains that are registered by Gandi is <code>"GANDI SAS"</code>. </p>
 -- * DomainName [DomainName] <p>The name of a domain.</p>
 -- * Nameservers [NameserverList] <p>The name of the domain.</p>
 -- * RegistrarUrl [RegistrarUrl] <p>Web address of the registrar.</p>
--- * AdminPrivacy [Boolean] <p>Specifies whether contact information for the admin contact is concealed from WHOIS queries. If the value is <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
+-- * AdminPrivacy [Boolean] <p>Specifies whether contact information is concealed from WHOIS queries. If the value is <code>true</code>, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If the value is <code>false</code>, WHOIS queries return the information that you entered for the admin contact.</p>
 -- * RegistryDomainId [RegistryDomainId] <p>Reserved for future use.</p>
 -- * TechContact [ContactDetail] <p>Provides details about the domain technical contact.</p>
--- * CreationDate [Timestamp] <p>The date when the domain was created as found in the response to a WHOIS query. The date format is Unix time.</p>
+-- * CreationDate [Timestamp] <p>The date when the domain was created as found in the response to a WHOIS query. The date and time is in Coordinated Universal time (UTC).</p>
 -- * AutoRenew [Boolean] <p>Specifies whether the domain registration is set to renew automatically.</p>
--- * UpdatedDate [Timestamp] <p>The last updated date of the domain as found in the response to a WHOIS query. The date format is Unix time.</p>
--- * ExpirationDate [Timestamp] <p>The date when the registration for the domain is set to expire. The date format is Unix time.</p>
+-- * UpdatedDate [Timestamp] <p>The last updated date of the domain as found in the response to a WHOIS query. The date and time is in Coordinated Universal time (UTC).</p>
+-- * ExpirationDate [Timestamp] <p>The date when the registration for the domain is set to expire. The date and time is in Coordinated Universal time (UTC).</p>
 -- * DnsSec [DNSSec] <p>Reserved for future use.</p>
 -- * AdminContact [ContactDetail] <p>Provides details about the domain administrative contact.</p>
--- * TechPrivacy [Boolean] <p>Specifies whether contact information for the tech contact is concealed from WHOIS queries. If the value is <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
--- * RegistrantPrivacy [Boolean] <p>Specifies whether contact information for the registrant contact is concealed from WHOIS queries. If the value is <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
+-- * TechPrivacy [Boolean] <p>Specifies whether contact information is concealed from WHOIS queries. If the value is <code>true</code>, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If the value is <code>false</code>, WHOIS queries return the information that you entered for the technical contact.</p>
+-- * RegistrantPrivacy [Boolean] <p>Specifies whether contact information is concealed from WHOIS queries. If the value is <code>true</code>, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If the value is <code>false</code>, WHOIS queries return the information that you entered for the registrant contact (domain owner).</p>
 -- * AbuseContactPhone [ContactNumber] <p>Phone number for reporting abuse.</p>
 -- Required key: DomainName
 -- Required key: Nameservers
@@ -1707,7 +1752,7 @@ end
 -- <p>The CheckDomainAvailability response includes the following elements.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Availability [DomainAvailability] <p>Whether the domain name is available for registering.</p> <note> <p>You can only register domains designated as <code>AVAILABLE</code>.</p> </note> <p>Valid values:</p> <dl> <dt>AVAILABLE</dt> <dd> <p>The domain name is available.</p> </dd> <dt>AVAILABLE_RESERVED</dt> <dd> <p>The domain name is reserved under specific conditions.</p> </dd> <dt>AVAILABLE_PREORDER</dt> <dd> <p>The domain name is available and can be preordered.</p> </dd> <dt>DONT_KNOW</dt> <dd> <p>The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon Route 53 can return this response for a variety of reasons, for example, the registry is performing maintenance. Try again later.</p> </dd> <dt>PENDING</dt> <dd> <p>The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it usually takes just a few extra seconds. You can resubmit the request immediately.</p> </dd> <dt>RESERVED</dt> <dd> <p>The domain name has been reserved for another person or organization.</p> </dd> <dt>UNAVAILABLE</dt> <dd> <p>The domain name is not available.</p> </dd> <dt>UNAVAILABLE_PREMIUM</dt> <dd> <p>The domain name is not available.</p> </dd> <dt>UNAVAILABLE_RESTRICTED</dt> <dd> <p>The domain name is forbidden.</p> </dd> </dl>
+-- * Availability [DomainAvailability] <p>Whether the domain name is available for registering.</p> <note> <p>You can register only domains designated as <code>AVAILABLE</code>.</p> </note> <p>Valid values:</p> <dl> <dt>AVAILABLE</dt> <dd> <p>The domain name is available.</p> </dd> <dt>AVAILABLE_RESERVED</dt> <dd> <p>The domain name is reserved under specific conditions.</p> </dd> <dt>AVAILABLE_PREORDER</dt> <dd> <p>The domain name is available and can be preordered.</p> </dd> <dt>DONT_KNOW</dt> <dd> <p>The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon Route 53 can return this response for a variety of reasons, for example, the registry is performing maintenance. Try again later.</p> </dd> <dt>PENDING</dt> <dd> <p>The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it usually takes just a few extra seconds. You can resubmit the request immediately.</p> </dd> <dt>RESERVED</dt> <dd> <p>The domain name has been reserved for another person or organization.</p> </dd> <dt>UNAVAILABLE</dt> <dd> <p>The domain name is not available.</p> </dd> <dt>UNAVAILABLE_PREMIUM</dt> <dd> <p>The domain name is not available.</p> </dd> <dt>UNAVAILABLE_RESTRICTED</dt> <dd> <p>The domain name is forbidden.</p> </dd> </dl>
 -- Required key: Availability
 -- @return CheckDomainAvailabilityResponse structure as a key-value pair table
 function M.CheckDomainAvailabilityResponse(args)
@@ -1722,6 +1767,45 @@ function M.CheckDomainAvailabilityResponse(args)
 		["Availability"] = args["Availability"],
 	}
 	asserts.AssertCheckDomainAvailabilityResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CheckDomainTransferabilityResponse = { ["Transferability"] = true, nil }
+
+function asserts.AssertCheckDomainTransferabilityResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CheckDomainTransferabilityResponse to be of type 'table'")
+	assert(struct["Transferability"], "Expected key Transferability to exist in table")
+	if struct["Transferability"] then asserts.AssertDomainTransferability(struct["Transferability"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CheckDomainTransferabilityResponse[k], "CheckDomainTransferabilityResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CheckDomainTransferabilityResponse
+-- <p>The CheckDomainTransferability response includes the following elements.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Transferability [DomainTransferability] <p>A complex type that contains information about whether the specified domain can be transferred to Amazon Route 53.</p>
+-- Required key: Transferability
+-- @return CheckDomainTransferabilityResponse structure as a key-value pair table
+function M.CheckDomainTransferabilityResponse(args)
+	assert(args, "You must provide an argument table when creating CheckDomainTransferabilityResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Transferability"] = args["Transferability"],
+	}
+	asserts.AssertCheckDomainTransferabilityResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1898,9 +1982,9 @@ end
 -- <p>The UpdateDomainContactPrivacy request includes the following elements.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * TechPrivacy [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
--- * AdminPrivacy [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
--- * RegistrantPrivacy [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
+-- * TechPrivacy [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify <code>false</code>, WHOIS queries return the information that you entered for the technical contact.</p>
+-- * AdminPrivacy [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify <code>false</code>, WHOIS queries return the information that you entered for the admin contact.</p>
+-- * RegistrantPrivacy [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify <code>false</code>, WHOIS queries return the information that you entered for the registrant contact (domain owner).</p>
 -- * DomainName [DomainName] <p>The name of the domain that you want to update the privacy setting for.</p>
 -- Required key: DomainName
 -- @return UpdateDomainContactPrivacyRequest structure as a key-value pair table
@@ -2111,6 +2195,43 @@ function M.ListTagsForDomainRequest(args)
 		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertListTagsForDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DomainTransferability = { ["Transferable"] = true, nil }
+
+function asserts.AssertDomainTransferability(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DomainTransferability to be of type 'table'")
+	if struct["Transferable"] then asserts.AssertTransferable(struct["Transferable"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DomainTransferability[k], "DomainTransferability contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DomainTransferability
+-- <p>A complex type that contains information about whether the specified domain can be transferred to Amazon Route 53.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Transferable [Transferable] 
+-- @return DomainTransferability structure as a key-value pair table
+function M.DomainTransferability(args)
+	assert(args, "You must provide an argument table when creating DomainTransferability")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Transferable"] = args["Transferable"],
+	}
+	asserts.AssertDomainTransferability(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2573,10 +2694,10 @@ function asserts.AssertInvalidInput(struct)
 end
 
 --- Create a structure of type InvalidInput
--- <p>The requested item is not acceptable. For example, for an OperationId it may refer to the ID of an operation that is already completed. For a domain name, it may not be a valid domain name or belong to the requester account.</p>
+-- <p>The requested item is not acceptable. For example, for an OperationId it might refer to the ID of an operation that is already completed. For a domain name, it might not be a valid domain name or belong to the requester account.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [ErrorMessage] <p>The requested item is not acceptable. For example, for an OperationId it may refer to the ID of an operation that is already completed. For a domain name, it may not be a valid domain name or belong to the requester account.</p>
+-- * message [ErrorMessage] <p>The requested item is not acceptable. For example, for an OperationId it might refer to the ID of an operation that is already completed. For a domain name, it might not be a valid domain name or belong to the requester account.</p>
 -- @return InvalidInput structure as a key-value pair table
 function M.InvalidInput(args)
 	assert(args, "You must provide an argument table when creating InvalidInput")
@@ -2713,6 +2834,17 @@ end
 --  
 function M.Reseller(str)
 	asserts.AssertReseller(str)
+	return str
+end
+
+function asserts.AssertTransferable(str)
+	assert(str)
+	assert(type(str) == "string", "Expected Transferable to be of type 'string'")
+end
+
+-- <p>Whether the domain name can be transferred to Amazon Route 53.</p> <note> <p>You can transfer only domains that have a value of <code>TRANSFERABLE</code> for <code>Transferable</code>.</p> </note> <p>Valid values:</p> <dl> <dt>TRANSFERABLE</dt> <dd> <p>The domain name can be transferred to Amazon Route 53.</p> </dd> <dt>UNTRANSFERRABLE</dt> <dd> <p>The domain name can't be transferred to Amazon Route 53.</p> </dd> <dt>DONT_KNOW</dt> <dd> <p>Reserved for future use.</p> </dd> </dl>
+function M.Transferable(str)
+	asserts.AssertTransferable(str)
 	return str
 end
 
@@ -3307,6 +3439,41 @@ end
 --
 -- OPERATIONS
 --
+--- Call CheckDomainTransferability asynchronously, invoking a callback when done
+-- @param CheckDomainTransferabilityRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.CheckDomainTransferabilityAsync(CheckDomainTransferabilityRequest, cb)
+	assert(CheckDomainTransferabilityRequest, "You must provide a CheckDomainTransferabilityRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.CheckDomainTransferability",
+	}
+	for header,value in pairs(CheckDomainTransferabilityRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", CheckDomainTransferabilityRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call CheckDomainTransferability synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CheckDomainTransferabilityRequest
+-- @return response
+-- @return error_message
+function M.CheckDomainTransferabilitySync(CheckDomainTransferabilityRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CheckDomainTransferabilityAsync(CheckDomainTransferabilityRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call ResendContactReachabilityEmail asynchronously, invoking a callback when done
 -- @param ResendContactReachabilityEmailRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -3552,36 +3719,36 @@ function M.UpdateTagsForDomainSync(UpdateTagsForDomainRequest, ...)
 	return coroutine.yield()
 end
 
---- Call EnableDomainAutoRenew asynchronously, invoking a callback when done
--- @param EnableDomainAutoRenewRequest
+--- Call CheckDomainAvailability asynchronously, invoking a callback when done
+-- @param CheckDomainAvailabilityRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.EnableDomainAutoRenewAsync(EnableDomainAutoRenewRequest, cb)
-	assert(EnableDomainAutoRenewRequest, "You must provide a EnableDomainAutoRenewRequest")
+function M.CheckDomainAvailabilityAsync(CheckDomainAvailabilityRequest, cb)
+	assert(CheckDomainAvailabilityRequest, "You must provide a CheckDomainAvailabilityRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.EnableDomainAutoRenew",
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.CheckDomainAvailability",
 	}
-	for header,value in pairs(EnableDomainAutoRenewRequest.headers) do
+	for header,value in pairs(CheckDomainAvailabilityRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", EnableDomainAutoRenewRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", CheckDomainAvailabilityRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call EnableDomainAutoRenew synchronously, returning when done
+--- Call CheckDomainAvailability synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param EnableDomainAutoRenewRequest
+-- @param CheckDomainAvailabilityRequest
 -- @return response
 -- @return error_message
-function M.EnableDomainAutoRenewSync(EnableDomainAutoRenewRequest, ...)
+function M.CheckDomainAvailabilitySync(CheckDomainAvailabilityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EnableDomainAutoRenewAsync(EnableDomainAutoRenewRequest, function(response, error_message)
+	M.CheckDomainAvailabilityAsync(CheckDomainAvailabilityRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3867,36 +4034,36 @@ function M.GetDomainDetailSync(GetDomainDetailRequest, ...)
 	return coroutine.yield()
 end
 
---- Call CheckDomainAvailability asynchronously, invoking a callback when done
--- @param CheckDomainAvailabilityRequest
+--- Call EnableDomainAutoRenew asynchronously, invoking a callback when done
+-- @param EnableDomainAutoRenewRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.CheckDomainAvailabilityAsync(CheckDomainAvailabilityRequest, cb)
-	assert(CheckDomainAvailabilityRequest, "You must provide a CheckDomainAvailabilityRequest")
+function M.EnableDomainAutoRenewAsync(EnableDomainAutoRenewRequest, cb)
+	assert(EnableDomainAutoRenewRequest, "You must provide a EnableDomainAutoRenewRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.CheckDomainAvailability",
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.EnableDomainAutoRenew",
 	}
-	for header,value in pairs(CheckDomainAvailabilityRequest.headers) do
+	for header,value in pairs(EnableDomainAutoRenewRequest.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", CheckDomainAvailabilityRequest, headers, settings, cb)
+		request_handler(settings.uri, "/", EnableDomainAutoRenewRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call CheckDomainAvailability synchronously, returning when done
+--- Call EnableDomainAutoRenew synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param CheckDomainAvailabilityRequest
+-- @param EnableDomainAutoRenewRequest
 -- @return response
 -- @return error_message
-function M.CheckDomainAvailabilitySync(CheckDomainAvailabilityRequest, ...)
+function M.EnableDomainAutoRenewSync(EnableDomainAutoRenewRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CheckDomainAvailabilityAsync(CheckDomainAvailabilityRequest, function(response, error_message)
+	M.EnableDomainAutoRenewAsync(EnableDomainAutoRenewRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

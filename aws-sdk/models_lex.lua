@@ -73,43 +73,6 @@ function M.GetBotChannelAssociationRequest(args)
     }
 end
 
-keys.BadRequestException = { ["message"] = true, nil }
-
-function asserts.AssertBadRequestException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected BadRequestException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.BadRequestException[k], "BadRequestException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type BadRequestException
--- <p>The request is not well formed. For example, a value is invalid or a required field is missing. Check the field values, and try again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [String] 
--- @return BadRequestException structure as a key-value pair table
-function M.BadRequestException(args)
-	assert(args, "You must provide an argument table when creating BadRequestException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertBadRequestException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.GetBuiltinSlotTypesResponse = { ["nextToken"] = true, ["slotTypes"] = true, nil }
 
 function asserts.AssertGetBuiltinSlotTypesResponse(struct)
@@ -168,7 +131,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * messages [MessageList] <p>A collection of message objects.</p>
--- * responseCard [ResponseCard] <p> At runtime, if the client is using the API, Amazon Lex includes the response card in the response. It substitutes all of the session attributes and slot values for placeholders in the response card. </p>
+-- * responseCard [ResponseCard] <p> At runtime, if the client is using the <a href="http://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html">PostText</a> API, Amazon Lex includes the response card in the response. It substitutes all of the session attributes and slot values for placeholders in the response card. </p>
 -- Required key: messages
 -- @return Statement structure as a key-value pair table
 function M.Statement(args)
@@ -417,15 +380,72 @@ function M.Intent(args)
     }
 end
 
-keys.GetBotChannelAssociationResponse = { ["name"] = true, ["botConfiguration"] = true, ["botAlias"] = true, ["createdDate"] = true, ["type"] = true, ["botName"] = true, ["description"] = true, nil }
+keys.GetImportResponse = { ["name"] = true, ["resourceType"] = true, ["importId"] = true, ["importStatus"] = true, ["mergeStrategy"] = true, ["createdDate"] = true, ["failureReason"] = true, nil }
+
+function asserts.AssertGetImportResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetImportResponse to be of type 'table'")
+	if struct["name"] then asserts.AssertName(struct["name"]) end
+	if struct["resourceType"] then asserts.AssertResourceType(struct["resourceType"]) end
+	if struct["importId"] then asserts.AssertString(struct["importId"]) end
+	if struct["importStatus"] then asserts.AssertImportStatus(struct["importStatus"]) end
+	if struct["mergeStrategy"] then asserts.AssertMergeStrategy(struct["mergeStrategy"]) end
+	if struct["createdDate"] then asserts.AssertTimestamp(struct["createdDate"]) end
+	if struct["failureReason"] then asserts.AssertStringList(struct["failureReason"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetImportResponse[k], "GetImportResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetImportResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [Name] <p>The name given to the import job.</p>
+-- * resourceType [ResourceType] <p>The type of resource imported.</p>
+-- * importId [String] <p>The identifier for the specific import job.</p>
+-- * importStatus [ImportStatus] <p>The status of the import job. If the status is <code>FAILED</code>, you can get the reason for the failure from the <code>failureReason</code> field.</p>
+-- * mergeStrategy [MergeStrategy] <p>The action taken when there was a conflict between an existing resource and a resource in the import file.</p>
+-- * createdDate [Timestamp] <p>A timestamp for the date and time that the import job was created.</p>
+-- * failureReason [StringList] <p>A string that describes why an import job failed to complete.</p>
+-- @return GetImportResponse structure as a key-value pair table
+function M.GetImportResponse(args)
+	assert(args, "You must provide an argument table when creating GetImportResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["name"] = args["name"],
+		["resourceType"] = args["resourceType"],
+		["importId"] = args["importId"],
+		["importStatus"] = args["importStatus"],
+		["mergeStrategy"] = args["mergeStrategy"],
+		["createdDate"] = args["createdDate"],
+		["failureReason"] = args["failureReason"],
+	}
+	asserts.AssertGetImportResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetBotChannelAssociationResponse = { ["status"] = true, ["name"] = true, ["botConfiguration"] = true, ["botAlias"] = true, ["createdDate"] = true, ["failureReason"] = true, ["type"] = true, ["botName"] = true, ["description"] = true, nil }
 
 function asserts.AssertGetBotChannelAssociationResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetBotChannelAssociationResponse to be of type 'table'")
+	if struct["status"] then asserts.AssertChannelStatus(struct["status"]) end
 	if struct["name"] then asserts.AssertBotChannelName(struct["name"]) end
 	if struct["botConfiguration"] then asserts.AssertChannelConfigurationMap(struct["botConfiguration"]) end
 	if struct["botAlias"] then asserts.AssertAliasName(struct["botAlias"]) end
 	if struct["createdDate"] then asserts.AssertTimestamp(struct["createdDate"]) end
+	if struct["failureReason"] then asserts.AssertString(struct["failureReason"]) end
 	if struct["type"] then asserts.AssertChannelType(struct["type"]) end
 	if struct["botName"] then asserts.AssertBotName(struct["botName"]) end
 	if struct["description"] then asserts.AssertDescription(struct["description"]) end
@@ -438,10 +458,12 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * status [ChannelStatus] <p>The status of the bot channel. </p> <ul> <li> <p> <code>CREATED</code> - The channel has been created and is ready for use.</p> </li> <li> <p> <code>IN_PROGRESS</code> - Channel creation is in progress.</p> </li> <li> <p> <code>FAILED</code> - There was an error creating the channel. For information about the reason for the failure, see the <code>failureReason</code> field.</p> </li> </ul>
 -- * name [BotChannelName] <p>The name of the association between the bot and the channel.</p>
 -- * botConfiguration [ChannelConfigurationMap] <p>Provides information that the messaging platform needs to communicate with the Amazon Lex bot.</p>
 -- * botAlias [AliasName] <p>An alias pointing to the specific version of the Amazon Lex bot to which this association is being made.</p>
 -- * createdDate [Timestamp] <p>The date that the association between the bot and the channel was created.</p>
+-- * failureReason [String] <p>If <code>status</code> is <code>FAILED</code>, Amazon Lex provides the reason that it failed to create the association.</p>
 -- * type [ChannelType] <p>The type of the messaging platform.</p>
 -- * botName [BotName] <p>The name of the Amazon Lex bot.</p>
 -- * description [Description] <p>A description of the association between the bot and the channel.</p>
@@ -455,10 +477,12 @@ function M.GetBotChannelAssociationResponse(args)
     local header_args = { 
     }
 	local all_args = { 
+		["status"] = args["status"],
 		["name"] = args["name"],
 		["botConfiguration"] = args["botConfiguration"],
 		["botAlias"] = args["botAlias"],
 		["createdDate"] = args["createdDate"],
+		["failureReason"] = args["failureReason"],
 		["type"] = args["type"],
 		["botName"] = args["botName"],
 		["description"] = args["description"],
@@ -522,6 +546,55 @@ function M.GetBuiltinSlotTypesRequest(args)
     }
 end
 
+keys.StartImportRequest = { ["resourceType"] = true, ["payload"] = true, ["mergeStrategy"] = true, nil }
+
+function asserts.AssertStartImportRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected StartImportRequest to be of type 'table'")
+	assert(struct["payload"], "Expected key payload to exist in table")
+	assert(struct["resourceType"], "Expected key resourceType to exist in table")
+	assert(struct["mergeStrategy"], "Expected key mergeStrategy to exist in table")
+	if struct["resourceType"] then asserts.AssertResourceType(struct["resourceType"]) end
+	if struct["payload"] then asserts.AssertBlob(struct["payload"]) end
+	if struct["mergeStrategy"] then asserts.AssertMergeStrategy(struct["mergeStrategy"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.StartImportRequest[k], "StartImportRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type StartImportRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceType [ResourceType] <p>Specifies the type of resource to export. Each resource also exports any resources that it depends on. </p> <ul> <li> <p>A bot exports dependent intents.</p> </li> <li> <p>An intent exports dependent slot types.</p> </li> </ul>
+-- * payload [Blob] <p>A zip archive in binary format. The archive should contain one file, a JSON file containing the resource to import. The resource should match the type specified in the <code>resourceType</code> field.</p>
+-- * mergeStrategy [MergeStrategy] <p>Specifies the action that the <code>StartImport</code> operation should take when there is an existing resource with the same name.</p> <ul> <li> <p>FAIL_ON_CONFLICT - The import operation is stopped on the first conflict between a resource in the import file and an existing resource. The name of the resource causing the conflict is in the <code>failureReason</code> field of the response to the <code>GetImport</code> operation.</p> <p>OVERWRITE_LATEST - The import operation proceeds even if there is a conflict with an existing resource. The $LASTEST version of the existing resource is overwritten with the data from the import file.</p> </li> </ul>
+-- Required key: payload
+-- Required key: resourceType
+-- Required key: mergeStrategy
+-- @return StartImportRequest structure as a key-value pair table
+function M.StartImportRequest(args)
+	assert(args, "You must provide an argument table when creating StartImportRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["resourceType"] = args["resourceType"],
+		["payload"] = args["payload"],
+		["mergeStrategy"] = args["mergeStrategy"],
+	}
+	asserts.AssertStartImportRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.BuiltinIntentMetadata = { ["supportedLocales"] = true, ["signature"] = true, nil }
 
 function asserts.AssertBuiltinIntentMetadata(struct)
@@ -554,6 +627,58 @@ function M.BuiltinIntentMetadata(args)
 		["signature"] = args["signature"],
 	}
 	asserts.AssertBuiltinIntentMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.StartImportResponse = { ["name"] = true, ["resourceType"] = true, ["importId"] = true, ["importStatus"] = true, ["mergeStrategy"] = true, ["createdDate"] = true, nil }
+
+function asserts.AssertStartImportResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected StartImportResponse to be of type 'table'")
+	if struct["name"] then asserts.AssertName(struct["name"]) end
+	if struct["resourceType"] then asserts.AssertResourceType(struct["resourceType"]) end
+	if struct["importId"] then asserts.AssertString(struct["importId"]) end
+	if struct["importStatus"] then asserts.AssertImportStatus(struct["importStatus"]) end
+	if struct["mergeStrategy"] then asserts.AssertMergeStrategy(struct["mergeStrategy"]) end
+	if struct["createdDate"] then asserts.AssertTimestamp(struct["createdDate"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.StartImportResponse[k], "StartImportResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type StartImportResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [Name] <p>The name given to the import job.</p>
+-- * resourceType [ResourceType] <p>The type of resource to import.</p>
+-- * importId [String] <p>The identifier for the specific import job.</p>
+-- * importStatus [ImportStatus] <p>The status of the import job. If the status is <code>FAILED</code>, you can get the reason for the failure using the <code>GetImport</code> operation.</p>
+-- * mergeStrategy [MergeStrategy] <p>The action to take when there is a merge conflict.</p>
+-- * createdDate [Timestamp] <p>A timestamp for the date and time that the import job was requested.</p>
+-- @return StartImportResponse structure as a key-value pair table
+function M.StartImportResponse(args)
+	assert(args, "You must provide an argument table when creating StartImportResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["name"] = args["name"],
+		["resourceType"] = args["resourceType"],
+		["importId"] = args["importId"],
+		["importStatus"] = args["importStatus"],
+		["mergeStrategy"] = args["mergeStrategy"],
+		["createdDate"] = args["createdDate"],
+	}
+	asserts.AssertStartImportResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -617,15 +742,17 @@ function M.PutBotAliasResponse(args)
     }
 end
 
-keys.BotChannelAssociation = { ["name"] = true, ["botConfiguration"] = true, ["botAlias"] = true, ["createdDate"] = true, ["type"] = true, ["botName"] = true, ["description"] = true, nil }
+keys.BotChannelAssociation = { ["status"] = true, ["name"] = true, ["botConfiguration"] = true, ["botAlias"] = true, ["createdDate"] = true, ["failureReason"] = true, ["type"] = true, ["botName"] = true, ["description"] = true, nil }
 
 function asserts.AssertBotChannelAssociation(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BotChannelAssociation to be of type 'table'")
+	if struct["status"] then asserts.AssertChannelStatus(struct["status"]) end
 	if struct["name"] then asserts.AssertBotChannelName(struct["name"]) end
 	if struct["botConfiguration"] then asserts.AssertChannelConfigurationMap(struct["botConfiguration"]) end
 	if struct["botAlias"] then asserts.AssertAliasName(struct["botAlias"]) end
 	if struct["createdDate"] then asserts.AssertTimestamp(struct["createdDate"]) end
+	if struct["failureReason"] then asserts.AssertString(struct["failureReason"]) end
 	if struct["type"] then asserts.AssertChannelType(struct["type"]) end
 	if struct["botName"] then asserts.AssertBotName(struct["botName"]) end
 	if struct["description"] then asserts.AssertDescription(struct["description"]) end
@@ -638,10 +765,12 @@ end
 -- <p>Represents an association between an Amazon Lex bot and an external messaging platform.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * status [ChannelStatus] <p>The status of the bot channel. </p> <ul> <li> <p> <code>CREATED</code> - The channel has been created and is ready for use.</p> </li> <li> <p> <code>IN_PROGRESS</code> - Channel creation is in progress.</p> </li> <li> <p> <code>FAILED</code> - There was an error creating the channel. For information about the reason for the failure, see the <code>failureReason</code> field.</p> </li> </ul>
 -- * name [BotChannelName] <p>The name of the association between the bot and the channel. </p>
 -- * botConfiguration [ChannelConfigurationMap] <p>Provides information necessary to communicate with the messaging platform. </p>
 -- * botAlias [AliasName] <p>An alias pointing to the specific version of the Amazon Lex bot to which this association is being made. </p>
 -- * createdDate [Timestamp] <p>The date that the association between the Amazon Lex bot and the channel was created. </p>
+-- * failureReason [String] <p>If <code>status</code> is <code>FAILED</code>, Amazon Lex provides the reason that it failed to create the association.</p>
 -- * type [ChannelType] <p>Specifies the type of association by indicating the type of channel being established between the Amazon Lex bot and the external messaging platform.</p>
 -- * botName [BotName] <p>The name of the Amazon Lex bot to which this association is being made. </p> <note> <p>Currently, Amazon Lex supports associations with Facebook and Slack, and Twilio.</p> </note>
 -- * description [Description] <p>A text description of the association you are creating. </p>
@@ -655,10 +784,12 @@ function M.BotChannelAssociation(args)
     local header_args = { 
     }
 	local all_args = { 
+		["status"] = args["status"],
 		["name"] = args["name"],
 		["botConfiguration"] = args["botConfiguration"],
 		["botAlias"] = args["botAlias"],
 		["createdDate"] = args["createdDate"],
+		["failureReason"] = args["failureReason"],
 		["type"] = args["type"],
 		["botName"] = args["botName"],
 		["description"] = args["description"],
@@ -734,7 +865,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * userId [UserId] <p> The unique identifier for the user that made the utterances. This is the user ID that was sent in the or operation request that contained the utterance.</p>
+-- * userId [UserId] <p> The unique identifier for the user that made the utterances. This is the user ID that was sent in the <a href="http://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostContent.html">PostContent</a> or <a href="http://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html">PostText</a> operation request that contained the utterance.</p>
 -- * botName [BotName] <p>The name of the bot that stored the utterances.</p>
 -- Required key: botName
 -- Required key: userId
@@ -841,19 +972,19 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * status [Status] <p>The status of the bot. If the bot is ready to run, the status is <code>READY</code>. If there was a problem with building the bot, the status is <code>FAILED</code> and the <code>failureReason</code> explains why the bot did not build. If the bot was saved but not built, the status is <code>NOT BUILT</code>.</p>
--- * intents [IntentList] <p>An array of <code>intent</code> objects. For more information, see .</p>
+-- * intents [IntentList] <p>An array of <code>intent</code> objects. For more information, see <a>PutBot</a>.</p>
 -- * name [BotName] <p>The name of the bot.</p>
 -- * locale [Locale] <p> The target locale for the bot. </p>
 -- * checksum [String] <p>Checksum of the bot used to identify a specific revision of the bot's <code>$LATEST</code> version.</p>
 -- * createdDate [Timestamp] <p>The date that the bot was created.</p>
 -- * version [Version] <p>The version of the bot. For a new bot, the version is always <code>$LATEST</code>.</p>
 -- * lastUpdatedDate [Timestamp] <p>The date that the bot was updated. When you create a resource, the creation date and last updated date are the same. </p>
--- * abortStatement [Statement] <p>The message that Amazon Lex returns when the user elects to end the conversation without completing it. For more information, see .</p>
--- * clarificationPrompt [Prompt] <p>The message Amazon Lex uses when it doesn't understand the user's request. For more information, see . </p>
--- * voiceId [String] <p>The Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. For more information, see .</p>
+-- * abortStatement [Statement] <p>The message that Amazon Lex returns when the user elects to end the conversation without completing it. For more information, see <a>PutBot</a>.</p>
+-- * clarificationPrompt [Prompt] <p>The message Amazon Lex uses when it doesn't understand the user's request. For more information, see <a>PutBot</a>. </p>
+-- * voiceId [String] <p>The Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. For more information, see <a>PutBot</a>.</p>
 -- * failureReason [String] <p>If <code>status</code> is <code>FAILED</code>, Amazon Lex explains why it failed to build the bot.</p>
 -- * childDirected [Boolean] <p>For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying <code>true</code> or <code>false</code> in the <code>childDirected</code> field. By specifying <code>true</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying <code>false</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is not</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the <code>childDirected</code> field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA.</p> <p>If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <a href="https://aws.amazon.com/lex/faqs#data-security">Amazon Lex FAQ.</a> </p>
--- * idleSessionTTLInSeconds [SessionTTL] <p>The maximum time in seconds that Amazon Lex retains the data gathered in a conversation. For more information, see .</p>
+-- * idleSessionTTLInSeconds [SessionTTL] <p>The maximum time in seconds that Amazon Lex retains the data gathered in a conversation. For more information, see <a>PutBot</a>.</p>
 -- * description [Description] <p>A description of the bot.</p>
 -- @return GetBotResponse structure as a key-value pair table
 function M.GetBotResponse(args)
@@ -906,7 +1037,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * intents [IntentMetadataList] <p>An array of <code>Intent</code> objects. For more information, see .</p>
+-- * intents [IntentMetadataList] <p>An array of <code>Intent</code> objects. For more information, see <a>PutBot</a>.</p>
 -- * nextToken [NextToken] <p>If the response is truncated, the response includes a pagination token that you can specify in your next request to fetch the next page of intents. </p>
 -- @return GetIntentsResponse structure as a key-value pair table
 function M.GetIntentsResponse(args)
@@ -1047,7 +1178,7 @@ function M.Slot(args)
     }
 end
 
-keys.PutIntentResponse = { ["dialogCodeHook"] = true, ["confirmationPrompt"] = true, ["followUpPrompt"] = true, ["name"] = true, ["checksum"] = true, ["conclusionStatement"] = true, ["parentIntentSignature"] = true, ["version"] = true, ["rejectionStatement"] = true, ["createdDate"] = true, ["lastUpdatedDate"] = true, ["sampleUtterances"] = true, ["slots"] = true, ["fulfillmentActivity"] = true, ["description"] = true, nil }
+keys.PutIntentResponse = { ["dialogCodeHook"] = true, ["confirmationPrompt"] = true, ["followUpPrompt"] = true, ["name"] = true, ["checksum"] = true, ["conclusionStatement"] = true, ["parentIntentSignature"] = true, ["version"] = true, ["createVersion"] = true, ["rejectionStatement"] = true, ["createdDate"] = true, ["lastUpdatedDate"] = true, ["sampleUtterances"] = true, ["slots"] = true, ["fulfillmentActivity"] = true, ["description"] = true, nil }
 
 function asserts.AssertPutIntentResponse(struct)
 	assert(struct)
@@ -1060,6 +1191,7 @@ function asserts.AssertPutIntentResponse(struct)
 	if struct["conclusionStatement"] then asserts.AssertStatement(struct["conclusionStatement"]) end
 	if struct["parentIntentSignature"] then asserts.AssertBuiltinIntentSignature(struct["parentIntentSignature"]) end
 	if struct["version"] then asserts.AssertVersion(struct["version"]) end
+	if struct["createVersion"] then asserts.AssertBoolean(struct["createVersion"]) end
 	if struct["rejectionStatement"] then asserts.AssertStatement(struct["rejectionStatement"]) end
 	if struct["createdDate"] then asserts.AssertTimestamp(struct["createdDate"]) end
 	if struct["lastUpdatedDate"] then asserts.AssertTimestamp(struct["lastUpdatedDate"]) end
@@ -1084,6 +1216,7 @@ end
 -- * conclusionStatement [Statement] <p>After the Lambda function specified in the<code>fulfillmentActivity</code>intent fulfills the intent, Amazon Lex conveys this statement to the user.</p>
 -- * parentIntentSignature [BuiltinIntentSignature] <p>A unique identifier for the built-in intent that this intent is based on.</p>
 -- * version [Version] <p>The version of the intent. For a new intent, the version is always <code>$LATEST</code>.</p>
+-- * createVersion [Boolean] 
 -- * rejectionStatement [Statement] <p>If the user answers "no" to the question defined in <code>confirmationPrompt</code> Amazon Lex responds with this statement to acknowledge that the intent was canceled. </p>
 -- * createdDate [Timestamp] <p>The date that the intent was created.</p>
 -- * lastUpdatedDate [Timestamp] <p>The date that the intent was updated. When you create a resource, the creation date and last update dates are the same.</p>
@@ -1109,6 +1242,7 @@ function M.PutIntentResponse(args)
 		["conclusionStatement"] = args["conclusionStatement"],
 		["parentIntentSignature"] = args["parentIntentSignature"],
 		["version"] = args["version"],
+		["createVersion"] = args["createVersion"],
 		["rejectionStatement"] = args["rejectionStatement"],
 		["createdDate"] = args["createdDate"],
 		["lastUpdatedDate"] = args["lastUpdatedDate"],
@@ -1174,39 +1308,38 @@ function M.GetIntentVersionsRequest(args)
     }
 end
 
-keys.LimitExceededException = { ["message"] = true, ["retryAfterSeconds"] = true, nil }
+keys.GetImportRequest = { ["importId"] = true, nil }
 
-function asserts.AssertLimitExceededException(struct)
+function asserts.AssertGetImportRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
-	if struct["retryAfterSeconds"] then asserts.AssertString(struct["retryAfterSeconds"]) end
+	assert(type(struct) == "table", "Expected GetImportRequest to be of type 'table'")
+	assert(struct["importId"], "Expected key importId to exist in table")
+	if struct["importId"] then asserts.AssertString(struct["importId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.GetImportRequest[k], "GetImportRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type LimitExceededException
--- <p>The request exceeded a limit. Try your request again.</p>
+--- Create a structure of type GetImportRequest
+--  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * message [String] 
--- * retryAfterSeconds [String] 
--- @return LimitExceededException structure as a key-value pair table
-function M.LimitExceededException(args)
-	assert(args, "You must provide an argument table when creating LimitExceededException")
+-- * importId [String] <p>The identifier of the import job information to return.</p>
+-- Required key: importId
+-- @return GetImportRequest structure as a key-value pair table
+function M.GetImportRequest(args)
+	assert(args, "You must provide an argument table when creating GetImportRequest")
     local query_args = { 
     }
     local uri_args = { 
+        ["{importId}"] = args["importId"],
     }
     local header_args = { 
-        ["Retry-After"] = args["retryAfterSeconds"],
     }
 	local all_args = { 
-		["message"] = args["message"],
-		["retryAfterSeconds"] = args["retryAfterSeconds"],
+		["importId"] = args["importId"],
 	}
-	asserts.AssertLimitExceededException(all_args)
+	asserts.AssertGetImportRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1259,52 +1392,6 @@ function M.BotMetadata(args)
 		["description"] = args["description"],
 	}
 	asserts.AssertBotMetadata(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DeleteBotAliasRequest = { ["name"] = true, ["botName"] = true, nil }
-
-function asserts.AssertDeleteBotAliasRequest(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteBotAliasRequest to be of type 'table'")
-	assert(struct["name"], "Expected key name to exist in table")
-	assert(struct["botName"], "Expected key botName to exist in table")
-	if struct["name"] then asserts.AssertAliasName(struct["name"]) end
-	if struct["botName"] then asserts.AssertBotName(struct["botName"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DeleteBotAliasRequest[k], "DeleteBotAliasRequest contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DeleteBotAliasRequest
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * name [AliasName] <p>The name of the alias to delete. The name is case sensitive. </p>
--- * botName [BotName] <p>The name of the bot that the alias points to.</p>
--- Required key: name
--- Required key: botName
--- @return DeleteBotAliasRequest structure as a key-value pair table
-function M.DeleteBotAliasRequest(args)
-	assert(args, "You must provide an argument table when creating DeleteBotAliasRequest")
-    local query_args = { 
-    }
-    local uri_args = { 
-        ["{name}"] = args["name"],
-        ["{botName}"] = args["botName"],
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["name"] = args["name"],
-		["botName"] = args["botName"],
-	}
-	asserts.AssertDeleteBotAliasRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1377,7 +1464,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * version [NumericalVersion] <p>The version of the bot to delete. You cannot delete the <code>$LATEST</code> version of the bot. To delete the <code>$LATEST</code> version, use the operation.</p>
+-- * version [NumericalVersion] <p>The version of the bot to delete. You cannot delete the <code>$LATEST</code> version of the bot. To delete the <code>$LATEST</code> version, use the <a>DeleteBot</a> operation.</p>
 -- * name [BotName] <p>The name of the bot.</p>
 -- Required key: name
 -- Required key: version
@@ -1397,43 +1484,6 @@ function M.DeleteBotVersionRequest(args)
 		["name"] = args["name"],
 	}
 	asserts.AssertDeleteBotVersionRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.NotFoundException = { ["message"] = true, nil }
-
-function asserts.AssertNotFoundException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected NotFoundException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.NotFoundException[k], "NotFoundException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type NotFoundException
--- <p>The resource specified in the request was not found. Check the resource and try again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [String] 
--- @return NotFoundException structure as a key-value pair table
-function M.NotFoundException(args)
-	assert(args, "You must provide an argument table when creating NotFoundException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertNotFoundException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1628,7 +1678,7 @@ function M.GetSlotTypeVersionsRequest(args)
     }
 end
 
-keys.GetSlotTypeResponse = { ["name"] = true, ["enumerationValues"] = true, ["checksum"] = true, ["version"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["description"] = true, nil }
+keys.GetSlotTypeResponse = { ["name"] = true, ["enumerationValues"] = true, ["checksum"] = true, ["version"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["valueSelectionStrategy"] = true, ["description"] = true, nil }
 
 function asserts.AssertGetSlotTypeResponse(struct)
 	assert(struct)
@@ -1639,6 +1689,7 @@ function asserts.AssertGetSlotTypeResponse(struct)
 	if struct["version"] then asserts.AssertVersion(struct["version"]) end
 	if struct["lastUpdatedDate"] then asserts.AssertTimestamp(struct["lastUpdatedDate"]) end
 	if struct["createdDate"] then asserts.AssertTimestamp(struct["createdDate"]) end
+	if struct["valueSelectionStrategy"] then asserts.AssertSlotValueSelectionStrategy(struct["valueSelectionStrategy"]) end
 	if struct["description"] then asserts.AssertDescription(struct["description"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.GetSlotTypeResponse[k], "GetSlotTypeResponse contains unknown key " .. tostring(k))
@@ -1655,6 +1706,7 @@ end
 -- * version [Version] <p>The version of the slot type.</p>
 -- * lastUpdatedDate [Timestamp] <p>The date that the slot type was updated. When you create a resource, the creation date and last update date are the same.</p>
 -- * createdDate [Timestamp] <p>The date that the slot type was created.</p>
+-- * valueSelectionStrategy [SlotValueSelectionStrategy] <p>The strategy that Amazon Lex uses to determine the value of the slot. For more information, see <a>PutSlotType</a>.</p>
 -- * description [Description] <p>A description of the slot type.</p>
 -- @return GetSlotTypeResponse structure as a key-value pair table
 function M.GetSlotTypeResponse(args)
@@ -1672,6 +1724,7 @@ function M.GetSlotTypeResponse(args)
 		["version"] = args["version"],
 		["lastUpdatedDate"] = args["lastUpdatedDate"],
 		["createdDate"] = args["createdDate"],
+		["valueSelectionStrategy"] = args["valueSelectionStrategy"],
 		["description"] = args["description"],
 	}
 	asserts.AssertGetSlotTypeResponse(all_args)
@@ -1770,46 +1823,6 @@ function M.DeleteIntentRequest(args)
     }
 end
 
-keys.ResourceInUseException = { ["exampleReference"] = true, ["referenceType"] = true, nil }
-
-function asserts.AssertResourceInUseException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceInUseException to be of type 'table'")
-	if struct["exampleReference"] then asserts.AssertResourceReference(struct["exampleReference"]) end
-	if struct["referenceType"] then asserts.AssertReferenceType(struct["referenceType"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ResourceInUseException[k], "ResourceInUseException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ResourceInUseException
--- <p>The resource that you are attempting to delete is referred to by another resource. Use this information to remove references to the resource that you are trying to delete.</p> <p>The body of the exception contains a JSON object that describes the resource.</p> <p> <code>{ "resourceType": BOT | BOTALIAS | BOTCHANNEL | INTENT,</code> </p> <p> <code>"resourceReference": {</code> </p> <p> <code>"name": <i>string</i>, "version": <i>string</i> } }</code> </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * exampleReference [ResourceReference] 
--- * referenceType [ReferenceType] 
--- @return ResourceInUseException structure as a key-value pair table
-function M.ResourceInUseException(args)
-	assert(args, "You must provide an argument table when creating ResourceInUseException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["exampleReference"] = args["exampleReference"],
-		["referenceType"] = args["referenceType"],
-	}
-	asserts.AssertResourceInUseException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
 keys.GetBuiltinIntentRequest = { ["signature"] = true, nil }
 
 function asserts.AssertGetBuiltinIntentRequest(struct)
@@ -1850,7 +1863,7 @@ function M.GetBuiltinIntentRequest(args)
     }
 end
 
-keys.Message = { ["content"] = true, ["contentType"] = true, nil }
+keys.Message = { ["content"] = true, ["contentType"] = true, ["groupNumber"] = true, nil }
 
 function asserts.AssertMessage(struct)
 	assert(struct)
@@ -1859,6 +1872,7 @@ function asserts.AssertMessage(struct)
 	assert(struct["content"], "Expected key content to exist in table")
 	if struct["content"] then asserts.AssertContentString(struct["content"]) end
 	if struct["contentType"] then asserts.AssertContentType(struct["contentType"]) end
+	if struct["groupNumber"] then asserts.AssertGroupNumber(struct["groupNumber"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Message[k], "Message contains unknown key " .. tostring(k))
 	end
@@ -1870,6 +1884,7 @@ end
 -- Valid keys:
 -- * content [ContentString] <p>The text of the message.</p>
 -- * contentType [ContentType] <p>The content type of the message string.</p>
+-- * groupNumber [GroupNumber] <p>Identifies the message group that the message belongs to. When a group is assigned to a message, Amazon Lex returns one message from each group in the response.</p>
 -- Required key: contentType
 -- Required key: content
 -- @return Message structure as a key-value pair table
@@ -1884,6 +1899,7 @@ function M.Message(args)
 	local all_args = { 
 		["content"] = args["content"],
 		["contentType"] = args["contentType"],
+		["groupNumber"] = args["groupNumber"],
 	}
 	asserts.AssertMessage(all_args)
 	return {
@@ -1923,9 +1939,9 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * dialogCodeHook [CodeHook] <p>If defined in the bot, Amazon Amazon Lex invokes this Lambda function for each user input. For more information, see . </p>
--- * confirmationPrompt [Prompt] <p>If defined in the bot, Amazon Lex uses prompt to confirm the intent before fulfilling the user's request. For more information, see . </p>
--- * followUpPrompt [FollowUpPrompt] <p>If defined in the bot, Amazon Lex uses this prompt to solicit additional user activity after the intent is fulfilled. For more information, see .</p>
+-- * dialogCodeHook [CodeHook] <p>If defined in the bot, Amazon Amazon Lex invokes this Lambda function for each user input. For more information, see <a>PutIntent</a>. </p>
+-- * confirmationPrompt [Prompt] <p>If defined in the bot, Amazon Lex uses prompt to confirm the intent before fulfilling the user's request. For more information, see <a>PutIntent</a>. </p>
+-- * followUpPrompt [FollowUpPrompt] <p>If defined in the bot, Amazon Lex uses this prompt to solicit additional user activity after the intent is fulfilled. For more information, see <a>PutIntent</a>.</p>
 -- * name [IntentName] <p>The name of the intent.</p>
 -- * checksum [String] <p>Checksum of the intent.</p>
 -- * conclusionStatement [Statement] <p>After the Lambda function specified in the <code>fulfillmentActivity</code> element fulfills the intent, Amazon Lex conveys this statement to the user.</p>
@@ -1936,7 +1952,7 @@ end
 -- * lastUpdatedDate [Timestamp] <p>The date that the intent was updated. When you create a resource, the creation date and the last updated date are the same. </p>
 -- * sampleUtterances [IntentUtteranceList] <p>An array of sample utterances configured for the intent.</p>
 -- * slots [SlotList] <p>An array of intent slots configured for the intent.</p>
--- * fulfillmentActivity [FulfillmentActivity] <p>Describes how the intent is fulfilled. For more information, see . </p>
+-- * fulfillmentActivity [FulfillmentActivity] <p>Describes how the intent is fulfilled. For more information, see <a>PutIntent</a>. </p>
 -- * description [Description] <p>A description of the intent.</p>
 -- @return GetIntentResponse structure as a key-value pair table
 function M.GetIntentResponse(args)
@@ -1973,7 +1989,7 @@ function M.GetIntentResponse(args)
     }
 end
 
-keys.PutIntentRequest = { ["dialogCodeHook"] = true, ["confirmationPrompt"] = true, ["followUpPrompt"] = true, ["name"] = true, ["checksum"] = true, ["conclusionStatement"] = true, ["parentIntentSignature"] = true, ["rejectionStatement"] = true, ["sampleUtterances"] = true, ["slots"] = true, ["fulfillmentActivity"] = true, ["description"] = true, nil }
+keys.PutIntentRequest = { ["dialogCodeHook"] = true, ["confirmationPrompt"] = true, ["followUpPrompt"] = true, ["name"] = true, ["checksum"] = true, ["conclusionStatement"] = true, ["parentIntentSignature"] = true, ["createVersion"] = true, ["rejectionStatement"] = true, ["sampleUtterances"] = true, ["slots"] = true, ["fulfillmentActivity"] = true, ["description"] = true, nil }
 
 function asserts.AssertPutIntentRequest(struct)
 	assert(struct)
@@ -1986,6 +2002,7 @@ function asserts.AssertPutIntentRequest(struct)
 	if struct["checksum"] then asserts.AssertString(struct["checksum"]) end
 	if struct["conclusionStatement"] then asserts.AssertStatement(struct["conclusionStatement"]) end
 	if struct["parentIntentSignature"] then asserts.AssertBuiltinIntentSignature(struct["parentIntentSignature"]) end
+	if struct["createVersion"] then asserts.AssertBoolean(struct["createVersion"]) end
 	if struct["rejectionStatement"] then asserts.AssertStatement(struct["rejectionStatement"]) end
 	if struct["sampleUtterances"] then asserts.AssertIntentUtteranceList(struct["sampleUtterances"]) end
 	if struct["slots"] then asserts.AssertSlotList(struct["slots"]) end
@@ -2002,15 +2019,16 @@ end
 -- Valid keys:
 -- * dialogCodeHook [CodeHook] <p> Specifies a Lambda function to invoke for each user input. You can invoke this Lambda function to personalize user interaction. </p> <p>For example, suppose your bot determines that the user is John. Your Lambda function might retrieve John's information from a backend database and prepopulate some of the values. For example, if you find that John is gluten intolerant, you might set the corresponding intent slot, <code>GlutenIntolerant</code>, to true. You might find John's phone number and set the corresponding session attribute. </p>
 -- * confirmationPrompt [Prompt] <p>Prompts the user to confirm the intent. This question should have a yes or no answer.</p> <p>Amazon Lex uses this prompt to ensure that the user acknowledges that the intent is ready for fulfillment. For example, with the <code>OrderPizza</code> intent, you might want to confirm that the order is correct before placing it. For other intents, such as intents that simply respond to user questions, you might not need to ask the user for confirmation before providing the information. </p> <note> <p>You you must provide both the <code>rejectionStatement</code> and the <code>confirmationPrompt</code>, or neither.</p> </note>
--- * followUpPrompt [FollowUpPrompt] <p>A user prompt for additional activity after an intent is fulfilled. For example, after the <code>OrderPizza</code> intent is fulfilled (your Lambda function placed an order with a pizzeria), you might prompt the user to find if they want to order a drink (assuming that you have defined an <code>OrderDrink</code> intent in your bot).</p> <note> <p>The <code>followUpPrompt</code> and <code>conclusionStatement</code> are mutually exclusive. You can specify only one. For example, your bot may not solicit both the following: </p> <p> Follow up prompt - "<code>$session.FirstName</code>, your pizza order has been placed. Would you like to order a drink or a dessert?" </p> <p> Conclusion statement - "<code>$session.FirstName</code>, your pizza order has been placed." </p> </note>
+-- * followUpPrompt [FollowUpPrompt] <p>Amazon Lex uses this prompt to solicit additional activity after fulfilling an intent. For example, after the <code>OrderPizza</code> intent is fulfilled, you might prompt the user to order a drink.</p> <p>The action that Amazon Lex takes depends on the user's response, as follows:</p> <ul> <li> <p>If the user says "Yes" it responds with the clarification prompt that is configured for the bot.</p> </li> <li> <p>if the user says "Yes" and continues with an utterance that triggers an intent it starts a conversation for the intent.</p> </li> <li> <p>If the user says "No" it responds with the rejection statement configured for the the follow-up prompt.</p> </li> <li> <p>If it doesn't recognize the utterance it repeats the follow-up prompt again.</p> </li> </ul> <p>The <code>followUpPrompt</code> field and the <code>conclusionStatement</code> field are mutually exclusive. You can specify only one. </p>
 -- * name [IntentName] <p>The name of the intent. The name is <i>not</i> case sensitive. </p> <p>The name can't match a built-in intent name, or a built-in intent name with "AMAZON." removed. For example, because there is a built-in intent called <code>AMAZON.HelpIntent</code>, you can't create a custom intent called <code>HelpIntent</code>.</p> <p>For a list of built-in intents, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
 -- * checksum [String] <p>Identifies a specific revision of the <code>$LATEST</code> version.</p> <p>When you create a new intent, leave the <code>checksum</code> field blank. If you specify a checksum you get a <code>BadRequestException</code> exception.</p> <p>When you want to update a intent, set the <code>checksum</code> field to the checksum of the most recent revision of the <code>$LATEST</code> version. If you don't specify the <code> checksum</code> field, or if the checksum does not match the <code>$LATEST</code> version, you get a <code>PreconditionFailedException</code> exception.</p>
 -- * conclusionStatement [Statement] <p> The statement that you want Amazon Lex to convey to the user after the intent is successfully fulfilled by the Lambda function. </p> <p>This element is relevant only if you provide a Lambda function in the <code>fulfillmentActivity</code>. If you return the intent to the client application, you can't specify this element.</p> <note> <p>The <code>followUpPrompt</code> and <code>conclusionStatement</code> are mutually exclusive. You can specify only one.</p> </note>
 -- * parentIntentSignature [BuiltinIntentSignature] <p>A unique identifier for the built-in intent to base this intent on. To find the signature for an intent, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
+-- * createVersion [Boolean] 
 -- * rejectionStatement [Statement] <p>When the user answers "no" to the question defined in <code>confirmationPrompt</code>, Amazon Lex responds with this statement to acknowledge that the intent was canceled. </p> <note> <p>You must provide both the <code>rejectionStatement</code> and the <code>confirmationPrompt</code>, or neither.</p> </note>
 -- * sampleUtterances [IntentUtteranceList] <p>An array of utterances (strings) that a user might say to signal the intent. For example, "I want {PizzaSize} pizza", "Order {Quantity} {PizzaSize} pizzas". </p> <p>In each utterance, a slot name is enclosed in curly braces. </p>
--- * slots [SlotList] <p>An array of intent slots. At runtime, Amazon Lex elicits required slot values from the user using prompts defined in the slots. For more information, see &lt;xref linkend="how-it-works"/&gt;. </p>
--- * fulfillmentActivity [FulfillmentActivity] <p> Describes how the intent is fulfilled. For example, after a user provides all of the information for a pizza order, <code>fulfillmentActivity</code> defines how the bot places an order with a local pizza store. </p> <p> You might configure Amazon Lex to return all of the intent information to the client application, or direct it to invoke a Lambda function that can process the intent (for example, place an order with a pizzeria). </p>
+-- * slots [SlotList] <p>An array of intent slots. At runtime, Amazon Lex elicits required slot values from the user using prompts defined in the slots. For more information, see <a>how-it-works</a>. </p>
+-- * fulfillmentActivity [FulfillmentActivity] <p>Required. Describes how the intent is fulfilled. For example, after a user provides all of the information for a pizza order, <code>fulfillmentActivity</code> defines how the bot places an order with a local pizza store. </p> <p> You might configure Amazon Lex to return all of the intent information to the client application, or direct it to invoke a Lambda function that can process the intent (for example, place an order with a pizzeria). </p>
 -- * description [Description] <p>A description of the intent.</p>
 -- Required key: name
 -- @return PutIntentRequest structure as a key-value pair table
@@ -2031,6 +2049,7 @@ function M.PutIntentRequest(args)
 		["checksum"] = args["checksum"],
 		["conclusionStatement"] = args["conclusionStatement"],
 		["parentIntentSignature"] = args["parentIntentSignature"],
+		["createVersion"] = args["createVersion"],
 		["rejectionStatement"] = args["rejectionStatement"],
 		["sampleUtterances"] = args["sampleUtterances"],
 		["slots"] = args["slots"],
@@ -2086,7 +2105,7 @@ function M.GetBotChannelAssociationsResponse(args)
     }
 end
 
-keys.PutBotResponse = { ["status"] = true, ["intents"] = true, ["name"] = true, ["locale"] = true, ["checksum"] = true, ["createdDate"] = true, ["version"] = true, ["lastUpdatedDate"] = true, ["abortStatement"] = true, ["clarificationPrompt"] = true, ["voiceId"] = true, ["failureReason"] = true, ["childDirected"] = true, ["idleSessionTTLInSeconds"] = true, ["description"] = true, nil }
+keys.PutBotResponse = { ["status"] = true, ["intents"] = true, ["name"] = true, ["locale"] = true, ["checksum"] = true, ["createdDate"] = true, ["version"] = true, ["createVersion"] = true, ["lastUpdatedDate"] = true, ["abortStatement"] = true, ["clarificationPrompt"] = true, ["voiceId"] = true, ["failureReason"] = true, ["childDirected"] = true, ["idleSessionTTLInSeconds"] = true, ["description"] = true, nil }
 
 function asserts.AssertPutBotResponse(struct)
 	assert(struct)
@@ -2098,6 +2117,7 @@ function asserts.AssertPutBotResponse(struct)
 	if struct["checksum"] then asserts.AssertString(struct["checksum"]) end
 	if struct["createdDate"] then asserts.AssertTimestamp(struct["createdDate"]) end
 	if struct["version"] then asserts.AssertVersion(struct["version"]) end
+	if struct["createVersion"] then asserts.AssertBoolean(struct["createVersion"]) end
 	if struct["lastUpdatedDate"] then asserts.AssertTimestamp(struct["lastUpdatedDate"]) end
 	if struct["abortStatement"] then asserts.AssertStatement(struct["abortStatement"]) end
 	if struct["clarificationPrompt"] then asserts.AssertPrompt(struct["clarificationPrompt"]) end
@@ -2116,19 +2136,20 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * status [Status] <p> When you send a request to create a bot with <code>processBehavior</code> set to <code>BUILD</code>, Amazon Lex sets the <code>status</code> response element to <code>BUILDING</code>. After Amazon Lex builds the bot, it sets <code>status</code> to <code>READY</code>. If Amazon Lex can't build the bot, Amazon Lex sets <code>status</code> to <code>FAILED</code>. Amazon Lex returns the reason for the failure in the <code>failureReason</code> response element. </p> <p>When you set <code>processBehavior</code>to <code>SAVE</code>, Amazon Lex sets the status code to <code>NOT BUILT</code>.</p>
--- * intents [IntentList] <p>An array of <code>Intent</code> objects. For more information, see .</p>
+-- * intents [IntentList] <p>An array of <code>Intent</code> objects. For more information, see <a>PutBot</a>.</p>
 -- * name [BotName] <p>The name of the bot.</p>
 -- * locale [Locale] <p> The target locale for the bot. </p>
 -- * checksum [String] <p>Checksum of the bot that you created.</p>
 -- * createdDate [Timestamp] <p>The date that the bot was created.</p>
 -- * version [Version] <p>The version of the bot. For a new bot, the version is always <code>$LATEST</code>.</p>
+-- * createVersion [Boolean] 
 -- * lastUpdatedDate [Timestamp] <p>The date that the bot was updated. When you create a resource, the creation date and last updated date are the same.</p>
--- * abortStatement [Statement] <p>The message that Amazon Lex uses to abort a conversation. For more information, see .</p>
--- * clarificationPrompt [Prompt] <p> The prompts that Amazon Lex uses when it doesn't understand the user's intent. For more information, see . </p>
--- * voiceId [String] <p>The Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. For more information, see .</p>
+-- * abortStatement [Statement] <p>The message that Amazon Lex uses to abort a conversation. For more information, see <a>PutBot</a>.</p>
+-- * clarificationPrompt [Prompt] <p> The prompts that Amazon Lex uses when it doesn't understand the user's intent. For more information, see <a>PutBot</a>. </p>
+-- * voiceId [String] <p>The Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. For more information, see <a>PutBot</a>.</p>
 -- * failureReason [String] <p>If <code>status</code> is <code>FAILED</code>, Amazon Lex provides the reason that it failed to build the bot.</p>
 -- * childDirected [Boolean] <p>For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying <code>true</code> or <code>false</code> in the <code>childDirected</code> field. By specifying <code>true</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying <code>false</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is not</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the <code>childDirected</code> field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA.</p> <p>If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <a href="https://aws.amazon.com/lex/faqs#data-security">Amazon Lex FAQ.</a> </p>
--- * idleSessionTTLInSeconds [SessionTTL] <p>The maximum length of time that Amazon Lex retains the data gathered in a conversation. For more information, see .</p>
+-- * idleSessionTTLInSeconds [SessionTTL] <p>The maximum length of time that Amazon Lex retains the data gathered in a conversation. For more information, see <a>PutBot</a>.</p>
 -- * description [Description] <p>A description of the bot.</p>
 -- @return PutBotResponse structure as a key-value pair table
 function M.PutBotResponse(args)
@@ -2147,6 +2168,7 @@ function M.PutBotResponse(args)
 		["checksum"] = args["checksum"],
 		["createdDate"] = args["createdDate"],
 		["version"] = args["version"],
+		["createVersion"] = args["createVersion"],
 		["lastUpdatedDate"] = args["lastUpdatedDate"],
 		["abortStatement"] = args["abortStatement"],
 		["clarificationPrompt"] = args["clarificationPrompt"],
@@ -2268,7 +2290,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * botName [BotName] <p>The name of the bot for which utterance information was returned.</p>
--- * utterances [ListsOfUtterances] <p>An array of objects, each containing a list of objects describing the utterances that were processed by your bot. The response contains a maximum of 100 <code>UtteranceData</code> objects for each version.</p>
+-- * utterances [ListsOfUtterances] <p>An array of <a>UtteranceList</a> objects, each containing a list of <a>UtteranceData</a> objects describing the utterances that were processed by your bot. The response contains a maximum of 100 <code>UtteranceData</code> objects for each version.</p>
 -- @return GetUtterancesViewResponse structure as a key-value pair table
 function M.GetUtterancesViewResponse(args)
 	assert(args, "You must provide an argument table when creating GetUtterancesViewResponse")
@@ -2392,12 +2414,13 @@ function M.BotAliasMetadata(args)
     }
 end
 
-keys.EnumerationValue = { ["value"] = true, nil }
+keys.EnumerationValue = { ["synonyms"] = true, ["value"] = true, nil }
 
 function asserts.AssertEnumerationValue(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EnumerationValue to be of type 'table'")
 	assert(struct["value"], "Expected key value to exist in table")
+	if struct["synonyms"] then asserts.AssertSynonymList(struct["synonyms"]) end
 	if struct["value"] then asserts.AssertValue(struct["value"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.EnumerationValue[k], "EnumerationValue contains unknown key " .. tostring(k))
@@ -2408,6 +2431,7 @@ end
 -- <p>Each slot type can have a set of values. Each enumeration value represents a value the slot type can take. </p> <p>For example, a pizza ordering bot could have a slot type that specifies the type of crust that the pizza should have. The slot type could include the values </p> <ul> <li> <p>thick</p> </li> <li> <p>thin</p> </li> <li> <p>stuffed</p> </li> </ul>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
+-- * synonyms [SynonymList] <p>Additional values related to the slot type value.</p>
 -- * value [Value] <p>The value of the slot type.</p>
 -- Required key: value
 -- @return EnumerationValue structure as a key-value pair table
@@ -2420,6 +2444,7 @@ function M.EnumerationValue(args)
     local header_args = { 
     }
 	local all_args = { 
+		["synonyms"] = args["synonyms"],
 		["value"] = args["value"],
 	}
 	asserts.AssertEnumerationValue(all_args)
@@ -2431,38 +2456,44 @@ function M.EnumerationValue(args)
     }
 end
 
-keys.GetSlotTypesResponse = { ["nextToken"] = true, ["slotTypes"] = true, nil }
+keys.DeleteBotAliasRequest = { ["name"] = true, ["botName"] = true, nil }
 
-function asserts.AssertGetSlotTypesResponse(struct)
+function asserts.AssertDeleteBotAliasRequest(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected GetSlotTypesResponse to be of type 'table'")
-	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
-	if struct["slotTypes"] then asserts.AssertSlotTypeMetadataList(struct["slotTypes"]) end
+	assert(type(struct) == "table", "Expected DeleteBotAliasRequest to be of type 'table'")
+	assert(struct["name"], "Expected key name to exist in table")
+	assert(struct["botName"], "Expected key botName to exist in table")
+	if struct["name"] then asserts.AssertAliasName(struct["name"]) end
+	if struct["botName"] then asserts.AssertBotName(struct["botName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.GetSlotTypesResponse[k], "GetSlotTypesResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteBotAliasRequest[k], "DeleteBotAliasRequest contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type GetSlotTypesResponse
+--- Create a structure of type DeleteBotAliasRequest
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * nextToken [NextToken] <p>If the response is truncated, it includes a pagination token that you can specify in your next request to fetch the next page of slot types.</p>
--- * slotTypes [SlotTypeMetadataList] <p>An array of objects, one for each slot type, that provides information such as the name of the slot type, the version, and a description.</p>
--- @return GetSlotTypesResponse structure as a key-value pair table
-function M.GetSlotTypesResponse(args)
-	assert(args, "You must provide an argument table when creating GetSlotTypesResponse")
+-- * name [AliasName] <p>The name of the alias to delete. The name is case sensitive. </p>
+-- * botName [BotName] <p>The name of the bot that the alias points to.</p>
+-- Required key: name
+-- Required key: botName
+-- @return DeleteBotAliasRequest structure as a key-value pair table
+function M.DeleteBotAliasRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteBotAliasRequest")
     local query_args = { 
     }
     local uri_args = { 
+        ["{name}"] = args["name"],
+        ["{botName}"] = args["botName"],
     }
     local header_args = { 
     }
 	local all_args = { 
-		["nextToken"] = args["nextToken"],
-		["slotTypes"] = args["slotTypes"],
+		["name"] = args["name"],
+		["botName"] = args["botName"],
 	}
-	asserts.AssertGetSlotTypesResponse(all_args)
+	asserts.AssertDeleteBotAliasRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2471,7 +2502,7 @@ function M.GetSlotTypesResponse(args)
     }
 end
 
-keys.PutSlotTypeResponse = { ["name"] = true, ["enumerationValues"] = true, ["checksum"] = true, ["version"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["description"] = true, nil }
+keys.PutSlotTypeResponse = { ["name"] = true, ["enumerationValues"] = true, ["checksum"] = true, ["version"] = true, ["createVersion"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["valueSelectionStrategy"] = true, ["description"] = true, nil }
 
 function asserts.AssertPutSlotTypeResponse(struct)
 	assert(struct)
@@ -2480,8 +2511,10 @@ function asserts.AssertPutSlotTypeResponse(struct)
 	if struct["enumerationValues"] then asserts.AssertEnumerationValues(struct["enumerationValues"]) end
 	if struct["checksum"] then asserts.AssertString(struct["checksum"]) end
 	if struct["version"] then asserts.AssertVersion(struct["version"]) end
+	if struct["createVersion"] then asserts.AssertBoolean(struct["createVersion"]) end
 	if struct["lastUpdatedDate"] then asserts.AssertTimestamp(struct["lastUpdatedDate"]) end
 	if struct["createdDate"] then asserts.AssertTimestamp(struct["createdDate"]) end
+	if struct["valueSelectionStrategy"] then asserts.AssertSlotValueSelectionStrategy(struct["valueSelectionStrategy"]) end
 	if struct["description"] then asserts.AssertDescription(struct["description"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.PutSlotTypeResponse[k], "PutSlotTypeResponse contains unknown key " .. tostring(k))
@@ -2496,8 +2529,10 @@ end
 -- * enumerationValues [EnumerationValues] <p>A list of <code>EnumerationValue</code> objects that defines the values that the slot type can take.</p>
 -- * checksum [String] <p>Checksum of the <code>$LATEST</code> version of the slot type.</p>
 -- * version [Version] <p>The version of the slot type. For a new slot type, the version is always <code>$LATEST</code>. </p>
+-- * createVersion [Boolean] 
 -- * lastUpdatedDate [Timestamp] <p>The date that the slot type was updated. When you create a slot type, the creation date and last update date are the same.</p>
 -- * createdDate [Timestamp] <p>The date that the slot type was created.</p>
+-- * valueSelectionStrategy [SlotValueSelectionStrategy] <p>The slot resolution strategy that Amazon Lex uses to determine the value of the slot. For more information, see <a>PutSlotType</a>.</p>
 -- * description [Description] <p>A description of the slot type.</p>
 -- @return PutSlotTypeResponse structure as a key-value pair table
 function M.PutSlotTypeResponse(args)
@@ -2513,8 +2548,10 @@ function M.PutSlotTypeResponse(args)
 		["enumerationValues"] = args["enumerationValues"],
 		["checksum"] = args["checksum"],
 		["version"] = args["version"],
+		["createVersion"] = args["createVersion"],
 		["lastUpdatedDate"] = args["lastUpdatedDate"],
 		["createdDate"] = args["createdDate"],
+		["valueSelectionStrategy"] = args["valueSelectionStrategy"],
 		["description"] = args["description"],
 	}
 	asserts.AssertPutSlotTypeResponse(all_args)
@@ -2584,11 +2621,11 @@ function asserts.AssertFollowUpPrompt(struct)
 end
 
 --- Create a structure of type FollowUpPrompt
--- <p>After an intent is fulfilled, you might prompt the user for additional activity. For example, after the <code>OrderPizza</code> intent is fulfilled (the pizza order is placed with a pizzeria), you might prompt the user to find out whether the user wants to order drinks (another intent you defined in your bot).</p>
+-- <p>A prompt for additional activity after an intent is fulfilled. For example, after the <code>OrderPizza</code> intent is fulfilled, you might prompt the user to find out whether the user wants to order drinks.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * prompt [Prompt] <p>Obtains information from the user. </p>
--- * rejectionStatement [Statement] <p>If the user answers "no" to the question defined in <code>confirmationPrompt</code>, Amazon Lex responds with this statement to acknowledge that the intent was canceled. </p>
+-- * prompt [Prompt] <p>Prompts for information from the user. </p>
+-- * rejectionStatement [Statement] <p>If the user answers "no" to the question defined in the <code>prompt</code> field, Amazon Lex responds with this statement to acknowledge that the intent was canceled. </p>
 -- Required key: prompt
 -- Required key: rejectionStatement
 -- @return FollowUpPrompt structure as a key-value pair table
@@ -2645,43 +2682,6 @@ function M.BuiltinSlotTypeMetadata(args)
 		["signature"] = args["signature"],
 	}
 	asserts.AssertBuiltinSlotTypeMetadata(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InternalFailureException = { ["message"] = true, nil }
-
-function asserts.AssertInternalFailureException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InternalFailureException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.InternalFailureException[k], "InternalFailureException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InternalFailureException
--- <p>An internal Amazon Lex error occurred. Try your request again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [String] 
--- @return InternalFailureException structure as a key-value pair table
-function M.InternalFailureException(args)
-	assert(args, "You must provide an argument table when creating InternalFailureException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertInternalFailureException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2814,43 +2814,6 @@ function M.GetBotsRequest(args)
 		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertGetBotsRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ConflictException = { ["message"] = true, nil }
-
-function asserts.AssertConflictException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ConflictException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ConflictException[k], "ConflictException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ConflictException
--- <p> There was a conflict processing the request. Try your request again. </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [String] 
--- @return ConflictException structure as a key-value pair table
-function M.ConflictException(args)
-	assert(args, "You must provide an argument table when creating ConflictException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertConflictException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3119,7 +3082,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * version [NumericalVersion] <p>The version of the intent to delete. You cannot delete the <code>$LATEST</code> version of the intent. To delete the <code>$LATEST</code> version, use the operation.</p>
+-- * version [NumericalVersion] <p>The version of the intent to delete. You cannot delete the <code>$LATEST</code> version of the intent. To delete the <code>$LATEST</code> version, use the <a>DeleteIntent</a> operation.</p>
 -- * name [IntentName] <p>The name of the intent.</p>
 -- Required key: name
 -- Required key: version
@@ -3139,6 +3102,46 @@ function M.DeleteIntentVersionRequest(args)
 		["name"] = args["name"],
 	}
 	asserts.AssertDeleteIntentVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteSlotTypeRequest = { ["name"] = true, nil }
+
+function asserts.AssertDeleteSlotTypeRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteSlotTypeRequest to be of type 'table'")
+	assert(struct["name"], "Expected key name to exist in table")
+	if struct["name"] then asserts.AssertSlotTypeName(struct["name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteSlotTypeRequest[k], "DeleteSlotTypeRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteSlotTypeRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [SlotTypeName] <p>The name of the slot type. The name is case sensitive. </p>
+-- Required key: name
+-- @return DeleteSlotTypeRequest structure as a key-value pair table
+function M.DeleteSlotTypeRequest(args)
+	assert(args, "You must provide an argument table when creating DeleteSlotTypeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{name}"] = args["name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["name"] = args["name"],
+	}
+	asserts.AssertDeleteSlotTypeRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3199,7 +3202,7 @@ function M.GetBotAliasesRequest(args)
     }
 end
 
-keys.CreateSlotTypeVersionResponse = { ["name"] = true, ["enumerationValues"] = true, ["checksum"] = true, ["version"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["description"] = true, nil }
+keys.CreateSlotTypeVersionResponse = { ["name"] = true, ["enumerationValues"] = true, ["checksum"] = true, ["version"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["valueSelectionStrategy"] = true, ["description"] = true, nil }
 
 function asserts.AssertCreateSlotTypeVersionResponse(struct)
 	assert(struct)
@@ -3210,6 +3213,7 @@ function asserts.AssertCreateSlotTypeVersionResponse(struct)
 	if struct["version"] then asserts.AssertVersion(struct["version"]) end
 	if struct["lastUpdatedDate"] then asserts.AssertTimestamp(struct["lastUpdatedDate"]) end
 	if struct["createdDate"] then asserts.AssertTimestamp(struct["createdDate"]) end
+	if struct["valueSelectionStrategy"] then asserts.AssertSlotValueSelectionStrategy(struct["valueSelectionStrategy"]) end
 	if struct["description"] then asserts.AssertDescription(struct["description"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.CreateSlotTypeVersionResponse[k], "CreateSlotTypeVersionResponse contains unknown key " .. tostring(k))
@@ -3226,6 +3230,7 @@ end
 -- * version [Version] <p>The version assigned to the new slot type version. </p>
 -- * lastUpdatedDate [Timestamp] <p>The date that the slot type was updated. When you create a resource, the creation date and last update date are the same.</p>
 -- * createdDate [Timestamp] <p>The date that the slot type was created.</p>
+-- * valueSelectionStrategy [SlotValueSelectionStrategy] <p>The strategy that Amazon Lex uses to determine the value of the slot. For more information, see <a>PutSlotType</a>.</p>
 -- * description [Description] <p>A description of the slot type.</p>
 -- @return CreateSlotTypeVersionResponse structure as a key-value pair table
 function M.CreateSlotTypeVersionResponse(args)
@@ -3243,46 +3248,10 @@ function M.CreateSlotTypeVersionResponse(args)
 		["version"] = args["version"],
 		["lastUpdatedDate"] = args["lastUpdatedDate"],
 		["createdDate"] = args["createdDate"],
+		["valueSelectionStrategy"] = args["valueSelectionStrategy"],
 		["description"] = args["description"],
 	}
 	asserts.AssertCreateSlotTypeVersionResponse(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.PreconditionFailedException = { ["message"] = true, nil }
-
-function asserts.AssertPreconditionFailedException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected PreconditionFailedException to be of type 'table'")
-	if struct["message"] then asserts.AssertString(struct["message"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.PreconditionFailedException[k], "PreconditionFailedException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type PreconditionFailedException
--- <p> The checksum of the resource that you are trying to change does not match the checksum in the request. Check the resource's checksum and try again.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * message [String] 
--- @return PreconditionFailedException structure as a key-value pair table
-function M.PreconditionFailedException(args)
-	assert(args, "You must provide an argument table when creating PreconditionFailedException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["message"] = args["message"],
-	}
-	asserts.AssertPreconditionFailedException(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3348,38 +3317,38 @@ function M.PutBotAliasRequest(args)
     }
 end
 
-keys.DeleteSlotTypeRequest = { ["name"] = true, nil }
+keys.GetSlotTypesResponse = { ["nextToken"] = true, ["slotTypes"] = true, nil }
 
-function asserts.AssertDeleteSlotTypeRequest(struct)
+function asserts.AssertGetSlotTypesResponse(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteSlotTypeRequest to be of type 'table'")
-	assert(struct["name"], "Expected key name to exist in table")
-	if struct["name"] then asserts.AssertSlotTypeName(struct["name"]) end
+	assert(type(struct) == "table", "Expected GetSlotTypesResponse to be of type 'table'")
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
+	if struct["slotTypes"] then asserts.AssertSlotTypeMetadataList(struct["slotTypes"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteSlotTypeRequest[k], "DeleteSlotTypeRequest contains unknown key " .. tostring(k))
+		assert(keys.GetSlotTypesResponse[k], "GetSlotTypesResponse contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteSlotTypeRequest
+--- Create a structure of type GetSlotTypesResponse
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * name [SlotTypeName] <p>The name of the slot type. The name is case sensitive. </p>
--- Required key: name
--- @return DeleteSlotTypeRequest structure as a key-value pair table
-function M.DeleteSlotTypeRequest(args)
-	assert(args, "You must provide an argument table when creating DeleteSlotTypeRequest")
+-- * nextToken [NextToken] <p>If the response is truncated, it includes a pagination token that you can specify in your next request to fetch the next page of slot types.</p>
+-- * slotTypes [SlotTypeMetadataList] <p>An array of objects, one for each slot type, that provides information such as the name of the slot type, the version, and a description.</p>
+-- @return GetSlotTypesResponse structure as a key-value pair table
+function M.GetSlotTypesResponse(args)
+	assert(args, "You must provide an argument table when creating GetSlotTypesResponse")
     local query_args = { 
     }
     local uri_args = { 
-        ["{name}"] = args["name"],
     }
     local header_args = { 
     }
 	local all_args = { 
-		["name"] = args["name"],
+		["nextToken"] = args["nextToken"],
+		["slotTypes"] = args["slotTypes"],
 	}
-	asserts.AssertDeleteSlotTypeRequest(all_args)
+	asserts.AssertGetSlotTypesResponse(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3418,19 +3387,19 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * status [Status] <p> When you send a request to create or update a bot, Amazon Lex sets the <code>status</code> response element to <code>BUILDING</code>. After Amazon Lex builds the bot, it sets <code>status</code> to <code>READY</code>. If Amazon Lex can't build the bot, it sets <code>status</code> to <code>FAILED</code>. Amazon Lex returns the reason for the failure in the <code>failureReason</code> response element. </p>
--- * intents [IntentList] <p>An array of <code>Intent</code> objects. For more information, see .</p>
+-- * intents [IntentList] <p>An array of <code>Intent</code> objects. For more information, see <a>PutBot</a>.</p>
 -- * name [BotName] <p>The name of the bot.</p>
 -- * locale [Locale] <p> Specifies the target locale for the bot. </p>
 -- * checksum [String] <p>Checksum identifying the version of the bot that was created.</p>
 -- * createdDate [Timestamp] <p>The date when the bot version was created.</p>
 -- * version [Version] <p>The version of the bot. </p>
 -- * lastUpdatedDate [Timestamp] <p>The date when the <code>$LATEST</code> version of this bot was updated. </p>
--- * abortStatement [Statement] <p>The message that Amazon Lex uses to abort a conversation. For more information, see .</p>
--- * clarificationPrompt [Prompt] <p>The message that Amazon Lex uses when it doesn't understand the user's request. For more information, see . </p>
+-- * abortStatement [Statement] <p>The message that Amazon Lex uses to abort a conversation. For more information, see <a>PutBot</a>.</p>
+-- * clarificationPrompt [Prompt] <p>The message that Amazon Lex uses when it doesn't understand the user's request. For more information, see <a>PutBot</a>. </p>
 -- * voiceId [String] <p>The Amazon Polly voice ID that Amazon Lex uses for voice interactions with the user.</p>
 -- * failureReason [String] <p>If <code>status</code> is <code>FAILED</code>, Amazon Lex provides the reason that it failed to build the bot.</p>
 -- * childDirected [Boolean] <p>For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying <code>true</code> or <code>false</code> in the <code>childDirected</code> field. By specifying <code>true</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying <code>false</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is not</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the <code>childDirected</code> field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA.</p> <p>If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <a href="https://aws.amazon.com/lex/faqs#data-security">Amazon Lex FAQ.</a> </p>
--- * idleSessionTTLInSeconds [SessionTTL] <p>The maximum time in seconds that Amazon Lex retains the data gathered in a conversation. For more information, see .</p>
+-- * idleSessionTTLInSeconds [SessionTTL] <p>The maximum time in seconds that Amazon Lex retains the data gathered in a conversation. For more information, see <a>PutBot</a>.</p>
 -- * description [Description] <p>A description of the bot.</p>
 -- @return CreateBotVersionResponse structure as a key-value pair table
 function M.CreateBotVersionResponse(args)
@@ -3546,7 +3515,7 @@ function M.CreateIntentVersionResponse(args)
     }
 end
 
-keys.PutBotRequest = { ["intents"] = true, ["name"] = true, ["locale"] = true, ["checksum"] = true, ["processBehavior"] = true, ["childDirected"] = true, ["abortStatement"] = true, ["clarificationPrompt"] = true, ["voiceId"] = true, ["idleSessionTTLInSeconds"] = true, ["description"] = true, nil }
+keys.PutBotRequest = { ["intents"] = true, ["name"] = true, ["locale"] = true, ["checksum"] = true, ["processBehavior"] = true, ["childDirected"] = true, ["createVersion"] = true, ["abortStatement"] = true, ["clarificationPrompt"] = true, ["voiceId"] = true, ["idleSessionTTLInSeconds"] = true, ["description"] = true, nil }
 
 function asserts.AssertPutBotRequest(struct)
 	assert(struct)
@@ -3560,6 +3529,7 @@ function asserts.AssertPutBotRequest(struct)
 	if struct["checksum"] then asserts.AssertString(struct["checksum"]) end
 	if struct["processBehavior"] then asserts.AssertProcessBehavior(struct["processBehavior"]) end
 	if struct["childDirected"] then asserts.AssertBoolean(struct["childDirected"]) end
+	if struct["createVersion"] then asserts.AssertBoolean(struct["createVersion"]) end
 	if struct["abortStatement"] then asserts.AssertStatement(struct["abortStatement"]) end
 	if struct["clarificationPrompt"] then asserts.AssertPrompt(struct["clarificationPrompt"]) end
 	if struct["voiceId"] then asserts.AssertString(struct["voiceId"]) end
@@ -3578,11 +3548,12 @@ end
 -- * name [BotName] <p>The name of the bot. The name is <i>not</i> case sensitive. </p>
 -- * locale [Locale] <p> Specifies the target locale for the bot. Any intent used in the bot must be compatible with the locale of the bot. </p> <p>The default is <code>en-US</code>.</p>
 -- * checksum [String] <p>Identifies a specific revision of the <code>$LATEST</code> version.</p> <p>When you create a new bot, leave the <code>checksum</code> field blank. If you specify a checksum you get a <code>BadRequestException</code> exception.</p> <p>When you want to update a bot, set the <code>checksum</code> field to the checksum of the most recent revision of the <code>$LATEST</code> version. If you don't specify the <code> checksum</code> field, or if the checksum does not match the <code>$LATEST</code> version, you get a <code>PreconditionFailedException</code> exception.</p>
--- * processBehavior [ProcessBehavior] <p>If you set the <code>processBehavior</code> element to <code>Build</code>, Amazon Lex builds the bot so that it can be run. If you set the element to <code>Save</code>Amazon Lex saves the bot, but doesn't build it. </p> <p>If you don't specify this value, the default value is <code>Save</code>.</p>
+-- * processBehavior [ProcessBehavior] <p>If you set the <code>processBehavior</code> element to <code>BUILD</code>, Amazon Lex builds the bot so that it can be run. If you set the element to <code>SAVE</code> Amazon Lex saves the bot, but doesn't build it. </p> <p>If you don't specify this value, the default value is <code>BUILD</code>.</p>
 -- * childDirected [Boolean] <p>For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying <code>true</code> or <code>false</code> in the <code>childDirected</code> field. By specifying <code>true</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying <code>false</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is not</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the <code>childDirected</code> field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA.</p> <p>If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <a href="https://aws.amazon.com/lex/faqs#data-security">Amazon Lex FAQ.</a> </p>
+-- * createVersion [Boolean] 
 -- * abortStatement [Statement] <p>When Amazon Lex can't understand the user's input in context, it tries to elicit the information a few times. After that, Amazon Lex sends the message defined in <code>abortStatement</code> to the user, and then aborts the conversation. To set the number of retries, use the <code>valueElicitationPrompt</code> field for the slot type. </p> <p>For example, in a pizza ordering bot, Amazon Lex might ask a user "What type of crust would you like?" If the user's response is not one of the expected responses (for example, "thin crust, "deep dish," etc.), Amazon Lex tries to elicit a correct response a few more times. </p> <p>For example, in a pizza ordering application, <code>OrderPizza</code> might be one of the intents. This intent might require the <code>CrustType</code> slot. You specify the <code>valueElicitationPrompt</code> field when you create the <code>CrustType</code> slot.</p>
--- * clarificationPrompt [Prompt] <p>When Amazon Lex doesn't understand the user's intent, it uses one of these messages to get clarification. For example, "Sorry, I didn't understand. Please repeat." Amazon Lex repeats the clarification prompt the number of times specified in <code>maxAttempts</code>. If Amazon Lex still can't understand, it sends the message specified in <code>abortStatement</code>. </p>
--- * voiceId [String] <p>The Amazon Polly voice ID that you want Amazon Lex to use for voice interactions with the user. The locale configured for the voice must match the locale of the bot. For more information, see <a href="http://docs.aws.amazon.com/polly/latest/dg/API_Voice.html">Voice</a> in the <i>Amazon Polly Developer Guide</i>.</p>
+-- * clarificationPrompt [Prompt] <p>When Amazon Lex doesn't understand the user's intent, it uses this message to get clarification. To specify how many times Amazon Lex should repeate the clarification prompt, use the <code>maxAttempts</code> field. If Amazon Lex still doesn't understand, it sends the message in the <code>abortStatement</code> field. </p> <p>When you create a clarification prompt, make sure that it suggests the correct response from the user. for example, for a bot that orders pizza and drinks, you might create this clarification prompt: "What would you like to do? You can say 'Order a pizza' or 'Order a drink.'"</p>
+-- * voiceId [String] <p>The Amazon Polly voice ID that you want Amazon Lex to use for voice interactions with the user. The locale configured for the voice must match the locale of the bot. For more information, see <a href="http://docs.aws.amazon.com/polly/latest/dg/voicelist.html">Available Voices</a> in the <i>Amazon Polly Developer Guide</i>.</p>
 -- * idleSessionTTLInSeconds [SessionTTL] <p>The maximum time in seconds that Amazon Lex retains the data gathered in a conversation.</p> <p>A user interaction session remains active for the amount of time specified. If no conversation occurs during this time, the session expires and Amazon Lex deletes any data provided before the timeout.</p> <p>For example, suppose that a user chooses the OrderPizza intent, but gets sidetracked halfway through placing an order. If the user doesn't complete the order within the specified time, Amazon Lex discards the slot information that it gathered, and the user must start over.</p> <p>If you don't include the <code>idleSessionTTLInSeconds</code> element in a <code>PutBot</code> operation request, Amazon Lex uses the default value. This is also true if the request replaces an existing bot.</p> <p>The default is 300 seconds (5 minutes).</p>
 -- * description [Description] <p>A description of the bot.</p>
 -- Required key: name
@@ -3605,6 +3576,7 @@ function M.PutBotRequest(args)
 		["checksum"] = args["checksum"],
 		["processBehavior"] = args["processBehavior"],
 		["childDirected"] = args["childDirected"],
+		["createVersion"] = args["createVersion"],
 		["abortStatement"] = args["abortStatement"],
 		["clarificationPrompt"] = args["clarificationPrompt"],
 		["voiceId"] = args["voiceId"],
@@ -3612,46 +3584,6 @@ function M.PutBotRequest(args)
 		["description"] = args["description"],
 	}
 	asserts.AssertPutBotRequest(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ResourceReference = { ["version"] = true, ["name"] = true, nil }
-
-function asserts.AssertResourceReference(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceReference to be of type 'table'")
-	if struct["version"] then asserts.AssertVersion(struct["version"]) end
-	if struct["name"] then asserts.AssertName(struct["name"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ResourceReference[k], "ResourceReference contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ResourceReference
--- <p>Describes the resource that refers to the resource that you are attempting to delete. This object is returned as part of the <code>ResourceInUseException</code> exception. </p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * version [Version] <p>The version of the resource that is using the resource that you are trying to delete.</p>
--- * name [Name] <p>The name of the resource that is using the resource that you are trying to delete.</p>
--- @return ResourceReference structure as a key-value pair table
-function M.ResourceReference(args)
-	assert(args, "You must provide an argument table when creating ResourceReference")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["version"] = args["version"],
-		["name"] = args["name"],
-	}
-	asserts.AssertResourceReference(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3751,15 +3683,17 @@ function M.CreateSlotTypeVersionRequest(args)
     }
 end
 
-keys.PutSlotTypeRequest = { ["checksum"] = true, ["name"] = true, ["enumerationValues"] = true, ["description"] = true, nil }
+keys.PutSlotTypeRequest = { ["name"] = true, ["enumerationValues"] = true, ["checksum"] = true, ["createVersion"] = true, ["valueSelectionStrategy"] = true, ["description"] = true, nil }
 
 function asserts.AssertPutSlotTypeRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutSlotTypeRequest to be of type 'table'")
 	assert(struct["name"], "Expected key name to exist in table")
-	if struct["checksum"] then asserts.AssertString(struct["checksum"]) end
 	if struct["name"] then asserts.AssertSlotTypeName(struct["name"]) end
 	if struct["enumerationValues"] then asserts.AssertEnumerationValues(struct["enumerationValues"]) end
+	if struct["checksum"] then asserts.AssertString(struct["checksum"]) end
+	if struct["createVersion"] then asserts.AssertBoolean(struct["createVersion"]) end
+	if struct["valueSelectionStrategy"] then asserts.AssertSlotValueSelectionStrategy(struct["valueSelectionStrategy"]) end
 	if struct["description"] then asserts.AssertDescription(struct["description"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.PutSlotTypeRequest[k], "PutSlotTypeRequest contains unknown key " .. tostring(k))
@@ -3770,9 +3704,11 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * checksum [String] <p>Identifies a specific revision of the <code>$LATEST</code> version.</p> <p>When you create a new slot type, leave the <code>checksum</code> field blank. If you specify a checksum you get a <code>BadRequestException</code> exception.</p> <p>When you want to update a slot type, set the <code>checksum</code> field to the checksum of the most recent revision of the <code>$LATEST</code> version. If you don't specify the <code> checksum</code> field, or if the checksum does not match the <code>$LATEST</code> version, you get a <code>PreconditionFailedException</code> exception.</p>
 -- * name [SlotTypeName] <p>The name of the slot type. The name is <i>not</i> case sensitive. </p> <p>The name can't match a built-in slot type name, or a built-in slot type name with "AMAZON." removed. For example, because there is a built-in slot type called <code>AMAZON.DATE</code>, you can't create a custom slot type called <code>DATE</code>.</p> <p>For a list of built-in slot types, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference">Slot Type Reference</a> in the <i>Alexa Skills Kit</i>.</p>
--- * enumerationValues [EnumerationValues] <p>A list of <code>EnumerationValue</code> objects that defines the values that the slot type can take.</p>
+-- * enumerationValues [EnumerationValues] <p>A list of <code>EnumerationValue</code> objects that defines the values that the slot type can take. Each value can have a list of <code>synonyms</code>, which are additional values that help train the machine learning model about the values that it resolves for a slot. </p> <p>When Amazon Lex resolves a slot value, it generates a resolution list that contains up to five possible values for the slot. If you are using a Lambda function, this resolution list is passed to the function. If you are not using a Lambda function you can choose to return the value that the user entered or the first value in the resolution list as the slot value. The <code>valueSelectionStrategy</code> field indicates the option to use. </p>
+-- * checksum [String] <p>Identifies a specific revision of the <code>$LATEST</code> version.</p> <p>When you create a new slot type, leave the <code>checksum</code> field blank. If you specify a checksum you get a <code>BadRequestException</code> exception.</p> <p>When you want to update a slot type, set the <code>checksum</code> field to the checksum of the most recent revision of the <code>$LATEST</code> version. If you don't specify the <code> checksum</code> field, or if the checksum does not match the <code>$LATEST</code> version, you get a <code>PreconditionFailedException</code> exception.</p>
+-- * createVersion [Boolean] 
+-- * valueSelectionStrategy [SlotValueSelectionStrategy] <p>Determines the slot resolution strategy that Amazon Lex uses to return slot type values. The field can be set to one of the following values:</p> <ul> <li> <p> <code>ORIGINAL_VALUE</code> - Returns the value entered by the user, if the user value is similar to the slot value.</p> </li> <li> <p> <code>TOP_RESOLUTION</code> - If there is a resolution list for the slot, return the first value in the resolution list as the slot type value. If there is no resolution list, null is returned.</p> </li> </ul> <p>If you don't specify the <code>valueSelectionStrategy</code>, the default is <code>ORIGINAL_VALUE</code>.</p>
 -- * description [Description] <p>A description of the slot type.</p>
 -- Required key: name
 -- @return PutSlotTypeRequest structure as a key-value pair table
@@ -3786,12 +3722,72 @@ function M.PutSlotTypeRequest(args)
     local header_args = { 
     }
 	local all_args = { 
-		["checksum"] = args["checksum"],
 		["name"] = args["name"],
 		["enumerationValues"] = args["enumerationValues"],
+		["checksum"] = args["checksum"],
+		["createVersion"] = args["createVersion"],
+		["valueSelectionStrategy"] = args["valueSelectionStrategy"],
 		["description"] = args["description"],
 	}
 	asserts.AssertPutSlotTypeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.GetExportRequest = { ["resourceType"] = true, ["exportType"] = true, ["version"] = true, ["name"] = true, nil }
+
+function asserts.AssertGetExportRequest(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetExportRequest to be of type 'table'")
+	assert(struct["name"], "Expected key name to exist in table")
+	assert(struct["version"], "Expected key version to exist in table")
+	assert(struct["resourceType"], "Expected key resourceType to exist in table")
+	assert(struct["exportType"], "Expected key exportType to exist in table")
+	if struct["resourceType"] then asserts.AssertResourceType(struct["resourceType"]) end
+	if struct["exportType"] then asserts.AssertExportType(struct["exportType"]) end
+	if struct["version"] then asserts.AssertNumericalVersion(struct["version"]) end
+	if struct["name"] then asserts.AssertName(struct["name"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetExportRequest[k], "GetExportRequest contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetExportRequest
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceType [ResourceType] <p>The type of resource to export. </p>
+-- * exportType [ExportType] <p>The format of the exported data.</p>
+-- * version [NumericalVersion] <p>The version of the bot to export.</p>
+-- * name [Name] <p>The name of the bot to export.</p>
+-- Required key: name
+-- Required key: version
+-- Required key: resourceType
+-- Required key: exportType
+-- @return GetExportRequest structure as a key-value pair table
+function M.GetExportRequest(args)
+	assert(args, "You must provide an argument table when creating GetExportRequest")
+    local query_args = { 
+        ["resourceType"] = args["resourceType"],
+        ["exportType"] = args["exportType"],
+        ["version"] = args["version"],
+        ["name"] = args["name"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["resourceType"] = args["resourceType"],
+		["exportType"] = args["exportType"],
+		["version"] = args["version"],
+		["name"] = args["name"],
+	}
+	asserts.AssertGetExportRequest(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3908,7 +3904,7 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * version [NumericalVersion] <p>The version of the slot type to delete. You cannot delete the <code>$LATEST</code> version of the slot type. To delete the <code>$LATEST</code> version, use the operation.</p>
+-- * version [NumericalVersion] <p>The version of the slot type to delete. You cannot delete the <code>$LATEST</code> version of the slot type. To delete the <code>$LATEST</code> version, use the <a>DeleteSlotType</a> operation.</p>
 -- * name [SlotTypeName] <p>The name of the slot type.</p>
 -- Required key: name
 -- Required key: version
@@ -3952,7 +3948,7 @@ end
 -- <p>Provides a list of utterances that have been made to a specific version of your bot. The list contains a maximum of 100 utterances.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * utterances [ListOfUtterance] <p>One or more objects that contain information about the utterances that have been made to a bot. The maximum number of object is 100.</p>
+-- * utterances [ListOfUtterance] <p>One or more <a>UtteranceData</a> objects that contain information about the utterances that have been made to a bot. The maximum number of object is 100.</p>
 -- * botVersion [Version] <p>The version of the bot that processed the list.</p>
 -- @return UtteranceList structure as a key-value pair table
 function M.UtteranceList(args)
@@ -4095,6 +4091,83 @@ function M.GetBuiltinIntentsResponse(args)
     }
 end
 
+keys.GetExportResponse = { ["name"] = true, ["resourceType"] = true, ["exportType"] = true, ["version"] = true, ["exportStatus"] = true, ["url"] = true, ["failureReason"] = true, nil }
+
+function asserts.AssertGetExportResponse(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected GetExportResponse to be of type 'table'")
+	if struct["name"] then asserts.AssertName(struct["name"]) end
+	if struct["resourceType"] then asserts.AssertResourceType(struct["resourceType"]) end
+	if struct["exportType"] then asserts.AssertExportType(struct["exportType"]) end
+	if struct["version"] then asserts.AssertNumericalVersion(struct["version"]) end
+	if struct["exportStatus"] then asserts.AssertExportStatus(struct["exportStatus"]) end
+	if struct["url"] then asserts.AssertString(struct["url"]) end
+	if struct["failureReason"] then asserts.AssertString(struct["failureReason"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.GetExportResponse[k], "GetExportResponse contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type GetExportResponse
+--  
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [Name] <p>The name of the bot being exported.</p>
+-- * resourceType [ResourceType] <p>The type of the exported resource.</p>
+-- * exportType [ExportType] <p>The format of the exported data.</p>
+-- * version [NumericalVersion] <p>The version of the bot being exported.</p>
+-- * exportStatus [ExportStatus] <p>The status of the export. </p> <ul> <li> <p> <code>IN_PROGRESS</code> - The export is in progress.</p> </li> <li> <p> <code>READY</code> - The export is complete.</p> </li> <li> <p> <code>FAILED</code> - The export could not be completed.</p> </li> </ul>
+-- * url [String] <p>An S3 pre-signed URL that provides the location of the exported resource. The exported resource is a ZIP archive that contains the exported resource in JSON format. The structure of the archive may change. Your code should not rely on the archive structure.</p>
+-- * failureReason [String] <p>If <code>status</code> is <code>FAILED</code>, Amazon Lex provides the reason that it failed to export the resource.</p>
+-- @return GetExportResponse structure as a key-value pair table
+function M.GetExportResponse(args)
+	assert(args, "You must provide an argument table when creating GetExportResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["name"] = args["name"],
+		["resourceType"] = args["resourceType"],
+		["exportType"] = args["exportType"],
+		["version"] = args["version"],
+		["exportStatus"] = args["exportStatus"],
+		["url"] = args["url"],
+		["failureReason"] = args["failureReason"],
+	}
+	asserts.AssertGetExportResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+function asserts.AssertResourceType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ResourceType to be of type 'string'")
+end
+
+--  
+function M.ResourceType(str)
+	asserts.AssertResourceType(str)
+	return str
+end
+
+function asserts.AssertSlotValueSelectionStrategy(str)
+	assert(str)
+	assert(type(str) == "string", "Expected SlotValueSelectionStrategy to be of type 'string'")
+end
+
+--  
+function M.SlotValueSelectionStrategy(str)
+	asserts.AssertSlotValueSelectionStrategy(str)
+	return str
+end
+
 function asserts.AssertAliasName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AliasName to be of type 'string'")
@@ -4217,6 +4290,19 @@ function M.ResponseCard(str)
 	return str
 end
 
+function asserts.AssertNumericalVersion(str)
+	assert(str)
+	assert(type(str) == "string", "Expected NumericalVersion to be of type 'string'")
+	assert(#str <= 64, "Expected string to be max 64 characters")
+	assert(#str >= 1, "Expected string to be min 1 characters")
+end
+
+--  
+function M.NumericalVersion(str)
+	asserts.AssertNumericalVersion(str)
+	return str
+end
+
 function asserts.AssertChannelType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ChannelType to be of type 'string'")
@@ -4225,6 +4311,28 @@ end
 --  
 function M.ChannelType(str)
 	asserts.AssertChannelType(str)
+	return str
+end
+
+function asserts.AssertChannelStatus(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ChannelStatus to be of type 'string'")
+end
+
+--  
+function M.ChannelStatus(str)
+	asserts.AssertChannelStatus(str)
+	return str
+end
+
+function asserts.AssertImportStatus(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ImportStatus to be of type 'string'")
+end
+
+--  
+function M.ImportStatus(str)
+	asserts.AssertImportStatus(str)
 	return str
 end
 
@@ -4265,14 +4373,14 @@ function M.FulfillmentActivityType(str)
 	return str
 end
 
-function asserts.AssertReferenceType(str)
+function asserts.AssertExportStatus(str)
 	assert(str)
-	assert(type(str) == "string", "Expected ReferenceType to be of type 'string'")
+	assert(type(str) == "string", "Expected ExportStatus to be of type 'string'")
 end
 
 --  
-function M.ReferenceType(str)
-	asserts.AssertReferenceType(str)
+function M.ExportStatus(str)
+	asserts.AssertExportStatus(str)
 	return str
 end
 
@@ -4340,7 +4448,7 @@ end
 function asserts.AssertName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Name to be of type 'string'")
-	assert(#str <= 64, "Expected string to be max 64 characters")
+	assert(#str <= 100, "Expected string to be max 100 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
@@ -4396,6 +4504,17 @@ end
 --  
 function M.AliasNameOrListAll(str)
 	asserts.AssertAliasNameOrListAll(str)
+	return str
+end
+
+function asserts.AssertExportType(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ExportType to be of type 'string'")
+end
+
+--  
+function M.ExportType(str)
+	asserts.AssertExportType(str)
 	return str
 end
 
@@ -4484,16 +4603,14 @@ function M.Version(str)
 	return str
 end
 
-function asserts.AssertNumericalVersion(str)
+function asserts.AssertMergeStrategy(str)
 	assert(str)
-	assert(type(str) == "string", "Expected NumericalVersion to be of type 'string'")
-	assert(#str <= 64, "Expected string to be max 64 characters")
-	assert(#str >= 1, "Expected string to be min 1 characters")
+	assert(type(str) == "string", "Expected MergeStrategy to be of type 'string'")
 end
 
 --  
-function M.NumericalVersion(str)
-	asserts.AssertNumericalVersion(str)
+function M.MergeStrategy(str)
+	asserts.AssertMergeStrategy(str)
 	return str
 end
 
@@ -4519,6 +4636,19 @@ end
 
 function M.Priority(integer)
 	asserts.AssertPriority(integer)
+	return integer
+end
+
+function asserts.AssertGroupNumber(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected GroupNumber to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
+	assert(integer <= 5, "Expected integer to be max 5")
+	assert(integer >= 1, "Expected integer to be min 1")
+end
+
+function M.GroupNumber(integer)
+	asserts.AssertGroupNumber(integer)
 	return integer
 end
 
@@ -4591,6 +4721,16 @@ end
 function M.Timestamp(timestamp)
 	asserts.AssertTimestamp(timestamp)
 	return timestamp
+end
+
+function asserts.AssertBlob(blob)
+	assert(blob)
+	assert(type(string) == "string", "Expected Blob to be of type 'string'")
+end
+
+function M.Blob(blob)
+	asserts.AssertBlob(blob)
+	return blob
 end
 
 function asserts.AssertBuiltinIntentMetadataList(list)
@@ -4730,6 +4870,21 @@ function M.IntentMetadataList(list)
 	return list
 end
 
+function asserts.AssertStringList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected StringList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertString(v)
+	end
+end
+
+--  
+-- List of String objects
+function M.StringList(list)
+	asserts.AssertStringList(list)
+	return list
+end
+
 function asserts.AssertSlotList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SlotList to be of type ''table")
@@ -4797,7 +4952,7 @@ end
 function asserts.AssertMessageList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected MessageList to be of type ''table")
-	assert(#list <= 5, "Expected list to be contain 5 elements")
+	assert(#list <= 15, "Expected list to be contain 15 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
 		asserts.AssertMessage(v)
@@ -4860,8 +5015,6 @@ end
 function asserts.AssertIntentList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected IntentList to be of type ''table")
-	assert(#list <= 100, "Expected list to be contain 100 elements")
-	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
 		asserts.AssertIntent(v)
 	end
@@ -4871,6 +5024,21 @@ end
 -- List of Intent objects
 function M.IntentList(list)
 	asserts.AssertIntentList(list)
+	return list
+end
+
+function asserts.AssertSynonymList(list)
+	assert(list)
+	assert(type(list) == "table", "Expected SynonymList to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertValue(v)
+	end
+end
+
+--  
+-- List of Value objects
+function M.SynonymList(list)
+	asserts.AssertSynonymList(list)
 	return list
 end
 
@@ -5087,6 +5255,41 @@ function M.DeleteSlotTypeVersionSync(DeleteSlotTypeVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DeleteSlotTypeVersionAsync(DeleteSlotTypeVersionRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartImport asynchronously, invoking a callback when done
+-- @param StartImportRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.StartImportAsync(StartImportRequest, cb)
+	assert(StartImportRequest, "You must provide a StartImportRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".StartImport",
+	}
+	for header,value in pairs(StartImportRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/imports/", StartImportRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call StartImport synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartImportRequest
+-- @return response
+-- @return error_message
+function M.StartImportSync(StartImportRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartImportAsync(StartImportRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5477,6 +5680,41 @@ function M.DeleteIntentSync(DeleteIntentRequest, ...)
 	return coroutine.yield()
 end
 
+--- Call GetImport asynchronously, invoking a callback when done
+-- @param GetImportRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.GetImportAsync(GetImportRequest, cb)
+	assert(GetImportRequest, "You must provide a GetImportRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetImport",
+	}
+	for header,value in pairs(GetImportRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	if request_handler then
+		request_handler(settings.uri, "/imports/{importId}", GetImportRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call GetImport synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetImportRequest
+-- @return response
+-- @return error_message
+function M.GetImportSync(GetImportRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetImportAsync(GetImportRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
 --- Call GetBotVersions asynchronously, invoking a callback when done
 -- @param GetBotVersionsRequest
 -- @param cb Callback function accepting two args: response, error_message
@@ -5512,36 +5750,36 @@ function M.GetBotVersionsSync(GetBotVersionsRequest, ...)
 	return coroutine.yield()
 end
 
---- Call PutBotAlias asynchronously, invoking a callback when done
--- @param PutBotAliasRequest
+--- Call GetExport asynchronously, invoking a callback when done
+-- @param GetExportRequest
 -- @param cb Callback function accepting two args: response, error_message
-function M.PutBotAliasAsync(PutBotAliasRequest, cb)
-	assert(PutBotAliasRequest, "You must provide a PutBotAliasRequest")
+function M.GetExportAsync(GetExportRequest, cb)
+	assert(GetExportRequest, "You must provide a GetExportRequest")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".PutBotAlias",
+		[request_headers.AMZ_TARGET_HEADER] = ".GetExport",
 	}
-	for header,value in pairs(PutBotAliasRequest.headers) do
+	for header,value in pairs(GetExportRequest.headers) do
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
-		request_handler(settings.uri, "/bots/{botName}/aliases/{name}", PutBotAliasRequest, headers, settings, cb)
+		request_handler(settings.uri, "/exports/", GetExportRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call PutBotAlias synchronously, returning when done
+--- Call GetExport synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param PutBotAliasRequest
+-- @param GetExportRequest
 -- @return response
 -- @return error_message
-function M.PutBotAliasSync(PutBotAliasRequest, ...)
+function M.GetExportSync(GetExportRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutBotAliasAsync(PutBotAliasRequest, function(response, error_message)
+	M.GetExportAsync(GetExportRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6067,6 +6305,41 @@ function M.PutIntentSync(PutIntentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.PutIntentAsync(PutIntentRequest, function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutBotAlias asynchronously, invoking a callback when done
+-- @param PutBotAliasRequest
+-- @param cb Callback function accepting two args: response, error_message
+function M.PutBotAliasAsync(PutBotAliasRequest, cb)
+	assert(PutBotAliasRequest, "You must provide a PutBotAliasRequest")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutBotAlias",
+	}
+	for header,value in pairs(PutBotAliasRequest.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	if request_handler then
+		request_handler(settings.uri, "/bots/{botName}/aliases/{name}", PutBotAliasRequest, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call PutBotAlias synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutBotAliasRequest
+-- @return response
+-- @return error_message
+function M.PutBotAliasSync(PutBotAliasRequest, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutBotAliasAsync(PutBotAliasRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
