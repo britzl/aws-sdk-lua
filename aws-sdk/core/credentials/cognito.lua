@@ -1,4 +1,4 @@
-local cognito = require "aws-sdk.cognito-identity"
+local cognito = require "aws-sdk.cognitoidentity"
 
 local M = {}
 
