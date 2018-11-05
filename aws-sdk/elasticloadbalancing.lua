@@ -1,82 +1,43 @@
 --- GENERATED CODE - DO NOT MODIFY
--- Elastic Load Balancing (elasticloadbalancingv2-2015-12-01)
+-- Elastic Load Balancing (elasticloadbalancing-2012-06-01)
 
 local M = {}
 
 M.metadata = {
-	api_version = "2015-12-01",
+	api_version = "2012-06-01",
 	json_version = "",
 	protocol = "query",
 	checksum_format = "",
 	endpoint_prefix = "elasticloadbalancing",
-	service_abbreviation = "Elastic Load Balancing v2",
+	service_abbreviation = "",
 	service_full_name = "Elastic Load Balancing",
 	signature_version = "v4",
 	target_prefix = "",
 	timestamp_format = "",
 	global_endpoint = "",
-	uid = "elasticloadbalancingv2-2015-12-01",
+	uid = "elasticloadbalancing-2012-06-01",
 }
 
 local keys = {}
 local asserts = {}
 
-keys.DescribeTargetGroupAttributesInput = { ["TargetGroupArn"] = true, nil }
+keys.CreateLBCookieStickinessPolicyOutput = { nil }
 
-function asserts.AssertDescribeTargetGroupAttributesInput(struct)
+function asserts.AssertCreateLBCookieStickinessPolicyOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeTargetGroupAttributesInput to be of type 'table'")
-	assert(struct["TargetGroupArn"], "Expected key TargetGroupArn to exist in table")
-	if struct["TargetGroupArn"] then asserts.AssertTargetGroupArn(struct["TargetGroupArn"]) end
+	assert(type(struct) == "table", "Expected CreateLBCookieStickinessPolicyOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.DescribeTargetGroupAttributesInput[k], "DescribeTargetGroupAttributesInput contains unknown key " .. tostring(k))
+		assert(keys.CreateLBCookieStickinessPolicyOutput[k], "CreateLBCookieStickinessPolicyOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DescribeTargetGroupAttributesInput
---  
+--- Create a structure of type CreateLBCookieStickinessPolicyOutput
+-- <p>Contains the output for CreateLBCookieStickinessPolicy.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- Required key: TargetGroupArn
--- @return DescribeTargetGroupAttributesInput structure as a key-value pair table
-function M.DescribeTargetGroupAttributesInput(args)
-	assert(args, "You must provide an argument table when creating DescribeTargetGroupAttributesInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["TargetGroupArn"] = args["TargetGroupArn"],
-	}
-	asserts.AssertDescribeTargetGroupAttributesInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TooManyCertificatesException = { nil }
-
-function asserts.AssertTooManyCertificatesException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyCertificatesException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TooManyCertificatesException[k], "TooManyCertificatesException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TooManyCertificatesException
--- <p>You've reached the limit on the number of certificates per load balancer.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TooManyCertificatesException structure as a key-value pair table
-function M.TooManyCertificatesException(args)
-	assert(args, "You must provide an argument table when creating TooManyCertificatesException")
+-- @return CreateLBCookieStickinessPolicyOutput structure as a key-value pair table
+function M.CreateLBCookieStickinessPolicyOutput(args)
+	assert(args, "You must provide an argument table when creating CreateLBCookieStickinessPolicyOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -85,7 +46,7 @@ function M.TooManyCertificatesException(args)
     }
 	local all_args = { 
 	}
-	asserts.AssertTooManyCertificatesException(all_args)
+	asserts.AssertCreateLBCookieStickinessPolicyOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -94,23 +55,31 @@ function M.TooManyCertificatesException(args)
     }
 end
 
-keys.DuplicateTargetGroupNameException = { nil }
+keys.InstanceState = { ["InstanceId"] = true, ["ReasonCode"] = true, ["State"] = true, ["Description"] = true, nil }
 
-function asserts.AssertDuplicateTargetGroupNameException(struct)
+function asserts.AssertInstanceState(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DuplicateTargetGroupNameException to be of type 'table'")
+	assert(type(struct) == "table", "Expected InstanceState to be of type 'table'")
+	if struct["InstanceId"] then asserts.AssertInstanceId(struct["InstanceId"]) end
+	if struct["ReasonCode"] then asserts.AssertReasonCode(struct["ReasonCode"]) end
+	if struct["State"] then asserts.AssertState(struct["State"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DuplicateTargetGroupNameException[k], "DuplicateTargetGroupNameException contains unknown key " .. tostring(k))
+		assert(keys.InstanceState[k], "InstanceState contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DuplicateTargetGroupNameException
--- <p>A target group with the specified name already exists.</p>
+--- Create a structure of type InstanceState
+-- <p>Information about the state of an EC2 instance.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return DuplicateTargetGroupNameException structure as a key-value pair table
-function M.DuplicateTargetGroupNameException(args)
-	assert(args, "You must provide an argument table when creating DuplicateTargetGroupNameException")
+-- * InstanceId [InstanceId] <p>The ID of the instance.</p>
+-- * ReasonCode [ReasonCode] <p>Information about the cause of <code>OutOfService</code> instances. Specifically, whether the cause is Elastic Load Balancing or the instance.</p> <p>Valid values: <code>ELB</code> | <code>Instance</code> | <code>N/A</code> </p>
+-- * State [State] <p>The current state of the instance.</p> <p>Valid values: <code>InService</code> | <code>OutOfService</code> | <code>Unknown</code> </p>
+-- * Description [Description] <p>A description of the instance state. This string can contain one or more of the following messages.</p> <ul> <li> <p> <code>N/A</code> </p> </li> <li> <p> <code>A transient error occurred. Please try again later.</code> </p> </li> <li> <p> <code>Instance has failed at least the UnhealthyThreshold number of health checks consecutively.</code> </p> </li> <li> <p> <code>Instance has not passed the configured HealthyThreshold number of health checks consecutively.</code> </p> </li> <li> <p> <code>Instance registration is still in progress.</code> </p> </li> <li> <p> <code>Instance is in the EC2 Availability Zone for which LoadBalancer is not configured to route traffic to.</code> </p> </li> <li> <p> <code>Instance is not currently registered with the LoadBalancer.</code> </p> </li> <li> <p> <code>Instance deregistration currently in progress.</code> </p> </li> <li> <p> <code>Disable Availability Zone is currently in progress.</code> </p> </li> <li> <p> <code>Instance is in pending state.</code> </p> </li> <li> <p> <code>Instance is in stopped state.</code> </p> </li> <li> <p> <code>Instance is in terminated state.</code> </p> </li> </ul>
+-- @return InstanceState structure as a key-value pair table
+function M.InstanceState(args)
+	assert(args, "You must provide an argument table when creating InstanceState")
     local query_args = { 
     }
     local uri_args = { 
@@ -118,8 +87,12 @@ function M.DuplicateTargetGroupNameException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["InstanceId"] = args["InstanceId"],
+		["ReasonCode"] = args["ReasonCode"],
+		["State"] = args["State"],
+		["Description"] = args["Description"],
 	}
-	asserts.AssertDuplicateTargetGroupNameException(all_args)
+	asserts.AssertInstanceState(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -128,170 +101,22 @@ function M.DuplicateTargetGroupNameException(args)
     }
 end
 
-keys.InvalidLoadBalancerActionException = { nil }
-
-function asserts.AssertInvalidLoadBalancerActionException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidLoadBalancerActionException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidLoadBalancerActionException[k], "InvalidLoadBalancerActionException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidLoadBalancerActionException
--- <p>The requested action is not valid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidLoadBalancerActionException structure as a key-value pair table
-function M.InvalidLoadBalancerActionException(args)
-	assert(args, "You must provide an argument table when creating InvalidLoadBalancerActionException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidLoadBalancerActionException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DuplicateTagKeysException = { nil }
-
-function asserts.AssertDuplicateTagKeysException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DuplicateTagKeysException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.DuplicateTagKeysException[k], "DuplicateTagKeysException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DuplicateTagKeysException
--- <p>A tag key was specified more than once.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return DuplicateTagKeysException structure as a key-value pair table
-function M.DuplicateTagKeysException(args)
-	assert(args, "You must provide an argument table when creating DuplicateTagKeysException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertDuplicateTagKeysException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ListenerNotFoundException = { nil }
-
-function asserts.AssertListenerNotFoundException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ListenerNotFoundException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ListenerNotFoundException[k], "ListenerNotFoundException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ListenerNotFoundException
--- <p>The specified listener does not exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ListenerNotFoundException structure as a key-value pair table
-function M.ListenerNotFoundException(args)
-	assert(args, "You must provide an argument table when creating ListenerNotFoundException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertListenerNotFoundException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DescribeLoadBalancersInput = { ["Marker"] = true, ["LoadBalancerArns"] = true, ["Names"] = true, ["PageSize"] = true, nil }
-
-function asserts.AssertDescribeLoadBalancersInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeLoadBalancersInput to be of type 'table'")
-	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
-	if struct["LoadBalancerArns"] then asserts.AssertLoadBalancerArns(struct["LoadBalancerArns"]) end
-	if struct["Names"] then asserts.AssertLoadBalancerNames(struct["Names"]) end
-	if struct["PageSize"] then asserts.AssertPageSize(struct["PageSize"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DescribeLoadBalancersInput[k], "DescribeLoadBalancersInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DescribeLoadBalancersInput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- * LoadBalancerArns [LoadBalancerArns] <p>The Amazon Resource Names (ARN) of the load balancers. You can specify up to 20 load balancers in a single call.</p>
--- * Names [LoadBalancerNames] <p>The names of the load balancers.</p>
--- * PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
--- @return DescribeLoadBalancersInput structure as a key-value pair table
-function M.DescribeLoadBalancersInput(args)
-	assert(args, "You must provide an argument table when creating DescribeLoadBalancersInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Marker"] = args["Marker"],
-		["LoadBalancerArns"] = args["LoadBalancerArns"],
-		["Names"] = args["Names"],
-		["PageSize"] = args["PageSize"],
-	}
-	asserts.AssertDescribeLoadBalancersInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DescribeLoadBalancerAttributesOutput = { ["Attributes"] = true, nil }
+keys.DescribeLoadBalancerAttributesOutput = { ["LoadBalancerAttributes"] = true, nil }
 
 function asserts.AssertDescribeLoadBalancerAttributesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeLoadBalancerAttributesOutput to be of type 'table'")
-	if struct["Attributes"] then asserts.AssertLoadBalancerAttributes(struct["Attributes"]) end
+	if struct["LoadBalancerAttributes"] then asserts.AssertLoadBalancerAttributes(struct["LoadBalancerAttributes"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.DescribeLoadBalancerAttributesOutput[k], "DescribeLoadBalancerAttributesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeLoadBalancerAttributesOutput
---  
+-- <p>Contains the output of DescribeLoadBalancerAttributes.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Attributes [LoadBalancerAttributes] <p>Information about the load balancer attributes.</p>
+-- * LoadBalancerAttributes [LoadBalancerAttributes] <p>Information about the load balancer attributes.</p>
 -- @return DescribeLoadBalancerAttributesOutput structure as a key-value pair table
 function M.DescribeLoadBalancerAttributesOutput(args)
 	assert(args, "You must provide an argument table when creating DescribeLoadBalancerAttributesOutput")
@@ -302,7 +127,7 @@ function M.DescribeLoadBalancerAttributesOutput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Attributes"] = args["Attributes"],
+		["LoadBalancerAttributes"] = args["LoadBalancerAttributes"],
 	}
 	asserts.AssertDescribeLoadBalancerAttributesOutput(all_args)
 	return {
@@ -313,23 +138,25 @@ function M.DescribeLoadBalancerAttributesOutput(args)
     }
 end
 
-keys.SubnetNotFoundException = { nil }
+keys.DescribeEndPointStateOutput = { ["InstanceStates"] = true, nil }
 
-function asserts.AssertSubnetNotFoundException(struct)
+function asserts.AssertDescribeEndPointStateOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SubnetNotFoundException to be of type 'table'")
+	assert(type(struct) == "table", "Expected DescribeEndPointStateOutput to be of type 'table'")
+	if struct["InstanceStates"] then asserts.AssertInstanceStates(struct["InstanceStates"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SubnetNotFoundException[k], "SubnetNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.DescribeEndPointStateOutput[k], "DescribeEndPointStateOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SubnetNotFoundException
--- <p>The specified subnet does not exist.</p>
+--- Create a structure of type DescribeEndPointStateOutput
+-- <p>Contains the output for DescribeInstanceHealth.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return SubnetNotFoundException structure as a key-value pair table
-function M.SubnetNotFoundException(args)
-	assert(args, "You must provide an argument table when creating SubnetNotFoundException")
+-- * InstanceStates [InstanceStates] <p>Information about the health of the instances.</p>
+-- @return DescribeEndPointStateOutput structure as a key-value pair table
+function M.DescribeEndPointStateOutput(args)
+	assert(args, "You must provide an argument table when creating DescribeEndPointStateOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -337,8 +164,9 @@ function M.SubnetNotFoundException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["InstanceStates"] = args["InstanceStates"],
 	}
-	asserts.AssertSubnetNotFoundException(all_args)
+	asserts.AssertDescribeEndPointStateOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -347,31 +175,25 @@ function M.SubnetNotFoundException(args)
     }
 end
 
-keys.DeregisterTargetsInput = { ["TargetGroupArn"] = true, ["Targets"] = true, nil }
+keys.CreateAccessPointOutput = { ["DNSName"] = true, nil }
 
-function asserts.AssertDeregisterTargetsInput(struct)
+function asserts.AssertCreateAccessPointOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeregisterTargetsInput to be of type 'table'")
-	assert(struct["TargetGroupArn"], "Expected key TargetGroupArn to exist in table")
-	assert(struct["Targets"], "Expected key Targets to exist in table")
-	if struct["TargetGroupArn"] then asserts.AssertTargetGroupArn(struct["TargetGroupArn"]) end
-	if struct["Targets"] then asserts.AssertTargetDescriptions(struct["Targets"]) end
+	assert(type(struct) == "table", "Expected CreateAccessPointOutput to be of type 'table'")
+	if struct["DNSName"] then asserts.AssertDNSName(struct["DNSName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeregisterTargetsInput[k], "DeregisterTargetsInput contains unknown key " .. tostring(k))
+		assert(keys.CreateAccessPointOutput[k], "CreateAccessPointOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeregisterTargetsInput
---  
+--- Create a structure of type CreateAccessPointOutput
+-- <p>Contains the output for CreateLoadBalancer.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- * Targets [TargetDescriptions] <p>The targets. If you specified a port override when you registered a target, you must specify both the target ID and the port when you deregister it.</p>
--- Required key: TargetGroupArn
--- Required key: Targets
--- @return DeregisterTargetsInput structure as a key-value pair table
-function M.DeregisterTargetsInput(args)
-	assert(args, "You must provide an argument table when creating DeregisterTargetsInput")
+-- * DNSName [DNSName] <p>The DNS name of the load balancer.</p>
+-- @return CreateAccessPointOutput structure as a key-value pair table
+function M.CreateAccessPointOutput(args)
+	assert(args, "You must provide an argument table when creating CreateAccessPointOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -379,10 +201,9 @@ function M.DeregisterTargetsInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["TargetGroupArn"] = args["TargetGroupArn"],
-		["Targets"] = args["Targets"],
+		["DNSName"] = args["DNSName"],
 	}
-	asserts.AssertDeregisterTargetsInput(all_args)
+	asserts.AssertCreateAccessPointOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -391,27 +212,27 @@ function M.DeregisterTargetsInput(args)
     }
 end
 
-keys.RulePriorityPair = { ["Priority"] = true, ["RuleArn"] = true, nil }
+keys.AdditionalAttribute = { ["Value"] = true, ["Key"] = true, nil }
 
-function asserts.AssertRulePriorityPair(struct)
+function asserts.AssertAdditionalAttribute(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected RulePriorityPair to be of type 'table'")
-	if struct["Priority"] then asserts.AssertRulePriority(struct["Priority"]) end
-	if struct["RuleArn"] then asserts.AssertRuleArn(struct["RuleArn"]) end
+	assert(type(struct) == "table", "Expected AdditionalAttribute to be of type 'table'")
+	if struct["Value"] then asserts.AssertAdditionalAttributeValue(struct["Value"]) end
+	if struct["Key"] then asserts.AssertAdditionalAttributeKey(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.RulePriorityPair[k], "RulePriorityPair contains unknown key " .. tostring(k))
+		assert(keys.AdditionalAttribute[k], "AdditionalAttribute contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type RulePriorityPair
--- <p>Information about the priorities for the rules for a listener.</p>
+--- Create a structure of type AdditionalAttribute
+-- <p>This data type is reserved.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Priority [RulePriority] <p>The rule priority.</p>
--- * RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
--- @return RulePriorityPair structure as a key-value pair table
-function M.RulePriorityPair(args)
-	assert(args, "You must provide an argument table when creating RulePriorityPair")
+-- * Value [AdditionalAttributeValue] <p>This parameter is reserved.</p>
+-- * Key [AdditionalAttributeKey] <p>This parameter is reserved.</p>
+-- @return AdditionalAttribute structure as a key-value pair table
+function M.AdditionalAttribute(args)
+	assert(args, "You must provide an argument table when creating AdditionalAttribute")
     local query_args = { 
     }
     local uri_args = { 
@@ -419,10 +240,10 @@ function M.RulePriorityPair(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Priority"] = args["Priority"],
-		["RuleArn"] = args["RuleArn"],
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
-	asserts.AssertRulePriorityPair(all_args)
+	asserts.AssertAdditionalAttribute(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -431,23 +252,23 @@ function M.RulePriorityPair(args)
     }
 end
 
-keys.DeleteTargetGroupOutput = { nil }
+keys.CreateLoadBalancerListenerOutput = { nil }
 
-function asserts.AssertDeleteTargetGroupOutput(struct)
+function asserts.AssertCreateLoadBalancerListenerOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteTargetGroupOutput to be of type 'table'")
+	assert(type(struct) == "table", "Expected CreateLoadBalancerListenerOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteTargetGroupOutput[k], "DeleteTargetGroupOutput contains unknown key " .. tostring(k))
+		assert(keys.CreateLoadBalancerListenerOutput[k], "CreateLoadBalancerListenerOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteTargetGroupOutput
---  
+--- Create a structure of type CreateLoadBalancerListenerOutput
+-- <p>Contains the parameters for CreateLoadBalancerListener.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return DeleteTargetGroupOutput structure as a key-value pair table
-function M.DeleteTargetGroupOutput(args)
-	assert(args, "You must provide an argument table when creating DeleteTargetGroupOutput")
+-- @return CreateLoadBalancerListenerOutput structure as a key-value pair table
+function M.CreateLoadBalancerListenerOutput(args)
+	assert(args, "You must provide an argument table when creating CreateLoadBalancerListenerOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -456,7 +277,7 @@ function M.DeleteTargetGroupOutput(args)
     }
 	local all_args = { 
 	}
-	asserts.AssertDeleteTargetGroupOutput(all_args)
+	asserts.AssertCreateLoadBalancerListenerOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -465,219 +286,27 @@ function M.DeleteTargetGroupOutput(args)
     }
 end
 
-keys.DuplicateLoadBalancerNameException = { nil }
+keys.DescribeAccessPointsOutput = { ["NextMarker"] = true, ["LoadBalancerDescriptions"] = true, nil }
 
-function asserts.AssertDuplicateLoadBalancerNameException(struct)
+function asserts.AssertDescribeAccessPointsOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DuplicateLoadBalancerNameException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.DuplicateLoadBalancerNameException[k], "DuplicateLoadBalancerNameException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DuplicateLoadBalancerNameException
--- <p>A load balancer with the specified name already exists.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return DuplicateLoadBalancerNameException structure as a key-value pair table
-function M.DuplicateLoadBalancerNameException(args)
-	assert(args, "You must provide an argument table when creating DuplicateLoadBalancerNameException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertDuplicateLoadBalancerNameException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidConfigurationRequestException = { nil }
-
-function asserts.AssertInvalidConfigurationRequestException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidConfigurationRequestException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidConfigurationRequestException[k], "InvalidConfigurationRequestException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidConfigurationRequestException
--- <p>The requested configuration is not valid.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidConfigurationRequestException structure as a key-value pair table
-function M.InvalidConfigurationRequestException(args)
-	assert(args, "You must provide an argument table when creating InvalidConfigurationRequestException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidConfigurationRequestException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ModifyTargetGroupAttributesInput = { ["Attributes"] = true, ["TargetGroupArn"] = true, nil }
-
-function asserts.AssertModifyTargetGroupAttributesInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ModifyTargetGroupAttributesInput to be of type 'table'")
-	assert(struct["TargetGroupArn"], "Expected key TargetGroupArn to exist in table")
-	assert(struct["Attributes"], "Expected key Attributes to exist in table")
-	if struct["Attributes"] then asserts.AssertTargetGroupAttributes(struct["Attributes"]) end
-	if struct["TargetGroupArn"] then asserts.AssertTargetGroupArn(struct["TargetGroupArn"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ModifyTargetGroupAttributesInput[k], "ModifyTargetGroupAttributesInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ModifyTargetGroupAttributesInput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Attributes [TargetGroupAttributes] <p>The attributes.</p>
--- * TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- Required key: TargetGroupArn
--- Required key: Attributes
--- @return ModifyTargetGroupAttributesInput structure as a key-value pair table
-function M.ModifyTargetGroupAttributesInput(args)
-	assert(args, "You must provide an argument table when creating ModifyTargetGroupAttributesInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Attributes"] = args["Attributes"],
-		["TargetGroupArn"] = args["TargetGroupArn"],
-	}
-	asserts.AssertModifyTargetGroupAttributesInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.Cipher = { ["Priority"] = true, ["Name"] = true, nil }
-
-function asserts.AssertCipher(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected Cipher to be of type 'table'")
-	if struct["Priority"] then asserts.AssertCipherPriority(struct["Priority"]) end
-	if struct["Name"] then asserts.AssertCipherName(struct["Name"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.Cipher[k], "Cipher contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type Cipher
--- <p>Information about a cipher used in a policy.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Priority [CipherPriority] <p>The priority of the cipher.</p>
--- * Name [CipherName] <p>The name of the cipher.</p>
--- @return Cipher structure as a key-value pair table
-function M.Cipher(args)
-	assert(args, "You must provide an argument table when creating Cipher")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Priority"] = args["Priority"],
-		["Name"] = args["Name"],
-	}
-	asserts.AssertCipher(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.RuleCondition = { ["Field"] = true, ["Values"] = true, nil }
-
-function asserts.AssertRuleCondition(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected RuleCondition to be of type 'table'")
-	if struct["Field"] then asserts.AssertConditionFieldName(struct["Field"]) end
-	if struct["Values"] then asserts.AssertListOfString(struct["Values"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.RuleCondition[k], "RuleCondition contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type RuleCondition
--- <p>Information about a condition for a rule.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Field [ConditionFieldName] <p>The name of the field. The possible values are <code>host-header</code> and <code>path-pattern</code>.</p>
--- * Values [ListOfString] <p>The condition value.</p> <p>If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. You can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>- .</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul> <p>If the field name is <code>path-pattern</code>, you can specify a single path pattern (for example, /img/*). A path pattern is case-sensitive, can be up to 128 characters in length, and can contain any of the following characters. You can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>_ - . $ / ~ " ' @ : +</p> </li> <li> <p>&amp; (using &amp;amp;)</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul>
--- @return RuleCondition structure as a key-value pair table
-function M.RuleCondition(args)
-	assert(args, "You must provide an argument table when creating RuleCondition")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Field"] = args["Field"],
-		["Values"] = args["Values"],
-	}
-	asserts.AssertRuleCondition(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DescribeSSLPoliciesOutput = { ["NextMarker"] = true, ["SslPolicies"] = true, nil }
-
-function asserts.AssertDescribeSSLPoliciesOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeSSLPoliciesOutput to be of type 'table'")
+	assert(type(struct) == "table", "Expected DescribeAccessPointsOutput to be of type 'table'")
 	if struct["NextMarker"] then asserts.AssertMarker(struct["NextMarker"]) end
-	if struct["SslPolicies"] then asserts.AssertSslPolicies(struct["SslPolicies"]) end
+	if struct["LoadBalancerDescriptions"] then asserts.AssertLoadBalancerDescriptions(struct["LoadBalancerDescriptions"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DescribeSSLPoliciesOutput[k], "DescribeSSLPoliciesOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeAccessPointsOutput[k], "DescribeAccessPointsOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DescribeSSLPoliciesOutput
---  
+--- Create a structure of type DescribeAccessPointsOutput
+-- <p>Contains the parameters for DescribeLoadBalancers.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- * SslPolicies [SslPolicies] <p>Information about the policies.</p>
--- @return DescribeSSLPoliciesOutput structure as a key-value pair table
-function M.DescribeSSLPoliciesOutput(args)
-	assert(args, "You must provide an argument table when creating DescribeSSLPoliciesOutput")
+-- * LoadBalancerDescriptions [LoadBalancerDescriptions] <p>Information about the load balancers.</p>
+-- @return DescribeAccessPointsOutput structure as a key-value pair table
+function M.DescribeAccessPointsOutput(args)
+	assert(args, "You must provide an argument table when creating DescribeAccessPointsOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -686,9 +315,9 @@ function M.DescribeSSLPoliciesOutput(args)
     }
 	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
-		["SslPolicies"] = args["SslPolicies"],
+		["LoadBalancerDescriptions"] = args["LoadBalancerDescriptions"],
 	}
-	asserts.AssertDescribeSSLPoliciesOutput(all_args)
+	asserts.AssertDescribeAccessPointsOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -697,25 +326,27 @@ function M.DescribeSSLPoliciesOutput(args)
     }
 end
 
-keys.AddListenerCertificatesOutput = { ["Certificates"] = true, nil }
+keys.LBCookieStickinessPolicy = { ["PolicyName"] = true, ["CookieExpirationPeriod"] = true, nil }
 
-function asserts.AssertAddListenerCertificatesOutput(struct)
+function asserts.AssertLBCookieStickinessPolicy(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected AddListenerCertificatesOutput to be of type 'table'")
-	if struct["Certificates"] then asserts.AssertCertificateList(struct["Certificates"]) end
+	assert(type(struct) == "table", "Expected LBCookieStickinessPolicy to be of type 'table'")
+	if struct["PolicyName"] then asserts.AssertPolicyName(struct["PolicyName"]) end
+	if struct["CookieExpirationPeriod"] then asserts.AssertCookieExpirationPeriod(struct["CookieExpirationPeriod"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.AddListenerCertificatesOutput[k], "AddListenerCertificatesOutput contains unknown key " .. tostring(k))
+		assert(keys.LBCookieStickinessPolicy[k], "LBCookieStickinessPolicy contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type AddListenerCertificatesOutput
---  
+--- Create a structure of type LBCookieStickinessPolicy
+-- <p>Information about a policy for duration-based session stickiness.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Certificates [CertificateList] <p>Information about the certificates.</p>
--- @return AddListenerCertificatesOutput structure as a key-value pair table
-function M.AddListenerCertificatesOutput(args)
-	assert(args, "You must provide an argument table when creating AddListenerCertificatesOutput")
+-- * PolicyName [PolicyName] <p>The name of the policy. This name must be unique within the set of policies for this load balancer.</p>
+-- * CookieExpirationPeriod [CookieExpirationPeriod] <p>The time period, in seconds, after which the cookie should be considered stale. If this parameter is not specified, the stickiness session lasts for the duration of the browser session.</p>
+-- @return LBCookieStickinessPolicy structure as a key-value pair table
+function M.LBCookieStickinessPolicy(args)
+	assert(args, "You must provide an argument table when creating LBCookieStickinessPolicy")
     local query_args = { 
     }
     local uri_args = { 
@@ -723,9 +354,10 @@ function M.AddListenerCertificatesOutput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Certificates"] = args["Certificates"],
+		["PolicyName"] = args["PolicyName"],
+		["CookieExpirationPeriod"] = args["CookieExpirationPeriod"],
 	}
-	asserts.AssertAddListenerCertificatesOutput(all_args)
+	asserts.AssertLBCookieStickinessPolicy(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -734,24 +366,117 @@ function M.AddListenerCertificatesOutput(args)
     }
 end
 
-keys.DescribeTagsInput = { ["ResourceArns"] = true, nil }
+keys.RemoveAvailabilityZonesInput = { ["AvailabilityZones"] = true, ["LoadBalancerName"] = true, nil }
+
+function asserts.AssertRemoveAvailabilityZonesInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected RemoveAvailabilityZonesInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	assert(struct["AvailabilityZones"], "Expected key AvailabilityZones to exist in table")
+	if struct["AvailabilityZones"] then asserts.AssertAvailabilityZones(struct["AvailabilityZones"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.RemoveAvailabilityZonesInput[k], "RemoveAvailabilityZonesInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type RemoveAvailabilityZonesInput
+-- <p>Contains the parameters for DisableAvailabilityZonesForLoadBalancer.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AvailabilityZones [AvailabilityZones] <p>The Availability Zones.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- Required key: AvailabilityZones
+-- @return RemoveAvailabilityZonesInput structure as a key-value pair table
+function M.RemoveAvailabilityZonesInput(args)
+	assert(args, "You must provide an argument table when creating RemoveAvailabilityZonesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["AvailabilityZones"] = args["AvailabilityZones"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
+	}
+	asserts.AssertRemoveAvailabilityZonesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateAppCookieStickinessPolicyInput = { ["PolicyName"] = true, ["CookieName"] = true, ["LoadBalancerName"] = true, nil }
+
+function asserts.AssertCreateAppCookieStickinessPolicyInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateAppCookieStickinessPolicyInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	assert(struct["PolicyName"], "Expected key PolicyName to exist in table")
+	assert(struct["CookieName"], "Expected key CookieName to exist in table")
+	if struct["PolicyName"] then asserts.AssertPolicyName(struct["PolicyName"]) end
+	if struct["CookieName"] then asserts.AssertCookieName(struct["CookieName"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateAppCookieStickinessPolicyInput[k], "CreateAppCookieStickinessPolicyInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateAppCookieStickinessPolicyInput
+-- <p>Contains the parameters for CreateAppCookieStickinessPolicy.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyName [PolicyName] <p>The name of the policy being created. Policy names must consist of alphanumeric characters and dashes (-). This name must be unique within the set of policies for this load balancer.</p>
+-- * CookieName [CookieName] <p>The name of the application cookie used for stickiness.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- Required key: PolicyName
+-- Required key: CookieName
+-- @return CreateAppCookieStickinessPolicyInput structure as a key-value pair table
+function M.CreateAppCookieStickinessPolicyInput(args)
+	assert(args, "You must provide an argument table when creating CreateAppCookieStickinessPolicyInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["PolicyName"] = args["PolicyName"],
+		["CookieName"] = args["CookieName"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
+	}
+	asserts.AssertCreateAppCookieStickinessPolicyInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeTagsInput = { ["LoadBalancerNames"] = true, nil }
 
 function asserts.AssertDescribeTagsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTagsInput to be of type 'table'")
-	assert(struct["ResourceArns"], "Expected key ResourceArns to exist in table")
-	if struct["ResourceArns"] then asserts.AssertResourceArns(struct["ResourceArns"]) end
+	assert(struct["LoadBalancerNames"], "Expected key LoadBalancerNames to exist in table")
+	if struct["LoadBalancerNames"] then asserts.AssertLoadBalancerNamesMax20(struct["LoadBalancerNames"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.DescribeTagsInput[k], "DescribeTagsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTagsInput
---  
+-- <p>Contains the parameters for DescribeTags.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ResourceArns [ResourceArns] <p>The Amazon Resource Names (ARN) of the resources.</p>
--- Required key: ResourceArns
+-- * LoadBalancerNames [LoadBalancerNamesMax20] <p>The names of the load balancers.</p>
+-- Required key: LoadBalancerNames
 -- @return DescribeTagsInput structure as a key-value pair table
 function M.DescribeTagsInput(args)
 	assert(args, "You must provide an argument table when creating DescribeTagsInput")
@@ -762,46 +487,9 @@ function M.DescribeTagsInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["ResourceArns"] = args["ResourceArns"],
+		["LoadBalancerNames"] = args["LoadBalancerNames"],
 	}
 	asserts.AssertDescribeTagsInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SetSecurityGroupsOutput = { ["SecurityGroupIds"] = true, nil }
-
-function asserts.AssertSetSecurityGroupsOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SetSecurityGroupsOutput to be of type 'table'")
-	if struct["SecurityGroupIds"] then asserts.AssertSecurityGroups(struct["SecurityGroupIds"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.SetSecurityGroupsOutput[k], "SetSecurityGroupsOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SetSecurityGroupsOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * SecurityGroupIds [SecurityGroups] <p>The IDs of the security groups associated with the load balancer.</p>
--- @return SetSecurityGroupsOutput structure as a key-value pair table
-function M.SetSecurityGroupsOutput(args)
-	assert(args, "You must provide an argument table when creating SetSecurityGroupsOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["SecurityGroupIds"] = args["SecurityGroupIds"],
-	}
-	asserts.AssertSetSecurityGroupsOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -867,7 +555,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Max [Max] <p>The maximum value of the limit.</p>
--- * Name [Name] <p>The name of the limit. The possible values are:</p> <ul> <li> <p>application-load-balancers</p> </li> <li> <p>listeners-per-application-load-balancer</p> </li> <li> <p>listeners-per-network-load-balancer</p> </li> <li> <p>network-load-balancers</p> </li> <li> <p>rules-per-application-load-balancer</p> </li> <li> <p>target-groups</p> </li> <li> <p>targets-per-application-load-balancer</p> </li> <li> <p>targets-per-availability-zone-per-network-load-balancer</p> </li> <li> <p>targets-per-network-load-balancer</p> </li> </ul>
+-- * Name [Name] <p>The name of the limit. The possible values are:</p> <ul> <li> <p>classic-listeners</p> </li> <li> <p>classic-load-balancers</p> </li> <li> <p>classic-registered-instances</p> </li> </ul>
 -- @return Limit structure as a key-value pair table
 function M.Limit(args)
 	assert(args, "You must provide an argument table when creating Limit")
@@ -890,27 +578,27 @@ function M.Limit(args)
     }
 end
 
-keys.DeleteRuleInput = { ["RuleArn"] = true, nil }
+keys.ConnectionSettings = { ["IdleTimeout"] = true, nil }
 
-function asserts.AssertDeleteRuleInput(struct)
+function asserts.AssertConnectionSettings(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteRuleInput to be of type 'table'")
-	assert(struct["RuleArn"], "Expected key RuleArn to exist in table")
-	if struct["RuleArn"] then asserts.AssertRuleArn(struct["RuleArn"]) end
+	assert(type(struct) == "table", "Expected ConnectionSettings to be of type 'table'")
+	assert(struct["IdleTimeout"], "Expected key IdleTimeout to exist in table")
+	if struct["IdleTimeout"] then asserts.AssertIdleTimeout(struct["IdleTimeout"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteRuleInput[k], "DeleteRuleInput contains unknown key " .. tostring(k))
+		assert(keys.ConnectionSettings[k], "ConnectionSettings contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteRuleInput
---  
+--- Create a structure of type ConnectionSettings
+-- <p>Information about the <code>ConnectionSettings</code> attribute.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
--- Required key: RuleArn
--- @return DeleteRuleInput structure as a key-value pair table
-function M.DeleteRuleInput(args)
-	assert(args, "You must provide an argument table when creating DeleteRuleInput")
+-- * IdleTimeout [IdleTimeout] <p>The time, in seconds, that the connection is allowed to be idle (no data has been sent over the connection) before it is closed by the load balancer.</p>
+-- Required key: IdleTimeout
+-- @return ConnectionSettings structure as a key-value pair table
+function M.ConnectionSettings(args)
+	assert(args, "You must provide an argument table when creating ConnectionSettings")
     local query_args = { 
     }
     local uri_args = { 
@@ -918,9 +606,9 @@ function M.DeleteRuleInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["RuleArn"] = args["RuleArn"],
+		["IdleTimeout"] = args["IdleTimeout"],
 	}
-	asserts.AssertDeleteRuleInput(all_args)
+	asserts.AssertConnectionSettings(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -929,53 +617,27 @@ function M.DeleteRuleInput(args)
     }
 end
 
-keys.TargetGroup = { ["HealthCheckPath"] = true, ["HealthCheckIntervalSeconds"] = true, ["VpcId"] = true, ["Protocol"] = true, ["HealthCheckTimeoutSeconds"] = true, ["TargetType"] = true, ["HealthCheckProtocol"] = true, ["LoadBalancerArns"] = true, ["UnhealthyThresholdCount"] = true, ["HealthyThresholdCount"] = true, ["TargetGroupArn"] = true, ["Matcher"] = true, ["HealthCheckPort"] = true, ["Port"] = true, ["TargetGroupName"] = true, nil }
+keys.SourceSecurityGroup = { ["OwnerAlias"] = true, ["GroupName"] = true, nil }
 
-function asserts.AssertTargetGroup(struct)
+function asserts.AssertSourceSecurityGroup(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TargetGroup to be of type 'table'")
-	if struct["HealthCheckPath"] then asserts.AssertPath(struct["HealthCheckPath"]) end
-	if struct["HealthCheckIntervalSeconds"] then asserts.AssertHealthCheckIntervalSeconds(struct["HealthCheckIntervalSeconds"]) end
-	if struct["VpcId"] then asserts.AssertVpcId(struct["VpcId"]) end
-	if struct["Protocol"] then asserts.AssertProtocolEnum(struct["Protocol"]) end
-	if struct["HealthCheckTimeoutSeconds"] then asserts.AssertHealthCheckTimeoutSeconds(struct["HealthCheckTimeoutSeconds"]) end
-	if struct["TargetType"] then asserts.AssertTargetTypeEnum(struct["TargetType"]) end
-	if struct["HealthCheckProtocol"] then asserts.AssertProtocolEnum(struct["HealthCheckProtocol"]) end
-	if struct["LoadBalancerArns"] then asserts.AssertLoadBalancerArns(struct["LoadBalancerArns"]) end
-	if struct["UnhealthyThresholdCount"] then asserts.AssertHealthCheckThresholdCount(struct["UnhealthyThresholdCount"]) end
-	if struct["HealthyThresholdCount"] then asserts.AssertHealthCheckThresholdCount(struct["HealthyThresholdCount"]) end
-	if struct["TargetGroupArn"] then asserts.AssertTargetGroupArn(struct["TargetGroupArn"]) end
-	if struct["Matcher"] then asserts.AssertMatcher(struct["Matcher"]) end
-	if struct["HealthCheckPort"] then asserts.AssertHealthCheckPort(struct["HealthCheckPort"]) end
-	if struct["Port"] then asserts.AssertPort(struct["Port"]) end
-	if struct["TargetGroupName"] then asserts.AssertTargetGroupName(struct["TargetGroupName"]) end
+	assert(type(struct) == "table", "Expected SourceSecurityGroup to be of type 'table'")
+	if struct["OwnerAlias"] then asserts.AssertSecurityGroupOwnerAlias(struct["OwnerAlias"]) end
+	if struct["GroupName"] then asserts.AssertSecurityGroupName(struct["GroupName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TargetGroup[k], "TargetGroup contains unknown key " .. tostring(k))
+		assert(keys.SourceSecurityGroup[k], "SourceSecurityGroup contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TargetGroup
--- <p>Information about a target group.</p>
+--- Create a structure of type SourceSecurityGroup
+-- <p>Information about a source security group.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * HealthCheckPath [Path] <p>The destination for the health check request.</p>
--- * HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] <p>The approximate amount of time, in seconds, between health checks of an individual target.</p>
--- * VpcId [VpcId] <p>The ID of the VPC for the targets.</p>
--- * Protocol [ProtocolEnum] <p>The protocol to use for routing traffic to the targets.</p>
--- * HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] <p>The amount of time, in seconds, during which no response means a failed health check.</p>
--- * TargetType [TargetTypeEnum] <p>The type of target that you must specify when registering targets with this target group. The possible values are <code>instance</code> (targets are specified by instance ID) or <code>ip</code> (targets are specified by IP address).</p>
--- * HealthCheckProtocol [ProtocolEnum] <p>The protocol to use to connect with the target.</p>
--- * LoadBalancerArns [LoadBalancerArns] <p>The Amazon Resource Names (ARN) of the load balancers that route traffic to this target group.</p>
--- * UnhealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health check failures required before considering the target unhealthy.</p>
--- * HealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health checks successes required before considering an unhealthy target healthy.</p>
--- * TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- * Matcher [Matcher] <p>The HTTP codes to use when checking for a successful response from a target.</p>
--- * HealthCheckPort [HealthCheckPort] <p>The port to use to connect with the target.</p>
--- * Port [Port] <p>The port on which the targets are listening.</p>
--- * TargetGroupName [TargetGroupName] <p>The name of the target group.</p>
--- @return TargetGroup structure as a key-value pair table
-function M.TargetGroup(args)
-	assert(args, "You must provide an argument table when creating TargetGroup")
+-- * OwnerAlias [SecurityGroupOwnerAlias] <p>The owner of the security group.</p>
+-- * GroupName [SecurityGroupName] <p>The name of the security group.</p>
+-- @return SourceSecurityGroup structure as a key-value pair table
+function M.SourceSecurityGroup(args)
+	assert(args, "You must provide an argument table when creating SourceSecurityGroup")
     local query_args = { 
     }
     local uri_args = { 
@@ -983,23 +645,10 @@ function M.TargetGroup(args)
     local header_args = { 
     }
 	local all_args = { 
-		["HealthCheckPath"] = args["HealthCheckPath"],
-		["HealthCheckIntervalSeconds"] = args["HealthCheckIntervalSeconds"],
-		["VpcId"] = args["VpcId"],
-		["Protocol"] = args["Protocol"],
-		["HealthCheckTimeoutSeconds"] = args["HealthCheckTimeoutSeconds"],
-		["TargetType"] = args["TargetType"],
-		["HealthCheckProtocol"] = args["HealthCheckProtocol"],
-		["LoadBalancerArns"] = args["LoadBalancerArns"],
-		["UnhealthyThresholdCount"] = args["UnhealthyThresholdCount"],
-		["HealthyThresholdCount"] = args["HealthyThresholdCount"],
-		["TargetGroupArn"] = args["TargetGroupArn"],
-		["Matcher"] = args["Matcher"],
-		["HealthCheckPort"] = args["HealthCheckPort"],
-		["Port"] = args["Port"],
-		["TargetGroupName"] = args["TargetGroupName"],
+		["OwnerAlias"] = args["OwnerAlias"],
+		["GroupName"] = args["GroupName"],
 	}
-	asserts.AssertTargetGroup(all_args)
+	asserts.AssertSourceSecurityGroup(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1008,29 +657,33 @@ function M.TargetGroup(args)
     }
 end
 
-keys.SslPolicy = { ["SslProtocols"] = true, ["Ciphers"] = true, ["Name"] = true, nil }
+keys.AccessLog = { ["S3BucketPrefix"] = true, ["EmitInterval"] = true, ["Enabled"] = true, ["S3BucketName"] = true, nil }
 
-function asserts.AssertSslPolicy(struct)
+function asserts.AssertAccessLog(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SslPolicy to be of type 'table'")
-	if struct["SslProtocols"] then asserts.AssertSslProtocols(struct["SslProtocols"]) end
-	if struct["Ciphers"] then asserts.AssertCiphers(struct["Ciphers"]) end
-	if struct["Name"] then asserts.AssertSslPolicyName(struct["Name"]) end
+	assert(type(struct) == "table", "Expected AccessLog to be of type 'table'")
+	assert(struct["Enabled"], "Expected key Enabled to exist in table")
+	if struct["S3BucketPrefix"] then asserts.AssertAccessLogPrefix(struct["S3BucketPrefix"]) end
+	if struct["EmitInterval"] then asserts.AssertAccessLogInterval(struct["EmitInterval"]) end
+	if struct["Enabled"] then asserts.AssertAccessLogEnabled(struct["Enabled"]) end
+	if struct["S3BucketName"] then asserts.AssertS3BucketName(struct["S3BucketName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SslPolicy[k], "SslPolicy contains unknown key " .. tostring(k))
+		assert(keys.AccessLog[k], "AccessLog contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SslPolicy
--- <p>Information about a policy used for SSL negotiation.</p>
+--- Create a structure of type AccessLog
+-- <p>Information about the <code>AccessLog</code> attribute.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SslProtocols [SslProtocols] <p>The protocols.</p>
--- * Ciphers [Ciphers] <p>The ciphers.</p>
--- * Name [SslPolicyName] <p>The name of the policy.</p>
--- @return SslPolicy structure as a key-value pair table
-function M.SslPolicy(args)
-	assert(args, "You must provide an argument table when creating SslPolicy")
+-- * S3BucketPrefix [AccessLogPrefix] <p>The logical hierarchy you created for your Amazon S3 bucket, for example <code>my-bucket-prefix/prod</code>. If the prefix is not provided, the log is placed at the root level of the bucket.</p>
+-- * EmitInterval [AccessLogInterval] <p>The interval for publishing the access logs. You can specify an interval of either 5 minutes or 60 minutes.</p> <p>Default: 60 minutes</p>
+-- * Enabled [AccessLogEnabled] <p>Specifies whether access logs are enabled for the load balancer.</p>
+-- * S3BucketName [S3BucketName] <p>The name of the Amazon S3 bucket where the access logs are stored.</p>
+-- Required key: Enabled
+-- @return AccessLog structure as a key-value pair table
+function M.AccessLog(args)
+	assert(args, "You must provide an argument table when creating AccessLog")
     local query_args = { 
     }
     local uri_args = { 
@@ -1038,11 +691,12 @@ function M.SslPolicy(args)
     local header_args = { 
     }
 	local all_args = { 
-		["SslProtocols"] = args["SslProtocols"],
-		["Ciphers"] = args["Ciphers"],
-		["Name"] = args["Name"],
+		["S3BucketPrefix"] = args["S3BucketPrefix"],
+		["EmitInterval"] = args["EmitInterval"],
+		["Enabled"] = args["Enabled"],
+		["S3BucketName"] = args["S3BucketName"],
 	}
-	asserts.AssertSslPolicy(all_args)
+	asserts.AssertAccessLog(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1051,27 +705,33 @@ function M.SslPolicy(args)
     }
 end
 
-keys.DescribeListenerCertificatesOutput = { ["Certificates"] = true, ["NextMarker"] = true, nil }
+keys.LoadBalancerAttributes = { ["ConnectionDraining"] = true, ["CrossZoneLoadBalancing"] = true, ["ConnectionSettings"] = true, ["AdditionalAttributes"] = true, ["AccessLog"] = true, nil }
 
-function asserts.AssertDescribeListenerCertificatesOutput(struct)
+function asserts.AssertLoadBalancerAttributes(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeListenerCertificatesOutput to be of type 'table'")
-	if struct["Certificates"] then asserts.AssertCertificateList(struct["Certificates"]) end
-	if struct["NextMarker"] then asserts.AssertMarker(struct["NextMarker"]) end
+	assert(type(struct) == "table", "Expected LoadBalancerAttributes to be of type 'table'")
+	if struct["ConnectionDraining"] then asserts.AssertConnectionDraining(struct["ConnectionDraining"]) end
+	if struct["CrossZoneLoadBalancing"] then asserts.AssertCrossZoneLoadBalancing(struct["CrossZoneLoadBalancing"]) end
+	if struct["ConnectionSettings"] then asserts.AssertConnectionSettings(struct["ConnectionSettings"]) end
+	if struct["AdditionalAttributes"] then asserts.AssertAdditionalAttributes(struct["AdditionalAttributes"]) end
+	if struct["AccessLog"] then asserts.AssertAccessLog(struct["AccessLog"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DescribeListenerCertificatesOutput[k], "DescribeListenerCertificatesOutput contains unknown key " .. tostring(k))
+		assert(keys.LoadBalancerAttributes[k], "LoadBalancerAttributes contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DescribeListenerCertificatesOutput
---  
+--- Create a structure of type LoadBalancerAttributes
+-- <p>The attributes for a load balancer.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Certificates [CertificateList] <p>Information about the certificates.</p>
--- * NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- @return DescribeListenerCertificatesOutput structure as a key-value pair table
-function M.DescribeListenerCertificatesOutput(args)
-	assert(args, "You must provide an argument table when creating DescribeListenerCertificatesOutput")
+-- * ConnectionDraining [ConnectionDraining] <p>If enabled, the load balancer allows existing requests to complete before the load balancer shifts traffic away from a deregistered or unhealthy instance.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html">Configure Connection Draining</a> in the <i>Classic Load Balancers Guide</i>.</p>
+-- * CrossZoneLoadBalancing [CrossZoneLoadBalancing] <p>If enabled, the load balancer routes the request traffic evenly across all instances regardless of the Availability Zones.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html">Configure Cross-Zone Load Balancing</a> in the <i>Classic Load Balancers Guide</i>.</p>
+-- * ConnectionSettings [ConnectionSettings] <p>If enabled, the load balancer allows the connections to remain idle (no data is sent over the connection) for the specified duration.</p> <p>By default, Elastic Load Balancing maintains a 60-second idle connection timeout for both front-end and back-end connections of your load balancer. For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html">Configure Idle Connection Timeout</a> in the <i>Classic Load Balancers Guide</i>.</p>
+-- * AdditionalAttributes [AdditionalAttributes] <p>This parameter is reserved.</p>
+-- * AccessLog [AccessLog] <p>If enabled, the load balancer captures detailed information of all requests and delivers the information to the Amazon S3 bucket that you specify.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-access-logs.html">Enable Access Logs</a> in the <i>Classic Load Balancers Guide</i>.</p>
+-- @return LoadBalancerAttributes structure as a key-value pair table
+function M.LoadBalancerAttributes(args)
+	assert(args, "You must provide an argument table when creating LoadBalancerAttributes")
     local query_args = { 
     }
     local uri_args = { 
@@ -1079,10 +739,13 @@ function M.DescribeListenerCertificatesOutput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Certificates"] = args["Certificates"],
-		["NextMarker"] = args["NextMarker"],
+		["ConnectionDraining"] = args["ConnectionDraining"],
+		["CrossZoneLoadBalancing"] = args["CrossZoneLoadBalancing"],
+		["ConnectionSettings"] = args["ConnectionSettings"],
+		["AdditionalAttributes"] = args["AdditionalAttributes"],
+		["AccessLog"] = args["AccessLog"],
 	}
-	asserts.AssertDescribeListenerCertificatesOutput(all_args)
+	asserts.AssertLoadBalancerAttributes(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1091,58 +754,24 @@ function M.DescribeListenerCertificatesOutput(args)
     }
 end
 
-keys.InvalidSubnetException = { nil }
-
-function asserts.AssertInvalidSubnetException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidSubnetException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidSubnetException[k], "InvalidSubnetException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidSubnetException
--- <p>The specified subnet is out of available addresses.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidSubnetException structure as a key-value pair table
-function M.InvalidSubnetException(args)
-	assert(args, "You must provide an argument table when creating InvalidSubnetException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidSubnetException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TagDescription = { ["ResourceArn"] = true, ["Tags"] = true, nil }
+keys.TagDescription = { ["Tags"] = true, ["LoadBalancerName"] = true, nil }
 
 function asserts.AssertTagDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TagDescription to be of type 'table'")
-	if struct["ResourceArn"] then asserts.AssertResourceArn(struct["ResourceArn"]) end
 	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.TagDescription[k], "TagDescription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TagDescription
--- <p>The tags associated with a resource.</p>
+-- <p>The tags associated with a load balancer.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ResourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the resource.</p>
--- * Tags [TagList] <p>Information about the tags.</p>
+-- * Tags [TagList] <p>The tags.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
 -- @return TagDescription structure as a key-value pair table
 function M.TagDescription(args)
 	assert(args, "You must provide an argument table when creating TagDescription")
@@ -1153,8 +782,8 @@ function M.TagDescription(args)
     local header_args = { 
     }
 	local all_args = { 
-		["ResourceArn"] = args["ResourceArn"],
 		["Tags"] = args["Tags"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
 	}
 	asserts.AssertTagDescription(all_args)
 	return {
@@ -1207,112 +836,25 @@ function M.Tag(args)
     }
 end
 
-keys.DescribeTargetGroupAttributesOutput = { ["Attributes"] = true, nil }
+keys.AttachLoadBalancerToSubnetsOutput = { ["Subnets"] = true, nil }
 
-function asserts.AssertDescribeTargetGroupAttributesOutput(struct)
+function asserts.AssertAttachLoadBalancerToSubnetsOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeTargetGroupAttributesOutput to be of type 'table'")
-	if struct["Attributes"] then asserts.AssertTargetGroupAttributes(struct["Attributes"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DescribeTargetGroupAttributesOutput[k], "DescribeTargetGroupAttributesOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DescribeTargetGroupAttributesOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Attributes [TargetGroupAttributes] <p>Information about the target group attributes</p>
--- @return DescribeTargetGroupAttributesOutput structure as a key-value pair table
-function M.DescribeTargetGroupAttributesOutput(args)
-	assert(args, "You must provide an argument table when creating DescribeTargetGroupAttributesOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Attributes"] = args["Attributes"],
-	}
-	asserts.AssertDescribeTargetGroupAttributesOutput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CertificateNotFoundException = { nil }
-
-function asserts.AssertCertificateNotFoundException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CertificateNotFoundException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.CertificateNotFoundException[k], "CertificateNotFoundException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CertificateNotFoundException
--- <p>The specified certificate does not exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return CertificateNotFoundException structure as a key-value pair table
-function M.CertificateNotFoundException(args)
-	assert(args, "You must provide an argument table when creating CertificateNotFoundException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertCertificateNotFoundException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CreateLoadBalancerInput = { ["IpAddressType"] = true, ["Subnets"] = true, ["Name"] = true, ["Tags"] = true, ["SubnetMappings"] = true, ["SecurityGroups"] = true, ["Scheme"] = true, ["Type"] = true, nil }
-
-function asserts.AssertCreateLoadBalancerInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CreateLoadBalancerInput to be of type 'table'")
-	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["IpAddressType"] then asserts.AssertIpAddressType(struct["IpAddressType"]) end
+	assert(type(struct) == "table", "Expected AttachLoadBalancerToSubnetsOutput to be of type 'table'")
 	if struct["Subnets"] then asserts.AssertSubnets(struct["Subnets"]) end
-	if struct["Name"] then asserts.AssertLoadBalancerName(struct["Name"]) end
-	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
-	if struct["SubnetMappings"] then asserts.AssertSubnetMappings(struct["SubnetMappings"]) end
-	if struct["SecurityGroups"] then asserts.AssertSecurityGroups(struct["SecurityGroups"]) end
-	if struct["Scheme"] then asserts.AssertLoadBalancerSchemeEnum(struct["Scheme"]) end
-	if struct["Type"] then asserts.AssertLoadBalancerTypeEnum(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.CreateLoadBalancerInput[k], "CreateLoadBalancerInput contains unknown key " .. tostring(k))
+		assert(keys.AttachLoadBalancerToSubnetsOutput[k], "AttachLoadBalancerToSubnetsOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type CreateLoadBalancerInput
---  
+--- Create a structure of type AttachLoadBalancerToSubnetsOutput
+-- <p>Contains the output of AttachLoadBalancerToSubnets.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * IpAddressType [IpAddressType] <p>[Application Load Balancers] The type of IP addresses used by the subnets for your load balancer. The possible values are <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal load balancers must use <code>ipv4</code>.</p>
--- * Subnets [Subnets] <p>The IDs of the public subnets. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.</p> <p>[Application Load Balancers] You must specify subnets from at least two Availability Zones.</p> <p>[Network Load Balancers] You can specify subnets from one or more Availability Zones.</p>
--- * Name [LoadBalancerName] <p>The name of the load balancer.</p> <p>This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, must not begin or end with a hyphen, and must not begin with "internal-".</p>
--- * Tags [TagList] <p>One or more tags to assign to the load balancer.</p>
--- * SubnetMappings [SubnetMappings] <p>The IDs of the public subnets. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.</p> <p>[Application Load Balancers] You must specify subnets from at least two Availability Zones. You cannot specify Elastic IP addresses for your subnets.</p> <p>[Network Load Balancers] You can specify subnets from one or more Availability Zones. You can specify one Elastic IP address per subnet.</p>
--- * SecurityGroups [SecurityGroups] <p>[Application Load Balancers] The IDs of the security groups for the load balancer.</p>
--- * Scheme [LoadBalancerSchemeEnum] <p>The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the internet.</p> <p>The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer.</p> <p>The default is an Internet-facing load balancer.</p>
--- * Type [LoadBalancerTypeEnum] <p>The type of load balancer. The default is <code>application</code>.</p>
--- Required key: Name
--- @return CreateLoadBalancerInput structure as a key-value pair table
-function M.CreateLoadBalancerInput(args)
-	assert(args, "You must provide an argument table when creating CreateLoadBalancerInput")
+-- * Subnets [Subnets] <p>The IDs of the subnets attached to the load balancer.</p>
+-- @return AttachLoadBalancerToSubnetsOutput structure as a key-value pair table
+function M.AttachLoadBalancerToSubnetsOutput(args)
+	assert(args, "You must provide an argument table when creating AttachLoadBalancerToSubnetsOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -1320,16 +862,102 @@ function M.CreateLoadBalancerInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["IpAddressType"] = args["IpAddressType"],
 		["Subnets"] = args["Subnets"],
-		["Name"] = args["Name"],
-		["Tags"] = args["Tags"],
-		["SubnetMappings"] = args["SubnetMappings"],
-		["SecurityGroups"] = args["SecurityGroups"],
+	}
+	asserts.AssertAttachLoadBalancerToSubnetsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SetLoadBalancerPoliciesForBackendServerOutput = { nil }
+
+function asserts.AssertSetLoadBalancerPoliciesForBackendServerOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SetLoadBalancerPoliciesForBackendServerOutput to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.SetLoadBalancerPoliciesForBackendServerOutput[k], "SetLoadBalancerPoliciesForBackendServerOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SetLoadBalancerPoliciesForBackendServerOutput
+-- <p>Contains the output of SetLoadBalancerPoliciesForBackendServer.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SetLoadBalancerPoliciesForBackendServerOutput structure as a key-value pair table
+function M.SetLoadBalancerPoliciesForBackendServerOutput(args)
+	assert(args, "You must provide an argument table when creating SetLoadBalancerPoliciesForBackendServerOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertSetLoadBalancerPoliciesForBackendServerOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateAccessPointInput = { ["Subnets"] = true, ["Scheme"] = true, ["Tags"] = true, ["Listeners"] = true, ["SecurityGroups"] = true, ["LoadBalancerName"] = true, ["AvailabilityZones"] = true, nil }
+
+function asserts.AssertCreateAccessPointInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateAccessPointInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	assert(struct["Listeners"], "Expected key Listeners to exist in table")
+	if struct["Subnets"] then asserts.AssertSubnets(struct["Subnets"]) end
+	if struct["Scheme"] then asserts.AssertLoadBalancerScheme(struct["Scheme"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["Listeners"] then asserts.AssertListeners(struct["Listeners"]) end
+	if struct["SecurityGroups"] then asserts.AssertSecurityGroups(struct["SecurityGroups"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
+	if struct["AvailabilityZones"] then asserts.AssertAvailabilityZones(struct["AvailabilityZones"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateAccessPointInput[k], "CreateAccessPointInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateAccessPointInput
+-- <p>Contains the parameters for CreateLoadBalancer.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Subnets [Subnets] <p>The IDs of the subnets in your VPC to attach to the load balancer. Specify one subnet per Availability Zone specified in <code>AvailabilityZones</code>.</p>
+-- * Scheme [LoadBalancerScheme] <p>The type of a load balancer. Valid only for load balancers in a VPC.</p> <p>By default, Elastic Load Balancing creates an Internet-facing load balancer with a DNS name that resolves to public IP addresses. For more information about Internet-facing and Internal load balancers, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html#load-balancer-scheme">Load Balancer Scheme</a> in the <i>Elastic Load Balancing User Guide</i>.</p> <p>Specify <code>internal</code> to create a load balancer with a DNS name that resolves to private IP addresses.</p>
+-- * Tags [TagList] <p>A list of tags to assign to the load balancer.</p> <p>For more information about tagging your load balancer, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html">Tag Your Classic Load Balancer</a> in the <i>Classic Load Balancers Guide</i>.</p>
+-- * Listeners [Listeners] <p>The listeners.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html">Listeners for Your Classic Load Balancer</a> in the <i>Classic Load Balancers Guide</i>.</p>
+-- * SecurityGroups [SecurityGroups] <p>The IDs of the security groups to assign to the load balancer.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p> <p>This name must be unique within your set of load balancers for the region, must have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and cannot begin or end with a hyphen.</p>
+-- * AvailabilityZones [AvailabilityZones] <p>One or more Availability Zones from the same region as the load balancer.</p> <p>You must specify at least one Availability Zone.</p> <p>You can add more Availability Zones after you create the load balancer using <a>EnableAvailabilityZonesForLoadBalancer</a>.</p>
+-- Required key: LoadBalancerName
+-- Required key: Listeners
+-- @return CreateAccessPointInput structure as a key-value pair table
+function M.CreateAccessPointInput(args)
+	assert(args, "You must provide an argument table when creating CreateAccessPointInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Subnets"] = args["Subnets"],
 		["Scheme"] = args["Scheme"],
-		["Type"] = args["Type"],
+		["Tags"] = args["Tags"],
+		["Listeners"] = args["Listeners"],
+		["SecurityGroups"] = args["SecurityGroups"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
+		["AvailabilityZones"] = args["AvailabilityZones"],
 	}
-	asserts.AssertCreateLoadBalancerInput(all_args)
+	asserts.AssertCreateAccessPointInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1338,31 +966,33 @@ function M.CreateLoadBalancerInput(args)
     }
 end
 
-keys.SetIpAddressTypeInput = { ["IpAddressType"] = true, ["LoadBalancerArn"] = true, nil }
+keys.CreateLBCookieStickinessPolicyInput = { ["PolicyName"] = true, ["CookieExpirationPeriod"] = true, ["LoadBalancerName"] = true, nil }
 
-function asserts.AssertSetIpAddressTypeInput(struct)
+function asserts.AssertCreateLBCookieStickinessPolicyInput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SetIpAddressTypeInput to be of type 'table'")
-	assert(struct["LoadBalancerArn"], "Expected key LoadBalancerArn to exist in table")
-	assert(struct["IpAddressType"], "Expected key IpAddressType to exist in table")
-	if struct["IpAddressType"] then asserts.AssertIpAddressType(struct["IpAddressType"]) end
-	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
+	assert(type(struct) == "table", "Expected CreateLBCookieStickinessPolicyInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	assert(struct["PolicyName"], "Expected key PolicyName to exist in table")
+	if struct["PolicyName"] then asserts.AssertPolicyName(struct["PolicyName"]) end
+	if struct["CookieExpirationPeriod"] then asserts.AssertCookieExpirationPeriod(struct["CookieExpirationPeriod"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SetIpAddressTypeInput[k], "SetIpAddressTypeInput contains unknown key " .. tostring(k))
+		assert(keys.CreateLBCookieStickinessPolicyInput[k], "CreateLBCookieStickinessPolicyInput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SetIpAddressTypeInput
---  
+--- Create a structure of type CreateLBCookieStickinessPolicyInput
+-- <p>Contains the parameters for CreateLBCookieStickinessPolicy.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * IpAddressType [IpAddressType] <p>The IP address type. The possible values are <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal load balancers must use <code>ipv4</code>.</p>
--- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- Required key: LoadBalancerArn
--- Required key: IpAddressType
--- @return SetIpAddressTypeInput structure as a key-value pair table
-function M.SetIpAddressTypeInput(args)
-	assert(args, "You must provide an argument table when creating SetIpAddressTypeInput")
+-- * PolicyName [PolicyName] <p>The name of the policy being created. Policy names must consist of alphanumeric characters and dashes (-). This name must be unique within the set of policies for this load balancer.</p>
+-- * CookieExpirationPeriod [CookieExpirationPeriod] <p>The time period, in seconds, after which the cookie should be considered stale. If you do not specify this parameter, the default value is 0, which indicates that the sticky session should last for the duration of the browser session.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- Required key: PolicyName
+-- @return CreateLBCookieStickinessPolicyInput structure as a key-value pair table
+function M.CreateLBCookieStickinessPolicyInput(args)
+	assert(args, "You must provide an argument table when creating CreateLBCookieStickinessPolicyInput")
     local query_args = { 
     }
     local uri_args = { 
@@ -1370,10 +1000,11 @@ function M.SetIpAddressTypeInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["IpAddressType"] = args["IpAddressType"],
-		["LoadBalancerArn"] = args["LoadBalancerArn"],
+		["PolicyName"] = args["PolicyName"],
+		["CookieExpirationPeriod"] = args["CookieExpirationPeriod"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
 	}
-	asserts.AssertSetIpAddressTypeInput(all_args)
+	asserts.AssertCreateLBCookieStickinessPolicyInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1382,23 +1013,29 @@ function M.SetIpAddressTypeInput(args)
     }
 end
 
-keys.AvailabilityZoneNotSupportedException = { nil }
+keys.PolicyDescription = { ["PolicyAttributeDescriptions"] = true, ["PolicyName"] = true, ["PolicyTypeName"] = true, nil }
 
-function asserts.AssertAvailabilityZoneNotSupportedException(struct)
+function asserts.AssertPolicyDescription(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected AvailabilityZoneNotSupportedException to be of type 'table'")
+	assert(type(struct) == "table", "Expected PolicyDescription to be of type 'table'")
+	if struct["PolicyAttributeDescriptions"] then asserts.AssertPolicyAttributeDescriptions(struct["PolicyAttributeDescriptions"]) end
+	if struct["PolicyName"] then asserts.AssertPolicyName(struct["PolicyName"]) end
+	if struct["PolicyTypeName"] then asserts.AssertPolicyTypeName(struct["PolicyTypeName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.AvailabilityZoneNotSupportedException[k], "AvailabilityZoneNotSupportedException contains unknown key " .. tostring(k))
+		assert(keys.PolicyDescription[k], "PolicyDescription contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type AvailabilityZoneNotSupportedException
--- <p>The specified Availability Zone is not supported.</p>
+--- Create a structure of type PolicyDescription
+-- <p>Information about a policy.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return AvailabilityZoneNotSupportedException structure as a key-value pair table
-function M.AvailabilityZoneNotSupportedException(args)
-	assert(args, "You must provide an argument table when creating AvailabilityZoneNotSupportedException")
+-- * PolicyAttributeDescriptions [PolicyAttributeDescriptions] <p>The policy attributes.</p>
+-- * PolicyName [PolicyName] <p>The name of the policy.</p>
+-- * PolicyTypeName [PolicyTypeName] <p>The name of the policy type.</p>
+-- @return PolicyDescription structure as a key-value pair table
+function M.PolicyDescription(args)
+	assert(args, "You must provide an argument table when creating PolicyDescription")
     local query_args = { 
     }
     local uri_args = { 
@@ -1406,8 +1043,11 @@ function M.AvailabilityZoneNotSupportedException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["PolicyAttributeDescriptions"] = args["PolicyAttributeDescriptions"],
+		["PolicyName"] = args["PolicyName"],
+		["PolicyTypeName"] = args["PolicyTypeName"],
 	}
-	asserts.AssertAvailabilityZoneNotSupportedException(all_args)
+	asserts.AssertPolicyDescription(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1416,23 +1056,31 @@ function M.AvailabilityZoneNotSupportedException(args)
     }
 end
 
-keys.DeregisterTargetsOutput = { nil }
+keys.DeleteLoadBalancerListenerInput = { ["LoadBalancerPorts"] = true, ["LoadBalancerName"] = true, nil }
 
-function asserts.AssertDeregisterTargetsOutput(struct)
+function asserts.AssertDeleteLoadBalancerListenerInput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeregisterTargetsOutput to be of type 'table'")
+	assert(type(struct) == "table", "Expected DeleteLoadBalancerListenerInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	assert(struct["LoadBalancerPorts"], "Expected key LoadBalancerPorts to exist in table")
+	if struct["LoadBalancerPorts"] then asserts.AssertPorts(struct["LoadBalancerPorts"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DeregisterTargetsOutput[k], "DeregisterTargetsOutput contains unknown key " .. tostring(k))
+		assert(keys.DeleteLoadBalancerListenerInput[k], "DeleteLoadBalancerListenerInput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeregisterTargetsOutput
---  
+--- Create a structure of type DeleteLoadBalancerListenerInput
+-- <p>Contains the parameters for DeleteLoadBalancerListeners.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return DeregisterTargetsOutput structure as a key-value pair table
-function M.DeregisterTargetsOutput(args)
-	assert(args, "You must provide an argument table when creating DeregisterTargetsOutput")
+-- * LoadBalancerPorts [Ports] <p>The client port numbers of the listeners.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- Required key: LoadBalancerPorts
+-- @return DeleteLoadBalancerListenerInput structure as a key-value pair table
+function M.DeleteLoadBalancerListenerInput(args)
+	assert(args, "You must provide an argument table when creating DeleteLoadBalancerListenerInput")
     local query_args = { 
     }
     local uri_args = { 
@@ -1440,8 +1088,10 @@ function M.DeregisterTargetsOutput(args)
     local header_args = { 
     }
 	local all_args = { 
+		["LoadBalancerPorts"] = args["LoadBalancerPorts"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
 	}
-	asserts.AssertDeregisterTargetsOutput(all_args)
+	asserts.AssertDeleteLoadBalancerListenerInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1450,31 +1100,29 @@ function M.DeregisterTargetsOutput(args)
     }
 end
 
-keys.DescribeListenerCertificatesInput = { ["Marker"] = true, ["PageSize"] = true, ["ListenerArn"] = true, nil }
+keys.ConnectionDraining = { ["Enabled"] = true, ["Timeout"] = true, nil }
 
-function asserts.AssertDescribeListenerCertificatesInput(struct)
+function asserts.AssertConnectionDraining(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeListenerCertificatesInput to be of type 'table'")
-	assert(struct["ListenerArn"], "Expected key ListenerArn to exist in table")
-	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
-	if struct["PageSize"] then asserts.AssertPageSize(struct["PageSize"]) end
-	if struct["ListenerArn"] then asserts.AssertListenerArn(struct["ListenerArn"]) end
+	assert(type(struct) == "table", "Expected ConnectionDraining to be of type 'table'")
+	assert(struct["Enabled"], "Expected key Enabled to exist in table")
+	if struct["Enabled"] then asserts.AssertConnectionDrainingEnabled(struct["Enabled"]) end
+	if struct["Timeout"] then asserts.AssertConnectionDrainingTimeout(struct["Timeout"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DescribeListenerCertificatesInput[k], "DescribeListenerCertificatesInput contains unknown key " .. tostring(k))
+		assert(keys.ConnectionDraining[k], "ConnectionDraining contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DescribeListenerCertificatesInput
---  
+--- Create a structure of type ConnectionDraining
+-- <p>Information about the <code>ConnectionDraining</code> attribute.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- * PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
--- * ListenerArn [ListenerArn] <p>The Amazon Resource Names (ARN) of the listener.</p>
--- Required key: ListenerArn
--- @return DescribeListenerCertificatesInput structure as a key-value pair table
-function M.DescribeListenerCertificatesInput(args)
-	assert(args, "You must provide an argument table when creating DescribeListenerCertificatesInput")
+-- * Enabled [ConnectionDrainingEnabled] <p>Specifies whether connection draining is enabled for the load balancer.</p>
+-- * Timeout [ConnectionDrainingTimeout] <p>The maximum time, in seconds, to keep the existing connections open before deregistering the instances.</p>
+-- Required key: Enabled
+-- @return ConnectionDraining structure as a key-value pair table
+function M.ConnectionDraining(args)
+	assert(args, "You must provide an argument table when creating ConnectionDraining")
     local query_args = { 
     }
     local uri_args = { 
@@ -1482,11 +1130,10 @@ function M.DescribeListenerCertificatesInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Marker"] = args["Marker"],
-		["PageSize"] = args["PageSize"],
-		["ListenerArn"] = args["ListenerArn"],
+		["Enabled"] = args["Enabled"],
+		["Timeout"] = args["Timeout"],
 	}
-	asserts.AssertDescribeListenerCertificatesInput(all_args)
+	asserts.AssertConnectionDraining(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1495,23 +1142,35 @@ function M.DescribeListenerCertificatesInput(args)
     }
 end
 
-keys.InvalidSchemeException = { nil }
+keys.SetLoadBalancerPoliciesForBackendServerInput = { ["InstancePort"] = true, ["PolicyNames"] = true, ["LoadBalancerName"] = true, nil }
 
-function asserts.AssertInvalidSchemeException(struct)
+function asserts.AssertSetLoadBalancerPoliciesForBackendServerInput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidSchemeException to be of type 'table'")
+	assert(type(struct) == "table", "Expected SetLoadBalancerPoliciesForBackendServerInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	assert(struct["InstancePort"], "Expected key InstancePort to exist in table")
+	assert(struct["PolicyNames"], "Expected key PolicyNames to exist in table")
+	if struct["InstancePort"] then asserts.AssertEndPointPort(struct["InstancePort"]) end
+	if struct["PolicyNames"] then asserts.AssertPolicyNames(struct["PolicyNames"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.InvalidSchemeException[k], "InvalidSchemeException contains unknown key " .. tostring(k))
+		assert(keys.SetLoadBalancerPoliciesForBackendServerInput[k], "SetLoadBalancerPoliciesForBackendServerInput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type InvalidSchemeException
--- <p>The requested scheme is not valid.</p>
+--- Create a structure of type SetLoadBalancerPoliciesForBackendServerInput
+-- <p>Contains the parameters for SetLoadBalancerPoliciesForBackendServer.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return InvalidSchemeException structure as a key-value pair table
-function M.InvalidSchemeException(args)
-	assert(args, "You must provide an argument table when creating InvalidSchemeException")
+-- * InstancePort [EndPointPort] <p>The port number associated with the EC2 instance.</p>
+-- * PolicyNames [PolicyNames] <p>The names of the policies. If the list is empty, then all current polices are removed from the EC2 instance.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- Required key: InstancePort
+-- Required key: PolicyNames
+-- @return SetLoadBalancerPoliciesForBackendServerInput structure as a key-value pair table
+function M.SetLoadBalancerPoliciesForBackendServerInput(args)
+	assert(args, "You must provide an argument table when creating SetLoadBalancerPoliciesForBackendServerInput")
     local query_args = { 
     }
     local uri_args = { 
@@ -1519,8 +1178,11 @@ function M.InvalidSchemeException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["InstancePort"] = args["InstancePort"],
+		["PolicyNames"] = args["PolicyNames"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
 	}
-	asserts.AssertInvalidSchemeException(all_args)
+	asserts.AssertSetLoadBalancerPoliciesForBackendServerInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1529,23 +1191,27 @@ function M.InvalidSchemeException(args)
     }
 end
 
-keys.TooManyLoadBalancersException = { nil }
+keys.DeleteAccessPointInput = { ["LoadBalancerName"] = true, nil }
 
-function asserts.AssertTooManyLoadBalancersException(struct)
+function asserts.AssertDeleteAccessPointInput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyLoadBalancersException to be of type 'table'")
+	assert(type(struct) == "table", "Expected DeleteAccessPointInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TooManyLoadBalancersException[k], "TooManyLoadBalancersException contains unknown key " .. tostring(k))
+		assert(keys.DeleteAccessPointInput[k], "DeleteAccessPointInput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TooManyLoadBalancersException
--- <p>You've reached the limit on the number of load balancers for your AWS account.</p>
+--- Create a structure of type DeleteAccessPointInput
+-- <p>Contains the parameters for DeleteLoadBalancer.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return TooManyLoadBalancersException structure as a key-value pair table
-function M.TooManyLoadBalancersException(args)
-	assert(args, "You must provide an argument table when creating TooManyLoadBalancersException")
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- @return DeleteAccessPointInput structure as a key-value pair table
+function M.DeleteAccessPointInput(args)
+	assert(args, "You must provide an argument table when creating DeleteAccessPointInput")
     local query_args = { 
     }
     local uri_args = { 
@@ -1553,8 +1219,9 @@ function M.TooManyLoadBalancersException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["LoadBalancerName"] = args["LoadBalancerName"],
 	}
-	asserts.AssertTooManyLoadBalancersException(all_args)
+	asserts.AssertDeleteAccessPointInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1563,68 +1230,36 @@ function M.TooManyLoadBalancersException(args)
     }
 end
 
-keys.AllocationIdNotFoundException = { nil }
-
-function asserts.AssertAllocationIdNotFoundException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected AllocationIdNotFoundException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.AllocationIdNotFoundException[k], "AllocationIdNotFoundException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type AllocationIdNotFoundException
--- <p>The specified allocation ID does not exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return AllocationIdNotFoundException structure as a key-value pair table
-function M.AllocationIdNotFoundException(args)
-	assert(args, "You must provide an argument table when creating AllocationIdNotFoundException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertAllocationIdNotFoundException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.Listener = { ["Protocol"] = true, ["DefaultActions"] = true, ["SslPolicy"] = true, ["Certificates"] = true, ["LoadBalancerArn"] = true, ["Port"] = true, ["ListenerArn"] = true, nil }
+keys.Listener = { ["InstancePort"] = true, ["SSLCertificateId"] = true, ["LoadBalancerPort"] = true, ["Protocol"] = true, ["InstanceProtocol"] = true, nil }
 
 function asserts.AssertListener(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Listener to be of type 'table'")
-	if struct["Protocol"] then asserts.AssertProtocolEnum(struct["Protocol"]) end
-	if struct["DefaultActions"] then asserts.AssertActions(struct["DefaultActions"]) end
-	if struct["SslPolicy"] then asserts.AssertSslPolicyName(struct["SslPolicy"]) end
-	if struct["Certificates"] then asserts.AssertCertificateList(struct["Certificates"]) end
-	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
-	if struct["Port"] then asserts.AssertPort(struct["Port"]) end
-	if struct["ListenerArn"] then asserts.AssertListenerArn(struct["ListenerArn"]) end
+	assert(struct["Protocol"], "Expected key Protocol to exist in table")
+	assert(struct["LoadBalancerPort"], "Expected key LoadBalancerPort to exist in table")
+	assert(struct["InstancePort"], "Expected key InstancePort to exist in table")
+	if struct["InstancePort"] then asserts.AssertInstancePort(struct["InstancePort"]) end
+	if struct["SSLCertificateId"] then asserts.AssertSSLCertificateId(struct["SSLCertificateId"]) end
+	if struct["LoadBalancerPort"] then asserts.AssertAccessPointPort(struct["LoadBalancerPort"]) end
+	if struct["Protocol"] then asserts.AssertProtocol(struct["Protocol"]) end
+	if struct["InstanceProtocol"] then asserts.AssertProtocol(struct["InstanceProtocol"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.Listener[k], "Listener contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Listener
--- <p>Information about a listener.</p>
+-- <p>Information about a listener.</p> <p>For information about the protocols and the ports supported by Elastic Load Balancing, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html">Listeners for Your Classic Load Balancer</a> in the <i>Classic Load Balancers Guide</i>.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Protocol [ProtocolEnum] <p>The protocol for connections from clients to the load balancer.</p>
--- * DefaultActions [Actions] <p>The default actions for the listener.</p>
--- * SslPolicy [SslPolicyName] <p>The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.</p>
--- * Certificates [CertificateList] <p>The SSL server certificate. You must provide a certificate if the protocol is HTTPS.</p>
--- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- * Port [Port] <p>The port on which the load balancer is listening.</p>
--- * ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
+-- * InstancePort [InstancePort] <p>The port on which the instance is listening.</p>
+-- * SSLCertificateId [SSLCertificateId] <p>The Amazon Resource Name (ARN) of the server certificate.</p>
+-- * LoadBalancerPort [AccessPointPort] <p>The port on which the load balancer is listening. On EC2-VPC, you can specify any port from the range 1-65535. On EC2-Classic, you can specify any port from the following list: 25, 80, 443, 465, 587, 1024-65535.</p>
+-- * Protocol [Protocol] <p>The load balancer transport protocol to use for routing: HTTP, HTTPS, TCP, or SSL.</p>
+-- * InstanceProtocol [Protocol] <p>The protocol to use for routing traffic to instances: HTTP, HTTPS, TCP, or SSL.</p> <p>If the front-end protocol is HTTP, HTTPS, TCP, or SSL, <code>InstanceProtocol</code> must be at the same protocol.</p> <p>If there is another listener with the same <code>InstancePort</code> whose <code>InstanceProtocol</code> is secure, (HTTPS or SSL), the listener's <code>InstanceProtocol</code> must also be secure.</p> <p>If there is another listener with the same <code>InstancePort</code> whose <code>InstanceProtocol</code> is HTTP or TCP, the listener's <code>InstanceProtocol</code> must be HTTP or TCP.</p>
+-- Required key: Protocol
+-- Required key: LoadBalancerPort
+-- Required key: InstancePort
 -- @return Listener structure as a key-value pair table
 function M.Listener(args)
 	assert(args, "You must provide an argument table when creating Listener")
@@ -1635,13 +1270,11 @@ function M.Listener(args)
     local header_args = { 
     }
 	local all_args = { 
+		["InstancePort"] = args["InstancePort"],
+		["SSLCertificateId"] = args["SSLCertificateId"],
+		["LoadBalancerPort"] = args["LoadBalancerPort"],
 		["Protocol"] = args["Protocol"],
-		["DefaultActions"] = args["DefaultActions"],
-		["SslPolicy"] = args["SslPolicy"],
-		["Certificates"] = args["Certificates"],
-		["LoadBalancerArn"] = args["LoadBalancerArn"],
-		["Port"] = args["Port"],
-		["ListenerArn"] = args["ListenerArn"],
+		["InstanceProtocol"] = args["InstanceProtocol"],
 	}
 	asserts.AssertListener(all_args)
 	return {
@@ -1652,45 +1285,27 @@ function M.Listener(args)
     }
 end
 
-keys.AuthenticateCognitoActionConfig = { ["UserPoolDomain"] = true, ["UserPoolArn"] = true, ["AuthenticationRequestExtraParams"] = true, ["SessionTimeout"] = true, ["Scope"] = true, ["SessionCookieName"] = true, ["UserPoolClientId"] = true, ["OnUnauthenticatedRequest"] = true, nil }
+keys.BackendServerDescription = { ["InstancePort"] = true, ["PolicyNames"] = true, nil }
 
-function asserts.AssertAuthenticateCognitoActionConfig(struct)
+function asserts.AssertBackendServerDescription(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected AuthenticateCognitoActionConfig to be of type 'table'")
-	assert(struct["UserPoolArn"], "Expected key UserPoolArn to exist in table")
-	assert(struct["UserPoolClientId"], "Expected key UserPoolClientId to exist in table")
-	assert(struct["UserPoolDomain"], "Expected key UserPoolDomain to exist in table")
-	if struct["UserPoolDomain"] then asserts.AssertAuthenticateCognitoActionUserPoolDomain(struct["UserPoolDomain"]) end
-	if struct["UserPoolArn"] then asserts.AssertAuthenticateCognitoActionUserPoolArn(struct["UserPoolArn"]) end
-	if struct["AuthenticationRequestExtraParams"] then asserts.AssertAuthenticateCognitoActionAuthenticationRequestExtraParams(struct["AuthenticationRequestExtraParams"]) end
-	if struct["SessionTimeout"] then asserts.AssertAuthenticateCognitoActionSessionTimeout(struct["SessionTimeout"]) end
-	if struct["Scope"] then asserts.AssertAuthenticateCognitoActionScope(struct["Scope"]) end
-	if struct["SessionCookieName"] then asserts.AssertAuthenticateCognitoActionSessionCookieName(struct["SessionCookieName"]) end
-	if struct["UserPoolClientId"] then asserts.AssertAuthenticateCognitoActionUserPoolClientId(struct["UserPoolClientId"]) end
-	if struct["OnUnauthenticatedRequest"] then asserts.AssertAuthenticateCognitoActionConditionalBehaviorEnum(struct["OnUnauthenticatedRequest"]) end
+	assert(type(struct) == "table", "Expected BackendServerDescription to be of type 'table'")
+	if struct["InstancePort"] then asserts.AssertInstancePort(struct["InstancePort"]) end
+	if struct["PolicyNames"] then asserts.AssertPolicyNames(struct["PolicyNames"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.AuthenticateCognitoActionConfig[k], "AuthenticateCognitoActionConfig contains unknown key " .. tostring(k))
+		assert(keys.BackendServerDescription[k], "BackendServerDescription contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type AuthenticateCognitoActionConfig
--- <p>Request parameters to use when integrating with Amazon Cognito to authenticate users.</p>
+--- Create a structure of type BackendServerDescription
+-- <p>Information about the configuration of an EC2 instance.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * UserPoolDomain [AuthenticateCognitoActionUserPoolDomain] <p>The domain prefix or fully-qualified domain name of the Amazon Cognito user pool.</p>
--- * UserPoolArn [AuthenticateCognitoActionUserPoolArn] <p>The Amazon Resource Name (ARN) of the Amazon Cognito user pool.</p>
--- * AuthenticationRequestExtraParams [AuthenticateCognitoActionAuthenticationRequestExtraParams] <p>The query parameters (up to 10) to include in the redirect request to the authorization endpoint.</p>
--- * SessionTimeout [AuthenticateCognitoActionSessionTimeout] <p>The maximum duration of the authentication session, in seconds. The default is 604800 seconds (7 days).</p>
--- * Scope [AuthenticateCognitoActionScope] <p>The set of user claims to be requested from the IdP. The default is <code>openid</code>.</p> <p>To verify which scope values your IdP supports and how to separate multiple values, see the documentation for your IdP.</p>
--- * SessionCookieName [AuthenticateCognitoActionSessionCookieName] <p>The name of the cookie used to maintain session information. The default is AWSELBAuthSessionCookie.</p>
--- * UserPoolClientId [AuthenticateCognitoActionUserPoolClientId] <p>The ID of the Amazon Cognito user pool client.</p>
--- * OnUnauthenticatedRequest [AuthenticateCognitoActionConditionalBehaviorEnum] <p>The behavior if the user is not authenticated. The following are possible values:</p> <ul> <li> <p>deny<code/> - Return an HTTP 401 Unauthorized error.</p> </li> <li> <p>allow<code/> - Allow the request to be forwarded to the target.</p> </li> <li> <p>authenticate<code/> - Redirect the request to the IdP authorization endpoint. This is the default value.</p> </li> </ul>
--- Required key: UserPoolArn
--- Required key: UserPoolClientId
--- Required key: UserPoolDomain
--- @return AuthenticateCognitoActionConfig structure as a key-value pair table
-function M.AuthenticateCognitoActionConfig(args)
-	assert(args, "You must provide an argument table when creating AuthenticateCognitoActionConfig")
+-- * InstancePort [InstancePort] <p>The port on which the EC2 instance is listening.</p>
+-- * PolicyNames [PolicyNames] <p>The names of the policies enabled for the EC2 instance.</p>
+-- @return BackendServerDescription structure as a key-value pair table
+function M.BackendServerDescription(args)
+	assert(args, "You must provide an argument table when creating BackendServerDescription")
     local query_args = { 
     }
     local uri_args = { 
@@ -1698,16 +1313,10 @@ function M.AuthenticateCognitoActionConfig(args)
     local header_args = { 
     }
 	local all_args = { 
-		["UserPoolDomain"] = args["UserPoolDomain"],
-		["UserPoolArn"] = args["UserPoolArn"],
-		["AuthenticationRequestExtraParams"] = args["AuthenticationRequestExtraParams"],
-		["SessionTimeout"] = args["SessionTimeout"],
-		["Scope"] = args["Scope"],
-		["SessionCookieName"] = args["SessionCookieName"],
-		["UserPoolClientId"] = args["UserPoolClientId"],
-		["OnUnauthenticatedRequest"] = args["OnUnauthenticatedRequest"],
+		["InstancePort"] = args["InstancePort"],
+		["PolicyNames"] = args["PolicyNames"],
 	}
-	asserts.AssertAuthenticateCognitoActionConfig(all_args)
+	asserts.AssertBackendServerDescription(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1716,63 +1325,29 @@ function M.AuthenticateCognitoActionConfig(args)
     }
 end
 
-keys.TooManyRulesException = { nil }
+keys.PolicyTypeDescription = { ["PolicyAttributeTypeDescriptions"] = true, ["PolicyTypeName"] = true, ["Description"] = true, nil }
 
-function asserts.AssertTooManyRulesException(struct)
+function asserts.AssertPolicyTypeDescription(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyRulesException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TooManyRulesException[k], "TooManyRulesException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TooManyRulesException
--- <p>You've reached the limit on the number of rules per load balancer.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TooManyRulesException structure as a key-value pair table
-function M.TooManyRulesException(args)
-	assert(args, "You must provide an argument table when creating TooManyRulesException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTooManyRulesException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TargetHealth = { ["State"] = true, ["Reason"] = true, ["Description"] = true, nil }
-
-function asserts.AssertTargetHealth(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TargetHealth to be of type 'table'")
-	if struct["State"] then asserts.AssertTargetHealthStateEnum(struct["State"]) end
-	if struct["Reason"] then asserts.AssertTargetHealthReasonEnum(struct["Reason"]) end
+	assert(type(struct) == "table", "Expected PolicyTypeDescription to be of type 'table'")
+	if struct["PolicyAttributeTypeDescriptions"] then asserts.AssertPolicyAttributeTypeDescriptions(struct["PolicyAttributeTypeDescriptions"]) end
+	if struct["PolicyTypeName"] then asserts.AssertPolicyTypeName(struct["PolicyTypeName"]) end
 	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TargetHealth[k], "TargetHealth contains unknown key " .. tostring(k))
+		assert(keys.PolicyTypeDescription[k], "PolicyTypeDescription contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TargetHealth
--- <p>Information about the current health of a target.</p>
+--- Create a structure of type PolicyTypeDescription
+-- <p>Information about a policy type.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * State [TargetHealthStateEnum] <p>The state of the target.</p>
--- * Reason [TargetHealthReasonEnum] <p>The reason code. If the target state is <code>healthy</code>, a reason code is not provided.</p> <p>If the target state is <code>initial</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Elb.RegistrationInProgress</code> - The target is in the process of being registered with the load balancer.</p> </li> <li> <p> <code>Elb.InitialHealthChecking</code> - The load balancer is still sending the target the minimum number of health checks required to determine its health status.</p> </li> </ul> <p>If the target state is <code>unhealthy</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code.</p> </li> <li> <p> <code>Target.Timeout</code> - The health check requests timed out.</p> </li> <li> <p> <code>Target.FailedHealthChecks</code> - The health checks failed because the connection to the target timed out, the target response was malformed, or the target failed the health check for an unknown reason.</p> </li> <li> <p> <code>Elb.InternalError</code> - The health checks failed due to an internal error.</p> </li> </ul> <p>If the target state is <code>unused</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Target.NotRegistered</code> - The target is not registered with the target group.</p> </li> <li> <p> <code>Target.NotInUse</code> - The target group is not used by any load balancer or the target is in an Availability Zone that is not enabled for its load balancer.</p> </li> <li> <p> <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.</p> </li> <li> <p> <code>Target.InvalidState</code> - The target is in the stopped or terminated state.</p> </li> </ul> <p>If the target state is <code>draining</code>, the reason code can be the following value:</p> <ul> <li> <p> <code>Target.DeregistrationInProgress</code> - The target is in the process of being deregistered and the deregistration delay period has not expired.</p> </li> </ul>
--- * Description [Description] <p>A description of the target health that provides additional details. If the state is <code>healthy</code>, a description is not provided.</p>
--- @return TargetHealth structure as a key-value pair table
-function M.TargetHealth(args)
-	assert(args, "You must provide an argument table when creating TargetHealth")
+-- * PolicyAttributeTypeDescriptions [PolicyAttributeTypeDescriptions] <p>The description of the policy attributes associated with the policies defined by Elastic Load Balancing.</p>
+-- * PolicyTypeName [PolicyTypeName] <p>The name of the policy type.</p>
+-- * Description [Description] <p>A description of the policy type.</p>
+-- @return PolicyTypeDescription structure as a key-value pair table
+function M.PolicyTypeDescription(args)
+	assert(args, "You must provide an argument table when creating PolicyTypeDescription")
     local query_args = { 
     }
     local uri_args = { 
@@ -1780,11 +1355,11 @@ function M.TargetHealth(args)
     local header_args = { 
     }
 	local all_args = { 
-		["State"] = args["State"],
-		["Reason"] = args["Reason"],
+		["PolicyAttributeTypeDescriptions"] = args["PolicyAttributeTypeDescriptions"],
+		["PolicyTypeName"] = args["PolicyTypeName"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertTargetHealth(all_args)
+	asserts.AssertPolicyTypeDescription(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1793,24 +1368,117 @@ function M.TargetHealth(args)
     }
 end
 
-keys.DescribeLoadBalancerAttributesInput = { ["LoadBalancerArn"] = true, nil }
+keys.HealthCheck = { ["HealthyThreshold"] = true, ["Interval"] = true, ["Target"] = true, ["Timeout"] = true, ["UnhealthyThreshold"] = true, nil }
+
+function asserts.AssertHealthCheck(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected HealthCheck to be of type 'table'")
+	assert(struct["Target"], "Expected key Target to exist in table")
+	assert(struct["Interval"], "Expected key Interval to exist in table")
+	assert(struct["Timeout"], "Expected key Timeout to exist in table")
+	assert(struct["UnhealthyThreshold"], "Expected key UnhealthyThreshold to exist in table")
+	assert(struct["HealthyThreshold"], "Expected key HealthyThreshold to exist in table")
+	if struct["HealthyThreshold"] then asserts.AssertHealthyThreshold(struct["HealthyThreshold"]) end
+	if struct["Interval"] then asserts.AssertHealthCheckInterval(struct["Interval"]) end
+	if struct["Target"] then asserts.AssertHealthCheckTarget(struct["Target"]) end
+	if struct["Timeout"] then asserts.AssertHealthCheckTimeout(struct["Timeout"]) end
+	if struct["UnhealthyThreshold"] then asserts.AssertUnhealthyThreshold(struct["UnhealthyThreshold"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.HealthCheck[k], "HealthCheck contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type HealthCheck
+-- <p>Information about a health check.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthyThreshold [HealthyThreshold] <p>The number of consecutive health checks successes required before moving the instance to the <code>Healthy</code> state.</p>
+-- * Interval [HealthCheckInterval] <p>The approximate interval, in seconds, between health checks of an individual instance.</p>
+-- * Target [HealthCheckTarget] <p>The instance being checked. The protocol is either TCP, HTTP, HTTPS, or SSL. The range of valid ports is one (1) through 65535.</p> <p>TCP is the default, specified as a TCP: port pair, for example "TCP:5000". In this case, a health check simply attempts to open a TCP connection to the instance on the specified port. Failure to connect within the configured timeout is considered unhealthy.</p> <p>SSL is also specified as SSL: port pair, for example, SSL:5000.</p> <p>For HTTP/HTTPS, you must include a ping path in the string. HTTP is specified as a HTTP:port;/;PathToPing; grouping, for example "HTTP:80/weather/us/wa/seattle". In this case, a HTTP GET request is issued to the instance on the given port and path. Any answer other than "200 OK" within the timeout period is considered unhealthy.</p> <p>The total length of the HTTP ping target must be 1024 16-bit Unicode characters or less.</p>
+-- * Timeout [HealthCheckTimeout] <p>The amount of time, in seconds, during which no response means a failed health check.</p> <p>This value must be less than the <code>Interval</code> value.</p>
+-- * UnhealthyThreshold [UnhealthyThreshold] <p>The number of consecutive health check failures required before moving the instance to the <code>Unhealthy</code> state.</p>
+-- Required key: Target
+-- Required key: Interval
+-- Required key: Timeout
+-- Required key: UnhealthyThreshold
+-- Required key: HealthyThreshold
+-- @return HealthCheck structure as a key-value pair table
+function M.HealthCheck(args)
+	assert(args, "You must provide an argument table when creating HealthCheck")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["HealthyThreshold"] = args["HealthyThreshold"],
+		["Interval"] = args["Interval"],
+		["Target"] = args["Target"],
+		["Timeout"] = args["Timeout"],
+		["UnhealthyThreshold"] = args["UnhealthyThreshold"],
+	}
+	asserts.AssertHealthCheck(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateAppCookieStickinessPolicyOutput = { nil }
+
+function asserts.AssertCreateAppCookieStickinessPolicyOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateAppCookieStickinessPolicyOutput to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.CreateAppCookieStickinessPolicyOutput[k], "CreateAppCookieStickinessPolicyOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateAppCookieStickinessPolicyOutput
+-- <p>Contains the output for CreateAppCookieStickinessPolicy.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateAppCookieStickinessPolicyOutput structure as a key-value pair table
+function M.CreateAppCookieStickinessPolicyOutput(args)
+	assert(args, "You must provide an argument table when creating CreateAppCookieStickinessPolicyOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertCreateAppCookieStickinessPolicyOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeLoadBalancerAttributesInput = { ["LoadBalancerName"] = true, nil }
 
 function asserts.AssertDescribeLoadBalancerAttributesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeLoadBalancerAttributesInput to be of type 'table'")
-	assert(struct["LoadBalancerArn"], "Expected key LoadBalancerArn to exist in table")
-	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.DescribeLoadBalancerAttributesInput[k], "DescribeLoadBalancerAttributesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeLoadBalancerAttributesInput
---  
+-- <p>Contains the parameters for DescribeLoadBalancerAttributes.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- Required key: LoadBalancerArn
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
 -- @return DescribeLoadBalancerAttributesInput structure as a key-value pair table
 function M.DescribeLoadBalancerAttributesInput(args)
 	assert(args, "You must provide an argument table when creating DescribeLoadBalancerAttributesInput")
@@ -1821,7 +1489,7 @@ function M.DescribeLoadBalancerAttributesInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["LoadBalancerArn"] = args["LoadBalancerArn"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
 	}
 	asserts.AssertDescribeLoadBalancerAttributesInput(all_args)
 	return {
@@ -1832,23 +1500,31 @@ function M.DescribeLoadBalancerAttributesInput(args)
     }
 end
 
-keys.UnsupportedProtocolException = { nil }
+keys.AttachLoadBalancerToSubnetsInput = { ["Subnets"] = true, ["LoadBalancerName"] = true, nil }
 
-function asserts.AssertUnsupportedProtocolException(struct)
+function asserts.AssertAttachLoadBalancerToSubnetsInput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected UnsupportedProtocolException to be of type 'table'")
+	assert(type(struct) == "table", "Expected AttachLoadBalancerToSubnetsInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	assert(struct["Subnets"], "Expected key Subnets to exist in table")
+	if struct["Subnets"] then asserts.AssertSubnets(struct["Subnets"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.UnsupportedProtocolException[k], "UnsupportedProtocolException contains unknown key " .. tostring(k))
+		assert(keys.AttachLoadBalancerToSubnetsInput[k], "AttachLoadBalancerToSubnetsInput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type UnsupportedProtocolException
--- <p>The specified protocol is not supported.</p>
+--- Create a structure of type AttachLoadBalancerToSubnetsInput
+-- <p>Contains the parameters for AttachLoaBalancerToSubnets.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return UnsupportedProtocolException structure as a key-value pair table
-function M.UnsupportedProtocolException(args)
-	assert(args, "You must provide an argument table when creating UnsupportedProtocolException")
+-- * Subnets [Subnets] <p>The IDs of the subnets to add. You can add only one subnet per Availability Zone.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- Required key: Subnets
+-- @return AttachLoadBalancerToSubnetsInput structure as a key-value pair table
+function M.AttachLoadBalancerToSubnetsInput(args)
+	assert(args, "You must provide an argument table when creating AttachLoadBalancerToSubnetsInput")
     local query_args = { 
     }
     local uri_args = { 
@@ -1856,8 +1532,10 @@ function M.UnsupportedProtocolException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Subnets"] = args["Subnets"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
 	}
-	asserts.AssertUnsupportedProtocolException(all_args)
+	asserts.AssertAttachLoadBalancerToSubnetsInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1866,25 +1544,29 @@ function M.UnsupportedProtocolException(args)
     }
 end
 
-keys.ModifyRuleOutput = { ["Rules"] = true, nil }
+keys.Policies = { ["LBCookieStickinessPolicies"] = true, ["AppCookieStickinessPolicies"] = true, ["OtherPolicies"] = true, nil }
 
-function asserts.AssertModifyRuleOutput(struct)
+function asserts.AssertPolicies(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ModifyRuleOutput to be of type 'table'")
-	if struct["Rules"] then asserts.AssertRules(struct["Rules"]) end
+	assert(type(struct) == "table", "Expected Policies to be of type 'table'")
+	if struct["LBCookieStickinessPolicies"] then asserts.AssertLBCookieStickinessPolicies(struct["LBCookieStickinessPolicies"]) end
+	if struct["AppCookieStickinessPolicies"] then asserts.AssertAppCookieStickinessPolicies(struct["AppCookieStickinessPolicies"]) end
+	if struct["OtherPolicies"] then asserts.AssertPolicyNames(struct["OtherPolicies"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ModifyRuleOutput[k], "ModifyRuleOutput contains unknown key " .. tostring(k))
+		assert(keys.Policies[k], "Policies contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ModifyRuleOutput
---  
+--- Create a structure of type Policies
+-- <p>The policies for a load balancer.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Rules [Rules] <p>Information about the modified rule.</p>
--- @return ModifyRuleOutput structure as a key-value pair table
-function M.ModifyRuleOutput(args)
-	assert(args, "You must provide an argument table when creating ModifyRuleOutput")
+-- * LBCookieStickinessPolicies [LBCookieStickinessPolicies] <p>The stickiness policies created using <a>CreateLBCookieStickinessPolicy</a>.</p>
+-- * AppCookieStickinessPolicies [AppCookieStickinessPolicies] <p>The stickiness policies created using <a>CreateAppCookieStickinessPolicy</a>.</p>
+-- * OtherPolicies [PolicyNames] <p>The policies other than the stickiness policies.</p>
+-- @return Policies structure as a key-value pair table
+function M.Policies(args)
+	assert(args, "You must provide an argument table when creating Policies")
     local query_args = { 
     }
     local uri_args = { 
@@ -1892,9 +1574,11 @@ function M.ModifyRuleOutput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Rules"] = args["Rules"],
+		["LBCookieStickinessPolicies"] = args["LBCookieStickinessPolicies"],
+		["AppCookieStickinessPolicies"] = args["AppCookieStickinessPolicies"],
+		["OtherPolicies"] = args["OtherPolicies"],
 	}
-	asserts.AssertModifyRuleOutput(all_args)
+	asserts.AssertPolicies(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1903,31 +1587,31 @@ function M.ModifyRuleOutput(args)
     }
 end
 
-keys.RemoveListenerCertificatesInput = { ["Certificates"] = true, ["ListenerArn"] = true, nil }
+keys.DeleteLoadBalancerPolicyInput = { ["PolicyName"] = true, ["LoadBalancerName"] = true, nil }
 
-function asserts.AssertRemoveListenerCertificatesInput(struct)
+function asserts.AssertDeleteLoadBalancerPolicyInput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected RemoveListenerCertificatesInput to be of type 'table'")
-	assert(struct["ListenerArn"], "Expected key ListenerArn to exist in table")
-	assert(struct["Certificates"], "Expected key Certificates to exist in table")
-	if struct["Certificates"] then asserts.AssertCertificateList(struct["Certificates"]) end
-	if struct["ListenerArn"] then asserts.AssertListenerArn(struct["ListenerArn"]) end
+	assert(type(struct) == "table", "Expected DeleteLoadBalancerPolicyInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	assert(struct["PolicyName"], "Expected key PolicyName to exist in table")
+	if struct["PolicyName"] then asserts.AssertPolicyName(struct["PolicyName"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.RemoveListenerCertificatesInput[k], "RemoveListenerCertificatesInput contains unknown key " .. tostring(k))
+		assert(keys.DeleteLoadBalancerPolicyInput[k], "DeleteLoadBalancerPolicyInput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type RemoveListenerCertificatesInput
---  
+--- Create a structure of type DeleteLoadBalancerPolicyInput
+-- <p>Contains the parameters for DeleteLoadBalancerPolicy.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Certificates [CertificateList] <p>The certificate to remove. You can specify one certificate per call.</p>
--- * ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
--- Required key: ListenerArn
--- Required key: Certificates
--- @return RemoveListenerCertificatesInput structure as a key-value pair table
-function M.RemoveListenerCertificatesInput(args)
-	assert(args, "You must provide an argument table when creating RemoveListenerCertificatesInput")
+-- * PolicyName [PolicyName] <p>The name of the policy.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- Required key: PolicyName
+-- @return DeleteLoadBalancerPolicyInput structure as a key-value pair table
+function M.DeleteLoadBalancerPolicyInput(args)
+	assert(args, "You must provide an argument table when creating DeleteLoadBalancerPolicyInput")
     local query_args = { 
     }
     local uri_args = { 
@@ -1935,10 +1619,10 @@ function M.RemoveListenerCertificatesInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Certificates"] = args["Certificates"],
-		["ListenerArn"] = args["ListenerArn"],
+		["PolicyName"] = args["PolicyName"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
 	}
-	asserts.AssertRemoveListenerCertificatesInput(all_args)
+	asserts.AssertDeleteLoadBalancerPolicyInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1947,23 +1631,23 @@ function M.RemoveListenerCertificatesInput(args)
     }
 end
 
-keys.DeleteRuleOutput = { nil }
+keys.SetLoadBalancerListenerSSLCertificateOutput = { nil }
 
-function asserts.AssertDeleteRuleOutput(struct)
+function asserts.AssertSetLoadBalancerListenerSSLCertificateOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteRuleOutput to be of type 'table'")
+	assert(type(struct) == "table", "Expected SetLoadBalancerListenerSSLCertificateOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteRuleOutput[k], "DeleteRuleOutput contains unknown key " .. tostring(k))
+		assert(keys.SetLoadBalancerListenerSSLCertificateOutput[k], "SetLoadBalancerListenerSSLCertificateOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteRuleOutput
---  
+--- Create a structure of type SetLoadBalancerListenerSSLCertificateOutput
+-- <p>Contains the output of SetLoadBalancerListenerSSLCertificate.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return DeleteRuleOutput structure as a key-value pair table
-function M.DeleteRuleOutput(args)
-	assert(args, "You must provide an argument table when creating DeleteRuleOutput")
+-- @return SetLoadBalancerListenerSSLCertificateOutput structure as a key-value pair table
+function M.SetLoadBalancerListenerSSLCertificateOutput(args)
+	assert(args, "You must provide an argument table when creating SetLoadBalancerListenerSSLCertificateOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -1972,7 +1656,7 @@ function M.DeleteRuleOutput(args)
     }
 	local all_args = { 
 	}
-	asserts.AssertDeleteRuleOutput(all_args)
+	asserts.AssertSetLoadBalancerListenerSSLCertificateOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -1981,29 +1665,31 @@ function M.DeleteRuleOutput(args)
     }
 end
 
-keys.AvailabilityZone = { ["SubnetId"] = true, ["LoadBalancerAddresses"] = true, ["ZoneName"] = true, nil }
+keys.RegisterEndPointsInput = { ["Instances"] = true, ["LoadBalancerName"] = true, nil }
 
-function asserts.AssertAvailabilityZone(struct)
+function asserts.AssertRegisterEndPointsInput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected AvailabilityZone to be of type 'table'")
-	if struct["SubnetId"] then asserts.AssertSubnetId(struct["SubnetId"]) end
-	if struct["LoadBalancerAddresses"] then asserts.AssertLoadBalancerAddresses(struct["LoadBalancerAddresses"]) end
-	if struct["ZoneName"] then asserts.AssertZoneName(struct["ZoneName"]) end
+	assert(type(struct) == "table", "Expected RegisterEndPointsInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	assert(struct["Instances"], "Expected key Instances to exist in table")
+	if struct["Instances"] then asserts.AssertInstances(struct["Instances"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.AvailabilityZone[k], "AvailabilityZone contains unknown key " .. tostring(k))
+		assert(keys.RegisterEndPointsInput[k], "RegisterEndPointsInput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type AvailabilityZone
--- <p>Information about an Availability Zone.</p>
+--- Create a structure of type RegisterEndPointsInput
+-- <p>Contains the parameters for RegisterInstancesWithLoadBalancer.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SubnetId [SubnetId] <p>The ID of the subnet.</p>
--- * LoadBalancerAddresses [LoadBalancerAddresses] <p>[Network Load Balancers] The static IP address.</p>
--- * ZoneName [ZoneName] <p>The name of the Availability Zone.</p>
--- @return AvailabilityZone structure as a key-value pair table
-function M.AvailabilityZone(args)
-	assert(args, "You must provide an argument table when creating AvailabilityZone")
+-- * Instances [Instances] <p>The IDs of the instances.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- Required key: Instances
+-- @return RegisterEndPointsInput structure as a key-value pair table
+function M.RegisterEndPointsInput(args)
+	assert(args, "You must provide an argument table when creating RegisterEndPointsInput")
     local query_args = { 
     }
     local uri_args = { 
@@ -2011,153 +1697,10 @@ function M.AvailabilityZone(args)
     local header_args = { 
     }
 	local all_args = { 
-		["SubnetId"] = args["SubnetId"],
-		["LoadBalancerAddresses"] = args["LoadBalancerAddresses"],
-		["ZoneName"] = args["ZoneName"],
+		["Instances"] = args["Instances"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
 	}
-	asserts.AssertAvailabilityZone(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TooManyRegistrationsForTargetIdException = { nil }
-
-function asserts.AssertTooManyRegistrationsForTargetIdException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyRegistrationsForTargetIdException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TooManyRegistrationsForTargetIdException[k], "TooManyRegistrationsForTargetIdException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TooManyRegistrationsForTargetIdException
--- <p>You've reached the limit on the number of times a target can be registered with a load balancer.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TooManyRegistrationsForTargetIdException structure as a key-value pair table
-function M.TooManyRegistrationsForTargetIdException(args)
-	assert(args, "You must provide an argument table when creating TooManyRegistrationsForTargetIdException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTooManyRegistrationsForTargetIdException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ResourceInUseException = { nil }
-
-function asserts.AssertResourceInUseException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ResourceInUseException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.ResourceInUseException[k], "ResourceInUseException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ResourceInUseException
--- <p>A specified resource is in use.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return ResourceInUseException structure as a key-value pair table
-function M.ResourceInUseException(args)
-	assert(args, "You must provide an argument table when creating ResourceInUseException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertResourceInUseException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DescribeLoadBalancersOutput = { ["LoadBalancers"] = true, ["NextMarker"] = true, nil }
-
-function asserts.AssertDescribeLoadBalancersOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeLoadBalancersOutput to be of type 'table'")
-	if struct["LoadBalancers"] then asserts.AssertLoadBalancers(struct["LoadBalancers"]) end
-	if struct["NextMarker"] then asserts.AssertMarker(struct["NextMarker"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DescribeLoadBalancersOutput[k], "DescribeLoadBalancersOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DescribeLoadBalancersOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * LoadBalancers [LoadBalancers] <p>Information about the load balancers.</p>
--- * NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- @return DescribeLoadBalancersOutput structure as a key-value pair table
-function M.DescribeLoadBalancersOutput(args)
-	assert(args, "You must provide an argument table when creating DescribeLoadBalancersOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["LoadBalancers"] = args["LoadBalancers"],
-		["NextMarker"] = args["NextMarker"],
-	}
-	asserts.AssertDescribeLoadBalancersOutput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.IncompatibleProtocolsException = { nil }
-
-function asserts.AssertIncompatibleProtocolsException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected IncompatibleProtocolsException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.IncompatibleProtocolsException[k], "IncompatibleProtocolsException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type IncompatibleProtocolsException
--- <p>The specified configuration is not valid with this protocol.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return IncompatibleProtocolsException structure as a key-value pair table
-function M.IncompatibleProtocolsException(args)
-	assert(args, "You must provide an argument table when creating IncompatibleProtocolsException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertIncompatibleProtocolsException(all_args)
+	asserts.AssertRegisterEndPointsInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2177,7 +1720,7 @@ function asserts.AssertRemoveTagsOutput(struct)
 end
 
 --- Create a structure of type RemoveTagsOutput
---  
+-- <p>Contains the output of RemoveTags.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- @return RemoveTagsOutput structure as a key-value pair table
@@ -2200,23 +1743,25 @@ function M.RemoveTagsOutput(args)
     }
 end
 
-keys.TooManyTargetGroupsException = { nil }
+keys.DescribeLoadBalancerPoliciesOutput = { ["PolicyDescriptions"] = true, nil }
 
-function asserts.AssertTooManyTargetGroupsException(struct)
+function asserts.AssertDescribeLoadBalancerPoliciesOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyTargetGroupsException to be of type 'table'")
+	assert(type(struct) == "table", "Expected DescribeLoadBalancerPoliciesOutput to be of type 'table'")
+	if struct["PolicyDescriptions"] then asserts.AssertPolicyDescriptions(struct["PolicyDescriptions"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TooManyTargetGroupsException[k], "TooManyTargetGroupsException contains unknown key " .. tostring(k))
+		assert(keys.DescribeLoadBalancerPoliciesOutput[k], "DescribeLoadBalancerPoliciesOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TooManyTargetGroupsException
--- <p>You've reached the limit on the number of target groups for your AWS account.</p>
+--- Create a structure of type DescribeLoadBalancerPoliciesOutput
+-- <p>Contains the output of DescribeLoadBalancerPolicies.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return TooManyTargetGroupsException structure as a key-value pair table
-function M.TooManyTargetGroupsException(args)
-	assert(args, "You must provide an argument table when creating TooManyTargetGroupsException")
+-- * PolicyDescriptions [PolicyDescriptions] <p>Information about the policies.</p>
+-- @return DescribeLoadBalancerPoliciesOutput structure as a key-value pair table
+function M.DescribeLoadBalancerPoliciesOutput(args)
+	assert(args, "You must provide an argument table when creating DescribeLoadBalancerPoliciesOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -2224,8 +1769,9 @@ function M.TooManyTargetGroupsException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["PolicyDescriptions"] = args["PolicyDescriptions"],
 	}
-	asserts.AssertTooManyTargetGroupsException(all_args)
+	asserts.AssertDescribeLoadBalancerPoliciesOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -2234,23 +1780,25 @@ function M.TooManyTargetGroupsException(args)
     }
 end
 
-keys.TargetGroupNotFoundException = { nil }
+keys.RegisterEndPointsOutput = { ["Instances"] = true, nil }
 
-function asserts.AssertTargetGroupNotFoundException(struct)
+function asserts.AssertRegisterEndPointsOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected TargetGroupNotFoundException to be of type 'table'")
+	assert(type(struct) == "table", "Expected RegisterEndPointsOutput to be of type 'table'")
+	if struct["Instances"] then asserts.AssertInstances(struct["Instances"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.TargetGroupNotFoundException[k], "TargetGroupNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.RegisterEndPointsOutput[k], "RegisterEndPointsOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type TargetGroupNotFoundException
--- <p>The specified target group does not exist.</p>
+--- Create a structure of type RegisterEndPointsOutput
+-- <p>Contains the output of RegisterInstancesWithLoadBalancer.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return TargetGroupNotFoundException structure as a key-value pair table
-function M.TargetGroupNotFoundException(args)
-	assert(args, "You must provide an argument table when creating TargetGroupNotFoundException")
+-- * Instances [Instances] <p>The updated list of instances for the load balancer.</p>
+-- @return RegisterEndPointsOutput structure as a key-value pair table
+function M.RegisterEndPointsOutput(args)
+	assert(args, "You must provide an argument table when creating RegisterEndPointsOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -2258,755 +1806,9 @@ function M.TargetGroupNotFoundException(args)
     local header_args = { 
     }
 	local all_args = { 
+		["Instances"] = args["Instances"],
 	}
-	asserts.AssertTargetGroupNotFoundException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CreateLoadBalancerOutput = { ["LoadBalancers"] = true, nil }
-
-function asserts.AssertCreateLoadBalancerOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CreateLoadBalancerOutput to be of type 'table'")
-	if struct["LoadBalancers"] then asserts.AssertLoadBalancers(struct["LoadBalancers"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.CreateLoadBalancerOutput[k], "CreateLoadBalancerOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CreateLoadBalancerOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * LoadBalancers [LoadBalancers] <p>Information about the load balancer.</p>
--- @return CreateLoadBalancerOutput structure as a key-value pair table
-function M.CreateLoadBalancerOutput(args)
-	assert(args, "You must provide an argument table when creating CreateLoadBalancerOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["LoadBalancers"] = args["LoadBalancers"],
-	}
-	asserts.AssertCreateLoadBalancerOutput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DescribeTargetHealthInput = { ["TargetGroupArn"] = true, ["Targets"] = true, nil }
-
-function asserts.AssertDescribeTargetHealthInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeTargetHealthInput to be of type 'table'")
-	assert(struct["TargetGroupArn"], "Expected key TargetGroupArn to exist in table")
-	if struct["TargetGroupArn"] then asserts.AssertTargetGroupArn(struct["TargetGroupArn"]) end
-	if struct["Targets"] then asserts.AssertTargetDescriptions(struct["Targets"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DescribeTargetHealthInput[k], "DescribeTargetHealthInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DescribeTargetHealthInput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- * Targets [TargetDescriptions] <p>The targets.</p>
--- Required key: TargetGroupArn
--- @return DescribeTargetHealthInput structure as a key-value pair table
-function M.DescribeTargetHealthInput(args)
-	assert(args, "You must provide an argument table when creating DescribeTargetHealthInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["TargetGroupArn"] = args["TargetGroupArn"],
-		["Targets"] = args["Targets"],
-	}
-	asserts.AssertDescribeTargetHealthInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.Certificate = { ["CertificateArn"] = true, ["IsDefault"] = true, nil }
-
-function asserts.AssertCertificate(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected Certificate to be of type 'table'")
-	if struct["CertificateArn"] then asserts.AssertCertificateArn(struct["CertificateArn"]) end
-	if struct["IsDefault"] then asserts.AssertDefault(struct["IsDefault"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.Certificate[k], "Certificate contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type Certificate
--- <p>Information about an SSL server certificate.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * CertificateArn [CertificateArn] <p>The Amazon Resource Name (ARN) of the certificate.</p>
--- * IsDefault [Default] <p>Indicates whether the certificate is the default certificate.</p>
--- @return Certificate structure as a key-value pair table
-function M.Certificate(args)
-	assert(args, "You must provide an argument table when creating Certificate")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["CertificateArn"] = args["CertificateArn"],
-		["IsDefault"] = args["IsDefault"],
-	}
-	asserts.AssertCertificate(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TooManyListenersException = { nil }
-
-function asserts.AssertTooManyListenersException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyListenersException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TooManyListenersException[k], "TooManyListenersException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TooManyListenersException
--- <p>You've reached the limit on the number of listeners per load balancer.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TooManyListenersException structure as a key-value pair table
-function M.TooManyListenersException(args)
-	assert(args, "You must provide an argument table when creating TooManyListenersException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTooManyListenersException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SetSubnetsOutput = { ["AvailabilityZones"] = true, nil }
-
-function asserts.AssertSetSubnetsOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SetSubnetsOutput to be of type 'table'")
-	if struct["AvailabilityZones"] then asserts.AssertAvailabilityZones(struct["AvailabilityZones"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.SetSubnetsOutput[k], "SetSubnetsOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SetSubnetsOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * AvailabilityZones [AvailabilityZones] <p>Information about the subnet and Availability Zone.</p>
--- @return SetSubnetsOutput structure as a key-value pair table
-function M.SetSubnetsOutput(args)
-	assert(args, "You must provide an argument table when creating SetSubnetsOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["AvailabilityZones"] = args["AvailabilityZones"],
-	}
-	asserts.AssertSetSubnetsOutput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TargetHealthDescription = { ["HealthCheckPort"] = true, ["Target"] = true, ["TargetHealth"] = true, nil }
-
-function asserts.AssertTargetHealthDescription(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TargetHealthDescription to be of type 'table'")
-	if struct["HealthCheckPort"] then asserts.AssertHealthCheckPort(struct["HealthCheckPort"]) end
-	if struct["Target"] then asserts.AssertTargetDescription(struct["Target"]) end
-	if struct["TargetHealth"] then asserts.AssertTargetHealth(struct["TargetHealth"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.TargetHealthDescription[k], "TargetHealthDescription contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TargetHealthDescription
--- <p>Information about the health of a target.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * HealthCheckPort [HealthCheckPort] <p>The port to use to connect with the target.</p>
--- * Target [TargetDescription] <p>The description of the target.</p>
--- * TargetHealth [TargetHealth] <p>The health information for the target.</p>
--- @return TargetHealthDescription structure as a key-value pair table
-function M.TargetHealthDescription(args)
-	assert(args, "You must provide an argument table when creating TargetHealthDescription")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["HealthCheckPort"] = args["HealthCheckPort"],
-		["Target"] = args["Target"],
-		["TargetHealth"] = args["TargetHealth"],
-	}
-	asserts.AssertTargetHealthDescription(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DescribeTargetHealthOutput = { ["TargetHealthDescriptions"] = true, nil }
-
-function asserts.AssertDescribeTargetHealthOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeTargetHealthOutput to be of type 'table'")
-	if struct["TargetHealthDescriptions"] then asserts.AssertTargetHealthDescriptions(struct["TargetHealthDescriptions"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DescribeTargetHealthOutput[k], "DescribeTargetHealthOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DescribeTargetHealthOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * TargetHealthDescriptions [TargetHealthDescriptions] <p>Information about the health of the targets.</p>
--- @return DescribeTargetHealthOutput structure as a key-value pair table
-function M.DescribeTargetHealthOutput(args)
-	assert(args, "You must provide an argument table when creating DescribeTargetHealthOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["TargetHealthDescriptions"] = args["TargetHealthDescriptions"],
-	}
-	asserts.AssertDescribeTargetHealthOutput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DeleteListenerInput = { ["ListenerArn"] = true, nil }
-
-function asserts.AssertDeleteListenerInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteListenerInput to be of type 'table'")
-	assert(struct["ListenerArn"], "Expected key ListenerArn to exist in table")
-	if struct["ListenerArn"] then asserts.AssertListenerArn(struct["ListenerArn"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DeleteListenerInput[k], "DeleteListenerInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DeleteListenerInput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
--- Required key: ListenerArn
--- @return DeleteListenerInput structure as a key-value pair table
-function M.DeleteListenerInput(args)
-	assert(args, "You must provide an argument table when creating DeleteListenerInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ListenerArn"] = args["ListenerArn"],
-	}
-	asserts.AssertDeleteListenerInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TargetGroupAttribute = { ["Value"] = true, ["Key"] = true, nil }
-
-function asserts.AssertTargetGroupAttribute(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TargetGroupAttribute to be of type 'table'")
-	if struct["Value"] then asserts.AssertTargetGroupAttributeValue(struct["Value"]) end
-	if struct["Key"] then asserts.AssertTargetGroupAttributeKey(struct["Key"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.TargetGroupAttribute[k], "TargetGroupAttribute contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TargetGroupAttribute
--- <p>Information about a target group attribute.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Value [TargetGroupAttributeValue] <p>The value of the attribute.</p>
--- * Key [TargetGroupAttributeKey] <p>The name of the attribute.</p> <p>The following attributes are supported by both Application Load Balancers and Network Load Balancers:</p> <ul> <li> <p> <code>deregistration_delay.timeout_seconds</code> - The amount of time, in seconds, for Elastic Load Balancing to wait before changing the state of a deregistering target from <code>draining</code> to <code>unused</code>. The range is 0-3600 seconds. The default value is 300 seconds.</p> </li> </ul> <p>The following attributes are supported by only Application Load Balancers:</p> <ul> <li> <p> <code>slow_start.duration_seconds</code> - The time period, in seconds, during which a newly registered target receives a linearly increasing share of the traffic to the target group. After this time period ends, the target receives its full share of traffic. The range is 30-900 seconds (15 minutes). Slow start mode is disabled by default.</p> </li> <li> <p> <code>stickiness.enabled</code> - Indicates whether sticky sessions are enabled. The value is <code>true</code> or <code>false</code>. The default is <code>false</code>.</p> </li> <li> <p> <code>stickiness.type</code> - The type of sticky sessions. The possible value is <code>lb_cookie</code>.</p> </li> <li> <p> <code>stickiness.lb_cookie.duration_seconds</code> - The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds).</p> </li> </ul> <p>The following attributes are supported by only Network Load Balancers:</p> <ul> <li> <p> <code>proxy_protocol_v2.enabled</code> - Indicates whether Proxy Protocol version 2 is enabled. The value is <code>true</code> or <code>false</code>. The default is <code>false</code>.</p> </li> </ul>
--- @return TargetGroupAttribute structure as a key-value pair table
-function M.TargetGroupAttribute(args)
-	assert(args, "You must provide an argument table when creating TargetGroupAttribute")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Value"] = args["Value"],
-		["Key"] = args["Key"],
-	}
-	asserts.AssertTargetGroupAttribute(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CreateListenerInput = { ["Protocol"] = true, ["DefaultActions"] = true, ["SslPolicy"] = true, ["Certificates"] = true, ["LoadBalancerArn"] = true, ["Port"] = true, nil }
-
-function asserts.AssertCreateListenerInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CreateListenerInput to be of type 'table'")
-	assert(struct["LoadBalancerArn"], "Expected key LoadBalancerArn to exist in table")
-	assert(struct["Protocol"], "Expected key Protocol to exist in table")
-	assert(struct["Port"], "Expected key Port to exist in table")
-	assert(struct["DefaultActions"], "Expected key DefaultActions to exist in table")
-	if struct["Protocol"] then asserts.AssertProtocolEnum(struct["Protocol"]) end
-	if struct["DefaultActions"] then asserts.AssertActions(struct["DefaultActions"]) end
-	if struct["SslPolicy"] then asserts.AssertSslPolicyName(struct["SslPolicy"]) end
-	if struct["Certificates"] then asserts.AssertCertificateList(struct["Certificates"]) end
-	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
-	if struct["Port"] then asserts.AssertPort(struct["Port"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.CreateListenerInput[k], "CreateListenerInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CreateListenerInput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Protocol [ProtocolEnum] <p>The protocol for connections from clients to the load balancer. For Application Load Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported protocol is TCP.</p>
--- * DefaultActions [Actions] <p>The actions for the default rule. The rule must include one forward action or one or more fixed-response actions.</p> <p>If the action type is <code>forward</code>, you can specify a single target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer or TCP for a Network Load Balancer.</p> <p>[HTTPS listener] If the action type is <code>authenticate-oidc</code>, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.</p> <p>[HTTPS listener] If the action type is <code>authenticate-cognito</code>, you can use Amazon Cognito to authenticate users as they access your application.</p> <p>[Application Load Balancer] If the action type is <code>redirect</code>, you can redirect HTTP and HTTPS requests.</p> <p>[Application Load Balancer] If the action type is <code>fixed-response</code>, you can return a custom HTTP response.</p>
--- * SslPolicy [SslPolicyName] <p>[HTTPS listeners] The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.</p>
--- * Certificates [CertificateList] <p>[HTTPS listeners] The default SSL server certificate. You must provide exactly one default certificate. To create a certificate list, use <a>AddListenerCertificates</a>.</p>
--- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- * Port [Port] <p>The port on which the load balancer is listening.</p>
--- Required key: LoadBalancerArn
--- Required key: Protocol
--- Required key: Port
--- Required key: DefaultActions
--- @return CreateListenerInput structure as a key-value pair table
-function M.CreateListenerInput(args)
-	assert(args, "You must provide an argument table when creating CreateListenerInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Protocol"] = args["Protocol"],
-		["DefaultActions"] = args["DefaultActions"],
-		["SslPolicy"] = args["SslPolicy"],
-		["Certificates"] = args["Certificates"],
-		["LoadBalancerArn"] = args["LoadBalancerArn"],
-		["Port"] = args["Port"],
-	}
-	asserts.AssertCreateListenerInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CreateTargetGroupInput = { ["HealthyThresholdCount"] = true, ["HealthCheckIntervalSeconds"] = true, ["VpcId"] = true, ["Protocol"] = true, ["Name"] = true, ["TargetType"] = true, ["HealthCheckProtocol"] = true, ["UnhealthyThresholdCount"] = true, ["HealthCheckPath"] = true, ["HealthCheckTimeoutSeconds"] = true, ["Matcher"] = true, ["HealthCheckPort"] = true, ["Port"] = true, nil }
-
-function asserts.AssertCreateTargetGroupInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CreateTargetGroupInput to be of type 'table'")
-	assert(struct["Name"], "Expected key Name to exist in table")
-	assert(struct["Protocol"], "Expected key Protocol to exist in table")
-	assert(struct["Port"], "Expected key Port to exist in table")
-	assert(struct["VpcId"], "Expected key VpcId to exist in table")
-	if struct["HealthyThresholdCount"] then asserts.AssertHealthCheckThresholdCount(struct["HealthyThresholdCount"]) end
-	if struct["HealthCheckIntervalSeconds"] then asserts.AssertHealthCheckIntervalSeconds(struct["HealthCheckIntervalSeconds"]) end
-	if struct["VpcId"] then asserts.AssertVpcId(struct["VpcId"]) end
-	if struct["Protocol"] then asserts.AssertProtocolEnum(struct["Protocol"]) end
-	if struct["Name"] then asserts.AssertTargetGroupName(struct["Name"]) end
-	if struct["TargetType"] then asserts.AssertTargetTypeEnum(struct["TargetType"]) end
-	if struct["HealthCheckProtocol"] then asserts.AssertProtocolEnum(struct["HealthCheckProtocol"]) end
-	if struct["UnhealthyThresholdCount"] then asserts.AssertHealthCheckThresholdCount(struct["UnhealthyThresholdCount"]) end
-	if struct["HealthCheckPath"] then asserts.AssertPath(struct["HealthCheckPath"]) end
-	if struct["HealthCheckTimeoutSeconds"] then asserts.AssertHealthCheckTimeoutSeconds(struct["HealthCheckTimeoutSeconds"]) end
-	if struct["Matcher"] then asserts.AssertMatcher(struct["Matcher"]) end
-	if struct["HealthCheckPort"] then asserts.AssertHealthCheckPort(struct["HealthCheckPort"]) end
-	if struct["Port"] then asserts.AssertPort(struct["Port"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.CreateTargetGroupInput[k], "CreateTargetGroupInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CreateTargetGroupInput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * HealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health checks successes required before considering an unhealthy target healthy. For Application Load Balancers, the default is 5. For Network Load Balancers, the default is 3.</p>
--- * HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] <p>The approximate amount of time, in seconds, between health checks of an individual target. For Application Load Balancers, the range is 5–300 seconds. For Network Load Balancers, the supported values are 10 or 30 seconds. The default is 30 seconds.</p>
--- * VpcId [VpcId] <p>The identifier of the virtual private cloud (VPC).</p>
--- * Protocol [ProtocolEnum] <p>The protocol to use for routing traffic to the targets. For Application Load Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported protocol is TCP.</p>
--- * Name [TargetGroupName] <p>The name of the target group.</p> <p>This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.</p>
--- * TargetType [TargetTypeEnum] <p>The type of target that you must specify when registering targets with this target group. The possible values are <code>instance</code> (targets are specified by instance ID) or <code>ip</code> (targets are specified by IP address). The default is <code>instance</code>. You can't specify targets for a target group using both instance IDs and IP addresses.</p> <p>If the target type is <code>ip</code>, specify IP addresses from the subnets of the virtual private cloud (VPC) for the target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can't specify publicly routable IP addresses.</p>
--- * HealthCheckProtocol [ProtocolEnum] <p>The protocol the load balancer uses when performing health checks on targets. The TCP protocol is supported only if the protocol of the target group is TCP. For Application Load Balancers, the default is HTTP. For Network Load Balancers, the default is TCP.</p>
--- * UnhealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health check failures required before considering a target unhealthy. For Application Load Balancers, the default is 2. For Network Load Balancers, this value must be the same as the healthy threshold count.</p>
--- * HealthCheckPath [Path] <p>[HTTP/HTTPS health checks] The ping path that is the destination on the targets for health checks. The default is /.</p>
--- * HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] <p>The amount of time, in seconds, during which no response from a target means a failed health check. For Application Load Balancers, the range is 2–60 seconds and the default is 5 seconds. For Network Load Balancers, this is 10 seconds for TCP and HTTPS health checks and 6 seconds for HTTP health checks.</p>
--- * Matcher [Matcher] <p>[HTTP/HTTPS health checks] The HTTP codes to use when checking for a successful response from a target.</p>
--- * HealthCheckPort [HealthCheckPort] <p>The port the load balancer uses when performing health checks on targets. The default is <code>traffic-port</code>, which is the port on which each target receives traffic from the load balancer.</p>
--- * Port [Port] <p>The port on which the targets receive traffic. This port is used unless you specify a port override when registering the target.</p>
--- Required key: Name
--- Required key: Protocol
--- Required key: Port
--- Required key: VpcId
--- @return CreateTargetGroupInput structure as a key-value pair table
-function M.CreateTargetGroupInput(args)
-	assert(args, "You must provide an argument table when creating CreateTargetGroupInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["HealthyThresholdCount"] = args["HealthyThresholdCount"],
-		["HealthCheckIntervalSeconds"] = args["HealthCheckIntervalSeconds"],
-		["VpcId"] = args["VpcId"],
-		["Protocol"] = args["Protocol"],
-		["Name"] = args["Name"],
-		["TargetType"] = args["TargetType"],
-		["HealthCheckProtocol"] = args["HealthCheckProtocol"],
-		["UnhealthyThresholdCount"] = args["UnhealthyThresholdCount"],
-		["HealthCheckPath"] = args["HealthCheckPath"],
-		["HealthCheckTimeoutSeconds"] = args["HealthCheckTimeoutSeconds"],
-		["Matcher"] = args["Matcher"],
-		["HealthCheckPort"] = args["HealthCheckPort"],
-		["Port"] = args["Port"],
-	}
-	asserts.AssertCreateTargetGroupInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ModifyLoadBalancerAttributesOutput = { ["Attributes"] = true, nil }
-
-function asserts.AssertModifyLoadBalancerAttributesOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ModifyLoadBalancerAttributesOutput to be of type 'table'")
-	if struct["Attributes"] then asserts.AssertLoadBalancerAttributes(struct["Attributes"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ModifyLoadBalancerAttributesOutput[k], "ModifyLoadBalancerAttributesOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ModifyLoadBalancerAttributesOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Attributes [LoadBalancerAttributes] <p>Information about the load balancer attributes.</p>
--- @return ModifyLoadBalancerAttributesOutput structure as a key-value pair table
-function M.ModifyLoadBalancerAttributesOutput(args)
-	assert(args, "You must provide an argument table when creating ModifyLoadBalancerAttributesOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Attributes"] = args["Attributes"],
-	}
-	asserts.AssertModifyLoadBalancerAttributesOutput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.RegisterTargetsOutput = { nil }
-
-function asserts.AssertRegisterTargetsOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected RegisterTargetsOutput to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.RegisterTargetsOutput[k], "RegisterTargetsOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type RegisterTargetsOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return RegisterTargetsOutput structure as a key-value pair table
-function M.RegisterTargetsOutput(args)
-	assert(args, "You must provide an argument table when creating RegisterTargetsOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertRegisterTargetsOutput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.AuthenticateOidcActionConfig = { ["ClientSecret"] = true, ["OnUnauthenticatedRequest"] = true, ["TokenEndpoint"] = true, ["AuthenticationRequestExtraParams"] = true, ["ClientId"] = true, ["SessionTimeout"] = true, ["AuthorizationEndpoint"] = true, ["Scope"] = true, ["SessionCookieName"] = true, ["UserInfoEndpoint"] = true, ["Issuer"] = true, nil }
-
-function asserts.AssertAuthenticateOidcActionConfig(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected AuthenticateOidcActionConfig to be of type 'table'")
-	assert(struct["Issuer"], "Expected key Issuer to exist in table")
-	assert(struct["AuthorizationEndpoint"], "Expected key AuthorizationEndpoint to exist in table")
-	assert(struct["TokenEndpoint"], "Expected key TokenEndpoint to exist in table")
-	assert(struct["UserInfoEndpoint"], "Expected key UserInfoEndpoint to exist in table")
-	assert(struct["ClientId"], "Expected key ClientId to exist in table")
-	assert(struct["ClientSecret"], "Expected key ClientSecret to exist in table")
-	if struct["ClientSecret"] then asserts.AssertAuthenticateOidcActionClientSecret(struct["ClientSecret"]) end
-	if struct["OnUnauthenticatedRequest"] then asserts.AssertAuthenticateOidcActionConditionalBehaviorEnum(struct["OnUnauthenticatedRequest"]) end
-	if struct["TokenEndpoint"] then asserts.AssertAuthenticateOidcActionTokenEndpoint(struct["TokenEndpoint"]) end
-	if struct["AuthenticationRequestExtraParams"] then asserts.AssertAuthenticateOidcActionAuthenticationRequestExtraParams(struct["AuthenticationRequestExtraParams"]) end
-	if struct["ClientId"] then asserts.AssertAuthenticateOidcActionClientId(struct["ClientId"]) end
-	if struct["SessionTimeout"] then asserts.AssertAuthenticateOidcActionSessionTimeout(struct["SessionTimeout"]) end
-	if struct["AuthorizationEndpoint"] then asserts.AssertAuthenticateOidcActionAuthorizationEndpoint(struct["AuthorizationEndpoint"]) end
-	if struct["Scope"] then asserts.AssertAuthenticateOidcActionScope(struct["Scope"]) end
-	if struct["SessionCookieName"] then asserts.AssertAuthenticateOidcActionSessionCookieName(struct["SessionCookieName"]) end
-	if struct["UserInfoEndpoint"] then asserts.AssertAuthenticateOidcActionUserInfoEndpoint(struct["UserInfoEndpoint"]) end
-	if struct["Issuer"] then asserts.AssertAuthenticateOidcActionIssuer(struct["Issuer"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.AuthenticateOidcActionConfig[k], "AuthenticateOidcActionConfig contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type AuthenticateOidcActionConfig
--- <p>Request parameters when using an identity provider (IdP) that is compliant with OpenID Connect (OIDC) to authenticate users.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ClientSecret [AuthenticateOidcActionClientSecret] <p>The OAuth 2.0 client secret.</p>
--- * OnUnauthenticatedRequest [AuthenticateOidcActionConditionalBehaviorEnum] <p>The behavior if the user is not authenticated. The following are possible values:</p> <ul> <li> <p>deny<code/> - Return an HTTP 401 Unauthorized error.</p> </li> <li> <p>allow<code/> - Allow the request to be forwarded to the target.</p> </li> <li> <p>authenticate<code/> - Redirect the request to the IdP authorization endpoint. This is the default value.</p> </li> </ul>
--- * TokenEndpoint [AuthenticateOidcActionTokenEndpoint] <p>The token endpoint of the IdP. This must be a full URL, including the HTTPS protocol, the domain, and the path.</p>
--- * AuthenticationRequestExtraParams [AuthenticateOidcActionAuthenticationRequestExtraParams] <p>The query parameters (up to 10) to include in the redirect request to the authorization endpoint.</p>
--- * ClientId [AuthenticateOidcActionClientId] <p>The OAuth 2.0 client identifier.</p>
--- * SessionTimeout [AuthenticateOidcActionSessionTimeout] <p>The maximum duration of the authentication session, in seconds. The default is 604800 seconds (7 days).</p>
--- * AuthorizationEndpoint [AuthenticateOidcActionAuthorizationEndpoint] <p>The authorization endpoint of the IdP. This must be a full URL, including the HTTPS protocol, the domain, and the path.</p>
--- * Scope [AuthenticateOidcActionScope] <p>The set of user claims to be requested from the IdP. The default is <code>openid</code>.</p> <p>To verify which scope values your IdP supports and how to separate multiple values, see the documentation for your IdP.</p>
--- * SessionCookieName [AuthenticateOidcActionSessionCookieName] <p>The name of the cookie used to maintain session information. The default is AWSELBAuthSessionCookie.</p>
--- * UserInfoEndpoint [AuthenticateOidcActionUserInfoEndpoint] <p>The user info endpoint of the IdP. This must be a full URL, including the HTTPS protocol, the domain, and the path.</p>
--- * Issuer [AuthenticateOidcActionIssuer] <p>The OIDC issuer identifier of the IdP. This must be a full URL, including the HTTPS protocol, the domain, and the path.</p>
--- Required key: Issuer
--- Required key: AuthorizationEndpoint
--- Required key: TokenEndpoint
--- Required key: UserInfoEndpoint
--- Required key: ClientId
--- Required key: ClientSecret
--- @return AuthenticateOidcActionConfig structure as a key-value pair table
-function M.AuthenticateOidcActionConfig(args)
-	assert(args, "You must provide an argument table when creating AuthenticateOidcActionConfig")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ClientSecret"] = args["ClientSecret"],
-		["OnUnauthenticatedRequest"] = args["OnUnauthenticatedRequest"],
-		["TokenEndpoint"] = args["TokenEndpoint"],
-		["AuthenticationRequestExtraParams"] = args["AuthenticationRequestExtraParams"],
-		["ClientId"] = args["ClientId"],
-		["SessionTimeout"] = args["SessionTimeout"],
-		["AuthorizationEndpoint"] = args["AuthorizationEndpoint"],
-		["Scope"] = args["Scope"],
-		["SessionCookieName"] = args["SessionCookieName"],
-		["UserInfoEndpoint"] = args["UserInfoEndpoint"],
-		["Issuer"] = args["Issuer"],
-	}
-	asserts.AssertAuthenticateOidcActionConfig(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.Matcher = { ["HttpCode"] = true, nil }
-
-function asserts.AssertMatcher(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected Matcher to be of type 'table'")
-	assert(struct["HttpCode"], "Expected key HttpCode to exist in table")
-	if struct["HttpCode"] then asserts.AssertHttpCode(struct["HttpCode"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.Matcher[k], "Matcher contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type Matcher
--- <p>Information to use when checking for a successful response from a target.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * HttpCode [HttpCode] <p>The HTTP codes.</p> <p>For Application Load Balancers, you can specify values between 200 and 499, and the default value is 200. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").</p> <p>For Network Load Balancers, this is 200–399.</p>
--- Required key: HttpCode
--- @return Matcher structure as a key-value pair table
-function M.Matcher(args)
-	assert(args, "You must provide an argument table when creating Matcher")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["HttpCode"] = args["HttpCode"],
-	}
-	asserts.AssertMatcher(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidSecurityGroupException = { nil }
-
-function asserts.AssertInvalidSecurityGroupException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidSecurityGroupException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidSecurityGroupException[k], "InvalidSecurityGroupException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidSecurityGroupException
--- <p>The specified security group does not exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidSecurityGroupException structure as a key-value pair table
-function M.InvalidSecurityGroupException(args)
-	assert(args, "You must provide an argument table when creating InvalidSecurityGroupException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidSecurityGroupException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TooManyActionsException = { nil }
-
-function asserts.AssertTooManyActionsException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyActionsException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TooManyActionsException[k], "TooManyActionsException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TooManyActionsException
--- <p>You've reached the limit on the number of actions per rule.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TooManyActionsException structure as a key-value pair table
-function M.TooManyActionsException(args)
-	assert(args, "You must provide an argument table when creating TooManyActionsException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTooManyActionsException(all_args)
+	asserts.AssertRegisterEndPointsOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3055,37 +1857,25 @@ function M.DescribeAccountLimitsOutput(args)
     }
 end
 
-keys.ModifyListenerInput = { ["Protocol"] = true, ["DefaultActions"] = true, ["SslPolicy"] = true, ["Certificates"] = true, ["Port"] = true, ["ListenerArn"] = true, nil }
+keys.Instance = { ["InstanceId"] = true, nil }
 
-function asserts.AssertModifyListenerInput(struct)
+function asserts.AssertInstance(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ModifyListenerInput to be of type 'table'")
-	assert(struct["ListenerArn"], "Expected key ListenerArn to exist in table")
-	if struct["Protocol"] then asserts.AssertProtocolEnum(struct["Protocol"]) end
-	if struct["DefaultActions"] then asserts.AssertActions(struct["DefaultActions"]) end
-	if struct["SslPolicy"] then asserts.AssertSslPolicyName(struct["SslPolicy"]) end
-	if struct["Certificates"] then asserts.AssertCertificateList(struct["Certificates"]) end
-	if struct["Port"] then asserts.AssertPort(struct["Port"]) end
-	if struct["ListenerArn"] then asserts.AssertListenerArn(struct["ListenerArn"]) end
+	assert(type(struct) == "table", "Expected Instance to be of type 'table'")
+	if struct["InstanceId"] then asserts.AssertInstanceId(struct["InstanceId"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ModifyListenerInput[k], "ModifyListenerInput contains unknown key " .. tostring(k))
+		assert(keys.Instance[k], "Instance contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ModifyListenerInput
---  
+--- Create a structure of type Instance
+-- <p>The ID of an EC2 instance.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Protocol [ProtocolEnum] <p>The protocol for connections from clients to the load balancer. Application Load Balancers support HTTP and HTTPS and Network Load Balancers support TCP.</p>
--- * DefaultActions [Actions] <p>The actions for the default rule. The rule must include one forward action or one or more fixed-response actions.</p> <p>If the action type is <code>forward</code>, you can specify a single target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer or TCP for a Network Load Balancer.</p> <p>[HTTPS listener] If the action type is <code>authenticate-oidc</code>, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.</p> <p>[HTTPS listener] If the action type is <code>authenticate-cognito</code>, you can use Amazon Cognito to authenticate users as they access your application.</p> <p>[Application Load Balancer] If the action type is <code>redirect</code>, you can redirect HTTP and HTTPS requests.</p> <p>[Application Load Balancer] If the action type is <code>fixed-response</code>, you can return a custom HTTP response.</p>
--- * SslPolicy [SslPolicyName] <p>[HTTPS listeners] The security policy that defines which protocols and ciphers are supported. For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">Security Policies</a> in the <i>Application Load Balancers Guide</i>.</p>
--- * Certificates [CertificateList] <p>[HTTPS listeners] The default SSL server certificate. You must provide exactly one default certificate. To create a certificate list, use <a>AddListenerCertificates</a>.</p>
--- * Port [Port] <p>The port for connections from clients to the load balancer.</p>
--- * ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
--- Required key: ListenerArn
--- @return ModifyListenerInput structure as a key-value pair table
-function M.ModifyListenerInput(args)
-	assert(args, "You must provide an argument table when creating ModifyListenerInput")
+-- * InstanceId [InstanceId] <p>The instance ID.</p>
+-- @return Instance structure as a key-value pair table
+function M.Instance(args)
+	assert(args, "You must provide an argument table when creating Instance")
     local query_args = { 
     }
     local uri_args = { 
@@ -3093,14 +1883,9 @@ function M.ModifyListenerInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Protocol"] = args["Protocol"],
-		["DefaultActions"] = args["DefaultActions"],
-		["SslPolicy"] = args["SslPolicy"],
-		["Certificates"] = args["Certificates"],
-		["Port"] = args["Port"],
-		["ListenerArn"] = args["ListenerArn"],
+		["InstanceId"] = args["InstanceId"],
 	}
-	asserts.AssertModifyListenerInput(all_args)
+	asserts.AssertInstance(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3109,28 +1894,232 @@ function M.ModifyListenerInput(args)
     }
 end
 
-keys.ModifyLoadBalancerAttributesInput = { ["Attributes"] = true, ["LoadBalancerArn"] = true, nil }
+keys.DetachLoadBalancerFromSubnetsOutput = { ["Subnets"] = true, nil }
+
+function asserts.AssertDetachLoadBalancerFromSubnetsOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DetachLoadBalancerFromSubnetsOutput to be of type 'table'")
+	if struct["Subnets"] then asserts.AssertSubnets(struct["Subnets"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DetachLoadBalancerFromSubnetsOutput[k], "DetachLoadBalancerFromSubnetsOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DetachLoadBalancerFromSubnetsOutput
+-- <p>Contains the output of DetachLoadBalancerFromSubnets.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Subnets [Subnets] <p>The IDs of the remaining subnets for the load balancer.</p>
+-- @return DetachLoadBalancerFromSubnetsOutput structure as a key-value pair table
+function M.DetachLoadBalancerFromSubnetsOutput(args)
+	assert(args, "You must provide an argument table when creating DetachLoadBalancerFromSubnetsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Subnets"] = args["Subnets"],
+	}
+	asserts.AssertDetachLoadBalancerFromSubnetsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DetachLoadBalancerFromSubnetsInput = { ["Subnets"] = true, ["LoadBalancerName"] = true, nil }
+
+function asserts.AssertDetachLoadBalancerFromSubnetsInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DetachLoadBalancerFromSubnetsInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	assert(struct["Subnets"], "Expected key Subnets to exist in table")
+	if struct["Subnets"] then asserts.AssertSubnets(struct["Subnets"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DetachLoadBalancerFromSubnetsInput[k], "DetachLoadBalancerFromSubnetsInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DetachLoadBalancerFromSubnetsInput
+-- <p>Contains the parameters for DetachLoadBalancerFromSubnets.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Subnets [Subnets] <p>The IDs of the subnets.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- Required key: Subnets
+-- @return DetachLoadBalancerFromSubnetsInput structure as a key-value pair table
+function M.DetachLoadBalancerFromSubnetsInput(args)
+	assert(args, "You must provide an argument table when creating DetachLoadBalancerFromSubnetsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Subnets"] = args["Subnets"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
+	}
+	asserts.AssertDetachLoadBalancerFromSubnetsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ModifyLoadBalancerAttributesOutput = { ["LoadBalancerAttributes"] = true, ["LoadBalancerName"] = true, nil }
+
+function asserts.AssertModifyLoadBalancerAttributesOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ModifyLoadBalancerAttributesOutput to be of type 'table'")
+	if struct["LoadBalancerAttributes"] then asserts.AssertLoadBalancerAttributes(struct["LoadBalancerAttributes"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ModifyLoadBalancerAttributesOutput[k], "ModifyLoadBalancerAttributesOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ModifyLoadBalancerAttributesOutput
+-- <p>Contains the output of ModifyLoadBalancerAttributes.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoadBalancerAttributes [LoadBalancerAttributes] <p>Information about the load balancer attributes.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- @return ModifyLoadBalancerAttributesOutput structure as a key-value pair table
+function M.ModifyLoadBalancerAttributesOutput(args)
+	assert(args, "You must provide an argument table when creating ModifyLoadBalancerAttributesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["LoadBalancerAttributes"] = args["LoadBalancerAttributes"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
+	}
+	asserts.AssertModifyLoadBalancerAttributesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.PolicyAttributeTypeDescription = { ["DefaultValue"] = true, ["Cardinality"] = true, ["AttributeName"] = true, ["AttributeType"] = true, ["Description"] = true, nil }
+
+function asserts.AssertPolicyAttributeTypeDescription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PolicyAttributeTypeDescription to be of type 'table'")
+	if struct["DefaultValue"] then asserts.AssertDefaultValue(struct["DefaultValue"]) end
+	if struct["Cardinality"] then asserts.AssertCardinality(struct["Cardinality"]) end
+	if struct["AttributeName"] then asserts.AssertAttributeName(struct["AttributeName"]) end
+	if struct["AttributeType"] then asserts.AssertAttributeType(struct["AttributeType"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PolicyAttributeTypeDescription[k], "PolicyAttributeTypeDescription contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PolicyAttributeTypeDescription
+-- <p>Information about a policy attribute type.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DefaultValue [DefaultValue] <p>The default value of the attribute, if applicable.</p>
+-- * Cardinality [Cardinality] <p>The cardinality of the attribute.</p> <p>Valid values:</p> <ul> <li> <p>ONE(1) : Single value required</p> </li> <li> <p>ZERO_OR_ONE(0..1) : Up to one value is allowed</p> </li> <li> <p>ZERO_OR_MORE(0..*) : Optional. Multiple values are allowed</p> </li> <li> <p>ONE_OR_MORE(1..*0) : Required. Multiple values are allowed</p> </li> </ul>
+-- * AttributeName [AttributeName] <p>The name of the attribute.</p>
+-- * AttributeType [AttributeType] <p>The type of the attribute. For example, <code>Boolean</code> or <code>Integer</code>.</p>
+-- * Description [Description] <p>A description of the attribute.</p>
+-- @return PolicyAttributeTypeDescription structure as a key-value pair table
+function M.PolicyAttributeTypeDescription(args)
+	assert(args, "You must provide an argument table when creating PolicyAttributeTypeDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["DefaultValue"] = args["DefaultValue"],
+		["Cardinality"] = args["Cardinality"],
+		["AttributeName"] = args["AttributeName"],
+		["AttributeType"] = args["AttributeType"],
+		["Description"] = args["Description"],
+	}
+	asserts.AssertPolicyAttributeTypeDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteLoadBalancerListenerOutput = { nil }
+
+function asserts.AssertDeleteLoadBalancerListenerOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteLoadBalancerListenerOutput to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteLoadBalancerListenerOutput[k], "DeleteLoadBalancerListenerOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteLoadBalancerListenerOutput
+-- <p>Contains the output of DeleteLoadBalancerListeners.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteLoadBalancerListenerOutput structure as a key-value pair table
+function M.DeleteLoadBalancerListenerOutput(args)
+	assert(args, "You must provide an argument table when creating DeleteLoadBalancerListenerOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDeleteLoadBalancerListenerOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ModifyLoadBalancerAttributesInput = { ["LoadBalancerAttributes"] = true, ["LoadBalancerName"] = true, nil }
 
 function asserts.AssertModifyLoadBalancerAttributesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyLoadBalancerAttributesInput to be of type 'table'")
-	assert(struct["LoadBalancerArn"], "Expected key LoadBalancerArn to exist in table")
-	assert(struct["Attributes"], "Expected key Attributes to exist in table")
-	if struct["Attributes"] then asserts.AssertLoadBalancerAttributes(struct["Attributes"]) end
-	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	assert(struct["LoadBalancerAttributes"], "Expected key LoadBalancerAttributes to exist in table")
+	if struct["LoadBalancerAttributes"] then asserts.AssertLoadBalancerAttributes(struct["LoadBalancerAttributes"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.ModifyLoadBalancerAttributesInput[k], "ModifyLoadBalancerAttributesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyLoadBalancerAttributesInput
---  
+-- <p>Contains the parameters for ModifyLoadBalancerAttributes.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Attributes [LoadBalancerAttributes] <p>The load balancer attributes.</p>
--- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- Required key: LoadBalancerArn
--- Required key: Attributes
+-- * LoadBalancerAttributes [LoadBalancerAttributes] <p>The attributes for the load balancer.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- Required key: LoadBalancerAttributes
 -- @return ModifyLoadBalancerAttributesInput structure as a key-value pair table
 function M.ModifyLoadBalancerAttributesInput(args)
 	assert(args, "You must provide an argument table when creating ModifyLoadBalancerAttributesInput")
@@ -3141,8 +2130,8 @@ function M.ModifyLoadBalancerAttributesInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Attributes"] = args["Attributes"],
-		["LoadBalancerArn"] = args["LoadBalancerArn"],
+		["LoadBalancerAttributes"] = args["LoadBalancerAttributes"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
 	}
 	asserts.AssertModifyLoadBalancerAttributesInput(all_args)
 	return {
@@ -3153,23 +2142,23 @@ function M.ModifyLoadBalancerAttributesInput(args)
     }
 end
 
-keys.DeleteLoadBalancerOutput = { nil }
+keys.CreateLoadBalancerPolicyOutput = { nil }
 
-function asserts.AssertDeleteLoadBalancerOutput(struct)
+function asserts.AssertCreateLoadBalancerPolicyOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteLoadBalancerOutput to be of type 'table'")
+	assert(type(struct) == "table", "Expected CreateLoadBalancerPolicyOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(keys.DeleteLoadBalancerOutput[k], "DeleteLoadBalancerOutput contains unknown key " .. tostring(k))
+		assert(keys.CreateLoadBalancerPolicyOutput[k], "CreateLoadBalancerPolicyOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DeleteLoadBalancerOutput
---  
+--- Create a structure of type CreateLoadBalancerPolicyOutput
+-- <p>Contains the output of CreateLoadBalancerPolicy.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- @return DeleteLoadBalancerOutput structure as a key-value pair table
-function M.DeleteLoadBalancerOutput(args)
-	assert(args, "You must provide an argument table when creating DeleteLoadBalancerOutput")
+-- @return CreateLoadBalancerPolicyOutput structure as a key-value pair table
+function M.CreateLoadBalancerPolicyOutput(args)
+	assert(args, "You must provide an argument table when creating CreateLoadBalancerPolicyOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -3178,7 +2167,7 @@ function M.DeleteLoadBalancerOutput(args)
     }
 	local all_args = { 
 	}
-	asserts.AssertDeleteLoadBalancerOutput(all_args)
+	asserts.AssertCreateLoadBalancerPolicyOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3187,43 +2176,25 @@ function M.DeleteLoadBalancerOutput(args)
     }
 end
 
-keys.ModifyTargetGroupInput = { ["HealthyThresholdCount"] = true, ["HealthCheckIntervalSeconds"] = true, ["TargetGroupArn"] = true, ["HealthCheckPort"] = true, ["HealthCheckProtocol"] = true, ["HealthCheckPath"] = true, ["HealthCheckTimeoutSeconds"] = true, ["Matcher"] = true, ["UnhealthyThresholdCount"] = true, nil }
+keys.RemoveAvailabilityZonesOutput = { ["AvailabilityZones"] = true, nil }
 
-function asserts.AssertModifyTargetGroupInput(struct)
+function asserts.AssertRemoveAvailabilityZonesOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ModifyTargetGroupInput to be of type 'table'")
-	assert(struct["TargetGroupArn"], "Expected key TargetGroupArn to exist in table")
-	if struct["HealthyThresholdCount"] then asserts.AssertHealthCheckThresholdCount(struct["HealthyThresholdCount"]) end
-	if struct["HealthCheckIntervalSeconds"] then asserts.AssertHealthCheckIntervalSeconds(struct["HealthCheckIntervalSeconds"]) end
-	if struct["TargetGroupArn"] then asserts.AssertTargetGroupArn(struct["TargetGroupArn"]) end
-	if struct["HealthCheckPort"] then asserts.AssertHealthCheckPort(struct["HealthCheckPort"]) end
-	if struct["HealthCheckProtocol"] then asserts.AssertProtocolEnum(struct["HealthCheckProtocol"]) end
-	if struct["HealthCheckPath"] then asserts.AssertPath(struct["HealthCheckPath"]) end
-	if struct["HealthCheckTimeoutSeconds"] then asserts.AssertHealthCheckTimeoutSeconds(struct["HealthCheckTimeoutSeconds"]) end
-	if struct["Matcher"] then asserts.AssertMatcher(struct["Matcher"]) end
-	if struct["UnhealthyThresholdCount"] then asserts.AssertHealthCheckThresholdCount(struct["UnhealthyThresholdCount"]) end
+	assert(type(struct) == "table", "Expected RemoveAvailabilityZonesOutput to be of type 'table'")
+	if struct["AvailabilityZones"] then asserts.AssertAvailabilityZones(struct["AvailabilityZones"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ModifyTargetGroupInput[k], "ModifyTargetGroupInput contains unknown key " .. tostring(k))
+		assert(keys.RemoveAvailabilityZonesOutput[k], "RemoveAvailabilityZonesOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ModifyTargetGroupInput
---  
+--- Create a structure of type RemoveAvailabilityZonesOutput
+-- <p>Contains the output for DisableAvailabilityZonesForLoadBalancer.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * HealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health checks successes required before considering an unhealthy target healthy.</p>
--- * HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] <p>The approximate amount of time, in seconds, between health checks of an individual target. For Application Load Balancers, the range is 5–300 seconds. For Network Load Balancers, the supported values are 10 or 30 seconds.</p>
--- * TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- * HealthCheckPort [HealthCheckPort] <p>The port the load balancer uses when performing health checks on targets.</p>
--- * HealthCheckProtocol [ProtocolEnum] <p>The protocol the load balancer uses when performing health checks on targets. The TCP protocol is supported only if the protocol of the target group is TCP.</p>
--- * HealthCheckPath [Path] <p>[HTTP/HTTPS health checks] The ping path that is the destination for the health check request.</p>
--- * HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] <p>[HTTP/HTTPS health checks] The amount of time, in seconds, during which no response means a failed health check.</p>
--- * Matcher [Matcher] <p>[HTTP/HTTPS health checks] The HTTP codes to use when checking for a successful response from a target.</p>
--- * UnhealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health check failures required before considering the target unhealthy. For Network Load Balancers, this value must be the same as the healthy threshold count.</p>
--- Required key: TargetGroupArn
--- @return ModifyTargetGroupInput structure as a key-value pair table
-function M.ModifyTargetGroupInput(args)
-	assert(args, "You must provide an argument table when creating ModifyTargetGroupInput")
+-- * AvailabilityZones [AvailabilityZones] <p>The remaining Availability Zones for the load balancer.</p>
+-- @return RemoveAvailabilityZonesOutput structure as a key-value pair table
+function M.RemoveAvailabilityZonesOutput(args)
+	assert(args, "You must provide an argument table when creating RemoveAvailabilityZonesOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -3231,17 +2202,9 @@ function M.ModifyTargetGroupInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["HealthyThresholdCount"] = args["HealthyThresholdCount"],
-		["HealthCheckIntervalSeconds"] = args["HealthCheckIntervalSeconds"],
-		["TargetGroupArn"] = args["TargetGroupArn"],
-		["HealthCheckPort"] = args["HealthCheckPort"],
-		["HealthCheckProtocol"] = args["HealthCheckProtocol"],
-		["HealthCheckPath"] = args["HealthCheckPath"],
-		["HealthCheckTimeoutSeconds"] = args["HealthCheckTimeoutSeconds"],
-		["Matcher"] = args["Matcher"],
-		["UnhealthyThresholdCount"] = args["UnhealthyThresholdCount"],
+		["AvailabilityZones"] = args["AvailabilityZones"],
 	}
-	asserts.AssertModifyTargetGroupInput(all_args)
+	asserts.AssertRemoveAvailabilityZonesOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -3250,39 +2213,25 @@ function M.ModifyTargetGroupInput(args)
     }
 end
 
-keys.CreateRuleInput = { ["Priority"] = true, ["Conditions"] = true, ["Actions"] = true, ["ListenerArn"] = true, nil }
+keys.DescribeLoadBalancerPolicyTypesOutput = { ["PolicyTypeDescriptions"] = true, nil }
 
-function asserts.AssertCreateRuleInput(struct)
+function asserts.AssertDescribeLoadBalancerPolicyTypesOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected CreateRuleInput to be of type 'table'")
-	assert(struct["ListenerArn"], "Expected key ListenerArn to exist in table")
-	assert(struct["Conditions"], "Expected key Conditions to exist in table")
-	assert(struct["Priority"], "Expected key Priority to exist in table")
-	assert(struct["Actions"], "Expected key Actions to exist in table")
-	if struct["Priority"] then asserts.AssertRulePriority(struct["Priority"]) end
-	if struct["Conditions"] then asserts.AssertRuleConditionList(struct["Conditions"]) end
-	if struct["Actions"] then asserts.AssertActions(struct["Actions"]) end
-	if struct["ListenerArn"] then asserts.AssertListenerArn(struct["ListenerArn"]) end
+	assert(type(struct) == "table", "Expected DescribeLoadBalancerPolicyTypesOutput to be of type 'table'")
+	if struct["PolicyTypeDescriptions"] then asserts.AssertPolicyTypeDescriptions(struct["PolicyTypeDescriptions"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.CreateRuleInput[k], "CreateRuleInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeLoadBalancerPolicyTypesOutput[k], "DescribeLoadBalancerPolicyTypesOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type CreateRuleInput
---  
+--- Create a structure of type DescribeLoadBalancerPolicyTypesOutput
+-- <p>Contains the output of DescribeLoadBalancerPolicyTypes.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Priority [RulePriority] <p>The rule priority. A listener can't have multiple rules with the same priority.</p>
--- * Conditions [RuleConditionList] <p>The conditions. Each condition specifies a field name and a single value.</p> <p>If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. You can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>- .</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul> <p>If the field name is <code>path-pattern</code>, you can specify a single path pattern. A path pattern is case-sensitive, can be up to 128 characters in length, and can contain any of the following characters. You can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>_ - . $ / ~ " ' @ : +</p> </li> <li> <p>&amp; (using &amp;amp;)</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul>
--- * Actions [Actions] <p>The actions. Each rule must include exactly one of the following types of actions: <code>forward</code>, <code>fixed-response</code>, or <code>redirect</code>.</p> <p>If the action type is <code>forward</code>, you can specify a single target group.</p> <p>[HTTPS listener] If the action type is <code>authenticate-oidc</code>, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.</p> <p>[HTTPS listener] If the action type is <code>authenticate-cognito</code>, you can use Amazon Cognito to authenticate users as they access your application.</p> <p>[Application Load Balancer] If the action type is <code>redirect</code>, you can redirect HTTP and HTTPS requests.</p> <p>[Application Load Balancer] If the action type is <code>fixed-response</code>, you can return a custom HTTP response.</p>
--- * ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
--- Required key: ListenerArn
--- Required key: Conditions
--- Required key: Priority
--- Required key: Actions
--- @return CreateRuleInput structure as a key-value pair table
-function M.CreateRuleInput(args)
-	assert(args, "You must provide an argument table when creating CreateRuleInput")
+-- * PolicyTypeDescriptions [PolicyTypeDescriptions] <p>Information about the policy types.</p>
+-- @return DescribeLoadBalancerPolicyTypesOutput structure as a key-value pair table
+function M.DescribeLoadBalancerPolicyTypesOutput(args)
+	assert(args, "You must provide an argument table when creating DescribeLoadBalancerPolicyTypesOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -3290,1056 +2239,9 @@ function M.CreateRuleInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Priority"] = args["Priority"],
-		["Conditions"] = args["Conditions"],
-		["Actions"] = args["Actions"],
-		["ListenerArn"] = args["ListenerArn"],
+		["PolicyTypeDescriptions"] = args["PolicyTypeDescriptions"],
 	}
-	asserts.AssertCreateRuleInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.RemoveListenerCertificatesOutput = { nil }
-
-function asserts.AssertRemoveListenerCertificatesOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected RemoveListenerCertificatesOutput to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.RemoveListenerCertificatesOutput[k], "RemoveListenerCertificatesOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type RemoveListenerCertificatesOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return RemoveListenerCertificatesOutput structure as a key-value pair table
-function M.RemoveListenerCertificatesOutput(args)
-	assert(args, "You must provide an argument table when creating RemoveListenerCertificatesOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertRemoveListenerCertificatesOutput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DescribeListenersInput = { ["ListenerArns"] = true, ["Marker"] = true, ["LoadBalancerArn"] = true, ["PageSize"] = true, nil }
-
-function asserts.AssertDescribeListenersInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeListenersInput to be of type 'table'")
-	if struct["ListenerArns"] then asserts.AssertListenerArns(struct["ListenerArns"]) end
-	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
-	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
-	if struct["PageSize"] then asserts.AssertPageSize(struct["PageSize"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DescribeListenersInput[k], "DescribeListenersInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DescribeListenersInput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ListenerArns [ListenerArns] <p>The Amazon Resource Names (ARN) of the listeners.</p>
--- * Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- * PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
--- @return DescribeListenersInput structure as a key-value pair table
-function M.DescribeListenersInput(args)
-	assert(args, "You must provide an argument table when creating DescribeListenersInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ListenerArns"] = args["ListenerArns"],
-		["Marker"] = args["Marker"],
-		["LoadBalancerArn"] = args["LoadBalancerArn"],
-		["PageSize"] = args["PageSize"],
-	}
-	asserts.AssertDescribeListenersInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DeleteLoadBalancerInput = { ["LoadBalancerArn"] = true, nil }
-
-function asserts.AssertDeleteLoadBalancerInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteLoadBalancerInput to be of type 'table'")
-	assert(struct["LoadBalancerArn"], "Expected key LoadBalancerArn to exist in table")
-	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DeleteLoadBalancerInput[k], "DeleteLoadBalancerInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DeleteLoadBalancerInput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- Required key: LoadBalancerArn
--- @return DeleteLoadBalancerInput structure as a key-value pair table
-function M.DeleteLoadBalancerInput(args)
-	assert(args, "You must provide an argument table when creating DeleteLoadBalancerInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["LoadBalancerArn"] = args["LoadBalancerArn"],
-	}
-	asserts.AssertDeleteLoadBalancerInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SetRulePrioritiesInput = { ["RulePriorities"] = true, nil }
-
-function asserts.AssertSetRulePrioritiesInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SetRulePrioritiesInput to be of type 'table'")
-	assert(struct["RulePriorities"], "Expected key RulePriorities to exist in table")
-	if struct["RulePriorities"] then asserts.AssertRulePriorityList(struct["RulePriorities"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.SetRulePrioritiesInput[k], "SetRulePrioritiesInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SetRulePrioritiesInput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * RulePriorities [RulePriorityList] <p>The rule priorities.</p>
--- Required key: RulePriorities
--- @return SetRulePrioritiesInput structure as a key-value pair table
-function M.SetRulePrioritiesInput(args)
-	assert(args, "You must provide an argument table when creating SetRulePrioritiesInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["RulePriorities"] = args["RulePriorities"],
-	}
-	asserts.AssertSetRulePrioritiesInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SetRulePrioritiesOutput = { ["Rules"] = true, nil }
-
-function asserts.AssertSetRulePrioritiesOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SetRulePrioritiesOutput to be of type 'table'")
-	if struct["Rules"] then asserts.AssertRules(struct["Rules"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.SetRulePrioritiesOutput[k], "SetRulePrioritiesOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SetRulePrioritiesOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Rules [Rules] <p>Information about the rules.</p>
--- @return SetRulePrioritiesOutput structure as a key-value pair table
-function M.SetRulePrioritiesOutput(args)
-	assert(args, "You must provide an argument table when creating SetRulePrioritiesOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Rules"] = args["Rules"],
-	}
-	asserts.AssertSetRulePrioritiesOutput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.Action = { ["TargetGroupArn"] = true, ["FixedResponseConfig"] = true, ["Type"] = true, ["AuthenticateCognitoConfig"] = true, ["AuthenticateOidcConfig"] = true, ["RedirectConfig"] = true, ["Order"] = true, nil }
-
-function asserts.AssertAction(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected Action to be of type 'table'")
-	assert(struct["Type"], "Expected key Type to exist in table")
-	if struct["TargetGroupArn"] then asserts.AssertTargetGroupArn(struct["TargetGroupArn"]) end
-	if struct["FixedResponseConfig"] then asserts.AssertFixedResponseActionConfig(struct["FixedResponseConfig"]) end
-	if struct["Type"] then asserts.AssertActionTypeEnum(struct["Type"]) end
-	if struct["AuthenticateCognitoConfig"] then asserts.AssertAuthenticateCognitoActionConfig(struct["AuthenticateCognitoConfig"]) end
-	if struct["AuthenticateOidcConfig"] then asserts.AssertAuthenticateOidcActionConfig(struct["AuthenticateOidcConfig"]) end
-	if struct["RedirectConfig"] then asserts.AssertRedirectActionConfig(struct["RedirectConfig"]) end
-	if struct["Order"] then asserts.AssertActionOrder(struct["Order"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.Action[k], "Action contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type Action
--- <p>Information about an action.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group. Specify only when <code>Type</code> is <code>forward</code>.</p>
--- * FixedResponseConfig [FixedResponseActionConfig] <p>[Application Load Balancer] Information for creating an action that returns a custom HTTP response. Specify only when <code>Type</code> is <code>fixed-response</code>.</p>
--- * Type [ActionTypeEnum] <p>The type of action. Each rule must include exactly one of the following types of actions: <code>forward</code>, <code>fixed-response</code>, or <code>redirect</code>.</p>
--- * AuthenticateCognitoConfig [AuthenticateCognitoActionConfig] <p>[HTTPS listener] Information for using Amazon Cognito to authenticate users. Specify only when <code>Type</code> is <code>authenticate-cognito</code>.</p>
--- * AuthenticateOidcConfig [AuthenticateOidcActionConfig] <p>[HTTPS listener] Information about an identity provider that is compliant with OpenID Connect (OIDC). Specify only when <code>Type</code> is <code>authenticate-oidc</code>.</p>
--- * RedirectConfig [RedirectActionConfig] <p>[Application Load Balancer] Information for creating a redirect action. Specify only when <code>Type</code> is <code>redirect</code>.</p>
--- * Order [ActionOrder] <p>The order for the action. This value is required for rules with multiple actions. The action with the lowest value for order is performed first. The final action to be performed must be a <code>forward</code> or a <code>fixed-response</code> action.</p>
--- Required key: Type
--- @return Action structure as a key-value pair table
-function M.Action(args)
-	assert(args, "You must provide an argument table when creating Action")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["TargetGroupArn"] = args["TargetGroupArn"],
-		["FixedResponseConfig"] = args["FixedResponseConfig"],
-		["Type"] = args["Type"],
-		["AuthenticateCognitoConfig"] = args["AuthenticateCognitoConfig"],
-		["AuthenticateOidcConfig"] = args["AuthenticateOidcConfig"],
-		["RedirectConfig"] = args["RedirectConfig"],
-		["Order"] = args["Order"],
-	}
-	asserts.AssertAction(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.PriorityInUseException = { nil }
-
-function asserts.AssertPriorityInUseException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected PriorityInUseException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.PriorityInUseException[k], "PriorityInUseException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type PriorityInUseException
--- <p>The specified priority is in use.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return PriorityInUseException structure as a key-value pair table
-function M.PriorityInUseException(args)
-	assert(args, "You must provide an argument table when creating PriorityInUseException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertPriorityInUseException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.RegisterTargetsInput = { ["TargetGroupArn"] = true, ["Targets"] = true, nil }
-
-function asserts.AssertRegisterTargetsInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected RegisterTargetsInput to be of type 'table'")
-	assert(struct["TargetGroupArn"], "Expected key TargetGroupArn to exist in table")
-	assert(struct["Targets"], "Expected key Targets to exist in table")
-	if struct["TargetGroupArn"] then asserts.AssertTargetGroupArn(struct["TargetGroupArn"]) end
-	if struct["Targets"] then asserts.AssertTargetDescriptions(struct["Targets"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.RegisterTargetsInput[k], "RegisterTargetsInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type RegisterTargetsInput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- * Targets [TargetDescriptions] <p>The targets.</p>
--- Required key: TargetGroupArn
--- Required key: Targets
--- @return RegisterTargetsInput structure as a key-value pair table
-function M.RegisterTargetsInput(args)
-	assert(args, "You must provide an argument table when creating RegisterTargetsInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["TargetGroupArn"] = args["TargetGroupArn"],
-		["Targets"] = args["Targets"],
-	}
-	asserts.AssertRegisterTargetsInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DeleteTargetGroupInput = { ["TargetGroupArn"] = true, nil }
-
-function asserts.AssertDeleteTargetGroupInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteTargetGroupInput to be of type 'table'")
-	assert(struct["TargetGroupArn"], "Expected key TargetGroupArn to exist in table")
-	if struct["TargetGroupArn"] then asserts.AssertTargetGroupArn(struct["TargetGroupArn"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DeleteTargetGroupInput[k], "DeleteTargetGroupInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DeleteTargetGroupInput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- Required key: TargetGroupArn
--- @return DeleteTargetGroupInput structure as a key-value pair table
-function M.DeleteTargetGroupInput(args)
-	assert(args, "You must provide an argument table when creating DeleteTargetGroupInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["TargetGroupArn"] = args["TargetGroupArn"],
-	}
-	asserts.AssertDeleteTargetGroupInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.RuleNotFoundException = { nil }
-
-function asserts.AssertRuleNotFoundException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected RuleNotFoundException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.RuleNotFoundException[k], "RuleNotFoundException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type RuleNotFoundException
--- <p>The specified rule does not exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return RuleNotFoundException structure as a key-value pair table
-function M.RuleNotFoundException(args)
-	assert(args, "You must provide an argument table when creating RuleNotFoundException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertRuleNotFoundException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TooManyTargetsException = { nil }
-
-function asserts.AssertTooManyTargetsException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyTargetsException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TooManyTargetsException[k], "TooManyTargetsException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TooManyTargetsException
--- <p>You've reached the limit on the number of targets.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TooManyTargetsException structure as a key-value pair table
-function M.TooManyTargetsException(args)
-	assert(args, "You must provide an argument table when creating TooManyTargetsException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTooManyTargetsException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.OperationNotPermittedException = { nil }
-
-function asserts.AssertOperationNotPermittedException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected OperationNotPermittedException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.OperationNotPermittedException[k], "OperationNotPermittedException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type OperationNotPermittedException
--- <p>This operation is not allowed.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return OperationNotPermittedException structure as a key-value pair table
-function M.OperationNotPermittedException(args)
-	assert(args, "You must provide an argument table when creating OperationNotPermittedException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertOperationNotPermittedException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.AddTagsInput = { ["ResourceArns"] = true, ["Tags"] = true, nil }
-
-function asserts.AssertAddTagsInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected AddTagsInput to be of type 'table'")
-	assert(struct["ResourceArns"], "Expected key ResourceArns to exist in table")
-	assert(struct["Tags"], "Expected key Tags to exist in table")
-	if struct["ResourceArns"] then asserts.AssertResourceArns(struct["ResourceArns"]) end
-	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.AddTagsInput[k], "AddTagsInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type AddTagsInput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ResourceArns [ResourceArns] <p>The Amazon Resource Name (ARN) of the resource.</p>
--- * Tags [TagList] <p>The tags. Each resource can have a maximum of 10 tags.</p>
--- Required key: ResourceArns
--- Required key: Tags
--- @return AddTagsInput structure as a key-value pair table
-function M.AddTagsInput(args)
-	assert(args, "You must provide an argument table when creating AddTagsInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ResourceArns"] = args["ResourceArns"],
-		["Tags"] = args["Tags"],
-	}
-	asserts.AssertAddTagsInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.HealthUnavailableException = { nil }
-
-function asserts.AssertHealthUnavailableException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected HealthUnavailableException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.HealthUnavailableException[k], "HealthUnavailableException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type HealthUnavailableException
--- <p>The health of the specified targets could not be retrieved due to an internal error.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return HealthUnavailableException structure as a key-value pair table
-function M.HealthUnavailableException(args)
-	assert(args, "You must provide an argument table when creating HealthUnavailableException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertHealthUnavailableException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ModifyRuleInput = { ["Conditions"] = true, ["RuleArn"] = true, ["Actions"] = true, nil }
-
-function asserts.AssertModifyRuleInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ModifyRuleInput to be of type 'table'")
-	assert(struct["RuleArn"], "Expected key RuleArn to exist in table")
-	if struct["Conditions"] then asserts.AssertRuleConditionList(struct["Conditions"]) end
-	if struct["RuleArn"] then asserts.AssertRuleArn(struct["RuleArn"]) end
-	if struct["Actions"] then asserts.AssertActions(struct["Actions"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ModifyRuleInput[k], "ModifyRuleInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ModifyRuleInput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Conditions [RuleConditionList] <p>The conditions. Each condition specifies a field name and a single value.</p> <p>If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. You can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>- .</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul> <p>If the field name is <code>path-pattern</code>, you can specify a single path pattern. A path pattern is case-sensitive, can be up to 128 characters in length, and can contain any of the following characters. You can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>_ - . $ / ~ " ' @ : +</p> </li> <li> <p>&amp; (using &amp;amp;)</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul>
--- * RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
--- * Actions [Actions] <p>The actions.</p> <p>If the action type is <code>forward</code>, you can specify a single target group.</p> <p>If the action type is <code>authenticate-oidc</code>, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.</p> <p>If the action type is <code>authenticate-cognito</code>, you can use Amazon Cognito to authenticate users as they access your application.</p>
--- Required key: RuleArn
--- @return ModifyRuleInput structure as a key-value pair table
-function M.ModifyRuleInput(args)
-	assert(args, "You must provide an argument table when creating ModifyRuleInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Conditions"] = args["Conditions"],
-		["RuleArn"] = args["RuleArn"],
-		["Actions"] = args["Actions"],
-	}
-	asserts.AssertModifyRuleInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TooManyTagsException = { nil }
-
-function asserts.AssertTooManyTagsException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TooManyTagsException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TooManyTagsException[k], "TooManyTagsException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TooManyTagsException
--- <p>You've reached the limit on the number of tags per load balancer.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TooManyTagsException structure as a key-value pair table
-function M.TooManyTagsException(args)
-	assert(args, "You must provide an argument table when creating TooManyTagsException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTooManyTagsException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DescribeRulesOutput = { ["Rules"] = true, ["NextMarker"] = true, nil }
-
-function asserts.AssertDescribeRulesOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeRulesOutput to be of type 'table'")
-	if struct["Rules"] then asserts.AssertRules(struct["Rules"]) end
-	if struct["NextMarker"] then asserts.AssertMarker(struct["NextMarker"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DescribeRulesOutput[k], "DescribeRulesOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DescribeRulesOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Rules [Rules] <p>Information about the rules.</p>
--- * NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- @return DescribeRulesOutput structure as a key-value pair table
-function M.DescribeRulesOutput(args)
-	assert(args, "You must provide an argument table when creating DescribeRulesOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Rules"] = args["Rules"],
-		["NextMarker"] = args["NextMarker"],
-	}
-	asserts.AssertDescribeRulesOutput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SSLPolicyNotFoundException = { nil }
-
-function asserts.AssertSSLPolicyNotFoundException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SSLPolicyNotFoundException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.SSLPolicyNotFoundException[k], "SSLPolicyNotFoundException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SSLPolicyNotFoundException
--- <p>The specified SSL policy does not exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return SSLPolicyNotFoundException structure as a key-value pair table
-function M.SSLPolicyNotFoundException(args)
-	assert(args, "You must provide an argument table when creating SSLPolicyNotFoundException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertSSLPolicyNotFoundException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DuplicateListenerException = { nil }
-
-function asserts.AssertDuplicateListenerException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DuplicateListenerException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.DuplicateListenerException[k], "DuplicateListenerException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DuplicateListenerException
--- <p>A listener with the specified port already exists.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return DuplicateListenerException structure as a key-value pair table
-function M.DuplicateListenerException(args)
-	assert(args, "You must provide an argument table when creating DuplicateListenerException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertDuplicateListenerException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DescribeTargetGroupsOutput = { ["NextMarker"] = true, ["TargetGroups"] = true, nil }
-
-function asserts.AssertDescribeTargetGroupsOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeTargetGroupsOutput to be of type 'table'")
-	if struct["NextMarker"] then asserts.AssertMarker(struct["NextMarker"]) end
-	if struct["TargetGroups"] then asserts.AssertTargetGroups(struct["TargetGroups"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DescribeTargetGroupsOutput[k], "DescribeTargetGroupsOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DescribeTargetGroupsOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- * TargetGroups [TargetGroups] <p>Information about the target groups.</p>
--- @return DescribeTargetGroupsOutput structure as a key-value pair table
-function M.DescribeTargetGroupsOutput(args)
-	assert(args, "You must provide an argument table when creating DescribeTargetGroupsOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["NextMarker"] = args["NextMarker"],
-		["TargetGroups"] = args["TargetGroups"],
-	}
-	asserts.AssertDescribeTargetGroupsOutput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ModifyTargetGroupOutput = { ["TargetGroups"] = true, nil }
-
-function asserts.AssertModifyTargetGroupOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ModifyTargetGroupOutput to be of type 'table'")
-	if struct["TargetGroups"] then asserts.AssertTargetGroups(struct["TargetGroups"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ModifyTargetGroupOutput[k], "ModifyTargetGroupOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ModifyTargetGroupOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * TargetGroups [TargetGroups] <p>Information about the modified target group.</p>
--- @return ModifyTargetGroupOutput structure as a key-value pair table
-function M.ModifyTargetGroupOutput(args)
-	assert(args, "You must provide an argument table when creating ModifyTargetGroupOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["TargetGroups"] = args["TargetGroups"],
-	}
-	asserts.AssertModifyTargetGroupOutput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.ModifyTargetGroupAttributesOutput = { ["Attributes"] = true, nil }
-
-function asserts.AssertModifyTargetGroupAttributesOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected ModifyTargetGroupAttributesOutput to be of type 'table'")
-	if struct["Attributes"] then asserts.AssertTargetGroupAttributes(struct["Attributes"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.ModifyTargetGroupAttributesOutput[k], "ModifyTargetGroupAttributesOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type ModifyTargetGroupAttributesOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Attributes [TargetGroupAttributes] <p>Information about the attributes.</p>
--- @return ModifyTargetGroupAttributesOutput structure as a key-value pair table
-function M.ModifyTargetGroupAttributesOutput(args)
-	assert(args, "You must provide an argument table when creating ModifyTargetGroupAttributesOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Attributes"] = args["Attributes"],
-	}
-	asserts.AssertModifyTargetGroupAttributesOutput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CreateTargetGroupOutput = { ["TargetGroups"] = true, nil }
-
-function asserts.AssertCreateTargetGroupOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CreateTargetGroupOutput to be of type 'table'")
-	if struct["TargetGroups"] then asserts.AssertTargetGroups(struct["TargetGroups"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.CreateTargetGroupOutput[k], "CreateTargetGroupOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CreateTargetGroupOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * TargetGroups [TargetGroups] <p>Information about the target group.</p>
--- @return CreateTargetGroupOutput structure as a key-value pair table
-function M.CreateTargetGroupOutput(args)
-	assert(args, "You must provide an argument table when creating CreateTargetGroupOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["TargetGroups"] = args["TargetGroups"],
-	}
-	asserts.AssertCreateTargetGroupOutput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CreateListenerOutput = { ["Listeners"] = true, nil }
-
-function asserts.AssertCreateListenerOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CreateListenerOutput to be of type 'table'")
-	if struct["Listeners"] then asserts.AssertListeners(struct["Listeners"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.CreateListenerOutput[k], "CreateListenerOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CreateListenerOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Listeners [Listeners] <p>Information about the listener.</p>
--- @return CreateListenerOutput structure as a key-value pair table
-function M.CreateListenerOutput(args)
-	assert(args, "You must provide an argument table when creating CreateListenerOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Listeners"] = args["Listeners"],
-	}
-	asserts.AssertCreateListenerOutput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.LoadBalancerAddress = { ["IpAddress"] = true, ["AllocationId"] = true, nil }
-
-function asserts.AssertLoadBalancerAddress(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected LoadBalancerAddress to be of type 'table'")
-	if struct["IpAddress"] then asserts.AssertIpAddress(struct["IpAddress"]) end
-	if struct["AllocationId"] then asserts.AssertAllocationId(struct["AllocationId"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.LoadBalancerAddress[k], "LoadBalancerAddress contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type LoadBalancerAddress
--- <p>Information about a static IP address for a load balancer.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * IpAddress [IpAddress] <p>The static IP address.</p>
--- * AllocationId [AllocationId] <p>[Network Load Balancers] The allocation ID of the Elastic IP address.</p>
--- @return LoadBalancerAddress structure as a key-value pair table
-function M.LoadBalancerAddress(args)
-	assert(args, "You must provide an argument table when creating LoadBalancerAddress")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["IpAddress"] = args["IpAddress"],
-		["AllocationId"] = args["AllocationId"],
-	}
-	asserts.AssertLoadBalancerAddress(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DescribeRulesInput = { ["Marker"] = true, ["RuleArns"] = true, ["PageSize"] = true, ["ListenerArn"] = true, nil }
-
-function asserts.AssertDescribeRulesInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeRulesInput to be of type 'table'")
-	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
-	if struct["RuleArns"] then asserts.AssertRuleArns(struct["RuleArns"]) end
-	if struct["PageSize"] then asserts.AssertPageSize(struct["PageSize"]) end
-	if struct["ListenerArn"] then asserts.AssertListenerArn(struct["ListenerArn"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DescribeRulesInput[k], "DescribeRulesInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DescribeRulesInput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- * RuleArns [RuleArns] <p>The Amazon Resource Names (ARN) of the rules.</p>
--- * PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
--- * ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
--- @return DescribeRulesInput structure as a key-value pair table
-function M.DescribeRulesInput(args)
-	assert(args, "You must provide an argument table when creating DescribeRulesInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Marker"] = args["Marker"],
-		["RuleArns"] = args["RuleArns"],
-		["PageSize"] = args["PageSize"],
-		["ListenerArn"] = args["ListenerArn"],
-	}
-	asserts.AssertDescribeRulesInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DeleteListenerOutput = { nil }
-
-function asserts.AssertDeleteListenerOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DeleteListenerOutput to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.DeleteListenerOutput[k], "DeleteListenerOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DeleteListenerOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return DeleteListenerOutput structure as a key-value pair table
-function M.DeleteListenerOutput(args)
-	assert(args, "You must provide an argument table when creating DeleteListenerOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertDeleteListenerOutput(all_args)
+	asserts.AssertDescribeLoadBalancerPolicyTypesOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4359,7 +2261,7 @@ function asserts.AssertAddTagsOutput(struct)
 end
 
 --- Create a structure of type AddTagsOutput
---  
+-- <p>Contains the output of AddTags.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- @return AddTagsOutput structure as a key-value pair table
@@ -4382,6 +2284,707 @@ function M.AddTagsOutput(args)
     }
 end
 
+keys.AppCookieStickinessPolicy = { ["PolicyName"] = true, ["CookieName"] = true, nil }
+
+function asserts.AssertAppCookieStickinessPolicy(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected AppCookieStickinessPolicy to be of type 'table'")
+	if struct["PolicyName"] then asserts.AssertPolicyName(struct["PolicyName"]) end
+	if struct["CookieName"] then asserts.AssertCookieName(struct["CookieName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.AppCookieStickinessPolicy[k], "AppCookieStickinessPolicy contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type AppCookieStickinessPolicy
+-- <p>Information about a policy for application-controlled session stickiness.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyName [PolicyName] <p>The mnemonic name for the policy being created. The name must be unique within a set of policies for this load balancer.</p>
+-- * CookieName [CookieName] <p>The name of the application cookie used for stickiness.</p>
+-- @return AppCookieStickinessPolicy structure as a key-value pair table
+function M.AppCookieStickinessPolicy(args)
+	assert(args, "You must provide an argument table when creating AppCookieStickinessPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["PolicyName"] = args["PolicyName"],
+		["CookieName"] = args["CookieName"],
+	}
+	asserts.AssertAppCookieStickinessPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.TagKeyOnly = { ["Key"] = true, nil }
+
+function asserts.AssertTagKeyOnly(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected TagKeyOnly to be of type 'table'")
+	if struct["Key"] then asserts.AssertTagKey(struct["Key"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.TagKeyOnly[k], "TagKeyOnly contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type TagKeyOnly
+-- <p>The key of a tag.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Key [TagKey] <p>The name of the key.</p>
+-- @return TagKeyOnly structure as a key-value pair table
+function M.TagKeyOnly(args)
+	assert(args, "You must provide an argument table when creating TagKeyOnly")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Key"] = args["Key"],
+	}
+	asserts.AssertTagKeyOnly(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeregisterEndPointsInput = { ["Instances"] = true, ["LoadBalancerName"] = true, nil }
+
+function asserts.AssertDeregisterEndPointsInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeregisterEndPointsInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	assert(struct["Instances"], "Expected key Instances to exist in table")
+	if struct["Instances"] then asserts.AssertInstances(struct["Instances"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeregisterEndPointsInput[k], "DeregisterEndPointsInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeregisterEndPointsInput
+-- <p>Contains the parameters for DeregisterInstancesFromLoadBalancer.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Instances [Instances] <p>The IDs of the instances.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- Required key: Instances
+-- @return DeregisterEndPointsInput structure as a key-value pair table
+function M.DeregisterEndPointsInput(args)
+	assert(args, "You must provide an argument table when creating DeregisterEndPointsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Instances"] = args["Instances"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
+	}
+	asserts.AssertDeregisterEndPointsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeAccessPointsInput = { ["Marker"] = true, ["PageSize"] = true, ["LoadBalancerNames"] = true, nil }
+
+function asserts.AssertDescribeAccessPointsInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeAccessPointsInput to be of type 'table'")
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["PageSize"] then asserts.AssertPageSize(struct["PageSize"]) end
+	if struct["LoadBalancerNames"] then asserts.AssertLoadBalancerNames(struct["LoadBalancerNames"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeAccessPointsInput[k], "DescribeAccessPointsInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeAccessPointsInput
+-- <p>Contains the parameters for DescribeLoadBalancers.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- * PageSize [PageSize] <p>The maximum number of results to return with this call (a number from 1 to 400). The default is 400.</p>
+-- * LoadBalancerNames [LoadBalancerNames] <p>The names of the load balancers.</p>
+-- @return DescribeAccessPointsInput structure as a key-value pair table
+function M.DescribeAccessPointsInput(args)
+	assert(args, "You must provide an argument table when creating DescribeAccessPointsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Marker"] = args["Marker"],
+		["PageSize"] = args["PageSize"],
+		["LoadBalancerNames"] = args["LoadBalancerNames"],
+	}
+	asserts.AssertDescribeAccessPointsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.AddAvailabilityZonesInput = { ["AvailabilityZones"] = true, ["LoadBalancerName"] = true, nil }
+
+function asserts.AssertAddAvailabilityZonesInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected AddAvailabilityZonesInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	assert(struct["AvailabilityZones"], "Expected key AvailabilityZones to exist in table")
+	if struct["AvailabilityZones"] then asserts.AssertAvailabilityZones(struct["AvailabilityZones"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.AddAvailabilityZonesInput[k], "AddAvailabilityZonesInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type AddAvailabilityZonesInput
+-- <p>Contains the parameters for EnableAvailabilityZonesForLoadBalancer.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AvailabilityZones [AvailabilityZones] <p>The Availability Zones. These must be in the same region as the load balancer.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- Required key: AvailabilityZones
+-- @return AddAvailabilityZonesInput structure as a key-value pair table
+function M.AddAvailabilityZonesInput(args)
+	assert(args, "You must provide an argument table when creating AddAvailabilityZonesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["AvailabilityZones"] = args["AvailabilityZones"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
+	}
+	asserts.AssertAddAvailabilityZonesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteAccessPointOutput = { nil }
+
+function asserts.AssertDeleteAccessPointOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteAccessPointOutput to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteAccessPointOutput[k], "DeleteAccessPointOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteAccessPointOutput
+-- <p>Contains the output of DeleteLoadBalancer.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteAccessPointOutput structure as a key-value pair table
+function M.DeleteAccessPointOutput(args)
+	assert(args, "You must provide an argument table when creating DeleteAccessPointOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDeleteAccessPointOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.AddAvailabilityZonesOutput = { ["AvailabilityZones"] = true, nil }
+
+function asserts.AssertAddAvailabilityZonesOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected AddAvailabilityZonesOutput to be of type 'table'")
+	if struct["AvailabilityZones"] then asserts.AssertAvailabilityZones(struct["AvailabilityZones"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.AddAvailabilityZonesOutput[k], "AddAvailabilityZonesOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type AddAvailabilityZonesOutput
+-- <p>Contains the output of EnableAvailabilityZonesForLoadBalancer.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AvailabilityZones [AvailabilityZones] <p>The updated list of Availability Zones for the load balancer.</p>
+-- @return AddAvailabilityZonesOutput structure as a key-value pair table
+function M.AddAvailabilityZonesOutput(args)
+	assert(args, "You must provide an argument table when creating AddAvailabilityZonesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["AvailabilityZones"] = args["AvailabilityZones"],
+	}
+	asserts.AssertAddAvailabilityZonesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateLoadBalancerListenerInput = { ["Listeners"] = true, ["LoadBalancerName"] = true, nil }
+
+function asserts.AssertCreateLoadBalancerListenerInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateLoadBalancerListenerInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	assert(struct["Listeners"], "Expected key Listeners to exist in table")
+	if struct["Listeners"] then asserts.AssertListeners(struct["Listeners"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateLoadBalancerListenerInput[k], "CreateLoadBalancerListenerInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateLoadBalancerListenerInput
+-- <p>Contains the parameters for CreateLoadBalancerListeners.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Listeners [Listeners] <p>The listeners.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- Required key: Listeners
+-- @return CreateLoadBalancerListenerInput structure as a key-value pair table
+function M.CreateLoadBalancerListenerInput(args)
+	assert(args, "You must provide an argument table when creating CreateLoadBalancerListenerInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Listeners"] = args["Listeners"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
+	}
+	asserts.AssertCreateLoadBalancerListenerInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.AddTagsInput = { ["Tags"] = true, ["LoadBalancerNames"] = true, nil }
+
+function asserts.AssertAddTagsInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected AddTagsInput to be of type 'table'")
+	assert(struct["LoadBalancerNames"], "Expected key LoadBalancerNames to exist in table")
+	assert(struct["Tags"], "Expected key Tags to exist in table")
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["LoadBalancerNames"] then asserts.AssertLoadBalancerNames(struct["LoadBalancerNames"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.AddTagsInput[k], "AddTagsInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type AddTagsInput
+-- <p>Contains the parameters for AddTags.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Tags [TagList] <p>The tags.</p>
+-- * LoadBalancerNames [LoadBalancerNames] <p>The name of the load balancer. You can specify one load balancer only.</p>
+-- Required key: LoadBalancerNames
+-- Required key: Tags
+-- @return AddTagsInput structure as a key-value pair table
+function M.AddTagsInput(args)
+	assert(args, "You must provide an argument table when creating AddTagsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Tags"] = args["Tags"],
+		["LoadBalancerNames"] = args["LoadBalancerNames"],
+	}
+	asserts.AssertAddTagsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DescribeEndPointStateInput = { ["Instances"] = true, ["LoadBalancerName"] = true, nil }
+
+function asserts.AssertDescribeEndPointStateInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DescribeEndPointStateInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	if struct["Instances"] then asserts.AssertInstances(struct["Instances"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DescribeEndPointStateInput[k], "DescribeEndPointStateInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DescribeEndPointStateInput
+-- <p>Contains the parameters for DescribeInstanceHealth.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Instances [Instances] <p>The IDs of the instances.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- @return DescribeEndPointStateInput structure as a key-value pair table
+function M.DescribeEndPointStateInput(args)
+	assert(args, "You must provide an argument table when creating DescribeEndPointStateInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Instances"] = args["Instances"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
+	}
+	asserts.AssertDescribeEndPointStateInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SetLoadBalancerListenerSSLCertificateInput = { ["LoadBalancerPort"] = true, ["SSLCertificateId"] = true, ["LoadBalancerName"] = true, nil }
+
+function asserts.AssertSetLoadBalancerListenerSSLCertificateInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SetLoadBalancerListenerSSLCertificateInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	assert(struct["LoadBalancerPort"], "Expected key LoadBalancerPort to exist in table")
+	assert(struct["SSLCertificateId"], "Expected key SSLCertificateId to exist in table")
+	if struct["LoadBalancerPort"] then asserts.AssertAccessPointPort(struct["LoadBalancerPort"]) end
+	if struct["SSLCertificateId"] then asserts.AssertSSLCertificateId(struct["SSLCertificateId"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SetLoadBalancerListenerSSLCertificateInput[k], "SetLoadBalancerListenerSSLCertificateInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SetLoadBalancerListenerSSLCertificateInput
+-- <p>Contains the parameters for SetLoadBalancerListenerSSLCertificate.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoadBalancerPort [AccessPointPort] <p>The port that uses the specified SSL certificate.</p>
+-- * SSLCertificateId [SSLCertificateId] <p>The Amazon Resource Name (ARN) of the SSL certificate.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- Required key: LoadBalancerPort
+-- Required key: SSLCertificateId
+-- @return SetLoadBalancerListenerSSLCertificateInput structure as a key-value pair table
+function M.SetLoadBalancerListenerSSLCertificateInput(args)
+	assert(args, "You must provide an argument table when creating SetLoadBalancerListenerSSLCertificateInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["LoadBalancerPort"] = args["LoadBalancerPort"],
+		["SSLCertificateId"] = args["SSLCertificateId"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
+	}
+	asserts.AssertSetLoadBalancerListenerSSLCertificateInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CrossZoneLoadBalancing = { ["Enabled"] = true, nil }
+
+function asserts.AssertCrossZoneLoadBalancing(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CrossZoneLoadBalancing to be of type 'table'")
+	assert(struct["Enabled"], "Expected key Enabled to exist in table")
+	if struct["Enabled"] then asserts.AssertCrossZoneLoadBalancingEnabled(struct["Enabled"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CrossZoneLoadBalancing[k], "CrossZoneLoadBalancing contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CrossZoneLoadBalancing
+-- <p>Information about the <code>CrossZoneLoadBalancing</code> attribute.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Enabled [CrossZoneLoadBalancingEnabled] <p>Specifies whether cross-zone load balancing is enabled for the load balancer.</p>
+-- Required key: Enabled
+-- @return CrossZoneLoadBalancing structure as a key-value pair table
+function M.CrossZoneLoadBalancing(args)
+	assert(args, "You must provide an argument table when creating CrossZoneLoadBalancing")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Enabled"] = args["Enabled"],
+	}
+	asserts.AssertCrossZoneLoadBalancing(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ConfigureHealthCheckInput = { ["HealthCheck"] = true, ["LoadBalancerName"] = true, nil }
+
+function asserts.AssertConfigureHealthCheckInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ConfigureHealthCheckInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	assert(struct["HealthCheck"], "Expected key HealthCheck to exist in table")
+	if struct["HealthCheck"] then asserts.AssertHealthCheck(struct["HealthCheck"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ConfigureHealthCheckInput[k], "ConfigureHealthCheckInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ConfigureHealthCheckInput
+-- <p>Contains the parameters for ConfigureHealthCheck.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthCheck [HealthCheck] <p>The configuration information.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- Required key: HealthCheck
+-- @return ConfigureHealthCheckInput structure as a key-value pair table
+function M.ConfigureHealthCheckInput(args)
+	assert(args, "You must provide an argument table when creating ConfigureHealthCheckInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["HealthCheck"] = args["HealthCheck"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
+	}
+	asserts.AssertConfigureHealthCheckInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.CreateLoadBalancerPolicyInput = { ["PolicyName"] = true, ["PolicyTypeName"] = true, ["PolicyAttributes"] = true, ["LoadBalancerName"] = true, nil }
+
+function asserts.AssertCreateLoadBalancerPolicyInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected CreateLoadBalancerPolicyInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	assert(struct["PolicyName"], "Expected key PolicyName to exist in table")
+	assert(struct["PolicyTypeName"], "Expected key PolicyTypeName to exist in table")
+	if struct["PolicyName"] then asserts.AssertPolicyName(struct["PolicyName"]) end
+	if struct["PolicyTypeName"] then asserts.AssertPolicyTypeName(struct["PolicyTypeName"]) end
+	if struct["PolicyAttributes"] then asserts.AssertPolicyAttributes(struct["PolicyAttributes"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.CreateLoadBalancerPolicyInput[k], "CreateLoadBalancerPolicyInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type CreateLoadBalancerPolicyInput
+-- <p>Contains the parameters for CreateLoadBalancerPolicy.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyName [PolicyName] <p>The name of the load balancer policy to be created. This name must be unique within the set of policies for this load balancer.</p>
+-- * PolicyTypeName [PolicyTypeName] <p>The name of the base policy type. To get the list of policy types, use <a>DescribeLoadBalancerPolicyTypes</a>.</p>
+-- * PolicyAttributes [PolicyAttributes] <p>The policy attributes.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- Required key: PolicyName
+-- Required key: PolicyTypeName
+-- @return CreateLoadBalancerPolicyInput structure as a key-value pair table
+function M.CreateLoadBalancerPolicyInput(args)
+	assert(args, "You must provide an argument table when creating CreateLoadBalancerPolicyInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["PolicyName"] = args["PolicyName"],
+		["PolicyTypeName"] = args["PolicyTypeName"],
+		["PolicyAttributes"] = args["PolicyAttributes"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
+	}
+	asserts.AssertCreateLoadBalancerPolicyInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeleteLoadBalancerPolicyOutput = { nil }
+
+function asserts.AssertDeleteLoadBalancerPolicyOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeleteLoadBalancerPolicyOutput to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.DeleteLoadBalancerPolicyOutput[k], "DeleteLoadBalancerPolicyOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeleteLoadBalancerPolicyOutput
+-- <p>Contains the output of DeleteLoadBalancerPolicy.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteLoadBalancerPolicyOutput structure as a key-value pair table
+function M.DeleteLoadBalancerPolicyOutput(args)
+	assert(args, "You must provide an argument table when creating DeleteLoadBalancerPolicyOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertDeleteLoadBalancerPolicyOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.ConfigureHealthCheckOutput = { ["HealthCheck"] = true, nil }
+
+function asserts.AssertConfigureHealthCheckOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ConfigureHealthCheckOutput to be of type 'table'")
+	if struct["HealthCheck"] then asserts.AssertHealthCheck(struct["HealthCheck"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ConfigureHealthCheckOutput[k], "ConfigureHealthCheckOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type ConfigureHealthCheckOutput
+-- <p>Contains the output of ConfigureHealthCheck.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthCheck [HealthCheck] <p>The updated health check.</p>
+-- @return ConfigureHealthCheckOutput structure as a key-value pair table
+function M.ConfigureHealthCheckOutput(args)
+	assert(args, "You must provide an argument table when creating ConfigureHealthCheckOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["HealthCheck"] = args["HealthCheck"],
+	}
+	asserts.AssertConfigureHealthCheckOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.DeregisterEndPointsOutput = { ["Instances"] = true, nil }
+
+function asserts.AssertDeregisterEndPointsOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected DeregisterEndPointsOutput to be of type 'table'")
+	if struct["Instances"] then asserts.AssertInstances(struct["Instances"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.DeregisterEndPointsOutput[k], "DeregisterEndPointsOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type DeregisterEndPointsOutput
+-- <p>Contains the output of DeregisterInstancesFromLoadBalancer.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Instances [Instances] <p>The remaining instances registered with the load balancer.</p>
+-- @return DeregisterEndPointsOutput structure as a key-value pair table
+function M.DeregisterEndPointsOutput(args)
+	assert(args, "You must provide an argument table when creating DeregisterEndPointsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Instances"] = args["Instances"],
+	}
+	asserts.AssertDeregisterEndPointsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
 keys.DescribeTagsOutput = { ["TagDescriptions"] = true, nil }
 
 function asserts.AssertDescribeTagsOutput(struct)
@@ -4394,7 +2997,7 @@ function asserts.AssertDescribeTagsOutput(struct)
 end
 
 --- Create a structure of type DescribeTagsOutput
---  
+-- <p>Contains the output for DescribeTags.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * TagDescriptions [TagDescriptions] <p>Information about the tags.</p>
@@ -4419,25 +3022,25 @@ function M.DescribeTagsOutput(args)
     }
 end
 
-keys.ModifyListenerOutput = { ["Listeners"] = true, nil }
+keys.DescribeLoadBalancerPolicyTypesInput = { ["PolicyTypeNames"] = true, nil }
 
-function asserts.AssertModifyListenerOutput(struct)
+function asserts.AssertDescribeLoadBalancerPolicyTypesInput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected ModifyListenerOutput to be of type 'table'")
-	if struct["Listeners"] then asserts.AssertListeners(struct["Listeners"]) end
+	assert(type(struct) == "table", "Expected DescribeLoadBalancerPolicyTypesInput to be of type 'table'")
+	if struct["PolicyTypeNames"] then asserts.AssertPolicyTypeNames(struct["PolicyTypeNames"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.ModifyListenerOutput[k], "ModifyListenerOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeLoadBalancerPolicyTypesInput[k], "DescribeLoadBalancerPolicyTypesInput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type ModifyListenerOutput
---  
+--- Create a structure of type DescribeLoadBalancerPolicyTypesInput
+-- <p>Contains the parameters for DescribeLoadBalancerPolicyTypes.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Listeners [Listeners] <p>Information about the modified listener.</p>
--- @return ModifyListenerOutput structure as a key-value pair table
-function M.ModifyListenerOutput(args)
-	assert(args, "You must provide an argument table when creating ModifyListenerOutput")
+-- * PolicyTypeNames [PolicyTypeNames] <p>The names of the policy types. If no names are specified, describes all policy types defined by Elastic Load Balancing.</p>
+-- @return DescribeLoadBalancerPolicyTypesInput structure as a key-value pair table
+function M.DescribeLoadBalancerPolicyTypesInput(args)
+	assert(args, "You must provide an argument table when creating DescribeLoadBalancerPolicyTypesInput")
     local query_args = { 
     }
     local uri_args = { 
@@ -4445,9 +3048,9 @@ function M.ModifyListenerOutput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Listeners"] = args["Listeners"],
+		["PolicyTypeNames"] = args["PolicyTypeNames"],
 	}
-	asserts.AssertModifyListenerOutput(all_args)
+	asserts.AssertDescribeLoadBalancerPolicyTypesInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4456,224 +3059,31 @@ function M.ModifyListenerOutput(args)
     }
 end
 
-keys.SetSubnetsInput = { ["SubnetMappings"] = true, ["Subnets"] = true, ["LoadBalancerArn"] = true, nil }
+keys.ApplySecurityGroupsToLoadBalancerInput = { ["SecurityGroups"] = true, ["LoadBalancerName"] = true, nil }
 
-function asserts.AssertSetSubnetsInput(struct)
+function asserts.AssertApplySecurityGroupsToLoadBalancerInput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected SetSubnetsInput to be of type 'table'")
-	assert(struct["LoadBalancerArn"], "Expected key LoadBalancerArn to exist in table")
-	if struct["SubnetMappings"] then asserts.AssertSubnetMappings(struct["SubnetMappings"]) end
-	if struct["Subnets"] then asserts.AssertSubnets(struct["Subnets"]) end
-	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.SetSubnetsInput[k], "SetSubnetsInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SetSubnetsInput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * SubnetMappings [SubnetMappings] <p>The IDs of the public subnets. You must specify subnets from at least two Availability Zones. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.</p> <p>You cannot specify Elastic IP addresses for your subnets.</p>
--- * Subnets [Subnets] <p>The IDs of the public subnets. You must specify subnets from at least two Availability Zones. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.</p>
--- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- Required key: LoadBalancerArn
--- @return SetSubnetsInput structure as a key-value pair table
-function M.SetSubnetsInput(args)
-	assert(args, "You must provide an argument table when creating SetSubnetsInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["SubnetMappings"] = args["SubnetMappings"],
-		["Subnets"] = args["Subnets"],
-		["LoadBalancerArn"] = args["LoadBalancerArn"],
-	}
-	asserts.AssertSetSubnetsInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.LoadBalancerState = { ["Reason"] = true, ["Code"] = true, nil }
-
-function asserts.AssertLoadBalancerState(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected LoadBalancerState to be of type 'table'")
-	if struct["Reason"] then asserts.AssertStateReason(struct["Reason"]) end
-	if struct["Code"] then asserts.AssertLoadBalancerStateEnum(struct["Code"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.LoadBalancerState[k], "LoadBalancerState contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type LoadBalancerState
--- <p>Information about the state of the load balancer.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Reason [StateReason] <p>A description of the state.</p>
--- * Code [LoadBalancerStateEnum] <p>The state code. The initial state of the load balancer is <code>provisioning</code>. After the load balancer is fully set up and ready to route traffic, its state is <code>active</code>. If the load balancer could not be set up, its state is <code>failed</code>.</p>
--- @return LoadBalancerState structure as a key-value pair table
-function M.LoadBalancerState(args)
-	assert(args, "You must provide an argument table when creating LoadBalancerState")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Reason"] = args["Reason"],
-		["Code"] = args["Code"],
-	}
-	asserts.AssertLoadBalancerState(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TargetGroupAssociationLimitException = { nil }
-
-function asserts.AssertTargetGroupAssociationLimitException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TargetGroupAssociationLimitException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.TargetGroupAssociationLimitException[k], "TargetGroupAssociationLimitException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TargetGroupAssociationLimitException
--- <p>You've reached the limit on the number of load balancers per target group.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return TargetGroupAssociationLimitException structure as a key-value pair table
-function M.TargetGroupAssociationLimitException(args)
-	assert(args, "You must provide an argument table when creating TargetGroupAssociationLimitException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertTargetGroupAssociationLimitException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.InvalidTargetException = { nil }
-
-function asserts.AssertInvalidTargetException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected InvalidTargetException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.InvalidTargetException[k], "InvalidTargetException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type InvalidTargetException
--- <p>The specified target does not exist, is not in the same VPC as the target group, or has an unsupported instance type.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return InvalidTargetException structure as a key-value pair table
-function M.InvalidTargetException(args)
-	assert(args, "You must provide an argument table when creating InvalidTargetException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertInvalidTargetException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SubnetMapping = { ["SubnetId"] = true, ["AllocationId"] = true, nil }
-
-function asserts.AssertSubnetMapping(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SubnetMapping to be of type 'table'")
-	if struct["SubnetId"] then asserts.AssertSubnetId(struct["SubnetId"]) end
-	if struct["AllocationId"] then asserts.AssertAllocationId(struct["AllocationId"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.SubnetMapping[k], "SubnetMapping contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SubnetMapping
--- <p>Information about a subnet mapping.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * SubnetId [SubnetId] <p>The ID of the subnet.</p>
--- * AllocationId [AllocationId] <p>[Network Load Balancers] The allocation ID of the Elastic IP address.</p>
--- @return SubnetMapping structure as a key-value pair table
-function M.SubnetMapping(args)
-	assert(args, "You must provide an argument table when creating SubnetMapping")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["SubnetId"] = args["SubnetId"],
-		["AllocationId"] = args["AllocationId"],
-	}
-	asserts.AssertSubnetMapping(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SetSecurityGroupsInput = { ["SecurityGroups"] = true, ["LoadBalancerArn"] = true, nil }
-
-function asserts.AssertSetSecurityGroupsInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SetSecurityGroupsInput to be of type 'table'")
-	assert(struct["LoadBalancerArn"], "Expected key LoadBalancerArn to exist in table")
+	assert(type(struct) == "table", "Expected ApplySecurityGroupsToLoadBalancerInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
 	assert(struct["SecurityGroups"], "Expected key SecurityGroups to exist in table")
 	if struct["SecurityGroups"] then asserts.AssertSecurityGroups(struct["SecurityGroups"]) end
-	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.SetSecurityGroupsInput[k], "SetSecurityGroupsInput contains unknown key " .. tostring(k))
+		assert(keys.ApplySecurityGroupsToLoadBalancerInput[k], "ApplySecurityGroupsToLoadBalancerInput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type SetSecurityGroupsInput
---  
+--- Create a structure of type ApplySecurityGroupsToLoadBalancerInput
+-- <p>Contains the parameters for ApplySecurityGroupsToLoadBalancer.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * SecurityGroups [SecurityGroups] <p>The IDs of the security groups.</p>
--- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- Required key: LoadBalancerArn
+-- * SecurityGroups [SecurityGroups] <p>The IDs of the security groups to associate with the load balancer. Note that you cannot specify the name of the security group.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
 -- Required key: SecurityGroups
--- @return SetSecurityGroupsInput structure as a key-value pair table
-function M.SetSecurityGroupsInput(args)
-	assert(args, "You must provide an argument table when creating SetSecurityGroupsInput")
+-- @return ApplySecurityGroupsToLoadBalancerInput structure as a key-value pair table
+function M.ApplySecurityGroupsToLoadBalancerInput(args)
+	assert(args, "You must provide an argument table when creating ApplySecurityGroupsToLoadBalancerInput")
     local query_args = { 
     }
     local uri_args = { 
@@ -4682,9 +3092,9 @@ function M.SetSecurityGroupsInput(args)
     }
 	local all_args = { 
 		["SecurityGroups"] = args["SecurityGroups"],
-		["LoadBalancerArn"] = args["LoadBalancerArn"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
 	}
-	asserts.AssertSetSecurityGroupsInput(all_args)
+	asserts.AssertApplySecurityGroupsToLoadBalancerInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4693,27 +3103,27 @@ function M.SetSecurityGroupsInput(args)
     }
 end
 
-keys.LoadBalancerAttribute = { ["Value"] = true, ["Key"] = true, nil }
+keys.DescribeLoadBalancerPoliciesInput = { ["PolicyNames"] = true, ["LoadBalancerName"] = true, nil }
 
-function asserts.AssertLoadBalancerAttribute(struct)
+function asserts.AssertDescribeLoadBalancerPoliciesInput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected LoadBalancerAttribute to be of type 'table'")
-	if struct["Value"] then asserts.AssertLoadBalancerAttributeValue(struct["Value"]) end
-	if struct["Key"] then asserts.AssertLoadBalancerAttributeKey(struct["Key"]) end
+	assert(type(struct) == "table", "Expected DescribeLoadBalancerPoliciesInput to be of type 'table'")
+	if struct["PolicyNames"] then asserts.AssertPolicyNames(struct["PolicyNames"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.LoadBalancerAttribute[k], "LoadBalancerAttribute contains unknown key " .. tostring(k))
+		assert(keys.DescribeLoadBalancerPoliciesInput[k], "DescribeLoadBalancerPoliciesInput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type LoadBalancerAttribute
--- <p>Information about a load balancer attribute.</p>
+--- Create a structure of type DescribeLoadBalancerPoliciesInput
+-- <p>Contains the parameters for DescribeLoadBalancerPolicies.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Value [LoadBalancerAttributeValue] <p>The value of the attribute.</p>
--- * Key [LoadBalancerAttributeKey] <p>The name of the attribute.</p> <p>The following attributes are supported by both Application Load Balancers and Network Load Balancers:</p> <ul> <li> <p> <code>deletion_protection.enabled</code> - Indicates whether deletion protection is enabled. The value is <code>true</code> or <code>false</code>. The default is <code>false</code>.</p> </li> </ul> <p>The following attributes are supported by only Application Load Balancers:</p> <ul> <li> <p> <code>access_logs.s3.enabled</code> - Indicates whether access logs are enabled. The value is <code>true</code> or <code>false</code>. The default is <code>false</code>.</p> </li> <li> <p> <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the access logs. This attribute is required if access logs are enabled. The bucket must exist in the same region as the load balancer and have a bucket policy that grants Elastic Load Balancing permissions to write to the bucket.</p> </li> <li> <p> <code>access_logs.s3.prefix</code> - The prefix for the location in the S3 bucket for the access logs.</p> </li> <li> <p> <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in seconds. The valid range is 1-4000 seconds. The default is 60 seconds.</p> </li> <li> <p> <code>routing.http2.enabled</code> - Indicates whether HTTP/2 is enabled. The value is <code>true</code> or <code>false</code>. The default is <code>true</code>.</p> </li> </ul> <p>The following attributes are supported by only Network Load Balancers:</p> <ul> <li> <p> <code>load_balancing.cross_zone.enabled</code> - Indicates whether cross-zone load balancing is enabled. The value is <code>true</code> or <code>false</code>. The default is <code>false</code>.</p> </li> </ul>
--- @return LoadBalancerAttribute structure as a key-value pair table
-function M.LoadBalancerAttribute(args)
-	assert(args, "You must provide an argument table when creating LoadBalancerAttribute")
+-- * PolicyNames [PolicyNames] <p>The names of the policies.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- @return DescribeLoadBalancerPoliciesInput structure as a key-value pair table
+function M.DescribeLoadBalancerPoliciesInput(args)
+	assert(args, "You must provide an argument table when creating DescribeLoadBalancerPoliciesInput")
     local query_args = { 
     }
     local uri_args = { 
@@ -4721,10 +3131,10 @@ function M.LoadBalancerAttribute(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Value"] = args["Value"],
-		["Key"] = args["Key"],
+		["PolicyNames"] = args["PolicyNames"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
 	}
-	asserts.AssertLoadBalancerAttribute(all_args)
+	asserts.AssertDescribeLoadBalancerPoliciesInput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4733,33 +3143,27 @@ function M.LoadBalancerAttribute(args)
     }
 end
 
-keys.DescribeTargetGroupsInput = { ["Marker"] = true, ["TargetGroupArns"] = true, ["LoadBalancerArn"] = true, ["Names"] = true, ["PageSize"] = true, nil }
+keys.PolicyAttribute = { ["AttributeName"] = true, ["AttributeValue"] = true, nil }
 
-function asserts.AssertDescribeTargetGroupsInput(struct)
+function asserts.AssertPolicyAttribute(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeTargetGroupsInput to be of type 'table'")
-	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
-	if struct["TargetGroupArns"] then asserts.AssertTargetGroupArns(struct["TargetGroupArns"]) end
-	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
-	if struct["Names"] then asserts.AssertTargetGroupNames(struct["Names"]) end
-	if struct["PageSize"] then asserts.AssertPageSize(struct["PageSize"]) end
+	assert(type(struct) == "table", "Expected PolicyAttribute to be of type 'table'")
+	if struct["AttributeName"] then asserts.AssertAttributeName(struct["AttributeName"]) end
+	if struct["AttributeValue"] then asserts.AssertAttributeValue(struct["AttributeValue"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DescribeTargetGroupsInput[k], "DescribeTargetGroupsInput contains unknown key " .. tostring(k))
+		assert(keys.PolicyAttribute[k], "PolicyAttribute contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DescribeTargetGroupsInput
---  
+--- Create a structure of type PolicyAttribute
+-- <p>Information about a policy attribute.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- * TargetGroupArns [TargetGroupArns] <p>The Amazon Resource Names (ARN) of the target groups.</p>
--- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- * Names [TargetGroupNames] <p>The names of the target groups.</p>
--- * PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
--- @return DescribeTargetGroupsInput structure as a key-value pair table
-function M.DescribeTargetGroupsInput(args)
-	assert(args, "You must provide an argument table when creating DescribeTargetGroupsInput")
+-- * AttributeName [AttributeName] <p>The name of the attribute.</p>
+-- * AttributeValue [AttributeValue] <p>The value of the attribute.</p>
+-- @return PolicyAttribute structure as a key-value pair table
+function M.PolicyAttribute(args)
+	assert(args, "You must provide an argument table when creating PolicyAttribute")
     local query_args = { 
     }
     local uri_args = { 
@@ -4767,13 +3171,10 @@ function M.DescribeTargetGroupsInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Marker"] = args["Marker"],
-		["TargetGroupArns"] = args["TargetGroupArns"],
-		["LoadBalancerArn"] = args["LoadBalancerArn"],
-		["Names"] = args["Names"],
-		["PageSize"] = args["PageSize"],
+		["AttributeName"] = args["AttributeName"],
+		["AttributeValue"] = args["AttributeValue"],
 	}
-	asserts.AssertDescribeTargetGroupsInput(all_args)
+	asserts.AssertPolicyAttribute(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4782,27 +3183,55 @@ function M.DescribeTargetGroupsInput(args)
     }
 end
 
-keys.DescribeListenersOutput = { ["Listeners"] = true, ["NextMarker"] = true, nil }
+keys.LoadBalancerDescription = { ["Subnets"] = true, ["CanonicalHostedZoneNameID"] = true, ["CanonicalHostedZoneName"] = true, ["ListenerDescriptions"] = true, ["HealthCheck"] = true, ["VPCId"] = true, ["BackendServerDescriptions"] = true, ["Instances"] = true, ["DNSName"] = true, ["SecurityGroups"] = true, ["Policies"] = true, ["LoadBalancerName"] = true, ["CreatedTime"] = true, ["AvailabilityZones"] = true, ["Scheme"] = true, ["SourceSecurityGroup"] = true, nil }
 
-function asserts.AssertDescribeListenersOutput(struct)
+function asserts.AssertLoadBalancerDescription(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeListenersOutput to be of type 'table'")
-	if struct["Listeners"] then asserts.AssertListeners(struct["Listeners"]) end
-	if struct["NextMarker"] then asserts.AssertMarker(struct["NextMarker"]) end
+	assert(type(struct) == "table", "Expected LoadBalancerDescription to be of type 'table'")
+	if struct["Subnets"] then asserts.AssertSubnets(struct["Subnets"]) end
+	if struct["CanonicalHostedZoneNameID"] then asserts.AssertDNSName(struct["CanonicalHostedZoneNameID"]) end
+	if struct["CanonicalHostedZoneName"] then asserts.AssertDNSName(struct["CanonicalHostedZoneName"]) end
+	if struct["ListenerDescriptions"] then asserts.AssertListenerDescriptions(struct["ListenerDescriptions"]) end
+	if struct["HealthCheck"] then asserts.AssertHealthCheck(struct["HealthCheck"]) end
+	if struct["VPCId"] then asserts.AssertVPCId(struct["VPCId"]) end
+	if struct["BackendServerDescriptions"] then asserts.AssertBackendServerDescriptions(struct["BackendServerDescriptions"]) end
+	if struct["Instances"] then asserts.AssertInstances(struct["Instances"]) end
+	if struct["DNSName"] then asserts.AssertDNSName(struct["DNSName"]) end
+	if struct["SecurityGroups"] then asserts.AssertSecurityGroups(struct["SecurityGroups"]) end
+	if struct["Policies"] then asserts.AssertPolicies(struct["Policies"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
+	if struct["CreatedTime"] then asserts.AssertCreatedTime(struct["CreatedTime"]) end
+	if struct["AvailabilityZones"] then asserts.AssertAvailabilityZones(struct["AvailabilityZones"]) end
+	if struct["Scheme"] then asserts.AssertLoadBalancerScheme(struct["Scheme"]) end
+	if struct["SourceSecurityGroup"] then asserts.AssertSourceSecurityGroup(struct["SourceSecurityGroup"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.DescribeListenersOutput[k], "DescribeListenersOutput contains unknown key " .. tostring(k))
+		assert(keys.LoadBalancerDescription[k], "LoadBalancerDescription contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type DescribeListenersOutput
---  
+--- Create a structure of type LoadBalancerDescription
+-- <p>Information about a load balancer.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Listeners [Listeners] <p>Information about the listeners.</p>
--- * NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- @return DescribeListenersOutput structure as a key-value pair table
-function M.DescribeListenersOutput(args)
-	assert(args, "You must provide an argument table when creating DescribeListenersOutput")
+-- * Subnets [Subnets] <p>The IDs of the subnets for the load balancer.</p>
+-- * CanonicalHostedZoneNameID [DNSName] <p>The ID of the Amazon Route 53 hosted zone for the load balancer.</p>
+-- * CanonicalHostedZoneName [DNSName] <p>The DNS name of the load balancer.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/using-domain-names-with-elb.html">Configure a Custom Domain Name</a> in the <i>Classic Load Balancers Guide</i>.</p>
+-- * ListenerDescriptions [ListenerDescriptions] <p>The listeners for the load balancer.</p>
+-- * HealthCheck [HealthCheck] <p>Information about the health checks conducted on the load balancer.</p>
+-- * VPCId [VPCId] <p>The ID of the VPC for the load balancer.</p>
+-- * BackendServerDescriptions [BackendServerDescriptions] <p>Information about your EC2 instances.</p>
+-- * Instances [Instances] <p>The IDs of the instances for the load balancer.</p>
+-- * DNSName [DNSName] <p>The DNS name of the load balancer.</p>
+-- * SecurityGroups [SecurityGroups] <p>The security groups for the load balancer. Valid only for load balancers in a VPC.</p>
+-- * Policies [Policies] <p>The policies defined for the load balancer.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- * CreatedTime [CreatedTime] <p>The date and time the load balancer was created.</p>
+-- * AvailabilityZones [AvailabilityZones] <p>The Availability Zones for the load balancer.</p>
+-- * Scheme [LoadBalancerScheme] <p>The type of load balancer. Valid only for load balancers in a VPC.</p> <p>If <code>Scheme</code> is <code>internet-facing</code>, the load balancer has a public DNS name that resolves to a public IP address.</p> <p>If <code>Scheme</code> is <code>internal</code>, the load balancer has a public DNS name that resolves to a private IP address.</p>
+-- * SourceSecurityGroup [SourceSecurityGroup] <p>The security group for the load balancer, which you can use as part of your inbound rules for your registered instances. To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.</p>
+-- @return LoadBalancerDescription structure as a key-value pair table
+function M.LoadBalancerDescription(args)
+	assert(args, "You must provide an argument table when creating LoadBalancerDescription")
     local query_args = { 
     }
     local uri_args = { 
@@ -4810,10 +3239,24 @@ function M.DescribeListenersOutput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["Listeners"] = args["Listeners"],
-		["NextMarker"] = args["NextMarker"],
+		["Subnets"] = args["Subnets"],
+		["CanonicalHostedZoneNameID"] = args["CanonicalHostedZoneNameID"],
+		["CanonicalHostedZoneName"] = args["CanonicalHostedZoneName"],
+		["ListenerDescriptions"] = args["ListenerDescriptions"],
+		["HealthCheck"] = args["HealthCheck"],
+		["VPCId"] = args["VPCId"],
+		["BackendServerDescriptions"] = args["BackendServerDescriptions"],
+		["Instances"] = args["Instances"],
+		["DNSName"] = args["DNSName"],
+		["SecurityGroups"] = args["SecurityGroups"],
+		["Policies"] = args["Policies"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
+		["CreatedTime"] = args["CreatedTime"],
+		["AvailabilityZones"] = args["AvailabilityZones"],
+		["Scheme"] = args["Scheme"],
+		["SourceSecurityGroup"] = args["SourceSecurityGroup"],
 	}
-	asserts.AssertDescribeListenersOutput(all_args)
+	asserts.AssertLoadBalancerDescription(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -4822,28 +3265,28 @@ function M.DescribeListenersOutput(args)
     }
 end
 
-keys.RemoveTagsInput = { ["TagKeys"] = true, ["ResourceArns"] = true, nil }
+keys.RemoveTagsInput = { ["Tags"] = true, ["LoadBalancerNames"] = true, nil }
 
 function asserts.AssertRemoveTagsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveTagsInput to be of type 'table'")
-	assert(struct["ResourceArns"], "Expected key ResourceArns to exist in table")
-	assert(struct["TagKeys"], "Expected key TagKeys to exist in table")
-	if struct["TagKeys"] then asserts.AssertTagKeys(struct["TagKeys"]) end
-	if struct["ResourceArns"] then asserts.AssertResourceArns(struct["ResourceArns"]) end
+	assert(struct["LoadBalancerNames"], "Expected key LoadBalancerNames to exist in table")
+	assert(struct["Tags"], "Expected key Tags to exist in table")
+	if struct["Tags"] then asserts.AssertTagKeyList(struct["Tags"]) end
+	if struct["LoadBalancerNames"] then asserts.AssertLoadBalancerNames(struct["LoadBalancerNames"]) end
 	for k,_ in pairs(struct) do
 		assert(keys.RemoveTagsInput[k], "RemoveTagsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RemoveTagsInput
---  
+-- <p>Contains the parameters for RemoveTags.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * TagKeys [TagKeys] <p>The tag keys for the tags to remove.</p>
--- * ResourceArns [ResourceArns] <p>The Amazon Resource Name (ARN) of the resource.</p>
--- Required key: ResourceArns
--- Required key: TagKeys
+-- * Tags [TagKeyList] <p>The list of tag keys to remove.</p>
+-- * LoadBalancerNames [LoadBalancerNames] <p>The name of the load balancer. You can specify a maximum of one load balancer name.</p>
+-- Required key: LoadBalancerNames
+-- Required key: Tags
 -- @return RemoveTagsInput structure as a key-value pair table
 function M.RemoveTagsInput(args)
 	assert(args, "You must provide an argument table when creating RemoveTagsInput")
@@ -4854,8 +3297,8 @@ function M.RemoveTagsInput(args)
     local header_args = { 
     }
 	local all_args = { 
-		["TagKeys"] = args["TagKeys"],
-		["ResourceArns"] = args["ResourceArns"],
+		["Tags"] = args["Tags"],
+		["LoadBalancerNames"] = args["LoadBalancerNames"],
 	}
 	asserts.AssertRemoveTagsInput(all_args)
 	return {
@@ -4866,435 +3309,25 @@ function M.RemoveTagsInput(args)
     }
 end
 
-keys.Rule = { ["Priority"] = true, ["Conditions"] = true, ["RuleArn"] = true, ["IsDefault"] = true, ["Actions"] = true, nil }
+keys.ApplySecurityGroupsToLoadBalancerOutput = { ["SecurityGroups"] = true, nil }
 
-function asserts.AssertRule(struct)
+function asserts.AssertApplySecurityGroupsToLoadBalancerOutput(struct)
 	assert(struct)
-	assert(type(struct) == "table", "Expected Rule to be of type 'table'")
-	if struct["Priority"] then asserts.AssertString(struct["Priority"]) end
-	if struct["Conditions"] then asserts.AssertRuleConditionList(struct["Conditions"]) end
-	if struct["RuleArn"] then asserts.AssertRuleArn(struct["RuleArn"]) end
-	if struct["IsDefault"] then asserts.AssertIsDefault(struct["IsDefault"]) end
-	if struct["Actions"] then asserts.AssertActions(struct["Actions"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.Rule[k], "Rule contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type Rule
--- <p>Information about a rule.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Priority [String] <p>The priority.</p>
--- * Conditions [RuleConditionList] <p>The conditions.</p>
--- * RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
--- * IsDefault [IsDefault] <p>Indicates whether this is the default rule.</p>
--- * Actions [Actions] <p>The actions.</p>
--- @return Rule structure as a key-value pair table
-function M.Rule(args)
-	assert(args, "You must provide an argument table when creating Rule")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Priority"] = args["Priority"],
-		["Conditions"] = args["Conditions"],
-		["RuleArn"] = args["RuleArn"],
-		["IsDefault"] = args["IsDefault"],
-		["Actions"] = args["Actions"],
-	}
-	asserts.AssertRule(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.LoadBalancerNotFoundException = { nil }
-
-function asserts.AssertLoadBalancerNotFoundException(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected LoadBalancerNotFoundException to be of type 'table'")
-	for k,_ in pairs(struct) do
-		assert(keys.LoadBalancerNotFoundException[k], "LoadBalancerNotFoundException contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type LoadBalancerNotFoundException
--- <p>The specified load balancer does not exist.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- @return LoadBalancerNotFoundException structure as a key-value pair table
-function M.LoadBalancerNotFoundException(args)
-	assert(args, "You must provide an argument table when creating LoadBalancerNotFoundException")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-	}
-	asserts.AssertLoadBalancerNotFoundException(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.TargetDescription = { ["AvailabilityZone"] = true, ["Id"] = true, ["Port"] = true, nil }
-
-function asserts.AssertTargetDescription(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected TargetDescription to be of type 'table'")
-	assert(struct["Id"], "Expected key Id to exist in table")
-	if struct["AvailabilityZone"] then asserts.AssertZoneName(struct["AvailabilityZone"]) end
-	if struct["Id"] then asserts.AssertTargetId(struct["Id"]) end
-	if struct["Port"] then asserts.AssertPort(struct["Port"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.TargetDescription[k], "TargetDescription contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type TargetDescription
--- <p>Information about a target.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * AvailabilityZone [ZoneName] <p>An Availability Zone or <code>all</code>. This determines whether the target receives traffic from the load balancer nodes in the specified Availability Zone or from all enabled Availability Zones for the load balancer.</p> <p>This parameter is not supported if the target type of the target group is <code>instance</code>. If the IP address is in a subnet of the VPC for the target group, the Availability Zone is automatically detected and this parameter is optional. If the IP address is outside the VPC, this parameter is required.</p> <p>With an Application Load Balancer, if the IP address is outside the VPC for the target group, the only supported value is <code>all</code>.</p>
--- * Id [TargetId] <p>The ID of the target. If the target type of the target group is <code>instance</code>, specify an instance ID. If the target type is <code>ip</code>, specify an IP address.</p>
--- * Port [Port] <p>The port on which the target is listening.</p>
--- Required key: Id
--- @return TargetDescription structure as a key-value pair table
-function M.TargetDescription(args)
-	assert(args, "You must provide an argument table when creating TargetDescription")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["AvailabilityZone"] = args["AvailabilityZone"],
-		["Id"] = args["Id"],
-		["Port"] = args["Port"],
-	}
-	asserts.AssertTargetDescription(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.SetIpAddressTypeOutput = { ["IpAddressType"] = true, nil }
-
-function asserts.AssertSetIpAddressTypeOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected SetIpAddressTypeOutput to be of type 'table'")
-	if struct["IpAddressType"] then asserts.AssertIpAddressType(struct["IpAddressType"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.SetIpAddressTypeOutput[k], "SetIpAddressTypeOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type SetIpAddressTypeOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * IpAddressType [IpAddressType] <p>The IP address type.</p>
--- @return SetIpAddressTypeOutput structure as a key-value pair table
-function M.SetIpAddressTypeOutput(args)
-	assert(args, "You must provide an argument table when creating SetIpAddressTypeOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["IpAddressType"] = args["IpAddressType"],
-	}
-	asserts.AssertSetIpAddressTypeOutput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.DescribeSSLPoliciesInput = { ["Marker"] = true, ["Names"] = true, ["PageSize"] = true, nil }
-
-function asserts.AssertDescribeSSLPoliciesInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected DescribeSSLPoliciesInput to be of type 'table'")
-	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
-	if struct["Names"] then asserts.AssertSslPolicyNames(struct["Names"]) end
-	if struct["PageSize"] then asserts.AssertPageSize(struct["PageSize"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.DescribeSSLPoliciesInput[k], "DescribeSSLPoliciesInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type DescribeSSLPoliciesInput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- * Names [SslPolicyNames] <p>The names of the policies.</p>
--- * PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
--- @return DescribeSSLPoliciesInput structure as a key-value pair table
-function M.DescribeSSLPoliciesInput(args)
-	assert(args, "You must provide an argument table when creating DescribeSSLPoliciesInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Marker"] = args["Marker"],
-		["Names"] = args["Names"],
-		["PageSize"] = args["PageSize"],
-	}
-	asserts.AssertDescribeSSLPoliciesInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.AddListenerCertificatesInput = { ["Certificates"] = true, ["ListenerArn"] = true, nil }
-
-function asserts.AssertAddListenerCertificatesInput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected AddListenerCertificatesInput to be of type 'table'")
-	assert(struct["ListenerArn"], "Expected key ListenerArn to exist in table")
-	assert(struct["Certificates"], "Expected key Certificates to exist in table")
-	if struct["Certificates"] then asserts.AssertCertificateList(struct["Certificates"]) end
-	if struct["ListenerArn"] then asserts.AssertListenerArn(struct["ListenerArn"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.AddListenerCertificatesInput[k], "AddListenerCertificatesInput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type AddListenerCertificatesInput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Certificates [CertificateList] <p>The certificate to add. You can specify one certificate per call.</p>
--- * ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
--- Required key: ListenerArn
--- Required key: Certificates
--- @return AddListenerCertificatesInput structure as a key-value pair table
-function M.AddListenerCertificatesInput(args)
-	assert(args, "You must provide an argument table when creating AddListenerCertificatesInput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Certificates"] = args["Certificates"],
-		["ListenerArn"] = args["ListenerArn"],
-	}
-	asserts.AssertAddListenerCertificatesInput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.RedirectActionConfig = { ["Protocol"] = true, ["Host"] = true, ["Query"] = true, ["Path"] = true, ["Port"] = true, ["StatusCode"] = true, nil }
-
-function asserts.AssertRedirectActionConfig(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected RedirectActionConfig to be of type 'table'")
-	assert(struct["StatusCode"], "Expected key StatusCode to exist in table")
-	if struct["Protocol"] then asserts.AssertRedirectActionProtocol(struct["Protocol"]) end
-	if struct["Host"] then asserts.AssertRedirectActionHost(struct["Host"]) end
-	if struct["Query"] then asserts.AssertRedirectActionQuery(struct["Query"]) end
-	if struct["Path"] then asserts.AssertRedirectActionPath(struct["Path"]) end
-	if struct["Port"] then asserts.AssertRedirectActionPort(struct["Port"]) end
-	if struct["StatusCode"] then asserts.AssertRedirectActionStatusCodeEnum(struct["StatusCode"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.RedirectActionConfig[k], "RedirectActionConfig contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type RedirectActionConfig
--- <p>Information about a redirect action.</p> <p>A URI consists of the following components: protocol://hostname:port/path?query. You must modify at least one of the following components to avoid a redirect loop: protocol, hostname, port, or path. Any components that you do not modify retain their original values.</p> <p>You can reuse URI components using the following reserved keywords:</p> <ul> <li> <p>#{protocol}</p> </li> <li> <p>#{host}</p> </li> <li> <p>#{port}</p> </li> <li> <p>#{path} (the leading "/" is removed)</p> </li> <li> <p>#{query}</p> </li> </ul> <p>For example, you can change the path to "/new/#{path}", the hostname to "example.#{host}", or the query to "#{query}&amp;value=xyz".</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Protocol [RedirectActionProtocol] <p>The protocol. You can specify HTTP, HTTPS, or #{protocol}. You can redirect HTTP to HTTP, HTTP to HTTPS, and HTTPS to HTTPS. You cannot redirect HTTPS to HTTP.</p>
--- * Host [RedirectActionHost] <p>The hostname. This component is not percent-encoded. The hostname can contain #{host}.</p>
--- * Query [RedirectActionQuery] <p>The query parameters, URL-encoded when necessary, but not percent-encoded. Do not include the leading "?", as it is automatically added. You can specify any of the reserved keywords.</p>
--- * Path [RedirectActionPath] <p>The absolute path, starting with the leading "/". This component is not percent-encoded. The path can contain #{host}, #{path}, and #{port}.</p>
--- * Port [RedirectActionPort] <p>The port. You can specify a value from 1 to 65535 or #{port}.</p>
--- * StatusCode [RedirectActionStatusCodeEnum] <p>The HTTP redirect code. The redirect is either permanent (HTTP 301) or temporary (HTTP 302).</p>
--- Required key: StatusCode
--- @return RedirectActionConfig structure as a key-value pair table
-function M.RedirectActionConfig(args)
-	assert(args, "You must provide an argument table when creating RedirectActionConfig")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Protocol"] = args["Protocol"],
-		["Host"] = args["Host"],
-		["Query"] = args["Query"],
-		["Path"] = args["Path"],
-		["Port"] = args["Port"],
-		["StatusCode"] = args["StatusCode"],
-	}
-	asserts.AssertRedirectActionConfig(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.FixedResponseActionConfig = { ["ContentType"] = true, ["MessageBody"] = true, ["StatusCode"] = true, nil }
-
-function asserts.AssertFixedResponseActionConfig(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected FixedResponseActionConfig to be of type 'table'")
-	assert(struct["StatusCode"], "Expected key StatusCode to exist in table")
-	if struct["ContentType"] then asserts.AssertFixedResponseActionContentType(struct["ContentType"]) end
-	if struct["MessageBody"] then asserts.AssertFixedResponseActionMessage(struct["MessageBody"]) end
-	if struct["StatusCode"] then asserts.AssertFixedResponseActionStatusCode(struct["StatusCode"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.FixedResponseActionConfig[k], "FixedResponseActionConfig contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type FixedResponseActionConfig
--- <p>Information about an action that returns a custom HTTP response.</p>
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * ContentType [FixedResponseActionContentType] <p>The content type.</p> <p>Valid Values: text/plain | text/css | text/html | application/javascript | application/json</p>
--- * MessageBody [FixedResponseActionMessage] <p>The message.</p>
--- * StatusCode [FixedResponseActionStatusCode] <p>The HTTP response code (2XX, 4XX, or 5XX).</p>
--- Required key: StatusCode
--- @return FixedResponseActionConfig structure as a key-value pair table
-function M.FixedResponseActionConfig(args)
-	assert(args, "You must provide an argument table when creating FixedResponseActionConfig")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["ContentType"] = args["ContentType"],
-		["MessageBody"] = args["MessageBody"],
-		["StatusCode"] = args["StatusCode"],
-	}
-	asserts.AssertFixedResponseActionConfig(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.CreateRuleOutput = { ["Rules"] = true, nil }
-
-function asserts.AssertCreateRuleOutput(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected CreateRuleOutput to be of type 'table'")
-	if struct["Rules"] then asserts.AssertRules(struct["Rules"]) end
-	for k,_ in pairs(struct) do
-		assert(keys.CreateRuleOutput[k], "CreateRuleOutput contains unknown key " .. tostring(k))
-	end
-end
-
---- Create a structure of type CreateRuleOutput
---  
--- @param args Table with arguments in key-value form.
--- Valid keys:
--- * Rules [Rules] <p>Information about the rule.</p>
--- @return CreateRuleOutput structure as a key-value pair table
-function M.CreateRuleOutput(args)
-	assert(args, "You must provide an argument table when creating CreateRuleOutput")
-    local query_args = { 
-    }
-    local uri_args = { 
-    }
-    local header_args = { 
-    }
-	local all_args = { 
-		["Rules"] = args["Rules"],
-	}
-	asserts.AssertCreateRuleOutput(all_args)
-	return {
-        all = all_args,
-        query = query_args,
-        uri = uri_args,
-        headers = header_args,
-    }
-end
-
-keys.LoadBalancer = { ["IpAddressType"] = true, ["VpcId"] = true, ["LoadBalancerArn"] = true, ["State"] = true, ["DNSName"] = true, ["SecurityGroups"] = true, ["LoadBalancerName"] = true, ["CreatedTime"] = true, ["Scheme"] = true, ["Type"] = true, ["CanonicalHostedZoneId"] = true, ["AvailabilityZones"] = true, nil }
-
-function asserts.AssertLoadBalancer(struct)
-	assert(struct)
-	assert(type(struct) == "table", "Expected LoadBalancer to be of type 'table'")
-	if struct["IpAddressType"] then asserts.AssertIpAddressType(struct["IpAddressType"]) end
-	if struct["VpcId"] then asserts.AssertVpcId(struct["VpcId"]) end
-	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
-	if struct["State"] then asserts.AssertLoadBalancerState(struct["State"]) end
-	if struct["DNSName"] then asserts.AssertDNSName(struct["DNSName"]) end
+	assert(type(struct) == "table", "Expected ApplySecurityGroupsToLoadBalancerOutput to be of type 'table'")
 	if struct["SecurityGroups"] then asserts.AssertSecurityGroups(struct["SecurityGroups"]) end
-	if struct["LoadBalancerName"] then asserts.AssertLoadBalancerName(struct["LoadBalancerName"]) end
-	if struct["CreatedTime"] then asserts.AssertCreatedTime(struct["CreatedTime"]) end
-	if struct["Scheme"] then asserts.AssertLoadBalancerSchemeEnum(struct["Scheme"]) end
-	if struct["Type"] then asserts.AssertLoadBalancerTypeEnum(struct["Type"]) end
-	if struct["CanonicalHostedZoneId"] then asserts.AssertCanonicalHostedZoneId(struct["CanonicalHostedZoneId"]) end
-	if struct["AvailabilityZones"] then asserts.AssertAvailabilityZones(struct["AvailabilityZones"]) end
 	for k,_ in pairs(struct) do
-		assert(keys.LoadBalancer[k], "LoadBalancer contains unknown key " .. tostring(k))
+		assert(keys.ApplySecurityGroupsToLoadBalancerOutput[k], "ApplySecurityGroupsToLoadBalancerOutput contains unknown key " .. tostring(k))
 	end
 end
 
---- Create a structure of type LoadBalancer
--- <p>Information about a load balancer.</p>
+--- Create a structure of type ApplySecurityGroupsToLoadBalancerOutput
+-- <p>Contains the output of ApplySecurityGroupsToLoadBalancer.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * IpAddressType [IpAddressType] <p>The type of IP addresses used by the subnets for your load balancer. The possible values are <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses).</p>
--- * VpcId [VpcId] <p>The ID of the VPC for the load balancer.</p>
--- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- * State [LoadBalancerState] <p>The state of the load balancer.</p>
--- * DNSName [DNSName] <p>The public DNS name of the load balancer.</p>
--- * SecurityGroups [SecurityGroups] <p>The IDs of the security groups for the load balancer.</p>
--- * LoadBalancerName [LoadBalancerName] <p>The name of the load balancer.</p>
--- * CreatedTime [CreatedTime] <p>The date and time the load balancer was created.</p>
--- * Scheme [LoadBalancerSchemeEnum] <p>The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the internet.</p> <p>The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer.</p>
--- * Type [LoadBalancerTypeEnum] <p>The type of load balancer.</p>
--- * CanonicalHostedZoneId [CanonicalHostedZoneId] <p>The ID of the Amazon Route 53 hosted zone associated with the load balancer.</p>
--- * AvailabilityZones [AvailabilityZones] <p>The Availability Zones for the load balancer.</p>
--- @return LoadBalancer structure as a key-value pair table
-function M.LoadBalancer(args)
-	assert(args, "You must provide an argument table when creating LoadBalancer")
+-- * SecurityGroups [SecurityGroups] <p>The IDs of the security groups associated with the load balancer.</p>
+-- @return ApplySecurityGroupsToLoadBalancerOutput structure as a key-value pair table
+function M.ApplySecurityGroupsToLoadBalancerOutput(args)
+	assert(args, "You must provide an argument table when creating ApplySecurityGroupsToLoadBalancerOutput")
     local query_args = { 
     }
     local uri_args = { 
@@ -5302,20 +3335,9 @@ function M.LoadBalancer(args)
     local header_args = { 
     }
 	local all_args = { 
-		["IpAddressType"] = args["IpAddressType"],
-		["VpcId"] = args["VpcId"],
-		["LoadBalancerArn"] = args["LoadBalancerArn"],
-		["State"] = args["State"],
-		["DNSName"] = args["DNSName"],
 		["SecurityGroups"] = args["SecurityGroups"],
-		["LoadBalancerName"] = args["LoadBalancerName"],
-		["CreatedTime"] = args["CreatedTime"],
-		["Scheme"] = args["Scheme"],
-		["Type"] = args["Type"],
-		["CanonicalHostedZoneId"] = args["CanonicalHostedZoneId"],
-		["AvailabilityZones"] = args["AvailabilityZones"],
 	}
-	asserts.AssertLoadBalancer(all_args)
+	asserts.AssertApplySecurityGroupsToLoadBalancerOutput(all_args)
 	return {
         all = all_args,
         query = query_args,
@@ -5324,15 +3346,167 @@ function M.LoadBalancer(args)
     }
 end
 
-function asserts.AssertAuthenticateCognitoActionAuthenticationRequestParamValue(str)
-	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateCognitoActionAuthenticationRequestParamValue to be of type 'string'")
+keys.ListenerDescription = { ["Listener"] = true, ["PolicyNames"] = true, nil }
+
+function asserts.AssertListenerDescription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected ListenerDescription to be of type 'table'")
+	if struct["Listener"] then asserts.AssertListener(struct["Listener"]) end
+	if struct["PolicyNames"] then asserts.AssertPolicyNames(struct["PolicyNames"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.ListenerDescription[k], "ListenerDescription contains unknown key " .. tostring(k))
+	end
 end
 
---  
-function M.AuthenticateCognitoActionAuthenticationRequestParamValue(str)
-	asserts.AssertAuthenticateCognitoActionAuthenticationRequestParamValue(str)
-	return str
+--- Create a structure of type ListenerDescription
+-- <p>The policies enabled for a listener.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Listener [Listener] <p>The listener.</p>
+-- * PolicyNames [PolicyNames] <p>The policies. If there are no policies enabled, the list is empty.</p>
+-- @return ListenerDescription structure as a key-value pair table
+function M.ListenerDescription(args)
+	assert(args, "You must provide an argument table when creating ListenerDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["Listener"] = args["Listener"],
+		["PolicyNames"] = args["PolicyNames"],
+	}
+	asserts.AssertListenerDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SetLoadBalancerPoliciesOfListenerOutput = { nil }
+
+function asserts.AssertSetLoadBalancerPoliciesOfListenerOutput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SetLoadBalancerPoliciesOfListenerOutput to be of type 'table'")
+	for k,_ in pairs(struct) do
+		assert(keys.SetLoadBalancerPoliciesOfListenerOutput[k], "SetLoadBalancerPoliciesOfListenerOutput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SetLoadBalancerPoliciesOfListenerOutput
+-- <p>Contains the output of SetLoadBalancePoliciesOfListener.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SetLoadBalancerPoliciesOfListenerOutput structure as a key-value pair table
+function M.SetLoadBalancerPoliciesOfListenerOutput(args)
+	assert(args, "You must provide an argument table when creating SetLoadBalancerPoliciesOfListenerOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+	}
+	asserts.AssertSetLoadBalancerPoliciesOfListenerOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.PolicyAttributeDescription = { ["AttributeName"] = true, ["AttributeValue"] = true, nil }
+
+function asserts.AssertPolicyAttributeDescription(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected PolicyAttributeDescription to be of type 'table'")
+	if struct["AttributeName"] then asserts.AssertAttributeName(struct["AttributeName"]) end
+	if struct["AttributeValue"] then asserts.AssertAttributeValue(struct["AttributeValue"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.PolicyAttributeDescription[k], "PolicyAttributeDescription contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type PolicyAttributeDescription
+-- <p>Information about a policy attribute.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttributeName [AttributeName] <p>The name of the attribute.</p>
+-- * AttributeValue [AttributeValue] <p>The value of the attribute.</p>
+-- @return PolicyAttributeDescription structure as a key-value pair table
+function M.PolicyAttributeDescription(args)
+	assert(args, "You must provide an argument table when creating PolicyAttributeDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["AttributeName"] = args["AttributeName"],
+		["AttributeValue"] = args["AttributeValue"],
+	}
+	asserts.AssertPolicyAttributeDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
+end
+
+keys.SetLoadBalancerPoliciesOfListenerInput = { ["PolicyNames"] = true, ["LoadBalancerPort"] = true, ["LoadBalancerName"] = true, nil }
+
+function asserts.AssertSetLoadBalancerPoliciesOfListenerInput(struct)
+	assert(struct)
+	assert(type(struct) == "table", "Expected SetLoadBalancerPoliciesOfListenerInput to be of type 'table'")
+	assert(struct["LoadBalancerName"], "Expected key LoadBalancerName to exist in table")
+	assert(struct["LoadBalancerPort"], "Expected key LoadBalancerPort to exist in table")
+	assert(struct["PolicyNames"], "Expected key PolicyNames to exist in table")
+	if struct["PolicyNames"] then asserts.AssertPolicyNames(struct["PolicyNames"]) end
+	if struct["LoadBalancerPort"] then asserts.AssertAccessPointPort(struct["LoadBalancerPort"]) end
+	if struct["LoadBalancerName"] then asserts.AssertAccessPointName(struct["LoadBalancerName"]) end
+	for k,_ in pairs(struct) do
+		assert(keys.SetLoadBalancerPoliciesOfListenerInput[k], "SetLoadBalancerPoliciesOfListenerInput contains unknown key " .. tostring(k))
+	end
+end
+
+--- Create a structure of type SetLoadBalancerPoliciesOfListenerInput
+-- <p>Contains the parameters for SetLoadBalancePoliciesOfListener.</p>
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyNames [PolicyNames] <p>The names of the policies. This list must include all policies to be enabled. If you omit a policy that is currently enabled, it is disabled. If the list is empty, all current policies are disabled.</p>
+-- * LoadBalancerPort [AccessPointPort] <p>The external port of the load balancer.</p>
+-- * LoadBalancerName [AccessPointName] <p>The name of the load balancer.</p>
+-- Required key: LoadBalancerName
+-- Required key: LoadBalancerPort
+-- Required key: PolicyNames
+-- @return SetLoadBalancerPoliciesOfListenerInput structure as a key-value pair table
+function M.SetLoadBalancerPoliciesOfListenerInput(args)
+	assert(args, "You must provide an argument table when creating SetLoadBalancerPoliciesOfListenerInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
+		["PolicyNames"] = args["PolicyNames"],
+		["LoadBalancerPort"] = args["LoadBalancerPort"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
+	}
+	asserts.AssertSetLoadBalancerPoliciesOfListenerInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertDNSName(str)
@@ -5343,17 +3517,6 @@ end
 --  
 function M.DNSName(str)
 	asserts.AssertDNSName(str)
-	return str
-end
-
-function asserts.AssertLoadBalancerSchemeEnum(str)
-	assert(str)
-	assert(type(str) == "string", "Expected LoadBalancerSchemeEnum to be of type 'string'")
-end
-
---  
-function M.LoadBalancerSchemeEnum(str)
-	asserts.AssertLoadBalancerSchemeEnum(str)
 	return str
 end
 
@@ -5370,219 +3533,103 @@ function M.TagKey(str)
 	return str
 end
 
-function asserts.AssertPath(str)
+function asserts.AssertAccessLogPrefix(str)
 	assert(str)
-	assert(type(str) == "string", "Expected Path to be of type 'string'")
-	assert(#str <= 1024, "Expected string to be max 1024 characters")
-	assert(#str >= 1, "Expected string to be min 1 characters")
+	assert(type(str) == "string", "Expected AccessLogPrefix to be of type 'string'")
 end
 
 --  
-function M.Path(str)
-	asserts.AssertPath(str)
+function M.AccessLogPrefix(str)
+	asserts.AssertAccessLogPrefix(str)
 	return str
 end
 
-function asserts.AssertConditionFieldName(str)
+function asserts.AssertPolicyName(str)
 	assert(str)
-	assert(type(str) == "string", "Expected ConditionFieldName to be of type 'string'")
-	assert(#str <= 64, "Expected string to be max 64 characters")
+	assert(type(str) == "string", "Expected PolicyName to be of type 'string'")
 end
 
 --  
-function M.ConditionFieldName(str)
-	asserts.AssertConditionFieldName(str)
+function M.PolicyName(str)
+	asserts.AssertPolicyName(str)
 	return str
 end
 
-function asserts.AssertAuthenticateOidcActionTokenEndpoint(str)
+function asserts.AssertProtocol(str)
 	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateOidcActionTokenEndpoint to be of type 'string'")
+	assert(type(str) == "string", "Expected Protocol to be of type 'string'")
 end
 
 --  
-function M.AuthenticateOidcActionTokenEndpoint(str)
-	asserts.AssertAuthenticateOidcActionTokenEndpoint(str)
+function M.Protocol(str)
+	asserts.AssertProtocol(str)
 	return str
 end
 
-function asserts.AssertTargetGroupArn(str)
+function asserts.AssertAttributeValue(str)
 	assert(str)
-	assert(type(str) == "string", "Expected TargetGroupArn to be of type 'string'")
+	assert(type(str) == "string", "Expected AttributeValue to be of type 'string'")
 end
 
 --  
-function M.TargetGroupArn(str)
-	asserts.AssertTargetGroupArn(str)
+function M.AttributeValue(str)
+	asserts.AssertAttributeValue(str)
 	return str
 end
 
-function asserts.AssertIpAddressType(str)
+function asserts.AssertSecurityGroupName(str)
 	assert(str)
-	assert(type(str) == "string", "Expected IpAddressType to be of type 'string'")
+	assert(type(str) == "string", "Expected SecurityGroupName to be of type 'string'")
 end
 
 --  
-function M.IpAddressType(str)
-	asserts.AssertIpAddressType(str)
+function M.SecurityGroupName(str)
+	asserts.AssertSecurityGroupName(str)
 	return str
 end
 
-function asserts.AssertTargetGroupAttributeKey(str)
+function asserts.AssertAttributeName(str)
 	assert(str)
-	assert(type(str) == "string", "Expected TargetGroupAttributeKey to be of type 'string'")
+	assert(type(str) == "string", "Expected AttributeName to be of type 'string'")
+end
+
+--  
+function M.AttributeName(str)
+	asserts.AssertAttributeName(str)
+	return str
+end
+
+function asserts.AssertAdditionalAttributeKey(str)
+	assert(str)
+	assert(type(str) == "string", "Expected AdditionalAttributeKey to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 end
 
 --  
-function M.TargetGroupAttributeKey(str)
-	asserts.AssertTargetGroupAttributeKey(str)
+function M.AdditionalAttributeKey(str)
+	asserts.AssertAdditionalAttributeKey(str)
 	return str
 end
 
-function asserts.AssertAuthenticateOidcActionUserInfoEndpoint(str)
+function asserts.AssertVPCId(str)
 	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateOidcActionUserInfoEndpoint to be of type 'string'")
+	assert(type(str) == "string", "Expected VPCId to be of type 'string'")
 end
 
 --  
-function M.AuthenticateOidcActionUserInfoEndpoint(str)
-	asserts.AssertAuthenticateOidcActionUserInfoEndpoint(str)
+function M.VPCId(str)
+	asserts.AssertVPCId(str)
 	return str
 end
 
-function asserts.AssertLoadBalancerName(str)
+function asserts.AssertState(str)
 	assert(str)
-	assert(type(str) == "string", "Expected LoadBalancerName to be of type 'string'")
+	assert(type(str) == "string", "Expected State to be of type 'string'")
 end
 
 --  
-function M.LoadBalancerName(str)
-	asserts.AssertLoadBalancerName(str)
-	return str
-end
-
-function asserts.AssertStringValue(str)
-	assert(str)
-	assert(type(str) == "string", "Expected StringValue to be of type 'string'")
-end
-
---  
-function M.StringValue(str)
-	asserts.AssertStringValue(str)
-	return str
-end
-
-function asserts.AssertLoadBalancerAttributeValue(str)
-	assert(str)
-	assert(type(str) == "string", "Expected LoadBalancerAttributeValue to be of type 'string'")
-	assert(#str <= 1024, "Expected string to be max 1024 characters")
-end
-
---  
-function M.LoadBalancerAttributeValue(str)
-	asserts.AssertLoadBalancerAttributeValue(str)
-	return str
-end
-
-function asserts.AssertAuthenticateOidcActionAuthenticationRequestParamValue(str)
-	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateOidcActionAuthenticationRequestParamValue to be of type 'string'")
-end
-
---  
-function M.AuthenticateOidcActionAuthenticationRequestParamValue(str)
-	asserts.AssertAuthenticateOidcActionAuthenticationRequestParamValue(str)
-	return str
-end
-
-function asserts.AssertFixedResponseActionMessage(str)
-	assert(str)
-	assert(type(str) == "string", "Expected FixedResponseActionMessage to be of type 'string'")
-	assert(#str <= 1024, "Expected string to be max 1024 characters")
-end
-
---  
-function M.FixedResponseActionMessage(str)
-	asserts.AssertFixedResponseActionMessage(str)
-	return str
-end
-
-function asserts.AssertTargetHealthReasonEnum(str)
-	assert(str)
-	assert(type(str) == "string", "Expected TargetHealthReasonEnum to be of type 'string'")
-end
-
---  
-function M.TargetHealthReasonEnum(str)
-	asserts.AssertTargetHealthReasonEnum(str)
-	return str
-end
-
-function asserts.AssertLoadBalancerAttributeKey(str)
-	assert(str)
-	assert(type(str) == "string", "Expected LoadBalancerAttributeKey to be of type 'string'")
-	assert(#str <= 256, "Expected string to be max 256 characters")
-end
-
---  
-function M.LoadBalancerAttributeKey(str)
-	asserts.AssertLoadBalancerAttributeKey(str)
-	return str
-end
-
-function asserts.AssertAuthenticateOidcActionIssuer(str)
-	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateOidcActionIssuer to be of type 'string'")
-end
-
---  
-function M.AuthenticateOidcActionIssuer(str)
-	asserts.AssertAuthenticateOidcActionIssuer(str)
-	return str
-end
-
-function asserts.AssertTargetGroupAttributeValue(str)
-	assert(str)
-	assert(type(str) == "string", "Expected TargetGroupAttributeValue to be of type 'string'")
-end
-
---  
-function M.TargetGroupAttributeValue(str)
-	asserts.AssertTargetGroupAttributeValue(str)
-	return str
-end
-
-function asserts.AssertString(str)
-	assert(str)
-	assert(type(str) == "string", "Expected String to be of type 'string'")
-end
-
---  
-function M.String(str)
-	asserts.AssertString(str)
-	return str
-end
-
-function asserts.AssertResourceArn(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ResourceArn to be of type 'string'")
-end
-
---  
-function M.ResourceArn(str)
-	asserts.AssertResourceArn(str)
-	return str
-end
-
-function asserts.AssertZoneName(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ZoneName to be of type 'string'")
-end
-
---  
-function M.ZoneName(str)
-	asserts.AssertZoneName(str)
+function M.State(str)
+	asserts.AssertState(str)
 	return str
 end
 
@@ -5597,36 +3644,14 @@ function M.SubnetId(str)
 	return str
 end
 
-function asserts.AssertTargetGroupName(str)
+function asserts.AssertSecurityGroupOwnerAlias(str)
 	assert(str)
-	assert(type(str) == "string", "Expected TargetGroupName to be of type 'string'")
+	assert(type(str) == "string", "Expected SecurityGroupOwnerAlias to be of type 'string'")
 end
 
 --  
-function M.TargetGroupName(str)
-	asserts.AssertTargetGroupName(str)
-	return str
-end
-
-function asserts.AssertAuthenticateCognitoActionSessionCookieName(str)
-	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateCognitoActionSessionCookieName to be of type 'string'")
-end
-
---  
-function M.AuthenticateCognitoActionSessionCookieName(str)
-	asserts.AssertAuthenticateCognitoActionSessionCookieName(str)
-	return str
-end
-
-function asserts.AssertMarker(str)
-	assert(str)
-	assert(type(str) == "string", "Expected Marker to be of type 'string'")
-end
-
---  
-function M.Marker(str)
-	asserts.AssertMarker(str)
+function M.SecurityGroupOwnerAlias(str)
+	asserts.AssertSecurityGroupOwnerAlias(str)
 	return str
 end
 
@@ -5642,273 +3667,14 @@ function M.TagValue(str)
 	return str
 end
 
-function asserts.AssertRedirectActionQuery(str)
+function asserts.AssertAvailabilityZone(str)
 	assert(str)
-	assert(type(str) == "string", "Expected RedirectActionQuery to be of type 'string'")
-	assert(#str <= 128, "Expected string to be max 128 characters")
+	assert(type(str) == "string", "Expected AvailabilityZone to be of type 'string'")
 end
 
 --  
-function M.RedirectActionQuery(str)
-	asserts.AssertRedirectActionQuery(str)
-	return str
-end
-
-function asserts.AssertCertificateArn(str)
-	assert(str)
-	assert(type(str) == "string", "Expected CertificateArn to be of type 'string'")
-end
-
---  
-function M.CertificateArn(str)
-	asserts.AssertCertificateArn(str)
-	return str
-end
-
-function asserts.AssertRedirectActionHost(str)
-	assert(str)
-	assert(type(str) == "string", "Expected RedirectActionHost to be of type 'string'")
-	assert(#str <= 128, "Expected string to be max 128 characters")
-	assert(#str >= 1, "Expected string to be min 1 characters")
-end
-
---  
-function M.RedirectActionHost(str)
-	asserts.AssertRedirectActionHost(str)
-	return str
-end
-
-function asserts.AssertRedirectActionProtocol(str)
-	assert(str)
-	assert(type(str) == "string", "Expected RedirectActionProtocol to be of type 'string'")
-end
-
---  
-function M.RedirectActionProtocol(str)
-	asserts.AssertRedirectActionProtocol(str)
-	return str
-end
-
-function asserts.AssertSslProtocol(str)
-	assert(str)
-	assert(type(str) == "string", "Expected SslProtocol to be of type 'string'")
-end
-
---  
-function M.SslProtocol(str)
-	asserts.AssertSslProtocol(str)
-	return str
-end
-
-function asserts.AssertTargetTypeEnum(str)
-	assert(str)
-	assert(type(str) == "string", "Expected TargetTypeEnum to be of type 'string'")
-end
-
---  
-function M.TargetTypeEnum(str)
-	asserts.AssertTargetTypeEnum(str)
-	return str
-end
-
-function asserts.AssertAuthenticateCognitoActionUserPoolArn(str)
-	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateCognitoActionUserPoolArn to be of type 'string'")
-end
-
---  
-function M.AuthenticateCognitoActionUserPoolArn(str)
-	asserts.AssertAuthenticateCognitoActionUserPoolArn(str)
-	return str
-end
-
-function asserts.AssertAuthenticateCognitoActionUserPoolDomain(str)
-	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateCognitoActionUserPoolDomain to be of type 'string'")
-end
-
---  
-function M.AuthenticateCognitoActionUserPoolDomain(str)
-	asserts.AssertAuthenticateCognitoActionUserPoolDomain(str)
-	return str
-end
-
-function asserts.AssertActionTypeEnum(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ActionTypeEnum to be of type 'string'")
-end
-
---  
-function M.ActionTypeEnum(str)
-	asserts.AssertActionTypeEnum(str)
-	return str
-end
-
-function asserts.AssertAuthenticateCognitoActionUserPoolClientId(str)
-	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateCognitoActionUserPoolClientId to be of type 'string'")
-end
-
---  
-function M.AuthenticateCognitoActionUserPoolClientId(str)
-	asserts.AssertAuthenticateCognitoActionUserPoolClientId(str)
-	return str
-end
-
-function asserts.AssertFixedResponseActionContentType(str)
-	assert(str)
-	assert(type(str) == "string", "Expected FixedResponseActionContentType to be of type 'string'")
-	assert(#str <= 32, "Expected string to be max 32 characters")
-end
-
---  
-function M.FixedResponseActionContentType(str)
-	asserts.AssertFixedResponseActionContentType(str)
-	return str
-end
-
-function asserts.AssertRedirectActionStatusCodeEnum(str)
-	assert(str)
-	assert(type(str) == "string", "Expected RedirectActionStatusCodeEnum to be of type 'string'")
-end
-
---  
-function M.RedirectActionStatusCodeEnum(str)
-	asserts.AssertRedirectActionStatusCodeEnum(str)
-	return str
-end
-
-function asserts.AssertHealthCheckPort(str)
-	assert(str)
-	assert(type(str) == "string", "Expected HealthCheckPort to be of type 'string'")
-end
-
---  
-function M.HealthCheckPort(str)
-	asserts.AssertHealthCheckPort(str)
-	return str
-end
-
-function asserts.AssertAuthenticateOidcActionAuthenticationRequestParamName(str)
-	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateOidcActionAuthenticationRequestParamName to be of type 'string'")
-end
-
---  
-function M.AuthenticateOidcActionAuthenticationRequestParamName(str)
-	asserts.AssertAuthenticateOidcActionAuthenticationRequestParamName(str)
-	return str
-end
-
-function asserts.AssertRedirectActionPath(str)
-	assert(str)
-	assert(type(str) == "string", "Expected RedirectActionPath to be of type 'string'")
-	assert(#str <= 128, "Expected string to be max 128 characters")
-	assert(#str >= 1, "Expected string to be min 1 characters")
-end
-
---  
-function M.RedirectActionPath(str)
-	asserts.AssertRedirectActionPath(str)
-	return str
-end
-
-function asserts.AssertAuthenticateOidcActionSessionCookieName(str)
-	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateOidcActionSessionCookieName to be of type 'string'")
-end
-
---  
-function M.AuthenticateOidcActionSessionCookieName(str)
-	asserts.AssertAuthenticateOidcActionSessionCookieName(str)
-	return str
-end
-
-function asserts.AssertListenerArn(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ListenerArn to be of type 'string'")
-end
-
---  
-function M.ListenerArn(str)
-	asserts.AssertListenerArn(str)
-	return str
-end
-
-function asserts.AssertLoadBalancerArn(str)
-	assert(str)
-	assert(type(str) == "string", "Expected LoadBalancerArn to be of type 'string'")
-end
-
---  
-function M.LoadBalancerArn(str)
-	asserts.AssertLoadBalancerArn(str)
-	return str
-end
-
-function asserts.AssertHttpCode(str)
-	assert(str)
-	assert(type(str) == "string", "Expected HttpCode to be of type 'string'")
-end
-
---  
-function M.HttpCode(str)
-	asserts.AssertHttpCode(str)
-	return str
-end
-
-function asserts.AssertAuthenticateOidcActionClientId(str)
-	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateOidcActionClientId to be of type 'string'")
-end
-
---  
-function M.AuthenticateOidcActionClientId(str)
-	asserts.AssertAuthenticateOidcActionClientId(str)
-	return str
-end
-
-function asserts.AssertAuthenticateOidcActionClientSecret(str)
-	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateOidcActionClientSecret to be of type 'string'")
-end
-
---  
-function M.AuthenticateOidcActionClientSecret(str)
-	asserts.AssertAuthenticateOidcActionClientSecret(str)
-	return str
-end
-
-function asserts.AssertAuthenticateCognitoActionConditionalBehaviorEnum(str)
-	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateCognitoActionConditionalBehaviorEnum to be of type 'string'")
-end
-
---  
-function M.AuthenticateCognitoActionConditionalBehaviorEnum(str)
-	asserts.AssertAuthenticateCognitoActionConditionalBehaviorEnum(str)
-	return str
-end
-
-function asserts.AssertRuleArn(str)
-	assert(str)
-	assert(type(str) == "string", "Expected RuleArn to be of type 'string'")
-end
-
---  
-function M.RuleArn(str)
-	asserts.AssertRuleArn(str)
-	return str
-end
-
-function asserts.AssertAuthenticateOidcActionScope(str)
-	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateOidcActionScope to be of type 'string'")
-end
-
---  
-function M.AuthenticateOidcActionScope(str)
-	asserts.AssertAuthenticateOidcActionScope(str)
+function M.AvailabilityZone(str)
+	asserts.AssertAvailabilityZone(str)
 	return str
 end
 
@@ -5923,58 +3689,114 @@ function M.SecurityGroupId(str)
 	return str
 end
 
-function asserts.AssertAuthenticateCognitoActionScope(str)
+function asserts.AssertSSLCertificateId(str)
 	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateCognitoActionScope to be of type 'string'")
+	assert(type(str) == "string", "Expected SSLCertificateId to be of type 'string'")
 end
 
 --  
-function M.AuthenticateCognitoActionScope(str)
-	asserts.AssertAuthenticateCognitoActionScope(str)
+function M.SSLCertificateId(str)
+	asserts.AssertSSLCertificateId(str)
 	return str
 end
 
-function asserts.AssertAuthenticateOidcActionAuthorizationEndpoint(str)
+function asserts.AssertLoadBalancerScheme(str)
 	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateOidcActionAuthorizationEndpoint to be of type 'string'")
+	assert(type(str) == "string", "Expected LoadBalancerScheme to be of type 'string'")
 end
 
 --  
-function M.AuthenticateOidcActionAuthorizationEndpoint(str)
-	asserts.AssertAuthenticateOidcActionAuthorizationEndpoint(str)
+function M.LoadBalancerScheme(str)
+	asserts.AssertLoadBalancerScheme(str)
 	return str
 end
 
-function asserts.AssertIpAddress(str)
+function asserts.AssertCardinality(str)
 	assert(str)
-	assert(type(str) == "string", "Expected IpAddress to be of type 'string'")
+	assert(type(str) == "string", "Expected Cardinality to be of type 'string'")
 end
 
 --  
-function M.IpAddress(str)
-	asserts.AssertIpAddress(str)
+function M.Cardinality(str)
+	asserts.AssertCardinality(str)
 	return str
 end
 
-function asserts.AssertAllocationId(str)
+function asserts.AssertAttributeType(str)
 	assert(str)
-	assert(type(str) == "string", "Expected AllocationId to be of type 'string'")
+	assert(type(str) == "string", "Expected AttributeType to be of type 'string'")
 end
 
 --  
-function M.AllocationId(str)
-	asserts.AssertAllocationId(str)
+function M.AttributeType(str)
+	asserts.AssertAttributeType(str)
 	return str
 end
 
-function asserts.AssertAuthenticateOidcActionConditionalBehaviorEnum(str)
+function asserts.AssertHealthCheckTarget(str)
 	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateOidcActionConditionalBehaviorEnum to be of type 'string'")
+	assert(type(str) == "string", "Expected HealthCheckTarget to be of type 'string'")
 end
 
 --  
-function M.AuthenticateOidcActionConditionalBehaviorEnum(str)
-	asserts.AssertAuthenticateOidcActionConditionalBehaviorEnum(str)
+function M.HealthCheckTarget(str)
+	asserts.AssertHealthCheckTarget(str)
+	return str
+end
+
+function asserts.AssertPolicyTypeName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected PolicyTypeName to be of type 'string'")
+end
+
+--  
+function M.PolicyTypeName(str)
+	asserts.AssertPolicyTypeName(str)
+	return str
+end
+
+function asserts.AssertAdditionalAttributeValue(str)
+	assert(str)
+	assert(type(str) == "string", "Expected AdditionalAttributeValue to be of type 'string'")
+	assert(#str <= 256, "Expected string to be max 256 characters")
+end
+
+--  
+function M.AdditionalAttributeValue(str)
+	asserts.AssertAdditionalAttributeValue(str)
+	return str
+end
+
+function asserts.AssertS3BucketName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected S3BucketName to be of type 'string'")
+end
+
+--  
+function M.S3BucketName(str)
+	asserts.AssertS3BucketName(str)
+	return str
+end
+
+function asserts.AssertMarker(str)
+	assert(str)
+	assert(type(str) == "string", "Expected Marker to be of type 'string'")
+end
+
+--  
+function M.Marker(str)
+	asserts.AssertMarker(str)
+	return str
+end
+
+function asserts.AssertAccessPointName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected AccessPointName to be of type 'string'")
+end
+
+--  
+function M.AccessPointName(str)
+	asserts.AssertAccessPointName(str)
 	return str
 end
 
@@ -5989,157 +3811,14 @@ function M.Description(str)
 	return str
 end
 
-function asserts.AssertAuthenticateCognitoActionAuthenticationRequestParamName(str)
+function asserts.AssertInstanceId(str)
 	assert(str)
-	assert(type(str) == "string", "Expected AuthenticateCognitoActionAuthenticationRequestParamName to be of type 'string'")
+	assert(type(str) == "string", "Expected InstanceId to be of type 'string'")
 end
 
 --  
-function M.AuthenticateCognitoActionAuthenticationRequestParamName(str)
-	asserts.AssertAuthenticateCognitoActionAuthenticationRequestParamName(str)
-	return str
-end
-
-function asserts.AssertTargetId(str)
-	assert(str)
-	assert(type(str) == "string", "Expected TargetId to be of type 'string'")
-end
-
---  
-function M.TargetId(str)
-	asserts.AssertTargetId(str)
-	return str
-end
-
-function asserts.AssertCanonicalHostedZoneId(str)
-	assert(str)
-	assert(type(str) == "string", "Expected CanonicalHostedZoneId to be of type 'string'")
-end
-
---  
-function M.CanonicalHostedZoneId(str)
-	asserts.AssertCanonicalHostedZoneId(str)
-	return str
-end
-
-function asserts.AssertTargetHealthStateEnum(str)
-	assert(str)
-	assert(type(str) == "string", "Expected TargetHealthStateEnum to be of type 'string'")
-end
-
---  
-function M.TargetHealthStateEnum(str)
-	asserts.AssertTargetHealthStateEnum(str)
-	return str
-end
-
-function asserts.AssertLoadBalancerTypeEnum(str)
-	assert(str)
-	assert(type(str) == "string", "Expected LoadBalancerTypeEnum to be of type 'string'")
-end
-
---  
-function M.LoadBalancerTypeEnum(str)
-	asserts.AssertLoadBalancerTypeEnum(str)
-	return str
-end
-
-function asserts.AssertCipherName(str)
-	assert(str)
-	assert(type(str) == "string", "Expected CipherName to be of type 'string'")
-end
-
---  
-function M.CipherName(str)
-	asserts.AssertCipherName(str)
-	return str
-end
-
-function asserts.AssertFixedResponseActionStatusCode(str)
-	assert(str)
-	assert(type(str) == "string", "Expected FixedResponseActionStatusCode to be of type 'string'")
-end
-
---  
-function M.FixedResponseActionStatusCode(str)
-	asserts.AssertFixedResponseActionStatusCode(str)
-	return str
-end
-
-function asserts.AssertName(str)
-	assert(str)
-	assert(type(str) == "string", "Expected Name to be of type 'string'")
-end
-
---  
-function M.Name(str)
-	asserts.AssertName(str)
-	return str
-end
-
-function asserts.AssertProtocolEnum(str)
-	assert(str)
-	assert(type(str) == "string", "Expected ProtocolEnum to be of type 'string'")
-end
-
---  
-function M.ProtocolEnum(str)
-	asserts.AssertProtocolEnum(str)
-	return str
-end
-
-function asserts.AssertSslPolicyName(str)
-	assert(str)
-	assert(type(str) == "string", "Expected SslPolicyName to be of type 'string'")
-end
-
---  
-function M.SslPolicyName(str)
-	asserts.AssertSslPolicyName(str)
-	return str
-end
-
-function asserts.AssertStateReason(str)
-	assert(str)
-	assert(type(str) == "string", "Expected StateReason to be of type 'string'")
-end
-
---  
-function M.StateReason(str)
-	asserts.AssertStateReason(str)
-	return str
-end
-
-function asserts.AssertLoadBalancerStateEnum(str)
-	assert(str)
-	assert(type(str) == "string", "Expected LoadBalancerStateEnum to be of type 'string'")
-end
-
---  
-function M.LoadBalancerStateEnum(str)
-	asserts.AssertLoadBalancerStateEnum(str)
-	return str
-end
-
-function asserts.AssertRedirectActionPort(str)
-	assert(str)
-	assert(type(str) == "string", "Expected RedirectActionPort to be of type 'string'")
-end
-
---  
-function M.RedirectActionPort(str)
-	asserts.AssertRedirectActionPort(str)
-	return str
-end
-
-function asserts.AssertVpcId(str)
-	assert(str)
-	assert(type(str) == "string", "Expected VpcId to be of type 'string'")
-end
-
---  
-function M.VpcId(str)
-	asserts.AssertVpcId(str)
+function M.InstanceId(str)
+	asserts.AssertInstanceId(str)
 	return str
 end
 
@@ -6154,64 +3833,106 @@ function M.Max(str)
 	return str
 end
 
-function asserts.AssertAuthenticateOidcActionSessionTimeout(long)
+function asserts.AssertCookieName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected CookieName to be of type 'string'")
+end
+
+--  
+function M.CookieName(str)
+	asserts.AssertCookieName(str)
+	return str
+end
+
+function asserts.AssertReasonCode(str)
+	assert(str)
+	assert(type(str) == "string", "Expected ReasonCode to be of type 'string'")
+end
+
+--  
+function M.ReasonCode(str)
+	asserts.AssertReasonCode(str)
+	return str
+end
+
+function asserts.AssertName(str)
+	assert(str)
+	assert(type(str) == "string", "Expected Name to be of type 'string'")
+end
+
+--  
+function M.Name(str)
+	asserts.AssertName(str)
+	return str
+end
+
+function asserts.AssertDefaultValue(str)
+	assert(str)
+	assert(type(str) == "string", "Expected DefaultValue to be of type 'string'")
+end
+
+--  
+function M.DefaultValue(str)
+	asserts.AssertDefaultValue(str)
+	return str
+end
+
+function asserts.AssertCookieExpirationPeriod(long)
 	assert(long)
-	assert(type(long) == "number", "Expected AuthenticateOidcActionSessionTimeout to be of type 'number'")
+	assert(type(long) == "number", "Expected CookieExpirationPeriod to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
-function M.AuthenticateOidcActionSessionTimeout(long)
-	asserts.AssertAuthenticateOidcActionSessionTimeout(long)
+function M.CookieExpirationPeriod(long)
+	asserts.AssertCookieExpirationPeriod(long)
 	return long
 end
 
-function asserts.AssertAuthenticateCognitoActionSessionTimeout(long)
-	assert(long)
-	assert(type(long) == "number", "Expected AuthenticateCognitoActionSessionTimeout to be of type 'number'")
-	assert(long % 1 == 0, "Expected a whole integer number")
-end
-
-function M.AuthenticateCognitoActionSessionTimeout(long)
-	asserts.AssertAuthenticateCognitoActionSessionTimeout(long)
-	return long
-end
-
-function asserts.AssertActionOrder(integer)
+function asserts.AssertHealthCheckTimeout(integer)
 	assert(integer)
-	assert(type(integer) == "number", "Expected ActionOrder to be of type 'number'")
+	assert(type(integer) == "number", "Expected HealthCheckTimeout to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
-	assert(integer <= 50000, "Expected integer to be max 50000")
-	assert(integer >= 1, "Expected integer to be min 1")
-end
-
-function M.ActionOrder(integer)
-	asserts.AssertActionOrder(integer)
-	return integer
-end
-
-function asserts.AssertHealthCheckThresholdCount(integer)
-	assert(integer)
-	assert(type(integer) == "number", "Expected HealthCheckThresholdCount to be of type 'number'")
-	assert(integer % 1 == 0, "Expected a while integer number")
-	assert(integer <= 10, "Expected integer to be max 10")
+	assert(integer <= 60, "Expected integer to be max 60")
 	assert(integer >= 2, "Expected integer to be min 2")
 end
 
-function M.HealthCheckThresholdCount(integer)
-	asserts.AssertHealthCheckThresholdCount(integer)
+function M.HealthCheckTimeout(integer)
+	asserts.AssertHealthCheckTimeout(integer)
 	return integer
 end
 
-function asserts.AssertHealthCheckIntervalSeconds(integer)
+function asserts.AssertHealthCheckInterval(integer)
 	assert(integer)
-	assert(type(integer) == "number", "Expected HealthCheckIntervalSeconds to be of type 'number'")
+	assert(type(integer) == "number", "Expected HealthCheckInterval to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 	assert(integer <= 300, "Expected integer to be max 300")
 	assert(integer >= 5, "Expected integer to be min 5")
 end
 
-function M.HealthCheckIntervalSeconds(integer)
-	asserts.AssertHealthCheckIntervalSeconds(integer)
+function M.HealthCheckInterval(integer)
+	asserts.AssertHealthCheckInterval(integer)
+	return integer
+end
+
+function asserts.AssertAccessPointPort(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected AccessPointPort to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
+end
+
+function M.AccessPointPort(integer)
+	asserts.AssertAccessPointPort(integer)
+	return integer
+end
+
+function asserts.AssertEndPointPort(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected EndPointPort to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
+end
+
+function M.EndPointPort(integer)
+	asserts.AssertEndPointPort(integer)
 	return integer
 end
 
@@ -6228,102 +3949,108 @@ function M.PageSize(integer)
 	return integer
 end
 
-function asserts.AssertCipherPriority(integer)
+function asserts.AssertHealthyThreshold(integer)
 	assert(integer)
-	assert(type(integer) == "number", "Expected CipherPriority to be of type 'number'")
+	assert(type(integer) == "number", "Expected HealthyThreshold to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
-end
-
-function M.CipherPriority(integer)
-	asserts.AssertCipherPriority(integer)
-	return integer
-end
-
-function asserts.AssertHealthCheckTimeoutSeconds(integer)
-	assert(integer)
-	assert(type(integer) == "number", "Expected HealthCheckTimeoutSeconds to be of type 'number'")
-	assert(integer % 1 == 0, "Expected a while integer number")
-	assert(integer <= 60, "Expected integer to be max 60")
+	assert(integer <= 10, "Expected integer to be max 10")
 	assert(integer >= 2, "Expected integer to be min 2")
 end
 
-function M.HealthCheckTimeoutSeconds(integer)
-	asserts.AssertHealthCheckTimeoutSeconds(integer)
+function M.HealthyThreshold(integer)
+	asserts.AssertHealthyThreshold(integer)
 	return integer
 end
 
-function asserts.AssertRulePriority(integer)
+function asserts.AssertUnhealthyThreshold(integer)
 	assert(integer)
-	assert(type(integer) == "number", "Expected RulePriority to be of type 'number'")
+	assert(type(integer) == "number", "Expected UnhealthyThreshold to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
-	assert(integer <= 50000, "Expected integer to be max 50000")
+	assert(integer <= 10, "Expected integer to be max 10")
+	assert(integer >= 2, "Expected integer to be min 2")
+end
+
+function M.UnhealthyThreshold(integer)
+	asserts.AssertUnhealthyThreshold(integer)
+	return integer
+end
+
+function asserts.AssertIdleTimeout(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected IdleTimeout to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
+	assert(integer <= 3600, "Expected integer to be max 3600")
 	assert(integer >= 1, "Expected integer to be min 1")
 end
 
-function M.RulePriority(integer)
-	asserts.AssertRulePriority(integer)
+function M.IdleTimeout(integer)
+	asserts.AssertIdleTimeout(integer)
 	return integer
 end
 
-function asserts.AssertPort(integer)
+function asserts.AssertConnectionDrainingTimeout(integer)
 	assert(integer)
-	assert(type(integer) == "number", "Expected Port to be of type 'number'")
+	assert(type(integer) == "number", "Expected ConnectionDrainingTimeout to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
+end
+
+function M.ConnectionDrainingTimeout(integer)
+	asserts.AssertConnectionDrainingTimeout(integer)
+	return integer
+end
+
+function asserts.AssertInstancePort(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected InstancePort to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 	assert(integer <= 65535, "Expected integer to be max 65535")
 	assert(integer >= 1, "Expected integer to be min 1")
 end
 
-function M.Port(integer)
-	asserts.AssertPort(integer)
+function M.InstancePort(integer)
+	asserts.AssertInstancePort(integer)
 	return integer
 end
 
-function asserts.AssertIsDefault(boolean)
-	assert(boolean)
-	assert(type(boolean) == "boolean", "Expected IsDefault to be of type 'boolean'")
+function asserts.AssertAccessLogInterval(integer)
+	assert(integer)
+	assert(type(integer) == "number", "Expected AccessLogInterval to be of type 'number'")
+	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
-function M.IsDefault(boolean)
-	asserts.AssertIsDefault(boolean)
+function M.AccessLogInterval(integer)
+	asserts.AssertAccessLogInterval(integer)
+	return integer
+end
+
+function asserts.AssertConnectionDrainingEnabled(boolean)
+	assert(boolean)
+	assert(type(boolean) == "boolean", "Expected ConnectionDrainingEnabled to be of type 'boolean'")
+end
+
+function M.ConnectionDrainingEnabled(boolean)
+	asserts.AssertConnectionDrainingEnabled(boolean)
 	return boolean
 end
 
-function asserts.AssertDefault(boolean)
+function asserts.AssertAccessLogEnabled(boolean)
 	assert(boolean)
-	assert(type(boolean) == "boolean", "Expected Default to be of type 'boolean'")
+	assert(type(boolean) == "boolean", "Expected AccessLogEnabled to be of type 'boolean'")
 end
 
-function M.Default(boolean)
-	asserts.AssertDefault(boolean)
+function M.AccessLogEnabled(boolean)
+	asserts.AssertAccessLogEnabled(boolean)
 	return boolean
 end
 
-function asserts.AssertAuthenticateCognitoActionAuthenticationRequestExtraParams(map)
-	assert(map)
-	assert(type(map) == "table", "Expected AuthenticateCognitoActionAuthenticationRequestExtraParams to be of type 'table'")
-	for k,v in pairs(map) do
-		asserts.AssertAuthenticateCognitoActionAuthenticationRequestParamName(k)
-		asserts.AssertAuthenticateCognitoActionAuthenticationRequestParamValue(v)
-	end
+function asserts.AssertCrossZoneLoadBalancingEnabled(boolean)
+	assert(boolean)
+	assert(type(boolean) == "boolean", "Expected CrossZoneLoadBalancingEnabled to be of type 'boolean'")
 end
 
-function M.AuthenticateCognitoActionAuthenticationRequestExtraParams(map)
-	asserts.AssertAuthenticateCognitoActionAuthenticationRequestExtraParams(map)
-	return map
-end
-
-function asserts.AssertAuthenticateOidcActionAuthenticationRequestExtraParams(map)
-	assert(map)
-	assert(type(map) == "table", "Expected AuthenticateOidcActionAuthenticationRequestExtraParams to be of type 'table'")
-	for k,v in pairs(map) do
-		asserts.AssertAuthenticateOidcActionAuthenticationRequestParamName(k)
-		asserts.AssertAuthenticateOidcActionAuthenticationRequestParamValue(v)
-	end
-end
-
-function M.AuthenticateOidcActionAuthenticationRequestExtraParams(map)
-	asserts.AssertAuthenticateOidcActionAuthenticationRequestExtraParams(map)
-	return map
+function M.CrossZoneLoadBalancingEnabled(boolean)
+	asserts.AssertCrossZoneLoadBalancingEnabled(boolean)
+	return boolean
 end
 
 function asserts.AssertCreatedTime(timestamp)
@@ -6336,108 +4063,33 @@ function M.CreatedTime(timestamp)
 	return timestamp
 end
 
-function asserts.AssertSslProtocols(list)
+function asserts.AssertLBCookieStickinessPolicies(list)
 	assert(list)
-	assert(type(list) == "table", "Expected SslProtocols to be of type ''table")
+	assert(type(list) == "table", "Expected LBCookieStickinessPolicies to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertSslProtocol(v)
+		asserts.AssertLBCookieStickinessPolicy(v)
 	end
 end
 
 --  
--- List of SslProtocol objects
-function M.SslProtocols(list)
-	asserts.AssertSslProtocols(list)
+-- List of LBCookieStickinessPolicy objects
+function M.LBCookieStickinessPolicies(list)
+	asserts.AssertLBCookieStickinessPolicies(list)
 	return list
 end
 
-function asserts.AssertTargetGroups(list)
+function asserts.AssertPolicyAttributeDescriptions(list)
 	assert(list)
-	assert(type(list) == "table", "Expected TargetGroups to be of type ''table")
+	assert(type(list) == "table", "Expected PolicyAttributeDescriptions to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertTargetGroup(v)
+		asserts.AssertPolicyAttributeDescription(v)
 	end
 end
 
 --  
--- List of TargetGroup objects
-function M.TargetGroups(list)
-	asserts.AssertTargetGroups(list)
-	return list
-end
-
-function asserts.AssertResourceArns(list)
-	assert(list)
-	assert(type(list) == "table", "Expected ResourceArns to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertResourceArn(v)
-	end
-end
-
---  
--- List of ResourceArn objects
-function M.ResourceArns(list)
-	asserts.AssertResourceArns(list)
-	return list
-end
-
-function asserts.AssertTargetHealthDescriptions(list)
-	assert(list)
-	assert(type(list) == "table", "Expected TargetHealthDescriptions to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertTargetHealthDescription(v)
-	end
-end
-
---  
--- List of TargetHealthDescription objects
-function M.TargetHealthDescriptions(list)
-	asserts.AssertTargetHealthDescriptions(list)
-	return list
-end
-
-function asserts.AssertLoadBalancers(list)
-	assert(list)
-	assert(type(list) == "table", "Expected LoadBalancers to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertLoadBalancer(v)
-	end
-end
-
---  
--- List of LoadBalancer objects
-function M.LoadBalancers(list)
-	asserts.AssertLoadBalancers(list)
-	return list
-end
-
-function asserts.AssertRuleConditionList(list)
-	assert(list)
-	assert(type(list) == "table", "Expected RuleConditionList to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertRuleCondition(v)
-	end
-end
-
---  
--- List of RuleCondition objects
-function M.RuleConditionList(list)
-	asserts.AssertRuleConditionList(list)
-	return list
-end
-
-function asserts.AssertLoadBalancerAddresses(list)
-	assert(list)
-	assert(type(list) == "table", "Expected LoadBalancerAddresses to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertLoadBalancerAddress(v)
-	end
-end
-
---  
--- List of LoadBalancerAddress objects
-function M.LoadBalancerAddresses(list)
-	asserts.AssertLoadBalancerAddresses(list)
+-- List of PolicyAttributeDescription objects
+function M.PolicyAttributeDescriptions(list)
+	asserts.AssertPolicyAttributeDescriptions(list)
 	return list
 end
 
@@ -6456,33 +4108,18 @@ function M.Listeners(list)
 	return list
 end
 
-function asserts.AssertTagDescriptions(list)
+function asserts.AssertPorts(list)
 	assert(list)
-	assert(type(list) == "table", "Expected TagDescriptions to be of type ''table")
+	assert(type(list) == "table", "Expected Ports to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertTagDescription(v)
+		asserts.AssertAccessPointPort(v)
 	end
 end
 
 --  
--- List of TagDescription objects
-function M.TagDescriptions(list)
-	asserts.AssertTagDescriptions(list)
-	return list
-end
-
-function asserts.AssertTargetGroupArns(list)
-	assert(list)
-	assert(type(list) == "table", "Expected TargetGroupArns to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertTargetGroupArn(v)
-	end
-end
-
---  
--- List of TargetGroupArn objects
-function M.TargetGroupArns(list)
-	asserts.AssertTargetGroupArns(list)
+-- List of AccessPointPort objects
+function M.Ports(list)
+	asserts.AssertPorts(list)
 	return list
 end
 
@@ -6490,29 +4127,14 @@ function asserts.AssertLoadBalancerNames(list)
 	assert(list)
 	assert(type(list) == "table", "Expected LoadBalancerNames to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertLoadBalancerName(v)
+		asserts.AssertAccessPointName(v)
 	end
 end
 
 --  
--- List of LoadBalancerName objects
+-- List of AccessPointName objects
 function M.LoadBalancerNames(list)
 	asserts.AssertLoadBalancerNames(list)
-	return list
-end
-
-function asserts.AssertListenerArns(list)
-	assert(list)
-	assert(type(list) == "table", "Expected ListenerArns to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertListenerArn(v)
-	end
-end
-
---  
--- List of ListenerArn objects
-function M.ListenerArns(list)
-	asserts.AssertListenerArns(list)
 	return list
 end
 
@@ -6531,93 +4153,81 @@ function M.Subnets(list)
 	return list
 end
 
-function asserts.AssertTargetGroupAttributes(list)
+function asserts.AssertPolicyDescriptions(list)
 	assert(list)
-	assert(type(list) == "table", "Expected TargetGroupAttributes to be of type ''table")
+	assert(type(list) == "table", "Expected PolicyDescriptions to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertTargetGroupAttribute(v)
+		asserts.AssertPolicyDescription(v)
 	end
 end
 
 --  
--- List of TargetGroupAttribute objects
-function M.TargetGroupAttributes(list)
-	asserts.AssertTargetGroupAttributes(list)
+-- List of PolicyDescription objects
+function M.PolicyDescriptions(list)
+	asserts.AssertPolicyDescriptions(list)
 	return list
 end
 
-function asserts.AssertSubnetMappings(list)
+function asserts.AssertAdditionalAttributes(list)
 	assert(list)
-	assert(type(list) == "table", "Expected SubnetMappings to be of type ''table")
+	assert(type(list) == "table", "Expected AdditionalAttributes to be of type ''table")
+	assert(#list <= 10, "Expected list to be contain 10 elements")
 	for _,v in ipairs(list) do
-		asserts.AssertSubnetMapping(v)
+		asserts.AssertAdditionalAttribute(v)
 	end
 end
 
 --  
--- List of SubnetMapping objects
-function M.SubnetMappings(list)
-	asserts.AssertSubnetMappings(list)
+-- List of AdditionalAttribute objects
+function M.AdditionalAttributes(list)
+	asserts.AssertAdditionalAttributes(list)
 	return list
 end
 
-function asserts.AssertRules(list)
+function asserts.AssertListenerDescriptions(list)
 	assert(list)
-	assert(type(list) == "table", "Expected Rules to be of type ''table")
+	assert(type(list) == "table", "Expected ListenerDescriptions to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertRule(v)
+		asserts.AssertListenerDescription(v)
 	end
 end
 
 --  
--- List of Rule objects
-function M.Rules(list)
-	asserts.AssertRules(list)
+-- List of ListenerDescription objects
+function M.ListenerDescriptions(list)
+	asserts.AssertListenerDescriptions(list)
 	return list
 end
 
-function asserts.AssertSslPolicies(list)
+function asserts.AssertLoadBalancerNamesMax20(list)
 	assert(list)
-	assert(type(list) == "table", "Expected SslPolicies to be of type ''table")
+	assert(type(list) == "table", "Expected LoadBalancerNamesMax20 to be of type ''table")
+	assert(#list <= 20, "Expected list to be contain 20 elements")
+	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		asserts.AssertSslPolicy(v)
+		asserts.AssertAccessPointName(v)
 	end
 end
 
 --  
--- List of SslPolicy objects
-function M.SslPolicies(list)
-	asserts.AssertSslPolicies(list)
+-- List of AccessPointName objects
+function M.LoadBalancerNamesMax20(list)
+	asserts.AssertLoadBalancerNamesMax20(list)
 	return list
 end
 
-function asserts.AssertTagKeys(list)
+function asserts.AssertBackendServerDescriptions(list)
 	assert(list)
-	assert(type(list) == "table", "Expected TagKeys to be of type ''table")
+	assert(type(list) == "table", "Expected BackendServerDescriptions to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertTagKey(v)
+		asserts.AssertBackendServerDescription(v)
 	end
 end
 
 --  
--- List of TagKey objects
-function M.TagKeys(list)
-	asserts.AssertTagKeys(list)
-	return list
-end
-
-function asserts.AssertListOfString(list)
-	assert(list)
-	assert(type(list) == "table", "Expected ListOfString to be of type ''table")
-	for _,v in ipairs(list) do
-		asserts.AssertStringValue(v)
-	end
-end
-
---  
--- List of StringValue objects
-function M.ListOfString(list)
-	asserts.AssertListOfString(list)
+-- List of BackendServerDescription objects
+function M.BackendServerDescriptions(list)
+	asserts.AssertBackendServerDescriptions(list)
 	return list
 end
 
@@ -6636,94 +4246,109 @@ function M.Limits(list)
 	return list
 end
 
-function asserts.AssertLoadBalancerAttributes(list)
+function asserts.AssertLoadBalancerDescriptions(list)
 	assert(list)
-	assert(type(list) == "table", "Expected LoadBalancerAttributes to be of type ''table")
-	assert(#list <= 20, "Expected list to be contain 20 elements")
+	assert(type(list) == "table", "Expected LoadBalancerDescriptions to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertLoadBalancerAttribute(v)
+		asserts.AssertLoadBalancerDescription(v)
 	end
 end
 
 --  
--- List of LoadBalancerAttribute objects
-function M.LoadBalancerAttributes(list)
-	asserts.AssertLoadBalancerAttributes(list)
+-- List of LoadBalancerDescription objects
+function M.LoadBalancerDescriptions(list)
+	asserts.AssertLoadBalancerDescriptions(list)
 	return list
 end
 
-function asserts.AssertRuleArns(list)
+function asserts.AssertTagKeyList(list)
 	assert(list)
-	assert(type(list) == "table", "Expected RuleArns to be of type ''table")
+	assert(type(list) == "table", "Expected TagKeyList to be of type ''table")
+	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		asserts.AssertRuleArn(v)
+		asserts.AssertTagKeyOnly(v)
 	end
 end
 
 --  
--- List of RuleArn objects
-function M.RuleArns(list)
-	asserts.AssertRuleArns(list)
+-- List of TagKeyOnly objects
+function M.TagKeyList(list)
+	asserts.AssertTagKeyList(list)
 	return list
 end
 
-function asserts.AssertSslPolicyNames(list)
+function asserts.AssertInstanceStates(list)
 	assert(list)
-	assert(type(list) == "table", "Expected SslPolicyNames to be of type ''table")
+	assert(type(list) == "table", "Expected InstanceStates to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertSslPolicyName(v)
+		asserts.AssertInstanceState(v)
 	end
 end
 
 --  
--- List of SslPolicyName objects
-function M.SslPolicyNames(list)
-	asserts.AssertSslPolicyNames(list)
+-- List of InstanceState objects
+function M.InstanceStates(list)
+	asserts.AssertInstanceStates(list)
 	return list
 end
 
-function asserts.AssertLoadBalancerArns(list)
+function asserts.AssertPolicyTypeNames(list)
 	assert(list)
-	assert(type(list) == "table", "Expected LoadBalancerArns to be of type ''table")
+	assert(type(list) == "table", "Expected PolicyTypeNames to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertLoadBalancerArn(v)
+		asserts.AssertPolicyTypeName(v)
 	end
 end
 
 --  
--- List of LoadBalancerArn objects
-function M.LoadBalancerArns(list)
-	asserts.AssertLoadBalancerArns(list)
+-- List of PolicyTypeName objects
+function M.PolicyTypeNames(list)
+	asserts.AssertPolicyTypeNames(list)
 	return list
 end
 
-function asserts.AssertCertificateList(list)
+function asserts.AssertTagDescriptions(list)
 	assert(list)
-	assert(type(list) == "table", "Expected CertificateList to be of type ''table")
+	assert(type(list) == "table", "Expected TagDescriptions to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertCertificate(v)
+		asserts.AssertTagDescription(v)
 	end
 end
 
 --  
--- List of Certificate objects
-function M.CertificateList(list)
-	asserts.AssertCertificateList(list)
+-- List of TagDescription objects
+function M.TagDescriptions(list)
+	asserts.AssertTagDescriptions(list)
 	return list
 end
 
-function asserts.AssertCiphers(list)
+function asserts.AssertPolicyAttributeTypeDescriptions(list)
 	assert(list)
-	assert(type(list) == "table", "Expected Ciphers to be of type ''table")
+	assert(type(list) == "table", "Expected PolicyAttributeTypeDescriptions to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertCipher(v)
+		asserts.AssertPolicyAttributeTypeDescription(v)
 	end
 end
 
 --  
--- List of Cipher objects
-function M.Ciphers(list)
-	asserts.AssertCiphers(list)
+-- List of PolicyAttributeTypeDescription objects
+function M.PolicyAttributeTypeDescriptions(list)
+	asserts.AssertPolicyAttributeTypeDescriptions(list)
+	return list
+end
+
+function asserts.AssertAppCookieStickinessPolicies(list)
+	assert(list)
+	assert(type(list) == "table", "Expected AppCookieStickinessPolicies to be of type ''table")
+	for _,v in ipairs(list) do
+		asserts.AssertAppCookieStickinessPolicy(v)
+	end
+end
+
+--  
+-- List of AppCookieStickinessPolicy objects
+function M.AppCookieStickinessPolicies(list)
+	asserts.AssertAppCookieStickinessPolicies(list)
 	return list
 end
 
@@ -6742,63 +4367,63 @@ function M.SecurityGroups(list)
 	return list
 end
 
-function asserts.AssertTargetGroupNames(list)
+function asserts.AssertPolicyNames(list)
 	assert(list)
-	assert(type(list) == "table", "Expected TargetGroupNames to be of type ''table")
+	assert(type(list) == "table", "Expected PolicyNames to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertTargetGroupName(v)
+		asserts.AssertPolicyName(v)
 	end
 end
 
 --  
--- List of TargetGroupName objects
-function M.TargetGroupNames(list)
-	asserts.AssertTargetGroupNames(list)
+-- List of PolicyName objects
+function M.PolicyNames(list)
+	asserts.AssertPolicyNames(list)
 	return list
 end
 
-function asserts.AssertTargetDescriptions(list)
+function asserts.AssertPolicyAttributes(list)
 	assert(list)
-	assert(type(list) == "table", "Expected TargetDescriptions to be of type ''table")
+	assert(type(list) == "table", "Expected PolicyAttributes to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertTargetDescription(v)
+		asserts.AssertPolicyAttribute(v)
 	end
 end
 
 --  
--- List of TargetDescription objects
-function M.TargetDescriptions(list)
-	asserts.AssertTargetDescriptions(list)
+-- List of PolicyAttribute objects
+function M.PolicyAttributes(list)
+	asserts.AssertPolicyAttributes(list)
 	return list
 end
 
-function asserts.AssertActions(list)
+function asserts.AssertInstances(list)
 	assert(list)
-	assert(type(list) == "table", "Expected Actions to be of type ''table")
+	assert(type(list) == "table", "Expected Instances to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertAction(v)
+		asserts.AssertInstance(v)
 	end
 end
 
 --  
--- List of Action objects
-function M.Actions(list)
-	asserts.AssertActions(list)
+-- List of Instance objects
+function M.Instances(list)
+	asserts.AssertInstances(list)
 	return list
 end
 
-function asserts.AssertRulePriorityList(list)
+function asserts.AssertPolicyTypeDescriptions(list)
 	assert(list)
-	assert(type(list) == "table", "Expected RulePriorityList to be of type ''table")
+	assert(type(list) == "table", "Expected PolicyTypeDescriptions to be of type ''table")
 	for _,v in ipairs(list) do
-		asserts.AssertRulePriorityPair(v)
+		asserts.AssertPolicyTypeDescription(v)
 	end
 end
 
 --  
--- List of RulePriorityPair objects
-function M.RulePriorityList(list)
-	asserts.AssertRulePriorityList(list)
+-- List of PolicyTypeDescription objects
+function M.PolicyTypeDescriptions(list)
+	asserts.AssertPolicyTypeDescriptions(list)
 	return list
 end
 
@@ -6876,325 +4501,109 @@ end
 --
 -- OPERATIONS
 --
---- Call RegisterTargets asynchronously, invoking a callback when done
--- @param RegisterTargetsInput
+--- Call CreateAppCookieStickinessPolicy asynchronously, invoking a callback when done
+-- @param CreateAppCookieStickinessPolicyInput
 -- @param cb Callback function accepting three args: response, error_type, error_message
-function M.RegisterTargetsAsync(RegisterTargetsInput, cb)
-	assert(RegisterTargetsInput, "You must provide a RegisterTargetsInput")
+function M.CreateAppCookieStickinessPolicyAsync(CreateAppCookieStickinessPolicyInput, cb)
+	assert(CreateAppCookieStickinessPolicyInput, "You must provide a CreateAppCookieStickinessPolicyInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".RegisterTargets",
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateAppCookieStickinessPolicy",
 	}
-	for header,value in pairs(RegisterTargetsInput.headers) do
+	for header,value in pairs(CreateAppCookieStickinessPolicyInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", RegisterTargetsInput, headers, settings, cb)
+		request_handler(settings.uri, "/", CreateAppCookieStickinessPolicyInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call RegisterTargets synchronously, returning when done
+--- Call CreateAppCookieStickinessPolicy synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param RegisterTargetsInput
+-- @param CreateAppCookieStickinessPolicyInput
 -- @return response
 -- @return error_type
 -- @return error_message
-function M.RegisterTargetsSync(RegisterTargetsInput, ...)
+function M.CreateAppCookieStickinessPolicySync(CreateAppCookieStickinessPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RegisterTargetsAsync(RegisterTargetsInput, function(response, error_type, error_message)
+	M.CreateAppCookieStickinessPolicyAsync(CreateAppCookieStickinessPolicyInput, function(response, error_type, error_message)
 		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
---- Call DescribeSSLPolicies asynchronously, invoking a callback when done
--- @param DescribeSSLPoliciesInput
+--- Call EnableAvailabilityZonesForLoadBalancer asynchronously, invoking a callback when done
+-- @param AddAvailabilityZonesInput
 -- @param cb Callback function accepting three args: response, error_type, error_message
-function M.DescribeSSLPoliciesAsync(DescribeSSLPoliciesInput, cb)
-	assert(DescribeSSLPoliciesInput, "You must provide a DescribeSSLPoliciesInput")
+function M.EnableAvailabilityZonesForLoadBalancerAsync(AddAvailabilityZonesInput, cb)
+	assert(AddAvailabilityZonesInput, "You must provide a AddAvailabilityZonesInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSSLPolicies",
+		[request_headers.AMZ_TARGET_HEADER] = ".EnableAvailabilityZonesForLoadBalancer",
 	}
-	for header,value in pairs(DescribeSSLPoliciesInput.headers) do
+	for header,value in pairs(AddAvailabilityZonesInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DescribeSSLPoliciesInput, headers, settings, cb)
+		request_handler(settings.uri, "/", AddAvailabilityZonesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DescribeSSLPolicies synchronously, returning when done
+--- Call EnableAvailabilityZonesForLoadBalancer synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DescribeSSLPoliciesInput
+-- @param AddAvailabilityZonesInput
 -- @return response
 -- @return error_type
 -- @return error_message
-function M.DescribeSSLPoliciesSync(DescribeSSLPoliciesInput, ...)
+function M.EnableAvailabilityZonesForLoadBalancerSync(AddAvailabilityZonesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeSSLPoliciesAsync(DescribeSSLPoliciesInput, function(response, error_type, error_message)
+	M.EnableAvailabilityZonesForLoadBalancerAsync(AddAvailabilityZonesInput, function(response, error_type, error_message)
 		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
---- Call SetSecurityGroups asynchronously, invoking a callback when done
--- @param SetSecurityGroupsInput
+--- Call SetLoadBalancerPoliciesOfListener asynchronously, invoking a callback when done
+-- @param SetLoadBalancerPoliciesOfListenerInput
 -- @param cb Callback function accepting three args: response, error_type, error_message
-function M.SetSecurityGroupsAsync(SetSecurityGroupsInput, cb)
-	assert(SetSecurityGroupsInput, "You must provide a SetSecurityGroupsInput")
+function M.SetLoadBalancerPoliciesOfListenerAsync(SetLoadBalancerPoliciesOfListenerInput, cb)
+	assert(SetLoadBalancerPoliciesOfListenerInput, "You must provide a SetLoadBalancerPoliciesOfListenerInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".SetSecurityGroups",
+		[request_headers.AMZ_TARGET_HEADER] = ".SetLoadBalancerPoliciesOfListener",
 	}
-	for header,value in pairs(SetSecurityGroupsInput.headers) do
+	for header,value in pairs(SetLoadBalancerPoliciesOfListenerInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", SetSecurityGroupsInput, headers, settings, cb)
+		request_handler(settings.uri, "/", SetLoadBalancerPoliciesOfListenerInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call SetSecurityGroups synchronously, returning when done
+--- Call SetLoadBalancerPoliciesOfListener synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param SetSecurityGroupsInput
+-- @param SetLoadBalancerPoliciesOfListenerInput
 -- @return response
 -- @return error_type
 -- @return error_message
-function M.SetSecurityGroupsSync(SetSecurityGroupsInput, ...)
+function M.SetLoadBalancerPoliciesOfListenerSync(SetLoadBalancerPoliciesOfListenerInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetSecurityGroupsAsync(SetSecurityGroupsInput, function(response, error_type, error_message)
-		assert(coroutine.resume(co, response, error_type, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call AddListenerCertificates asynchronously, invoking a callback when done
--- @param AddListenerCertificatesInput
--- @param cb Callback function accepting three args: response, error_type, error_message
-function M.AddListenerCertificatesAsync(AddListenerCertificatesInput, cb)
-	assert(AddListenerCertificatesInput, "You must provide a AddListenerCertificatesInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".AddListenerCertificates",
-	}
-	for header,value in pairs(AddListenerCertificatesInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", AddListenerCertificatesInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call AddListenerCertificates synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param AddListenerCertificatesInput
--- @return response
--- @return error_type
--- @return error_message
-function M.AddListenerCertificatesSync(AddListenerCertificatesInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.AddListenerCertificatesAsync(AddListenerCertificatesInput, function(response, error_type, error_message)
-		assert(coroutine.resume(co, response, error_type, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call DeleteListener asynchronously, invoking a callback when done
--- @param DeleteListenerInput
--- @param cb Callback function accepting three args: response, error_type, error_message
-function M.DeleteListenerAsync(DeleteListenerInput, cb)
-	assert(DeleteListenerInput, "You must provide a DeleteListenerInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".DeleteListener",
-	}
-	for header,value in pairs(DeleteListenerInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", DeleteListenerInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call DeleteListener synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param DeleteListenerInput
--- @return response
--- @return error_type
--- @return error_message
-function M.DeleteListenerSync(DeleteListenerInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.DeleteListenerAsync(DeleteListenerInput, function(response, error_type, error_message)
-		assert(coroutine.resume(co, response, error_type, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call ModifyTargetGroup asynchronously, invoking a callback when done
--- @param ModifyTargetGroupInput
--- @param cb Callback function accepting three args: response, error_type, error_message
-function M.ModifyTargetGroupAsync(ModifyTargetGroupInput, cb)
-	assert(ModifyTargetGroupInput, "You must provide a ModifyTargetGroupInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".ModifyTargetGroup",
-	}
-	for header,value in pairs(ModifyTargetGroupInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", ModifyTargetGroupInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call ModifyTargetGroup synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param ModifyTargetGroupInput
--- @return response
--- @return error_type
--- @return error_message
-function M.ModifyTargetGroupSync(ModifyTargetGroupInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.ModifyTargetGroupAsync(ModifyTargetGroupInput, function(response, error_type, error_message)
-		assert(coroutine.resume(co, response, error_type, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call CreateRule asynchronously, invoking a callback when done
--- @param CreateRuleInput
--- @param cb Callback function accepting three args: response, error_type, error_message
-function M.CreateRuleAsync(CreateRuleInput, cb)
-	assert(CreateRuleInput, "You must provide a CreateRuleInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".CreateRule",
-	}
-	for header,value in pairs(CreateRuleInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", CreateRuleInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call CreateRule synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param CreateRuleInput
--- @return response
--- @return error_type
--- @return error_message
-function M.CreateRuleSync(CreateRuleInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.CreateRuleAsync(CreateRuleInput, function(response, error_type, error_message)
-		assert(coroutine.resume(co, response, error_type, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call SetRulePriorities asynchronously, invoking a callback when done
--- @param SetRulePrioritiesInput
--- @param cb Callback function accepting three args: response, error_type, error_message
-function M.SetRulePrioritiesAsync(SetRulePrioritiesInput, cb)
-	assert(SetRulePrioritiesInput, "You must provide a SetRulePrioritiesInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".SetRulePriorities",
-	}
-	for header,value in pairs(SetRulePrioritiesInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", SetRulePrioritiesInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call SetRulePriorities synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param SetRulePrioritiesInput
--- @return response
--- @return error_type
--- @return error_message
-function M.SetRulePrioritiesSync(SetRulePrioritiesInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.SetRulePrioritiesAsync(SetRulePrioritiesInput, function(response, error_type, error_message)
-		assert(coroutine.resume(co, response, error_type, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call ModifyTargetGroupAttributes asynchronously, invoking a callback when done
--- @param ModifyTargetGroupAttributesInput
--- @param cb Callback function accepting three args: response, error_type, error_message
-function M.ModifyTargetGroupAttributesAsync(ModifyTargetGroupAttributesInput, cb)
-	assert(ModifyTargetGroupAttributesInput, "You must provide a ModifyTargetGroupAttributesInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".ModifyTargetGroupAttributes",
-	}
-	for header,value in pairs(ModifyTargetGroupAttributesInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", ModifyTargetGroupAttributesInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call ModifyTargetGroupAttributes synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param ModifyTargetGroupAttributesInput
--- @return response
--- @return error_type
--- @return error_message
-function M.ModifyTargetGroupAttributesSync(ModifyTargetGroupAttributesInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.ModifyTargetGroupAttributesAsync(ModifyTargetGroupAttributesInput, function(response, error_type, error_message)
+	M.SetLoadBalancerPoliciesOfListenerAsync(SetLoadBalancerPoliciesOfListenerInput, function(response, error_type, error_message)
 		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
@@ -7236,130 +4645,58 @@ function M.DescribeLoadBalancerAttributesSync(DescribeLoadBalancerAttributesInpu
 	return coroutine.yield()
 end
 
---- Call SetIpAddressType asynchronously, invoking a callback when done
--- @param SetIpAddressTypeInput
+--- Call DeleteLoadBalancerListeners asynchronously, invoking a callback when done
+-- @param DeleteLoadBalancerListenerInput
 -- @param cb Callback function accepting three args: response, error_type, error_message
-function M.SetIpAddressTypeAsync(SetIpAddressTypeInput, cb)
-	assert(SetIpAddressTypeInput, "You must provide a SetIpAddressTypeInput")
+function M.DeleteLoadBalancerListenersAsync(DeleteLoadBalancerListenerInput, cb)
+	assert(DeleteLoadBalancerListenerInput, "You must provide a DeleteLoadBalancerListenerInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".SetIpAddressType",
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteLoadBalancerListeners",
 	}
-	for header,value in pairs(SetIpAddressTypeInput.headers) do
+	for header,value in pairs(DeleteLoadBalancerListenerInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", SetIpAddressTypeInput, headers, settings, cb)
+		request_handler(settings.uri, "/", DeleteLoadBalancerListenerInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call SetIpAddressType synchronously, returning when done
+--- Call DeleteLoadBalancerListeners synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param SetIpAddressTypeInput
+-- @param DeleteLoadBalancerListenerInput
 -- @return response
 -- @return error_type
 -- @return error_message
-function M.SetIpAddressTypeSync(SetIpAddressTypeInput, ...)
+function M.DeleteLoadBalancerListenersSync(DeleteLoadBalancerListenerInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetIpAddressTypeAsync(SetIpAddressTypeInput, function(response, error_type, error_message)
-		assert(coroutine.resume(co, response, error_type, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call RemoveListenerCertificates asynchronously, invoking a callback when done
--- @param RemoveListenerCertificatesInput
--- @param cb Callback function accepting three args: response, error_type, error_message
-function M.RemoveListenerCertificatesAsync(RemoveListenerCertificatesInput, cb)
-	assert(RemoveListenerCertificatesInput, "You must provide a RemoveListenerCertificatesInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".RemoveListenerCertificates",
-	}
-	for header,value in pairs(RemoveListenerCertificatesInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", RemoveListenerCertificatesInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call RemoveListenerCertificates synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param RemoveListenerCertificatesInput
--- @return response
--- @return error_type
--- @return error_message
-function M.RemoveListenerCertificatesSync(RemoveListenerCertificatesInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.RemoveListenerCertificatesAsync(RemoveListenerCertificatesInput, function(response, error_type, error_message)
-		assert(coroutine.resume(co, response, error_type, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call ModifyListener asynchronously, invoking a callback when done
--- @param ModifyListenerInput
--- @param cb Callback function accepting three args: response, error_type, error_message
-function M.ModifyListenerAsync(ModifyListenerInput, cb)
-	assert(ModifyListenerInput, "You must provide a ModifyListenerInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".ModifyListener",
-	}
-	for header,value in pairs(ModifyListenerInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", ModifyListenerInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call ModifyListener synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param ModifyListenerInput
--- @return response
--- @return error_type
--- @return error_message
-function M.ModifyListenerSync(ModifyListenerInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.ModifyListenerAsync(ModifyListenerInput, function(response, error_type, error_message)
+	M.DeleteLoadBalancerListenersAsync(DeleteLoadBalancerListenerInput, function(response, error_type, error_message)
 		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DeleteLoadBalancer asynchronously, invoking a callback when done
--- @param DeleteLoadBalancerInput
+-- @param DeleteAccessPointInput
 -- @param cb Callback function accepting three args: response, error_type, error_message
-function M.DeleteLoadBalancerAsync(DeleteLoadBalancerInput, cb)
-	assert(DeleteLoadBalancerInput, "You must provide a DeleteLoadBalancerInput")
+function M.DeleteLoadBalancerAsync(DeleteAccessPointInput, cb)
+	assert(DeleteAccessPointInput, "You must provide a DeleteAccessPointInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteLoadBalancer",
 	}
-	for header,value in pairs(DeleteLoadBalancerInput.headers) do
+	for header,value in pairs(DeleteAccessPointInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DeleteLoadBalancerInput, headers, settings, cb)
+		request_handler(settings.uri, "/", DeleteAccessPointInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7367,143 +4704,179 @@ end
 
 --- Call DeleteLoadBalancer synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DeleteLoadBalancerInput
+-- @param DeleteAccessPointInput
 -- @return response
 -- @return error_type
 -- @return error_message
-function M.DeleteLoadBalancerSync(DeleteLoadBalancerInput, ...)
+function M.DeleteLoadBalancerSync(DeleteAccessPointInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteLoadBalancerAsync(DeleteLoadBalancerInput, function(response, error_type, error_message)
+	M.DeleteLoadBalancerAsync(DeleteAccessPointInput, function(response, error_type, error_message)
 		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
---- Call DeleteRule asynchronously, invoking a callback when done
--- @param DeleteRuleInput
+--- Call CreateLoadBalancerPolicy asynchronously, invoking a callback when done
+-- @param CreateLoadBalancerPolicyInput
 -- @param cb Callback function accepting three args: response, error_type, error_message
-function M.DeleteRuleAsync(DeleteRuleInput, cb)
-	assert(DeleteRuleInput, "You must provide a DeleteRuleInput")
+function M.CreateLoadBalancerPolicyAsync(CreateLoadBalancerPolicyInput, cb)
+	assert(CreateLoadBalancerPolicyInput, "You must provide a CreateLoadBalancerPolicyInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".DeleteRule",
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateLoadBalancerPolicy",
 	}
-	for header,value in pairs(DeleteRuleInput.headers) do
+	for header,value in pairs(CreateLoadBalancerPolicyInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DeleteRuleInput, headers, settings, cb)
+		request_handler(settings.uri, "/", CreateLoadBalancerPolicyInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DeleteRule synchronously, returning when done
+--- Call CreateLoadBalancerPolicy synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DeleteRuleInput
+-- @param CreateLoadBalancerPolicyInput
 -- @return response
 -- @return error_type
 -- @return error_message
-function M.DeleteRuleSync(DeleteRuleInput, ...)
+function M.CreateLoadBalancerPolicySync(CreateLoadBalancerPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteRuleAsync(DeleteRuleInput, function(response, error_type, error_message)
+	M.CreateLoadBalancerPolicyAsync(CreateLoadBalancerPolicyInput, function(response, error_type, error_message)
 		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
---- Call DeleteTargetGroup asynchronously, invoking a callback when done
--- @param DeleteTargetGroupInput
+--- Call DeleteLoadBalancerPolicy asynchronously, invoking a callback when done
+-- @param DeleteLoadBalancerPolicyInput
 -- @param cb Callback function accepting three args: response, error_type, error_message
-function M.DeleteTargetGroupAsync(DeleteTargetGroupInput, cb)
-	assert(DeleteTargetGroupInput, "You must provide a DeleteTargetGroupInput")
+function M.DeleteLoadBalancerPolicyAsync(DeleteLoadBalancerPolicyInput, cb)
+	assert(DeleteLoadBalancerPolicyInput, "You must provide a DeleteLoadBalancerPolicyInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTargetGroup",
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteLoadBalancerPolicy",
 	}
-	for header,value in pairs(DeleteTargetGroupInput.headers) do
+	for header,value in pairs(DeleteLoadBalancerPolicyInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DeleteTargetGroupInput, headers, settings, cb)
+		request_handler(settings.uri, "/", DeleteLoadBalancerPolicyInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DeleteTargetGroup synchronously, returning when done
+--- Call DeleteLoadBalancerPolicy synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DeleteTargetGroupInput
+-- @param DeleteLoadBalancerPolicyInput
 -- @return response
 -- @return error_type
 -- @return error_message
-function M.DeleteTargetGroupSync(DeleteTargetGroupInput, ...)
+function M.DeleteLoadBalancerPolicySync(DeleteLoadBalancerPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTargetGroupAsync(DeleteTargetGroupInput, function(response, error_type, error_message)
+	M.DeleteLoadBalancerPolicyAsync(DeleteLoadBalancerPolicyInput, function(response, error_type, error_message)
 		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
---- Call DescribeTargetGroupAttributes asynchronously, invoking a callback when done
--- @param DescribeTargetGroupAttributesInput
+--- Call CreateLBCookieStickinessPolicy asynchronously, invoking a callback when done
+-- @param CreateLBCookieStickinessPolicyInput
 -- @param cb Callback function accepting three args: response, error_type, error_message
-function M.DescribeTargetGroupAttributesAsync(DescribeTargetGroupAttributesInput, cb)
-	assert(DescribeTargetGroupAttributesInput, "You must provide a DescribeTargetGroupAttributesInput")
+function M.CreateLBCookieStickinessPolicyAsync(CreateLBCookieStickinessPolicyInput, cb)
+	assert(CreateLBCookieStickinessPolicyInput, "You must provide a CreateLBCookieStickinessPolicyInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTargetGroupAttributes",
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateLBCookieStickinessPolicy",
 	}
-	for header,value in pairs(DescribeTargetGroupAttributesInput.headers) do
+	for header,value in pairs(CreateLBCookieStickinessPolicyInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DescribeTargetGroupAttributesInput, headers, settings, cb)
+		request_handler(settings.uri, "/", CreateLBCookieStickinessPolicyInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DescribeTargetGroupAttributes synchronously, returning when done
+--- Call CreateLBCookieStickinessPolicy synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DescribeTargetGroupAttributesInput
+-- @param CreateLBCookieStickinessPolicyInput
 -- @return response
 -- @return error_type
 -- @return error_message
-function M.DescribeTargetGroupAttributesSync(DescribeTargetGroupAttributesInput, ...)
+function M.CreateLBCookieStickinessPolicySync(CreateLBCookieStickinessPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTargetGroupAttributesAsync(DescribeTargetGroupAttributesInput, function(response, error_type, error_message)
+	M.CreateLBCookieStickinessPolicyAsync(CreateLBCookieStickinessPolicyInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeInstanceHealth asynchronously, invoking a callback when done
+-- @param DescribeEndPointStateInput
+-- @param cb Callback function accepting three args: response, error_type, error_message
+function M.DescribeInstanceHealthAsync(DescribeEndPointStateInput, cb)
+	assert(DescribeEndPointStateInput, "You must provide a DescribeEndPointStateInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeInstanceHealth",
+	}
+	for header,value in pairs(DescribeEndPointStateInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeEndPointStateInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeInstanceHealth synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEndPointStateInput
+-- @return response
+-- @return error_type
+-- @return error_message
+function M.DescribeInstanceHealthSync(DescribeEndPointStateInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeInstanceHealthAsync(DescribeEndPointStateInput, function(response, error_type, error_message)
 		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call DescribeLoadBalancers asynchronously, invoking a callback when done
--- @param DescribeLoadBalancersInput
+-- @param DescribeAccessPointsInput
 -- @param cb Callback function accepting three args: response, error_type, error_message
-function M.DescribeLoadBalancersAsync(DescribeLoadBalancersInput, cb)
-	assert(DescribeLoadBalancersInput, "You must provide a DescribeLoadBalancersInput")
+function M.DescribeLoadBalancersAsync(DescribeAccessPointsInput, cb)
+	assert(DescribeAccessPointsInput, "You must provide a DescribeAccessPointsInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLoadBalancers",
 	}
-	for header,value in pairs(DescribeLoadBalancersInput.headers) do
+	for header,value in pairs(DescribeAccessPointsInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DescribeLoadBalancersInput, headers, settings, cb)
+		request_handler(settings.uri, "/", DescribeAccessPointsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7511,50 +4884,14 @@ end
 
 --- Call DescribeLoadBalancers synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DescribeLoadBalancersInput
+-- @param DescribeAccessPointsInput
 -- @return response
 -- @return error_type
 -- @return error_message
-function M.DescribeLoadBalancersSync(DescribeLoadBalancersInput, ...)
+function M.DescribeLoadBalancersSync(DescribeAccessPointsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLoadBalancersAsync(DescribeLoadBalancersInput, function(response, error_type, error_message)
-		assert(coroutine.resume(co, response, error_type, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call DescribeListeners asynchronously, invoking a callback when done
--- @param DescribeListenersInput
--- @param cb Callback function accepting three args: response, error_type, error_message
-function M.DescribeListenersAsync(DescribeListenersInput, cb)
-	assert(DescribeListenersInput, "You must provide a DescribeListenersInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".DescribeListeners",
-	}
-	for header,value in pairs(DescribeListenersInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", DescribeListenersInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call DescribeListeners synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param DescribeListenersInput
--- @return response
--- @return error_type
--- @return error_message
-function M.DescribeListenersSync(DescribeListenersInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.DescribeListenersAsync(DescribeListenersInput, function(response, error_type, error_message)
+	M.DescribeLoadBalancersAsync(DescribeAccessPointsInput, function(response, error_type, error_message)
 		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
@@ -7596,73 +4933,145 @@ function M.RemoveTagsSync(RemoveTagsInput, ...)
 	return coroutine.yield()
 end
 
---- Call CreateListener asynchronously, invoking a callback when done
--- @param CreateListenerInput
+--- Call SetLoadBalancerPoliciesForBackendServer asynchronously, invoking a callback when done
+-- @param SetLoadBalancerPoliciesForBackendServerInput
 -- @param cb Callback function accepting three args: response, error_type, error_message
-function M.CreateListenerAsync(CreateListenerInput, cb)
-	assert(CreateListenerInput, "You must provide a CreateListenerInput")
+function M.SetLoadBalancerPoliciesForBackendServerAsync(SetLoadBalancerPoliciesForBackendServerInput, cb)
+	assert(SetLoadBalancerPoliciesForBackendServerInput, "You must provide a SetLoadBalancerPoliciesForBackendServerInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".CreateListener",
+		[request_headers.AMZ_TARGET_HEADER] = ".SetLoadBalancerPoliciesForBackendServer",
 	}
-	for header,value in pairs(CreateListenerInput.headers) do
+	for header,value in pairs(SetLoadBalancerPoliciesForBackendServerInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", CreateListenerInput, headers, settings, cb)
+		request_handler(settings.uri, "/", SetLoadBalancerPoliciesForBackendServerInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call CreateListener synchronously, returning when done
+--- Call SetLoadBalancerPoliciesForBackendServer synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param CreateListenerInput
+-- @param SetLoadBalancerPoliciesForBackendServerInput
 -- @return response
 -- @return error_type
 -- @return error_message
-function M.CreateListenerSync(CreateListenerInput, ...)
+function M.SetLoadBalancerPoliciesForBackendServerSync(SetLoadBalancerPoliciesForBackendServerInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateListenerAsync(CreateListenerInput, function(response, error_type, error_message)
+	M.SetLoadBalancerPoliciesForBackendServerAsync(SetLoadBalancerPoliciesForBackendServerInput, function(response, error_type, error_message)
 		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
---- Call SetSubnets asynchronously, invoking a callback when done
--- @param SetSubnetsInput
+--- Call DescribeLoadBalancerPolicies asynchronously, invoking a callback when done
+-- @param DescribeLoadBalancerPoliciesInput
 -- @param cb Callback function accepting three args: response, error_type, error_message
-function M.SetSubnetsAsync(SetSubnetsInput, cb)
-	assert(SetSubnetsInput, "You must provide a SetSubnetsInput")
+function M.DescribeLoadBalancerPoliciesAsync(DescribeLoadBalancerPoliciesInput, cb)
+	assert(DescribeLoadBalancerPoliciesInput, "You must provide a DescribeLoadBalancerPoliciesInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".SetSubnets",
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLoadBalancerPolicies",
 	}
-	for header,value in pairs(SetSubnetsInput.headers) do
+	for header,value in pairs(DescribeLoadBalancerPoliciesInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", SetSubnetsInput, headers, settings, cb)
+		request_handler(settings.uri, "/", DescribeLoadBalancerPoliciesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call SetSubnets synchronously, returning when done
+--- Call DescribeLoadBalancerPolicies synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param SetSubnetsInput
+-- @param DescribeLoadBalancerPoliciesInput
 -- @return response
 -- @return error_type
 -- @return error_message
-function M.SetSubnetsSync(SetSubnetsInput, ...)
+function M.DescribeLoadBalancerPoliciesSync(DescribeLoadBalancerPoliciesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetSubnetsAsync(SetSubnetsInput, function(response, error_type, error_message)
+	M.DescribeLoadBalancerPoliciesAsync(DescribeLoadBalancerPoliciesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeLoadBalancerPolicyTypes asynchronously, invoking a callback when done
+-- @param DescribeLoadBalancerPolicyTypesInput
+-- @param cb Callback function accepting three args: response, error_type, error_message
+function M.DescribeLoadBalancerPolicyTypesAsync(DescribeLoadBalancerPolicyTypesInput, cb)
+	assert(DescribeLoadBalancerPolicyTypesInput, "You must provide a DescribeLoadBalancerPolicyTypesInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLoadBalancerPolicyTypes",
+	}
+	for header,value in pairs(DescribeLoadBalancerPolicyTypesInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DescribeLoadBalancerPolicyTypesInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DescribeLoadBalancerPolicyTypes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeLoadBalancerPolicyTypesInput
+-- @return response
+-- @return error_type
+-- @return error_message
+function M.DescribeLoadBalancerPolicyTypesSync(DescribeLoadBalancerPolicyTypesInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeLoadBalancerPolicyTypesAsync(DescribeLoadBalancerPolicyTypesInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ApplySecurityGroupsToLoadBalancer asynchronously, invoking a callback when done
+-- @param ApplySecurityGroupsToLoadBalancerInput
+-- @param cb Callback function accepting three args: response, error_type, error_message
+function M.ApplySecurityGroupsToLoadBalancerAsync(ApplySecurityGroupsToLoadBalancerInput, cb)
+	assert(ApplySecurityGroupsToLoadBalancerInput, "You must provide a ApplySecurityGroupsToLoadBalancerInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ApplySecurityGroupsToLoadBalancer",
+	}
+	for header,value in pairs(ApplySecurityGroupsToLoadBalancerInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", ApplySecurityGroupsToLoadBalancerInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call ApplySecurityGroupsToLoadBalancer synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ApplySecurityGroupsToLoadBalancerInput
+-- @return response
+-- @return error_type
+-- @return error_message
+function M.ApplySecurityGroupsToLoadBalancerSync(ApplySecurityGroupsToLoadBalancerInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ApplySecurityGroupsToLoadBalancerAsync(ApplySecurityGroupsToLoadBalancerInput, function(response, error_type, error_message)
 		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
@@ -7704,73 +5113,217 @@ function M.DescribeTagsSync(DescribeTagsInput, ...)
 	return coroutine.yield()
 end
 
---- Call ModifyRule asynchronously, invoking a callback when done
--- @param ModifyRuleInput
+--- Call ConfigureHealthCheck asynchronously, invoking a callback when done
+-- @param ConfigureHealthCheckInput
 -- @param cb Callback function accepting three args: response, error_type, error_message
-function M.ModifyRuleAsync(ModifyRuleInput, cb)
-	assert(ModifyRuleInput, "You must provide a ModifyRuleInput")
+function M.ConfigureHealthCheckAsync(ConfigureHealthCheckInput, cb)
+	assert(ConfigureHealthCheckInput, "You must provide a ConfigureHealthCheckInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".ModifyRule",
+		[request_headers.AMZ_TARGET_HEADER] = ".ConfigureHealthCheck",
 	}
-	for header,value in pairs(ModifyRuleInput.headers) do
+	for header,value in pairs(ConfigureHealthCheckInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", ModifyRuleInput, headers, settings, cb)
+		request_handler(settings.uri, "/", ConfigureHealthCheckInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call ModifyRule synchronously, returning when done
+--- Call ConfigureHealthCheck synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param ModifyRuleInput
+-- @param ConfigureHealthCheckInput
 -- @return response
 -- @return error_type
 -- @return error_message
-function M.ModifyRuleSync(ModifyRuleInput, ...)
+function M.ConfigureHealthCheckSync(ConfigureHealthCheckInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyRuleAsync(ModifyRuleInput, function(response, error_type, error_message)
+	M.ConfigureHealthCheckAsync(ConfigureHealthCheckInput, function(response, error_type, error_message)
 		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
---- Call CreateTargetGroup asynchronously, invoking a callback when done
--- @param CreateTargetGroupInput
+--- Call AttachLoadBalancerToSubnets asynchronously, invoking a callback when done
+-- @param AttachLoadBalancerToSubnetsInput
 -- @param cb Callback function accepting three args: response, error_type, error_message
-function M.CreateTargetGroupAsync(CreateTargetGroupInput, cb)
-	assert(CreateTargetGroupInput, "You must provide a CreateTargetGroupInput")
+function M.AttachLoadBalancerToSubnetsAsync(AttachLoadBalancerToSubnetsInput, cb)
+	assert(AttachLoadBalancerToSubnetsInput, "You must provide a AttachLoadBalancerToSubnetsInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".CreateTargetGroup",
+		[request_headers.AMZ_TARGET_HEADER] = ".AttachLoadBalancerToSubnets",
 	}
-	for header,value in pairs(CreateTargetGroupInput.headers) do
+	for header,value in pairs(AttachLoadBalancerToSubnetsInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", CreateTargetGroupInput, headers, settings, cb)
+		request_handler(settings.uri, "/", AttachLoadBalancerToSubnetsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call CreateTargetGroup synchronously, returning when done
+--- Call AttachLoadBalancerToSubnets synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param CreateTargetGroupInput
+-- @param AttachLoadBalancerToSubnetsInput
 -- @return response
 -- @return error_type
 -- @return error_message
-function M.CreateTargetGroupSync(CreateTargetGroupInput, ...)
+function M.AttachLoadBalancerToSubnetsSync(AttachLoadBalancerToSubnetsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTargetGroupAsync(CreateTargetGroupInput, function(response, error_type, error_message)
+	M.AttachLoadBalancerToSubnetsAsync(AttachLoadBalancerToSubnetsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetLoadBalancerListenerSSLCertificate asynchronously, invoking a callback when done
+-- @param SetLoadBalancerListenerSSLCertificateInput
+-- @param cb Callback function accepting three args: response, error_type, error_message
+function M.SetLoadBalancerListenerSSLCertificateAsync(SetLoadBalancerListenerSSLCertificateInput, cb)
+	assert(SetLoadBalancerListenerSSLCertificateInput, "You must provide a SetLoadBalancerListenerSSLCertificateInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetLoadBalancerListenerSSLCertificate",
+	}
+	for header,value in pairs(SetLoadBalancerListenerSSLCertificateInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", SetLoadBalancerListenerSSLCertificateInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call SetLoadBalancerListenerSSLCertificate synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetLoadBalancerListenerSSLCertificateInput
+-- @return response
+-- @return error_type
+-- @return error_message
+function M.SetLoadBalancerListenerSSLCertificateSync(SetLoadBalancerListenerSSLCertificateInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetLoadBalancerListenerSSLCertificateAsync(SetLoadBalancerListenerSSLCertificateInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DetachLoadBalancerFromSubnets asynchronously, invoking a callback when done
+-- @param DetachLoadBalancerFromSubnetsInput
+-- @param cb Callback function accepting three args: response, error_type, error_message
+function M.DetachLoadBalancerFromSubnetsAsync(DetachLoadBalancerFromSubnetsInput, cb)
+	assert(DetachLoadBalancerFromSubnetsInput, "You must provide a DetachLoadBalancerFromSubnetsInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DetachLoadBalancerFromSubnets",
+	}
+	for header,value in pairs(DetachLoadBalancerFromSubnetsInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DetachLoadBalancerFromSubnetsInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DetachLoadBalancerFromSubnets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DetachLoadBalancerFromSubnetsInput
+-- @return response
+-- @return error_type
+-- @return error_message
+function M.DetachLoadBalancerFromSubnetsSync(DetachLoadBalancerFromSubnetsInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DetachLoadBalancerFromSubnetsAsync(DetachLoadBalancerFromSubnetsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeregisterInstancesFromLoadBalancer asynchronously, invoking a callback when done
+-- @param DeregisterEndPointsInput
+-- @param cb Callback function accepting three args: response, error_type, error_message
+function M.DeregisterInstancesFromLoadBalancerAsync(DeregisterEndPointsInput, cb)
+	assert(DeregisterEndPointsInput, "You must provide a DeregisterEndPointsInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeregisterInstancesFromLoadBalancer",
+	}
+	for header,value in pairs(DeregisterEndPointsInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", DeregisterEndPointsInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DeregisterInstancesFromLoadBalancer synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeregisterEndPointsInput
+-- @return response
+-- @return error_type
+-- @return error_message
+function M.DeregisterInstancesFromLoadBalancerSync(DeregisterEndPointsInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeregisterInstancesFromLoadBalancerAsync(DeregisterEndPointsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RegisterInstancesWithLoadBalancer asynchronously, invoking a callback when done
+-- @param RegisterEndPointsInput
+-- @param cb Callback function accepting three args: response, error_type, error_message
+function M.RegisterInstancesWithLoadBalancerAsync(RegisterEndPointsInput, cb)
+	assert(RegisterEndPointsInput, "You must provide a RegisterEndPointsInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RegisterInstancesWithLoadBalancer",
+	}
+	for header,value in pairs(RegisterEndPointsInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", RegisterEndPointsInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call RegisterInstancesWithLoadBalancer synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RegisterEndPointsInput
+-- @return response
+-- @return error_type
+-- @return error_message
+function M.RegisterInstancesWithLoadBalancerSync(RegisterEndPointsInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RegisterInstancesWithLoadBalancerAsync(RegisterEndPointsInput, function(response, error_type, error_message)
 		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
@@ -7812,78 +5365,6 @@ function M.AddTagsSync(AddTagsInput, ...)
 	return coroutine.yield()
 end
 
---- Call DescribeTargetGroups asynchronously, invoking a callback when done
--- @param DescribeTargetGroupsInput
--- @param cb Callback function accepting three args: response, error_type, error_message
-function M.DescribeTargetGroupsAsync(DescribeTargetGroupsInput, cb)
-	assert(DescribeTargetGroupsInput, "You must provide a DescribeTargetGroupsInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTargetGroups",
-	}
-	for header,value in pairs(DescribeTargetGroupsInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", DescribeTargetGroupsInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call DescribeTargetGroups synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param DescribeTargetGroupsInput
--- @return response
--- @return error_type
--- @return error_message
-function M.DescribeTargetGroupsSync(DescribeTargetGroupsInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTargetGroupsAsync(DescribeTargetGroupsInput, function(response, error_type, error_message)
-		assert(coroutine.resume(co, response, error_type, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call DeregisterTargets asynchronously, invoking a callback when done
--- @param DeregisterTargetsInput
--- @param cb Callback function accepting three args: response, error_type, error_message
-function M.DeregisterTargetsAsync(DeregisterTargetsInput, cb)
-	assert(DeregisterTargetsInput, "You must provide a DeregisterTargetsInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".DeregisterTargets",
-	}
-	for header,value in pairs(DeregisterTargetsInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", DeregisterTargetsInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call DeregisterTargets synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param DeregisterTargetsInput
--- @return response
--- @return error_type
--- @return error_message
-function M.DeregisterTargetsSync(DeregisterTargetsInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.DeregisterTargetsAsync(DeregisterTargetsInput, function(response, error_type, error_message)
-		assert(coroutine.resume(co, response, error_type, error_message))
-	end)
-	return coroutine.yield()
-end
-
 --- Call ModifyLoadBalancerAttributes asynchronously, invoking a callback when done
 -- @param ModifyLoadBalancerAttributesInput
 -- @param cb Callback function accepting three args: response, error_type, error_message
@@ -7920,130 +5401,58 @@ function M.ModifyLoadBalancerAttributesSync(ModifyLoadBalancerAttributesInput, .
 	return coroutine.yield()
 end
 
---- Call DescribeRules asynchronously, invoking a callback when done
--- @param DescribeRulesInput
+--- Call CreateLoadBalancerListeners asynchronously, invoking a callback when done
+-- @param CreateLoadBalancerListenerInput
 -- @param cb Callback function accepting three args: response, error_type, error_message
-function M.DescribeRulesAsync(DescribeRulesInput, cb)
-	assert(DescribeRulesInput, "You must provide a DescribeRulesInput")
+function M.CreateLoadBalancerListenersAsync(CreateLoadBalancerListenerInput, cb)
+	assert(CreateLoadBalancerListenerInput, "You must provide a CreateLoadBalancerListenerInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".DescribeRules",
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateLoadBalancerListeners",
 	}
-	for header,value in pairs(DescribeRulesInput.headers) do
+	for header,value in pairs(CreateLoadBalancerListenerInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", DescribeRulesInput, headers, settings, cb)
+		request_handler(settings.uri, "/", CreateLoadBalancerListenerInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
 end
 
---- Call DescribeRules synchronously, returning when done
+--- Call CreateLoadBalancerListeners synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param DescribeRulesInput
+-- @param CreateLoadBalancerListenerInput
 -- @return response
 -- @return error_type
 -- @return error_message
-function M.DescribeRulesSync(DescribeRulesInput, ...)
+function M.CreateLoadBalancerListenersSync(CreateLoadBalancerListenerInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeRulesAsync(DescribeRulesInput, function(response, error_type, error_message)
-		assert(coroutine.resume(co, response, error_type, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call DescribeListenerCertificates asynchronously, invoking a callback when done
--- @param DescribeListenerCertificatesInput
--- @param cb Callback function accepting three args: response, error_type, error_message
-function M.DescribeListenerCertificatesAsync(DescribeListenerCertificatesInput, cb)
-	assert(DescribeListenerCertificatesInput, "You must provide a DescribeListenerCertificatesInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".DescribeListenerCertificates",
-	}
-	for header,value in pairs(DescribeListenerCertificatesInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", DescribeListenerCertificatesInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call DescribeListenerCertificates synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param DescribeListenerCertificatesInput
--- @return response
--- @return error_type
--- @return error_message
-function M.DescribeListenerCertificatesSync(DescribeListenerCertificatesInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.DescribeListenerCertificatesAsync(DescribeListenerCertificatesInput, function(response, error_type, error_message)
-		assert(coroutine.resume(co, response, error_type, error_message))
-	end)
-	return coroutine.yield()
-end
-
---- Call DescribeTargetHealth asynchronously, invoking a callback when done
--- @param DescribeTargetHealthInput
--- @param cb Callback function accepting three args: response, error_type, error_message
-function M.DescribeTargetHealthAsync(DescribeTargetHealthInput, cb)
-	assert(DescribeTargetHealthInput, "You must provide a DescribeTargetHealthInput")
-	local headers = {
-		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTargetHealth",
-	}
-	for header,value in pairs(DescribeTargetHealthInput.headers) do
-		headers[header] = value
-	end
-
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
-	if request_handler then
-		request_handler(settings.uri, "/", DescribeTargetHealthInput, headers, settings, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- Call DescribeTargetHealth synchronously, returning when done
--- This assumes that the function is called from within a coroutine
--- @param DescribeTargetHealthInput
--- @return response
--- @return error_type
--- @return error_message
-function M.DescribeTargetHealthSync(DescribeTargetHealthInput, ...)
-	local co = coroutine.running()
-	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTargetHealthAsync(DescribeTargetHealthInput, function(response, error_type, error_message)
+	M.CreateLoadBalancerListenersAsync(CreateLoadBalancerListenerInput, function(response, error_type, error_message)
 		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
 end
 
 --- Call CreateLoadBalancer asynchronously, invoking a callback when done
--- @param CreateLoadBalancerInput
+-- @param CreateAccessPointInput
 -- @param cb Callback function accepting three args: response, error_type, error_message
-function M.CreateLoadBalancerAsync(CreateLoadBalancerInput, cb)
-	assert(CreateLoadBalancerInput, "You must provide a CreateLoadBalancerInput")
+function M.CreateLoadBalancerAsync(CreateAccessPointInput, cb)
+	assert(CreateAccessPointInput, "You must provide a CreateAccessPointInput")
 	local headers = {
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateLoadBalancer",
 	}
-	for header,value in pairs(CreateLoadBalancerInput.headers) do
+	for header,value in pairs(CreateAccessPointInput.headers) do
 		headers[header] = value
 	end
 
 	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
-		request_handler(settings.uri, "/", CreateLoadBalancerInput, headers, settings, cb)
+		request_handler(settings.uri, "/", CreateAccessPointInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8051,14 +5460,14 @@ end
 
 --- Call CreateLoadBalancer synchronously, returning when done
 -- This assumes that the function is called from within a coroutine
--- @param CreateLoadBalancerInput
+-- @param CreateAccessPointInput
 -- @return response
 -- @return error_type
 -- @return error_message
-function M.CreateLoadBalancerSync(CreateLoadBalancerInput, ...)
+function M.CreateLoadBalancerSync(CreateAccessPointInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateLoadBalancerAsync(CreateLoadBalancerInput, function(response, error_type, error_message)
+	M.CreateLoadBalancerAsync(CreateAccessPointInput, function(response, error_type, error_message)
 		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()
@@ -8095,6 +5504,42 @@ function M.DescribeAccountLimitsSync(DescribeAccountLimitsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
 	M.DescribeAccountLimitsAsync(DescribeAccountLimitsInput, function(response, error_type, error_message)
+		assert(coroutine.resume(co, response, error_type, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DisableAvailabilityZonesForLoadBalancer asynchronously, invoking a callback when done
+-- @param RemoveAvailabilityZonesInput
+-- @param cb Callback function accepting three args: response, error_type, error_message
+function M.DisableAvailabilityZonesForLoadBalancerAsync(RemoveAvailabilityZonesInput, cb)
+	assert(RemoveAvailabilityZonesInput, "You must provide a RemoveAvailabilityZonesInput")
+	local headers = {
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DisableAvailabilityZonesForLoadBalancer",
+	}
+	for header,value in pairs(RemoveAvailabilityZonesInput.headers) do
+		headers[header] = value
+	end
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	if request_handler then
+		request_handler(settings.uri, "/", RemoveAvailabilityZonesInput, headers, settings, cb)
+	else
+		cb(false, err)
+	end
+end
+
+--- Call DisableAvailabilityZonesForLoadBalancer synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemoveAvailabilityZonesInput
+-- @return response
+-- @return error_type
+-- @return error_message
+function M.DisableAvailabilityZonesForLoadBalancerSync(RemoveAvailabilityZonesInput, ...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisableAvailabilityZonesForLoadBalancerAsync(RemoveAvailabilityZonesInput, function(response, error_type, error_message)
 		assert(coroutine.resume(co, response, error_type, error_message))
 	end)
 	return coroutine.yield()

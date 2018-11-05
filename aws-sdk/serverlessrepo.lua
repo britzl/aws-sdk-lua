@@ -44,7 +44,9 @@ end
 -- * CreationTime [__string] <p>The date and time this resource was created.</p>
 -- * SourceCodeUrl [__string] <p>A link to a public repository for the source code of your application.</p>
 -- * ParameterDefinitions [__listOfParameterDefinition] <p>An array of parameter types supported by the application.</p>
--- * SemanticVersion [__string] <p>The semantic version of the application:</p><p> <a href="https://semver.org/">https://semver.org/</a> </p>
+-- * SemanticVersion [__string] <p>The semantic version of the application:</p><p>
+-- <a href="https://semver.org/">https://semver.org/</a>
+-- </p>
 -- * TemplateUrl [__string] <p>A link to the packaged AWS SAM template of your application.</p>
 -- * ApplicationId [__string] <p>The application Amazon Resource Name (ARN).</p>
 -- @return CreateApplicationVersionResponse structure as a key-value pair table
@@ -223,7 +225,8 @@ end
 -- * ApplicationId [__string] <p>The Amazon Resource Name (ARN) of the application.</p>
 -- * Labels [__listOf__string] <p>Labels to improve discovery of apps in search results.</p><p>Minimum length=1. Maximum length=127. Maximum number of labels: 10</p><p>Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";</p>
 -- * ReadmeUrl [__string] <p>A link to the readme file in Markdown language that contains a more detailed description of the application and how it works.</p><p>Maximum size 5 MB</p>
--- * HomePageUrl [__string] <p>A URL with more information about the application, for example the location of your GitHub repository for the application.</p>
+-- * HomePageUrl [__string] <p>A URL with more information about the application, for example
+-- the location of your GitHub repository for the application.</p>
 -- Required key: ApplicationId
 -- @return UpdateApplicationRequest structure as a key-value pair table
 function M.UpdateApplicationRequest(args)
@@ -336,7 +339,8 @@ end
 -- * Version [Version] <p>Version information about the application.</p>
 -- * LicenseUrl [__string] <p>A link to a license file of the app that matches the spdxLicenseID value of your application.</p><p>Maximum size 5 MB</p>
 -- * ReadmeUrl [__string] <p>A link to the readme file in Markdown language that contains a more detailed description of the application and how it works.</p><p>Maximum size 5 MB</p>
--- * HomePageUrl [__string] <p>A URL with more information about the application, for example the location of your GitHub repository for the application.</p>
+-- * HomePageUrl [__string] <p>A URL with more information about the application, for example
+-- the location of your GitHub repository for the application.</p>
 -- * Name [__string] <p>The name of the application.</p><p>Minimum length=1. Maximum length=140</p><p>Pattern: "[a-zA-Z0-9\\-]+";</p>
 -- Required key: Description
 -- Required key: Author
@@ -393,10 +397,14 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * StackName [__string] <p>The name or the unique ID of the stack for which you are creating a change set. AWS CloudFormation generates the change set by comparing this stack's information with the information that you submit, such as a modified template or different parameter input values. </p><p>Constraints: Minimum length of 1.</p><p>Pattern: ([a-zA-Z][-a-zA-Z0-9]*)|(arn:\b(aws|aws-us-gov|aws-cn)\b:[-a-zA-Z0-9:/._+]*)</p>
+-- * StackName [__string] <p>The name or the unique ID of the stack for which you are creating a change set. AWS CloudFormation generates
+-- the change set by comparing this stack's information with the information that you submit, such as a modified
+-- template or different parameter input values. </p><p>Constraints: Minimum length of 1.</p><p>Pattern: ([a-zA-Z][-a-zA-Z0-9]*)|(arn:\b(aws|aws-us-gov|aws-cn)\b:[-a-zA-Z0-9:/._+]*)</p>
 -- * ApplicationId [__string] <p>The Amazon Resource Name (ARN) of the application.</p>
 -- * ParameterOverrides [__listOfParameterValue] <p>A list of parameter values for the parameters of the application.</p>
--- * SemanticVersion [__string] <p>The semantic version of the application:</p><p> <a href="https://semver.org/">https://semver.org/</a> </p>
+-- * SemanticVersion [__string] <p>The semantic version of the application:</p><p>
+-- <a href="https://semver.org/">https://semver.org/</a>
+-- </p>
 -- Required key: ApplicationId
 -- Required key: StackName
 -- @return CreateCloudFormationChangeSetRequest structure as a key-value pair table
@@ -488,7 +496,9 @@ end
 -- * CreationTime [__string] <p>The date and time this resource was created.</p>
 -- * SourceCodeUrl [__string] <p>A link to a public repository for the source code of your application.</p>
 -- * ApplicationId [__string] <p>The application Amazon Resource Name (ARN).</p>
--- * SemanticVersion [__string] <p>The semantic version of the application:</p><p> <a href="https://semver.org/">https://semver.org/</a> </p>
+-- * SemanticVersion [__string] <p>The semantic version of the application:</p><p>
+-- <a href="https://semver.org/">https://semver.org/</a>
+-- </p>
 -- Required key: CreationTime
 -- Required key: ApplicationId
 -- Required key: SemanticVersion
@@ -588,7 +598,8 @@ end
 -- * ApplicationId [__string] <p>The application Amazon Resource Name (ARN).</p>
 -- * Labels [__listOf__string] <p>Labels to improve discovery of apps in search results.</p><p>Minimum length=1. Maximum length=127. Maximum number of labels: 10</p><p>Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";</p>
 -- * CreationTime [__string] <p>The date and time this resource was created.</p>
--- * HomePageUrl [__string] <p>A URL with more information about the application, for example the location of your GitHub repository for the application.</p>
+-- * HomePageUrl [__string] <p>A URL with more information about the application, for example
+-- the location of your GitHub repository for the application.</p>
 -- * Name [__string] <p>The name of the application.</p><p>Minimum length=1. Maximum length=140</p><p>Pattern: "[a-zA-Z0-9\\-]+";</p>
 -- Required key: Description
 -- Required key: Author
@@ -647,7 +658,8 @@ end
 -- * Author [__string] <p>The name of the author publishing the app.</p><p>Minimum length=1. Maximum length=127.</p><p>Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";</p>
 -- * Labels [__listOf__string] <p>Labels to improve discovery of apps in search results.</p><p>Minimum length=1. Maximum length=127. Maximum number of labels: 10</p><p>Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";</p>
 -- * ReadmeUrl [__string] <p>A link to the readme file in Markdown language that contains a more detailed description of the application and how it works.</p><p>Maximum size 5 MB</p>
--- * HomePageUrl [__string] <p>A URL with more information about the application, for example the location of your GitHub repository for the application.</p>
+-- * HomePageUrl [__string] <p>A URL with more information about the application, for example
+-- the location of your GitHub repository for the application.</p>
 -- @return UpdateApplicationInput structure as a key-value pair table
 function M.UpdateApplicationInput(args)
 	assert(args, "You must provide an argument table when creating UpdateApplicationInput")
@@ -794,19 +806,25 @@ end
 -- <p>Create an application request.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ReadmeBody [__string] <p>A local text readme file in Markdown language that contains a more detailed description of the application and how it works. The file is of the format file://&lt;path>/&lt;filename>.</p><p>Maximum size 5 MB</p><p>Note: Only one of readmeBody and readmeUrl can be specified, otherwise an error will result.</p>
+-- * ReadmeBody [__string] <p>A local text readme file in Markdown language that contains a more detailed description of the application and how it works.
+-- The file is of the format file://&lt;path>/&lt;filename>.</p><p>Maximum size 5 MB</p><p>Note: Only one of readmeBody and readmeUrl can be specified, otherwise an error will result.</p>
 -- * SpdxLicenseId [__string] <p>A valid identifier from <a href="https://spdx.org/licenses/">https://spdx.org/licenses/</a>.</p>
 -- * Description [__string] <p>The description of the application.</p><p>Minimum length=1. Maximum length=256</p>
--- * TemplateBody [__string] <p>The local raw packaged AWS SAM template file of your application. The file is of the format file://&lt;path>/&lt;filename>.</p><p>Note: Only one of templateBody and templateUrl can be specified, otherwise an error will result.</p>
+-- * TemplateBody [__string] <p>The local raw packaged AWS SAM template file of your application.
+-- The file is of the format file://&lt;path>/&lt;filename>.</p><p>Note: Only one of templateBody and templateUrl can be specified, otherwise an error will result.</p>
 -- * Author [__string] <p>The name of the author publishing the app.</p><p>Minimum length=1. Maximum length=127.</p><p>Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";</p>
 -- * Labels [__listOf__string] <p>Labels to improve discovery of apps in search results.</p><p>Minimum length=1. Maximum length=127. Maximum number of labels: 10</p><p>Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";</p>
 -- * SourceCodeUrl [__string] <p>A link to a public repository for the source code of your application.</p>
--- * LicenseBody [__string] <p>A local text file that contains the license of the app that matches the spdxLicenseID value of your application. The file is of the format file://&lt;path>/&lt;filename>.</p><p>Maximum size 5 MB</p><p>Note: Only one of licenseBody and licenseUrl can be specified, otherwise an error will result.</p>
+-- * LicenseBody [__string] <p>A local text file that contains the license of the app that matches the spdxLicenseID value of your application.
+-- The file is of the format file://&lt;path>/&lt;filename>.</p><p>Maximum size 5 MB</p><p>Note: Only one of licenseBody and licenseUrl can be specified, otherwise an error will result.</p>
 -- * LicenseUrl [__string] <p>A link to the S3 object that contains the license of the app that matches the spdxLicenseID value of your application.</p><p>Maximum size 5 MB</p><p>Note: Only one of licenseBody and licenseUrl can be specified, otherwise an error will result.</p>
--- * SemanticVersion [__string] <p>The semantic version of the application:</p><p> <a href="https://semver.org/">https://semver.org/</a> </p>
+-- * SemanticVersion [__string] <p>The semantic version of the application:</p><p>
+-- <a href="https://semver.org/">https://semver.org/</a>
+-- </p>
 -- * ReadmeUrl [__string] <p>A link to the S3 object in Markdown language that contains a more detailed description of the application and how it works.</p><p>Maximum size 5 MB</p><p>Note: Only one of readmeBody and readmeUrl can be specified, otherwise an error will result.</p>
 -- * TemplateUrl [__string] <p>A link to the S3 object cotaining the packaged AWS SAM template of your application.</p><p>Note: Only one of templateBody and templateUrl can be specified, otherwise an error will result.</p>
--- * HomePageUrl [__string] <p>A URL with more information about the application, for example the location of your GitHub repository for the application.</p>
+-- * HomePageUrl [__string] <p>A URL with more information about the application, for example
+-- the location of your GitHub repository for the application.</p>
 -- * Name [__string] <p>The name of the application that you want to publish.</p><p>Minimum length=1. Maximum length=140</p><p>Pattern: "[a-zA-Z0-9\\-]+";</p>
 -- Required key: Description
 -- Required key: Name
@@ -879,7 +897,8 @@ end
 -- * Version [Version] <p>Version information about the application.</p>
 -- * LicenseUrl [__string] <p>A link to a license file of the app that matches the spdxLicenseID value of your application.</p><p>Maximum size 5 MB</p>
 -- * ReadmeUrl [__string] <p>A link to the readme file in Markdown language that contains a more detailed description of the application and how it works.</p><p>Maximum size 5 MB</p>
--- * HomePageUrl [__string] <p>A URL with more information about the application, for example the location of your GitHub repository for the application.</p>
+-- * HomePageUrl [__string] <p>A URL with more information about the application, for example
+-- the location of your GitHub repository for the application.</p>
 -- * Name [__string] <p>The name of the application.</p><p>Minimum length=1. Maximum length=140</p><p>Pattern: "[a-zA-Z0-9\\-]+";</p>
 -- @return UpdateApplicationResponse structure as a key-value pair table
 function M.UpdateApplicationResponse(args)
@@ -943,19 +962,25 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ReadmeBody [__string] <p>A local text readme file in Markdown language that contains a more detailed description of the application and how it works. The file is of the format file://&lt;path>/&lt;filename>.</p><p>Maximum size 5 MB</p><p>Note: Only one of readmeBody and readmeUrl can be specified, otherwise an error will result.</p>
+-- * ReadmeBody [__string] <p>A local text readme file in Markdown language that contains a more detailed description of the application and how it works.
+-- The file is of the format file://&lt;path>/&lt;filename>.</p><p>Maximum size 5 MB</p><p>Note: Only one of readmeBody and readmeUrl can be specified, otherwise an error will result.</p>
 -- * SpdxLicenseId [__string] <p>A valid identifier from <a href="https://spdx.org/licenses/">https://spdx.org/licenses/</a>.</p>
 -- * Description [__string] <p>The description of the application.</p><p>Minimum length=1. Maximum length=256</p>
--- * TemplateBody [__string] <p>The local raw packaged AWS SAM template file of your application. The file is of the format file://&lt;path>/&lt;filename>.</p><p>Note: Only one of templateBody and templateUrl can be specified, otherwise an error will result.</p>
+-- * TemplateBody [__string] <p>The local raw packaged AWS SAM template file of your application.
+-- The file is of the format file://&lt;path>/&lt;filename>.</p><p>Note: Only one of templateBody and templateUrl can be specified, otherwise an error will result.</p>
 -- * Author [__string] <p>The name of the author publishing the app.</p><p>Minimum length=1. Maximum length=127.</p><p>Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";</p>
 -- * Labels [__listOf__string] <p>Labels to improve discovery of apps in search results.</p><p>Minimum length=1. Maximum length=127. Maximum number of labels: 10</p><p>Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";</p>
 -- * SourceCodeUrl [__string] <p>A link to a public repository for the source code of your application.</p>
--- * LicenseBody [__string] <p>A local text file that contains the license of the app that matches the spdxLicenseID value of your application. The file is of the format file://&lt;path>/&lt;filename>.</p><p>Maximum size 5 MB</p><p>Note: Only one of licenseBody and licenseUrl can be specified, otherwise an error will result.</p>
+-- * LicenseBody [__string] <p>A local text file that contains the license of the app that matches the spdxLicenseID value of your application.
+-- The file is of the format file://&lt;path>/&lt;filename>.</p><p>Maximum size 5 MB</p><p>Note: Only one of licenseBody and licenseUrl can be specified, otherwise an error will result.</p>
 -- * LicenseUrl [__string] <p>A link to the S3 object that contains the license of the app that matches the spdxLicenseID value of your application.</p><p>Maximum size 5 MB</p><p>Note: Only one of licenseBody and licenseUrl can be specified, otherwise an error will result.</p>
--- * SemanticVersion [__string] <p>The semantic version of the application:</p><p> <a href="https://semver.org/">https://semver.org/</a> </p>
+-- * SemanticVersion [__string] <p>The semantic version of the application:</p><p>
+-- <a href="https://semver.org/">https://semver.org/</a>
+-- </p>
 -- * ReadmeUrl [__string] <p>A link to the S3 object in Markdown language that contains a more detailed description of the application and how it works.</p><p>Maximum size 5 MB</p><p>Note: Only one of readmeBody and readmeUrl can be specified, otherwise an error will result.</p>
 -- * TemplateUrl [__string] <p>A link to the S3 object cotaining the packaged AWS SAM template of your application.</p><p>Note: Only one of templateBody and templateUrl can be specified, otherwise an error will result.</p>
--- * HomePageUrl [__string] <p>A URL with more information about the application, for example the location of your GitHub repository for the application.</p>
+-- * HomePageUrl [__string] <p>A URL with more information about the application, for example
+-- the location of your GitHub repository for the application.</p>
 -- * Name [__string] <p>The name of the application that you want to publish.</p><p>Minimum length=1. Maximum length=140</p><p>Pattern: "[a-zA-Z0-9\\-]+";</p>
 -- Required key: Description
 -- Required key: Name
@@ -1063,18 +1088,35 @@ end
 -- <p>Parameters supported by the application.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Type [__string] <p>The type of the parameter.</p><p>Valid values: String | Number | List&lt;Number> | CommaDelimitedList </p><p> String: A literal string.</p><p>For example, users can specify "MyUserName".</p><p> Number: An integer or float. AWS CloudFormation validates the parameter value as a number. However, when you use the parameter elsewhere in your template (for example, by using the Ref intrinsic function), the parameter value becomes a string.</p><p>For example, users might specify "8888".</p><p> List&lt;Number>: An array of integers or floats that are separated by commas. AWS CloudFormation validates the parameter value as numbers. However, when you use the parameter elsewhere in your template (for example, by using the Ref intrinsic function), the parameter value becomes a list of strings.</p><p>For example, users might specify "80,20", and then Ref results in ["80","20"].</p><p> CommaDelimitedList: An array of literal strings that are separated by commas. The total number of strings should be one more than the total number of commas. Also, each member string is space-trimmed.</p><p>For example, users might specify "test,dev,prod", and then Ref results in ["test","dev","prod"].</p>
+-- * Type [__string] <p>The type of the parameter.</p><p>Valid values: String | Number | List&lt;Number> | CommaDelimitedList
+-- </p><p>
+-- String: A literal string.</p><p>For example, users can specify "MyUserName".</p><p>
+-- Number: An integer or float. AWS CloudFormation validates the parameter value as a number. However, when you use the
+-- parameter elsewhere in your template (for example, by using the Ref intrinsic function), the parameter value becomes a string.</p><p>For example, users might specify "8888".</p><p>
+-- List&lt;Number>: An array of integers or floats that are separated by commas. AWS CloudFormation validates the parameter value as numbers. However, when
+-- you use the parameter elsewhere in your template (for example, by using the Ref intrinsic function), the parameter value becomes a list of strings.</p><p>For example, users might specify "80,20", and then Ref results in ["80","20"].</p><p>
+-- CommaDelimitedList: An array of literal strings that are separated by commas. The total number of strings should be one more than the total number of commas.
+-- Also, each member string is space-trimmed.</p><p>For example, users might specify "test,dev,prod", and then Ref results in ["test","dev","prod"].</p>
 -- * Description [__string] <p>A string of up to 4,000 characters that describes the parameter.</p>
 -- * MinLength [__integer] <p>An integer value that determines the smallest number of characters that you want to allow for String types.</p>
--- * DefaultValue [__string] <p>A value of the appropriate type for the template to use if no value is specified when a stack is created. If you define constraints for the parameter, you must specify a value that adheres to those constraints.</p>
+-- * DefaultValue [__string] <p>A value of the appropriate type for the template to use if no value is specified when a stack is created.
+-- If you define constraints for the parameter, you must specify a value that adheres to those constraints.</p>
 -- * MaxValue [__integer] <p>A numeric value that determines the largest numeric value that you want to allow for Number types.</p>
 -- * AllowedValues [__listOf__string] <p>An array containing the list of values allowed for the parameter.</p>
 -- * AllowedPattern [__string] <p>A regular expression that represents the patterns to allow for String types.</p>
--- * NoEcho [__boolean] <p>Whether to mask the parameter value whenever anyone makes a call that describes the stack. If you set the value to true, the parameter value is masked with asterisks (*****).</p>
+-- * NoEcho [__boolean] <p>Whether to mask the parameter value whenever anyone makes a call that describes the stack. If you set the
+-- value to true, the parameter value is masked with asterisks (*****).</p>
 -- * MaxLength [__integer] <p>An integer value that determines the largest number of characters that you want to allow for String types.</p>
 -- * ReferencedByResources [__listOf__string] <p>A list of AWS SAM resources that use this parameter.</p>
 -- * MinValue [__integer] <p>A numeric value that determines the smallest numeric value that you want to allow for Number types.</p>
--- * ConstraintDescription [__string] <p>A string that explains a constraint when the constraint is violated. For example, without a constraint description, a parameter that has an allowed pattern of [A-Za-z0-9]+ displays the following error message when the user specifies an invalid value:</p><p> Malformed input-Parameter MyParameter must match pattern [A-Za-z0-9]+ </p><p>By adding a constraint description, such as "must contain only uppercase and lowercase letters and numbers," you can display the following customized error message:</p><p> Malformed input-Parameter MyParameter must contain only uppercase and lowercase letters and numbers. </p>
+-- * ConstraintDescription [__string] <p>A string that explains a constraint when the constraint is violated. For example, without a constraint description,
+-- a parameter that has an allowed pattern of [A-Za-z0-9]+ displays the following error message when the user
+-- specifies an invalid value:</p><p>
+-- Malformed input-Parameter MyParameter must match pattern [A-Za-z0-9]+
+-- </p><p>By adding a constraint description, such as "must contain only uppercase and lowercase letters and numbers," you can display
+-- the following customized error message:</p><p>
+-- Malformed input-Parameter MyParameter must contain only uppercase and lowercase letters and numbers.
+-- </p>
 -- * Name [__string] <p>The name of the parameter.</p>
 -- Required key: ReferencedByResources
 -- Required key: Name
@@ -1173,9 +1215,13 @@ end
 -- <p>Create an application change set request.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * StackName [__string] <p>The name or the unique ID of the stack for which you are creating a change set. AWS CloudFormation generates the change set by comparing this stack's information with the information that you submit, such as a modified template or different parameter input values. </p><p>Constraints: Minimum length of 1.</p><p>Pattern: ([a-zA-Z][-a-zA-Z0-9]*)|(arn:\b(aws|aws-us-gov|aws-cn)\b:[-a-zA-Z0-9:/._+]*)</p>
+-- * StackName [__string] <p>The name or the unique ID of the stack for which you are creating a change set. AWS CloudFormation generates
+-- the change set by comparing this stack's information with the information that you submit, such as a modified
+-- template or different parameter input values. </p><p>Constraints: Minimum length of 1.</p><p>Pattern: ([a-zA-Z][-a-zA-Z0-9]*)|(arn:\b(aws|aws-us-gov|aws-cn)\b:[-a-zA-Z0-9:/._+]*)</p>
 -- * ParameterOverrides [__listOfParameterValue] <p>A list of parameter values for the parameters of the application.</p>
--- * SemanticVersion [__string] <p>The semantic version of the application:</p><p> <a href="https://semver.org/">https://semver.org/</a> </p>
+-- * SemanticVersion [__string] <p>The semantic version of the application:</p><p>
+-- <a href="https://semver.org/">https://semver.org/</a>
+-- </p>
 -- Required key: StackName
 -- @return CreateCloudFormationChangeSetInput structure as a key-value pair table
 function M.CreateCloudFormationChangeSetInput(args)
@@ -1228,7 +1274,9 @@ end
 -- * CreationTime [__string] <p>The date and time this resource was created.</p>
 -- * SourceCodeUrl [__string] <p>A link to a public repository for the source code of your application.</p>
 -- * ParameterDefinitions [__listOfParameterDefinition] <p>An array of parameter types supported by the application.</p>
--- * SemanticVersion [__string] <p>The semantic version of the application:</p><p> <a href="https://semver.org/">https://semver.org/</a> </p>
+-- * SemanticVersion [__string] <p>The semantic version of the application:</p><p>
+-- <a href="https://semver.org/">https://semver.org/</a>
+-- </p>
 -- * TemplateUrl [__string] <p>A link to the packaged AWS SAM template of your application.</p>
 -- * ApplicationId [__string] <p>The application Amazon Resource Name (ARN).</p>
 -- Required key: TemplateUrl
@@ -1378,7 +1426,9 @@ end
 -- * StackId [__string] <p>The unique ID of the stack.</p>
 -- * ChangeSetId [__string] <p>The Amazon Resource Name (ARN) of the change set.</p><p>Length constraints: Minimum length of 1.</p><p>Pattern: ARN:[-a-zA-Z0-9:/]*</p>
 -- * ApplicationId [__string] <p>The application Amazon Resource Name (ARN).</p>
--- * SemanticVersion [__string] <p>The semantic version of the application:</p><p> <a href="https://semver.org/">https://semver.org/</a> </p>
+-- * SemanticVersion [__string] <p>The semantic version of the application:</p><p>
+-- <a href="https://semver.org/">https://semver.org/</a>
+-- </p>
 -- @return CreateCloudFormationChangeSetResponse structure as a key-value pair table
 function M.CreateCloudFormationChangeSetResponse(args)
 	assert(args, "You must provide an argument table when creating CreateCloudFormationChangeSetResponse")
@@ -1461,7 +1511,8 @@ end
 -- <p>Parameter value of the application.</p>
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Name [__string] <p>The key associated with the parameter. If you don't specify a key and value for a particular parameter, AWS CloudFormation uses the default value that is specified in your template.</p>
+-- * Name [__string] <p>The key associated with the parameter. If you don't specify a key and value for a particular parameter, AWS CloudFormation
+-- uses the default value that is specified in your template.</p>
 -- * Value [__string] <p>The input value associated with the parameter.</p>
 -- Required key: Value
 -- Required key: Name
@@ -1594,7 +1645,9 @@ end
 -- * StackId [__string] <p>The unique ID of the stack.</p>
 -- * ChangeSetId [__string] <p>The Amazon Resource Name (ARN) of the change set.</p><p>Length constraints: Minimum length of 1.</p><p>Pattern: ARN:[-a-zA-Z0-9:/]*</p>
 -- * ApplicationId [__string] <p>The application Amazon Resource Name (ARN).</p>
--- * SemanticVersion [__string] <p>The semantic version of the application:</p><p> <a href="https://semver.org/">https://semver.org/</a> </p>
+-- * SemanticVersion [__string] <p>The semantic version of the application:</p><p>
+-- <a href="https://semver.org/">https://semver.org/</a>
+-- </p>
 -- Required key: ChangeSetId
 -- Required key: ApplicationId
 -- Required key: StackId
@@ -1731,7 +1784,8 @@ end
 -- * Version [Version] <p>Version information about the application.</p>
 -- * LicenseUrl [__string] <p>A link to a license file of the app that matches the spdxLicenseID value of your application.</p><p>Maximum size 5 MB</p>
 -- * ReadmeUrl [__string] <p>A link to the readme file in Markdown language that contains a more detailed description of the application and how it works.</p><p>Maximum size 5 MB</p>
--- * HomePageUrl [__string] <p>A URL with more information about the application, for example the location of your GitHub repository for the application.</p>
+-- * HomePageUrl [__string] <p>A URL with more information about the application, for example
+-- the location of your GitHub repository for the application.</p>
 -- * Name [__string] <p>The name of the application.</p><p>Minimum length=1. Maximum length=140</p><p>Pattern: "[a-zA-Z0-9\\-]+";</p>
 -- @return GetApplicationResponse structure as a key-value pair table
 function M.GetApplicationResponse(args)
@@ -1846,7 +1900,8 @@ end
 -- * Version [Version] <p>Version information about the application.</p>
 -- * LicenseUrl [__string] <p>A link to a license file of the app that matches the spdxLicenseID value of your application.</p><p>Maximum size 5 MB</p>
 -- * ReadmeUrl [__string] <p>A link to the readme file in Markdown language that contains a more detailed description of the application and how it works.</p><p>Maximum size 5 MB</p>
--- * HomePageUrl [__string] <p>A URL with more information about the application, for example the location of your GitHub repository for the application.</p>
+-- * HomePageUrl [__string] <p>A URL with more information about the application, for example
+-- the location of your GitHub repository for the application.</p>
 -- * Name [__string] <p>The name of the application.</p><p>Minimum length=1. Maximum length=140</p><p>Pattern: "[a-zA-Z0-9\\-]+";</p>
 -- @return CreateApplicationResponse structure as a key-value pair table
 function M.CreateApplicationResponse(args)

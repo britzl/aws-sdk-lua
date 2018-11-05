@@ -2,9 +2,11 @@
 
 import pystache
 import os
+import re
 import json
 import codecs
 import HTMLParser
+import datetime
 
 API_DIR = "apis"
 OUT_DIR = "aws-sdk"
@@ -82,20 +84,43 @@ def generate():
     with open("operations.mtl", 'r') as f:
         op_mtl = f.read()
 
+    # build a list of apis to parse
+    # favor a newer version (date) over an old one
+    apis = {}
     for filename in os.listdir(API_DIR):
         if filename.endswith(".normal.json"):
-            print("Parsing " + filename)
-            j = json.load(open(os.path.join(API_DIR, filename)))
+            matches = re.match("(.*)-(\d\d\d\d)-(\d\d)-(\d\d).normal.json", filename)
+            api = matches.group(1)
+            date = datetime.date(int(matches.group(2)), int(matches.group(3)), int(matches.group(4)))
 
-            j["operations"] = parse_operations(j["operations"].iteritems)
-            j["shapes"] = parse_shapes(j["shapes"].iteritems)
+            existing_version = apis.get(api)
+            if not existing_version or existing_version.get("date") < date:
+                apis[api] = {
+                    "date": date,
+                    "filename": filename
+                }
 
-            out_filename = j["metadata"]["endpointPrefix"].replace(".", "_") + ".lua"
-            print("Writing " + out_filename)
+    # parse the list of apis and generate lua files
+    for api, data in apis.items():
+        filename = data.get("filename")
+        print("Parsing " + filename)
+        j = json.load(open(os.path.join(API_DIR, filename)))
 
-            lua = pystache.render(op_mtl, j)
-            with codecs.open(os.path.join(OUT_DIR, out_filename), 'wb', "utf-8") as f:
-                f.write(HTMLParser.HTMLParser().unescape(lua))
+        j["operations"] = parse_operations(j["operations"].iteritems)
+        j["shapes"] = parse_shapes(j["shapes"].iteritems)
+
+        uid = j["metadata"].get("uid")
+        if uid:
+            uid = re.match("(.*)-(\d\d\d\d)-(\d\d)-(\d\d)", uid).group(1)
+        serviceId = j["metadata"].get("serviceId")
+
+        out_filename = (uid or serviceId).replace(" ", "").replace("-", "").lower() + ".lua"
+        # out_filename = j["metadata"]["endpointPrefix"].replace(".", "_") + ".lua"
+        print("Writing " + out_filename)
+
+        lua = pystache.render(op_mtl, j)
+        with codecs.open(os.path.join(OUT_DIR, out_filename), 'wb', "utf-8") as f:
+            f.write(HTMLParser.HTMLParser().unescape(lua))
 
 
 if __name__ == "__main__":

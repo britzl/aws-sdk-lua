@@ -80,7 +80,8 @@ end
 -- Valid keys:
 -- * NextToken [__string] <p>The token to retrieve the next set of results.</p>
 -- * DeviceType [__string] <p>The type of the device, such as "button".</p>
--- * MaxResults [MaxResults] <p>The maximum number of results to return per request. If not set, a default value of 100 is used.</p>
+-- * MaxResults [MaxResults] <p>The maximum number of results to return per request. If not set, a default value
+-- of 100 is used.</p>
 -- @return ListDevicesRequest structure as a key-value pair table
 function M.ListDevicesRequest(args)
 	assert(args, "You must provide an argument table when creating ListDevicesRequest")
@@ -200,7 +201,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Message [__string] <p>The requested number of results specified by nextToken cannot be satisfied.</p>
+-- * Message [__string] <p>The requested number of results specified by nextToken cannot be
+-- satisfied.</p>
 -- * Code [__string] <p>416</p>
 -- @return RangeNotSatisfiableException structure as a key-value pair table
 function M.RangeNotSatisfiableException(args)
@@ -429,7 +431,8 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Enabled [__boolean] <p>If true, the device is enabled. If false, the device is disabled.</p>
+-- * Enabled [__boolean] <p>If true, the device is enabled. If false, the device is
+-- disabled.</p>
 -- * DeviceId [__string] <p>The unique identifier of the device.</p>
 -- Required key: DeviceId
 -- @return UpdateDeviceStateRequest structure as a key-value pair table
@@ -472,7 +475,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [__string] <p>The token to retrieve the next set of results.</p>
--- * Events [__listOfDeviceEvent] <p>An array of zero or more elements describing the event(s) associated with the device.</p>
+-- * Events [__listOfDeviceEvent] <p>An array of zero or more elements describing the event(s) associated with the
+-- device.</p>
 -- @return ListDeviceEventsResponse structure as a key-value pair table
 function M.ListDeviceEventsResponse(args)
 	assert(args, "You must provide an argument table when creating ListDeviceEventsResponse")
@@ -594,11 +598,16 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * ToTimeStamp [__timestampIso8601] <p>The end date for the device event query, in ISO8061 format. For example, 2018-03-28T15:45:12.880Z </p>
+-- * ToTimeStamp [__timestampIso8601] <p>The end date for the device event query, in ISO8061 format. For example,
+-- 2018-03-28T15:45:12.880Z
+-- </p>
 -- * NextToken [__string] <p>The token to retrieve the next set of results.</p>
 -- * DeviceId [__string] <p>The unique identifier of the device.</p>
--- * MaxResults [MaxResults] <p>The maximum number of results to return per request. If not set, a default value of 100 is used.</p>
--- * FromTimeStamp [__timestampIso8601] <p>The start date for the device event query, in ISO8061 format. For example, 2018-03-28T15:45:12.880Z </p>
+-- * MaxResults [MaxResults] <p>The maximum number of results to return per request. If not set, a default value
+-- of 100 is used.</p>
+-- * FromTimeStamp [__timestampIso8601] <p>The start date for the device event query, in ISO8061 format. For example,
+-- 2018-03-28T15:45:12.880Z
+-- </p>
 -- Required key: DeviceId
 -- Required key: FromTimeStamp
 -- Required key: ToTimeStamp
@@ -726,7 +735,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ClaimCode [__stringMin12Max40] <p>The claim code provided by the device manufacturer.</p>
--- * Total [__integer] <p>The total number of devices associated with the claim code that has been processed in the claim request.</p>
+-- * Total [__integer] <p>The total number of devices associated with the claim code that has been processed
+-- in the claim request.</p>
 -- @return ClaimDevicesByClaimCodeResponse structure as a key-value pair table
 function M.ClaimDevicesByClaimCodeResponse(args)
 	assert(args, "You must provide an argument table when creating ClaimDevicesByClaimCodeResponse")
@@ -849,7 +859,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * NextToken [__string] <p>The token to retrieve the next set of results.</p>
--- * Events [__listOfDeviceEvent] <p>An array of zero or more elements describing the event(s) associated with the device.</p>
+-- * Events [__listOfDeviceEvent] <p>An array of zero or more elements describing the event(s) associated with the
+-- device.</p>
 -- @return DeviceEventsResponse structure as a key-value pair table
 function M.DeviceEventsResponse(args)
 	assert(args, "You must provide an argument table when creating DeviceEventsResponse")
@@ -1165,11 +1176,13 @@ end
 --  
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Attributes [DeviceAttributes] <p>An array of zero or more elements of DeviceAttribute objects providing user specified device attributes.</p>
+-- * Attributes [DeviceAttributes] <p>An array of zero or more elements of DeviceAttribute objects
+-- providing user specified device attributes.</p>
 -- * Type [__string] <p>The type of the device, such as "button".</p>
 -- * Enabled [__boolean] <p>A Boolean value indicating whether or not the device is enabled.</p>
 -- * DeviceId [__string] <p>The unique identifier of the device.</p>
--- * RemainingLife [__doubleMin0Max100] <p>A value between 0 and 1 inclusive, representing the fraction of life remaining for the device.</p>
+-- * RemainingLife [__doubleMin0Max100] <p>A value between 0 and 1 inclusive, representing the fraction of life remaining for
+-- the device.</p>
 -- @return DeviceDescription structure as a key-value pair table
 function M.DeviceDescription(args)
 	assert(args, "You must provide an argument table when creating DeviceDescription")

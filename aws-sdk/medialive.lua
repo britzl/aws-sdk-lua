@@ -158,7 +158,9 @@ end
 -- Settings for for a PULL type input.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Url [__string] This represents the customer's source URL where stream ispulled from.
+-- * Url [__string] This represents the customer's source URL where stream is
+--pulled from.
+--
 -- * Username [__string] The username for the input source.
 -- * PasswordParam [__string] The key used to extract the password from EC2 Parameter store.
 -- @return InputSourceRequest structure as a key-value pair table
@@ -208,7 +210,9 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Profile [AacProfile] AAC Profile.
--- * InputType [AacInputType] Set to "broadcasterMixedAd" when input contains pre-mixed main audio + AD (narration) as a stereo pair.  The Audio Type field (audioType) will be set to 3, which signals to downstream systems that this stream contains "broadcaster mixed AD". Note that the input received by the encoder must contain pre-mixed audio; the encoder does not perform the mixing. The values in audioTypeControl and audioType (in AudioDescription) are ignored when set to broadcasterMixedAd.Leave set to "normal" when input does not contain pre-mixed audio + AD.
+-- * InputType [AacInputType] Set to "broadcasterMixedAd" when input contains pre-mixed main audio + AD (narration) as a stereo pair.  The Audio Type field (audioType) will be set to 3, which signals to downstream systems that this stream contains "broadcaster mixed AD". Note that the input received by the encoder must contain pre-mixed audio; the encoder does not perform the mixing. The values in audioTypeControl and audioType (in AudioDescription) are ignored when set to broadcasterMixedAd.
+--
+--Leave set to "normal" when input does not contain pre-mixed audio + AD.
 -- * RateControlMode [AacRateControlMode] Rate Control Mode.
 -- * Spec [AacSpec] Use MPEG-2 AAC audio instead of MPEG-4 AAC audio for raw or MPEG-2 Transport Stream containers.
 -- * SampleRate [__double] Sample rate in Hz. Valid values depend on rate control mode and profile.
@@ -522,7 +526,10 @@ end
 -- * AudioSelectors [__listOfAudioSelector] Used to select the audio stream to decode for inputs that have multiple available.
 -- * CaptionSelectors [__listOfCaptionSelector] Used to select the caption input to use for inputs that have multiple available.
 -- * SourceEndBehavior [InputSourceEndBehavior] Loop input if it is a file. This allows a file input to be streamed indefinitely.
--- * InputFilter [InputFilter] Turns on the filter for this input. MPEG-2 inputs have the deblocking filter enabled by default.1) auto - filtering will be applied depending on input type/quality2) disabled - no filtering will be applied to the input3) forced - filtering will be applied regardless of input type
+-- * InputFilter [InputFilter] Turns on the filter for this input. MPEG-2 inputs have the deblocking filter enabled by default.
+--1) auto - filtering will be applied depending on input type/quality
+--2) disabled - no filtering will be applied to the input
+--3) forced - filtering will be applied regardless of input type
 -- * FilterStrength [__integerMin1Max5] Adjusts the magnitude of filtering from 1 (minimal) to 5 (strongest).
 -- * NetworkInputSettings [NetworkInputSettings] Input settings.
 -- * DenoiseFilter [InputDenoiseFilter] Enable or disable the denoise filter when filtering.
@@ -1073,9 +1080,13 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * SpecialFeature [__string] Filter by special feature, 'ADVANCED_AUDIO' or 'AUDIO_NORMALIZATION'
+--
 -- * VideoQuality [__string] Filter by video quality, 'STANDARD', 'ENHANCED', or 'PREMIUM'
+--
 -- * ChannelConfiguration [__string] Filter to offerings that match the configuration of an existing channel, e.g. '2345678' (a channel ID)
+--
 -- * MaximumBitrate [__string] Filter by bitrate, 'MAX_10_MBPS', 'MAX_20_MBPS', or 'MAX_50_MBPS'
+--
 -- * ResourceType [__string] Filter by resource type, 'INPUT', 'OUTPUT', or 'CHANNEL'
 -- * MaxResults [MaxResults] 
 -- * Codec [__string] Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'
@@ -1179,7 +1190,10 @@ end
 -- A request to update an input.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Sources [__listOfInputSourceRequest] The source URLs for a PULL-type input. Every PULL type input needsexactly two source URLs for redundancy.Only specify sources for PULL type Inputs. Leave Destinations empty.
+-- * Sources [__listOfInputSourceRequest] The source URLs for a PULL-type input. Every PULL type input needs
+--exactly two source URLs for redundancy.
+--Only specify sources for PULL type Inputs. Leave Destinations empty.
+--
 -- * Name [__string] Name of the input.
 -- * InputId [__string] Unique ID of the input.
 -- * InputSecurityGroups [__listOf__string] A list of security groups referenced by IDs to attach to the input.
@@ -1426,7 +1440,9 @@ end
 -- * Syntax [H264Syntax] Produces a bitstream compliant with SMPTE RP-2027.
 -- * BufFillPct [__integerMin0Max100] Percentage of the buffer that should initially be filled (HRD buffer model).
 -- * FixedAfd [FixedAfd] Four bit AFD value to write on all frames of video in the output stream. Only valid when afdSignaling is set to 'Fixed'.
--- * MaxBitrate [__integerMin1000] Maximum bitrate in bits/second (for VBR and QVBR modes only).Required when rateControlMode is "qvbr".
+-- * MaxBitrate [__integerMin1000] Maximum bitrate in bits/second (for VBR and QVBR modes only).
+--
+--Required when rateControlMode is "qvbr".
 -- * TemporalAq [H264TemporalAq] If set to enabled, adjust quantization within each frame based on temporal variation of content complexity.
 -- * BufSize [__integerMin0] Size of buffer (HRD buffer model) in bits/second.
 -- * FramerateNumerator [__integer] Framerate numerator - framerate is a fraction, e.g. 24000 / 1001 = 23.976 fps.
@@ -1439,7 +1455,8 @@ end
 -- * LookAheadRateControl [H264LookAheadRateControl] Amount of lookahead. A value of low can decrease latency and memory usage, while high can produce better quality for certain content.
 -- * FramerateDenominator [__integer] Framerate denominator.
 -- * Bitrate [__integerMin1000] Average bitrate in bits/second. Required for VBR, CBR, and ABR. For MS Smooth outputs, bitrates must be unique when rounded down to the nearest multiple of 1000.
--- * QvbrQualityLevel [__integerMin1Max10] Target quality value. Applicable only to QVBR mode. 1 is the lowest quality and 10 is thehighest and approaches lossless. Typical levels for content distribution are between 6 and 8.
+-- * QvbrQualityLevel [__integerMin1Max10] Target quality value. Applicable only to QVBR mode. 1 is the lowest quality and 10 is the
+--highest and approaches lossless. Typical levels for content distribution are between 6 and 8.
 -- * NumRefFrames [__integerMin1Max6] Number of reference frames to use. The encoder may use more than requested if using B-frames and/or interlaced encoding.
 -- * EntropyEncoding [H264EntropyEncoding] Entropy encoding mode.  Use cabac (must be in Main or High profile) or cavlc.
 -- * GopSizeUnits [H264GopSizeUnits] Indicates if the gopSize is specified in frames or seconds. If seconds the system will convert the gopSize into a frame count at run time.
@@ -1452,12 +1469,25 @@ end
 -- * ScanType [H264ScanType] Sets the scan type of the output to progressive or top-field-first interlaced.
 -- * MinIInterval [__integerMin0Max30] Only meaningful if sceneChangeDetect is set to enabled.  Enforces separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the next GOP. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
 -- * ParControl [H264ParControl] This field indicates how the output pixel aspect ratio is specified.  If "specified" is selected then the output video pixel aspect ratio is determined by parNumerator and parDenominator, else if "initializeFromSource" is selected then the output pixsel aspect ratio will be set equal to the input video pixel aspect ratio of the first input.
--- * Slices [__integerMin1Max32] Number of slices per picture. Must be less than or equal to the number of macroblock rows for progressive pictures, and less than or equal to half the number of macroblock rows for interlaced pictures.This field is optional; when no value is specified the encoder will choose the number of slices based on encode resolution.
+-- * Slices [__integerMin1Max32] Number of slices per picture. Must be less than or equal to the number of macroblock rows for progressive pictures, and less than or equal to half the number of macroblock rows for interlaced pictures.
+--This field is optional; when no value is specified the encoder will choose the number of slices based on encode resolution.
 -- * SpatialAq [H264SpatialAq] If set to enabled, adjust quantization within each frame based on spatial variation of content complexity.
 -- * ParNumerator [__integer] Pixel Aspect Ratio numerator.
--- * RateControlMode [H264RateControlMode] Rate control mode. - CBR: Constant Bit Rate- VBR: Variable Bit Rate- QVBR: Encoder dynamically controls the bitrate to meet the desired quality (specifiedthrough the qvbrQualityLevel field). The bitrate will not exceed the bitrate specified inthe maxBitrate field and will not fall below the bitrate required to meet the desiredquality level.
--- * SceneChangeDetect [H264SceneChangeDetect] Scene change detection.- On: inserts I-frames when scene change is detected.- Off: does not force an I-frame when scene change is detected.
--- * TimecodeInsertion [H264TimecodeInsertionBehavior] Determines how timecodes should be inserted into the video elementary stream.- 'disabled': Do not include timecodes- 'picTimingSei': Pass through picture timing SEI messages from the source specified in Timecode Config
+-- * RateControlMode [H264RateControlMode] Rate control mode. 
+--
+--- CBR: Constant Bit Rate
+--- VBR: Variable Bit Rate
+--- QVBR: Encoder dynamically controls the bitrate to meet the desired quality (specified
+--through the qvbrQualityLevel field). The bitrate will not exceed the bitrate specified in
+--the maxBitrate field and will not fall below the bitrate required to meet the desired
+--quality level.
+-- * SceneChangeDetect [H264SceneChangeDetect] Scene change detection.
+--
+--- On: inserts I-frames when scene change is detected.
+--- Off: does not force an I-frame when scene change is detected.
+-- * TimecodeInsertion [H264TimecodeInsertionBehavior] Determines how timecodes should be inserted into the video elementary stream.
+--- 'disabled': Do not include timecodes
+--- 'picTimingSei': Pass through picture timing SEI messages from the source specified in Timecode Config
 -- * GopClosedCadence [__integerMin0] Frequency of closed GOPs. In streaming applications, it is recommended that this be set to 1 so a decoder joining mid-stream will receive an IDR frame as quickly as possible. Setting this value to 0 will break output segmenting.
 -- @return H264Settings structure as a key-value pair table
 function M.H264Settings(args)
@@ -1817,7 +1847,10 @@ end
 -- * TimestampDeltaMilliseconds [__integerMin0] Provides an extra millisecond delta offset to fine tune the timestamps.
 -- * ProgramDateTimePeriod [__integerMin0Max3600] Period of insertion of EXT-X-PROGRAM-DATE-TIME entry, in seconds.
 -- * SegmentLength [__integerMin1] Length of MPEG-2 Transport Stream segments to create (in seconds). Note that segments will end on the next keyframe after this number of seconds, so actual segment length may be longer.
--- * CaptionLanguageSetting [HlsCaptionLanguageSetting] Applies only to 608 Embedded output captions.insert: Include CLOSED-CAPTIONS lines in the manifest. Specify at least one language in the CC1 Language Code field. One CLOSED-CAPTION line is added for each Language Code you specify. Make sure to specify the languages in the order in which they appear in the original source (if the source is embedded format) or the order of the caption selectors (if the source is other than embedded). Otherwise, languages in the manifest will not match up properly with the output captions.none: Include CLOSED-CAPTIONS=NONE line in the manifest.omit: Omit any CLOSED-CAPTIONS line from the manifest.
+-- * CaptionLanguageSetting [HlsCaptionLanguageSetting] Applies only to 608 Embedded output captions.
+--insert: Include CLOSED-CAPTIONS lines in the manifest. Specify at least one language in the CC1 Language Code field. One CLOSED-CAPTION line is added for each Language Code you specify. Make sure to specify the languages in the order in which they appear in the original source (if the source is embedded format) or the order of the caption selectors (if the source is other than embedded). Otherwise, languages in the manifest will not match up properly with the output captions.
+--none: Include CLOSED-CAPTIONS=NONE line in the manifest.
+--omit: Omit any CLOSED-CAPTIONS line from the manifest.
 -- * ProgramDateTime [HlsProgramDateTime] Includes or excludes EXT-X-PROGRAM-DATE-TIME tag in .m3u8 manifest files. The value is calculated as follows: either the program date and time are initialized using the input timecode source, or the time is initialized using the input timecode source and the date is initialized using the timestampOffset.
 -- * HlsCdnSettings [HlsCdnSettings] Parameters that control interactions with the CDN.
 -- * TsFileMode [HlsTsFileMode] When set to "singleFile", emits the program as a single media resource (.ts) file, and uses #EXT-X-BYTERANGE tags to index segment for playback. Playback of VOD mode content during event is not guaranteed due to HTTP server caching.
@@ -1832,7 +1865,9 @@ end
 -- * ManifestCompression [HlsManifestCompression] When set to gzip, compresses HLS playlist.
 -- * MinSegmentLength [__integerMin0] When set, minimumSegmentLength is enforced by looking ahead and back within the specified range for a nearby avail and extending the segment size if needed.
 -- * DirectoryStructure [HlsDirectoryStructure] Place segments in subdirectories.
--- * Mode [HlsMode] If "vod", all segments are indexed and kept permanently in the destination and manifest. If "live", only the number segments specified in keepSegments and indexNSegments are kept; newer segments replace older segments, which may prevent players from rewinding all the way to the beginning of the event.VOD mode uses HLS EXT-X-PLAYLIST-TYPE of EVENT while the channel is running, converting it to a "VOD" type manifest on completion of the stream.
+-- * Mode [HlsMode] If "vod", all segments are indexed and kept permanently in the destination and manifest. If "live", only the number segments specified in keepSegments and indexNSegments are kept; newer segments replace older segments, which may prevent players from rewinding all the way to the beginning of the event.
+--
+--VOD mode uses HLS EXT-X-PLAYLIST-TYPE of EVENT while the channel is running, converting it to a "VOD" type manifest on completion of the stream.
 -- Required key: Destination
 -- @return HlsGroupSettings structure as a key-value pair table
 function M.HlsGroupSettings(args)
@@ -2118,11 +2153,15 @@ end
 -- Placeholder documentation for MsSmoothGroupSettings
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * EventId [__string] MS Smooth event ID to be sent to the IIS server.Should only be specified if eventIdMode is set to useConfigured.
+-- * EventId [__string] MS Smooth event ID to be sent to the IIS server.
+--
+--Should only be specified if eventIdMode is set to useConfigured.
 -- * ConnectionRetryInterval [__integerMin0] Number of seconds to wait before retrying connection to the IIS server if the connection is lost. Content will be cached during this time and the cache will be be delivered to the IIS server once the connection is re-established.
 -- * SegmentationMode [SmoothGroupSegmentationMode] When set to useInputSegmentation, the output segment or fragment points are set by the RAI markers from the input streams.
 -- * FilecacheDuration [__integerMin0] Size in seconds of file cache for streaming outputs.
--- * TimestampOffsetMode [SmoothGroupTimestampOffsetMode] Type of timestamp date offset to use.- useEventStartDate: Use the date the event was started as the offset- useConfiguredOffset: Use an explicitly configured date as the offset
+-- * TimestampOffsetMode [SmoothGroupTimestampOffsetMode] Type of timestamp date offset to use.
+--- useEventStartDate: Use the date the event was started as the offset
+--- useConfiguredOffset: Use an explicitly configured date as the offset
 -- * SendDelayMs [__integerMin0Max10000] Number of milliseconds to delay the output from the second pipeline.
 -- * SparseTrackType [SmoothGroupSparseTrackType] If set to scte35, use incoming SCTE-35 messages to generate a sparse track in this group of MS-Smooth outputs.
 -- * Destination [OutputLocationRef] Smooth Streaming publish point on an IIS server. Elemental Live acts as a "Push" encoder to IIS.
@@ -2134,7 +2173,12 @@ end
 -- * FragmentLength [__integerMin1] Length of mp4 fragments to generate (in seconds). Fragment length must be compatible with GOP size and framerate.
 -- * StreamManifestBehavior [SmoothGroupStreamManifestBehavior] When set to send, send stream manifest so publishing point doesn't start until all streams start.
 -- * NumRetries [__integerMin0] Number of retry attempts.
--- * EventIdMode [SmoothGroupEventIdMode] Specifies whether or not to send an event ID to the IIS server. If no event ID is sent and the same Live Event is used without changing the publishing point, clients might see cached video from the previous run.Options:- "useConfigured" - use the value provided in eventId- "useTimestamp" - generate and send an event ID based on the current timestamp- "noEventId" - do not send an event ID to the IIS server.
+-- * EventIdMode [SmoothGroupEventIdMode] Specifies whether or not to send an event ID to the IIS server. If no event ID is sent and the same Live Event is used without changing the publishing point, clients might see cached video from the previous run.
+--
+--Options:
+--- "useConfigured" - use the value provided in eventId
+--- "useTimestamp" - generate and send an event ID based on the current timestamp
+--- "noEventId" - do not send an event ID to the IIS server.
 -- * TimestampOffset [__string] Timestamp offset for the event.  Only used if timestampOffsetMode is set to useConfiguredOffset.
 -- * EventStopBehavior [SmoothGroupEventStopBehavior] When set to sendEos, send EOS signal to IIS server when stopping the event
 -- Required key: Destination
@@ -2443,7 +2487,11 @@ end
 -- Placeholder documentation for Scte27SourceSettings
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Pid [__integerMin1] The pid field is used in conjunction with the caption selector languageCode field as follows:  - Specify PID and Language: Extracts captions from that PID; the language is "informational".  - Specify PID and omit Language: Extracts the specified PID.  - Omit PID and specify Language: Extracts the specified language, whichever PID that happens to be.  - Omit PID and omit Language: Valid only if source is DVB-Sub that is being passed through; all languages will be passed through.
+-- * Pid [__integerMin1] The pid field is used in conjunction with the caption selector languageCode field as follows:
+--  - Specify PID and Language: Extracts captions from that PID; the language is "informational".
+--  - Specify PID and omit Language: Extracts the specified PID.
+--  - Omit PID and specify Language: Extracts the specified language, whichever PID that happens to be.
+--  - Omit PID and omit Language: Valid only if source is DVB-Sub that is being passed through; all languages will be passed through.
 -- @return Scte27SourceSettings structure as a key-value pair table
 function M.Scte27SourceSettings(args)
 	assert(args, "You must provide an argument table when creating Scte27SourceSettings")
@@ -2863,8 +2911,12 @@ end
 -- The settings for a PUSH type input.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Url [__string] This represents the endpoint that the customer stream will bepushed to.
--- * Ip [__string] The system-generated static IP address of endpoint.It remains fixed for the lifetime of the input.
+-- * Url [__string] This represents the endpoint that the customer stream will be
+--pushed to.
+--
+-- * Ip [__string] The system-generated static IP address of endpoint.
+--It remains fixed for the lifetime of the input.
+--
 -- * Port [__string] The port number for the input.
 -- @return InputDestination structure as a key-value pair table
 function M.InputDestination(args)
@@ -3212,7 +3264,10 @@ end
 -- * EncoderSettings [EncoderSettings] 
 -- * Id [__string] The unique id of the channel.
 -- * Arn [__string] The unique arn of the channel.
--- * Destinations [__listOfOutputDestination] A list of destinations of the channel. For UDP outputs, there is onedestination per output. For other types (HLS, for example), there isone destination per packager.
+-- * Destinations [__listOfOutputDestination] A list of destinations of the channel. For UDP outputs, there is one
+--destination per output. For other types (HLS, for example), there is
+--one destination per packager.
+--
 -- @return StartChannelResponse structure as a key-value pair table
 function M.StartChannelResponse(args)
 	assert(args, "You must provide an argument table when creating StartChannelResponse")
@@ -3591,8 +3646,13 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Name [__string] Name of the input.
--- * Sources [__listOfInputSourceRequest] The source URLs for a PULL-type input. Every PULL type input needsexactly two source URLs for redundancy.Only specify sources for PULL type Inputs. Leave Destinations empty.
--- * RequestId [__string] Unique identifier of the request to ensure the request is handledexactly once in case of retries.
+-- * Sources [__listOfInputSourceRequest] The source URLs for a PULL-type input. Every PULL type input needs
+--exactly two source URLs for redundancy.
+--Only specify sources for PULL type Inputs. Leave Destinations empty.
+--
+-- * RequestId [__string] Unique identifier of the request to ensure the request is handled
+--exactly once in case of retries.
+--
 -- * Destinations [__listOfInputDestinationRequest] Destination settings for PUSH type inputs.
 -- * Type [InputType] 
 -- * InputSecurityGroups [__listOf__string] A list of security groups referenced by IDs to attach to the input.
@@ -3818,7 +3878,10 @@ end
 -- Placeholder documentation for TimecodeConfig
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Source [TimecodeConfigSource] Identifies the source for the timecode that will be associated with the events outputs.-Embedded (embedded): Initialize the output timecode with timecode from the the source.  If no embedded timecode is detected in the source, the system falls back to using "Start at 0" (zerobased).-System Clock (systemclock): Use the UTC time.-Start at 0 (zerobased): The time of the first frame of the event will be 00:00:00:00.
+-- * Source [TimecodeConfigSource] Identifies the source for the timecode that will be associated with the events outputs.
+---Embedded (embedded): Initialize the output timecode with timecode from the the source.  If no embedded timecode is detected in the source, the system falls back to using "Start at 0" (zerobased).
+---System Clock (systemclock): Use the UTC time.
+---Start at 0 (zerobased): The time of the first frame of the event will be 00:00:00:00.
 -- * SyncThreshold [__integerMin1Max1000000] Threshold in frames beyond which output timecode is resynchronized to the input timecode. Discrepancies below this threshold are permitted to avoid unnecessary discontinuities in the output timecode. No timecode sync when this is not specified.
 -- Required key: Source
 -- @return TimecodeConfig structure as a key-value pair table
@@ -3969,7 +4032,10 @@ end
 -- * EncoderSettings [EncoderSettings] 
 -- * Id [__string] The unique id of the channel.
 -- * Arn [__string] The unique arn of the channel.
--- * Destinations [__listOfOutputDestination] A list of destinations of the channel. For UDP outputs, there is onedestination per output. For other types (HLS, for example), there isone destination per packager.
+-- * Destinations [__listOfOutputDestination] A list of destinations of the channel. For UDP outputs, there is one
+--destination per output. For other types (HLS, for example), there is
+--one destination per packager.
+--
 -- @return DescribeChannelResponse structure as a key-value pair table
 function M.DescribeChannelResponse(args)
 	assert(args, "You must provide an argument table when creating DescribeChannelResponse")
@@ -4173,7 +4239,10 @@ end
 -- * EncoderSettings [EncoderSettings] 
 -- * Id [__string] The unique id of the channel.
 -- * Arn [__string] The unique arn of the channel.
--- * Destinations [__listOfOutputDestination] A list of destinations of the channel. For UDP outputs, there is onedestination per output. For other types (HLS, for example), there isone destination per packager.
+-- * Destinations [__listOfOutputDestination] A list of destinations of the channel. For UDP outputs, there is one
+--destination per output. For other types (HLS, for example), there is
+--one destination per packager.
+--
 -- @return DeleteChannelResponse structure as a key-value pair table
 function M.DeleteChannelResponse(args)
 	assert(args, "You must provide an argument table when creating DeleteChannelResponse")
@@ -4241,7 +4310,10 @@ end
 -- * PipelinesRunningCount [__integer] The number of currently healthy pipelines.
 -- * Id [__string] The unique id of the channel.
 -- * Arn [__string] The unique arn of the channel.
--- * Destinations [__listOfOutputDestination] A list of destinations of the channel. For UDP outputs, there is onedestination per output. For other types (HLS, for example), there isone destination per packager.
+-- * Destinations [__listOfOutputDestination] A list of destinations of the channel. For UDP outputs, there is one
+--destination per output. For other types (HLS, for example), there is
+--one destination per packager.
+--
 -- @return ChannelSummary structure as a key-value pair table
 function M.ChannelSummary(args)
 	assert(args, "You must provide an argument table when creating ChannelSummary")
@@ -4393,7 +4465,10 @@ end
 -- * EncoderSettings [EncoderSettings] 
 -- * Id [__string] The unique id of the channel.
 -- * Arn [__string] The unique arn of the channel.
--- * Destinations [__listOfOutputDestination] A list of destinations of the channel. For UDP outputs, there is onedestination per output. For other types (HLS, for example), there isone destination per packager.
+-- * Destinations [__listOfOutputDestination] A list of destinations of the channel. For UDP outputs, there is one
+--destination per output. For other types (HLS, for example), there is
+--one destination per packager.
+--
 -- @return StopChannelResponse structure as a key-value pair table
 function M.StopChannelResponse(args)
 	assert(args, "You must provide an argument table when creating StopChannelResponse")
@@ -4796,7 +4871,9 @@ end
 -- The settings for a PULL type input.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Url [__string] This represents the customer's source URL where stream ispulled from.
+-- * Url [__string] This represents the customer's source URL where stream is
+--pulled from.
+--
 -- * Username [__string] The username for the input source.
 -- * PasswordParam [__string] The key used to extract the password from EC2 Parameter store.
 -- @return InputSource structure as a key-value pair table
@@ -5755,7 +5832,9 @@ end
 -- * LogLevel [LogLevel] The log level to write to CloudWatch Logs.
 -- * RoleArn [__string] An optional Amazon Resource Name (ARN) of the role to assume when running the Channel.
 -- * InputSpecification [InputSpecification] Specification of input for this channel (max. bitrate, resolution, codec, etc.)
--- * RequestId [__string] Unique request ID to be specified. This is needed to prevent retries fromcreating multiple resources.
+-- * RequestId [__string] Unique request ID to be specified. This is needed to prevent retries from
+--creating multiple resources.
+--
 -- * EncoderSettings [EncoderSettings] 
 -- * Destinations [__listOfOutputDestination] 
 -- @return CreateChannelRequest structure as a key-value pair table
@@ -6360,7 +6439,10 @@ end
 -- * AudioSelectorName [__string] The name of the AudioSelector used as the source for this AudioDescription.
 -- * LanguageCodeControl [AudioDescriptionLanguageCodeControl] Choosing followInput will cause the ISO 639 language code of the output to follow the ISO 639 language code of the input. The languageCode will be used when useConfigured is set, or when followInput is selected but there is no ISO 639 language code specified by the input.
 -- * RemixSettings [RemixSettings] Settings that control how input audio channels are remixed into the output audio channels.
--- * AudioTypeControl [AudioDescriptionAudioTypeControl] Determines how audio type is determined.  followInput: If the input contains an ISO 639 audioType, then that value is passed through to the output. If the input contains no ISO 639 audioType, the value in Audio Type is included in the output.  useConfigured: The value in Audio Type is included in the output.Note that this field and audioType are both ignored if inputType is broadcasterMixedAd.
+-- * AudioTypeControl [AudioDescriptionAudioTypeControl] Determines how audio type is determined.
+--  followInput: If the input contains an ISO 639 audioType, then that value is passed through to the output. If the input contains no ISO 639 audioType, the value in Audio Type is included in the output.
+--  useConfigured: The value in Audio Type is included in the output.
+--Note that this field and audioType are both ignored if inputType is broadcasterMixedAd.
 -- * AudioType [AudioType] Applies only if audioTypeControl is useConfigured. The values for audioType are defined in ISO-IEC 13818-1.
 -- * AudioNormalizationSettings [AudioNormalizationSettings] Advanced audio normalization settings.
 -- * Name [__string] The name of this AudioDescription. Outputs will use this name to uniquely identify this AudioDescription.  Description names should be unique within this Live Event.
@@ -6850,7 +6932,8 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * ChannelMappings [__listOfAudioChannelMapping] Mapping of input channels to output channels, with appropriate gain adjustments.
--- * ChannelsOut [__integerMin1Max8] Number of output channels to be produced.Valid values: 1, 2, 4, 6, 8
+-- * ChannelsOut [__integerMin1Max8] Number of output channels to be produced.
+--Valid values: 1, 2, 4, 6, 8
 -- * ChannelsIn [__integerMin1Max16] Number of input channels to be used.
 -- Required key: ChannelMappings
 -- @return RemixSettings structure as a key-value pair table
@@ -6984,7 +7067,10 @@ end
 -- * EncoderSettings [EncoderSettings] 
 -- * Id [__string] The unique id of the channel.
 -- * Arn [__string] The unique arn of the channel.
--- * Destinations [__listOfOutputDestination] A list of destinations of the channel. For UDP outputs, there is onedestination per output. For other types (HLS, for example), there isone destination per packager.
+-- * Destinations [__listOfOutputDestination] A list of destinations of the channel. For UDP outputs, there is one
+--destination per output. For other types (HLS, for example), there is
+--one destination per packager.
+--
 -- @return Channel structure as a key-value pair table
 function M.Channel(args)
 	assert(args, "You must provide an argument table when creating Channel")
@@ -7041,8 +7127,11 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * SpecialFeature [__string] Filter by special feature, 'ADVANCED_AUDIO' or 'AUDIO_NORMALIZATION'
+--
 -- * VideoQuality [__string] Filter by video quality, 'STANDARD', 'ENHANCED', or 'PREMIUM'
+--
 -- * MaximumBitrate [__string] Filter by bitrate, 'MAX_10_MBPS', 'MAX_20_MBPS', or 'MAX_50_MBPS'
+--
 -- * ResourceType [__string] Filter by resource type, 'INPUT', 'OUTPUT', or 'CHANNEL'
 -- * MaxResults [MaxResults] 
 -- * Codec [__string] Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'
@@ -7378,7 +7467,11 @@ end
 -- * EtvSignalPid [__string] Packet Identifier (PID) for input source ETV Signal data to this output. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
 -- * Klv [M2tsKlv] If set to passthrough, passes any KLV data from the input source to this output.
 -- * NullPacketBitrate [__doubleMin0] Value in bits per second of extra null packets to insert into the transport stream. This can be used if a downstream encryption system requires periodic null packets.
--- * SegmentationStyle [M2tsSegmentationStyle] The segmentation style parameter controls how segmentation markers are inserted into the transport stream. With avails, it is possible that segments may be truncated, which can influence where future segmentation markers are inserted.When a segmentation style of "resetCadence" is selected and a segment is truncated due to an avail, we will reset the segmentation cadence. This means the subsequent segment will have a duration of $segmentationTime seconds.When a segmentation style of "maintainCadence" is selected and a segment is truncated due to an avail, we will not reset the segmentation cadence. This means the subsequent segment will likely be truncated as well. However, all segments after that will have a duration of $segmentationTime seconds. Note that EBP lookahead is a slight exception to this rule.
+-- * SegmentationStyle [M2tsSegmentationStyle] The segmentation style parameter controls how segmentation markers are inserted into the transport stream. With avails, it is possible that segments may be truncated, which can influence where future segmentation markers are inserted.
+--
+--When a segmentation style of "resetCadence" is selected and a segment is truncated due to an avail, we will reset the segmentation cadence. This means the subsequent segment will have a duration of $segmentationTime seconds.
+--
+--When a segmentation style of "maintainCadence" is selected and a segment is truncated due to an avail, we will not reset the segmentation cadence. This means the subsequent segment will likely be truncated as well. However, all segments after that will have a duration of $segmentationTime seconds. Note that EBP lookahead is a slight exception to this rule.
 -- * ProgramNum [__integerMin0Max65535] The value of the program number field in the Program Map Table.
 -- * BufferModel [M2tsBufferModel] If set to multiplex, use multiplex buffer model for accurate interleaving.  Setting to bufferModel to none can lead to lower latency, but low-memory devices may not be able to play back the stream without interruptions.
 -- * DvbTdtSettings [DvbTdtSettings] Inserts DVB Time and Date Table (TDT) at the specified table repetition interval.
@@ -7602,7 +7695,19 @@ end
 -- Valid keys:
 -- * AudioGroupId [__string] Specifies the group to which the audio Rendition belongs.
 -- * AudioOnlyImage [InputLocation] For use with an audio only Stream. Must be a .jpg or .png file. If given, this image will be used as the cover-art for the audio only output. Ideally, it should be formatted for an iPhone screen for two reasons. The iPhone does not resize the image, it crops a centered image on the top/bottom and left/right. Additionally, this image file gets saved bit-for-bit into every 10-second segment file, so will increase bandwidth by {image file size} * {segment count} * {user count.}.
--- * AudioTrackType [AudioOnlyHlsTrackType] Four types of audio-only tracks are supported:Audio-Only Variant StreamThe client can play back this audio-only stream instead of video in low-bandwidth scenarios. Represented as an EXT-X-STREAM-INF in the HLS manifest.Alternate Audio, Auto Select, DefaultAlternate rendition that the client should try to play back by default. Represented as an EXT-X-MEDIA in the HLS manifest with DEFAULT=YES, AUTOSELECT=YESAlternate Audio, Auto Select, Not DefaultAlternate rendition that the client may try to play back by default. Represented as an EXT-X-MEDIA in the HLS manifest with DEFAULT=NO, AUTOSELECT=YESAlternate Audio, not Auto SelectAlternate rendition that the client will not try to play back by default. Represented as an EXT-X-MEDIA in the HLS manifest with DEFAULT=NO, AUTOSELECT=NO
+-- * AudioTrackType [AudioOnlyHlsTrackType] Four types of audio-only tracks are supported:
+--
+--Audio-Only Variant Stream
+--The client can play back this audio-only stream instead of video in low-bandwidth scenarios. Represented as an EXT-X-STREAM-INF in the HLS manifest.
+--
+--Alternate Audio, Auto Select, Default
+--Alternate rendition that the client should try to play back by default. Represented as an EXT-X-MEDIA in the HLS manifest with DEFAULT=YES, AUTOSELECT=YES
+--
+--Alternate Audio, Auto Select, Not Default
+--Alternate rendition that the client may try to play back by default. Represented as an EXT-X-MEDIA in the HLS manifest with DEFAULT=NO, AUTOSELECT=YES
+--
+--Alternate Audio, not Auto Select
+--Alternate rendition that the client will not try to play back by default. Represented as an EXT-X-MEDIA in the HLS manifest with DEFAULT=NO, AUTOSELECT=NO
 -- @return AudioOnlyHlsSettings structure as a key-value pair table
 function M.AudioOnlyHlsSettings(args)
 	assert(args, "You must provide an argument table when creating AudioOnlyHlsSettings")
@@ -7795,7 +7900,9 @@ end
 -- Endpoint settings for a PUSH type input.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * StreamName [__string] A unique name for the location the RTMP stream is being pushedto.
+-- * StreamName [__string] A unique name for the location the RTMP stream is being pushed
+--to.
+--
 -- @return InputDestinationRequest structure as a key-value pair table
 function M.InputDestinationRequest(args)
 	assert(args, "You must provide an argument table when creating InputDestinationRequest")
@@ -9593,7 +9700,7 @@ function asserts.AssertInputResolution(str)
 end
 
 -- Input resolution based on lines of vertical resolution in the input; SD is less than 720 lines, HD is 720 to 1080 lines, UHD is greater than 1080 lines
-
+--
 function M.InputResolution(str)
 	asserts.AssertInputResolution(str)
 	return str
@@ -9605,7 +9712,7 @@ function asserts.AssertReservationResolution(str)
 end
 
 -- Resolution based on lines of vertical resolution; SD is less than 720 lines, HD is 720 to 1080 lines, UHD is greater than 1080 lines
-
+--
 function M.ReservationResolution(str)
 	asserts.AssertReservationResolution(str)
 	return str

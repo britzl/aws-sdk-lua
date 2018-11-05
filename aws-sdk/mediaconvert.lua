@@ -403,7 +403,8 @@ end
 -- Required when you set (Codec) under (AudioDescriptions)>(CodecSettings) to the value EAC3.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * LoRoSurroundMixLevel [__doubleMinNegative60MaxNegative1] Left only/Right only surround mix level. Only used for 3/2 coding mode.Valid values: -1.5 -3.0 -4.5 -6.0 -60
+-- * LoRoSurroundMixLevel [__doubleMinNegative60MaxNegative1] Left only/Right only surround mix level. Only used for 3/2 coding mode.
+--Valid values: -1.5 -3.0 -4.5 -6.0 -60
 -- * DynamicRangeCompressionRf [Eac3DynamicRangeCompressionRf] 
 -- * DynamicRangeCompressionLine [Eac3DynamicRangeCompressionLine] 
 -- * PhaseControl [Eac3PhaseControl] 
@@ -411,19 +412,22 @@ end
 -- * StereoDownmix [Eac3StereoDownmix] 
 -- * BitstreamMode [Eac3BitstreamMode] 
 -- * LfeControl [Eac3LfeControl] 
--- * LtRtCenterMixLevel [__doubleMinNegative60Max3] Left total/Right total center mix level. Only used for 3/2 coding mode.Valid values: 3.0, 1.5, 0.0, -1.5 -3.0 -4.5 -6.0 -60
+-- * LtRtCenterMixLevel [__doubleMinNegative60Max3] Left total/Right total center mix level. Only used for 3/2 coding mode.
+--Valid values: 3.0, 1.5, 0.0, -1.5 -3.0 -4.5 -6.0 -60
 -- * Dialnorm [__integerMin1Max31] Sets the dialnorm for the output. If blank and input audio is Dolby Digital Plus, dialnorm will be passed through.
 -- * DcFilter [Eac3DcFilter] 
 -- * AttenuationControl [Eac3AttenuationControl] 
 -- * LfeFilter [Eac3LfeFilter] 
--- * LtRtSurroundMixLevel [__doubleMinNegative60MaxNegative1] Left total/Right total surround mix level. Only used for 3/2 coding mode.Valid values: -1.5 -3.0 -4.5 -6.0 -60
+-- * LtRtSurroundMixLevel [__doubleMinNegative60MaxNegative1] Left total/Right total surround mix level. Only used for 3/2 coding mode.
+--Valid values: -1.5 -3.0 -4.5 -6.0 -60
 -- * SurroundMode [Eac3SurroundMode] 
 -- * SampleRate [__integerMin48000Max48000] Sample rate in hz. Sample rate is always 48000.
 -- * PassthroughControl [Eac3PassthroughControl] 
 -- * Bitrate [__integerMin64000Max640000] Average bitrate in bits/second. Valid bitrates depend on the coding mode.
 -- * CodingMode [Eac3CodingMode] 
 -- * SurroundExMode [Eac3SurroundExMode] 
--- * LoRoCenterMixLevel [__doubleMinNegative60Max3] Left only/Right only center mix level. Only used for 3/2 coding mode.Valid values: 3.0, 1.5, 0.0, -1.5 -3.0 -4.5 -6.0 -60
+-- * LoRoCenterMixLevel [__doubleMinNegative60Max3] Left only/Right only center mix level. Only used for 3/2 coding mode.
+--Valid values: 3.0, 1.5, 0.0, -1.5 -3.0 -4.5 -6.0 -60
 -- @return Eac3Settings structure as a key-value pair table
 function M.Eac3Settings(args)
 	assert(args, "You must provide an argument table when creating Eac3Settings")
@@ -585,9 +589,11 @@ end
 -- * ShadowXOffset [__integerMinNegative2147483648Max2147483647] Specifies the horizontal offset of the shadow relative to the captions in pixels. A value of -2 would result in a shadow offset 2 pixels to the left. All burn-in and DVB-Sub font settings must match.
 -- * ShadowYOffset [__integerMinNegative2147483648Max2147483647] Specifies the vertical offset of the shadow relative to the captions in pixels. A value of -2 would result in a shadow offset 2 pixels above the text. All burn-in and DVB-Sub font settings must match.
 -- * XPosition [__integerMin0Max2147483647] Specifies the horizontal position of the caption relative to the left side of the output in pixels. A value of 10 would result in the captions starting 10 pixels from the left of the output. If no explicit x_position is provided, the horizontal caption position will be determined by the alignment parameter. This option is not valid for source captions that are STL, 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
--- * FontOpacity [__integerMin0Max255] Specifies the opacity of the burned-in captions. 255 is opaque; 0 is transparent.All burn-in and DVB-Sub font settings must match.
+-- * FontOpacity [__integerMin0Max255] Specifies the opacity of the burned-in captions. 255 is opaque; 0 is transparent.
+--All burn-in and DVB-Sub font settings must match.
 -- * ShadowColor [DvbSubtitleShadowColor] 
--- * FontResolution [__integerMin96Max600] Font resolution in DPI (dots per inch); default is 96 dpi.All burn-in and DVB-Sub font settings must match.
+-- * FontResolution [__integerMin96Max600] Font resolution in DPI (dots per inch); default is 96 dpi.
+--All burn-in and DVB-Sub font settings must match.
 -- * FontSize [__integerMin0Max96] A positive integer indicates the exact font size in points. Set to 0 for automatic font size selection. All burn-in and DVB-Sub font settings must match.
 -- * BackgroundColor [DvbSubtitleBackgroundColor] 
 -- * FontColor [DvbSubtitleFontColor] 
@@ -6612,9 +6618,11 @@ end
 -- * ShadowXOffset [__integerMinNegative2147483648Max2147483647] Specifies the horizontal offset of the shadow relative to the captions in pixels. A value of -2 would result in a shadow offset 2 pixels to the left. All burn-in and DVB-Sub font settings must match.
 -- * ShadowYOffset [__integerMinNegative2147483648Max2147483647] Specifies the vertical offset of the shadow relative to the captions in pixels. A value of -2 would result in a shadow offset 2 pixels above the text. All burn-in and DVB-Sub font settings must match.
 -- * XPosition [__integerMin0Max2147483647] Specifies the horizontal position of the caption relative to the left side of the output in pixels. A value of 10 would result in the captions starting 10 pixels from the left of the output. If no explicit x_position is provided, the horizontal caption position will be determined by the alignment parameter. This option is not valid for source captions that are STL, 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
--- * FontOpacity [__integerMin0Max255] Specifies the opacity of the burned-in captions. 255 is opaque; 0 is transparent.All burn-in and DVB-Sub font settings must match.
+-- * FontOpacity [__integerMin0Max255] Specifies the opacity of the burned-in captions. 255 is opaque; 0 is transparent.
+--All burn-in and DVB-Sub font settings must match.
 -- * ShadowColor [BurninSubtitleShadowColor] 
--- * FontResolution [__integerMin96Max600] Font resolution in DPI (dots per inch); default is 96 dpi.All burn-in and DVB-Sub font settings must match.
+-- * FontResolution [__integerMin96Max600] Font resolution in DPI (dots per inch); default is 96 dpi.
+--All burn-in and DVB-Sub font settings must match.
 -- * FontSize [__integerMin0Max96] A positive integer indicates the exact font size in points. Set to 0 for automatic font size selection. All burn-in and DVB-Sub font settings must match.
 -- * BackgroundColor [BurninSubtitleBackgroundColor] 
 -- * FontColor [BurninSubtitleFontColor] 
@@ -7525,8 +7533,8 @@ function asserts.AssertMpeg2InterlaceMode(str)
 end
 
 -- Use Interlace mode (InterlaceMode) to choose the scan line type for the output. * Top Field First (TOP_FIELD) and Bottom Field First (BOTTOM_FIELD) produce interlaced output with the entire output having the same field polarity (top or bottom first). * Follow, Default Top (FOLLOW_TOP_FIELD) and Follow, Default Bottom (FOLLOW_BOTTOM_FIELD) use the same field polarity as the source. Therefore, behavior depends on the input scan type.
-  - If the source is interlaced, the output will be interlaced with the same polarity as the source (it will follow the source). The output could therefore be a mix of "top field first" and "bottom field first".
-  - If the source is progressive, the output will be interlaced with "top field first" or "bottom field first" polarity, depending on which of the Follow options you chose.
+--  - If the source is interlaced, the output will be interlaced with the same polarity as the source (it will follow the source). The output could therefore be a mix of "top field first" and "bottom field first".
+--  - If the source is progressive, the output will be interlaced with "top field first" or "bottom field first" polarity, depending on which of the Follow options you chose.
 function M.Mpeg2InterlaceMode(str)
 	asserts.AssertMpeg2InterlaceMode(str)
 	return str
@@ -7659,7 +7667,7 @@ function asserts.AssertDvbSubtitleShadowColor(str)
 end
 
 -- Specifies the color of the shadow cast by the captions.
-All burn-in and DVB-Sub font settings must match.
+--All burn-in and DVB-Sub font settings must match.
 function M.DvbSubtitleShadowColor(str)
 	asserts.AssertDvbSubtitleShadowColor(str)
 	return str
@@ -7671,8 +7679,8 @@ function asserts.AssertH265InterlaceMode(str)
 end
 
 -- Use Interlace mode (InterlaceMode) to choose the scan line type for the output. * Top Field First (TOP_FIELD) and Bottom Field First (BOTTOM_FIELD) produce interlaced output with the entire output having the same field polarity (top or bottom first). * Follow, Default Top (FOLLOW_TOP_FIELD) and Follow, Default Bottom (FOLLOW_BOTTOM_FIELD) use the same field polarity as the source. Therefore, behavior depends on the input scan type.
-  - If the source is interlaced, the output will be interlaced with the same polarity as the source (it will follow the source). The output could therefore be a mix of "top field first" and "bottom field first".
-  - If the source is progressive, the output will be interlaced with "top field first" or "bottom field first" polarity, depending on which of the Follow options you chose.
+--  - If the source is interlaced, the output will be interlaced with the same polarity as the source (it will follow the source). The output could therefore be a mix of "top field first" and "bottom field first".
+--  - If the source is progressive, the output will be interlaced with "top field first" or "bottom field first" polarity, depending on which of the Follow options you chose.
 function M.H265InterlaceMode(str)
 	asserts.AssertH265InterlaceMode(str)
 	return str
@@ -7750,8 +7758,8 @@ function asserts.AssertProresInterlaceMode(str)
 end
 
 -- Use Interlace mode (InterlaceMode) to choose the scan line type for the output. * Top Field First (TOP_FIELD) and Bottom Field First (BOTTOM_FIELD) produce interlaced output with the entire output having the same field polarity (top or bottom first). * Follow, Default Top (FOLLOW_TOP_FIELD) and Follow, Default Bottom (FOLLOW_BOTTOM_FIELD) use the same field polarity as the source. Therefore, behavior depends on the input scan type.
-  - If the source is interlaced, the output will be interlaced with the same polarity as the source (it will follow the source). The output could therefore be a mix of "top field first" and "bottom field first".
-  - If the source is progressive, the output will be interlaced with "top field first" or "bottom field first" polarity, depending on which of the Follow options you chose.
+--  - If the source is interlaced, the output will be interlaced with the same polarity as the source (it will follow the source). The output could therefore be a mix of "top field first" and "bottom field first".
+--  - If the source is progressive, the output will be interlaced with "top field first" or "bottom field first" polarity, depending on which of the Follow options you chose.
 function M.ProresInterlaceMode(str)
 	asserts.AssertProresInterlaceMode(str)
 	return str
@@ -7840,7 +7848,7 @@ function asserts.AssertDvbSubtitleBackgroundColor(str)
 end
 
 -- Specifies the color of the rectangle behind the captions.
-All burn-in and DVB-Sub font settings must match.
+--All burn-in and DVB-Sub font settings must match.
 function M.DvbSubtitleBackgroundColor(str)
 	asserts.AssertDvbSubtitleBackgroundColor(str)
 	return str
@@ -8171,7 +8179,7 @@ function asserts.AssertBurninSubtitleShadowColor(str)
 end
 
 -- Specifies the color of the shadow cast by the captions.
-All burn-in and DVB-Sub font settings must match.
+--All burn-in and DVB-Sub font settings must match.
 function M.BurninSubtitleShadowColor(str)
 	asserts.AssertBurninSubtitleShadowColor(str)
 	return str
@@ -8425,7 +8433,7 @@ function asserts.AssertBurninSubtitleBackgroundColor(str)
 end
 
 -- Specifies the color of the rectangle behind the captions.
-All burn-in and DVB-Sub font settings must match.
+--All burn-in and DVB-Sub font settings must match.
 function M.BurninSubtitleBackgroundColor(str)
 	asserts.AssertBurninSubtitleBackgroundColor(str)
 	return str
@@ -9864,8 +9872,8 @@ function asserts.AssertH264InterlaceMode(str)
 end
 
 -- Use Interlace mode (InterlaceMode) to choose the scan line type for the output. * Top Field First (TOP_FIELD) and Bottom Field First (BOTTOM_FIELD) produce interlaced output with the entire output having the same field polarity (top or bottom first). * Follow, Default Top (FOLLOW_TOP_FIELD) and Follow, Default Bottom (FOLLOW_BOTTOM_FIELD) use the same field polarity as the source. Therefore, behavior depends on the input scan type, as follows.
-  - If the source is interlaced, the output will be interlaced with the same polarity as the source (it will follow the source). The output could therefore be a mix of "top field first" and "bottom field first".
-  - If the source is progressive, the output will be interlaced with "top field first" or "bottom field first" polarity, depending on which of the Follow options you chose.
+--  - If the source is interlaced, the output will be interlaced with the same polarity as the source (it will follow the source). The output could therefore be a mix of "top field first" and "bottom field first".
+--  - If the source is progressive, the output will be interlaced with "top field first" or "bottom field first" polarity, depending on which of the Follow options you chose.
 function M.H264InterlaceMode(str)
 	asserts.AssertH264InterlaceMode(str)
 	return str

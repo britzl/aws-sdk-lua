@@ -94,8 +94,12 @@ end
 -- * ScheduledStart [__string] The scheduled start time for the activity in ISO 8601 format.
 -- * TotalEndpointCount [__integer] The total number of endpoints to which the campaign attempts to deliver messages.
 -- * Start [__string] The actual start time of the activity in ISO 8601 format.
--- * State [__string] The state of the activity.Valid values: PENDING, INITIALIZING, RUNNING, PAUSED, CANCELLED, COMPLETED
--- * Result [__string] Indicates whether the activity succeeded.Valid values: SUCCESS, FAIL
+-- * State [__string] The state of the activity.
+--
+--Valid values: PENDING, INITIALIZING, RUNNING, PAUSED, CANCELLED, COMPLETED
+-- * Result [__string] Indicates whether the activity succeeded.
+--
+--Valid values: SUCCESS, FAIL
 -- * TimezonesCompletedCount [__integer] The total number of timezones completed.
 -- * TreatmentId [__string] The ID of a variation of the campaign used for A/B testing.
 -- * ApplicationId [__string] The ID of the application to which the campaign applies.
@@ -237,7 +241,9 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * UserId [__string] The unique ID of the user.
--- * UserAttributes [MapOfListOf__string] Custom attributes that describe the user by associating a name with an array of values. For example, an attribute named "interests" might have the following values: ["science", "politics", "travel"]. You can use these attributes as selection criteria when you create segments.The Amazon Pinpoint console can't display attribute names that include the following characters: hash/pound sign (#), colon (:), question mark (?), backslash (\), and forward slash (/). For this reason, you should avoid using these characters in the names of custom attributes.
+-- * UserAttributes [MapOfListOf__string] Custom attributes that describe the user by associating a name with an array of values. For example, an attribute named "interests" might have the following values: ["science", "politics", "travel"]. You can use these attributes as selection criteria when you create segments.
+--
+--The Amazon Pinpoint console can't display attribute names that include the following characters: hash/pound sign (#), colon (:), question mark (?), backslash (\), and forward slash (/). For this reason, you should avoid using these characters in the names of custom attributes.
 -- @return EndpointUser structure as a key-value pair table
 function M.EndpointUser(args)
 	assert(args, "You must provide an argument table when creating EndpointUser")
@@ -1286,7 +1292,9 @@ end
 -- * BodyOverride [__string] Body override. If specified will override default body.
 -- * Context [MapOf__string] A map of custom attributes to attributes to be attached to the message for this address. This payload is added to the push notification's 'data.pinpoint' object or added to the email/sms delivery receipt event attributes.
 -- * RawContent [__string] The Raw JSON formatted string to be used as the payload. This value overrides the message.
--- * ChannelType [ChannelType] The channel type.Valid values: GCM | APNS | APNS_SANDBOX | APNS_VOIP | APNS_VOIP_SANDBOX | ADM | SMS | EMAIL | BAIDU
+-- * ChannelType [ChannelType] The channel type.
+--
+--Valid values: GCM | APNS | APNS_SANDBOX | APNS_VOIP | APNS_VOIP_SANDBOX | ADM | SMS | EMAIL | BAIDU
 -- * TitleOverride [__string] Title override. If specified will override default title if applicable.
 -- @return AddressConfiguration structure as a key-value pair table
 function M.AddressConfiguration(args)
@@ -1431,6 +1439,7 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Locale [__string] The endpoint locale in the following format: The ISO 639-1 alpha-2 code, followed by an underscore, followed by an ISO 3166-1 alpha-2 value.
+--
 -- * ModelVersion [__string] The model version of the endpoint device.
 -- * Make [__string] The manufacturer of the endpoint device, such as Apple or Samsung.
 -- * AppVersion [__string] The version of the application associated with the endpoint.
@@ -1678,7 +1687,9 @@ end
 -- State of the Campaign
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * CampaignStatus [CampaignStatus] The status of the campaign, or the status of a treatment that belongs to an A/B test campaign.Valid values: SCHEDULED, EXECUTING, PENDING_NEXT_RUN, COMPLETED, PAUSED
+-- * CampaignStatus [CampaignStatus] The status of the campaign, or the status of a treatment that belongs to an A/B test campaign.
+--
+--Valid values: SCHEDULED, EXECUTING, PENDING_NEXT_RUN, COMPLETED, PAUSED
 -- @return CampaignState structure as a key-value pair table
 function M.CampaignState(args)
 	assert(args, "You must provide an argument table when creating CampaignState")
@@ -2156,7 +2167,11 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * EffectiveDate [__string] The date and time when the endpoint was last updated, shown in ISO 8601 format.
--- * OptOut [__string] Indicates whether a user has opted out of receiving messages with one of the following values:ALL - User has opted out of all messages.NONE - Users has not opted out and receives all messages.
+-- * OptOut [__string] Indicates whether a user has opted out of receiving messages with one of the following values:
+--
+--ALL - User has opted out of all messages.
+--
+--NONE - Users has not opted out and receives all messages.
 -- * RequestId [__string] The unique ID for the most recent request to update the endpoint.
 -- * Demographic [EndpointDemographic] The endpoint demographic attributes.
 -- * User [EndpointUser] Custom user-specific attributes that your app reports to Amazon Pinpoint.
@@ -2164,8 +2179,12 @@ end
 -- * Location [EndpointLocation] The endpoint location attributes.
 -- * Address [__string] The address of the endpoint as provided by your push provider. For example, the DeviceToken or RegistrationId.
 -- * CohortId [__string] A number from 0-99 that represents the cohort the endpoint is assigned to. Endpoints are grouped into cohorts randomly, and each cohort contains approximately 1 percent of the endpoints for an app. Amazon Pinpoint assigns cohorts to the holdout or treatment allocations for a campaign.
--- * Attributes [MapOfListOf__string] Custom attributes that describe the endpoint by associating a name with an array of values. For example, an attribute named "interests" might have the following values: ["science", "politics", "travel"]. You can use these attributes as selection criteria when you create segments.The Amazon Pinpoint console can't display attribute names that include the following characters: hash/pound sign (#), colon (:), question mark (?), backslash (\), and forward slash (/). For this reason, you should avoid using these characters in the names of custom attributes.
--- * ChannelType [ChannelType] The channel type.Valid values: GCM | APNS | APNS_SANDBOX | APNS_VOIP | APNS_VOIP_SANDBOX | ADM | SMS | EMAIL | BAIDU
+-- * Attributes [MapOfListOf__string] Custom attributes that describe the endpoint by associating a name with an array of values. For example, an attribute named "interests" might have the following values: ["science", "politics", "travel"]. You can use these attributes as selection criteria when you create segments.
+--
+--The Amazon Pinpoint console can't display attribute names that include the following characters: hash/pound sign (#), colon (:), question mark (?), backslash (\), and forward slash (/). For this reason, you should avoid using these characters in the names of custom attributes.
+-- * ChannelType [ChannelType] The channel type.
+--
+--Valid values: GCM | APNS | APNS_SANDBOX | APNS_VOIP | APNS_VOIP_SANDBOX | ADM | SMS | EMAIL | BAIDU
 -- * CreationDate [__string] The date and time when the endpoint was created, shown in ISO 8601 format.
 -- * ApplicationId [__string] The ID of the application that is associated with the endpoint.
 -- * Id [__string] The unique ID that you assigned to the endpoint. The ID should be a globally unique identifier (GUID) to ensure that it doesn't conflict with other endpoint IDs associated with the application.
@@ -3254,7 +3273,11 @@ end
 -- Valid keys:
 -- * RoleArn [__string] The Amazon Resource Name (ARN) of an IAM role that grants Amazon Pinpoint access to the Amazon S3 location that endpoints will be exported to.
 -- * SegmentVersion [__integer] The version of the segment to export if specified.
--- * S3UrlPrefix [__string] A URL that points to the location within an Amazon S3 bucket that will receive the export. The location is typically a folder with multiple files.The URL should follow this format: s3://bucket-name/folder-name/Amazon Pinpoint will export endpoints to this location.
+-- * S3UrlPrefix [__string] A URL that points to the location within an Amazon S3 bucket that will receive the export. The location is typically a folder with multiple files.
+--
+--The URL should follow this format: s3://bucket-name/folder-name/
+--
+--Amazon Pinpoint will export endpoints to this location.
 -- * SegmentId [__string] The ID of the segment to export endpoints from. If not present, Amazon Pinpoint exports all of the endpoints that belong to the application.
 -- @return ExportJobRequest structure as a key-value pair table
 function M.ExportJobRequest(args)
@@ -3406,7 +3429,9 @@ end
 -- Request to save an EventStream.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DestinationStreamArn [__string] The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events. Firehose ARN: arn:aws:firehose:REGION:ACCOUNT_ID:deliverystream/STREAM_NAME Kinesis ARN: arn:aws:kinesis:REGION:ACCOUNT_ID:stream/STREAM_NAME
+-- * DestinationStreamArn [__string] The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.
+-- Firehose ARN: arn:aws:firehose:REGION:ACCOUNT_ID:deliverystream/STREAM_NAME
+-- Kinesis ARN: arn:aws:kinesis:REGION:ACCOUNT_ID:stream/STREAM_NAME
 -- * RoleArn [__string] The IAM role that authorizes Amazon Pinpoint to publish events to the stream in your account.
 -- @return WriteEventStream structure as a key-value pair table
 function M.WriteEventStream(args)
@@ -3676,9 +3701,12 @@ end
 -- Valid keys:
 -- * DefineSegment [__boolean] Sets whether the endpoints create a segment when they are imported.
 -- * SegmentId [__string] The ID of the segment to update if the import job is meant to update an existing segment.
--- * Format [Format] The format of the files that contain the endpoint definitions.Valid values: CSV, JSON
+-- * Format [Format] The format of the files that contain the endpoint definitions.
+--Valid values: CSV, JSON
 -- * RoleArn [__string] The Amazon Resource Name (ARN) of an IAM role that grants Amazon Pinpoint access to the Amazon S3 location that contains the endpoints to import.
--- * S3Url [__string] The URL of the S3 bucket that contains the segment information to import. The location can be a folder or a single file. The URL should use the following format: s3://bucket-name/folder-name/file-nameAmazon Pinpoint imports endpoints from this location and any subfolders it contains.
+-- * S3Url [__string] The URL of the S3 bucket that contains the segment information to import. The location can be a folder or a single file. The URL should use the following format: s3://bucket-name/folder-name/file-name
+--
+--Amazon Pinpoint imports endpoints from this location and any subfolders it contains.
 -- * RegisterEndpoints [__boolean] Sets whether the endpoints are registered with Amazon Pinpoint when they are imported.
 -- * ExternalId [__string] (Deprecated) Your AWS account ID, which you assigned to the ExternalID key in an IAM trust policy. Used by Amazon Pinpoint to assume an IAM role. This requirement is removed, and external IDs are not recommended for IAM roles assumed by Amazon Pinpoint.
 -- * SegmentName [__string] A custom name for the segment created by the import job. Use if DefineSegment is true.
@@ -3821,7 +3849,9 @@ end
 -- Model for an event publishing subscription export.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DestinationStreamArn [__string] The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events. Firehose ARN: arn:aws:firehose:REGION:ACCOUNT_ID:deliverystream/STREAM_NAME Kinesis ARN: arn:aws:kinesis:REGION:ACCOUNT_ID:stream/STREAM_NAME
+-- * DestinationStreamArn [__string] The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.
+-- Firehose ARN: arn:aws:firehose:REGION:ACCOUNT_ID:deliverystream/STREAM_NAME
+-- Kinesis ARN: arn:aws:kinesis:REGION:ACCOUNT_ID:stream/STREAM_NAME
 -- * RoleArn [__string] The IAM role that authorizes Amazon Pinpoint to publish events to the stream in your account.
 -- * LastUpdatedBy [__string] The IAM user who last modified the event stream.
 -- * ExternalId [__string] (Deprecated) Your AWS account ID, which you assigned to the ExternalID key in an IAM trust policy. Used by Amazon Pinpoint to assume an IAM role. This requirement is removed, and external IDs are not recommended for IAM roles assumed by Amazon Pinpoint.
@@ -3919,15 +3949,23 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * EffectiveDate [__string] The last time the endpoint was updated. Provided in ISO 8601 format.
--- * OptOut [__string] Indicates whether a user has opted out of receiving messages with one of the following values:ALL - User has opted out of all messages.NONE - Users has not opted out and receives all messages.
+-- * OptOut [__string] Indicates whether a user has opted out of receiving messages with one of the following values:
+--
+--ALL - User has opted out of all messages.
+--
+--NONE - Users has not opted out and receives all messages.
 -- * RequestId [__string] The unique ID for the most recent request to update the endpoint.
 -- * Demographic [EndpointDemographic] The endpoint demographic attributes.
 -- * User [EndpointUser] Custom user-specific attributes that your app reports to Amazon Pinpoint.
 -- * Metrics [MapOf__double] Custom metrics that your app reports to Amazon Pinpoint.
 -- * Location [EndpointLocation] The endpoint location attributes.
 -- * Address [__string] The destination for messages that you send to this endpoint. The address varies by channel. For mobile push channels, use the token provided by the push notification service, such as the APNs device token or the FCM registration token. For the SMS channel, use a phone number in E.164 format, such as +12065550100. For the email channel, use an email address.
--- * Attributes [MapOfListOf__string] Custom attributes that describe the endpoint by associating a name with an array of values. For example, an attribute named "interests" might have the values ["science", "politics", "travel"]. You can use these attributes as selection criteria when you create a segment of users to engage with a messaging campaign.The following characters are not recommended in attribute names: # : ? \ /. The Amazon Pinpoint console does not display attributes that include these characters in the name. This limitation does not apply to attribute values.
--- * ChannelType [ChannelType] The channel type.Valid values: GCM | APNS | APNS_SANDBOX | APNS_VOIP | APNS_VOIP_SANDBOX | ADM | SMS | EMAIL | BAIDU
+-- * Attributes [MapOfListOf__string] Custom attributes that describe the endpoint by associating a name with an array of values. For example, an attribute named "interests" might have the values ["science", "politics", "travel"]. You can use these attributes as selection criteria when you create a segment of users to engage with a messaging campaign.
+--
+--The following characters are not recommended in attribute names: # : ? \ /. The Amazon Pinpoint console does not display attributes that include these characters in the name. This limitation does not apply to attribute values.
+-- * ChannelType [ChannelType] The channel type.
+--
+--Valid values: GCM | APNS | APNS_SANDBOX | APNS_VOIP | APNS_VOIP_SANDBOX | ADM | SMS | EMAIL | BAIDU
 -- * Id [__string] The unique Id for the Endpoint in the batch.
 -- * EndpointStatus [__string] Unused.
 -- @return EndpointBatchItem structure as a key-value pair table
@@ -4505,7 +4543,10 @@ end
 -- * TotalPieces [__integer] The total number of pieces that must be imported to finish the job. Each piece is an approximately equal portion of the endpoints to import.
 -- * FailedPieces [__integer] The number of pieces that have failed to import as of the time of the request.
 -- * CompletedPieces [__integer] The number of pieces that have successfully imported as of the time of the request.
--- * JobStatus [JobStatus] The status of the import job.Valid values: CREATED, INITIALIZING, PROCESSING, COMPLETING, COMPLETED, FAILING, FAILEDThe job status is FAILED if one or more pieces failed to import.
+-- * JobStatus [JobStatus] The status of the import job.
+--Valid values: CREATED, INITIALIZING, PROCESSING, COMPLETING, COMPLETED, FAILING, FAILED
+--
+--The job status is FAILED if one or more pieces failed to import.
 -- * Failures [ListOf__string] Provides up to 100 of the first failed entries for the job, if any exist.
 -- * CreationDate [__string] The date the import job was created in ISO 8601 format.
 -- * ApplicationId [__string] The unique ID of the application to which the import job applies.
@@ -5077,7 +5118,9 @@ end
 -- * SegmentVersion [__integer] The version of the segment to which the campaign sends messages.
 -- * SegmentId [__string] The ID of the segment to which the campaign sends messages.
 -- * Hook [CampaignHook] Campaign hook information.
--- * State [CampaignState] The campaign status.An A/B test campaign will have a status of COMPLETED only when all treatments have a status of COMPLETED.
+-- * State [CampaignState] The campaign status.
+--
+--An A/B test campaign will have a status of COMPLETED only when all treatments have a status of COMPLETED.
 -- * Version [__integer] The campaign version number.
 -- * AdditionalTreatments [ListOfTreatmentResource] Treatments that are defined in addition to the default treatment.
 -- * DefaultState [CampaignState] The status of the campaign's default treatment. Only present for A/B test campaigns.
@@ -5466,7 +5509,11 @@ end
 -- Valid keys:
 -- * RoleArn [__string] The Amazon Resource Name (ARN) of an IAM role that grants Amazon Pinpoint access to the Amazon S3 location that endpoints will be exported to.
 -- * SegmentVersion [__integer] The version of the segment to export if specified.
--- * S3UrlPrefix [__string] A URL that points to the location within an Amazon S3 bucket that will receive the export. The location is typically a folder with multiple files.The URL should follow this format: s3://bucket-name/folder-name/Amazon Pinpoint will export endpoints to this location.
+-- * S3UrlPrefix [__string] A URL that points to the location within an Amazon S3 bucket that will receive the export. The location is typically a folder with multiple files.
+--
+--The URL should follow this format: s3://bucket-name/folder-name/
+--
+--Amazon Pinpoint will export endpoints to this location.
 -- * SegmentId [__string] The ID of the segment to export endpoints from. If not present, Amazon Pinpoint exports all of the endpoints that belong to the application.
 -- @return ExportJobResource structure as a key-value pair table
 function M.ExportJobResource(args)
@@ -5630,10 +5677,45 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * QuietTime [QuietTime] The time during which the campaign sends no messages.
--- * Frequency [Frequency] How often the campaign delivers messages.Valid values: ONCE, HOURLY, DAILY, WEEKLY, MONTHLY
+-- * Frequency [Frequency] How often the campaign delivers messages.
+--
+--Valid values: ONCE, HOURLY, DAILY, WEEKLY, MONTHLY
 -- * IsLocalTime [__boolean] Indicates whether the campaign schedule takes effect according to each user's local time.
 -- * StartTime [__string] The scheduled time that the campaign begins in ISO 8601 format.
--- * Timezone [__string] The starting UTC offset for the schedule if the value for isLocalTime is trueValid values: UTCUTC+01UTC+02UTC+03UTC+03:30UTC+04UTC+04:30UTC+05UTC+05:30UTC+05:45UTC+06UTC+06:30UTC+07UTC+08UTC+09UTC+09:30UTC+10UTC+10:30UTC+11UTC+12UTC+13UTC-02UTC-03UTC-04UTC-05UTC-06UTC-07UTC-08UTC-09UTC-10UTC-11
+-- * Timezone [__string] The starting UTC offset for the schedule if the value for isLocalTime is true
+--
+--Valid values: 
+--UTC
+--UTC+01
+--UTC+02
+--UTC+03
+--UTC+03:30
+--UTC+04
+--UTC+04:30
+--UTC+05
+--UTC+05:30
+--UTC+05:45
+--UTC+06
+--UTC+06:30
+--UTC+07
+--UTC+08
+--UTC+09
+--UTC+09:30
+--UTC+10
+--UTC+10:30
+--UTC+11
+--UTC+12
+--UTC+13
+--UTC-02
+--UTC-03
+--UTC-04
+--UTC-05
+--UTC-06
+--UTC-07
+--UTC-08
+--UTC-09
+--UTC-10
+--UTC-11
 -- * EndTime [__string] The scheduled time that the campaign ends in ISO 8601 format.
 -- @return Schedule structure as a key-value pair table
 function M.Schedule(args)
@@ -5858,8 +5940,15 @@ end
 -- * Title [__string] The message title that displays above the message on the user's device.
 -- * TimeToLive [__integer] This parameter specifies how long (in seconds) the message should be kept if the service is unable to deliver the notification the first time. If the value is 0, it treats the notification as if it expires immediately and does not store the notification or attempt to redeliver it. This value is converted to the expiration field when sent to the service. It only applies to APNs and GCM
 -- * RawContent [__string] The Raw JSON formatted string to be used as the payload. This value overrides the message.
--- * Action [Action] The action that occurs if the user taps a push notification delivered by the campaign:OPEN_APP - Your app launches, or it becomes the foreground app if it has been sent to the background. This is the default action.DEEP_LINK - Uses deep linking features in iOS and Android to open your app and display a designated user interface within the app.URL - The default mobile browser on the user's device launches and opens a web page at the URL you specify.
--- * SilentPush [__boolean] Indicates if the message should display on the users device.Silent pushes can be used for Remote Configuration and Phone Home use cases. 
+-- * Action [Action] The action that occurs if the user taps a push notification delivered by the campaign:
+--OPEN_APP - Your app launches, or it becomes the foreground app if it has been sent to the background. This is the default action.
+--
+--DEEP_LINK - Uses deep linking features in iOS and Android to open your app and display a designated user interface within the app.
+--
+--URL - The default mobile browser on the user's device launches and opens a web page at the URL you specify.
+-- * SilentPush [__boolean] Indicates if the message should display on the users device.
+--
+--Silent pushes can be used for Remote Configuration and Phone Home use cases. 
 -- * JsonBody [__string] The JSON payload used for a silent push.
 -- * ImageIconUrl [__string] The URL that points to the icon image for the push notification icon, for example, the app icon.
 -- @return Message structure as a key-value pair table
@@ -6277,7 +6366,31 @@ end
 -- The result from sending a message to an address.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DeliveryStatus [DeliveryStatus] The delivery status of the message. Possible values:SUCCESS - The message was successfully delivered to the endpoint.TRANSIENT_FAILURE - A temporary error occurred. Amazon Pinpoint will attempt to deliver the message again later.FAILURE_PERMANENT - An error occurred when delivering the message to the endpoint. Amazon Pinpoint won't attempt to send the message again.TIMEOUT - The message couldn't be sent within the timeout period.QUIET_TIME - The local time for the endpoint was within the Quiet Hours for the campaign.DAILY_CAP - The endpoint has received the maximum number of messages it can receive within a 24-hour period.HOLDOUT - The endpoint was in a hold out treatment for the campaign.THROTTLED - Amazon Pinpoint throttled sending to this endpoint.EXPIRED - The endpoint address is expired.CAMPAIGN_CAP - The endpoint received the maximum number of messages allowed by the campaign.SERVICE_FAILURE - A service-level failure prevented Amazon Pinpoint from delivering the message.UNKNOWN - An unknown error occurred.
+-- * DeliveryStatus [DeliveryStatus] The delivery status of the message. Possible values:
+--
+--SUCCESS - The message was successfully delivered to the endpoint.
+--
+--TRANSIENT_FAILURE - A temporary error occurred. Amazon Pinpoint will attempt to deliver the message again later.
+--
+--FAILURE_PERMANENT - An error occurred when delivering the message to the endpoint. Amazon Pinpoint won't attempt to send the message again.
+--
+--TIMEOUT - The message couldn't be sent within the timeout period.
+--
+--QUIET_TIME - The local time for the endpoint was within the Quiet Hours for the campaign.
+--
+--DAILY_CAP - The endpoint has received the maximum number of messages it can receive within a 24-hour period.
+--
+--HOLDOUT - The endpoint was in a hold out treatment for the campaign.
+--
+--THROTTLED - Amazon Pinpoint throttled sending to this endpoint.
+--
+--EXPIRED - The endpoint address is expired.
+--
+--CAMPAIGN_CAP - The endpoint received the maximum number of messages allowed by the campaign.
+--
+--SERVICE_FAILURE - A service-level failure prevented Amazon Pinpoint from delivering the message.
+--
+--UNKNOWN - An unknown error occurred.
 -- * UpdatedToken [__string] If token was updated as part of delivery. (This is GCM Specific)
 -- * StatusCode [__integer] Downstream service status code.
 -- * StatusMessage [__string] Status message for message delivery.
@@ -7838,7 +7951,31 @@ end
 -- Valid keys:
 -- * UpdatedToken [__string] If token was updated as part of delivery. (This is GCM Specific)
 -- * Address [__string] Address that endpoint message was delivered to.
--- * DeliveryStatus [DeliveryStatus] The delivery status of the message. Possible values:SUCCESS - The message was successfully delivered to the endpoint.TRANSIENT_FAILURE - A temporary error occurred. Amazon Pinpoint will attempt to deliver the message again later.FAILURE_PERMANENT - An error occurred when delivering the message to the endpoint. Amazon Pinpoint won't attempt to send the message again.TIMEOUT - The message couldn't be sent within the timeout period.QUIET_TIME - The local time for the endpoint was within the Quiet Hours for the campaign.DAILY_CAP - The endpoint has received the maximum number of messages it can receive within a 24-hour period.HOLDOUT - The endpoint was in a hold out treatment for the campaign.THROTTLED - Amazon Pinpoint throttled sending to this endpoint.EXPIRED - The endpoint address is expired.CAMPAIGN_CAP - The endpoint received the maximum number of messages allowed by the campaign.SERVICE_FAILURE - A service-level failure prevented Amazon Pinpoint from delivering the message.UNKNOWN - An unknown error occurred.
+-- * DeliveryStatus [DeliveryStatus] The delivery status of the message. Possible values:
+--
+--SUCCESS - The message was successfully delivered to the endpoint.
+--
+--TRANSIENT_FAILURE - A temporary error occurred. Amazon Pinpoint will attempt to deliver the message again later.
+--
+--FAILURE_PERMANENT - An error occurred when delivering the message to the endpoint. Amazon Pinpoint won't attempt to send the message again.
+--
+--TIMEOUT - The message couldn't be sent within the timeout period.
+--
+--QUIET_TIME - The local time for the endpoint was within the Quiet Hours for the campaign.
+--
+--DAILY_CAP - The endpoint has received the maximum number of messages it can receive within a 24-hour period.
+--
+--HOLDOUT - The endpoint was in a hold out treatment for the campaign.
+--
+--THROTTLED - Amazon Pinpoint throttled sending to this endpoint.
+--
+--EXPIRED - The endpoint address is expired.
+--
+--CAMPAIGN_CAP - The endpoint received the maximum number of messages allowed by the campaign.
+--
+--SERVICE_FAILURE - A service-level failure prevented Amazon Pinpoint from delivering the message.
+--
+--UNKNOWN - An unknown error occurred.
 -- * MessageId [__string] Unique message identifier associated with the message that was sent.
 -- * StatusMessage [__string] Status message for message delivery.
 -- * StatusCode [__integer] Downstream service status code.
@@ -7894,15 +8031,23 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * EffectiveDate [__string] The date and time when the endpoint was updated, shown in ISO 8601 format.
--- * OptOut [__string] Indicates whether a user has opted out of receiving messages with one of the following values:ALL - User has opted out of all messages.NONE - Users has not opted out and receives all messages.
+-- * OptOut [__string] Indicates whether a user has opted out of receiving messages with one of the following values:
+--
+--ALL - User has opted out of all messages.
+--
+--NONE - Users has not opted out and receives all messages.
 -- * RequestId [__string] The unique ID for the most recent request to update the endpoint.
 -- * Demographic [EndpointDemographic] Demographic attributes for the endpoint.
 -- * User [EndpointUser] Custom user-specific attributes that your app reports to Amazon Pinpoint.
 -- * Metrics [MapOf__double] Custom metrics that your app reports to Amazon Pinpoint.
 -- * Location [EndpointLocation] The endpoint location attributes.
 -- * Address [__string] The destination for messages that you send to this endpoint. The address varies by channel. For mobile push channels, use the token provided by the push notification service, such as the APNs device token or the FCM registration token. For the SMS channel, use a phone number in E.164 format, such as +12065550100. For the email channel, use an email address.
--- * Attributes [MapOfListOf__string] Custom attributes that describe the endpoint by associating a name with an array of values. For example, an attribute named "interests" might have the values ["science", "politics", "travel"]. You can use these attributes as selection criteria when you create a segment of users to engage with a messaging campaign.The following characters are not recommended in attribute names: # : ? \ /. The Amazon Pinpoint console does not display attributes that include these characters in the name. This limitation does not apply to attribute values.
--- * ChannelType [ChannelType] The channel type.Valid values: GCM | APNS | APNS_SANDBOX | APNS_VOIP | APNS_VOIP_SANDBOX | ADM | SMS | EMAIL | BAIDU
+-- * Attributes [MapOfListOf__string] Custom attributes that describe the endpoint by associating a name with an array of values. For example, an attribute named "interests" might have the values ["science", "politics", "travel"]. You can use these attributes as selection criteria when you create a segment of users to engage with a messaging campaign.
+--
+--The following characters are not recommended in attribute names: # : ? \ /. The Amazon Pinpoint console does not display attributes that include these characters in the name. This limitation does not apply to attribute values.
+-- * ChannelType [ChannelType] The channel type.
+--
+--Valid values: GCM | APNS | APNS_SANDBOX | APNS_VOIP | APNS_VOIP_SANDBOX | ADM | SMS | EMAIL | BAIDU
 -- * EndpointStatus [__string] Unused.
 -- @return EndpointRequest structure as a key-value pair table
 function M.EndpointRequest(args)
@@ -8197,7 +8342,15 @@ end
 -- * ImageUrl [__string] The URL that points to an image used in the push notification.
 -- * RawContent [__string] The Raw JSON formatted string to be used as the payload. This value overrides the message.
 -- * Substitutions [MapOfListOf__string] Default message substitutions. Can be overridden by individual address substitutions.
--- * Priority [__string] The message priority. Amazon Pinpoint uses this value to set the FCM or GCM priority parameter when it sends the message. Accepts the following values:"Normal" - Messages might be delayed. Delivery is optimized for battery usage on the receiving device. Use normal priority unless immediate delivery is required."High" - Messages are sent immediately and might wake a sleeping device.The equivalent values for APNs messages are "5" and "10". Amazon Pinpoint accepts these values here and converts them.For more information, see About FCM Messages in the Firebase documentation.
+-- * Priority [__string] The message priority. Amazon Pinpoint uses this value to set the FCM or GCM priority parameter when it sends the message. Accepts the following values:
+--
+--"Normal" - Messages might be delayed. Delivery is optimized for battery usage on the receiving device. Use normal priority unless immediate delivery is required.
+--
+--"High" - Messages are sent immediately and might wake a sleeping device.
+--
+--The equivalent values for APNs messages are "5" and "10". Amazon Pinpoint accepts these values here and converts them.
+--
+--For more information, see About FCM Messages in the Firebase documentation.
 -- * CollapseKey [__string] This parameter identifies a group of messages (e.g., with collapse_key: "Updates Available") that can be collapsed, so that only the last message gets sent when delivery can be resumed. This is intended to avoid sending too many of the same messages when the device comes back online or becomes active.
 -- * SmallImageIconUrl [__string] The URL that points to an image used as the small icon for the notification which will be used to represent the notification in the status bar and content view
 -- * TimeToLive [__integer] The length of time (in seconds) that FCM or GCM stores and attempts to deliver the message. If unspecified, the value defaults to the maximum, which is 2,419,200 seconds (28 days). Amazon Pinpoint uses this value to set the FCM or GCM time_to_live parameter.
@@ -8445,7 +8598,10 @@ end
 -- * TotalPieces [__integer] The total number of pieces that must be processed to finish the job. Each piece is an approximately equal portion of the endpoints.
 -- * FailedPieces [__integer] The number of pieces that failed to be processed as of the time of the request.
 -- * CompletedPieces [__integer] The number of pieces that have successfully completed as of the time of the request.
--- * JobStatus [JobStatus] The status of the job.Valid values: CREATED, INITIALIZING, PROCESSING, COMPLETING, COMPLETED, FAILING, FAILEDThe job status is FAILED if one or more pieces failed.
+-- * JobStatus [JobStatus] The status of the job.
+--Valid values: CREATED, INITIALIZING, PROCESSING, COMPLETING, COMPLETED, FAILING, FAILED
+--
+--The job status is FAILED if one or more pieces failed.
 -- * Failures [ListOf__string] Provides up to 100 of the first failed entries for the job, if any exist.
 -- * CreationDate [__string] The date the job was created in ISO 8601 format.
 -- * ApplicationId [__string] The unique ID of the application associated with the export job.
@@ -8919,9 +9075,12 @@ end
 -- Valid keys:
 -- * DefineSegment [__boolean] Sets whether the endpoints create a segment when they are imported.
 -- * SegmentId [__string] The ID of the segment to update if the import job is meant to update an existing segment.
--- * Format [Format] The format of the files that contain the endpoint definitions.Valid values: CSV, JSON
+-- * Format [Format] The format of the files that contain the endpoint definitions.
+--Valid values: CSV, JSON
 -- * RoleArn [__string] The Amazon Resource Name (ARN) of an IAM role that grants Amazon Pinpoint access to the Amazon S3 location that contains the endpoints to import.
--- * S3Url [__string] The URL of the S3 bucket that contains the segment information to import. The location can be a folder or a single file. The URL should use the following format: s3://bucket-name/folder-name/file-nameAmazon Pinpoint imports endpoints from this location and any subfolders it contains.
+-- * S3Url [__string] The URL of the S3 bucket that contains the segment information to import. The location can be a folder or a single file. The URL should use the following format: s3://bucket-name/folder-name/file-name
+--
+--Amazon Pinpoint imports endpoints from this location and any subfolders it contains.
 -- * RegisterEndpoints [__boolean] Sets whether the endpoints are registered with Amazon Pinpoint when they are imported.
 -- * ExternalId [__string] (Deprecated) Your AWS account ID, which you assigned to the ExternalID key in an IAM trust policy. Used by Amazon Pinpoint to assume an IAM role. This requirement is removed, and external IDs are not recommended for IAM roles assumed by Amazon Pinpoint.
 -- * SegmentName [__string] A custom name for the segment created by the import job. Use if DefineSegment is true.
@@ -9144,7 +9303,17 @@ end
 -- * Data [MapOf__string] The data payload used for a silent push. This payload is added to the notifications' data.pinpoint.jsonBody' object
 -- * ThreadId [__string] Provide this key with a string value that represents the app-specific identifier for grouping notifications. If you provide a Notification Content app extension, you can use this value to group your notifications together.
 -- * Substitutions [MapOfListOf__string] Default message substitutions. Can be overridden by individual address substitutions.
--- * Priority [__string] The message priority. Amazon Pinpoint uses this value to set the apns-priority request header when it sends the message to APNs. Accepts the following values:"5" - Low priority. Messages might be delayed, delivered in groups, and throttled."10" - High priority. Messages are sent immediately. High priority messages must cause an alert, sound, or badge on the receiving device.The default value is "10".The equivalent values for FCM or GCM messages are "normal" and "high". Amazon Pinpoint accepts these values for APNs messages and converts them.For more information about the apns-priority parameter, see Communicating with APNs in the APNs Local and Remote Notification Programming Guide.
+-- * Priority [__string] The message priority. Amazon Pinpoint uses this value to set the apns-priority request header when it sends the message to APNs. Accepts the following values:
+--
+--"5" - Low priority. Messages might be delayed, delivered in groups, and throttled.
+--
+--"10" - High priority. Messages are sent immediately. High priority messages must cause an alert, sound, or badge on the receiving device.
+--
+--The default value is "10".
+--
+--The equivalent values for FCM or GCM messages are "normal" and "high". Amazon Pinpoint accepts these values for APNs messages and converts them.
+--
+--For more information about the apns-priority parameter, see Communicating with APNs in the APNs Local and Remote Notification Programming Guide.
 -- * PreferredAuthenticationMethod [__string] The preferred authentication method, either "CERTIFICATE" or "TOKEN"
 -- * Title [__string] The message title that displays above the message on the user's device.
 -- * TimeToLive [__integer] The length of time (in seconds) that APNs stores and attempts to deliver the message. If the value is 0, APNs does not store the message or attempt to deliver it more than once. Amazon Pinpoint uses this value to set the apns-expiration request header when it sends the message to APNs.
@@ -9773,7 +9942,11 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * EffectiveDate [__string] The date and time when the endpoint was last updated.
--- * OptOut [__string] Indicates whether a user has opted out of receiving messages with one of the following values:ALL - User has opted out of all messages.NONE - Users has not opted out and receives all messages.
+-- * OptOut [__string] Indicates whether a user has opted out of receiving messages with one of the following values:
+--
+--ALL - User has opted out of all messages.
+--
+--NONE - Users has not opted out and receives all messages.
 -- * RequestId [__string] A unique identifier that is generated each time the endpoint is updated.
 -- * Demographic [EndpointDemographic] The endpoint demographic attributes.
 -- * User [EndpointUser] Custom user-specific attributes that your app reports to Amazon Pinpoint.
@@ -9781,7 +9954,9 @@ end
 -- * Location [EndpointLocation] The endpoint location attributes.
 -- * Address [__string] The unique identifier for the recipient. For example, an address could be a device token or an endpoint ID.
 -- * Attributes [MapOfListOf__string] Custom attributes that your app reports to Amazon Pinpoint. You can use these attributes as selection criteria when you create a segment.
--- * ChannelType [ChannelType] The channel type.Valid values: APNS, GCM
+-- * ChannelType [ChannelType] The channel type.
+--
+--Valid values: APNS, GCM
 -- * EndpointStatus [__string] The status of the endpoint. If the update fails, the value is INACTIVE. If the endpoint is updated successfully, the value is ACTIVE.
 -- @return PublicEndpoint structure as a key-value pair table
 function M.PublicEndpoint(args)
@@ -10407,7 +10582,8 @@ end
 -- Segment import definition.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Format [Format] The format of the endpoint files that were imported to create this segment.Valid values: CSV, JSON
+-- * Format [Format] The format of the endpoint files that were imported to create this segment.
+--Valid values: CSV, JSON
 -- * RoleArn [__string] The Amazon Resource Name (ARN) of an IAM role that grants Amazon Pinpoint access to the endpoints in Amazon S3.
 -- * S3Url [__string] The URL of the S3 bucket that the segment was imported from.
 -- * ExternalId [__string] (Deprecated) Your AWS account ID, which you assigned to the ExternalID key in an IAM trust policy. Used by Amazon Pinpoint to assume an IAM role. This requirement is removed, and external IDs are not recommended for IAM roles assumed by Amazon Pinpoint.
@@ -10632,7 +10808,9 @@ end
 -- Dimension specification of a segment.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * DimensionType [DimensionType] The type of dimension:INCLUSIVE - Endpoints that match the criteria are included in the segment.EXCLUSIVE - Endpoints that match the criteria are excluded from the segment.
+-- * DimensionType [DimensionType] The type of dimension:
+--INCLUSIVE - Endpoints that match the criteria are included in the segment.
+--EXCLUSIVE - Endpoints that match the criteria are excluded from the segment.
 -- * Values [ListOf__string] The criteria values for the segment dimension. Endpoints with matching attribute values are included or excluded from the segment, depending on the setting for Type.
 -- @return SetDimension structure as a key-value pair table
 function M.SetDimension(args)
@@ -10935,8 +11113,11 @@ end
 -- Define how a segment based on recency of use.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * Duration [Duration] The length of time during which users have been active or inactive with your app.Valid values: HR_24, DAY_7, DAY_14, DAY_30
--- * RecencyType [RecencyType] The recency dimension type:ACTIVE - Users who have used your app within the specified duration are included in the segment.INACTIVE - Users who have not used your app within the specified duration are included in the segment.
+-- * Duration [Duration] The length of time during which users have been active or inactive with your app.
+--Valid values: HR_24, DAY_7, DAY_14, DAY_30
+-- * RecencyType [RecencyType] The recency dimension type:
+--ACTIVE - Users who have used your app within the specified duration are included in the segment.
+--INACTIVE - Users who have not used your app within the specified duration are included in the segment.
 -- @return RecencyDimension structure as a key-value pair table
 function M.RecencyDimension(args)
 	assert(args, "You must provide an argument table when creating RecencyDimension")
@@ -11061,7 +11242,9 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Values [ListOf__string] The criteria values for the segment dimension. Endpoints with matching attribute values are included or excluded from the segment, depending on the setting for Type.
--- * AttributeType [AttributeType] The type of dimension:INCLUSIVE - Endpoints that match the criteria are included in the segment.EXCLUSIVE - Endpoints that match the criteria are excluded from the segment.
+-- * AttributeType [AttributeType] The type of dimension:
+--INCLUSIVE - Endpoints that match the criteria are included in the segment.
+--EXCLUSIVE - Endpoints that match the criteria are excluded from the segment.
 -- @return AttributeDimension structure as a key-value pair table
 function M.AttributeDimension(args)
 	assert(args, "You must provide an argument table when creating AttributeDimension")
@@ -11351,7 +11534,9 @@ end
 -- * Dimensions [SegmentDimensions] The segment dimensions attributes.
 -- * SegmentGroups [SegmentGroupList] A segment group, which consists of zero or more source segments, plus dimensions that are applied to those source segments.
 -- * LastModifiedDate [__string] The date and time when the segment was last modified.
--- * SegmentType [SegmentType] The segment type:DIMENSIONAL - A dynamic segment built from selection criteria based on endpoint data reported by your app. You create this type of segment by using the segment builder in the Amazon Pinpoint console or by making a POST request to the segments resource.IMPORT - A static segment built from an imported set of endpoint definitions. You create this type of segment by importing a segment in the Amazon Pinpoint console or by making a POST request to the jobs/import resource.
+-- * SegmentType [SegmentType] The segment type:
+--DIMENSIONAL - A dynamic segment built from selection criteria based on endpoint data reported by your app. You create this type of segment by using the segment builder in the Amazon Pinpoint console or by making a POST request to the segments resource.
+--IMPORT - A static segment built from an imported set of endpoint definitions. You create this type of segment by importing a segment in the Amazon Pinpoint console or by making a POST request to the jobs/import resource.
 -- * Version [__integer] The segment version number.
 -- * ImportDefinition [SegmentImportResource] The import job settings.
 -- * CreationDate [__string] The date and time when the segment was created.

@@ -175,10 +175,16 @@ end
 -- * ManifestWindowSeconds [__integer] Time window (in seconds) contained in each manifest.
 -- * StreamSelection [StreamSelection] 
 -- * Encryption [DashEncryption] 
--- * PeriodTriggers [__listOf__PeriodTriggersElement] A list of triggers that controls when the outgoing Dynamic Adaptive Streaming over HTTP (DASH)Media Presentation Description (MPD) will be partitioned into multiple periods. If empty, the content will notbe partitioned into more than one period. If the list contains "ADS", new periods will be created wherethe Channel source contains SCTE-35 ad markers.
+-- * PeriodTriggers [__listOf__PeriodTriggersElement] A list of triggers that controls when the outgoing Dynamic Adaptive Streaming over HTTP (DASH)
+--Media Presentation Description (MPD) will be partitioned into multiple periods. If empty, the content will not
+--be partitioned into more than one period. If the list contains "ADS", new periods will be created where
+--the Channel source contains SCTE-35 ad markers.
+--
 -- * MinBufferTimeSeconds [__integer] Minimum duration (in seconds) that a player will buffer media before starting the presentation.
 -- * SuggestedPresentationDelaySeconds [__integer] Duration (in seconds) to delay live content before presentation.
--- * SegmentDurationSeconds [__integer] Duration (in seconds) of each segment. Actual segments will berounded to the nearest multiple of the source segment duration.
+-- * SegmentDurationSeconds [__integer] Duration (in seconds) of each segment. Actual segments will be
+--rounded to the nearest multiple of the source segment duration.
+--
 -- * MinUpdatePeriodSeconds [__integer] Minimum duration (in seconds) between potential changes to the Dynamic Adaptive Streaming over HTTP (DASH) Media Presentation Description (MPD).
 -- @return DashPackage structure as a key-value pair table
 function M.DashPackage(args)
@@ -369,12 +375,16 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * CmafPackage [CmafPackage] 
--- * StartoverWindowSeconds [__integer] Maximum duration (seconds) of content to retain for startover playback.If not specified, startover playback will be disabled for the OriginEndpoint.
+-- * StartoverWindowSeconds [__integer] Maximum duration (seconds) of content to retain for startover playback.
+--If not specified, startover playback will be disabled for the OriginEndpoint.
+--
 -- * ChannelId [__string] The ID of the Channel the OriginEndpoint is associated with.
 -- * Description [__string] A short text description of the OriginEndpoint.
 -- * Whitelist [__listOf__string] A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.
 -- * DashPackage [DashPackage] 
--- * TimeDelaySeconds [__integer] Amount of delay (seconds) to enforce on the playback of live content.If not specified, there will be no time delay in effect for the OriginEndpoint.
+-- * TimeDelaySeconds [__integer] Amount of delay (seconds) to enforce on the playback of live content.
+--If not specified, there will be no time delay in effect for the OriginEndpoint.
+--
 -- * MssPackage [MssPackage] 
 -- * HlsPackage [HlsPackage] 
 -- * Url [__string] The URL of the packaged OriginEndpoint for consumption.
@@ -603,14 +613,32 @@ end
 -- A HTTP Live Streaming (HLS) manifest configuration.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * PlaylistType [PlaylistType] The HTTP Live Streaming (HLS) playlist type.When either "EVENT" or "VOD" is specified, a corresponding EXT-X-PLAYLIST-TYPEentry will be included in the media playlist.
+-- * PlaylistType [PlaylistType] The HTTP Live Streaming (HLS) playlist type.
+--When either "EVENT" or "VOD" is specified, a corresponding EXT-X-PLAYLIST-TYPE
+--entry will be included in the media playlist.
+--
 -- * PlaylistWindowSeconds [__integer] Time window (in seconds) contained in each parent manifest.
 -- * Id [__string] The ID of the manifest. The ID must be unique within the OriginEndpoint and it cannot be changed after it is created.
 -- * Url [__string] The URL of the packaged OriginEndpoint for consumption.
 -- * IncludeIframeOnlyStream [__boolean] When enabled, an I-Frame only stream will be included in the output.
--- * AdMarkers [AdMarkers] This setting controls how ad markers are included in the packaged OriginEndpoint."NONE" will omit all SCTE-35 ad markers from the output."PASSTHROUGH" causes the manifest to contain a copy of the SCTE-35 admarkers (comments) taken directly from the input HTTP Live Streaming (HLS) manifest."SCTE35_ENHANCED" generates ad markers and blackout tags based on SCTE-35messages in the input source.
+-- * AdMarkers [AdMarkers] This setting controls how ad markers are included in the packaged OriginEndpoint.
+--"NONE" will omit all SCTE-35 ad markers from the output.
+--"PASSTHROUGH" causes the manifest to contain a copy of the SCTE-35 ad
+--markers (comments) taken directly from the input HTTP Live Streaming (HLS) manifest.
+--"SCTE35_ENHANCED" generates ad markers and blackout tags based on SCTE-35
+--messages in the input source.
+--
 -- * ManifestName [__string] An optional short string appended to the end of the OriginEndpoint URL. If not specified, defaults to the manifestName for the OriginEndpoint.
--- * ProgramDateTimeIntervalSeconds [__integer] The interval (in seconds) between each EXT-X-PROGRAM-DATE-TIME taginserted into manifests. Additionally, when an interval is specifiedID3Timed Metadata messages will be generated every 5 seconds using theingest time of the content.If the interval is not specified, or set to 0, thenno EXT-X-PROGRAM-DATE-TIME tags will be inserted into manifests and noID3Timed Metadata messages will be generated. Note that irrespectiveof this parameter, if any ID3 Timed Metadata is found in HTTP Live Streaming (HLS) input,it will be passed through to HLS output.
+-- * ProgramDateTimeIntervalSeconds [__integer] The interval (in seconds) between each EXT-X-PROGRAM-DATE-TIME tag
+--inserted into manifests. Additionally, when an interval is specified
+--ID3Timed Metadata messages will be generated every 5 seconds using the
+--ingest time of the content.
+--If the interval is not specified, or set to 0, then
+--no EXT-X-PROGRAM-DATE-TIME tags will be inserted into manifests and no
+--ID3Timed Metadata messages will be generated. Note that irrespective
+--of this parameter, if any ID3 Timed Metadata is found in HTTP Live Streaming (HLS) input,
+--it will be passed through to HLS output.
+--
 -- Required key: Id
 -- @return HlsManifest structure as a key-value pair table
 function M.HlsManifest(args)
@@ -712,11 +740,15 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * CmafPackage [CmafPackageCreateOrUpdateParameters] 
--- * StartoverWindowSeconds [__integer] Maximum duration (in seconds) of content to retain for startover playback.If not specified, startover playback will be disabled for the OriginEndpoint.
+-- * StartoverWindowSeconds [__integer] Maximum duration (in seconds) of content to retain for startover playback.
+--If not specified, startover playback will be disabled for the OriginEndpoint.
+--
 -- * MssPackage [MssPackage] 
 -- * Description [__string] A short text description of the OriginEndpoint.
 -- * DashPackage [DashPackage] 
--- * TimeDelaySeconds [__integer] Amount of delay (in seconds) to enforce on the playback of live content.If not specified, there will be no time delay in effect for the OriginEndpoint.
+-- * TimeDelaySeconds [__integer] Amount of delay (in seconds) to enforce on the playback of live content.
+--If not specified, there will be no time delay in effect for the OriginEndpoint.
+--
 -- * Whitelist [__listOf__string] A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.
 -- * HlsPackage [HlsPackage] 
 -- * Id [__string] The ID of the OriginEndpoint to update.
@@ -811,7 +843,9 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * Description [__string] A short text description of the Channel.
--- * Id [__string] The ID of the Channel. The ID must be unique within the region and itcannot be changed after a Channel is created.
+-- * Id [__string] The ID of the Channel. The ID must be unique within the region and it
+--cannot be changed after a Channel is created.
+--
 -- Required key: Id
 -- @return CreateChannelRequest structure as a key-value pair table
 function M.CreateChannelRequest(args)
@@ -894,7 +928,9 @@ end
 -- * Encryption [CmafEncryption] 
 -- * SegmentPrefix [__string] An optional custom string that is prepended to the name of each segment. If not specified, it defaults to the ChannelId.
 -- * HlsManifests [__listOfHlsManifest] A list of HLS manifest configurations
--- * SegmentDurationSeconds [__integer] Duration (in seconds) of each segment. Actual segments will berounded to the nearest multiple of the source segment duration.
+-- * SegmentDurationSeconds [__integer] Duration (in seconds) of each segment. Actual segments will be
+--rounded to the nearest multiple of the source segment duration.
+--
 -- * StreamSelection [StreamSelection] 
 -- @return CmafPackage structure as a key-value pair table
 function M.CmafPackage(args)
@@ -942,7 +978,9 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * SpekeKeyProvider [SpekeKeyProvider] 
--- * ConstantInitializationVector [__string] A constant initialization vector for encryption (optional).When not specified the initialization vector will be periodically rotated.
+-- * ConstantInitializationVector [__string] A constant initialization vector for encryption (optional).
+--When not specified the initialization vector will be periodically rotated.
+--
 -- * RepeatExtXKey [__boolean] When enabled, the EXT-X-KEY tag will be repeated in output manifests.
 -- * EncryptionMethod [EncryptionMethod] The encryption method to use.
 -- * KeyRotationIntervalSeconds [__integer] Interval (in seconds) between each encryption key rotation.
@@ -1239,15 +1277,23 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * CmafPackage [CmafPackageCreateOrUpdateParameters] 
--- * StartoverWindowSeconds [__integer] Maximum duration (seconds) of content to retain for startover playback.If not specified, startover playback will be disabled for the OriginEndpoint.
--- * ChannelId [__string] The ID of the Channel that the OriginEndpoint will be associated with.This cannot be changed after the OriginEndpoint is created.
+-- * StartoverWindowSeconds [__integer] Maximum duration (seconds) of content to retain for startover playback.
+--If not specified, startover playback will be disabled for the OriginEndpoint.
+--
+-- * ChannelId [__string] The ID of the Channel that the OriginEndpoint will be associated with.
+--This cannot be changed after the OriginEndpoint is created.
+--
 -- * Description [__string] A short text description of the OriginEndpoint.
 -- * DashPackage [DashPackage] 
--- * TimeDelaySeconds [__integer] Amount of delay (seconds) to enforce on the playback of live content.If not specified, there will be no time delay in effect for the OriginEndpoint.
+-- * TimeDelaySeconds [__integer] Amount of delay (seconds) to enforce on the playback of live content.
+--If not specified, there will be no time delay in effect for the OriginEndpoint.
+--
 -- * MssPackage [MssPackage] 
 -- * HlsPackage [HlsPackage] 
 -- * Whitelist [__listOf__string] A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.
--- * Id [__string] The ID of the OriginEndpoint.  The ID must be unique within the regionand it cannot be changed after the OriginEndpoint is created.
+-- * Id [__string] The ID of the OriginEndpoint.  The ID must be unique within the region
+--and it cannot be changed after the OriginEndpoint is created.
+--
 -- * ManifestName [__string] A short string that will be used as the filename of the OriginEndpoint URL (defaults to "index").
 -- Required key: ChannelId
 -- Required key: Id
@@ -1306,7 +1352,9 @@ end
 -- Valid keys:
 -- * Url [__string] The URL of the external key provider service.
 -- * ResourceId [__string] The resource ID to include in key requests.
--- * RoleArn [__string] An Amazon Resource Name (ARN) of an IAM role that AWS ElementalMediaPackage will assume when accessing the key provider service.
+-- * RoleArn [__string] An Amazon Resource Name (ARN) of an IAM role that AWS Elemental
+--MediaPackage will assume when accessing the key provider service.
+--
 -- * SystemIds [__listOf__string] The system IDs to include in key requests.
 -- Required key: Url
 -- Required key: ResourceId
@@ -1358,13 +1406,31 @@ end
 -- A HTTP Live Streaming (HLS) manifest configuration.
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
--- * PlaylistType [PlaylistType] The HTTP Live Streaming (HLS) playlist type.When either "EVENT" or "VOD" is specified, a corresponding EXT-X-PLAYLIST-TYPEentry will be included in the media playlist.
+-- * PlaylistType [PlaylistType] The HTTP Live Streaming (HLS) playlist type.
+--When either "EVENT" or "VOD" is specified, a corresponding EXT-X-PLAYLIST-TYPE
+--entry will be included in the media playlist.
+--
 -- * PlaylistWindowSeconds [__integer] Time window (in seconds) contained in each parent manifest.
 -- * Id [__string] The ID of the manifest. The ID must be unique within the OriginEndpoint and it cannot be changed after it is created.
 -- * IncludeIframeOnlyStream [__boolean] When enabled, an I-Frame only stream will be included in the output.
--- * AdMarkers [AdMarkers] This setting controls how ad markers are included in the packaged OriginEndpoint."NONE" will omit all SCTE-35 ad markers from the output."PASSTHROUGH" causes the manifest to contain a copy of the SCTE-35 admarkers (comments) taken directly from the input HTTP Live Streaming (HLS) manifest."SCTE35_ENHANCED" generates ad markers and blackout tags based on SCTE-35messages in the input source.
+-- * AdMarkers [AdMarkers] This setting controls how ad markers are included in the packaged OriginEndpoint.
+--"NONE" will omit all SCTE-35 ad markers from the output.
+--"PASSTHROUGH" causes the manifest to contain a copy of the SCTE-35 ad
+--markers (comments) taken directly from the input HTTP Live Streaming (HLS) manifest.
+--"SCTE35_ENHANCED" generates ad markers and blackout tags based on SCTE-35
+--messages in the input source.
+--
 -- * ManifestName [__string] An optional short string appended to the end of the OriginEndpoint URL. If not specified, defaults to the manifestName for the OriginEndpoint.
--- * ProgramDateTimeIntervalSeconds [__integer] The interval (in seconds) between each EXT-X-PROGRAM-DATE-TIME taginserted into manifests. Additionally, when an interval is specifiedID3Timed Metadata messages will be generated every 5 seconds using theingest time of the content.If the interval is not specified, or set to 0, thenno EXT-X-PROGRAM-DATE-TIME tags will be inserted into manifests and noID3Timed Metadata messages will be generated. Note that irrespectiveof this parameter, if any ID3 Timed Metadata is found in HTTP Live Streaming (HLS) input,it will be passed through to HLS output.
+-- * ProgramDateTimeIntervalSeconds [__integer] The interval (in seconds) between each EXT-X-PROGRAM-DATE-TIME tag
+--inserted into manifests. Additionally, when an interval is specified
+--ID3Timed Metadata messages will be generated every 5 seconds using the
+--ingest time of the content.
+--If the interval is not specified, or set to 0, then
+--no EXT-X-PROGRAM-DATE-TIME tags will be inserted into manifests and no
+--ID3Timed Metadata messages will be generated. Note that irrespective
+--of this parameter, if any ID3 Timed Metadata is found in HTTP Live Streaming (HLS) input,
+--it will be passed through to HLS output.
+--
 -- Required key: Id
 -- @return HlsManifestCreateOrUpdateParameters structure as a key-value pair table
 function M.HlsManifestCreateOrUpdateParameters(args)
@@ -1461,12 +1527,16 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * CmafPackage [CmafPackage] 
--- * StartoverWindowSeconds [__integer] Maximum duration (seconds) of content to retain for startover playback.If not specified, startover playback will be disabled for the OriginEndpoint.
+-- * StartoverWindowSeconds [__integer] Maximum duration (seconds) of content to retain for startover playback.
+--If not specified, startover playback will be disabled for the OriginEndpoint.
+--
 -- * ChannelId [__string] The ID of the Channel the OriginEndpoint is associated with.
 -- * Description [__string] A short text description of the OriginEndpoint.
 -- * Whitelist [__listOf__string] A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.
 -- * DashPackage [DashPackage] 
--- * TimeDelaySeconds [__integer] Amount of delay (seconds) to enforce on the playback of live content.If not specified, there will be no time delay in effect for the OriginEndpoint.
+-- * TimeDelaySeconds [__integer] Amount of delay (seconds) to enforce on the playback of live content.
+--If not specified, there will be no time delay in effect for the OriginEndpoint.
+--
 -- * MssPackage [MssPackage] 
 -- * HlsPackage [HlsPackage] 
 -- * Url [__string] The URL of the packaged OriginEndpoint for consumption.
@@ -1576,13 +1646,33 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * StreamSelection [StreamSelection] 
--- * PlaylistType [PlaylistType] The HTTP Live Streaming (HLS) playlist type.When either "EVENT" or "VOD" is specified, a corresponding EXT-X-PLAYLIST-TYPEentry will be included in the media playlist.
+-- * PlaylistType [PlaylistType] The HTTP Live Streaming (HLS) playlist type.
+--When either "EVENT" or "VOD" is specified, a corresponding EXT-X-PLAYLIST-TYPE
+--entry will be included in the media playlist.
+--
 -- * PlaylistWindowSeconds [__integer] Time window (in seconds) contained in each parent manifest.
 -- * Encryption [HlsEncryption] 
 -- * UseAudioRenditionGroup [__boolean] When enabled, audio streams will be placed in rendition groups in the output.
--- * ProgramDateTimeIntervalSeconds [__integer] The interval (in seconds) between each EXT-X-PROGRAM-DATE-TIME taginserted into manifests. Additionally, when an interval is specifiedID3Timed Metadata messages will be generated every 5 seconds using theingest time of the content.If the interval is not specified, or set to 0, thenno EXT-X-PROGRAM-DATE-TIME tags will be inserted into manifests and noID3Timed Metadata messages will be generated. Note that irrespectiveof this parameter, if any ID3 Timed Metadata is found in HTTP Live Streaming (HLS) input,it will be passed through to HLS output.
--- * SegmentDurationSeconds [__integer] Duration (in seconds) of each fragment. Actual fragments will berounded to the nearest multiple of the source fragment duration.
--- * AdMarkers [AdMarkers] This setting controls how ad markers are included in the packaged OriginEndpoint."NONE" will omit all SCTE-35 ad markers from the output."PASSTHROUGH" causes the manifest to contain a copy of the SCTE-35 admarkers (comments) taken directly from the input HTTP Live Streaming (HLS) manifest."SCTE35_ENHANCED" generates ad markers and blackout tags based on SCTE-35messages in the input source.
+-- * ProgramDateTimeIntervalSeconds [__integer] The interval (in seconds) between each EXT-X-PROGRAM-DATE-TIME tag
+--inserted into manifests. Additionally, when an interval is specified
+--ID3Timed Metadata messages will be generated every 5 seconds using the
+--ingest time of the content.
+--If the interval is not specified, or set to 0, then
+--no EXT-X-PROGRAM-DATE-TIME tags will be inserted into manifests and no
+--ID3Timed Metadata messages will be generated. Note that irrespective
+--of this parameter, if any ID3 Timed Metadata is found in HTTP Live Streaming (HLS) input,
+--it will be passed through to HLS output.
+--
+-- * SegmentDurationSeconds [__integer] Duration (in seconds) of each fragment. Actual fragments will be
+--rounded to the nearest multiple of the source fragment duration.
+--
+-- * AdMarkers [AdMarkers] This setting controls how ad markers are included in the packaged OriginEndpoint.
+--"NONE" will omit all SCTE-35 ad markers from the output.
+--"PASSTHROUGH" causes the manifest to contain a copy of the SCTE-35 ad
+--markers (comments) taken directly from the input HTTP Live Streaming (HLS) manifest.
+--"SCTE35_ENHANCED" generates ad markers and blackout tags based on SCTE-35
+--messages in the input source.
+--
 -- * IncludeIframeOnlyStream [__boolean] When enabled, an I-Frame only stream will be included in the output.
 -- @return HlsPackage structure as a key-value pair table
 function M.HlsPackage(args)
@@ -1635,7 +1725,9 @@ end
 -- * Encryption [CmafEncryption] 
 -- * SegmentPrefix [__string] An optional custom string that is prepended to the name of each segment. If not specified, it defaults to the ChannelId.
 -- * HlsManifests [__listOfHlsManifestCreateOrUpdateParameters] A list of HLS manifest configurations
--- * SegmentDurationSeconds [__integer] Duration (in seconds) of each segment. Actual segments will berounded to the nearest multiple of the source segment duration.
+-- * SegmentDurationSeconds [__integer] Duration (in seconds) of each segment. Actual segments will be
+--rounded to the nearest multiple of the source segment duration.
+--
 -- * StreamSelection [StreamSelection] 
 -- @return CmafPackageCreateOrUpdateParameters structure as a key-value pair table
 function M.CmafPackageCreateOrUpdateParameters(args)
@@ -1690,12 +1782,16 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * CmafPackage [CmafPackage] 
--- * StartoverWindowSeconds [__integer] Maximum duration (seconds) of content to retain for startover playback.If not specified, startover playback will be disabled for the OriginEndpoint.
+-- * StartoverWindowSeconds [__integer] Maximum duration (seconds) of content to retain for startover playback.
+--If not specified, startover playback will be disabled for the OriginEndpoint.
+--
 -- * ChannelId [__string] The ID of the Channel the OriginEndpoint is associated with.
 -- * Description [__string] A short text description of the OriginEndpoint.
 -- * Whitelist [__listOf__string] A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.
 -- * DashPackage [DashPackage] 
--- * TimeDelaySeconds [__integer] Amount of delay (seconds) to enforce on the playback of live content.If not specified, there will be no time delay in effect for the OriginEndpoint.
+-- * TimeDelaySeconds [__integer] Amount of delay (seconds) to enforce on the playback of live content.
+--If not specified, there will be no time delay in effect for the OriginEndpoint.
+--
 -- * MssPackage [MssPackage] 
 -- * HlsPackage [HlsPackage] 
 -- * Url [__string] The URL of the packaged OriginEndpoint for consumption.
@@ -1809,12 +1905,16 @@ end
 -- @param args Table with arguments in key-value form.
 -- Valid keys:
 -- * CmafPackage [CmafPackage] 
--- * StartoverWindowSeconds [__integer] Maximum duration (seconds) of content to retain for startover playback.If not specified, startover playback will be disabled for the OriginEndpoint.
+-- * StartoverWindowSeconds [__integer] Maximum duration (seconds) of content to retain for startover playback.
+--If not specified, startover playback will be disabled for the OriginEndpoint.
+--
 -- * ChannelId [__string] The ID of the Channel the OriginEndpoint is associated with.
 -- * Description [__string] A short text description of the OriginEndpoint.
 -- * Whitelist [__listOf__string] A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.
 -- * DashPackage [DashPackage] 
--- * TimeDelaySeconds [__integer] Amount of delay (seconds) to enforce on the playback of live content.If not specified, there will be no time delay in effect for the OriginEndpoint.
+-- * TimeDelaySeconds [__integer] Amount of delay (seconds) to enforce on the playback of live content.
+--If not specified, there will be no time delay in effect for the OriginEndpoint.
+--
 -- * MssPackage [MssPackage] 
 -- * HlsPackage [HlsPackage] 
 -- * Url [__string] The URL of the packaged OriginEndpoint for consumption.
