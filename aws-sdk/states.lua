@@ -3715,7 +3715,7 @@ function M.StartExecutionAsync(StartExecutionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", StartExecutionInput, headers, settings, cb)
 	else
@@ -3751,7 +3751,7 @@ function M.ListExecutionsAsync(ListExecutionsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListExecutions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListExecutionsInput, headers, settings, cb)
 	else
@@ -3787,7 +3787,7 @@ function M.DescribeStateMachineForExecutionAsync(DescribeStateMachineForExecutio
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeStateMachineForExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStateMachineForExecutionInput, headers, settings, cb)
 	else
@@ -3823,7 +3823,7 @@ function M.StopExecutionAsync(StopExecutionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", StopExecutionInput, headers, settings, cb)
 	else
@@ -3859,7 +3859,7 @@ function M.DeleteActivityAsync(DeleteActivityInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteActivity")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteActivityInput, headers, settings, cb)
 	else
@@ -3895,7 +3895,7 @@ function M.SendTaskHeartbeatAsync(SendTaskHeartbeatInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SendTaskHeartbeat")
 	if request_handler then
 		request_handler(settings.uri, "/", SendTaskHeartbeatInput, headers, settings, cb)
 	else
@@ -3931,7 +3931,7 @@ function M.DescribeExecutionAsync(DescribeExecutionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeExecutionInput, headers, settings, cb)
 	else
@@ -3967,7 +3967,7 @@ function M.ListStateMachinesAsync(ListStateMachinesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListStateMachines")
 	if request_handler then
 		request_handler(settings.uri, "/", ListStateMachinesInput, headers, settings, cb)
 	else
@@ -4003,7 +4003,7 @@ function M.GetExecutionHistoryAsync(GetExecutionHistoryInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetExecutionHistory")
 	if request_handler then
 		request_handler(settings.uri, "/", GetExecutionHistoryInput, headers, settings, cb)
 	else
@@ -4039,7 +4039,7 @@ function M.GetActivityTaskAsync(GetActivityTaskInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetActivityTask")
 	if request_handler then
 		request_handler(settings.uri, "/", GetActivityTaskInput, headers, settings, cb)
 	else
@@ -4075,7 +4075,7 @@ function M.ListActivitiesAsync(ListActivitiesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListActivities")
 	if request_handler then
 		request_handler(settings.uri, "/", ListActivitiesInput, headers, settings, cb)
 	else
@@ -4111,7 +4111,7 @@ function M.CreateStateMachineAsync(CreateStateMachineInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateStateMachine")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateStateMachineInput, headers, settings, cb)
 	else
@@ -4147,7 +4147,7 @@ function M.DescribeStateMachineAsync(DescribeStateMachineInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeStateMachine")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStateMachineInput, headers, settings, cb)
 	else
@@ -4183,7 +4183,7 @@ function M.DescribeActivityAsync(DescribeActivityInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeActivity")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeActivityInput, headers, settings, cb)
 	else
@@ -4219,7 +4219,7 @@ function M.DeleteStateMachineAsync(DeleteStateMachineInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteStateMachine")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteStateMachineInput, headers, settings, cb)
 	else
@@ -4255,7 +4255,7 @@ function M.UpdateStateMachineAsync(UpdateStateMachineInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateStateMachine")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateStateMachineInput, headers, settings, cb)
 	else
@@ -4291,7 +4291,7 @@ function M.CreateActivityAsync(CreateActivityInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateActivity")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateActivityInput, headers, settings, cb)
 	else
@@ -4327,7 +4327,7 @@ function M.SendTaskFailureAsync(SendTaskFailureInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SendTaskFailure")
 	if request_handler then
 		request_handler(settings.uri, "/", SendTaskFailureInput, headers, settings, cb)
 	else
@@ -4363,7 +4363,7 @@ function M.SendTaskSuccessAsync(SendTaskSuccessInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SendTaskSuccess")
 	if request_handler then
 		request_handler(settings.uri, "/", SendTaskSuccessInput, headers, settings, cb)
 	else

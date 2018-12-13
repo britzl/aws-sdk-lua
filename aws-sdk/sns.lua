@@ -3148,7 +3148,7 @@ function M.ListPlatformApplicationsAsync(ListPlatformApplicationsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListPlatformApplications")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPlatformApplicationsInput, headers, settings, cb)
 	else
@@ -3184,7 +3184,7 @@ function M.SetPlatformApplicationAttributesAsync(SetPlatformApplicationAttribute
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetPlatformApplicationAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", SetPlatformApplicationAttributesInput, headers, settings, cb)
 	else
@@ -3220,7 +3220,7 @@ function M.ListSubscriptionsByTopicAsync(ListSubscriptionsByTopicInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListSubscriptionsByTopic")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSubscriptionsByTopicInput, headers, settings, cb)
 	else
@@ -3256,7 +3256,7 @@ function M.ListSubscriptionsAsync(ListSubscriptionsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListSubscriptions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSubscriptionsInput, headers, settings, cb)
 	else
@@ -3292,7 +3292,7 @@ function M.ListPhoneNumbersOptedOutAsync(ListPhoneNumbersOptedOutInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListPhoneNumbersOptedOut")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPhoneNumbersOptedOutInput, headers, settings, cb)
 	else
@@ -3328,7 +3328,7 @@ function M.ConfirmSubscriptionAsync(ConfirmSubscriptionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ConfirmSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", ConfirmSubscriptionInput, headers, settings, cb)
 	else
@@ -3364,7 +3364,7 @@ function M.SetTopicAttributesAsync(SetTopicAttributesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetTopicAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", SetTopicAttributesInput, headers, settings, cb)
 	else
@@ -3400,7 +3400,7 @@ function M.SetEndpointAttributesAsync(SetEndpointAttributesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetEndpointAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", SetEndpointAttributesInput, headers, settings, cb)
 	else
@@ -3436,7 +3436,7 @@ function M.CheckIfPhoneNumberIsOptedOutAsync(CheckIfPhoneNumberIsOptedOutInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CheckIfPhoneNumberIsOptedOut")
 	if request_handler then
 		request_handler(settings.uri, "/", CheckIfPhoneNumberIsOptedOutInput, headers, settings, cb)
 	else
@@ -3472,7 +3472,7 @@ function M.AddPermissionAsync(AddPermissionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AddPermission")
 	if request_handler then
 		request_handler(settings.uri, "/", AddPermissionInput, headers, settings, cb)
 	else
@@ -3508,7 +3508,7 @@ function M.UnsubscribeAsync(UnsubscribeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "Unsubscribe")
 	if request_handler then
 		request_handler(settings.uri, "/", UnsubscribeInput, headers, settings, cb)
 	else
@@ -3544,7 +3544,7 @@ function M.GetSubscriptionAttributesAsync(GetSubscriptionAttributesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetSubscriptionAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSubscriptionAttributesInput, headers, settings, cb)
 	else
@@ -3580,7 +3580,7 @@ function M.CreatePlatformEndpointAsync(CreatePlatformEndpointInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreatePlatformEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePlatformEndpointInput, headers, settings, cb)
 	else
@@ -3616,7 +3616,7 @@ function M.RemovePermissionAsync(RemovePermissionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RemovePermission")
 	if request_handler then
 		request_handler(settings.uri, "/", RemovePermissionInput, headers, settings, cb)
 	else
@@ -3652,7 +3652,7 @@ function M.CreateTopicAsync(CreateTopicInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateTopic")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTopicInput, headers, settings, cb)
 	else
@@ -3688,7 +3688,7 @@ function M.SetSubscriptionAttributesAsync(SetSubscriptionAttributesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetSubscriptionAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", SetSubscriptionAttributesInput, headers, settings, cb)
 	else
@@ -3724,7 +3724,7 @@ function M.CreatePlatformApplicationAsync(CreatePlatformApplicationInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreatePlatformApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePlatformApplicationInput, headers, settings, cb)
 	else
@@ -3760,7 +3760,7 @@ function M.GetPlatformApplicationAttributesAsync(GetPlatformApplicationAttribute
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetPlatformApplicationAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPlatformApplicationAttributesInput, headers, settings, cb)
 	else
@@ -3796,7 +3796,7 @@ function M.GetSMSAttributesAsync(GetSMSAttributesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetSMSAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSMSAttributesInput, headers, settings, cb)
 	else
@@ -3832,7 +3832,7 @@ function M.PublishAsync(PublishInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "Publish")
 	if request_handler then
 		request_handler(settings.uri, "/", PublishInput, headers, settings, cb)
 	else
@@ -3868,7 +3868,7 @@ function M.SetSMSAttributesAsync(SetSMSAttributesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetSMSAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", SetSMSAttributesInput, headers, settings, cb)
 	else
@@ -3904,7 +3904,7 @@ function M.ListEndpointsByPlatformApplicationAsync(ListEndpointsByPlatformApplic
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListEndpointsByPlatformApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", ListEndpointsByPlatformApplicationInput, headers, settings, cb)
 	else
@@ -3940,7 +3940,7 @@ function M.GetEndpointAttributesAsync(GetEndpointAttributesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetEndpointAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", GetEndpointAttributesInput, headers, settings, cb)
 	else
@@ -3976,7 +3976,7 @@ function M.DeleteEndpointAsync(DeleteEndpointInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEndpointInput, headers, settings, cb)
 	else
@@ -4012,7 +4012,7 @@ function M.DeletePlatformApplicationAsync(DeletePlatformApplicationInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeletePlatformApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePlatformApplicationInput, headers, settings, cb)
 	else
@@ -4048,7 +4048,7 @@ function M.GetTopicAttributesAsync(GetTopicAttributesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetTopicAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTopicAttributesInput, headers, settings, cb)
 	else
@@ -4084,7 +4084,7 @@ function M.SubscribeAsync(SubscribeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "Subscribe")
 	if request_handler then
 		request_handler(settings.uri, "/", SubscribeInput, headers, settings, cb)
 	else
@@ -4120,7 +4120,7 @@ function M.DeleteTopicAsync(DeleteTopicInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteTopic")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTopicInput, headers, settings, cb)
 	else
@@ -4156,7 +4156,7 @@ function M.OptInPhoneNumberAsync(OptInPhoneNumberInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "OptInPhoneNumber")
 	if request_handler then
 		request_handler(settings.uri, "/", OptInPhoneNumberInput, headers, settings, cb)
 	else
@@ -4192,7 +4192,7 @@ function M.ListTopicsAsync(ListTopicsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListTopics")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTopicsInput, headers, settings, cb)
 	else

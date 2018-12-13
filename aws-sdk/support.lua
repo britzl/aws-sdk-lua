@@ -2964,7 +2964,7 @@ function M.CreateCaseAsync(CreateCaseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateCase")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCaseRequest, headers, settings, cb)
 	else
@@ -3000,7 +3000,7 @@ function M.AddAttachmentsToSetAsync(AddAttachmentsToSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddAttachmentsToSet")
 	if request_handler then
 		request_handler(settings.uri, "/", AddAttachmentsToSetRequest, headers, settings, cb)
 	else
@@ -3036,7 +3036,7 @@ function M.AddCommunicationToCaseAsync(AddCommunicationToCaseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddCommunicationToCase")
 	if request_handler then
 		request_handler(settings.uri, "/", AddCommunicationToCaseRequest, headers, settings, cb)
 	else
@@ -3072,7 +3072,7 @@ function M.DescribeTrustedAdvisorCheckRefreshStatusesAsync(DescribeTrustedAdviso
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTrustedAdvisorCheckRefreshStatuses")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTrustedAdvisorCheckRefreshStatusesRequest, headers, settings, cb)
 	else
@@ -3108,7 +3108,7 @@ function M.DescribeTrustedAdvisorCheckResultAsync(DescribeTrustedAdvisorCheckRes
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTrustedAdvisorCheckResult")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTrustedAdvisorCheckResultRequest, headers, settings, cb)
 	else
@@ -3144,7 +3144,7 @@ function M.ResolveCaseAsync(ResolveCaseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ResolveCase")
 	if request_handler then
 		request_handler(settings.uri, "/", ResolveCaseRequest, headers, settings, cb)
 	else
@@ -3180,7 +3180,7 @@ function M.DescribeSeverityLevelsAsync(DescribeSeverityLevelsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeSeverityLevels")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSeverityLevelsRequest, headers, settings, cb)
 	else
@@ -3216,7 +3216,7 @@ function M.DescribeCasesAsync(DescribeCasesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeCases")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCasesRequest, headers, settings, cb)
 	else
@@ -3252,7 +3252,7 @@ function M.RefreshTrustedAdvisorCheckAsync(RefreshTrustedAdvisorCheckRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RefreshTrustedAdvisorCheck")
 	if request_handler then
 		request_handler(settings.uri, "/", RefreshTrustedAdvisorCheckRequest, headers, settings, cb)
 	else
@@ -3288,7 +3288,7 @@ function M.DescribeAttachmentAsync(DescribeAttachmentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAttachment")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAttachmentRequest, headers, settings, cb)
 	else
@@ -3324,7 +3324,7 @@ function M.DescribeTrustedAdvisorChecksAsync(DescribeTrustedAdvisorChecksRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTrustedAdvisorChecks")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTrustedAdvisorChecksRequest, headers, settings, cb)
 	else
@@ -3360,7 +3360,7 @@ function M.DescribeTrustedAdvisorCheckSummariesAsync(DescribeTrustedAdvisorCheck
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTrustedAdvisorCheckSummaries")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTrustedAdvisorCheckSummariesRequest, headers, settings, cb)
 	else
@@ -3396,7 +3396,7 @@ function M.DescribeCommunicationsAsync(DescribeCommunicationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeCommunications")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCommunicationsRequest, headers, settings, cb)
 	else
@@ -3432,7 +3432,7 @@ function M.DescribeServicesAsync(DescribeServicesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeServices")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeServicesRequest, headers, settings, cb)
 	else

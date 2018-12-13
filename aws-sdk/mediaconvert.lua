@@ -11431,7 +11431,7 @@ function M.CreateQueueAsync(CreateQueueRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateQueue")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/queues", CreateQueueRequest, headers, settings, cb)
 	else
@@ -11467,7 +11467,7 @@ function M.UpdatePresetAsync(UpdatePresetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdatePreset")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/presets/{name}", UpdatePresetRequest, headers, settings, cb)
 	else
@@ -11503,7 +11503,7 @@ function M.ListPresetsAsync(ListPresetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListPresets")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/presets", ListPresetsRequest, headers, settings, cb)
 	else
@@ -11539,7 +11539,7 @@ function M.DeletePresetAsync(DeletePresetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeletePreset")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/presets/{name}", DeletePresetRequest, headers, settings, cb)
 	else
@@ -11575,7 +11575,7 @@ function M.ListJobTemplatesAsync(ListJobTemplatesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListJobTemplates")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/jobTemplates", ListJobTemplatesRequest, headers, settings, cb)
 	else
@@ -11611,7 +11611,7 @@ function M.ListQueuesAsync(ListQueuesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListQueues")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/queues", ListQueuesRequest, headers, settings, cb)
 	else
@@ -11647,7 +11647,7 @@ function M.GetJobTemplateAsync(GetJobTemplateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetJobTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/jobTemplates/{name}", GetJobTemplateRequest, headers, settings, cb)
 	else
@@ -11683,7 +11683,7 @@ function M.DescribeEndpointsAsync(DescribeEndpointsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DescribeEndpoints")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/endpoints", DescribeEndpointsRequest, headers, settings, cb)
 	else
@@ -11719,7 +11719,7 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "TagResource")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/tags", TagResourceRequest, headers, settings, cb)
 	else
@@ -11755,7 +11755,7 @@ function M.GetQueueAsync(GetQueueRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetQueue")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/queues/{name}", GetQueueRequest, headers, settings, cb)
 	else
@@ -11791,7 +11791,7 @@ function M.DeleteJobTemplateAsync(DeleteJobTemplateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteJobTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/jobTemplates/{name}", DeleteJobTemplateRequest, headers, settings, cb)
 	else
@@ -11827,7 +11827,7 @@ function M.ListJobsAsync(ListJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListJobs")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/jobs", ListJobsRequest, headers, settings, cb)
 	else
@@ -11863,7 +11863,7 @@ function M.CreateJobAsync(CreateJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateJob")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/jobs", CreateJobRequest, headers, settings, cb)
 	else
@@ -11899,7 +11899,7 @@ function M.GetPresetAsync(GetPresetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetPreset")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/presets/{name}", GetPresetRequest, headers, settings, cb)
 	else
@@ -11935,7 +11935,7 @@ function M.UpdateQueueAsync(UpdateQueueRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateQueue")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/queues/{name}", UpdateQueueRequest, headers, settings, cb)
 	else
@@ -11971,7 +11971,7 @@ function M.CancelJobAsync(CancelJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "CancelJob")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/jobs/{id}", CancelJobRequest, headers, settings, cb)
 	else
@@ -12007,7 +12007,7 @@ function M.CreatePresetAsync(CreatePresetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreatePreset")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/presets", CreatePresetRequest, headers, settings, cb)
 	else
@@ -12043,7 +12043,7 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UntagResource")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/tags/{arn}", UntagResourceRequest, headers, settings, cb)
 	else
@@ -12079,7 +12079,7 @@ function M.GetJobAsync(GetJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetJob")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/jobs/{id}", GetJobRequest, headers, settings, cb)
 	else
@@ -12115,7 +12115,7 @@ function M.DeleteQueueAsync(DeleteQueueRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteQueue")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/queues/{name}", DeleteQueueRequest, headers, settings, cb)
 	else
@@ -12151,7 +12151,7 @@ function M.CreateJobTemplateAsync(CreateJobTemplateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateJobTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/jobTemplates", CreateJobTemplateRequest, headers, settings, cb)
 	else
@@ -12187,7 +12187,7 @@ function M.UpdateJobTemplateAsync(UpdateJobTemplateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateJobTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/jobTemplates/{name}", UpdateJobTemplateRequest, headers, settings, cb)
 	else
@@ -12223,7 +12223,7 @@ function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListTagsForResource")
 	if request_handler then
 		request_handler(settings.uri, "/2017-08-29/tags/{arn}", ListTagsForResourceRequest, headers, settings, cb)
 	else

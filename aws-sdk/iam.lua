@@ -13204,7 +13204,7 @@ function M.GetUserPolicyAsync(GetUserPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetUserPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", GetUserPolicyRequest, headers, settings, cb)
 	else
@@ -13240,7 +13240,7 @@ function M.CreateServiceLinkedRoleAsync(CreateServiceLinkedRoleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateServiceLinkedRole")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateServiceLinkedRoleRequest, headers, settings, cb)
 	else
@@ -13276,7 +13276,7 @@ function M.DeleteInstanceProfileAsync(DeleteInstanceProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteInstanceProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteInstanceProfileRequest, headers, settings, cb)
 	else
@@ -13308,7 +13308,7 @@ function M.GetAccountSummaryAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetAccountSummary")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -13343,7 +13343,7 @@ function M.DeleteRolePermissionsBoundaryAsync(DeleteRolePermissionsBoundaryReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteRolePermissionsBoundary")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRolePermissionsBoundaryRequest, headers, settings, cb)
 	else
@@ -13379,7 +13379,7 @@ function M.ListAttachedGroupPoliciesAsync(ListAttachedGroupPoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListAttachedGroupPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAttachedGroupPoliciesRequest, headers, settings, cb)
 	else
@@ -13415,7 +13415,7 @@ function M.UpdateUserAsync(UpdateUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateUser")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateUserRequest, headers, settings, cb)
 	else
@@ -13451,7 +13451,7 @@ function M.ListAccountAliasesAsync(ListAccountAliasesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListAccountAliases")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAccountAliasesRequest, headers, settings, cb)
 	else
@@ -13487,7 +13487,7 @@ function M.GetUserAsync(GetUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetUser")
 	if request_handler then
 		request_handler(settings.uri, "/", GetUserRequest, headers, settings, cb)
 	else
@@ -13523,7 +13523,7 @@ function M.ListInstanceProfilesForRoleAsync(ListInstanceProfilesForRoleRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListInstanceProfilesForRole")
 	if request_handler then
 		request_handler(settings.uri, "/", ListInstanceProfilesForRoleRequest, headers, settings, cb)
 	else
@@ -13559,7 +13559,7 @@ function M.UploadSSHPublicKeyAsync(UploadSSHPublicKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UploadSSHPublicKey")
 	if request_handler then
 		request_handler(settings.uri, "/", UploadSSHPublicKeyRequest, headers, settings, cb)
 	else
@@ -13595,7 +13595,7 @@ function M.GetServiceLinkedRoleDeletionStatusAsync(GetServiceLinkedRoleDeletionS
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetServiceLinkedRoleDeletionStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", GetServiceLinkedRoleDeletionStatusRequest, headers, settings, cb)
 	else
@@ -13631,7 +13631,7 @@ function M.ListGroupPoliciesAsync(ListGroupPoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListGroupPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", ListGroupPoliciesRequest, headers, settings, cb)
 	else
@@ -13667,7 +13667,7 @@ function M.CreateAccessKeyAsync(CreateAccessKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateAccessKey")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAccessKeyRequest, headers, settings, cb)
 	else
@@ -13703,7 +13703,7 @@ function M.UpdateLoginProfileAsync(UpdateLoginProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateLoginProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateLoginProfileRequest, headers, settings, cb)
 	else
@@ -13739,7 +13739,7 @@ function M.ListGroupsAsync(ListGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", ListGroupsRequest, headers, settings, cb)
 	else
@@ -13775,7 +13775,7 @@ function M.UpdateRoleDescriptionAsync(UpdateRoleDescriptionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateRoleDescription")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRoleDescriptionRequest, headers, settings, cb)
 	else
@@ -13811,7 +13811,7 @@ function M.UpdateSAMLProviderAsync(UpdateSAMLProviderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateSAMLProvider")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSAMLProviderRequest, headers, settings, cb)
 	else
@@ -13847,7 +13847,7 @@ function M.ResetServiceSpecificCredentialAsync(ResetServiceSpecificCredentialReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ResetServiceSpecificCredential")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetServiceSpecificCredentialRequest, headers, settings, cb)
 	else
@@ -13883,7 +13883,7 @@ function M.DeleteSSHPublicKeyAsync(DeleteSSHPublicKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteSSHPublicKey")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSSHPublicKeyRequest, headers, settings, cb)
 	else
@@ -13919,7 +13919,7 @@ function M.UpdateRoleAsync(UpdateRoleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateRole")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRoleRequest, headers, settings, cb)
 	else
@@ -13955,7 +13955,7 @@ function M.RemoveUserFromGroupAsync(RemoveUserFromGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RemoveUserFromGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveUserFromGroupRequest, headers, settings, cb)
 	else
@@ -13991,7 +13991,7 @@ function M.ListSAMLProvidersAsync(ListSAMLProvidersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListSAMLProviders")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSAMLProvidersRequest, headers, settings, cb)
 	else
@@ -14027,7 +14027,7 @@ function M.DeleteRolePolicyAsync(DeleteRolePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteRolePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRolePolicyRequest, headers, settings, cb)
 	else
@@ -14063,7 +14063,7 @@ function M.UploadServerCertificateAsync(UploadServerCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UploadServerCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", UploadServerCertificateRequest, headers, settings, cb)
 	else
@@ -14099,7 +14099,7 @@ function M.GetContextKeysForPrincipalPolicyAsync(GetContextKeysForPrincipalPolic
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetContextKeysForPrincipalPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", GetContextKeysForPrincipalPolicyRequest, headers, settings, cb)
 	else
@@ -14135,7 +14135,7 @@ function M.UpdateAccessKeyAsync(UpdateAccessKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateAccessKey")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAccessKeyRequest, headers, settings, cb)
 	else
@@ -14171,7 +14171,7 @@ function M.ListRolesAsync(ListRolesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListRoles")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRolesRequest, headers, settings, cb)
 	else
@@ -14207,7 +14207,7 @@ function M.DeleteAccessKeyAsync(DeleteAccessKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteAccessKey")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAccessKeyRequest, headers, settings, cb)
 	else
@@ -14243,7 +14243,7 @@ function M.AddRoleToInstanceProfileAsync(AddRoleToInstanceProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AddRoleToInstanceProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", AddRoleToInstanceProfileRequest, headers, settings, cb)
 	else
@@ -14279,7 +14279,7 @@ function M.GetContextKeysForCustomPolicyAsync(GetContextKeysForCustomPolicyReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetContextKeysForCustomPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", GetContextKeysForCustomPolicyRequest, headers, settings, cb)
 	else
@@ -14315,7 +14315,7 @@ function M.GetGroupPolicyAsync(GetGroupPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetGroupPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", GetGroupPolicyRequest, headers, settings, cb)
 	else
@@ -14351,7 +14351,7 @@ function M.DeleteServiceLinkedRoleAsync(DeleteServiceLinkedRoleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteServiceLinkedRole")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteServiceLinkedRoleRequest, headers, settings, cb)
 	else
@@ -14387,7 +14387,7 @@ function M.CreateServiceSpecificCredentialAsync(CreateServiceSpecificCredentialR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateServiceSpecificCredential")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateServiceSpecificCredentialRequest, headers, settings, cb)
 	else
@@ -14423,7 +14423,7 @@ function M.CreateLoginProfileAsync(CreateLoginProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateLoginProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLoginProfileRequest, headers, settings, cb)
 	else
@@ -14459,7 +14459,7 @@ function M.SimulateCustomPolicyAsync(SimulateCustomPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SimulateCustomPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", SimulateCustomPolicyRequest, headers, settings, cb)
 	else
@@ -14495,7 +14495,7 @@ function M.DeactivateMFADeviceAsync(DeactivateMFADeviceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeactivateMFADevice")
 	if request_handler then
 		request_handler(settings.uri, "/", DeactivateMFADeviceRequest, headers, settings, cb)
 	else
@@ -14531,7 +14531,7 @@ function M.DetachRolePolicyAsync(DetachRolePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DetachRolePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachRolePolicyRequest, headers, settings, cb)
 	else
@@ -14567,7 +14567,7 @@ function M.GetPolicyAsync(GetPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPolicyRequest, headers, settings, cb)
 	else
@@ -14603,7 +14603,7 @@ function M.CreateSAMLProviderAsync(CreateSAMLProviderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateSAMLProvider")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSAMLProviderRequest, headers, settings, cb)
 	else
@@ -14639,7 +14639,7 @@ function M.ListOpenIDConnectProvidersAsync(ListOpenIDConnectProvidersRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListOpenIDConnectProviders")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOpenIDConnectProvidersRequest, headers, settings, cb)
 	else
@@ -14675,7 +14675,7 @@ function M.DeleteAccountAliasAsync(DeleteAccountAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteAccountAlias")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAccountAliasRequest, headers, settings, cb)
 	else
@@ -14711,7 +14711,7 @@ function M.ListSigningCertificatesAsync(ListSigningCertificatesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListSigningCertificates")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSigningCertificatesRequest, headers, settings, cb)
 	else
@@ -14747,7 +14747,7 @@ function M.DeleteRoleAsync(DeleteRoleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteRole")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRoleRequest, headers, settings, cb)
 	else
@@ -14783,7 +14783,7 @@ function M.UpdateGroupAsync(UpdateGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateGroupRequest, headers, settings, cb)
 	else
@@ -14819,7 +14819,7 @@ function M.GetGroupAsync(GetGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", GetGroupRequest, headers, settings, cb)
 	else
@@ -14855,7 +14855,7 @@ function M.GetRolePolicyAsync(GetRolePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetRolePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRolePolicyRequest, headers, settings, cb)
 	else
@@ -14891,7 +14891,7 @@ function M.CreateUserAsync(CreateUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateUser")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateUserRequest, headers, settings, cb)
 	else
@@ -14927,7 +14927,7 @@ function M.AddUserToGroupAsync(AddUserToGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AddUserToGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", AddUserToGroupRequest, headers, settings, cb)
 	else
@@ -14963,7 +14963,7 @@ function M.RemoveRoleFromInstanceProfileAsync(RemoveRoleFromInstanceProfileReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RemoveRoleFromInstanceProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveRoleFromInstanceProfileRequest, headers, settings, cb)
 	else
@@ -14999,7 +14999,7 @@ function M.ListInstanceProfilesAsync(ListInstanceProfilesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListInstanceProfiles")
 	if request_handler then
 		request_handler(settings.uri, "/", ListInstanceProfilesRequest, headers, settings, cb)
 	else
@@ -15035,7 +15035,7 @@ function M.UpdateServiceSpecificCredentialAsync(UpdateServiceSpecificCredentialR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateServiceSpecificCredential")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateServiceSpecificCredentialRequest, headers, settings, cb)
 	else
@@ -15071,7 +15071,7 @@ function M.ListAttachedUserPoliciesAsync(ListAttachedUserPoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListAttachedUserPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAttachedUserPoliciesRequest, headers, settings, cb)
 	else
@@ -15107,7 +15107,7 @@ function M.CreatePolicyVersionAsync(CreatePolicyVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreatePolicyVersion")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePolicyVersionRequest, headers, settings, cb)
 	else
@@ -15143,7 +15143,7 @@ function M.ListServiceSpecificCredentialsAsync(ListServiceSpecificCredentialsReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListServiceSpecificCredentials")
 	if request_handler then
 		request_handler(settings.uri, "/", ListServiceSpecificCredentialsRequest, headers, settings, cb)
 	else
@@ -15179,7 +15179,7 @@ function M.AttachUserPolicyAsync(AttachUserPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AttachUserPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachUserPolicyRequest, headers, settings, cb)
 	else
@@ -15215,7 +15215,7 @@ function M.ListVirtualMFADevicesAsync(ListVirtualMFADevicesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListVirtualMFADevices")
 	if request_handler then
 		request_handler(settings.uri, "/", ListVirtualMFADevicesRequest, headers, settings, cb)
 	else
@@ -15251,7 +15251,7 @@ function M.UpdateAssumeRolePolicyAsync(UpdateAssumeRolePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateAssumeRolePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAssumeRolePolicyRequest, headers, settings, cb)
 	else
@@ -15287,7 +15287,7 @@ function M.ListServerCertificatesAsync(ListServerCertificatesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListServerCertificates")
 	if request_handler then
 		request_handler(settings.uri, "/", ListServerCertificatesRequest, headers, settings, cb)
 	else
@@ -15323,7 +15323,7 @@ function M.DeleteGroupAsync(DeleteGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteGroupRequest, headers, settings, cb)
 	else
@@ -15359,7 +15359,7 @@ function M.UpdateOpenIDConnectProviderThumbprintAsync(UpdateOpenIDConnectProvide
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateOpenIDConnectProviderThumbprint")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateOpenIDConnectProviderThumbprintRequest, headers, settings, cb)
 	else
@@ -15395,7 +15395,7 @@ function M.CreateGroupAsync(CreateGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateGroupRequest, headers, settings, cb)
 	else
@@ -15431,7 +15431,7 @@ function M.DeletePolicyAsync(DeletePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeletePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePolicyRequest, headers, settings, cb)
 	else
@@ -15467,7 +15467,7 @@ function M.DeleteUserPolicyAsync(DeleteUserPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteUserPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUserPolicyRequest, headers, settings, cb)
 	else
@@ -15503,7 +15503,7 @@ function M.UpdateServerCertificateAsync(UpdateServerCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateServerCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateServerCertificateRequest, headers, settings, cb)
 	else
@@ -15539,7 +15539,7 @@ function M.AddClientIDToOpenIDConnectProviderAsync(AddClientIDToOpenIDConnectPro
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AddClientIDToOpenIDConnectProvider")
 	if request_handler then
 		request_handler(settings.uri, "/", AddClientIDToOpenIDConnectProviderRequest, headers, settings, cb)
 	else
@@ -15575,7 +15575,7 @@ function M.DeleteVirtualMFADeviceAsync(DeleteVirtualMFADeviceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteVirtualMFADevice")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVirtualMFADeviceRequest, headers, settings, cb)
 	else
@@ -15611,7 +15611,7 @@ function M.PutRolePermissionsBoundaryAsync(PutRolePermissionsBoundaryRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PutRolePermissionsBoundary")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRolePermissionsBoundaryRequest, headers, settings, cb)
 	else
@@ -15647,7 +15647,7 @@ function M.SimulatePrincipalPolicyAsync(SimulatePrincipalPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SimulatePrincipalPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", SimulatePrincipalPolicyRequest, headers, settings, cb)
 	else
@@ -15683,7 +15683,7 @@ function M.ListAccessKeysAsync(ListAccessKeysRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListAccessKeys")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAccessKeysRequest, headers, settings, cb)
 	else
@@ -15719,7 +15719,7 @@ function M.GetSSHPublicKeyAsync(GetSSHPublicKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetSSHPublicKey")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSSHPublicKeyRequest, headers, settings, cb)
 	else
@@ -15755,7 +15755,7 @@ function M.ListSSHPublicKeysAsync(ListSSHPublicKeysRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListSSHPublicKeys")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSSHPublicKeysRequest, headers, settings, cb)
 	else
@@ -15791,7 +15791,7 @@ function M.DeleteSigningCertificateAsync(DeleteSigningCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteSigningCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSigningCertificateRequest, headers, settings, cb)
 	else
@@ -15827,7 +15827,7 @@ function M.GetPolicyVersionAsync(GetPolicyVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetPolicyVersion")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPolicyVersionRequest, headers, settings, cb)
 	else
@@ -15863,7 +15863,7 @@ function M.PutRolePolicyAsync(PutRolePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PutRolePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRolePolicyRequest, headers, settings, cb)
 	else
@@ -15899,7 +15899,7 @@ function M.SetDefaultPolicyVersionAsync(SetDefaultPolicyVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetDefaultPolicyVersion")
 	if request_handler then
 		request_handler(settings.uri, "/", SetDefaultPolicyVersionRequest, headers, settings, cb)
 	else
@@ -15935,7 +15935,7 @@ function M.GetAccessKeyLastUsedAsync(GetAccessKeyLastUsedRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetAccessKeyLastUsed")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAccessKeyLastUsedRequest, headers, settings, cb)
 	else
@@ -15967,7 +15967,7 @@ function M.DeleteAccountPasswordPolicyAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteAccountPasswordPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -16002,7 +16002,7 @@ function M.ListMFADevicesAsync(ListMFADevicesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListMFADevices")
 	if request_handler then
 		request_handler(settings.uri, "/", ListMFADevicesRequest, headers, settings, cb)
 	else
@@ -16038,7 +16038,7 @@ function M.UpdateSigningCertificateAsync(UpdateSigningCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateSigningCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSigningCertificateRequest, headers, settings, cb)
 	else
@@ -16074,7 +16074,7 @@ function M.DetachGroupPolicyAsync(DetachGroupPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DetachGroupPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachGroupPolicyRequest, headers, settings, cb)
 	else
@@ -16110,7 +16110,7 @@ function M.UpdateSSHPublicKeyAsync(UpdateSSHPublicKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateSSHPublicKey")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSSHPublicKeyRequest, headers, settings, cb)
 	else
@@ -16146,7 +16146,7 @@ function M.GetInstanceProfileAsync(GetInstanceProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetInstanceProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstanceProfileRequest, headers, settings, cb)
 	else
@@ -16182,7 +16182,7 @@ function M.DeleteUserAsync(DeleteUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteUser")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUserRequest, headers, settings, cb)
 	else
@@ -16218,7 +16218,7 @@ function M.GetOpenIDConnectProviderAsync(GetOpenIDConnectProviderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetOpenIDConnectProvider")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOpenIDConnectProviderRequest, headers, settings, cb)
 	else
@@ -16254,7 +16254,7 @@ function M.ListUsersAsync(ListUsersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListUsers")
 	if request_handler then
 		request_handler(settings.uri, "/", ListUsersRequest, headers, settings, cb)
 	else
@@ -16290,7 +16290,7 @@ function M.DeleteLoginProfileAsync(DeleteLoginProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteLoginProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLoginProfileRequest, headers, settings, cb)
 	else
@@ -16326,7 +16326,7 @@ function M.ListPolicyVersionsAsync(ListPolicyVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListPolicyVersions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPolicyVersionsRequest, headers, settings, cb)
 	else
@@ -16362,7 +16362,7 @@ function M.AttachGroupPolicyAsync(AttachGroupPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AttachGroupPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachGroupPolicyRequest, headers, settings, cb)
 	else
@@ -16398,7 +16398,7 @@ function M.DeleteServiceSpecificCredentialAsync(DeleteServiceSpecificCredentialR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteServiceSpecificCredential")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteServiceSpecificCredentialRequest, headers, settings, cb)
 	else
@@ -16434,7 +16434,7 @@ function M.CreatePolicyAsync(CreatePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreatePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePolicyRequest, headers, settings, cb)
 	else
@@ -16470,7 +16470,7 @@ function M.CreateOpenIDConnectProviderAsync(CreateOpenIDConnectProviderRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateOpenIDConnectProvider")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateOpenIDConnectProviderRequest, headers, settings, cb)
 	else
@@ -16506,7 +16506,7 @@ function M.DetachUserPolicyAsync(DetachUserPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DetachUserPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachUserPolicyRequest, headers, settings, cb)
 	else
@@ -16542,7 +16542,7 @@ function M.ListGroupsForUserAsync(ListGroupsForUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListGroupsForUser")
 	if request_handler then
 		request_handler(settings.uri, "/", ListGroupsForUserRequest, headers, settings, cb)
 	else
@@ -16574,7 +16574,7 @@ function M.GetCredentialReportAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetCredentialReport")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -16609,7 +16609,7 @@ function M.CreateAccountAliasAsync(CreateAccountAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateAccountAlias")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAccountAliasRequest, headers, settings, cb)
 	else
@@ -16645,7 +16645,7 @@ function M.GetAccountAuthorizationDetailsAsync(GetAccountAuthorizationDetailsReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetAccountAuthorizationDetails")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAccountAuthorizationDetailsRequest, headers, settings, cb)
 	else
@@ -16681,7 +16681,7 @@ function M.GetSAMLProviderAsync(GetSAMLProviderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetSAMLProvider")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSAMLProviderRequest, headers, settings, cb)
 	else
@@ -16717,7 +16717,7 @@ function M.CreateRoleAsync(CreateRoleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateRole")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRoleRequest, headers, settings, cb)
 	else
@@ -16753,7 +16753,7 @@ function M.ListAttachedRolePoliciesAsync(ListAttachedRolePoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListAttachedRolePolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAttachedRolePoliciesRequest, headers, settings, cb)
 	else
@@ -16789,7 +16789,7 @@ function M.EnableMFADeviceAsync(EnableMFADeviceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "EnableMFADevice")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableMFADeviceRequest, headers, settings, cb)
 	else
@@ -16825,7 +16825,7 @@ function M.DeleteSAMLProviderAsync(DeleteSAMLProviderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteSAMLProvider")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSAMLProviderRequest, headers, settings, cb)
 	else
@@ -16861,7 +16861,7 @@ function M.ListUserPoliciesAsync(ListUserPoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListUserPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", ListUserPoliciesRequest, headers, settings, cb)
 	else
@@ -16897,7 +16897,7 @@ function M.ListRolePoliciesAsync(ListRolePoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListRolePolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRolePoliciesRequest, headers, settings, cb)
 	else
@@ -16933,7 +16933,7 @@ function M.PutGroupPolicyAsync(PutGroupPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PutGroupPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutGroupPolicyRequest, headers, settings, cb)
 	else
@@ -16969,7 +16969,7 @@ function M.UploadSigningCertificateAsync(UploadSigningCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UploadSigningCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", UploadSigningCertificateRequest, headers, settings, cb)
 	else
@@ -17005,7 +17005,7 @@ function M.DeleteUserPermissionsBoundaryAsync(DeleteUserPermissionsBoundaryReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteUserPermissionsBoundary")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUserPermissionsBoundaryRequest, headers, settings, cb)
 	else
@@ -17037,7 +17037,7 @@ function M.GenerateCredentialReportAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GenerateCredentialReport")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -17072,7 +17072,7 @@ function M.ChangePasswordAsync(ChangePasswordRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ChangePassword")
 	if request_handler then
 		request_handler(settings.uri, "/", ChangePasswordRequest, headers, settings, cb)
 	else
@@ -17108,7 +17108,7 @@ function M.ListEntitiesForPolicyAsync(ListEntitiesForPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListEntitiesForPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", ListEntitiesForPolicyRequest, headers, settings, cb)
 	else
@@ -17144,7 +17144,7 @@ function M.PutUserPermissionsBoundaryAsync(PutUserPermissionsBoundaryRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PutUserPermissionsBoundary")
 	if request_handler then
 		request_handler(settings.uri, "/", PutUserPermissionsBoundaryRequest, headers, settings, cb)
 	else
@@ -17180,7 +17180,7 @@ function M.GetLoginProfileAsync(GetLoginProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetLoginProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", GetLoginProfileRequest, headers, settings, cb)
 	else
@@ -17216,7 +17216,7 @@ function M.CreateVirtualMFADeviceAsync(CreateVirtualMFADeviceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateVirtualMFADevice")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVirtualMFADeviceRequest, headers, settings, cb)
 	else
@@ -17252,7 +17252,7 @@ function M.GetServerCertificateAsync(GetServerCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetServerCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", GetServerCertificateRequest, headers, settings, cb)
 	else
@@ -17288,7 +17288,7 @@ function M.AttachRolePolicyAsync(AttachRolePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AttachRolePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachRolePolicyRequest, headers, settings, cb)
 	else
@@ -17324,7 +17324,7 @@ function M.RemoveClientIDFromOpenIDConnectProviderAsync(RemoveClientIDFromOpenID
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RemoveClientIDFromOpenIDConnectProvider")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveClientIDFromOpenIDConnectProviderRequest, headers, settings, cb)
 	else
@@ -17360,7 +17360,7 @@ function M.UpdateAccountPasswordPolicyAsync(UpdateAccountPasswordPolicyRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateAccountPasswordPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAccountPasswordPolicyRequest, headers, settings, cb)
 	else
@@ -17396,7 +17396,7 @@ function M.GetRoleAsync(GetRoleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetRole")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRoleRequest, headers, settings, cb)
 	else
@@ -17432,7 +17432,7 @@ function M.DeletePolicyVersionAsync(DeletePolicyVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeletePolicyVersion")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePolicyVersionRequest, headers, settings, cb)
 	else
@@ -17468,7 +17468,7 @@ function M.ListPoliciesAsync(ListPoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPoliciesRequest, headers, settings, cb)
 	else
@@ -17504,7 +17504,7 @@ function M.PutUserPolicyAsync(PutUserPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PutUserPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutUserPolicyRequest, headers, settings, cb)
 	else
@@ -17540,7 +17540,7 @@ function M.ResyncMFADeviceAsync(ResyncMFADeviceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ResyncMFADevice")
 	if request_handler then
 		request_handler(settings.uri, "/", ResyncMFADeviceRequest, headers, settings, cb)
 	else
@@ -17576,7 +17576,7 @@ function M.DeleteServerCertificateAsync(DeleteServerCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteServerCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteServerCertificateRequest, headers, settings, cb)
 	else
@@ -17608,7 +17608,7 @@ function M.GetAccountPasswordPolicyAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetAccountPasswordPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -17643,7 +17643,7 @@ function M.CreateInstanceProfileAsync(CreateInstanceProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateInstanceProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateInstanceProfileRequest, headers, settings, cb)
 	else
@@ -17679,7 +17679,7 @@ function M.DeleteOpenIDConnectProviderAsync(DeleteOpenIDConnectProviderRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteOpenIDConnectProvider")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteOpenIDConnectProviderRequest, headers, settings, cb)
 	else
@@ -17715,7 +17715,7 @@ function M.DeleteGroupPolicyAsync(DeleteGroupPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteGroupPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteGroupPolicyRequest, headers, settings, cb)
 	else

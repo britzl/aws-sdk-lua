@@ -4055,7 +4055,7 @@ function M.EncryptAsync(EncryptRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "Encrypt")
 	if request_handler then
 		request_handler(settings.uri, "/", EncryptRequest, headers, settings, cb)
 	else
@@ -4091,7 +4091,7 @@ function M.DecryptAsync(DecryptRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "Decrypt")
 	if request_handler then
 		request_handler(settings.uri, "/", DecryptRequest, headers, settings, cb)
 	else
@@ -4127,7 +4127,7 @@ function M.UpdateAliasAsync(UpdateAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateAlias")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAliasRequest, headers, settings, cb)
 	else
@@ -4163,7 +4163,7 @@ function M.ImportKeyMaterialAsync(ImportKeyMaterialRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ImportKeyMaterial")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportKeyMaterialRequest, headers, settings, cb)
 	else
@@ -4199,7 +4199,7 @@ function M.DisableKeyAsync(DisableKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisableKey")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableKeyRequest, headers, settings, cb)
 	else
@@ -4235,7 +4235,7 @@ function M.GenerateDataKeyWithoutPlaintextAsync(GenerateDataKeyWithoutPlaintextR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GenerateDataKeyWithoutPlaintext")
 	if request_handler then
 		request_handler(settings.uri, "/", GenerateDataKeyWithoutPlaintextRequest, headers, settings, cb)
 	else
@@ -4271,7 +4271,7 @@ function M.GenerateDataKeyAsync(GenerateDataKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GenerateDataKey")
 	if request_handler then
 		request_handler(settings.uri, "/", GenerateDataKeyRequest, headers, settings, cb)
 	else
@@ -4307,7 +4307,7 @@ function M.ListResourceTagsAsync(ListResourceTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListResourceTags")
 	if request_handler then
 		request_handler(settings.uri, "/", ListResourceTagsRequest, headers, settings, cb)
 	else
@@ -4343,7 +4343,7 @@ function M.ListAliasesAsync(ListAliasesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAliases")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAliasesRequest, headers, settings, cb)
 	else
@@ -4379,7 +4379,7 @@ function M.CancelKeyDeletionAsync(CancelKeyDeletionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CancelKeyDeletion")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelKeyDeletionRequest, headers, settings, cb)
 	else
@@ -4415,7 +4415,7 @@ function M.GetKeyRotationStatusAsync(GetKeyRotationStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetKeyRotationStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", GetKeyRotationStatusRequest, headers, settings, cb)
 	else
@@ -4451,7 +4451,7 @@ function M.ListKeyPoliciesAsync(ListKeyPoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListKeyPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", ListKeyPoliciesRequest, headers, settings, cb)
 	else
@@ -4487,7 +4487,7 @@ function M.DeleteAliasAsync(DeleteAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteAlias")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAliasRequest, headers, settings, cb)
 	else
@@ -4523,7 +4523,7 @@ function M.RetireGrantAsync(RetireGrantRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RetireGrant")
 	if request_handler then
 		request_handler(settings.uri, "/", RetireGrantRequest, headers, settings, cb)
 	else
@@ -4559,7 +4559,7 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TagResource")
 	if request_handler then
 		request_handler(settings.uri, "/", TagResourceRequest, headers, settings, cb)
 	else
@@ -4595,7 +4595,7 @@ function M.DescribeKeyAsync(DescribeKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeKey")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeKeyRequest, headers, settings, cb)
 	else
@@ -4631,7 +4631,7 @@ function M.ListKeysAsync(ListKeysRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListKeys")
 	if request_handler then
 		request_handler(settings.uri, "/", ListKeysRequest, headers, settings, cb)
 	else
@@ -4667,7 +4667,7 @@ function M.GenerateRandomAsync(GenerateRandomRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GenerateRandom")
 	if request_handler then
 		request_handler(settings.uri, "/", GenerateRandomRequest, headers, settings, cb)
 	else
@@ -4703,7 +4703,7 @@ function M.GetKeyPolicyAsync(GetKeyPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetKeyPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", GetKeyPolicyRequest, headers, settings, cb)
 	else
@@ -4739,7 +4739,7 @@ function M.CreateGrantAsync(CreateGrantRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateGrant")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateGrantRequest, headers, settings, cb)
 	else
@@ -4775,7 +4775,7 @@ function M.CreateKeyAsync(CreateKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateKey")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateKeyRequest, headers, settings, cb)
 	else
@@ -4811,7 +4811,7 @@ function M.ReEncryptAsync(ReEncryptRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ReEncrypt")
 	if request_handler then
 		request_handler(settings.uri, "/", ReEncryptRequest, headers, settings, cb)
 	else
@@ -4847,7 +4847,7 @@ function M.GetParametersForImportAsync(GetParametersForImportRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetParametersForImport")
 	if request_handler then
 		request_handler(settings.uri, "/", GetParametersForImportRequest, headers, settings, cb)
 	else
@@ -4883,7 +4883,7 @@ function M.DisableKeyRotationAsync(DisableKeyRotationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisableKeyRotation")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableKeyRotationRequest, headers, settings, cb)
 	else
@@ -4919,7 +4919,7 @@ function M.ListRetirableGrantsAsync(ListRetirableGrantsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListRetirableGrants")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRetirableGrantsRequest, headers, settings, cb)
 	else
@@ -4955,7 +4955,7 @@ function M.ScheduleKeyDeletionAsync(ScheduleKeyDeletionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ScheduleKeyDeletion")
 	if request_handler then
 		request_handler(settings.uri, "/", ScheduleKeyDeletionRequest, headers, settings, cb)
 	else
@@ -4991,7 +4991,7 @@ function M.CreateAliasAsync(CreateAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateAlias")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAliasRequest, headers, settings, cb)
 	else
@@ -5027,7 +5027,7 @@ function M.EnableKeyRotationAsync(EnableKeyRotationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "EnableKeyRotation")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableKeyRotationRequest, headers, settings, cb)
 	else
@@ -5063,7 +5063,7 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UntagResource")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagResourceRequest, headers, settings, cb)
 	else
@@ -5099,7 +5099,7 @@ function M.ListGrantsAsync(ListGrantsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListGrants")
 	if request_handler then
 		request_handler(settings.uri, "/", ListGrantsRequest, headers, settings, cb)
 	else
@@ -5135,7 +5135,7 @@ function M.EnableKeyAsync(EnableKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "EnableKey")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableKeyRequest, headers, settings, cb)
 	else
@@ -5171,7 +5171,7 @@ function M.DeleteImportedKeyMaterialAsync(DeleteImportedKeyMaterialRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteImportedKeyMaterial")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteImportedKeyMaterialRequest, headers, settings, cb)
 	else
@@ -5207,7 +5207,7 @@ function M.UpdateKeyDescriptionAsync(UpdateKeyDescriptionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateKeyDescription")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateKeyDescriptionRequest, headers, settings, cb)
 	else
@@ -5243,7 +5243,7 @@ function M.RevokeGrantAsync(RevokeGrantRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RevokeGrant")
 	if request_handler then
 		request_handler(settings.uri, "/", RevokeGrantRequest, headers, settings, cb)
 	else
@@ -5279,7 +5279,7 @@ function M.PutKeyPolicyAsync(PutKeyPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutKeyPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutKeyPolicyRequest, headers, settings, cb)
 	else

@@ -805,7 +805,7 @@ function M.GetObjectAsync(GetObjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetObject")
 	if request_handler then
 		request_handler(settings.uri, "/{Path+}", GetObjectRequest, headers, settings, cb)
 	else
@@ -841,7 +841,7 @@ function M.DescribeObjectAsync(DescribeObjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "HEAD")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "HEAD", "DescribeObject")
 	if request_handler then
 		request_handler(settings.uri, "/{Path+}", DescribeObjectRequest, headers, settings, cb)
 	else
@@ -877,7 +877,7 @@ function M.PutObjectAsync(PutObjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PutObject")
 	if request_handler then
 		request_handler(settings.uri, "/{Path+}", PutObjectRequest, headers, settings, cb)
 	else
@@ -913,7 +913,7 @@ function M.DeleteObjectAsync(DeleteObjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteObject")
 	if request_handler then
 		request_handler(settings.uri, "/{Path+}", DeleteObjectRequest, headers, settings, cb)
 	else
@@ -949,7 +949,7 @@ function M.ListItemsAsync(ListItemsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListItems")
 	if request_handler then
 		request_handler(settings.uri, "/", ListItemsRequest, headers, settings, cb)
 	else

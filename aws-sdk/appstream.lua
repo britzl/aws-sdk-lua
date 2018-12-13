@@ -6121,7 +6121,7 @@ function M.StopImageBuilderAsync(StopImageBuilderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopImageBuilder")
 	if request_handler then
 		request_handler(settings.uri, "/", StopImageBuilderRequest, headers, settings, cb)
 	else
@@ -6157,7 +6157,7 @@ function M.DeleteFleetAsync(DeleteFleetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteFleet")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteFleetRequest, headers, settings, cb)
 	else
@@ -6193,7 +6193,7 @@ function M.ListAssociatedStacksAsync(ListAssociatedStacksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAssociatedStacks")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAssociatedStacksRequest, headers, settings, cb)
 	else
@@ -6229,7 +6229,7 @@ function M.ExpireSessionAsync(ExpireSessionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ExpireSession")
 	if request_handler then
 		request_handler(settings.uri, "/", ExpireSessionRequest, headers, settings, cb)
 	else
@@ -6265,7 +6265,7 @@ function M.AssociateFleetAsync(AssociateFleetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateFleet")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateFleetRequest, headers, settings, cb)
 	else
@@ -6301,7 +6301,7 @@ function M.CreateImageBuilderAsync(CreateImageBuilderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateImageBuilder")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateImageBuilderRequest, headers, settings, cb)
 	else
@@ -6337,7 +6337,7 @@ function M.DeleteImageBuilderAsync(DeleteImageBuilderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteImageBuilder")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteImageBuilderRequest, headers, settings, cb)
 	else
@@ -6373,7 +6373,7 @@ function M.DescribeImagesAsync(DescribeImagesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeImages")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeImagesRequest, headers, settings, cb)
 	else
@@ -6409,7 +6409,7 @@ function M.EnableUserAsync(EnableUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "EnableUser")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableUserRequest, headers, settings, cb)
 	else
@@ -6445,7 +6445,7 @@ function M.DescribeUsersAsync(DescribeUsersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeUsers")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeUsersRequest, headers, settings, cb)
 	else
@@ -6481,7 +6481,7 @@ function M.CreateDirectoryConfigAsync(CreateDirectoryConfigRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDirectoryConfig")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDirectoryConfigRequest, headers, settings, cb)
 	else
@@ -6517,7 +6517,7 @@ function M.BatchDisassociateUserStackAsync(BatchDisassociateUserStackRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchDisassociateUserStack")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchDisassociateUserStackRequest, headers, settings, cb)
 	else
@@ -6553,7 +6553,7 @@ function M.UpdateImagePermissionsAsync(UpdateImagePermissionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateImagePermissions")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateImagePermissionsRequest, headers, settings, cb)
 	else
@@ -6589,7 +6589,7 @@ function M.CreateStackAsync(CreateStackRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateStack")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateStackRequest, headers, settings, cb)
 	else
@@ -6625,7 +6625,7 @@ function M.DescribeDirectoryConfigsAsync(DescribeDirectoryConfigsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDirectoryConfigs")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDirectoryConfigsRequest, headers, settings, cb)
 	else
@@ -6661,7 +6661,7 @@ function M.DisableUserAsync(DisableUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisableUser")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableUserRequest, headers, settings, cb)
 	else
@@ -6697,7 +6697,7 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TagResource")
 	if request_handler then
 		request_handler(settings.uri, "/", TagResourceRequest, headers, settings, cb)
 	else
@@ -6733,7 +6733,7 @@ function M.CreateImageBuilderStreamingURLAsync(CreateImageBuilderStreamingURLReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateImageBuilderStreamingURL")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateImageBuilderStreamingURLRequest, headers, settings, cb)
 	else
@@ -6769,7 +6769,7 @@ function M.UpdateDirectoryConfigAsync(UpdateDirectoryConfigRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateDirectoryConfig")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDirectoryConfigRequest, headers, settings, cb)
 	else
@@ -6805,7 +6805,7 @@ function M.CopyImageAsync(CopyImageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CopyImage")
 	if request_handler then
 		request_handler(settings.uri, "/", CopyImageRequest, headers, settings, cb)
 	else
@@ -6841,7 +6841,7 @@ function M.CreateFleetAsync(CreateFleetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateFleet")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateFleetRequest, headers, settings, cb)
 	else
@@ -6877,7 +6877,7 @@ function M.DescribeSessionsAsync(DescribeSessionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeSessions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSessionsRequest, headers, settings, cb)
 	else
@@ -6913,7 +6913,7 @@ function M.DescribeImagePermissionsAsync(DescribeImagePermissionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeImagePermissions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeImagePermissionsRequest, headers, settings, cb)
 	else
@@ -6949,7 +6949,7 @@ function M.UpdateStackAsync(UpdateStackRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateStack")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateStackRequest, headers, settings, cb)
 	else
@@ -6985,7 +6985,7 @@ function M.DeleteUserAsync(DeleteUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteUser")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUserRequest, headers, settings, cb)
 	else
@@ -7021,7 +7021,7 @@ function M.StopFleetAsync(StopFleetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopFleet")
 	if request_handler then
 		request_handler(settings.uri, "/", StopFleetRequest, headers, settings, cb)
 	else
@@ -7057,7 +7057,7 @@ function M.UpdateFleetAsync(UpdateFleetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateFleet")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateFleetRequest, headers, settings, cb)
 	else
@@ -7093,7 +7093,7 @@ function M.DescribeFleetsAsync(DescribeFleetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeFleets")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFleetsRequest, headers, settings, cb)
 	else
@@ -7129,7 +7129,7 @@ function M.DescribeImageBuildersAsync(DescribeImageBuildersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeImageBuilders")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeImageBuildersRequest, headers, settings, cb)
 	else
@@ -7165,7 +7165,7 @@ function M.ListAssociatedFleetsAsync(ListAssociatedFleetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAssociatedFleets")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAssociatedFleetsRequest, headers, settings, cb)
 	else
@@ -7201,7 +7201,7 @@ function M.StartFleetAsync(StartFleetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartFleet")
 	if request_handler then
 		request_handler(settings.uri, "/", StartFleetRequest, headers, settings, cb)
 	else
@@ -7237,7 +7237,7 @@ function M.DescribeUserStackAssociationsAsync(DescribeUserStackAssociationsReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeUserStackAssociations")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeUserStackAssociationsRequest, headers, settings, cb)
 	else
@@ -7273,7 +7273,7 @@ function M.DescribeStacksAsync(DescribeStacksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeStacks")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStacksRequest, headers, settings, cb)
 	else
@@ -7309,7 +7309,7 @@ function M.BatchAssociateUserStackAsync(BatchAssociateUserStackRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchAssociateUserStack")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchAssociateUserStackRequest, headers, settings, cb)
 	else
@@ -7345,7 +7345,7 @@ function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTagsForResource")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForResourceRequest, headers, settings, cb)
 	else
@@ -7381,7 +7381,7 @@ function M.CreateStreamingURLAsync(CreateStreamingURLRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateStreamingURL")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateStreamingURLRequest, headers, settings, cb)
 	else
@@ -7417,7 +7417,7 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UntagResource")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagResourceRequest, headers, settings, cb)
 	else
@@ -7453,7 +7453,7 @@ function M.DisassociateFleetAsync(DisassociateFleetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateFleet")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateFleetRequest, headers, settings, cb)
 	else
@@ -7489,7 +7489,7 @@ function M.DeleteImagePermissionsAsync(DeleteImagePermissionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteImagePermissions")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteImagePermissionsRequest, headers, settings, cb)
 	else
@@ -7525,7 +7525,7 @@ function M.DeleteStackAsync(DeleteStackRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteStack")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteStackRequest, headers, settings, cb)
 	else
@@ -7561,7 +7561,7 @@ function M.CreateUserAsync(CreateUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateUser")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateUserRequest, headers, settings, cb)
 	else
@@ -7597,7 +7597,7 @@ function M.DeleteDirectoryConfigAsync(DeleteDirectoryConfigRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDirectoryConfig")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDirectoryConfigRequest, headers, settings, cb)
 	else
@@ -7633,7 +7633,7 @@ function M.DeleteImageAsync(DeleteImageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteImage")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteImageRequest, headers, settings, cb)
 	else
@@ -7669,7 +7669,7 @@ function M.StartImageBuilderAsync(StartImageBuilderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartImageBuilder")
 	if request_handler then
 		request_handler(settings.uri, "/", StartImageBuilderRequest, headers, settings, cb)
 	else

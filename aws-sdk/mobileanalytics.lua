@@ -390,7 +390,7 @@ function M.PutEventsAsync(PutEventsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "PutEvents")
 	if request_handler then
 		request_handler(settings.uri, "/2014-06-05/events", PutEventsInput, headers, settings, cb)
 	else

@@ -2235,7 +2235,7 @@ function M.CreateQueueAsync(CreateQueueRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateQueue")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateQueueRequest, headers, settings, cb)
 	else
@@ -2271,7 +2271,7 @@ function M.GetQueueAttributesAsync(GetQueueAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetQueueAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", GetQueueAttributesRequest, headers, settings, cb)
 	else
@@ -2307,7 +2307,7 @@ function M.SetQueueAttributesAsync(SetQueueAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetQueueAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", SetQueueAttributesRequest, headers, settings, cb)
 	else
@@ -2343,7 +2343,7 @@ function M.GetQueueUrlAsync(GetQueueUrlRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetQueueUrl")
 	if request_handler then
 		request_handler(settings.uri, "/", GetQueueUrlRequest, headers, settings, cb)
 	else
@@ -2379,7 +2379,7 @@ function M.DeleteMessageBatchAsync(DeleteMessageBatchRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteMessageBatch")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteMessageBatchRequest, headers, settings, cb)
 	else
@@ -2415,7 +2415,7 @@ function M.SendMessageBatchAsync(SendMessageBatchRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SendMessageBatch")
 	if request_handler then
 		request_handler(settings.uri, "/", SendMessageBatchRequest, headers, settings, cb)
 	else
@@ -2451,7 +2451,7 @@ function M.UntagQueueAsync(UntagQueueRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UntagQueue")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagQueueRequest, headers, settings, cb)
 	else
@@ -2487,7 +2487,7 @@ function M.ListDeadLetterSourceQueuesAsync(ListDeadLetterSourceQueuesRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListDeadLetterSourceQueues")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDeadLetterSourceQueuesRequest, headers, settings, cb)
 	else
@@ -2523,7 +2523,7 @@ function M.TagQueueAsync(TagQueueRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "TagQueue")
 	if request_handler then
 		request_handler(settings.uri, "/", TagQueueRequest, headers, settings, cb)
 	else
@@ -2559,7 +2559,7 @@ function M.ChangeMessageVisibilityAsync(ChangeMessageVisibilityRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ChangeMessageVisibility")
 	if request_handler then
 		request_handler(settings.uri, "/", ChangeMessageVisibilityRequest, headers, settings, cb)
 	else
@@ -2595,7 +2595,7 @@ function M.AddPermissionAsync(AddPermissionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AddPermission")
 	if request_handler then
 		request_handler(settings.uri, "/", AddPermissionRequest, headers, settings, cb)
 	else
@@ -2631,7 +2631,7 @@ function M.ChangeMessageVisibilityBatchAsync(ChangeMessageVisibilityBatchRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ChangeMessageVisibilityBatch")
 	if request_handler then
 		request_handler(settings.uri, "/", ChangeMessageVisibilityBatchRequest, headers, settings, cb)
 	else
@@ -2667,7 +2667,7 @@ function M.SendMessageAsync(SendMessageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SendMessage")
 	if request_handler then
 		request_handler(settings.uri, "/", SendMessageRequest, headers, settings, cb)
 	else
@@ -2703,7 +2703,7 @@ function M.DeleteQueueAsync(DeleteQueueRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteQueue")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteQueueRequest, headers, settings, cb)
 	else
@@ -2739,7 +2739,7 @@ function M.PurgeQueueAsync(PurgeQueueRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PurgeQueue")
 	if request_handler then
 		request_handler(settings.uri, "/", PurgeQueueRequest, headers, settings, cb)
 	else
@@ -2775,7 +2775,7 @@ function M.ListQueueTagsAsync(ListQueueTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListQueueTags")
 	if request_handler then
 		request_handler(settings.uri, "/", ListQueueTagsRequest, headers, settings, cb)
 	else
@@ -2811,7 +2811,7 @@ function M.DeleteMessageAsync(DeleteMessageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteMessage")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteMessageRequest, headers, settings, cb)
 	else
@@ -2847,7 +2847,7 @@ function M.ReceiveMessageAsync(ReceiveMessageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ReceiveMessage")
 	if request_handler then
 		request_handler(settings.uri, "/", ReceiveMessageRequest, headers, settings, cb)
 	else
@@ -2883,7 +2883,7 @@ function M.ListQueuesAsync(ListQueuesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListQueues")
 	if request_handler then
 		request_handler(settings.uri, "/", ListQueuesRequest, headers, settings, cb)
 	else
@@ -2919,7 +2919,7 @@ function M.RemovePermissionAsync(RemovePermissionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RemovePermission")
 	if request_handler then
 		request_handler(settings.uri, "/", RemovePermissionRequest, headers, settings, cb)
 	else

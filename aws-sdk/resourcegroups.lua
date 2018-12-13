@@ -1697,7 +1697,7 @@ function M.GetTagsAsync(GetTagsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetTags")
 	if request_handler then
 		request_handler(settings.uri, "/resources/{Arn}/tags", GetTagsInput, headers, settings, cb)
 	else
@@ -1733,7 +1733,7 @@ function M.ListGroupsAsync(ListGroupsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListGroups")
 	if request_handler then
 		request_handler(settings.uri, "/groups-list", ListGroupsInput, headers, settings, cb)
 	else
@@ -1769,7 +1769,7 @@ function M.UpdateGroupQueryAsync(UpdateGroupQueryInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateGroupQuery")
 	if request_handler then
 		request_handler(settings.uri, "/groups/{GroupName}/query", UpdateGroupQueryInput, headers, settings, cb)
 	else
@@ -1805,7 +1805,7 @@ function M.ListGroupResourcesAsync(ListGroupResourcesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListGroupResources")
 	if request_handler then
 		request_handler(settings.uri, "/groups/{GroupName}/resource-identifiers-list", ListGroupResourcesInput, headers, settings, cb)
 	else
@@ -1841,7 +1841,7 @@ function M.UpdateGroupAsync(UpdateGroupInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateGroup")
 	if request_handler then
 		request_handler(settings.uri, "/groups/{GroupName}", UpdateGroupInput, headers, settings, cb)
 	else
@@ -1877,7 +1877,7 @@ function M.DeleteGroupAsync(DeleteGroupInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteGroup")
 	if request_handler then
 		request_handler(settings.uri, "/groups/{GroupName}", DeleteGroupInput, headers, settings, cb)
 	else
@@ -1913,7 +1913,7 @@ function M.TagAsync(TagInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "Tag")
 	if request_handler then
 		request_handler(settings.uri, "/resources/{Arn}/tags", TagInput, headers, settings, cb)
 	else
@@ -1949,7 +1949,7 @@ function M.CreateGroupAsync(CreateGroupInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateGroup")
 	if request_handler then
 		request_handler(settings.uri, "/groups", CreateGroupInput, headers, settings, cb)
 	else
@@ -1985,7 +1985,7 @@ function M.GetGroupQueryAsync(GetGroupQueryInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetGroupQuery")
 	if request_handler then
 		request_handler(settings.uri, "/groups/{GroupName}/query", GetGroupQueryInput, headers, settings, cb)
 	else
@@ -2021,7 +2021,7 @@ function M.SearchResourcesAsync(SearchResourcesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "SearchResources")
 	if request_handler then
 		request_handler(settings.uri, "/resources/search", SearchResourcesInput, headers, settings, cb)
 	else
@@ -2057,7 +2057,7 @@ function M.GetGroupAsync(GetGroupInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/groups/{GroupName}", GetGroupInput, headers, settings, cb)
 	else
@@ -2093,7 +2093,7 @@ function M.UntagAsync(UntagInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "Untag")
 	if request_handler then
 		request_handler(settings.uri, "/resources/{Arn}/tags", UntagInput, headers, settings, cb)
 	else

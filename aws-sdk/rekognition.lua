@@ -6198,7 +6198,7 @@ function M.DeleteStreamProcessorAsync(DeleteStreamProcessorRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteStreamProcessor")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteStreamProcessorRequest, headers, settings, cb)
 	else
@@ -6234,7 +6234,7 @@ function M.IndexFacesAsync(IndexFacesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "IndexFaces")
 	if request_handler then
 		request_handler(settings.uri, "/", IndexFacesRequest, headers, settings, cb)
 	else
@@ -6270,7 +6270,7 @@ function M.GetFaceSearchAsync(GetFaceSearchRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetFaceSearch")
 	if request_handler then
 		request_handler(settings.uri, "/", GetFaceSearchRequest, headers, settings, cb)
 	else
@@ -6306,7 +6306,7 @@ function M.GetCelebrityInfoAsync(GetCelebrityInfoRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetCelebrityInfo")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCelebrityInfoRequest, headers, settings, cb)
 	else
@@ -6342,7 +6342,7 @@ function M.DetectTextAsync(DetectTextRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DetectText")
 	if request_handler then
 		request_handler(settings.uri, "/", DetectTextRequest, headers, settings, cb)
 	else
@@ -6378,7 +6378,7 @@ function M.RecognizeCelebritiesAsync(RecognizeCelebritiesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RecognizeCelebrities")
 	if request_handler then
 		request_handler(settings.uri, "/", RecognizeCelebritiesRequest, headers, settings, cb)
 	else
@@ -6414,7 +6414,7 @@ function M.DeleteFacesAsync(DeleteFacesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteFaces")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteFacesRequest, headers, settings, cb)
 	else
@@ -6450,7 +6450,7 @@ function M.StartPersonTrackingAsync(StartPersonTrackingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartPersonTracking")
 	if request_handler then
 		request_handler(settings.uri, "/", StartPersonTrackingRequest, headers, settings, cb)
 	else
@@ -6486,7 +6486,7 @@ function M.SearchFacesByImageAsync(SearchFacesByImageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SearchFacesByImage")
 	if request_handler then
 		request_handler(settings.uri, "/", SearchFacesByImageRequest, headers, settings, cb)
 	else
@@ -6522,7 +6522,7 @@ function M.GetLabelDetectionAsync(GetLabelDetectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetLabelDetection")
 	if request_handler then
 		request_handler(settings.uri, "/", GetLabelDetectionRequest, headers, settings, cb)
 	else
@@ -6558,7 +6558,7 @@ function M.GetPersonTrackingAsync(GetPersonTrackingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetPersonTracking")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPersonTrackingRequest, headers, settings, cb)
 	else
@@ -6594,7 +6594,7 @@ function M.CreateStreamProcessorAsync(CreateStreamProcessorRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateStreamProcessor")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateStreamProcessorRequest, headers, settings, cb)
 	else
@@ -6630,7 +6630,7 @@ function M.GetCelebrityRecognitionAsync(GetCelebrityRecognitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetCelebrityRecognition")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCelebrityRecognitionRequest, headers, settings, cb)
 	else
@@ -6666,7 +6666,7 @@ function M.StartLabelDetectionAsync(StartLabelDetectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartLabelDetection")
 	if request_handler then
 		request_handler(settings.uri, "/", StartLabelDetectionRequest, headers, settings, cb)
 	else
@@ -6702,7 +6702,7 @@ function M.DetectLabelsAsync(DetectLabelsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DetectLabels")
 	if request_handler then
 		request_handler(settings.uri, "/", DetectLabelsRequest, headers, settings, cb)
 	else
@@ -6738,7 +6738,7 @@ function M.DetectFacesAsync(DetectFacesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DetectFaces")
 	if request_handler then
 		request_handler(settings.uri, "/", DetectFacesRequest, headers, settings, cb)
 	else
@@ -6774,7 +6774,7 @@ function M.DeleteCollectionAsync(DeleteCollectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteCollection")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCollectionRequest, headers, settings, cb)
 	else
@@ -6810,7 +6810,7 @@ function M.ListFacesAsync(ListFacesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListFaces")
 	if request_handler then
 		request_handler(settings.uri, "/", ListFacesRequest, headers, settings, cb)
 	else
@@ -6846,7 +6846,7 @@ function M.SearchFacesAsync(SearchFacesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SearchFaces")
 	if request_handler then
 		request_handler(settings.uri, "/", SearchFacesRequest, headers, settings, cb)
 	else
@@ -6882,7 +6882,7 @@ function M.GetContentModerationAsync(GetContentModerationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetContentModeration")
 	if request_handler then
 		request_handler(settings.uri, "/", GetContentModerationRequest, headers, settings, cb)
 	else
@@ -6918,7 +6918,7 @@ function M.StopStreamProcessorAsync(StopStreamProcessorRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopStreamProcessor")
 	if request_handler then
 		request_handler(settings.uri, "/", StopStreamProcessorRequest, headers, settings, cb)
 	else
@@ -6954,7 +6954,7 @@ function M.GetFaceDetectionAsync(GetFaceDetectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetFaceDetection")
 	if request_handler then
 		request_handler(settings.uri, "/", GetFaceDetectionRequest, headers, settings, cb)
 	else
@@ -6990,7 +6990,7 @@ function M.ListCollectionsAsync(ListCollectionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListCollections")
 	if request_handler then
 		request_handler(settings.uri, "/", ListCollectionsRequest, headers, settings, cb)
 	else
@@ -7026,7 +7026,7 @@ function M.StartStreamProcessorAsync(StartStreamProcessorRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartStreamProcessor")
 	if request_handler then
 		request_handler(settings.uri, "/", StartStreamProcessorRequest, headers, settings, cb)
 	else
@@ -7062,7 +7062,7 @@ function M.CreateCollectionAsync(CreateCollectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateCollection")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCollectionRequest, headers, settings, cb)
 	else
@@ -7098,7 +7098,7 @@ function M.CompareFacesAsync(CompareFacesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CompareFaces")
 	if request_handler then
 		request_handler(settings.uri, "/", CompareFacesRequest, headers, settings, cb)
 	else
@@ -7134,7 +7134,7 @@ function M.DescribeCollectionAsync(DescribeCollectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeCollection")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCollectionRequest, headers, settings, cb)
 	else
@@ -7170,7 +7170,7 @@ function M.StartCelebrityRecognitionAsync(StartCelebrityRecognitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartCelebrityRecognition")
 	if request_handler then
 		request_handler(settings.uri, "/", StartCelebrityRecognitionRequest, headers, settings, cb)
 	else
@@ -7206,7 +7206,7 @@ function M.DetectModerationLabelsAsync(DetectModerationLabelsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DetectModerationLabels")
 	if request_handler then
 		request_handler(settings.uri, "/", DetectModerationLabelsRequest, headers, settings, cb)
 	else
@@ -7242,7 +7242,7 @@ function M.ListStreamProcessorsAsync(ListStreamProcessorsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListStreamProcessors")
 	if request_handler then
 		request_handler(settings.uri, "/", ListStreamProcessorsRequest, headers, settings, cb)
 	else
@@ -7278,7 +7278,7 @@ function M.StartFaceSearchAsync(StartFaceSearchRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartFaceSearch")
 	if request_handler then
 		request_handler(settings.uri, "/", StartFaceSearchRequest, headers, settings, cb)
 	else
@@ -7314,7 +7314,7 @@ function M.StartContentModerationAsync(StartContentModerationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartContentModeration")
 	if request_handler then
 		request_handler(settings.uri, "/", StartContentModerationRequest, headers, settings, cb)
 	else
@@ -7350,7 +7350,7 @@ function M.DescribeStreamProcessorAsync(DescribeStreamProcessorRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeStreamProcessor")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStreamProcessorRequest, headers, settings, cb)
 	else
@@ -7386,7 +7386,7 @@ function M.StartFaceDetectionAsync(StartFaceDetectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartFaceDetection")
 	if request_handler then
 		request_handler(settings.uri, "/", StartFaceDetectionRequest, headers, settings, cb)
 	else

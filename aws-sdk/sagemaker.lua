@@ -7629,7 +7629,7 @@ function M.DeleteTagsAsync(DeleteTagsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteTags")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTagsInput, headers, settings, cb)
 	else
@@ -7665,7 +7665,7 @@ function M.ListTransformJobsAsync(ListTransformJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTransformJobs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTransformJobsRequest, headers, settings, cb)
 	else
@@ -7701,7 +7701,7 @@ function M.DescribeModelAsync(DescribeModelInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeModel")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeModelInput, headers, settings, cb)
 	else
@@ -7737,7 +7737,7 @@ function M.UpdateNotebookInstanceAsync(UpdateNotebookInstanceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateNotebookInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateNotebookInstanceInput, headers, settings, cb)
 	else
@@ -7773,7 +7773,7 @@ function M.DeleteEndpointConfigAsync(DeleteEndpointConfigInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteEndpointConfig")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEndpointConfigInput, headers, settings, cb)
 	else
@@ -7809,7 +7809,7 @@ function M.ListHyperParameterTuningJobsAsync(ListHyperParameterTuningJobsRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListHyperParameterTuningJobs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListHyperParameterTuningJobsRequest, headers, settings, cb)
 	else
@@ -7845,7 +7845,7 @@ function M.CreateTransformJobAsync(CreateTransformJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateTransformJob")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTransformJobRequest, headers, settings, cb)
 	else
@@ -7881,7 +7881,7 @@ function M.DeleteNotebookInstanceLifecycleConfigAsync(DeleteNotebookInstanceLife
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteNotebookInstanceLifecycleConfig")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNotebookInstanceLifecycleConfigInput, headers, settings, cb)
 	else
@@ -7917,7 +7917,7 @@ function M.CreateEndpointConfigAsync(CreateEndpointConfigInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateEndpointConfig")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateEndpointConfigInput, headers, settings, cb)
 	else
@@ -7953,7 +7953,7 @@ function M.ListTrainingJobsAsync(ListTrainingJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTrainingJobs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTrainingJobsRequest, headers, settings, cb)
 	else
@@ -7989,7 +7989,7 @@ function M.StartNotebookInstanceAsync(StartNotebookInstanceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartNotebookInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", StartNotebookInstanceInput, headers, settings, cb)
 	else
@@ -8025,7 +8025,7 @@ function M.DeleteNotebookInstanceAsync(DeleteNotebookInstanceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteNotebookInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNotebookInstanceInput, headers, settings, cb)
 	else
@@ -8061,7 +8061,7 @@ function M.CreateNotebookInstanceLifecycleConfigAsync(CreateNotebookInstanceLife
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateNotebookInstanceLifecycleConfig")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNotebookInstanceLifecycleConfigInput, headers, settings, cb)
 	else
@@ -8097,7 +8097,7 @@ function M.ListTrainingJobsForHyperParameterTuningJobAsync(ListTrainingJobsForHy
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTrainingJobsForHyperParameterTuningJob")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTrainingJobsForHyperParameterTuningJobRequest, headers, settings, cb)
 	else
@@ -8133,7 +8133,7 @@ function M.UpdateNotebookInstanceLifecycleConfigAsync(UpdateNotebookInstanceLife
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateNotebookInstanceLifecycleConfig")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateNotebookInstanceLifecycleConfigInput, headers, settings, cb)
 	else
@@ -8169,7 +8169,7 @@ function M.CreatePresignedNotebookInstanceUrlAsync(CreatePresignedNotebookInstan
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreatePresignedNotebookInstanceUrl")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePresignedNotebookInstanceUrlInput, headers, settings, cb)
 	else
@@ -8205,7 +8205,7 @@ function M.ListNotebookInstancesAsync(ListNotebookInstancesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListNotebookInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", ListNotebookInstancesInput, headers, settings, cb)
 	else
@@ -8241,7 +8241,7 @@ function M.CreateEndpointAsync(CreateEndpointInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateEndpointInput, headers, settings, cb)
 	else
@@ -8277,7 +8277,7 @@ function M.DescribeEndpointAsync(DescribeEndpointInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEndpointInput, headers, settings, cb)
 	else
@@ -8313,7 +8313,7 @@ function M.ListNotebookInstanceLifecycleConfigsAsync(ListNotebookInstanceLifecyc
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListNotebookInstanceLifecycleConfigs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListNotebookInstanceLifecycleConfigsInput, headers, settings, cb)
 	else
@@ -8349,7 +8349,7 @@ function M.DescribeTrainingJobAsync(DescribeTrainingJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTrainingJob")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTrainingJobRequest, headers, settings, cb)
 	else
@@ -8385,7 +8385,7 @@ function M.StopNotebookInstanceAsync(StopNotebookInstanceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopNotebookInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", StopNotebookInstanceInput, headers, settings, cb)
 	else
@@ -8421,7 +8421,7 @@ function M.DescribeHyperParameterTuningJobAsync(DescribeHyperParameterTuningJobR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeHyperParameterTuningJob")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHyperParameterTuningJobRequest, headers, settings, cb)
 	else
@@ -8457,7 +8457,7 @@ function M.DescribeTransformJobAsync(DescribeTransformJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTransformJob")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTransformJobRequest, headers, settings, cb)
 	else
@@ -8493,7 +8493,7 @@ function M.ListModelsAsync(ListModelsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListModels")
 	if request_handler then
 		request_handler(settings.uri, "/", ListModelsInput, headers, settings, cb)
 	else
@@ -8529,7 +8529,7 @@ function M.CreateNotebookInstanceAsync(CreateNotebookInstanceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateNotebookInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNotebookInstanceInput, headers, settings, cb)
 	else
@@ -8565,7 +8565,7 @@ function M.DeleteEndpointAsync(DeleteEndpointInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEndpointInput, headers, settings, cb)
 	else
@@ -8601,7 +8601,7 @@ function M.ListTagsAsync(ListTagsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTags")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsInput, headers, settings, cb)
 	else
@@ -8637,7 +8637,7 @@ function M.DescribeEndpointConfigAsync(DescribeEndpointConfigInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEndpointConfig")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEndpointConfigInput, headers, settings, cb)
 	else
@@ -8673,7 +8673,7 @@ function M.CreateModelAsync(CreateModelInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateModel")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateModelInput, headers, settings, cb)
 	else
@@ -8709,7 +8709,7 @@ function M.CreateHyperParameterTuningJobAsync(CreateHyperParameterTuningJobReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateHyperParameterTuningJob")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateHyperParameterTuningJobRequest, headers, settings, cb)
 	else
@@ -8745,7 +8745,7 @@ function M.AddTagsAsync(AddTagsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddTags")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsInput, headers, settings, cb)
 	else
@@ -8781,7 +8781,7 @@ function M.DescribeNotebookInstanceLifecycleConfigAsync(DescribeNotebookInstance
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeNotebookInstanceLifecycleConfig")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNotebookInstanceLifecycleConfigInput, headers, settings, cb)
 	else
@@ -8817,7 +8817,7 @@ function M.ListEndpointsAsync(ListEndpointsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListEndpoints")
 	if request_handler then
 		request_handler(settings.uri, "/", ListEndpointsInput, headers, settings, cb)
 	else
@@ -8853,7 +8853,7 @@ function M.ListEndpointConfigsAsync(ListEndpointConfigsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListEndpointConfigs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListEndpointConfigsInput, headers, settings, cb)
 	else
@@ -8889,7 +8889,7 @@ function M.DescribeNotebookInstanceAsync(DescribeNotebookInstanceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeNotebookInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNotebookInstanceInput, headers, settings, cb)
 	else
@@ -8925,7 +8925,7 @@ function M.StopHyperParameterTuningJobAsync(StopHyperParameterTuningJobRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopHyperParameterTuningJob")
 	if request_handler then
 		request_handler(settings.uri, "/", StopHyperParameterTuningJobRequest, headers, settings, cb)
 	else
@@ -8961,7 +8961,7 @@ function M.UpdateEndpointAsync(UpdateEndpointInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateEndpointInput, headers, settings, cb)
 	else
@@ -8997,7 +8997,7 @@ function M.DeleteModelAsync(DeleteModelInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteModel")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteModelInput, headers, settings, cb)
 	else
@@ -9033,7 +9033,7 @@ function M.CreateTrainingJobAsync(CreateTrainingJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateTrainingJob")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTrainingJobRequest, headers, settings, cb)
 	else
@@ -9069,7 +9069,7 @@ function M.UpdateEndpointWeightsAndCapacitiesAsync(UpdateEndpointWeightsAndCapac
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateEndpointWeightsAndCapacities")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateEndpointWeightsAndCapacitiesInput, headers, settings, cb)
 	else
@@ -9105,7 +9105,7 @@ function M.StopTrainingJobAsync(StopTrainingJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopTrainingJob")
 	if request_handler then
 		request_handler(settings.uri, "/", StopTrainingJobRequest, headers, settings, cb)
 	else
@@ -9141,7 +9141,7 @@ function M.StopTransformJobAsync(StopTransformJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopTransformJob")
 	if request_handler then
 		request_handler(settings.uri, "/", StopTransformJobRequest, headers, settings, cb)
 	else

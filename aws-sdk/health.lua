@@ -1908,7 +1908,7 @@ function M.DescribeAffectedEntitiesAsync(DescribeAffectedEntitiesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAffectedEntities")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAffectedEntitiesRequest, headers, settings, cb)
 	else
@@ -1944,7 +1944,7 @@ function M.DescribeEventDetailsAsync(DescribeEventDetailsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEventDetails")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventDetailsRequest, headers, settings, cb)
 	else
@@ -1980,7 +1980,7 @@ function M.DescribeEventTypesAsync(DescribeEventTypesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEventTypes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventTypesRequest, headers, settings, cb)
 	else
@@ -2016,7 +2016,7 @@ function M.DescribeEventsAsync(DescribeEventsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventsRequest, headers, settings, cb)
 	else
@@ -2052,7 +2052,7 @@ function M.DescribeEntityAggregatesAsync(DescribeEntityAggregatesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEntityAggregates")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEntityAggregatesRequest, headers, settings, cb)
 	else
@@ -2088,7 +2088,7 @@ function M.DescribeEventAggregatesAsync(DescribeEventAggregatesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEventAggregates")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventAggregatesRequest, headers, settings, cb)
 	else

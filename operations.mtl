@@ -266,7 +266,7 @@ function M.{{name}}Async({{#input}}{{shape}}, {{/input}}cb){{#input}}
 		headers[header] = value
 	end{{/input}}
 
-	local request_handler, err = request_handlers.from_protocol_and_method("{{metadata.protocol}}", "{{http.method}}")
+	local request_handler, err = request_handlers.from_protocol_and_method("{{metadata.protocol}}", "{{http.method}}", "{{name}}")
 	if request_handler then
 		request_handler(settings.uri, "{{http.requestUri}}", {{input_shape_or_empty.shape}}, headers, settings, cb)
 	else

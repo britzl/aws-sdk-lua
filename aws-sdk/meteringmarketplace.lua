@@ -950,7 +950,7 @@ function M.BatchMeterUsageAsync(BatchMeterUsageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchMeterUsage")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchMeterUsageRequest, headers, settings, cb)
 	else
@@ -986,7 +986,7 @@ function M.MeterUsageAsync(MeterUsageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "MeterUsage")
 	if request_handler then
 		request_handler(settings.uri, "/", MeterUsageRequest, headers, settings, cb)
 	else
@@ -1022,7 +1022,7 @@ function M.ResolveCustomerAsync(ResolveCustomerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ResolveCustomer")
 	if request_handler then
 		request_handler(settings.uri, "/", ResolveCustomerRequest, headers, settings, cb)
 	else

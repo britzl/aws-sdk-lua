@@ -3760,7 +3760,7 @@ function M.PutDestinationAsync(PutDestinationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutDestination")
 	if request_handler then
 		request_handler(settings.uri, "/", PutDestinationRequest, headers, settings, cb)
 	else
@@ -3796,7 +3796,7 @@ function M.PutResourcePolicyAsync(PutResourcePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutResourcePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutResourcePolicyRequest, headers, settings, cb)
 	else
@@ -3832,7 +3832,7 @@ function M.DeleteDestinationAsync(DeleteDestinationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDestination")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDestinationRequest, headers, settings, cb)
 	else
@@ -3868,7 +3868,7 @@ function M.ListTagsLogGroupAsync(ListTagsLogGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTagsLogGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsLogGroupRequest, headers, settings, cb)
 	else
@@ -3904,7 +3904,7 @@ function M.DescribeLogStreamsAsync(DescribeLogStreamsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeLogStreams")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLogStreamsRequest, headers, settings, cb)
 	else
@@ -3940,7 +3940,7 @@ function M.CreateExportTaskAsync(CreateExportTaskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateExportTask")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateExportTaskRequest, headers, settings, cb)
 	else
@@ -3976,7 +3976,7 @@ function M.TestMetricFilterAsync(TestMetricFilterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TestMetricFilter")
 	if request_handler then
 		request_handler(settings.uri, "/", TestMetricFilterRequest, headers, settings, cb)
 	else
@@ -4012,7 +4012,7 @@ function M.DeleteLogGroupAsync(DeleteLogGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteLogGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLogGroupRequest, headers, settings, cb)
 	else
@@ -4048,7 +4048,7 @@ function M.DescribeMetricFiltersAsync(DescribeMetricFiltersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeMetricFilters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMetricFiltersRequest, headers, settings, cb)
 	else
@@ -4084,7 +4084,7 @@ function M.FilterLogEventsAsync(FilterLogEventsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "FilterLogEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", FilterLogEventsRequest, headers, settings, cb)
 	else
@@ -4120,7 +4120,7 @@ function M.CreateLogGroupAsync(CreateLogGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateLogGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLogGroupRequest, headers, settings, cb)
 	else
@@ -4156,7 +4156,7 @@ function M.DeleteSubscriptionFilterAsync(DeleteSubscriptionFilterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteSubscriptionFilter")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSubscriptionFilterRequest, headers, settings, cb)
 	else
@@ -4192,7 +4192,7 @@ function M.PutMetricFilterAsync(PutMetricFilterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutMetricFilter")
 	if request_handler then
 		request_handler(settings.uri, "/", PutMetricFilterRequest, headers, settings, cb)
 	else
@@ -4228,7 +4228,7 @@ function M.DeleteResourcePolicyAsync(DeleteResourcePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteResourcePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteResourcePolicyRequest, headers, settings, cb)
 	else
@@ -4264,7 +4264,7 @@ function M.PutLogEventsAsync(PutLogEventsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutLogEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", PutLogEventsRequest, headers, settings, cb)
 	else
@@ -4300,7 +4300,7 @@ function M.DescribeLogGroupsAsync(DescribeLogGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeLogGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLogGroupsRequest, headers, settings, cb)
 	else
@@ -4336,7 +4336,7 @@ function M.DescribeDestinationsAsync(DescribeDestinationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDestinations")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDestinationsRequest, headers, settings, cb)
 	else
@@ -4372,7 +4372,7 @@ function M.AssociateKmsKeyAsync(AssociateKmsKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateKmsKey")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateKmsKeyRequest, headers, settings, cb)
 	else
@@ -4408,7 +4408,7 @@ function M.PutRetentionPolicyAsync(PutRetentionPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutRetentionPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRetentionPolicyRequest, headers, settings, cb)
 	else
@@ -4444,7 +4444,7 @@ function M.DescribeSubscriptionFiltersAsync(DescribeSubscriptionFiltersRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeSubscriptionFilters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSubscriptionFiltersRequest, headers, settings, cb)
 	else
@@ -4480,7 +4480,7 @@ function M.DescribeExportTasksAsync(DescribeExportTasksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeExportTasks")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeExportTasksRequest, headers, settings, cb)
 	else
@@ -4516,7 +4516,7 @@ function M.TagLogGroupAsync(TagLogGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TagLogGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", TagLogGroupRequest, headers, settings, cb)
 	else
@@ -4552,7 +4552,7 @@ function M.PutSubscriptionFilterAsync(PutSubscriptionFilterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutSubscriptionFilter")
 	if request_handler then
 		request_handler(settings.uri, "/", PutSubscriptionFilterRequest, headers, settings, cb)
 	else
@@ -4588,7 +4588,7 @@ function M.DeleteMetricFilterAsync(DeleteMetricFilterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteMetricFilter")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteMetricFilterRequest, headers, settings, cb)
 	else
@@ -4624,7 +4624,7 @@ function M.PutDestinationPolicyAsync(PutDestinationPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutDestinationPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutDestinationPolicyRequest, headers, settings, cb)
 	else
@@ -4660,7 +4660,7 @@ function M.CreateLogStreamAsync(CreateLogStreamRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateLogStream")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLogStreamRequest, headers, settings, cb)
 	else
@@ -4696,7 +4696,7 @@ function M.CancelExportTaskAsync(CancelExportTaskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CancelExportTask")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelExportTaskRequest, headers, settings, cb)
 	else
@@ -4732,7 +4732,7 @@ function M.UntagLogGroupAsync(UntagLogGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UntagLogGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagLogGroupRequest, headers, settings, cb)
 	else
@@ -4768,7 +4768,7 @@ function M.DisassociateKmsKeyAsync(DisassociateKmsKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateKmsKey")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateKmsKeyRequest, headers, settings, cb)
 	else
@@ -4804,7 +4804,7 @@ function M.DeleteRetentionPolicyAsync(DeleteRetentionPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteRetentionPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRetentionPolicyRequest, headers, settings, cb)
 	else
@@ -4840,7 +4840,7 @@ function M.GetLogEventsAsync(GetLogEventsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetLogEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", GetLogEventsRequest, headers, settings, cb)
 	else
@@ -4876,7 +4876,7 @@ function M.DescribeResourcePoliciesAsync(DescribeResourcePoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeResourcePolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeResourcePoliciesRequest, headers, settings, cb)
 	else
@@ -4912,7 +4912,7 @@ function M.DeleteLogStreamAsync(DeleteLogStreamRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteLogStream")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLogStreamRequest, headers, settings, cb)
 	else

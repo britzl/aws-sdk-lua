@@ -2090,7 +2090,7 @@ function M.ImportServerCatalogAsync(ImportServerCatalogRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ImportServerCatalog")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportServerCatalogRequest, headers, settings, cb)
 	else
@@ -2126,7 +2126,7 @@ function M.GetConnectorsAsync(GetConnectorsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetConnectors")
 	if request_handler then
 		request_handler(settings.uri, "/", GetConnectorsRequest, headers, settings, cb)
 	else
@@ -2162,7 +2162,7 @@ function M.DeleteReplicationJobAsync(DeleteReplicationJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteReplicationJob")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteReplicationJobRequest, headers, settings, cb)
 	else
@@ -2198,7 +2198,7 @@ function M.StartOnDemandReplicationRunAsync(StartOnDemandReplicationRunRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartOnDemandReplicationRun")
 	if request_handler then
 		request_handler(settings.uri, "/", StartOnDemandReplicationRunRequest, headers, settings, cb)
 	else
@@ -2234,7 +2234,7 @@ function M.GetServersAsync(GetServersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetServers")
 	if request_handler then
 		request_handler(settings.uri, "/", GetServersRequest, headers, settings, cb)
 	else
@@ -2270,7 +2270,7 @@ function M.GetReplicationRunsAsync(GetReplicationRunsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetReplicationRuns")
 	if request_handler then
 		request_handler(settings.uri, "/", GetReplicationRunsRequest, headers, settings, cb)
 	else
@@ -2306,7 +2306,7 @@ function M.GetReplicationJobsAsync(GetReplicationJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetReplicationJobs")
 	if request_handler then
 		request_handler(settings.uri, "/", GetReplicationJobsRequest, headers, settings, cb)
 	else
@@ -2342,7 +2342,7 @@ function M.DisassociateConnectorAsync(DisassociateConnectorRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateConnector")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateConnectorRequest, headers, settings, cb)
 	else
@@ -2378,7 +2378,7 @@ function M.CreateReplicationJobAsync(CreateReplicationJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateReplicationJob")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateReplicationJobRequest, headers, settings, cb)
 	else
@@ -2414,7 +2414,7 @@ function M.UpdateReplicationJobAsync(UpdateReplicationJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateReplicationJob")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateReplicationJobRequest, headers, settings, cb)
 	else
@@ -2450,7 +2450,7 @@ function M.DeleteServerCatalogAsync(DeleteServerCatalogRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteServerCatalog")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteServerCatalogRequest, headers, settings, cb)
 	else

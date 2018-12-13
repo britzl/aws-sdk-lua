@@ -4865,7 +4865,7 @@ function M.DeleteTagsAsync(DeleteTagsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteTags")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTagsInput, headers, settings, cb)
 	else
@@ -4901,7 +4901,7 @@ function M.UpdateBatchPredictionAsync(UpdateBatchPredictionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateBatchPrediction")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateBatchPredictionInput, headers, settings, cb)
 	else
@@ -4937,7 +4937,7 @@ function M.GetEvaluationAsync(GetEvaluationInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetEvaluation")
 	if request_handler then
 		request_handler(settings.uri, "/", GetEvaluationInput, headers, settings, cb)
 	else
@@ -4973,7 +4973,7 @@ function M.DescribeBatchPredictionsAsync(DescribeBatchPredictionsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeBatchPredictions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeBatchPredictionsInput, headers, settings, cb)
 	else
@@ -5009,7 +5009,7 @@ function M.CreateEvaluationAsync(CreateEvaluationInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateEvaluation")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateEvaluationInput, headers, settings, cb)
 	else
@@ -5045,7 +5045,7 @@ function M.DescribeMLModelsAsync(DescribeMLModelsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeMLModels")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMLModelsInput, headers, settings, cb)
 	else
@@ -5081,7 +5081,7 @@ function M.DeleteMLModelAsync(DeleteMLModelInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteMLModel")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteMLModelInput, headers, settings, cb)
 	else
@@ -5117,7 +5117,7 @@ function M.CreateDataSourceFromS3Async(CreateDataSourceFromS3Input, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDataSourceFromS3")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDataSourceFromS3Input, headers, settings, cb)
 	else
@@ -5153,7 +5153,7 @@ function M.UpdateDataSourceAsync(UpdateDataSourceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateDataSource")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDataSourceInput, headers, settings, cb)
 	else
@@ -5189,7 +5189,7 @@ function M.DescribeEvaluationsAsync(DescribeEvaluationsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEvaluations")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEvaluationsInput, headers, settings, cb)
 	else
@@ -5225,7 +5225,7 @@ function M.CreateDataSourceFromRedshiftAsync(CreateDataSourceFromRedshiftInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDataSourceFromRedshift")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDataSourceFromRedshiftInput, headers, settings, cb)
 	else
@@ -5261,7 +5261,7 @@ function M.DescribeDataSourcesAsync(DescribeDataSourcesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDataSources")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDataSourcesInput, headers, settings, cb)
 	else
@@ -5297,7 +5297,7 @@ function M.GetDataSourceAsync(GetDataSourceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDataSource")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDataSourceInput, headers, settings, cb)
 	else
@@ -5333,7 +5333,7 @@ function M.CreateRealtimeEndpointAsync(CreateRealtimeEndpointInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateRealtimeEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRealtimeEndpointInput, headers, settings, cb)
 	else
@@ -5369,7 +5369,7 @@ function M.UpdateMLModelAsync(UpdateMLModelInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateMLModel")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateMLModelInput, headers, settings, cb)
 	else
@@ -5405,7 +5405,7 @@ function M.DeleteRealtimeEndpointAsync(DeleteRealtimeEndpointInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteRealtimeEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRealtimeEndpointInput, headers, settings, cb)
 	else
@@ -5441,7 +5441,7 @@ function M.DescribeTagsAsync(DescribeTagsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTags")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagsInput, headers, settings, cb)
 	else
@@ -5477,7 +5477,7 @@ function M.DeleteDataSourceAsync(DeleteDataSourceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDataSource")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDataSourceInput, headers, settings, cb)
 	else
@@ -5513,7 +5513,7 @@ function M.CreateDataSourceFromRDSAsync(CreateDataSourceFromRDSInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDataSourceFromRDS")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDataSourceFromRDSInput, headers, settings, cb)
 	else
@@ -5549,7 +5549,7 @@ function M.UpdateEvaluationAsync(UpdateEvaluationInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateEvaluation")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateEvaluationInput, headers, settings, cb)
 	else
@@ -5585,7 +5585,7 @@ function M.AddTagsAsync(AddTagsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddTags")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsInput, headers, settings, cb)
 	else
@@ -5621,7 +5621,7 @@ function M.PredictAsync(PredictInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "Predict")
 	if request_handler then
 		request_handler(settings.uri, "/", PredictInput, headers, settings, cb)
 	else
@@ -5657,7 +5657,7 @@ function M.GetBatchPredictionAsync(GetBatchPredictionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetBatchPrediction")
 	if request_handler then
 		request_handler(settings.uri, "/", GetBatchPredictionInput, headers, settings, cb)
 	else
@@ -5693,7 +5693,7 @@ function M.DeleteEvaluationAsync(DeleteEvaluationInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteEvaluation")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEvaluationInput, headers, settings, cb)
 	else
@@ -5729,7 +5729,7 @@ function M.DeleteBatchPredictionAsync(DeleteBatchPredictionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteBatchPrediction")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteBatchPredictionInput, headers, settings, cb)
 	else
@@ -5765,7 +5765,7 @@ function M.CreateMLModelAsync(CreateMLModelInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateMLModel")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateMLModelInput, headers, settings, cb)
 	else
@@ -5801,7 +5801,7 @@ function M.CreateBatchPredictionAsync(CreateBatchPredictionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateBatchPrediction")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateBatchPredictionInput, headers, settings, cb)
 	else
@@ -5837,7 +5837,7 @@ function M.GetMLModelAsync(GetMLModelInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetMLModel")
 	if request_handler then
 		request_handler(settings.uri, "/", GetMLModelInput, headers, settings, cb)
 	else

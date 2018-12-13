@@ -1299,7 +1299,7 @@ function M.SuggestAsync(SuggestRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "Suggest")
 	if request_handler then
 		request_handler(settings.uri, "/2013-01-01/suggest?format=sdk&pretty=true", SuggestRequest, headers, settings, cb)
 	else
@@ -1335,7 +1335,7 @@ function M.SearchAsync(SearchRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "Search")
 	if request_handler then
 		request_handler(settings.uri, "/2013-01-01/search?format=sdk&pretty=true", SearchRequest, headers, settings, cb)
 	else
@@ -1371,7 +1371,7 @@ function M.UploadDocumentsAsync(UploadDocumentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UploadDocuments")
 	if request_handler then
 		request_handler(settings.uri, "/2013-01-01/documents/batch?format=sdk", UploadDocumentsRequest, headers, settings, cb)
 	else

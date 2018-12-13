@@ -1809,7 +1809,7 @@ function M.DeleteAttributesAsync(DeleteAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAttributesRequest, headers, settings, cb)
 	else
@@ -1845,7 +1845,7 @@ function M.BatchPutAttributesAsync(BatchPutAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "BatchPutAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchPutAttributesRequest, headers, settings, cb)
 	else
@@ -1881,7 +1881,7 @@ function M.PutAttributesAsync(PutAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PutAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", PutAttributesRequest, headers, settings, cb)
 	else
@@ -1917,7 +1917,7 @@ function M.ListDomainsAsync(ListDomainsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListDomains")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDomainsRequest, headers, settings, cb)
 	else
@@ -1953,7 +1953,7 @@ function M.DomainMetadataAsync(DomainMetadataRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DomainMetadata")
 	if request_handler then
 		request_handler(settings.uri, "/", DomainMetadataRequest, headers, settings, cb)
 	else
@@ -1989,7 +1989,7 @@ function M.BatchDeleteAttributesAsync(BatchDeleteAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "BatchDeleteAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchDeleteAttributesRequest, headers, settings, cb)
 	else
@@ -2025,7 +2025,7 @@ function M.GetAttributesAsync(GetAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAttributesRequest, headers, settings, cb)
 	else
@@ -2061,7 +2061,7 @@ function M.DeleteDomainAsync(DeleteDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDomainRequest, headers, settings, cb)
 	else
@@ -2097,7 +2097,7 @@ function M.CreateDomainAsync(CreateDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDomainRequest, headers, settings, cb)
 	else
@@ -2133,7 +2133,7 @@ function M.SelectAsync(SelectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "Select")
 	if request_handler then
 		request_handler(settings.uri, "/", SelectRequest, headers, settings, cb)
 	else

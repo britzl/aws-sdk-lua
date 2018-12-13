@@ -7329,7 +7329,7 @@ function M.DescribeStackResourceAsync(DescribeStackResourceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeStackResource")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStackResourceInput, headers, settings, cb)
 	else
@@ -7365,7 +7365,7 @@ function M.DescribeStackInstanceAsync(DescribeStackInstanceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeStackInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStackInstanceInput, headers, settings, cb)
 	else
@@ -7401,7 +7401,7 @@ function M.UpdateStackSetAsync(UpdateStackSetInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateStackSet")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateStackSetInput, headers, settings, cb)
 	else
@@ -7437,7 +7437,7 @@ function M.CreateStackInstancesAsync(CreateStackInstancesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateStackInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateStackInstancesInput, headers, settings, cb)
 	else
@@ -7473,7 +7473,7 @@ function M.UpdateTerminationProtectionAsync(UpdateTerminationProtectionInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateTerminationProtection")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateTerminationProtectionInput, headers, settings, cb)
 	else
@@ -7509,7 +7509,7 @@ function M.ValidateTemplateAsync(ValidateTemplateInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ValidateTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", ValidateTemplateInput, headers, settings, cb)
 	else
@@ -7545,7 +7545,7 @@ function M.DescribeStackResourcesAsync(DescribeStackResourcesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeStackResources")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStackResourcesInput, headers, settings, cb)
 	else
@@ -7581,7 +7581,7 @@ function M.ListStackSetOperationsAsync(ListStackSetOperationsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListStackSetOperations")
 	if request_handler then
 		request_handler(settings.uri, "/", ListStackSetOperationsInput, headers, settings, cb)
 	else
@@ -7617,7 +7617,7 @@ function M.ListChangeSetsAsync(ListChangeSetsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListChangeSets")
 	if request_handler then
 		request_handler(settings.uri, "/", ListChangeSetsInput, headers, settings, cb)
 	else
@@ -7653,7 +7653,7 @@ function M.CreateStackAsync(CreateStackInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateStack")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateStackInput, headers, settings, cb)
 	else
@@ -7689,7 +7689,7 @@ function M.GetTemplateSummaryAsync(GetTemplateSummaryInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetTemplateSummary")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTemplateSummaryInput, headers, settings, cb)
 	else
@@ -7725,7 +7725,7 @@ function M.CancelUpdateStackAsync(CancelUpdateStackInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CancelUpdateStack")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelUpdateStackInput, headers, settings, cb)
 	else
@@ -7761,7 +7761,7 @@ function M.UpdateStackInstancesAsync(UpdateStackInstancesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateStackInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateStackInstancesInput, headers, settings, cb)
 	else
@@ -7797,7 +7797,7 @@ function M.ContinueUpdateRollbackAsync(ContinueUpdateRollbackInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ContinueUpdateRollback")
 	if request_handler then
 		request_handler(settings.uri, "/", ContinueUpdateRollbackInput, headers, settings, cb)
 	else
@@ -7833,7 +7833,7 @@ function M.ListImportsAsync(ListImportsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListImports")
 	if request_handler then
 		request_handler(settings.uri, "/", ListImportsInput, headers, settings, cb)
 	else
@@ -7869,7 +7869,7 @@ function M.GetStackPolicyAsync(GetStackPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetStackPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", GetStackPolicyInput, headers, settings, cb)
 	else
@@ -7905,7 +7905,7 @@ function M.ListStackSetsAsync(ListStackSetsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListStackSets")
 	if request_handler then
 		request_handler(settings.uri, "/", ListStackSetsInput, headers, settings, cb)
 	else
@@ -7941,7 +7941,7 @@ function M.ListExportsAsync(ListExportsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListExports")
 	if request_handler then
 		request_handler(settings.uri, "/", ListExportsInput, headers, settings, cb)
 	else
@@ -7977,7 +7977,7 @@ function M.DeleteStackSetAsync(DeleteStackSetInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteStackSet")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteStackSetInput, headers, settings, cb)
 	else
@@ -8013,7 +8013,7 @@ function M.DescribeStackSetAsync(DescribeStackSetInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeStackSet")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStackSetInput, headers, settings, cb)
 	else
@@ -8049,7 +8049,7 @@ function M.DescribeStackSetOperationAsync(DescribeStackSetOperationInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeStackSetOperation")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStackSetOperationInput, headers, settings, cb)
 	else
@@ -8085,7 +8085,7 @@ function M.ListStackResourcesAsync(ListStackResourcesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListStackResources")
 	if request_handler then
 		request_handler(settings.uri, "/", ListStackResourcesInput, headers, settings, cb)
 	else
@@ -8121,7 +8121,7 @@ function M.DescribeStackEventsAsync(DescribeStackEventsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeStackEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStackEventsInput, headers, settings, cb)
 	else
@@ -8157,7 +8157,7 @@ function M.CreateStackSetAsync(CreateStackSetInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateStackSet")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateStackSetInput, headers, settings, cb)
 	else
@@ -8193,7 +8193,7 @@ function M.SignalResourceAsync(SignalResourceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SignalResource")
 	if request_handler then
 		request_handler(settings.uri, "/", SignalResourceInput, headers, settings, cb)
 	else
@@ -8229,7 +8229,7 @@ function M.GetTemplateAsync(GetTemplateInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTemplateInput, headers, settings, cb)
 	else
@@ -8265,7 +8265,7 @@ function M.DescribeChangeSetAsync(DescribeChangeSetInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeChangeSet")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeChangeSetInput, headers, settings, cb)
 	else
@@ -8301,7 +8301,7 @@ function M.DeleteChangeSetAsync(DeleteChangeSetInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteChangeSet")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteChangeSetInput, headers, settings, cb)
 	else
@@ -8337,7 +8337,7 @@ function M.CreateChangeSetAsync(CreateChangeSetInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateChangeSet")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateChangeSetInput, headers, settings, cb)
 	else
@@ -8373,7 +8373,7 @@ function M.DescribeStacksAsync(DescribeStacksInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeStacks")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStacksInput, headers, settings, cb)
 	else
@@ -8409,7 +8409,7 @@ function M.UpdateStackAsync(UpdateStackInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateStack")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateStackInput, headers, settings, cb)
 	else
@@ -8445,7 +8445,7 @@ function M.StopStackSetOperationAsync(StopStackSetOperationInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "StopStackSetOperation")
 	if request_handler then
 		request_handler(settings.uri, "/", StopStackSetOperationInput, headers, settings, cb)
 	else
@@ -8481,7 +8481,7 @@ function M.ListStackInstancesAsync(ListStackInstancesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListStackInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", ListStackInstancesInput, headers, settings, cb)
 	else
@@ -8517,7 +8517,7 @@ function M.DeleteStackInstancesAsync(DeleteStackInstancesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteStackInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteStackInstancesInput, headers, settings, cb)
 	else
@@ -8553,7 +8553,7 @@ function M.ExecuteChangeSetAsync(ExecuteChangeSetInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ExecuteChangeSet")
 	if request_handler then
 		request_handler(settings.uri, "/", ExecuteChangeSetInput, headers, settings, cb)
 	else
@@ -8589,7 +8589,7 @@ function M.DeleteStackAsync(DeleteStackInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteStack")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteStackInput, headers, settings, cb)
 	else
@@ -8625,7 +8625,7 @@ function M.ListStackSetOperationResultsAsync(ListStackSetOperationResultsInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListStackSetOperationResults")
 	if request_handler then
 		request_handler(settings.uri, "/", ListStackSetOperationResultsInput, headers, settings, cb)
 	else
@@ -8661,7 +8661,7 @@ function M.SetStackPolicyAsync(SetStackPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetStackPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", SetStackPolicyInput, headers, settings, cb)
 	else
@@ -8697,7 +8697,7 @@ function M.ListStacksAsync(ListStacksInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListStacks")
 	if request_handler then
 		request_handler(settings.uri, "/", ListStacksInput, headers, settings, cb)
 	else
@@ -8733,7 +8733,7 @@ function M.EstimateTemplateCostAsync(EstimateTemplateCostInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "EstimateTemplateCost")
 	if request_handler then
 		request_handler(settings.uri, "/", EstimateTemplateCostInput, headers, settings, cb)
 	else
@@ -8769,7 +8769,7 @@ function M.DescribeAccountLimitsAsync(DescribeAccountLimitsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeAccountLimits")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAccountLimitsInput, headers, settings, cb)
 	else

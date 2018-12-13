@@ -2314,7 +2314,7 @@ function M.PutSecretValueAsync(PutSecretValueRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutSecretValue")
 	if request_handler then
 		request_handler(settings.uri, "/", PutSecretValueRequest, headers, settings, cb)
 	else
@@ -2350,7 +2350,7 @@ function M.ListSecretVersionIdsAsync(ListSecretVersionIdsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListSecretVersionIds")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSecretVersionIdsRequest, headers, settings, cb)
 	else
@@ -2386,7 +2386,7 @@ function M.RestoreSecretAsync(RestoreSecretRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RestoreSecret")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreSecretRequest, headers, settings, cb)
 	else
@@ -2422,7 +2422,7 @@ function M.CreateSecretAsync(CreateSecretRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateSecret")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSecretRequest, headers, settings, cb)
 	else
@@ -2458,7 +2458,7 @@ function M.DeleteSecretAsync(DeleteSecretRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteSecret")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSecretRequest, headers, settings, cb)
 	else
@@ -2494,7 +2494,7 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UntagResource")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagResourceRequest, headers, settings, cb)
 	else
@@ -2530,7 +2530,7 @@ function M.GetRandomPasswordAsync(GetRandomPasswordRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRandomPassword")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRandomPasswordRequest, headers, settings, cb)
 	else
@@ -2566,7 +2566,7 @@ function M.PutResourcePolicyAsync(PutResourcePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutResourcePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutResourcePolicyRequest, headers, settings, cb)
 	else
@@ -2602,7 +2602,7 @@ function M.DeleteResourcePolicyAsync(DeleteResourcePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteResourcePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteResourcePolicyRequest, headers, settings, cb)
 	else
@@ -2638,7 +2638,7 @@ function M.ListSecretsAsync(ListSecretsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListSecrets")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSecretsRequest, headers, settings, cb)
 	else
@@ -2674,7 +2674,7 @@ function M.CancelRotateSecretAsync(CancelRotateSecretRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CancelRotateSecret")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelRotateSecretRequest, headers, settings, cb)
 	else
@@ -2710,7 +2710,7 @@ function M.GetResourcePolicyAsync(GetResourcePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetResourcePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", GetResourcePolicyRequest, headers, settings, cb)
 	else
@@ -2746,7 +2746,7 @@ function M.DescribeSecretAsync(DescribeSecretRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeSecret")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSecretRequest, headers, settings, cb)
 	else
@@ -2782,7 +2782,7 @@ function M.UpdateSecretAsync(UpdateSecretRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateSecret")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSecretRequest, headers, settings, cb)
 	else
@@ -2818,7 +2818,7 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TagResource")
 	if request_handler then
 		request_handler(settings.uri, "/", TagResourceRequest, headers, settings, cb)
 	else
@@ -2854,7 +2854,7 @@ function M.UpdateSecretVersionStageAsync(UpdateSecretVersionStageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateSecretVersionStage")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSecretVersionStageRequest, headers, settings, cb)
 	else
@@ -2890,7 +2890,7 @@ function M.RotateSecretAsync(RotateSecretRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RotateSecret")
 	if request_handler then
 		request_handler(settings.uri, "/", RotateSecretRequest, headers, settings, cb)
 	else
@@ -2926,7 +2926,7 @@ function M.GetSecretValueAsync(GetSecretValueRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetSecretValue")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSecretValueRequest, headers, settings, cb)
 	else

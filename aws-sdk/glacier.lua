@@ -4275,7 +4275,7 @@ function M.ListTagsForVaultAsync(ListTagsForVaultInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListTagsForVault")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/tags", ListTagsForVaultInput, headers, settings, cb)
 	else
@@ -4311,7 +4311,7 @@ function M.ListJobsAsync(ListJobsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListJobs")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/jobs", ListJobsInput, headers, settings, cb)
 	else
@@ -4347,7 +4347,7 @@ function M.DeleteVaultAsync(DeleteVaultInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteVault")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}", DeleteVaultInput, headers, settings, cb)
 	else
@@ -4383,7 +4383,7 @@ function M.DeleteVaultNotificationsAsync(DeleteVaultNotificationsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteVaultNotifications")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/notification-configuration", DeleteVaultNotificationsInput, headers, settings, cb)
 	else
@@ -4419,7 +4419,7 @@ function M.ListPartsAsync(ListPartsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListParts")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", ListPartsInput, headers, settings, cb)
 	else
@@ -4455,7 +4455,7 @@ function M.ListProvisionedCapacityAsync(ListProvisionedCapacityInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListProvisionedCapacity")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/provisioned-capacity", ListProvisionedCapacityInput, headers, settings, cb)
 	else
@@ -4491,7 +4491,7 @@ function M.DeleteArchiveAsync(DeleteArchiveInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteArchive")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/archives/{archiveId}", DeleteArchiveInput, headers, settings, cb)
 	else
@@ -4527,7 +4527,7 @@ function M.PurchaseProvisionedCapacityAsync(PurchaseProvisionedCapacityInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "PurchaseProvisionedCapacity")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/provisioned-capacity", PurchaseProvisionedCapacityInput, headers, settings, cb)
 	else
@@ -4563,7 +4563,7 @@ function M.GetJobOutputAsync(GetJobOutputInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetJobOutput")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/jobs/{jobId}/output", GetJobOutputInput, headers, settings, cb)
 	else
@@ -4599,7 +4599,7 @@ function M.AddTagsToVaultAsync(AddTagsToVaultInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "AddTagsToVault")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/tags?operation=add", AddTagsToVaultInput, headers, settings, cb)
 	else
@@ -4635,7 +4635,7 @@ function M.InitiateVaultLockAsync(InitiateVaultLockInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "InitiateVaultLock")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/lock-policy", InitiateVaultLockInput, headers, settings, cb)
 	else
@@ -4671,7 +4671,7 @@ function M.ListVaultsAsync(ListVaultsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListVaults")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults", ListVaultsInput, headers, settings, cb)
 	else
@@ -4707,7 +4707,7 @@ function M.GetVaultLockAsync(GetVaultLockInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetVaultLock")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/lock-policy", GetVaultLockInput, headers, settings, cb)
 	else
@@ -4743,7 +4743,7 @@ function M.DescribeJobAsync(DescribeJobInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeJob")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/jobs/{jobId}", DescribeJobInput, headers, settings, cb)
 	else
@@ -4779,7 +4779,7 @@ function M.GetVaultAccessPolicyAsync(GetVaultAccessPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetVaultAccessPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/access-policy", GetVaultAccessPolicyInput, headers, settings, cb)
 	else
@@ -4815,7 +4815,7 @@ function M.CompleteMultipartUploadAsync(CompleteMultipartUploadInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CompleteMultipartUpload")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", CompleteMultipartUploadInput, headers, settings, cb)
 	else
@@ -4851,7 +4851,7 @@ function M.SetVaultAccessPolicyAsync(SetVaultAccessPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "SetVaultAccessPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/access-policy", SetVaultAccessPolicyInput, headers, settings, cb)
 	else
@@ -4887,7 +4887,7 @@ function M.UploadMultipartPartAsync(UploadMultipartPartInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UploadMultipartPart")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", UploadMultipartPartInput, headers, settings, cb)
 	else
@@ -4923,7 +4923,7 @@ function M.GetVaultNotificationsAsync(GetVaultNotificationsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetVaultNotifications")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/notification-configuration", GetVaultNotificationsInput, headers, settings, cb)
 	else
@@ -4959,7 +4959,7 @@ function M.DeleteVaultAccessPolicyAsync(DeleteVaultAccessPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteVaultAccessPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/access-policy", DeleteVaultAccessPolicyInput, headers, settings, cb)
 	else
@@ -4995,7 +4995,7 @@ function M.DescribeVaultAsync(DescribeVaultInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeVault")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}", DescribeVaultInput, headers, settings, cb)
 	else
@@ -5031,7 +5031,7 @@ function M.ListMultipartUploadsAsync(ListMultipartUploadsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListMultipartUploads")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/multipart-uploads", ListMultipartUploadsInput, headers, settings, cb)
 	else
@@ -5067,7 +5067,7 @@ function M.CompleteVaultLockAsync(CompleteVaultLockInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CompleteVaultLock")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/lock-policy/{lockId}", CompleteVaultLockInput, headers, settings, cb)
 	else
@@ -5103,7 +5103,7 @@ function M.SetDataRetrievalPolicyAsync(SetDataRetrievalPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "SetDataRetrievalPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/policies/data-retrieval", SetDataRetrievalPolicyInput, headers, settings, cb)
 	else
@@ -5139,7 +5139,7 @@ function M.AbortVaultLockAsync(AbortVaultLockInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "AbortVaultLock")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/lock-policy", AbortVaultLockInput, headers, settings, cb)
 	else
@@ -5175,7 +5175,7 @@ function M.AbortMultipartUploadAsync(AbortMultipartUploadInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "AbortMultipartUpload")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", AbortMultipartUploadInput, headers, settings, cb)
 	else
@@ -5211,7 +5211,7 @@ function M.RemoveTagsFromVaultAsync(RemoveTagsFromVaultInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "RemoveTagsFromVault")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/tags?operation=remove", RemoveTagsFromVaultInput, headers, settings, cb)
 	else
@@ -5247,7 +5247,7 @@ function M.CreateVaultAsync(CreateVaultInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "CreateVault")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}", CreateVaultInput, headers, settings, cb)
 	else
@@ -5283,7 +5283,7 @@ function M.InitiateJobAsync(InitiateJobInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "InitiateJob")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/jobs", InitiateJobInput, headers, settings, cb)
 	else
@@ -5319,7 +5319,7 @@ function M.InitiateMultipartUploadAsync(InitiateMultipartUploadInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "InitiateMultipartUpload")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/multipart-uploads", InitiateMultipartUploadInput, headers, settings, cb)
 	else
@@ -5355,7 +5355,7 @@ function M.GetDataRetrievalPolicyAsync(GetDataRetrievalPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDataRetrievalPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/policies/data-retrieval", GetDataRetrievalPolicyInput, headers, settings, cb)
 	else
@@ -5391,7 +5391,7 @@ function M.SetVaultNotificationsAsync(SetVaultNotificationsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "SetVaultNotifications")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/notification-configuration", SetVaultNotificationsInput, headers, settings, cb)
 	else
@@ -5427,7 +5427,7 @@ function M.UploadArchiveAsync(UploadArchiveInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UploadArchive")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/archives", UploadArchiveInput, headers, settings, cb)
 	else

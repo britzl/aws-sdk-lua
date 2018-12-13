@@ -4515,7 +4515,7 @@ function M.CreateAppCookieStickinessPolicyAsync(CreateAppCookieStickinessPolicyI
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateAppCookieStickinessPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAppCookieStickinessPolicyInput, headers, settings, cb)
 	else
@@ -4551,7 +4551,7 @@ function M.EnableAvailabilityZonesForLoadBalancerAsync(AddAvailabilityZonesInput
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "EnableAvailabilityZonesForLoadBalancer")
 	if request_handler then
 		request_handler(settings.uri, "/", AddAvailabilityZonesInput, headers, settings, cb)
 	else
@@ -4587,7 +4587,7 @@ function M.SetLoadBalancerPoliciesOfListenerAsync(SetLoadBalancerPoliciesOfListe
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetLoadBalancerPoliciesOfListener")
 	if request_handler then
 		request_handler(settings.uri, "/", SetLoadBalancerPoliciesOfListenerInput, headers, settings, cb)
 	else
@@ -4623,7 +4623,7 @@ function M.DescribeLoadBalancerAttributesAsync(DescribeLoadBalancerAttributesInp
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeLoadBalancerAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLoadBalancerAttributesInput, headers, settings, cb)
 	else
@@ -4659,7 +4659,7 @@ function M.DeleteLoadBalancerListenersAsync(DeleteLoadBalancerListenerInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteLoadBalancerListeners")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLoadBalancerListenerInput, headers, settings, cb)
 	else
@@ -4695,7 +4695,7 @@ function M.DeleteLoadBalancerAsync(DeleteAccessPointInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteLoadBalancer")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAccessPointInput, headers, settings, cb)
 	else
@@ -4731,7 +4731,7 @@ function M.CreateLoadBalancerPolicyAsync(CreateLoadBalancerPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateLoadBalancerPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLoadBalancerPolicyInput, headers, settings, cb)
 	else
@@ -4767,7 +4767,7 @@ function M.DeleteLoadBalancerPolicyAsync(DeleteLoadBalancerPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteLoadBalancerPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLoadBalancerPolicyInput, headers, settings, cb)
 	else
@@ -4803,7 +4803,7 @@ function M.CreateLBCookieStickinessPolicyAsync(CreateLBCookieStickinessPolicyInp
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateLBCookieStickinessPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLBCookieStickinessPolicyInput, headers, settings, cb)
 	else
@@ -4839,7 +4839,7 @@ function M.DescribeInstanceHealthAsync(DescribeEndPointStateInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeInstanceHealth")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEndPointStateInput, headers, settings, cb)
 	else
@@ -4875,7 +4875,7 @@ function M.DescribeLoadBalancersAsync(DescribeAccessPointsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeLoadBalancers")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAccessPointsInput, headers, settings, cb)
 	else
@@ -4911,7 +4911,7 @@ function M.RemoveTagsAsync(RemoveTagsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RemoveTags")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsInput, headers, settings, cb)
 	else
@@ -4947,7 +4947,7 @@ function M.SetLoadBalancerPoliciesForBackendServerAsync(SetLoadBalancerPoliciesF
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetLoadBalancerPoliciesForBackendServer")
 	if request_handler then
 		request_handler(settings.uri, "/", SetLoadBalancerPoliciesForBackendServerInput, headers, settings, cb)
 	else
@@ -4983,7 +4983,7 @@ function M.DescribeLoadBalancerPoliciesAsync(DescribeLoadBalancerPoliciesInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeLoadBalancerPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLoadBalancerPoliciesInput, headers, settings, cb)
 	else
@@ -5019,7 +5019,7 @@ function M.DescribeLoadBalancerPolicyTypesAsync(DescribeLoadBalancerPolicyTypesI
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeLoadBalancerPolicyTypes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLoadBalancerPolicyTypesInput, headers, settings, cb)
 	else
@@ -5055,7 +5055,7 @@ function M.ApplySecurityGroupsToLoadBalancerAsync(ApplySecurityGroupsToLoadBalan
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ApplySecurityGroupsToLoadBalancer")
 	if request_handler then
 		request_handler(settings.uri, "/", ApplySecurityGroupsToLoadBalancerInput, headers, settings, cb)
 	else
@@ -5091,7 +5091,7 @@ function M.DescribeTagsAsync(DescribeTagsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeTags")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagsInput, headers, settings, cb)
 	else
@@ -5127,7 +5127,7 @@ function M.ConfigureHealthCheckAsync(ConfigureHealthCheckInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ConfigureHealthCheck")
 	if request_handler then
 		request_handler(settings.uri, "/", ConfigureHealthCheckInput, headers, settings, cb)
 	else
@@ -5163,7 +5163,7 @@ function M.AttachLoadBalancerToSubnetsAsync(AttachLoadBalancerToSubnetsInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AttachLoadBalancerToSubnets")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachLoadBalancerToSubnetsInput, headers, settings, cb)
 	else
@@ -5199,7 +5199,7 @@ function M.SetLoadBalancerListenerSSLCertificateAsync(SetLoadBalancerListenerSSL
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetLoadBalancerListenerSSLCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", SetLoadBalancerListenerSSLCertificateInput, headers, settings, cb)
 	else
@@ -5235,7 +5235,7 @@ function M.DetachLoadBalancerFromSubnetsAsync(DetachLoadBalancerFromSubnetsInput
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DetachLoadBalancerFromSubnets")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachLoadBalancerFromSubnetsInput, headers, settings, cb)
 	else
@@ -5271,7 +5271,7 @@ function M.DeregisterInstancesFromLoadBalancerAsync(DeregisterEndPointsInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeregisterInstancesFromLoadBalancer")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterEndPointsInput, headers, settings, cb)
 	else
@@ -5307,7 +5307,7 @@ function M.RegisterInstancesWithLoadBalancerAsync(RegisterEndPointsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RegisterInstancesWithLoadBalancer")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterEndPointsInput, headers, settings, cb)
 	else
@@ -5343,7 +5343,7 @@ function M.AddTagsAsync(AddTagsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AddTags")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsInput, headers, settings, cb)
 	else
@@ -5379,7 +5379,7 @@ function M.ModifyLoadBalancerAttributesAsync(ModifyLoadBalancerAttributesInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyLoadBalancerAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyLoadBalancerAttributesInput, headers, settings, cb)
 	else
@@ -5415,7 +5415,7 @@ function M.CreateLoadBalancerListenersAsync(CreateLoadBalancerListenerInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateLoadBalancerListeners")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLoadBalancerListenerInput, headers, settings, cb)
 	else
@@ -5451,7 +5451,7 @@ function M.CreateLoadBalancerAsync(CreateAccessPointInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateLoadBalancer")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAccessPointInput, headers, settings, cb)
 	else
@@ -5487,7 +5487,7 @@ function M.DescribeAccountLimitsAsync(DescribeAccountLimitsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeAccountLimits")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAccountLimitsInput, headers, settings, cb)
 	else
@@ -5523,7 +5523,7 @@ function M.DisableAvailabilityZonesForLoadBalancerAsync(RemoveAvailabilityZonesI
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DisableAvailabilityZonesForLoadBalancer")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveAvailabilityZonesInput, headers, settings, cb)
 	else

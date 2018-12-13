@@ -811,7 +811,7 @@ function M.UpdateThingShadowAsync(UpdateThingShadowRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateThingShadow")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}/shadow", UpdateThingShadowRequest, headers, settings, cb)
 	else
@@ -847,7 +847,7 @@ function M.GetThingShadowAsync(GetThingShadowRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetThingShadow")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}/shadow", GetThingShadowRequest, headers, settings, cb)
 	else
@@ -883,7 +883,7 @@ function M.PublishAsync(PublishRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "Publish")
 	if request_handler then
 		request_handler(settings.uri, "/topics/{topic}", PublishRequest, headers, settings, cb)
 	else
@@ -919,7 +919,7 @@ function M.DeleteThingShadowAsync(DeleteThingShadowRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteThingShadow")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}/shadow", DeleteThingShadowRequest, headers, settings, cb)
 	else

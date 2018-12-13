@@ -21357,7 +21357,7 @@ function M.DescribeInventoryDeletionsAsync(DescribeInventoryDeletionsRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeInventoryDeletions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInventoryDeletionsRequest, headers, settings, cb)
 	else
@@ -21393,7 +21393,7 @@ function M.GetPatchBaselineForPatchGroupAsync(GetPatchBaselineForPatchGroupReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetPatchBaselineForPatchGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPatchBaselineForPatchGroupRequest, headers, settings, cb)
 	else
@@ -21429,7 +21429,7 @@ function M.DescribeAssociationAsync(DescribeAssociationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAssociation")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAssociationRequest, headers, settings, cb)
 	else
@@ -21465,7 +21465,7 @@ function M.DescribeAssociationExecutionTargetsAsync(DescribeAssociationExecution
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAssociationExecutionTargets")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAssociationExecutionTargetsRequest, headers, settings, cb)
 	else
@@ -21501,7 +21501,7 @@ function M.DescribeInstancePatchStatesForPatchGroupAsync(DescribeInstancePatchSt
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeInstancePatchStatesForPatchGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstancePatchStatesForPatchGroupRequest, headers, settings, cb)
 	else
@@ -21537,7 +21537,7 @@ function M.GetDefaultPatchBaselineAsync(GetDefaultPatchBaselineRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDefaultPatchBaseline")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDefaultPatchBaselineRequest, headers, settings, cb)
 	else
@@ -21573,7 +21573,7 @@ function M.GetDocumentAsync(GetDocumentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDocument")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDocumentRequest, headers, settings, cb)
 	else
@@ -21609,7 +21609,7 @@ function M.CreateDocumentAsync(CreateDocumentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDocument")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDocumentRequest, headers, settings, cb)
 	else
@@ -21645,7 +21645,7 @@ function M.DeleteAssociationAsync(DeleteAssociationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteAssociation")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAssociationRequest, headers, settings, cb)
 	else
@@ -21681,7 +21681,7 @@ function M.CreatePatchBaselineAsync(CreatePatchBaselineRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreatePatchBaseline")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePatchBaselineRequest, headers, settings, cb)
 	else
@@ -21717,7 +21717,7 @@ function M.ListResourceComplianceSummariesAsync(ListResourceComplianceSummariesR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListResourceComplianceSummaries")
 	if request_handler then
 		request_handler(settings.uri, "/", ListResourceComplianceSummariesRequest, headers, settings, cb)
 	else
@@ -21753,7 +21753,7 @@ function M.DeregisterTargetFromMaintenanceWindowAsync(DeregisterTargetFromMainte
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeregisterTargetFromMaintenanceWindow")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterTargetFromMaintenanceWindowRequest, headers, settings, cb)
 	else
@@ -21789,7 +21789,7 @@ function M.TerminateSessionAsync(TerminateSessionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TerminateSession")
 	if request_handler then
 		request_handler(settings.uri, "/", TerminateSessionRequest, headers, settings, cb)
 	else
@@ -21825,7 +21825,7 @@ function M.ListComplianceSummariesAsync(ListComplianceSummariesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListComplianceSummaries")
 	if request_handler then
 		request_handler(settings.uri, "/", ListComplianceSummariesRequest, headers, settings, cb)
 	else
@@ -21861,7 +21861,7 @@ function M.GetParameterAsync(GetParameterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetParameter")
 	if request_handler then
 		request_handler(settings.uri, "/", GetParameterRequest, headers, settings, cb)
 	else
@@ -21897,7 +21897,7 @@ function M.StartAssociationsOnceAsync(StartAssociationsOnceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartAssociationsOnce")
 	if request_handler then
 		request_handler(settings.uri, "/", StartAssociationsOnceRequest, headers, settings, cb)
 	else
@@ -21933,7 +21933,7 @@ function M.DescribeMaintenanceWindowTasksAsync(DescribeMaintenanceWindowTasksReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeMaintenanceWindowTasks")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMaintenanceWindowTasksRequest, headers, settings, cb)
 	else
@@ -21969,7 +21969,7 @@ function M.GetConnectionStatusAsync(GetConnectionStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetConnectionStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", GetConnectionStatusRequest, headers, settings, cb)
 	else
@@ -22005,7 +22005,7 @@ function M.CreateActivationAsync(CreateActivationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateActivation")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateActivationRequest, headers, settings, cb)
 	else
@@ -22041,7 +22041,7 @@ function M.UpdateDocumentAsync(UpdateDocumentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateDocument")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDocumentRequest, headers, settings, cb)
 	else
@@ -22077,7 +22077,7 @@ function M.DescribeDocumentPermissionAsync(DescribeDocumentPermissionRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDocumentPermission")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDocumentPermissionRequest, headers, settings, cb)
 	else
@@ -22113,7 +22113,7 @@ function M.ListCommandInvocationsAsync(ListCommandInvocationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListCommandInvocations")
 	if request_handler then
 		request_handler(settings.uri, "/", ListCommandInvocationsRequest, headers, settings, cb)
 	else
@@ -22149,7 +22149,7 @@ function M.UpdateMaintenanceWindowTargetAsync(UpdateMaintenanceWindowTargetReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateMaintenanceWindowTarget")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateMaintenanceWindowTargetRequest, headers, settings, cb)
 	else
@@ -22185,7 +22185,7 @@ function M.DeleteDocumentAsync(DeleteDocumentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDocument")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDocumentRequest, headers, settings, cb)
 	else
@@ -22221,7 +22221,7 @@ function M.DescribeMaintenanceWindowExecutionsAsync(DescribeMaintenanceWindowExe
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeMaintenanceWindowExecutions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMaintenanceWindowExecutionsRequest, headers, settings, cb)
 	else
@@ -22257,7 +22257,7 @@ function M.DescribeMaintenanceWindowScheduleAsync(DescribeMaintenanceWindowSched
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeMaintenanceWindowSchedule")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMaintenanceWindowScheduleRequest, headers, settings, cb)
 	else
@@ -22293,7 +22293,7 @@ function M.ListInventoryEntriesAsync(ListInventoryEntriesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListInventoryEntries")
 	if request_handler then
 		request_handler(settings.uri, "/", ListInventoryEntriesRequest, headers, settings, cb)
 	else
@@ -22329,7 +22329,7 @@ function M.DeregisterPatchBaselineForPatchGroupAsync(DeregisterPatchBaselineForP
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeregisterPatchBaselineForPatchGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterPatchBaselineForPatchGroupRequest, headers, settings, cb)
 	else
@@ -22365,7 +22365,7 @@ function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTagsForResource")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForResourceRequest, headers, settings, cb)
 	else
@@ -22401,7 +22401,7 @@ function M.StartAutomationExecutionAsync(StartAutomationExecutionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartAutomationExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", StartAutomationExecutionRequest, headers, settings, cb)
 	else
@@ -22437,7 +22437,7 @@ function M.GetDeployablePatchSnapshotForInstanceAsync(GetDeployablePatchSnapshot
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDeployablePatchSnapshotForInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDeployablePatchSnapshotForInstanceRequest, headers, settings, cb)
 	else
@@ -22473,7 +22473,7 @@ function M.SendAutomationSignalAsync(SendAutomationSignalRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SendAutomationSignal")
 	if request_handler then
 		request_handler(settings.uri, "/", SendAutomationSignalRequest, headers, settings, cb)
 	else
@@ -22509,7 +22509,7 @@ function M.RegisterDefaultPatchBaselineAsync(RegisterDefaultPatchBaselineRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterDefaultPatchBaseline")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterDefaultPatchBaselineRequest, headers, settings, cb)
 	else
@@ -22545,7 +22545,7 @@ function M.GetParametersByPathAsync(GetParametersByPathRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetParametersByPath")
 	if request_handler then
 		request_handler(settings.uri, "/", GetParametersByPathRequest, headers, settings, cb)
 	else
@@ -22581,7 +22581,7 @@ function M.UpdateAssociationStatusAsync(UpdateAssociationStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateAssociationStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAssociationStatusRequest, headers, settings, cb)
 	else
@@ -22617,7 +22617,7 @@ function M.AddTagsToResourceAsync(AddTagsToResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddTagsToResource")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToResourceRequest, headers, settings, cb)
 	else
@@ -22653,7 +22653,7 @@ function M.GetInventoryAsync(GetInventoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetInventory")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInventoryRequest, headers, settings, cb)
 	else
@@ -22689,7 +22689,7 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RemoveTagsFromResource")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromResourceRequest, headers, settings, cb)
 	else
@@ -22725,7 +22725,7 @@ function M.DescribeInstanceAssociationsStatusAsync(DescribeInstanceAssociationsS
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeInstanceAssociationsStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstanceAssociationsStatusRequest, headers, settings, cb)
 	else
@@ -22761,7 +22761,7 @@ function M.DescribeMaintenanceWindowsForTargetAsync(DescribeMaintenanceWindowsFo
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeMaintenanceWindowsForTarget")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMaintenanceWindowsForTargetRequest, headers, settings, cb)
 	else
@@ -22797,7 +22797,7 @@ function M.GetInventorySchemaAsync(GetInventorySchemaRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetInventorySchema")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInventorySchemaRequest, headers, settings, cb)
 	else
@@ -22833,7 +22833,7 @@ function M.LabelParameterVersionAsync(LabelParameterVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "LabelParameterVersion")
 	if request_handler then
 		request_handler(settings.uri, "/", LabelParameterVersionRequest, headers, settings, cb)
 	else
@@ -22869,7 +22869,7 @@ function M.DescribeParametersAsync(DescribeParametersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeParametersRequest, headers, settings, cb)
 	else
@@ -22905,7 +22905,7 @@ function M.GetMaintenanceWindowExecutionTaskInvocationAsync(GetMaintenanceWindow
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetMaintenanceWindowExecutionTaskInvocation")
 	if request_handler then
 		request_handler(settings.uri, "/", GetMaintenanceWindowExecutionTaskInvocationRequest, headers, settings, cb)
 	else
@@ -22941,7 +22941,7 @@ function M.DeleteInventoryAsync(DeleteInventoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteInventory")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteInventoryRequest, headers, settings, cb)
 	else
@@ -22977,7 +22977,7 @@ function M.DescribeAutomationStepExecutionsAsync(DescribeAutomationStepExecution
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAutomationStepExecutions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAutomationStepExecutionsRequest, headers, settings, cb)
 	else
@@ -23013,7 +23013,7 @@ function M.DescribeEffectiveInstanceAssociationsAsync(DescribeEffectiveInstanceA
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEffectiveInstanceAssociations")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEffectiveInstanceAssociationsRequest, headers, settings, cb)
 	else
@@ -23049,7 +23049,7 @@ function M.CancelMaintenanceWindowExecutionAsync(CancelMaintenanceWindowExecutio
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CancelMaintenanceWindowExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelMaintenanceWindowExecutionRequest, headers, settings, cb)
 	else
@@ -23085,7 +23085,7 @@ function M.DescribeMaintenanceWindowExecutionTaskInvocationsAsync(DescribeMainte
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeMaintenanceWindowExecutionTaskInvocations")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMaintenanceWindowExecutionTaskInvocationsRequest, headers, settings, cb)
 	else
@@ -23121,7 +23121,7 @@ function M.UpdateDocumentDefaultVersionAsync(UpdateDocumentDefaultVersionRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateDocumentDefaultVersion")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDocumentDefaultVersionRequest, headers, settings, cb)
 	else
@@ -23157,7 +23157,7 @@ function M.ListComplianceItemsAsync(ListComplianceItemsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListComplianceItems")
 	if request_handler then
 		request_handler(settings.uri, "/", ListComplianceItemsRequest, headers, settings, cb)
 	else
@@ -23193,7 +23193,7 @@ function M.ListAssociationVersionsAsync(ListAssociationVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAssociationVersions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAssociationVersionsRequest, headers, settings, cb)
 	else
@@ -23229,7 +23229,7 @@ function M.ListDocumentsAsync(ListDocumentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListDocuments")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDocumentsRequest, headers, settings, cb)
 	else
@@ -23265,7 +23265,7 @@ function M.DeleteActivationAsync(DeleteActivationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteActivation")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteActivationRequest, headers, settings, cb)
 	else
@@ -23301,7 +23301,7 @@ function M.DescribeAvailablePatchesAsync(DescribeAvailablePatchesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAvailablePatches")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAvailablePatchesRequest, headers, settings, cb)
 	else
@@ -23337,7 +23337,7 @@ function M.DescribeInstancePatchesAsync(DescribeInstancePatchesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeInstancePatches")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstancePatchesRequest, headers, settings, cb)
 	else
@@ -23373,7 +23373,7 @@ function M.DescribeInstancePatchStatesAsync(DescribeInstancePatchStatesRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeInstancePatchStates")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstancePatchStatesRequest, headers, settings, cb)
 	else
@@ -23409,7 +23409,7 @@ function M.ModifyDocumentPermissionAsync(ModifyDocumentPermissionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ModifyDocumentPermission")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyDocumentPermissionRequest, headers, settings, cb)
 	else
@@ -23445,7 +23445,7 @@ function M.PutComplianceItemsAsync(PutComplianceItemsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutComplianceItems")
 	if request_handler then
 		request_handler(settings.uri, "/", PutComplianceItemsRequest, headers, settings, cb)
 	else
@@ -23481,7 +23481,7 @@ function M.UpdateManagedInstanceRoleAsync(UpdateManagedInstanceRoleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateManagedInstanceRole")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateManagedInstanceRoleRequest, headers, settings, cb)
 	else
@@ -23517,7 +23517,7 @@ function M.DescribeAssociationExecutionsAsync(DescribeAssociationExecutionsReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAssociationExecutions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAssociationExecutionsRequest, headers, settings, cb)
 	else
@@ -23553,7 +23553,7 @@ function M.StopAutomationExecutionAsync(StopAutomationExecutionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopAutomationExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", StopAutomationExecutionRequest, headers, settings, cb)
 	else
@@ -23589,7 +23589,7 @@ function M.StartSessionAsync(StartSessionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartSession")
 	if request_handler then
 		request_handler(settings.uri, "/", StartSessionRequest, headers, settings, cb)
 	else
@@ -23625,7 +23625,7 @@ function M.SendCommandAsync(SendCommandRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SendCommand")
 	if request_handler then
 		request_handler(settings.uri, "/", SendCommandRequest, headers, settings, cb)
 	else
@@ -23661,7 +23661,7 @@ function M.GetPatchBaselineAsync(GetPatchBaselineRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetPatchBaseline")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPatchBaselineRequest, headers, settings, cb)
 	else
@@ -23697,7 +23697,7 @@ function M.UpdatePatchBaselineAsync(UpdatePatchBaselineRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdatePatchBaseline")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdatePatchBaselineRequest, headers, settings, cb)
 	else
@@ -23733,7 +23733,7 @@ function M.DescribePatchGroupStateAsync(DescribePatchGroupStateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribePatchGroupState")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePatchGroupStateRequest, headers, settings, cb)
 	else
@@ -23769,7 +23769,7 @@ function M.UpdateAssociationAsync(UpdateAssociationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateAssociation")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAssociationRequest, headers, settings, cb)
 	else
@@ -23805,7 +23805,7 @@ function M.DescribeSessionsAsync(DescribeSessionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeSessions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSessionsRequest, headers, settings, cb)
 	else
@@ -23841,7 +23841,7 @@ function M.ListDocumentVersionsAsync(ListDocumentVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListDocumentVersions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDocumentVersionsRequest, headers, settings, cb)
 	else
@@ -23877,7 +23877,7 @@ function M.DescribeMaintenanceWindowExecutionTasksAsync(DescribeMaintenanceWindo
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeMaintenanceWindowExecutionTasks")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMaintenanceWindowExecutionTasksRequest, headers, settings, cb)
 	else
@@ -23913,7 +23913,7 @@ function M.GetMaintenanceWindowAsync(GetMaintenanceWindowRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetMaintenanceWindow")
 	if request_handler then
 		request_handler(settings.uri, "/", GetMaintenanceWindowRequest, headers, settings, cb)
 	else
@@ -23949,7 +23949,7 @@ function M.DeleteParametersAsync(DeleteParametersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteParametersRequest, headers, settings, cb)
 	else
@@ -23985,7 +23985,7 @@ function M.DescribeMaintenanceWindowTargetsAsync(DescribeMaintenanceWindowTarget
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeMaintenanceWindowTargets")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMaintenanceWindowTargetsRequest, headers, settings, cb)
 	else
@@ -24021,7 +24021,7 @@ function M.DescribeInstanceInformationAsync(DescribeInstanceInformationRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeInstanceInformation")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstanceInformationRequest, headers, settings, cb)
 	else
@@ -24057,7 +24057,7 @@ function M.ListAssociationsAsync(ListAssociationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAssociations")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAssociationsRequest, headers, settings, cb)
 	else
@@ -24093,7 +24093,7 @@ function M.DeleteMaintenanceWindowAsync(DeleteMaintenanceWindowRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteMaintenanceWindow")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteMaintenanceWindowRequest, headers, settings, cb)
 	else
@@ -24129,7 +24129,7 @@ function M.DescribeDocumentAsync(DescribeDocumentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDocument")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDocumentRequest, headers, settings, cb)
 	else
@@ -24165,7 +24165,7 @@ function M.DeletePatchBaselineAsync(DeletePatchBaselineRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeletePatchBaseline")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePatchBaselineRequest, headers, settings, cb)
 	else
@@ -24201,7 +24201,7 @@ function M.RegisterTaskWithMaintenanceWindowAsync(RegisterTaskWithMaintenanceWin
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterTaskWithMaintenanceWindow")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterTaskWithMaintenanceWindowRequest, headers, settings, cb)
 	else
@@ -24237,7 +24237,7 @@ function M.GetParametersAsync(GetParametersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", GetParametersRequest, headers, settings, cb)
 	else
@@ -24273,7 +24273,7 @@ function M.DeregisterManagedInstanceAsync(DeregisterManagedInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeregisterManagedInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterManagedInstanceRequest, headers, settings, cb)
 	else
@@ -24309,7 +24309,7 @@ function M.ResumeSessionAsync(ResumeSessionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ResumeSession")
 	if request_handler then
 		request_handler(settings.uri, "/", ResumeSessionRequest, headers, settings, cb)
 	else
@@ -24345,7 +24345,7 @@ function M.CreateMaintenanceWindowAsync(CreateMaintenanceWindowRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateMaintenanceWindow")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateMaintenanceWindowRequest, headers, settings, cb)
 	else
@@ -24381,7 +24381,7 @@ function M.ListResourceDataSyncAsync(ListResourceDataSyncRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListResourceDataSync")
 	if request_handler then
 		request_handler(settings.uri, "/", ListResourceDataSyncRequest, headers, settings, cb)
 	else
@@ -24417,7 +24417,7 @@ function M.UpdateMaintenanceWindowAsync(UpdateMaintenanceWindowRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateMaintenanceWindow")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateMaintenanceWindowRequest, headers, settings, cb)
 	else
@@ -24453,7 +24453,7 @@ function M.DescribeEffectivePatchesForPatchBaselineAsync(DescribeEffectivePatche
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEffectivePatchesForPatchBaseline")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEffectivePatchesForPatchBaselineRequest, headers, settings, cb)
 	else
@@ -24489,7 +24489,7 @@ function M.CreateResourceDataSyncAsync(CreateResourceDataSyncRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateResourceDataSync")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateResourceDataSyncRequest, headers, settings, cb)
 	else
@@ -24525,7 +24525,7 @@ function M.PutParameterAsync(PutParameterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutParameter")
 	if request_handler then
 		request_handler(settings.uri, "/", PutParameterRequest, headers, settings, cb)
 	else
@@ -24561,7 +24561,7 @@ function M.GetAutomationExecutionAsync(GetAutomationExecutionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetAutomationExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAutomationExecutionRequest, headers, settings, cb)
 	else
@@ -24597,7 +24597,7 @@ function M.PutInventoryAsync(PutInventoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutInventory")
 	if request_handler then
 		request_handler(settings.uri, "/", PutInventoryRequest, headers, settings, cb)
 	else
@@ -24633,7 +24633,7 @@ function M.DescribeAutomationExecutionsAsync(DescribeAutomationExecutionsRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAutomationExecutions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAutomationExecutionsRequest, headers, settings, cb)
 	else
@@ -24669,7 +24669,7 @@ function M.GetMaintenanceWindowTaskAsync(GetMaintenanceWindowTaskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetMaintenanceWindowTask")
 	if request_handler then
 		request_handler(settings.uri, "/", GetMaintenanceWindowTaskRequest, headers, settings, cb)
 	else
@@ -24705,7 +24705,7 @@ function M.DescribePatchBaselinesAsync(DescribePatchBaselinesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribePatchBaselines")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePatchBaselinesRequest, headers, settings, cb)
 	else
@@ -24741,7 +24741,7 @@ function M.CreateAssociationBatchAsync(CreateAssociationBatchRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateAssociationBatch")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAssociationBatchRequest, headers, settings, cb)
 	else
@@ -24777,7 +24777,7 @@ function M.DeleteResourceDataSyncAsync(DeleteResourceDataSyncRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteResourceDataSync")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteResourceDataSyncRequest, headers, settings, cb)
 	else
@@ -24813,7 +24813,7 @@ function M.GetMaintenanceWindowExecutionTaskAsync(GetMaintenanceWindowExecutionT
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetMaintenanceWindowExecutionTask")
 	if request_handler then
 		request_handler(settings.uri, "/", GetMaintenanceWindowExecutionTaskRequest, headers, settings, cb)
 	else
@@ -24849,7 +24849,7 @@ function M.CancelCommandAsync(CancelCommandRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CancelCommand")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelCommandRequest, headers, settings, cb)
 	else
@@ -24885,7 +24885,7 @@ function M.GetCommandInvocationAsync(GetCommandInvocationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetCommandInvocation")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCommandInvocationRequest, headers, settings, cb)
 	else
@@ -24921,7 +24921,7 @@ function M.GetParameterHistoryAsync(GetParameterHistoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetParameterHistory")
 	if request_handler then
 		request_handler(settings.uri, "/", GetParameterHistoryRequest, headers, settings, cb)
 	else
@@ -24957,7 +24957,7 @@ function M.DeregisterTaskFromMaintenanceWindowAsync(DeregisterTaskFromMaintenanc
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeregisterTaskFromMaintenanceWindow")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterTaskFromMaintenanceWindowRequest, headers, settings, cb)
 	else
@@ -24993,7 +24993,7 @@ function M.RegisterPatchBaselineForPatchGroupAsync(RegisterPatchBaselineForPatch
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterPatchBaselineForPatchGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterPatchBaselineForPatchGroupRequest, headers, settings, cb)
 	else
@@ -25029,7 +25029,7 @@ function M.DescribeMaintenanceWindowsAsync(DescribeMaintenanceWindowsRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeMaintenanceWindows")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMaintenanceWindowsRequest, headers, settings, cb)
 	else
@@ -25065,7 +25065,7 @@ function M.DescribePatchGroupsAsync(DescribePatchGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribePatchGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePatchGroupsRequest, headers, settings, cb)
 	else
@@ -25101,7 +25101,7 @@ function M.CreateAssociationAsync(CreateAssociationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateAssociation")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAssociationRequest, headers, settings, cb)
 	else
@@ -25137,7 +25137,7 @@ function M.UpdateMaintenanceWindowTaskAsync(UpdateMaintenanceWindowTaskRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateMaintenanceWindowTask")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateMaintenanceWindowTaskRequest, headers, settings, cb)
 	else
@@ -25173,7 +25173,7 @@ function M.ListCommandsAsync(ListCommandsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListCommands")
 	if request_handler then
 		request_handler(settings.uri, "/", ListCommandsRequest, headers, settings, cb)
 	else
@@ -25209,7 +25209,7 @@ function M.GetMaintenanceWindowExecutionAsync(GetMaintenanceWindowExecutionReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetMaintenanceWindowExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", GetMaintenanceWindowExecutionRequest, headers, settings, cb)
 	else
@@ -25245,7 +25245,7 @@ function M.DeleteParameterAsync(DeleteParameterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteParameter")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteParameterRequest, headers, settings, cb)
 	else
@@ -25281,7 +25281,7 @@ function M.RegisterTargetWithMaintenanceWindowAsync(RegisterTargetWithMaintenanc
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterTargetWithMaintenanceWindow")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterTargetWithMaintenanceWindowRequest, headers, settings, cb)
 	else
@@ -25317,7 +25317,7 @@ function M.DescribeActivationsAsync(DescribeActivationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeActivations")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeActivationsRequest, headers, settings, cb)
 	else

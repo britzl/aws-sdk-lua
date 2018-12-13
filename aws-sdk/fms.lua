@@ -1717,7 +1717,7 @@ function M.PutPolicyAsync(PutPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutPolicyRequest, headers, settings, cb)
 	else
@@ -1753,7 +1753,7 @@ function M.GetComplianceDetailAsync(GetComplianceDetailRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetComplianceDetail")
 	if request_handler then
 		request_handler(settings.uri, "/", GetComplianceDetailRequest, headers, settings, cb)
 	else
@@ -1789,7 +1789,7 @@ function M.ListComplianceStatusAsync(ListComplianceStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListComplianceStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", ListComplianceStatusRequest, headers, settings, cb)
 	else
@@ -1825,7 +1825,7 @@ function M.DeleteNotificationChannelAsync(DeleteNotificationChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteNotificationChannel")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNotificationChannelRequest, headers, settings, cb)
 	else
@@ -1861,7 +1861,7 @@ function M.GetNotificationChannelAsync(GetNotificationChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetNotificationChannel")
 	if request_handler then
 		request_handler(settings.uri, "/", GetNotificationChannelRequest, headers, settings, cb)
 	else
@@ -1897,7 +1897,7 @@ function M.PutNotificationChannelAsync(PutNotificationChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutNotificationChannel")
 	if request_handler then
 		request_handler(settings.uri, "/", PutNotificationChannelRequest, headers, settings, cb)
 	else
@@ -1933,7 +1933,7 @@ function M.ListPoliciesAsync(ListPoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPoliciesRequest, headers, settings, cb)
 	else
@@ -1969,7 +1969,7 @@ function M.GetAdminAccountAsync(GetAdminAccountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetAdminAccount")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAdminAccountRequest, headers, settings, cb)
 	else
@@ -2005,7 +2005,7 @@ function M.DeletePolicyAsync(DeletePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeletePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePolicyRequest, headers, settings, cb)
 	else
@@ -2041,7 +2041,7 @@ function M.DisassociateAdminAccountAsync(DisassociateAdminAccountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateAdminAccount")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateAdminAccountRequest, headers, settings, cb)
 	else
@@ -2077,7 +2077,7 @@ function M.ListMemberAccountsAsync(ListMemberAccountsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListMemberAccounts")
 	if request_handler then
 		request_handler(settings.uri, "/", ListMemberAccountsRequest, headers, settings, cb)
 	else
@@ -2113,7 +2113,7 @@ function M.GetPolicyAsync(GetPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPolicyRequest, headers, settings, cb)
 	else
@@ -2149,7 +2149,7 @@ function M.AssociateAdminAccountAsync(AssociateAdminAccountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateAdminAccount")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateAdminAccountRequest, headers, settings, cb)
 	else

@@ -3355,7 +3355,7 @@ function M.ListBuildsAsync(ListBuildsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListBuilds")
 	if request_handler then
 		request_handler(settings.uri, "/", ListBuildsInput, headers, settings, cb)
 	else
@@ -3391,7 +3391,7 @@ function M.UpdateWebhookAsync(UpdateWebhookInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateWebhook")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateWebhookInput, headers, settings, cb)
 	else
@@ -3427,7 +3427,7 @@ function M.StopBuildAsync(StopBuildInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopBuild")
 	if request_handler then
 		request_handler(settings.uri, "/", StopBuildInput, headers, settings, cb)
 	else
@@ -3463,7 +3463,7 @@ function M.ListBuildsForProjectAsync(ListBuildsForProjectInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListBuildsForProject")
 	if request_handler then
 		request_handler(settings.uri, "/", ListBuildsForProjectInput, headers, settings, cb)
 	else
@@ -3499,7 +3499,7 @@ function M.BatchGetBuildsAsync(BatchGetBuildsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchGetBuilds")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetBuildsInput, headers, settings, cb)
 	else
@@ -3535,7 +3535,7 @@ function M.ListProjectsAsync(ListProjectsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListProjects")
 	if request_handler then
 		request_handler(settings.uri, "/", ListProjectsInput, headers, settings, cb)
 	else
@@ -3571,7 +3571,7 @@ function M.CreateProjectAsync(CreateProjectInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateProject")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateProjectInput, headers, settings, cb)
 	else
@@ -3607,7 +3607,7 @@ function M.ListCuratedEnvironmentImagesAsync(ListCuratedEnvironmentImagesInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListCuratedEnvironmentImages")
 	if request_handler then
 		request_handler(settings.uri, "/", ListCuratedEnvironmentImagesInput, headers, settings, cb)
 	else
@@ -3643,7 +3643,7 @@ function M.CreateWebhookAsync(CreateWebhookInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateWebhook")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateWebhookInput, headers, settings, cb)
 	else
@@ -3679,7 +3679,7 @@ function M.InvalidateProjectCacheAsync(InvalidateProjectCacheInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "InvalidateProjectCache")
 	if request_handler then
 		request_handler(settings.uri, "/", InvalidateProjectCacheInput, headers, settings, cb)
 	else
@@ -3715,7 +3715,7 @@ function M.StartBuildAsync(StartBuildInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartBuild")
 	if request_handler then
 		request_handler(settings.uri, "/", StartBuildInput, headers, settings, cb)
 	else
@@ -3751,7 +3751,7 @@ function M.DeleteProjectAsync(DeleteProjectInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteProject")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteProjectInput, headers, settings, cb)
 	else
@@ -3787,7 +3787,7 @@ function M.UpdateProjectAsync(UpdateProjectInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateProject")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateProjectInput, headers, settings, cb)
 	else
@@ -3823,7 +3823,7 @@ function M.DeleteWebhookAsync(DeleteWebhookInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteWebhook")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteWebhookInput, headers, settings, cb)
 	else
@@ -3859,7 +3859,7 @@ function M.BatchGetProjectsAsync(BatchGetProjectsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchGetProjects")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetProjectsInput, headers, settings, cb)
 	else
@@ -3895,7 +3895,7 @@ function M.BatchDeleteBuildsAsync(BatchDeleteBuildsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchDeleteBuilds")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchDeleteBuildsInput, headers, settings, cb)
 	else

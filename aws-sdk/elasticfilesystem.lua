@@ -2259,7 +2259,7 @@ function M.DeleteTagsAsync(DeleteTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DeleteTags")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/delete-tags/{FileSystemId}", DeleteTagsRequest, headers, settings, cb)
 	else
@@ -2295,7 +2295,7 @@ function M.DescribeMountTargetSecurityGroupsAsync(DescribeMountTargetSecurityGro
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeMountTargetSecurityGroups")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/mount-targets/{MountTargetId}/security-groups", DescribeMountTargetSecurityGroupsRequest, headers, settings, cb)
 	else
@@ -2331,7 +2331,7 @@ function M.DeleteFileSystemAsync(DeleteFileSystemRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteFileSystem")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/file-systems/{FileSystemId}", DeleteFileSystemRequest, headers, settings, cb)
 	else
@@ -2367,7 +2367,7 @@ function M.CreateTagsAsync(CreateTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateTags")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/create-tags/{FileSystemId}", CreateTagsRequest, headers, settings, cb)
 	else
@@ -2403,7 +2403,7 @@ function M.CreateMountTargetAsync(CreateMountTargetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateMountTarget")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/mount-targets", CreateMountTargetRequest, headers, settings, cb)
 	else
@@ -2439,7 +2439,7 @@ function M.DescribeFileSystemsAsync(DescribeFileSystemsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeFileSystems")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/file-systems", DescribeFileSystemsRequest, headers, settings, cb)
 	else
@@ -2475,7 +2475,7 @@ function M.DescribeTagsAsync(DescribeTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeTags")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/tags/{FileSystemId}/", DescribeTagsRequest, headers, settings, cb)
 	else
@@ -2511,7 +2511,7 @@ function M.UpdateFileSystemAsync(UpdateFileSystemRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateFileSystem")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/file-systems/{FileSystemId}", UpdateFileSystemRequest, headers, settings, cb)
 	else
@@ -2547,7 +2547,7 @@ function M.ModifyMountTargetSecurityGroupsAsync(ModifyMountTargetSecurityGroupsR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "ModifyMountTargetSecurityGroups")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/mount-targets/{MountTargetId}/security-groups", ModifyMountTargetSecurityGroupsRequest, headers, settings, cb)
 	else
@@ -2583,7 +2583,7 @@ function M.DescribeMountTargetsAsync(DescribeMountTargetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeMountTargets")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/mount-targets", DescribeMountTargetsRequest, headers, settings, cb)
 	else
@@ -2619,7 +2619,7 @@ function M.CreateFileSystemAsync(CreateFileSystemRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateFileSystem")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/file-systems", CreateFileSystemRequest, headers, settings, cb)
 	else
@@ -2655,7 +2655,7 @@ function M.DeleteMountTargetAsync(DeleteMountTargetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteMountTarget")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/mount-targets/{MountTargetId}", DeleteMountTargetRequest, headers, settings, cb)
 	else

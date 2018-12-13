@@ -7562,7 +7562,7 @@ function M.DescribeContinuousBackupsAsync(DescribeContinuousBackupsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeContinuousBackups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeContinuousBackupsInput, headers, settings, cb)
 	else
@@ -7598,7 +7598,7 @@ function M.UpdateContinuousBackupsAsync(UpdateContinuousBackupsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateContinuousBackups")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateContinuousBackupsInput, headers, settings, cb)
 	else
@@ -7634,7 +7634,7 @@ function M.DescribeBackupAsync(DescribeBackupInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeBackup")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeBackupInput, headers, settings, cb)
 	else
@@ -7670,7 +7670,7 @@ function M.DescribeTimeToLiveAsync(DescribeTimeToLiveInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTimeToLive")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTimeToLiveInput, headers, settings, cb)
 	else
@@ -7706,7 +7706,7 @@ function M.DeleteBackupAsync(DeleteBackupInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteBackup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteBackupInput, headers, settings, cb)
 	else
@@ -7742,7 +7742,7 @@ function M.DescribeGlobalTableAsync(DescribeGlobalTableInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeGlobalTable")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeGlobalTableInput, headers, settings, cb)
 	else
@@ -7778,7 +7778,7 @@ function M.CreateTableAsync(CreateTableInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateTable")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTableInput, headers, settings, cb)
 	else
@@ -7814,7 +7814,7 @@ function M.RestoreTableFromBackupAsync(RestoreTableFromBackupInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RestoreTableFromBackup")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreTableFromBackupInput, headers, settings, cb)
 	else
@@ -7850,7 +7850,7 @@ function M.UpdateTimeToLiveAsync(UpdateTimeToLiveInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateTimeToLive")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateTimeToLiveInput, headers, settings, cb)
 	else
@@ -7886,7 +7886,7 @@ function M.UpdateTableAsync(UpdateTableInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateTable")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateTableInput, headers, settings, cb)
 	else
@@ -7922,7 +7922,7 @@ function M.DescribeLimitsAsync(DescribeLimitsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeLimits")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLimitsInput, headers, settings, cb)
 	else
@@ -7958,7 +7958,7 @@ function M.CreateBackupAsync(CreateBackupInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateBackup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateBackupInput, headers, settings, cb)
 	else
@@ -7994,7 +7994,7 @@ function M.BatchWriteItemAsync(BatchWriteItemInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchWriteItem")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchWriteItemInput, headers, settings, cb)
 	else
@@ -8030,7 +8030,7 @@ function M.DescribeEndpointsAsync(DescribeEndpointsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEndpoints")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEndpointsRequest, headers, settings, cb)
 	else
@@ -8066,7 +8066,7 @@ function M.TagResourceAsync(TagResourceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TagResource")
 	if request_handler then
 		request_handler(settings.uri, "/", TagResourceInput, headers, settings, cb)
 	else
@@ -8102,7 +8102,7 @@ function M.RestoreTableToPointInTimeAsync(RestoreTableToPointInTimeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RestoreTableToPointInTime")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreTableToPointInTimeInput, headers, settings, cb)
 	else
@@ -8138,7 +8138,7 @@ function M.ListTagsOfResourceAsync(ListTagsOfResourceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTagsOfResource")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsOfResourceInput, headers, settings, cb)
 	else
@@ -8174,7 +8174,7 @@ function M.DeleteItemAsync(DeleteItemInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteItem")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteItemInput, headers, settings, cb)
 	else
@@ -8210,7 +8210,7 @@ function M.ListGlobalTablesAsync(ListGlobalTablesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListGlobalTables")
 	if request_handler then
 		request_handler(settings.uri, "/", ListGlobalTablesInput, headers, settings, cb)
 	else
@@ -8246,7 +8246,7 @@ function M.UpdateItemAsync(UpdateItemInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateItem")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateItemInput, headers, settings, cb)
 	else
@@ -8282,7 +8282,7 @@ function M.BatchGetItemAsync(BatchGetItemInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchGetItem")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetItemInput, headers, settings, cb)
 	else
@@ -8318,7 +8318,7 @@ function M.DescribeGlobalTableSettingsAsync(DescribeGlobalTableSettingsInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeGlobalTableSettings")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeGlobalTableSettingsInput, headers, settings, cb)
 	else
@@ -8354,7 +8354,7 @@ function M.DescribeTableAsync(DescribeTableInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTable")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTableInput, headers, settings, cb)
 	else
@@ -8390,7 +8390,7 @@ function M.ListTablesAsync(ListTablesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTables")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTablesInput, headers, settings, cb)
 	else
@@ -8426,7 +8426,7 @@ function M.QueryAsync(QueryInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "Query")
 	if request_handler then
 		request_handler(settings.uri, "/", QueryInput, headers, settings, cb)
 	else
@@ -8462,7 +8462,7 @@ function M.DeleteTableAsync(DeleteTableInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteTable")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTableInput, headers, settings, cb)
 	else
@@ -8498,7 +8498,7 @@ function M.UntagResourceAsync(UntagResourceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UntagResource")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagResourceInput, headers, settings, cb)
 	else
@@ -8534,7 +8534,7 @@ function M.ScanAsync(ScanInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "Scan")
 	if request_handler then
 		request_handler(settings.uri, "/", ScanInput, headers, settings, cb)
 	else
@@ -8570,7 +8570,7 @@ function M.UpdateGlobalTableAsync(UpdateGlobalTableInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateGlobalTable")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateGlobalTableInput, headers, settings, cb)
 	else
@@ -8606,7 +8606,7 @@ function M.ListBackupsAsync(ListBackupsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListBackups")
 	if request_handler then
 		request_handler(settings.uri, "/", ListBackupsInput, headers, settings, cb)
 	else
@@ -8642,7 +8642,7 @@ function M.UpdateGlobalTableSettingsAsync(UpdateGlobalTableSettingsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateGlobalTableSettings")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateGlobalTableSettingsInput, headers, settings, cb)
 	else
@@ -8678,7 +8678,7 @@ function M.CreateGlobalTableAsync(CreateGlobalTableInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateGlobalTable")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateGlobalTableInput, headers, settings, cb)
 	else
@@ -8714,7 +8714,7 @@ function M.GetItemAsync(GetItemInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetItem")
 	if request_handler then
 		request_handler(settings.uri, "/", GetItemInput, headers, settings, cb)
 	else
@@ -8750,7 +8750,7 @@ function M.PutItemAsync(PutItemInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutItem")
 	if request_handler then
 		request_handler(settings.uri, "/", PutItemInput, headers, settings, cb)
 	else

@@ -6166,7 +6166,7 @@ function M.DescribeCacheEngineVersionsAsync(DescribeCacheEngineVersionsMessage, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeCacheEngineVersions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCacheEngineVersionsMessage, headers, settings, cb)
 	else
@@ -6202,7 +6202,7 @@ function M.DeleteCacheSubnetGroupAsync(DeleteCacheSubnetGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteCacheSubnetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCacheSubnetGroupMessage, headers, settings, cb)
 	else
@@ -6238,7 +6238,7 @@ function M.ResetCacheParameterGroupAsync(ResetCacheParameterGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ResetCacheParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetCacheParameterGroupMessage, headers, settings, cb)
 	else
@@ -6274,7 +6274,7 @@ function M.DeleteCacheSecurityGroupAsync(DeleteCacheSecurityGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteCacheSecurityGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCacheSecurityGroupMessage, headers, settings, cb)
 	else
@@ -6310,7 +6310,7 @@ function M.DescribeEventsAsync(DescribeEventsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventsMessage, headers, settings, cb)
 	else
@@ -6346,7 +6346,7 @@ function M.DescribeEngineDefaultParametersAsync(DescribeEngineDefaultParametersM
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeEngineDefaultParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEngineDefaultParametersMessage, headers, settings, cb)
 	else
@@ -6382,7 +6382,7 @@ function M.DescribeCacheSubnetGroupsAsync(DescribeCacheSubnetGroupsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeCacheSubnetGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCacheSubnetGroupsMessage, headers, settings, cb)
 	else
@@ -6418,7 +6418,7 @@ function M.DescribeCacheSecurityGroupsAsync(DescribeCacheSecurityGroupsMessage, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeCacheSecurityGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCacheSecurityGroupsMessage, headers, settings, cb)
 	else
@@ -6454,7 +6454,7 @@ function M.RebootCacheClusterAsync(RebootCacheClusterMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RebootCacheCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", RebootCacheClusterMessage, headers, settings, cb)
 	else
@@ -6490,7 +6490,7 @@ function M.DecreaseReplicaCountAsync(DecreaseReplicaCountMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DecreaseReplicaCount")
 	if request_handler then
 		request_handler(settings.uri, "/", DecreaseReplicaCountMessage, headers, settings, cb)
 	else
@@ -6526,7 +6526,7 @@ function M.ModifyCacheSubnetGroupAsync(ModifyCacheSubnetGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyCacheSubnetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyCacheSubnetGroupMessage, headers, settings, cb)
 	else
@@ -6562,7 +6562,7 @@ function M.DescribeCacheParameterGroupsAsync(DescribeCacheParameterGroupsMessage
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeCacheParameterGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCacheParameterGroupsMessage, headers, settings, cb)
 	else
@@ -6598,7 +6598,7 @@ function M.DeleteCacheParameterGroupAsync(DeleteCacheParameterGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteCacheParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCacheParameterGroupMessage, headers, settings, cb)
 	else
@@ -6634,7 +6634,7 @@ function M.AuthorizeCacheSecurityGroupIngressAsync(AuthorizeCacheSecurityGroupIn
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AuthorizeCacheSecurityGroupIngress")
 	if request_handler then
 		request_handler(settings.uri, "/", AuthorizeCacheSecurityGroupIngressMessage, headers, settings, cb)
 	else
@@ -6670,7 +6670,7 @@ function M.CopySnapshotAsync(CopySnapshotMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CopySnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", CopySnapshotMessage, headers, settings, cb)
 	else
@@ -6706,7 +6706,7 @@ function M.AddTagsToResourceAsync(AddTagsToResourceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AddTagsToResource")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToResourceMessage, headers, settings, cb)
 	else
@@ -6742,7 +6742,7 @@ function M.IncreaseReplicaCountAsync(IncreaseReplicaCountMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "IncreaseReplicaCount")
 	if request_handler then
 		request_handler(settings.uri, "/", IncreaseReplicaCountMessage, headers, settings, cb)
 	else
@@ -6778,7 +6778,7 @@ function M.DescribeCacheClustersAsync(DescribeCacheClustersMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeCacheClusters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCacheClustersMessage, headers, settings, cb)
 	else
@@ -6814,7 +6814,7 @@ function M.ModifyCacheClusterAsync(ModifyCacheClusterMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyCacheCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyCacheClusterMessage, headers, settings, cb)
 	else
@@ -6850,7 +6850,7 @@ function M.CreateReplicationGroupAsync(CreateReplicationGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateReplicationGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateReplicationGroupMessage, headers, settings, cb)
 	else
@@ -6886,7 +6886,7 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RemoveTagsFromResource")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromResourceMessage, headers, settings, cb)
 	else
@@ -6922,7 +6922,7 @@ function M.DescribeCacheParametersAsync(DescribeCacheParametersMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeCacheParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCacheParametersMessage, headers, settings, cb)
 	else
@@ -6958,7 +6958,7 @@ function M.CreateCacheParameterGroupAsync(CreateCacheParameterGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateCacheParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCacheParameterGroupMessage, headers, settings, cb)
 	else
@@ -6994,7 +6994,7 @@ function M.TestFailoverAsync(TestFailoverMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "TestFailover")
 	if request_handler then
 		request_handler(settings.uri, "/", TestFailoverMessage, headers, settings, cb)
 	else
@@ -7030,7 +7030,7 @@ function M.DescribeReplicationGroupsAsync(DescribeReplicationGroupsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeReplicationGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReplicationGroupsMessage, headers, settings, cb)
 	else
@@ -7066,7 +7066,7 @@ function M.DeleteReplicationGroupAsync(DeleteReplicationGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteReplicationGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteReplicationGroupMessage, headers, settings, cb)
 	else
@@ -7102,7 +7102,7 @@ function M.DescribeReservedCacheNodesOfferingsAsync(DescribeReservedCacheNodesOf
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeReservedCacheNodesOfferings")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedCacheNodesOfferingsMessage, headers, settings, cb)
 	else
@@ -7138,7 +7138,7 @@ function M.CreateCacheClusterAsync(CreateCacheClusterMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateCacheCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCacheClusterMessage, headers, settings, cb)
 	else
@@ -7174,7 +7174,7 @@ function M.CreateCacheSubnetGroupAsync(CreateCacheSubnetGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateCacheSubnetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCacheSubnetGroupMessage, headers, settings, cb)
 	else
@@ -7210,7 +7210,7 @@ function M.ModifyReplicationGroupAsync(ModifyReplicationGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyReplicationGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyReplicationGroupMessage, headers, settings, cb)
 	else
@@ -7246,7 +7246,7 @@ function M.ModifyCacheParameterGroupAsync(ModifyCacheParameterGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyCacheParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyCacheParameterGroupMessage, headers, settings, cb)
 	else
@@ -7282,7 +7282,7 @@ function M.DescribeSnapshotsAsync(DescribeSnapshotsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeSnapshots")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSnapshotsMessage, headers, settings, cb)
 	else
@@ -7318,7 +7318,7 @@ function M.ModifyReplicationGroupShardConfigurationAsync(ModifyReplicationGroupS
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyReplicationGroupShardConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyReplicationGroupShardConfigurationMessage, headers, settings, cb)
 	else
@@ -7354,7 +7354,7 @@ function M.DeleteCacheClusterAsync(DeleteCacheClusterMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteCacheCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCacheClusterMessage, headers, settings, cb)
 	else
@@ -7390,7 +7390,7 @@ function M.PurchaseReservedCacheNodesOfferingAsync(PurchaseReservedCacheNodesOff
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PurchaseReservedCacheNodesOffering")
 	if request_handler then
 		request_handler(settings.uri, "/", PurchaseReservedCacheNodesOfferingMessage, headers, settings, cb)
 	else
@@ -7426,7 +7426,7 @@ function M.DeleteSnapshotAsync(DeleteSnapshotMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSnapshotMessage, headers, settings, cb)
 	else
@@ -7462,7 +7462,7 @@ function M.RevokeCacheSecurityGroupIngressAsync(RevokeCacheSecurityGroupIngressM
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RevokeCacheSecurityGroupIngress")
 	if request_handler then
 		request_handler(settings.uri, "/", RevokeCacheSecurityGroupIngressMessage, headers, settings, cb)
 	else
@@ -7498,7 +7498,7 @@ function M.ListAllowedNodeTypeModificationsAsync(ListAllowedNodeTypeModification
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListAllowedNodeTypeModifications")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAllowedNodeTypeModificationsMessage, headers, settings, cb)
 	else
@@ -7534,7 +7534,7 @@ function M.DescribeReservedCacheNodesAsync(DescribeReservedCacheNodesMessage, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeReservedCacheNodes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedCacheNodesMessage, headers, settings, cb)
 	else
@@ -7570,7 +7570,7 @@ function M.CreateCacheSecurityGroupAsync(CreateCacheSecurityGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateCacheSecurityGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCacheSecurityGroupMessage, headers, settings, cb)
 	else
@@ -7606,7 +7606,7 @@ function M.ListTagsForResourceAsync(ListTagsForResourceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListTagsForResource")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForResourceMessage, headers, settings, cb)
 	else
@@ -7642,7 +7642,7 @@ function M.CreateSnapshotAsync(CreateSnapshotMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSnapshotMessage, headers, settings, cb)
 	else

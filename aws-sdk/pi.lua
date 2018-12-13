@@ -947,7 +947,7 @@ function M.DescribeDimensionKeysAsync(DescribeDimensionKeysRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDimensionKeys")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDimensionKeysRequest, headers, settings, cb)
 	else
@@ -983,7 +983,7 @@ function M.GetResourceMetricsAsync(GetResourceMetricsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetResourceMetrics")
 	if request_handler then
 		request_handler(settings.uri, "/", GetResourceMetricsRequest, headers, settings, cb)
 	else

@@ -8877,7 +8877,7 @@ function M.DeleteTagsAsync(DeleteTagsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteTags")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTagsMessage, headers, settings, cb)
 	else
@@ -8913,7 +8913,7 @@ function M.DescribeDefaultClusterParametersAsync(DescribeDefaultClusterParameter
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeDefaultClusterParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDefaultClusterParametersMessage, headers, settings, cb)
 	else
@@ -8949,7 +8949,7 @@ function M.DescribeClusterParameterGroupsAsync(DescribeClusterParameterGroupsMes
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeClusterParameterGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClusterParameterGroupsMessage, headers, settings, cb)
 	else
@@ -8985,7 +8985,7 @@ function M.RestoreFromClusterSnapshotAsync(RestoreFromClusterSnapshotMessage, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RestoreFromClusterSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreFromClusterSnapshotMessage, headers, settings, cb)
 	else
@@ -9021,7 +9021,7 @@ function M.CreateClusterAsync(CreateClusterMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateClusterMessage, headers, settings, cb)
 	else
@@ -9057,7 +9057,7 @@ function M.CopyClusterSnapshotAsync(CopyClusterSnapshotMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CopyClusterSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", CopyClusterSnapshotMessage, headers, settings, cb)
 	else
@@ -9093,7 +9093,7 @@ function M.CreateClusterSecurityGroupAsync(CreateClusterSecurityGroupMessage, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateClusterSecurityGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateClusterSecurityGroupMessage, headers, settings, cb)
 	else
@@ -9129,7 +9129,7 @@ function M.DescribeEventsAsync(DescribeEventsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventsMessage, headers, settings, cb)
 	else
@@ -9165,7 +9165,7 @@ function M.DescribeEventSubscriptionsAsync(DescribeEventSubscriptionsMessage, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeEventSubscriptions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventSubscriptionsMessage, headers, settings, cb)
 	else
@@ -9201,7 +9201,7 @@ function M.CreateEventSubscriptionAsync(CreateEventSubscriptionMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateEventSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateEventSubscriptionMessage, headers, settings, cb)
 	else
@@ -9237,7 +9237,7 @@ function M.DescribeHsmClientCertificatesAsync(DescribeHsmClientCertificatesMessa
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeHsmClientCertificates")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHsmClientCertificatesMessage, headers, settings, cb)
 	else
@@ -9273,7 +9273,7 @@ function M.DeleteClusterAsync(DeleteClusterMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteClusterMessage, headers, settings, cb)
 	else
@@ -9309,7 +9309,7 @@ function M.CreateSnapshotCopyGrantAsync(CreateSnapshotCopyGrantMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateSnapshotCopyGrant")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSnapshotCopyGrantMessage, headers, settings, cb)
 	else
@@ -9345,7 +9345,7 @@ function M.DescribeEventCategoriesAsync(DescribeEventCategoriesMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeEventCategories")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventCategoriesMessage, headers, settings, cb)
 	else
@@ -9381,7 +9381,7 @@ function M.ModifySnapshotCopyRetentionPeriodAsync(ModifySnapshotCopyRetentionPer
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifySnapshotCopyRetentionPeriod")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifySnapshotCopyRetentionPeriodMessage, headers, settings, cb)
 	else
@@ -9417,7 +9417,7 @@ function M.GetClusterCredentialsAsync(GetClusterCredentialsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetClusterCredentials")
 	if request_handler then
 		request_handler(settings.uri, "/", GetClusterCredentialsMessage, headers, settings, cb)
 	else
@@ -9453,7 +9453,7 @@ function M.DeleteSnapshotCopyGrantAsync(DeleteSnapshotCopyGrantMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteSnapshotCopyGrant")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSnapshotCopyGrantMessage, headers, settings, cb)
 	else
@@ -9489,7 +9489,7 @@ function M.DescribeReservedNodesAsync(DescribeReservedNodesMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeReservedNodes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedNodesMessage, headers, settings, cb)
 	else
@@ -9525,7 +9525,7 @@ function M.AuthorizeSnapshotAccessAsync(AuthorizeSnapshotAccessMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AuthorizeSnapshotAccess")
 	if request_handler then
 		request_handler(settings.uri, "/", AuthorizeSnapshotAccessMessage, headers, settings, cb)
 	else
@@ -9561,7 +9561,7 @@ function M.EnableLoggingAsync(EnableLoggingMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "EnableLogging")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableLoggingMessage, headers, settings, cb)
 	else
@@ -9597,7 +9597,7 @@ function M.DisableSnapshotCopyAsync(DisableSnapshotCopyMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DisableSnapshotCopy")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableSnapshotCopyMessage, headers, settings, cb)
 	else
@@ -9633,7 +9633,7 @@ function M.DeleteHsmClientCertificateAsync(DeleteHsmClientCertificateMessage, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteHsmClientCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteHsmClientCertificateMessage, headers, settings, cb)
 	else
@@ -9669,7 +9669,7 @@ function M.RebootClusterAsync(RebootClusterMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RebootCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", RebootClusterMessage, headers, settings, cb)
 	else
@@ -9705,7 +9705,7 @@ function M.DescribeClusterDbRevisionsAsync(DescribeClusterDbRevisionsMessage, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeClusterDbRevisions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClusterDbRevisionsMessage, headers, settings, cb)
 	else
@@ -9741,7 +9741,7 @@ function M.CreateHsmConfigurationAsync(CreateHsmConfigurationMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateHsmConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateHsmConfigurationMessage, headers, settings, cb)
 	else
@@ -9777,7 +9777,7 @@ function M.RevokeSnapshotAccessAsync(RevokeSnapshotAccessMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RevokeSnapshotAccess")
 	if request_handler then
 		request_handler(settings.uri, "/", RevokeSnapshotAccessMessage, headers, settings, cb)
 	else
@@ -9813,7 +9813,7 @@ function M.DescribeClustersAsync(DescribeClustersMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeClusters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClustersMessage, headers, settings, cb)
 	else
@@ -9849,7 +9849,7 @@ function M.ModifyClusterIamRolesAsync(ModifyClusterIamRolesMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyClusterIamRoles")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyClusterIamRolesMessage, headers, settings, cb)
 	else
@@ -9885,7 +9885,7 @@ function M.ResetClusterParameterGroupAsync(ResetClusterParameterGroupMessage, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ResetClusterParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetClusterParameterGroupMessage, headers, settings, cb)
 	else
@@ -9921,7 +9921,7 @@ function M.DescribeTableRestoreStatusAsync(DescribeTableRestoreStatusMessage, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeTableRestoreStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTableRestoreStatusMessage, headers, settings, cb)
 	else
@@ -9957,7 +9957,7 @@ function M.DeleteClusterSecurityGroupAsync(DeleteClusterSecurityGroupMessage, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteClusterSecurityGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteClusterSecurityGroupMessage, headers, settings, cb)
 	else
@@ -9993,7 +9993,7 @@ function M.ModifyClusterParameterGroupAsync(ModifyClusterParameterGroupMessage, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyClusterParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyClusterParameterGroupMessage, headers, settings, cb)
 	else
@@ -10029,7 +10029,7 @@ function M.DescribeClusterSnapshotsAsync(DescribeClusterSnapshotsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeClusterSnapshots")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClusterSnapshotsMessage, headers, settings, cb)
 	else
@@ -10065,7 +10065,7 @@ function M.CreateClusterParameterGroupAsync(CreateClusterParameterGroupMessage, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateClusterParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateClusterParameterGroupMessage, headers, settings, cb)
 	else
@@ -10101,7 +10101,7 @@ function M.DisableLoggingAsync(DisableLoggingMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DisableLogging")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableLoggingMessage, headers, settings, cb)
 	else
@@ -10137,7 +10137,7 @@ function M.DescribeClusterVersionsAsync(DescribeClusterVersionsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeClusterVersions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClusterVersionsMessage, headers, settings, cb)
 	else
@@ -10173,7 +10173,7 @@ function M.DescribeResizeAsync(DescribeResizeMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeResize")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeResizeMessage, headers, settings, cb)
 	else
@@ -10209,7 +10209,7 @@ function M.DescribeClusterSubnetGroupsAsync(DescribeClusterSubnetGroupsMessage, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeClusterSubnetGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClusterSubnetGroupsMessage, headers, settings, cb)
 	else
@@ -10245,7 +10245,7 @@ function M.AuthorizeClusterSecurityGroupIngressAsync(AuthorizeClusterSecurityGro
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AuthorizeClusterSecurityGroupIngress")
 	if request_handler then
 		request_handler(settings.uri, "/", AuthorizeClusterSecurityGroupIngressMessage, headers, settings, cb)
 	else
@@ -10281,7 +10281,7 @@ function M.DescribeHsmConfigurationsAsync(DescribeHsmConfigurationsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeHsmConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHsmConfigurationsMessage, headers, settings, cb)
 	else
@@ -10317,7 +10317,7 @@ function M.DeleteEventSubscriptionAsync(DeleteEventSubscriptionMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteEventSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEventSubscriptionMessage, headers, settings, cb)
 	else
@@ -10353,7 +10353,7 @@ function M.DescribeTagsAsync(DescribeTagsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeTags")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagsMessage, headers, settings, cb)
 	else
@@ -10389,7 +10389,7 @@ function M.DeleteHsmConfigurationAsync(DeleteHsmConfigurationMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteHsmConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteHsmConfigurationMessage, headers, settings, cb)
 	else
@@ -10425,7 +10425,7 @@ function M.CreateClusterSubnetGroupAsync(CreateClusterSubnetGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateClusterSubnetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateClusterSubnetGroupMessage, headers, settings, cb)
 	else
@@ -10461,7 +10461,7 @@ function M.ResizeClusterAsync(ResizeClusterMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ResizeCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", ResizeClusterMessage, headers, settings, cb)
 	else
@@ -10497,7 +10497,7 @@ function M.ModifyClusterDbRevisionAsync(ModifyClusterDbRevisionMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyClusterDbRevision")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyClusterDbRevisionMessage, headers, settings, cb)
 	else
@@ -10533,7 +10533,7 @@ function M.DescribeClusterParametersAsync(DescribeClusterParametersMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeClusterParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClusterParametersMessage, headers, settings, cb)
 	else
@@ -10569,7 +10569,7 @@ function M.CreateHsmClientCertificateAsync(CreateHsmClientCertificateMessage, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateHsmClientCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateHsmClientCertificateMessage, headers, settings, cb)
 	else
@@ -10605,7 +10605,7 @@ function M.ModifyClusterSubnetGroupAsync(ModifyClusterSubnetGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyClusterSubnetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyClusterSubnetGroupMessage, headers, settings, cb)
 	else
@@ -10641,7 +10641,7 @@ function M.DescribeSnapshotCopyGrantsAsync(DescribeSnapshotCopyGrantsMessage, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeSnapshotCopyGrants")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSnapshotCopyGrantsMessage, headers, settings, cb)
 	else
@@ -10677,7 +10677,7 @@ function M.AcceptReservedNodeExchangeAsync(AcceptReservedNodeExchangeInputMessag
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AcceptReservedNodeExchange")
 	if request_handler then
 		request_handler(settings.uri, "/", AcceptReservedNodeExchangeInputMessage, headers, settings, cb)
 	else
@@ -10713,7 +10713,7 @@ function M.DescribeOrderableClusterOptionsAsync(DescribeOrderableClusterOptionsM
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeOrderableClusterOptions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeOrderableClusterOptionsMessage, headers, settings, cb)
 	else
@@ -10749,7 +10749,7 @@ function M.ModifyClusterAsync(ModifyClusterMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyClusterMessage, headers, settings, cb)
 	else
@@ -10785,7 +10785,7 @@ function M.RotateEncryptionKeyAsync(RotateEncryptionKeyMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RotateEncryptionKey")
 	if request_handler then
 		request_handler(settings.uri, "/", RotateEncryptionKeyMessage, headers, settings, cb)
 	else
@@ -10821,7 +10821,7 @@ function M.EnableSnapshotCopyAsync(EnableSnapshotCopyMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "EnableSnapshotCopy")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableSnapshotCopyMessage, headers, settings, cb)
 	else
@@ -10857,7 +10857,7 @@ function M.CreateClusterSnapshotAsync(CreateClusterSnapshotMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateClusterSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateClusterSnapshotMessage, headers, settings, cb)
 	else
@@ -10893,7 +10893,7 @@ function M.DeleteClusterSnapshotAsync(DeleteClusterSnapshotMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteClusterSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteClusterSnapshotMessage, headers, settings, cb)
 	else
@@ -10929,7 +10929,7 @@ function M.CreateTagsAsync(CreateTagsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateTags")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTagsMessage, headers, settings, cb)
 	else
@@ -10965,7 +10965,7 @@ function M.DescribeClusterTracksAsync(DescribeClusterTracksMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeClusterTracks")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClusterTracksMessage, headers, settings, cb)
 	else
@@ -11001,7 +11001,7 @@ function M.DescribeReservedNodeOfferingsAsync(DescribeReservedNodeOfferingsMessa
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeReservedNodeOfferings")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedNodeOfferingsMessage, headers, settings, cb)
 	else
@@ -11037,7 +11037,7 @@ function M.DescribeLoggingStatusAsync(DescribeLoggingStatusMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeLoggingStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLoggingStatusMessage, headers, settings, cb)
 	else
@@ -11073,7 +11073,7 @@ function M.GetReservedNodeExchangeOfferingsAsync(GetReservedNodeExchangeOffering
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetReservedNodeExchangeOfferings")
 	if request_handler then
 		request_handler(settings.uri, "/", GetReservedNodeExchangeOfferingsInputMessage, headers, settings, cb)
 	else
@@ -11109,7 +11109,7 @@ function M.ModifyEventSubscriptionAsync(ModifyEventSubscriptionMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyEventSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyEventSubscriptionMessage, headers, settings, cb)
 	else
@@ -11145,7 +11145,7 @@ function M.RestoreTableFromClusterSnapshotAsync(RestoreTableFromClusterSnapshotM
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RestoreTableFromClusterSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreTableFromClusterSnapshotMessage, headers, settings, cb)
 	else
@@ -11181,7 +11181,7 @@ function M.DescribeClusterSecurityGroupsAsync(DescribeClusterSecurityGroupsMessa
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeClusterSecurityGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClusterSecurityGroupsMessage, headers, settings, cb)
 	else
@@ -11217,7 +11217,7 @@ function M.RevokeClusterSecurityGroupIngressAsync(RevokeClusterSecurityGroupIngr
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RevokeClusterSecurityGroupIngress")
 	if request_handler then
 		request_handler(settings.uri, "/", RevokeClusterSecurityGroupIngressMessage, headers, settings, cb)
 	else
@@ -11253,7 +11253,7 @@ function M.DeleteClusterParameterGroupAsync(DeleteClusterParameterGroupMessage, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteClusterParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteClusterParameterGroupMessage, headers, settings, cb)
 	else
@@ -11289,7 +11289,7 @@ function M.DeleteClusterSubnetGroupAsync(DeleteClusterSubnetGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteClusterSubnetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteClusterSubnetGroupMessage, headers, settings, cb)
 	else
@@ -11325,7 +11325,7 @@ function M.PurchaseReservedNodeOfferingAsync(PurchaseReservedNodeOfferingMessage
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PurchaseReservedNodeOffering")
 	if request_handler then
 		request_handler(settings.uri, "/", PurchaseReservedNodeOfferingMessage, headers, settings, cb)
 	else

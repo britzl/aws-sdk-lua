@@ -8350,7 +8350,7 @@ function M.UpdateConfigurationSetTrackingOptionsAsync(UpdateConfigurationSetTrac
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateConfigurationSetTrackingOptions")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateConfigurationSetTrackingOptionsRequest, headers, settings, cb)
 	else
@@ -8386,7 +8386,7 @@ function M.CreateReceiptRuleAsync(CreateReceiptRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateReceiptRule")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateReceiptRuleRequest, headers, settings, cb)
 	else
@@ -8418,7 +8418,7 @@ function M.GetSendStatisticsAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetSendStatistics")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -8453,7 +8453,7 @@ function M.ReorderReceiptRuleSetAsync(ReorderReceiptRuleSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ReorderReceiptRuleSet")
 	if request_handler then
 		request_handler(settings.uri, "/", ReorderReceiptRuleSetRequest, headers, settings, cb)
 	else
@@ -8489,7 +8489,7 @@ function M.GetIdentityPoliciesAsync(GetIdentityPoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetIdentityPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", GetIdentityPoliciesRequest, headers, settings, cb)
 	else
@@ -8521,7 +8521,7 @@ function M.GetAccountSendingEnabledAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetAccountSendingEnabled")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -8556,7 +8556,7 @@ function M.UpdateConfigurationSetSendingEnabledAsync(UpdateConfigurationSetSendi
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateConfigurationSetSendingEnabled")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateConfigurationSetSendingEnabledRequest, headers, settings, cb)
 	else
@@ -8592,7 +8592,7 @@ function M.VerifyEmailAddressAsync(VerifyEmailAddressRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "VerifyEmailAddress")
 	if request_handler then
 		request_handler(settings.uri, "/", VerifyEmailAddressRequest, headers, settings, cb)
 	else
@@ -8628,7 +8628,7 @@ function M.SetIdentityMailFromDomainAsync(SetIdentityMailFromDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetIdentityMailFromDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", SetIdentityMailFromDomainRequest, headers, settings, cb)
 	else
@@ -8664,7 +8664,7 @@ function M.DeleteConfigurationSetAsync(DeleteConfigurationSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteConfigurationSet")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConfigurationSetRequest, headers, settings, cb)
 	else
@@ -8700,7 +8700,7 @@ function M.ListReceiptFiltersAsync(ListReceiptFiltersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListReceiptFilters")
 	if request_handler then
 		request_handler(settings.uri, "/", ListReceiptFiltersRequest, headers, settings, cb)
 	else
@@ -8736,7 +8736,7 @@ function M.DescribeReceiptRuleSetAsync(DescribeReceiptRuleSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeReceiptRuleSet")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReceiptRuleSetRequest, headers, settings, cb)
 	else
@@ -8772,7 +8772,7 @@ function M.DeleteReceiptFilterAsync(DeleteReceiptFilterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteReceiptFilter")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteReceiptFilterRequest, headers, settings, cb)
 	else
@@ -8808,7 +8808,7 @@ function M.UpdateConfigurationSetEventDestinationAsync(UpdateConfigurationSetEve
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateConfigurationSetEventDestination")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateConfigurationSetEventDestinationRequest, headers, settings, cb)
 	else
@@ -8844,7 +8844,7 @@ function M.SetIdentityFeedbackForwardingEnabledAsync(SetIdentityFeedbackForwardi
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetIdentityFeedbackForwardingEnabled")
 	if request_handler then
 		request_handler(settings.uri, "/", SetIdentityFeedbackForwardingEnabledRequest, headers, settings, cb)
 	else
@@ -8880,7 +8880,7 @@ function M.UpdateReceiptRuleAsync(UpdateReceiptRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateReceiptRule")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateReceiptRuleRequest, headers, settings, cb)
 	else
@@ -8916,7 +8916,7 @@ function M.SendBounceAsync(SendBounceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SendBounce")
 	if request_handler then
 		request_handler(settings.uri, "/", SendBounceRequest, headers, settings, cb)
 	else
@@ -8952,7 +8952,7 @@ function M.CreateConfigurationSetEventDestinationAsync(CreateConfigurationSetEve
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateConfigurationSetEventDestination")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateConfigurationSetEventDestinationRequest, headers, settings, cb)
 	else
@@ -8988,7 +8988,7 @@ function M.GetIdentityDkimAttributesAsync(GetIdentityDkimAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetIdentityDkimAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", GetIdentityDkimAttributesRequest, headers, settings, cb)
 	else
@@ -9024,7 +9024,7 @@ function M.GetIdentityMailFromDomainAttributesAsync(GetIdentityMailFromDomainAtt
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetIdentityMailFromDomainAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", GetIdentityMailFromDomainAttributesRequest, headers, settings, cb)
 	else
@@ -9060,7 +9060,7 @@ function M.DeleteReceiptRuleAsync(DeleteReceiptRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteReceiptRule")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteReceiptRuleRequest, headers, settings, cb)
 	else
@@ -9096,7 +9096,7 @@ function M.DescribeConfigurationSetAsync(DescribeConfigurationSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeConfigurationSet")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConfigurationSetRequest, headers, settings, cb)
 	else
@@ -9128,7 +9128,7 @@ function M.ListVerifiedEmailAddressesAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListVerifiedEmailAddresses")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -9163,7 +9163,7 @@ function M.DeleteTemplateAsync(DeleteTemplateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTemplateRequest, headers, settings, cb)
 	else
@@ -9199,7 +9199,7 @@ function M.CloneReceiptRuleSetAsync(CloneReceiptRuleSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CloneReceiptRuleSet")
 	if request_handler then
 		request_handler(settings.uri, "/", CloneReceiptRuleSetRequest, headers, settings, cb)
 	else
@@ -9235,7 +9235,7 @@ function M.SendCustomVerificationEmailAsync(SendCustomVerificationEmailRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SendCustomVerificationEmail")
 	if request_handler then
 		request_handler(settings.uri, "/", SendCustomVerificationEmailRequest, headers, settings, cb)
 	else
@@ -9271,7 +9271,7 @@ function M.TestRenderTemplateAsync(TestRenderTemplateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "TestRenderTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", TestRenderTemplateRequest, headers, settings, cb)
 	else
@@ -9307,7 +9307,7 @@ function M.VerifyDomainIdentityAsync(VerifyDomainIdentityRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "VerifyDomainIdentity")
 	if request_handler then
 		request_handler(settings.uri, "/", VerifyDomainIdentityRequest, headers, settings, cb)
 	else
@@ -9343,7 +9343,7 @@ function M.UpdateCustomVerificationEmailTemplateAsync(UpdateCustomVerificationEm
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateCustomVerificationEmailTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateCustomVerificationEmailTemplateRequest, headers, settings, cb)
 	else
@@ -9379,7 +9379,7 @@ function M.VerifyEmailIdentityAsync(VerifyEmailIdentityRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "VerifyEmailIdentity")
 	if request_handler then
 		request_handler(settings.uri, "/", VerifyEmailIdentityRequest, headers, settings, cb)
 	else
@@ -9415,7 +9415,7 @@ function M.DescribeActiveReceiptRuleSetAsync(DescribeActiveReceiptRuleSetRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeActiveReceiptRuleSet")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeActiveReceiptRuleSetRequest, headers, settings, cb)
 	else
@@ -9451,7 +9451,7 @@ function M.DeleteIdentityPolicyAsync(DeleteIdentityPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteIdentityPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteIdentityPolicyRequest, headers, settings, cb)
 	else
@@ -9487,7 +9487,7 @@ function M.SetActiveReceiptRuleSetAsync(SetActiveReceiptRuleSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetActiveReceiptRuleSet")
 	if request_handler then
 		request_handler(settings.uri, "/", SetActiveReceiptRuleSetRequest, headers, settings, cb)
 	else
@@ -9523,7 +9523,7 @@ function M.DeleteReceiptRuleSetAsync(DeleteReceiptRuleSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteReceiptRuleSet")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteReceiptRuleSetRequest, headers, settings, cb)
 	else
@@ -9559,7 +9559,7 @@ function M.SetIdentityDkimEnabledAsync(SetIdentityDkimEnabledRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetIdentityDkimEnabled")
 	if request_handler then
 		request_handler(settings.uri, "/", SetIdentityDkimEnabledRequest, headers, settings, cb)
 	else
@@ -9595,7 +9595,7 @@ function M.GetTemplateAsync(GetTemplateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTemplateRequest, headers, settings, cb)
 	else
@@ -9631,7 +9631,7 @@ function M.ListTemplatesAsync(ListTemplatesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListTemplates")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTemplatesRequest, headers, settings, cb)
 	else
@@ -9667,7 +9667,7 @@ function M.DescribeReceiptRuleAsync(DescribeReceiptRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeReceiptRule")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReceiptRuleRequest, headers, settings, cb)
 	else
@@ -9703,7 +9703,7 @@ function M.SendBulkTemplatedEmailAsync(SendBulkTemplatedEmailRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SendBulkTemplatedEmail")
 	if request_handler then
 		request_handler(settings.uri, "/", SendBulkTemplatedEmailRequest, headers, settings, cb)
 	else
@@ -9739,7 +9739,7 @@ function M.UpdateConfigurationSetReputationMetricsEnabledAsync(UpdateConfigurati
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateConfigurationSetReputationMetricsEnabled")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateConfigurationSetReputationMetricsEnabledRequest, headers, settings, cb)
 	else
@@ -9771,7 +9771,7 @@ function M.GetSendQuotaAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetSendQuota")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -9806,7 +9806,7 @@ function M.GetCustomVerificationEmailTemplateAsync(GetCustomVerificationEmailTem
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetCustomVerificationEmailTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCustomVerificationEmailTemplateRequest, headers, settings, cb)
 	else
@@ -9842,7 +9842,7 @@ function M.UpdateAccountSendingEnabledAsync(UpdateAccountSendingEnabledRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateAccountSendingEnabled")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAccountSendingEnabledRequest, headers, settings, cb)
 	else
@@ -9878,7 +9878,7 @@ function M.SetReceiptRulePositionAsync(SetReceiptRulePositionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetReceiptRulePosition")
 	if request_handler then
 		request_handler(settings.uri, "/", SetReceiptRulePositionRequest, headers, settings, cb)
 	else
@@ -9914,7 +9914,7 @@ function M.CreateConfigurationSetAsync(CreateConfigurationSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateConfigurationSet")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateConfigurationSetRequest, headers, settings, cb)
 	else
@@ -9950,7 +9950,7 @@ function M.DeleteVerifiedEmailAddressAsync(DeleteVerifiedEmailAddressRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteVerifiedEmailAddress")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVerifiedEmailAddressRequest, headers, settings, cb)
 	else
@@ -9986,7 +9986,7 @@ function M.ListConfigurationSetsAsync(ListConfigurationSetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListConfigurationSets")
 	if request_handler then
 		request_handler(settings.uri, "/", ListConfigurationSetsRequest, headers, settings, cb)
 	else
@@ -10022,7 +10022,7 @@ function M.CreateReceiptFilterAsync(CreateReceiptFilterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateReceiptFilter")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateReceiptFilterRequest, headers, settings, cb)
 	else
@@ -10058,7 +10058,7 @@ function M.SendTemplatedEmailAsync(SendTemplatedEmailRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SendTemplatedEmail")
 	if request_handler then
 		request_handler(settings.uri, "/", SendTemplatedEmailRequest, headers, settings, cb)
 	else
@@ -10094,7 +10094,7 @@ function M.CreateConfigurationSetTrackingOptionsAsync(CreateConfigurationSetTrac
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateConfigurationSetTrackingOptions")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateConfigurationSetTrackingOptionsRequest, headers, settings, cb)
 	else
@@ -10130,7 +10130,7 @@ function M.ListReceiptRuleSetsAsync(ListReceiptRuleSetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListReceiptRuleSets")
 	if request_handler then
 		request_handler(settings.uri, "/", ListReceiptRuleSetsRequest, headers, settings, cb)
 	else
@@ -10166,7 +10166,7 @@ function M.CreateTemplateAsync(CreateTemplateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTemplateRequest, headers, settings, cb)
 	else
@@ -10202,7 +10202,7 @@ function M.GetIdentityNotificationAttributesAsync(GetIdentityNotificationAttribu
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetIdentityNotificationAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", GetIdentityNotificationAttributesRequest, headers, settings, cb)
 	else
@@ -10238,7 +10238,7 @@ function M.SetIdentityHeadersInNotificationsEnabledAsync(SetIdentityHeadersInNot
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetIdentityHeadersInNotificationsEnabled")
 	if request_handler then
 		request_handler(settings.uri, "/", SetIdentityHeadersInNotificationsEnabledRequest, headers, settings, cb)
 	else
@@ -10274,7 +10274,7 @@ function M.SendEmailAsync(SendEmailRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SendEmail")
 	if request_handler then
 		request_handler(settings.uri, "/", SendEmailRequest, headers, settings, cb)
 	else
@@ -10310,7 +10310,7 @@ function M.DeleteIdentityAsync(DeleteIdentityRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteIdentity")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteIdentityRequest, headers, settings, cb)
 	else
@@ -10346,7 +10346,7 @@ function M.VerifyDomainDkimAsync(VerifyDomainDkimRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "VerifyDomainDkim")
 	if request_handler then
 		request_handler(settings.uri, "/", VerifyDomainDkimRequest, headers, settings, cb)
 	else
@@ -10382,7 +10382,7 @@ function M.CreateCustomVerificationEmailTemplateAsync(CreateCustomVerificationEm
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateCustomVerificationEmailTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCustomVerificationEmailTemplateRequest, headers, settings, cb)
 	else
@@ -10418,7 +10418,7 @@ function M.ListIdentityPoliciesAsync(ListIdentityPoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListIdentityPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", ListIdentityPoliciesRequest, headers, settings, cb)
 	else
@@ -10454,7 +10454,7 @@ function M.DeleteConfigurationSetEventDestinationAsync(DeleteConfigurationSetEve
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteConfigurationSetEventDestination")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConfigurationSetEventDestinationRequest, headers, settings, cb)
 	else
@@ -10490,7 +10490,7 @@ function M.DeleteConfigurationSetTrackingOptionsAsync(DeleteConfigurationSetTrac
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteConfigurationSetTrackingOptions")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConfigurationSetTrackingOptionsRequest, headers, settings, cb)
 	else
@@ -10526,7 +10526,7 @@ function M.ListIdentitiesAsync(ListIdentitiesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListIdentities")
 	if request_handler then
 		request_handler(settings.uri, "/", ListIdentitiesRequest, headers, settings, cb)
 	else
@@ -10562,7 +10562,7 @@ function M.GetIdentityVerificationAttributesAsync(GetIdentityVerificationAttribu
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetIdentityVerificationAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", GetIdentityVerificationAttributesRequest, headers, settings, cb)
 	else
@@ -10598,7 +10598,7 @@ function M.UpdateTemplateAsync(UpdateTemplateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateTemplateRequest, headers, settings, cb)
 	else
@@ -10634,7 +10634,7 @@ function M.ListCustomVerificationEmailTemplatesAsync(ListCustomVerificationEmail
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListCustomVerificationEmailTemplates")
 	if request_handler then
 		request_handler(settings.uri, "/", ListCustomVerificationEmailTemplatesRequest, headers, settings, cb)
 	else
@@ -10670,7 +10670,7 @@ function M.DeleteCustomVerificationEmailTemplateAsync(DeleteCustomVerificationEm
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteCustomVerificationEmailTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCustomVerificationEmailTemplateRequest, headers, settings, cb)
 	else
@@ -10706,7 +10706,7 @@ function M.SetIdentityNotificationTopicAsync(SetIdentityNotificationTopicRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetIdentityNotificationTopic")
 	if request_handler then
 		request_handler(settings.uri, "/", SetIdentityNotificationTopicRequest, headers, settings, cb)
 	else
@@ -10742,7 +10742,7 @@ function M.PutIdentityPolicyAsync(PutIdentityPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PutIdentityPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutIdentityPolicyRequest, headers, settings, cb)
 	else
@@ -10778,7 +10778,7 @@ function M.SendRawEmailAsync(SendRawEmailRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SendRawEmail")
 	if request_handler then
 		request_handler(settings.uri, "/", SendRawEmailRequest, headers, settings, cb)
 	else
@@ -10814,7 +10814,7 @@ function M.CreateReceiptRuleSetAsync(CreateReceiptRuleSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateReceiptRuleSet")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateReceiptRuleSetRequest, headers, settings, cb)
 	else

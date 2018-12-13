@@ -1101,7 +1101,7 @@ function M.GetTagKeysAsync(GetTagKeysInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetTagKeys")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTagKeysInput, headers, settings, cb)
 	else
@@ -1137,7 +1137,7 @@ function M.TagResourcesAsync(TagResourcesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TagResources")
 	if request_handler then
 		request_handler(settings.uri, "/", TagResourcesInput, headers, settings, cb)
 	else
@@ -1173,7 +1173,7 @@ function M.UntagResourcesAsync(UntagResourcesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UntagResources")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagResourcesInput, headers, settings, cb)
 	else
@@ -1209,7 +1209,7 @@ function M.GetTagValuesAsync(GetTagValuesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetTagValues")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTagValuesInput, headers, settings, cb)
 	else
@@ -1245,7 +1245,7 @@ function M.GetResourcesAsync(GetResourcesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetResources")
 	if request_handler then
 		request_handler(settings.uri, "/", GetResourcesInput, headers, settings, cb)
 	else

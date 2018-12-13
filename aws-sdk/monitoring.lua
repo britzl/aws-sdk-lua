@@ -3062,7 +3062,7 @@ function M.ListDashboardsAsync(ListDashboardsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListDashboards")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDashboardsInput, headers, settings, cb)
 	else
@@ -3098,7 +3098,7 @@ function M.ListMetricsAsync(ListMetricsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListMetrics")
 	if request_handler then
 		request_handler(settings.uri, "/", ListMetricsInput, headers, settings, cb)
 	else
@@ -3134,7 +3134,7 @@ function M.DeleteDashboardsAsync(DeleteDashboardsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteDashboards")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDashboardsInput, headers, settings, cb)
 	else
@@ -3170,7 +3170,7 @@ function M.DeleteAlarmsAsync(DeleteAlarmsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteAlarms")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAlarmsInput, headers, settings, cb)
 	else
@@ -3206,7 +3206,7 @@ function M.EnableAlarmActionsAsync(EnableAlarmActionsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "EnableAlarmActions")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableAlarmActionsInput, headers, settings, cb)
 	else
@@ -3242,7 +3242,7 @@ function M.GetMetricDataAsync(GetMetricDataInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetMetricData")
 	if request_handler then
 		request_handler(settings.uri, "/", GetMetricDataInput, headers, settings, cb)
 	else
@@ -3278,7 +3278,7 @@ function M.PutMetricAlarmAsync(PutMetricAlarmInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PutMetricAlarm")
 	if request_handler then
 		request_handler(settings.uri, "/", PutMetricAlarmInput, headers, settings, cb)
 	else
@@ -3314,7 +3314,7 @@ function M.GetMetricStatisticsAsync(GetMetricStatisticsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetMetricStatistics")
 	if request_handler then
 		request_handler(settings.uri, "/", GetMetricStatisticsInput, headers, settings, cb)
 	else
@@ -3350,7 +3350,7 @@ function M.DisableAlarmActionsAsync(DisableAlarmActionsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DisableAlarmActions")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableAlarmActionsInput, headers, settings, cb)
 	else
@@ -3386,7 +3386,7 @@ function M.SetAlarmStateAsync(SetAlarmStateInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetAlarmState")
 	if request_handler then
 		request_handler(settings.uri, "/", SetAlarmStateInput, headers, settings, cb)
 	else
@@ -3422,7 +3422,7 @@ function M.PutDashboardAsync(PutDashboardInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PutDashboard")
 	if request_handler then
 		request_handler(settings.uri, "/", PutDashboardInput, headers, settings, cb)
 	else
@@ -3458,7 +3458,7 @@ function M.PutMetricDataAsync(PutMetricDataInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PutMetricData")
 	if request_handler then
 		request_handler(settings.uri, "/", PutMetricDataInput, headers, settings, cb)
 	else
@@ -3494,7 +3494,7 @@ function M.DescribeAlarmsAsync(DescribeAlarmsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeAlarms")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAlarmsInput, headers, settings, cb)
 	else
@@ -3530,7 +3530,7 @@ function M.GetDashboardAsync(GetDashboardInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetDashboard")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDashboardInput, headers, settings, cb)
 	else
@@ -3566,7 +3566,7 @@ function M.DescribeAlarmsForMetricAsync(DescribeAlarmsForMetricInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeAlarmsForMetric")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAlarmsForMetricInput, headers, settings, cb)
 	else
@@ -3602,7 +3602,7 @@ function M.DescribeAlarmHistoryAsync(DescribeAlarmHistoryInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeAlarmHistory")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAlarmHistoryInput, headers, settings, cb)
 	else
@@ -3638,7 +3638,7 @@ function M.GetMetricWidgetImageAsync(GetMetricWidgetImageInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetMetricWidgetImage")
 	if request_handler then
 		request_handler(settings.uri, "/", GetMetricWidgetImageInput, headers, settings, cb)
 	else

@@ -6848,7 +6848,7 @@ function M.EnableStageTransitionAsync(EnableStageTransitionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "EnableStageTransition")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableStageTransitionInput, headers, settings, cb)
 	else
@@ -6884,7 +6884,7 @@ function M.RetryStageExecutionAsync(RetryStageExecutionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RetryStageExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", RetryStageExecutionInput, headers, settings, cb)
 	else
@@ -6920,7 +6920,7 @@ function M.DisableStageTransitionAsync(DisableStageTransitionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisableStageTransition")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableStageTransitionInput, headers, settings, cb)
 	else
@@ -6956,7 +6956,7 @@ function M.ListWebhooksAsync(ListWebhooksInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListWebhooks")
 	if request_handler then
 		request_handler(settings.uri, "/", ListWebhooksInput, headers, settings, cb)
 	else
@@ -6992,7 +6992,7 @@ function M.PollForThirdPartyJobsAsync(PollForThirdPartyJobsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PollForThirdPartyJobs")
 	if request_handler then
 		request_handler(settings.uri, "/", PollForThirdPartyJobsInput, headers, settings, cb)
 	else
@@ -7028,7 +7028,7 @@ function M.GetThirdPartyJobDetailsAsync(GetThirdPartyJobDetailsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetThirdPartyJobDetails")
 	if request_handler then
 		request_handler(settings.uri, "/", GetThirdPartyJobDetailsInput, headers, settings, cb)
 	else
@@ -7064,7 +7064,7 @@ function M.DeletePipelineAsync(DeletePipelineInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeletePipeline")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePipelineInput, headers, settings, cb)
 	else
@@ -7100,7 +7100,7 @@ function M.UpdatePipelineAsync(UpdatePipelineInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdatePipeline")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdatePipelineInput, headers, settings, cb)
 	else
@@ -7136,7 +7136,7 @@ function M.PutJobFailureResultAsync(PutJobFailureResultInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutJobFailureResult")
 	if request_handler then
 		request_handler(settings.uri, "/", PutJobFailureResultInput, headers, settings, cb)
 	else
@@ -7172,7 +7172,7 @@ function M.ListActionTypesAsync(ListActionTypesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListActionTypes")
 	if request_handler then
 		request_handler(settings.uri, "/", ListActionTypesInput, headers, settings, cb)
 	else
@@ -7208,7 +7208,7 @@ function M.AcknowledgeThirdPartyJobAsync(AcknowledgeThirdPartyJobInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AcknowledgeThirdPartyJob")
 	if request_handler then
 		request_handler(settings.uri, "/", AcknowledgeThirdPartyJobInput, headers, settings, cb)
 	else
@@ -7244,7 +7244,7 @@ function M.PutWebhookAsync(PutWebhookInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutWebhook")
 	if request_handler then
 		request_handler(settings.uri, "/", PutWebhookInput, headers, settings, cb)
 	else
@@ -7280,7 +7280,7 @@ function M.DeleteWebhookAsync(DeleteWebhookInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteWebhook")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteWebhookInput, headers, settings, cb)
 	else
@@ -7316,7 +7316,7 @@ function M.DeregisterWebhookWithThirdPartyAsync(DeregisterWebhookWithThirdPartyI
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeregisterWebhookWithThirdParty")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterWebhookWithThirdPartyInput, headers, settings, cb)
 	else
@@ -7352,7 +7352,7 @@ function M.GetPipelineExecutionAsync(GetPipelineExecutionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetPipelineExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPipelineExecutionInput, headers, settings, cb)
 	else
@@ -7388,7 +7388,7 @@ function M.PutThirdPartyJobSuccessResultAsync(PutThirdPartyJobSuccessResultInput
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutThirdPartyJobSuccessResult")
 	if request_handler then
 		request_handler(settings.uri, "/", PutThirdPartyJobSuccessResultInput, headers, settings, cb)
 	else
@@ -7424,7 +7424,7 @@ function M.AcknowledgeJobAsync(AcknowledgeJobInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AcknowledgeJob")
 	if request_handler then
 		request_handler(settings.uri, "/", AcknowledgeJobInput, headers, settings, cb)
 	else
@@ -7460,7 +7460,7 @@ function M.PutActionRevisionAsync(PutActionRevisionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutActionRevision")
 	if request_handler then
 		request_handler(settings.uri, "/", PutActionRevisionInput, headers, settings, cb)
 	else
@@ -7496,7 +7496,7 @@ function M.ListPipelinesAsync(ListPipelinesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListPipelines")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPipelinesInput, headers, settings, cb)
 	else
@@ -7532,7 +7532,7 @@ function M.StartPipelineExecutionAsync(StartPipelineExecutionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartPipelineExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", StartPipelineExecutionInput, headers, settings, cb)
 	else
@@ -7568,7 +7568,7 @@ function M.PutApprovalResultAsync(PutApprovalResultInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutApprovalResult")
 	if request_handler then
 		request_handler(settings.uri, "/", PutApprovalResultInput, headers, settings, cb)
 	else
@@ -7604,7 +7604,7 @@ function M.PutThirdPartyJobFailureResultAsync(PutThirdPartyJobFailureResultInput
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutThirdPartyJobFailureResult")
 	if request_handler then
 		request_handler(settings.uri, "/", PutThirdPartyJobFailureResultInput, headers, settings, cb)
 	else
@@ -7640,7 +7640,7 @@ function M.PollForJobsAsync(PollForJobsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PollForJobs")
 	if request_handler then
 		request_handler(settings.uri, "/", PollForJobsInput, headers, settings, cb)
 	else
@@ -7676,7 +7676,7 @@ function M.GetPipelineStateAsync(GetPipelineStateInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetPipelineState")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPipelineStateInput, headers, settings, cb)
 	else
@@ -7712,7 +7712,7 @@ function M.CreateCustomActionTypeAsync(CreateCustomActionTypeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateCustomActionType")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCustomActionTypeInput, headers, settings, cb)
 	else
@@ -7748,7 +7748,7 @@ function M.CreatePipelineAsync(CreatePipelineInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreatePipeline")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePipelineInput, headers, settings, cb)
 	else
@@ -7784,7 +7784,7 @@ function M.RegisterWebhookWithThirdPartyAsync(RegisterWebhookWithThirdPartyInput
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterWebhookWithThirdParty")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterWebhookWithThirdPartyInput, headers, settings, cb)
 	else
@@ -7820,7 +7820,7 @@ function M.GetJobDetailsAsync(GetJobDetailsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetJobDetails")
 	if request_handler then
 		request_handler(settings.uri, "/", GetJobDetailsInput, headers, settings, cb)
 	else
@@ -7856,7 +7856,7 @@ function M.GetPipelineAsync(GetPipelineInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetPipeline")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPipelineInput, headers, settings, cb)
 	else
@@ -7892,7 +7892,7 @@ function M.DeleteCustomActionTypeAsync(DeleteCustomActionTypeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteCustomActionType")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCustomActionTypeInput, headers, settings, cb)
 	else
@@ -7928,7 +7928,7 @@ function M.ListPipelineExecutionsAsync(ListPipelineExecutionsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListPipelineExecutions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPipelineExecutionsInput, headers, settings, cb)
 	else
@@ -7964,7 +7964,7 @@ function M.PutJobSuccessResultAsync(PutJobSuccessResultInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutJobSuccessResult")
 	if request_handler then
 		request_handler(settings.uri, "/", PutJobSuccessResultInput, headers, settings, cb)
 	else

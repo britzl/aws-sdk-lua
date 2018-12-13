@@ -4410,7 +4410,7 @@ function M.DescribeElasticsearchInstanceTypeLimitsAsync(DescribeElasticsearchIns
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeElasticsearchInstanceTypeLimits")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/instanceTypeLimits/{ElasticsearchVersion}/{InstanceType}", DescribeElasticsearchInstanceTypeLimitsRequest, headers, settings, cb)
 	else
@@ -4446,7 +4446,7 @@ function M.PurchaseReservedElasticsearchInstanceOfferingAsync(PurchaseReservedEl
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "PurchaseReservedElasticsearchInstanceOffering")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/purchaseReservedInstanceOffering", PurchaseReservedElasticsearchInstanceOfferingRequest, headers, settings, cb)
 	else
@@ -4482,7 +4482,7 @@ function M.DescribeElasticsearchDomainConfigAsync(DescribeElasticsearchDomainCon
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeElasticsearchDomainConfig")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/domain/{DomainName}/config", DescribeElasticsearchDomainConfigRequest, headers, settings, cb)
 	else
@@ -4518,7 +4518,7 @@ function M.CreateElasticsearchDomainAsync(CreateElasticsearchDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateElasticsearchDomain")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/domain", CreateElasticsearchDomainRequest, headers, settings, cb)
 	else
@@ -4554,7 +4554,7 @@ function M.ListElasticsearchInstanceTypesAsync(ListElasticsearchInstanceTypesReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListElasticsearchInstanceTypes")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/instanceTypes/{ElasticsearchVersion}", ListElasticsearchInstanceTypesRequest, headers, settings, cb)
 	else
@@ -4590,7 +4590,7 @@ function M.GetUpgradeStatusAsync(GetUpgradeStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetUpgradeStatus")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/upgradeDomain/{DomainName}/status", GetUpgradeStatusRequest, headers, settings, cb)
 	else
@@ -4622,7 +4622,7 @@ function M.ListDomainNamesAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListDomainNames")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/domain", {}, headers, settings, cb)
 	else
@@ -4657,7 +4657,7 @@ function M.StartElasticsearchServiceSoftwareUpdateAsync(StartElasticsearchServic
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "StartElasticsearchServiceSoftwareUpdate")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/serviceSoftwareUpdate/start", StartElasticsearchServiceSoftwareUpdateRequest, headers, settings, cb)
 	else
@@ -4689,7 +4689,7 @@ function M.DeleteElasticsearchServiceRoleAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteElasticsearchServiceRole")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/role", {}, headers, settings, cb)
 	else
@@ -4724,7 +4724,7 @@ function M.DescribeElasticsearchDomainsAsync(DescribeElasticsearchDomainsRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DescribeElasticsearchDomains")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/domain-info", DescribeElasticsearchDomainsRequest, headers, settings, cb)
 	else
@@ -4760,7 +4760,7 @@ function M.UpdateElasticsearchDomainConfigAsync(UpdateElasticsearchDomainConfigR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateElasticsearchDomainConfig")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/domain/{DomainName}/config", UpdateElasticsearchDomainConfigRequest, headers, settings, cb)
 	else
@@ -4796,7 +4796,7 @@ function M.RemoveTagsAsync(RemoveTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "RemoveTags")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/tags-removal", RemoveTagsRequest, headers, settings, cb)
 	else
@@ -4832,7 +4832,7 @@ function M.ListTagsAsync(ListTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListTags")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/tags/", ListTagsRequest, headers, settings, cb)
 	else
@@ -4868,7 +4868,7 @@ function M.CancelElasticsearchServiceSoftwareUpdateAsync(CancelElasticsearchServ
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CancelElasticsearchServiceSoftwareUpdate")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/serviceSoftwareUpdate/cancel", CancelElasticsearchServiceSoftwareUpdateRequest, headers, settings, cb)
 	else
@@ -4904,7 +4904,7 @@ function M.ListElasticsearchVersionsAsync(ListElasticsearchVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListElasticsearchVersions")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/versions", ListElasticsearchVersionsRequest, headers, settings, cb)
 	else
@@ -4940,7 +4940,7 @@ function M.UpgradeElasticsearchDomainAsync(UpgradeElasticsearchDomainRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpgradeElasticsearchDomain")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/upgradeDomain", UpgradeElasticsearchDomainRequest, headers, settings, cb)
 	else
@@ -4976,7 +4976,7 @@ function M.DeleteElasticsearchDomainAsync(DeleteElasticsearchDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteElasticsearchDomain")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/domain/{DomainName}", DeleteElasticsearchDomainRequest, headers, settings, cb)
 	else
@@ -5012,7 +5012,7 @@ function M.AddTagsAsync(AddTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "AddTags")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/tags", AddTagsRequest, headers, settings, cb)
 	else
@@ -5048,7 +5048,7 @@ function M.GetCompatibleElasticsearchVersionsAsync(GetCompatibleElasticsearchVer
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetCompatibleElasticsearchVersions")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/compatibleVersions", GetCompatibleElasticsearchVersionsRequest, headers, settings, cb)
 	else
@@ -5084,7 +5084,7 @@ function M.DescribeElasticsearchDomainAsync(DescribeElasticsearchDomainRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeElasticsearchDomain")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/domain/{DomainName}", DescribeElasticsearchDomainRequest, headers, settings, cb)
 	else
@@ -5120,7 +5120,7 @@ function M.DescribeReservedElasticsearchInstanceOfferingsAsync(DescribeReservedE
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeReservedElasticsearchInstanceOfferings")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/reservedInstanceOfferings", DescribeReservedElasticsearchInstanceOfferingsRequest, headers, settings, cb)
 	else
@@ -5156,7 +5156,7 @@ function M.GetUpgradeHistoryAsync(GetUpgradeHistoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetUpgradeHistory")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/upgradeDomain/{DomainName}/history", GetUpgradeHistoryRequest, headers, settings, cb)
 	else
@@ -5192,7 +5192,7 @@ function M.DescribeReservedElasticsearchInstancesAsync(DescribeReservedElasticse
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeReservedElasticsearchInstances")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/reservedInstances", DescribeReservedElasticsearchInstancesRequest, headers, settings, cb)
 	else

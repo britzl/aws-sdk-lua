@@ -2785,7 +2785,7 @@ function M.ListJobsAsync(ListJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListJobs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListJobsRequest, headers, settings, cb)
 	else
@@ -2821,7 +2821,7 @@ function M.ListClusterJobsAsync(ListClusterJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListClusterJobs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListClusterJobsRequest, headers, settings, cb)
 	else
@@ -2857,7 +2857,7 @@ function M.GetJobUnlockCodeAsync(GetJobUnlockCodeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetJobUnlockCode")
 	if request_handler then
 		request_handler(settings.uri, "/", GetJobUnlockCodeRequest, headers, settings, cb)
 	else
@@ -2893,7 +2893,7 @@ function M.CreateJobAsync(CreateJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateJob")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateJobRequest, headers, settings, cb)
 	else
@@ -2929,7 +2929,7 @@ function M.ListClustersAsync(ListClustersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListClusters")
 	if request_handler then
 		request_handler(settings.uri, "/", ListClustersRequest, headers, settings, cb)
 	else
@@ -2965,7 +2965,7 @@ function M.CreateClusterAsync(CreateClusterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateClusterRequest, headers, settings, cb)
 	else
@@ -3001,7 +3001,7 @@ function M.UpdateJobAsync(UpdateJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateJob")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateJobRequest, headers, settings, cb)
 	else
@@ -3037,7 +3037,7 @@ function M.ListCompatibleImagesAsync(ListCompatibleImagesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListCompatibleImages")
 	if request_handler then
 		request_handler(settings.uri, "/", ListCompatibleImagesRequest, headers, settings, cb)
 	else
@@ -3073,7 +3073,7 @@ function M.GetSnowballUsageAsync(GetSnowballUsageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetSnowballUsage")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSnowballUsageRequest, headers, settings, cb)
 	else
@@ -3109,7 +3109,7 @@ function M.GetJobManifestAsync(GetJobManifestRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetJobManifest")
 	if request_handler then
 		request_handler(settings.uri, "/", GetJobManifestRequest, headers, settings, cb)
 	else
@@ -3145,7 +3145,7 @@ function M.CreateAddressAsync(CreateAddressRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateAddress")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAddressRequest, headers, settings, cb)
 	else
@@ -3181,7 +3181,7 @@ function M.DescribeAddressAsync(DescribeAddressRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAddress")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAddressRequest, headers, settings, cb)
 	else
@@ -3217,7 +3217,7 @@ function M.DescribeAddressesAsync(DescribeAddressesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAddresses")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAddressesRequest, headers, settings, cb)
 	else
@@ -3253,7 +3253,7 @@ function M.CancelJobAsync(CancelJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CancelJob")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelJobRequest, headers, settings, cb)
 	else
@@ -3289,7 +3289,7 @@ function M.CancelClusterAsync(CancelClusterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CancelCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelClusterRequest, headers, settings, cb)
 	else
@@ -3325,7 +3325,7 @@ function M.DescribeJobAsync(DescribeJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeJob")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeJobRequest, headers, settings, cb)
 	else
@@ -3361,7 +3361,7 @@ function M.DescribeClusterAsync(DescribeClusterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClusterRequest, headers, settings, cb)
 	else
@@ -3397,7 +3397,7 @@ function M.UpdateClusterAsync(UpdateClusterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateClusterRequest, headers, settings, cb)
 	else

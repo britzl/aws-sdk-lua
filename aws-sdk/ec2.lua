@@ -43292,7 +43292,7 @@ function M.DeleteTagsAsync(DeleteTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteTags")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTagsRequest, headers, settings, cb)
 	else
@@ -43328,7 +43328,7 @@ function M.ResetSnapshotAttributeAsync(ResetSnapshotAttributeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ResetSnapshotAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetSnapshotAttributeRequest, headers, settings, cb)
 	else
@@ -43364,7 +43364,7 @@ function M.DescribeCustomerGatewaysAsync(DescribeCustomerGatewaysRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeCustomerGateways")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCustomerGatewaysRequest, headers, settings, cb)
 	else
@@ -43400,7 +43400,7 @@ function M.ReplaceIamInstanceProfileAssociationAsync(ReplaceIamInstanceProfileAs
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ReplaceIamInstanceProfileAssociation")
 	if request_handler then
 		request_handler(settings.uri, "/", ReplaceIamInstanceProfileAssociationRequest, headers, settings, cb)
 	else
@@ -43436,7 +43436,7 @@ function M.EnableVpcClassicLinkDnsSupportAsync(EnableVpcClassicLinkDnsSupportReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "EnableVpcClassicLinkDnsSupport")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableVpcClassicLinkDnsSupportRequest, headers, settings, cb)
 	else
@@ -43472,7 +43472,7 @@ function M.DescribeNetworkAclsAsync(DescribeNetworkAclsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeNetworkAcls")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNetworkAclsRequest, headers, settings, cb)
 	else
@@ -43508,7 +43508,7 @@ function M.AdvertiseByoipCidrAsync(AdvertiseByoipCidrRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AdvertiseByoipCidr")
 	if request_handler then
 		request_handler(settings.uri, "/", AdvertiseByoipCidrRequest, headers, settings, cb)
 	else
@@ -43544,7 +43544,7 @@ function M.CancelConversionTaskAsync(CancelConversionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CancelConversionTask")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelConversionRequest, headers, settings, cb)
 	else
@@ -43580,7 +43580,7 @@ function M.CancelImportTaskAsync(CancelImportTaskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CancelImportTask")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelImportTaskRequest, headers, settings, cb)
 	else
@@ -43616,7 +43616,7 @@ function M.CreateVpnConnectionRouteAsync(CreateVpnConnectionRouteRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateVpnConnectionRoute")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVpnConnectionRouteRequest, headers, settings, cb)
 	else
@@ -43652,7 +43652,7 @@ function M.CreateVpcEndpointConnectionNotificationAsync(CreateVpcEndpointConnect
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateVpcEndpointConnectionNotification")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVpcEndpointConnectionNotificationRequest, headers, settings, cb)
 	else
@@ -43688,7 +43688,7 @@ function M.DescribeRouteTablesAsync(DescribeRouteTablesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeRouteTables")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRouteTablesRequest, headers, settings, cb)
 	else
@@ -43724,7 +43724,7 @@ function M.ResetImageAttributeAsync(ResetImageAttributeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ResetImageAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetImageAttributeRequest, headers, settings, cb)
 	else
@@ -43760,7 +43760,7 @@ function M.CreateRouteTableAsync(CreateRouteTableRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateRouteTable")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRouteTableRequest, headers, settings, cb)
 	else
@@ -43796,7 +43796,7 @@ function M.ReplaceRouteTableAssociationAsync(ReplaceRouteTableAssociationRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ReplaceRouteTableAssociation")
 	if request_handler then
 		request_handler(settings.uri, "/", ReplaceRouteTableAssociationRequest, headers, settings, cb)
 	else
@@ -43832,7 +43832,7 @@ function M.CreateVpcEndpointAsync(CreateVpcEndpointRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateVpcEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVpcEndpointRequest, headers, settings, cb)
 	else
@@ -43868,7 +43868,7 @@ function M.DescribeScheduledInstanceAvailabilityAsync(DescribeScheduledInstanceA
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeScheduledInstanceAvailability")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeScheduledInstanceAvailabilityRequest, headers, settings, cb)
 	else
@@ -43904,7 +43904,7 @@ function M.DescribeCapacityReservationsAsync(DescribeCapacityReservationsRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeCapacityReservations")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCapacityReservationsRequest, headers, settings, cb)
 	else
@@ -43940,7 +43940,7 @@ function M.RegisterImageAsync(RegisterImageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "RegisterImage")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterImageRequest, headers, settings, cb)
 	else
@@ -43976,7 +43976,7 @@ function M.AssociateDhcpOptionsAsync(AssociateDhcpOptionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AssociateDhcpOptions")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateDhcpOptionsRequest, headers, settings, cb)
 	else
@@ -44012,7 +44012,7 @@ function M.ModifyVpcEndpointServicePermissionsAsync(ModifyVpcEndpointServicePerm
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyVpcEndpointServicePermissions")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyVpcEndpointServicePermissionsRequest, headers, settings, cb)
 	else
@@ -44048,7 +44048,7 @@ function M.ImportKeyPairAsync(ImportKeyPairRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ImportKeyPair")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportKeyPairRequest, headers, settings, cb)
 	else
@@ -44084,7 +44084,7 @@ function M.DescribeAvailabilityZonesAsync(DescribeAvailabilityZonesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeAvailabilityZones")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAvailabilityZonesRequest, headers, settings, cb)
 	else
@@ -44120,7 +44120,7 @@ function M.RequestSpotInstancesAsync(RequestSpotInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "RequestSpotInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", RequestSpotInstancesRequest, headers, settings, cb)
 	else
@@ -44156,7 +44156,7 @@ function M.DescribeSnapshotsAsync(DescribeSnapshotsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeSnapshots")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSnapshotsRequest, headers, settings, cb)
 	else
@@ -44192,7 +44192,7 @@ function M.AcceptVpcPeeringConnectionAsync(AcceptVpcPeeringConnectionRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AcceptVpcPeeringConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", AcceptVpcPeeringConnectionRequest, headers, settings, cb)
 	else
@@ -44228,7 +44228,7 @@ function M.DescribeReservedInstancesModificationsAsync(DescribeReservedInstances
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeReservedInstancesModifications")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedInstancesModificationsRequest, headers, settings, cb)
 	else
@@ -44264,7 +44264,7 @@ function M.GetPasswordDataAsync(GetPasswordDataRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "GetPasswordData")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPasswordDataRequest, headers, settings, cb)
 	else
@@ -44300,7 +44300,7 @@ function M.DescribeImportSnapshotTasksAsync(DescribeImportSnapshotTasksRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeImportSnapshotTasks")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeImportSnapshotTasksRequest, headers, settings, cb)
 	else
@@ -44336,7 +44336,7 @@ function M.CreateNetworkInterfacePermissionAsync(CreateNetworkInterfacePermissio
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateNetworkInterfacePermission")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNetworkInterfacePermissionRequest, headers, settings, cb)
 	else
@@ -44372,7 +44372,7 @@ function M.DeleteVpnConnectionAsync(DeleteVpnConnectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteVpnConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVpnConnectionRequest, headers, settings, cb)
 	else
@@ -44408,7 +44408,7 @@ function M.AttachVpnGatewayAsync(AttachVpnGatewayRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AttachVpnGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachVpnGatewayRequest, headers, settings, cb)
 	else
@@ -44444,7 +44444,7 @@ function M.DeleteLaunchTemplateAsync(DeleteLaunchTemplateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteLaunchTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLaunchTemplateRequest, headers, settings, cb)
 	else
@@ -44480,7 +44480,7 @@ function M.ImportImageAsync(ImportImageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ImportImage")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportImageRequest, headers, settings, cb)
 	else
@@ -44516,7 +44516,7 @@ function M.DescribeImageAttributeAsync(DescribeImageAttributeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeImageAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeImageAttributeRequest, headers, settings, cb)
 	else
@@ -44552,7 +44552,7 @@ function M.DescribeAddressesAsync(DescribeAddressesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeAddresses")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAddressesRequest, headers, settings, cb)
 	else
@@ -44588,7 +44588,7 @@ function M.DisassociateIamInstanceProfileAsync(DisassociateIamInstanceProfileReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DisassociateIamInstanceProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateIamInstanceProfileRequest, headers, settings, cb)
 	else
@@ -44624,7 +44624,7 @@ function M.AssociateIamInstanceProfileAsync(AssociateIamInstanceProfileRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AssociateIamInstanceProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateIamInstanceProfileRequest, headers, settings, cb)
 	else
@@ -44660,7 +44660,7 @@ function M.PurchaseHostReservationAsync(PurchaseHostReservationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "PurchaseHostReservation")
 	if request_handler then
 		request_handler(settings.uri, "/", PurchaseHostReservationRequest, headers, settings, cb)
 	else
@@ -44696,7 +44696,7 @@ function M.BundleInstanceAsync(BundleInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "BundleInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", BundleInstanceRequest, headers, settings, cb)
 	else
@@ -44732,7 +44732,7 @@ function M.DescribeReservedInstancesAsync(DescribeReservedInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeReservedInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedInstancesRequest, headers, settings, cb)
 	else
@@ -44768,7 +44768,7 @@ function M.CreateNetworkAclAsync(CreateNetworkAclRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateNetworkAcl")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNetworkAclRequest, headers, settings, cb)
 	else
@@ -44804,7 +44804,7 @@ function M.CreateImageAsync(CreateImageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateImage")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateImageRequest, headers, settings, cb)
 	else
@@ -44840,7 +44840,7 @@ function M.ModifyHostsAsync(ModifyHostsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyHosts")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyHostsRequest, headers, settings, cb)
 	else
@@ -44876,7 +44876,7 @@ function M.CreateFleetAsync(CreateFleetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateFleet")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateFleetRequest, headers, settings, cb)
 	else
@@ -44912,7 +44912,7 @@ function M.RebootInstancesAsync(RebootInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "RebootInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", RebootInstancesRequest, headers, settings, cb)
 	else
@@ -44948,7 +44948,7 @@ function M.DescribeIdentityIdFormatAsync(DescribeIdentityIdFormatRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeIdentityIdFormat")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeIdentityIdFormatRequest, headers, settings, cb)
 	else
@@ -44984,7 +44984,7 @@ function M.ModifyIdentityIdFormatAsync(ModifyIdentityIdFormatRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyIdentityIdFormat")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyIdentityIdFormatRequest, headers, settings, cb)
 	else
@@ -45020,7 +45020,7 @@ function M.DescribeSpotFleetRequestHistoryAsync(DescribeSpotFleetRequestHistoryR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeSpotFleetRequestHistory")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSpotFleetRequestHistoryRequest, headers, settings, cb)
 	else
@@ -45056,7 +45056,7 @@ function M.PurchaseScheduledInstancesAsync(PurchaseScheduledInstancesRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "PurchaseScheduledInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", PurchaseScheduledInstancesRequest, headers, settings, cb)
 	else
@@ -45092,7 +45092,7 @@ function M.ModifyInstanceCreditSpecificationAsync(ModifyInstanceCreditSpecificat
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyInstanceCreditSpecification")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyInstanceCreditSpecificationRequest, headers, settings, cb)
 	else
@@ -45128,7 +45128,7 @@ function M.DetachVolumeAsync(DetachVolumeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DetachVolume")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachVolumeRequest, headers, settings, cb)
 	else
@@ -45164,7 +45164,7 @@ function M.DescribeIamInstanceProfileAssociationsAsync(DescribeIamInstanceProfil
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeIamInstanceProfileAssociations")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeIamInstanceProfileAssociationsRequest, headers, settings, cb)
 	else
@@ -45200,7 +45200,7 @@ function M.AssignPrivateIpAddressesAsync(AssignPrivateIpAddressesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AssignPrivateIpAddresses")
 	if request_handler then
 		request_handler(settings.uri, "/", AssignPrivateIpAddressesRequest, headers, settings, cb)
 	else
@@ -45236,7 +45236,7 @@ function M.CancelExportTaskAsync(CancelExportTaskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CancelExportTask")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelExportTaskRequest, headers, settings, cb)
 	else
@@ -45272,7 +45272,7 @@ function M.AcceptVpcEndpointConnectionsAsync(AcceptVpcEndpointConnectionsRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AcceptVpcEndpointConnections")
 	if request_handler then
 		request_handler(settings.uri, "/", AcceptVpcEndpointConnectionsRequest, headers, settings, cb)
 	else
@@ -45308,7 +45308,7 @@ function M.DetachVpnGatewayAsync(DetachVpnGatewayRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DetachVpnGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachVpnGatewayRequest, headers, settings, cb)
 	else
@@ -45344,7 +45344,7 @@ function M.DescribeVpcAttributeAsync(DescribeVpcAttributeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeVpcAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcAttributeRequest, headers, settings, cb)
 	else
@@ -45380,7 +45380,7 @@ function M.CancelBundleTaskAsync(CancelBundleTaskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CancelBundleTask")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelBundleTaskRequest, headers, settings, cb)
 	else
@@ -45416,7 +45416,7 @@ function M.DescribeNatGatewaysAsync(DescribeNatGatewaysRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeNatGateways")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNatGatewaysRequest, headers, settings, cb)
 	else
@@ -45452,7 +45452,7 @@ function M.DisassociateSubnetCidrBlockAsync(DisassociateSubnetCidrBlockRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DisassociateSubnetCidrBlock")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateSubnetCidrBlockRequest, headers, settings, cb)
 	else
@@ -45488,7 +45488,7 @@ function M.CreateVpcPeeringConnectionAsync(CreateVpcPeeringConnectionRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateVpcPeeringConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVpcPeeringConnectionRequest, headers, settings, cb)
 	else
@@ -45524,7 +45524,7 @@ function M.ModifyIdFormatAsync(ModifyIdFormatRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyIdFormat")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyIdFormatRequest, headers, settings, cb)
 	else
@@ -45560,7 +45560,7 @@ function M.DescribeSpotFleetRequestsAsync(DescribeSpotFleetRequestsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeSpotFleetRequests")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSpotFleetRequestsRequest, headers, settings, cb)
 	else
@@ -45596,7 +45596,7 @@ function M.AllocateHostsAsync(AllocateHostsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AllocateHosts")
 	if request_handler then
 		request_handler(settings.uri, "/", AllocateHostsRequest, headers, settings, cb)
 	else
@@ -45632,7 +45632,7 @@ function M.DeleteNetworkAclAsync(DeleteNetworkAclRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteNetworkAcl")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNetworkAclRequest, headers, settings, cb)
 	else
@@ -45668,7 +45668,7 @@ function M.WithdrawByoipCidrAsync(WithdrawByoipCidrRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "WithdrawByoipCidr")
 	if request_handler then
 		request_handler(settings.uri, "/", WithdrawByoipCidrRequest, headers, settings, cb)
 	else
@@ -45704,7 +45704,7 @@ function M.GetHostReservationPurchasePreviewAsync(GetHostReservationPurchasePrev
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "GetHostReservationPurchasePreview")
 	if request_handler then
 		request_handler(settings.uri, "/", GetHostReservationPurchasePreviewRequest, headers, settings, cb)
 	else
@@ -45740,7 +45740,7 @@ function M.DeleteSecurityGroupAsync(DeleteSecurityGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteSecurityGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSecurityGroupRequest, headers, settings, cb)
 	else
@@ -45776,7 +45776,7 @@ function M.UpdateSecurityGroupRuleDescriptionsEgressAsync(UpdateSecurityGroupRul
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "UpdateSecurityGroupRuleDescriptionsEgress")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSecurityGroupRuleDescriptionsEgressRequest, headers, settings, cb)
 	else
@@ -45812,7 +45812,7 @@ function M.CreateSnapshotAsync(CreateSnapshotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSnapshotRequest, headers, settings, cb)
 	else
@@ -45848,7 +45848,7 @@ function M.CreateSubnetAsync(CreateSubnetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateSubnet")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSubnetRequest, headers, settings, cb)
 	else
@@ -45884,7 +45884,7 @@ function M.RequestSpotFleetAsync(RequestSpotFleetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "RequestSpotFleet")
 	if request_handler then
 		request_handler(settings.uri, "/", RequestSpotFleetRequest, headers, settings, cb)
 	else
@@ -45920,7 +45920,7 @@ function M.ModifyImageAttributeAsync(ModifyImageAttributeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyImageAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyImageAttributeRequest, headers, settings, cb)
 	else
@@ -45956,7 +45956,7 @@ function M.ModifyInstanceCapacityReservationAttributesAsync(ModifyInstanceCapaci
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyInstanceCapacityReservationAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyInstanceCapacityReservationAttributesRequest, headers, settings, cb)
 	else
@@ -45992,7 +45992,7 @@ function M.AssociateSubnetCidrBlockAsync(AssociateSubnetCidrBlockRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AssociateSubnetCidrBlock")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateSubnetCidrBlockRequest, headers, settings, cb)
 	else
@@ -46028,7 +46028,7 @@ function M.ModifyFpgaImageAttributeAsync(ModifyFpgaImageAttributeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyFpgaImageAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyFpgaImageAttributeRequest, headers, settings, cb)
 	else
@@ -46064,7 +46064,7 @@ function M.StartInstancesAsync(StartInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "StartInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", StartInstancesRequest, headers, settings, cb)
 	else
@@ -46100,7 +46100,7 @@ function M.DescribeSpotInstanceRequestsAsync(DescribeSpotInstanceRequestsRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeSpotInstanceRequests")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSpotInstanceRequestsRequest, headers, settings, cb)
 	else
@@ -46136,7 +46136,7 @@ function M.DisableVgwRoutePropagationAsync(DisableVgwRoutePropagationRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DisableVgwRoutePropagation")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableVgwRoutePropagationRequest, headers, settings, cb)
 	else
@@ -46172,7 +46172,7 @@ function M.ResetFpgaImageAttributeAsync(ResetFpgaImageAttributeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ResetFpgaImageAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetFpgaImageAttributeRequest, headers, settings, cb)
 	else
@@ -46208,7 +46208,7 @@ function M.DescribeVpcsAsync(DescribeVpcsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeVpcs")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcsRequest, headers, settings, cb)
 	else
@@ -46244,7 +46244,7 @@ function M.DisassociateAddressAsync(DisassociateAddressRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DisassociateAddress")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateAddressRequest, headers, settings, cb)
 	else
@@ -46280,7 +46280,7 @@ function M.ModifySnapshotAttributeAsync(ModifySnapshotAttributeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifySnapshotAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifySnapshotAttributeRequest, headers, settings, cb)
 	else
@@ -46316,7 +46316,7 @@ function M.MoveAddressToVpcAsync(MoveAddressToVpcRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "MoveAddressToVpc")
 	if request_handler then
 		request_handler(settings.uri, "/", MoveAddressToVpcRequest, headers, settings, cb)
 	else
@@ -46352,7 +46352,7 @@ function M.ModifyVpcEndpointConnectionNotificationAsync(ModifyVpcEndpointConnect
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyVpcEndpointConnectionNotification")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyVpcEndpointConnectionNotificationRequest, headers, settings, cb)
 	else
@@ -46388,7 +46388,7 @@ function M.ModifyInstanceAttributeAsync(ModifyInstanceAttributeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyInstanceAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyInstanceAttributeRequest, headers, settings, cb)
 	else
@@ -46424,7 +46424,7 @@ function M.CreateVpcAsync(CreateVpcRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateVpc")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVpcRequest, headers, settings, cb)
 	else
@@ -46460,7 +46460,7 @@ function M.DescribeVpcEndpointServicesAsync(DescribeVpcEndpointServicesRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeVpcEndpointServices")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcEndpointServicesRequest, headers, settings, cb)
 	else
@@ -46496,7 +46496,7 @@ function M.CancelSpotFleetRequestsAsync(CancelSpotFleetRequestsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CancelSpotFleetRequests")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelSpotFleetRequestsRequest, headers, settings, cb)
 	else
@@ -46532,7 +46532,7 @@ function M.UnmonitorInstancesAsync(UnmonitorInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "UnmonitorInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", UnmonitorInstancesRequest, headers, settings, cb)
 	else
@@ -46568,7 +46568,7 @@ function M.DeleteSubnetAsync(DeleteSubnetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteSubnet")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSubnetRequest, headers, settings, cb)
 	else
@@ -46604,7 +46604,7 @@ function M.CreatePlacementGroupAsync(CreatePlacementGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreatePlacementGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePlacementGroupRequest, headers, settings, cb)
 	else
@@ -46640,7 +46640,7 @@ function M.CopySnapshotAsync(CopySnapshotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CopySnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", CopySnapshotRequest, headers, settings, cb)
 	else
@@ -46676,7 +46676,7 @@ function M.DisableVpcClassicLinkDnsSupportAsync(DisableVpcClassicLinkDnsSupportR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DisableVpcClassicLinkDnsSupport")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableVpcClassicLinkDnsSupportRequest, headers, settings, cb)
 	else
@@ -46712,7 +46712,7 @@ function M.DescribeHostReservationOfferingsAsync(DescribeHostReservationOffering
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeHostReservationOfferings")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHostReservationOfferingsRequest, headers, settings, cb)
 	else
@@ -46748,7 +46748,7 @@ function M.DescribeVolumesModificationsAsync(DescribeVolumesModificationsRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeVolumesModifications")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVolumesModificationsRequest, headers, settings, cb)
 	else
@@ -46784,7 +46784,7 @@ function M.DescribeVpnGatewaysAsync(DescribeVpnGatewaysRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeVpnGateways")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpnGatewaysRequest, headers, settings, cb)
 	else
@@ -46820,7 +46820,7 @@ function M.AssociateVpcCidrBlockAsync(AssociateVpcCidrBlockRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AssociateVpcCidrBlock")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateVpcCidrBlockRequest, headers, settings, cb)
 	else
@@ -46856,7 +46856,7 @@ function M.AssociateAddressAsync(AssociateAddressRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AssociateAddress")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateAddressRequest, headers, settings, cb)
 	else
@@ -46892,7 +46892,7 @@ function M.DeleteCustomerGatewayAsync(DeleteCustomerGatewayRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteCustomerGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCustomerGatewayRequest, headers, settings, cb)
 	else
@@ -46928,7 +46928,7 @@ function M.CopyFpgaImageAsync(CopyFpgaImageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CopyFpgaImage")
 	if request_handler then
 		request_handler(settings.uri, "/", CopyFpgaImageRequest, headers, settings, cb)
 	else
@@ -46964,7 +46964,7 @@ function M.CreateInternetGatewayAsync(CreateInternetGatewayRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateInternetGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateInternetGatewayRequest, headers, settings, cb)
 	else
@@ -47000,7 +47000,7 @@ function M.CreateLaunchTemplateAsync(CreateLaunchTemplateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateLaunchTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLaunchTemplateRequest, headers, settings, cb)
 	else
@@ -47036,7 +47036,7 @@ function M.AttachClassicLinkVpcAsync(AttachClassicLinkVpcRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AttachClassicLinkVpc")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachClassicLinkVpcRequest, headers, settings, cb)
 	else
@@ -47072,7 +47072,7 @@ function M.DescribeSpotPriceHistoryAsync(DescribeSpotPriceHistoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeSpotPriceHistory")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSpotPriceHistoryRequest, headers, settings, cb)
 	else
@@ -47108,7 +47108,7 @@ function M.DescribeDhcpOptionsAsync(DescribeDhcpOptionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeDhcpOptions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDhcpOptionsRequest, headers, settings, cb)
 	else
@@ -47144,7 +47144,7 @@ function M.DeleteVpcPeeringConnectionAsync(DeleteVpcPeeringConnectionRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteVpcPeeringConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVpcPeeringConnectionRequest, headers, settings, cb)
 	else
@@ -47180,7 +47180,7 @@ function M.DescribeFlowLogsAsync(DescribeFlowLogsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeFlowLogs")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFlowLogsRequest, headers, settings, cb)
 	else
@@ -47216,7 +47216,7 @@ function M.CreateNetworkAclEntryAsync(CreateNetworkAclEntryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateNetworkAclEntry")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNetworkAclEntryRequest, headers, settings, cb)
 	else
@@ -47252,7 +47252,7 @@ function M.ReleaseHostsAsync(ReleaseHostsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ReleaseHosts")
 	if request_handler then
 		request_handler(settings.uri, "/", ReleaseHostsRequest, headers, settings, cb)
 	else
@@ -47288,7 +47288,7 @@ function M.RestoreAddressToClassicAsync(RestoreAddressToClassicRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "RestoreAddressToClassic")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreAddressToClassicRequest, headers, settings, cb)
 	else
@@ -47324,7 +47324,7 @@ function M.CreateNetworkInterfaceAsync(CreateNetworkInterfaceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateNetworkInterface")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNetworkInterfaceRequest, headers, settings, cb)
 	else
@@ -47360,7 +47360,7 @@ function M.DeleteLaunchTemplateVersionsAsync(DeleteLaunchTemplateVersionsRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteLaunchTemplateVersions")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLaunchTemplateVersionsRequest, headers, settings, cb)
 	else
@@ -47396,7 +47396,7 @@ function M.RevokeSecurityGroupIngressAsync(RevokeSecurityGroupIngressRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "RevokeSecurityGroupIngress")
 	if request_handler then
 		request_handler(settings.uri, "/", RevokeSecurityGroupIngressRequest, headers, settings, cb)
 	else
@@ -47432,7 +47432,7 @@ function M.UnassignPrivateIpAddressesAsync(UnassignPrivateIpAddressesRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "UnassignPrivateIpAddresses")
 	if request_handler then
 		request_handler(settings.uri, "/", UnassignPrivateIpAddressesRequest, headers, settings, cb)
 	else
@@ -47468,7 +47468,7 @@ function M.AttachInternetGatewayAsync(AttachInternetGatewayRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AttachInternetGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachInternetGatewayRequest, headers, settings, cb)
 	else
@@ -47504,7 +47504,7 @@ function M.CreateInstanceExportTaskAsync(CreateInstanceExportTaskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateInstanceExportTask")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateInstanceExportTaskRequest, headers, settings, cb)
 	else
@@ -47540,7 +47540,7 @@ function M.DeleteDhcpOptionsAsync(DeleteDhcpOptionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteDhcpOptions")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDhcpOptionsRequest, headers, settings, cb)
 	else
@@ -47576,7 +47576,7 @@ function M.ResetNetworkInterfaceAttributeAsync(ResetNetworkInterfaceAttributeReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ResetNetworkInterfaceAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetNetworkInterfaceAttributeRequest, headers, settings, cb)
 	else
@@ -47612,7 +47612,7 @@ function M.ModifyReservedInstancesAsync(ModifyReservedInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyReservedInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyReservedInstancesRequest, headers, settings, cb)
 	else
@@ -47648,7 +47648,7 @@ function M.DetachNetworkInterfaceAsync(DetachNetworkInterfaceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DetachNetworkInterface")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachNetworkInterfaceRequest, headers, settings, cb)
 	else
@@ -47684,7 +47684,7 @@ function M.DescribeImportImageTasksAsync(DescribeImportImageTasksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeImportImageTasks")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeImportImageTasksRequest, headers, settings, cb)
 	else
@@ -47720,7 +47720,7 @@ function M.DescribeVpcEndpointServicePermissionsAsync(DescribeVpcEndpointService
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeVpcEndpointServicePermissions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcEndpointServicePermissionsRequest, headers, settings, cb)
 	else
@@ -47756,7 +47756,7 @@ function M.DescribeSpotFleetInstancesAsync(DescribeSpotFleetInstancesRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeSpotFleetInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSpotFleetInstancesRequest, headers, settings, cb)
 	else
@@ -47792,7 +47792,7 @@ function M.EnableVpcClassicLinkAsync(EnableVpcClassicLinkRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "EnableVpcClassicLink")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableVpcClassicLinkRequest, headers, settings, cb)
 	else
@@ -47828,7 +47828,7 @@ function M.CreateFlowLogsAsync(CreateFlowLogsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateFlowLogs")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateFlowLogsRequest, headers, settings, cb)
 	else
@@ -47864,7 +47864,7 @@ function M.DisassociateVpcCidrBlockAsync(DisassociateVpcCidrBlockRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DisassociateVpcCidrBlock")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateVpcCidrBlockRequest, headers, settings, cb)
 	else
@@ -47900,7 +47900,7 @@ function M.CreateDefaultSubnetAsync(CreateDefaultSubnetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateDefaultSubnet")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDefaultSubnetRequest, headers, settings, cb)
 	else
@@ -47936,7 +47936,7 @@ function M.DeleteVpcEndpointConnectionNotificationsAsync(DeleteVpcEndpointConnec
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteVpcEndpointConnectionNotifications")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVpcEndpointConnectionNotificationsRequest, headers, settings, cb)
 	else
@@ -47972,7 +47972,7 @@ function M.DescribeVolumeStatusAsync(DescribeVolumeStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeVolumeStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVolumeStatusRequest, headers, settings, cb)
 	else
@@ -48008,7 +48008,7 @@ function M.DescribeHostsAsync(DescribeHostsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeHosts")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHostsRequest, headers, settings, cb)
 	else
@@ -48044,7 +48044,7 @@ function M.DescribeVpcPeeringConnectionsAsync(DescribeVpcPeeringConnectionsReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeVpcPeeringConnections")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcPeeringConnectionsRequest, headers, settings, cb)
 	else
@@ -48080,7 +48080,7 @@ function M.DescribeVolumesAsync(DescribeVolumesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeVolumes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVolumesRequest, headers, settings, cb)
 	else
@@ -48116,7 +48116,7 @@ function M.DeleteNetworkInterfaceAsync(DeleteNetworkInterfaceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteNetworkInterface")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNetworkInterfaceRequest, headers, settings, cb)
 	else
@@ -48152,7 +48152,7 @@ function M.DescribeVpnConnectionsAsync(DescribeVpnConnectionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeVpnConnections")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpnConnectionsRequest, headers, settings, cb)
 	else
@@ -48188,7 +48188,7 @@ function M.DeleteVpcEndpointsAsync(DeleteVpcEndpointsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteVpcEndpoints")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVpcEndpointsRequest, headers, settings, cb)
 	else
@@ -48224,7 +48224,7 @@ function M.DescribeVolumeAttributeAsync(DescribeVolumeAttributeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeVolumeAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVolumeAttributeRequest, headers, settings, cb)
 	else
@@ -48260,7 +48260,7 @@ function M.DeleteKeyPairAsync(DeleteKeyPairRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteKeyPair")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteKeyPairRequest, headers, settings, cb)
 	else
@@ -48296,7 +48296,7 @@ function M.DeleteNatGatewayAsync(DeleteNatGatewayRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteNatGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNatGatewayRequest, headers, settings, cb)
 	else
@@ -48332,7 +48332,7 @@ function M.UnassignIpv6AddressesAsync(UnassignIpv6AddressesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "UnassignIpv6Addresses")
 	if request_handler then
 		request_handler(settings.uri, "/", UnassignIpv6AddressesRequest, headers, settings, cb)
 	else
@@ -48368,7 +48368,7 @@ function M.ModifyInstancePlacementAsync(ModifyInstancePlacementRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyInstancePlacement")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyInstancePlacementRequest, headers, settings, cb)
 	else
@@ -48404,7 +48404,7 @@ function M.UpdateSecurityGroupRuleDescriptionsIngressAsync(UpdateSecurityGroupRu
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "UpdateSecurityGroupRuleDescriptionsIngress")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSecurityGroupRuleDescriptionsIngressRequest, headers, settings, cb)
 	else
@@ -48440,7 +48440,7 @@ function M.ReplaceNetworkAclEntryAsync(ReplaceNetworkAclEntryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ReplaceNetworkAclEntry")
 	if request_handler then
 		request_handler(settings.uri, "/", ReplaceNetworkAclEntryRequest, headers, settings, cb)
 	else
@@ -48476,7 +48476,7 @@ function M.CreateEgressOnlyInternetGatewayAsync(CreateEgressOnlyInternetGatewayR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateEgressOnlyInternetGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateEgressOnlyInternetGatewayRequest, headers, settings, cb)
 	else
@@ -48512,7 +48512,7 @@ function M.DeleteInternetGatewayAsync(DeleteInternetGatewayRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteInternetGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteInternetGatewayRequest, headers, settings, cb)
 	else
@@ -48548,7 +48548,7 @@ function M.CreateVolumeAsync(CreateVolumeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateVolume")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVolumeRequest, headers, settings, cb)
 	else
@@ -48584,7 +48584,7 @@ function M.RunInstancesAsync(RunInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "RunInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", RunInstancesRequest, headers, settings, cb)
 	else
@@ -48620,7 +48620,7 @@ function M.DescribeScheduledInstancesAsync(DescribeScheduledInstancesRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeScheduledInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeScheduledInstancesRequest, headers, settings, cb)
 	else
@@ -48656,7 +48656,7 @@ function M.DeleteRouteAsync(DeleteRouteRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteRoute")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRouteRequest, headers, settings, cb)
 	else
@@ -48692,7 +48692,7 @@ function M.CreateDefaultVpcAsync(CreateDefaultVpcRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateDefaultVpc")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDefaultVpcRequest, headers, settings, cb)
 	else
@@ -48728,7 +48728,7 @@ function M.DisableVpcClassicLinkAsync(DisableVpcClassicLinkRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DisableVpcClassicLink")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableVpcClassicLinkRequest, headers, settings, cb)
 	else
@@ -48764,7 +48764,7 @@ function M.AttachNetworkInterfaceAsync(AttachNetworkInterfaceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AttachNetworkInterface")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachNetworkInterfaceRequest, headers, settings, cb)
 	else
@@ -48800,7 +48800,7 @@ function M.CreateNatGatewayAsync(CreateNatGatewayRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateNatGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNatGatewayRequest, headers, settings, cb)
 	else
@@ -48836,7 +48836,7 @@ function M.DeleteVpnConnectionRouteAsync(DeleteVpnConnectionRouteRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteVpnConnectionRoute")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVpnConnectionRouteRequest, headers, settings, cb)
 	else
@@ -48872,7 +48872,7 @@ function M.CancelSpotInstanceRequestsAsync(CancelSpotInstanceRequestsRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CancelSpotInstanceRequests")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelSpotInstanceRequestsRequest, headers, settings, cb)
 	else
@@ -48908,7 +48908,7 @@ function M.CreateKeyPairAsync(CreateKeyPairRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateKeyPair")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateKeyPairRequest, headers, settings, cb)
 	else
@@ -48944,7 +48944,7 @@ function M.DescribeNetworkInterfaceAttributeAsync(DescribeNetworkInterfaceAttrib
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeNetworkInterfaceAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNetworkInterfaceAttributeRequest, headers, settings, cb)
 	else
@@ -48980,7 +48980,7 @@ function M.DescribeIdFormatAsync(DescribeIdFormatRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeIdFormat")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeIdFormatRequest, headers, settings, cb)
 	else
@@ -49016,7 +49016,7 @@ function M.ModifyLaunchTemplateAsync(ModifyLaunchTemplateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyLaunchTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyLaunchTemplateRequest, headers, settings, cb)
 	else
@@ -49052,7 +49052,7 @@ function M.DeleteSnapshotAsync(DeleteSnapshotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSnapshotRequest, headers, settings, cb)
 	else
@@ -49088,7 +49088,7 @@ function M.DescribeMovingAddressesAsync(DescribeMovingAddressesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeMovingAddresses")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMovingAddressesRequest, headers, settings, cb)
 	else
@@ -49124,7 +49124,7 @@ function M.RevokeSecurityGroupEgressAsync(RevokeSecurityGroupEgressRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "RevokeSecurityGroupEgress")
 	if request_handler then
 		request_handler(settings.uri, "/", RevokeSecurityGroupEgressRequest, headers, settings, cb)
 	else
@@ -49160,7 +49160,7 @@ function M.DescribeInstanceAttributeAsync(DescribeInstanceAttributeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeInstanceAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstanceAttributeRequest, headers, settings, cb)
 	else
@@ -49196,7 +49196,7 @@ function M.DeregisterImageAsync(DeregisterImageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeregisterImage")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterImageRequest, headers, settings, cb)
 	else
@@ -49232,7 +49232,7 @@ function M.DeleteVpnGatewayAsync(DeleteVpnGatewayRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteVpnGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVpnGatewayRequest, headers, settings, cb)
 	else
@@ -49268,7 +49268,7 @@ function M.ReportInstanceStatusAsync(ReportInstanceStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ReportInstanceStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", ReportInstanceStatusRequest, headers, settings, cb)
 	else
@@ -49304,7 +49304,7 @@ function M.EnableVgwRoutePropagationAsync(EnableVgwRoutePropagationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "EnableVgwRoutePropagation")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableVgwRoutePropagationRequest, headers, settings, cb)
 	else
@@ -49340,7 +49340,7 @@ function M.CancelReservedInstancesListingAsync(CancelReservedInstancesListingReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CancelReservedInstancesListing")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelReservedInstancesListingRequest, headers, settings, cb)
 	else
@@ -49376,7 +49376,7 @@ function M.DescribeInstanceStatusAsync(DescribeInstanceStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeInstanceStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstanceStatusRequest, headers, settings, cb)
 	else
@@ -49412,7 +49412,7 @@ function M.DescribePrefixListsAsync(DescribePrefixListsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribePrefixLists")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePrefixListsRequest, headers, settings, cb)
 	else
@@ -49448,7 +49448,7 @@ function M.DescribeSnapshotAttributeAsync(DescribeSnapshotAttributeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeSnapshotAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSnapshotAttributeRequest, headers, settings, cb)
 	else
@@ -49484,7 +49484,7 @@ function M.PurchaseReservedInstancesOfferingAsync(PurchaseReservedInstancesOffer
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "PurchaseReservedInstancesOffering")
 	if request_handler then
 		request_handler(settings.uri, "/", PurchaseReservedInstancesOfferingRequest, headers, settings, cb)
 	else
@@ -49520,7 +49520,7 @@ function M.ModifySubnetAttributeAsync(ModifySubnetAttributeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifySubnetAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifySubnetAttributeRequest, headers, settings, cb)
 	else
@@ -49556,7 +49556,7 @@ function M.DescribeNetworkInterfacesAsync(DescribeNetworkInterfacesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeNetworkInterfaces")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNetworkInterfacesRequest, headers, settings, cb)
 	else
@@ -49592,7 +49592,7 @@ function M.ModifyCapacityReservationAsync(ModifyCapacityReservationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyCapacityReservation")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyCapacityReservationRequest, headers, settings, cb)
 	else
@@ -49628,7 +49628,7 @@ function M.DescribeLaunchTemplatesAsync(DescribeLaunchTemplatesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeLaunchTemplates")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLaunchTemplatesRequest, headers, settings, cb)
 	else
@@ -49664,7 +49664,7 @@ function M.ConfirmProductInstanceAsync(ConfirmProductInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ConfirmProductInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", ConfirmProductInstanceRequest, headers, settings, cb)
 	else
@@ -49700,7 +49700,7 @@ function M.DescribeExportTasksAsync(DescribeExportTasksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeExportTasks")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeExportTasksRequest, headers, settings, cb)
 	else
@@ -49736,7 +49736,7 @@ function M.DetachInternetGatewayAsync(DetachInternetGatewayRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DetachInternetGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachInternetGatewayRequest, headers, settings, cb)
 	else
@@ -49772,7 +49772,7 @@ function M.DeleteNetworkAclEntryAsync(DeleteNetworkAclEntryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteNetworkAclEntry")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNetworkAclEntryRequest, headers, settings, cb)
 	else
@@ -49808,7 +49808,7 @@ function M.CancelCapacityReservationAsync(CancelCapacityReservationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CancelCapacityReservation")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelCapacityReservationRequest, headers, settings, cb)
 	else
@@ -49844,7 +49844,7 @@ function M.CreateFpgaImageAsync(CreateFpgaImageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateFpgaImage")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateFpgaImageRequest, headers, settings, cb)
 	else
@@ -49880,7 +49880,7 @@ function M.CreateCustomerGatewayAsync(CreateCustomerGatewayRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateCustomerGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCustomerGatewayRequest, headers, settings, cb)
 	else
@@ -49916,7 +49916,7 @@ function M.StopInstancesAsync(StopInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "StopInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", StopInstancesRequest, headers, settings, cb)
 	else
@@ -49952,7 +49952,7 @@ function M.ResetInstanceAttributeAsync(ResetInstanceAttributeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ResetInstanceAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetInstanceAttributeRequest, headers, settings, cb)
 	else
@@ -49988,7 +49988,7 @@ function M.CreateSecurityGroupAsync(CreateSecurityGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateSecurityGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSecurityGroupRequest, headers, settings, cb)
 	else
@@ -50024,7 +50024,7 @@ function M.DescribeInternetGatewaysAsync(DescribeInternetGatewaysRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeInternetGateways")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInternetGatewaysRequest, headers, settings, cb)
 	else
@@ -50060,7 +50060,7 @@ function M.ModifyNetworkInterfaceAttributeAsync(ModifyNetworkInterfaceAttributeR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyNetworkInterfaceAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyNetworkInterfaceAttributeRequest, headers, settings, cb)
 	else
@@ -50096,7 +50096,7 @@ function M.AttachVolumeAsync(AttachVolumeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AttachVolume")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachVolumeRequest, headers, settings, cb)
 	else
@@ -50132,7 +50132,7 @@ function M.DescribeFleetHistoryAsync(DescribeFleetHistoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeFleetHistory")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFleetHistoryRequest, headers, settings, cb)
 	else
@@ -50168,7 +50168,7 @@ function M.ProvisionByoipCidrAsync(ProvisionByoipCidrRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ProvisionByoipCidr")
 	if request_handler then
 		request_handler(settings.uri, "/", ProvisionByoipCidrRequest, headers, settings, cb)
 	else
@@ -50204,7 +50204,7 @@ function M.TerminateInstancesAsync(TerminateInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "TerminateInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", TerminateInstancesRequest, headers, settings, cb)
 	else
@@ -50240,7 +50240,7 @@ function M.CreateTagsAsync(CreateTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateTags")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTagsRequest, headers, settings, cb)
 	else
@@ -50276,7 +50276,7 @@ function M.DeleteSpotDatafeedSubscriptionAsync(DeleteSpotDatafeedSubscriptionReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteSpotDatafeedSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSpotDatafeedSubscriptionRequest, headers, settings, cb)
 	else
@@ -50312,7 +50312,7 @@ function M.DeletePlacementGroupAsync(DeletePlacementGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeletePlacementGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePlacementGroupRequest, headers, settings, cb)
 	else
@@ -50348,7 +50348,7 @@ function M.DeleteRouteTableAsync(DeleteRouteTableRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteRouteTable")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRouteTableRequest, headers, settings, cb)
 	else
@@ -50384,7 +50384,7 @@ function M.DescribeFleetInstancesAsync(DescribeFleetInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeFleetInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFleetInstancesRequest, headers, settings, cb)
 	else
@@ -50420,7 +50420,7 @@ function M.DescribeInstanceCreditSpecificationsAsync(DescribeInstanceCreditSpeci
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeInstanceCreditSpecifications")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstanceCreditSpecificationsRequest, headers, settings, cb)
 	else
@@ -50456,7 +50456,7 @@ function M.DescribeKeyPairsAsync(DescribeKeyPairsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeKeyPairs")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeKeyPairsRequest, headers, settings, cb)
 	else
@@ -50492,7 +50492,7 @@ function M.GetLaunchTemplateDataAsync(GetLaunchTemplateDataRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "GetLaunchTemplateData")
 	if request_handler then
 		request_handler(settings.uri, "/", GetLaunchTemplateDataRequest, headers, settings, cb)
 	else
@@ -50528,7 +50528,7 @@ function M.DescribeStaleSecurityGroupsAsync(DescribeStaleSecurityGroupsRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeStaleSecurityGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStaleSecurityGroupsRequest, headers, settings, cb)
 	else
@@ -50564,7 +50564,7 @@ function M.DescribeReservedInstancesOfferingsAsync(DescribeReservedInstancesOffe
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeReservedInstancesOfferings")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedInstancesOfferingsRequest, headers, settings, cb)
 	else
@@ -50600,7 +50600,7 @@ function M.MonitorInstancesAsync(MonitorInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "MonitorInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", MonitorInstancesRequest, headers, settings, cb)
 	else
@@ -50636,7 +50636,7 @@ function M.GetConsoleScreenshotAsync(GetConsoleScreenshotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "GetConsoleScreenshot")
 	if request_handler then
 		request_handler(settings.uri, "/", GetConsoleScreenshotRequest, headers, settings, cb)
 	else
@@ -50672,7 +50672,7 @@ function M.DescribeAccountAttributesAsync(DescribeAccountAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeAccountAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAccountAttributesRequest, headers, settings, cb)
 	else
@@ -50708,7 +50708,7 @@ function M.AssignIpv6AddressesAsync(AssignIpv6AddressesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AssignIpv6Addresses")
 	if request_handler then
 		request_handler(settings.uri, "/", AssignIpv6AddressesRequest, headers, settings, cb)
 	else
@@ -50744,7 +50744,7 @@ function M.AuthorizeSecurityGroupEgressAsync(AuthorizeSecurityGroupEgressRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AuthorizeSecurityGroupEgress")
 	if request_handler then
 		request_handler(settings.uri, "/", AuthorizeSecurityGroupEgressRequest, headers, settings, cb)
 	else
@@ -50780,7 +50780,7 @@ function M.AllocateAddressAsync(AllocateAddressRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AllocateAddress")
 	if request_handler then
 		request_handler(settings.uri, "/", AllocateAddressRequest, headers, settings, cb)
 	else
@@ -50816,7 +50816,7 @@ function M.DescribeNetworkInterfacePermissionsAsync(DescribeNetworkInterfacePerm
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeNetworkInterfacePermissions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNetworkInterfacePermissionsRequest, headers, settings, cb)
 	else
@@ -50852,7 +50852,7 @@ function M.AuthorizeSecurityGroupIngressAsync(AuthorizeSecurityGroupIngressReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AuthorizeSecurityGroupIngress")
 	if request_handler then
 		request_handler(settings.uri, "/", AuthorizeSecurityGroupIngressRequest, headers, settings, cb)
 	else
@@ -50888,7 +50888,7 @@ function M.CreateSpotDatafeedSubscriptionAsync(CreateSpotDatafeedSubscriptionReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateSpotDatafeedSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSpotDatafeedSubscriptionRequest, headers, settings, cb)
 	else
@@ -50924,7 +50924,7 @@ function M.ImportInstanceAsync(ImportInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ImportInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportInstanceRequest, headers, settings, cb)
 	else
@@ -50960,7 +50960,7 @@ function M.DeleteFpgaImageAsync(DeleteFpgaImageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteFpgaImage")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteFpgaImageRequest, headers, settings, cb)
 	else
@@ -50996,7 +50996,7 @@ function M.DescribeFpgaImageAttributeAsync(DescribeFpgaImageAttributeRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeFpgaImageAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFpgaImageAttributeRequest, headers, settings, cb)
 	else
@@ -51032,7 +51032,7 @@ function M.ReplaceNetworkAclAssociationAsync(ReplaceNetworkAclAssociationRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ReplaceNetworkAclAssociation")
 	if request_handler then
 		request_handler(settings.uri, "/", ReplaceNetworkAclAssociationRequest, headers, settings, cb)
 	else
@@ -51068,7 +51068,7 @@ function M.ModifyVpcEndpointServiceConfigurationAsync(ModifyVpcEndpointServiceCo
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyVpcEndpointServiceConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyVpcEndpointServiceConfigurationRequest, headers, settings, cb)
 	else
@@ -51104,7 +51104,7 @@ function M.ReleaseAddressAsync(ReleaseAddressRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ReleaseAddress")
 	if request_handler then
 		request_handler(settings.uri, "/", ReleaseAddressRequest, headers, settings, cb)
 	else
@@ -51140,7 +51140,7 @@ function M.DescribeFpgaImagesAsync(DescribeFpgaImagesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeFpgaImages")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFpgaImagesRequest, headers, settings, cb)
 	else
@@ -51176,7 +51176,7 @@ function M.RejectVpcPeeringConnectionAsync(RejectVpcPeeringConnectionRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "RejectVpcPeeringConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", RejectVpcPeeringConnectionRequest, headers, settings, cb)
 	else
@@ -51212,7 +51212,7 @@ function M.DescribeElasticGpusAsync(DescribeElasticGpusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeElasticGpus")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeElasticGpusRequest, headers, settings, cb)
 	else
@@ -51248,7 +51248,7 @@ function M.DescribeFleetsAsync(DescribeFleetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeFleets")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFleetsRequest, headers, settings, cb)
 	else
@@ -51284,7 +51284,7 @@ function M.DeleteFleetsAsync(DeleteFleetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteFleets")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteFleetsRequest, headers, settings, cb)
 	else
@@ -51320,7 +51320,7 @@ function M.DescribeImagesAsync(DescribeImagesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeImages")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeImagesRequest, headers, settings, cb)
 	else
@@ -51356,7 +51356,7 @@ function M.DisassociateRouteTableAsync(DisassociateRouteTableRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DisassociateRouteTable")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateRouteTableRequest, headers, settings, cb)
 	else
@@ -51392,7 +51392,7 @@ function M.ModifyVpcTenancyAsync(ModifyVpcTenancyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyVpcTenancy")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyVpcTenancyRequest, headers, settings, cb)
 	else
@@ -51428,7 +51428,7 @@ function M.DescribePrincipalIdFormatAsync(DescribePrincipalIdFormatRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribePrincipalIdFormat")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePrincipalIdFormatRequest, headers, settings, cb)
 	else
@@ -51464,7 +51464,7 @@ function M.DescribePublicIpv4PoolsAsync(DescribePublicIpv4PoolsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribePublicIpv4Pools")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePublicIpv4PoolsRequest, headers, settings, cb)
 	else
@@ -51500,7 +51500,7 @@ function M.ReplaceRouteAsync(ReplaceRouteRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ReplaceRoute")
 	if request_handler then
 		request_handler(settings.uri, "/", ReplaceRouteRequest, headers, settings, cb)
 	else
@@ -51536,7 +51536,7 @@ function M.AssociateRouteTableAsync(AssociateRouteTableRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AssociateRouteTable")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateRouteTableRequest, headers, settings, cb)
 	else
@@ -51572,7 +51572,7 @@ function M.DeleteVpcAsync(DeleteVpcRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteVpc")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVpcRequest, headers, settings, cb)
 	else
@@ -51608,7 +51608,7 @@ function M.DescribeSpotDatafeedSubscriptionAsync(DescribeSpotDatafeedSubscriptio
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeSpotDatafeedSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSpotDatafeedSubscriptionRequest, headers, settings, cb)
 	else
@@ -51644,7 +51644,7 @@ function M.DescribePlacementGroupsAsync(DescribePlacementGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribePlacementGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePlacementGroupsRequest, headers, settings, cb)
 	else
@@ -51680,7 +51680,7 @@ function M.DescribeRegionsAsync(DescribeRegionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeRegions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRegionsRequest, headers, settings, cb)
 	else
@@ -51716,7 +51716,7 @@ function M.DescribeInstancesAsync(DescribeInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstancesRequest, headers, settings, cb)
 	else
@@ -51752,7 +51752,7 @@ function M.DescribeLaunchTemplateVersionsAsync(DescribeLaunchTemplateVersionsReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeLaunchTemplateVersions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLaunchTemplateVersionsRequest, headers, settings, cb)
 	else
@@ -51788,7 +51788,7 @@ function M.CreateRouteAsync(CreateRouteRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateRoute")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRouteRequest, headers, settings, cb)
 	else
@@ -51824,7 +51824,7 @@ function M.DeleteEgressOnlyInternetGatewayAsync(DeleteEgressOnlyInternetGatewayR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteEgressOnlyInternetGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEgressOnlyInternetGatewayRequest, headers, settings, cb)
 	else
@@ -51860,7 +51860,7 @@ function M.DescribeSecurityGroupsAsync(DescribeSecurityGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeSecurityGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSecurityGroupsRequest, headers, settings, cb)
 	else
@@ -51896,7 +51896,7 @@ function M.CreateDhcpOptionsAsync(CreateDhcpOptionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateDhcpOptions")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDhcpOptionsRequest, headers, settings, cb)
 	else
@@ -51932,7 +51932,7 @@ function M.DeleteVpcEndpointServiceConfigurationsAsync(DeleteVpcEndpointServiceC
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteVpcEndpointServiceConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVpcEndpointServiceConfigurationsRequest, headers, settings, cb)
 	else
@@ -51968,7 +51968,7 @@ function M.CreateVpnGatewayAsync(CreateVpnGatewayRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateVpnGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVpnGatewayRequest, headers, settings, cb)
 	else
@@ -52004,7 +52004,7 @@ function M.DescribeBundleTasksAsync(DescribeBundleTasksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeBundleTasks")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeBundleTasksRequest, headers, settings, cb)
 	else
@@ -52040,7 +52040,7 @@ function M.DescribeReservedInstancesListingsAsync(DescribeReservedInstancesListi
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeReservedInstancesListings")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedInstancesListingsRequest, headers, settings, cb)
 	else
@@ -52076,7 +52076,7 @@ function M.GetReservedInstancesExchangeQuoteAsync(GetReservedInstancesExchangeQu
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "GetReservedInstancesExchangeQuote")
 	if request_handler then
 		request_handler(settings.uri, "/", GetReservedInstancesExchangeQuoteRequest, headers, settings, cb)
 	else
@@ -52112,7 +52112,7 @@ function M.DescribeClassicLinkInstancesAsync(DescribeClassicLinkInstancesRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeClassicLinkInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClassicLinkInstancesRequest, headers, settings, cb)
 	else
@@ -52148,7 +52148,7 @@ function M.ModifySpotFleetRequestAsync(ModifySpotFleetRequestRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifySpotFleetRequest")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifySpotFleetRequestRequest, headers, settings, cb)
 	else
@@ -52184,7 +52184,7 @@ function M.DeleteVolumeAsync(DeleteVolumeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteVolume")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVolumeRequest, headers, settings, cb)
 	else
@@ -52220,7 +52220,7 @@ function M.DescribeConversionTasksAsync(DescribeConversionTasksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeConversionTasks")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConversionTasksRequest, headers, settings, cb)
 	else
@@ -52256,7 +52256,7 @@ function M.DescribeVpcClassicLinkDnsSupportAsync(DescribeVpcClassicLinkDnsSuppor
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeVpcClassicLinkDnsSupport")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcClassicLinkDnsSupportRequest, headers, settings, cb)
 	else
@@ -52292,7 +52292,7 @@ function M.CopyImageAsync(CopyImageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CopyImage")
 	if request_handler then
 		request_handler(settings.uri, "/", CopyImageRequest, headers, settings, cb)
 	else
@@ -52328,7 +52328,7 @@ function M.DescribeSubnetsAsync(DescribeSubnetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeSubnets")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSubnetsRequest, headers, settings, cb)
 	else
@@ -52364,7 +52364,7 @@ function M.DescribeVpcClassicLinkAsync(DescribeVpcClassicLinkRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeVpcClassicLink")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcClassicLinkRequest, headers, settings, cb)
 	else
@@ -52400,7 +52400,7 @@ function M.CreateCapacityReservationAsync(CreateCapacityReservationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateCapacityReservation")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCapacityReservationRequest, headers, settings, cb)
 	else
@@ -52436,7 +52436,7 @@ function M.ModifyVpcPeeringConnectionOptionsAsync(ModifyVpcPeeringConnectionOpti
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyVpcPeeringConnectionOptions")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyVpcPeeringConnectionOptionsRequest, headers, settings, cb)
 	else
@@ -52472,7 +52472,7 @@ function M.ModifyVolumeAttributeAsync(ModifyVolumeAttributeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyVolumeAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyVolumeAttributeRequest, headers, settings, cb)
 	else
@@ -52508,7 +52508,7 @@ function M.ImportVolumeAsync(ImportVolumeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ImportVolume")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportVolumeRequest, headers, settings, cb)
 	else
@@ -52544,7 +52544,7 @@ function M.ImportSnapshotAsync(ImportSnapshotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ImportSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportSnapshotRequest, headers, settings, cb)
 	else
@@ -52580,7 +52580,7 @@ function M.GetConsoleOutputAsync(GetConsoleOutputRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "GetConsoleOutput")
 	if request_handler then
 		request_handler(settings.uri, "/", GetConsoleOutputRequest, headers, settings, cb)
 	else
@@ -52616,7 +52616,7 @@ function M.DescribeVpcEndpointServiceConfigurationsAsync(DescribeVpcEndpointServ
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeVpcEndpointServiceConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcEndpointServiceConfigurationsRequest, headers, settings, cb)
 	else
@@ -52652,7 +52652,7 @@ function M.CreateLaunchTemplateVersionAsync(CreateLaunchTemplateVersionRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateLaunchTemplateVersion")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLaunchTemplateVersionRequest, headers, settings, cb)
 	else
@@ -52688,7 +52688,7 @@ function M.DescribeTagsAsync(DescribeTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeTags")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagsRequest, headers, settings, cb)
 	else
@@ -52724,7 +52724,7 @@ function M.DeprovisionByoipCidrAsync(DeprovisionByoipCidrRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeprovisionByoipCidr")
 	if request_handler then
 		request_handler(settings.uri, "/", DeprovisionByoipCidrRequest, headers, settings, cb)
 	else
@@ -52760,7 +52760,7 @@ function M.DescribeVpcEndpointConnectionNotificationsAsync(DescribeVpcEndpointCo
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeVpcEndpointConnectionNotifications")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcEndpointConnectionNotificationsRequest, headers, settings, cb)
 	else
@@ -52796,7 +52796,7 @@ function M.DescribeVpcEndpointsAsync(DescribeVpcEndpointsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeVpcEndpoints")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcEndpointsRequest, headers, settings, cb)
 	else
@@ -52832,7 +52832,7 @@ function M.RejectVpcEndpointConnectionsAsync(RejectVpcEndpointConnectionsRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "RejectVpcEndpointConnections")
 	if request_handler then
 		request_handler(settings.uri, "/", RejectVpcEndpointConnectionsRequest, headers, settings, cb)
 	else
@@ -52868,7 +52868,7 @@ function M.ModifyVpcEndpointAsync(ModifyVpcEndpointRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyVpcEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyVpcEndpointRequest, headers, settings, cb)
 	else
@@ -52904,7 +52904,7 @@ function M.CreateVpcEndpointServiceConfigurationAsync(CreateVpcEndpointServiceCo
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateVpcEndpointServiceConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVpcEndpointServiceConfigurationRequest, headers, settings, cb)
 	else
@@ -52940,7 +52940,7 @@ function M.ModifyVpcAttributeAsync(ModifyVpcAttributeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyVpcAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyVpcAttributeRequest, headers, settings, cb)
 	else
@@ -52976,7 +52976,7 @@ function M.EnableVolumeIOAsync(EnableVolumeIORequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "EnableVolumeIO")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableVolumeIORequest, headers, settings, cb)
 	else
@@ -53012,7 +53012,7 @@ function M.AcceptReservedInstancesExchangeQuoteAsync(AcceptReservedInstancesExch
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "AcceptReservedInstancesExchangeQuote")
 	if request_handler then
 		request_handler(settings.uri, "/", AcceptReservedInstancesExchangeQuoteRequest, headers, settings, cb)
 	else
@@ -53048,7 +53048,7 @@ function M.DescribeSecurityGroupReferencesAsync(DescribeSecurityGroupReferencesR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeSecurityGroupReferences")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSecurityGroupReferencesRequest, headers, settings, cb)
 	else
@@ -53084,7 +53084,7 @@ function M.DescribeVpcEndpointConnectionsAsync(DescribeVpcEndpointConnectionsReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeVpcEndpointConnections")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcEndpointConnectionsRequest, headers, settings, cb)
 	else
@@ -53120,7 +53120,7 @@ function M.DeleteFlowLogsAsync(DeleteFlowLogsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteFlowLogs")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteFlowLogsRequest, headers, settings, cb)
 	else
@@ -53156,7 +53156,7 @@ function M.ModifyFleetAsync(ModifyFleetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyFleet")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyFleetRequest, headers, settings, cb)
 	else
@@ -53192,7 +53192,7 @@ function M.CreateVpnConnectionAsync(CreateVpnConnectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateVpnConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVpnConnectionRequest, headers, settings, cb)
 	else
@@ -53228,7 +53228,7 @@ function M.DetachClassicLinkVpcAsync(DetachClassicLinkVpcRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DetachClassicLinkVpc")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachClassicLinkVpcRequest, headers, settings, cb)
 	else
@@ -53264,7 +53264,7 @@ function M.CreateReservedInstancesListingAsync(CreateReservedInstancesListingReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "CreateReservedInstancesListing")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateReservedInstancesListingRequest, headers, settings, cb)
 	else
@@ -53300,7 +53300,7 @@ function M.DeleteNetworkInterfacePermissionAsync(DeleteNetworkInterfacePermissio
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DeleteNetworkInterfacePermission")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNetworkInterfacePermissionRequest, headers, settings, cb)
 	else
@@ -53336,7 +53336,7 @@ function M.DescribeHostReservationsAsync(DescribeHostReservationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeHostReservations")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHostReservationsRequest, headers, settings, cb)
 	else
@@ -53372,7 +53372,7 @@ function M.DescribeEgressOnlyInternetGatewaysAsync(DescribeEgressOnlyInternetGat
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeEgressOnlyInternetGateways")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEgressOnlyInternetGatewaysRequest, headers, settings, cb)
 	else
@@ -53408,7 +53408,7 @@ function M.DescribeAggregateIdFormatAsync(DescribeAggregateIdFormatRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeAggregateIdFormat")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAggregateIdFormatRequest, headers, settings, cb)
 	else
@@ -53444,7 +53444,7 @@ function M.ModifyVolumeAsync(ModifyVolumeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "ModifyVolume")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyVolumeRequest, headers, settings, cb)
 	else
@@ -53480,7 +53480,7 @@ function M.RunScheduledInstancesAsync(RunScheduledInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "RunScheduledInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", RunScheduledInstancesRequest, headers, settings, cb)
 	else
@@ -53516,7 +53516,7 @@ function M.DescribeByoipCidrsAsync(DescribeByoipCidrsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST", "DescribeByoipCidrs")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeByoipCidrsRequest, headers, settings, cb)
 	else

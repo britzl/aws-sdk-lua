@@ -13581,7 +13581,7 @@ function M.DescribeCertificatesAsync(DescribeCertificatesMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeCertificates")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCertificatesMessage, headers, settings, cb)
 	else
@@ -13617,7 +13617,7 @@ function M.RestoreDBClusterToPointInTimeAsync(RestoreDBClusterToPointInTimeMessa
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RestoreDBClusterToPointInTime")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreDBClusterToPointInTimeMessage, headers, settings, cb)
 	else
@@ -13653,7 +13653,7 @@ function M.DescribeEngineDefaultParametersAsync(DescribeEngineDefaultParametersM
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeEngineDefaultParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEngineDefaultParametersMessage, headers, settings, cb)
 	else
@@ -13689,7 +13689,7 @@ function M.DeleteDBClusterSnapshotAsync(DeleteDBClusterSnapshotMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteDBClusterSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDBClusterSnapshotMessage, headers, settings, cb)
 	else
@@ -13725,7 +13725,7 @@ function M.CreateDBParameterGroupAsync(CreateDBParameterGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateDBParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDBParameterGroupMessage, headers, settings, cb)
 	else
@@ -13761,7 +13761,7 @@ function M.AuthorizeDBSecurityGroupIngressAsync(AuthorizeDBSecurityGroupIngressM
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AuthorizeDBSecurityGroupIngress")
 	if request_handler then
 		request_handler(settings.uri, "/", AuthorizeDBSecurityGroupIngressMessage, headers, settings, cb)
 	else
@@ -13797,7 +13797,7 @@ function M.DescribeDBSubnetGroupsAsync(DescribeDBSubnetGroupsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeDBSubnetGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBSubnetGroupsMessage, headers, settings, cb)
 	else
@@ -13833,7 +13833,7 @@ function M.DescribeDBEngineVersionsAsync(DescribeDBEngineVersionsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeDBEngineVersions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBEngineVersionsMessage, headers, settings, cb)
 	else
@@ -13869,7 +13869,7 @@ function M.CopyDBSnapshotAsync(CopyDBSnapshotMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CopyDBSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", CopyDBSnapshotMessage, headers, settings, cb)
 	else
@@ -13905,7 +13905,7 @@ function M.StopDBClusterAsync(StopDBClusterMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "StopDBCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", StopDBClusterMessage, headers, settings, cb)
 	else
@@ -13941,7 +13941,7 @@ function M.DeleteEventSubscriptionAsync(DeleteEventSubscriptionMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteEventSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEventSubscriptionMessage, headers, settings, cb)
 	else
@@ -13977,7 +13977,7 @@ function M.CreateDBInstanceReadReplicaAsync(CreateDBInstanceReadReplicaMessage, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateDBInstanceReadReplica")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDBInstanceReadReplicaMessage, headers, settings, cb)
 	else
@@ -14013,7 +14013,7 @@ function M.CreateDBClusterSnapshotAsync(CreateDBClusterSnapshotMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateDBClusterSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDBClusterSnapshotMessage, headers, settings, cb)
 	else
@@ -14049,7 +14049,7 @@ function M.DescribeReservedDBInstancesOfferingsAsync(DescribeReservedDBInstances
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeReservedDBInstancesOfferings")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedDBInstancesOfferingsMessage, headers, settings, cb)
 	else
@@ -14085,7 +14085,7 @@ function M.DeleteDBClusterAsync(DeleteDBClusterMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteDBCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDBClusterMessage, headers, settings, cb)
 	else
@@ -14121,7 +14121,7 @@ function M.ResetDBClusterParameterGroupAsync(ResetDBClusterParameterGroupMessage
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ResetDBClusterParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetDBClusterParameterGroupMessage, headers, settings, cb)
 	else
@@ -14157,7 +14157,7 @@ function M.ListTagsForResourceAsync(ListTagsForResourceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListTagsForResource")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForResourceMessage, headers, settings, cb)
 	else
@@ -14193,7 +14193,7 @@ function M.ModifyDBSnapshotAsync(ModifyDBSnapshotMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyDBSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyDBSnapshotMessage, headers, settings, cb)
 	else
@@ -14229,7 +14229,7 @@ function M.DeleteDBSubnetGroupAsync(DeleteDBSubnetGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteDBSubnetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDBSubnetGroupMessage, headers, settings, cb)
 	else
@@ -14265,7 +14265,7 @@ function M.RestoreDBInstanceFromDBSnapshotAsync(RestoreDBInstanceFromDBSnapshotM
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RestoreDBInstanceFromDBSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreDBInstanceFromDBSnapshotMessage, headers, settings, cb)
 	else
@@ -14301,7 +14301,7 @@ function M.DescribeOptionGroupsAsync(DescribeOptionGroupsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeOptionGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeOptionGroupsMessage, headers, settings, cb)
 	else
@@ -14337,7 +14337,7 @@ function M.RestoreDBClusterFromS3Async(RestoreDBClusterFromS3Message, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RestoreDBClusterFromS3")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreDBClusterFromS3Message, headers, settings, cb)
 	else
@@ -14373,7 +14373,7 @@ function M.DeleteDBInstanceAsync(DeleteDBInstanceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteDBInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDBInstanceMessage, headers, settings, cb)
 	else
@@ -14409,7 +14409,7 @@ function M.CreateDBClusterParameterGroupAsync(CreateDBClusterParameterGroupMessa
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateDBClusterParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDBClusterParameterGroupMessage, headers, settings, cb)
 	else
@@ -14445,7 +14445,7 @@ function M.DeleteDBParameterGroupAsync(DeleteDBParameterGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteDBParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDBParameterGroupMessage, headers, settings, cb)
 	else
@@ -14481,7 +14481,7 @@ function M.DescribeEventCategoriesAsync(DescribeEventCategoriesMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeEventCategories")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventCategoriesMessage, headers, settings, cb)
 	else
@@ -14517,7 +14517,7 @@ function M.DescribeDBClusterBacktracksAsync(DescribeDBClusterBacktracksMessage, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeDBClusterBacktracks")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBClusterBacktracksMessage, headers, settings, cb)
 	else
@@ -14553,7 +14553,7 @@ function M.AddTagsToResourceAsync(AddTagsToResourceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AddTagsToResource")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToResourceMessage, headers, settings, cb)
 	else
@@ -14589,7 +14589,7 @@ function M.ModifyOptionGroupAsync(ModifyOptionGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyOptionGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyOptionGroupMessage, headers, settings, cb)
 	else
@@ -14625,7 +14625,7 @@ function M.DescribeDBLogFilesAsync(DescribeDBLogFilesMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeDBLogFiles")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBLogFilesMessage, headers, settings, cb)
 	else
@@ -14661,7 +14661,7 @@ function M.BacktrackDBClusterAsync(BacktrackDBClusterMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "BacktrackDBCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", BacktrackDBClusterMessage, headers, settings, cb)
 	else
@@ -14697,7 +14697,7 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RemoveTagsFromResource")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromResourceMessage, headers, settings, cb)
 	else
@@ -14733,7 +14733,7 @@ function M.DescribeReservedDBInstancesAsync(DescribeReservedDBInstancesMessage, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeReservedDBInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedDBInstancesMessage, headers, settings, cb)
 	else
@@ -14769,7 +14769,7 @@ function M.CopyOptionGroupAsync(CopyOptionGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CopyOptionGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CopyOptionGroupMessage, headers, settings, cb)
 	else
@@ -14805,7 +14805,7 @@ function M.CreateDBInstanceAsync(CreateDBInstanceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateDBInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDBInstanceMessage, headers, settings, cb)
 	else
@@ -14841,7 +14841,7 @@ function M.ModifyEventSubscriptionAsync(ModifyEventSubscriptionMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyEventSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyEventSubscriptionMessage, headers, settings, cb)
 	else
@@ -14877,7 +14877,7 @@ function M.ModifyDBSubnetGroupAsync(ModifyDBSubnetGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyDBSubnetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyDBSubnetGroupMessage, headers, settings, cb)
 	else
@@ -14913,7 +14913,7 @@ function M.DeleteDBSecurityGroupAsync(DeleteDBSecurityGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteDBSecurityGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDBSecurityGroupMessage, headers, settings, cb)
 	else
@@ -14949,7 +14949,7 @@ function M.RestoreDBInstanceToPointInTimeAsync(RestoreDBInstanceToPointInTimeMes
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RestoreDBInstanceToPointInTime")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreDBInstanceToPointInTimeMessage, headers, settings, cb)
 	else
@@ -14985,7 +14985,7 @@ function M.AddSourceIdentifierToSubscriptionAsync(AddSourceIdentifierToSubscript
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AddSourceIdentifierToSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", AddSourceIdentifierToSubscriptionMessage, headers, settings, cb)
 	else
@@ -15021,7 +15021,7 @@ function M.CopyDBClusterParameterGroupAsync(CopyDBClusterParameterGroupMessage, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CopyDBClusterParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CopyDBClusterParameterGroupMessage, headers, settings, cb)
 	else
@@ -15057,7 +15057,7 @@ function M.StartDBInstanceAsync(StartDBInstanceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "StartDBInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", StartDBInstanceMessage, headers, settings, cb)
 	else
@@ -15093,7 +15093,7 @@ function M.DescribeDBClusterSnapshotAttributesAsync(DescribeDBClusterSnapshotAtt
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeDBClusterSnapshotAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBClusterSnapshotAttributesMessage, headers, settings, cb)
 	else
@@ -15129,7 +15129,7 @@ function M.RestoreDBClusterFromSnapshotAsync(RestoreDBClusterFromSnapshotMessage
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RestoreDBClusterFromSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreDBClusterFromSnapshotMessage, headers, settings, cb)
 	else
@@ -15165,7 +15165,7 @@ function M.DescribeDBParametersAsync(DescribeDBParametersMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeDBParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBParametersMessage, headers, settings, cb)
 	else
@@ -15201,7 +15201,7 @@ function M.PromoteReadReplicaDBClusterAsync(PromoteReadReplicaDBClusterMessage, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PromoteReadReplicaDBCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", PromoteReadReplicaDBClusterMessage, headers, settings, cb)
 	else
@@ -15237,7 +15237,7 @@ function M.DescribeDBClusterParametersAsync(DescribeDBClusterParametersMessage, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeDBClusterParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBClusterParametersMessage, headers, settings, cb)
 	else
@@ -15273,7 +15273,7 @@ function M.DeleteDBSnapshotAsync(DeleteDBSnapshotMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteDBSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDBSnapshotMessage, headers, settings, cb)
 	else
@@ -15309,7 +15309,7 @@ function M.DescribeEventsAsync(DescribeEventsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventsMessage, headers, settings, cb)
 	else
@@ -15345,7 +15345,7 @@ function M.DescribeEventSubscriptionsAsync(DescribeEventSubscriptionsMessage, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeEventSubscriptions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventSubscriptionsMessage, headers, settings, cb)
 	else
@@ -15381,7 +15381,7 @@ function M.DeleteOptionGroupAsync(DeleteOptionGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteOptionGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteOptionGroupMessage, headers, settings, cb)
 	else
@@ -15417,7 +15417,7 @@ function M.PromoteReadReplicaAsync(PromoteReadReplicaMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PromoteReadReplica")
 	if request_handler then
 		request_handler(settings.uri, "/", PromoteReadReplicaMessage, headers, settings, cb)
 	else
@@ -15453,7 +15453,7 @@ function M.AddRoleToDBClusterAsync(AddRoleToDBClusterMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AddRoleToDBCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", AddRoleToDBClusterMessage, headers, settings, cb)
 	else
@@ -15489,7 +15489,7 @@ function M.ModifyDBSnapshotAttributeAsync(ModifyDBSnapshotAttributeMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyDBSnapshotAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyDBSnapshotAttributeMessage, headers, settings, cb)
 	else
@@ -15525,7 +15525,7 @@ function M.DescribeDBParameterGroupsAsync(DescribeDBParameterGroupsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeDBParameterGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBParameterGroupsMessage, headers, settings, cb)
 	else
@@ -15561,7 +15561,7 @@ function M.ModifyDBClusterParameterGroupAsync(ModifyDBClusterParameterGroupMessa
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyDBClusterParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyDBClusterParameterGroupMessage, headers, settings, cb)
 	else
@@ -15597,7 +15597,7 @@ function M.FailoverDBClusterAsync(FailoverDBClusterMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "FailoverDBCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", FailoverDBClusterMessage, headers, settings, cb)
 	else
@@ -15633,7 +15633,7 @@ function M.ApplyPendingMaintenanceActionAsync(ApplyPendingMaintenanceActionMessa
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ApplyPendingMaintenanceAction")
 	if request_handler then
 		request_handler(settings.uri, "/", ApplyPendingMaintenanceActionMessage, headers, settings, cb)
 	else
@@ -15669,7 +15669,7 @@ function M.DescribeDBInstancesAsync(DescribeDBInstancesMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeDBInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBInstancesMessage, headers, settings, cb)
 	else
@@ -15705,7 +15705,7 @@ function M.PurchaseReservedDBInstancesOfferingAsync(PurchaseReservedDBInstancesO
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PurchaseReservedDBInstancesOffering")
 	if request_handler then
 		request_handler(settings.uri, "/", PurchaseReservedDBInstancesOfferingMessage, headers, settings, cb)
 	else
@@ -15741,7 +15741,7 @@ function M.DescribeOrderableDBInstanceOptionsAsync(DescribeOrderableDBInstanceOp
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeOrderableDBInstanceOptions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeOrderableDBInstanceOptionsMessage, headers, settings, cb)
 	else
@@ -15777,7 +15777,7 @@ function M.RestoreDBInstanceFromS3Async(RestoreDBInstanceFromS3Message, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RestoreDBInstanceFromS3")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreDBInstanceFromS3Message, headers, settings, cb)
 	else
@@ -15813,7 +15813,7 @@ function M.CreateOptionGroupAsync(CreateOptionGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateOptionGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateOptionGroupMessage, headers, settings, cb)
 	else
@@ -15849,7 +15849,7 @@ function M.DescribeOptionGroupOptionsAsync(DescribeOptionGroupOptionsMessage, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeOptionGroupOptions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeOptionGroupOptionsMessage, headers, settings, cb)
 	else
@@ -15885,7 +15885,7 @@ function M.ResetDBParameterGroupAsync(ResetDBParameterGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ResetDBParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetDBParameterGroupMessage, headers, settings, cb)
 	else
@@ -15921,7 +15921,7 @@ function M.DescribeEngineDefaultClusterParametersAsync(DescribeEngineDefaultClus
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeEngineDefaultClusterParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEngineDefaultClusterParametersMessage, headers, settings, cb)
 	else
@@ -15957,7 +15957,7 @@ function M.CreateDBSnapshotAsync(CreateDBSnapshotMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateDBSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDBSnapshotMessage, headers, settings, cb)
 	else
@@ -15993,7 +15993,7 @@ function M.CreateDBClusterAsync(CreateDBClusterMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateDBCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDBClusterMessage, headers, settings, cb)
 	else
@@ -16029,7 +16029,7 @@ function M.DescribeAccountAttributesAsync(DescribeAccountAttributesMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeAccountAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAccountAttributesMessage, headers, settings, cb)
 	else
@@ -16065,7 +16065,7 @@ function M.DescribeDBSnapshotsAsync(DescribeDBSnapshotsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeDBSnapshots")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBSnapshotsMessage, headers, settings, cb)
 	else
@@ -16101,7 +16101,7 @@ function M.ModifyDBClusterSnapshotAttributeAsync(ModifyDBClusterSnapshotAttribut
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyDBClusterSnapshotAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyDBClusterSnapshotAttributeMessage, headers, settings, cb)
 	else
@@ -16137,7 +16137,7 @@ function M.CreateDBSecurityGroupAsync(CreateDBSecurityGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateDBSecurityGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDBSecurityGroupMessage, headers, settings, cb)
 	else
@@ -16173,7 +16173,7 @@ function M.ModifyCurrentDBClusterCapacityAsync(ModifyCurrentDBClusterCapacityMes
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyCurrentDBClusterCapacity")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyCurrentDBClusterCapacityMessage, headers, settings, cb)
 	else
@@ -16209,7 +16209,7 @@ function M.DescribeValidDBInstanceModificationsAsync(DescribeValidDBInstanceModi
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeValidDBInstanceModifications")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeValidDBInstanceModificationsMessage, headers, settings, cb)
 	else
@@ -16245,7 +16245,7 @@ function M.StopDBInstanceAsync(StopDBInstanceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "StopDBInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", StopDBInstanceMessage, headers, settings, cb)
 	else
@@ -16281,7 +16281,7 @@ function M.RemoveRoleFromDBClusterAsync(RemoveRoleFromDBClusterMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RemoveRoleFromDBCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveRoleFromDBClusterMessage, headers, settings, cb)
 	else
@@ -16317,7 +16317,7 @@ function M.RevokeDBSecurityGroupIngressAsync(RevokeDBSecurityGroupIngressMessage
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RevokeDBSecurityGroupIngress")
 	if request_handler then
 		request_handler(settings.uri, "/", RevokeDBSecurityGroupIngressMessage, headers, settings, cb)
 	else
@@ -16353,7 +16353,7 @@ function M.CreateEventSubscriptionAsync(CreateEventSubscriptionMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateEventSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateEventSubscriptionMessage, headers, settings, cb)
 	else
@@ -16389,7 +16389,7 @@ function M.CopyDBParameterGroupAsync(CopyDBParameterGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CopyDBParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CopyDBParameterGroupMessage, headers, settings, cb)
 	else
@@ -16425,7 +16425,7 @@ function M.RebootDBInstanceAsync(RebootDBInstanceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RebootDBInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", RebootDBInstanceMessage, headers, settings, cb)
 	else
@@ -16461,7 +16461,7 @@ function M.CreateDBSubnetGroupAsync(CreateDBSubnetGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateDBSubnetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDBSubnetGroupMessage, headers, settings, cb)
 	else
@@ -16497,7 +16497,7 @@ function M.ModifyDBClusterAsync(ModifyDBClusterMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyDBCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyDBClusterMessage, headers, settings, cb)
 	else
@@ -16533,7 +16533,7 @@ function M.DescribeDBSnapshotAttributesAsync(DescribeDBSnapshotAttributesMessage
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeDBSnapshotAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBSnapshotAttributesMessage, headers, settings, cb)
 	else
@@ -16569,7 +16569,7 @@ function M.DescribeSourceRegionsAsync(DescribeSourceRegionsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeSourceRegions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSourceRegionsMessage, headers, settings, cb)
 	else
@@ -16605,7 +16605,7 @@ function M.DownloadDBLogFilePortionAsync(DownloadDBLogFilePortionMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DownloadDBLogFilePortion")
 	if request_handler then
 		request_handler(settings.uri, "/", DownloadDBLogFilePortionMessage, headers, settings, cb)
 	else
@@ -16641,7 +16641,7 @@ function M.DescribeDBClustersAsync(DescribeDBClustersMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeDBClusters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBClustersMessage, headers, settings, cb)
 	else
@@ -16677,7 +16677,7 @@ function M.DescribeDBClusterSnapshotsAsync(DescribeDBClusterSnapshotsMessage, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeDBClusterSnapshots")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBClusterSnapshotsMessage, headers, settings, cb)
 	else
@@ -16713,7 +16713,7 @@ function M.ModifyDBParameterGroupAsync(ModifyDBParameterGroupMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyDBParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyDBParameterGroupMessage, headers, settings, cb)
 	else
@@ -16749,7 +16749,7 @@ function M.StartDBClusterAsync(StartDBClusterMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "StartDBCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", StartDBClusterMessage, headers, settings, cb)
 	else
@@ -16785,7 +16785,7 @@ function M.DescribeDBSecurityGroupsAsync(DescribeDBSecurityGroupsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeDBSecurityGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBSecurityGroupsMessage, headers, settings, cb)
 	else
@@ -16821,7 +16821,7 @@ function M.DeleteDBClusterParameterGroupAsync(DeleteDBClusterParameterGroupMessa
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteDBClusterParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDBClusterParameterGroupMessage, headers, settings, cb)
 	else
@@ -16857,7 +16857,7 @@ function M.DescribePendingMaintenanceActionsAsync(DescribePendingMaintenanceActi
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribePendingMaintenanceActions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePendingMaintenanceActionsMessage, headers, settings, cb)
 	else
@@ -16893,7 +16893,7 @@ function M.DescribeDBClusterParameterGroupsAsync(DescribeDBClusterParameterGroup
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeDBClusterParameterGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBClusterParameterGroupsMessage, headers, settings, cb)
 	else
@@ -16929,7 +16929,7 @@ function M.CopyDBClusterSnapshotAsync(CopyDBClusterSnapshotMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CopyDBClusterSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", CopyDBClusterSnapshotMessage, headers, settings, cb)
 	else
@@ -16965,7 +16965,7 @@ function M.ModifyDBInstanceAsync(ModifyDBInstanceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyDBInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyDBInstanceMessage, headers, settings, cb)
 	else
@@ -17001,7 +17001,7 @@ function M.RemoveSourceIdentifierFromSubscriptionAsync(RemoveSourceIdentifierFro
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RemoveSourceIdentifierFromSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveSourceIdentifierFromSubscriptionMessage, headers, settings, cb)
 	else

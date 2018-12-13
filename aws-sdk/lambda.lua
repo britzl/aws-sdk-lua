@@ -3574,7 +3574,7 @@ function M.ListEventSourceMappingsAsync(ListEventSourceMappingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListEventSourceMappings")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/event-source-mappings/", ListEventSourceMappingsRequest, headers, settings, cb)
 	else
@@ -3610,7 +3610,7 @@ function M.DeleteFunctionAsync(DeleteFunctionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteFunction")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}", DeleteFunctionRequest, headers, settings, cb)
 	else
@@ -3646,7 +3646,7 @@ function M.UpdateEventSourceMappingAsync(UpdateEventSourceMappingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateEventSourceMapping")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/event-source-mappings/{UUID}", UpdateEventSourceMappingRequest, headers, settings, cb)
 	else
@@ -3682,7 +3682,7 @@ function M.UpdateAliasAsync(UpdateAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateAlias")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/aliases/{Name}", UpdateAliasRequest, headers, settings, cb)
 	else
@@ -3718,7 +3718,7 @@ function M.ListFunctionsAsync(ListFunctionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListFunctions")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/", ListFunctionsRequest, headers, settings, cb)
 	else
@@ -3754,7 +3754,7 @@ function M.CreateEventSourceMappingAsync(CreateEventSourceMappingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateEventSourceMapping")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/event-source-mappings/", CreateEventSourceMappingRequest, headers, settings, cb)
 	else
@@ -3790,7 +3790,7 @@ function M.GetFunctionConfigurationAsync(GetFunctionConfigurationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetFunctionConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/configuration", GetFunctionConfigurationRequest, headers, settings, cb)
 	else
@@ -3826,7 +3826,7 @@ function M.DeleteFunctionConcurrencyAsync(DeleteFunctionConcurrencyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteFunctionConcurrency")
 	if request_handler then
 		request_handler(settings.uri, "/2017-10-31/functions/{FunctionName}/concurrency", DeleteFunctionConcurrencyRequest, headers, settings, cb)
 	else
@@ -3862,7 +3862,7 @@ function M.ListAliasesAsync(ListAliasesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListAliases")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/aliases", ListAliasesRequest, headers, settings, cb)
 	else
@@ -3898,7 +3898,7 @@ function M.PutFunctionConcurrencyAsync(PutFunctionConcurrencyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PutFunctionConcurrency")
 	if request_handler then
 		request_handler(settings.uri, "/2017-10-31/functions/{FunctionName}/concurrency", PutFunctionConcurrencyRequest, headers, settings, cb)
 	else
@@ -3934,7 +3934,7 @@ function M.GetPolicyAsync(GetPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/policy", GetPolicyRequest, headers, settings, cb)
 	else
@@ -3970,7 +3970,7 @@ function M.InvokeAsync(InvocationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "Invoke")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/invocations", InvocationRequest, headers, settings, cb)
 	else
@@ -4006,7 +4006,7 @@ function M.PublishVersionAsync(PublishVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "PublishVersion")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/versions", PublishVersionRequest, headers, settings, cb)
 	else
@@ -4042,7 +4042,7 @@ function M.GetFunctionAsync(GetFunctionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetFunction")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}", GetFunctionRequest, headers, settings, cb)
 	else
@@ -4078,7 +4078,7 @@ function M.DeleteAliasAsync(DeleteAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteAlias")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/aliases/{Name}", DeleteAliasRequest, headers, settings, cb)
 	else
@@ -4114,7 +4114,7 @@ function M.AddPermissionAsync(AddPermissionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "AddPermission")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/policy", AddPermissionRequest, headers, settings, cb)
 	else
@@ -4150,7 +4150,7 @@ function M.ListVersionsByFunctionAsync(ListVersionsByFunctionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListVersionsByFunction")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/versions", ListVersionsByFunctionRequest, headers, settings, cb)
 	else
@@ -4186,7 +4186,7 @@ function M.RemovePermissionAsync(RemovePermissionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "RemovePermission")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/policy/{StatementId}", RemovePermissionRequest, headers, settings, cb)
 	else
@@ -4222,7 +4222,7 @@ function M.CreateAliasAsync(CreateAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateAlias")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/aliases", CreateAliasRequest, headers, settings, cb)
 	else
@@ -4258,7 +4258,7 @@ function M.ListTagsAsync(ListTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListTags")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-31/tags/{ARN}", ListTagsRequest, headers, settings, cb)
 	else
@@ -4294,7 +4294,7 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "TagResource")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-31/tags/{ARN}", TagResourceRequest, headers, settings, cb)
 	else
@@ -4330,7 +4330,7 @@ function M.DeleteEventSourceMappingAsync(DeleteEventSourceMappingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteEventSourceMapping")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/event-source-mappings/{UUID}", DeleteEventSourceMappingRequest, headers, settings, cb)
 	else
@@ -4366,7 +4366,7 @@ function M.UpdateFunctionConfigurationAsync(UpdateFunctionConfigurationRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateFunctionConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/configuration", UpdateFunctionConfigurationRequest, headers, settings, cb)
 	else
@@ -4402,7 +4402,7 @@ function M.GetEventSourceMappingAsync(GetEventSourceMappingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetEventSourceMapping")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/event-source-mappings/{UUID}", GetEventSourceMappingRequest, headers, settings, cb)
 	else
@@ -4438,7 +4438,7 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "UntagResource")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-31/tags/{ARN}", UntagResourceRequest, headers, settings, cb)
 	else
@@ -4474,7 +4474,7 @@ function M.GetAliasAsync(GetAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetAlias")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/aliases/{Name}", GetAliasRequest, headers, settings, cb)
 	else
@@ -4510,7 +4510,7 @@ function M.GetAccountSettingsAsync(GetAccountSettingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetAccountSettings")
 	if request_handler then
 		request_handler(settings.uri, "/2016-08-19/account-settings/", GetAccountSettingsRequest, headers, settings, cb)
 	else
@@ -4546,7 +4546,7 @@ function M.CreateFunctionAsync(CreateFunctionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateFunction")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions", CreateFunctionRequest, headers, settings, cb)
 	else
@@ -4582,7 +4582,7 @@ function M.UpdateFunctionCodeAsync(UpdateFunctionCodeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateFunctionCode")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/code", UpdateFunctionCodeRequest, headers, settings, cb)
 	else

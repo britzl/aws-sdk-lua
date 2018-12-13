@@ -474,7 +474,7 @@ function M.GenerateDataSetAsync(GenerateDataSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GenerateDataSet")
 	if request_handler then
 		request_handler(settings.uri, "/", GenerateDataSetRequest, headers, settings, cb)
 	else
@@ -510,7 +510,7 @@ function M.StartSupportDataExportAsync(StartSupportDataExportRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartSupportDataExport")
 	if request_handler then
 		request_handler(settings.uri, "/", StartSupportDataExportRequest, headers, settings, cb)
 	else

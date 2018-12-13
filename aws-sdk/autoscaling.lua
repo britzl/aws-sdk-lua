@@ -7037,7 +7037,7 @@ function M.DeleteTagsAsync(DeleteTagsType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteTags")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTagsType, headers, settings, cb)
 	else
@@ -7073,7 +7073,7 @@ function M.DescribeScalingActivitiesAsync(DescribeScalingActivitiesType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeScalingActivities")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeScalingActivitiesType, headers, settings, cb)
 	else
@@ -7109,7 +7109,7 @@ function M.CreateAutoScalingGroupAsync(CreateAutoScalingGroupType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateAutoScalingGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAutoScalingGroupType, headers, settings, cb)
 	else
@@ -7145,7 +7145,7 @@ function M.ExecutePolicyAsync(ExecutePolicyType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ExecutePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", ExecutePolicyType, headers, settings, cb)
 	else
@@ -7181,7 +7181,7 @@ function M.SetInstanceProtectionAsync(SetInstanceProtectionQuery, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetInstanceProtection")
 	if request_handler then
 		request_handler(settings.uri, "/", SetInstanceProtectionQuery, headers, settings, cb)
 	else
@@ -7217,7 +7217,7 @@ function M.DetachLoadBalancerTargetGroupsAsync(DetachLoadBalancerTargetGroupsTyp
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DetachLoadBalancerTargetGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachLoadBalancerTargetGroupsType, headers, settings, cb)
 	else
@@ -7253,7 +7253,7 @@ function M.DescribeNotificationConfigurationsAsync(DescribeNotificationConfigura
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeNotificationConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNotificationConfigurationsType, headers, settings, cb)
 	else
@@ -7289,7 +7289,7 @@ function M.DeleteAutoScalingGroupAsync(DeleteAutoScalingGroupType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteAutoScalingGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAutoScalingGroupType, headers, settings, cb)
 	else
@@ -7325,7 +7325,7 @@ function M.DeletePolicyAsync(DeletePolicyType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeletePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePolicyType, headers, settings, cb)
 	else
@@ -7361,7 +7361,7 @@ function M.ExitStandbyAsync(ExitStandbyQuery, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ExitStandby")
 	if request_handler then
 		request_handler(settings.uri, "/", ExitStandbyQuery, headers, settings, cb)
 	else
@@ -7397,7 +7397,7 @@ function M.SetInstanceHealthAsync(SetInstanceHealthQuery, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetInstanceHealth")
 	if request_handler then
 		request_handler(settings.uri, "/", SetInstanceHealthQuery, headers, settings, cb)
 	else
@@ -7433,7 +7433,7 @@ function M.CreateOrUpdateTagsAsync(CreateOrUpdateTagsType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateOrUpdateTags")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateOrUpdateTagsType, headers, settings, cb)
 	else
@@ -7465,7 +7465,7 @@ function M.DescribeScalingProcessTypesAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeScalingProcessTypes")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -7500,7 +7500,7 @@ function M.PutLifecycleHookAsync(PutLifecycleHookType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PutLifecycleHook")
 	if request_handler then
 		request_handler(settings.uri, "/", PutLifecycleHookType, headers, settings, cb)
 	else
@@ -7536,7 +7536,7 @@ function M.DetachLoadBalancersAsync(DetachLoadBalancersType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DetachLoadBalancers")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachLoadBalancersType, headers, settings, cb)
 	else
@@ -7572,7 +7572,7 @@ function M.AttachInstancesAsync(AttachInstancesQuery, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AttachInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachInstancesQuery, headers, settings, cb)
 	else
@@ -7608,7 +7608,7 @@ function M.PutScheduledUpdateGroupActionAsync(PutScheduledUpdateGroupActionType,
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PutScheduledUpdateGroupAction")
 	if request_handler then
 		request_handler(settings.uri, "/", PutScheduledUpdateGroupActionType, headers, settings, cb)
 	else
@@ -7644,7 +7644,7 @@ function M.PutScalingPolicyAsync(PutScalingPolicyType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PutScalingPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutScalingPolicyType, headers, settings, cb)
 	else
@@ -7680,7 +7680,7 @@ function M.DeleteScheduledActionAsync(DeleteScheduledActionType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteScheduledAction")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteScheduledActionType, headers, settings, cb)
 	else
@@ -7716,7 +7716,7 @@ function M.AttachLoadBalancersAsync(AttachLoadBalancersType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AttachLoadBalancers")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachLoadBalancersType, headers, settings, cb)
 	else
@@ -7752,7 +7752,7 @@ function M.DetachInstancesAsync(DetachInstancesQuery, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DetachInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachInstancesQuery, headers, settings, cb)
 	else
@@ -7784,7 +7784,7 @@ function M.DescribeAdjustmentTypesAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeAdjustmentTypes")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -7819,7 +7819,7 @@ function M.TerminateInstanceInAutoScalingGroupAsync(TerminateInstanceInAutoScali
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "TerminateInstanceInAutoScalingGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", TerminateInstanceInAutoScalingGroupType, headers, settings, cb)
 	else
@@ -7855,7 +7855,7 @@ function M.AttachLoadBalancerTargetGroupsAsync(AttachLoadBalancerTargetGroupsTyp
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AttachLoadBalancerTargetGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachLoadBalancerTargetGroupsType, headers, settings, cb)
 	else
@@ -7891,7 +7891,7 @@ function M.DescribeLoadBalancersAsync(DescribeLoadBalancersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeLoadBalancers")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLoadBalancersRequest, headers, settings, cb)
 	else
@@ -7927,7 +7927,7 @@ function M.CompleteLifecycleActionAsync(CompleteLifecycleActionType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CompleteLifecycleAction")
 	if request_handler then
 		request_handler(settings.uri, "/", CompleteLifecycleActionType, headers, settings, cb)
 	else
@@ -7959,7 +7959,7 @@ function M.DescribeMetricCollectionTypesAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeMetricCollectionTypes")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -7994,7 +7994,7 @@ function M.UpdateAutoScalingGroupAsync(UpdateAutoScalingGroupType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateAutoScalingGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAutoScalingGroupType, headers, settings, cb)
 	else
@@ -8030,7 +8030,7 @@ function M.RecordLifecycleActionHeartbeatAsync(RecordLifecycleActionHeartbeatTyp
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RecordLifecycleActionHeartbeat")
 	if request_handler then
 		request_handler(settings.uri, "/", RecordLifecycleActionHeartbeatType, headers, settings, cb)
 	else
@@ -8066,7 +8066,7 @@ function M.PutNotificationConfigurationAsync(PutNotificationConfigurationType, c
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "PutNotificationConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", PutNotificationConfigurationType, headers, settings, cb)
 	else
@@ -8102,7 +8102,7 @@ function M.ResumeProcessesAsync(ScalingProcessQuery, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ResumeProcesses")
 	if request_handler then
 		request_handler(settings.uri, "/", ScalingProcessQuery, headers, settings, cb)
 	else
@@ -8138,7 +8138,7 @@ function M.CreateLaunchConfigurationAsync(CreateLaunchConfigurationType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateLaunchConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLaunchConfigurationType, headers, settings, cb)
 	else
@@ -8170,7 +8170,7 @@ function M.DescribeLifecycleHookTypesAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeLifecycleHookTypes")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -8205,7 +8205,7 @@ function M.DescribeAutoScalingInstancesAsync(DescribeAutoScalingInstancesType, c
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeAutoScalingInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAutoScalingInstancesType, headers, settings, cb)
 	else
@@ -8241,7 +8241,7 @@ function M.DescribeTagsAsync(DescribeTagsType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeTags")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagsType, headers, settings, cb)
 	else
@@ -8277,7 +8277,7 @@ function M.BatchDeleteScheduledActionAsync(BatchDeleteScheduledActionType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "BatchDeleteScheduledAction")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchDeleteScheduledActionType, headers, settings, cb)
 	else
@@ -8313,7 +8313,7 @@ function M.DisableMetricsCollectionAsync(DisableMetricsCollectionQuery, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DisableMetricsCollection")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableMetricsCollectionQuery, headers, settings, cb)
 	else
@@ -8349,7 +8349,7 @@ function M.BatchPutScheduledUpdateGroupActionAsync(BatchPutScheduledUpdateGroupA
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "BatchPutScheduledUpdateGroupAction")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchPutScheduledUpdateGroupActionType, headers, settings, cb)
 	else
@@ -8385,7 +8385,7 @@ function M.DescribeLaunchConfigurationsAsync(LaunchConfigurationNamesType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeLaunchConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/", LaunchConfigurationNamesType, headers, settings, cb)
 	else
@@ -8421,7 +8421,7 @@ function M.EnterStandbyAsync(EnterStandbyQuery, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "EnterStandby")
 	if request_handler then
 		request_handler(settings.uri, "/", EnterStandbyQuery, headers, settings, cb)
 	else
@@ -8457,7 +8457,7 @@ function M.SetDesiredCapacityAsync(SetDesiredCapacityType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetDesiredCapacity")
 	if request_handler then
 		request_handler(settings.uri, "/", SetDesiredCapacityType, headers, settings, cb)
 	else
@@ -8493,7 +8493,7 @@ function M.DescribeLoadBalancerTargetGroupsAsync(DescribeLoadBalancerTargetGroup
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeLoadBalancerTargetGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLoadBalancerTargetGroupsRequest, headers, settings, cb)
 	else
@@ -8529,7 +8529,7 @@ function M.DeleteLaunchConfigurationAsync(LaunchConfigurationNameType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteLaunchConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", LaunchConfigurationNameType, headers, settings, cb)
 	else
@@ -8565,7 +8565,7 @@ function M.DeleteLifecycleHookAsync(DeleteLifecycleHookType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteLifecycleHook")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLifecycleHookType, headers, settings, cb)
 	else
@@ -8601,7 +8601,7 @@ function M.DescribePoliciesAsync(DescribePoliciesType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribePolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePoliciesType, headers, settings, cb)
 	else
@@ -8637,7 +8637,7 @@ function M.DescribeLifecycleHooksAsync(DescribeLifecycleHooksType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeLifecycleHooks")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLifecycleHooksType, headers, settings, cb)
 	else
@@ -8669,7 +8669,7 @@ function M.DescribeTerminationPolicyTypesAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeTerminationPolicyTypes")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -8704,7 +8704,7 @@ function M.DescribeScheduledActionsAsync(DescribeScheduledActionsType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeScheduledActions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeScheduledActionsType, headers, settings, cb)
 	else
@@ -8740,7 +8740,7 @@ function M.DescribeAutoScalingGroupsAsync(AutoScalingGroupNamesType, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeAutoScalingGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", AutoScalingGroupNamesType, headers, settings, cb)
 	else
@@ -8776,7 +8776,7 @@ function M.EnableMetricsCollectionAsync(EnableMetricsCollectionQuery, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "EnableMetricsCollection")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableMetricsCollectionQuery, headers, settings, cb)
 	else
@@ -8812,7 +8812,7 @@ function M.DeleteNotificationConfigurationAsync(DeleteNotificationConfigurationT
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteNotificationConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNotificationConfigurationType, headers, settings, cb)
 	else
@@ -8844,7 +8844,7 @@ function M.DescribeAutoScalingNotificationTypesAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeAutoScalingNotificationTypes")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -8879,7 +8879,7 @@ function M.SuspendProcessesAsync(ScalingProcessQuery, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SuspendProcesses")
 	if request_handler then
 		request_handler(settings.uri, "/", ScalingProcessQuery, headers, settings, cb)
 	else
@@ -8911,7 +8911,7 @@ function M.DescribeAccountLimitsAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeAccountLimits")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else

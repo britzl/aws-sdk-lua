@@ -1073,7 +1073,7 @@ function M.GetMediaForFragmentListAsync(GetMediaForFragmentListInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetMediaForFragmentList")
 	if request_handler then
 		request_handler(settings.uri, "/getMediaForFragmentList", GetMediaForFragmentListInput, headers, settings, cb)
 	else
@@ -1109,7 +1109,7 @@ function M.ListFragmentsAsync(ListFragmentsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListFragments")
 	if request_handler then
 		request_handler(settings.uri, "/listFragments", ListFragmentsInput, headers, settings, cb)
 	else
@@ -1145,7 +1145,7 @@ function M.GetHLSStreamingSessionURLAsync(GetHLSStreamingSessionURLInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetHLSStreamingSessionURL")
 	if request_handler then
 		request_handler(settings.uri, "/getHLSStreamingSessionURL", GetHLSStreamingSessionURLInput, headers, settings, cb)
 	else

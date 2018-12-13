@@ -5099,7 +5099,7 @@ function M.CreateBotVersionAsync(CreateBotVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateBotVersion")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{name}/versions", CreateBotVersionRequest, headers, settings, cb)
 	else
@@ -5135,7 +5135,7 @@ function M.DeleteBotAliasAsync(DeleteBotAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteBotAlias")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{botName}/aliases/{name}", DeleteBotAliasRequest, headers, settings, cb)
 	else
@@ -5171,7 +5171,7 @@ function M.GetIntentsAsync(GetIntentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetIntents")
 	if request_handler then
 		request_handler(settings.uri, "/intents/", GetIntentsRequest, headers, settings, cb)
 	else
@@ -5207,7 +5207,7 @@ function M.GetSlotTypesAsync(GetSlotTypesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSlotTypes")
 	if request_handler then
 		request_handler(settings.uri, "/slottypes/", GetSlotTypesRequest, headers, settings, cb)
 	else
@@ -5243,7 +5243,7 @@ function M.DeleteSlotTypeVersionAsync(DeleteSlotTypeVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteSlotTypeVersion")
 	if request_handler then
 		request_handler(settings.uri, "/slottypes/{name}/version/{version}", DeleteSlotTypeVersionRequest, headers, settings, cb)
 	else
@@ -5279,7 +5279,7 @@ function M.StartImportAsync(StartImportRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "StartImport")
 	if request_handler then
 		request_handler(settings.uri, "/imports/", StartImportRequest, headers, settings, cb)
 	else
@@ -5315,7 +5315,7 @@ function M.CreateSlotTypeVersionAsync(CreateSlotTypeVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateSlotTypeVersion")
 	if request_handler then
 		request_handler(settings.uri, "/slottypes/{name}/versions", CreateSlotTypeVersionRequest, headers, settings, cb)
 	else
@@ -5351,7 +5351,7 @@ function M.GetIntentVersionsAsync(GetIntentVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetIntentVersions")
 	if request_handler then
 		request_handler(settings.uri, "/intents/{name}/versions/", GetIntentVersionsRequest, headers, settings, cb)
 	else
@@ -5387,7 +5387,7 @@ function M.GetBuiltinSlotTypesAsync(GetBuiltinSlotTypesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetBuiltinSlotTypes")
 	if request_handler then
 		request_handler(settings.uri, "/builtins/slottypes/", GetBuiltinSlotTypesRequest, headers, settings, cb)
 	else
@@ -5423,7 +5423,7 @@ function M.CreateIntentVersionAsync(CreateIntentVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateIntentVersion")
 	if request_handler then
 		request_handler(settings.uri, "/intents/{name}/versions", CreateIntentVersionRequest, headers, settings, cb)
 	else
@@ -5459,7 +5459,7 @@ function M.GetUtterancesViewAsync(GetUtterancesViewRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetUtterancesView")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{botname}/utterances?view=aggregation", GetUtterancesViewRequest, headers, settings, cb)
 	else
@@ -5495,7 +5495,7 @@ function M.GetBotAsync(GetBotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetBot")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{name}/versions/{versionoralias}", GetBotRequest, headers, settings, cb)
 	else
@@ -5531,7 +5531,7 @@ function M.GetSlotTypeVersionsAsync(GetSlotTypeVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSlotTypeVersions")
 	if request_handler then
 		request_handler(settings.uri, "/slottypes/{name}/versions/", GetSlotTypeVersionsRequest, headers, settings, cb)
 	else
@@ -5567,7 +5567,7 @@ function M.DeleteIntentVersionAsync(DeleteIntentVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteIntentVersion")
 	if request_handler then
 		request_handler(settings.uri, "/intents/{name}/versions/{version}", DeleteIntentVersionRequest, headers, settings, cb)
 	else
@@ -5603,7 +5603,7 @@ function M.DeleteUtterancesAsync(DeleteUtterancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteUtterances")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{botName}/utterances/{userId}", DeleteUtterancesRequest, headers, settings, cb)
 	else
@@ -5639,7 +5639,7 @@ function M.GetBotAliasAsync(GetBotAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetBotAlias")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{botName}/aliases/{name}", GetBotAliasRequest, headers, settings, cb)
 	else
@@ -5675,7 +5675,7 @@ function M.DeleteIntentAsync(DeleteIntentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteIntent")
 	if request_handler then
 		request_handler(settings.uri, "/intents/{name}", DeleteIntentRequest, headers, settings, cb)
 	else
@@ -5711,7 +5711,7 @@ function M.GetImportAsync(GetImportRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetImport")
 	if request_handler then
 		request_handler(settings.uri, "/imports/{importId}", GetImportRequest, headers, settings, cb)
 	else
@@ -5747,7 +5747,7 @@ function M.GetBotVersionsAsync(GetBotVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetBotVersions")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{name}/versions/", GetBotVersionsRequest, headers, settings, cb)
 	else
@@ -5783,7 +5783,7 @@ function M.GetExportAsync(GetExportRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetExport")
 	if request_handler then
 		request_handler(settings.uri, "/exports/", GetExportRequest, headers, settings, cb)
 	else
@@ -5819,7 +5819,7 @@ function M.DeleteBotChannelAssociationAsync(DeleteBotChannelAssociationRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteBotChannelAssociation")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{botName}/aliases/{aliasName}/channels/{name}", DeleteBotChannelAssociationRequest, headers, settings, cb)
 	else
@@ -5855,7 +5855,7 @@ function M.DeleteBotVersionAsync(DeleteBotVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteBotVersion")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{name}/versions/{version}", DeleteBotVersionRequest, headers, settings, cb)
 	else
@@ -5891,7 +5891,7 @@ function M.GetBotChannelAssociationsAsync(GetBotChannelAssociationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetBotChannelAssociations")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{botName}/aliases/{aliasName}/channels/", GetBotChannelAssociationsRequest, headers, settings, cb)
 	else
@@ -5927,7 +5927,7 @@ function M.PutBotAsync(PutBotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PutBot")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{name}/versions/$LATEST", PutBotRequest, headers, settings, cb)
 	else
@@ -5963,7 +5963,7 @@ function M.GetBotChannelAssociationAsync(GetBotChannelAssociationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetBotChannelAssociation")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{botName}/aliases/{aliasName}/channels/{name}", GetBotChannelAssociationRequest, headers, settings, cb)
 	else
@@ -5999,7 +5999,7 @@ function M.GetBotAliasesAsync(GetBotAliasesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetBotAliases")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{botName}/aliases/", GetBotAliasesRequest, headers, settings, cb)
 	else
@@ -6035,7 +6035,7 @@ function M.DeleteBotAsync(DeleteBotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteBot")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{name}", DeleteBotRequest, headers, settings, cb)
 	else
@@ -6071,7 +6071,7 @@ function M.GetBuiltinIntentsAsync(GetBuiltinIntentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetBuiltinIntents")
 	if request_handler then
 		request_handler(settings.uri, "/builtins/intents/", GetBuiltinIntentsRequest, headers, settings, cb)
 	else
@@ -6107,7 +6107,7 @@ function M.GetBotsAsync(GetBotsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetBots")
 	if request_handler then
 		request_handler(settings.uri, "/bots/", GetBotsRequest, headers, settings, cb)
 	else
@@ -6143,7 +6143,7 @@ function M.DeleteSlotTypeAsync(DeleteSlotTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteSlotType")
 	if request_handler then
 		request_handler(settings.uri, "/slottypes/{name}", DeleteSlotTypeRequest, headers, settings, cb)
 	else
@@ -6179,7 +6179,7 @@ function M.GetSlotTypeAsync(GetSlotTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSlotType")
 	if request_handler then
 		request_handler(settings.uri, "/slottypes/{name}/versions/{version}", GetSlotTypeRequest, headers, settings, cb)
 	else
@@ -6215,7 +6215,7 @@ function M.GetIntentAsync(GetIntentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetIntent")
 	if request_handler then
 		request_handler(settings.uri, "/intents/{name}/versions/{version}", GetIntentRequest, headers, settings, cb)
 	else
@@ -6251,7 +6251,7 @@ function M.PutSlotTypeAsync(PutSlotTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PutSlotType")
 	if request_handler then
 		request_handler(settings.uri, "/slottypes/{name}/versions/$LATEST", PutSlotTypeRequest, headers, settings, cb)
 	else
@@ -6287,7 +6287,7 @@ function M.GetBuiltinIntentAsync(GetBuiltinIntentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetBuiltinIntent")
 	if request_handler then
 		request_handler(settings.uri, "/builtins/intents/{signature}", GetBuiltinIntentRequest, headers, settings, cb)
 	else
@@ -6323,7 +6323,7 @@ function M.PutIntentAsync(PutIntentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PutIntent")
 	if request_handler then
 		request_handler(settings.uri, "/intents/{name}/versions/$LATEST", PutIntentRequest, headers, settings, cb)
 	else
@@ -6359,7 +6359,7 @@ function M.PutBotAliasAsync(PutBotAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PutBotAlias")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{botName}/aliases/{name}", PutBotAliasRequest, headers, settings, cb)
 	else

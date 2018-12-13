@@ -11855,7 +11855,7 @@ function M.PurchaseOfferingAsync(PurchaseOfferingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "PurchaseOffering")
 	if request_handler then
 		request_handler(settings.uri, "/prod/offerings/{offeringId}/purchase", PurchaseOfferingRequest, headers, settings, cb)
 	else
@@ -11891,7 +11891,7 @@ function M.UpdateChannelAsync(UpdateChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateChannel")
 	if request_handler then
 		request_handler(settings.uri, "/prod/channels/{channelId}", UpdateChannelRequest, headers, settings, cb)
 	else
@@ -11927,7 +11927,7 @@ function M.ListOfferingsAsync(ListOfferingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListOfferings")
 	if request_handler then
 		request_handler(settings.uri, "/prod/offerings", ListOfferingsRequest, headers, settings, cb)
 	else
@@ -11963,7 +11963,7 @@ function M.CreateChannelAsync(CreateChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateChannel")
 	if request_handler then
 		request_handler(settings.uri, "/prod/channels", CreateChannelRequest, headers, settings, cb)
 	else
@@ -11999,7 +11999,7 @@ function M.DeleteInputSecurityGroupAsync(DeleteInputSecurityGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteInputSecurityGroup")
 	if request_handler then
 		request_handler(settings.uri, "/prod/inputSecurityGroups/{inputSecurityGroupId}", DeleteInputSecurityGroupRequest, headers, settings, cb)
 	else
@@ -12035,7 +12035,7 @@ function M.StopChannelAsync(StopChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "StopChannel")
 	if request_handler then
 		request_handler(settings.uri, "/prod/channels/{channelId}/stop", StopChannelRequest, headers, settings, cb)
 	else
@@ -12071,7 +12071,7 @@ function M.DescribeChannelAsync(DescribeChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeChannel")
 	if request_handler then
 		request_handler(settings.uri, "/prod/channels/{channelId}", DescribeChannelRequest, headers, settings, cb)
 	else
@@ -12107,7 +12107,7 @@ function M.ListInputsAsync(ListInputsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListInputs")
 	if request_handler then
 		request_handler(settings.uri, "/prod/inputs", ListInputsRequest, headers, settings, cb)
 	else
@@ -12143,7 +12143,7 @@ function M.ListInputSecurityGroupsAsync(ListInputSecurityGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListInputSecurityGroups")
 	if request_handler then
 		request_handler(settings.uri, "/prod/inputSecurityGroups", ListInputSecurityGroupsRequest, headers, settings, cb)
 	else
@@ -12179,7 +12179,7 @@ function M.DeleteChannelAsync(DeleteChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteChannel")
 	if request_handler then
 		request_handler(settings.uri, "/prod/channels/{channelId}", DeleteChannelRequest, headers, settings, cb)
 	else
@@ -12215,7 +12215,7 @@ function M.ListReservationsAsync(ListReservationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListReservations")
 	if request_handler then
 		request_handler(settings.uri, "/prod/reservations", ListReservationsRequest, headers, settings, cb)
 	else
@@ -12251,7 +12251,7 @@ function M.DescribeInputAsync(DescribeInputRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeInput")
 	if request_handler then
 		request_handler(settings.uri, "/prod/inputs/{inputId}", DescribeInputRequest, headers, settings, cb)
 	else
@@ -12287,7 +12287,7 @@ function M.DeleteInputAsync(DeleteInputRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteInput")
 	if request_handler then
 		request_handler(settings.uri, "/prod/inputs/{inputId}", DeleteInputRequest, headers, settings, cb)
 	else
@@ -12323,7 +12323,7 @@ function M.UpdateInputSecurityGroupAsync(UpdateInputSecurityGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateInputSecurityGroup")
 	if request_handler then
 		request_handler(settings.uri, "/prod/inputSecurityGroups/{inputSecurityGroupId}", UpdateInputSecurityGroupRequest, headers, settings, cb)
 	else
@@ -12359,7 +12359,7 @@ function M.CreateInputAsync(CreateInputRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateInput")
 	if request_handler then
 		request_handler(settings.uri, "/prod/inputs", CreateInputRequest, headers, settings, cb)
 	else
@@ -12395,7 +12395,7 @@ function M.DeleteReservationAsync(DeleteReservationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteReservation")
 	if request_handler then
 		request_handler(settings.uri, "/prod/reservations/{reservationId}", DeleteReservationRequest, headers, settings, cb)
 	else
@@ -12431,7 +12431,7 @@ function M.DescribeOfferingAsync(DescribeOfferingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeOffering")
 	if request_handler then
 		request_handler(settings.uri, "/prod/offerings/{offeringId}", DescribeOfferingRequest, headers, settings, cb)
 	else
@@ -12467,7 +12467,7 @@ function M.CreateInputSecurityGroupAsync(CreateInputSecurityGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateInputSecurityGroup")
 	if request_handler then
 		request_handler(settings.uri, "/prod/inputSecurityGroups", CreateInputSecurityGroupRequest, headers, settings, cb)
 	else
@@ -12503,7 +12503,7 @@ function M.DescribeInputSecurityGroupAsync(DescribeInputSecurityGroupRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeInputSecurityGroup")
 	if request_handler then
 		request_handler(settings.uri, "/prod/inputSecurityGroups/{inputSecurityGroupId}", DescribeInputSecurityGroupRequest, headers, settings, cb)
 	else
@@ -12539,7 +12539,7 @@ function M.DescribeReservationAsync(DescribeReservationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeReservation")
 	if request_handler then
 		request_handler(settings.uri, "/prod/reservations/{reservationId}", DescribeReservationRequest, headers, settings, cb)
 	else
@@ -12575,7 +12575,7 @@ function M.BatchUpdateScheduleAsync(BatchUpdateScheduleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "BatchUpdateSchedule")
 	if request_handler then
 		request_handler(settings.uri, "/prod/channels/{channelId}/schedule", BatchUpdateScheduleRequest, headers, settings, cb)
 	else
@@ -12611,7 +12611,7 @@ function M.ListChannelsAsync(ListChannelsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListChannels")
 	if request_handler then
 		request_handler(settings.uri, "/prod/channels", ListChannelsRequest, headers, settings, cb)
 	else
@@ -12647,7 +12647,7 @@ function M.UpdateInputAsync(UpdateInputRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateInput")
 	if request_handler then
 		request_handler(settings.uri, "/prod/inputs/{inputId}", UpdateInputRequest, headers, settings, cb)
 	else
@@ -12683,7 +12683,7 @@ function M.DescribeScheduleAsync(DescribeScheduleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeSchedule")
 	if request_handler then
 		request_handler(settings.uri, "/prod/channels/{channelId}/schedule", DescribeScheduleRequest, headers, settings, cb)
 	else
@@ -12719,7 +12719,7 @@ function M.StartChannelAsync(StartChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "StartChannel")
 	if request_handler then
 		request_handler(settings.uri, "/prod/channels/{channelId}/start", StartChannelRequest, headers, settings, cb)
 	else

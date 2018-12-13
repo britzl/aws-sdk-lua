@@ -2131,7 +2131,7 @@ function M.DescribeServersAsync(DescribeServersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeServers")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeServersRequest, headers, settings, cb)
 	else
@@ -2167,7 +2167,7 @@ function M.DescribeNodeAssociationStatusAsync(DescribeNodeAssociationStatusReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeNodeAssociationStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNodeAssociationStatusRequest, headers, settings, cb)
 	else
@@ -2203,7 +2203,7 @@ function M.DeleteServerAsync(DeleteServerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteServer")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteServerRequest, headers, settings, cb)
 	else
@@ -2239,7 +2239,7 @@ function M.DescribeBackupsAsync(DescribeBackupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeBackups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeBackupsRequest, headers, settings, cb)
 	else
@@ -2275,7 +2275,7 @@ function M.RestoreServerAsync(RestoreServerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RestoreServer")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreServerRequest, headers, settings, cb)
 	else
@@ -2311,7 +2311,7 @@ function M.UpdateServerEngineAttributesAsync(UpdateServerEngineAttributesRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateServerEngineAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateServerEngineAttributesRequest, headers, settings, cb)
 	else
@@ -2347,7 +2347,7 @@ function M.ExportServerEngineAttributeAsync(ExportServerEngineAttributeRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ExportServerEngineAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", ExportServerEngineAttributeRequest, headers, settings, cb)
 	else
@@ -2383,7 +2383,7 @@ function M.DescribeAccountAttributesAsync(DescribeAccountAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAccountAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAccountAttributesRequest, headers, settings, cb)
 	else
@@ -2419,7 +2419,7 @@ function M.DescribeEventsAsync(DescribeEventsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventsRequest, headers, settings, cb)
 	else
@@ -2455,7 +2455,7 @@ function M.DeleteBackupAsync(DeleteBackupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteBackup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteBackupRequest, headers, settings, cb)
 	else
@@ -2491,7 +2491,7 @@ function M.CreateServerAsync(CreateServerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateServer")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateServerRequest, headers, settings, cb)
 	else
@@ -2527,7 +2527,7 @@ function M.CreateBackupAsync(CreateBackupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateBackup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateBackupRequest, headers, settings, cb)
 	else
@@ -2563,7 +2563,7 @@ function M.StartMaintenanceAsync(StartMaintenanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartMaintenance")
 	if request_handler then
 		request_handler(settings.uri, "/", StartMaintenanceRequest, headers, settings, cb)
 	else
@@ -2599,7 +2599,7 @@ function M.UpdateServerAsync(UpdateServerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateServer")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateServerRequest, headers, settings, cb)
 	else
@@ -2635,7 +2635,7 @@ function M.AssociateNodeAsync(AssociateNodeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateNode")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateNodeRequest, headers, settings, cb)
 	else
@@ -2671,7 +2671,7 @@ function M.DisassociateNodeAsync(DisassociateNodeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateNode")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateNodeRequest, headers, settings, cb)
 	else

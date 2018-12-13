@@ -2483,7 +2483,7 @@ function M.DisassociateDRTRoleAsync(DisassociateDRTRoleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateDRTRole")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateDRTRoleRequest, headers, settings, cb)
 	else
@@ -2519,7 +2519,7 @@ function M.DeleteProtectionAsync(DeleteProtectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteProtection")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteProtectionRequest, headers, settings, cb)
 	else
@@ -2555,7 +2555,7 @@ function M.AssociateDRTLogBucketAsync(AssociateDRTLogBucketRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateDRTLogBucket")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateDRTLogBucketRequest, headers, settings, cb)
 	else
@@ -2591,7 +2591,7 @@ function M.GetSubscriptionStateAsync(GetSubscriptionStateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetSubscriptionState")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSubscriptionStateRequest, headers, settings, cb)
 	else
@@ -2627,7 +2627,7 @@ function M.DescribeEmergencyContactSettingsAsync(DescribeEmergencyContactSetting
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEmergencyContactSettings")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEmergencyContactSettingsRequest, headers, settings, cb)
 	else
@@ -2663,7 +2663,7 @@ function M.UpdateEmergencyContactSettingsAsync(UpdateEmergencyContactSettingsReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateEmergencyContactSettings")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateEmergencyContactSettingsRequest, headers, settings, cb)
 	else
@@ -2699,7 +2699,7 @@ function M.DescribeSubscriptionAsync(DescribeSubscriptionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSubscriptionRequest, headers, settings, cb)
 	else
@@ -2735,7 +2735,7 @@ function M.CreateSubscriptionAsync(CreateSubscriptionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSubscriptionRequest, headers, settings, cb)
 	else
@@ -2771,7 +2771,7 @@ function M.DescribeProtectionAsync(DescribeProtectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeProtection")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeProtectionRequest, headers, settings, cb)
 	else
@@ -2807,7 +2807,7 @@ function M.UpdateSubscriptionAsync(UpdateSubscriptionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSubscriptionRequest, headers, settings, cb)
 	else
@@ -2843,7 +2843,7 @@ function M.DescribeDRTAccessAsync(DescribeDRTAccessRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDRTAccess")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDRTAccessRequest, headers, settings, cb)
 	else
@@ -2879,7 +2879,7 @@ function M.DisassociateDRTLogBucketAsync(DisassociateDRTLogBucketRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateDRTLogBucket")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateDRTLogBucketRequest, headers, settings, cb)
 	else
@@ -2915,7 +2915,7 @@ function M.CreateProtectionAsync(CreateProtectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateProtection")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateProtectionRequest, headers, settings, cb)
 	else
@@ -2951,7 +2951,7 @@ function M.AssociateDRTRoleAsync(AssociateDRTRoleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateDRTRole")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateDRTRoleRequest, headers, settings, cb)
 	else
@@ -2987,7 +2987,7 @@ function M.ListProtectionsAsync(ListProtectionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListProtections")
 	if request_handler then
 		request_handler(settings.uri, "/", ListProtectionsRequest, headers, settings, cb)
 	else
@@ -3023,7 +3023,7 @@ function M.ListAttacksAsync(ListAttacksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAttacks")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAttacksRequest, headers, settings, cb)
 	else
@@ -3059,7 +3059,7 @@ function M.DescribeAttackAsync(DescribeAttackRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAttack")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAttackRequest, headers, settings, cb)
 	else

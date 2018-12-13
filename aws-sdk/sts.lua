@@ -1602,7 +1602,7 @@ function M.GetFederationTokenAsync(GetFederationTokenRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetFederationToken")
 	if request_handler then
 		request_handler(settings.uri, "/", GetFederationTokenRequest, headers, settings, cb)
 	else
@@ -1638,7 +1638,7 @@ function M.AssumeRoleAsync(AssumeRoleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AssumeRole")
 	if request_handler then
 		request_handler(settings.uri, "/", AssumeRoleRequest, headers, settings, cb)
 	else
@@ -1674,7 +1674,7 @@ function M.DecodeAuthorizationMessageAsync(DecodeAuthorizationMessageRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DecodeAuthorizationMessage")
 	if request_handler then
 		request_handler(settings.uri, "/", DecodeAuthorizationMessageRequest, headers, settings, cb)
 	else
@@ -1710,7 +1710,7 @@ function M.AssumeRoleWithWebIdentityAsync(AssumeRoleWithWebIdentityRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AssumeRoleWithWebIdentity")
 	if request_handler then
 		request_handler(settings.uri, "/", AssumeRoleWithWebIdentityRequest, headers, settings, cb)
 	else
@@ -1746,7 +1746,7 @@ function M.GetSessionTokenAsync(GetSessionTokenRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetSessionToken")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSessionTokenRequest, headers, settings, cb)
 	else
@@ -1782,7 +1782,7 @@ function M.GetCallerIdentityAsync(GetCallerIdentityRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetCallerIdentity")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCallerIdentityRequest, headers, settings, cb)
 	else
@@ -1818,7 +1818,7 @@ function M.AssumeRoleWithSAMLAsync(AssumeRoleWithSAMLRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AssumeRoleWithSAML")
 	if request_handler then
 		request_handler(settings.uri, "/", AssumeRoleWithSAMLRequest, headers, settings, cb)
 	else

@@ -6078,7 +6078,7 @@ function M.GetFindingsAsync(GetFindingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetFindings")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/findings/get", GetFindingsRequest, headers, settings, cb)
 	else
@@ -6114,7 +6114,7 @@ function M.ListIPSetsAsync(ListIPSetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListIPSets")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/ipset", ListIPSetsRequest, headers, settings, cb)
 	else
@@ -6150,7 +6150,7 @@ function M.UpdateDetectorAsync(UpdateDetectorRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateDetector")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}", UpdateDetectorRequest, headers, settings, cb)
 	else
@@ -6186,7 +6186,7 @@ function M.GetThreatIntelSetAsync(GetThreatIntelSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetThreatIntelSet")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/threatintelset/{threatIntelSetId}", GetThreatIntelSetRequest, headers, settings, cb)
 	else
@@ -6222,7 +6222,7 @@ function M.UpdateThreatIntelSetAsync(UpdateThreatIntelSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateThreatIntelSet")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/threatintelset/{threatIntelSetId}", UpdateThreatIntelSetRequest, headers, settings, cb)
 	else
@@ -6258,7 +6258,7 @@ function M.ListDetectorsAsync(ListDetectorsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListDetectors")
 	if request_handler then
 		request_handler(settings.uri, "/detector", ListDetectorsRequest, headers, settings, cb)
 	else
@@ -6294,7 +6294,7 @@ function M.ListInvitationsAsync(ListInvitationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListInvitations")
 	if request_handler then
 		request_handler(settings.uri, "/invitation", ListInvitationsRequest, headers, settings, cb)
 	else
@@ -6330,7 +6330,7 @@ function M.GetInvitationsCountAsync(GetInvitationsCountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetInvitationsCount")
 	if request_handler then
 		request_handler(settings.uri, "/invitation/count", GetInvitationsCountRequest, headers, settings, cb)
 	else
@@ -6366,7 +6366,7 @@ function M.DisassociateMembersAsync(DisassociateMembersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DisassociateMembers")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/member/disassociate", DisassociateMembersRequest, headers, settings, cb)
 	else
@@ -6402,7 +6402,7 @@ function M.UpdateFindingsFeedbackAsync(UpdateFindingsFeedbackRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateFindingsFeedback")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/findings/feedback", UpdateFindingsFeedbackRequest, headers, settings, cb)
 	else
@@ -6438,7 +6438,7 @@ function M.ListFiltersAsync(ListFiltersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListFilters")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/filter", ListFiltersRequest, headers, settings, cb)
 	else
@@ -6474,7 +6474,7 @@ function M.GetMasterAccountAsync(GetMasterAccountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetMasterAccount")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/master", GetMasterAccountRequest, headers, settings, cb)
 	else
@@ -6510,7 +6510,7 @@ function M.ArchiveFindingsAsync(ArchiveFindingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ArchiveFindings")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/findings/archive", ArchiveFindingsRequest, headers, settings, cb)
 	else
@@ -6546,7 +6546,7 @@ function M.GetIPSetAsync(GetIPSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetIPSet")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/ipset/{ipSetId}", GetIPSetRequest, headers, settings, cb)
 	else
@@ -6582,7 +6582,7 @@ function M.DisassociateFromMasterAccountAsync(DisassociateFromMasterAccountReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DisassociateFromMasterAccount")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/master/disassociate", DisassociateFromMasterAccountRequest, headers, settings, cb)
 	else
@@ -6618,7 +6618,7 @@ function M.GetMembersAsync(GetMembersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetMembers")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/member/get", GetMembersRequest, headers, settings, cb)
 	else
@@ -6654,7 +6654,7 @@ function M.ListFindingsAsync(ListFindingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListFindings")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/findings", ListFindingsRequest, headers, settings, cb)
 	else
@@ -6690,7 +6690,7 @@ function M.StartMonitoringMembersAsync(StartMonitoringMembersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "StartMonitoringMembers")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/member/start", StartMonitoringMembersRequest, headers, settings, cb)
 	else
@@ -6726,7 +6726,7 @@ function M.CreateFilterAsync(CreateFilterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateFilter")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/filter", CreateFilterRequest, headers, settings, cb)
 	else
@@ -6762,7 +6762,7 @@ function M.CreateDetectorAsync(CreateDetectorRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateDetector")
 	if request_handler then
 		request_handler(settings.uri, "/detector", CreateDetectorRequest, headers, settings, cb)
 	else
@@ -6798,7 +6798,7 @@ function M.ListMembersAsync(ListMembersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListMembers")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/member", ListMembersRequest, headers, settings, cb)
 	else
@@ -6834,7 +6834,7 @@ function M.DeleteMembersAsync(DeleteMembersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DeleteMembers")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/member/delete", DeleteMembersRequest, headers, settings, cb)
 	else
@@ -6870,7 +6870,7 @@ function M.ListThreatIntelSetsAsync(ListThreatIntelSetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListThreatIntelSets")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/threatintelset", ListThreatIntelSetsRequest, headers, settings, cb)
 	else
@@ -6906,7 +6906,7 @@ function M.CreateIPSetAsync(CreateIPSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateIPSet")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/ipset", CreateIPSetRequest, headers, settings, cb)
 	else
@@ -6942,7 +6942,7 @@ function M.UnarchiveFindingsAsync(UnarchiveFindingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UnarchiveFindings")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/findings/unarchive", UnarchiveFindingsRequest, headers, settings, cb)
 	else
@@ -6978,7 +6978,7 @@ function M.UpdateFilterAsync(UpdateFilterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateFilter")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/filter/{filterName}", UpdateFilterRequest, headers, settings, cb)
 	else
@@ -7014,7 +7014,7 @@ function M.DeclineInvitationsAsync(DeclineInvitationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DeclineInvitations")
 	if request_handler then
 		request_handler(settings.uri, "/invitation/decline", DeclineInvitationsRequest, headers, settings, cb)
 	else
@@ -7050,7 +7050,7 @@ function M.AcceptInvitationAsync(AcceptInvitationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "AcceptInvitation")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/master", AcceptInvitationRequest, headers, settings, cb)
 	else
@@ -7086,7 +7086,7 @@ function M.CreateMembersAsync(CreateMembersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateMembers")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/member", CreateMembersRequest, headers, settings, cb)
 	else
@@ -7122,7 +7122,7 @@ function M.GetDetectorAsync(GetDetectorRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDetector")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}", GetDetectorRequest, headers, settings, cb)
 	else
@@ -7158,7 +7158,7 @@ function M.CreateSampleFindingsAsync(CreateSampleFindingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateSampleFindings")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/findings/create", CreateSampleFindingsRequest, headers, settings, cb)
 	else
@@ -7194,7 +7194,7 @@ function M.GetFilterAsync(GetFilterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetFilter")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/filter/{filterName}", GetFilterRequest, headers, settings, cb)
 	else
@@ -7230,7 +7230,7 @@ function M.DeleteDetectorAsync(DeleteDetectorRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteDetector")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}", DeleteDetectorRequest, headers, settings, cb)
 	else
@@ -7266,7 +7266,7 @@ function M.GetFindingsStatisticsAsync(GetFindingsStatisticsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetFindingsStatistics")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/findings/statistics", GetFindingsStatisticsRequest, headers, settings, cb)
 	else
@@ -7302,7 +7302,7 @@ function M.InviteMembersAsync(InviteMembersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "InviteMembers")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/member/invite", InviteMembersRequest, headers, settings, cb)
 	else
@@ -7338,7 +7338,7 @@ function M.DeleteInvitationsAsync(DeleteInvitationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DeleteInvitations")
 	if request_handler then
 		request_handler(settings.uri, "/invitation/delete", DeleteInvitationsRequest, headers, settings, cb)
 	else
@@ -7374,7 +7374,7 @@ function M.CreateThreatIntelSetAsync(CreateThreatIntelSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateThreatIntelSet")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/threatintelset", CreateThreatIntelSetRequest, headers, settings, cb)
 	else
@@ -7410,7 +7410,7 @@ function M.UpdateIPSetAsync(UpdateIPSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateIPSet")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/ipset/{ipSetId}", UpdateIPSetRequest, headers, settings, cb)
 	else
@@ -7446,7 +7446,7 @@ function M.StopMonitoringMembersAsync(StopMonitoringMembersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "StopMonitoringMembers")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/member/stop", StopMonitoringMembersRequest, headers, settings, cb)
 	else
@@ -7482,7 +7482,7 @@ function M.DeleteFilterAsync(DeleteFilterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteFilter")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/filter/{filterName}", DeleteFilterRequest, headers, settings, cb)
 	else
@@ -7518,7 +7518,7 @@ function M.DeleteIPSetAsync(DeleteIPSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteIPSet")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/ipset/{ipSetId}", DeleteIPSetRequest, headers, settings, cb)
 	else
@@ -7554,7 +7554,7 @@ function M.DeleteThreatIntelSetAsync(DeleteThreatIntelSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteThreatIntelSet")
 	if request_handler then
 		request_handler(settings.uri, "/detector/{detectorId}/threatintelset/{threatIntelSetId}", DeleteThreatIntelSetRequest, headers, settings, cb)
 	else

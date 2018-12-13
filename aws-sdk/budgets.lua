@@ -2133,7 +2133,7 @@ function M.DescribeBudgetAsync(DescribeBudgetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeBudget")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeBudgetRequest, headers, settings, cb)
 	else
@@ -2169,7 +2169,7 @@ function M.DescribeNotificationsForBudgetAsync(DescribeNotificationsForBudgetReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeNotificationsForBudget")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNotificationsForBudgetRequest, headers, settings, cb)
 	else
@@ -2205,7 +2205,7 @@ function M.CreateSubscriberAsync(CreateSubscriberRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateSubscriber")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSubscriberRequest, headers, settings, cb)
 	else
@@ -2241,7 +2241,7 @@ function M.CreateNotificationAsync(CreateNotificationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateNotification")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNotificationRequest, headers, settings, cb)
 	else
@@ -2277,7 +2277,7 @@ function M.UpdateNotificationAsync(UpdateNotificationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateNotification")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateNotificationRequest, headers, settings, cb)
 	else
@@ -2313,7 +2313,7 @@ function M.UpdateBudgetAsync(UpdateBudgetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateBudget")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateBudgetRequest, headers, settings, cb)
 	else
@@ -2349,7 +2349,7 @@ function M.CreateBudgetAsync(CreateBudgetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateBudget")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateBudgetRequest, headers, settings, cb)
 	else
@@ -2385,7 +2385,7 @@ function M.DeleteNotificationAsync(DeleteNotificationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteNotification")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNotificationRequest, headers, settings, cb)
 	else
@@ -2421,7 +2421,7 @@ function M.DescribeSubscribersForNotificationAsync(DescribeSubscribersForNotific
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeSubscribersForNotification")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSubscribersForNotificationRequest, headers, settings, cb)
 	else
@@ -2457,7 +2457,7 @@ function M.DeleteSubscriberAsync(DeleteSubscriberRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteSubscriber")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSubscriberRequest, headers, settings, cb)
 	else
@@ -2493,7 +2493,7 @@ function M.DescribeBudgetsAsync(DescribeBudgetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeBudgets")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeBudgetsRequest, headers, settings, cb)
 	else
@@ -2529,7 +2529,7 @@ function M.DeleteBudgetAsync(DeleteBudgetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteBudget")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteBudgetRequest, headers, settings, cb)
 	else
@@ -2565,7 +2565,7 @@ function M.UpdateSubscriberAsync(UpdateSubscriberRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateSubscriber")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSubscriberRequest, headers, settings, cb)
 	else

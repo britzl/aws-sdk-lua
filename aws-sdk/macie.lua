@@ -1226,7 +1226,7 @@ function M.ListS3ResourcesAsync(ListS3ResourcesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListS3Resources")
 	if request_handler then
 		request_handler(settings.uri, "/", ListS3ResourcesRequest, headers, settings, cb)
 	else
@@ -1262,7 +1262,7 @@ function M.DisassociateMemberAccountAsync(DisassociateMemberAccountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateMemberAccount")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateMemberAccountRequest, headers, settings, cb)
 	else
@@ -1298,7 +1298,7 @@ function M.AssociateMemberAccountAsync(AssociateMemberAccountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateMemberAccount")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateMemberAccountRequest, headers, settings, cb)
 	else
@@ -1334,7 +1334,7 @@ function M.DisassociateS3ResourcesAsync(DisassociateS3ResourcesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateS3Resources")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateS3ResourcesRequest, headers, settings, cb)
 	else
@@ -1370,7 +1370,7 @@ function M.UpdateS3ResourcesAsync(UpdateS3ResourcesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateS3Resources")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateS3ResourcesRequest, headers, settings, cb)
 	else
@@ -1406,7 +1406,7 @@ function M.ListMemberAccountsAsync(ListMemberAccountsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListMemberAccounts")
 	if request_handler then
 		request_handler(settings.uri, "/", ListMemberAccountsRequest, headers, settings, cb)
 	else
@@ -1442,7 +1442,7 @@ function M.AssociateS3ResourcesAsync(AssociateS3ResourcesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateS3Resources")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateS3ResourcesRequest, headers, settings, cb)
 	else

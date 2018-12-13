@@ -8057,7 +8057,7 @@ function M.SignalWorkflowExecutionAsync(SignalWorkflowExecutionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SignalWorkflowExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", SignalWorkflowExecutionInput, headers, settings, cb)
 	else
@@ -8093,7 +8093,7 @@ function M.DescribeWorkflowExecutionAsync(DescribeWorkflowExecutionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeWorkflowExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeWorkflowExecutionInput, headers, settings, cb)
 	else
@@ -8129,7 +8129,7 @@ function M.GetWorkflowExecutionHistoryAsync(GetWorkflowExecutionHistoryInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetWorkflowExecutionHistory")
 	if request_handler then
 		request_handler(settings.uri, "/", GetWorkflowExecutionHistoryInput, headers, settings, cb)
 	else
@@ -8165,7 +8165,7 @@ function M.CountOpenWorkflowExecutionsAsync(CountOpenWorkflowExecutionsInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CountOpenWorkflowExecutions")
 	if request_handler then
 		request_handler(settings.uri, "/", CountOpenWorkflowExecutionsInput, headers, settings, cb)
 	else
@@ -8201,7 +8201,7 @@ function M.RespondActivityTaskFailedAsync(RespondActivityTaskFailedInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RespondActivityTaskFailed")
 	if request_handler then
 		request_handler(settings.uri, "/", RespondActivityTaskFailedInput, headers, settings, cb)
 	else
@@ -8237,7 +8237,7 @@ function M.PollForActivityTaskAsync(PollForActivityTaskInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PollForActivityTask")
 	if request_handler then
 		request_handler(settings.uri, "/", PollForActivityTaskInput, headers, settings, cb)
 	else
@@ -8273,7 +8273,7 @@ function M.ListDomainsAsync(ListDomainsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListDomains")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDomainsInput, headers, settings, cb)
 	else
@@ -8309,7 +8309,7 @@ function M.StartWorkflowExecutionAsync(StartWorkflowExecutionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartWorkflowExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", StartWorkflowExecutionInput, headers, settings, cb)
 	else
@@ -8345,7 +8345,7 @@ function M.RespondDecisionTaskCompletedAsync(RespondDecisionTaskCompletedInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RespondDecisionTaskCompleted")
 	if request_handler then
 		request_handler(settings.uri, "/", RespondDecisionTaskCompletedInput, headers, settings, cb)
 	else
@@ -8381,7 +8381,7 @@ function M.RegisterActivityTypeAsync(RegisterActivityTypeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterActivityType")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterActivityTypeInput, headers, settings, cb)
 	else
@@ -8417,7 +8417,7 @@ function M.RequestCancelWorkflowExecutionAsync(RequestCancelWorkflowExecutionInp
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RequestCancelWorkflowExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", RequestCancelWorkflowExecutionInput, headers, settings, cb)
 	else
@@ -8453,7 +8453,7 @@ function M.ListActivityTypesAsync(ListActivityTypesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListActivityTypes")
 	if request_handler then
 		request_handler(settings.uri, "/", ListActivityTypesInput, headers, settings, cb)
 	else
@@ -8489,7 +8489,7 @@ function M.PollForDecisionTaskAsync(PollForDecisionTaskInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PollForDecisionTask")
 	if request_handler then
 		request_handler(settings.uri, "/", PollForDecisionTaskInput, headers, settings, cb)
 	else
@@ -8525,7 +8525,7 @@ function M.ListOpenWorkflowExecutionsAsync(ListOpenWorkflowExecutionsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListOpenWorkflowExecutions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOpenWorkflowExecutionsInput, headers, settings, cb)
 	else
@@ -8561,7 +8561,7 @@ function M.CountClosedWorkflowExecutionsAsync(CountClosedWorkflowExecutionsInput
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CountClosedWorkflowExecutions")
 	if request_handler then
 		request_handler(settings.uri, "/", CountClosedWorkflowExecutionsInput, headers, settings, cb)
 	else
@@ -8597,7 +8597,7 @@ function M.RegisterWorkflowTypeAsync(RegisterWorkflowTypeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterWorkflowType")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterWorkflowTypeInput, headers, settings, cb)
 	else
@@ -8633,7 +8633,7 @@ function M.DescribeDomainAsync(DescribeDomainInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDomainInput, headers, settings, cb)
 	else
@@ -8669,7 +8669,7 @@ function M.ListClosedWorkflowExecutionsAsync(ListClosedWorkflowExecutionsInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListClosedWorkflowExecutions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListClosedWorkflowExecutionsInput, headers, settings, cb)
 	else
@@ -8705,7 +8705,7 @@ function M.TerminateWorkflowExecutionAsync(TerminateWorkflowExecutionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TerminateWorkflowExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", TerminateWorkflowExecutionInput, headers, settings, cb)
 	else
@@ -8741,7 +8741,7 @@ function M.DeprecateWorkflowTypeAsync(DeprecateWorkflowTypeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeprecateWorkflowType")
 	if request_handler then
 		request_handler(settings.uri, "/", DeprecateWorkflowTypeInput, headers, settings, cb)
 	else
@@ -8777,7 +8777,7 @@ function M.DescribeActivityTypeAsync(DescribeActivityTypeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeActivityType")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeActivityTypeInput, headers, settings, cb)
 	else
@@ -8813,7 +8813,7 @@ function M.CountPendingDecisionTasksAsync(CountPendingDecisionTasksInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CountPendingDecisionTasks")
 	if request_handler then
 		request_handler(settings.uri, "/", CountPendingDecisionTasksInput, headers, settings, cb)
 	else
@@ -8849,7 +8849,7 @@ function M.ListWorkflowTypesAsync(ListWorkflowTypesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListWorkflowTypes")
 	if request_handler then
 		request_handler(settings.uri, "/", ListWorkflowTypesInput, headers, settings, cb)
 	else
@@ -8885,7 +8885,7 @@ function M.DeprecateDomainAsync(DeprecateDomainInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeprecateDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", DeprecateDomainInput, headers, settings, cb)
 	else
@@ -8921,7 +8921,7 @@ function M.RespondActivityTaskCanceledAsync(RespondActivityTaskCanceledInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RespondActivityTaskCanceled")
 	if request_handler then
 		request_handler(settings.uri, "/", RespondActivityTaskCanceledInput, headers, settings, cb)
 	else
@@ -8957,7 +8957,7 @@ function M.DescribeWorkflowTypeAsync(DescribeWorkflowTypeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeWorkflowType")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeWorkflowTypeInput, headers, settings, cb)
 	else
@@ -8993,7 +8993,7 @@ function M.RegisterDomainAsync(RegisterDomainInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterDomainInput, headers, settings, cb)
 	else
@@ -9029,7 +9029,7 @@ function M.RecordActivityTaskHeartbeatAsync(RecordActivityTaskHeartbeatInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RecordActivityTaskHeartbeat")
 	if request_handler then
 		request_handler(settings.uri, "/", RecordActivityTaskHeartbeatInput, headers, settings, cb)
 	else
@@ -9065,7 +9065,7 @@ function M.CountPendingActivityTasksAsync(CountPendingActivityTasksInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CountPendingActivityTasks")
 	if request_handler then
 		request_handler(settings.uri, "/", CountPendingActivityTasksInput, headers, settings, cb)
 	else
@@ -9101,7 +9101,7 @@ function M.DeprecateActivityTypeAsync(DeprecateActivityTypeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeprecateActivityType")
 	if request_handler then
 		request_handler(settings.uri, "/", DeprecateActivityTypeInput, headers, settings, cb)
 	else
@@ -9137,7 +9137,7 @@ function M.RespondActivityTaskCompletedAsync(RespondActivityTaskCompletedInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RespondActivityTaskCompleted")
 	if request_handler then
 		request_handler(settings.uri, "/", RespondActivityTaskCompletedInput, headers, settings, cb)
 	else

@@ -8810,7 +8810,7 @@ function M.ListSamplesAsync(ListSamplesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListSamples")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSamplesRequest, headers, settings, cb)
 	else
@@ -8846,7 +8846,7 @@ function M.PurchaseOfferingAsync(PurchaseOfferingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PurchaseOffering")
 	if request_handler then
 		request_handler(settings.uri, "/", PurchaseOfferingRequest, headers, settings, cb)
 	else
@@ -8882,7 +8882,7 @@ function M.GetUploadAsync(GetUploadRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetUpload")
 	if request_handler then
 		request_handler(settings.uri, "/", GetUploadRequest, headers, settings, cb)
 	else
@@ -8918,7 +8918,7 @@ function M.ListOfferingPromotionsAsync(ListOfferingPromotionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListOfferingPromotions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOfferingPromotionsRequest, headers, settings, cb)
 	else
@@ -8954,7 +8954,7 @@ function M.UpdateDevicePoolAsync(UpdateDevicePoolRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateDevicePool")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDevicePoolRequest, headers, settings, cb)
 	else
@@ -8990,7 +8990,7 @@ function M.StopRunAsync(StopRunRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopRun")
 	if request_handler then
 		request_handler(settings.uri, "/", StopRunRequest, headers, settings, cb)
 	else
@@ -9026,7 +9026,7 @@ function M.CreateRemoteAccessSessionAsync(CreateRemoteAccessSessionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateRemoteAccessSession")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRemoteAccessSessionRequest, headers, settings, cb)
 	else
@@ -9062,7 +9062,7 @@ function M.DeleteInstanceProfileAsync(DeleteInstanceProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteInstanceProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteInstanceProfileRequest, headers, settings, cb)
 	else
@@ -9098,7 +9098,7 @@ function M.ListOfferingsAsync(ListOfferingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListOfferings")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOfferingsRequest, headers, settings, cb)
 	else
@@ -9134,7 +9134,7 @@ function M.ListDeviceInstancesAsync(ListDeviceInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListDeviceInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDeviceInstancesRequest, headers, settings, cb)
 	else
@@ -9170,7 +9170,7 @@ function M.GetTestAsync(GetTestRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetTest")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTestRequest, headers, settings, cb)
 	else
@@ -9206,7 +9206,7 @@ function M.DeleteNetworkProfileAsync(DeleteNetworkProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteNetworkProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNetworkProfileRequest, headers, settings, cb)
 	else
@@ -9242,7 +9242,7 @@ function M.ListProjectsAsync(ListProjectsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListProjects")
 	if request_handler then
 		request_handler(settings.uri, "/", ListProjectsRequest, headers, settings, cb)
 	else
@@ -9278,7 +9278,7 @@ function M.ListNetworkProfilesAsync(ListNetworkProfilesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListNetworkProfiles")
 	if request_handler then
 		request_handler(settings.uri, "/", ListNetworkProfilesRequest, headers, settings, cb)
 	else
@@ -9314,7 +9314,7 @@ function M.UpdateInstanceProfileAsync(UpdateInstanceProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateInstanceProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateInstanceProfileRequest, headers, settings, cb)
 	else
@@ -9350,7 +9350,7 @@ function M.UpdateVPCEConfigurationAsync(UpdateVPCEConfigurationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateVPCEConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateVPCEConfigurationRequest, headers, settings, cb)
 	else
@@ -9386,7 +9386,7 @@ function M.DeleteUploadAsync(DeleteUploadRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteUpload")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUploadRequest, headers, settings, cb)
 	else
@@ -9422,7 +9422,7 @@ function M.GetSuiteAsync(GetSuiteRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetSuite")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSuiteRequest, headers, settings, cb)
 	else
@@ -9458,7 +9458,7 @@ function M.DeleteRemoteAccessSessionAsync(DeleteRemoteAccessSessionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteRemoteAccessSession")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRemoteAccessSessionRequest, headers, settings, cb)
 	else
@@ -9494,7 +9494,7 @@ function M.GetInstanceProfileAsync(GetInstanceProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetInstanceProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstanceProfileRequest, headers, settings, cb)
 	else
@@ -9530,7 +9530,7 @@ function M.DeleteRunAsync(DeleteRunRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteRun")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRunRequest, headers, settings, cb)
 	else
@@ -9566,7 +9566,7 @@ function M.ListOfferingTransactionsAsync(ListOfferingTransactionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListOfferingTransactions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOfferingTransactionsRequest, headers, settings, cb)
 	else
@@ -9602,7 +9602,7 @@ function M.GetProjectAsync(GetProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetProject")
 	if request_handler then
 		request_handler(settings.uri, "/", GetProjectRequest, headers, settings, cb)
 	else
@@ -9638,7 +9638,7 @@ function M.InstallToRemoteAccessSessionAsync(InstallToRemoteAccessSessionRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "InstallToRemoteAccessSession")
 	if request_handler then
 		request_handler(settings.uri, "/", InstallToRemoteAccessSessionRequest, headers, settings, cb)
 	else
@@ -9674,7 +9674,7 @@ function M.ListInstanceProfilesAsync(ListInstanceProfilesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListInstanceProfiles")
 	if request_handler then
 		request_handler(settings.uri, "/", ListInstanceProfilesRequest, headers, settings, cb)
 	else
@@ -9710,7 +9710,7 @@ function M.UpdateUploadAsync(UpdateUploadRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateUpload")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateUploadRequest, headers, settings, cb)
 	else
@@ -9746,7 +9746,7 @@ function M.ListUniqueProblemsAsync(ListUniqueProblemsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListUniqueProblems")
 	if request_handler then
 		request_handler(settings.uri, "/", ListUniqueProblemsRequest, headers, settings, cb)
 	else
@@ -9782,7 +9782,7 @@ function M.ListDevicePoolsAsync(ListDevicePoolsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListDevicePools")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDevicePoolsRequest, headers, settings, cb)
 	else
@@ -9818,7 +9818,7 @@ function M.CreateUploadAsync(CreateUploadRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateUpload")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateUploadRequest, headers, settings, cb)
 	else
@@ -9854,7 +9854,7 @@ function M.GetVPCEConfigurationAsync(GetVPCEConfigurationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetVPCEConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", GetVPCEConfigurationRequest, headers, settings, cb)
 	else
@@ -9890,7 +9890,7 @@ function M.GetDevicePoolCompatibilityAsync(GetDevicePoolCompatibilityRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDevicePoolCompatibility")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDevicePoolCompatibilityRequest, headers, settings, cb)
 	else
@@ -9926,7 +9926,7 @@ function M.DeleteDevicePoolAsync(DeleteDevicePoolRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDevicePool")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDevicePoolRequest, headers, settings, cb)
 	else
@@ -9962,7 +9962,7 @@ function M.UpdateDeviceInstanceAsync(UpdateDeviceInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateDeviceInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDeviceInstanceRequest, headers, settings, cb)
 	else
@@ -9998,7 +9998,7 @@ function M.ListTestsAsync(ListTestsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTests")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTestsRequest, headers, settings, cb)
 	else
@@ -10034,7 +10034,7 @@ function M.UpdateProjectAsync(UpdateProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateProject")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateProjectRequest, headers, settings, cb)
 	else
@@ -10070,7 +10070,7 @@ function M.ListSuitesAsync(ListSuitesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListSuites")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSuitesRequest, headers, settings, cb)
 	else
@@ -10106,7 +10106,7 @@ function M.GetDevicePoolAsync(GetDevicePoolRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDevicePool")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDevicePoolRequest, headers, settings, cb)
 	else
@@ -10142,7 +10142,7 @@ function M.ListDevicesAsync(ListDevicesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListDevices")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDevicesRequest, headers, settings, cb)
 	else
@@ -10178,7 +10178,7 @@ function M.ListVPCEConfigurationsAsync(ListVPCEConfigurationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListVPCEConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/", ListVPCEConfigurationsRequest, headers, settings, cb)
 	else
@@ -10214,7 +10214,7 @@ function M.StopRemoteAccessSessionAsync(StopRemoteAccessSessionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopRemoteAccessSession")
 	if request_handler then
 		request_handler(settings.uri, "/", StopRemoteAccessSessionRequest, headers, settings, cb)
 	else
@@ -10250,7 +10250,7 @@ function M.RenewOfferingAsync(RenewOfferingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RenewOffering")
 	if request_handler then
 		request_handler(settings.uri, "/", RenewOfferingRequest, headers, settings, cb)
 	else
@@ -10286,7 +10286,7 @@ function M.GetRemoteAccessSessionAsync(GetRemoteAccessSessionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRemoteAccessSession")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRemoteAccessSessionRequest, headers, settings, cb)
 	else
@@ -10322,7 +10322,7 @@ function M.DeleteProjectAsync(DeleteProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteProject")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteProjectRequest, headers, settings, cb)
 	else
@@ -10358,7 +10358,7 @@ function M.ListJobsAsync(ListJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListJobs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListJobsRequest, headers, settings, cb)
 	else
@@ -10394,7 +10394,7 @@ function M.GetRunAsync(GetRunRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRun")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRunRequest, headers, settings, cb)
 	else
@@ -10430,7 +10430,7 @@ function M.CreateVPCEConfigurationAsync(CreateVPCEConfigurationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateVPCEConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVPCEConfigurationRequest, headers, settings, cb)
 	else
@@ -10466,7 +10466,7 @@ function M.UpdateNetworkProfileAsync(UpdateNetworkProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateNetworkProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateNetworkProfileRequest, headers, settings, cb)
 	else
@@ -10502,7 +10502,7 @@ function M.StopJobAsync(StopJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopJob")
 	if request_handler then
 		request_handler(settings.uri, "/", StopJobRequest, headers, settings, cb)
 	else
@@ -10538,7 +10538,7 @@ function M.ListRemoteAccessSessionsAsync(ListRemoteAccessSessionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListRemoteAccessSessions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRemoteAccessSessionsRequest, headers, settings, cb)
 	else
@@ -10574,7 +10574,7 @@ function M.GetNetworkProfileAsync(GetNetworkProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetNetworkProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", GetNetworkProfileRequest, headers, settings, cb)
 	else
@@ -10610,7 +10610,7 @@ function M.GetOfferingStatusAsync(GetOfferingStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetOfferingStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOfferingStatusRequest, headers, settings, cb)
 	else
@@ -10646,7 +10646,7 @@ function M.GetDeviceInstanceAsync(GetDeviceInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDeviceInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDeviceInstanceRequest, headers, settings, cb)
 	else
@@ -10682,7 +10682,7 @@ function M.GetDeviceAsync(GetDeviceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDevice")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDeviceRequest, headers, settings, cb)
 	else
@@ -10718,7 +10718,7 @@ function M.CreateDevicePoolAsync(CreateDevicePoolRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDevicePool")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDevicePoolRequest, headers, settings, cb)
 	else
@@ -10754,7 +10754,7 @@ function M.ScheduleRunAsync(ScheduleRunRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ScheduleRun")
 	if request_handler then
 		request_handler(settings.uri, "/", ScheduleRunRequest, headers, settings, cb)
 	else
@@ -10790,7 +10790,7 @@ function M.ListArtifactsAsync(ListArtifactsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListArtifacts")
 	if request_handler then
 		request_handler(settings.uri, "/", ListArtifactsRequest, headers, settings, cb)
 	else
@@ -10826,7 +10826,7 @@ function M.CreateProjectAsync(CreateProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateProject")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateProjectRequest, headers, settings, cb)
 	else
@@ -10862,7 +10862,7 @@ function M.GetJobAsync(GetJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetJob")
 	if request_handler then
 		request_handler(settings.uri, "/", GetJobRequest, headers, settings, cb)
 	else
@@ -10898,7 +10898,7 @@ function M.DeleteVPCEConfigurationAsync(DeleteVPCEConfigurationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteVPCEConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVPCEConfigurationRequest, headers, settings, cb)
 	else
@@ -10934,7 +10934,7 @@ function M.CreateInstanceProfileAsync(CreateInstanceProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateInstanceProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateInstanceProfileRequest, headers, settings, cb)
 	else
@@ -10970,7 +10970,7 @@ function M.ListRunsAsync(ListRunsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListRuns")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRunsRequest, headers, settings, cb)
 	else
@@ -11006,7 +11006,7 @@ function M.ListUploadsAsync(ListUploadsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListUploads")
 	if request_handler then
 		request_handler(settings.uri, "/", ListUploadsRequest, headers, settings, cb)
 	else
@@ -11042,7 +11042,7 @@ function M.GetAccountSettingsAsync(GetAccountSettingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetAccountSettings")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAccountSettingsRequest, headers, settings, cb)
 	else
@@ -11078,7 +11078,7 @@ function M.CreateNetworkProfileAsync(CreateNetworkProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateNetworkProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNetworkProfileRequest, headers, settings, cb)
 	else

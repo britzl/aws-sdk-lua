@@ -680,7 +680,7 @@ function M.GetPlaybackConfigurationAsync(GetPlaybackConfigurationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetPlaybackConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/playbackConfiguration/{Name}", GetPlaybackConfigurationRequest, headers, settings, cb)
 	else
@@ -716,7 +716,7 @@ function M.ListPlaybackConfigurationsAsync(ListPlaybackConfigurationsRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListPlaybackConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/playbackConfigurations", ListPlaybackConfigurationsRequest, headers, settings, cb)
 	else
@@ -752,7 +752,7 @@ function M.PutPlaybackConfigurationAsync(PutPlaybackConfigurationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PutPlaybackConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/playbackConfiguration", PutPlaybackConfigurationRequest, headers, settings, cb)
 	else
@@ -788,7 +788,7 @@ function M.DeletePlaybackConfigurationAsync(DeletePlaybackConfigurationRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeletePlaybackConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/playbackConfiguration/{Name}", DeletePlaybackConfigurationRequest, headers, settings, cb)
 	else

@@ -2977,7 +2977,7 @@ function M.CreateParameterGroupAsync(CreateParameterGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateParameterGroupRequest, headers, settings, cb)
 	else
@@ -3013,7 +3013,7 @@ function M.DeleteParameterGroupAsync(DeleteParameterGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteParameterGroupRequest, headers, settings, cb)
 	else
@@ -3049,7 +3049,7 @@ function M.UpdateClusterAsync(UpdateClusterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateClusterRequest, headers, settings, cb)
 	else
@@ -3085,7 +3085,7 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UntagResource")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagResourceRequest, headers, settings, cb)
 	else
@@ -3121,7 +3121,7 @@ function M.CreateClusterAsync(CreateClusterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateClusterRequest, headers, settings, cb)
 	else
@@ -3157,7 +3157,7 @@ function M.DescribeSubnetGroupsAsync(DescribeSubnetGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeSubnetGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSubnetGroupsRequest, headers, settings, cb)
 	else
@@ -3193,7 +3193,7 @@ function M.IncreaseReplicationFactorAsync(IncreaseReplicationFactorRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "IncreaseReplicationFactor")
 	if request_handler then
 		request_handler(settings.uri, "/", IncreaseReplicationFactorRequest, headers, settings, cb)
 	else
@@ -3229,7 +3229,7 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TagResource")
 	if request_handler then
 		request_handler(settings.uri, "/", TagResourceRequest, headers, settings, cb)
 	else
@@ -3265,7 +3265,7 @@ function M.UpdateSubnetGroupAsync(UpdateSubnetGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateSubnetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSubnetGroupRequest, headers, settings, cb)
 	else
@@ -3301,7 +3301,7 @@ function M.DescribeParametersAsync(DescribeParametersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeParametersRequest, headers, settings, cb)
 	else
@@ -3337,7 +3337,7 @@ function M.DecreaseReplicationFactorAsync(DecreaseReplicationFactorRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DecreaseReplicationFactor")
 	if request_handler then
 		request_handler(settings.uri, "/", DecreaseReplicationFactorRequest, headers, settings, cb)
 	else
@@ -3373,7 +3373,7 @@ function M.RebootNodeAsync(RebootNodeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RebootNode")
 	if request_handler then
 		request_handler(settings.uri, "/", RebootNodeRequest, headers, settings, cb)
 	else
@@ -3409,7 +3409,7 @@ function M.CreateSubnetGroupAsync(CreateSubnetGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateSubnetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSubnetGroupRequest, headers, settings, cb)
 	else
@@ -3445,7 +3445,7 @@ function M.UpdateParameterGroupAsync(UpdateParameterGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateParameterGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateParameterGroupRequest, headers, settings, cb)
 	else
@@ -3481,7 +3481,7 @@ function M.ListTagsAsync(ListTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTags")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsRequest, headers, settings, cb)
 	else
@@ -3517,7 +3517,7 @@ function M.DescribeEventsAsync(DescribeEventsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventsRequest, headers, settings, cb)
 	else
@@ -3553,7 +3553,7 @@ function M.DeleteSubnetGroupAsync(DeleteSubnetGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteSubnetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSubnetGroupRequest, headers, settings, cb)
 	else
@@ -3589,7 +3589,7 @@ function M.DescribeDefaultParametersAsync(DescribeDefaultParametersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDefaultParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDefaultParametersRequest, headers, settings, cb)
 	else
@@ -3625,7 +3625,7 @@ function M.DescribeClustersAsync(DescribeClustersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeClusters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClustersRequest, headers, settings, cb)
 	else
@@ -3661,7 +3661,7 @@ function M.DescribeParameterGroupsAsync(DescribeParameterGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeParameterGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeParameterGroupsRequest, headers, settings, cb)
 	else
@@ -3697,7 +3697,7 @@ function M.DeleteClusterAsync(DeleteClusterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteClusterRequest, headers, settings, cb)
 	else

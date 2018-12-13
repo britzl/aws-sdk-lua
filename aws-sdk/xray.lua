@@ -3344,7 +3344,7 @@ function M.GetServiceGraphAsync(GetServiceGraphRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetServiceGraph")
 	if request_handler then
 		request_handler(settings.uri, "/ServiceGraph", GetServiceGraphRequest, headers, settings, cb)
 	else
@@ -3380,7 +3380,7 @@ function M.PutTelemetryRecordsAsync(PutTelemetryRecordsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "PutTelemetryRecords")
 	if request_handler then
 		request_handler(settings.uri, "/TelemetryRecords", PutTelemetryRecordsRequest, headers, settings, cb)
 	else
@@ -3416,7 +3416,7 @@ function M.GetSamplingRulesAsync(GetSamplingRulesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetSamplingRules")
 	if request_handler then
 		request_handler(settings.uri, "/GetSamplingRules", GetSamplingRulesRequest, headers, settings, cb)
 	else
@@ -3452,7 +3452,7 @@ function M.GetSamplingTargetsAsync(GetSamplingTargetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetSamplingTargets")
 	if request_handler then
 		request_handler(settings.uri, "/SamplingTargets", GetSamplingTargetsRequest, headers, settings, cb)
 	else
@@ -3488,7 +3488,7 @@ function M.GetTraceSummariesAsync(GetTraceSummariesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetTraceSummaries")
 	if request_handler then
 		request_handler(settings.uri, "/TraceSummaries", GetTraceSummariesRequest, headers, settings, cb)
 	else
@@ -3524,7 +3524,7 @@ function M.GetSamplingStatisticSummariesAsync(GetSamplingStatisticSummariesReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetSamplingStatisticSummaries")
 	if request_handler then
 		request_handler(settings.uri, "/SamplingStatisticSummaries", GetSamplingStatisticSummariesRequest, headers, settings, cb)
 	else
@@ -3560,7 +3560,7 @@ function M.UpdateSamplingRuleAsync(UpdateSamplingRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateSamplingRule")
 	if request_handler then
 		request_handler(settings.uri, "/UpdateSamplingRule", UpdateSamplingRuleRequest, headers, settings, cb)
 	else
@@ -3596,7 +3596,7 @@ function M.PutTraceSegmentsAsync(PutTraceSegmentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "PutTraceSegments")
 	if request_handler then
 		request_handler(settings.uri, "/TraceSegments", PutTraceSegmentsRequest, headers, settings, cb)
 	else
@@ -3632,7 +3632,7 @@ function M.GetTraceGraphAsync(GetTraceGraphRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetTraceGraph")
 	if request_handler then
 		request_handler(settings.uri, "/TraceGraph", GetTraceGraphRequest, headers, settings, cb)
 	else
@@ -3668,7 +3668,7 @@ function M.GetEncryptionConfigAsync(GetEncryptionConfigRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetEncryptionConfig")
 	if request_handler then
 		request_handler(settings.uri, "/EncryptionConfig", GetEncryptionConfigRequest, headers, settings, cb)
 	else
@@ -3704,7 +3704,7 @@ function M.CreateSamplingRuleAsync(CreateSamplingRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateSamplingRule")
 	if request_handler then
 		request_handler(settings.uri, "/CreateSamplingRule", CreateSamplingRuleRequest, headers, settings, cb)
 	else
@@ -3740,7 +3740,7 @@ function M.BatchGetTracesAsync(BatchGetTracesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "BatchGetTraces")
 	if request_handler then
 		request_handler(settings.uri, "/Traces", BatchGetTracesRequest, headers, settings, cb)
 	else
@@ -3776,7 +3776,7 @@ function M.PutEncryptionConfigAsync(PutEncryptionConfigRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "PutEncryptionConfig")
 	if request_handler then
 		request_handler(settings.uri, "/PutEncryptionConfig", PutEncryptionConfigRequest, headers, settings, cb)
 	else
@@ -3812,7 +3812,7 @@ function M.DeleteSamplingRuleAsync(DeleteSamplingRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DeleteSamplingRule")
 	if request_handler then
 		request_handler(settings.uri, "/DeleteSamplingRule", DeleteSamplingRuleRequest, headers, settings, cb)
 	else

@@ -3769,7 +3769,7 @@ function M.DeleteTagsAsync(DeleteTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteTags")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTagsRequest, headers, settings, cb)
 	else
@@ -3805,7 +3805,7 @@ function M.TerminateWorkspacesAsync(TerminateWorkspacesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TerminateWorkspaces")
 	if request_handler then
 		request_handler(settings.uri, "/", TerminateWorkspacesRequest, headers, settings, cb)
 	else
@@ -3841,7 +3841,7 @@ function M.DescribeWorkspaceBundlesAsync(DescribeWorkspaceBundlesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeWorkspaceBundles")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeWorkspaceBundlesRequest, headers, settings, cb)
 	else
@@ -3877,7 +3877,7 @@ function M.DescribeIpGroupsAsync(DescribeIpGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeIpGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeIpGroupsRequest, headers, settings, cb)
 	else
@@ -3913,7 +3913,7 @@ function M.RebootWorkspacesAsync(RebootWorkspacesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RebootWorkspaces")
 	if request_handler then
 		request_handler(settings.uri, "/", RebootWorkspacesRequest, headers, settings, cb)
 	else
@@ -3949,7 +3949,7 @@ function M.CreateWorkspacesAsync(CreateWorkspacesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateWorkspaces")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateWorkspacesRequest, headers, settings, cb)
 	else
@@ -3985,7 +3985,7 @@ function M.ModifyWorkspaceStateAsync(ModifyWorkspaceStateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ModifyWorkspaceState")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyWorkspaceStateRequest, headers, settings, cb)
 	else
@@ -4021,7 +4021,7 @@ function M.UpdateRulesOfIpGroupAsync(UpdateRulesOfIpGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateRulesOfIpGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRulesOfIpGroupRequest, headers, settings, cb)
 	else
@@ -4057,7 +4057,7 @@ function M.ModifyWorkspacePropertiesAsync(ModifyWorkspacePropertiesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ModifyWorkspaceProperties")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyWorkspacePropertiesRequest, headers, settings, cb)
 	else
@@ -4093,7 +4093,7 @@ function M.DeleteIpGroupAsync(DeleteIpGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteIpGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteIpGroupRequest, headers, settings, cb)
 	else
@@ -4129,7 +4129,7 @@ function M.DescribeWorkspacesAsync(DescribeWorkspacesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeWorkspaces")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeWorkspacesRequest, headers, settings, cb)
 	else
@@ -4165,7 +4165,7 @@ function M.DisassociateIpGroupsAsync(DisassociateIpGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateIpGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateIpGroupsRequest, headers, settings, cb)
 	else
@@ -4201,7 +4201,7 @@ function M.RevokeIpRulesAsync(RevokeIpRulesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RevokeIpRules")
 	if request_handler then
 		request_handler(settings.uri, "/", RevokeIpRulesRequest, headers, settings, cb)
 	else
@@ -4237,7 +4237,7 @@ function M.StopWorkspacesAsync(StopWorkspacesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopWorkspaces")
 	if request_handler then
 		request_handler(settings.uri, "/", StopWorkspacesRequest, headers, settings, cb)
 	else
@@ -4273,7 +4273,7 @@ function M.StartWorkspacesAsync(StartWorkspacesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartWorkspaces")
 	if request_handler then
 		request_handler(settings.uri, "/", StartWorkspacesRequest, headers, settings, cb)
 	else
@@ -4309,7 +4309,7 @@ function M.RebuildWorkspacesAsync(RebuildWorkspacesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RebuildWorkspaces")
 	if request_handler then
 		request_handler(settings.uri, "/", RebuildWorkspacesRequest, headers, settings, cb)
 	else
@@ -4345,7 +4345,7 @@ function M.DescribeTagsAsync(DescribeTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTags")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagsRequest, headers, settings, cb)
 	else
@@ -4381,7 +4381,7 @@ function M.CreateIpGroupAsync(CreateIpGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateIpGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateIpGroupRequest, headers, settings, cb)
 	else
@@ -4417,7 +4417,7 @@ function M.CreateTagsAsync(CreateTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateTags")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTagsRequest, headers, settings, cb)
 	else
@@ -4453,7 +4453,7 @@ function M.DescribeWorkspaceDirectoriesAsync(DescribeWorkspaceDirectoriesRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeWorkspaceDirectories")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeWorkspaceDirectoriesRequest, headers, settings, cb)
 	else
@@ -4489,7 +4489,7 @@ function M.DescribeWorkspacesConnectionStatusAsync(DescribeWorkspacesConnectionS
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeWorkspacesConnectionStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeWorkspacesConnectionStatusRequest, headers, settings, cb)
 	else
@@ -4525,7 +4525,7 @@ function M.AssociateIpGroupsAsync(AssociateIpGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateIpGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateIpGroupsRequest, headers, settings, cb)
 	else
@@ -4561,7 +4561,7 @@ function M.AuthorizeIpRulesAsync(AuthorizeIpRulesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AuthorizeIpRules")
 	if request_handler then
 		request_handler(settings.uri, "/", AuthorizeIpRulesRequest, headers, settings, cb)
 	else

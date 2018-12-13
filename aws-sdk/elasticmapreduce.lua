@@ -7039,7 +7039,7 @@ function M.CancelStepsAsync(CancelStepsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CancelSteps")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelStepsInput, headers, settings, cb)
 	else
@@ -7075,7 +7075,7 @@ function M.RemoveAutoScalingPolicyAsync(RemoveAutoScalingPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RemoveAutoScalingPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveAutoScalingPolicyInput, headers, settings, cb)
 	else
@@ -7111,7 +7111,7 @@ function M.CreateSecurityConfigurationAsync(CreateSecurityConfigurationInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateSecurityConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSecurityConfigurationInput, headers, settings, cb)
 	else
@@ -7147,7 +7147,7 @@ function M.RunJobFlowAsync(RunJobFlowInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RunJobFlow")
 	if request_handler then
 		request_handler(settings.uri, "/", RunJobFlowInput, headers, settings, cb)
 	else
@@ -7183,7 +7183,7 @@ function M.DescribeSecurityConfigurationAsync(DescribeSecurityConfigurationInput
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeSecurityConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSecurityConfigurationInput, headers, settings, cb)
 	else
@@ -7219,7 +7219,7 @@ function M.ListSecurityConfigurationsAsync(ListSecurityConfigurationsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListSecurityConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSecurityConfigurationsInput, headers, settings, cb)
 	else
@@ -7255,7 +7255,7 @@ function M.SetTerminationProtectionAsync(SetTerminationProtectionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SetTerminationProtection")
 	if request_handler then
 		request_handler(settings.uri, "/", SetTerminationProtectionInput, headers, settings, cb)
 	else
@@ -7291,7 +7291,7 @@ function M.DeleteSecurityConfigurationAsync(DeleteSecurityConfigurationInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteSecurityConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSecurityConfigurationInput, headers, settings, cb)
 	else
@@ -7327,7 +7327,7 @@ function M.AddInstanceGroupsAsync(AddInstanceGroupsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddInstanceGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", AddInstanceGroupsInput, headers, settings, cb)
 	else
@@ -7363,7 +7363,7 @@ function M.ListBootstrapActionsAsync(ListBootstrapActionsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListBootstrapActions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListBootstrapActionsInput, headers, settings, cb)
 	else
@@ -7399,7 +7399,7 @@ function M.ListClustersAsync(ListClustersInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListClusters")
 	if request_handler then
 		request_handler(settings.uri, "/", ListClustersInput, headers, settings, cb)
 	else
@@ -7435,7 +7435,7 @@ function M.ListInstancesAsync(ListInstancesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", ListInstancesInput, headers, settings, cb)
 	else
@@ -7471,7 +7471,7 @@ function M.DescribeClusterAsync(DescribeClusterInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClusterInput, headers, settings, cb)
 	else
@@ -7507,7 +7507,7 @@ function M.ListStepsAsync(ListStepsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListSteps")
 	if request_handler then
 		request_handler(settings.uri, "/", ListStepsInput, headers, settings, cb)
 	else
@@ -7543,7 +7543,7 @@ function M.RemoveTagsAsync(RemoveTagsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RemoveTags")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsInput, headers, settings, cb)
 	else
@@ -7579,7 +7579,7 @@ function M.ModifyInstanceGroupsAsync(ModifyInstanceGroupsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ModifyInstanceGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyInstanceGroupsInput, headers, settings, cb)
 	else
@@ -7615,7 +7615,7 @@ function M.PutAutoScalingPolicyAsync(PutAutoScalingPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutAutoScalingPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutAutoScalingPolicyInput, headers, settings, cb)
 	else
@@ -7651,7 +7651,7 @@ function M.AddInstanceFleetAsync(AddInstanceFleetInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddInstanceFleet")
 	if request_handler then
 		request_handler(settings.uri, "/", AddInstanceFleetInput, headers, settings, cb)
 	else
@@ -7687,7 +7687,7 @@ function M.SetVisibleToAllUsersAsync(SetVisibleToAllUsersInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SetVisibleToAllUsers")
 	if request_handler then
 		request_handler(settings.uri, "/", SetVisibleToAllUsersInput, headers, settings, cb)
 	else
@@ -7723,7 +7723,7 @@ function M.ListInstanceFleetsAsync(ListInstanceFleetsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListInstanceFleets")
 	if request_handler then
 		request_handler(settings.uri, "/", ListInstanceFleetsInput, headers, settings, cb)
 	else
@@ -7759,7 +7759,7 @@ function M.TerminateJobFlowsAsync(TerminateJobFlowsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TerminateJobFlows")
 	if request_handler then
 		request_handler(settings.uri, "/", TerminateJobFlowsInput, headers, settings, cb)
 	else
@@ -7795,7 +7795,7 @@ function M.AddTagsAsync(AddTagsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddTags")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsInput, headers, settings, cb)
 	else
@@ -7831,7 +7831,7 @@ function M.ModifyInstanceFleetAsync(ModifyInstanceFleetInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ModifyInstanceFleet")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyInstanceFleetInput, headers, settings, cb)
 	else
@@ -7867,7 +7867,7 @@ function M.AddJobFlowStepsAsync(AddJobFlowStepsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddJobFlowSteps")
 	if request_handler then
 		request_handler(settings.uri, "/", AddJobFlowStepsInput, headers, settings, cb)
 	else
@@ -7903,7 +7903,7 @@ function M.ListInstanceGroupsAsync(ListInstanceGroupsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListInstanceGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", ListInstanceGroupsInput, headers, settings, cb)
 	else
@@ -7939,7 +7939,7 @@ function M.DescribeStepAsync(DescribeStepInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeStep")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStepInput, headers, settings, cb)
 	else

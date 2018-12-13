@@ -8216,7 +8216,7 @@ function M.DeregisterVolumeAsync(DeregisterVolumeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeregisterVolume")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterVolumeRequest, headers, settings, cb)
 	else
@@ -8252,7 +8252,7 @@ function M.DeregisterInstanceAsync(DeregisterInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeregisterInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterInstanceRequest, headers, settings, cb)
 	else
@@ -8288,7 +8288,7 @@ function M.DescribeTimeBasedAutoScalingAsync(DescribeTimeBasedAutoScalingRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTimeBasedAutoScaling")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTimeBasedAutoScalingRequest, headers, settings, cb)
 	else
@@ -8324,7 +8324,7 @@ function M.RebootInstanceAsync(RebootInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RebootInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", RebootInstanceRequest, headers, settings, cb)
 	else
@@ -8360,7 +8360,7 @@ function M.StartStackAsync(StartStackRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartStack")
 	if request_handler then
 		request_handler(settings.uri, "/", StartStackRequest, headers, settings, cb)
 	else
@@ -8396,7 +8396,7 @@ function M.UnassignInstanceAsync(UnassignInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UnassignInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", UnassignInstanceRequest, headers, settings, cb)
 	else
@@ -8432,7 +8432,7 @@ function M.DisassociateElasticIpAsync(DisassociateElasticIpRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateElasticIp")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateElasticIpRequest, headers, settings, cb)
 	else
@@ -8468,7 +8468,7 @@ function M.CreateUserProfileAsync(CreateUserProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateUserProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateUserProfileRequest, headers, settings, cb)
 	else
@@ -8504,7 +8504,7 @@ function M.AttachElasticLoadBalancerAsync(AttachElasticLoadBalancerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AttachElasticLoadBalancer")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachElasticLoadBalancerRequest, headers, settings, cb)
 	else
@@ -8540,7 +8540,7 @@ function M.RegisterEcsClusterAsync(RegisterEcsClusterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterEcsCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterEcsClusterRequest, headers, settings, cb)
 	else
@@ -8576,7 +8576,7 @@ function M.DescribeLayersAsync(DescribeLayersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeLayers")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLayersRequest, headers, settings, cb)
 	else
@@ -8612,7 +8612,7 @@ function M.UpdateElasticIpAsync(UpdateElasticIpRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateElasticIp")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateElasticIpRequest, headers, settings, cb)
 	else
@@ -8648,7 +8648,7 @@ function M.DeleteInstanceAsync(DeleteInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteInstanceRequest, headers, settings, cb)
 	else
@@ -8684,7 +8684,7 @@ function M.DetachElasticLoadBalancerAsync(DetachElasticLoadBalancerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DetachElasticLoadBalancer")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachElasticLoadBalancerRequest, headers, settings, cb)
 	else
@@ -8720,7 +8720,7 @@ function M.CreateDeploymentAsync(CreateDeploymentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDeployment")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDeploymentRequest, headers, settings, cb)
 	else
@@ -8756,7 +8756,7 @@ function M.UnassignVolumeAsync(UnassignVolumeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UnassignVolume")
 	if request_handler then
 		request_handler(settings.uri, "/", UnassignVolumeRequest, headers, settings, cb)
 	else
@@ -8792,7 +8792,7 @@ function M.DeleteUserProfileAsync(DeleteUserProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteUserProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUserProfileRequest, headers, settings, cb)
 	else
@@ -8828,7 +8828,7 @@ function M.CreateStackAsync(CreateStackRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateStack")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateStackRequest, headers, settings, cb)
 	else
@@ -8864,7 +8864,7 @@ function M.UpdateRdsDbInstanceAsync(UpdateRdsDbInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateRdsDbInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRdsDbInstanceRequest, headers, settings, cb)
 	else
@@ -8900,7 +8900,7 @@ function M.GetHostnameSuggestionAsync(GetHostnameSuggestionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetHostnameSuggestion")
 	if request_handler then
 		request_handler(settings.uri, "/", GetHostnameSuggestionRequest, headers, settings, cb)
 	else
@@ -8936,7 +8936,7 @@ function M.DescribeInstancesAsync(DescribeInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstancesRequest, headers, settings, cb)
 	else
@@ -8972,7 +8972,7 @@ function M.DescribeCommandsAsync(DescribeCommandsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeCommands")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCommandsRequest, headers, settings, cb)
 	else
@@ -9004,7 +9004,7 @@ function M.DescribeMyUserProfileAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeMyUserProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -9039,7 +9039,7 @@ function M.DeregisterElasticIpAsync(DeregisterElasticIpRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeregisterElasticIp")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterElasticIpRequest, headers, settings, cb)
 	else
@@ -9075,7 +9075,7 @@ function M.DescribeAgentVersionsAsync(DescribeAgentVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAgentVersions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAgentVersionsRequest, headers, settings, cb)
 	else
@@ -9111,7 +9111,7 @@ function M.StopStackAsync(StopStackRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopStack")
 	if request_handler then
 		request_handler(settings.uri, "/", StopStackRequest, headers, settings, cb)
 	else
@@ -9147,7 +9147,7 @@ function M.DescribeAppsAsync(DescribeAppsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeApps")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAppsRequest, headers, settings, cb)
 	else
@@ -9183,7 +9183,7 @@ function M.DescribeElasticIpsAsync(DescribeElasticIpsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeElasticIps")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeElasticIpsRequest, headers, settings, cb)
 	else
@@ -9219,7 +9219,7 @@ function M.UpdateVolumeAsync(UpdateVolumeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateVolume")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateVolumeRequest, headers, settings, cb)
 	else
@@ -9255,7 +9255,7 @@ function M.StartInstanceAsync(StartInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", StartInstanceRequest, headers, settings, cb)
 	else
@@ -9291,7 +9291,7 @@ function M.UpdateMyUserProfileAsync(UpdateMyUserProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateMyUserProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateMyUserProfileRequest, headers, settings, cb)
 	else
@@ -9327,7 +9327,7 @@ function M.DeleteAppAsync(DeleteAppRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteApp")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAppRequest, headers, settings, cb)
 	else
@@ -9363,7 +9363,7 @@ function M.UpdateInstanceAsync(UpdateInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateInstanceRequest, headers, settings, cb)
 	else
@@ -9399,7 +9399,7 @@ function M.RegisterElasticIpAsync(RegisterElasticIpRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterElasticIp")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterElasticIpRequest, headers, settings, cb)
 	else
@@ -9435,7 +9435,7 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TagResource")
 	if request_handler then
 		request_handler(settings.uri, "/", TagResourceRequest, headers, settings, cb)
 	else
@@ -9471,7 +9471,7 @@ function M.DeregisterRdsDbInstanceAsync(DeregisterRdsDbInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeregisterRdsDbInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterRdsDbInstanceRequest, headers, settings, cb)
 	else
@@ -9507,7 +9507,7 @@ function M.DescribeRaidArraysAsync(DescribeRaidArraysRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeRaidArrays")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRaidArraysRequest, headers, settings, cb)
 	else
@@ -9543,7 +9543,7 @@ function M.RegisterVolumeAsync(RegisterVolumeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterVolume")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterVolumeRequest, headers, settings, cb)
 	else
@@ -9579,7 +9579,7 @@ function M.SetPermissionAsync(SetPermissionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SetPermission")
 	if request_handler then
 		request_handler(settings.uri, "/", SetPermissionRequest, headers, settings, cb)
 	else
@@ -9615,7 +9615,7 @@ function M.DescribeDeploymentsAsync(DescribeDeploymentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDeployments")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDeploymentsRequest, headers, settings, cb)
 	else
@@ -9651,7 +9651,7 @@ function M.ListTagsAsync(ListTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTags")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsRequest, headers, settings, cb)
 	else
@@ -9687,7 +9687,7 @@ function M.CloneStackAsync(CloneStackRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CloneStack")
 	if request_handler then
 		request_handler(settings.uri, "/", CloneStackRequest, headers, settings, cb)
 	else
@@ -9723,7 +9723,7 @@ function M.DescribeServiceErrorsAsync(DescribeServiceErrorsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeServiceErrors")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeServiceErrorsRequest, headers, settings, cb)
 	else
@@ -9759,7 +9759,7 @@ function M.AssociateElasticIpAsync(AssociateElasticIpRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateElasticIp")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateElasticIpRequest, headers, settings, cb)
 	else
@@ -9795,7 +9795,7 @@ function M.CreateInstanceAsync(CreateInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateInstanceRequest, headers, settings, cb)
 	else
@@ -9831,7 +9831,7 @@ function M.DescribeElasticLoadBalancersAsync(DescribeElasticLoadBalancersRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeElasticLoadBalancers")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeElasticLoadBalancersRequest, headers, settings, cb)
 	else
@@ -9863,7 +9863,7 @@ function M.DescribeOperatingSystemsAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeOperatingSystems")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -9898,7 +9898,7 @@ function M.DeregisterEcsClusterAsync(DeregisterEcsClusterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeregisterEcsCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterEcsClusterRequest, headers, settings, cb)
 	else
@@ -9934,7 +9934,7 @@ function M.DescribeEcsClustersAsync(DescribeEcsClustersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEcsClusters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEcsClustersRequest, headers, settings, cb)
 	else
@@ -9970,7 +9970,7 @@ function M.RegisterRdsDbInstanceAsync(RegisterRdsDbInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterRdsDbInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterRdsDbInstanceRequest, headers, settings, cb)
 	else
@@ -10006,7 +10006,7 @@ function M.SetTimeBasedAutoScalingAsync(SetTimeBasedAutoScalingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SetTimeBasedAutoScaling")
 	if request_handler then
 		request_handler(settings.uri, "/", SetTimeBasedAutoScalingRequest, headers, settings, cb)
 	else
@@ -10042,7 +10042,7 @@ function M.DescribeLoadBasedAutoScalingAsync(DescribeLoadBasedAutoScalingRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeLoadBasedAutoScaling")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLoadBasedAutoScalingRequest, headers, settings, cb)
 	else
@@ -10078,7 +10078,7 @@ function M.AssignInstanceAsync(AssignInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssignInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", AssignInstanceRequest, headers, settings, cb)
 	else
@@ -10114,7 +10114,7 @@ function M.SetLoadBasedAutoScalingAsync(SetLoadBasedAutoScalingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SetLoadBasedAutoScaling")
 	if request_handler then
 		request_handler(settings.uri, "/", SetLoadBasedAutoScalingRequest, headers, settings, cb)
 	else
@@ -10150,7 +10150,7 @@ function M.DescribeStackSummaryAsync(DescribeStackSummaryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeStackSummary")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStackSummaryRequest, headers, settings, cb)
 	else
@@ -10186,7 +10186,7 @@ function M.StopInstanceAsync(StopInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", StopInstanceRequest, headers, settings, cb)
 	else
@@ -10222,7 +10222,7 @@ function M.DescribeStacksAsync(DescribeStacksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeStacks")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStacksRequest, headers, settings, cb)
 	else
@@ -10258,7 +10258,7 @@ function M.CreateLayerAsync(CreateLayerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateLayer")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLayerRequest, headers, settings, cb)
 	else
@@ -10294,7 +10294,7 @@ function M.UpdateStackAsync(UpdateStackRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateStack")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateStackRequest, headers, settings, cb)
 	else
@@ -10330,7 +10330,7 @@ function M.GrantAccessAsync(GrantAccessRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GrantAccess")
 	if request_handler then
 		request_handler(settings.uri, "/", GrantAccessRequest, headers, settings, cb)
 	else
@@ -10366,7 +10366,7 @@ function M.CreateAppAsync(CreateAppRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateApp")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAppRequest, headers, settings, cb)
 	else
@@ -10402,7 +10402,7 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UntagResource")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagResourceRequest, headers, settings, cb)
 	else
@@ -10438,7 +10438,7 @@ function M.DescribePermissionsAsync(DescribePermissionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribePermissions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePermissionsRequest, headers, settings, cb)
 	else
@@ -10474,7 +10474,7 @@ function M.DeleteLayerAsync(DeleteLayerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteLayer")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLayerRequest, headers, settings, cb)
 	else
@@ -10510,7 +10510,7 @@ function M.DescribeVolumesAsync(DescribeVolumesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeVolumes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVolumesRequest, headers, settings, cb)
 	else
@@ -10546,7 +10546,7 @@ function M.DescribeStackProvisioningParametersAsync(DescribeStackProvisioningPar
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeStackProvisioningParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStackProvisioningParametersRequest, headers, settings, cb)
 	else
@@ -10582,7 +10582,7 @@ function M.RegisterInstanceAsync(RegisterInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterInstanceRequest, headers, settings, cb)
 	else
@@ -10618,7 +10618,7 @@ function M.DeleteStackAsync(DeleteStackRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteStack")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteStackRequest, headers, settings, cb)
 	else
@@ -10654,7 +10654,7 @@ function M.AssignVolumeAsync(AssignVolumeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssignVolume")
 	if request_handler then
 		request_handler(settings.uri, "/", AssignVolumeRequest, headers, settings, cb)
 	else
@@ -10690,7 +10690,7 @@ function M.UpdateAppAsync(UpdateAppRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateApp")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAppRequest, headers, settings, cb)
 	else
@@ -10726,7 +10726,7 @@ function M.DescribeRdsDbInstancesAsync(DescribeRdsDbInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeRdsDbInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRdsDbInstancesRequest, headers, settings, cb)
 	else
@@ -10762,7 +10762,7 @@ function M.UpdateUserProfileAsync(UpdateUserProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateUserProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateUserProfileRequest, headers, settings, cb)
 	else
@@ -10798,7 +10798,7 @@ function M.DescribeUserProfilesAsync(DescribeUserProfilesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeUserProfiles")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeUserProfilesRequest, headers, settings, cb)
 	else
@@ -10834,7 +10834,7 @@ function M.UpdateLayerAsync(UpdateLayerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateLayer")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateLayerRequest, headers, settings, cb)
 	else

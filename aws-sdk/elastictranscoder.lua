@@ -4369,7 +4369,7 @@ function M.ReadPresetAsync(ReadPresetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ReadPreset")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/presets/{Id}", ReadPresetRequest, headers, settings, cb)
 	else
@@ -4405,7 +4405,7 @@ function M.CreateJobAsync(CreateJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateJob")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/jobs", CreateJobRequest, headers, settings, cb)
 	else
@@ -4441,7 +4441,7 @@ function M.CreatePresetAsync(CreatePresetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreatePreset")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/presets", CreatePresetRequest, headers, settings, cb)
 	else
@@ -4477,7 +4477,7 @@ function M.UpdatePipelineNotificationsAsync(UpdatePipelineNotificationsRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdatePipelineNotifications")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/pipelines/{Id}/notifications", UpdatePipelineNotificationsRequest, headers, settings, cb)
 	else
@@ -4513,7 +4513,7 @@ function M.ListPipelinesAsync(ListPipelinesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListPipelines")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/pipelines", ListPipelinesRequest, headers, settings, cb)
 	else
@@ -4549,7 +4549,7 @@ function M.DeletePipelineAsync(DeletePipelineRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeletePipeline")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/pipelines/{Id}", DeletePipelineRequest, headers, settings, cb)
 	else
@@ -4585,7 +4585,7 @@ function M.ReadJobAsync(ReadJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ReadJob")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/jobs/{Id}", ReadJobRequest, headers, settings, cb)
 	else
@@ -4621,7 +4621,7 @@ function M.UpdatePipelineAsync(UpdatePipelineRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdatePipeline")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/pipelines/{Id}", UpdatePipelineRequest, headers, settings, cb)
 	else
@@ -4657,7 +4657,7 @@ function M.ListPresetsAsync(ListPresetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListPresets")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/presets", ListPresetsRequest, headers, settings, cb)
 	else
@@ -4693,7 +4693,7 @@ function M.DeletePresetAsync(DeletePresetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeletePreset")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/presets/{Id}", DeletePresetRequest, headers, settings, cb)
 	else
@@ -4729,7 +4729,7 @@ function M.ListJobsByPipelineAsync(ListJobsByPipelineRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListJobsByPipeline")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/jobsByPipeline/{PipelineId}", ListJobsByPipelineRequest, headers, settings, cb)
 	else
@@ -4765,7 +4765,7 @@ function M.CancelJobAsync(CancelJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "CancelJob")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/jobs/{Id}", CancelJobRequest, headers, settings, cb)
 	else
@@ -4801,7 +4801,7 @@ function M.UpdatePipelineStatusAsync(UpdatePipelineStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdatePipelineStatus")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/pipelines/{Id}/status", UpdatePipelineStatusRequest, headers, settings, cb)
 	else
@@ -4837,7 +4837,7 @@ function M.CreatePipelineAsync(CreatePipelineRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreatePipeline")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/pipelines", CreatePipelineRequest, headers, settings, cb)
 	else
@@ -4873,7 +4873,7 @@ function M.ReadPipelineAsync(ReadPipelineRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ReadPipeline")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/pipelines/{Id}", ReadPipelineRequest, headers, settings, cb)
 	else
@@ -4909,7 +4909,7 @@ function M.ListJobsByStatusAsync(ListJobsByStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListJobsByStatus")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/jobsByStatus/{Status}", ListJobsByStatusRequest, headers, settings, cb)
 	else

@@ -2810,7 +2810,7 @@ function M.SetCognitoEventsAsync(SetCognitoEventsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "SetCognitoEvents")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/events", SetCognitoEventsRequest, headers, settings, cb)
 	else
@@ -2846,7 +2846,7 @@ function M.DescribeIdentityUsageAsync(DescribeIdentityUsageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeIdentityUsage")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}", DescribeIdentityUsageRequest, headers, settings, cb)
 	else
@@ -2882,7 +2882,7 @@ function M.ListRecordsAsync(ListRecordsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListRecords")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/records", ListRecordsRequest, headers, settings, cb)
 	else
@@ -2918,7 +2918,7 @@ function M.DescribeDatasetAsync(DescribeDatasetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeDataset")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}", DescribeDatasetRequest, headers, settings, cb)
 	else
@@ -2954,7 +2954,7 @@ function M.BulkPublishAsync(BulkPublishRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "BulkPublish")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/bulkpublish", BulkPublishRequest, headers, settings, cb)
 	else
@@ -2990,7 +2990,7 @@ function M.UnsubscribeFromDatasetAsync(UnsubscribeFromDatasetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "UnsubscribeFromDataset")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}", UnsubscribeFromDatasetRequest, headers, settings, cb)
 	else
@@ -3026,7 +3026,7 @@ function M.ListIdentityPoolUsageAsync(ListIdentityPoolUsageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListIdentityPoolUsage")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools", ListIdentityPoolUsageRequest, headers, settings, cb)
 	else
@@ -3062,7 +3062,7 @@ function M.RegisterDeviceAsync(RegisterDeviceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "RegisterDevice")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identity/{IdentityId}/device", RegisterDeviceRequest, headers, settings, cb)
 	else
@@ -3098,7 +3098,7 @@ function M.GetBulkPublishDetailsAsync(GetBulkPublishDetailsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetBulkPublishDetails")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/getBulkPublishDetails", GetBulkPublishDetailsRequest, headers, settings, cb)
 	else
@@ -3134,7 +3134,7 @@ function M.GetCognitoEventsAsync(GetCognitoEventsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetCognitoEvents")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/events", GetCognitoEventsRequest, headers, settings, cb)
 	else
@@ -3170,7 +3170,7 @@ function M.DeleteDatasetAsync(DeleteDatasetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteDataset")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}", DeleteDatasetRequest, headers, settings, cb)
 	else
@@ -3206,7 +3206,7 @@ function M.DescribeIdentityPoolUsageAsync(DescribeIdentityPoolUsageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeIdentityPoolUsage")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}", DescribeIdentityPoolUsageRequest, headers, settings, cb)
 	else
@@ -3242,7 +3242,7 @@ function M.UpdateRecordsAsync(UpdateRecordsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateRecords")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}", UpdateRecordsRequest, headers, settings, cb)
 	else
@@ -3278,7 +3278,7 @@ function M.SubscribeToDatasetAsync(SubscribeToDatasetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "SubscribeToDataset")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}", SubscribeToDatasetRequest, headers, settings, cb)
 	else
@@ -3314,7 +3314,7 @@ function M.SetIdentityPoolConfigurationAsync(SetIdentityPoolConfigurationRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "SetIdentityPoolConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/configuration", SetIdentityPoolConfigurationRequest, headers, settings, cb)
 	else
@@ -3350,7 +3350,7 @@ function M.GetIdentityPoolConfigurationAsync(GetIdentityPoolConfigurationRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetIdentityPoolConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/configuration", GetIdentityPoolConfigurationRequest, headers, settings, cb)
 	else
@@ -3386,7 +3386,7 @@ function M.ListDatasetsAsync(ListDatasetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListDatasets")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets", ListDatasetsRequest, headers, settings, cb)
 	else

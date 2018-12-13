@@ -2555,7 +2555,7 @@ function M.PutEventsAsync(PutEventsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", PutEventsRequest, headers, settings, cb)
 	else
@@ -2591,7 +2591,7 @@ function M.EnableRuleAsync(EnableRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "EnableRule")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableRuleRequest, headers, settings, cb)
 	else
@@ -2627,7 +2627,7 @@ function M.DescribeRuleAsync(DescribeRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeRule")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRuleRequest, headers, settings, cb)
 	else
@@ -2663,7 +2663,7 @@ function M.ListTargetsByRuleAsync(ListTargetsByRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTargetsByRule")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTargetsByRuleRequest, headers, settings, cb)
 	else
@@ -2699,7 +2699,7 @@ function M.PutPermissionAsync(PutPermissionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutPermission")
 	if request_handler then
 		request_handler(settings.uri, "/", PutPermissionRequest, headers, settings, cb)
 	else
@@ -2735,7 +2735,7 @@ function M.PutTargetsAsync(PutTargetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutTargets")
 	if request_handler then
 		request_handler(settings.uri, "/", PutTargetsRequest, headers, settings, cb)
 	else
@@ -2771,7 +2771,7 @@ function M.DeleteRuleAsync(DeleteRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteRule")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRuleRequest, headers, settings, cb)
 	else
@@ -2807,7 +2807,7 @@ function M.ListRuleNamesByTargetAsync(ListRuleNamesByTargetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListRuleNamesByTarget")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRuleNamesByTargetRequest, headers, settings, cb)
 	else
@@ -2843,7 +2843,7 @@ function M.DescribeEventBusAsync(DescribeEventBusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEventBus")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventBusRequest, headers, settings, cb)
 	else
@@ -2879,7 +2879,7 @@ function M.TestEventPatternAsync(TestEventPatternRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TestEventPattern")
 	if request_handler then
 		request_handler(settings.uri, "/", TestEventPatternRequest, headers, settings, cb)
 	else
@@ -2915,7 +2915,7 @@ function M.RemovePermissionAsync(RemovePermissionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RemovePermission")
 	if request_handler then
 		request_handler(settings.uri, "/", RemovePermissionRequest, headers, settings, cb)
 	else
@@ -2951,7 +2951,7 @@ function M.ListRulesAsync(ListRulesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListRules")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRulesRequest, headers, settings, cb)
 	else
@@ -2987,7 +2987,7 @@ function M.DisableRuleAsync(DisableRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisableRule")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableRuleRequest, headers, settings, cb)
 	else
@@ -3023,7 +3023,7 @@ function M.PutRuleAsync(PutRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutRule")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRuleRequest, headers, settings, cb)
 	else
@@ -3059,7 +3059,7 @@ function M.RemoveTargetsAsync(RemoveTargetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RemoveTargets")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTargetsRequest, headers, settings, cb)
 	else

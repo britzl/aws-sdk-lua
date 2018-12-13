@@ -8062,7 +8062,7 @@ function M.CreateQueryLoggingConfigAsync(CreateQueryLoggingConfigRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CreateQueryLoggingConfig")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/queryloggingconfig", CreateQueryLoggingConfigRequest, headers, settings, cb)
 	else
@@ -8098,7 +8098,7 @@ function M.ListTrafficPolicyInstancesByHostedZoneAsync(ListTrafficPolicyInstance
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListTrafficPolicyInstancesByHostedZone")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstances/hostedzone", ListTrafficPolicyInstancesByHostedZoneRequest, headers, settings, cb)
 	else
@@ -8134,7 +8134,7 @@ function M.GetCheckerIpRangesAsync(GetCheckerIpRangesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetCheckerIpRanges")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/checkeripranges", GetCheckerIpRangesRequest, headers, settings, cb)
 	else
@@ -8170,7 +8170,7 @@ function M.ListTrafficPolicyInstancesByPolicyAsync(ListTrafficPolicyInstancesByP
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListTrafficPolicyInstancesByPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstances/trafficpolicy", ListTrafficPolicyInstancesByPolicyRequest, headers, settings, cb)
 	else
@@ -8206,7 +8206,7 @@ function M.ListTrafficPoliciesAsync(ListTrafficPoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListTrafficPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicies", ListTrafficPoliciesRequest, headers, settings, cb)
 	else
@@ -8242,7 +8242,7 @@ function M.UpdateHostedZoneCommentAsync(UpdateHostedZoneCommentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "UpdateHostedZoneComment")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}", UpdateHostedZoneCommentRequest, headers, settings, cb)
 	else
@@ -8278,7 +8278,7 @@ function M.ChangeTagsForResourceAsync(ChangeTagsForResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "ChangeTagsForResource")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/tags/{ResourceType}/{ResourceId}", ChangeTagsForResourceRequest, headers, settings, cb)
 	else
@@ -8314,7 +8314,7 @@ function M.GetHealthCheckAsync(GetHealthCheckRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetHealthCheck")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/healthcheck/{HealthCheckId}", GetHealthCheckRequest, headers, settings, cb)
 	else
@@ -8350,7 +8350,7 @@ function M.ListHostedZonesByNameAsync(ListHostedZonesByNameRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListHostedZonesByName")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzonesbyname", ListHostedZonesByNameRequest, headers, settings, cb)
 	else
@@ -8386,7 +8386,7 @@ function M.GetHostedZoneAsync(GetHostedZoneRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetHostedZone")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}", GetHostedZoneRequest, headers, settings, cb)
 	else
@@ -8422,7 +8422,7 @@ function M.DeleteReusableDelegationSetAsync(DeleteReusableDelegationSetRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteReusableDelegationSet")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/delegationset/{Id}", DeleteReusableDelegationSetRequest, headers, settings, cb)
 	else
@@ -8458,7 +8458,7 @@ function M.DeleteTrafficPolicyInstanceAsync(DeleteTrafficPolicyInstanceRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteTrafficPolicyInstance")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstance/{Id}", DeleteTrafficPolicyInstanceRequest, headers, settings, cb)
 	else
@@ -8494,7 +8494,7 @@ function M.GetReusableDelegationSetLimitAsync(GetReusableDelegationSetLimitReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetReusableDelegationSetLimit")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/reusabledelegationsetlimit/{Id}/{Type}", GetReusableDelegationSetLimitRequest, headers, settings, cb)
 	else
@@ -8530,7 +8530,7 @@ function M.GetHostedZoneCountAsync(GetHostedZoneCountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetHostedZoneCount")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzonecount", GetHostedZoneCountRequest, headers, settings, cb)
 	else
@@ -8566,7 +8566,7 @@ function M.GetTrafficPolicyInstanceCountAsync(GetTrafficPolicyInstanceCountReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetTrafficPolicyInstanceCount")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstancecount", GetTrafficPolicyInstanceCountRequest, headers, settings, cb)
 	else
@@ -8602,7 +8602,7 @@ function M.UpdateTrafficPolicyCommentAsync(UpdateTrafficPolicyCommentRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "UpdateTrafficPolicyComment")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicy/{Id}/{Version}", UpdateTrafficPolicyCommentRequest, headers, settings, cb)
 	else
@@ -8638,7 +8638,7 @@ function M.ChangeResourceRecordSetsAsync(ChangeResourceRecordSetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "ChangeResourceRecordSets")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/rrset/", ChangeResourceRecordSetsRequest, headers, settings, cb)
 	else
@@ -8674,7 +8674,7 @@ function M.DeleteTrafficPolicyAsync(DeleteTrafficPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteTrafficPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicy/{Id}/{Version}", DeleteTrafficPolicyRequest, headers, settings, cb)
 	else
@@ -8710,7 +8710,7 @@ function M.CreateHostedZoneAsync(CreateHostedZoneRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CreateHostedZone")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone", CreateHostedZoneRequest, headers, settings, cb)
 	else
@@ -8746,7 +8746,7 @@ function M.CreateVPCAssociationAuthorizationAsync(CreateVPCAssociationAuthorizat
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CreateVPCAssociationAuthorization")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/authorizevpcassociation", CreateVPCAssociationAuthorizationRequest, headers, settings, cb)
 	else
@@ -8782,7 +8782,7 @@ function M.DeleteHostedZoneAsync(DeleteHostedZoneRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteHostedZone")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}", DeleteHostedZoneRequest, headers, settings, cb)
 	else
@@ -8818,7 +8818,7 @@ function M.GetHealthCheckStatusAsync(GetHealthCheckStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetHealthCheckStatus")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/healthcheck/{HealthCheckId}/status", GetHealthCheckStatusRequest, headers, settings, cb)
 	else
@@ -8854,7 +8854,7 @@ function M.TestDNSAnswerAsync(TestDNSAnswerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "TestDNSAnswer")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/testdnsanswer", TestDNSAnswerRequest, headers, settings, cb)
 	else
@@ -8890,7 +8890,7 @@ function M.ListReusableDelegationSetsAsync(ListReusableDelegationSetsRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListReusableDelegationSets")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/delegationset", ListReusableDelegationSetsRequest, headers, settings, cb)
 	else
@@ -8926,7 +8926,7 @@ function M.GetAccountLimitAsync(GetAccountLimitRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetAccountLimit")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/accountlimit/{Type}", GetAccountLimitRequest, headers, settings, cb)
 	else
@@ -8962,7 +8962,7 @@ function M.CreateTrafficPolicyInstanceAsync(CreateTrafficPolicyInstanceRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CreateTrafficPolicyInstance")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstance", CreateTrafficPolicyInstanceRequest, headers, settings, cb)
 	else
@@ -8998,7 +8998,7 @@ function M.GetGeoLocationAsync(GetGeoLocationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetGeoLocation")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/geolocation", GetGeoLocationRequest, headers, settings, cb)
 	else
@@ -9034,7 +9034,7 @@ function M.GetReusableDelegationSetAsync(GetReusableDelegationSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetReusableDelegationSet")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/delegationset/{Id}", GetReusableDelegationSetRequest, headers, settings, cb)
 	else
@@ -9070,7 +9070,7 @@ function M.ListHostedZonesAsync(ListHostedZonesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListHostedZones")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone", ListHostedZonesRequest, headers, settings, cb)
 	else
@@ -9106,7 +9106,7 @@ function M.GetTrafficPolicyAsync(GetTrafficPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetTrafficPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicy/{Id}/{Version}", GetTrafficPolicyRequest, headers, settings, cb)
 	else
@@ -9142,7 +9142,7 @@ function M.ListQueryLoggingConfigsAsync(ListQueryLoggingConfigsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListQueryLoggingConfigs")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/queryloggingconfig", ListQueryLoggingConfigsRequest, headers, settings, cb)
 	else
@@ -9178,7 +9178,7 @@ function M.UpdateHealthCheckAsync(UpdateHealthCheckRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "UpdateHealthCheck")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/healthcheck/{HealthCheckId}", UpdateHealthCheckRequest, headers, settings, cb)
 	else
@@ -9214,7 +9214,7 @@ function M.GetHealthCheckCountAsync(GetHealthCheckCountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetHealthCheckCount")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/healthcheckcount", GetHealthCheckCountRequest, headers, settings, cb)
 	else
@@ -9250,7 +9250,7 @@ function M.DisassociateVPCFromHostedZoneAsync(DisassociateVPCFromHostedZoneReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "DisassociateVPCFromHostedZone")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/disassociatevpc", DisassociateVPCFromHostedZoneRequest, headers, settings, cb)
 	else
@@ -9286,7 +9286,7 @@ function M.DeleteVPCAssociationAuthorizationAsync(DeleteVPCAssociationAuthorizat
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "DeleteVPCAssociationAuthorization")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/deauthorizevpcassociation", DeleteVPCAssociationAuthorizationRequest, headers, settings, cb)
 	else
@@ -9322,7 +9322,7 @@ function M.GetTrafficPolicyInstanceAsync(GetTrafficPolicyInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetTrafficPolicyInstance")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstance/{Id}", GetTrafficPolicyInstanceRequest, headers, settings, cb)
 	else
@@ -9358,7 +9358,7 @@ function M.DeleteHealthCheckAsync(DeleteHealthCheckRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteHealthCheck")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/healthcheck/{HealthCheckId}", DeleteHealthCheckRequest, headers, settings, cb)
 	else
@@ -9394,7 +9394,7 @@ function M.CreateHealthCheckAsync(CreateHealthCheckRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CreateHealthCheck")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/healthcheck", CreateHealthCheckRequest, headers, settings, cb)
 	else
@@ -9430,7 +9430,7 @@ function M.CreateTrafficPolicyVersionAsync(CreateTrafficPolicyVersionRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CreateTrafficPolicyVersion")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicy/{Id}", CreateTrafficPolicyVersionRequest, headers, settings, cb)
 	else
@@ -9466,7 +9466,7 @@ function M.CreateTrafficPolicyAsync(CreateTrafficPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CreateTrafficPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicy", CreateTrafficPolicyRequest, headers, settings, cb)
 	else
@@ -9502,7 +9502,7 @@ function M.ListGeoLocationsAsync(ListGeoLocationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListGeoLocations")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/geolocations", ListGeoLocationsRequest, headers, settings, cb)
 	else
@@ -9538,7 +9538,7 @@ function M.ListTagsForResourcesAsync(ListTagsForResourcesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "ListTagsForResources")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/tags/{ResourceType}", ListTagsForResourcesRequest, headers, settings, cb)
 	else
@@ -9574,7 +9574,7 @@ function M.GetQueryLoggingConfigAsync(GetQueryLoggingConfigRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetQueryLoggingConfig")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/queryloggingconfig/{Id}", GetQueryLoggingConfigRequest, headers, settings, cb)
 	else
@@ -9610,7 +9610,7 @@ function M.GetHostedZoneLimitAsync(GetHostedZoneLimitRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetHostedZoneLimit")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzonelimit/{Id}/{Type}", GetHostedZoneLimitRequest, headers, settings, cb)
 	else
@@ -9646,7 +9646,7 @@ function M.AssociateVPCWithHostedZoneAsync(AssociateVPCWithHostedZoneRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "AssociateVPCWithHostedZone")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/associatevpc", AssociateVPCWithHostedZoneRequest, headers, settings, cb)
 	else
@@ -9682,7 +9682,7 @@ function M.ListTrafficPolicyInstancesAsync(ListTrafficPolicyInstancesRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListTrafficPolicyInstances")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstances", ListTrafficPolicyInstancesRequest, headers, settings, cb)
 	else
@@ -9718,7 +9718,7 @@ function M.ListVPCAssociationAuthorizationsAsync(ListVPCAssociationAuthorization
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListVPCAssociationAuthorizations")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/authorizevpcassociation", ListVPCAssociationAuthorizationsRequest, headers, settings, cb)
 	else
@@ -9754,7 +9754,7 @@ function M.GetHealthCheckLastFailureReasonAsync(GetHealthCheckLastFailureReasonR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetHealthCheckLastFailureReason")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/healthcheck/{HealthCheckId}/lastfailurereason", GetHealthCheckLastFailureReasonRequest, headers, settings, cb)
 	else
@@ -9790,7 +9790,7 @@ function M.GetChangeAsync(GetChangeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetChange")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/change/{Id}", GetChangeRequest, headers, settings, cb)
 	else
@@ -9826,7 +9826,7 @@ function M.UpdateTrafficPolicyInstanceAsync(UpdateTrafficPolicyInstanceRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "UpdateTrafficPolicyInstance")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstance/{Id}", UpdateTrafficPolicyInstanceRequest, headers, settings, cb)
 	else
@@ -9862,7 +9862,7 @@ function M.CreateReusableDelegationSetAsync(CreateReusableDelegationSetRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CreateReusableDelegationSet")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/delegationset", CreateReusableDelegationSetRequest, headers, settings, cb)
 	else
@@ -9898,7 +9898,7 @@ function M.DeleteQueryLoggingConfigAsync(DeleteQueryLoggingConfigRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteQueryLoggingConfig")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/queryloggingconfig/{Id}", DeleteQueryLoggingConfigRequest, headers, settings, cb)
 	else
@@ -9934,7 +9934,7 @@ function M.ListResourceRecordSetsAsync(ListResourceRecordSetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListResourceRecordSets")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/rrset", ListResourceRecordSetsRequest, headers, settings, cb)
 	else
@@ -9970,7 +9970,7 @@ function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListTagsForResource")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/tags/{ResourceType}/{ResourceId}", ListTagsForResourceRequest, headers, settings, cb)
 	else
@@ -10006,7 +10006,7 @@ function M.ListHealthChecksAsync(ListHealthChecksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListHealthChecks")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/healthcheck", ListHealthChecksRequest, headers, settings, cb)
 	else
@@ -10042,7 +10042,7 @@ function M.ListTrafficPolicyVersionsAsync(ListTrafficPolicyVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListTrafficPolicyVersions")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicies/{Id}/versions", ListTrafficPolicyVersionsRequest, headers, settings, cb)
 	else

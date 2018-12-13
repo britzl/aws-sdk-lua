@@ -6175,7 +6175,7 @@ function M.DeactivateUserAsync(DeactivateUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeactivateUser")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/users/{UserId}/activation", DeactivateUserRequest, headers, settings, cb)
 	else
@@ -6211,7 +6211,7 @@ function M.DescribeRootFoldersAsync(DescribeRootFoldersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeRootFolders")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/me/root", DescribeRootFoldersRequest, headers, settings, cb)
 	else
@@ -6247,7 +6247,7 @@ function M.AddResourcePermissionsAsync(AddResourcePermissionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "AddResourcePermissions")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/permissions", AddResourcePermissionsRequest, headers, settings, cb)
 	else
@@ -6283,7 +6283,7 @@ function M.DeleteFolderAsync(DeleteFolderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteFolder")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/folders/{FolderId}", DeleteFolderRequest, headers, settings, cb)
 	else
@@ -6319,7 +6319,7 @@ function M.DescribeUsersAsync(DescribeUsersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeUsers")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/users", DescribeUsersRequest, headers, settings, cb)
 	else
@@ -6355,7 +6355,7 @@ function M.UpdateDocumentVersionAsync(UpdateDocumentVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateDocumentVersion")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions/{VersionId}", UpdateDocumentVersionRequest, headers, settings, cb)
 	else
@@ -6391,7 +6391,7 @@ function M.DeleteCustomMetadataAsync(DeleteCustomMetadataRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteCustomMetadata")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/customMetadata", DeleteCustomMetadataRequest, headers, settings, cb)
 	else
@@ -6427,7 +6427,7 @@ function M.CreateLabelsAsync(CreateLabelsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "CreateLabels")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/labels", CreateLabelsRequest, headers, settings, cb)
 	else
@@ -6463,7 +6463,7 @@ function M.InitiateDocumentVersionUploadAsync(InitiateDocumentVersionUploadReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "InitiateDocumentVersionUpload")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents", InitiateDocumentVersionUploadRequest, headers, settings, cb)
 	else
@@ -6499,7 +6499,7 @@ function M.CreateCustomMetadataAsync(CreateCustomMetadataRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "CreateCustomMetadata")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/customMetadata", CreateCustomMetadataRequest, headers, settings, cb)
 	else
@@ -6535,7 +6535,7 @@ function M.GetDocumentAsync(GetDocumentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDocument")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}", GetDocumentRequest, headers, settings, cb)
 	else
@@ -6571,7 +6571,7 @@ function M.GetDocumentPathAsync(GetDocumentPathRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDocumentPath")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/path", GetDocumentPathRequest, headers, settings, cb)
 	else
@@ -6607,7 +6607,7 @@ function M.RemoveAllResourcePermissionsAsync(RemoveAllResourcePermissionsRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "RemoveAllResourcePermissions")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/permissions", RemoveAllResourcePermissionsRequest, headers, settings, cb)
 	else
@@ -6643,7 +6643,7 @@ function M.UpdateUserAsync(UpdateUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateUser")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/users/{UserId}", UpdateUserRequest, headers, settings, cb)
 	else
@@ -6679,7 +6679,7 @@ function M.GetCurrentUserAsync(GetCurrentUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetCurrentUser")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/me", GetCurrentUserRequest, headers, settings, cb)
 	else
@@ -6715,7 +6715,7 @@ function M.UpdateFolderAsync(UpdateFolderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateFolder")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/folders/{FolderId}", UpdateFolderRequest, headers, settings, cb)
 	else
@@ -6751,7 +6751,7 @@ function M.DeleteCommentAsync(DeleteCommentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteComment")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions/{VersionId}/comment/{CommentId}", DeleteCommentRequest, headers, settings, cb)
 	else
@@ -6787,7 +6787,7 @@ function M.CreateUserAsync(CreateUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateUser")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/users", CreateUserRequest, headers, settings, cb)
 	else
@@ -6823,7 +6823,7 @@ function M.DeleteFolderContentsAsync(DeleteFolderContentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteFolderContents")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/folders/{FolderId}/contents", DeleteFolderContentsRequest, headers, settings, cb)
 	else
@@ -6859,7 +6859,7 @@ function M.DeleteNotificationSubscriptionAsync(DeleteNotificationSubscriptionReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteNotificationSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/organizations/{OrganizationId}/subscriptions/{SubscriptionId}", DeleteNotificationSubscriptionRequest, headers, settings, cb)
 	else
@@ -6895,7 +6895,7 @@ function M.AbortDocumentVersionUploadAsync(AbortDocumentVersionUploadRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "AbortDocumentVersionUpload")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions/{VersionId}", AbortDocumentVersionUploadRequest, headers, settings, cb)
 	else
@@ -6931,7 +6931,7 @@ function M.DescribeNotificationSubscriptionsAsync(DescribeNotificationSubscripti
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeNotificationSubscriptions")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/organizations/{OrganizationId}/subscriptions", DescribeNotificationSubscriptionsRequest, headers, settings, cb)
 	else
@@ -6967,7 +6967,7 @@ function M.CreateCommentAsync(CreateCommentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateComment")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions/{VersionId}/comment", CreateCommentRequest, headers, settings, cb)
 	else
@@ -7003,7 +7003,7 @@ function M.GetDocumentVersionAsync(GetDocumentVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDocumentVersion")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions/{VersionId}", GetDocumentVersionRequest, headers, settings, cb)
 	else
@@ -7039,7 +7039,7 @@ function M.GetFolderPathAsync(GetFolderPathRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetFolderPath")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/folders/{FolderId}/path", GetFolderPathRequest, headers, settings, cb)
 	else
@@ -7075,7 +7075,7 @@ function M.DescribeFolderContentsAsync(DescribeFolderContentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeFolderContents")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/folders/{FolderId}/contents", DescribeFolderContentsRequest, headers, settings, cb)
 	else
@@ -7111,7 +7111,7 @@ function M.CreateFolderAsync(CreateFolderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateFolder")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/folders", CreateFolderRequest, headers, settings, cb)
 	else
@@ -7147,7 +7147,7 @@ function M.DescribeGroupsAsync(DescribeGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeGroups")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/groups", DescribeGroupsRequest, headers, settings, cb)
 	else
@@ -7183,7 +7183,7 @@ function M.DescribeResourcePermissionsAsync(DescribeResourcePermissionsRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeResourcePermissions")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/permissions", DescribeResourcePermissionsRequest, headers, settings, cb)
 	else
@@ -7219,7 +7219,7 @@ function M.CreateNotificationSubscriptionAsync(CreateNotificationSubscriptionReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateNotificationSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/organizations/{OrganizationId}/subscriptions", CreateNotificationSubscriptionRequest, headers, settings, cb)
 	else
@@ -7255,7 +7255,7 @@ function M.UpdateDocumentAsync(UpdateDocumentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateDocument")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}", UpdateDocumentRequest, headers, settings, cb)
 	else
@@ -7291,7 +7291,7 @@ function M.DescribeCommentsAsync(DescribeCommentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeComments")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions/{VersionId}/comments", DescribeCommentsRequest, headers, settings, cb)
 	else
@@ -7327,7 +7327,7 @@ function M.DeleteUserAsync(DeleteUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteUser")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/users/{UserId}", DeleteUserRequest, headers, settings, cb)
 	else
@@ -7363,7 +7363,7 @@ function M.DeleteDocumentAsync(DeleteDocumentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteDocument")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}", DeleteDocumentRequest, headers, settings, cb)
 	else
@@ -7399,7 +7399,7 @@ function M.DescribeActivitiesAsync(DescribeActivitiesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeActivities")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/activities", DescribeActivitiesRequest, headers, settings, cb)
 	else
@@ -7435,7 +7435,7 @@ function M.ActivateUserAsync(ActivateUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ActivateUser")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/users/{UserId}/activation", ActivateUserRequest, headers, settings, cb)
 	else
@@ -7471,7 +7471,7 @@ function M.GetFolderAsync(GetFolderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetFolder")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/folders/{FolderId}", GetFolderRequest, headers, settings, cb)
 	else
@@ -7507,7 +7507,7 @@ function M.RemoveResourcePermissionAsync(RemoveResourcePermissionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "RemoveResourcePermission")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/permissions/{PrincipalId}", RemoveResourcePermissionRequest, headers, settings, cb)
 	else
@@ -7543,7 +7543,7 @@ function M.DeleteLabelsAsync(DeleteLabelsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteLabels")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/labels", DeleteLabelsRequest, headers, settings, cb)
 	else
@@ -7579,7 +7579,7 @@ function M.DescribeDocumentVersionsAsync(DescribeDocumentVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeDocumentVersions")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions", DescribeDocumentVersionsRequest, headers, settings, cb)
 	else

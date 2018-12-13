@@ -1978,7 +1978,7 @@ function M.ListJobsAsync(ListJobsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListJobs")
 	if request_handler then
 		request_handler(settings.uri, "/?Operation=ListJobs", ListJobsInput, headers, settings, cb)
 	else
@@ -2014,7 +2014,7 @@ function M.UpdateJobAsync(UpdateJobInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateJob")
 	if request_handler then
 		request_handler(settings.uri, "/?Operation=UpdateJob", UpdateJobInput, headers, settings, cb)
 	else
@@ -2050,7 +2050,7 @@ function M.CreateJobAsync(CreateJobInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateJob")
 	if request_handler then
 		request_handler(settings.uri, "/?Operation=CreateJob", CreateJobInput, headers, settings, cb)
 	else
@@ -2086,7 +2086,7 @@ function M.GetStatusAsync(GetStatusInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetStatus")
 	if request_handler then
 		request_handler(settings.uri, "/?Operation=GetStatus", GetStatusInput, headers, settings, cb)
 	else
@@ -2122,7 +2122,7 @@ function M.CancelJobAsync(CancelJobInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CancelJob")
 	if request_handler then
 		request_handler(settings.uri, "/?Operation=CancelJob", CancelJobInput, headers, settings, cb)
 	else
@@ -2158,7 +2158,7 @@ function M.GetShippingLabelAsync(GetShippingLabelInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "GetShippingLabel")
 	if request_handler then
 		request_handler(settings.uri, "/?Operation=GetShippingLabel", GetShippingLabelInput, headers, settings, cb)
 	else

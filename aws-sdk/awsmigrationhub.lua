@@ -2384,7 +2384,7 @@ function M.CreateProgressUpdateStreamAsync(CreateProgressUpdateStreamRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateProgressUpdateStream")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateProgressUpdateStreamRequest, headers, settings, cb)
 	else
@@ -2420,7 +2420,7 @@ function M.NotifyApplicationStateAsync(NotifyApplicationStateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "NotifyApplicationState")
 	if request_handler then
 		request_handler(settings.uri, "/", NotifyApplicationStateRequest, headers, settings, cb)
 	else
@@ -2456,7 +2456,7 @@ function M.AssociateDiscoveredResourceAsync(AssociateDiscoveredResourceRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateDiscoveredResource")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateDiscoveredResourceRequest, headers, settings, cb)
 	else
@@ -2492,7 +2492,7 @@ function M.PutResourceAttributesAsync(PutResourceAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutResourceAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", PutResourceAttributesRequest, headers, settings, cb)
 	else
@@ -2528,7 +2528,7 @@ function M.ListProgressUpdateStreamsAsync(ListProgressUpdateStreamsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListProgressUpdateStreams")
 	if request_handler then
 		request_handler(settings.uri, "/", ListProgressUpdateStreamsRequest, headers, settings, cb)
 	else
@@ -2564,7 +2564,7 @@ function M.DisassociateDiscoveredResourceAsync(DisassociateDiscoveredResourceReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateDiscoveredResource")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateDiscoveredResourceRequest, headers, settings, cb)
 	else
@@ -2600,7 +2600,7 @@ function M.DeleteProgressUpdateStreamAsync(DeleteProgressUpdateStreamRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteProgressUpdateStream")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteProgressUpdateStreamRequest, headers, settings, cb)
 	else
@@ -2636,7 +2636,7 @@ function M.ListCreatedArtifactsAsync(ListCreatedArtifactsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListCreatedArtifacts")
 	if request_handler then
 		request_handler(settings.uri, "/", ListCreatedArtifactsRequest, headers, settings, cb)
 	else
@@ -2672,7 +2672,7 @@ function M.NotifyMigrationTaskStateAsync(NotifyMigrationTaskStateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "NotifyMigrationTaskState")
 	if request_handler then
 		request_handler(settings.uri, "/", NotifyMigrationTaskStateRequest, headers, settings, cb)
 	else
@@ -2708,7 +2708,7 @@ function M.ImportMigrationTaskAsync(ImportMigrationTaskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ImportMigrationTask")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportMigrationTaskRequest, headers, settings, cb)
 	else
@@ -2744,7 +2744,7 @@ function M.DescribeMigrationTaskAsync(DescribeMigrationTaskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeMigrationTask")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMigrationTaskRequest, headers, settings, cb)
 	else
@@ -2780,7 +2780,7 @@ function M.ListMigrationTasksAsync(ListMigrationTasksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListMigrationTasks")
 	if request_handler then
 		request_handler(settings.uri, "/", ListMigrationTasksRequest, headers, settings, cb)
 	else
@@ -2816,7 +2816,7 @@ function M.DisassociateCreatedArtifactAsync(DisassociateCreatedArtifactRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateCreatedArtifact")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateCreatedArtifactRequest, headers, settings, cb)
 	else
@@ -2852,7 +2852,7 @@ function M.AssociateCreatedArtifactAsync(AssociateCreatedArtifactRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateCreatedArtifact")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateCreatedArtifactRequest, headers, settings, cb)
 	else
@@ -2888,7 +2888,7 @@ function M.ListDiscoveredResourcesAsync(ListDiscoveredResourcesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListDiscoveredResources")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDiscoveredResourcesRequest, headers, settings, cb)
 	else
@@ -2924,7 +2924,7 @@ function M.DescribeApplicationStateAsync(DescribeApplicationStateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeApplicationState")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeApplicationStateRequest, headers, settings, cb)
 	else

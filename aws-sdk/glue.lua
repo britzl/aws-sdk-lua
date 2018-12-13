@@ -12973,7 +12973,7 @@ function M.GetUserDefinedFunctionsAsync(GetUserDefinedFunctionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetUserDefinedFunctions")
 	if request_handler then
 		request_handler(settings.uri, "/", GetUserDefinedFunctionsRequest, headers, settings, cb)
 	else
@@ -13009,7 +13009,7 @@ function M.BatchDeleteTableAsync(BatchDeleteTableRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchDeleteTable")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchDeleteTableRequest, headers, settings, cb)
 	else
@@ -13045,7 +13045,7 @@ function M.GetCrawlersAsync(GetCrawlersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetCrawlers")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCrawlersRequest, headers, settings, cb)
 	else
@@ -13081,7 +13081,7 @@ function M.StopCrawlerAsync(StopCrawlerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopCrawler")
 	if request_handler then
 		request_handler(settings.uri, "/", StopCrawlerRequest, headers, settings, cb)
 	else
@@ -13117,7 +13117,7 @@ function M.StartCrawlerAsync(StartCrawlerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartCrawler")
 	if request_handler then
 		request_handler(settings.uri, "/", StartCrawlerRequest, headers, settings, cb)
 	else
@@ -13153,7 +13153,7 @@ function M.GetPartitionsAsync(GetPartitionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetPartitions")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPartitionsRequest, headers, settings, cb)
 	else
@@ -13189,7 +13189,7 @@ function M.GetUserDefinedFunctionAsync(GetUserDefinedFunctionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetUserDefinedFunction")
 	if request_handler then
 		request_handler(settings.uri, "/", GetUserDefinedFunctionRequest, headers, settings, cb)
 	else
@@ -13225,7 +13225,7 @@ function M.UpdateJobAsync(UpdateJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateJob")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateJobRequest, headers, settings, cb)
 	else
@@ -13261,7 +13261,7 @@ function M.GetCrawlerMetricsAsync(GetCrawlerMetricsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetCrawlerMetrics")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCrawlerMetricsRequest, headers, settings, cb)
 	else
@@ -13297,7 +13297,7 @@ function M.UpdateCrawlerScheduleAsync(UpdateCrawlerScheduleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateCrawlerSchedule")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateCrawlerScheduleRequest, headers, settings, cb)
 	else
@@ -13333,7 +13333,7 @@ function M.DeleteDevEndpointAsync(DeleteDevEndpointRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDevEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDevEndpointRequest, headers, settings, cb)
 	else
@@ -13369,7 +13369,7 @@ function M.CreatePartitionAsync(CreatePartitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreatePartition")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePartitionRequest, headers, settings, cb)
 	else
@@ -13405,7 +13405,7 @@ function M.DeleteDatabaseAsync(DeleteDatabaseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDatabase")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDatabaseRequest, headers, settings, cb)
 	else
@@ -13441,7 +13441,7 @@ function M.BatchDeleteTableVersionAsync(BatchDeleteTableVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchDeleteTableVersion")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchDeleteTableVersionRequest, headers, settings, cb)
 	else
@@ -13477,7 +13477,7 @@ function M.ResetJobBookmarkAsync(ResetJobBookmarkRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ResetJobBookmark")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetJobBookmarkRequest, headers, settings, cb)
 	else
@@ -13513,7 +13513,7 @@ function M.GetDatabasesAsync(GetDatabasesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDatabases")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDatabasesRequest, headers, settings, cb)
 	else
@@ -13549,7 +13549,7 @@ function M.BatchDeleteConnectionAsync(BatchDeleteConnectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchDeleteConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchDeleteConnectionRequest, headers, settings, cb)
 	else
@@ -13585,7 +13585,7 @@ function M.BatchGetPartitionAsync(BatchGetPartitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchGetPartition")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetPartitionRequest, headers, settings, cb)
 	else
@@ -13621,7 +13621,7 @@ function M.DeleteConnectionAsync(DeleteConnectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConnectionRequest, headers, settings, cb)
 	else
@@ -13657,7 +13657,7 @@ function M.DeletePartitionAsync(DeletePartitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeletePartition")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePartitionRequest, headers, settings, cb)
 	else
@@ -13693,7 +13693,7 @@ function M.CreateClassifierAsync(CreateClassifierRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateClassifier")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateClassifierRequest, headers, settings, cb)
 	else
@@ -13729,7 +13729,7 @@ function M.DeleteJobAsync(DeleteJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteJob")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteJobRequest, headers, settings, cb)
 	else
@@ -13765,7 +13765,7 @@ function M.GetJobAsync(GetJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetJob")
 	if request_handler then
 		request_handler(settings.uri, "/", GetJobRequest, headers, settings, cb)
 	else
@@ -13801,7 +13801,7 @@ function M.GetDatabaseAsync(GetDatabaseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDatabase")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDatabaseRequest, headers, settings, cb)
 	else
@@ -13837,7 +13837,7 @@ function M.BatchStopJobRunAsync(BatchStopJobRunRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchStopJobRun")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchStopJobRunRequest, headers, settings, cb)
 	else
@@ -13873,7 +13873,7 @@ function M.DeleteTableVersionAsync(DeleteTableVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteTableVersion")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTableVersionRequest, headers, settings, cb)
 	else
@@ -13909,7 +13909,7 @@ function M.DeleteClassifierAsync(DeleteClassifierRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteClassifier")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteClassifierRequest, headers, settings, cb)
 	else
@@ -13945,7 +13945,7 @@ function M.GetTableVersionsAsync(GetTableVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetTableVersions")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTableVersionsRequest, headers, settings, cb)
 	else
@@ -13981,7 +13981,7 @@ function M.UpdateDevEndpointAsync(UpdateDevEndpointRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateDevEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDevEndpointRequest, headers, settings, cb)
 	else
@@ -14017,7 +14017,7 @@ function M.GetTriggersAsync(GetTriggersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetTriggers")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTriggersRequest, headers, settings, cb)
 	else
@@ -14053,7 +14053,7 @@ function M.GetDevEndpointAsync(GetDevEndpointRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDevEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDevEndpointRequest, headers, settings, cb)
 	else
@@ -14089,7 +14089,7 @@ function M.GetJobRunsAsync(GetJobRunsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetJobRuns")
 	if request_handler then
 		request_handler(settings.uri, "/", GetJobRunsRequest, headers, settings, cb)
 	else
@@ -14125,7 +14125,7 @@ function M.CreateDatabaseAsync(CreateDatabaseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDatabase")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDatabaseRequest, headers, settings, cb)
 	else
@@ -14161,7 +14161,7 @@ function M.StartJobRunAsync(StartJobRunRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartJobRun")
 	if request_handler then
 		request_handler(settings.uri, "/", StartJobRunRequest, headers, settings, cb)
 	else
@@ -14197,7 +14197,7 @@ function M.GetDevEndpointsAsync(GetDevEndpointsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDevEndpoints")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDevEndpointsRequest, headers, settings, cb)
 	else
@@ -14233,7 +14233,7 @@ function M.GetClassifierAsync(GetClassifierRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetClassifier")
 	if request_handler then
 		request_handler(settings.uri, "/", GetClassifierRequest, headers, settings, cb)
 	else
@@ -14269,7 +14269,7 @@ function M.UpdateTriggerAsync(UpdateTriggerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateTrigger")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateTriggerRequest, headers, settings, cb)
 	else
@@ -14305,7 +14305,7 @@ function M.GetPartitionAsync(GetPartitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetPartition")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPartitionRequest, headers, settings, cb)
 	else
@@ -14341,7 +14341,7 @@ function M.CreateSecurityConfigurationAsync(CreateSecurityConfigurationRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateSecurityConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSecurityConfigurationRequest, headers, settings, cb)
 	else
@@ -14377,7 +14377,7 @@ function M.GetResourcePolicyAsync(GetResourcePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetResourcePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", GetResourcePolicyRequest, headers, settings, cb)
 	else
@@ -14413,7 +14413,7 @@ function M.GetTriggerAsync(GetTriggerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetTrigger")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTriggerRequest, headers, settings, cb)
 	else
@@ -14449,7 +14449,7 @@ function M.StartCrawlerScheduleAsync(StartCrawlerScheduleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartCrawlerSchedule")
 	if request_handler then
 		request_handler(settings.uri, "/", StartCrawlerScheduleRequest, headers, settings, cb)
 	else
@@ -14485,7 +14485,7 @@ function M.PutResourcePolicyAsync(PutResourcePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutResourcePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutResourcePolicyRequest, headers, settings, cb)
 	else
@@ -14521,7 +14521,7 @@ function M.GetTableVersionAsync(GetTableVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetTableVersion")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTableVersionRequest, headers, settings, cb)
 	else
@@ -14557,7 +14557,7 @@ function M.DeleteTriggerAsync(DeleteTriggerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteTrigger")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTriggerRequest, headers, settings, cb)
 	else
@@ -14593,7 +14593,7 @@ function M.DeleteSecurityConfigurationAsync(DeleteSecurityConfigurationRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteSecurityConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSecurityConfigurationRequest, headers, settings, cb)
 	else
@@ -14629,7 +14629,7 @@ function M.DeleteResourcePolicyAsync(DeleteResourcePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteResourcePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteResourcePolicyRequest, headers, settings, cb)
 	else
@@ -14665,7 +14665,7 @@ function M.GetDataCatalogEncryptionSettingsAsync(GetDataCatalogEncryptionSetting
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDataCatalogEncryptionSettings")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDataCatalogEncryptionSettingsRequest, headers, settings, cb)
 	else
@@ -14701,7 +14701,7 @@ function M.GetSecurityConfigurationsAsync(GetSecurityConfigurationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetSecurityConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSecurityConfigurationsRequest, headers, settings, cb)
 	else
@@ -14737,7 +14737,7 @@ function M.DeleteCrawlerAsync(DeleteCrawlerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteCrawler")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCrawlerRequest, headers, settings, cb)
 	else
@@ -14773,7 +14773,7 @@ function M.UpdateClassifierAsync(UpdateClassifierRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateClassifier")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateClassifierRequest, headers, settings, cb)
 	else
@@ -14809,7 +14809,7 @@ function M.CreateCrawlerAsync(CreateCrawlerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateCrawler")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCrawlerRequest, headers, settings, cb)
 	else
@@ -14845,7 +14845,7 @@ function M.CreateDevEndpointAsync(CreateDevEndpointRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDevEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDevEndpointRequest, headers, settings, cb)
 	else
@@ -14881,7 +14881,7 @@ function M.CreateConnectionAsync(CreateConnectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateConnectionRequest, headers, settings, cb)
 	else
@@ -14917,7 +14917,7 @@ function M.DeleteTableAsync(DeleteTableRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteTable")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTableRequest, headers, settings, cb)
 	else
@@ -14953,7 +14953,7 @@ function M.GetJobRunAsync(GetJobRunRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetJobRun")
 	if request_handler then
 		request_handler(settings.uri, "/", GetJobRunRequest, headers, settings, cb)
 	else
@@ -14989,7 +14989,7 @@ function M.BatchCreatePartitionAsync(BatchCreatePartitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchCreatePartition")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchCreatePartitionRequest, headers, settings, cb)
 	else
@@ -15025,7 +15025,7 @@ function M.StartTriggerAsync(StartTriggerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartTrigger")
 	if request_handler then
 		request_handler(settings.uri, "/", StartTriggerRequest, headers, settings, cb)
 	else
@@ -15061,7 +15061,7 @@ function M.PutDataCatalogEncryptionSettingsAsync(PutDataCatalogEncryptionSetting
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutDataCatalogEncryptionSettings")
 	if request_handler then
 		request_handler(settings.uri, "/", PutDataCatalogEncryptionSettingsRequest, headers, settings, cb)
 	else
@@ -15097,7 +15097,7 @@ function M.GetClassifiersAsync(GetClassifiersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetClassifiers")
 	if request_handler then
 		request_handler(settings.uri, "/", GetClassifiersRequest, headers, settings, cb)
 	else
@@ -15133,7 +15133,7 @@ function M.UpdatePartitionAsync(UpdatePartitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdatePartition")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdatePartitionRequest, headers, settings, cb)
 	else
@@ -15169,7 +15169,7 @@ function M.GetJobsAsync(GetJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetJobs")
 	if request_handler then
 		request_handler(settings.uri, "/", GetJobsRequest, headers, settings, cb)
 	else
@@ -15205,7 +15205,7 @@ function M.UpdateUserDefinedFunctionAsync(UpdateUserDefinedFunctionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateUserDefinedFunction")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateUserDefinedFunctionRequest, headers, settings, cb)
 	else
@@ -15241,7 +15241,7 @@ function M.GetConnectionsAsync(GetConnectionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetConnections")
 	if request_handler then
 		request_handler(settings.uri, "/", GetConnectionsRequest, headers, settings, cb)
 	else
@@ -15277,7 +15277,7 @@ function M.GetPlanAsync(GetPlanRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetPlan")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPlanRequest, headers, settings, cb)
 	else
@@ -15313,7 +15313,7 @@ function M.CreateTableAsync(CreateTableRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateTable")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTableRequest, headers, settings, cb)
 	else
@@ -15349,7 +15349,7 @@ function M.CreateTriggerAsync(CreateTriggerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateTrigger")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTriggerRequest, headers, settings, cb)
 	else
@@ -15385,7 +15385,7 @@ function M.StopTriggerAsync(StopTriggerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopTrigger")
 	if request_handler then
 		request_handler(settings.uri, "/", StopTriggerRequest, headers, settings, cb)
 	else
@@ -15421,7 +15421,7 @@ function M.DeleteUserDefinedFunctionAsync(DeleteUserDefinedFunctionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteUserDefinedFunction")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUserDefinedFunctionRequest, headers, settings, cb)
 	else
@@ -15457,7 +15457,7 @@ function M.GetSecurityConfigurationAsync(GetSecurityConfigurationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetSecurityConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSecurityConfigurationRequest, headers, settings, cb)
 	else
@@ -15493,7 +15493,7 @@ function M.GetConnectionAsync(GetConnectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", GetConnectionRequest, headers, settings, cb)
 	else
@@ -15529,7 +15529,7 @@ function M.GetTablesAsync(GetTablesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetTables")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTablesRequest, headers, settings, cb)
 	else
@@ -15565,7 +15565,7 @@ function M.CreateScriptAsync(CreateScriptRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateScript")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateScriptRequest, headers, settings, cb)
 	else
@@ -15601,7 +15601,7 @@ function M.GetCatalogImportStatusAsync(GetCatalogImportStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetCatalogImportStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCatalogImportStatusRequest, headers, settings, cb)
 	else
@@ -15637,7 +15637,7 @@ function M.StopCrawlerScheduleAsync(StopCrawlerScheduleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopCrawlerSchedule")
 	if request_handler then
 		request_handler(settings.uri, "/", StopCrawlerScheduleRequest, headers, settings, cb)
 	else
@@ -15673,7 +15673,7 @@ function M.GetDataflowGraphAsync(GetDataflowGraphRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDataflowGraph")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDataflowGraphRequest, headers, settings, cb)
 	else
@@ -15709,7 +15709,7 @@ function M.CreateJobAsync(CreateJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateJob")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateJobRequest, headers, settings, cb)
 	else
@@ -15745,7 +15745,7 @@ function M.GetCrawlerAsync(GetCrawlerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetCrawler")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCrawlerRequest, headers, settings, cb)
 	else
@@ -15781,7 +15781,7 @@ function M.UpdateTableAsync(UpdateTableRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateTable")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateTableRequest, headers, settings, cb)
 	else
@@ -15817,7 +15817,7 @@ function M.BatchDeletePartitionAsync(BatchDeletePartitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchDeletePartition")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchDeletePartitionRequest, headers, settings, cb)
 	else
@@ -15853,7 +15853,7 @@ function M.UpdateCrawlerAsync(UpdateCrawlerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateCrawler")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateCrawlerRequest, headers, settings, cb)
 	else
@@ -15889,7 +15889,7 @@ function M.CreateUserDefinedFunctionAsync(CreateUserDefinedFunctionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateUserDefinedFunction")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateUserDefinedFunctionRequest, headers, settings, cb)
 	else
@@ -15925,7 +15925,7 @@ function M.ImportCatalogToGlueAsync(ImportCatalogToGlueRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ImportCatalogToGlue")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportCatalogToGlueRequest, headers, settings, cb)
 	else
@@ -15961,7 +15961,7 @@ function M.GetMappingAsync(GetMappingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetMapping")
 	if request_handler then
 		request_handler(settings.uri, "/", GetMappingRequest, headers, settings, cb)
 	else
@@ -15997,7 +15997,7 @@ function M.GetTableAsync(GetTableRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetTable")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTableRequest, headers, settings, cb)
 	else
@@ -16033,7 +16033,7 @@ function M.UpdateDatabaseAsync(UpdateDatabaseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateDatabase")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDatabaseRequest, headers, settings, cb)
 	else
@@ -16069,7 +16069,7 @@ function M.UpdateConnectionAsync(UpdateConnectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateConnectionRequest, headers, settings, cb)
 	else

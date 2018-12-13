@@ -2912,7 +2912,7 @@ function M.GetTagsAsync(GetTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetTags")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTagsRequest, headers, settings, cb)
 	else
@@ -2948,7 +2948,7 @@ function M.GetReservationPurchaseRecommendationAsync(GetReservationPurchaseRecom
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetReservationPurchaseRecommendation")
 	if request_handler then
 		request_handler(settings.uri, "/", GetReservationPurchaseRecommendationRequest, headers, settings, cb)
 	else
@@ -2984,7 +2984,7 @@ function M.GetReservationUtilizationAsync(GetReservationUtilizationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetReservationUtilization")
 	if request_handler then
 		request_handler(settings.uri, "/", GetReservationUtilizationRequest, headers, settings, cb)
 	else
@@ -3020,7 +3020,7 @@ function M.GetDimensionValuesAsync(GetDimensionValuesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDimensionValues")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDimensionValuesRequest, headers, settings, cb)
 	else
@@ -3056,7 +3056,7 @@ function M.GetCostAndUsageAsync(GetCostAndUsageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetCostAndUsage")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCostAndUsageRequest, headers, settings, cb)
 	else
@@ -3092,7 +3092,7 @@ function M.GetReservationCoverageAsync(GetReservationCoverageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetReservationCoverage")
 	if request_handler then
 		request_handler(settings.uri, "/", GetReservationCoverageRequest, headers, settings, cb)
 	else

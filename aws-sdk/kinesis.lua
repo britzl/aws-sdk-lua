@@ -3899,7 +3899,7 @@ function M.IncreaseStreamRetentionPeriodAsync(IncreaseStreamRetentionPeriodInput
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "IncreaseStreamRetentionPeriod")
 	if request_handler then
 		request_handler(settings.uri, "/", IncreaseStreamRetentionPeriodInput, headers, settings, cb)
 	else
@@ -3935,7 +3935,7 @@ function M.GetShardIteratorAsync(GetShardIteratorInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetShardIterator")
 	if request_handler then
 		request_handler(settings.uri, "/", GetShardIteratorInput, headers, settings, cb)
 	else
@@ -3971,7 +3971,7 @@ function M.AddTagsToStreamAsync(AddTagsToStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddTagsToStream")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToStreamInput, headers, settings, cb)
 	else
@@ -4007,7 +4007,7 @@ function M.DisableEnhancedMonitoringAsync(DisableEnhancedMonitoringInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisableEnhancedMonitoring")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableEnhancedMonitoringInput, headers, settings, cb)
 	else
@@ -4043,7 +4043,7 @@ function M.DecreaseStreamRetentionPeriodAsync(DecreaseStreamRetentionPeriodInput
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DecreaseStreamRetentionPeriod")
 	if request_handler then
 		request_handler(settings.uri, "/", DecreaseStreamRetentionPeriodInput, headers, settings, cb)
 	else
@@ -4079,7 +4079,7 @@ function M.DescribeLimitsAsync(DescribeLimitsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeLimits")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLimitsInput, headers, settings, cb)
 	else
@@ -4115,7 +4115,7 @@ function M.ListShardsAsync(ListShardsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListShards")
 	if request_handler then
 		request_handler(settings.uri, "/", ListShardsInput, headers, settings, cb)
 	else
@@ -4151,7 +4151,7 @@ function M.ListStreamsAsync(ListStreamsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListStreams")
 	if request_handler then
 		request_handler(settings.uri, "/", ListStreamsInput, headers, settings, cb)
 	else
@@ -4187,7 +4187,7 @@ function M.DeregisterStreamConsumerAsync(DeregisterStreamConsumerInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeregisterStreamConsumer")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterStreamConsumerInput, headers, settings, cb)
 	else
@@ -4223,7 +4223,7 @@ function M.ListStreamConsumersAsync(ListStreamConsumersInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListStreamConsumers")
 	if request_handler then
 		request_handler(settings.uri, "/", ListStreamConsumersInput, headers, settings, cb)
 	else
@@ -4259,7 +4259,7 @@ function M.UpdateShardCountAsync(UpdateShardCountInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateShardCount")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateShardCountInput, headers, settings, cb)
 	else
@@ -4295,7 +4295,7 @@ function M.DescribeStreamSummaryAsync(DescribeStreamSummaryInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeStreamSummary")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStreamSummaryInput, headers, settings, cb)
 	else
@@ -4331,7 +4331,7 @@ function M.StartStreamEncryptionAsync(StartStreamEncryptionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartStreamEncryption")
 	if request_handler then
 		request_handler(settings.uri, "/", StartStreamEncryptionInput, headers, settings, cb)
 	else
@@ -4367,7 +4367,7 @@ function M.DescribeStreamConsumerAsync(DescribeStreamConsumerInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeStreamConsumer")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStreamConsumerInput, headers, settings, cb)
 	else
@@ -4403,7 +4403,7 @@ function M.SplitShardAsync(SplitShardInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SplitShard")
 	if request_handler then
 		request_handler(settings.uri, "/", SplitShardInput, headers, settings, cb)
 	else
@@ -4439,7 +4439,7 @@ function M.DescribeStreamAsync(DescribeStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeStream")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStreamInput, headers, settings, cb)
 	else
@@ -4475,7 +4475,7 @@ function M.CreateStreamAsync(CreateStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateStream")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateStreamInput, headers, settings, cb)
 	else
@@ -4511,7 +4511,7 @@ function M.RegisterStreamConsumerAsync(RegisterStreamConsumerInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterStreamConsumer")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterStreamConsumerInput, headers, settings, cb)
 	else
@@ -4547,7 +4547,7 @@ function M.EnableEnhancedMonitoringAsync(EnableEnhancedMonitoringInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "EnableEnhancedMonitoring")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableEnhancedMonitoringInput, headers, settings, cb)
 	else
@@ -4583,7 +4583,7 @@ function M.DeleteStreamAsync(DeleteStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteStream")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteStreamInput, headers, settings, cb)
 	else
@@ -4619,7 +4619,7 @@ function M.RemoveTagsFromStreamAsync(RemoveTagsFromStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RemoveTagsFromStream")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromStreamInput, headers, settings, cb)
 	else
@@ -4655,7 +4655,7 @@ function M.GetRecordsAsync(GetRecordsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRecords")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRecordsInput, headers, settings, cb)
 	else
@@ -4691,7 +4691,7 @@ function M.ListTagsForStreamAsync(ListTagsForStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTagsForStream")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForStreamInput, headers, settings, cb)
 	else
@@ -4727,7 +4727,7 @@ function M.PutRecordsAsync(PutRecordsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutRecords")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRecordsInput, headers, settings, cb)
 	else
@@ -4763,7 +4763,7 @@ function M.PutRecordAsync(PutRecordInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutRecord")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRecordInput, headers, settings, cb)
 	else
@@ -4799,7 +4799,7 @@ function M.MergeShardsAsync(MergeShardsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "MergeShards")
 	if request_handler then
 		request_handler(settings.uri, "/", MergeShardsInput, headers, settings, cb)
 	else
@@ -4835,7 +4835,7 @@ function M.StopStreamEncryptionAsync(StopStreamEncryptionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopStreamEncryption")
 	if request_handler then
 		request_handler(settings.uri, "/", StopStreamEncryptionInput, headers, settings, cb)
 	else

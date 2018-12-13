@@ -1992,7 +1992,7 @@ function M.ListSigningJobsAsync(ListSigningJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListSigningJobs")
 	if request_handler then
 		request_handler(settings.uri, "/signing-jobs", ListSigningJobsRequest, headers, settings, cb)
 	else
@@ -2028,7 +2028,7 @@ function M.DescribeSigningJobAsync(DescribeSigningJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeSigningJob")
 	if request_handler then
 		request_handler(settings.uri, "/signing-jobs/{jobId}", DescribeSigningJobRequest, headers, settings, cb)
 	else
@@ -2064,7 +2064,7 @@ function M.GetSigningProfileAsync(GetSigningProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSigningProfile")
 	if request_handler then
 		request_handler(settings.uri, "/signing-profiles/{profileName}", GetSigningProfileRequest, headers, settings, cb)
 	else
@@ -2100,7 +2100,7 @@ function M.ListSigningProfilesAsync(ListSigningProfilesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListSigningProfiles")
 	if request_handler then
 		request_handler(settings.uri, "/signing-profiles", ListSigningProfilesRequest, headers, settings, cb)
 	else
@@ -2136,7 +2136,7 @@ function M.CancelSigningProfileAsync(CancelSigningProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "CancelSigningProfile")
 	if request_handler then
 		request_handler(settings.uri, "/signing-profiles/{profileName}", CancelSigningProfileRequest, headers, settings, cb)
 	else
@@ -2172,7 +2172,7 @@ function M.ListSigningPlatformsAsync(ListSigningPlatformsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListSigningPlatforms")
 	if request_handler then
 		request_handler(settings.uri, "/signing-platforms", ListSigningPlatformsRequest, headers, settings, cb)
 	else
@@ -2208,7 +2208,7 @@ function M.StartSigningJobAsync(StartSigningJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "StartSigningJob")
 	if request_handler then
 		request_handler(settings.uri, "/signing-jobs", StartSigningJobRequest, headers, settings, cb)
 	else
@@ -2244,7 +2244,7 @@ function M.GetSigningPlatformAsync(GetSigningPlatformRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSigningPlatform")
 	if request_handler then
 		request_handler(settings.uri, "/signing-platforms/{platformId}", GetSigningPlatformRequest, headers, settings, cb)
 	else
@@ -2280,7 +2280,7 @@ function M.PutSigningProfileAsync(PutSigningProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PutSigningProfile")
 	if request_handler then
 		request_handler(settings.uri, "/signing-profiles/{profileName}", PutSigningProfileRequest, headers, settings, cb)
 	else

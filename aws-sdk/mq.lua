@@ -2560,7 +2560,7 @@ function M.UpdateUserAsync(UpdateUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateUser")
 	if request_handler then
 		request_handler(settings.uri, "/v1/brokers/{broker-id}/users/{username}", UpdateUserRequest, headers, settings, cb)
 	else
@@ -2596,7 +2596,7 @@ function M.ListBrokersAsync(ListBrokersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListBrokers")
 	if request_handler then
 		request_handler(settings.uri, "/v1/brokers", ListBrokersRequest, headers, settings, cb)
 	else
@@ -2632,7 +2632,7 @@ function M.DeleteUserAsync(DeleteUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteUser")
 	if request_handler then
 		request_handler(settings.uri, "/v1/brokers/{broker-id}/users/{username}", DeleteUserRequest, headers, settings, cb)
 	else
@@ -2668,7 +2668,7 @@ function M.DescribeBrokerAsync(DescribeBrokerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeBroker")
 	if request_handler then
 		request_handler(settings.uri, "/v1/brokers/{broker-id}", DescribeBrokerRequest, headers, settings, cb)
 	else
@@ -2704,7 +2704,7 @@ function M.UpdateBrokerAsync(UpdateBrokerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateBroker")
 	if request_handler then
 		request_handler(settings.uri, "/v1/brokers/{broker-id}", UpdateBrokerRequest, headers, settings, cb)
 	else
@@ -2740,7 +2740,7 @@ function M.ListConfigurationsAsync(ListConfigurationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/v1/configurations", ListConfigurationsRequest, headers, settings, cb)
 	else
@@ -2776,7 +2776,7 @@ function M.UpdateConfigurationAsync(UpdateConfigurationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/v1/configurations/{configuration-id}", UpdateConfigurationRequest, headers, settings, cb)
 	else
@@ -2812,7 +2812,7 @@ function M.DescribeUserAsync(DescribeUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeUser")
 	if request_handler then
 		request_handler(settings.uri, "/v1/brokers/{broker-id}/users/{username}", DescribeUserRequest, headers, settings, cb)
 	else
@@ -2848,7 +2848,7 @@ function M.ListUsersAsync(ListUsersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListUsers")
 	if request_handler then
 		request_handler(settings.uri, "/v1/brokers/{broker-id}/users", ListUsersRequest, headers, settings, cb)
 	else
@@ -2884,7 +2884,7 @@ function M.DescribeConfigurationAsync(DescribeConfigurationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/v1/configurations/{configuration-id}", DescribeConfigurationRequest, headers, settings, cb)
 	else
@@ -2920,7 +2920,7 @@ function M.DescribeConfigurationRevisionAsync(DescribeConfigurationRevisionReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeConfigurationRevision")
 	if request_handler then
 		request_handler(settings.uri, "/v1/configurations/{configuration-id}/revisions/{configuration-revision}", DescribeConfigurationRevisionRequest, headers, settings, cb)
 	else
@@ -2956,7 +2956,7 @@ function M.CreateUserAsync(CreateUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateUser")
 	if request_handler then
 		request_handler(settings.uri, "/v1/brokers/{broker-id}/users/{username}", CreateUserRequest, headers, settings, cb)
 	else
@@ -2992,7 +2992,7 @@ function M.CreateConfigurationAsync(CreateConfigurationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/v1/configurations", CreateConfigurationRequest, headers, settings, cb)
 	else
@@ -3028,7 +3028,7 @@ function M.ListConfigurationRevisionsAsync(ListConfigurationRevisionsRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListConfigurationRevisions")
 	if request_handler then
 		request_handler(settings.uri, "/v1/configurations/{configuration-id}/revisions", ListConfigurationRevisionsRequest, headers, settings, cb)
 	else
@@ -3064,7 +3064,7 @@ function M.CreateBrokerAsync(CreateBrokerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateBroker")
 	if request_handler then
 		request_handler(settings.uri, "/v1/brokers", CreateBrokerRequest, headers, settings, cb)
 	else
@@ -3100,7 +3100,7 @@ function M.RebootBrokerAsync(RebootBrokerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "RebootBroker")
 	if request_handler then
 		request_handler(settings.uri, "/v1/brokers/{broker-id}/reboot", RebootBrokerRequest, headers, settings, cb)
 	else
@@ -3136,7 +3136,7 @@ function M.DeleteBrokerAsync(DeleteBrokerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteBroker")
 	if request_handler then
 		request_handler(settings.uri, "/v1/brokers/{broker-id}", DeleteBrokerRequest, headers, settings, cb)
 	else

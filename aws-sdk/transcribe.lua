@@ -1326,7 +1326,7 @@ function M.ListTranscriptionJobsAsync(ListTranscriptionJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTranscriptionJobs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTranscriptionJobsRequest, headers, settings, cb)
 	else
@@ -1362,7 +1362,7 @@ function M.DeleteTranscriptionJobAsync(DeleteTranscriptionJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteTranscriptionJob")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTranscriptionJobRequest, headers, settings, cb)
 	else
@@ -1398,7 +1398,7 @@ function M.UpdateVocabularyAsync(UpdateVocabularyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateVocabulary")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateVocabularyRequest, headers, settings, cb)
 	else
@@ -1434,7 +1434,7 @@ function M.CreateVocabularyAsync(CreateVocabularyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateVocabulary")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVocabularyRequest, headers, settings, cb)
 	else
@@ -1470,7 +1470,7 @@ function M.ListVocabulariesAsync(ListVocabulariesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListVocabularies")
 	if request_handler then
 		request_handler(settings.uri, "/", ListVocabulariesRequest, headers, settings, cb)
 	else
@@ -1506,7 +1506,7 @@ function M.StartTranscriptionJobAsync(StartTranscriptionJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartTranscriptionJob")
 	if request_handler then
 		request_handler(settings.uri, "/", StartTranscriptionJobRequest, headers, settings, cb)
 	else
@@ -1542,7 +1542,7 @@ function M.GetVocabularyAsync(GetVocabularyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetVocabulary")
 	if request_handler then
 		request_handler(settings.uri, "/", GetVocabularyRequest, headers, settings, cb)
 	else
@@ -1578,7 +1578,7 @@ function M.DeleteVocabularyAsync(DeleteVocabularyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteVocabulary")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVocabularyRequest, headers, settings, cb)
 	else
@@ -1614,7 +1614,7 @@ function M.GetTranscriptionJobAsync(GetTranscriptionJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetTranscriptionJob")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTranscriptionJobRequest, headers, settings, cb)
 	else

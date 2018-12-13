@@ -2309,7 +2309,7 @@ function M.UpdateApplicationAsync(UpdateApplicationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateApplication")
 	if request_handler then
 		request_handler(settings.uri, "/applications/{applicationId}", UpdateApplicationRequest, headers, settings, cb)
 	else
@@ -2345,7 +2345,7 @@ function M.ListApplicationsAsync(ListApplicationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListApplications")
 	if request_handler then
 		request_handler(settings.uri, "/applications", ListApplicationsRequest, headers, settings, cb)
 	else
@@ -2381,7 +2381,7 @@ function M.PutApplicationPolicyAsync(PutApplicationPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PutApplicationPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/applications/{applicationId}/policy", PutApplicationPolicyRequest, headers, settings, cb)
 	else
@@ -2417,7 +2417,7 @@ function M.GetApplicationAsync(GetApplicationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetApplication")
 	if request_handler then
 		request_handler(settings.uri, "/applications/{applicationId}", GetApplicationRequest, headers, settings, cb)
 	else
@@ -2453,7 +2453,7 @@ function M.CreateCloudFormationChangeSetAsync(CreateCloudFormationChangeSetReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateCloudFormationChangeSet")
 	if request_handler then
 		request_handler(settings.uri, "/applications/{applicationId}/changesets", CreateCloudFormationChangeSetRequest, headers, settings, cb)
 	else
@@ -2489,7 +2489,7 @@ function M.GetApplicationPolicyAsync(GetApplicationPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetApplicationPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/applications/{applicationId}/policy", GetApplicationPolicyRequest, headers, settings, cb)
 	else
@@ -2525,7 +2525,7 @@ function M.DeleteApplicationAsync(DeleteApplicationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteApplication")
 	if request_handler then
 		request_handler(settings.uri, "/applications/{applicationId}", DeleteApplicationRequest, headers, settings, cb)
 	else
@@ -2561,7 +2561,7 @@ function M.CreateApplicationVersionAsync(CreateApplicationVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "CreateApplicationVersion")
 	if request_handler then
 		request_handler(settings.uri, "/applications/{applicationId}/versions/{semanticVersion}", CreateApplicationVersionRequest, headers, settings, cb)
 	else
@@ -2597,7 +2597,7 @@ function M.ListApplicationVersionsAsync(ListApplicationVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListApplicationVersions")
 	if request_handler then
 		request_handler(settings.uri, "/applications/{applicationId}/versions", ListApplicationVersionsRequest, headers, settings, cb)
 	else
@@ -2633,7 +2633,7 @@ function M.CreateApplicationAsync(CreateApplicationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateApplication")
 	if request_handler then
 		request_handler(settings.uri, "/applications", CreateApplicationRequest, headers, settings, cb)
 	else

@@ -2780,7 +2780,7 @@ function M.AssociateTeamMemberAsync(AssociateTeamMemberRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateTeamMember")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateTeamMemberRequest, headers, settings, cb)
 	else
@@ -2816,7 +2816,7 @@ function M.DisassociateTeamMemberAsync(DisassociateTeamMemberRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateTeamMember")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateTeamMemberRequest, headers, settings, cb)
 	else
@@ -2852,7 +2852,7 @@ function M.UntagProjectAsync(UntagProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UntagProject")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagProjectRequest, headers, settings, cb)
 	else
@@ -2888,7 +2888,7 @@ function M.UpdateTeamMemberAsync(UpdateTeamMemberRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateTeamMember")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateTeamMemberRequest, headers, settings, cb)
 	else
@@ -2924,7 +2924,7 @@ function M.ListTagsForProjectAsync(ListTagsForProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTagsForProject")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForProjectRequest, headers, settings, cb)
 	else
@@ -2960,7 +2960,7 @@ function M.CreateUserProfileAsync(CreateUserProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateUserProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateUserProfileRequest, headers, settings, cb)
 	else
@@ -2996,7 +2996,7 @@ function M.UpdateUserProfileAsync(UpdateUserProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateUserProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateUserProfileRequest, headers, settings, cb)
 	else
@@ -3032,7 +3032,7 @@ function M.ListUserProfilesAsync(ListUserProfilesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListUserProfiles")
 	if request_handler then
 		request_handler(settings.uri, "/", ListUserProfilesRequest, headers, settings, cb)
 	else
@@ -3068,7 +3068,7 @@ function M.ListResourcesAsync(ListResourcesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListResources")
 	if request_handler then
 		request_handler(settings.uri, "/", ListResourcesRequest, headers, settings, cb)
 	else
@@ -3104,7 +3104,7 @@ function M.CreateProjectAsync(CreateProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateProject")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateProjectRequest, headers, settings, cb)
 	else
@@ -3140,7 +3140,7 @@ function M.TagProjectAsync(TagProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TagProject")
 	if request_handler then
 		request_handler(settings.uri, "/", TagProjectRequest, headers, settings, cb)
 	else
@@ -3176,7 +3176,7 @@ function M.ListProjectsAsync(ListProjectsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListProjects")
 	if request_handler then
 		request_handler(settings.uri, "/", ListProjectsRequest, headers, settings, cb)
 	else
@@ -3212,7 +3212,7 @@ function M.ListTeamMembersAsync(ListTeamMembersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTeamMembers")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTeamMembersRequest, headers, settings, cb)
 	else
@@ -3248,7 +3248,7 @@ function M.DeleteProjectAsync(DeleteProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteProject")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteProjectRequest, headers, settings, cb)
 	else
@@ -3284,7 +3284,7 @@ function M.DescribeProjectAsync(DescribeProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeProject")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeProjectRequest, headers, settings, cb)
 	else
@@ -3320,7 +3320,7 @@ function M.UpdateProjectAsync(UpdateProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateProject")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateProjectRequest, headers, settings, cb)
 	else
@@ -3356,7 +3356,7 @@ function M.DescribeUserProfileAsync(DescribeUserProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeUserProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeUserProfileRequest, headers, settings, cb)
 	else
@@ -3392,7 +3392,7 @@ function M.DeleteUserProfileAsync(DeleteUserProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteUserProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUserProfileRequest, headers, settings, cb)
 	else

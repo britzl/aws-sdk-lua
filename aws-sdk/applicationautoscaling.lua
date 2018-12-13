@@ -2371,7 +2371,7 @@ function M.DescribeScalingActivitiesAsync(DescribeScalingActivitiesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeScalingActivities")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeScalingActivitiesRequest, headers, settings, cb)
 	else
@@ -2407,7 +2407,7 @@ function M.DescribeScalingPoliciesAsync(DescribeScalingPoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeScalingPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeScalingPoliciesRequest, headers, settings, cb)
 	else
@@ -2443,7 +2443,7 @@ function M.DeleteScheduledActionAsync(DeleteScheduledActionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteScheduledAction")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteScheduledActionRequest, headers, settings, cb)
 	else
@@ -2479,7 +2479,7 @@ function M.PutScalingPolicyAsync(PutScalingPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutScalingPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutScalingPolicyRequest, headers, settings, cb)
 	else
@@ -2515,7 +2515,7 @@ function M.RegisterScalableTargetAsync(RegisterScalableTargetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterScalableTarget")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterScalableTargetRequest, headers, settings, cb)
 	else
@@ -2551,7 +2551,7 @@ function M.DeregisterScalableTargetAsync(DeregisterScalableTargetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeregisterScalableTarget")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterScalableTargetRequest, headers, settings, cb)
 	else
@@ -2587,7 +2587,7 @@ function M.PutScheduledActionAsync(PutScheduledActionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutScheduledAction")
 	if request_handler then
 		request_handler(settings.uri, "/", PutScheduledActionRequest, headers, settings, cb)
 	else
@@ -2623,7 +2623,7 @@ function M.DeleteScalingPolicyAsync(DeleteScalingPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteScalingPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteScalingPolicyRequest, headers, settings, cb)
 	else
@@ -2659,7 +2659,7 @@ function M.DescribeScalableTargetsAsync(DescribeScalableTargetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeScalableTargets")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeScalableTargetsRequest, headers, settings, cb)
 	else
@@ -2695,7 +2695,7 @@ function M.DescribeScheduledActionsAsync(DescribeScheduledActionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeScheduledActions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeScheduledActionsRequest, headers, settings, cb)
 	else

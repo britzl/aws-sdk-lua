@@ -5056,7 +5056,7 @@ function M.SendBonusAsync(SendBonusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SendBonus")
 	if request_handler then
 		request_handler(settings.uri, "/", SendBonusRequest, headers, settings, cb)
 	else
@@ -5092,7 +5092,7 @@ function M.AssociateQualificationWithWorkerAsync(AssociateQualificationWithWorke
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateQualificationWithWorker")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateQualificationWithWorkerRequest, headers, settings, cb)
 	else
@@ -5128,7 +5128,7 @@ function M.UpdateHITTypeOfHITAsync(UpdateHITTypeOfHITRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateHITTypeOfHIT")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateHITTypeOfHITRequest, headers, settings, cb)
 	else
@@ -5164,7 +5164,7 @@ function M.UpdateNotificationSettingsAsync(UpdateNotificationSettingsRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateNotificationSettings")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateNotificationSettingsRequest, headers, settings, cb)
 	else
@@ -5200,7 +5200,7 @@ function M.ListWorkerBlocksAsync(ListWorkerBlocksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListWorkerBlocks")
 	if request_handler then
 		request_handler(settings.uri, "/", ListWorkerBlocksRequest, headers, settings, cb)
 	else
@@ -5236,7 +5236,7 @@ function M.ListReviewableHITsAsync(ListReviewableHITsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListReviewableHITs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListReviewableHITsRequest, headers, settings, cb)
 	else
@@ -5272,7 +5272,7 @@ function M.ListAssignmentsForHITAsync(ListAssignmentsForHITRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAssignmentsForHIT")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAssignmentsForHITRequest, headers, settings, cb)
 	else
@@ -5308,7 +5308,7 @@ function M.DisassociateQualificationFromWorkerAsync(DisassociateQualificationFro
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateQualificationFromWorker")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateQualificationFromWorkerRequest, headers, settings, cb)
 	else
@@ -5344,7 +5344,7 @@ function M.RejectQualificationRequestAsync(RejectQualificationRequestRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RejectQualificationRequest")
 	if request_handler then
 		request_handler(settings.uri, "/", RejectQualificationRequestRequest, headers, settings, cb)
 	else
@@ -5380,7 +5380,7 @@ function M.CreateHITTypeAsync(CreateHITTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateHITType")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateHITTypeRequest, headers, settings, cb)
 	else
@@ -5416,7 +5416,7 @@ function M.GetFileUploadURLAsync(GetFileUploadURLRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetFileUploadURL")
 	if request_handler then
 		request_handler(settings.uri, "/", GetFileUploadURLRequest, headers, settings, cb)
 	else
@@ -5452,7 +5452,7 @@ function M.ListReviewPolicyResultsForHITAsync(ListReviewPolicyResultsForHITReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListReviewPolicyResultsForHIT")
 	if request_handler then
 		request_handler(settings.uri, "/", ListReviewPolicyResultsForHITRequest, headers, settings, cb)
 	else
@@ -5488,7 +5488,7 @@ function M.UpdateExpirationForHITAsync(UpdateExpirationForHITRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateExpirationForHIT")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateExpirationForHITRequest, headers, settings, cb)
 	else
@@ -5524,7 +5524,7 @@ function M.UpdateQualificationTypeAsync(UpdateQualificationTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateQualificationType")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateQualificationTypeRequest, headers, settings, cb)
 	else
@@ -5560,7 +5560,7 @@ function M.NotifyWorkersAsync(NotifyWorkersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "NotifyWorkers")
 	if request_handler then
 		request_handler(settings.uri, "/", NotifyWorkersRequest, headers, settings, cb)
 	else
@@ -5596,7 +5596,7 @@ function M.ListQualificationTypesAsync(ListQualificationTypesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListQualificationTypes")
 	if request_handler then
 		request_handler(settings.uri, "/", ListQualificationTypesRequest, headers, settings, cb)
 	else
@@ -5632,7 +5632,7 @@ function M.CreateHITAsync(CreateHITRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateHIT")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateHITRequest, headers, settings, cb)
 	else
@@ -5668,7 +5668,7 @@ function M.ListHITsForQualificationTypeAsync(ListHITsForQualificationTypeRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListHITsForQualificationType")
 	if request_handler then
 		request_handler(settings.uri, "/", ListHITsForQualificationTypeRequest, headers, settings, cb)
 	else
@@ -5704,7 +5704,7 @@ function M.AcceptQualificationRequestAsync(AcceptQualificationRequestRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AcceptQualificationRequest")
 	if request_handler then
 		request_handler(settings.uri, "/", AcceptQualificationRequestRequest, headers, settings, cb)
 	else
@@ -5740,7 +5740,7 @@ function M.ListQualificationRequestsAsync(ListQualificationRequestsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListQualificationRequests")
 	if request_handler then
 		request_handler(settings.uri, "/", ListQualificationRequestsRequest, headers, settings, cb)
 	else
@@ -5776,7 +5776,7 @@ function M.UpdateHITReviewStatusAsync(UpdateHITReviewStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateHITReviewStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateHITReviewStatusRequest, headers, settings, cb)
 	else
@@ -5812,7 +5812,7 @@ function M.ListHITsAsync(ListHITsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListHITs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListHITsRequest, headers, settings, cb)
 	else
@@ -5848,7 +5848,7 @@ function M.ListWorkersWithQualificationTypeAsync(ListWorkersWithQualificationTyp
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListWorkersWithQualificationType")
 	if request_handler then
 		request_handler(settings.uri, "/", ListWorkersWithQualificationTypeRequest, headers, settings, cb)
 	else
@@ -5884,7 +5884,7 @@ function M.GetAccountBalanceAsync(GetAccountBalanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetAccountBalance")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAccountBalanceRequest, headers, settings, cb)
 	else
@@ -5920,7 +5920,7 @@ function M.DeleteQualificationTypeAsync(DeleteQualificationTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteQualificationType")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteQualificationTypeRequest, headers, settings, cb)
 	else
@@ -5956,7 +5956,7 @@ function M.SendTestEventNotificationAsync(SendTestEventNotificationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SendTestEventNotification")
 	if request_handler then
 		request_handler(settings.uri, "/", SendTestEventNotificationRequest, headers, settings, cb)
 	else
@@ -5992,7 +5992,7 @@ function M.CreateHITWithHITTypeAsync(CreateHITWithHITTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateHITWithHITType")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateHITWithHITTypeRequest, headers, settings, cb)
 	else
@@ -6028,7 +6028,7 @@ function M.CreateWorkerBlockAsync(CreateWorkerBlockRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateWorkerBlock")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateWorkerBlockRequest, headers, settings, cb)
 	else
@@ -6064,7 +6064,7 @@ function M.ApproveAssignmentAsync(ApproveAssignmentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ApproveAssignment")
 	if request_handler then
 		request_handler(settings.uri, "/", ApproveAssignmentRequest, headers, settings, cb)
 	else
@@ -6100,7 +6100,7 @@ function M.ListBonusPaymentsAsync(ListBonusPaymentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListBonusPayments")
 	if request_handler then
 		request_handler(settings.uri, "/", ListBonusPaymentsRequest, headers, settings, cb)
 	else
@@ -6136,7 +6136,7 @@ function M.DeleteHITAsync(DeleteHITRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteHIT")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteHITRequest, headers, settings, cb)
 	else
@@ -6172,7 +6172,7 @@ function M.GetQualificationScoreAsync(GetQualificationScoreRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetQualificationScore")
 	if request_handler then
 		request_handler(settings.uri, "/", GetQualificationScoreRequest, headers, settings, cb)
 	else
@@ -6208,7 +6208,7 @@ function M.DeleteWorkerBlockAsync(DeleteWorkerBlockRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteWorkerBlock")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteWorkerBlockRequest, headers, settings, cb)
 	else
@@ -6244,7 +6244,7 @@ function M.GetQualificationTypeAsync(GetQualificationTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetQualificationType")
 	if request_handler then
 		request_handler(settings.uri, "/", GetQualificationTypeRequest, headers, settings, cb)
 	else
@@ -6280,7 +6280,7 @@ function M.RejectAssignmentAsync(RejectAssignmentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RejectAssignment")
 	if request_handler then
 		request_handler(settings.uri, "/", RejectAssignmentRequest, headers, settings, cb)
 	else
@@ -6316,7 +6316,7 @@ function M.CreateQualificationTypeAsync(CreateQualificationTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateQualificationType")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateQualificationTypeRequest, headers, settings, cb)
 	else
@@ -6352,7 +6352,7 @@ function M.GetAssignmentAsync(GetAssignmentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetAssignment")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAssignmentRequest, headers, settings, cb)
 	else
@@ -6388,7 +6388,7 @@ function M.GetHITAsync(GetHITRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetHIT")
 	if request_handler then
 		request_handler(settings.uri, "/", GetHITRequest, headers, settings, cb)
 	else
@@ -6424,7 +6424,7 @@ function M.CreateAdditionalAssignmentsForHITAsync(CreateAdditionalAssignmentsFor
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateAdditionalAssignmentsForHIT")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAdditionalAssignmentsForHITRequest, headers, settings, cb)
 	else

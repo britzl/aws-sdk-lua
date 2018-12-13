@@ -4464,7 +4464,7 @@ function M.DeclineHandshakeAsync(DeclineHandshakeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeclineHandshake")
 	if request_handler then
 		request_handler(settings.uri, "/", DeclineHandshakeRequest, headers, settings, cb)
 	else
@@ -4500,7 +4500,7 @@ function M.DisablePolicyTypeAsync(DisablePolicyTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisablePolicyType")
 	if request_handler then
 		request_handler(settings.uri, "/", DisablePolicyTypeRequest, headers, settings, cb)
 	else
@@ -4536,7 +4536,7 @@ function M.DescribeCreateAccountStatusAsync(DescribeCreateAccountStatusRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeCreateAccountStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCreateAccountStatusRequest, headers, settings, cb)
 	else
@@ -4572,7 +4572,7 @@ function M.ListOrganizationalUnitsForParentAsync(ListOrganizationalUnitsForParen
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListOrganizationalUnitsForParent")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOrganizationalUnitsForParentRequest, headers, settings, cb)
 	else
@@ -4608,7 +4608,7 @@ function M.DescribeOrganizationalUnitAsync(DescribeOrganizationalUnitRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeOrganizationalUnit")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeOrganizationalUnitRequest, headers, settings, cb)
 	else
@@ -4644,7 +4644,7 @@ function M.AcceptHandshakeAsync(AcceptHandshakeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AcceptHandshake")
 	if request_handler then
 		request_handler(settings.uri, "/", AcceptHandshakeRequest, headers, settings, cb)
 	else
@@ -4680,7 +4680,7 @@ function M.DeleteOrganizationalUnitAsync(DeleteOrganizationalUnitRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteOrganizationalUnit")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteOrganizationalUnitRequest, headers, settings, cb)
 	else
@@ -4716,7 +4716,7 @@ function M.DeletePolicyAsync(DeletePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeletePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePolicyRequest, headers, settings, cb)
 	else
@@ -4752,7 +4752,7 @@ function M.EnableAWSServiceAccessAsync(EnableAWSServiceAccessRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "EnableAWSServiceAccess")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableAWSServiceAccessRequest, headers, settings, cb)
 	else
@@ -4788,7 +4788,7 @@ function M.DetachPolicyAsync(DetachPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DetachPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachPolicyRequest, headers, settings, cb)
 	else
@@ -4824,7 +4824,7 @@ function M.ListHandshakesForAccountAsync(ListHandshakesForAccountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListHandshakesForAccount")
 	if request_handler then
 		request_handler(settings.uri, "/", ListHandshakesForAccountRequest, headers, settings, cb)
 	else
@@ -4860,7 +4860,7 @@ function M.RemoveAccountFromOrganizationAsync(RemoveAccountFromOrganizationReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RemoveAccountFromOrganization")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveAccountFromOrganizationRequest, headers, settings, cb)
 	else
@@ -4896,7 +4896,7 @@ function M.EnableAllFeaturesAsync(EnableAllFeaturesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "EnableAllFeatures")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableAllFeaturesRequest, headers, settings, cb)
 	else
@@ -4928,7 +4928,7 @@ function M.DeleteOrganizationAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteOrganization")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -4963,7 +4963,7 @@ function M.ListPoliciesForTargetAsync(ListPoliciesForTargetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListPoliciesForTarget")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPoliciesForTargetRequest, headers, settings, cb)
 	else
@@ -4999,7 +4999,7 @@ function M.DescribePolicyAsync(DescribePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePolicyRequest, headers, settings, cb)
 	else
@@ -5035,7 +5035,7 @@ function M.ListCreateAccountStatusAsync(ListCreateAccountStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListCreateAccountStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", ListCreateAccountStatusRequest, headers, settings, cb)
 	else
@@ -5071,7 +5071,7 @@ function M.CreateAccountAsync(CreateAccountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateAccount")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAccountRequest, headers, settings, cb)
 	else
@@ -5107,7 +5107,7 @@ function M.CancelHandshakeAsync(CancelHandshakeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CancelHandshake")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelHandshakeRequest, headers, settings, cb)
 	else
@@ -5143,7 +5143,7 @@ function M.ListAccountsAsync(ListAccountsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAccounts")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAccountsRequest, headers, settings, cb)
 	else
@@ -5179,7 +5179,7 @@ function M.AttachPolicyAsync(AttachPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AttachPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachPolicyRequest, headers, settings, cb)
 	else
@@ -5215,7 +5215,7 @@ function M.MoveAccountAsync(MoveAccountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "MoveAccount")
 	if request_handler then
 		request_handler(settings.uri, "/", MoveAccountRequest, headers, settings, cb)
 	else
@@ -5247,7 +5247,7 @@ function M.DescribeOrganizationAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeOrganization")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -5282,7 +5282,7 @@ function M.ListChildrenAsync(ListChildrenRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListChildren")
 	if request_handler then
 		request_handler(settings.uri, "/", ListChildrenRequest, headers, settings, cb)
 	else
@@ -5318,7 +5318,7 @@ function M.CreateOrganizationAsync(CreateOrganizationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateOrganization")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateOrganizationRequest, headers, settings, cb)
 	else
@@ -5354,7 +5354,7 @@ function M.UpdatePolicyAsync(UpdatePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdatePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdatePolicyRequest, headers, settings, cb)
 	else
@@ -5390,7 +5390,7 @@ function M.DisableAWSServiceAccessAsync(DisableAWSServiceAccessRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisableAWSServiceAccess")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableAWSServiceAccessRequest, headers, settings, cb)
 	else
@@ -5422,7 +5422,7 @@ function M.LeaveOrganizationAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "LeaveOrganization")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -5457,7 +5457,7 @@ function M.CreateOrganizationalUnitAsync(CreateOrganizationalUnitRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateOrganizationalUnit")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateOrganizationalUnitRequest, headers, settings, cb)
 	else
@@ -5493,7 +5493,7 @@ function M.EnablePolicyTypeAsync(EnablePolicyTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "EnablePolicyType")
 	if request_handler then
 		request_handler(settings.uri, "/", EnablePolicyTypeRequest, headers, settings, cb)
 	else
@@ -5529,7 +5529,7 @@ function M.DescribeAccountAsync(DescribeAccountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAccount")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAccountRequest, headers, settings, cb)
 	else
@@ -5565,7 +5565,7 @@ function M.InviteAccountToOrganizationAsync(InviteAccountToOrganizationRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "InviteAccountToOrganization")
 	if request_handler then
 		request_handler(settings.uri, "/", InviteAccountToOrganizationRequest, headers, settings, cb)
 	else
@@ -5601,7 +5601,7 @@ function M.ListPoliciesAsync(ListPoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPoliciesRequest, headers, settings, cb)
 	else
@@ -5637,7 +5637,7 @@ function M.ListAccountsForParentAsync(ListAccountsForParentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAccountsForParent")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAccountsForParentRequest, headers, settings, cb)
 	else
@@ -5673,7 +5673,7 @@ function M.DescribeHandshakeAsync(DescribeHandshakeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeHandshake")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHandshakeRequest, headers, settings, cb)
 	else
@@ -5709,7 +5709,7 @@ function M.ListParentsAsync(ListParentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListParents")
 	if request_handler then
 		request_handler(settings.uri, "/", ListParentsRequest, headers, settings, cb)
 	else
@@ -5745,7 +5745,7 @@ function M.UpdateOrganizationalUnitAsync(UpdateOrganizationalUnitRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateOrganizationalUnit")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateOrganizationalUnitRequest, headers, settings, cb)
 	else
@@ -5781,7 +5781,7 @@ function M.ListHandshakesForOrganizationAsync(ListHandshakesForOrganizationReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListHandshakesForOrganization")
 	if request_handler then
 		request_handler(settings.uri, "/", ListHandshakesForOrganizationRequest, headers, settings, cb)
 	else
@@ -5817,7 +5817,7 @@ function M.CreatePolicyAsync(CreatePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreatePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePolicyRequest, headers, settings, cb)
 	else
@@ -5853,7 +5853,7 @@ function M.ListTargetsForPolicyAsync(ListTargetsForPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTargetsForPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTargetsForPolicyRequest, headers, settings, cb)
 	else
@@ -5889,7 +5889,7 @@ function M.ListRootsAsync(ListRootsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListRoots")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRootsRequest, headers, settings, cb)
 	else
@@ -5925,7 +5925,7 @@ function M.ListAWSServiceAccessForOrganizationAsync(ListAWSServiceAccessForOrgan
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAWSServiceAccessForOrganization")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAWSServiceAccessForOrganizationRequest, headers, settings, cb)
 	else

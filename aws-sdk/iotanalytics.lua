@@ -5493,7 +5493,7 @@ function M.DeleteChannelAsync(DeleteChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteChannel")
 	if request_handler then
 		request_handler(settings.uri, "/channels/{channelName}", DeleteChannelRequest, headers, settings, cb)
 	else
@@ -5529,7 +5529,7 @@ function M.UpdateChannelAsync(UpdateChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateChannel")
 	if request_handler then
 		request_handler(settings.uri, "/channels/{channelName}", UpdateChannelRequest, headers, settings, cb)
 	else
@@ -5565,7 +5565,7 @@ function M.CancelPipelineReprocessingAsync(CancelPipelineReprocessingRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "CancelPipelineReprocessing")
 	if request_handler then
 		request_handler(settings.uri, "/pipelines/{pipelineName}/reprocessing/{reprocessingId}", CancelPipelineReprocessingRequest, headers, settings, cb)
 	else
@@ -5601,7 +5601,7 @@ function M.BatchPutMessageAsync(BatchPutMessageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "BatchPutMessage")
 	if request_handler then
 		request_handler(settings.uri, "/messages/batch", BatchPutMessageRequest, headers, settings, cb)
 	else
@@ -5637,7 +5637,7 @@ function M.CreateChannelAsync(CreateChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateChannel")
 	if request_handler then
 		request_handler(settings.uri, "/channels", CreateChannelRequest, headers, settings, cb)
 	else
@@ -5673,7 +5673,7 @@ function M.DeleteDatasetAsync(DeleteDatasetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteDataset")
 	if request_handler then
 		request_handler(settings.uri, "/datasets/{datasetName}", DeleteDatasetRequest, headers, settings, cb)
 	else
@@ -5709,7 +5709,7 @@ function M.DescribeLoggingOptionsAsync(DescribeLoggingOptionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeLoggingOptions")
 	if request_handler then
 		request_handler(settings.uri, "/logging", DescribeLoggingOptionsRequest, headers, settings, cb)
 	else
@@ -5745,7 +5745,7 @@ function M.RunPipelineActivityAsync(RunPipelineActivityRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "RunPipelineActivity")
 	if request_handler then
 		request_handler(settings.uri, "/pipelineactivities/run", RunPipelineActivityRequest, headers, settings, cb)
 	else
@@ -5781,7 +5781,7 @@ function M.ListDatasetsAsync(ListDatasetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListDatasets")
 	if request_handler then
 		request_handler(settings.uri, "/datasets", ListDatasetsRequest, headers, settings, cb)
 	else
@@ -5817,7 +5817,7 @@ function M.CreateDatastoreAsync(CreateDatastoreRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateDatastore")
 	if request_handler then
 		request_handler(settings.uri, "/datastores", CreateDatastoreRequest, headers, settings, cb)
 	else
@@ -5853,7 +5853,7 @@ function M.GetDatasetContentAsync(GetDatasetContentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDatasetContent")
 	if request_handler then
 		request_handler(settings.uri, "/datasets/{datasetName}/content", GetDatasetContentRequest, headers, settings, cb)
 	else
@@ -5889,7 +5889,7 @@ function M.StartPipelineReprocessingAsync(StartPipelineReprocessingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "StartPipelineReprocessing")
 	if request_handler then
 		request_handler(settings.uri, "/pipelines/{pipelineName}/reprocessing", StartPipelineReprocessingRequest, headers, settings, cb)
 	else
@@ -5925,7 +5925,7 @@ function M.SampleChannelDataAsync(SampleChannelDataRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "SampleChannelData")
 	if request_handler then
 		request_handler(settings.uri, "/channels/{channelName}/sample", SampleChannelDataRequest, headers, settings, cb)
 	else
@@ -5961,7 +5961,7 @@ function M.DeletePipelineAsync(DeletePipelineRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeletePipeline")
 	if request_handler then
 		request_handler(settings.uri, "/pipelines/{pipelineName}", DeletePipelineRequest, headers, settings, cb)
 	else
@@ -5997,7 +5997,7 @@ function M.DescribeDatasetAsync(DescribeDatasetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeDataset")
 	if request_handler then
 		request_handler(settings.uri, "/datasets/{datasetName}", DescribeDatasetRequest, headers, settings, cb)
 	else
@@ -6033,7 +6033,7 @@ function M.DeleteDatastoreAsync(DeleteDatastoreRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteDatastore")
 	if request_handler then
 		request_handler(settings.uri, "/datastores/{datastoreName}", DeleteDatastoreRequest, headers, settings, cb)
 	else
@@ -6069,7 +6069,7 @@ function M.ListDatastoresAsync(ListDatastoresRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListDatastores")
 	if request_handler then
 		request_handler(settings.uri, "/datastores", ListDatastoresRequest, headers, settings, cb)
 	else
@@ -6105,7 +6105,7 @@ function M.CreateDatasetAsync(CreateDatasetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateDataset")
 	if request_handler then
 		request_handler(settings.uri, "/datasets", CreateDatasetRequest, headers, settings, cb)
 	else
@@ -6141,7 +6141,7 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "TagResource")
 	if request_handler then
 		request_handler(settings.uri, "/tags", TagResourceRequest, headers, settings, cb)
 	else
@@ -6177,7 +6177,7 @@ function M.DescribeChannelAsync(DescribeChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeChannel")
 	if request_handler then
 		request_handler(settings.uri, "/channels/{channelName}", DescribeChannelRequest, headers, settings, cb)
 	else
@@ -6213,7 +6213,7 @@ function M.UpdateDatastoreAsync(UpdateDatastoreRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateDatastore")
 	if request_handler then
 		request_handler(settings.uri, "/datastores/{datastoreName}", UpdateDatastoreRequest, headers, settings, cb)
 	else
@@ -6249,7 +6249,7 @@ function M.ListDatasetContentsAsync(ListDatasetContentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListDatasetContents")
 	if request_handler then
 		request_handler(settings.uri, "/datasets/{datasetName}/contents", ListDatasetContentsRequest, headers, settings, cb)
 	else
@@ -6285,7 +6285,7 @@ function M.ListPipelinesAsync(ListPipelinesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListPipelines")
 	if request_handler then
 		request_handler(settings.uri, "/pipelines", ListPipelinesRequest, headers, settings, cb)
 	else
@@ -6321,7 +6321,7 @@ function M.DescribePipelineAsync(DescribePipelineRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribePipeline")
 	if request_handler then
 		request_handler(settings.uri, "/pipelines/{pipelineName}", DescribePipelineRequest, headers, settings, cb)
 	else
@@ -6357,7 +6357,7 @@ function M.PutLoggingOptionsAsync(PutLoggingOptionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PutLoggingOptions")
 	if request_handler then
 		request_handler(settings.uri, "/logging", PutLoggingOptionsRequest, headers, settings, cb)
 	else
@@ -6393,7 +6393,7 @@ function M.DescribeDatastoreAsync(DescribeDatastoreRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeDatastore")
 	if request_handler then
 		request_handler(settings.uri, "/datastores/{datastoreName}", DescribeDatastoreRequest, headers, settings, cb)
 	else
@@ -6429,7 +6429,7 @@ function M.CreatePipelineAsync(CreatePipelineRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreatePipeline")
 	if request_handler then
 		request_handler(settings.uri, "/pipelines", CreatePipelineRequest, headers, settings, cb)
 	else
@@ -6465,7 +6465,7 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "UntagResource")
 	if request_handler then
 		request_handler(settings.uri, "/tags", UntagResourceRequest, headers, settings, cb)
 	else
@@ -6501,7 +6501,7 @@ function M.ListChannelsAsync(ListChannelsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListChannels")
 	if request_handler then
 		request_handler(settings.uri, "/channels", ListChannelsRequest, headers, settings, cb)
 	else
@@ -6537,7 +6537,7 @@ function M.UpdateDatasetAsync(UpdateDatasetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateDataset")
 	if request_handler then
 		request_handler(settings.uri, "/datasets/{datasetName}", UpdateDatasetRequest, headers, settings, cb)
 	else
@@ -6573,7 +6573,7 @@ function M.UpdatePipelineAsync(UpdatePipelineRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdatePipeline")
 	if request_handler then
 		request_handler(settings.uri, "/pipelines/{pipelineName}", UpdatePipelineRequest, headers, settings, cb)
 	else
@@ -6609,7 +6609,7 @@ function M.DeleteDatasetContentAsync(DeleteDatasetContentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteDatasetContent")
 	if request_handler then
 		request_handler(settings.uri, "/datasets/{datasetName}/content", DeleteDatasetContentRequest, headers, settings, cb)
 	else
@@ -6645,7 +6645,7 @@ function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListTagsForResource")
 	if request_handler then
 		request_handler(settings.uri, "/tags", ListTagsForResourceRequest, headers, settings, cb)
 	else
@@ -6681,7 +6681,7 @@ function M.CreateDatasetContentAsync(CreateDatasetContentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateDatasetContent")
 	if request_handler then
 		request_handler(settings.uri, "/datasets/{datasetName}/content", CreateDatasetContentRequest, headers, settings, cb)
 	else

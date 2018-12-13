@@ -14146,7 +14146,7 @@ function M.ListObjectVersionsAsync(ListObjectVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListObjectVersions")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?versions", ListObjectVersionsRequest, headers, settings, cb)
 	else
@@ -14182,7 +14182,7 @@ function M.PutBucketPolicyAsync(PutBucketPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutBucketPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?policy", PutBucketPolicyRequest, headers, settings, cb)
 	else
@@ -14218,7 +14218,7 @@ function M.ListBucketInventoryConfigurationsAsync(ListBucketInventoryConfigurati
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListBucketInventoryConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?inventory", ListBucketInventoryConfigurationsRequest, headers, settings, cb)
 	else
@@ -14254,7 +14254,7 @@ function M.DeleteBucketPolicyAsync(DeleteBucketPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteBucketPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?policy", DeleteBucketPolicyRequest, headers, settings, cb)
 	else
@@ -14290,7 +14290,7 @@ function M.PutBucketLifecycleConfigurationAsync(PutBucketLifecycleConfigurationR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutBucketLifecycleConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?lifecycle", PutBucketLifecycleConfigurationRequest, headers, settings, cb)
 	else
@@ -14326,7 +14326,7 @@ function M.PutBucketRequestPaymentAsync(PutBucketRequestPaymentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutBucketRequestPayment")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?requestPayment", PutBucketRequestPaymentRequest, headers, settings, cb)
 	else
@@ -14362,7 +14362,7 @@ function M.GetBucketEncryptionAsync(GetBucketEncryptionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetBucketEncryption")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?encryption", GetBucketEncryptionRequest, headers, settings, cb)
 	else
@@ -14398,7 +14398,7 @@ function M.ListObjectsAsync(ListObjectsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListObjects")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}", ListObjectsRequest, headers, settings, cb)
 	else
@@ -14434,7 +14434,7 @@ function M.GetBucketMetricsConfigurationAsync(GetBucketMetricsConfigurationReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetBucketMetricsConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?metrics", GetBucketMetricsConfigurationRequest, headers, settings, cb)
 	else
@@ -14470,7 +14470,7 @@ function M.PutBucketInventoryConfigurationAsync(PutBucketInventoryConfigurationR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutBucketInventoryConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?inventory", PutBucketInventoryConfigurationRequest, headers, settings, cb)
 	else
@@ -14506,7 +14506,7 @@ function M.PutBucketLoggingAsync(PutBucketLoggingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutBucketLogging")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?logging", PutBucketLoggingRequest, headers, settings, cb)
 	else
@@ -14542,7 +14542,7 @@ function M.PutBucketReplicationAsync(PutBucketReplicationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutBucketReplication")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?replication", PutBucketReplicationRequest, headers, settings, cb)
 	else
@@ -14578,7 +14578,7 @@ function M.PutBucketAccelerateConfigurationAsync(PutBucketAccelerateConfiguratio
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutBucketAccelerateConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?accelerate", PutBucketAccelerateConfigurationRequest, headers, settings, cb)
 	else
@@ -14614,7 +14614,7 @@ function M.PutBucketAclAsync(PutBucketAclRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutBucketAcl")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?acl", PutBucketAclRequest, headers, settings, cb)
 	else
@@ -14650,7 +14650,7 @@ function M.UploadPartAsync(UploadPartRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "UploadPart")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", UploadPartRequest, headers, settings, cb)
 	else
@@ -14686,7 +14686,7 @@ function M.PutObjectAsync(PutObjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutObject")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", PutObjectRequest, headers, settings, cb)
 	else
@@ -14722,7 +14722,7 @@ function M.DeleteBucketCorsAsync(DeleteBucketCorsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteBucketCors")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?cors", DeleteBucketCorsRequest, headers, settings, cb)
 	else
@@ -14758,7 +14758,7 @@ function M.PutBucketVersioningAsync(PutBucketVersioningRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutBucketVersioning")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?versioning", PutBucketVersioningRequest, headers, settings, cb)
 	else
@@ -14794,7 +14794,7 @@ function M.CopyObjectAsync(CopyObjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "CopyObject")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", CopyObjectRequest, headers, settings, cb)
 	else
@@ -14830,7 +14830,7 @@ function M.ListBucketAnalyticsConfigurationsAsync(ListBucketAnalyticsConfigurati
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListBucketAnalyticsConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?analytics", ListBucketAnalyticsConfigurationsRequest, headers, settings, cb)
 	else
@@ -14866,7 +14866,7 @@ function M.GetBucketAclAsync(GetBucketAclRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetBucketAcl")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?acl", GetBucketAclRequest, headers, settings, cb)
 	else
@@ -14902,7 +14902,7 @@ function M.DeleteBucketMetricsConfigurationAsync(DeleteBucketMetricsConfiguratio
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteBucketMetricsConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?metrics", DeleteBucketMetricsConfigurationRequest, headers, settings, cb)
 	else
@@ -14938,7 +14938,7 @@ function M.GetBucketLoggingAsync(GetBucketLoggingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetBucketLogging")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?logging", GetBucketLoggingRequest, headers, settings, cb)
 	else
@@ -14974,7 +14974,7 @@ function M.HeadBucketAsync(HeadBucketRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "HEAD")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "HEAD", "HeadBucket")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}", HeadBucketRequest, headers, settings, cb)
 	else
@@ -15010,7 +15010,7 @@ function M.ListBucketMetricsConfigurationsAsync(ListBucketMetricsConfigurationsR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListBucketMetricsConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?metrics", ListBucketMetricsConfigurationsRequest, headers, settings, cb)
 	else
@@ -15042,7 +15042,7 @@ function M.ListBucketsAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListBuckets")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -15077,7 +15077,7 @@ function M.DeleteBucketWebsiteAsync(DeleteBucketWebsiteRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteBucketWebsite")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?website", DeleteBucketWebsiteRequest, headers, settings, cb)
 	else
@@ -15113,7 +15113,7 @@ function M.DeleteBucketInventoryConfigurationAsync(DeleteBucketInventoryConfigur
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteBucketInventoryConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?inventory", DeleteBucketInventoryConfigurationRequest, headers, settings, cb)
 	else
@@ -15149,7 +15149,7 @@ function M.GetBucketNotificationConfigurationAsync(GetBucketNotificationConfigur
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetBucketNotificationConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?notification", GetBucketNotificationConfigurationRequest, headers, settings, cb)
 	else
@@ -15185,7 +15185,7 @@ function M.DeleteObjectsAsync(DeleteObjectsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "DeleteObjects")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?delete", DeleteObjectsRequest, headers, settings, cb)
 	else
@@ -15221,7 +15221,7 @@ function M.DeleteBucketReplicationAsync(DeleteBucketReplicationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteBucketReplication")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?replication", DeleteBucketReplicationRequest, headers, settings, cb)
 	else
@@ -15257,7 +15257,7 @@ function M.PutBucketWebsiteAsync(PutBucketWebsiteRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutBucketWebsite")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?website", PutBucketWebsiteRequest, headers, settings, cb)
 	else
@@ -15293,7 +15293,7 @@ function M.GetObjectTaggingAsync(GetObjectTaggingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetObjectTagging")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}?tagging", GetObjectTaggingRequest, headers, settings, cb)
 	else
@@ -15329,7 +15329,7 @@ function M.GetBucketReplicationAsync(GetBucketReplicationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetBucketReplication")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?replication", GetBucketReplicationRequest, headers, settings, cb)
 	else
@@ -15365,7 +15365,7 @@ function M.GetBucketAnalyticsConfigurationAsync(GetBucketAnalyticsConfigurationR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetBucketAnalyticsConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?analytics", GetBucketAnalyticsConfigurationRequest, headers, settings, cb)
 	else
@@ -15401,7 +15401,7 @@ function M.PutBucketNotificationConfigurationAsync(PutBucketNotificationConfigur
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutBucketNotificationConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?notification", PutBucketNotificationConfigurationRequest, headers, settings, cb)
 	else
@@ -15437,7 +15437,7 @@ function M.GetBucketAccelerateConfigurationAsync(GetBucketAccelerateConfiguratio
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetBucketAccelerateConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?accelerate", GetBucketAccelerateConfigurationRequest, headers, settings, cb)
 	else
@@ -15473,7 +15473,7 @@ function M.DeleteObjectTaggingAsync(DeleteObjectTaggingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteObjectTagging")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}?tagging", DeleteObjectTaggingRequest, headers, settings, cb)
 	else
@@ -15509,7 +15509,7 @@ function M.DeleteBucketTaggingAsync(DeleteBucketTaggingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteBucketTagging")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?tagging", DeleteBucketTaggingRequest, headers, settings, cb)
 	else
@@ -15545,7 +15545,7 @@ function M.GetObjectTorrentAsync(GetObjectTorrentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetObjectTorrent")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}?torrent", GetObjectTorrentRequest, headers, settings, cb)
 	else
@@ -15581,7 +15581,7 @@ function M.GetBucketCorsAsync(GetBucketCorsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetBucketCors")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?cors", GetBucketCorsRequest, headers, settings, cb)
 	else
@@ -15617,7 +15617,7 @@ function M.CreateBucketAsync(CreateBucketRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "CreateBucket")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}", CreateBucketRequest, headers, settings, cb)
 	else
@@ -15653,7 +15653,7 @@ function M.CompleteMultipartUploadAsync(CompleteMultipartUploadRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CompleteMultipartUpload")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", CompleteMultipartUploadRequest, headers, settings, cb)
 	else
@@ -15689,7 +15689,7 @@ function M.GetBucketWebsiteAsync(GetBucketWebsiteRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetBucketWebsite")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?website", GetBucketWebsiteRequest, headers, settings, cb)
 	else
@@ -15725,7 +15725,7 @@ function M.CreateMultipartUploadAsync(CreateMultipartUploadRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CreateMultipartUpload")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}?uploads", CreateMultipartUploadRequest, headers, settings, cb)
 	else
@@ -15761,7 +15761,7 @@ function M.DeleteBucketAsync(DeleteBucketRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteBucket")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}", DeleteBucketRequest, headers, settings, cb)
 	else
@@ -15797,7 +15797,7 @@ function M.GetObjectAsync(GetObjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetObject")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", GetObjectRequest, headers, settings, cb)
 	else
@@ -15833,7 +15833,7 @@ function M.PutBucketEncryptionAsync(PutBucketEncryptionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutBucketEncryption")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?encryption", PutBucketEncryptionRequest, headers, settings, cb)
 	else
@@ -15869,7 +15869,7 @@ function M.PutObjectTaggingAsync(PutObjectTaggingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutObjectTagging")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}?tagging", PutObjectTaggingRequest, headers, settings, cb)
 	else
@@ -15905,7 +15905,7 @@ function M.GetBucketPolicyAsync(GetBucketPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetBucketPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?policy", GetBucketPolicyRequest, headers, settings, cb)
 	else
@@ -15941,7 +15941,7 @@ function M.GetBucketVersioningAsync(GetBucketVersioningRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetBucketVersioning")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?versioning", GetBucketVersioningRequest, headers, settings, cb)
 	else
@@ -15977,7 +15977,7 @@ function M.HeadObjectAsync(HeadObjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "HEAD")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "HEAD", "HeadObject")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", HeadObjectRequest, headers, settings, cb)
 	else
@@ -16013,7 +16013,7 @@ function M.ListMultipartUploadsAsync(ListMultipartUploadsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListMultipartUploads")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?uploads", ListMultipartUploadsRequest, headers, settings, cb)
 	else
@@ -16049,7 +16049,7 @@ function M.GetBucketLifecycleConfigurationAsync(GetBucketLifecycleConfigurationR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetBucketLifecycleConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?lifecycle", GetBucketLifecycleConfigurationRequest, headers, settings, cb)
 	else
@@ -16085,7 +16085,7 @@ function M.GetBucketRequestPaymentAsync(GetBucketRequestPaymentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetBucketRequestPayment")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?requestPayment", GetBucketRequestPaymentRequest, headers, settings, cb)
 	else
@@ -16121,7 +16121,7 @@ function M.PutBucketCorsAsync(PutBucketCorsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutBucketCors")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?cors", PutBucketCorsRequest, headers, settings, cb)
 	else
@@ -16157,7 +16157,7 @@ function M.PutBucketTaggingAsync(PutBucketTaggingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutBucketTagging")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?tagging", PutBucketTaggingRequest, headers, settings, cb)
 	else
@@ -16193,7 +16193,7 @@ function M.GetBucketTaggingAsync(GetBucketTaggingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetBucketTagging")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?tagging", GetBucketTaggingRequest, headers, settings, cb)
 	else
@@ -16229,7 +16229,7 @@ function M.AbortMultipartUploadAsync(AbortMultipartUploadRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "AbortMultipartUpload")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", AbortMultipartUploadRequest, headers, settings, cb)
 	else
@@ -16265,7 +16265,7 @@ function M.PutObjectAclAsync(PutObjectAclRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutObjectAcl")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}?acl", PutObjectAclRequest, headers, settings, cb)
 	else
@@ -16301,7 +16301,7 @@ function M.ListObjectsV2Async(ListObjectsV2Request, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListObjectsV2")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?list-type=2", ListObjectsV2Request, headers, settings, cb)
 	else
@@ -16337,7 +16337,7 @@ function M.GetBucketLocationAsync(GetBucketLocationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetBucketLocation")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?location", GetBucketLocationRequest, headers, settings, cb)
 	else
@@ -16373,7 +16373,7 @@ function M.GetBucketInventoryConfigurationAsync(GetBucketInventoryConfigurationR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetBucketInventoryConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?inventory", GetBucketInventoryConfigurationRequest, headers, settings, cb)
 	else
@@ -16409,7 +16409,7 @@ function M.DeleteBucketLifecycleAsync(DeleteBucketLifecycleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteBucketLifecycle")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?lifecycle", DeleteBucketLifecycleRequest, headers, settings, cb)
 	else
@@ -16445,7 +16445,7 @@ function M.SelectObjectContentAsync(SelectObjectContentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "SelectObjectContent")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}?select&select-type=2", SelectObjectContentRequest, headers, settings, cb)
 	else
@@ -16481,7 +16481,7 @@ function M.PutBucketAnalyticsConfigurationAsync(PutBucketAnalyticsConfigurationR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutBucketAnalyticsConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?analytics", PutBucketAnalyticsConfigurationRequest, headers, settings, cb)
 	else
@@ -16517,7 +16517,7 @@ function M.ListPartsAsync(ListPartsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListParts")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", ListPartsRequest, headers, settings, cb)
 	else
@@ -16553,7 +16553,7 @@ function M.DeleteBucketEncryptionAsync(DeleteBucketEncryptionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteBucketEncryption")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?encryption", DeleteBucketEncryptionRequest, headers, settings, cb)
 	else
@@ -16589,7 +16589,7 @@ function M.GetObjectAclAsync(GetObjectAclRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetObjectAcl")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}?acl", GetObjectAclRequest, headers, settings, cb)
 	else
@@ -16625,7 +16625,7 @@ function M.UploadPartCopyAsync(UploadPartCopyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "UploadPartCopy")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", UploadPartCopyRequest, headers, settings, cb)
 	else
@@ -16661,7 +16661,7 @@ function M.PutBucketMetricsConfigurationAsync(PutBucketMetricsConfigurationReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "PutBucketMetricsConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?metrics", PutBucketMetricsConfigurationRequest, headers, settings, cb)
 	else
@@ -16697,7 +16697,7 @@ function M.DeleteObjectAsync(DeleteObjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteObject")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", DeleteObjectRequest, headers, settings, cb)
 	else
@@ -16733,7 +16733,7 @@ function M.RestoreObjectAsync(RestoreObjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "RestoreObject")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}?restore", RestoreObjectRequest, headers, settings, cb)
 	else
@@ -16769,7 +16769,7 @@ function M.DeleteBucketAnalyticsConfigurationAsync(DeleteBucketAnalyticsConfigur
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteBucketAnalyticsConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?analytics", DeleteBucketAnalyticsConfigurationRequest, headers, settings, cb)
 	else

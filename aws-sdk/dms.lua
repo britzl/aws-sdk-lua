@@ -6055,7 +6055,7 @@ function M.RefreshSchemasAsync(RefreshSchemasMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RefreshSchemas")
 	if request_handler then
 		request_handler(settings.uri, "/", RefreshSchemasMessage, headers, settings, cb)
 	else
@@ -6091,7 +6091,7 @@ function M.DescribeCertificatesAsync(DescribeCertificatesMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeCertificates")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCertificatesMessage, headers, settings, cb)
 	else
@@ -6127,7 +6127,7 @@ function M.DescribeReplicationInstancesAsync(DescribeReplicationInstancesMessage
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeReplicationInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReplicationInstancesMessage, headers, settings, cb)
 	else
@@ -6163,7 +6163,7 @@ function M.CreateReplicationSubnetGroupAsync(CreateReplicationSubnetGroupMessage
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateReplicationSubnetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateReplicationSubnetGroupMessage, headers, settings, cb)
 	else
@@ -6199,7 +6199,7 @@ function M.DescribeEventsAsync(DescribeEventsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventsMessage, headers, settings, cb)
 	else
@@ -6235,7 +6235,7 @@ function M.DescribeEventSubscriptionsAsync(DescribeEventSubscriptionsMessage, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEventSubscriptions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventSubscriptionsMessage, headers, settings, cb)
 	else
@@ -6271,7 +6271,7 @@ function M.CreateReplicationTaskAsync(CreateReplicationTaskMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateReplicationTask")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateReplicationTaskMessage, headers, settings, cb)
 	else
@@ -6307,7 +6307,7 @@ function M.DeleteReplicationInstanceAsync(DeleteReplicationInstanceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteReplicationInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteReplicationInstanceMessage, headers, settings, cb)
 	else
@@ -6343,7 +6343,7 @@ function M.ModifyReplicationInstanceAsync(ModifyReplicationInstanceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ModifyReplicationInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyReplicationInstanceMessage, headers, settings, cb)
 	else
@@ -6379,7 +6379,7 @@ function M.DescribeTableStatisticsAsync(DescribeTableStatisticsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTableStatistics")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTableStatisticsMessage, headers, settings, cb)
 	else
@@ -6415,7 +6415,7 @@ function M.RebootReplicationInstanceAsync(RebootReplicationInstanceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RebootReplicationInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", RebootReplicationInstanceMessage, headers, settings, cb)
 	else
@@ -6451,7 +6451,7 @@ function M.DescribeEventCategoriesAsync(DescribeEventCategoriesMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEventCategories")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventCategoriesMessage, headers, settings, cb)
 	else
@@ -6487,7 +6487,7 @@ function M.StartReplicationTaskAsync(StartReplicationTaskMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartReplicationTask")
 	if request_handler then
 		request_handler(settings.uri, "/", StartReplicationTaskMessage, headers, settings, cb)
 	else
@@ -6523,7 +6523,7 @@ function M.DeleteReplicationSubnetGroupAsync(DeleteReplicationSubnetGroupMessage
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteReplicationSubnetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteReplicationSubnetGroupMessage, headers, settings, cb)
 	else
@@ -6559,7 +6559,7 @@ function M.AddTagsToResourceAsync(AddTagsToResourceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddTagsToResource")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToResourceMessage, headers, settings, cb)
 	else
@@ -6595,7 +6595,7 @@ function M.DescribeAccountAttributesAsync(DescribeAccountAttributesMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAccountAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAccountAttributesMessage, headers, settings, cb)
 	else
@@ -6631,7 +6631,7 @@ function M.DeleteCertificateAsync(DeleteCertificateMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCertificateMessage, headers, settings, cb)
 	else
@@ -6667,7 +6667,7 @@ function M.TestConnectionAsync(TestConnectionMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TestConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", TestConnectionMessage, headers, settings, cb)
 	else
@@ -6703,7 +6703,7 @@ function M.DescribeEndpointsAsync(DescribeEndpointsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEndpoints")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEndpointsMessage, headers, settings, cb)
 	else
@@ -6739,7 +6739,7 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RemoveTagsFromResource")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromResourceMessage, headers, settings, cb)
 	else
@@ -6775,7 +6775,7 @@ function M.CreateEndpointAsync(CreateEndpointMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateEndpointMessage, headers, settings, cb)
 	else
@@ -6811,7 +6811,7 @@ function M.DeleteReplicationTaskAsync(DeleteReplicationTaskMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteReplicationTask")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteReplicationTaskMessage, headers, settings, cb)
 	else
@@ -6847,7 +6847,7 @@ function M.DescribeReplicationTaskAssessmentResultsAsync(DescribeReplicationTask
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeReplicationTaskAssessmentResults")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReplicationTaskAssessmentResultsMessage, headers, settings, cb)
 	else
@@ -6883,7 +6883,7 @@ function M.DescribeRefreshSchemasStatusAsync(DescribeRefreshSchemasStatusMessage
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeRefreshSchemasStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRefreshSchemasStatusMessage, headers, settings, cb)
 	else
@@ -6919,7 +6919,7 @@ function M.ModifyEndpointAsync(ModifyEndpointMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ModifyEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyEndpointMessage, headers, settings, cb)
 	else
@@ -6955,7 +6955,7 @@ function M.ReloadTablesAsync(ReloadTablesMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ReloadTables")
 	if request_handler then
 		request_handler(settings.uri, "/", ReloadTablesMessage, headers, settings, cb)
 	else
@@ -6991,7 +6991,7 @@ function M.ModifyReplicationSubnetGroupAsync(ModifyReplicationSubnetGroupMessage
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ModifyReplicationSubnetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyReplicationSubnetGroupMessage, headers, settings, cb)
 	else
@@ -7027,7 +7027,7 @@ function M.DescribeSchemasAsync(DescribeSchemasMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeSchemas")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSchemasMessage, headers, settings, cb)
 	else
@@ -7063,7 +7063,7 @@ function M.DeleteEventSubscriptionAsync(DeleteEventSubscriptionMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteEventSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEventSubscriptionMessage, headers, settings, cb)
 	else
@@ -7099,7 +7099,7 @@ function M.StartReplicationTaskAssessmentAsync(StartReplicationTaskAssessmentMes
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartReplicationTaskAssessment")
 	if request_handler then
 		request_handler(settings.uri, "/", StartReplicationTaskAssessmentMessage, headers, settings, cb)
 	else
@@ -7135,7 +7135,7 @@ function M.ModifyEventSubscriptionAsync(ModifyEventSubscriptionMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ModifyEventSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyEventSubscriptionMessage, headers, settings, cb)
 	else
@@ -7171,7 +7171,7 @@ function M.DescribeConnectionsAsync(DescribeConnectionsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeConnections")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConnectionsMessage, headers, settings, cb)
 	else
@@ -7207,7 +7207,7 @@ function M.CreateReplicationInstanceAsync(CreateReplicationInstanceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateReplicationInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateReplicationInstanceMessage, headers, settings, cb)
 	else
@@ -7243,7 +7243,7 @@ function M.DescribeReplicationInstanceTaskLogsAsync(DescribeReplicationInstanceT
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeReplicationInstanceTaskLogs")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReplicationInstanceTaskLogsMessage, headers, settings, cb)
 	else
@@ -7279,7 +7279,7 @@ function M.ImportCertificateAsync(ImportCertificateMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ImportCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportCertificateMessage, headers, settings, cb)
 	else
@@ -7315,7 +7315,7 @@ function M.DescribeReplicationSubnetGroupsAsync(DescribeReplicationSubnetGroupsM
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeReplicationSubnetGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReplicationSubnetGroupsMessage, headers, settings, cb)
 	else
@@ -7351,7 +7351,7 @@ function M.StopReplicationTaskAsync(StopReplicationTaskMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopReplicationTask")
 	if request_handler then
 		request_handler(settings.uri, "/", StopReplicationTaskMessage, headers, settings, cb)
 	else
@@ -7387,7 +7387,7 @@ function M.DescribeEndpointTypesAsync(DescribeEndpointTypesMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEndpointTypes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEndpointTypesMessage, headers, settings, cb)
 	else
@@ -7423,7 +7423,7 @@ function M.DescribeReplicationTasksAsync(DescribeReplicationTasksMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeReplicationTasks")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReplicationTasksMessage, headers, settings, cb)
 	else
@@ -7459,7 +7459,7 @@ function M.CreateEventSubscriptionAsync(CreateEventSubscriptionMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateEventSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateEventSubscriptionMessage, headers, settings, cb)
 	else
@@ -7495,7 +7495,7 @@ function M.DeleteEndpointAsync(DeleteEndpointMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEndpointMessage, headers, settings, cb)
 	else
@@ -7531,7 +7531,7 @@ function M.DescribeOrderableReplicationInstancesAsync(DescribeOrderableReplicati
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeOrderableReplicationInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeOrderableReplicationInstancesMessage, headers, settings, cb)
 	else
@@ -7567,7 +7567,7 @@ function M.ModifyReplicationTaskAsync(ModifyReplicationTaskMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ModifyReplicationTask")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyReplicationTaskMessage, headers, settings, cb)
 	else
@@ -7603,7 +7603,7 @@ function M.ListTagsForResourceAsync(ListTagsForResourceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTagsForResource")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForResourceMessage, headers, settings, cb)
 	else

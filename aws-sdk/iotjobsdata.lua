@@ -826,7 +826,7 @@ function M.GetPendingJobExecutionsAsync(GetPendingJobExecutionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetPendingJobExecutions")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}/jobs", GetPendingJobExecutionsRequest, headers, settings, cb)
 	else
@@ -862,7 +862,7 @@ function M.StartNextPendingJobExecutionAsync(StartNextPendingJobExecutionRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "StartNextPendingJobExecution")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}/jobs/$next", StartNextPendingJobExecutionRequest, headers, settings, cb)
 	else
@@ -898,7 +898,7 @@ function M.UpdateJobExecutionAsync(UpdateJobExecutionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateJobExecution")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}/jobs/{jobId}", UpdateJobExecutionRequest, headers, settings, cb)
 	else
@@ -934,7 +934,7 @@ function M.DescribeJobExecutionAsync(DescribeJobExecutionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeJobExecution")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}/jobs/{jobId}", DescribeJobExecutionRequest, headers, settings, cb)
 	else

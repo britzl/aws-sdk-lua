@@ -1149,7 +1149,7 @@ function M.PostContentAsync(PostContentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "PostContent")
 	if request_handler then
 		request_handler(settings.uri, "/bot/{botName}/alias/{botAlias}/user/{userId}/content", PostContentRequest, headers, settings, cb)
 	else
@@ -1185,7 +1185,7 @@ function M.PostTextAsync(PostTextRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "PostText")
 	if request_handler then
 		request_handler(settings.uri, "/bot/{botName}/alias/{botAlias}/user/{userId}/text", PostTextRequest, headers, settings, cb)
 	else

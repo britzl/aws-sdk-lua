@@ -1909,7 +1909,7 @@ function M.CreateHsmAsync(CreateHsmRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateHsm")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateHsmRequest, headers, settings, cb)
 	else
@@ -1945,7 +1945,7 @@ function M.ListTagsAsync(ListTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTags")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsRequest, headers, settings, cb)
 	else
@@ -1981,7 +1981,7 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UntagResource")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagResourceRequest, headers, settings, cb)
 	else
@@ -2017,7 +2017,7 @@ function M.CreateClusterAsync(CreateClusterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateClusterRequest, headers, settings, cb)
 	else
@@ -2053,7 +2053,7 @@ function M.DeleteHsmAsync(DeleteHsmRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteHsm")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteHsmRequest, headers, settings, cb)
 	else
@@ -2089,7 +2089,7 @@ function M.DescribeBackupsAsync(DescribeBackupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeBackups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeBackupsRequest, headers, settings, cb)
 	else
@@ -2125,7 +2125,7 @@ function M.DeleteBackupAsync(DeleteBackupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteBackup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteBackupRequest, headers, settings, cb)
 	else
@@ -2161,7 +2161,7 @@ function M.RestoreBackupAsync(RestoreBackupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RestoreBackup")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreBackupRequest, headers, settings, cb)
 	else
@@ -2197,7 +2197,7 @@ function M.InitializeClusterAsync(InitializeClusterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "InitializeCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", InitializeClusterRequest, headers, settings, cb)
 	else
@@ -2233,7 +2233,7 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TagResource")
 	if request_handler then
 		request_handler(settings.uri, "/", TagResourceRequest, headers, settings, cb)
 	else
@@ -2269,7 +2269,7 @@ function M.CopyBackupToRegionAsync(CopyBackupToRegionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CopyBackupToRegion")
 	if request_handler then
 		request_handler(settings.uri, "/", CopyBackupToRegionRequest, headers, settings, cb)
 	else
@@ -2305,7 +2305,7 @@ function M.DescribeClustersAsync(DescribeClustersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeClusters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClustersRequest, headers, settings, cb)
 	else
@@ -2341,7 +2341,7 @@ function M.DeleteClusterAsync(DeleteClusterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteClusterRequest, headers, settings, cb)
 	else

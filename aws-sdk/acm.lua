@@ -2302,7 +2302,7 @@ function M.ResendValidationEmailAsync(ResendValidationEmailRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ResendValidationEmail")
 	if request_handler then
 		request_handler(settings.uri, "/", ResendValidationEmailRequest, headers, settings, cb)
 	else
@@ -2338,7 +2338,7 @@ function M.AddTagsToCertificateAsync(AddTagsToCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddTagsToCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToCertificateRequest, headers, settings, cb)
 	else
@@ -2374,7 +2374,7 @@ function M.ListCertificatesAsync(ListCertificatesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListCertificates")
 	if request_handler then
 		request_handler(settings.uri, "/", ListCertificatesRequest, headers, settings, cb)
 	else
@@ -2410,7 +2410,7 @@ function M.UpdateCertificateOptionsAsync(UpdateCertificateOptionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateCertificateOptions")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateCertificateOptionsRequest, headers, settings, cb)
 	else
@@ -2446,7 +2446,7 @@ function M.GetCertificateAsync(GetCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCertificateRequest, headers, settings, cb)
 	else
@@ -2482,7 +2482,7 @@ function M.ListTagsForCertificateAsync(ListTagsForCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTagsForCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForCertificateRequest, headers, settings, cb)
 	else
@@ -2518,7 +2518,7 @@ function M.RemoveTagsFromCertificateAsync(RemoveTagsFromCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RemoveTagsFromCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromCertificateRequest, headers, settings, cb)
 	else
@@ -2554,7 +2554,7 @@ function M.RequestCertificateAsync(RequestCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RequestCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", RequestCertificateRequest, headers, settings, cb)
 	else
@@ -2590,7 +2590,7 @@ function M.ImportCertificateAsync(ImportCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ImportCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportCertificateRequest, headers, settings, cb)
 	else
@@ -2626,7 +2626,7 @@ function M.DeleteCertificateAsync(DeleteCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCertificateRequest, headers, settings, cb)
 	else
@@ -2662,7 +2662,7 @@ function M.ExportCertificateAsync(ExportCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ExportCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", ExportCertificateRequest, headers, settings, cb)
 	else
@@ -2698,7 +2698,7 @@ function M.DescribeCertificateAsync(DescribeCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCertificateRequest, headers, settings, cb)
 	else

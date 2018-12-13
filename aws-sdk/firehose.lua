@@ -4456,7 +4456,7 @@ function M.CreateDeliveryStreamAsync(CreateDeliveryStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDeliveryStream")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDeliveryStreamInput, headers, settings, cb)
 	else
@@ -4492,7 +4492,7 @@ function M.DescribeDeliveryStreamAsync(DescribeDeliveryStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDeliveryStream")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDeliveryStreamInput, headers, settings, cb)
 	else
@@ -4528,7 +4528,7 @@ function M.UpdateDestinationAsync(UpdateDestinationInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateDestination")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDestinationInput, headers, settings, cb)
 	else
@@ -4564,7 +4564,7 @@ function M.TagDeliveryStreamAsync(TagDeliveryStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TagDeliveryStream")
 	if request_handler then
 		request_handler(settings.uri, "/", TagDeliveryStreamInput, headers, settings, cb)
 	else
@@ -4600,7 +4600,7 @@ function M.DeleteDeliveryStreamAsync(DeleteDeliveryStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDeliveryStream")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDeliveryStreamInput, headers, settings, cb)
 	else
@@ -4636,7 +4636,7 @@ function M.ListDeliveryStreamsAsync(ListDeliveryStreamsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListDeliveryStreams")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDeliveryStreamsInput, headers, settings, cb)
 	else
@@ -4672,7 +4672,7 @@ function M.PutRecordBatchAsync(PutRecordBatchInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutRecordBatch")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRecordBatchInput, headers, settings, cb)
 	else
@@ -4708,7 +4708,7 @@ function M.UntagDeliveryStreamAsync(UntagDeliveryStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UntagDeliveryStream")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagDeliveryStreamInput, headers, settings, cb)
 	else
@@ -4744,7 +4744,7 @@ function M.PutRecordAsync(PutRecordInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutRecord")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRecordInput, headers, settings, cb)
 	else
@@ -4780,7 +4780,7 @@ function M.ListTagsForDeliveryStreamAsync(ListTagsForDeliveryStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTagsForDeliveryStream")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForDeliveryStreamInput, headers, settings, cb)
 	else

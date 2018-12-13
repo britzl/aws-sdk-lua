@@ -6076,7 +6076,7 @@ function M.CreateServiceAsync(CreateServiceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateService")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateServiceRequest, headers, settings, cb)
 	else
@@ -6112,7 +6112,7 @@ function M.SubmitContainerStateChangeAsync(SubmitContainerStateChangeRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SubmitContainerStateChange")
 	if request_handler then
 		request_handler(settings.uri, "/", SubmitContainerStateChangeRequest, headers, settings, cb)
 	else
@@ -6148,7 +6148,7 @@ function M.ListAttributesAsync(ListAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAttributesRequest, headers, settings, cb)
 	else
@@ -6184,7 +6184,7 @@ function M.CreateClusterAsync(CreateClusterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateClusterRequest, headers, settings, cb)
 	else
@@ -6220,7 +6220,7 @@ function M.SubmitTaskStateChangeAsync(SubmitTaskStateChangeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SubmitTaskStateChange")
 	if request_handler then
 		request_handler(settings.uri, "/", SubmitTaskStateChangeRequest, headers, settings, cb)
 	else
@@ -6256,7 +6256,7 @@ function M.ListTaskDefinitionFamiliesAsync(ListTaskDefinitionFamiliesRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTaskDefinitionFamilies")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTaskDefinitionFamiliesRequest, headers, settings, cb)
 	else
@@ -6292,7 +6292,7 @@ function M.DeleteServiceAsync(DeleteServiceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteService")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteServiceRequest, headers, settings, cb)
 	else
@@ -6328,7 +6328,7 @@ function M.ListContainerInstancesAsync(ListContainerInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListContainerInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", ListContainerInstancesRequest, headers, settings, cb)
 	else
@@ -6364,7 +6364,7 @@ function M.DescribeServicesAsync(DescribeServicesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeServices")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeServicesRequest, headers, settings, cb)
 	else
@@ -6400,7 +6400,7 @@ function M.DeleteClusterAsync(DeleteClusterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteCluster")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteClusterRequest, headers, settings, cb)
 	else
@@ -6436,7 +6436,7 @@ function M.UpdateServiceAsync(UpdateServiceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateService")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateServiceRequest, headers, settings, cb)
 	else
@@ -6472,7 +6472,7 @@ function M.ListClustersAsync(ListClustersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListClusters")
 	if request_handler then
 		request_handler(settings.uri, "/", ListClustersRequest, headers, settings, cb)
 	else
@@ -6508,7 +6508,7 @@ function M.DeregisterTaskDefinitionAsync(DeregisterTaskDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeregisterTaskDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterTaskDefinitionRequest, headers, settings, cb)
 	else
@@ -6544,7 +6544,7 @@ function M.RegisterTaskDefinitionAsync(RegisterTaskDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterTaskDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterTaskDefinitionRequest, headers, settings, cb)
 	else
@@ -6580,7 +6580,7 @@ function M.StopTaskAsync(StopTaskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopTask")
 	if request_handler then
 		request_handler(settings.uri, "/", StopTaskRequest, headers, settings, cb)
 	else
@@ -6616,7 +6616,7 @@ function M.ListTaskDefinitionsAsync(ListTaskDefinitionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTaskDefinitions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTaskDefinitionsRequest, headers, settings, cb)
 	else
@@ -6652,7 +6652,7 @@ function M.DescribeClustersAsync(DescribeClustersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeClusters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClustersRequest, headers, settings, cb)
 	else
@@ -6688,7 +6688,7 @@ function M.UpdateContainerAgentAsync(UpdateContainerAgentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateContainerAgent")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateContainerAgentRequest, headers, settings, cb)
 	else
@@ -6724,7 +6724,7 @@ function M.DeleteAttributesAsync(DeleteAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAttributesRequest, headers, settings, cb)
 	else
@@ -6760,7 +6760,7 @@ function M.ListServicesAsync(ListServicesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListServices")
 	if request_handler then
 		request_handler(settings.uri, "/", ListServicesRequest, headers, settings, cb)
 	else
@@ -6796,7 +6796,7 @@ function M.PutAttributesAsync(PutAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", PutAttributesRequest, headers, settings, cb)
 	else
@@ -6832,7 +6832,7 @@ function M.StartTaskAsync(StartTaskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartTask")
 	if request_handler then
 		request_handler(settings.uri, "/", StartTaskRequest, headers, settings, cb)
 	else
@@ -6868,7 +6868,7 @@ function M.RegisterContainerInstanceAsync(RegisterContainerInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterContainerInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterContainerInstanceRequest, headers, settings, cb)
 	else
@@ -6904,7 +6904,7 @@ function M.DescribeTaskDefinitionAsync(DescribeTaskDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTaskDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTaskDefinitionRequest, headers, settings, cb)
 	else
@@ -6940,7 +6940,7 @@ function M.DescribeTasksAsync(DescribeTasksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTasks")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTasksRequest, headers, settings, cb)
 	else
@@ -6976,7 +6976,7 @@ function M.UpdateContainerInstancesStateAsync(UpdateContainerInstancesStateReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateContainerInstancesState")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateContainerInstancesStateRequest, headers, settings, cb)
 	else
@@ -7012,7 +7012,7 @@ function M.DeregisterContainerInstanceAsync(DeregisterContainerInstanceRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeregisterContainerInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterContainerInstanceRequest, headers, settings, cb)
 	else
@@ -7048,7 +7048,7 @@ function M.ListTasksAsync(ListTasksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTasks")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTasksRequest, headers, settings, cb)
 	else
@@ -7084,7 +7084,7 @@ function M.DescribeContainerInstancesAsync(DescribeContainerInstancesRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeContainerInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeContainerInstancesRequest, headers, settings, cb)
 	else
@@ -7120,7 +7120,7 @@ function M.RunTaskAsync(RunTaskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RunTask")
 	if request_handler then
 		request_handler(settings.uri, "/", RunTaskRequest, headers, settings, cb)
 	else
@@ -7156,7 +7156,7 @@ function M.DiscoverPollEndpointAsync(DiscoverPollEndpointRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DiscoverPollEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/", DiscoverPollEndpointRequest, headers, settings, cb)
 	else

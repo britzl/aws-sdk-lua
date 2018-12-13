@@ -1678,7 +1678,7 @@ function M.ExportProjectAsync(ExportProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ExportProject")
 	if request_handler then
 		request_handler(settings.uri, "/exports/{projectId}", ExportProjectRequest, headers, settings, cb)
 	else
@@ -1714,7 +1714,7 @@ function M.DescribeBundleAsync(DescribeBundleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeBundle")
 	if request_handler then
 		request_handler(settings.uri, "/bundles/{bundleId}", DescribeBundleRequest, headers, settings, cb)
 	else
@@ -1750,7 +1750,7 @@ function M.ListBundlesAsync(ListBundlesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListBundles")
 	if request_handler then
 		request_handler(settings.uri, "/bundles", ListBundlesRequest, headers, settings, cb)
 	else
@@ -1786,7 +1786,7 @@ function M.DescribeProjectAsync(DescribeProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeProject")
 	if request_handler then
 		request_handler(settings.uri, "/project", DescribeProjectRequest, headers, settings, cb)
 	else
@@ -1822,7 +1822,7 @@ function M.CreateProjectAsync(CreateProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateProject")
 	if request_handler then
 		request_handler(settings.uri, "/projects", CreateProjectRequest, headers, settings, cb)
 	else
@@ -1858,7 +1858,7 @@ function M.ListProjectsAsync(ListProjectsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListProjects")
 	if request_handler then
 		request_handler(settings.uri, "/projects", ListProjectsRequest, headers, settings, cb)
 	else
@@ -1894,7 +1894,7 @@ function M.UpdateProjectAsync(UpdateProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateProject")
 	if request_handler then
 		request_handler(settings.uri, "/update", UpdateProjectRequest, headers, settings, cb)
 	else
@@ -1930,7 +1930,7 @@ function M.DeleteProjectAsync(DeleteProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteProject")
 	if request_handler then
 		request_handler(settings.uri, "/projects/{projectId}", DeleteProjectRequest, headers, settings, cb)
 	else
@@ -1966,7 +1966,7 @@ function M.ExportBundleAsync(ExportBundleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ExportBundle")
 	if request_handler then
 		request_handler(settings.uri, "/bundles/{bundleId}", ExportBundleRequest, headers, settings, cb)
 	else

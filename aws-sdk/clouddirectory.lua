@@ -10900,7 +10900,7 @@ function M.ListTypedLinkFacetNamesAsync(ListTypedLinkFacetNamesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListTypedLinkFacetNames")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet/list", ListTypedLinkFacetNamesRequest, headers, settings, cb)
 	else
@@ -10936,7 +10936,7 @@ function M.ListIncomingTypedLinksAsync(ListIncomingTypedLinksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListIncomingTypedLinks")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/incoming", ListIncomingTypedLinksRequest, headers, settings, cb)
 	else
@@ -10972,7 +10972,7 @@ function M.ListDirectoriesAsync(ListDirectoriesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListDirectories")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/directory/list", ListDirectoriesRequest, headers, settings, cb)
 	else
@@ -11008,7 +11008,7 @@ function M.CreateSchemaAsync(CreateSchemaRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "CreateSchema")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/create", CreateSchemaRequest, headers, settings, cb)
 	else
@@ -11044,7 +11044,7 @@ function M.UpdateSchemaAsync(UpdateSchemaRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateSchema")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/update", UpdateSchemaRequest, headers, settings, cb)
 	else
@@ -11080,7 +11080,7 @@ function M.CreateObjectAsync(CreateObjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "CreateObject")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object", CreateObjectRequest, headers, settings, cb)
 	else
@@ -11116,7 +11116,7 @@ function M.EnableDirectoryAsync(EnableDirectoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "EnableDirectory")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/directory/enable", EnableDirectoryRequest, headers, settings, cb)
 	else
@@ -11152,7 +11152,7 @@ function M.GetObjectInformationAsync(GetObjectInformationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetObjectInformation")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/information", GetObjectInformationRequest, headers, settings, cb)
 	else
@@ -11188,7 +11188,7 @@ function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListTagsForResource")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/tags", ListTagsForResourceRequest, headers, settings, cb)
 	else
@@ -11224,7 +11224,7 @@ function M.GetSchemaAsJsonAsync(GetSchemaAsJsonRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetSchemaAsJson")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/json", GetSchemaAsJsonRequest, headers, settings, cb)
 	else
@@ -11260,7 +11260,7 @@ function M.BatchWriteAsync(BatchWriteRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "BatchWrite")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/batchwrite", BatchWriteRequest, headers, settings, cb)
 	else
@@ -11296,7 +11296,7 @@ function M.ListFacetNamesAsync(ListFacetNamesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListFacetNames")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/facet/list", ListFacetNamesRequest, headers, settings, cb)
 	else
@@ -11332,7 +11332,7 @@ function M.CreateDirectoryAsync(CreateDirectoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "CreateDirectory")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/directory/create", CreateDirectoryRequest, headers, settings, cb)
 	else
@@ -11368,7 +11368,7 @@ function M.CreateIndexAsync(CreateIndexRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "CreateIndex")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/index", CreateIndexRequest, headers, settings, cb)
 	else
@@ -11404,7 +11404,7 @@ function M.DeleteFacetAsync(DeleteFacetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "DeleteFacet")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/facet/delete", DeleteFacetRequest, headers, settings, cb)
 	else
@@ -11440,7 +11440,7 @@ function M.DetachPolicyAsync(DetachPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "DetachPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/policy/detach", DetachPolicyRequest, headers, settings, cb)
 	else
@@ -11476,7 +11476,7 @@ function M.DetachObjectAsync(DetachObjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "DetachObject")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/detach", DetachObjectRequest, headers, settings, cb)
 	else
@@ -11512,7 +11512,7 @@ function M.ListObjectChildrenAsync(ListObjectChildrenRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListObjectChildren")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/children", ListObjectChildrenRequest, headers, settings, cb)
 	else
@@ -11548,7 +11548,7 @@ function M.ListObjectAttributesAsync(ListObjectAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListObjectAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/attributes", ListObjectAttributesRequest, headers, settings, cb)
 	else
@@ -11584,7 +11584,7 @@ function M.AddFacetToObjectAsync(AddFacetToObjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "AddFacetToObject")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/facets", AddFacetToObjectRequest, headers, settings, cb)
 	else
@@ -11620,7 +11620,7 @@ function M.PutSchemaFromJsonAsync(PutSchemaFromJsonRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PutSchemaFromJson")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/json", PutSchemaFromJsonRequest, headers, settings, cb)
 	else
@@ -11656,7 +11656,7 @@ function M.UpdateLinkAttributesAsync(UpdateLinkAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateLinkAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/attributes/update", UpdateLinkAttributesRequest, headers, settings, cb)
 	else
@@ -11692,7 +11692,7 @@ function M.ListPolicyAttachmentsAsync(ListPolicyAttachmentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListPolicyAttachments")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/policy/attachment", ListPolicyAttachmentsRequest, headers, settings, cb)
 	else
@@ -11728,7 +11728,7 @@ function M.CreateFacetAsync(CreateFacetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "CreateFacet")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/facet/create", CreateFacetRequest, headers, settings, cb)
 	else
@@ -11764,7 +11764,7 @@ function M.ListObjectParentsAsync(ListObjectParentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListObjectParents")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/parent", ListObjectParentsRequest, headers, settings, cb)
 	else
@@ -11800,7 +11800,7 @@ function M.BatchReadAsync(BatchReadRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "BatchRead")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/batchread", BatchReadRequest, headers, settings, cb)
 	else
@@ -11836,7 +11836,7 @@ function M.DetachTypedLinkAsync(DetachTypedLinkRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "DetachTypedLink")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/detach", DetachTypedLinkRequest, headers, settings, cb)
 	else
@@ -11872,7 +11872,7 @@ function M.RemoveFacetFromObjectAsync(RemoveFacetFromObjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "RemoveFacetFromObject")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/facets/delete", RemoveFacetFromObjectRequest, headers, settings, cb)
 	else
@@ -11908,7 +11908,7 @@ function M.UpgradeAppliedSchemaAsync(UpgradeAppliedSchemaRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpgradeAppliedSchema")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/upgradeapplied", UpgradeAppliedSchemaRequest, headers, settings, cb)
 	else
@@ -11944,7 +11944,7 @@ function M.LookupPolicyAsync(LookupPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "LookupPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/policy/lookup", LookupPolicyRequest, headers, settings, cb)
 	else
@@ -11980,7 +11980,7 @@ function M.ListObjectParentPathsAsync(ListObjectParentPathsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListObjectParentPaths")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/parentpaths", ListObjectParentPathsRequest, headers, settings, cb)
 	else
@@ -12016,7 +12016,7 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "TagResource")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/tags/add", TagResourceRequest, headers, settings, cb)
 	else
@@ -12052,7 +12052,7 @@ function M.ListAttachedIndicesAsync(ListAttachedIndicesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListAttachedIndices")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/indices", ListAttachedIndicesRequest, headers, settings, cb)
 	else
@@ -12088,7 +12088,7 @@ function M.AttachTypedLinkAsync(AttachTypedLinkRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "AttachTypedLink")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/attach", AttachTypedLinkRequest, headers, settings, cb)
 	else
@@ -12124,7 +12124,7 @@ function M.GetObjectAttributesAsync(GetObjectAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetObjectAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/attributes/get", GetObjectAttributesRequest, headers, settings, cb)
 	else
@@ -12160,7 +12160,7 @@ function M.GetLinkAttributesAsync(GetLinkAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetLinkAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/attributes/get", GetLinkAttributesRequest, headers, settings, cb)
 	else
@@ -12196,7 +12196,7 @@ function M.ListPublishedSchemaArnsAsync(ListPublishedSchemaArnsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListPublishedSchemaArns")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/published", ListPublishedSchemaArnsRequest, headers, settings, cb)
 	else
@@ -12232,7 +12232,7 @@ function M.DeleteDirectoryAsync(DeleteDirectoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "DeleteDirectory")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/directory", DeleteDirectoryRequest, headers, settings, cb)
 	else
@@ -12268,7 +12268,7 @@ function M.PublishSchemaAsync(PublishSchemaRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PublishSchema")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/publish", PublishSchemaRequest, headers, settings, cb)
 	else
@@ -12304,7 +12304,7 @@ function M.GetFacetAsync(GetFacetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetFacet")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/facet", GetFacetRequest, headers, settings, cb)
 	else
@@ -12340,7 +12340,7 @@ function M.DeleteSchemaAsync(DeleteSchemaRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "DeleteSchema")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema", DeleteSchemaRequest, headers, settings, cb)
 	else
@@ -12376,7 +12376,7 @@ function M.AttachPolicyAsync(AttachPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "AttachPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/policy/attach", AttachPolicyRequest, headers, settings, cb)
 	else
@@ -12412,7 +12412,7 @@ function M.DisableDirectoryAsync(DisableDirectoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "DisableDirectory")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/directory/disable", DisableDirectoryRequest, headers, settings, cb)
 	else
@@ -12448,7 +12448,7 @@ function M.ListFacetAttributesAsync(ListFacetAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListFacetAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/facet/attributes", ListFacetAttributesRequest, headers, settings, cb)
 	else
@@ -12484,7 +12484,7 @@ function M.DeleteTypedLinkFacetAsync(DeleteTypedLinkFacetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "DeleteTypedLinkFacet")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet/delete", DeleteTypedLinkFacetRequest, headers, settings, cb)
 	else
@@ -12520,7 +12520,7 @@ function M.ListObjectPoliciesAsync(ListObjectPoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListObjectPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/policy", ListObjectPoliciesRequest, headers, settings, cb)
 	else
@@ -12556,7 +12556,7 @@ function M.DetachFromIndexAsync(DetachFromIndexRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "DetachFromIndex")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/index/detach", DetachFromIndexRequest, headers, settings, cb)
 	else
@@ -12592,7 +12592,7 @@ function M.UpgradePublishedSchemaAsync(UpgradePublishedSchemaRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpgradePublishedSchema")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/upgradepublished", UpgradePublishedSchemaRequest, headers, settings, cb)
 	else
@@ -12628,7 +12628,7 @@ function M.ListAppliedSchemaArnsAsync(ListAppliedSchemaArnsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListAppliedSchemaArns")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/applied", ListAppliedSchemaArnsRequest, headers, settings, cb)
 	else
@@ -12664,7 +12664,7 @@ function M.GetAppliedSchemaVersionAsync(GetAppliedSchemaVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetAppliedSchemaVersion")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/getappliedschema", GetAppliedSchemaVersionRequest, headers, settings, cb)
 	else
@@ -12700,7 +12700,7 @@ function M.ApplySchemaAsync(ApplySchemaRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "ApplySchema")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/apply", ApplySchemaRequest, headers, settings, cb)
 	else
@@ -12736,7 +12736,7 @@ function M.ListDevelopmentSchemaArnsAsync(ListDevelopmentSchemaArnsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListDevelopmentSchemaArns")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/development", ListDevelopmentSchemaArnsRequest, headers, settings, cb)
 	else
@@ -12772,7 +12772,7 @@ function M.GetDirectoryAsync(GetDirectoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetDirectory")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/directory/get", GetDirectoryRequest, headers, settings, cb)
 	else
@@ -12808,7 +12808,7 @@ function M.AttachObjectAsync(AttachObjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "AttachObject")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/attach", AttachObjectRequest, headers, settings, cb)
 	else
@@ -12844,7 +12844,7 @@ function M.ListOutgoingTypedLinksAsync(ListOutgoingTypedLinksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListOutgoingTypedLinks")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/outgoing", ListOutgoingTypedLinksRequest, headers, settings, cb)
 	else
@@ -12880,7 +12880,7 @@ function M.UpdateObjectAttributesAsync(UpdateObjectAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateObjectAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/update", UpdateObjectAttributesRequest, headers, settings, cb)
 	else
@@ -12916,7 +12916,7 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UntagResource")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/tags/remove", UntagResourceRequest, headers, settings, cb)
 	else
@@ -12952,7 +12952,7 @@ function M.CreateTypedLinkFacetAsync(CreateTypedLinkFacetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "CreateTypedLinkFacet")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet/create", CreateTypedLinkFacetRequest, headers, settings, cb)
 	else
@@ -12988,7 +12988,7 @@ function M.AttachToIndexAsync(AttachToIndexRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "AttachToIndex")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/index/attach", AttachToIndexRequest, headers, settings, cb)
 	else
@@ -13024,7 +13024,7 @@ function M.ListIndexAsync(ListIndexRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListIndex")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/index/targets", ListIndexRequest, headers, settings, cb)
 	else
@@ -13060,7 +13060,7 @@ function M.ListTypedLinkFacetAttributesAsync(ListTypedLinkFacetAttributesRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListTypedLinkFacetAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet/attributes", ListTypedLinkFacetAttributesRequest, headers, settings, cb)
 	else
@@ -13096,7 +13096,7 @@ function M.UpdateFacetAsync(UpdateFacetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateFacet")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/facet", UpdateFacetRequest, headers, settings, cb)
 	else
@@ -13132,7 +13132,7 @@ function M.UpdateTypedLinkFacetAsync(UpdateTypedLinkFacetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateTypedLinkFacet")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet", UpdateTypedLinkFacetRequest, headers, settings, cb)
 	else
@@ -13168,7 +13168,7 @@ function M.ListManagedSchemaArnsAsync(ListManagedSchemaArnsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListManagedSchemaArns")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/managed", ListManagedSchemaArnsRequest, headers, settings, cb)
 	else
@@ -13204,7 +13204,7 @@ function M.DeleteObjectAsync(DeleteObjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "DeleteObject")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/delete", DeleteObjectRequest, headers, settings, cb)
 	else
@@ -13240,7 +13240,7 @@ function M.GetTypedLinkFacetInformationAsync(GetTypedLinkFacetInformationRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetTypedLinkFacetInformation")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet/get", GetTypedLinkFacetInformationRequest, headers, settings, cb)
 	else

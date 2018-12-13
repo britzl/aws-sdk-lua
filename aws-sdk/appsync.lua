@@ -3665,7 +3665,7 @@ function M.UpdateResolverAsync(UpdateResolverRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateResolver")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/types/{typeName}/resolvers/{fieldName}", UpdateResolverRequest, headers, settings, cb)
 	else
@@ -3701,7 +3701,7 @@ function M.GetGraphqlApiAsync(GetGraphqlApiRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetGraphqlApi")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}", GetGraphqlApiRequest, headers, settings, cb)
 	else
@@ -3737,7 +3737,7 @@ function M.CreateResolverAsync(CreateResolverRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateResolver")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/types/{typeName}/resolvers", CreateResolverRequest, headers, settings, cb)
 	else
@@ -3773,7 +3773,7 @@ function M.ListTypesAsync(ListTypesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListTypes")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/types", ListTypesRequest, headers, settings, cb)
 	else
@@ -3809,7 +3809,7 @@ function M.ListApiKeysAsync(ListApiKeysRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListApiKeys")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/apikeys", ListApiKeysRequest, headers, settings, cb)
 	else
@@ -3845,7 +3845,7 @@ function M.ListGraphqlApisAsync(ListGraphqlApisRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListGraphqlApis")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis", ListGraphqlApisRequest, headers, settings, cb)
 	else
@@ -3881,7 +3881,7 @@ function M.DeleteGraphqlApiAsync(DeleteGraphqlApiRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteGraphqlApi")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}", DeleteGraphqlApiRequest, headers, settings, cb)
 	else
@@ -3917,7 +3917,7 @@ function M.GetIntrospectionSchemaAsync(GetIntrospectionSchemaRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetIntrospectionSchema")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/schema", GetIntrospectionSchemaRequest, headers, settings, cb)
 	else
@@ -3953,7 +3953,7 @@ function M.ListResolversAsync(ListResolversRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListResolvers")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/types/{typeName}/resolvers", ListResolversRequest, headers, settings, cb)
 	else
@@ -3989,7 +3989,7 @@ function M.GetResolverAsync(GetResolverRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetResolver")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/types/{typeName}/resolvers/{fieldName}", GetResolverRequest, headers, settings, cb)
 	else
@@ -4025,7 +4025,7 @@ function M.UpdateDataSourceAsync(UpdateDataSourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateDataSource")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/datasources/{name}", UpdateDataSourceRequest, headers, settings, cb)
 	else
@@ -4061,7 +4061,7 @@ function M.DeleteResolverAsync(DeleteResolverRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteResolver")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/types/{typeName}/resolvers/{fieldName}", DeleteResolverRequest, headers, settings, cb)
 	else
@@ -4097,7 +4097,7 @@ function M.UpdateApiKeyAsync(UpdateApiKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateApiKey")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/apikeys/{id}", UpdateApiKeyRequest, headers, settings, cb)
 	else
@@ -4133,7 +4133,7 @@ function M.GetSchemaCreationStatusAsync(GetSchemaCreationStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSchemaCreationStatus")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/schemacreation", GetSchemaCreationStatusRequest, headers, settings, cb)
 	else
@@ -4169,7 +4169,7 @@ function M.UpdateTypeAsync(UpdateTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateType")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/types/{typeName}", UpdateTypeRequest, headers, settings, cb)
 	else
@@ -4205,7 +4205,7 @@ function M.CreateGraphqlApiAsync(CreateGraphqlApiRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateGraphqlApi")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis", CreateGraphqlApiRequest, headers, settings, cb)
 	else
@@ -4241,7 +4241,7 @@ function M.CreateTypeAsync(CreateTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateType")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/types", CreateTypeRequest, headers, settings, cb)
 	else
@@ -4277,7 +4277,7 @@ function M.DeleteDataSourceAsync(DeleteDataSourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteDataSource")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/datasources/{name}", DeleteDataSourceRequest, headers, settings, cb)
 	else
@@ -4313,7 +4313,7 @@ function M.CreateApiKeyAsync(CreateApiKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateApiKey")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/apikeys", CreateApiKeyRequest, headers, settings, cb)
 	else
@@ -4349,7 +4349,7 @@ function M.ListDataSourcesAsync(ListDataSourcesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListDataSources")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/datasources", ListDataSourcesRequest, headers, settings, cb)
 	else
@@ -4385,7 +4385,7 @@ function M.StartSchemaCreationAsync(StartSchemaCreationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "StartSchemaCreation")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/schemacreation", StartSchemaCreationRequest, headers, settings, cb)
 	else
@@ -4421,7 +4421,7 @@ function M.CreateDataSourceAsync(CreateDataSourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateDataSource")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/datasources", CreateDataSourceRequest, headers, settings, cb)
 	else
@@ -4457,7 +4457,7 @@ function M.GetTypeAsync(GetTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetType")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/types/{typeName}", GetTypeRequest, headers, settings, cb)
 	else
@@ -4493,7 +4493,7 @@ function M.GetDataSourceAsync(GetDataSourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDataSource")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/datasources/{name}", GetDataSourceRequest, headers, settings, cb)
 	else
@@ -4529,7 +4529,7 @@ function M.DeleteTypeAsync(DeleteTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteType")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/types/{typeName}", DeleteTypeRequest, headers, settings, cb)
 	else
@@ -4565,7 +4565,7 @@ function M.DeleteApiKeyAsync(DeleteApiKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteApiKey")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}/apikeys/{id}", DeleteApiKeyRequest, headers, settings, cb)
 	else
@@ -4601,7 +4601,7 @@ function M.UpdateGraphqlApiAsync(UpdateGraphqlApiRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateGraphqlApi")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apis/{apiId}", UpdateGraphqlApiRequest, headers, settings, cb)
 	else

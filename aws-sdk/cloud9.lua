@@ -1489,7 +1489,7 @@ function M.UpdateEnvironmentAsync(UpdateEnvironmentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateEnvironment")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateEnvironmentRequest, headers, settings, cb)
 	else
@@ -1525,7 +1525,7 @@ function M.CreateEnvironmentMembershipAsync(CreateEnvironmentMembershipRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateEnvironmentMembership")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateEnvironmentMembershipRequest, headers, settings, cb)
 	else
@@ -1561,7 +1561,7 @@ function M.DescribeEnvironmentsAsync(DescribeEnvironmentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEnvironments")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEnvironmentsRequest, headers, settings, cb)
 	else
@@ -1597,7 +1597,7 @@ function M.DeleteEnvironmentMembershipAsync(DeleteEnvironmentMembershipRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteEnvironmentMembership")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEnvironmentMembershipRequest, headers, settings, cb)
 	else
@@ -1633,7 +1633,7 @@ function M.UpdateEnvironmentMembershipAsync(UpdateEnvironmentMembershipRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateEnvironmentMembership")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateEnvironmentMembershipRequest, headers, settings, cb)
 	else
@@ -1669,7 +1669,7 @@ function M.DescribeEnvironmentStatusAsync(DescribeEnvironmentStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEnvironmentStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEnvironmentStatusRequest, headers, settings, cb)
 	else
@@ -1705,7 +1705,7 @@ function M.ListEnvironmentsAsync(ListEnvironmentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListEnvironments")
 	if request_handler then
 		request_handler(settings.uri, "/", ListEnvironmentsRequest, headers, settings, cb)
 	else
@@ -1741,7 +1741,7 @@ function M.DescribeEnvironmentMembershipsAsync(DescribeEnvironmentMembershipsReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEnvironmentMemberships")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEnvironmentMembershipsRequest, headers, settings, cb)
 	else
@@ -1777,7 +1777,7 @@ function M.DeleteEnvironmentAsync(DeleteEnvironmentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteEnvironment")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEnvironmentRequest, headers, settings, cb)
 	else
@@ -1813,7 +1813,7 @@ function M.CreateEnvironmentEC2Async(CreateEnvironmentEC2Request, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateEnvironmentEC2")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateEnvironmentEC2Request, headers, settings, cb)
 	else

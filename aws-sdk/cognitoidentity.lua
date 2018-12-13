@@ -2664,7 +2664,7 @@ function M.MergeDeveloperIdentitiesAsync(MergeDeveloperIdentitiesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "MergeDeveloperIdentities")
 	if request_handler then
 		request_handler(settings.uri, "/", MergeDeveloperIdentitiesInput, headers, settings, cb)
 	else
@@ -2700,7 +2700,7 @@ function M.GetIdentityPoolRolesAsync(GetIdentityPoolRolesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetIdentityPoolRoles")
 	if request_handler then
 		request_handler(settings.uri, "/", GetIdentityPoolRolesInput, headers, settings, cb)
 	else
@@ -2736,7 +2736,7 @@ function M.DeleteIdentitiesAsync(DeleteIdentitiesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteIdentities")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteIdentitiesInput, headers, settings, cb)
 	else
@@ -2772,7 +2772,7 @@ function M.GetOpenIdTokenForDeveloperIdentityAsync(GetOpenIdTokenForDeveloperIde
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetOpenIdTokenForDeveloperIdentity")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOpenIdTokenForDeveloperIdentityInput, headers, settings, cb)
 	else
@@ -2808,7 +2808,7 @@ function M.LookupDeveloperIdentityAsync(LookupDeveloperIdentityInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "LookupDeveloperIdentity")
 	if request_handler then
 		request_handler(settings.uri, "/", LookupDeveloperIdentityInput, headers, settings, cb)
 	else
@@ -2844,7 +2844,7 @@ function M.ListIdentityPoolsAsync(ListIdentityPoolsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListIdentityPools")
 	if request_handler then
 		request_handler(settings.uri, "/", ListIdentityPoolsInput, headers, settings, cb)
 	else
@@ -2880,7 +2880,7 @@ function M.DescribeIdentityAsync(DescribeIdentityInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeIdentity")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeIdentityInput, headers, settings, cb)
 	else
@@ -2916,7 +2916,7 @@ function M.GetIdAsync(GetIdInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetId")
 	if request_handler then
 		request_handler(settings.uri, "/", GetIdInput, headers, settings, cb)
 	else
@@ -2952,7 +2952,7 @@ function M.UnlinkIdentityAsync(UnlinkIdentityInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UnlinkIdentity")
 	if request_handler then
 		request_handler(settings.uri, "/", UnlinkIdentityInput, headers, settings, cb)
 	else
@@ -2988,7 +2988,7 @@ function M.ListIdentitiesAsync(ListIdentitiesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListIdentities")
 	if request_handler then
 		request_handler(settings.uri, "/", ListIdentitiesInput, headers, settings, cb)
 	else
@@ -3024,7 +3024,7 @@ function M.DeleteIdentityPoolAsync(DeleteIdentityPoolInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteIdentityPool")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteIdentityPoolInput, headers, settings, cb)
 	else
@@ -3060,7 +3060,7 @@ function M.GetCredentialsForIdentityAsync(GetCredentialsForIdentityInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetCredentialsForIdentity")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCredentialsForIdentityInput, headers, settings, cb)
 	else
@@ -3096,7 +3096,7 @@ function M.UpdateIdentityPoolAsync(IdentityPool, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateIdentityPool")
 	if request_handler then
 		request_handler(settings.uri, "/", IdentityPool, headers, settings, cb)
 	else
@@ -3132,7 +3132,7 @@ function M.SetIdentityPoolRolesAsync(SetIdentityPoolRolesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SetIdentityPoolRoles")
 	if request_handler then
 		request_handler(settings.uri, "/", SetIdentityPoolRolesInput, headers, settings, cb)
 	else
@@ -3168,7 +3168,7 @@ function M.UnlinkDeveloperIdentityAsync(UnlinkDeveloperIdentityInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UnlinkDeveloperIdentity")
 	if request_handler then
 		request_handler(settings.uri, "/", UnlinkDeveloperIdentityInput, headers, settings, cb)
 	else
@@ -3204,7 +3204,7 @@ function M.DescribeIdentityPoolAsync(DescribeIdentityPoolInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeIdentityPool")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeIdentityPoolInput, headers, settings, cb)
 	else
@@ -3240,7 +3240,7 @@ function M.GetOpenIdTokenAsync(GetOpenIdTokenInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetOpenIdToken")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOpenIdTokenInput, headers, settings, cb)
 	else
@@ -3276,7 +3276,7 @@ function M.CreateIdentityPoolAsync(CreateIdentityPoolInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateIdentityPool")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateIdentityPoolInput, headers, settings, cb)
 	else

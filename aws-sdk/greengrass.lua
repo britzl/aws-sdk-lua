@@ -8795,7 +8795,7 @@ function M.GetDeviceDefinitionVersionAsync(GetDeviceDefinitionVersionRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDeviceDefinitionVersion")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/devices/{DeviceDefinitionId}/versions/{DeviceDefinitionVersionId}", GetDeviceDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -8831,7 +8831,7 @@ function M.ListDeviceDefinitionVersionsAsync(ListDeviceDefinitionVersionsRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListDeviceDefinitionVersions")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/devices/{DeviceDefinitionId}/versions", ListDeviceDefinitionVersionsRequest, headers, settings, cb)
 	else
@@ -8867,7 +8867,7 @@ function M.ListBulkDeploymentsAsync(ListBulkDeploymentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListBulkDeployments")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/bulk/deployments", ListBulkDeploymentsRequest, headers, settings, cb)
 	else
@@ -8903,7 +8903,7 @@ function M.UpdateGroupAsync(UpdateGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateGroup")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}", UpdateGroupRequest, headers, settings, cb)
 	else
@@ -8939,7 +8939,7 @@ function M.AssociateRoleToGroupAsync(AssociateRoleToGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "AssociateRoleToGroup")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/role", AssociateRoleToGroupRequest, headers, settings, cb)
 	else
@@ -8975,7 +8975,7 @@ function M.ListBulkDeploymentDetailedReportsAsync(ListBulkDeploymentDetailedRepo
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListBulkDeploymentDetailedReports")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/bulk/deployments/{BulkDeploymentId}/detailed-reports", ListBulkDeploymentDetailedReportsRequest, headers, settings, cb)
 	else
@@ -9011,7 +9011,7 @@ function M.ListSubscriptionDefinitionVersionsAsync(ListSubscriptionDefinitionVer
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListSubscriptionDefinitionVersions")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions", ListSubscriptionDefinitionVersionsRequest, headers, settings, cb)
 	else
@@ -9047,7 +9047,7 @@ function M.ListCoreDefinitionsAsync(ListCoreDefinitionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListCoreDefinitions")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/cores", ListCoreDefinitionsRequest, headers, settings, cb)
 	else
@@ -9083,7 +9083,7 @@ function M.ListGroupVersionsAsync(ListGroupVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListGroupVersions")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/versions", ListGroupVersionsRequest, headers, settings, cb)
 	else
@@ -9119,7 +9119,7 @@ function M.UpdateCoreDefinitionAsync(UpdateCoreDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateCoreDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/cores/{CoreDefinitionId}", UpdateCoreDefinitionRequest, headers, settings, cb)
 	else
@@ -9155,7 +9155,7 @@ function M.CreateCoreDefinitionAsync(CreateCoreDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateCoreDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/cores", CreateCoreDefinitionRequest, headers, settings, cb)
 	else
@@ -9191,7 +9191,7 @@ function M.GetSubscriptionDefinitionAsync(GetSubscriptionDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSubscriptionDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}", GetSubscriptionDefinitionRequest, headers, settings, cb)
 	else
@@ -9227,7 +9227,7 @@ function M.GetDeploymentStatusAsync(GetDeploymentStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDeploymentStatus")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/deployments/{DeploymentId}/status", GetDeploymentStatusRequest, headers, settings, cb)
 	else
@@ -9263,7 +9263,7 @@ function M.CreateResourceDefinitionVersionAsync(CreateResourceDefinitionVersionR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateResourceDefinitionVersion")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/resources/{ResourceDefinitionId}/versions", CreateResourceDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -9299,7 +9299,7 @@ function M.CreateGroupAsync(CreateGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateGroup")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups", CreateGroupRequest, headers, settings, cb)
 	else
@@ -9335,7 +9335,7 @@ function M.GetGroupCertificateAuthorityAsync(GetGroupCertificateAuthorityRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetGroupCertificateAuthority")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/certificateauthorities/{CertificateAuthorityId}", GetGroupCertificateAuthorityRequest, headers, settings, cb)
 	else
@@ -9371,7 +9371,7 @@ function M.CreateDeploymentAsync(CreateDeploymentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateDeployment")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/deployments", CreateDeploymentRequest, headers, settings, cb)
 	else
@@ -9407,7 +9407,7 @@ function M.CreateResourceDefinitionAsync(CreateResourceDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateResourceDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/resources", CreateResourceDefinitionRequest, headers, settings, cb)
 	else
@@ -9443,7 +9443,7 @@ function M.ListSubscriptionDefinitionsAsync(ListSubscriptionDefinitionsRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListSubscriptionDefinitions")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/subscriptions", ListSubscriptionDefinitionsRequest, headers, settings, cb)
 	else
@@ -9479,7 +9479,7 @@ function M.ListFunctionDefinitionVersionsAsync(ListFunctionDefinitionVersionsReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListFunctionDefinitionVersions")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/functions/{FunctionDefinitionId}/versions", ListFunctionDefinitionVersionsRequest, headers, settings, cb)
 	else
@@ -9515,7 +9515,7 @@ function M.UpdateDeviceDefinitionAsync(UpdateDeviceDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateDeviceDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/devices/{DeviceDefinitionId}", UpdateDeviceDefinitionRequest, headers, settings, cb)
 	else
@@ -9551,7 +9551,7 @@ function M.StartBulkDeploymentAsync(StartBulkDeploymentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "StartBulkDeployment")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/bulk/deployments", StartBulkDeploymentRequest, headers, settings, cb)
 	else
@@ -9587,7 +9587,7 @@ function M.ListLoggerDefinitionVersionsAsync(ListLoggerDefinitionVersionsRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListLoggerDefinitionVersions")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/loggers/{LoggerDefinitionId}/versions", ListLoggerDefinitionVersionsRequest, headers, settings, cb)
 	else
@@ -9623,7 +9623,7 @@ function M.CreateDeviceDefinitionAsync(CreateDeviceDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateDeviceDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/devices", CreateDeviceDefinitionRequest, headers, settings, cb)
 	else
@@ -9659,7 +9659,7 @@ function M.AssociateServiceRoleToAccountAsync(AssociateServiceRoleToAccountReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "AssociateServiceRoleToAccount")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/servicerole", AssociateServiceRoleToAccountRequest, headers, settings, cb)
 	else
@@ -9695,7 +9695,7 @@ function M.DeleteGroupAsync(DeleteGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteGroup")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}", DeleteGroupRequest, headers, settings, cb)
 	else
@@ -9731,7 +9731,7 @@ function M.CreateDeviceDefinitionVersionAsync(CreateDeviceDefinitionVersionReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateDeviceDefinitionVersion")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/devices/{DeviceDefinitionId}/versions", CreateDeviceDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -9767,7 +9767,7 @@ function M.ListResourceDefinitionsAsync(ListResourceDefinitionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListResourceDefinitions")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/resources", ListResourceDefinitionsRequest, headers, settings, cb)
 	else
@@ -9803,7 +9803,7 @@ function M.GetCoreDefinitionAsync(GetCoreDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetCoreDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/cores/{CoreDefinitionId}", GetCoreDefinitionRequest, headers, settings, cb)
 	else
@@ -9839,7 +9839,7 @@ function M.GetBulkDeploymentStatusAsync(GetBulkDeploymentStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetBulkDeploymentStatus")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/bulk/deployments/{BulkDeploymentId}/status", GetBulkDeploymentStatusRequest, headers, settings, cb)
 	else
@@ -9875,7 +9875,7 @@ function M.ListGroupCertificateAuthoritiesAsync(ListGroupCertificateAuthoritiesR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListGroupCertificateAuthorities")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/certificateauthorities", ListGroupCertificateAuthoritiesRequest, headers, settings, cb)
 	else
@@ -9911,7 +9911,7 @@ function M.DeleteResourceDefinitionAsync(DeleteResourceDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteResourceDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/resources/{ResourceDefinitionId}", DeleteResourceDefinitionRequest, headers, settings, cb)
 	else
@@ -9947,7 +9947,7 @@ function M.StopBulkDeploymentAsync(StopBulkDeploymentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "StopBulkDeployment")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/bulk/deployments/{BulkDeploymentId}/$stop", StopBulkDeploymentRequest, headers, settings, cb)
 	else
@@ -9983,7 +9983,7 @@ function M.GetSubscriptionDefinitionVersionAsync(GetSubscriptionDefinitionVersio
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSubscriptionDefinitionVersion")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions/{SubscriptionDefinitionVersionId}", GetSubscriptionDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -10019,7 +10019,7 @@ function M.GetFunctionDefinitionAsync(GetFunctionDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetFunctionDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/functions/{FunctionDefinitionId}", GetFunctionDefinitionRequest, headers, settings, cb)
 	else
@@ -10055,7 +10055,7 @@ function M.ResetDeploymentsAsync(ResetDeploymentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ResetDeployments")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/deployments/$reset", ResetDeploymentsRequest, headers, settings, cb)
 	else
@@ -10091,7 +10091,7 @@ function M.UpdateResourceDefinitionAsync(UpdateResourceDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateResourceDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/resources/{ResourceDefinitionId}", UpdateResourceDefinitionRequest, headers, settings, cb)
 	else
@@ -10127,7 +10127,7 @@ function M.GetGroupAsync(GetGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}", GetGroupRequest, headers, settings, cb)
 	else
@@ -10163,7 +10163,7 @@ function M.GetResourceDefinitionAsync(GetResourceDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetResourceDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/resources/{ResourceDefinitionId}", GetResourceDefinitionRequest, headers, settings, cb)
 	else
@@ -10199,7 +10199,7 @@ function M.DeleteCoreDefinitionAsync(DeleteCoreDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteCoreDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/cores/{CoreDefinitionId}", DeleteCoreDefinitionRequest, headers, settings, cb)
 	else
@@ -10235,7 +10235,7 @@ function M.CreateGroupVersionAsync(CreateGroupVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateGroupVersion")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/versions", CreateGroupVersionRequest, headers, settings, cb)
 	else
@@ -10271,7 +10271,7 @@ function M.CreateLoggerDefinitionVersionAsync(CreateLoggerDefinitionVersionReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateLoggerDefinitionVersion")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/loggers/{LoggerDefinitionId}/versions", CreateLoggerDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -10307,7 +10307,7 @@ function M.GetDeviceDefinitionAsync(GetDeviceDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDeviceDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/devices/{DeviceDefinitionId}", GetDeviceDefinitionRequest, headers, settings, cb)
 	else
@@ -10343,7 +10343,7 @@ function M.UpdateSubscriptionDefinitionAsync(UpdateSubscriptionDefinitionRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateSubscriptionDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}", UpdateSubscriptionDefinitionRequest, headers, settings, cb)
 	else
@@ -10379,7 +10379,7 @@ function M.GetFunctionDefinitionVersionAsync(GetFunctionDefinitionVersionRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetFunctionDefinitionVersion")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/functions/{FunctionDefinitionId}/versions/{FunctionDefinitionVersionId}", GetFunctionDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -10415,7 +10415,7 @@ function M.ListResourceDefinitionVersionsAsync(ListResourceDefinitionVersionsReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListResourceDefinitionVersions")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/resources/{ResourceDefinitionId}/versions", ListResourceDefinitionVersionsRequest, headers, settings, cb)
 	else
@@ -10451,7 +10451,7 @@ function M.GetLoggerDefinitionVersionAsync(GetLoggerDefinitionVersionRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetLoggerDefinitionVersion")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/loggers/{LoggerDefinitionId}/versions/{LoggerDefinitionVersionId}", GetLoggerDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -10487,7 +10487,7 @@ function M.CreateCoreDefinitionVersionAsync(CreateCoreDefinitionVersionRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateCoreDefinitionVersion")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/cores/{CoreDefinitionId}/versions", CreateCoreDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -10523,7 +10523,7 @@ function M.ListCoreDefinitionVersionsAsync(ListCoreDefinitionVersionsRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListCoreDefinitionVersions")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/cores/{CoreDefinitionId}/versions", ListCoreDefinitionVersionsRequest, headers, settings, cb)
 	else
@@ -10559,7 +10559,7 @@ function M.UpdateGroupCertificateConfigurationAsync(UpdateGroupCertificateConfig
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateGroupCertificateConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/certificateauthorities/configuration/expiry", UpdateGroupCertificateConfigurationRequest, headers, settings, cb)
 	else
@@ -10595,7 +10595,7 @@ function M.CreateGroupCertificateAuthorityAsync(CreateGroupCertificateAuthorityR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateGroupCertificateAuthority")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/certificateauthorities", CreateGroupCertificateAuthorityRequest, headers, settings, cb)
 	else
@@ -10631,7 +10631,7 @@ function M.GetServiceRoleForAccountAsync(GetServiceRoleForAccountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetServiceRoleForAccount")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/servicerole", GetServiceRoleForAccountRequest, headers, settings, cb)
 	else
@@ -10667,7 +10667,7 @@ function M.UpdateConnectivityInfoAsync(UpdateConnectivityInfoRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateConnectivityInfo")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/things/{ThingName}/connectivityInfo", UpdateConnectivityInfoRequest, headers, settings, cb)
 	else
@@ -10703,7 +10703,7 @@ function M.DisassociateRoleFromGroupAsync(DisassociateRoleFromGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DisassociateRoleFromGroup")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/role", DisassociateRoleFromGroupRequest, headers, settings, cb)
 	else
@@ -10739,7 +10739,7 @@ function M.CreateSoftwareUpdateJobAsync(CreateSoftwareUpdateJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateSoftwareUpdateJob")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/updates", CreateSoftwareUpdateJobRequest, headers, settings, cb)
 	else
@@ -10775,7 +10775,7 @@ function M.CreateLoggerDefinitionAsync(CreateLoggerDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateLoggerDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/loggers", CreateLoggerDefinitionRequest, headers, settings, cb)
 	else
@@ -10811,7 +10811,7 @@ function M.ListFunctionDefinitionsAsync(ListFunctionDefinitionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListFunctionDefinitions")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/functions", ListFunctionDefinitionsRequest, headers, settings, cb)
 	else
@@ -10847,7 +10847,7 @@ function M.GetResourceDefinitionVersionAsync(GetResourceDefinitionVersionRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetResourceDefinitionVersion")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/resources/{ResourceDefinitionId}/versions/{ResourceDefinitionVersionId}", GetResourceDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -10883,7 +10883,7 @@ function M.DeleteSubscriptionDefinitionAsync(DeleteSubscriptionDefinitionRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteSubscriptionDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}", DeleteSubscriptionDefinitionRequest, headers, settings, cb)
 	else
@@ -10919,7 +10919,7 @@ function M.CreateFunctionDefinitionVersionAsync(CreateFunctionDefinitionVersionR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateFunctionDefinitionVersion")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/functions/{FunctionDefinitionId}/versions", CreateFunctionDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -10955,7 +10955,7 @@ function M.ListDeploymentsAsync(ListDeploymentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListDeployments")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/deployments", ListDeploymentsRequest, headers, settings, cb)
 	else
@@ -10991,7 +10991,7 @@ function M.GetGroupVersionAsync(GetGroupVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetGroupVersion")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/versions/{GroupVersionId}", GetGroupVersionRequest, headers, settings, cb)
 	else
@@ -11027,7 +11027,7 @@ function M.DisassociateServiceRoleFromAccountAsync(DisassociateServiceRoleFromAc
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DisassociateServiceRoleFromAccount")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/servicerole", DisassociateServiceRoleFromAccountRequest, headers, settings, cb)
 	else
@@ -11063,7 +11063,7 @@ function M.GetCoreDefinitionVersionAsync(GetCoreDefinitionVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetCoreDefinitionVersion")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/cores/{CoreDefinitionId}/versions/{CoreDefinitionVersionId}", GetCoreDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -11099,7 +11099,7 @@ function M.ListDeviceDefinitionsAsync(ListDeviceDefinitionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListDeviceDefinitions")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/devices", ListDeviceDefinitionsRequest, headers, settings, cb)
 	else
@@ -11135,7 +11135,7 @@ function M.GetGroupCertificateConfigurationAsync(GetGroupCertificateConfiguratio
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetGroupCertificateConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/certificateauthorities/configuration/expiry", GetGroupCertificateConfigurationRequest, headers, settings, cb)
 	else
@@ -11171,7 +11171,7 @@ function M.DeleteDeviceDefinitionAsync(DeleteDeviceDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteDeviceDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/devices/{DeviceDefinitionId}", DeleteDeviceDefinitionRequest, headers, settings, cb)
 	else
@@ -11207,7 +11207,7 @@ function M.GetAssociatedRoleAsync(GetAssociatedRoleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetAssociatedRole")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/role", GetAssociatedRoleRequest, headers, settings, cb)
 	else
@@ -11243,7 +11243,7 @@ function M.UpdateLoggerDefinitionAsync(UpdateLoggerDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateLoggerDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/loggers/{LoggerDefinitionId}", UpdateLoggerDefinitionRequest, headers, settings, cb)
 	else
@@ -11279,7 +11279,7 @@ function M.CreateFunctionDefinitionAsync(CreateFunctionDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateFunctionDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/functions", CreateFunctionDefinitionRequest, headers, settings, cb)
 	else
@@ -11315,7 +11315,7 @@ function M.GetLoggerDefinitionAsync(GetLoggerDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetLoggerDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/loggers/{LoggerDefinitionId}", GetLoggerDefinitionRequest, headers, settings, cb)
 	else
@@ -11351,7 +11351,7 @@ function M.UpdateFunctionDefinitionAsync(UpdateFunctionDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateFunctionDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/functions/{FunctionDefinitionId}", UpdateFunctionDefinitionRequest, headers, settings, cb)
 	else
@@ -11387,7 +11387,7 @@ function M.ListLoggerDefinitionsAsync(ListLoggerDefinitionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListLoggerDefinitions")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/loggers", ListLoggerDefinitionsRequest, headers, settings, cb)
 	else
@@ -11423,7 +11423,7 @@ function M.CreateSubscriptionDefinitionAsync(CreateSubscriptionDefinitionRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateSubscriptionDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/subscriptions", CreateSubscriptionDefinitionRequest, headers, settings, cb)
 	else
@@ -11459,7 +11459,7 @@ function M.GetConnectivityInfoAsync(GetConnectivityInfoRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetConnectivityInfo")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/things/{ThingName}/connectivityInfo", GetConnectivityInfoRequest, headers, settings, cb)
 	else
@@ -11495,7 +11495,7 @@ function M.ListGroupsAsync(ListGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListGroups")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups", ListGroupsRequest, headers, settings, cb)
 	else
@@ -11531,7 +11531,7 @@ function M.DeleteLoggerDefinitionAsync(DeleteLoggerDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteLoggerDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/loggers/{LoggerDefinitionId}", DeleteLoggerDefinitionRequest, headers, settings, cb)
 	else
@@ -11567,7 +11567,7 @@ function M.DeleteFunctionDefinitionAsync(DeleteFunctionDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteFunctionDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/functions/{FunctionDefinitionId}", DeleteFunctionDefinitionRequest, headers, settings, cb)
 	else
@@ -11603,7 +11603,7 @@ function M.CreateSubscriptionDefinitionVersionAsync(CreateSubscriptionDefinition
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateSubscriptionDefinitionVersion")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions", CreateSubscriptionDefinitionVersionRequest, headers, settings, cb)
 	else

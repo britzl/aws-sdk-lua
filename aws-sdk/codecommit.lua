@@ -5532,7 +5532,7 @@ function M.TestRepositoryTriggersAsync(TestRepositoryTriggersInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TestRepositoryTriggers")
 	if request_handler then
 		request_handler(settings.uri, "/", TestRepositoryTriggersInput, headers, settings, cb)
 	else
@@ -5568,7 +5568,7 @@ function M.DeleteRepositoryAsync(DeleteRepositoryInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteRepository")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRepositoryInput, headers, settings, cb)
 	else
@@ -5604,7 +5604,7 @@ function M.ListPullRequestsAsync(ListPullRequestsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListPullRequests")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPullRequestsInput, headers, settings, cb)
 	else
@@ -5640,7 +5640,7 @@ function M.UpdateRepositoryDescriptionAsync(UpdateRepositoryDescriptionInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateRepositoryDescription")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRepositoryDescriptionInput, headers, settings, cb)
 	else
@@ -5676,7 +5676,7 @@ function M.UpdatePullRequestDescriptionAsync(UpdatePullRequestDescriptionInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdatePullRequestDescription")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdatePullRequestDescriptionInput, headers, settings, cb)
 	else
@@ -5712,7 +5712,7 @@ function M.DeleteBranchAsync(DeleteBranchInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteBranch")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteBranchInput, headers, settings, cb)
 	else
@@ -5748,7 +5748,7 @@ function M.GetMergeConflictsAsync(GetMergeConflictsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetMergeConflicts")
 	if request_handler then
 		request_handler(settings.uri, "/", GetMergeConflictsInput, headers, settings, cb)
 	else
@@ -5784,7 +5784,7 @@ function M.GetFolderAsync(GetFolderInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetFolder")
 	if request_handler then
 		request_handler(settings.uri, "/", GetFolderInput, headers, settings, cb)
 	else
@@ -5820,7 +5820,7 @@ function M.DeleteCommentContentAsync(DeleteCommentContentInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteCommentContent")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCommentContentInput, headers, settings, cb)
 	else
@@ -5856,7 +5856,7 @@ function M.GetFileAsync(GetFileInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetFile")
 	if request_handler then
 		request_handler(settings.uri, "/", GetFileInput, headers, settings, cb)
 	else
@@ -5892,7 +5892,7 @@ function M.GetDifferencesAsync(GetDifferencesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDifferences")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDifferencesInput, headers, settings, cb)
 	else
@@ -5928,7 +5928,7 @@ function M.UpdateRepositoryNameAsync(UpdateRepositoryNameInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateRepositoryName")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRepositoryNameInput, headers, settings, cb)
 	else
@@ -5964,7 +5964,7 @@ function M.PostCommentForPullRequestAsync(PostCommentForPullRequestInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PostCommentForPullRequest")
 	if request_handler then
 		request_handler(settings.uri, "/", PostCommentForPullRequestInput, headers, settings, cb)
 	else
@@ -6000,7 +6000,7 @@ function M.CreateBranchAsync(CreateBranchInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateBranch")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateBranchInput, headers, settings, cb)
 	else
@@ -6036,7 +6036,7 @@ function M.GetRepositoryAsync(GetRepositoryInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRepository")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRepositoryInput, headers, settings, cb)
 	else
@@ -6072,7 +6072,7 @@ function M.GetBlobAsync(GetBlobInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetBlob")
 	if request_handler then
 		request_handler(settings.uri, "/", GetBlobInput, headers, settings, cb)
 	else
@@ -6108,7 +6108,7 @@ function M.ListBranchesAsync(ListBranchesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListBranches")
 	if request_handler then
 		request_handler(settings.uri, "/", ListBranchesInput, headers, settings, cb)
 	else
@@ -6144,7 +6144,7 @@ function M.GetRepositoryTriggersAsync(GetRepositoryTriggersInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRepositoryTriggers")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRepositoryTriggersInput, headers, settings, cb)
 	else
@@ -6180,7 +6180,7 @@ function M.UpdateCommentAsync(UpdateCommentInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateComment")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateCommentInput, headers, settings, cb)
 	else
@@ -6216,7 +6216,7 @@ function M.DeleteFileAsync(DeleteFileInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteFile")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteFileInput, headers, settings, cb)
 	else
@@ -6252,7 +6252,7 @@ function M.UpdateDefaultBranchAsync(UpdateDefaultBranchInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateDefaultBranch")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDefaultBranchInput, headers, settings, cb)
 	else
@@ -6288,7 +6288,7 @@ function M.PutRepositoryTriggersAsync(PutRepositoryTriggersInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutRepositoryTriggers")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRepositoryTriggersInput, headers, settings, cb)
 	else
@@ -6324,7 +6324,7 @@ function M.GetCommentsForComparedCommitAsync(GetCommentsForComparedCommitInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetCommentsForComparedCommit")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCommentsForComparedCommitInput, headers, settings, cb)
 	else
@@ -6360,7 +6360,7 @@ function M.GetBranchAsync(GetBranchInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetBranch")
 	if request_handler then
 		request_handler(settings.uri, "/", GetBranchInput, headers, settings, cb)
 	else
@@ -6396,7 +6396,7 @@ function M.CreateRepositoryAsync(CreateRepositoryInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateRepository")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRepositoryInput, headers, settings, cb)
 	else
@@ -6432,7 +6432,7 @@ function M.GetCommitAsync(GetCommitInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetCommit")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCommitInput, headers, settings, cb)
 	else
@@ -6468,7 +6468,7 @@ function M.PostCommentReplyAsync(PostCommentReplyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PostCommentReply")
 	if request_handler then
 		request_handler(settings.uri, "/", PostCommentReplyInput, headers, settings, cb)
 	else
@@ -6504,7 +6504,7 @@ function M.PutFileAsync(PutFileInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutFile")
 	if request_handler then
 		request_handler(settings.uri, "/", PutFileInput, headers, settings, cb)
 	else
@@ -6540,7 +6540,7 @@ function M.DescribePullRequestEventsAsync(DescribePullRequestEventsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribePullRequestEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePullRequestEventsInput, headers, settings, cb)
 	else
@@ -6576,7 +6576,7 @@ function M.BatchGetRepositoriesAsync(BatchGetRepositoriesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchGetRepositories")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetRepositoriesInput, headers, settings, cb)
 	else
@@ -6612,7 +6612,7 @@ function M.GetPullRequestAsync(GetPullRequestInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetPullRequest")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPullRequestInput, headers, settings, cb)
 	else
@@ -6648,7 +6648,7 @@ function M.CreatePullRequestAsync(CreatePullRequestInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreatePullRequest")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePullRequestInput, headers, settings, cb)
 	else
@@ -6684,7 +6684,7 @@ function M.GetCommentsForPullRequestAsync(GetCommentsForPullRequestInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetCommentsForPullRequest")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCommentsForPullRequestInput, headers, settings, cb)
 	else
@@ -6720,7 +6720,7 @@ function M.UpdatePullRequestStatusAsync(UpdatePullRequestStatusInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdatePullRequestStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdatePullRequestStatusInput, headers, settings, cb)
 	else
@@ -6756,7 +6756,7 @@ function M.PostCommentForComparedCommitAsync(PostCommentForComparedCommitInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PostCommentForComparedCommit")
 	if request_handler then
 		request_handler(settings.uri, "/", PostCommentForComparedCommitInput, headers, settings, cb)
 	else
@@ -6792,7 +6792,7 @@ function M.ListRepositoriesAsync(ListRepositoriesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListRepositories")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRepositoriesInput, headers, settings, cb)
 	else
@@ -6828,7 +6828,7 @@ function M.GetCommentAsync(GetCommentInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetComment")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCommentInput, headers, settings, cb)
 	else
@@ -6864,7 +6864,7 @@ function M.UpdatePullRequestTitleAsync(UpdatePullRequestTitleInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdatePullRequestTitle")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdatePullRequestTitleInput, headers, settings, cb)
 	else
@@ -6900,7 +6900,7 @@ function M.MergePullRequestByFastForwardAsync(MergePullRequestByFastForwardInput
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "MergePullRequestByFastForward")
 	if request_handler then
 		request_handler(settings.uri, "/", MergePullRequestByFastForwardInput, headers, settings, cb)
 	else

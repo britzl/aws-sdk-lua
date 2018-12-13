@@ -668,7 +668,7 @@ function M.DescribeClusterAsync(DescribeClusterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeCluster")
 	if request_handler then
 		request_handler(settings.uri, "/clusters/{name}", DescribeClusterRequest, headers, settings, cb)
 	else
@@ -704,7 +704,7 @@ function M.DeleteClusterAsync(DeleteClusterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteCluster")
 	if request_handler then
 		request_handler(settings.uri, "/clusters/{name}", DeleteClusterRequest, headers, settings, cb)
 	else
@@ -740,7 +740,7 @@ function M.ListClustersAsync(ListClustersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListClusters")
 	if request_handler then
 		request_handler(settings.uri, "/clusters", ListClustersRequest, headers, settings, cb)
 	else
@@ -776,7 +776,7 @@ function M.CreateClusterAsync(CreateClusterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateCluster")
 	if request_handler then
 		request_handler(settings.uri, "/clusters", CreateClusterRequest, headers, settings, cb)
 	else

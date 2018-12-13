@@ -21019,7 +21019,7 @@ function M.ReplaceTopicRuleAsync(ReplaceTopicRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "ReplaceTopicRule")
 	if request_handler then
 		request_handler(settings.uri, "/rules/{ruleName}", ReplaceTopicRuleRequest, headers, settings, cb)
 	else
@@ -21055,7 +21055,7 @@ function M.ListViolationEventsAsync(ListViolationEventsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListViolationEvents")
 	if request_handler then
 		request_handler(settings.uri, "/violation-events", ListViolationEventsRequest, headers, settings, cb)
 	else
@@ -21091,7 +21091,7 @@ function M.UpdateThingGroupsForThingAsync(UpdateThingGroupsForThingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateThingGroupsForThing")
 	if request_handler then
 		request_handler(settings.uri, "/thing-groups/updateThingGroupsForThing", UpdateThingGroupsForThingRequest, headers, settings, cb)
 	else
@@ -21127,7 +21127,7 @@ function M.DeprecateThingTypeAsync(DeprecateThingTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DeprecateThingType")
 	if request_handler then
 		request_handler(settings.uri, "/thing-types/{thingTypeName}/deprecate", DeprecateThingTypeRequest, headers, settings, cb)
 	else
@@ -21163,7 +21163,7 @@ function M.StartOnDemandAuditTaskAsync(StartOnDemandAuditTaskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "StartOnDemandAuditTask")
 	if request_handler then
 		request_handler(settings.uri, "/audit/tasks", StartOnDemandAuditTaskRequest, headers, settings, cb)
 	else
@@ -21199,7 +21199,7 @@ function M.ListAuthorizersAsync(ListAuthorizersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListAuthorizers")
 	if request_handler then
 		request_handler(settings.uri, "/authorizers/", ListAuthorizersRequest, headers, settings, cb)
 	else
@@ -21235,7 +21235,7 @@ function M.DeleteAuthorizerAsync(DeleteAuthorizerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteAuthorizer")
 	if request_handler then
 		request_handler(settings.uri, "/authorizer/{authorizerName}", DeleteAuthorizerRequest, headers, settings, cb)
 	else
@@ -21271,7 +21271,7 @@ function M.SetV2LoggingLevelAsync(SetV2LoggingLevelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "SetV2LoggingLevel")
 	if request_handler then
 		request_handler(settings.uri, "/v2LoggingLevel", SetV2LoggingLevelRequest, headers, settings, cb)
 	else
@@ -21307,7 +21307,7 @@ function M.RejectCertificateTransferAsync(RejectCertificateTransferRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "RejectCertificateTransfer")
 	if request_handler then
 		request_handler(settings.uri, "/reject-certificate-transfer/{certificateId}", RejectCertificateTransferRequest, headers, settings, cb)
 	else
@@ -21343,7 +21343,7 @@ function M.DeleteRoleAliasAsync(DeleteRoleAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteRoleAlias")
 	if request_handler then
 		request_handler(settings.uri, "/role-aliases/{roleAlias}", DeleteRoleAliasRequest, headers, settings, cb)
 	else
@@ -21379,7 +21379,7 @@ function M.DescribeSecurityProfileAsync(DescribeSecurityProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeSecurityProfile")
 	if request_handler then
 		request_handler(settings.uri, "/security-profiles/{securityProfileName}", DescribeSecurityProfileRequest, headers, settings, cb)
 	else
@@ -21415,7 +21415,7 @@ function M.ListAuditTasksAsync(ListAuditTasksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListAuditTasks")
 	if request_handler then
 		request_handler(settings.uri, "/audit/tasks", ListAuditTasksRequest, headers, settings, cb)
 	else
@@ -21451,7 +21451,7 @@ function M.SetDefaultAuthorizerAsync(SetDefaultAuthorizerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "SetDefaultAuthorizer")
 	if request_handler then
 		request_handler(settings.uri, "/default-authorizer", SetDefaultAuthorizerRequest, headers, settings, cb)
 	else
@@ -21487,7 +21487,7 @@ function M.ListCACertificatesAsync(ListCACertificatesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListCACertificates")
 	if request_handler then
 		request_handler(settings.uri, "/cacertificates", ListCACertificatesRequest, headers, settings, cb)
 	else
@@ -21523,7 +21523,7 @@ function M.GetTopicRuleAsync(GetTopicRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetTopicRule")
 	if request_handler then
 		request_handler(settings.uri, "/rules/{ruleName}", GetTopicRuleRequest, headers, settings, cb)
 	else
@@ -21559,7 +21559,7 @@ function M.DescribeAuthorizerAsync(DescribeAuthorizerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeAuthorizer")
 	if request_handler then
 		request_handler(settings.uri, "/authorizer/{authorizerName}", DescribeAuthorizerRequest, headers, settings, cb)
 	else
@@ -21595,7 +21595,7 @@ function M.DescribeDefaultAuthorizerAsync(DescribeDefaultAuthorizerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeDefaultAuthorizer")
 	if request_handler then
 		request_handler(settings.uri, "/default-authorizer", DescribeDefaultAuthorizerRequest, headers, settings, cb)
 	else
@@ -21631,7 +21631,7 @@ function M.GetJobDocumentAsync(GetJobDocumentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetJobDocument")
 	if request_handler then
 		request_handler(settings.uri, "/jobs/{jobId}/job-document", GetJobDocumentRequest, headers, settings, cb)
 	else
@@ -21667,7 +21667,7 @@ function M.DescribeAuditTaskAsync(DescribeAuditTaskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeAuditTask")
 	if request_handler then
 		request_handler(settings.uri, "/audit/tasks/{taskId}", DescribeAuditTaskRequest, headers, settings, cb)
 	else
@@ -21703,7 +21703,7 @@ function M.DescribeStreamAsync(DescribeStreamRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeStream")
 	if request_handler then
 		request_handler(settings.uri, "/streams/{streamId}", DescribeStreamRequest, headers, settings, cb)
 	else
@@ -21739,7 +21739,7 @@ function M.CancelJobAsync(CancelJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "CancelJob")
 	if request_handler then
 		request_handler(settings.uri, "/jobs/{jobId}/cancel", CancelJobRequest, headers, settings, cb)
 	else
@@ -21775,7 +21775,7 @@ function M.ListTargetsForSecurityProfileAsync(ListTargetsForSecurityProfileReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListTargetsForSecurityProfile")
 	if request_handler then
 		request_handler(settings.uri, "/security-profiles/{securityProfileName}/targets", ListTargetsForSecurityProfileRequest, headers, settings, cb)
 	else
@@ -21811,7 +21811,7 @@ function M.RegisterCACertificateAsync(RegisterCACertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "RegisterCACertificate")
 	if request_handler then
 		request_handler(settings.uri, "/cacertificate", RegisterCACertificateRequest, headers, settings, cb)
 	else
@@ -21847,7 +21847,7 @@ function M.DescribeEndpointAsync(DescribeEndpointRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/endpoint", DescribeEndpointRequest, headers, settings, cb)
 	else
@@ -21883,7 +21883,7 @@ function M.DescribeThingTypeAsync(DescribeThingTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeThingType")
 	if request_handler then
 		request_handler(settings.uri, "/thing-types/{thingTypeName}", DescribeThingTypeRequest, headers, settings, cb)
 	else
@@ -21919,7 +21919,7 @@ function M.DeleteJobAsync(DeleteJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteJob")
 	if request_handler then
 		request_handler(settings.uri, "/jobs/{jobId}", DeleteJobRequest, headers, settings, cb)
 	else
@@ -21955,7 +21955,7 @@ function M.ListThingRegistrationTaskReportsAsync(ListThingRegistrationTaskReport
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListThingRegistrationTaskReports")
 	if request_handler then
 		request_handler(settings.uri, "/thing-registration-tasks/{taskId}/reports", ListThingRegistrationTaskReportsRequest, headers, settings, cb)
 	else
@@ -21991,7 +21991,7 @@ function M.DetachSecurityProfileAsync(DetachSecurityProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DetachSecurityProfile")
 	if request_handler then
 		request_handler(settings.uri, "/security-profiles/{securityProfileName}/targets", DetachSecurityProfileRequest, headers, settings, cb)
 	else
@@ -22027,7 +22027,7 @@ function M.DescribeJobExecutionAsync(DescribeJobExecutionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeJobExecution")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}/jobs/{jobId}", DescribeJobExecutionRequest, headers, settings, cb)
 	else
@@ -22063,7 +22063,7 @@ function M.DescribeScheduledAuditAsync(DescribeScheduledAuditRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeScheduledAudit")
 	if request_handler then
 		request_handler(settings.uri, "/audit/scheduledaudits/{scheduledAuditName}", DescribeScheduledAuditRequest, headers, settings, cb)
 	else
@@ -22099,7 +22099,7 @@ function M.DeleteTopicRuleAsync(DeleteTopicRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteTopicRule")
 	if request_handler then
 		request_handler(settings.uri, "/rules/{ruleName}", DeleteTopicRuleRequest, headers, settings, cb)
 	else
@@ -22135,7 +22135,7 @@ function M.DeleteOTAUpdateAsync(DeleteOTAUpdateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteOTAUpdate")
 	if request_handler then
 		request_handler(settings.uri, "/otaUpdates/{otaUpdateId}", DeleteOTAUpdateRequest, headers, settings, cb)
 	else
@@ -22171,7 +22171,7 @@ function M.UpdateThingAsync(UpdateThingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateThing")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}", UpdateThingRequest, headers, settings, cb)
 	else
@@ -22207,7 +22207,7 @@ function M.EnableTopicRuleAsync(EnableTopicRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "EnableTopicRule")
 	if request_handler then
 		request_handler(settings.uri, "/rules/{ruleName}/enable", EnableTopicRuleRequest, headers, settings, cb)
 	else
@@ -22243,7 +22243,7 @@ function M.UpdateAccountAuditConfigurationAsync(UpdateAccountAuditConfigurationR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateAccountAuditConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/audit/configuration", UpdateAccountAuditConfigurationRequest, headers, settings, cb)
 	else
@@ -22279,7 +22279,7 @@ function M.GetPolicyAsync(GetPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/policies/{policyName}", GetPolicyRequest, headers, settings, cb)
 	else
@@ -22315,7 +22315,7 @@ function M.TransferCertificateAsync(TransferCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "TransferCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/transfer-certificate/{certificateId}", TransferCertificateRequest, headers, settings, cb)
 	else
@@ -22351,7 +22351,7 @@ function M.DeleteThingGroupAsync(DeleteThingGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteThingGroup")
 	if request_handler then
 		request_handler(settings.uri, "/thing-groups/{thingGroupName}", DeleteThingGroupRequest, headers, settings, cb)
 	else
@@ -22387,7 +22387,7 @@ function M.StartThingRegistrationTaskAsync(StartThingRegistrationTaskRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "StartThingRegistrationTask")
 	if request_handler then
 		request_handler(settings.uri, "/thing-registration-tasks", StartThingRegistrationTaskRequest, headers, settings, cb)
 	else
@@ -22423,7 +22423,7 @@ function M.SearchIndexAsync(SearchIndexRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "SearchIndex")
 	if request_handler then
 		request_handler(settings.uri, "/indices/search", SearchIndexRequest, headers, settings, cb)
 	else
@@ -22459,7 +22459,7 @@ function M.DeleteCertificateAsync(DeleteCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/certificates/{certificateId}", DeleteCertificateRequest, headers, settings, cb)
 	else
@@ -22495,7 +22495,7 @@ function M.ListStreamsAsync(ListStreamsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListStreams")
 	if request_handler then
 		request_handler(settings.uri, "/streams", ListStreamsRequest, headers, settings, cb)
 	else
@@ -22531,7 +22531,7 @@ function M.GetV2LoggingOptionsAsync(GetV2LoggingOptionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetV2LoggingOptions")
 	if request_handler then
 		request_handler(settings.uri, "/v2LoggingOptions", GetV2LoggingOptionsRequest, headers, settings, cb)
 	else
@@ -22567,7 +22567,7 @@ function M.DeleteV2LoggingLevelAsync(DeleteV2LoggingLevelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteV2LoggingLevel")
 	if request_handler then
 		request_handler(settings.uri, "/v2LoggingLevel", DeleteV2LoggingLevelRequest, headers, settings, cb)
 	else
@@ -22603,7 +22603,7 @@ function M.ListOutgoingCertificatesAsync(ListOutgoingCertificatesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListOutgoingCertificates")
 	if request_handler then
 		request_handler(settings.uri, "/certificates-out-going", ListOutgoingCertificatesRequest, headers, settings, cb)
 	else
@@ -22639,7 +22639,7 @@ function M.AttachThingPrincipalAsync(AttachThingPrincipalRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "AttachThingPrincipal")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}/principals", AttachThingPrincipalRequest, headers, settings, cb)
 	else
@@ -22675,7 +22675,7 @@ function M.AcceptCertificateTransferAsync(AcceptCertificateTransferRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "AcceptCertificateTransfer")
 	if request_handler then
 		request_handler(settings.uri, "/accept-certificate-transfer/{certificateId}", AcceptCertificateTransferRequest, headers, settings, cb)
 	else
@@ -22711,7 +22711,7 @@ function M.ListAttachedPoliciesAsync(ListAttachedPoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListAttachedPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/attached-policies/{target}", ListAttachedPoliciesRequest, headers, settings, cb)
 	else
@@ -22747,7 +22747,7 @@ function M.ClearDefaultAuthorizerAsync(ClearDefaultAuthorizerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "ClearDefaultAuthorizer")
 	if request_handler then
 		request_handler(settings.uri, "/default-authorizer", ClearDefaultAuthorizerRequest, headers, settings, cb)
 	else
@@ -22783,7 +22783,7 @@ function M.CreateAuthorizerAsync(CreateAuthorizerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateAuthorizer")
 	if request_handler then
 		request_handler(settings.uri, "/authorizer/{authorizerName}", CreateAuthorizerRequest, headers, settings, cb)
 	else
@@ -22819,7 +22819,7 @@ function M.TestAuthorizationAsync(TestAuthorizationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "TestAuthorization")
 	if request_handler then
 		request_handler(settings.uri, "/test-authorization", TestAuthorizationRequest, headers, settings, cb)
 	else
@@ -22855,7 +22855,7 @@ function M.CancelAuditTaskAsync(CancelAuditTaskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "CancelAuditTask")
 	if request_handler then
 		request_handler(settings.uri, "/audit/tasks/{taskId}/cancel", CancelAuditTaskRequest, headers, settings, cb)
 	else
@@ -22891,7 +22891,7 @@ function M.GetIndexingConfigurationAsync(GetIndexingConfigurationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetIndexingConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/indexing/config", GetIndexingConfigurationRequest, headers, settings, cb)
 	else
@@ -22927,7 +22927,7 @@ function M.DeleteRegistrationCodeAsync(DeleteRegistrationCodeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteRegistrationCode")
 	if request_handler then
 		request_handler(settings.uri, "/registrationcode", DeleteRegistrationCodeRequest, headers, settings, cb)
 	else
@@ -22963,7 +22963,7 @@ function M.ListTopicRulesAsync(ListTopicRulesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListTopicRules")
 	if request_handler then
 		request_handler(settings.uri, "/rules", ListTopicRulesRequest, headers, settings, cb)
 	else
@@ -22999,7 +22999,7 @@ function M.CreatePolicyVersionAsync(CreatePolicyVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreatePolicyVersion")
 	if request_handler then
 		request_handler(settings.uri, "/policies/{policyName}/version", CreatePolicyVersionRequest, headers, settings, cb)
 	else
@@ -23035,7 +23035,7 @@ function M.ListActiveViolationsAsync(ListActiveViolationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListActiveViolations")
 	if request_handler then
 		request_handler(settings.uri, "/active-violations", ListActiveViolationsRequest, headers, settings, cb)
 	else
@@ -23071,7 +23071,7 @@ function M.ListScheduledAuditsAsync(ListScheduledAuditsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListScheduledAudits")
 	if request_handler then
 		request_handler(settings.uri, "/audit/scheduledaudits", ListScheduledAuditsRequest, headers, settings, cb)
 	else
@@ -23107,7 +23107,7 @@ function M.DeleteScheduledAuditAsync(DeleteScheduledAuditRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteScheduledAudit")
 	if request_handler then
 		request_handler(settings.uri, "/audit/scheduledaudits/{scheduledAuditName}", DeleteScheduledAuditRequest, headers, settings, cb)
 	else
@@ -23143,7 +23143,7 @@ function M.DescribeThingRegistrationTaskAsync(DescribeThingRegistrationTaskReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeThingRegistrationTask")
 	if request_handler then
 		request_handler(settings.uri, "/thing-registration-tasks/{taskId}", DescribeThingRegistrationTaskRequest, headers, settings, cb)
 	else
@@ -23179,7 +23179,7 @@ function M.ListV2LoggingLevelsAsync(ListV2LoggingLevelsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListV2LoggingLevels")
 	if request_handler then
 		request_handler(settings.uri, "/v2LoggingLevel", ListV2LoggingLevelsRequest, headers, settings, cb)
 	else
@@ -23215,7 +23215,7 @@ function M.DescribeIndexAsync(DescribeIndexRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeIndex")
 	if request_handler then
 		request_handler(settings.uri, "/indices/{indexName}", DescribeIndexRequest, headers, settings, cb)
 	else
@@ -23251,7 +23251,7 @@ function M.RemoveThingFromThingGroupAsync(RemoveThingFromThingGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "RemoveThingFromThingGroup")
 	if request_handler then
 		request_handler(settings.uri, "/thing-groups/removeThingFromThingGroup", RemoveThingFromThingGroupRequest, headers, settings, cb)
 	else
@@ -23287,7 +23287,7 @@ function M.GetOTAUpdateAsync(GetOTAUpdateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetOTAUpdate")
 	if request_handler then
 		request_handler(settings.uri, "/otaUpdates/{otaUpdateId}", GetOTAUpdateRequest, headers, settings, cb)
 	else
@@ -23323,7 +23323,7 @@ function M.ListCertificatesAsync(ListCertificatesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListCertificates")
 	if request_handler then
 		request_handler(settings.uri, "/certificates", ListCertificatesRequest, headers, settings, cb)
 	else
@@ -23359,7 +23359,7 @@ function M.DeletePolicyAsync(DeletePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeletePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/policies/{policyName}", DeletePolicyRequest, headers, settings, cb)
 	else
@@ -23395,7 +23395,7 @@ function M.DeletePolicyVersionAsync(DeletePolicyVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeletePolicyVersion")
 	if request_handler then
 		request_handler(settings.uri, "/policies/{policyName}/version/{policyVersionId}", DeletePolicyVersionRequest, headers, settings, cb)
 	else
@@ -23431,7 +23431,7 @@ function M.CreateRoleAliasAsync(CreateRoleAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateRoleAlias")
 	if request_handler then
 		request_handler(settings.uri, "/role-aliases/{roleAlias}", CreateRoleAliasRequest, headers, settings, cb)
 	else
@@ -23467,7 +23467,7 @@ function M.CreateTopicRuleAsync(CreateTopicRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateTopicRule")
 	if request_handler then
 		request_handler(settings.uri, "/rules/{ruleName}", CreateTopicRuleRequest, headers, settings, cb)
 	else
@@ -23503,7 +23503,7 @@ function M.DescribeRoleAliasAsync(DescribeRoleAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeRoleAlias")
 	if request_handler then
 		request_handler(settings.uri, "/role-aliases/{roleAlias}", DescribeRoleAliasRequest, headers, settings, cb)
 	else
@@ -23539,7 +23539,7 @@ function M.ListCertificatesByCAAsync(ListCertificatesByCARequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListCertificatesByCA")
 	if request_handler then
 		request_handler(settings.uri, "/certificates-by-ca/{caCertificateId}", ListCertificatesByCARequest, headers, settings, cb)
 	else
@@ -23575,7 +23575,7 @@ function M.CreateThingGroupAsync(CreateThingGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateThingGroup")
 	if request_handler then
 		request_handler(settings.uri, "/thing-groups/{thingGroupName}", CreateThingGroupRequest, headers, settings, cb)
 	else
@@ -23611,7 +23611,7 @@ function M.CreateOTAUpdateAsync(CreateOTAUpdateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateOTAUpdate")
 	if request_handler then
 		request_handler(settings.uri, "/otaUpdates/{otaUpdateId}", CreateOTAUpdateRequest, headers, settings, cb)
 	else
@@ -23647,7 +23647,7 @@ function M.AssociateTargetsWithJobAsync(AssociateTargetsWithJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "AssociateTargetsWithJob")
 	if request_handler then
 		request_handler(settings.uri, "/jobs/{jobId}/targets", AssociateTargetsWithJobRequest, headers, settings, cb)
 	else
@@ -23683,7 +23683,7 @@ function M.DescribeJobAsync(DescribeJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeJob")
 	if request_handler then
 		request_handler(settings.uri, "/jobs/{jobId}", DescribeJobRequest, headers, settings, cb)
 	else
@@ -23719,7 +23719,7 @@ function M.DescribeCACertificateAsync(DescribeCACertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeCACertificate")
 	if request_handler then
 		request_handler(settings.uri, "/cacertificate/{caCertificateId}", DescribeCACertificateRequest, headers, settings, cb)
 	else
@@ -23755,7 +23755,7 @@ function M.GetPolicyVersionAsync(GetPolicyVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetPolicyVersion")
 	if request_handler then
 		request_handler(settings.uri, "/policies/{policyName}/version/{policyVersionId}", GetPolicyVersionRequest, headers, settings, cb)
 	else
@@ -23791,7 +23791,7 @@ function M.ListThingRegistrationTasksAsync(ListThingRegistrationTasksRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListThingRegistrationTasks")
 	if request_handler then
 		request_handler(settings.uri, "/thing-registration-tasks", ListThingRegistrationTasksRequest, headers, settings, cb)
 	else
@@ -23827,7 +23827,7 @@ function M.ListJobsAsync(ListJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListJobs")
 	if request_handler then
 		request_handler(settings.uri, "/jobs", ListJobsRequest, headers, settings, cb)
 	else
@@ -23863,7 +23863,7 @@ function M.ListThingTypesAsync(ListThingTypesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListThingTypes")
 	if request_handler then
 		request_handler(settings.uri, "/thing-types", ListThingTypesRequest, headers, settings, cb)
 	else
@@ -23899,7 +23899,7 @@ function M.CreateKeysAndCertificateAsync(CreateKeysAndCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateKeysAndCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/keys-and-certificate", CreateKeysAndCertificateRequest, headers, settings, cb)
 	else
@@ -23935,7 +23935,7 @@ function M.DeleteSecurityProfileAsync(DeleteSecurityProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteSecurityProfile")
 	if request_handler then
 		request_handler(settings.uri, "/security-profiles/{securityProfileName}", DeleteSecurityProfileRequest, headers, settings, cb)
 	else
@@ -23971,7 +23971,7 @@ function M.ValidateSecurityProfileBehaviorsAsync(ValidateSecurityProfileBehavior
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ValidateSecurityProfileBehaviors")
 	if request_handler then
 		request_handler(settings.uri, "/security-profile-behaviors/validate", ValidateSecurityProfileBehaviorsRequest, headers, settings, cb)
 	else
@@ -24007,7 +24007,7 @@ function M.ListThingsAsync(ListThingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListThings")
 	if request_handler then
 		request_handler(settings.uri, "/things", ListThingsRequest, headers, settings, cb)
 	else
@@ -24043,7 +24043,7 @@ function M.CreateScheduledAuditAsync(CreateScheduledAuditRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateScheduledAudit")
 	if request_handler then
 		request_handler(settings.uri, "/audit/scheduledaudits/{scheduledAuditName}", CreateScheduledAuditRequest, headers, settings, cb)
 	else
@@ -24079,7 +24079,7 @@ function M.ListRoleAliasesAsync(ListRoleAliasesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListRoleAliases")
 	if request_handler then
 		request_handler(settings.uri, "/role-aliases", ListRoleAliasesRequest, headers, settings, cb)
 	else
@@ -24115,7 +24115,7 @@ function M.CreateSecurityProfileAsync(CreateSecurityProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateSecurityProfile")
 	if request_handler then
 		request_handler(settings.uri, "/security-profiles/{securityProfileName}", CreateSecurityProfileRequest, headers, settings, cb)
 	else
@@ -24151,7 +24151,7 @@ function M.UpdateCertificateAsync(UpdateCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/certificates/{certificateId}", UpdateCertificateRequest, headers, settings, cb)
 	else
@@ -24187,7 +24187,7 @@ function M.GetRegistrationCodeAsync(GetRegistrationCodeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetRegistrationCode")
 	if request_handler then
 		request_handler(settings.uri, "/registrationcode", GetRegistrationCodeRequest, headers, settings, cb)
 	else
@@ -24223,7 +24223,7 @@ function M.SetV2LoggingOptionsAsync(SetV2LoggingOptionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "SetV2LoggingOptions")
 	if request_handler then
 		request_handler(settings.uri, "/v2LoggingOptions", SetV2LoggingOptionsRequest, headers, settings, cb)
 	else
@@ -24259,7 +24259,7 @@ function M.ListPrincipalThingsAsync(ListPrincipalThingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListPrincipalThings")
 	if request_handler then
 		request_handler(settings.uri, "/principals/things", ListPrincipalThingsRequest, headers, settings, cb)
 	else
@@ -24295,7 +24295,7 @@ function M.CancelJobExecutionAsync(CancelJobExecutionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "CancelJobExecution")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}/jobs/{jobId}/cancel", CancelJobExecutionRequest, headers, settings, cb)
 	else
@@ -24331,7 +24331,7 @@ function M.ListAuditFindingsAsync(ListAuditFindingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListAuditFindings")
 	if request_handler then
 		request_handler(settings.uri, "/audit/findings", ListAuditFindingsRequest, headers, settings, cb)
 	else
@@ -24367,7 +24367,7 @@ function M.DeleteJobExecutionAsync(DeleteJobExecutionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteJobExecution")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}/jobs/{jobId}/executionNumber/{executionNumber}", DeleteJobExecutionRequest, headers, settings, cb)
 	else
@@ -24403,7 +24403,7 @@ function M.GetEffectivePoliciesAsync(GetEffectivePoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetEffectivePolicies")
 	if request_handler then
 		request_handler(settings.uri, "/effective-policies", GetEffectivePoliciesRequest, headers, settings, cb)
 	else
@@ -24439,7 +24439,7 @@ function M.CreateCertificateFromCsrAsync(CreateCertificateFromCsrRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateCertificateFromCsr")
 	if request_handler then
 		request_handler(settings.uri, "/certificates", CreateCertificateFromCsrRequest, headers, settings, cb)
 	else
@@ -24475,7 +24475,7 @@ function M.SetLoggingOptionsAsync(SetLoggingOptionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "SetLoggingOptions")
 	if request_handler then
 		request_handler(settings.uri, "/loggingOptions", SetLoggingOptionsRequest, headers, settings, cb)
 	else
@@ -24511,7 +24511,7 @@ function M.DeleteStreamAsync(DeleteStreamRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteStream")
 	if request_handler then
 		request_handler(settings.uri, "/streams/{streamId}", DeleteStreamRequest, headers, settings, cb)
 	else
@@ -24547,7 +24547,7 @@ function M.DisableTopicRuleAsync(DisableTopicRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DisableTopicRule")
 	if request_handler then
 		request_handler(settings.uri, "/rules/{ruleName}/disable", DisableTopicRuleRequest, headers, settings, cb)
 	else
@@ -24583,7 +24583,7 @@ function M.TestInvokeAuthorizerAsync(TestInvokeAuthorizerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "TestInvokeAuthorizer")
 	if request_handler then
 		request_handler(settings.uri, "/authorizer/{authorizerName}/test", TestInvokeAuthorizerRequest, headers, settings, cb)
 	else
@@ -24619,7 +24619,7 @@ function M.UpdateIndexingConfigurationAsync(UpdateIndexingConfigurationRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateIndexingConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/indexing/config", UpdateIndexingConfigurationRequest, headers, settings, cb)
 	else
@@ -24655,7 +24655,7 @@ function M.CreatePolicyAsync(CreatePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreatePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/policies/{policyName}", CreatePolicyRequest, headers, settings, cb)
 	else
@@ -24691,7 +24691,7 @@ function M.AttachSecurityProfileAsync(AttachSecurityProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "AttachSecurityProfile")
 	if request_handler then
 		request_handler(settings.uri, "/security-profiles/{securityProfileName}/targets", AttachSecurityProfileRequest, headers, settings, cb)
 	else
@@ -24727,7 +24727,7 @@ function M.ListJobExecutionsForThingAsync(ListJobExecutionsForThingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListJobExecutionsForThing")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}/jobs", ListJobExecutionsForThingRequest, headers, settings, cb)
 	else
@@ -24763,7 +24763,7 @@ function M.RegisterCertificateAsync(RegisterCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "RegisterCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/certificate/register", RegisterCertificateRequest, headers, settings, cb)
 	else
@@ -24799,7 +24799,7 @@ function M.ListOTAUpdatesAsync(ListOTAUpdatesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListOTAUpdates")
 	if request_handler then
 		request_handler(settings.uri, "/otaUpdates", ListOTAUpdatesRequest, headers, settings, cb)
 	else
@@ -24835,7 +24835,7 @@ function M.DeleteThingTypeAsync(DeleteThingTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteThingType")
 	if request_handler then
 		request_handler(settings.uri, "/thing-types/{thingTypeName}", DeleteThingTypeRequest, headers, settings, cb)
 	else
@@ -24871,7 +24871,7 @@ function M.DescribeThingGroupAsync(DescribeThingGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeThingGroup")
 	if request_handler then
 		request_handler(settings.uri, "/thing-groups/{thingGroupName}", DescribeThingGroupRequest, headers, settings, cb)
 	else
@@ -24907,7 +24907,7 @@ function M.StopThingRegistrationTaskAsync(StopThingRegistrationTaskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "StopThingRegistrationTask")
 	if request_handler then
 		request_handler(settings.uri, "/thing-registration-tasks/{taskId}/cancel", StopThingRegistrationTaskRequest, headers, settings, cb)
 	else
@@ -24943,7 +24943,7 @@ function M.AddThingToThingGroupAsync(AddThingToThingGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "AddThingToThingGroup")
 	if request_handler then
 		request_handler(settings.uri, "/thing-groups/addThingToThingGroup", AddThingToThingGroupRequest, headers, settings, cb)
 	else
@@ -24979,7 +24979,7 @@ function M.SetDefaultPolicyVersionAsync(SetDefaultPolicyVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "SetDefaultPolicyVersion")
 	if request_handler then
 		request_handler(settings.uri, "/policies/{policyName}/version/{policyVersionId}", SetDefaultPolicyVersionRequest, headers, settings, cb)
 	else
@@ -25015,7 +25015,7 @@ function M.ListPolicyVersionsAsync(ListPolicyVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListPolicyVersions")
 	if request_handler then
 		request_handler(settings.uri, "/policies/{policyName}/version", ListPolicyVersionsRequest, headers, settings, cb)
 	else
@@ -25051,7 +25051,7 @@ function M.DescribeAccountAuditConfigurationAsync(DescribeAccountAuditConfigurat
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeAccountAuditConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/audit/configuration", DescribeAccountAuditConfigurationRequest, headers, settings, cb)
 	else
@@ -25087,7 +25087,7 @@ function M.GetLoggingOptionsAsync(GetLoggingOptionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetLoggingOptions")
 	if request_handler then
 		request_handler(settings.uri, "/loggingOptions", GetLoggingOptionsRequest, headers, settings, cb)
 	else
@@ -25123,7 +25123,7 @@ function M.DetachPolicyAsync(DetachPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DetachPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/target-policies/{policyName}", DetachPolicyRequest, headers, settings, cb)
 	else
@@ -25159,7 +25159,7 @@ function M.ListThingGroupsAsync(ListThingGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListThingGroups")
 	if request_handler then
 		request_handler(settings.uri, "/thing-groups", ListThingGroupsRequest, headers, settings, cb)
 	else
@@ -25195,7 +25195,7 @@ function M.RegisterThingAsync(RegisterThingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "RegisterThing")
 	if request_handler then
 		request_handler(settings.uri, "/things", RegisterThingRequest, headers, settings, cb)
 	else
@@ -25231,7 +25231,7 @@ function M.UpdateRoleAliasAsync(UpdateRoleAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateRoleAlias")
 	if request_handler then
 		request_handler(settings.uri, "/role-aliases/{roleAlias}", UpdateRoleAliasRequest, headers, settings, cb)
 	else
@@ -25267,7 +25267,7 @@ function M.DeleteCACertificateAsync(DeleteCACertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteCACertificate")
 	if request_handler then
 		request_handler(settings.uri, "/cacertificate/{caCertificateId}", DeleteCACertificateRequest, headers, settings, cb)
 	else
@@ -25303,7 +25303,7 @@ function M.UpdateSecurityProfileAsync(UpdateSecurityProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateSecurityProfile")
 	if request_handler then
 		request_handler(settings.uri, "/security-profiles/{securityProfileName}", UpdateSecurityProfileRequest, headers, settings, cb)
 	else
@@ -25339,7 +25339,7 @@ function M.CreateThingTypeAsync(CreateThingTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateThingType")
 	if request_handler then
 		request_handler(settings.uri, "/thing-types/{thingTypeName}", CreateThingTypeRequest, headers, settings, cb)
 	else
@@ -25375,7 +25375,7 @@ function M.DeleteAccountAuditConfigurationAsync(DeleteAccountAuditConfigurationR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteAccountAuditConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/audit/configuration", DeleteAccountAuditConfigurationRequest, headers, settings, cb)
 	else
@@ -25411,7 +25411,7 @@ function M.UpdateStreamAsync(UpdateStreamRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateStream")
 	if request_handler then
 		request_handler(settings.uri, "/streams/{streamId}", UpdateStreamRequest, headers, settings, cb)
 	else
@@ -25447,7 +25447,7 @@ function M.CreateJobAsync(CreateJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "CreateJob")
 	if request_handler then
 		request_handler(settings.uri, "/jobs/{jobId}", CreateJobRequest, headers, settings, cb)
 	else
@@ -25483,7 +25483,7 @@ function M.DeleteThingAsync(DeleteThingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteThing")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}", DeleteThingRequest, headers, settings, cb)
 	else
@@ -25519,7 +25519,7 @@ function M.AttachPolicyAsync(AttachPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "AttachPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/target-policies/{policyName}", AttachPolicyRequest, headers, settings, cb)
 	else
@@ -25555,7 +25555,7 @@ function M.ListSecurityProfilesForTargetAsync(ListSecurityProfilesForTargetReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListSecurityProfilesForTarget")
 	if request_handler then
 		request_handler(settings.uri, "/security-profiles-for-target", ListSecurityProfilesForTargetRequest, headers, settings, cb)
 	else
@@ -25591,7 +25591,7 @@ function M.ListJobExecutionsForJobAsync(ListJobExecutionsForJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListJobExecutionsForJob")
 	if request_handler then
 		request_handler(settings.uri, "/jobs/{jobId}/things", ListJobExecutionsForJobRequest, headers, settings, cb)
 	else
@@ -25627,7 +25627,7 @@ function M.ListIndicesAsync(ListIndicesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListIndices")
 	if request_handler then
 		request_handler(settings.uri, "/indices", ListIndicesRequest, headers, settings, cb)
 	else
@@ -25663,7 +25663,7 @@ function M.UpdateCACertificateAsync(UpdateCACertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateCACertificate")
 	if request_handler then
 		request_handler(settings.uri, "/cacertificate/{caCertificateId}", UpdateCACertificateRequest, headers, settings, cb)
 	else
@@ -25699,7 +25699,7 @@ function M.UpdateAuthorizerAsync(UpdateAuthorizerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateAuthorizer")
 	if request_handler then
 		request_handler(settings.uri, "/authorizer/{authorizerName}", UpdateAuthorizerRequest, headers, settings, cb)
 	else
@@ -25735,7 +25735,7 @@ function M.CreateStreamAsync(CreateStreamRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateStream")
 	if request_handler then
 		request_handler(settings.uri, "/streams/{streamId}", CreateStreamRequest, headers, settings, cb)
 	else
@@ -25771,7 +25771,7 @@ function M.UpdateEventConfigurationsAsync(UpdateEventConfigurationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateEventConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/event-configurations", UpdateEventConfigurationsRequest, headers, settings, cb)
 	else
@@ -25807,7 +25807,7 @@ function M.CancelCertificateTransferAsync(CancelCertificateTransferRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "CancelCertificateTransfer")
 	if request_handler then
 		request_handler(settings.uri, "/cancel-certificate-transfer/{certificateId}", CancelCertificateTransferRequest, headers, settings, cb)
 	else
@@ -25843,7 +25843,7 @@ function M.ListThingsInThingGroupAsync(ListThingsInThingGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListThingsInThingGroup")
 	if request_handler then
 		request_handler(settings.uri, "/thing-groups/{thingGroupName}/things", ListThingsInThingGroupRequest, headers, settings, cb)
 	else
@@ -25879,7 +25879,7 @@ function M.DescribeCertificateAsync(DescribeCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/certificates/{certificateId}", DescribeCertificateRequest, headers, settings, cb)
 	else
@@ -25915,7 +25915,7 @@ function M.DescribeEventConfigurationsAsync(DescribeEventConfigurationsRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeEventConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/event-configurations", DescribeEventConfigurationsRequest, headers, settings, cb)
 	else
@@ -25951,7 +25951,7 @@ function M.ListSecurityProfilesAsync(ListSecurityProfilesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListSecurityProfiles")
 	if request_handler then
 		request_handler(settings.uri, "/security-profiles", ListSecurityProfilesRequest, headers, settings, cb)
 	else
@@ -25987,7 +25987,7 @@ function M.DetachThingPrincipalAsync(DetachThingPrincipalRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DetachThingPrincipal")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}/principals", DetachThingPrincipalRequest, headers, settings, cb)
 	else
@@ -26023,7 +26023,7 @@ function M.ListTargetsForPolicyAsync(ListTargetsForPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListTargetsForPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/policy-targets/{policyName}", ListTargetsForPolicyRequest, headers, settings, cb)
 	else
@@ -26059,7 +26059,7 @@ function M.ListPoliciesAsync(ListPoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/policies", ListPoliciesRequest, headers, settings, cb)
 	else
@@ -26095,7 +26095,7 @@ function M.CreateThingAsync(CreateThingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateThing")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}", CreateThingRequest, headers, settings, cb)
 	else
@@ -26131,7 +26131,7 @@ function M.ListThingGroupsForThingAsync(ListThingGroupsForThingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListThingGroupsForThing")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}/thing-groups", ListThingGroupsForThingRequest, headers, settings, cb)
 	else
@@ -26167,7 +26167,7 @@ function M.UpdateScheduledAuditAsync(UpdateScheduledAuditRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateScheduledAudit")
 	if request_handler then
 		request_handler(settings.uri, "/audit/scheduledaudits/{scheduledAuditName}", UpdateScheduledAuditRequest, headers, settings, cb)
 	else
@@ -26203,7 +26203,7 @@ function M.ListThingPrincipalsAsync(ListThingPrincipalsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListThingPrincipals")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}/principals", ListThingPrincipalsRequest, headers, settings, cb)
 	else
@@ -26239,7 +26239,7 @@ function M.UpdateThingGroupAsync(UpdateThingGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateThingGroup")
 	if request_handler then
 		request_handler(settings.uri, "/thing-groups/{thingGroupName}", UpdateThingGroupRequest, headers, settings, cb)
 	else
@@ -26275,7 +26275,7 @@ function M.DescribeThingAsync(DescribeThingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeThing")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}", DescribeThingRequest, headers, settings, cb)
 	else

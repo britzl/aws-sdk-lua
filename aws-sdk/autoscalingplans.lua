@@ -1723,7 +1723,7 @@ function M.DescribeScalingPlanResourcesAsync(DescribeScalingPlanResourcesRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeScalingPlanResources")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeScalingPlanResourcesRequest, headers, settings, cb)
 	else
@@ -1759,7 +1759,7 @@ function M.CreateScalingPlanAsync(CreateScalingPlanRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateScalingPlan")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateScalingPlanRequest, headers, settings, cb)
 	else
@@ -1795,7 +1795,7 @@ function M.DeleteScalingPlanAsync(DeleteScalingPlanRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteScalingPlan")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteScalingPlanRequest, headers, settings, cb)
 	else
@@ -1831,7 +1831,7 @@ function M.DescribeScalingPlansAsync(DescribeScalingPlansRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeScalingPlans")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeScalingPlansRequest, headers, settings, cb)
 	else
@@ -1867,7 +1867,7 @@ function M.UpdateScalingPlanAsync(UpdateScalingPlanRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateScalingPlan")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateScalingPlanRequest, headers, settings, cb)
 	else

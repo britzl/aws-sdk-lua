@@ -4093,7 +4093,7 @@ function M.ListGroupMembersAsync(ListGroupMembersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListGroupMembers")
 	if request_handler then
 		request_handler(settings.uri, "/", ListGroupMembersRequest, headers, settings, cb)
 	else
@@ -4129,7 +4129,7 @@ function M.UpdatePrimaryEmailAddressAsync(UpdatePrimaryEmailAddressRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdatePrimaryEmailAddress")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdatePrimaryEmailAddressRequest, headers, settings, cb)
 	else
@@ -4165,7 +4165,7 @@ function M.PutMailboxPermissionsAsync(PutMailboxPermissionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutMailboxPermissions")
 	if request_handler then
 		request_handler(settings.uri, "/", PutMailboxPermissionsRequest, headers, settings, cb)
 	else
@@ -4201,7 +4201,7 @@ function M.ListUsersAsync(ListUsersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListUsers")
 	if request_handler then
 		request_handler(settings.uri, "/", ListUsersRequest, headers, settings, cb)
 	else
@@ -4237,7 +4237,7 @@ function M.DisassociateMemberFromGroupAsync(DisassociateMemberFromGroupRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateMemberFromGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateMemberFromGroupRequest, headers, settings, cb)
 	else
@@ -4273,7 +4273,7 @@ function M.DescribeResourceAsync(DescribeResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeResource")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeResourceRequest, headers, settings, cb)
 	else
@@ -4309,7 +4309,7 @@ function M.CreateGroupAsync(CreateGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateGroupRequest, headers, settings, cb)
 	else
@@ -4345,7 +4345,7 @@ function M.ListAliasesAsync(ListAliasesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAliases")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAliasesRequest, headers, settings, cb)
 	else
@@ -4381,7 +4381,7 @@ function M.DescribeGroupAsync(DescribeGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeGroupRequest, headers, settings, cb)
 	else
@@ -4417,7 +4417,7 @@ function M.ResetPasswordAsync(ResetPasswordRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ResetPassword")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetPasswordRequest, headers, settings, cb)
 	else
@@ -4453,7 +4453,7 @@ function M.DeleteMailboxPermissionsAsync(DeleteMailboxPermissionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteMailboxPermissions")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteMailboxPermissionsRequest, headers, settings, cb)
 	else
@@ -4489,7 +4489,7 @@ function M.DisassociateDelegateFromResourceAsync(DisassociateDelegateFromResourc
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateDelegateFromResource")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateDelegateFromResourceRequest, headers, settings, cb)
 	else
@@ -4525,7 +4525,7 @@ function M.ListOrganizationsAsync(ListOrganizationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListOrganizations")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOrganizationsRequest, headers, settings, cb)
 	else
@@ -4561,7 +4561,7 @@ function M.RegisterToWorkMailAsync(RegisterToWorkMailRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterToWorkMail")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterToWorkMailRequest, headers, settings, cb)
 	else
@@ -4597,7 +4597,7 @@ function M.DeleteAliasAsync(DeleteAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteAlias")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAliasRequest, headers, settings, cb)
 	else
@@ -4633,7 +4633,7 @@ function M.DeleteGroupAsync(DeleteGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteGroupRequest, headers, settings, cb)
 	else
@@ -4669,7 +4669,7 @@ function M.DescribeUserAsync(DescribeUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeUser")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeUserRequest, headers, settings, cb)
 	else
@@ -4705,7 +4705,7 @@ function M.ListMailboxPermissionsAsync(ListMailboxPermissionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListMailboxPermissions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListMailboxPermissionsRequest, headers, settings, cb)
 	else
@@ -4741,7 +4741,7 @@ function M.AssociateDelegateToResourceAsync(AssociateDelegateToResourceRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateDelegateToResource")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateDelegateToResourceRequest, headers, settings, cb)
 	else
@@ -4777,7 +4777,7 @@ function M.ListResourceDelegatesAsync(ListResourceDelegatesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListResourceDelegates")
 	if request_handler then
 		request_handler(settings.uri, "/", ListResourceDelegatesRequest, headers, settings, cb)
 	else
@@ -4813,7 +4813,7 @@ function M.ListGroupsAsync(ListGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", ListGroupsRequest, headers, settings, cb)
 	else
@@ -4849,7 +4849,7 @@ function M.DeregisterFromWorkMailAsync(DeregisterFromWorkMailRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeregisterFromWorkMail")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterFromWorkMailRequest, headers, settings, cb)
 	else
@@ -4885,7 +4885,7 @@ function M.DescribeOrganizationAsync(DescribeOrganizationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeOrganization")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeOrganizationRequest, headers, settings, cb)
 	else
@@ -4921,7 +4921,7 @@ function M.AssociateMemberToGroupAsync(AssociateMemberToGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateMemberToGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateMemberToGroupRequest, headers, settings, cb)
 	else
@@ -4957,7 +4957,7 @@ function M.DeleteUserAsync(DeleteUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteUser")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUserRequest, headers, settings, cb)
 	else
@@ -4993,7 +4993,7 @@ function M.CreateAliasAsync(CreateAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateAlias")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAliasRequest, headers, settings, cb)
 	else
@@ -5029,7 +5029,7 @@ function M.ListResourcesAsync(ListResourcesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListResources")
 	if request_handler then
 		request_handler(settings.uri, "/", ListResourcesRequest, headers, settings, cb)
 	else
@@ -5065,7 +5065,7 @@ function M.DeleteResourceAsync(DeleteResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteResource")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteResourceRequest, headers, settings, cb)
 	else
@@ -5101,7 +5101,7 @@ function M.CreateResourceAsync(CreateResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateResource")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateResourceRequest, headers, settings, cb)
 	else
@@ -5137,7 +5137,7 @@ function M.CreateUserAsync(CreateUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateUser")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateUserRequest, headers, settings, cb)
 	else
@@ -5173,7 +5173,7 @@ function M.UpdateResourceAsync(UpdateResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateResource")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateResourceRequest, headers, settings, cb)
 	else

@@ -2883,7 +2883,7 @@ function M.RemoveTagsAsync(RemoveTagsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RemoveTags")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsInput, headers, settings, cb)
 	else
@@ -2919,7 +2919,7 @@ function M.DeactivatePipelineAsync(DeactivatePipelineInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeactivatePipeline")
 	if request_handler then
 		request_handler(settings.uri, "/", DeactivatePipelineInput, headers, settings, cb)
 	else
@@ -2955,7 +2955,7 @@ function M.AddTagsAsync(AddTagsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddTags")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsInput, headers, settings, cb)
 	else
@@ -2991,7 +2991,7 @@ function M.ValidatePipelineDefinitionAsync(ValidatePipelineDefinitionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ValidatePipelineDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/", ValidatePipelineDefinitionInput, headers, settings, cb)
 	else
@@ -3027,7 +3027,7 @@ function M.ListPipelinesAsync(ListPipelinesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListPipelines")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPipelinesInput, headers, settings, cb)
 	else
@@ -3063,7 +3063,7 @@ function M.DeletePipelineAsync(DeletePipelineInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeletePipeline")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePipelineInput, headers, settings, cb)
 	else
@@ -3099,7 +3099,7 @@ function M.DescribeObjectsAsync(DescribeObjectsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeObjects")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeObjectsInput, headers, settings, cb)
 	else
@@ -3135,7 +3135,7 @@ function M.QueryObjectsAsync(QueryObjectsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "QueryObjects")
 	if request_handler then
 		request_handler(settings.uri, "/", QueryObjectsInput, headers, settings, cb)
 	else
@@ -3171,7 +3171,7 @@ function M.SetStatusAsync(SetStatusInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SetStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", SetStatusInput, headers, settings, cb)
 	else
@@ -3207,7 +3207,7 @@ function M.SetTaskStatusAsync(SetTaskStatusInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SetTaskStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", SetTaskStatusInput, headers, settings, cb)
 	else
@@ -3243,7 +3243,7 @@ function M.PutPipelineDefinitionAsync(PutPipelineDefinitionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutPipelineDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/", PutPipelineDefinitionInput, headers, settings, cb)
 	else
@@ -3279,7 +3279,7 @@ function M.PollForTaskAsync(PollForTaskInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PollForTask")
 	if request_handler then
 		request_handler(settings.uri, "/", PollForTaskInput, headers, settings, cb)
 	else
@@ -3315,7 +3315,7 @@ function M.ActivatePipelineAsync(ActivatePipelineInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ActivatePipeline")
 	if request_handler then
 		request_handler(settings.uri, "/", ActivatePipelineInput, headers, settings, cb)
 	else
@@ -3351,7 +3351,7 @@ function M.CreatePipelineAsync(CreatePipelineInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreatePipeline")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePipelineInput, headers, settings, cb)
 	else
@@ -3387,7 +3387,7 @@ function M.EvaluateExpressionAsync(EvaluateExpressionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "EvaluateExpression")
 	if request_handler then
 		request_handler(settings.uri, "/", EvaluateExpressionInput, headers, settings, cb)
 	else
@@ -3423,7 +3423,7 @@ function M.GetPipelineDefinitionAsync(GetPipelineDefinitionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetPipelineDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPipelineDefinitionInput, headers, settings, cb)
 	else
@@ -3459,7 +3459,7 @@ function M.ReportTaskProgressAsync(ReportTaskProgressInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ReportTaskProgress")
 	if request_handler then
 		request_handler(settings.uri, "/", ReportTaskProgressInput, headers, settings, cb)
 	else
@@ -3495,7 +3495,7 @@ function M.ReportTaskRunnerHeartbeatAsync(ReportTaskRunnerHeartbeatInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ReportTaskRunnerHeartbeat")
 	if request_handler then
 		request_handler(settings.uri, "/", ReportTaskRunnerHeartbeatInput, headers, settings, cb)
 	else
@@ -3531,7 +3531,7 @@ function M.DescribePipelinesAsync(DescribePipelinesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribePipelines")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePipelinesInput, headers, settings, cb)
 	else

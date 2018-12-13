@@ -4846,7 +4846,7 @@ function M.DiscoverInputSchemaAsync(DiscoverInputSchemaRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DiscoverInputSchema")
 	if request_handler then
 		request_handler(settings.uri, "/", DiscoverInputSchemaRequest, headers, settings, cb)
 	else
@@ -4882,7 +4882,7 @@ function M.DeleteApplicationInputProcessingConfigurationAsync(DeleteApplicationI
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteApplicationInputProcessingConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteApplicationInputProcessingConfigurationRequest, headers, settings, cb)
 	else
@@ -4918,7 +4918,7 @@ function M.AddApplicationReferenceDataSourceAsync(AddApplicationReferenceDataSou
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddApplicationReferenceDataSource")
 	if request_handler then
 		request_handler(settings.uri, "/", AddApplicationReferenceDataSourceRequest, headers, settings, cb)
 	else
@@ -4954,7 +4954,7 @@ function M.ListApplicationsAsync(ListApplicationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListApplications")
 	if request_handler then
 		request_handler(settings.uri, "/", ListApplicationsRequest, headers, settings, cb)
 	else
@@ -4990,7 +4990,7 @@ function M.UpdateApplicationAsync(UpdateApplicationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateApplicationRequest, headers, settings, cb)
 	else
@@ -5026,7 +5026,7 @@ function M.StopApplicationAsync(StopApplicationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", StopApplicationRequest, headers, settings, cb)
 	else
@@ -5062,7 +5062,7 @@ function M.AddApplicationOutputAsync(AddApplicationOutputRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddApplicationOutput")
 	if request_handler then
 		request_handler(settings.uri, "/", AddApplicationOutputRequest, headers, settings, cb)
 	else
@@ -5098,7 +5098,7 @@ function M.DeleteApplicationAsync(DeleteApplicationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteApplicationRequest, headers, settings, cb)
 	else
@@ -5134,7 +5134,7 @@ function M.AddApplicationCloudWatchLoggingOptionAsync(AddApplicationCloudWatchLo
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddApplicationCloudWatchLoggingOption")
 	if request_handler then
 		request_handler(settings.uri, "/", AddApplicationCloudWatchLoggingOptionRequest, headers, settings, cb)
 	else
@@ -5170,7 +5170,7 @@ function M.DeleteApplicationOutputAsync(DeleteApplicationOutputRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteApplicationOutput")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteApplicationOutputRequest, headers, settings, cb)
 	else
@@ -5206,7 +5206,7 @@ function M.DeleteApplicationCloudWatchLoggingOptionAsync(DeleteApplicationCloudW
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteApplicationCloudWatchLoggingOption")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteApplicationCloudWatchLoggingOptionRequest, headers, settings, cb)
 	else
@@ -5242,7 +5242,7 @@ function M.AddApplicationInputAsync(AddApplicationInputRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddApplicationInput")
 	if request_handler then
 		request_handler(settings.uri, "/", AddApplicationInputRequest, headers, settings, cb)
 	else
@@ -5278,7 +5278,7 @@ function M.DescribeApplicationAsync(DescribeApplicationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeApplicationRequest, headers, settings, cb)
 	else
@@ -5314,7 +5314,7 @@ function M.AddApplicationInputProcessingConfigurationAsync(AddApplicationInputPr
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddApplicationInputProcessingConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", AddApplicationInputProcessingConfigurationRequest, headers, settings, cb)
 	else
@@ -5350,7 +5350,7 @@ function M.DeleteApplicationReferenceDataSourceAsync(DeleteApplicationReferenceD
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteApplicationReferenceDataSource")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteApplicationReferenceDataSourceRequest, headers, settings, cb)
 	else
@@ -5386,7 +5386,7 @@ function M.StartApplicationAsync(StartApplicationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", StartApplicationRequest, headers, settings, cb)
 	else
@@ -5422,7 +5422,7 @@ function M.CreateApplicationAsync(CreateApplicationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateApplicationRequest, headers, settings, cb)
 	else

@@ -4120,7 +4120,7 @@ function M.StopEntitiesDetectionJobAsync(StopEntitiesDetectionJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopEntitiesDetectionJob")
 	if request_handler then
 		request_handler(settings.uri, "/", StopEntitiesDetectionJobRequest, headers, settings, cb)
 	else
@@ -4156,7 +4156,7 @@ function M.DetectSyntaxAsync(DetectSyntaxRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DetectSyntax")
 	if request_handler then
 		request_handler(settings.uri, "/", DetectSyntaxRequest, headers, settings, cb)
 	else
@@ -4192,7 +4192,7 @@ function M.StartDominantLanguageDetectionJobAsync(StartDominantLanguageDetection
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartDominantLanguageDetectionJob")
 	if request_handler then
 		request_handler(settings.uri, "/", StartDominantLanguageDetectionJobRequest, headers, settings, cb)
 	else
@@ -4228,7 +4228,7 @@ function M.ListKeyPhrasesDetectionJobsAsync(ListKeyPhrasesDetectionJobsRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListKeyPhrasesDetectionJobs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListKeyPhrasesDetectionJobsRequest, headers, settings, cb)
 	else
@@ -4264,7 +4264,7 @@ function M.BatchDetectDominantLanguageAsync(BatchDetectDominantLanguageRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchDetectDominantLanguage")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchDetectDominantLanguageRequest, headers, settings, cb)
 	else
@@ -4300,7 +4300,7 @@ function M.DescribeEntitiesDetectionJobAsync(DescribeEntitiesDetectionJobRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEntitiesDetectionJob")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEntitiesDetectionJobRequest, headers, settings, cb)
 	else
@@ -4336,7 +4336,7 @@ function M.BatchDetectSentimentAsync(BatchDetectSentimentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchDetectSentiment")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchDetectSentimentRequest, headers, settings, cb)
 	else
@@ -4372,7 +4372,7 @@ function M.StopKeyPhrasesDetectionJobAsync(StopKeyPhrasesDetectionJobRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopKeyPhrasesDetectionJob")
 	if request_handler then
 		request_handler(settings.uri, "/", StopKeyPhrasesDetectionJobRequest, headers, settings, cb)
 	else
@@ -4408,7 +4408,7 @@ function M.StopDominantLanguageDetectionJobAsync(StopDominantLanguageDetectionJo
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopDominantLanguageDetectionJob")
 	if request_handler then
 		request_handler(settings.uri, "/", StopDominantLanguageDetectionJobRequest, headers, settings, cb)
 	else
@@ -4444,7 +4444,7 @@ function M.DetectEntitiesAsync(DetectEntitiesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DetectEntities")
 	if request_handler then
 		request_handler(settings.uri, "/", DetectEntitiesRequest, headers, settings, cb)
 	else
@@ -4480,7 +4480,7 @@ function M.DescribeTopicsDetectionJobAsync(DescribeTopicsDetectionJobRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTopicsDetectionJob")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTopicsDetectionJobRequest, headers, settings, cb)
 	else
@@ -4516,7 +4516,7 @@ function M.ListEntitiesDetectionJobsAsync(ListEntitiesDetectionJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListEntitiesDetectionJobs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListEntitiesDetectionJobsRequest, headers, settings, cb)
 	else
@@ -4552,7 +4552,7 @@ function M.StartEntitiesDetectionJobAsync(StartEntitiesDetectionJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartEntitiesDetectionJob")
 	if request_handler then
 		request_handler(settings.uri, "/", StartEntitiesDetectionJobRequest, headers, settings, cb)
 	else
@@ -4588,7 +4588,7 @@ function M.DetectSentimentAsync(DetectSentimentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DetectSentiment")
 	if request_handler then
 		request_handler(settings.uri, "/", DetectSentimentRequest, headers, settings, cb)
 	else
@@ -4624,7 +4624,7 @@ function M.DescribeSentimentDetectionJobAsync(DescribeSentimentDetectionJobReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeSentimentDetectionJob")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSentimentDetectionJobRequest, headers, settings, cb)
 	else
@@ -4660,7 +4660,7 @@ function M.StartTopicsDetectionJobAsync(StartTopicsDetectionJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartTopicsDetectionJob")
 	if request_handler then
 		request_handler(settings.uri, "/", StartTopicsDetectionJobRequest, headers, settings, cb)
 	else
@@ -4696,7 +4696,7 @@ function M.ListTopicsDetectionJobsAsync(ListTopicsDetectionJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTopicsDetectionJobs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTopicsDetectionJobsRequest, headers, settings, cb)
 	else
@@ -4732,7 +4732,7 @@ function M.DetectKeyPhrasesAsync(DetectKeyPhrasesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DetectKeyPhrases")
 	if request_handler then
 		request_handler(settings.uri, "/", DetectKeyPhrasesRequest, headers, settings, cb)
 	else
@@ -4768,7 +4768,7 @@ function M.ListSentimentDetectionJobsAsync(ListSentimentDetectionJobsRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListSentimentDetectionJobs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSentimentDetectionJobsRequest, headers, settings, cb)
 	else
@@ -4804,7 +4804,7 @@ function M.StartSentimentDetectionJobAsync(StartSentimentDetectionJobRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartSentimentDetectionJob")
 	if request_handler then
 		request_handler(settings.uri, "/", StartSentimentDetectionJobRequest, headers, settings, cb)
 	else
@@ -4840,7 +4840,7 @@ function M.DescribeKeyPhrasesDetectionJobAsync(DescribeKeyPhrasesDetectionJobReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeKeyPhrasesDetectionJob")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeKeyPhrasesDetectionJobRequest, headers, settings, cb)
 	else
@@ -4876,7 +4876,7 @@ function M.DetectDominantLanguageAsync(DetectDominantLanguageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DetectDominantLanguage")
 	if request_handler then
 		request_handler(settings.uri, "/", DetectDominantLanguageRequest, headers, settings, cb)
 	else
@@ -4912,7 +4912,7 @@ function M.StartKeyPhrasesDetectionJobAsync(StartKeyPhrasesDetectionJobRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartKeyPhrasesDetectionJob")
 	if request_handler then
 		request_handler(settings.uri, "/", StartKeyPhrasesDetectionJobRequest, headers, settings, cb)
 	else
@@ -4948,7 +4948,7 @@ function M.BatchDetectSyntaxAsync(BatchDetectSyntaxRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchDetectSyntax")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchDetectSyntaxRequest, headers, settings, cb)
 	else
@@ -4984,7 +4984,7 @@ function M.DescribeDominantLanguageDetectionJobAsync(DescribeDominantLanguageDet
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDominantLanguageDetectionJob")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDominantLanguageDetectionJobRequest, headers, settings, cb)
 	else
@@ -5020,7 +5020,7 @@ function M.StopSentimentDetectionJobAsync(StopSentimentDetectionJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopSentimentDetectionJob")
 	if request_handler then
 		request_handler(settings.uri, "/", StopSentimentDetectionJobRequest, headers, settings, cb)
 	else
@@ -5056,7 +5056,7 @@ function M.BatchDetectKeyPhrasesAsync(BatchDetectKeyPhrasesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchDetectKeyPhrases")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchDetectKeyPhrasesRequest, headers, settings, cb)
 	else
@@ -5092,7 +5092,7 @@ function M.ListDominantLanguageDetectionJobsAsync(ListDominantLanguageDetectionJ
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListDominantLanguageDetectionJobs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDominantLanguageDetectionJobsRequest, headers, settings, cb)
 	else
@@ -5128,7 +5128,7 @@ function M.BatchDetectEntitiesAsync(BatchDetectEntitiesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchDetectEntities")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchDetectEntitiesRequest, headers, settings, cb)
 	else

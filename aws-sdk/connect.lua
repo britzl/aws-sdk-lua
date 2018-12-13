@@ -3295,7 +3295,7 @@ function M.DescribeUserHierarchyStructureAsync(DescribeUserHierarchyStructureReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeUserHierarchyStructure")
 	if request_handler then
 		request_handler(settings.uri, "/user-hierarchy-structure/{InstanceId}", DescribeUserHierarchyStructureRequest, headers, settings, cb)
 	else
@@ -3331,7 +3331,7 @@ function M.GetFederationTokenAsync(GetFederationTokenRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetFederationToken")
 	if request_handler then
 		request_handler(settings.uri, "/user/federate/{InstanceId}", GetFederationTokenRequest, headers, settings, cb)
 	else
@@ -3367,7 +3367,7 @@ function M.DeleteUserAsync(DeleteUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteUser")
 	if request_handler then
 		request_handler(settings.uri, "/users/{InstanceId}/{UserId}", DeleteUserRequest, headers, settings, cb)
 	else
@@ -3403,7 +3403,7 @@ function M.ListRoutingProfilesAsync(ListRoutingProfilesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListRoutingProfiles")
 	if request_handler then
 		request_handler(settings.uri, "/routing-profiles-summary/{InstanceId}", ListRoutingProfilesRequest, headers, settings, cb)
 	else
@@ -3439,7 +3439,7 @@ function M.ListSecurityProfilesAsync(ListSecurityProfilesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListSecurityProfiles")
 	if request_handler then
 		request_handler(settings.uri, "/security-profiles-summary/{InstanceId}", ListSecurityProfilesRequest, headers, settings, cb)
 	else
@@ -3475,7 +3475,7 @@ function M.UpdateUserIdentityInfoAsync(UpdateUserIdentityInfoRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateUserIdentityInfo")
 	if request_handler then
 		request_handler(settings.uri, "/users/{InstanceId}/{UserId}/identity-info", UpdateUserIdentityInfoRequest, headers, settings, cb)
 	else
@@ -3511,7 +3511,7 @@ function M.StartOutboundVoiceContactAsync(StartOutboundVoiceContactRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "StartOutboundVoiceContact")
 	if request_handler then
 		request_handler(settings.uri, "/contact/outbound-voice", StartOutboundVoiceContactRequest, headers, settings, cb)
 	else
@@ -3547,7 +3547,7 @@ function M.UpdateUserHierarchyAsync(UpdateUserHierarchyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateUserHierarchy")
 	if request_handler then
 		request_handler(settings.uri, "/users/{InstanceId}/{UserId}/hierarchy", UpdateUserHierarchyRequest, headers, settings, cb)
 	else
@@ -3583,7 +3583,7 @@ function M.UpdateUserSecurityProfilesAsync(UpdateUserSecurityProfilesRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateUserSecurityProfiles")
 	if request_handler then
 		request_handler(settings.uri, "/users/{InstanceId}/{UserId}/security-profiles", UpdateUserSecurityProfilesRequest, headers, settings, cb)
 	else
@@ -3619,7 +3619,7 @@ function M.DescribeUserHierarchyGroupAsync(DescribeUserHierarchyGroupRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeUserHierarchyGroup")
 	if request_handler then
 		request_handler(settings.uri, "/user-hierarchy-groups/{InstanceId}/{HierarchyGroupId}", DescribeUserHierarchyGroupRequest, headers, settings, cb)
 	else
@@ -3655,7 +3655,7 @@ function M.GetCurrentMetricDataAsync(GetCurrentMetricDataRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetCurrentMetricData")
 	if request_handler then
 		request_handler(settings.uri, "/metrics/current/{InstanceId}", GetCurrentMetricDataRequest, headers, settings, cb)
 	else
@@ -3691,7 +3691,7 @@ function M.StopContactAsync(StopContactRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "StopContact")
 	if request_handler then
 		request_handler(settings.uri, "/contact/stop", StopContactRequest, headers, settings, cb)
 	else
@@ -3727,7 +3727,7 @@ function M.DescribeUserAsync(DescribeUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeUser")
 	if request_handler then
 		request_handler(settings.uri, "/users/{InstanceId}/{UserId}", DescribeUserRequest, headers, settings, cb)
 	else
@@ -3763,7 +3763,7 @@ function M.UpdateUserPhoneConfigAsync(UpdateUserPhoneConfigRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateUserPhoneConfig")
 	if request_handler then
 		request_handler(settings.uri, "/users/{InstanceId}/{UserId}/phone-config", UpdateUserPhoneConfigRequest, headers, settings, cb)
 	else
@@ -3799,7 +3799,7 @@ function M.ListUsersAsync(ListUsersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListUsers")
 	if request_handler then
 		request_handler(settings.uri, "/users-summary/{InstanceId}", ListUsersRequest, headers, settings, cb)
 	else
@@ -3835,7 +3835,7 @@ function M.ListUserHierarchyGroupsAsync(ListUserHierarchyGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListUserHierarchyGroups")
 	if request_handler then
 		request_handler(settings.uri, "/user-hierarchy-groups-summary/{InstanceId}", ListUserHierarchyGroupsRequest, headers, settings, cb)
 	else
@@ -3871,7 +3871,7 @@ function M.CreateUserAsync(CreateUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "CreateUser")
 	if request_handler then
 		request_handler(settings.uri, "/users/{InstanceId}", CreateUserRequest, headers, settings, cb)
 	else
@@ -3907,7 +3907,7 @@ function M.UpdateContactAttributesAsync(UpdateContactAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateContactAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/contact/attributes", UpdateContactAttributesRequest, headers, settings, cb)
 	else
@@ -3943,7 +3943,7 @@ function M.UpdateUserRoutingProfileAsync(UpdateUserRoutingProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateUserRoutingProfile")
 	if request_handler then
 		request_handler(settings.uri, "/users/{InstanceId}/{UserId}/routing-profile", UpdateUserRoutingProfileRequest, headers, settings, cb)
 	else
@@ -3979,7 +3979,7 @@ function M.GetMetricDataAsync(GetMetricDataRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetMetricData")
 	if request_handler then
 		request_handler(settings.uri, "/metrics/historical/{InstanceId}", GetMetricDataRequest, headers, settings, cb)
 	else

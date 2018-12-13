@@ -1418,7 +1418,7 @@ function M.PutContainerPolicyAsync(PutContainerPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutContainerPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutContainerPolicyInput, headers, settings, cb)
 	else
@@ -1454,7 +1454,7 @@ function M.DeleteCorsPolicyAsync(DeleteCorsPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteCorsPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCorsPolicyInput, headers, settings, cb)
 	else
@@ -1490,7 +1490,7 @@ function M.DeleteContainerPolicyAsync(DeleteContainerPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteContainerPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteContainerPolicyInput, headers, settings, cb)
 	else
@@ -1526,7 +1526,7 @@ function M.GetCorsPolicyAsync(GetCorsPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetCorsPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCorsPolicyInput, headers, settings, cb)
 	else
@@ -1562,7 +1562,7 @@ function M.ListContainersAsync(ListContainersInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListContainers")
 	if request_handler then
 		request_handler(settings.uri, "/", ListContainersInput, headers, settings, cb)
 	else
@@ -1598,7 +1598,7 @@ function M.DescribeContainerAsync(DescribeContainerInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeContainer")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeContainerInput, headers, settings, cb)
 	else
@@ -1634,7 +1634,7 @@ function M.CreateContainerAsync(CreateContainerInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateContainer")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateContainerInput, headers, settings, cb)
 	else
@@ -1670,7 +1670,7 @@ function M.PutCorsPolicyAsync(PutCorsPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutCorsPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutCorsPolicyInput, headers, settings, cb)
 	else
@@ -1706,7 +1706,7 @@ function M.DeleteContainerAsync(DeleteContainerInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteContainer")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteContainerInput, headers, settings, cb)
 	else
@@ -1742,7 +1742,7 @@ function M.GetContainerPolicyAsync(GetContainerPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetContainerPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", GetContainerPolicyInput, headers, settings, cb)
 	else

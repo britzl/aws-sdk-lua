@@ -9533,7 +9533,7 @@ function M.DeleteGitHubAccountTokenAsync(DeleteGitHubAccountTokenInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteGitHubAccountToken")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteGitHubAccountTokenInput, headers, settings, cb)
 	else
@@ -9569,7 +9569,7 @@ function M.GetDeploymentConfigAsync(GetDeploymentConfigInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDeploymentConfig")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDeploymentConfigInput, headers, settings, cb)
 	else
@@ -9605,7 +9605,7 @@ function M.UpdateDeploymentGroupAsync(UpdateDeploymentGroupInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateDeploymentGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDeploymentGroupInput, headers, settings, cb)
 	else
@@ -9641,7 +9641,7 @@ function M.BatchGetDeploymentsAsync(BatchGetDeploymentsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchGetDeployments")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetDeploymentsInput, headers, settings, cb)
 	else
@@ -9677,7 +9677,7 @@ function M.ContinueDeploymentAsync(ContinueDeploymentInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ContinueDeployment")
 	if request_handler then
 		request_handler(settings.uri, "/", ContinueDeploymentInput, headers, settings, cb)
 	else
@@ -9713,7 +9713,7 @@ function M.GetDeploymentGroupAsync(GetDeploymentGroupInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDeploymentGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDeploymentGroupInput, headers, settings, cb)
 	else
@@ -9749,7 +9749,7 @@ function M.ListDeploymentGroupsAsync(ListDeploymentGroupsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListDeploymentGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDeploymentGroupsInput, headers, settings, cb)
 	else
@@ -9785,7 +9785,7 @@ function M.DeleteApplicationAsync(DeleteApplicationInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteApplicationInput, headers, settings, cb)
 	else
@@ -9821,7 +9821,7 @@ function M.CreateDeploymentAsync(CreateDeploymentInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDeployment")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDeploymentInput, headers, settings, cb)
 	else
@@ -9857,7 +9857,7 @@ function M.StopDeploymentAsync(StopDeploymentInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopDeployment")
 	if request_handler then
 		request_handler(settings.uri, "/", StopDeploymentInput, headers, settings, cb)
 	else
@@ -9893,7 +9893,7 @@ function M.DeleteDeploymentConfigAsync(DeleteDeploymentConfigInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDeploymentConfig")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDeploymentConfigInput, headers, settings, cb)
 	else
@@ -9929,7 +9929,7 @@ function M.RemoveTagsFromOnPremisesInstancesAsync(RemoveTagsFromOnPremisesInstan
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RemoveTagsFromOnPremisesInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromOnPremisesInstancesInput, headers, settings, cb)
 	else
@@ -9965,7 +9965,7 @@ function M.RegisterOnPremisesInstanceAsync(RegisterOnPremisesInstanceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterOnPremisesInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterOnPremisesInstanceInput, headers, settings, cb)
 	else
@@ -10001,7 +10001,7 @@ function M.ListOnPremisesInstancesAsync(ListOnPremisesInstancesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListOnPremisesInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOnPremisesInstancesInput, headers, settings, cb)
 	else
@@ -10037,7 +10037,7 @@ function M.ListDeploymentConfigsAsync(ListDeploymentConfigsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListDeploymentConfigs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDeploymentConfigsInput, headers, settings, cb)
 	else
@@ -10073,7 +10073,7 @@ function M.GetApplicationAsync(GetApplicationInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", GetApplicationInput, headers, settings, cb)
 	else
@@ -10109,7 +10109,7 @@ function M.GetDeploymentInstanceAsync(GetDeploymentInstanceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDeploymentInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDeploymentInstanceInput, headers, settings, cb)
 	else
@@ -10145,7 +10145,7 @@ function M.SkipWaitTimeForInstanceTerminationAsync(SkipWaitTimeForInstanceTermin
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SkipWaitTimeForInstanceTermination")
 	if request_handler then
 		request_handler(settings.uri, "/", SkipWaitTimeForInstanceTerminationInput, headers, settings, cb)
 	else
@@ -10181,7 +10181,7 @@ function M.BatchGetDeploymentGroupsAsync(BatchGetDeploymentGroupsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchGetDeploymentGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetDeploymentGroupsInput, headers, settings, cb)
 	else
@@ -10217,7 +10217,7 @@ function M.BatchGetOnPremisesInstancesAsync(BatchGetOnPremisesInstancesInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchGetOnPremisesInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetOnPremisesInstancesInput, headers, settings, cb)
 	else
@@ -10253,7 +10253,7 @@ function M.GetApplicationRevisionAsync(GetApplicationRevisionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetApplicationRevision")
 	if request_handler then
 		request_handler(settings.uri, "/", GetApplicationRevisionInput, headers, settings, cb)
 	else
@@ -10289,7 +10289,7 @@ function M.BatchGetDeploymentInstancesAsync(BatchGetDeploymentInstancesInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchGetDeploymentInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetDeploymentInstancesInput, headers, settings, cb)
 	else
@@ -10325,7 +10325,7 @@ function M.UpdateApplicationAsync(UpdateApplicationInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateApplicationInput, headers, settings, cb)
 	else
@@ -10361,7 +10361,7 @@ function M.CreateDeploymentGroupAsync(CreateDeploymentGroupInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDeploymentGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDeploymentGroupInput, headers, settings, cb)
 	else
@@ -10397,7 +10397,7 @@ function M.ListApplicationRevisionsAsync(ListApplicationRevisionsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListApplicationRevisions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListApplicationRevisionsInput, headers, settings, cb)
 	else
@@ -10433,7 +10433,7 @@ function M.ListDeploymentInstancesAsync(ListDeploymentInstancesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListDeploymentInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDeploymentInstancesInput, headers, settings, cb)
 	else
@@ -10469,7 +10469,7 @@ function M.BatchGetApplicationRevisionsAsync(BatchGetApplicationRevisionsInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchGetApplicationRevisions")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetApplicationRevisionsInput, headers, settings, cb)
 	else
@@ -10505,7 +10505,7 @@ function M.PutLifecycleEventHookExecutionStatusAsync(PutLifecycleEventHookExecut
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutLifecycleEventHookExecutionStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", PutLifecycleEventHookExecutionStatusInput, headers, settings, cb)
 	else
@@ -10541,7 +10541,7 @@ function M.DeregisterOnPremisesInstanceAsync(DeregisterOnPremisesInstanceInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeregisterOnPremisesInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterOnPremisesInstanceInput, headers, settings, cb)
 	else
@@ -10577,7 +10577,7 @@ function M.CreateDeploymentConfigAsync(CreateDeploymentConfigInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDeploymentConfig")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDeploymentConfigInput, headers, settings, cb)
 	else
@@ -10613,7 +10613,7 @@ function M.GetOnPremisesInstanceAsync(GetOnPremisesInstanceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetOnPremisesInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOnPremisesInstanceInput, headers, settings, cb)
 	else
@@ -10649,7 +10649,7 @@ function M.AddTagsToOnPremisesInstancesAsync(AddTagsToOnPremisesInstancesInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddTagsToOnPremisesInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToOnPremisesInstancesInput, headers, settings, cb)
 	else
@@ -10685,7 +10685,7 @@ function M.CreateApplicationAsync(CreateApplicationInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateApplicationInput, headers, settings, cb)
 	else
@@ -10721,7 +10721,7 @@ function M.ListDeploymentsAsync(ListDeploymentsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListDeployments")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDeploymentsInput, headers, settings, cb)
 	else
@@ -10757,7 +10757,7 @@ function M.ListApplicationsAsync(ListApplicationsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListApplications")
 	if request_handler then
 		request_handler(settings.uri, "/", ListApplicationsInput, headers, settings, cb)
 	else
@@ -10793,7 +10793,7 @@ function M.DeleteDeploymentGroupAsync(DeleteDeploymentGroupInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDeploymentGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDeploymentGroupInput, headers, settings, cb)
 	else
@@ -10829,7 +10829,7 @@ function M.ListGitHubAccountTokenNamesAsync(ListGitHubAccountTokenNamesInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListGitHubAccountTokenNames")
 	if request_handler then
 		request_handler(settings.uri, "/", ListGitHubAccountTokenNamesInput, headers, settings, cb)
 	else
@@ -10865,7 +10865,7 @@ function M.RegisterApplicationRevisionAsync(RegisterApplicationRevisionInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterApplicationRevision")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterApplicationRevisionInput, headers, settings, cb)
 	else
@@ -10901,7 +10901,7 @@ function M.GetDeploymentAsync(GetDeploymentInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDeployment")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDeploymentInput, headers, settings, cb)
 	else
@@ -10937,7 +10937,7 @@ function M.BatchGetApplicationsAsync(BatchGetApplicationsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchGetApplications")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetApplicationsInput, headers, settings, cb)
 	else

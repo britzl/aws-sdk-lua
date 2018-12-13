@@ -2040,7 +2040,7 @@ function M.DeleteTrailAsync(DeleteTrailRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteTrail")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTrailRequest, headers, settings, cb)
 	else
@@ -2076,7 +2076,7 @@ function M.RemoveTagsAsync(RemoveTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RemoveTags")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsRequest, headers, settings, cb)
 	else
@@ -2112,7 +2112,7 @@ function M.GetEventSelectorsAsync(GetEventSelectorsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetEventSelectors")
 	if request_handler then
 		request_handler(settings.uri, "/", GetEventSelectorsRequest, headers, settings, cb)
 	else
@@ -2148,7 +2148,7 @@ function M.AddTagsAsync(AddTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddTags")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsRequest, headers, settings, cb)
 	else
@@ -2184,7 +2184,7 @@ function M.StartLoggingAsync(StartLoggingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartLogging")
 	if request_handler then
 		request_handler(settings.uri, "/", StartLoggingRequest, headers, settings, cb)
 	else
@@ -2220,7 +2220,7 @@ function M.GetTrailStatusAsync(GetTrailStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetTrailStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTrailStatusRequest, headers, settings, cb)
 	else
@@ -2256,7 +2256,7 @@ function M.ListPublicKeysAsync(ListPublicKeysRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListPublicKeys")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPublicKeysRequest, headers, settings, cb)
 	else
@@ -2292,7 +2292,7 @@ function M.StopLoggingAsync(StopLoggingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopLogging")
 	if request_handler then
 		request_handler(settings.uri, "/", StopLoggingRequest, headers, settings, cb)
 	else
@@ -2328,7 +2328,7 @@ function M.PutEventSelectorsAsync(PutEventSelectorsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutEventSelectors")
 	if request_handler then
 		request_handler(settings.uri, "/", PutEventSelectorsRequest, headers, settings, cb)
 	else
@@ -2364,7 +2364,7 @@ function M.DescribeTrailsAsync(DescribeTrailsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTrails")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTrailsRequest, headers, settings, cb)
 	else
@@ -2400,7 +2400,7 @@ function M.CreateTrailAsync(CreateTrailRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateTrail")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTrailRequest, headers, settings, cb)
 	else
@@ -2436,7 +2436,7 @@ function M.UpdateTrailAsync(UpdateTrailRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateTrail")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateTrailRequest, headers, settings, cb)
 	else
@@ -2472,7 +2472,7 @@ function M.ListTagsAsync(ListTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTags")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsRequest, headers, settings, cb)
 	else
@@ -2508,7 +2508,7 @@ function M.LookupEventsAsync(LookupEventsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "LookupEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", LookupEventsRequest, headers, settings, cb)
 	else

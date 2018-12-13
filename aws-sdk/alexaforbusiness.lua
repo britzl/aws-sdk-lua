@@ -8636,7 +8636,7 @@ function M.DeleteSkillAuthorizationAsync(DeleteSkillAuthorizationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteSkillAuthorization")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSkillAuthorizationRequest, headers, settings, cb)
 	else
@@ -8672,7 +8672,7 @@ function M.AssociateContactWithAddressBookAsync(AssociateContactWithAddressBookR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateContactWithAddressBook")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateContactWithAddressBookRequest, headers, settings, cb)
 	else
@@ -8708,7 +8708,7 @@ function M.ListConferenceProvidersAsync(ListConferenceProvidersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListConferenceProviders")
 	if request_handler then
 		request_handler(settings.uri, "/", ListConferenceProvidersRequest, headers, settings, cb)
 	else
@@ -8744,7 +8744,7 @@ function M.GetProfileAsync(GetProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", GetProfileRequest, headers, settings, cb)
 	else
@@ -8780,7 +8780,7 @@ function M.RegisterAVSDeviceAsync(RegisterAVSDeviceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterAVSDevice")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterAVSDeviceRequest, headers, settings, cb)
 	else
@@ -8816,7 +8816,7 @@ function M.ListSkillsStoreCategoriesAsync(ListSkillsStoreCategoriesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListSkillsStoreCategories")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSkillsStoreCategoriesRequest, headers, settings, cb)
 	else
@@ -8852,7 +8852,7 @@ function M.SearchContactsAsync(SearchContactsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SearchContacts")
 	if request_handler then
 		request_handler(settings.uri, "/", SearchContactsRequest, headers, settings, cb)
 	else
@@ -8888,7 +8888,7 @@ function M.GetConferenceProviderAsync(GetConferenceProviderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetConferenceProvider")
 	if request_handler then
 		request_handler(settings.uri, "/", GetConferenceProviderRequest, headers, settings, cb)
 	else
@@ -8924,7 +8924,7 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TagResource")
 	if request_handler then
 		request_handler(settings.uri, "/", TagResourceRequest, headers, settings, cb)
 	else
@@ -8960,7 +8960,7 @@ function M.AssociateDeviceWithRoomAsync(AssociateDeviceWithRoomRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateDeviceWithRoom")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateDeviceWithRoomRequest, headers, settings, cb)
 	else
@@ -8996,7 +8996,7 @@ function M.PutSkillAuthorizationAsync(PutSkillAuthorizationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutSkillAuthorization")
 	if request_handler then
 		request_handler(settings.uri, "/", PutSkillAuthorizationRequest, headers, settings, cb)
 	else
@@ -9032,7 +9032,7 @@ function M.GetContactAsync(GetContactRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetContact")
 	if request_handler then
 		request_handler(settings.uri, "/", GetContactRequest, headers, settings, cb)
 	else
@@ -9068,7 +9068,7 @@ function M.UpdateSkillGroupAsync(UpdateSkillGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateSkillGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSkillGroupRequest, headers, settings, cb)
 	else
@@ -9104,7 +9104,7 @@ function M.DeleteConferenceProviderAsync(DeleteConferenceProviderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteConferenceProvider")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConferenceProviderRequest, headers, settings, cb)
 	else
@@ -9140,7 +9140,7 @@ function M.GetRoomAsync(GetRoomRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRoom")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRoomRequest, headers, settings, cb)
 	else
@@ -9176,7 +9176,7 @@ function M.ListSkillsStoreSkillsByCategoryAsync(ListSkillsStoreSkillsByCategoryR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListSkillsStoreSkillsByCategory")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSkillsStoreSkillsByCategoryRequest, headers, settings, cb)
 	else
@@ -9212,7 +9212,7 @@ function M.CreateSkillGroupAsync(CreateSkillGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateSkillGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSkillGroupRequest, headers, settings, cb)
 	else
@@ -9248,7 +9248,7 @@ function M.CreateAddressBookAsync(CreateAddressBookRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateAddressBook")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAddressBookRequest, headers, settings, cb)
 	else
@@ -9284,7 +9284,7 @@ function M.CreateProfileAsync(CreateProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateProfileRequest, headers, settings, cb)
 	else
@@ -9320,7 +9320,7 @@ function M.SendInvitationAsync(SendInvitationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SendInvitation")
 	if request_handler then
 		request_handler(settings.uri, "/", SendInvitationRequest, headers, settings, cb)
 	else
@@ -9356,7 +9356,7 @@ function M.ListSkillsAsync(ListSkillsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListSkills")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSkillsRequest, headers, settings, cb)
 	else
@@ -9392,7 +9392,7 @@ function M.SearchSkillGroupsAsync(SearchSkillGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SearchSkillGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", SearchSkillGroupsRequest, headers, settings, cb)
 	else
@@ -9428,7 +9428,7 @@ function M.RevokeInvitationAsync(RevokeInvitationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RevokeInvitation")
 	if request_handler then
 		request_handler(settings.uri, "/", RevokeInvitationRequest, headers, settings, cb)
 	else
@@ -9464,7 +9464,7 @@ function M.AssociateSkillWithSkillGroupAsync(AssociateSkillWithSkillGroupRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateSkillWithSkillGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateSkillWithSkillGroupRequest, headers, settings, cb)
 	else
@@ -9500,7 +9500,7 @@ function M.DeleteProfileAsync(DeleteProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteProfileRequest, headers, settings, cb)
 	else
@@ -9536,7 +9536,7 @@ function M.DeleteRoomSkillParameterAsync(DeleteRoomSkillParameterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteRoomSkillParameter")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRoomSkillParameterRequest, headers, settings, cb)
 	else
@@ -9572,7 +9572,7 @@ function M.DisassociateSkillFromSkillGroupAsync(DisassociateSkillFromSkillGroupR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateSkillFromSkillGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateSkillFromSkillGroupRequest, headers, settings, cb)
 	else
@@ -9608,7 +9608,7 @@ function M.DeleteDeviceAsync(DeleteDeviceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDevice")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDeviceRequest, headers, settings, cb)
 	else
@@ -9644,7 +9644,7 @@ function M.StartDeviceSyncAsync(StartDeviceSyncRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartDeviceSync")
 	if request_handler then
 		request_handler(settings.uri, "/", StartDeviceSyncRequest, headers, settings, cb)
 	else
@@ -9680,7 +9680,7 @@ function M.DeleteSkillGroupAsync(DeleteSkillGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteSkillGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSkillGroupRequest, headers, settings, cb)
 	else
@@ -9716,7 +9716,7 @@ function M.RejectSkillAsync(RejectSkillRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RejectSkill")
 	if request_handler then
 		request_handler(settings.uri, "/", RejectSkillRequest, headers, settings, cb)
 	else
@@ -9752,7 +9752,7 @@ function M.ListDeviceEventsAsync(ListDeviceEventsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListDeviceEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDeviceEventsRequest, headers, settings, cb)
 	else
@@ -9788,7 +9788,7 @@ function M.GetSkillGroupAsync(GetSkillGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetSkillGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSkillGroupRequest, headers, settings, cb)
 	else
@@ -9824,7 +9824,7 @@ function M.SearchUsersAsync(SearchUsersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SearchUsers")
 	if request_handler then
 		request_handler(settings.uri, "/", SearchUsersRequest, headers, settings, cb)
 	else
@@ -9860,7 +9860,7 @@ function M.UpdateRoomAsync(UpdateRoomRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateRoom")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRoomRequest, headers, settings, cb)
 	else
@@ -9896,7 +9896,7 @@ function M.ListTagsAsync(ListTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTags")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsRequest, headers, settings, cb)
 	else
@@ -9932,7 +9932,7 @@ function M.GetAddressBookAsync(GetAddressBookRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetAddressBook")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAddressBookRequest, headers, settings, cb)
 	else
@@ -9968,7 +9968,7 @@ function M.PutRoomSkillParameterAsync(PutRoomSkillParameterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutRoomSkillParameter")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRoomSkillParameterRequest, headers, settings, cb)
 	else
@@ -10004,7 +10004,7 @@ function M.DisassociateDeviceFromRoomAsync(DisassociateDeviceFromRoomRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateDeviceFromRoom")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateDeviceFromRoomRequest, headers, settings, cb)
 	else
@@ -10040,7 +10040,7 @@ function M.SearchRoomsAsync(SearchRoomsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SearchRooms")
 	if request_handler then
 		request_handler(settings.uri, "/", SearchRoomsRequest, headers, settings, cb)
 	else
@@ -10076,7 +10076,7 @@ function M.DeleteContactAsync(DeleteContactRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteContact")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteContactRequest, headers, settings, cb)
 	else
@@ -10112,7 +10112,7 @@ function M.UpdateDeviceAsync(UpdateDeviceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateDevice")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDeviceRequest, headers, settings, cb)
 	else
@@ -10148,7 +10148,7 @@ function M.PutConferencePreferenceAsync(PutConferencePreferenceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutConferencePreference")
 	if request_handler then
 		request_handler(settings.uri, "/", PutConferencePreferenceRequest, headers, settings, cb)
 	else
@@ -10184,7 +10184,7 @@ function M.ForgetSmartHomeAppliancesAsync(ForgetSmartHomeAppliancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ForgetSmartHomeAppliances")
 	if request_handler then
 		request_handler(settings.uri, "/", ForgetSmartHomeAppliancesRequest, headers, settings, cb)
 	else
@@ -10220,7 +10220,7 @@ function M.GetDeviceAsync(GetDeviceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDevice")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDeviceRequest, headers, settings, cb)
 	else
@@ -10256,7 +10256,7 @@ function M.AssociateSkillGroupWithRoomAsync(AssociateSkillGroupWithRoomRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateSkillGroupWithRoom")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateSkillGroupWithRoomRequest, headers, settings, cb)
 	else
@@ -10292,7 +10292,7 @@ function M.DisassociateSkillGroupFromRoomAsync(DisassociateSkillGroupFromRoomReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateSkillGroupFromRoom")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateSkillGroupFromRoomRequest, headers, settings, cb)
 	else
@@ -10328,7 +10328,7 @@ function M.CreateContactAsync(CreateContactRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateContact")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateContactRequest, headers, settings, cb)
 	else
@@ -10364,7 +10364,7 @@ function M.SearchAddressBooksAsync(SearchAddressBooksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SearchAddressBooks")
 	if request_handler then
 		request_handler(settings.uri, "/", SearchAddressBooksRequest, headers, settings, cb)
 	else
@@ -10400,7 +10400,7 @@ function M.StartSmartHomeApplianceDiscoveryAsync(StartSmartHomeApplianceDiscover
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartSmartHomeApplianceDiscovery")
 	if request_handler then
 		request_handler(settings.uri, "/", StartSmartHomeApplianceDiscoveryRequest, headers, settings, cb)
 	else
@@ -10436,7 +10436,7 @@ function M.DeleteUserAsync(DeleteUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteUser")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUserRequest, headers, settings, cb)
 	else
@@ -10472,7 +10472,7 @@ function M.UpdateContactAsync(UpdateContactRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateContact")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateContactRequest, headers, settings, cb)
 	else
@@ -10508,7 +10508,7 @@ function M.UpdateAddressBookAsync(UpdateAddressBookRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateAddressBook")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAddressBookRequest, headers, settings, cb)
 	else
@@ -10544,7 +10544,7 @@ function M.CreateConferenceProviderAsync(CreateConferenceProviderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateConferenceProvider")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateConferenceProviderRequest, headers, settings, cb)
 	else
@@ -10580,7 +10580,7 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UntagResource")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagResourceRequest, headers, settings, cb)
 	else
@@ -10616,7 +10616,7 @@ function M.SearchDevicesAsync(SearchDevicesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SearchDevices")
 	if request_handler then
 		request_handler(settings.uri, "/", SearchDevicesRequest, headers, settings, cb)
 	else
@@ -10652,7 +10652,7 @@ function M.UpdateConferenceProviderAsync(UpdateConferenceProviderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateConferenceProvider")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateConferenceProviderRequest, headers, settings, cb)
 	else
@@ -10688,7 +10688,7 @@ function M.UpdateProfileAsync(UpdateProfileRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateProfile")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateProfileRequest, headers, settings, cb)
 	else
@@ -10724,7 +10724,7 @@ function M.ApproveSkillAsync(ApproveSkillRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ApproveSkill")
 	if request_handler then
 		request_handler(settings.uri, "/", ApproveSkillRequest, headers, settings, cb)
 	else
@@ -10760,7 +10760,7 @@ function M.DeleteRoomAsync(DeleteRoomRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteRoom")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRoomRequest, headers, settings, cb)
 	else
@@ -10796,7 +10796,7 @@ function M.DisassociateContactFromAddressBookAsync(DisassociateContactFromAddres
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateContactFromAddressBook")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateContactFromAddressBookRequest, headers, settings, cb)
 	else
@@ -10832,7 +10832,7 @@ function M.ListSmartHomeAppliancesAsync(ListSmartHomeAppliancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListSmartHomeAppliances")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSmartHomeAppliancesRequest, headers, settings, cb)
 	else
@@ -10868,7 +10868,7 @@ function M.GetRoomSkillParameterAsync(GetRoomSkillParameterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRoomSkillParameter")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRoomSkillParameterRequest, headers, settings, cb)
 	else
@@ -10904,7 +10904,7 @@ function M.DeleteAddressBookAsync(DeleteAddressBookRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteAddressBook")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAddressBookRequest, headers, settings, cb)
 	else
@@ -10940,7 +10940,7 @@ function M.ResolveRoomAsync(ResolveRoomRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ResolveRoom")
 	if request_handler then
 		request_handler(settings.uri, "/", ResolveRoomRequest, headers, settings, cb)
 	else
@@ -10976,7 +10976,7 @@ function M.CreateUserAsync(CreateUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateUser")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateUserRequest, headers, settings, cb)
 	else
@@ -11012,7 +11012,7 @@ function M.SearchProfilesAsync(SearchProfilesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SearchProfiles")
 	if request_handler then
 		request_handler(settings.uri, "/", SearchProfilesRequest, headers, settings, cb)
 	else
@@ -11048,7 +11048,7 @@ function M.GetConferencePreferenceAsync(GetConferencePreferenceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetConferencePreference")
 	if request_handler then
 		request_handler(settings.uri, "/", GetConferencePreferenceRequest, headers, settings, cb)
 	else
@@ -11084,7 +11084,7 @@ function M.CreateRoomAsync(CreateRoomRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateRoom")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRoomRequest, headers, settings, cb)
 	else

@@ -4031,7 +4031,7 @@ function M.DeleteRepositoryAsync(DeleteRepositoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteRepository")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRepositoryRequest, headers, settings, cb)
 	else
@@ -4067,7 +4067,7 @@ function M.GetAuthorizationTokenAsync(GetAuthorizationTokenRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetAuthorizationToken")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAuthorizationTokenRequest, headers, settings, cb)
 	else
@@ -4103,7 +4103,7 @@ function M.StartLifecyclePolicyPreviewAsync(StartLifecyclePolicyPreviewRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartLifecyclePolicyPreview")
 	if request_handler then
 		request_handler(settings.uri, "/", StartLifecyclePolicyPreviewRequest, headers, settings, cb)
 	else
@@ -4139,7 +4139,7 @@ function M.DescribeImagesAsync(DescribeImagesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeImages")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeImagesRequest, headers, settings, cb)
 	else
@@ -4175,7 +4175,7 @@ function M.DeleteLifecyclePolicyAsync(DeleteLifecyclePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteLifecyclePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLifecyclePolicyRequest, headers, settings, cb)
 	else
@@ -4211,7 +4211,7 @@ function M.DescribeRepositoriesAsync(DescribeRepositoriesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeRepositories")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRepositoriesRequest, headers, settings, cb)
 	else
@@ -4247,7 +4247,7 @@ function M.GetLifecyclePolicyAsync(GetLifecyclePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetLifecyclePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", GetLifecyclePolicyRequest, headers, settings, cb)
 	else
@@ -4283,7 +4283,7 @@ function M.SetRepositoryPolicyAsync(SetRepositoryPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SetRepositoryPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", SetRepositoryPolicyRequest, headers, settings, cb)
 	else
@@ -4319,7 +4319,7 @@ function M.PutImageAsync(PutImageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutImage")
 	if request_handler then
 		request_handler(settings.uri, "/", PutImageRequest, headers, settings, cb)
 	else
@@ -4355,7 +4355,7 @@ function M.UploadLayerPartAsync(UploadLayerPartRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UploadLayerPart")
 	if request_handler then
 		request_handler(settings.uri, "/", UploadLayerPartRequest, headers, settings, cb)
 	else
@@ -4391,7 +4391,7 @@ function M.PutLifecyclePolicyAsync(PutLifecyclePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutLifecyclePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutLifecyclePolicyRequest, headers, settings, cb)
 	else
@@ -4427,7 +4427,7 @@ function M.ListImagesAsync(ListImagesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListImages")
 	if request_handler then
 		request_handler(settings.uri, "/", ListImagesRequest, headers, settings, cb)
 	else
@@ -4463,7 +4463,7 @@ function M.CompleteLayerUploadAsync(CompleteLayerUploadRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CompleteLayerUpload")
 	if request_handler then
 		request_handler(settings.uri, "/", CompleteLayerUploadRequest, headers, settings, cb)
 	else
@@ -4499,7 +4499,7 @@ function M.InitiateLayerUploadAsync(InitiateLayerUploadRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "InitiateLayerUpload")
 	if request_handler then
 		request_handler(settings.uri, "/", InitiateLayerUploadRequest, headers, settings, cb)
 	else
@@ -4535,7 +4535,7 @@ function M.CreateRepositoryAsync(CreateRepositoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateRepository")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRepositoryRequest, headers, settings, cb)
 	else
@@ -4571,7 +4571,7 @@ function M.BatchCheckLayerAvailabilityAsync(BatchCheckLayerAvailabilityRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchCheckLayerAvailability")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchCheckLayerAvailabilityRequest, headers, settings, cb)
 	else
@@ -4607,7 +4607,7 @@ function M.GetLifecyclePolicyPreviewAsync(GetLifecyclePolicyPreviewRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetLifecyclePolicyPreview")
 	if request_handler then
 		request_handler(settings.uri, "/", GetLifecyclePolicyPreviewRequest, headers, settings, cb)
 	else
@@ -4643,7 +4643,7 @@ function M.BatchDeleteImageAsync(BatchDeleteImageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchDeleteImage")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchDeleteImageRequest, headers, settings, cb)
 	else
@@ -4679,7 +4679,7 @@ function M.GetDownloadUrlForLayerAsync(GetDownloadUrlForLayerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDownloadUrlForLayer")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDownloadUrlForLayerRequest, headers, settings, cb)
 	else
@@ -4715,7 +4715,7 @@ function M.GetRepositoryPolicyAsync(GetRepositoryPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRepositoryPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRepositoryPolicyRequest, headers, settings, cb)
 	else
@@ -4751,7 +4751,7 @@ function M.DeleteRepositoryPolicyAsync(DeleteRepositoryPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteRepositoryPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRepositoryPolicyRequest, headers, settings, cb)
 	else
@@ -4787,7 +4787,7 @@ function M.BatchGetImageAsync(BatchGetImageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchGetImage")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetImageRequest, headers, settings, cb)
 	else

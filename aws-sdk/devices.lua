@@ -1667,7 +1667,7 @@ function M.DescribeDeviceAsync(DescribeDeviceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeDevice")
 	if request_handler then
 		request_handler(settings.uri, "/devices/{deviceId}", DescribeDeviceRequest, headers, settings, cb)
 	else
@@ -1703,7 +1703,7 @@ function M.UpdateDeviceStateAsync(UpdateDeviceStateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateDeviceState")
 	if request_handler then
 		request_handler(settings.uri, "/devices/{deviceId}/state", UpdateDeviceStateRequest, headers, settings, cb)
 	else
@@ -1739,7 +1739,7 @@ function M.UnclaimDeviceAsync(UnclaimDeviceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UnclaimDevice")
 	if request_handler then
 		request_handler(settings.uri, "/devices/{deviceId}/unclaim", UnclaimDeviceRequest, headers, settings, cb)
 	else
@@ -1775,7 +1775,7 @@ function M.GetDeviceMethodsAsync(GetDeviceMethodsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDeviceMethods")
 	if request_handler then
 		request_handler(settings.uri, "/devices/{deviceId}/methods", GetDeviceMethodsRequest, headers, settings, cb)
 	else
@@ -1811,7 +1811,7 @@ function M.ClaimDevicesByClaimCodeAsync(ClaimDevicesByClaimCodeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "ClaimDevicesByClaimCode")
 	if request_handler then
 		request_handler(settings.uri, "/claims/{claimCode}", ClaimDevicesByClaimCodeRequest, headers, settings, cb)
 	else
@@ -1847,7 +1847,7 @@ function M.InvokeDeviceMethodAsync(InvokeDeviceMethodRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "InvokeDeviceMethod")
 	if request_handler then
 		request_handler(settings.uri, "/devices/{deviceId}/methods", InvokeDeviceMethodRequest, headers, settings, cb)
 	else
@@ -1883,7 +1883,7 @@ function M.InitiateDeviceClaimAsync(InitiateDeviceClaimRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "InitiateDeviceClaim")
 	if request_handler then
 		request_handler(settings.uri, "/devices/{deviceId}/initiate-claim", InitiateDeviceClaimRequest, headers, settings, cb)
 	else
@@ -1919,7 +1919,7 @@ function M.FinalizeDeviceClaimAsync(FinalizeDeviceClaimRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "FinalizeDeviceClaim")
 	if request_handler then
 		request_handler(settings.uri, "/devices/{deviceId}/finalize-claim", FinalizeDeviceClaimRequest, headers, settings, cb)
 	else
@@ -1955,7 +1955,7 @@ function M.ListDevicesAsync(ListDevicesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListDevices")
 	if request_handler then
 		request_handler(settings.uri, "/devices", ListDevicesRequest, headers, settings, cb)
 	else
@@ -1991,7 +1991,7 @@ function M.ListDeviceEventsAsync(ListDeviceEventsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListDeviceEvents")
 	if request_handler then
 		request_handler(settings.uri, "/devices/{deviceId}/events", ListDeviceEventsRequest, headers, settings, cb)
 	else

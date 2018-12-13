@@ -9877,7 +9877,7 @@ function M.GetGatewayResponsesAsync(GetGatewayResponsesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetGatewayResponses")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/gatewayresponses", GetGatewayResponsesRequest, headers, settings, cb)
 	else
@@ -9913,7 +9913,7 @@ function M.ImportDocumentationPartsAsync(ImportDocumentationPartsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "ImportDocumentationParts")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/parts", ImportDocumentationPartsRequest, headers, settings, cb)
 	else
@@ -9949,7 +9949,7 @@ function M.DeleteAuthorizerAsync(DeleteAuthorizerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteAuthorizer")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/authorizers/{authorizer_id}", DeleteAuthorizerRequest, headers, settings, cb)
 	else
@@ -9985,7 +9985,7 @@ function M.UpdateModelAsync(UpdateModelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateModel")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/models/{model_name}", UpdateModelRequest, headers, settings, cb)
 	else
@@ -10021,7 +10021,7 @@ function M.CreateDeploymentAsync(CreateDeploymentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateDeployment")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/deployments", CreateDeploymentRequest, headers, settings, cb)
 	else
@@ -10057,7 +10057,7 @@ function M.GetRestApiAsync(GetRestApiRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetRestApi")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}", GetRestApiRequest, headers, settings, cb)
 	else
@@ -10093,7 +10093,7 @@ function M.UpdateRequestValidatorAsync(UpdateRequestValidatorRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateRequestValidator")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}", UpdateRequestValidatorRequest, headers, settings, cb)
 	else
@@ -10129,7 +10129,7 @@ function M.GetGatewayResponseAsync(GetGatewayResponseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetGatewayResponse")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/gatewayresponses/{response_type}", GetGatewayResponseRequest, headers, settings, cb)
 	else
@@ -10165,7 +10165,7 @@ function M.DeleteClientCertificateAsync(DeleteClientCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteClientCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/clientcertificates/{clientcertificate_id}", DeleteClientCertificateRequest, headers, settings, cb)
 	else
@@ -10201,7 +10201,7 @@ function M.GetAuthorizerAsync(GetAuthorizerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetAuthorizer")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/authorizers/{authorizer_id}", GetAuthorizerRequest, headers, settings, cb)
 	else
@@ -10237,7 +10237,7 @@ function M.GetModelsAsync(GetModelsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetModels")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/models", GetModelsRequest, headers, settings, cb)
 	else
@@ -10273,7 +10273,7 @@ function M.GenerateClientCertificateAsync(GenerateClientCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GenerateClientCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/clientcertificates", GenerateClientCertificateRequest, headers, settings, cb)
 	else
@@ -10309,7 +10309,7 @@ function M.PutGatewayResponseAsync(PutGatewayResponseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PutGatewayResponse")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/gatewayresponses/{response_type}", PutGatewayResponseRequest, headers, settings, cb)
 	else
@@ -10345,7 +10345,7 @@ function M.DeleteRestApiAsync(DeleteRestApiRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteRestApi")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}", DeleteRestApiRequest, headers, settings, cb)
 	else
@@ -10381,7 +10381,7 @@ function M.GetMethodAsync(GetMethodRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetMethod")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", GetMethodRequest, headers, settings, cb)
 	else
@@ -10417,7 +10417,7 @@ function M.GetSdkTypesAsync(GetSdkTypesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSdkTypes")
 	if request_handler then
 		request_handler(settings.uri, "/sdktypes", GetSdkTypesRequest, headers, settings, cb)
 	else
@@ -10453,7 +10453,7 @@ function M.UpdateDocumentationVersionAsync(UpdateDocumentationVersionRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateDocumentationVersion")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/versions/{doc_version}", UpdateDocumentationVersionRequest, headers, settings, cb)
 	else
@@ -10489,7 +10489,7 @@ function M.CreateModelAsync(CreateModelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateModel")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/models", CreateModelRequest, headers, settings, cb)
 	else
@@ -10525,7 +10525,7 @@ function M.FlushStageCacheAsync(FlushStageCacheRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "FlushStageCache")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}/cache/data", FlushStageCacheRequest, headers, settings, cb)
 	else
@@ -10561,7 +10561,7 @@ function M.CreateUsagePlanKeyAsync(CreateUsagePlanKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateUsagePlanKey")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans/{usageplanId}/keys", CreateUsagePlanKeyRequest, headers, settings, cb)
 	else
@@ -10597,7 +10597,7 @@ function M.GetUsagePlanKeyAsync(GetUsagePlanKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetUsagePlanKey")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans/{usageplanId}/keys/{keyId}", GetUsagePlanKeyRequest, headers, settings, cb)
 	else
@@ -10633,7 +10633,7 @@ function M.DeleteIntegrationAsync(DeleteIntegrationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteIntegration")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", DeleteIntegrationRequest, headers, settings, cb)
 	else
@@ -10669,7 +10669,7 @@ function M.GetMethodResponseAsync(GetMethodResponseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetMethodResponse")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", GetMethodResponseRequest, headers, settings, cb)
 	else
@@ -10705,7 +10705,7 @@ function M.PutMethodResponseAsync(PutMethodResponseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PutMethodResponse")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", PutMethodResponseRequest, headers, settings, cb)
 	else
@@ -10741,7 +10741,7 @@ function M.DeleteModelAsync(DeleteModelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteModel")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/models/{model_name}", DeleteModelRequest, headers, settings, cb)
 	else
@@ -10777,7 +10777,7 @@ function M.GetStageAsync(GetStageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetStage")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}", GetStageRequest, headers, settings, cb)
 	else
@@ -10813,7 +10813,7 @@ function M.GetStagesAsync(GetStagesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetStages")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/stages", GetStagesRequest, headers, settings, cb)
 	else
@@ -10849,7 +10849,7 @@ function M.DeleteDocumentationVersionAsync(DeleteDocumentationVersionRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteDocumentationVersion")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/versions/{doc_version}", DeleteDocumentationVersionRequest, headers, settings, cb)
 	else
@@ -10885,7 +10885,7 @@ function M.UpdateIntegrationAsync(UpdateIntegrationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateIntegration")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", UpdateIntegrationRequest, headers, settings, cb)
 	else
@@ -10921,7 +10921,7 @@ function M.DeleteUsagePlanAsync(DeleteUsagePlanRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteUsagePlan")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans/{usageplanId}", DeleteUsagePlanRequest, headers, settings, cb)
 	else
@@ -10957,7 +10957,7 @@ function M.GetDomainNamesAsync(GetDomainNamesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDomainNames")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames", GetDomainNamesRequest, headers, settings, cb)
 	else
@@ -10993,7 +10993,7 @@ function M.UpdateDocumentationPartAsync(UpdateDocumentationPartRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateDocumentationPart")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/parts/{part_id}", UpdateDocumentationPartRequest, headers, settings, cb)
 	else
@@ -11029,7 +11029,7 @@ function M.TestInvokeMethodAsync(TestInvokeMethodRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "TestInvokeMethod")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", TestInvokeMethodRequest, headers, settings, cb)
 	else
@@ -11065,7 +11065,7 @@ function M.CreateVpcLinkAsync(CreateVpcLinkRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateVpcLink")
 	if request_handler then
 		request_handler(settings.uri, "/vpclinks", CreateVpcLinkRequest, headers, settings, cb)
 	else
@@ -11101,7 +11101,7 @@ function M.DeleteVpcLinkAsync(DeleteVpcLinkRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteVpcLink")
 	if request_handler then
 		request_handler(settings.uri, "/vpclinks/{vpclink_id}", DeleteVpcLinkRequest, headers, settings, cb)
 	else
@@ -11137,7 +11137,7 @@ function M.UpdateStageAsync(UpdateStageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateStage")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}", UpdateStageRequest, headers, settings, cb)
 	else
@@ -11173,7 +11173,7 @@ function M.DeleteBasePathMappingAsync(DeleteBasePathMappingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteBasePathMapping")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames/{domain_name}/basepathmappings/{base_path}", DeleteBasePathMappingRequest, headers, settings, cb)
 	else
@@ -11209,7 +11209,7 @@ function M.CreateRequestValidatorAsync(CreateRequestValidatorRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateRequestValidator")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/requestvalidators", CreateRequestValidatorRequest, headers, settings, cb)
 	else
@@ -11245,7 +11245,7 @@ function M.TestInvokeAuthorizerAsync(TestInvokeAuthorizerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "TestInvokeAuthorizer")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/authorizers/{authorizer_id}", TestInvokeAuthorizerRequest, headers, settings, cb)
 	else
@@ -11281,7 +11281,7 @@ function M.GetDocumentationVersionAsync(GetDocumentationVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDocumentationVersion")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/versions/{doc_version}", GetDocumentationVersionRequest, headers, settings, cb)
 	else
@@ -11317,7 +11317,7 @@ function M.UpdateMethodAsync(UpdateMethodRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateMethod")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", UpdateMethodRequest, headers, settings, cb)
 	else
@@ -11353,7 +11353,7 @@ function M.GetApiKeyAsync(GetApiKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetApiKey")
 	if request_handler then
 		request_handler(settings.uri, "/apikeys/{api_Key}", GetApiKeyRequest, headers, settings, cb)
 	else
@@ -11389,7 +11389,7 @@ function M.GetSdkTypeAsync(GetSdkTypeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSdkType")
 	if request_handler then
 		request_handler(settings.uri, "/sdktypes/{sdktype_id}", GetSdkTypeRequest, headers, settings, cb)
 	else
@@ -11425,7 +11425,7 @@ function M.GetIntegrationAsync(GetIntegrationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetIntegration")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", GetIntegrationRequest, headers, settings, cb)
 	else
@@ -11461,7 +11461,7 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "TagResource")
 	if request_handler then
 		request_handler(settings.uri, "/tags/{resource_arn}", TagResourceRequest, headers, settings, cb)
 	else
@@ -11497,7 +11497,7 @@ function M.UpdateGatewayResponseAsync(UpdateGatewayResponseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateGatewayResponse")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/gatewayresponses/{response_type}", UpdateGatewayResponseRequest, headers, settings, cb)
 	else
@@ -11533,7 +11533,7 @@ function M.DeleteDeploymentAsync(DeleteDeploymentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteDeployment")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/deployments/{deployment_id}", DeleteDeploymentRequest, headers, settings, cb)
 	else
@@ -11569,7 +11569,7 @@ function M.GetUsagePlanAsync(GetUsagePlanRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetUsagePlan")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans/{usageplanId}", GetUsagePlanRequest, headers, settings, cb)
 	else
@@ -11605,7 +11605,7 @@ function M.GetVpcLinkAsync(GetVpcLinkRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetVpcLink")
 	if request_handler then
 		request_handler(settings.uri, "/vpclinks/{vpclink_id}", GetVpcLinkRequest, headers, settings, cb)
 	else
@@ -11641,7 +11641,7 @@ function M.UpdateUsagePlanAsync(UpdateUsagePlanRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateUsagePlan")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans/{usageplanId}", UpdateUsagePlanRequest, headers, settings, cb)
 	else
@@ -11677,7 +11677,7 @@ function M.CreateAuthorizerAsync(CreateAuthorizerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateAuthorizer")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/authorizers", CreateAuthorizerRequest, headers, settings, cb)
 	else
@@ -11713,7 +11713,7 @@ function M.GetClientCertificateAsync(GetClientCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetClientCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/clientcertificates/{clientcertificate_id}", GetClientCertificateRequest, headers, settings, cb)
 	else
@@ -11749,7 +11749,7 @@ function M.UpdateDeploymentAsync(UpdateDeploymentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateDeployment")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/deployments/{deployment_id}", UpdateDeploymentRequest, headers, settings, cb)
 	else
@@ -11785,7 +11785,7 @@ function M.GetModelTemplateAsync(GetModelTemplateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetModelTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/models/{model_name}/default_template", GetModelTemplateRequest, headers, settings, cb)
 	else
@@ -11821,7 +11821,7 @@ function M.GetBasePathMappingsAsync(GetBasePathMappingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetBasePathMappings")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames/{domain_name}/basepathmappings", GetBasePathMappingsRequest, headers, settings, cb)
 	else
@@ -11857,7 +11857,7 @@ function M.GetSdkAsync(GetSdkRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSdk")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}/sdks/{sdk_type}", GetSdkRequest, headers, settings, cb)
 	else
@@ -11893,7 +11893,7 @@ function M.GetRequestValidatorAsync(GetRequestValidatorRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetRequestValidator")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}", GetRequestValidatorRequest, headers, settings, cb)
 	else
@@ -11929,7 +11929,7 @@ function M.FlushStageAuthorizersCacheAsync(FlushStageAuthorizersCacheRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "FlushStageAuthorizersCache")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}/cache/authorizers", FlushStageAuthorizersCacheRequest, headers, settings, cb)
 	else
@@ -11965,7 +11965,7 @@ function M.GetIntegrationResponseAsync(GetIntegrationResponseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetIntegrationResponse")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", GetIntegrationResponseRequest, headers, settings, cb)
 	else
@@ -12001,7 +12001,7 @@ function M.GetDeploymentsAsync(GetDeploymentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDeployments")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/deployments", GetDeploymentsRequest, headers, settings, cb)
 	else
@@ -12037,7 +12037,7 @@ function M.CreateResourceAsync(CreateResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateResource")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{parent_id}", CreateResourceRequest, headers, settings, cb)
 	else
@@ -12073,7 +12073,7 @@ function M.GetApiKeysAsync(GetApiKeysRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetApiKeys")
 	if request_handler then
 		request_handler(settings.uri, "/apikeys", GetApiKeysRequest, headers, settings, cb)
 	else
@@ -12109,7 +12109,7 @@ function M.DeleteApiKeyAsync(DeleteApiKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteApiKey")
 	if request_handler then
 		request_handler(settings.uri, "/apikeys/{api_Key}", DeleteApiKeyRequest, headers, settings, cb)
 	else
@@ -12145,7 +12145,7 @@ function M.CreateApiKeyAsync(CreateApiKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateApiKey")
 	if request_handler then
 		request_handler(settings.uri, "/apikeys", CreateApiKeyRequest, headers, settings, cb)
 	else
@@ -12181,7 +12181,7 @@ function M.UpdateAuthorizerAsync(UpdateAuthorizerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateAuthorizer")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/authorizers/{authorizer_id}", UpdateAuthorizerRequest, headers, settings, cb)
 	else
@@ -12217,7 +12217,7 @@ function M.GetModelAsync(GetModelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetModel")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/models/{model_name}", GetModelRequest, headers, settings, cb)
 	else
@@ -12253,7 +12253,7 @@ function M.GetUsagePlanKeysAsync(GetUsagePlanKeysRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetUsagePlanKeys")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans/{usageplanId}/keys", GetUsagePlanKeysRequest, headers, settings, cb)
 	else
@@ -12289,7 +12289,7 @@ function M.DeleteMethodResponseAsync(DeleteMethodResponseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteMethodResponse")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", DeleteMethodResponseRequest, headers, settings, cb)
 	else
@@ -12325,7 +12325,7 @@ function M.GetResourcesAsync(GetResourcesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetResources")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources", GetResourcesRequest, headers, settings, cb)
 	else
@@ -12361,7 +12361,7 @@ function M.GetRestApisAsync(GetRestApisRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetRestApis")
 	if request_handler then
 		request_handler(settings.uri, "/restapis", GetRestApisRequest, headers, settings, cb)
 	else
@@ -12397,7 +12397,7 @@ function M.GetResourceAsync(GetResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetResource")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}", GetResourceRequest, headers, settings, cb)
 	else
@@ -12433,7 +12433,7 @@ function M.DeleteIntegrationResponseAsync(DeleteIntegrationResponseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteIntegrationResponse")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", DeleteIntegrationResponseRequest, headers, settings, cb)
 	else
@@ -12469,7 +12469,7 @@ function M.GetUsagePlansAsync(GetUsagePlansRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetUsagePlans")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans", GetUsagePlansRequest, headers, settings, cb)
 	else
@@ -12505,7 +12505,7 @@ function M.ImportApiKeysAsync(ImportApiKeysRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ImportApiKeys")
 	if request_handler then
 		request_handler(settings.uri, "/apikeys?mode=import", ImportApiKeysRequest, headers, settings, cb)
 	else
@@ -12541,7 +12541,7 @@ function M.GetBasePathMappingAsync(GetBasePathMappingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetBasePathMapping")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames/{domain_name}/basepathmappings/{base_path}", GetBasePathMappingRequest, headers, settings, cb)
 	else
@@ -12577,7 +12577,7 @@ function M.GetExportAsync(GetExportRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetExport")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}/exports/{export_type}", GetExportRequest, headers, settings, cb)
 	else
@@ -12613,7 +12613,7 @@ function M.UpdateResourceAsync(UpdateResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateResource")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}", UpdateResourceRequest, headers, settings, cb)
 	else
@@ -12649,7 +12649,7 @@ function M.GetDomainNameAsync(GetDomainNameRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDomainName")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames/{domain_name}", GetDomainNameRequest, headers, settings, cb)
 	else
@@ -12685,7 +12685,7 @@ function M.UpdateDomainNameAsync(UpdateDomainNameRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateDomainName")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames/{domain_name}", UpdateDomainNameRequest, headers, settings, cb)
 	else
@@ -12721,7 +12721,7 @@ function M.UpdateClientCertificateAsync(UpdateClientCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateClientCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/clientcertificates/{clientcertificate_id}", UpdateClientCertificateRequest, headers, settings, cb)
 	else
@@ -12757,7 +12757,7 @@ function M.CreateDomainNameAsync(CreateDomainNameRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateDomainName")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames", CreateDomainNameRequest, headers, settings, cb)
 	else
@@ -12793,7 +12793,7 @@ function M.DeleteDomainNameAsync(DeleteDomainNameRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteDomainName")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames/{domain_name}", DeleteDomainNameRequest, headers, settings, cb)
 	else
@@ -12829,7 +12829,7 @@ function M.PutMethodAsync(PutMethodRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PutMethod")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", PutMethodRequest, headers, settings, cb)
 	else
@@ -12865,7 +12865,7 @@ function M.DeleteStageAsync(DeleteStageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteStage")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}", DeleteStageRequest, headers, settings, cb)
 	else
@@ -12901,7 +12901,7 @@ function M.GetDocumentationPartAsync(GetDocumentationPartRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDocumentationPart")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/parts/{part_id}", GetDocumentationPartRequest, headers, settings, cb)
 	else
@@ -12937,7 +12937,7 @@ function M.UpdateAccountAsync(UpdateAccountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateAccount")
 	if request_handler then
 		request_handler(settings.uri, "/account", UpdateAccountRequest, headers, settings, cb)
 	else
@@ -12973,7 +12973,7 @@ function M.PutRestApiAsync(PutRestApiRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PutRestApi")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}", PutRestApiRequest, headers, settings, cb)
 	else
@@ -13009,7 +13009,7 @@ function M.GetUsageAsync(GetUsageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetUsage")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans/{usageplanId}/usage", GetUsageRequest, headers, settings, cb)
 	else
@@ -13045,7 +13045,7 @@ function M.GetDeploymentAsync(GetDeploymentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDeployment")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/deployments/{deployment_id}", GetDeploymentRequest, headers, settings, cb)
 	else
@@ -13081,7 +13081,7 @@ function M.CreateRestApiAsync(CreateRestApiRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateRestApi")
 	if request_handler then
 		request_handler(settings.uri, "/restapis", CreateRestApiRequest, headers, settings, cb)
 	else
@@ -13117,7 +13117,7 @@ function M.GetTagsAsync(GetTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetTags")
 	if request_handler then
 		request_handler(settings.uri, "/tags/{resource_arn}", GetTagsRequest, headers, settings, cb)
 	else
@@ -13153,7 +13153,7 @@ function M.UpdateVpcLinkAsync(UpdateVpcLinkRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateVpcLink")
 	if request_handler then
 		request_handler(settings.uri, "/vpclinks/{vpclink_id}", UpdateVpcLinkRequest, headers, settings, cb)
 	else
@@ -13189,7 +13189,7 @@ function M.GetAuthorizersAsync(GetAuthorizersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetAuthorizers")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/authorizers", GetAuthorizersRequest, headers, settings, cb)
 	else
@@ -13225,7 +13225,7 @@ function M.GetClientCertificatesAsync(GetClientCertificatesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetClientCertificates")
 	if request_handler then
 		request_handler(settings.uri, "/clientcertificates", GetClientCertificatesRequest, headers, settings, cb)
 	else
@@ -13261,7 +13261,7 @@ function M.DeleteDocumentationPartAsync(DeleteDocumentationPartRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteDocumentationPart")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/parts/{part_id}", DeleteDocumentationPartRequest, headers, settings, cb)
 	else
@@ -13297,7 +13297,7 @@ function M.DeleteResourceAsync(DeleteResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteResource")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}", DeleteResourceRequest, headers, settings, cb)
 	else
@@ -13333,7 +13333,7 @@ function M.CreateStageAsync(CreateStageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateStage")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/stages", CreateStageRequest, headers, settings, cb)
 	else
@@ -13369,7 +13369,7 @@ function M.UpdateBasePathMappingAsync(UpdateBasePathMappingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateBasePathMapping")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames/{domain_name}/basepathmappings/{base_path}", UpdateBasePathMappingRequest, headers, settings, cb)
 	else
@@ -13405,7 +13405,7 @@ function M.UpdateMethodResponseAsync(UpdateMethodResponseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateMethodResponse")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", UpdateMethodResponseRequest, headers, settings, cb)
 	else
@@ -13441,7 +13441,7 @@ function M.UpdateUsageAsync(UpdateUsageRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateUsage")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans/{usageplanId}/keys/{keyId}/usage", UpdateUsageRequest, headers, settings, cb)
 	else
@@ -13477,7 +13477,7 @@ function M.GetDocumentationPartsAsync(GetDocumentationPartsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDocumentationParts")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/parts", GetDocumentationPartsRequest, headers, settings, cb)
 	else
@@ -13513,7 +13513,7 @@ function M.CreateDocumentationPartAsync(CreateDocumentationPartRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateDocumentationPart")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/parts", CreateDocumentationPartRequest, headers, settings, cb)
 	else
@@ -13549,7 +13549,7 @@ function M.CreateBasePathMappingAsync(CreateBasePathMappingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateBasePathMapping")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames/{domain_name}/basepathmappings", CreateBasePathMappingRequest, headers, settings, cb)
 	else
@@ -13585,7 +13585,7 @@ function M.CreateUsagePlanAsync(CreateUsagePlanRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateUsagePlan")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans", CreateUsagePlanRequest, headers, settings, cb)
 	else
@@ -13621,7 +13621,7 @@ function M.UpdateApiKeyAsync(UpdateApiKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateApiKey")
 	if request_handler then
 		request_handler(settings.uri, "/apikeys/{api_Key}", UpdateApiKeyRequest, headers, settings, cb)
 	else
@@ -13657,7 +13657,7 @@ function M.DeleteGatewayResponseAsync(DeleteGatewayResponseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteGatewayResponse")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/gatewayresponses/{response_type}", DeleteGatewayResponseRequest, headers, settings, cb)
 	else
@@ -13693,7 +13693,7 @@ function M.ImportRestApiAsync(ImportRestApiRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ImportRestApi")
 	if request_handler then
 		request_handler(settings.uri, "/restapis?mode=import", ImportRestApiRequest, headers, settings, cb)
 	else
@@ -13729,7 +13729,7 @@ function M.UpdateRestApiAsync(UpdateRestApiRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateRestApi")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}", UpdateRestApiRequest, headers, settings, cb)
 	else
@@ -13765,7 +13765,7 @@ function M.CreateDocumentationVersionAsync(CreateDocumentationVersionRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateDocumentationVersion")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/versions", CreateDocumentationVersionRequest, headers, settings, cb)
 	else
@@ -13801,7 +13801,7 @@ function M.PutIntegrationResponseAsync(PutIntegrationResponseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PutIntegrationResponse")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", PutIntegrationResponseRequest, headers, settings, cb)
 	else
@@ -13837,7 +13837,7 @@ function M.GetDocumentationVersionsAsync(GetDocumentationVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDocumentationVersions")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/versions", GetDocumentationVersionsRequest, headers, settings, cb)
 	else
@@ -13873,7 +13873,7 @@ function M.DeleteMethodAsync(DeleteMethodRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteMethod")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", DeleteMethodRequest, headers, settings, cb)
 	else
@@ -13909,7 +13909,7 @@ function M.GetRequestValidatorsAsync(GetRequestValidatorsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetRequestValidators")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/requestvalidators", GetRequestValidatorsRequest, headers, settings, cb)
 	else
@@ -13945,7 +13945,7 @@ function M.GetAccountAsync(GetAccountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetAccount")
 	if request_handler then
 		request_handler(settings.uri, "/account", GetAccountRequest, headers, settings, cb)
 	else
@@ -13981,7 +13981,7 @@ function M.DeleteUsagePlanKeyAsync(DeleteUsagePlanKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteUsagePlanKey")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans/{usageplanId}/keys/{keyId}", DeleteUsagePlanKeyRequest, headers, settings, cb)
 	else
@@ -14017,7 +14017,7 @@ function M.DeleteRequestValidatorAsync(DeleteRequestValidatorRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteRequestValidator")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}", DeleteRequestValidatorRequest, headers, settings, cb)
 	else
@@ -14053,7 +14053,7 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "UntagResource")
 	if request_handler then
 		request_handler(settings.uri, "/tags/{resource_arn}", UntagResourceRequest, headers, settings, cb)
 	else
@@ -14089,7 +14089,7 @@ function M.PutIntegrationAsync(PutIntegrationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PutIntegration")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", PutIntegrationRequest, headers, settings, cb)
 	else
@@ -14125,7 +14125,7 @@ function M.UpdateIntegrationResponseAsync(UpdateIntegrationResponseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateIntegrationResponse")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", UpdateIntegrationResponseRequest, headers, settings, cb)
 	else
@@ -14161,7 +14161,7 @@ function M.GetVpcLinksAsync(GetVpcLinksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetVpcLinks")
 	if request_handler then
 		request_handler(settings.uri, "/vpclinks", GetVpcLinksRequest, headers, settings, cb)
 	else

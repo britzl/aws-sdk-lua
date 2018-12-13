@@ -723,7 +723,7 @@ function M.DescribeReportDefinitionsAsync(DescribeReportDefinitionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeReportDefinitions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReportDefinitionsRequest, headers, settings, cb)
 	else
@@ -759,7 +759,7 @@ function M.PutReportDefinitionAsync(PutReportDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutReportDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/", PutReportDefinitionRequest, headers, settings, cb)
 	else
@@ -795,7 +795,7 @@ function M.DeleteReportDefinitionAsync(DeleteReportDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteReportDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteReportDefinitionRequest, headers, settings, cb)
 	else

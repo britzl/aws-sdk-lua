@@ -1552,7 +1552,7 @@ function M.DescribeVoicesAsync(DescribeVoicesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeVoices")
 	if request_handler then
 		request_handler(settings.uri, "/v1/voices", DescribeVoicesInput, headers, settings, cb)
 	else
@@ -1588,7 +1588,7 @@ function M.ListSpeechSynthesisTasksAsync(ListSpeechSynthesisTasksInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListSpeechSynthesisTasks")
 	if request_handler then
 		request_handler(settings.uri, "/v1/synthesisTasks", ListSpeechSynthesisTasksInput, headers, settings, cb)
 	else
@@ -1624,7 +1624,7 @@ function M.GetLexiconAsync(GetLexiconInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetLexicon")
 	if request_handler then
 		request_handler(settings.uri, "/v1/lexicons/{LexiconName}", GetLexiconInput, headers, settings, cb)
 	else
@@ -1660,7 +1660,7 @@ function M.StartSpeechSynthesisTaskAsync(StartSpeechSynthesisTaskInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "StartSpeechSynthesisTask")
 	if request_handler then
 		request_handler(settings.uri, "/v1/synthesisTasks", StartSpeechSynthesisTaskInput, headers, settings, cb)
 	else
@@ -1696,7 +1696,7 @@ function M.GetSpeechSynthesisTaskAsync(GetSpeechSynthesisTaskInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSpeechSynthesisTask")
 	if request_handler then
 		request_handler(settings.uri, "/v1/synthesisTasks/{TaskId}", GetSpeechSynthesisTaskInput, headers, settings, cb)
 	else
@@ -1732,7 +1732,7 @@ function M.PutLexiconAsync(PutLexiconInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "PutLexicon")
 	if request_handler then
 		request_handler(settings.uri, "/v1/lexicons/{LexiconName}", PutLexiconInput, headers, settings, cb)
 	else
@@ -1768,7 +1768,7 @@ function M.ListLexiconsAsync(ListLexiconsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListLexicons")
 	if request_handler then
 		request_handler(settings.uri, "/v1/lexicons", ListLexiconsInput, headers, settings, cb)
 	else
@@ -1804,7 +1804,7 @@ function M.SynthesizeSpeechAsync(SynthesizeSpeechInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "SynthesizeSpeech")
 	if request_handler then
 		request_handler(settings.uri, "/v1/speech", SynthesizeSpeechInput, headers, settings, cb)
 	else
@@ -1840,7 +1840,7 @@ function M.DeleteLexiconAsync(DeleteLexiconInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteLexicon")
 	if request_handler then
 		request_handler(settings.uri, "/v1/lexicons/{LexiconName}", DeleteLexiconInput, headers, settings, cb)
 	else

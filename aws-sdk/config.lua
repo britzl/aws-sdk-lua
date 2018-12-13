@@ -6412,7 +6412,7 @@ function M.StopConfigurationRecorderAsync(StopConfigurationRecorderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopConfigurationRecorder")
 	if request_handler then
 		request_handler(settings.uri, "/", StopConfigurationRecorderRequest, headers, settings, cb)
 	else
@@ -6448,7 +6448,7 @@ function M.GetComplianceDetailsByResourceAsync(GetComplianceDetailsByResourceReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetComplianceDetailsByResource")
 	if request_handler then
 		request_handler(settings.uri, "/", GetComplianceDetailsByResourceRequest, headers, settings, cb)
 	else
@@ -6484,7 +6484,7 @@ function M.ListDiscoveredResourcesAsync(ListDiscoveredResourcesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListDiscoveredResources")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDiscoveredResourcesRequest, headers, settings, cb)
 	else
@@ -6520,7 +6520,7 @@ function M.DeleteDeliveryChannelAsync(DeleteDeliveryChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDeliveryChannel")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDeliveryChannelRequest, headers, settings, cb)
 	else
@@ -6556,7 +6556,7 @@ function M.DeleteAggregationAuthorizationAsync(DeleteAggregationAuthorizationReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteAggregationAuthorization")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAggregationAuthorizationRequest, headers, settings, cb)
 	else
@@ -6592,7 +6592,7 @@ function M.GetAggregateConfigRuleComplianceSummaryAsync(GetAggregateConfigRuleCo
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetAggregateConfigRuleComplianceSummary")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAggregateConfigRuleComplianceSummaryRequest, headers, settings, cb)
 	else
@@ -6628,7 +6628,7 @@ function M.DeleteConfigurationAggregatorAsync(DeleteConfigurationAggregatorReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteConfigurationAggregator")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConfigurationAggregatorRequest, headers, settings, cb)
 	else
@@ -6664,7 +6664,7 @@ function M.DeleteRetentionConfigurationAsync(DeleteRetentionConfigurationRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteRetentionConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRetentionConfigurationRequest, headers, settings, cb)
 	else
@@ -6700,7 +6700,7 @@ function M.PutEvaluationsAsync(PutEvaluationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutEvaluations")
 	if request_handler then
 		request_handler(settings.uri, "/", PutEvaluationsRequest, headers, settings, cb)
 	else
@@ -6736,7 +6736,7 @@ function M.DeleteConfigRuleAsync(DeleteConfigRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteConfigRule")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConfigRuleRequest, headers, settings, cb)
 	else
@@ -6772,7 +6772,7 @@ function M.DescribeConfigurationRecordersAsync(DescribeConfigurationRecordersReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeConfigurationRecorders")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConfigurationRecordersRequest, headers, settings, cb)
 	else
@@ -6808,7 +6808,7 @@ function M.DescribeAggregationAuthorizationsAsync(DescribeAggregationAuthorizati
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAggregationAuthorizations")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAggregationAuthorizationsRequest, headers, settings, cb)
 	else
@@ -6844,7 +6844,7 @@ function M.PutConfigurationRecorderAsync(PutConfigurationRecorderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutConfigurationRecorder")
 	if request_handler then
 		request_handler(settings.uri, "/", PutConfigurationRecorderRequest, headers, settings, cb)
 	else
@@ -6880,7 +6880,7 @@ function M.DescribeConfigurationRecorderStatusAsync(DescribeConfigurationRecorde
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeConfigurationRecorderStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConfigurationRecorderStatusRequest, headers, settings, cb)
 	else
@@ -6916,7 +6916,7 @@ function M.GetComplianceDetailsByConfigRuleAsync(GetComplianceDetailsByConfigRul
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetComplianceDetailsByConfigRule")
 	if request_handler then
 		request_handler(settings.uri, "/", GetComplianceDetailsByConfigRuleRequest, headers, settings, cb)
 	else
@@ -6952,7 +6952,7 @@ function M.DescribeDeliveryChannelStatusAsync(DescribeDeliveryChannelStatusReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDeliveryChannelStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDeliveryChannelStatusRequest, headers, settings, cb)
 	else
@@ -6988,7 +6988,7 @@ function M.DeliverConfigSnapshotAsync(DeliverConfigSnapshotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeliverConfigSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", DeliverConfigSnapshotRequest, headers, settings, cb)
 	else
@@ -7024,7 +7024,7 @@ function M.StartConfigRulesEvaluationAsync(StartConfigRulesEvaluationRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartConfigRulesEvaluation")
 	if request_handler then
 		request_handler(settings.uri, "/", StartConfigRulesEvaluationRequest, headers, settings, cb)
 	else
@@ -7056,7 +7056,7 @@ function M.GetComplianceSummaryByConfigRuleAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetComplianceSummaryByConfigRule")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -7091,7 +7091,7 @@ function M.StartConfigurationRecorderAsync(StartConfigurationRecorderRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartConfigurationRecorder")
 	if request_handler then
 		request_handler(settings.uri, "/", StartConfigurationRecorderRequest, headers, settings, cb)
 	else
@@ -7127,7 +7127,7 @@ function M.DeletePendingAggregationRequestAsync(DeletePendingAggregationRequestR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeletePendingAggregationRequest")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePendingAggregationRequestRequest, headers, settings, cb)
 	else
@@ -7163,7 +7163,7 @@ function M.GetDiscoveredResourceCountsAsync(GetDiscoveredResourceCountsRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDiscoveredResourceCounts")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDiscoveredResourceCountsRequest, headers, settings, cb)
 	else
@@ -7199,7 +7199,7 @@ function M.BatchGetResourceConfigAsync(BatchGetResourceConfigRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchGetResourceConfig")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetResourceConfigRequest, headers, settings, cb)
 	else
@@ -7235,7 +7235,7 @@ function M.DescribeComplianceByResourceAsync(DescribeComplianceByResourceRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeComplianceByResource")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeComplianceByResourceRequest, headers, settings, cb)
 	else
@@ -7271,7 +7271,7 @@ function M.GetResourceConfigHistoryAsync(GetResourceConfigHistoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetResourceConfigHistory")
 	if request_handler then
 		request_handler(settings.uri, "/", GetResourceConfigHistoryRequest, headers, settings, cb)
 	else
@@ -7307,7 +7307,7 @@ function M.DescribeConfigurationAggregatorSourcesStatusAsync(DescribeConfigurati
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeConfigurationAggregatorSourcesStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConfigurationAggregatorSourcesStatusRequest, headers, settings, cb)
 	else
@@ -7343,7 +7343,7 @@ function M.PutAggregationAuthorizationAsync(PutAggregationAuthorizationRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutAggregationAuthorization")
 	if request_handler then
 		request_handler(settings.uri, "/", PutAggregationAuthorizationRequest, headers, settings, cb)
 	else
@@ -7379,7 +7379,7 @@ function M.DescribeConfigRuleEvaluationStatusAsync(DescribeConfigRuleEvaluationS
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeConfigRuleEvaluationStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConfigRuleEvaluationStatusRequest, headers, settings, cb)
 	else
@@ -7415,7 +7415,7 @@ function M.PutRetentionConfigurationAsync(PutRetentionConfigurationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutRetentionConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRetentionConfigurationRequest, headers, settings, cb)
 	else
@@ -7451,7 +7451,7 @@ function M.DescribeDeliveryChannelsAsync(DescribeDeliveryChannelsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDeliveryChannels")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDeliveryChannelsRequest, headers, settings, cb)
 	else
@@ -7487,7 +7487,7 @@ function M.GetComplianceSummaryByResourceTypeAsync(GetComplianceSummaryByResourc
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetComplianceSummaryByResourceType")
 	if request_handler then
 		request_handler(settings.uri, "/", GetComplianceSummaryByResourceTypeRequest, headers, settings, cb)
 	else
@@ -7523,7 +7523,7 @@ function M.GetAggregateComplianceDetailsByConfigRuleAsync(GetAggregateCompliance
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetAggregateComplianceDetailsByConfigRule")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAggregateComplianceDetailsByConfigRuleRequest, headers, settings, cb)
 	else
@@ -7559,7 +7559,7 @@ function M.DescribePendingAggregationRequestsAsync(DescribePendingAggregationReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribePendingAggregationRequests")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePendingAggregationRequestsRequest, headers, settings, cb)
 	else
@@ -7595,7 +7595,7 @@ function M.DescribeConfigRulesAsync(DescribeConfigRulesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeConfigRules")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConfigRulesRequest, headers, settings, cb)
 	else
@@ -7631,7 +7631,7 @@ function M.DescribeAggregateComplianceByConfigRulesAsync(DescribeAggregateCompli
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAggregateComplianceByConfigRules")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAggregateComplianceByConfigRulesRequest, headers, settings, cb)
 	else
@@ -7667,7 +7667,7 @@ function M.PutConfigRuleAsync(PutConfigRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutConfigRule")
 	if request_handler then
 		request_handler(settings.uri, "/", PutConfigRuleRequest, headers, settings, cb)
 	else
@@ -7703,7 +7703,7 @@ function M.DeleteEvaluationResultsAsync(DeleteEvaluationResultsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteEvaluationResults")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEvaluationResultsRequest, headers, settings, cb)
 	else
@@ -7739,7 +7739,7 @@ function M.DescribeComplianceByConfigRuleAsync(DescribeComplianceByConfigRuleReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeComplianceByConfigRule")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeComplianceByConfigRuleRequest, headers, settings, cb)
 	else
@@ -7775,7 +7775,7 @@ function M.DescribeConfigurationAggregatorsAsync(DescribeConfigurationAggregator
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeConfigurationAggregators")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConfigurationAggregatorsRequest, headers, settings, cb)
 	else
@@ -7811,7 +7811,7 @@ function M.PutDeliveryChannelAsync(PutDeliveryChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutDeliveryChannel")
 	if request_handler then
 		request_handler(settings.uri, "/", PutDeliveryChannelRequest, headers, settings, cb)
 	else
@@ -7847,7 +7847,7 @@ function M.DescribeRetentionConfigurationsAsync(DescribeRetentionConfigurationsR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeRetentionConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRetentionConfigurationsRequest, headers, settings, cb)
 	else
@@ -7883,7 +7883,7 @@ function M.PutConfigurationAggregatorAsync(PutConfigurationAggregatorRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutConfigurationAggregator")
 	if request_handler then
 		request_handler(settings.uri, "/", PutConfigurationAggregatorRequest, headers, settings, cb)
 	else
@@ -7919,7 +7919,7 @@ function M.DeleteConfigurationRecorderAsync(DeleteConfigurationRecorderRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteConfigurationRecorder")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConfigurationRecorderRequest, headers, settings, cb)
 	else

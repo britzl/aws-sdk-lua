@@ -6890,7 +6890,7 @@ function M.RegisterTargetsAsync(RegisterTargetsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RegisterTargets")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterTargetsInput, headers, settings, cb)
 	else
@@ -6926,7 +6926,7 @@ function M.DescribeSSLPoliciesAsync(DescribeSSLPoliciesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeSSLPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSSLPoliciesInput, headers, settings, cb)
 	else
@@ -6962,7 +6962,7 @@ function M.SetSecurityGroupsAsync(SetSecurityGroupsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetSecurityGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", SetSecurityGroupsInput, headers, settings, cb)
 	else
@@ -6998,7 +6998,7 @@ function M.AddListenerCertificatesAsync(AddListenerCertificatesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AddListenerCertificates")
 	if request_handler then
 		request_handler(settings.uri, "/", AddListenerCertificatesInput, headers, settings, cb)
 	else
@@ -7034,7 +7034,7 @@ function M.DeleteListenerAsync(DeleteListenerInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteListener")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteListenerInput, headers, settings, cb)
 	else
@@ -7070,7 +7070,7 @@ function M.ModifyTargetGroupAsync(ModifyTargetGroupInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyTargetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyTargetGroupInput, headers, settings, cb)
 	else
@@ -7106,7 +7106,7 @@ function M.CreateRuleAsync(CreateRuleInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateRule")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRuleInput, headers, settings, cb)
 	else
@@ -7142,7 +7142,7 @@ function M.SetRulePrioritiesAsync(SetRulePrioritiesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetRulePriorities")
 	if request_handler then
 		request_handler(settings.uri, "/", SetRulePrioritiesInput, headers, settings, cb)
 	else
@@ -7178,7 +7178,7 @@ function M.ModifyTargetGroupAttributesAsync(ModifyTargetGroupAttributesInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyTargetGroupAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyTargetGroupAttributesInput, headers, settings, cb)
 	else
@@ -7214,7 +7214,7 @@ function M.DescribeLoadBalancerAttributesAsync(DescribeLoadBalancerAttributesInp
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeLoadBalancerAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLoadBalancerAttributesInput, headers, settings, cb)
 	else
@@ -7250,7 +7250,7 @@ function M.SetIpAddressTypeAsync(SetIpAddressTypeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetIpAddressType")
 	if request_handler then
 		request_handler(settings.uri, "/", SetIpAddressTypeInput, headers, settings, cb)
 	else
@@ -7286,7 +7286,7 @@ function M.RemoveListenerCertificatesAsync(RemoveListenerCertificatesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RemoveListenerCertificates")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveListenerCertificatesInput, headers, settings, cb)
 	else
@@ -7322,7 +7322,7 @@ function M.ModifyListenerAsync(ModifyListenerInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyListener")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyListenerInput, headers, settings, cb)
 	else
@@ -7358,7 +7358,7 @@ function M.DeleteLoadBalancerAsync(DeleteLoadBalancerInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteLoadBalancer")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLoadBalancerInput, headers, settings, cb)
 	else
@@ -7394,7 +7394,7 @@ function M.DeleteRuleAsync(DeleteRuleInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteRule")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRuleInput, headers, settings, cb)
 	else
@@ -7430,7 +7430,7 @@ function M.DeleteTargetGroupAsync(DeleteTargetGroupInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteTargetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTargetGroupInput, headers, settings, cb)
 	else
@@ -7466,7 +7466,7 @@ function M.DescribeTargetGroupAttributesAsync(DescribeTargetGroupAttributesInput
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeTargetGroupAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTargetGroupAttributesInput, headers, settings, cb)
 	else
@@ -7502,7 +7502,7 @@ function M.DescribeLoadBalancersAsync(DescribeLoadBalancersInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeLoadBalancers")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLoadBalancersInput, headers, settings, cb)
 	else
@@ -7538,7 +7538,7 @@ function M.DescribeListenersAsync(DescribeListenersInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeListeners")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeListenersInput, headers, settings, cb)
 	else
@@ -7574,7 +7574,7 @@ function M.RemoveTagsAsync(RemoveTagsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RemoveTags")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsInput, headers, settings, cb)
 	else
@@ -7610,7 +7610,7 @@ function M.CreateListenerAsync(CreateListenerInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateListener")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateListenerInput, headers, settings, cb)
 	else
@@ -7646,7 +7646,7 @@ function M.SetSubnetsAsync(SetSubnetsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SetSubnets")
 	if request_handler then
 		request_handler(settings.uri, "/", SetSubnetsInput, headers, settings, cb)
 	else
@@ -7682,7 +7682,7 @@ function M.DescribeTagsAsync(DescribeTagsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeTags")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagsInput, headers, settings, cb)
 	else
@@ -7718,7 +7718,7 @@ function M.ModifyRuleAsync(ModifyRuleInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyRule")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyRuleInput, headers, settings, cb)
 	else
@@ -7754,7 +7754,7 @@ function M.CreateTargetGroupAsync(CreateTargetGroupInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateTargetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTargetGroupInput, headers, settings, cb)
 	else
@@ -7790,7 +7790,7 @@ function M.AddTagsAsync(AddTagsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AddTags")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsInput, headers, settings, cb)
 	else
@@ -7826,7 +7826,7 @@ function M.DescribeTargetGroupsAsync(DescribeTargetGroupsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeTargetGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTargetGroupsInput, headers, settings, cb)
 	else
@@ -7862,7 +7862,7 @@ function M.DeregisterTargetsAsync(DeregisterTargetsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeregisterTargets")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterTargetsInput, headers, settings, cb)
 	else
@@ -7898,7 +7898,7 @@ function M.ModifyLoadBalancerAttributesAsync(ModifyLoadBalancerAttributesInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ModifyLoadBalancerAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyLoadBalancerAttributesInput, headers, settings, cb)
 	else
@@ -7934,7 +7934,7 @@ function M.DescribeRulesAsync(DescribeRulesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeRules")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRulesInput, headers, settings, cb)
 	else
@@ -7970,7 +7970,7 @@ function M.DescribeListenerCertificatesAsync(DescribeListenerCertificatesInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeListenerCertificates")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeListenerCertificatesInput, headers, settings, cb)
 	else
@@ -8006,7 +8006,7 @@ function M.DescribeTargetHealthAsync(DescribeTargetHealthInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeTargetHealth")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTargetHealthInput, headers, settings, cb)
 	else
@@ -8042,7 +8042,7 @@ function M.CreateLoadBalancerAsync(CreateLoadBalancerInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateLoadBalancer")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLoadBalancerInput, headers, settings, cb)
 	else
@@ -8078,7 +8078,7 @@ function M.DescribeAccountLimitsAsync(DescribeAccountLimitsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeAccountLimits")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAccountLimitsInput, headers, settings, cb)
 	else

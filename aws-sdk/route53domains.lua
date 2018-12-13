@@ -3453,7 +3453,7 @@ function M.CheckDomainTransferabilityAsync(CheckDomainTransferabilityRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CheckDomainTransferability")
 	if request_handler then
 		request_handler(settings.uri, "/", CheckDomainTransferabilityRequest, headers, settings, cb)
 	else
@@ -3489,7 +3489,7 @@ function M.ResendContactReachabilityEmailAsync(ResendContactReachabilityEmailReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ResendContactReachabilityEmail")
 	if request_handler then
 		request_handler(settings.uri, "/", ResendContactReachabilityEmailRequest, headers, settings, cb)
 	else
@@ -3525,7 +3525,7 @@ function M.ListDomainsAsync(ListDomainsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListDomains")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDomainsRequest, headers, settings, cb)
 	else
@@ -3561,7 +3561,7 @@ function M.DisableDomainTransferLockAsync(DisableDomainTransferLockRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisableDomainTransferLock")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableDomainTransferLockRequest, headers, settings, cb)
 	else
@@ -3597,7 +3597,7 @@ function M.RetrieveDomainAuthCodeAsync(RetrieveDomainAuthCodeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RetrieveDomainAuthCode")
 	if request_handler then
 		request_handler(settings.uri, "/", RetrieveDomainAuthCodeRequest, headers, settings, cb)
 	else
@@ -3633,7 +3633,7 @@ function M.ViewBillingAsync(ViewBillingRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ViewBilling")
 	if request_handler then
 		request_handler(settings.uri, "/", ViewBillingRequest, headers, settings, cb)
 	else
@@ -3669,7 +3669,7 @@ function M.UpdateDomainNameserversAsync(UpdateDomainNameserversRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateDomainNameservers")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDomainNameserversRequest, headers, settings, cb)
 	else
@@ -3705,7 +3705,7 @@ function M.UpdateTagsForDomainAsync(UpdateTagsForDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateTagsForDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateTagsForDomainRequest, headers, settings, cb)
 	else
@@ -3741,7 +3741,7 @@ function M.CheckDomainAvailabilityAsync(CheckDomainAvailabilityRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CheckDomainAvailability")
 	if request_handler then
 		request_handler(settings.uri, "/", CheckDomainAvailabilityRequest, headers, settings, cb)
 	else
@@ -3777,7 +3777,7 @@ function M.GetDomainSuggestionsAsync(GetDomainSuggestionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDomainSuggestions")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDomainSuggestionsRequest, headers, settings, cb)
 	else
@@ -3813,7 +3813,7 @@ function M.GetOperationDetailAsync(GetOperationDetailRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetOperationDetail")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOperationDetailRequest, headers, settings, cb)
 	else
@@ -3849,7 +3849,7 @@ function M.RenewDomainAsync(RenewDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RenewDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", RenewDomainRequest, headers, settings, cb)
 	else
@@ -3885,7 +3885,7 @@ function M.TransferDomainAsync(TransferDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TransferDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", TransferDomainRequest, headers, settings, cb)
 	else
@@ -3921,7 +3921,7 @@ function M.DisableDomainAutoRenewAsync(DisableDomainAutoRenewRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisableDomainAutoRenew")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableDomainAutoRenewRequest, headers, settings, cb)
 	else
@@ -3957,7 +3957,7 @@ function M.DeleteTagsForDomainAsync(DeleteTagsForDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteTagsForDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTagsForDomainRequest, headers, settings, cb)
 	else
@@ -3993,7 +3993,7 @@ function M.RegisterDomainAsync(RegisterDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterDomainRequest, headers, settings, cb)
 	else
@@ -4029,7 +4029,7 @@ function M.GetDomainDetailAsync(GetDomainDetailRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDomainDetail")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDomainDetailRequest, headers, settings, cb)
 	else
@@ -4065,7 +4065,7 @@ function M.EnableDomainAutoRenewAsync(EnableDomainAutoRenewRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "EnableDomainAutoRenew")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableDomainAutoRenewRequest, headers, settings, cb)
 	else
@@ -4101,7 +4101,7 @@ function M.UpdateDomainContactPrivacyAsync(UpdateDomainContactPrivacyRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateDomainContactPrivacy")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDomainContactPrivacyRequest, headers, settings, cb)
 	else
@@ -4137,7 +4137,7 @@ function M.ListTagsForDomainAsync(ListTagsForDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTagsForDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForDomainRequest, headers, settings, cb)
 	else
@@ -4173,7 +4173,7 @@ function M.GetContactReachabilityStatusAsync(GetContactReachabilityStatusRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetContactReachabilityStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", GetContactReachabilityStatusRequest, headers, settings, cb)
 	else
@@ -4209,7 +4209,7 @@ function M.UpdateDomainContactAsync(UpdateDomainContactRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateDomainContact")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDomainContactRequest, headers, settings, cb)
 	else
@@ -4245,7 +4245,7 @@ function M.ListOperationsAsync(ListOperationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListOperations")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOperationsRequest, headers, settings, cb)
 	else
@@ -4281,7 +4281,7 @@ function M.EnableDomainTransferLockAsync(EnableDomainTransferLockRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "EnableDomainTransferLock")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableDomainTransferLockRequest, headers, settings, cb)
 	else

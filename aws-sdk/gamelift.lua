@@ -9463,7 +9463,7 @@ function M.RequestUploadCredentialsAsync(RequestUploadCredentialsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RequestUploadCredentials")
 	if request_handler then
 		request_handler(settings.uri, "/", RequestUploadCredentialsInput, headers, settings, cb)
 	else
@@ -9499,7 +9499,7 @@ function M.UpdateRuntimeConfigurationAsync(UpdateRuntimeConfigurationInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateRuntimeConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRuntimeConfigurationInput, headers, settings, cb)
 	else
@@ -9535,7 +9535,7 @@ function M.DeleteFleetAsync(DeleteFleetInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteFleet")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteFleetInput, headers, settings, cb)
 	else
@@ -9571,7 +9571,7 @@ function M.UpdateFleetCapacityAsync(UpdateFleetCapacityInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateFleetCapacity")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateFleetCapacityInput, headers, settings, cb)
 	else
@@ -9607,7 +9607,7 @@ function M.StartFleetActionsAsync(StartFleetActionsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartFleetActions")
 	if request_handler then
 		request_handler(settings.uri, "/", StartFleetActionsInput, headers, settings, cb)
 	else
@@ -9643,7 +9643,7 @@ function M.DescribeRuntimeConfigurationAsync(DescribeRuntimeConfigurationInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeRuntimeConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRuntimeConfigurationInput, headers, settings, cb)
 	else
@@ -9679,7 +9679,7 @@ function M.DescribeGameSessionsAsync(DescribeGameSessionsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeGameSessions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeGameSessionsInput, headers, settings, cb)
 	else
@@ -9715,7 +9715,7 @@ function M.SearchGameSessionsAsync(SearchGameSessionsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SearchGameSessions")
 	if request_handler then
 		request_handler(settings.uri, "/", SearchGameSessionsInput, headers, settings, cb)
 	else
@@ -9751,7 +9751,7 @@ function M.CreatePlayerSessionsAsync(CreatePlayerSessionsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreatePlayerSessions")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePlayerSessionsInput, headers, settings, cb)
 	else
@@ -9787,7 +9787,7 @@ function M.StartMatchmakingAsync(StartMatchmakingInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartMatchmaking")
 	if request_handler then
 		request_handler(settings.uri, "/", StartMatchmakingInput, headers, settings, cb)
 	else
@@ -9823,7 +9823,7 @@ function M.DescribeMatchmakingRuleSetsAsync(DescribeMatchmakingRuleSetsInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeMatchmakingRuleSets")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMatchmakingRuleSetsInput, headers, settings, cb)
 	else
@@ -9859,7 +9859,7 @@ function M.UpdateFleetPortSettingsAsync(UpdateFleetPortSettingsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateFleetPortSettings")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateFleetPortSettingsInput, headers, settings, cb)
 	else
@@ -9895,7 +9895,7 @@ function M.ListFleetsAsync(ListFleetsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListFleets")
 	if request_handler then
 		request_handler(settings.uri, "/", ListFleetsInput, headers, settings, cb)
 	else
@@ -9931,7 +9931,7 @@ function M.UpdateGameSessionAsync(UpdateGameSessionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateGameSession")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateGameSessionInput, headers, settings, cb)
 	else
@@ -9967,7 +9967,7 @@ function M.CreateGameSessionAsync(CreateGameSessionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateGameSession")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateGameSessionInput, headers, settings, cb)
 	else
@@ -10003,7 +10003,7 @@ function M.DescribeFleetCapacityAsync(DescribeFleetCapacityInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeFleetCapacity")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFleetCapacityInput, headers, settings, cb)
 	else
@@ -10039,7 +10039,7 @@ function M.DescribeGameSessionPlacementAsync(DescribeGameSessionPlacementInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeGameSessionPlacement")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeGameSessionPlacementInput, headers, settings, cb)
 	else
@@ -10075,7 +10075,7 @@ function M.ListAliasesAsync(ListAliasesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAliases")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAliasesInput, headers, settings, cb)
 	else
@@ -10111,7 +10111,7 @@ function M.UpdateBuildAsync(UpdateBuildInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateBuild")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateBuildInput, headers, settings, cb)
 	else
@@ -10147,7 +10147,7 @@ function M.UpdateMatchmakingConfigurationAsync(UpdateMatchmakingConfigurationInp
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateMatchmakingConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateMatchmakingConfigurationInput, headers, settings, cb)
 	else
@@ -10183,7 +10183,7 @@ function M.DeleteBuildAsync(DeleteBuildInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteBuild")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteBuildInput, headers, settings, cb)
 	else
@@ -10219,7 +10219,7 @@ function M.PutScalingPolicyAsync(PutScalingPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutScalingPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutScalingPolicyInput, headers, settings, cb)
 	else
@@ -10255,7 +10255,7 @@ function M.DescribeVpcPeeringAuthorizationsAsync(DescribeVpcPeeringAuthorization
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeVpcPeeringAuthorizations")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcPeeringAuthorizationsInput, headers, settings, cb)
 	else
@@ -10291,7 +10291,7 @@ function M.DescribeScalingPoliciesAsync(DescribeScalingPoliciesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeScalingPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeScalingPoliciesInput, headers, settings, cb)
 	else
@@ -10327,7 +10327,7 @@ function M.DescribeInstancesAsync(DescribeInstancesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstancesInput, headers, settings, cb)
 	else
@@ -10363,7 +10363,7 @@ function M.CreateBuildAsync(CreateBuildInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateBuild")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateBuildInput, headers, settings, cb)
 	else
@@ -10399,7 +10399,7 @@ function M.DeleteGameSessionQueueAsync(DeleteGameSessionQueueInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteGameSessionQueue")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteGameSessionQueueInput, headers, settings, cb)
 	else
@@ -10435,7 +10435,7 @@ function M.CreatePlayerSessionAsync(CreatePlayerSessionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreatePlayerSession")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePlayerSessionInput, headers, settings, cb)
 	else
@@ -10471,7 +10471,7 @@ function M.StartMatchBackfillAsync(StartMatchBackfillInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartMatchBackfill")
 	if request_handler then
 		request_handler(settings.uri, "/", StartMatchBackfillInput, headers, settings, cb)
 	else
@@ -10507,7 +10507,7 @@ function M.DeleteAliasAsync(DeleteAliasInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteAlias")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAliasInput, headers, settings, cb)
 	else
@@ -10543,7 +10543,7 @@ function M.UpdateGameSessionQueueAsync(UpdateGameSessionQueueInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateGameSessionQueue")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateGameSessionQueueInput, headers, settings, cb)
 	else
@@ -10579,7 +10579,7 @@ function M.DescribeFleetPortSettingsAsync(DescribeFleetPortSettingsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeFleetPortSettings")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFleetPortSettingsInput, headers, settings, cb)
 	else
@@ -10615,7 +10615,7 @@ function M.ListBuildsAsync(ListBuildsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListBuilds")
 	if request_handler then
 		request_handler(settings.uri, "/", ListBuildsInput, headers, settings, cb)
 	else
@@ -10651,7 +10651,7 @@ function M.DescribePlayerSessionsAsync(DescribePlayerSessionsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribePlayerSessions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePlayerSessionsInput, headers, settings, cb)
 	else
@@ -10687,7 +10687,7 @@ function M.DeleteScalingPolicyAsync(DeleteScalingPolicyInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteScalingPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteScalingPolicyInput, headers, settings, cb)
 	else
@@ -10723,7 +10723,7 @@ function M.DescribeGameSessionQueuesAsync(DescribeGameSessionQueuesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeGameSessionQueues")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeGameSessionQueuesInput, headers, settings, cb)
 	else
@@ -10759,7 +10759,7 @@ function M.CreateAliasAsync(CreateAliasInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateAlias")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAliasInput, headers, settings, cb)
 	else
@@ -10795,7 +10795,7 @@ function M.UpdateAliasAsync(UpdateAliasInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateAlias")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAliasInput, headers, settings, cb)
 	else
@@ -10831,7 +10831,7 @@ function M.DeleteMatchmakingConfigurationAsync(DeleteMatchmakingConfigurationInp
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteMatchmakingConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteMatchmakingConfigurationInput, headers, settings, cb)
 	else
@@ -10867,7 +10867,7 @@ function M.CreateFleetAsync(CreateFleetInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateFleet")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateFleetInput, headers, settings, cb)
 	else
@@ -10903,7 +10903,7 @@ function M.DeleteVpcPeeringConnectionAsync(DeleteVpcPeeringConnectionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteVpcPeeringConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVpcPeeringConnectionInput, headers, settings, cb)
 	else
@@ -10939,7 +10939,7 @@ function M.GetInstanceAccessAsync(GetInstanceAccessInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetInstanceAccess")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstanceAccessInput, headers, settings, cb)
 	else
@@ -10975,7 +10975,7 @@ function M.CreateVpcPeeringAuthorizationAsync(CreateVpcPeeringAuthorizationInput
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateVpcPeeringAuthorization")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVpcPeeringAuthorizationInput, headers, settings, cb)
 	else
@@ -11011,7 +11011,7 @@ function M.DeleteVpcPeeringAuthorizationAsync(DeleteVpcPeeringAuthorizationInput
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteVpcPeeringAuthorization")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVpcPeeringAuthorizationInput, headers, settings, cb)
 	else
@@ -11047,7 +11047,7 @@ function M.UpdateFleetAttributesAsync(UpdateFleetAttributesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateFleetAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateFleetAttributesInput, headers, settings, cb)
 	else
@@ -11083,7 +11083,7 @@ function M.DescribeFleetAttributesAsync(DescribeFleetAttributesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeFleetAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFleetAttributesInput, headers, settings, cb)
 	else
@@ -11119,7 +11119,7 @@ function M.StopMatchmakingAsync(StopMatchmakingInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopMatchmaking")
 	if request_handler then
 		request_handler(settings.uri, "/", StopMatchmakingInput, headers, settings, cb)
 	else
@@ -11155,7 +11155,7 @@ function M.ResolveAliasAsync(ResolveAliasInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ResolveAlias")
 	if request_handler then
 		request_handler(settings.uri, "/", ResolveAliasInput, headers, settings, cb)
 	else
@@ -11191,7 +11191,7 @@ function M.DescribeGameSessionDetailsAsync(DescribeGameSessionDetailsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeGameSessionDetails")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeGameSessionDetailsInput, headers, settings, cb)
 	else
@@ -11227,7 +11227,7 @@ function M.DescribeMatchmakingConfigurationsAsync(DescribeMatchmakingConfigurati
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeMatchmakingConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMatchmakingConfigurationsInput, headers, settings, cb)
 	else
@@ -11263,7 +11263,7 @@ function M.CreateMatchmakingConfigurationAsync(CreateMatchmakingConfigurationInp
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateMatchmakingConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateMatchmakingConfigurationInput, headers, settings, cb)
 	else
@@ -11299,7 +11299,7 @@ function M.ValidateMatchmakingRuleSetAsync(ValidateMatchmakingRuleSetInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ValidateMatchmakingRuleSet")
 	if request_handler then
 		request_handler(settings.uri, "/", ValidateMatchmakingRuleSetInput, headers, settings, cb)
 	else
@@ -11335,7 +11335,7 @@ function M.StopFleetActionsAsync(StopFleetActionsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopFleetActions")
 	if request_handler then
 		request_handler(settings.uri, "/", StopFleetActionsInput, headers, settings, cb)
 	else
@@ -11371,7 +11371,7 @@ function M.StopGameSessionPlacementAsync(StopGameSessionPlacementInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopGameSessionPlacement")
 	if request_handler then
 		request_handler(settings.uri, "/", StopGameSessionPlacementInput, headers, settings, cb)
 	else
@@ -11407,7 +11407,7 @@ function M.CreateGameSessionQueueAsync(CreateGameSessionQueueInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateGameSessionQueue")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateGameSessionQueueInput, headers, settings, cb)
 	else
@@ -11443,7 +11443,7 @@ function M.DescribeMatchmakingAsync(DescribeMatchmakingInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeMatchmaking")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMatchmakingInput, headers, settings, cb)
 	else
@@ -11479,7 +11479,7 @@ function M.DescribeAliasAsync(DescribeAliasInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAlias")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAliasInput, headers, settings, cb)
 	else
@@ -11515,7 +11515,7 @@ function M.StartGameSessionPlacementAsync(StartGameSessionPlacementInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartGameSessionPlacement")
 	if request_handler then
 		request_handler(settings.uri, "/", StartGameSessionPlacementInput, headers, settings, cb)
 	else
@@ -11551,7 +11551,7 @@ function M.CreateVpcPeeringConnectionAsync(CreateVpcPeeringConnectionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateVpcPeeringConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVpcPeeringConnectionInput, headers, settings, cb)
 	else
@@ -11587,7 +11587,7 @@ function M.DescribeEC2InstanceLimitsAsync(DescribeEC2InstanceLimitsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEC2InstanceLimits")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEC2InstanceLimitsInput, headers, settings, cb)
 	else
@@ -11623,7 +11623,7 @@ function M.DescribeVpcPeeringConnectionsAsync(DescribeVpcPeeringConnectionsInput
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeVpcPeeringConnections")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcPeeringConnectionsInput, headers, settings, cb)
 	else
@@ -11659,7 +11659,7 @@ function M.GetGameSessionLogUrlAsync(GetGameSessionLogUrlInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetGameSessionLogUrl")
 	if request_handler then
 		request_handler(settings.uri, "/", GetGameSessionLogUrlInput, headers, settings, cb)
 	else
@@ -11695,7 +11695,7 @@ function M.DescribeBuildAsync(DescribeBuildInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeBuild")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeBuildInput, headers, settings, cb)
 	else
@@ -11731,7 +11731,7 @@ function M.DescribeFleetEventsAsync(DescribeFleetEventsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeFleetEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFleetEventsInput, headers, settings, cb)
 	else
@@ -11767,7 +11767,7 @@ function M.DescribeFleetUtilizationAsync(DescribeFleetUtilizationInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeFleetUtilization")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFleetUtilizationInput, headers, settings, cb)
 	else
@@ -11803,7 +11803,7 @@ function M.AcceptMatchAsync(AcceptMatchInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AcceptMatch")
 	if request_handler then
 		request_handler(settings.uri, "/", AcceptMatchInput, headers, settings, cb)
 	else
@@ -11839,7 +11839,7 @@ function M.CreateMatchmakingRuleSetAsync(CreateMatchmakingRuleSetInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateMatchmakingRuleSet")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateMatchmakingRuleSetInput, headers, settings, cb)
 	else

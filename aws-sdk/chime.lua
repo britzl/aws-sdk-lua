@@ -1956,7 +1956,7 @@ function M.UpdateUserAsync(UpdateUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateUser")
 	if request_handler then
 		request_handler(settings.uri, "/console/accounts/{accountId}/users/{userId}", UpdateUserRequest, headers, settings, cb)
 	else
@@ -1992,7 +1992,7 @@ function M.CreateAccountAsync(CreateAccountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateAccount")
 	if request_handler then
 		request_handler(settings.uri, "/console/accounts", CreateAccountRequest, headers, settings, cb)
 	else
@@ -2028,7 +2028,7 @@ function M.DeleteAccountAsync(DeleteAccountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteAccount")
 	if request_handler then
 		request_handler(settings.uri, "/console/accounts/{accountId}", DeleteAccountRequest, headers, settings, cb)
 	else
@@ -2064,7 +2064,7 @@ function M.ListAccountsAsync(ListAccountsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListAccounts")
 	if request_handler then
 		request_handler(settings.uri, "/console/accounts", ListAccountsRequest, headers, settings, cb)
 	else
@@ -2100,7 +2100,7 @@ function M.BatchSuspendUserAsync(BatchSuspendUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "BatchSuspendUser")
 	if request_handler then
 		request_handler(settings.uri, "/console/accounts/{accountId}/users?operation=suspend", BatchSuspendUserRequest, headers, settings, cb)
 	else
@@ -2136,7 +2136,7 @@ function M.ResetPersonalPINAsync(ResetPersonalPINRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ResetPersonalPIN")
 	if request_handler then
 		request_handler(settings.uri, "/console/accounts/{accountId}/users/{userId}?operation=reset-personal-pin", ResetPersonalPINRequest, headers, settings, cb)
 	else
@@ -2172,7 +2172,7 @@ function M.UpdateAccountAsync(UpdateAccountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateAccount")
 	if request_handler then
 		request_handler(settings.uri, "/console/accounts/{accountId}", UpdateAccountRequest, headers, settings, cb)
 	else
@@ -2208,7 +2208,7 @@ function M.BatchUnsuspendUserAsync(BatchUnsuspendUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "BatchUnsuspendUser")
 	if request_handler then
 		request_handler(settings.uri, "/console/accounts/{accountId}/users?operation=unsuspend", BatchUnsuspendUserRequest, headers, settings, cb)
 	else
@@ -2244,7 +2244,7 @@ function M.ListUsersAsync(ListUsersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListUsers")
 	if request_handler then
 		request_handler(settings.uri, "/console/accounts/{accountId}/users", ListUsersRequest, headers, settings, cb)
 	else
@@ -2280,7 +2280,7 @@ function M.GetUserAsync(GetUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetUser")
 	if request_handler then
 		request_handler(settings.uri, "/console/accounts/{accountId}/users/{userId}", GetUserRequest, headers, settings, cb)
 	else
@@ -2316,7 +2316,7 @@ function M.GetAccountSettingsAsync(GetAccountSettingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetAccountSettings")
 	if request_handler then
 		request_handler(settings.uri, "/console/accounts/{accountId}/settings", GetAccountSettingsRequest, headers, settings, cb)
 	else
@@ -2352,7 +2352,7 @@ function M.LogoutUserAsync(LogoutUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "LogoutUser")
 	if request_handler then
 		request_handler(settings.uri, "/console/accounts/{accountId}/users/{userId}?operation=logout", LogoutUserRequest, headers, settings, cb)
 	else
@@ -2388,7 +2388,7 @@ function M.UpdateAccountSettingsAsync(UpdateAccountSettingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateAccountSettings")
 	if request_handler then
 		request_handler(settings.uri, "/console/accounts/{accountId}/settings", UpdateAccountSettingsRequest, headers, settings, cb)
 	else
@@ -2424,7 +2424,7 @@ function M.GetAccountAsync(GetAccountRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetAccount")
 	if request_handler then
 		request_handler(settings.uri, "/console/accounts/{accountId}", GetAccountRequest, headers, settings, cb)
 	else
@@ -2460,7 +2460,7 @@ function M.BatchUpdateUserAsync(BatchUpdateUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "BatchUpdateUser")
 	if request_handler then
 		request_handler(settings.uri, "/console/accounts/{accountId}/users", BatchUpdateUserRequest, headers, settings, cb)
 	else
@@ -2496,7 +2496,7 @@ function M.InviteUsersAsync(InviteUsersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "InviteUsers")
 	if request_handler then
 		request_handler(settings.uri, "/console/accounts/{accountId}/users?operation=add", InviteUsersRequest, headers, settings, cb)
 	else

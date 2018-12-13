@@ -2387,7 +2387,7 @@ function M.CreateHsmAsync(CreateHsmRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateHsm")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateHsmRequest, headers, settings, cb)
 	else
@@ -2423,7 +2423,7 @@ function M.ListHapgsAsync(ListHapgsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListHapgs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListHapgsRequest, headers, settings, cb)
 	else
@@ -2459,7 +2459,7 @@ function M.ModifyHapgAsync(ModifyHapgRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ModifyHapg")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyHapgRequest, headers, settings, cb)
 	else
@@ -2495,7 +2495,7 @@ function M.DescribeHapgAsync(DescribeHapgRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeHapg")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHapgRequest, headers, settings, cb)
 	else
@@ -2531,7 +2531,7 @@ function M.DeleteHsmAsync(DeleteHsmRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteHsm")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteHsmRequest, headers, settings, cb)
 	else
@@ -2567,7 +2567,7 @@ function M.ListHsmsAsync(ListHsmsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListHsms")
 	if request_handler then
 		request_handler(settings.uri, "/", ListHsmsRequest, headers, settings, cb)
 	else
@@ -2603,7 +2603,7 @@ function M.AddTagsToResourceAsync(AddTagsToResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddTagsToResource")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToResourceRequest, headers, settings, cb)
 	else
@@ -2639,7 +2639,7 @@ function M.DeleteLunaClientAsync(DeleteLunaClientRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteLunaClient")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLunaClientRequest, headers, settings, cb)
 	else
@@ -2675,7 +2675,7 @@ function M.CreateLunaClientAsync(CreateLunaClientRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateLunaClient")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLunaClientRequest, headers, settings, cb)
 	else
@@ -2711,7 +2711,7 @@ function M.CreateHapgAsync(CreateHapgRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateHapg")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateHapgRequest, headers, settings, cb)
 	else
@@ -2747,7 +2747,7 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RemoveTagsFromResource")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromResourceRequest, headers, settings, cb)
 	else
@@ -2783,7 +2783,7 @@ function M.DeleteHapgAsync(DeleteHapgRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteHapg")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteHapgRequest, headers, settings, cb)
 	else
@@ -2819,7 +2819,7 @@ function M.DescribeHsmAsync(DescribeHsmRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeHsm")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHsmRequest, headers, settings, cb)
 	else
@@ -2855,7 +2855,7 @@ function M.GetConfigAsync(GetConfigRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetConfig")
 	if request_handler then
 		request_handler(settings.uri, "/", GetConfigRequest, headers, settings, cb)
 	else
@@ -2891,7 +2891,7 @@ function M.ListAvailableZonesAsync(ListAvailableZonesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAvailableZones")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAvailableZonesRequest, headers, settings, cb)
 	else
@@ -2927,7 +2927,7 @@ function M.ModifyHsmAsync(ModifyHsmRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ModifyHsm")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyHsmRequest, headers, settings, cb)
 	else
@@ -2963,7 +2963,7 @@ function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTagsForResource")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForResourceRequest, headers, settings, cb)
 	else
@@ -2999,7 +2999,7 @@ function M.ModifyLunaClientAsync(ModifyLunaClientRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ModifyLunaClient")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyLunaClientRequest, headers, settings, cb)
 	else
@@ -3035,7 +3035,7 @@ function M.DescribeLunaClientAsync(DescribeLunaClientRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeLunaClient")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLunaClientRequest, headers, settings, cb)
 	else
@@ -3071,7 +3071,7 @@ function M.ListLunaClientsAsync(ListLunaClientsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListLunaClients")
 	if request_handler then
 		request_handler(settings.uri, "/", ListLunaClientsRequest, headers, settings, cb)
 	else

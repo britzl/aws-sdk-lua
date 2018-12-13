@@ -8568,7 +8568,7 @@ function M.UpdateSMBFileShareAsync(UpdateSMBFileShareInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateSMBFileShare")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSMBFileShareInput, headers, settings, cb)
 	else
@@ -8604,7 +8604,7 @@ function M.DescribeSnapshotScheduleAsync(DescribeSnapshotScheduleInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeSnapshotSchedule")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSnapshotScheduleInput, headers, settings, cb)
 	else
@@ -8640,7 +8640,7 @@ function M.UpdateNFSFileShareAsync(UpdateNFSFileShareInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateNFSFileShare")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateNFSFileShareInput, headers, settings, cb)
 	else
@@ -8676,7 +8676,7 @@ function M.DescribeTapeArchivesAsync(DescribeTapeArchivesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTapeArchives")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTapeArchivesInput, headers, settings, cb)
 	else
@@ -8712,7 +8712,7 @@ function M.DeleteFileShareAsync(DeleteFileShareInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteFileShare")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteFileShareInput, headers, settings, cb)
 	else
@@ -8748,7 +8748,7 @@ function M.RefreshCacheAsync(RefreshCacheInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RefreshCache")
 	if request_handler then
 		request_handler(settings.uri, "/", RefreshCacheInput, headers, settings, cb)
 	else
@@ -8784,7 +8784,7 @@ function M.DescribeMaintenanceStartTimeAsync(DescribeMaintenanceStartTimeInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeMaintenanceStartTime")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMaintenanceStartTimeInput, headers, settings, cb)
 	else
@@ -8820,7 +8820,7 @@ function M.DescribeGatewayInformationAsync(DescribeGatewayInformationInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeGatewayInformation")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeGatewayInformationInput, headers, settings, cb)
 	else
@@ -8856,7 +8856,7 @@ function M.UpdateGatewayInformationAsync(UpdateGatewayInformationInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateGatewayInformation")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateGatewayInformationInput, headers, settings, cb)
 	else
@@ -8892,7 +8892,7 @@ function M.DisableGatewayAsync(DisableGatewayInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisableGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableGatewayInput, headers, settings, cb)
 	else
@@ -8928,7 +8928,7 @@ function M.CreateSMBFileShareAsync(CreateSMBFileShareInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateSMBFileShare")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSMBFileShareInput, headers, settings, cb)
 	else
@@ -8964,7 +8964,7 @@ function M.DescribeSMBSettingsAsync(DescribeSMBSettingsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeSMBSettings")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSMBSettingsInput, headers, settings, cb)
 	else
@@ -9000,7 +9000,7 @@ function M.ListFileSharesAsync(ListFileSharesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListFileShares")
 	if request_handler then
 		request_handler(settings.uri, "/", ListFileSharesInput, headers, settings, cb)
 	else
@@ -9036,7 +9036,7 @@ function M.UpdateMaintenanceStartTimeAsync(UpdateMaintenanceStartTimeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateMaintenanceStartTime")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateMaintenanceStartTimeInput, headers, settings, cb)
 	else
@@ -9072,7 +9072,7 @@ function M.CreateTapesAsync(CreateTapesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateTapes")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTapesInput, headers, settings, cb)
 	else
@@ -9108,7 +9108,7 @@ function M.NotifyWhenUploadedAsync(NotifyWhenUploadedInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "NotifyWhenUploaded")
 	if request_handler then
 		request_handler(settings.uri, "/", NotifyWhenUploadedInput, headers, settings, cb)
 	else
@@ -9144,7 +9144,7 @@ function M.CreateCachediSCSIVolumeAsync(CreateCachediSCSIVolumeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateCachediSCSIVolume")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCachediSCSIVolumeInput, headers, settings, cb)
 	else
@@ -9180,7 +9180,7 @@ function M.CreateTapeWithBarcodeAsync(CreateTapeWithBarcodeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateTapeWithBarcode")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTapeWithBarcodeInput, headers, settings, cb)
 	else
@@ -9216,7 +9216,7 @@ function M.DescribeChapCredentialsAsync(DescribeChapCredentialsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeChapCredentials")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeChapCredentialsInput, headers, settings, cb)
 	else
@@ -9252,7 +9252,7 @@ function M.ListLocalDisksAsync(ListLocalDisksInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListLocalDisks")
 	if request_handler then
 		request_handler(settings.uri, "/", ListLocalDisksInput, headers, settings, cb)
 	else
@@ -9288,7 +9288,7 @@ function M.UpdateGatewaySoftwareNowAsync(UpdateGatewaySoftwareNowInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateGatewaySoftwareNow")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateGatewaySoftwareNowInput, headers, settings, cb)
 	else
@@ -9324,7 +9324,7 @@ function M.ResetCacheAsync(ResetCacheInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ResetCache")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetCacheInput, headers, settings, cb)
 	else
@@ -9360,7 +9360,7 @@ function M.AddTagsToResourceAsync(AddTagsToResourceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddTagsToResource")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToResourceInput, headers, settings, cb)
 	else
@@ -9396,7 +9396,7 @@ function M.RetrieveTapeArchiveAsync(RetrieveTapeArchiveInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RetrieveTapeArchive")
 	if request_handler then
 		request_handler(settings.uri, "/", RetrieveTapeArchiveInput, headers, settings, cb)
 	else
@@ -9432,7 +9432,7 @@ function M.JoinDomainAsync(JoinDomainInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "JoinDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", JoinDomainInput, headers, settings, cb)
 	else
@@ -9468,7 +9468,7 @@ function M.UpdateBandwidthRateLimitAsync(UpdateBandwidthRateLimitInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateBandwidthRateLimit")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateBandwidthRateLimitInput, headers, settings, cb)
 	else
@@ -9504,7 +9504,7 @@ function M.SetLocalConsolePasswordAsync(SetLocalConsolePasswordInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SetLocalConsolePassword")
 	if request_handler then
 		request_handler(settings.uri, "/", SetLocalConsolePasswordInput, headers, settings, cb)
 	else
@@ -9540,7 +9540,7 @@ function M.ListVolumeInitiatorsAsync(ListVolumeInitiatorsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListVolumeInitiators")
 	if request_handler then
 		request_handler(settings.uri, "/", ListVolumeInitiatorsInput, headers, settings, cb)
 	else
@@ -9576,7 +9576,7 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RemoveTagsFromResource")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromResourceInput, headers, settings, cb)
 	else
@@ -9612,7 +9612,7 @@ function M.CreateSnapshotFromVolumeRecoveryPointAsync(CreateSnapshotFromVolumeRe
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateSnapshotFromVolumeRecoveryPoint")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSnapshotFromVolumeRecoveryPointInput, headers, settings, cb)
 	else
@@ -9648,7 +9648,7 @@ function M.DescribeSMBFileSharesAsync(DescribeSMBFileSharesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeSMBFileShares")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSMBFileSharesInput, headers, settings, cb)
 	else
@@ -9684,7 +9684,7 @@ function M.ListGatewaysAsync(ListGatewaysInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListGateways")
 	if request_handler then
 		request_handler(settings.uri, "/", ListGatewaysInput, headers, settings, cb)
 	else
@@ -9720,7 +9720,7 @@ function M.DeleteChapCredentialsAsync(DeleteChapCredentialsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteChapCredentials")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteChapCredentialsInput, headers, settings, cb)
 	else
@@ -9756,7 +9756,7 @@ function M.DeleteBandwidthRateLimitAsync(DeleteBandwidthRateLimitInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteBandwidthRateLimit")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteBandwidthRateLimitInput, headers, settings, cb)
 	else
@@ -9792,7 +9792,7 @@ function M.DescribeTapeRecoveryPointsAsync(DescribeTapeRecoveryPointsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTapeRecoveryPoints")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTapeRecoveryPointsInput, headers, settings, cb)
 	else
@@ -9828,7 +9828,7 @@ function M.ActivateGatewayAsync(ActivateGatewayInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ActivateGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", ActivateGatewayInput, headers, settings, cb)
 	else
@@ -9864,7 +9864,7 @@ function M.DeleteTapeArchiveAsync(DeleteTapeArchiveInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteTapeArchive")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTapeArchiveInput, headers, settings, cb)
 	else
@@ -9900,7 +9900,7 @@ function M.DescribeVTLDevicesAsync(DescribeVTLDevicesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeVTLDevices")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVTLDevicesInput, headers, settings, cb)
 	else
@@ -9936,7 +9936,7 @@ function M.AddCacheAsync(AddCacheInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddCache")
 	if request_handler then
 		request_handler(settings.uri, "/", AddCacheInput, headers, settings, cb)
 	else
@@ -9972,7 +9972,7 @@ function M.DeleteVolumeAsync(DeleteVolumeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteVolume")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVolumeInput, headers, settings, cb)
 	else
@@ -10008,7 +10008,7 @@ function M.ListVolumesAsync(ListVolumesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListVolumes")
 	if request_handler then
 		request_handler(settings.uri, "/", ListVolumesInput, headers, settings, cb)
 	else
@@ -10044,7 +10044,7 @@ function M.DescribeCachediSCSIVolumesAsync(DescribeCachediSCSIVolumesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeCachediSCSIVolumes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCachediSCSIVolumesInput, headers, settings, cb)
 	else
@@ -10080,7 +10080,7 @@ function M.RetrieveTapeRecoveryPointAsync(RetrieveTapeRecoveryPointInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RetrieveTapeRecoveryPoint")
 	if request_handler then
 		request_handler(settings.uri, "/", RetrieveTapeRecoveryPointInput, headers, settings, cb)
 	else
@@ -10116,7 +10116,7 @@ function M.CancelRetrievalAsync(CancelRetrievalInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CancelRetrieval")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelRetrievalInput, headers, settings, cb)
 	else
@@ -10152,7 +10152,7 @@ function M.DescribeBandwidthRateLimitAsync(DescribeBandwidthRateLimitInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeBandwidthRateLimit")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeBandwidthRateLimitInput, headers, settings, cb)
 	else
@@ -10188,7 +10188,7 @@ function M.DescribeStorediSCSIVolumesAsync(DescribeStorediSCSIVolumesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeStorediSCSIVolumes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStorediSCSIVolumesInput, headers, settings, cb)
 	else
@@ -10224,7 +10224,7 @@ function M.ListVolumeRecoveryPointsAsync(ListVolumeRecoveryPointsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListVolumeRecoveryPoints")
 	if request_handler then
 		request_handler(settings.uri, "/", ListVolumeRecoveryPointsInput, headers, settings, cb)
 	else
@@ -10260,7 +10260,7 @@ function M.UpdateChapCredentialsAsync(UpdateChapCredentialsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateChapCredentials")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateChapCredentialsInput, headers, settings, cb)
 	else
@@ -10296,7 +10296,7 @@ function M.StartGatewayAsync(StartGatewayInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", StartGatewayInput, headers, settings, cb)
 	else
@@ -10332,7 +10332,7 @@ function M.DescribeCacheAsync(DescribeCacheInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeCache")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCacheInput, headers, settings, cb)
 	else
@@ -10368,7 +10368,7 @@ function M.AddUploadBufferAsync(AddUploadBufferInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddUploadBuffer")
 	if request_handler then
 		request_handler(settings.uri, "/", AddUploadBufferInput, headers, settings, cb)
 	else
@@ -10404,7 +10404,7 @@ function M.DeleteSnapshotScheduleAsync(DeleteSnapshotScheduleInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteSnapshotSchedule")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSnapshotScheduleInput, headers, settings, cb)
 	else
@@ -10440,7 +10440,7 @@ function M.UpdateVTLDeviceTypeAsync(UpdateVTLDeviceTypeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateVTLDeviceType")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateVTLDeviceTypeInput, headers, settings, cb)
 	else
@@ -10476,7 +10476,7 @@ function M.DeleteTapeAsync(DeleteTapeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteTape")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTapeInput, headers, settings, cb)
 	else
@@ -10512,7 +10512,7 @@ function M.UpdateSnapshotScheduleAsync(UpdateSnapshotScheduleInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateSnapshotSchedule")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSnapshotScheduleInput, headers, settings, cb)
 	else
@@ -10548,7 +10548,7 @@ function M.ShutdownGatewayAsync(ShutdownGatewayInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ShutdownGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", ShutdownGatewayInput, headers, settings, cb)
 	else
@@ -10584,7 +10584,7 @@ function M.DescribeTapesAsync(DescribeTapesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTapes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTapesInput, headers, settings, cb)
 	else
@@ -10620,7 +10620,7 @@ function M.CreateNFSFileShareAsync(CreateNFSFileShareInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateNFSFileShare")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNFSFileShareInput, headers, settings, cb)
 	else
@@ -10656,7 +10656,7 @@ function M.CreateStorediSCSIVolumeAsync(CreateStorediSCSIVolumeInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateStorediSCSIVolume")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateStorediSCSIVolumeInput, headers, settings, cb)
 	else
@@ -10692,7 +10692,7 @@ function M.CancelArchivalAsync(CancelArchivalInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CancelArchival")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelArchivalInput, headers, settings, cb)
 	else
@@ -10728,7 +10728,7 @@ function M.SetSMBGuestPasswordAsync(SetSMBGuestPasswordInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SetSMBGuestPassword")
 	if request_handler then
 		request_handler(settings.uri, "/", SetSMBGuestPasswordInput, headers, settings, cb)
 	else
@@ -10764,7 +10764,7 @@ function M.ListTapesAsync(ListTapesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTapes")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTapesInput, headers, settings, cb)
 	else
@@ -10800,7 +10800,7 @@ function M.DeleteGatewayAsync(DeleteGatewayInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteGatewayInput, headers, settings, cb)
 	else
@@ -10836,7 +10836,7 @@ function M.DescribeNFSFileSharesAsync(DescribeNFSFileSharesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeNFSFileShares")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNFSFileSharesInput, headers, settings, cb)
 	else
@@ -10872,7 +10872,7 @@ function M.DescribeWorkingStorageAsync(DescribeWorkingStorageInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeWorkingStorage")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeWorkingStorageInput, headers, settings, cb)
 	else
@@ -10908,7 +10908,7 @@ function M.DescribeUploadBufferAsync(DescribeUploadBufferInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeUploadBuffer")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeUploadBufferInput, headers, settings, cb)
 	else
@@ -10944,7 +10944,7 @@ function M.ListTagsForResourceAsync(ListTagsForResourceInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTagsForResource")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForResourceInput, headers, settings, cb)
 	else
@@ -10980,7 +10980,7 @@ function M.AddWorkingStorageAsync(AddWorkingStorageInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddWorkingStorage")
 	if request_handler then
 		request_handler(settings.uri, "/", AddWorkingStorageInput, headers, settings, cb)
 	else
@@ -11016,7 +11016,7 @@ function M.CreateSnapshotAsync(CreateSnapshotInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSnapshotInput, headers, settings, cb)
 	else

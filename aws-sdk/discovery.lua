@@ -3254,7 +3254,7 @@ function M.DeleteTagsAsync(DeleteTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteTags")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTagsRequest, headers, settings, cb)
 	else
@@ -3290,7 +3290,7 @@ function M.StopDataCollectionByAgentIdsAsync(StopDataCollectionByAgentIdsRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopDataCollectionByAgentIds")
 	if request_handler then
 		request_handler(settings.uri, "/", StopDataCollectionByAgentIdsRequest, headers, settings, cb)
 	else
@@ -3326,7 +3326,7 @@ function M.StartDataCollectionByAgentIdsAsync(StartDataCollectionByAgentIdsReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartDataCollectionByAgentIds")
 	if request_handler then
 		request_handler(settings.uri, "/", StartDataCollectionByAgentIdsRequest, headers, settings, cb)
 	else
@@ -3362,7 +3362,7 @@ function M.AssociateConfigurationItemsToApplicationAsync(AssociateConfigurationI
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateConfigurationItemsToApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateConfigurationItemsToApplicationRequest, headers, settings, cb)
 	else
@@ -3398,7 +3398,7 @@ function M.StartContinuousExportAsync(StartContinuousExportRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartContinuousExport")
 	if request_handler then
 		request_handler(settings.uri, "/", StartContinuousExportRequest, headers, settings, cb)
 	else
@@ -3434,7 +3434,7 @@ function M.ListConfigurationsAsync(ListConfigurationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/", ListConfigurationsRequest, headers, settings, cb)
 	else
@@ -3470,7 +3470,7 @@ function M.DescribeContinuousExportsAsync(DescribeContinuousExportsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeContinuousExports")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeContinuousExportsRequest, headers, settings, cb)
 	else
@@ -3506,7 +3506,7 @@ function M.StartExportTaskAsync(StartExportTaskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartExportTask")
 	if request_handler then
 		request_handler(settings.uri, "/", StartExportTaskRequest, headers, settings, cb)
 	else
@@ -3542,7 +3542,7 @@ function M.DeleteApplicationsAsync(DeleteApplicationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteApplications")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteApplicationsRequest, headers, settings, cb)
 	else
@@ -3578,7 +3578,7 @@ function M.CreateApplicationAsync(CreateApplicationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateApplicationRequest, headers, settings, cb)
 	else
@@ -3614,7 +3614,7 @@ function M.UpdateApplicationAsync(UpdateApplicationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateApplicationRequest, headers, settings, cb)
 	else
@@ -3650,7 +3650,7 @@ function M.DescribeExportTasksAsync(DescribeExportTasksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeExportTasks")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeExportTasksRequest, headers, settings, cb)
 	else
@@ -3686,7 +3686,7 @@ function M.DescribeAgentsAsync(DescribeAgentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAgents")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAgentsRequest, headers, settings, cb)
 	else
@@ -3722,7 +3722,7 @@ function M.DescribeConfigurationsAsync(DescribeConfigurationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConfigurationsRequest, headers, settings, cb)
 	else
@@ -3758,7 +3758,7 @@ function M.StopContinuousExportAsync(StopContinuousExportRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopContinuousExport")
 	if request_handler then
 		request_handler(settings.uri, "/", StopContinuousExportRequest, headers, settings, cb)
 	else
@@ -3794,7 +3794,7 @@ function M.CreateTagsAsync(CreateTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateTags")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTagsRequest, headers, settings, cb)
 	else
@@ -3830,7 +3830,7 @@ function M.DescribeTagsAsync(DescribeTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTags")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagsRequest, headers, settings, cb)
 	else
@@ -3866,7 +3866,7 @@ function M.GetDiscoverySummaryAsync(GetDiscoverySummaryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDiscoverySummary")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDiscoverySummaryRequest, headers, settings, cb)
 	else
@@ -3902,7 +3902,7 @@ function M.ListServerNeighborsAsync(ListServerNeighborsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListServerNeighbors")
 	if request_handler then
 		request_handler(settings.uri, "/", ListServerNeighborsRequest, headers, settings, cb)
 	else
@@ -3938,7 +3938,7 @@ function M.DisassociateConfigurationItemsFromApplicationAsync(DisassociateConfig
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateConfigurationItemsFromApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateConfigurationItemsFromApplicationRequest, headers, settings, cb)
 	else

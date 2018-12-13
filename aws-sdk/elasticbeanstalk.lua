@@ -7476,7 +7476,7 @@ function M.UpdateTagsForResourceAsync(UpdateTagsForResourceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateTagsForResource")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateTagsForResourceMessage, headers, settings, cb)
 	else
@@ -7512,7 +7512,7 @@ function M.DescribeApplicationVersionsAsync(DescribeApplicationVersionsMessage, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeApplicationVersions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeApplicationVersionsMessage, headers, settings, cb)
 	else
@@ -7548,7 +7548,7 @@ function M.RequestEnvironmentInfoAsync(RequestEnvironmentInfoMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RequestEnvironmentInfo")
 	if request_handler then
 		request_handler(settings.uri, "/", RequestEnvironmentInfoMessage, headers, settings, cb)
 	else
@@ -7584,7 +7584,7 @@ function M.DescribeEnvironmentResourcesAsync(DescribeEnvironmentResourcesMessage
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeEnvironmentResources")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEnvironmentResourcesMessage, headers, settings, cb)
 	else
@@ -7620,7 +7620,7 @@ function M.DescribeEventsAsync(DescribeEventsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventsMessage, headers, settings, cb)
 	else
@@ -7656,7 +7656,7 @@ function M.DescribeEnvironmentHealthAsync(DescribeEnvironmentHealthRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeEnvironmentHealth")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEnvironmentHealthRequest, headers, settings, cb)
 	else
@@ -7692,7 +7692,7 @@ function M.UpdateApplicationResourceLifecycleAsync(UpdateApplicationResourceLife
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateApplicationResourceLifecycle")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateApplicationResourceLifecycleMessage, headers, settings, cb)
 	else
@@ -7728,7 +7728,7 @@ function M.TerminateEnvironmentAsync(TerminateEnvironmentMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "TerminateEnvironment")
 	if request_handler then
 		request_handler(settings.uri, "/", TerminateEnvironmentMessage, headers, settings, cb)
 	else
@@ -7764,7 +7764,7 @@ function M.UpdateApplicationVersionAsync(UpdateApplicationVersionMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateApplicationVersion")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateApplicationVersionMessage, headers, settings, cb)
 	else
@@ -7800,7 +7800,7 @@ function M.DeleteApplicationAsync(DeleteApplicationMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteApplicationMessage, headers, settings, cb)
 	else
@@ -7836,7 +7836,7 @@ function M.ApplyEnvironmentManagedActionAsync(ApplyEnvironmentManagedActionReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ApplyEnvironmentManagedAction")
 	if request_handler then
 		request_handler(settings.uri, "/", ApplyEnvironmentManagedActionRequest, headers, settings, cb)
 	else
@@ -7872,7 +7872,7 @@ function M.DescribeConfigurationOptionsAsync(DescribeConfigurationOptionsMessage
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeConfigurationOptions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConfigurationOptionsMessage, headers, settings, cb)
 	else
@@ -7908,7 +7908,7 @@ function M.DescribeEnvironmentManagedActionHistoryAsync(DescribeEnvironmentManag
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeEnvironmentManagedActionHistory")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEnvironmentManagedActionHistoryRequest, headers, settings, cb)
 	else
@@ -7944,7 +7944,7 @@ function M.DeleteConfigurationTemplateAsync(DeleteConfigurationTemplateMessage, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteConfigurationTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConfigurationTemplateMessage, headers, settings, cb)
 	else
@@ -7980,7 +7980,7 @@ function M.ValidateConfigurationSettingsAsync(ValidateConfigurationSettingsMessa
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ValidateConfigurationSettings")
 	if request_handler then
 		request_handler(settings.uri, "/", ValidateConfigurationSettingsMessage, headers, settings, cb)
 	else
@@ -8012,7 +8012,7 @@ function M.ListAvailableSolutionStacksAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListAvailableSolutionStacks")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -8047,7 +8047,7 @@ function M.ComposeEnvironmentsAsync(ComposeEnvironmentsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ComposeEnvironments")
 	if request_handler then
 		request_handler(settings.uri, "/", ComposeEnvironmentsMessage, headers, settings, cb)
 	else
@@ -8083,7 +8083,7 @@ function M.DescribeConfigurationSettingsAsync(DescribeConfigurationSettingsMessa
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeConfigurationSettings")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConfigurationSettingsMessage, headers, settings, cb)
 	else
@@ -8119,7 +8119,7 @@ function M.CreateApplicationAsync(CreateApplicationMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateApplicationMessage, headers, settings, cb)
 	else
@@ -8155,7 +8155,7 @@ function M.UpdateConfigurationTemplateAsync(UpdateConfigurationTemplateMessage, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateConfigurationTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateConfigurationTemplateMessage, headers, settings, cb)
 	else
@@ -8191,7 +8191,7 @@ function M.DeleteApplicationVersionAsync(DeleteApplicationVersionMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteApplicationVersion")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteApplicationVersionMessage, headers, settings, cb)
 	else
@@ -8227,7 +8227,7 @@ function M.RetrieveEnvironmentInfoAsync(RetrieveEnvironmentInfoMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RetrieveEnvironmentInfo")
 	if request_handler then
 		request_handler(settings.uri, "/", RetrieveEnvironmentInfoMessage, headers, settings, cb)
 	else
@@ -8263,7 +8263,7 @@ function M.UpdateApplicationAsync(UpdateApplicationMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateApplication")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateApplicationMessage, headers, settings, cb)
 	else
@@ -8299,7 +8299,7 @@ function M.UpdateEnvironmentAsync(UpdateEnvironmentMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateEnvironment")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateEnvironmentMessage, headers, settings, cb)
 	else
@@ -8335,7 +8335,7 @@ function M.DescribeEnvironmentsAsync(DescribeEnvironmentsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeEnvironments")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEnvironmentsMessage, headers, settings, cb)
 	else
@@ -8371,7 +8371,7 @@ function M.ListPlatformVersionsAsync(ListPlatformVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListPlatformVersions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPlatformVersionsRequest, headers, settings, cb)
 	else
@@ -8407,7 +8407,7 @@ function M.DescribeEnvironmentManagedActionsAsync(DescribeEnvironmentManagedActi
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeEnvironmentManagedActions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEnvironmentManagedActionsRequest, headers, settings, cb)
 	else
@@ -8443,7 +8443,7 @@ function M.AbortEnvironmentUpdateAsync(AbortEnvironmentUpdateMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "AbortEnvironmentUpdate")
 	if request_handler then
 		request_handler(settings.uri, "/", AbortEnvironmentUpdateMessage, headers, settings, cb)
 	else
@@ -8479,7 +8479,7 @@ function M.RestartAppServerAsync(RestartAppServerMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RestartAppServer")
 	if request_handler then
 		request_handler(settings.uri, "/", RestartAppServerMessage, headers, settings, cb)
 	else
@@ -8515,7 +8515,7 @@ function M.DeleteEnvironmentConfigurationAsync(DeleteEnvironmentConfigurationMes
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteEnvironmentConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEnvironmentConfigurationMessage, headers, settings, cb)
 	else
@@ -8551,7 +8551,7 @@ function M.CreateEnvironmentAsync(CreateEnvironmentMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateEnvironment")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateEnvironmentMessage, headers, settings, cb)
 	else
@@ -8587,7 +8587,7 @@ function M.SwapEnvironmentCNAMEsAsync(SwapEnvironmentCNAMEsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "SwapEnvironmentCNAMEs")
 	if request_handler then
 		request_handler(settings.uri, "/", SwapEnvironmentCNAMEsMessage, headers, settings, cb)
 	else
@@ -8623,7 +8623,7 @@ function M.DeletePlatformVersionAsync(DeletePlatformVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeletePlatformVersion")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePlatformVersionRequest, headers, settings, cb)
 	else
@@ -8655,7 +8655,7 @@ function M.CreateStorageLocationAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateStorageLocation")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -8690,7 +8690,7 @@ function M.RebuildEnvironmentAsync(RebuildEnvironmentMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "RebuildEnvironment")
 	if request_handler then
 		request_handler(settings.uri, "/", RebuildEnvironmentMessage, headers, settings, cb)
 	else
@@ -8726,7 +8726,7 @@ function M.ListTagsForResourceAsync(ListTagsForResourceMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListTagsForResource")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForResourceMessage, headers, settings, cb)
 	else
@@ -8762,7 +8762,7 @@ function M.DescribeApplicationsAsync(DescribeApplicationsMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeApplications")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeApplicationsMessage, headers, settings, cb)
 	else
@@ -8798,7 +8798,7 @@ function M.CreatePlatformVersionAsync(CreatePlatformVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreatePlatformVersion")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePlatformVersionRequest, headers, settings, cb)
 	else
@@ -8834,7 +8834,7 @@ function M.DescribePlatformVersionAsync(DescribePlatformVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribePlatformVersion")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePlatformVersionRequest, headers, settings, cb)
 	else
@@ -8866,7 +8866,7 @@ function M.DescribeAccountAttributesAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeAccountAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -8901,7 +8901,7 @@ function M.DescribeInstancesHealthAsync(DescribeInstancesHealthRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeInstancesHealth")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstancesHealthRequest, headers, settings, cb)
 	else
@@ -8937,7 +8937,7 @@ function M.CreateApplicationVersionAsync(CreateApplicationVersionMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateApplicationVersion")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateApplicationVersionMessage, headers, settings, cb)
 	else
@@ -8973,7 +8973,7 @@ function M.CreateConfigurationTemplateAsync(CreateConfigurationTemplateMessage, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateConfigurationTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateConfigurationTemplateMessage, headers, settings, cb)
 	else
@@ -9009,7 +9009,7 @@ function M.CheckDNSAvailabilityAsync(CheckDNSAvailabilityMessage, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CheckDNSAvailability")
 	if request_handler then
 		request_handler(settings.uri, "/", CheckDNSAvailabilityMessage, headers, settings, cb)
 	else

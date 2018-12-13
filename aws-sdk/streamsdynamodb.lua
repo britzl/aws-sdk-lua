@@ -1446,7 +1446,7 @@ function M.GetRecordsAsync(GetRecordsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRecords")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRecordsInput, headers, settings, cb)
 	else
@@ -1482,7 +1482,7 @@ function M.ListStreamsAsync(ListStreamsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListStreams")
 	if request_handler then
 		request_handler(settings.uri, "/", ListStreamsInput, headers, settings, cb)
 	else
@@ -1518,7 +1518,7 @@ function M.GetShardIteratorAsync(GetShardIteratorInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetShardIterator")
 	if request_handler then
 		request_handler(settings.uri, "/", GetShardIteratorInput, headers, settings, cb)
 	else
@@ -1554,7 +1554,7 @@ function M.DescribeStreamAsync(DescribeStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeStream")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStreamInput, headers, settings, cb)
 	else

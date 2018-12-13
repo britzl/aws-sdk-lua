@@ -5883,7 +5883,7 @@ function M.DeleteAssessmentTargetAsync(DeleteAssessmentTargetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteAssessmentTarget")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAssessmentTargetRequest, headers, settings, cb)
 	else
@@ -5919,7 +5919,7 @@ function M.UpdateAssessmentTargetAsync(UpdateAssessmentTargetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateAssessmentTarget")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAssessmentTargetRequest, headers, settings, cb)
 	else
@@ -5955,7 +5955,7 @@ function M.RemoveAttributesFromFindingsAsync(RemoveAttributesFromFindingsRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RemoveAttributesFromFindings")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveAttributesFromFindingsRequest, headers, settings, cb)
 	else
@@ -5991,7 +5991,7 @@ function M.GetTelemetryMetadataAsync(GetTelemetryMetadataRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetTelemetryMetadata")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTelemetryMetadataRequest, headers, settings, cb)
 	else
@@ -6027,7 +6027,7 @@ function M.DescribeAssessmentRunsAsync(DescribeAssessmentRunsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAssessmentRuns")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAssessmentRunsRequest, headers, settings, cb)
 	else
@@ -6063,7 +6063,7 @@ function M.StartAssessmentRunAsync(StartAssessmentRunRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartAssessmentRun")
 	if request_handler then
 		request_handler(settings.uri, "/", StartAssessmentRunRequest, headers, settings, cb)
 	else
@@ -6095,7 +6095,7 @@ function M.DescribeCrossAccountAccessRoleAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeCrossAccountAccessRole")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -6130,7 +6130,7 @@ function M.DescribeAssessmentTargetsAsync(DescribeAssessmentTargetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAssessmentTargets")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAssessmentTargetsRequest, headers, settings, cb)
 	else
@@ -6166,7 +6166,7 @@ function M.ListRulesPackagesAsync(ListRulesPackagesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListRulesPackages")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRulesPackagesRequest, headers, settings, cb)
 	else
@@ -6202,7 +6202,7 @@ function M.StopAssessmentRunAsync(StopAssessmentRunRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopAssessmentRun")
 	if request_handler then
 		request_handler(settings.uri, "/", StopAssessmentRunRequest, headers, settings, cb)
 	else
@@ -6238,7 +6238,7 @@ function M.ListAssessmentTemplatesAsync(ListAssessmentTemplatesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAssessmentTemplates")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAssessmentTemplatesRequest, headers, settings, cb)
 	else
@@ -6274,7 +6274,7 @@ function M.DescribeFindingsAsync(DescribeFindingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeFindings")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFindingsRequest, headers, settings, cb)
 	else
@@ -6310,7 +6310,7 @@ function M.DeleteAssessmentTemplateAsync(DeleteAssessmentTemplateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteAssessmentTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAssessmentTemplateRequest, headers, settings, cb)
 	else
@@ -6346,7 +6346,7 @@ function M.DescribeResourceGroupsAsync(DescribeResourceGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeResourceGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeResourceGroupsRequest, headers, settings, cb)
 	else
@@ -6382,7 +6382,7 @@ function M.ListFindingsAsync(ListFindingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListFindings")
 	if request_handler then
 		request_handler(settings.uri, "/", ListFindingsRequest, headers, settings, cb)
 	else
@@ -6418,7 +6418,7 @@ function M.ListEventSubscriptionsAsync(ListEventSubscriptionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListEventSubscriptions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListEventSubscriptionsRequest, headers, settings, cb)
 	else
@@ -6454,7 +6454,7 @@ function M.ListAssessmentTargetsAsync(ListAssessmentTargetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAssessmentTargets")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAssessmentTargetsRequest, headers, settings, cb)
 	else
@@ -6490,7 +6490,7 @@ function M.DescribeExclusionsAsync(DescribeExclusionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeExclusions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeExclusionsRequest, headers, settings, cb)
 	else
@@ -6526,7 +6526,7 @@ function M.ListExclusionsAsync(ListExclusionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListExclusions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListExclusionsRequest, headers, settings, cb)
 	else
@@ -6562,7 +6562,7 @@ function M.GetExclusionsPreviewAsync(GetExclusionsPreviewRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetExclusionsPreview")
 	if request_handler then
 		request_handler(settings.uri, "/", GetExclusionsPreviewRequest, headers, settings, cb)
 	else
@@ -6598,7 +6598,7 @@ function M.SetTagsForResourceAsync(SetTagsForResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SetTagsForResource")
 	if request_handler then
 		request_handler(settings.uri, "/", SetTagsForResourceRequest, headers, settings, cb)
 	else
@@ -6634,7 +6634,7 @@ function M.DeleteAssessmentRunAsync(DeleteAssessmentRunRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteAssessmentRun")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAssessmentRunRequest, headers, settings, cb)
 	else
@@ -6670,7 +6670,7 @@ function M.CreateAssessmentTargetAsync(CreateAssessmentTargetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateAssessmentTarget")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAssessmentTargetRequest, headers, settings, cb)
 	else
@@ -6706,7 +6706,7 @@ function M.UnsubscribeFromEventAsync(UnsubscribeFromEventRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UnsubscribeFromEvent")
 	if request_handler then
 		request_handler(settings.uri, "/", UnsubscribeFromEventRequest, headers, settings, cb)
 	else
@@ -6742,7 +6742,7 @@ function M.ListAssessmentRunsAsync(ListAssessmentRunsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAssessmentRuns")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAssessmentRunsRequest, headers, settings, cb)
 	else
@@ -6778,7 +6778,7 @@ function M.CreateExclusionsPreviewAsync(CreateExclusionsPreviewRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateExclusionsPreview")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateExclusionsPreviewRequest, headers, settings, cb)
 	else
@@ -6814,7 +6814,7 @@ function M.RegisterCrossAccountAccessRoleAsync(RegisterCrossAccountAccessRoleReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterCrossAccountAccessRole")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterCrossAccountAccessRoleRequest, headers, settings, cb)
 	else
@@ -6850,7 +6850,7 @@ function M.AddAttributesToFindingsAsync(AddAttributesToFindingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddAttributesToFindings")
 	if request_handler then
 		request_handler(settings.uri, "/", AddAttributesToFindingsRequest, headers, settings, cb)
 	else
@@ -6886,7 +6886,7 @@ function M.CreateResourceGroupAsync(CreateResourceGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateResourceGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateResourceGroupRequest, headers, settings, cb)
 	else
@@ -6922,7 +6922,7 @@ function M.DescribeAssessmentTemplatesAsync(DescribeAssessmentTemplatesRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeAssessmentTemplates")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAssessmentTemplatesRequest, headers, settings, cb)
 	else
@@ -6958,7 +6958,7 @@ function M.PreviewAgentsAsync(PreviewAgentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PreviewAgents")
 	if request_handler then
 		request_handler(settings.uri, "/", PreviewAgentsRequest, headers, settings, cb)
 	else
@@ -6994,7 +6994,7 @@ function M.CreateAssessmentTemplateAsync(CreateAssessmentTemplateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateAssessmentTemplate")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAssessmentTemplateRequest, headers, settings, cb)
 	else
@@ -7030,7 +7030,7 @@ function M.SubscribeToEventAsync(SubscribeToEventRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SubscribeToEvent")
 	if request_handler then
 		request_handler(settings.uri, "/", SubscribeToEventRequest, headers, settings, cb)
 	else
@@ -7066,7 +7066,7 @@ function M.DescribeRulesPackagesAsync(DescribeRulesPackagesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeRulesPackages")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRulesPackagesRequest, headers, settings, cb)
 	else
@@ -7102,7 +7102,7 @@ function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTagsForResource")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForResourceRequest, headers, settings, cb)
 	else
@@ -7138,7 +7138,7 @@ function M.ListAssessmentRunAgentsAsync(ListAssessmentRunAgentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAssessmentRunAgents")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAssessmentRunAgentsRequest, headers, settings, cb)
 	else
@@ -7174,7 +7174,7 @@ function M.GetAssessmentReportAsync(GetAssessmentReportRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetAssessmentReport")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAssessmentReportRequest, headers, settings, cb)
 	else

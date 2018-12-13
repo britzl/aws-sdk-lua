@@ -4144,7 +4144,7 @@ function M.DescribeServiceAccessPoliciesAsync(DescribeServiceAccessPoliciesReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeServiceAccessPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeServiceAccessPoliciesRequest, headers, settings, cb)
 	else
@@ -4180,7 +4180,7 @@ function M.UpdateScalingParametersAsync(UpdateScalingParametersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateScalingParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateScalingParametersRequest, headers, settings, cb)
 	else
@@ -4216,7 +4216,7 @@ function M.DescribeDomainsAsync(DescribeDomainsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeDomains")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDomainsRequest, headers, settings, cb)
 	else
@@ -4252,7 +4252,7 @@ function M.DescribeScalingParametersAsync(DescribeScalingParametersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeScalingParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeScalingParametersRequest, headers, settings, cb)
 	else
@@ -4288,7 +4288,7 @@ function M.DescribeExpressionsAsync(DescribeExpressionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeExpressions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeExpressionsRequest, headers, settings, cb)
 	else
@@ -4324,7 +4324,7 @@ function M.DescribeIndexFieldsAsync(DescribeIndexFieldsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeIndexFields")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeIndexFieldsRequest, headers, settings, cb)
 	else
@@ -4356,7 +4356,7 @@ function M.ListDomainNamesAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "ListDomainNames")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -4391,7 +4391,7 @@ function M.DescribeAvailabilityOptionsAsync(DescribeAvailabilityOptionsRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeAvailabilityOptions")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAvailabilityOptionsRequest, headers, settings, cb)
 	else
@@ -4427,7 +4427,7 @@ function M.DefineIndexFieldAsync(DefineIndexFieldRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DefineIndexField")
 	if request_handler then
 		request_handler(settings.uri, "/", DefineIndexFieldRequest, headers, settings, cb)
 	else
@@ -4463,7 +4463,7 @@ function M.DeleteAnalysisSchemeAsync(DeleteAnalysisSchemeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteAnalysisScheme")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAnalysisSchemeRequest, headers, settings, cb)
 	else
@@ -4499,7 +4499,7 @@ function M.UpdateAvailabilityOptionsAsync(UpdateAvailabilityOptionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateAvailabilityOptions")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAvailabilityOptionsRequest, headers, settings, cb)
 	else
@@ -4535,7 +4535,7 @@ function M.DeleteExpressionAsync(DeleteExpressionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteExpression")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteExpressionRequest, headers, settings, cb)
 	else
@@ -4571,7 +4571,7 @@ function M.DescribeAnalysisSchemesAsync(DescribeAnalysisSchemesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeAnalysisSchemes")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAnalysisSchemesRequest, headers, settings, cb)
 	else
@@ -4607,7 +4607,7 @@ function M.DefineSuggesterAsync(DefineSuggesterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DefineSuggester")
 	if request_handler then
 		request_handler(settings.uri, "/", DefineSuggesterRequest, headers, settings, cb)
 	else
@@ -4643,7 +4643,7 @@ function M.CreateDomainAsync(CreateDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "CreateDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDomainRequest, headers, settings, cb)
 	else
@@ -4679,7 +4679,7 @@ function M.IndexDocumentsAsync(IndexDocumentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "IndexDocuments")
 	if request_handler then
 		request_handler(settings.uri, "/", IndexDocumentsRequest, headers, settings, cb)
 	else
@@ -4715,7 +4715,7 @@ function M.DescribeSuggestersAsync(DescribeSuggestersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DescribeSuggesters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSuggestersRequest, headers, settings, cb)
 	else
@@ -4751,7 +4751,7 @@ function M.UpdateServiceAccessPoliciesAsync(UpdateServiceAccessPoliciesRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "UpdateServiceAccessPolicies")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateServiceAccessPoliciesRequest, headers, settings, cb)
 	else
@@ -4787,7 +4787,7 @@ function M.DeleteIndexFieldAsync(DeleteIndexFieldRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteIndexField")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteIndexFieldRequest, headers, settings, cb)
 	else
@@ -4823,7 +4823,7 @@ function M.DefineAnalysisSchemeAsync(DefineAnalysisSchemeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DefineAnalysisScheme")
 	if request_handler then
 		request_handler(settings.uri, "/", DefineAnalysisSchemeRequest, headers, settings, cb)
 	else
@@ -4859,7 +4859,7 @@ function M.DefineExpressionAsync(DefineExpressionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DefineExpression")
 	if request_handler then
 		request_handler(settings.uri, "/", DefineExpressionRequest, headers, settings, cb)
 	else
@@ -4895,7 +4895,7 @@ function M.BuildSuggestersAsync(BuildSuggestersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "BuildSuggesters")
 	if request_handler then
 		request_handler(settings.uri, "/", BuildSuggestersRequest, headers, settings, cb)
 	else
@@ -4931,7 +4931,7 @@ function M.DeleteDomainAsync(DeleteDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDomainRequest, headers, settings, cb)
 	else
@@ -4967,7 +4967,7 @@ function M.DeleteSuggesterAsync(DeleteSuggesterRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST", "DeleteSuggester")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSuggesterRequest, headers, settings, cb)
 	else

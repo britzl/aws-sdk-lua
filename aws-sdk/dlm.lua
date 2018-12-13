@@ -1118,7 +1118,7 @@ function M.DeleteLifecyclePolicyAsync(DeleteLifecyclePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteLifecyclePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/policies/{policyId}/", DeleteLifecyclePolicyRequest, headers, settings, cb)
 	else
@@ -1154,7 +1154,7 @@ function M.GetLifecyclePoliciesAsync(GetLifecyclePoliciesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetLifecyclePolicies")
 	if request_handler then
 		request_handler(settings.uri, "/policies", GetLifecyclePoliciesRequest, headers, settings, cb)
 	else
@@ -1190,7 +1190,7 @@ function M.CreateLifecyclePolicyAsync(CreateLifecyclePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateLifecyclePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/policies", CreateLifecyclePolicyRequest, headers, settings, cb)
 	else
@@ -1226,7 +1226,7 @@ function M.GetLifecyclePolicyAsync(GetLifecyclePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetLifecyclePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/policies/{policyId}/", GetLifecyclePolicyRequest, headers, settings, cb)
 	else
@@ -1262,7 +1262,7 @@ function M.UpdateLifecyclePolicyAsync(UpdateLifecyclePolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH", "UpdateLifecyclePolicy")
 	if request_handler then
 		request_handler(settings.uri, "/policies/{policyId}", UpdateLifecyclePolicyRequest, headers, settings, cb)
 	else

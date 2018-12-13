@@ -4806,7 +4806,7 @@ function M.DescribeVirtualGatewaysAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeVirtualGateways")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -4841,7 +4841,7 @@ function M.DescribeDirectConnectGatewayAssociationsAsync(DescribeDirectConnectGa
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDirectConnectGatewayAssociations")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDirectConnectGatewayAssociationsRequest, headers, settings, cb)
 	else
@@ -4877,7 +4877,7 @@ function M.CreateBGPPeerAsync(CreateBGPPeerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateBGPPeer")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateBGPPeerRequest, headers, settings, cb)
 	else
@@ -4913,7 +4913,7 @@ function M.AllocateHostedConnectionAsync(AllocateHostedConnectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AllocateHostedConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", AllocateHostedConnectionRequest, headers, settings, cb)
 	else
@@ -4949,7 +4949,7 @@ function M.AssociateHostedConnectionAsync(AssociateHostedConnectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateHostedConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateHostedConnectionRequest, headers, settings, cb)
 	else
@@ -4985,7 +4985,7 @@ function M.AllocatePublicVirtualInterfaceAsync(AllocatePublicVirtualInterfaceReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AllocatePublicVirtualInterface")
 	if request_handler then
 		request_handler(settings.uri, "/", AllocatePublicVirtualInterfaceRequest, headers, settings, cb)
 	else
@@ -5021,7 +5021,7 @@ function M.DeleteVirtualInterfaceAsync(DeleteVirtualInterfaceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteVirtualInterface")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVirtualInterfaceRequest, headers, settings, cb)
 	else
@@ -5057,7 +5057,7 @@ function M.CreateInterconnectAsync(CreateInterconnectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateInterconnect")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateInterconnectRequest, headers, settings, cb)
 	else
@@ -5093,7 +5093,7 @@ function M.DescribeLagsAsync(DescribeLagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeLags")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLagsRequest, headers, settings, cb)
 	else
@@ -5129,7 +5129,7 @@ function M.DeleteInterconnectAsync(DeleteInterconnectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteInterconnect")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteInterconnectRequest, headers, settings, cb)
 	else
@@ -5165,7 +5165,7 @@ function M.DeleteBGPPeerAsync(DeleteBGPPeerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteBGPPeer")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteBGPPeerRequest, headers, settings, cb)
 	else
@@ -5201,7 +5201,7 @@ function M.DeleteDirectConnectGatewayAssociationAsync(DeleteDirectConnectGateway
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDirectConnectGatewayAssociation")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDirectConnectGatewayAssociationRequest, headers, settings, cb)
 	else
@@ -5237,7 +5237,7 @@ function M.DescribeDirectConnectGatewayAttachmentsAsync(DescribeDirectConnectGat
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDirectConnectGatewayAttachments")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDirectConnectGatewayAttachmentsRequest, headers, settings, cb)
 	else
@@ -5273,7 +5273,7 @@ function M.AllocatePrivateVirtualInterfaceAsync(AllocatePrivateVirtualInterfaceR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AllocatePrivateVirtualInterface")
 	if request_handler then
 		request_handler(settings.uri, "/", AllocatePrivateVirtualInterfaceRequest, headers, settings, cb)
 	else
@@ -5309,7 +5309,7 @@ function M.AssociateConnectionWithLagAsync(AssociateConnectionWithLagRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateConnectionWithLag")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateConnectionWithLagRequest, headers, settings, cb)
 	else
@@ -5345,7 +5345,7 @@ function M.CreateLagAsync(CreateLagRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateLag")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLagRequest, headers, settings, cb)
 	else
@@ -5381,7 +5381,7 @@ function M.ConfirmPublicVirtualInterfaceAsync(ConfirmPublicVirtualInterfaceReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ConfirmPublicVirtualInterface")
 	if request_handler then
 		request_handler(settings.uri, "/", ConfirmPublicVirtualInterfaceRequest, headers, settings, cb)
 	else
@@ -5417,7 +5417,7 @@ function M.DescribeLoaAsync(DescribeLoaRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeLoa")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLoaRequest, headers, settings, cb)
 	else
@@ -5453,7 +5453,7 @@ function M.DescribeHostedConnectionsAsync(DescribeHostedConnectionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeHostedConnections")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHostedConnectionsRequest, headers, settings, cb)
 	else
@@ -5489,7 +5489,7 @@ function M.AssociateVirtualInterfaceAsync(AssociateVirtualInterfaceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateVirtualInterface")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateVirtualInterfaceRequest, headers, settings, cb)
 	else
@@ -5525,7 +5525,7 @@ function M.DescribeVirtualInterfacesAsync(DescribeVirtualInterfacesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeVirtualInterfaces")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVirtualInterfacesRequest, headers, settings, cb)
 	else
@@ -5561,7 +5561,7 @@ function M.CreateDirectConnectGatewayAsync(CreateDirectConnectGatewayRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDirectConnectGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDirectConnectGatewayRequest, headers, settings, cb)
 	else
@@ -5597,7 +5597,7 @@ function M.ConfirmPrivateVirtualInterfaceAsync(ConfirmPrivateVirtualInterfaceReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ConfirmPrivateVirtualInterface")
 	if request_handler then
 		request_handler(settings.uri, "/", ConfirmPrivateVirtualInterfaceRequest, headers, settings, cb)
 	else
@@ -5633,7 +5633,7 @@ function M.DisassociateConnectionFromLagAsync(DisassociateConnectionFromLagReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateConnectionFromLag")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateConnectionFromLagRequest, headers, settings, cb)
 	else
@@ -5669,7 +5669,7 @@ function M.DeleteDirectConnectGatewayAsync(DeleteDirectConnectGatewayRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDirectConnectGateway")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDirectConnectGatewayRequest, headers, settings, cb)
 	else
@@ -5705,7 +5705,7 @@ function M.ConfirmConnectionAsync(ConfirmConnectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ConfirmConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", ConfirmConnectionRequest, headers, settings, cb)
 	else
@@ -5741,7 +5741,7 @@ function M.DescribeInterconnectsAsync(DescribeInterconnectsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeInterconnects")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInterconnectsRequest, headers, settings, cb)
 	else
@@ -5777,7 +5777,7 @@ function M.DescribeTagsAsync(DescribeTagsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTags")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagsRequest, headers, settings, cb)
 	else
@@ -5813,7 +5813,7 @@ function M.DescribeConnectionsAsync(DescribeConnectionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeConnections")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConnectionsRequest, headers, settings, cb)
 	else
@@ -5849,7 +5849,7 @@ function M.CreatePublicVirtualInterfaceAsync(CreatePublicVirtualInterfaceRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreatePublicVirtualInterface")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePublicVirtualInterfaceRequest, headers, settings, cb)
 	else
@@ -5885,7 +5885,7 @@ function M.CreateConnectionAsync(CreateConnectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateConnectionRequest, headers, settings, cb)
 	else
@@ -5921,7 +5921,7 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TagResource")
 	if request_handler then
 		request_handler(settings.uri, "/", TagResourceRequest, headers, settings, cb)
 	else
@@ -5953,7 +5953,7 @@ function M.DescribeLocationsAsync(cb)
 	}
 
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeLocations")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -5988,7 +5988,7 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UntagResource")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagResourceRequest, headers, settings, cb)
 	else
@@ -6024,7 +6024,7 @@ function M.CreatePrivateVirtualInterfaceAsync(CreatePrivateVirtualInterfaceReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreatePrivateVirtualInterface")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePrivateVirtualInterfaceRequest, headers, settings, cb)
 	else
@@ -6060,7 +6060,7 @@ function M.DeleteConnectionAsync(DeleteConnectionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteConnection")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConnectionRequest, headers, settings, cb)
 	else
@@ -6096,7 +6096,7 @@ function M.DescribeDirectConnectGatewaysAsync(DescribeDirectConnectGatewaysReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDirectConnectGateways")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDirectConnectGatewaysRequest, headers, settings, cb)
 	else
@@ -6132,7 +6132,7 @@ function M.DeleteLagAsync(DeleteLagRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteLag")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLagRequest, headers, settings, cb)
 	else
@@ -6168,7 +6168,7 @@ function M.CreateDirectConnectGatewayAssociationAsync(CreateDirectConnectGateway
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDirectConnectGatewayAssociation")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDirectConnectGatewayAssociationRequest, headers, settings, cb)
 	else
@@ -6204,7 +6204,7 @@ function M.UpdateVirtualInterfaceAttributesAsync(UpdateVirtualInterfaceAttribute
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateVirtualInterfaceAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateVirtualInterfaceAttributesRequest, headers, settings, cb)
 	else
@@ -6240,7 +6240,7 @@ function M.UpdateLagAsync(UpdateLagRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateLag")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateLagRequest, headers, settings, cb)
 	else

@@ -8008,7 +8008,7 @@ function M.UpdateStreamingDistribution2018_06_18Async(UpdateStreamingDistributio
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "UpdateStreamingDistribution2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/streaming-distribution/{Id}/config", UpdateStreamingDistributionRequest, headers, settings, cb)
 	else
@@ -8044,7 +8044,7 @@ function M.DeleteFieldLevelEncryptionConfig2018_06_18Async(DeleteFieldLevelEncry
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteFieldLevelEncryptionConfig2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/field-level-encryption/{Id}", DeleteFieldLevelEncryptionConfigRequest, headers, settings, cb)
 	else
@@ -8080,7 +8080,7 @@ function M.ListDistributions2018_06_18Async(ListDistributionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListDistributions2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/distribution", ListDistributionsRequest, headers, settings, cb)
 	else
@@ -8116,7 +8116,7 @@ function M.GetStreamingDistribution2018_06_18Async(GetStreamingDistributionReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetStreamingDistribution2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/streaming-distribution/{Id}", GetStreamingDistributionRequest, headers, settings, cb)
 	else
@@ -8152,7 +8152,7 @@ function M.GetPublicKey2018_06_18Async(GetPublicKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetPublicKey2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/public-key/{Id}", GetPublicKeyRequest, headers, settings, cb)
 	else
@@ -8188,7 +8188,7 @@ function M.CreateStreamingDistributionWithTags2018_06_18Async(CreateStreamingDis
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CreateStreamingDistributionWithTags2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/streaming-distribution?WithTags", CreateStreamingDistributionWithTagsRequest, headers, settings, cb)
 	else
@@ -8224,7 +8224,7 @@ function M.UpdatePublicKey2018_06_18Async(UpdatePublicKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "UpdatePublicKey2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/public-key/{Id}/config", UpdatePublicKeyRequest, headers, settings, cb)
 	else
@@ -8260,7 +8260,7 @@ function M.DeleteFieldLevelEncryptionProfile2018_06_18Async(DeleteFieldLevelEncr
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteFieldLevelEncryptionProfile2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/field-level-encryption-profile/{Id}", DeleteFieldLevelEncryptionProfileRequest, headers, settings, cb)
 	else
@@ -8296,7 +8296,7 @@ function M.CreateDistribution2018_06_18Async(CreateDistributionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CreateDistribution2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/distribution", CreateDistributionRequest, headers, settings, cb)
 	else
@@ -8332,7 +8332,7 @@ function M.CreateFieldLevelEncryptionProfile2018_06_18Async(CreateFieldLevelEncr
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CreateFieldLevelEncryptionProfile2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/field-level-encryption-profile", CreateFieldLevelEncryptionProfileRequest, headers, settings, cb)
 	else
@@ -8368,7 +8368,7 @@ function M.ListInvalidations2018_06_18Async(ListInvalidationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListInvalidations2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/distribution/{DistributionId}/invalidation", ListInvalidationsRequest, headers, settings, cb)
 	else
@@ -8404,7 +8404,7 @@ function M.ListStreamingDistributions2018_06_18Async(ListStreamingDistributionsR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListStreamingDistributions2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/streaming-distribution", ListStreamingDistributionsRequest, headers, settings, cb)
 	else
@@ -8440,7 +8440,7 @@ function M.UpdateDistribution2018_06_18Async(UpdateDistributionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "UpdateDistribution2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/distribution/{Id}/config", UpdateDistributionRequest, headers, settings, cb)
 	else
@@ -8476,7 +8476,7 @@ function M.CreateStreamingDistribution2018_06_18Async(CreateStreamingDistributio
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CreateStreamingDistribution2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/streaming-distribution", CreateStreamingDistributionRequest, headers, settings, cb)
 	else
@@ -8512,7 +8512,7 @@ function M.GetPublicKeyConfig2018_06_18Async(GetPublicKeyConfigRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetPublicKeyConfig2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/public-key/{Id}/config", GetPublicKeyConfigRequest, headers, settings, cb)
 	else
@@ -8548,7 +8548,7 @@ function M.DeleteDistribution2018_06_18Async(DeleteDistributionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteDistribution2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/distribution/{Id}", DeleteDistributionRequest, headers, settings, cb)
 	else
@@ -8584,7 +8584,7 @@ function M.TagResource2018_06_18Async(TagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "TagResource2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/tagging?Operation=Tag", TagResourceRequest, headers, settings, cb)
 	else
@@ -8620,7 +8620,7 @@ function M.CreatePublicKey2018_06_18Async(CreatePublicKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CreatePublicKey2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/public-key", CreatePublicKeyRequest, headers, settings, cb)
 	else
@@ -8656,7 +8656,7 @@ function M.DeletePublicKey2018_06_18Async(DeletePublicKeyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeletePublicKey2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/public-key/{Id}", DeletePublicKeyRequest, headers, settings, cb)
 	else
@@ -8692,7 +8692,7 @@ function M.GetInvalidation2018_06_18Async(GetInvalidationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetInvalidation2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/distribution/{DistributionId}/invalidation/{Id}", GetInvalidationRequest, headers, settings, cb)
 	else
@@ -8728,7 +8728,7 @@ function M.DeleteCloudFrontOriginAccessIdentity2018_06_18Async(DeleteCloudFrontO
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteCloudFrontOriginAccessIdentity2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/origin-access-identity/cloudfront/{Id}", DeleteCloudFrontOriginAccessIdentityRequest, headers, settings, cb)
 	else
@@ -8764,7 +8764,7 @@ function M.UpdateFieldLevelEncryptionProfile2018_06_18Async(UpdateFieldLevelEncr
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "UpdateFieldLevelEncryptionProfile2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/field-level-encryption-profile/{Id}/config", UpdateFieldLevelEncryptionProfileRequest, headers, settings, cb)
 	else
@@ -8800,7 +8800,7 @@ function M.ListCloudFrontOriginAccessIdentities2018_06_18Async(ListCloudFrontOri
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListCloudFrontOriginAccessIdentities2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/origin-access-identity/cloudfront", ListCloudFrontOriginAccessIdentitiesRequest, headers, settings, cb)
 	else
@@ -8836,7 +8836,7 @@ function M.CreateFieldLevelEncryptionConfig2018_06_18Async(CreateFieldLevelEncry
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CreateFieldLevelEncryptionConfig2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/field-level-encryption", CreateFieldLevelEncryptionConfigRequest, headers, settings, cb)
 	else
@@ -8872,7 +8872,7 @@ function M.ListPublicKeys2018_06_18Async(ListPublicKeysRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListPublicKeys2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/public-key", ListPublicKeysRequest, headers, settings, cb)
 	else
@@ -8908,7 +8908,7 @@ function M.GetStreamingDistributionConfig2018_06_18Async(GetStreamingDistributio
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetStreamingDistributionConfig2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/streaming-distribution/{Id}/config", GetStreamingDistributionConfigRequest, headers, settings, cb)
 	else
@@ -8944,7 +8944,7 @@ function M.GetFieldLevelEncryptionProfileConfig2018_06_18Async(GetFieldLevelEncr
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetFieldLevelEncryptionProfileConfig2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/field-level-encryption-profile/{Id}/config", GetFieldLevelEncryptionProfileConfigRequest, headers, settings, cb)
 	else
@@ -8980,7 +8980,7 @@ function M.GetCloudFrontOriginAccessIdentity2018_06_18Async(GetCloudFrontOriginA
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetCloudFrontOriginAccessIdentity2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/origin-access-identity/cloudfront/{Id}", GetCloudFrontOriginAccessIdentityRequest, headers, settings, cb)
 	else
@@ -9016,7 +9016,7 @@ function M.GetDistribution2018_06_18Async(GetDistributionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetDistribution2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/distribution/{Id}", GetDistributionRequest, headers, settings, cb)
 	else
@@ -9052,7 +9052,7 @@ function M.GetCloudFrontOriginAccessIdentityConfig2018_06_18Async(GetCloudFrontO
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetCloudFrontOriginAccessIdentityConfig2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/origin-access-identity/cloudfront/{Id}/config", GetCloudFrontOriginAccessIdentityConfigRequest, headers, settings, cb)
 	else
@@ -9088,7 +9088,7 @@ function M.ListFieldLevelEncryptionProfiles2018_06_18Async(ListFieldLevelEncrypt
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListFieldLevelEncryptionProfiles2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/field-level-encryption-profile", ListFieldLevelEncryptionProfilesRequest, headers, settings, cb)
 	else
@@ -9124,7 +9124,7 @@ function M.GetDistributionConfig2018_06_18Async(GetDistributionConfigRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetDistributionConfig2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/distribution/{Id}/config", GetDistributionConfigRequest, headers, settings, cb)
 	else
@@ -9160,7 +9160,7 @@ function M.CreateCloudFrontOriginAccessIdentity2018_06_18Async(CreateCloudFrontO
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CreateCloudFrontOriginAccessIdentity2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/origin-access-identity/cloudfront", CreateCloudFrontOriginAccessIdentityRequest, headers, settings, cb)
 	else
@@ -9196,7 +9196,7 @@ function M.UpdateFieldLevelEncryptionConfig2018_06_18Async(UpdateFieldLevelEncry
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "UpdateFieldLevelEncryptionConfig2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/field-level-encryption/{Id}/config", UpdateFieldLevelEncryptionConfigRequest, headers, settings, cb)
 	else
@@ -9232,7 +9232,7 @@ function M.DeleteStreamingDistribution2018_06_18Async(DeleteStreamingDistributio
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE", "DeleteStreamingDistribution2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/streaming-distribution/{Id}", DeleteStreamingDistributionRequest, headers, settings, cb)
 	else
@@ -9268,7 +9268,7 @@ function M.CreateDistributionWithTags2018_06_18Async(CreateDistributionWithTagsR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CreateDistributionWithTags2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/distribution?WithTags", CreateDistributionWithTagsRequest, headers, settings, cb)
 	else
@@ -9304,7 +9304,7 @@ function M.UpdateCloudFrontOriginAccessIdentity2018_06_18Async(UpdateCloudFrontO
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT", "UpdateCloudFrontOriginAccessIdentity2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/origin-access-identity/cloudfront/{Id}/config", UpdateCloudFrontOriginAccessIdentityRequest, headers, settings, cb)
 	else
@@ -9340,7 +9340,7 @@ function M.UntagResource2018_06_18Async(UntagResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "UntagResource2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/tagging?Operation=Untag", UntagResourceRequest, headers, settings, cb)
 	else
@@ -9376,7 +9376,7 @@ function M.ListFieldLevelEncryptionConfigs2018_06_18Async(ListFieldLevelEncrypti
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListFieldLevelEncryptionConfigs2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/field-level-encryption", ListFieldLevelEncryptionConfigsRequest, headers, settings, cb)
 	else
@@ -9412,7 +9412,7 @@ function M.GetFieldLevelEncryptionProfile2018_06_18Async(GetFieldLevelEncryption
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetFieldLevelEncryptionProfile2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/field-level-encryption-profile/{Id}", GetFieldLevelEncryptionProfileRequest, headers, settings, cb)
 	else
@@ -9448,7 +9448,7 @@ function M.GetFieldLevelEncryption2018_06_18Async(GetFieldLevelEncryptionRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetFieldLevelEncryption2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/field-level-encryption/{Id}", GetFieldLevelEncryptionRequest, headers, settings, cb)
 	else
@@ -9484,7 +9484,7 @@ function M.CreateInvalidation2018_06_18Async(CreateInvalidationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST", "CreateInvalidation2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/distribution/{DistributionId}/invalidation", CreateInvalidationRequest, headers, settings, cb)
 	else
@@ -9520,7 +9520,7 @@ function M.ListDistributionsByWebACLId2018_06_18Async(ListDistributionsByWebACLI
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListDistributionsByWebACLId2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/distributionsByWebACLId/{WebACLId}", ListDistributionsByWebACLIdRequest, headers, settings, cb)
 	else
@@ -9556,7 +9556,7 @@ function M.ListTagsForResource2018_06_18Async(ListTagsForResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "ListTagsForResource2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/tagging", ListTagsForResourceRequest, headers, settings, cb)
 	else
@@ -9592,7 +9592,7 @@ function M.GetFieldLevelEncryptionConfig2018_06_18Async(GetFieldLevelEncryptionC
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET", "GetFieldLevelEncryptionConfig2018_06_18")
 	if request_handler then
 		request_handler(settings.uri, "/2018-06-18/field-level-encryption/{Id}/config", GetFieldLevelEncryptionConfigRequest, headers, settings, cb)
 	else

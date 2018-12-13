@@ -12637,7 +12637,7 @@ function M.UpdateSegmentAsync(UpdateSegmentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateSegment")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}", UpdateSegmentRequest, headers, settings, cb)
 	else
@@ -12673,7 +12673,7 @@ function M.CreateSegmentAsync(CreateSegmentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateSegment")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/segments", CreateSegmentRequest, headers, settings, cb)
 	else
@@ -12709,7 +12709,7 @@ function M.GetExportJobAsync(GetExportJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetExportJob")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/jobs/export/{job-id}", GetExportJobRequest, headers, settings, cb)
 	else
@@ -12745,7 +12745,7 @@ function M.UpdateApnsVoipSandboxChannelAsync(UpdateApnsVoipSandboxChannelRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateApnsVoipSandboxChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns_voip_sandbox", UpdateApnsVoipSandboxChannelRequest, headers, settings, cb)
 	else
@@ -12781,7 +12781,7 @@ function M.UpdateCampaignAsync(UpdateCampaignRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateCampaign")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns/{campaign-id}", UpdateCampaignRequest, headers, settings, cb)
 	else
@@ -12817,7 +12817,7 @@ function M.GetImportJobsAsync(GetImportJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetImportJobs")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/jobs/import", GetImportJobsRequest, headers, settings, cb)
 	else
@@ -12853,7 +12853,7 @@ function M.GetAppsAsync(GetAppsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetApps")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps", GetAppsRequest, headers, settings, cb)
 	else
@@ -12889,7 +12889,7 @@ function M.GetSegmentVersionAsync(GetSegmentVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSegmentVersion")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}/versions/{version}", GetSegmentVersionRequest, headers, settings, cb)
 	else
@@ -12925,7 +12925,7 @@ function M.DeleteApnsSandboxChannelAsync(DeleteApnsSandboxChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteApnsSandboxChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns_sandbox", DeleteApnsSandboxChannelRequest, headers, settings, cb)
 	else
@@ -12961,7 +12961,7 @@ function M.GetSmsChannelAsync(GetSmsChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSmsChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/sms", GetSmsChannelRequest, headers, settings, cb)
 	else
@@ -12997,7 +12997,7 @@ function M.DeleteApnsVoipSandboxChannelAsync(DeleteApnsVoipSandboxChannelRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteApnsVoipSandboxChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns_voip_sandbox", DeleteApnsVoipSandboxChannelRequest, headers, settings, cb)
 	else
@@ -13033,7 +13033,7 @@ function M.DeleteGcmChannelAsync(DeleteGcmChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteGcmChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/gcm", DeleteGcmChannelRequest, headers, settings, cb)
 	else
@@ -13069,7 +13069,7 @@ function M.GetAppAsync(GetAppRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetApp")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}", GetAppRequest, headers, settings, cb)
 	else
@@ -13105,7 +13105,7 @@ function M.GetChannelsAsync(GetChannelsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetChannels")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels", GetChannelsRequest, headers, settings, cb)
 	else
@@ -13141,7 +13141,7 @@ function M.DeleteCampaignAsync(DeleteCampaignRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteCampaign")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns/{campaign-id}", DeleteCampaignRequest, headers, settings, cb)
 	else
@@ -13177,7 +13177,7 @@ function M.GetImportJobAsync(GetImportJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetImportJob")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/jobs/import/{job-id}", GetImportJobRequest, headers, settings, cb)
 	else
@@ -13213,7 +13213,7 @@ function M.CreateCampaignAsync(CreateCampaignRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateCampaign")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns", CreateCampaignRequest, headers, settings, cb)
 	else
@@ -13249,7 +13249,7 @@ function M.DeleteEndpointAsync(DeleteEndpointRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/endpoints/{endpoint-id}", DeleteEndpointRequest, headers, settings, cb)
 	else
@@ -13285,7 +13285,7 @@ function M.CreateImportJobAsync(CreateImportJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateImportJob")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/jobs/import", CreateImportJobRequest, headers, settings, cb)
 	else
@@ -13321,7 +13321,7 @@ function M.PutEventsAsync(PutEventsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "PutEvents")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/events", PutEventsRequest, headers, settings, cb)
 	else
@@ -13357,7 +13357,7 @@ function M.RemoveAttributesAsync(RemoveAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "RemoveAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/attributes/{attribute-type}", RemoveAttributesRequest, headers, settings, cb)
 	else
@@ -13393,7 +13393,7 @@ function M.GetCampaignVersionAsync(GetCampaignVersionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetCampaignVersion")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns/{campaign-id}/versions/{version}", GetCampaignVersionRequest, headers, settings, cb)
 	else
@@ -13429,7 +13429,7 @@ function M.GetGcmChannelAsync(GetGcmChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetGcmChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/gcm", GetGcmChannelRequest, headers, settings, cb)
 	else
@@ -13465,7 +13465,7 @@ function M.UpdateApnsChannelAsync(UpdateApnsChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateApnsChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns", UpdateApnsChannelRequest, headers, settings, cb)
 	else
@@ -13501,7 +13501,7 @@ function M.UpdateGcmChannelAsync(UpdateGcmChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateGcmChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/gcm", UpdateGcmChannelRequest, headers, settings, cb)
 	else
@@ -13537,7 +13537,7 @@ function M.GetSegmentAsync(GetSegmentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSegment")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}", GetSegmentRequest, headers, settings, cb)
 	else
@@ -13573,7 +13573,7 @@ function M.GetCampaignAsync(GetCampaignRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetCampaign")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns/{campaign-id}", GetCampaignRequest, headers, settings, cb)
 	else
@@ -13609,7 +13609,7 @@ function M.GetEmailChannelAsync(GetEmailChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetEmailChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/email", GetEmailChannelRequest, headers, settings, cb)
 	else
@@ -13645,7 +13645,7 @@ function M.DeleteAppAsync(DeleteAppRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteApp")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}", DeleteAppRequest, headers, settings, cb)
 	else
@@ -13681,7 +13681,7 @@ function M.UpdateApplicationSettingsAsync(UpdateApplicationSettingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateApplicationSettings")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/settings", UpdateApplicationSettingsRequest, headers, settings, cb)
 	else
@@ -13717,7 +13717,7 @@ function M.UpdateApnsSandboxChannelAsync(UpdateApnsSandboxChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateApnsSandboxChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns_sandbox", UpdateApnsSandboxChannelRequest, headers, settings, cb)
 	else
@@ -13753,7 +13753,7 @@ function M.GetSegmentExportJobsAsync(GetSegmentExportJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSegmentExportJobs")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}/jobs/export", GetSegmentExportJobsRequest, headers, settings, cb)
 	else
@@ -13789,7 +13789,7 @@ function M.PutEventStreamAsync(PutEventStreamRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "PutEventStream")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/eventstream", PutEventStreamRequest, headers, settings, cb)
 	else
@@ -13825,7 +13825,7 @@ function M.DeleteSegmentAsync(DeleteSegmentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteSegment")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}", DeleteSegmentRequest, headers, settings, cb)
 	else
@@ -13861,7 +13861,7 @@ function M.GetCampaignVersionsAsync(GetCampaignVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetCampaignVersions")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns/{campaign-id}/versions", GetCampaignVersionsRequest, headers, settings, cb)
 	else
@@ -13897,7 +13897,7 @@ function M.UpdateApnsVoipChannelAsync(UpdateApnsVoipChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateApnsVoipChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns_voip", UpdateApnsVoipChannelRequest, headers, settings, cb)
 	else
@@ -13933,7 +13933,7 @@ function M.GetApnsVoipSandboxChannelAsync(GetApnsVoipSandboxChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetApnsVoipSandboxChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns_voip_sandbox", GetApnsVoipSandboxChannelRequest, headers, settings, cb)
 	else
@@ -13969,7 +13969,7 @@ function M.GetAdmChannelAsync(GetAdmChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetAdmChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/adm", GetAdmChannelRequest, headers, settings, cb)
 	else
@@ -14005,7 +14005,7 @@ function M.GetApnsSandboxChannelAsync(GetApnsSandboxChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetApnsSandboxChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns_sandbox", GetApnsSandboxChannelRequest, headers, settings, cb)
 	else
@@ -14041,7 +14041,7 @@ function M.GetSegmentImportJobsAsync(GetSegmentImportJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSegmentImportJobs")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}/jobs/import", GetSegmentImportJobsRequest, headers, settings, cb)
 	else
@@ -14077,7 +14077,7 @@ function M.GetCampaignsAsync(GetCampaignsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetCampaigns")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns", GetCampaignsRequest, headers, settings, cb)
 	else
@@ -14113,7 +14113,7 @@ function M.DeleteEmailChannelAsync(DeleteEmailChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteEmailChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/email", DeleteEmailChannelRequest, headers, settings, cb)
 	else
@@ -14149,7 +14149,7 @@ function M.DeleteApnsVoipChannelAsync(DeleteApnsVoipChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteApnsVoipChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns_voip", DeleteApnsVoipChannelRequest, headers, settings, cb)
 	else
@@ -14185,7 +14185,7 @@ function M.GetCampaignActivitiesAsync(GetCampaignActivitiesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetCampaignActivities")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns/{campaign-id}/activities", GetCampaignActivitiesRequest, headers, settings, cb)
 	else
@@ -14221,7 +14221,7 @@ function M.DeleteBaiduChannelAsync(DeleteBaiduChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteBaiduChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/baidu", DeleteBaiduChannelRequest, headers, settings, cb)
 	else
@@ -14257,7 +14257,7 @@ function M.UpdateEndpointAsync(UpdateEndpointRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/endpoints/{endpoint-id}", UpdateEndpointRequest, headers, settings, cb)
 	else
@@ -14293,7 +14293,7 @@ function M.SendUsersMessagesAsync(SendUsersMessagesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "SendUsersMessages")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/users-messages", SendUsersMessagesRequest, headers, settings, cb)
 	else
@@ -14329,7 +14329,7 @@ function M.DeleteUserEndpointsAsync(DeleteUserEndpointsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteUserEndpoints")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/users/{user-id}", DeleteUserEndpointsRequest, headers, settings, cb)
 	else
@@ -14365,7 +14365,7 @@ function M.GetEventStreamAsync(GetEventStreamRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetEventStream")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/eventstream", GetEventStreamRequest, headers, settings, cb)
 	else
@@ -14401,7 +14401,7 @@ function M.DeleteSmsChannelAsync(DeleteSmsChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteSmsChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/sms", DeleteSmsChannelRequest, headers, settings, cb)
 	else
@@ -14437,7 +14437,7 @@ function M.GetEndpointAsync(GetEndpointRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/endpoints/{endpoint-id}", GetEndpointRequest, headers, settings, cb)
 	else
@@ -14473,7 +14473,7 @@ function M.DeleteAdmChannelAsync(DeleteAdmChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteAdmChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/adm", DeleteAdmChannelRequest, headers, settings, cb)
 	else
@@ -14509,7 +14509,7 @@ function M.SendMessagesAsync(SendMessagesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "SendMessages")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/messages", SendMessagesRequest, headers, settings, cb)
 	else
@@ -14545,7 +14545,7 @@ function M.UpdateBaiduChannelAsync(UpdateBaiduChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateBaiduChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/baidu", UpdateBaiduChannelRequest, headers, settings, cb)
 	else
@@ -14581,7 +14581,7 @@ function M.CreateAppAsync(CreateAppRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateApp")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps", CreateAppRequest, headers, settings, cb)
 	else
@@ -14617,7 +14617,7 @@ function M.DeleteApnsChannelAsync(DeleteApnsChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteApnsChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns", DeleteApnsChannelRequest, headers, settings, cb)
 	else
@@ -14653,7 +14653,7 @@ function M.GetUserEndpointsAsync(GetUserEndpointsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetUserEndpoints")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/users/{user-id}", GetUserEndpointsRequest, headers, settings, cb)
 	else
@@ -14689,7 +14689,7 @@ function M.CreateExportJobAsync(CreateExportJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateExportJob")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/jobs/export", CreateExportJobRequest, headers, settings, cb)
 	else
@@ -14725,7 +14725,7 @@ function M.DeleteEventStreamAsync(DeleteEventStreamRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteEventStream")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/eventstream", DeleteEventStreamRequest, headers, settings, cb)
 	else
@@ -14761,7 +14761,7 @@ function M.GetApplicationSettingsAsync(GetApplicationSettingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetApplicationSettings")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/settings", GetApplicationSettingsRequest, headers, settings, cb)
 	else
@@ -14797,7 +14797,7 @@ function M.UpdateEmailChannelAsync(UpdateEmailChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateEmailChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/email", UpdateEmailChannelRequest, headers, settings, cb)
 	else
@@ -14833,7 +14833,7 @@ function M.UpdateAdmChannelAsync(UpdateAdmChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateAdmChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/adm", UpdateAdmChannelRequest, headers, settings, cb)
 	else
@@ -14869,7 +14869,7 @@ function M.GetSegmentsAsync(GetSegmentsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSegments")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/segments", GetSegmentsRequest, headers, settings, cb)
 	else
@@ -14905,7 +14905,7 @@ function M.GetBaiduChannelAsync(GetBaiduChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetBaiduChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/baidu", GetBaiduChannelRequest, headers, settings, cb)
 	else
@@ -14941,7 +14941,7 @@ function M.PhoneNumberValidateAsync(PhoneNumberValidateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "PhoneNumberValidate")
 	if request_handler then
 		request_handler(settings.uri, "/v1/phone/number/validate", PhoneNumberValidateRequest, headers, settings, cb)
 	else
@@ -14977,7 +14977,7 @@ function M.GetExportJobsAsync(GetExportJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetExportJobs")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/jobs/export", GetExportJobsRequest, headers, settings, cb)
 	else
@@ -15013,7 +15013,7 @@ function M.GetSegmentVersionsAsync(GetSegmentVersionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetSegmentVersions")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}/versions", GetSegmentVersionsRequest, headers, settings, cb)
 	else
@@ -15049,7 +15049,7 @@ function M.UpdateEndpointsBatchAsync(UpdateEndpointsBatchRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateEndpointsBatch")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/endpoints", UpdateEndpointsBatchRequest, headers, settings, cb)
 	else
@@ -15085,7 +15085,7 @@ function M.UpdateSmsChannelAsync(UpdateSmsChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateSmsChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/sms", UpdateSmsChannelRequest, headers, settings, cb)
 	else
@@ -15121,7 +15121,7 @@ function M.GetApnsVoipChannelAsync(GetApnsVoipChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetApnsVoipChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns_voip", GetApnsVoipChannelRequest, headers, settings, cb)
 	else
@@ -15157,7 +15157,7 @@ function M.GetApnsChannelAsync(GetApnsChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetApnsChannel")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns", GetApnsChannelRequest, headers, settings, cb)
 	else

@@ -1988,7 +1988,7 @@ function M.BatchGetQueryExecutionAsync(BatchGetQueryExecutionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchGetQueryExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetQueryExecutionInput, headers, settings, cb)
 	else
@@ -2024,7 +2024,7 @@ function M.DeleteNamedQueryAsync(DeleteNamedQueryInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteNamedQuery")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNamedQueryInput, headers, settings, cb)
 	else
@@ -2060,7 +2060,7 @@ function M.ListNamedQueriesAsync(ListNamedQueriesInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListNamedQueries")
 	if request_handler then
 		request_handler(settings.uri, "/", ListNamedQueriesInput, headers, settings, cb)
 	else
@@ -2096,7 +2096,7 @@ function M.StopQueryExecutionAsync(StopQueryExecutionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopQueryExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", StopQueryExecutionInput, headers, settings, cb)
 	else
@@ -2132,7 +2132,7 @@ function M.BatchGetNamedQueryAsync(BatchGetNamedQueryInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchGetNamedQuery")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetNamedQueryInput, headers, settings, cb)
 	else
@@ -2168,7 +2168,7 @@ function M.StartQueryExecutionAsync(StartQueryExecutionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartQueryExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", StartQueryExecutionInput, headers, settings, cb)
 	else
@@ -2204,7 +2204,7 @@ function M.GetNamedQueryAsync(GetNamedQueryInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetNamedQuery")
 	if request_handler then
 		request_handler(settings.uri, "/", GetNamedQueryInput, headers, settings, cb)
 	else
@@ -2240,7 +2240,7 @@ function M.ListQueryExecutionsAsync(ListQueryExecutionsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListQueryExecutions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListQueryExecutionsInput, headers, settings, cb)
 	else
@@ -2276,7 +2276,7 @@ function M.GetQueryExecutionAsync(GetQueryExecutionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetQueryExecution")
 	if request_handler then
 		request_handler(settings.uri, "/", GetQueryExecutionInput, headers, settings, cb)
 	else
@@ -2312,7 +2312,7 @@ function M.GetQueryResultsAsync(GetQueryResultsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetQueryResults")
 	if request_handler then
 		request_handler(settings.uri, "/", GetQueryResultsInput, headers, settings, cb)
 	else
@@ -2348,7 +2348,7 @@ function M.CreateNamedQueryAsync(CreateNamedQueryInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateNamedQuery")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNamedQueryInput, headers, settings, cb)
 	else

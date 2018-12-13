@@ -1969,7 +1969,7 @@ function M.DisassociateDeviceFromPlacementAsync(DisassociateDeviceFromPlacementR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DisassociateDeviceFromPlacement")
 	if request_handler then
 		request_handler(settings.uri, "/projects/{projectName}/placements/{placementName}/devices/{deviceTemplateName}", DisassociateDeviceFromPlacementRequest, headers, settings, cb)
 	else
@@ -2005,7 +2005,7 @@ function M.UpdatePlacementAsync(UpdatePlacementRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdatePlacement")
 	if request_handler then
 		request_handler(settings.uri, "/projects/{projectName}/placements/{placementName}", UpdatePlacementRequest, headers, settings, cb)
 	else
@@ -2041,7 +2041,7 @@ function M.DeletePlacementAsync(DeletePlacementRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeletePlacement")
 	if request_handler then
 		request_handler(settings.uri, "/projects/{projectName}/placements/{placementName}", DeletePlacementRequest, headers, settings, cb)
 	else
@@ -2077,7 +2077,7 @@ function M.ListPlacementsAsync(ListPlacementsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListPlacements")
 	if request_handler then
 		request_handler(settings.uri, "/projects/{projectName}/placements", ListPlacementsRequest, headers, settings, cb)
 	else
@@ -2113,7 +2113,7 @@ function M.CreateProjectAsync(CreateProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateProject")
 	if request_handler then
 		request_handler(settings.uri, "/projects", CreateProjectRequest, headers, settings, cb)
 	else
@@ -2149,7 +2149,7 @@ function M.ListProjectsAsync(ListProjectsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListProjects")
 	if request_handler then
 		request_handler(settings.uri, "/projects", ListProjectsRequest, headers, settings, cb)
 	else
@@ -2185,7 +2185,7 @@ function M.UpdateProjectAsync(UpdateProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateProject")
 	if request_handler then
 		request_handler(settings.uri, "/projects/{projectName}", UpdateProjectRequest, headers, settings, cb)
 	else
@@ -2221,7 +2221,7 @@ function M.GetDevicesInPlacementAsync(GetDevicesInPlacementRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "GetDevicesInPlacement")
 	if request_handler then
 		request_handler(settings.uri, "/projects/{projectName}/placements/{placementName}/devices", GetDevicesInPlacementRequest, headers, settings, cb)
 	else
@@ -2257,7 +2257,7 @@ function M.DescribePlacementAsync(DescribePlacementRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribePlacement")
 	if request_handler then
 		request_handler(settings.uri, "/projects/{projectName}/placements/{placementName}", DescribePlacementRequest, headers, settings, cb)
 	else
@@ -2293,7 +2293,7 @@ function M.DescribeProjectAsync(DescribeProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeProject")
 	if request_handler then
 		request_handler(settings.uri, "/projects/{projectName}", DescribeProjectRequest, headers, settings, cb)
 	else
@@ -2329,7 +2329,7 @@ function M.AssociateDeviceWithPlacementAsync(AssociateDeviceWithPlacementRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "AssociateDeviceWithPlacement")
 	if request_handler then
 		request_handler(settings.uri, "/projects/{projectName}/placements/{placementName}/devices/{deviceTemplateName}", AssociateDeviceWithPlacementRequest, headers, settings, cb)
 	else
@@ -2365,7 +2365,7 @@ function M.CreatePlacementAsync(CreatePlacementRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreatePlacement")
 	if request_handler then
 		request_handler(settings.uri, "/projects/{projectName}/placements", CreatePlacementRequest, headers, settings, cb)
 	else
@@ -2401,7 +2401,7 @@ function M.DeleteProjectAsync(DeleteProjectRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteProject")
 	if request_handler then
 		request_handler(settings.uri, "/projects/{projectName}", DeleteProjectRequest, headers, settings, cb)
 	else

@@ -9810,7 +9810,7 @@ function M.CreateSizeConstraintSetAsync(CreateSizeConstraintSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateSizeConstraintSet")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSizeConstraintSetRequest, headers, settings, cb)
 	else
@@ -9846,7 +9846,7 @@ function M.UpdateRegexMatchSetAsync(UpdateRegexMatchSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateRegexMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRegexMatchSetRequest, headers, settings, cb)
 	else
@@ -9882,7 +9882,7 @@ function M.GetPermissionPolicyAsync(GetPermissionPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetPermissionPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPermissionPolicyRequest, headers, settings, cb)
 	else
@@ -9918,7 +9918,7 @@ function M.UpdateXssMatchSetAsync(UpdateXssMatchSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateXssMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateXssMatchSetRequest, headers, settings, cb)
 	else
@@ -9954,7 +9954,7 @@ function M.ListIPSetsAsync(ListIPSetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListIPSets")
 	if request_handler then
 		request_handler(settings.uri, "/", ListIPSetsRequest, headers, settings, cb)
 	else
@@ -9990,7 +9990,7 @@ function M.DeleteRateBasedRuleAsync(DeleteRateBasedRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteRateBasedRule")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRateBasedRuleRequest, headers, settings, cb)
 	else
@@ -10026,7 +10026,7 @@ function M.GetRegexPatternSetAsync(GetRegexPatternSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRegexPatternSet")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRegexPatternSetRequest, headers, settings, cb)
 	else
@@ -10062,7 +10062,7 @@ function M.PutLoggingConfigurationAsync(PutLoggingConfigurationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutLoggingConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", PutLoggingConfigurationRequest, headers, settings, cb)
 	else
@@ -10098,7 +10098,7 @@ function M.GetRegexMatchSetAsync(GetRegexMatchSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRegexMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRegexMatchSetRequest, headers, settings, cb)
 	else
@@ -10134,7 +10134,7 @@ function M.GetChangeTokenStatusAsync(GetChangeTokenStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetChangeTokenStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", GetChangeTokenStatusRequest, headers, settings, cb)
 	else
@@ -10170,7 +10170,7 @@ function M.UpdateRegexPatternSetAsync(UpdateRegexPatternSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateRegexPatternSet")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRegexPatternSetRequest, headers, settings, cb)
 	else
@@ -10206,7 +10206,7 @@ function M.DeleteSqlInjectionMatchSetAsync(DeleteSqlInjectionMatchSetRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteSqlInjectionMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSqlInjectionMatchSetRequest, headers, settings, cb)
 	else
@@ -10242,7 +10242,7 @@ function M.ListByteMatchSetsAsync(ListByteMatchSetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListByteMatchSets")
 	if request_handler then
 		request_handler(settings.uri, "/", ListByteMatchSetsRequest, headers, settings, cb)
 	else
@@ -10278,7 +10278,7 @@ function M.CreateRuleAsync(CreateRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateRule")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRuleRequest, headers, settings, cb)
 	else
@@ -10314,7 +10314,7 @@ function M.UpdateGeoMatchSetAsync(UpdateGeoMatchSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateGeoMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateGeoMatchSetRequest, headers, settings, cb)
 	else
@@ -10350,7 +10350,7 @@ function M.GetRateBasedRuleManagedKeysAsync(GetRateBasedRuleManagedKeysRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRateBasedRuleManagedKeys")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRateBasedRuleManagedKeysRequest, headers, settings, cb)
 	else
@@ -10386,7 +10386,7 @@ function M.UpdateWebACLAsync(UpdateWebACLRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateWebACL")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateWebACLRequest, headers, settings, cb)
 	else
@@ -10422,7 +10422,7 @@ function M.ListRuleGroupsAsync(ListRuleGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListRuleGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRuleGroupsRequest, headers, settings, cb)
 	else
@@ -10458,7 +10458,7 @@ function M.CreateSqlInjectionMatchSetAsync(CreateSqlInjectionMatchSetRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateSqlInjectionMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSqlInjectionMatchSetRequest, headers, settings, cb)
 	else
@@ -10494,7 +10494,7 @@ function M.UpdateSqlInjectionMatchSetAsync(UpdateSqlInjectionMatchSetRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateSqlInjectionMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSqlInjectionMatchSetRequest, headers, settings, cb)
 	else
@@ -10530,7 +10530,7 @@ function M.ListRateBasedRulesAsync(ListRateBasedRulesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListRateBasedRules")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRateBasedRulesRequest, headers, settings, cb)
 	else
@@ -10566,7 +10566,7 @@ function M.ListRegexMatchSetsAsync(ListRegexMatchSetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListRegexMatchSets")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRegexMatchSetsRequest, headers, settings, cb)
 	else
@@ -10602,7 +10602,7 @@ function M.PutPermissionPolicyAsync(PutPermissionPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutPermissionPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", PutPermissionPolicyRequest, headers, settings, cb)
 	else
@@ -10638,7 +10638,7 @@ function M.DeleteByteMatchSetAsync(DeleteByteMatchSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteByteMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteByteMatchSetRequest, headers, settings, cb)
 	else
@@ -10674,7 +10674,7 @@ function M.DeleteRegexPatternSetAsync(DeleteRegexPatternSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteRegexPatternSet")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRegexPatternSetRequest, headers, settings, cb)
 	else
@@ -10710,7 +10710,7 @@ function M.CreateRegexPatternSetAsync(CreateRegexPatternSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateRegexPatternSet")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRegexPatternSetRequest, headers, settings, cb)
 	else
@@ -10746,7 +10746,7 @@ function M.GetIPSetAsync(GetIPSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetIPSet")
 	if request_handler then
 		request_handler(settings.uri, "/", GetIPSetRequest, headers, settings, cb)
 	else
@@ -10782,7 +10782,7 @@ function M.ListSqlInjectionMatchSetsAsync(ListSqlInjectionMatchSetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListSqlInjectionMatchSets")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSqlInjectionMatchSetsRequest, headers, settings, cb)
 	else
@@ -10818,7 +10818,7 @@ function M.DeleteRuleAsync(DeleteRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteRule")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRuleRequest, headers, settings, cb)
 	else
@@ -10854,7 +10854,7 @@ function M.ListSubscribedRuleGroupsAsync(ListSubscribedRuleGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListSubscribedRuleGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSubscribedRuleGroupsRequest, headers, settings, cb)
 	else
@@ -10890,7 +10890,7 @@ function M.DeleteXssMatchSetAsync(DeleteXssMatchSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteXssMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteXssMatchSetRequest, headers, settings, cb)
 	else
@@ -10926,7 +10926,7 @@ function M.UpdateIPSetAsync(UpdateIPSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateIPSet")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateIPSetRequest, headers, settings, cb)
 	else
@@ -10962,7 +10962,7 @@ function M.ListWebACLsAsync(ListWebACLsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListWebACLs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListWebACLsRequest, headers, settings, cb)
 	else
@@ -10998,7 +10998,7 @@ function M.UpdateRuleGroupAsync(UpdateRuleGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateRuleGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRuleGroupRequest, headers, settings, cb)
 	else
@@ -11034,7 +11034,7 @@ function M.UpdateRuleAsync(UpdateRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateRule")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRuleRequest, headers, settings, cb)
 	else
@@ -11070,7 +11070,7 @@ function M.GetByteMatchSetAsync(GetByteMatchSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetByteMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", GetByteMatchSetRequest, headers, settings, cb)
 	else
@@ -11106,7 +11106,7 @@ function M.CreateXssMatchSetAsync(CreateXssMatchSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateXssMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateXssMatchSetRequest, headers, settings, cb)
 	else
@@ -11142,7 +11142,7 @@ function M.UpdateRateBasedRuleAsync(UpdateRateBasedRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateRateBasedRule")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRateBasedRuleRequest, headers, settings, cb)
 	else
@@ -11178,7 +11178,7 @@ function M.GetLoggingConfigurationAsync(GetLoggingConfigurationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetLoggingConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", GetLoggingConfigurationRequest, headers, settings, cb)
 	else
@@ -11214,7 +11214,7 @@ function M.CreateByteMatchSetAsync(CreateByteMatchSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateByteMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateByteMatchSetRequest, headers, settings, cb)
 	else
@@ -11250,7 +11250,7 @@ function M.ListXssMatchSetsAsync(ListXssMatchSetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListXssMatchSets")
 	if request_handler then
 		request_handler(settings.uri, "/", ListXssMatchSetsRequest, headers, settings, cb)
 	else
@@ -11286,7 +11286,7 @@ function M.AssociateWebACLAsync(AssociateWebACLRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateWebACL")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateWebACLRequest, headers, settings, cb)
 	else
@@ -11322,7 +11322,7 @@ function M.GetSizeConstraintSetAsync(GetSizeConstraintSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetSizeConstraintSet")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSizeConstraintSetRequest, headers, settings, cb)
 	else
@@ -11358,7 +11358,7 @@ function M.ListLoggingConfigurationsAsync(ListLoggingConfigurationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListLoggingConfigurations")
 	if request_handler then
 		request_handler(settings.uri, "/", ListLoggingConfigurationsRequest, headers, settings, cb)
 	else
@@ -11394,7 +11394,7 @@ function M.GetGeoMatchSetAsync(GetGeoMatchSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetGeoMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", GetGeoMatchSetRequest, headers, settings, cb)
 	else
@@ -11430,7 +11430,7 @@ function M.CreateIPSetAsync(CreateIPSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateIPSet")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateIPSetRequest, headers, settings, cb)
 	else
@@ -11466,7 +11466,7 @@ function M.DeleteRuleGroupAsync(DeleteRuleGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteRuleGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRuleGroupRequest, headers, settings, cb)
 	else
@@ -11502,7 +11502,7 @@ function M.GetXssMatchSetAsync(GetXssMatchSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetXssMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", GetXssMatchSetRequest, headers, settings, cb)
 	else
@@ -11538,7 +11538,7 @@ function M.ListGeoMatchSetsAsync(ListGeoMatchSetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListGeoMatchSets")
 	if request_handler then
 		request_handler(settings.uri, "/", ListGeoMatchSetsRequest, headers, settings, cb)
 	else
@@ -11574,7 +11574,7 @@ function M.DeleteLoggingConfigurationAsync(DeleteLoggingConfigurationRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteLoggingConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLoggingConfigurationRequest, headers, settings, cb)
 	else
@@ -11610,7 +11610,7 @@ function M.GetRateBasedRuleAsync(GetRateBasedRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRateBasedRule")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRateBasedRuleRequest, headers, settings, cb)
 	else
@@ -11646,7 +11646,7 @@ function M.DeleteGeoMatchSetAsync(DeleteGeoMatchSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteGeoMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteGeoMatchSetRequest, headers, settings, cb)
 	else
@@ -11682,7 +11682,7 @@ function M.CreateRateBasedRuleAsync(CreateRateBasedRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateRateBasedRule")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRateBasedRuleRequest, headers, settings, cb)
 	else
@@ -11718,7 +11718,7 @@ function M.GetRuleGroupAsync(GetRuleGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRuleGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRuleGroupRequest, headers, settings, cb)
 	else
@@ -11754,7 +11754,7 @@ function M.ListRulesAsync(ListRulesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListRules")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRulesRequest, headers, settings, cb)
 	else
@@ -11790,7 +11790,7 @@ function M.GetSampledRequestsAsync(GetSampledRequestsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetSampledRequests")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSampledRequestsRequest, headers, settings, cb)
 	else
@@ -11826,7 +11826,7 @@ function M.CreateWebACLAsync(CreateWebACLRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateWebACL")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateWebACLRequest, headers, settings, cb)
 	else
@@ -11862,7 +11862,7 @@ function M.DeleteWebACLAsync(DeleteWebACLRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteWebACL")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteWebACLRequest, headers, settings, cb)
 	else
@@ -11898,7 +11898,7 @@ function M.CreateRuleGroupAsync(CreateRuleGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateRuleGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRuleGroupRequest, headers, settings, cb)
 	else
@@ -11934,7 +11934,7 @@ function M.GetRuleAsync(GetRuleRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRule")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRuleRequest, headers, settings, cb)
 	else
@@ -11970,7 +11970,7 @@ function M.DeleteSizeConstraintSetAsync(DeleteSizeConstraintSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteSizeConstraintSet")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSizeConstraintSetRequest, headers, settings, cb)
 	else
@@ -12006,7 +12006,7 @@ function M.GetWebACLForResourceAsync(GetWebACLForResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetWebACLForResource")
 	if request_handler then
 		request_handler(settings.uri, "/", GetWebACLForResourceRequest, headers, settings, cb)
 	else
@@ -12042,7 +12042,7 @@ function M.UpdateSizeConstraintSetAsync(UpdateSizeConstraintSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateSizeConstraintSet")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSizeConstraintSetRequest, headers, settings, cb)
 	else
@@ -12078,7 +12078,7 @@ function M.ListActivatedRulesInRuleGroupAsync(ListActivatedRulesInRuleGroupReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListActivatedRulesInRuleGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", ListActivatedRulesInRuleGroupRequest, headers, settings, cb)
 	else
@@ -12114,7 +12114,7 @@ function M.ListResourcesForWebACLAsync(ListResourcesForWebACLRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListResourcesForWebACL")
 	if request_handler then
 		request_handler(settings.uri, "/", ListResourcesForWebACLRequest, headers, settings, cb)
 	else
@@ -12150,7 +12150,7 @@ function M.GetChangeTokenAsync(GetChangeTokenRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetChangeToken")
 	if request_handler then
 		request_handler(settings.uri, "/", GetChangeTokenRequest, headers, settings, cb)
 	else
@@ -12186,7 +12186,7 @@ function M.DeleteRegexMatchSetAsync(DeleteRegexMatchSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteRegexMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRegexMatchSetRequest, headers, settings, cb)
 	else
@@ -12222,7 +12222,7 @@ function M.GetWebACLAsync(GetWebACLRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetWebACL")
 	if request_handler then
 		request_handler(settings.uri, "/", GetWebACLRequest, headers, settings, cb)
 	else
@@ -12258,7 +12258,7 @@ function M.DeletePermissionPolicyAsync(DeletePermissionPolicyRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeletePermissionPolicy")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePermissionPolicyRequest, headers, settings, cb)
 	else
@@ -12294,7 +12294,7 @@ function M.UpdateByteMatchSetAsync(UpdateByteMatchSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateByteMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateByteMatchSetRequest, headers, settings, cb)
 	else
@@ -12330,7 +12330,7 @@ function M.DisassociateWebACLAsync(DisassociateWebACLRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateWebACL")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateWebACLRequest, headers, settings, cb)
 	else
@@ -12366,7 +12366,7 @@ function M.CreateRegexMatchSetAsync(CreateRegexMatchSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateRegexMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRegexMatchSetRequest, headers, settings, cb)
 	else
@@ -12402,7 +12402,7 @@ function M.GetSqlInjectionMatchSetAsync(GetSqlInjectionMatchSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetSqlInjectionMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSqlInjectionMatchSetRequest, headers, settings, cb)
 	else
@@ -12438,7 +12438,7 @@ function M.ListRegexPatternSetsAsync(ListRegexPatternSetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListRegexPatternSets")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRegexPatternSetsRequest, headers, settings, cb)
 	else
@@ -12474,7 +12474,7 @@ function M.ListSizeConstraintSetsAsync(ListSizeConstraintSetsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListSizeConstraintSets")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSizeConstraintSetsRequest, headers, settings, cb)
 	else
@@ -12510,7 +12510,7 @@ function M.DeleteIPSetAsync(DeleteIPSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteIPSet")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteIPSetRequest, headers, settings, cb)
 	else
@@ -12546,7 +12546,7 @@ function M.CreateGeoMatchSetAsync(CreateGeoMatchSetRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateGeoMatchSet")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateGeoMatchSetRequest, headers, settings, cb)
 	else

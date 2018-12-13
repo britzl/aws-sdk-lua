@@ -11153,7 +11153,7 @@ function M.GetKeyPairAsync(GetKeyPairRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetKeyPair")
 	if request_handler then
 		request_handler(settings.uri, "/", GetKeyPairRequest, headers, settings, cb)
 	else
@@ -11189,7 +11189,7 @@ function M.DetachDiskAsync(DetachDiskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DetachDisk")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachDiskRequest, headers, settings, cb)
 	else
@@ -11225,7 +11225,7 @@ function M.CreateDiskSnapshotAsync(CreateDiskSnapshotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDiskSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDiskSnapshotRequest, headers, settings, cb)
 	else
@@ -11261,7 +11261,7 @@ function M.AttachStaticIpAsync(AttachStaticIpRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AttachStaticIp")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachStaticIpRequest, headers, settings, cb)
 	else
@@ -11297,7 +11297,7 @@ function M.GetDiskSnapshotsAsync(GetDiskSnapshotsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDiskSnapshots")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDiskSnapshotsRequest, headers, settings, cb)
 	else
@@ -11333,7 +11333,7 @@ function M.GetKeyPairsAsync(GetKeyPairsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetKeyPairs")
 	if request_handler then
 		request_handler(settings.uri, "/", GetKeyPairsRequest, headers, settings, cb)
 	else
@@ -11369,7 +11369,7 @@ function M.ImportKeyPairAsync(ImportKeyPairRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ImportKeyPair")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportKeyPairRequest, headers, settings, cb)
 	else
@@ -11405,7 +11405,7 @@ function M.CreateRelationalDatabaseAsync(CreateRelationalDatabaseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateRelationalDatabase")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRelationalDatabaseRequest, headers, settings, cb)
 	else
@@ -11441,7 +11441,7 @@ function M.GetRelationalDatabaseParametersAsync(GetRelationalDatabaseParametersR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRelationalDatabaseParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRelationalDatabaseParametersRequest, headers, settings, cb)
 	else
@@ -11477,7 +11477,7 @@ function M.AttachInstancesToLoadBalancerAsync(AttachInstancesToLoadBalancerReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AttachInstancesToLoadBalancer")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachInstancesToLoadBalancerRequest, headers, settings, cb)
 	else
@@ -11513,7 +11513,7 @@ function M.DetachInstancesFromLoadBalancerAsync(DetachInstancesFromLoadBalancerR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DetachInstancesFromLoadBalancer")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachInstancesFromLoadBalancerRequest, headers, settings, cb)
 	else
@@ -11549,7 +11549,7 @@ function M.GetInstanceAsync(GetInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstanceRequest, headers, settings, cb)
 	else
@@ -11585,7 +11585,7 @@ function M.UpdateDomainEntryAsync(UpdateDomainEntryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateDomainEntry")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDomainEntryRequest, headers, settings, cb)
 	else
@@ -11621,7 +11621,7 @@ function M.AllocateStaticIpAsync(AllocateStaticIpRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AllocateStaticIp")
 	if request_handler then
 		request_handler(settings.uri, "/", AllocateStaticIpRequest, headers, settings, cb)
 	else
@@ -11657,7 +11657,7 @@ function M.GetInstancesAsync(GetInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstancesRequest, headers, settings, cb)
 	else
@@ -11693,7 +11693,7 @@ function M.StopRelationalDatabaseAsync(StopRelationalDatabaseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopRelationalDatabase")
 	if request_handler then
 		request_handler(settings.uri, "/", StopRelationalDatabaseRequest, headers, settings, cb)
 	else
@@ -11729,7 +11729,7 @@ function M.GetDiskAsync(GetDiskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDisk")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDiskRequest, headers, settings, cb)
 	else
@@ -11765,7 +11765,7 @@ function M.GetRelationalDatabaseBlueprintsAsync(GetRelationalDatabaseBlueprintsR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRelationalDatabaseBlueprints")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRelationalDatabaseBlueprintsRequest, headers, settings, cb)
 	else
@@ -11801,7 +11801,7 @@ function M.GetDisksAsync(GetDisksRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDisks")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDisksRequest, headers, settings, cb)
 	else
@@ -11837,7 +11837,7 @@ function M.CreateDiskFromSnapshotAsync(CreateDiskFromSnapshotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDiskFromSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDiskFromSnapshotRequest, headers, settings, cb)
 	else
@@ -11873,7 +11873,7 @@ function M.GetDomainAsync(GetDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDomainRequest, headers, settings, cb)
 	else
@@ -11909,7 +11909,7 @@ function M.CreateLoadBalancerTlsCertificateAsync(CreateLoadBalancerTlsCertificat
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateLoadBalancerTlsCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLoadBalancerTlsCertificateRequest, headers, settings, cb)
 	else
@@ -11945,7 +11945,7 @@ function M.GetLoadBalancersAsync(GetLoadBalancersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetLoadBalancers")
 	if request_handler then
 		request_handler(settings.uri, "/", GetLoadBalancersRequest, headers, settings, cb)
 	else
@@ -11981,7 +11981,7 @@ function M.PutInstancePublicPortsAsync(PutInstancePublicPortsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PutInstancePublicPorts")
 	if request_handler then
 		request_handler(settings.uri, "/", PutInstancePublicPortsRequest, headers, settings, cb)
 	else
@@ -12017,7 +12017,7 @@ function M.DeleteDomainAsync(DeleteDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDomainRequest, headers, settings, cb)
 	else
@@ -12053,7 +12053,7 @@ function M.CreateDomainEntryAsync(CreateDomainEntryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDomainEntry")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDomainEntryRequest, headers, settings, cb)
 	else
@@ -12089,7 +12089,7 @@ function M.StartRelationalDatabaseAsync(StartRelationalDatabaseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartRelationalDatabase")
 	if request_handler then
 		request_handler(settings.uri, "/", StartRelationalDatabaseRequest, headers, settings, cb)
 	else
@@ -12125,7 +12125,7 @@ function M.CreateInstancesFromSnapshotAsync(CreateInstancesFromSnapshotRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateInstancesFromSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateInstancesFromSnapshotRequest, headers, settings, cb)
 	else
@@ -12161,7 +12161,7 @@ function M.GetOperationAsync(GetOperationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetOperation")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOperationRequest, headers, settings, cb)
 	else
@@ -12197,7 +12197,7 @@ function M.UpdateLoadBalancerAttributeAsync(UpdateLoadBalancerAttributeRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateLoadBalancerAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateLoadBalancerAttributeRequest, headers, settings, cb)
 	else
@@ -12233,7 +12233,7 @@ function M.DeleteRelationalDatabaseAsync(DeleteRelationalDatabaseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteRelationalDatabase")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRelationalDatabaseRequest, headers, settings, cb)
 	else
@@ -12269,7 +12269,7 @@ function M.GetInstanceStateAsync(GetInstanceStateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetInstanceState")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstanceStateRequest, headers, settings, cb)
 	else
@@ -12305,7 +12305,7 @@ function M.CreateInstanceSnapshotAsync(CreateInstanceSnapshotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateInstanceSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateInstanceSnapshotRequest, headers, settings, cb)
 	else
@@ -12341,7 +12341,7 @@ function M.RebootInstanceAsync(RebootInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RebootInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", RebootInstanceRequest, headers, settings, cb)
 	else
@@ -12377,7 +12377,7 @@ function M.CreateDiskAsync(CreateDiskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDisk")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDiskRequest, headers, settings, cb)
 	else
@@ -12413,7 +12413,7 @@ function M.StopInstanceAsync(StopInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", StopInstanceRequest, headers, settings, cb)
 	else
@@ -12449,7 +12449,7 @@ function M.DeleteRelationalDatabaseSnapshotAsync(DeleteRelationalDatabaseSnapsho
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteRelationalDatabaseSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRelationalDatabaseSnapshotRequest, headers, settings, cb)
 	else
@@ -12485,7 +12485,7 @@ function M.PeerVpcAsync(PeerVpcRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "PeerVpc")
 	if request_handler then
 		request_handler(settings.uri, "/", PeerVpcRequest, headers, settings, cb)
 	else
@@ -12521,7 +12521,7 @@ function M.CreateRelationalDatabaseSnapshotAsync(CreateRelationalDatabaseSnapsho
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateRelationalDatabaseSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRelationalDatabaseSnapshotRequest, headers, settings, cb)
 	else
@@ -12557,7 +12557,7 @@ function M.DeleteInstanceSnapshotAsync(DeleteInstanceSnapshotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteInstanceSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteInstanceSnapshotRequest, headers, settings, cb)
 	else
@@ -12593,7 +12593,7 @@ function M.GetLoadBalancerAsync(GetLoadBalancerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetLoadBalancer")
 	if request_handler then
 		request_handler(settings.uri, "/", GetLoadBalancerRequest, headers, settings, cb)
 	else
@@ -12629,7 +12629,7 @@ function M.GetRegionsAsync(GetRegionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRegions")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRegionsRequest, headers, settings, cb)
 	else
@@ -12665,7 +12665,7 @@ function M.GetInstancePortStatesAsync(GetInstancePortStatesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetInstancePortStates")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstancePortStatesRequest, headers, settings, cb)
 	else
@@ -12701,7 +12701,7 @@ function M.GetInstanceSnapshotsAsync(GetInstanceSnapshotsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetInstanceSnapshots")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstanceSnapshotsRequest, headers, settings, cb)
 	else
@@ -12737,7 +12737,7 @@ function M.UpdateRelationalDatabaseAsync(UpdateRelationalDatabaseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateRelationalDatabase")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRelationalDatabaseRequest, headers, settings, cb)
 	else
@@ -12773,7 +12773,7 @@ function M.GetLoadBalancerMetricDataAsync(GetLoadBalancerMetricDataRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetLoadBalancerMetricData")
 	if request_handler then
 		request_handler(settings.uri, "/", GetLoadBalancerMetricDataRequest, headers, settings, cb)
 	else
@@ -12809,7 +12809,7 @@ function M.GetStaticIpsAsync(GetStaticIpsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetStaticIps")
 	if request_handler then
 		request_handler(settings.uri, "/", GetStaticIpsRequest, headers, settings, cb)
 	else
@@ -12845,7 +12845,7 @@ function M.GetRelationalDatabaseAsync(GetRelationalDatabaseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRelationalDatabase")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRelationalDatabaseRequest, headers, settings, cb)
 	else
@@ -12881,7 +12881,7 @@ function M.CloseInstancePublicPortsAsync(CloseInstancePublicPortsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CloseInstancePublicPorts")
 	if request_handler then
 		request_handler(settings.uri, "/", CloseInstancePublicPortsRequest, headers, settings, cb)
 	else
@@ -12917,7 +12917,7 @@ function M.GetActiveNamesAsync(GetActiveNamesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetActiveNames")
 	if request_handler then
 		request_handler(settings.uri, "/", GetActiveNamesRequest, headers, settings, cb)
 	else
@@ -12953,7 +12953,7 @@ function M.DeleteInstanceAsync(DeleteInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteInstanceRequest, headers, settings, cb)
 	else
@@ -12989,7 +12989,7 @@ function M.GetStaticIpAsync(GetStaticIpRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetStaticIp")
 	if request_handler then
 		request_handler(settings.uri, "/", GetStaticIpRequest, headers, settings, cb)
 	else
@@ -13025,7 +13025,7 @@ function M.CreateKeyPairAsync(CreateKeyPairRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateKeyPair")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateKeyPairRequest, headers, settings, cb)
 	else
@@ -13061,7 +13061,7 @@ function M.OpenInstancePublicPortsAsync(OpenInstancePublicPortsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "OpenInstancePublicPorts")
 	if request_handler then
 		request_handler(settings.uri, "/", OpenInstancePublicPortsRequest, headers, settings, cb)
 	else
@@ -13097,7 +13097,7 @@ function M.GetDiskSnapshotAsync(GetDiskSnapshotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDiskSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDiskSnapshotRequest, headers, settings, cb)
 	else
@@ -13133,7 +13133,7 @@ function M.DeleteLoadBalancerAsync(DeleteLoadBalancerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteLoadBalancer")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLoadBalancerRequest, headers, settings, cb)
 	else
@@ -13169,7 +13169,7 @@ function M.GetRelationalDatabaseLogEventsAsync(GetRelationalDatabaseLogEventsReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRelationalDatabaseLogEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRelationalDatabaseLogEventsRequest, headers, settings, cb)
 	else
@@ -13205,7 +13205,7 @@ function M.GetRelationalDatabasesAsync(GetRelationalDatabasesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRelationalDatabases")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRelationalDatabasesRequest, headers, settings, cb)
 	else
@@ -13241,7 +13241,7 @@ function M.StartInstanceAsync(StartInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", StartInstanceRequest, headers, settings, cb)
 	else
@@ -13277,7 +13277,7 @@ function M.GetRelationalDatabaseEventsAsync(GetRelationalDatabaseEventsRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRelationalDatabaseEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRelationalDatabaseEventsRequest, headers, settings, cb)
 	else
@@ -13313,7 +13313,7 @@ function M.CreateDomainAsync(CreateDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDomainRequest, headers, settings, cb)
 	else
@@ -13349,7 +13349,7 @@ function M.GetRelationalDatabaseMetricDataAsync(GetRelationalDatabaseMetricDataR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRelationalDatabaseMetricData")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRelationalDatabaseMetricDataRequest, headers, settings, cb)
 	else
@@ -13385,7 +13385,7 @@ function M.AttachDiskAsync(AttachDiskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AttachDisk")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachDiskRequest, headers, settings, cb)
 	else
@@ -13421,7 +13421,7 @@ function M.GetLoadBalancerTlsCertificatesAsync(GetLoadBalancerTlsCertificatesReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetLoadBalancerTlsCertificates")
 	if request_handler then
 		request_handler(settings.uri, "/", GetLoadBalancerTlsCertificatesRequest, headers, settings, cb)
 	else
@@ -13457,7 +13457,7 @@ function M.AttachLoadBalancerTlsCertificateAsync(AttachLoadBalancerTlsCertificat
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AttachLoadBalancerTlsCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachLoadBalancerTlsCertificateRequest, headers, settings, cb)
 	else
@@ -13493,7 +13493,7 @@ function M.DeleteDiskAsync(DeleteDiskRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDisk")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDiskRequest, headers, settings, cb)
 	else
@@ -13529,7 +13529,7 @@ function M.GetRelationalDatabaseLogStreamsAsync(GetRelationalDatabaseLogStreamsR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRelationalDatabaseLogStreams")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRelationalDatabaseLogStreamsRequest, headers, settings, cb)
 	else
@@ -13565,7 +13565,7 @@ function M.GetInstanceAccessDetailsAsync(GetInstanceAccessDetailsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetInstanceAccessDetails")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstanceAccessDetailsRequest, headers, settings, cb)
 	else
@@ -13601,7 +13601,7 @@ function M.DeleteDiskSnapshotAsync(DeleteDiskSnapshotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDiskSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDiskSnapshotRequest, headers, settings, cb)
 	else
@@ -13637,7 +13637,7 @@ function M.IsVpcPeeredAsync(IsVpcPeeredRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "IsVpcPeered")
 	if request_handler then
 		request_handler(settings.uri, "/", IsVpcPeeredRequest, headers, settings, cb)
 	else
@@ -13673,7 +13673,7 @@ function M.CreateLoadBalancerAsync(CreateLoadBalancerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateLoadBalancer")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLoadBalancerRequest, headers, settings, cb)
 	else
@@ -13709,7 +13709,7 @@ function M.GetInstanceMetricDataAsync(GetInstanceMetricDataRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetInstanceMetricData")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstanceMetricDataRequest, headers, settings, cb)
 	else
@@ -13745,7 +13745,7 @@ function M.ReleaseStaticIpAsync(ReleaseStaticIpRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ReleaseStaticIp")
 	if request_handler then
 		request_handler(settings.uri, "/", ReleaseStaticIpRequest, headers, settings, cb)
 	else
@@ -13781,7 +13781,7 @@ function M.UpdateRelationalDatabaseParametersAsync(UpdateRelationalDatabaseParam
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateRelationalDatabaseParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRelationalDatabaseParametersRequest, headers, settings, cb)
 	else
@@ -13817,7 +13817,7 @@ function M.GetOperationsForResourceAsync(GetOperationsForResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetOperationsForResource")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOperationsForResourceRequest, headers, settings, cb)
 	else
@@ -13853,7 +13853,7 @@ function M.GetInstanceSnapshotAsync(GetInstanceSnapshotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetInstanceSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstanceSnapshotRequest, headers, settings, cb)
 	else
@@ -13889,7 +13889,7 @@ function M.DeleteLoadBalancerTlsCertificateAsync(DeleteLoadBalancerTlsCertificat
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteLoadBalancerTlsCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLoadBalancerTlsCertificateRequest, headers, settings, cb)
 	else
@@ -13925,7 +13925,7 @@ function M.GetBlueprintsAsync(GetBlueprintsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetBlueprints")
 	if request_handler then
 		request_handler(settings.uri, "/", GetBlueprintsRequest, headers, settings, cb)
 	else
@@ -13961,7 +13961,7 @@ function M.DownloadDefaultKeyPairAsync(DownloadDefaultKeyPairRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DownloadDefaultKeyPair")
 	if request_handler then
 		request_handler(settings.uri, "/", DownloadDefaultKeyPairRequest, headers, settings, cb)
 	else
@@ -13997,7 +13997,7 @@ function M.GetRelationalDatabaseSnapshotsAsync(GetRelationalDatabaseSnapshotsReq
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRelationalDatabaseSnapshots")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRelationalDatabaseSnapshotsRequest, headers, settings, cb)
 	else
@@ -14033,7 +14033,7 @@ function M.DeleteDomainEntryAsync(DeleteDomainEntryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDomainEntry")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDomainEntryRequest, headers, settings, cb)
 	else
@@ -14069,7 +14069,7 @@ function M.GetBundlesAsync(GetBundlesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetBundles")
 	if request_handler then
 		request_handler(settings.uri, "/", GetBundlesRequest, headers, settings, cb)
 	else
@@ -14105,7 +14105,7 @@ function M.CreateRelationalDatabaseFromSnapshotAsync(CreateRelationalDatabaseFro
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateRelationalDatabaseFromSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRelationalDatabaseFromSnapshotRequest, headers, settings, cb)
 	else
@@ -14141,7 +14141,7 @@ function M.GetOperationsAsync(GetOperationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetOperations")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOperationsRequest, headers, settings, cb)
 	else
@@ -14177,7 +14177,7 @@ function M.GetRelationalDatabaseBundlesAsync(GetRelationalDatabaseBundlesRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRelationalDatabaseBundles")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRelationalDatabaseBundlesRequest, headers, settings, cb)
 	else
@@ -14213,7 +14213,7 @@ function M.GetRelationalDatabaseSnapshotAsync(GetRelationalDatabaseSnapshotReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRelationalDatabaseSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRelationalDatabaseSnapshotRequest, headers, settings, cb)
 	else
@@ -14249,7 +14249,7 @@ function M.GetDomainsAsync(GetDomainsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDomains")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDomainsRequest, headers, settings, cb)
 	else
@@ -14285,7 +14285,7 @@ function M.DeleteKeyPairAsync(DeleteKeyPairRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteKeyPair")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteKeyPairRequest, headers, settings, cb)
 	else
@@ -14321,7 +14321,7 @@ function M.RebootRelationalDatabaseAsync(RebootRelationalDatabaseRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RebootRelationalDatabase")
 	if request_handler then
 		request_handler(settings.uri, "/", RebootRelationalDatabaseRequest, headers, settings, cb)
 	else
@@ -14357,7 +14357,7 @@ function M.DetachStaticIpAsync(DetachStaticIpRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DetachStaticIp")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachStaticIpRequest, headers, settings, cb)
 	else
@@ -14393,7 +14393,7 @@ function M.GetRelationalDatabaseMasterUserPasswordAsync(GetRelationalDatabaseMas
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetRelationalDatabaseMasterUserPassword")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRelationalDatabaseMasterUserPasswordRequest, headers, settings, cb)
 	else
@@ -14429,7 +14429,7 @@ function M.UnpeerVpcAsync(UnpeerVpcRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UnpeerVpc")
 	if request_handler then
 		request_handler(settings.uri, "/", UnpeerVpcRequest, headers, settings, cb)
 	else
@@ -14465,7 +14465,7 @@ function M.CreateInstancesAsync(CreateInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateInstancesRequest, headers, settings, cb)
 	else

@@ -792,7 +792,7 @@ function M.GetProductsAsync(GetProductsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetProducts")
 	if request_handler then
 		request_handler(settings.uri, "/", GetProductsRequest, headers, settings, cb)
 	else
@@ -828,7 +828,7 @@ function M.DescribeServicesAsync(DescribeServicesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeServices")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeServicesRequest, headers, settings, cb)
 	else
@@ -864,7 +864,7 @@ function M.GetAttributeValuesAsync(GetAttributeValuesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetAttributeValues")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAttributeValuesRequest, headers, settings, cb)
 	else

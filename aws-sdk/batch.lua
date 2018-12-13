@@ -3230,7 +3230,7 @@ function M.ListJobsAsync(ListJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListJobs")
 	if request_handler then
 		request_handler(settings.uri, "/v1/listjobs", ListJobsRequest, headers, settings, cb)
 	else
@@ -3266,7 +3266,7 @@ function M.SubmitJobAsync(SubmitJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "SubmitJob")
 	if request_handler then
 		request_handler(settings.uri, "/v1/submitjob", SubmitJobRequest, headers, settings, cb)
 	else
@@ -3302,7 +3302,7 @@ function M.UpdateJobQueueAsync(UpdateJobQueueRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateJobQueue")
 	if request_handler then
 		request_handler(settings.uri, "/v1/updatejobqueue", UpdateJobQueueRequest, headers, settings, cb)
 	else
@@ -3338,7 +3338,7 @@ function M.UpdateComputeEnvironmentAsync(UpdateComputeEnvironmentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateComputeEnvironment")
 	if request_handler then
 		request_handler(settings.uri, "/v1/updatecomputeenvironment", UpdateComputeEnvironmentRequest, headers, settings, cb)
 	else
@@ -3374,7 +3374,7 @@ function M.DeregisterJobDefinitionAsync(DeregisterJobDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DeregisterJobDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/v1/deregisterjobdefinition", DeregisterJobDefinitionRequest, headers, settings, cb)
 	else
@@ -3410,7 +3410,7 @@ function M.DescribeJobQueuesAsync(DescribeJobQueuesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DescribeJobQueues")
 	if request_handler then
 		request_handler(settings.uri, "/v1/describejobqueues", DescribeJobQueuesRequest, headers, settings, cb)
 	else
@@ -3446,7 +3446,7 @@ function M.CreateComputeEnvironmentAsync(CreateComputeEnvironmentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateComputeEnvironment")
 	if request_handler then
 		request_handler(settings.uri, "/v1/createcomputeenvironment", CreateComputeEnvironmentRequest, headers, settings, cb)
 	else
@@ -3482,7 +3482,7 @@ function M.DeleteComputeEnvironmentAsync(DeleteComputeEnvironmentRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DeleteComputeEnvironment")
 	if request_handler then
 		request_handler(settings.uri, "/v1/deletecomputeenvironment", DeleteComputeEnvironmentRequest, headers, settings, cb)
 	else
@@ -3518,7 +3518,7 @@ function M.DescribeComputeEnvironmentsAsync(DescribeComputeEnvironmentsRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DescribeComputeEnvironments")
 	if request_handler then
 		request_handler(settings.uri, "/v1/describecomputeenvironments", DescribeComputeEnvironmentsRequest, headers, settings, cb)
 	else
@@ -3554,7 +3554,7 @@ function M.CreateJobQueueAsync(CreateJobQueueRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateJobQueue")
 	if request_handler then
 		request_handler(settings.uri, "/v1/createjobqueue", CreateJobQueueRequest, headers, settings, cb)
 	else
@@ -3590,7 +3590,7 @@ function M.RegisterJobDefinitionAsync(RegisterJobDefinitionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "RegisterJobDefinition")
 	if request_handler then
 		request_handler(settings.uri, "/v1/registerjobdefinition", RegisterJobDefinitionRequest, headers, settings, cb)
 	else
@@ -3626,7 +3626,7 @@ function M.CancelJobAsync(CancelJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CancelJob")
 	if request_handler then
 		request_handler(settings.uri, "/v1/canceljob", CancelJobRequest, headers, settings, cb)
 	else
@@ -3662,7 +3662,7 @@ function M.DescribeJobDefinitionsAsync(DescribeJobDefinitionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DescribeJobDefinitions")
 	if request_handler then
 		request_handler(settings.uri, "/v1/describejobdefinitions", DescribeJobDefinitionsRequest, headers, settings, cb)
 	else
@@ -3698,7 +3698,7 @@ function M.DeleteJobQueueAsync(DeleteJobQueueRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DeleteJobQueue")
 	if request_handler then
 		request_handler(settings.uri, "/v1/deletejobqueue", DeleteJobQueueRequest, headers, settings, cb)
 	else
@@ -3734,7 +3734,7 @@ function M.DescribeJobsAsync(DescribeJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DescribeJobs")
 	if request_handler then
 		request_handler(settings.uri, "/v1/describejobs", DescribeJobsRequest, headers, settings, cb)
 	else
@@ -3770,7 +3770,7 @@ function M.TerminateJobAsync(TerminateJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "TerminateJob")
 	if request_handler then
 		request_handler(settings.uri, "/v1/terminatejob", TerminateJobRequest, headers, settings, cb)
 	else

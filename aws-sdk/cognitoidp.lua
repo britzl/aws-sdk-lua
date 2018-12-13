@@ -12633,7 +12633,7 @@ function M.VerifyUserAttributeAsync(VerifyUserAttributeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "VerifyUserAttribute")
 	if request_handler then
 		request_handler(settings.uri, "/", VerifyUserAttributeRequest, headers, settings, cb)
 	else
@@ -12669,7 +12669,7 @@ function M.AdminListDevicesAsync(AdminListDevicesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminListDevices")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminListDevicesRequest, headers, settings, cb)
 	else
@@ -12705,7 +12705,7 @@ function M.SignUpAsync(SignUpRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SignUp")
 	if request_handler then
 		request_handler(settings.uri, "/", SignUpRequest, headers, settings, cb)
 	else
@@ -12741,7 +12741,7 @@ function M.ListIdentityProvidersAsync(ListIdentityProvidersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListIdentityProviders")
 	if request_handler then
 		request_handler(settings.uri, "/", ListIdentityProvidersRequest, headers, settings, cb)
 	else
@@ -12777,7 +12777,7 @@ function M.DescribeResourceServerAsync(DescribeResourceServerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeResourceServer")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeResourceServerRequest, headers, settings, cb)
 	else
@@ -12813,7 +12813,7 @@ function M.ListUserPoolClientsAsync(ListUserPoolClientsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListUserPoolClients")
 	if request_handler then
 		request_handler(settings.uri, "/", ListUserPoolClientsRequest, headers, settings, cb)
 	else
@@ -12849,7 +12849,7 @@ function M.DescribeUserPoolAsync(DescribeUserPoolRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeUserPool")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeUserPoolRequest, headers, settings, cb)
 	else
@@ -12885,7 +12885,7 @@ function M.AdminUserGlobalSignOutAsync(AdminUserGlobalSignOutRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminUserGlobalSignOut")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminUserGlobalSignOutRequest, headers, settings, cb)
 	else
@@ -12921,7 +12921,7 @@ function M.DeleteUserPoolDomainAsync(DeleteUserPoolDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteUserPoolDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUserPoolDomainRequest, headers, settings, cb)
 	else
@@ -12957,7 +12957,7 @@ function M.GetUserAsync(GetUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetUser")
 	if request_handler then
 		request_handler(settings.uri, "/", GetUserRequest, headers, settings, cb)
 	else
@@ -12993,7 +12993,7 @@ function M.GetUICustomizationAsync(GetUICustomizationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetUICustomization")
 	if request_handler then
 		request_handler(settings.uri, "/", GetUICustomizationRequest, headers, settings, cb)
 	else
@@ -13029,7 +13029,7 @@ function M.DescribeIdentityProviderAsync(DescribeIdentityProviderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeIdentityProvider")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeIdentityProviderRequest, headers, settings, cb)
 	else
@@ -13065,7 +13065,7 @@ function M.UpdateIdentityProviderAsync(UpdateIdentityProviderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateIdentityProvider")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateIdentityProviderRequest, headers, settings, cb)
 	else
@@ -13101,7 +13101,7 @@ function M.ChangePasswordAsync(ChangePasswordRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ChangePassword")
 	if request_handler then
 		request_handler(settings.uri, "/", ChangePasswordRequest, headers, settings, cb)
 	else
@@ -13137,7 +13137,7 @@ function M.AdminForgetDeviceAsync(AdminForgetDeviceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminForgetDevice")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminForgetDeviceRequest, headers, settings, cb)
 	else
@@ -13173,7 +13173,7 @@ function M.DescribeRiskConfigurationAsync(DescribeRiskConfigurationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeRiskConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRiskConfigurationRequest, headers, settings, cb)
 	else
@@ -13209,7 +13209,7 @@ function M.SetUICustomizationAsync(SetUICustomizationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SetUICustomization")
 	if request_handler then
 		request_handler(settings.uri, "/", SetUICustomizationRequest, headers, settings, cb)
 	else
@@ -13245,7 +13245,7 @@ function M.DeleteUserAsync(DeleteUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteUser")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUserRequest, headers, settings, cb)
 	else
@@ -13281,7 +13281,7 @@ function M.AdminDeleteUserAsync(AdminDeleteUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminDeleteUser")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminDeleteUserRequest, headers, settings, cb)
 	else
@@ -13317,7 +13317,7 @@ function M.AdminInitiateAuthAsync(AdminInitiateAuthRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminInitiateAuth")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminInitiateAuthRequest, headers, settings, cb)
 	else
@@ -13353,7 +13353,7 @@ function M.AdminUpdateAuthEventFeedbackAsync(AdminUpdateAuthEventFeedbackRequest
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminUpdateAuthEventFeedback")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminUpdateAuthEventFeedbackRequest, headers, settings, cb)
 	else
@@ -13389,7 +13389,7 @@ function M.SetRiskConfigurationAsync(SetRiskConfigurationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SetRiskConfiguration")
 	if request_handler then
 		request_handler(settings.uri, "/", SetRiskConfigurationRequest, headers, settings, cb)
 	else
@@ -13425,7 +13425,7 @@ function M.AdminSetUserSettingsAsync(AdminSetUserSettingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminSetUserSettings")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminSetUserSettingsRequest, headers, settings, cb)
 	else
@@ -13461,7 +13461,7 @@ function M.AdminSetUserMFAPreferenceAsync(AdminSetUserMFAPreferenceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminSetUserMFAPreference")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminSetUserMFAPreferenceRequest, headers, settings, cb)
 	else
@@ -13497,7 +13497,7 @@ function M.InitiateAuthAsync(InitiateAuthRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "InitiateAuth")
 	if request_handler then
 		request_handler(settings.uri, "/", InitiateAuthRequest, headers, settings, cb)
 	else
@@ -13533,7 +13533,7 @@ function M.ListResourceServersAsync(ListResourceServersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListResourceServers")
 	if request_handler then
 		request_handler(settings.uri, "/", ListResourceServersRequest, headers, settings, cb)
 	else
@@ -13569,7 +13569,7 @@ function M.UpdateDeviceStatusAsync(UpdateDeviceStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateDeviceStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDeviceStatusRequest, headers, settings, cb)
 	else
@@ -13605,7 +13605,7 @@ function M.AdminDisableUserAsync(AdminDisableUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminDisableUser")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminDisableUserRequest, headers, settings, cb)
 	else
@@ -13641,7 +13641,7 @@ function M.AdminUpdateUserAttributesAsync(AdminUpdateUserAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminUpdateUserAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminUpdateUserAttributesRequest, headers, settings, cb)
 	else
@@ -13677,7 +13677,7 @@ function M.ForgetDeviceAsync(ForgetDeviceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ForgetDevice")
 	if request_handler then
 		request_handler(settings.uri, "/", ForgetDeviceRequest, headers, settings, cb)
 	else
@@ -13713,7 +13713,7 @@ function M.ConfirmForgotPasswordAsync(ConfirmForgotPasswordRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ConfirmForgotPassword")
 	if request_handler then
 		request_handler(settings.uri, "/", ConfirmForgotPasswordRequest, headers, settings, cb)
 	else
@@ -13749,7 +13749,7 @@ function M.AdminDisableProviderForUserAsync(AdminDisableProviderForUserRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminDisableProviderForUser")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminDisableProviderForUserRequest, headers, settings, cb)
 	else
@@ -13785,7 +13785,7 @@ function M.ListUserPoolsAsync(ListUserPoolsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListUserPools")
 	if request_handler then
 		request_handler(settings.uri, "/", ListUserPoolsRequest, headers, settings, cb)
 	else
@@ -13821,7 +13821,7 @@ function M.AdminGetDeviceAsync(AdminGetDeviceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminGetDevice")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminGetDeviceRequest, headers, settings, cb)
 	else
@@ -13857,7 +13857,7 @@ function M.UpdateGroupAsync(UpdateGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateGroupRequest, headers, settings, cb)
 	else
@@ -13893,7 +13893,7 @@ function M.GetGroupAsync(GetGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", GetGroupRequest, headers, settings, cb)
 	else
@@ -13929,7 +13929,7 @@ function M.AdminAddUserToGroupAsync(AdminAddUserToGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminAddUserToGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminAddUserToGroupRequest, headers, settings, cb)
 	else
@@ -13965,7 +13965,7 @@ function M.AssociateSoftwareTokenAsync(AssociateSoftwareTokenRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateSoftwareToken")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateSoftwareTokenRequest, headers, settings, cb)
 	else
@@ -14001,7 +14001,7 @@ function M.AdminListGroupsForUserAsync(AdminListGroupsForUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminListGroupsForUser")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminListGroupsForUserRequest, headers, settings, cb)
 	else
@@ -14037,7 +14037,7 @@ function M.DescribeUserPoolClientAsync(DescribeUserPoolClientRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeUserPoolClient")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeUserPoolClientRequest, headers, settings, cb)
 	else
@@ -14073,7 +14073,7 @@ function M.ListDevicesAsync(ListDevicesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListDevices")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDevicesRequest, headers, settings, cb)
 	else
@@ -14109,7 +14109,7 @@ function M.RespondToAuthChallengeAsync(RespondToAuthChallengeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RespondToAuthChallenge")
 	if request_handler then
 		request_handler(settings.uri, "/", RespondToAuthChallengeRequest, headers, settings, cb)
 	else
@@ -14145,7 +14145,7 @@ function M.CreateUserPoolClientAsync(CreateUserPoolClientRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateUserPoolClient")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateUserPoolClientRequest, headers, settings, cb)
 	else
@@ -14181,7 +14181,7 @@ function M.DeleteUserAttributesAsync(DeleteUserAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteUserAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUserAttributesRequest, headers, settings, cb)
 	else
@@ -14217,7 +14217,7 @@ function M.GlobalSignOutAsync(GlobalSignOutRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GlobalSignOut")
 	if request_handler then
 		request_handler(settings.uri, "/", GlobalSignOutRequest, headers, settings, cb)
 	else
@@ -14253,7 +14253,7 @@ function M.ConfirmSignUpAsync(ConfirmSignUpRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ConfirmSignUp")
 	if request_handler then
 		request_handler(settings.uri, "/", ConfirmSignUpRequest, headers, settings, cb)
 	else
@@ -14289,7 +14289,7 @@ function M.ForgotPasswordAsync(ForgotPasswordRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ForgotPassword")
 	if request_handler then
 		request_handler(settings.uri, "/", ForgotPasswordRequest, headers, settings, cb)
 	else
@@ -14325,7 +14325,7 @@ function M.AdminCreateUserAsync(AdminCreateUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminCreateUser")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminCreateUserRequest, headers, settings, cb)
 	else
@@ -14361,7 +14361,7 @@ function M.DeleteIdentityProviderAsync(DeleteIdentityProviderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteIdentityProvider")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteIdentityProviderRequest, headers, settings, cb)
 	else
@@ -14397,7 +14397,7 @@ function M.CreateGroupAsync(CreateGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateGroupRequest, headers, settings, cb)
 	else
@@ -14433,7 +14433,7 @@ function M.DeleteUserPoolAsync(DeleteUserPoolRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteUserPool")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUserPoolRequest, headers, settings, cb)
 	else
@@ -14469,7 +14469,7 @@ function M.AdminListUserAuthEventsAsync(AdminListUserAuthEventsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminListUserAuthEvents")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminListUserAuthEventsRequest, headers, settings, cb)
 	else
@@ -14505,7 +14505,7 @@ function M.GetUserPoolMfaConfigAsync(GetUserPoolMfaConfigRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetUserPoolMfaConfig")
 	if request_handler then
 		request_handler(settings.uri, "/", GetUserPoolMfaConfigRequest, headers, settings, cb)
 	else
@@ -14541,7 +14541,7 @@ function M.AdminLinkProviderForUserAsync(AdminLinkProviderForUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminLinkProviderForUser")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminLinkProviderForUserRequest, headers, settings, cb)
 	else
@@ -14577,7 +14577,7 @@ function M.DeleteGroupAsync(DeleteGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteGroupRequest, headers, settings, cb)
 	else
@@ -14613,7 +14613,7 @@ function M.ResendConfirmationCodeAsync(ResendConfirmationCodeRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ResendConfirmationCode")
 	if request_handler then
 		request_handler(settings.uri, "/", ResendConfirmationCodeRequest, headers, settings, cb)
 	else
@@ -14649,7 +14649,7 @@ function M.GetUserAttributeVerificationCodeAsync(GetUserAttributeVerificationCod
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetUserAttributeVerificationCode")
 	if request_handler then
 		request_handler(settings.uri, "/", GetUserAttributeVerificationCodeRequest, headers, settings, cb)
 	else
@@ -14685,7 +14685,7 @@ function M.DeleteUserPoolClientAsync(DeleteUserPoolClientRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteUserPoolClient")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUserPoolClientRequest, headers, settings, cb)
 	else
@@ -14721,7 +14721,7 @@ function M.CreateResourceServerAsync(CreateResourceServerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateResourceServer")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateResourceServerRequest, headers, settings, cb)
 	else
@@ -14757,7 +14757,7 @@ function M.GetCSVHeaderAsync(GetCSVHeaderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetCSVHeader")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCSVHeaderRequest, headers, settings, cb)
 	else
@@ -14793,7 +14793,7 @@ function M.AdminUpdateDeviceStatusAsync(AdminUpdateDeviceStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminUpdateDeviceStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminUpdateDeviceStatusRequest, headers, settings, cb)
 	else
@@ -14829,7 +14829,7 @@ function M.UpdateUserPoolClientAsync(UpdateUserPoolClientRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateUserPoolClient")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateUserPoolClientRequest, headers, settings, cb)
 	else
@@ -14865,7 +14865,7 @@ function M.DeleteResourceServerAsync(DeleteResourceServerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteResourceServer")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteResourceServerRequest, headers, settings, cb)
 	else
@@ -14901,7 +14901,7 @@ function M.AdminRemoveUserFromGroupAsync(AdminRemoveUserFromGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminRemoveUserFromGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminRemoveUserFromGroupRequest, headers, settings, cb)
 	else
@@ -14937,7 +14937,7 @@ function M.UpdateUserPoolAsync(UpdateUserPoolRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateUserPool")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateUserPoolRequest, headers, settings, cb)
 	else
@@ -14973,7 +14973,7 @@ function M.UpdateResourceServerAsync(UpdateResourceServerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateResourceServer")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateResourceServerRequest, headers, settings, cb)
 	else
@@ -15009,7 +15009,7 @@ function M.ListGroupsAsync(ListGroupsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListGroups")
 	if request_handler then
 		request_handler(settings.uri, "/", ListGroupsRequest, headers, settings, cb)
 	else
@@ -15045,7 +15045,7 @@ function M.ListUserImportJobsAsync(ListUserImportJobsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListUserImportJobs")
 	if request_handler then
 		request_handler(settings.uri, "/", ListUserImportJobsRequest, headers, settings, cb)
 	else
@@ -15081,7 +15081,7 @@ function M.ListUsersAsync(ListUsersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListUsers")
 	if request_handler then
 		request_handler(settings.uri, "/", ListUsersRequest, headers, settings, cb)
 	else
@@ -15117,7 +15117,7 @@ function M.DescribeUserImportJobAsync(DescribeUserImportJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeUserImportJob")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeUserImportJobRequest, headers, settings, cb)
 	else
@@ -15153,7 +15153,7 @@ function M.AdminDeleteUserAttributesAsync(AdminDeleteUserAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminDeleteUserAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminDeleteUserAttributesRequest, headers, settings, cb)
 	else
@@ -15189,7 +15189,7 @@ function M.AdminRespondToAuthChallengeAsync(AdminRespondToAuthChallengeRequest, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminRespondToAuthChallenge")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminRespondToAuthChallengeRequest, headers, settings, cb)
 	else
@@ -15225,7 +15225,7 @@ function M.CreateIdentityProviderAsync(CreateIdentityProviderRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateIdentityProvider")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateIdentityProviderRequest, headers, settings, cb)
 	else
@@ -15261,7 +15261,7 @@ function M.GetIdentityProviderByIdentifierAsync(GetIdentityProviderByIdentifierR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetIdentityProviderByIdentifier")
 	if request_handler then
 		request_handler(settings.uri, "/", GetIdentityProviderByIdentifierRequest, headers, settings, cb)
 	else
@@ -15297,7 +15297,7 @@ function M.CreateUserPoolAsync(CreateUserPoolRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateUserPool")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateUserPoolRequest, headers, settings, cb)
 	else
@@ -15333,7 +15333,7 @@ function M.VerifySoftwareTokenAsync(VerifySoftwareTokenRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "VerifySoftwareToken")
 	if request_handler then
 		request_handler(settings.uri, "/", VerifySoftwareTokenRequest, headers, settings, cb)
 	else
@@ -15369,7 +15369,7 @@ function M.UpdateUserAttributesAsync(UpdateUserAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateUserAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateUserAttributesRequest, headers, settings, cb)
 	else
@@ -15405,7 +15405,7 @@ function M.DescribeUserPoolDomainAsync(DescribeUserPoolDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeUserPoolDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeUserPoolDomainRequest, headers, settings, cb)
 	else
@@ -15441,7 +15441,7 @@ function M.AdminResetUserPasswordAsync(AdminResetUserPasswordRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminResetUserPassword")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminResetUserPasswordRequest, headers, settings, cb)
 	else
@@ -15477,7 +15477,7 @@ function M.AdminConfirmSignUpAsync(AdminConfirmSignUpRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminConfirmSignUp")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminConfirmSignUpRequest, headers, settings, cb)
 	else
@@ -15513,7 +15513,7 @@ function M.StopUserImportJobAsync(StopUserImportJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StopUserImportJob")
 	if request_handler then
 		request_handler(settings.uri, "/", StopUserImportJobRequest, headers, settings, cb)
 	else
@@ -15549,7 +15549,7 @@ function M.ConfirmDeviceAsync(ConfirmDeviceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ConfirmDevice")
 	if request_handler then
 		request_handler(settings.uri, "/", ConfirmDeviceRequest, headers, settings, cb)
 	else
@@ -15585,7 +15585,7 @@ function M.UpdateAuthEventFeedbackAsync(UpdateAuthEventFeedbackRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateAuthEventFeedback")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAuthEventFeedbackRequest, headers, settings, cb)
 	else
@@ -15621,7 +15621,7 @@ function M.ListUsersInGroupAsync(ListUsersInGroupRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListUsersInGroup")
 	if request_handler then
 		request_handler(settings.uri, "/", ListUsersInGroupRequest, headers, settings, cb)
 	else
@@ -15657,7 +15657,7 @@ function M.AdminEnableUserAsync(AdminEnableUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminEnableUser")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminEnableUserRequest, headers, settings, cb)
 	else
@@ -15693,7 +15693,7 @@ function M.AddCustomAttributesAsync(AddCustomAttributesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddCustomAttributes")
 	if request_handler then
 		request_handler(settings.uri, "/", AddCustomAttributesRequest, headers, settings, cb)
 	else
@@ -15729,7 +15729,7 @@ function M.StartUserImportJobAsync(StartUserImportJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartUserImportJob")
 	if request_handler then
 		request_handler(settings.uri, "/", StartUserImportJobRequest, headers, settings, cb)
 	else
@@ -15765,7 +15765,7 @@ function M.AdminGetUserAsync(AdminGetUserRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AdminGetUser")
 	if request_handler then
 		request_handler(settings.uri, "/", AdminGetUserRequest, headers, settings, cb)
 	else
@@ -15801,7 +15801,7 @@ function M.SetUserPoolMfaConfigAsync(SetUserPoolMfaConfigRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SetUserPoolMfaConfig")
 	if request_handler then
 		request_handler(settings.uri, "/", SetUserPoolMfaConfigRequest, headers, settings, cb)
 	else
@@ -15837,7 +15837,7 @@ function M.GetDeviceAsync(GetDeviceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDevice")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDeviceRequest, headers, settings, cb)
 	else
@@ -15873,7 +15873,7 @@ function M.CreateUserImportJobAsync(CreateUserImportJobRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateUserImportJob")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateUserImportJobRequest, headers, settings, cb)
 	else
@@ -15909,7 +15909,7 @@ function M.SetUserMFAPreferenceAsync(SetUserMFAPreferenceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SetUserMFAPreference")
 	if request_handler then
 		request_handler(settings.uri, "/", SetUserMFAPreferenceRequest, headers, settings, cb)
 	else
@@ -15945,7 +15945,7 @@ function M.SetUserSettingsAsync(SetUserSettingsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SetUserSettings")
 	if request_handler then
 		request_handler(settings.uri, "/", SetUserSettingsRequest, headers, settings, cb)
 	else
@@ -15981,7 +15981,7 @@ function M.CreateUserPoolDomainAsync(CreateUserPoolDomainRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateUserPoolDomain")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateUserPoolDomainRequest, headers, settings, cb)
 	else
@@ -16017,7 +16017,7 @@ function M.GetSigningCertificateAsync(GetSigningCertificateRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetSigningCertificate")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSigningCertificateRequest, headers, settings, cb)
 	else

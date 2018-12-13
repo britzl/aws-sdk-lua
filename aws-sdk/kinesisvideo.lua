@@ -1680,7 +1680,7 @@ function M.GetDataEndpointAsync(GetDataEndpointInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetDataEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/getDataEndpoint", GetDataEndpointInput, headers, settings, cb)
 	else
@@ -1716,7 +1716,7 @@ function M.UpdateDataRetentionAsync(UpdateDataRetentionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateDataRetention")
 	if request_handler then
 		request_handler(settings.uri, "/updateDataRetention", UpdateDataRetentionInput, headers, settings, cb)
 	else
@@ -1752,7 +1752,7 @@ function M.DeleteStreamAsync(DeleteStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DeleteStream")
 	if request_handler then
 		request_handler(settings.uri, "/deleteStream", DeleteStreamInput, headers, settings, cb)
 	else
@@ -1788,7 +1788,7 @@ function M.ListStreamsAsync(ListStreamsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListStreams")
 	if request_handler then
 		request_handler(settings.uri, "/listStreams", ListStreamsInput, headers, settings, cb)
 	else
@@ -1824,7 +1824,7 @@ function M.UntagStreamAsync(UntagStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UntagStream")
 	if request_handler then
 		request_handler(settings.uri, "/untagStream", UntagStreamInput, headers, settings, cb)
 	else
@@ -1860,7 +1860,7 @@ function M.ListTagsForStreamAsync(ListTagsForStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "ListTagsForStream")
 	if request_handler then
 		request_handler(settings.uri, "/listTagsForStream", ListTagsForStreamInput, headers, settings, cb)
 	else
@@ -1896,7 +1896,7 @@ function M.CreateStreamAsync(CreateStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateStream")
 	if request_handler then
 		request_handler(settings.uri, "/createStream", CreateStreamInput, headers, settings, cb)
 	else
@@ -1932,7 +1932,7 @@ function M.TagStreamAsync(TagStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "TagStream")
 	if request_handler then
 		request_handler(settings.uri, "/tagStream", TagStreamInput, headers, settings, cb)
 	else
@@ -1968,7 +1968,7 @@ function M.UpdateStreamAsync(UpdateStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "UpdateStream")
 	if request_handler then
 		request_handler(settings.uri, "/updateStream", UpdateStreamInput, headers, settings, cb)
 	else
@@ -2004,7 +2004,7 @@ function M.DescribeStreamAsync(DescribeStreamInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "DescribeStream")
 	if request_handler then
 		request_handler(settings.uri, "/describeStream", DescribeStreamInput, headers, settings, cb)
 	else

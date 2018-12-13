@@ -2404,7 +2404,7 @@ function M.DeleteOriginEndpointAsync(DeleteOriginEndpointRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteOriginEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/origin_endpoints/{id}", DeleteOriginEndpointRequest, headers, settings, cb)
 	else
@@ -2440,7 +2440,7 @@ function M.RotateIngestEndpointCredentialsAsync(RotateIngestEndpointCredentialsR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "RotateIngestEndpointCredentials")
 	if request_handler then
 		request_handler(settings.uri, "/channels/{id}/ingest_endpoints/{ingest_endpoint_id}/credentials", RotateIngestEndpointCredentialsRequest, headers, settings, cb)
 	else
@@ -2476,7 +2476,7 @@ function M.CreateOriginEndpointAsync(CreateOriginEndpointRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateOriginEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/origin_endpoints", CreateOriginEndpointRequest, headers, settings, cb)
 	else
@@ -2512,7 +2512,7 @@ function M.UpdateOriginEndpointAsync(UpdateOriginEndpointRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateOriginEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/origin_endpoints/{id}", UpdateOriginEndpointRequest, headers, settings, cb)
 	else
@@ -2548,7 +2548,7 @@ function M.DeleteChannelAsync(DeleteChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE", "DeleteChannel")
 	if request_handler then
 		request_handler(settings.uri, "/channels/{id}", DeleteChannelRequest, headers, settings, cb)
 	else
@@ -2584,7 +2584,7 @@ function M.ListChannelsAsync(ListChannelsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListChannels")
 	if request_handler then
 		request_handler(settings.uri, "/channels", ListChannelsRequest, headers, settings, cb)
 	else
@@ -2620,7 +2620,7 @@ function M.CreateChannelAsync(CreateChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "CreateChannel")
 	if request_handler then
 		request_handler(settings.uri, "/channels", CreateChannelRequest, headers, settings, cb)
 	else
@@ -2656,7 +2656,7 @@ function M.UpdateChannelAsync(UpdateChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT", "UpdateChannel")
 	if request_handler then
 		request_handler(settings.uri, "/channels/{id}", UpdateChannelRequest, headers, settings, cb)
 	else
@@ -2692,7 +2692,7 @@ function M.ListOriginEndpointsAsync(ListOriginEndpointsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "ListOriginEndpoints")
 	if request_handler then
 		request_handler(settings.uri, "/origin_endpoints", ListOriginEndpointsRequest, headers, settings, cb)
 	else
@@ -2728,7 +2728,7 @@ function M.DescribeOriginEndpointAsync(DescribeOriginEndpointRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeOriginEndpoint")
 	if request_handler then
 		request_handler(settings.uri, "/origin_endpoints/{id}", DescribeOriginEndpointRequest, headers, settings, cb)
 	else
@@ -2764,7 +2764,7 @@ function M.DescribeChannelAsync(DescribeChannelRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET", "DescribeChannel")
 	if request_handler then
 		request_handler(settings.uri, "/channels/{id}", DescribeChannelRequest, headers, settings, cb)
 	else

@@ -476,7 +476,7 @@ function M.TranslateTextAsync(TranslateTextRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TranslateText")
 	if request_handler then
 		request_handler(settings.uri, "/", TranslateTextRequest, headers, settings, cb)
 	else

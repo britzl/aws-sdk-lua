@@ -11202,7 +11202,7 @@ function M.ExecuteProvisionedProductPlanAsync(ExecuteProvisionedProductPlanInput
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ExecuteProvisionedProductPlan")
 	if request_handler then
 		request_handler(settings.uri, "/", ExecuteProvisionedProductPlanInput, headers, settings, cb)
 	else
@@ -11238,7 +11238,7 @@ function M.CreateConstraintAsync(CreateConstraintInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateConstraint")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateConstraintInput, headers, settings, cb)
 	else
@@ -11274,7 +11274,7 @@ function M.DescribeProductAsAdminAsync(DescribeProductAsAdminInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeProductAsAdmin")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeProductAsAdminInput, headers, settings, cb)
 	else
@@ -11310,7 +11310,7 @@ function M.AssociateProductWithPortfolioAsync(AssociateProductWithPortfolioInput
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateProductWithPortfolio")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateProductWithPortfolioInput, headers, settings, cb)
 	else
@@ -11346,7 +11346,7 @@ function M.ListPrincipalsForPortfolioAsync(ListPrincipalsForPortfolioInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListPrincipalsForPortfolio")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPrincipalsForPortfolioInput, headers, settings, cb)
 	else
@@ -11382,7 +11382,7 @@ function M.UpdateTagOptionAsync(UpdateTagOptionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateTagOption")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateTagOptionInput, headers, settings, cb)
 	else
@@ -11418,7 +11418,7 @@ function M.DeleteTagOptionAsync(DeleteTagOptionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteTagOption")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTagOptionInput, headers, settings, cb)
 	else
@@ -11454,7 +11454,7 @@ function M.AssociatePrincipalWithPortfolioAsync(AssociatePrincipalWithPortfolioI
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociatePrincipalWithPortfolio")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociatePrincipalWithPortfolioInput, headers, settings, cb)
 	else
@@ -11490,7 +11490,7 @@ function M.ListRecordHistoryAsync(ListRecordHistoryInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListRecordHistory")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRecordHistoryInput, headers, settings, cb)
 	else
@@ -11526,7 +11526,7 @@ function M.UpdatePortfolioAsync(UpdatePortfolioInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdatePortfolio")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdatePortfolioInput, headers, settings, cb)
 	else
@@ -11562,7 +11562,7 @@ function M.UpdateProductAsync(UpdateProductInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateProduct")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateProductInput, headers, settings, cb)
 	else
@@ -11598,7 +11598,7 @@ function M.SearchProductsAsAdminAsync(SearchProductsAsAdminInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SearchProductsAsAdmin")
 	if request_handler then
 		request_handler(settings.uri, "/", SearchProductsAsAdminInput, headers, settings, cb)
 	else
@@ -11634,7 +11634,7 @@ function M.ListProvisionedProductPlansAsync(ListProvisionedProductPlansInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListProvisionedProductPlans")
 	if request_handler then
 		request_handler(settings.uri, "/", ListProvisionedProductPlansInput, headers, settings, cb)
 	else
@@ -11670,7 +11670,7 @@ function M.CreateProvisioningArtifactAsync(CreateProvisioningArtifactInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateProvisioningArtifact")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateProvisioningArtifactInput, headers, settings, cb)
 	else
@@ -11706,7 +11706,7 @@ function M.DescribePortfolioShareStatusAsync(DescribePortfolioShareStatusInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribePortfolioShareStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePortfolioShareStatusInput, headers, settings, cb)
 	else
@@ -11742,7 +11742,7 @@ function M.ListPortfoliosAsync(ListPortfoliosInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListPortfolios")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPortfoliosInput, headers, settings, cb)
 	else
@@ -11778,7 +11778,7 @@ function M.SearchProvisionedProductsAsync(SearchProvisionedProductsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SearchProvisionedProducts")
 	if request_handler then
 		request_handler(settings.uri, "/", SearchProvisionedProductsInput, headers, settings, cb)
 	else
@@ -11814,7 +11814,7 @@ function M.DescribeProductAsync(DescribeProductInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeProduct")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeProductInput, headers, settings, cb)
 	else
@@ -11850,7 +11850,7 @@ function M.CreatePortfolioShareAsync(CreatePortfolioShareInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreatePortfolioShare")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePortfolioShareInput, headers, settings, cb)
 	else
@@ -11886,7 +11886,7 @@ function M.ListTagOptionsAsync(ListTagOptionsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTagOptions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagOptionsInput, headers, settings, cb)
 	else
@@ -11922,7 +11922,7 @@ function M.DisassociateServiceActionFromProvisioningArtifactAsync(DisassociateSe
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateServiceActionFromProvisioningArtifact")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateServiceActionFromProvisioningArtifactInput, headers, settings, cb)
 	else
@@ -11958,7 +11958,7 @@ function M.BatchAssociateServiceActionWithProvisioningArtifactAsync(BatchAssocia
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchAssociateServiceActionWithProvisioningArtifact")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchAssociateServiceActionWithProvisioningArtifactInput, headers, settings, cb)
 	else
@@ -11994,7 +11994,7 @@ function M.ListLaunchPathsAsync(ListLaunchPathsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListLaunchPaths")
 	if request_handler then
 		request_handler(settings.uri, "/", ListLaunchPathsInput, headers, settings, cb)
 	else
@@ -12030,7 +12030,7 @@ function M.DisassociatePrincipalFromPortfolioAsync(DisassociatePrincipalFromPort
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociatePrincipalFromPortfolio")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociatePrincipalFromPortfolioInput, headers, settings, cb)
 	else
@@ -12066,7 +12066,7 @@ function M.ListServiceActionsForProvisioningArtifactAsync(ListServiceActionsForP
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListServiceActionsForProvisioningArtifact")
 	if request_handler then
 		request_handler(settings.uri, "/", ListServiceActionsForProvisioningArtifactInput, headers, settings, cb)
 	else
@@ -12102,7 +12102,7 @@ function M.CreateProductAsync(CreateProductInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateProduct")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateProductInput, headers, settings, cb)
 	else
@@ -12138,7 +12138,7 @@ function M.ListAcceptedPortfolioSharesAsync(ListAcceptedPortfolioSharesInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListAcceptedPortfolioShares")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAcceptedPortfolioSharesInput, headers, settings, cb)
 	else
@@ -12174,7 +12174,7 @@ function M.ListPortfoliosForProductAsync(ListPortfoliosForProductInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListPortfoliosForProduct")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPortfoliosForProductInput, headers, settings, cb)
 	else
@@ -12210,7 +12210,7 @@ function M.DescribeServiceActionAsync(DescribeServiceActionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeServiceAction")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeServiceActionInput, headers, settings, cb)
 	else
@@ -12246,7 +12246,7 @@ function M.UpdateConstraintAsync(UpdateConstraintInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateConstraint")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateConstraintInput, headers, settings, cb)
 	else
@@ -12282,7 +12282,7 @@ function M.AssociateServiceActionWithProvisioningArtifactAsync(AssociateServiceA
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateServiceActionWithProvisioningArtifact")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateServiceActionWithProvisioningArtifactInput, headers, settings, cb)
 	else
@@ -12318,7 +12318,7 @@ function M.DeleteProvisionedProductPlanAsync(DeleteProvisionedProductPlanInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteProvisionedProductPlan")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteProvisionedProductPlanInput, headers, settings, cb)
 	else
@@ -12354,7 +12354,7 @@ function M.CreateServiceActionAsync(CreateServiceActionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateServiceAction")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateServiceActionInput, headers, settings, cb)
 	else
@@ -12390,7 +12390,7 @@ function M.ListProvisioningArtifactsAsync(ListProvisioningArtifactsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListProvisioningArtifacts")
 	if request_handler then
 		request_handler(settings.uri, "/", ListProvisioningArtifactsInput, headers, settings, cb)
 	else
@@ -12426,7 +12426,7 @@ function M.ListProvisioningArtifactsForServiceActionAsync(ListProvisioningArtifa
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListProvisioningArtifactsForServiceAction")
 	if request_handler then
 		request_handler(settings.uri, "/", ListProvisioningArtifactsForServiceActionInput, headers, settings, cb)
 	else
@@ -12462,7 +12462,7 @@ function M.RejectPortfolioShareAsync(RejectPortfolioShareInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RejectPortfolioShare")
 	if request_handler then
 		request_handler(settings.uri, "/", RejectPortfolioShareInput, headers, settings, cb)
 	else
@@ -12498,7 +12498,7 @@ function M.DisassociateProductFromPortfolioAsync(DisassociateProductFromPortfoli
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateProductFromPortfolio")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateProductFromPortfolioInput, headers, settings, cb)
 	else
@@ -12534,7 +12534,7 @@ function M.AcceptPortfolioShareAsync(AcceptPortfolioShareInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AcceptPortfolioShare")
 	if request_handler then
 		request_handler(settings.uri, "/", AcceptPortfolioShareInput, headers, settings, cb)
 	else
@@ -12570,7 +12570,7 @@ function M.DescribeProvisionedProductAsync(DescribeProvisionedProductInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeProvisionedProduct")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeProvisionedProductInput, headers, settings, cb)
 	else
@@ -12606,7 +12606,7 @@ function M.ListServiceActionsAsync(ListServiceActionsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListServiceActions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListServiceActionsInput, headers, settings, cb)
 	else
@@ -12642,7 +12642,7 @@ function M.DeleteServiceActionAsync(DeleteServiceActionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteServiceAction")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteServiceActionInput, headers, settings, cb)
 	else
@@ -12678,7 +12678,7 @@ function M.DisableAWSOrganizationsAccessAsync(DisableAWSOrganizationsAccessInput
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisableAWSOrganizationsAccess")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableAWSOrganizationsAccessInput, headers, settings, cb)
 	else
@@ -12714,7 +12714,7 @@ function M.DeleteProvisioningArtifactAsync(DeleteProvisioningArtifactInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteProvisioningArtifact")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteProvisioningArtifactInput, headers, settings, cb)
 	else
@@ -12750,7 +12750,7 @@ function M.UpdateProvisioningArtifactAsync(UpdateProvisioningArtifactInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateProvisioningArtifact")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateProvisioningArtifactInput, headers, settings, cb)
 	else
@@ -12786,7 +12786,7 @@ function M.DescribeConstraintAsync(DescribeConstraintInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeConstraint")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConstraintInput, headers, settings, cb)
 	else
@@ -12822,7 +12822,7 @@ function M.BatchDisassociateServiceActionFromProvisioningArtifactAsync(BatchDisa
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "BatchDisassociateServiceActionFromProvisioningArtifact")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchDisassociateServiceActionFromProvisioningArtifactInput, headers, settings, cb)
 	else
@@ -12858,7 +12858,7 @@ function M.DescribeProvisionedProductPlanAsync(DescribeProvisionedProductPlanInp
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeProvisionedProductPlan")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeProvisionedProductPlanInput, headers, settings, cb)
 	else
@@ -12894,7 +12894,7 @@ function M.DeletePortfolioAsync(DeletePortfolioInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeletePortfolio")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePortfolioInput, headers, settings, cb)
 	else
@@ -12930,7 +12930,7 @@ function M.DescribeRecordAsync(DescribeRecordInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeRecord")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRecordInput, headers, settings, cb)
 	else
@@ -12966,7 +12966,7 @@ function M.AssociateTagOptionWithResourceAsync(AssociateTagOptionWithResourceInp
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AssociateTagOptionWithResource")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateTagOptionWithResourceInput, headers, settings, cb)
 	else
@@ -13002,7 +13002,7 @@ function M.DescribeCopyProductStatusAsync(DescribeCopyProductStatusInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeCopyProductStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCopyProductStatusInput, headers, settings, cb)
 	else
@@ -13038,7 +13038,7 @@ function M.DeleteProductAsync(DeleteProductInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteProduct")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteProductInput, headers, settings, cb)
 	else
@@ -13074,7 +13074,7 @@ function M.EnableAWSOrganizationsAccessAsync(EnableAWSOrganizationsAccessInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "EnableAWSOrganizationsAccess")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableAWSOrganizationsAccessInput, headers, settings, cb)
 	else
@@ -13110,7 +13110,7 @@ function M.DescribeProductViewAsync(DescribeProductViewInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeProductView")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeProductViewInput, headers, settings, cb)
 	else
@@ -13146,7 +13146,7 @@ function M.TerminateProvisionedProductAsync(TerminateProvisionedProductInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "TerminateProvisionedProduct")
 	if request_handler then
 		request_handler(settings.uri, "/", TerminateProvisionedProductInput, headers, settings, cb)
 	else
@@ -13182,7 +13182,7 @@ function M.DescribePortfolioAsync(DescribePortfolioInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribePortfolio")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePortfolioInput, headers, settings, cb)
 	else
@@ -13218,7 +13218,7 @@ function M.ListOrganizationPortfolioAccessAsync(ListOrganizationPortfolioAccessI
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListOrganizationPortfolioAccess")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOrganizationPortfolioAccessInput, headers, settings, cb)
 	else
@@ -13254,7 +13254,7 @@ function M.DeletePortfolioShareAsync(DeletePortfolioShareInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeletePortfolioShare")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePortfolioShareInput, headers, settings, cb)
 	else
@@ -13290,7 +13290,7 @@ function M.GetAWSOrganizationsAccessStatusAsync(GetAWSOrganizationsAccessStatusI
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetAWSOrganizationsAccessStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAWSOrganizationsAccessStatusInput, headers, settings, cb)
 	else
@@ -13326,7 +13326,7 @@ function M.UpdateServiceActionAsync(UpdateServiceActionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateServiceAction")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateServiceActionInput, headers, settings, cb)
 	else
@@ -13362,7 +13362,7 @@ function M.CreateProvisionedProductPlanAsync(CreateProvisionedProductPlanInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateProvisionedProductPlan")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateProvisionedProductPlanInput, headers, settings, cb)
 	else
@@ -13398,7 +13398,7 @@ function M.ScanProvisionedProductsAsync(ScanProvisionedProductsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ScanProvisionedProducts")
 	if request_handler then
 		request_handler(settings.uri, "/", ScanProvisionedProductsInput, headers, settings, cb)
 	else
@@ -13434,7 +13434,7 @@ function M.CreateTagOptionAsync(CreateTagOptionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateTagOption")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTagOptionInput, headers, settings, cb)
 	else
@@ -13470,7 +13470,7 @@ function M.UpdateProvisionedProductAsync(UpdateProvisionedProductInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateProvisionedProduct")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateProvisionedProductInput, headers, settings, cb)
 	else
@@ -13506,7 +13506,7 @@ function M.ListResourcesForTagOptionAsync(ListResourcesForTagOptionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListResourcesForTagOption")
 	if request_handler then
 		request_handler(settings.uri, "/", ListResourcesForTagOptionInput, headers, settings, cb)
 	else
@@ -13542,7 +13542,7 @@ function M.DescribeProvisioningArtifactAsync(DescribeProvisioningArtifactInput, 
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeProvisioningArtifact")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeProvisioningArtifactInput, headers, settings, cb)
 	else
@@ -13578,7 +13578,7 @@ function M.ListPortfolioAccessAsync(ListPortfolioAccessInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListPortfolioAccess")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPortfolioAccessInput, headers, settings, cb)
 	else
@@ -13614,7 +13614,7 @@ function M.ListConstraintsForPortfolioAsync(ListConstraintsForPortfolioInput, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListConstraintsForPortfolio")
 	if request_handler then
 		request_handler(settings.uri, "/", ListConstraintsForPortfolioInput, headers, settings, cb)
 	else
@@ -13650,7 +13650,7 @@ function M.DisassociateTagOptionFromResourceAsync(DisassociateTagOptionFromResou
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisassociateTagOptionFromResource")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateTagOptionFromResourceInput, headers, settings, cb)
 	else
@@ -13686,7 +13686,7 @@ function M.ExecuteProvisionedProductServiceActionAsync(ExecuteProvisionedProduct
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ExecuteProvisionedProductServiceAction")
 	if request_handler then
 		request_handler(settings.uri, "/", ExecuteProvisionedProductServiceActionInput, headers, settings, cb)
 	else
@@ -13722,7 +13722,7 @@ function M.SearchProductsAsync(SearchProductsInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "SearchProducts")
 	if request_handler then
 		request_handler(settings.uri, "/", SearchProductsInput, headers, settings, cb)
 	else
@@ -13758,7 +13758,7 @@ function M.CopyProductAsync(CopyProductInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CopyProduct")
 	if request_handler then
 		request_handler(settings.uri, "/", CopyProductInput, headers, settings, cb)
 	else
@@ -13794,7 +13794,7 @@ function M.DeleteConstraintAsync(DeleteConstraintInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteConstraint")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConstraintInput, headers, settings, cb)
 	else
@@ -13830,7 +13830,7 @@ function M.ProvisionProductAsync(ProvisionProductInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ProvisionProduct")
 	if request_handler then
 		request_handler(settings.uri, "/", ProvisionProductInput, headers, settings, cb)
 	else
@@ -13866,7 +13866,7 @@ function M.CreatePortfolioAsync(CreatePortfolioInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreatePortfolio")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePortfolioInput, headers, settings, cb)
 	else
@@ -13902,7 +13902,7 @@ function M.DescribeProvisioningParametersAsync(DescribeProvisioningParametersInp
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeProvisioningParameters")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeProvisioningParametersInput, headers, settings, cb)
 	else
@@ -13938,7 +13938,7 @@ function M.DescribeTagOptionAsync(DescribeTagOptionInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTagOption")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagOptionInput, headers, settings, cb)
 	else

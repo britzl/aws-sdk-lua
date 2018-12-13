@@ -3371,7 +3371,7 @@ function M.CreateServiceAsync(CreateServiceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateService")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateServiceRequest, headers, settings, cb)
 	else
@@ -3407,7 +3407,7 @@ function M.DeregisterInstanceAsync(DeregisterInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeregisterInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterInstanceRequest, headers, settings, cb)
 	else
@@ -3443,7 +3443,7 @@ function M.ListServicesAsync(ListServicesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListServices")
 	if request_handler then
 		request_handler(settings.uri, "/", ListServicesRequest, headers, settings, cb)
 	else
@@ -3479,7 +3479,7 @@ function M.GetInstanceAsync(GetInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstanceRequest, headers, settings, cb)
 	else
@@ -3515,7 +3515,7 @@ function M.CreatePublicDnsNamespaceAsync(CreatePublicDnsNamespaceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreatePublicDnsNamespace")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePublicDnsNamespaceRequest, headers, settings, cb)
 	else
@@ -3551,7 +3551,7 @@ function M.ListNamespacesAsync(ListNamespacesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListNamespaces")
 	if request_handler then
 		request_handler(settings.uri, "/", ListNamespacesRequest, headers, settings, cb)
 	else
@@ -3587,7 +3587,7 @@ function M.GetOperationAsync(GetOperationRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetOperation")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOperationRequest, headers, settings, cb)
 	else
@@ -3623,7 +3623,7 @@ function M.GetNamespaceAsync(GetNamespaceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetNamespace")
 	if request_handler then
 		request_handler(settings.uri, "/", GetNamespaceRequest, headers, settings, cb)
 	else
@@ -3659,7 +3659,7 @@ function M.GetServiceAsync(GetServiceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetService")
 	if request_handler then
 		request_handler(settings.uri, "/", GetServiceRequest, headers, settings, cb)
 	else
@@ -3695,7 +3695,7 @@ function M.CreatePrivateDnsNamespaceAsync(CreatePrivateDnsNamespaceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreatePrivateDnsNamespace")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePrivateDnsNamespaceRequest, headers, settings, cb)
 	else
@@ -3731,7 +3731,7 @@ function M.UpdateInstanceCustomHealthStatusAsync(UpdateInstanceCustomHealthStatu
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateInstanceCustomHealthStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateInstanceCustomHealthStatusRequest, headers, settings, cb)
 	else
@@ -3767,7 +3767,7 @@ function M.GetInstancesHealthStatusAsync(GetInstancesHealthStatusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetInstancesHealthStatus")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstancesHealthStatusRequest, headers, settings, cb)
 	else
@@ -3803,7 +3803,7 @@ function M.ListInstancesAsync(ListInstancesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListInstances")
 	if request_handler then
 		request_handler(settings.uri, "/", ListInstancesRequest, headers, settings, cb)
 	else
@@ -3839,7 +3839,7 @@ function M.DeleteServiceAsync(DeleteServiceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteService")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteServiceRequest, headers, settings, cb)
 	else
@@ -3875,7 +3875,7 @@ function M.UpdateServiceAsync(UpdateServiceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateService")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateServiceRequest, headers, settings, cb)
 	else
@@ -3911,7 +3911,7 @@ function M.RegisterInstanceAsync(RegisterInstanceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterInstance")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterInstanceRequest, headers, settings, cb)
 	else
@@ -3947,7 +3947,7 @@ function M.ListOperationsAsync(ListOperationsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListOperations")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOperationsRequest, headers, settings, cb)
 	else
@@ -3983,7 +3983,7 @@ function M.DeleteNamespaceAsync(DeleteNamespaceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteNamespace")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNamespaceRequest, headers, settings, cb)
 	else

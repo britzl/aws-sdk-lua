@@ -6849,7 +6849,7 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RemoveTagsFromResource")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromResourceRequest, headers, settings, cb)
 	else
@@ -6885,7 +6885,7 @@ function M.DisableRadiusAsync(DisableRadiusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisableRadius")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableRadiusRequest, headers, settings, cb)
 	else
@@ -6921,7 +6921,7 @@ function M.RejectSharedDirectoryAsync(RejectSharedDirectoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RejectSharedDirectory")
 	if request_handler then
 		request_handler(settings.uri, "/", RejectSharedDirectoryRequest, headers, settings, cb)
 	else
@@ -6957,7 +6957,7 @@ function M.AcceptSharedDirectoryAsync(AcceptSharedDirectoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AcceptSharedDirectory")
 	if request_handler then
 		request_handler(settings.uri, "/", AcceptSharedDirectoryRequest, headers, settings, cb)
 	else
@@ -6993,7 +6993,7 @@ function M.CreateComputerAsync(CreateComputerRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateComputer")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateComputerRequest, headers, settings, cb)
 	else
@@ -7029,7 +7029,7 @@ function M.EnableRadiusAsync(EnableRadiusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "EnableRadius")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableRadiusRequest, headers, settings, cb)
 	else
@@ -7065,7 +7065,7 @@ function M.ListLogSubscriptionsAsync(ListLogSubscriptionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListLogSubscriptions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListLogSubscriptionsRequest, headers, settings, cb)
 	else
@@ -7101,7 +7101,7 @@ function M.DeleteConditionalForwarderAsync(DeleteConditionalForwarderRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteConditionalForwarder")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConditionalForwarderRequest, headers, settings, cb)
 	else
@@ -7137,7 +7137,7 @@ function M.CreateDirectoryAsync(CreateDirectoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateDirectory")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDirectoryRequest, headers, settings, cb)
 	else
@@ -7173,7 +7173,7 @@ function M.ResetUserPasswordAsync(ResetUserPasswordRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ResetUserPassword")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetUserPasswordRequest, headers, settings, cb)
 	else
@@ -7209,7 +7209,7 @@ function M.UpdateTrustAsync(UpdateTrustRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateTrust")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateTrustRequest, headers, settings, cb)
 	else
@@ -7245,7 +7245,7 @@ function M.DescribeSnapshotsAsync(DescribeSnapshotsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeSnapshots")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSnapshotsRequest, headers, settings, cb)
 	else
@@ -7281,7 +7281,7 @@ function M.VerifyTrustAsync(VerifyTrustRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "VerifyTrust")
 	if request_handler then
 		request_handler(settings.uri, "/", VerifyTrustRequest, headers, settings, cb)
 	else
@@ -7317,7 +7317,7 @@ function M.DeleteSnapshotAsync(DeleteSnapshotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSnapshotRequest, headers, settings, cb)
 	else
@@ -7353,7 +7353,7 @@ function M.UpdateRadiusAsync(UpdateRadiusRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateRadius")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRadiusRequest, headers, settings, cb)
 	else
@@ -7389,7 +7389,7 @@ function M.DescribeDomainControllersAsync(DescribeDomainControllersRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDomainControllers")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDomainControllersRequest, headers, settings, cb)
 	else
@@ -7425,7 +7425,7 @@ function M.AddTagsToResourceAsync(AddTagsToResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddTagsToResource")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToResourceRequest, headers, settings, cb)
 	else
@@ -7461,7 +7461,7 @@ function M.DescribeConditionalForwardersAsync(DescribeConditionalForwardersReque
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeConditionalForwarders")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConditionalForwardersRequest, headers, settings, cb)
 	else
@@ -7497,7 +7497,7 @@ function M.DescribeEventTopicsAsync(DescribeEventTopicsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeEventTopics")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventTopicsRequest, headers, settings, cb)
 	else
@@ -7533,7 +7533,7 @@ function M.DeleteLogSubscriptionAsync(DeleteLogSubscriptionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteLogSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLogSubscriptionRequest, headers, settings, cb)
 	else
@@ -7569,7 +7569,7 @@ function M.EnableSsoAsync(EnableSsoRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "EnableSso")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableSsoRequest, headers, settings, cb)
 	else
@@ -7605,7 +7605,7 @@ function M.ListIpRoutesAsync(ListIpRoutesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListIpRoutes")
 	if request_handler then
 		request_handler(settings.uri, "/", ListIpRoutesRequest, headers, settings, cb)
 	else
@@ -7641,7 +7641,7 @@ function M.RemoveIpRoutesAsync(RemoveIpRoutesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RemoveIpRoutes")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveIpRoutesRequest, headers, settings, cb)
 	else
@@ -7677,7 +7677,7 @@ function M.CreateAliasAsync(CreateAliasRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateAlias")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAliasRequest, headers, settings, cb)
 	else
@@ -7713,7 +7713,7 @@ function M.ConnectDirectoryAsync(ConnectDirectoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ConnectDirectory")
 	if request_handler then
 		request_handler(settings.uri, "/", ConnectDirectoryRequest, headers, settings, cb)
 	else
@@ -7749,7 +7749,7 @@ function M.DeleteDirectoryAsync(DeleteDirectoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteDirectory")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDirectoryRequest, headers, settings, cb)
 	else
@@ -7785,7 +7785,7 @@ function M.AddIpRoutesAsync(AddIpRoutesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "AddIpRoutes")
 	if request_handler then
 		request_handler(settings.uri, "/", AddIpRoutesRequest, headers, settings, cb)
 	else
@@ -7821,7 +7821,7 @@ function M.CreateLogSubscriptionAsync(CreateLogSubscriptionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateLogSubscription")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLogSubscriptionRequest, headers, settings, cb)
 	else
@@ -7857,7 +7857,7 @@ function M.CancelSchemaExtensionAsync(CancelSchemaExtensionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CancelSchemaExtension")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelSchemaExtensionRequest, headers, settings, cb)
 	else
@@ -7893,7 +7893,7 @@ function M.CreateConditionalForwarderAsync(CreateConditionalForwarderRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateConditionalForwarder")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateConditionalForwarderRequest, headers, settings, cb)
 	else
@@ -7929,7 +7929,7 @@ function M.RestoreFromSnapshotAsync(RestoreFromSnapshotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RestoreFromSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreFromSnapshotRequest, headers, settings, cb)
 	else
@@ -7965,7 +7965,7 @@ function M.DescribeSharedDirectoriesAsync(DescribeSharedDirectoriesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeSharedDirectories")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSharedDirectoriesRequest, headers, settings, cb)
 	else
@@ -8001,7 +8001,7 @@ function M.ListSchemaExtensionsAsync(ListSchemaExtensionsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListSchemaExtensions")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSchemaExtensionsRequest, headers, settings, cb)
 	else
@@ -8037,7 +8037,7 @@ function M.DescribeTrustsAsync(DescribeTrustsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeTrusts")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTrustsRequest, headers, settings, cb)
 	else
@@ -8073,7 +8073,7 @@ function M.UnshareDirectoryAsync(UnshareDirectoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UnshareDirectory")
 	if request_handler then
 		request_handler(settings.uri, "/", UnshareDirectoryRequest, headers, settings, cb)
 	else
@@ -8109,7 +8109,7 @@ function M.DeregisterEventTopicAsync(DeregisterEventTopicRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeregisterEventTopic")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterEventTopicRequest, headers, settings, cb)
 	else
@@ -8145,7 +8145,7 @@ function M.UpdateConditionalForwarderAsync(UpdateConditionalForwarderRequest, cb
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateConditionalForwarder")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateConditionalForwarderRequest, headers, settings, cb)
 	else
@@ -8181,7 +8181,7 @@ function M.CreateTrustAsync(CreateTrustRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateTrust")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTrustRequest, headers, settings, cb)
 	else
@@ -8217,7 +8217,7 @@ function M.GetDirectoryLimitsAsync(GetDirectoryLimitsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetDirectoryLimits")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDirectoryLimitsRequest, headers, settings, cb)
 	else
@@ -8253,7 +8253,7 @@ function M.CreateMicrosoftADAsync(CreateMicrosoftADRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateMicrosoftAD")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateMicrosoftADRequest, headers, settings, cb)
 	else
@@ -8289,7 +8289,7 @@ function M.RegisterEventTopicAsync(RegisterEventTopicRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "RegisterEventTopic")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterEventTopicRequest, headers, settings, cb)
 	else
@@ -8325,7 +8325,7 @@ function M.GetSnapshotLimitsAsync(GetSnapshotLimitsRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "GetSnapshotLimits")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSnapshotLimitsRequest, headers, settings, cb)
 	else
@@ -8361,7 +8361,7 @@ function M.DeleteTrustAsync(DeleteTrustRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DeleteTrust")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTrustRequest, headers, settings, cb)
 	else
@@ -8397,7 +8397,7 @@ function M.ShareDirectoryAsync(ShareDirectoryRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ShareDirectory")
 	if request_handler then
 		request_handler(settings.uri, "/", ShareDirectoryRequest, headers, settings, cb)
 	else
@@ -8433,7 +8433,7 @@ function M.UpdateNumberOfDomainControllersAsync(UpdateNumberOfDomainControllersR
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "UpdateNumberOfDomainControllers")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateNumberOfDomainControllersRequest, headers, settings, cb)
 	else
@@ -8469,7 +8469,7 @@ function M.DescribeDirectoriesAsync(DescribeDirectoriesRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DescribeDirectories")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDirectoriesRequest, headers, settings, cb)
 	else
@@ -8505,7 +8505,7 @@ function M.StartSchemaExtensionAsync(StartSchemaExtensionRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "StartSchemaExtension")
 	if request_handler then
 		request_handler(settings.uri, "/", StartSchemaExtensionRequest, headers, settings, cb)
 	else
@@ -8541,7 +8541,7 @@ function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "ListTagsForResource")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForResourceRequest, headers, settings, cb)
 	else
@@ -8577,7 +8577,7 @@ function M.CreateSnapshotAsync(CreateSnapshotRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "CreateSnapshot")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSnapshotRequest, headers, settings, cb)
 	else
@@ -8613,7 +8613,7 @@ function M.DisableSsoAsync(DisableSsoRequest, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST", "DisableSso")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableSsoRequest, headers, settings, cb)
 	else

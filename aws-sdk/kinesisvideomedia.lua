@@ -541,7 +541,7 @@ function M.GetMediaAsync(GetMediaInput, cb)
 		headers[header] = value
 	end
 
-	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST", "GetMedia")
 	if request_handler then
 		request_handler(settings.uri, "/getMedia", GetMediaInput, headers, settings, cb)
 	else
