@@ -12947,6 +12947,7 @@ function M.init(config)
 	assert(config, "You must provide a config table")
 	assert(config.region, "You must provide a region in the config table")
 
+	settings.api_version = M.metadata.api_version
 	settings.service = M.metadata.endpoint_prefix
 	settings.protocol = M.metadata.protocol
 	settings.region = config.region

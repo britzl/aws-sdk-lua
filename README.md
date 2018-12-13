@@ -85,6 +85,9 @@ This SDK is distributed under the
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0),
 see LICENSE.txt for more information.
 
+## Official documentation
+The [AWS Documentation page](https://docs.aws.amazon.com/index.html) is a great starting point for exploring all of the AWS APIs.
+
 ## Third-party code used
 The SDK uses code from the following projects:
 
