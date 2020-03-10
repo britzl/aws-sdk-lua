@@ -13521,7 +13521,7 @@ end
 
 function asserts.AssertCopySourceSSECustomerKey(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected CopySourceSSECustomerKey to be of type 'string'")
+	assert(type(blob) == "string", "Expected CopySourceSSECustomerKey to be of type 'string'")
 end
 
 function M.CopySourceSSECustomerKey(blob)
@@ -13531,7 +13531,7 @@ end
 
 function asserts.AssertBody(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected Body to be of type 'string'")
+	assert(type(blob) == "string", "Expected Body to be of type 'string'")
 end
 
 function M.Body(blob)
@@ -13541,7 +13541,7 @@ end
 
 function asserts.AssertSSECustomerKey(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected SSECustomerKey to be of type 'string'")
+	assert(type(blob) == "string", "Expected SSECustomerKey to be of type 'string'")
 end
 
 function M.SSECustomerKey(blob)
