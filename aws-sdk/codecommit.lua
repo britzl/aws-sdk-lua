@@ -5126,7 +5126,7 @@ end
 
 function asserts.Assertblob(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected blob to be of type 'string'")
+	assert(type(blob) == "string", "Expected blob to be of type 'string'")
 end
 
 function M.blob(blob)
@@ -5136,7 +5136,7 @@ end
 
 function asserts.AssertFileContent(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected FileContent to be of type 'string'")
+	assert(type(blob) == "string", "Expected FileContent to be of type 'string'")
 	assert(#blob <= 6291456, "Expected blob to be max 6291456")
 end
 

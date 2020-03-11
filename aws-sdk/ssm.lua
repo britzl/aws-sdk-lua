@@ -19507,7 +19507,7 @@ end
 
 function asserts.AssertMaintenanceWindowLambdaPayload(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected MaintenanceWindowLambdaPayload to be of type 'string'")
+	assert(type(blob) == "string", "Expected MaintenanceWindowLambdaPayload to be of type 'string'")
 	assert(#blob <= 4096, "Expected blob to be max 4096")
 end
 

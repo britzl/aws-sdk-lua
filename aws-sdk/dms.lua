@@ -5555,7 +5555,7 @@ end
 
 function asserts.AssertCertificateWallet(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected CertificateWallet to be of type 'string'")
+	assert(type(blob) == "string", "Expected CertificateWallet to be of type 'string'")
 end
 
 function M.CertificateWallet(blob)

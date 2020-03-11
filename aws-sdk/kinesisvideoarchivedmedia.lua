@@ -976,7 +976,7 @@ end
 
 function asserts.AssertPayload(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected Payload to be of type 'string'")
+	assert(type(blob) == "string", "Expected Payload to be of type 'string'")
 end
 
 function M.Payload(blob)

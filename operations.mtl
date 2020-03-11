@@ -177,7 +177,7 @@ end
 {{#shapes.blob}}
 function asserts.Assert{{name}}(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected {{name}} to be of type 'string'"){{#max}}
+	assert(type(blob) == "string", "Expected {{name}} to be of type 'string'"){{#max}}
 	assert(#blob <= {{max}}, "Expected blob to be max {{max}}"){{/max}}{{#min}}
 	assert(#blob >= {{min}}, "Expected blob to be max {{min}}"){{/min}}
 end

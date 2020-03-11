@@ -3729,7 +3729,7 @@ end
 
 function asserts.AssertLayerPartBlob(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected LayerPartBlob to be of type 'string'")
+	assert(type(blob) == "string", "Expected LayerPartBlob to be of type 'string'")
 end
 
 function M.LayerPartBlob(blob)

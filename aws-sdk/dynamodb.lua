@@ -6927,7 +6927,7 @@ end
 
 function asserts.AssertBinaryAttributeValue(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected BinaryAttributeValue to be of type 'string'")
+	assert(type(blob) == "string", "Expected BinaryAttributeValue to be of type 'string'")
 end
 
 function M.BinaryAttributeValue(blob)

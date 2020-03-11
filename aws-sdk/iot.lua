@@ -20119,7 +20119,7 @@ end
 
 function asserts.AssertSignature(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected Signature to be of type 'string'")
+	assert(type(blob) == "string", "Expected Signature to be of type 'string'")
 end
 
 function M.Signature(blob)

@@ -4075,7 +4075,7 @@ end
 
 function asserts.AssertStream(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected Stream to be of type 'string'")
+	assert(type(blob) == "string", "Expected Stream to be of type 'string'")
 end
 
 function M.Stream(blob)

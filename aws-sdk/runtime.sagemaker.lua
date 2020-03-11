@@ -167,7 +167,7 @@ end
 
 function asserts.AssertBodyBlob(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected BodyBlob to be of type 'string'")
+	assert(type(blob) == "string", "Expected BodyBlob to be of type 'string'")
 	assert(#blob <= 5242880, "Expected blob to be max 5242880")
 end
 

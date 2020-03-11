@@ -12514,7 +12514,7 @@ end
 
 function asserts.AssertReportContentType(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected ReportContentType to be of type 'string'")
+	assert(type(blob) == "string", "Expected ReportContentType to be of type 'string'")
 end
 
 function M.ReportContentType(blob)
@@ -12524,7 +12524,7 @@ end
 
 function asserts.AssertBootstrapDatum(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected BootstrapDatum to be of type 'string'")
+	assert(type(blob) == "string", "Expected BootstrapDatum to be of type 'string'")
 end
 
 function M.BootstrapDatum(blob)

@@ -3855,7 +3855,7 @@ end
 
 function asserts.AssertCiphertextType(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected CiphertextType to be of type 'string'")
+	assert(type(blob) == "string", "Expected CiphertextType to be of type 'string'")
 	assert(#blob <= 6144, "Expected blob to be max 6144")
 	assert(#blob >= 1, "Expected blob to be max 1")
 end
@@ -3867,7 +3867,7 @@ end
 
 function asserts.AssertPlaintextType(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected PlaintextType to be of type 'string'")
+	assert(type(blob) == "string", "Expected PlaintextType to be of type 'string'")
 	assert(#blob <= 4096, "Expected blob to be max 4096")
 	assert(#blob >= 1, "Expected blob to be max 1")
 end

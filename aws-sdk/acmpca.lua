@@ -2543,7 +2543,7 @@ end
 
 function asserts.AssertCertificateBodyBlob(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected CertificateBodyBlob to be of type 'string'")
+	assert(type(blob) == "string", "Expected CertificateBodyBlob to be of type 'string'")
 	assert(#blob <= 32768, "Expected blob to be max 32768")
 	assert(#blob >= 1, "Expected blob to be max 1")
 end
@@ -2555,7 +2555,7 @@ end
 
 function asserts.AssertCertificateChainBlob(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected CertificateChainBlob to be of type 'string'")
+	assert(type(blob) == "string", "Expected CertificateChainBlob to be of type 'string'")
 	assert(#blob <= 2097152, "Expected blob to be max 2097152")
 end
 
@@ -2566,7 +2566,7 @@ end
 
 function asserts.AssertCsrBlob(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected CsrBlob to be of type 'string'")
+	assert(type(blob) == "string", "Expected CsrBlob to be of type 'string'")
 	assert(#blob <= 32768, "Expected blob to be max 32768")
 	assert(#blob >= 1, "Expected blob to be max 1")
 end

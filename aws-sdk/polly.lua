@@ -1395,7 +1395,7 @@ end
 
 function asserts.AssertAudioStream(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected AudioStream to be of type 'string'")
+	assert(type(blob) == "string", "Expected AudioStream to be of type 'string'")
 end
 
 function M.AudioStream(blob)
