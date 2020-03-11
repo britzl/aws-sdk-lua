@@ -1,9 +1,7 @@
 [![Build Status](https://travis-ci.org/britzl/aws-sdk-lua.svg?branch=master)](https://travis-ci.org/britzl/aws-sdk-lua)
 
 # AWS SDK for Lua (beta)
-Unofficial AWS SDK for Lua, available for LuaJIT and Lua 5.1 and later.
-
-The SDK is still in development and should not be considered production ready.
+Unofficial AWS SDK for Lua, available for LuaJIT and Lua 5.1 and later. The SDK has been used in production, specifically GameLift, but several other services are untested.
 
 For release notes, see the [CHANGELOG](CHANGELOG.md).
 
@@ -25,11 +23,13 @@ Using the AWS SDK for Lua is a simple process requiring only a few steps of conf
 
 	-- Configure AWS to work with Defold (specifically to use http.request() provided by the Defold engine to make HTTP calls)
 	local config = require "aws-skd.core.config"
-	config.use_defold()		-- or config.use_corona() or config.use_luasocket()
+	config.use_defold()
+	-- config.use_corona()
+	-- config.use_luasocket()
 
-	-- Set access key and secret access key from game.project
+	-- Set access key and secret access key (read this from config file or os.env)
 	local credentials = require "aws-sdk.core.credentials"
-	credentials.set(sys.get_config("aws.access_key"), sys.get_config("aws.secret_access_key"))
+	credentials.set(access_key, secret_access_key)
 
 	-- Initialise the AWS service to use, in this case GameLift
 	local gamelift = require "aws-sdk.gamelift"
@@ -47,10 +47,6 @@ Using the AWS SDK for Lua is a simple process requiring only a few steps of conf
 			print(response.GameSession.GameSessionId)
 		end
 	end)
-
-### Known Limitations
-GameLift is the only service that has been properly tested.
-
 
 ## Generating code
 The SDK generates the code for all AWS services, their input and output including input validation. The code generator uses official AWS SDK API definitions from the [AWS SDK for Javascript project](https://github.com/aws/aws-sdk-js/tree/master/apis). The code generator uses a [Mustache template](https://mustache.github.io/) and a small Python script to parse the API definitions and outputs one Lua file per AWS service. You can run the generator yourself from a terminal:
