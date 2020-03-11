@@ -7,16 +7,22 @@ local query_request_handler = require "aws-sdk.core.request_handlers.query"
 local M = {}
 
 function M.from_protocol_and_method(protocol, method)
+	local handler
 	if protocol == "json" then
-		return json_request_handler[method:lower()]
+		handler = json_request_handler[method:lower()]
 	elseif protocol == "rest-json" then
-		return rest_json_request_handler[method:lower()]
+		handler = rest_json_request_handler[method:lower()]
 	elseif protocol == "rest-xml" then
-		return rest_xml_request_handler[method:lower()]
+		handler = rest_xml_request_handler[method:lower()]
 	elseif protocol == "query" then
-		return query_request_handler[method:lower()]
+		handler = query_request_handler[method:lower()]
 	else
 		return nil, "Unknown protocol " .. protocol
+	end
+	if handler then
+		return handler
+	else
+		return nil, method .. " not yet implemented for " .. protocol
 	end
 end
 
