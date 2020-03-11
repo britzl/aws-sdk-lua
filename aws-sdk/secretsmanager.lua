@@ -2171,7 +2171,7 @@ end
 
 function asserts.AssertSecretBinaryType(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected SecretBinaryType to be of type 'string'")
+	assert(type(blob) == "string", "Expected SecretBinaryType to be of type 'string'")
 	assert(#blob <= 4096, "Expected blob to be max 4096")
 end
 

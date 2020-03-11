@@ -9133,7 +9133,7 @@ end
 
 function asserts.AssertByteMatchTargetString(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected ByteMatchTargetString to be of type 'string'")
+	assert(type(blob) == "string", "Expected ByteMatchTargetString to be of type 'string'")
 end
 
 function M.ByteMatchTargetString(blob)

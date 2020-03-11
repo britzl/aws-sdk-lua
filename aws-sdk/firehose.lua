@@ -4216,7 +4216,7 @@ end
 
 function asserts.AssertData(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected Data to be of type 'string'")
+	assert(type(blob) == "string", "Expected Data to be of type 'string'")
 	assert(#blob <= 1024000, "Expected blob to be max 1024000")
 end
 

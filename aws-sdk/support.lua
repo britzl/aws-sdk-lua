@@ -2671,7 +2671,7 @@ end
 
 function asserts.AssertData(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected Data to be of type 'string'")
+	assert(type(blob) == "string", "Expected Data to be of type 'string'")
 end
 
 function M.Data(blob)

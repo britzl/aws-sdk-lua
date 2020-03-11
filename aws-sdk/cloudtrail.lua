@@ -1795,7 +1795,7 @@ end
 
 function asserts.AssertByteBuffer(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected ByteBuffer to be of type 'string'")
+	assert(type(blob) == "string", "Expected ByteBuffer to be of type 'string'")
 end
 
 function M.ByteBuffer(blob)

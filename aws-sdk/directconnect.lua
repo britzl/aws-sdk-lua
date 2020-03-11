@@ -4519,7 +4519,7 @@ end
 
 function asserts.AssertLoaContent(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected LoaContent to be of type 'string'")
+	assert(type(blob) == "string", "Expected LoaContent to be of type 'string'")
 end
 
 function M.LoaContent(blob)

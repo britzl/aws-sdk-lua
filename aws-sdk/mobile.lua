@@ -1553,7 +1553,7 @@ end
 
 function asserts.AssertContents(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected Contents to be of type 'string'")
+	assert(type(blob) == "string", "Expected Contents to be of type 'string'")
 end
 
 function M.Contents(blob)

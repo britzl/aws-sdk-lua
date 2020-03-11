@@ -2674,7 +2674,7 @@ end
 
 function asserts.AssertMetricWidgetImage(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected MetricWidgetImage to be of type 'string'")
+	assert(type(blob) == "string", "Expected MetricWidgetImage to be of type 'string'")
 end
 
 function M.MetricWidgetImage(blob)

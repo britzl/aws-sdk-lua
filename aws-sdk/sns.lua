@@ -2963,7 +2963,7 @@ end
 
 function asserts.AssertBinary(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected Binary to be of type 'string'")
+	assert(type(blob) == "string", "Expected Binary to be of type 'string'")
 end
 
 function M.Binary(blob)

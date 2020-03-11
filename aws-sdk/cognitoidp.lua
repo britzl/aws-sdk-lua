@@ -12013,7 +12013,7 @@ end
 
 function asserts.AssertImageFileType(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected ImageFileType to be of type 'string'")
+	assert(type(blob) == "string", "Expected ImageFileType to be of type 'string'")
 end
 
 function M.ImageFileType(blob)

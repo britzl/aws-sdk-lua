@@ -5126,7 +5126,7 @@ end
 
 function asserts.AssertMessagePayload(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected MessagePayload to be of type 'string'")
+	assert(type(blob) == "string", "Expected MessagePayload to be of type 'string'")
 end
 
 function M.MessagePayload(blob)

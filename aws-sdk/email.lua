@@ -7940,7 +7940,7 @@ end
 
 function asserts.AssertRawMessageData(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected RawMessageData to be of type 'string'")
+	assert(type(blob) == "string", "Expected RawMessageData to be of type 'string'")
 end
 
 function M.RawMessageData(blob)

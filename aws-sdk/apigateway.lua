@@ -9407,7 +9407,7 @@ end
 
 function asserts.AssertBlob(blob)
 	assert(blob)
-	assert(type(string) == "string", "Expected Blob to be of type 'string'")
+	assert(type(blob) == "string", "Expected Blob to be of type 'string'")
 end
 
 function M.Blob(blob)
