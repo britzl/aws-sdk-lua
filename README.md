@@ -88,3 +88,4 @@ The SDK uses code from the following projects:
 * Cryptographic functions from the [Lua-Lockbox](https://github.com/somesocks/lua-lockbox) project.
 * JSON encoder from [json.lua](https://github.com/rxi/json.lua)
 * URL encode/decode from the [Lua User Wiki]()
+* XML parser from [xml2lua](https://github.com/manoelcampos/xml2lua) project.
