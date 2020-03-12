@@ -38,7 +38,7 @@ function M.get(base_uri, request_uri, args, headers, settings, cb)
 		if response.status >= 200 and response.status < 300 then
 			cb(data)
 		else
-			cb(false, data.__type, data.Message)
+			cb(false, data.__type, data.Error.Message)
 		end
 	end)
 end
