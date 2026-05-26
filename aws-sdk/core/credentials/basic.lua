@@ -14,8 +14,8 @@ function M.from_defold_game_project()
 	end
 
 	function provider.refresh(cb)
-		access_key_id = sys.get_config("aws.access_key_id")
-		secret_access_key = sys.get_config("aws.secret_access_key")
+		access_key_id = sys.get_config_string("aws.access_key_id")
+		secret_access_key = sys.get_config_string("aws.secret_access_key")
 		assert(access_key_id and secret_access_key, "aws.access_key_id or aws.secret_access_key missing")
 		if cb then cb(access_key_id, secret_access_key) end
 	end
