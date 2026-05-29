@@ -20,13 +20,13 @@ return function()
 		end)
 
 		it("should should be able to read credentials from game.project", function()
-			sys.get_config.replace(function(key, default)
+			sys.get_config_string.replace(function(key, default)
 				if key == "aws.access_key_id" then
 					return "fooaccess"
 				elseif key == "aws.secret_access_key" then
 					return "foosecret"
 				else
-					return sys.get_config.original(key, default)
+					return sys.get_config_string.original(key, default)
 				end
 			end)
 			
@@ -41,7 +41,7 @@ return function()
 		end)
 		
 		it("should fail to refresh credentials from game.project if none are defined", function()
-			sys.get_config.replace(function(key, default)
+			sys.get_config_string.replace(function(key, default)
 				return nil
 			end)
 			local provider = basic.from_defold_game_project()
